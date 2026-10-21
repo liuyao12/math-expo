@@ -50,6 +50,7 @@
   function range(id,label,min,max,value,step=1){return `<label class="range-control" for="${id}"><span class="range-label"><span>${label}</span><output data-value-for="${id}"></output></span><input id="${id}" type="range" min="${min}" max="${max}" value="${value}" step="${step}"></label>`;}
   function outputRange(root,input,expression){math(root.querySelector(`[data-value-for="${input.id}"]`),expression);input.setAttribute('aria-valuetext',input.value);}
   const descriptions = {
+    'hat-turtle':['One outline, two projections','Fourteen fixed vertices in four dimensions.','The blue and orange edges belong to two fixed families. The outline stays fixed in four dimensions while the viewing plane changes.'],
     space:['A change of viewpoint','Two lines, one spatial relationship.','Changing the viewpoint changes their shadows. The distance between the lines does not change.'],
     'projection-composition':['Project, then project again','Follow the intermediate point.','The dotted path records the two steps. Reverse their order and compare the endpoint.'],
     reflection:['Two mirrors, one rotation','Order becomes visible.','The first image and the final image are shown together. Reverse the mirrors to reverse the rotation.'],
@@ -70,8 +71,26 @@
     const [title,sub,caption]=descriptions[name];
     holder.innerHTML=`<span class="margin-label">EXPLORE ALONGSIDE THE TEXT</span><div class="figure"><h3>${title}</h3><p class="figure-sub">${sub}</p><svg class="diagram" role="img" aria-label="${title}. ${caption}"></svg><div class="figure-controls"></div><div class="math-readout" aria-live="polite"></div><p class="figure-caption">${caption}</p></div>`;
     const root=holder.querySelector('.figure'),svg=root.querySelector('svg'),controls=root.querySelector('.figure-controls'),readout=root.querySelector('.math-readout');
-    const drawMap={space:spaceDemo,'projection-composition':projectionDemo,reflection:reflectionDemo,'four-d':fourDemo,gram:gramDemo,eigenvectors:eigenDemo,'sine-cosine':sineDemo,fourier:fourierDemo,eigenfunction:modeDemo};
+    const drawMap={'hat-turtle':tileDemo,space:spaceDemo,'projection-composition':projectionDemo,reflection:reflectionDemo,'four-d':fourDemo,gram:gramDemo,eigenvectors:eigenDemo,'sine-cosine':sineDemo,fourier:fourierDemo,eigenfunction:modeDemo};
     drawMap[name](root,svg,controls,readout);
+  }
+  function tileDemo(root,svg,controls,readout){
+    const id=`tile-angle-${document.querySelectorAll('[id^="tile-angle-"]').length}`;
+    controls.innerHTML=`<button type="button" data-angle="60" aria-pressed="true">Hat</button><button type="button" data-angle="30" aria-pressed="false">Turtle</button>${range(id,'Viewing plane',30,60,60,.1)}`;
+    const input=controls.querySelector('input'),model=window.HAT_TURTLE;
+    const coordinates=document.createElement('div');coordinates.className='tile-coordinate';math(coordinates,'q=(1,-2,0,-1)');root.insertBefore(coordinates,readout);
+    const all=Array.from({length:121},(_,i)=>model.project((30+i/4)*Math.PI/180)).flat();
+    const maxX=Math.max(...all.map(v=>Math.abs(v[0]))),maxY=Math.max(...all.map(v=>Math.abs(v[1])));
+    const source=document.createElement('p');source.className='tile-source';source.innerHTML='<a href="https://liuyao12.github.io/geometric-tree-search/apps/hat-turtle-projection/?view=tile" target="_blank" rel="noopener">Explore the original construction ↗</a>';root.appendChild(source);
+    const draw=()=>{const {w,h}=scene(svg,.95),theta=+input.value*Math.PI/180,points=model.project(theta),scale=Math.min((w-40)/(2*maxX),(h-34)/(2*maxY)),p=v=>[w/2+scale*v[0],h/2-scale*v[1]];
+      element('polygon',{points:points.map(p).map(v=>v.join(',')).join(' '),fill:colors.pale},svg);
+      points.forEach((v,i)=>{line(svg,[p(v),p(points[(i+1)%points.length])],model.edgeFamily(i)==='first'?colors.blue:colors.orange,2.5);dot(svg,p(v),colors.ink,2);});
+      dot(svg,p(points[10]),colors.green,4);mathLabel(svg,[p(points[10])[0]-10,p(points[10])[1]-16],'q');
+      const q=model.rawProject(theta)[10];math(readout,`q\\mapsto(${format(q[0])},${format(q[1])})`);
+      outputRange(root,input,`\\theta=${format(+input.value)}^{\\circ}`);
+      controls.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.angle===+input.value)));
+    };
+    controls.querySelectorAll('button').forEach(button=>button.addEventListener('click',()=>{input.value=button.dataset.angle;draw();}));input.addEventListener('input',draw);observe(svg,draw);
   }
   function spaceDemo(root,svg,controls,readout){
     controls.innerHTML=`<button type="button" data-mode="skew" aria-pressed="true">Skew lines</button><button type="button" data-mode="meeting" aria-pressed="false">Intersecting</button>${range('space-view','Viewpoint',-65,65,25)}`;
@@ -177,9 +196,9 @@
   }
   function renderOutline(){
     document.getElementById('breadcrumb').textContent='A COURSE BUILT FROM GEOMETRY';
-    chapterElement.innerHTML=`<header class="chapter-heading"><p class="eyebrow">THE COURSE AT A GLANCE</p><h1>Follow the geometry.<br>Let the algebra emerge.</h1><p class="dek">A first draft of a linear algebra text, with essential definitions and examples alongside the ideas they explain.</p><div class="chapter-meta"><span>Nine chapter sketches</span><span>Two parts drafted</span></div></header><hr class="chapter-rule"><div class="course-map"><p class="map-intro">Begin with space we can picture. Extend that intuition to higher dimensions. Then discover geometry in functions, where projection becomes Fourier approximation.</p>${parts.map(part=>`<div class="part-heading"><span>PART ${part.id}</span><h2>${part.title}</h2></div>${chapters.filter(c=>c.part===part.id).map(c=>`<a class="map-row" href="#${c.id}"><span class="map-number">${c.number}</span><div><h3>${c.short}</h3><p>${c.concepts.join(' · ')}</p></div><span class="arrow" aria-hidden="true">↗</span></a>`).join('')}`).join('')}<div class="part-heading"><span>LATER</span><h2>Structure, fields, and symmetry</h2></div><div class="future-note"><p><strong>General vector spaces, then groups.</strong> Ask what remains when we set measurement aside; later, organize invertible transformations by composition.</p><p><strong>Finite geometries and matrix groups.</strong> Return to the same tools over finite fields: the Fano plane, error-correcting codes, and geometric motivation for the Sylow theorems. These chapters remain to be drafted.</p></div></div>`;
+    chapterElement.innerHTML=`<header class="chapter-heading"><p class="eyebrow">THE COURSE AT A GLANCE</p><h1>Linear Algebra</h1><p class="dek">From Euclidean geometry to higher and even infinite-dimensional spaces.</p><div class="chapter-meta"><span>Nine chapter sketches</span><span>Two parts drafted</span></div></header><hr class="chapter-rule"><div class="course-map"><p class="map-intro">Begin with Euclidean geometry and carry a puzzle forward: a fixed four-dimensional outline projects to a hat or a turtle. Use algebra to move beyond spatial intuition, then discover geometry in functions and Fourier approximation.</p>${parts.map(part=>`<div class="part-heading"><span>PART ${part.id}</span><h2>${part.title}</h2></div>${chapters.filter(c=>c.part===part.id).map(c=>`<a class="map-row" href="#${c.id}"><span class="map-number">${c.number}</span><div><h3>${c.short}</h3><p>${c.concepts.join(' · ')}</p></div><span class="arrow" aria-hidden="true">↗</span></a>`).join('')}`).join('')}<div class="part-heading"><span>LATER</span><h2>Structure, fields, and symmetry</h2></div><div class="future-note"><p><strong>General vector spaces, then groups.</strong> Ask what remains when we set measurement aside; later, organize invertible transformations by composition.</p><p><strong>Finite geometries and matrix groups.</strong> Return to the same tools over finite fields: the Fano plane, error-correcting codes, and geometric motivation for the Sylow theorems. These chapters remain to be drafted.</p></div></div>`;
     document.getElementById('chapter-footer').innerHTML='<a href="#geometry"><span>BEGIN PART I</span>Geometry in three dimensions →</a>';
-    document.title='The course at a glance — Geometry becomes algebra';
+    document.title='The course at a glance — Linear Algebra';
   }
   function renderChapter(chapter){
     const part=parts.find(p=>p.id===chapter.part);document.getElementById('breadcrumb').textContent=`PART ${part.id} · ${part.title.toUpperCase()}`;
@@ -187,7 +206,7 @@
     const index=chapters.indexOf(chapter),previous=chapters[index-1],next=chapters[index+1];
     document.getElementById('chapter-footer').innerHTML=`${previous?`<a href="#${previous.id}"><span>PREVIOUS CHAPTER</span>← ${previous.short}</a>`:'<a href="#outline"><span>STEP BACK</span>← The course at a glance</a>'}${next?`<a href="#${next.id}"><span>NEXT CHAPTER</span>${next.short} →</a>`:'<a href="#outline"><span>RETURN TO</span>The course at a glance →</a>'}`;
     chapterElement.querySelectorAll('[data-demo]').forEach(holder=>mountDemo(holder,holder.dataset.demo));
-    renderMath(chapterElement);document.title=`${chapter.short} — Geometry becomes algebra`;
+    renderMath(chapterElement);document.title=`${chapter.short} — Linear Algebra`;
   }
   function navigate(){
     observers.forEach(observer=>observer.disconnect());observers=[];

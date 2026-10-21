@@ -23,7 +23,7 @@ window.COURSE = {
         "Lines and planes",
         "Length and angle"
       ],
-      "intro": "A line, a plane, a direction: these will be our first objects. Algebra enters as a way to describe them precisely, compare different views, and settle questions a picture leaves open. <em>We begin in three-dimensional Euclidean space.</em>",
+      "intro": "A line, a plane, a direction: these will be our first objects. We begin with three-dimensional Euclidean geometry, building tools for lengths, angles, and transformations. A fixed four-dimensional outline will give us a puzzle to carry forward: how can changing a projection reveal a hat or a turtle?",
       "sections": [
         {
           "title": "A point is a place. A vector is a displacement.",
@@ -34,6 +34,11 @@ window.COURSE = {
           "title": "Coordinates make geometry calculable.",
           "body": "\n            <p>An orthonormal coordinate frame records perpendicular directions of unit length. In these coordinates, familiar measurements have compact formulas.</p>\n            <div class=\"definition\"><span class=\"definition-label\">DEFINITION · EUCLIDEAN DOT PRODUCT</span><p>For \\(u=(u_1,u_2,u_3)\\) and \\(v=(v_1,v_2,v_3)\\),</p>\\[u\\cdot v=u_1v_1+u_2v_2+u_3v_3.\\]<p>The length is \\(\\|v\\|=\\sqrt{v\\cdot v}\\). For nonzero vectors, their angle satisfies</p>\\[\\cos\\theta=\\frac{u\\cdot v}{\\|u\\|\\,\\|v\\|}.\\]</div>\n            <p>Perpendicular vectors have zero dot product. We will use that fact to find nearest points, split displacements into components, and construct reflections.</p>\n            <p>These coordinate formulas assume an orthonormal frame. With a different basis, the <a href=\"#coordinates\">Gram matrix</a> will record how to recover lengths and angles.</p>",
           "note": "The chapter develops two complementary habits: inspect a picture, then identify the geometric claim that the algebra must verify."
+        },
+        {
+          "title": "A puzzle to carry into higher dimensions.",
+          "body": "<p>The hat and turtle outlines look different in the plane. In the side example, both come from the same fourteen fixed vertices in four dimensions. Move the viewing plane; the projected outline changes.</p><p>Ordinary spatial intuition helps us understand shadows, but the lifted object has four independent directions. Coordinates and linear maps let us describe it precisely even when we cannot hold the whole object in a three-dimensional picture.</p><p>For now, watch which corners remain joined. Later we will write the projection as a matrix, distinguish an object from its image, and use the Gram matrix to measure lengths in its lattice coordinates.</p><p class=\"question\">Which features belong to the fixed object, and which depend on the projection?</p>",
+          "demo": "hat-turtle"
         }
       ]
     },
@@ -101,8 +106,13 @@ window.COURSE = {
         "Sections and shadows",
         "Orthogonal complements"
       ],
-      "intro": "Higher-dimensional geometry is a place to test intuition, rather than abandon it. Coordinates, perpendicularity, and projection continue to work. Some familiar expectations do not.",
+      "intro": "Return to the hat–turtle puzzle. A change of view can make one fixed four-dimensional boundary appear to change shape. Algebra identifies what is fixed, what changes, and why a three-dimensional picture cannot capture all the geometry.",
       "sections": [
+        {
+          "title": "The object stays fixed. Its image changes.",
+          "body": "<p>Write a point in \\(\\mathbb R^4\\) as \\((u,v)\\), with \\(u,v\\in\\mathbb R^2\\). The hat–turtle family uses the screen map</p>\\[M_\\theta(u,v)=\\cos\\theta\\,u+\\sin\\theta\\,v.\\]<p>In orthonormal Cartesian coordinates, its matrix is</p>\\[M_\\theta=\\begin{pmatrix}\\cos\\theta&0&\\sin\\theta&0\\\\0&\\cos\\theta&0&\\sin\\theta\\end{pmatrix}.\\]<p>The same fixed boundary gives the hat at \\(\\theta=\\pi/3\\) and the turtle at \\(\\theta=\\pi/6\\). Its fourteen vertices span four dimensions. A rigid three-dimensional model cannot preserve all of their Euclidean distances.</p><div class=\"definition\"><span class=\"definition-label\">A PROJECTION AND ITS SCREEN COORDINATES</span><p>The rows of \\(M_\\theta\\) are orthonormal, so \\(M_\\theta M_\\theta^{\\mathsf T}=I_2\\). The orthogonal projection within \\(\\mathbb R^4\\) is</p>\\[\\Pi_\\theta=M_\\theta^{\\mathsf T}M_\\theta.\\]<p>The rectangular map \\(M_\\theta\\) records that projection in an orthonormal basis of the viewing plane.</p></div><p>The lift follows <a href=\"https://www.math.univ-toulouse.fr/~cheritat/2023-monotile/4D-lift/index.html\" target=\"_blank\" rel=\"noopener\">Nan Ma and Arnaud Chéritat</a>. Here we use the fixed boundary from <a href=\"https://liuyao12.github.io/geometric-tree-search/apps/hat-turtle-projection/?view=tile\" target=\"_blank\" rel=\"noopener\">the existing hat–turtle construction</a>.</p>",
+          "demo": "hat-turtle"
+        },
         {
           "title": "Dimension counts independent directions.",
           "body": "\n            <div class=\"definition\"><span class=\"definition-label\">DEFINITION · SPAN AND INDEPENDENCE</span><p>The span of \\(u_1,\\ldots,u_k\\) consists of all linear combinations</p>\\[c_1u_1+\\cdots+c_ku_k.\\]<p>The vectors are independent if</p>\\[\\sum_i c_i u_i=0\\quad\\Longrightarrow\\quad c_i=0\\text{ for every }i.\\]<p>A basis is an independent spanning family. Its size is the dimension.</p></div>\n            <p>In \\(\\mathbb R^4\\), the coordinate planes spanned by \\(e_1,e_2\\) and by \\(e_3,e_4\\) intersect only at the origin. Each is the other's orthogonal complement.</p>\n            <p>More generally, \\(\\dim W+\\dim W^\\perp=n\\) in \\(\\mathbb R^n\\). A plane in four dimensions has a plane of perpendicular directions.</p>",
@@ -110,7 +120,7 @@ window.COURSE = {
         },
         {
           "title": "Rotation no longer requires a fixed axis.",
-          "body": "\n            <p>Rotate simultaneously in the two coordinate planes:</p>\\[R=\\begin{pmatrix}R_\\alpha&0\\\\0&R_\\beta\\end{pmatrix},\\qquad R_\\theta=\\begin{pmatrix}\\cos\\theta&-\\sin\\theta\\\\\\sin\\theta&\\cos\\theta\\end{pmatrix}.\\]\n            <p>If neither angle is a multiple of \\(2\\pi\\), this transformation fixes no nonzero vector. The familiar fixed axis of a three-dimensional rotation is not a universal feature of rotation.</p>\n            <div class=\"observation\"><span class=\"observation-label\">SECTION AND PROJECTION ANSWER DIFFERENT QUESTIONS</span><p>A section asks which points lie in a chosen slice. A projection records the image of every point. Apparent crossings in a shadow do not establish intersections in the original space.</p></div>\n            <h3>A running case study</h3><p>The proposed four-dimensional hat/turtle construction will give these tools an object to investigate. Its construction and specific sections remain to be developed. The side figure here is a tesseract, used to explore independent rotations.</p>",
+          "body": "\n            <p>Rotate simultaneously in the two coordinate planes:</p>\\[R=\\begin{pmatrix}R_\\alpha&0\\\\0&R_\\beta\\end{pmatrix},\\qquad R_\\theta=\\begin{pmatrix}\\cos\\theta&-\\sin\\theta\\\\\\sin\\theta&\\cos\\theta\\end{pmatrix}.\\]\n            <p>If neither angle is a multiple of \\(2\\pi\\), this transformation fixes no nonzero vector. The familiar fixed axis of a three-dimensional rotation is not a universal feature of rotation.</p>\n            <div class=\"observation\"><span class=\"observation-label\">SECTION AND PROJECTION ANSWER DIFFERENT QUESTIONS</span><p>A section asks which points lie in a chosen slice. A projection records the image of every point. Apparent crossings in a shadow do not establish intersections in the original space.</p></div><p>The tile example changes the viewing plane. The tesseract example lets us explore independent rotations. Both require us to keep the four-dimensional object separate from its displayed image.</p>",
           "note": "A three-dimensional or two-dimensional display can provide evidence about a four-dimensional object. Coordinate calculations establish which claims that evidence supports."
         }
       ]
@@ -138,6 +148,11 @@ window.COURSE = {
           "title": "Projection coefficients solve a geometric system.",
           "body": "\n            <p>Let \\(u_1,\\ldots,u_k\\) be a basis for the target subspace, and write \\(Pv=\\sum_j c_j u_j\\). Perpendicularity of the residual says</p>\\[u_i\\cdot\\left(v-\\sum_jc_j u_j\\right)=0.\\]\n            <p>These equations assemble into</p>\\[Gc=b,\\qquad b_i=u_i\\cdot v.\\]\n            <div class=\"observation\"><span class=\"observation-label\">INNER PRODUCTS ARE NOT GENERALLY COORDINATES</span><p>Take \\(u_1=(1,0)\\), \\(u_2=(1,1)\\), and \\(v=(1,2)\\). Then \\(b=(1,3)^{\\mathsf T}\\), but the coordinate column is \\(c=(-1,2)^{\\mathsf T}\\). The Gram matrix connects them.</p></div>\n            \\[\\begin{pmatrix}1&1\\\\1&2\\end{pmatrix}\\begin{pmatrix}-1\\\\2\\end{pmatrix}=\\begin{pmatrix}1\\\\3\\end{pmatrix}.\\]\n            <p>For a rectangular basis matrix \\(A\\), projection is \\(P=A(A^{\\mathsf T}A)^{-1}A^{\\mathsf T}\\). The same equations describe least-squares fitting.</p>",
           "note": "Further development: kernel and image, rank–nullity, the determinant as signed volume, and the distinction between \\(G'=S^{\\mathsf T}GS\\) for a Gram matrix and \\(M'=S^{-1}MS\\) for a linear operator."
+        },
+        {
+          "title": "The tile’s lattice coordinates carry a Gram matrix.",
+          "body": "<p>The fourteen vertices are stored as integer tuples \\((p,q,r,s)\\). These coefficients refer to two triangular lattice bases. Their Cartesian coordinates are</p>\\[(u_x,u_y,v_x,v_y)=\\left(p+\\frac q2,\\frac{\\sqrt3 q}{2},\\frac{\\sqrt3 r}{2},\\frac r2+s\\right).\\]<p>The corresponding Gram matrix is</p>\\[G=\\begin{pmatrix}1&1/2&0&0\\\\1/2&1&0&0\\\\0&0&1&1/2\\\\0&0&1/2&1\\end{pmatrix}.\\]<p>For the tracked vertex \\(c=(1,-2,0,-1)^{\\mathsf T}\\), its squared distance from the first vertex is \\(c^{\\mathsf T}Gc=4\\). Squaring and adding the four integer coefficients would give the wrong measurement.</p>",
+          "note": "The basis, its metric, and the viewing map play different roles. Keeping them separate makes the geometry computable."
         }
       ]
     },

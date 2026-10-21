@@ -15,7 +15,7 @@ Historical mathematical papers with modern commentary, worked details, and margi
 
 ## Reimagined textbooks
 
-New expositions of established mathematics. The current working text, *Geometry becomes algebra*, develops linear algebra from Euclidean geometry toward inner product spaces of functions and Fourier approximation.
+New expositions of established mathematics. The current working text, *Linear Algebra — From Euclidean geometry to higher and even infinite-dimensional spaces*, develops linear algebra from Euclidean geometry toward inner product spaces of functions and Fourier approximation.
 
 ## Build and validate
 
