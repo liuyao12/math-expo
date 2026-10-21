@@ -7,7 +7,7 @@ for (const project of ['classical-papers', 'textbooks']) {
   const result = spawnSync(process.execPath, ['scripts/check.mjs'], { cwd: path.join(root, 'projects', project), stdio: 'inherit' });
   if (result.status !== 0) process.exit(result.status ?? 1);
 }
-for (const file of ['index.html', 'classical-papers/index.html', 'classical-papers/riemann/index.html', 'textbooks/index.html', 'textbooks/assets/orthogonal-projection.gif']) {
+for (const file of ['index.html', 'classical-papers/index.html', 'classical-papers/riemann-1854/index.html', 'classical-papers/riemann/index.html', 'textbooks/index.html', 'textbooks/assets/orthogonal-projection.gif']) {
   if (!existsSync(path.join(root, 'dist', file))) throw Error(`Missing published page or asset: ${file}`);
 }
 const home = readFileSync(path.join(root, 'dist/index.html'), 'utf8');

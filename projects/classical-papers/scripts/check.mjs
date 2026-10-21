@@ -8,7 +8,7 @@ const katexContext={};vm.runInNewContext(fs.readFileSync(path.join(root,'public/
 new vm.Script(fs.readFileSync(path.join(root,'public/reader.js'),'utf8'));
 let formulas=0;
 const ids=new Set();for(const row of [...introduction,...lineElement]){if(ids.has(row.id))throw Error(`Duplicate passage: ${row.id}`);ids.add(row.id);}
-for(const relative of ['index.html','riemann/index.html']){
+for(const relative of ['index.html','riemann-1854/index.html','riemann/index.html']){
   const file=path.join(root,'dist',relative),html=fs.readFileSync(file,'utf8');
   for(const match of html.matchAll(/\\\(([\s\S]*?)\\\)|\\\[([\s\S]*?)\\\]/g)){
     katexContext.katex.renderToString(match[1]??match[2],{throwOnError:true});formulas++;
@@ -20,7 +20,7 @@ for(const relative of ['index.html','riemann/index.html']){
   }
   for(const match of html.matchAll(/href="#([^"]+)"/g)){if(!html.includes(`id="${match[1]}"`))throw Error(`Missing anchor: ${match[1]}`);}
 }
-const reader=fs.readFileSync(path.join(root,'dist/riemann/index.html'),'utf8');
+const reader=fs.readFileSync(path.join(root,'dist/riemann-1854/index.html'),'utf8');
 for(const row of [...introduction,...lineElement])if(!reader.includes(`id="${row.id}"`))throw Error(`Missing passage ${row.id}`);
 for(const source of ['DE-611-HS-3206822','e-rara-49481','WKCGeom.html'])if(!reader.includes(source))throw Error(`Missing source ${source}`);
 const css=fs.readFileSync(path.join(root,'public/style.css'),'utf8')+fs.readFileSync(path.join(root,'public/vendor/katex/katex.min.css'),'utf8');

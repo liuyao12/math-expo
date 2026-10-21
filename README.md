@@ -11,7 +11,7 @@ The [Math Expo homepage](https://liuyao12.github.io/math-expo/) links to both pr
 
 ## Classical papers
 
-Historical mathematical papers with modern commentary, worked details, and margin drawings. The first sample is Riemann’s geometry lecture, including the introduction and line-element passage, with links to the manuscript, printed facsimile, and historical English translation.
+Historical mathematical papers with modern commentary, worked details, and margin drawings. The first sample is Riemann’s geometry lecture, including the introduction and line-element passage, with links to the manuscript, printed facsimile, and historical English translation. The [Riemann reader](https://liuyao12.github.io/math-expo/classical-papers/riemann-1854/) uses the collection’s author-year URL convention.
 
 ## Reimagined textbooks
 
