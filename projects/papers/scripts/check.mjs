@@ -8,7 +8,7 @@ const katexContext={};vm.runInNewContext(fs.readFileSync(path.join(root,'public/
 new vm.Script(fs.readFileSync(path.join(root,'public/reader.js'),'utf8'));
 let formulas=0;
 const ids=new Set();for(const row of [...introduction,...lineElement]){if(ids.has(row.id))throw Error(`Duplicate passage: ${row.id}`);ids.add(row.id);}
-for(const relative of ['index.html','riemann-1854/index.html','riemann/index.html']){
+for(const relative of ['index.html','riemann-1854/index.html']){
   const file=path.join(root,'dist',relative),html=fs.readFileSync(file,'utf8');
   for(const match of html.matchAll(/\\\(([\s\S]*?)\\\)|\\\[([\s\S]*?)\\\]/g)){
     katexContext.katex.renderToString(match[1]??match[2],{throwOnError:true});formulas++;

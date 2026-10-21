@@ -4,14 +4,14 @@ Two independent mathematics projects in one repository.
 
 | Project | Source | Website |
 | --- | --- | --- |
-| Classical papers | `projects/classical-papers/` | [Read the papers](https://liuyao12.github.io/math-expo/classical-papers/) |
+| Papers | `projects/papers/` | [Read the papers](https://liuyao12.github.io/math-expo/papers/) |
 | Reimagined textbooks | `projects/textbooks/` | [Read the textbook](https://liuyao12.github.io/math-expo/textbooks/) |
 
 The [Math Expo homepage](https://liuyao12.github.io/math-expo/) links to both projects. They share a repository and deployment but retain their own source, design, build scripts, and checks.
 
-## Classical papers
+## Papers
 
-Historical mathematical papers with modern commentary, worked details, and margin drawings. The first sample is Riemann’s geometry lecture, including the introduction and line-element passage, with links to the manuscript, printed facsimile, and historical English translation. The [Riemann reader](https://liuyao12.github.io/math-expo/classical-papers/riemann-1854/) uses the collection’s author-year URL convention.
+Historical mathematical papers with modern commentary, worked details, and margin drawings. The first sample is Riemann’s geometry lecture, including the introduction and line-element passage, with links to the manuscript, printed facsimile, and historical English translation. The [Riemann reader](https://liuyao12.github.io/math-expo/papers/riemann-1854/) uses the collection’s author-year URL convention.
 
 ## Reimagined textbooks
 
@@ -27,7 +27,7 @@ npm run check
 python3 -m http.server 8000 --directory dist
 ```
 
-The root build assembles both projects into `dist/classical-papers/` and `dist/textbooks/`, with a shared homepage in `dist/index.html`. All links and asset paths support GitHub Pages’ `/math-expo/` prefix.
+The root build assembles both projects into `dist/papers/` and `dist/textbooks/`, with a shared homepage in `dist/index.html`. All links and asset paths support GitHub Pages’ `/math-expo/` prefix.
 
 Each project can also be built independently:
 

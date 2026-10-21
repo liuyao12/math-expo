@@ -6,7 +6,7 @@ const root = fileURLToPath(new URL('../', import.meta.url));
 const destination = path.join(root, 'dist');
 rmSync(destination, { recursive: true, force: true });
 mkdirSync(destination, { recursive: true });
-for (const project of ['classical-papers', 'textbooks']) {
+for (const project of ['papers', 'textbooks']) {
   const directory = path.join(root, 'projects', project);
   const result = spawnSync(process.execPath, ['scripts/build.mjs'], { cwd: directory, stdio: 'inherit' });
   if (result.status !== 0) process.exit(result.status ?? 1);
@@ -14,4 +14,4 @@ for (const project of ['classical-papers', 'textbooks']) {
 }
 cpSync(path.join(root, 'hub/index.html'), path.join(destination, 'index.html'));
 writeFileSync(path.join(destination, '.nojekyll'), '');
-console.log('Built Math Expo: /classical-papers/ and /textbooks/.');
+console.log('Built Math Expo: /papers/ and /textbooks/.');
