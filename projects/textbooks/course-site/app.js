@@ -7,17 +7,18 @@
   const colors = { ink:'#394d3c', muted:'#8a9681', grid:'#d8dfd1', blue:'#396fa2', orange:'#b36a35', green:'#3c7555', pale:'#e3e9dc' };
   const NS = 'http://www.w3.org/2000/svg';
   let observers = [];
+  let cleanups = [];
   window.mathErrors = [];
   const raw = String.raw;
   const format = n => Math.abs(n) < 0.0005 ? '0' : Number(n.toFixed(3)).toString();
   function math(node, expression, display = false) {
     if (!window.katex) { node.textContent = expression; return; }
-    try { katex.render(expression, node, { displayMode:display, throwOnError:true }); }
+    try { window.MATRIX_NOTATION.render(node,expression,display); }
     catch(error) { window.mathErrors.push(error.message); node.textContent = expression; node.classList.add('math-error'); }
   }
   function renderMath(node) {
     if (!window.renderMathInElement) return;
-    renderMathInElement(node, { delimiters:[{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}], throwOnError:false, errorCallback:(message,error)=>window.mathErrors.push(error?.message || message) });
+    renderMathInElement(node, { delimiters:[{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}], throwOnError:false, preProcess:window.MATRIX_NOTATION.preProcess, trust:window.MATRIX_NOTATION.trust, errorCallback:(message,error)=>window.mathErrors.push(error?.message || message) });
   }
   function element(tag, attributes, parent) {
     const node = document.createElementNS(NS, tag);
@@ -62,6 +63,8 @@
     eigenfunction:['A mode changes amplitude','A heat-equation example.','The original shape is dashed. Its evolving multiple retains the same spatial pattern.']
   };
   function mountDemo(holder,name) {
+    if(name==='polytopes'||name==='ball-cube'){cleanups.push(window.mountHigherGeometry(holder,name,{math}));return;}
+    if(name==='matrix-product'){cleanups.push(window.mountMatrixProductDemo(holder,{math}));return;}
     if(name==='projection'){
       const playing=!matchMedia('(prefers-reduced-motion: reduce)').matches;
       holder.innerHTML=`<span class="margin-label">THE GEOMETRY IN MOTION</span><figure class="figure animation-figure"><img src="assets/orthogonal-projection${playing?'.gif':'-still.png'}" width="720" height="480" alt="A vector moving along its perpendicular residual to its nearest point on a plane."><div class="figure-controls"><button class="play-toggle" type="button" aria-pressed="${playing}">${playing?'Pause animation':'Play animation'}</button></div><figcaption class="figure-caption">The component in the plane stays fixed. The perpendicular component is removed.</figcaption></figure>`;
@@ -131,14 +134,15 @@
     };controls.querySelector('button').addEventListener('click',event=>{reverse=!reverse;event.currentTarget.setAttribute('aria-pressed',String(reverse));draw();});input.addEventListener('input',draw);observe(svg,draw);
   }
   function fourDemo(root,svg,controls,readout){
-    controls.innerHTML=range('four-first','First rotation plane',0,180,20)+range('four-second','Second rotation plane',0,180,30);const [first,second]=controls.querySelectorAll('input');
+    controls.innerHTML='<button type="button" data-turn="simple">One plane</button><button type="button" data-turn="double" aria-pressed="true">Two planes</button><button type="button" data-turn="equal">Equal turns</button>'+range('four-first','First rotation plane',0,180,20)+range('four-second','Second rotation plane',0,180,30);const [first,second]=controls.querySelectorAll('input');
     const draw=()=>{const {w,h}=scene(svg);const a=+first.value*Math.PI/180,b=+second.value*Math.PI/180,s=Math.min(w*.65,h*.68);
       const vertices=Array.from({length:16},(_,i)=>[0,1,2,3].map(j=>(i>>j&1)?.72:-.72));
       const transformed=vertices.map(([x,y,z,t])=>{const X=x*Math.cos(a)-y*Math.sin(a),Y=x*Math.sin(a)+y*Math.cos(a),Z=z*Math.cos(b)-t*Math.sin(b),T=z*Math.sin(b)+t*Math.cos(b),d=2.5-T;return {x:(X*.86-Y*.5)/d,y:(X*.2+Y*.35-Z*.88)/d,depth:Z/d};});
       const p=v=>[w*.5+s*v.x,h*.5+s*v.y];const edges=[];for(let i=0;i<16;i++)for(let j=0;j<4;j++){const k=i^(1<<j);if(k>i)edges.push({i,k,depth:transformed[i].depth+transformed[k].depth,bridge:j===3});}
       edges.sort((x,y)=>x.depth-y.depth).forEach(({i,k,bridge})=>line(svg,[p(transformed[i]),p(transformed[k])],bridge?colors.orange:(i&8?colors.green:colors.blue),1.5));transformed.forEach(v=>dot(svg,p(v),colors.ink,2));
-      outputRange(root,first,`${first.value}^{\\circ}`);outputRange(root,second,`${second.value}^{\\circ}`);math(readout,'R=\\operatorname{diag}(R_\\alpha,R_\\beta)');
-    };[first,second].forEach(input=>input.addEventListener('input',draw));observe(svg,draw);
+      outputRange(root,first,`${first.value}^{\\circ}`);outputRange(root,second,`${second.value}^{\\circ}`);math(readout,'\\dim\\ker(R-I)='+((+first.value===0?2:0)+(+second.value===0?2:0)));
+    };[first,second].forEach(input=>input.addEventListener('input',()=>{controls.querySelectorAll('button').forEach(button=>button.setAttribute('aria-pressed','false'));draw();}));
+    controls.querySelectorAll('[data-turn]').forEach(button=>button.addEventListener('click',()=>{const angles={simple:[45,0],double:[25,65],equal:[45,45]}[button.dataset.turn];first.value=angles[0];second.value=angles[1];controls.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));draw();}));observe(svg,draw);
   }
   function gramDemo(root,svg,controls,readout){
     controls.innerHTML=range('basis-angle','Angle between unit basis vectors',5,175,65);const input=controls.querySelector('input');
@@ -196,8 +200,8 @@
   }
   function renderOutline(){
     document.getElementById('breadcrumb').textContent='A COURSE BUILT FROM GEOMETRY';
-    chapterElement.innerHTML=`<header class="chapter-heading"><p class="eyebrow">THE COURSE AT A GLANCE</p><h1>Linear Algebra</h1><p class="dek">From Euclidean geometry to higher and even infinite-dimensional spaces.</p><div class="chapter-meta"><span>Nine chapter sketches</span><span>Two parts drafted</span></div></header><hr class="chapter-rule"><div class="course-map"><p class="map-intro">Begin with Euclidean geometry and carry a puzzle forward: a fixed four-dimensional outline projects to a hat or a turtle. Use algebra to move beyond spatial intuition, then discover geometry in functions and Fourier approximation.</p>${parts.map(part=>`<div class="part-heading"><span>PART ${part.id}</span><h2>${part.title}</h2></div>${chapters.filter(c=>c.part===part.id).map(c=>`<a class="map-row" href="#${c.id}"><span class="map-number">${c.number}</span><div><h3>${c.short}</h3><p>${c.concepts.join(' · ')}</p></div><span class="arrow" aria-hidden="true">↗</span></a>`).join('')}`).join('')}<div class="part-heading"><span>LATER</span><h2>Structure, fields, and symmetry</h2></div><div class="future-note"><p><strong>General vector spaces, then groups.</strong> Ask what remains when we set measurement aside; later, organize invertible transformations by composition.</p><p><strong>Finite geometries and matrix groups.</strong> Return to the same tools over finite fields: the Fano plane, error-correcting codes, and geometric motivation for the Sylow theorems. These chapters remain to be drafted.</p></div></div>`;
-    document.getElementById('chapter-footer').innerHTML='<a href="#geometry"><span>BEGIN PART I</span>Geometry in three dimensions →</a>';
+    chapterElement.innerHTML=`<header class="chapter-heading"><p class="eyebrow">THE COURSE AT A GLANCE</p><h1>Linear Algebra</h1><p class="dek">From Euclidean geometry to higher and even infinite-dimensional spaces.</p><div class="chapter-meta"><span>Ten chapter sketches</span><span>Two parts drafted</span></div></header><hr class="chapter-rule"><div class="course-map"><p class="map-intro">Begin with the Platonic solids and their four-dimensional relatives. Develop vectors, projections, rotations, and the Gram matrix; then explore lattices and a hat–turtle boundary in four dimensions. Discover the same geometry in functions and Fourier approximation.</p>${parts.map(part=>`<div class="part-heading"><span>PART ${part.id}</span><h2>${part.title}</h2></div>${chapters.filter(c=>c.part===part.id).map(c=>`<a class="map-row" href="#${c.id}"><span class="map-number">${c.number}</span><div><h3>${c.short}</h3><p>${c.concepts.join(' · ')}</p></div><span class="arrow" aria-hidden="true">↗</span></a>`).join('')}`).join('')}<div class="part-heading"><span>LATER</span><h2>Structure, fields, and symmetry</h2></div><div class="future-note"><p><strong>General vector spaces, then groups.</strong> Ask what remains when we set measurement aside; later, organize invertible transformations by composition.</p><p><strong>Finite geometries and matrix groups.</strong> Return to the same tools over finite fields: the Fano plane, error-correcting codes, and geometric motivation for the Sylow theorems. These chapters remain to be drafted.</p></div></div>`;
+    document.getElementById('chapter-footer').innerHTML='<a href="#geometry"><span>BEGIN PART I</span>From Platonic solids to four dimensions →</a>';
     document.title='The course at a glance — Linear Algebra';
   }
   function renderChapter(chapter){
@@ -206,13 +210,15 @@
     const index=chapters.indexOf(chapter),previous=chapters[index-1],next=chapters[index+1];
     document.getElementById('chapter-footer').innerHTML=`${previous?`<a href="#${previous.id}"><span>PREVIOUS CHAPTER</span>← ${previous.short}</a>`:'<a href="#outline"><span>STEP BACK</span>← The course at a glance</a>'}${next?`<a href="#${next.id}"><span>NEXT CHAPTER</span>${next.short} →</a>`:'<a href="#outline"><span>RETURN TO</span>The course at a glance →</a>'}`;
     chapterElement.querySelectorAll('[data-demo]').forEach(holder=>mountDemo(holder,holder.dataset.demo));
-    renderMath(chapterElement);document.title=`${chapter.short} — Linear Algebra`;
+    renderMath(chapterElement);window.MATRIX_NOTATION.remember(chapterElement);window.MATRIX_NOTATION.applyCopy(chapterElement);document.title=`${chapter.short} — Linear Algebra`;
   }
   function navigate(){
     observers.forEach(observer=>observer.disconnect());observers=[];
+    cleanups.forEach(cleanup=>cleanup());cleanups=[];
     const id=location.hash.slice(1)||'geometry',chapter=chapters.find(c=>c.id===id);
     buildNavigation(id==='outline'?'outline':chapter?.id||'geometry');
     if(id==='outline')renderOutline();else renderChapter(chapter||chapters[0]);
+    window.MATRIX_NOTATION.remember(chapterElement);window.MATRIX_NOTATION.applyCopy(chapterElement);
     sidebar.classList.remove('open');menuToggle.setAttribute('aria-expanded','false');window.scrollTo({top:0,behavior:'instant'});
   }
   menuToggle.addEventListener('click',()=>{const open=sidebar.classList.toggle('open');menuToggle.setAttribute('aria-expanded',String(open));});

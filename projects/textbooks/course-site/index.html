@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="styles.css">
   <script defer src="vendor/katex/katex.min.js"></script>
   <script defer src="vendor/katex/auto-render.min.js"></script>
+  <script defer src="conventions.js"></script>
+  <script defer src="matrix-demo.js"></script>
+  <script defer src="higher-geometry.js"></script>
   <script defer src="hat-turtle.js"></script>
   <script defer src="chapters.js"></script>
   <script defer src="app.js"></script>
@@ -27,6 +30,15 @@
   </aside>
   <main id="reading" tabindex="-1">
     <div class="reader-top"><span id="breadcrumb">PART I · EUCLIDEAN GEOMETRY</span><span class="edition">The geometric approach</span></div>
+    <div class="convention-bar" aria-label="Matrix notation convention">
+      <span class="convention-label">READ MATRICES</span>
+      <div class="convention-options" role="group" aria-label="Choose the matrix multiplication convention">
+        <button type="button" data-convention-mode="reading" aria-pressed="true">Column → row</button>
+        <button type="button" data-convention-mode="standard" aria-pressed="false">Standard</button>
+      </div>
+      <span id="convention-status" role="status">Input first · indices across, then down</span>
+      <a href="#coordinates" class="convention-help">See the rule</a>
+    </div>
     <article id="chapter"></article>
     <footer id="chapter-footer" class="chapter-footer"></footer>
   </main>
