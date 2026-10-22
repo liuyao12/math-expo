@@ -11,7 +11,7 @@ The [Math Expo homepage](https://liuyao12.github.io/math-expo/) links to both pr
 
 ## Papers
 
-Historical mathematical papers with modern commentary, worked details, and margin drawings. The first sample is Riemann’s geometry lecture, including the introduction and line-element passage, with links to the manuscript, printed facsimile, and historical English translation. The [Riemann reader](https://liuyao12.github.io/math-expo/papers/riemann-1854/) uses the collection’s author-year URL convention.
+Mathematical papers in modern English, with commentary, precise statements and proofs, and margin drawings. The [1859 prime-counting paper](https://liuyao12.github.io/math-expo/papers/riemann-1859/) is the first complete reading; the [geometry lecture](https://liuyao12.github.io/math-expo/papers/riemann-1854/) remains a selected reading sample. Both use author-year URLs and link original sources and existing translations. The collection connects work records, author bibliographies, paper-specific mathematical objects, and verified references and citing works. [Editorial principles](projects/papers/EDITORIAL.md) keep reconstructions within the author's intended cases and distinguish proofs, dependencies, conjectures, and outstanding gaps.
 
 ## Reimagined textbooks
 

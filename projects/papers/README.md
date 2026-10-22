@@ -1,8 +1,12 @@
 # Papers
 
-A growing collection of mathematical papers, carefully typeset with modern commentary, worked details, and geometric drawings in the margins.
+A growing library of mathematical papers in modern English, with commentary, precise statements and proofs, scoped mathematical references, and a sourced citation index.
 
-The first reading is a sample from Bernhard Riemann’s geometry lecture: the complete introduction and part II, §1 in William Kingdon Clifford’s historical English translation. The edition links to the handwritten manuscript at Göttingen, an original printed facsimile at ETH Zürich, and the full English translation at Trinity College Dublin.
+The first complete reading is Riemann’s 1859 prime-counting paper, freshly rendered from the public-domain German text. It includes six precise statement records: four proofs with their dependencies, an inversion reduced to a stated Fourier theorem, and the unproved hypothesis. The reading explicitly marks the remaining proof gaps in the contour, product, zero count, and full explicit formula.
+
+The geometry lecture remains a reading sample: the complete introduction and part II, §1, in modern English revised from Clifford’s translation. His historical wording is expandable beside each passage. Both readings link to original sources and existing translations.
+
+The catalogue currently contains twelve work records, fifteen people, eleven paper-specific mathematical references, and five verified citation edges. A work record is not a claim that its full text has been translated or edited.
 
 ## Develop
 
@@ -14,13 +18,21 @@ npm run check
 python3 -m http.server 8000 --directory dist
 ```
 
-The collection is generated as static HTML in `dist/`. All links are relative, so the collection works under a GitHub Pages project path. The Riemann reader is at `riemann-1854/`.
+The collection is generated as static HTML in `dist/`. All links are relative, so it works under the GitHub Pages project path. The readings are at `riemann-1854/` and `riemann-1859/`; author pages are under `people/`, and paper-specific object records under `concepts/`.
 
-- `src/riemann.mjs`: historical passages and modern commentary.
+- `src/catalog.mjs`: works, people, scoped mathematical references, bibliographic fields, and checked citation edges.
+- `src/riemann-1859.mjs`: new modern-English rendering and commentary.
+- `src/statements-1859.mjs`: precise statements, proof status, and written proofs.
+- `src/riemann.mjs`, `src/modern-1854.mjs`: historical wording and the modern-English revision.
 - `src/figures.mjs`: geometric drawings.
+- `src/figures-1859.mjs`: contour, strip, and counting diagrams.
 - `public/`: styles, reader interactions, and vendored math assets.
 - `scripts/build.mjs`: generates the collection and paper pages.
-- `scripts/check.mjs`: checks LaTeX expressions, links, resources, and JavaScript syntax.
+- `scripts/check.mjs`: checks all generated pages, LaTeX, cross-page anchors, citation reciprocity, bibliographic exports, local assets, and JavaScript syntax.
+
+Every work has references, citing works, and a downloadable BibTeX citation. Reverse citation lists are derived from the same checked edges. `catalog.json` exports the catalogue, evidence, and statement records. Citation coverage is selected and incomplete; no MathSciNet data or affiliation is implied. Author attributions, selected bibliography, and editorial sources are not automatically citation edges.
+
+See [EDITORIAL.md](EDITORIAL.md) for the scope and proof conventions.
 
 ## Publish
 

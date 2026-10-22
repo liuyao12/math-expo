@@ -12,3 +12,67 @@
 @media print{body{background:white}.masthead,.reading-nav,.reading-key,.site-footer,.skip{display:none}.reader{display:block;padding:0;max-width:none}.paper-heading{padding-top:0}.paper-heading h1{font-size:34pt}.passage{grid-template-columns:minmax(0,1fr) 31%;gap:25pt;break-inside:avoid}.original{font-size:11pt}.note-prose{font-size:8pt}.commentary h3{font-size:11pt}.drawing{max-height:100pt}.derivation[open]{break-inside:avoid}.source-grid{font-size:9pt}.reading-body{width:100%}.paper-heading a,.sources a{overflow-wrap:anywhere}.interactive input,.slider-label{display:none}}
 
 .parent-link{display:inline-block;font:10px/1.6 var(--sans);color:var(--green);margin:0 0 25px;text-decoration:none}.parent-link:hover{text-decoration:underline}
+
+/* Library records and the scholarly apparatus share the reader's typography. */
+.library-nav{margin-left:auto;display:flex;gap:24px;font:11px/1.6 var(--sans);color:var(--muted)}
+.library-nav a{text-decoration:none}.library-nav a:hover{text-decoration:underline}
+.entity-link{text-decoration-color:#bdc7b7}.entity-link:hover{background:#edf0e5;text-decoration-color:var(--green)}
+.passage-meta{display:flex;align-items:baseline;flex-wrap:wrap;gap:8px 20px}
+.source-page{font:9px/1.6 var(--sans);color:var(--muted);text-decoration:none;white-space:nowrap}
+.proof-link{display:inline-block;font:10px/1.8 var(--sans);color:var(--green);margin:7px 0 10px}
+.paper-tools{display:flex;flex-wrap:wrap;gap:12px 25px;border-top:1px solid var(--rule);margin-top:26px;padding-top:17px;font:11px/1.7 var(--sans);color:var(--green)}
+.reading-nav{max-height:calc(100vh - 70px);overflow-y:auto}
+.historical-wording{border-top:1px solid var(--rule);margin-top:20px;color:var(--muted)}
+.historical-wording summary{font:10px/1.7 var(--sans);cursor:pointer;padding:10px 0}
+.historical-wording p{font-size:16px;line-height:1.75}
+.editorial-passage>.original{border-left:2px solid #c6d0bd;padding-left:18px;font-size:16px;color:var(--muted)}
+.record-page{max-width:1000px;padding:64px 52px 0;margin:auto}
+.record-page>header{margin-bottom:42px}.record-page h1{font-size:clamp(35px,4.2vw,55px);line-height:1.14;max-width:850px}
+.record-dek{font-size:20px;line-height:1.7;color:#70786a;max-width:720px;margin:25px 0}
+.work-publication{font-size:16px;line-height:1.8;color:var(--muted)}
+.original-title{font-size:15px;line-height:1.7;color:var(--muted);max-width:760px}
+.original-title>span{font:9px/1.7 var(--sans);text-transform:uppercase;letter-spacing:1px;color:var(--warm);display:block;margin:16px 0 5px}
+.edition-status,.coverage-note{font:12px/1.9 var(--sans);color:var(--muted);max-width:740px}
+.edition-status{border-left:2px solid #c6cfbd;padding-left:17px;margin:25px 0}
+.coverage-note{font-size:11px;border-top:1px solid var(--rule);padding-top:19px;margin-top:25px}
+.work-record{display:grid;grid-template-columns:minmax(0,1fr) 155px;gap:35px;padding:25px 0;border-bottom:1px solid var(--rule)}
+.work-record[hidden]{display:none}.work-record h3,.citation-list h3{font-size:23px;font-weight:400;line-height:1.35;margin:8px 0 12px}
+.work-record h3 a,.citation-list h3 a{text-decoration:none}.work-record h3 a:hover,.citation-list h3 a:hover{text-decoration:underline}
+.work-record p:not(.record-byline){font-size:16px;line-height:1.75;color:var(--muted);margin:8px 0 0;max-width:650px}
+.record-byline{font:11px/1.7 var(--sans);color:var(--green);margin:0}
+.record-byline a{text-decoration:none}.record-byline a:hover{text-decoration:underline}
+.record-status{font:10px/1.7 var(--sans);color:var(--green);text-decoration:none;align-self:center;text-align:right}
+.record-status:hover{text-decoration:underline}.record-status span{margin-left:5px}
+.catalogue{margin-top:55px}.catalogue-controls{padding:16px 0 20px;border-bottom:1px solid var(--rule)}
+.catalogue-controls label{font:11px/1.7 var(--sans);display:block;color:var(--muted);margin-bottom:10px}
+.catalogue-controls input{width:100%;max-width:550px;min-height:45px;padding:10px 13px;background:transparent;border:1px solid #b9c4b2;border-radius:0;color:var(--ink);font:17px var(--serif)}
+.catalogue-controls input::placeholder{color:#858c7b}.catalogue-controls p{font:10px/1.6 var(--sans);color:var(--muted);margin:10px 0 0}
+.bibliography{border-top:1px solid var(--rule);margin-top:50px;padding-top:1px}
+.count-badge{display:inline-block;vertical-align:middle;font:9px/1.7 var(--sans);color:var(--green);background:#edf0e5;border:1px solid #d8dfd0;padding:3px 9px;margin-left:12px;letter-spacing:0;white-space:nowrap}
+.citation-list{padding-left:23px;margin:0}.citation-list>li{padding:10px 0 23px 7px;margin-bottom:15px;border-bottom:1px solid var(--rule)}
+.citation-list>li::marker{color:var(--warm);font-size:13px}.citation-meta{font-size:14px;line-height:1.7;color:var(--muted);margin:8px 0 14px}
+.citation-evidence summary,.cite-work summary{font:11px/1.8 var(--sans);color:var(--green);cursor:pointer}
+.citation-evidence p{font-size:14px;line-height:1.8;max-width:700px;margin:12px 0}
+.citation-evidence a{color:var(--green)}.empty-state{font-size:16px;line-height:1.8;color:var(--muted)}
+.cite-work{border-block:1px solid var(--rule);padding:20px 0;margin-top:30px}
+.cite-work p{font-size:14px;line-height:1.8;max-width:760px}.cite-work label{font:10px/1.7 var(--sans);color:var(--muted);display:block;margin:22px 0 8px}
+.cite-work textarea{display:block;width:100%;height:210px;resize:vertical;border:1px solid var(--rule);background:#eeeee5;font:12px/1.7 monospace;color:var(--ink);padding:14px}
+.cite-actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:14px;font:11px/1.8 var(--sans);color:var(--green)}
+.cite-actions button{font:11px/1.8 var(--sans);padding:7px 14px;border:1px solid #b7c5ae;background:transparent;color:var(--green)}
+.profile-section{margin-top:45px}.profile-source{font:11px/1.8 var(--sans);color:var(--green)}
+.people-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px}
+.person-card{display:block;text-decoration:none;border-top:1px solid var(--rule);padding:24px 0}.person-card h2{font-size:24px;line-height:1.4}.person-card p{font:11px/1.8 var(--sans);color:var(--muted);margin:12px 0}
+.person-card:hover h2{color:var(--green)}.external-bibliography{padding-left:22px;font-size:16px;line-height:1.8}.external-bibliography li{margin:15px 0}
+.backlinks{padding:0;list-style:none}.backlinks li{display:flex;justify-content:space-between;gap:24px;padding:15px 0;border-bottom:1px solid var(--rule);font-size:16px;line-height:1.6}.backlinks li span{font:10px/1.8 var(--sans);color:var(--muted);white-space:nowrap;padding-top:3px}
+.concept-list>a{display:block;padding:25px 0;border-top:1px solid var(--rule);text-decoration:none}.concept-list h2{font-size:26px;margin:5px 0 12px}.concept-list>a:hover h2{color:var(--green)}
+.scope-label{font:11px/1.8 var(--sans);color:var(--muted)}.definition-prose{font-size:20px;line-height:1.9;max-width:790px}.definition-prose p{margin:20px 0}
+.modern-comparison{border-left:2px solid #bdcbb4;padding:12px 24px;margin:32px 0;color:#596c51;max-width:790px}.modern-comparison p{font-size:17px;line-height:1.85;margin:8px 0}
+.definition-source{font-size:16px;color:var(--green);margin-top:30px}.editorial-prose{font-size:15px;line-height:1.9;max-width:800px;color:var(--muted);margin-top:25px}
+.precise-statements{margin-top:55px;border-top:1px solid var(--rule)}.statement-intro{font-size:16px;line-height:1.8;color:var(--muted);max-width:760px}
+.statement{margin:35px 0;padding:25px 0;border-top:1px solid #bfcbb7;max-width:790px;scroll-margin-top:25px}
+.statement h3{font-size:25px;line-height:1.35;font-weight:400;margin:10px 0 20px}.statement-number{color:var(--warm)}
+.statement-body{font-size:18px;line-height:1.85}.statement-origin{font:11px/1.8 var(--sans);color:var(--green)}
+.statement-proof{margin-top:20px;background:#eef0e7;padding:14px 20px}.statement-proof summary{font:11px/1.8 var(--sans);color:var(--green);cursor:pointer}.statement-proof>div{font-size:17px;line-height:1.85}.statement-proof .katex-display{font-size:.95em}
+@media(max-width:1000px){.reading-nav{max-height:none;overflow:visible;gap:8px 20px;font-size:10px}.library-nav{gap:20px}}
+@media(max-width:700px){.masthead{flex-wrap:wrap;padding-top:15px;padding-bottom:13px;gap:10px 24px}.library-nav{gap:15px;font-size:10px;flex-wrap:wrap}.library-nav a:last-child{max-width:95px;line-height:1.4}.record-page{padding:40px 23px 0}.record-page h1{font-size:35px;letter-spacing:-1px}.record-dek{font-size:18px}.work-record{display:block;padding:23px 0}.record-status{display:inline-block;margin-top:14px;text-align:left}.work-record h3,.citation-list h3{font-size:22px}.people-grid{grid-template-columns:1fr}.backlinks li{display:block}.backlinks li span{display:block}.count-badge{margin:10px 0 0;display:table}.bibliography h2{font-size:26px}.citation-list{padding-left:18px}.citation-list>li{padding-left:3px}.definition-prose{font-size:18px}.modern-comparison{padding:7px 17px}.paper-tools{gap:10px 20px;font-size:10px}.statement h3{font-size:23px}.statement-body{font-size:17px}.statement-proof{padding:13px}.statement-proof>div{font-size:16px}.statement-proof .katex-display{font-size:.9em}.record-page .eyebrow{line-height:1.8}}
+@media print{.library-nav,.paper-tools,.catalogue-controls,.cite-actions{display:none}.record-page{padding:0;max-width:none}.statement-proof,.modern-comparison{background:transparent}.statement{break-inside:avoid}.citation-evidence,.historical-wording{font-size:9pt}.reading-nav{display:none}}
