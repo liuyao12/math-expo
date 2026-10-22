@@ -1,4 +1,5 @@
-import {cpSync,mkdirSync,writeFileSync,rmSync} from 'node:fs';
+import {cpSync,mkdirSync,writeFileSync,rmSync,readFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import path from 'node:path';
 import {introduction,lineElement} from '../src/riemann.mjs';
@@ -15,6 +16,7 @@ import {figuresEuler} from '../src/figures-euler-1740.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url)),dist=path.join(root,'dist');
 rmSync(dist,{recursive:true,force:true});mkdirSync(dist,{recursive:true});
 cpSync(path.join(root,'public'),dist,{recursive:true});
+const styleVersion=createHash('sha256').update(readFileSync(path.join(root,'public/style.css'))).digest('hex').slice(0,12);
 const workMap=new Map(works.map(w=>[w.id,w]));
 const personMap=new Map(people.map(p=>[p.id,p]));
 const conceptMap=new Map(concepts.map(c=>[c.id,c]));
@@ -42,7 +44,7 @@ const mast=(base='')=>`<header class="masthead"><a class="brand" href="${base||'
 const footer=`<footer class="site-footer"><span>Papers</span><span>Original arguments · Modern English · Linked references</span><a href="#top">Back to top ↑</a></footer>`;
 function head(title,base='',work){
   const metadata=work?`<meta name="citation_title" content="${esc(work.originalTitle)}"><meta name="citation_publication_date" content="${work.year}">${work.authors.map(id=>`<meta name="citation_author" content="${esc(personMap.get(id).name)}">`).join('')}${work.doi?`<meta name="citation_doi" content="${esc(work.doi)}">`:''}`:'';
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f8f6f0"><meta name="description" content="Mathematical papers in modern English, with commentary, scoped definitions, people, and a sourced citation index."><title>${esc(title)} — Papers</title>${metadata}<link rel="icon" href="${base}mark.svg"><link rel="stylesheet" href="${base}vendor/katex/katex.min.css"><link rel="stylesheet" href="${base}style.css"><script defer src="${base}vendor/katex/katex.min.js"></script><script defer src="${base}vendor/katex/auto-render.min.js"></script><script defer src="${base}reader.js"></script></head><body>`;
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f8f6f0"><meta name="description" content="Mathematical papers in modern English, with commentary, scoped definitions, people, and a sourced citation index."><title>${esc(title)} — Papers</title>${metadata}<link rel="icon" href="${base}mark.svg"><link rel="stylesheet" href="${base}vendor/katex/katex.min.css"><link rel="stylesheet" href="${base}style.css?v=${styleVersion}"><script defer src="${base}vendor/katex/katex.min.js"></script><script defer src="${base}vendor/katex/auto-render.min.js"></script><script defer src="${base}reader.js"></script></head><body>`;
 }
 function save(route,html){const dir=path.join(dist,route);mkdirSync(dir,{recursive:true});writeFileSync(path.join(dir,'index.html'),html);}
 const authors=(w,base)=>w.authors.map(id=>`<a class="entity-link" href="${base}people/${id}/">${esc(personMap.get(id).name)}</a>`).join(' · ');
