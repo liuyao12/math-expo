@@ -3,7 +3,9 @@ export {englishSources};
 import {conceptsEuler} from './concepts-euler-1740.mjs';
 import {peopleDedekind,conceptsDedekind} from './dedekind.mjs';
 import {circleWork,peopleEulerMore,conceptsEulerMore,bibliographyCircle,englishEulerMore} from './euler-more-catalog.mjs';
+import {worksLogarithms,peopleLogarithms,conceptsLogarithms,bibliographyLogarithms,englishLogarithms,citationsLogarithms} from './euler-1751-catalog.mjs';
 Object.assign(englishSources,englishEulerMore);
+Object.assign(englishSources,englishLogarithms);
 const m = String.raw;
 
 export const sources = {
@@ -19,6 +21,7 @@ export const sources = {
 export const works = [
   ...additionalWorks,
   circleWork,
+  ...worksLogarithms,
   { id: 'riemann-1859', authors: ['riemann'], year: 1859,
     title: 'On the number of primes below a given quantity',
     originalTitle: 'Ueber die Anzahl der Primzahlen unter einer gegebenen Grösse',
@@ -97,6 +100,7 @@ export const people = [
   ...additionalPeople,
   ...peopleDedekind,
   ...peopleEulerMore,
+  ...peopleLogarithms,
   {id:'riemann',name:'Bernhard Riemann',note:'The works recorded here concern geometry, complex functions, and the distribution of primes.',source:'https://www.maths.tcd.ie/pub/HistMath/People/Riemann/'},
   {id:'jacobi',name:'Carl Gustav Jacob Jacobi',note:'The selected book develops elliptic functions and their transformations.',source:'https://doi.org/10.3931/e-rara-3926'},
   {id:'euler',name:'Leonhard Euler',note:'The works recorded here concern reciprocal series, products over primes, circular arcs and imaginary exponentials, the bridges problem, and residues of powers.',source:'https://scholarlycommons.pacific.edu/euler-works/72/'},
@@ -117,6 +121,7 @@ export const people = [
 // Only direct, checked work-to-work citations belong here. Reverse lists are
 // derived from these edges; related works and editorial sources stay separate.
 export const citations = [
+  ...citationsLogarithms,
   ...additionalCitations,
   {from:'riemann-1859',to:'jacobi-1829',locator:'German transcription, p. 3 (PDF p. 4), “Jacobi, Fund. S. 184”',url:sources.german1859+'#page=4',anchor:'theta',evidence:'Riemann supplies the author, abbreviated title, and page in the theta transformation passage.'},
   {from:'mangoldt-1895',to:'riemann-1859',locator:'Digitized volume, p. 255, opening paragraph and footnote **',url:sources.mangoldt1895,evidence:'The opening names Riemann’s paper; the footnote identifies the November 1859 publication and collected editions.'},
@@ -129,6 +134,7 @@ export const concepts = [
   ...conceptsEuler,
   ...conceptsDedekind,
   ...conceptsEulerMore,
+  ...conceptsLogarithms,
   {id:'function-1859',title:'“Function” in the 1859 argument',kind:'Editorial reading guide',anchor:'euler-product',
     body:m`<p>Here the objects are specific expressions with specified uses: a convergent series and product for \(\zeta(s)\), integrals that continue it, a theta series, and step functions that count primes. Riemann does not introduce an arbitrary mapping between arbitrary sets in this paper.</p><p>We follow these constructions and their domains rather than replacing every occurrence of “function” with the most general modern definition. Nor does this paper establish that every function Riemann would admit must be given by a finite formula.</p>`,
     comparison:'A comparison with computable analysis would require a representation of inputs and outputs and effective error bounds for the operations in question. Convergence or a written formula alone does not supply those data. That comparison is an editorial research direction, not an attribution to Riemann.'},
@@ -167,6 +173,7 @@ export const concepts = [
 
 export const bibliographicFields = {
   ...additionalBibliographicFields,
+  ...bibliographyLogarithms,
   'euler-1748-circle':bibliographyCircle,
   'riemann-1859':{type:'article',journal:'Monatsberichte der Berliner Akademie',pages:'671--680',month:'November'},
   'riemann-1854':{type:'unpublished',note:'Habilitation lecture, Göttingen, 1854; published posthumously, linked offprint 1867'},

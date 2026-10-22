@@ -10,6 +10,7 @@ import {passagesEuler} from '../src/euler-1740.mjs';
 import {statementsEuler} from '../src/statements-euler-1740.mjs';
 import './check-euler-arithmetic.mjs';
 import './check-euler-more.mjs';
+import './check-euler-1751.mjs';
 import {discoveryTerms,matchesWork} from '../src/discovery.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url)),dist=path.join(root,'dist');
 const katexContext={};
@@ -104,7 +105,9 @@ for(const [filters,expected] of [
  [{from:'1854',to:'1859',author:'riemann'},'riemann-1854,riemann-1859'],
  [{author:'gohl'},'riesel-gohl-1970'],
  [{from:'1900',to:'1800'},''],
- [{author:'euler',language:'French'},'']
+ [{author:'euler',language:'French'},'euler-1751'],
+ [{q:'log(-1)',author:'euler',language:'French',access:'edited'},'euler-1751'],
+ [{author:'johann-bernoulli',from:'1745',to:'1745'},'leibniz-bernoulli-1745']
 ])if(found(filters)!==expected)throw Error(`Unexpected combined catalogue results: ${JSON.stringify(filters)} → ${found(filters)}`);
 console.log('Validated combined author, original-language, decade, inclusive date-range, access, and modern-keyword filters.');
 const css=fs.readFileSync(path.join(root,'public/style.css'),'utf8')+fs.readFileSync(path.join(root,'public/vendor/katex/katex.min.css'),'utf8');
@@ -157,3 +160,12 @@ for(const n of [1,2,3,4,5])if(!idsByPage.get(path.join(dist,'euler-1744/index.ht
 if(!pages.get(path.join(dist,'euler-1748-circle/index.html')).includes('not the entire book'))throw Error('Chapter extent is not explicit');
 if(found({q:'Euler identity'})!=='euler-1748-circle'||found({q:'reciprocal primes'})!=='euler-1744')throw Error('New Euler works are not discoverable by the requested topics');
 console.log('Validated complete E72 with its seventeen corollaries and the complete E101 chapter VIII, scoped source records, and all nine new proof records.');
+
+const {passagesLogarithms}=await import('../src/euler-1751.mjs');
+const logarithmsFile=path.join(dist,'euler-1751/index.html'),logarithmsHTML=pages.get(logarithmsFile),logarithmsIDs=idsByPage.get(logarithmsFile);
+for(const r of passagesLogarithms)if(!logarithmsIDs.has(r.id))throw Error('Missing logarithm passage '+r.id);
+if(data.statements['euler-1751'].length!==5)throw Error('Missing logarithm reconstructions');
+for(const marker of ['Complete paper','1999','not reproduced','independently','zero','logarithm-index','e168-proof-operations','e168-example-10'])if(!logarithmsHTML.includes(marker))throw Error('Missing logarithm reading qualification '+marker);
+const logarithmEvidence=JSON.parse(fs.readFileSync(path.join(dist,'euler-logarithm-source.json'),'utf8'));
+if(logarithmEvidence.original.pages!==41||logarithmEvidence.englishComparison.translator!=='Stacy G. Langton')throw Error('Logarithm provenance missing');
+console.log('Validated the complete E168 reading, all five reconstructions, scoped references, source evidence, and the correspondence citation.');

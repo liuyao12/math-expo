@@ -64,6 +64,23 @@
     };
     circleSlider.addEventListener('input',updateCircle);updateCircle();
   }
+  const logarithmIndex=document.querySelector('#logarithm-index');
+  if(logarithmIndex){
+    const updateLogarithm=()=>{
+      const k=Number(logarithmIndex.value),n=2*k+1;
+      const coefficient=n===1?'':n===-1?'-':String(n);
+      const label=document.querySelector('#logarithm-index-value'),readout=document.querySelector('#logarithm-readout');
+      label.textContent=`\\(k=${k}\\)`;
+      readout.textContent=`\\(w=${coefficient}\\pi i,\\quad e^w=-1\\)`;
+      for(const point of document.querySelectorAll('[data-logarithm-index]')){
+        const selected=Number(point.dataset.logarithmIndex)===k;
+        point.setAttribute('class',selected?'filled':'faint');point.setAttribute('r',selected?'5':'3');
+      }
+      logarithmIndex.setAttribute('aria-valuetext',`index ${k}; logarithm ${n} times pi i`);
+      typeset(label);typeset(readout);
+    };
+    logarithmIndex.addEventListener('input',updateLogarithm);updateLogarithm();
+  }
   const links=[...document.querySelectorAll('.reading-nav a')];
   if(links.length&&'IntersectionObserver' in window){
     const observer=new IntersectionObserver(entries=>{

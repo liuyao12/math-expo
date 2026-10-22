@@ -1,0 +1,48 @@
+{
+  "work": "euler-1751",
+  "enestrom": "E168",
+  "checked": "2026-10-22",
+  "original": {
+    "url": "https://math.dartmouth.edu/~euler/docs/originals/E168.pdf",
+    "language": "French",
+    "pages": 41,
+    "printedPages": "139–179",
+    "sha256": "d9584712d997d66043e91dca7fb05be0b6bdfdbb85bc3cd779d30b6de38b0f96",
+    "rights": "Public-domain original, published 1751",
+    "inspection": "Complete prose read using a local OCR aid; critical formulas inspected in the scan. The separately referenced plate is not reproduced; our curve drawing is editorial."
+  },
+  "englishComparison": {
+    "url": "https://math.dartmouth.edu/~euler/docs/translations/E168en.pdf",
+    "translator": "Stacy G. Langton",
+    "affiliation": "University of San Diego",
+    "date": "1999",
+    "creditLocator": "PDF page 1",
+    "pages": 21,
+    "sha256": "ad9536669d949ed848a1e91cd6db9e80e49d7833140a4a7172190a77e10ab7f4",
+    "use": "Linked for comparison; not reproduced. Translator footnotes are not imported as Euler's text."
+  },
+  "rendering": {
+    "basis": "Independent modern-English rendering from the original French",
+    "scope": "Whole paper: opening, both positions, seven arguments, nine objections, replies, resolution, theorem and its proof, four problems, all ten examples and all value progressions, roots-of-unity discussion, final calculation and closing.",
+    "method": "Modern rendering rather than diplomatic transcription. Repeated formulations and lists are consolidated with their mathematical content retained. Editorial passage labels subdivide originally unnumbered prose.",
+    "printingRepairs": [
+      {
+        "page": 149,
+        "repair": "x=0 replaces printed x=1 in the inference log(1)=0 from the logarithm series"
+      },
+      {
+        "page": 166,
+        "repair": "q=1+i*phi/n in the root comparison"
+      }
+    ],
+    "proofStatus": "Five written reconstructions; no proof-assistant verification. Historical false or unqualified inferences are retained and qualified in commentary.",
+    "comparisonTypo": "The original French p. 163 has sqrt(-1); the English comparison file prints sqrt(-a) in two corresponding negative-logarithm formulas. Our text follows the French."
+  },
+  "bibliography": {
+    "archive": "https://scholarlycommons.pacific.edu/euler-works/168/",
+    "publication": "1751; Berlin volume 5 for 1749",
+    "writtenDate": "Archive metadata records 1747; publication year determines URL",
+    "correspondenceRecord": "https://www.e-rara.ch/zut/content/titleinfo/1072255",
+    "citationEvidence": "Euler's original p. 141 explicitly names Letters CXC and CXCIII in the correspondence. ETH identifies its 1745 two-volume publication."
+  }
+}
