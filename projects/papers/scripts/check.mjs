@@ -111,4 +111,34 @@ for(const match of css.matchAll(/url\(['"]?([^)'"\s]+)['"]?\)/g)){
   const font=match[1],target=path.join(root,'public',font.startsWith('fonts/')?'vendor/katex/'+font:font);
   if(!fs.existsSync(target))throw Error(`Missing font ${font}`);
 }
-console.log(`Validated ${pages.size} pages, ${formulas} LaTeX expressions, ${links} local links, ${citations.length} bidirectional citations, ${checkedEnglish} checked English sources, and ${statements1859.length+statementsEuler.length} precise statements.`);
+console.log(`Validated ${pages.size} pages, ${formulas} LaTeX expressions, ${links} local links, ${citations.length} bidirectional citations, ${checkedEnglish} checked English sources, and ${data.statements ? Object.values(data.statements).flat().length : 0} precise statements.`);
+
+// Check the complete imported texts against the pinned source, not only a few
+// visible markers. Unknown source commands fail in the importer itself.
+const importRun=(await import('node:child_process')).spawnSync(process.execPath,[path.join(root,'scripts/import-dedekind.mjs'),'--check'],{encoding:'utf8'});
+if(importRun.status!==0)throw Error(importRun.stderr||'Dedekind source import is stale');
+const {editionsDedekind,proofsDedekind,dedekindSource}=await import('../src/dedekind.mjs');
+if(dedekindSource.essays.map(e=>e.footnotes).join(',')!=='3,22')throw Error('Source footnotes missing');
+for(const edition of editionsDedekind){
+ const file=path.join(dist,edition.id,'index.html'),html=pages.get(file),ids=idsByPage.get(file);
+ const expected=edition.id==='dedekind-1872'?{sections:8,rows:61,math:618}:{sections:16,rows:186,math:2644};
+ if(edition.sections.length!==expected.sections||edition.rows.length!==expected.rows||edition.math!==expected.math)throw Error(`Dedekind source coverage changed: ${edition.id}`);
+ for(const section of edition.sections)if(!ids.has(section.id))throw Error(`Missing Dedekind section: ${section.id}`);
+ for(const row of edition.rows){
+  if(!ids.has(row.id)||!row.sourceChars)throw Error(`Missing source passage: ${row.id}`);
+  const expectedText=row.text.replace(/\[\[(?:person|work|concept):[\w-]+\|([\s\S]*?)\]\]/g,'$1').replace(/<[^>]+>/g,'').replace(/\s+/g,' ').trim();
+  const start=html.indexOf(`id="${row.id}"`),next=html.indexOf('<aside',start),end=html.indexOf('</section>',start);
+  const actual=html.slice(start,Math.min(next<0?Infinity:next,end)).replace(/<[^>]+>/g,'').replace(/\s+/g,' ');
+  if(!actual.includes(expectedText))throw Error(`Truncated source passage: ${row.id}`);
+ }
+ const footnoteIds=[...ids].filter(id=>new RegExp(`^d${edition.id.slice(-2)}-fn-\\d+$`).test(id));
+ if(footnoteIds.length!==edition.footnotes)throw Error(`Missing rendered source footnotes: ${edition.id}`);
+ for(const p of proofsDedekind.filter(p=>p.work===edition.id))if(!ids.has(p.id)||!data.statements[edition.id].some(s=>s.id===p.id))throw Error(`Missing proof: ${p.id}`);
+ if(!html.includes('Beman’s English, lightly modernized')||html.includes('CATALOGUE OF PUBLICATIONS')||html.includes('\uE000'))throw Error('Bad Dedekind attribution or unexpanded import');
+ if(edition.id==='dedekind-1888'){
+  const numbered=edition.rows.filter(r=>r.number).map(r=>r.number);
+  if(numbered.length!==172||numbered.some((n,i)=>n!==i+1))throw Error('Numbered source paragraphs must cover 1–172 without gaps');
+ }
+}
+if(!catalogue.includes('Every catalogue entry is intended to become a complete on-site reading'))throw Error('Collection intent missing');
+console.log('Validated both complete Dedekind essays, every imported passage, all 25 source footnotes, 172 consecutive numbered paragraphs, and five editorial proofs.');

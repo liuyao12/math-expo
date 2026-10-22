@@ -2,6 +2,10 @@
 
 The project makes the mathematics of each paper explicit and rigorous while preserving the cases its author is actually considering. It is not a vehicle for silently replacing historical objects with the most general contemporary ones.
 
+The collection is intended for mathematical literature across authors, periods, and subjects. No paper or author is its organizing center. Describe each work’s own questions and content; do not frame its value as background to another featured paper. Genuine citations and mathematically relevant dependencies remain explicit.
+
+Every catalogue entry is intended eventually to have a complete on-site reading, including entries first encountered as bibliography or citation evidence. Source-only records are interim states, not the finished product. A verified external English translation is source material, not a substitute for the reading edition. Progress labels must describe what is actually available.
+
 ## Text and statements
 
 - Provide modern English. Identify the original edition and the translation basis, link existing translations, and distinguish a full rendering from selected passages. Keep substantive corrections visible rather than quietly making the author say something different.

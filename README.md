@@ -11,7 +11,9 @@ The [Math Expo homepage](https://liuyao12.github.io/math-expo/) links to both pr
 
 ## Papers
 
-Mathematical papers in modern English, with commentary, precise statements and proofs, and margin drawings. The [1859 prime-counting paper](https://liuyao12.github.io/math-expo/papers/riemann-1859/) is the first complete reading; the [geometry lecture](https://liuyao12.github.io/math-expo/papers/riemann-1854/) remains a selected reading sample. Both use author-year URLs and link original sources and existing translations. The collection connects work records, author bibliographies, paper-specific mathematical objects, and verified references and citing works. [Editorial principles](projects/papers/EDITORIAL.md) keep reconstructions within the author's intended cases and distinguish proofs, dependencies, conjectures, and outstanding gaps.
+A collection for mathematical literature across authors, periods, and subjects. Every catalogue entry is intended to become a complete on-site reading in modern English, with commentary, precise statements, proofs, margin drawings, and linked references. Current complete readings include Euler’s reciprocal series, Dedekind’s two foundational essays, and the prime-counting paper; the geometry lecture remains a selected sample. Source-only entries are explicitly labelled as awaiting a full reading. The [catalogue](https://liuyao12.github.io/math-expo/papers/) supports author, date, original-language, and keyword filters.
+
+Each work is presented on its own mathematical terms. Connections between works appear where supported by actual citations or needed to explain a particular argument. [Editorial principles](projects/papers/EDITORIAL.md) keep reconstructions within the author’s intended cases and distinguish proofs, dependencies, conjectures, and outstanding gaps.
 
 ## Reimagined textbooks
 

@@ -3,6 +3,17 @@
   const typeset=node=>window.renderMathInElement?.(node,options);
   typeset(document.body);
   // Fragment links must land after equations and local fonts finish layout.
+  // A source-note link reveals its text before the fragment scrolls to it.
+  const revealSourceNote=()=>{
+    const target=document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if(target?.matches('.source-footnotes details'))target.open=true;
+  };
+  revealSourceNote();
+  window.addEventListener('hashchange',revealSourceNote);
+  for(const link of document.querySelectorAll('.source-footnote-ref'))link.addEventListener('click',()=>{
+    const target=document.getElementById(link.hash.slice(1));
+    if(target)target.open=true;
+  });
   const initialHash=location.hash;
   if(initialHash&&document.fonts){
     document.fonts.ready.then(()=>{

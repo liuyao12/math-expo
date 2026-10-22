@@ -2,13 +2,13 @@
 
 A growing library of mathematical papers in modern English, with commentary, precise statements and proofs, scoped mathematical references, and a sourced citation index.
 
-The first complete reading is Riemann’s 1859 prime-counting paper, freshly rendered from the public-domain German text. It includes six precise statement records: four proofs with their dependencies, an inversion reduced to a stated Fourier theorem, and the unproved hypothesis. The reading explicitly marks the remaining proof gaps in the contour, product, zero count, and full explicit formula.
+The collection covers mathematical literature across authors, periods, and subjects. Every catalogue entry is intended eventually to become a complete on-site reading with commentary. Describe each work in terms of its own mathematics; retain genuine citation edges without organizing unrelated works around a featured paper.
 
-The geometry lecture remains a reading sample: the complete introduction and part II, §1, in modern English revised from Clifford’s translation. His historical wording is expandable beside each passage. Both readings link to original sources and existing translations.
+Current complete readings include Euler’s reciprocal-series paper (all nineteen sections), Dedekind’s *Continuity and Irrational Numbers* (all seven sections and the preface), *The Nature and Meaning of Numbers* (all 172 numbered paragraphs and both author prefaces), and the 1859 prime-counting paper. The 1854 geometry lecture remains a selected sample. Other catalogue records are interim source records awaiting full readings.
 
-Euler’s reciprocal-series paper (E41, written in 1735 and printed in 1740) is the next complete reading: all nineteen sections, freshly rendered from the Latin transcription in Ian Bruce’s PDF. Six editorial proofs reconstruct the sine product, its fixed positive levels, Newton’s identities, the special-angle sums, and the positive even-power evaluations through the twelfth power. Three margin drawings explain the arc geometry, sine-level roots, and odd/even split. The first printing has not yet been collated; corrections to the available transcription are explicitly identified. Exact rational checks independently verify both coefficient tables and all circumference ratios.
+The Dedekind readings lightly modernize Beman’s public-domain English (1901), preserving all 25 source footnotes. They include three margin drawings, five precise written proofs, scoped definition records, and commentary on the nonempty-system convention, undecidable membership, the proof of infinity, and the choice assumption in §159. Original German editions and the English source are linked. The readings have not been fully collated against the German; selected reconstructions do not amount to a complete foundational verification.
 
-The catalogue currently contains twenty work records, twenty-one people, fourteen paper-specific mathematical references, and eight verified citation edges. A work record is not a claim that its full text has been translated or edited.
+The catalogue currently contains twenty works, thirty-six people, nineteen scoped mathematical references, and eight verified citation edges. Completeness of an imported text and completeness of its mathematical reconstruction are distinct.
 
 The unified [work catalogue](https://liuyao12.github.io/math-expo/papers/) presents all works together, with author, original-language, decade, inclusive year-range, and reading-option filters. Search covers original and English titles, summaries, translators, and editorial modern terminology. Filter state is retained in the URL. The eleven inspected translation sources keep their provenance in each work’s source panel; two uninspected leads remain labelled as such. “Inspected” is a source check, not a separate class of mathematical works or a claim of full collation.
 
@@ -22,7 +22,7 @@ npm run check
 python3 -m http.server 8000 --directory dist
 ```
 
-The collection is generated as static HTML in `dist/`. All links are relative, so it works under the GitHub Pages project path. The readings are at `riemann-1854/`, `riemann-1859/`, and `euler-1740/`; author pages are under `people/`, and paper-specific object records under `concepts/`.
+The collection is generated as static HTML in `dist/`. All links are relative, so it works under the GitHub Pages project path. The readings are at `riemann-1854/`, `riemann-1859/`, `euler-1740/`, `dedekind-1872/`, and `dedekind-1888/`; author pages are under `people/`, and paper-specific object records under `concepts/`.
 
 - `src/catalog.mjs`: works, people, scoped mathematical references, bibliographic fields, and checked citation edges.
 - `src/translation-sources.mjs`: new source-work records and the English translation ledger, including inspection status and translator attribution.
@@ -34,9 +34,13 @@ The collection is generated as static HTML in `dist/`. All links are relative, s
 - `src/euler-1740.mjs`, `src/statements-euler-1740.mjs`, `src/figures-euler-1740.mjs`, `src/concepts-euler-1740.mjs`: Euler’s full rendering, commentary, proofs, drawings, and scoped references.
 - `scripts/check-euler-arithmetic.mjs`: independent exact coefficient extraction and checks of the numerical formulas, not verification of the analytic proofs.
 - `src/discovery.mjs`: editorial discovery terms and shared filtering logic, also exported in the catalogue data.
+- `src/dedekind.mjs`: commentary, named references, scoped definitions, diagrams, and precise proofs for both essays.
+- `src/dedekind-text.json`: complete texts with import provenance and an explicit list of prose modernizations.
+- `src/sources/dedekind-beman-1901.tex`: pinned public-domain source, converted from ISO-8859-1 to UTF-8 with line endings normalized and trailing spaces removed.
+- `scripts/import-dedekind.mjs`: restricted TeX importer; unknown commands fail rather than disappear. Run it to regenerate the texts; `--check` verifies the generated file. Both author prefaces and all mathematical paragraphs and footnotes are included. Publisher advertisements, the index, and the translator’s introductory note are outside the essay text.
 - `public/`: styles, reader interactions, and vendored math assets.
 - `scripts/build.mjs`: generates the collection and paper pages.
-- `scripts/check.mjs`: checks all generated pages, LaTeX, cross-page anchors, citation reciprocity, English-source provenance and shelf membership, bibliographic exports, local assets, and JavaScript syntax.
+- `scripts/check.mjs`: checks all generated pages, LaTeX, cross-page anchors, citation reciprocity, English-source provenance and catalogue membership, bibliographic exports, local assets, and JavaScript syntax.
 
 Every work has references, citing works, and a downloadable BibTeX citation. Reverse citation lists are derived from the same checked edges. `catalog.json` exports the catalogue, evidence, and statement records. Citation coverage is selected and incomplete; no MathSciNet data or affiliation is implied. Author attributions, selected bibliography, and editorial sources are not automatically citation edges.
 
