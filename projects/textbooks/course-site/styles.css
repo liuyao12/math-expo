@@ -31,12 +31,13 @@
 .section-grid,.chapter-heading{scroll-margin-top:calc(var(--reader-top-height,91px) + 20px)}
 @media(max-width:1000px){.reader-chapter-line{display:block}#breadcrumb{margin-right:8px}#reader-chapter-title{font-size:11px}.reader-top{gap:12px}.reader-top .convention-options button{padding:7px 10px}}
 @media(max-width:680px){
-  .reader-top{display:grid;grid-template-columns:minmax(0,1fr) auto;min-height:0;margin:0 -23px;padding:13px 23px 10px;gap:10px 12px}
+  .reader-top{display:grid;grid-template-columns:44px minmax(0,1fr);min-height:0;margin:0 -23px;padding:13px 23px 10px;gap:10px 12px}
   .reader-book-title{font-size:20px;margin-bottom:4px}
   .reader-chapter-line{display:flex;gap:7px}
   #breadcrumb{font-size:7px;margin:0}
   #reader-chapter-title{font-size:10px;line-height:1.4}
-  .reader-contents-toggle{display:block;grid-column:2;grid-row:1;align-self:start;background:transparent;border:1px solid #d6ddce;border-radius:3px;padding:7px 9px;font-size:10px;min-height:36px}
+  .reader-location{grid-column:2;grid-row:1}
+  .reader-contents-toggle{display:flex;align-items:center;justify-content:center;grid-column:1;grid-row:1;align-self:start;background:transparent;border:1px solid #d6ddce;border-radius:3px;padding:0;color:var(--green);width:44px;min-height:44px}
   .reader-top .convention-bar{grid-column:1/-1;flex-direction:row;align-items:center;justify-content:space-between;gap:12px}
   .reader-top .convention-options button{min-height:36px;font-size:10px;padding:7px 10px}
   .convention-detail{display:block;text-align:right}
