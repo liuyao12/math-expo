@@ -1,0 +1,42 @@
+{
+  "checked": "2026-10-22",
+  "sources": [
+    {
+      "url": "https://math.dartmouth.edu/~euler/docs/originals/E072.pdf",
+      "role": "Complete public-domain Latin paper, 29 pages; original pp.160–188",
+      "sha256": "711d22399eaeed756984aca86f095e1d72e805822d957e7cd27761ad76c45bf8",
+      "checked": "2026-10-22"
+    },
+    {
+      "url": "https://math.dartmouth.edu/~euler/docs/translations/E072en.pdf",
+      "role": "Independent modern English comparison, credited on its page 18; not reproduced",
+      "sha256": "52b50e44c09e18890cb623b5cd3debfa92e7c4d180564a57578212c7a1516402",
+      "checked": "2026-10-22"
+    },
+    {
+      "url": "https://kirkmcd.princeton.edu/17centurymaths/contents/euler/introductiontoanalysisvolone/ch8avol1.pdf",
+      "role": "English comparison on pp.1–17, public-domain Latin transcription on pp.18–32; rendering made from Latin",
+      "sha256": "d32292126369cef3ab394083941d90d17e4a95a8aa411acd48d38ccf23fbc092",
+      "checked": "2026-10-22"
+    },
+    {
+      "url": "https://kirkmcd.princeton.edu/17centurymaths/contents/euler/e041tr.pdf",
+      "role": "Verified byte-identical university mirror of the earlier linked E41 PDF",
+      "sha256": "92ec65a79c6871eb47515ffdfbeda5943a78b3a9c93990f27be580b7a541f67e",
+      "checked": "2026-10-22"
+    }
+  ],
+  "scope": {
+    "euler-1744": {
+      "theorems": 19,
+      "corollaries": 17,
+      "originalPages": "160–188"
+    },
+    "euler-1748-circle": {
+      "kind": "Complete book chapter; not the entire volume",
+      "paragraphs": "126–142"
+    }
+  },
+  "translation": "New modern English from the public-domain Latin; modern English comparisons are linked, not reproduced.",
+  "verification": "Original pages and critical displays inspected; OCR used only as an aid. Mathematical reconstructions are written proofs, without proof-assistant verification."
+}

@@ -8,9 +8,11 @@ Current complete readings include Euler’s reciprocal-series paper (all ninetee
 
 The Dedekind readings lightly modernize Beman’s public-domain English (1901), preserving all 25 source footnotes. They include three margin drawings, five precise written proofs, scoped definition records, and commentary on the nonempty-system convention, undecidable membership, the proof of infinity, and the choice assumption in §159. Original German editions and the English source are linked. The readings have not been fully collated against the German; selected reconstructions do not amount to a complete foundational verification.
 
-The catalogue currently contains twenty works, thirty-six people, nineteen scoped mathematical references, and eight verified citation edges. Completeness of an imported text and completeness of its mathematical reconstruction are distinct.
+Two further Euler readings cover the full E72 paper (1744, all nineteen theorems and seventeen corollaries) and the complete Chapter VIII of the *Introductio* (1748, §§126–142). The chapter is catalogued as a chapter, not as a complete edition of the book. Nine written reconstructions establish the imaginary-exponential limit, its identity consequence, local logarithm formula, series bounds, rational circle computation, distinct-perfect-power sum, convergent prime product, reciprocal-prime divergence, and double-logarithm growth. Boundary products and signed sums in E72 retain explicit outstanding proof obligations. Six margin figures include an interactive unit circle and a finite reciprocal-prime plot.
 
-The unified [work catalogue](https://liuyao12.github.io/math-expo/papers/) presents all works together, with author, original-language, decade, inclusive year-range, and reading-option filters. Search covers original and English titles, summaries, translators, and editorial modern terminology. Filter state is retained in the URL. The eleven inspected translation sources keep their provenance in each work’s source panel; two uninspected leads remain labelled as such. “Inspected” is a source check, not a separate class of mathematical works or a claim of full collation.
+The catalogue currently contains twenty-one works, thirty-nine people, twenty-four scoped mathematical references, and eight verified citation edges. Completeness of an imported text and completeness of its mathematical reconstruction are distinct.
+
+The unified [work catalogue](https://liuyao12.github.io/math-expo/papers/) presents all works together, with author, original-language, decade, inclusive year-range, and reading-option filters. Search covers original and English titles, summaries, translators, and editorial modern terminology. Filter state is retained in the URL. The thirteen inspected translation sources keep their provenance in each work’s source panel; one uninspected lead remains labelled as such. “Inspected” is a source check, not a separate class of mathematical works or a claim of full collation.
 
 ## Develop
 
@@ -22,7 +24,7 @@ npm run check
 python3 -m http.server 8000 --directory dist
 ```
 
-The collection is generated as static HTML in `dist/`. All links are relative, so it works under the GitHub Pages project path. The readings are at `riemann-1854/`, `riemann-1859/`, `euler-1740/`, `dedekind-1872/`, and `dedekind-1888/`; author pages are under `people/`, and paper-specific object records under `concepts/`.
+The collection is generated as static HTML in `dist/`. All links are relative, so it works under the GitHub Pages project path. The readings are at `riemann-1854/`, `riemann-1859/`, `euler-1740/`, `dedekind-1872/`, and `dedekind-1888/`, `euler-1744/`, and `euler-1748-circle/`; author pages are under `people/`, and paper-specific object records under `concepts/`.
 
 - `src/catalog.mjs`: works, people, scoped mathematical references, bibliographic fields, and checked citation edges.
 - `src/translation-sources.mjs`: new source-work records and the English translation ledger, including inspection status and translator attribution.
@@ -34,6 +36,9 @@ The collection is generated as static HTML in `dist/`. All links are relative, s
 - `src/euler-1740.mjs`, `src/statements-euler-1740.mjs`, `src/figures-euler-1740.mjs`, `src/concepts-euler-1740.mjs`: Euler’s full rendering, commentary, proofs, drawings, and scoped references.
 - `scripts/check-euler-arithmetic.mjs`: independent exact coefficient extraction and checks of the numerical formulas, not verification of the analytic proofs.
 - `src/discovery.mjs`: editorial discovery terms and shared filtering logic, also exported in the catalogue data.
+- `src/euler-1744.mjs`, `src/euler-1748-circle.mjs`, `src/euler-more-catalog.mjs`, `src/statements-euler-more.mjs`, `src/figures-euler-more.mjs`: complete new readings, scoped records, nine written proofs, and margin figures.
+- `src/euler-more-sources.json`: source URLs, checksums, reading extents, and inspection evidence. Modern English comparison texts are linked, not reproduced.
+- `scripts/check-euler-more.mjs`: independent perfect-power table generation, multiplicative sign checks, rational bounds for decimal coefficients, and finite numerical checks.
 - `src/dedekind.mjs`: commentary, named references, scoped definitions, diagrams, and precise proofs for both essays.
 - `src/dedekind-text.json`: complete texts with import provenance and an explicit list of prose modernizations.
 - `src/sources/dedekind-beman-1901.tex`: pinned public-domain source, converted from ISO-8859-1 to UTF-8 with line endings normalized and trailing spaces removed.

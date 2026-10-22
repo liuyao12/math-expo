@@ -9,6 +9,7 @@ import {statements1859} from '../src/statements-1859.mjs';
 import {passagesEuler} from '../src/euler-1740.mjs';
 import {statementsEuler} from '../src/statements-euler-1740.mjs';
 import './check-euler-arithmetic.mjs';
+import './check-euler-more.mjs';
 import {discoveryTerms,matchesWork} from '../src/discovery.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url)),dist=path.join(root,'dist');
 const katexContext={};
@@ -142,3 +143,17 @@ for(const edition of editionsDedekind){
 }
 if(!catalogue.includes('Every catalogue entry is intended to become a complete on-site reading'))throw Error('Collection intent missing');
 console.log('Validated both complete Dedekind essays, every imported passage, all 25 source footnotes, 172 consecutive numbered paragraphs, and five editorial proofs.');
+
+const {passagesProduct}=await import('../src/euler-1744.mjs');
+const {passagesCircle}=await import('../src/euler-1748-circle.mjs');
+const {statementsEulerMore}=await import('../src/statements-euler-more.mjs');
+for(const [id,rows] of [['euler-1744',passagesProduct],['euler-1748-circle',passagesCircle]]){
+ const file=path.join(dist,id,'index.html'),html=pages.get(file),ids=idsByPage.get(file);
+ for(const r of rows)if(!ids.has(r.id)||!r.sourceUrl||!r.note)throw Error(`Incomplete Euler source passage ${r.id}`);
+ for(const p of statementsEulerMore.filter(p=>p.work===id))if(!ids.has(p.id)||!data.statements[id].some(s=>s.id===p.id))throw Error(`Missing Euler reconstruction ${p.id}`);
+ for(const marker of ['Latin','not reproduced','without proof-assistant verification'])if(!html.includes(marker))throw Error(`Missing Euler source qualification ${id}: ${marker}`);
+}
+for(const n of [1,2,3,4,5])if(!idsByPage.get(path.join(dist,'euler-1744/index.html')).has(`e72-4-c${n}`))throw Error('Missing source corollary');
+if(!pages.get(path.join(dist,'euler-1748-circle/index.html')).includes('not the entire book'))throw Error('Chapter extent is not explicit');
+if(found({q:'Euler identity'})!=='euler-1748-circle'||found({q:'reciprocal primes'})!=='euler-1744')throw Error('New Euler works are not discoverable by the requested topics');
+console.log('Validated complete E72 with its seventeen corollaries and the complete E101 chapter VIII, scoped source records, and all nine new proof records.');

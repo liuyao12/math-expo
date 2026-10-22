@@ -2,6 +2,8 @@ import {additionalWorks,additionalPeople,additionalBibliographicFields,additiona
 export {englishSources};
 import {conceptsEuler} from './concepts-euler-1740.mjs';
 import {peopleDedekind,conceptsDedekind} from './dedekind.mjs';
+import {circleWork,peopleEulerMore,conceptsEulerMore,bibliographyCircle,englishEulerMore} from './euler-more-catalog.mjs';
+Object.assign(englishSources,englishEulerMore);
 const m = String.raw;
 
 export const sources = {
@@ -16,6 +18,7 @@ export const sources = {
 // Titles are our English renderings; original titles identify the source edition.
 export const works = [
   ...additionalWorks,
+  circleWork,
   { id: 'riemann-1859', authors: ['riemann'], year: 1859,
     title: 'On the number of primes below a given quantity',
     originalTitle: 'Ueber die Anzahl der Primzahlen unter einer gegebenen Grösse',
@@ -45,8 +48,9 @@ export const works = [
   { id: 'euler-1744', authors: ['euler'], year: 1744,
     title: 'Various observations on infinite series', originalTitle: 'Variae observationes circa series infinitas',
     publication: 'Commentarii academiae scientiarum Petropolitanae 9, pp. 160–188. Written in 1737; published in 1744. Eneström E72.', language: 'Latin',
-    summary: 'Infinite series, products over primes, and the relation between multiplication and summation.',
-    links: [{label: 'Original & English translation · Euler Archive', url: 'https://scholarlycommons.pacific.edu/euler-works/72/'}] },
+    edition: 'Complete paper · Theorems 1–19',
+    summary: 'Perfect powers, prime products, signed series, and reciprocal primes. All nineteen theorems, with finite-cutoff proofs and the double-logarithm growth reconstructed.',
+    links: [{label: 'Original work & publication record · Euler Archive', url: 'https://scholarlycommons.pacific.edu/euler-works/72/'}, {label:'Original Latin · 1744',url:'https://math.dartmouth.edu/~euler/docs/originals/E072.pdf'}, {label:'English translation · Viader, Bibiloni & Viader',url:'https://math.dartmouth.edu/~euler/docs/translations/E072en.pdf'}] },
   { id: 'gauss-1828', authors: ['gauss'], year: 1828,
     title: 'General investigations of curved surfaces', originalTitle: 'Disquisitiones generales circa superficies curvas',
     publication: 'Göttingen: Dieterich, 1828. Presented to the Royal Society in 1827.', language: 'Latin',
@@ -92,9 +96,10 @@ export const works = [
 export const people = [
   ...additionalPeople,
   ...peopleDedekind,
+  ...peopleEulerMore,
   {id:'riemann',name:'Bernhard Riemann',note:'The works recorded here concern geometry, complex functions, and the distribution of primes.',source:'https://www.maths.tcd.ie/pub/HistMath/People/Riemann/'},
   {id:'jacobi',name:'Carl Gustav Jacob Jacobi',note:'The selected book develops elliptic functions and their transformations.',source:'https://doi.org/10.3931/e-rara-3926'},
-  {id:'euler',name:'Leonhard Euler',note:'The works recorded here concern reciprocal series, products over primes, the bridges problem, and residues of powers.',source:'https://scholarlycommons.pacific.edu/euler-works/72/'},
+  {id:'euler',name:'Leonhard Euler',note:'The works recorded here concern reciprocal series, products over primes, circular arcs and imaginary exponentials, the bridges problem, and residues of powers.',source:'https://scholarlycommons.pacific.edu/euler-works/72/'},
   {id:'gauss',name:'Carl Friedrich Gauss',note:'The selected work develops the geometry and curvature of surfaces.',source:'https://doi.org/10.3931/e-rara-59755'},
   {id:'dirichlet',name:'Peter Gustav Lejeune Dirichlet',note:'The selected paper proves the existence of infinitely many primes in coprime arithmetic progressions.',source:'https://sites.math.rutgers.edu/~alexk/2022S572/Dirichlet1837.pdf'},
   {id:'fourier',name:'Joseph Fourier',note:'The selected book develops an analytical theory of heat conduction using trigonometric series.',source:'https://doi.org/10.14711/spcol/b458351'},
@@ -123,6 +128,7 @@ export const citations = [
 export const concepts = [
   ...conceptsEuler,
   ...conceptsDedekind,
+  ...conceptsEulerMore,
   {id:'function-1859',title:'“Function” in the 1859 argument',kind:'Editorial reading guide',anchor:'euler-product',
     body:m`<p>Here the objects are specific expressions with specified uses: a convergent series and product for \(\zeta(s)\), integrals that continue it, a theta series, and step functions that count primes. Riemann does not introduce an arbitrary mapping between arbitrary sets in this paper.</p><p>We follow these constructions and their domains rather than replacing every occurrence of “function” with the most general modern definition. Nor does this paper establish that every function Riemann would admit must be given by a finite formula.</p>`,
     comparison:'A comparison with computable analysis would require a representation of inputs and outputs and effective error bounds for the operations in question. Convergence or a written formula alone does not supply those data. That comparison is an editorial research direction, not an attribution to Riemann.'},
@@ -161,6 +167,7 @@ export const concepts = [
 
 export const bibliographicFields = {
   ...additionalBibliographicFields,
+  'euler-1748-circle':bibliographyCircle,
   'riemann-1859':{type:'article',journal:'Monatsberichte der Berliner Akademie',pages:'671--680',month:'November'},
   'riemann-1854':{type:'unpublished',note:'Habilitation lecture, Göttingen, 1854; published posthumously, linked offprint 1867'},
   'riemann-1851':{type:'phdthesis',school:'Universität Göttingen'},

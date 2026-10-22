@@ -42,6 +42,28 @@
     }
     slider.addEventListener('input',update);update();
   }
+  const circleSlider=document.querySelector('#circle-angle');
+  if(circleSlider){
+    const label=document.querySelector('#circle-angle-value'),readout=document.querySelector('#circle-readout');
+    const exact=[['0','1'],['\\pi/2','i'],['\\pi','-1'],['3\\pi/2','-i'],['2\\pi','1']];
+    const updateCircle=()=>{
+      const t=Number(circleSlider.value),v=t*Math.PI,x=150+70*Math.cos(v),y=95-70*Math.sin(v);
+      document.querySelector('#circle-point').setAttribute('cx',String(x));
+      document.querySelector('#circle-point').setAttribute('cy',String(y));
+      document.querySelector('#circle-radius').setAttribute('d',`M150 95L${x} ${y}`);
+      const q=Math.round(2*t),special=Math.abs(2*t-q)<1e-10;
+      const angle=special?exact[q][0]:`${t.toFixed(2)}\\pi`;
+      label.textContent=`\\(v=${angle}\\)`;
+      if(special)readout.textContent=`\\(e^{i(${angle})}=${exact[q][1]}\\)`;
+      else {
+        const re=Math.cos(v),im=Math.sin(v);
+        readout.textContent=`\\(e^{iv}\\approx ${re.toFixed(3)}${im<0?'-':'+'}${Math.abs(im).toFixed(3)}i\\)`;
+      }
+      circleSlider.setAttribute('aria-valuetext',`${t.toFixed(2)} times pi radians`);
+      typeset(label);typeset(readout);
+    };
+    circleSlider.addEventListener('input',updateCircle);updateCircle();
+  }
   const links=[...document.querySelectorAll('.reading-nav a')];
   if(links.length&&'IntersectionObserver' in window){
     const observer=new IntersectionObserver(entries=>{

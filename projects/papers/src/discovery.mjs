@@ -3,7 +3,8 @@
 export const discoveryTerms={
  'euler-1740':['Basel problem','reciprocal series','sine product','zeta values','Dirichlet beta values','Newton identities'],
  'euler-1741':['Königsberg bridges','graph theory','Eulerian paths','Eulerian circuits','networks'],
- 'euler-1744':['infinite series','Euler product','prime numbers','zeta function'],
+ 'euler-1744':['infinite series','Euler product','prime numbers','zeta function','reciprocal primes','prime harmonic series','log log infinity','double logarithm','perfect powers','Goldbach Euler theorem','Liouville function'],
+ 'euler-1748-circle':['Euler identity','Euler’s identity','Euler formula','complex exponential','imaginary logarithms','unit circle','trigonometry','De Moivre formula','arctangent series','pi computation'],
  'euler-1761':['modular arithmetic','Fermat’s little theorem','residues','number theory'],
  'fourier-1822':['heat equation','Fourier series','partial differential equations','mathematical physics'],
  'gauss-1828':['differential geometry','Gaussian curvature','Theorema Egregium','intrinsic geometry','surfaces'],
