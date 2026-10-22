@@ -1,5 +1,6 @@
 import {additionalWorks,additionalPeople,additionalBibliographicFields,additionalCitations,englishSources} from './translation-sources.mjs';
 export {englishSources};
+import {conceptsEuler} from './concepts-euler-1740.mjs';
 const m = String.raw;
 
 export const sources = {
@@ -91,7 +92,7 @@ export const people = [
   ...additionalPeople,
   {id:'riemann',name:'Bernhard Riemann',note:'Author of both reading editions in this collection. The selected bibliography also includes his dissertation.',source:'https://www.maths.tcd.ie/pub/HistMath/People/Riemann/'},
   {id:'jacobi',name:'Carl Gustav Jacob Jacobi',note:'Riemann explicitly cites his book at p. 184 when transforming the theta series.',source:'https://doi.org/10.3931/e-rara-3926'},
-  {id:'euler',name:'Leonhard Euler',note:'Credited for the product over primes that starts the 1859 argument. The selected bibliography also covers reciprocal series, the bridges problem, and residues of powers. Riemann does not identify a particular Euler publication in that opening attribution.',source:'https://scholarlycommons.pacific.edu/euler-works/72/'},
+  {id:'euler',name:'Leonhard Euler',note:'Read his reciprocal-series paper in a complete modern-English edition. The selected bibliography also covers products over primes, the bridges problem, and residues of powers. Riemann credits Euler’s prime product without identifying a particular publication.',source:'https://scholarlycommons.pacific.edu/euler-works/72/'},
   {id:'gauss',name:'Carl Friedrich Gauss',note:'Named in the opening of the 1859 paper and, with Goldschmidt, in the numerical comparison near its end. His geometry paper below is selected bibliography, not a citation extracted from the 1859 paper.',source:sources.german1859+'#page=10'},
   {id:'dirichlet',name:'Peter Gustav Lejeune Dirichlet',note:'Named in Riemann’s opening acknowledgment of earlier interest in prime numbers. No particular Dirichlet publication is identified there.',source:sources.german1859+'#page=2'},
   {id:'fourier',name:'Joseph Fourier',note:'Riemann invokes Fourier’s theorem in his inversion argument. The theorem is not accompanied by a title or page citation.',source:sources.german1859+'#page=6'},
@@ -118,6 +119,7 @@ export const citations = [
 ];
 
 export const concepts = [
+  ...conceptsEuler,
   {id:'function-1859',title:'“Function” in the 1859 argument',kind:'Editorial reading guide',anchor:'euler-product',
     body:m`<p>Here the objects are specific expressions with specified uses: a convergent series and product for \(\zeta(s)\), integrals that continue it, a theta series, and step functions that count primes. Riemann does not introduce an arbitrary mapping between arbitrary sets in this paper.</p><p>We follow these constructions and their domains rather than replacing every occurrence of “function” with the most general modern definition. Nor does this paper establish that every function Riemann would admit must be given by a finite formula.</p>`,
     comparison:'A comparison with computable analysis would require a representation of inputs and outputs and effective error bounds for the operations in question. Convergence or a written formula alone does not supply those data. That comparison is an editorial research direction, not an attribution to Riemann.'},
@@ -138,7 +140,7 @@ export const concepts = [
     comparison:'This is the Riemann hypothesis in its original variable. Clay Mathematics Institute lists it as unsolved (status checked 21 October 2026).',
     source:'https://www.claymath.org/millennium/riemann-hypothesis/'},
   {id:'prime-count-1859',title:'The prime count with half-values at jumps',kind:'Author-defined object',anchor:'prime-count',
-    body:m`<p>For a positive real \(x\) that is not prime, \(F(x)\) counts primes strictly below \(x\). At a prime, add one half to that strict count. Equivalently,</p>\[F(x)=\sum_{p<x}1+\frac12\mathbf{1}_{\{x\text{ is prime}\}}.\]<p>For example, \(F(5)=\tfrac52\), and \(F(6)=3\). The midpoint convention is chosen for the later inversion integral.</p>`,
+    body:m`<p>For a positive real \(x\) that is not prime, \(F(x)\) counts primes strictly below \(x\). At a prime, add one half to that strict count. Equivalently,</p>\[F(x)=\sum_{p\lt x}1+\frac12\mathbf{1}_{\{x\text{ is prime}\}}.\]<p>For example, \(F(5)=\tfrac52\), and \(F(6)=3\). The midpoint convention is chosen for the later inversion integral.</p>`,
     comparison:m`This differs from the usual right-continuous count \(\pi(x)=\#\{p:p\leq x\}\) at primes. A linked definition must preserve that difference.`},
   {id:'prime-powers-1859',title:'The weighted prime-power count',kind:'Author-defined object',anchor:'prime-powers',
     body:m`<p>Using his half-value count, Riemann defines</p>\[f(x)=\sum_{k\geq1}\frac1kF(x^{1/k}).\]<p>A prime power \(p^k\) contributes weight \(1/k\) after it is crossed, and half that at the crossing. For each fixed positive real \(x\), only finitely many terms are nonzero.</p>`,

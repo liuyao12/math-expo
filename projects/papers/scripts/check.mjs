@@ -6,6 +6,9 @@ import {introduction,lineElement} from '../src/riemann.mjs';
 import {passages1859} from '../src/riemann-1859.mjs';
 import {works,people,concepts,citations,bibliographicFields,englishSources} from '../src/catalog.mjs';
 import {statements1859} from '../src/statements-1859.mjs';
+import {passagesEuler} from '../src/euler-1740.mjs';
+import {statementsEuler} from '../src/statements-euler-1740.mjs';
+import './check-euler-arithmetic.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url)),dist=path.join(root,'dist');
 const katexContext={};
 vm.runInNewContext(fs.readFileSync(path.join(root,'public/vendor/katex/katex.min.js'),'utf8'),katexContext);
@@ -21,7 +24,7 @@ for(const [file,html] of pages){
   idsByPage.set(file,new Set(ids));
   if(/\[\[(person|concept|work):/.test(html))throw Error(`Unresolved reference in ${file}`);
   for(const match of html.matchAll(/\\\(([\s\S]*?)\\\)|\\\[([\s\S]*?)\\\]/g)){
-    try{katexContext.katex.renderToString(match[1]??match[2],{throwOnError:true});formulas++;}
+    try{const latex=match[1]??match[2];if(/<[A-Za-z]/.test(latex))throw Error('Raw less-than sign can become an HTML tag; use \\lt');katexContext.katex.renderToString(latex,{throwOnError:true});formulas++;}
     catch(error){throw Error(`Bad LaTeX in ${file}: ${error.message}`);}
   }
 }
@@ -39,7 +42,7 @@ for(const [file,html] of pages){
     links++;
   }
 }
-for(const [work,rows] of [['riemann-1854',[...introduction,...lineElement]],['riemann-1859',passages1859]]){
+for(const [work,rows] of [['riemann-1854',[...introduction,...lineElement]],['riemann-1859',passages1859],['euler-1740',passagesEuler]]){
   const ids=idsByPage.get(path.join(dist,work,'index.html'));
   for(const row of rows)if(!ids.has(row.id))throw Error(`Missing ${work} passage ${row.id}`);
 }
@@ -63,8 +66,12 @@ for(const edge of citations){
 const paper=pages.get(path.join(dist,'riemann-1859/index.html'));
 for(const statement of statements1859)if(!paper.includes(`id="${statement.id}"`))throw Error(`Missing precise statement: ${statement.id}`);
 for(const marker of ['zero-count','formula','hypothesis','German p. 9','without proof-assistant verification'])if(!paper.includes(marker))throw Error(`Missing editorial safeguard: ${marker}`);
-for(const concept of concepts)if(!idsByPage.get(path.join(dist,'riemann-1859/index.html')).has(concept.anchor))throw Error(`Concept has no source passage: ${concept.id}`);
+for(const concept of concepts)if(!idsByPage.get(path.join(dist,concept.work??'riemann-1859','index.html')).has(concept.anchor))throw Error(`Concept has no source passage: ${concept.id}`);
 const data=JSON.parse(fs.readFileSync(path.join(dist,'catalog.json'),'utf8'));
+const euler=pages.get(path.join(dist,'euler-1740/index.html'));
+if(passagesEuler.length!==19)throw Error('Euler reading must retain all 19 numbered sections');
+for(const statement of statementsEuler)if(!euler.includes(`id="${statement.id}"`)||!data.statements['euler-1740'].some(s=>s.id===statement.id))throw Error(`Euler proof missing: ${statement.id}`);
+for(const marker of ['Latin text','Ian Bruce','not yet been collated','paired','without proof-assistant verification'])if(!euler.includes(marker))throw Error(`Euler edition lacks its source or proof qualification: ${marker}`);
 if(data.citations.length!==citations.length)throw Error('Export lost citation data');
 const englishShelf=pages.get(path.join(dist,'english/index.html'));
 let checkedEnglish=0;
@@ -87,4 +94,4 @@ for(const match of css.matchAll(/url\(['"]?([^)'"\s]+)['"]?\)/g)){
   const font=match[1],target=path.join(root,'public',font.startsWith('fonts/')?'vendor/katex/'+font:font);
   if(!fs.existsSync(target))throw Error(`Missing font ${font}`);
 }
-console.log(`Validated ${pages.size} pages, ${formulas} LaTeX expressions, ${links} local links, ${citations.length} bidirectional citations, ${checkedEnglish} checked English sources, and ${statements1859.length} precise statements.`);
+console.log(`Validated ${pages.size} pages, ${formulas} LaTeX expressions, ${links} local links, ${citations.length} bidirectional citations, ${checkedEnglish} checked English sources, and ${statements1859.length+statementsEuler.length} precise statements.`);

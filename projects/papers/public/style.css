@@ -12,6 +12,8 @@
 @media print{body{background:white}.masthead,.reading-nav,.reading-key,.site-footer,.skip{display:none}.reader{display:block;padding:0;max-width:none}.paper-heading{padding-top:0}.paper-heading h1{font-size:34pt}.passage{grid-template-columns:minmax(0,1fr) 31%;gap:25pt;break-inside:avoid}.original{font-size:11pt}.note-prose{font-size:8pt}.commentary h3{font-size:11pt}.drawing{max-height:100pt}.derivation[open]{break-inside:avoid}.source-grid{font-size:9pt}.reading-body{width:100%}.paper-heading a,.sources a{overflow-wrap:anywhere}.interactive input,.slider-label{display:none}}
 
 .parent-link{display:inline-block;font:10px/1.6 var(--sans);color:var(--green);margin:0 0 25px;text-decoration:none}.parent-link:hover{text-decoration:underline}
+.edition-notice{border-left:2px solid #bcc9b2;padding:12px 20px;margin:24px 0 35px;max-width:760px;background:#edf0e5}.edition-notice p{font-size:15px;line-height:1.8;color:var(--green);margin:8px 0}.edition-notice a{white-space:nowrap}
+.math-diagram{position:relative;width:100%;max-width:300px;margin:auto}.math-diagram .drawing{display:block;width:100%;max-height:none}.diagram-label{position:absolute;transform:translate(-50%,-50%);font-size:14px;line-height:1}
 
 /* Library records and the scholarly apparatus share the reader's typography. */
 .library-nav{margin-left:auto;display:flex;gap:24px;font:11px/1.6 var(--sans);color:var(--muted)}

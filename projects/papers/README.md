@@ -6,7 +6,9 @@ The first complete reading is Riemann’s 1859 prime-counting paper, freshly ren
 
 The geometry lecture remains a reading sample: the complete introduction and part II, §1, in modern English revised from Clifford’s translation. His historical wording is expandable beside each passage. Both readings link to original sources and existing translations.
 
-The catalogue currently contains nineteen work records, eighteen people, eleven paper-specific mathematical references, and seven verified citation edges. A work record is not a claim that its full text has been translated or edited.
+Euler’s reciprocal-series paper (E41, written in 1735 and printed in 1740) is the next complete reading: all nineteen sections, freshly rendered from the Latin transcription in Ian Bruce’s PDF. Six editorial proofs reconstruct the sine product, its fixed positive levels, Newton’s identities, the special-angle sums, and the positive even-power evaluations through the twelfth power. Three margin drawings explain the arc geometry, sine-level roots, and odd/even split. The first printing has not yet been collated; corrections to the available transcription are explicitly identified. Exact rational checks independently verify both coefficient tables and all circumference ratios.
+
+The catalogue currently contains twenty work records, twenty-one people, fourteen paper-specific mathematical references, and eight verified citation edges. A work record is not a claim that its full text has been translated or edited.
 
 The [English-text shelf](https://liuyao12.github.io/math-expo/papers/english/) offers eleven checked English translations, including Euler, Gauss, Fourier, Dirichlet, Riemann, Dedekind, Hilbert, and Noether. Every source has a translator credit, a translation date or an explicit undated label, scope, and evidence. Two archive-listed translation leads are separated from the checked shelf. “Checked” means that the English text and credit were inspected; it does not claim full collation or mathematical review.
 
@@ -20,7 +22,7 @@ npm run check
 python3 -m http.server 8000 --directory dist
 ```
 
-The collection is generated as static HTML in `dist/`. All links are relative, so it works under the GitHub Pages project path. The readings are at `riemann-1854/` and `riemann-1859/`; author pages are under `people/`, and paper-specific object records under `concepts/`.
+The collection is generated as static HTML in `dist/`. All links are relative, so it works under the GitHub Pages project path. The readings are at `riemann-1854/`, `riemann-1859/`, and `euler-1740/`; author pages are under `people/`, and paper-specific object records under `concepts/`.
 
 - `src/catalog.mjs`: works, people, scoped mathematical references, bibliographic fields, and checked citation edges.
 - `src/translation-sources.mjs`: new source-work records and the English translation ledger, including inspection status and translator attribution.
@@ -29,6 +31,8 @@ The collection is generated as static HTML in `dist/`. All links are relative, s
 - `src/riemann.mjs`, `src/modern-1854.mjs`: historical wording and the modern-English revision.
 - `src/figures.mjs`: geometric drawings.
 - `src/figures-1859.mjs`: contour, strip, and counting diagrams.
+- `src/euler-1740.mjs`, `src/statements-euler-1740.mjs`, `src/figures-euler-1740.mjs`, `src/concepts-euler-1740.mjs`: Euler’s full rendering, commentary, proofs, drawings, and scoped references.
+- `scripts/check-euler-arithmetic.mjs`: independent exact coefficient extraction and checks of the numerical formulas, not verification of the analytic proofs.
 - `public/`: styles, reader interactions, and vendored math assets.
 - `scripts/build.mjs`: generates the collection and paper pages.
 - `scripts/check.mjs`: checks all generated pages, LaTeX, cross-page anchors, citation reciprocity, English-source provenance and shelf membership, bibliographic exports, local assets, and JavaScript syntax.

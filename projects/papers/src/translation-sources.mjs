@@ -1,10 +1,15 @@
 // Original-work dates identify routes. Translation and online revision dates
 // describe the linked English edition; neither implies an edition by us.
 export const additionalWorks = [
+  {id:'monks-2019',authors:['monks'],year:2019,title:'Euler’s calculation of the sum of the reciprocals of the squares: a mini-primary source project for Calculus 2 students',originalTitle:'Euler’s Calculation of the Sum of the Reciprocals of the Squares: A Mini-Primary Source Project for Calculus 2 Students',language:'English',
+    publication:'Convergence, August 2019. DOI: 10.4169/convergence20190801.',doi:'10.4169/convergence20190801',
+    summary:'A later teaching article that explicitly cites Euler’s E41. Recorded as a checked citing work; no reading edition is prepared here.',
+    links:[{label:'Article & references · Mathematical Association of America',url:'https://old.maa.org/node/1880109'}]},
   {id:'euler-1740',authors:['euler'],year:1740,title:'On the sums of series of reciprocals',originalTitle:'De summis serierum reciprocarum',language:'Latin',
     publication:'Commentarii academiae scientiarum Petropolitanae 7 (1740), pp. 123–134. Written in 1735. Eneström E41.',
-    summary:'Euler’s reciprocal-power sums and sine-factor argument. The English translation is available; an annotated edition is not yet prepared here.',
-    links:[{label:'Original work & publication record · Euler Archive',url:'https://scholarlycommons.pacific.edu/euler-works/41/'}]},
+    edition:'Complete reading · §§1–19',
+    summary:'Reciprocal powers, arcs with a given sine, and the circle constant. A full modern-English reading with proofs of the sine products and coefficient calculations.',
+    links:[{label:'Original work & publication record · Euler Archive',url:'https://scholarlycommons.pacific.edu/euler-works/41/'},{label:'Latin text · PDF p. 10',url:'https://17centurymaths.com/contents/euler/e041tr.pdf#page=10'},{label:'English translation · Ian Bruce',url:'https://17centurymaths.com/contents/euler/e041tr.pdf'}]},
   {id:'euler-1741',authors:['euler'],year:1741,title:'A solution to a problem in the geometry of position',originalTitle:'Solutio problematis ad geometriam situs pertinentis',language:'Latin',
     publication:'Commentarii academiae scientiarum Petropolitanae 8 (1741), pp. 128–140. Archive composition date: 1735. Eneström E53.',
     summary:'The Königsberg bridges paper. Its 1741 publication date is used here; the archive lists a translation file whose credit and text still need checking.',
@@ -32,12 +37,16 @@ export const additionalWorks = [
 ];
 
 export const additionalPeople = [
+  {id:'monks',name:'Kenneth M. Monks',note:'Author of the 2019 Convergence teaching article recorded here as a checked citing work for Euler’s reciprocal-series paper.',source:'https://old.maa.org/node/1880109'},
+  {id:'leibniz',name:'Gottfried Wilhelm Leibniz',note:'Euler names Leibniz in §10 of the reciprocal-series paper, when recovering the alternating odd-reciprocal series for the circle constant. No particular Leibniz work is identified in that passage.',source:'https://17centurymaths.com/contents/euler/e041tr.pdf#page=13'},
+  {id:'newton',name:'Isaac Newton',note:'Euler names Newton in §14 of the reciprocal-series paper in connection with a signed odd-reciprocal series. The coefficient identities in §8 are labelled Newton identities editorially; Euler gives no work citation there.',source:'https://17centurymaths.com/contents/euler/e041tr.pdf#page=14'},
   {id:'dedekind',name:'Richard Dedekind',note:'Author of the two foundational essays recorded here. English translations by Wooster Woodruff Beman appeared together in Essays on the Theory of Numbers (1901).',source:'https://www.gutenberg.org/ebooks/21016'},
   {id:'hilbert',name:'David Hilbert',note:'His 1900 address is available in the authorized English translation by Mary Frances Winston Newson, published in 1902. The work record separates those two dates.',source:'https://www.gutenberg.org/ebooks/71655'},
   {id:'noether',name:'Emmy Noether',note:'Author of Invariant Variation Problems (1918). M. A. Tavel is credited as translator of the English edition, rather than as a coauthor of the original work.',source:'https://arxiv.org/abs/physics/0503066'},
 ];
 
 export const additionalBibliographicFields = {
+  'monks-2019':{type:'article',journal:'Convergence',month:'August'},
   'euler-1740':{type:'article',journal:'Commentarii academiae scientiarum Petropolitanae',volume:'7',pages:'123--134',note:'Eneström E41; written in 1735'},
   'euler-1741':{type:'article',journal:'Commentarii academiae scientiarum Petropolitanae',volume:'8',pages:'128--140',note:'Eneström E53; archive composition date 1735'},
   'euler-1761':{type:'article',journal:'Novi Commentarii academiae scientiarum Petropolitanae',volume:'7',pages:'49--82',note:'Eneström E262; presented in 1755'},
@@ -68,6 +77,7 @@ export const englishSources = {
 for(const source of Object.values(englishSources))source.checked='2026-10-21';
 
 export const additionalCitations = [
+  {from:'monks-2019',to:'euler-1740',locator:'References · Euler, Leonhard. 1740',url:'https://old.maa.org/node/1880109',evidence:'The article’s reference list names De summis serierum reciprocarum, gives 1740, Commentarii volume 7, and pp. 123–134. The body explicitly identifies the primary source as E41.'},
   {from:'dedekind-1888',to:'dedekind-1872',locator:'First-edition preface, footnote 5 · digital PDF p. 19',url:'https://www.gutenberg.org/files/21016/21016-pdf.pdf#page=19',evidence:'Dedekind identifies his earlier Continuity and Irrational Numbers, gives Braunschweig and 1872, and refers to section III. Checked in Beman’s English translation.'},
   {from:'hilbert-1900',to:'riemann-1859',locator:'Problem 8, opening paragraph',url:'https://math.clarku.edu/~djoyce/hilbert/problems.html',evidence:'Hilbert explicitly names Riemann’s prime-counting paper by its German title. Checked in Newson’s English translation.'},
 ];
