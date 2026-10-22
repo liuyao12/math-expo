@@ -130,7 +130,7 @@
     document.documentElement.dataset.matrixConvention=mode;
     document.querySelectorAll('[data-convention-mode]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.conventionMode===mode)));
     const status=document.getElementById('convention-status');
-    if(status)status.textContent=mode==='reading'?'Input first · indices across, then down':'Matrix first · indices row, then column';
+    if(status)status.textContent=mode==='reading'?'Input first · square brackets':'Matrix first · parentheses';
     applyCopy();
   }
   function positions() {

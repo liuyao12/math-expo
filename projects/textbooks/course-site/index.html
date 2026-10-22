@@ -20,7 +20,6 @@
 </head>
 <body>
   <a class="skip" href="#reading">Skip to the text</a>
-  <header class="mobile-header"><a href="#geometry">Linear Algebra</a><button id="menu-toggle" aria-expanded="false" aria-controls="sidebar">Contents</button></header>
   <aside id="sidebar" class="sidebar" aria-label="Book navigation">
     <a class="expo-link" href="../">← Math Expo</a>
     <a class="book-brand" href="#outline"><svg viewBox="0 0 42 42" width="35" height="35" aria-hidden="true"><path d="M5 31 19 5 36 31ZM5 31 27 20 36 31M19 5 27 20" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="27" cy="20" r="2" fill="currentColor"/></svg><span>Linear<br>Algebra<span class="brand-sub">A GEOMETRIC COURSE</span></span></a>
@@ -29,16 +28,20 @@
     <div class="sidebar-footer"><span class="draft-dot"></span> Working draft<span class="footer-note">Definitions, examples, and ideas<br>taking shape together.</span></div>
   </aside>
   <main id="reading" tabindex="-1">
-    <div class="reader-top"><span id="breadcrumb">PART I · EUCLIDEAN GEOMETRY</span><span class="edition">The geometric approach</span></div>
-    <div class="convention-bar" aria-label="Matrix notation convention">
-      <span class="convention-label">READ MATRICES</span>
-      <div class="convention-options" role="group" aria-label="Choose the matrix multiplication convention">
-        <button type="button" data-convention-mode="reading" aria-pressed="true">Column → row</button>
-        <button type="button" data-convention-mode="standard" aria-pressed="false">Standard</button>
+    <header class="reader-top" aria-label="Book, chapter, and matrix convention">
+      <div class="reader-location">
+        <a class="reader-book-title" href="#outline">Linear Algebra</a>
+        <div class="reader-chapter-line"><span id="breadcrumb">CHAPTER 01</span><span id="reader-chapter-title">From Platonic solids to four dimensions</span></div>
       </div>
-      <span id="convention-status" role="status">Input first · indices across, then down</span>
-      <a href="#coordinates" class="convention-help">See the rule</a>
-    </div>
+      <div class="convention-bar" aria-label="Matrix notation convention">
+        <div class="convention-options" role="group" aria-label="Choose the matrix multiplication convention" aria-describedby="convention-status">
+          <button type="button" data-convention-mode="reading" aria-pressed="true" title="Input first; square brackets; indices across, then down">Column → row</button>
+          <button type="button" data-convention-mode="standard" aria-pressed="false" title="Matrix first; parentheses; indices row, then column">Standard</button>
+        </div>
+        <div class="convention-detail"><span id="convention-status" role="status">Input first · square brackets</span><a href="#coordinates" class="convention-help">See the rule</a></div>
+      </div>
+      <button class="reader-contents-toggle" id="menu-toggle" aria-expanded="false" aria-controls="sidebar">Contents</button>
+    </header>
     <article id="chapter"></article>
     <footer id="chapter-footer" class="chapter-footer"></footer>
   </main>

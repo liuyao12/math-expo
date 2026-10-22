@@ -199,13 +199,15 @@
     document.getElementById('contents').innerHTML=`<a class="nav-overview ${current==='outline'?'active':''}" href="#outline" ${current==='outline'?'aria-current="page"':''}><span aria-hidden="true">☷</span> The course at a glance</a>`+parts.map(part=>`<div class="nav-group"><h2>PART ${part.id} · ${part.title.toUpperCase()}</h2>${chapters.filter(c=>c.part===part.id).map(c=>`<a class="chapter-link ${current===c.id?'active':''}" href="#${c.id}" ${current===c.id?'aria-current="page"':''}><span class="number">${c.number}</span><span>${c.short}</span></a>`).join('')}</div>`).join('');
   }
   function renderOutline(){
-    document.getElementById('breadcrumb').textContent='A COURSE BUILT FROM GEOMETRY';
+    document.getElementById('breadcrumb').textContent='CONTENTS';
+    document.getElementById('reader-chapter-title').textContent='The course at a glance';
     chapterElement.innerHTML=`<header class="chapter-heading"><p class="eyebrow">THE COURSE AT A GLANCE</p><h1>Linear Algebra</h1><p class="dek">From Euclidean geometry to higher and even infinite-dimensional spaces.</p><div class="chapter-meta"><span>Ten chapter sketches</span><span>Two parts drafted</span></div></header><hr class="chapter-rule"><div class="course-map"><p class="map-intro">Begin with the Platonic solids and their four-dimensional relatives. Develop vectors, projections, rotations, and the Gram matrix; then explore lattices and a hat–turtle boundary in four dimensions. Discover the same geometry in functions and Fourier approximation.</p>${parts.map(part=>`<div class="part-heading"><span>PART ${part.id}</span><h2>${part.title}</h2></div>${chapters.filter(c=>c.part===part.id).map(c=>`<a class="map-row" href="#${c.id}"><span class="map-number">${c.number}</span><div><h3>${c.short}</h3><p>${c.concepts.join(' · ')}</p></div><span class="arrow" aria-hidden="true">↗</span></a>`).join('')}`).join('')}<div class="part-heading"><span>LATER</span><h2>Structure, fields, and symmetry</h2></div><div class="future-note"><p><strong>General vector spaces, then groups.</strong> Ask what remains when we set measurement aside; later, organize invertible transformations by composition.</p><p><strong>Finite geometries and matrix groups.</strong> Return to the same tools over finite fields: the Fano plane, error-correcting codes, and geometric motivation for the Sylow theorems. These chapters remain to be drafted.</p></div></div>`;
     document.getElementById('chapter-footer').innerHTML='<a href="#geometry"><span>BEGIN PART I</span>From Platonic solids to four dimensions →</a>';
     document.title='The course at a glance — Linear Algebra';
   }
   function renderChapter(chapter){
-    const part=parts.find(p=>p.id===chapter.part);document.getElementById('breadcrumb').textContent=`PART ${part.id} · ${part.title.toUpperCase()}`;
+    document.getElementById('breadcrumb').textContent=`CHAPTER ${chapter.number}`;
+    document.getElementById('reader-chapter-title').textContent=chapter.short;
     chapterElement.innerHTML=`<header class="chapter-heading"><p class="eyebrow">CHAPTER ${chapter.number}</p><h1>${chapter.title}</h1><p class="dek">${chapter.subtitle}</p><div class="chapter-meta"><span>Chapter sketch</span><span>Definitions & examples</span></div></header><hr class="chapter-rule"><p class="chapter-intro">${chapter.intro}</p>${chapter.sections.map((section,i)=>`<section class="section-grid"><div class="prose"><h2><span class="section-number">${Number(chapter.number)}.${i+1}</span>${section.title}</h2>${section.body}</div><aside class="margin" aria-label="Example for ${section.title}">${section.demo?`<div data-demo="${section.demo}"></div>`:`<span class="margin-label">IN THE MARGIN</span><p class="margin-note">${section.note || ''}</p>`}</aside></section>`).join('')}<div class="next-concepts"><h3>IDEAS TO TAKE WITH YOU</h3><div class="concept-list">${chapter.concepts.map(concept=>`<span>${concept}</span>`).join('')}</div></div>`;
     const index=chapters.indexOf(chapter),previous=chapters[index-1],next=chapters[index+1];
     document.getElementById('chapter-footer').innerHTML=`${previous?`<a href="#${previous.id}"><span>PREVIOUS CHAPTER</span>← ${previous.short}</a>`:'<a href="#outline"><span>STEP BACK</span>← The course at a glance</a>'}${next?`<a href="#${next.id}"><span>NEXT CHAPTER</span>${next.short} →</a>`:'<a href="#outline"><span>RETURN TO</span>The course at a glance →</a>'}`;
@@ -224,5 +226,8 @@
   menuToggle.addEventListener('click',()=>{const open=sidebar.classList.toggle('open');menuToggle.setAttribute('aria-expanded',String(open));});
   document.addEventListener('keydown',event=>{if(event.key==='Escape'){sidebar.classList.remove('open');menuToggle.setAttribute('aria-expanded','false');}});
   document.addEventListener('click',event=>{if(!sidebar.contains(event.target)&&!menuToggle.contains(event.target)){sidebar.classList.remove('open');menuToggle.setAttribute('aria-expanded','false');}});
+  const readerTop=document.querySelector('.reader-top');
+  const updateReaderTopHeight=()=>document.documentElement.style.setProperty('--reader-top-height',readerTop.getBoundingClientRect().height+'px');
+  const readerTopObserver=new ResizeObserver(updateReaderTopHeight);readerTopObserver.observe(readerTop);updateReaderTopHeight();
   window.addEventListener('hashchange',navigate);navigate();
 })();
