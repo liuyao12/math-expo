@@ -4,7 +4,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const context = { window:{} };
-for (const file of ['hat-turtle.js','chapters.js','app.js','conventions.js','matrix-demo.js','higher-geometry.js']) new vm.Script(fs.readFileSync(path.join(root,'course-site',file),'utf8'), { filename:file });
+for (const file of ['hat-turtle.js','chapters.js','app.js','conventions.js','matrix-demo.js','higher-geometry.js','tile-lattice-demo.js']) new vm.Script(fs.readFileSync(path.join(root,'course-site',file),'utf8'), { filename:file });
 for (const file of ['conventions.js','matrix-demo.js','higher-geometry.js']) vm.runInNewContext(fs.readFileSync(path.join(root,'course-site',file),'utf8'),context);
 const notation=context.window.MATRIX_NOTATION;
 const {models,ballVolume}=context.window.HIGHER_GEOMETRY;
@@ -52,6 +52,23 @@ console.log('Validated both multiplication conventions, rectangular actions, Gra
 vm.runInNewContext(fs.readFileSync(path.join(root,'course-site/hat-turtle.js'),'utf8'),context);
 const tile=context.window.HAT_TURTLE;
 if(tile.vertices.length!==14)throw Error('Expected fourteen fixed tile vertices');
+const latticeSample=tile.sampleLattice(2);
+if(latticeSample.length!==5**4)throw Error('Incorrect four-dimensional sample size');
+for(const theta of [Math.PI/6,Math.PI/4,Math.atan(Math.sqrt(3)/2),Math.PI/3]){
+  for(const point of latticeSample){
+    const image=tile.view(point.relative,theta),internal=tile.internal(point.relative,theta);
+    near(product(point.relative.map(x=>[x]),tile.matrix(theta)),image.map(x=>[x]),'live projection matrix');
+    const originalSquared=point.relative.reduce((sum,x)=>sum+x*x,0);
+    if(Math.abs(image.reduce((sum,x)=>sum+x*x,0)+internal.reduce((sum,x)=>sum+x*x,0)-originalSquared)>1e-10)throw Error('Perpendicular depth is not Euclidean distance');
+    const [p,q,r,s]=point.coefficients,raw=tile.view(tile.toCartesian(point.coefficients),theta),t=Math.tan(theta)/Math.sqrt(3);
+    const triangular=[(raw[0]-raw[1]/Math.sqrt(3))/Math.cos(theta),2*raw[1]/Math.sqrt(3)/Math.cos(theta)];
+    near([triangular],[[p+t*(r-s),q+t*(r+2*s)]],'rational/dense slope formula');
+  }
+}
+for(let degrees=30;degrees<=60;degrees+=.25){
+  for(const vertex of tile.centered)if(Math.hypot(...tile.internal(vertex,degrees*Math.PI/180))>1.7)throw Error('Initial depth window excludes a tile vertex');
+}
+console.log('Validated the live projection matrix, perpendicular distances, lattice-slope formula, sample size, and tile-containing initial window.');
 let firstEdges=0;
 for(let i=0;i<14;i++){
   const a=tile.cartesian[i],b=tile.cartesian[(i+1)%14];

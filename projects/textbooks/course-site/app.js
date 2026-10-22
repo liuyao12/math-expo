@@ -63,6 +63,7 @@
     eigenfunction:['A mode changes amplitude','A heat-equation example.','The original shape is dashed. Its evolving multiple retains the same spatial pattern.']
   };
   function mountDemo(holder,name) {
+    if(name==='hat-turtle'){cleanups.push(window.mountTileLatticeDemo(holder,{math}));return;}
     if(name==='polytopes'||name==='ball-cube'){cleanups.push(window.mountHigherGeometry(holder,name,{math}));return;}
     if(name==='matrix-product'){cleanups.push(window.mountMatrixProductDemo(holder,{math}));return;}
     if(name==='projection'){
@@ -74,26 +75,8 @@
     const [title,sub,caption]=descriptions[name];
     holder.innerHTML=`<span class="margin-label">EXPLORE ALONGSIDE THE TEXT</span><div class="figure"><h3>${title}</h3><p class="figure-sub">${sub}</p><svg class="diagram" role="img" aria-label="${title}. ${caption}"></svg><div class="figure-controls"></div><div class="math-readout" aria-live="polite"></div><p class="figure-caption">${caption}</p></div>`;
     const root=holder.querySelector('.figure'),svg=root.querySelector('svg'),controls=root.querySelector('.figure-controls'),readout=root.querySelector('.math-readout');
-    const drawMap={'hat-turtle':tileDemo,space:spaceDemo,'projection-composition':projectionDemo,reflection:reflectionDemo,'four-d':fourDemo,gram:gramDemo,eigenvectors:eigenDemo,'sine-cosine':sineDemo,fourier:fourierDemo,eigenfunction:modeDemo};
+    const drawMap={space:spaceDemo,'projection-composition':projectionDemo,reflection:reflectionDemo,'four-d':fourDemo,gram:gramDemo,eigenvectors:eigenDemo,'sine-cosine':sineDemo,fourier:fourierDemo,eigenfunction:modeDemo};
     drawMap[name](root,svg,controls,readout);
-  }
-  function tileDemo(root,svg,controls,readout){
-    const id=`tile-angle-${document.querySelectorAll('[id^="tile-angle-"]').length}`;
-    controls.innerHTML=`<button type="button" data-angle="60" aria-pressed="true">Hat</button><button type="button" data-angle="30" aria-pressed="false">Turtle</button>${range(id,'Viewing plane',30,60,60,.1)}`;
-    const input=controls.querySelector('input'),model=window.HAT_TURTLE;
-    const coordinates=document.createElement('div');coordinates.className='tile-coordinate';math(coordinates,'q=(1,-2,0,-1)');root.insertBefore(coordinates,readout);
-    const all=Array.from({length:121},(_,i)=>model.project((30+i/4)*Math.PI/180)).flat();
-    const maxX=Math.max(...all.map(v=>Math.abs(v[0]))),maxY=Math.max(...all.map(v=>Math.abs(v[1])));
-    const source=document.createElement('p');source.className='tile-source';source.innerHTML='<a href="https://liuyao12.github.io/geometric-tree-search/apps/hat-turtle-projection/?view=tile" target="_blank" rel="noopener">Explore the original construction ↗</a>';root.appendChild(source);
-    const draw=()=>{const {w,h}=scene(svg,.95),theta=+input.value*Math.PI/180,points=model.project(theta),scale=Math.min((w-40)/(2*maxX),(h-34)/(2*maxY)),p=v=>[w/2+scale*v[0],h/2-scale*v[1]];
-      element('polygon',{points:points.map(p).map(v=>v.join(',')).join(' '),fill:colors.pale},svg);
-      points.forEach((v,i)=>{line(svg,[p(v),p(points[(i+1)%points.length])],model.edgeFamily(i)==='first'?colors.blue:colors.orange,2.5);dot(svg,p(v),colors.ink,2);});
-      dot(svg,p(points[10]),colors.green,4);mathLabel(svg,[p(points[10])[0]-10,p(points[10])[1]-16],'q');
-      const q=model.rawProject(theta)[10];math(readout,`q\\mapsto(${format(q[0])},${format(q[1])})`);
-      outputRange(root,input,`\\theta=${format(+input.value)}^{\\circ}`);
-      controls.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.angle===+input.value)));
-    };
-    controls.querySelectorAll('button').forEach(button=>button.addEventListener('click',()=>{input.value=button.dataset.angle;draw();}));input.addEventListener('input',draw);observe(svg,draw);
   }
   function spaceDemo(root,svg,controls,readout){
     controls.innerHTML=`<button type="button" data-mode="skew" aria-pressed="true">Skew lines</button><button type="button" data-mode="meeting" aria-pressed="false">Intersecting</button>${range('space-view','Viewpoint',-65,65,25)}`;
