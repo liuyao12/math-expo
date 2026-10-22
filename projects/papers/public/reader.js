@@ -41,12 +41,20 @@
   const search=document.querySelector('#work-search');
   if(search){
     const items=[...document.querySelectorAll('[data-search-item]')];
-    search.addEventListener('input',()=>{
+    const access=document.querySelector('#work-access');
+    function filterWorks(){
       const words=search.value.toLocaleLowerCase().trim().split(/\s+/).filter(Boolean);
+      const mode=access?.value??'all';
       let count=0;
-      for(const item of items){item.hidden=!words.every(word=>item.dataset.searchText.includes(word));if(!item.hidden)count++;}
+      for(const item of items){
+        const matchesAccess=mode==='all'||(mode==='english'&&item.dataset.english==='true')||(mode==='edited'&&item.dataset.edited==='true');
+        item.hidden=!matchesAccess||!words.every(word=>item.dataset.searchText.includes(word));
+        if(!item.hidden)count++;
+      }
       document.querySelector('#search-status').textContent=count?`${count} work ${count===1?'record':'records'}`:'No matching works. Try another title, author, or year.';
-    });
+    }
+    search.addEventListener('input',filterWorks);
+    access?.addEventListener('change',filterWorks);
   }
   for(const button of document.querySelectorAll('[data-copy]')){
     button.addEventListener('click',async()=>{

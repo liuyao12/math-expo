@@ -16,6 +16,7 @@ The project makes the mathematics of each paper explicit and rigorous while pres
 - Mark mentions explicitly with `[[person:id|label]]`, `[[work:id|label]]`, or `[[concept:id|label]]`. Avoid global keyword replacement, especially for generic words such as function and space.
 - Mathematical reference IDs are scoped to a paper. Separate the author’s definition, the modern identification, and the modern comparison. A shared symbol is not evidence that two objects coincide.
 - Person pages list edited works and selected bibliography separately. A source-only record has English metadata, a source link, and a clear statement that no reading edition is prepared here yet.
+- For linked English translations, record the translator, translation date (or explicitly undated), source URL, scope, and inspection evidence. Distinguish an inspected English text from an archive listing whose file or credit is still unverified. A checked link does not mean the translation has been collated or its mathematics reviewed. Do not treat the translator as a coauthor of the original work.
 - Use author-year work IDs. Specify whether a date is composition, presentation, publication, or translation; append a short title for same-year collisions. Do not create redirects unless requested.
 
 ## Bibliography and citation evidence

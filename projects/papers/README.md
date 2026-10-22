@@ -6,7 +6,9 @@ The first complete reading is Riemann’s 1859 prime-counting paper, freshly ren
 
 The geometry lecture remains a reading sample: the complete introduction and part II, §1, in modern English revised from Clifford’s translation. His historical wording is expandable beside each passage. Both readings link to original sources and existing translations.
 
-The catalogue currently contains twelve work records, fifteen people, eleven paper-specific mathematical references, and five verified citation edges. A work record is not a claim that its full text has been translated or edited.
+The catalogue currently contains nineteen work records, eighteen people, eleven paper-specific mathematical references, and seven verified citation edges. A work record is not a claim that its full text has been translated or edited.
+
+The [English-text shelf](https://liuyao12.github.io/math-expo/papers/english/) offers eleven checked English translations, including Euler, Gauss, Fourier, Dirichlet, Riemann, Dedekind, Hilbert, and Noether. Every source has a translator credit, a translation date or an explicit undated label, scope, and evidence. Two archive-listed translation leads are separated from the checked shelf. “Checked” means that the English text and credit were inspected; it does not claim full collation or mathematical review.
 
 ## Develop
 
@@ -21,6 +23,7 @@ python3 -m http.server 8000 --directory dist
 The collection is generated as static HTML in `dist/`. All links are relative, so it works under the GitHub Pages project path. The readings are at `riemann-1854/` and `riemann-1859/`; author pages are under `people/`, and paper-specific object records under `concepts/`.
 
 - `src/catalog.mjs`: works, people, scoped mathematical references, bibliographic fields, and checked citation edges.
+- `src/translation-sources.mjs`: new source-work records and the English translation ledger, including inspection status and translator attribution.
 - `src/riemann-1859.mjs`: new modern-English rendering and commentary.
 - `src/statements-1859.mjs`: precise statements, proof status, and written proofs.
 - `src/riemann.mjs`, `src/modern-1854.mjs`: historical wording and the modern-English revision.
@@ -28,7 +31,7 @@ The collection is generated as static HTML in `dist/`. All links are relative, s
 - `src/figures-1859.mjs`: contour, strip, and counting diagrams.
 - `public/`: styles, reader interactions, and vendored math assets.
 - `scripts/build.mjs`: generates the collection and paper pages.
-- `scripts/check.mjs`: checks all generated pages, LaTeX, cross-page anchors, citation reciprocity, bibliographic exports, local assets, and JavaScript syntax.
+- `scripts/check.mjs`: checks all generated pages, LaTeX, cross-page anchors, citation reciprocity, English-source provenance and shelf membership, bibliographic exports, local assets, and JavaScript syntax.
 
 Every work has references, citing works, and a downloadable BibTeX citation. Reverse citation lists are derived from the same checked edges. `catalog.json` exports the catalogue, evidence, and statement records. Citation coverage is selected and incomplete; no MathSciNet data or affiliation is implied. Author attributions, selected bibliography, and editorial sources are not automatically citation edges.
 

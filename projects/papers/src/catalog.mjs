@@ -1,3 +1,5 @@
+import {additionalWorks,additionalPeople,additionalBibliographicFields,additionalCitations,englishSources} from './translation-sources.mjs';
+export {englishSources};
 const m = String.raw;
 
 export const sources = {
@@ -11,6 +13,7 @@ export const sources = {
 // A work record exists independently of whether we have edited its text.
 // Titles are our English renderings; original titles identify the source edition.
 export const works = [
+  ...additionalWorks,
   { id: 'riemann-1859', authors: ['riemann'], year: 1859,
     title: 'On the number of primes below a given quantity',
     originalTitle: 'Ueber die Anzahl der Primzahlen unter einer gegebenen Grösse',
@@ -85,9 +88,10 @@ export const works = [
 ];
 
 export const people = [
+  ...additionalPeople,
   {id:'riemann',name:'Bernhard Riemann',note:'Author of both reading editions in this collection. The selected bibliography also includes his dissertation.',source:'https://www.maths.tcd.ie/pub/HistMath/People/Riemann/'},
   {id:'jacobi',name:'Carl Gustav Jacob Jacobi',note:'Riemann explicitly cites his book at p. 184 when transforming the theta series.',source:'https://doi.org/10.3931/e-rara-3926'},
-  {id:'euler',name:'Leonhard Euler',note:'Credited for the product over primes that starts the 1859 argument. The selected work below is an editorial bibliographic identification, not a title cited by Riemann.',source:'https://scholarlycommons.pacific.edu/euler-works/72/'},
+  {id:'euler',name:'Leonhard Euler',note:'Credited for the product over primes that starts the 1859 argument. The selected bibliography also covers reciprocal series, the bridges problem, and residues of powers. Riemann does not identify a particular Euler publication in that opening attribution.',source:'https://scholarlycommons.pacific.edu/euler-works/72/'},
   {id:'gauss',name:'Carl Friedrich Gauss',note:'Named in the opening of the 1859 paper and, with Goldschmidt, in the numerical comparison near its end. His geometry paper below is selected bibliography, not a citation extracted from the 1859 paper.',source:sources.german1859+'#page=10'},
   {id:'dirichlet',name:'Peter Gustav Lejeune Dirichlet',note:'Named in Riemann’s opening acknowledgment of earlier interest in prime numbers. No particular Dirichlet publication is identified there.',source:sources.german1859+'#page=2'},
   {id:'fourier',name:'Joseph Fourier',note:'Riemann invokes Fourier’s theorem in his inversion argument. The theorem is not accompanied by a title or page citation.',source:sources.german1859+'#page=6'},
@@ -105,6 +109,7 @@ export const people = [
 // Only direct, checked work-to-work citations belong here. Reverse lists are
 // derived from these edges; related works and editorial sources stay separate.
 export const citations = [
+  ...additionalCitations,
   {from:'riemann-1859',to:'jacobi-1829',locator:'German transcription, p. 3 (PDF p. 4), “Jacobi, Fund. S. 184”',url:sources.german1859+'#page=4',anchor:'theta',evidence:'Riemann supplies the author, abbreviated title, and page in the theta transformation passage.'},
   {from:'mangoldt-1895',to:'riemann-1859',locator:'Digitized volume, p. 255, opening paragraph and footnote **',url:sources.mangoldt1895,evidence:'The opening names Riemann’s paper; the footnote identifies the November 1859 publication and collected editions.'},
   {from:'mangoldt-1895',to:'hadamard-1893',locator:'Digitized volume, p. 255, opening paragraph and footnote ***',url:sources.mangoldt1895,evidence:'Von Mangoldt names Hadamard’s article and gives its journal, year, volume, and pages.'},
@@ -150,6 +155,7 @@ export const concepts = [
 ];
 
 export const bibliographicFields = {
+  ...additionalBibliographicFields,
   'riemann-1859':{type:'article',journal:'Monatsberichte der Berliner Akademie',pages:'671--680',month:'November'},
   'riemann-1854':{type:'unpublished',note:'Habilitation lecture, Göttingen, 1854; published posthumously, linked offprint 1867'},
   'riemann-1851':{type:'phdthesis',school:'Universität Göttingen'},

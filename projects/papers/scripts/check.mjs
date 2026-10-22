@@ -4,7 +4,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {introduction,lineElement} from '../src/riemann.mjs';
 import {passages1859} from '../src/riemann-1859.mjs';
-import {works,people,concepts,citations,bibliographicFields} from '../src/catalog.mjs';
+import {works,people,concepts,citations,bibliographicFields,englishSources} from '../src/catalog.mjs';
 import {statements1859} from '../src/statements-1859.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url)),dist=path.join(root,'dist');
 const katexContext={};
@@ -66,9 +66,25 @@ for(const marker of ['zero-count','formula','hypothesis','German p. 9','without 
 for(const concept of concepts)if(!idsByPage.get(path.join(dist,'riemann-1859/index.html')).has(concept.anchor))throw Error(`Concept has no source passage: ${concept.id}`);
 const data=JSON.parse(fs.readFileSync(path.join(dist,'catalog.json'),'utf8'));
 if(data.citations.length!==citations.length)throw Error('Export lost citation data');
+const englishShelf=pages.get(path.join(dist,'english/index.html'));
+let checkedEnglish=0;
+for(const [id,source] of Object.entries(englishSources)){
+  if(!workIds.has(id))throw Error(`English source has no work record: ${id}`);
+  if(!['inspected','listed'].includes(source.status))throw Error(`Unknown source-check status: ${id}`);
+  if(!source.url.startsWith('https://')||!source.evidenceUrl.startsWith('https://')||!source.checked||!source.scope)throw Error(`Missing English-source provenance: ${id}`);
+  const record=pages.get(path.join(dist,id,'index.html'));
+  if(!record.includes('id="english-text"'))throw Error(`Work record omits its English access information: ${id}`);
+  if(source.status==='inspected'){
+    checkedEnglish++;
+    if(!source.translator)throw Error(`Checked translation lacks a credit: ${id}`);
+    if(!englishShelf.includes(`data-work="${id}"`))throw Error(`Checked English source missing from shelf: ${id}`);
+  }else if(englishShelf.includes(`data-work="${id}"`))throw Error(`Uninspected translation incorrectly appears on the checked shelf: ${id}`);
+  if(data.englishSources[id]?.status!==source.status)throw Error(`Export lost source-check status: ${id}`);
+}
+if((englishShelf.match(/data-work=/g)||[]).length!==checkedEnglish)throw Error('English-shelf count does not match checked sources');
 const css=fs.readFileSync(path.join(root,'public/style.css'),'utf8')+fs.readFileSync(path.join(root,'public/vendor/katex/katex.min.css'),'utf8');
 for(const match of css.matchAll(/url\(['"]?([^)'"\s]+)['"]?\)/g)){
   const font=match[1],target=path.join(root,'public',font.startsWith('fonts/')?'vendor/katex/'+font:font);
   if(!fs.existsSync(target))throw Error(`Missing font ${font}`);
 }
-console.log(`Validated ${pages.size} pages, ${formulas} LaTeX expressions, ${links} local links, ${citations.length} bidirectional citations, and ${statements1859.length} precise statements.`);
+console.log(`Validated ${pages.size} pages, ${formulas} LaTeX expressions, ${links} local links, ${citations.length} bidirectional citations, ${checkedEnglish} checked English sources, and ${statements1859.length} precise statements.`);
