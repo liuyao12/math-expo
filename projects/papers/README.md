@@ -10,7 +10,7 @@ Euler’s reciprocal-series paper (E41, written in 1735 and printed in 1740) is 
 
 The catalogue currently contains twenty work records, twenty-one people, fourteen paper-specific mathematical references, and eight verified citation edges. A work record is not a claim that its full text has been translated or edited.
 
-The [English-text shelf](https://liuyao12.github.io/math-expo/papers/english/) offers eleven checked English translations, including Euler, Gauss, Fourier, Dirichlet, Riemann, Dedekind, Hilbert, and Noether. Every source has a translator credit, a translation date or an explicit undated label, scope, and evidence. Two archive-listed translation leads are separated from the checked shelf. “Checked” means that the English text and credit were inspected; it does not claim full collation or mathematical review.
+The unified [work catalogue](https://liuyao12.github.io/math-expo/papers/) presents all works together, with author, original-language, decade, inclusive year-range, and reading-option filters. Search covers original and English titles, summaries, translators, and editorial modern terminology. Filter state is retained in the URL. The eleven inspected translation sources keep their provenance in each work’s source panel; two uninspected leads remain labelled as such. “Inspected” is a source check, not a separate class of mathematical works or a claim of full collation.
 
 ## Develop
 
@@ -33,6 +33,7 @@ The collection is generated as static HTML in `dist/`. All links are relative, s
 - `src/figures-1859.mjs`: contour, strip, and counting diagrams.
 - `src/euler-1740.mjs`, `src/statements-euler-1740.mjs`, `src/figures-euler-1740.mjs`, `src/concepts-euler-1740.mjs`: Euler’s full rendering, commentary, proofs, drawings, and scoped references.
 - `scripts/check-euler-arithmetic.mjs`: independent exact coefficient extraction and checks of the numerical formulas, not verification of the analytic proofs.
+- `src/discovery.mjs`: editorial discovery terms and shared filtering logic, also exported in the catalogue data.
 - `public/`: styles, reader interactions, and vendored math assets.
 - `scripts/build.mjs`: generates the collection and paper pages.
 - `scripts/check.mjs`: checks all generated pages, LaTeX, cross-page anchors, citation reciprocity, English-source provenance and shelf membership, bibliographic exports, local assets, and JavaScript syntax.

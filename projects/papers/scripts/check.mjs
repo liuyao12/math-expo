@@ -9,10 +9,12 @@ import {statements1859} from '../src/statements-1859.mjs';
 import {passagesEuler} from '../src/euler-1740.mjs';
 import {statementsEuler} from '../src/statements-euler-1740.mjs';
 import './check-euler-arithmetic.mjs';
+import {discoveryTerms,matchesWork} from '../src/discovery.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url)),dist=path.join(root,'dist');
 const katexContext={};
 vm.runInNewContext(fs.readFileSync(path.join(root,'public/vendor/katex/katex.min.js'),'utf8'),katexContext);
 new vm.Script(fs.readFileSync(path.join(root,'public/reader.js'),'utf8'));
+new vm.Script(fs.readFileSync(path.join(dist,'discovery.js'),'utf8'));
 const pages=new Map();
 function walk(dir){for(const entry of fs.readdirSync(dir,{withFileTypes:true})){const p=path.join(dir,entry.name);if(entry.isDirectory())walk(p);else if(entry.name.endsWith('.html'))pages.set(p,fs.readFileSync(p,'utf8'));}}
 walk(dist);
@@ -73,7 +75,9 @@ if(passagesEuler.length!==19)throw Error('Euler reading must retain all 19 numbe
 for(const statement of statementsEuler)if(!euler.includes(`id="${statement.id}"`)||!data.statements['euler-1740'].some(s=>s.id===statement.id))throw Error(`Euler proof missing: ${statement.id}`);
 for(const marker of ['Latin text','Ian Bruce','not yet been collated','paired','without proof-assistant verification'])if(!euler.includes(marker))throw Error(`Euler edition lacks its source or proof qualification: ${marker}`);
 if(data.citations.length!==citations.length)throw Error('Export lost citation data');
-const englishShelf=pages.get(path.join(dist,'english/index.html'));
+const catalogue=pages.get(path.join(dist,'index.html'));
+if((catalogue.match(/data-work=/g)||[]).length!==works.length)throw Error('Every work must appear exactly once in the unified catalogue');
+for(const id of ['work-search','work-author','work-language','work-decade','work-from','work-to','work-access'])if(!idsByPage.get(path.join(dist,'index.html')).has(id))throw Error(`Missing catalogue filter: ${id}`);
 let checkedEnglish=0;
 for(const [id,source] of Object.entries(englishSources)){
   if(!workIds.has(id))throw Error(`English source has no work record: ${id}`);
@@ -84,11 +88,24 @@ for(const [id,source] of Object.entries(englishSources)){
   if(source.status==='inspected'){
     checkedEnglish++;
     if(!source.translator)throw Error(`Checked translation lacks a credit: ${id}`);
-    if(!englishShelf.includes(`data-work="${id}"`))throw Error(`Checked English source missing from shelf: ${id}`);
-  }else if(englishShelf.includes(`data-work="${id}"`))throw Error(`Uninspected translation incorrectly appears on the checked shelf: ${id}`);
+    if(!catalogue.includes(`data-work="${id}"`))throw Error(`English source missing from unified catalogue: ${id}`);
+  }
   if(data.englishSources[id]?.status!==source.status)throw Error(`Export lost source-check status: ${id}`);
 }
-if((englishShelf.match(/data-work=/g)||[]).length!==checkedEnglish)throw Error('English-shelf count does not match checked sources');
+const searchable=works.map(w=>({...w,searchText:[w.title,w.originalTitle,w.summary,w.year,w.language,...(discoveryTerms[w.id]??[]),englishSources[w.id]?.translator??'',...w.authors.map(id=>people.find(p=>p.id===id).name)].join(' '),english:englishSources[w.id]?.status==='inspected'||w.language==='English',edited:Boolean(w.edition)}));
+for(const w of works)if(!discoveryTerms[w.id]?.length||!data.discoveryTerms[w.id]?.length)throw Error(`Missing editorial search terms: ${w.id}`);
+const found=f=>searchable.filter(w=>matchesWork(w,f)).map(w=>w.id).sort().join(',');
+for(const [filters,expected] of [
+ [{q:'Basel problem',author:'euler'},'euler-1740'],
+ [{author:'riemann',decade:'1850',language:'German',access:'edited'},'riemann-1854,riemann-1859'],
+ [{q:'conservation laws'},'noether-1918'],
+ [{q:'konigsberg bridges'},'euler-1741'],
+ [{from:'1854',to:'1859',author:'riemann'},'riemann-1854,riemann-1859'],
+ [{author:'gohl'},'riesel-gohl-1970'],
+ [{from:'1900',to:'1800'},''],
+ [{author:'euler',language:'French'},'']
+])if(found(filters)!==expected)throw Error(`Unexpected combined catalogue results: ${JSON.stringify(filters)} → ${found(filters)}`);
+console.log('Validated combined author, original-language, decade, inclusive date-range, access, and modern-keyword filters.');
 const css=fs.readFileSync(path.join(root,'public/style.css'),'utf8')+fs.readFileSync(path.join(root,'public/vendor/katex/katex.min.css'),'utf8');
 for(const match of css.matchAll(/url\(['"]?([^)'"\s]+)['"]?\)/g)){
   const font=match[1],target=path.join(root,'public',font.startsWith('fonts/')?'vendor/katex/'+font:font);

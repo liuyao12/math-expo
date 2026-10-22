@@ -1,0 +1,41 @@
+// Editorial discovery terms. These identify the subject for modern readers;
+// they are not substituted into the author's text or definitions.
+export const discoveryTerms={
+ 'euler-1740':['Basel problem','reciprocal series','sine product','zeta values','Dirichlet beta values','Newton identities'],
+ 'euler-1741':['Königsberg bridges','graph theory','Eulerian paths','Eulerian circuits','networks'],
+ 'euler-1744':['infinite series','Euler product','prime numbers','zeta function'],
+ 'euler-1761':['modular arithmetic','Fermat’s little theorem','residues','number theory'],
+ 'fourier-1822':['heat equation','Fourier series','partial differential equations','mathematical physics'],
+ 'gauss-1828':['differential geometry','Gaussian curvature','Theorema Egregium','intrinsic geometry','surfaces'],
+ 'jacobi-1829':['elliptic functions','theta functions','Jacobi transformation'],
+ 'dirichlet-1837':['primes in arithmetic progressions','Dirichlet theorem','L-functions','analytic number theory'],
+ 'riemann-1851':['complex analysis','Riemann surfaces','holomorphic functions','conformal mapping'],
+ 'riemann-1854':['Riemannian geometry','manifolds','metric tensor','line element','curvature'],
+ 'riemann-1859':['Riemann hypothesis','zeta function','prime counting','explicit formula','analytic number theory'],
+ 'dedekind-1872':['Dedekind cuts','real numbers','continuity','foundations of analysis'],
+ 'dedekind-1888':['natural numbers','Dedekind infinity','induction','chains','foundations of arithmetic'],
+ 'hadamard-1893':['entire functions','Hadamard factorization','zeta function','zeros'],
+ 'mangoldt-1895':['explicit formula','Riemann von Mangoldt formula','zero counting','prime counting'],
+ 'hilbert-1900':['Hilbert problems','foundations','mathematical problems'],
+ 'noether-1918':['Noether theorem','symmetry','conservation laws','calculus of variations'],
+ 'riesel-gohl-1970':['computational number theory','prime counting','explicit formula','zeta zeros'],
+ 'monks-2019':['Basel problem','history of mathematics','calculus','reciprocal series'],
+ 'habermann-2026':['Riemann manuscript','history of geometry','Riemannian geometry'],
+};
+
+export const normalizeSearch=value=>String(value).normalize('NFD').replace(/\p{M}/gu,'').toLocaleLowerCase().replace(/[^\p{L}\p{N}]+/gu,' ').trim();
+
+// Shared by the browser and the functional checks.
+export function matchesWork(work,filters){
+ const words=normalizeSearch(filters.q??'').split(/\s+/).filter(Boolean);
+ const search=normalizeSearch(work.searchText);
+ if(!words.every(word=>search.includes(word)))return false;
+ if(filters.author&&!work.authors.includes(filters.author))return false;
+ if(filters.language&&work.language!==filters.language)return false;
+ if(filters.decade&&Math.floor(work.year/10)*10!==Number(filters.decade))return false;
+ if(filters.from&&work.year<Number(filters.from))return false;
+ if(filters.to&&work.year>Number(filters.to))return false;
+ if(filters.access==='english'&&!work.english)return false;
+ if(filters.access==='edited'&&!work.edited)return false;
+ return true;
+}

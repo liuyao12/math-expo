@@ -38,23 +38,35 @@
     },{rootMargin:'-8% 0px -65% 0px',threshold:0});
     for(const a of links){const section=document.querySelector(a.hash);if(section)observer.observe(section);}
   }
-  const search=document.querySelector('#work-search');
-  if(search){
-    const items=[...document.querySelectorAll('[data-search-item]')];
-    const access=document.querySelector('#work-access');
-    function filterWorks(){
-      const words=search.value.toLocaleLowerCase().trim().split(/\s+/).filter(Boolean);
-      const mode=access?.value??'all';
-      let count=0;
-      for(const item of items){
-        const matchesAccess=mode==='all'||(mode==='english'&&item.dataset.english==='true')||(mode==='edited'&&item.dataset.edited==='true');
-        item.hidden=!matchesAccess||!words.every(word=>item.dataset.searchText.includes(word));
-        if(!item.hidden)count++;
+  const form=document.querySelector('#catalogue-filters');
+  if(form){
+    const fields={q:form.querySelector('#work-search'),...Object.fromEntries(['author','language','decade','from','to','access'].map(key=>[key,form.elements.namedItem(key)]))};
+    const items=[...document.querySelectorAll('[data-search-item]')].map(element=>({element,searchText:element.dataset.searchText,authors:element.dataset.authors.split(' '),year:Number(element.dataset.year),language:element.dataset.language,english:element.dataset.english==='true',edited:element.dataset.edited==='true'}));
+    function restore(){
+      const params=new URLSearchParams(location.search);
+      for(const [key,field] of Object.entries(fields)){
+        const value=params.get(key)??'';
+        field.value=field.tagName==='SELECT'&&![...field.options].some(o=>o.value===value)?'':value;
       }
-      document.querySelector('#search-status').textContent=count?`${count} work ${count===1?'record':'records'}`:'No matching works. Try another title, author, or year.';
     }
-    search.addEventListener('input',filterWorks);
-    access?.addEventListener('change',filterWorks);
+    function filterWorks(sync=true){
+      const filters=Object.fromEntries(Object.entries(fields).map(([key,field])=>[key,field.value]));
+      let count=0;
+      for(const item of items){item.element.hidden=!window.paperDiscovery.matchesWork(item,filters);if(!item.element.hidden)count++;}
+      document.querySelector('#search-status').textContent=`${count} of ${items.length} works`;
+      document.querySelector('#no-results').hidden=count!==0;
+      if(sync){
+        const url=new URL(location.href);
+        for(const [key,value] of Object.entries(filters)){if(value)url.searchParams.set(key,value);else url.searchParams.delete(key);}
+        history.replaceState(null,'',url.pathname+url.search+url.hash);
+      }
+    }
+    form.addEventListener('submit',event=>event.preventDefault());
+    form.addEventListener('input',()=>filterWorks());
+    form.addEventListener('change',()=>filterWorks());
+    form.addEventListener('reset',()=>{for(const field of Object.values(fields))field.value='';filterWorks();});
+    window.addEventListener('popstate',()=>{restore();filterWorks(false);});
+    restore();filterWorks(false);
   }
   for(const button of document.querySelectorAll('[data-copy]')){
     button.addEventListener('click',async()=>{
