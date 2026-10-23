@@ -30,7 +30,7 @@ function inline(s){s=macros(s);let out='';for(let i=0;i<s.length;){const c=s[i];
  if(['PageSep','Note'].includes(cmd)){const [,j]=group(s,i);i=j;continue;}
  if(cmd==='Art'||cmd==='Arts'){const [v,j]=group(s,i);i=j;out+=`<a href="#g28-${v}">Article ${v}</a>`;if(cmd==='Arts'){const [w,k]=group(s,i);i=k;out+=` and <a href="#g28-${w}">${w}</a>`;}continue;}
  if(cmd==='Par'){const [v,j]=group(s,i);i=j;out+=token('<p class="source-part-label">'+esc(v)+'</p>',true);continue;}
- if(cmd==='eg'){out+='for example';continue;}if(cmd==='ie'){out+='that is';continue;}if(cmd==='QEA'){out+='<em>This was to be shown.</em>';continue;}
+ if(cmd==='eg'){out+='for example';continue;}if(cmd==='ie'){out+='that is';continue;}if(cmd==='QEA'){out+='<em>Q.E.A. (a contradiction).</em>';continue;}
  if(cmd==='NoteMark'){out+=`<a class="source-footnote-ref" href="${url}#page=58" target="_blank" rel="noopener">1902 notes ↗</a>`;continue;}
  if(cmd==='setlength'){const [,j]=group(s,i);const [,k]=group(s,j);i=k;continue;}
  if(cmd==='footnote'){const [v,j]=group(s,i);i=j;const id='g28-fn-'+(footnotes.length+1);footnotes.push({id,html:blocks(v)});out+=`<a class="source-footnote-ref" href="#${id}">Source footnote</a>`;continue;}

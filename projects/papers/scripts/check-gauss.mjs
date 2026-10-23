@@ -42,6 +42,8 @@ for(const r of passagesGauss){assert(html.includes(`id="${r.id}"`));assert(html.
 for(const p of statementsGauss){assert(html.includes(`id="${p.id}"`));assert(catalog.statements['gauss-1828'].some(s=>s.id===p.id));}
 for(const s of ['regular two-dimensional','without proof-assistant verification','higher-order coefficients','source-g28-fn-1','g28-fn-1','Articles 1–29','Morehead','Hiltebeitel','gauss-source-evidence.json'])assert(html.includes(s),'Missing scope or coverage marker '+s);
 assert.equal(catalog.works.find(w=>w.id==='gauss-1828').edition,'Complete modern-English reading');
+assert(html.includes('This is a contradiction.'));
+assert(html.includes('Q.E.A. (a contradiction).'));
 assert.equal(catalog.people.length,new Set(catalog.people.map(p=>p.id)).size);
 assert(catalog.englishSources['gauss-1828'].readingBasis);
 // Great-circle samples in the diagram really lie on the coordinate sphere.
