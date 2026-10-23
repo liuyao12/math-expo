@@ -2,7 +2,8 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {introduction,lineElement} from '../src/riemann.mjs';
+import {passages1854,sections1854,source1854} from '../src/riemann-complete.mjs';
+import './check-riemann-1854.mjs';
 import {passages1859} from '../src/riemann-1859.mjs';
 import {works,people,concepts,citations,bibliographicFields,englishSources} from '../src/catalog.mjs';
 import {statements1859} from '../src/statements-1859.mjs';
@@ -48,7 +49,7 @@ for(const [file,html] of pages){
     links++;
   }
 }
-for(const [work,rows] of [['riemann-1854',[...introduction,...lineElement]],['riemann-1859',passages1859],['euler-1740',passagesEuler]]){
+for(const [work,rows] of [['riemann-1854',passages1854],['riemann-1859',passages1859],['euler-1740',passagesEuler]]){
   const ids=idsByPage.get(path.join(dist,work,'index.html'));
   for(const row of rows)if(!ids.has(row.id))throw Error(`Missing ${work} passage ${row.id}`);
 }

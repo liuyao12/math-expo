@@ -1,3 +1,4 @@
+import {people1854,concepts1854,citations1854} from './riemann-1854-catalog.mjs';
 import {additionalWorks,additionalPeople,additionalBibliographicFields,additionalCitations,englishSources} from './translation-sources.mjs';
 export {englishSources};
 import {conceptsEuler} from './concepts-euler-1740.mjs';
@@ -37,8 +38,8 @@ export const works = [
     title: 'On the hypotheses underlying geometry',
     originalTitle: 'Ueber die Hypothesen, welche der Geometrie zu Grunde liegen',
     publication: 'Habilitation lecture, Göttingen, 1854. Published posthumously; linked offprint: Göttingen, 1867.',
-    language: 'German', edition: 'Modern-English reading sample',
-    summary: 'The introduction and the line element passage, with geometric drawings in the margins.',
+    language: 'German', edition: 'Complete modern-English reading',
+    summary: 'The complete geometry lecture: dimensions, the line element, curvature, and physical space, with scoped commentary and ten margin drawings.',
     links: [{label: 'Göttingen manuscript', url: 'https://gdz.sub.uni-goettingen.de/id/DE-611-HS-3206822'}, {label: 'Original print · 1867', url: 'https://doi.org/10.3931/e-rara-49481'}, {label: 'Clifford’s English translation · 1873', url: 'https://www.maths.tcd.ie/pub/HistMath/People/Riemann/Geom/WKCGeom.html'}] },
   { id: 'riemann-1851', authors: ['riemann'], year: 1851,
     title: 'Foundations for a general theory of functions of a complex variable',
@@ -101,6 +102,7 @@ export const works = [
 ];
 
 export const people = [
+  ...people1854,
   ...peopleResidues,
   ...additionalPeople,
   ...peopleDedekind,
@@ -120,12 +122,13 @@ export const people = [
   {id:'habermann',name:'Katharina Habermann',note:'Author of the manuscript study recorded below.',source:'https://doi.org/10.1007/s00591-026-00416-0'},
   {id:'euclid',name:'Euclid',note:'The selected source is an edition of the Elements, with Greek text and an English translation.',source:'https://farside.ph.utexas.edu/Books/Euclid/Elements.pdf',bibliography:[{title:'Elements · Greek text and modern English translation by Richard Fitzpatrick',url:'https://farside.ph.utexas.edu/Books/Euclid/Elements.pdf'}]},
   {id:'legendre',name:'Adrien-Marie Legendre',note:'The selected source is the fifth edition of the Elements of Geometry, published in 1804.',source:'https://doi.org/10.3931/e-rara-61309',bibliography:[{title:'Elements of geometry · linked fifth edition, 1804 (French)',url:'https://doi.org/10.3931/e-rara-61309'}]},
-  {id:'clifford',name:'William Kingdon Clifford',note:'Translator of the geometry lecture into English in 1873. The reading sample’s modern-English revision is based on that public-domain translation.',source:'https://www.maths.tcd.ie/pub/HistMath/People/Riemann/Geom/WKCGeom.html',bibliography:[{title:'On the hypotheses which lie at the bases of geometry · English translation, Nature, 1873',url:'https://www.maths.tcd.ie/pub/HistMath/People/Riemann/Geom/WKCGeom.html'}]},
+  {id:'clifford',name:'William Kingdon Clifford',note:'Translator of the geometry lecture into English in 1873. The complete reading’s modern-English revision is based on that public-domain translation.',source:'https://www.maths.tcd.ie/pub/HistMath/People/Riemann/Geom/WKCGeom.html',bibliography:[{title:'On the hypotheses which lie at the bases of geometry · English translation, Nature, 1873',url:'https://www.maths.tcd.ie/pub/HistMath/People/Riemann/Geom/WKCGeom.html'}]},
 ];
 
 // Only direct, checked work-to-work citations belong here. Reverse lists are
 // derived from these edges; related works and editorial sources stay separate.
 export const citations = [
+  ...citations1854,
   ...citationsLogarithms,
   ...additionalCitations,
   {from:'riemann-1859',to:'jacobi-1829',locator:'German transcription, p. 3 (PDF p. 4), “Jacobi, Fund. S. 184”',url:sources.german1859+'#page=4',anchor:'theta',evidence:'Riemann supplies the author, abbreviated title, and page in the theta transformation passage.'},
@@ -136,6 +139,7 @@ export const citations = [
 ];
 
 export const concepts = [
+  ...concepts1854,
   ...conceptsEuler,
   ...conceptsDedekind,
   ...conceptsEulerMore,

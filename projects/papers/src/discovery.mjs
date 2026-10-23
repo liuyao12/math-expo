@@ -13,7 +13,7 @@ export const discoveryTerms={
  'jacobi-1829':['elliptic functions','theta functions','Jacobi transformation'],
  'dirichlet-1837':['primes in arithmetic progressions','Dirichlet theorem','L-functions','analytic number theory'],
  'riemann-1851':['complex analysis','Riemann surfaces','holomorphic functions','conformal mapping'],
- 'riemann-1854':['Riemannian geometry','manifolds','metric tensor','line element','curvature'],
+ 'riemann-1854':['Riemannian geometry','manifolds','metric tensor','line element','curvature','sectional curvature','normal coordinates','constant curvature','intrinsic geometry','physical space','finite and unbounded'],
  'riemann-1859':['Riemann hypothesis','zeta function','prime counting','explicit formula','analytic number theory'],
  'dedekind-1872':['Dedekind cuts','real numbers','continuity','foundations of analysis'],
  'dedekind-1888':['natural numbers','Dedekind infinity','induction','chains','foundations of arithmetic'],
