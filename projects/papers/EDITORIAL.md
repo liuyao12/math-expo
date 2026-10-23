@@ -6,6 +6,16 @@ The collection is intended for mathematical literature across authors, periods, 
 
 Every catalogue entry is intended eventually to have a complete on-site reading, including entries first encountered as bibliography or citation evidence. Source-only records are interim states, not the finished product. A verified external English translation is source material, not a substitute for the reading edition. Progress labels must describe what is actually available.
 
+## Selection and pace
+
+Build across mathematicians, including Euler, Gauss, Riemann, Poincaré, and others. Prioritize epoch-making original papers that helped open a new field: a new kind of object, a new problem, or a method that made a new line of mathematics possible. Explain that importance through the paper’s actual content and historical evidence, rather than fame or citation counts alone.
+
+Work at a measured pace. Complete substantial readings and their mathematical commentary before expanding the catalogue indiscriminately. The availability of an English translation is useful sourcing evidence, not by itself a reason to add a work. Companion papers and later corrections belong where they illuminate the development of an argument, without becoming the collection’s organizing center.
+
+Within the recorded Analysis situs sequence, prioritize the main 1895 memoir ahead of the supplements. The five supplements remain distinct supporting works; their existence does not commit the immediate reading queue to completing the whole sequence before moving to another mathematician.
+
+Turing’s On Computable Numbers (1936–1937), together with its correction, and Gödel’s completeness (1930) and incompleteness (1931) papers belong on the priority shortlist. Preserve their original formulations and hypotheses; later textbook theorems are separate comparisons. These candidates do not become completed catalogue readings merely because their sources have been identified.
+
 ## Text and statements
 
 - Provide modern English. Identify the original edition and the translation basis, link existing translations, and distinguish a full rendering from selected passages. Keep substantive corrections visible rather than quietly making the author say something different.
