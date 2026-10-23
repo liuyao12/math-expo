@@ -13,7 +13,7 @@ import './check-euler-more.mjs';
 import './check-euler-1751.mjs';
 import './check-euler-1741.mjs';
 import './check-euler-1761.mjs';
-import {discoveryTerms,matchesWork} from '../src/discovery.mjs';
+import {discoveryTerms,matchesWork,facetCounts} from '../src/discovery.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url)),dist=path.join(root,'dist');
 const katexContext={};
 vm.runInNewContext(fs.readFileSync(path.join(root,'public/vendor/katex/katex.min.js'),'utf8'),katexContext);
@@ -107,12 +107,29 @@ for(const [filters,expected] of [
  [{q:'konigsberg bridges',access:'english'},'euler-1741'],
  [{from:'1854',to:'1859',author:'riemann'},'riemann-1854,riemann-1859'],
  [{author:'gohl'},'riesel-gohl-1970'],
+ [{author:['leibniz','johann-bernoulli']},'leibniz-bernoulli-1745'],
+ [{author:['euler','riemann'],language:['French','German'],decade:['1750','1850']},'euler-1751,riemann-1851,riemann-1854,riemann-1859'],
+ [{access:['edited','english'],q:'finite differences'},'euler-1761'],
  [{from:'1900',to:'1800'},''],
  [{author:'euler',language:'French'},'euler-1751'],
  [{q:'log(-1)',author:'euler',language:'French',access:'edited'},'euler-1751'],
  [{author:'johann-bernoulli',from:'1745',to:'1745'},'leibniz-bernoulli-1745']
 ])if(found(filters)!==expected)throw Error(`Unexpected combined catalogue results: ${JSON.stringify(filters)} → ${found(filters)}`);
 console.log('Validated combined author, original-language, decade, inclusive date-range, access, and modern-keyword filters.');
+const facetChoices={author:['euler','riemann','leibniz','johann-bernoulli'],language:['Latin','French','German','English'],decade:['1740','1750','1760','1850'],access:['english','edited']};
+const counts=facetCounts(searchable,{author:['euler','riemann']},facetChoices);
+if(JSON.stringify(counts.language)!==JSON.stringify({Latin:5,French:1,German:3,English:0}))throw Error('Facet counts must respect the other groups');
+if(counts.author.euler!==6||counts.author.riemann!==3||counts.author.leibniz!==1)throw Error('Author counts must leave their own selection out');
+const narrowed=facetCounts(searchable,{author:['euler','riemann'],language:['Latin','German']},facetChoices);
+if(narrowed.author.euler!==5||narrowed.author.riemann!==3||narrowed.decade['1750']!==0||narrowed.decade['1740']!==4)throw Error('Combined multi-select facet counts are incorrect');
+const emptyCounts=facetCounts(searchable,{q:'no such mathematical work zzz',author:['euler']},facetChoices);
+if(Object.values(emptyCounts).flatMap(Object.values).some(Boolean))throw Error('No-match query must give zero facet counts');
+const joint=searchable.filter(w=>matchesWork(w,{author:['leibniz','johann-bernoulli']}));
+if(joint.length!==1)throw Error('A coauthored work must not be counted twice');
+for(const key of Object.keys(facetChoices))if(!catalogue.includes(`data-facet="${key}"`))throw Error('Missing checkbox facet '+key);
+if(catalogue.includes('<select id="work-')||!catalogue.includes('catalogue-sidebar')||!catalogue.includes('id="active-filters"'))throw Error('Catalogue must use the sidebar and removable multi-select filters');
+console.log('Validated OR within facets, AND across facets, contextual counts, zero results, and coauthor deduplication.');
+
 const css=fs.readFileSync(path.join(root,'public/style.css'),'utf8')+fs.readFileSync(path.join(root,'public/vendor/katex/katex.min.css'),'utf8');
 for(const match of css.matchAll(/url\(['"]?([^)'"\s]+)['"]?\)/g)){
   const font=match[1],target=path.join(root,'public',font.startsWith('fonts/')?'vendor/katex/'+font:font);

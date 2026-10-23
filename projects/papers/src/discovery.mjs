@@ -33,12 +33,23 @@ export function matchesWork(work,filters){
  const words=normalizeSearch(filters.q??'').split(/\s+/).filter(Boolean);
  const search=normalizeSearch(work.searchText);
  if(!words.every(word=>search.includes(word)))return false;
- if(filters.author&&!work.authors.includes(filters.author))return false;
- if(filters.language&&work.language!==filters.language)return false;
- if(filters.decade&&Math.floor(work.year/10)*10!==Number(filters.decade))return false;
+ // Alternatives within one facet are joined by OR; different facets by AND.
+ // Scalars remain accepted for existing callers and older bookmarked URLs.
+ const selected=key=>[].concat(filters[key]??[]).filter(Boolean).map(String);
+ const authors=selected('author'),languages=selected('language'),decades=selected('decade'),access=selected('access');
+ if(authors.length&&!authors.some(author=>work.authors.includes(author)))return false;
+ if(languages.length&&!languages.includes(work.language))return false;
+ if(decades.length&&!decades.includes(String(Math.floor(work.year/10)*10)))return false;
  if(filters.from&&work.year<Number(filters.from))return false;
  if(filters.to&&work.year>Number(filters.to))return false;
- if(filters.access==='english'&&!work.english)return false;
- if(filters.access==='edited'&&!work.edited)return false;
+ if(access.length&&!access.some(value=>value==='english'?work.english:value==='edited'?work.edited:false))return false;
  return true;
+}
+
+// Count each alternative under the query and all OTHER facets. Keeping the
+// current facet out lets readers add alternatives without clearing it first.
+export function facetCounts(works,filters,choices){
+ return Object.fromEntries(Object.entries(choices).map(([key,values])=>[key,
+  Object.fromEntries(values.map(value=>[value,works.filter(work=>matchesWork(work,{...filters,[key]:[value]})).length]))
+ ]));
 }
