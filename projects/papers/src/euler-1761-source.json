@@ -1,0 +1,584 @@
+{
+  "work": "euler-1761",
+  "enestrom": "E262",
+  "checked": "2026-10-22",
+  "extent": "Complete paper, 78 numbered paragraphs and twenty theorems",
+  "original": {
+    "url": "https://math.dartmouth.edu/~euler/docs/originals/E262.pdf",
+    "sha256": "ae6e9979e8a68455cf7a3013d433e0e18fd5f6cc8910f7cc0c94c2e82d7e45cc",
+    "language": "Latin",
+    "publication": "Novi Commentarii 7 (1761), 49–82",
+    "pdfPages": 34,
+    "reading": "All pages read with OCR assistance; delicate formulas checked in rendered page images."
+  },
+  "comparison": {
+    "translator": "Jordan Bell",
+    "url": "https://arxiv.org/pdf/math/0608467v2",
+    "record": "https://arxiv.org/abs/math/0608467",
+    "sha256": "bb835d16845927f706b5988bd9ccfe1499988366c96deaf42549434eb39a2be7",
+    "creditDate": "2006-08-18",
+    "revision": "2007-08-05",
+    "pdfPages": 27,
+    "use": "Independent comparison; wording not reproduced."
+  },
+  "passages": [
+    {
+      "section": 1,
+      "id": "e262-1",
+      "printPage": 49,
+      "pdfPage": 1
+    },
+    {
+      "section": 2,
+      "id": "e262-2",
+      "printPage": 49,
+      "pdfPage": 1
+    },
+    {
+      "section": 3,
+      "id": "e262-3",
+      "printPage": 50,
+      "pdfPage": 2
+    },
+    {
+      "section": 4,
+      "id": "e262-4",
+      "printPage": 51,
+      "pdfPage": 3
+    },
+    {
+      "section": 5,
+      "id": "e262-5",
+      "printPage": 51,
+      "pdfPage": 3
+    },
+    {
+      "section": 6,
+      "id": "e262-6",
+      "printPage": 51,
+      "pdfPage": 3
+    },
+    {
+      "section": 7,
+      "id": "e262-7",
+      "printPage": 51,
+      "pdfPage": 3
+    },
+    {
+      "section": 8,
+      "id": "e262-8",
+      "printPage": 52,
+      "pdfPage": 4
+    },
+    {
+      "section": 9,
+      "id": "e262-9",
+      "printPage": 52,
+      "pdfPage": 4
+    },
+    {
+      "section": 10,
+      "id": "e262-10",
+      "printPage": 52,
+      "pdfPage": 4
+    },
+    {
+      "section": 11,
+      "id": "e262-11",
+      "printPage": 53,
+      "pdfPage": 5
+    },
+    {
+      "section": 12,
+      "id": "e262-12",
+      "printPage": 53,
+      "pdfPage": 5
+    },
+    {
+      "section": 13,
+      "id": "e262-13",
+      "printPage": 54,
+      "pdfPage": 6
+    },
+    {
+      "section": 14,
+      "id": "e262-14",
+      "printPage": 55,
+      "pdfPage": 7
+    },
+    {
+      "section": 15,
+      "id": "e262-15",
+      "printPage": 55,
+      "pdfPage": 7
+    },
+    {
+      "section": 16,
+      "id": "e262-16",
+      "printPage": 55,
+      "pdfPage": 7
+    },
+    {
+      "section": 17,
+      "id": "e262-17",
+      "printPage": 56,
+      "pdfPage": 8
+    },
+    {
+      "section": 18,
+      "id": "e262-18",
+      "printPage": 56,
+      "pdfPage": 8
+    },
+    {
+      "section": 19,
+      "id": "e262-19",
+      "printPage": 56,
+      "pdfPage": 8
+    },
+    {
+      "section": 20,
+      "id": "e262-20",
+      "printPage": 57,
+      "pdfPage": 9
+    },
+    {
+      "section": 21,
+      "id": "e262-21",
+      "printPage": 57,
+      "pdfPage": 9
+    },
+    {
+      "section": 22,
+      "id": "e262-22",
+      "printPage": 57,
+      "pdfPage": 9
+    },
+    {
+      "section": 23,
+      "id": "e262-23",
+      "printPage": 58,
+      "pdfPage": 10
+    },
+    {
+      "section": 24,
+      "id": "e262-24",
+      "printPage": 58,
+      "pdfPage": 10
+    },
+    {
+      "section": 25,
+      "id": "e262-25",
+      "printPage": 58,
+      "pdfPage": 10
+    },
+    {
+      "section": 26,
+      "id": "e262-26",
+      "printPage": 59,
+      "pdfPage": 11
+    },
+    {
+      "section": 27,
+      "id": "e262-27",
+      "printPage": 59,
+      "pdfPage": 11
+    },
+    {
+      "section": 28,
+      "id": "e262-28",
+      "printPage": 60,
+      "pdfPage": 12
+    },
+    {
+      "section": 29,
+      "id": "e262-29",
+      "printPage": 61,
+      "pdfPage": 13
+    },
+    {
+      "section": 30,
+      "id": "e262-30",
+      "printPage": 61,
+      "pdfPage": 13
+    },
+    {
+      "section": 31,
+      "id": "e262-31",
+      "printPage": 61,
+      "pdfPage": 13
+    },
+    {
+      "section": 32,
+      "id": "e262-32",
+      "printPage": 61,
+      "pdfPage": 13
+    },
+    {
+      "section": 33,
+      "id": "e262-33",
+      "printPage": 61,
+      "pdfPage": 13
+    },
+    {
+      "section": 34,
+      "id": "e262-34",
+      "printPage": 62,
+      "pdfPage": 14
+    },
+    {
+      "section": 35,
+      "id": "e262-35",
+      "printPage": 62,
+      "pdfPage": 14
+    },
+    {
+      "section": 36,
+      "id": "e262-36",
+      "printPage": 63,
+      "pdfPage": 15
+    },
+    {
+      "section": 37,
+      "id": "e262-37",
+      "printPage": 63,
+      "pdfPage": 15
+    },
+    {
+      "section": 38,
+      "id": "e262-38",
+      "printPage": 65,
+      "pdfPage": 17
+    },
+    {
+      "section": 39,
+      "id": "e262-39",
+      "printPage": 65,
+      "pdfPage": 17
+    },
+    {
+      "section": 40,
+      "id": "e262-40",
+      "printPage": 65,
+      "pdfPage": 17
+    },
+    {
+      "section": 41,
+      "id": "e262-41",
+      "printPage": 66,
+      "pdfPage": 18
+    },
+    {
+      "section": 42,
+      "id": "e262-42",
+      "printPage": 67,
+      "pdfPage": 19
+    },
+    {
+      "section": 43,
+      "id": "e262-43",
+      "printPage": 67,
+      "pdfPage": 19
+    },
+    {
+      "section": 44,
+      "id": "e262-44",
+      "printPage": 67,
+      "pdfPage": 19
+    },
+    {
+      "section": 45,
+      "id": "e262-45",
+      "printPage": 69,
+      "pdfPage": 21
+    },
+    {
+      "section": 46,
+      "id": "e262-46",
+      "printPage": 69,
+      "pdfPage": 21
+    },
+    {
+      "section": 47,
+      "id": "e262-47",
+      "printPage": 69,
+      "pdfPage": 21
+    },
+    {
+      "section": 48,
+      "id": "e262-48",
+      "printPage": 69,
+      "pdfPage": 21
+    },
+    {
+      "section": 49,
+      "id": "e262-49",
+      "printPage": 70,
+      "pdfPage": 22
+    },
+    {
+      "section": 50,
+      "id": "e262-50",
+      "printPage": 70,
+      "pdfPage": 22
+    },
+    {
+      "section": 51,
+      "id": "e262-51",
+      "printPage": 71,
+      "pdfPage": 23
+    },
+    {
+      "section": 52,
+      "id": "e262-52",
+      "printPage": 71,
+      "pdfPage": 23
+    },
+    {
+      "section": 53,
+      "id": "e262-53",
+      "printPage": 71,
+      "pdfPage": 23
+    },
+    {
+      "section": 54,
+      "id": "e262-54",
+      "printPage": 72,
+      "pdfPage": 24
+    },
+    {
+      "section": 55,
+      "id": "e262-55",
+      "printPage": 72,
+      "pdfPage": 24
+    },
+    {
+      "section": 56,
+      "id": "e262-56",
+      "printPage": 73,
+      "pdfPage": 25
+    },
+    {
+      "section": 57,
+      "id": "e262-57",
+      "printPage": 73,
+      "pdfPage": 25
+    },
+    {
+      "section": 58,
+      "id": "e262-58",
+      "printPage": 73,
+      "pdfPage": 25
+    },
+    {
+      "section": 59,
+      "id": "e262-59",
+      "printPage": 73,
+      "pdfPage": 25
+    },
+    {
+      "section": 60,
+      "id": "e262-60",
+      "printPage": 74,
+      "pdfPage": 26
+    },
+    {
+      "section": 61,
+      "id": "e262-61",
+      "printPage": 75,
+      "pdfPage": 27
+    },
+    {
+      "section": 62,
+      "id": "e262-62",
+      "printPage": 75,
+      "pdfPage": 27
+    },
+    {
+      "section": 63,
+      "id": "e262-63",
+      "printPage": 75,
+      "pdfPage": 27
+    },
+    {
+      "section": 64,
+      "id": "e262-64",
+      "printPage": 76,
+      "pdfPage": 28
+    },
+    {
+      "section": 65,
+      "id": "e262-65",
+      "printPage": 76,
+      "pdfPage": 28
+    },
+    {
+      "section": 66,
+      "id": "e262-66",
+      "printPage": 76,
+      "pdfPage": 28
+    },
+    {
+      "section": 67,
+      "id": "e262-67",
+      "printPage": 76,
+      "pdfPage": 28
+    },
+    {
+      "section": 68,
+      "id": "e262-68",
+      "printPage": 77,
+      "pdfPage": 29
+    },
+    {
+      "section": 69,
+      "id": "e262-69",
+      "printPage": 77,
+      "pdfPage": 29
+    },
+    {
+      "section": 70,
+      "id": "e262-70",
+      "printPage": 77,
+      "pdfPage": 29
+    },
+    {
+      "section": 71,
+      "id": "e262-71",
+      "printPage": 78,
+      "pdfPage": 30
+    },
+    {
+      "section": 72,
+      "id": "e262-72",
+      "printPage": 78,
+      "pdfPage": 30
+    },
+    {
+      "section": 73,
+      "id": "e262-73",
+      "printPage": 80,
+      "pdfPage": 32
+    },
+    {
+      "section": 74,
+      "id": "e262-74",
+      "printPage": 80,
+      "pdfPage": 32
+    },
+    {
+      "section": 75,
+      "id": "e262-75",
+      "printPage": 80,
+      "pdfPage": 32
+    },
+    {
+      "section": 76,
+      "id": "e262-76",
+      "printPage": 80,
+      "pdfPage": 32
+    },
+    {
+      "section": 77,
+      "id": "e262-77",
+      "printPage": 81,
+      "pdfPage": 33
+    },
+    {
+      "section": 78,
+      "id": "e262-78",
+      "printPage": 81,
+      "pdfPage": 33
+    }
+  ],
+  "theorems": {
+    "1": 1,
+    "2": 7,
+    "3": 12,
+    "4": 16,
+    "5": 20,
+    "6": 24,
+    "7": 27,
+    "8": 28,
+    "9": 35,
+    "10": 37,
+    "11": 41,
+    "12": 44,
+    "13": 48,
+    "14": 49,
+    "15": 54,
+    "16": 61,
+    "17": 64,
+    "18": 68,
+    "19": 72,
+    "20": 76
+  },
+  "corrections": [
+    {
+      "section": 2,
+      "note": "Comparison translation omits the base in the progression; Latin includes it."
+    },
+    {
+      "section": 11,
+      "note": "Latin multiplier 284, not the comparison translation’s 288."
+    },
+    {
+      "section": 22,
+      "note": "Consecutive even powers; odd powers repeat one other remainder."
+    },
+    {
+      "section": 26,
+      "note": "Add odd-prime hypothesis when distinguishing +1 and -1."
+    },
+    {
+      "section": 31,
+      "note": "Divide exponent by lambda, as in Latin; comparison has p."
+    },
+    {
+      "section": 33,
+      "note": "Second printed §32 numbered §33 in consecutive sequence."
+    },
+    {
+      "section": 37,
+      "note": "Reduce a negative exponent difference to a nonnegative exponent modulo the period."
+    },
+    {
+      "section": 44,
+      "note": "Normalize exponent letter in the inequality to lambda."
+    },
+    {
+      "section": 55,
+      "note": "Retain exception p divides a-1 from Theorem 15."
+    },
+    {
+      "section": 56,
+      "note": "Exception is p divides a-1, not merely p equals a-1."
+    },
+    {
+      "section": 58,
+      "note": "Universal divisibility claim fails for a congruent to1 modulo q; exception is discussed in §59."
+    },
+    {
+      "section": 60,
+      "note": "Composite-exponent remark is not a complete factorization algorithm."
+    },
+    {
+      "section": 72,
+      "note": "Reset exact finite sum; original conclusion is divisible, not not divisible as in comparison; include m=1 constant case."
+    },
+    {
+      "section": 73,
+      "note": "Original says divisible for both prescribed inputs; comparison has contrary wording in second assertion."
+    },
+    {
+      "section": 78,
+      "note": "Already proposed elsewhere, not now proposed; no precise earlier title identified."
+    },
+    {
+      "section": 53,
+      "note": "The final divisor assertion needs the least returning exponent; a larger returning exponent need not divide p-1."
+    }
+  ],
+  "scope": "Positive integer bases, prime p, nonzero remainders, positive integers n dividing p-1; no abstract group or composite-modulus generalization. Six written proofs, no proof-assistant verification.",
+  "illustrations": "Five editorial diagrams/tables. Multiplication cycle, disjoint lists, and finite-difference values are computed and checked in check-euler-1761.mjs."
+}

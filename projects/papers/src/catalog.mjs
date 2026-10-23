@@ -5,6 +5,7 @@ import {peopleDedekind,conceptsDedekind} from './dedekind.mjs';
 import {circleWork,peopleEulerMore,conceptsEulerMore,bibliographyCircle,englishEulerMore} from './euler-more-catalog.mjs';
 import {worksLogarithms,peopleLogarithms,conceptsLogarithms,bibliographyLogarithms,englishLogarithms,citationsLogarithms} from './euler-1751-catalog.mjs';
 import {conceptsBridges} from './euler-1741-catalog.mjs';
+import {peopleResidues,conceptsResidues,externalReferencesResidues} from './euler-1761-catalog.mjs';
 Object.assign(englishSources,englishEulerMore);
 Object.assign(englishSources,englishLogarithms);
 const m = String.raw;
@@ -16,6 +17,8 @@ export const sources = {
   mangoldt1895: 'https://gdz.sub.uni-goettingen.de/id/PPN243919689_0114',
   riesel1970: 'https://doi.org/10.1090/S0025-5718-1970-0277489-3',
 };
+
+additionalWorks.find(w=>w.id==='euler-1761').externalReferences=externalReferencesResidues;
 
 // A work record exists independently of whether we have edited its text.
 // Titles are our English renderings; original titles identify the source edition.
@@ -98,6 +101,7 @@ export const works = [
 ];
 
 export const people = [
+  ...peopleResidues,
   ...additionalPeople,
   ...peopleDedekind,
   ...peopleEulerMore,
@@ -137,6 +141,7 @@ export const concepts = [
   ...conceptsEulerMore,
   ...conceptsLogarithms,
   ...conceptsBridges,
+  ...conceptsResidues,
   {id:'function-1859',title:'“Function” in the 1859 argument',kind:'Editorial reading guide',anchor:'euler-product',
     body:m`<p>Here the objects are specific expressions with specified uses: a convergent series and product for \(\zeta(s)\), integrals that continue it, a theta series, and step functions that count primes. Riemann does not introduce an arbitrary mapping between arbitrary sets in this paper.</p><p>We follow these constructions and their domains rather than replacing every occurrence of “function” with the most general modern definition. Nor does this paper establish that every function Riemann would admit must be given by a finite formula.</p>`,
     comparison:'A comparison with computable analysis would require a representation of inputs and outputs and effective error bounds for the operations in question. Convergence or a written formula alone does not supply those data. That comparison is an editorial research direction, not an attribution to Riemann.'},

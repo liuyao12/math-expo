@@ -12,6 +12,7 @@ import './check-euler-arithmetic.mjs';
 import './check-euler-more.mjs';
 import './check-euler-1751.mjs';
 import './check-euler-1741.mjs';
+import './check-euler-1761.mjs';
 import {discoveryTerms,matchesWork} from '../src/discovery.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url)),dist=path.join(root,'dist');
 const katexContext={};
@@ -181,3 +182,15 @@ if(!catalogue.includes('data-work="euler-1741"')||!catalogue.match(/data-work="e
 const bridgeEvidence=JSON.parse(fs.readFileSync(path.join(dist,'euler-bridges-source.json'),'utf8'));
 if(bridgeEvidence.original.pdfPages!==14||bridgeEvidence.plateData.printedRoute!=='EaFbBcFdAeFfCgAhCiDkAmEnApBoElD')throw Error('Bridge source provenance missing');
 console.log('Validated all 21 rendered bridge sections, scoped definitions, four proof records, source-page mapping, and on-site English availability.');
+
+const {passagesResidues}=await import('../src/euler-1761.mjs');
+const residueFile=path.join(dist,'euler-1761/index.html'),residueHTML=pages.get(residueFile),residueIDs=idsByPage.get(residueFile);
+for(const r of passagesResidues)if(!residueIDs.has(r.id))throw Error('Missing residue section '+r.id);
+for(const p of data.statements['euler-1761'])if(!residueIDs.has(p.id))throw Error('Missing residue proof '+p.id);
+for(const marker of ['§§1–78','Theorem 20','finite differences','p=2','Jordan Bell','external-references','not yet indexed'])if(!residueHTML.includes(marker))throw Error('Missing E262 source or scope '+marker);
+const residueEvidence=JSON.parse(fs.readFileSync(path.join(dist,'euler-residues-source.json'),'utf8'));
+if(residueEvidence.passages.length!==78||Object.keys(residueEvidence.theorems).length!==20)throw Error('Incomplete E262 evidence inventory');
+for(const [i,r] of passagesResidues.entries())if(r.sourceUrl.split('#page=')[1]!==String(residueEvidence.passages[i].pdfPage))throw Error('E262 source page mismatch '+r.id);
+if(data.works.find(w=>w.id==='euler-1761').externalReferences.length!==2)throw Error('Lost external source citations');
+if(found({q:'finite differences',author:'euler',access:'edited'})!=='euler-1761')throw Error('Residue edition not discoverable');
+console.log('Validated complete E262 reading, original-page links, six proofs, two checked external citations, and keyword discovery.');

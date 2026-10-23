@@ -7,7 +7,7 @@ export const discoveryTerms={
  'euler-1748-circle':['Euler identity','Euler’s identity','Euler formula','complex exponential','imaginary logarithms','unit circle','trigonometry','De Moivre formula','arctangent series','pi computation'],
  'euler-1751':['complex logarithm','logarithms of negative numbers','imaginary logarithms','Leibniz Bernoulli controversy','log(-1)','log -1','logarithm of minus one','branches of logarithm','multivalued logarithm','roots of unity','infinite roots','complex exponential'],
  'leibniz-bernoulli-1745':['correspondence','letters','logarithm controversy','Leibniz Bernoulli','Commercium'],
- 'euler-1761':['modular arithmetic','Fermat’s little theorem','residues','number theory'],
+ 'euler-1761':['modular arithmetic','Fermat’s little theorem','residues','number theory','multiplicative order','power residues','finite differences','prime divisors','congruences','quadratic residues'],
  'fourier-1822':['heat equation','Fourier series','partial differential equations','mathematical physics'],
  'gauss-1828':['differential geometry','Gaussian curvature','Theorema Egregium','intrinsic geometry','surfaces'],
  'jacobi-1829':['elliptic functions','theta functions','Jacobi transformation'],
