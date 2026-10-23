@@ -84,3 +84,17 @@ The catalogue uses a left search-and-filter sidebar with checkbox facets for aut
 - `scripts/import-riemann-1854.mjs`: reproducible import of all 45 consecutive source intervals and the closing synopsis; source hashes and substantive variations are recorded in `src/riemann-1854-source.json`.
 - `scripts/check-riemann-1854.mjs`: coverage, historical comparisons, and independent metric/circle and curvature-normalization checks.
 - `src/figures-riemann-1854.mjs`: five additional margin drawings, making ten in the complete reading.
+
+## Gauss’s complete curved-surfaces paper
+
+The 1827/1828 paper now has a complete modern-English reading of Articles 1–29, adapted from Morehead and Hiltebeitel’s public-domain 1902 translation. Source subdivisions, all 934 mathematical expressions, and the author’s footnote are retained. Expand each article to compare the standardized source wording. The six written reconstructions concern regular surface patches in Euclidean three-space; higher-order series remain explicitly marked as not fully independently checked.
+
+- `src/gauss-1828.mjs`: reading sections, source-page links, commentary, and edition statement.
+- `src/modern-gauss.mjs`: prose revision, with formulas and markup protected; checks preserve their complete ordered sequence.
+- `src/sources/gauss-morehead-hiltebeitel-1902.tex`: pinned source for the complete primary paper.
+- `scripts/import-gauss.mjs` and `src/gauss-text.json`: reproducible conversion, source hash, source errata, and six separately logged editorial repair locations.
+- `src/statements-gauss-1828.mjs`: six proofs, including intrinsic curvature, first variation, radial orthogonality, and the triangle excess formula.
+- `src/figures-gauss-1828.mjs`: drawings and the surveying comparison.
+- `scripts/check-gauss.mjs`: source and rendering coverage, formula preservation, 3125 exact curvature identities, sphere checks, and independent numerical triangle integrals.
+
+The squared metric determinant in Article 11 was checked in the Latin first printing, p. 23 (ETH / e-rara, PDF p. 28). The complete reading has not been collated line by line against the Latin. The original printing and the 1902 English edition remain linked above the reading.

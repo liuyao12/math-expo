@@ -9,7 +9,7 @@ export const discoveryTerms={
  'leibniz-bernoulli-1745':['correspondence','letters','logarithm controversy','Leibniz Bernoulli','Commercium'],
  'euler-1761':['modular arithmetic','Fermat’s little theorem','residues','number theory','multiplicative order','power residues','finite differences','prime divisors','congruences','quadratic residues'],
  'fourier-1822':['heat equation','Fourier series','partial differential equations','mathematical physics'],
- 'gauss-1828':['differential geometry','Gaussian curvature','Theorema Egregium','intrinsic geometry','surfaces'],
+ 'gauss-1828':['Theorema Egregium','Gauss map','Gaussian curvature','normal sections','geodesic triangle','angle excess','development','surveying','differential geometry','Gaussian curvature','Theorema Egregium','intrinsic geometry','surfaces'],
  'jacobi-1829':['elliptic functions','theta functions','Jacobi transformation'],
  'dirichlet-1837':['primes in arithmetic progressions','Dirichlet theorem','L-functions','analytic number theory'],
  'riemann-1851':['complex analysis','Riemann surfaces','holomorphic functions','conformal mapping'],

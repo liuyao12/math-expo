@@ -1,3 +1,4 @@
+import './check-gauss.mjs';
 import fs from 'node:fs';
 import vm from 'node:vm';
 import path from 'node:path';

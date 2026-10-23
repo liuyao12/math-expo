@@ -1,3 +1,4 @@
+import {peopleGauss,conceptsGauss} from './gauss-1828-catalog.mjs';
 import {people1854,concepts1854,citations1854} from './riemann-1854-catalog.mjs';
 import {additionalWorks,additionalPeople,additionalBibliographicFields,additionalCitations,englishSources} from './translation-sources.mjs';
 export {englishSources};
@@ -61,8 +62,8 @@ export const works = [
     links: [{label: 'Original work & publication record · Euler Archive', url: 'https://scholarlycommons.pacific.edu/euler-works/72/'}, {label:'Original Latin · 1744',url:'https://math.dartmouth.edu/~euler/docs/originals/E072.pdf'}, {label:'English translation · Viader, Bibiloni & Viader',url:'https://math.dartmouth.edu/~euler/docs/translations/E072en.pdf'}] },
   { id: 'gauss-1828', authors: ['gauss'], year: 1828,
     title: 'General investigations of curved surfaces', originalTitle: 'Disquisitiones generales circa superficies curvas',
-    publication: 'Göttingen: Dieterich, 1828. Presented to the Royal Society in 1827.', language: 'Latin',
-    summary: 'Curvature and the intrinsic geometry of surfaces, developed from local coordinates and their metric.',
+    publication: 'Göttingen: Dieterich, 1828. Presented to the Royal Society in 1827.', language: 'Latin', edition: 'Complete modern-English reading',
+    summary: 'All 29 articles: the normal-direction map, intrinsic curvature, development, geodesics, and surveying triangles, with drawings and six rigorous reconstructions.',
     links: [{label: 'Original print · ETH / e-rara', url: 'https://doi.org/10.3931/e-rara-59755'}, {label: 'English translation · 1902', url: 'https://www.gutenberg.org/ebooks/36856'}] },
   { id: 'fourier-1822', authors: ['fourier'], year: 1822,
     title: 'The analytical theory of heat', originalTitle: 'Théorie analytique de la chaleur',
@@ -102,6 +103,7 @@ export const works = [
 ];
 
 export const people = [
+  ...peopleGauss,
   ...people1854,
   ...peopleResidues,
   ...additionalPeople,
@@ -139,6 +141,7 @@ export const citations = [
 ];
 
 export const concepts = [
+  ...conceptsGauss,
   ...concepts1854,
   ...conceptsEuler,
   ...conceptsDedekind,
