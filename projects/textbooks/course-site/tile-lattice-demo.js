@@ -25,6 +25,7 @@
       const ctx=node.getContext('2d');ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h);return ctx;
     }
     function readouts(theta,count,force){
+      if(document.documentElement.classList.contains('notation-moving'))return;
       const now=performance.now();
       if(!force&&now-lastMath<100)return;
       lastMath=now;
@@ -117,6 +118,8 @@
     const preferenceChanged=()=>{if(reducedMotion.matches){stop();draw();}};
     reducedMotion.addEventListener('change',preferenceChanged);
     const observer=new ResizeObserver(()=>draw());observer.observe(stage);draw();
-    return ()=>{dead=true;stop();observer.disconnect();reducedMotion.removeEventListener('change',preferenceChanged);};
+    const notationSettled=()=>draw();
+    document.addEventListener('matrixconventionsettled',notationSettled);
+    return ()=>{dead=true;stop();observer.disconnect();reducedMotion.removeEventListener('change',preferenceChanged);document.removeEventListener('matrixconventionsettled',notationSettled);};
   };
 })();

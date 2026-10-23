@@ -4,7 +4,7 @@
   window.MATRIX_PRODUCT_EXAMPLE={A,B,result:[[5,8],[13,16]]};
   window.mountMatrixProductDemo=(holder,{math})=>{
     const notation=window.MATRIX_NOTATION;
-    holder.innerHTML='<span class="margin-label">WATCH EACH ENTRY FORM</span><div class="figure matrix-product"><h3>A column meets a row.</h3><p class="figure-sub">The same factors. The same result.</p><div class="matrix-inputs"></div><div class="matrix-source-legend"><span class="source-column"></span><span class="source-row"></span></div><div class="matrix-entry-label"></div><div class="matrix-entry-equation"></div><div class="matrix-result-row"><span class="matrix-result-name"></span><div class="matrix-result"></div></div><div class="figure-controls"><button type="button" class="matrix-next">Next entry</button><button type="button" class="matrix-play" aria-pressed="false">Play all entries</button></div><p class="figure-caption matrix-instructions"></p><p class="sr-only matrix-live" aria-live="polite"></p></div>';
+    holder.innerHTML='<span class="margin-label">WATCH EACH ENTRY FORM</span><div class="figure matrix-product"><h3>A row meets a column.</h3><p class="figure-sub">The same maps, with transposed representations.</p><div class="matrix-inputs"></div><div class="matrix-source-legend"><span class="source-row"></span><span class="source-column"></span></div><div class="matrix-entry-label"></div><div class="matrix-entry-equation"></div><div class="matrix-result-row"><span class="matrix-result-name"></span><div class="matrix-result"></div></div><div class="figure-controls"><button type="button" class="matrix-next">Next entry</button><button type="button" class="matrix-play" aria-pressed="false">Play all entries</button></div><p class="figure-caption matrix-instructions"></p><p class="sr-only matrix-live" aria-live="polite"></p></div>';
     const root=holder.querySelector('.matrix-product'),inputs=root.querySelector('.matrix-inputs'),result=root.querySelector('.matrix-result'),equation=root.querySelector('.matrix-entry-equation');
     const resultName=root.querySelector('.matrix-result-name'),entryLabel=root.querySelector('.matrix-entry-label');
     const operator=document.createElement('span');operator.className='matrix-operator';
@@ -12,11 +12,11 @@
     for(const [name,values] of Object.entries({A,B})){
       const node=document.createElement('div');node.className='matrix-factor factor-'+name;
       node.innerHTML='<div class="matrix-factor-name"></div><div class="matrix-array"></div><div class="matrix-dimensions"></div>';
-      math(node.querySelector('.matrix-factor-name'),name);
+      math(node.querySelector('.matrix-factor-name'),'\\htmlClass{conv-factor conv-factor-demo-'+name+'}{'+name+'}');
       const tex='\\begin{pmatrix}'+values.map((row,m)=>row.map((value,n)=>'\\htmlClass{matrix-entry cell-'+name+'-'+m+'-'+n+'}{'+value+'}').join('&')).join('\\\\')+'\\end{pmatrix}';
       math(node.querySelector('.matrix-array'),tex,true);factors[name]=node;
     }
-    const C=window.MATRIX_NOTATION.multiply(A,B,'reading');
+    const C=notation.multiply(B,A);
     const resultTex='\\begin{pmatrix}'+C.map((row,m)=>row.map((value,n)=>'\\htmlClass{matrix-entry result-entry result-'+m+'-'+n+'}{'+value+'}').join('&')).join('\\\\')+'\\end{pmatrix}';
     math(result,resultTex,true);
     let selected=0,version=0,playRun=0,playing=false,dead=false;
@@ -25,19 +25,21 @@
     const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
     const current=()=>({n:selected%2,m:Math.floor(selected/2)});
     const copy=()=>{
-      const reading=notation.mode==='reading';
-      root.querySelector('.source-column').textContent=reading?'Left column':'Right column';
-      root.querySelector('.source-row').textContent=reading?'Right row':'Left row';
-      root.querySelector('.matrix-instructions').textContent=reading?'Choose a column from the left factor and a row from the right. Their dot product goes across to the chosen column and down to the chosen row.':'Choose a row from the left factor and a column from the right. Their dot product goes in the chosen row and column.';
-      math(resultName,reading?'C=AB=':'C=BA=');
+      const rowMode=notation.mode==='row';
+      root.querySelector('.source-column').textContent='Right column';
+      root.querySelector('.source-column').style.color=rowMode?'#b36a35':'#396fa2';
+      root.querySelector('.source-row').textContent='Left row';
+      root.querySelector('.source-row').style.color=rowMode?'#396fa2':'#b36a35';
+      root.querySelector('.matrix-instructions').textContent='Choose a row from the left factor and a column from the right. Their dot product goes in the corresponding row and column.';
+      math(resultName,rowMode?'C=AB=':'C=BA=');
       for(const [name,values] of Object.entries({A,B})){
-        math(factors[name].querySelector('.matrix-dimensions'),reading?values[0].length+'\\times'+values.length:values.length+'\\times'+values[0].length);
+        math(factors[name].querySelector('.matrix-dimensions'),rowMode?values[0].length+'\\times'+values.length:values.length+'\\times'+values[0].length);
       }
     };
     function order(animate){
       const before=Object.fromEntries(Object.entries(factors).map(([name,node])=>[name,node.getBoundingClientRect()]));
-      const reading=notation.mode==='reading';
-      inputs.replaceChildren(reading?factors.A:factors.B,operator,reading?factors.B:factors.A);
+      const rowMode=notation.mode==='row';
+      inputs.replaceChildren(rowMode?factors.A:factors.B,operator,rowMode?factors.B:factors.A);
       math(operator,'\\,');copy();
       if(animate&&!reduced())for(const [name,node] of Object.entries(factors)){
         const after=node.getBoundingClientRect(),dx=before[name].left-after.left,dy=before[name].top-after.top;
@@ -46,7 +48,7 @@
     }
     function highlight(){
       const {n,m}=current();
-      root.dataset.entryColumn=String(n);root.dataset.entryRow=String(m);
+      root.dataset.entryColumn=String(notation.mode==='row'?m:n);root.dataset.entryRow=String(notation.mode==='row'?n:m);
       root.querySelectorAll('.matrix-entry').forEach(node=>node.classList.remove('entry-column','entry-row','entry-result'));
       for(let k=0;k<3;k++){
         root.querySelector('.cell-A-'+k+'-'+n).classList.add('entry-column');
@@ -55,18 +57,18 @@
       root.querySelectorAll('.result-entry').forEach(node=>node.classList.add('is-pending'));
       revealed.forEach(key=>root.querySelector('.result-'+key.replace(':','-'))?.classList.remove('is-pending'));
       root.querySelector('.result-'+m+'-'+n).classList.add('entry-result');
-      const index=notation.mode==='reading'?'[AB]_{'+(n+1)+','+(m+1)+'}':'(BA)_{'+(m+1)+','+(n+1)+'}';
+      const index=notation.mode==='row'?'(AB)_{'+(n+1)+','+(m+1)+'}':'(BA)_{'+(m+1)+','+(n+1)+'}';
       math(entryLabel,index);
     }
     function terms(hidden){
-      const {n,m}=current(),reading=notation.mode==='reading';equation.replaceChildren();
+      const {n,m}=current(),rowMode=notation.mode==='row';equation.replaceChildren();
       const targets=[];
       for(let k=0;k<3;k++){
         if(k){const plus=document.createElement('span');math(plus,'+');equation.appendChild(plus);}
         const term=document.createElement('span');term.className='matrix-term';
         const left=document.createElement('span'),times=document.createElement('span'),right=document.createElement('span');
         left.className='matrix-operand';right.className='matrix-operand';
-        const items=reading?[{name:'A',row:k,col:n,value:A[k][n]},{name:'B',row:m,col:k,value:B[m][k]}]:[{name:'B',row:m,col:k,value:B[m][k]},{name:'A',row:k,col:n,value:A[k][n]}];
+        const items=rowMode?[{name:'A',row:k,col:n,value:A[k][n]},{name:'B',row:m,col:k,value:B[m][k]}]:[{name:'B',row:m,col:k,value:B[m][k]},{name:'A',row:k,col:n,value:A[k][n]}];
         math(left,String(items[0].value));math(times,'\\cdot');math(right,String(items[1].value));
         left.style.opacity=hidden?'0':'1';right.style.opacity=hidden?'0':'1';
         term.append(left,times,right);equation.appendChild(term);
@@ -96,7 +98,7 @@
         fly(total,destination,C[m][n],'#3c7555');await pause(620);if(ticket!==version||dead)return;
       }
       revealed.add(m+':'+n);highlight();terms(false);
-      root.querySelector('.matrix-live').textContent='Entry '+(notation.mode==='reading'?(n+1)+', '+(m+1):(m+1)+', '+(n+1))+' is '+C[m][n]+'.';
+      root.querySelector('.matrix-live').textContent='Entry '+(notation.mode==='row'?(n+1)+', '+(m+1):(m+1)+', '+(n+1))+' is '+C[m][n]+'.';
     }
     function stop(){playing=false;version++;playRun++;clearFlights();root.querySelector('.matrix-play').textContent='Play all entries';root.querySelector('.matrix-play').setAttribute('aria-pressed','false');}
     root.querySelector('.matrix-next').addEventListener('click',()=>{stop();step((selected+1)%4);});
@@ -106,7 +108,7 @@
       for(let i=0;i<4&&playing&&!dead&&run===playRun;i++){await step(i);await pause(reduced()?180:300);}
       if(!dead&&run===playRun)stop();
     });
-    const conventionChanged=()=>{stop();order(true);highlight();terms(false);};
+    const conventionChanged=()=>{stop();order(false);highlight();terms(false);};
     document.addEventListener('matrixconventionchange',conventionChanged);
     order(false);highlight();terms(false);
     return ()=>{dead=true;stop();document.removeEventListener('matrixconventionchange',conventionChanged);};

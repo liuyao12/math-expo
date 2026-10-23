@@ -1,176 +1,165 @@
-// Physical matrix entries never transpose when the reading convention changes.
-// In reading order A B means the conventional product B A.
+// Coordinate lists and postfix map evaluation are invariant.
+// Canonical arrays are column representations; row mode transposes only matrices.
 (() => {
   'use strict';
-  const entries = [];
-  const table = new Map();
-  const join = '\\,';
-  const factor = (id,tex) => '\\htmlClass{conv-factor conv-factor-' + id + '}{' + tex + '}';
-  const equation = (key,tex) => '\\htmlClass{conv-equation conv-key-' + key + '}{' + tex + '}';
-  function add(standard,reading,key,markedStandard,markedReading) {
-    const entry = {standard,reading,key,markedStandard,markedReading};
-    entries.push(entry);table.set(standard,entry);
+  const entries=[],table=new Map();
+  const factor=(id,tex)=>'\\htmlClass{conv-factor conv-factor-'+id+'}{'+tex+'}';
+  const equation=(key,tex)=>'\\htmlClass{conv-equation conv-key-'+key+'}{'+tex+'}';
+  function marked(tex){
+    const counts=new Map();
+    return tex.replace(/\[[a-z]\](?:\^\{\\mathsf T\})?|(?<![\\a-zA-Z])[ABCDGMPQSXY](?:_\{?\\theta\}?)?(?:\^\{\\mathsf T\}|\^\{-1\})?/g,token=>{
+      const id=hash(token.replace(/\^\{\\mathsf T\}/g,'')),n=counts.get(id)||0;counts.set(id,n+1);
+      return factor(id+'-'+n,token);
+    });
   }
-  const f = factor;
-  add('G=A^{\\mathsf T}A','G=A\\,A^{\\mathsf T}','gram',
-    'G='+f('transpose','A^{\\mathsf T}')+f('basis','A'),
-    'G='+f('basis','A')+join+f('transpose','A^{\\mathsf T}'));
-  add("A'=AS","A'=S\\,A",'basis-change',
-    "A'="+f('basis','A')+f('change','S'),
-    "A'="+f('change','S')+join+f('basis','A'));
-  add("G'=S^{\\mathsf T}GS","G'=S\\,G\\,S^{\\mathsf T}",'gram-change',
-    "G'="+f('transpose','S^{\\mathsf T}')+f('gram','G')+f('change','S'),
-    "G'="+f('change','S')+join+f('gram','G')+join+f('transpose','S^{\\mathsf T}'));
-  add("M'=S^{-1}MS","M'=S\\,M\\,S^{-1}",'operator-change',
-    "M'="+f('inverse','S^{-1}')+f('map','M')+f('change','S'),
-    "M'="+f('change','S')+join+f('map','M')+join+f('inverse','S^{-1}'));
-  add('P=A(A^{\\mathsf T}A)^{-1}A^{\\mathsf T}',
-    'P=A^{\\mathsf T}\\,(A\\,A^{\\mathsf T})^{-1}\\,A','projection',
-    'P='+f('basis','A')+f('inverse','(A^{\\mathsf T}A)^{-1}')+f('transpose','A^{\\mathsf T}'),
-    'P='+f('transpose','A^{\\mathsf T}')+join+f('inverse','(A\\,A^{\\mathsf T})^{-1}')+join+f('basis','A'));
-  add('v\\cdot w=c^{\\mathsf T}Gd,\\qquad \\|v\\|^2=c^{\\mathsf T}Gc.',
-    'v\\cdot w=d\\,G\\,c^{\\mathsf T},\\qquad \\|v\\|^2=c\\,G\\,c^{\\mathsf T}.','metric',
-    'v\\cdot w='+f('left-dual','c^{\\mathsf T}')+f('metric-left','G')+f('right-vector','d')+',\\qquad \\|v\\|^2='+f('norm-dual','c^{\\mathsf T}')+f('metric-right','G')+f('norm-vector','c')+'.',
-    'v\\cdot w='+f('right-vector','d')+join+f('metric-left','G')+join+f('left-dual','c^{\\mathsf T}')+',\\qquad \\|v\\|^2='+f('norm-vector','c')+join+f('metric-right','G')+join+f('norm-dual','c^{\\mathsf T}')+'.');
-  add('c^{\\mathsf T}Gc=4','c\\,G\\,c^{\\mathsf T}=4','metric-number',
-    f('dual','c^{\\mathsf T}')+f('gram','G')+f('vector','c')+'=4',
-    f('vector','c')+join+f('gram','G')+join+f('dual','c^{\\mathsf T}')+'=4');
-  add('Gc=b,\\qquad b_i=u_i\\cdot v.','c\\,G=b,\\qquad b_i=u_i\\cdot v.','normal-equations',
-    f('gram','G')+f('coordinates','c')+'=b,\\qquad b_i=u_i\\cdot v.',
-    f('coordinates','c')+join+f('gram','G')+'=b,\\qquad b_i=u_i\\cdot v.');
-  add('Gc=b,\\qquad G_{ij}=\\langle u_i,u_j\\rangle,\\qquad b_i=\\langle u_i,f\\rangle.',
-    'c\\,G=b,\\qquad G_{ij}=\\langle u_i,u_j\\rangle,\\qquad b_i=\\langle u_i,f\\rangle.','function-normal',
-    f('gram','G')+f('coordinates','c')+'=b,\\qquad G_{ij}=\\langle u_i,u_j\\rangle,\\qquad b_i=\\langle u_i,f\\rangle.',
-    f('coordinates','c')+join+f('gram','G')+'=b,\\qquad G_{ij}=\\langle u_i,u_j\\rangle,\\qquad b_i=\\langle u_i,f\\rangle.');
-  const numericG='\\begin{pmatrix}1&1\\\\1&2\\end{pmatrix}';
-  const numericC='\\begin{pmatrix}-1\\\\2\\end{pmatrix}';
-  const numericB='\\begin{pmatrix}1\\\\3\\end{pmatrix}';
-  add(numericG+numericC+'='+numericB+'.',numericC+'\\,'+numericG+'='+numericB+'.','numeric-gram',
-    f('gram',numericG)+f('coordinates',numericC)+'='+f('result',numericB)+'.',
-    f('coordinates',numericC)+join+f('gram',numericG)+'='+f('result',numericB)+'.');
-  add('M_\\theta M_\\theta^{\\mathsf T}=I_2','M_\\theta^{\\mathsf T}\\,M_\\theta=I_2','view-rows',
-    f('view','M_\\theta')+f('transpose','M_\\theta^{\\mathsf T}')+'=I_2',
-    f('transpose','M_\\theta^{\\mathsf T}')+join+f('view','M_\\theta')+'=I_2');
-  add('\\Pi_\\theta=M_\\theta^{\\mathsf T}M_\\theta.','\\Pi_\\theta=M_\\theta\\,M_\\theta^{\\mathsf T}.','view-projector',
-    '\\Pi_\\theta='+f('transpose','M_\\theta^{\\mathsf T}')+f('view','M_\\theta')+'.',
-    '\\Pi_\\theta='+f('view','M_\\theta')+join+f('transpose','M_\\theta^{\\mathsf T}')+'.');
-  add('M=Q\\Lambda Q^{\\mathsf T},\\qquad Q^{\\mathsf T}Q=I.',
-    'M=Q^{\\mathsf T}\\,\\Lambda\\,Q,\\qquad Q\\,Q^{\\mathsf T}=I.','spectral',
-    'M='+f('basis','Q')+f('diagonal','\\Lambda')+f('dual','Q^{\\mathsf T}')+',\\qquad '+f('orth-dual','Q^{\\mathsf T}')+f('orth-basis','Q')+'=I.',
-    'M='+f('dual','Q^{\\mathsf T}')+join+f('diagonal','\\Lambda')+join+f('basis','Q')+',\\qquad '+f('orth-basis','Q')+join+f('orth-dual','Q^{\\mathsf T}')+'=I.');
-  add('Gc=b','c\\,G=b','normal-short',f('gram','G')+f('vector','c')+'=b',f('vector','c')+join+f('gram','G')+'=b');
-  add('BA','A\\,B','composition',f('second','B')+f('first','A'),f('first','A')+join+f('second','B'));
-  add('(BA)_{m,n}=\\sum_k B_{m,k}A_{k,n}.','[AB]_{n,m}=\\sum_k A_{n,k}B_{k,m}.');
-  add('A\\in\\mathbb R^{k\\times n},\\qquad B\\in\\mathbb R^{m\\times k}.',
-    'A\\in\\mathbb R^{n\\times k},\\qquad B\\in\\mathbb R^{k\\times m}.');
-  add('\\begin{pmatrix}a&b\\\\c&d\\end{pmatrix}\\begin{pmatrix}x\\\\y\\end{pmatrix}=\\begin{pmatrix}ax+by\\\\cx+dy\\end{pmatrix}.',
-    '\\begin{pmatrix}x\\\\y\\end{pmatrix}\\,\\begin{pmatrix}a&b\\\\c&d\\end{pmatrix}=\\begin{pmatrix}ax+by\\\\cx+dy\\end{pmatrix}.','column-action',
-    f('map','\\begin{pmatrix}a&b\\\\c&d\\end{pmatrix}')+f('vector','\\begin{pmatrix}x\\\\y\\end{pmatrix}')+'='+f('result','\\begin{pmatrix}ax+by\\\\cx+dy\\end{pmatrix}')+'.',
-    f('vector','\\begin{pmatrix}x\\\\y\\end{pmatrix}')+join+f('map','\\begin{pmatrix}a&b\\\\c&d\\end{pmatrix}')+'='+f('result','\\begin{pmatrix}ax+by\\\\cx+dy\\end{pmatrix}')+'.');
-  add('P_B P_A v','v\\,P_A\\,P_B');
-  add('P_A P_B v','v\\,P_B\\,P_A');
-  add('(BA)v=B(Av)','(v\\,A)\\,B=v\\,(A\\,B)');
-  add('(BA)v=B(Av).','(v\\,A)\\,B=v\\,(A\\,B).','composition-action',
-    '('+f('second-left','B')+f('first-left','A')+')'+f('input-left','v')+'='+f('second-right','B')+'('+f('first-right','A')+f('input-right','v')+').',
-    '('+f('input-left','v')+f('first-left','A')+')'+f('second-left','B')+'='+f('input-right','v')+'('+f('first-right','A')+f('second-right','B')+').');
-  add('Pv=A(A^{\\mathsf T}A)^{-1}A^{\\mathsf T}v.',
-    'v\\,P=v\\,A^{\\mathsf T}(A\\,A^{\\mathsf T})^{-1}A.','projection-action',
-    f('projection','P')+f('input-left','v')+'='+f('basis','A')+f('inverse','(A^{\\mathsf T}A)^{-1}')+f('transpose','A^{\\mathsf T}')+f('input-right','v')+'.',
-    f('input-left','v')+f('projection','P')+'='+f('input-right','v')+f('transpose','A^{\\mathsf T}')+f('inverse','(A\\,A^{\\mathsf T})^{-1}')+f('basis','A')+'.');
-  function readingStyle(tex) {
-    return tex.replaceAll('{pmatrix}','{bmatrix}');
+  function add(column,row,key){
+    const entry={column,row,key,markedColumn:marked(column),markedRow:marked(row)};
+    entries.push(entry);table.set(column,entry);
   }
-  function convert(tex,convention='reading',decorate=false) {
-    const entry=table.get(tex);
-    if(entry) {
-      const result=convention==='reading'?entry.reading:entry.standard;
-      if(!decorate||!entry.key)return convention==='reading'?readingStyle(result):result;
-      return equation(entry.key,convention==='reading'?readingStyle(entry.markedReading):entry.markedStandard);
-    }
-    if(convention==='standard')return tex;
-    return readingStyle(tex.replaceAll('P_Nf','f\\,P_N')
-      .replaceAll('T^mv','v\\,T^m')
-      .replaceAll('(I-P)v','v\\,(I-P)')
-      .replaceAll('(2P-I)v','v\\,(2P-I)')
-      .replaceAll('Pv','v\\,P')
-      .replaceAll('Rv','v\\,R')
-      .replaceAll('Tv','v\\,T')
-      .replaceAll('Tf','f\\,T')
-      .replaceAll('Mv','v\\,M')
-      .replace(/^PQ$/,'P\\,Q'));
-  }
-  function conventionalMultiply(A,B) {
-    if(!A.length||!B.length||A[0].length!==B.length)throw Error('Incompatible matrix dimensions');
+  add("X=[x]^{\\mathsf T}.","X=[x].","coordinate-representation");
+  add("X=[x]^{\\mathsf T},\\qquad Y=[y]^{\\mathsf T}.","X=[x],\\qquad Y=[y].","coordinate-pair");
+  add("C=[a]^{\\mathsf T},\\qquad D=[b]^{\\mathsf T}.","C=[a],\\qquad D=[b].","coefficient-pair");
+  add("[v.L.d]^{\\mathsf T}=A[v.c]^{\\mathsf T}.","[v.L.d]=[v.c]A.","coordinate-map");
+  add("[v.L.K.e]^{\\mathsf T}=BA[v.c]^{\\mathsf T}.","[v.L.K.e]=[v.c]AB.","coordinate-composition");
+  add("[[v\\cdot w]]=X^{\\mathsf T}GY.","[[v\\cdot w]]=XGY^{\\mathsf T}.","metric");
+  add("[[\\|v\\|^2]]=X^{\\mathsf T}GX.","[[\\|v\\|^2]]=XGX^{\\mathsf T}.","squared-length");
+  add("G=A^{\\mathsf T}A.","G=AA^{\\mathsf T}.","gram");
+  add("G'=S^{\\mathsf T}GS","G'=SGS^{\\mathsf T}","gram-change");
+  add("A'=AS","A'=SA","direction-change");
+  add("M'=S^{-1}MS","M'=SMS^{-1}","operator-change");
+  add("GC=D.","CG=D.","normal-equations");
+  add("Y=AC","Y=CA","synthesis");
+  add("P=A(A^{\\mathsf T}A)^{-1}A^{\\mathsf T}.","P=A^{\\mathsf T}(AA^{\\mathsf T})^{-1}A.","projection");
+  add("Y=PX=A(A^{\\mathsf T}A)^{-1}A^{\\mathsf T}X.","Y=XP=XA^{\\mathsf T}(AA^{\\mathsf T})^{-1}A.","projection-action");
+  add("BA","AB","composition");
+  add("(BA)_{m,n}=\\sum_k B_{m,k}A_{k,n}.","(AB)_{n,m}=\\sum_k A_{n,k}B_{k,m}.",null);
+  add("A\\in\\mathbb R^{k\\times n},\\qquad B\\in\\mathbb R^{m\\times k}.","A\\in\\mathbb R^{n\\times k},\\qquad B\\in\\mathbb R^{k\\times m}.",null);
+  add("M_\\theta M_\\theta^{\\mathsf T}=I_2","M_\\theta^{\\mathsf T}M_\\theta=I_2","view-rows");
+  add("\\Pi_\\theta=M_\\theta^{\\mathsf T}M_\\theta.","\\Pi_\\theta=M_\\theta M_\\theta^{\\mathsf T}.","view-projector");
+  add("M=Q\\Lambda Q^{\\mathsf T},\\qquad Q^{\\mathsf T}Q=I.","M=Q^{\\mathsf T}\\Lambda Q,\\qquad QQ^{\\mathsf T}=I.","spectral");
+  add("GC=D,\\qquad G_{ij}=\\langle u_i,u_j\\rangle,\\qquad b_i=\\langle u_i,f\\rangle.","CG=D,\\qquad G_{ij}=\\langle u_i,u_j\\rangle,\\qquad b_i=\\langle u_i,f\\rangle.","function-normal");
+  add("\\begin{pmatrix}1&1\\\\1&2\\end{pmatrix}\\begin{pmatrix}-1\\\\2\\end{pmatrix}=\\begin{pmatrix}1\\\\3\\end{pmatrix}.","\\begin{pmatrix}-1\\\\2\\end{pmatrix}\\begin{pmatrix}1&1\\\\1&2\\end{pmatrix}=\\begin{pmatrix}1\\\\3\\end{pmatrix}.","numeric-gram");
+  add("\\begin{pmatrix}a&b\\\\c&d\\end{pmatrix}\\begin{pmatrix}x_1\\\\x_2\\end{pmatrix}=\\begin{pmatrix}ax_1+bx_2\\\\cx_1+dx_2\\end{pmatrix}.","\\begin{pmatrix}x_1\\\\x_2\\end{pmatrix}\\begin{pmatrix}a&b\\\\c&d\\end{pmatrix}=\\begin{pmatrix}ax_1+bx_2\\\\cx_1+dx_2\\end{pmatrix}.","matrix-action");
+  add("[x.m_\\theta]^{\\mathsf T}=M_\\theta[x]^{\\mathsf T}","[x.m_\\theta]=[x]M_\\theta","screen-coordinates");
+  const normalize=value=>value==='reading'?'row':value==='standard'?'column':value;
+  const transpose=A=>A[0].map((_,j)=>A.map(row=>row[j]));
+  function multiply(A,B) {
+    if(!A.length||!B.length||!A[0].length||A.some(row=>row.length!==A[0].length)||B.some(row=>row.length!==B[0].length)||A[0].length!==B.length)throw Error('Incompatible matrix dimensions');
     return A.map(row=>B[0].map((_,j)=>row.reduce((sum,x,k)=>sum+x*B[k][j],0)));
   }
-  const multiply=(A,B,convention='reading')=>convention==='reading'?conventionalMultiply(B,A):conventionalMultiply(A,B);
-  let mode='reading';
-  try { const saved=localStorage.getItem('linear-algebra-matrix-convention');if(saved==='standard')mode=saved; } catch {}
-  const renderedSources=new Map();
-  const trust=context=>context.command==='\\htmlClass';
-  function preProcess(tex) {const result=convert(tex,mode,true);renderedSources.set(result,tex);return result;}
-  function remember(root) {
+  function splitTopLevel(tex,separator){
+    const result=[];let start=0,depth=0;
+    for(let i=0;i<tex.length;i++){
+      if(tex[i]==='{')depth++;else if(tex[i]==='}')depth--;
+      if(depth===0&&tex.startsWith(separator,i)){result.push(tex.slice(start,i));start=i+separator.length;i+=separator.length-1;}
+    }
+    result.push(tex.slice(start));return result;
+  }
+  function hash(text){let value=2166136261;for(const ch of text)value=Math.imul(value^ch.charCodeAt(0),16777619);return (value>>>0).toString(36);}
+  function arrays(tex,mode,decorate,display){
+    const startToken='\\begin{pmatrix}',endToken='\\end{pmatrix}',counts=new Map();
+    let result='',cursor=0;
+    while(true){
+      const start=tex.indexOf(startToken,cursor);if(start<0)break;
+      const end=tex.indexOf(endToken,start);if(end<0)throw Error('Unclosed matrix');
+      const content=tex.slice(start+startToken.length,end),id=hash(content),occurrence=counts.get(id)||0;counts.set(id,occurrence+1);
+      const values=splitTopLevel(content,'\\\\').map(row=>splitTopLevel(row,'&'));
+      if(values.some(row=>row.length!==values[0].length))throw Error('Ragged matrix');
+      let cells=values.map((row,r)=>row.map((cell,c)=>decorate?'\\htmlClass{conv-cell conv-cell-'+id+'-'+occurrence+'-'+r+'-'+c+'}{'+cell+'}':cell));
+      if(mode==='row')cells=transpose(cells);
+      let rendered;
+      if(!display){
+        const rows=cells.map(row=>'\\left['+row.join(',')+'\\right]');
+        rendered='\\left['+rows.join(',')+'\\right]';
+      }else{const env='bmatrix';rendered='\\begin{'+env+'}'+cells.map(row=>row.join('&')).join('\\\\')+'\\end{'+env+'}';}
+      result+=tex.slice(cursor,start)+rendered;cursor=end+endToken.length;
+    }
+    return result+tex.slice(cursor);
+  }
+  function convert(tex,convention='row',decorate=false,display=true) {
+    const mode=normalize(convention),entry=table.get(tex);
+    let result=entry?(mode==='row'?entry.row:entry.column):tex;
+    if(decorate&&entry?.key)result=equation(entry.key,mode==='row'?entry.markedRow:entry.markedColumn);
+    return postfixFunctions(arrays(result,mode,decorate,display));
+  }
+  // The finite set of elementary applications used in the chapter sketches.
+  // Bare function names, such as the pair in an inner product, remain names.
+  function postfixFunctions(tex){
+    return tex.replace(/\\(sin|cos|tan)\s*(\(\(2j\+1\)x\)|[nN2]x|x|\\theta)/g,(_,name,arg)=>{
+      const input=arg==='x'||arg==='\\theta'?arg:arg.startsWith('(')?arg:'('+arg+')';
+      return '\\bigl('+input+'.\\'+name+'\\bigr)';
+    }).replace(/\\Gamma\(([^()]*)\)/g,(_,arg)=>'\\bigl(('+arg+').\\Gamma\\bigr)');
+  }
+  let mode='row';
+  try{
+    const saved=localStorage.getItem('linear-algebra-vector-convention');
+    const previous=localStorage.getItem('linear-algebra-matrix-convention');
+    if(saved==='column'||(!saved&&previous==='standard'))mode='column';
+  }catch{}
+  const renderedSources=new Map(),trust=context=>context.command==='\\htmlClass';
+  function preProcess(tex){
+    const result=convert(tex,mode,true,Boolean(this?.displayMode));renderedSources.set(result,tex);return result;
+  }
+  function remember(root){
     root.querySelectorAll('.katex').forEach(node=>{
       if(node.dataset.sourceTex)return;
       const rendered=node.querySelector('annotation')?.textContent;
       if(rendered)node.dataset.sourceTex=renderedSources.get(rendered)||rendered;
     });
   }
-  function render(node,tex,display=false) {
-    katex.render(preProcess(tex),node,{displayMode:display,throwOnError:true,trust});
-    remember(node);
+  function render(node,tex,display=false){
+    katex.render(preProcess.call({displayMode:display},tex),node,{displayMode:display,throwOnError:true,trust});remember(node);
   }
-  function applyCopy(root=document) {
-    root.querySelectorAll('[data-reading-copy]').forEach(node=>{
-      node.textContent=mode==='reading'?node.dataset.readingCopy:node.dataset.standardCopy;
-    });
+  function applyCopy(root=document){
+    root.querySelectorAll('[data-row-copy]').forEach(node=>{node.textContent=mode==='row'?node.dataset.rowCopy:node.dataset.columnCopy;});
   }
-  function controls() {
+  function controls(){
     if(typeof document==='undefined')return;
     document.documentElement.dataset.matrixConvention=mode;
     document.querySelectorAll('[data-convention-mode]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.conventionMode===mode)));
-    const status=document.getElementById('convention-status');
-    if(status)status.textContent=mode==='reading'?'Input first · square brackets':'Matrix first · parentheses';
-    applyCopy();
+    const status=document.getElementById('convention-status');if(status)status.textContent=mode==='row'?'Row matrices':'Column matrices';applyCopy();
   }
-  function positions() {
+  function positions(){
     const result=new Map(),counts=new Map();
-    document.querySelectorAll('.conv-equation').forEach(node=>{
-      const key=Array.from(node.classList).find(c=>c.startsWith('conv-key-'));
-      const occurrence=counts.get(key)||0;counts.set(key,occurrence+1);
-      node.querySelectorAll('.conv-factor').forEach(factorNode=>{
-        const id=Array.from(factorNode.classList).find(c=>c.startsWith('conv-factor-'));
-        result.set(key+':'+occurrence+':'+id,{node:factorNode,rect:factorNode.getBoundingClientRect()});
+    document.querySelectorAll('.katex[data-source-tex]').forEach(mathNode=>{
+      const source=mathNode.dataset.sourceTex,occurrence=counts.get(source)||0;counts.set(source,occurrence+1);
+      const prefix=source+':'+occurrence+':';
+      mathNode.querySelectorAll('.conv-cell,.conv-factor').forEach(node=>{
+        if(node.matches('.conv-factor')&&node.querySelector('.conv-cell'))return;
+        const id=Array.from(node.classList).find(c=>c.startsWith('conv-cell-')||c.startsWith('conv-factor-'));
+        result.set(prefix+id,{node,rect:node.getBoundingClientRect()});
       });
     });return result;
   }
-  let movements=[];
-  function setMode(next) {
-    if(!['reading','standard'].includes(next)||next===mode)return;
-    const old=positions();movements.forEach(animation=>animation.cancel());movements=[];
-    mode=next;try {localStorage.setItem('linear-algebra-matrix-convention',mode);}catch{}
+  let movements=[],finishTimer;
+  function setMode(next){
+    next=normalize(next);if(!['row','column'].includes(next)||next===mode)return;
+    const old=positions();movements.forEach(animation=>animation.cancel());movements=[];clearTimeout(finishTimer);
+    mode=next;try{localStorage.setItem('linear-algebra-vector-convention',mode);}catch{}
     document.querySelectorAll('.katex[data-source-tex]').forEach(node=>{
-      const tex=node.dataset.sourceTex,display=node.parentElement.classList.contains('katex-display');
-      const template=document.createElement('template');
-      template.innerHTML=katex.renderToString(preProcess(tex),{displayMode:display,throwOnError:true,trust});
-      const replacement=template.content.firstElementChild;
-      (display?node.parentElement:node).replaceWith(replacement);
-      const mathNode=replacement.matches('.katex')?replacement:replacement.querySelector('.katex');
-      mathNode.dataset.sourceTex=tex;
+      const tex=node.dataset.sourceTex,display=node.parentElement.classList.contains('katex-display'),template=document.createElement('template');
+      template.innerHTML=katex.renderToString(preProcess.call({displayMode:display},tex),{displayMode:display,throwOnError:true,trust});
+      const replacement=template.content.firstElementChild;(display?node.parentElement:node).replaceWith(replacement);
+      (replacement.matches('.katex')?replacement:replacement.querySelector('.katex')).dataset.sourceTex=tex;
     });
     controls();
+    // Demos update their factor order before the final entry positions are measured.
+    document.dispatchEvent(new CustomEvent('matrixconventionchange',{detail:{mode}}));
     if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+      document.documentElement.classList.add('notation-moving');
       positions().forEach((item,key)=>{
         const before=old.get(key);if(!before)return;
         const dx=before.rect.left-item.rect.left,dy=before.rect.top-item.rect.top;
-        if(Math.abs(dx)+Math.abs(dy)>1)movements.push(item.node.animate([{transform:'translate('+dx+'px,'+dy+'px)'},{transform:'translate(0,0)'}],{duration:600,easing:'cubic-bezier(.2,.7,.2,1)'}));
+        if(Math.abs(dx)+Math.abs(dy)>1)movements.push(item.node.animate([{transform:'translate('+dx+'px,'+dy+'px)'},{transform:'translate(0,0)'}],{duration:650,easing:'cubic-bezier(.2,.7,.2,1)'}));
       });
-    }
-    document.dispatchEvent(new CustomEvent('matrixconventionchange',{detail:{mode}}));
+      finishTimer=setTimeout(()=>{
+        document.documentElement.classList.remove('notation-moving');
+        document.dispatchEvent(new CustomEvent('matrixconventionsettled'));
+      },680);
+    }else document.documentElement.classList.remove('notation-moving');
   }
-  window.MATRIX_NOTATION={get mode(){return mode;},entries,convert,multiply,preProcess,remember,render,applyCopy,trust,setMode};
+  window.MATRIX_NOTATION={get mode(){return mode;},entries,convert,multiply,transpose,represent:(A,convention=mode)=>normalize(convention)==='row'?transpose(A):A,preProcess,remember,render,applyCopy,trust,setMode};
   if(typeof document!=='undefined'){
-    document.querySelectorAll('[data-convention-mode]').forEach(button=>button.addEventListener('click',()=>setMode(button.dataset.conventionMode)));
-    controls();
+    document.querySelectorAll('[data-convention-mode]').forEach(button=>button.addEventListener('click',()=>setMode(button.dataset.conventionMode)));controls();
   }
 })();

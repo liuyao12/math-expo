@@ -26,29 +26,67 @@ const transpose=A=>A[0].map((_,j)=>A.map(row=>row[j]));
 const near=(A,B,label)=>{
   if(A.length!==B.length||A[0].length!==B[0].length||A.some((row,i)=>row.some((v,j)=>Math.abs(v-B[i][j])>1e-10)))throw Error('Matrix check failed: '+label);
 };
-const product=(...factors)=>factors.reduce((a,b)=>notation.multiply(a,b,'reading'));
+const product=(...factors)=>factors.reduce((a,b)=>notation.multiply(a,b));
 const inverse2=([[a,b],[c,d]])=>[[d/(a*d-b*c),-b/(a*d-b*c)],[-c/(a*d-b*c),a/(a*d-b*c)]];
 const sample=context.window.MATRIX_PRODUCT_EXAMPLE;
-near(product(sample.A,sample.B),sample.result,'column/row rectangular example');
-near(notation.multiply(sample.B,sample.A,'standard'),sample.result,'standard rectangular example');
-const v=[[2],[-1]],A=[[1,0],[1,1],[0,1]],AT=transpose(A),G=product(A,AT),GI=inverse2(G);
-near(product(v,A),[[2],[1],[-1]],'a column remains a column');
-near(G,[[2,1],[1,2]],'Gram matrix');
-const P=product(AT,GI,A),x=[[3],[1],[-2]],px=product(x,P);
-near(product(P,P),P,'projection idempotence');near(transpose(P),P,'projection symmetry');
-near(product(x,AT,GI,A),px,'analysis, correction, synthesis');
-near(product(x.map((r,i)=>[r[0]-px[i][0]]),AT),[[0],[0]],'perpendicular residual');
-const S=[[1,2],[0,1]],Aprime=product(S,A),Gprime=product(Aprime,transpose(Aprime));
-near(product(S,G,transpose(S)),Gprime,'Gram basis change');
-near(product(v,G,transpose(v)),[[6]],'metric scalar');
-const w=[[1],[3]],M=[[2,1],[0,3]],SInv=inverse2(S),Mprime=product(S,M,SInv);
-near(product(w,Mprime,S),product(w,S,M),'operator basis change');
-const Q=[[.6,-.8],[.8,.6]],L=[[2,0],[0,5]],spectral=product(transpose(Q),L,Q);
-near(product(Q,transpose(Q)),[[1,0],[0,1]],'orthonormal eigenbasis');
-near(product([[.6],[.8]],spectral),[[1.2],[1.6]],'spectral reconstruction');
-near(product(product(v,A),AT),product(v,product(A,AT)),'associativity');
+near(product(sample.B,sample.A),sample.result,'column rectangular example');
+near(product(transpose(sample.A),transpose(sample.B)),transpose(sample.result),'row rectangular example');
+const A=[[1,0],[1,1],[0,1]],S=[[1,2],[0,1]],M=[[2,1],[0,3]],Q=[[.6,-.8],[.8,.6]],L=[[2,0],[0,5]];
+const x=[[3],[1],[-2]],c=[[2],[-1]],d=[[1],[3]],G=product(transpose(A),A),GI=inverse2(G);
+for(const mode of ['column','row']){
+  const row=mode==='row',basis=notation.represent(A,mode),input=notation.represent(x,mode),coordinate=notation.represent(c,mode),other=notation.represent(d,mode),change=notation.represent(S,mode),map=notation.represent(M,mode);
+  const gram=row?product(basis,transpose(basis)):product(transpose(basis),basis);
+  near(gram,[[2,1],[1,2]],mode+' Gram matrix');
+  const P=row?product(transpose(basis),GI,basis):product(basis,GI,transpose(basis));
+  const projected=row?product(input,P):product(P,input);
+  near(product(P,P),P,mode+' idempotence');near(transpose(P),P,mode+' symmetry');
+  const residual=input.map((r,i)=>r.map((v,j)=>v-projected[i][j]));
+  near(row?product(residual,transpose(basis)):product(transpose(basis),residual),row?[[0,0]]:[[0],[0]],mode+' perpendicular residual');
+  const analysis=row?product(input,transpose(basis),GI,basis):product(basis,GI,transpose(basis),input);
+  near(analysis,projected,mode+' analysis/correction/synthesis');
+  const altered=row?product(change,basis):product(basis,change);
+  near(row?product(change,gram,transpose(change)):product(transpose(change),gram,change),row?product(altered,transpose(altered)):product(transpose(altered),altered),mode+' Gram basis change');
+  near(row?product(coordinate,gram,transpose(coordinate)):product(transpose(coordinate),gram,coordinate),[[6]],mode+' squared length');
+  near(row?product(coordinate,gram,transpose(other)):product(transpose(coordinate),gram,other),[[3]],mode+' mixed inner product');
+  const transformed=row?product(change,map,inverse2(change)):product(inverse2(change),map,change);
+  const coeff=notation.represent([[1],[3]],mode);
+  near(row?product(coeff,transformed,change):product(change,transformed,coeff),row?product(coeff,change,map):product(map,change,coeff),mode+' operator basis change');
+  const eigenbasis=notation.represent(Q,mode),spectral=row?product(transpose(eigenbasis),L,eigenbasis):product(eigenbasis,L,transpose(eigenbasis));
+  near(spectral,product(Q,L,transpose(Q)),mode+' spectral reconstruction');
+}
+near(product(product(sample.B,sample.A),[[1,2],[0,1]]),product(sample.B,product(sample.A,[[1,2],[0,1]])),'ordinary associativity');
+near(transpose(product(S,M)),product(transpose(M),transpose(S)),'transpose of product');
+near(inverse2(product(S,M)),product(inverse2(M),inverse2(S)),'inverse of product');
 let rejected=false;try{product(A,A);}catch{rejected=true;}if(!rejected)throw Error('Invalid dimensions were accepted');
-console.log('Validated both multiplication conventions, rectangular actions, Gram/basis changes, projections, spectral reconstruction, regular polytope graphs, and ball volumes.');
+const slash=String.fromCharCode(92);
+const rectangle=slash+'begin{pmatrix}1&2&3'+slash+slash+'4&5&6'+slash+'end{pmatrix}';
+if(!notation.convert(rectangle,'row').includes('1&4'+slash+slash+'2&5'+slash+slash+'3&6'))throw Error('Rectangular array did not transpose');
+const inline='A='+slash+'begin{pmatrix}1&4'+slash+slash+'2&5'+slash+slash+'3&6'+slash+'end{pmatrix}';
+if(notation.convert(inline,'row',false,false)!=='A='+slash+'left['+slash+'left[1,2,3'+slash+'right],'+slash+'left[4,5,6'+slash+'right]'+slash+'right]')throw Error('Inline row-list notation disagrees with matrix transpose');
+console.log('Validated ordinary multiplication in row/column representations, Gram metrics, projections, basis changes, spectral reconstruction, product laws, and compact row-list notation.');
+// A coordinate list stays a list; wrapping it creates a genuine one-row matrix.
+for(const formula of ['x=[1,2,3]','[x]=[[1,2,3]]','[x]^{\\mathsf T}=[[1],[2],[3]]','(v.L).K=v.(LK)']){
+  for(const mode of ['row','column']){
+    if(notation.convert(formula,mode)!==formula)throw Error('Toggle changed a list, literal wrapper, or abstract evaluation: '+formula);
+  }
+}
+const oneRow=slash+'begin{pmatrix}1'+slash+slash+'2'+slash+slash+'3'+slash+'end{pmatrix}';
+if(notation.convert(oneRow,'row',false,false)!==slash+'left['+slash+'left[1,2,3'+slash+'right]'+slash+'right]')throw Error('A one-row matrix lost its outer list');
+const list=[2,-1],secondList=[1,3],rowMatrix=[list],otherRow=[secondList];
+near(product(rowMatrix,G,transpose(otherRow)),[[3]],'list-to-matrix mixed Gram pairing');
+const scalarMatrix=product(rowMatrix,G,transpose(rowMatrix));
+if(scalarMatrix.length!==1||scalarMatrix[0].length!==1||scalarMatrix[0][0]!==6)throw Error('Gram pairing must produce a 1 by 1 matrix');
+// The coordinate square commutes for rectangular maps in both representations.
+const inputList=[[2,-1]],first=transpose(sample.A),second=transpose(sample.B);
+const outputList=product(inputList,first,second);
+near(product(transpose(second),transpose(first),transpose(inputList)),transpose(outputList),'column composition equals row composition');
+for(const mode of ['row','column']){
+  const defs=notation.convert('C=[a]^{\\mathsf T},\\qquad D=[b]^{\\mathsf T}.',mode);
+  const normal=notation.convert('GC=D.',mode);
+  if(mode==='row'&&(defs.includes('mathsf T')||normal!=='CG=D.'))throw Error('Row coefficient matrices disagree with the normal equations');
+  if(mode==='column'&&(!defs.includes('mathsf T')||normal!=='GC=D.'))throw Error('Column coefficient matrices disagree with the normal equations');
+}
+console.log('Validated list/matrix distinction, invariant postfix evaluation, scalar matrix results, and rectangular coordinate composition.');
 vm.runInNewContext(fs.readFileSync(path.join(root,'course-site/hat-turtle.js'),'utf8'),context);
 const tile=context.window.HAT_TURTLE;
 if(tile.vertices.length!==14)throw Error('Expected fourteen fixed tile vertices');
@@ -57,7 +95,8 @@ if(latticeSample.length!==5**4)throw Error('Incorrect four-dimensional sample si
 for(const theta of [Math.PI/6,Math.PI/4,Math.atan(Math.sqrt(3)/2),Math.PI/3]){
   for(const point of latticeSample){
     const image=tile.view(point.relative,theta),internal=tile.internal(point.relative,theta);
-    near(product(point.relative.map(x=>[x]),tile.matrix(theta)),image.map(x=>[x]),'live projection matrix');
+    near(product(tile.matrix(theta),point.relative.map(x=>[x])),image.map(x=>[x]),'column live projection matrix');
+    near(product([point.relative],transpose(tile.matrix(theta))),[image],'row live projection matrix');
     const originalSquared=point.relative.reduce((sum,x)=>sum+x*x,0);
     if(Math.abs(image.reduce((sum,x)=>sum+x*x,0)+internal.reduce((sum,x)=>sum+x*x,0)-originalSquared)>1e-10)throw Error('Perpendicular depth is not Euclidean distance');
     const [p,q,r,s]=point.coefficients,raw=tile.view(tile.toCartesian(point.coefficients),theta),t=Math.tan(theta)/Math.sqrt(3);
@@ -109,10 +148,10 @@ for(const chapter of chapters){
       if(/[\x00-\x08\x0b\x0c\x0e-\x1f]/.test(text))throw Error(`Control character in ${chapter.id}`);
       for(const match of text.matchAll(/\\\(([\s\S]*?)\\\)|\\\[([\s\S]*?)\\\]/g)){
         const formula=match[1]??match[2];
-        if(match[1] && formula.includes(String.fromCharCode(92,92))) throw Error(`Unexpected line break in inline mathematics: ${chapter.id}`);
+        if(match[1] && formula.includes(String.fromCharCode(92,92))&&!formula.includes('\\begin{pmatrix}')) throw Error(`Unexpected line break in inline mathematics: ${chapter.id}`);
         try{
-          for(const mode of ['reading','standard']){
-            const converted=notation.convert(formula,mode,true);
+          for(const mode of ['row','column']){
+            const converted=notation.convert(formula,mode,true,Boolean(match[2]));
             if(converted.includes('\\star'))throw Error('The star symbol must not mark matrix multiplication');
             katexContext.katex.renderToString(converted,{throwOnError:true,trust:notation.trust});
           }
@@ -124,11 +163,11 @@ for(const chapter of chapters){
   }
 }
 for(const entry of notation.entries){
-  for(const mode of ['reading','standard']){
+  for(const mode of ['row','column']){
     for(const decorate of [false,true]){
-      const tex=notation.convert(entry.standard,mode,decorate);
+      const tex=notation.convert(entry.column,mode,decorate);
       katexContext.katex.renderToString(tex,{throwOnError:true,trust:notation.trust});
-      if(mode==='reading'&&tex.includes('{pmatrix}'))throw Error('Experimental arrays need square brackets');
+      if(mode==='row'&&tex.includes('{pmatrix}'))throw Error('Row arrays need square brackets');
     }
   }
 }

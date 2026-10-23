@@ -102,7 +102,7 @@
       arrow(svg,p([0,0]),p(v),colors.muted,1.5);arrow(svg,p([0,0]),p(mid),colors.blue,2);arrow(svg,p([0,0]),p(end),colors.green,2.5);
       line(svg,[p(v),p(mid),p(end)],colors.orange,1,'4 4');dot(svg,p(mid),colors.blue);dot(svg,p(end),colors.green);
       mathLabel(svg,p([1.9,-.15]),'A');mathLabel(svg,p(b.map(x=>2.2*x)),'B');mathLabel(svg,[p(v)[0]+12,p(v)[1]-7],'v');
-      math(readout,reverse?'P_A P_B v':'P_B P_A v');outputRange(root,input,`${input.value}^{\\circ}`);
+      math(readout,reverse?'v.\\mathcal P_B.\\mathcal P_A':'v.\\mathcal P_A.\\mathcal P_B');outputRange(root,input,`${input.value}^{\\circ}`);
     };
     controls.querySelector('button').addEventListener('click',event=>{reverse=!reverse;event.currentTarget.setAttribute('aria-pressed',String(reverse));draw();});input.addEventListener('input',draw);observe(svg,draw);
   }
@@ -133,7 +133,7 @@
       element('circle',{cx:o[0],cy:o[1],r:s,fill:'none',stroke:colors.grid,'stroke-width':1},svg);
       line(svg,[p(u),p(sum),p(v)],colors.muted,1,'4 4');arrow(svg,o,p(u),colors.blue,2);arrow(svg,o,p(v),colors.orange,2);arrow(svg,o,p(sum),colors.green,2.5);dot(svg,o,colors.ink,2);
       mathLabel(svg,[p(u)[0]+7,p(u)[1]+17],'u_1');mathLabel(svg,[p(v)[0]-9,p(v)[1]-14],'u_2');mathLabel(svg,[p(sum)[0]+6,p(sum)[1]-17],'u_1+u_2',75);
-      math(readout,`G=\\begin{pmatrix}1&${format(c)}\\\\${format(c)}&1\\end{pmatrix}`,true);outputRange(root,input,`${input.value}^{\\circ}`);
+      math(readout,`\\begin{gathered}G=\\begin{pmatrix}1&${format(c)}\\\\${format(c)}&1\\end{pmatrix}\\\\x=[1,1],\\quad \\|u_1+u_2\\|^2=${format(2+2*c)}\\end{gathered}`,true);outputRange(root,input,`${input.value}^{\\circ}`);
     };input.addEventListener('input',draw);observe(svg,draw);
   }
   function eigenDemo(root,svg,controls,readout){
@@ -144,7 +144,7 @@
       else{transformed=[c*v[0]-sn*v[1],sn*v[0]+c*v[1]];expression='M=R_{\\pi/6}';}
       const s=Math.min(w*.26,h*.32),o=[w*.5,h*.6],p=([x,y])=>[o[0]+s*x,o[1]-s*y];
       line(svg,[p([-1.65,0]),p([1.65,0])]);line(svg,[p([0,-1.05]),p([0,1.65])]);element('circle',{cx:o[0],cy:o[1],r:s,fill:'none',stroke:colors.grid,'stroke-width':1},svg);
-      arrow(svg,o,p(v),colors.blue,2);arrow(svg,o,p(transformed),colors.green,2.5);mathLabel(svg,[p(v)[0]-10,p(v)[1]-10],'v');mathLabel(svg,[p(transformed)[0]+13,p(transformed)[1]-11],'Mv');math(readout,expression,true);outputRange(root,input,`${input.value}^{\\circ}`);
+      arrow(svg,o,p(v),colors.blue,2);arrow(svg,o,p(transformed),colors.green,2.5);mathLabel(svg,[p(v)[0]-10,p(v)[1]-10],'v');mathLabel(svg,[p(transformed)[0]+13,p(transformed)[1]-11],'v.L');math(readout,'\\begin{gathered}'+expression+'\\\\x=v.c,\\quad y=v.L.c\\end{gathered}',true);outputRange(root,input,`${input.value}^{\\circ}`);
     };controls.querySelectorAll('button').forEach(button=>button.addEventListener('click',()=>{mode=button.dataset.map;controls.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));draw();}));input.addEventListener('input',draw);observe(svg,draw);
   }
   function sineDemo(root,svg,controls,readout){
@@ -168,14 +168,14 @@
     const draw=()=>{const {w,h}=scene(svg);const left=21,right=w-16,top=28,bottom=h-35,mid=(top+bottom)/2,amp=(bottom-top)/3.7,x=t=>left+(right-left)*t/(2*Math.PI),p=(t,y)=>[x(t),mid-amp*y],count=+input.value;
       line(svg,[[left,mid],[right,mid]],colors.grid);const target=[],approx=[];for(let i=0;i<=240;i++){const t=2*Math.PI*i/240;target.push(p(t,Math.abs(t-Math.PI)-Math.PI/2));let y=0;for(let j=0;j<count;j++){const n=2*j+1;y+=4*Math.cos(n*t)/(Math.PI*n*n);}approx.push(p(t,y));}
       line(svg,target,colors.muted,1.5,'5 4');line(svg,approx,colors.blue,2);for(const [t,label] of [[0,'0'],[Math.PI,'\\pi'],[2*Math.PI,'2\\pi']])mathLabel(svg,[x(t),h-16],label);
-      math(readout,`S(x)=\\frac4\\pi\\sum_{j=0}^{${count-1}}\\frac{\\cos((2j+1)x)}{(2j+1)^2}`);outputRange(root,input,String(count));
+      math(readout,`x.S=\\frac4\\pi\\sum_{j=0}^{${count-1}}\\frac{\\cos((2j+1)x)}{(2j+1)^2}`);outputRange(root,input,String(count));
     };input.addEventListener('input',draw);observe(svg,draw);
   }
   function modeDemo(root,svg,controls,readout){
     controls.innerHTML=range('heat-time','Elapsed time',0,150,15);const input=controls.querySelector('input');
     const draw=()=>{const {w,h}=scene(svg);const left=20,right=w-16,mid=h*.48,amp=h*.3,t=+input.value/100,x=a=>left+(right-left)*a/(2*Math.PI);line(svg,[[left,mid],[right,mid]],colors.grid);
       for(const [scale,color,dash] of [[1,colors.muted,'5 4'],[Math.exp(-4*t),colors.blue,'']])line(svg,Array.from({length:201},(_,i)=>{const a=2*Math.PI*i/200;return[x(a),mid-amp*scale*Math.cos(2*a)];}),color,1.7,dash);
-      for(const [a,label] of [[0,'0'],[Math.PI,'\\pi'],[2*Math.PI,'2\\pi']])mathLabel(svg,[x(a),h-13],label);math(readout,`u(x,t)=${format(Math.exp(-4*t))}\\cos 2x`);outputRange(root,input,`t=${format(t)}`);
+      for(const [a,label] of [[0,'0'],[Math.PI,'\\pi'],[2*Math.PI,'2\\pi']])mathLabel(svg,[x(a),h-13],label);math(readout,`(x,t).u=${format(Math.exp(-4*t))}\\cos 2x`);outputRange(root,input,`t=${format(t)}`);
     };input.addEventListener('input',draw);observe(svg,draw);
   }
   function buildNavigation(current) {
