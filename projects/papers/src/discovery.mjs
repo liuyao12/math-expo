@@ -14,7 +14,7 @@ export const discoveryTerms={
  'gauss-1828':['Theorema Egregium','Gauss map','Gaussian curvature','normal sections','geodesic triangle','angle excess','development','surveying','differential geometry','Gaussian curvature','Theorema Egregium','intrinsic geometry','surfaces'],
  'jacobi-1829':['elliptic functions','theta functions','Jacobi transformation'],
  'dirichlet-1837':['primes in arithmetic progressions','Dirichlet theorem','L-functions','analytic number theory'],
- 'riemann-1851':['complex analysis','Riemann surfaces','holomorphic functions','conformal mapping'],
+ 'riemann-1851':['complex analysis','Riemann surfaces','holomorphic functions','conformal mapping','dissertation','Cauchy Riemann equations','Dirichlet principle','harmonic functions','branched coverings','mapping theorem','boundary value problem'],
  'riemann-1854':['Riemannian geometry','manifolds','metric tensor','line element','curvature','sectional curvature','normal coordinates','constant curvature','intrinsic geometry','physical space','finite and unbounded'],
  'riemann-1859':['Riemann hypothesis','zeta function','prime counting','explicit formula','analytic number theory'],
  'dedekind-1872':['Dedekind cuts','real numbers','continuity','foundations of analysis'],

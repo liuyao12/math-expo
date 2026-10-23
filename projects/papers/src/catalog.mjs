@@ -1,3 +1,4 @@
+import {concepts1851,citations1851,externalReferences1851,english1851} from './riemann-1851-catalog.mjs';
 import {worksPoincare,peoplePoincare,bibliographyPoincare,englishPoincare,citationsPoincare,conceptsPoincare} from './poincare-catalog.mjs';
 import {peopleGauss,conceptsGauss} from './gauss-1828-catalog.mjs';
 import {people1854,concepts1854,citations1854} from './riemann-1854-catalog.mjs';
@@ -9,6 +10,7 @@ import {circleWork,peopleEulerMore,conceptsEulerMore,bibliographyCircle,englishE
 import {worksLogarithms,peopleLogarithms,conceptsLogarithms,bibliographyLogarithms,englishLogarithms,citationsLogarithms} from './euler-1751-catalog.mjs';
 import {conceptsBridges} from './euler-1741-catalog.mjs';
 import {peopleResidues,conceptsResidues,externalReferencesResidues} from './euler-1761-catalog.mjs';
+englishSources['riemann-1851']=english1851;
 Object.assign(englishSources,englishPoincare);
 Object.assign(englishSources,englishEulerMore);
 Object.assign(englishSources,englishLogarithms);
@@ -44,12 +46,12 @@ export const works = [
     language: 'German', edition: 'Complete modern-English reading',
     summary: 'The complete geometry lecture: dimensions, the line element, curvature, and physical space, with scoped commentary and ten margin drawings.',
     links: [{label: 'Göttingen manuscript', url: 'https://gdz.sub.uni-goettingen.de/id/DE-611-HS-3206822'}, {label: 'Original print · 1867', url: 'https://doi.org/10.3931/e-rara-49481'}, {label: 'Clifford’s English translation · 1873', url: 'https://www.maths.tcd.ie/pub/HistMath/People/Riemann/Geom/WKCGeom.html'}] },
-  { id: 'riemann-1851', authors: ['riemann'], year: 1851,
+  { id: 'riemann-1851', authors: ['riemann'], year: 1851, edition:'Complete dissertation', externalReferences:externalReferences1851,
     title: 'Foundations for a general theory of functions of a complex variable',
     originalTitle: 'Grundlagen für eine allgemeine Theorie der Functionen einer veränderlichen complexen Grösse',
-    publication: 'Doctoral dissertation, Göttingen, 1851.', language: 'German',
-    summary: 'Complex functions, their geometric interpretation, and the foundations of a general function theory.',
-    links: [{label: 'Source & German transcription · Trinity College Dublin', url: 'https://www.maths.tcd.ie/pub/HistMath/People/Riemann/Grund/'}] },
+    publication: 'Doctoral dissertation, Göttingen: E. A. Huth, 1851. 32 pages.', language: 'German',
+    summary: 'Complex differentiability, branched sheets, harmonic functions, the minimum principle, and a normalized conformal mapping to the disk.',
+    links: [{label:'German text · Wilkins transcription',url:'https://www.maths.tcd.ie/pub/HistMath/People/Riemann/Grund/'},{label:'1851 printing · Göttingen digitized copy',url:'https://gdz.sub.uni-goettingen.de/id/DE-611-HS-3206233'},{label:'English edition · Baker, Christenson & Orde, 2004',url:english1851.url}] },
   { id: 'jacobi-1829', authors: ['jacobi'], year: 1829,
     title: 'New foundations of the theory of elliptic functions',
     originalTitle: 'Fundamenta nova theoriae functionum ellipticarum',
@@ -125,6 +127,7 @@ export const people = [
 // Only direct, checked work-to-work citations belong here. Reverse lists are
 // derived from these edges; related works and editorial sources stay separate.
 export const citations = [
+  ...citations1851,
   ...citationsPoincare,
   ...citations1854,
   ...citationsLogarithms,
@@ -135,6 +138,7 @@ export const citations = [
 ];
 
 export const concepts = [
+  ...concepts1851,
   ...conceptsPoincare,
   ...conceptsGauss,
   ...concepts1854,

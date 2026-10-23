@@ -1,3 +1,4 @@
+import './check-riemann-1851.mjs';
 import './check-personal-names.mjs';
 import './check-poincare.mjs';
 import './check-gauss.mjs';
@@ -105,7 +106,7 @@ for(const w of works)if(!discoveryTerms[w.id]?.length||!data.discoveryTerms[w.id
 const found=f=>searchable.filter(w=>matchesWork(w,f)).map(w=>w.id).sort().join(',');
 for(const [filters,expected] of [
  [{q:'Basel problem',author:'euler'},'euler-1740'],
- [{author:'riemann',decade:'1850',language:'German',access:'edited'},'riemann-1854,riemann-1859'],
+ [{author:'riemann',decade:'1850',language:'German',access:'edited'},'riemann-1851,riemann-1854,riemann-1859'],
  [{q:'conservation laws'},'noether-1918'],
  [{q:'konigsberg bridges'},'euler-1741'],
  [{q:'konigsberg bridges',access:'english'},'euler-1741'],

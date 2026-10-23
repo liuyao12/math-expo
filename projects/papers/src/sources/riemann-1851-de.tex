@@ -1,0 +1,2726 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[german]{babel}
+
+\renewcommand{\leq}{\mathrel{\vcenter{\halign{\hfil$##$\hfil\cr
+   =\cr\noalign{\kern-8pt}<\cr}}}}
+
+\renewcommand{\geq}{\mathrel{\vcenter{\halign{\hfil$##$\hfil\cr
+   >\cr\noalign{\kern-8pt}=\cr}}}}
+
+
+\newcommand{\asterisktriangle}{\centerline{${\displaystyle
+   * \hskip 36pt * \atop \displaystyle *}$}}
+
+\begin{document}
+
+\thispagestyle{empty}
+\begin{center}
+\Large\bfseries
+Grundlagen f\"{u}r eine allgemeine Theorie der Functionen
+einer ver\"{a}nderlichen complexen Gr\"{o}sse.\\[12 pt]
+Bernhard Riemann\\[12 pt]
+[Inauguraldissertation, G\"{o}ttingen, 1851; zweiter
+unver\"{a}nderter Abdruck, G\"{o}ttingen 1867.]\\[24 pt]
+\large\mdseries
+Transcribed by D. R. Wilkins\\[12 pt]
+Preliminary Version: December 1998\\
+Corrected: April 2000
+\end{center}
+
+\newpage
+\setcounter{page}{1}
+
+\title{Grundlagen f\"{u}r eine allgemeine Theorie der Functionen
+einer ver\"{a}nderlichen complexen Gr\"{o}sse.}
+\author{Bernhard Riemann}
+\date{[Inauguraldissertation, G\"{o}ttingen, 1851; zweiter
+unver\"{a}nderter Abdruck, G\"{o}ttingen 1867.]}
+
+\maketitle
+
+\centerline{1.}
+
+\nobreak\medskip
+
+Denkt man sich unter $z$ eine ver\"{a}nderliche Gr\"{o}sse,
+welche nach und nach alle m\"{o}glichen reellen Werthe annehmen
+kann, so wird, wenn jedem ihrer Werthe ein einziger Werth der
+unbestimmten Gr\"{o}sse $w$ entspricht, $w$ eine Function von $z$
+genannt, und wenn, w\"{a}hrend $z$ alle zwischen zwei festen
+Werthen gelegenen Werthe stetig durchl\"{a}uft, $w$ ebenfalls
+stetig sich \"{a}ndert, so heisst diese Function innerhalb dieses
+Intervalls stetig oder continuirlich.
+
+Diese Definition setzt offenbar zwischen den einzelnen Werthen
+der Function durchaus kein Gesetz fest, indem, wenn \"{u}ber
+diese Function f\"{u}r ein bestimmtes Intervall verf\"{u}gt ist,
+die Art ihrer Fortsetzung ausserhalb desselben ganz der
+Willk\"{u}r \"{u}berlassen bleibt.
+
+Die Abh\"{a}ngigkeit der Gr\"{o}sse $w$ von $z$ kann durch ein
+mathematisches Gesetz gegeben sein, so dass durch bestimmte
+Gr\"{o}ssenoperationen zu jedem Werthe von $z$ das ihm
+entsprechende $w$ gefunden wird.  Die F\"{a}higkeit, f\"{u}r alle
+innerhalb eines gegebenen Intervalls liegenden Werthe von $z$
+durch dasselbe Abh\"{a}ngigkeitsgesetz bestimmt zu werden,
+schrieb man fr\"{u}her nur einer gewissen Gattung von Functionen
+zu (functiones continuae nach Euler's Sprachgebrauch); neuere
+Untersuchungen haben indess gezeigt, dass es analytische
+Ausdr\"{u}cke giebt, durch welche eine jede stetige Function
+f\"{u}r ein gegebenes Intervall dargestellt werden kann.  Es ist
+daher einerlei, ob man die Abh\"{a}ngigkeit der Gr\"{o}sse $w$
+von der Gr\"{o}sse $z$ als eine willk\"{u}rlich gegebene oder als
+eine durch bestimmte Gr\"{o}ssenoperationen bedingte definirt.
+Beide Begriffe sind in Folge der erw\"{a}hnten Theoreme congruent.
+
+Anders verh\"{a}lt es sich aber, wenn die Ver\"{a}nderlichkeit
+der Gr\"{o}sse $z$ nicht auf reelle Werthe beschr\"{a}nkt wird,
+sondern auch complexe von der Form $x + yi$ (wo $i = \sqrt{-1}$)
+zugelassen werden.
+
+Es seien $x + yi$ und $x + yi + dx + dy \, i$ zwei unendlich
+wenig verschiedene Werthe der Gr\"{o}sse $z$, welchen die Werthe
+$u + vi$ und $u + vi + du + dv \, i$ der Gr\"{o}sse $w$
+entsprechen.  Alsdann wird, wenn die Abh\"{a}ngigkeit der
+Gr\"{o}sse $w$ von $z$ eine willk\"{u}rlich angenommenene ist,
+das Verh\"{a}ltniss
+$\displaystyle\frac{du + dv \, i}{dx + dy \, i}$
+sich mit den Werthen von $dx$ und $dy$, allgemein zu reden,
+\"{a}ndern, indem, wenn man
+$dx + dy \, i = \varepsilon e^{\varphi i}$
+setzt,
+\begin{eqnarray*}
+\frac{du + dv \, i}{dx + dy \, i}
+   &=&   {\textstyle\frac{1}{2}}
+         \left(
+            \frac{\partial u}{\partial x}
+          + \frac{\partial v}{\partial y}
+         \right)
+       + {\textstyle\frac{1}{2}}
+         \left(
+            \frac{\partial v}{\partial x}
+          - \frac{\partial u}{\partial y}
+         \right) i \\
+   & & + {\textstyle\frac{1}{2}}
+         \left[
+            \frac{\partial u}{\partial x}
+          - \frac{\partial v}{\partial y}
+          + \left(
+               \frac{\partial v}{\partial x}
+             + \frac{\partial u}{\partial y}
+            \right) i
+         \right]
+         \frac{dx - dy \, i}{dx + dy \, i} \\
+   &=&   {\textstyle\frac{1}{2}}
+         \left(
+            \frac{\partial u}{\partial x}
+          + \frac{\partial v}{\partial y}
+         \right)
+       + {\textstyle\frac{1}{2}}
+         \left(
+            \frac{\partial v}{\partial x}
+          - \frac{\partial u}{\partial y}
+         \right) i \\
+   & & + {\textstyle\frac{1}{2}}
+         \left[
+            \frac{\partial u}{\partial x}
+          - \frac{\partial v}{\partial y}
+          + \left(
+               \frac{\partial v}{\partial x}
+             + \frac{\partial u}{\partial y}
+            \right) i
+         \right]
+         e^{-2 \varphi i}
+\end{eqnarray*}
+wird.  Auf welche Art aber auch $w$ als Function von $z$ durch
+Verbindung der einfachen Gr\"{o}ssenoperationen bestimmt werden
+m\"{o}ge, immer wird der Werth des Differentialquotienten
+$\displaystyle \frac{dw}{dz}$
+von dem besondern Werthe des Differentials $dz$ unabh\"{a}ngig
+sein\footnote{Diese Behauptung ist offenbar in allen F\"{a}llen
+gerechtfertigt, wo sich aus dem Ausdrucke von $w$ durch $z$
+mittelst der Regeln der Differentiation ein Ausdruck von
+$\displaystyle \frac{dw}{dz}$
+durch $z$ finden l\"{a}sst; ihre streng allgemeine G\"{u}ltigkeit
+bleibt f\"{u}r jetzt dahin gestellt.}.  Offenbar kann also auf
+diesem Wege nicht jede beliebige Abh\"{a}ngigkeit der complexen
+Gr\"{o}sse $w$ von der complexen Gr\"{o}sse $z$ ausgedr\"{u}ckt
+werden.
+
+Das eben hervorgehobene Merkmal aller irgendwie durch
+Gr\"{o}ssenoperationen bestimmbaren Functionen werden wir f\"{u}r
+die folgende Untersuchung, wo eine solche Function unabh\"{a}ngig
+von ihrem Ausdrucke betrachtet werden soll, zu Grunde legen,
+indem wir, ohne jetzt dessen Allgemeing\"{u}ltigkeit und
+Zul\"{a}nglichkeit f\"{u}r den Begriff einer durch
+Gr\"{o}ssenoperationen ausdr\"{u}ckbaren Abh\"{a}ngigkeit zu
+beweisen, von folgender Definition ausgehen:
+
+Eine ver\"{a}nderliche complexe Gr\"{o}sse $w$ heisst eine
+Function einer andern ver\"{a}nderlichen complexen Gr\"{o}sse
+$z$, wenn sie mit ihr sich so \"{a}ndert, dass der Werth des
+Differentialquotienten
+$\displaystyle \frac{dw}{dz}$
+unabh\"{a}ngig von dem Werthe des Differentials $dz$ ist.
+
+\medbreak
+
+\centerline{2.}
+
+\nobreak\medskip
+
+Sowohl die Gr\"{o}sse $z$, als die Gr\"{o}sse $w$ werden als
+ver\"{a}nderliche Gr\"{o}ssen betrachtet, die jeden complexen
+Werth annehmen k\"{o}nnen.  Die Auffassung einer solchen
+Ver\"{a}nderlichkeit, welche sich auf ein zusammenh\"{a}ngendes
+Gebiet von zwei Dimensionen erstreckt, wird wesentlich
+erleichtert durch eine Ankn\"{u}pfung an r\"{a}umliche
+Anschauungen.
+
+Man denke sich jeden Werth $x + yi$ der Gr\"{o}sse $z$
+repr\"{a}sentirt durch einen Punkt~$O$ der Ebene~$A$, dessen
+rechwinklige Coordinaten $x$,~$y$, jeden Werth $u + vi$ der
+Gr\"{o}sse $w$ durch einen Punkt~$Q$ der Ebene~$B$, dessen
+rechtwinklige Coordinaten $u$, $v$ sind.  Eine jede
+Abh\"{a}ngigkeit der Gr\"{o}sse $w$ von $z$ wird sich dann
+darstellen als eine Abh\"{a}ngigkeit der Lage des Punktes~$Q$ von
+der des Punktes~$O$.  Entspricht jedem Werthe von $z$ ein
+bestimmter mit $z$ stetig sich \"{a}ndernder Werth von $w$, mit
+andern Worten, sind $u$ und $v$ stetige Functionen von $x$,~$y$,
+so wird jedem Punkte der Ebene~$A$ ein Punkt der Ebene~$B$, jede
+Linie, allgemein zu reden, eine Linie, jedem
+zusammenh\"{a}ngenden Fl\"{a}chenst\"{u}cke ein
+zusammenh\"{a}ngendes Fl\"{a}chenst\"{u}ck entsprechen.  Man wird
+sich also diese Abh\"{a}ngigkeit der Gr\"{o}sse $w$ von $z$
+vorstellen k\"{o}nnen als eine Abbildung der Ebene~$A$ auf der
+Ebene~$B$.
+
+\medbreak
+
+\centerline{3.}
+
+\nobreak\medskip
+
+Es soll nun untersucht werden, welche Eigenschaft diese Abbildung
+erh\"{a}lt, wenn $w$ eine Function der complexen Gr\"{o}sse $z$,
+d.~h.\ wenn
+$\displaystyle \frac{dw}{dz}$
+von $dz$ unabh\"{a}ngig ist.
+
+Wir bezeichnen durch $o$ einen unbestimmten Punkt der Ebene~$A$
+in der N\"{a}he von $O$, sein Bild in der Ebene $B$ durch $q$,
+ferner durch
+$x + yi + dx + dy \, i$ und
+$u + vi + du + dv \, i$ die Werthe der Gr\"{o}ssen $z$ und $w$ in
+diesen Punkten.  Es k\"{o}nnen dann $dx$, $dy$ und $du$, $dv$ als
+rechtwinklige Coordinaten der Punkte $o$ und $q$ in Bezug auf die
+Punkte $O$ und $Q$ als Anfangspunkte angesehen werden, und wenn
+man
+$dx + dy \, i = \varepsilon e^{\varphi i}$
+und
+$du + dv \, i = \eta e^{\psi i}$
+setzt, so werden die Gr\"{o}ssen
+$\varepsilon$, $\phi$, $\eta$, $\psi$ Polarcoordinaten dieser
+Punkte f\"{u}r dieselben Anfangspunkte sein.  Sind nun $o'$ und
+$o''$ irgend zwei bestimmte Lagen des Punktes $o$ in unendlicher
+N\"{a}he von $O$, und dr\"{u}ckt man die von ihnen abh\"{a}ngigen
+Bedeutungen der \"{u}brigen Zeichen durch entsprechene Indices
+aus, so giebt die Voraussetzung
+\[    \frac{du'  + dv'  \, i}{dx'  + dy'  \, i}
+    = \frac{du'' + dv'' \, i}{dx'' + dy'' \, i} \]
+und folglich
+\[    \frac{du'  + dv'  \, i}{du'' + dv'' \, i}
+    = \frac{\eta'}{\eta''} e^{(\psi' - \psi'') i}
+    = \frac{dx'  + dy'  \, i}{dx'' + dy'' \, i}
+    = \frac{\varepsilon'}{\varepsilon''} e^{(\varphi' - \varphi'') i},\]
+woraus
+$\displaystyle
+      \frac{\eta'}{\eta''}
+    = \frac{\varepsilon'}{\varepsilon''}$
+und
+$\psi' - \psi'' = \varphi' - \varphi''$,
+d.~h.\ in den Dreiecken $o' O o''$ und $q' Q q''$ sind die Winkel
+$o' O o''$ und $q' Q q''$ gleich und die sie einschliessenden
+Seiten einander proportional.
+
+Es findet also zwischen zwei einander entsprechenden unendlich
+kleinen Dreiecken und folglich allgemein zwischen den kleinsten
+Theilen der Ebene~$A$ und ihres Bildes auf der Ebene~$B$
+Aehnlichkeit Statt.  Eine Ausnahme von diesem Satze tritt nur in
+den besonderen F\"{a}llen ein, wenn die einander entsprechenden
+Aenderungen der Gr\"{o}ssen $z$ und $w$ nicht in einem endlichen
+Verh\"{a}ltnisse zu einander stehen, was bei Herleitung desselben
+stillschweigend vorausgesetzt ist\footnote{Ueber diesen
+Gegenstand sehe man:
+
+\glqq Allgemeine Aufl\"{o}sung der Aufgabe: Die Theile einer
+gegebenen Fl\"{a}che so abzubilden, dass die Abbildung dem
+Abgebildeten in den kleinsten Theilen \"{a}hnlich wird\grqq,
+von \emph{C.~F.~Gauss}.  (Als Beantwortung der von der
+k\"{o}niglichen Societ\"{a}t der Wissenschaften in Copenhagen
+f\"{u}r 1822 aufgegebenen Preisfrage, abgedruckt in: \glqq
+Astronomische Abhandlungen, herausgegeben von Schumacher.
+Drittes Heft. Altona. 1825.\grqq)  (Gauss Werke Bd.~IV, p.~189.)}.
+
+\medbreak
+
+\centerline{4.}
+
+\nobreak\medskip
+
+Bringt man den Differentialquotienten
+$\displaystyle \frac{du + dv \, i}{dx + dy \, i}$
+in die Form
+\[ \frac{\displaystyle
+         \left(
+            \frac{\partial u}{\partial x}
+          + \frac{\partial v}{\partial x} i
+         \right) \, dx
+       + \left(
+            \frac{\partial v}{\partial y}
+          - \frac{\partial u}{\partial y} i
+         \right) \, dy \, i}{dx + dy \, i},\]
+so erhellt, dass er und zwar nur dann f\"{u}r je zwei Werthe von
+$dx$ und $dy$ denselben Werth haben wird, wenn
+\[       \frac{\partial u}{\partial x}
+   =     \frac{\partial v}{\partial y}
+      \quad \mbox{und} \quad
+         \frac{\partial v}{\partial x}
+   =   - \frac{\partial u}{\partial y} \]
+ist.  Diese Bedingungen sind also hinreichend und nothwendig,
+damit $w = u + vi$ eine Function von $z = x + yi$ sei.  F\"{u}r
+die einzelnen Glieder dieser Function fliessen aus ihnen die
+folgenden:
+\[    \frac{\partial^2 u}{\partial x^2}
+    + \frac{\partial^2 u}{\partial y^2}
+   = 0,\quad
+      \frac{\partial^2 v}{\partial x^2}
+    + \frac{\partial^2 v}{\partial y^2}
+   = 0,\]
+welche f\"{u}r die Untersuchung der Eigenschaften, die Einem
+Gliede einer solchen Function einzeln betrachtet zukommen, die
+Grundlage bilden.  Wir werden den Beweis f\"{u}r die wichtigsten
+dieser Eigenschaften einer eingehenderen Betrachtung der
+vollst\"{a}ndigen Function voraufgehen lassen, zuvor aber noch
+einige Punkte, welche allgemeineren Gebieten angeh\"{o}ren,
+er\"{o}rten und festlegen, um uns den Boden f\"{u}r jene
+Untersuchungen zu ebenen.
+
+\nobreak\medskip
+
+\asterisktriangle
+
+\medbreak
+
+\centerline{5.}
+
+\nobreak\medskip
+
+F\"{u}r die folgenden Betrachtungen beschr\"{a}nken wir die
+Ver\"{a}nderlichkeit der Gr\"{o}ssen $x$,~$y$ auf ein endliches
+Gebiet, indem wir als Ort des Punktes $O$ nicht mehr die Ebene
+$A$ selbst, sondern eine \"{u}ber dieselbe ausgebreitete
+Fl\"{a}che $T$ betrachten.  Wir w\"{a}hlen diese Einkleidung, bei
+der es unanst\"{o}ssig sein wird, von auf einander liegenden
+Fl\"{a}chen zu reden, um die M\"{o}glichkeit offen zu lassen,
+dass der Ort des Punktes~$O$ \"{u}ber denselben Theil der
+Ebene sich mehrfach erstrecke, setzen jedoch f\"{u}r einen solchen
+Fall voraus, dass die auf einander liegenden Fl\"{a}chentheile
+nicht l\"{a}ngs einer Linie zusammenh\"{a}ngen, so dass eine
+Umfaltung der Fl\"{a}che, oder eine Spaltung in auf einander
+liegende Theile nicht vorkommt.
+
+Die Anzahl der in jedem Theile der Ebene auf einander liegenden
+Fl\"{a}chentheile ist alsdann vollkommen bestimmt, wenn die
+Begrenzung der Lage und dem Sinne nach (d.~h.\ ihre innere und
+\"{a}ussere Seite) gegeben ist; ihr Verlauf kann sich jedoch noch
+verschieden gestalten.
+
+In der That, ziehen wir durch den von der Fl\"{a}che bedeckten
+Theil der Ebene eine beliebige Linie~$l$, so \"{a}ndert sich die
+Anzahl der \"{u}ber einander liegenden Fl\"{a}chentheile nur beim
+Ueberschreiten der Begrenzung, und zwar beim Uebertritt von
+Aussen nach Innen um $+1$, im entgegengesetzten Falle um $-1$,
+und ist also \"{u}berall bestimmt.  L\"{a}ngs der Ufers dieser
+Linie setzt sich nun jeder angrenzende Fl\"{a}chentheil auf ganz
+bestimmte Art fort, so lange die Linie die Begrenzung nicht
+trifft, da eine Unbestimmtheit jedenfalls nur in einem einzelnen
+Punkte und also entweder in einem Punkte der Linie selbst oder in
+einer endlichen Entfernung von derselben Statt hat; wir
+k\"{o}nnen daher, wenn wir unsere Betrachtung auf einen im Innern
+der Fl\"{a}che verlaufenden Theil der Linie~$l$ und zu beiden
+Seiten auf einen hinreichend kleinen Fl\"{a}chenstreifen
+beschr\"{a}nken, von \emph{bestimmten} angrenzenden
+Fl\"{a}chentheilen reden, deren Anzahl auf jeder Seite gleich
+ist, und die wir, indem wir der Linie eine bestimmte Richtung
+beilegen, auf der Linken mit $a_1, a_2,\ldots\, a_n$, auf der
+Rechten mit $a'_1, a'_2,\ldots\, a'_n$ bezeichnen.  Jeder
+Fl\"{a}chentheil~$a$ wird sich dann in einen der
+Fl\"{a}chentheile $a'$ fortzetzen; dieser wird zwar im
+Allgemeinen f\"{u}r den ganzen Lauf der Linie~$l$ derselbe sein,
+kann sich jedoch f\"{u}r besondere Lagen von $l$ in einem ihrer
+Punkte \"{a}ndern.  Nehmen wir an, dass oberhalb eines solchen
+Punktes $\sigma$ (d.~h.\ l\"{a}ngs des vorhergehenden Theils von
+$l$) mit den Fl\"{a}chentheilen $a'_1, a'_2,\ldots\, a'_n$ der
+Reihe nach die Fl\"{a}chentheile $a_1, a_2,\ldots\, a_n$
+verbunden seien, unterhalb desselben aber die Fl\"{a}chentheile
+$a_{\alpha_1}, a_{\alpha_2},\ldots\, a_{\alpha_n}$,
+wo $\alpha_1, \alpha_2,\ldots\, \alpha_n$ nur in der Anordnung
+von $1,2,\ldots,n$ verschieden sind, so wird ein oberhalb
+$\sigma$ von $a_1$ in $a'_1$ eintretender Punkt, wenn er
+unterhalb $\sigma$ auf die linke Seite zur\"{u}cktritt, in den
+Fl\"{a}chentheil $a_{\alpha_1}$ gelangen, und wenn er den
+Punkt~$\sigma$ von der Linken zur Rechten umkreiset, wird der
+Index des Fl\"{a}chentheils, in welchem er sich befindet, der
+Reihe nach die Zahlen
+\[ 1, \alpha_1, \alpha_{\alpha_1},\ldots\, \mu, \alpha_\mu,\ldots \]
+durchlaufen.  In dieser Reihe sind, so lange das Glied~$1$ nicht
+wiederkehrt, nothwendig alle Glieder von einander verschieden,
+weil einem beliebigen mittlern Gliede $a_\mu$ nothwendig $\mu$
+und nach einander alle fr\"{u}heren Glieder bis $1$ in
+unmittelbarer Folge vorhergehen; wenn aber nach einer Anzahl von
+Gliedern, die offenbar kleiner als $n$ sein muss und $= m$ sei,
+das Glied~$1$ wiederkehrt, so m\"{u}ssen die \"{u}brigen Glieder
+in derselben Ordnung folgen.  Der um $\sigma$ sich bewegende
+Punkt kommt alsdann nach je $m$ Uml\"{a}ufen in denselben
+Fl\"{a}chentheil zur\"{u}ck und ist auf $m$ der auf einander
+liegenden Fl\"{a}chentheile eingeschr\"{a}nkt, welche sich
+\"{u}ber $\sigma$ zu einem einzigen Punkte vereinigen.  Wir
+nennen diesen Punkt einen Windungspunkt $(m-1) \,$\-ter Ordnung der
+Fl\"{a}che~$T$.  Durch Anwendung desselben Verfahrens auf die
+\"{u}brigen $n - m$ Fl\"{a}chentheile werden diese, wenn sie
+nicht gesondert verlaufen, in Systeme von $m_1, m_2,\ldots$
+Fl\"{a}chentheilen zerfallen, in welchem Falle auch noch
+Windungspunkte $(m_1 - 1) \,$\-ter, $(m_2 - 1) \,$\-ter$\ldots$ Ordnung in
+dem Punkte~$\sigma$ liegen.
+
+Wenn die Lage und der Sinn der Begrenzung von $T$ und die Lage
+ihrer Windungspunkte gegeben ist, so ist $T$ entweder vollkommen
+bestimmt oder doch auf eine endliche Anzahl verschiedener
+Gestalten beschr\"{a}nkt; Letzteres, in so fern sich diese
+Bestimmungsst\"{u}cke auf verschiedene der auf einander liegenden
+Fl\"{a}chentheile beziehen k\"{o}nnen.
+
+Eine ver\"{a}nderliche Gr\"{o}sse, die f\"{u}r jeden Punkt~$O$
+der Fl\"{a}che~$T$, allgemein zu reden, d.~h.\ ohne eine Ausnahme
+in einzelnen Linien und Punkten\footnote{Diese Beschr\"{a}nkung
+ist zwar nicht durch den Begriff einer Function an sich geboten,
+aber um Infinitesimalrechnung auf sie anwenden zu k\"{o}nnen
+erforderlich: eine Function, die in allen Punkten einer
+Fl\"{a}che unstetig ist, wie z.~B.\ eine Function, die f\"{u}r
+ein commensurables $x$ und ein commensurables $y$ den Werth~$1$,
+sonst aber den Werth~$2$ hat, kann weder einer Differentiation,
+noch einer Integration, also (unmittelbar) der
+Infinitesimalrechnung \"{u}berhaupt nicht unterworfen werden.
+Die f\"{u}r die Fl\"{a}che ~$T$ hier willk\"{u}rlich gemachte
+Beschr\"{a}nking wird sich sp\"{a}ter (Art.~15) rechtfertigen.}
+auszuschliessen, Einen bestimmten mit der Lage desselben stetig
+sich \"{a}ndernden Werth annimmt, kann offenbar als eine Function
+von $x$,~$y$, angesehen werden, und \"{u}berall, wo in der Folge
+von Functionen von $x$,~$y$ die Rede sein wird, werden wir den
+Begriff derselben auf diese Art festlegen.
+
+Ehe wir uns jedoch zur Betrachtung solcher Functionen wenden,
+schalten wir noch einige Er\"{o}rterungen \"{u}ber den
+Zusammenhang einer Fl\"{a}che ein.  Wir beschr\"{a}nken uns dabei
+auf solche Fl\"{a}chen, die sich nicht l\"{a}ngs einer Linie
+spalten.
+
+\medbreak
+
+\centerline{6.}
+
+\nobreak\medskip
+
+Wir betrachten zwei Fl\"{a}chentheile als zusammenh\"{a}ngend
+oder Einem St\"{u}cke angeh\"{o}rig, wenn sich von einem Punkte
+des einen durch das Innere der Fl\"{a}che eine Linie nach einem
+Punkte des andern ziehen l\"{a}sst, als getrennt, wenn diese
+M\"{o}glichkeit nicht Statt findet.
+
+Die Untersuchung des Zusammenhangs einer Fl\"{a}che beruht auf
+ihrer Zerlegung durch Querschnitte, d.~h.\ Linien, welche von
+einem Begrenzungspunkte das Innere einfach---keinen Punkt
+mehrfach---bis zu einem Begrenzungspunkte durchschneiden.
+Letzterer kann auch in dem zur Begrenzung hinzukommenen Theile,
+also in einem fr\"{u}hern Punkte des Querschnitts, liegen.
+
+Eine zusammenh\"{a}ngende Fl\"{a}che heisst, wenn sie durch jeden
+Querschnitt in St\"{u}cke zerf\"{a}llt, eine einfach
+zusammenh\"{a}ngende, andernfalls eine mehrfach
+zusammenh\"{a}ngende.
+
+\emph{Lehrsatz.~I}.  Eine einfach zusammenh\"{a}ngende
+Fl\"{a}che~$A$ zerf\"{a}llt durch jeden Querschnitt $ab$ in zwei
+einfach zusammenh\"{a}ngende St\"{u}cke.
+
+Gesetzt, eins dieser St\"{u}cke w\"{u}rde durch einen Querschnitt
+$cd$ nicht zerst\"{u}ckt, so erhielte man offenbar, je nachdem
+keiner seiner Endpunkte oder der Endpunkt~$c$ oder beide
+Endpunkte in $ab$ fielen, durch Herstellung der Verbindung
+l\"{a}ngs der ganzen Linie $ab$ oder l\"{a}ngs des Theils $cb$
+oder des Theils $cd$ derselben eine zusammenh\"{a}ngende
+Fl\"{a}che, welche durch einen Querschnitt aus $A$ entst\"{a}nde,
+gegen die Voraussetzung.
+
+\emph{Lehrsatz.~II}.  Wenn eine Fl\"{a}che $T$ durch
+$n_1$ Querschnitte\footnote{Unter einer Zerlegung durch mehrere
+Querschnitte ist stets eine successive zu verstehen, d.~h.\ eine
+solche, wo die durch einen Querschnitt \emph{entstandene} Fl\"{a}che
+durch einen neuen Querschnitt weiter zerlegt wird.}
+$q_1$ in ein System $T_1$ von $m_1$ einfach zusammenh\"{a}ngenden
+Fl\"{a}chenst\"{u}cken und durch $n_2$ Querschnitte $q_2$ in ein
+System $T_2$ von $m_2$ Fl\"{a}chenst\"{u}cken zerf\"{a}llt, so
+kann $n_2 - m_2$ nicht $> n_1 - m_1$ sein.
+
+Jede Linie $q_2$ bildet, wenn sie nicht ganz in das
+Querschnittsystem $q_1$ f\"{a}llt, zugleich einen oder mehrere
+Querschnitte $q_2'$ der Fl\"{a}che $T_1$.  Als Endpunkte der
+Querschnitte $q_2'$ sind anzusehen:
+\begin{description}
+\item[\textmd{1)}]
+die $2n_2$ Endpunkte der Querschnitte $q_2$, ausgenommen, wenn
+ihre Enden mit einem Theil des Liniensystems $q_1$
+zusammenfallen,
+\item[\textmd{2)}]
+jede mittlere Punkt eines Querschnitts $q_2$, in welchem er in
+einen mittlern Punkt einer Linie $q_1$ eintritt, ausgenommen,
+wenn er sich schon in einer andern Linie $q_1$ befindet,
+d.~h.\ wenn ein Ende eines Querschnitts $q_1$ mit ihm
+zusammenf\"{a}llt.
+\end{description}
+
+Bezeichnet nun $\mu$, wie oft Linien beider Systeme w\"{a}hrend
+ihres Laufes zusammentreffen oder auseinandergehen (wo also ein
+einzelner gemeinsamer Punkt doppelt zu rechnen ist), $\nu_1$, wie
+oft ein Endst\"{u}ck der $q_1$ mit einem mittlern St\"{u}cke der
+$q_2$, $\nu_2$, wie oft ein Endst\"{u}ck der $q_2$ mit einem
+mittlern St\"{u}cke der $q_1$, endlich $\nu_3$, wie oft ein
+Endst\"{u}ck der $q_1$ mit einem Endst\"{u}cke der $q_2$
+zusammenf\"{a}llt, so liefert Nr.~1 $2n_2 - \nu_2 - \nu_3$,
+Nr.~2 $\mu - \nu_1$ Endpunkte der Querschnitte $q_2'$; beide
+F\"{a}lle zusammengenommen aber umfassen s\"{a}mmtliche Endpunkte
+und jeden nur einmal, und die Anzahl dieser Querschnitte ist
+daher
+\[ \frac{2n_2 - \nu_2 - \nu_3 + \mu - \nu_1}{2}
+   = n_2 + s.\]
+Durch ganz \"{a}hnliche Schl\"{u}sse ergiebt sich die Anzahl der
+Querschnitte $q_1'$ der Fl\"{a}che $T_2$, welche durch die Linien
+$q_1$ gebildet werden,
+\[ \frac{2n_1 - \nu_1 - \nu_3 + \mu - \nu_2}{2},\]
+also $= n_1 + s$.  Die Fl\"{a}che $T_1$ wird nun offenbar durch
+die $n_2 + s$ Querschnitte $q_2'$ in dieselbe Fl\"{a}che
+verwandelt, in welche $T_2$ durch die $n_1 + s$ Querschnitte
+$q_1'$ zerf\"{a}llt wird.  Es besteht aber $T_1$ aus $m_1$
+einfach zusammenh\"{a}ngenden St\"{u}cken und zerf\"{a}llt daher
+nach Satz~I durch $n_2 + s$ Querschnitte in $m_1+ n_2 + s$
+Fl\"{a}chenst\"{u}cke; folglich m\"{u}sste, w\"{a}re
+$m_2 < m_1 + n_2 - n_1$, die Zahl der Fl\"{a}chenst\"{u}cke $T_2$
+durch $n_1 + s$ Querschnitte um mehr als $n_1 + s$ vermehrt
+werden, was ungereimt ist.
+
+Zufolge dieses Lehrsatzes ist, wenn die Anzahl der Querschnitte
+unbestimmt durch $n$, die Anzahl der St\"{u}cke durch $m$
+bezeichnet wird, $n - m$ f\"{u}r alle Zerlegungen einer
+Fl\"{a}che in einfach zusammenh\"{a}ngende St\"{u}cke constant;
+denn betrachten wir irgend zwei bestimmte Zerlegungen durch $n_1$
+Querschnitte in $m_1$ St\"{u}cke und durch $n_2$ Querschnitte in
+$m_2$ St\"{u}cke, so muss, wenn erstere einfach
+zusammenh\"{a}ngend sind, $n_2 - m_2 \leq n_1 - m_1$, und wenn
+letztere einfach zusammenh\"{a}ngend sind,
+$n_1 - m_1 \leq n_2 - m_2$, also wenn Beides zutrifft,
+$n_2 - m_2 = n_1 - m_1$ sein.
+
+Diese Zahl kann f\"{u}glich mit dem Namen \glqq Ordnung des
+Zusammenhangs\grqq\ einer Fl\"{a}che belegt werden; sie wird
+
+durch jeden Querschnitt um $1$ erniedrigt---nach der
+Definition---,
+
+durch eine von einem innern Punkte das Innere einfach bis zu
+einem Begrenzungspunkte oder einem fr\"{u}hern Schnittpunkte
+durchschneidende Linie nicht ge\"{a}ndert und
+
+durch einen innern allenthalben einfachen in zwei Punkten
+endenden Schnitt um $1$ erh\"{o}ht,
+
+weil erstere durch Einen, letzterer aber durch zwei Querschnitte
+in Einen Querschnitt verwandelt werden kann.
+
+Endlich wird die Ordnung des Zusammenhangs einer aus mehreren
+St\"{u}cken bestehenden Fl\"{a}che erhalten, wenn man die
+Ordnungen des Zusammenhangs dieser St\"{u}cke zu einander addirt.
+
+Wir werden uns indess in der Folge meistens auf eine aus Einem
+St\"{u}cke betstehende Fl\"{a}che beschr\"{a}nken, und uns
+f\"{u}r ihren Zusammanhang der kunstloseren Bezeichnung eines
+einfachen, zweifachen etc.\ bedienen, indem wir unter einer
+$n \,$\-fach zusammenh\"{a}ngenden Fl\"{a}che eine solche
+verstehen, die durch $n - 1$ Querschnitte in eine einfach
+zusammenh\"{a}ngende zerlegbar ist.
+
+In Bezug auf die Abh\"{a}ngigkeit des Zusammenhangs der
+Begrenzung von dem Zusammenhang einer Fl\"{a}che erhallt leicht:
+
+1)  Die Begrenzung einer einfach zusammenh\"{a}ngenden Fl\"{a}che
+besteht noth\-wendig aus Einer in sich zur\"{u}cklaufenden Linie.
+
+Best\"{a}nde die Begrenzung ausgetrennten St\"{u}cken, so
+w\"{u}rde ein Querschnitt $q$, der einen Punkt eines St\"{u}cks
+$a$ mit einem Punkte eines andern $b$ verb\"{a}nde, nur
+zusammenh\"{a}ngende Fl\"{a}chentheile von einander scheiden, da
+sich im Innern der Fl\"{a}che l\"{a}ngs $a$ eine Linie von der
+einen Seite des Querschnitts $q$ an die entgegengesetzte
+f\"{u}hren liesse; und folglich w\"{u}rde $q$ die Fl\"{a}che
+nicht zerst\"{u}cken, gegen die Voraussetzung.
+
+2)  Durch jeden Querschnitt wird die Anzahl der
+Begrenzungsst\"{u}cke entweder um $1$ vermindert oder um $1$
+vermehrt.
+
+Ein Querschnitt $q$ verbindet entweder einen Punkt eines
+Begrenzungsst\"{u}cks $a$ mit einem Punkte eines andern $b$,---in
+diesem Falle bilden alle diese Linien zusammengenommen in der
+Folge $a$,~$q$,~$b$,~$q$ ein einziges in sich zur\"{u}cklaufendes
+St\"{u}ck der Begrenzung---
+
+oder er verbindet zwei Punkte eines St\"{u}cks der
+Begrenzung,---in diesem Falle zerf\"{a}llt dieses durch seine
+beiden Endpunkte in zwei St\"{u}cke, deren jedes mit dem
+Querschnitte zusammengenommen ein in sich zur\"{u}cklaufendes
+Begrenzungsst\"{u}ck bildet---
+
+oder endlich, er endet in einem seiner fr\"{u}heren Punkte und
+kann betrachtet werden als zusammengesetzt aus einer in sich
+zur\"{u}cklaufenden Linie $o$ und einer andern $l$, welche einen
+Punkt von $o$ mit einem Punkte eines Begrenzungsst\"{u}cks $a$
+verbindet,---in welchem Falle $o$ eines Theils, und
+$a$,~$l$,$~o$,~$l$ andern Theils je ein in sich
+zur\"{u}cklaufendes Begrenzungsst\"{u}ck bilden.
+
+Es treten also entweder---im erstern Falle---an die Stelle zweier
+Ein, oder---in den beiden letzteren F\"{a}llen---an die Stelle
+Eines zwei Begrenzungsst\"{u}cke, woraus unser Satz folgt.
+
+Die Anzahl der St\"{u}cke, aus welchen die Begrenzung eines
+$n \,$\-fach zusammenh\"{a}ngenden Fl\"{a}chenst\"{u}cks besteht, ist
+daher entweder $= n$ oder um eine gerade Zahl kleiner.
+
+Hieraus ziehen wir noch das Corollar:
+
+Wenn die Anzahl der Begrenzungsst\"{u}cke einer $n \,$\-fach
+zusammenh\"{a}ngende Fl\"{a}che $= n$ ist, so zerf\"{a}llt
+diese durch jeden \"{u}berall einfachen im Innern in sich
+zur\"{u}cklaufenden Schnitt in zwei getrennte St\"{u}cke.
+
+Denn die Ordnung des Zusammenhangs wird dadurch nicht
+ge\"{a}ndert, die Anzahl der Begrenzungsst\"{u}cke um $2$
+vermehrt; die Fl\"{a}che w\"{u}rde also, wenn sie eine
+zusammenh\"{a}ngende w\"{a}re, einen $n \,$\-fachen Zusammenhang und
+$n + 2$ Begrenzungsst\"{u}cke haben, was unm\"{o}glich ist.
+
+\medbreak
+
+\centerline{7.}
+
+\nobreak\medskip
+
+Sind $X$ und $Y$ zwei in allen Punkten der \"{u}ber $A$
+ausgebreiteten Fl\"{a}che~$T$ stetige Functionen von $x$,~$y$, so
+ist das \"{u}ber alle Elemente $dT$ dieser Fl\"{a}che ausgedehnte
+Integral
+\[ \int \left(
+         \frac{\partial X}{\partial x}
+       + \frac{\partial Y}{\partial y}
+      \right) \, dT
+   = - \int (X \cos \xi + Y \cos \eta) ds,\]
+wenn in jedem Punkte der Begrenzung die Neigung einer auf sie
+nach Innen gezogenen Normale gegen die $x$-Axe durch $\xi$, gegen
+die $y$-Axe durch $\eta$ bezeichnet wird, und sich diese
+Integration auf s\"{a}mmtliche Elemente $ds$ der Begrenzungslinie
+erstreckt.
+
+Um das Integral
+$\displaystyle \int \frac{\partial X}{\partial x} \, dT$
+zu transformiren, zerlegen wir den von der Fl\"{a}che~$T$
+bedeckten Theil der Ebene $A$ durch ein System der $x$-Axe
+paralleler Linien in Elementarstreifen, und zwar so, dass jeder
+Windungspunkt der Fl\"{a}che~$T$ in eine dieser Linien f\"{a}llt.
+Unter dieser Voraussetzung besteht der auf jeden derselben
+fallende Theil von $T$ aus einem oder mehreren abgesondert
+verlaufenden trapezf\"{o}rmigen St\"{u}cken.  Der Beitrag eines
+unbestimmten dieser Fl\"{a}chenstreifen, welcher aus der $y$-Axe
+das Element $dy$ ausscheidet, zu dem Werthe von
+$\displaystyle \int \frac{\partial X}{\partial x} \, dT$
+wird dann offenbar
+$\displaystyle = dy \, \int \frac{\partial X}{\partial x} \, dx$,
+wenn diese Integration durch diejenige oder diejenigen der
+Fl\"{a}che~$T$ angeh\"{o}rigen geraden Linien ausgedehnt wird,
+welche auf eine durch einen Punkt von $dy$ gehende Normale
+fallen.  Sind nun die unteren Endpunkte derselben (d.~h.\ welchen
+die kleisten Werthe von $x$ entsprechen)
+$O_\prime, O_{\prime\prime}, O_{\prime\prime\prime},\ldots$,
+die oberen
+$O', O'', O''',\ldots$
+und bezeichen wir mit
+$X_\prime, X_{\prime\prime},\ldots$ $X', X'',\ldots$
+die Werthe von $X$ in diesen Punkten, mit
+$ds_\prime, ds_{\prime\prime},\ldots$ $ds', ds'',\ldots$
+die entsprechenden von dem Fl\"{a}chenstreifen
+aus der Begrenzung ausgeschiedenen Elemente, mit
+$\xi_\prime, \xi_{\prime\prime},\ldots$ $\xi', \xi'',\ldots$
+die Werthe von $\xi$ an diesen Elementen, so wird
+\begin{eqnarray*}
+\int \frac{\partial X}{\partial x} \, dx
+   &=& - X_\prime - X_{\prime\prime} - X_{\prime\prime\prime} \ldots \\
+   & & + X' + X'' + X''' \ldots .
+\end{eqnarray*}
+Die Winkel $\xi$ werden offenbar spitz an den unteren, stumpf and
+den oberen Endpunkten, und es wird daher
+\begin{eqnarray*}
+dy &=&   \cos \xi_\prime \, ds_\prime
+    =    \cos \xi_{\prime\prime} \, ds_{\prime\prime} \ldots \\
+   &=& - \cos \xi' \, ds'
+    =  - \cos \xi'' \, ds''\ldots .
+\end{eqnarray*}
+Durch Substitution dieser Werthe ergiebt sich
+\[ dy \, \int \frac{\partial X}{\partial x} \, dx
+   = - {\textstyle\sum} X \cos \xi \, ds,\]
+wo sich die Summation auf alle Begrenzungselemente bezieht,
+welche in der $y$-Axe $dy$ zur Projection haben.
+
+Durch Integration \"{u}ber s\"{a}mmtliche in Betracht kommende
+$dy$ werden offenbar s\"{a}mmtliche Elemente der Fl\"{a}che $T$
+und s\"{a}mmtliche Elemente der Begrenzung ersch\"{o}pft, und man
+erh\"{a}lt daher, in diesem Umfange genommen,
+\[ \int \frac{\partial X}{\partial x} \, dT
+   = - \int X \cos \xi \, ds.\]
+Durch ganz \"{a}hnliche Schl\"{u}sse findet man
+\[ \int \frac{\partial Y}{\partial y} \, dT
+   = - \int Y \cos \eta \, ds \]
+und folglich
+\[ \int \left(
+         \frac{\partial X}{\partial x}
+       + \frac{\partial Y}{\partial y}
+      \right) \, dT
+   = - \int (X \cos \xi + Y \cos \eta) ds, \quad\mbox{w.~z.~b.~w.} \]
+
+\medbreak
+
+\centerline{8.}
+
+\nobreak\medskip
+
+Bezeichnen wir in der Begrenzungslinie, von einem festen
+Anfangspunkte auf in einer bestimmten sp\"{a}ter festzusetzenden
+Richtung gerechnet, die L\"{a}nge derselben bis zu einem
+unbestimmten Punkte $O_0$, durch $s$, und in der in diesem Punkte
+$O_0$ errichteten Normalen die Entfernung eines unbestimmten
+Punktes $O$ von demselben und zwar nach Innen zu als positiv
+betrachtet durch $p$, so k\"{o}nnen offenbar die Werthe von $x$
+und $y$ im Punkte $O$ als Functionen von $s$ und $p$ angesehen
+werden, und es werden dann in den Punkten der Begrenzungslinie
+die partiellen Differentialquotienten
+\[ \frac{\partial x}{\partial p} = \cos \xi,\quad
+   \frac{\partial y}{\partial p} = \cos \eta,\quad
+   \frac{\partial x}{\partial s} = \pm \cos \eta,\quad
+   \frac{\partial y}{\partial s} = \mp \cos \xi,\]
+wo die oberen Zeichen gelten, wenn die Richtung, in welcher die
+Gr\"{o}sse $s$ als wachsend betrachtet wird, mit $p$ einen
+gleichen Winkel einschliesst, wie die $x$-Axe mit der $y$-Axe,
+wenn einen entgegengesetzten, die unteren.  Wir werden diese
+Richtung un allen Theilen der Begrenzung so annehmen, dass
+\[ \frac{\partial x}{\partial s}
+      = \frac{\partial y}{\partial p}
+\quad\mbox{und folglich}\quad
+   \frac{\partial y}{\partial s}
+      = - \frac{\partial x}{\partial p} \]
+ist, was die Allgemeinheit unserer Resultate im Wesentlichen
+nicht beeintr\"{a}chtigt.
+
+Offenbar k\"{o}nnen wir diese Bestimmungen auch auf Linien im
+Innern von $T$ ausdehnen; nur haben wir hier zur Bestimmung der
+Vorzeichen von $dp$ und $ds$, wenn deren gegenseitige
+Abh\"{a}ngigkeit wie dort festgesetzt wird, noch eine Angabe
+hinzuzuf\"{u}gen, welche entweder das Vorzeichen von $dp$ oder
+von $ds$ festsetzt; und zwar werden wir bei einer in sich
+zur\"{u}cklaufenden Linie angeben, von welchem der durch sie
+geschiedenen Fl\"{a}chentheile sie als Begrenzung gelten solle,
+wodurch das Vorzeichen von $dp$ bestimmt wird, bei einer nicht in
+sich zur\"{u}cklaufenden aber ihren Anfangspunkt, d.~h. den
+Endpunkt, wo $s$ den kleinsten Werth annimmt.
+
+Die Einf\"{u}hrung der f\"{u}r $\cos \xi$ und $\cos \eta$
+erhaltenen Werthe in die im vorigen Art.\ bewiesene Gleichung
+giebt, in demselben Umfange wie dort genommen,
+\[ \int  \left(
+            \frac{\partial X}{\partial x}
+          + \frac{\partial Y}{\partial y}
+         \right) \, dT
+  = - \int \left(
+            X \frac{\partial x}{\partial p}
+          + Y \frac{\partial y}{\partial p}
+         \right) \, ds
+  = \int \left(
+            X \frac{\partial y}{\partial s}
+          - Y \frac{\partial x}{\partial s}
+         \right) \, ds.\]
+
+\medbreak
+
+\centerline{9.}
+
+\nobreak\medskip
+
+Durch Anwendung des Satzes am Schlusse des vorigen Art.\ auf den
+Fall, wo in allen Theilen der Fl\"{a}che
+\[ \frac{\partial X}{\partial x} + \frac{\partial Y}{\partial y}
+   = 0 \]
+ist, erhalten wir folgende S\"{a}tze:
+
+1.  Sind $X$ und $Y$ zwei in allen Punkten von $T$ endliche und
+stetige und der Gleichung
+\[ \frac{\partial X}{\partial x} + \frac{\partial Y}{\partial y}
+   = 0 \]
+gen\"{u}gende Functionen, so ist, durch die ganze Begrenzung von
+$T$ ausgedehnt,
+\[ \int  \left(
+            X \frac{\partial x}{\partial p}
+          + Y \frac{\partial y}{\partial p}
+         \right) \, ds
+    = 0.\]
+
+Denkt man sich eine beliebige \"{u}ber $A$ ausgestreckte
+Fl\"{a}che $T_1$ in zwei St\"{u}cke $T_2$ und $T_3$ auf
+beliebige Art zerf\"{a}llt, so kann das Integral
+\[ \int  \left(
+            X \frac{\partial x}{\partial p}
+          + Y \frac{\partial y}{\partial p}
+         \right) \, ds \]
+in Bezug auf die Begrenzung von $T_2$ betrachtet werden als die
+Differenz der Integrale in Bezug auf die Begrenzung von $T_1$ und
+in Bezug auf die Begrenzung von $T_3$, indem, wo $T_3$ sich bis
+zur Begrenzung von $T_1$ erstreckt, beide Integrale sich
+aufheben, alle \"{u}brigen Elemente aber einem Elemente der
+Begrenzung von $T_2$ entsprechen.
+
+Mittelst dieser Umformung ergiebt sich aus I.:
+
+II.  Der Werth des Integrals
+\[ \int  \left(
+            X \frac{\partial x}{\partial p}
+          + Y \frac{\partial y}{\partial p}
+         \right) \, ds,\]
+durch die ganze Begrenzung einer \"{u}ber $A$ ausgebreiteten
+Fl\"{a}che erstreckt, bleibt bei beliebiger Erweiterung oder
+Verengerung derselben constant, wenn nur dadurch keine
+Fl\"{a}chentheile ein- oder austreten, innerhalb welcher die
+Voraussetzungen des Satzes~I.\ nicht erf\"{u}llt sind.
+
+Wenn die Functionen $X$, $Y$ zwar in jedem Theile der Fl\"{a}che
+$T$ der vorgeschriebenen Differentialgleichung gen\"{u}gen, aber
+in einzelnen Linien oder Punkten mit einer Unstetigkeit behaftet
+sind, so kann man jede solche Linie und jeden solchen Punkt mit
+einem beliebig kleinen Fl\"{a}chentheil als H\"{u}lle umgeben und
+erh\"{a}lt dann durch Anwendung des Satzes~II.:
+
+III.  Das Integral
+\[ \int  \left(
+            X \frac{\partial x}{\partial p}
+          + Y \frac{\partial y}{\partial p}
+         \right) \, ds \]
+in Bezug auf die ganze Begrenzung von $T$ ist gleich der Summe der
+Integrale
+\[ \int  \left(
+            X \frac{\partial x}{\partial p}
+          + Y \frac{\partial y}{\partial p}
+         \right) \, ds \]
+in Bezug auf die Umgrenzungen aller Unstetigkeitsstellen, und zwar
+beh\"{a}lt in Bezug auf jede einzelne dieser Stellen das Integral
+denselben Werth, in wie enge Grenzen man sie auch einschliessen
+m\"{o}ge.
+
+Dieser Werth ist f\"{u}r einen blossen Unstetigkeitspunkt
+nothwendig gleich Null, wenn mit der Entfernung $\varrho$ des
+Punktes $O$ von demselben zugleich $\varrho X$ und $\varrho Y$
+unendlich klein werden; denn f\"{u}hrt man in Bezug auf einen
+solchen Punkt als Anfangspunkt und eine beliebige Anfangsrichtung
+Polarcoordinaten $\varrho$, $\varphi$ ein und w\"{a}hlt zur
+Umgrenzung einen um denselben mit dem Radius $\varrho$
+beschriebenen Kreis, so wird das auf ihn bez\"{u}gliche Integral
+durch
+\[ \int\limits_{0}^{2\pi} \left(
+            X \frac{\partial x}{\partial p}
+          + Y \frac{\partial y}{\partial p}
+         \right) \varrho \, d\varphi \]
+ausgedr\"{u}ckt und kann folglich nicht einen von Null
+verschiedenen Werth $\kappa$ haben, weil, was auch $\kappa$ sei,
+$\varrho$ immer so klein angenommen werden kann, dass abgesehen
+vom Zeichen
+$\displaystyle \left(
+            X \frac{\partial x}{\partial p}
+          + Y \frac{\partial y}{\partial p}
+         \right) \varrho$
+f\"{u}r jeden Werth von $\varphi$ kleiner als
+$\displaystyle \frac{\kappa}{2\pi}$
+und folglich
+\[ \int\limits_{0}^{2\pi} \left(
+            X \frac{\partial x}{\partial p}
+          + Y \frac{\partial y}{\partial p}
+         \right) \varrho \, d\varphi
+   < \kappa \]
+wird.
+
+IV.  Ist in einer einfach zusammenh\"{a}ngenden \"{u}ber $A$
+ausgebreiteten Fl\"{a}che f\"{u}r jeden Fl\"{a}chentheil das
+durch dessen ganze Begrenzung erstreckte Integral
+\[ \int  \left(
+            X \frac{\partial x}{\partial p}
+          + Y \frac{\partial y}{\partial p}
+         \right) \, ds \]
+oder
+\[ \int  \left(
+            Y \frac{\partial x}{\partial s}
+          - X \frac{\partial y}{\partial s}
+         \right) \, ds
+   = 0,\]
+so erh\"{a}lt f\"{u}r irgend zwei feste Punkte $O_0$ und $O$ dies
+Integral in Bezug auf alle von $O_0$ in derselben nach $O$
+gehende Linien denselben Werth.
+
+Je zwei die Punkte $O_0$ und $O$ verbindende Linien $s_1$ und
+$s_2$ bilden zusammengenommen eine in sich zur\"{u}cklaufende
+Linie $s_3$. Diese Linie besitzt entweder selbst die Eigenschaft,
+keinen Punkt mehrfach zu durchschneiden, oder man kann sie in
+mehrere allenthalben einfache in sich zur\"{u}cklaufende Linien
+zerlegen, indem man von einem beliebigen Punkte aus dieselbe
+durchlaufend jedesmal, wenn man zu einem fr\"{u}hern Punkte
+zur\"{u}ckgelangt, den inzwischen durchlaufenen Theil ausscheidet
+und den folgenden als unmittelbare Fortsetzung des vorhergehenden
+betrachtet.  Jede solche Linie aber zerlegt die Fl\"{a}che in
+eine einfach und eine zweifach zusammenh\"{a}ngende; sie bildet
+daher nothwendig von Einem dieser St\"{u}cke die ganze
+Begrenzung, und das durch sie erstreckte Integral
+\[ \int  \left(
+            Y \frac{\partial x}{\partial s}
+          - X \frac{\partial y}{\partial s}
+         \right) \, ds \]
+wird also der Voraussetzung nach $= 0$.  Dasselbe gilt folglich
+auch von dem durch die ganze Linie $s_3$ erstreckten Integrale,
+wenn die Gr\"{o}sse $s$ \"{u}berall in derselben Richtung als
+wachsend betrachtet wird; es m\"{u}ssen daher die durch die
+Linien $s_1$ und $s_2$ erstreckten Integrale, wenn diese
+Richtung unge\"{a}ndert bleibt, d.~h.\ in einer derselben von
+$O_0$ nach $O$ und in der andern von $O$ nach $O_0$ geht,
+einander aufheben, also, wenn sie in letzterer ge\"{a}ndert wird,
+gleich werden.
+
+Hat man nun irgend eine beliebige Fl\"{a}che~$T$, in welcher,
+allgemein zu reden,
+\[ \frac{\partial X}{\partial x} + \frac{\partial Y}{\partial y}
+   = 0 \]
+ist, so schliesse man zun\"{a}chst, wenn n\"{o}thig, die
+Unstetigkeitsstellen aus, so dass im \"{u}brigen
+Fl\"{a}chenst\"{u}cke f\"{u}r jeden Fl\"{a}chentheil
+\[ \int  \left(
+            Y \frac{\partial x}{\partial s}
+          - X \frac{\partial y}{\partial s}
+         \right) \, ds
+   = 0 \]
+ist, und zerlege dieses durch Querschnitte in eine einfach
+zusammenh\"{a}ngende Fl\"{a}che $T^*$.  F\"{u}r jede im Innern
+von $T^*$ von einem Punkte $O_0$ nach einem andern $O$ gehende
+Linie hat dann unser Integral demselben Werth; dieser Werth,
+f\"{u}r den zur Abk\"{u}rzung die Bezeichnung
+\[ \int\limits_{O_0}^O  \left(
+            Y \frac{\partial x}{\partial s}
+          - X \frac{\partial y}{\partial s}
+         \right) \, ds \]
+gestattet sein m\"{o}ge, ist daher $O_0$ als fest, $O$ als
+beweglich gedacht, f\"{u}r jede Lage von $O$, abgesehen vom Laufe
+der Verbindungslinie ein bestimmter, und kann folglich als
+Function von $x$,~$y$ betrachtet werden.  Die Aenderung dieser
+Function wird f\"{u}r eine Verr\"{u}ckung von $O$ l\"{a}ngs eines
+beliebigen Linienelements $ds$ durch
+\[ \left(
+            Y \frac{\partial x}{\partial s}
+          - X \frac{\partial y}{\partial s}
+         \right) \, ds \]
+ausgedr\"{u}ckt, ist in $T^*$ \"{u}berall stetig und l\"{a}ngs
+eines Querschnitts von $T$ zu beiden Seiten gleich;
+
+V.  das Integral
+\[ Z = \int\limits_{O_0}^O \left(
+            Y \frac{\partial x}{\partial s}
+          - X \frac{\partial y}{\partial s}
+         \right) \, ds \]
+bildet daher, $O_0$ als fest gedacht, eine Function von $x$,~$y$,
+welche in $T^*$ \"{u}berall sich stetig, beim Ueberschreiten der
+Querschnitte von $T$ aber um eine l\"{a}ngs derselben von einem
+Zweigpunkte zum andern constante Gr\"{o}sse \"{a}ndert, und von
+welcher der partielle Differentialquotient
+\[ \frac{\partial Z}{\partial x} = Y,\quad
+   \frac{\partial Z}{\partial y} = - X \]
+ist.
+
+Die Aenderungen beim Ueberschreiten der Querschnitte sind von
+einer der Zahl der Querschnitte gleichen Anzahl von einander
+unabh\"{a}ngiger Gr\"{o}ssen abh\"{a}ngig; denn wenn man das
+Querschnittsystem r\"{u}ckw\"{a}rts---die sp\"{a}teren Theile
+zuerst---durchl\"{a}uft, so ist diese Aenderung \"{u}berall
+bestimmt, wenn ihr Werth beim Beginn jedes Querschnitts gegeben
+wird; letztere Werthe aber sind von einander unabh\"{a}ngig.
+
+\medbreak
+
+\centerline{10.}
+
+\nobreak\medskip
+
+Setzt man f\"{u}r die bisher durch $X$ bezeichnete Function
+\[ u \frac{\partial u'}{\partial x}
+   - u' \frac{\partial u}{\partial x} \]
+und
+\[ u \frac{\partial u'}{\partial y}
+   - u' \frac{\partial u}{\partial y} \]
+f\"{u}r $Y$, so wird
+\[ \frac{\partial X}{\partial x} + \frac{\partial Y}{\partial y}
+  =   u  \left(
+            \frac{\partial^2 u'}{\partial x^2}
+          + \frac{\partial^2 u'}{\partial y^2}
+         \right)
+    - u' \left(
+            \frac{\partial^2 u }{\partial x^2}
+          + \frac{\partial^2 u }{\partial y^2}
+         \right),\]
+wenn also die Functionen $u$ und $u'$ den Gleichungen
+\[ \frac{\partial^2 u }{\partial x^2} + \frac{\partial^2 u }{\partial y^2}
+      = 0,\quad
+   \frac{\partial^2 u'}{\partial x^2} + \frac{\partial^2 u'}{\partial y^2}
+      = 0 \]
+gen\"{u}gen, so wird
+\[ \frac{\partial X}{\partial x} + \frac{\partial Y}{\partial y}
+   = 0,\]
+und es finden auf den Ausdruck
+\[ \int  \left(
+            X \frac{\partial x}{\partial p}
+          + Y \frac{\partial y}{\partial p}
+         \right) \, ds,\]
+welcher
+\[ = \int \left(
+            u  \frac{\partial u'}{\partial p}
+          - u' \frac{\partial u }{\partial p}
+         \right) \, ds \]
+wird, die S\"{a}tze des vorigen Art.\ Anwendung.
+
+Machen wir nun in Bezug auf die Function~$u$ die Voraussetzung,
+dass sie nebst ihren ersten Differentialquotienten etwaige
+Unstetigkeiten jedenfalls nicht l\"{a}ngs einer Linie erleidet,
+und f\"{u}r jeden Unstetigkeitspunkt zugleich mit der
+Entfernung~$\varrho$ des Punktes~$O$ von demselben
+$\displaystyle \varrho \frac{\partial u}{\partial x}$
+und
+$\displaystyle \varrho \frac{\partial u}{\partial y}$
+unendlich klein werden, so k\"{o}nnen die Unstetigkeiten von $u$
+in Folge der Bermerkung zu III. des vorigen Art.\ ganz
+unber\"{u}cksichtigt bleiben.
+
+Denn alsdann kann man in jeder von einem Unstetigkeitspunkte
+ausgehenden geraden Linie einen Werth $R$ von $\varrho$ so
+annehmen, dass
+\[ \varrho \frac{\partial u}{\partial \varrho}
+   =   \varrho \frac{\partial u}{\partial x}
+               \frac{\partial x}{\partial \varrho}
+     + \varrho \frac{\partial u}{\partial y}
+               \frac{\partial y}{\partial \varrho} \]
+unterhalb desselben immer endlich bleibt, und bezeichnet $U$ den
+Werth von $u$ f\"{u}r $\varrho = R$, $M$ abgesehen von Zeichen
+den gr\"{o}ssten Werth der Function
+$\displaystyle \varrho \frac{\partial u}{\partial \varrho}$
+in jenem Intervall, so wird, in derselben Bedeutung genommen,
+stets
+$u - U < M (\log \varrho - \log R)$
+sein, folglich $\varrho (u - U)$ und also auch $\varrho u$ mit
+$\varrho$ zugleich unendlich klein werden; dasselbe gilt aber der
+Voraussetzung nach von
+$\displaystyle \varrho \frac{\partial u}{\partial x}$
+und
+$\displaystyle \varrho \frac{\partial u}{\partial y}$
+und folglich wenn $u'$ keiner Unstetigkeit unterliegt, auch von
+\[ \varrho \left( u \frac{\partial u'}{\partial x}
+   - u' \frac{\partial u}{\partial x} \right)
+      \quad\mbox{und}\quad
+   \varrho \left( u \frac{\partial u'}{\partial y}
+   - u' \frac{\partial u}{\partial y} \right);\]
+der im vorigen Art.\ er\"{o}rterte Fall tritt hier also ein.
+
+Wir nehmen nun ferner an, dass die den Ort des Punktes $O$
+bildende Fl\"{a}che $T$ allenthalben einfach \"{u}ber $A$
+ausgebreitet sei, und denken uns in derselben einen beliebigen
+festen Punkt $O_0$, wo $u$, $x$,~$y$ die Werthe
+$u_0$, $x_0$,~$y_0$ erhalten.  Die Gr\"{o}sse
+\[ {\textstyle\frac{1}{2}} \log
+         ((x - x_0)^2 + (y - y_0)^2) = \log r,\]
+als Function von $x$,~$y$ betrachtet, hat alsdann die
+Eigenschaft, dass
+\[    \frac{\partial^2 \log r}{\partial x^2}
+    + \frac{\partial^2 \log r}{\partial y^2}
+   = 0 \]
+wird, und ist nur f\"{u}r $x = x_0$,~$y = y_0$, also in unserm
+Falle nur f\"{u}r Einen Punkt der Fl\"{a}che $T$ mit einer
+Unstetigkeit behaftet.
+
+Es wird daher nach Art.~9, III., wenn wir $\log r$ f\"{u}r $u'$
+setzen,
+\[ \int  \left(
+            u  \frac{\partial \log r}{\partial p}
+          - \log r \frac{\partial u }{\partial p}
+         \right) \, ds \]
+in Bezug auf die ganze Begrenzung von $T$ gleich diesem Integrale
+in Bezug auf eine beliebige Umgrenzung der Punktes $O_0$ und
+also, wenn wir dazu die Peripherie eines Kreises, wo $r$ einen
+constanten Werth hat, w\"{a}hlen und von einem ihrer Punkte in
+einer beliebigen festen Richtung den Bogen bis $O$ in Theilen des
+Halbmessers durch $\varphi$ bezeichnen, gleich
+\[ - \int u  \frac{\partial \log r}{\partial r} r \, d \varphi
+      - \log r \int \frac{\partial u }{\partial p} \, ds,\]
+oder da
+\[ \int \frac{\partial u }{\partial p} \, ds = 0 \]
+ist,
+\[ = - \int_0^{2\pi} u \, d \varphi,\]
+welcher Werth, wenn $u$ im Punkte $O_0$ stetig ist, f\"{u}r ein
+unendlich kleines $r$ in $-u_0 \, 2\pi$ \"{u}bergeht.
+
+Unter den in Bezug auf $u$ und $T$ gemachten Voraussetzungen
+haben wir daher f\"{u}r einen beliebigen Punkt $O_0$ im Innern der
+Fl\"{a}che, in welchem $u$ stetig ist,
+\[ u_0 = \frac{1}{2\pi} \int \left(
+            \log r \frac{\partial u }{\partial p}
+          - u  \frac{\partial \log r}{\partial p}
+         \right) \, ds \]
+in Bezug auf die ganze Begrenzung derselben und
+\[ = \frac{1}{2\pi} \int_0^{2\pi} u \, d \varphi \]
+in Bezug auf einen um $O_0$ beschriebenen Kreis.  Aus dem ersten
+dieser Ausdr\"{u}cke ziehen wir folgenden
+
+\emph{Lehrsatz}.  Wenn eine Function $u$ innerhalb einer die
+Ebene $A$ allenthalben einfach bedeckenden Fl\"{a}che $T$,
+allgemein zu reden, der Differentialgleichung
+\[    \frac{\partial^2 u }{\partial x^2}
+    + \frac{\partial^2 u }{\partial y^2}
+   = 0 \]
+gen\"{u}gt und zwar so, dass
+\begin{description}
+
+\item[\textmd{1)}]
+die Punkte, in welchen diese Differentialgleichung nicht
+erf\"{u}llt ist, keinen Fl\"{a}chentheil,
+
+\item[\textmd{2)}]
+die Punkte, in welchen $u$,
+$\displaystyle \frac{\partial u}{\partial x}$,
+$\displaystyle \frac{\partial u}{\partial y}$
+unstetig werden, keine Linie stetig erf\"{u}llen,
+
+\item[\textmd{3)}]
+f\"{u}r jeden Unstetigkeitspunkt zugleich mit der Entfernung
+$\varrho$ des Punktes $O$ von demselben die Gr\"{o}ssen
+$\displaystyle \varrho \frac{\partial u}{\partial x}$,
+$\displaystyle \varrho \frac{\partial u}{\partial y}$
+unendlich klein werden und
+
+\item[\textmd{4)}]
+bei $u$ eine durch Ab\"{a}nderung ihres Werthes in einzelnen
+Punkten hebbare Unstetigkeit ausgeschlossen ist,
+\end{description}
+
+\noindent
+so ist sie nothwendig nebst allen ihren Differentialquotienten
+f\"{u}r alle Punkte im Innern dieser Fl\"{a}che endlich und
+stetig.
+
+In der That, betrachten wir den Punkt $O_0$ als beweglich, so
+\"{a}ndern sich in dem Ausdrucke
+\[ \int \left(
+            \log r \frac{\partial u }{\partial p}
+          - u  \frac{\partial \log r}{\partial p}
+         \right) \, ds \]
+nur die Werthe
+$\log r$,
+$\displaystyle \varrho \frac{\partial \log r}{\partial x}$,
+$\displaystyle \varrho \frac{\partial \log r}{\partial y}$.
+Diese Gr\"{o}ssen aber sind f\"{u}r jedes Element der Begrenzung,
+so lange $O_0$ in Innern von $T$ bleibt, nebst allen ihren
+Differentialquotienten endliche und stetige Functionen von
+$x_0$,~$y_0$, da die Differentialquotienten durch gebrochene
+rationale Function dieser Gr\"{o}ssen ausgedr\"{u}ckt werden, die
+nur Potenzen von $r$ in Nenner enthalten.  Dasselbe gilt daher
+auch f\"{u}r den Werth unsres Integrals und folglich f\"{u}r die
+Function $u_0$.  Denn diese k\"{o}nnte unter den fr\"{u}heren
+Voraussetzungen nur in einzelnen Punkten, indem sie unstetig
+w\"{u}rde, einen davon verschiedenen Werth haben, welche
+M\"{o}glichkeit durch die Voraussetzung 4) unsers Lehrsatzes
+wegf\"{a}llt.
+
+\medbreak
+
+\centerline{11.}
+
+\nobreak\medskip
+
+Under denselben Voraussetzungen in Bezug auf $u$ und $T$, wie am
+Schlusse des vorigen Art., haben wir folgende S\"{a}tze:
+
+I.  Wenn l\"{a}ngs einer Linie $u = 0$ und
+$\displaystyle \frac{\partial u}{\partial p} = 0$
+ist, so ist $u$ \"{u}berall $= 0$.
+
+Wir beweisen zun\"{a}chst, dass eine Linie $\lambda$, wo $u = 0$ und
+$\displaystyle \frac{\partial u}{\partial p} = 0$
+ist, nicht die Begrenzung eines Fl\"{a}chentheils $a$, wo $u$
+positiv ist, bilden k\"{o}nne.
+
+Gesetzt, dies f\"{a}nde statt, so scheide man aus $a$ ein Stuck
+aus, welches eines Theils durch $\lambda$, andern Theils durch
+eine Kreislinie begrenzt wird und den Mittelpunkt $O_0$ dieses
+Kreises nicht enth\"{a}lt, welche Construction allemal
+m\"{o}glich ist.  Man hat dann, wenn man die Polarcoordinaten von
+$O$ in Bezug auf $O_0$ durch $r$, $\varphi$ bezeichnet, durch die
+ganze Begrenzung dieses St\"{u}cks ausgedehnt
+\[ \int \log r \frac{\partial u }{\partial p} \, ds
+          - \int u  \frac{\partial \log r}{\partial p} \, ds
+   = 0,\]
+also in Folge der Annahme auch f\"{u}r den ganzen ihr
+angeh\"{o}rigen Kreisbogen
+\[ \int u \, d \varphi
+      + \log r \int \frac{\partial u }{\partial p} \, ds
+   = 0,\]
+oder da
+\[ \int \frac{\partial u}{\partial p} \, ds = 0 \]
+ist,
+\[ \int u \, d \varphi = 0,\]
+was mit der Voraussetzung, dass $u$ im Innern von $a$ positiv
+sei, unvertr\"{a}glich ist.
+
+Auf \"{a}hnliche Art wird bewiesen, dass die Gleichungen $u = 0$
+und
+$\displaystyle \frac{\partial u}{\partial p} = 0$
+nicht in einem Begrenzungstheile eines Fl\"{a}chenst\"{u}cks~$b$,
+wo $u$ negativ ist, stattfinden k\"{o}nnen.
+
+Wenn nun in der Fl\"{a}che $T$ in einer Linie $u = 0$ und
+$\displaystyle \frac{\partial u}{\partial p} = 0$
+ist und in irgend einem Theile derselben $u$ von Null verschieden
+w\"{a}re, so m\"{u}sste ein solcher Fl\"{a}chentheil offenbar
+entweder durch diese Linie selbst oder durch einen
+Fl\"{a}chentheil, wo $u = 0$ w\"{a}re, also jedenfalls durch eine
+Linie wo $u$ und
+$\displaystyle \frac{\partial u}{\partial p} = 0$
+w\"{a}re, begrenzt werden, was nothwendig auf eine der vorhin
+widerlegten Annahmen f\"{u}hrt.
+
+II.  Wenn der Werth von $u$ und
+$\displaystyle \frac{\partial u}{\partial p}$
+l\"{a}ngs einer Linie gegeben ist, so ist $u$ dadurch in allen
+Theilen von $T$ bestimmt.
+
+Sind $u_1$ und $u_2$ irgend zwei bestimmte Functionen, welche den
+der Function $u$ auferlegten Bedingungen gen\"{u}gen, so gilt
+dies auch, wie sich durch Substitution in diese Bedingungen
+sofort ergiebt, f\"{u}r ihre Differenz $u_1 - u_2$.  Stimmten nun
+$u_1$ und $u_2$ l\"{a}ngs einer Linie nebst ihren ersten
+Differentialquotienten nach $p$ \"{u}berein, in einem andern
+Fl\"{a}chentheile aber nicht, so w\"{u}rden l\"{a}ngs dieser
+Linie $u_1 - u_2 = 0$ und
+$\displaystyle \frac{\partial (u_1 - u_2)}{\partial p} = 0$
+sein, ohne \"{u}berall $= 0$ zu sein, dem Satze~I. zuwider.
+
+III.  Die Punkte im Innern von $T$, wo $u$ einen constanten Werth
+hat, bilden, wenn $u$ nicht \"{u}berall constant ist, nothwendig
+Linien, welche Fl\"{a}chentheile, wo $u$ gr\"{o}sser ist, von
+Fl\"{a}chentheilen, wo $u$ kleiner ist, scheiden.
+
+Dieser Satz ist aus folgenden zusammengesetzt:
+
+$u$ kann nicht in einem Punkte im Innern von $T$ ein Minimum oder
+ein Maximum haben;
+
+$u$ kann nicht \emph{nur} in einem Theile der Fl\"{a}che constant
+sein;
+
+die Linien, in denen $u = a$ ist, k\"{o}nnen nicht beiderseits
+Fl\"{a}chentheile begrenzen, wo $u - a$ dasselbe Zeichen hat;
+
+S\"{a}tze, deren Gegentheil, wie leicht zu sehen, allemal eine
+Verletzung der im vorigen Art.\ bewiesenen Gleichung
+\[ u_0 = \frac{1}{2\pi} \int_0^{2\pi} u \, d \varphi \]
+oder
+\[ \int_0^{2\pi} (u - u_0) \, d \varphi  = 0 \]
+herbeif\"{u}hren m\"{u}sste und folglich unm\"{o}glich ist.
+
+\medbreak
+
+\centerline{12.}
+
+\nobreak\medskip
+
+Wir wenden uns jetzt zur\"{u}ck zur Betrachtung einer
+ver\"{a}nderlichen complexen Gr\"{o}sse $w = u + vi$, welche,
+allgemein zu reden (d.~h.\ ohne eine Ausnahme in einzelnen Linien
+und Punkten auszuschliessen), f\"{u}r jeden Punkt $O$ der
+Fl\"{a}che $T$ Einen bestimmten mit der Lage desselben stetig und
+den Gleichungen
+\[ \frac{\partial u}{\partial x}
+      = \frac{\partial v}{\partial y},\quad
+   \frac{\partial u}{\partial y}
+      = - \frac{\partial v}{\partial x} \]
+gem\"{a}ss sich \"{a}ndernden Werth hat, und bezeichnen diese
+Eigenschaft von $w$ nach dem fr\"{u}her Festgestellten dadurch,
+dass wir $w$ eine Function von $z = x + yi$ nennen.  Zur
+Vereinfachung des Folgenden setzen wir dabei im Voraus fest, dass
+bei einer Function von $z$ eine durch Ab\"{a}nderung ihres
+Werthes in einem einzelnen Punkte hebbare Unstetigkeit nicht
+vorkommen solle.
+
+Der Fl\"{a}che $T$ wird vorerst ein einfacher Zusammenhang und eine
+allenthalben einfache Ausbreitung \"{u}ber die Ebene $A$
+beigelegt.
+
+\emph{Lehrsatz}.  Wenn eine Function $w$ von $z$ eine
+Unterbrechung der Stetigkeit jedenfalls nicht l\"{a}ngs einer
+Linie erleidet und ferner f\"{u}r jeden beliebigen Punkt $O'$ der
+Fl\"{a}che, wo $z = z'$ sei, $w(z - z')$ mit unendlicher
+Ann\"{a}herung des Punktes~$O$ unendlich klein wird, so ist sie
+nothwendig nebst allen ihren Differentialquotienten in allen
+Punkten im Innern der Fl\"{a}che endlich und stetig.
+
+Die \"{u}ber die Ver\"{a}nderungen der Gr\"{o}sse $w$ gemachten
+Voraussetzungen zerfallen, wenn
+$z - z' = \varrho e^{\varphi i}$
+gesetzt wird, f\"{u}r $u$ und $v$ in die folgenden:
+\[ \mbox{1)}\quad
+   \frac{\partial u}{\partial x} - \frac{\partial v}{\partial y}
+      = 0 \]
+und
+\[ \mbox{2)}\quad
+   \frac{\partial u}{\partial y} + \frac{\partial v}{\partial x}
+      = 0 \]
+f\"{u}r jeden Theil der Fl\"{a}che $T$;
+\begin{description}
+\item[\textmd{3)}]
+die Functionen $u$ und $v$ sind nicht l\"{a}ngs einer Linie
+unstetig;
+\item[\textmd{4)}]
+f\"{u}r jeden Punkt $O'$ werden mit der Entfernung $\varrho$ des
+Punktes $O$ von demselben $\varrho u$ und $\varrho v$ unendlich
+klein;
+\item[\textmd{5)}]
+f\"{u}r die Functionen $u$ und $v$ sind Unstetigkeiten, die durch
+Ab\"{a}nderung ihres Werthes in einzelnen Punkten gehoben werden
+k\"{o}nnten, ausgeschlossen.
+\end{description}
+
+In Folge der Voraussetzungen 2), 3), 4) ist f\"{u}r jeden Theil
+der Fl\"{a}che $T$ das \"{u}ber dessen ganze Begrenzung
+ausgedehnte Integral
+\[ \int  \left(
+            u \frac{\partial x}{\partial s}
+          - v \frac{\partial y}{\partial s}
+         \right) \, ds \]
+nach Art.~9, III. $= 0$ und das Integral
+\[ \int\limits_{O_0}^O
+         \left(
+            u \frac{\partial x}{\partial s}
+          - v \frac{\partial y}{\partial s}
+         \right) \, ds \]
+erh\"{a}lt daher (nach Art.~9, IV.) durch jede von $O_0$ nach $O$
+gehende Linie erstreckt denselben Werth und bildet, $O_0$ als
+fest gedacht, eine bis auf einzelne Punkte nothwendig stetige
+Function $U$ von $x$,~$y$, von welcher (und zwar nach 5) in jedem
+Punkte) der Differentialquotient
+$\displaystyle \frac{\partial U}{\partial x} = u$
+und
+$\displaystyle \frac{\partial U}{\partial y} = - v$
+ist.  Durch Substitution dieser Werthe f\"{u}r $u$ und $v$ aber
+gehen die Voraussetzungen 1), 3), 4), in die Bedingungen des
+Lehrsatzes am Schlusse des Art.~10 \"{u}ber.  Die Function $U$ ist
+daher nebst allen ihren Differentialquotienten in allen Punkten
+von $T$ endlich und stetig und dasselbe gilt folglich auch von
+der complexen Function
+$\displaystyle w
+   =  \frac{\partial U}{\partial x} - \frac{\partial U}{\partial y} i$
+und ihren nach $z$ genommenen Differentialquotienten.
+
+\medbreak
+
+\centerline{13.}
+
+\nobreak\medskip
+
+Es soll jetzt untersucht werden, was eintritt, wenn wir unter
+Beibehaltung der sonstigen Voraussetzungen des Art.~12 annehmen,
+dass f\"{u}r einen bestimmten Punkt $O'$ im Innern der Fl\"{a}che
+$(z - z') w = \varrho e^{\varphi i} w$
+bei unendlicher Ann\"{a}herung des Punktes $O$ nicht mehr
+unendlich klein wird.  In diesem Falle wird also $w$ bei
+unendlicher Ann\"{a}herung des Punktes $O$ an $O'$ unendlich
+gross, und wir nehmen an, dass, wenn die Gr\"{o}sse $w$ nicht mit
+$\displaystyle \frac{1}{\varrho}$
+von gleicher Ordnung bleibt, d.~h.\ der Quotient beider sich
+einer endlichen Grenze n\"{a}hert, wenigstens die Ordnungen
+beider Gr\"{o}ssen in einem endlichen Verh\"{a}ltnisse zu
+einander stehen, so dass sich eine Potenz von $\varrho$ angeben
+l\"{a}sst, deren Product in $w$ f\"{u}r ein unendlich kleines
+$\varrho$ entweder unendlich klein wird oder endlich bleibt.  Ist
+$\mu$ der Exponent einer solchen Potenz und $n$ die n\"{a}chst
+gr\"{o}ssere ganze Zahl, so wird die Gr\"{o}sse
+$(z - z')^n w = \varrho^n e^{n\varphi i} w$
+mit $\varrho$ unendlich klein, und es ist daher
+$(z - z')^{n-1} w$ eine Function von $z$ (da
+$\displaystyle \frac{d(z - z')^{n-1} w}{dz}$
+von $dz$ unabh\"{a}ngig ist), welche in diesem Theile der
+Fl\"{a}che den Voraussetzungen des Art.~12 gen\"{u}gt und
+folglich im Punkte $O'$ endlich und stetig ist.  Bezeichnen wir
+ihren Werth im Punkte $O'$ mit $a_{n-1}$, so ist
+$(z - z')^{n-1} w - a_{n-1}$
+eine Function, die in diesem Punkte stetig und $= 0$ ist und
+folglich mit $\varrho$ unendlich klein wird, woraus man nach
+Artikel~12 schliesst, dass
+$\displaystyle (z - z')^{n-2} w - \frac{a_{n-1}}{z - z'}$
+eine im Punkte $O'$ stetige Function ist.  Durch Forsetzung
+dieses Verfahrens wird offenbar $w$ mittelst Subtraction eines
+Ausdruckes von der Form
+\[ \frac{a_1}{z - z'}
+      + \frac{a_2}{(z - z')^2} + \cdots
+      + \frac{a_{n-1}}{(z - z')^{n-1}} \]
+in eine Function verwandelt, welche im Punkte $O'$ endlich und
+stetig bleibt.
+
+Wenn daher unter den Voraussetzungen des Art.~12 die Aenderung
+eintritt, dass bei unendlicher Ann\"{a}herung von $O$ an einen
+Punkt $O'$ im Innern der Fl\"{a}che $T$ die Function $w$
+unendlich gross wird, so ist die Ordnung dieses unendlich Grossen
+(eine im verkehrten Verh\"{a}ltnisse der Entfernung wachsende
+Gr\"{o}sse als ein unendlich Grosses erster Ordnung betrachtet)
+wenn sie endlich ist, nothwendig eine ganze Zahl; und ist diese
+Zahl $= m$, so kann die Function $w$ durch Hinzuf\"{u}gung einer
+Function, welche $2m$ willk\"{u}rliche Constanten enth\"{a}lt,
+in eine in diesem Punkte $O'$ stetige verwandelt werden.
+
+\medskip
+
+{\footnotesize
+Anm.  Wir  betrachten eine Function als Eine willk\"{u}rliche
+Constante enthaltend, wenn die m\"{o}glichen Arten, sie zu
+bestimmen, ein stetiges Gebiet von Einer Dimension umfassen.\par}
+
+\medbreak
+
+\centerline{14.}
+
+\nobreak\medskip
+
+Die im Art.~12 und 13 in Bezug auf die Fl\"{a}che~$T$ gemachten
+Beschr\"{a}nkungen sind f\"{u}r die G\"{u}ltigkeit der gewonnenen
+Resultate nicht wesentlich.  Offenbar kann man jeden Punkt im
+Innern einer beliebigen Fl\"{a}che mit einem St\"{u}cke derselben
+umgeben, welches die dort vorausgesetzten Eigenschaften besitzt,
+mit alleiniger Ausnahme des Falles, wo dieser Punkt ein
+Windungspunkt der Fl\"{a}che ist.
+
+Um diesen Fall zu untersuchen, denken wir uns die Fl\"{a}che~$T$
+oder ein beliebiges St\"{u}ck derselben, welches einen
+Windungspunkt $(n - 1) \,$\-ter Ordnung $O'$, wo $z = z' = x' + y' i$
+sei, enth\"{a}lt, mittelst der Function
+$\displaystyle \zeta = (z - z')^{\frac{1}{n}}$
+auf einer andern Ebene $\Lambda$ abgebildet, d.~h.\ wir denken
+uns den Werth der Function $\zeta = \xi + \eta i$ im Punkte~$O$
+durch einen Punkt $\Theta$, dessen rechtwinklige Coordinaten
+$\xi$,~$\eta$ sind, in dieser Ebene vertreten, und betrachten
+$\Theta$ als Bild des Punktes $O$.  Auf diesem Wege erh\"{a}lt
+man als Abbildung dieses Theils der Fl\"{a}che~$T$ eine
+zusammenh\"{a}ngende \"{u}ber $\Lambda$ ausgebreitete Fl\"{a}che,
+die im Punkte $\Theta'$, dem Bilde des Punktes $O'$, keinen
+Windungspunkt hat, wie sogleich gezeigt werden soll.
+
+Zur Fixirung der Vorstellungen denke man sich um den Punkt~$O$ in
+der Ebene~$A$ mit dem Halbmesser~$R$ einen Kreis beschrieben und
+parallel mit der $x$-Axe einen Durchmesser gezogen, wo also
+$z - z'$ reelle Werthe annehmen wird.  Das durch diesen Kreis
+ausgeschiedene den Windingspunkt umgebende St\"{u}ck der
+Fl\"{a}che $T$ wird dann zu beiden Seiten des Durchmessers in
+$n$, wenn $R$ hinreichend klein gew\"{a}hlt wird, abgesondert
+verlaufende halbkreisf\"{o}rmige Fl\"{a}chenst\"{u}cke zerfallen.
+Wir bezeichnen auf derjenigen Seite des Durchmessers, wo $y - y'$
+positiv ist, diese Fl\"{a}chenst\"{u}cke durch
+$a_1, a_2 \,\ldots\, a_n$, auf der entgegengesetzten Seite durch
+$a_1', a_2' \,\ldots\, a_n'$, und nehmen an, dass f\"{u}r
+negative Werthe von $z - z'$ $a_1, a_2 \,\ldots\, a_n$ der Reihe
+nach mit $a_1', a_2' \,\ldots\, a_n'$, f\"{u}r positive dagegen
+mit $a_n', a_1' \,\ldots\, a_{n-1}'$ verbunden seien, so dass ein
+den Punkt $O'$ (im erforderlichen Sinne) umkreisender Punkt der
+Reihe nach die Fl\"{a}chen
+$a_1, a_1', a_2, a_2' \,\ldots\, a_n, a_n'$
+durchl\"{a}uft und durch $a_n'$ wieder in $a_1$
+zur\"{u}ckgelangt, welche Annahme offenbar gestattet ist.
+F\"{u}hren wir nun f\"{u}r beide Ebenen Poloarcoordinaten ein,
+indem wir $z - z' = \varrho e^{\varphi i}$,
+$\zeta = \sigma e^{\psi i}$ setzen, und w\"{a}hlen zur Abbildung
+des Fl\"{a}chenst\"{u}cks $a_1$ denjenigen Werth von
+$\displaystyle (z - z')^{\frac{1}{n}}
+     = \varrho^{\frac{1}{n}} e^{\frac{\varphi}{n}i}$,
+welchen letzterer Ausdruck unter der Annahme
+$0 \leq \varphi \leq \pi$
+erh\"{a}lt, so wird f\"{u}r alle Punkte von $a_1$
+$\displaystyle \sigma \leq R^{\frac{1}{n}}$
+und
+$\displaystyle 0 \leq \psi \leq \frac{\pi}{n}$;
+die Bilder derselben in der Ebene $\Lambda$ fallen also
+s\"{a}mmtlich in einen von $\psi = 0$ bis
+$\displaystyle \psi = \frac{\pi}{n}$
+sich erstreckenden Sector eines um $\Theta'$ mit dem Radius
+$\displaystyle R^{\frac{1}{n}}$
+beschriebenen Kreises, und zwar entspricht jedem Punkte von $a_1$
+Ein zugleich mit demselben stetig fortr\"{u}ckender Punkt dieses
+Sectors und umgekehrt, woraus folgt, dass die Abbildung der
+Fl\"{a}che $a_1$ eine zusammenh\"{a}ngende einfach \"{u}ber
+diesen Sector ausgebreitete Fl\"{a}che ist.  Auf \"{a}hnliche Art
+erh\"{a}lt man f\"{u}r die Fl\"{a}che $a_1'$ als Abbildung einen
+von $\displaystyle \psi = \frac{\pi}{n}$
+bis $\displaystyle \psi = \frac{2\pi}{n}$,
+for $a_2$ einen
+von $\displaystyle \psi = \frac{2\pi}{n}$
+bis $\displaystyle \psi = \frac{3\pi}{n}$,
+endlich f\"{u}r $a_n'$ einen
+von $\displaystyle \psi = \frac{2n - 1}{n}\pi$
+bis $\displaystyle \psi = 2\pi$
+sich erstreckenden Sector, wenn man $\varphi$ f\"{u}r jeden Punkt
+dieser Fl\"{a}chen der Reihe nach zwischen $\pi$ und $2\pi$,
+$2\pi$ und $3\pi$ \dots\ $(2n - 1)\pi$ und $2n\pi$ w\"{a}hlt, was
+immer und nur auf eine Weise m\"{o}glich ist.  Diese Sectoren
+schliessen sich aber in derselben Folge an einander, wie die
+Fl\"{a}chen $a$ und $a'$, und zwar so, dass den hier
+zusammenstossenden Punkten auch dort zusammenstossende Punkte
+entsprechen; sie k\"{o}nnen daher zu einer zusammenh\"{a}ngenden
+Abbildung eines den Punkt $O'$ einschliessenden St\"{u}ckes der
+Fl\"{a}che~$T$ zusammengef\"{u}gt werden, und diese Abbilding ist
+offenbar eine \"{u}ber die Ebene $\Lambda$ einfach ausgebreitete
+Fl\"{a}che.
+
+Eine ver\"{a}nderliche Gr\"{o}sse, die f\"{u}r jeden Punkt~$O$
+einen bestimmten Werth hat, hat dies auch f\"{u}r jeden Punkt
+$\Theta$ und umgekehrt, da jedem $O$ nur ein $\Theta$ und jedem
+$\Theta$ nur ein $O$ entspricht; ist sie ferner eine Function von
+$z$, so ist sie dies auch von $\zeta$, indem, wenn
+$\displaystyle \frac{dw}{dz}$
+von $dz$, auch
+$\displaystyle \frac{dw}{d\zeta}$
+von $d\zeta$ unabh\"{a}ngig ist, und umgekehrt.  Es ergiebt sich
+hieraus, dass auf alle Functionen $w$ von $z$ auch im
+Windungspunkte $O'$ die S\"{a}tze der Art.~12 und 13 angewandt
+werden k\"{o}nnen, wenn man sie als Functionen von
+$\displaystyle (z - z')^{\frac{1}{n}}$
+betrachtet.  Dies liefert folgenden Satz:
+
+Wenn eine Function $w$ von $z$ bei unendlicher Ann\"{a}herung von
+$O$ an einen Windungspunkt $(n - 1) \,$\-ter Ordnung $O'$ unendlich
+wird, so ist dieses unendlich Grosse nothwendig von gleicher
+Ordnung mit einer Potenz der Entfernung, deren Exponent ein
+Vielfaches von
+$\displaystyle \frac{1}{n}$
+ist, und kann, wenn dieser Exponent
+$\displaystyle = - \frac{m}{n}$
+ist, durch Hinzuf\"{u}gung eines Ausdrucks von der Form
+\[    \frac{a_1}{(z - z')^{\frac{1}{n}}}
+    + \frac{a_2}{(z - z')^{\frac{2}{n}}} + \cdots
+    + \frac{a_m}{(z - z')^{\frac{m}{n}}},\]
+wo $a_1, a_2 \,\ldots\, a_m$ willk\"{u}rliche complexe
+Gr\"{o}ssen sind, in eine im Punkte $O'$ stetige verwandelt
+werden.
+
+Dieser Satz enh\"{a}lt als Corollar, dass die Function~$w$ im
+Punkte~$O'$ stetig ist, wenn
+$\displaystyle (z - z')^{\frac{1}{n}} w$
+bei unendlicher Ann\"{a}herung des Punktes $O$ an $O'$ unendlich
+klein wird.
+
+\medbreak
+
+\centerline{15.}
+
+\nobreak\medskip
+
+Denken wir uns jetzt eine Function von $z$, welche f\"{u}r jeden
+Punkt~$O$ der beliebig \"{u}ber $A$ ausgebreiteten Fl\"{a}che~$T$
+einen bestimmten Werth hat und nicht \"{u}berall constant ist,
+geometrisch dargestellt, so dass ihr Werth $w = u + vi$ im
+Punkte~$O$ durch einen Punkt~$Q$ der Ebene~$B$ vertreten wird,
+dessen rechtwinklige Coordinaten $u$,~$v$ sind, so ergiebt sich
+Folgendes:
+
+I.  Die Gesammtheit der Punkte~$Q$ kann betrachtet werden als
+eine Fl\"{a}che $S$ bildend, in welcher jedem Punkte Ein
+bestimmter mit ihm stetig in $T$ fortr\"{u}ckender Punkt $O$
+entspricht.
+
+Um dieses zu beweisen, ist offenbar nur der Nachweis
+erforderlich, dass die Lage des Punktes~$Q$ mit der des
+Punktes~$O$ sich allemal (und zwar, allgemein zu reden, stetig)
+\"{a}ndert.  Dieser ist in dem Satze enthalten:
+
+Eine Function $w = u + vi$ von $z$ kann nicht l\"{a}ngs einer
+Linie constant sein, wenn sie nicht \"{u}berall constant ist.
+
+Beweis: H\"{a}tte $w$ l\"{a}ngs einer Linie einen constanten
+Werth $a + bi$ so w\"{a}ren $u - a$ und
+$\displaystyle \frac{\partial (u - a)}{\partial p}$,
+welches
+$\displaystyle = - \frac{\partial v}{\partial s}$,
+f\"{u}r diese Linie und
+\[    \frac{\partial^2 (u - a)}{\partial x^2}
+    + \frac{\partial^2 (u - a)}{\partial y^2} \]
+\"{u}berall $= 0$; es m\"{u}sste also nach Art.~11, I.\ $u - a$
+und folglich, da
+\[ \frac{\partial u}{\partial x}
+      = \frac{\partial v}{\partial y},\quad
+   \frac{\partial u}{\partial y}
+      = - \frac{\partial v}{\partial x},\]
+auch $v - b$ \"{u}berall $= 0$ sein, gegen die Voraussetzung.
+
+II.  In Folge der in I. gemachten Voraussetzung kann zwischen den
+Theilen von $S$ nicht ein Zusammenhang Statt finden ohne einen
+Zusammenhang der entsprechenden Theile von $T$; umgekehrt kann
+\"{u}berall, wo in $T$ Zusammenhang Statt findet und $w$ stetig
+ist, der Fl\"{a}che $S$ ein entsprechender Zusammenhang beigelegt
+werden.
+
+Dieses vorausgesetzt entspricht die Begrenzung von $S$
+einestheils der Begrenzung von $T$, anderntheils den
+Unstetigkeitsstellen; ihre inneren Theile aber sind, einzelne
+Punkte ausgenommen, \"{u}berall schlicht \"{u}ber $B$
+ausgebreitet, d.~h.\ es findet nirgends eine Spaltung in auf
+einander liegende Theile und nirgends eine Umfaltung Statt.
+
+Ersters k\"{o}nnte, da $T$ \"{u}berall einen entsprechenden
+Zusammenhang besitzt, offenbar nur eintreten, wenn in $T$ eine
+Spaltung vork\"{a}me---der Annahme zuwider---; Letzteres soll
+sogleich bewiesen werden.
+
+Wir beweisen zuv\"{o}rderst, dass ein Punkt~$Q'$, wo
+$\displaystyle \frac{dw}{dz}$
+endlich ist, nicht in einer Falte der Fl\"{a}che $S$ liegen kann.
+
+In der That, umgeben wir den Punkt~$O'$, welcher $Q'$ entspricht,
+mit einem St\"{u}cke der Fl\"{a}che~$T$ von beliebiger Gestalt
+und unbestimmten Dimensionen, so m\"{u}ssen (nach Art.~3) die
+Dimensionen desselben stets so klein angenommen werden
+k\"{o}nnen, dass die Gestalt des entsprechenden Theils von $S$
+beliebig wenig abweicht, und folglich so klein, dass die
+Begrenzung desselben aus der Ebene~$B$ ein $Q'$ einschliessendes
+St\"{u}ck ausscheidet.  Dies aber ist unm\"{o}glich, wenn $Q'$
+in einer Falte der Fl\"{a}che $S$ liegt.
+
+Nun kann
+$\displaystyle \frac{dw}{dz}$,
+als Function von $z$, nach I.\ nur in einzelnen Punkten $= 0$,
+und, da $w$ in den in Betracht kommenden Punkten von $T$ stetig
+ist, nur in den Windungspunkten dieser Fl\"{a}che unendlich
+werden; folglich etc.\ w.~z.~b.~w.
+
+III.  Die Fl\"{a}che $S$ ist folglich eine Fl\"{a}che, f\"{u}r
+welche die im Art.~5 f\"{u}r $T$ gemachten Voraussetzungen
+zutreffen; und in dieser Fl\"{a}che hat f\"{u}r jeden Punkt~$Q$
+die unbestimmte Gr\"{o}sse $z$ Einen bestimmten Werth, welcher
+sich mit der Lage von $Q$ stetig und so \"{a}ndert, dass
+$\displaystyle \frac{dz}{dw}$
+von der Richtung der Orts\"{a}nderung unabh\"{a}ngig ist.  Es
+bildet daher in dem fr\"{u}her festgelegten Sinne $z$ eine
+stetige Function der ver\"{a}nderlichen complexen Gr\"{o}sse $w$
+f\"{u}r das durch $S$ dargestellte Gr\"{o}ssengebiet.
+
+Hieraus folgt ferner:
+
+Sind $O'$ und $Q'$ zwei entsprechende innere Punkte der
+Fl\"{a}chen $T$ und $S$ und in denselben $z = z'$, $w = w'$, so
+n\"{a}hert sich, wenn keiner von ihnen ein Windungspunkt ist, bei
+unendlicher Ann\"{a}herung von $O$ an $O'$
+$\displaystyle \frac{w - w'}{z - z'}$
+einer endlichen Grenze, und die Abbilding ist daselbst eine in
+den kleinsten Theilen \"{a}hnliche; wenn aber $Q'$ ein
+Windungspunkt $(n - 1) \,$\-ter, $O'$ ein Windungspunkt $(m - 1) \,$\-ter
+Ordnung ist, so n\"{a}hert sich
+$\displaystyle \frac{(w - w')^{\frac{1}{n}}}{(z - z')^{\frac{1}{m}}}$
+bei unendlicher Ann\"{a}herung von $O$ an $O'$ einer endlichen
+Grenze, und f\"{u}r die anstossenden Fl\"{a}chentheile findet
+eine Abbildungsart Statt, die sich leicht aus Art.~14 ergiebt.
+
+\nobreak\medskip
+
+\asterisktriangle
+
+\medbreak
+
+\centerline{16.}
+
+\nobreak\medskip
+
+\emph{Lehrsatz}.  Sind $\alpha$ und $\beta$ zwei beliebige
+Functionen von $x$,~$y$, f\"{u}r welche das Integral
+\[ \int
+      \left[
+         \left(
+            \frac{\partial \alpha}{\partial x}
+          - \frac{\partial \beta }{\partial y}
+         \right)^2
+       + \left(
+            \frac{\partial \alpha}{\partial y}
+          + \frac{\partial \beta }{\partial x}
+         \right)^2
+      \right] \, dT \]
+durch alle Theile der beliebig \"{u}ber $A$ ausgebreiteten
+Fl\"{a}che $T$ ausgedehnt einen endlichen Werth hat, so
+erh\"{a}lt das Integral bei Aenderung von $\alpha$ um stetige
+oder doch nur in einzelnen Punkten unstetige Functionen, die am
+Rande $= 0$ sind, immer f\"{u}r eine dieser Functionen einen
+Minimumwerth und, wenn man durch Ab\"{a}nderung in einzelnen
+Punkten hebbare Unstetigkeiten ausschliesst, nur f\"{u}r Eine.
+
+Wir bezeichnen durch $\lambda$ eine unbestimmte stetige oder doch
+nur in einzelnen Punkten unstetige Function, welche am Rande
+$= 0$ ist und f\"{u}r welche das Integral
+\[ L= \int
+      \left(
+         \left( \frac{\partial \lambda}{\partial x} \right)^2
+       + \left( \frac{\partial \lambda}{\partial y} \right)^2
+      \right) \, dT \]
+\"{u}ber die ganze Fl\"{a}che ausgedehnt einen endlichen Werth
+erh\"{a}lt, durch $\omega$ eine unbestimmte der Functionen
+$\alpha + \lambda$, endlich das \"{u}ber die ganze Fl\"{a}che
+erstreckte Integral
+\[ \int
+      \left[
+         \left(
+            \frac{\partial \omega}{\partial x}
+          - \frac{\partial \beta }{\partial y}
+         \right)^2
+       + \left(
+            \frac{\partial \omega}{\partial y}
+          + \frac{\partial \beta }{\partial x}
+         \right)^2
+      \right] \, dT \]
+durch $\Omega$.  Die Gesammtheit der Functionen $\lambda$ bildet
+ein zusammenh\"{a}ngendes in sich abgeschossenes Gebiet, indem
+jede dieser Functionen stetig in jede andere \"{u}bergehen, sich
+aber nicht einer l\"{a}ngs einer Linie unstetigen unendlich
+ann\"{a}hen kann, ohne dass $L$ unendlich wird (Art.~17); f\"{u}r
+jedes $\lambda$ erh\"{a}lt nun, $\omega = \alpha + \lambda$
+gesetzt, $\Omega$ einen endlichen Werth, der mit $L$ zugleich
+unendlich wird, sich mit der Gestalt von $\lambda$ stetig
+\"{a}ndert, aber nie unter Null herabsinken kann; folglich hat
+$\Omega$ wenigstens f\"{u}r Eine Gestalt der Function $\omega$
+ein Minimum.
+
+Um den zweiten Theil unseres Satzes zu beweisen, sei $u$ eine der
+Functionen $\omega$, welche $\Omega$ einen Minimumwerth ertheilt,
+$h$ eine unbestimmte in der ganzen Fl\"{a}che constante
+Gr\"{o}sse, so dass $u + h \lambda$ den der Function $\omega$
+vorgeschriebenen Bedingungen gen\"{u}gt.  Der Werth von $\Omega$
+f\"{u}r $\omega = u + h \lambda$, welcher
+\begin{eqnarray*}
+   &=& \int
+      \left[
+         \left(
+            \frac{\partial u     }{\partial x}
+          - \frac{\partial \beta }{\partial y}
+         \right)^2
+       + \left(
+            \frac{\partial u     }{\partial y}
+          + \frac{\partial \beta }{\partial x}
+         \right)^2
+      \right] \, dT \\
+   & &+ 2 h \int
+      \left[
+         \left(
+            \frac{\partial u     }{\partial x}
+          - \frac{\partial \beta }{\partial y}
+         \right) \frac{\partial \lambda}{\partial x}
+       + \left(
+            \frac{\partial u     }{\partial y}
+          + \frac{\partial \beta }{\partial x}
+         \right) \frac{\partial \lambda}{\partial y}
+      \right] \, dT \\
+   & &+ h^2 \int
+      \left(
+         \left( \frac{\partial \lambda}{\partial x} \right)^2
+       + \left( \frac{\partial \lambda}{\partial y} \right)^2
+      \right) \, dT \\
+   &=& M + 2 N h + L h^2
+\end{eqnarray*}
+wird, muss alsdann f\"{u}r jedes $\lambda$ (nach dem Begriffe des
+Minimums) gr\"{o}sser als $M$ werden, sobald $h$ nur hinreichend
+klein genommen ist.  Dies erfordert aber, dass f\"{u}r jedes
+$\lambda$ $N = 0$ sei; denn andernfalls w\"{u}rde
+\[ 2 N h + L h^2 = L h^2 \left( 1 + \frac{2N}{Lh} \right) \]
+negativ werden, wenn $h$ dem $N$ entgegengesetzt und abgesehen
+vom Zeichen
+$\displaystyle < \frac{2N}{L}$
+angenommen w\"{u}rde.  Der Werth von $\Omega$ f\"{u}r
+$\omega = u + \lambda$, in welcher Form offenbar alle
+m\"{o}glichen Werthe von $\omega$ enthalten sind, wird daher
+$= M + L$, und folglich kann, da $L$ wesentlich positiv ist,
+$\Omega$ f\"{u}r keine Gestalt der Function $\omega$ einen
+kleinern Werth erhalten, als f\"{u}r $\omega = u$.
+
+Findet nun f\"{u}r eine andere $u'$ der Functionen $\omega$ ein
+Minimumwerth $M'$ von $\Omega$ statt, so muss von diesem offenbar
+dasselbe gelten, man hat also $M' \leq M$ und $M \leq M'$,
+folglich $M = M'$.  Bringt man aber $u'$ auf die Form
+$u + \lambda'$, so erh\"{a}lt man f\"{u}r $M'$ den Ausdruck
+$M + L'$, wenn $L'$ den Werth von $L$ f\"{u}r $\lambda =
+\lambda'$ bezeichnet, und die Gleichung $M = M'$ giebt $L' = 0$.
+Dies ist nur m\"{o}glich, wenn in allen Fl\"{a}chentheilen
+\[ \frac{\partial \lambda'}{\partial x} = 0,\quad
+   \frac{\partial \lambda'}{\partial y} = 0 \]
+ist, und es hat daher, so weit $\lambda'$ stetig ist, diese
+Function nothwending einen constanten und folglich, da sie am
+Rande $= 0$ und nicht l\"{a}ngs einer Linie unstetig ist,
+h\"{o}chstens in einzelnen Punkten einen von Null verschiedenen
+Werth.  Zwei der Functionen $\omega$, welche $\Omega$ einem
+Minimumwerth ertheilen, k\"{o}nnen also nur in einzelnen Punkten
+von einander verschieden sein, und wenn in der Function~$u$ alle
+durch Ab\"{a}nderung in einzelnen Punkten hebbaren Unstetigkeiten
+beseitigt werden, ist diese vollkommen bestimmt.
+
+\medbreak
+
+\centerline{17.}
+
+\nobreak\medskip
+
+Es soll jetzt der Beweis nachgeliefert werden, dass $\lambda$
+unbeschadet der Endlichkeit von $L$ sich nicht einer l\"{a}ngs
+einer Linie unstetigen Function $\gamma$ unendlich ann\"{a}hern
+k\"{o}nne, d.~h.\ wird die Function $\lambda$ der Bedingung
+unterworfen, ausserhalb eines die Unstetigkeitslinie
+einschliessenden Fl\"{a}chentheils $T'$ mit $\gamma$
+\"{u}bereinzustimmen, so kann $T'$ stets so klein angenommen
+werden, das $L$ gr\"{o}sser als eine beliebig gegebene Gr\"{o}sse
+$C$ werden muss.
+
+Wir bezeichnen, $s$ und $p$ in Bezug auf die Unstetigkeitslinie
+in der gewohnten Bedeutung genommen, f\"{u}r ein unbestimmtes $s$
+die Kr\"{u}mmung, eine auf der Seite der positiven $p$ convexe
+als positiv betrachtet, durch $\kappa$, den Werth von $p$ an der
+Grenze von $T'$ auf der positiven Seite durch $p_1$, auf der
+negativen Seite durch $p_2$ und die entsprechenden Werthe von
+$\gamma$ durch $\gamma_1$ und $\gamma_2$.  Betrachten wir nun
+irgend einen stetig gekr\"{u}mmten Theil dieser Linie, so liefert
+der zwischen den Normalen in den Endpunkten enthaltene Theil von
+$T'$, wenn er sich nicht bis zu den Kr\"{u}mmungsmittelpunkten
+erstreckt, zu $L$ den Beitrag
+\[ \int ds \int_{p_2}^{p_1} dp \, (1 - \kappa p)
+         \left[
+            \left( \frac{\partial \lambda}{\partial p} \right)^2
+          + \left( \frac{\partial \lambda}{\partial s} \right)^2
+               \frac{1}{(1 - \kappa p)^2}
+         \right];\]
+den kleinste Werth des Ausdrucks
+\[ \int_{p_2}^{p_1}
+            \left( \frac{\partial \lambda}{\partial p} \right)^2
+               (1 - \kappa p) \, dp \]
+bei den festen Grenzwerthen $\gamma_1$ und $\gamma_2$ von
+$\lambda$ findet sich aber nach bekannten Regeln
+\[ = \frac{(\gamma_1 - \gamma_2)^2 \kappa}{\log (1 - \kappa p_2)
+                  - \log (1 - \kappa p_1)},\]
+und folglich wird jener Beitrag nothwendig, wie auch $\lambda$
+innerhalb $T'$ angenommen werden m\"{o}ge,
+\[ > \int \frac{(\gamma_1 - \gamma_2)^2 \kappa \, ds}{\log (1 - \kappa p_2)
+                  - \log (1 - \kappa p_1)}.\]
+Die Function $\gamma$ w\"{a}re f\"{u}r $p = 0$ stetig, wenn der
+gr\"{o}sste Werth, den $(\gamma_1 - \gamma_2)^2$ f\"{u}r
+$\pi_1 > p_1 > 0$ und $\pi_2 < p_2 < 0$ erhalten kann, mit
+$\pi_1 - \pi_2$ unendlich klein w\"{u}rde; wir k\"{o}nnen
+folglich f\"{u}r jeden Werth von $s$ eine endliche Gr\"{o}sse $m$
+so annehmen, dass, wie klein auch $\pi_1 - \pi_2$ angenommen
+werden m\"{o}ge, stets innerhalb der durch $\pi_1 > p_1 \geq 0$
+und $\pi_2 < p_2 \leq 0$ (wo die Gleichheiten sich gegenseitig
+ausschliessen) ausgedr\"{u}ckten Grenzen Werthe von $p_1$ und
+$p_2$ enthalten sind, f\"{u}r welche
+$(\gamma_1 - \gamma_2)^2 > m$
+wird.  Nehmen wir ferner unter dem fr\"{u}heren
+Beschr\"{a}nkungen eine Gestalt von $T'$ beliebig an, indem wir
+$p_1$ und $p_2$ bestimmte Werthe $P_1$ und $P_2$ beilegen, und
+bezeichnen den Werth des durch in Betracht gezogenen Theil der
+Unstetigkeitslinie ansgedehnten Integrals
+\[ \int \frac{m \kappa \, ds}{\log (1 - \kappa P_2)
+                  - \log (1 - \kappa P_1)} \]
+durch $a$, so k\"{o}nnen wir offenbar
+\[   \int \frac{(\gamma_1 - \gamma_2)^2 \kappa \, ds}{\log (1 - \kappa p_2)
+                  - \log (1 - \kappa p_1)}
+   > C \]
+machen, indem wir $p_1$ und $p_2$ f\"{u}r jeden Werth von $s$ so
+annehmen, dass den Ungleichheiten
+\[ p_1 < \frac{1 - (1 - \kappa P_1)^{\frac{a}{C}}}{\kappa},\quad
+   p_2 > \frac{1 - (1 - \kappa P_2)^{\frac{a}{C}}}{\kappa},\quad
+   \hbox{und}\quad (\gamma_1 - \gamma_2)^2 > m \]
+gen\"{u}gt wird.  Dies aber hat zur Folge, dass, wie auch
+$\lambda$ innerhalb $T'$ angenommen werden m\"{o}ge, der aus dem
+in Betracht gezogenen St\"{u}cke von $T'$ stammende Theil von $L$
+und folglich um so mehr $L$ selbst $> C$ wird, w.~z.~b.~w.
+
+\medbreak
+
+\centerline{18.}
+
+\nobreak\medskip
+
+Nach Art.~16 haben wir f\"{u}r die dort festgelegte Function~$u$
+und f\"{u}r irgend eine der Functionen~$\lambda$
+\[ N = \int 
+      \left[
+         \left(
+            \frac{\partial u     }{\partial x}
+          - \frac{\partial \beta }{\partial y}
+         \right) \frac{\partial \lambda}{\partial x}
+       + \left(
+            \frac{\partial u     }{\partial y}
+          + \frac{\partial \beta }{\partial x}
+         \right) \frac{\partial \lambda}{\partial y}
+      \right] \, dT,\]
+durch die ganze Fl\"{a}che~$T$ ausgedehnt, $= 0$.  Aus dieser
+Gleichung sollen jetzt weitere Schl\"{u}sse gezogen werden.
+
+Scheidet man aus der Fl\"{a}che~$T$ ein die Unstetigkeitsstellen
+von $u$, $\beta$, $\lambda$ einschliessendes St\"{u}ck $T'$ aus,
+so findet sich der von dem \"{u}brigen St\"{u}cke~$T''$
+herr\"{u}hrende Theil von $N$ mit H\"{u}lfe der Art.~7, 8, wenn
+man
+$\displaystyle
+   \left(
+      \frac{\partial u     }{\partial x}
+    - \frac{\partial \beta }{\partial y}
+   \right) \lambda$
+f\"{u}r $X$ und
+$\displaystyle
+   \left(
+      \frac{\partial u     }{\partial y}
+    + \frac{\partial \beta }{\partial x}
+   \right) \lambda$
+f\"{u}r $Y$ setzt,
+\[ = - \int \lambda
+            \left(
+               \frac{\partial^2 u}{\partial x^2}
+             + \frac{\partial^2 u}{\partial y^2}
+            \right) \, dT
+     - \int
+            \left(
+               \frac{\partial u     }{\partial p}
+             + \frac{\partial \beta }{\partial s}
+            \right) \lambda \, ds.\]
+In Folge der der Function~$\lambda$ auferlegten Grenzbedingung
+wird der auf das mit $T$ gemeinschaftliche Begrenzungsst\"{u}ck
+von $T''$ bez\"{u}gliche Theil von
+\[     \int \left(
+               \frac{\partial u     }{\partial p}
+             + \frac{\partial \beta }{\partial s}
+            \right) \lambda \, ds \]
+gleich $0$, so dass $N$ betrachtet werden kann als
+zusammengesetzt aus dem Integral
+\[   - \int \lambda
+            \left(
+               \frac{\partial^2 u}{\partial x^2}
+             + \frac{\partial^2 u}{\partial y^2}
+            \right) \, dT \]
+in Bezug auf $T''$ und
+\[ \int
+      \left[
+         \left(
+            \frac{\partial u     }{\partial x}
+          - \frac{\partial \beta }{\partial y}
+         \right) \frac{\partial \lambda}{\partial x}
+       + \left(
+            \frac{\partial u     }{\partial y}
+          + \frac{\partial \beta }{\partial x}
+         \right) \frac{\partial \lambda}{\partial y}
+      \right] \, dT
+   + \int
+            \left(
+               \frac{\partial u     }{\partial p}
+             + \frac{\partial \beta }{\partial s}
+            \right) \lambda \, ds \]
+in Bezug auf $T'$.
+
+Offenbar w\"{u}rde nun, wenn
+$\displaystyle 
+   \frac{\partial^2 u}{\partial x^2}
+ + \frac{\partial^2 u}{\partial y^2}$
+in irgend einem Theile der Fl\"{a}che~$T$ von $0$ verscheiden
+w\"{a}re, $N$ ebenfalls einen von $0$ verschiedenen Werth
+erhalten, sobald man $\lambda$, was frei steht, innerhalb $T'$
+gleich $0$ und innerhalb $T''$ so w\"{a}hlte, dass
+$\displaystyle \lambda
+   \left(
+      \frac{\partial^2 u}{\partial x^2}
+    + \frac{\partial^2 u}{\partial y^2}
+   \right)$
+\"{u}berall dasselbe Zeichen h\"{a}tte.  Ist aber
+$\displaystyle 
+   \frac{\partial^2 u}{\partial x^2}
+ + \frac{\partial^2 u}{\partial y^2}$
+in allen Theilen von $T$ $= 0$, so verschwindet der von $T''$
+herr\"{u}hrende Bestandtheil von $N$ f\"{u}r jedes $\lambda$, und
+die Bedingung $N = 0$ ergiebt dann, dass die auf die
+Unstetigkeitsstellen bez\"{u}glichen Bestandtheile $= 0$ werden.
+
+F\"{u}r die Functionen
+$\displaystyle
+   \frac{\partial u}{\partial x}
+ - \frac{\partial \beta}{\partial y}$,
+$\displaystyle
+   \frac{\partial u}{\partial y}
+ + \frac{\partial \beta}{\partial x}$
+haben wir daher, wenn wir erstere $= X$ und letztere $= Y$
+setzen, nicht bloss allgemein zu reden die Gleichung
+\[ \frac{\partial X}{\partial x} + \frac{\partial Y}{\partial y}
+   = 0,\]
+sondern es wird auch durch die ganze Begrenzung irgend eines
+Theils von $T$ erstreckt
+\[ \int  \left(
+            X \frac{\partial x}{\partial p}
+          + Y \frac{\partial y}{\partial p}
+         \right) \, ds = 0,\]
+in so fern dieser Ausdruck \"{u}berhaupt einen bestimmten Werth
+hat.
+
+Zerlegen wir also (nach Art.~9, V) die Fl\"{a}che~$T$, wenn sie
+einen mehrfachen Zusammenhang besitzt, durch Querschnitte in eine
+einfach zusammenh\"{a}ngende $T^*$, so hat das Integral
+\[ - \int_{O_0}^O
+         \left(
+            \frac{\partial u}{\partial p}
+          + \frac{\partial \beta}{\partial s}
+         \right) \, ds \]
+f\"{u}r jede im Innern von $T^*$ von $O_0$ nach $O$ gehende Linie
+denselben Werth und bildet, $O_0$ als fest gedacht, eine Function
+von $x$,~$y$, welche in $T^*$ \"{u}berall eine stetige und
+l\"{a}ngs eines Querschnitts beiderseits eine gleiche Aenderung
+erleidet. Diese Function $\nu$ zu $\beta$ hinzugef\"{u}gt,
+liefert uns eine Function $v = \beta + \nu$, von welcher der
+Differentialquotient
+$\displaystyle
+      \frac{\partial v}{\partial x}
+  = - \frac{\partial u}{\partial y}$
+und
+$\displaystyle
+      \frac{\partial v}{\partial y}
+  =   \frac{\partial u}{\partial x}$
+ist.
+
+Wir haben daher folgenden
+
+\emph{Lehrsatz}.  Ist in einer zusammenh\"{a}ngenden, durch
+Querschnitte in eine einfach zusammenh\"{a}ngende $T^*$ zerlegten
+Fl\"{a}che $T$ eine complexe Function $\alpha + \beta i$ von
+$x$,~$y$ gegeben, f\"{u}r welche
+\[ \int
+      \left[
+         \left(
+            \frac{\partial \alpha}{\partial x}
+          - \frac{\partial \beta }{\partial y}
+         \right)^2
+       + \left(
+            \frac{\partial \alpha}{\partial y}
+          + \frac{\partial \beta }{\partial x}
+         \right)^2
+      \right] \, dT \]
+durch die ganze Fl\"{a}che ausgedehnt einen endlichen Werth hat,
+so kann sie immer und nur auf Eine Art in eine Function von $z$
+verwandelt werden durch Hinzuf\"{u}gung einer Function
+$\mu + \nu i$ von $x$,~$y$, welche folgenden Bedingungen
+gen\"{u}gt:
+\begin{description}
+
+\item[\textmd{1)}]
+$\mu$ ist am Rande $= 0$ oder doch nur in einzelnen Punkten davon
+verschieden, $\nu$ in einem Punkte beliebig gegeben,
+
+\item[\textmd{2)}]
+die Aenderungen von $\mu$ sind in $T$, von $\nu$ in $T^*$ nur in
+einzelnen Punkten und nur so unstetig, dass
+\[ \int
+      \left[
+         \left( \frac{\partial \mu}{\partial x} \right)^2
+       + \left( \frac{\partial \mu}{\partial y} \right)^2
+      \right] \, dT
+   \quad\mbox{und}\quad
+   \int
+      \left[
+         \left( \frac{\partial \nu}{\partial x} \right)^2
+       + \left( \frac{\partial \nu}{\partial y} \right)^2
+      \right] \, dT \]
+durch die ganze Fl\"{a}che erstreckt endlich bleiben, und
+letztere l\"{a}ngs der Querschnitte beiderseits gleich.
+\end{description}
+
+Die Zul\"{a}nglichkeit der Bedingung zur Bestimmung von
+$\mu + \nu i$ folgt daraus, dass $\mu$, durch welches $\nu$ bis
+auf eine additive Constante bestimmt ist, stets zugleich ein
+Minimum des Integrals $\Omega$ liefert, da, $u = \alpha + \mu$
+gesetzt, offenbar f\"{u}r jedes $\lambda$ $N = 0$ wird; eine
+Eigenschaft, die nach Art.~16 nur Einer Function zukommen kann.
+
+\medbreak
+
+\centerline{19.}
+
+\nobreak\medskip
+
+Die Principien, welche dem Lehrsatz am Schusse des vorigen
+Art.\ zu Grunde liegen, er\"{o}ffnen den Weg, \emph{bestimmte}
+Functionen einer ver\"{a}nderlichen complexen Gr\"{o}sse
+(unabh\"{a}ngig von einem Ausdrucke f\"{u}r dieselben) zu
+untersuchen.
+
+Zu Orientirung auf diesem Felde wird ein Ueberschlag \"{u}ber den
+Umfang der zur Bestimmung einer solchen Function innerhalb
+eines gegebenen Gr\"{o}ssengebiets erforderlichen Bedingungen
+dienen.
+
+Halten wir uns zun\"{a}chst an einen bestimmten Fall, so kann,
+wenn die \"{u}ber $A$ ausgebreitete Fl\"{a}che, durch welche dies
+Gr\"{o}ssengebiet dargestellt wird, eine einfach
+zusammenh\"{a}ngende ist, die Function $w = u + vi$ von $z$
+folgenden Bedingungen gem\"{a}ss bestimmt werden:
+\begin{description}
+
+\item[\textmd{1)}]
+f\"{u}r $u$ ist in allen Begrenzungspunkten ein Werth gegeben,
+der sich f\"{u}r eine unendlich kleine Orts\"{a}nderung um eine
+unendlich kleine Gr\"{o}sse von derselben Ordnung, \"{u}brigens
+aber beliebig \"{a}ndert.\footnote{An sich sind die Aenderungen
+dieses Werthes nur der Beschr\"{a}nkung unterworfen, nicht
+l\"{a}ngs eines \emph{Theils} der Begrenzung unstetig zu sein;
+eine weitere Beschr\"{a}nkung ist nur gemacht, um hier
+unn\"{o}thige Weitl\"{a}ufigkeiten zu vermeiden.}
+
+\item[\textmd{2)}]
+der Werth von $v$ ist in irgend einem Punkte beliebig gegeben;
+
+\item[\textmd{3)}]
+die Function soll in allen Punkten endlich und stetig sein.
+\end{description}
+
+Durch diese Bedingungen aber ist sie vollkommen bestimmt.
+
+In der That folgt dies aus dem Lehrsatze des vorigen Art., wenn
+man, was immer m\"{o}glich sein wird, $\alpha + \beta i$ so
+bestimmt, dass $\alpha$ am Rande dem gegebenen Werth gleich und
+in der ganzen Fl\"{a}che f\"{u}r jede unendlich kleine
+Orts\"{a}nderung die Aenderung von $\alpha + \beta i$ unendlich
+klein von derselben Ordnung ist.
+
+Es kann also, allgemein to reden, $u$ am Rande als eine ganz
+willk\"{u}rliche Function von $s$ gegeben werden, und dadurch ist
+$v$ \"{u}berall mit bestimmt; umgekehrt kann aber auch $v$ in
+jedem Begrenzungspunkte beliebig angenommen werden, woraus dann
+der Werth von $u$ folgt.  Der Spielraum f\"{u}r die Wahl der
+Werthe von $w$ am Rande umfasst daher eine Mannigfaltigkeit von
+Einer Dimension f\"{u}r jeden Begrenzungspunkt, und die
+vollst\"{a}ndige Bestimmung derselben erfordert f\"{u}r jeden
+Begrenzungspunkt Eine Gleichung, wobei es indess nicht wesentlich
+sein wird, dass jede dieser Gleichungen sich auf den Werth Eines
+Gliedes in Einem Begrenzungspunkte allein bezieht.  Es wird diese
+Bestimmung auch so geschehen k\"{o}nnen, das f\"{u}r jeden
+Begrenzungspunkt Eine mit der Lage dieses Punktes ihre Form
+stetig \"{a}ndernde, beide Gleider enthaltende Gleichung gegeben
+ist, oder f\"{u}r mehrere Theile der Begrenzung gleichzeitig so,
+dass jedem Punkte eines dieser Theile $n - 1$ bestimmte Punkte,
+aus jedem der \"{u}brigen Theile einer, zugesellt und f\"{u}r je
+$n$ solcher Punkte gemeinschaftlich $n$ mit ihrer Lage stetig
+ver\"{a}nderliche Gleichungen gegeben sind.  Diese Bedingungen,
+deren Gesammtheit eine stetige Mannigfaltigkeit bildet und welche
+durch Gleichungen zwischen willk\"{u}rlichen Functionen
+ausgedr\"{u}ckt werden, werden aber, um f\"{u}r die Bestimmung
+einer im Innern des Gr\"{o}ssengebiets \"{u}berall stetigen
+Function zul\"{a}ssig und hinreichend zu sein, allgemein zu
+reden, noch einer Beschr\"{a}nkung oder Erg\"{a}nzung durch
+einzelne Bedingungsgleichungen---Gleichungen f\"{u}r
+willk\"{u}rliche Constanten---bed\"{u}rfen, indem bis auf diese
+sich die Genauigkeit unserer Sch\"{a}tzung offenbar nicht
+erstreckt.
+
+F\"{u}r den Fall, wo das Gebiet der Ver\"{a}nderlichkeit der
+Gr\"{o}sse~$z$ durch eine mehrfach zusammenh\"{a}ngende
+Fl\"{a}che dargestellt wird, erleiden diese Betrachtungen keine
+wesentliche Ab\"{a}nderung, indem die Anwendung des Lehrsatzes in
+Art.~18 eine bis auf die Aenderungen beim Ueberschreiten der
+Querschnitte ebenso wie vorhin beschaffene Function
+liefert---Aenderungen, welche $= 0$ gemacht werden k\"{o}nnen,
+wenn die Grenzbedingungen eine der Anzahl der Querschnitte
+gleiche Anzahl verf\"{u}gbarer Constanten enthalten.
+
+Der Fall, wo im Innern l\"{a}ngs einer Linie auf Stetigkeit
+verzichtet wird, ordnet sich dem vorigen unter, wenn man diese
+Linie als einen Schnitt der Fl\"{a}che betrachtet.
+
+Wenn endlich in einem einzelnen Punkte eine Verletzung der
+Stetigkeit, also nach Art.~12 ein Unendlichwerden der Function,
+zugelassen wird, so kann unter Beibehaltung der sonstigen in
+unserm Anfangsfalle gemachten Voraussetzungen f\"{u}r diesen
+Punkt eine Function von $z$, nach deren Subtraction die zu
+bestimmende Function stetig werden soll, beliebig gegeben werden;
+dadurch aber ist sie v\"{o}llig bestimmt.  Denn nimmt man die
+Gr\"{o}sse $\alpha + \beta i$ in einem beliebig kleinen um den
+Unstetigkeitspunkt beschriebenen Kreise gleich dieser gegebenen
+Function, \"{u}brigens aber den fr\"{u}heren Vorschriften
+gem\"{a}ss an, so wird das Integral
+\[ \int
+      \left(
+         \left(
+            \frac{\partial \alpha}{\partial x}
+          - \frac{\partial \beta }{\partial y}
+         \right)^2
+       + \left(
+            \frac{\partial \alpha}{\partial y}
+          + \frac{\partial \beta }{\partial x}
+         \right)^2
+      \right) \, dT \]
+\"{u}ber diesen Kreis erstreckt $= 0$, \"{u}ber den \"{u}brigen
+Theil erstreckt einer endlichen Gr\"{o}sse gleich, und man kann
+also den Lehrsatz des vorigen Art.\ anwenden, wodurch man eine
+Function mit den verlangten Eigenschaften erh\"{a}lt.  Hieraus
+kann man mit H\"{u}lfe des Lehrsatzes im Art.~13 folgern, dass im
+Allgemeinen, wenn in einem einzelnen Unstetigkeitspunkte
+die Function unendlich gross von der Ordnung $n$ werden darf,
+eine Anzahl von $2n$ Constanten verf\"{u}gbar wird.
+
+Geometrisch dargestellt liefert (nach Art.~15) eine Function~$w$
+einer innerhalb eines gegebenen Gr\"{o}ssengebiets von zwei
+Dimensionen ver\"{a}nderlichen complexen Gr\"{o}sse $z$ von einer
+gegebenen $A$ bedeckenden Fl\"{a}che~$T$ ein ihr in den kleinsten
+Theilen, einzelne Punkte ausgenommen, \"{a}hnliches, $B$
+bedeckendes Abbild~$S$.  Die Bedingungen, welche so eben zur
+Bestimmung der Function hinreichend und nothwendig befunden
+worden sind, beziehen sich auf ihren Werth entweder in
+Begrenzungs- oder in Unstetigkeitspunkten; sie erscheinen also
+(Art.~15) s\"{a}mmtlich als Bedingungen f\"{u}r die Lage der
+Begrenzung von $S$, und zwar geben sie f\"{u}r jeden
+Begrenzungspunkt Eine Bedingungsgleichung.  Bezieht sich jede
+derselben nur auf Einen Begrenzungspunkt, so werden sie durch
+eine Schaar von Curven repr\"{a}sentirt, von denen f\"{u}r jeden
+Begrenzungspunkt Eine den geometrischen Ort bildet.  Werden zwei
+mit einander stetig fortr\"{u}ckende Begrenzungspunkte
+gemeinschaftlich zwei Bedingungsgleichungen unterworfen, so
+entsteht dadurch zwischen zwei Begrenzungstheilen eine solche
+Abh\"{a}ngigkeit, dass, wenn die Lage des einen willk\"{u}rlich
+angenommen wird, die Lage des andern daraus folgt.  Aehnlicher
+Weise ergiebt sich f\"{u}r andere Formen der
+Bedingungsgleichungen eine geometrische Bedeutung, was wir indess
+nicht weiter verfolgen wollen.
+
+\medbreak
+
+\centerline{20.}
+
+\nobreak\medskip
+
+Die Einf\"{u}hrung der complexen Gr\"{o}ssen in die Mathematik
+hat ihren Ursprung und n\"{a}chsten Zweck in der Theorie
+einfacher\footnote{Wir betrachten hier als Elementaroperationen,
+Addition und Subtraction, Multiplication und Division,
+Integration und Differentiation, und ein Abh\"{a}ngigkeitsgesetz
+als desto \emph{einfacher}, durch je weniger Elementaroperationen
+die Abh\"{a}ngigkeit bedingt wird.  In der That lassen sich durch
+eine endlich Anzahl dieser Operationen alle bis jetzt in der
+Analysis benutzten Functionen definiren.}
+durch Gr\"{o}ssenoperationen ausgedr\"{u}ckter
+Abh\"{a}ngigkeitsgesetze zwischen ver\"{a}nderlichen Gr\"{o}ssen.
+Wendet man n\"{a}mlich diese Abh\"{a}ngigkeitsgesetze in einem
+erweiterten Umfange an, indem man den ver\"{a}nderlichen
+Gr\"{o}ssen, auf welche sie sich beziehen, complexe Werthe giebt,
+so tritt eine sonst versteckt bleibende Harmonie und
+Regelm\"{a}ssigkeit hervor.  Die F\"{a}lle, in denen dies
+geschehen ist, umfassen zwar bis jetzt erst ein kleines
+Gebiet---sie lassen sich fast s\"{a}mmtlich auf diejenigen
+Abh\"{a}ngigkeitsgesetze zwischen zwei ver\"{a}nderlichen
+Gr\"{o}ssen zur\"{u}ckf\"{u}hren, wo die eine entweder eine
+algebraische\footnote{D.~h.\ wo zwischen beiden eine algebraische
+Gleichung Statt findet.}
+Function der andern ist oder eine solche Function, deren
+Differentialquotient eine algebraische Function ist---, aber
+beinahe jede Schritt, der hier gethan ist, hat nicht bloss den
+ohne H\"{u}lfe der complexen Gr\"{o}ssen gewonnenen Resultaten
+eine einfachere, geschlossenere Gestalt gegeben, sondern auch zu
+neuen Entdeckungen die Bahn gebrochen, wozu die Geschichte der
+Untersuchungen \"{u}ber algebraische Functionen, Kreis- oder
+Exponentialfunctionen, elliptische und Abel'sche Functionen den
+Beleg liefert.
+
+Es soll kurz andgedeutet werden, was durch unsere Untersuchung
+f\"{u}r die Theories solcher Functionen gewonnen ist.
+
+Die bisherigen Methoden, diese Functionen zu behandeln, legten
+stets als Definition einen \emph{Ausdruck} der Function zu
+Grunde, wodurch ihr Werth f\"{u}r \emph{jeden} Werth ihres
+Argumentes gegeben wurde; durch unsere Untersuchung ist gezeigt,
+dass, in Folge des allgemeinen Charakters einer Function einer
+ver\"{a}nderlichen complexen Gr\"{o}sse, in einer Definition
+dieser Art ein Theil der Bestimmungsst\"{u}cke eine Folge der
+\"{u}brigen ist, und zwar ist der Umfang der
+Bestimmungsst\"{u}cke auf die zur Bestimmung nothwendigen
+zur\"{u}ckgef\"{u}hrt worden.  Dies vereinfacht die Behandlung
+derselben wesentlich.  Um z.~B. die Gleichheit zweier
+Ausdr\"{u}cke derselben Function zu beweisen, musste man sonst
+den einen in den andern transformiren, d.~h.\ zeigen, dass beide
+f\"{u}r jeden Werth der ver\"{a}nderlichen Gr\"{o}sse
+\"{u}bereinstimmen; jetzt gen\"{u}gt der Nachweis ihrer
+Uebereinstimmung in einem weit geringern Umfange.
+
+Eine Theorie dieser Functionen auf den hier gelieferten
+Grundlagen w\"{u}rde die Gestaltung der Function (d.~h.\ ihren
+Werth f\"{u}r jeden Werth ihres Arguments) unabh\"{a}ngig von
+einer Bestimmungsweise derselben durch Gr\"{o}ssenoperationen
+festlegen, indem zu dem allgemeinen Begriffe einer Function einer
+ver\"{a}nderlichen complexen Gr\"{o}sse nur die zur Bestimmung
+der Function nothwendigen Merkmale hinzugef\"{u}gt w\"{u}rden,
+und dann erst zu den verschiedenen Ausdr\"{u}cken deren die
+Function f\"{a}hig ist \"{u}bergehen.  Der gemeinsame Charakter
+einer Gattung von Functionen, welche auf \"{a}hnliche Art durch
+Gr\"{o}ssenoperationen ausgedr\"{u}ckt werden, stellt sich dann
+dar in der Form der ihnen auferlegten Grenz- und
+Unstetigkeitsbedingungen.  Wird z.~B.\ das Gebiet der
+Ver\"{a}nderlichkeit der Gr\"{o}sse~$z$ \"{u}ber die ganze
+unendliche Ebene~$A$ einfach oder mehrfach erstreckt, und
+innerhalb derselben der Function nur in einzelnen Punkten eine
+Unstetigkeit, und zwar nur ein Unendlichwerden, dessen Ordnung
+endlich ist, gestattet (wobei f\"{u}r ein unendliches $z$ diese
+Gr\"{o}sse selbst, f\"{u}r jeden endlichen Werth $z'$ derselben
+aber
+$\displaystyle \frac{1}{z - z'}$
+als ein unendlich Grosses erster Ordnung gilt), so ist die
+Function nothwendig algebraisch, und umgekehrt erf\"{u}llt diese
+Bedingung jede algebraische Function.
+
+Die Ausf\"{u}hrung dieser Theorie, welche, wie bemerkt, einfache
+durch Gr\"{o}ssenoperationen bedingte Abh\"{a}ngigkeitsgesetze
+ins Licht zu setzen bestimmt ist, unterlassen wir indess jetzt,
+da wir die Betrachtung des Ausdruckes einer Function
+gegenw\"{a}rtig ausschliessen.
+
+Aus demselben Grunde befassen wir uns hier auch nicht damit, die
+Brauchbarkeit unserer S\"{a}tze als Grundlagen einer
+\emph{allgemeinen} Theorie dieser Abh\"{a}ngigkeitsgesetze
+darzuthun, wozu der Beweis erfordert wird, dass der hier zu
+Grunde gelegte Begriff einer Function einer ver\"{a}nderlichen
+complexen Gr\"{o}sse mit dem einer durch Gr\"{o}ssenoperationen
+ausdr\"{u}ckbaren Abh\"{a}ngigkeit\footnote{Es wird darunter jede
+durch eine endliche oder unendliche Anzahl der vier einfachsten
+Rechnungsoperationen, Addition und Subtraction, Multplication und
+Division, ausdr\"{u}ckbare Abh\"{a}ngigkeit begriffen.  Der
+Ausdruck Gr\"{o}ssenoperationen soll (im Gegensatze zu
+Zahlenoperationen) solche Rechnungsoperationen andeuten, bei
+denen die Commensurabilit\"{a}t der Gr\"{o}ssen nicht in Betracht
+kommt.}
+v\"{o}llig zusammenf\"{a}llt.
+
+\medbreak
+
+\centerline{21.}
+
+\nobreak\medskip
+
+Es wird jedoch zur Erl\"{a}uterung unserer allgemeinen S\"{a}tze
+ein ausgef\"{u}hrtes Beispiel ihrer Anwendung von Nutzen sein.
+
+Die im vorigen Artikel bezeichnete Anwendung derselben ist,
+obwohl die bei ihre Aufstellung zun\"{a}chst beabsichtigte, doch
+nur eine specielle.  Denn wenn die Abh\"{a}ngigkeit durch eine
+endliche Anzahl der dort als Elementaroperationen betrachteten
+Gr\"{o}ssenoperationen bedingt ist, so enth\"{a}lt die Function
+nur eine endliche Anzahl von Parametern, was f\"{u}r die Form
+eines Systems von einander unabh\"{a}ngiger Grenz- und
+Unstetigkeitsbedingungen, die zu ihrer Bestimmung hinreichen, der
+Erfolg hat, dass unter ihnen l\"{a}ngs einer Linie in jedem
+Punkte willk\"{u}rlich zu bestimmende Bedingungen gar nicht
+vorkommen k\"{o}nnen.  F\"{u}r unsern jetzigen Zweck schien es
+daher geeigneter, nicht ein dorther entnommenes Beispiel zu
+w\"{a}hlen, sondern vielmehr ein solches, wo die Function der
+complexen Ver\"{a}nderlichen von einer willk\"{u}rlichen Function
+abh\"{a}ngt.
+
+Zur Veranschaulichung und bequemeren Fassung geben wir demselben
+die am Schlusse des Art.~19 gebrauchte geometrische Einkleidung.
+Es erscheint dann als eine Untersuchung \"{u}ber die
+M\"{o}glichkeit, von einer gegebenen Fl\"{a}che ein
+zusammenh\"{a}ngendes in den kleinsten Theilen \"{a}hnliches
+Abbild zu liefern, dessen Gestalt gegeben ist, wo also in obiger
+Form ausgedr\"{u}ckt, f\"{u}r jeden Begrenzungspunkt des Abbildes
+eine Ordscurve, und zwar f\"{u}r alle dieselbe, ausserdem aber
+(Art.~5) der Sinn der Begrenzung und die Windungspunkte desselben
+gegeben sind.  Wir beschr\"{a}nken uns auf die L\"{o}sung dieser
+Aufgabe in dem Falle, wo jedem Punkte der einen Fl\"{a}che nur
+Ein Punkt der andern entsprechen soll und die Fl\"{a}chen einfach
+zusammenh\"{a}ngend sind, f\"{u}r welchen Fall sie in folgenden
+Lehrsatz enthalten ist.
+
+Zwei gegebene einfach zusammenh\"{a}ngende ebene Fl\"{a}chen
+k\"{o}nnen stets so auf einander bezogen werden, dass jedem
+Punkte der einen Ein mit ihm stetig fortr\"{u}ckender Punkt der
+anderen entspricht und ihre entsprechenden kleinsten Theile
+\"{a}hnlich sind; und zwar kann zu Einem innern Punkte und zu
+Einem Begrenzungspunkte der entsprechende beliebig gegeben
+werden; dadurch aber ist f\"{u}r all Punkte die Beziehung
+bestimmt.
+
+Wenn zwei Fl\"{a}chen $T$ und $R$ auf eine dritte $S$ so bezogen
+sind, dass zwischen den entsprechenden kleinsten Theilen
+Aehnlichkeit Statt findet, so ergiebt sich daraus eine Beziehung
+zwischen den Fl\"{a}chen~$T$ und $R$, von welcher offenbar
+dasselbe gilt.  Die Aufgabe, zwei beliebige Fl\"{a}chen auf
+einander so zu beziehen, dass Aehnlichkeit in den kleinsten
+Theilen Statt findet, ist dadurch auf die zur\"{u}ckgef\"{u}hrt,
+jede beliebige Fl\"{a}che durch Eine bestimmte in den kleinsten
+Theilen \"{a}hnlich abzubilden.  Wir haben hiernach, wenn wir in
+der Ebene~$B$ um den Punkt, wo $w = 0$ ist, mit dem Radius~$1$
+einen Kreis~$K$ beschreiben, um unsern Lehrsatz darzuthun, nur
+n\"{o}thig zu beweisen: Eine beliebige einfach
+zusammenh\"{a}ngende~$A$ bedeckende Fl\"{a}che~$T$ kann durch den
+Kreis~$K$ stets zusammenh\"{a}ngend und in den kleinsten Theilen
+\"{a}hnlich abgebildet werden und zwar nur auf Eine Art so, dass
+dem Mittelpunkte ein beliebig gegebener innerer Punkt $O_0$ und
+einem beliebig gegebenen Punkte der Peripherie ein beliebig
+gegebeber Begrenzungspunkt $O'$ der Fl\"{a}che $T$ entspricht.
+
+Wir bezeichnen die bestimmten Bedeutungen von $z$, $Q$ f\"{u}r
+die Punkte $O_0$, $O'$ durch entsprechende Indices und
+beschreiben in $T$ um $O_0$ als Mittelpunkt einen beliebigen
+Kreis $\Theta$, welcher sich nicht bis zur Begrenzung von $T$
+erstreckt und keinen Windungspunkt enth\"{a}lt.  F\"{u}hren wir
+Polarcoordinaten ein, indem wir
+$z - z_0 = r e^{\varphi i}$
+setzen, so wird die Function
+$\log (z - z_0) = \log r + \phi i$.
+Der reelle Werth \"{a}ndert sich daher im ganzen Kreise mit
+Ausnahme des Punktes $O_0$, wo er unendlich wird, stetig.  Der
+imagin\"{a}re aber erh\"{a}lt, wenn \"{u}berall unter den
+m\"{o}glichen Werthen von $\varphi$ der kleinste positive
+gew\"{a}hlt wird, l\"{a}ngs des Radius, wo $z - z_0$ reelle
+positive Werthe annimmt, auf der einen Seite den Werth~$0$, auf
+der andern den Werth $2\pi$, \"{a}ndert sich aber dann in allen
+\"{u}brigen Punkten stetig.  Offenbar kann dieser Radius durch
+eine ganz beliebige vom Mittelpunkte nach der Peripherie gezogene
+Linie~$l$ ersetzt werden, so dass die Function $\log (z - z_0)$
+beim Uebertritt des Punktes $O$ von der negativen (d.~h.\ wo nach
+Art.~8 $p$ negativ wird) auf die positive Seite dieser Linie eine
+pl\"{o}tzliche Verminderung um $2\pi i$ erleidet, \"{u}brigens
+aber sich mit dessen Lage im ganzen Kreise $\Theta$ stetig
+\"{a}ndert.  Nehmen wir nun die complexe Function
+$\alpha + \beta i$ von $x$,~$y$ im Kreise
+$\Theta = \log (z - z_0)$, ausserhalb desselben aber, indem wir
+$l$ beliebig bis an den Rand verl\"{a}ngern, so an, dass sie
+\begin{description}
+\item[\textmd{1)}]
+an der Peripherie von $\Theta = \log (z - z_0)$, am Rande von $T$
+bloss imagin\"{a}r wird,
+\item[\textmd{2)}]
+beim Uebertritt von der negativen auf die positive Seite der
+Linie $l$ sich um $-2\pi i$, sonst aber bei jeder unendlich
+kleinen Orts\"{a}nderung um eine unendlich kleine Gr\"{o}sse von
+derselben Ordnung \"{a}ndert,
+\end{description}
+was immer m\"{o}glich sein wird, so erh\"{a}lt das Integral
+\[ \int
+      \left(
+         \left(
+            \frac{\partial \alpha}{\partial x}
+          - \frac{\partial \beta }{\partial y}
+         \right)^2
+       + \left(
+            \frac{\partial \alpha}{\partial y}
+          + \frac{\partial \beta }{\partial x}
+         \right)^2
+      \right) \, dT,\]
+\"{u}ber $\Theta$ ausgedehnt den Werth Null, \"{u}ber den ganzen
+\"{u}brigen Theil erstreckt einen endlichen Werth, und es kann
+daher $\alpha + \beta i$ durch Hinzuf\"{u}gung einer bis auf
+einen bloss imagin\"{a}ren constanten Rest bestimmten stetigen
+Function von $x$,~$y$, welche am Rande bloss imagin\"{a}r ist, in
+eine Function $t = m + ni$ von $z$ verwandelt werden.  Der reelle
+Theil $m$ dieser Function wird am Rande $= 0$, im Punkte
+$O_0 = - \infty$ und \"{a}ndert sich im ganzen \"{u}brigen $T$
+stetig.  F\"{u}r jeden zwischen $O$ und $-\infty$ liegenden Werth
+$a$ von $m$ zerf\"{a}llt daher $T$ durch eine Linie, wo $m = a$
+ist, in Theile, wo $m < a$ ist und die $O_0$ im Innern enthalten,
+einerseits und anderseits in Theile, wo $m > a$ ist und deren
+Begrenzung theils durch den Rand von $T$, theils durch Linien, wo
+$m = a$ ist, gebildet wird.  Die Ordnung des Zusammenhangs der
+Fl\"{a}che~$T$ wird durch diese Zerf\"{a}llung entweder nicht
+ge\"{a}ndert oder erniedrigt, die Fl\"{a}che zerf\"{a}llt daher,
+da diese Ordnung $= -1$ ist entweder in zwei St\"{u}cke von der
+Ordnung des Zusammenhangs $0$ und $-1$, oder in mehr als zwei
+St\"{u}cke.  Lezteres aber ist unm\"{o}glich, weil dann wenigstens
+in Einem dieser St\"{u}cke $m$ \"{u}berall endlich und stetig und
+in allen Theilen der Begrenzung constant sein m\"{u}sste,
+folglich entweder in einem Fl\"{a}chentheil einen constanten
+Werth, oder irgendwo---in einem Punkte oder l\"{a}ngs einer
+Linie---einen Maximum- oder Minimumwerth haben m\"{u}sste, gegen
+Art.~11, III.  Die Punkte, wo $m$ constant ist, bilden also in
+sich zur\"{u}cklaufende allenthalben einfache Linien, welche ein
+den Punkt $O_0$ einschliessendes St\"{u}ck begrenzen, und zwar
+nimmt $m$ nach Innen zu nothwendig ab, woraus folgt, dass bei
+einem positiven Umlaufe (wo nach Art.~8 $s$ w\"{a}chst) $n$
+soweit es stetig ist, stets zunimmt, und also, da es nur beim
+Uebertritt von der negativen auf die positive Seite der Linie~$l$
+eine pl\"{o}tzliche Aenderung um $-2\pi$ erleidet\footnote{Da die
+Linie~$l$ von einem im Innern des St\"{u}cks gelegenen Punkte bis
+zu einem \"{a}ussern f\"{u}hrt, so muss sie, wenn sie dessen
+Begrenzung mehrmals schneidet, Einmal mehr von Innen nach Aussen,
+als von Aussen nach Innen gehen, und die Summe der
+pl\"{o}tzlichen Aenderungen von $n$ w\"{a}hrend eines positiven
+Umlaufs ist daher stets $= - 2 \pi$.}, jedem Werth zwischen $0$
+und $2\pi$ Einmal von einem Vielfachen von $2\pi$ abgesehen
+gleich wird.  Setzen wir nun $e^t = w$, so werden $e^m$ und $n$
+Polarcoordinaten des Punktes~$Q$ in Bezug auf den Mittelpunkt des
+Kreises~$K$.  Die Gesammtheit der Punkte~$Q$ bildet dann offenbar
+eine \"{u}ber $K$ allenthalben einfach ausgebreitete
+Fl\"{a}che~$S$; der Punkt $Q_0$ derselben f\"{a}llt auf den
+Mittelpunkt des Kreises; der Punkt $Q'$ aber kann vermittelst der
+in $n$ noch verf\"{u}gbaren Constante auf einen beliebig
+gegebenen Punkt der Peripherie ger\"{u}ckt werden, w.~z.~b.~w.
+
+In dem Falle, wo der Punkt $O_0$ ein Windungspunkt $(n-1) \,$\-ter
+Ordnung ist, gelangt man, wenn nur $\log (z - z_0)$ durch
+$\displaystyle \frac{1}{n} \log (z - z_0)$ ersetzt wird, durch
+ganz \"{a}hnliche Schl\"{u}sse zum Ziele, deren weitere
+Ausf\"{u}hrung man indess aus Art.~14 leicht erg\"{a}nzen wird.
+
+\medbreak
+
+\centerline{21.}
+
+\nobreak\medskip
+
+Die vollst\"{a}ndige Durchf\"{u}hrung der Untersuchung des
+vorigen Artikels f\"{u}r den allgemeinern Fall, wo Einem Punkte
+der einen Fl\"{a}che mehrere Punkte der andern entsprechen
+sollen, und ein einfacher Zusammenhang f\"{u}r dieselben nicht
+vorausgesetzt wird, unterlassen wir hier, zumal da, aus
+geometrischem Gesichtspunkte aufgefasst, unsere ganze
+Untersuchung sich in einer allgemeinern Gestalt h\"{a}tte
+f\"{u}hren lassen.  Die Beschr\"{a}nkung auf ebene, einzelne
+Punkte ausgenommen, schlichte Fl\"{a}chen, ist n\"{a}mlich
+f\"{u}r dieselbe nicht wesentlich; vielmehr gestattet die
+Aufgabe, eine beliebig gegebene Fl\"{a}che auf einer andern
+beliebig gegebenen in den kleinsten Theilen \"{a}hnlich
+abzubilden, eine ganz \"{a}hnliche Behandlung.  Wir begn\"{u}gen
+uns, hier\"{u}ber auf zwei \emph{Gauss}'sche Abhandlungen, die
+zu Art.~3 citirte und die disquis.\ gen.\ circa superf.\ art.~13,
+zu verweisen.
+
+\vfill\eject
+
+\centerline{\large\textit{Inhalt}\footnote{[Diese
+Inhalts\"{u}bersicht r\"{u}hrt fast vollst\"{a}ndig von Riemann her.]}.}
+
+\nobreak\medskip
+
+\begin{enumerate}
+\item
+Eine ver\"{a}nderliche complexe Gr\"{o}sse $w = u + vi$ heisst
+eine Function einer andern ver\"{a}nderlichen Gr\"{o}sse
+$z = x + yi$, wenn sie mit ihr sich so \"{a}ndert, dass
+$\displaystyle \frac{dw}{dz}$
+von $dz$ unabh\"{a}ngig ist.  Diese Definition wird begr\"{u}ndet
+durch die Bemerkung, dass dies immer stattfindet, wenn die
+Abh\"{a}ngigkeit der Gr\"{o}sse $w$ von $z$ durch einen
+analytischen Ausdruck gegeben ist.
+
+\item
+Die Werthe der ver\"{a}nderlichen complexen Gr\"{o}ssne $z$ und
+$w$ werden dargestellt durch die Punkte $O$ und $Q$ zweier Ebenen
+$A$ und $B$, ihre Abh\"{a}ngigkeit von einander als eine
+Abbildung der einen Ebene auf die andere.
+
+\item
+Ist die Abh\"{a}ngigkeit eine solche (Art.~1), dass
+$\displaystyle \frac{dw}{dz}$
+von $dz$ unabh\"{a}ngig ist, so findet zwischen dem Original und
+seinem Bilde Aehnlichkeit in den kleinsten Theilen statt.
+
+\item
+Die Bedingung, dass
+$\displaystyle \frac{dw}{dz}$
+von $dz$ unabh\"{a}ngig ist, ist identisch mit folgenden:
+$\displaystyle
+   \frac{\partial u}{\partial x} =   \frac{\partial v}{\partial y}$,
+$\displaystyle
+   \frac{\partial u}{\partial y} = - \frac{\partial v}{\partial x}$.
+Aus ihnen folgen
+$\displaystyle
+   \frac{\partial^2 u}{\partial x^2}
+      + \frac{\partial^2 u}{\partial y^2}
+   = 0$,
+$\displaystyle
+   \frac{\partial^2 v}{\partial x^2}
+      + \frac{\partial^2 v}{\partial y^2}
+   = 0$.
+
+\item
+Als Ort des Punktes $O$ wird f\"{u}r die Ebene $A$ eine begrenzte
+\"{u}ber dieselbe ausgebreitete Fl\"{a}che~$T$ substituirt.
+Windungspunkte dieser Fl\"{a}che.
+
+\item
+Ueber den Zusammenhang einer Fl\"{a}che.
+
+\item
+Das Integral
+$\displaystyle \int
+      \left(
+         \frac{\partial X}{\partial x}
+       + \frac{\partial Y}{\partial y}
+      \right) \, dT$,
+durch die ganze Fl\"{a}che $T$ erstreckt, ist gleich
+$\displaystyle - \int
+      (X \cos \xi + Y \cos \eta) \, ds$
+durch ihre ganze Begrenzung, wenn $X$ und $Y$ beliebige in allen
+Punkten von $T$ stetige Functionen von $x$ und $y$ sind.
+
+\item
+Einf\"{u}hrung der Coordinaten $s$ und $p$ des Punktes $O$ in
+Bezug auf eine beliebige Linie.  Die gegenseitige
+Abh\"{a}ngigkeit des Vorzeichens von $ds$ und $dp$ wird so
+festgesetzt, dass
+$\displaystyle
+   \frac{\partial x}{\partial s} = \frac{\partial y}{\partial p}$
+ist.
+
+\item
+Anwendung des Satzes im Art.~7, wenn in allen Fl\"{a}chentheilen
+\[ \frac{\partial X}{\partial x} + \frac{\partial Y}{\partial y}
+   = 0 \]
+ist.
+
+\item
+Bedingungen, unter welchen im Innern einer $A$ einfach
+bedeckenden Fl\"{a}che~$T$ eine Function~$u$, welche, allgemein
+zu reden, der Gleichung
+$\displaystyle
+   \frac{\partial^2 u}{\partial x^2}
+      + \frac{\partial^2 u}{\partial y^2}
+   = 0$
+gen\"{u}gt, nebst allen ihren Differentialquotienten \"{u}berall
+endlich und stetig ist.
+
+\item
+Eigenschaften einer solchen Function.
+
+\item
+Bedingungen, unter welchen im Innern einer $A$ einfach
+bedeckenden einfach zusammenh\"{a}ngenden Fl\"{a}che~$T$ eine
+Function~$w$ von $z$ \"{u}berall nebst allen ihren
+Differentialquotienten endlich und stetig ist.
+
+\item
+Unstetigkeiten einer solchen Function in einem inneren Punkte.
+
+\item
+Ausdehnung der S\"{a}tze der Art.~12 und 13 auf Punkte im Innern
+einer beliebigen ebenen Fl\"{a}che.
+
+\item
+Allgemeine Eigenschaften der Abbildung einer in der Ebene~$A$
+ausgebreiteten Fl\"{a}che~$T$ auf eine in der Ebene~$B$
+ausgebreitete Fl\"{a}che~$S$, durch welche die Werthe einer
+Function~$w$ von $z$ geometrisch dargestellt werden.
+
+\item
+Das Integral
+$\displaystyle \int
+      \left[
+         \left(
+            \frac{\partial \alpha}{\partial x}
+          - \frac{\partial \beta }{\partial y}
+         \right)^2
+       + \left(
+            \frac{\partial \alpha}{\partial y}
+          + \frac{\partial \beta }{\partial x}
+         \right)^2
+      \right] \, dT$,
+durch die ganze Fl\"{a}che~$T$ erstreckt, erh\"{a}lt bei
+Aenderung von $\alpha$ um stetige oder doch nur in einzelnen
+Punkten unstetige Functionen, die am Rande $= 0$ sind, immer
+f\"{u}r Eine einem Minimumswerth und wenn man durch
+Ab\"{a}nderung in einzelnen Punkten hebbare Unstetigkeiten
+ausschliesst, nur f\"{u}r Eine.
+
+\item
+Begr\"{u}ndung eines in vorigen Art.\ vorausgesetzten Satzes
+mittelst der Grenzmethode.
+
+\item
+Ist in einer beliebigen zusammenh\"{a}ngenden, durch Querschnitte
+in eine einfach zusammenh\"{a}ngende $T^*$ zerlegten ebenen
+Fl\"{a}che~$T$ eine Function $\alpha + \beta i$ von $x$,~$y$
+gegeben, f\"{u}r welche
+\[ \int
+      \left[
+         \left(
+            \frac{\partial \alpha}{\partial x}
+          - \frac{\partial \beta }{\partial y}
+         \right)^2
+       + \left(
+            \frac{\partial \alpha}{\partial y}
+          + \frac{\partial \beta }{\partial x}
+         \right)^2
+      \right] \, dT,\]
+durch die ganze Fl\"{a}che erstreckt, endlich ist, so kann sie
+immer und nur auf eine Art in eine Function von $z$ verwandelt
+werden durch Hinzuf\"{u}gung einer Function $\mu + \nu i$ von
+$x$,~$y$, welche so bedingt ist: 1) $\mu$ ist am Rande $= 0$,
+$\nu$ in Einem Punkte gegeben.  2) Die Aenderungen von $\mu$ sind
+in $T$, die von $\nu$ in $T^*$ nur in einzelnen Punkten und nur
+so unstetig, dass
+$\displaystyle \int
+      \left[
+         \left( \frac{\partial \mu}{\partial x} \right)^2
+       + \left( \frac{\partial \mu}{\partial y} \right)^2
+      \right] \, dT$
+und
+$\displaystyle \int
+      \left[
+         \left( \frac{\partial \nu}{\partial x} \right)^2
+       + \left( \frac{\partial \nu}{\partial y} \right)^2
+      \right] \, dT$
+durch die ganze Fl\"{a}che endlich bleiben und letztere an den
+Querschnitten beiderseits gleich.
+
+\item
+Ueberschlag \"{u}ber die hinreichenden und nothwendigen
+Bedingungen zur Bestimmung einer Function complexen Arguments
+innerhalb eines gegebenen Gr\"{o}ssengebiets.
+
+\item
+Die fr\"{u}here Bestimmungsweise eine Function durch
+Gr\"{o}ssenoperationen enth\"{a}lt \"{u}berfl\"{u}ssige
+Bestandtheile.  Durch die hier durchgef\"{u}hrten Betrachtungen
+ist der Umfang der Bestimmungsst\"{u}cke einer Function auf das
+nothwendige Mass zur\"{u}ckgef\"{u}hrt.
+
+\item
+Zwei gegebene einfach zusammenh\"{a}ngende Fl\"{a}chen k\"{o}nnen
+stets so auf einander bezogen werden, dass jedem Punkte der einen
+Ein mit ihm stetigfortr\"{u}ckender Punkt der andern entspricht
+und ihre entsprechenden kleinsten Theile \"{a}hnlich sind; und
+zwar kann zu Einem inneren Punkt und zu Einem Begrenzungspunkt
+der entsprechende beliebig gegeben werden.  Dadurch ist f\"{u}r
+alle Punkte die Beziehung bestimmt.
+
+\item
+Schlussbemerkungen.
+
+\end{enumerate}
+
+\end{document}
+

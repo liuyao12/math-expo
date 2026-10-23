@@ -1,0 +1,263 @@
+{
+  "title": "Grundlagen für eine allgemeine Theorie der Functionen einer veränderlichen complexen Grösse",
+  "originalYear": 1851,
+  "transcription": "David R. Wilkins, December 1998; corrected April 2000",
+  "transcriptionUrl": "https://www.maths.tcd.ie/pub/HistMath/People/Riemann/Grund/Grund.tex",
+  "transcriptionEdition": "1851 dissertation; 1867 unchanged second printing, as identified by the transcription",
+  "sourceFile": "sources/riemann-1851-de.tex",
+  "sha256": "4e09d44cc55edd78166b0f3b948ca6c8c910e92e4713149167d29f9aaab48d2a",
+  "sections": [
+    {
+      "section": 1,
+      "sourceNumber": 1,
+      "startLine": 42,
+      "endLine": 168,
+      "sha256": "ae40579de93aeeebe38eabd8cea2fd27eae81d95574b9ce131df67af336ce131",
+      "characters": 5272,
+      "readingPassages": [
+        "r51-1"
+      ]
+    },
+    {
+      "section": 2,
+      "sourceNumber": 2,
+      "startLine": 169,
+      "endLine": 200,
+      "sha256": "27c94709df1184c52ee4412c97290b9fe1552ee5a27bcce15fb613c156d4b921",
+      "characters": 1358,
+      "readingPassages": [
+        "r51-2"
+      ]
+    },
+    {
+      "section": 3,
+      "sourceNumber": 3,
+      "startLine": 201,
+      "endLine": 267,
+      "sha256": "fc8c25369c71b0d7cbf5805f017fa20317e956dca823ded12e7c82a29292f237",
+      "characters": 2764,
+      "readingPassages": [
+        "r51-3"
+      ]
+    },
+    {
+      "section": 4,
+      "sourceNumber": 4,
+      "startLine": 268,
+      "endLine": 315,
+      "sha256": "7968455fe6f30c164eb6507ecefbcdff55d62956942d3d6f3ae4f770115f7317",
+      "characters": 1598,
+      "readingPassages": [
+        "r51-4"
+      ]
+    },
+    {
+      "section": 5,
+      "sourceNumber": 5,
+      "startLine": 316,
+      "endLine": 431,
+      "sha256": "1461f195a2ea948be79796ec9376ed16ab29a1f7abedf20bffecf477df9f076e",
+      "characters": 6228,
+      "readingPassages": [
+        "r51-5"
+      ]
+    },
+    {
+      "section": 6,
+      "sourceNumber": 6,
+      "startLine": 432,
+      "endLine": 624,
+      "sha256": "7f6cd82fd783710bcc155a87f01adcb41f4454bf18ad42889102fc9b23de9880",
+      "characters": 8744,
+      "readingPassages": [
+        "r51-6a",
+        "r51-6b"
+      ]
+    },
+    {
+      "section": 7,
+      "sourceNumber": 7,
+      "startLine": 625,
+      "endLine": 710,
+      "sha256": "097fff6bad6e36229cadcc936983122ccb3cb0c25e7749e9f8b8aa60b683f018",
+      "characters": 3543,
+      "readingPassages": [
+        "r51-7"
+      ]
+    },
+    {
+      "section": 8,
+      "sourceNumber": 8,
+      "startLine": 711,
+      "endLine": 771,
+      "sha256": "9f7972bc2bb90e6eb1646c8abe5c0889f678f3e1b89905372c39d4a0158ed709",
+      "characters": 2614,
+      "readingPassages": [
+        "r51-8"
+      ]
+    },
+    {
+      "section": 9,
+      "sourceNumber": 9,
+      "startLine": 772,
+      "endLine": 976,
+      "sha256": "9209415be5f202049c148ca3ae1bacaac1c71c13b6dbf83e1eb0816353907711",
+      "characters": 8489,
+      "readingPassages": [
+        "r51-9a",
+        "r51-9b"
+      ]
+    },
+    {
+      "section": 10,
+      "sourceNumber": 10,
+      "startLine": 977,
+      "endLine": 1167,
+      "sha256": "81df660df096c5d49a528f08e9e8a75307403b9032df9e0e0049cbaed644a262",
+      "characters": 7542,
+      "readingPassages": [
+        "r51-10a",
+        "r51-10b"
+      ]
+    },
+    {
+      "section": 11,
+      "sourceNumber": 11,
+      "startLine": 1168,
+      "endLine": 1263,
+      "sha256": "f0296e682b8ba9cc04b422b725de435cb14ac02667d36c22df6b9c574c883c73",
+      "characters": 3754,
+      "readingPassages": [
+        "r51-11"
+      ]
+    },
+    {
+      "section": 12,
+      "sourceNumber": 12,
+      "startLine": 1264,
+      "endLine": 1356,
+      "sha256": "60a08bb1fae5ba3f3779816ed6381da6d926f702d1f2f693134a82ac6f89bfec",
+      "characters": 3672,
+      "readingPassages": [
+        "r51-12"
+      ]
+    },
+    {
+      "section": 13,
+      "sourceNumber": 13,
+      "startLine": 1357,
+      "endLine": 1419,
+      "sha256": "d8597e23ea7d30089e95bd359deccf07a351049b191caf2cdcd4a2e4395a90bc",
+      "characters": 2836,
+      "readingPassages": [
+        "r51-13"
+      ]
+    },
+    {
+      "section": 14,
+      "sourceNumber": 14,
+      "startLine": 1420,
+      "endLine": 1549,
+      "sha256": "664af47bbb6463163d22028b871971d7ed19537a6315d7d59e81c30f8276b119",
+      "characters": 6174,
+      "readingPassages": [
+        "r51-14"
+      ]
+    },
+    {
+      "section": 15,
+      "sourceNumber": 15,
+      "startLine": 1550,
+      "endLine": 1663,
+      "sha256": "c753115e77abf0adfce1687952981a0e608a857b326a2bc570d8707b9a435196",
+      "characters": 4817,
+      "readingPassages": [
+        "r51-15"
+      ]
+    },
+    {
+      "section": 16,
+      "sourceNumber": 16,
+      "startLine": 1664,
+      "endLine": 1796,
+      "sha256": "dbee8680404cfc0e9dc2d502ef808033afdab0fc90d82eef2676609c651ac630",
+      "characters": 5516,
+      "readingPassages": [
+        "r51-16a",
+        "r51-16b"
+      ]
+    },
+    {
+      "section": 17,
+      "sourceNumber": 17,
+      "startLine": 1797,
+      "endLine": 1873,
+      "sha256": "31470584a6010d3eaa2178ddda936d41494794ae9ccdcb77cf0993b39e178aca",
+      "characters": 3752,
+      "readingPassages": [
+        "r51-17"
+      ]
+    },
+    {
+      "section": 18,
+      "sourceNumber": 18,
+      "startLine": 1874,
+      "endLine": 2074,
+      "sha256": "0bf21498de8fca1932487e294957421aae359a914f4725b9c32fd5c8f768e192",
+      "characters": 7051,
+      "readingPassages": [
+        "r51-18a",
+        "r51-18b"
+      ]
+    },
+    {
+      "section": 19,
+      "sourceNumber": 19,
+      "startLine": 2075,
+      "endLine": 2223,
+      "sha256": "6ddc8d2c9293c4d6efd9f4989c574268c819f1b1c91a2b7da87baff92d08ece4",
+      "characters": 7145,
+      "readingPassages": [
+        "r51-19a",
+        "r51-19b"
+      ]
+    },
+    {
+      "section": 20,
+      "sourceNumber": 20,
+      "startLine": 2224,
+      "endLine": 2328,
+      "sha256": "5e35f68619bd54f7d20eebaa63047d641f90191bf460a42b9ad9936ecdbcedf5",
+      "characters": 5357,
+      "readingPassages": [
+        "r51-20"
+      ]
+    },
+    {
+      "section": 21,
+      "sourceNumber": 21,
+      "startLine": 2329,
+      "endLine": 2499,
+      "sha256": "315565dd47feeeddd1cb4011382f87f628c08d83fe58eda3362af504b20aecb3",
+      "characters": 8965,
+      "readingPassages": [
+        "r51-21a",
+        "r51-21b",
+        "r51-21c"
+      ]
+    },
+    {
+      "section": 22,
+      "sourceNumber": 21,
+      "startLine": 2500,
+      "endLine": 2520,
+      "sha256": "47986ed5d998b519b448717bb4b64fa69d4e61c51923a08965ce744aee8f0ac8",
+      "characters": 936,
+      "readingPassages": [
+        "r51-22"
+      ]
+    }
+  ],
+  "numberingNote": "The final section is printed as 21 in the transcription; numbered 22 here, following the 22-entry contents.",
+  "checked": "2026-10-23"
+}
