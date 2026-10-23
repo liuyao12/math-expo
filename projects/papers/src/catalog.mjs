@@ -17,7 +17,6 @@ export const sources = {
   manuscript1859: 'https://www.claymath.org/collections/riemanns-1859-manuscript/',
   english1859: 'https://www.claymath.org/wp-content/uploads/2023/04/Wilkins-translation.pdf',
   mangoldt1895: 'https://gdz.sub.uni-goettingen.de/id/PPN243919689_0114',
-  riesel1970: 'https://doi.org/10.1090/S0025-5718-1970-0277489-3',
 };
 
 additionalWorks.find(w=>w.id==='euler-1761').externalReferences=externalReferencesResidues;
@@ -88,12 +87,6 @@ export const works = [
     publication: 'Journal für die reine und angewandte Mathematik 114 (1895), pp. 255–305.', language: 'German', doi: '10.1515/crll.1895.114.255',
     summary: 'A later treatment of Riemann’s zero count and prime-counting argument.',
     links: [{label: 'Digitized journal volume · Göttingen · pp. 255–305', url: sources.mangoldt1895}, {label: 'Publisher DOI', url: 'https://doi.org/10.1515/crll.1895.114.255'}] },
-  { id: 'riesel-gohl-1970', authors: ['riesel', 'gohl'], year: 1970,
-    title: 'Some calculations related to Riemann’s prime number formula',
-    originalTitle: 'Some Calculations Related to Riemann’s Prime Number Formula',
-    publication: 'Mathematics of Computation 24, no. 112 (1970), pp. 969–983.', language: 'English', doi: '10.1090/S0025-5718-1970-0277489-3',
-    summary: 'Numerical calculations using finitely many zeros, with an analysis of errors.',
-    links: [{label: 'Publisher article', url: sources.riesel1970}, {label: 'Article PDF · AMS', url: 'https://www.ams.org/journals/mcom/1970-24-112/S0025-5718-1970-0277489-3/S0025-5718-1970-0277489-3.pdf'}] },
   { id: 'habermann-2026', authors: ['habermann'], year: 2026,
     title: 'Bernhard Riemann’s original manuscript on the hypotheses underlying geometry',
     originalTitle: 'Bernhard Riemann’s original manuscript on the hypotheses underlying geometry',
@@ -119,8 +112,6 @@ export const people = [
   {id:'goldschmidt',name:'Goldschmidt',note:'Historical name record. A verified identification and a bibliography have not yet been established.',source:sources.german1859+'#page=10'},
   {id:'hadamard',name:'Jacques Hadamard',note:'The selected paper studies the growth and zeros of entire functions.',source:'https://www.numdam.org/item/JMPA_1893_4_9__171_0/'},
   {id:'mangoldt',name:'Hans von Mangoldt',note:'The selected work studies zeta zeros and explicit prime-counting formulas. It begins on p. 255 of the linked volume.',source:sources.mangoldt1895},
-  {id:'riesel',name:'Hans Riesel',note:'Coauthor of the numerical study recorded below.',source:sources.riesel1970},
-  {id:'gohl',name:'Gunnar Göhl',note:'Coauthor of the numerical study recorded below.',source:sources.riesel1970},
   {id:'habermann',name:'Katharina Habermann',note:'Author of the manuscript study recorded below.',source:'https://doi.org/10.1007/s00591-026-00416-0'},
   {id:'euclid',name:'Euclid',note:'The selected source is an edition of the Elements, with Greek text and an English translation.',source:'https://farside.ph.utexas.edu/Books/Euclid/Elements.pdf',bibliography:[{title:'Elements · Greek text and modern English translation by Richard Fitzpatrick',url:'https://farside.ph.utexas.edu/Books/Euclid/Elements.pdf'}]},
   {id:'legendre',name:'Adrien-Marie Legendre',note:'The selected source is the fifth edition of the Elements of Geometry, published in 1804.',source:'https://doi.org/10.3931/e-rara-61309',bibliography:[{title:'Elements of geometry · linked fifth edition, 1804 (French)',url:'https://doi.org/10.3931/e-rara-61309'}]},
@@ -136,8 +127,6 @@ export const citations = [
   {from:'riemann-1859',to:'jacobi-1829',locator:'German transcription, p. 3 (PDF p. 4), “Jacobi, Fund. S. 184”',url:sources.german1859+'#page=4',anchor:'theta',evidence:'Riemann supplies the author, abbreviated title, and page in the theta transformation passage.'},
   {from:'mangoldt-1895',to:'riemann-1859',locator:'Digitized volume, p. 255, opening paragraph and footnote **',url:sources.mangoldt1895,evidence:'The opening names Riemann’s paper; the footnote identifies the November 1859 publication and collected editions.'},
   {from:'mangoldt-1895',to:'hadamard-1893',locator:'Digitized volume, p. 255, opening paragraph and footnote ***',url:sources.mangoldt1895,evidence:'Von Mangoldt names Hadamard’s article and gives its journal, year, volume, and pages.'},
-  {from:'riesel-gohl-1970',to:'riemann-1859',locator:'p. 969, introduction [1]; p. 983, reference 1',url:'https://www.ams.org/journals/mcom/1970-24-112/S0025-5718-1970-0277489-3/S0025-5718-1970-0277489-3.pdf#page=15',evidence:'The introduction attributes the formula to Riemann [1], and the bibliography identifies the 1859 paper.'},
-  {from:'riesel-gohl-1970',to:'mangoldt-1895',locator:'p. 969, introduction [2]; p. 983, reference 2',url:'https://www.ams.org/journals/mcom/1970-24-112/S0025-5718-1970-0277489-3/S0025-5718-1970-0277489-3.pdf#page=15',evidence:'The introduction credits von Mangoldt’s proof [2], and the bibliography identifies his 1895 article.'},
 ];
 
 export const concepts = [
@@ -178,7 +167,7 @@ export const concepts = [
     body:m`<p>Riemann’s application is the transform of the weighted prime count, with a fixed real \(a>1\):</p>\[\frac{\log\zeta(s)}s=\int_1^\infty f(x)x^{-s-1}\,dx,\qquad \operatorname{Re}s=a.\]<p>His inversion uses a vertical contour, interpreted as a symmetric limit, and recovers midpoint values at jumps. The logarithm here is the analytic branch supplied by the convergent Euler-product expansion in this half-plane.</p>`,
     comparison:m`After \(x=e^u\), the application concerns \(e^{-au}f(e^u)\), extended by zero for \(u<0\). It is integrable and has bounded variation locally. These are concrete conditions to check for this count; the paper does not assert inversion for every set-theoretic mapping.`},
   {id:'li-1859',title:'The logarithmic integral and its branches',kind:'Special function · branch convention',anchor:'branches',
-    body:m`<p>The real expression \(\operatorname{Li}(x)\), for \(x>1\), uses a principal value at \(1\):</p>\[\operatorname{Li}(x)=\operatorname{PV}\int_0^x\frac{du}{\log u}.\]<p>For a nonreal zero \(\rho\), put \(w=\rho\log x\), with real \(\log x\), and use the horizontal-path normalization</p>\[\operatorname{Li}(x^\rho)=\int_{-\infty+i\operatorname{Im}w}^{w}\frac{e^z}{z}\,dz.\]<p>The positive and negative imaginary parts select the corresponding upper and lower paths. Taking a principal logarithm of the numerical value \(x^\rho\) would discard the required branch information. The branch convention agrees with the definition used by Riesel and Göhl, p. 969.</p>`,
+    body:m`<p>The real expression \(\operatorname{Li}(x)\), for \(x>1\), uses a principal value at \(1\):</p>\[\operatorname{Li}(x)=\operatorname{PV}\int_0^x\frac{du}{\log u}.\]<p>For a nonreal zero \(\rho\), put \(w=\rho\log x\), with real \(\log x\), and use the horizontal-path normalization</p>\[\operatorname{Li}(x^\rho)=\int_{-\infty+i\operatorname{Im}w}^{w}\frac{e^z}{z}\,dz.\]<p>The positive and negative imaginary parts select the corresponding upper and lower paths. Taking a principal logarithm of the numerical value \(x^\rho\) would discard the required branch information.</p>`,
     comparison:'The paths and limiting prescription are part of the meaning of the formula. Riemann discusses them in the preceding contour calculation; the real-axis integral alone does not define the complex terms.'},
   {id:'mobius-1859',title:'Inverting the prime-power weights',kind:'Author’s formula · modern identification',anchor:'mobius',
     body:m`<p>Riemann sums over positive squarefree integers \(m\), using \(\mu\) for the number of prime factors of that particular \(m\):</p>\[F(x)=\sum_{m\ \mathrm{squarefree}}\frac{(-1)^\mu}{m}f(x^{1/m}).\]<p>For fixed \(x>1\), the exact count makes the sum finite.</p>`,
@@ -199,6 +188,5 @@ export const bibliographicFields = {
   'dirichlet-1837':{type:'article',journal:'Abhandlungen der Königlich Preussischen Akademie der Wissenschaften',pages:'45--71'},
   'hadamard-1893':{type:'article',journal:'Journal de Mathématiques Pures et Appliquées',volume:'9',series:'4',pages:'171--215'},
   'mangoldt-1895':{type:'article',journal:'Journal für die reine und angewandte Mathematik',volume:'114',pages:'255--305'},
-  'riesel-gohl-1970':{type:'article',journal:'Mathematics of Computation',volume:'24',number:'112',pages:'969--983'},
   'habermann-2026':{type:'article',journal:'Mathematische Semesterberichte'},
 };

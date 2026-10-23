@@ -21,7 +21,6 @@ export const discoveryTerms={
  'mangoldt-1895':['explicit formula','Riemann von Mangoldt formula','zero counting','prime counting'],
  'hilbert-1900':['Hilbert problems','foundations','mathematical problems'],
  'noether-1918':['Noether theorem','symmetry','conservation laws','calculus of variations'],
- 'riesel-gohl-1970':['computational number theory','prime counting','explicit formula','zeta zeros'],
  'monks-2019':['Basel problem','history of mathematics','calculus','reciprocal series'],
  'habermann-2026':['Riemann manuscript','history of geometry','Riemannian geometry'],
 };

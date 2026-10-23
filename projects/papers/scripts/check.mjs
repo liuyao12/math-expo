@@ -108,7 +108,6 @@ for(const [filters,expected] of [
  [{q:'konigsberg bridges'},'euler-1741'],
  [{q:'konigsberg bridges',access:'english'},'euler-1741'],
  [{from:'1854',to:'1859',author:'riemann'},'riemann-1854,riemann-1859'],
- [{author:'gohl'},'riesel-gohl-1970'],
  [{author:['leibniz','johann-bernoulli']},'leibniz-bernoulli-1745'],
  [{author:['euler','riemann'],language:['French','German'],decade:['1750','1850']},'euler-1751,riemann-1851,riemann-1854,riemann-1859'],
  [{access:['edited','english'],q:'finite differences'},'euler-1761'],
