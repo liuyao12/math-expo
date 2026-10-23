@@ -2,6 +2,7 @@
   const options={delimiters:[{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:true};
   const typeset=node=>window.renderMathInElement?.(node,options);
   typeset(document.body);
+  window.paperNames?.enhance(document.body);
   // Fragment links must land after equations and local fonts finish layout.
   // A source-note link reveals its text before the fragment scrolls to it.
   const revealSourceNote=()=>{
@@ -129,6 +130,7 @@
       for(const group of groups)for(const input of group.inputs)if(input.checked)add(group.key,input.value,input.dataset.label);
       if(filters.from)add('from',filters.from,'From '+filters.from);
       if(filters.to)add('to',filters.to,'To '+filters.to);
+      window.paperNames?.enhance(chips);
       chips.hidden=!chips.children.length;
       document.querySelector('#filter-selection-count').textContent=chips.children.length?'('+chips.children.length+')':'';
     }

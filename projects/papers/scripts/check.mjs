@@ -1,3 +1,4 @@
+import './check-personal-names.mjs';
 import './check-poincare.mjs';
 import './check-gauss.mjs';
 import fs from 'node:fs';

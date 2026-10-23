@@ -111,3 +111,6 @@
 
 /* A paper sequence is editorial navigation, separate from checked citations. */
 .work-series ol{padding-left:1.4rem;line-height:1.65}.work-series li{padding:.5rem 0}.work-series .scope-label{display:block;font-size:.8rem}.work-series [aria-current="page"]{font-weight:600}
+
+/* Real text stays searchable and copyable; small caps affect surnames only. */
+.person-surname{text-transform:none;font-variant-caps:small-caps;font-synthesis:small-caps;font-style:normal;letter-spacing:.025em}
