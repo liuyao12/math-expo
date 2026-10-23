@@ -108,3 +108,6 @@
 @media(max-width:760px){.faceted-collection .catalogue-layout{display:flex;flex-direction:column;gap:0;margin-top:25px}.catalogue-main{display:contents}.catalogue-main .unified-heading{order:-1}.catalogue-sidebar,.catalogue-main>.catalogue,.catalogue-main>.collection-note{width:100%}.faceted-collection .unified-heading h1{font-size:40px}.faceted-collection .unified-heading>p:last-child{font-size:17px}.catalogue-sidebar{margin-bottom:24px}}
 
 .apply-filters{display:none}@media(max-width:760px){.apply-filters{display:block;border:1px solid var(--green);background:var(--green);color:var(--paper);padding:13px 18px;margin-top:15px;width:100%;font:13px/1.5 var(--sans);min-height:45px}}
+
+/* A paper sequence is editorial navigation, separate from checked citations. */
+.work-series ol{padding-left:1.4rem;line-height:1.65}.work-series li{padding:.5rem 0}.work-series .scope-label{display:block;font-size:.8rem}.work-series [aria-current="page"]{font-weight:600}

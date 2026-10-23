@@ -1,6 +1,8 @@
+import {discoveryPoincare} from './poincare-catalog.mjs';
 // Editorial discovery terms. These identify the subject for modern readers;
 // they are not substituted into the author's text or definitions.
 export const discoveryTerms={
+ ...discoveryPoincare,
  'euler-1740':['Basel problem','reciprocal series','sine product','zeta values','Dirichlet beta values','Newton identities'],
  'euler-1741':['Königsberg bridges','bridge crossings','geometry of position','region words','odd and even counts','Eulerian paths','Eulerian circuits','graph theory','fifteen bridges','networks'],
  'euler-1744':['infinite series','Euler product','prime numbers','zeta function','reciprocal primes','prime harmonic series','log log infinity','double logarithm','perfect powers','Goldbach Euler theorem','Liouville function'],

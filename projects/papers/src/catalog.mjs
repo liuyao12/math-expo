@@ -1,3 +1,4 @@
+import {worksPoincare,peoplePoincare,bibliographyPoincare,englishPoincare,citationsPoincare,conceptsPoincare} from './poincare-catalog.mjs';
 import {peopleGauss,conceptsGauss} from './gauss-1828-catalog.mjs';
 import {people1854,concepts1854,citations1854} from './riemann-1854-catalog.mjs';
 import {additionalWorks,additionalPeople,additionalBibliographicFields,additionalCitations,englishSources} from './translation-sources.mjs';
@@ -8,6 +9,7 @@ import {circleWork,peopleEulerMore,conceptsEulerMore,bibliographyCircle,englishE
 import {worksLogarithms,peopleLogarithms,conceptsLogarithms,bibliographyLogarithms,englishLogarithms,citationsLogarithms} from './euler-1751-catalog.mjs';
 import {conceptsBridges} from './euler-1741-catalog.mjs';
 import {peopleResidues,conceptsResidues,externalReferencesResidues} from './euler-1761-catalog.mjs';
+Object.assign(englishSources,englishPoincare);
 Object.assign(englishSources,englishEulerMore);
 Object.assign(englishSources,englishLogarithms);
 const m = String.raw;
@@ -24,6 +26,7 @@ additionalWorks.find(w=>w.id==='euler-1761').externalReferences=externalReferenc
 // A work record exists independently of whether we have edited its text.
 // Titles are our English renderings; original titles identify the source edition.
 export const works = [
+  ...worksPoincare,
   ...additionalWorks,
   circleWork,
   ...worksLogarithms,
@@ -96,6 +99,7 @@ export const works = [
 ];
 
 export const people = [
+  ...peoplePoincare,
   ...peopleGauss,
   ...people1854,
   ...peopleResidues,
@@ -121,6 +125,7 @@ export const people = [
 // Only direct, checked work-to-work citations belong here. Reverse lists are
 // derived from these edges; related works and editorial sources stay separate.
 export const citations = [
+  ...citationsPoincare,
   ...citations1854,
   ...citationsLogarithms,
   ...additionalCitations,
@@ -130,6 +135,7 @@ export const citations = [
 ];
 
 export const concepts = [
+  ...conceptsPoincare,
   ...conceptsGauss,
   ...concepts1854,
   ...conceptsEuler,
@@ -175,6 +181,7 @@ export const concepts = [
 ];
 
 export const bibliographicFields = {
+  ...bibliographyPoincare,
   ...additionalBibliographicFields,
   ...bibliographyLogarithms,
   'euler-1748-circle':bibliographyCircle,

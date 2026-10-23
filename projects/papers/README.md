@@ -14,9 +14,9 @@ The 1751 logarithm controversy paper (E168) is a complete independent modern-Eng
 
 The complete bridges reading (E53, 1741, §§1–21) preserves both counting tables, the fifteen-bridge route, and the final pair-removal suggestion. Seven drawings retain Euler’s region and bridge labels, with a step control for the printed route. Four written proofs justify the word notation, endpoint counts, seven-bridge impossibility, and the finite connected-case criterion. The independent rendering comes from the Latin scan and plate; the external English file remains an unverified archive lead. The English-availability filter includes our own complete English readings as well as inspected external translations.
 
-The catalogue currently contains twenty-three works, forty people, thirty-one scoped mathematical references, and nine verified citation edges. Completeness of an imported text and completeness of its mathematical reconstruction are distinct.
+Catalogue counts are generated from the source records. Completeness of an imported text and completeness of its mathematical reconstruction are distinct.
 
-The unified [work catalogue](https://liuyao12.github.io/math-expo/papers/) presents all works together, with author, original-language, decade, inclusive year-range, and reading-option filters. Search covers original and English titles, summaries, translators, and editorial modern terminology. Filter state is retained in the URL. The fourteen inspected translation sources keep their provenance in each work’s source panel; one uninspected lead remains labelled as such. “Inspected” is a source check, not a separate class of mathematical works or a claim of full collation.
+The unified [work catalogue](https://liuyao12.github.io/math-expo/papers/) presents all works together, with author, original-language, decade, inclusive year-range, and reading-option filters. Search covers original and English titles, summaries, translators, and editorial modern terminology. Filter state is retained in the URL. The inspected translation sources keep their provenance in each work’s source panel; one uninspected lead remains labelled as such. “Inspected” is a source check, not a separate class of mathematical works or a claim of full collation.
 
 ## Develop
 
@@ -98,3 +98,13 @@ The 1827/1828 paper now has a complete modern-English reading of Articles 1–29
 - `scripts/check-gauss.mjs`: source and rendering coverage, formula preservation, 3125 exact curvature identities, sphere checks, and independent numerical triangle integrals.
 
 The squared metric determinant in Article 11 was checked in the Latin first printing, p. 23 (ETH / e-rara, PDF p. 28). The complete reading has not been collated line by line against the Latin. The original printing and the 1902 English edition remain linked above the reading.
+
+## Poincaré’s topology sequence
+
+The preliminary 1892 note, the 1895 memoir, and all five supplements have separate author–year records, original-source links, Stillwell English manuscript page links, discovery terms, BibTeX, and series navigation. The two 1902 supplements use `poincare-1902-surfaces/` and `poincare-1902-cycles/`. Eight checked citations are distinct from the editorial series order.
+
+The 1892 note is a complete independent modern-English reading, with twelve source passages, two drawings, and two written proofs for its explicit affine quotient family. It preserves and flags the classification converse, invariant-coordinate embedding gap, and problematic connectivity table; the worked pair has equal rational Betti numbers and different abelianizations. The six longer works are source records awaiting full on-site readings. Stillwell’s 2009 manuscript is linked, not reproduced; its PDF pagination differs from the 2010 published book.
+
+- `src/poincare-catalog.mjs`: seven records, author profile, English-source provenance, sequence, search terms, and checked citation edges.
+- `src/poincare-1892.mjs`: full independent reading, commentary, figures, edition note, and two proofs.
+- `scripts/check-poincare.mjs`: sequence, provenance, source coverage, and independent integer-matrix/quotient checks.
