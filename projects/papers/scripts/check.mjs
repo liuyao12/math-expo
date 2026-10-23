@@ -11,6 +11,7 @@ import {statementsEuler} from '../src/statements-euler-1740.mjs';
 import './check-euler-arithmetic.mjs';
 import './check-euler-more.mjs';
 import './check-euler-1751.mjs';
+import './check-euler-1741.mjs';
 import {discoveryTerms,matchesWork} from '../src/discovery.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url)),dist=path.join(root,'dist');
 const katexContext={};
@@ -94,7 +95,7 @@ for(const [id,source] of Object.entries(englishSources)){
   }
   if(data.englishSources[id]?.status!==source.status)throw Error(`Export lost source-check status: ${id}`);
 }
-const searchable=works.map(w=>({...w,searchText:[w.title,w.originalTitle,w.summary,w.year,w.language,...(discoveryTerms[w.id]??[]),englishSources[w.id]?.translator??'',...w.authors.map(id=>people.find(p=>p.id===id).name)].join(' '),english:englishSources[w.id]?.status==='inspected'||w.language==='English',edited:Boolean(w.edition)}));
+const searchable=works.map(w=>({...w,searchText:[w.title,w.originalTitle,w.summary,w.year,w.language,...(discoveryTerms[w.id]??[]),englishSources[w.id]?.translator??'',...w.authors.map(id=>people.find(p=>p.id===id).name)].join(' '),english:Boolean(w.edition)||englishSources[w.id]?.status==='inspected'||w.language==='English',edited:Boolean(w.edition)}));
 for(const w of works)if(!discoveryTerms[w.id]?.length||!data.discoveryTerms[w.id]?.length)throw Error(`Missing editorial search terms: ${w.id}`);
 const found=f=>searchable.filter(w=>matchesWork(w,f)).map(w=>w.id).sort().join(',');
 for(const [filters,expected] of [
@@ -102,6 +103,7 @@ for(const [filters,expected] of [
  [{author:'riemann',decade:'1850',language:'German',access:'edited'},'riemann-1854,riemann-1859'],
  [{q:'conservation laws'},'noether-1918'],
  [{q:'konigsberg bridges'},'euler-1741'],
+ [{q:'konigsberg bridges',access:'english'},'euler-1741'],
  [{from:'1854',to:'1859',author:'riemann'},'riemann-1854,riemann-1859'],
  [{author:'gohl'},'riesel-gohl-1970'],
  [{from:'1900',to:'1800'},''],
@@ -169,3 +171,13 @@ for(const marker of ['Complete paper','1999','not reproduced','independently','z
 const logarithmEvidence=JSON.parse(fs.readFileSync(path.join(dist,'euler-logarithm-source.json'),'utf8'));
 if(logarithmEvidence.original.pages!==41||logarithmEvidence.englishComparison.translator!=='Stacy G. Langton')throw Error('Logarithm provenance missing');
 console.log('Validated the complete E168 reading, all five reconstructions, scoped references, source evidence, and the correspondence citation.');
+
+const {passagesBridges}=await import('../src/euler-1741.mjs');
+const bridgesFile=path.join(dist,'euler-1741/index.html'),bridgesHTML=pages.get(bridgesFile),bridgesIDs=idsByPage.get(bridgesFile);
+for(const r of passagesBridges)if(!bridgesIDs.has(r.id))throw Error('Missing bridge section '+r.id);
+if(data.statements['euler-1741'].length!==4)throw Error('Missing bridge reconstructions');
+for(const marker of ['Complete paper','§§1–21','connected','Plate VIII','bridge-route-step','e53-proof-existence','unverified'])if(!bridgesHTML.includes(marker))throw Error('Missing bridge edition qualification '+marker);
+if(!catalogue.includes('data-work="euler-1741"')||!catalogue.match(/data-work="euler-1741"[^>]*data-english="true"/))throw Error('On-site English bridge reading missing from English filter');
+const bridgeEvidence=JSON.parse(fs.readFileSync(path.join(dist,'euler-bridges-source.json'),'utf8'));
+if(bridgeEvidence.original.pdfPages!==14||bridgeEvidence.plateData.printedRoute!=='EaFbBcFdAeFfCgAhCiDkAmEnApBoElD')throw Error('Bridge source provenance missing');
+console.log('Validated all 21 rendered bridge sections, scoped definitions, four proof records, source-page mapping, and on-site English availability.');

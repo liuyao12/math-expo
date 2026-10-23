@@ -12,7 +12,9 @@ Two further Euler readings cover the full E72 paper (1744, all nineteen theorems
 
 The 1751 logarithm controversy paper (E168) is a complete independent modern-English rendering from the French: seven arguments, nine objections, the resolution and theorem, four problems, all ten examples and their value progressions, and the final calculation. Five written reconstructions distinguish selected logarithms from all-value families, scaling from independent sums, and fixed-index limits from unconstrained root choices. Three margin diagrams include an interactive logarithm-value ladder. Langton’s 1999 English translation is linked for comparison, not reproduced. The 1745 Leibniz–Bernoulli correspondence has an interim bibliographic record because Euler explicitly cites its letters; the citation is generated in both directions.
 
-The catalogue currently contains twenty-three works, forty people, twenty-eight scoped mathematical references, and nine verified citation edges. Completeness of an imported text and completeness of its mathematical reconstruction are distinct.
+The complete bridges reading (E53, 1741, §§1–21) preserves both counting tables, the fifteen-bridge route, and the final pair-removal suggestion. Seven drawings retain Euler’s region and bridge labels, with a step control for the printed route. Four written proofs justify the word notation, endpoint counts, seven-bridge impossibility, and the finite connected-case criterion. The independent rendering comes from the Latin scan and plate; the external English file remains an unverified archive lead. The English-availability filter includes our own complete English readings as well as inspected external translations.
+
+The catalogue currently contains twenty-three works, forty people, thirty-one scoped mathematical references, and nine verified citation edges. Completeness of an imported text and completeness of its mathematical reconstruction are distinct.
 
 The unified [work catalogue](https://liuyao12.github.io/math-expo/papers/) presents all works together, with author, original-language, decade, inclusive year-range, and reading-option filters. Search covers original and English titles, summaries, translators, and editorial modern terminology. Filter state is retained in the URL. The fourteen inspected translation sources keep their provenance in each work’s source panel; one uninspected lead remains labelled as such. “Inspected” is a source check, not a separate class of mathematical works or a claim of full collation.
 
@@ -26,7 +28,7 @@ npm run check
 python3 -m http.server 8000 --directory dist
 ```
 
-The collection is generated as static HTML in `dist/`. All links are relative, so it works under the GitHub Pages project path. The readings are at `riemann-1854/`, `riemann-1859/`, `euler-1740/`, `dedekind-1872/`, `dedekind-1888/`, `euler-1744/`, `euler-1748-circle/`, and `euler-1751/`; author pages are under `people/`, and paper-specific object records under `concepts/`.
+The collection is generated as static HTML in `dist/`. All links are relative, so it works under the GitHub Pages project path. The readings are at `riemann-1854/`, `riemann-1859/`, `euler-1740/`, `dedekind-1872/`, `dedekind-1888/`, `euler-1744/`, `euler-1748-circle/`, `euler-1751/`, and `euler-1741/`; author pages are under `people/`, and paper-specific object records under `concepts/`.
 
 - `src/catalog.mjs`: works, people, scoped mathematical references, bibliographic fields, and checked citation edges.
 - `src/translation-sources.mjs`: new source-work records and the English translation ledger, including inspection status and translator attribution.
@@ -42,6 +44,8 @@ The collection is generated as static HTML in `dist/`. All links are relative, s
 - `src/euler-more-sources.json`: source URLs, checksums, reading extents, and inspection evidence. Modern English comparison texts are linked, not reproduced.
 - `scripts/check-euler-more.mjs`: independent perfect-power table generation, multiplicative sign checks, rational bounds for decimal coefficients, and finite numerical checks.
 - `src/euler-1751.mjs`, `src/euler-1751-catalog.mjs`, `src/statements-euler-1751.mjs`, `src/figures-euler-1751.mjs`: full logarithm reading, scoped records, five written reconstructions, and three drawings.
+- `src/euler-1741.mjs`, `src/figures-euler-1741.mjs`, `src/statements-euler-1741.mjs`, `src/euler-1741-catalog.mjs`, `src/bridges-data.mjs`: full bridge reading, scoped references, original endpoint data and route, drawings, and finite proofs.
+- `src/euler-1741-source.json`, `scripts/check-euler-1741.mjs`: original-page mapping, source evidence, exact route and table checks, and independent finite crossing verification.
 - `src/euler-1751-source.json`: original and comparison-text provenance, checksums, extent, and disclosed printing repairs.
 - `scripts/check-euler-1751.mjs`: complete passage inventory, rational checks of every logarithm progression, independent product and quartic checks, and finite root-limit error samples.
 - `src/dedekind.mjs`: commentary, named references, scoped definitions, diagrams, and precise proofs for both essays.

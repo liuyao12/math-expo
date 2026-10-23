@@ -2,7 +2,7 @@
 // they are not substituted into the author's text or definitions.
 export const discoveryTerms={
  'euler-1740':['Basel problem','reciprocal series','sine product','zeta values','Dirichlet beta values','Newton identities'],
- 'euler-1741':['Königsberg bridges','graph theory','Eulerian paths','Eulerian circuits','networks'],
+ 'euler-1741':['Königsberg bridges','bridge crossings','geometry of position','region words','odd and even counts','Eulerian paths','Eulerian circuits','graph theory','fifteen bridges','networks'],
  'euler-1744':['infinite series','Euler product','prime numbers','zeta function','reciprocal primes','prime harmonic series','log log infinity','double logarithm','perfect powers','Goldbach Euler theorem','Liouville function'],
  'euler-1748-circle':['Euler identity','Euler’s identity','Euler formula','complex exponential','imaginary logarithms','unit circle','trigonometry','De Moivre formula','arctangent series','pi computation'],
  'euler-1751':['complex logarithm','logarithms of negative numbers','imaginary logarithms','Leibniz Bernoulli controversy','log(-1)','log -1','logarithm of minus one','branches of logarithm','multivalued logarithm','roots of unity','infinite roots','complex exponential'],

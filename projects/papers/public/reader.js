@@ -81,6 +81,23 @@
     };
     logarithmIndex.addEventListener('input',updateLogarithm);updateLogarithm();
   }
+  const bridgeStep=document.querySelector('#bridge-route-step');
+  if(bridgeStep){
+    const route=JSON.parse(document.querySelector('#bridge-route-data').textContent);
+    const updateBridgeStep=()=>{
+      const step=Number(bridgeStep.value),count=document.querySelector('#bridge-route-count'),readout=document.querySelector('#bridge-route-readout');
+      count.textContent=`\\(${step}/15\\)`;
+      readout.textContent=step===0?'\\(\\text{start in }E\\)':`\\(${route.regions[step-1]}\\xrightarrow{${route.bridges[step-1]}}${route.regions[step]}\\)`;
+      for(const crossing of document.querySelectorAll('.bridge-route [data-crossing]')){
+        const index=route.bridges.indexOf(crossing.dataset.crossing);
+        crossing.classList.toggle('is-used',index<step);
+        crossing.classList.toggle('is-current',index===step-1);
+      }
+      bridgeStep.setAttribute('aria-valuetext',step===0?'Start in region E':`Crossing ${step} of 15: bridge ${route.bridges[step-1]}, from ${route.regions[step-1]} to ${route.regions[step]}`);
+      typeset(count);typeset(readout);
+    };
+    bridgeStep.addEventListener('input',updateBridgeStep);updateBridgeStep();
+  }
   const links=[...document.querySelectorAll('.reading-nav a')];
   if(links.length&&'IntersectionObserver' in window){
     const observer=new IntersectionObserver(entries=>{

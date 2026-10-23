@@ -1,0 +1,39 @@
+{
+  "work": "euler-1741",
+  "enestrom": "E53",
+  "checked": "2026-10-22",
+  "original": {
+    "url": "https://math.dartmouth.edu/~euler/docs/originals/E053.pdf",
+    "language": "Latin",
+    "sha256": "0cd288ccc08d8a381be4d99cd519f0e18b67d5c1002da6530a4d18021e1b3c29",
+    "pdfPages": 14,
+    "printedPages": "128–140, with Plate VIII inserted after printed p. 128",
+    "pageMap": "Printed p. 128 = PDF 1; Plate VIII = PDF 2; printed pp. 129–140 = PDF 3–14",
+    "inspection": "All twenty-one sections read in Latin using local OCR as an aid. Plate VIII and the fifteen-bridge route on printed p. 137 inspected directly. OCR page numbers were corrected for the inserted plate."
+  },
+  "publication": {
+    "archiveRecord": "https://scholarlycommons.pacific.edu/euler-works/53/",
+    "volumeYear": 1736,
+    "publishedYear": 1741,
+    "archiveCompositionYear": 1735,
+    "urlConvention": "Existing author-year URL retains actual publication year"
+  },
+  "englishLead": {
+    "archiveListing": "https://scholarlycommons.pacific.edu/euler-works/53/",
+    "listedFile": "E053tr.pdf",
+    "status": "External English file and translator credit remain unverified; the listed download was unavailable in this check",
+    "use": "No external English translation reproduced. This edition is independently rendered from the public-domain Latin."
+  },
+  "rendering": {
+    "scope": "All twenty-one numbered sections, both counting tables, both bridge problems, the exact fifteen-bridge route, and the final pair-removal suggestion",
+    "drawings": "Seven editorial vector drawings or redrawings; bridge labels and endpoint pairs preserve the original plate. The interactive fifteen-bridge drawing follows the route printed in section 15.",
+    "proofStatus": "Four written reconstructions; no proof-assistant verification. Connectedness and endpoint hypotheses are made explicit. Sufficiency is completed by finite closed-journey insertion, identified as editorial.",
+    "scopeRestrictions": "Finite undirected bridges between distinct connected land regions; unrestricted movement within a region. No directed, weighted, infinite, or shortest-route extension."
+  },
+  "plateData": {
+    "sevenBridgeEndpoints": {"a":"AB","b":"AB","c":"AC","d":"AC","e":"AD","f":"BD","g":"CD"},
+    "fifteenBridgeEndpoints": {"a":"EF","b":"BF","c":"BF","d":"AF","e":"AF","f":"CF","g":"AC","h":"AC","i":"CD","k":"AD","l":"DE","m":"AE","n":"AE","o":"BE","p":"AB"},
+    "printedRoute": "EaFbBcFdAeFfCgAhCiDkAmEnApBoElD",
+    "labels": "The original label list omits j. Labels are not silently renumbered."
+  }
+}

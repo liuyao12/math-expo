@@ -4,6 +4,7 @@ import {conceptsEuler} from './concepts-euler-1740.mjs';
 import {peopleDedekind,conceptsDedekind} from './dedekind.mjs';
 import {circleWork,peopleEulerMore,conceptsEulerMore,bibliographyCircle,englishEulerMore} from './euler-more-catalog.mjs';
 import {worksLogarithms,peopleLogarithms,conceptsLogarithms,bibliographyLogarithms,englishLogarithms,citationsLogarithms} from './euler-1751-catalog.mjs';
+import {conceptsBridges} from './euler-1741-catalog.mjs';
 Object.assign(englishSources,englishEulerMore);
 Object.assign(englishSources,englishLogarithms);
 const m = String.raw;
@@ -135,6 +136,7 @@ export const concepts = [
   ...conceptsDedekind,
   ...conceptsEulerMore,
   ...conceptsLogarithms,
+  ...conceptsBridges,
   {id:'function-1859',title:'“Function” in the 1859 argument',kind:'Editorial reading guide',anchor:'euler-product',
     body:m`<p>Here the objects are specific expressions with specified uses: a convergent series and product for \(\zeta(s)\), integrals that continue it, a theta series, and step functions that count primes. Riemann does not introduce an arbitrary mapping between arbitrary sets in this paper.</p><p>We follow these constructions and their domains rather than replacing every occurrence of “function” with the most general modern definition. Nor does this paper establish that every function Riemann would admit must be given by a finite formula.</p>`,
     comparison:'A comparison with computable analysis would require a representation of inputs and outputs and effective error bounds for the operations in question. Convergence or a written formula alone does not supply those data. That comparison is an editorial research direction, not an attribution to Riemann.'},

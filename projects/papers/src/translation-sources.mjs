@@ -12,8 +12,9 @@ export const additionalWorks = [
     links:[{label:'Original work & publication record · Euler Archive',url:'https://scholarlycommons.pacific.edu/euler-works/41/'},{label:'Latin text · PDF p. 10',url:'https://kirkmcd.princeton.edu/17centurymaths/contents/euler/e041tr.pdf#page=10'},{label:'English translation · Ian Bruce',url:'https://kirkmcd.princeton.edu/17centurymaths/contents/euler/e041tr.pdf'}]},
   {id:'euler-1741',authors:['euler'],year:1741,title:'A solution to a problem in the geometry of position',originalTitle:'Solutio problematis ad geometriam situs pertinentis',language:'Latin',
     publication:'Commentarii academiae scientiarum Petropolitanae 8 (1741), pp. 128–140. Archive composition date: 1735. Eneström E53.',
-    summary:'The Königsberg bridges paper. Its 1741 publication date is used here; the archive lists a translation file whose credit and text still need checking.',
-    links:[{label:'Original work & translation listing · Euler Archive',url:'https://scholarlycommons.pacific.edu/euler-works/53/'}]},
+    edition:'Complete paper · §§1–21',
+    summary:'The Königsberg crossing question, region words, odd and even bridge counts, and a fifteen-bridge worked journey. Complete modern-English reading with the original labels, seven drawings, and scoped proofs.',
+    links:[{label:'Original Latin · 1741',url:'https://math.dartmouth.edu/~euler/docs/originals/E053.pdf'},{label:'Original plate · PDF page 2',url:'https://math.dartmouth.edu/~euler/docs/originals/E053.pdf#page=2'},{label:'Publication record & English translation lead · Euler Archive',url:'https://scholarlycommons.pacific.edu/euler-works/53/'}]},
   {id:'euler-1761',authors:['euler'],year:1761,title:'Theorems on residues obtained by the division of powers',originalTitle:'Theoremata circa residua ex divisione potestatum relicta',language:'Latin',
     publication:'Novi Commentarii academiae scientiarum Petropolitanae 7 (1761), pp. 49–82. Presented in 1755. Eneström E262.',
     summary:'Powers and their remainders for a prime modulus, including a proof of Fermat’s theorem. The original cases should precede any abstract group-theoretic extension.',
@@ -62,7 +63,7 @@ export const additionalBibliographicFields = {
 // a translation was collated against the original or all its mathematics checked.
 export const englishSources = {
   'euler-1740':{status:'inspected',translator:'Ian Bruce',dateLabel:'Translation undated',format:'PDF',url:'https://kirkmcd.princeton.edu/17centurymaths/contents/euler/e041tr.pdf',evidenceUrl:'https://kirkmcd.princeton.edu/17centurymaths/contents/euler/e041tr.pdf#page=1',scope:'Complete paper, with translator’s annotations.',note:'The opening page names Ian Bruce. The original work dates from 1735 and was published in 1740; neither is asserted to be the date of this translation.'},
-  'euler-1741':{status:'listed',translator:null,dateLabel:'Translation credit and date not yet verified',format:'Archive listing',url:'https://scholarlycommons.pacific.edu/euler-works/53/',evidenceUrl:'https://scholarlycommons.pacific.edu/euler-works/53/',scope:'The archive lists E053tr.pdf as an additional file.',note:'The archive record is accessible, but its translation file could not be inspected during this source check. It is a sourcing lead, not yet a verified English text.'},
+  'euler-1741':{status:'listed',translator:null,dateLabel:'Translation credit and date not yet verified',format:'Archive listing',url:'https://scholarlycommons.pacific.edu/euler-works/53/',evidenceUrl:'https://scholarlycommons.pacific.edu/euler-works/53/',scope:'The archive lists E053tr.pdf as an additional file.',note:'The archive record is accessible, but its named translation download was unavailable in the 22 October 2026 check. Our on-site English reading is independently translated from the Latin; this external file remains an unverified sourcing lead.'},
   'euler-1744':{status:'listed',translator:null,dateLabel:'Translation credit and date not yet verified',format:'Archive listing',url:'https://scholarlycommons.pacific.edu/euler-works/72/',evidenceUrl:'https://scholarlycommons.pacific.edu/euler-works/72/',scope:'The archive explicitly lists E072en.pdf.',note:'An English file is listed by the archive. Its text and translator credit have not yet been inspected, so English access remains unverified.'},
   'euler-1761':{status:'inspected',translator:'Jordan Bell',year:2006,dateLabel:'2006 · revised 2007',format:'PDF',url:'https://arxiv.org/pdf/math/0608467v2',evidenceUrl:'https://arxiv.org/abs/math/0608467',scope:'Complete paper; English PDF, 27 pages.',note:'The opening footnote identifies Jordan Bell and dates the translation 18 August 2006. The linked revision is the 2007 version.'},
   'gauss-1828':{status:'inspected',translator:'James Caddall Morehead and Adam Miller Hiltebeitel',year:1902,dateLabel:'1902',format:'PDF',url:'https://www.gutenberg.org/files/36856/36856-pdf.pdf',evidenceUrl:'https://www.gutenberg.org/ebooks/36856',scope:'Complete 1827/1828 paper in a volume also containing its abstract, notes, and an earlier fragment.',note:'The volume’s title mentions both 1827 and 1825. The work record here identifies the paper presented in 1827 and printed in 1828.'},
@@ -77,6 +78,7 @@ export const englishSources = {
 };
 
 for(const source of Object.values(englishSources))source.checked='2026-10-21';
+englishSources['euler-1741'].checked='2026-10-22';
 
 export const additionalCitations = [
   {from:'monks-2019',to:'euler-1740',locator:'References · Euler, Leonhard. 1740',url:'https://old.maa.org/node/1880109',evidence:'The article’s reference list names De summis serierum reciprocarum, gives 1740, Commentarii volume 7, and pp. 123–134. The body explicitly identifies the primary source as E41.'},
