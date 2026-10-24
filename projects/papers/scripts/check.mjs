@@ -1,3 +1,4 @@
+import './check-riemann-1857.mjs';
 import './check-riemann-1851.mjs';
 import './check-personal-names.mjs';
 import './check-poincare.mjs';
@@ -35,7 +36,7 @@ for(const [file,html] of pages){
   idsByPage.set(file,new Set(ids));
   if(/\[\[(person|concept|work):/.test(html))throw Error(`Unresolved reference in ${file}`);
   for(const match of html.matchAll(/\\\(([\s\S]*?)\\\)|\\\[([\s\S]*?)\\\]/g)){
-    try{const latex=match[1]??match[2];if(/<[A-Za-z]/.test(latex))throw Error('Raw less-than sign can become an HTML tag; use \\lt');katexContext.katex.renderToString(latex,{throwOnError:true});formulas++;}
+    try{const latex=match[1]??match[2];if(/<[A-Za-z]/.test(latex))throw Error('Raw less-than sign can become an HTML tag; use \\lt');katexContext.katex.renderToString(latex,{throwOnError:true,displayMode:match[2]!==undefined});formulas++;}
     catch(error){throw Error(`Bad LaTeX in ${file}: ${error.message}`);}
   }
 }
@@ -106,13 +107,13 @@ for(const w of works)if(!discoveryTerms[w.id]?.length||!data.discoveryTerms[w.id
 const found=f=>searchable.filter(w=>matchesWork(w,f)).map(w=>w.id).sort().join(',');
 for(const [filters,expected] of [
  [{q:'Basel problem',author:'euler'},'euler-1740'],
- [{author:'riemann',decade:'1850',language:'German',access:'edited'},'riemann-1851,riemann-1854,riemann-1859'],
+ [{author:'riemann',decade:'1850',language:'German',access:'edited'},'riemann-1851,riemann-1854,riemann-1857,riemann-1859'],
  [{q:'conservation laws'},'noether-1918'],
  [{q:'konigsberg bridges'},'euler-1741'],
  [{q:'konigsberg bridges',access:'english'},'euler-1741'],
- [{from:'1854',to:'1859',author:'riemann'},'riemann-1854,riemann-1859'],
+ [{from:'1854',to:'1859',author:'riemann'},'riemann-1854,riemann-1857,riemann-1859'],
  [{author:['leibniz','johann-bernoulli']},'leibniz-bernoulli-1745'],
- [{author:['euler','riemann'],language:['French','German'],decade:['1750','1850']},'euler-1751,riemann-1851,riemann-1854,riemann-1859'],
+ [{author:['euler','riemann'],language:['French','German'],decade:['1750','1850']},'euler-1751,riemann-1851,riemann-1854,riemann-1857,riemann-1859'],
  [{access:['edited','english'],q:'finite differences'},'euler-1761'],
  [{from:'1900',to:'1800'},''],
  [{author:'euler',language:'French'},'euler-1751'],
@@ -122,10 +123,10 @@ for(const [filters,expected] of [
 console.log('Validated combined author, original-language, decade, inclusive date-range, access, and modern-keyword filters.');
 const facetChoices={author:['euler','riemann','leibniz','johann-bernoulli'],language:['Latin','French','German','English'],decade:['1740','1750','1760','1850'],access:['english','edited']};
 const counts=facetCounts(searchable,{author:['euler','riemann']},facetChoices);
-if(JSON.stringify(counts.language)!==JSON.stringify({Latin:5,French:1,German:3,English:0}))throw Error('Facet counts must respect the other groups');
-if(counts.author.euler!==6||counts.author.riemann!==3||counts.author.leibniz!==1)throw Error('Author counts must leave their own selection out');
+if(JSON.stringify(counts.language)!==JSON.stringify({Latin:5,French:1,German:4,English:0}))throw Error('Facet counts must respect the other groups');
+if(counts.author.euler!==6||counts.author.riemann!==4||counts.author.leibniz!==1)throw Error('Author counts must leave their own selection out');
 const narrowed=facetCounts(searchable,{author:['euler','riemann'],language:['Latin','German']},facetChoices);
-if(narrowed.author.euler!==5||narrowed.author.riemann!==3||narrowed.decade['1750']!==0||narrowed.decade['1740']!==4)throw Error('Combined multi-select facet counts are incorrect');
+if(narrowed.author.euler!==5||narrowed.author.riemann!==4||narrowed.decade['1750']!==0||narrowed.decade['1740']!==4)throw Error('Combined multi-select facet counts are incorrect');
 const emptyCounts=facetCounts(searchable,{q:'no such mathematical work zzz',author:['euler']},facetChoices);
 if(Object.values(emptyCounts).flatMap(Object.values).some(Boolean))throw Error('No-match query must give zero facet counts');
 const joint=searchable.filter(w=>matchesWork(w,{author:['leibniz','johann-bernoulli']}));

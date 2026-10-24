@@ -1,0 +1,405 @@
+{
+  "originalYear": 1857,
+  "memoirPages": "115–155",
+  "preliminaryPages": [
+    "101–104",
+    "105–110",
+    "111–114"
+  ],
+  "transcription": "David R. Wilkins, December 1998; corrected April 2000",
+  "transcriptionUrl": "https://www.maths.tcd.ie/pub/HistMath/People/Riemann/AbelFn/AbelFn.tex",
+  "sourceFile": "sources/riemann-1857-de.tex",
+  "sha256": "a750db4e633a3ef013c9aa13772f660bddc846d577aa955a5ab98163323f67d0",
+  "units": [
+    {
+      "id": "prelim-1",
+      "start": 1030,
+      "end": 9173,
+      "sourceStartLine": 43,
+      "sourceEndLine": 205,
+      "sha256": "4005a6ac2d575c861ee0be2a9121748238671850d84e9ac24e66a6310ce0d858",
+      "passages": [
+        "ab-prelim-1a",
+        "ab-prelim-1b"
+      ]
+    },
+    {
+      "id": "prelim-2",
+      "start": 9173,
+      "end": 22984,
+      "sourceStartLine": 205,
+      "sourceEndLine": 501,
+      "sha256": "7704cf3dbed9f5105f657ffeb8acd42c78ee4a00567f16ee3c01796f3af15612",
+      "passages": [
+        "ab-prelim-2a",
+        "ab-prelim-2b",
+        "ab-prelim-2c"
+      ]
+    },
+    {
+      "id": "prelim-3",
+      "start": 22984,
+      "end": 34923,
+      "sourceStartLine": 501,
+      "sourceEndLine": 759,
+      "sha256": "0c77e03ccf7968a9f549211a62cf4baa73127af78ff33332dac887db352574d6",
+      "passages": [
+        "ab-prelim-3a",
+        "ab-prelim-3b"
+      ]
+    },
+    {
+      "id": "introduction",
+      "start": 34923,
+      "end": 40091,
+      "sourceStartLine": 759,
+      "sourceEndLine": 864,
+      "sha256": "e74fc074575d2375384b81a27f6b1193a6e48a189907a3d238027d3d2052090c",
+      "passages": [
+        "ab-intro"
+      ]
+    },
+    {
+      "id": "section-1",
+      "section": 1,
+      "start": 40091,
+      "end": 41957,
+      "sourceStartLine": 864,
+      "sourceEndLine": 904,
+      "sha256": "ebc00ce922d22b31d86b34c840ff8a9d993ba5062ca1182119a7f232a489a9e4",
+      "passages": [
+        "ab-1"
+      ]
+    },
+    {
+      "id": "section-2",
+      "section": 2,
+      "start": 41957,
+      "end": 43655,
+      "sourceStartLine": 904,
+      "sourceEndLine": 943,
+      "sha256": "bcf061f92ed5ef96d0805105df30fc2045364fe7e4941adef9decdf2ea941f81",
+      "passages": [
+        "ab-2"
+      ]
+    },
+    {
+      "id": "section-3",
+      "section": 3,
+      "start": 43655,
+      "end": 48030,
+      "sourceStartLine": 943,
+      "sourceEndLine": 1034,
+      "sha256": "85596f0d359d366b7f03a4aeedc1494188705f446c1705d2e036fcd8d857e541",
+      "passages": [
+        "ab-3"
+      ]
+    },
+    {
+      "id": "section-4",
+      "section": 4,
+      "start": 48030,
+      "end": 54275,
+      "sourceStartLine": 1034,
+      "sourceEndLine": 1184,
+      "sha256": "68d4d3f4033a5e036608520b6a4d2ea65a6bc3a9243f14a25f13d3af5abd58af",
+      "passages": [
+        "ab-4a",
+        "ab-4b"
+      ]
+    },
+    {
+      "id": "section-5",
+      "section": 5,
+      "start": 54275,
+      "end": 61493,
+      "sourceStartLine": 1184,
+      "sourceEndLine": 1329,
+      "sha256": "c707ff132a89079aeba94b9c2482e1d617347da3201565925ef285c14e95e467",
+      "passages": [
+        "ab-5a",
+        "ab-5b"
+      ]
+    },
+    {
+      "id": "section-6",
+      "section": 6,
+      "start": 61493,
+      "end": 70725,
+      "sourceStartLine": 1329,
+      "sourceEndLine": 1529,
+      "sha256": "523ce1b4b70dc82e02d0cbc5471600db8083a326a04cfccaf973a03c024d60d8",
+      "passages": [
+        "ab-6a",
+        "ab-6b"
+      ]
+    },
+    {
+      "id": "section-7",
+      "section": 7,
+      "start": 70725,
+      "end": 74119,
+      "sourceStartLine": 1529,
+      "sourceEndLine": 1602,
+      "sha256": "ddb100b78ad6694ba7fdeca70c4dd5f5336345c3e95b7206561725b35f88d123",
+      "passages": [
+        "ab-7"
+      ]
+    },
+    {
+      "id": "section-8",
+      "section": 8,
+      "start": 74119,
+      "end": 79298,
+      "sourceStartLine": 1602,
+      "sourceEndLine": 1711,
+      "sha256": "490a6581deb741439214829f9369d3ae18977820f78e7b639ceb94fc95f7a670",
+      "passages": [
+        "ab-8"
+      ]
+    },
+    {
+      "id": "section-9",
+      "section": 9,
+      "start": 79298,
+      "end": 82894,
+      "sourceStartLine": 1711,
+      "sourceEndLine": 1790,
+      "sha256": "e3882607426365dc73f62a6006c31b2829ae1ea3115dc30bf9064022436eb07a",
+      "passages": [
+        "ab-9"
+      ]
+    },
+    {
+      "id": "section-10",
+      "section": 10,
+      "start": 82894,
+      "end": 84583,
+      "sourceStartLine": 1790,
+      "sourceEndLine": 1829,
+      "sha256": "30bc2ba2b55b23893dc58c779fc620ecaa68b2d6a9021b83b8c0a3a28a01fbf6",
+      "passages": [
+        "ab-10"
+      ]
+    },
+    {
+      "id": "section-11",
+      "section": 11,
+      "start": 84583,
+      "end": 87472,
+      "sourceStartLine": 1829,
+      "sourceEndLine": 1891,
+      "sha256": "faadc2d966a231e20acda024cda5528637957ad90c5db139ae58f26f6aff7d38",
+      "passages": [
+        "ab-11"
+      ]
+    },
+    {
+      "id": "section-12",
+      "section": 12,
+      "start": 87472,
+      "end": 96241,
+      "sourceStartLine": 1891,
+      "sourceEndLine": 2052,
+      "sha256": "18acf7a5807274a9f9c7ab5609ba8535d996cc99fa2a5bebe15f7c2004d9a5d7",
+      "passages": [
+        "ab-12a",
+        "ab-12b"
+      ]
+    },
+    {
+      "id": "section-13",
+      "section": 13,
+      "start": 96241,
+      "end": 98741,
+      "sourceStartLine": 2052,
+      "sourceEndLine": 2115,
+      "sha256": "7ad370c25878463b55fdf45c9772350db257dd71a0fda19360631c4227641d86",
+      "passages": [
+        "ab-13"
+      ]
+    },
+    {
+      "id": "section-14",
+      "section": 14,
+      "start": 98741,
+      "end": 104329,
+      "sourceStartLine": 2115,
+      "sourceEndLine": 2235,
+      "sha256": "b980c94814ae385384729a98389e00ef4dd53d535eaebf5dabfa3b0e62171426",
+      "passages": [
+        "ab-14"
+      ]
+    },
+    {
+      "id": "section-15",
+      "section": 15,
+      "start": 104329,
+      "end": 106701,
+      "sourceStartLine": 2235,
+      "sourceEndLine": 2292,
+      "sha256": "4a0c9b0ee6b437319c923f27e88346b7a64fc92a35053c0fffa103ddf97a19cd",
+      "passages": [
+        "ab-15"
+      ]
+    },
+    {
+      "id": "section-16",
+      "section": 16,
+      "start": 106701,
+      "end": 109509,
+      "sourceStartLine": 2292,
+      "sourceEndLine": 2357,
+      "sha256": "5757712c83c2d3da790e9ae87508516bca123c9bc8ef8642bda361cf5a7dbe5e",
+      "passages": [
+        "ab-16"
+      ]
+    },
+    {
+      "id": "section-17",
+      "section": 17,
+      "start": 109509,
+      "end": 113467,
+      "sourceStartLine": 2357,
+      "sourceEndLine": 2448,
+      "sha256": "a29c089efe2289c7ce40b74c48fd75cb56dd953659d89069ed7cefdb8228bcf7",
+      "passages": [
+        "ab-17"
+      ]
+    },
+    {
+      "id": "section-18",
+      "section": 18,
+      "start": 113467,
+      "end": 115120,
+      "sourceStartLine": 2448,
+      "sourceEndLine": 2486,
+      "sha256": "d5360444627984e0b4177224cfb08bd24cedc6f0779472534ea51580ede44f9d",
+      "passages": [
+        "ab-18"
+      ]
+    },
+    {
+      "id": "section-19",
+      "section": 19,
+      "start": 115120,
+      "end": 118205,
+      "sourceStartLine": 2486,
+      "sourceEndLine": 2544,
+      "sha256": "9a4958efcf06f0edfbfc050fff5dc02232a807af79e7848efd03dff8a344a039",
+      "passages": [
+        "ab-19"
+      ]
+    },
+    {
+      "id": "section-20",
+      "section": 20,
+      "start": 118205,
+      "end": 120363,
+      "sourceStartLine": 2544,
+      "sourceEndLine": 2591,
+      "sha256": "66d105e54e87424a53f40b2fc65489b611f638cc998095a07198f5fd79ef6296",
+      "passages": [
+        "ab-20"
+      ]
+    },
+    {
+      "id": "section-21",
+      "section": 21,
+      "start": 120363,
+      "end": 122682,
+      "sourceStartLine": 2591,
+      "sourceEndLine": 2652,
+      "sha256": "ee5dc083267346d3f8725ed5d925941ff9522e44b3be750e16b66266b4e99e7e",
+      "passages": [
+        "ab-21"
+      ]
+    },
+    {
+      "id": "section-22",
+      "section": 22,
+      "start": 122682,
+      "end": 127544,
+      "sourceStartLine": 2652,
+      "sourceEndLine": 2752,
+      "sha256": "8d70e8036ca9c5591bfe94489756831d3b685aa2ed8c090e6808a495a51de2a1",
+      "passages": [
+        "ab-22a",
+        "ab-22b"
+      ]
+    },
+    {
+      "id": "section-23",
+      "section": 23,
+      "start": 127544,
+      "end": 133127,
+      "sourceStartLine": 2752,
+      "sourceEndLine": 2903,
+      "sha256": "24e6028e6131d5a2f50ecdda92c899ced9629a5814d9ce3fdd6a72473cae2be2",
+      "passages": [
+        "ab-23a",
+        "ab-23b"
+      ]
+    },
+    {
+      "id": "section-24",
+      "section": 24,
+      "start": 133127,
+      "end": 137025,
+      "sourceStartLine": 2903,
+      "sourceEndLine": 3011,
+      "sha256": "13053e5b5694bfa07afc5034ae6165fcbfb6830697dc8958e58c58282b4aaabe",
+      "passages": [
+        "ab-24a",
+        "ab-24b"
+      ]
+    },
+    {
+      "id": "section-25",
+      "section": 25,
+      "start": 137025,
+      "end": 143669,
+      "sourceStartLine": 3011,
+      "sourceEndLine": 3156,
+      "sha256": "e1ae0faa5050b3d4ca22a99862cbba101c08c2c7b953381877a6bd031857df17",
+      "passages": [
+        "ab-25a",
+        "ab-25b"
+      ]
+    },
+    {
+      "id": "section-26",
+      "section": 26,
+      "start": 143669,
+      "end": 147757,
+      "sourceStartLine": 3156,
+      "sourceEndLine": 3237,
+      "sha256": "85689d168e785ab3d6170bd730226a3f7cfcfcb010967cfbc1adeda5ccc6619b",
+      "passages": [
+        "ab-26"
+      ]
+    },
+    {
+      "id": "section-27",
+      "section": 27,
+      "start": 147757,
+      "end": 151887,
+      "sourceStartLine": 3237,
+      "sourceEndLine": 3324,
+      "sha256": "46eddbb2fff3866d5095377236989c40612bbefb98d1c67633ba47e58f99edd1",
+      "passages": [
+        "ab-27a",
+        "ab-27b"
+      ]
+    }
+  ],
+  "authorFootnotes": 5,
+  "sourceFigures": {
+    "count": 4,
+    "url": "https://www.maths.tcd.ie/pub/HistMath/People/Riemann/AbelFn/abfnfig.mp",
+    "sha256": "8419c8b27ca6a9cfcca5af55df4ea708e4a9b2c9322bd37e811ce5dd61cbcfa9",
+    "note": "Consulted for the topology examples; new SVG figures are independent schematic reconstructions."
+  },
+  "checked": "2026-10-24",
+  "collation": "Complete German transcription read; original journal scan not yet collated word for word."
+}

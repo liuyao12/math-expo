@@ -1,0 +1,3325 @@
+\documentclass[a4paper,12pt,leqno]{article}
+\usepackage[T1]{fontenc}
+\usepackage[german]{babel}
+\usepackage{epsf}
+
+\renewcommand{\neq}{\mathrel{\vcenter{\halign{\hfil$##$\hfil\cr
+   >\cr\noalign{\kern-8pt}<\cr}}}}
+
+\renewcommand{\leq}{\mathrel{\vcenter{\halign{\hfil$##$\hfil\cr
+   <\cr\noalign{\kern-8pt}=\cr}}}}
+
+\renewcommand{\geq}{\mathrel{\vcenter{\halign{\hfil$##$\hfil\cr
+   >\cr\noalign{\kern-8pt}=\cr}}}}
+
+
+\renewcommand{\theequation}{\arabic{equation}.}
+
+\begin{document}
+
+\thispagestyle{empty}
+\begin{center}
+\Large\bfseries
+Theorie der Abel'schen Functionen.\\[12 pt]
+Bernhard Riemann\\[12 pt]
+[Journal f\"{u}r die reine und angewandte Mathematik,
+Bd.~54.  S.~101--155.  1857.]\\[24 pt]
+\large\mdseries
+Transcribed by D. R. Wilkins\\[12 pt]
+Preliminary Version: December 1998\\
+Corrected: April 2000
+\end{center}
+
+\newpage
+\setcounter{page}{1}
+
+\title{Theorie der Abel'schen Functionen.}
+\author{Bernhard Riemann}
+\date{[Journal f\"{u}r die reine und angewandte Mathematik,
+Bd.~54.  S.~101--155.  1857.]}
+
+\maketitle
+
+\begin{center}
+\large\bfseries
+1.  Allgemeine Voraussetzungen und H\"{u}lfsmittel f\"{u}r
+die Untersuchung von Functionen unbeschr\"{a}nkt
+ver\"{a}nderlicher Gr\"{o}ssen.
+\end{center}
+
+Die Absicht den Lesern dieses Journals Untersuchungen \"{u}ber
+verschiedene Transcendenten, inbesondere auch \"{u}ber
+\emph{Abel}'sche Functionen vorzulegen, macht es mir
+w\"{u}nschenswerth, um Wiederholungen zu vermeiden, eine
+Zusammenstellung der allgemeinen Voraussetzungen, von denen ich
+bei ihrer Behandlung ausgehen werde, in einem besonderen Aufsatze
+voraufzuschicken.
+
+F\"{u}r die unabh\"{a}ngig ver\"{a}nderliche Gr\"{o}sse setze ich
+stets die jetzt allgemein bekannte \emph{Gauss}'sche
+geometrische Repr\"{a}sentation voraus, nach welcher eine
+complexe Gr\"{o}sse $z = x + yi$ vertreten wird durch einen Punkt
+einer unendlichen Ebene, dessen rechtwinklige Coordinaten $x$, $y$
+sind; ich werde dabei die complexen Gr\"{o}ssen und die sie
+repr\"{a}sentirenden Punkte durch dieselben Buchstaben bezeichnen.
+Als Function von $x + yi$ betrachte ich jede Gr\"{o}sse~$w$, die
+sich mit ihr der Gleichung
+\[ i \frac{\partial w}{\partial x}
+   = \frac{\partial w}{\partial y} \]
+gem\"{a}ss \"{a}ndert, ohne einen Ausdruck von $w$ durch $x$ und
+$y$ vorauszusetzen.  Aus dieser Differentialgleichung folgt nach
+einem bekannten Satze, dass die Gr\"{o}sse~$w$ durch eine nach
+ganzen Potenzen von $z - a$ fortschreitende Reihe von der Form
+$\sum\limits_{n=0}^{n = \infty} a_n (z - a)^n$
+darstellbar ist, sobald sie in der Umgebung von $a$ allenthalben
+\emph{einen} bestimmten mit $z$ stetig sich \"{a}ndernden Werth
+hat, und dass diese Darstellbarkeit stattfindet bis zu einem
+Abstande von $a$ oder Modul von $z - a$, f\"{u}r welchen eine
+Unstetigkeit eintritt.  Es ergiebt sich aber aus den
+Betrachtungen, welche der Methode der unbestimmten Coefficienten
+zu Grunde liegen, dass die Coefficienten $a_n$ v\"{o}llig
+bestimmt sind, \label{`Linie'} wenn $w$ in einer endlichen
+\"{u}brigens beliebig kleinen von $a$ ausgehenden Linie gegeben
+ist.
+
+Beide Ueberlegungen verbindend, wird man sich leicht von der
+Richtigkeit des Satzes \"{u}berzeugen:
+
+{\itshape
+Eine Function von $x + yi$, die in einem Theile der
+$(x, y)$-Ebene gegeben ist, kann dar\"{u}ber hinaus nur auf Eine
+Weise stetig fortgesetzt werden.}
+
+Man denke sich nun die zu untersuchende Function nicht durch
+irgend welche $z$ enthaltende analytische Ausdr\"{u}cke oder
+Gleichungen bestimmt, sondern dadurch, dass der Werth der
+Function in einem beliebig begrenzten Theile der $z$-Ebene
+gegeben ist und sie von dort aus stetig (der partiellen
+Differentialgleichung
+\[ i \frac{\partial w}{\partial x}
+   = \frac{\partial w}{\partial y} \]
+gem\"{a}ss) fortgesetzt wird.  Diese Fortsetzung ist nach den
+obigen S\"{a}tzen eine v\"{o}llig bestimmte, vorausgesetzt, dass
+sie nicht in blossen Linien geschieht, wobei eine partielle
+Differentialgleichung nicht zur Anwendung kommen k\"{o}nnte,
+sondern durch Fl\"{a}chenstreifen von endlicher Breite.  Je
+nach der Beschaffenheit der fortzusetzenden Function wird nun
+entweder die Function f\"{u}r denselben Werth von $z$ immer
+wieder denselben Werth annehmen, auf welchem Wege auch die
+Fortsetzung geschehen sein m\"{o}ge, oder nicht.  Im ersteren
+Falle nenne ich sie \emph{einwerthig}, sie bildet dann eine
+f\"{u}r jeden Werth von $z$ v\"{o}llig bestimmte und nicht
+l\"{a}ngs einer Linie unstetige Function.  Im letzteren Falle, wo
+sie \emph{mehrwerthig} heissen soll, hat man um ihren Verlauf
+aufzufassen vor Allem seine Aufmerksamkeit auf gewisse Punkte
+der $z$-Ebene zu richten, um welche herum sich die Function in
+eine andere fortsetzt.  Ein solcher Punkt ist z.~B.\ bei der
+Function $\log (z - a)$ der Punkt~$a$.  Denkt man sich von diesem
+Punkte $a$ aus eine beliebige Linie gezogen, so wird man in der
+Umgebung von $a$ den Werth der Function so w\"{a}hlen k\"{o}nnen,
+dass sie sich ausser dieser Linie \"{u}berall stetig \"{a}ndert;
+zu beiden Seiten dieser Linie nimmt sie aber dann verschiedene
+Werthe an, auf der negativen\footnote{\label{`positiv'}Im
+Anschlusse an die von \emph{Gauss} vorgeschlagene Benennung
+positiv laterale Einheit f\"{u}r $+i$ werde ich als positive
+Seitenrichtung zu einer gegebenen Richtung diejenige bezeichnen,
+welche zu ihr ebenso liegt, wie $+i$ zu $1$.}
+einen um $2\pi i$ gr\"{o}sseren, als auf der positiven.  Die
+Fortsetzung der Function von einer Seite dieser Linie aus,
+z.~B.\ von der negativen, \"{u}ber sie hin\"{u}ber in das
+jenseitige Gebiet giebt dann offenbar eine von der dort schon
+vorhandenen verschiedene Function und zwar im hier betrachteten
+Falle eine allenthalben um $2\pi i$ gr\"{o}ssere.
+
+Zur bequemeren Bezeichnung dieser Verh\"{a}ltnisse sollen die
+verschiedenen Fortsetzungen \emph{einer} Function f\"{u}r
+denselben Theil der $z$-Ebene \emph{Zweige} dieser Function
+genannt werden und ein Punkt, um welchen sich ein Zweig einer
+Function in einen andern fortsetzt, eine
+\emph{Verzweigungsstelle} dieser Function; wo keine Verzweigung
+stattfindet, heisst die Function \emph{ein\"{a}ndrig} oder
+\emph{monodrom}.
+
+Ein Zweig einer Function von mehreren unabh\"{a}ngig
+ver\"{a}nderlichen Gr\"{o}ssen, $z$, $s$, $t,\ldots$ ist
+\emph{ein\"{a}ndrig} in der Umgebung eines bestimmten
+Werthensystems
+$z = a$, $s = b$, $t = c,\ldots$,
+wenn allen Werthencombinationen bis zu einem endlichen Abstande
+von demselben (oder bis zu einer bestimmten endlichen Gr\"{o}sse
+der Moduln von
+$z - a$, $s - b$, $t - c,\ldots$)
+ein bestimmter mit den ver\"{a}nderlichen Gr\"{o}ssen stetig sich
+\"{a}ndernder Werth dieses Zweiges der Function entspricht.  Eine
+Verzweigungsstelle oder eine Stelle, um welche sich ein Zweig in
+einen andern fortsetzt, wird bei einer Function von mehreren
+Ver\"{a}nderlichen durch s\"{a}mmtliche einer Gleichung zwischen
+ihnen gen\"{u}gende Werthe der unabh\"{a}ngig ver\"{a}nderlichen
+Gr\"{o}ssen gebildet.
+
+Nach einem oben angef\"{u}hrten bekannten Satze ist die
+Ein\"{a}ndrigkeit einer Function identisch mit ihre
+Entwickelbarkeit, ihre Verzweigung mit ihrer
+Nichtentwickelbarkeit nach ganzen positiven oder negativen
+Potenzen der Aenderungen der ver\"{a}nderlichen Gr\"{o}ssen.  Es
+scheint aber nicht zweckm\"{a}ssig, jene von ihrer
+Darstellungsweise unabh\"{a}ngigen Eigenschaften durch diese an
+eine bestimmte Form ihres Ausdrucks gekn\"{u}pften Merkmale
+auszudr\"{u}cken.
+
+F\"{u}r manche Untersuchungen, namentlich f\"{u}r die
+Untersuchung algebraischer und \emph{Abel}'scher Functionen ist
+es vortheilhaft, die Verzweigungsart einer mehrwerthigen Function
+in folgender Weise geometrisch darzustellen.  Man denke sich in
+der $(x, y)$-Ebene eine andere mit ihr zusammenfallende Fl\"{a}che
+\label{`Flaeche'}
+(oder auf der Ebene einen unendlich d\"{u}nnen K\"{o}rper)
+ausgebreitet, welche sich so weit und nur so weit erstreckt, als
+die Function gegeben ist.  Bei Fortsetzung dieser Function wird
+also diese Fl\"{a}che ebenfalls weiter ausgedehnt werden.  In
+einem Theile der Ebene, f\"{u}r welchem zwei oder mehrere
+Fortsetzungen der  Function vorhanden sind, wird die Fl\"{a}che
+doppelt oder mehrfach sein; sie wird dort aus zwei oder mehreren
+Bl\"{a}ttern bestehen, deren jedes einen Zweig der Function
+vertritt.  Um einen Verzweigungspunkt der Function herum wird
+sich ein Blatt der Fl\"{a}che in ein anderes fortsetzen, so dass
+in der Umgebung eines solchen Punktes die Fl\"{a}che als eine
+Schraubenfl\"{a}che mit einer in diesem Punkte auf der
+$(x, y)$-Ebene senkrechten Axe und unendlich kleiner H\"{o}he des
+Schraubenganges betrachtet werden kann.  Wenn die Function nach
+mehreren Uml\"{a}ufen des $z$ um den Verzweigungswerth ihren
+vorigen Werth wieder erh\"{a}lt
+(wie z.~B.\ $(z - a)^{\frac{m}{n}}$,
+wenn $m$, $n$ relative Primzahlen sind, nach $n$ Uml\"{a}ufen von
+$z$ um $a$), muss man dann freilich annehmen, das sich das
+oberste Blatt der Fl\"{a}che durch die \"{u}brigen hindurch in
+das unterste fortsetzt.
+
+Die mehrwerthige Function hat f\"{u}r jeden Punkt einer solchen
+ihre Verzweigungsart darstellenden Fl\"{a}che nur \emph{einen}
+bestimmten Werth und kann daher als eine v\"{o}llig bestimmte
+Function des Orts in dieser Fl\"{a}che angesehen werden.
+
+G\"{o}ttingen, 1857.
+
+\begin{center}
+\large\bfseries
+2.  Lehrs\"{a}tze aus der analysis situs f\"{u}r die
+Theorie der Integrale von zweigliedrigen vollst\"{a}ndigen
+Differentialien.
+\end{center}
+
+Bei der Untersuchung der Functionen, welche aus der Integration
+vollst\"{a}ndiger Differentialien entstehen, sind einige der
+analysis situs angeh\"{o}rige S\"{a}tze fast unentbehrlich.  Mit
+diesem von \emph{Leibnitz}, wenn auch vielleicht nicht ganz in
+derselben Bedeutung, gebrauchten Namen darf wohl ein Theil der
+Lehre von den stetigen Gr\"{o}ssen bezeichnet werden, welcher
+die Gr\"{o}ssen nicht als unabh\"{a}ngig von der Lage existierend
+und durch einander messbar betrachtet, sondern von den
+Massverh\"{a}ltnissen ganz absehend, nur ihre Orts- und
+Gebietsverh\"{a}ltnisse der Untersuchung unterwirft.  Indem ich
+eine von Massverh\"{a}ltnissen ganz abstrahirende Behandlung
+dieses Gegenstandes mir vorbehalte, werde ich hier nur die bei der
+Integration zweigliedriger vollst\"{a}ndiger Differentialien
+n\"{o}thigen S\"{a}tze in einem geometrischen Gewande darstellen.
+
+Es sei eine in der $(x,y)$-Ebene einfach oder mehrfach
+ausgebreitete Fl\"{a}che $T$ gegeben\footnote{Man sehe die
+vorhergehende Abhandlung S.~\pageref{`Flaeche'}.}
+und $X$, $Y$ seien solche stetige Functionen des Orts in dieser
+Fl\"{a}che, dass in ihr allenthalben $X \, dx + Y \, dy$ ein
+vollst\"{a}ndiges Differential, also
+\[ \frac{\partial X}{\partial y} - \frac{\partial Y}{\partial x} = 0 \]
+ist.  Bekanntlich ist dann
+\[ \int (X \, dx + Y \, dy),\]
+um einen Theil der Fl\"{a}che~$T$ positiv oder negativ
+herum---d.~h.\ durch die ganze Begrenzung entweder allenthalben
+nach der positiven oder allenthalben nach der negativen Seite
+gegen die Richtung von Innen nach Aussen (siehe die Anmerkung 
+Seite~\pageref{`positiv'} der vorhergehenden
+Abhandlung)---erstreckt, $= 0$, da dies Integral dem \"{u}ber
+diesen Theil ausgedehnten Fl\"{a}chenintegrale
+\[ \int  \left(
+            \frac{\partial Y}{\partial x}
+          - \frac{\partial X}{\partial y}
+         \right) \, dT \]
+identisch im ersteren Falle gleich, im zweiten entgegengesetzt
+ist.  Das Integral
+\[ \int (X \, dx + Y \, dy) \]
+hat daher zwischen zwei festen Punkten auf zwei verschiedenen
+Wegen erstreckt denselben Werth, wenn diese beiden Wege
+zusammengenommen die ganze Begrenzung eines Theils der
+Fl\"{a}che~$T$ bilden.  Wenn also jede im Innern von $T$ in sich
+zur\"{u}cklaufende Curve die ganze Begrenzung eines Theils von $T$
+bildet, so hat das Integral von einem festen Anfangspunkte bis zu
+einem und demselben Endpunkte erstreckt immer denselben Werth und
+ist eine von dem Wege der Integration unabh\"{a}ngige
+allenthalben in $T$ stetige Function von der Lage des Endpunkts.
+Dies veranlasst zu einer Unterscheidung der Fl\"{a}chen in
+einfach zusammenh\"{a}ngende, in welchen jede geschlossene Curve
+einen Theil der Fl\"{a}che vollst\"{a}ndig begrenzt---wie
+z.~B.\ ein Kreis---, und mehrfach zusammenh\"{a}ngende, f\"{u}r
+welche dies nicht stattfindet,---wie z.~B.\ eine durch zwei
+concentrische Kreise begrenzte Ringfl\"{a}che.  Eine mehrfach
+zusammenh\"{a}ngende l\"{a}sst sich durch
+Zerschneidung in eine einfach zusammenh\"{a}ngende verwandeln
+(s.\ die durch Zeichnungen erl\"{a}uterten Beispiele am Schluss
+dieser Abhandlung).  Da diese Operation wichtige Dienste bei der
+Untersuchung der Integrale algebraischer Functionen leistet, so
+sollen die darauf bez\"{u}glichen S\"{a}tze kurz zusammengestellt
+werden; sie gelten f\"{u}r beliebig im Raume liegende
+Fl\"{a}chen.
+
+Wenn in einer Fl\"{a}che~$F$ zwei Curvensysteme $a$ und $b$
+zusammengenommen einen Theil dieser Fl\"{a}che vollst\"{a}ndig
+begrenzen, so bildet jedes andere Curvensystem, das mit $a$
+zusammen einen Theil von $F$ vollst\"{a}ndig begrenzt, auch mit
+$b$ die ganze Begrenzung eines Fl\"{a}chentheils, der aus den
+beiden ersteren Fl\"{a}chentheilen l\"{a}ngs $a$ (durch Addition
+oder Subtraction, jenachdem sie auf entgegengesetzter oder auf
+gleicher Seite von $a$ liegen) zusammengesetzt ist.  Beide
+Curvensysteme leisten daher f\"{u}r vollige Begrenzung eines
+Theils von $F$ dasselbe und k\"{o}nnen f\"{u}r die Erf\"{u}llung
+dieser Forderung einander ersetzen.
+
+{\itshape
+\label{`mehrfachzusammenhaengende'}
+Wenn in einer
+Fl\"{a}che sich $n$ geschlossene Curven
+$a_1, a_2,\ldots, a_n$
+ziehen lassen, welche weder f\"{u}r sich noch mit einander einen
+Theil dieser Fl\"{a}che $F$ vollst\"{a}ndig begrenzen, mit deren
+Zuziehung aber jede andere geschlossene Curve die
+vollst\"{a}ndige Begrenzung eines Theils der Fl\"{a}che~$F$
+bilden kann, so heisst die Fl\"{a}che eine ${(n + 1)} \,$\-fach
+zusammenh\"{a}ngende.}
+
+Dieser Charakter der Fl\"{a}che ist unabh\"{a}ngig von der Wahl
+des Curvensystems $a_1, a_2,\ldots, a_n$, da je $n$ andere
+geschlossene Curven $b_1, b_2,\ldots, b_n$, welche zu
+v\"{o}lliger Begrenzung eines Theils dieser Fl\"{a}che nicht
+ausreichen, ebenfalls mit jeder andern geschlossenen Curve
+zusammengenommen einen Theil von $F$ v\"{o}llig begrenzen.
+
+In der That, da $b_1$ mit Linien $a$ zusammengenommen einen Theil
+von $F$ vollst\"{a}ndig begrenzt, so kann eine dieser Curven $a$
+durch $b_1$ und die \"{u}brigen Curven $a$ ersetzt werden.  Es
+ist daher mit $b_1$ und diesen $n - 1$ Curven $a$ jede andere
+Curve, und folglich auch $b_2$, zu v\"{o}lliger Begrenzung eines
+Theils von $F$ ausreichend, und es kann eine dieser $n - 1$
+Curven $a$ durch $b_1$, $b_2$ und die \"{u}brigen $n - 2$ Curven
+$a$ ersetzt werden.  Dieses Verfahren kann offenbar, wenn wie
+vorausgesetzt die Curven $b$ zu vollst\"{a}ndiger Begrenzung
+eines Theils von $F$ nicht ausreichen, so lange fortgesetzt
+werden, bis s\"{a}mmtliche $a$ durch die $b$ ersetzt worden sind.
+
+{\itshape
+Eine ${(n + 1)} \,$\-fach zusammenh\"{a}ngende Fl\"{a}che~$F$ kann
+durch einen Quer\-schnitt---d.~h.\ eine von einem
+Begrenzungspunkte durch das Innere bis zu einem Begrenzungspunkte
+gef\"{u}hrte Schnittlinie---in eine $n \,$\-fach
+zusammenh\"{a}ngende $F'$ verwandelt werden.  Es gelten dabei die
+durch die Zerschneidung entstehenden Begrenzungstheile schon
+w\"{a}hrend der weiteren Zerschneidung als Begrenzung, so dass
+ein Querschnitt keinen Punkt mehrfach durchschneiden, aber in
+einem seiner fr\"{u}heren Punkte enden kann.}
+
+Da die Linien $a_1, a_2,\ldots, a_n$ zu v\"{o}lliger Begrenzung
+eines Theils von $F$ nicht ausreichen, so muss, wenn man sich $F$
+durch diese Linien zerschnitten denkt, sowohl das auf der
+rechten, als das auf der linken Seite von $a_n$ anliegende
+Fl\"{a}chenst\"{u}ck noch andere von den Linien $a$ verschiedene
+und also zur Begrenzung von $F$ geh\"{o}rige Begrenzungstheile
+enthalten.  Man kann daher von einem Punkte von $a_n$ sowohl in
+dem einen, als in dem andern dieser Fl\"{a}chenst\"{u}cke eine
+die Curven $a$ nicht schneidende Linie bis zur Begrenzung von $F$
+ziehen.  Diese beiden Linien $q'$ und $q''$ zusammengenommen
+bilden alsdann einen Querschnitt $q$ der Fl\"{a}che $F$, welcher
+das Verlangte leistet.
+
+In der That sind in der durch diesen Querschnitt aus $F$
+entstehenden Fl\"{a}che $F'$ die Linien
+$a_1, a_2,\ldots, a_{n-1}$ im Innern von $F'$ verlaufende
+geschlossene Curven, welche zur Begrenzung eines Theils von $F$,
+also auch von $F'$, nicht hinreichen.  Jede andere im Innern von
+$F'$ verlaufende geschlossene Curve~$l$ aber bildet mit ihnen die
+ganze Begrenzung eines Theils von $F'$.  Denn die Linie~$l$
+bildet mit einem Complex aus den Linien
+$a_1, a_2,\ldots, a_n$ die ganze Begrenzung eines Theils $f$
+von $F$.  Es l\"{a}sst sich aber zeigen, dass in der Begrenzung
+desselben $a_n$ nicht vorkommen kann; denn dann w\"{u}rde, je
+nachdem $f$ auf der linken oder rechten Seite von $a_n$ l\"{a}ge,
+$q'$ oder $q''$ aus dem Innern von $f$ nach einem
+Begrenzungspunkte von $F$, also nach einem ausserhalb $f$
+gelegenen Punkte, f\"{u}hren und also die Begrenzung von $f$
+schneiden m\"{u}ssen gegen die Voraussetzung, dass $l$ sowohl als
+die Linien~$a$, den Durchschnittspunkt von $a_n$ und $q$
+ausgenommen, stets im Innern von $F'$ bleiben.
+
+Die Fl\"{a}che $F'$, in welche $F$ durch den Querschnitt $q$
+zerf\"{a}llt, ist demnach, wie verlangt, eine $n \,$\-fach
+zusammenh\"{a}ngende.
+
+Es soll jetzt bewiesen werden, dass die Fl\"{a}che~$F$ durch
+jeden Querschnitt~$p$, welcher sie nicht in getrennte St\"{u}cke
+zerf\"{a}llt, in eine $n \,$\-fach zusammenh\"{a}ngende $F'$
+verwandelt wird.  Wenn die zu beiden Seiten des Querschnitts~$p$
+angrenzenden Fl\"{a}chentheile zusammenh\"{a}ngen, so l\"{a}sst
+sich eine Linie $b$ von der einen Seite desselben durch das Innere
+von $F'$ auf die andere Seite zum Anfangspunkte zur\"{u}ck
+ziehen.  Diese Linie~$b$ bildet eine im Innern von $F$ in sich
+zur\"{u}cklaufende Linie, welche, da der Querschnitt von ihr aus
+nach beiden Seiten zu einem Begrenzungspunkte f\"{u}hrt, von
+keinem der beiden Fl\"{a}chenst\"{u}cke, in welche sie $F$
+zerschneidet, die ganze Begrenzung bildet.  Man kann daher eine
+der Curven~$a$ durch die Curve~$b$ und jede der \"{u}brigen
+$n - 1$ Curven $a$ durch eine im Innern von $F'$ verlaufende
+Curve und wenn n\"{o}thig die Curve $b$ ersetzen, worauf der
+Beweis, dass $F'$ $n \,$\-fach zusammenh\"{a}ngend ist, durch
+dieselben Schl\"{u}sse, wie vorhin, gef\"{u}hrt werden kann.
+
+{\itshape
+Eine ${(n + 1)} \,$\-fach zusammenh\"{a}ngende Fl\"{a}che wird
+daher durch jeden sie nicht in St\"{u}cke zerschneidenden
+Querschnitt in eine $n \,$\-fach zusammenh\"{a}ngende verwandelt.}
+
+Die durch einen Querschnitt entstandene Fl\"{a}che kann durch
+einen neuen Querschnitt weiter zerlegt werden, und bei $n \,$\-maliger
+Wiederholung dieser Operation wird eine ${(n + 1)} \,$\-fach
+zusammenh\"{a}ngende Fl\"{a}che durch $n$ nach einander gemachte
+sie nicht zerst\"{u}ckelnde Querschnitte in eine einfach
+zusammenh\"{a}ngende verwandelt.
+
+Um diese Betrachtungen auf eine Fl\"{a}che ohne Begrenzung, eine
+geschlossene Fl\"{a}che, anwendbar zu machen, muss diese durch
+Ausscheidung eines beliebigen Punktes in eine begrenzte
+verwandelt werden, so dass die erste Zerlegung durch diesen Punkt
+und einen in ihm anfangenden und endenden Querschnitt, also durch
+eine geschlossene Curve, geschieht.  Die Oberfl\"{a}che eines
+Ringes z.~B., welche eine dreifach zusammenh\"{a}ngende ist, wird
+durch eine geschlossene Curve und einen Querschnitt in eine
+einfach zusammenh\"{a}ngende verwandelt.
+
+Auf das im Eingange betrachtete Integral des vollst\"{a}ndigen
+Differentials $X \, dx + Y \, dy$ wird nun die eben behandelte
+Zerschneidung der mehrfach zusammenh\"{a}ngenden Fl\"{a}chen in
+einfach zusammenh\"{a}ngende, wie folgt, angewandt.  Ist die die
+$(x, y)$-Ebene bedeckende Fl\"{a}che~$T$, in welcher $X$, $Y$
+allenthalben stetige der Gleichung
+\[ \frac{\partial X}{\partial y} - \frac{\partial Y}{\partial x}
+   = 0 \]
+gen\"{u}gende Functionen des Orts sind, $n \,$\-fach
+zusammenh\"{a}ngend, so wird sie durch $n$ Querschnitte in eine
+einfach zusammenh\"{a}ngende $T'$ zerschnitten.  Die Integration
+von $X \, dx + Y \, dy$ von einem festen Anfangspunkte aus durch
+Curven im Innern von $T'$ liefert dann einen nur von der Lage des
+Endpunkts abh\"{a}ngigen Werth, welcher als Function von dessen
+Coordinaten betrachtet werden kann.  Substituirt man f\"{u}r die
+Coordinaten die Gr\"{o}ssen $x$, $y$, so erh\"{a}lt man eine
+Function
+\[ z = \int (X \, dx + Y \, dy) \]
+von $x$, $y$, welche f\"{u}r jeden Punkt von $T'$ v\"{o}llig
+bestimmt ist und sich innerhalb $T'$ allenthalben stetig, beim
+Ueberschreiten eines Querschnitts aber allgemein zu reden um eine
+endliche von einem Knotenpunkte des Schnittnetzes zum andern
+constante Gr\"{o}sse \"{a}ndert.  Die Aenderungen beim
+Ueberschreiten der Querschnitte sind von einer der Zahl der
+Querschnitte gleichen Anzahl von einander unabh\"{a}ngiger
+Gr\"{o}ssen abh\"{a}ngig; denn wenn man das Schnittsystem
+r\"{u}ckw\"{a}rts,---die sp\"{a}teren Theile zuerst---,
+durchl\"{a}uft, so ist diese Aenderung \"{u}berall bestimmt, wenn
+ihr Werth beim Beginn jedes Querschnitts gegeben wird; letztere
+Werthe aber sind von einander unabh\"{a}ngig.
+
+G\"{o}ttingen, 1857.
+
+\bigbreak
+
+\centerline{\vbox{\hrule width 144 pt}}
+
+\nobreak\bigskip
+
+Um das, was oben (S.~\pageref{`mehrfachzusammenhaengende'}) unter
+einer $n \,$\-fach zusammenh\"{a}ngenden Fl\"{a}che verstanden wird,
+anschaulicher zu machen, folgen in den Zeichnungen auf nachstehenden
+Seiten Beispiele von einfach, zweifach und dreifach
+zusammenh\"{a}ngenden Fl\"{a}chen.
+
+\newpage
+
+\centerline{\bfseries Einfach zusammenh\"{a}ngende Fl\"{a}che.}
+
+\begin{figure}[h]
+\centerline{\epsfbox{abfnfig.1}}
+\end{figure}
+
+Sie wird durch jeden Querschnitt in getrennte St\"{u}cke
+zerf\"{a}llt, und es bildet in ihr jede geschlossene Curve die
+ganze Begrenzung eines Theils der Fl\"{a}che.
+
+\medskip
+
+\centerline{\bfseries Zweifach zusammenh\"{a}ngende Fl\"{a}che.}
+
+\begin{figure}[h]
+\centerline{\epsfbox{abfnfig.2}}
+\end{figure}
+
+Sie wird durch jeden sie nicht zerst\"{u}ckelnden Querschnitt $q$
+in eine einfach zusammenh\"{a}ngende zerschnitten.  Mit Zuziehung
+der Curve $a$ kann in ihr jede geschlossene Curve die ganze
+Begrenzung eines Theils der Fl\"{a}che bilden.
+
+\newpage
+
+\centerline{\bfseries Dreifach zusammenh\"{a}ngende Fl\"{a}che.}
+
+\begin{figure}[h]
+\centerline{\epsfbox{abfnfig.3}}
+\end{figure}
+
+In dieser Fl\"{a}che kann jede geschlossene Curve mit Zuziehung
+der Curven $a_1$ und $a_2$ die ganze Begrenzung eines Theils der
+Fl\"{a}che bilden.  Sie zerf\"{a}llt durch jeden sie nicht
+zerst\"{u}ckelnden Querschnitt in eine zweifach
+zusammenh\"{a}ngende und durch zwei solche Querschnitte, $q_1$
+und $q_2$, in eine einfach zusammenh\"{a}ngende.
+
+
+\begin{figure}[h]
+\centerline{\epsfbox{abfnfig.4}}
+\end{figure}
+
+In dem Theile $\alpha$~$\beta$~$\gamma$~$\delta$ der Ebene ist
+die Fl\"{a}che doppelt.  Der $a_1$ enthaltende Arm der Fl\"{a}che
+ist als unter dem andern fortgehend betrachtet und daher durch
+punktirte Linien angedeutet.
+
+\newpage
+
+\begin{center}
+\large\bfseries
+3.  Bestimmung einer Function einer ver\"{a}nderlichen
+complexen Gr\"{o}sse durch Grenz- und Unstetigkeitsbedingungen.
+\end{center}
+
+Wenn in einer Ebene, in welcher die rechtwinkligen Coordinaten
+eines Punkts $x$, $y$ sind, der Werth einer Function von $x + yi$
+in einer endlichen Linie gegeben ist, so kann diese von dort aus
+nur auf eine Weise stetig fortgesetzt werden und ist also dadurch
+v\"{o}llig bestimmt (siehe oben S.~\pageref{`Linie'}).  Sie kann
+aber auch in dieser Linie nicht willk\"{u}rlich angenommen
+werden, wenn sie von ihr aus einer stetigen Fortsetzung in die
+anstossenden Fl\"{a}chentheile nach beiden Seiten hin f\"{a}hig
+sein soll, da sie durch ihren Verlauf in einem noch so kleinen
+endlichen Theile dieser Linie schon f\"{u}r den \"{u}brigen Theil
+bestimmt ist.  Bei dieser Bestimmungsweise einer Function sind
+also die zu ihrer Bestimmung dienenden Bedingungen nicht von
+einander unabh\"{a}ngig.
+
+Als Grundlage f\"{u}r die Untersuchung einer Transcendenten ist
+es vor allen Dingen n\"{o}thig, ein System zu ihrer Bestimmung
+hinreichender von einander unabh\"{a}ngiger Bedingungen
+aufzustellen.  Hierzu kann in vielen F\"{a}llen, namentlich bei
+den Integralen algebraischer Functionen und ihren inversen
+Functionen, ein Princip dienen, welches \emph{Dirichlet} zur
+L\"{o}sung dieser Aufgabe f\"{u}r eine der \emph{Laplace}'schen
+partiellen Differentialgleichung gen\"{u}gende Function von drei
+Ver\"{a}nderlichen,---wohl durch einen \"{a}hnlichen Gedanken von
+\emph{Gauss} veranlasst---in seinen Vorlesungen \"{u}ber die
+dem umgekehrten Quadrat der Entfernung proportional wirkenden
+Kr\"{a}fte seit einer Reihe von Jahren zu geben pflegt.  F\"{u}r
+diese Anwendung auf die Theorie von Transcendenten ist jedoch
+gerade ein Fall besonders wichtig, auf welchen dies Princip in
+seiner dortigen einfachsten Form nicht anwendbar ist, und welcher
+dort als von ganz untergeordneter Bedeutung unber\"{u}cksichtigt
+bleiben kann.  Dieser Fall ist der, wenn die Function an gewissen
+Stellen des Gebiets, wo sie zu bestimmen ist, vorgeschriebene
+Unstetigkeiten annehmen soll; was so zu verstehen ist, dass sie
+an jeder solchen Stelle der Bedingung unterworfen ist, unstetig
+zu werden, wie eine dort gegebene unstetige Function, oder sich
+nur um eine dort stetige Function von ihr zu unterscheiden.  Ich
+werde hier das Prinzip in der f\"{u}r die beabsichtigte Anwendung
+erforderlichen Form darstellen und erlaube mir dabei in Betreff
+einiger Nebenuntersuchungen auf die in meiner Doctordissertation
+(Grundlagen f\"{u}r eine allgemeine Theorie der Functionen einer
+ver\"{a}nderlichen complexen Gr\"{o}sse.   G\"{o}ttingen 1851)
+gegebene Darstellung desselben zu verweisen.
+
+Man nehme an, dass eine die $(x,y)$-Ebene einfach oder mehrfach
+bedeckende beliebig begrenzte Fl\"{a}che~$T$ und in derselben
+zwei f\"{u}r jeden ihrer Punkte eindeuting bestimmte reelle
+Functionen von $x$, $y$, die Functionen $\alpha$ und $\beta$
+gegeben seien, und bezeichne das durch die Fl\"{a}che ausgedehnte
+Integral
+\[ \int  \left(
+            \left(
+               \frac{\partial \alpha}{\partial x}
+             - \frac{\partial \beta}{\partial y}
+            \right)^2
+          + \left(
+               \frac{\partial \alpha}{\partial y}
+             + \frac{\partial \beta}{\partial x}
+            \right)^2
+         \right) \, dT \]
+durch $\Omega(\alpha)$, wobei die Functionen $\alpha$ und $\beta$
+beliebige Unstetigkeiten besitzen k\"{o}nnen, wenn nur das
+Integral dadurch nicht unendlich wird.  Es bleibt dann auch
+$\Omega (\alpha - \lambda)$ endlich, wenn $\lambda$ allenthalben
+stetig ist und endliche Differentialquotienten hat.  Wird diese
+stetige Function~$\lambda$ der Bedingung unterworfen, nur in
+einem unendlich kleinen Theile der Fl\"{a}che~$T$ von einer
+unstetigen Function~$\gamma$ verschieden zu sein, so wird
+$\Omega (\alpha - \lambda)$ unendlich gross, wenn $\gamma$
+l\"{a}ngs einer Linie unstetig ist oder in einem Punkte so
+unstetig ist, dass
+\[ \int  \left(
+            \left( \frac{\partial \gamma}{\partial x} \right)^2
+          + \left( \frac{\partial \gamma}{\partial y} \right)^2
+         \right) \, dT \]
+unendlich wird (Meine Inaug.\ Diss.\ Art.\ 17); es bleibt aber
+$\Omega (\alpha - \lambda)$ endlich, wenn $\gamma$ nur in
+einzelnen Punkten und nur so unstetig ist, dass
+\[ \int  \left(
+            \left( \frac{\partial \gamma}{\partial x} \right)^2
+          + \left( \frac{\partial \gamma}{\partial y} \right)^2
+         \right) \, dT \]
+durch die Fl\"{a}che $T$ erstreckt endlich bleibt, wie
+z.~B.\ wenn $\gamma$ in der Umgebung eines Punktes im
+Abstande~$r$ von demselben $= (- \log r)^\varepsilon$ und
+$0 < \varepsilon < \frac{1}{2}$ ist.  Zur Abk\"{u}rzung m\"{o}gen
+hier die Functionen, in welche $\lambda$ unbeschadet der
+Endlichkeit von $\Omega (\alpha - \lambda)$ \"{u}bergehen kann,
+unstetig von der ersten Art, die Functionen, f\"{u}r welche dies
+nicht m\"{o}glich ist, unstetig von der zweiten Art genannt
+werden.  Denkt man sich nun in $\Omega (\alpha - \mu)$ f\"{u}r
+$\mu$ alle stetigen oder von der ersten Art unstetigen Functionen
+gesetzt, welche an der Grenze verschwinden, so erh\"{a}lt dies
+Integral immer einen endlichen, aber seiner Natur nach nie einen
+negativen Werth, und es muss daher wenigstens einmal, f\"{u}r
+$\alpha - \mu = u$, ein Minimumwerth eintreten, so dass $\Omega$
+f\"{u}r jede Function $\alpha - \mu$, die unendlich wenig von $u$
+verschieden ist, gr\"{o}sser als $\Omega(u)$ wird.
+
+Bezeichnet daher $\sigma$ eine beliebige stetige oder von erster
+Art unstetige Function des Orts in der Fl\"{a}che $T$, die an der
+Grenze allenthalben gleich $0$ ist, und $h$ eine von $x$, $y$
+unabh\"{a}ngige Gr\"{o}sse, so muss $\Omega( u + h \sigma)$
+sowohl f\"{u}r ein positives, als f\"{u}r ein negatives
+hinreichend kleines $h$ gr\"{o}sser als $\Omega(u)$ werden, und
+daher in der Entwicklung dieses Ausdrucks nach Potenzen von $h$
+der Coefficient von $h$ verschwinden.  Ist dieser $0$, so ist
+\[ \Omega (u + h \sigma)
+   = \Omega(u) + h^2 \int
+         \left(
+            \left( \frac{\partial \sigma}{\partial x} \right)^2
+          + \left( \frac{\partial \sigma}{\partial y} \right)^2
+         \right) \, dT \]
+und folglich $\Omega$ immer ein Minimum.  Das Minimum tritt nur f\"{u}r
+eine einzige Function $u$ ein; denn f\"{a}nde auch ein Minimum
+f\"{u}r $u + \sigma$ statt, so k\"{o}nnte $\Omega( u + \sigma)$
+nicht $> \Omega(u)$ sein, weil sonst
+\[ \Omega(u + h \sigma) < \Omega (u + \sigma) \]
+f\"{u}r $h < 1$ w\"{u}rde; also k\"{o}nnte $\Omega(u + \sigma)$
+nicht kleiner als die anliegenden Werthe sein.  Ist aber
+$\Omega(u + \sigma) = \Omega(u)$, so muss $\sigma$ constant, also
+da es in der Begrenzung~$0$ ist, \"{u}berall $0$ sein.  Es wird
+daher nur f\"{u}r eine einzige Function~$u$ das Integral $\Omega$
+ein Minimum und die Variation erster Ordnung oder das
+$h$~proportionale Glied in $\Omega(u + h \sigma)$,
+\[ 2 h \int dT \,
+         \left(
+            \left(
+               \frac{\partial u}{\partial x}
+             - \frac{\partial \beta}{\partial y}
+            \right)
+            \frac{\partial \sigma}{\partial x}
+          + \left(
+               \frac{\partial u}{\partial y}
+             + \frac{\partial \beta}{\partial x}
+            \right)
+            \frac{\partial \sigma}{\partial y}
+         \right)
+   = 0.\]
+
+Aus dieser Gleichung folgt, dass das Integral
+\[ \int  \left(
+            \left(
+               \frac{\partial \beta}{\partial x}
+             + \frac{\partial u}{\partial y}
+            \right) \, dx
+          + \left(
+               \frac{\partial \beta}{\partial y}
+             - \frac{\partial u}{\partial x}
+            \right) \, dy
+         \right) \]
+durch die ganze Begrenzung eines Theils der Fl\"{a}che~$T$
+erstreckt stets $= 0$ ist. Zerlegt man nun (nach der
+vorhergehenden Abhandlung) die Fl\"{a}che~$T$, wenn sie eine
+mehrfach zusammenh\"{a}ngende ist, in eine einfach
+zusammenh\"{a}ngende $T'$, so liefert die Integration durch das
+Innere von $T'$ von einem festen Anfangspunkte bis zum Punkte
+$(x,y)$ eine Function von $x$,~$y$,
+\[ \nu = \int
+         \left(
+            \left(
+               \frac{\partial \beta}{\partial x}
+             + \frac{\partial u}{\partial y}
+            \right) \, dx
+          + \left(
+               \frac{\partial \beta}{\partial y}
+             - \frac{\partial u}{\partial x}
+            \right) \, dy
+         \right)
+      + \mbox{const.},\]
+welche in $T'$ \"{u}berall stetig oder unstetig von der ersten
+Art ist und sich beim Ueberschreiten der Querschnitte um endliche
+von einem Knotenpunkte des Schnittnetzes zum andern constante
+Gr\"{o}ssen \"{a}ndert.  Es gen\"{u}gt dann $v = \beta - \nu$ den
+Gleichungen
+\[     \frac{\partial v}{\partial x}
+   = - \frac{\partial u}{\partial y},\quad
+       \frac{\partial v}{\partial y}
+   =   \frac{\partial u}{\partial x},\]
+und folglich ist $u + vi$ eine L\"{o}sung der
+Differentialgleichung
+\[      \frac{\partial (u + vi)}{\partial y}
+    - i \frac{\partial (u + vi)}{\partial x} = 0 \]
+oder eine Function von $x + yi$.
+
+Man erh\"{a}lt auf diesem Wege den in der erw\"{a}hnten
+Abhandlung Art.~18 ausgesprochenen Satz:
+
+{\itshape
+\label{`Bestimmung'}
+Ist in einer zusammenh\"{a}ngenden durch Querschnitte
+in eine einfach zusammenh\"{a}ngende $T'$ zerlegten Fl\"{a}che
+$T$ eine complexe Function $\alpha + \beta i$ von $x$ und $y$
+gegeben, f\"{u}r welche
+\[ \int  \left(
+            \left(
+               \frac{\partial \alpha}{\partial x}
+             - \frac{\partial \beta}{\partial y}
+            \right)^2
+          + \left(
+               \frac{\partial \alpha}{\partial y}
+             + \frac{\partial \beta}{\partial x}
+            \right)^2
+         \right) \, dT \]
+durch die ganze Fl\"{a}che ausgedehnt einen endlichen Werth hat,
+so kann sie immer und nur auf Eine Art in eine Function von
+$x + yi$ verwandelt werden durch Subtraction einer Function
+$\mu + \nu i$ von $x$,~$y$, welche folgenden Bedingungen
+gen\"{u}gt:
+
+1) $\mu$ ist am Rande $= 0$ oder doch nur in einzelnen Punkten
+davon verschieden, $\nu$ in Einem Punkte beliebig gegeben.
+
+2) Die Aenderungen von $\mu$ sind in $T$, von $\nu$ in $T'$ nur
+in einzelnen Punkten und nur so unstetig, dass
+\[ \int  \left(
+            \left( \frac{\partial \mu}{\partial x} \right)^2
+          + \left( \frac{\partial \mu}{\partial y} \right)^2
+         \right) \, dT \]
+und
+\[ \int  \left(
+            \left( \frac{\partial \nu}{\partial x} \right)^2
+          + \left( \frac{\partial \nu}{\partial y} \right)^2
+         \right) \, dT,\]
+durch die ganze Fl\"{a}che erstreckt, endlich bleiben, und
+letztere l\"{a}ngs der Querschnitte beiderseits gleich.}
+
+Wenn die Function $\alpha + \beta i$, wo ihre
+Differentialquotienten unendlich werden, unstetig wird, wie eine
+gegebene dort unstetige Function von $x + yi$, und keine durch
+eine Ab\"{a}nderung ihres Werthes in einem einzelnen Punkte
+hebbare Unstetigkeit besitzt, so bleibt $\Omega(\alpha)$ endlich,
+und es wird $\mu + \nu i$ in $T'$ allenthalben stetig.  Denn da
+eine Function von $x + yi$ gewisse Unstetigkeiten, wie z.~B.
+Unstetigkeiten erster Art, gar nicht annehmen kann
+(Meine Diss.\ Art.\ 12), so muss die Differenz zweier solcher
+Functionen stetig sein, sobald sie nicht von der zweiten Art
+unstetig ist.
+
+Nach den eben bewiesenen Satze l\"{a}sst sich daher eine Function
+von $x + yi$ so bestimmen, dass sie im Innern von $T$, von der
+Unstetigkeit des imagin\"{a}ren Theils in den Querschnitten
+abgesehen, gegebene Unstetigkeiten annimmt, und ihr reeller Theil
+and der Grenze einen dort allenthalben beliebig gegebenen Werth
+erh\"{a}lt; wenn nur f\"{u}r jeden Punkt, wo ihre
+Differentialquotienten unendlich werden sollen, die
+vorgeschriebene Unstetigkeit die einer gegebenen dort unstetigen
+Function von $x + yi$ ist.  Die Bedingung an der Grenze kann man,
+wie leicht zu sehen, ohne eine wesentliche Aenderung der
+gemachten Schl\"{u}sse durch manche andere ersetzen.
+
+G\"{o}ttingen, 1857.
+
+\begin{center}
+\large\bfseries
+4.  Theorie der \emph{Abel}'schen Functionen.
+\end{center}
+
+In der folgenden Abhandlung habe ich die \emph{Abel}'schen
+Functionen nach einer Methode behandelt, deren Principien in
+meiner Inauguraldissertation\footnote{Grundlagen f\"{u}r eine
+allgemeine Theorie der Functionen einer ver\"{a}nderlichen
+complexen Gr\"{o}sse.  G\"{o}ttingen 1851.}
+aufgestellt und in einer etwas ver\"{a}nderten Form in den drei
+vorhergehenden Aufs\"{a}tzen dargestellt worden sind.  Zur
+Erleichterung der Uebersicht schicke ich eine kurze Inhaltsangabe
+vorauf.
+
+Die erster Abtheilung enth\"{a}lt die Theorie eines Systems von
+gleichverzweigten algebraischen Functionen und ihren Integralen,
+soweit f\"{u}r dieselbe nicht die Betrachtung von
+$\vartheta$-Reihen massgebend ist, und handelt im \S.~1--5 von
+der Bestimmung dieser Functionen durch ihre Verzweigungsart und
+ihre Unstetigkeiten, im \S.~6--10 von den rationalen
+Ausdr\"{u}cken derselben in zwei durch eine algebraische
+Gleichung verkn\"{u}pfte ver\"{a}nderliche Gr\"{o}ssen; und im
+\S.~11--13 von der Transformation dieser Ausdr\"{u}cke durch
+rationale Substitutionen.  Der bei dieser Untersuchung sich
+darbietende Begriff eine \emph{Klasse} von algebraischen
+Gleichungen, welche sich durch rationale Substitutionen in
+einander transformiren lassen, d\"{u}rfte auch f\"{u}r andere
+Untersuchungen wichtig und die Transformation einer solchen
+Gleichung in Gleichungen niedrigsten Grades ihrer Klasse (\S.~13)
+auch bei anderen Gelegenheiten von Nutzen sein.  Diese Abtheilung
+behandelt endlich im \S.~14--16 zur Vorbereitung der folgenden
+die Anwendung des \emph{Abel}'schen Additionstheorems f\"{u}r
+ein beliebiges System allenthalben endlicher Integrale von
+gleichverzweigten algebraischen Functionen zur Integration eines
+Systems von Differentialgleichungen.
+
+In der zweiter Abtheilung werden f\"{u}r ein beliebiges System
+von immer endlichen Integralen gleichverzweigter, algebraischer,
+$\overline{2p + 1} \,$\-fach zusammenh\"{a}ngender Functionen die
+\emph{Jacobi}'schen Umkehrungsfunctionen von $p$
+ver\"{a}nderlichen Gr\"{o}ssen durch $p \,$\-fach unendliche
+$\vartheta$-Reihen ausgedr\"{u}ckt, d.~h.\ durch Reihen von der
+Form
+\[ \vartheta(v_1, v_2,\ldots, v_p)
+   = \left( \sum_{-\infty}^\infty \right)^p
+      e^{\left( \sum\limits_1^p \right)^2
+               a_{\mu, \mu'} m_\mu m_\mu'
+         + 2 \sum\limits_1^p v_\mu m_\mu},\]
+worin die Summationen im Exponenten sich auf $\mu$ und $\mu'$,
+die \"{a}usseren Summationen auf $m_1, m_2,\ldots, m_p$ beziehen.
+Es ergiebt sich, dass zur allgemeinen L\"{o}sung dieser Aufgabe
+eine---wenn $p > 3$ specielle---Gattung von $\vartheta$-Reihen
+ausreicht, in denen zwischen den
+$\displaystyle \frac{p(p + 1)}{2}$
+Gr\"{o}ssen
+\[ \displaystyle a \frac{(p - 2)(p - 3)}{1 \mathbin{.} 2} \]
+Relationen stattfinden, so dass nur $3p - 3$ willk\"{u}rlich
+bleiben.  Dieser Theil der Abhandlung bildet zugleich eine
+Theorie dieser speciellen Gattung von $\vartheta$-Functionen; die
+allgemeinen $\vartheta$-Functionen bleiben hier ausgeschlossen,
+lassen sich jedoch nach einer ganz \"{a}hnlichen Methode
+behandeln.
+
+Das hier erledigte \emph{Jacobi}'sche Umkehrungsproblem ist
+f\"{u}r die hyperelliptischen Integrale schon auf mehreren Wegen
+durch die beharrlichen mit so sch\"{o}nem Erfolge gekr\"{o}nten
+Arbeiten von \emph{Weierstrass} gel\"{o}st worden, von denen
+eine Uebersicht in 47.~Bande d.~J.\ (S.~289)
+mitgetheilt worden ist.  Es ist jedoch bis jetzt nur von
+dem Theile dieser Arbeiten, welcher in den \S\S.~1 und 2 und der
+ersten die elliptischen Functionen betreffenden H\"{a}lfte des
+\S~3 der angef\"{u}hrten Abhandlung skizzirt wird, die wirkliche
+Ausf\"{u}hrung ver\"{o}ffentlicht
+(Bd.~52, S.~285 d.~J.);
+in wie weit zwischen den sp\"{a}teren Theilen dieser Arbeiten und
+meinen hier dargestellten eine Uebereinstimmung nicht bloss in
+Resultaten, sondern auch in den zu ihnen f\"{u}hrenden Methoden
+stattfindet, wird grossentheils erst die versprochene
+ausf\"{u}hrliche Darstellung derselben ergeben k\"{o}nnen.
+
+Die gegenw\"{a}rtige Abhandlung bildet mit Ausnahme der beiden
+letzten \S\S.~26 und 27, deren Gegenstand damals nur kurz
+angedeutet werden konnte, einen Auszug aus einem Theile meiner
+von Michaelis 1855 bis Michaelis 1856 zu G\"{o}ttingen gehaltenen
+Vorlesungen.  Was die Auffindung der einzelnen Resultate
+betrifft, so wurde ich auf das im \S.~1--5, 9 und 12 Mitgetheilte
+und die dazu n\"{o}thigen vorbereitenden S\"{a}tze, welche
+sp\"{a}ter Behufs der Vorlesungen so, wie es in dieser Abhandlung
+geschehen ist, weiter ausgef\"{u}hrt wurden, im Herbste 1851 und
+zu Anfang 1852 durch Untersuchungen \"{u}ber die conforme
+Abbildung mehrfach zusammenh\"{a}ngender Fl\"{a}chen gef\"{u}hrt,
+ward aber dann durch einen andern Gegenstand von dieser
+Untersuchung abgezogen.  Erst um Ostern 1855 wurde sie wieder
+aufgenommen und in den Oster- und Michaelisferien jenes Jahres
+bis zu \S.~21 incl.\ fortgef\"{u}hrt; das Uebrige wurde bis
+Michaelis 1856 hinzugef\"{u}gt.  Einzelne erg\"{a}nzende
+Zus\"{a}tze sind an manchen Stellen w\"{a}hrend der Ausarbeitung
+hinzugekommen.
+
+\begin{center}
+\large\bfseries
+Erste Abtheilung.
+\end{center}
+ 
+\centerline{1.}
+
+\nobreak\medskip
+
+Ist $s$ die Wurzel einer irreductibeln Gleichung $n \,$\-ten Grades,
+deren Coefficienten ganze Functionen $m \,$\-ten Grades von $z$
+sind, so entsprechen jedem Werthe von $z$ $n$~Werthe von $s$, die
+sich mit $z$ \"{u}berall, wo sie nicht unendlich werden, stetig
+\"{a}ndern.  Stellt man daher (nach S.~\pageref{`Flaeche'}) die
+Verzweigungsart dieser Function durch eine in der $z$-Ebene
+ausgebreitete unbegrenzte Fl\"{a}che $T$ dar, so ist diese in
+jedem Theile der Ebene $n \,$\-fach, und $s$ ist dann eine
+einwerthige Function des Orts in dieser Fl\"{a}che.  Eine
+unbegrenzte Fl\"{a}che kann entweder als eine Fl\"{a}che mit
+unendlich weit entfernter Begrenzung oder als eine geschlossene
+angesehen werden, und Letzteres soll bei der Fl\"{a}che~$T$
+geschehen, so dass dem Werthe $z = \infty$ in jedem der $n$
+Bl\"{a}tter der Fl\"{a}che \emph{ein} Punkt entspricht, wenn
+nicht etwa f\"{u}r $z = \infty$ eine Verzweigung stattfindet.
+
+Jede rationale Function von $s$ und $z$ ist offenbar ebenfalls
+eine einwerthige Function des Orts in der Fl\"{a}che~$T$ und
+besitzt also dieselbe Verzweigungsart wie die Function~$s$, und
+es wird sich unten ergeben, dass auch das Umgekehrte gilt.
+
+Durch Integration einer solchen Function erh\"{a}lt man eine
+Function, deren verschiedene Fortsetzungen f\"{u}r denselben
+Theil der Fl\"{a}che~$T$ sich nur um Constanten unterscheiden, da
+ihre Derivirte f\"{u}r denselben Punkt dieser Fl\"{a}che immer
+denselben Werth wieder annimmt.
+
+Ein solches System von gleichverzweigten algebraischen Functionen
+und Integralen dieser Functionen bildet zun\"{a}chst den
+Gegenstand unserer Betrachtung; statt aber von diesen
+Ausdr\"{u}cken dieser Functionen auszugehen, werden wir sie mit
+Anwendung des \emph{Dirichlet}'schen Princips
+(S.~\pageref{`Bestimmung'}) durch ihre Unstetigkeiten definiren.
+
+\medbreak
+
+\centerline{2.}
+
+\nobreak\medskip
+
+Zur Vereinfachung des Folgenden heisse eine Function
+\emph{f\"{u}r einen Punkt der Fl\"{a}che $T$ unendlich klein von
+der ersten Ordnung}, wenn ihr Logarithmus bei einem positiven
+Umlaufe um ein diesen Punkt umgebendes Fl\"{a}chenst\"{u}ck, in
+welchem sie endlich und von Null verschiedenen bleibt, um
+$2\pi i$ w\"{a}chst.  Es ist demnach f\"{u}r einen Punkt, um den
+die Fl\"{a}che~$T$ sich $\mu$ mal windet, wenn dort $z$ einen
+endlichen Werth~$a$ hat,
+$\displaystyle (z - a)^{\frac{1}{\mu}}$,
+also
+$\displaystyle (dz)^{\frac{1}{\mu}}$,
+wenn aber $z = \infty$,
+$\displaystyle \left( \frac{1}{z} \right)^{\frac{1}{\mu}}$
+unendlich klein von der ersten Ordnung.  Der Fall, wo eine
+Function in einem Punkte der Fl\"{a}che~$T$ unendlich klein oder
+unendlich gross von der $\nu \,$\-ten Ordnung wird, kann so
+betrachtet werden, als wenn die Function in $\nu$ dort
+zusammenfallenden (oder unendlich nahen) Punkten unendlich klein
+oder unendlich gross von der ersten Ordnung wird, wie in der
+Folge bisweilen geschehen soll.
+
+Die Art und Weise, wie jene hier zu betrachtenden Functionen
+unstetig werden, kann so ausgedr\"{u}ckt werden.  Wird eine von
+ihnen in einem Punkte der Fl\"{a}che $T$ unendlich, so kann sie,
+wenn $r$ eine beliebige Function bezeichnet, die in diesem Punkte
+unendlich klein von der ersten Ordnung wird, stets durch
+Subtraction eines endlichen Ausdrucks von der Form
+\[ A \log r + B r^{-1} + C r^{-2} + \cdots \]
+in eine dort stetige verwandelt werden, wie sich aus den
+bekannten---nach \emph{Cauchy} oder durch die
+\emph{Fourier}'sche Reihe zu beweisenden---S\"{a}tzen \"{u}ber
+die Entwicklung einer Function in Potenzreihen ergiebt.
+
+\medbreak
+
+\centerline{3.}
+
+\nobreak\medskip
+
+Man denke sich jetzt eine in der $z$-Ebene allenthalben $n \,$\-fach
+ausgebreitete unbegrenzte und nach dem Obigen als geschlossen zu
+betrachtende zusammenh\"{a}ngende Fl\"{a}che~$T$ gegeben und
+diese in eine einfach zusammenh\"{a}ngende $T'$ zerschnitten.  Da
+die Begrenzung einer einfach zusammenh\"{a}ngenden Fl\"{a}che aus
+\emph{einem} St\"{u}cke besteht, eine geschlossene Fl\"{a}che
+aber durch eine ungerade Anzahl von Schnitten eine gerade Zahl
+von Begrenzungsst\"{u}cken, durch eine gerade eine ungerade
+erh\"{a}lt, so ist zu dieser Zerschneidung eine gerade Anzahl von
+Schnitten erforderlich.  Die Anzahl dieser Querschnitte sei
+$= 2p$.  Die Zerschneidung werde zur Vereinfachung des Folgenden
+so ausgef\"{u}hrt, dass jeder sp\"{a}tere Schnitt von einem
+Punkte eines fr\"{u}heren bis zu dem anstossenden Punkte auf der
+anderen Seite desselben geht: wenn sich dann eine Gr\"{o}sse
+l\"{a}ngs der ganzen Begrenzung von $T'$ stetig \"{a}ndert und im
+ganzen Schnittsysteme zu beiden Seiten gleiche Aenderungen
+erleidet, so ist die Differenz der beiden Werthe, die sie in
+demselben Punkte des Schnittnetzes annimmt, in allen Theilen
+\emph{eines} Querschnitts derselben Constanten gleich.
+
+Man setze nun $z = x + yi$ und nehme in $T$ eine Function
+$\alpha + \beta i$ von $x$,~$y$ folgendermassen an:
+
+In der Umgebung der Punkte $\varepsilon_1, \varepsilon_2,\ldots$
+bestimmte man sie gleich gegebenen in diesen Punkten unendlich
+werdenden Functionen von $x + yi$, und zwar um $\varepsilon_\nu$,
+indem man eine beliebige Function von $z$, die in
+$\varepsilon_\nu$ unendlich klein von der ersten Ordnung wird,
+durch $r_\nu$ bezeichnet, gleich einem endlichen Ausdrucke von
+der Form
+\[ A_\nu \log r_\nu + B_\nu r_\nu^{-1} + C_\nu r_\nu^{-2} + \cdots
+   = \varphi_\nu(r_\nu),\]
+worin $A_\nu, B_\nu, C_\nu,\ldots$ willk\"{u}rliche Constanten
+sind.  Man ziehe ferner nach einem beliebigen Punkte von allen
+Punkten $\varepsilon$, f\"{u}r welche die Gr\"{o}sse~$A$ von Null
+verschieden ist, einander nicht schneidende Linien durch das
+Innere von $T'$, von $\varepsilon_\nu$ die Linie $l_\nu$.  Man
+nehme endlich die Function in der ganzen noch \"{u}brigen
+Fl\"{a}che~$T$ so an, dass sie ausser den Linien~$l$ und den
+Querschnitten \"{u}berall stetig, auf der positiven (linken)
+Seite der Linie~$l_\nu$ um $-2\pi i A_\nu$ und auf der positiven
+Seite des $\nu \,$\-ten Querschnitts um die gegebene Constante
+$h^{(\nu)}$ gr\"{o}sser ist, als auf der andern, und dass das
+Integral
+\[ \int  \left(
+            \left(
+               \frac{\partial \alpha}{\partial x}
+             - \frac{\partial \beta}{\partial y}
+            \right)^2
+          + \left(
+               \frac{\partial \alpha}{\partial y}
+             + \frac{\partial \beta}{\partial x}
+            \right)^2
+         \right) \, dT \]
+durch die Fl\"{a}che~$T$ ausgedehnt einen endlichen Werth
+erh\"{a}lt.  Dies ist wie leicht zu sehen immer m\"{o}glich, wenn
+die Summe s\"{a}mmtlicher Gr\"{o}ssen~$A$ gleich Null ist, aber
+auch nur unter dieser Bedingung, weil nur dann die Function nach
+einem Umlaufe um das System der Linien~$l$ den vorigen Werth
+wieder annehmen kann.
+
+Die Constanten $h^{(1)}, h^{(2)},\ldots, h^{(2p)}$, um welche
+eine solche Function auf der positiven Seite der Querschnitte
+gr\"{o}sser ist, als auf der andern, sollen die
+\emph{Periodicit\"{a}tsmoduln} dieser Function genannt werden.
+
+Nach dem \emph{Dirichlet}'schen Princip kann nun die Function
+$\alpha + \beta i$ in eine Function $\omega$ von $x + yi$
+verwandelt werden durch Subtraction einer \"{a}hnlichen in $T'$
+allenthalben stetigen Function von $x$,~$y$ mit rein
+imagin\"{a}ren Periodicit\"{a}tsmoduln, und diese ist bis auf
+eine additive Constante v\"{o}llig bestimmt.  Die
+Function~$\omega$ stimmt dann mit $\alpha + \beta i$ in den
+Unstetigkeiten im Innern von $T'$ und in den reellen Theilen der
+Periodicit\"{a}tsmoduln \"{u}berein.  F\"{u}r $\omega$ k\"{o}nnen
+daher die Functionen $\varphi_\nu$ und die reellen Theile ihrer
+Periodicit\"{a}tsmoduln willk\"{u}rlich gegeben werden.  Durch
+diese Bedingungen ist sie bis auf eine additive Constante
+v\"{o}llig bestimmt, folglich auch der imagin\"{a}re Theil ihrer
+Periodicit\"{a}tsmoduln.
+
+Es wird sich zeigen, dass diese Function $\omega$ s\"{a}mmtliche
+im \S.~1 bezeichneten Functionen als specielle F\"{a}lle unter
+sich enth\"{a}lt.
+
+\medbreak
+
+\centerline{4.}
+
+\nobreak\medskip
+
+{\itshape
+Allenthalben endliche Functionen $\omega$.  (Integrale erster
+Gattung.)}
+
+\nobreak\medskip
+
+Wir wollen jetzt die einfachsten von ihnen betrachteten und zwar
+zuerst diejenigen, die immer endlich bleiben und also im Innern
+von $T'$ allenthalben stetig sind.  Sind $w_1, w_2,\ldots, w_p$
+solche Functionen, so ist auch
+\[ w = \alpha_1 w_1 + \alpha_2 w_2 + \cdots
+         + \alpha_p w_p + \mbox{const.},\]
+worin $\alpha_1, \alpha_2,\ldots, \alpha_p$ beliebige Constanten
+sind, eine solche Function.  Es seien die Periodicit\"{a}tsmoduln
+der Functionen $w_1, w_2,\ldots, w_p$ f\"{u}r den
+$\nu \,$\-ten Querschnitt
+$k_1^{(\nu)}, k_2^{(\nu)},\ldots, k_p^{(\nu)}$.  Der
+Periodicit\"{a}tsmodul von $w$ f\"{u}r diesen Querschnitt ist
+dann
+$\alpha_1 k_1^{(\nu)} + \alpha_2 k_2^{(\nu)} + \cdots
+      + \alpha_p k_p^{(\nu)} = k^{(\nu)}$;
+und setzt man die Gr\"{o}ssen $\alpha$ in die Form
+$\gamma + \delta i$, so sind die reellen Theile der $2p$
+Gr\"{o}ssen $k^{(1)}, k^{(2)},\ldots, k^{(2p)}$ lineare
+Functionen der Gr\"{o}ssen
+$\gamma_1, \gamma_2,\ldots, \gamma_p$,
+$\delta_1, \delta_2,\ldots, \delta_p$.
+Wenn nun zwischen den Gr\"{o}ssen
+$w_1, w_2,\ldots, w_p$
+keine lineare Gleichung mit constanten Coefficienten stattfindet,
+so kann die Determinante dieser linearen Ausdr\"{u}cke nicht
+verschwinden; denn es liessen sich sonst die Verh\"{a}ltnisse der
+Gr\"{o}ssen~$\alpha$ so bestimmen, dass die
+Periodicit\"{a}tsmoduln des reellen Theils von $w$ s\"{a}mmtlich
+$0$ w\"{u}rden, folglich der reelle Theil von $w$ und also auch
+$w$ selbst nach dem \emph{Dirichlet}'schen Princip eine
+Constante sein m\"{u}sste.  Es k\"{o}nnen daher dann die $2p$
+Gr\"{o}ssen $\gamma$ und $\delta$ so bestimmt werden, dass die
+reellen Theile der Periodicit\"{a}tsmoduln gegebene Werthe
+erhalten; und folglich kann $w$ jede immer endlich bleibende
+Function $\omega$ darstellen, wenn $w_1, w_2,\ldots, w_p$ keiner
+linearen Gleichung mit constanten Coefficienten gen\"{u}gen.
+Diese Functionen lassen sich aber immer dieser Bedingung
+gem\"{a}ss w\"{a}hlen; denn so lange $\mu < p$, finden zwischen
+den Periodicit\"{a}tsmoduln des reellen Theils von
+\[ \alpha_1 w_1 + \alpha_2 w_2 + \cdots
+      + \alpha_\mu w_\mu + \mbox{const.},\]
+lineare Bedingungsgleichungen statt; es ist daher $w_{\mu + 1}$
+nicht in dieser Form enthalten, wenn man, was nach dem Obigen
+immer m\"{o}glich ist, die Periodicit\"{a}tsmoduln des reellen
+Theils dieser Function so bestimmt, dass sie diesen
+Bedingungsgleichungen nicht gen\"{u}gen.
+
+\medbreak
+
+{\itshape
+Functionen $\omega$, die f\"{u}r einen Punkt der Fl\"{a}che~$T$
+unendlich von der ersten Ordnung werden.  (Integrale zweiter
+Gattung.)}
+
+\nobreak\medskip
+
+Es sei $\omega$ nur f\"{u}r einen Punkt~$\varepsilon$ der
+Fl\"{a}che~$T$ unendlich, und f\"{u}r diesen seien alle
+Coefficienten in $\varphi$ ausser $B$ gleich~$0$.  Eine solche
+Function ist dann bis auf eine additive Constante bestimmt durch
+die Gr\"{o}sse~$B$ und die reellen Theile ihrer
+Periodicit\"{a}tsmoduln.  Bezeichnet $t^0(\varepsilon)$ irgend
+eine solche Function, so k\"{o}nnen in dem Ausdrucke
+\[ t(\varepsilon)
+   = \beta t^0(\varepsilon)
+      + \alpha_1 w_1 + \alpha_2 w_2 + \cdots
+      + \alpha_p w_p + \mbox{const.} \]
+die Constanten
+$\beta, \alpha_1, \alpha_2,\ldots, \alpha_p$
+immer so bestimmt werden, dass f\"{u}r ihn die Gr\"{o}sse~$B$ und
+die reellen Theile der Periodicit\"{a}tsmoduln beliebig gegebene
+Werthe erhalten.  Dieser Ausdruck stellt also jede solche
+Function dar.
+
+\medbreak
+
+{\itshape
+Functionen $\omega$, welche f\"{u}r zwei Punkte der
+Fl\"{a}che~$T$ logarithmisch unendlich werden.  (Integrale dritte
+Gattung.)}
+
+\nobreak\medskip
+
+Betrachten wir drittens den Fall, wo die Function~$\omega$ nur
+logarithmisch unendlich wird, so muss dies, da die Summe der
+Gr\"{o}ssen $A$ gleich $0$ sein muss, wenigstens f\"{u}r zwei
+Punkte der Fl\"{a}che~$T$, $\varepsilon_1$ und $\varepsilon_2$,
+geschehen und $A_2 = - A_1$ sein.  Ist von den Functionen, bei
+denen dies statt hat und die beiden letztern Gr\"{o}ssen $= 1$
+sind, irgend eine
+$\varpi^0(\varepsilon_1, \varepsilon_2)$,
+so sind nach \"{a}hnliche Schl\"{u}ssen, wie oben, alle
+\"{u}brigen in der Form
+\[ \varpi(\varepsilon_1, \varepsilon_2)
+   = \varpi^0(\varepsilon_1, \varepsilon_2)
+      + \alpha_1 w_1 + \alpha_2 w_2 + \cdots
+      + \alpha_p w_p + \mbox{const.} \]
+enthalten.
+
+F\"{u}r die folgenden Bemerkungen nehmen wir zur Vereinfachung
+an, dass die Punkte $\varepsilon$ keine Verzweigungspunkte sind
+und nicht im Unendlichen liegen.  Man kann dann
+$r_\nu = z - z_\nu$ setzen, indem man durch $z_\nu$ den Werth von
+$z$ in $\varepsilon_\nu$ bezeichnet.  Wenn man dann
+$\varpi(\varepsilon_1, \varepsilon_2)$
+so nach $z_1$ differentiirt, dass die reellen Theile der
+Periodicit\"{a}tsmoduln (oder auch $p$ von den
+Periodicit\"{a}tsmoduln) und der Werth von
+$\varpi(\varepsilon_1, \varepsilon_2)$
+f\"{u}r einen beliebigen Punkt der Fl\"{a}che $T$ constant
+bleiben, so erh\"{a}lt man eine Function $t(\varepsilon_1)$, die
+in $\varepsilon_1$ unstetig wie
+$\displaystyle \frac{1}{z - z_1}$
+wird.  Umgekehrt ist, wenn $t(\varepsilon_1)$ eine solche
+Function ist,
+$\displaystyle \int\limits_{z_2}^{z_3} t(\varepsilon_1) \, \partial z_1$,
+durch eine beliebige in $T$ von $\varepsilon_2$ nach
+$\varepsilon_3$ f\"{u}hrende Linie genommen, gleich einer
+Function
+$\varpi(\varepsilon_2, \varepsilon_3)$.
+Auf \"{a}hnliche Art erh\"{a}lt man durch $n$ successive
+Differentiationen eines solchen $t(\varepsilon_1)$ nach $z_1$
+Functionen $\omega$, welche im Punkte $\varepsilon_1$ wie
+$n! {(z - z_1)^{-n-1}}$
+unstetig werden und \"{u}brigens endlich bleiben.
+
+F\"{u}r die ausgeschlossenen Lagen der Punkte $\varepsilon$
+bed\"{u}rfen diese S\"{a}tze einer leichten Modification.
+
+Offenbar kann nun ein mit constanten Coefficienten aus Functionen
+$w$, aus Functionen $\varpi$ und ihren Derivirten nach
+den Unstetigkeitswerthen gebildete linearer Ausdruck so bestimmt
+werden, dass er im Innern von $T'$ beliebig gegebene
+Unstetigkeiten von der Form, wie $\omega$, erh\"{a}lt, und die
+reellen Theile seiner Periodicit\"{a}tsmoduln beliebig gegebene
+Werthe annehmen.  Durch einen solchen Ausdruck kann also jede
+gegebene Function $\omega$ dargestellt werden.
+
+\medbreak
+
+\centerline{5.}
+
+\nobreak\medskip
+
+Der allgemeine Ausdruck einer Function~$\omega$, die f\"{u}r $m$
+Punkte der Fl\"{a}che $T$,
+$\varepsilon_1, \varepsilon_2,\ldots, \varepsilon_m$
+unendlich gross von der ersten Ordnung wird, ist nach dem Obigen
+\[ s =  \beta_1 t_1  + \beta_2 t_2 + \cdots + \beta_m t_m
+      + \alpha_1 w_1 + \alpha_2 w_2 + \cdots
+      + \alpha_p w_p + \mbox{const.},\]
+worin $t_\nu$ eine beliebige Function $t(\varepsilon_\nu)$ und
+die Gr\"{o}ssen $\alpha$ und $\beta$ Constanten sind.  Wenn von
+den $m$ Punkten $\varepsilon$ eine Anzahl~$\varrho$ in denselben
+Punkt~$\eta$ der Fl\"{a}che~$T$ zusammenfallen, so sind die
+$\varrho$ diesen Punkten zugeh\"{o}rigen Functionen $t$ zu
+ersetzen durch eine Function $t(\eta)$ und deren $\varrho - 1$
+erste Derivirte nach ihrem Unstetigkeitswerthe (\S.~2).
+
+Die $2p$ Periodicit\"{a}tsmoduln dieser Function~$s$ sind lineare
+homogene Functionen der $p + m$ Gr\"{o}ssen $\alpha$ und $\beta$.
+Wenn $m \geq p + 1$, lassen sich also $2p$ von den Gr\"{o}ssen
+$\alpha$ und $\beta$ als lineare homogene Functionen der
+\"{u}brigen so bestimmen, dass die Periodicit\"{a}tsmoduln
+s\"{a}mmtlich $0$ werden.  Die Function enth\"{a}lt dann noch
+$m - p + 1$ willk\"{u}rliche Constanten, von denen sie eine
+lineare homogene Function ist, und kann als ein linearer
+Ausdruck von $m - p$ Functionen betrachtet werden, deren jede nur
+f\"{u}r $p + 1$ Werthe unendlich von der ersten Ordnung wird.
+
+Wenn $m = p + 1$ ist, so sind die Verh\"{a}ltnisse der $2p + 1$
+Gr\"{o}ssen $\alpha$ und $\beta$ bei jeder Lage der $p + 1$
+Punkte~$\varepsilon$ v\"{o}llig bestimmt.  Es k\"{o}nnen jedoch
+f\"{u}r besondere Lagen dieser Punkte einige der Gr\"{o}ssen
+$\beta$ gleich $0$ werden.  Die Anzahl dieser Gr\"{o}ssen sei
+$= m - \mu$, so dass die Function nur f\"{u}r $\mu$ Punkte
+unendlich von der ersten Ordnung wird.  Diese $\mu$ Punkte
+m\"{u}ssen dann eine solche Lage haben, dass von den $2p$
+Bedingungsgleichungen zwischen den $p + \mu$ \"{u}brigen
+Gr\"{o}ssen $\beta$ und $\alpha$ $p + 1 - \mu$ eine identische
+Folge der \"{u}brigen sind, und es k\"{o}nnen daher  nur
+$2\mu - p - 1$ von ihnen beliebig gew\"{a}hlt werden.  Ausserdem
+enth\"{a}lt die Function noch 2 willk\"{u}rliche Constanten.
+
+Es sei nun $s$ so zu bestimmen, dass $\mu$ m\"{o}glichst klein
+wird.  Wenn $s$ $\mu \,$\-mal unendlich von der ersten Ordnung wird,
+so ist dies auch mit jeder rationalen Function ersten Grades von
+$s$ der Fall; man kann daher f\"{u}r die L\"{o}sung dieser
+Aufgabe einen der $\mu$ Punkte beliebig w\"{a}hlen.  Die Lage der
+\"{u}brigen muss dann so bestimmt werden, dass $p + 1 - \mu$ von
+den Bedingungsgleichungen zwischen den Gr\"{o}ssen $\alpha$ und
+$\beta$ eine identische Folge der \"{u}brigen sind; es muss also,
+wenn die Verzweigungswerthe der Fl\"{a}che~$T$ nicht besondern
+Bedingungsgleichungen gen\"{u}gen, $p + 1 - \mu \leq \mu - 1$ oder
+$\mu \geq \frac{1}{2}p + 1$ sein.
+
+Die Anzahl der in einer Function~$s$, die nur f\"{u}r $m$ Punkte
+der Fl\"{a}che~$T$ unendlich von der ersten Ordnung wird und
+\"{u}brigens stetig bleibt, enthaltenen willk\"{u}rlichen
+Constanten ist in allen F\"{a}llen $= 2m - p + 1$.
+
+{\itshape
+\label{`Wurzel'}
+Eine solche Function ist die Wurzel einer Gleichung
+$n^{\mathrm{ten}}$ Grades, deren Coefficienten ganze Functionen
+$m^{\mathrm{ten}}$ Grades von $z$ sind.}
+
+Sind $s_1, s_2,\ldots, s_n$ die $n$ Werthe der Function~$s$
+f\"{u}r dasselbe $z$, und bezeichnet $\sigma$ eine beliebige
+Gr\"{o}sse, so ist
+$(\sigma - s_1) (\sigma - s_2) \cdots (\sigma - s_n)$
+eine einwerthige Function von $z$, die nur f\"{u}r einen Punkt
+der $z$-Ebene, der mit einem Punkte~$\varepsilon$
+zusammenf\"{a}llt, unendlich wird und unendlich von einer so
+hohen Ordnung, als Punkte~$\varepsilon$ auf ihn fallen.  In der
+That wird f\"{u}r jeden auf ihn fallenden Punkt~$\varepsilon$,
+der kein Verzweigungspunkt ist, nur \emph{ein} Factor dieses
+Products von einer um $1$ h\"{o}heren Ordnung unendlich, f\"{u}r
+einen Punkt~$\varepsilon$, um den die Fl\"{a}che $T$ sich
+$\mu \,$\-mal windet, aber $\mu$ Factoren von einer um
+$\displaystyle\frac{1}{\mu}$ h\"{o}heren Ordnung.  Bezeichnet man
+nun die Werthe von $z$ in \emph{den} Punkten~$\varepsilon$, wo
+$z$ nicht unendlich ist, durch
+$\zeta_1, \zeta_2,\ldots, \zeta_\nu$
+und
+$(z - \zeta_1) (z - \zeta_2) \cdots (z - \zeta_\nu)$
+durch $a_0$, so ist
+$a_0 (\sigma - s_1) (\sigma - s_2) \cdots (\sigma - s_n)$
+eine einwerthige Function von $z$, die f\"{u}r alle endlichen
+Werthe von $z$ endlich ist, und f\"{u}r $z = \infty$ unendlich
+von der $m^{\mathrm{ten}}$ Ordnung wird, also eine ganze Function
+$m^{\mathrm{ten}}$ Grades von $z$.  Sie ist zugleich eine ganze
+Function $n^{\mathrm{ten}}$ Grades von $\sigma$, dir f\"{u}r
+$\sigma = s$ verschwindet.  Bezeichnet man sie durch $F$ und, wie
+wir in der Folge thun wollen, \emph{eine ganze Function $F$
+$n^{\mathrm{ten}}$ Grades von $\sigma$ und $m^{\mathrm{ten}}$
+Grades von $z$} durch
+$F( {\buildrel n \over \sigma}, {\buildrel m \over z} )$,
+so ist $s$ die Wurzel der Gleichung
+$F( {\buildrel n \over s}, {\buildrel m \over z} ) = 0$.
+
+Die Function~$F$ ist eine Potenz einer
+unzerf\"{a}llbaren---d.~h.\ nicht als ein Product aus ganzen
+Functionen von $\sigma$ und $z$ darstellbaren---Function.  Den
+jeder ganze rationale Factor von $F(\sigma, z)$ bildet, da er
+f\"{u}r einige der Wurzeln $s_1, s_2,\ldots, s_n$ verschwinden
+muss, f\"{u}r $\sigma = s$ eine Function von $z$, die in einem
+Theile der Fl\"{a}che $T$ verschwindet und folglich, da diese
+Fl\"{a}che zusammenh\"{a}ngend ist, in der ganzen Fl\"{a}che $0$
+sein muss.  Zwei unzerf\"{a}llbare Factoren von $F(\sigma, z)$
+k\"{o}nnten aber nur f\"{u}r eine endliche Anzahl von
+Werthenpaaren zugleich verschwinden, wenn die eine nicht durch
+Multiplication mit einer Constanten aus der andern erhalten
+werden k\"{o}nnte.  Folglich muss $F$ eine Potenz einer
+unzerf\"{a}llbaren Function sein.
+
+Wenn der Exponent~$\nu$ dieser Potenz $> 1$ ist, so wird die
+Verzweigungsart der Function $s$ nicht dargestellt durch die
+Fl\"{a}che $T$, sondern durch eine in der $z$-Ebene allenthalben
+$\displaystyle\frac{n}{\nu} \,$\-fach
+ausgebreitete Fl\"{a}che~$\tau$, in welche die Fl\"{a}che~$T$
+allenthalben $\nu \,$\-fach ausgebreitet ist.  Es kann dann zwar $s$
+als eine wie~$T$ verzweigte Function betrachtet werden, nicht aber
+umgekehrt~$T$ als verzweigt, wie~s.
+
+Eine solche nur in einzelnen Punkten von $T$ unstetige Function,
+wie $s$, ist auch
+$\displaystyle\frac{\partial \omega}{\partial z}$.
+Denn diese Function nimmt zu beiden Seiten der Querschnitte und
+der Linien~$l$ denselben Werth an, da die Differenz der beiden
+Werthe von $\omega$ in diesen Linien l\"{a}ngs denselben constant
+ist; sie kann nur unendlich werden, wo $\omega$ unendlich wird,
+und in den Verzweigungspunkten der Fl\"{a}che und ist sonst
+allenthalben stetig, da die Derivirte einer ein\"{a}ndrig und
+endlich bleibenden Function ebenfalls ein\"{a}ndrig und endlich
+bleibt.
+
+Es sind daher s\"{a}mmtliche Functionen $\omega$ algebraische wie
+$T$ verzweigte Functionen von $z$ oder Integrale solcher
+Functionen.  Dieses System von Functionen ist bestimmt, wenn die
+Fl\"{a}che~$T$ gegeben ist und h\"{a}ngt nur von der Lage ihrer
+Verzweigungspunkte ab.
+
+\medbreak
+
+\centerline{6.}
+
+\nobreak\medskip
+
+Es sei jetzt die irreductible Gleichung
+$F( {\buildrel n \over s}, {\buildrel m \over z} ) = 0$
+gegeben und die Art der Verzweigung der Function~$s$ oder der die
+darstellenden Fl\"{a}che~$T$ zu bestimmen.  Wenn f\"{u}r einen
+Werth~$\beta$ von $z$ $\mu$ Zweige der Function
+zusammenh\"{a}ngen, so dass einer dieser Zweige sich erst nach
+$\mu$~Umlaufen des $z$ um $\beta$ wieder in sich selbst
+fortsetzt, so k\"{o}nnen diese $\mu$ Zweige der Function (wie
+nach \emph{Cauchy} oder durch die \emph{Fourier}'sche Reihe
+leicht bewiesen werden kann) dargestellt werden durch eine Reihe
+nach steigenden rationalen Potenzen von $z - \beta$ mit
+Exponenten vom kleinsten gemeinschaftlichen Nenner~$\mu$, und
+umgekehrt.
+
+Ein Punkt der Fl\"{a}che~$T$, in welchem nur zwei Zweige einer
+Function zusammenh\"{a}ngen, so dass sich um diesen Punkt der
+erste in den zweiten und dieser in jenen fortsetzt, heisse ein
+\emph{einfacher Verzweigungspunkt}.
+
+Ein Punkt der Fl\"{a}che, um welchen sie sich ${(\mu + 1)} \,$\-mal
+windet, kann dann angesehen werden als $\mu$ zusammengefallene
+(oder unendlich nahe) einfache Verzweigungspunkte.
+
+Um dies zu zeigen, seien in einem diesen Punkt umgebenden
+St\"{u}cke der $z$-Ebene $s_1, s_2,\ldots, s_{\mu + 1}$
+ein\"{a}ndrige Zweige der Function~$s$ und in der Begrenz\-ung
+desselben, bei positiver Umschreibung auf einander folgend,
+$a_1, a_2,\ldots, a_{\mu}$ einfache Verzweigungspunkte.  Durch
+einen positiven Umlauf um $a_1$ werde $s_1$ mit $s_2$, um $a_2$
+$s_1$ mit $s_3$,\ldots, um $a_\mu$ $s_1$ mit $s_{\mu + 1}$
+vertauscht.  Es gehen dann nach nach einem positiven Umlaufe um
+ein alle diese Punkte (und keinen andern Verzweigungspunkt)
+enthaltenes Gebiet
+\[ s_1, s_2,\ldots, s_\mu, s_{\mu + 1} \]
+\[ \mbox{in } s_2, s_3,\ldots, s_{\mu + 1}, s_1, \mbox{ \"{u}ber,} \]
+und es entsteht daher, wenn sie zusammenfallen, ein $\mu \,$\-facher
+Windungspunkt.
+
+Die Eigenschaften der Functionen $\omega$ h\"{a}ngen wesentlich
+davon ab, wie vielfach zusammenh\"{a}ngend die Fl\"{a}che~$T$
+ist.  Um dies zu entscheiden, wollen wir zun\"{a}chst die Anzahl
+der einfachen Verzweigungspunkte der Function~$s$ bestimmen.
+
+In einem Verzweigungspunkte nehmen die dort zusammenh\"{a}ngenden
+Zw\-eige der Function denselben Werth an, und es werden daher zwei
+oder mehrere Wurzeln der Gleichung
+\[ F(s) = a_0 s^n + a_1 s^{n-1} + \cdots + a_n = 0 \]
+einander gleich.  Dies kann nur geschehen, wenn
+\[ F'(s) = a_0 n s^{n-1} + a_1 \overline{n-1} s^{n-2} + \cdots + a_{n-1} \]
+oder die einwerthige Function von $z$,
+$F'(s_1) \, F'(s_2) \, \ldots \, F'(s_n)$,
+verschwindet.  Diese Function wird f\"{u}r endliche Werthe von
+$z$ nur unendlich, wenn $s = \infty$, also $a_0 = 0$ ist und
+muss, um endlich zu bleiben, mit $a_0^{n-2}$ multiplicirt werden.
+Sie wird dann eine einwerthige, f\"{u}r eine endliches $z$
+endliche Function von $z$, welche f\"{u}r $z = \infty$ unendlich
+von der ${2m(n - 1)} \,$\-ten Ordnung wird, also eine ganze Function
+${2m(n - 1)} \,$\-ten Grades.  Die Werthe von $z$, f\"{u}r welche
+$F'(s)$ und $F(s)$ gleichzeitig verschwinden, sind also die
+Wurzeln der Gleichung ${2m(n - 1)} \,$\-ten Grades
+\begin{eqnarray*}
+Q(z) &=& a_0^{n-2} \prod_i F'(s_i) = 0 \\
+     & & \mbox{ oder auch, da }
+         F'(s_i) = a_0 \prod_{i'} (s_i - s_{i'}),
+         \enspace (i \neq i'), \\
+     &=& a_0^{2(n-1)} \prod_{i,i'} (s_i - s_{i'}) = 0,
+         \enspace (i \neq i'),
+\end{eqnarray*}
+welche durch Elimination von $s$ aus $F'(s) = 0$ und $F(s) = 0$
+gebildet werden kann.
+
+Wird $F(s,z) = 0$ f\"{u}r $s = \alpha$, $z = \beta$, so ist
+\begin{eqnarray*}
+F(s,z) &=& \frac{\partial F}{\partial s}(s - \alpha)
+           + \frac{\partial F}{\partial z}(z - \beta) \\
+       & & + {\textstyle\frac{1}{2}}
+               \left\{
+                  \frac{\partial^2 F}{\partial s^2} (s - \alpha)^2
+                + 2 \frac{\partial^2 F}{\partial s \, \partial z}
+                     (s - \alpha) (z - \beta)
+                + \frac{\partial^2 F}{\partial z^2} (z - \beta)^2
+               \right\} \\
+       & & + \cdots ,\\
+F'(s)  &=& \frac{\partial F}{\partial s}
+           + \frac{\partial^2 F}{\partial s^2}(s - \alpha)
+           + \frac{\partial^2 F}{\partial s \, \partial z} (z - \beta)
+           + \cdots
+\end{eqnarray*}
+Ist also f\"{u}r ($s = \alpha$, $z = \beta$)
+$\displaystyle \frac{\partial F}{\partial s} = 0$
+und verschwinden
+$\displaystyle \frac{\partial F}{\partial z}$,
+$\displaystyle \frac{\partial^2 F}{\partial s^2}$
+dann nicht, so wird $s - \alpha$ unendlich klein, wie
+$(z - \beta)^{\frac{1}{2}}$, und findet also ein einfacher
+Verzweigungspunkt statt.  Es werden zugleich in dem Producte
+$\prod\limits_i F'(s_i)$ zwei Factoren unendlich klein wie
+$(z - \beta)^{\frac{1}{2}}$, und $Q(z)$ erh\"{a}lt dadurch den
+Factor $(z - \beta)$.  In dem Falle, dass
+$\displaystyle \frac{\partial F}{\partial z}$
+und
+$\displaystyle \frac{\partial^2 F}{\partial s^2}$
+nie verschwinden, wenn gleichzeitig $F = 0$ und
+$\displaystyle \frac{\partial F}{\partial s} = 0$
+werden, entspricht demnach jedem linearen Factor von $Q(z)$
+\emph{ein} einfacher Verzweigungspunkt, und die Anzahl dieser
+Punkte ist also $= 2m(n - 1)$.
+
+Die Lage der Verzweigungspunkte h\"{a}ngt von den Coefficienten
+der Potenzen von $z$ in den Functionen $a$ ab und \"{a}ndert sich
+stetig mit denselben.
+
+Wenn diese Coefficienten solche Werthe annehmen, dass zwei
+demselben Zweigepaar angeh\"{o}rige einfache Verzweigungspunkte
+zusammenfallen, so heben diese sich auf, und es werden zwei
+Wurzeln von $F(s)$ einander gleich, ohne dass eine Verzweigung
+stattfindet.  Setzt sich um jeden von ihnen $s_1$ in $s_2$ und
+$s_2$ in $s_1$ fort, so geht durch einen Umlauf um ein beide
+enthaltendes St\"{u}ck der $z$-Ebene $s_1$ in $s_1$ und $s_2$ in
+$s_2$ \"{u}ber, und beide Zweige werden ein\"{a}ndrig, wenn sie
+zusammenfallen.  Es bleibt dann also auch ihre Derivirte
+$\displaystyle\frac{\partial s}{\partial z}$
+ein\"{a}ndrig und endlich, und folglich wird
+$\displaystyle\frac{\partial F}{\partial z}
+   = - \frac{\partial s}{\partial z} \frac{\partial F}{\partial s} = 0$.
+
+Wird
+$\displaystyle F
+   = \frac{\partial F}{\partial s}
+   = \frac{\partial F}{\partial z}
+   = 0$
+f\"{u}r $s = \alpha$, $z = \beta$, so ergeben sich aus den drei
+folgenden Gliedern der Entwicklung von $F(s,z)$ zwei Werthe
+f\"{u}r
+$\displaystyle\frac{s - \alpha}{s- \beta} = \frac{\partial s}{\partial z}$,
+($s = \alpha$, $z = \beta$).  Sind diese Werthe ungleich und
+endlich, so k\"{o}nnen die beiden Zweige der Function~$s$, denen
+sie angeh\"{o}ren, dort nicht zusammenh\"{a}ngen und sich nicht
+verzweigen.  Es wird dann
+$\displaystyle \frac{\partial F}{\partial s}$
+f\"{u}r beide unendlich klein wie $z - \beta$, und $Q(z)$
+erh\"{a}lt dadurch den Factor $(z - \beta)^2$; es fallen also nur
+zwei einfache Verzweigungspunkte zusammen.
+
+Um in jeden Falle, wenn f\"{u}r $z = \beta$ mehrere Wurzeln der
+Gleichung $F(s) = 0$ gleich $\alpha$ werden, zu entscheiden, wie
+viele einfache Verzweigungspunkte f\"{u}r ($s = \alpha$, $z =
+\beta$) zusammenfallen, und wie viele von diesen sich aufheben,
+muss man diese Wurzeln (nach dem Verfahren von \emph{Lagrange})
+soweit nach steigenden Potenzen von $z - \beta$ entwickeln, bis
+diese Entwicklungen s\"{a}mmtlich von einander verschieden werden,
+wodurch sich die wirklich noch stattfindenen Verzweigungen
+ergeben.  Und man muss dann untersuchen, von welcher Ordnung
+$F'(s)$ f\"{u}r jede dieser Wurzeln unendlich klein wird, um die
+Anzahl der ihnen zugeh\"{o}rigen linearen Factoren von $Q(z)$
+oder der f\"{u}r ($s = \alpha$, $z = \beta$) zusammengefallenen
+einfachen Verzweigungspunkte zu bestimmen.
+
+Bezeichnet die Zahl~$\varrho$, wie oft sich die Fl\"{a}che~$T$
+um den Punkt $(s,z)$ windet, so wird im Punkte ($z$) $F'(s)$ so
+oft unendlich klein von der ersten Ordnung, als dort einfache
+Verzweigungspunkte zusammenfallen,
+$dz^{1 - \frac{1}{\varrho}}$ so oft, als deren wirklich
+stattfinden, folglich $F'(s) \, dz^{\frac{1}{\varrho} - 1}$ so
+oft, als von ihnen sich aufheben.
+
+Ist die Anzahl der wirklich stattfindenden einfachen
+Verzweigungen~$\mathrm{w}$, die Anzahl der sich aufhebenden $2r$,
+so ist
+\[ \mathrm{w} + 2r = 2 (n - 1) m.\]
+Nimmt man an, dass die Verzweigungspunkte nur paarweise und sich
+aufhebend zusammenfallen, so ist f\"{u}r $r$ Werthenpaare
+\label{`Werthenpaare'}
+($s= \gamma_\varrho$, $z = \delta_\varrho$)
+\[ F = \frac{\partial F}{\partial s}
+     = \frac{\partial F}{\partial z} = 0
+      \quad\mbox{und}\quad
+   \frac{\partial^2 F}{\partial z^2} \frac{\partial^2 F}{\partial s^2}
+   - \left( \frac{\partial^2 F}{\partial s \, \partial z} \right)^2 \]
+nicht Null und f\"{u}r $\mathrm{w}$ Werthenpaare von $s$ und $z$
+$F = 0$,
+$\displaystyle \frac{\partial F}{\partial s} = 0$,
+$\displaystyle \frac{\partial F}{\partial z}$
+nicht Null und
+$\displaystyle \frac{\partial^2 F}{\partial s^2}$
+nicht Null.
+
+Wir beschr\"{a}nken uns meistens auf die Behandlung dieses
+Falles, da sich die Resultate auf die \"{u}brigen als
+Grenzf\"{a}lle desselben leicht ausdehnen lassen, und wir
+k\"{o}nnen dies hier um so mehr thun, da wir die Theorie dieser
+Functionen auf eine von der Ausdrucksform unabh\"{a}ngige, keinen
+Ausnahmef\"{a}llen unterworfene Grundlage gest\"{u}tzt haben.
+
+\medbreak
+
+\centerline{7.}
+
+\nobreak\medskip
+
+Es findet nun bei einer einfach zusammenh\"{a}ngenden, \"{u}ber
+einen endlichen Theil der $z$-Ebene ausgebreiteten Fl\"{a}che
+zwischen der Anzahl ihrer einfachen Verzweigungspunkte und der
+Anzahl der Umdrehungen, welche die Richtung ihrer Begrenzlinie
+macht, die Relation statt, dass die letztere um eine Einheit
+gr\"{o}sser ist, als die erstere; und aus dieser ergiebt sich
+f\"{u}r eine mehrfach zusammenh\"{a}ngende Fl\"{a}che eine
+Relation zwischen diesen Anzahlen und der Anzahl der
+Querschnitte, welche sie in eine einfach zusammenh\"{a}ngende
+verwandeln.  Wir k\"{o}nnen diese Relation, welche im Grunde von
+Massverh\"{a}ltnissen unabh\"{a}ngig ist und der \emph{analysis
+situs} angeh\"{o}rt, hier f\"{u}r die Fl\"{a}che~$T$ so ableiten.
+
+Nach dem \emph{Dirichlet}'schen Princip l\"{a}sst sich in der
+einfach zusammenh\"{a}ngenden Fl\"{a}che $T'$ die Function
+$\log \zeta$ von $z$ so bestimmen, dass $\zeta$ f\"{u}r einen
+beliebigen Punkt im Innern derselben unendlich klein von der
+ersten Ordnung wird, und $\log \zeta$ l\"{a}ngs einer beliebigen
+sich nicht schneidenden, von dort nach der Begrenzung
+f\"{u}hrenden Linie auf der positiven Seite um $-2\pi i$
+gr\"{o}sser, als auf der negativen, \"{u}brigens aber
+allenthalben stetig und l\"{a}ngs der Begrenzung von $T'$ rein
+imagin\"{a}r ist.  Es nimmt dann die Function $\zeta$ jeden
+Werth, dessen Modul $< 1$, einmal an; die Gesamtheit ihrer Werthe
+wird folglich durch eine \"{u}ber einen Kreis in der
+$\zeta$-Ebene einfach ausgebreitete Fl\"{a}che vertreten.  Jedem
+Punkte von $T'$ entspricht ein Punkt des Kreises, und umgekehrt.
+Es wird daher f\"{u}r einen beliebigen Punkt der Fl\"{a}che, wo
+$z = z'$, $\zeta = \zeta'$, die Function $\zeta - \zeta'$
+unendlich klein von der ersten Ordnung, und folglich bleibt dort,
+wenn die Fl\"{a}che~$T'$ sich ${(\mu + 1)} \,$\-mal um ihn windet,
+bei endlichem~$z'$
+\[ (\mu + 1) \frac{z - z'}{(\zeta - \zeta')^{\mu + 1}}
+   = \frac{dz}{d\zeta (\zeta - \zeta')^\mu},\]
+bei unendlichem $z'$ aber
+\[ (\mu + 1) \frac{z^{-1}}{(\zeta - \zeta')^{\mu + 1}}
+   = - \frac{\partial z}{z z \partial \zeta (\zeta - \zeta')^\mu} \]
+endlich.  Das Integral
+$\displaystyle \int \partial \log \frac{\partial z}{\partial \zeta}$,
+um den ganzen Kreis positiv herumgenommen, ist gleich der Summe
+der Integrale um die Punkte, wo
+$\displaystyle \frac{\partial z}{\partial \zeta}$
+unendlich oder Null wird, und also $= 2\pi i (\mathrm{w} - 2n)$.
+Bezeichnet $s$ ein St\"{u}ck der Begrenzung von $T'$ von einem
+und demselben bestimmten Punkte bis zu einem ver\"{a}nderlichen
+Punkte der Begrenzung, und $\sigma$ das entsprechende St\"{u}ck
+auf dem Kreisumfange, so ist
+\[ \log \frac{\partial z}{\partial \zeta}
+   =  \log \frac{\partial z}{\partial s}
+      + \log \frac{\partial s}{\partial \sigma}
+      - \log \frac{\partial \zeta}{\partial \sigma},\]
+und, durch die ganze Begrenzung ausgedehnt,
+\begin{eqnarray*}
+\int \partial \log \frac{\partial z}{\partial s}
+   &=& (2p - 1) 2 \pi i,\\
+\int \partial \log \frac{\partial s}{\partial \sigma}
+   &=& 0,\\
+- \int \partial \log \frac{\partial \zeta}{\partial \sigma}
+   &=& - 2 \pi i,
+\end{eqnarray*}
+also
+\[ \int \partial \log \frac{\partial z}{\partial \zeta} = (2p - 2) 2 \pi i.\]
+Es ergiebt sich demnach $\mathrm{w} - 2n = 2 (p - 1)$.  Da nun
+\[ \mathrm{w} = 2 ( (n - 1) m - r ),\]
+so ist
+\[ p = (n - 1) (m - 1) - r.\]
+
+\medbreak
+
+\centerline{8.}
+
+\nobreak\medskip
+
+Der allgemeine Ausdruck der wie $T$ verzweigten Functionen $s'$
+von $z$, die f\"{u}r $m'$ beliebig gegebene Punkte von $T$
+endlich von der ersten Ordnung werden und \"{u}brigens stetig
+bleiben, enh\"{a}lt nach dem Obigen $m' - p + 1$ willk\"{u}rliche
+Constanten und ist eine lineare Function derselben (\S.~5).
+Lassen sich also, wie jetzt gezeigt werden soll, rationale
+Ausdr\"{u}cke von $s$ und $z$ bilden, die f\"{u}r $m'$ beliebig
+gegebene, der Gleichung $F = 0$ gen\"{u}gende Werthenpaare von
+$s$ und $z$ unendlich von der ersten Ordnung werden und lineare
+Functionen von $m' - p + 1$ willk\"{u}rlichen Constanten sind, so
+kann durch diese Ausdr\"{u}cke jede Function $s'$ dargestellt
+werden.
+
+Damit der Quotient zweier ganzen Functionen $\chi(s,z)$ und
+$\psi(s,z)$ f\"{u}r $s = \infty$ und $z = \infty$ beliebige
+endliche Werthe annehmen kann, m\"{u}ssen beide von gleichem
+Grade sein; der Ausdruck, durch welchen $s'$ dargestellt werden
+soll, sei daher von der Form
+$\displaystyle\frac{
+   \psi( {\buildrel \nu \over s}, {\buildrel \mu \over z} )}{
+   \chi( {\buildrel \nu \over s}, {\buildrel \mu \over z} )}$,
+und \"{u}berdies sei $\nu \geq n - 1$, $\mu \geq m - 1$.  Wenn
+zwei Zweige der Function~$s$ ohne zusammenzuh\"{a}ngen einander
+gleich werden, also f\"{u}r zwei verschiedene Punkte der
+Fl\"{a}che $T$ $z = \gamma$ und $s = \delta$ wird, so wird $s'$
+allgemein zu reden in diesen beiden Punkten verschiedene Werthe
+annehmen; soll also $\psi - s' \chi$ allenthalben $= 0$ sein, so
+muss f\"{u}r zwei verschiedene Werthe von $s'$
+$\psi(\gamma, \delta) - s' \chi(\gamma, \delta) = 0$
+sein, folglich $\chi(\gamma, \delta) = 0$ und
+$\psi(\gamma, \delta) = 0$.  Es m\"{u}ssen also die Functionen
+$\chi$ und $\psi$ f\"{u}r die $r$ Werthenpaare
+$s = \gamma_\varrho$, $z = \delta_\varrho$
+(S.~\pageref{`Werthenpaare'}) verschwinden\footnote{Es ist hier,
+wie gesagt, nur der Fall ber\"{u}cksichtigt, wo die
+Verzweigungspunkte der Function~$s$ nur paarweise und sich
+aufhebend zusammenfallen.  Im Allgemeinen m\"{u}ssen in einem
+Punkte von $T$, wo nach der Auffassung im \S.~6 sich aufhebende
+Verzweigungspunkte zusammenfallen, $\chi$ und $\psi$, wenn $T$
+sich um diesen Punkt~$\varrho$ mal windet, unendlich klein
+werden, wie $F'(s) \, dz^{\frac{1}{\varrho} - 1}$, damit die
+ersten Glieder in der Entwicklung der darzustellenden
+Function nach ganzen Potenzen von
+$(\Delta z)^{\frac{1}{\varrho}}$ beliebige Werthe annehmen
+k\"{o}nnen}.
+
+Die Function $\chi$ verschwindet f\"{u}r einen Werth von $z$,
+f\"{u}r welchen die einwerthige und f\"{u}r ein endliches~$z$
+endliche Function von $z$
+\[ K(z) = a_0^\nu \chi(s_1) \chi(s_2) \ldots \chi(s_n) = 0 \]
+ist; diese Function wird f\"{u}r ein unendliches $z$ unendlich
+von der Ordnung $m \nu + n \mu$ und ist also eine ganze Function
+${(m \nu + n \mu)} \,$\-ten Grades.  Da f\"{u}r die Werthenpaare
+$(\gamma, \delta)$ zwei Factoren des Products
+$\prod\limits_i \chi(s_i)$ unendlich klein von der ersten Ordnung
+werden, also $K(z)$ unendlich klein von der zweiten Ordnung, so
+wird $\chi$ ausserdem noch unendlich klein von der ersten Ordnung
+f\"{u}r
+\[ i = m \nu + n \mu - 2r \]
+Werthenpaare von $s$ und $z$ oder Punkte von $T$.
+
+Ist $\nu > n - 1$, $\mu > m - 1$, so bleibt der Werth der
+Function~$\chi$ unge\"{a}ndert, wenn man
+\[ \chi( {\buildrel \nu \over s}, {\buildrel \mu \over z} )
+      + \varrho( {\buildrel \nu - n \over s}, {\buildrel \mu - m \over z} )
+        F( {\buildrel n \over s}, {\buildrel m \over z} ),\]
+worin $\varrho$ beliebig ist, f\"{u}r
+$\chi( {\buildrel \nu \over s}, {\buildrel \mu \over z} )$
+setzt; es k\"{o}nnen also
+\[ (\nu - n + 1) (\mu - m + 1) \]
+von den Coefficienten dieses Ausdrucks willk\"{u}rlich angenommen
+werden.  Werden nun von den
+\[ (\mu + 1)(\nu + 1) - (\nu - n + 1)(\mu - m + 1) \]
+noch \"{u}brigen $r$ als lineare Functionen der \"{u}brigen so
+bestimmt, dass $\chi$ f\"{u}r die $r$ Werthenpaare
+$(\gamma, \delta)$ verschwindet, so enth\"{a}lt die Function
+$\chi$ noch
+\begin{eqnarray*}
+\varepsilon
+   &=& (\mu + 1)(\nu + 1) - (\nu - n + 1)(\mu - m + 1) - r \\
+   &=& n \mu + m \nu - (n - 1)(m - 1) - r + 1
+\end{eqnarray*}
+willk\"{u}rliche Constanten.  Es ist also
+\[ i - \varepsilon = (n - 1)(m - 1) - r - 1 = p - 1.\]
+
+Nimmt man $\mu$ und $\nu$ so an, dass $\varepsilon > m'$ ist, so
+kann man $\chi$ so bestimmen, dass es f\"{u}r $m'$ beliebig
+gegebene Werthenpaare unendlich klein von der ersten Ordnung
+wird, und dann, wenn $m' > p$, $\psi$ so einrichten, dass
+$\displaystyle \frac{\psi}{\chi}$
+f\"{u}r alle \"{u}brigen Werthe endlich bleibt.  In der That ist
+$\psi$ ebenfalls eine lineare homogene Function von $\varepsilon$
+willk\"{u}rlichen Constanten, und es lassen sich also, wenn
+$\varepsilon - i + m' > 1$ ist, $i - m'$ von ihnen als lineare
+Functionen der \"{u}brigen so bestimmen, dass $\psi$ f\"{u}r die
+$i - m'$ Werthenpaare von $s$ und $z$, f\"{u}r welche $\chi$ noch
+unendlich klein von der ersten Ordnung wird, ebenfalls
+verschwindet.  Die Function $\psi$ enth\"{a}lt demnach
+$\varepsilon - i + m' = m' - p + 1$
+willk\"{u}rliche Constanten, und
+$\displaystyle \frac{\psi}{\chi}$
+kann also jede Function $s'$ darstellen.
+
+\medbreak
+
+\centerline{9.}
+
+\nobreak\medskip
+
+Da die Functionen
+$\displaystyle \frac{\partial \omega}{\partial z}$
+algebraische wie $s$ verzweigte Functionen von $z$ sind (\S.~5),
+so lassen sie sich zufolge des eben bewiesenen Satzes rational in
+$s$ und $z$ ausdr\"{u}cken, und s\"{a}mmtliche Functionen
+$\omega$ als Integrale rationaler Functionen von $s$ und $z$.
+
+Ist $w$ eine allenthalben endliche Function~$\omega$, so wird
+$\displaystyle \frac{\partial w}{\partial z}$
+unendlich von der ersten Ordnung f\"{u}r jeden einfachen
+Verzweigungspunkt der Fl\"{a}che~$T$, da $dw$ und
+$(dz)^{\frac{1}{2}}$ dort unendlich klein von der ersten Ordnung
+sind, bleibt aber sonst allenthalben stetig und wird f\"{u}r
+$z = \infty$ unendlich klein von der zweiten Ordnung.  Umgekehrt
+bleibt das Integral einer Function, die sich so verh\"{a}lt,
+allenthalben endlich.
+
+Um diese Function
+$\displaystyle \frac{\partial w}{\partial z}$
+als Quotient zweier ganzen Functionen von $s$ und $z$
+auszudr\"{u}cken, muss man (nach \S.~8) zum Nenner eine Function
+nehmen, die verschwindet in den Verzweigungspunkten und f\"{u}r
+die $r$ Werthenpaare $(\gamma, \delta)$.  Dieser Bedingung
+gen\"{u}gt man am einfachsten durch eine Function, die nur
+f\"{u}r diese Werthe $0$ wird.  Eine solche ist
+\[ \frac{\partial F}{\partial s}
+   = a_0 n s^{n-1} + a_1 \overline{n - 1} s^{n-2} + \cdots + a_{n-1}.\]
+Diese wird f\"{u}r ein unendliches $s$ unendlich von der
+${(n - 2)} \,$\-ten Ordnung (da $a_0$ dann unendlich klein von der
+ersten Ordung wird) und f\"{u}r ein unendliches $z$ unendlich von
+der $m \,$\-ten Ordnung.  Damit
+$\displaystyle \frac{\partial w}{\partial z}$
+ausser den Verzweigungspunkten endlich und f\"{u}r ein unendliches
+$z$ unendlich klein von der zweiten Ordnung ist, muss also der
+Z\"{a}hler eine ganze Function
+$\varphi( {\buildrel n - 2 \over s}, {\buildrel m - 2 \over z} )$
+sein, die f\"{u}r die $r$ Werthenpaare $(\gamma, \delta)$
+(S.~\pageref{`Werthenpaare'}) verschwindet.  Demnach ist
+\[ w = \int
+   \frac{\varphi( {\buildrel n - 2 \over s}, {\buildrel m - 2 \over z} )
+   \, \partial z}{\displaystyle\frac{\partial F}{\partial s}}
+   = - \int
+   \frac{\varphi( {\buildrel n - 2 \over s}, {\buildrel m - 2 \over z} )
+   \, \partial s}{\displaystyle\frac{\partial F}{\partial z}},\]
+worin $\varphi = 0$ f\"{u}r
+$s = \gamma_\varrho$, $z = \delta_\varrho$,
+$\varrho = 1,2,\ldots, r$.
+
+Die Function $\varphi$ enh\"{a}lt $(n - 1)(m - 1)$ constante
+Coefficienten, und wenn $r$ von ihnen als lineare Functionen der
+\"{u}brigen so bestimmt werden, dass $\varphi = 0$ f\"{u}r die
+$r$ Werthenpaare $s = \gamma$, $z = \delta$, so bleiben noch
+$(m - 1)(n - 1) - r$ oder $p$ willk\"{u}rlich, und es erh\"{a}lt
+$\varphi$ die Form
+\[ \alpha_1 \varphi_1 + \alpha_2 \varphi_2 + \cdots
+      + \alpha_p \varphi_p,\]
+worin $\varphi_1, \varphi_2,\ldots, \varphi_p$ besondere
+Functionen $\varphi$, von denen keine eine lineare Function der
+\"{u}brigen ist, und $\alpha_1, \alpha_2,\ldots, \alpha_p$
+beliebige Constanten sind.  Als allgemeiner Ausdruck von $w$
+ergiebt sich, wie oben auf anderem Wege
+\[ \alpha_1 w_1 + \alpha_2 w_2 + \cdots + \alpha_p w_p
+      + \mbox{const.} \]
+
+Die nicht allenthalben endlich bleibenden Function~$\omega$ und
+also die Integrale zweiter und dritter Gattung lassen sich nach
+denselben Principien rational in $s$ und $z$ ausdr\"{u}cken,
+wobei wir indess hier nicht verweilen, da die allgemeinen Regeln
+des vorigen Paragraphen keiner weitern Erl\"{a}uterung
+bed\"{u}rfen und zur Betrachtung bestimmter Formen dieser
+Integrale erst die Theorie der $\vartheta$-Functionen Anlass
+giebt.
+
+\medbreak
+
+\centerline{10.}
+
+\nobreak\medskip
+
+Die Function $\varphi$ wird ausser f\"{u}r die $r$ Werthenpaare
+$(\gamma, \delta)$ noch f\"{u}r
+\[ m(n - 2) + n(m - 2)- 2r \]
+oder $2(p - 1)$ der Gleichung $F = 0$ gen\"{u}gende Werthenpaare
+von $s$ und $z$ unendlich klein von der ersten Ordung.  Sind nun
+\[ \varphi^{(1)}
+   = \alpha_1^{(1)} \varphi_1 + \alpha_2^{(1)} \varphi_2 + \cdots
+      + \alpha_p^{(1)} \varphi_p \]
+und
+\[ \varphi^{(2)}
+   = \alpha_1^{(2)} \varphi_1 + \alpha_2^{(2)} \varphi_2 + \cdots
+      + \alpha_p^{(2)} \varphi_p \]
+zwei beliebige Functionen $\varphi$, so kann man in dem Ausdrucke
+$\displaystyle\frac{\varphi^{(2)}}{\varphi^{(1)}}$
+den Nenner so bestimmen, dass er f\"{u}r $p - 1$ beliebig
+gegebene der Gleichung $F = 0$ gen\"{u}gende Werthenpaare von $s$
+und $z$ gleich Null wird, und dann den Z\"{a}hler so, dass er
+f\"{u}r $p - 2$ von den \"{u}brigen Werthenpaaren, f\"{u}r welche
+$\varphi^{(1)}$ noch gleich $0$ wird, gleichfalls verschwindet.
+Er ist dann noch eine lineare Function von zwei willk\"{u}rlichen
+Constanten und folglich ein allgemeiner Ausdruck einer Function,
+die nur f\"{u}r $p$ Punkte der Fl\"{a}che~$T$ unendlich von der
+ersten Ordnung wird.  Eine Function, die f\"{u}r weniger als $p$
+Punkte unendlich wird, bildet einen speciellen Fall dieser
+Function; es lassen sich daher alle Functionen, die f\"{u}r
+weniger als $p + 1$ Punkte der Fl\"{a}che~$T$ unendlich von der
+ersten Ordnung werden, in der Form
+$\displaystyle\frac{\varphi^{(2)}}{\varphi^{(1)}}$
+oder in der form
+$\displaystyle\frac{dw^{(2)}}{dw^{(1)}}$,
+wenn $w^{(1)}$ und $w^{(2)}$ zwei allenthalben endliche Integrale
+rationaler Functionen von $s$ und $z$ sind, darstellen.
+
+\medbreak
+
+\centerline{11.}
+
+\nobreak\medskip
+
+Eine wie $T$ verzweigte Function $z_1$ von $z$, die f\"{u}r $n_1$
+Punkte dieser Fl\"{a}che unendlich von der ersten Ordnung wird,
+ist nach dem Fr\"{u}heren (S.~\pageref{`Wurzel'}) die Wurzel einer
+Gleichung von der Form
+$G( {\buildrel n \over z_1}, {\buildrel n_1 \over z} ) = 0$
+und nimmt daher jeden Werth f\"{u}r $n_1$ Punkte der Fl\"{a}che
+$T$ an.  Wenn man sich also jeden Punkt von $T$ durch einen den
+Werth von $z_1$ in diesem Punkte geometrisch repr\"{a}sentirenden
+Punkt einer Ebene abgebildet denkt, so bildet die Gesammtheit
+dieser Punkte eine in der $z_1$-Ebene allenthalben $n_1 \,$\-fach
+ausgebreitete und die Fl\"{a}che $T$---bekanntlich in den
+kleinsten Theilen \"{a}hnlich---abbildende Fl\"{a}che~$T_1$.
+Jedem Punkt in der einen Fl\"{a}che entspricht dann \emph{ein}
+Punkt in der andern.  Die Functionen $\omega$ oder die Integrale
+wie $T$ verzweigter Functionen von $z$ gehen daher, wenn man
+f\"{u}r $z$ als unabh\"{a}ngig ver\"{a}nderliche Gr\"{o}sse~$z_1$
+einf\"{u}hrt, in Functionen \"{u}ber, welche in der
+Fl\"{a}che~$T_1$ allenthalben \emph{einen} bestimmten Werth und
+dieselben Unstetigkeiten haben, wie die Functionen~$\omega$ in den
+entsprechenden Punkten von $T$, und welche folglich Integrale wie
+$T_1$ verzweigter Functionen von $z_1$ sind.
+
+Bezeichnet $s_1$ irgend eine andere wie $T$ verzweigte Function
+von $z$, die f\"{u}r $m_1$ Punkte von $T$ und also auch von $T_1$
+unendlich von der ersten Ordnung wird, so findet (\S.~5) zwischen
+$s_1$ und $z_1$ eine Gleichung von der Form
+\[ F_1( {\buildrel n_1 \over s_1}, {\buildrel m_1 \over z_1} ) = 0 \]
+statt, worin $F_1$ eine Potenz einer unzerf\"{a}llbaren ganzen
+Function von $s_1$ und $z_1$ ist, und es lassen sich, wenn diese
+Potenz die erste ist, alle wie $T_1$ verzweigten Functionen von
+$z_1$, folglich alle rationalen Functionen von $s$ und $z$
+rational in $s_1$ und $z_1$ ausdr\"{u}cken (\S.~8).
+
+Die Gleichung
+$F( {\buildrel n \over s}, {\buildrel m \over z} ) = 0$
+kann also durch eine rationale Substitution in
+$F_1( {\buildrel n_1 \over s_1}, {\buildrel m_1 \over z_1} ) = 0$
+und diese in jene transformirt werden.
+
+Die Gr\"{o}ssengebiete $(s,z)$ und $(s_1, z_1)$ sind
+gleichvielfach zusammenh\"{a}ngend, da jedem Punkte des einen
+\emph{ein} Punkt des andern entspricht.  Bezeichnet daher $r_1$
+die Anzahl der F\"{a}lle, in welchen $s_1$ und $z_1$ f\"{u}r zwei
+verschiedene Punkte des Gr\"{o}ssengebiets $(s_1, z_1)$ beide
+denselben Werth annehmen und folglich gleichzeitig $F_1$,
+$\displaystyle \frac{\partial F_1}{\partial s_1}$
+und
+$\displaystyle \frac{\partial F_1}{\partial z_1}$
+gleich $0$ und
+\[ \frac{\partial^2 F_1}{\partial s_1^2}
+      \frac{\partial^2 F_1}{\partial z_1^2}
+    - \left( \frac{\partial^2 F_1}{\partial s_1 \, \partial z_1} \right)^2 \]
+nicht Null ist, so muss
+\[ (n_1 - 1)(m_1 - 1) - r_1 = p = (n - 1)(m - 1) - r \]
+sein.
+
+\medbreak
+
+\centerline{12.}
+
+\nobreak\medskip
+
+Man betrachte nun als zu Einer \emph{Klasse} geh\"{o}rend
+\emph{alle irreductiblen algebraischen Gleichungen zwischen zwei
+ver\"{a}nderlichen Gr\"{o}ssen, welche sich durch rationale
+Substitutionen in einander transformiren lassen}, so dass
+\[ F(s,z) = 0 \mbox{ und } F_1(s_1, z_1) = 0 \]
+zu derselben Klasse geh\"{o}ren, wenn sich f\"{u}r $s$ und $z$
+solche rationale Functionen von $s_1$ und $z_1$ setzen lassen,
+dass $F(s,z) = 0$ in $F_1(s_1, z_1) = 0$ \"{u}bergeht und
+zugleich $s_1$ und $z_1$ rationale Functionen von $s$ und $z$
+sind.
+
+Die rationalen Functionen von $s$ und $z$ bilden, als Functionen
+von irgend einer von ihnen $\zeta$ betrachtet, ein System
+gleichverzweigter algebraischer Functionen.  Auf diese Weise
+f\"{u}hrt jede Gleichung offenbar zu einer Klasse von Systemen
+gleichverzweigter algebraischer Functionen, welche sich durch
+Einf\"{u}hrung einer Function des Systems als unabh\"{a}ngig
+ver\"{a}nderlicher Gr\"{o}sse in einander transformiren lassen
+und zwar alle Gleichungen Einer Klasse zu derselben Klasse von
+Systemen algebraischer Functionen, und umgekehrt f\"{u}hrt
+(\S.~11) jede Klasse von solchen Systemen zu Einer Klasse von
+Gleichungen.
+
+Ist das Gr\"{o}ssengebiet $(s,z)$ $\overline{2p + 1} \,$\-fach
+zusammenh\"{a}ngend und die Function $\zeta$ in $\mu$ Punkten
+desselben unendlich von der ersten Ordnung, so ist die Anzahl der
+Verzweigungswerthe der gleichverzweigten Functionen von $\zeta$,
+welche durch die \"{u}brigen rationalen Functionen von $s$ und
+$z$ gebildet werden, $2(\mu + p - 1)$, und die Anzahl der
+willk\"{u}rlichen Constanten in der Function~$\zeta$
+$2\mu - p + 1$ (\S.~5).  Diese lassen sich so bestimmen, dass
+$2\mu - p + 1$ Verzweigungswerthe gegebene Werthe annehmen, wenn
+diese Verzweigungswerthe von einander unabh\"{a}ngige Functionen
+von ihnen sind, und zwar nur auf eine endliche Anzahl Arten, da
+die Bedingungsgleichungen algebraisch sind.  In jeder Klasse von
+Systemen gleichverzweigter $\overline{2p + 1} \,$\-fach
+zusammenh\"{a}ngender Functionen giebt es daher eine endliche
+Anzahl von Systemen $\mu \,$\-werthiger Functionen, in welchen
+$2\mu - p + 1$ Verzweigungswerthe gegebene Werthe annehmen.  Wenn
+andererseits die $2(\mu + p - 1)$ Verzweigungspunkte einer die
+$\zeta$-Ebene allenthalben $\mu \,$\-fach bedeckenden
+$\overline{2p + 1} \,$\-fach zusammenh\"{a}ngenden Fl\"{a}che beliebig
+gegeben sind, so giebt es (\S\S.~3--5) immer ein System wie diese
+Fl\"{a}che verzweigter algebraischer Functionen von $\zeta$.  Die
+$3p - 3$ \"{u}brigen Verzweigungswerthe in jenen Systemen
+gleichverzweigter $\mu \,$\-werthiger Functionen k\"{o}nnen daher
+beliebige Werthe annehmen; und es h\"{a}ngt also eine Klasse von
+Systemen gleichverzweigter $\overline{2p + 1} \,$\-fach
+zusammenh\"{a}ngender Functionen und die zu ihr geh\"{o}rende
+Klasse algebraischer Gleichungen von $3p - 3$ stetig
+ver\"{a}nderlichen Gr\"{o}ssen ab, welche die Moduln dieser
+Klasse genannt werden sollen.
+
+Diese Bestimmung der Anzahl der Moduln einer Klasse
+$\overline{2p + 1} \,$\-fach zusammenh\"{a}ngender algebraischer Functionen
+gilt jedoch nur unter der Voraussetzung, dass es $2\mu - p + 1$
+Verzweigungswerthe giebt, welche von einander unabh\"{a}ngige
+Functionen der willk\"{u}rlichen Constanten in der Function
+$\zeta$ sind.  Diese Voraussetzung trifft nur zu, wenn $p > 1$,
+und die Anzahl der Moduln ist nur dann $= 3p - 3$, f\"{u}r
+$p = 1$ aber $= 1$.  Die directe Untersuchung derselben wird
+indess schwierig durch die Art und Weise, wie die
+willk\"{u}rlichen Constanten in $\zeta$ enthalten sind.  Man
+f\"{u}hre deshalb in einem Systeme gleichverzweigter
+$\overline{2p + 1} \,$\-fach zusammenh\"{a}ngender Functionen, um die
+Anzahl der Moduln zu bestimmen, als unabh\"{a}ngig
+ver\"{a}nderliche Gr\"{o}sse nicht eine dieser Functionen,
+sondern ein allenthalben endliches Integral einer solchen
+Function ein.
+
+Die Werthe, welche die Function $w$ von $z$ innerhalb der
+Fl\"{a}che $T'$ annimmt, werden geometrisch repr\"{a}sentirt durch
+eine einen endlichen Theil der $w$-Ebene einfach oder mehrfach
+bedeckende und die Fl\"{a}che~$T'$ (in den kleinsten Theilen
+\"{a}hnlich) abbildende Fl\"{a}che, welche durch $S$ bezeichnet
+werden soll.  Da $w$ auf der positiven Seite des $\nu \,$\-ten
+Querschnitts um die Constante $k^{(\nu)}$ gr\"{o}sser ist, als
+auf der negativen, so besteht die Begrenzung von $S$ aus Paaren
+von parallelen Curven, welche denselben Theil des $T'$
+begrenzenden Schnittsystems abbilden, und es wird die
+Ortsverschiedenheit der entsprechenden Punkte in den parallelen,
+den $\nu \,$\-ten Querschnitt abbildenden Begrenzungstheilen von $S$
+durch die complexe Gr\"{o}sse $k^{(\nu)}$ ausgedr\"{u}ckt.  Die
+Anzahl der einfachen Verzweigungspunkte der Fl\"{a}che~$S$ ist
+$2p - 2$, da $dw$ in $2p - 2$ Punkten der Fl\"{a}che~$T$
+unendlich klein von der zweiten Ordnung wird.  Die rationalen
+Functionen von $s$ und $z$ sind dann Functionen von $w$, welche
+f\"{u}r jeden Punkt von $S$ Einen bestimmten, wo sie nicht
+unendlich werden, stetig sich \"{a}ndernden Werth haben und in
+den entsprechenden Punkten paralleler Begrenzungstheile denselben
+Werth annehmen.  Sie bilden daher ein System gleichverzweigter
+und $2p \,$\-fach periodischer Functionen von $w$.  Es l\"{a}sst
+sich nun (auf \"{a}hnlichem Wege, wie in den \S\S.~3--5) zeigen,
+dass, die $2p - 2$ Verzweigungspunkte und die $2p$
+Ortsverschiedenheiten paralleler Begrenzungs\-theile der
+Fl\"{a}che~$S$ als willk\"{u}rlich gegeben vorausgesetzt, immer
+ein System wie diese Fl\"{a}che verzweigter Functionen existirt,
+welche in den entsprechenden Punkten paralleler Begrenzungstheile
+denselben Werth annehmen und also $2p \,$\-fach periodisch sind, und
+die, als Functionen von einer von ihnen betrachtet, ein System
+gleichverzweigter $\overline{2p + 1} \,$\-fach zusammenh\"{a}ngender
+algebraischer Functionen bilden, folglich zu einer Klasse von
+$\overline{2p + 1} \,$\-fach zusammenh\"{a}ngenden algebraischen
+Functionen f\"{u}hren.  In der That ergiebt sich nach dem
+\emph{Dirichlet}'schen Princip, dass in der Fl\"{a}che~$S$ eine
+Function von $w$ bis auf eine additive Constante bestimmt ist
+durch die Bedingungen, im Innern von $S$ beliebig gegebene
+Unstetigkeiten von der Form wie $\omega$ in $T'$ anzunehmen und
+in den entsprechenden Punkten paralleler Begrenzungstheile um
+Constanten, deren reeller Theil gegeben ist, verschiedene Werthe
+zu erhalten.  Hieraus schliesst man, \"{a}hnlich wie im \S.~5,
+die M\"{o}glichkeit von Functionen, welche nur in einzelnen
+Punkten von $S$ unstetig werden und in den entsprechenden
+Punkten paralleler Begrenzungstheile denselben Werth annehmen.
+Wird eine solche Function~$z$ in $n$ Punkten von $S$ unendlich
+von der ersten Ordnung und sonst nicht unstetig, so nimmt sie
+jeden complexen Werth in $n$ Punkten von $S$ an; denn wenn $a$
+eine beliebige Constante ist, so ist
+$\int \partial \log (z - a)$,
+um $S$ erstreckt, $= 0$, da die Integration durch parallele
+Begrenzungstheile sich aufhebt, und es wird daher $z - a$ in $S$
+ebenso oft unendlich klein, als unendlich von der ersten Ordnung.
+Die Werthe, welche $z$ annimmt, werden folglich durch eine
+\"{u}ber die $z$-Ebene allenthalben $n \,$\-fach ausgebreitete
+Fl\"{a}che repr\"{a}sentirt, und die \"{u}brigen ebenso
+verzweigten und periodischen Functionen von $w$ bilden daher ein
+System wie diese Fl\"{a}che verzweigter $\overline{2p + 1} \,$\-fach
+zusammenh\"{a}ngender algebraischer Functionen von~$z$,
+w.~z.~b.~w.
+
+F\"{u}r eine beliebig gegebene Klasse $\overline{2p + 1} \,$\-fach
+zusammenh\"{a}ngender algebraischer Functionen kann man nun in
+dem als unabh\"{a}ngig ver\"{a}nderliche Gr\"{o}sse
+einzuf\"{u}hrenden
+\[ w = \alpha_1 w_1 + \alpha_2 w_2 + \cdots + \alpha_p w_p + c \]
+die Gr\"{o}ssen $\alpha$ so bestimmen, dass $p$ von den $2p$
+Periodicit\"{a}tsmoduln gegebene Werthe annehmen, und $c$ wenn
+$p > 1$ so, dass einer von den $2p - 2$ Verzeigungswerthen der
+periodischen Functionen von $w$ einen gegebenen Werth erh\"{a}lt.
+Dadurch ist $w$ v\"{o}llig bestimmt, und also sind es auch die
+$3p - 3$ \"{u}brigen Gr\"{o}ssen, von denen die Verzweigungsart
+und Periodicit\"{a}t jener Functionen von $w$ abh\"{a}ngt; und da
+jedweden Werthen dieser $3p - 3$ Gr\"{o}ssen eine Klasse von
+$\overline{2p + 1} \,$\-fach zusammenh\"{a}ngenden algebraischen Functionen
+entspricht, so h\"{a}ngt eine solche von $3p - 3$ unabh\"{a}ngig
+ver\"{a}nderlichen Gr\"{o}ssen ab.
+
+Wenn $p = 1$ ist, so ist kein Verzweigungspunkt vorhanden, und es
+l\"{a}sst sich in
+\[ w = \alpha_1 w_1 + c \]
+die Gr\"{o}sse $\alpha_1$ so bestimmen, dass \emph{ein}
+Periodicit\"{a}tsmodul einen gegebenen Werth erh\"{a}lt und
+dadurch ist der andere Periodicit\"{a}tsmodul bestimmt.  Die
+Anzahl der Moduln einer Klasse ist also dann $= 1$.
+
+\medbreak
+
+\centerline{13.}
+
+\nobreak\medskip
+
+Nach den obigen (im \S.~11 entwickelten) Principien der
+Transformation muss man, um eine beliebig gegebene Gleichung
+$F(s,z) = 0$ durch eine rationale Substitution in eine Gleichung
+derselben Klasse
+$F_1( {\buildrel n_1 \over s_1}, {\buildrel m_1 \over z_1} ) = 0$
+von m\"{o}glichst niedrigem Grade zu transformiren, zuerst
+f\"{u}r $z_1$ einen rationalen Ausdruck in $s$ und $z$, $r(s,z)$,
+so bestimmen, dass $n_1$ m\"{o}glichst klein wird, und dann $s_1$
+gleich einem andern rationalen Ausdrucke $r'(s,z)$ so, dass $m_1$
+m\"{o}glichst klein wird und zugleich die zu einem beliebigen
+Werthe von $z_1$ geh\"{o}rigen Werthe von $s_1$ nicht in Gruppen
+unter einander gleicher zerfallen, so dass
+$F_1( {\buildrel n_1 \over s_1}, {\buildrel m_1 \over z_1} )$
+nicht eine h\"{o}here Potenz einer unzerf\"{a}llbaren Function
+sein kann.
+
+Wenn das Gr\"{o}ssengebiet $(s,z)$ $\overline{2p + 1} \,$\-fach
+zusammenh\"{a}ngend ist, so ist der kleinste Werth, den $n_1$
+annehmen kann, allgemein zu reden,
+$\displaystyle \geq \frac{p}{2} + 1$
+(\S.~5) und die Anzahl der F\"{a}lle, in denen $s_1$ und $z_1$
+f\"{u}r zwei verschiedene Punkte des Gr\"{o}ssengebiets beide
+denselben Werth annehmen,
+\[  = (n_1 - 1)(m_1 - 1) - p.\]
+
+In einer Klasse von algebraischen Gleichungen zwischen zwei
+ver\"{a}nderlichen Gr\"{o}ssen haben demnach, wenn ihre Moduln
+nicht besonderen Bedingungsgleichungen gen\"{u}gen, die
+Gleichungen niedrigsten Grades folgende Form:
+\[ \begin{array}{lllll}
+   & \mbox{f\"{u}r} & p = 1,
+   & F( {\buildrel 2 \over s}, {\buildrel 2 \over z} ) = 0,
+   & r = 0 \\
+   &  & p = 2,
+   & F( {\buildrel 2 \over s}, {\buildrel 3 \over z} ) = 0,
+   & r = 0 \\
+   &  & p = 2\mu - 3,
+   & F( {\buildrel \mu \over s}, {\buildrel \mu \over z} ) = 0,
+   & r = (\mu - 2)^2 \\
+p > 2 \\
+   &  & p = 2\mu - 2,
+   & F( {\buildrel \mu \over s}, {\buildrel \mu \over z} ) = 0,
+   & r = (\mu - 1)(\mu - 3).
+\end{array} \]
+
+Von den Coefficienten der Potenzen von $s$ und $z$ in den ganzen
+Functionen $F$ m\"{u}ssen $r$ als lineare homogene Functionen der
+\"{u}brigen so bestimmt werden, dass
+$\displaystyle \frac{\partial F}{\partial s}$
+und
+$\displaystyle \frac{\partial F}{\partial z}$
+f\"{u}r $r$ der Gleichung $F = 0$ gen\"{u}gende Werthenpaare
+gleichzeitig verschwinden.  Die rationalen Functionen von $s$ und
+$z$, als Functionen von einer von ihnen betrachtet, stellen dann
+alle Systeme $\overline{2p + 1} \,$\-fach zusammenh\"{a}ngender
+algebraischer Functionen dar.
+
+\medbreak
+
+\centerline{14.}
+
+\nobreak\medskip
+
+Ich benutze nun nach \emph{Jacobi} (dieses Journal Bd.~9
+Nr.~32 \S.~8) das \emph{Abel}'sche Additionstheorem zur
+Integration eines Systems von Differentialgleichungen; ich werde
+mich dabei auf das beschr\"{a}nken, was in dieser Abhandlung
+sp\"{a}ter n\"{o}thig ist.
+
+F\"{u}hrt man in einem allenthalben endlichen Integrale $w$ einer
+rationalen Function von $s$ und $z$ als unabh\"{a}ngig
+ver\"{a}nderliche Gr\"{o}sse eine rationale Function von $s$ und
+$z$, $\zeta$, ein, die f\"{u}r $m$ Werthenpaare von $s$ und $z$
+unendlich von der ersten Ordnung wird, so ist
+$\displaystyle \frac{\partial w}{\partial z}$
+eine $m \,$\-werthige Function von $\zeta$.  Bezeichnet man die $m$
+Werthe von $w$ f\"{u}r dasselbe $\zeta$ durch
+$w^{(1)}, w^{(2)},\ldots, w^{(m)}$, so ist
+\[    \frac{\partial w^{(1)}}{\partial \zeta}
+    + \frac{\partial w^{(2)}}{\partial \zeta} + \cdots
+    + \frac{\partial w^{(m)}}{\partial \zeta} \]
+eine einwerthige Function von $\zeta$, deren Integral
+allenthalben endlich bleibt, und folglich ist auch
+\[ \int \partial ( w^{(1)} + w^{(2)} + \cdots + w^{(m)} ) \]
+allenthalben einwerthig und endlich, mithin constant.  Auf
+\"{a}hnliche Weise findet sich, wenn
+$\omega^{(1)}, \omega^{(2)},\ldots, \omega^{(m)}$
+die demselben $\zeta$ entsprechenden Werthe eines beliebigen
+Integrals $\omega$ einer rationalen Function von $s$ und $z$
+bezeichnen,
+\[ \int \partial ( \omega^{(1)} + \omega^{(2)} + \cdots + \omega^{(m)}) \]
+bis auf eine additive Constante aus den Unstetigkeiten von
+$\omega$ und zwar als Summe von einer rationalen Function und mit
+constanten Coefficienten versehenen Logarithmen rationaler
+Functionen von $\zeta$.
+
+Mittelst dieses Satzes lassen sich, wie jetzt gezeigt werden
+soll, folgende $p$ gleichzeitige Differentialgleichungen
+zwischen den $p + 1$ der Gleichung $F(s, z) = 0$ gen\"{u}genden
+Werthenpaaren von $s$ und $z$,
+$(s_1, z_1)$, $(s_2, z_2),\ldots$, $(s_{p+1}, z_{p+1})$
+\[       \frac{\varphi_\pi(s_1, z_1) \, \partial z_1}{\displaystyle
+            \frac{\partial F(s_1, z_1)}{\partial s_1}}
+       + \frac{\varphi_\pi(s_2, z_2) \, \partial z_2}{\displaystyle
+            \frac{\partial F(s_2, z_2)}{\partial s_2}}
+       + \frac{\varphi_\pi(s_{p+1}, z_{p+1}) \, \partial z_{p+1}}{\displaystyle
+            \frac{\partial F(s_{p+1}, z_{p+1})}{\partial s_{p+1}}}
+   = 0 \]
+f\"{u}r $\pi = 1,2,\ldots, p$, allgemein oder vollst\"{a}ndig
+(complete) integriren.
+
+Durch diese Differentialgleichungen sind $p$ von den
+Gr\"{o}ssenpaaren $(s_\mu, z_\mu)$ als Functionen des einen noch
+\"{u}brigen v\"{o}llig bestimmt, wenn f\"{u}r einen beliebigen
+Werth des letzteren die Werthe der \"{u}brigen gegeben werden.
+Wenn man also diese $p + 1$ Gr\"{o}ssenpaare als Functionen
+\emph{einer} ver\"{a}nderlichen Gr\"{o}sse $\zeta$ so bestimmt,
+dass sie f\"{u}r denselben Werth $0$ dieser Gr\"{o}sse
+\emph{beliebig} gegebene Anfangswerthe
+$(s_1^0, z_1^0)$, $(s_2^0, z_2^0),\ldots$, $(s_{p+1}^0, z_{p+1}^0)$
+annehmen und den Differentialgleichungen gen\"{u}gen, so hat man
+dadurch die Differentialgleichungen allgemein integrirt.  Nun
+l\"{a}sst sich die Gr\"{o}sse
+$\displaystyle\frac{1}{\zeta}$
+als einwerthige und folglich rationale Function von $(s, z)$
+immer so bestimmen, dass sie nur f\"{u}r alle oder einige von den
+$p + 1$ Werthenpaaren $(s_\mu^0, z_\mu^0)$ unendlich und f\"{u}r
+diese nur unendlich von der ersten Ordnung wird, da sich in dem
+Ausdrucke
+\[      \sum_{\mu=1}^{\mu = p + 1} \beta_\mu  t (s_\mu^0, z_\mu^0)
+      + \sum_{\mu=1}^{\mu = p}     \alpha_\mu w_\mu
+      + \mbox{const.} \]
+die Verh\"{a}ltnisse der Gr\"{o}ssen $\alpha$ und $\beta$ immer
+so bestimmen lassen, dass die Periodicit\"{a}tsmoduln
+s\"{a}mmtlich $0$ werden.  Es gen\"{u}gen dann, wenn kein $\beta
+= 0$ ist, den zu l\"{o}senden Differentialgleichungen die $p + 1$
+Zweige der $\overline{p + 1} \,$\-werthigen gleichverzweigten Functionen $s$
+und $z$ von $\zeta$,
+\[ (s_1, z_1),\enspace
+   (s_2, z_2),\ldots,\enspace
+   (s_{p+1}, z_{p+1}),\]
+welche f\"{u}r $\zeta = 0$ die Werthe
+\[ (s_1^0, z_1^0),\enspace
+   (s_2^0, z_2^0),\ldots,\enspace
+   (s_{p+1}^0, z_{p+1}^0) \]
+annehmen.  Wenn aber von der Gr\"{o}ssen $\beta$ einige, etwa die
+$p + 1 - m$ letzten gleich $0$ werden, so werden die zu
+l\"{o}senden Differentialgleichungen befriedigt durch die $m$
+Zwiege der $m$ werthigen Functionen $s$ und $z$ von $\zeta$,
+\[ (s_1, z_1),\enspace
+   (s_2, z_2),\ldots,\enspace
+   (s_m, z_m),\]
+welche f\"{u}r $\zeta = 0$ gleich
+\[ (s_1^0, z_1^0),\enspace
+   (s_2^0, z_2^0),\ldots,\enspace
+   (s_m^0, z_m^0) \]
+werden, und durch constante, also ihren Anfangswerthen
+$s_{m+1}^0,\ldots, z_{p+1}^0$ gleiche Werthe der Gr\"{o}ssen
+$s_{m+1}, z_{m+1};\ldots; s_{p+1}, z_{p+1}$.  Im letzteren Falle
+sind von den $p$ linearen homogenen Gleichungen
+\[ \sum_{\mu = 1}^{\mu = m}
+         \frac{\varphi_\pi(s_\mu, z_\mu) \, \partial z_\mu}{\displaystyle
+            \frac{\partial F(s_\mu, z_\mu)}{\partial s_\mu}}
+   = 0 \]
+f\"{u}r $\pi = 1,2,\ldots, p$ zwischen den Gr\"{o}ssen
+\[ \frac{\partial z_\mu}{\displaystyle
+      \frac{\partial F(s_\mu, z_\mu)}{\partial s_\mu}} \]
+$p + 1 - m$ eine Folge der \"{u}brigen; es ergeben sich hieraus
+$p + 1 - m$ Bedingungsgleichungen, welche, damit dieser Fall
+eintritt, zwischen den Functionen
+$(s_1, z_1),\enspace (s_2, z_2),\ldots,\enspace (s_m, z_m)$,
+und also auch zwischen ihren Anfangswerthen
+$(s_1^0, z_1^0),\enspace (s_2^0, z_2^0),\ldots,\enspace (s_m^0, z_m^0)$
+erf\"{u}llt sein m\"{u}ssen, und es k\"{o}nnen daher von diesen,
+wie oben (\S.~5) gefunden, nur $2m - p - 1$ beliebig gegeben
+werden.
+
+\medbreak
+
+\centerline{15.}
+
+\nobreak\medskip
+
+Es sei nun
+\[ \int  \frac{\varphi_\pi(s, z) \, \partial z}{\displaystyle
+            \frac{\partial F(s, z)}{\partial s}}
+      + \mbox{const.},\]
+durch das Innere von $T'$ integrirt, gleich $w_\pi$ und der
+Periodicit\"{a}tsmodul von $w_\pi$ f\"{u}r den
+$\nu \,$\-ten Querschnitt gleich $k_\pi^{(\nu)}$, so dass sich die
+Functionen $w_1, w_2,\ldots, w_p$ des Gr\"{o}ssenpaars $(s,z)$
+beim Uebertritt des Punkts $(s,z)$ von der negativen auf die
+positive Seite des $\nu \,$\-ten Querschnitts gleichzeitig um
+$k_1^{(\nu)}, k_2^{(\nu)},\ldots k_p^{(\nu)}$
+\"{a}ndern.  Zur Abk\"{u}rzung mag ein System von $p$ Gr\"{o}ssen
+$(b_1, b_2,\ldots, b_p)$ einem andern
+$(a_1, a_2,\ldots, a_p)$ \emph{congruent nach $2p$ Systemen
+zusammengeh\"{o}riger Moduln} genannt werden, wenn es aus ihm
+durch gleichzeitige Aenderungen s\"{a}mmtlicher Gr\"{o}ssen um
+zusammengeh\"{o}rige Moduln erhalten werden kann.  Ist der Modul
+der $\pi \,$\-ten Gr\"{o}sse im $\nu \,$\-ten Systeme
+$= k_\pi^{(\nu)}$, so heisst demnach
+\[ (b_1, b_2,\ldots, b_p) \equiv (a_1, a_2,\ldots, a_p),\]
+wenn
+\[ b_\pi = a_\pi + \sum_{\nu = 1}^{\nu = 2p} m_\nu k_\pi^{(\nu)} \]
+f\"{u}r $\pi = 1,2,\ldots, p$ und $m_1, m_2,\ldots, m_{2p}$ ganze
+Zahlen sind.
+
+Da sich $p$ beliebige Gr\"{o}ssen $a_1, a_2,\ldots, a_p$ immer
+und nur auf eine Weise in die Form
+$a_\pi = \sum\limits_{\nu = 1}^{\nu = 2p} \xi_\nu k_\pi^{(\nu)}$
+setzen lassen, so dass die $2p$ Gr\"{o}ssen $\xi$ reell sind, und
+durch Aenderung dieser Gr\"{o}ssen $\xi$ um ganze Zahlen alle
+congruenten Systeme und nur diese sich ergeben, so erh\"{a}lt man
+aus jeder Reihe congruenter Systeme eins und nur eins, wenn man
+in diesen Ausdr\"{u}cken jede Gr\"{o}sse~$\xi$ alle Werthe von
+einem beliebigen Werthe bis zu einem um $1$ gr\"{o}sseren, einen
+der beiden Grenzwerthe eingeschlossen, stetig durchlaufen
+l\"{a}sst.
+
+Dieses festgesetzt, folgt aus den obigen Differentialgleichungen
+oder aus den $p$ Gleichungen
+\[ \sum_{\mu = 1}^{\mu = p + 1} dw_\pi^{(\mu)} = 0
+   \mbox{ f\"{u}r } \pi = 1,2,\ldots, p \]
+durch Integration
+\[    \left(
+         {\textstyle \sum} w_1^{(\mu)},
+         {\textstyle \sum} w_2^{(\mu)},\ldots,
+         {\textstyle \sum} w_p^{(\mu)}
+      \right)
+   \equiv (c_1, c_2,\ldots, c_p),\]
+worin $c_1, c_2,\ldots, c_p$ constante von den Werthen
+$(s^0, z^0)$ abh\"{a}ngige Gr\"{o}ssen sind.
+
+\medbreak
+
+\centerline{16.}
+
+\nobreak\medskip
+
+Dr\"{u}ckt man $\zeta$ als Quotienten zweier ganzen Functionen
+von $s$ und $z$,
+$\displaystyle \frac{\chi}{\psi}$,
+aus, so sind die Gr\"{o}ssenpaare
+$(s_1, z_1),\ldots$, $(s_m, z_m)$
+die gemeinschaftlichen Wurzeln der Gleichungen $F = 0$ und
+$\displaystyle \frac{\chi}{\psi} = \zeta$.
+Da die ganze Function
+\[ \chi - \zeta \psi = f(s,z) \]
+f\"{u}r alle Werthenpaare, f\"{u}r welche $\chi$ und $\psi$
+gleichzeitig verschwinden ebenfalls, was auch $\zeta$ sei,
+verschwindet, so k\"{o}nnen die Gr\"{o}ssenpaare
+$(s_1, z_1),\ldots$, $(s_m, z_m)$
+auch definirt werden als gemeinschaftliche Wurzeln der Gleichung
+$F = 0$ und einer Gleichung $f(s,z) = 0$, deren Coefficienten so
+sich \"{a}ndern, dass alle \"{u}brigen gemeinschaftlichen Wurzeln
+constant bleiben.  Wenn $m < p + 1$, kann $\zeta$ in der Form
+$\displaystyle \frac{\varphi^{(1)}}{\varphi^{(2)}}$
+dargestellt werden (\S.~10) und $f$ in der Form
+\[ \varphi^{(1)} - \zeta \varphi^{(2)} = \varphi^{(3)}.\]
+Die allgemeinsten Werthe der den $p$ Gleichungen
+\[ \sum_{\mu = 1}^{\mu = p} dw_\pi^{(\mu)} = 0
+   \mbox{ f\"{u}r } \pi = 1,2,\ldots, p \]
+gen\"{u}genden Functionenpaare
+$(s_1, z_1),\ldots, (s_p, z_p)$
+werden daher gebildet durch $p$ gemeinschaftliche Wurzeln der
+Gleichungen $F = 0$ und $\varphi = 0$, welche so sich \"{a}ndern,
+dass die \"{u}brigen gemeinschaftlichen Wurzeln constant bleiben.
+Hieraus folgt leicht der sp\"{a}ter n\"{o}thige Satz, dass die
+Aufgabe, $p - 1$ von den $2p - 2$ Gr\"{o}ssenpaaren
+$(s_1, z_1),\ldots$, $(s_{2p-2}, z_{2p-2})$ als Functionen der
+$p - 1$ \"{u}brigen so zu bestimmen, dass die $p$ Gleichungen
+\[ \sum_{\mu = 1}^{\mu = 2p - 2} dw_\pi^{(\mu)} = 0
+   \mbox{ f\"{u}r } \pi = 1,2,\ldots, p \]
+erf\"{u}llt werden, v\"{o}llig allgemein gel\"{o}st wird, wenn
+man f\"{u}r diese $2p - 2$ Gr\"{o}ssenpaare die von den $r$
+Wurzeln $s = \gamma_\varrho$, $z = \delta_\varrho$ (\S.~6)
+verschiedenen gemeinschaftlichen Wurzeln der Gleichungen $F = 0$
+und $\varphi = 0$ oder die $2p - 2$ Werthenpaare nimmt, f\"{u}r
+welche $dw$ unendlich klein von der zweiten Ordnung wird, und
+dass diese Aufgabe daher nur \emph{eine} L\"{o}sung zul\"{a}sst.
+Solche Gr\"{o}ssenpaare sollen \emph{durch die Gleichung
+$\varphi = 0$ verkn\"{u}pft} heissen.  In Folge der Gleichungen
+\[ \sum_1^{2p - 2} dw_\pi^{(\mu)} = 0 \]
+wird
+\[ \left(
+      \sum_1^{2p - 2} w_1^{(\mu)}, \,
+      \sum_1^{2p - 2} w_2^{(\mu)}, \, \ldots, \,
+      \sum_1^{2p - 2} w_p^{(\mu)}
+   \right),\]
+die Summe \"{u}ber solche Gr\"{o}ssenpaare ausgedehnt, congruent
+einem constanten Gr\"{o}ssensysteme $(c_1, c_2,\ldots, c_p)$,
+worin $c_\pi$ nur von der additiven Constante in der
+Function~$w_\pi$ oder dem Anfangswerthe des sie ausdr\"{u}ckenden
+Integrals abh\"{a}ngt.
+
+\begin{center}
+\large\bfseries
+Zweite Abteilung.
+\end{center}
+
+\centerline{17.}
+
+\nobreak\medskip
+
+F\"{u}r die ferneren Untersuchungen \"{u}ber Integrale von
+algebraischen,\break
+$\overline{2p + 1} \,$\-fach zusammenh\"{a}ngenden
+Functionen ist die Betrachtung einer $p \,$\-fach unendlichen
+$\vartheta$-Reihe von grossem Nutzen, d.~h.\ einer $p \,$\-fach
+unendlichen Reihe, in welcher der Logarithmus des allgemeinen
+Gliedes eine ganze Function zweiten Grades der Stellenzeiger ist.
+Es sei in dieser Function f\"{u}r ein Glied, dessen Stellenzeiger
+$m_1, m_2,\ldots, m_p$
+sind, der Coefficient des Quadrats $m_\mu^2$ gleich
+$a_{\mu, \mu}$, des doppelten Products $m_\mu m_{\mu'}$ gleich
+$a_{\mu, \mu'} = a_{\mu', \mu}$, der doppelten Gr\"{o}sse $m_\mu$
+gleich $v_\mu$, und das constante Glied $= 0$.  Die Summe der
+Reihe, \"{u}ber alle ganzen positiven oder negativen Werthe der
+Gr\"{o}ssen $m$ ausgedehnt, werde als Function der $p$
+Gr\"{o}ssen $v$ betrachtet und durch
+$\vartheta(v_1, v_2,\ldots, v_p)$
+bezeichnet, so dass
+\begin{equation}
+\label{eqn-1}
+   \vartheta(v_1, v_2,\ldots, v_p)
+   = \left( \sum_{-\infty}^\infty \right)^p
+      e^{\left( \sum\limits_1^p \right)^2 a_{\mu, \mu'} m_\mu m_{\mu'}
+            + 2 \sum\limits_1^p v_\mu m_\mu},
+\end{equation}
+worin die Summationen im Exponenten sich auf $\mu$ und $\mu'$,
+die \"{a}usseren Summationen auf $m_1, m_2,\ldots, m_p$ beziehen.
+Damit diese Reihe convergirt, muss der reelle Theil von
+$\left( \sum\limits_1^p \right)^2 a_{\mu, \mu'} m_\mu m_{\mu'}$
+wesentlich negativ sein oder, als eine Summe von positiven oder
+negativen Quadraten reeller linearer von einander
+unabh\"{a}ngiger Functionen der Gr\"{o}ssen~$m$ dargestellt, aus
+$p$ negativen Quadraten zusammengesetzt sein.
+
+Die Function $\vartheta$ hat die Eigenschaft, dass es Systeme von
+gleichzeitigen Aenderungen der $p$ Gr\"{o}ssen $v$ giebt, durch
+welche $\log \vartheta$ nur um eine lineare Function der
+Gr\"{o}ssen~$v$ ge\"{a}ndert wird, und zwar $2p$ von einander
+unabh\"{a}ngige Systeme (d.~h.\ von denen keins eine Folge der
+\"{u}brigen ist).  Denn man hat, die unge\"{a}ndert bleibenden
+Gr\"{o}ssen~$v$ unter dem Functionszeichen $\vartheta$
+weglassend, f\"{u}r $\mu = 1,2,\ldots,p$
+\begin{equation}
+\label{eqn-2}
+\vartheta = \vartheta( v_\mu + \pi i) \quad \mbox{und}
+\end{equation}
+\begin{equation}
+\label{eqn-3}
+\vartheta = e^{2 v_\mu + a_{\mu, \mu}}
+         \vartheta( v_1 + a_{1,\mu}, v_2 + a_{2,\mu},\ldots, v_p + a_{p,\mu}),
+\end{equation}
+wie sich sofort ergiebt, wenn man in der Reihe f\"{u}r
+$\vartheta$ den Stellenzeiger $m_\mu$ in $m_\mu + 1$ verwandelt,
+wodurch sie, w\"{a}hrend ihr Werth unge\"{a}ndert bleibt, in den
+Ausdruck zur Rechten \"{u}bergeht.
+
+Die Function $\vartheta$ ist durch diese Relationen und durch die
+Eigenschaft, allenthalben endlich zu bleiben, bis auf einen
+constanten Factor bestimmt.  Denn in Folge der letzteren
+Eigenschaft und der Relationen (\ref{eqn-2}) ist sie eine
+einwerthige, f\"{u}r endliche $v$ endliche Function von
+$e^{2 v_1}, e^{2 v_2},\ldots, e^{2v_p}$
+und folglich in eine $p \,$\-fach unendliche Reihe von der Form
+\[ \left( \sum_{-\infty}^\infty \right)^p
+      A_{m_1, m_2,\ldots, m_p}
+      e^{2 \sum\limits_1^p v_\mu m_\mu} \]
+mit den constanten Coefficienten $A$ entwickelbar.  Aus den
+Relationen (\ref{eqn-3}) ergiebt sich aber
+\[ A_{m_1,\ldots, m_\nu + 1,\ldots, m_p}
+   = A_{m_1,\ldots, m_\nu,\ldots, m_p}
+      e^{2 \sum\limits_1^p a_{\mu, \nu} m_\mu + a_{\nu, \nu}} \]
+folglich
+\[ A_{m_1,\ldots, m_p}
+   = \mbox{const.} e^{ \left( \sum\limits_1^p \right)^2
+      a_{\mu, \mu'} m_\mu m_{\mu'}},
+\quad\mbox{w.~z.~b.~w.} \]
+
+Man kann daher diese Eigenschaften der Function zu ihrer
+Definition verwenden.  Die Systeme gleichzeitiger Aenderungen der
+Gr\"{o}ssen~$v$, durch welche sich $\log \vartheta$ nur um eine
+lineare Function von ihnen \"{a}ndert, sollen \emph{Systeme
+zusammengeh\"{o}riger Periodicit\"{a}tsmoduln der unabh\"{a}ngig
+ver\"{a}nderlichen Gr\"{o}ssen} in dieser $\vartheta$-Function
+genannt werden.
+
+\medbreak
+
+\centerline{18.}
+
+\nobreak\medskip
+
+Ich substituire nun f\"{u}r die $p$ Gr\"{o}ssen
+$v_1, v_2,\ldots, v_p$, $p$ immer endlich bleib\-ende Integrale
+$u_1, u_2,\ldots, u_p$ rationaler Functionen einer
+ver\"{a}nderlichen Gr\"{o}sse~$z$ und einer $\overline{2p + 1} \,$\-fach
+zusammenh\"{a}ngenden algebraischen Function~$s$ dieser
+Gr\"{o}sse, und f\"{u}r die zusammengeh\"{o}rigen
+Periodicit\"{a}tsmoduln der Gr\"{o}ssen~$v$ zusammengeh\"{o}rige
+(d.~h.\ an demselben Querschnitte stattfindende)
+Periodicit\"{a}tsmoduln dieser Integrale, so dass
+$\log \vartheta$ in einer Function \emph{einer}
+Ver\"{a}nderlichen $z$ \"{u}bergeht, welche sich, wenn $s$ und
+$z$ nach beliebiger stetiger Aenderung von $z$ den vorigen Werth
+wieder annehmen, um lineare Functionen der Gr\"{o}ssen $u$
+\"{a}ndert.
+
+Es soll zun\"{a}chst gezeigt werden, dass eine solche
+Substitution f\"{u}r jede $\overline{2p + 1} \,$\-fach zusammenh\"{a}ngende
+Function~$s$ m\"{o}glich ist.  Die Zerschneidung der
+Fl\"{a}che~$T$ muss zu diesem Zwecke so durch $2p$ in sich
+zur\"{u}cklaufende Schnitte
+$a_1, a_2,\ldots, a_p$, $b_1, b_2,\ldots, b_p$
+geschehen, dass folgende Bedingungen erf\"{u}llt werden.  Wenn
+man $u_1, u_2,\ldots, u_p$ so w\"{a}hlt, dass der
+Periodicit\"{a}tsmodul von $u_\mu$ an dem Schnitte $a_\mu$ gleich
+$\pi i$, an den \"{u}brigen Schnitten $a$ gleich $0$ ist, und man
+den Periodicit\"{a}tsmodul von $u_\mu$ an dem Schnitte $b_\nu$
+durch $a_{\mu, \nu}$ bezeichnet, so muss
+$a_{\mu, \nu} = a_{\nu, \mu}$ und der reelle Theil von
+$\sum\limits_{\mu, \mu'} a_{\mu, \mu'} m_\mu m_{\mu'}$
+f\"{u}r alle reellen (ganzen) Werthe der $p$ Gr\"{o}ssen $m$
+negativ sein.
+
+\medbreak
+
+\centerline{19.}
+
+\nobreak\medskip
+
+Die Zerlegung der Fl\"{a}che~$T$ werde nicht wie bisher nur durch
+in sich zur\"{u}cklaufende Querschnitte, sondern folgendermassen
+ausgef\"{u}hrt.  Man mache zuerst einen in sich
+zur\"{u}cklaufenden die Fl\"{a}che nicht zerst\"{u}ckelnden
+Schnitt~$a_1$ und f\"{u}hre dann einen Querschnitt~$b_1$ von der
+positiven Seite von $a_1$ auf die negative zum Anfangspunkte
+zur\"{u}ck, worauf die Begrenzung aus \emph{einem} St\"{u}cke
+bestehen wird.  Einen dritten die Fl\"{a}che nicht
+zerst\"{u}ckelnden Querschnitt kann man demzufolge (wenn die
+Fl\"{a}che noch nicht einfach zusammenh\"{a}ngend ist) von einem
+beliebigen Punkte dieser Begrenzung bis zu einem beliebigen
+Begreunzungspunkte, also auch zu einem fr\"{u}heren Punkte dieses
+Querschnitts f\"{u}hren.  Man thue das Letztere, so dass dieser
+Querschnitt aus einer in sich zur\"{u}cklaufenden Linie $a_2$ und
+einem dieser Linie voraufgehenden Theile~$c_1$ besteht, welche das
+fr\"{u}here Schnittsystem mit ihr verbindet.  Den folgenden
+Querschnitt $b_2$ ziehe man von der positiven Seite von $a_2$ auf
+die negative zum Anfangspunkte zur\"{u}ck, worauf die Begrenzung
+wieder aus \emph{einem} St\"{u}cke besteht.  Die weitere
+Zerschneidung kann daher, wenn n\"{o}thig, wieder durch zwei in
+demselben Punkte anfangende und endende Schnitte $a_3$ und $b_3$
+und eine das System der Linien $a_2$ und $b_2$ mit ihnen
+verbindende Linie~$c_2$ geschehen.  Wird dieser Verfahren
+fortgesetzt, bis die Fl\"{a}che einfach zusammenh\"{a}ngend ist,
+so erh\"{a}lt man ein Schnittnetz, welches aus $p$ Paaren von
+zwei in einem und demselben Punkte anfangenden und endenden
+Linien $a_1$ und $b_1$, $a_2$ und $b_2$,\dots, $a_p$ und $b_p$
+besteht und aus $p - 1$ Linien $c_1, c_2,\ldots, c_{p-1}$, welche
+jedes Paar mit dem folgenden verbinden.  Es m\"{o}ge $c_\nu$ von
+einem Punkte von $b_\nu$ nach einem Punkte von $a_{\nu + 1}$
+gehen.  Das Schnittnetz wird als so entstanden betrachtet, dass
+der $\overline{2\nu - 1} \,$\-te Querschnitt aus $c_{\nu - 1}$ und
+der von dem Endpunkte von $c_{\nu - 1}$ zu diesem
+zur\"{u}ckgezogenen Linie $a_\nu$ besteht, und der $2\nu \,$\-te
+durch die von der \emph{positiven} auf die \emph{negative} Seite
+von $a_\nu$ gezogene Linie~$b_\nu$ gebildet wird.  Die Begrenzung
+der Fl\"{a}che besteht bei dieser Zerschneidung nach einer
+geraden Anzahl von Schnitten aus \emph{einem}, nach einer
+ungeraden aus zwei St\"{u}cken.
+
+Ein allenthalben endliches Integral~$w$ einer rationalen Function
+von $s$ und $z$ nimmt dann zu beiden Seiten einer Linie~$c$
+denselben Werth an.  Denn die ganze fr\"{u}her entstandene
+Begrenzung besteht, wie bemerkt, aus \emph{einem} St\"{u}cke und
+bei der Integration l\"{a}ngs derselben von der einen Seite der
+Linie~$c$ bis auf die andere wird $\int \partial w$ durch jedes
+fr\"{u}her entstandene Schnittelement zweimal, in
+entgegengesetzter Richtung, erstreckt.  Eine solche Function ist
+daher in $T$ allenthalben ausser der Linien $a$ und $b$ stetig.
+Die durch diese Linien zerschnittene Fl\"{a}che~$T$ m\"{o}ge
+durch $T''$ bezeichnet werden.
+
+\medbreak
+
+\centerline{20.}
+
+\nobreak\medskip
+
+Es seien nun $w_1, w_2,\ldots, w_p$ von einander unabh\"{a}ngige
+solche Functionen, und der Periodicit\"{a}tsmodul von $w_\mu$ an
+dem Querschnitte $a_\nu$ gleich $A_\mu^{(\nu)}$ und an dem
+Querschnitte $b_\nu$ gleich $B_{\mu}^{(\nu)}$.  Es ist dann das
+Integral $\int w_\mu \, dw_{\mu'}$, um die Fl\"{a}che~$T''$
+positiv herum ausgedehnt, $= 0$, da die Function unter dem
+Integralzeichen allenthalben endlich ist.  Bei dieser Integration
+wird jede der Linien $a$ und $b$ zweimal, einmal in positiver und
+einmal in negativer Richtung durchlaufen, und es muss w\"{a}hrend
+jener Integration, wo sie als Begrenzung des positiverseits
+gelegenen Gebiets dient, f\"{u}r $w_\mu$ der Werth auf der
+positiven Seite oder $w_\mu^+$, w\"{a}hrend dieser der Werth auf
+der negativen oder $w_\mu^-$ genommen werden.  Es ist also dies
+Integral gleich der Summe aller Integrale
+$\int (w_\mu^+ - w_\mu^-) \, dw_{\mu'}$
+durch die Linien $a$ und $b$.  Die Linien~$b$ f\"{u}hren von der
+positiven zur negativen Seite der Linien $a$, und folglich die
+Linien~$a$ von der negativen zur positiven Seite der Linien~$b$.
+Das Integral durch die Linie $a_\nu$ ist daher
+\[ = \int A_\mu^{(\nu)} \, dw_{\mu'}
+   = A_\mu^{(\nu)} \int dw_{\mu'}
+   = A_\mu^{(\nu)} B_{\mu'}^{(\nu)},\]
+und das Integral durch die Linie $b_\nu$
+\[ = \int B_\mu^{(\nu)} \, dw_{\mu'}
+   = - B_\mu^{(\nu)} A_{\mu'}^{(\nu)}.\]
+Das Integral $\int w_\mu \, dw_{\mu'}$, um die Fl\"{a}che~$T''$
+positive herum erstreckt, ist also
+\[ = \sum_\nu ( A_\mu^{(\nu)} B_{\mu'}^{(\nu)}
+      - B_\mu^{(\nu)} A_{\mu'}^{(\nu)} ),\]
+und diese Summe folglich $= 0$.  Diese Gleichung gilt f\"{u}r je
+zwei von den Functionen $w_1, w_2,\ldots, w_p$ und liefert also
+$\displaystyle \frac{p(p - 1)}{1 \mathbin{.} 2}$
+Relationen zwischen deren Periodicit\"{a}tsmoduln.
+
+Nimmt man f\"{u}r die Functionen $w$ die Functionen $u$ oder
+w\"{a}hlt man sie so, dass $A_\mu^{(\nu)}$ f\"{u}r ein von $\mu$
+verschiedenes $\nu$ gleich $0$ und $A_\nu^{(\nu)} = \pi i$ ist,
+so gehen diese Relationen \"{u}ber in
+$B_{\mu'}^{(\mu)} \pi i - B_\mu^{(\mu')} \pi i = 0$
+oder in $a_{\mu, \mu'} = a_{\mu', \mu}$.
+
+\medbreak
+
+\centerline{21.}
+
+\nobreak\medskip
+
+Es bleibt noch zu zeigen, dass die Gr\"{o}ssen~$a$ die zweite
+oben n\"{o}thig gefundene Eigenschaft besitzen.
+
+Man setze $w = \mu + \nu i$ und den Periodicit\"{a}tsmodul dieser
+Function an dem Schnitte $a_\nu$ gleich
+$A^{(\nu)} = \alpha_\nu + \gamma_\nu i$
+und an dem Schnitte $b_\nu$ gleich
+$B^{(\nu)} = \beta_\nu + \delta_\nu i$.
+Es ist dann das Integral
+\[ \int  \left(
+            \left( \frac{\partial \mu}{\partial x} \right)^2
+          + \left( \frac{\partial \mu}{\partial y} \right)^2
+         \right) \, dT \]
+oder\footnote{Dies Integral dr\"{u}ckt den Inhalt der Fl\"{a}che
+aus, welche die Gesammtheit der Werthe, die $w$ innerhalb $T''$
+annimmt, auf der $w$-Ebene repr\"{a}sentirt.}
+\[ \int  \left(
+            \frac{\partial \mu}{\partial x}
+            \frac{\partial \nu}{\partial y}
+          - \frac{\partial \mu}{\partial y}
+            \frac{\partial \nu}{\partial x}
+         \right) \, dT \]
+durch die Fl\"{a}che $T''$ gleich dem Begrenzungsintegral
+$\int \mu \, d\nu$ um $T''$ positiv herum erstreckt, also gleich
+der Summe der Integrale $\int ( \mu^+ - \mu^- ) \, d\nu$ durch
+die Linien $a$ und $b$.  Das Integral durch die Linie~$a_\nu$ ist
+$= \alpha_\nu \int d\nu = \alpha_\nu \delta_\nu$,
+das Integral durch die Linie $b_\nu$ gleich
+$\beta_\nu \int d\nu = - \beta_\nu \gamma_\nu$,
+und folglich
+\[ \int  \left(
+            \left( \frac{\partial \mu}{\partial x} \right)^2
+          + \left( \frac{\partial \mu}{\partial y} \right)^2
+         \right) \, dT
+   = \sum_{\nu = 1}^{\nu = p}
+         (\alpha_\nu \delta_\nu - \beta_\nu \gamma_\nu).\]
+Diese Summe ist daher stets positiv.
+
+Hieraus ergiebt sich die zu beweisende Eigenschaft der
+Gr\"{o}ssen~$\alpha$, wenn man f\"{u}r $w$ setzt
+$u_1 m_1 + u_2 m_2 + \cdots + u_p m_p$.
+Denn es ist dann
+$A^{(\nu)} = m_\nu \pi i$,
+$B^{(\nu)} = \sum\limits_\mu a_{\mu , \nu} m_\mu$,
+folglich $a_\nu$ stets $= 0$ und
+\[ \int  \left(
+            \left( \frac{\partial \mu}{\partial x} \right)^2
+          + \left( \frac{\partial \mu}{\partial y} \right)^2
+         \right) \, dT
+   = - \sum \beta_\nu \gamma_\nu = - \pi \sum m_\nu \beta_\nu \]
+oder gleich dem reellen Theile von
+$-\pi \sum\limits_{\mu, \nu} a_{\mu, \nu} m_\mu m_\nu$,
+welche also f\"{u}r alle reellen Werthe der Gr\"{o}ssen $m$
+positiv ist.
+
+\medbreak
+
+\centerline{22.}
+
+\nobreak\medskip
+
+Setzt man nun in der $\vartheta$-Reihe (1) \S.~17 f\"{u}r
+$a_{\mu, \mu'}$ den Periodicit\"{a}tsmodul der Function $u_\mu$
+an dem Schnitt $b_{\mu'}$ und, durch $e_1, e_2,\ldots, e_p$
+beliebige Constanten bezeichnend, $u_\mu - e_\mu$ f\"{u}r
+$v_\mu$, so erh\"{a}lt man eine in jedem Punkte von $T$ eindeutig
+bestimmte Function von $z$,
+\[ \vartheta( u_1 - e_1, u_2 - e_2,\ldots, u_p - e_p ),\]
+welche ausser den Linien~$b$ stetig und endlich und auf der
+positiven Seite der Linie $b_\nu$
+$\left( e^{-2(u_\nu - e_\nu)} \right) \,$\-mal so gross als auf der
+negativen ist, wenn man den Functionen~$u$ in den Linien~$b$
+selbst den Mittelwerth von den Werthen zu beiden Seiten beilegt.
+F\"{u}r wie viele Punkte von $T'$ oder Werthepaare von $s$ und
+$z$ diese Function unendlich klein von der ersten Ordung wird,
+kann durch Betrachtung des Begrenzungsintegrals
+$\int d \log \vartheta$,
+um $T'$ positiv herum erstreckt, gefunden werden; denn dieses
+Integral ist gleich der Anzahl dieser Punkte multiplicirt mit
+$2\pi i$.  Andererseits ist dies Integral gleich der Summe der
+Integrale
+$\int ( d \log \vartheta^+ - d \log \vartheta^-)$
+durch s\"{a}mmtliche Schnittlinien $a$, $b$ und $c$.  Die
+Integrale durch die Linien $a$ und $c$ sind $= 0$, das Integral
+durch $b_\nu$ aber gleich $- 2 \int du_\nu = 2\pi i$, die Summe
+aller also $= p \, 2 \pi i$.  Die Function $\vartheta$ wird daher
+unendlich klein von der ersten Ordnung in $p$ Punkten der
+Fl\"{a}che~$T'$, welche durch $\eta_1, \eta_2,\ldots, \eta_p$
+bezeichnet werden m\"{o}gen.
+
+Durch einen positiven Umlauf des Punktes $(s,z)$ um einen dieser
+Punkte w\"{a}chst $\log \vartheta$ um $2\pi i$, durch einen
+positiven Umlauf um das Schnittepaar $a_\nu$ und $b_\nu$ um
+$-2 \pi i$.  Um daher die Function $\log \vartheta$ allenthalben
+eindeutig zu bestimmen, f\"{u}hre man von jedem Punkte~$\eta$
+einen Schnitt durch das Innere nach je einem Linienpaar, von
+$\eta_\nu$ den Schnitt $l_\nu$ nach $a_\nu$ und $b_\nu$, und zwar
+nach ihrem gemeinschaftlichen Anfangs- und Endpunkte, und nehme
+in der dadurch enstanden Fl\"{a}che $T^*$ die Function
+allenthalben stetig an.  Sie ist dann auf der positiven Seite der
+Linien $l$ um $-2\pi i$, auf der positiven Seite der Linie
+$a_\nu$ um $g_\nu \, 2 \pi i$ und auf der positiven Seite der
+Linie $b_\nu$ um
+\[ - 2 (u_\nu - e_\nu) - h_\nu \, 2 \pi i \]
+gr\"{o}sser, als auf der negativen, wenn $g_\nu$ und $h_\nu$
+ganze Zahlen bezeichnen.
+
+Die Lage der Punkte $\eta$ und die Werthe der Zahlen $g$ und $h$
+h\"{a}ngen von den Gr\"{o}ssen $e$ ab, und diese Abh\"{a}ngigkeit
+l\"{a}sst sich auf folgendem Wege n\"{a}her bestimmen.  Das
+Integral
+$\int \log \vartheta \, du_\mu$, um $T^*$
+positiv herum erstreckt, ist $= 0$, da die Function
+$\log \vartheta$ in $T^*$ stetig bleibt.  Dieses Integral ist
+aber auch gleich der Summe der Integrale
+$\int ( \log \vartheta^+ - \log \vartheta^-) \, du_\mu$
+durch s\"{a}mmtliche Schnittlinien $l$, $a$, $b$ und $c$ und
+findet sich, wenn man den Werth von $u_\mu$ im Punkte $\eta_\nu$
+durch $\alpha_\mu^{(\nu)}$ bezeichnet,
+\[ = 2 \pi i \left( \sum_\nu \alpha_\mu^{(\nu)}
+      + h_\mu \, \pi i
+      + \sum_\nu g_\nu a_{\nu, \mu}
+      - e_\mu + k_\mu \right),\]
+worin $k_\mu$ von den Gr\"{o}ssen $e$, $g$, $h$ und der Lage der
+Punkte $\eta$ unabh\"{a}ngig ist.  Dieser Ausdruck ist also
+$= 0$.
+
+Die Gr\"{o}sse $k_\mu$ h\"{a}ngt von der Wahl der
+Function~$u_\mu$ ab, welche durch die Bedingung, an dem
+Schnitte~$a_\mu$ den Periodicit\"{a}tsmodul $\pi i$, an den
+\"{u}brigen Schnitten~$a$ den Periodicit\"{a}tmodul $0$
+anzunehmen, nur bis auf eine additive Constante bestimmt ist.
+Nimmt man f\"{u}r $u_\mu$ eine um die Constante~$c_\mu$
+gr\"{o}ssere Function und zugleich $e_\mu$ um $c_\mu$
+gr\"{o}sser, so bleiben die Function~$\vartheta$ und folglich die
+Punkte~$\eta$ und die Gr\"{o}ssen $g$, $h$ unge\"{a}ndert, der
+Werth von $u_\mu$ im Punkte~$\eta_\nu$ aber wird
+$\alpha_\mu^{(\nu)} + c_\mu$.  Es geht daher $k_\mu$ in
+$k_\mu - (p - 1) c_\mu$ \"{u}ber und verschwindet, wenn
+$\displaystyle c_\mu = \frac{k_\mu}{p - 1}$ genommen wird.
+
+Man kann folglich, wie f\"{u}r die Folge geschehen soll, die
+additiven Constanten in den Functionen~$u$ oder die Anfangswerthe
+in den sie ausdr\"{u}ckenden Integralen so bestimmen, dass man
+durch die Substitution von $u_\mu - \sum \alpha_\mu^{(\nu)}$ f\"{u}r
+$v_\mu$ in $\log \vartheta (v_1,\ldots, v_p)$ eine Function erh\"{a}lt,
+welche in den Punkten $\eta$ logarithmisch unendlich wird und,
+durch $T^*$ stetig fortgesetzt, auf der positiven Seite der
+Linien $l$ um $- 2 \pi i$, der Linien $a$ um $0$ und der Linie
+$b_\nu$ um
+$-2 ( u_\nu - \sum\limits_1^p \alpha_\nu^{(\mu)} )$
+gr\"{o}sser wird, als auf der negativen.  Zur Bestimmung dieser
+Anfangswerthe werden sich sp\"{a}ter leichtere Mittel darbieten,
+als der obige Integralausdruck f\"{u}r $k_\mu$.
+
+\medbreak
+
+\centerline{23.}
+
+\nobreak\medskip
+
+Setzt man
+$(u_1, u_2,\ldots, u_p)
+   \equiv (\alpha_1^{(p)}, \alpha_2^{(p)},\ldots, \alpha_p^{(p)})$
+nach den $2p$ Modulsystemen der Functionen $u$ (\S.~15), also
+\[ (v_1, v_2,\ldots, v_p) \equiv
+         \left(
+          - \sum_1^{p-1} \alpha_1^{(\nu)}, \,
+          - \sum_1^{p-1} \alpha_2^{(\nu)},\ldots, \,
+          - \sum_1^{p-1} \alpha_p^{(\nu)}
+         \right),\]
+so wird $\vartheta = 0$.  Wird umgekehrt $\vartheta = 0$ f\"{u}r
+$v_\mu = r_\mu$, so ist $(r_1, r_2,\ldots, r_p)$ einen
+Gr\"{o}ssensysteme von der Form
+\[       \left(
+          - \sum_1^{p-1} \alpha_1^{(\nu)}, \,
+          - \sum_1^{p-1} \alpha_2^{(\nu)},\ldots, \,
+          - \sum_1^{p-1} \alpha_p^{(\nu)}
+         \right) \]
+congruent.  Denn setzt man
+$v_\mu = u_\mu - \alpha_\mu^{(p)} + r_\mu$,
+indem man $\eta_p$ beliebig w\"{a}hlt, so wird die Function
+$\vartheta$ ausser in $\eta_p$ noch in $p - 1$ andern Punkten
+unendlich klein von der ersten Ordnung, und bezeichnet man diese
+durch $\eta_1, \eta_2,\ldots, \eta_{p-1}$, so ist
+\[       \left(
+          - \sum_1^{p-1} \alpha_1^{(\nu)}, \,
+          - \sum_1^{p-1} \alpha_2^{(\nu)},\ldots, \,
+          - \sum_1^{p-1} \alpha_p^{(\nu)}
+         \right)
+   \equiv (r_1, r_2,\ldots, r_p).\]
+
+Die Function $\vartheta$ bleibt unge\"{a}ndert, wenn man
+s\"{a}mmtliche Gr\"{o}ssen $v$ in's Entgegengesetzte verwandelt;
+denn verwandelt man in der Reihe f\"{u}r
+\[ \vartheta(v_1, v_2,\ldots, v_p) \]
+s\"{a}mmtliche Indices $m$ in's Entgegengesetze, wodurch der
+Werth der Reihe unge\"{a}ndert bleibt, da $- m_\nu$ dieselben
+Werthe wie $m_\nu$ durchl\"{a}uft, so geht
+$\vartheta(v_1, v_2,\ldots, v_p)$
+\"{u}ber in
+$\vartheta(-v_1, -v_2,\ldots, -v_p)$.
+
+Nimmt man nun die Punkte $\eta_1, \eta_2,\ldots, \eta_{p-1}$
+beliebig an, so wird
+\[ \vartheta
+         \left(
+          - \sum\limits_1^{p-1} \alpha_1^{(\nu)},\ldots, \,
+          - \sum\limits_1^{p-1} \alpha_p^{(\nu)}
+         \right)
+   = 0 \]
+und folglich, da die Function $\vartheta$ wie eben bemerkt gerade
+ist, auch
+\[ \vartheta
+         \left(
+            \sum\limits_1^{p-1} \alpha_1^{(\nu)},\ldots, \,
+            \sum\limits_1^{p-1} \alpha_p^{(\nu)}
+         \right)
+   =  0.\]
+Es lassen sich also die $p - 1$ Punkte
+$\eta_p, \eta_{p-1},\ldots, \eta_{2p - 2}$
+so bestimmen, dass
+\[       \left(
+            \sum_1^{p-1} \alpha_1^{(\nu)},\ldots, \,
+            \sum_1^{p-1} \alpha_p^{(\nu)}
+         \right)
+   \equiv
+         \left(
+          - \sum_p^{2p-2} \alpha_1^{(\nu)},\ldots, \,
+          - \sum_p^{2p-2} \alpha_p^{(\nu)}
+         \right) \]
+und folglich
+\[       \left(
+            \sum_1^{2p-2} \alpha_1^{(\nu)},\ldots, \,
+            \sum_1^{2p-2} \alpha_p^{(\nu)}
+         \right)
+   \equiv (0,\ldots, 0) \]
+ist.  Die Lage der $p - 1$ letzten Punkte h\"{a}ngt dann von der
+Lage der $p - 1$ ersten so ab, dass bei beliebiger stetiger
+Aenderung derselben
+$\sum\limits_1^{2p - 2} d\alpha_\pi^{(\nu)} = 0$
+f\"{u}r $\pi = 1,2,\ldots, p$, und folglich sind (\S.~16) die
+Punkte $\eta$ solche $2p - 2$ Punkte, f\"{u}r welche ein $dw$
+unendlich klein von der zweiten Ordnung wird, oder wenn man den
+Werth des Gr\"{o}ssenpaars $(s,z)$ im Punkte $\eta_\nu$ durch
+$(\sigma_\nu, \zeta_\nu)$ bezeichnet, so sind
+$(\sigma_1, \zeta_1),\ldots,$ $(\sigma_{2p-2}, \zeta_{2p-2})$
+durch die Gleichung $\varphi = 0$ verkn\"{u}pfte Werthenpaare
+(\S.~16).
+
+{\itshape
+Bei den hier gew\"{a}hlten Anfangswerthen der Integrale $u$ wird
+also
+\[       \left(
+            \sum_1^{2p-2} u_1^{(\nu)},\ldots, \,
+            \sum_1^{2p-2} u_p^{(\nu)}
+         \right)
+   \equiv (0,\ldots, 0),\]
+wenn die Summationen \"{u}ber s\"{a}mmtliche von den
+Gr\"{o}ssenpaaren $(\gamma_\varrho, \delta_\varrho)$} (\S.~6)
+{\itshape
+verschiedene gemeinschaftliche Wurzeln der Gleichung $F = 0$ und
+der Gleichung
+$c_1 \varphi_1 + c_2 \varphi_2 + \cdots + c_p \varphi_p = 0$
+erstreckt werden, wobei die constanten Gr\"{o}ssen~$c$ beliebig
+sind.}
+
+Sind $\varepsilon_1, \varepsilon_2,\ldots, \varepsilon_m$
+$m$~Punkte, f\"{u}r welche eine rationale Function $\xi$ von $s$
+und $z$, die $m \,$\-mal unendlich von der ersten Ordnung wird,
+denselben Werth annimmt, und $u_\pi^{(\mu)}$, $s_\mu$, $z_\mu$
+die Werthe von $u_\pi$, $s$, $z$ im Punkte $\varepsilon_\mu$, so
+ist (\S.~15)
+$( \sum\limits_1^m u_1^{(\mu)}, \,
+   \sum\limits_1^m u_2^{(\mu)},\ldots, \,
+   \sum\limits_1^m u_p^{(\mu)} )$
+congruent einem constanten, d.~h.\ vom Werthe der
+Gr\"{o}sse~$\xi$ unabh\"{a}ngigen Gr\"{o}ssensysteme
+$(b_1, b_2,\ldots, b_p)$, und es kann dann f\"{u}r jede beliebige
+Lage eines Punktes $\varepsilon$ die Lage der \"{u}brigen so
+bestimmt werden, dass
+\[       \left(
+            \sum_1^m u_1^{(\mu)},\ldots, \,
+            \sum_1^m u_p^{(\mu)}
+         \right)
+   \equiv (b_1,\ldots, b_p).\]
+Man kann daher, wenn $m = p$, $(u_1 - b_1,\ldots, u_p - b_p)$
+und, wenn $m < p$,
+\[    \left(
+         u_1 - \sum_1^{p - m} \alpha_1^{(\nu)} - b_1,\ldots, \,
+         u_p - \sum_1^{p - m} \alpha_p^{(\nu)} - b_p
+      \right) \]
+f\"{u}r jede beliebige Lage des Punktes $(s,z)$ und der $p - m$
+Punkte $\eta$ auf die Form
+$( - \sum\limits_1^{p - 1} \alpha_1^{(\nu)},\ldots, \,
+   - \sum\limits_1^{p - 1} \alpha_p^{(\nu)} )$
+bringen, indem man einen der Punkte $\varepsilon$ mit $(s, z)$
+zusammenfallen l\"{a}sst, und folglich ist
+\[ \vartheta
+      \left(
+         u_1 - \sum_1^{p - m} \alpha_1^{(\nu)} - b_1,\ldots, \,
+         u_p - \sum_1^{p - m} \alpha_p^{(\nu)} - b_p
+      \right) \]
+f\"{u}r jedwede Werthe des Gr\"{o}ssenpaars $(s,z)$ und der
+$p - m$ Gr\"{o}ssenpaare $(\sigma_\nu, \zeta_\nu)$ gleich~$0$.
+
+\medbreak
+
+\centerline{24.}
+
+\nobreak\medskip
+
+Aus der Untersuchung des \S.~22 folgt als Corollar, dass ein
+beliebig gegebenes Gr\"{o}ssensystem $(e_1,\ldots, e_p)$ immer
+einem und nur einem Gr\"{o}ssensysteme von der Form
+$( \sum\limits_1^p \alpha_1^{(\nu)},\ldots,
+   \sum\limits_1^p \alpha_p^{(\nu)} )$
+congruent ist, wenn die Function
+$\vartheta( u_1 - e_1,\ldots, u_p - e_p )$
+nicht identisch verschwindet; denn es m\"{u}ssen dann die
+Punkte~$\eta$ die $p$ Punkte sein, f\"{u}r welche diese
+Function~$0$ wird.  Wenn aber
+$\vartheta( u_1^{(p)} - e_1,\ldots, u_p^{(p)} - e_p )$
+f\"{u}r jeden Werth von $(s_p, z_p)$ verschwindet, so l\"{a}sst
+sich
+\[ (u_1^{(p)} - e_1,\ldots, u_p^{(p)} - e_p)
+   \equiv
+         \left(
+          - \sum_1^{p - 1} u_1^{(\nu)},\ldots, \,
+          - \sum_1^{p - 1} u_p^{(\nu)}
+         \right) \]
+setzen (\S.~23), und es lassen sich also f\"{u}r jeden Werth des
+Gr\"{o}ssenpaars $(s_p, z_p)$ die Gr\"{o}ssenpaare
+$(s_1, z_1),\ldots,$ $(s_{p-1}, z_{p-1})$
+so bestimmen, dass
+\[       \left(
+            \sum_1^p u_1^{(\nu)},\ldots, \,
+            \sum_1^p u_p^{(\nu)}
+         \right)
+   \equiv (e_1,\ldots, e_p),\]
+und folglich, bei stetiger Aenderung von $(s_p, z_p)$,
+$\sum\limits_1^p du_\pi^{(\nu)} = 0$
+ist f\"{u}r $\pi = 1,2,\ldots,p$.  Die $p$ Gr\"{o}ssenpaare
+$(s_\nu, z_\nu)$ sind daher $p$ von den Gr\"{o}ssenpaaren
+$(\gamma_\varrho, \delta_\varrho)$ verschiedene Wurzeln einer
+Gleichung $\varphi = 0$, deren Coefficienten so sich \"{a}ndern,
+dass die \"{u}brigen $p - 2$ Wurzeln constant bleiben.
+Bezeichnet man die Werthe von $u_\pi$ f\"{u}r diese $p - 2$
+Werthenpaare von $s$ und $z$ durch
+$u_\pi^{(p+1)}, u_\pi^{(p+2)},\ldots, u_\pi^{(2p - 2)}$,
+so ist
+\[       \left(
+            \sum_1^{2p - 2} u_1^{(\nu)},\ldots, \,
+            \sum_1^{2p - 2} u_p^{(\nu)}
+         \right)
+   \equiv (0,\ldots, 0),\]
+und folglich
+\[ (e_1,\ldots, e_p) \equiv
+         \left(
+          - \sum_{p+1}^{2p - 2} u_1^{(\nu)},\ldots, \,
+          - \sum_{p+1}^{2p - 2} u_p^{(\nu)}
+         \right).\]
+Umgekehrt ist, wenn diese Congruenz stattfindet,
+\[ \vartheta( u_1^{(p)} - e_1,\ldots, u_p^{(p)} - e_p)
+   = \vartheta
+         \left(
+            \sum_p^{2p - 2} u_1^{(\nu)},\ldots, \,
+            \sum_p^{2p - 2} u_p^{(\nu)}
+         \right)
+   = 0.\]
+
+{\itshape
+Ein beliebig gegebenes Gr\"{o}ssensystem $(e_1,\ldots, e_p)$ ist
+also nur einem Gr\"{o}ssensystem von der Form
+$( \sum\limits_1^p \alpha_1^{(\nu)},\ldots,
+   \sum\limits_1^p \alpha_p^{(\nu)} )$
+congruent, wenn es nicht einem Gr\"{o}ssensysteme von der Form
+$( - \sum\limits_1^{p - 2} \alpha_1^{(\nu)},\ldots,
+   - \sum\limits_1^{p - 2} \alpha_p^{(\nu)} )$
+congruent ist, und unendlich vielen, wenn dieses stattfindet.}
+
+Da
+\[ \vartheta
+      \left(
+         u_1 - \sum_1^p \alpha_1^{(\mu)},\ldots,
+         u_p - \sum_1^p \alpha_p^{(\mu)}
+      \right)
+   = \vartheta
+      \left(
+         \sum_1^p \alpha_1^{(\mu)} - u_1,\ldots,
+         \sum_1^p \alpha_p^{(\mu)} - u_p
+      \right),\]
+so ist $\vartheta$ eine ganz \"{a}hnliche Function wie von
+$(s,z)$ auch von jedem der $p$ Gr\"{o}ssenpaare
+$(\sigma_\mu, \zeta_\mu)$.  Diese Function von
+$(\sigma_\mu, \zeta_\mu)$ wird $= 0$ f\"{u}r das Werth\-enpaar
+$(s,z)$ und f\"{u}r die den \"{u}brigen $p - 1$ Gr\"{o}ssenpaaren
+$(\sigma, \zeta)$ durch die Gleichung $\varphi = 0$
+verkn\"{u}pften $p - 1$ Punkte.  Denn bezeichnet man den Werth
+von $u_\pi$ in diesen Punkten mit
+$\beta_\pi^{(1)}, \beta_\pi^{(2)},\ldots, \beta_\pi^{(p-1)}$,
+so ist
+\[       \left(
+            \sum_1^p \alpha_1^{(\mu)},\ldots, \,
+            \sum_1^p \alpha_p^{(\mu)}
+         \right)
+   \equiv
+         \left(
+            \alpha_1^{(\mu)} - \sum_1^{p - 1} \beta_1^{(\nu)},\ldots, \,
+            \alpha_p^{(\mu)} - \sum_1^{p - 1} \beta_p^{(\nu)}
+         \right) \]
+und folglich $\vartheta = 0$, wenn $\eta_\mu$ mit einem dieser
+Punkte oder mit dem Punkte $(s,z)$ zusammenf\"{a}llt.
+
+\medbreak
+
+\centerline{25.}
+
+\nobreak\medskip
+
+Aus den bisher entwickelten Eigenschaften der
+Function~$\vartheta$ ergiebt sich der Ausdruck von
+$\log \vartheta$ durch Integrale algebraischer Functionen von
+$(s,z)$, $(\sigma_1, \zeta_1),\ldots,$ $(\sigma_p, \zeta_p)$.
+
+Die Gr\"{o}sse
+\[    \log \vartheta \left(
+            u_1^{(2)} - \sum_1^p \alpha_1^{(\mu)},\ldots \right)
+    - \log \vartheta \left(
+            u_1^{(1)} - \sum_1^p \alpha_1^{(\mu)},\ldots \right) \]
+ist, als Function von $(\sigma_\mu, \zeta_\mu)$ betrachtet, eine
+Function von der Lage des Punkts $\eta_\mu$, welche im Punkte
+$\varepsilon_1$, wie $- \log (\zeta_\mu - z_1)$, im Punkte
+$\varepsilon_2$, wie $\log (\zeta_\mu - z_2)$ unstetig wird und
+auf der positiven Seite einer von $\varepsilon_1$ nach
+$\varepsilon_2$ zu ziehenden Linie um $2\pi i$, auf der positiven
+Seite der Linie $b_\nu$ um $2(u_\nu^{(1)} - u_\nu^{(2)})$
+gr\"{o}sser ist, als auf der negativen, ausser den Linien~$b$ und
+der Verbindungslinie von $\varepsilon_1$ und $\varepsilon_2$ aber
+allenthalben stetig bleibt.  Bezeichnet nun
+$\varpi^{(\mu)} (\varepsilon_1, \varepsilon_2)$
+irgend eine Function von $(\sigma_\mu, \zeta_\mu)$, welche ausser
+den Linien~$b$ ebenso unstetig ist und auf der einen Seite einer
+solchen Linie ebenfalls um eine Constante gr\"{o}sser ist, als
+auf der andern, so unterscheidet sie sich (\S.~3) von dieser nur
+um eine von $(\sigma_\mu, \zeta_\mu)$ unabh\"{a}ngige Gr\"{o}sse,
+und folglich ist sie von
+$\sum\limits_1^p \varpi^{(\mu)} (\varepsilon_1, \varepsilon_2)$
+nur um eine von s\"{a}mmtlichen Gr\"{o}ssen $(\sigma, \zeta)$
+unabh\"{a}ngige und also bloss von $(s_1, z_1)$ und $(s_2, z_2)$
+abh\"{a}ngende Gr\"{o}sse verschieden.
+$\varpi^{(\mu)} (\varepsilon_1, \varepsilon_2)$
+dr\"{u}ckt den Werth einer Function
+$\varpi (\varepsilon_1, \varepsilon_2)$
+des \S.~4 f\"{u}r $(s,z) = (\sigma_\mu, \zeta_\mu)$ aus, deren
+Periodicit\"{a}tsmoduln an den Schnitten~$a$ gleich $0$ sind.
+Aendert man diese Function um die Constante $c$, so \"{a}ndert
+sich
+$\sum\limits_1^p \varpi^{(\mu)} (\varepsilon_1, \varepsilon_2)$
+um $pc$; man kann daher, wie f\"{u}r die Folge geschehen soll,
+die additive Constante in der Function
+$\varpi (\varepsilon_1, \varepsilon_2)$
+oder den Anfangswerth in dem sie darstellenden Integrale dritter
+Gattung so bestimmen, dass
+\[ \log \vartheta^{(2)} - \log \vartheta^{(1)}
+   = \sum_1^p \varpi^{(\mu)} (\varepsilon_1, \varepsilon_2).\]
+Da $\vartheta$ von jedem der Gr\"{o}ssenpaare $(\sigma, \zeta)$
+auf \"{a}hnliche Art, wie von $(s,z)$ abh\"{a}ngt, so kann die
+Aenderung von $\log \vartheta$, wenn irgend eins der
+Gr\"{o}ssenpaare
+$(s,z)$, $(\sigma_1, \zeta_1),\ldots,$ $(\sigma_p, \zeta_p)$
+eine endliche Aenderung erleidet, w\"{a}hrend die \"{u}brigen
+constant bleiben, durch eine Summe von Functionen
+$\varpi$ ausgedr\"{u}ckt werden.  Offenbar kann man also,
+indem man nach und nach die einzelnen Gr\"{o}ssenpaare
+$(s,z)$, $(\sigma_1, \zeta_1),\ldots,$ $(\sigma_p, \zeta_p)$
+\"{a}ndert, $\log \vartheta$ ausdr\"{u}cken durch eine Summe von
+Functionen~$\varpi$ und
+$\log \vartheta (0,0,\ldots,0)$
+oder den Werth von $\log \vartheta$ f\"{u}r ein beliebiges
+anderes Werthensystem.  Die Bestimmung von
+$\log \vartheta (0,0,\ldots, 0)$
+als Function der $3p - 3$ Moduln des System rationaler Function
+von $s$ und $z$ (\S.~12) erfordert \"{a}hnliche Betrachtungen,
+wie sie von \emph{Jacobi} in seinen Arbeiten \"{u}ber
+elliptische Functionen zur Bestimmung von $\Theta(0)$ angewandt
+worden sind.  Man kann dazu gelangen, indem man mit H\"{u}lfe
+der Gleichungen
+\[ 4 \frac{\partial \vartheta}{\partial a_{\mu, \mu}}
+   = \frac{\partial^2 \vartheta}{\partial v_\mu^2}
+     \quad \mbox{ und } \quad
+   2 \frac{\partial \vartheta}{\partial a_{\mu, \mu'}}
+   = \frac{\partial^2 \vartheta}{\partial v_\mu \, \partial v_{\mu'}},\]
+wenn $\mu$ von $\mu'$ verschieden ist, die Differentialquotienten
+von $\log \vartheta$ nach den Gr\"{o}ssen~$a$ in
+\[ d \log \vartheta
+   = \sum \frac{\partial \log \vartheta}{\partial a_{\mu, \mu'}}
+      \, da_{\mu, \mu'} \]
+durch Integrale algebraischer Functionen ausdr\"{u}ckt.  F\"{u}r
+die Ausf\"{u}hrung dieser Rechnung scheint jedoch eine
+ausf\"{u}hrlichere Theorie der Functionen, welche einer linearen
+Differentialgleichung mit algebraischen Coefficienten
+gen\"{u}gen, n\"{o}thig, die ich nach den hier angewandten
+Principien n\"{a}chstens zu liefern beabsichtige.
+
+Ist $(s_2, z_2)$ unendlich wenig von $(s_1, z_1)$ verschieden, so
+geht
+$\varpi (\varepsilon_1, \varepsilon_2)$
+\"{u}ber in $\partial z_1 \, t(\varepsilon_1)$, worin
+$t(\varepsilon_1)$ ein Integral zweiter Gattung einer rationaler
+Function von $s$ und $z$ ist, welches in $\varepsilon_1$ wie
+$\displaystyle \frac{1}{z - z_1}$
+unstetig wird und an den Schnitten~$a$ den
+Periodicit\"{a}tmodul~$0$ hat; und es ergiebt sich, dass der
+Periodicit\"{a}tsmodul eines solchen Integrals an dem
+Schnitte~$b_\nu$ gleich
+$\displaystyle 2 \frac{\partial u_\nu^{(1)}}{\partial z_1}$
+ist und die Integrationsconstante sich so bestimmen l\"{a}sst,
+dass die Summe der Werthe von $t(\varepsilon_1)$ f\"{u}r die $p$
+Werthenpaare
+$(\sigma_1, \zeta_1),\ldots,$ $(\sigma_p, \zeta_p)$
+gleich
+$\displaystyle \frac{\partial \log \vartheta^{(1)}}{\partial z_1}$
+wird.  Es ist dann
+$\displaystyle \frac{\partial \log \vartheta^{(1)}}{\partial \zeta_\mu}$
+gleich der Summe der Werthe von $t(\eta_\nu)$ f\"{u}r die den
+$p - 1$ von $(\sigma_\mu, \zeta_\mu)$ verschiedenen
+Gr\"{o}ssenpaaren $(\sigma, \zeta)$ durch die Gleichung
+$\varphi = 0$ verkn\"{u}pften $p - 1$ Werthenpaare und f\"{u}r
+das Werthenpaar $(s,z)$, und man erh\"{a}lt f\"{u}r
+\[ \frac{\partial \log \vartheta^{(1)}}{\partial z_1} \, dz_1
+   + \sum_1^p \frac{\partial \log \vartheta^{(1)}}{\partial \zeta_\mu}
+         \, d \zeta_\mu
+   = d \log \vartheta^{(1)},\]
+einen Ausdruck, welchen \emph{Weierstrass} f\"{u}r den Fall,
+wenn $s$ nur eine zweiwerthige Function von $z$ ist, gegeben hat
+(d.~J.  Bd.~47  S.~300 Form.~35).
+
+Die Eigenschaften von
+$\varpi (\varepsilon_1, \varepsilon_2)$
+und $t(\varepsilon_1)$ als Functionen von $(s_1, z_1)$ und $(s_2, z_2)$
+ergeben sich aus den Gleichungen
+\[ \varpi (\varepsilon_1, \varepsilon_2)
+   = \frac{1}{p}
+      \left(
+         \log \vartheta (u_1^{(2)} - p u_1,\ldots )
+       - \log \vartheta (u_1^{(1)} - p u_1,\ldots )
+      \right) \]
+und
+\[ t(\varepsilon_1)
+   = \frac{1}{p} \frac{
+      \partial \log \vartheta (u_1^{(1)} - p u_1,\ldots)}{
+      \partial z_1},\]
+welche in den obigen Ausdr\"{u}cken f\"{u}r
+$\log \vartheta^{(2)} - \log \vartheta^{(1)}$
+und
+$\displaystyle \frac{\partial \log \vartheta^{(1)}}{\partial z_1}$
+als specielle F\"{a}lle enthalten sind.
+
+\medbreak
+
+\centerline{26.}
+
+\nobreak\medskip
+
+Es soll jetzt die Aufgabe behandelt werden, algebraische
+Functionen von $z$ als Quotienten zweier Producte von
+gleichvielen Functionen
+$\vartheta (u_1 - e_1,\ldots, )$
+und Potenzen der Gr\"{o}ssen $e^u$ darzustellen.
+
+Ein solcher Ausdruck erlangt bei den Ueberg\"{a}ngen von $(s,z)$
+\"{u}ber die Querschnitte constante Factoren, und diese
+m\"{u}ssen Wurzeln der Einheit sein, wenn er algebraisch von $z$
+abh\"{a}ngen und also bei stetiger Fortsetzung f\"{u}r dasselbe
+$z$ nur eine endliche Anzahl von Werthen annehmen soll.  Sind
+alle diese Factoren $\mu \, \,$\-te Wurzeln der Einheit, so ist die
+$\mu \, \,$\-te Potenz des Ausdrucks eine einwerthige und folglich
+rationale Function von $s$ und $z$.
+
+Umgekehrt l\"{a}sst sich leicht zeigen, dass jede algebraische
+Function $r$ von $z$, die innerhalb der ganzen Fl\"{a}che~$T'$
+stetig fortgesetzt, allenthalben nur \emph{einen} bestimmten
+Werth annimmt und beim Ueberschreiten eines Querschnitts einen
+constanten Factor erlangt, sich auf mannigfaltige Art als
+Quotient zweier Producte von $\vartheta$-Functionen und Potenzen
+der Gr\"{o}ssen $e^u$ ausdr\"{u}cken l\"{a}sst.  Man bezeichne
+einen Werth von $u_\mu$ f\"{u}r $r = \infty$ durch $\beta_\mu$
+und f\"{u}r $r = 0$ durch $\gamma_\mu$ und nehme $\log r$, indem
+man von jedem Punkte, wo $r$ unendlich von der ersten Ordnung
+wird, nach je einem Punkte, wo $r$ unendlich klein von der ersten
+Ordnung wird, eine Linie durch das Innere von $T'$ zieht, ausser
+diesen Linien in $T'$ allenthalben stetig an.  Ist dann $\log r$
+auf der positiven Seite der Linie $b_\nu$ um $g_\nu \, 2\pi i$
+und auf der positiven Seite der Linie $a_\nu$ um
+$- h_\nu \, 2\pi i$ gr\"{o}sser, als auf der negativen, so
+ergiebt sich durch die Betrachtung des Begrenzungsintegrals
+$\int \log r \, du_\mu$
+\[ \sum \gamma_\mu - \sum \beta_\mu
+   = g_\mu \, \pi i + \sum_\nu h_\nu a_{\mu, \nu} \]
+f\"{u}r $\mu = 1,2,\ldots, p$, worin $g_\nu$ und $h_\nu$ nach dem
+oben Bemerkten rationale Zahlen sein m\"{u}ssen und die Summen
+auf der linken Seite der Gleichung \"{u}ber s\"{a}mmtliche
+Punkte, wo $r$ unendlich klein oder unendlich gross von der
+ersten Ordnung wird, auszudehnen sind, indem man einen Punkt, wo
+$r$ unendlich klein oder unendlich gross von einer h\"{o}heren
+Ordnung wird, als aus mehreren solchen Punkten bestehend
+betrachtet (\S.~2).  Wenn diese Punkte bis auf $p$ gegeben sind,
+so lassen sich diese $p$ immer und, allgemein zu reden, nur auf
+eine Weise so bestimmen, dass die $2p$ Factoren
+$e^{g_\nu \, 2 \pi i}$, $e^{- h_\nu \, 2 \pi i}$,
+gegebene Werthe annehmen (\S\S.~15, 24).
+
+Wenn man nun in dem Ausdrucke
+\[ \frac{P}{Q} e^{- 2 \sum h_\nu u_\nu},\]
+worin $P$ und $Q$ Producte von gleichvielen Functionen
+$\vartheta( u_1 - \sum \alpha_1^{(\pi)},\ldots )$
+mit demselben $(s, z)$ und verschiedenen $(\sigma, \zeta)$ sind,
+die Werthenpaare von $s$ und $z$ f\"{u}r welche $r$ unendlich
+wird, f\"{u}r Gr\"{o}ssenpaare $(\sigma, \zeta)$ in den
+$\vartheta$-Functionen des Nenners und die Werthenpaare, f\"{u}r
+welche $r$ verschwindet, f\"{u}r Gr\"{o}ssenpaare
+$(\sigma, \zeta)$ in den $\vartheta$-Functionen des Z\"{a}hlers
+substituirt und die \"{u}brigen Gr\"{o}ssenpaare
+$(\sigma, \zeta)$ im Nenner und im Z\"{a}hler gleich annimmt, so
+stimmt der Logarithme dieses Ausdrucks in Bezug auf die
+Unstetigkeiten im Innern von $T'$ mit $\log r$ \"{u}berein, und
+\"{a}ndert sich beim Ueberschreiten der Linien $a$ und $b$, wie
+$\log r$, nur um rein imagin\"{a}re l\"{a}ngs diesen Linien
+constante Gr\"{o}ssen; er unterscheidet sich also von $\log r$
+nach dem \emph{Dirichlet}'schen Princip nur um eine Constante
+und der Ausdruck selbst von $r$ nur durch einen constanten
+Factor.  Bei dieser Substitution darf selbstredend keine der
+$\vartheta$-Functionen identisch, f\"{u}r jeden Werth von $z$,
+verschwinden.  Dieses w\"{u}rde geschehen (\S.~23), wenn
+s\"{a}mmtliche Werthenpaare, f\"{u}r welche eine einwerthige
+Function von $(s,z)$ verschwindet, f\"{u}r Gr\"{o}ssenpaare
+$(\sigma, \zeta)$ in einer und derselben $\vartheta$-Function
+substituirt w\"{u}rden.
+
+\medbreak
+
+\centerline{27.}
+
+\nobreak\medskip
+
+Als Quotient \emph{zweier} $\vartheta$-Functionen, multiplicirt
+mit Potenzen der Gr\"{o}ssen $e^u$, l\"{a}sst sich demnach eine
+einwerthige oder rationale Function von $(s,z)$ nicht darstellen.
+Alle Functionen~$r$ aber, die f\"{u}r dasselbe Werthenpaar von
+$s$ und $z$ mehrere Werthe annehmen und nur f\"{u}r $p$ oder
+weniger Werthenpaare unendlich von der ersten Ordnung werden,
+sind in dieser Form darstellbar und umfassen alle in dieser Form
+darstellbaren algebraischen Functionen von $z$.  Man erh\"{a}lt,
+abgesehen von einem constanten Factor, jede und jede nur einmal,
+wenn man in
+\[ \frac{
+   \vartheta( v_1 - g_1 \pi i - \sum\limits_\nu h_\nu a_{1,\nu},\ldots)}{
+   \vartheta( v_1,\ldots, v_p)}
+   e^{-2 \sum\limits_\nu v_\nu h_\nu} \]
+f\"{u}r $h_\nu$ und $g_\nu$ rationale \"{a}chte Br\"{u}che und
+$\displaystyle u_\nu - \sum\limits_1^p \alpha_\nu^{(\mu)}$
+f\"{u}r $v_\nu$ setzt.
+
+Diese Gr\"{o}sse ist zugleich eine algebraische Function von
+jeder der Gr\"{o}ssen~$\zeta$ und die (im vor.~\S.) entwickelten
+Principien reichen v\"{o}llig hin, um sie durch die Gr\"{o}ssen
+$z, \zeta_1,\ldots, \zeta_p$ algebraisch auszudr\"{u}cken.
+
+In der That: Als Function von $(s,z)$ nimmt sie, durch die ganze
+Fl\"{a}che $T'$ stetig fortgesetzt, allenthalben \emph{einen}
+bestimmten  Werth an, wird unendlich von der ersten Ordnung
+f\"{u}r die Werthenpaare
+$(\sigma_1, \zeta_1),\ldots,$ $(\sigma_p, \zeta_p)$
+und erlangt an dem Schnitte $a_\nu$ beim Uebergange von der
+positiven zur negativen Seite den Factor $e^{h_\nu \, 2 \pi i}$,
+an dem Schnitte $b_\nu$ den Factor $e^{- g_\nu \, 2 \pi i}$; und
+jede andere dieselben Bedingungen erf\"{u}llende Function von
+$(s,z)$ unterscheidet sich von ihr nur durch einen von $(s,z)$
+unabh\"{a}ngigen Factor.  Als Function von
+$(\sigma_\mu, \zeta_\mu)$ nimmt sie, durch die ganze
+Fl\"{a}che~$T'$ stetig fortgesetzt, allenthalben \emph{einen}
+bestimmten Werth an, wird unendlich von der ersten Ordnung
+f\"{u}r das Werth\-enpaar $(s,z)$ und f\"{u}r die den \"{u}brigen
+$p - 1$ Gr\"{o}ssenpaaren $(\sigma, \zeta)$ durch die Gleichung
+$\varphi = 0$ verkn\"{u}pften $p - 1$ Werthenpaare
+$(\sigma_1^{(\mu)}, \zeta_1^{(\mu)}),\ldots$
+$(\sigma_{p-1}^{(\mu)}, \zeta_{p-1}^{(\mu)})$
+und erlangt an dem Schnitte~$a_\nu$ den Factor
+$e^{- h_\nu \, 2 \pi i}$, an den Schnitte~$b_\nu$ den Factor
+$e^{g_\nu \, 2 \pi i}$; und jede andere dieselben Bedingungen
+erf\"{u}llende Function von $(\sigma_\mu, \zeta_\mu)$
+unterscheidet sich von ihr nur durch einen von
+$(\sigma_\mu, \zeta_\mu)$ unabh\"{a}ngigen Factor.  Bestimmt man
+also eine algebraische Function von
+$z, \zeta_1,\ldots, \zeta_p$
+\[ f( (s,z);\enspace
+      (\sigma_1, \zeta_1),\ldots,\enspace
+      (\sigma_p, \zeta_p) ) \]
+so, dass sie als Function von jeder dieser Gr\"{o}ssen dieselben
+Eigenschaften besitzt, so unterscheidet sie sich von dieser nur
+durch einen von s\"{a}mmtlichen Gr\"{o}ssen
+$z, \zeta_1,\ldots, \zeta_p$
+unabh\"{a}ngigen Factor und wird also $= Af$, wenn $A$ diesen
+Factor bezeichnet.  Um diesen Factor zu bestimmen, dr\"{u}cke man
+in $f$ die von $(\sigma_\mu, \zeta_\mu)$ verschiedenen
+Gr\"{o}ssenpaare $(\sigma, \zeta)$ durch
+$(\sigma_1^{(\mu)}, \zeta_1^{(\mu)}),\ldots,$
+$(\sigma_{p-1}^{(\mu)}, \zeta_{p-1}^{(\mu)})$
+aus, wodurch er in
+\[ g( (\sigma_\mu, \zeta_\mu);\enspace
+      (s,z),\enspace
+      (\sigma_1^{(\mu)}, \zeta_1^{(\mu)}),\ldots,\enspace
+      (\sigma_{p-1}^{(\mu)}, \zeta_{p-1}^{(\mu)}) ) \]
+\"{u}bergehe; offenbar erh\"{a}lt man dann den inversen Werth der
+dazustellenden Function und also einen Ausdruck, welcher
+$\displaystyle= \frac{1}{Af}$
+sein muss, wenn man in $Ag$ f\"{u}r $(\sigma_\mu, \zeta_\mu)$ das
+Grossenpaar $(s,z)$ und f\"{u}r die Gr\"{o}ssenpaare
+$(s,z)$, $(\sigma_1^{(\mu)}, \zeta_1^{(\mu)}),\ldots,$
+$(\sigma_{p-1}^{(\mu)}, \zeta_{p-1}^{(\mu)})$
+die Werthenpaare von $(s,z)$ substituirt, f\"{u}r welche die
+darzustellende Function und also $f = 0$ wird.  Hieraus ergiebt
+sich $A^2$ und also $A$ bis auf das Vorzeichen, welches durch
+directe Betrachtung der $\vartheta$-Reihen in dem darzustellenden
+Ausdrucke gefunden werden kann.
+
+G\"{o}ttingen, 1857.
+
+\end{document}
+

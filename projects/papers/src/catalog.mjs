@@ -1,3 +1,4 @@
+import {work1857,bibliography1857,english1857,people1857,weierstrass1857,concepts1857,citations1857} from './riemann-1857-catalog.mjs';
 import {concepts1851,citations1851,externalReferences1851,english1851} from './riemann-1851-catalog.mjs';
 import {worksPoincare,peoplePoincare,bibliographyPoincare,englishPoincare,citationsPoincare,conceptsPoincare} from './poincare-catalog.mjs';
 import {peopleGauss,conceptsGauss} from './gauss-1828-catalog.mjs';
@@ -11,6 +12,7 @@ import {worksLogarithms,peopleLogarithms,conceptsLogarithms,bibliographyLogarith
 import {conceptsBridges} from './euler-1741-catalog.mjs';
 import {peopleResidues,conceptsResidues,externalReferencesResidues} from './euler-1761-catalog.mjs';
 englishSources['riemann-1851']=english1851;
+englishSources['riemann-1857']=english1857;
 Object.assign(englishSources,englishPoincare);
 Object.assign(englishSources,englishEulerMore);
 Object.assign(englishSources,englishLogarithms);
@@ -28,6 +30,7 @@ additionalWorks.find(w=>w.id==='euler-1761').externalReferences=externalReferenc
 // A work record exists independently of whether we have edited its text.
 // Titles are our English renderings; original titles identify the source edition.
 export const works = [
+  work1857,
   ...worksPoincare,
   ...additionalWorks,
   circleWork,
@@ -101,6 +104,7 @@ export const works = [
 ];
 
 export const people = [
+  ...people1857,
   ...peoplePoincare,
   ...peopleGauss,
   ...people1854,
@@ -124,9 +128,14 @@ export const people = [
   {id:'clifford',name:'William Kingdon Clifford',note:'Translator of the geometry lecture into English in 1873. The complete reading’s modern-English revision is based on that public-domain translation.',source:'https://www.maths.tcd.ie/pub/HistMath/People/Riemann/Geom/WKCGeom.html',bibliography:[{title:'On the hypotheses which lie at the bases of geometry · English translation, Nature, 1873',url:'https://www.maths.tcd.ie/pub/HistMath/People/Riemann/Geom/WKCGeom.html'}]},
 ];
 
+const existingWeierstrass=people.find(p=>p.id==='weierstrass');
+existingWeierstrass.note+=' '+weierstrass1857.note;
+existingWeierstrass.bibliography=[...(existingWeierstrass.bibliography??[]),...weierstrass1857.bibliography];
+
 // Only direct, checked work-to-work citations belong here. Reverse lists are
 // derived from these edges; related works and editorial sources stay separate.
 export const citations = [
+  ...citations1857,
   ...citations1851,
   ...citationsPoincare,
   ...citations1854,
@@ -138,6 +147,7 @@ export const citations = [
 ];
 
 export const concepts = [
+  ...concepts1857,
   ...concepts1851,
   ...conceptsPoincare,
   ...conceptsGauss,
@@ -185,6 +195,7 @@ export const concepts = [
 ];
 
 export const bibliographicFields = {
+  'riemann-1857':bibliography1857,
   ...bibliographyPoincare,
   ...additionalBibliographicFields,
   ...bibliographyLogarithms,
