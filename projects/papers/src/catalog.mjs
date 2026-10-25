@@ -1,3 +1,4 @@
+import {people1895,concepts1895,externalReferences1895} from './poincare-1895-catalog.mjs';
 import {work1857,bibliography1857,english1857,people1857,weierstrass1857,concepts1857,citations1857} from './riemann-1857-catalog.mjs';
 import {concepts1851,citations1851,externalReferences1851,english1851} from './riemann-1851-catalog.mjs';
 import {worksPoincare,peoplePoincare,bibliographyPoincare,englishPoincare,citationsPoincare,conceptsPoincare} from './poincare-catalog.mjs';
@@ -26,6 +27,8 @@ export const sources = {
 };
 
 additionalWorks.find(w=>w.id==='euler-1761').externalReferences=externalReferencesResidues;
+worksPoincare.find(w=>w.id==='poincare-1895').externalReferences=externalReferences1895;
+worksPoincare.find(w=>w.id==='poincare-1895').citationChecked='24 October 2026';
 
 // A work record exists independently of whether we have edited its text.
 // Titles are our English renderings; original titles identify the source edition.
@@ -104,6 +107,7 @@ export const works = [
 ];
 
 export const people = [
+  ...people1895,
   ...people1857,
   ...peoplePoincare,
   ...peopleGauss,
@@ -147,6 +151,7 @@ export const citations = [
 ];
 
 export const concepts = [
+  ...concepts1895,
   ...concepts1857,
   ...concepts1851,
   ...conceptsPoincare,

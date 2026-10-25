@@ -1,3 +1,4 @@
+import './check-poincare-1895.mjs';
 import './check-riemann-1857.mjs';
 import './check-riemann-1851.mjs';
 import './check-personal-names.mjs';

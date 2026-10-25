@@ -8,9 +8,9 @@ const records=[
   summary:'The preliminary announcement: monodromy, a group attached to a manifold, and explicit three-dimensional examples with the same Betti numbers. Complete modern-English reading with corrections and worked examples.',
   edition:'Complete note · 1892'},
  {id:'poincare-1895',year:1895,title:'Analysis situs',originalTitle:'Analysis situs',
-  journal:'Journal de l’École polytechnique',series:'2',volume:'1',pages:'1--121',
+  journal:'Journal de l’École polytechnique',series:'2',volume:'1',pages:'1--121',edition:'Complete memoir · 1895',
   source:companion+'-Analysis-Situs-42-.html',original:'https://gallica.bnf.fr/ark:/12148/bpt6k4337198/f7',page:22,
-  summary:'The main memoir: manifolds, homologies, Betti numbers, intersection, the fundamental group, three-dimensional examples, and the Euler formula. Introduction and eighteen sections.'},
+  summary:'The complete 1895 memoir in modern English: manifolds, homologies, intersection, the fundamental group, explicit polyhedral quotients, and the Euler formula. Drawings and scoped proofs mark torsion, filling, quotient, and subdivision gaps.'},
  {id:'poincare-1899',year:1899,title:'Supplement to Analysis situs',originalTitle:'Complément à l’Analysis situs',
   journal:'Rendiconti del Circolo Matematico di Palermo',volume:'13',pages:'285--343',doi:'10.1007/BF03024461',
   source:companion+'-Premier-complement-a-l-Analysis-Situs-.html',original:'https://henripoincarepapers.univ-nantes.fr/chp/hp-pdf/hp1899rc.pdf',page:104,
@@ -55,7 +55,7 @@ export const citationsPoincare=[
 ];
 export const discoveryPoincare={
  'poincare-1892':['Analysis situs','algebraic topology','fundamental group','monodromy','Betti numbers','torus bundles','mapping torus'],
- 'poincare-1895':['Analysis situs','algebraic topology','fundamental group','homology','Betti numbers','Poincare duality','Euler characteristic','manifolds'],
+ 'poincare-1895':['Analysis situs','algebraic topology','fundamental group','homology','Betti numbers','Poincare duality','Euler characteristic','manifolds','orientability','signed intersection','polyhedral quotients','torus bundles','mapping torus','quaternion group','Q8','integral homology','torsion','symmetric square','real projective plane','complex projective plane'],
  'poincare-1899':['Analysis situs','first supplement','Heegaard','polyhedral homology','incidence matrices','dual cell decomposition','Poincare duality','triangulation'],
  'poincare-1900':['Analysis situs','second supplement','torsion coefficients','integer homology','Smith normal form','Poincare duality'],
  'poincare-1902-surfaces':['Analysis situs','third supplement','algebraic surfaces','branched double covers','fundamental group','monodromy'],
@@ -72,3 +72,6 @@ export const conceptsPoincare=[
   body:m`<p>For the particular quotient \(M_A\) constructed in the note, modern rational Betti numbers mean \(b_j=\dim_{\mathbb Q}H_j(M_A;\mathbb Q)\). The worked reconstruction gives</p>\[b_1=b_2=1+\dim_{\mathbb Q}\ker(A-I),\qquad b_0=b_3=1.\]<p>The dimension of the kernel is zero, one, or two according as the trace is not two, the trace is two but the matrix is not the identity, or the matrix is the identity.</p>`,
   comparison:m`The historical connectivity labels are preserved in the main text. Under the later convention shifted by one, the two variable numbers are both double, triple, or quadruple in these respective cases. The printed assertion that one is always quadruple is not used. Rational ranks do not record finite torsion in integral homology.`},
 ];
+
+englishPoincare['poincare-1895'].checked='2026-10-24';
+englishPoincare['poincare-1895'].note+=' Credits and memoir boundaries rechecked for the 1895 on-site reading. The French transcription, rather than this translation, is the rendering’s basis.';

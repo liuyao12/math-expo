@@ -1,0 +1,320 @@
+{
+  "work": "poincare-1895",
+  "checked": "2026-10-24",
+  "basis": "Public-domain French text from the Analysis Situs transcription of Œuvres VI, pp.193–288. Modern website notes and glossary apparatus are excluded.",
+  "originalPublication": {
+    "journal": "Journal de l’École polytechnique",
+    "series": 2,
+    "volume": 1,
+    "year": 1895,
+    "pages": "1–121",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k4337198/f7"
+  },
+  "sourceFile": "sources/poincare-1895-fr.txt",
+  "sha256": "c217da857161dcaefe63ae4a04f2970c543ac7439ab5b14e97818389bce6493f",
+  "sections": 18,
+  "introduction": true,
+  "units": [
+    {
+      "section": 0,
+      "label": "Introduction",
+      "url": "https://analysis-situs.math.cnrs.fr/Introduction.html",
+      "start": 169,
+      "end": 5534,
+      "sha256": "dd877e6261f60bff220f82a45bc86b81b76f884b383a7e75d068d53d8d222d31",
+      "sourceCharacters": 5338,
+      "modernNoteReferencesRemoved": 0,
+      "passages": [
+        "p95-0a",
+        "p95-0b"
+      ]
+    },
+    {
+      "section": 1,
+      "label": "§1",
+      "url": "https://analysis-situs.math.cnrs.fr/p-1-Premiere-definition-des-varietes.html",
+      "start": 5534,
+      "end": 10791,
+      "sha256": "5f5419c826fabe5f4217c86cc6292737cbd24170c93bfe16caca360277a024f1",
+      "sourceCharacters": 5240,
+      "modernNoteReferencesRemoved": 0,
+      "passages": [
+        "p95-1a",
+        "p95-1b"
+      ]
+    },
+    {
+      "section": 2,
+      "label": "§2",
+      "url": "https://analysis-situs.math.cnrs.fr/p-2-Homeomorphisme.html",
+      "start": 10791,
+      "end": 14772,
+      "sha256": "b4271d137257ed9256fe20dff144099663e67ea8f22afbeab2b94bef4afea930",
+      "sourceCharacters": 3964,
+      "modernNoteReferencesRemoved": 0,
+      "passages": [
+        "p95-2a",
+        "p95-2b"
+      ]
+    },
+    {
+      "section": 3,
+      "label": "§3",
+      "url": "https://analysis-situs.math.cnrs.fr/p-3-Deuxieme-definition-des-varietes.html",
+      "start": 14772,
+      "end": 24584,
+      "sha256": "062e58a96e69be377fe7eb7bac85b8e2103418373a0c412038bd135df07bf93c",
+      "sourceCharacters": 9795,
+      "modernNoteReferencesRemoved": 0,
+      "passages": [
+        "p95-3a",
+        "p95-3b",
+        "p95-3c"
+      ]
+    },
+    {
+      "section": 4,
+      "label": "§4",
+      "url": "https://analysis-situs.math.cnrs.fr/p-4-Varietes-opposees.html",
+      "start": 24584,
+      "end": 28426,
+      "sha256": "e197af8c7c6362d63ec34fe816be187f76f3f4c9af3e9aff3f019a88d7e32ab6",
+      "sourceCharacters": 3825,
+      "modernNoteReferencesRemoved": 1,
+      "passages": [
+        "p95-4a",
+        "p95-4b"
+      ]
+    },
+    {
+      "section": 5,
+      "label": "§5",
+      "url": "https://analysis-situs.math.cnrs.fr/p-5-Homologies.html",
+      "start": 28426,
+      "end": 29653,
+      "sha256": "9b122d29ff295bc9911ab3a9e6991d1fb2f327b0649c66aa807b3ad078d91601",
+      "sourceCharacters": 1210,
+      "modernNoteReferencesRemoved": 1,
+      "passages": [
+        "p95-5a"
+      ]
+    },
+    {
+      "section": 6,
+      "label": "§6",
+      "url": "https://analysis-situs.math.cnrs.fr/p-6-Nombres-de-Betti.html",
+      "start": 29653,
+      "end": 31766,
+      "sha256": "1d3be15b8387ba82d11eccd5436124a4959905e53f5b58ef280bf6ad6cb54bf2",
+      "sourceCharacters": 2096,
+      "modernNoteReferencesRemoved": 0,
+      "passages": [
+        "p95-6a"
+      ]
+    },
+    {
+      "section": 7,
+      "label": "§7",
+      "url": "https://analysis-situs.math.cnrs.fr/p-7-Emploi-des-integrales.html",
+      "start": 31766,
+      "end": 38818,
+      "sha256": "9ab3e2160d0be42d49c94e51dc25088e9d4c0f116743eb8758ad60599c68baf8",
+      "sourceCharacters": 7035,
+      "modernNoteReferencesRemoved": 1,
+      "passages": [
+        "p95-7a",
+        "p95-7b",
+        "p95-7c"
+      ]
+    },
+    {
+      "section": 8,
+      "label": "§8",
+      "url": "https://analysis-situs.math.cnrs.fr/p-8-Varietes-unilateres-et-bilateres.html",
+      "start": 38818,
+      "end": 51947,
+      "sha256": "5ce043aa4680f64394375899a9aa9f257ba12e256b5eed15e8581d972d52c9c0",
+      "sourceCharacters": 13112,
+      "modernNoteReferencesRemoved": 3,
+      "passages": [
+        "p95-8a",
+        "p95-8b",
+        "p95-8c"
+      ]
+    },
+    {
+      "section": 9,
+      "label": "§9",
+      "url": "https://analysis-situs.math.cnrs.fr/p-9-Intersection-de-deux-varietes.html",
+      "start": 51947,
+      "end": 71619,
+      "sha256": "d58f418b6a3211127ed3a5869531c7ea2b21ed24ade0b8f389fc6116b3ff5b84",
+      "sourceCharacters": 19655,
+      "modernNoteReferencesRemoved": 1,
+      "passages": [
+        "p95-9a",
+        "p95-9b",
+        "p95-9c",
+        "p95-9d",
+        "p95-9e"
+      ]
+    },
+    {
+      "section": 10,
+      "label": "§10",
+      "url": "https://analysis-situs.math.cnrs.fr/p-10-Representation-geometrique.html",
+      "start": 71619,
+      "end": 87505,
+      "sha256": "5cb067c5235e6f5d22071d816b95dab12af35a1ec67423237d8ae2de6578d42f",
+      "sourceCharacters": 15868,
+      "modernNoteReferencesRemoved": 1,
+      "passages": [
+        "p95-10a",
+        "p95-10b",
+        "p95-10c"
+      ]
+    },
+    {
+      "section": 11,
+      "label": "§11",
+      "url": "https://analysis-situs.math.cnrs.fr/p-11-Representation-par-un-groupe-discontinu.html",
+      "start": 87505,
+      "end": 94268,
+      "sha256": "82a4f29061664374b3fdad00c0355bca9bad385b7fbb14f5ec87d477e191738e",
+      "sourceCharacters": 6745,
+      "modernNoteReferencesRemoved": 4,
+      "passages": [
+        "p95-11a",
+        "p95-11b",
+        "p95-11c"
+      ]
+    },
+    {
+      "section": 12,
+      "label": "§12",
+      "url": "https://analysis-situs.math.cnrs.fr/p-12-Groupe-fondamental.html",
+      "start": 94268,
+      "end": 100107,
+      "sha256": "a7b9bd0e43af43acea7ed2352d06da258af9ab73606330420cc82d356eb92262",
+      "sourceCharacters": 5821,
+      "modernNoteReferencesRemoved": 2,
+      "passages": [
+        "p95-12a",
+        "p95-12b"
+      ]
+    },
+    {
+      "section": 13,
+      "label": "§13",
+      "url": "https://analysis-situs.math.cnrs.fr/p-13-Equivalences-fondamentales.html",
+      "start": 100107,
+      "end": 107522,
+      "sha256": "380652977e4a1d09a22c3bd9bbd24f5c2f8e34ecbb5edb7d932292fb86cec21b",
+      "sourceCharacters": 7397,
+      "modernNoteReferencesRemoved": 1,
+      "passages": [
+        "p95-13a",
+        "p95-13b",
+        "p95-13c"
+      ]
+    },
+    {
+      "section": 14,
+      "label": "§14",
+      "url": "https://analysis-situs.math.cnrs.fr/p-14-Conditions-de-l-homeomorphisme.html",
+      "start": 107522,
+      "end": 130795,
+      "sha256": "6e7a977a28ca767df1a65fa422c68ab58bb312f3c8e0c61c6ba97d8db62b88cc",
+      "sourceCharacters": 23255,
+      "modernNoteReferencesRemoved": 7,
+      "passages": [
+        "p95-14a",
+        "p95-14b",
+        "p95-14c",
+        "p95-14d",
+        "p95-14e",
+        "p95-14f"
+      ]
+    },
+    {
+      "section": 15,
+      "label": "§15",
+      "url": "https://analysis-situs.math.cnrs.fr/p-15-Autres-modes-de-generation.html",
+      "start": 130795,
+      "end": 154512,
+      "sha256": "681868a677fd92b0d4406534753e447f7caef235c6eea956863aab3eb739bfb6",
+      "sourceCharacters": 23699,
+      "modernNoteReferencesRemoved": 2,
+      "passages": [
+        "p95-15a",
+        "p95-15b",
+        "p95-15c",
+        "p95-15d",
+        "p95-15e",
+        "p95-15f",
+        "p95-15g",
+        "p95-15h"
+      ]
+    },
+    {
+      "section": 16,
+      "label": "§16",
+      "url": "https://analysis-situs.math.cnrs.fr/p-16-Theoreme-d-Euler.html",
+      "start": 154512,
+      "end": 179508,
+      "sha256": "0976263aa394528cba6b93a20f428e897b6bf459215ee283a825ca53066e8912",
+      "sourceCharacters": 24978,
+      "modernNoteReferencesRemoved": 4,
+      "passages": [
+        "p95-16a",
+        "p95-16b",
+        "p95-16c",
+        "p95-16d",
+        "p95-16e",
+        "p95-16f"
+      ]
+    },
+    {
+      "section": 17,
+      "label": "§17",
+      "url": "https://analysis-situs.math.cnrs.fr/p-17-Cas-ou-p-est-impair.html",
+      "start": 179508,
+      "end": 183268,
+      "sha256": "2fc2ac28c632a8d6b308c1564a782ad71bd2587f0e984041e78b1658c93c37e5",
+      "sourceCharacters": 3742,
+      "modernNoteReferencesRemoved": 1,
+      "passages": [
+        "p95-17a"
+      ]
+    },
+    {
+      "section": 18,
+      "label": "§18",
+      "url": "https://analysis-situs.math.cnrs.fr/p-18-Deuxieme-demonstration.html",
+      "start": 183268,
+      "end": 196417,
+      "sha256": "dce3cf55891f5fc82667afaa3c432b78018d0901c5b64d222af39af4cf861bb8",
+      "sourceCharacters": 13131,
+      "modernNoteReferencesRemoved": 1,
+      "passages": [
+        "p95-18a",
+        "p95-18b",
+        "p95-18c"
+      ]
+    }
+  ],
+  "translation": "Independent modern-English rendering; repeated coordinate arrays are consolidated. Not a reproduction of Stillwell. Not collated line by line against the original journal printing.",
+  "englishComparison": {
+    "translator": "John Stillwell",
+    "manuscriptDate": "2009-07-31",
+    "bookYear": 2010,
+    "url": "https://webhomes.maths.ed.ac.uk/~v1ranick/papers/poincare2009.pdf#page=22",
+    "publisher": "https://doi.org/10.1090/hmath/037",
+    "use": "Linked separately. Credits and relevant work boundaries verified; not the basis of the English rendering."
+  },
+  "figures": "Original editorial SVG drawings; not facsimile reproductions.",
+  "proofStatus": "Written scoped mathematical reconstructions, without proof-assistant verification.",
+  "readingPassages": 59,
+  "marginDrawings": 43,
+  "proofReconstructions": 18
+}
