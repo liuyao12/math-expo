@@ -45,7 +45,7 @@ assert.equal(fs.readFileSync(new URL('dist/poincare-1895/source-fr.txt',root),'u
 assert.equal((html.match(/<figure /g)||[]).length,43);
 for(const marker of ['not been collated line by line','without proof-assistant verification','surface boundary need not be contractible','primitive integral basis','diagonal singularities','c_3=\\pm1','finite torsion','surface-boundary counterexample'])assert(html.includes(marker),marker);
 assert(works.find(w=>w.id==='poincare-1895').edition);assert.equal(englishSources['poincare-1895'].checked,'2026-10-24');
-assert.equal(externalReferences1895.length,5);assert(html.includes('3 recorded'));
+assert.equal(externalReferences1895.length,5);assert(html.includes('4 recorded'));
 assert(fs.readFileSync(new URL('dist/people/poincare/index.html',root),'utf8').includes('../../poincare-1895/'));
 assert(fs.readFileSync(new URL('dist/people/betti/index.html',root),'utf8').includes('../../poincare-1895/#p95-6a'));
 // Reconstruct each vertex link and its local fans from the original face maps.

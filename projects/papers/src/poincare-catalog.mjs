@@ -20,9 +20,9 @@ const records=[
   source:companion+'-Deuxieme-complement-a-l-Analysis-Situs-.html',original:'https://doi.org/10.1112/plms/s1-32.1.277',page:145,
   summary:'Integer reduction of incidence tables, torsion coefficients, worked three-dimensional examples, and the refinement of duality. Complete introduction and six sections in modern English, with signed-table drawings, exact examples, and scoped proofs.'},
  {id:'poincare-1902-surfaces',year:1902,title:'On certain algebraic surfaces · Third supplement to Analysis situs',originalTitle:'Sur certaines surfaces algébriques. Troisième complément à l’« Analysis sitûs »',
-  journal:'Bulletin de la Société Mathématique de France',volume:'30',pages:'49--70',doi:'10.24033/bsmf.657',
+  journal:'Bulletin de la Société Mathématique de France',volume:'30',pages:'49--70',doi:'10.24033/bsmf.657',edition:'Complete third supplement · 1902',
   source:companion+'-Sur-certaines-surfaces-algebriques-Troisieme-complement-a-l-Analysis-Situs-.html',original:'https://www.numdam.org/item/BSMF_1902__30__49_0/',page:174,
-  summary:'The fundamental group of the particular algebraic double covers described in the paper, studied through branched curves and their monodromy. Hypotheses on singularities must remain explicit.'},
+  summary:'Complete modern-English reading of the third supplement: square-root surfaces, transported cuts, both crossing tables, vanishing loops, and the punctured cone. Eleven drawings and ten scoped reconstructions make the local arguments and the closing permutation gap explicit.'},
  {id:'poincare-1902-cycles',year:1902,title:'On cycles of algebraic surfaces · Fourth supplement to Analysis situs',originalTitle:'Sur les cycles des surfaces algébriques. Quatrième complément à l’Analysis Situs',
   journal:'Journal de Mathématiques Pures et Appliquées',volume:'8',series:'5',pages:'169--214',
   source:companion+'-Sur-les-cycles-des-surfaces-algebriques-Quatrieme-complement-a-l-Analysis-Situs-.html',original:'https://www.numdam.org/item/JMPA_1902_5_8__169_0/',page:191,
@@ -58,7 +58,7 @@ export const discoveryPoincare={
  'poincare-1895':['Analysis situs','algebraic topology','fundamental group','homology','Betti numbers','Poincare duality','Euler characteristic','manifolds','orientability','signed intersection','polyhedral quotients','torus bundles','mapping torus','quaternion group','Q8','integral homology','torsion','symmetric square','real projective plane','complex projective plane'],
  'poincare-1899':['Analysis situs','first supplement','Heegaard','polyhedral homology','incidence matrices','dual cell decomposition','Poincare duality','triangulation'],
  'poincare-1900':['Analysis situs','second supplement','torsion coefficients','integer homology','Smith normal form','Poincare duality'],
- 'poincare-1902-surfaces':['Analysis situs','third supplement','algebraic surfaces','branched double covers','fundamental group','monodromy'],
+ 'poincare-1902-surfaces':['Analysis situs','third supplement','algebraic surfaces','branched double covers','fundamental group','monodromy','hyperelliptic curves','vanishing cycles','half twists','braids','conical points','compactification'],
  'poincare-1902-cycles':['Analysis situs','fourth supplement','algebraic surfaces','vanishing cycles','Picard group','monodromy','Betti numbers'],
  'poincare-1904':['Analysis situs','fifth supplement','Poincare homology sphere','Poincare conjecture','Heegaard splitting','three manifolds','Morse theory','fundamental group'],
 };
@@ -82,3 +82,7 @@ worksPoincare.find(w=>w.id==='poincare-1899').links.push({label:'Original public
 
 englishPoincare['poincare-1900'].checked='2026-10-25';
 englishPoincare['poincare-1900'].note+=' Credit and extent rechecked: PDF pages 145–173. The on-site reading is rendered independently from French.';
+
+englishPoincare['poincare-1902-surfaces'].checked='2026-10-26';
+englishPoincare['poincare-1902-surfaces'].note+=' Translator credit and extent rechecked: PDF pages 174–190. The on-site reading is independently rendered from the public-domain French.';
+worksPoincare.find(w=>w.id==='poincare-1902-surfaces').links.splice(1,0,{label:'Original journal scan · full paper',url:'https://www.numdam.org/item/BSMF_1902__30__49_0.pdf'});

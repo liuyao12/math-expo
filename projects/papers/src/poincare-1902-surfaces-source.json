@@ -1,0 +1,258 @@
+{
+  "work": "poincare-1902-surfaces",
+  "checked": "2026-10-26",
+  "sourceFile": "sources/poincare-1902-surfaces-fr.txt",
+  "sha256": "b0e3537dc7790c7597ebc71aad3105f4f6d45f3b9cd12a2f72ff77e695b91016",
+  "source": "https://analysis-situs.math.cnrs.fr/Sur-certaines-surfaces-algebriques.html",
+  "original": {
+    "url": "https://www.numdam.org/item/BSMF_1902__30__49_0/",
+    "pdf": "https://www.numdam.org/item/BSMF_1902__30__49_0.pdf",
+    "doi": "10.24033/bsmf.657",
+    "journal": "Bulletin de la Société Mathématique de France",
+    "volume": 30,
+    "year": 1902,
+    "pages": "49–70",
+    "pdfPages": 23,
+    "pageMapping": "PDF page = printed page − 47; the first PDF page is the archive cover."
+  },
+  "extent": "Whole unsectioned paper; six editorial navigation parts and seventeen contiguous source units. Repeated descriptions are modernized and crossing lists tabulated. No claim of a diplomatic transcription.",
+  "sourceTreatment": "Modern website note calls [1]–[9] are excluded. [Source drawing 1] and [Source drawing 2] are editorial location markers. Source math delimiters and original wording are retained.",
+  "units": [
+    {
+      "passages": [
+        "p02-1a"
+      ],
+      "section": 1,
+      "start": 0,
+      "end": 1751,
+      "sha256": "4b8722876b2e07d1e696b6081b528f2608a0097f72e47b6ae884c481e29fbfe8"
+    },
+    {
+      "passages": [
+        "p02-1b"
+      ],
+      "section": 1,
+      "start": 1751,
+      "end": 3638,
+      "sha256": "8a45a1342e31293f59885a0e64d05d04b10511c00bd21b7f32015bb13ae76233"
+    },
+    {
+      "passages": [
+        "p02-2a"
+      ],
+      "section": 2,
+      "start": 3638,
+      "end": 6741,
+      "sha256": "9b1b8e94dba809a9a04b7b4df6c27a32037e7a58955c86a9aed5a63d5dcdc37d"
+    },
+    {
+      "passages": [
+        "p02-2b"
+      ],
+      "section": 2,
+      "start": 6741,
+      "end": 10613,
+      "sha256": "6627171b3a6a147d270be8c32d9d19c7e78e0dae0f489921731e34cf409ea335"
+    },
+    {
+      "passages": [
+        "p02-2c"
+      ],
+      "section": 2,
+      "start": 10613,
+      "end": 14885,
+      "sha256": "220d60e70e459b3f4751b78c53ba8f0b6fb57f66b6de7845908add78250405a8"
+    },
+    {
+      "passages": [
+        "p02-2d"
+      ],
+      "section": 2,
+      "start": 14885,
+      "end": 19707,
+      "sha256": "923c6b6da6e0e74d22d102b9ffa370f0c935f158ff81653dd69401eaf206f573"
+    },
+    {
+      "passages": [
+        "p02-3a"
+      ],
+      "section": 3,
+      "start": 19707,
+      "end": 25369,
+      "sha256": "0bb66b489f4555eed0bce307519c31b634861e9ae8e4b2e4479f85d844822869"
+    },
+    {
+      "passages": [
+        "p02-3b"
+      ],
+      "section": 3,
+      "start": 25369,
+      "end": 27836,
+      "sha256": "2d0a5736770528efa381f9c51da93a930a30f1faf165da11cf9646d0140de31c"
+    },
+    {
+      "passages": [
+        "p02-3c"
+      ],
+      "section": 3,
+      "start": 27836,
+      "end": 29426,
+      "sha256": "6ac32ce3ba982c3fb7e98cdc965126ea9f631c62b6bd659fe76a0d3a9b69e020"
+    },
+    {
+      "passages": [
+        "p02-4a"
+      ],
+      "section": 4,
+      "start": 29426,
+      "end": 30876,
+      "sha256": "4ed31a2f951c190582aae0913dcdf9a9ede27f1cc57dbb7d55676c927e371fdd"
+    },
+    {
+      "passages": [
+        "p02-4b"
+      ],
+      "section": 4,
+      "start": 30876,
+      "end": 34155,
+      "sha256": "5f9191de70063766610fa6c88bc0e8a1ca2c9f42ee42c7f58143ed0d497088c6"
+    },
+    {
+      "passages": [
+        "p02-4c"
+      ],
+      "section": 4,
+      "start": 34155,
+      "end": 35626,
+      "sha256": "57d151448b49720341082102c7393bf79c64d8efd16579e6753587a4e61b0207"
+    },
+    {
+      "passages": [
+        "p02-4d"
+      ],
+      "section": 4,
+      "start": 35626,
+      "end": 36434,
+      "sha256": "16a0c494c4e9164b6bb04728ddc0144b8424cfe7d1b52264dc7b4eb19108dbbd"
+    },
+    {
+      "passages": [
+        "p02-5a"
+      ],
+      "section": 5,
+      "start": 36434,
+      "end": 38015,
+      "sha256": "416fcfdcff692a0c6904a9c939d70c6051e980eb4b8944c828446ceea2cb8da0"
+    },
+    {
+      "passages": [
+        "p02-6a"
+      ],
+      "section": 6,
+      "start": 38015,
+      "end": 39984,
+      "sha256": "26ee9d9ef50ab9fcc1ac15490f84886c38ba932a1f3e89b8c775af1c8653d83a"
+    },
+    {
+      "passages": [
+        "p02-6b"
+      ],
+      "section": 6,
+      "start": 39984,
+      "end": 41706,
+      "sha256": "d90d3ce7f7b289348f36f99db61c9730fc694e205a681cab311828329611b109"
+    },
+    {
+      "passages": [
+        "p02-6c"
+      ],
+      "section": 6,
+      "start": 41706,
+      "end": 42850,
+      "sha256": "840775aa952421f5e4770259a5792ad6215dc441cd841b3e801662514ba4e110"
+    }
+  ],
+  "originalComparison": "Opening, inverse-period formula, both drawings and crossing tables, and cone-section passage compared with journal scan. The entire paper has not been collated line by line.",
+  "drawings": [
+    {
+      "number": 1,
+      "printPage": 63,
+      "pdfPage": 16,
+      "treatment": "Code-native cut-position redraw; exact crossing table retained in main text."
+    },
+    {
+      "number": 2,
+      "printPage": 66,
+      "pdfPage": 19,
+      "treatment": "Code-native cut-position redraw; exact crossing table retained in main text."
+    }
+  ],
+  "englishComparison": {
+    "translator": "John Stillwell",
+    "url": "https://webhomes.maths.ed.ac.uk/~v1ranick/papers/poincare2009.pdf#page=174",
+    "manuscriptDate": "31 July 2009",
+    "pdfPages": "174–190",
+    "nextWorkPage": 191,
+    "publicationYear": 2010,
+    "basis": "Credit and boundaries inspected. This English is independently rendered from French; the copyrighted English prose is not reproduced."
+  },
+  "corrections": [
+    {
+      "passage": "p02-1b",
+      "issue": "The transcription conflates congruence and central symmetry; labels of the two halves are made consistent."
+    },
+    {
+      "passage": "p02-2a",
+      "issue": "Inverse period coordinates require −βξ, not +βξ; the erroneous positive sign is in the original print p. 52 as well as the transcription."
+    },
+    {
+      "passage": "p02-2b",
+      "issue": "Coordinate ξ restored in a repeated coordinate triple; equivalence of polygons R₁ and R is made consistent. The group is normalized, not elementwise commuted with."
+    },
+    {
+      "passage": "p02-2c",
+      "issue": "Primes distinguish the lifted source and target points. Source S″/S′ labels are clarified by their transformation domains."
+    },
+    {
+      "passage": "p02-2d",
+      "issue": "Only infinitesimal closed loops are killed by the local statement; the source summary’s unqualified wording is restricted by the preceding argument."
+    },
+    {
+      "passage": "p02-3b",
+      "issue": "Surface homology and disk null-homotopy remain distinct; including or deleting a singular vertex specifies different spaces."
+    },
+    {
+      "passage": "p02-3c",
+      "issue": "The source’s s_β is restored to the exponent s^β. The source ε² bound is retained and the sharper determinant bound proved separately."
+    },
+    {
+      "passage": "p02-4a",
+      "issue": "Six branch points are numbered x₀ through x₅, not x₆. The repeated d in the cut list is e."
+    },
+    {
+      "passage": "p02-4b",
+      "issue": "The exchanged final cut endpoint is a, not d. An inconsistent row label is identified by its endpoint; exact word images are retained."
+    },
+    {
+      "passage": "p02-4c",
+      "issue": "The missing square root in z=F is restored to z²=F. The second crossing map is the square of the first."
+    },
+    {
+      "passage": "p02-5a",
+      "issue": "The original arbitrary surface-boundary description is retained and explicitly distinguished from disk contraction."
+    },
+    {
+      "passage": "p02-6a",
+      "issue": "Endpoint transitivity does not determine transported based arcs or their normal closure. A four-point abstract arc system proves the insufficiency; no algebraic realization of that system is claimed."
+    },
+    {
+      "passage": "p02-6b",
+      "issue": "Projective coordinate change alone cannot change total degree. Compactification, branching at infinity and pencil base points need extra data."
+    },
+    {
+      "passage": "p02-6c",
+      "issue": "The parity count is proved for its formal presentation only; the global geometric identification is not represented as established."
+    }
+  ],
+  "proofStatus": "Ten written reconstructions, without proof-assistant verification. Proper bundle, simple critical-point handle, and compactification assumptions are explicit."
+}

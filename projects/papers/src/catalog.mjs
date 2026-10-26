@@ -1,3 +1,4 @@
+import {concepts1902,citations1902,externalReferences1902} from './poincare-1902-surfaces-catalog.mjs';
 import {concepts1900} from './poincare-1900-catalog.mjs';
 import {people1899,concepts1899,externalReferences1899} from './poincare-1899-catalog.mjs';
 import {people1895,concepts1895,externalReferences1895} from './poincare-1895-catalog.mjs';
@@ -35,6 +36,9 @@ worksPoincare.find(w=>w.id==='poincare-1895').citationChecked='24 October 2026';
 worksPoincare.find(w=>w.id==='poincare-1899').externalReferences=externalReferences1899;
 worksPoincare.find(w=>w.id==='poincare-1899').citationChecked='25 October 2026';
 worksPoincare.find(w=>w.id==='poincare-1900').citationChecked='25 October 2026';
+
+worksPoincare.find(w=>w.id==='poincare-1902-surfaces').externalReferences=externalReferences1902;
+worksPoincare.find(w=>w.id==='poincare-1902-surfaces').citationChecked='26 October 2026';
 
 // A work record exists independently of whether we have edited its text.
 // Titles are our English renderings; original titles identify the source edition.
@@ -146,6 +150,7 @@ existingWeierstrass.bibliography=[...(existingWeierstrass.bibliography??[]),...w
 // Only direct, checked work-to-work citations belong here. Reverse lists are
 // derived from these edges; related works and editorial sources stay separate.
 export const citations = [
+  ...citations1902,
   ...citations1857,
   ...citations1851,
   ...citationsPoincare,
@@ -158,6 +163,7 @@ export const citations = [
 ];
 
 export const concepts = [
+  ...concepts1902,
   ...concepts1900,
   ...concepts1899,
   ...concepts1895,
