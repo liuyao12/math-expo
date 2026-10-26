@@ -111,11 +111,12 @@
     const fields=Object.fromEntries(['q','from','to'].map(key=>[key,form.elements.namedItem(key)]));
     const groups=[...form.querySelectorAll('[data-facet]')].map(element=>({element,key:element.dataset.facet,expanded:false,inputs:[...element.querySelectorAll('input[type="checkbox"]')],button:element.querySelector('[data-expand]')}));
     const choices=Object.fromEntries(groups.map(g=>[g.key,g.inputs.map(input=>input.value)]));
-    const items=[...document.querySelectorAll('[data-search-item]')].map(element=>({element,searchText:element.dataset.searchText,authors:element.dataset.authors.split(' '),year:Number(element.dataset.year),language:element.dataset.language,english:element.dataset.english==='true',edited:element.dataset.edited==='true'}));
-    const chips=document.querySelector('#active-filters'),disclosure=form.closest('details');
+    const items=[...document.querySelectorAll('[data-search-item]')].map(element=>({element,searchText:element.dataset.searchText,authors:element.dataset.authors.split(' '),id:element.dataset.work,title:element.dataset.title,authorSort:element.dataset.authorSort,chronologyOrder:Number(element.dataset.chronologyOrder),year:Number(element.dataset.year),language:element.dataset.language,english:element.dataset.english==='true',edited:element.dataset.edited==='true'}));
+    const chips=document.querySelector('#active-filters'),disclosure=form.closest('details'),sort=document.querySelector('#work-sort'),results=document.querySelector('#work-results');
     if(window.matchMedia('(max-width:760px)').matches)disclosure.open=false;
     function restore(){
       const params=new URLSearchParams(location.search);
+      sort.value=['oldest','newest','author','title'].includes(params.get('sort'))?params.get('sort'):'oldest';
       for(const [key,field] of Object.entries(fields))field.value=params.get(key)??'';
       for(const group of groups)for(const input of group.inputs)input.checked=params.getAll(group.key).includes(input.value);
     }
@@ -157,6 +158,8 @@
     function filterWorks(sync=true){
       const filters=readFilters();let count=0;
       for(const item of items){item.element.hidden=!window.paperDiscovery.matchesWork(item,filters);if(!item.element.hidden)count++;}
+      items.sort((a,b)=>window.paperDiscovery.compareWorks(a,b,sort.value));
+      for(const item of items)results.append(item.element);
       document.querySelector('#search-status').textContent=count+' of '+items.length+' works';
       document.querySelector('#filter-apply').textContent='Show '+count+(count===1?' work':' works');
       document.querySelector('#works-heading').textContent=Object.values(filters).some(value=>value.length)?'Matching works':'All works';
@@ -168,13 +171,15 @@
           url.searchParams.delete(key);
           for(const value of [].concat(filters[key]))if(value)url.searchParams.append(key,value);
         }
+        if(sort.value==='oldest')url.searchParams.delete('sort');else url.searchParams.set('sort',sort.value);
         history.replaceState(null,'',url.pathname+url.search+url.hash);
       }
     }
+    sort.addEventListener('change',()=>filterWorks());
     form.addEventListener('submit',event=>event.preventDefault());
     form.addEventListener('input',()=>filterWorks());
     form.addEventListener('change',()=>filterWorks());
-    form.addEventListener('reset',event=>{event.preventDefault();for(const field of Object.values(fields))field.value='';for(const group of groups){group.expanded=false;for(const input of group.inputs)input.checked=false;}filterWorks();});
+    form.addEventListener('reset',event=>{event.preventDefault();sort.value='oldest';for(const field of Object.values(fields))field.value='';for(const group of groups){group.expanded=false;for(const input of group.inputs)input.checked=false;}filterWorks();});
     for(const group of groups)if(group.button)group.button.addEventListener('click',()=>{group.expanded=!group.expanded;updateFacets(readFilters());});
     chips.addEventListener('click',event=>{
       const button=event.target.closest('[data-remove]');if(!button)return;

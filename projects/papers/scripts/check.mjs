@@ -1,3 +1,4 @@
+import './check-representation.mjs';
 import './check-poincare-1902-surfaces.mjs';
 import './check-poincare-1900.mjs';
 import './check-poincare-1899.mjs';
@@ -95,10 +96,11 @@ for(const id of ['work-search','work-author','work-language','work-decade','work
 let checkedEnglish=0;
 for(const [id,source] of Object.entries(englishSources)){
   if(!workIds.has(id))throw Error(`English source has no work record: ${id}`);
-  if(!['inspected','listed'].includes(source.status))throw Error(`Unknown source-check status: ${id}`);
+  if(!['inspected','listed','located'].includes(source.status))throw Error(`Unknown source-check status: ${id}`);
   if(!source.url.startsWith('https://')||!source.evidenceUrl.startsWith('https://')||!source.checked||!source.scope)throw Error(`Missing English-source provenance: ${id}`);
   const record=pages.get(path.join(dist,id,'index.html'));
   if(!record.includes('id="english-text"'))throw Error(`Work record omits its English access information: ${id}`);
+  if(source.status==='located'&&source.availability!=='bibliographic-record')throw Error(`Located translation lacks its distinct record status: ${id}`);
   if(source.status==='inspected'){
     checkedEnglish++;
     if(!source.translator)throw Error(`Checked translation lacks a credit: ${id}`);
@@ -136,7 +138,7 @@ if(Object.values(emptyCounts).flatMap(Object.values).some(Boolean))throw Error('
 const joint=searchable.filter(w=>matchesWork(w,{author:['leibniz','johann-bernoulli']}));
 if(joint.length!==1)throw Error('A coauthored work must not be counted twice');
 for(const key of Object.keys(facetChoices))if(!catalogue.includes(`data-facet="${key}"`))throw Error('Missing checkbox facet '+key);
-if(catalogue.includes('<select id="work-')||!catalogue.includes('catalogue-sidebar')||!catalogue.includes('id="active-filters"'))throw Error('Catalogue must use the sidebar and removable multi-select filters');
+if(/<select id="work-(?:author|language|decade|access)"/.test(catalogue)||!catalogue.includes('catalogue-sidebar')||!catalogue.includes('id="active-filters"'))throw Error('Catalogue must use the sidebar and removable multi-select filters');
 console.log('Validated OR within facets, AND across facets, contextual counts, zero results, and coauthor deduplication.');
 
 const css=fs.readFileSync(path.join(root,'public/style.css'),'utf8')+fs.readFileSync(path.join(root,'public/vendor/katex/katex.min.css'),'utf8');

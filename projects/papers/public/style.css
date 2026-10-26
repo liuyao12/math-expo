@@ -119,3 +119,6 @@
 .p00-diagram{position:relative}.p00-diagram .math-label{position:absolute;transform:translate(-50%,-50%);font-size:12px;line-height:1;white-space:nowrap}.p00-diagram svg{display:block;width:100%;height:auto}.p00-diagram .math-label .katex{font-size:1em}
 /* Work titles remain ordinary searchable text; italics supply their typography. */
 cite.work-title{font-style:italic}.entity-link.work-link,.work-record h3,.paper-heading h1,.record-page>header>h1.work-heading,.bibliography h3,.profile-bibliography a{font-style:italic}
+
+.catalogue-result-controls{display:flex;align-items:center;justify-content:flex-end;gap:20px;flex-wrap:wrap}.catalogue-result-controls label{display:flex;gap:8px;align-items:center;font:11px/1.6 var(--sans);color:var(--muted)}.catalogue-result-controls select{max-width:190px;border:1px solid var(--rule);border-radius:3px;background:var(--paper);color:var(--ink);padding:8px;font:12px/1.4 var(--sans)}
+@media(max-width:760px){.catalogue-result-heading{flex-wrap:wrap;gap:12px}.catalogue-result-controls{width:100%;justify-content:space-between;gap:10px}.catalogue-result-controls select{font-size:16px;max-width:210px}}

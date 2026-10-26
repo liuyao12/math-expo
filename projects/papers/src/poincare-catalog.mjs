@@ -86,3 +86,6 @@ englishPoincare['poincare-1900'].note+=' Credit and extent rechecked: PDF pages 
 englishPoincare['poincare-1902-surfaces'].checked='2026-10-26';
 englishPoincare['poincare-1902-surfaces'].note+=' Translator credit and extent rechecked: PDF pages 174–190. The on-site reading is independently rendered from the public-domain French.';
 worksPoincare.find(w=>w.id==='poincare-1902-surfaces').links.splice(1,0,{label:'Original journal scan · full paper',url:'https://www.numdam.org/item/BSMF_1902__30__49_0.pdf'});
+
+worksPoincare.find(w=>w.id==='poincare-1902-surfaces').chronologyOrder=1;
+worksPoincare.find(w=>w.id==='poincare-1902-cycles').chronologyOrder=2;

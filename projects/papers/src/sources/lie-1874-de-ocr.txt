@@ -1,0 +1,363 @@
+COLLECTED PAGE 1
+I.
+Uber Gruppen von Transformationen. [529
+Von SOPFIUS LIP: in Christiania
+(Korrespondierendem Mitgliede.)
+Gottinger Nachrichten 1874, Nr. 22 vom 3. Dezember, S. 529_54-J.
+Der Begriff einer Gruppe von Transformationen, welcher zu-
+nacbst in der Zahleutheorie und in der Substitutionstheorie seine Aus-
+bildung fand, ist in neuerer Zeit verscbiedentlich aueh fiir geometriscbe,
+resp. allgemeine analytiscbe Untersucbungen verwendet worden. Man
+sagt von einer Scbar von Transformationen:
+(wo die x die urspriinglichen, die x die neuen Variabeln und die a
+Parameter bedeuten, die im folgenden stets kontinuierlicb verander-
+licb gedacht werden). daB sie eine r-gliedrige Gruppe bilden, wenn
+irgend zwei Transformatiouen der Scbar zusammengesetzt wieder [530
+eine der Schar angehorige Transformation ergeben, wenn also aus den
+Gleicbungen:
+Xi=fi(Xl, &amp;gt;
+Xn, Kl, -, &amp;lt;O
+und:
+x&quot;=fi(x\, ,&amp;lt;, ^i, -., &)
+bervorebt:
+unter den y GroBen verstanden, die nur von den cc, ft abbangen.
+Icb babe mir nun - -
+allgemein ausgedriickt die Aufgabe ge-
+stellt, alle Transformationsgruppen zu bestimmen, und erlaube
+mir, im folgenden die verbaltnismafiig sebr einfacben Resultate anzu-
+geben, zu denen ich bis jetzt gelangt bin.
+Dabei mu8 von vorneberein ein Begriff eingefiibrt werden, durcb
+den die genannte Fragestellimg erst prazisiert wird, der Begriff der
+Abnlicbkeit zweier Transformationsgruppen.
+Man nennt zwei Transformationsgruppen ahnlicb, wenn die eine
+durcb Einfiibrung eines anderen Koordinatensystems auf die analytiscbe
+Form der anderen gebracbt werden kann. Die Gruppe:
+x
+i
+= fi(x
+\&amp;gt;
+-
+&amp;gt;
+xm tt
+i&amp;gt; -&amp;gt;
+Kr}
+Sophua Lie: Gesammelte Abhandluneen. Ed. V 1
+
+
+COLLECTED PAGE 2
+2 I. tiber Grupjjen voi^ lVafisfcnnationen. Gott. Nachr. 1874
+ist also ahnlich mit jeder, die sich unter folgender Form schrei-
+ben laBt:
+yi
+=
+3&amp;gt;i[/i(9&amp;gt;l&amp;gt;
+&amp;gt; &amp;lt;P&amp;gt; 1&amp;gt; r)&amp;gt;
+&amp;gt;
+fn(&amp;lt;P\&amp;gt;
+&amp;gt;
+K
+r)}&amp;gt;
+wo die
+&amp;lt;p irgendwelche Funktionen der neuen Variablen y, die (D die [531
+inversea Funktionen bedeuten, eine Definition, welche die iibrigens
+evidente Behauptung iunpliziert, daB eben die Transformationen der y
+wieder eine Gruppe bilden. Ahnliche Transformationsgruppen gelten
+im folgenden als durchaus gleichberechtigt, und in diesem Sinne ist
+das oben aufgestellte Problem zu verstehen.
+1. Ich beginne damit, die Theorie fiir den Fall nur einer Ver-
+anderlichen x zu entwickeln, und frage zunachst, welche eingliedrigen
+Gruppen
+:
+x = f(x, K]
+existieren.
+Man uberzeugt sicb, daB jede solche Gruppe fiir einen besonderen
+Wert des Parameters a == a eine identische Transformation enthalten
+muB, - - so daB also fiir jedes x
+x= f(x,a)
+,
+uud erhalt so, indem man K den Wert + da beilegt, die un-
+endlich kleine Transformation:
+x = x + ?-
+f da ( = ),
+cot.
+die wir auch so schreiben werden:
+dx=X .
+da,
+wo x (= fiir = a ) eine Funktion von x allein bezeichnet. In-
+\ f) a I
+dem man sich sodann diese infinitesimale Transformation unendlich
+oft wiederholt und so die ganze Gruppe erzeugt denkt, erkennt [632
+man, daB sich die Gruppe bei zweckmaBiger Wahl der Variabeln in der
+Form schreiben laBt:
+x = x + a.
+Von eiugliedrigen &quot;Gruppen gibt es bei einer Variabeln
+also nur einen Typus, den Typus der Translation.
+2. Sei jetzt:
+x = f(x, !, ,)
+eine zweigliedrige Gruppe. Dieselbe wird, nach analogen Schliissen,
+eine einfach unendliche Zahl infinitesimaler Transformationen enthalten,
+die sich aus zweien derselben:
+
+
+COLLECTED PAGE 3
+Nr. 1, 2. Ein- und zweigliedrige Gruppen in einer Veriindorlichen 3
+linear /usammensetzen lassen:
+f)f . df\ j,
+13 T&quot; ^2 a ) Ml
+(&amp;lt;/j
+=
+, Ut&amp;gt;
+~ a \
+Sollen aber umgekehrt zwei unendlich kleine Transformationen:
+- die sofort zu den einfach unendlich vielen, unendlich kleinen Trans
+formationen:
+dx= (AjAI -j- ^X^jdt [533
+AnlaB geben ,
+durch ihre Zusammensetzung eine nur zweigliedrio-e
+Gruppe erzeugen, so muB man folgende Forderung stellen. Man muB
+die Transformationen unter Beriicksichtigung von GroBen zwelter Ord-
+nung anschreiben, was die Form ergibt:
+42x= X2da2+ J
+X2 ~dx da
+*&amp;gt;
+und verlangen,. daB diese beiden Transformationen, zusammengesetzt,
+bis auf GroBen hoherer Ordnung irgendeine andere der einfach unend
+lich vielen infinitesimalen Transformationen ergeben, also etwa diese:
+Man kommt so
+1
+) auf die eine Bedingung (die sich weiterhin auch als
+hinreichend erweist):
+v dX1
+wo jedenfalls eine der beiden Konstanten ^ nicht verschwindet, da sonst
+XL und X2 nur um einen konstanten Faktor verschieden, d. h. die [534
+beiden gegebenen unendlich kleinen Transformationen identisch waren.
+Dagegen kann man imrner annehmen, daB die beiden infinitesi
+malen Transformationen, von denen man ausgeht, so unter den einfach
+unendlich vielen ausgesucht sind, daB etwa ,u2=0. Wiihlt man dann
+die Koordinatenbestimmung in der Art, daB die aus:
+dlx= X1 rfa1
+hervorgehende einfach unendliche Gruppe die Gestalt der Translation
+annimmt:
+x = x -f- 17
+also:
+_____ d1x= dcci} X1
+= 1,
+1) Die weiter uuten bei zwei Variabeln angefiihrte ahnliche Bedingung wird
+in ganz entsprechender Weise abgeleitet.
+1*
+
+
+COLLECTED PAGE 4
+4 I. tiber Gruppen von Tra.nsformationen. Uott. Nachr. 1874
+so komnit:
+dx
+Die ganze zweifach unendliche Gruppe nimmt auf diese Art schlieBlich
+die Form an:
+x = yx + d,
+wo y, d die beiden Parameter sind. Das heiBt:
+Von zweigliedrigen Gruppen gibt es bei einer Variabeln
+aucb nur einen Typus, der durch diejenigen linearen Trans
+formationen reprasentiert wird, welche durch Verkniipfung
+der Translationen mit den Ahnlichkeitstransformationen ent-
+stehen.
+Zugleich mag man bernerken, daB in dieser zweigliedrigen die ein-
+gliedrige der Translationen eine gewisse ausgezeichnete Rolle spielt, [535
+deren Eigenart durch Koordinatentransformation durchaus unzerstor-
+bar ist.
+3. In ahnlicher Weise bestimmt man alle dreigliedrigen Gruppen.
+Soilen die unendlich kleinen Transformationen:
+eine dreigliedrige Gruppe erzeugen, so miissen die verschiedenen Aus-
+driicke
+X d^- - X dXi
+lineare Kombinationen von X17 X2 , X3 seiu. Nun kann man aber un-
+beschadet der AUgemeinheit annehmen, daB die ersten beiden Trans
+formationen fiir sich eine zweigliedrige Gruppe erzeugen. Denn in der
+gesuchten dreigliedrigen Gruppe ist jedenfalls eine zweigliedrige Unter-
+gruppe enthalten; man braucht ja nur diejenigen oo
+2 Transformationen
+der gesuchten Gruppe zusammenzufassen, welche einen beliebig ange-
+nommenen Wert XQ (einen beliebigen Punkt) ungeandert lassen. Wahlt
+man dann die Koordinatenbestimmung so, daB diese zweigliedrige Gruppe
+in der angegebenen einfachen Form erscheint, so zeigt sich, daB die
+dreigliedrige Gruppe durch die Gesamtheit der linearen
+Transformationen dargestellt ist:
+_~
+Geht man dann endlich zu viergliedrigen Gruppen fiber, so zeigt ein [536
+ganz ahnliches Rasonnement, daB solche Gruppen iiberhaupt nicht
+existieren. Wir kommen also schlieBlich zu dem einfachen Resultate:
+
+
+COLLECTED PAGE 5
+Nr. 2 4. Die Gruppen in einer Veriinderlichen. Gruppen von H. T. 5
+Soil eine Gruppe von Transformationen einer Veriinder
+lichen nur eine endliche Zahl von Parauietern enthalten, so
+kann diese Zahl nicht groBer sein als drei, und es ist die
+Gruppe alsdann entweder mit der Gruppe aller linearen Trans
+formationen oder mit einer in dieser enthaltenen Untergruppe
+ahnlich.
+4. Bei zwei Veranderlichen wird die Sache bedeutend komplizier-
+ter. Ich lasse dabei zunJichst auch noch eine Erweiterung der Frage-
+stellung eintreten, fur die bei nur einer Veriinderlichen noch keine
+Gelegenheit ist. Statt namlich nur solche Transformationeii /u be-
+trachten, welche x\ und # , durch Funktionen von xl und x2 ausdriicken
+- soo-enannte Punkttransformationen ,
+betrachte ich iiberhaupt
+Berfihrungstransformationen, d. h. derartige Transformationen, die
+x[, x,, und p =
+(
+j
+X
+) durch a^, 2 und p =^ ausdriicken
+1
+). Schreibt
+man statt p houiogen ft :_ps ,
+so habe ich in einer demnachst in den
+Mathematischen Annalen (Bd. 8) erscheinenden Arbeit
+2
+) gezeigt, [537
+da6 sich jede unendlich kleine Beriihrungstransformation mit Hilfe einer
+in den p homogenen Funktion erster Ordnung
+darstellt. Die unendlich kleinen Veriinderungen, welche ein Wertsystem
+x\i xiiP\yP* vermoge der Beriihrungstransformation erfiihrt, lassen sich
+namlich in dieser Form schreiben:
+fl.xl dx.&amp;gt; dp1 dp.2 ^ _,
+Soil nun eine Anzahl r solcher infinitesimaler Transformationen, die
+bzw. durch die Funktionen:
+HI&amp;gt; ^2?
+&amp;gt; H&amp;gt;
+charakterisiert sein mogen, zu einer r-gliedrigen Gruppe AnlaB geben,
+so zeigt sich als notwendig und hinreichend, dafi die Ausdriicke:
+J* dH
+&quot;
+_ ^?* 3H*\ + (
+dH
+&amp;gt;
+.
+dHk- dHk
+-
+(Ht
+die man in der Theorie der partiellen Diiferentialgleichungen erster
+1) Man kann dieselben, wenn man will, als Punkttransformationen der drei
+Variabeln xl , x^ , p betrachten, welche die besondere Eigenschaft haben, die Glei-
+chung dx^pdXi^O in sich iiberzufiihren.
+2) [Vgl. doit&quot; Heft 2 1874), S. 239, d. Ausg. Bd. IV, Abh. I, 6.]
+
+
+COLLECTED PAGE 6
+6 I. tiber Gruppen von Transformationen. Gott. Nachr. 1874
+Ordnung gewohnlich einfach mit (H{Hk) bezeichnet, sich linear aus
+den H selbst zusammensetzen lassen miissen. [538
+Ich beschranke mich nun darauf, die Resultate anzugeben, wie ich
+sie auf Grand dieser analytischen Formulierung, teilweise unter Zu-
+hilfenahme geometrischer Betrachtung, auf ziemlicb muhsamem Wege
+gefunden babe.
+Gruppen von Berubrungstransformationen von zwei Variabeln
+lassen entweder (I) eine Differentialgleichung zweiter Ordnung unge-
+andert 1
+) oder zum mindesten (II) eine Differentialgleichung dritter
+Ordnung.
+Im letzteren Falle sind sie durcb die bekannten Transformationcn
+ersetzbar, welche Kreise in Kreise uberfiihren. Die Gesamtheit dieser
+Transformationen bildet eine zehngliedrige Gruppe, in der dann weiter
+sieben- und secbsgliedrige Untergruppen enthalten sind, wiihrend neuu-
+und achtgliedrige Untergruppen nicht existieren. Man kann die zehn
+gliedrige Gruppe, indem man xlf xt und p^p^ als Koordinaten eines
+Punktes im Raume ansieht, in die Gruppe derjenigen Kollineationen
+des Raumes iiberfiihren, die einen linearen Komplex in sich trans-
+forraieren. 2
+)
+In dem Falle I, in welchem eine Differentialgleichung der zweiten
+Ordnung ungeandert bleibt
+; kann man durch geschickte Wahl der
+Variabeln (durch geeignete Beruhrungstransformation) die ganze [639
+Gruppe in eine Gruppe von Punkttransfortnationen verwandeln. Wenn
+dies geschehen ist, so treten noch folgende Moglichkeiten auf:
+1. Es bleiben zwei einfach unendliche Kurvensysteme der Ebene
+bei alien Transformationen ungeandert, wie das z. B. bei den kon-
+formen Transformationen der Fall ist. Dann kann jedes Kurven-
+system, als Matinigfaltigkeit erster Stufe, nach dem friiher Auseinander-
+gesetzten durch eine ein-, zwei-, dreigliedrige Gruppe transformiert
+werden. Die Transformation des einen Systems ist von der des anderen
+unabhangig und bestimmt mit ihr zusammen in jedem Falle die Trans
+formation der Ebene vollstandig. Das einfachsie Gegenbild sind die-
+jenigen Kollineationen des Raumes, welche ein Hyperboloid in sich
+iiberfiihren, ohne seine beiden Systeme Erzeugender zu vertauschen -
+1) Deutet man eine solche Differentialgleichung geometrisch in der Ebene,
+so heiBt dies, daB ihre Integralkurven vermoge der betreffenden Transformationen
+immer wieder in Integralkurven ubergehen.
+2) Vergleiche meine Abhandlung im fiinften Bande der Math. Ann. [1872,
+d. Ausg. Bd. II, Abh. I]. Dort werden alle Beruhrungstransformationen des Raumes,
+welche Kugeln in Kugeln uberfiihren, in die Gesamtheit der riiumlicben Kolli
+neationen verwandelt.
+
+
+COLLECTED PAGE 7
+Xr. 4, 5. Die Gruppeii von B. T. der Ebene. Anwendungen 7
+oder auch diejenigen Kollineationen der Ebene, welche zwei Punkte
+ungeandert lassen.
+2. Es bleibt nur ein einfach unendliches Kurvensystein ungeandert.
+Dann gibt es erne ailerdings unendliche Zahl verschiedener Typen, die
+man aber nach einem Index, der alle ganzzahligen Werte durchlauft,
+in ubersichtlicher Weise ordnen kann.
+o. Es bleibt kein Kurvensystem ungeaudert. Dann hat man es
+mit einer Gruppe zu tun, welche durch die achtfach unendlich vielen
+Kollineationen der Ebene, oder durch eiue sechsgliedrige, oder durch
+eine fiinfgliedrige iu diesen enthaltene Untergruppe typisch repnisentiert
+wird. Eine siebengliedrige Gruppe dieser Art existiert nicht.
+Soviel fur zwei Variable. Fiir mehr Variable beschranke ich [540
+mich auf die Andeutung, dafi erstens die aualytische Grandlage der Theorie
+ganz ahnlich ist, daB ferner von r-gliedrigen Gruppen auch immer in
+einern gewissen Siune nur eine begrenzte Anzahl von Typen existiert.
+Fiir alle Typen kann man Beispiele konstruieren, indem man Gruppen
+aus den Kollineationen eines hinlanglich ausgedehnten Raumes bildet.
+5. Was iiun die Wichtigkeit dieser Uutersuchungeu fur andere
+mathematische Diszipliuen angeht, so mag zunachst folgende Bemerkung
+ihre Stelle linden.
+Nach den Entwickelungen von Klein (vergl. dessen Programm:
+Vergleichende Betrachtungen usw, Erlangen 1872) hangt die Art der
+(geometrischen) Behandlungsweise, welche man einer Mannigfaltigkeit
+zuteil werden lassen kann, jedesmal von einer zugrundeliegenden Trans-
+formationsgruppe ab. Wenn ;ilso alle Gruppen, die man bei einer Ver-
+auderlichen konstruieren kanu, auf die lineare Gruppe zuriickkommen,
+so heifit dies, daB jede Behandlungsweise des binaren Gebietes, die
+man ersiunen konnte, in die gewohnliche lineare Invariantentheone
+eingeschlossen ist. Wenn ferner bei zwei Variabeln gewisse ausge-
+zeichnete Gruppen durch die Kreistransformationen uurl die Kollinea
+tionen typisch reprasentiert sind, so weist dies den metrischen und den
+projektivischen Untersuchungen der Ebene eiue ausgezeichnete Stellung
+zu unter alien moglichen Untersuchungsarten, denen man die Ebene
+unterwerfen kann.
+Aber besonders mochte ich die Beziehungen hervorheben, in [54 1
+denen diese Betrachtungen zur Lehre von den Differentialglei-
+chungen steheu.
+Hat man eine Diifereiitialgleichung beliebiger Ordnung zwischen
+zwei Variabeln, so kann dieselbe Beruhrungstransformationen in sich
+selbst zulassen, die dann notwendig eine der aufgezahlten Gruppen
+bilden. Es kann darauf eine Klassifikation dieser Gleichungen gegrundet
+
+
+COLLECTED PAGE 8
+I. Uber Gruppen von Trunsformationen. Gott. Xachr. Ib74
+werden, und bei denjenigen Gleichungen, die iiberhaupt Transforms
+tionen in sich zulassen, ergibt sich daraus eine rationeUe Theorie ihrer
+Integration. Eine solche besondere Klasse bilden z. B. die linearen
+Gleichungen, zusammen mit alien denjenigen, die durch Beruhrungs-
+transformation auf sie zuruckgefiihrt werden konnen. - - Fiir die Ditfe-
+rentialgleichungen erster Ordnung ist diese Klassifikation freilich ohne
+Wert, da sie unterscbiedslos unbegrenzt viele Transformationen von
+der unter I, 2 aufgezahlten Art in sich gestatten
+1
+).
+Fiir partielle Difterentialgleichungen beliebiger Ordnung zwiscben
+beliebig vielen Variabeln gelten ahnliche Betrachtungen, und es ist
+hiermit eine fruchtbare Untersuchungsricbtung angedeutet. Die Be-
+stimmung der Beruhrungstransformationen, welche eine partieUe [542
+Differentialgleicbung erster Ordnung in sich ilberfiihren, deckt sich
+geradezu mit deren Integration.
+1) Dagegen mag folgender Satz hier. eine Stelle linden: Kennt man bei
+einer Differentialgleichung erster Ordnung zwischen zwei Variabeln eine unendlich
+kleine Beriihrungstransformation, welche die Gleichung in sich iiberfuhrt, so kann
+man den Multiplikator der Gleichung angeben und die Gleichung integrieren. Es
+ist dieser Satz eine Ausdehnung eines in einer iriiheren Arbeit von Klein und
+mir (Math. Annalen Bd. IV, S. 83 [1871, d. Ausg. Bd. J, Abh. XIV, 7]) ange-
+gebenen Theorems.

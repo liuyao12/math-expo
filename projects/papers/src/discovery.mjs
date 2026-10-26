@@ -1,7 +1,9 @@
+import {representationTerms} from './representation-catalog.mjs';
 import {discoveryPoincare} from './poincare-catalog.mjs';
 // Editorial discovery terms. These identify the subject for modern readers;
 // they are not substituted into the author's text or definitions.
 export const discoveryTerms={
+ ...representationTerms,
  ...discoveryPoincare,
  'euler-1740':['Basel problem','reciprocal series','sine product','zeta values','Dirichlet beta values','Newton identities'],
  'euler-1741':['Königsberg bridges','bridge crossings','geometry of position','region words','odd and even counts','Eulerian paths','Eulerian circuits','graph theory','fifteen bridges','networks'],
@@ -54,4 +56,14 @@ export function facetCounts(works,filters,choices){
  return Object.fromEntries(Object.entries(choices).map(([key,values])=>[key,
   Object.fromEntries(values.map(value=>[value,works.filter(work=>matchesWork(work,{...filters,[key]:[value]})).length]))
  ]));
+}
+
+// The date printed on each record is primary. Numbered parts keep their order
+// within the same author and year; stable title/ID ties never depend on insertion.
+export function compareWorks(a,b,order='oldest'){
+ const text=(x,y)=>String(x).localeCompare(String(y),'en');
+ const tie=()=>text(a.authorSort??a.authors[0],b.authorSort??b.authors[0])||(order==='newest'?-1:1)*((a.chronologyOrder??0)-(b.chronologyOrder??0))||text(a.title,b.title)||text(a.id,b.id);
+ if(order==='title')return text(a.title,b.title)||a.year-b.year||tie();
+ if(order==='author')return text(a.authorSort??a.authors[0],b.authorSort??b.authors[0])||a.year-b.year||tie();
+ return (order==='newest'?b.year-a.year:a.year-b.year)||tie();
 }

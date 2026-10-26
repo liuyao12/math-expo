@@ -1,0 +1,174 @@
+{
+  "work": "lie-1874",
+  "checked": "2026-10-26",
+  "basis": "German collected-edition reprint, all eight pages visually inspected; independent English. Original journal impression not separately collated.",
+  "original": {
+    "title": "Ueber Gruppen von Transformationen",
+    "year": 1874,
+    "date": "3 December 1874",
+    "number": 22,
+    "pages": "529–542"
+  },
+  "reprint": {
+    "volume": 5,
+    "year": 1924,
+    "pages": "1–8",
+    "pdfPages": "19–26",
+    "url": "https://archive.org/download/gesammabhan05lierich/gesammabhan05lierich.pdf",
+    "editor": "Friedrich Engel"
+  },
+  "sourceFile": "sources/lie-1874-de-ocr.txt",
+  "sha256": "123e1b0b698f266e62c9b76aa736bd44096700100e41d5b6ef9d16e197eedb05",
+  "ocrWarning": "Raw OCR only: formulas and letters are unreliable. The linked scan pages, all visually inspected, are authoritative; OCR is supplied for tracing, not quoted as accurate German transcription.",
+  "pages": [
+    {
+      "collectedPage": 1,
+      "pdfPage": 19,
+      "start": 0,
+      "end": 1713,
+      "sha256": "0e2802526838e273d80373e15579a9d42d70c26d0d300be74cca64f4be42b712"
+    },
+    {
+      "collectedPage": 2,
+      "pdfPage": 20,
+      "start": 1713,
+      "end": 3527,
+      "sha256": "1ac98c720237c4560b4e5b8890002b8bac8495bf59ef35272294ed52686ee29d"
+    },
+    {
+      "collectedPage": 3,
+      "pdfPage": 21,
+      "start": 3527,
+      "end": 5164,
+      "sha256": "b495904ed50142aac60fa01fb52a28020fc5084f83761c58974fd868344571ec"
+    },
+    {
+      "collectedPage": 4,
+      "pdfPage": 22,
+      "start": 5164,
+      "end": 6969,
+      "sha256": "7153c904b0d7c2c9d99680ee2ce5da197cb4dc28110523818e29d6ae54bc53df"
+    },
+    {
+      "collectedPage": 5,
+      "pdfPage": 23,
+      "start": 6969,
+      "end": 9024,
+      "sha256": "13e7253e82be0ee58ed333481e044b9b3fa39be62f29360835ac2d7f43473de5"
+    },
+    {
+      "collectedPage": 6,
+      "pdfPage": 24,
+      "start": 9024,
+      "end": 11640,
+      "sha256": "af490f78d1da6c442109fb3363e15fb694055c07aa8054534b8263ed58ec6c21"
+    },
+    {
+      "collectedPage": 7,
+      "pdfPage": 25,
+      "start": 11640,
+      "end": 14247,
+      "sha256": "b30b83374bf4d1eeb5f03236aa400102bd6ff601353a6547e2a99069b30f43c9"
+    },
+    {
+      "collectedPage": 8,
+      "pdfPage": 26,
+      "start": 14247,
+      "end": 15716,
+      "sha256": "26e01cf8205ea53182f958b230b3055c8db77b9ade227e2c1b5baea07269e43c"
+    }
+  ],
+  "coverage": "Introduction, five numbered sections, all five author footnotes. Contact classification announcements and global claims are retained with explicit qualifications.",
+  "sourcePageRanges": {
+    "lie74-0a": [
+      1,
+      1
+    ],
+    "lie74-0b": [
+      2,
+      2
+    ],
+    "lie74-1a": [
+      2,
+      2
+    ],
+    "lie74-2a": [
+      2,
+      3
+    ],
+    "lie74-2b": [
+      3,
+      4
+    ],
+    "lie74-3a": [
+      4,
+      5
+    ],
+    "lie74-4a": [
+      5,
+      5
+    ],
+    "lie74-4b": [
+      5,
+      6
+    ],
+    "lie74-4c": [
+      6,
+      6
+    ],
+    "lie74-4d": [
+      6,
+      7
+    ],
+    "lie74-4e": [
+      7,
+      7
+    ],
+    "lie74-5a": [
+      7,
+      7
+    ],
+    "lie74-5b": [
+      7,
+      8
+    ]
+  },
+  "authorFootnotes": [
+    {
+      "section": 2,
+      "collectedPage": 3,
+      "content": "Analogue of the bracket condition in two variables."
+    },
+    {
+      "section": 4,
+      "collectedPage": 5,
+      "content": "Point transformations in three variables preserving the contact equation."
+    },
+    {
+      "section": 4,
+      "collectedPage": 6,
+      "content": "Preservation of the differential equation means preservation of its integral curves."
+    },
+    {
+      "section": 4,
+      "collectedPage": 6,
+      "content": "Reference to the sphere and line-complex paper in Mathematische Annalen V."
+    },
+    {
+      "section": 5,
+      "collectedPage": 8,
+      "content": "Infinitesimal contact symmetry and an integrating factor; joint paper with Klein."
+    }
+  ],
+  "editorialQualifications": [
+    "Closure alone does not ensure identity or inverses.",
+    "The regular analytic local hypothesis and nonvanishing generators are explicit.",
+    "Contact equation ratios are rewritten without division; the covector/slope sign is supplied.",
+    "Coupled actions on two curve families need not be a direct product.",
+    "The higher-dimensional bounded-types and linear-realization claims are not proved here.",
+    "The integrating factor needs a transverse symmetry.",
+    "The contact classification is announced without proof."
+  ],
+  "proofStatus": "Five written reconstructions, without proof-assistant verification. Six editorial drawings.",
+  "englishSources": "No existing English is used for the 1874 rendering. Ackerman 1975 concerns 1880; Merker concerns Lie and Engel 1888."
+}

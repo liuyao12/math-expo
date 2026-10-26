@@ -1,3 +1,4 @@
+import {representationWorks,representationPeople,representationBibliography,representationEnglish,representationCitations,conceptsLie1874} from './representation-catalog.mjs';
 import {concepts1902,citations1902,externalReferences1902} from './poincare-1902-surfaces-catalog.mjs';
 import {concepts1900} from './poincare-1900-catalog.mjs';
 import {people1899,concepts1899,externalReferences1899} from './poincare-1899-catalog.mjs';
@@ -17,7 +18,7 @@ import {conceptsBridges} from './euler-1741-catalog.mjs';
 import {peopleResidues,conceptsResidues,externalReferencesResidues} from './euler-1761-catalog.mjs';
 englishSources['riemann-1851']=english1851;
 englishSources['riemann-1857']=english1857;
-Object.assign(englishSources,englishPoincare);
+Object.assign(englishSources,englishPoincare,representationEnglish);
 Object.assign(englishSources,englishEulerMore);
 Object.assign(englishSources,englishLogarithms);
 const m = String.raw;
@@ -43,6 +44,7 @@ worksPoincare.find(w=>w.id==='poincare-1902-surfaces').citationChecked='26 Octob
 // A work record exists independently of whether we have edited its text.
 // Titles are our English renderings; original titles identify the source edition.
 export const works = [
+  ...representationWorks,
   work1857,
   ...worksPoincare,
   ...additionalWorks,
@@ -117,6 +119,7 @@ export const works = [
 ];
 
 export const people = [
+  ...representationPeople,
   ...people1899,
   ...people1895,
   ...people1857,
@@ -150,6 +153,7 @@ existingWeierstrass.bibliography=[...(existingWeierstrass.bibliography??[]),...w
 // Only direct, checked work-to-work citations belong here. Reverse lists are
 // derived from these edges; related works and editorial sources stay separate.
 export const citations = [
+  ...representationCitations,
   ...citations1902,
   ...citations1857,
   ...citations1851,
@@ -163,6 +167,7 @@ export const citations = [
 ];
 
 export const concepts = [
+  ...conceptsLie1874,
   ...concepts1902,
   ...concepts1900,
   ...concepts1899,
@@ -215,6 +220,7 @@ export const concepts = [
 ];
 
 export const bibliographicFields = {
+  ...representationBibliography,
   'riemann-1857':bibliography1857,
   ...bibliographyPoincare,
   ...additionalBibliographicFields,
