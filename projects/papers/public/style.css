@@ -114,3 +114,8 @@
 
 /* Real text stays searchable and copyable; small caps affect surnames only. */
 .person-surname{text-transform:none;font-variant-caps:small-caps;font-synthesis:small-caps;font-style:normal;letter-spacing:.025em}
+
+/* Mathematical labels in diagrams use the same local LaTeX renderer as the text. */
+.p00-diagram{position:relative}.p00-diagram .math-label{position:absolute;transform:translate(-50%,-50%);font-size:12px;line-height:1;white-space:nowrap}.p00-diagram svg{display:block;width:100%;height:auto}.p00-diagram .math-label .katex{font-size:1em}
+/* Work titles remain ordinary searchable text; italics supply their typography. */
+cite.work-title{font-style:italic}.entity-link.work-link,.work-record h3,.paper-heading h1,.record-page>header>h1.work-heading,.bibliography h3,.profile-bibliography a{font-style:italic}

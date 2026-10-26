@@ -1,0 +1,182 @@
+{
+  "work": "poincare-1900",
+  "checked": "2026-10-25",
+  "basis": "Independent modern-English rendering of the complete public-domain French author text, from the Analysis Situs transcription of Œuvres VI. Modern apparatus excluded. Not collated line by line against journal printing.",
+  "originalPublication": {
+    "journal": "Proceedings of the London Mathematical Society",
+    "series": 1,
+    "volume": 32,
+    "year": 1900,
+    "pages": "277–308",
+    "doi": "10.1112/plms/s1-32.1.277"
+  },
+  "sourceFile": "sources/poincare-1900-fr.txt",
+  "sha256": "f98c716684a182a2c2c1189ae7ffa0c67aa6274a95ad3c6b36bad07774db8cf1",
+  "sections": 6,
+  "introduction": true,
+  "units": [
+    {
+      "section": 0,
+      "url": "https://analysis-situs.math.cnrs.fr/Introduction-155.html",
+      "start": 210,
+      "end": 1142,
+      "sha256": "b0d67308f78d1e650af0a9b2bd72cf01313249c0fc16b25ef74d1a837df0f03f",
+      "sourceCharacters": 917,
+      "modernNoteReferencesRemoved": 0,
+      "passages": [
+        "p00-0a"
+      ],
+      "correctionsAndQualifications": [
+        "All three source reference-prefix conventions retained."
+      ]
+    },
+    {
+      "section": 1,
+      "url": "https://analysis-situs.math.cnrs.fr/p1-Rappel-des-principales-definitions-156.html",
+      "start": 1142,
+      "end": 8043,
+      "sha256": "70391778dc03a8ab9bff88bde51d85e370ea765120eaf3f2c7d58eb7170dc781",
+      "sourceCharacters": 6896,
+      "modernNoteReferencesRemoved": 4,
+      "passages": [
+        "p00-1a",
+        "p00-1b",
+        "p00-1c"
+      ],
+      "correctionsAndQualifications": [
+        "Boundary congruence restored in reciprocal display.",
+        "Local defining-equation cross-references and cell dimension normalized.",
+        "Last double-prime index restored.",
+        "Sphere/ball and simple-connectivity ambiguity explicitly retained and qualified."
+      ]
+    },
+    {
+      "section": 2,
+      "url": "https://analysis-situs.math.cnrs.fr/p2-Reduction-des-tableaux.html",
+      "start": 8043,
+      "end": 18743,
+      "sha256": "f173644982c2b590033c3899944e93c68a3ce97f37f28e0904c9901f7f1c72c9",
+      "sourceCharacters": 10695,
+      "modernNoteReferencesRemoved": 2,
+      "passages": [
+        "p00-2a",
+        "p00-2b",
+        "p00-2c"
+      ],
+      "correctionsAndQualifications": [
+        "Prime parameter renamed ell to avoid manifold-dimension collision.",
+        "Rank-deficient and primitive-vector gaps of the first lemma identified.",
+        "Square determinant sign distinguished from positive factor magnitude.",
+        "Final tall-table entry-gcd index restored to M_(m-1).",
+        "Zero tails assigned without zero denominators."
+      ]
+    },
+    {
+      "section": 3,
+      "url": "https://analysis-situs.math.cnrs.fr/p3-Comparaison-des-tableaux-T-_q-et-T-_q.html",
+      "start": 18743,
+      "end": 26455,
+      "sha256": "f748518da3d8241b978478f800493fdc2c5ab3f4d9a4ea35c34b9cfcfda49ba3",
+      "sourceCharacters": 7707,
+      "modernNoteReferencesRemoved": 6,
+      "passages": [
+        "p00-3a",
+        "p00-3b",
+        "p00-3c"
+      ],
+      "correctionsAndQualifications": [
+        "Cell labels restored where alpha was printed in place of a.",
+        "Reciprocal-table prime and rectangular row/column ranges corrected.",
+        "Homology degree of nonunit factors stated explicitly."
+      ]
+    },
+    {
+      "section": 4,
+      "url": "https://analysis-situs.math.cnrs.fr/p4-Application-a-quelques-exemples.html",
+      "start": 26455,
+      "end": 40839,
+      "sha256": "5593f35149d825deefa2161103bcacd5a71fbb41350267379717f99cb401aeba",
+      "sourceCharacters": 14379,
+      "modernNoteReferencesRemoved": 2,
+      "passages": [
+        "p00-4a",
+        "p00-4b",
+        "p00-4c",
+        "p00-4d",
+        "p00-4e",
+        "p00-4f",
+        "p00-4g"
+      ],
+      "correctionsAndQualifications": [
+        "First cube second face ends at B-prime.",
+        "Invariant factors listed in divisibility order.",
+        "Octahedron AD endpoint row restored to first-minus-third vertex; boundary-square check supplied.",
+        "Return-family zero-rank, rank-one, and determinant-sign cases qualified.",
+        "Repeated fourth-face numbering corrected.",
+        "Heegaard radial seam uses actual phase-rectangle corners.",
+        "Missing positive endpoint restored in Heegaard T1.",
+        "Two-row rectangular T2 has two diagonal invariants, not three."
+      ]
+    },
+    {
+      "section": 5,
+      "url": "https://analysis-situs.math.cnrs.fr/p5-Extension-au-cas-general-d-un-theoreme-du-premier-complement.html",
+      "start": 40839,
+      "end": 57657,
+      "sha256": "09eba238de7a9d818d03c3101a21c8806771dfe8de7d3bd4cc3d4d089a86e3ae",
+      "sourceCharacters": 16813,
+      "modernNoteReferencesRemoved": 8,
+      "passages": [
+        "p00-5a",
+        "p00-5b",
+        "p00-5c",
+        "p00-5d",
+        "p00-5e",
+        "p00-5f"
+      ],
+      "correctionsAndQualifications": [
+        "Target cycle dimension renamed r to avoid changing join-factor index.",
+        "Generalized pyramid dimension restored to q+m+1.",
+        "Filling expressed by boundary equation with restored summation indices.",
+        "Containing dual chamber and chosen old vertex stated consistently.",
+        "Historical ungraded join formulas retained; coherent graded signs supplied in commentary and proof.",
+        "Annihilator versus invariant-factor inference identified as invalid.",
+        "Historical final transpose index retained and corrected explicitly to p-q+1.",
+        "Annexation proof includes both adjacent boundary maps."
+      ]
+    },
+    {
+      "section": 6,
+      "url": "https://analysis-situs.math.cnrs.fr/p6-Torsion-interieure-des-varietes.html",
+      "start": 57657,
+      "end": 68568,
+      "sha256": "737d918c153c56692c2f3e6145a86bb99bee7501cc0222fdc08987b3b4cf2e27",
+      "sourceCharacters": 10906,
+      "modernNoteReferencesRemoved": 2,
+      "passages": [
+        "p00-6a",
+        "p00-6b",
+        "p00-6c",
+        "p00-6d"
+      ],
+      "correctionsAndQualifications": [
+        "Odd listed length distinguished from even number of distinct entries.",
+        "Three-cell combination coefficient restored to epsilon12 epsilon22 epsilon23 epsilon33.",
+        "Determinant theorem heading corrected from unilateral to bilateral.",
+        "Mixed subtraction factor corrected from a-d to a-b.",
+        "Malformed repeated-chain string rendered as a traversal and its decomposition.",
+        "Projective-plane two-cell matrix final sign restored to minus.",
+        "Closing hypersphere assertion retained as unproved, with modern concepts distinguished."
+      ]
+    }
+  ],
+  "englishComparison": {
+    "translator": "John Stillwell",
+    "manuscriptDate": "2009-07-31",
+    "url": "https://webhomes.maths.ed.ac.uk/~v1ranick/papers/poincare2009.pdf#page=145",
+    "firstPdfPage": 145,
+    "lastPdfPage": 173,
+    "use": "Credits, extent and closing page inspected; linked for comparison, not reproduced."
+  },
+  "notation": "Finite row/column lists use indexed notation. Source sqrt(-1) is i. Target cycle dimension in §5 is r; q,m continue to denote the changing join-factor dimensions. Historical ungraded sign displays and wrong final torsion claim are preserved, with separate repairs."
+}

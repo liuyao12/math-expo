@@ -1,3 +1,4 @@
+import {concepts1900} from './poincare-1900-catalog.mjs';
 import {people1899,concepts1899,externalReferences1899} from './poincare-1899-catalog.mjs';
 import {people1895,concepts1895,externalReferences1895} from './poincare-1895-catalog.mjs';
 import {work1857,bibliography1857,english1857,people1857,weierstrass1857,concepts1857,citations1857} from './riemann-1857-catalog.mjs';
@@ -33,6 +34,7 @@ worksPoincare.find(w=>w.id==='poincare-1895').citationChecked='24 October 2026';
 
 worksPoincare.find(w=>w.id==='poincare-1899').externalReferences=externalReferences1899;
 worksPoincare.find(w=>w.id==='poincare-1899').citationChecked='25 October 2026';
+worksPoincare.find(w=>w.id==='poincare-1900').citationChecked='25 October 2026';
 
 // A work record exists independently of whether we have edited its text.
 // Titles are our English renderings; original titles identify the source edition.
@@ -156,6 +158,7 @@ export const citations = [
 ];
 
 export const concepts = [
+  ...concepts1900,
   ...concepts1899,
   ...concepts1895,
   ...concepts1857,

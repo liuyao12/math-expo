@@ -1,3 +1,4 @@
+import './check-poincare-1900.mjs';
 import './check-poincare-1899.mjs';
 import './check-poincare-1895.mjs';
 import './check-riemann-1857.mjs';

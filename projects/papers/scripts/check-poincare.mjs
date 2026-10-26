@@ -7,7 +7,7 @@ const dist=new URL('../dist/',import.meta.url);
 assert.equal(worksPoincare.length,7);
 assert.equal(new Set(worksPoincare.map(w=>w.id)).size,7);
 assert.deepEqual(worksPoincare.map(w=>w.year),[1892,1895,1899,1900,1902,1902,1904]);
-assert.equal(worksPoincare.filter(w=>w.edition).length,3);
+assert.equal(worksPoincare.filter(w=>w.edition).length,4);
 for(const work of worksPoincare){
  const html=fs.readFileSync(new URL(work.id+'/index.html',dist),'utf8');
  assert(html.includes('id="work-series"'));
