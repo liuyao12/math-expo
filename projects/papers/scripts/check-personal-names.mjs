@@ -30,3 +30,7 @@ assert(catalogue.includes('<span class="person-surname">Stillwell</span>'));
 const bib=fs.readFileSync(new URL('../dist/riemann-1859/citation.bib',import.meta.url),'utf8');
 assert(bib.includes('Bernhard Riemann'));assert(!bib.includes('<span'));
 console.log('Validated surname-only typography, specific-work versus author-work links, author identity checks, backlinks, ambiguity handling, unchanged math labels, and plain-text bibliographic exports.');
+
+const givenAmbiguous=nameRegistry([{id:'peter',name:'Fritz Peter'},{id:'dirichlet',name:'Peter Gustav Lejeune Dirichlet'}],'../');
+assert(!givenAmbiguous.find(p=>p.id==='peter').aliases.includes('Peter'),'A surname matching another person’s given name requires an explicit reference');
+assert.equal(nameLabel({name:'Fritz Peter'}),'Fritz <span class="person-surname">Peter</span>');

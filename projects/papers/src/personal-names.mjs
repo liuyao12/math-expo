@@ -19,6 +19,7 @@ export function personalReference(person,label,base,work){
 
 export function nameRegistry(people,base){
  const owners=new Map();
+ const givenNames=new Set(people.flatMap(p=>p.name.split(' ').slice(0,-1)));
  for(const p of people){const key=surname(p);owners.set(key,(owners.get(key)??0)+1);}
- return people.map(p=>({id:p.id,name:p.name,surname:surname(p),aliases:[...(owners.get(surname(p))===1?[surname(p)]:[]),...(p.id==='galileo'?['Galileo']:[]),...(p.id==='gauss'?['Gauß']:[])],href:`${base}people/${p.id}/`}));
+ return people.map(p=>({id:p.id,name:p.name,surname:surname(p),aliases:[...(owners.get(surname(p))===1&&!givenNames.has(surname(p))?[surname(p)]:[]),...(p.id==='galileo'?['Galileo']:[]),...(p.id==='gauss'?['Gauß']:[])],href:`${base}people/${p.id}/`}));
 }
