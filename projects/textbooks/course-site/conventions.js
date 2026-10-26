@@ -21,8 +21,8 @@
   add("C=[a]^{\\mathsf T},\\qquad D=[b]^{\\mathsf T}.","C=[a],\\qquad D=[b].","coefficient-pair");
   add("[v.L.d]^{\\mathsf T}=A[v.c]^{\\mathsf T}.","[v.L.d]=[v.c]A.","coordinate-map");
   add("[v.L.K.e]^{\\mathsf T}=BA[v.c]^{\\mathsf T}.","[v.L.K.e]=[v.c]AB.","coordinate-composition");
-  add("[[v\\cdot w]]=X^{\\mathsf T}GY.","[[v\\cdot w]]=XGY^{\\mathsf T}.","metric");
-  add("[[\\|v\\|^2]]=X^{\\mathsf T}GX.","[[\\|v\\|^2]]=XGX^{\\mathsf T}.","squared-length");
+  add("v\\cdot w=X^{\\mathsf T}GY.","v\\cdot w=XGY^{\\mathsf T}.","metric");
+  add("\\|v\\|^2=X^{\\mathsf T}GX.","\\|v\\|^2=XGX^{\\mathsf T}.","squared-length");
   add("G=A^{\\mathsf T}A.","G=AA^{\\mathsf T}.","gram");
   add("G'=S^{\\mathsf T}GS","G'=SGS^{\\mathsf T}","gram-change");
   add("A'=AS","A'=SA","direction-change");
