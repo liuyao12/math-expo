@@ -1,0 +1,3164 @@
+Poincaré · Complément à l’Analysis situs (1899)
+Pinned public-domain author text from the Analysis Situs French transcription.
+Modern website note apparatus is excluded. The author footnotes in §§II and IX are retained.
+
+§1
+Dans le Journal de l’École Polytechnique (volume du centenaire de la fondation de l’École, 1894)  j’ai publié un Mémoire intitulé Analysis situs, où j’étudie les variétés de l’espace à plus de trois dimensions et les propriétés des nombres de Betti. C’est à ce Mémoire que se rapporteront les renvois que je serai amené à faire fréquemment dans la suite, en mentionnant seulement le titre Analysis situs.
+
+
+
+Dans ce Mémoire se trouve énoncé le théorème suivant : Pour toute variété fermée, les nombres de Betti également distants des extrêmes sont égaux.
+
+
+
+Le même théorème a été énoncé par M. Picard dans sa Théorie des fonctions algébriques de deux variables.
+
+
+
+M. Heegaard vient de revenir sur ce même problème dans un travail très remarquable, publié en langue danoise, sous le titre « Forstudier til en topologisk teori för de algebraiske Sammenhäng » (Copenhage, det Nordiske Forlag Ernst Bojesen, 1898).  D’après lui le théorème en question est inexact et les démonstrations sont sans valeur.
+
+
+
+Avant d’examiner les objections de M. Heegaard, il convient de faire une distinction. Il y a deux manières de définir les nombres de Betti.
+
+
+
+Considérons une variété $V$ que je supposerai, par exemple, fermée ; soient $v_1, \ v_2, \ \ldots, \ v_n, \ n $ variétés  à $p$ dimensions, faisant partie de $V$. Je suppose qu’on ne puisse pas trouver de variété à $p+1$ dimensions faisant partie de $V$ et dont $v_1, \ v_2, \ \ldots, v_n$ constituent la frontière complète ;  mais que, si on leur adjoint une $(n+1)^{\rm ième}$ variété à $p$ dimension que j’appelerai $v_{n+1}$ et qui fera partie de $V$, on puisse trouver une variété à $p+1$ dimensions, faisant partie de $V$, dont $v_1, \ v_2, \ \ldots, \ v_n, \ v_{n+1}$ constituent la frontière complète et cela de quelque manière que l’on ait choisi la $(n+1)^{\rm ième}$ variété $v_{n+1}$.  Dans ce cas, on dit que le nombre de Betti est égal à $n+1$ pour les variétés à $p$ dimensions.
+
+
+
+C’est la définition adoptée par Betti.
+
+
+
+Mais on peut donner une seconde définition.
+
+
+
+Supposons que l’on puisse trouver dans $V$ une variété à $p+1$ dimensions, dont $v_1, \ v_2, \ \ldots, \ v_n$  constituent la frontière complète ; j’exprimerai ce fait par la relation suivante :
+
+
+
+$$ v_1+v_2+\ldots+v_n \sim 0,$$
+
+
+
+que j’appellerai une homologie.
+
+
+
+Il pourra se faire que sur la frontière complète de notre variété à $p+1$ dimensions, une même variété $v_1$ se retrouve plusieurs fois ; dans ce cas, elle figurera dans le premier membre de l’homologie avec un coefficient, qui devra être un nombre entier.
+
+
+
+D’après cette définition, on peut additionner les homologies, les soustraire les unes des autres, les multiplier par un nombre entier.
+
+
+
+Nous conviendrons également qu’il est permis de diviser une homologie par un nombre entier, quand tous les coefficients sont divisibles par cet entier. Par conséquent, s’il y a une variété à $p+1$ dimensions, dont la frontière complète sera constituée par quatre fois la variété $v_1$, nous conviendrons qu’on peut écrire non seulement l’homologie
+
+
+
+$$ 4v_1 \sim 0,$$
+
+
+
+mais encore l’homologie
+
+
+
+$$ v_1 \sim 0;$$
+
+
+
+de sorte que cette homologie signifie qu’il y a des variétés à $p+1$ dimensions, qui admettent pour frontière complète la variété $v_1$ ou un certain nombre de fois cette variété.
+
+
+
+L’homologie
+
+
+
+$$ 2 v_1 + 3 v_2 \sim 0$$
+
+
+
+signifie qu’il y a des variétés à $p+1$ dimensions, qui ont pour frontière complète deux fois $v_1$ et trois fois $v_2$, ou quatre fois $v_1$ et six fois $v_2$, ou six fois $v_1$ et neuf fois $v_2$, etc.
+
+
+
+Telles sont les conventions que j’ai adoptées dans l’Analysis situs, page 207.
+
+
+
+Je dirai que plusieurs variétés sont indépendantes, si elles ne sont pas liées par aucune homologie à coefficients entiers.
+
+
+
+Si alors il y a $n$ variétés indépendantes à $p$ dimensions, le nombre de Betti, d’après la seconde définition, est égal à $n+1$.
+
+
+
+Cette seconde définition, qui est celle que j’ai adoptée dans  l’Analysis situs, ne concorde pas avec la première.
+
+
+
+Le théorème énoncé plus haut et critiqué par M. Heegaard, est vrai pour les nombres de Betti, définis de la seconde manière, et faux pour les nombres de Betti définis de la première manière.
+
+
+
+C’est ce que prouve l’exemple cité par M. Heegaard, page 86.
+
+
+
+Si l’on adopte la première définition, on a
+
+
+
+$$ P_1=2, \ \ P_2=1$$
+
+
+
+et, par conséquent,
+
+
+
+$$ P_2 < P_1.$$
+
+
+
+Si l’on adopte, au contraire, la seconde définition, on trouve
+
+
+
+$$P_1=1, \ \  P_2=1$$
+
+
+
+et, par conséquent,
+
+
+
+$$P_2=P_1,$$
+
+
+
+conformément au théorème énoncé.
+
+
+
+C’est ce que prouvait également un exemple que j’ai cité, moi-même, dans  l’Analysis situs. C’est le troisième exemple, page 232.
+
+
+
+Nous avons formé (p. 244) les équivalences fondamentales, qui s’écrivent de la façon suivante :
+
+
+
+$$ 2C_1 \equiv 2C_2 \equiv 2C_3 \equiv 0, \ \ 4C_1 \equiv 0;$$
+
+
+
+nous pouvons en déduire les homologies
+
+
+
+$$ 4C_1 \sim 4 C_2 \sim 4 C_3 \sim 0.$$
+
+
+
+Comme, d’après notre convention, on peut diviser ces homologies par $4$, nous arrivons au système suivant d’homologies fondamentales :
+
+
+
+$$ C_1 \sim C_2 \sim C_3 \sim 0.$$
+
+
+
+Si alors $P_1$ et $P_2$ sont les nombres de Betti, définis de la seconde manière, on trouve
+
+
+
+$$ P_1=P_2=1.$$
+
+
+
+Mais l’égalité entre les nombres $P_1$ et $P_2$ ne subsisterait pas si l’on avait adopté la première définition, qui est celle de Betti ; nous aurions toujours $P_2=1$, mais nous n’aurions plus $P_1=1$.
+
+
+
+En effet, il n’y a pas de variété à deux dimensions qui ait pour frontière complète la ligne fermée $C_1$, sans quoi nous aurions l’équivalence $C_1 \equiv 0.$
+
+
+
+Ce qui est vrai seulement, c’est qu’il y a une variété à deux dimensions, admettant pour frontière quatre fois la ligne $C_1$. Donc $P_1$ n’est pas égal à $1$.
+
+
+
+Revenons au théorème d’après lequel les nombres de Betti, également distants des extrêmes, sont égaux.
+
+
+
+La démonstration que j’en ai donnée dans l’Analysis situs, semble s’appliquer également bien aux deux définitions des nombres de Betti ; elle doit donc avoir un point faible, puisque les exemples qui précèdent montrent suffisamment que le théorème n’est pas vrai pour la première définition.
+
+
+
+M. Heegaard s’en est bien rendu compte ; mais je ne crois pas que sa première objection soit fondée.
+
+
+
+Après avoir cité la façon dont je définis les variétés $V_1, \ V_2, \ \ldots, \ V_p$  (Analysis situs, p. 226), par les équations $\Phi=0$, $F_i^{\prime \prime}=0$, il ajoute (p. 70) :  « Enhver af Mangfoldighederne $V$ skulde altsaa kunne voere den fulstaendige Skoering mellem $p$ Mangfoldighder af $h-1$ Dimensioner i $U$  » . Cela n’est pas exact, car, outre mes égalités, j’ai un certain nombre d’inégalités, que j’ai introduites au début du Mémoire et que j’ai négligé d’écrire de nouveau dans la suite ; mes variétés ne sont donc pas des intersections complètes.
+
+
+
+La seconde objection est, au contraire, fondée. « Naar omvendt, dit M. Heegaard, Homologien $\Sigma V_i \sim 0$ ikke finder Sted, saa i $U^{\prime}$ kan legges en lukket Kurve $V^{\prime}$, saa at
+
+
+
+$$ \Sigma N(V^{\prime},V_i) \not = 0$$
+
+
+
+men det er ikke sikker, at denne Kurve kan udsk\oe res af nogen Mangfoldighed $V$ » . C’est là, en effet, le véritable point faible de la démonstration.
+
+
+
+Il est donc nécessaire de revenir sur la question, et c’est l’objet du présent travail.
+
+
+
+Souvent, pour simplifier les démonstrations, j’ai envisagé seulement le cas des variétés fermées à trois dimensions, contenues dans l’espace à quatre dimensions. On pourrait facilement les étendre au cas général.
+
+
+
+J’envisage donc dans la suite, une variété $V$ fermée, mais pour calculer ses nombres de Betti, je la suppose divisée en variétés plus petites, de façon à former un polyèdre, au sens donné à ce mot à la page 271 de l’Analysis situs.
+
+§2
+Considérons donc, comme à la page 271 de l’Analysis situs un polyèdre à $p$ dimensions, c’est-à-dire une variété $V$ à $p$ dimensions, divisée en variétés $v_p$ ; les frontières des $v_p$ seront les $v_{p-1}$, celles des $v_{p-1}$ seront les $v_{p-2}, \ \ldots,$ celles des $v_1$  (arêtes) seront les $v_0$ (sommets).
+
+
+
+J’appellerai $\alpha_i$ le nombre des $v_i$.
+
+
+
+Soient $a_1^q, \ a_2^q,\ \ldots, \ a_{\alpha_q}^q$ les différentes $v_q$.
+
+
+
+Soit $a_1^q$ une des variétés $v_q$ et $a_1^{q-1}$ une des variétés $v_{q-1}$ qui lui sert de frontière. Étudions les rapports de $a_1^q$ et de $a_1^{q-1}$.
+
+
+
+Soient 
+
+
+
+$$
+\tag{1}  F_1=F_2=\ldots=F_{n-q}=F_{n-q+1}=0 \ \ \ \ \varphi_{\gamma}>0
+$$
+
+
+
+les égalités et les inégalités qui définissent $a_1^{q-1}$, d’après la première définition des variétés (Analysis situs, p. 196).
+
+
+
+Les relations qui définissent $a_1^q$ pourront se mettre sous la forme 
+
+
+
+$$
+\tag{2} F_1=F_2=\ldots=F_{n-q}=0, \ \ \ \ F_{n-q+1}>0, \ \ \ \ \varphi_{\gamma}>0.
+$$
+
+
+
+Dans ce cas nous dirons que la relation de $a_1^q$ et de $a_1^{q-1}$ est directe.
+
+
+
+Cette relation deviendrait inverse, si l’une de ces deux variétés était remplacée par la variété opposée ; elle redeviendrait directe, si chacune des deux variétés était remplacée par la variété opposée.
+
+
+
+On sait qu’une variété est remplacée par la variété opposée (Analysis situs p. 204), quand on permute deux des fonctions $F$ (qui, égalées à zéro, donnent les équations qui définissent la variété), ou qu’on change le signe de l’une d’elles.
+
+
+
+Ainsi les deux variétés
+
+
+
+$$ \begin{array}{ccccc}
+F_1=F_2=F_3=0; & \ \ & F_1=F_2=0,& \ \ & F_3>0;\\
+F_1=F_2=F_3=0; & \ \ & F_1=F_3=0,& \ \ & F_2<0;\\
+F_1=F_2=F_3=0; & \ \ & F_2=F_3=0,& \ \ & F_1>0\\
+\end{array}$$
+
+
+
+sont en relation directe ; tandis que les deux variétés
+
+
+
+$$
+F_1=F_3=F_3=0; \quad F_1=F_2=0; \quad F_3<0;
+$$
+
+
+
+$$
+F_1=F_3=F_3=0; \quad F_1=F_3=0; \quad F_2>0;
+$$
+
+
+
+sont en relation inverses.
+
+
+
+Cela posé, soit $\epsilon_{i,j}^q$  un nombre qui sera égal à zéro, si $a_j^{q-1}$ n’est pas frontière de $a_i^q$ ; à $+1$, si $a_j^{q-1}$ est frontière de $a_i^q$ et en relation directe avec $a_i^q$ ; et, enfin, à $-1$ si $a_j^{q-1}$est frontière de $a_i^q$mais en relation inverse avec $a_i^q$.
+
+
+
+Nous conviendrons d’écrire la congruence 
+
+
+
+$$
+\tag{3} a_i^q\equiv \sum \epsilon_{i,j}^q a_j^{q-1},
+$$
+
+
+
+qui nous fait connaître les frontières de $a_i^q$.
+
+
+
+L’ensemble des congruences (3), relatives aux différentes $v_p,v_{p-1},\ldots,v_0$ de $V$, constitue ce qu’on peut appeler le schéma d’un polyèdre.
+
+
+
+On peut se poser deux questions :
+
+
+ Un schéma étant donné, existera-t-il toujours un polyèdre, qui y corresponde ?
+
+ Deux polyèdres qui ont le même schéma, sont-ils homéomorphes ? 
+
+
+Sans aborder, pour le moment, ces deux questions, cherchons quelques-unes des conditions auxquelles doit satisfaire un schéma, pour qu’un polyèdre y puisse correspondre.
+
+
+
+Considérons l’une des $v_{p-1}$, $a_1^{p-1}$ par exemple ; cette variété devra séparer, l’une de l’autre, deux des $v_p$, et deux seulement ; de sorte que, parmi les nombres $\epsilon^p_{i,1}$, il y en aura un qui sera égal à $+1$, un qui sera égal à $-1$ et tous les autres seront égaux à zéro.
+
+
+
+Ce n’est pas tout ; envisageons l’une quelconque des $v_q$, $a_i^q$ par exemple, et une quelconque des $v_{q-2}$, $a_k^{q-2}$ par exemple.
+
+
+
+De deux choses, l’une : ou bien $a_k^{q-2}$ n’appartiendra pas à $a_i^q$, et dans ce cas tous les produits 
+
+
+
+$$
+\tag{4} \epsilon_{i,j}^q\epsilon_{j,k}^{q-1}
+$$
+
+
+
+seront nul, car si $a_j^{q-1}$ n’appartient pas à $a_i^q$ le premier facteur est nul ; si, au contraire, $a_j^{q-1}$ appartient à $a_i^q$, la variété $a_k^{q-2}$ ne peut pas appartenir à $a_j^{q-1}$ (sans quoi, elle appartiendrait à $a_i^q$, contrairement à l’hypothèse), et le second facteur doit être nul.
+
+
+
+Ou bien $a_k^{q-2}$ appartiendra à $a_i^q$ ; mais alors nous pourrons raisonner sur la variété $a_i^q$, comme nous raisonnions tout à l’heure sur la variété $V$, et nous conclurons que $a_k^{q-2}$ doit séparer, l’une de l’autre, deux des variétés $v_{q-1}$, qui appartiennent à $a_i^q$, et deux seulement : soient $a_1^{q-1}$ et $a_2^{q-1}$.
+
+
+
+Parmi les produits (4), il n’y en aura que deux qui ne seront pas nuls, à savoir
+
+
+
+$$
+\epsilon_{i,1}^q \epsilon_{1,k}^{q-1}, \quad \epsilon_{i,2}^q \epsilon_{2,k}^{q-1} .
+$$
+
+
+
+Pour tous les autres, en effet, ou bien $a_j^{q-1}$ n’appartiendra pas à $a_i^q$ , ou bien $a_k^{q-2}$ n’appartiendra pas à $a_j^{q-1}$.
+
+
+
+Ces deux produits sont d’ailleurs égaux : l’un à $+ 1$. l’autre à $-1$.
+
+
+
+On aura donc dans tous les cas 
+
+
+
+$$
+\tag{5} \sum_j \epsilon_{i,j}^q\epsilon_{j,k}^{q-1}=0.
+$$
+
+
+
+Nous avons, de même,
+
+
+
+$$
+\sum_i \epsilon_{i,1}^p = 0,
+$$
+
+
+
+et, plus généralement, quel que soit $k$, 
+
+
+
+$$
+\tag{5 bis} \sum_i \epsilon_{i,k}^p =0.
+$$
+
+
+
+La relation (5 bis) peut être regardée, à un certain point de vue, comme un cas particulier de la relation (5).
+
+
+
+Soit $P$ la portion de l’espace à $p+1$ dimensions, limitée par le polyèdre $V$ ; alors la frontière complète de $P$ se composera des diverses variétés $v_p$, qui, par leur ensemble, forment $V$ ; nous pourrons donc écrire, au sens de la congruence (3), 
+
+
+
+$$
+\tag{3 bis} P \equiv \sum_i a_i^p,
+$$
+
+
+
+ou encore
+
+
+
+$$
+P\equiv \sum_i \epsilon_{0,i}^{p+1} a_i^p,
+$$
+
+
+
+où les nombres  $\epsilon_{0,i}^{p+1}$ seront tous, par définition, égaux à $1$.
+
+
+
+A ce compte, la relation (5 bis) qui peut s’écrire
+
+
+
+$$
+\sum_i \epsilon_{0,i}^{p+1} \epsilon_{i,k}^p = 0,
+$$
+
+
+
+n’est plus qu’un cas particulier de la relation (5).
+
+
+
+Nous avons, ensuite, chaque $v_1$ , qui a pour limites deux $v_0$, et deux seulement, ce qui nous donne des congruences (3) de la forme
+
+
+
+$$
+a_i^1\equiv a_j^0-a_k^0,
+$$
+
+
+
+et une relation analogue à (5) et (5 bis)
+
+
+
+$$
+\sum_j \epsilon_{i,j}^1=0,
+$$
+
+
+
+qui rentrerait encore dans la forme (5), en convenant de faire tous les $\epsilon_0$ égaux à $+1$.
+
+
+
+D’autre part, envisageons l’une des $a_i^q$ ; toutes les $a_j^{q+1}$ auxquelles elle sert de frontière ; toutes les $a_k^{q+2}$, auxquelles ces $a_j^{q+1}$ servent de frontières et ainsi de suite. L’ensemble de toutes ces variétés constituera ce que nous avons appelé un aster (Analysis situs, p. 276).
+
+
+
+Nous avons vu (loc. cit., p. 276) que le polyèdre qui correspond à un aster, doit être simplement connexe. Ainsi une condition pour qu’un polyèdre puisse correspondre à un schéma donné, c’est que les polyèdres qui correspondent aux différents asters, d’après la convention de la page 276 de l’Analysis situs, soient tous simplement connexes.
+
+
+
+Considérons maintenant une des $a_i^q$, toutes les $a_j^{q-1}$ qui lui servent de frontières, les $a_k^{q-2}$ qui servent de frontières à ces $a_j^{q-1}$ et ainsi de suite. Cet ensemble de variétés constituera un polyèdre à $q$ dimensions ; nous supposerons que ce polyèdre soit simplement connexe.
+
+
+
+Ce n’est plus là une condition nécessaire pour qu’un polyèdre puisse correspondre au schéma ; c’est simplement une condition que, sauf avis contraire, nous supposerons remplie.
+
+
+
+Pour éclairer ces définitions par quelques exemples, voyons d’abord quel est le schéma du tétraèdre généralisé, défini à la page 275 (Analysis situs).
+
+
+
+Les faces de ce tétraèdre seront définies par les $n+1$ équations 
+
+
+
+$$
+\tag{6}
+ \begin{cases} 
+x_1=0, \quad x_2=0, \quad  \ldots, \quad x_n=0,\\ 
+\quad x_1+x_2+\cdots+x_n=1.
+\end{cases}
+$$
+
+
+
+On obtiendra les $a_i^q$ en supprimant $q+1$ de ces équations ; pour définir le sens de la variété $a_i^q$, nous supposerons qu’on supprime ces $q+1$ équations, mais sans changer l’ordre des $n-q$ équations restantes.
+
+
+
+Cela posé, considérons la relation de $a_i^q$ et de $a_j^{q-1}$ et cherchons à déterminer le nombre $\epsilon_{i,j}^q$.
+
+
+
+D’abord, pour que $a_i^{q-1}$ appartienne à $a_i^q$, il faut que $a_i^{q-1}$ soit définie par les $n-q$ équations qui définissent $a_i^q$, auxquelles on devra adjoindre une $(n-q+1)^{\rm i\grave{e}me}$ équation, prise parmi les équations (6). S’il n’est pas ainsi, le nombre $\epsilon_{i,j}^q$ sera nul.
+
+
+
+Supposons donc que $a_i^{q-1}$ soit obtenu en supprimant les $q$ équations qui occupent les
+
+
+
+$$
+\alpha_1, \alpha_2, \ldots, \alpha_q \quad \mbox{rangs}. 
+$$
+
+
+
+Supposons que $a_i^q$ soit obtenue en supprimant, en outre, la $\beta^{\rm i\grave{e}me}$ équation ; alors le nombre $\epsilon_{i,j}^q$, dont la valeur absolue sera toujours égale à $1$, aura même signe que le produit
+
+
+
+$$
+(\beta-\alpha_1)(\beta-\alpha_2)\cdots (\beta-\alpha_q).
+$$
+
+
+
+Il est aisé de vérifier alors que la relation (5) a lieu.
+
+
+
+Considérons, en effet, la variété $a_k^{q-2}$, obtenue en supprimant les équations de rang $\alpha_1, \alpha_2, \ldots, \alpha_{q-1}$ et la variété $a_i^q$, obtenue en supprimant, en outre, les équations de rang $\beta$ et $\gamma$. (Il est clair que si $a_i^q$ ne s’obtenait pas en supprimant les mêmes équations que pour $a_k^{q-2}$, plus deux autres, tous les produits $\epsilon_{i,j}^q\epsilon_{j,k}^{q-1}$ seraient nuls).
+
+
+
+Dans ce cas, tous ces produits seront encore nuls, sauf deux
+
+
+
+$$
+\epsilon_{i,1}^q \epsilon_{1,k}^{q-1} \quad {\rm et} \quad \epsilon_{i,2}^q \epsilon_{2,k}^{q-1},
+$$
+
+
+
+qui correspondront aux deux variétés $a_1^{q-1}$ et $a_2^{q-2}$ obtenues respectivement en supprimant les équations de rang $\alpha_1, \alpha_2, \ldots, \alpha_{q-1}, \beta$  et celles de rang $\alpha_1, \alpha_2, \ldots, \alpha_{q-1}, \gamma$. Alors, les quatre nombres
+
+
+
+$$
+\epsilon_{i,1}^q, \quad \epsilon_{1,k}^{q-1}, \quad \epsilon_{i,2}^q, \quad \epsilon_{2,k}^{q-1}
+$$
+
+
+
+auront respectivement même signe que
+
+
+
+$$
+\begin{array}{cl}
+(\gamma-\beta)&(\gamma-\alpha_1)(\gamma-\alpha_2)\cdots (\gamma-\alpha_{q-1}),\\
+&(\gamma-\alpha_1)(\gamma-\alpha_2)\cdots (\gamma-\alpha_{q-1}),\\
+(\beta-\gamma)&(\beta-\alpha_1)(\beta-\alpha_2)\cdots (\beta-\alpha_{q-1}),\\
+&(\beta-\alpha_1)(\beta-\alpha_2)\cdots (\beta-\alpha_{q-1}).
+\end{array}
+$$
+
+
+
+On vérifie ainsi que les deux produits, qui ne sont pas nuls, sont égaux et de signe contraire .
+
+
+
+C.Q.F.D.
+
+[Author footnote, as transcribed]
+Le polyèdre ainsi défini, ainsi que tout polyèdre à $n$ dimensions, limité par $n-1$ variétés planes, s’appellera tétraèdre généralisé rectiligne. J’appellerai tétraèdre généralisé toute variété homéomorphe à un tétraèdre généralisé rectiligne.
+
+§3
+Je m’en vais chercher maintenant les nombres de Betti, relatifs à un polyèdre, mais afin d’éviter l’équivoque, dont j’ai signalé plus haut la possibilité, je conviendrai de définir ces nombres de la seconde manière,  c’est-à-dire que $P_q-1$ sera le nombre de variétés fermées à $q$ dimensions, que l’on peut tracer sur notre polyèdre $V$ et qui sont linéairement indépendantes , je veux dire, qui ne sont liées par aucune homologie à coefficient entier, au sens de Analysis situs, page 207.
+
+
+
+Mais je me proposerai d’abord de déterminer le nombre $P'_q-1$ des variétés à $q$ dimensions, fermées et linéairement indépendantes, que l’on peut tracer sur notre polyèdre $V$, mais en nous bornant à celles qui sont des combinaisons des variété  $v_q$.
+
+
+
+Le nombre $P'_q$ sera alors ce que j’appellerai le le nombre de Betti réduit.
+
+
+
+Les variétés à $q$ dimensions, qui sont des combinaisons des $v_q$, pourront évidemment être représentées par $\sum_i \lambda_i a_i^q$, les $\lambda_i$ étant des coefficients entiers et les lettres $a_i^q$ continuant à désigner les différentes variétés $v_q$.
+
+
+
+Quelle est d’abord la condition pour que la variété $\sum_i \lambda_i a_i^q$ soit fermée ?
+
+
+
+Pour cela cherchons quelles sont les variétés $v_{q-1}$ qui forment les frontières de cette variété. Pour les trouver il suffit évidemment de remplacer $a_i^q$ par sa valeur donnée par la congruence (3).
+
+
+
+Cet ensemble de variétés frontières sera donc donné par la formule
+
+
+
+$$
+\sum_i \sum_j \lambda_i \epsilon_{i,j}^q a_i^{q-1}.
+$$
+
+
+
+Pour que la variété $\sum_i \lambda_i a_i^q$ soit fermée, il suffit donc que l’on ait identiquement
+
+
+
+$$
+\sum_i \sum_j \lambda_i \epsilon_{i,j}^q a_i^{q-1}=0
+$$
+
+
+
+c’est-à-dire que, quel que soit $j$, on ait
+
+
+
+$$
+\sum_i \epsilon_{i,j}^q=0.
+$$
+
+
+
+En d’autres termes, la variété $\sum_i \lambda_i a_i^q$, si l’on a 
+
+
+
+$$
+\tag{7, q}  \sum_i \lambda_i a_i^q \equiv 0
+$$
+
+
+
+en vertu des congruences (3,q) ; j’appelle ainsi celles des congruences (3), qui lient les $a_i^q$ aux $a_j^{q-1}$.
+
+
+
+Cherchons maintenant les homologies qui peuvent exister entre les variélés $a_i^q$. On obtiendra toutes ces homologies, en combinant celles que l’on peut obtenir de la façon suivante.
+
+
+
+Considérons la congruence 
+
+
+
+$$
+\tag{8} a_k^{q+1} \equiv \sum \epsilon_{k,i}^{q+1} a_i^q
+$$
+
+
+
+qui, d’après la convention que nous venons de faire, est une congruence (3, q+1) ; remplaçons le signe $\equiv$ par $\sim$, et le premier membre par zéro ; il viendra 
+
+
+
+$$
+\tag{9, q}  \sum_i \epsilon_{k,i}^{q-1} a_i^q  \sim 0.
+$$
+
+
+
+Cette homologie aura évidemment lieu, puisque, par définition, elle exprime, comme la congruence (8), que les $a_i^q$ forment la frontière complète de $a_k^{q+1}$.
+
+
+
+Nous démontrerons plus loin (§ VI), qu’il n’y en a pas d’autres.
+
+
+
+Je désigne cette homologie par (9, q) pour marquer qu’elle a lieu entre les $a_i^q$.
+
+
+
+Je dis que si l’homologie (9, q) a lieu, la congruence 
+
+
+
+$$
+\tag{10, q} \sum_i \epsilon_{k,i}^{q+1} a_i^q \equiv 0
+$$
+
+
+
+sera une conséquence des congruences (3, q).
+
+
+
+Remplaçons, en effet, les $a_i^q$ par leurs valeurs, données par ces congruences (3, q) ; il viendra
+
+
+
+$$
+\sum_i \epsilon_{k,i}^{q+1} a_i^q \equiv \sum_i \sum_j \epsilon_{k,l}^{q+1} \epsilon_{i,j}^{q-1}.
+$$
+
+
+
+Le second membre est identiquement nul en vertu des relations (5).
+
+
+
+Cela posé, soit $\alpha_q$, le nombre des variétés $a_i^q$ ; soit $\alpha'_q$ le nombre de ces variétés qui restent distinctes, si l’on ne regarde pas comme distinctes des variétés liées par une homologie de la forme (9, q) ; soit $\alpha''_q$ le nombre de ces variétés qui restent distinctes, si l’on ne regarde pas comme distinctes des variétés liés par une congruence de la forme (7, q).
+
+
+
+Il résulte de ces définitions :
+
+
+ qu’il y a $\alpha_q-\alpha'_q$  homologies distinctes de la forme (9,q) ;
+
+ qu’il y a  $\alpha_q-\alpha''_q$ congruences distinctes de la forme (7,q) ;
+
+ que $\alpha'_q \geq \alpha_q$, car si plusieurs $a_i^q$ sont liés par une homologie de la forme (9,q), elles seront liées également par la congruence (10,q) correspondante.
+
+
+Enfin le nombre cherché $P'_q-1$ est égal à $\alpha'_q-\alpha''_q$, car les variétés fermées de la forme $\sum_i \lambda_i a_i^q$, réellement distinctes, sont en nombre égal à celui des congruences (7, q), c’est-à-dire au nombre de $\alpha_q-\alpha''_q$.
+
+
+
+Le nombre $P'_q-1$ est le nombre de ces variétés qui restent distinctes en ne regardant pas comme distinctes celles qui sont liées par une homologie (9, q). Or le nombre de ces homologies est $\alpha_q-\alpha'_q$ ; nous avons donc
+
+
+
+$$
+P'_q-1 = (\alpha_q-\alpha''_q)-(\alpha_q-\alpha'_q)=\alpha'_q-\alpha''_q.
+$$
+
+
+
+C.Q.F.D.
+
+
+
+Soient $a_1^q, a_2^q, \ldots, a_i^q$ des variétés $v_q$, au nombre de $i$ et
+
+
+
+$$
+\begin{array}{c}
+a_1^q \equiv \sum \epsilon_{1,j} a_j^{q-1}, \\
+a_2^q \equiv \sum \epsilon_{2,j} a_j^{q-1},\\
+\ldots \ldots ,\\
+a_i^q \equiv \sum \epsilon_{i,j} a_j^{q-1}
+\end{array}
+$$
+
+
+
+les congruences (3) correspondantes. Formons les homologies correspondantes
+
+
+
+$$
+\sum \epsilon_{1,j} a_j^{q-1} \sim 0, \quad \sum \epsilon_{2,j} a_j^{q-1} \sim 0, \quad \ldots, \quad \sum \epsilon_{i,j} a_j^{q-1}\sim 0.
+$$
+
+
+
+La condition nécessaire et suffisante pour que ces homologies soient distinctes, c’est que l’on n’ait entre les $i$ variétés $a_1^q, a_2^q, \ldots, a_i^q$ aucune congruence de la forme
+
+
+
+$$
+\lambda_1 a_1^q + \lambda_2 a_2^q + \cdots + \lambda_q a_i^q \equiv 0.
+$$
+
+
+
+Le nombre des homologies distinctes est donc égal au nombre des $a_i^q$ distinctes, en tenant compte des congruences (7, q). Donc
+
+
+
+$$
+\alpha_{q-1}-\alpha'_{q-1}= \alpha''_{q} \quad {\rm ou} \quad \alpha_{q-1}= \alpha'_{q-1}+ \alpha''_{q}.
+$$
+
+
+
+Nous aurons, d’autre part,
+
+
+
+$$
+\alpha'_0=1.
+$$
+
+
+
+Si, en effet, on peut aller d’un sommet quelconque $a_1^0$ à un autre sommet quelconque, en suivant des arêtes (c’est-à-dire si le polyèdre est d’un seul tenant), on aura l’homologie
+
+
+
+$$
+a_1^0\sim a_i^0,
+$$
+
+
+
+c’est-à-dire qu’il n’y aura qu’un seul sommet distinct, en tenant compte des homologies. Envisageons maintenant la congruence (3 bis)
+
+
+
+$$ 
+P \equiv \sum a_i^p ;
+$$
+
+
+
+l’homologie correspondante s’écrit
+
+
+
+$$
+\sum a_i^p \sim 0
+$$
+
+
+
+et il n’y a pas d’autre homologie (9, p). Donc
+
+
+
+$$
+\alpha_p= \alpha'_p +1.
+$$
+
+
+
+De plus, le polyèdre étant d’un seul tenant, une seule des combinaisons $\sum \lambda_i a_i^p$ pourra être fermée, c’est le polyèdre lui-même dans son entier, représenté par la formule $\sum a_i^p$.
+
+
+
+Nous aurons donc une seule congruence de la forme (7, p)
+
+
+
+$$
+\sum a_i^p \equiv 0.
+$$
+
+
+
+Donc
+
+
+
+$$
+\alpha_p = \alpha''_p +1, \quad \alpha'_p= \alpha''_p.
+$$
+
+
+
+Nous avons donc la série d’équations
+
+
+
+$$
+\begin{array}{llcll}
+\alpha'_0		& = 0, & & & \\
+\alpha_0		& = \alpha'_0+\alpha''_1, & \quad & \alpha'_1-\alpha''_1		& = P'_1-1,		 \\
+\alpha_1		& = \alpha'_1+\alpha''_2, & \quad & \alpha'_2-\alpha''_2		& = P'_2-1, 		\\
+\ldots & \ldots & & \ldots & \ldots \\
+\alpha_{p-1}	& = \alpha'_{p-1}+\alpha''_p, & \quad & \alpha'_{p-1}-\alpha''_{p-1}	& = P'_{p-1}-1,	 \\
+\alpha_p		& = \alpha'_p+1, & \quad & \alpha'_p-\alpha''_p		& =	0,
+\end{array}
+$$
+
+
+
+d’où l’on tire aisément
+
+
+
+$$
+\alpha_p-\alpha_{p-1}+ \alpha_{p-2}-\cdots \pm \alpha_1 \mp\alpha_0 = 1- (P'_{p-1}-1) + \cdots \mp (P'_2-1)\pm (P'_1-1) \mp 1,
+$$
+
+
+
+tout à fait analogue à la formule
+
+
+
+$$
+\alpha_p-\alpha_{p-1}+ \alpha_{p-2}-\cdots \pm \alpha_1 \mp\alpha_0 = 1- (P_{p-1}-1) + \cdots \mp (P_2-1)\pm (P_1-1) \mp 1,
+$$
+
+
+
+que nous avons trouvée dans l’Analysis situs, page 287.
+
+§4
+Considérons un polyèdre $V$, à $p$ dimensions, avec ses diverses variétés
+
+
+
+$$
+a_i^p,a_i^{p-1}, \ldots, a_i^1,a_i^0.
+$$
+
+
+
+Supposons que l’on subdivise chacune des variétés $a_i^p$ en plusieurs autres, que j’appellerai les $b_i^p$ ;  soient ensuite $b_i^{p-1}$ les variétés a $p-1$dimensions, qui servent de frontières aux $b_i^p$ ; soient $b_i^{p-2}$ les variétés à $p- 2$ dimensions, qui servent de frontières aux $b_i^{p-1}$ ; et, enfin, $b_i^0$ les variétés à zéro dimensions (sommets), qui servent de frontières aux $b_i^1$ (arêtes).
+
+
+
+On aura ainsi un nouveau polyèdre $V'$, qui sera dérivé ; du polyèdre $V$, au sens que j’ai attaché à ce mol à la page 271 de l’Analysis situs.
+
+
+
+On peut supposer, d’ailleurs, que si une variété $v_{q-1}$, simplement ou multiplement connexe, sert de frontière à deux variétés $b_j^q$ et $b_k^q$, elle ne forme pas forcément une seule des variétés $b_i^{q-1}$ mais peut être elle-même subdivisée en plusieurs variétés $b_i^{q-1}$. Dans ce cas, pour reprendre la terminologie de la page 272 de l’Analysis situs, ces variétés $b_i^{q-1}$ seront irrégulières et les variétés $b_i^{q-2}$, qui les séparent les unes des autres, seront singulières.
+
+
+
+Cela posé, recherchons une classification des variétés $b_i^q$.
+
+
+
+Si une variété $b_i^q$ ne fait pas partie d’une des variétés $a_i^q$, elle fera partie d’une des variétés $a_j^{q+1}$, ou d’une des variétés $a_j^{q+2}, \ldots$  ou, tout au moins, d’une des variétés $a_i^p$.
+
+
+
+Peut-elle faire partie à la fois de deux variétés $a_j^m$ et $a_k^m$ ?
+
+
+
+D’après la façon dont la subdivision a été supposée faite, en ajoutant toujours de nouvelles frontières, sans en supprimer jamais, cela ne pourra arriver que si ces deux variétés $a_j^m$ et $a_k^m$  sont contiguës et ont une frontière commune $a_h^{m-1}$, et si $b_i^q$ fait partie de cette frontière $a_h^{m-1}$.
+
+
+
+Je suppose alors que $b_i^q$ fasse partie de $a_j^h$ , et ne fasse partie d’aucune variété $a_k^m$, où $m < h$. La variété $a_j^h$ existe toujours et l’on a $h \geq q$ ; de plus, la variété $a_j^h$ est unique, c’est-à-dire que $b_i^q$ ne peut faire partie à la fois de deux variétés différentes $a_k^h$ et $a_j^h$.
+
+
+
+Si donc je conviens de ranger dans une même classe toutes les variétés $b_i^q$, qui font partie de la variété $a_j^h$, sans faire partie d’aucune des variétés $a_k^m$, où $m < h$, toute variété $b_i^q$ fera partie d’une classe et d’une seule. Je pourrai alors représenter $b_i^q$ par une notation à quatre indices
+
+
+
+$$
+b_i^q= B(q,h,j,k);
+$$
+
+
+
+l’indice $q$ indique  le nombre des dimensions de $b_i^q$ ; les indices $h$ et $j$ Indiquent que $b_i^q$ fait partie de la classe $a_j^h$ ; et. l’indice $k$ sert à distinguer les unes des autres les différentes variétés d’une même classe. On a $h \geq q$.
+
+
+
+Nous aurons, alors, pour définir le polyèdre $V$ et sa subdivision :
+
+
+
+1. Les congruences $(3, q)$, relatives au polyèdre $V$, que j’écrirai 
+
+
+
+$$\tag{3,q,i} a_i^q=\sum_j\epsilon_{i,j}^q a_i^{q-1};$$
+
+
+
+2. Les équations qui donnent la subdivision de la variété $a_i^q$ 
+
+
+
+$$\tag{1,q,i} a_i^q= \sum_k B(q,q,i,k) ;$$
+
+
+
+3. Les congruences analogues aux congruences (3), mais relatives au polyèdre $V'$ ; je les écrirai 
+
+
+
+$$\tag{2,q,h,j,k} B(q,h,j,k) \equiv \sum \zeta B(q-1,h',j',k').$$
+
+
+
+Les $\zeta$ sont des nombres égaux à $\pm 1$ ou à $0$ ; ils dépendent des sept indices $q,h,j,k,h',j',k'$, de sorte que je les écrirai, quand cela sera nécessaire, sous la forme
+
+
+
+$$
+\zeta(q,k,j,k,h,'j',k').
+$$
+
+
+
+Sous le signe $\sum$, les indices $h',j',k'$ peuvent prendre toutes les valeurs. Observons, cependant, que les $B(q -1)$, qui servent de frontière à $B(q,h,j,k)$, doivent, comme $B(q,h,j,k)$, faire partie de $a_j^h$ ; mais pourront faire partie d’autres variétés $a_{j'}^{h'}$, d’un nombre moindre de dimensions, mais faisant partie de $a_j^h$. On aura donc
+
+
+
+$$
+h'\leq h, \quad h'\geq q-1.
+$$
+
+
+
+D’ailleurs, si $h'=h$, on aura $j'=j$.
+
+
+
+Pour que les relations (1), (2), (3) puissent définir une véritable subdivision, elles doivent satisfaire à certaines conditions. Les relations (1,q,i), (3,q,i) donnent 
+
+
+
+$$
+\tag{α} \sum_k B(q,q,i,k) \equiv \sum \epsilon_{j,i}^q a'^{j-1}_j.
+$$
+
+
+
+Si, dans le premier membre, je remplace $B(q,q,i,k)$ par sa valeur, tirée de (2, q, q, i, k), et $a_j^{q-1}$ par sa valeur tirée de (1, q-1, j), les deux membres devront devenir identique ;  voilà une première condition, qui est évidente ; elle n’est d’ailleurs pas suffisante.
+
+§5
+Soit $\sum \alpha B(q,h,j,k)$ une combinaison des variétés $b_i^q$, qui représente une variété fermée à $q$ dimensions, de telle sorte que l’on ait, avec nos notations, 
+
+
+
+$$
+\tag{1} \sum \alpha B(q,h,j,k) \equiv 0 \quad (h\geq q).
+$$
+
+
+
+Parmi les variétés $b_i^q$ qui figurent dans le premier membre de (1), réunissons celles qui appartiennent à une même classe. Soit
+
+
+
+$$
+\lmoustache \alpha B(q,h,j,k)
+$$
+
+
+
+l’ensemble de celles qui appartiennent à la classe $a_j^k$ ; le signe de sommation $\lmoustache $ signifie, donc, qu’on ne prend que les variétés d’une même classe, tandis que le signe $\sum$ signifie qu’on les prend toutes. On aura alors 
+
+
+
+$$
+\tag{2} \lmoustache  \alpha B(q,h,j,k) \equiv \sum \beta B(q-1,h',j',k')
+$$
+
+
+
+c’est-à-dire que la variété à $q-1$ dimensions
+
+
+
+$$
+\sum \beta B(q-1,h',j',k').
+$$
+
+
+
+forme la frontière complète de la variété à $q$ dimensions
+
+
+
+$$
+\lmoustache \alpha B(q,h,j,k).
+$$
+
+
+
+Les variétés $a_{j'}^{h'}$ doivent appartenir à la frontière de a $a_j^h$ ou se confondre avec $a_j^h$ ; en effet, $B(q-1,h',j',k')$ appartient à $a_{j'}^{h'}$ et, d’autre part, à l’une des $B(q,h,j,k)$ qui fait lui-même partie de $a_j^h$, si donc $a_{j'}^{h'}$ ne faisait pas partie de $a_j^h$, $B(q-1,h',j',k')$  ferait partie d’une variété $a_k^m$, partie commune à $a_j^h$ et $a_{j'}^{h'}$, et qui aurait moins de $h'$ dimensions. Cela est contraire à la définition que nous avons donnée des classes.
+
+
+
+D’autre part, $a_{j'}^{h'}$, ne peut pas se confondre avec $a_j^h$.
+
+
+
+Soit, en effet,
+
+
+
+$$
+\lmoustache_1 \alpha_1 B(q,h_1,j_1,k_1) = \sum \alpha B(q,h,j,k) - \lmoustache  \alpha B(q,h,j,k) 
+$$
+
+
+
+l’ensemble des variétés  qui figurent dans le premier membre de (1) et qui n’appartiennent pas à la classe $a_j^h$ ; on aura évidemment
+
+
+
+$$
+\lmoustache_1\alpha_1 B(q,h_1,j_1,k_1) \equiv - \sum \beta B(q-1,h',j',k').
+$$
+
+
+
+Donc $B(q-1,h',j',k')$ doit faire partie à la fois de $a_j^{h'}$ et de l’une des $B(q,h_1,j_1,k_1)$ et, par conséquent, de l’une des $a_{j_1}^{h_1}$  différentes de $a_j^h$. Si donc $a_{j'}^{h'}$ se confondait avec $a_j^h$,
+
+
+
+$$
+B(q-1,h',j',k')=B(q-1,h,j,k)
+$$
+
+
+
+devrait appartenir à une variété $a_k^m$ partie commune à $a_j^h$ et $a_{j_1}^{h_1}$. De deux choses l’une : ou bien $a_j^h$ ne ferait, pas partie de $a_{j_1}^{h_1}$, et alors on aurait encore $m < h$, ce qui serait encore contraire à la définition des classes ; ou bien $a_j^h$  ferait partie de $a_{j_1}^{h_1}$, et alors on aurait $h_1 > h$. Supposons que j’ai choisi la classe $a_j^h$, qui correspond au plus grand nombre $h$. Alors on ne pourra pas avoir $h_1 > h$, et $a_{i'}^{h'}$ devra appartenir à la frontière de $a_j^h$.
+
+
+
+La congruence (2) entraîne l’homologie 
+
+
+
+$$
+\tag{3} \sum \beta B(q-1,h',j',k') \sim 0;
+$$
+
+
+
+comme, d’autre part, $a_j^h$ est simplement connexe et que toutes les variétés $B(q-1,h',j',k')$ sont situées sur la frontière de $a_j^h$, le premier membre de , représentant une variété fermée à $q-1$ dimensions, située sur cette frontière, formera la frontière complète  d’une variété à $q$ dimensions
+
+
+
+$$
+\sum \gamma B(q, h'',j'',k''),
+$$
+
+
+
+également située sur la frontière de $a_j^h$. (Il y aurait exception si l’on avait $h=q$.) De sorte qu’on aura la congruence 
+
+
+
+$$
+\tag{4} \sum \beta B(q-1,h',j',k') \equiv \sum \gamma B(q,h'',j'',k'').
+$$
+
+
+
+D’ailleurs, comme $B(q,h'',j'',k'')$ est sur la frontière de $a_j^h$ il en sera de même de $a_{j''}^{h''}$ ; car si $B(q,h'',j'',k'')$  fait partie à la fois de $a_{j''}^{h''}$ et d’une variété $a_{j'_0}^{h''}$, faisant partie de la frontière de $a_{j'}^h$ ; ou bien $a_{j''}^{h''}$ ne fait pas partie de $a_{j'}^{h'}$, et alors $B$ devrait faire partie de $a_k^m$ où $m < h''$ et nous avons vu que cela était impossible.
+
+
+
+On a donc
+
+
+
+$$
+h'' < h.
+$$
+
+
+
+Les congruences (2) et (4) donnent
+
+
+
+$$
+\lmoustache \alpha B(q,h,j,k) \equiv \sum \gamma B(q,h'',j'',k''),
+$$
+
+
+
+et, comme toutes les variétés qui figurent dans cette congruence font partie de $a_j^h$, ou de sa frontière, comme, d’autre part, $a_j^h$ est simplement connexe, on aura l’homologie
+
+
+
+$$
+\lmoustache  \alpha B(q,h,j,k) \sim \sum \gamma B(q,h'',j'',k'').
+$$
+
+
+
+On peut donc remplacer, dans le premier membre de (1), l’ensemble des termes $\lmoustache  \alpha B(q, h,j,k)$ par l’ensemble des termes
+
+
+
+$$
+\sum \gamma B(q,h'',j'',k'').
+$$
+
+
+
+Si l’on opère de même pour toutes les classes correspondantes à une même valeur de $h$, la plus grande de toutes, on aura remplacé le premier membre de (1) par
+
+
+
+$$
+\sum \alpha_2 B(q,h_2,j_2,k_2),
+$$
+
+
+
+où la plus grande valeur de $h_2$ sera plus petite que la  plus grande valeur de $h$. On aura, d’ailleurs, l’homologie
+
+
+
+$$
+\sum \alpha B(q,h,j,k) \sim \sum \alpha_2 B(q, h_2,j_2, k_2).
+$$
+
+
+
+En continuant de la sorte, on pourra diminuer encore la plus grande valeur de $h$. On ne sera arrêté que quand on aura partout $h=q$.
+
+
+
+On peut donc, finalement, remplacer le premier membre de (1) par
+
+
+
+$$
+\sum \alpha_0 B(q,q,j_0,k_0),
+$$
+
+
+
+et l’on aura, d’ailleurs 
+
+
+
+$$
+\tag{5} \sum \alpha B(q,h,j,k) \sim \alpha_0 B(q,q,j_0,k_0),
+$$
+
+
+
+ 
+
+
+
+$$
+\tag{6} \sum \alpha_0 B(q,q,j_0,k_0) \equiv 0.
+$$
+
+
+
+Cela posé, dans le premier membre de (6) prenons les congruences qui appartiennent à une classe déterminée $a_{j_0}^h$ ; soit
+
+
+
+$$
+\lmoustache \alpha_0 B(q,q,j_0,k_0),
+$$
+
+
+
+Nous aurons 
+
+
+
+$$
+\tag{7}
+\lmoustache \alpha_0 B(q,q,j_0,k_0) \equiv \sum \beta_0 B(q-1,h'_0,j'_0,k'_0).
+$$
+
+
+
+Nous verrions que, comme plus haut, que $a_{j_0}^{h'_0}$ doit faire partie de la frontière de $a_{j_0}^q$, d’où $h'_0<q$ (et, comme $h'_0 \geq q-1$, on aura $h'_0=q-1$).
+
+
+
+Soit alors 
+
+
+
+$$
+\tag{8} a_{j_0}^q= \sum B(q,q,j_0,k_0)
+$$
+
+
+
+l’équation (1,q,$j_0$), qui définit la subdivision de la variété $a_{j_0}^q$ et soient $B(q,q,j_0,1)$ et $B(q,q,j_0,2)$ deux variétés, figurant dans le second membre de (8) ; je dis qu’elles devront figurer dans le premier membre de (6) avec le même coefficient $\alpha_0$.
+
+
+
+Supposons, d’abord, que ces deux variétés soient limitrophes ; parmi les variétés à $q-1$ dimensions qui leur serviront de frontière commune, il y eu aura, au moins, une qui n’appartiendra pas à la frontière de $a_{j_0}^q$, qui fera, par conséquent, partie de la classe $a_{j_0}^q$.
+
+
+
+Soit $ B(q-1,q,j_0,1)$ cette variété : elle n’appartiendra pas à aucune autre des variétés $B(q,q,j_0,k)$.
+
+
+
+Soit alors 
+
+
+
+$$
+\tag{9}
+ \begin{cases} 
+B(q,q,j_0,1)\equiv \epsilon b_i^{q-1}\\
+B(q,q,j_0,2)\equiv \epsilon b_i^{q-1}\\
+B(q,q,j_0,k)\equiv \epsilon b_i^{q-1}  (k>2)
+\end{cases}
+$$
+
+
+
+les congruences (2, q, q,j_0,1), (2,q,q,j_0,2), (2,q,q ;j_0,k) qui nous font connaître les frontières des variétés $B(q,q,j_0)$. Voyons avec quel coefficient $\epsilon$ la variété $B(q-1,q,j_0,1)$ figurera dans ces congruences.
+
+
+
+D’après ce que nous venons de voir, ce sera avec le coefficient $+1$ dans la première, avec le coefficient $-1$ dans la seconde, avec le coefficient zéro dans les autres.
+
+
+
+Soient donc $\alpha_1$ et $\alpha_2$, les valeurs des coefficients $\alpha_0$, correspondantes aux deux variétés $B(q,q,j_0,1)$ et $B(q,q,j_0,2)$.
+
+
+
+La combinaison des congruences (9) nous fournira une congruence 
+
+
+
+$$
+\tag{10}  \lmoustache \alpha_0 B(q,q,j_0,k_0)\equiv \epsilon b_i^{q-1},
+$$
+
+
+
+qui devra être identique à (7), et le coefficient $\epsilon$, avec lequel figurera $B(q-1,q,j_0,1)$ dans le second membre de (10), sera évidemment $\alpha_1-\alpha_0$. Mais $B(q-1,q,j_0,1)$ ne peut pas figurer dans le second membre de (7), puisque nous avons vu que dans ce second membre on doit avoir $\alpha_1-\alpha_2=0$.
+
+
+
+Ainsi les deux variétés $B(q,q,j_0)$ et $B(q,q,j_0,2)$ devront avoir même coefficient $\alpha_0$ si elles sont limitrophes. Cela sera encore vrai, si elles ne le sont pas, parce que $a_{j_0}^q$ étant d’un seul tenant, on  pourra passer d’une de ces variétés à l’autre par une suite d’autres variétés analogues, chacune d’elles étant limitrophe de celle qui la précède.
+
+
+
+Donc le coefficient $\alpha_0$ est le même pour toutes nos variétés. D’où
+
+
+
+$$
+\lmoustache \alpha_0 B(q,q,j_0,k_0)= \alpha_0 \sum B(q,q, j_0,k_0) = \alpha_0 a_{j_0}^q.
+$$
+
+
+
+La congruence (6) et l’homologie (5) peuvent donc s’écrire 
+
+
+
+$$
+\tag{5 bis} \alpha B(q,h,j,k) \sim \sum \alpha_0 a_{j_0}^q
+$$
+
+
+
+ 
+
+
+
+$$
+\tag{6 bis} \sum \alpha_0 a_{j_0}^q \equiv 0.
+$$
+
+
+
+Si un nombre quelconque de congruences de la forme (1) sont distinctes, c’est-à-dire si aucune combinaison linéaire de leurs premiers membres n’est pas homologue à zéro je dis que les congruences (6 bis) seront également distinctes et réciproquement.
+
+
+
+En effet, la comparaison des relations (1), (5 bis) et (6 bis) montre que si l’on a
+
+
+
+$$
+\sum \alpha B(q,h,j,k) \sim 0,
+$$
+
+
+
+on aura également
+
+
+
+$$
+\sum \alpha_0 a_{j_0}^q \sim 0,
+$$
+
+
+
+et réciproquement.
+
+
+
+Il résulte de là que si les $a_i^q$ et les $b_i^q$ sont simplement connexes, les nombres de Betti réduits sont les mêmes pour les deux polyèdres $V$ et $V'$.
+
+
+
+Soit maintenant $W$ une variété quelconque, fermée, à $q$ dimensions, située sur $V$. On peut toujours construire un polyèdre $V$, dérivé de $V$, au sens de la page 271 de l’Analysis situs, et tel que $W$ soit une combinaison des $b_i^q$.
+
+
+
+Nous devons donc conclure que : si les $a_i^q$ sont simplement connexes, les nombres de Betti réduits, relatifs au polyèdre $V$, sont identiques aux nombres de Betti proprement dits, définis de la seconde manière.
+
+§6
+Nous avons à revenir ici sur un point essentiel du raisonnement qui précède. J’ai dit plus haut qu’il n’y avait d’autre homologie que les homologies (9,q), obtenues au paragraphe III. Cela n’est pas évident, cela ne serait pas même toujours vrai, si nous ne supposions pas les $a_i^q$ simplement connexes.
+
+
+
+Démontrons-le d’abord pour un polyèdre $P$, dans l’espace à quatre dimensions.
+
+
+
+Considérons un certain nombre de variétés $v_2$ ou $a_i^2$, appartenant à ce polyèdre : je les appellerai ses faces, de même que les $a_i^3$, les $a_i^1$ et les $a_i^0$ de ce polyèdre $P$ pourront s’appeler ses cases, ses arêtes et ses sommets.
+
+
+
+Supposons que l’on ait entre ces faces $a_i^2$ une homologie
+
+
+
+$$
+\sum a_i^2 \sim 0.
+$$
+
+
+
+Celle homologie signifie qu’il existe une variété à trois dimensions, $V$, faisant partie de $P$, et admettant $\sum a_i^2$ comme frontière complète.
+
+
+
+Je dis que $V$  se compose d’un certain nombre de cases de $P$
+
+
+
+Si, en effet, un point d’une case appartient à $V$ , il en sera de même de tout autre point de cette case, car on peut aller du premier point au second, sans rencontrer aucune face et, par conséquent, sans rencontrer la frontière de $V$ et sans sortir de $ V$.
+
+
+
+Le théorème est donc évident en ce qui concerne les polyèdres de l’espace à quatre dimensions et les homologies entre les faces.
+
+
+
+Soit maintenant une homologie entre les arêtes
+
+
+
+$$
+\sum b_1 \sim 0,
+$$
+
+
+
+les $b_1$ étant un certain nombre d’arêtes $a_i^1$. Cela veut dire qu’il existe une variété à deux dimensions, $V$, dont $\sum b_1$  est la frontière complète.
+
+
+
+Je désignerai par $V(a_i^k)$ l’ensemble des points communs à $V$ el à $a_i^k$.
+
+
+
+Les $V(a_i^3)$seront des variétés à deux dimensions ; dont la frontière sera formée, soit par quelques-unes des arêtes $b_1$ soit par les $V(a_j^2)$, les $a_j^2$ étant les faces qui servent de frontière à la case $a_i^3$. On ne peut en effet, sortir de $V(a_i^3)$ qu’en sortant de $V$ par sa frontière, c’est-à-dire, en traversant une des $b_1$, ou qu’en sortant de $a_i^3$ par sa frontière, c’est-à-dire en traversant une face $a_j^2$, et, comme on reste sur $V$, en traversant une des lignes $V(a_j^2)$.
+
+
+
+La variété totale $V$ est formée de l’ensemble des $V(a_i^3)$.
+
+
+
+Considérons maintenant $V(a_i^2)$ ; nous devons distinguer deux cas :
+
+
+ Ou bien aucune des arêtes $b_1$ n’appartient à $a_i^2$. Nous ne pourrons alors sortir de $V(a_i^2)$, qu’en sortant de $V(a_i^2)$, c’est-à-dire en traversant une des arêtes $a_j^2$ la frontière de $V(a_j^2)$ est donc formée par les $V(a_j^3)$.
+
+ Ou bien une (ou plusieurs) arête $b_1$ fait partie de $a_i^2$ dans ce cas, elle fera également partie de $V(a_i^2$ ; mais il pourra se faire que $V(a_i^2)$ se compose, outre l’arête $b_1$d’autres lignes ; ces lignes auronl pour frontières des points $V(a_j^1)$. ou des points situés sur $b_1$. Ces points situés sur $b_1$, et où les autres lignes, dont se compose $V(a_i^2)$, viennent se terminer sur l’arête $b_1$, seront ce que j’appellerai des points nodaux. 
+
+
+Dans tous les cas $V(a_i^2)$ sera une ligne ou un ensemble de lignes ; si, en effet, $V(a_i^2)$ était une surface, c’est que $a_i^2$, ou une portion de cette face, ferait partie de $V$. Mais j’ai le droit de déformer $V$, pourvu que je ne change pas sa frontière $\sum b_1$ ; je puis toujours, par une déformation infiniment petite, éviter qu’une région de $a_i^2$ fasse partie de $V$.
+
+
+
+Pour la même raison, je puis toujours supposer que $V(a_i^1)$ réduit à un ou plusieurs points, sauf si $a_i^1$ est l’une des arêtes $b_1$, auquel cas $V(a_i^1)$ sera cette arête elle-même.
+
+
+
+Cela posé, je puis déformer $V$ :
+
+
+
+1. De manière que tous les $V(a_i^1)$ [autres que $V(b_1)$] soient des sommets. Soit $a_j^0$ un sommet de $a_i^1$. Soit $M$ l’un des points dont se compose $V(a_i^1)$ ; autour du point $M$ et sur $V$ décrivons une petite courbe fermée $C$. Soit $K$ l’aire infiniment petite découpée sur $V$ par cette courbe $C$. Construisons une sorte de manchon, infiniment délié, entourant l’arête $a_i^1$ et passant par $C$. Par le sommet $a_j^0$ je mène une surface quelconque $S$ ; elle viendra découper sur le manchon une courbe fermée très petite $C'$. Soit $K'$ la portion de la surface $S$ limitée par $C$ ; soit $H$ la surface du manchon comprise entre $C$ et $C'$. On figurera ainsi une sorte de tambour, dont $H$ sera la surface latérale, $K$ et $K'$ les deux bases.
+
+
+
+Considérons alors la variété
+
+
+
+$$
+V'=V-K+H+K'.
+$$
+
+
+
+Cette variété aura même frontière que $V$ ; mais elle ne coupera plus $a_i^1$ en $M$, puisqu’on a supprimé la portion $K$ de $V$ où se trouvait ce point $M$. En revanche, $H$ ne coupera pas l’arête $a_i^1$ et $K'$ coupera cette arête en $a_j^0$.
+
+
+
+En opérant de même sur tous les points d’intersection de $V$ et de $a_i^1$ on amènerait tous ces points à coïncider avec $a_j^0$.
+
+
+
+2. De manière que tous les points nodaux soient des sommets.
+
+
+
+$$ $$
+
+
+
+Soit, en effet, $a_i^2$ ne face passant par l’arête $b_1$ ; l’intersection de $V$ et $a_i^2$  comprendra, outre $b_1$, d’autres lignes ; soit $c$ l’une de ces lignes, venant se terminer sur $b_1$, en un point nodal $D$. Soient $a_J^0$ et $a_k^0$ les deux sommets de $b_1$. Par $b_1$ je fais passer une surface $S$, faisant partie de $P$ et ne coupant pas $a_i^2$. Comme $a_j^0$ et $a_k^0$ sont sur la frontière de $V$, je joins ces deux points par une ligne $L$, située sur $V$ et s’écartant peu de $b_1$. Cette ligne s’écartant peu de $b_1$, je puis mener par $L$ une autre surface $S'$, qui ne passera pas par $b_1$, mais qui coupera $S$ suivant une ligne $L'$, très peu différente de $b_1$. Ces trois lignes $L$, $b_1$ et $L'$ auront mêmes extrémités $a_j^0$ et $a_k^0$.
+
+
+
+Soit $v_1$ la portion de $V$, comprise entre $L$ et $b_1$ ; soit $S_1$ la portion de $S$ comprise entre $L'$ et $b_1$, et $S_1'$ le portion de $S'$ comrpise entre $L$ et $L'$.
+
+
+
+Je remplace $V$ par
+
+
+
+$$V'=V-V_1+S_1+S_1'.$$
+
+
+
+$V'$ a mêmes frontières que $V$, mais $V'(a_i^2)$ ne présente plus de points nodaux en dehors $a_j^0$ et $a_k^0$ ; car si une ligne analogue à $c$ venait aboutir à un point nodal, situé entre $a_i^0$ et $a_k^0$, la portion de cette ligne $c$, voisine de ce point nodal, devrait se trouver sur $S_1$, ce qui est impossible, puisque $S$ ne coupe pas $a_i^2$.
+
+
+
+$$ $$
+
+
+
+En résumé : nous pouvons toujours supposer que les $V(a_i^2)$ sont des lignes dont les extrémités sont des sommets de $a_i^2$.
+
+
+
+Soit alors $L$ une des lignes dont se compose $V(a_i^2)$, ayant pour extrémités des sommets $a_j^0$ et $a_k^0$ de $a_i^2$. On peut aller de $a_j^0$ à $a_k^0$ en suivant le périmètre de $a_i^2$ ; soit $\sum a_m^1$ l’ensemble des arêtes de $a_i^2$, comprises entre $a_j^0$ et $a_k^0$. Comme la face $a_i^2$ est supposée simplement connexe, la ligne $L$ la divisera en deux parties. Soit $Q$ l’une de ces parties, comprise entre $L$ et $\sum a_m^1$.
+
+
+
+Soient $a_p^3$ et $a_q^3$ les deux cases séparées par $a_i^2$. Par les arêtes $\sum a_m^1$ je fais passer une surface $S$, peu différente de la face $a_i^2$ et située toute entière dans la case $a_p^3$ ; par les mêmes arêtes, je fais passer une seconde surface $S'$, peu différente de $a_i^2$ et dans la case $a_q^3$ ; ces deux surfaces $S$ et $S4$ couperont $V$, suivant deux lignes $L_1$ et $L_1'$, peu différentes de $L$, et ayant pour extrémités $a_j^0$ et $a_k^0$. Soit $S_1$ la portion de $S$ comprise entre $\sum a_m^1$ et $L_1$ ; soit $S_1'$ la portion de $S'$ comprise entre $\sum a_m^1$ et $L_1'$ ; soit $V_1$ la portion de $V$ comprise entre $L_1$ et $L_1'$ ; c’est sur $V_1$ que se trouvera $L$.
+
+
+
+Soit maintenant
+
+
+
+$$V'=V-V_1+S_1+S_1'.$$
+
+
+
+$V'$ a mêmes frontières que $V$ ; $V'$ ne passe plus par $L$, mais en revanche passe par les arêtes $\sum a_m^1$.
+
+
+
+En opérant de la même manière pour toutes les lignes telles que $L$, on voit qu’on peut toujours supposer que tous les $V(a_i^2)$ se réduisent à des combinaison d’arêtes.
+
+
+
+Comme les frontières de $V(a_i^3)$ sont ou des $b_1$ ou des $V(a_j^2)$, on voit que les frontières des $V(a_i^3)$ sont des combinaisons d’arêtes de $P$, et, bien entendu, toutes ses arêtes doivent appartenir à $a_i^3$. ainsi donc $V(a_i^3)$ est une surface simplement ou multiplement connexe, limitée par une ou plusieurs lignes fermées qui, elles-mêmes, sont des combinaisions d’arêtes de $a_i^3$.
+
+
+
+Comme la case $a_i^3$ est simplement connexe, ces lignes fermées subdiviseront la surface de cette case en un certain nombre de régions, et comme ces lignes fermées sont des combinaisons d’arêtes de $a_i^3$, ces régions seront des combinaisons des faces de $a_i^3$.
+
+
+
+On pourra toujours trouver une combinaison de ces régions, qui aura mêmes frontières que $V(a_i^3)$. Supposons, par exemple, que la frontière de $V(a_i^3)$ se compose de trois lignes $L$, $L_1$, $L_2$ ; la ligne $L$ divisera la surface de $a_i^3$ en deux régions $R$ et $R'$ ; les lignes $L_1$ et $L_2$ diviseront de même cette surface en deux $R_1$ et $R_1'$, ou $R_2$ et $R_2'$. Je suppose qu’en parcourant $L$ dans un certain sens, on ait à sa gauche $V(a_i^3)$  et $R$ et $R'$ à sa droite ; je suppose, de même, qu’en parcourant $L_1$ et $L_2$ dans un sens convenable, on ait à sa gauche $V(a_i^3)$ et $R_1$, ou $V(a_i^3)$ et $R_2$.
+
+
+
+Alors la variété $R+R_1+R_2$ aura même frontière que $V(a_i^3)$, on pourra donc remplacer $V(a_i^3)$ par $R+R_1+R_2$.
+
+
+
+En opérant de la même manière sur tous les $V(a_i^3)$, on aura remplacé $V$ par une autre variété, qui aura même frontière que $\sum b_1$, et qui sera une combinaison de faces de $P$.
+
+
+
+Le théorème est donc démontré en ce qui concerne les polyèdres de l’espace à quatre dimensions et les homologies entre les arêtes.
+
+
+
+On le démontrerait, de même, pour un polyèdre quelconque.
+
+§7
+Soit $P$ un polyèdre dans l’espace à quatre dimensions ; ce polyèdre sera subdivisé en un certain nombre de variétés $v_3$, que j’appellerai ses cases, et que je désignerai par $a_i^3$. Ces cases seront séparées les unes des autres par des variétés $v_2$ ou $a_i^2$, que j’appellerai les faces ; ces faces auront pour frontières des variétés $v_1$ ou $a_i^1$, que j’appellerai les arêtes, et les extrémités des arêtes seront des points de $v_0$ ou $a_i^0$, que j’appellerai les sommets.
+
+
+
+Je supposerai, bien entendu, que les cases et les faces sont simplement connexes.
+
+
+
+Marquons, à l’intérieur de chaque case $a_i^3$, un point $P(a_i^3)$ ; à l’intérieur de chaque face $a_i^2$, un point $P(a_i^3)$ ; sur chaque arête $a_i^1$, un point $P(a_i^3)$ ; chaque arête se trouvera ainsi partagée en deux parties par le point $P(a_i^1)$.
+
+
+
+Joignons par des lignes le point $P(a_i^2)$ à chacun des sommets de la face $a_i^2$ et à chacun des points $P(a_j^1)$, correspondant aux diverses arêtes $a_j^1$ de la face $a_i^2$. Toutes ces lignes devront être tracées sur la face $a_i^2$.  Cette face sera ainsi partagée en triangles, et le nombre de ces triangles sera double du nombre des arêtes de $a_i^2$. Nous ferons de même pour toutes les autres faces.
+
+
+
+Considérons maintenant une case $a_i^3$ ; décomposons en triangles $T$ toutes les faces $a_j^2$ de cette case, ainsi que nous venons de le dire. Construisons des triangles curvilignes, ayant pour sommet commun le point $P(a_i^3)$ et pour bases les différents côtés des différents triangles $T$. La case $a_i^2$ sera ainsi décomposée en tétraèdres, ayant $P(a_i^3)$ pour sommet commun et pour bases les différents triangles $T$.
+
+
+
+Nous distinguerons six sortes de lignes (qui seront les arêtes de nos tétraèdres) :
+
+
+
+Celles de la première sorte joindront un sommet $a_i^0$ à un point $P(a_j^1)$ ; chaque arête sera formée de deux lignes de la première sorte ;
+
+
+
+Celles de la seconde sorte joindront un point $P(a_i^3)$ à un point $P(a_j^2)$ ;
+
+
+
+Celles de la troisième sorte joindront un point $P(a_i^2)$ à un sommet $a_j^0$ ;
+
+
+
+Celles de la quatrième sorte joindront un point $P(a_i^1)$ à un point $P(a_j^2)$ ;
+
+
+
+Celles de la cinquième sorte joindront un point $P(a_i^3)$ à un point $P(a_j^1)$ ;
+
+
+
+Celles de la sixième sorte joindront un point $P(a_i^3)$ à un sommet $a_j^0$.
+
+
+
+Les lignes de la seconde sorte peuvent s’accoupler deux à deux de deux manières :
+
+
+ Ce que j’appellerai la ligne $b_i^1$ sera formée de deux lignes de la seconde sorte, joignant un même point $P(a_i^2)$ à deux points $P(a_j^3)$ et $P(a_k^3)$, correspondant aux deux cases $a_j^3$ et $a_k^3$ séparées par la face $a_i^2$. Il y aura donc autant de lignes $b_i^1$ que de faces $a_i^2$.
+
+ Ce que j’appellerai une ligne $c$ sera formée de deux lignes de la seconde sorte, joignant un même point $P(a_i^3)$ à deux points $P(a_i^2)$ et $P(a_k^2)$, correspondant à deux faces $a_i^2$ et $a_k^2$ de la case $a_i^3$. 
+
+
+Il nous faut définir des surfaces que j’appellerai les surfaces $b_i^2$.
+
+
+
+Soit une arête quelconque $a_i^1$ et le point $P(a_i^1)$. Supposons que les faces qui passent par $a_i^1$, soient successivement
+
+
+
+$$a_1^2,~a_2^2,~\dots,~a_q^2,$$
+
+
+
+et que les cases, auxquelles appartient $a_i^1$, soient successivement
+
+
+
+$$a_1^3,~a_2^3,~\dots,~a_q^3,$$
+
+
+
+de telle façon que $a_1^2$ sépare $a_1^3$ de $a_2^3$, $a_2^2$ sépare $a_2^3$ de $a_3^3$, $\dots$, et, qu’enfin, $a_q^2$ sépare $a_q^3$ de $a_1^3$. Convenons, pour plus de symétrie, de désigner indifféremment la case $a_1^3$ par $a_1^3$ ou $a_{q+1}^3$.
+
+
+
+Décomposons chaque case en tétraèdres et envisageons, en particulier, les tétraèdres qui admettent pour sommet le point $P(a_i^1)$. Considérons les $2q$ triangles curvilignes 
+
+
+
+$$P(a_i^1)P(a_k^3)P(a_k^2), \quad P(a_i^1)P(a_{k+1}^3)P(a_k^2) \quad\quad (k=1,2,~\dots,q).$$
+
+
+
+L’ensemble de ces $2q$ triangles formera un certain polygone que j’appellerai $b_i^2$, et qui aura pour frontière l’ensemble des lignes
+
+
+
+$$b_1^1,~b_2^1,~\dots,~b_q^1.$$
+
+
+
+Définissons maintenant les volumes $b_i^3$ ; le volume $b_i^3$ sera l’ensemble des tétraèdres qui admettent pour sommet le point $a_i^0$ ; ce volume sera un polyèdre à trois dimensions, simplement connexe, qui aura pour frontière l’ensemble des surfaces $b_k^2$, correspondant aux arêtes $a_k^1$, qui aboutissent au point $a_i^0$.
+
+
+
+La juxtaposition des volumes $b_i^3$ constituera un nouveau poyèdre $P'$, que j’appellerai le polyèdre réciproque de $P$, et qui aura pour cases les $b_i^3$, pour faces les $b_i^2$, pour arêtes les $b$, pour sommets les points $b_i^0=P(a_i^0)$.
+
+
+
+A chaque case $b_i^3$ de $P'$ correspondra un sommet $a_i^0$ de $P$ ;
+
+
+
+A chaque face $b_i^2$ de $P'$ correspondra une arête $a_i^1$ de $P$ ;
+
+
+
+A chaque arête  $b_i^1$ de $P'$ correspondra une face $a_i^2$ de $P$ ;
+
+
+
+A chaque sommet $b_i^0$ de $P'$ correspondra une case $a_i^3$ de $P$.
+
+
+
+De plus, au sens du paragraphe II, il y aura la même relation, par exemple, entre l’arête $b_i^1$ et la face $b_j^2$, qu’entre la face $a_i^2$ et l’arête $a_j^1$.
+
+
+
+Si donc les congruences caractéristiques du polyèdre $P$ s’écrivent 
+
+
+
+$$a_i^3\equiv \sum_j \epsilon_{i,j}^3 a_i^2,\quad\quad a_i^2\equiv \sum_j \epsilon_{i,j}^2 a_i^1,\quad\quad a_i^1\equiv \sum_j \epsilon_{i,j}^1 a_j^0,$$
+
+
+
+celles du polyèdre $P'$ s’écriront
+
+
+
+$$b_i^3\equiv \sum_j \epsilon_{i,j}^3 b_j^2,\quad\quad b_i^2\equiv \sum_j \epsilon_{i,j}^2 b_j^1,\quad\quad b_i^1\equiv \sum_j \epsilon_{i,j}^1 b_j^0.$$
+
+
+
+Considérons maintenant une ligne $c$, formée de deux lignes de la seconde sorte, joignant un même point $P(a_i^3)$ à deux points $P(a_j^2)$ et $P(a_k^2)$.
+
+
+
+Soient $a_m^0$ et $a_p^0$ deux sommets, appartenant respectivement tous deux à la case $a_i^3$. Soient $d$ et $d$’ les deux lignes de la troisième sorte qui joignent respectivement $P(a_j^2)$ à $a_m^0$ et $P(a_k^2)$ à $a_p^0$.
+
+
+
+Comme $a_m^0$ et $a_p^0$ appartiennent à une même case $a_i^3$, on pourra aller de l’un de ces sommets à l’autre, en suivant une ligne brisée formée d’arêtes $a_q^1$ appartenant à $a_i^3$.
+
+
+
+Soit $\sum a_q^1$ cette ligne brisée, dont les extrémités sont $a_m^0$ et $a_p^0$ ; l’ensemble des lignes $c-d-\sum a_q^1+d'$ sera une ligne fermée, ce que j’exprimerai par la congruence
+
+
+
+$$c \equiv d+\sum a_q^1-d'.$$
+
+
+
+Comme $a_i^3$ est simplement connexe, cette ligne fermée sera la frontière d’une variété à deux dimensions, intérieure à $a_i^3$, ce que j’exprimerai par l’homologie
+
+
+
+$$c \sim d+\sum a_q^1-d'.$$
+
+
+
+Réciproquement, soit $\sum a_q^1$ une ligne brisée, formée d’arêtes appartenant toutes à $a_i^3$, et dont les extrémités sont les sommets $a_m^0$ et $a_p^0$ ; ces deux sommets appartiendront respectivement à deux faces $a_j^2$ et $a_k^2$, faisant toutes deux partie de $a_i^3$. Soient les trois lignes
+
+
+
+$$c=P(a_j^2)P(a_i^3)+P(a_i^3)P(a_k^2), \quad\quad d=P(a_j^2)a_m^0, \quad\quad d'=P(a_k^2)a_p^0.$$
+
+
+
+On aura encore
+
+
+
+$$c \sim d+\sum a_q^1 - d'.$$
+
+
+
+Soit maintenant  $a_i^0$ un sommet appartenant à deux faces $a_j^2$ et $a_k^2$. Soient les deux lignes de la troisième sorte
+
+
+
+$$d_j=P(a_j^2)a_i^0, \quad\quad d_k=P(a_k^2) a_i^0.$$
+
+
+
+Nous pouvons tracer une ligne $L$, s’écartant infiniment peu du sommet $a_i^0$, et allant d’un point $a_j^2$ à un point $a_k^2$.
+
+
+
+Supposons, pour fixer les idées, que cette ligne traverse trois cases et qu’elle rencontre successivement la face $a_j^2$, la case $a_j^3$, la face $a_m^2$, la case $a_m^3$, la face $a_p^2$, la case $a_p^3$, et enfin la face $a_k^2$.
+
+
+
+Construisons les trois lignes $c$
+
+
+
+$$\begin{array}{rcl}
+c_j & = & P(a_j^2)P(a_j^3)+P(a_j^3)P(a_m^2),\\
+c_m & = & P(a_m^2)P(a_m^3)+P(a_m^3)P(a_p^2),\\
+c_p & = & P(a_p^2)P(a_p^3)+P(a_p^3)P(a_k^2),
+\end{array}$$
+
+
+
+et les deux lignes de la troisième sorte
+
+
+
+$$d_m=P(a_m^2)a_i^0,\quad\quad d_p=P(a_p^2)a_i^0.$$
+
+
+
+On aura
+
+
+
+$$c_j \equiv d_j-d_m, \quad\quad c_m \equiv d_m-d_p, \quad\quad c_p\equiv d_p-d_k;$$
+
+
+
+et comme les trois cases $a_j^3$, $a^3_m$, $a_p^3$ sont simplement connexes
+
+
+
+$$c_j \sim d_j-d_m, \quad\quad c_m \sim d_m-d_p, \quad\quad c_p\sim d_p-d_k,$$
+
+
+
+et enfin
+
+
+
+$$c_j+c_m+c_p\sim d_j-d_k.$$
+
+
+
+On peut donc toujours trouver une ligne brisée, formée de lignes $c$ et homologues à $d_j-d_k$, $d_j$ et $d_k$ étant des lignes de la troisième sorte, aboutissant à un même sommet.
+
+
+
+Cela posé, soit 
+
+
+
+$$\tag{1}
+\sum b_i^1\equiv 0
+$$
+
+
+
+une congruence entre les arêtes du polyèdre $P'$.
+
+
+
+La ligne brisée $\sum b_i^1$ est évidemment formée d’un nombre pair de lignes de la deuxième sorte, et en parcourant cette ligne brisée, on rencontrera successivement $q$ faces
+
+
+
+$$a_1^2,~a_2^2,~\dots,~a_q^2,$$
+
+
+
+pour revenir à la face $a_i^2$, que je désignerai également par $a_{q+1}^2$ ; et l’on rencontrera $q$ cases 
+
+
+
+$$a_1^3,~a_2^3,~\dots,~a_p^3,$$
+
+
+
+pour revenir à la case $a_1^3$, que je désignerai également par $a_{q+1}^3$, de sorte que la face $a_k^2$ séparera la case $a_k^3$ de la case $a_{k+1}^3$.
+
+
+
+Notre congruence s’écrit alors
+
+
+
+$$\sum\left [ P(a_k^3)P(a_k^2)+P(a_k^2)P(a_{k+1}^3)\right ] \equiv 0,$$
+
+
+
+ou, ce qui revient au même,
+
+
+
+$$\sum\left [ P(a_{k-1}^2)P(a_k^3)+P(a_k^3)P(a_k^2)\right ] \equiv 0.$$
+
+
+
+Soit alors $a_k^0$ un sommet de la face $a_k^2$ appartenant, par conséquent, à la fois aux cases $a_k^3$ et $a_{k+1}^3$.
+
+
+
+Soit $d_k$ la ligne de la troisième sorte $P(a_k^2)a_k^0$ ; nous venons de voir qu’il existe une ligne brisée $A_k$, formée d’arêtes appartenant à la case $a_k^3$, et telle que l’on ait l’homologie
+
+
+
+$$P(a_{k-1}^2)P(a_k^3)+P(a_k^3)P(a_k^2) \sim d_{k-1}+A_k-d_k.$$
+
+
+
+En additionnant toutes ces homologies, le premier membre se réduit à
+
+
+
+$$\sum\left [ P(a_{k-1}^2)P(a_k^3)+P(a_k^3)P(a_{k}^2)\right ] =\sum b_i^1,$$
+
+
+
+les lignes de la troisième sorte $d_k$ disparaissent, et il reste
+
+
+
+$$\sum b_i^1 \sim \sum A_k,$$
+
+
+
+et, par conséquent,
+
+
+
+$$\sum b_i^1 \equiv \sum A_k \equiv 0.$$
+
+
+
+Donc, à toute congruence $\sum b_i^1\equiv 0$ entre les arêtes de $P'$, correspond une congruence $\sum A_k\equiv 0$ entre les arêtes de $P$, et telle que l’on ait
+
+
+
+$$\sum b_i^1 \sim \sum A_k.$$
+
+
+
+Si donc on a $\sum b_i^1\sim 0$, on aura $\sum A_k \sim 0$, et réciproquement.
+
+
+
+Soit maintenant 
+
+
+
+$$\tag{2}
+\sum A_k\equiv 0
+$$
+
+
+
+une congruence entre les arêtes de $P$ ; supposons que $a_k$ soit une ligne brisée formée d’arêtes appartenant à la case $a_k^3$.
+
+
+
+Le premier membre de la congruence (2) se composera de $q$ semblables lignes brisées
+
+
+
+$$A_1,~A_2,~\dots,~A_q,$$
+
+
+
+et je désignerai indifféremment $A_1$ par $A_1$ ou $A_{q+1}$, et $A_q$ par $A_0$ ou $A_q$.
+
+
+
+Soient $a_{k-1}^0$ et $a_k^0$ les deux extrémités de la ligne $A_k$ ; le sommet $a_k^0$ appartiendra à la fois aux cases $a_k^3$ et $a_{k+1}^3$ ; soit ${a'}_k^{2}$ la face de $a_k^3$, et $a_{k+1}^2$ la face de $a_{k+1}^3$ auxquelles appartient $a_k^0$.
+
+
+
+Soient les lignes de la troisième sorte
+
+
+
+$$d_k'=P(a_k^2)a_k^0,\quad\quad d_{k+1}=P(a_{k+1}^2)a_k^0,$$
+
+
+
+et, d’autre part, 
+
+
+
+$$c_k=P(a_k^2)P(a_k^3)+P(a_k^3)P(a_k^2).$$
+
+
+
+Nous avons vu que
+
+
+
+$$A_k\sim -d_k+c_k+d_k'.$$
+
+
+
+D’autre part, les lignes $d_{k+1}$ et d$_k'$ aboutissent à un même sommet $a_k^0$ ; nous avons vu également que l’on peut trouver une combinaison $C_k$ de lignes $c$ telles que l’on ait
+
+
+
+$$C_k \sim d_k'-d_{k-1}.$$
+
+
+
+En additionnant toutes ces homologies, je trouve
+
+
+
+$$\sum A_k \sim \sum c_k + \sum C_k,$$
+
+
+
+et, par conséquent,
+
+
+
+$$\sum c_k+\sum C_k \equiv 0.$$
+
+
+
+Le premier membre de cette dernière congruence est une combinaison de lignes $c$, ou, ce qui revient au même, une combinaison d’arêtes $b_i^1$ du polyèdre $P'$, de sorte que je puis poser
+
+
+
+$$\sum c_k+\sum C_k = \sum b_i^1,$$
+
+
+
+d’où
+
+
+
+$$\sum A_k \sim \sum b_i^1.$$
+
+
+
+En résumé : à toute congruence entre les arêtes de $P$, correspond une congruence entre celles de $P'$, et réciproquement, et la condition nécessaire et suffisante pour que le premier membre de l’une des conditions soit homologue à zéro, c’est que l’autre le soit.
+
+
+
+En d’autres termes, le nombre des congruences distinctes entre les arêtes est le même pour $P$ et $P'$, en ne considérant pas des congruences comme distinctes, quand une combinaison linéaire des premiers membres de ces congruences est homologue à zéro.
+
+
+
+En d’autres termes encore, le nombre de Betti réduit, relatif aux arêtes de $P$, est égal au nombre de Betti réduit, relatif aux arêtes de $P'$.
+
+
+
+On pourrait arriver au même résultat, en remarquant que l’on peut construire un polyèdre qui serait, à la fois, dérivé du polyèdre $P$ et dérivé du polyèdre réciproque $P'$, et en appliquant le théorème du paragraphe V.
+
+
+
+Nous verrons plus loin, au paragraphe X, que cette proposition peut être présentée sous une autre forme.
+
+
+
+D’autre part, cela peut permettre, plus simplement qu’au paragraphe V, de démontrer que les nombres de Betti réduits sont égaux aux nombres de Betti proprement dits.
+
+
+
+En effet, la définition du polyèdre $P'$ comporte un certain arbitraire : ses sommets $b_i^0$ ne sont assujettis qu’à être intérieurs aux cases $a_i^3$ de $P$. Dans ces conditions, on peut évidemment choisir toujours le polyèdre $P'$ de façon qu’une ligne fermée quelconque soit une combinaison des $b_i^1$.
+
+§8
+Soit $N_1$ le nombre des arêtes de notre polyèdre $P$, $N_2$ le nombre des faces, $N_3$ celui des cases.  Formons un tableau d’après les règles suivantes :
+
+
+
+Le tableau aura $N_2+N_3$ colonnes, $N_2$ dites de la première sorte et $N_3$ dites de la seconde ; il aura $N_2+N_1$ lignes, $N_2$ de la première et $N_1$ de la seconde sorte. Voici quels seront les éléments du tableau :
+
+
+ Pour l’élément de la $i^{\mathrm{ième}}$ ligne de la première sorte et la $j^{\mathrm{ième}}$  colonne de la première sorte, j’écrirai 1, si $i=j$ et 0 si $i\neq j$.
+
+ Les éléments appartenant à une ligne de la seconde sorte et à une colonne de la seconde sorte, seront tous nuls.
+
+ L’élément de la $i^{\mathrm{ième}}$  colonne de la première sorte et de la $j^{\mathrm{ième}}$  ligne de la seconde sorte, sera $\epsilon_{i,j}^2$,  $\epsilon_{i,j}^2$ étant le nombre qui nous fait connaître la relation entre la face $a_i^2$ et l’arête $a_j^1$.
+
+ L’élément de la $i^{\mathrm{ième}}$  ligne de la première sorte et la $j^{\mathrm{ième}}$  colonne de la seconde sorte, sera $\epsilon_{i,j}^2$,  c’est-à-dire le nombre qui fait connaître la relation entre la case $a_i^3$ et la face $a_j^1$.
+
+
+Notre tableau, s’il y a par exemple deux cases, quatre faces et trois arêtes, présentera un aspect tel que celui-ci : 
+
+
+
+$$\tag{1}
+\left \{\begin{array}{cccccc}
+1 & 0 & 0 & 0 & \epsilon & \epsilon \\
+0 & 1 & 0 & 0 & \epsilon & \epsilon \\
+0 & 0 & 1 & 0 & \epsilon & \epsilon \\
+0 & 0 & 0 & 1 & \epsilon & \epsilon \\
+\epsilon & \epsilon & \epsilon & \epsilon & 0 & 0 \\
+\epsilon & \epsilon & \epsilon & \epsilon & 0 & 0 \\
+\epsilon & \epsilon & \epsilon & \epsilon & 0 & 0 \\
+\epsilon & \epsilon & \epsilon & \epsilon & 0 & 0
+\end{array}\right.
+$$
+
+
+
+Je n’ai pas écrit les indices des nombres $\epsilon$ pour simplifier.
+
+
+
+Voici maintenant les opérations que je regarde comme permises sur ce tableau :
+
+
+ Ajouter une colonne à une autre de même sorte, ou l’en retrancher ;
+
+ Ajouter une ligne à une autre de même sorte, ou l’en retrancher ;
+
+ Permuter deux colonnes de même sorte, en changeant tous les signes de l’une d’elles ;
+
+ Permuter deux lignes de même sorte, en changeant tous les signes de l’une d’elles.
+
+
+Toutes ces transformations, pour lesquelles les éléments du tableau restent entiers, s’appelleront les transformations arithmétiques du tableau.
+
+
+
+On peut s’en servir pour simplifier la partie du tableau qui appartient aux colonnes de la première sorte et aux lignes de la seconde sorte, et celle qui appartient aux colonnes de la deuxième sorte et aux lignes de la première sorte.
+
+
+
+Voici jusqu’où l’on peut pousser la simplification, d’après des théorèmes bien connus d’arithmétiques ; quand la réduction sera terminée :
+
+
+
+L’élément de la $i^{\rm ième}$ colonne de la première sorte et de la $j^{\rm ième}$ ligne de la seconde sorte :
+
+
+ Sera nul, si $i>j$ ;
+
+ Sera égal à un entier $H_i$, qui pourra être nul, si $i=j$ ;
+
+ Sera encore nul, si $ i < j $ et si $H_i$ est premier avec $H_j$ ;
+
+ Enfin sera nul, si $j>N_2$.
+
+
+Il en sera de même de l’élément de la $i^{\rm ième}$ ligne de la première sorte et de la $j^{\rm ième}$ colonne de la seconde sorte.
+
+
+
+La réduction peut être poussée encore plus loin, si l’on autorise une cinquième opération : multiplier tous les éléments d’une ligne ou d’une colonne par un même nombre entier ou non, différent de zéro.
+
+
+
+Les transformations correspondantes s’appelleront les transformations algébriques du tableau.
+
+
+
+On peut alors supposer que l’élément de la $i^{\rm ième}$ colonne de la première sorte et de la $j^{\rm ième}$ ligne de la seconde sorte (de même que l’élément de la $i^{\rm ième}$ ligne de la première sorte et de la $j^{\rm ième}$ colonne de la seconde sorte) est nul, si $i\neq j$. Si $i=j$, il peut être égal à $0$ ou $1$. S’il en est ainsi, je dirai que le tableau est réduit.
+
+
+
+Après la cinquième opération, les éléments qui appartiennent aux lignes et aux colonnes de la première sorte pourront ne pas rester entiers ; de plus, le déterminant formé par ces lignes et ces colonnes pourra ne pas rester égal à $1$, mais il restera différent de zéro.
+
+
+
+Le tableau (1) est relatif aux faces du polyèdre $P$ et à leurs relations avec les cases et les arêtes. Nous pourrions en dresser un, tout pareil, relatif aux arêtes du polyèdre $P$ et à leur relations avec les faces et les sommets.
+
+
+
+Nous  pourrions également envisager le polyèdre $P'$, défini plus haut, et construire deux tableaux relatif l’un aux faces de $P'$, l’autre à ses arêtes.
+
+
+
+Comparons le tableau (1), relatif aux faces de $P$, avec le tableau (1bis) relatif aux arêtes de $P'$.
+
+
+
+Il résulte de ce qui précède, que ces deux tableaux peuvent se déduire l’un de l’autre en remplaçant les lignes par les colonnes et inversement.
+
+
+
+Cela posé, envisageons le tableau (1), relatif aux faces de $P$, et examinons comment on peut déduire de ce tableau le nombre de Betti $P_2$ du polyèdre $P$.
+
+
+
+Comment, d’abord, pourra-t-on en déduire les congruences entre les faces et les arêtes ?
+
+
+
+Considérons une colonne quelconque de la première sorte : par exemple la $i^{\rm ième}$ colonne. Multiplions les éléments de cette colonne et de la $k^{\rm ième}$ ligne de la première sorte par $a_k^2$ et ajoutons ; puis égalons à la somme obtenue, en multipliant les éléments de cette même colonne et de la $j^{\rm ième}$ ligne de la seconde sorte par $a_j^1$ ; nous obtiendrons la congruence
+
+
+
+$$a_i^2 \equiv \sum \epsilon_{i,j}^2 a_j^1,$$
+
+
+
+ce qui est bien une des congruences (3) du paragraphe II. Toutes les autres congruences n’en sont que des combinaisons.
+
+
+
+Comment pourra-t-on maintenant trouver les homologies entre les faces ?
+
+
+
+Pour cela, envisageons, par exemple, la  $i^{\rm ième}$ colonne de la première sorte ; multiplions les éléments  de la $k^{\rm ième}$ ligne et de cette colonne par $a_k^2$, ajoutons et égalons à zéro ; nous trouverons
+
+
+
+$$ \sum \epsilon_{i,k}^2 a_k^2\sim 0,$$
+
+
+
+ce qui est bien une des homologies (5) du paragraphe II, dont toutes les autres ne sont que des combinaisons.
+
+
+
+Qu’adviendra-t-il, maintenant, si l’on applique à notre tableau (1) une transformation algébrique quelconque ?
+
+
+
+Avant la transformation, chaque colonne de la première sorte correspond à une face, chaque colonne de la seconde sorte à une case, chaque ligne de la première sorte à une face, chaque ligne de  la seconde sorte à une arête.
+
+
+
+On obtient, comme nous l’avons vu, autant de congruences et d’homologies que de colonnes, en multipliant les éléments de chaque ligne de la première sorte par la face correspondante, ceux de chaque ligne de la seconde sorte par l’arête correspondante, et ajoutant.
+
+
+
+Supposons maintenant qu’on fasse la deuxième opération, c’est-à-dire qu’on transforme en ajoutant la ligne de la première sorte, qui correspond à $a_i^2$, à celle de la première sorte, qui correspond à $a_k^2$. Nous convenons de dire qu’à la nouvelle $k^{\rm ième}$ ligne (celle à laquelle on a ajouté la $i^{\rm ième}$ ligne) correspond toujours la variété $a_k^2$ ; mais qu’à la nouvelle $i^{\rm ième}$ (qui d’ailleurs n’a pas changé) correspond la variété $a_i^2-a_k^2$.
+
+
+
+Si l’on fait la cinquième opération sur la $k^{\rm ième}$ ligne de la première sorte, en mulitpliant les éléments par une constante $m$, nous conviendrons de dire qu’à la nouvelle $k^{\rm ième}$ ligne correspond la variété $\frac{1}{m}a_k^2$ (notation qui n’a qu’une valeur symbolique, à moins que $\frac{1}{m}$ ne soit entier).
+
+
+
+Quant à la quatrième opération, ce n’est qu’une combinaison de plusieurs opérations analogues à la deuxième.
+
+
+
+Nous avons ainsi défini la variété qui correspond à chacune des lignes de la première sorte du tableau, après qu’on a appliqué à ces lignes une combinaison des $2^{\rm e}$, $4^{\rm e}$ et $5^{\rm e}$ opérations.
+
+
+
+Nous définirions de même les variétés qui correspondent aux différentes lignes de la seconde sorte, après qu’on aurait appliqué à ces lignes une combinaison des $2^{\rm e}$, $4^{\rm e}$ et $5^{\rm e}$ opérations.
+
+
+
+Grâce à ces conventions, il suffira encore, pour obtenir les congruences et les homologies, d’ajouter et d’égaler à zéro, après avoir multiplié les éléments de chaque ligne par la variété correspondante, et avoir changé le signe des produits ainsi obtenus, en ce qui concerne les lignes de la seconde sorte.
+
+
+
+Maintenant, si l’on applique aux colonnes du tableau les $1^{\rm e}$, $3^{\rm e}$ et $5^{\rm e}$ opérations, on ne fera que combiner les congruences entre elles ; ou multiplier une congruence et une homologie par un facteur constant.
+
+
+
+D’où le résultat suivant :
+
+
+
+Pour déduire les congruence du tableau transformé, voici ce qu’il faut faire : multiplier chaque ligne de la première sorte par la variété qui lui correspond en vertu de la convention que nous venons de faire, et ajouter ; faire de même pour les lignes de la seconde sorte ; égaler les deux résultats ainsi obtenus ; on aura ainsi autant de congruences que de colonnes de la première sorte ; toutes les autres congruences possibles ne seront que des combinaisons.
+
+
+
+Pour déduire de même les homologies, il faut : multiplier chaque ligne de la première sorte par la variété correspondante, ajouter et égaler à zéro ; on aura ainsi autant d’homologies que de colonnes de la seconde sorte ; toutes les autres homologies possibles n’en seront que des combinaisons.
+
+
+
+Il importe de remarquer que les congruences et homologies ainsi obtenues, pourront n’avoir qu’une valeur symbolique, parce que les coefficients pourront être fractionnaires.
+
+
+
+Et, en effet, d’une part les éléments du tableau transformé peuvent ne plus être entiers ; d’autre part, la variété qui correspond à une ligne peut, comme je l’ai dit plus haut, n’avoir elle-même qu’une valeur symbolique.
+
+
+
+Mais comme les coefficients, entiers ou non, sont toujours commensurables, il suffira de multiplier notre congruence ou notre homologie par un entier convenable, pour en déduire une congruence ou une homologie à coefficients entiers, qui aura un sens pour elle-même.
+
+
+
+Supposons, maintenant, qu’on ait réduit le tableau, comme je l’ai dit plus haut.
+
+
+
+Combien y aura-t-il d’homologies distinctes ?
+
+
+
+Parmi nos $N_3$ colonnes de la seconde sorte, il y en aura $N_3-N_2'$ dont tous les éléments seront nuls, et $N_2$ dont un élément sera égal à 1 et tous les autres nuls. Les $N_3-N_2'$ premières ne nous donneront aucune homologie ; chacune des $N_2'$ autres nous en donnera une et ces $N_2'$ homologies seront évidemment toutes distinctes.
+
+
+
+Il y a donc $N_2'$ homologies distinctes.
+
+
+
+Combien y a-t-il de congruences distinctes entre les faces et les arêtes ?
+
+
+
+Il y en a évidemment $N_2$, correspondant aux $N_2$ colonnes de la première sorte, et ces congruences sont distinctes, parce que le déterminant formé avec les lignes et les colonnes de la première sorte, n’est pas nul.
+
+
+
+Considérons maintenant dans notre tableau réduit les $N_1$ lignes de la seconde sorte ; parmi elles il y en aura $N_1-N_2''$ dont tous les éléments seront nuls, et $N_2''$, dont un élément est égal à 1 et tous les autres nuls. Parmi nos $N_2$ congruences, il y en aura donc $N_2''$ qui contiendront une arête, et $N_2-N_2'$ qui ne contiendront aucune arête. Il y a donc $N_2-N_2''$ congruences entre les faces seulement, et ces congruences sont toutes distinctes.
+
+
+
+Il y aura donc entre les faces seulement $N_2-N_2'-N_2''$ congruences, qui resteront distinctes, si l’on ne regarde plus comme distinctes celles que l’on peut déduire les unes des autres par le moyen des homologies.
+
+
+
+Le nombre de Betti relatif aux faces de $P$ est donc
+
+
+
+$$N_2-N_2'-N_2''+1.$$
+
+
+
+Cherchons maintenant le nombre de Betti relatif aux arêtes de $P$.
+
+
+
+On le trouvera évidemment en opérant comme nous venons de faire sur le tableau (1bis), relatif aux arêtes de $P'$.
+
+
+
+Mais on passe d’un tableau à l’autre, en remplaçant les lignes par les colonnes, et réciproquement. Les nombres qui joueront, par rapport à (1bis), le même rôle que $N_2$, $N_2'$, $N_2''$ jouent par rapport à (1), seront donc respectivement $N_2$, $N_2''$, $N_2'$.
+
+
+
+Donc le nombre de Betti relatif aux arêtes de $P'$ est encore
+
+
+
+$$N_2-N_2'-N_2''+1.$$
+
+
+
+Ainsi les nombres de Betti relatifs, l’un aux faces de $P$, l’autre aux arêtes de $P'$, sont égaux.
+
+
+
+Or nous avons vu plus haut que les nombres de Betti relatifs aux arêtes de $P$ et à celles de $P'$ sont égaux, de même que les nombres de Betti relatifs aux faces de $P$ et à celles de $P'$.
+
+
+
+Donc le nombre de Betti relatif aux faces de $P$ est égal au nombre de Betti relatif aux arêtes de $P$.
+
+
+
+Notre théorème fondamental est donc démontré en ce qui concerne le polyèdre $P$, c’est-à-dire en ce qui concerne les polyèdres de l’espace à quatre dimensions.
+
+
+
+La démonstration pourrait, sans aucun doute, s’étendre à un polyèdre quelconque.
+
+§9
+Le théorème fondamental est ainsi établi par une démonstration, qui diffère essentiellement de celle de la page 226 de l’Analysis Situs
+
+
+
+Mais cela ne saurait pas nous suffire. Il nous faut nous efforcer de retrouver les propositions intermédiaires et, en particulier, celle-ci :
+
+
+
+La condition nécessaire et suffisante pour que l’on puisse trouver une variété $V$ telle que $\sum N(V,V_i)\neq  0$, c’est que l’on n’ait pas l’homologie $\sum V_i \sim 0$.
+
+
+
+Considérons deux variétés, la première $V_1$, à une dimension, composée d’arêtes de $P'$, la seconde $V_2$, à deux dimensions, composée de faces de $P$, de telle sorte qu’on aura
+
+
+
+$$V_1=\sum \alpha_i b_i^1,\quad\quad V_2=\sum \alpha_i' a_i^2,$$
+
+
+
+l’arête $b_i^1$ étant celle qui correspond à la face $a_i^2$, d’après les conventions du paragraphe VII.
+
+
+
+L’arête $b_i^1$ coupe la face $a_i^2$, et n’en coupe aucune autre, de telle sorte que si nous reprenons la notation de l’Analysis Situs, page 222, nous aurons
+
+
+
+$$N(V_1,V_2)=\sum\alpha_i\alpha_i'.$$
+
+
+
+Nous supposerons dans ce qui va suivre, que les variétés $V_1$ et $V_2$ sont fermées, ce qui s’exprime par les congruences 
+
+
+
+$$
+\tag{1}
+\sum \alpha_i b_i^1 \equiv 0, \quad\quad \sum \alpha_i' a_i^2 \equiv 0.
+$$
+
+
+
+Vérifions d’abord que l’on aura
+
+
+
+$$\sum \alpha_i' a_i^2 \equiv 0,$$
+
+
+
+pourvu que l’on ait l’une des deux homologies .  
+
+
+
+$$
+\tag{2}
+\sum \alpha_i b_i^1 \sim 0, \quad\quad \sum \alpha_i' a_i^2 \sim 0.
+$$
+
+
+
+Si, en effet, nous avons, par exemple, la seconde homologie (2), c’est qu’on aura
+
+
+
+$$\alpha_i'=\sum_{j=1}^{j=N_3} \zeta_j \epsilon_{i,j}^3,$$
+
+
+
+$\zeta_j$ étant un coefficient ne dépendant que de $j$.
+
+
+
+D’un autre côté , la première des congruences (1) peut se déduire de l’une des suivantes : 
+
+
+
+$$\tag{3}
+b_i^1\equiv\sum b_j^0 \epsilon_{j,i}^3,
+$$
+
+
+
+d’où
+
+
+
+$$\sum \alpha_i b_i^1 \equiv \sum\sum \alpha_i b_j^0 \epsilon_{j,i}^3.$$
+
+
+
+En égalant à zéro le coefficient de $b_j^0$, il vient successivement
+
+
+
+$$\sum\alpha_i \epsilon_{j,i}^3=0,\quad\quad \sum\sum\alpha_i\zeta_j\epsilon_{j,i}^3=0,\quad\quad \sum\alpha_i\alpha_i'=0.$$
+
+
+
+C.Q.F.D.
+
+
+
+On raisonnerait de même si l’on avait la première homologie (2).
+
+
+
+Je dis maintenant que si la seconde homologie (2) n’a pas lieu, on peut choisir les $\alpha_i$ de telle façon que $V_1$ reste fermée et cependant que $\sum \alpha_i \alpha_i'$ ne soit pas nul.
+
+
+
+En effet, dire que la  seconde homologie (2) n’a pas lieu, c’est dire qu’on ne peut pas trouver des nombres $\zeta_j$ tels que l’on ait 
+
+
+
+$$\tag{4}
+\alpha_i'=\sum \zeta_j \epsilon_{j,i}^3.
+$$
+
+
+
+Dire que $V_1$ reste fermée, c’est dire que si les $\alpha_i$ sont assujettis à des conditons 
+
+
+
+$$\tag{5}
+\sum \alpha_i \epsilon_{j,i}^3=0.
+$$
+
+
+
+Or il est clair que si les $\alpha_i'$ ne satisfont pas à des égalités de la forme (4), l’équation linéaire $\sum\alpha_i\alpha_i'=0$ sera distincte des équations (5) ; on pourra donc toujours trouver des nombres $\alpha_i$, qui satisfassent aux équations (5) sans satisfaire à $\sum\alpha_i\alpha_i'=0$.
+
+
+
+Remarquons d’ailleurs que nous n’avons pas restreint la généralité en supposant que nos variétés $V_1$ et $V_2$ étaient des combinaisons des $b_i^1$ et des $a_i^2$, quelle que soit la variété $V$, dont la subdivision forme les polyèdres $P$ et $P'$. Quelles que soient les variétés $V_1$ et $V_2$, nous pouvons toujours subdiviser $V$, de manière à former deux polyèdres réciproques $P$ et $P'$ tels que $V_1$ soit une combinaison des arêtes du second, et $V_2$ une combinaison des faces du premier.
+
+
+
+Il faudrait voir comment le tableau (1) du paragraphe VII et les tableaux analogues, peuvent nous permettre de déterminer les nombres de Betti, tels que Betti les définit lui-même, et non  plus les nombres de Betti définis de la seconde manière, c’est-à-dire ceux que nous avons considérés jusqu’à présent.
+
+
+
+Considérons, par exemple, un tableau analogue au tableau (1), mais relatif aux arêtes du polyèdre $P$ et à leurs relations avec les faces et les sommets. Considérons, en particulier, les colonnes de la seconde sorte et les lignes de la première sorte, où figurent les nombres $\epsilon_{i,j}^2$. Soit $T$ le tableau partiel ainsi obtenu. A l’aide de ce tableau, on pourra former les congruences
+
+
+
+$$a_i^2 \equiv \sum \epsilon_{i,j}^2 a_j^1,$$
+
+
+
+d’où l’on déduit les homologies 
+
+
+
+$$\tag{6}
+\sum \epsilon_{i,j}^2 a_j^1 \sim 0.
+$$
+
+
+
+Alors pour reconnaître si plusieurs lignes fermées, formées de combinaisons des arêtes $a_j^1$ sont distinctes au sens de la première définition, c’est-à-dire au sens de Betti, il faut savoir si elles sont liées par une homologie obtenue en combinant les homologies (6) par addition, soustraction ou multiplication, mais sans division.
+
+
+
+Supposons qu’on ait appliqué à notre tableau une série de ces transformations, que j’ai appelées arithmétiques au paragraphe VIII.
+
+
+
+Soit $\zeta_{i,j}^2$ le nombre qui, dans le tableau transformé, figure dans la $j^{\rm ième}$ ligne de la première sorte et la $i^{\rm ième}$ colonne de la seconde sorte. Soit $c_j$ la variété qui correspond à la $j^{\rm ième}$ ligne de la première sorte de notre tableau transformé en vertu des conventions du paragraphe VII. D’après ce que nous avons vu dans ce paragraphe VIII, cette variété n’est qu’une combinaison des arêtes $a_j^1$.
+
+
+
+Nous aurons alors les homologies 
+
+
+
+$$
+\tag{6 bis}
+\sum \zeta_{i,j}^2 c_j \sim 0.
+$$
+
+
+
+Ces homologies ne sont que des combinaisons des homologies (6), que l’on peut obtenir sans division, et réciproquement on peut tirer des homologies (6) des homologies (6 bis) sans division, c’est là une conséquence du caractère arithmétique des transformations.
+
+
+
+On peut donc, quand on veut s’assurer si deux lignes fermées sont distinctes au sens de Betti, se servir des homologies (6 bis) au lieu des homologies (6).
+
+
+
+Nous pouvons supposer qu’on s’est servi des transformations arithmétiques pour réduire le tableau, comme je l’ai expliqué au paragraphe VIII et, par conséquent, que $\zeta_{i,j}^2$ est nul : 1${}^{o}$ si $i>j$ ; 2${}^{o}$ si $j>N_2$.
+
+
+
+Le tableau réduit aux colonnes de la seconde sorte et aux lignes de la première sorte prendra, par exemple, la forme suivante :
+
+
+
+$$\begin{array}{ccccc}
+a & 0 & 0 & 0 & 0 \\
+e & b & 0 & 0 & 0 \\
+f & g & c & 0 & 0 \\
+h & k & l & d & 0 \\
+0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 \\
+\end{array}$$
+
+
+
+J’ai supposé six lignes et cinq colonnes ; j’ai supposé que l’un des nombres $\zeta_{j,i}^2$ est égal à zéro, de façon qu’une des colonnes du tableau transformé soit entièrement composée de zéros. J’ajoute que si $d$ était égal à $1$, les nombres $h$, $k$, $l$  qui figurent à la même ligne, seraient nuls.
+
+
+
+Cela posé, si $d$ n’est pas égal à $1$ ; les deux définitions des nombres de Betti ne coïncident pas, parce que l’on a l’homologie $dc_4 \sim 0$, d’où l’on ne pourrai déduire l’homologie $c_4\sim 0$ que par division. Si $d=1$, on a $h=k=l=0$, et si $c$ n’est pas égal à $1$, on aura l’homologie $cc_3\sim0$, et les deux définitions ne concorderont pas ; et ainsi de suite.
+
+
+
+En résumé, pour que les deux définitions concordent, il faut et il suffit que le produit $abcd$ soit égal à $1$.
+
+
+
+Pour interpréter ce résultat, revenons au tableau non transformé. Les produit $abcd$ sera le plus grand commun diviseur de tous les déterminants obtenus en supprimant $N_2-N_3$ lignes dans le tableau $T$, pourvu que ces déterminants ne soient pas tous nuls (auquel cas il n’y aurait pas dans le tableau transformé de colonne exclusivement composée de zéros). Si les déterminants sont tous nuls, on en formera d’autres en supprimant dans le tableau $T$ une colonne et $N_2-N_3+1$ lignes ; le produit $abcd$ sera le plus grand commun diviseur de tous ces déterminants, s’ils ne sont pas tous nuls ; et ainsi de suite.
+
+
+
+Nous arrivons ainsi à la règle suivante :
+
+
+
+Soit $\Delta_p$ le plus grand commun diviseur des déterminants obtenus en partant du tableau $T$ et y supprimant $p$ lignes et $N_2-N_3+p$ colonnes. La condition nécessaire et suffisante pour que les deux définitions des nombres de Betti coïncident, c’est que le premier des $\Delta_p$ qui ne s’annule pas, soit égal à $1$ (le plus grand commun diviseur  de plusieurs nombres égaux à zéro étant zéro par définition).
+
+
+
+Supposons que la variété $V_1= \sum x_i b_i^1$, considérée au début de ce paragraphe, ne peut pas être frontière d’une variété à deux dimensions, mais satisfait à l’homologie $V_1\sim 0$.  En d’autres termes, l’homologie $V_1\sim 0$ peut se déduire des homologies (6) par division, mais non pas sans division. Dans ce cas, on aura néanmoins
+
+
+
+$$ N(V_1, V_2)= \sum \alpha_{i} \alpha_{i}'=0.$$
+
+[Author footnote, as transcribed]
+Cf. Analysis Situs, p. 225 et 226.
+
+§10
+Voici une manière de former les homologies qui pourra être utile à connaître.
+
+
+
+Soit $b_i^0$ un sommet du polyèdre $P'$, situé à l’intérieur d’une case $a_i^3$ du polyèdre $P$. Soit, d’autre part, $a_k^0$ un sommet de $P$, appartenant à la case  $a_i^3$. Joignons $b_i^0$ à $a^0_k$ par une ligne que j’appellerai simplement $b_i^0 a_k^0$.
+
+
+
+Soit maintenant $b_i^1$ une arête de $P'$, dont les deux extrémités sont $b^0_j$ et $b^0_h$, de telle sorte que l’une des congruences (3) (cf. § II) relatives à $P'$, soit
+
+
+
+$$b_i^1  \equiv b_j^0-b_h^0.$$
+
+
+
+Soit, d’autre part, $a_i^2$ la face de $P$ qui correspond à l’arête $b_i^1$ de $P'$, et $a^0_k$ un des sommets de $a_i^2$ ; nous aurons l’homologie 
+
+
+
+$$
+\tag{1} b_i^1\sim a_k^0 b_j^0 - a_k^0 b_h^0.
+$$
+
+
+
+Soit  $a_i^1$ une arête de P, dont les deux extrémités sont $a_j^0$ et $a_h^0$, de sorte que l’une des congruences (3) relatives à $P$ soit
+
+
+
+$$ a_i^1\equiv a_j^0 -a_h^0.$$
+
+
+
+Soit $a^3_k$ l’une des cases de P auxquelles appartient $a_i^1$, et $b^0_k$ le sommet correspondant de $P'$ ; on aura l’homologie  
+
+
+
+$$
+\tag{2} a^1_i \sim b^0_ka_j^0 - b_k^0 a_k^0.
+$$
+
+
+
+Je dis maintenant que toutes les homologies entre les $a_i^1$ peuvent se déduire des homologies (2).
+
+
+
+En effet, soit $a_i^2$ une face quelconque de $P$, et soit
+
+
+
+$$a_i^2 \equiv \sum \epsilon_{i,j}^2 a_j^1$$
+
+
+
+la congruence de la forme (3) qui lui correspond ; on en déduit l’homologie 
+
+
+
+$$
+\tag{3} \sum \epsilon_{i,j}^3 a_j^1\sim 0,
+$$
+
+
+
+et nous avons vu au paragraphe VI que toutes les homologies entre les arêtes de $P$ sont des combinaisons de celles qu’on obtient de la sorte.
+
+
+
+Soit alors $a_j^1$ l’une des arêtes de $P$ qui figurent dans l’homologie (3), et soit
+
+
+
+$$a_i^1 \equiv a_h^0 -a_l^0.$$
+
+
+
+Soit d’ailleurs $a_k^3$ l’une des cases dont fait partie $a_i^2$. Nous aurons l’homologie 
+
+
+
+$$
+\tag{2 bis} a_j^1\sim b_k^0 a_h^0 -b_k^0 a_l^0.
+$$
+
+
+
+Si nous additionnons les homologies (2 bis) qui sont de la forme (2), après les avoir multipliées par $\epsilon_{i,j}^2$, tous les termes du second membre disparaîtront en vertu des relations (5) du paragraphe II ; on retrouverait donc l’homologie (3).
+
+
+
+C.Q.F.D.
+
+
+
+$$ $$
+
+
+
+On démontrerait de même que toutes les homologies entre les $b^1_i$ peuvent se déduire des homologies (1).
+
+
+
+Nous avons vu plus haut, au paragraphe VII, que si l’on a une congruence
+
+
+
+$$ \sum a_i^1 \equiv 0,$$
+
+
+
+on peut trouver une autre congruence entre les arêtes de $P'$
+
+
+
+$$ \sum b_j^1 \equiv 0,$$
+
+
+
+et de telle façon qu’on ait l’homologie 
+
+
+
+$$
+\tag{4}  \sum a_i^1\sim \sum b_j^1.
+$$
+
+
+
+Je dis maintenant que cette homologie (4) peut être déduite des homologies (1) et (2).
+
+
+
+Découpons, en effet, le premier membre de notre congruence $\sum a_i^1\equiv 0$ en un certain nombre de groupes, de telle façon que les arêtes d’un même groupe appartiennent à une même case $a^3_k$. Soit $\sum a_j^1$ l’un de ces groupes ; nous aurons la congruence 
+
+
+
+$$
+\tag{5}  \sum a_j^1\equiv a_m^0-a_{p}^0,$$
+
+
+
+$a_m^0$ et $a_p^0$ étant les deux extrémités de la ligne formée par l’ensemble des arêtes de ce groupe. Je suppose que toutes ces arêtes appartiennent à la case $a_k^3$. Soit
+
+
+
+$$a_j^1\equiv a_h^0 - a_l^0$$
+
+
+
+l’une de ces arêtes ; nous aurons l’homologie 
+
+
+
+$$
+\tag{2 ter}   a_j^1\equiv b_k^0 a_h^0 - b_k^0a_{l}^0,
+$$
+
+
+
+et en ajoutant toutes ces homologies, on trouverait 
+
+
+
+$$
+\tag{6}  \sum a_j^1\sim b_k^0a_m^0 - b_k^0a_{p}^0.
+$$
+
+
+
+Ajoutons d’une part toutes les homologies (6), d’autre part toutes les congruences (5), qui correspondent aux différents groupes. L’addition des congruences (5) doit nous donner la congruence $\sum a_i^1 \equiv 0$ ; il s’en suit que si un sommet $a_m^0$ figure dans une des congruences (5) avec le signe  $+$, il devra figurer dans une autre avec le signe $-$. L’addition des homologies (6) nous donnera donc 
+
+
+
+$$
+\tag{7}  \sum a_j^1\sim \sum \big( b_k^0 a_m^0 - b_q^0 a_m^0\big).
+$$
+
+
+
+En écrivant cette relation, je suppose que $a_m^0$ figure dans deux des congruences (5), une fois avec le signe $+$ dans la congruence qui correspond à la case $a^3_k$, et une fois avec le signe $-$ dans la congruence qui correspond à la case $a^3_q$.
+
+
+
+Observons maintenant que $b_k^0$ et $b_q^0$ sont deux sommets de $P'$, et que ces deux sommets appartiennent l’un et l’autre à la case $b_m^3$. On peut alors trouver une ligne formée d’arêtes de $P'$, appartenant à cette case $b_m^3$, et allant de $b_k^0$ à $b_q^0$. Soit $\sum b^1_s$ cette ligne ; on aura 
+
+
+
+$$
+\tag{5 bis}  \sum b_s^1\equiv b_k^0-b_{q}^0.
+$$
+
+
+
+De même que de la congruence (5) des homologies (2 ter), qui sont de la forme (2), nous avons déduit l’homologie (6) ; de même de la congruence (5 bis) et d’homologies de la  forme (1), nous pourrons déduire l’homologie 
+
+
+
+$$
+\tag{6 bis}  \sum b_s^1\sim a_m^0 b_k^0 - a_{m}^0 b_q^0.
+$$
+
+
+
+A chaque terme du second membre de (7) correspond une homologie (6 bis).
+
+
+
+En les additionnant, on trouvera  
+
+
+
+$$
+\tag{7 bis}  \sum\sum b_s^1\sim \sum\big(a_m^0 b_k^0 - a_{m}^0 b_q^0\big),
+$$
+
+
+
+d’où 
+
+
+
+$$
+\tag{8}  \sum a_j^1 +\sum \sum b^1_s\sim 0,
+$$
+
+
+
+homologie de la forme (4), qui se déduit, comme on le voit, des homologies (1) et (2).
+
+
+
+C.Q.F.D.
+
+
+
+$$ $$
+
+
+
+On peut se demander pourquoi j’ai jugé nécessaire de revenir sur un théorème déjà démontré au paragraphe VII. On le comprendra si l’on se rend compte de la nature géométrique, pour ainsi dire, de la démonstration du paragraphe VII. La présente démonstration a, au contraire, un caractère arithmétique ; elle n’invoque que des propriétés des schémas définis au paragraphe II, et des tableaux construits au paragraphe VIII ; et elle  conserverait sa valeur alors même qu’à ces schémas et à ces tableaux ne correspondrait aucun polyèdre.
+
+
+
+Qu’avons-nous supposé, en effet ? C’est que si $\alpha^p_0$, $\alpha_1^p$, $\alpha_2^p$ sont les nombres des sommets, des arêtes et des faces appartenant à une même case, et si $\beta_0^p$, $\beta_1^p$, $\beta_2^p$ sont les nombres des cases, des faces et des arêtes auxquelles appartient un même sommet, on a 
+
+
+
+$$\alpha_0^p- \alpha_1^p +\alpha_2^p = \beta_0^p -\beta_1^p -\beta_2^p=2;$$
+
+
+
+et, en outre, que deux sommets quelconques $a_i^0$ et $a_k^0$ sont liés par l’homologie 
+
+
+
+$$
+\tag{9} a_i^0 \sim a_k^0.
+$$
+
+
+
+Or on peut reconnaître si un sommet appartient à une face, par exemple, en appliquant au tableau du paragraphe VIII des règles purement arithmétiques, et l’on peut de la même manière reconnaître si une homologie telle que (9) a lieu.
+
+§11
+Tout ce qui précède suppose qu’une variété quelconque peut être subdivisée en variétés simplement connexes, de manière à former un polyèdre $P$, à $p$ dimensions, pour lequel les variétés $a_i^p$, $a_i^{p-1}$, $\dots$, $a_i^2$, $a_i^1$, $a_i^0$ sont toutes simplement connexes. Par exemple, toute variété à trois dimensions pourra être subdivisée en cases simplement connexes, séparées les unes des autres par des faces simplement connexes.
+
+
+
+C’est cela qu’il nous reste à démontrer, et c’est cette démonstration que je vais donner. Je précise davantage : je vais montrer que toute variété à $p$ dimensions peut être subdivisée de façon à former un polyèdre $P$, dont toutes les variétés $a_i^p$, $a_i^{p-1}$, $\dots$, $a_i^2$, $a_i^1$, $a_i^0$ sont des tétraèdres généralisés.
+
+
+
+Je supposerai que le théorème a été démontré pour une variété à $p-1$ dimensions, et je me propose de l’étendre à une variété à $p$ dimensions.
+
+
+
+Nous présenterons la définition de notre variété sous la forme suivante, qui comprendra les deux définitions données dans l’Analysis situs.
+
+
+
+Nous aurons les équations et les inégalités : 
+
+
+
+$$
+\tag{1} \left\{ \begin{array}{ll}   x_i=\theta_i (y_1,y_2,\dots, y_q) & (i=1,2,\dots, n),\\
+f_k(y_1,y_2,\dots, y_q)=0 & (k=1, 2, \dots, q-p), \\
+\varphi_h(y_1,y_2,\dots, y_q)>0. &
+   \end{array}\right. 
+$$
+
+
+
+Ces équations et ces inégalités définiront une variété $v$ qui sera limitée et, en général, non fermée ; on aura différents systèmes analogues d’équations et d’inégalités, définissant autant de variétés partielles que j’appellerai $v_1$, $v_2$, $\dots$, $v_m$.
+
+
+
+Deux de ces variétés seront dites contiguës, si elles ont une partie commune, et je puis supposer que l’on peut passer d’un point quelconque de l’une de ces variétés à un point quelconque d’une autre quelconque d’entre elles, sans sortir de l’ensemble de ces variétés. Cet ensemble constituera la variété que j’appellerai $V$, et qu’il s’agissait de définir.
+
+
+
+Je supposerai que cette variété $V$ est bilatère.
+
+
+
+C’est évidemment là la façon la plus générale possible de définir une variété.
+
+
+
+Considérons la variété partielle $v_1$, définie par les équations (1).
+
+
+
+D’après le théorème des fonctions implicites, on pourra satisfaire aux équations
+
+
+
+$$ f_k=0 ,$$
+
+
+
+en faisant
+
+
+
+$$y_j=\psi_j(z_1,z_2,\dots,z_p),$$
+
+
+
+les $\psi$ étant des fonctions holomorphes des $z$ ; mais les séries $\psi$ pourront ne pas converger pour tous les points de la variété $v_1$.
+
+
+
+Les conditions de convergence seront certaines inégalités
+
+
+
+$$\eta_k(z_1,z_2,\dots, z_p)>0.$$
+
+
+
+Quand on remplacera les $y$ en fonction des $z$, les relations
+
+
+
+$$x_i=\theta_i, \qquad \varphi_h>0$$
+
+
+
+deviendront
+
+
+
+$$
+\begin{array}{l}
+x_i=\theta_i'(z_1,z_2,\dots, z_p),\\
+\varphi'_h(z_1,z_2,\dots, z_p) >0.
+\end{array}
+$$
+
+
+
+Alors l’ensemble des relations  
+
+
+
+$$
+\tag{1 bis} x_i=\theta_i', \qquad \varphi'_h>0, \qquad \eta_k>0
+$$
+
+
+
+définira une certaine variété $v_1'$, de telle façon que l’ensemble des variétés analogues à $v_1'$ reproduira la variété $v_1$.
+
+
+
+Nous sommes ainsi ramené à la seconde définition de l’Analysis situs.
+
+
+
+Cela posé, soit $v_1''$ une variété $v_1'$ satisfaisant aux conditions suivantes : elle sera tout entière contenue dans $v_1'$ ; elle comprendra tous les points de $v_1'$ qui ne lui sont pas communs avec une des variétés contiguës ; par conséquent, la frontière complète de $v_1''$ sera tout entière dans la partie commune à $v_1'$ et aux variétés contiguës.
+
+
+
+A chacune des variétés $v_1'$, $v_2'$, $\dots,$ dont l’ensemble constitue $V$, correspondra ainsi une variété $v_1''$, $v_2''$, $\dots,$ satisfaisant aux conditions que je viens d’énoncer ; et il est clair [clair<] qu’on peut s’arranger de telle façon que tout point de $V$ appartienne à l’une des variétés $v''$, et à une seule, à moins qu’il ne soit sur la frontière de l’une des variétés $v''$, auquel cas il devra appartenir, en outre, à la frontière au moins d’une autre variété $v''$.
+
+
+
+La variété $V$, ainsi subdivisée en variétés $v''$, constitue un polyèdre $P$, au sens donné à ce mot au paragraphe II. Mais ce polyèdre ne convient pas encore à la question, car nous ne pouvons savoir si les variétés $v''$ sont des tétraèdres généralisés, ou même sont simplement connexes.
+
+
+
+Considérons la variété ${v}_1''$, et soit
+
+
+
+$$z_1=0, \quad z_2=0, \quad \dots, \quad z_p=0$$
+
+
+
+un point intérieur à cette variété ; considérons la variété à une dimension
+
+
+
+$$z_1=\alpha_1 t, \quad z_2=\alpha_2 t, \quad \dots, \quad z_p=\alpha_p t,$$
+
+
+
+où les $\alpha$ sont des constantes, et où nous ferons varier $t$ depuis $0$ jusqu’à $+\infty$. C’est ce que j’appellerai un rayon vecteur.
+
+
+
+Chaque rayon vecteur rencontrera la frontière complète de $v_1''$ en un nombre impair de points ; en effet, quand on suivra ce rayon, en faisant varier $t$ de $0$ à $+\infty$, on sortira de la variété $v_1''$ ; on pourra y rentrer ensuite et en sortir plusieurs fois, mais on finira toujours par en sortir pour n’y plus rentrer.
+
+
+
+Il pourra se faire qu’un rayon vecteur rencontre la frontière de $v_1''$ en deux points confondus. Les rayons vecteurs qui satisfont à cette condition s’appelleront les rayons remarquables.
+
+
+
+L’ensemble des rayons remarquables formera une ou plusieurs variétés à $p-1$ dimensions, que j’appellerai les cônes remarquables.
+
+
+
+Les intersection des cônes remarquables avec la frontière de $v_1''$ formeront une ou plusieurs variétés à $p-2$ dimensions, que j’appellerai $U$, et ces variétés $U$ partageront la frontière de $v_1''$ en régions que j’appellerai $R$.
+
+
+
+Une région $R$ ne peut être rencontrée par un rayon vecteur en plus d’un point, mais d’après ce que nous venons de voir, il peut se présenter deux cas : quand on suit ce rayon vecteur, en faisant croître $t$ de $0$ à $\infty$,  on peut, au moment où l’on rencontre $R$, sortir de $v_1''$ ou y rentrer. Si le premier cas, par exemple, se présente pour un des vecteurs qui rencontrent $R$, il se présentera pour tous les vecteurs qui rencontrent $R$.
+
+
+
+D’où la distinction des régions $R$ en régions de la première sorte, que les rayons vecteurs rencontrent en sortant de $v_1''$, et en régions de la seconde sorte, que les rayons vecteurs rencontrent en rentrant dans $v_1''$.
+
+
+
+Les régions $R$ étant des variétés à $p-1$ dimensions pourront, d’après l’hypothèse faite au début, être subdivisées en tétraèdres généralisés.
+
+
+
+Supposons, pour fixer les idées, qu’un rayon vecteur rencontre trois fois la frontière de $v_1''$, qu’il rencontre successivement les régions $R_1$, $R_2$, $R_3$ ; $R_1$ et $R_3$ seront de la première sorte, $R_2$ sera de la seconde sorte.
+
+
+
+Subdivisons $R_1$ et $R_3$ en tétraèdres généralisés à $p-1$ dimensions.
+
+
+
+Si $T_1$ est une des subdivisions de $R_1$, menons tous les rayons vecteurs qui passent par les différents points de $T_1$, et conservons la partie de ces rayons vecteurs qui est comprise entre le point $z_i=0$ et le rayon $R_1$ (partie qui est intérieure à $v_1''$) ; l’ensemble de ces vecteurs formera un tétraèdre généralisé à $p$ dimensions, ayant pour sommet le point $z_i=0$, et pour base le tétraèdre généralisé à $p-1$ dimensions $T_1$.
+
+
+
+Soit maintenant $T_3$ une des subdivisions de $R_3$ ; menons encore tous les rayons vecteurs qui passent par les différents points de $T_3$ et conservons la partie de ces rayons vecteurs qui est comprise entre $R_2$ et $R_3$ (partie qui est intérieure à $v_1''$). Cet ensemble forme une variété à $p-1$ dimensions que l’on pourrait appeler un tronc de tétraèdre généralisé, dont les deux bases  sont $T_3$ et un tétraèdre généralisé à $p-1$ dimensions, que j’appellerai $T_2$ et qui fera partie de $R_2$. C’est, en d’autres termes, la différence de deux tétraèdres généralisés, ayant pour sommet commun le point $z_i=0$ et pour bases, l’un $T_3$, l’autre $T_2$.
+
+
+
+Ce tronc de tétraèdre généralisé pourra à son tour être partagé en $p$ tétraèdres généralisés, de même que dans le théorème classique, le tronc de pyramide triangulaire se partage en trois pyramides triangulaires.
+
+
+
+Une difficulté  subsiste cependant ; on peut subdiviser comme $v_1''$ les autres variétés analogues $v_2''$, $v_3''$, $\dots$ ; considérons la subdivision de $v_1''$ en tétraèdres généralisés $T_1$ et celle de $v_2''$ en tétraèdres généralisés $T_2$. 
+
+La frontière commune de $v_1''$ et $v_2''$ se trouvera subdivisée, d’une part en tétraèdres généralisés à $p-1$ dimensions $\tau_1$,  qui seront les faces des $T_1$, et d’autre part, en tétraèdres généralisés à $p-1$ dimensions $\tau_2$, qui seront les faces des $T_2$ ; mais il n’est pas évident que ces deux subdivisions coïncident.
+
+
+
+Considérons alors la partie commune à l’un des $\tau_1$ et à l’un des $\tau_2$ ; je pourrai, d’après l’hypothèse faite au début, la subdiviser en tétraèdres généralisés à $p-1$ dimensions $\sigma$. Ainsi chacun des tétraèdres $\tau_1$ et chacun des tétraèdres $\tau_2$ sera subdivisé en tétraèdres $\sigma$.
+
+
+
+Soit maintenant $\tau_1'$ une des variétés à $q$ dimensions appartenant à $\tau_1$ (j’emploie ici le mot appartenir dans le même sens que quand je dis que les faces, les arêtes, et les sommets d’un tétraèdre ordinaire appartiennent à ce tétraèdre, ou quand je disais au paragraphe II que les variétés $a_i^q$ appartenaient au polyèdre $P$). Soit, de même, $\tau'_2$ une des variétés à $q$ dimensions appartenant à $\tau_2$. Ces deux variétés $\tau_1'$ et $\tau_2'$ seront des tétraèdres généralisés, puisque d’après la définition du tétraèdre généralisé, toute variété qui appartient à un tétraèdre généralisé, est elle-même un tétraèdre généralisé. Alors $\tau_1'$ et $\tau'_2$ se trouveront subdivisés en tétraèdres généralisés à $q$ dimensions $\sigma$, qui appartiendront aux tétraèdres à $p-1$ dimensions $\sigma$.
+
+
+
+Cela à la rigueur pourrait nous suffire ; nos variétés $v_1''$, $\dots$ seraient partagées en tétraèdres généralisés à $p$ dimensions $T^p$, leurs frontières en tétraèdres à $p-1$ dimensions $T^{p-1}, \dots$ ; seulement ces tétraèdres $T^{p-1}$ ne seraient pas ceux qui appartiennent aux tétraèdres $T^p$, ceux-là en seraient seulement des subdivisions.
+
+
+
+Mais nous pouvons aller plus loin.
+
+
+
+Considérons l’un des tétraèdres à $p$ dimensions $T^p$ dans lequel $v_1''$ est subdivisé. Je rappelle qu’on les a obtenus en subdivisant les troncs de tétraèdres généralisés, dont il a été question plus haut. Par conséquent, $T^p$ a tous ses sommets sur la frontière de $v_1''$ (il y aurait exception pour les tétraèdres dont un sommet est au point $z_i=0$, mais pour ceux-là il n’y a pas de difficultés).
+
+
+
+Supposons, par exemple, que les points communs à $T^p$ et à la région que j’ai appelée plus haut $R_3$ forment un tétraèdre généralisé à $q$ dimensions $T^q$ appartenant à $T^p$, et que les points communs à $T^p$ et à la région $R_2$ forment un tétraèdre à $p-q-1$ dimensions $T^{p-q-1}$, appartenant à $T^p$.
+
+
+
+Les tétraèdres $T^q$ et $T^{p-q-1}$ sont analogues aux tétraèdres $\tau'_1$ traités plus haut ; ils peuvent donc être subdivisés en tétraèdres analogues à ceux que j’ai appelés $\sigma'$ ; soient $S_1^q$, $S_2^q$, $\dots$, les tétraèdres analogues à $\sigma'$ qui sont des subdivisions de $T^q$ ; soient $S_1^{p-q-1}$, $S_2^{p-q-1}$, $\dots$ les tétraèdres analogues à $\sigma'$ qui sont des subdivisions de $T^{p-q-1}$. Je dis qu’on peut subdiviser $T^p_k$ en tétraèdres à $p$ dimensions de telle façon que les variétés $S_1^q$, $S_2^q$, $\dots$, $S_1^{p-q-1}$, $S_2^{p-q-1}$, $\dots$ appartiennent à $T^p$.
+
+
+
+Pour le démontrer,  je suppose d’abord que $T^p$ soit un tétraèdre rectiligne (cf. § II in fine). On sait qu’un tétraèdre rectiligne est entièrement défini quand on connaît ses $p+1$ sommets. Alors, $T^p$ est le tétraèdre rectiligne qui a pour sommets ceux de $T^q$ et de $T^{p-q-1}$.
+
+
+
+Supposons que $T^q$ se décompose en $g$ tétraèdres partiels
+
+
+
+$$S_1^q, \quad S_2^q, \quad \dots, \quad S_g^{q}$$
+
+
+
+et $T^{p-q-1}$ en $h$ tétraèdres partiels 
+
+
+
+$$S_1^{p-q-1}, \quad S_2^{p-q-1}, \quad \dots, \quad S_h^{p-q-1}.$$
+
+
+
+On vérifiera alors que $T^p$ se décompose en $gh$ tétraèdres partiels qui sont ceux  dont les sommets sont ceux de
+
+
+
+$$S_i^q \quad \mbox{et} \quad S^{p-q-1}_k \quad (i=1,2,\dots,g; \; k=1,2,\dots, h). $$
+
+
+
+Ainsi notre variété est décomposée en tétraèdres à $p$ dimensions de façon à former un polyèdre tel que toute variété appartenant à ce polyèdre, appartient à l’un de ces tétraèdres.
+
+
+
+On est ainsi débarrassé des derniers doutes  qui pouvaient subsister au sujet de la possibilité de subdiviser une variété $V$ de façon à former un polyèdre $P$, pour lequel tous les $a_i^q$ soient simplement connexes.
+

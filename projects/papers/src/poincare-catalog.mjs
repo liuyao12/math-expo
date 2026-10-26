@@ -11,10 +11,10 @@ const records=[
   journal:'Journal de l’École polytechnique',series:'2',volume:'1',pages:'1--121',edition:'Complete memoir · 1895',
   source:companion+'-Analysis-Situs-42-.html',original:'https://gallica.bnf.fr/ark:/12148/bpt6k4337198/f7',page:22,
   summary:'The complete 1895 memoir in modern English: manifolds, homologies, intersection, the fundamental group, explicit polyhedral quotients, and the Euler formula. Drawings and scoped proofs mark torsion, filling, quotient, and subdivision gaps.'},
- {id:'poincare-1899',year:1899,title:'Supplement to Analysis situs',originalTitle:'Complément à l’Analysis situs',
-  journal:'Rendiconti del Circolo Matematico di Palermo',volume:'13',pages:'285--343',doi:'10.1007/BF03024461',
+ {id:'poincare-1899',year:1899,title:'First supplement to Analysis situs',originalTitle:'Complément à l’Analysis situs',
+  journal:'Rendiconti del Circolo Matematico di Palermo',volume:'13',pages:'285--343',doi:'10.1007/BF03024461',edition:'Complete first supplement · 1899',
   source:companion+'-Premier-complement-a-l-Analysis-Situs-.html',original:'https://henripoincarepapers.univ-nantes.fr/chp/hp-pdf/hp1899rc.pdf',page:104,
-  summary:'Heegaard’s objection, revised Betti numbers, incidence tables, subdivisions, and reciprocal polyhedra. Eleven sections rebuilding the duality argument.'},
+  summary:'Heegaard’s objection, revised Betti numbers, incidence tables, subdivisions, and reciprocal polyhedra. The complete eleven-section reading in modern English, with drawings, scoped proofs, and explicit corrections.'},
  {id:'poincare-1900',year:1900,title:'Second supplement to Analysis situs',originalTitle:'Second complément à l’Analysis Situs',
   journal:'Proceedings of the London Mathematical Society',volume:'32',series:'1',pages:'277--308',doi:'10.1112/plms/s1-32.1.277',
   source:companion+'-Deuxieme-complement-a-l-Analysis-Situs-.html',original:'https://doi.org/10.1112/plms/s1-32.1.277',page:145,
@@ -49,7 +49,7 @@ export const peoplePoincare=[
  {id:'picard',name:'Émile Picard',note:'Named in the 1892 announcement for applications to algebraic surfaces, and in the later supplements. No particular work is inferred from a name alone.',source:companion+'Sur-l-Analysis-Situs-1892.html'},
 ];
 export const citationsPoincare=[
- {from:'poincare-1899',to:'poincare-1895',locator:'§I, opening paragraph',url:companion+'pI-Introduction.html',evidence:'Poincaré names Analysis situs, identifies the Journal de l’École polytechnique centenary volume, and specifies that later short references point to that memoir.'},
+ {from:'poincare-1899',to:'poincare-1895',locator:'§I, opening paragraph',anchor:'p99-1a',url:companion+'pI-Introduction.html',evidence:'Poincaré names Analysis situs, identifies the Journal de l’École polytechnique centenary volume, and specifies that later short references point to that memoir.'},
  ...['poincare-1895','poincare-1899'].map(to=>({from:'poincare-1900',to,locator:'Introduction, first and last paragraphs',url:companion+'Introduction-155.html',evidence:'The introduction identifies both earlier memoirs by title and journal, then distinguishes references to the original memoir from those prefixed c for the first supplement.'})),
  ...['poincare-1895','poincare-1899','poincare-1900','poincare-1902-surfaces','poincare-1902-cycles'].map(to=>({from:'poincare-1904',to,locator:'§1, opening paragraph',url:companion+'p1-du-cinquieme-complement.html',evidence:'The opening explicitly identifies the original memoir and four supplements by their journals. Its stated years for the third and fourth supplements are 1901; their verified publication records give 1902. The citation endpoints follow those publication records.'})),
 ];
@@ -75,3 +75,7 @@ export const conceptsPoincare=[
 
 englishPoincare['poincare-1895'].checked='2026-10-24';
 englishPoincare['poincare-1895'].note+=' Credits and memoir boundaries rechecked for the 1895 on-site reading. The French transcription, rather than this translation, is the rendering’s basis.';
+
+englishPoincare['poincare-1899'].checked='2026-10-25';
+englishPoincare['poincare-1899'].note+=' Title credit and extent rechecked: PDF pages 104–144. The on-site reading is independently rendered from the French.';
+worksPoincare.find(w=>w.id==='poincare-1899').links.push({label:'Original publication · DOI',url:'https://doi.org/10.1007/BF03024461'});

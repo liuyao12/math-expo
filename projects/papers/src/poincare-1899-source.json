@@ -1,0 +1,243 @@
+{
+  "work": "poincare-1899",
+  "checked": "2026-10-25",
+  "basis": "Public-domain French author text in the Analysis Situs project transcription of Œuvres, volume VI. Newly rendered into English; not copied from Stillwell. Modern website notes excluded; §§II and IX author footnotes retained. Not collated line by line with journal printing.",
+  "originalPublication": {
+    "journal": "Rendiconti del Circolo Matematico di Palermo",
+    "volume": 13,
+    "year": 1899,
+    "pages": "285–343",
+    "doi": "10.1007/BF03024461"
+  },
+  "sourceFile": "sources/poincare-1899-fr.txt",
+  "sha256": "97ecd95bbee09b5f57ab7970e27262a3633175c31686122f0614d12fde9eff3d",
+  "sections": 11,
+  "units": [
+    {
+      "section": 1,
+      "url": "https://analysis-situs.math.cnrs.fr/pI-Introduction.html",
+      "start": 221,
+      "end": 7997,
+      "sha256": "64fa140a930b7881adf30de3c3969db4c00d7c9eeb9ecb833248292e6f6f0f52",
+      "sourceCharacters": 7771,
+      "apparatusMarkersRemoved": 3,
+      "passages": [
+        "p99-1a",
+        "p99-1b",
+        "p99-1c"
+      ],
+      "correctionsAndQualifications": [
+        "Publication date distinguished from centenary-volume label.",
+        "Extraneous zero after the equal contour squares removed.",
+        "Surface-boundary/null-homotopy inference retained as a claim and refuted in the margin."
+      ]
+    },
+    {
+      "section": 2,
+      "url": "https://analysis-situs.math.cnrs.fr/pII-Schema-d-un-polyedre.html",
+      "start": 7997,
+      "end": 18298,
+      "sha256": "983671c6c015f6d8afd345a8ff864c523a071b2398d8afed639e83f5224abd37",
+      "sourceCharacters": 10296,
+      "apparatusMarkersRemoved": 1,
+      "passages": [
+        "p99-2a",
+        "p99-2b",
+        "p99-2c"
+      ],
+      "correctionsAndQualifications": [
+        "Repeated defining-function subscripts corrected.",
+        "Simple connectivity versus ball/sphere links explicitly distinguished.",
+        "Two intermediate-face dimensions and the cross factor in the simplex sign array corrected.",
+        "The author footnote’s n-1 hyperplanes is rendered n+1 with disclosure."
+      ]
+    },
+    {
+      "section": 3,
+      "url": "https://analysis-situs.math.cnrs.fr/pIII-Nombres-de-Betti-reduits.html",
+      "start": 18298,
+      "end": 25793,
+      "sha256": "8091a8183bfa787160674baa7da70a4710a6adcfa3bda974cda4388bc0773bcf",
+      "sourceCharacters": 7490,
+      "apparatusMarkersRemoved": 1,
+      "passages": [
+        "p99-3a",
+        "p99-3b",
+        "p99-3c"
+      ],
+      "correctionsAndQualifications": [
+        "Boundary sum restores lambda coefficients and lower-cell j index.",
+        "Boundary generator uses degree q+1, not q-1.",
+        "Rank inequality compares alpha-prime with alpha-double-prime.",
+        "Initial alpha-prime-zero restored to one.",
+        "External top chain separated from homology of the original manifold."
+      ]
+    },
+    {
+      "section": 4,
+      "url": "https://analysis-situs.math.cnrs.fr/Subdivision-des-Polyedres.html",
+      "start": 25793,
+      "end": 30253,
+      "sha256": "8b607e2748cc05158c4c6ceb9968d8e83572af7877d125526f313bae1e0d49f5",
+      "sourceCharacters": 4455,
+      "apparatusMarkersRemoved": 1,
+      "passages": [
+        "p99-4a",
+        "p99-4b"
+      ],
+      "correctionsAndQualifications": [
+        "Old boundary relation and seven-index zeta notation normalized.",
+        "Compatibility identity has matching face and subdivision indices."
+      ]
+    },
+    {
+      "section": 5,
+      "url": "https://analysis-situs.math.cnrs.fr/Influence-de-la-subdivision-sur.html",
+      "start": 30253,
+      "end": 39607,
+      "sha256": "46844a144ec48bcb25fe716fba8e597399b325f55850f1c961d21453b3dbf645",
+      "sourceCharacters": 9349,
+      "apparatusMarkersRemoved": 0,
+      "passages": [
+        "p99-5a",
+        "p99-5b"
+      ],
+      "correctionsAndQualifications": [
+        "Grouped sums assigned A,d,G; the dimension-reversed congruence is written as a boundary equation.",
+        "Malformed local array replaced by the stated three incidences +1,-1,0.",
+        "Coefficient difference corrected to alpha1-alpha2.",
+        "Ball acyclicity and finite compatible refinement stated as requirements."
+      ]
+    },
+    {
+      "section": 6,
+      "url": "https://analysis-situs.math.cnrs.fr/Retour-sur-les-demonstrations-du.html",
+      "start": 39607,
+      "end": 49341,
+      "sha256": "68e688c4bbb0d46f2ed06a35d19cfd48cf3f248dd01f82663cb9755ee182c9cd",
+      "sourceCharacters": 9729,
+      "apparatusMarkersRemoved": 0,
+      "passages": [
+        "p99-6a",
+        "p99-6b",
+        "p99-6c"
+      ],
+      "correctionsAndQualifications": [
+        "Dimensions in face-intersection paragraph restored.",
+        "New cap K-prime bounded by C-prime, not C.",
+        "Local strip and chamber-boundary filling require general position and ball/sphere hypotheses."
+      ]
+    },
+    {
+      "section": 7,
+      "url": "https://analysis-situs.math.cnrs.fr/pVII-Polyedre-reciproque.html",
+      "start": 49341,
+      "end": 62467,
+      "sha256": "b50bd1eb66dbf375e1f35812f40eecd6c6fc78ff4abf28659c1ba228d6ed5a76",
+      "sourceCharacters": 13121,
+      "apparatusMarkersRemoved": 5,
+      "passages": [
+        "p99-7a",
+        "p99-7b",
+        "p99-7c",
+        "p99-7d"
+      ],
+      "correctionsAndQualifications": [
+        "Face and edge point dimensions restored.",
+        "Dual vertices are old chamber points.",
+        "Dual incidence arrays replaced by reverse-degree signed transposes.",
+        "Cyclic chamber list ends at q, not p.",
+        "Reverse path comparison uses distinct entry and exit faces and consistent connector indices."
+      ]
+    },
+    {
+      "section": 8,
+      "url": "https://analysis-situs.math.cnrs.fr/pVIII-Demonstration-du-theoreme-fondamental.html",
+      "start": 62467,
+      "end": 75268,
+      "sha256": "a1a0a06c28f5805070ae349113364538b11dafb95b621344bf30d19d4f645f9d",
+      "sourceCharacters": 12796,
+      "apparatusMarkersRemoved": 0,
+      "passages": [
+        "p99-8a",
+        "p99-8b",
+        "p99-8c"
+      ],
+      "correctionsAndQualifications": [
+        "Upper-right block uses chamber-to-face incidence of degree three.",
+        "Example has three bottom rows, matching the announced three edges.",
+        "Homology column sort and incidence degree corrected.",
+        "Nonzero column and pure-face congruence counts restore missing primes.",
+        "Nonzero rational scaling stipulated for denominator clearing."
+      ]
+    },
+    {
+      "section": 9,
+      "url": "https://analysis-situs.math.cnrs.fr/Remarques-diverses.html",
+      "start": 75268,
+      "end": 83950,
+      "sha256": "63537bd565f1cd43d76eb307d7a6e80ea0d0a86bcefd4e6457da61eee34f94ef",
+      "sourceCharacters": 8677,
+      "apparatusMarkersRemoved": 1,
+      "passages": [
+        "p99-9a",
+        "p99-9b"
+      ],
+      "correctionsAndQualifications": [
+        "Repeated closedness display replaced by the intended vanishing intersection assertion.",
+        "Incidence indices corrected in coefficient relation.",
+        "Minor criterion stated by square size and maximal rank instead of conflicting deletion indices.",
+        "Integer versus geometric boundary comparison kept explicit."
+      ]
+    },
+    {
+      "section": 10,
+      "url": "https://analysis-situs.math.cnrs.fr/pX-Demonstration-arithmetique-de-l-un-des-theoremes-du-paragraphe-VII.html",
+      "start": 83950,
+      "end": 90430,
+      "sha256": "8f7654c75c5a773c56f0ea9c737ea626c2f779c67d1c1e2cc2d4fdd2d73556ca",
+      "sourceCharacters": 6474,
+      "apparatusMarkersRemoved": 1,
+      "passages": [
+        "p99-10a",
+        "p99-10b"
+      ],
+      "correctionsAndQualifications": [
+        "Last endpoint in relation (2) restored to a_h.",
+        "Face-boundary coefficients are degree two.",
+        "A homology sign restored where a congruence was printed.",
+        "Last sign in the second Euler count restored to plus."
+      ]
+    },
+    {
+      "section": 11,
+      "url": "https://analysis-situs.math.cnrs.fr/pXI-Possibilite-de-la-subdivision.html",
+      "start": 90430,
+      "end": 103055,
+      "sha256": "c4c541ef3bc3283fb56399e9ff6732c2a25a0d1f0410ec5ccb5300e8c6d9c0de",
+      "sourceCharacters": 12619,
+      "apparatusMarkersRemoved": 1,
+      "passages": [
+        "p99-11a",
+        "p99-11b",
+        "p99-11c",
+        "p99-11d"
+      ],
+      "correctionsAndQualifications": [
+        "Truncated region is p-dimensional, not p-1-dimensional.",
+        "Complementary-face dimension retains its final minus one.",
+        "Finite chart partition, tame intersections, and radial stratification recorded as unproved prerequisites."
+      ]
+    }
+  ],
+  "englishComparison": {
+    "translator": "John Stillwell",
+    "manuscriptDate": "2009-07-31",
+    "url": "https://webhomes.maths.ed.ac.uk/~v1ranick/papers/poincare2009.pdf#page=104",
+    "firstPdfPage": 104,
+    "lastPdfPage": 144,
+    "use": "Credits and extent inspected; linked for comparison, not reproduced."
+  },
+  "archiveAccess": "Original Nantes PDF returned HTTP 403 during preparation; transcription is the declared basis.",
+  "notation": "Repeated grouped sums use compact named chains, cyclic lists use indexed notation, dual incidence arrays use reverse-degree signed transposes. All argument stages and eleven sections are retained."
+}
