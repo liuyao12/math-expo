@@ -39,4 +39,36 @@
 #explicit-height{width:auto;margin:0 0 0 auto;font-size:8px}
 @media(max-width:900px){.explicit-plot-frame{height:190px}.explicit-zero-control output{font-size:10px}}
 
+/* Reserve both plots from the beginning, so changing scroll scenes never reflows the paper. */
+@media(min-width:901px){
+ .zeta-illustrated-reading{grid-template-columns:minmax(0,1fr) 500px;column-gap:26px}
+ .zeta-plot-frame{max-width:320px;margin-inline:auto}
+}
+@media(min-width:1650px){.zeta-illustrated-reading{grid-template-columns:minmax(0,1fr) 550px;column-gap:36px}}
+@media(min-width:901px) and (max-width:1150px){.zeta-illustrated-reading{grid-template-columns:minmax(0,1fr) 440px;column-gap:24px}}
+.explicit-linked-plots{display:grid;grid-template-columns:minmax(0,1fr) 128px;gap:18px;align-items:start}
+.explicit-count-figure,.explicit-strip-figure{min-width:0}
+.explicit-plot-label{display:block;color:#66785e;font:9px/1.5 var(--sans);letter-spacing:.5px;margin-bottom:6px}
+.explicit-linked-plots .explicit-plot-frame,.explicit-strip-frame{height:210px}
+.explicit-strip-frame{position:relative;background:#faf9f3;border:1px solid #d4d8cb}
+#explicit-strip-plot{display:block;width:100%;height:100%}
+#explicit-strip-axes{position:absolute;inset:0;pointer-events:none}
+.explicit-strip-tick{position:absolute;font-size:9px;line-height:1;color:#65745b;transform:translate(-50%,-50%);white-space:nowrap}
+.explicit-strip-tick.y{transform:translate(-100%,-50%)}
+.explicit-strip-tick.real-title,.explicit-strip-tick.imaginary-title{font-size:9px}
+.explicit-strip-key{display:flex;flex-wrap:wrap;gap:5px 8px;margin:10px 0 0;color:#66785e;font:8px/1.6 var(--sans)}
+.explicit-strip-key>span{display:flex;gap:4px;align-items:center}
+.explicit-strip-key i{width:5px;height:5px;border-radius:50%;border:1px solid #99a48f;display:inline-block}
+.explicit-strip-key .strip-used{background:#ac532f;border-color:#ac532f}
+.explicit-strip-caption{font:8px/1.6 var(--sans);color:#66785e;margin:4px 0 0}
+@media(max-width:1150px){.explicit-linked-plots{grid-template-columns:minmax(0,1fr) 112px;gap:14px}}
+@media(max-width:900px){
+ .explicit-linked-plots{grid-template-columns:minmax(0,1fr) 104px;gap:10px}
+ .explicit-linked-plots .explicit-plot-frame,.explicit-strip-frame{height:190px}
+ .explicit-plot-label{font-size:8px;margin-bottom:4px}
+ .explicit-strip-key{margin-top:6px;font-size:7px;gap:3px 6px}
+ .explicit-strip-caption{font-size:7px}
+}
+
+
 

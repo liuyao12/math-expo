@@ -73,6 +73,18 @@ export function exactCount(x,mode='pi',midpoint=true){
 }
 export function countLabel(n){return n+' conjugate '+(n===1?'pair':'pairs')+' · '+(2*n)+' zeros';}
 
+// The strip is a map of the published zero locations, not a new evaluation of zeta.
+export function zeroStripModel(count,zeros){
+ if(!Number.isInteger(count)||count<0||count>zeros.length)throw new RangeError('Invalid number of included zero pairs.');
+ const latest=count?zeros[count-1]:null,height=Math.max(20,latest===null?0:latest*1.06+1);
+ const raw=height/2,power=10**Math.floor(Math.log10(raw)),step=[1,2,5,10].map(v=>v*power).reduce((best,v)=>Math.abs(Math.log(v/raw))<Math.abs(Math.log(best/raw))?v:best);
+ const ticks=[];for(let v=Math.ceil(-height/step)*step;v<=height+step*1e-8;v+=step)ticks.push(v===0?0:v);
+ const points=[];
+ zeros.forEach((gamma,index)=>{if(gamma<=height)for(const sign of [-1,1])points.push({re:.5,im:sign*gamma,index:index+1,included:index<count,latest:index===count-1});});
+ return {xmin:-.25,xmax:1.25,ymin:-height,ymax:height,ticks,points,included:2*count,latest};
+}
+
+
 export async function buildCurves(zeros,{samples=2401,onProgress=()=>{}}={}){
  const xs=Float64Array.from({length:samples},(_,i)=>Math.exp(Math.log(2)+i/(samples-1)*Math.log(50)));
  xs[0]=2;xs[samples-1]=100;

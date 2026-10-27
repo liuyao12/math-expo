@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {spawnSync} from 'node:child_process';
-import {approximation,e1Complex,exactCount,mobius,buildCurves,zeroPair,primePowers,MOBIUS_TERMS} from '../public/explicit-math.mjs';
+import {approximation,e1Complex,exactCount,mobius,buildCurves,zeroPair,primePowers,MOBIUS_TERMS,zeroStripModel} from '../public/explicit-math.mjs';
 const root=new URL('../',import.meta.url),read=p=>fs.readFileSync(new URL(p,root),'utf8');
 const data=JSON.parse(read('public/zeta-zeros-200.json')),zeros=data.ordinates;
 assert.equal(zeros.length,200);assert.equal(zeros[0],14.134725142);assert.equal(zeros[199],396.381854223);assert(zeros.every((v,i)=>v>0&&(!i||v>zeros[i-1])));
@@ -25,14 +25,27 @@ for(const i of [0,1,25,50,100])for(const n of [0,1,10,50,200])for(const mode of 
 assert(Math.abs(approximation(10,200,zeros)-4)<.02);assert(Math.abs(approximation(20.5,200,zeros)-8)<.05);
 assert(Math.abs(approximation(10,200,zeros)-4)<Math.abs(approximation(10,0,zeros)-4));
 assert(Math.abs(approximation(30,1,zeros)-10)>Math.abs(approximation(30,0,zeros)-10)); // Local errors are not monotone.
+// The camera and included locations must track the same finite zero pairs as the sum.
+let previousHeight=0;
+for(let n=0;n<=zeros.length;n++){
+ const view=zeroStripModel(n,zeros),included=view.points.filter(p=>p.included),latest=view.points.filter(p=>p.latest);
+ assert(view.ymax>=previousHeight);previousHeight=view.ymax;assert.equal(view.ymin,-view.ymax);
+ assert.equal(view.included,2*n);assert.equal(included.length,2*n);assert.equal(latest.length,n?2:0);
+ assert(view.points.every(p=>p.re===.5&&Math.abs(p.im)<=view.ymax));
+ for(let j=0;j<n;j++)assert(included.some(p=>p.index===j+1&&p.im===zeros[j])&&included.some(p=>p.index===j+1&&p.im===-zeros[j]));
+ assert(view.ticks.includes(0));assert(view.ticks.length>=3&&view.ticks.length<=7);
+ if(n)assert(latest.every(p=>Math.abs(p.im)===zeros[n-1]&&p.included));
+}
+assert.equal(zeroStripModel(0,zeros).ymax,20);assert(zeroStripModel(200,zeros).ymax>396);
+assert.throws(()=>zeroStripModel(201,zeros),RangeError);
 const html=read('dist/riemann-1859/index.html'),catalog=JSON.parse(read('dist/catalog.json'));
 assert.equal(catalog.visualContributions.filter(v=>v.id==='explicit-formula-1859').length,1);
-for(const id of ['explicit-pairs','explicit-mode','explicit-range','explicit-play','explicit-plot'])assert(html.includes('id="'+id+'"'));
+for(const id of ['explicit-pairs','explicit-mode','explicit-range','explicit-play','explicit-plot','explicit-strip-plot'])assert(html.includes('id="'+id+'"'));
 for(const text of ['Odlyzko','midpoint','cutoff fixed','no certified bound','Möbius'])assert(html.includes(text),text);
 assert.equal(read('dist/riemann-1859/explicit-reference-values.json'),read('src/sources/explicit-reference-values.json'));
 assert.equal(read('dist/zeta-zeros-200.json'),read('public/zeta-zeros-200.json'));
-for(const file of ['explicit-math.mjs','explicit-reader.mjs','explicit-worker.mjs','zeta-reader.mjs']){
+for(const file of ['explicit-math.mjs','explicit-reader.mjs','explicit-strip.mjs','explicit-worker.mjs','zeta-reader.mjs']){
  const r=spawnSync(process.execPath,['--check',new URL('public/'+file,root).pathname],{encoding:'utf8'});assert.equal(r.status,0,r.stderr);
 }
-console.log('Validated 200 sourced zero pairs, '+ref.values.length+' independent 60-digit finite-formula checks in both counting modes (maximum absolute error '+worst.toExponential(3)+'), complex Ei branches, fixed-cutoff Möbius inversion, half-values at prime powers, worker prefix curves, and nonmonotone truncation errors.');
+console.log('Validated 200 sourced zero pairs, '+ref.values.length+' independent 60-digit finite-formula checks in both counting modes (maximum absolute error '+worst.toExponential(3)+'), complex Ei branches, fixed-cutoff Möbius inversion, half-values at prime powers, worker prefix curves, nonmonotone truncation errors, and all 201 synchronized critical-strip camera and zero-inclusion states.');
 

@@ -60,7 +60,7 @@ rmSync(dist,{recursive:true,force:true});mkdirSync(dist,{recursive:true});
 cpSync(path.join(root,'public'),dist,{recursive:true});
 const styleVersion=createHash('sha256').update(readFileSync(path.join(root,'public/style.css'))).digest('hex').slice(0,12);
 writeFileSync(path.join(dist,'discovery.js'),`window.paperDiscovery={normalizeSearch:${normalizeSearch.toString()},matchesWork:${matchesWork.toString().replaceAll('normalizeSearch(', 'window.paperDiscovery.normalizeSearch(')},compareWorks:${compareWorks.toString()},facetCounts:${facetCounts.toString().replaceAll('matchesWork(', 'window.paperDiscovery.matchesWork(')}};`);
-const zetaVersion=createHash('sha256').update(['zeta-math.mjs','zeta-reader.mjs','zeta-worker.mjs','zeta-reader.css','explicit-math.mjs','explicit-reader.mjs','explicit-worker.mjs','zeta-zeros-200.json'].map(f=>readFileSync(path.join(root,'public',f),'utf8')).join('\n')).digest('hex').slice(0,12);
+const zetaVersion=createHash('sha256').update(['zeta-math.mjs','zeta-reader.mjs','zeta-worker.mjs','zeta-reader.css','explicit-math.mjs','explicit-reader.mjs','explicit-strip.mjs','explicit-worker.mjs','zeta-zeros-200.json'].map(f=>readFileSync(path.join(root,'public',f),'utf8')).join('\n')).digest('hex').slice(0,12);
 const nameVersion=createHash('sha256').update(readFileSync(path.join(root,'public/name-links.js'))).digest('hex').slice(0,12);
 const readerVersion=createHash('sha256').update(readFileSync(path.join(root,'public/reader.js'))).update(readFileSync(path.join(root,'src/discovery.mjs'))).update(readFileSync(path.join(root,'public/name-links.js'))).digest('hex').slice(0,12);
 const allEulerProofs=[...statementsEulerMore,...statementsLogarithms,...statementsBridges,...statementsResidues];

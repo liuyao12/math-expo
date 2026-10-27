@@ -1,12 +1,14 @@
 export async function initExplicitPlot(root,{version,onManual=()=>{}}={}){
  const panel=root.querySelector('#explicit-panel');if(!panel)return null;
- const {approximation,exactCount,jumps,buildCurves,countLabel}=await import('./explicit-math.mjs?v='+encodeURIComponent(version));
+ const {approximation,exactCount,jumps,buildCurves,countLabel,zeroStripModel}=await import('./explicit-math.mjs?v='+encodeURIComponent(version));
  const $=id=>root.querySelector('#'+id),canvas=$('explicit-plot'),ctx=canvas.getContext('2d'),axes=$('explicit-axes'),slider=$('explicit-pairs'),status=$('explicit-status');
  let zeros=[],curves=null,n=0,mode='pi',max=30,selection=10,playing=false,lastPlay=0,animation=0,pointerFrame=0,pendingX=null,w=0,h=0,scale=null,ready=false;
  let active=false,visible=false,userPaused=false,dwellUntil=0,cycles=0;
  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
  const tex=(el,value)=>window.katex?window.katex.render(value,el,{throwOnError:false}):el.textContent=value;
  const number=x=>String(Number(x.toFixed(5)));
+ const {createZeroStrip}=await import('./explicit-strip.mjs?v='+encodeURIComponent(version));
+ const strip=createZeroStrip(root,{model:zeroStripModel,tex});
  function motionStatus(){
   panel.dataset.motion=playing?'playing':userPaused?'paused':'idle';
   panel.dataset.cycle=String(cycles);
@@ -65,7 +67,7 @@ export async function initExplicitPlot(root,{version,onManual=()=>{}}={}){
   tex($('explicit-exact-key'),mode==='pi'?'\\pi_0(x)':'f(x)');tex($('explicit-approx-key'),(mode==='pi'?'\\widehat{\\pi}':'\\widehat{f}')+'_{'+n+'}(x)');
   $('explicit-truncation').textContent=mode==='pi'?'The loop pauses when you use the slider. Dots mark prime midpoints; finite sums can overshoot.':'The loop pauses when you use the slider. Each prime power has its fractional jump and midpoint.';
   canvas.setAttribute('aria-label',(mode==='pi'?'Prime-counting':'Weighted prime-power')+' staircase and an explicit-formula approximation using '+countLabel(n)+'. Move over the plot to inspect a point; left and right arrow keys move the selected input.');
-  plot();readout();
+  strip.setCount(n);$('explicit-count-title').textContent=mode==='pi'?'Prime count':'Prime powers';plot();readout();
  }
  function setMode(next,{manual=false}={}){if(!['pi','f'].includes(next))return;mode=next;$('explicit-mode').value=mode;if(manual){hold();onManual();}update();}
  function select(x){selection=Math.min(max,Math.max(2,x));$('explicit-x').value=String(Number(selection.toFixed(4)));plot();readout();}
@@ -93,12 +95,12 @@ export async function initExplicitPlot(root,{version,onManual=()=>{}}={}){
  function accept(data){curves=data;ready=true;panel.dataset.ready='true';for(const id of ['explicit-pairs','explicit-play','explicit-reset'])$(id).disabled=false;update();motionStatus();start();if(reduced&&userPaused)status.textContent='Autoplay paused for reduced motion · press Play pairs to start';}
  try{
   const response=await fetch(new URL('./zeta-zeros-200.json?v='+encodeURIComponent(version),import.meta.url));if(!response.ok)throw Error('The published zero data could not load.');
-  const data=await response.json();zeros=data.ordinates;if(zeros.length!==200)throw Error('The zero table is incomplete.');update();
+  const data=await response.json();zeros=data.ordinates;strip.setData(zeros);if(zeros.length!==200)throw Error('The zero table is incomplete.');update();
   let worker;
   const fallback=()=>buildCurves(zeros,{onProgress:progress}).then(accept).catch(failed);
   function failed(error){status.textContent='The approximation could not be prepared. Reload to try again.';panel.dataset.error=error.message;}
   try{worker=new Worker(new URL('./explicit-worker.mjs?v='+encodeURIComponent(version),import.meta.url),{type:'module'});worker.addEventListener('message',({data})=>{if(data.kind==='ready'){accept(data);worker.terminate();}else if(data.kind==='progress')progress(data.n);else if(data.kind==='error'){worker.terminate();failed(Error(data.message));}});worker.addEventListener('error',()=>{worker.terminate();fallback();},{once:true});worker.postMessage({zeros});}catch{fallback();}
  }catch(error){status.textContent=error.message;panel.dataset.error=error.message;}
- return{setMode,setActive,stop,resize:()=>plot(),get ready(){return ready;}};
+ return{setMode,setActive,stop,resize:()=>{plot();strip.draw();},get ready(){return ready;}};
 }
 
