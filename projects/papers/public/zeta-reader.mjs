@@ -10,9 +10,9 @@ if(root){
   const isExplicit=kind==='explicit';$('zeta-plane-panel').hidden=isExplicit;$('explicit-panel').hidden=!isExplicit;
   $('zeta-exhibit-title').textContent=isExplicit?'Zeros into primes':'Zeta, in color';
   $('zeta-plane-tab').setAttribute('aria-pressed',String(!isExplicit));$('explicit-tab').setAttribute('aria-pressed',String(isExplicit));root.dataset.exhibit=kind;
-  if(isExplicit)explicitPlot?.resize();else explicitPlot?.stop();
+  explicitPlot?.setActive(isExplicit);if(isExplicit)explicitPlot?.resize();
  }
- initExplicitPlot(root,{version,onManual:()=>{follow.checked=false;}}).then(plot=>{explicitPlot=plot;if(scene.exhibit==='explicit')explicitPlot.setMode(scene.mode);});
+ initExplicitPlot(root,{version}).then(plot=>{explicitPlot=plot;if(scene.exhibit==='explicit'){explicitPlot.setMode(scene.mode);explicitPlot.setActive(true);}});
  $('zeta-plane-tab').addEventListener('click',()=>{follow.checked=false;updateScene(scene.exhibit?scenes[3]:scene,true);requestPixels();});
  $('explicit-tab').addEventListener('click',()=>{follow.checked=false;updateScene(scenes.find(s=>s.id==='prime-inversion'),true);});
 

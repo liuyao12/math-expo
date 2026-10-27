@@ -3,10 +3,27 @@ export async function initExplicitPlot(root,{version,onManual=()=>{}}={}){
  const {approximation,exactCount,jumps,buildCurves,countLabel}=await import('./explicit-math.mjs?v='+encodeURIComponent(version));
  const $=id=>root.querySelector('#'+id),canvas=$('explicit-plot'),ctx=canvas.getContext('2d'),axes=$('explicit-axes'),slider=$('explicit-pairs'),status=$('explicit-status');
  let zeros=[],curves=null,n=0,mode='pi',max=30,selection=10,playing=false,lastPlay=0,animation=0,pointerFrame=0,pendingX=null,w=0,h=0,scale=null,ready=false;
+ let active=false,visible=false,userPaused=false,dwellUntil=0,cycles=0;
  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
  const tex=(el,value)=>window.katex?window.katex.render(value,el,{throwOnError:false}):el.textContent=value;
  const number=x=>String(Number(x.toFixed(5)));
- function stop(){playing=false;cancelAnimationFrame(animation);$('explicit-play').textContent='Play pairs';}
+ function motionStatus(){
+  panel.dataset.motion=playing?'playing':userPaused?'paused':'idle';
+  panel.dataset.cycle=String(cycles);
+  if(ready)status.textContent=playing?'Looping through 200 published pairs · finite approximation':userPaused?'Paused · move the slider or press Play pairs':'200 published pairs ready · finite numerical approximation';
+ }
+ function stop(){playing=false;cancelAnimationFrame(animation);$('explicit-play').textContent='Play pairs';motionStatus();}
+ function hold(){userPaused=true;stop();}
+ function start(){
+  if(playing||!ready||!active||!visible||document.hidden||userPaused)return;
+  playing=true;$('explicit-play').textContent='Pause';lastPlay=0;motionStatus();animation=requestAnimationFrame(animate);
+ }
+ function setActive(next){
+  if(active===next)return;active=next;
+  if(!active){stop();return;}
+  n=0;userPaused=reduced;dwellUntil=performance.now()+600;update();start();
+  if(reduced&&ready)status.textContent='Autoplay paused for reduced motion · press Play pairs to start';
+ }
  function valueAt(x){return approximation(x,n,zeros,mode);}
  function readout(){
   if(!zeros.length)return;
@@ -46,26 +63,34 @@ export async function initExplicitPlot(root,{version,onManual=()=>{}}={}){
   $('explicit-count-label').textContent=countLabel(n);slider.value=String(n);slider.setAttribute('aria-valuetext',countLabel(n));
   if(n)tex($('explicit-height'),'\\gamma_{'+n+'}\\approx '+zeros[n-1].toFixed(9));else $('explicit-height').textContent='No oscillatory terms';
   tex($('explicit-exact-key'),mode==='pi'?'\\pi_0(x)':'f(x)');tex($('explicit-approx-key'),(mode==='pi'?'\\widehat{\\pi}':'\\widehat{f}')+'_{'+n+'}(x)');
-  $('explicit-truncation').textContent=mode==='pi'?'The dots mark half-values at primes. Finite sums can overshoot; more pairs need not improve every point.':'Each prime power carries its fractional weight. The dots mark jump midpoints; finite sums can overshoot.';
+  $('explicit-truncation').textContent=mode==='pi'?'The loop pauses when you use the slider. Dots mark prime midpoints; finite sums can overshoot.':'The loop pauses when you use the slider. Each prime power has its fractional jump and midpoint.';
   canvas.setAttribute('aria-label',(mode==='pi'?'Prime-counting':'Weighted prime-power')+' staircase and an explicit-formula approximation using '+countLabel(n)+'. Move over the plot to inspect a point; left and right arrow keys move the selected input.');
   plot();readout();
  }
- function setMode(next,{manual=false}={}){if(!['pi','f'].includes(next))return;mode=next;$('explicit-mode').value=mode;if(manual){stop();onManual();}update();}
+ function setMode(next,{manual=false}={}){if(!['pi','f'].includes(next))return;mode=next;$('explicit-mode').value=mode;if(manual){hold();onManual();}update();}
  function select(x){selection=Math.min(max,Math.max(2,x));$('explicit-x').value=String(Number(selection.toFixed(4)));plot();readout();}
- slider.addEventListener('input',()=>{stop();n=Number(slider.value);onManual();update();});
- $('explicit-reset').addEventListener('click',()=>{stop();n=0;onManual();update();});
- function animate(now){if(!playing)return;if(now-lastPlay>(reduced?200:70)){n=Math.min(zeros.length,n+(reduced?10:2));lastPlay=now;update();if(n===zeros.length){stop();return;}}animation=requestAnimationFrame(animate);}
- $('explicit-play').addEventListener('click',()=>{if(playing){stop();return;}if(n===zeros.length)n=0;playing=true;onManual();$('explicit-play').textContent='Pause';lastPlay=0;animation=requestAnimationFrame(animate);});
+ slider.addEventListener('input',()=>{hold();n=Number(slider.value);onManual();update();});
+ $('explicit-reset').addEventListener('click',()=>{hold();n=0;onManual();update();});
+ function animate(now){
+  if(!playing)return;
+  if(now>=dwellUntil&&now-lastPlay>(reduced?200:45)){
+   if(n===zeros.length){n=0;cycles++;dwellUntil=now+600;}
+   else{n=Math.min(zeros.length,n+(reduced?10:1));if(n===zeros.length)dwellUntil=now+1200;}
+   lastPlay=now;update();panel.dataset.cycle=String(cycles);
+  }
+  animation=requestAnimationFrame(animate);
+ }
+ $('explicit-play').addEventListener('click',()=>{if(playing){hold();return;}userPaused=false;if(n===zeros.length)n=0;dwellUntil=0;start();});
  $('explicit-mode').addEventListener('change',()=>setMode($('explicit-mode').value,{manual:true}));
- $('explicit-range').addEventListener('change',()=>{max=Number($('explicit-range').value);$('explicit-x').max=String(max);selection=Math.min(selection,max);$('explicit-x').value=String(selection);onManual();update();});
+ $('explicit-range').addEventListener('change',()=>{hold();max=Number($('explicit-range').value);$('explicit-x').max=String(max);selection=Math.min(selection,max);$('explicit-x').value=String(selection);onManual();update();});
  $('explicit-inspect-form').addEventListener('submit',e=>{e.preventDefault();select(Number($('explicit-x').value));});
  canvas.addEventListener('pointermove',e=>{if(!scale)return;const rect=canvas.getBoundingClientRect();pendingX=2+(e.clientX-rect.left-scale.left)/(scale.right-scale.left)*(max-2);if(!pointerFrame)pointerFrame=requestAnimationFrame(()=>{pointerFrame=0;select(Math.round(pendingX*10)/10);});});
  canvas.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;e.preventDefault();select(e.key==='Home'?2:e.key==='End'?max:Math.round((selection+(e.key==='ArrowLeft'?-.1:.1))*10)/10);});
  new ResizeObserver(()=>plot()).observe(canvas.parentElement);
- document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();});
- new MutationObserver(()=>{if(panel.hidden)stop();}).observe(panel,{attributes:true,attributeFilter:['hidden']});
+ document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();else start();});
+ new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible)start();else stop();},{threshold:0}).observe(panel);
  function progress(v){status.textContent='Preparing zero contributions · '+v+' / 200 pairs';}
- function accept(data){curves=data;ready=true;panel.dataset.ready='true';for(const id of ['explicit-pairs','explicit-play','explicit-reset'])$(id).disabled=false;status.textContent='200 published pairs ready · finite numerical approximation';update();}
+ function accept(data){curves=data;ready=true;panel.dataset.ready='true';for(const id of ['explicit-pairs','explicit-play','explicit-reset'])$(id).disabled=false;update();motionStatus();start();if(reduced&&userPaused)status.textContent='Autoplay paused for reduced motion · press Play pairs to start';}
  try{
   const response=await fetch(new URL('./zeta-zeros-200.json?v='+encodeURIComponent(version),import.meta.url));if(!response.ok)throw Error('The published zero data could not load.');
   const data=await response.json();zeros=data.ordinates;if(zeros.length!==200)throw Error('The zero table is incomplete.');update();
@@ -74,6 +99,6 @@ export async function initExplicitPlot(root,{version,onManual=()=>{}}={}){
   function failed(error){status.textContent='The approximation could not be prepared. Reload to try again.';panel.dataset.error=error.message;}
   try{worker=new Worker(new URL('./explicit-worker.mjs?v='+encodeURIComponent(version),import.meta.url),{type:'module'});worker.addEventListener('message',({data})=>{if(data.kind==='ready'){accept(data);worker.terminate();}else if(data.kind==='progress')progress(data.n);else if(data.kind==='error'){worker.terminate();failed(Error(data.message));}});worker.addEventListener('error',()=>{worker.terminate();fallback();},{once:true});worker.postMessage({zeros});}catch{fallback();}
  }catch(error){status.textContent=error.message;panel.dataset.error=error.message;}
- return{setMode,stop,resize:()=>plot(),get ready(){return ready;}};
+ return{setMode,setActive,stop,resize:()=>plot(),get ready(){return ready;}};
 }
 
