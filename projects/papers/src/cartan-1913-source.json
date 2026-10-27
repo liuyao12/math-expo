@@ -1,0 +1,345 @@
+{
+  "work": "cartan-1913",
+  "checked": "2026-10-26",
+  "sourceUrl": "https://www.numdam.org/article/BSMF_1913__41__53_1.pdf",
+  "sourceFile": "sources/cartan-1913-fr-ocr.txt",
+  "sha256": "58c2f2fbbf9d66f9e20f916e09665a75e34b64805ba60f167bff8c28fe6c865e",
+  "pdfSha256": "e9ea6fa28bfd6f41235da9ddb793af35953cd76699803a37330c9b092bf88395",
+  "pages": [
+    {
+      "printPage": 53,
+      "pdfPage": 2,
+      "start": 0,
+      "end": 588,
+      "sha256": "167f753426f83c21642116893fe75065aa3ca4d93f7e5bbb0eb209cf68b2497c"
+    },
+    {
+      "printPage": 54,
+      "pdfPage": 3,
+      "start": 588,
+      "end": 2759,
+      "sha256": "5116c3d6fd5dcd25eff39b35288b8026e0eb7a4f5c4e08c421633c834657d627"
+    },
+    {
+      "printPage": 55,
+      "pdfPage": 4,
+      "start": 2759,
+      "end": 4711,
+      "sha256": "80777cb288718ffb645b3498e0382f903bc14ca76d6c9447c946dbb5517f248b"
+    },
+    {
+      "printPage": 56,
+      "pdfPage": 5,
+      "start": 4711,
+      "end": 6343,
+      "sha256": "47c70a3bc1950d3d26649f1959908d186937dfb94b8528026f1f0dbbcde0a0d4"
+    },
+    {
+      "printPage": 57,
+      "pdfPage": 6,
+      "start": 6343,
+      "end": 8075,
+      "sha256": "ffaf05343768b8aaa96ed7f99bd8d93bd3400341c94f042089b48255ff5b09b5"
+    },
+    {
+      "printPage": 58,
+      "pdfPage": 7,
+      "start": 8075,
+      "end": 9994,
+      "sha256": "b8041113b795fa1ff9a9f7eb2bf7d8b43587e5e2ddae6cd62b159170e06b80e0"
+    },
+    {
+      "printPage": 59,
+      "pdfPage": 8,
+      "start": 9994,
+      "end": 11953,
+      "sha256": "bc2a123da8ec581c592a91bf7703503e690bbc02ed02205d215522134141a280"
+    },
+    {
+      "printPage": 60,
+      "pdfPage": 9,
+      "start": 11953,
+      "end": 13395,
+      "sha256": "7690bbf50b5b43dedb6a11f067d983646fede9dc2b09f9527eb0b0ce09b713e5"
+    },
+    {
+      "printPage": 61,
+      "pdfPage": 10,
+      "start": 13395,
+      "end": 15421,
+      "sha256": "9840ea8e706d0e01613572cb28c2e820533ef4a812f8710a7410d2edc3b62a9e"
+    },
+    {
+      "printPage": 62,
+      "pdfPage": 11,
+      "start": 15421,
+      "end": 16901,
+      "sha256": "1d4d1f01c66c5fde336e58f0f9212d6c87fda314ba6d69f56e99e0f9508b8d23"
+    },
+    {
+      "printPage": 63,
+      "pdfPage": 12,
+      "start": 16901,
+      "end": 18677,
+      "sha256": "3019a7207e0df8bd6b6d72acd437d8dc91c8345bf16e9c4878b47624816ed353"
+    },
+    {
+      "printPage": 64,
+      "pdfPage": 13,
+      "start": 18677,
+      "end": 20725,
+      "sha256": "61ef15e1308878cddfda934ee3692d88ad675f7f37cca80fc5dbaae8dca3762d"
+    },
+    {
+      "printPage": 65,
+      "pdfPage": 14,
+      "start": 20725,
+      "end": 22333,
+      "sha256": "63129f734e05149a6ee89a708ffa111b391b8b16a64269d13767e9cf2ab07f02"
+    },
+    {
+      "printPage": 66,
+      "pdfPage": 15,
+      "start": 22333,
+      "end": 24074,
+      "sha256": "c3cd5ce7f823e92ae790fe811938b38bbd14e29103faf7b3d76323627dea81a5"
+    },
+    {
+      "printPage": 67,
+      "pdfPage": 16,
+      "start": 24074,
+      "end": 25797,
+      "sha256": "c32d9189f3d9e8b7e7922903c2d9d5573d510cb8f37d79ceff923367010c2d14"
+    },
+    {
+      "printPage": 68,
+      "pdfPage": 17,
+      "start": 25797,
+      "end": 27066,
+      "sha256": "95043a712cbc932ff6640223038c364dab36efc7f564fc1147ddc9cb53f85989"
+    },
+    {
+      "printPage": 69,
+      "pdfPage": 18,
+      "start": 27066,
+      "end": 28323,
+      "sha256": "34ec30d15f0e0f2cd13162588a4825c8fcef7baf986ce4568d3bbd1cdfc74b13"
+    },
+    {
+      "printPage": 70,
+      "pdfPage": 19,
+      "start": 28323,
+      "end": 29441,
+      "sha256": "8b8cc73bd18732d3776d2c5f6fccb7153a4b0ff93dbc012e8cf355b7a154c240"
+    },
+    {
+      "printPage": 71,
+      "pdfPage": 20,
+      "start": 29441,
+      "end": 30550,
+      "sha256": "9b272ab352faa5b91df6eb623ac653110fa5477dd5891c3980358691f1d5c69a"
+    },
+    {
+      "printPage": 72,
+      "pdfPage": 21,
+      "start": 30550,
+      "end": 31748,
+      "sha256": "eaf391a0c0436f4ac1c41a65442756ac36c254f5e03a2f102728d4d877e8ec64"
+    },
+    {
+      "printPage": 73,
+      "pdfPage": 22,
+      "start": 31748,
+      "end": 32990,
+      "sha256": "031f51baf5cd3e27c675cdbc16b1ae1996102b1371d0527223335de66daf9b9e"
+    },
+    {
+      "printPage": 74,
+      "pdfPage": 23,
+      "start": 32990,
+      "end": 33994,
+      "sha256": "066c981c2ff20479fe43c992d4074595bca6fa37a8abadeed2a8a957c1f91f18"
+    },
+    {
+      "printPage": 75,
+      "pdfPage": 24,
+      "start": 33994,
+      "end": 35154,
+      "sha256": "29e1d254df8ad37f469b12281d0442c43d3116a499f5dd8ed251d52c9bd13fb0"
+    },
+    {
+      "printPage": 76,
+      "pdfPage": 25,
+      "start": 35154,
+      "end": 36272,
+      "sha256": "df06b3170491c97adde5a19aeeccab7f63420f9a79f53343ed94d846ff650a7b"
+    },
+    {
+      "printPage": 77,
+      "pdfPage": 26,
+      "start": 36272,
+      "end": 37615,
+      "sha256": "30fc148e44dbafdcbd9408c198abff0b9a211067110f30b1fd66579f04435a37"
+    },
+    {
+      "printPage": 78,
+      "pdfPage": 27,
+      "start": 37615,
+      "end": 38774,
+      "sha256": "15e643c3dd4fa59bcc49f67af2091b458339b239ca4ed106dcb810114b28029b"
+    },
+    {
+      "printPage": 79,
+      "pdfPage": 28,
+      "start": 38774,
+      "end": 40206,
+      "sha256": "e231fa3621d23664f0b2f5d8b7643c29a0afaedd926f6046cb1cb281603ff34e"
+    },
+    {
+      "printPage": 80,
+      "pdfPage": 29,
+      "start": 40206,
+      "end": 41486,
+      "sha256": "258838d1edf311c798503ec4faefc7be9b95204df3632b73466be8121dbae2b1"
+    },
+    {
+      "printPage": 81,
+      "pdfPage": 30,
+      "start": 41486,
+      "end": 42648,
+      "sha256": "593dcf9c1d453cbbc4c84615842e64d13164815f19fe0f072ab1e55d413baff2"
+    },
+    {
+      "printPage": 82,
+      "pdfPage": 31,
+      "start": 42648,
+      "end": 44106,
+      "sha256": "8dde05d0ace1e6d6e93e790bf5195c47938e54d25c4f6eaeb5c61e6edf5d13a6"
+    },
+    {
+      "printPage": 83,
+      "pdfPage": 32,
+      "start": 44106,
+      "end": 45450,
+      "sha256": "e13fbb3df5e0bb6bf77b2b8e1ca3f4211205fa30a3acd79dda528f82ff3dcd85"
+    },
+    {
+      "printPage": 84,
+      "pdfPage": 33,
+      "start": 45450,
+      "end": 46472,
+      "sha256": "b82d2d50146999b7c7bd20f5f203d185fe06a17303783b1890fd3a71f7e5a88f"
+    },
+    {
+      "printPage": 85,
+      "pdfPage": 34,
+      "start": 46472,
+      "end": 47623,
+      "sha256": "3d436e86f10df727c127d96e6a4e2cb007cf6be1bdce33666007aa01109ec7b7"
+    },
+    {
+      "printPage": 86,
+      "pdfPage": 35,
+      "start": 47623,
+      "end": 49158,
+      "sha256": "b8d3d2af6bd74e3ac8c74515e3cd1e42f376b79c9106da06e02e5bd00bdb0aae"
+    },
+    {
+      "printPage": 87,
+      "pdfPage": 36,
+      "start": 49158,
+      "end": 51030,
+      "sha256": "adf53b168a019f4f4eb8ec6863c2debfcf91202981190880ee0819a136d7ce21"
+    },
+    {
+      "printPage": 88,
+      "pdfPage": 37,
+      "start": 51030,
+      "end": 52930,
+      "sha256": "75c799dab53182f16130dae16c99ed14a54cecc907364e4eb61227949e0fb4ce"
+    },
+    {
+      "printPage": 89,
+      "pdfPage": 38,
+      "start": 52930,
+      "end": 54427,
+      "sha256": "6de2050d1cb8ad85f11b956d44858d7732db01dc6fe5f11a96398c2de52c0106"
+    },
+    {
+      "printPage": 90,
+      "pdfPage": 39,
+      "start": 54427,
+      "end": 56016,
+      "sha256": "88a63ce1d42efb4c0729e8fbfd9839609cb66b6a6ac0a43306b3236d163f2d98"
+    },
+    {
+      "printPage": 91,
+      "pdfPage": 40,
+      "start": 56016,
+      "end": 57535,
+      "sha256": "db4d59bcb5eb29fb568c545f856d285286118f3c3f6542ef7cddf700c77b4d82"
+    },
+    {
+      "printPage": 92,
+      "pdfPage": 41,
+      "start": 57535,
+      "end": 59388,
+      "sha256": "cf4664edbc9e513210fda6c91de40289f7ab4e70167644450f715cd74dd08fca"
+    },
+    {
+      "printPage": 93,
+      "pdfPage": 42,
+      "start": 59388,
+      "end": 61073,
+      "sha256": "1057c73c1274e42910276267afe482f0665f712f39912030fa94533a2fa3c602"
+    },
+    {
+      "printPage": 94,
+      "pdfPage": 43,
+      "start": 61073,
+      "end": 62975,
+      "sha256": "cc9ac22e43440d4b8724f8becc0969521111138b4e5195ad3689332457cc7085"
+    },
+    {
+      "printPage": 95,
+      "pdfPage": 44,
+      "start": 62975,
+      "end": 64650,
+      "sha256": "bc0daa04a636e606120acfc31380488330c1aad120cdf2123dffca1b0fd109ee"
+    },
+    {
+      "printPage": 96,
+      "pdfPage": 45,
+      "start": 64650,
+      "end": 66050,
+      "sha256": "3989b283457d42f84026748dffdd914e6ebc1768be7403ba387d4f8585b14c2c"
+    }
+  ],
+  "visuallyInspectedPdfPages": [
+    2,
+    3,
+    4,
+    5
+  ],
+  "scope": "Partial reading: complete unnumbered introduction and its two author footnotes; stops before Section I. Sections I–XXII are not yet rendered.",
+  "ocrWarning": "Raw source OCR, not a corrected transcription. All formulas in the translated introduction were checked against page images. The remaining pages supply an approximate size denominator only; they have not been translated or mathematically reviewed.",
+  "coverage": {
+    "percent": 8,
+    "approximate": true,
+    "coveredUnits": 4312,
+    "totalUnits": 54048,
+    "intervals": [
+      {
+        "start": 100,
+        "end": 5015,
+        "label": "Unnumbered introduction, pp. 53–56; includes author footnote on p. 54"
+      },
+      {
+        "start": 5988,
+        "end": 6198,
+        "label": "Introduction’s thesis-reference author footnote, p. 56"
+      }
+    ],
+    "method": "Approximate proportion of non-whitespace characters in the pinned French OCR represented by the translated source intervals, rounded to the nearest whole percent. The archive cover is excluded; the denominator includes the author’s title, footnotes, and OCR page headings. Formula recognition and page-heading noise limit accuracy. This measures source coverage, not the length of the English translation, commentary, or proof verification."
+  }
+}

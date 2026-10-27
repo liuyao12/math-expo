@@ -16,8 +16,8 @@ assert.equal(proofsLie1874.length,5);assert.equal((html.match(/<figure /g)||[]).
 for(const p of proofsLie1874){assert(html.includes(`id="${p.id}"`));assert(html.includes(`href="#${p.id}"`));assert(passagesLie1874.some(r=>r.id===p.anchor));assert(p.proof.length>500);}
 for(const c of conceptsLie1874)assert(html.includes('concepts/'+c.id+'/'));
 for(const marker of ['without proof-assistant verification','classification announcements','fixed point','neither identity nor inverses','original journal impression has not been collated separately','five author footnotes'])assert(html.toLowerCase().includes(marker.toLowerCase()),marker);
-assert.equal(representationWorks.length,9);assert.equal(representationWorks.filter(w=>w.edition).length,1);
-for(const w of representationWorks){assert(works.some(r=>r.id===w.id));assert(bibliographicFields[w.id]);const page=read('dist/'+w.id+'/index.html');if(w.edition)assert(page.includes('Complete founding note'));else assert(page.includes('Full reading not yet prepared'));}
+assert.equal(representationWorks.length,9);assert.equal(representationWorks.filter(w=>w.edition).length,2);
+for(const w of representationWorks){assert(works.some(r=>r.id===w.id));assert(bibliographicFields[w.id]);const page=read('dist/'+w.id+'/index.html');if(w.id==='lie-1874')assert(page.includes('Complete founding note'));else if(w.id==='cartan-1913')assert(page.includes('Introduction complete'));else assert(page.includes('Full reading not yet prepared'));}
 assert.equal(works.find(w=>w.id==='peter-weyl-1927').year,1927);assert.equal(bibliographicFields['peter-weyl-1927'].pages,'737--755');assert.deepEqual(works.find(w=>w.id==='peter-weyl-1927').authors,['peter','weyl']);
 for(const [id,e]of Object.entries(representationEnglish)){assert.equal(e.status,'located');assert.equal(e.availability,'bibliographic-record');assert(catalogue.match(new RegExp('data-work="'+id+'"[^>]*data-english="false"')));assert(read('dist/'+id+'/index.html').includes('full file not inspected'));}
 for(const edge of representationCitations){assert(citations.some(c=>c.from===edge.from&&c.to===edge.to));assert(read('dist/'+edge.from+'/index.html').includes('../'+edge.to+'/'));assert(read('dist/'+edge.to+'/index.html').includes('../'+edge.from+'/'));}
@@ -38,4 +38,4 @@ for(let a=-3;a<=3;a++)if(a)for(let b=-3;b<=3;b++)for(let c=-3;c<=3;c++)if(c)for(
 for(let x=-3;x<=3;x++)for(let t=-3;t<=3;t++)if(1-t*x)assert.equal((x/(1-t*x))*(1-t*x),x);
 // A transverse translation symmetry of dy/dx=y gives a closed integrating form.
 for(const y of [-3,-1,.5,2]){const Q=-y;assert.equal(0+y*(-1)-1*Q,0);assert.equal((-y)/Q,1);}
-console.log('Validated chronological defaults and author lists, numbered-part ties, nine representation records, seven sourced citation edges, honest English-access status, the complete Lie note with five author footnotes, six drawings, five reconstructions, source-page hashes and exact line-algebra calculations.');
+console.log('Validated chronological defaults and author lists, numbered-part ties, nine representation records, eight sourced citation edges, honest English-access status, the complete Lie note with five author footnotes, six drawings, five reconstructions, source-page hashes and exact line-algebra calculations.');

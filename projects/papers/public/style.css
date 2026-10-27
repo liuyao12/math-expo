@@ -122,3 +122,20 @@ cite.work-title{font-style:italic}.entity-link.work-link,.work-record h3,.paper-
 
 .catalogue-result-controls{display:flex;align-items:center;justify-content:flex-end;gap:20px;flex-wrap:wrap}.catalogue-result-controls label{display:flex;gap:8px;align-items:center;font:11px/1.6 var(--sans);color:var(--muted)}.catalogue-result-controls select{max-width:190px;border:1px solid var(--rule);border-radius:3px;background:var(--paper);color:var(--ink);padding:8px;font:12px/1.4 var(--sans)}
 @media(max-width:760px){.catalogue-result-heading{flex-wrap:wrap;gap:12px}.catalogue-result-controls{width:100%;justify-content:space-between;gap:10px}.catalogue-result-controls select{font-size:16px;max-width:210px}}
+
+/* Primary-text coverage: native progress remains available without scripts. */
+.text-completion{max-width:560px;margin:24px 0;color:var(--green);text-align:left}
+.completion-label{display:flex;justify-content:space-between;align-items:baseline;gap:20px;font:11px/1.6 var(--sans)}
+.completion-percent{font-variant-numeric:tabular-nums;white-space:nowrap}
+.text-completion progress{display:block;width:100%;height:6px;margin:9px 0 8px;border:0;border-radius:0;overflow:hidden;background:#e0e3d8;accent-color:var(--green);appearance:none}
+.text-completion progress::-webkit-progress-bar{background:#e0e3d8}
+.text-completion progress::-webkit-progress-value{background:var(--green)}
+.text-completion progress::-moz-progress-bar{background:var(--green)}
+.completion-state{display:block;font:10px/1.7 var(--sans);color:var(--muted)}
+.completion-compact{min-width:0;width:100%;margin:0 0 17px;max-width:280px}
+.completion-scope{font:13px/1.7 var(--serif);color:var(--muted);margin:9px 0}
+.completion-details{font:12px/1.7 var(--serif);color:var(--muted)}
+.completion-details summary{font:10px/1.6 var(--sans);cursor:pointer;text-decoration:underline;text-underline-offset:3px;padding:4px 0}
+.completion-details p{margin:10px 0}.catalogue-completion-note{font:12px/1.7 var(--sans);color:var(--muted);max-width:650px;margin:8px 0 20px}
+@media(max-width:700px){.completion-compact{min-width:0;width:100%;max-width:320px}.text-completion{margin-block:20px}.completion-compact{margin-top:0}.completion-scope{font-size:14px}.completion-details{font-size:14px}}
+@media(forced-colors:active){.text-completion progress{appearance:auto}}

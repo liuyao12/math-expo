@@ -1,0 +1,1446 @@
+- 53
+LES GROUPES PROJECTIFS QUI NE LAISSENT INVARIANTE
+AUCUNE MULTIPLICITÉ PLANE;
+PAR M. E. CARTAN.
+«rindique dans ce Mémoire une génération de Ions les groupes
+projeclifs qui ne laissent invariante aucune multiplicité plane. Ces
+groupes sont tous simples ou semi-simples et leur élude revient
+à celle des groupes linéaires et homogènes qui ne laissent inva-
+riante aucune multiplicité plane.
+La génération obtenue repose sur la notion de groupes linéaires
+fondamentaux. Étant dormée une structure simple de rang / et
+d^ordre r, il existe /groupes linéaires particuliers g^, g^^ ..., gi
+
+— 54 —
+admettant celle structure, ne laissant invariante aucune multiplicité
+plane et jouissant de la propriété remarquable suivante : Tout
+groupe linéaire G de la même structure ne laissant invariante
+aucune multiplicité plane peut se déduire par un procédé
+régulier de ces l groupes particuliers^ dits « fondamentaux )>.
+Pour arriver à cette génération on prend, d'une certaine ma-
+nière, qui n'est d'ailleurs pas unique, une variable particulière
+appelée variable dominante, dans chaque groupe fondamental.
+Soit Xi la variable dominante de gi. On se donne alors arbitraire-
+ment l entiers/?!, p^ ..., /?/, positifs ou nuls, et l'on considère
+l'expression
+x^x^\..xffi.
+Lorsqu'on applique à cette expression les transformations du
+groupe g à /• paramètres dont les équations s'obtiennent par la
+juxtaposition des équations de g\ ,^'3, ...,^y/(i), cette expression se
+transforme en un certain nombre d'autres linéairement indépen-
+dantes.
+Le groupe le plus général cherché G indique comment le
+groupe g transforme linéairement toutes ces expressions. Il
+dépend donc d'un système de / entiers positifs ou nuls.
+Les groupes semi-simples s'engendrent d'une manière analogue.
+Si par exemple un groupe semi-simple est formé de deux sons-
+groupes simples, on engendrera tous les groupes linéaires G qui
+ont sa structure en prenant un groupe linéaire quelconque g de la
+première structure simple, aux variables X{^ x^^ ..., Xyn\ et un
+g'roupe linéaire quelconque g' de la seconde structure simple,
+aux variables y<, ..., yn. Le groupe le plus général cherché
+est celui qui indique comment les mn quantités xiy^ sont trans-
+formées linéairement entre elles, soit par les transformations de g,
+soit par celles de g'.
+Les résultats ainsi obtenus comprennent en particulier ceux
+que l'on connaît déjà relativement à la génération des groupes pro-
+jectifs à trois paramètres qui ne laissent invariante aucune multi-
+(l) II faut naturellement supposer que tous ces groupes ont les mêmes para-
+mètres en nombre /', ou encore que chaque transformation infinitésimale de g est
+la somme de l transformations infinitésimales correspondantes prises dans chacun
+des / croupes fondamentaux*
+
+plicité plane : chacun d'eux indique en effet comment le groupe
+projectifde la droite transforme entre elles les expressions
+^', X^-^X^ ..., a-ia^-1, X^
+Je forme dans ce Mémoire les différents groupes fondamentaux
+correspondant aux différentes structures simples.
+Les groupes fondamentaux du type (A) sont connus depuis
+longtemps : ce sont les groupes projectifs qui indiquent comment
+le groupe projectif de l'espace à / dimensions transforme les
+points, les droites, les multiplicités planes à 2 dimensions, etc.,
+les multiplicités planes à /—i dimensions de cet espace. Ces
+groupes sont respectivement à
+yl p2 p3 r^l
+^/+ii w+n ^/-m ••••» ^v+i
+variables.
+Parmi les groupes fondamentaux du type (B),l'un est le groupe
+projectif d'une quadrique dans l'espace à il dimensions;
+/—2 autres indiquent comment ce groupe projectif transforme
+dans cet espace les multiplicités planes à 1,2, ..., /—2 dimen-
+sions. Enfin, un dernier groupe fondamental est tout ù fait à part;
+il est à 27 variables; il indique comment le groupe projectifde la
+quadrique transforme les i1 paramètres homogènes (surabondants)
+des multiplicités planes à /—i dimensions qui engendrent la qua-
+drique. D'ailleurs, ce dernier groupe fondamental peut servir, par
+un procédé que j'indique, à engendrer tous les autres groupes
+fondamentaux.
+Les résultats relatifs au type (D) sont analogues, sauf que le
+groupe fondamental à i1 variables est remplacé par deux groupes
+fondamentaux (d'ailleurs isomorphes) à 2/~l variables.
+Les groupes fondamentaux du type (G) se déduisent très faci-
+lement de l'un d'entre eux, qui est le groupe projeclif d'un com-
+plexe linéaire de l'espace à il —i dimensions.
+J'indique enfin la formation des groupes fondamentaux des
+types (E), (F) et (G). Des six groupes fondamentaux du
+type (E) (Z==6), deux sont à 27 variables, un à 78, deux à 35i
+et un à 2925.
+Les quatre groupes fondamentaux du type (F) sont respective-
+ment à 26, 5a, 278 et 12^4 variables.
+
+— 56 —
+Enfin, les deux groupes fondamentaux du type (G) sont respec-
+tivement à 7 et i4 variables.
+Je suppose dans tout ce qui suit qu^on a affaire à des variables
+et à des paramètres complexes. Je me propose de compléter
+ultérieurement les résultats précédents en ce qui concerne les
+groupes réels (').
+I. — GÉNÉRALITÉS. POIDS, POIDS HOMOLOGUES.
+1. Considérons un groupe linéaire et homogène à n variables
+.2*1, »T2î •••î ^ny et supposons que ce groupe ne laisse invariante
+aucune multiplicité plane. J^i démontré précédemment (2) que ce
+groupe :
+Ou bien est simple ou semi-simple;
+Ou bien est Formé d\in sous-groupe simple ou semi-simple et
+du groupe à un paramètre des transformations homothétiques
+àf àfa'1-T^- -+-... -+-^-r--àx^ àxn,
+La détermination des groupes linéaires qui ne laissent invariante
+aucune multiplicité plane revient donc à celle de ces groupes qui
+sont simples ou semi-simples.
+2. On sait que les transformations infinitésimales d\in groupe
+semi-simple d^ordre /• et de rang l peuvent être choisies de manière
+à satisfaire aux conditions suivantes (3) :
+D'abord / de ces transformations Yi, Yg, ..., Y{ sont échan-
+geables entre elles ; ensuite les r — l autres X<, ..., X/._/ satisfont
+aux relations
+(Y,X^)= mfkXk (i= i, 2, ..., ^; A-= i, 2, ..., r—l),
+(1) Je fais dans le cours de ce Mémoire des renvois fréquents à ma Thèse :
+Sur la structure des groupes de transformations finis et continus. Paris,
+Nony, 1894. Je la désignerai pour abréger par la notation C.
+(2) Les groupes de transformations continus^ infinis, simples {Ann. Éc.
+Norm. sup.^ 3* série, t. XXVI, 1909, p. 99).
+(3) C., Chap.lV, p. 61-67.
+
+— S7 -
+où les niiif sont des coefficients constants. A chaque transforma-
+tion XA. est associée une racine <o^ de Péquation caractéristique
+relative à la transformation infinitésimale e\ Y< -4- ... 4- <?/Y^.
+Ces r—l racines sont des combinaisons linéaires à coefficients
+rationnels de / d^entre elles, linéairement indépendantes,
+Oui, (x),, ..., O)/
+et Von peut toujours choisir ces / racines (dite s fondamentales) de
+manière que toutes les autres soient de la forme
+^a^ ^ai^i-l--. •+ ^a/^/î
+les Aa< étant entiers. Le crochet (XyX^) de deux transformations X
+est un multiple non nul de la transformation X qui appartient à la
+racine c0y-}-co^, si cette racine existe; dans le cas contraire, ce
+crochet est nul. Enfin, à deux quelconques (Oa? ^p ^es ^—l
+racines <o est attaché un entier ŒaS jouissant de la propriété que
+toutes les quantités qui font partie de la progression arithmétique
+de raison o>p, et dont les termes extrêmes sont (OQI et (Oa-+- ^aS^S?
+sont des racines. Il existe de même un entier asor On a en parti-
+culier Oaa == — 2. Enfin, si Fon a
+(»)Q(=== hy,\ ÛDi-l-. . .-t-Tiol/t0/»
+on a
+^a<=^ai«i/-t-...+Aa/a/, (i == l, 2, ..., r—l).
+3. Si un groupe semi-simple est linéaire et homogène à n
+variables, on peut choisir ces variables de manière que chacune
+ait un poids vs (<). Ce poids rs est une combinaison linéaire
+à coefficients rationnels des l racines fondamentales coi, 0)2? • •.» ù)^
+(l) CT =/nitOi-4-W2^2-+-. . .4-W/t»)/.
+Si x est une variable de poids TO, Xa(.y) est une combinaison
+linéaire des variables de poids vs 4- coa.
+Si Fon pose
+Œa== Wiaia-+- m^a^y,-}-.. .4- rniaiy, (a = i, 2, ..., r— /),
+(l) C., Chap. VIII, p. 127-153. Les poids o sont ce que j'appelle, dans ma Thèse,
+les racines secondaires,
+
+— 58 —
+et si l'on considère les poids qui forment la progression ari (lime-
+tique de raison tua et dont les termes extrêmes sont TSS et w 4- ^a^a?
+il existe des variables de chacun de ces poids. De plus, il y a autant
+de variables de poids rs 4- Aa^a q"e de variables de poids TV, Nous
+désignerons en parliciilier le poids rïr 4- èa^a P81* ^ notation Sa^,
+et nous rappellerons le poids transformé de TS par la substi-
+tution Soc. Si (0^' == — (Oa, on a
+OQ('OO(TÎT == rT.
+Un poids OT sera dit un poids frontière s'il est impossible de
+trouver une racine (Oa telle qu'il y ait en même temps des variables
+de poids rs 4- (Oa et des variables de poids rs — o>a. Il j a évidem-
+ment des poids frontières; il suffit de prendre parmi les poids de
+toutes les variables du groupe, ceux pour lesquels le coefficient m\
+de la formule (i) est le plus grand ; parmi ces poids, ceux pour
+lesquels le coefficient m^ est le plus grand, et ainsi de suite.
+On arrive ainsi a un poids, que nous appellerons poids dominante
+et qui est évidemment frontière.
+Si zn est un poids frontière, il eu est de même de Sa^.. Suppo-
+sons en effet qu'il n'en soit pas ainsi. Pour une certaine valeur
+de p, il existerait en même temps des variables de poids S^CT 4- COQ
+et des variables de poids S^Tn — (op. Par suite, il existerait en
+même temps des variables de poids
+Sa'(^a^ 4- (*)Q) = TS -+• Sa'^Q et S^'(Sy,r3—(03)== OT—Sa'^i
+ce qui est contraire à Fhjpolhèse, la quantité Sa'cop étant une
+racine coy.
+On montre de la même manière que si rs n'est pas un poids
+frontière, Sa^ ne l'est pas non plus.
+4. Nous appellerons poids homologues d'un poids donné rs tous
+les poids qui peuvent s'en déduire par les transformations Sa
+répétées un nombre quelconque de fois. Tous les poids homologues
+de CT sont de la forme
+^a,,S<xn_i. .. Sai^î
+// leur correspond à tous le même nombre de variables.
+Si le groupe ne laisse invariante aucune multiplicité plane\
+
+— 89 —
+tous les poids frontières sont homologues entre eux et homo-
+logues du poids dominant. Supposons, en effet, qu'il y ait des
+poids frontières qui ne soient pas homologues du poids dominant FI.
+Soit CTO le plus liaut de ces poids frontières. Considérons alors
+toutes les variables dont h* poids est CTO ou moins haut que TOQ.
+Je dis que ces variables sont transformées entre elles parle groupe.
+Si, en effet, une de ces variables donnait, en lui appliquant la
+transformation Xa, une nouvelle variable de poids plus haut
+que CTQ, le poids vs de cette variable ferait partie d^une progression
+arithmétique de raison o)a; le terme TO 4- (Oa de cette progression
+serait un poids plus haut que CTQ î il y aurait donc un poids frontière
+de la forme ns -}- Aa)a {h^\) qui serait nécessairement homologue
+de OTO* Or, la transformation S^, appliquée à ce poids frontière
+donnerait un poids homologue de la forme vs—A^(0a (h^o)^ et
+par suite moins haut que î^o? ce q111 est contraire à l'hypothèse.
+Les variables considérées étant transformées par le groupe,
+on obtient, en les égalant à zéro, les équations d'une multiplicité
+plane invariante par le groupe, ce qui est encore contraire à
+l'hypothèse.
+11 résulte de là que dans tout groupe linéaire qui ne laisse
+invariante aucune multiplicité plane, tout poids frontière
+détermine tous les autres points frontières.
+II. — GROUPES ISOMORPHES DE MÊME POIDS DOMINANT.
+8. Nous allons maintenant démontrer que si deux groupes
+linéaires isomorphes ne laissant invariante aucune multiplicité
+plane ont le même poids dominante ils sont semblables.
+Prenons en effet dans le premier groupe une variable u ayant
+pour poids le poids dominant. Considérons toutes les expressions
+de la forme
+('•2) Xa,,Xa^_,...Xa,M,
+où \u est mis à la place de X(f/),XX'i^ à la place de X[X'(^)]
+et ainsi de suite.
+Ces expressions (a) en nombre infini peuvent être rangées dans
+une suite linéaire. Chacune d'elles est une combinaison linéaire
+
+- 60 -
+des variables de même poids. Soient
+MI, MS, Mt, ...,
+ces expressions.
+Parlons de même d'une variable v du second groupe admettant
+pour poids le poids dominant et formons sur v les expressions
+analogues à (2). Soient
+Vi. Vt, PS, ....
+Chaque F( est de même poids que l'expression m correspon-
+dante. On peut d'ailleurs supposer u^ == M, (^ == v.
+6. Considérons parmi les expressions (2) celles qui sont du
+poids dominant CT; nous allons d'abord démontrer qu'elles sont de
+la forme ku^ k étant un coefficient numérique qui ne dépend que
+du poids dominant, ainsi que des indices a, qui entrent dans la
+formation de l'expression (2) considérée.
+Chaque racine co^. est de la forme
+t0a; •==- TTî/i tùi -+- 771/2 ^2 -l-... -h rnn to/i
+et l'on a évidemment
+^flCi •+• ^a, -}-•.•+ tua,, == 0»
+c'est-à-dire
+2 771(1 =0, S 771/î ==0, . . ., 2 77l(/ = 0.
+Supposons que l'un au moins des coefficients m^ soit différent
+de zéro; alors l'un d'eux est positif; supposons que h soit la plus
+petite valeur de i pour laquelle cela a lieu. Nous allons d'abord
+montrer que l'expression considérée (2) est une combinaison
+linéaire d'expressions analogues de même poids m, mais pour
+lesquelles le nombre n est plus petit.
+En effet, si d'abord tous les coefficients
+^iiî ^21» •••» w/,-i,i
+sont nuls, l'expression (2) est identiquement nulle, car, sinon
+le poids de l'expression
+serait
+^a^v.h-^v-h-ï • • • Xa, M
+m'== CTH-(x)a,-4-o)<X3-+-. ..4-tx)fln_^-t- (Da;,,
+
+— 61 -
+et le coefficient de (Oi dans xs' est supérieur au coefficient de 0)4
+dans CT, qui ne serait pas ainsi le poids dominant.
+Plaçons-nous maintenant dans le cas général. On a
+<Xn • • • —CHh dfc—l • • • •"Oli ^
+= Xo(^. ' • (Xa^Xafc_,)Xafc_,. .. XO^M -+- Xa^ ... Xa^_iXafcXafc_,... X^^.
+Pour la première expression du second membre le nombre n est
+diminué d'une unité, à moins que 0)^-, -4- ^<x& ne soî[' nul; dans ce
+cas le crochet (X^X^_^) est une combinaison linéaire des transfor-
+mations Y, et son effet sur l'expression X^_,... X^ est de la
+multiplier par un facteur numérique qui ne dépend que de son
+poids et de (XA (<); le nombre n est alors réduit de deux unités.
+Dans la seconde expression du second membre, au contraire,
+n n'est pas changé; mais l'indice h est diminué d'une unité.
+En raisonnant sur cette seconde expression comme sur la pre-
+mière, on fera avancer la transformation X<^ jusqu'à ce qu'il
+n'y ait plus après elle aucun indice a, pour lequel m^ soit négatif;
+alors on sera arrivé à une expression identiquement nulle.
+On pourra ainsi réduire de proche en proche le nombre n tant
+qu'il restera des indices a, pour lesquels m^ n'est pas nul. La
+réduction aura une fin puisque n ne peut descendre au-dessous
+de 2 sans être nul.
+Lorsqu'il n'y aura plus aucun indice a< pour lequel m^ soit
+différent de zéro, on raisonnera sur les indices pour lesquels m^
+n'est pas nul, et ainsi de suite jusqu'à ce qu'on ait fait disparaître
+toutes les transformations X.
+L'expression primitive se trouvera finalement de la forme ku^
+k ne dépendant pas du groupe linéaire considéré, mais unique-
+ment du poids vs et des indices o^, 0.2, ..., a,,.
+7. Considérons maintenant les expressions, en nombre infini,
+MI, Uf, U^ ....
+Elles sont toutes des combinaisons linéaires d'un nombre fini
+(') Cela résulte d'un théorème d'après lequel Y u est un multiple de M, si le
+poids de u n'est pas nul. Ce théorème résulte au fond des propriétés connues
+des groupes linéaires simples à trois paramètres. Voir aussi C, p. 99-102.
+
+— 62 —
+(Tenire elles, nombre au plus égal au nombre des variables du
+groupe. Soient
+a-i, x^ ..., Xp
+ces combinaisons indépendantes, dont chacune a un poids déter-
+miné.
+La multiplicité plane
+est évidemment invariante par le groupe, puisque chaque expres-
+sion Xoi.r/ est une des expressions u^ et par conséquent combi-
+naison linéaire de x^ ..., Xp. Il faut donc, puisque le groupe
+n^admet aucune multiplicité plane invariante, que toute variable
+du groupe soit une combinaison linéaire de x^ .... Xp.
+On voit de plus (5), que parmi les expressions x^ x^ ..., Xp^
+une seule est du poids dominant rs\ donc, si un groupe linéaire
+ne laisse invariante aucune multiplicité plane^ il existe une
+seule variable ayant pour poids le poids dominante et par
+suite aussi une seule variable, ayant pour poids un poids
+frontière.
+8. Supposons, maintenant, ce qui est toujours possible, qu'on
+ait pris
+Xt==Ut, ^2==^, ^3=^/3» ..., Xp=Ui^ (l< t2<l3<...<^),
+et considérons les relations linéaires qui expriment :
+u^ ..., M/,-1 en fonction de Ui ;
+u^+i. .... M/,—1 en fonction de Ui, M^;
+^,-i_i, ..., M^-i en fonction de MI, u^ u^\
+Si l'on considère les mêmes relations entre les v de même indice,
+il se peut a priori^w certain nombre de ces relations ne soient
+pas identiques; elles exprimeraient alors des relations entre les
+variables du second groupe, chaque relation ne contenant que des
+variables de même poids. Supposons que q de ces relations soient
+indépendants et soient
+Vi, V,, ..., Vy
+
+— 63 —
+leurs premiers membres. Le groupe échange entre elles les quan-
+tités V<, ..., V<y. En effet, si l'on applique à l'une d'elles V< la
+transformation Xa, ou obtient une expression qui, égalée à zéro,
+donne une relation entre les Vi\ et la relation analogue entre
+les U£ est identique,
+D'autre part, parmi les V/, il n'y en a aucune de poids CT, parce
+que, d'après (5), toute relation entre les Uf de poids OT est de la
+forme Ui= k(U et que le coefficient ki est le même pour les v que
+pour les u.
+Si donc q n'était pas nul, le second groupe linéaire aux
+variables v admettrait une multiplicité plane invariante, ce qui
+est contraire à l'hypothèse.
+Il résulte de là que si l'on établit entre les variables u et les
+variables v les relations vi= u^ relations qui n'introduisent
+aucune relation entre les variables v ni entre les variables «, les
+deux groupes deviennent identiques, puisque si Xa^== Uj^ on a
+aussi Xa^'=== ^j. Par conséquent, si deux groupes linéaires
+isomorphes qui ne laissent invariante aucune multiplicité
+plane, admettent le même poids dominante ils sont sem-
+blables.
+La même conclusion subsiste évidemment s'ils ont un poids
+frontière commun.
+9. La démonstration précédente monire comment on peut former
+tous les poids d'un groupe linéaire ne laissant invariante aucune
+multiplicité plane, dès que l'on connaît un poids frontière CTO*
+On forme d'abord les poids homologues de TOO, ce qui donne
+tous les poids frontières.
+On considère ensuite chaque substitution Sa telle que
+^a^o == ^o "^ hw^y
+l'entier h étant plus grand que i ; et l'on prend les poids
+[h~\CTo+Oa» •••î ^o-t- — ^a-
+On obtient ainsi un certain nombre de poids nouveaux, non
+frontières, dont on détermine les homologues. Cela donne un
+certain nombre de systèmes de poids homologues.
+
+— 64, —
+Dans chacun de ces systèmes on prend un poids particulier sur
+lequel on fait les mêmes opérations qu'on vient de faire sur CTQ
+et ainsi de suite, jusqu'à ce que ces opérations ne soient plus
+possibles.
+On obtient ainsi un certain nombre de systèmes de poids homo-
+logues, les poids d'un même système correspondant au même
+nombre de variables du groupe linéaire.
+III. -~ PRODUIT DE DEUX GROUPES LINÉAIRES ISOMORPHES.
+10. Considérons deux groupes linéaires g^ et g^ n'admettant
+aucune multiplicité plane invariante et isomorphes entre eux.
+Supposons d'une manière plus générale qu'ils soient isomorphes
+(hoioédriques ou mériédriques) d'un même groupe semi-simple G.
+Soient x^ x^^ . . ., Xp les variables du premier; soient y ^
+y 21 • • • ? Vq 1e5 variables du second.
+Prenons / racines fondamentales o)<, (Oa? . . ., o)/ du groupe G
+et soient, par rapport à ces racines, nr le poids dominant de g^ et
+js1 le poids dominant de g^. Nous pouvons supposer que x\ est la
+variable unique de poids ^,yi la variable unique de poids rs'.
+Si nous considérons les différents produits Xiy^, ils sont
+échangés entre eux d'une manière linéaire, définissant ainsi un
+groupe linéaire 'dpq variables. Partons maintenant du produit x^y^
+et appliquons-lui successivement et plusieurs fois de suite les
+différentes transformations du groupe. Nous obtiendrons un cer-
+tain nombre de combinaisons linéaires z^ z^ . . ., Zy. des pro-
+duits xiyki chacune d'elles étant formée de produits tous de même
+poids. Le groupe qui indique comment ces r quantités z^
+^2, . . ., Zr sont transformées est un groupe linéaire qui ne laisse
+évidemment invariante aucune multiplicité plane. Nous l'appelle-
+rons le produit des deux groupes donnés. Son poids dominant est
+égal à la somme des poids dominants des deux groupes.
+Ce qui précède prouve donc Inexistence d^un groupe linéaire
+admettant pour point dominant la somme des poids domi-
+nants de deux groupes donnés et donne un procédé simple
+pour construire ce groupe.
+11. Nous allons mainlenant montrer que le poids du groupe
+
+— 65 —
+produit s'obtient en faisant, de toutes les manières possibles et
+seins exception, la somme d'un poids du premier groupe facteur
+et d'un poids du second groupe facteur.
+Considérons en effet les équations finies du groupe g\ et soit
+X ^ == Ct\ X\ -4- Ct^X^ -4- . . . -4- CtpX p
+Inéquation qui donne la variable x\ transformée de x^. Iln^y a
+aucune relation linéaire à coefficients constants entre ai,
+a;2, ..., Op\ car s'il y en avait une on pourrait choisir les
+variables de manière à avoir âp'^ ==...==: a., === o sans qu'il y ait
+aucune relation linéaire à coefficients constants entre a^ . .., Op.
+On démontrerait alors facilement, en utilisant la propriété qui
+sert de définition aux groupes, que la multiplicité plane
+x\ == xy, ==...== Xp •= o
+est invariante par le groupe.
+Soit de même
+yt==^i.ri-+-^2y2+...4-^,^,
+l'équation qui donne la variable y\ transformée deyi [)ar la trans-
+formation la plus générale du groupe g^. On en déduit
+x\y\ == ^aibi,Xiy^
+Si /et k sont deux indices quelconques (i^pi Â'^y), le cocfn-
+cient aibh de Xiyk n'est pas nul, puisque ni ai ni b^ ne le sont; il
+n'est pas non plus constant (si / et k ne .sont pas tous les deux
+égaux à i), puisqu'il doit se réduire à zéro pour la transformation
+identique de G. Ce coefficient a/ bk dépend donc effectivement
+des paramètres de G. Par suite, si l'on pose
+^i.rA==^7,,
+l'une des transformations infinitésimales du groupe qui transforme
+les s^ft est de la forme
+(A^-4-...)^- -+-....°^\\
+11 résulte de là que le groupe produit défini plus liant contient
+la variable hznf-\- . . .; autrement dit Fun des poids du groupe
+XLI. 5
+
+— 66 —
+produit est la somme do poids de la variable xi et du poids de la
+variable y/c' C'est ce qu'il fallait démontrer.
+Ce théorème prouve que le groupe produit est indépendant
+de la définition particulière donnée au préalable du poids
+dominant. Les poids frontières sont tous la somme d'un poids
+frontière de g^ et d'un poids frontière de g^.
+IV. — LES GROUPES LINÉAIRES FONDAMENTAUX.
+12. Nous allons maintenant démontrer qu'étant donnée une
+structure simple de rang f, il existe l groupes linéaires particu-
+liers de cette structure^ ne laissant invariante aucune multi-
+plicité plane et tels que tout autre groupe linéaire isomorphe
+ne laissant invariante aucune multiplicité plane puisse être
+regardé comme le produit de deux ou plusieurs de ces groupes^
+chacun d9 eux pouvant entrer plusieurs fois comme facteur'.
+Autrement dit on peut trouver l groupes linéaires g^
+^2? • • -î gi tels que siîî^, lia, ..., II/ sont leurs poids dominants,
+le poids dominant de tout autre groupe linéaire de même
+structure soit de la forme
+/?illi4-/?2ll2+...4-/?/n/,
+où les coefficients pi sont des entiers non négatifs.
+Ces / groupes s'appelleront les groupes fondamentaux de la
+structure donnée.
+Remarquons d'abord qu'on ne peut pas trouver deux systèmes
+différents de / groupes fondamentaux, et cela quelle que soit la
+définition donnée au préalable des poids dominants. Car si avec
+une deuxième définition on arrivait à trouver l nouveaux groupes
+fondamentaux g'^ g^ . . ., g'^ leurs poids dominants, à l^ ancien
+senSy seraient de la forme
+/?/ilïi-f-^2ll2+...-+-^/n/ (i= i, 2, ..., /).
+Chacun gi des / premiers groupes fondamentaux serait alors un
+produit de la forme
+^"^•s...^,
+et, d'après le n° 9, contiendrait tous les poids obtenus en ajoutant
+
+— 67 —
+de toutes les manières possibles le poids de chaque facteur. Son
+poids dominant, à V ancien sens, serait donc
+£^/y/?^n/c== n,.
+On en déduit facilement l'identité des deux systèmes. Il n'y
+aurait qu'un cas où la conclusion serait douteuse, c'est celui où un
+des poids lii serait déjà une somme de multiples, positifs ou nuls,
+des autres. Dans ce cas la représentation de tout poids dominant
+au moyen des poids fondamentaux ne serait pas unique : mais
+nous verrons, pour chaque type de groupes simples, que ce cas
+ne se présente pas.
+La détermination des groupes fondamentaux de chaque struc-
+ture simple étant supposée Faite, on en déduit facilement tous les
+groupes linéaires (ne laissant invariante aucune multiplicité plane)
+de structure semi-simple donnée. Si cette structure résulte de la
+composition de plusieurs sous-groupes simples, on considérera
+les groupes fondamentaux relatifs a ces différentes structures
+simples et l'on formera tous les groupes produits de ces groupes
+fondamentaux. Ici aussi ces groupes fondamentaux sont en
+nombre /, / étant le rang du groupe. Mais ils ne sont qu'iso-
+morphes mériédriques au groupe semi-simple donné.
+Nous allons maintenant passer en revue les différents types de
+groupes simples. Nous commencerons d'abord par la détermina-
+tion des l poids dominants fondamentaux H^, Ha, . . ., H/, et nous
+démontrerons ensuite l'existence de groupes linéaires admettant
+ces poids fondamentaux.
+V. — POIDS FONDAMENTAUX DU TYPE A).
+13. Ici les racines sont de la forme
+tu/— 0)y ((» J == l î 2» ' • • » v ~^~ Oi
+où les / -+- i quantités (o, sont liées par la relation
+t0i 4-0)2-r-•••-+-CO/4-1 = 0.
+Tout poids OT est de la forme
+CT == 7?li (x)i -1- TÏtt (l)) •+• ...-+- W/-M t0/-n,
+
+où les coefficients m/ peuvent toujours être supposés liés par la
+relation
+wi-4- /ni-+-.. .4- m/+i == o.
+Si
+on a
+(ri^== 0),——(Oy,
+&a=— w/4- m/;
+par suite les coefficients mi différent entre eux de nombres
+entiers, ce sont donc des fractions ayant pour dénominateur /+ i.
+Pour définir le poids dominant, nous prendrons tous les poids
+pour lesquels m^ est maximum, puis parmi ceux-là, tous ceux
+pour lesquels m^ est maximum, et ainsi de suite. Pour qu^un poids
+soit dominant, il faut et il suffit qu^on ait
+mi^W2^...^w/-n.
+14. Parmi les poids dominants possibles nous pourons prendre
+les / suivants :
+(QI 4-tx)î-4-. . .-h (o/—ltu/-^t —Ul==————————T~^\——————=—-to/-n,
+2t0t -4- 20)24-.. .4- 2(x)/-i— {l — 2) (A)/—(l—2)a)/-n — -11,== ———————————————^-^——————————————— =_to/—(o/+i,
+„ _ tco, -h i 0)2 4-...+ iw/-t^.i—(l— t)^o/-,—.. .—(l-i)w^i11,- ———————^———————————/+i—————————————————————————
+:==^{-i—(^/-<-+-l—•••—t0/+l,
+/(^l—— 0)2 — ... —— t0/+i -
+n/=———^——— ==œ,.
+Tout autre poids dominant
+Tîï = /HI (Oi -h 7^2 tx)2 + . . . -+- W/-4-1 (0/4-1
+est de la forme
+TS =^ini+jo2ni-4-...-h/?/n/,
+où les entiers/ion négatifs p^ p^, . . ., pi sont donnés par les
+relations
+pi = m/—^/^-i» /)2==^/-l—^î/» •••, p/= m^—Wï.
+Les poids de chaque groupe gi sont tous homologues entre eux.
+
+- 69 -
+Ils s'obtiennent en effectuant sur les indices des lettres co de II/
+une substitution quelconque.
+Le groupe g^ supposé exister, a donc C^ variables.
+VI. — POIDS FONDAMENTAUX DU TYPE B).
+13. Ici les racines sont de la forme ({)
+±(x),, ±0)/±t0y (i^J, /',/==? I, 2, ..., /).
+Soit
+rs = /ni toi -+- m^ (02 -h... •+- m/ œ/
+un poids quelconque ; soient S/CT, S/yCT, S/y,Tn les poids transformés
+de rs par les susbtitutions S correspondant aux racines co/, co/+û)y,
+(o/—(Oy. On a
+S / T3 == CT — '2 mi tri/, S ij VS == CT — ( m/ -+- 7/ly ) ( tri, -4- tOy .),
+S/y'T3 = OT —— (/Ht—— Wy)(l0/—— (riy).
+Il résulte de là que les m/ sont ou bien tous entiers, ou bien
+tous des fractions de dénominateur 2 et de numérateur impair.
+Définissons le poids dominant comme dans le cas du type A).
+On voit que si CT est un poids dominant, tous les m, sont positifs
+ou nuls :
+m^m^m-^,. ..^ m/^o.
+Ces inégalités sont nécessaires et suffisantes pour que le poids CT
+soit plus haut que tous ses homologues.
+16. Parmi les poids dominants possibles, nous pouvons prendre
+les / suivants :
+(Oi-+- (riî-h. . .4- W/
+"l-——,——»ÏÏ2= 0)i,
+ris == (x)i •+• tria,
+II/ = œi -+- (Oi 4-...-+- (i)/-i.
+Tout autre poids dominant est de la forme
+CT ==/?iIIi-t-7?2n2-+-...-»-/?/Il/,
+(1) C, p. 79.
+
+— 70 -
+où les entiers non négatifs p^ p.^ . .,, p^ sont donnés par les
+relations
+pi=im/, p^m^—m^ pï^m^—m^ ..., ^/==w/-i—m/.
+Les poids de y, sont de la forme ±toi± C02±t "±(0/ et sont au2
+nombre de 2^; ils sont tous frontières.
+Les poids de g^ sont ± (o/ et o; les a/premiers sont frontières.
+Les poids de ^3 sont ±(o/±My et ceux de g^ : ceux qui n'ap-
+partiennent pas à g\i sont frontières.
+IVune manière générale les poids de ga sont
+± co/, ± w/^ ±... ± œ^_^
+et les poids de ^a~r Les premiers sont frontières.
+VII. — POIDS FONDAMENTAUX DU TYPE C).
+17. Ici les racines sont (1)
+±%^, ±^-d=Sy (l,/=: ï,-2, ...,/).
+m = Wiooi-4- /n2t»>2-4-* • .4- w/œ/.
+Soit
+Si S//, S/y, S// sont les substitutions correspondant aux racines
+2(0,, (o<-4- toy, <^/— coy, on a
+S//CT = TO — 2/n/O)/, S/yTO =0 — (W/4- Wy) (ï)/-i- (Oy),
+S/^CT == CT—-(m/— Wy)(ÏO,—œy).
+Il résulte de là que les /n/ sont entiers. Si Fon définit le poids
+dominant comme précédemment, on voit que, pour tout poids
+dominant, on a
+m^m^.. .^m/^o.
+Ces inégalités sont nécessaires et suffisantes.
+18. Parmi les poids dominants possibles, on peut prendre les /
+C) ^P.79-
+
+suivants :
+— 7i —
+Ill==t0i,
+lia = (x)i •+• (x)î,
+II/ == (rii -4- (x)j -h . . . 4- t0/.
+Tous poids dominani rs est de la forme
+(o==/?iiii-+-/?2ii24-...+/?/n/,
+où les entiers non négatifs p^ p^ ...,/?/ sont donnés par les
+formules
+Pi== mi—m^ 7?2==^2—Ws, ..., pi-i = mi-i—w/, pi=im/.
+Les poids II sont donc fondamentaux.
+Les poids de g^ sont ± (o,, en nombre a/, tous frontières.
+Les poids de g^ sont ± (o,± coy et o, tous frontières, sauf o.
+Les poids de g^ sont ± (Q( db coy ± co^ et ceux de g^ les pre-
+miers étant frontières, et ainsi de suite.
+VIII. — POIDS FONDAMENTAUX Dll TYPE D).
+19. Les racines sont ici (<)
+±w£±wj (i^y; i,y= i, 2,...,/).Soit
+jy == Wi <x)i -4- m^ tOji ==... 4- mi to/.
+Si Sij et S/y^ sont les substitutions correspondant aux racines
+(0^4- to/ et (i),— tûy, on a
+S,ylîT = T3 — ( /n, -t- mj) (tri/4- <*>/•)» S^'TîT == V5 — (//l,— Wy) ( tuf— u)y).
+Il en résulte que les 772, sont tous entiers, ou tous des fractions
+de dénominateur 2 et de numérateur impair. Si Fon définit le
+poids dominant comme dans les cas précédents, on voit que, si
+i <y, on doit avoir
+mi^m^ m,^—wy.
+(1) C, p. 79.
+
+- 72 -
+Les coefficients m,, . . ., //i/_, sont donc positifs ou nuls, ne
+vont pas en croissant, et sont supérieurs ou égaux à mi en valeur
+absolue
+Wi^ m^. ..^w/-i^o; w/-i^[ w/[.
+Ces inégalités sont nécessaires et suffisantes.
+20. On peut choisir pour poids fondamentaux les poids sui-
+vants :
+COj -+- t0j 4-. . . 4- t0/-i — œ/n,=
+n,=
+•2
+<0i 4- tOj 4-. .. 4- œ/—i 4- t^/
+1T3== tU],
+n^ == 0)14- tog*
+II/== ù)l-h t02 4-. . . 4-(x)/-2.
+Tout poids dominant TCT est de la forme
+T3 = /?i ITi 4- /^ Ni 4- . . . 4- pi II/,
+où les nombres entiers non négatifs/?i, . . ., p/ sont donnés par
+/?i == m/-i— /w/, /?i= m/-i4- m/, /?3 == mi— w,,
+p^= mî—m^ ..., /?/=/n/_2--w/-i.
+Les poids de 5^ et ^2 sont tous frontières et en nombre a^"*.
+Ceux de g^ sont de la forme ± <o/, tous frontières. Ceux de g^
+sont rbco/zhioy et o, tous frontières, sauf o. Ceux de g^ sont
+± i^t± (ùj± t))k et ceux de ^3, et ainsi de suite.
+IX. — POIDS FONDAMENTAUX DU TYPE E) (/= 6).
+21. Les racines sont ici de la forme ( * )
+t0/y == tU/ -- 0)y, f0,y/, === (0^ 4- Wj +. (0^., h/^ == — ( tri, 4- tOy 4- (x)^. )
+(^y'î ^== i, ï,..., 6),
+(OODO == 3œo == — (^1 4- tOî-1--^ (rig), tOoOO == — ^O = tU| 4- fa)24-...4- (Ofi.
+(') C,p. 80 et 142.
+
+- 73 -
+Si l'on a un poids CT de la forme
+vs = /yîi&oi-f- mj0)t4-.. .-i- We^e»
+et si l'on désigne par S^ S/yA, Sooo les substitutions correspon-
+dani aux racines to/y, (o/y^, 0)000» on a
+S/y TP === CT — (m^— /?îy) ((O/— ^/),
+S/y^ TU = m -+- ( - 2 ma— m; — my — mie ) ( co, 4- t0y + (*)^ ),
+Sooo^ == ra — TT 2î7na(()l)l •4- ^î 4-... 4- tOg ).
+Il résulte de là que les m, diffèrent entre eux de nombres
+entiers, que leur somme est un multiple de 3 et que la somme de
+trois quelconques d'entre eux est un multiple de 3. Ce sont donc
+en particulier, ou des nombres entiers, ou des fractions de
+dénominateur 3 et de numérateur congru à i (mod 3) ou des
+fractions de dénominateur 3 et de numéraleur congru à 2 (mod 3).
+Si l'on définit la hauteur relative de deux poids comme précé-
+demment, on voit que pour tout poids dominant, les nii ne vont
+pas en croissant
+Wi^wa^.. .^mc.
+De plus l'entier-V ma—m4—m^—m^ doit être négatif ou
+nul; on a par suite
+mi4- m^-\- 7n»S2(w4-h 7^5-+- m^).
+22. Réciproquement, supposons qu'on ait
+1 Wi>Wîâ...^W6,
+W44-W5-h fn^-. Sma;
+on peut démontrer sans difficulté que de tous les poids homo-
+logues de CT, aucun n'est plus haut que lui. On forme d'abord
+facilement tous les poids homologues de CT. Abstraction faite de
+
+— 74 -
+leur ordre, les coefficients de ces poids homologues rentrent dans
+les catégories suivantes :
+mi — ^ 2 wa, m^ — , S /?ia, ^3 — - 2 Wa, ^4 — I 2 Wa,
+mg— ^2ma, We— «2/na;
+m/, my, mh, ^ S Wa —- ms — m^
+-, 2 Wa — m^ — /7l,,, . 2 ma— w,. — w, ;
+mi — - 2 /^a, w/ — - 2 m«, WA — I 2 T^a, ^ 2 Wa — w, — m/,.jo 0 0 00
+J I i
+^2ma— w^— m^, ,2w<x— w,.— w,;
+w/, w, — „ 2 Wa, , 2 ma — mj — m^ ^ 2 my, — my — m^,
+4°
+^2wa—/?îy—/^, ,2wa—/ny—m< (i).
+Diaprés cela, si l^un de ces poids était au moins aussi haut que CT,
+on aurait l'une des inégalités
+mi — „ 2ma^ ^i? „ Swa— 7/13 — m^ m^.o o
+La première inégalité donnerait
+Wi-f- 7^2 4- W3+ W4+ 7^54- m(So;
+en tenant compte de
+7^1-4- m24- ms-— a(w4+ m6+ We)^o,
+on en déduirait
+mi 4- m^ -h 7713 — ( m4 4- Wo 4- mg ) ^ o,
+ce qui exige
+m\ = ma = W3 == 7724 = Wg = mg == o.
+La deuxième inégalité conduirait aux inégalités
+. 2ma^W4-h /ng-t- Ws^WiH- m5+ Tne^ «2m aï
+(1) On a désigné par i, j, k, r, s, t, les six indices 1, 2, 3, 4, 5, 6, rangés dans
+un ordre quelconque.
+
+- 78 —
+d'où l'on conclut
+mi = W2 == 7713 = W4 = 2 ( mg 4- We ).
+On pourrait donc poser
+nit == W2 = 7^3 = m^ ==20, mg == 6, Wg = (t — ^ ( 9- d ^ ^ ^ — ï o ).
+On vérifie directement alors que le poids vs est au moins aussi
+haut que tous ses homologues.
+Les poids dominants sont donc complètement caractérisés par
+les inégalités (i).
+23. On trouve facilement les poids dominants suivants, rangés
+par ordre de hauteur :
+a — 2 — 2 — 2 — a — i — —ni=3(»)i+^(x)2-i-,(03-l-,œ4-4-,t05--^(»)6=—tt)6—2t0o,
+IÏ2== t0l-4- (0)4- (03 •+- tx)4+ 0)5 4- t06=—SoDoi
+IÏ3= ,«>i4--ï»a4- ^0)3-^ ^«>4+ ^t*)s-+- -^6=^1—tOûî
+4- 4- 4- 4- i- i- - - -Il4 = - 0)i -h - 0)2 4- , (ri3 4- , 0^4 4- ^ (x)s 4- „ tOfi = -~ 0)5 — ^6 — 4 ^Oî
+"5= , 0)1 4--0)2 4--^3 4- ,Ï•)4+|^S+3to6==tol4"o}2~~'ÎOJOÎ
+Ile = 2 o)i 4- 2 0)2 4- 2 0)3 4- 0)4 4- 0)5 4- OG = o)i 4- 0)2 4- 0)3 — 3 o)o.
+Ces poids sont les six poids fondamentaux, car tout poids domi-
+nant rs est de la forme
+OT == /?iIIi4- /?2"24- . ..4-7?6n6,
+avec
+P\ = ^s— ^e»
+/?î== ^(w44-m54-m6)— -(/ni4-/?î24- ^3),
+^?3=== mi—m2,
+/?4== W4—W5,
+/?S= ^2— W3,
+^6= m3—m4.
+24. Les poids de g\ sont
+— o)(4- 0)o, — o)/— 20)j, o)/4- 0)y4- OJQ,
+tous frontières.
+
+- 76 ~
+Les poids de g^ sont
+t0/—0)y, :±:(tri/4-(Oy4-(tfA), ±3ÏOoî ,
+tous frontières, sauf o.
+Les poids de ^3 sont
+t0/—(OQ, (x),-l-2(0o» —^i—t^y—t^Oï
+tous frontières.
+Les poids de g,, sont ceux de g^ et en outre les poids frontières
+—2t*)/—tOo, —(*)/—0)y4-2fa)0î —(0/—(0y—4œ0î —(0( •+-tOy + tx)^—OQ,
+— (0( -h tOy 4- OÂ- -+" 2 (x)o, 2 O)/ + COy -KO^ + 2 tOo-
+Les poids de g^ sont ceux de g^ et en outre les points fron-
+tières égaux et de signes contraires à ceux de ^4.
+Enfin les poids de gç, sont ceux de g^ puis les poids frontières
+de ^,^3
+rb (2œ/-+- t0y), to/-l- to/— œ^.— to/,
+db(to/4-t0y4- fcû^.-4-(o/--txi,,,), ± (to/— o)y— 3tx)o),
+enfin les poids frontières de g^
+± (t0;4- toy— 2(0/,.), ± (2(0/4- 2(»)y+ t*)^-4- (ri/),
+± ( 210/ 4- 2 tuy 4- Mk — t0/) î ^ ( cl»* -4- t*)y + ^Â— 3 WQ ).
+X. — POIDS FONDAMENTAUX DU TYPE E) (7=7).
+23. Dans ce cas les racines sont de la forme (*)
+t0,y == tùi— triy, Wijk = Wi-\- (Dy-+- h)^, (0;y^ == —— ( (x)/ -+- Oy 4- 10^),
+t0u0/== 2(0o+ ^h C000/ï=—(2t0o+^/)
+(l,7,Â-==î,2, ...,7),
+où les 8 quantités (Oo, (*)i, . . ., 0)7 sont liées par la relation
+2 (QO-+-t*>i-i-...-h (07 == o.
+
+- 77 —
+Tout poids ?n peut se mettre sous la forme
+rs •==. Wi (x)» -+- m^ toi -h... 4- 7^7 0)7.
+On a
+S,y CT == T3 — ( W/ — /My ) ( (x)/ — (Oy ),
+S/yA-CT = CT-4- ^2/7Za--m,— my— /y^)((o/+(oy+o)^),
+SOO/CT == CT -4- ( -Swa— ^•) (2(0o+ ^t).
+11 résulte de là que les quantités m,—mj^ mi-}-mj sont
+entières. Donc ou bien les m, sont tous entiers, leur somme
+étant un multiple de 3; ou bien les m, sont tous des fractions de
+dénominateur 2 et de numérateur impair, ta somme des numéra-
+teurs étant un multiple de 3.
+Définissons le poids dominant comme précédemment. On aura
+d^abord
+(i) mi^ m^_.. .^m7,
+puis
+(î) m\ à a S my^ m^ -\- mç -+• m^ ;
+ou tire d'ailleurs de ces inégalités la conclusion que m^ est
+positif.
+26. On trouve sans difficulté les différents poids homologues
+d'un poids donné OT. Abstraction faite de Fordre, leurs coefficients
+sont donnés par le Tableau suivant :
+lw/, inj, mk, /n/, -Swa— /^-— w<, - S/?ioi— /ni— m^
+1° t j j
+f -2ma—m,.—/n,î
+^ /n/, W( -+- mj — - 2 Wa, /n, + WA- — ^ 2 /?ia, w/ -{- m/ — ^ S ma,
+2° < - °
+^ mi -h m,. — .. S m^ mi -+• ms — ^ 2 Wa, /yi, -+- mf — 1 S Wa ;' *î o o
+l w/, /^y, m/ + /ny — I s /Haï ^ S Wa -- ^U- — m/,
+30 < i i/ ^ s ^a-- /7^ — ^r» •? 2 Wa — WA— w^, ^ 2 Wa— w^— w^ ;\ 3 3 3
+^ w,, w,4- my— ^Sma, w,+ m^—- ^Swa, m,4- /yi/— ^/»a»
+4* ' J j 3
+f - 2/»a— w^— ^, - Swa— mt— m,^ ^m^— m,.— /^.,i j o j
+
+— 78 —
+auquel il faut ajouter le Tableau formé des mêmes coefficients
+changés de signes.
+Supposons alors que les coefficients 771, du poids rs satisfassent
+aux inégalités (i). Il est facile de voir qu'aucun poids homologue
+de CT n'est plus haut que OT. S'il en était ainsi, en effet, on aurait une
+des inégalités
+— 7717 ^/7ii,
+- 2 m a— mi— 77iy^ m^io
+77îi 4-77i2—^S^a^^s-
+La première inégalité entraînerait, d'après (i), les inégalités
+77ie -+- m-i ^ 77ii -+- 77i7 ^ o, m^ S I S my. ^ m^ 4- m^ -+- m-i ^ m^ :s
+on en déduirait
+m\ = m^ == 7/13 == m^ == //ig, /HS -4- m-s = o,
+3 m^ = 5 /?2i = o, /nç == nti = o.
+La deuxième inégalité donnerait
+mi + mj -\- m/, ^ - S /^a ^ Wg + m^ •+• m-i ^ mi 4- mj -4- /^/o
+d'où
+, S /na = ^i/ + mj 4- /?IA,
+et l'inégalité se changerait en égalité.
+La dernière inégalité, enfin, entraîne les valeurs
+m\ == niî == -20, m^ == 7714 = 7715 = 77ig == 7717 = a,
+et l'on vérifie directement, dans ce cas, que west au moins aussi haut
+que tous les poids homologues.
+Les inégalités (i) et (2) sont donc nécessaires et suffisantes pour
+que le poids rs soit un poids dominant.
+27. On trouve facilement les poids dominants suivants, rangés
+
+- 79
+par ordre de hauteur :
+IIi == (Oi4- (02-1- (034- (044- t0s4- d)6 === — (Oj— 2(0o ;
+lia == - (Oi -4- •^ (02-t- - (034- - (044- ^- (034- - (Og 4- - (Q7== (Oi— (Oo;'' 2i '2 2 *î 2 2
+„ 3- 3- 3- 3- 3- 3- 3- - "113 = - (Oi -i- - (02 4- - (Os 4- - («>4 4- - (0$ 4- - (Oc 4- - (07 == — 3 (OQ ;2 2 2 2 222
+Il4== 2(0i-t- 2(024- (034- (044- (Oa4- (Oe4- (07 === (Oi4- (02—— 2(0o;
+11$ == 2 (QI 4- 2(024- 2(034- 2(044- 2(0$ 4- (Ofi 4- (07 = — (Og —— î»)7— 4 ^O 5
+5- 5- 5- 3- 3- 3- 3— - - -ljg== - (Oi4- -(024- -(034- -(044- -(054- -(064- -(07 == (Oi 4- (024- (03— 3(0o;
+-62222 22
+Il7 == 3 (Oi -+- 3 (02 4- 3 (03 4- 3 (04 4- 2 (0$ 4- 2 (Og 4- 2 (07 = 2 (Og 4- 2 (Og 4- 2 (07 —— 2 (Oo.
+Ce soni les poids fondamentaux, car tout poids dominant rs est
+de la forme
+CT=/?ini4-/?2ll24-...4-/?7n7,
+.avec les coefficients
+Pi == /^6— ^7,
+p2==mi—m^
+ps == m^ 4- Wg 4- m-i — •^2 //lai
+/?4=^2——^3,
+/?5==^5—^6,
+^6== ^3— ^4,
+/?7— ^4— ^5.
+28. Les poîds du groupe g^ sont o et les poids frontières homo-
+logues de IIi
+(Of—(0y, ± ((0/4- (Oy4- (o/<.), =h (-2(0o4-(0().
+Les poids de g'^ sont les poids frontières homologues de IL :
+=h((o/—(0o), -±. ((Oo4- (0,4- (Oy).
+Les poids de g^ sont les poids homologues dé ITa et les poids
+frontières homologues de IÏ3.
+Les poids de g^ sont o, les poids homologues de 11, et les poids
+frontières homologues de IÏ4.
+Les poids de g'y sont o, les poids homologues de ri( e de ÎI.i,
+et les poids frontières homologues de Ils.
+
+- 80 —
+Les poids de gç, sont les poids homologues de lia, de lia et
+de 11, + lia, et les poids frontières homologues de Ile.
+Les poids de ^•7 sont o, les poids homologues de n<, II,, [!„,
+ail,, rL-HIa, n i 4- IL, et les poids frontières homologues de II 7.
+XI. — POIDS FONDAMENTAUX DU TYPE E) ( / == 8).
+29. Les racines sont ici (•*)
+œ/y = (O/ — COy, tûtjk -= (O/ -4- tOy -h (*)/„ (0/y/, == — ( (x)/ 4- (Oy 4- (O/, )
+(i,y, /:== i, a, ..., 9)
+avec la relalion
+101 4- (Os 4- . . . 4- (09 = 0.
+Tout poids rs peut se mettre sous la forme
+rs5 == /?iit0i4- 7712(02 4-.. .4- /^(Og,
+les coefficients w^- étant assujettis à la relation
+/?ii4- m^-^-.. .4- /yig = o.
+On a ici
+S/y TCT = TO—(/«/— mj)(wf—(Oy),
+S/yA-m = CT —(w/4- Wy4- /?IA-) ((0/4- (Oy4- (OA-) 4- •:T(/"(4- w/4- /»À)S(»)ai.
+Les coefficients m/ ont des différences entières; ce sont des
+fractions ayant pour dénominateur 3 et des numérateurs congrus
+entre eux (mod 3).
+Définissons le poids dominant comme dans le cas da type A).
+On devra avoir d^abord
+77Zl^W2-^.. .ZWg;
+on aura ensuite
+Wl 4- 7^8 4- mg ^ 0 ^ /7l2 4- IH^ 4- W^.
+On peut démontrer, comme dans les deux cas précédents, que
+les inégalités précédentes suffisent pour que le poids rs soit poids
+dominant.
+30. Considérons les huit poids dominants suivants, rangés par
+
+-Si-
+ordre de hauteur :
+"i==^i -co,
+02== ^ <X)|4- j0)2— ^(03— ^(ri^— ^t05———0»6— - (07 — 1 (^ —— ' (^ == -2(0i-+-OÎ.,,
+ÏÎ3==2Ï)1 _^-^,
+n — ^ ~ ! ~~ 1— l— I— i — i—i— i— —^- ^l——^^2—^(03—^t04— J10-— ^tOe——^COï--;^ - ^ ^9 == :$ (^,
+115=3(01 _^^_^__^^
+116 == y^l4- 3a)2-+• J^â— «^4— -^5—— TtOG— -^7—— ^<»— ^Ï09 == 1 ^1 -r- tOs 4- COa,
+177=4(01 --œ6—(U7—'C08—^y,
+ll8=3t0i —(0^—(0^——^——^^—^g
+Ce sont les poids fondamentaux, car tout autre poids dominant ns
+peut se mettre sous la forme
+CT =-=/?ini4-/^iï2-h. . .+7?8ll8
+avec les coefficients entiers non négatifs
+Pi== //ig—^o,
+/?2== i^î - m^
+p3= m-t—m^
+pï === — inî — /ns — /»4,
+7^0= m^—in-i,
+p6== ms—m^
+P-!== m^—ms,
+?&== m^—ffi^
+31. Les poids du groupe g^ sont o et les racines (o/y, ± O)//A.
+l^es poids du groupe g^ sont o et les poids homologues de 11<
+et lia.
+Les poids du groupe ^3 sont o et les poids homologues de M,,
+ris et 11;,.
+Les poids du groupe ^ sont o et les poids homologues de 11,,
+IL, n., etn^.
+Les poids du groupe g'^ sont o et les poids homologues de n,,
+IL, 113, IL, ail,, n. + Ha et H,.
+Les poids du groupe g\, sont o et les poids homologues Je II,,
+IL», lia, n», 2n.,n,4-H2, n., eiiio.
+XLI. (y
+
+— 82 —
+Les poids du groupe g^ sont o et les poids homologues de IIi,
+lia, Ils, 114, 211,, IL+II^ Ils, II,+IT3, ne, alla, II, + IL,
+iÏ2+ii3 et HT.
+Les poids du groupe ^3 sont o et les poids homologues de II,,
+lia, Ha, n,, an,, n,-+-ii2, ils, n,+n3, 3ii/, ne, alla, n,-4-ii,,
+112+113, aiit-nia, n^, iii+tis, 2113, IL+IL, n,4-iio,
+1134-114, iL+iis et ng.
+XII. — POIDS FONDAMENTAUX DU TYPE F).
+32. Ici les racines sont (1)
+, , _. ± (tfi ± (x)î± (1)3 ± (04 ,. . ^ ^
+±(0,, ±(0,±:(0y, ————î————^———3————* (A, y = i, 2, 3, 4).
+Le rang du groupe est 4 et son ordre est 52.
+Tout poids CT est de la forme
+CT ==/HI t0i 4-/HÎ (0^ 4-Wa 0)3-h 7?l4 (04.
+Les substitutions Sw correspondant aux racines ±o^, ±:(o^±coy,
+± 0)1 ± a)» ± 0)3 ± 0)4———————————— sont respectivement
+S CT == V5 — '2 7?l/ tu),,
+S CT = GT — ( ±: 771, ± 77ly ) ( ±: (ri/ d= (riy ),
+c; /_i- -L- -L- _. . ± 0)i=b (^2 ^ ^3^:: (ri4
+S Vf == T3 — ( d= 77li ± 77Z2 ± 7713 ± 7^4 ) ————-————-————-————- .
+2
+II résulte de là que les mi sont ou tous des entiers ou lous des
+fractions de dénominateur i et de numérateur impair.
+Convenons de dire que. le poids vs est plus liaut que le poids CT'
+si la première des différences
+77li — 771/,, 77Î2 — 771 g , 77^3 —— 7713 , 7714 — 7714
+qui ne s'annule pas est positive. Les coefficients mi de tout poids
+dominant sont alors positifs ou nuls et rangés par ordre de gran-
+deur décroissante :
+dominant sont
+deur décroissante :
+77li ^ 77Î2 ^ 7713 ^ 77^4 ^ 0.
+(l) C, p. 80.
+
+— 83 —
+De plus on doit avoir
+m\ ^ m^ -4- /HS -+- W4.
+Réciproquement, si ces conditions sont réalisées, lous les poids
+qu'on déduit de rs par des substitutions S répétées ne sont pas
+plus hauts que CT.
+33. On trouve facilement les quatre poids dominants suivants
+rangés par ordre de hauteur :
+Hi=t0i,
+IÏ2== C0f4- tx)2,
+_ 3(0l-4-t02-+- (*>3-+- t*>4
+n3=—————————ï—————————-
+IÏ4= 2 t0i -+- tOj -4- (Oa.
+Ce sont les poids fondamentaux, car tout poids dominant est
+de la forme
+CT = /?i HI 4- pî Ils 4- p3 03 -^7)4 ri4,
+où les coefficients non négatifs p^ pz^ ^3, /?4 ont les valeurs
+p^ == m\ — m^ — m^ — 7/14,
+/?2= Wî— ^3,
+j03==am4,
+/?4== W3—/n4.
+Les poids du groupe g\ sont o et les poids frontières homo-
+logues de ù)i.
+Les poids du groupe g^ sont o, les poids frontières de g\ homo-
+logues de tût et les poids frontières homologues de (o, 4- tOs.
+Les poids du groupe g's sont o, les poids frontières de g^ homo-
+logues de (Oi, ceux de ^2 homologues de coi + ^2^ enfin les poids
+p ., i 1 J 30i-+- 0)2-+- (^3-4- (04
+frontières homologues de ——————————— •
+Les poids du groupe g^ sont o, les poids frontières de g^ homo-
+logues de ici, ceux de g^ homologues de (Oi4-^2, ceux de g's
+homologues de wl"hto'"f" w3—tx^» ceux de g'\ homologues de aco»,
+ceux de g\gï homologues de 20)1 -(- (^21 enfin les poids frontières
+homologues de 2 (Oi -h 0)2 -+- ^3.
+
+— 8i -
+XIII. — POIDS FONDAMENTAUX DU TYPE G).
+34. Ici les racines sont de la forme (1)
+±0)/, 0)/y=0)(—0)y (i,J == I, 2, 3),
+où les trois racines t0(, 0)3, (03 sont liées par la relation
+0»i •+- C02-+- 0)3 == 0.
+Le rang du groupe est 2 et son ordre est i4
+Tout poids CT est'de la forme
+V5 == 77li 0)i 4- TH^Oa-h ^30)3,
+on l'on peut supposer les coefficients liés par la relation
+m.i-+- Wî+ 7713 = o.
+On a ici
+"Si vj == vs—3/nitoi
+== TO — '2 7»îi 0)1 -(- 771l 0)2 + 77îi 0)3 == — 77li 0)i — 7^.3 Oj — /7Î2 0)3,
+SisTO == CT — (/7Zi — f^î)(^i — 0)2^= 7?Î20)i4- 77li0)2-+- 7^3 0)3.
+Il résulte de là que les coefficients m/ sont des fractions de
+dénominateur 3 et dont tous les numérateurs sont congrus
+(mod 3).
+Définissons la hauteur relative de deux poids comme dans les cas
+précédents. Si CT est un poids dominant, on aura
+puis
+Réciproquement, si l'on a
+m\ ^ 7?i2 ^ W3, fni ^ o,
+les poids homologues de vs ne sont pas plus hauts que CT, et m est
+un poids dominant.
+3o. On trouve facilement les deux poids dominants suivants
+
+— 8S —
+rangés par ordre de hauteur :
+,,21 i
+"1= 3 ^i— 5(02'~ 3œ3=:: tolî
+Il2==(0i——0)3.
+Ce sont les poids fondamentaux, car loul poids dominant est de
+la forme
+^^Pl^l+Pî^î,
+avec
+pi==—3m^
+Pî== Wi— 7^3.
+Les poids du groupe g^ sont o et les poids frontières ± (D/
+homologues de o>i.
+Les poids du groupe g^ sont o, les poids frontières de g^ et les
+poids frontières co/— coy.
+XIV. — GROUPES LINÉAIRES FONDAMENTAUX ÏÏU TYPE A).
+36. Il existe d^abord un groupe linéaire correspondant au poids
+fondamental IIi ; soit Xi une variable correspondant au poids — a>/.
+Il suffît de prendre (<)
+et par suite
+xïy==^^ (^J== '» ^ •••. ^-+-1).
+v Y à/ à/X,,-X^==^- ,^.
+Le groupe g\ est donc le groupe linéaire et homogène spécial
+à l + i variables.
+On forme facilement les autres groupes fondamentaux. Le
+groupe gî est en effet celui qui indique comment le groupe g^
+transforme les C^ formes bilinéaires alternées [*r/.ry] {coor-
+données pluckériennes de la droite)^ le groupe ^3, celui qui
+indique comment g^ transforme les Cj^, formes tn/i-
+néaires \^XiXjXk\ {coordonnées pluckériennes d'une multi-
+plicité plane à deux dimensions)^ et ainsi de suite,
+(1) c, p. 140.
+
+Par suite, tout groupe linéaire du type {PL) qui ne laisse inva-
+riante aucune multiplicité plane indique comment g^ trans-
+forme entre elles l7 expression
+X^[x^Xî]P»[XiXiX3]P3. . . [XiXî . . . X/]Pl
+et celles qui s9 en déduisent par les transformations de g-^
+Toutes ces expressions sont des combinaisons linéaires d'expres-
+sions de la forme
+x^x^... a^t [x^Xî}^... [a?/a-/-n]aM+.... [x^... x/]^-i...,
+où les exposants a/, a/y, etc., sont liés par les relations
+^^i^Pi^ Sa/y=/?î, 2a^==7?3, ....
+Par exemple, si l'on prend p^ == 2, p^= p^= ... = pf= o, on
+aura le groupe qui indique comment les expressions x]^ .r/a*,,
+sont transformées entre elles par le groupe linéaire de /+i
+variables. C'est encore le groupe qui indique comment le groupe
+linéaire transforme les coefficients A/y de la forme quadra-
+tique SA/ya'/.ry.
+XV. — GROUPES FONDAMENTAUX DU TYPE B).
+37. Le groupe g^ s'il existe, est ici a 2.1 variables, car le poids
+dominant
+Ol-l-û)2-4-. . .-h O)/lll == -—————————————————
+2
+ii pour homologues les poids ±: (old::co2:+: •" ± (0/ et il ne peul
+y avoir dans le groupe g^ que ces i1 poids, tous frontières.
+On obtient facilement un groupe admettant les poids précédents
+en considérant les variables x^...^ où les indices s sont égaux
+à ± i. Posons alors
+^^^^r • • £/-l*r6t...6.•-l <Xie.+,...eiT-;————"-————,-— »^6»...e;-i,-«.,e^,...£,
+^==^^i • • •e/-1 ^...e;,, a,, 6,+,...e;-,, ay,(^...^ -r-———————'————————,
+•^ c••^el•••e.•-l-a„£,•+^...ey_^.-a;•,e/+t...e^
+Y,=,^,^,.,,^^
+(»', j =±i, ± 2, ± /;«(=-<- i si (>o;a,==—i si (<o).
+
+— 87 —
+Ces transformations engendrent un groupe simple du type B).
+Cest le groupe g^.
+Le groupe g^ est bien connu : c'est le groupe linéaire d'une
+forme quadratique (1)
+x\ 4- xy x-t 4-... 4- x/x-/,
+les variables XQ^ Xi, x_i étant respectivement de poids o, (o/, — co/.
+Le groupe g^ de poids dominant (1)1 -4- tOa est le groupe qui
+indique comment g^ transforme les formes bilinéaires [a?/^].
+Le groupe ainsi défini admet en effet les mêmes poids que le
+groupe ^-3; diantre part, il ne laisse invariante aucune multiplicité
+plane, car il n'y a qu'une variable de poids donné, exception faite
+pour le poids o auquel correspondent les / variables [;r<.r_.i],
+[^2^-2]? ••-? [^/.^-/]- Toute multiplicité plane invariante serait
+donc définie par des relations de la forme
+ai [xix-t] -4- a^x^x-^] -+-.. .4- ai[xix-i\ == o;
+mais réchange de x^ et x_^ n^allérant pas la forme quadra-
+tique x^-}-^XiX_i, de la relation écrite doit découler Inexistence
+de t!1 relations obtenues en changeant d^une manière quelconque
+les signes des coefficients : or, cela est impossible. Le groupe g^
+est à C2^., variables : c^esl le groupe adjoint,
+On démontre de même que le groupe gi^ de poids domi-
+nant (Oi -+- (034- cû3 est celui qui indique comment g^ trans-
+forme les formes trilinéaires [xiXjx/c] ; il est à Cj^, variables.
+Enfin le groupe gi indique comment g^ transforme les
+formes [^,^3 •. • ^//..Jî il est à C^^ variables.
+38. Les groupes fondamentaux, à Pexceplion de ^i, sont ainsi
+tous engendrés simplement au moyen de ^2- 11 y a d^ailleurs une
+relation simple entre les deux groupes g^ et g^. Considérons en
+effet le système de ï1 équations linéaires
+^e». s,,..., eta7o-+-ela7-el, s, ....,£„ x^-\-...
+4- £1 ÊÎ ... £/.Te,.... s;»,.— s,, 6;+,...., £„ Xi^-\-.. .4- £1 ej... £/ 3*g,... g^ ^ Xi^ == o
+avec les il paramètres XQ\ .r±i, ..., *y±/. Ces équations définissent
+(*) C, p. 140.
+
+— 88 -
+une famille de multiplicités planes de l'espace à i1— i dimensions.
+Le groupe g^ échange entre elles ces multiplicités, et l'on a en
+particulier
+X, = a/ (iXQ -J — Xi —/-) ;\ àx-i àxo/
+on obtient ainsi un groupe linéaire qui laisse invariante la forme
+quadratique
+a'| -h x\ T-i 4- Xî rc-t-t-.. . 4- Xix-f
+et qui n'est autre que le groupe g^.
+Réciproquement, le groupe g^ peut être déduit du groupe g^
+comme étant le groupe qui indique comment g^ transforme
+entre elles certaines multiplicilés planes de l'espace à a/ dimen-
+sions : ces multiplicités planes sont railleurs contenues dans
+la quadrique
+x^ -+- Xi rr-i -}-...-<- xix-i = o.
+En définitive, on peut engendrer tous les groupes fondamen-
+taux au moyen du premier groupe g\.
+39. On peut d'ailleurs indiquer une généralion encore plus
+directe des groupes fondamentaux au moyen de g^. Considérons,
+en effet, d'abord le groupe gi. Ses poids frontières sont les homo-
+logues de to, 4-(l)2+-••-^-(o/-t• Considérons, d'autre part, le groupe
+qui indique comment g^ transforme les différentes formes bili-
+néaires [^...£^T}....^IÎ ]! a 1^ niémes poids frontières que gi\
+en particulier la variable [x^ i...n*yn...n'] a le poids fron-
+tière ici-+-...-t-(*)/_i. Le groupe gi s9 obtient donc en appli-
+quant à la quantité [^n...u^n...n'] les différentes transfor-
+mations de g'ï un nombre quelconque de fois : il indique
+comment g^ transforme les différentes quantités ainsi obte-
+nues.
+D'une manière générale, les poids frontières dc^/_a(a==i,...,/—i)
+appartiennent, soit aux poids de g^ soit aux poids de gi. Cher-
+chons à déterminer une combinaison linéaire des variables de g\
+(ou des variables de gi) qui soit de poids co< + ... 4- (o/_a-<» e!
+telle que les différentes transformations du groupe g'\ (ou gi)
+appliquées à cette combinaison linéaire de variables, ne donnent
+que des quantités dont le poids appartienne à gi-y.\ il suffira pour
+
+— 89 -
+cela qu'il en soit ainsi des transformations X/_a, ..., X/. S'il en
+est ainsi, la qaantité considérée et celles qu'on en déduira seront
+des variables transformées par un groupe qui ne sera autre
+q"e gi.^
+On arrive ainsi-au résultat suivant :
+Si a est de la forme 4^4-2 ou 4^4-3, le groupe gt-y. est
+celui qui indique comment g^ transforme linéairement entre
+elles la forme quadratique
+S£/-a6/-a+2 • • • ^11 ...i.Ei^ei^^+t...EiXit...iti-^...s,l
+et celles qu9 on en déduit en lui appliquant les transformations
+de g,.
+Si a est de la forme ^n ou 4^ 4- i? ^ groupe gi_y. est celui
+qui indique comment g^ transforme linéairement entre elles
+la forme bilinéaire alternée
+Se/-a6/-a4-2 •.. [ ^11...i£f-^-«+,...e^ii...i £,'--„ ^-a+i -eiJ
+et celles qu^on en déduit en lui appliquant les transformations
+de g,.
+XVI. — GROUPES FONDAMENTAUX DU TYPE C).
+40. Ici nous avons le groupe fondamental g^ en considérant ( * )
+le groupe linéaire et homogène à il variables
+v^i, ..., x^i
+qui laisse invariante la forme bilinéaire alternée
+|>i;r-i] -h [x^x-î} +.. .4- [xix^i}.
+Les variables x^ ont les poids ± to/.
+On obtiendra le groupe g^ en partant de la forme bilinéaire
+alternée [^lO-a] de poids Ils, et lui appliquant les transformations
+de g^ Le groupe g^ indique comment g^ transforme linéairement
+entre elles les quantités ainsi obtenues. Chaque poids frontière
+correspond à une variable; il n'y a de doute que pour le poids o,
+qui correspondra à des variables, combinaisons linéaires des
+(!) C, p. 1^1.
+
+- 90 -
+expressions [*r^_.J, ..., [a*/.r^]. Le nombre des variables de
+poids o sera ainsi au plus égal à l — i, car l'expression
+[x^x^ ]-+-... +[xtX-i}
+est invariante par le groupe g\. Si alors
+ai[a-i.r-i] 4-^[a-î-r-î]-h...+a/[a?/.y-/]
+est une de ces variables, les a/ ne sont pas tous égaux, par
+exemple a^-^- a^\ par raison de symétrie, la quantité
+aî[x^x-\} -4- ai[XîX-î}-{-. ..-\-dt[xix-i}
+est encore une de ces variables et par suite aussi la différence
+[x^x-^}—[XîX-î}
+et les différences homologues
+\XiX-i}—[XjX-j}.
+Donc il y a l — i variables de poids o, et le groupe g^ est un
+groupe à C^— i= /(a/— i)— i variables,
+On obtiendra d'une manière analogue les autres groupes fonda-
+mentaux. Le groupe gy, est celui qui indique comment g^ trans-
+forme linéairement entre elles la forme alternée
+[xiXî^.spa]
+et celles quon en déduit par les transformations de g^
+Le nombre des variables de gy, dont le poids est poids frontière
+de ^a-2 est ^g^l à l—^ 1e nombre de celles dont le poids est
+poids frontière de gy.-k est CJ—i$ d'une manière générale il y
+a C^—i variable dont le poids est le poids frontière de ^a-2p-
+On peut ainsi calculer le nombre total des variables de ^a-
+Ici le groupe adjoint n^est pas un groupe fondamental. C'est en
+effet le groupe g^ qui a trois couches de poids : les poids frontières
+correspondant chacun à une variable; les poids frontières de g^
+correspondant chacun à une seule variable; enfin le poids o qui
+correspond à / variables. Ce groupe g^ est celui qui indique com-
+ment g^ transforme linéairement entre elles les quantités xiXh
+(^/:==±i, ...,d=^).
+
+— 9i —
+XVH. — GROUPES FONDAMENTAUX DU TYPE D).
+41. Les résultats sont ici tout à fait analogues à ceux du type B).
+Le groupe fondamental g^ est à a^-1 variables qu^on peut noter
+^e.e,...^,
+où les £, sont égaux à ±: i et ont un produit égal à — i. Les trans-
+formations de g^ sont
+X/y = 2 e;^... e._^e,... g,_, a,s<+i... £,-» a/£y+,... £f T-———-,——-L———;—————
+/ oly£....£.•aî•e,•+l...£.•_,a7£^,...£^
+(^,./=±i, ..., ± ^; a/== i si t>o;a/==—i si i < o; i\ = — a/).
+Le groupe fondamental g^ est au fond identique à g-, ; il est
+à a^"1 variables qu'on peut noter
+y£i£»...e^
+où les s/, égaux à ± i, ont un produit égal à 4- i. Les transforma-
+tions de g^ sont données par les mêmes formules que celles de g\.
+Le groupe fondamental g^ est le groupe ( * ) de la forme
+quadratique
+a?i a?-i -h a-î a?-2 -+- • •. — xix-i.
+Quant aux groupes fondamentaux g4, g^, . ..^ g^ ils indiquent.
+respectivement comment g^ transforme linéairement entre
+elles les quantités
+Oi-rs], [a-i^^l, ..., [x^x^...xi^}
+et celles quon en déduit par les transformations de g^ Ils
+sont respectivement à C^, C^, . . .,.C^2 variables.
+Il y a ici aussi des relations remarquables entre les groupes g^
+gî et les autres groupes fondamentaux. Elles sont tout à fait ana-
+logues aux relations indiquées dans le cas du type B).
+42. Le cas de l = 3 est intéressant, parce que les groupes du
+type D) sont isomorphes aux groupes du type A). Les groupes fon-
+damentaux du type A) soni respectivement à un nombre de
+variables égal à
+^+i=4, C^=6, C?^i=4;
+(') C,p. i4i.
+
+— 92 —
+les groupes fondamentaux du type D) sont respectivement à un
+nombre de variables égal à
+a7-1 =4, ^-*==4, C^==6.
+On retrouve naturellement les mêmes nombres de variables,
+rangés dans un autre ordre. En particulier les deux groupes fonda-
+mentaux d'ordre 6 sont pour le type A), le groupe projectif des
+droites de l'espace, pour le typeD) le groupe projectif d'une qua-
+drique de l'espace à 5 dimensions : on sait en effet que ces deux
+groupes sont semblables.
+XVHI. — GROUPES FONDAMENTAUX DU TYPE E) (/===6).
+43. Le groupe g^ est un groupe à 27 variables que j'ai indi-
+qué dans ma Thèse (1). Les variables *r<, y/, Zf/s ont pour poids
+—G),— 2 (OQ, — d)i+ ^01 ^o+ to<+ ^A.
+Le groupe gi^ s'engendre facilement au moyen du précédent en
+partant de l'expression [cTs.re] et lui appliquant les différentes
+transformations de g^ Les poids des différentes variables sont
+les poids frontières de g^ et ceux de ^3. Au poids dominant
+coi — (OQ de g^ peuvent appartenir un certain nombre de variables,
+combinaisons linéaires des cinq expressions [.r/^u] : on vérifie
+facilement que toutes ces expressions entrent comme variables.
+Par suite le groupe g^ est celui qui indique comment g\ trans-
+forme les droites de V espace à 26 dimensions. Le nombre des
+variables de g^ est ^—2- === 351.
+Le groupe g^ est dualistique de g^ et par suite à 27 variables.
+Mais il peut aussi se déduire de la manière suivante de g\. Consi-
+dérons le groupe g\ qui transforme entre elles la quantité x\ et celles
+qui s'en déduisent par les transformations de gi. Les poids fron-
+tières de ^":i sont des poids de g\. Considérons alors l'expression
+U =3-2^12-+-.^3^13 4-.. .4-^6^16
+qui est de poids oui—coo==IÏ3. Elle est invariante par les trans-
+formations X/yA, X^; par suite le groupe qui exprime com-
+ment g^ transforme linéairement l^expression u et celles qui
+(l) c,p. 142.
+
+- 93 -
+s^en déduisent par les transformations de g^, admet Us comme
+poids frontière. C^est donc le groupe ^3. Remarquons (Tailleurs
+que u n'est autre chose que la dérivée partielle par rapport à y,
+de la forme cubique (f)
+J = S XiykZki -+- S Z^ 5y? Sy:
+invariante par le groupe g^ Les différentes variables de g-s sont
+donc les 27 dérivées partielles de la forme J.
+Le groupe g^ est le groupe dualistique de g^; il est donc à
+35i variables.
+Le groupe ^o est le groupe qui indique comment g^ trans-
+forme l'expression [^.rs^e] et celles qui s'en déduisent par les
+transformations de ^. Or la transformation X^g appliquée à
+[^4^5.2:0] donne
+fa^S^s] -+- [a'4^6^46] -+- [^5^6^56];
+en posant \^XiXjXij\= Uij= uji, on en déduit que le groupe go
+contient les variables Uij-\- Ujk-{- lihij d^où l'on conclut facilement
+qu'il contient toutes les variables ui/ de poids —3(Oo==lÎ2. De
+ces variables on déduit par les transformations X/, toutes lès
+expressions trilinéaires possibles de poids IIi+IIa. Par consé-
+quent le groupe g^ est le groupe cfui indique comment g^ trans-
+forme les plans {à 2 dimensions) de V espace à 26 dimensions;
+.. , , 27 x 26 x %5 ^ . , ,il est a —-—————— == 2020 variables.i x 'i x 3 y
+Reste le groupe ^3 : c^est le groupe adjoint à 78 variables. On
+peut l'engendrer au moyen du groupe g^g^^ c'est-à-dire en somme
+au mojen de g^ On considère pour cela la forme
+^ ^jX'hZi/c
+i,k
+avec deux séries de 27 variables supposées transformées cliacune
+par !e groupe g^ Le groupe g.i indique comment g^ transforme
+linéairement la forme ïxiX/ç^ik et celles qu'on en déduit par les
+transformations de g^ La variable ^X(XkZik de ce groupe est de
+poids IÏ2==—3(x)o.
+(1) c, p. 143.
+
+— 94 —
+XIX. — GROUPES FONDAMENTAUX DU TYPE E) (/= 7).
+44. Le groupe fondamental g^ est le groupe à 56 variables que
+j^ai indiqué dans ma Thèse (1). Les variables
+x^ Yi-> xik1 yus
+sont respectivement de poids
+COç — t0/, t0/ — (jl^o, t0o + ^i -+• ^Â-i — ( (x>o + ^i -+- t^A-/
+Le groupe fondamental g^ est celui qui indique comment g^
+transforme entre elles l^ expression \y\yi\ ^t celles qui s^en
+déduisent par les transformations de g^ On trouve facilement
+que toutes les expressions [^] formées avec deux des 56 variables
+de g^ entrent comme variables de ^"4, exception faite pour les
+[y/^] et [^/Ay/A] q"i n'enirent que par leurs différences. Le
+groupe g^ est donc à ———— — i == i53g variables.
+Le groupe fondamental g^ est celui qui indique comment g^
+transforme entre elles l} expression \'Y\yîy^ ^t celles qui s^ en
+déduisent par les tr ans for mations de g ^. Au poids IIi -+- Ils appar-
+tiennent les cinq variables [^ly/y^jî s111 poids 113 appartiennent
+les 21 variables \^yiykyik\^ a" poids lia appartiennent 56 variables
+à saisir les différences mutuelles des 2^ quantités [yiy<'.^<]?
+\.y^x^iy^ï\ el \.y^xikyik\'> et ensuite les quantités [y/^./y</]. E»
+résumé, le groupe g^ a C^ç — 56 === 2^ 664 variables.
+Le groupe g^ est le groupe adjoint à i33 variables. On peut
+l'engendrer au moyen du groupe g^. Il indique en ejfet com-
+ment g^ transforme entre elles la forme quadratique Sy/y^ el
+celles qui s7 en déduisent par les transformations de g^.
+Le groupe g^ est celui qui indique comment g^ transforme la
+forme Sy/y/y/y de poids \\^ et celles qui s en déduisent par
+les transformations de g^,
+Le groupe g^ peut s^ngendrer au moyen du groupe adjoint g^.
+Si Von appelle e^^ la variable ^y'iyii de |)oids ITi le groupe g ^
+indique comment g\ transforme [^ooc^oozj ^t les quantités qui
+s'en déduisent par les transformations de g^
+Enfin le groupe g^ indique comment g^ transforme
+(l) C, p. i43.
+
+[^005^000^007 ] ^ les quantités qui s'en déduisent par les trans-
+formations de g^.
+On peut aussi engendrer les groupes g^ et g•^ au moyeu des
+variables de g^.
+XX. — GROUPES FONDAMENTAUX DU TYPE E) ( / == 8).
+45. Le groupe g^ est le groupe adjoint à 248 variables <?^,
+^ijk, e'ijk'
+Le groupe g^ est le groupe qui indique comment g^ trans-
+forme ^expression [e^e^g] et celles qui s'en déduisent par les
+transformations de g\.
+Le groupe g^ est celui qui indique comment g\ transforme
+V expression \e^e^c\^ et celles qui s^en déduisent par les
+transformations de g^
+Le groupe g^ est celui qui indique comment g•^ transforme
+^expression [e^e^e^e^^ et celles qui s1 en déduisent par les
+transformations de g\.
+Le groupe g^ est celui qui indique comment g\ transforme
+l} expression [^i 5 <?i 6^17^8^19] ^t celles qui s9 en déduisent par
+les transformations de g^.
+Le groupe g^ peut aussi s'engendrer au moveii de g^. C'est le
+groupe qui indique comment g^ transforme la forme quadra-
+tique Sériai de poids lia et celles qui s^en déduisent par les
+transformations de g^.
+Le groupe g^ peut alors s'engendrer au moyen du groupe ^2-
+Si l'on appelle ^ij les variables S^p^yo de g^^ le groupe g^ est
+celui qui indique comment g^ transforme lf expression [S; 12^3]
+et celles qui s en déduisent par les transformations de ff^.
+Enfin le groupe g.^ se déduit aussi de g^. C^est celui qui indique
+comment g^ transforme ^expression ^[eue^e^j] de poids n/. et
+celles qui s'en déduisent par les transformations de g',.
+XXÏ. — GROUPES FONDAMKNTÀUX DU TYPE F).
+46. Le groupe g\ est le groupe linéaire a 26 variables que j'ai
+indiqué dans ma Thèse (f). Ces variables
+y^ z, xi, x^ft
+(1) C, p. i4â.
+
+- 96 —
+sont respectivement de poids
+a)a-i- (Jt)0-+- Wy-+- œgo, o, a)/, ————p———ï———?.
+2
+JL(? groupe g^ est le groupe adjoint à 52 variables. C'est
+celui qui indique comment g^ transforme entre elles l'expres-
+sion
+Çl2= [^l^s] — [^123^1«>3'4'] -+-[.yi23'4^1234']
+de poids JL\^ et celles qui s9 en déduisent par les transformations
+de g,.
+Le groupe g-n est celui qui indique comment g^ transforme
+entre elles l'expression [x^x^^^ et celles qui s'en déduisent
+par les transformations de gf. Il est à 278 variables, les poids
+homologues de IL correspondant chacun à 2 variables, les poids
+homologues de 11^ à 5 variables et le poids o à 9 variables.
+Enfin le groupe g,, est le groupe qui indique comment g^
+transforme l'expression [^2^13] de poids IL et celles qui s'en
+déduisent par les transformations de g^. Il est à 1274 variables.
+XXII. — GROUPES FONDAMENTAUX DU TYPE G).
+47. Le groupe g\ est le groupe à 7 variables indiqué dans ma
+Thèse ('). Ces variables x^ yi, z sont respectivement de poids
+— (o/, -t- co/ et o.
+Le groupe ^ est le groupe adjoint à i4 variables. 11 peut s'en-
+gendrer au moyen de g^ C'est celui qui indique comment g^
+transforme entre elles l'expression [^syj de poids II^ et celles
+qu'on en déduit par les transformations de g^ Les \/\ variables
+de g^ sont :
+|>/\r/J (i^k\ i, k = ï, 2, 3),
+[^zxi\—{ijk)[yjyi,\,
+[^zyi\—{iJk)[xjXk\,
+l^i y\\ — [^ays], [^ys] — [^3^3].
+OC,?, i-^.
+

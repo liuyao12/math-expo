@@ -1,3 +1,4 @@
+import {attachTextCoverage} from './text-coverage.mjs';
 import {representationWorks,representationPeople,representationBibliography,representationEnglish,representationCitations,conceptsLie1874} from './representation-catalog.mjs';
 import {concepts1902,citations1902,externalReferences1902} from './poincare-1902-surfaces-catalog.mjs';
 import {concepts1900} from './poincare-1900-catalog.mjs';
@@ -117,6 +118,8 @@ export const works = [
     summary: 'A study of the original geometry manuscript and its transmission into print.',
     links: [{label: 'Publisher article', url: 'https://doi.org/10.1007/s00591-026-00416-0'}] },
 ];
+
+attachTextCoverage(works);
 
 export const people = [
   ...representationPeople,

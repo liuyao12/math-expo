@@ -1,3 +1,4 @@
+import './check-text-coverage.mjs';
 import './check-representation.mjs';
 import './check-poincare-1902-surfaces.mjs';
 import './check-poincare-1900.mjs';
