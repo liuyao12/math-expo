@@ -32,7 +32,7 @@ export const textCoveragePolicy = {
 export const textCoverage = Object.fromEntries([
   ...Object.entries(completeScopes).map(([id,scope])=>[id,{status:'complete',percent:100,approximate:false,scope,available:scope,basis:'Complete modern-English rendering within the scope stated for this record; see Sources & edition for collation and proof limitations.',checked:'2026-10-26'}]),
   ...queued.map(id=>[id,{status:'not-started',percent:0,approximate:false,scope:'The complete work identified by this bibliographic record.',available:'No primary text is rendered on site yet.',basis:'External original texts, English translations, abstracts, and bibliographic summaries are excluded.',checked:'2026-10-26'}]),
-  ['cartan-1913',{status:'partial',percent:cartanSource.coverage.percent,approximate:true,scope:'The complete memoir, printed pp. 53–96.',available:'The complete unnumbered introduction, pp. 53–56, with its two author footnotes. Sections I–XXII are not yet rendered.',basis:cartanSource.coverage.method,evidence:'cartan-1913/source-evidence.json',checked:'2026-10-26'}]
+  ['cartan-1913',{status:'partial',percent:cartanSource.coverage.percent,approximate:true,scope:'The complete memoir, printed pp. 53–96.',available:'The introduction and Sections I–XIII (§§1–35), printed pp. 53–85, including all fifteen author footnotes in that extent. Sections XIV–XXII are not yet rendered.',basis:cartanSource.coverage.method,evidence:'cartan-1913/source-evidence.json',checked:'2026-10-26'}]
 ]);
 export function attachTextCoverage(works){
   const ids=new Set(works.map(w=>w.id));

@@ -33,12 +33,12 @@ const count=s=>s.replace(/\s/g,'').length;
 assert.equal(count(ocr),c.totalUnits);let prev=0;
 for(const range of c.intervals){assert(range.start>=prev);assert(range.end>range.start&&range.end<=ocr.length);prev=range.end;}
 assert.equal(c.intervals.reduce((n,r)=>n+count(ocr.slice(r.start,r.end)),0),c.coveredUnits);
-assert.equal(Math.round(100*c.coveredUnits/c.totalUnits),c.percent);assert.equal(c.percent,8);
-assert.equal(ocr.slice(c.intervals[0].end,c.intervals[0].end+2),'I.');
+assert.equal(Math.round(100*c.coveredUnits/c.totalUnits),c.percent);assert.equal(c.percent,70);
+assert.equal(ocr.slice(c.intervals[0].end,c.intervals[0].end+4),'XIV.');
 assert.equal(textCoverage['cartan-1913'].percent,c.percent);
-assert.equal(passagesCartan1913.length,10);assert.equal((page.match(/<figure /g)||[]).length,2);assert.equal((page.match(/class="author-footnote"/g)||[]).length,2);
+assert.equal(passagesCartan1913.length,10);assert.equal((page.match(/<figure /g)||[]).length,6);assert.equal((page.match(/class="author-footnote"/g)||[]).length,15);
 for(const r of passagesCartan1913){assert(page.includes(`id="${r.id}"`));assert(page.includes(r.sourceUrl));assert(r.note);}
-for(const phrase of ['Sections I–XXII are not yet translated','all-zero','central element','273','without proof-assistant verification','not yet rendered'])assert(page.includes(phrase),phrase);
+for(const phrase of ['Sections XIV–XXII','all-zero','central element','273','without proof-assistant verification','not yet rendered'])assert(page.includes(phrase),phrase);
 assert.equal(read('dist/cartan-1913/source-evidence.json'),read('src/cartan-1913-source.json'));assert.equal(read('dist/cartan-1913/source-fr-ocr.txt'),ocr);
 // The displayed raising/lowering operators on binary forms: exact coefficients and bracket.
 for(let p=1;p<=20;p++)for(let k=0;k<=p;k++){
@@ -46,4 +46,4 @@ for(let p=1;p<=20;p++)for(let k=0;k<=p;k++){
  if(k<p)assert(p-k>0);if(k>0)assert(k>0);
  assert.equal((-1)**p,p%2?-1:1);
 }
-console.log('Validated explicit text coverage for every catalogue, author and work page; accessible native bars; external-source exclusion; chapter scope; and Cartan’s partial introduction with reproducible 8% source intervals, two footnotes, two drawings, and binary-form coefficients.');
+console.log('Validated explicit text coverage for every catalogue, author and work page; accessible native bars; external-source exclusion; chapter scope; and Cartan’s introduction and weight sections with reproducible 70% source intervals, fifteen footnotes, six drawings, and binary-form coefficients.');

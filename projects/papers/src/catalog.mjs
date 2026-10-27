@@ -1,3 +1,4 @@
+import {conceptsCartan1913,externalReferencesCartan1913} from './cartan-1913-catalog.mjs';
 import {attachTextCoverage} from './text-coverage.mjs';
 import {representationWorks,representationPeople,representationBibliography,representationEnglish,representationCitations,conceptsLie1874} from './representation-catalog.mjs';
 import {concepts1902,citations1902,externalReferences1902} from './poincare-1902-surfaces-catalog.mjs';
@@ -119,6 +120,7 @@ export const works = [
     links: [{label: 'Publisher article', url: 'https://doi.org/10.1007/s00591-026-00416-0'}] },
 ];
 
+works.find(w=>w.id==='cartan-1913').externalReferences=externalReferencesCartan1913;
 attachTextCoverage(works);
 
 export const people = [
@@ -170,6 +172,7 @@ export const citations = [
 ];
 
 export const concepts = [
+  ...conceptsCartan1913,
   ...conceptsLie1874,
   ...concepts1902,
   ...concepts1900,

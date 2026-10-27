@@ -139,3 +139,14 @@ cite.work-title{font-style:italic}.entity-link.work-link,.work-record h3,.paper-
 .completion-details p{margin:10px 0}.catalogue-completion-note{font:12px/1.7 var(--sans);color:var(--muted);max-width:650px;margin:8px 0 20px}
 @media(max-width:700px){.completion-compact{min-width:0;width:100%;max-width:320px}.text-completion{margin-block:20px}.completion-compact{margin-top:0}.completion-scope{font-size:14px}.completion-details{font-size:14px}}
 @media(forced-colors:active){.text-completion progress{appearance:auto}}
+
+/* Long source coefficient and support tables remain horizontal, locally scrollable. */
+.source-table-wrap{max-width:100%;overflow-x:auto;margin:22px 0;overscroll-behavior-x:contain}
+.source-weight-table{border-collapse:collapse;width:100%;font-size:15px;line-height:1.6}
+.source-weight-table caption{text-align:left;font:11px/1.8 var(--sans);color:var(--muted);padding-bottom:12px}
+.source-weight-table th,.source-weight-table td{border-block:1px solid var(--rule);padding:12px 14px;vertical-align:top;text-align:left}
+.source-weight-table th{font-weight:400;color:var(--green)}
+.source-weight-table thead th{font:10px/1.7 var(--sans)}
+.reader:has(.source-weight-table) .reading-nav{max-height:calc(100vh - 36px);overflow-y:auto;scrollbar-width:thin}
+@media(max-width:1000px){.reader:has(.source-weight-table) .reading-nav{max-height:none;overflow:visible}}
+@media(max-width:700px){.source-weight-table{font-size:15px}.source-weight-table td,.source-weight-table th{padding:10px}.source-table-wrap{margin-block:18px}}

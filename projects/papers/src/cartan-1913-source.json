@@ -319,27 +319,233 @@
     2,
     3,
     4,
-    5
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34
   ],
-  "scope": "Partial reading: complete unnumbered introduction and its two author footnotes; stops before Section I. Sections I–XXII are not yet rendered.",
-  "ocrWarning": "Raw source OCR, not a corrected transcription. All formulas in the translated introduction were checked against page images. The remaining pages supply an approximate size denominator only; they have not been translated or mathematically reviewed.",
+  "scope": "Partial reading: complete unnumbered introduction and Sections I–XIII (§§1–35), including all fifteen author footnotes in that extent; stops before Section XIV. Sections XIV–XXII are not yet rendered.",
+  "ocrWarning": "Raw source OCR, not a corrected transcription. PDF pages 2–34 were visually inspected, and the translated formulas checked against them. OCR of the untranslated remainder supplies only the approximate size denominator. Explicit corrections are recorded separately; scan images remain authoritative.",
   "coverage": {
-    "percent": 8,
+    "percent": 70,
     "approximate": true,
-    "coveredUnits": 4312,
+    "coveredUnits": 38098,
     "totalUnits": 54048,
     "intervals": [
       {
         "start": 100,
-        "end": 5015,
-        "label": "Unnumbered introduction, pp. 53–56; includes author footnote on p. 54"
-      },
-      {
-        "start": 5988,
-        "end": 6198,
-        "label": "Introduction’s thesis-reference author footnote, p. 56"
+        "end": 46844,
+        "label": "Introduction and Sections I–XIII (§§1–35), printed pp. 53–85, including their author footnotes; stops before Section XIV"
       }
     ],
     "method": "Approximate proportion of non-whitespace characters in the pinned French OCR represented by the translated source intervals, rounded to the nearest whole percent. The archive cover is excluded; the denominator includes the author’s title, footnotes, and OCR page headings. Formula recognition and page-heading noise limit accuracy. This measures source coverage, not the length of the English translation, commentary, or proof verification."
-  }
+  },
+  "translationInventory": {
+    "numberedParagraphs": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35
+    ],
+    "romanSections": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V",
+      "VI",
+      "VII",
+      "VIII",
+      "IX",
+      "X",
+      "XI",
+      "XII",
+      "XIII"
+    ],
+    "introductionPassages": 10,
+    "authorFootnotes": 15,
+    "drawings": 6,
+    "writtenReconstructions": 5,
+    "startOfUntranslatedText": "Section XIV, printed p. 85 (PDF p. 34)"
+  },
+  "corrections": [
+    {
+      "paragraph": 2,
+      "issue": "The bracket otherwise-zero assertion needs the opposite-root exception; the root-segment assertion excludes parallel roots and zero."
+    },
+    {
+      "paragraph": 4,
+      "issue": "The compressed boundary-orbit proof needs justification; a separate reconstruction supplies it with ordered-operator, chamber, and rank-one inputs."
+    },
+    {
+      "paragraph": 10,
+      "issue": "Cyclicity alone does not prove irreducibility; complete reducibility is stated as a dependency."
+    },
+    {
+      "paragraph": 11,
+      "issue": "Nonconstant analytic matrix coefficients need not have nonzero first derivatives at the identity. A weight-projection proof repairs the inference."
+    },
+    {
+      "paragraph": 14,
+      "issue": "The unsimplified type-A fractions contain coefficient/range errors. Correct fractions are given, with the printed Pi_2 coefficient identified."
+    },
+    {
+      "paragraph": 21,
+      "issue": "The sum of three coefficients need only be an integer, not necessarily a multiple of three. The exact reflection-integrality conditions are stated."
+    },
+    {
+      "paragraph": 26,
+      "issue": "The third orbit-pattern row has one half of the total sum where one third is required. The printed value fails norm preservation."
+    },
+    {
+      "paragraph": 27,
+      "issue": "The expanded Pi_7 vector is retained; its inconsistent alternative expression in omega_0 is corrected."
+    },
+    {
+      "paragraph": 35,
+      "issue": "The printed p_1=-3m_3 must be p_1=-3m_2. Pi_2 itself is an immediate counterexample to the print."
+    },
+    {
+      "paragraph": 24,
+      "issue": "The third printed g6 boundary family has squared norm 74/9 rather than 6. Replacing its second coefficient 2 by 1 gives 700 orbit points; the other 20 are the distinct-index expressions 2(omega_i+omega_j+omega_k)+3 omega_0. Exact integer reflection closure gives all 720 boundary weights. These are editorial repairs, not silently changed source claims."
+    }
+  ],
+  "sectionIntervals": [
+    {
+      "section": "I",
+      "start": 5015,
+      "end": 11356,
+      "sha256": "2790f51521f5f6bc34e842915de46a1fcac61149cefd57117180fedd248f53d9"
+    },
+    {
+      "section": "II",
+      "start": 11356,
+      "end": 19047,
+      "sha256": "e52fadf88cff20a558220ae301acbc2acbdc05ceb3a8db38c4f18d3bbade587f"
+    },
+    {
+      "section": "III",
+      "start": 19047,
+      "end": 22678,
+      "sha256": "b8e76588cb537635024f1cf394a4713834a4ae2fbb1e27d300af7a77b0365b5d"
+    },
+    {
+      "section": "IV",
+      "start": 22678,
+      "end": 25512,
+      "sha256": "da551f5b8d0f9216014ecfbfb58246ff29c384320b806b6b02abe0ab74e675d4"
+    },
+    {
+      "section": "V",
+      "start": 25512,
+      "end": 27222,
+      "sha256": "f4e010d72413dd6c4c3a375b1b5bf9040c4e71deacd34cb80e1b9d52c6432d97"
+    },
+    {
+      "section": "VI",
+      "start": 27222,
+      "end": 28834,
+      "sha256": "d0d42927e28db6e4acf9e4aa7d050ea8f16ba4f8a47931d89cb0564793e62f2d"
+    },
+    {
+      "section": "VII",
+      "start": 28834,
+      "end": 29987,
+      "sha256": "af57c86a539ccea59a9c398cbecd50704476fdb740e2ce21819e8c4bba06b71a"
+    },
+    {
+      "section": "VIII",
+      "start": 29987,
+      "end": 31450,
+      "sha256": "faada4b26a98bea1bbdf504b07afd06681c855ac1008a870ff5e07c85c3943f3"
+    },
+    {
+      "section": "IX",
+      "start": 31450,
+      "end": 31451,
+      "sha256": "a83dd0ccbffe39d071cc317ddf6e97f5c6b1c87af91919271f9fa140b0508c6c"
+    },
+    {
+      "section": "X",
+      "start": 31451,
+      "end": 40463,
+      "sha256": "0a3a646f56e327d71e7b9c2e377427e8765a8ddc9aeee09d6d36782dffcd4cc9"
+    },
+    {
+      "section": "XI",
+      "start": 40463,
+      "end": 43000,
+      "sha256": "09e5aed40116853b4f5a65149a24473b01d239c640a332f10d17b320b10cc7e1"
+    },
+    {
+      "section": "XII",
+      "start": 43000,
+      "end": 45457,
+      "sha256": "0f7c2d79efe15da39c6c88c1164619cc8a0e7926f2f91e8563cd0a859de8be79"
+    },
+    {
+      "section": "XIII",
+      "start": 45457,
+      "end": 46844,
+      "sha256": "1c0b731d186ee91a7f3e5102a757d4718f0286af5f53f8fef23500bb9ae7ead7"
+    }
+  ],
+  "verificationScript": "https://github.com/liuyao12/math-expo/blob/main/projects/papers/scripts/check-cartan-1913.mjs"
 }
