@@ -1,8 +1,8 @@
 const version=new URL(self.location).searchParams.get('v')??'1';
-const {zeta,domainColor,pointAt}=await import('./zeta-math.mjs?v='+encodeURIComponent(version));
+const math=import('./zeta-math.mjs?v='+encodeURIComponent(version));
 let current=0;
 self.addEventListener('message',async({data})=>{
- const {id,width,height,view,contours}=data;current=id;const pixels=new Uint8ClampedArray(width*height*4);
+ const {id,width,height,view,contours}=data;current=id;const {zeta,domainColor,pointAt}=await math;const pixels=new Uint8ClampedArray(width*height*4);
  for(let y=0;y<height;y++){
   if(current!==id)return;
   for(let x=0;x<width;x++){

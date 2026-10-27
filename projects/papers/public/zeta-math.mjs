@@ -71,7 +71,9 @@ export const scenes=[
  {id:'reflection',anchor:'functional-equation',name:'Functional equation',caption:'The paired inputs are related by gamma and sine factors. Their zeta values need not be equal.',formula:String.raw`\(s\longleftrightarrow1-s\)`,strip:false,reflect:true},
  {id:'zeros',anchor:'zero-count',name:'The critical strip',caption:'The strip and its middle line are marked. The square window is below the first nontrivial zero; use “First zeros” to look higher.',formula:String.raw`\(0<\operatorname{Re}s<1\)`,strip:true},
  {id:'conjecture',anchor:'hypothesis',name:'Riemann’s conjecture',caption:'The conjecture places every nontrivial zero on the middle line. A finite numerical picture does not establish this claim.',formula:String.raw`\(\operatorname{Re}s=\tfrac12\)`,strip:true},
- {id:'primes',anchor:'prime-count',name:'Zeros and prime counting',caption:'The text now uses zeros in the prime-counting argument. This panel continues to show zeta in the complex plane.',formula:String.raw`\(s=\sigma+it\)`,strip:true}
+ {id:'primes',anchor:'prime-count',name:'Zeros and prime counting',caption:'The text now uses zeros in the prime-counting argument. This panel continues to show zeta in the complex plane.',formula:String.raw`\(s=\sigma+it\)`,strip:true},
+ {id:'explicit-formula',anchor:'formula',name:'Zeros into prime powers',exhibit:'explicit',mode:'f',caption:'A finite sum over published conjugate zero pairs.',formula:'',strip:false},
+ {id:'prime-inversion',anchor:'mobius',name:'Zeros into primes',exhibit:'explicit',mode:'pi',caption:'Remove the higher prime powers by the finite inversion used here.',formula:'',strip:false}
 ];
 export function sceneAt(positions,trigger){let index=0;for(let i=0;i<positions.length;i++)if(positions[i]<=trigger)index=i;return scenes[index];}
 export const firstZeros=[14.134725141734693,21.022039638771555,25.01085758014569];

@@ -19,3 +19,24 @@
 @media(prefers-reduced-motion:reduce){.zeta-panel *{scroll-behavior:auto!important}}
 @media print{.zeta-rail{position:static!important;max-height:none!important}.zeta-panel{max-height:none;overflow:visible;box-shadow:none}.zeta-illustrated-reading{display:block}.zeta-passage-column{width:100%}.zeta-scene-controls,.zeta-view-controls,.zeta-panel details,.zeta-render-status,#zeta-fold{display:none}.zeta-plot-frame{max-width:350px}.zeta-illustrated-reading .passage{display:grid}}
 .zeta-panel .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* The same margin follows the formula from zeta values to prime counts. */
+.zeta-exhibit-tabs{display:flex;gap:6px;margin:0 0 10px}.zeta-exhibit-tabs button{flex:1;font-size:10px}.zeta-exhibit-tabs [aria-pressed=true]{background:#dfe7d5;border-color:#9cab8d}
+#zeta-plane-panel[hidden],#explicit-panel[hidden]{display:none!important}
+.explicit-options{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:12px}.explicit-options label{font:9px/1.5 var(--sans);color:var(--green)}.explicit-options select{display:block;width:100%;min-width:0;margin-top:3px;background:#faf9f3;border:1px solid #c5cfbb;min-height:33px;padding:5px 3px}
+.explicit-zero-control{padding:9px 0 10px;border-top:1px solid #d4d8cb}.explicit-zero-control>div:first-child{display:flex;flex-direction:column;gap:4px}.explicit-zero-control label{font:10px/1.5 var(--sans);color:var(--green)}.explicit-zero-control output{font:13px/1.5 var(--serif);color:var(--green)}#explicit-pairs{width:100%;accent-color:#ac532f;margin:8px 0;cursor:pointer;min-height:26px}.explicit-pair-actions{display:flex;gap:6px;flex-wrap:wrap;align-items:center}.explicit-pair-actions button{padding:5px 8px;font-size:10px;min-height:31px}#explicit-height{width:100%;min-height:17px;margin:4px 0 0;color:#6f7e65;font:9px/1.5 var(--sans)}
+.explicit-plot-frame{position:relative;height:245px;border:1px solid #d4d8cb;background:#faf9f3}.explicit-plot-frame canvas{display:block;width:100%;height:100%;cursor:crosshair}.explicit-plot-frame canvas:focus-visible{outline:2px solid var(--green);outline-offset:3px}#explicit-axes{position:absolute;inset:0;pointer-events:none}.explicit-tick{position:absolute;color:#65745b;font-size:10px;line-height:1;transform:translate(-50%,-50%)}.explicit-tick.y{transform:translate(-100%,-50%)}
+.explicit-legend{display:flex;gap:18px;align-items:center;margin:10px 0;font-size:12px;color:var(--green)}.explicit-legend>span{display:flex;gap:5px;align-items:center}.explicit-legend i{display:inline-block;width:18px;border-top:2px solid #263b2c}.explicit-legend .approx-key{border-color:#ac532f}
+.explicit-explainer{font:12px/1.6 var(--serif);color:#65725c;margin:8px 0 11px}.explicit-readout{min-height:46px;font-size:12px;line-height:1.7;text-align:center;border-top:1px solid #d4d8cb;padding-top:9px;color:var(--green);overflow-x:auto;overflow-y:hidden}
+.explicit-inspect form{display:flex;gap:10px;align-items:end;margin-top:10px}.explicit-inspect label{font-size:12px;display:block;flex:1}.explicit-inspect input{display:block;width:100%;box-sizing:border-box;border:1px solid #c5cfbb;padding:6px;background:#faf9f3;margin-top:4px}.explicit-method .katex-display{font-size:.78em;overflow-x:auto;overflow-y:hidden;padding:3px 0}.explicit-method p{overflow-wrap:break-word}
+@media(max-width:900px){.zeta-exhibit-tabs{margin-bottom:7px}.explicit-options{margin-bottom:7px}.explicit-zero-control{padding:6px 0}.explicit-plot-frame{height:200px}.explicit-zero-control>div:first-child{flex-direction:row;align-items:baseline;justify-content:space-between;gap:8px}.explicit-zero-control output{font-size:11px}.explicit-pair-actions{gap:6px}#explicit-height{width:auto;margin:0 0 0 auto;font-size:8px}.explicit-legend{margin:6px 0}.explicit-explainer{margin:6px 0;font-size:12px}.explicit-readout{padding-top:5px}}
+@media print{.zeta-exhibit-tabs,.explicit-options,.explicit-zero-control,.explicit-inspect,.explicit-method{display:none}}
+
+#zeta-visual[data-exhibit=explicit] .zeta-scene-controls select{display:none}
+#zeta-visual[data-exhibit=explicit] .zeta-scene-controls{min-height:18px}
+.explicit-zero-control>div:first-child{flex-direction:row;justify-content:space-between;align-items:baseline;gap:8px}
+.explicit-zero-control output{font-size:11px}.explicit-plot-frame{height:220px}
+#explicit-height{width:auto;margin:0 0 0 auto;font-size:8px}
+@media(max-width:900px){.explicit-plot-frame{height:190px}.explicit-zero-control output{font-size:10px}}
+
+

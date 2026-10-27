@@ -17,7 +17,7 @@ for(const v of [squareView,firstZerosView,{xmin:-20,xmax:20,ymin:-80,ymax:90}]){
 for(let i=0;i<scenes.length;i++)assert.equal(sceneAt(scenes.map((_,j)=>j*100-i*100),1).id,scenes[i].id);
 const html=read('dist/riemann-1859/index.html'),data=JSON.parse(read('dist/catalog.json'));assert(html.includes('class="zeta-illustrated-reading"'));assert.equal((html.match(/id="zeta-visual"/g)||[]).length,1);assert(html.includes('zeta-reader.mjs?v='));assert(html.includes('zeta-reader.css?v='));assert(html.includes('Follow the paper'));assert(html.includes('no blur or uncertainty effect'));assert(html.includes('not certified intervals'));assert(html.includes(String.raw`\(\operatorname{Re}s\)`));assert(html.includes(String.raw`\(\zeta(s)\)`));assert(html.includes(String.raw`cutoff \(N=32\)`));
 for(const s of scenes)assert(passages1859.some(p=>p.id===s.anchor));for(const p of passages1859)assert(html.includes(`id="${p.id}"`));
-assert.equal(data.visualContributions.length,1);assert.equal(data.visualContributions[0].work,'riemann-1859');assert.equal(data.works.find(w=>w.id==='riemann-1859').textCoverage.percent,100);
+assert.equal(data.visualContributions.length,2);assert.equal(data.visualContributions[0].work,'riemann-1859');assert.equal(data.works.find(w=>w.id==='riemann-1859').textCoverage.percent,100);
 assert.equal(read('dist/riemann-1859/zeta-reference-values.json'),read('src/sources/zeta-reference-values.json'));
 for(const file of ['zeta-math.mjs','zeta-reader.mjs','zeta-worker.mjs']){const result=spawnSync(process.execPath,['--check',new URL('public/'+file,root).pathname],{encoding:'utf8'});assert.equal(result.status,0,result.stderr);}
 for(const id of ['riemann-1854','cartan-1913'])assert(!read('dist/'+id+'/index.html').includes('zeta-reader.mjs'));

@@ -4,6 +4,18 @@ if(root){
  const {zeta,domainColor,squareView,firstZerosView,clampView,zoomView,pointAt,allowedByStage,scenes,sceneAt,firstZeros}=await import('./zeta-math.mjs?v='+encodeURIComponent(version));
  const $=id=>document.getElementById(id),canvas=$('zeta-plot'),ctx=canvas.getContext('2d'),frame=canvas.parentElement,labels=$('zeta-axis-labels');
  const follow=$('zeta-follow'),selector=$('zeta-scene'),status=$('zeta-render-state');
+ const {initExplicitPlot}=await import('./explicit-reader.mjs?v='+encodeURIComponent(version));
+ let explicitPlot=null;
+ function showExhibit(kind){
+  const isExplicit=kind==='explicit';$('zeta-plane-panel').hidden=isExplicit;$('explicit-panel').hidden=!isExplicit;
+  $('zeta-exhibit-title').textContent=isExplicit?'Zeros into primes':'Zeta, in color';
+  $('zeta-plane-tab').setAttribute('aria-pressed',String(!isExplicit));$('explicit-tab').setAttribute('aria-pressed',String(isExplicit));root.dataset.exhibit=kind;
+  if(isExplicit)explicitPlot?.resize();else explicitPlot?.stop();
+ }
+ initExplicitPlot(root,{version,onManual:()=>{follow.checked=false;}}).then(plot=>{explicitPlot=plot;if(scene.exhibit==='explicit')explicitPlot.setMode(scene.mode);});
+ $('zeta-plane-tab').addEventListener('click',()=>{follow.checked=false;updateScene(scene.exhibit?scenes[3]:scene,true);requestPixels();});
+ $('explicit-tab').addEventListener('click',()=>{follow.checked=false;updateScene(scenes.find(s=>s.id==='prime-inversion'),true);});
+
  let scene=scenes[0],view={...squareView},selection=[2,0],cache=null,job=0,timer=0,worker=null,drag=null,scrollFrame=0,labelKey='',frameWidth=0,frameHeight=0;
  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
  const typeset=(el,latex)=>{if(window.katex)window.katex.render(latex,el,{throwOnError:false});else el.textContent=latex;};
@@ -67,7 +79,7 @@ if(root){
  }
  try{worker=new Worker(new URL('./zeta-worker.mjs?v='+encodeURIComponent(version),import.meta.url),{type:'module'});worker.addEventListener('message',({data})=>acceptPixels(data));worker.addEventListener('error',()=>{worker.terminate();worker=null;requestPixels();},{once:true});}catch{worker=null;}
  function updateScene(next,explicit=false){
-  const changed=scene.id!==next.id;scene=next;selector.value=scene.id;$('zeta-stage-name').textContent=scene.name;window.paperNames?.enhance?.($('zeta-stage-name'));
+  const changed=scene.id!==next.id;scene=next;root.dataset.scene=scene.id;selector.value=scene.id;showExhibit(scene.exhibit??'plane');if(changed&&scene.exhibit==='explicit')explicitPlot?.setMode(scene.mode);$('zeta-stage-name').textContent=scene.name;window.paperNames?.enhance?.($('zeta-stage-name'));
   $('zeta-stage-formula').textContent=scene.formula;window.renderMathInElement?.($('zeta-stage-formula'),{delimiters:[{left:'\\(',right:'\\)',display:false}],throwOnError:false});
   $('zeta-caption').textContent=scene.id==='zeros'&&view.ymax>=firstZeros[0]?'This higher window reaches the first nontrivial zeros. The markers give their approximate locations; the color field is evaluated independently.':scene.caption;
   draw();pointReadout();if(explicit||changed)announce(scene.name+'. '+$('zeta-caption').textContent);
