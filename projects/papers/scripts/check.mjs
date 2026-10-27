@@ -1,3 +1,4 @@
+import './check-zeta-visual.mjs';
 import './check-cartan-1913.mjs';
 import './check-text-coverage.mjs';
 import './check-representation.mjs';

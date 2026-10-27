@@ -99,12 +99,12 @@
     };
     bridgeStep.addEventListener('input',updateBridgeStep);updateBridgeStep();
   }
-  const links=[...document.querySelectorAll('.reading-nav a')];
+  const links=[...document.querySelectorAll('.reading-nav a[href^="#"]')];
   if(links.length&&'IntersectionObserver' in window){
     const observer=new IntersectionObserver(entries=>{
       for(const entry of entries){if(entry.isIntersecting){links.forEach(a=>{const active=a.hash===`#${entry.target.id}`;a.classList.toggle('active',active);if(active)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});}}
     },{rootMargin:'-8% 0px -65% 0px',threshold:0});
-    for(const a of links){const section=document.querySelector(a.hash);if(section)observer.observe(section);}
+    for(const a of links){const section=document.getElementById(a.hash.slice(1));if(section)observer.observe(section);}
   }
   const form=document.querySelector('#catalogue-filters');
   if(form){
