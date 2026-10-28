@@ -1,7 +1,7 @@
 const m=String.raw;
 export const explicitVisualContribution={
  id:'explicit-formula-1859',kind:'interactive',work:'riemann-1859',
- title:'Zeros into primes',anchors:['formula','mobius','density'],
+ title:'Music of the primes',anchors:['formula','mobius','density'],
  scope:'Finite conjugate-pair truncations of Riemann’s corrected weighted prime-power formula and its fixed six-term Möbius inversion for real x from 2 to 100, with a synchronized expanding map of the included conjugate zero pairs.',
  sources:[
   {title:'Odlyzko · published zeta-zero table',url:'https://www-users.cse.umn.edu/~odlyzko/zeta_tables/'},
@@ -48,7 +48,7 @@ export function explicitVisualHTML(){return m`
   <p>The usual \(\pi(x)\) counts primes up to and including \(x\). The black staircase’s dots mark the half-values \(\pi_0(p)=\pi(p)-\tfrac12\). Away from primes, \(\pi_0(x)=\pi(x)\). In weighted mode, all prime powers have their appropriate jumps and midpoint dots.</p>
   <p>The zero data are the first \(200\) positive ordinates in <a href="https://www-users.cse.umn.edu/~odlyzko/zeta_tables/" target="_blank" rel="noopener">Andrew <span class="person-surname">Odlyzko</span>’s published table</a>, whose stated accuracy is within \(3\times10^{-9}\). Each supplies \(\tfrac12\pm i\gamma_n\), so the slider includes up to \(400\) zeros. This is modern numerical data, not Riemann’s historical computation. Their finite locations do not establish the Riemann hypothesis.</p>
   <p>The adjacent critical-strip diagram marks the same tabulated zeros used in the sum. Filled points are included; hollow points are not yet used. The newest conjugate pair is ringed. The vertical range expands with the highest included zero, while the real-coordinate scale stays fixed. This is a zero-location map; the color key describes inclusion in the sum.</p>
-  <p>Entering this passage starts a repeating sweep through the zero pairs. Pause or move the slider to hold the current sum; Play pairs resumes it. The animation stops while the illustration is out of view or the page is hidden. Reduced-motion preferences pause autoplay until you explicitly start it.</p>
+  <p>Entering either formula passage, including when scrolling back up, restarts a repeating sweep through the zero pairs. Pause or move the slider to hold the current sum; Play pairs resumes it. The animation stops while the illustration is out of view or the page is hidden. Reduced-motion preferences pause autoplay until you explicitly start it.</p>
   <p>The curves are computed from these data in your browser, using exponential-integral continued fractions and a convergent series for \(T(x)\). The finite zero sum has truncation error, especially near jumps. Adding pairs need not improve every point; the display gives no certified bound for the omitted zeros. There is no artificial smoothing of the sum.</p>
   <p><a href="../zeta-zeros-200.json">Imported zero data &amp; provenance</a> · <a href="explicit-reference-values.json">Independent high-precision checks</a> · <a href="https://doi.org/10.1090/S0025-5718-1970-0277489-3" target="_blank" rel="noopener"><span class="person-surname">Riesel</span> and <span class="person-surname">Göhl</span>, equations (4)–(5)</a> · <a href="https://dlmf.nist.gov/8.9" target="_blank" rel="noopener">NIST · continued fractions</a></p>
  </details>

@@ -5,14 +5,14 @@ if(root){
  const $=id=>document.getElementById(id),canvas=$('zeta-plot'),ctx=canvas.getContext('2d'),frame=canvas.parentElement,labels=$('zeta-axis-labels');
  const follow=$('zeta-follow'),selector=$('zeta-scene'),status=$('zeta-render-state');
  const {initExplicitPlot}=await import('./explicit-reader.mjs?v='+encodeURIComponent(version));
- let explicitPlot=null;
+ let explicitPlot=null,readingActive=true;
  function showExhibit(kind){
   const isExplicit=kind==='explicit';$('zeta-plane-panel').hidden=isExplicit;$('explicit-panel').hidden=!isExplicit;
-  $('zeta-exhibit-title').textContent=isExplicit?'Zeros into primes':'Zeta, in color';
+  $('zeta-exhibit-title').textContent=isExplicit?'Music of the primes':'Zeta, in color';
   $('zeta-plane-tab').setAttribute('aria-pressed',String(!isExplicit));$('explicit-tab').setAttribute('aria-pressed',String(isExplicit));root.dataset.exhibit=kind;
-  explicitPlot?.setActive(isExplicit);if(isExplicit)explicitPlot?.resize();
+  explicitPlot?.setActive(isExplicit&&readingActive);if(isExplicit)explicitPlot?.resize();
  }
- initExplicitPlot(root,{version}).then(plot=>{explicitPlot=plot;if(scene.exhibit==='explicit'){explicitPlot.setMode(scene.mode);explicitPlot.setActive(true);}});
+ initExplicitPlot(root,{version}).then(plot=>{explicitPlot=plot;if(scene.exhibit==='explicit'){explicitPlot.setMode(scene.mode);explicitPlot.setActive(readingActive);}});
  $('zeta-plane-tab').addEventListener('click',()=>{follow.checked=false;updateScene(scene.exhibit?scenes[3]:scene,true);requestPixels();});
  $('explicit-tab').addEventListener('click',()=>{follow.checked=false;updateScene(scenes.find(s=>s.id==='prime-inversion'),true);});
 
@@ -79,12 +79,12 @@ if(root){
  }
  try{worker=new Worker(new URL('./zeta-worker.mjs?v='+encodeURIComponent(version),import.meta.url),{type:'module'});worker.addEventListener('message',({data})=>acceptPixels(data));worker.addEventListener('error',()=>{worker.terminate();worker=null;requestPixels();},{once:true});}catch{worker=null;}
  function updateScene(next,explicit=false){
-  const changed=scene.id!==next.id;scene=next;root.dataset.scene=scene.id;selector.value=scene.id;showExhibit(scene.exhibit??'plane');if(changed&&scene.exhibit==='explicit')explicitPlot?.setMode(scene.mode);$('zeta-stage-name').textContent=scene.name;window.paperNames?.enhance?.($('zeta-stage-name'));
+  const changed=scene.id!==next.id;if(changed&&next.exhibit==='explicit')explicitPlot?.setActive(false);scene=next;root.dataset.scene=scene.id;selector.value=scene.id;showExhibit(scene.exhibit??'plane');if(changed&&scene.exhibit==='explicit')explicitPlot?.setMode(scene.mode);$('zeta-stage-name').textContent=scene.name;window.paperNames?.enhance?.($('zeta-stage-name'));
   $('zeta-stage-formula').textContent=scene.formula;window.renderMathInElement?.($('zeta-stage-formula'),{delimiters:[{left:'\\(',right:'\\)',display:false}],throwOnError:false});
   $('zeta-caption').textContent=scene.id==='zeros'&&view.ymax>=firstZeros[0]?'This higher window reaches the first nontrivial zeros. The markers give their approximate locations; the color field is evaluated independently.':scene.caption;
   draw();pointReadout();if(explicit||changed)announce(scene.name+'. '+$('zeta-caption').textContent);
  }
- function syncScroll(){if(!follow.checked)return;const trigger=innerWidth<=900?Math.min(innerHeight*.8,root.getBoundingClientRect().bottom+35):innerHeight*.33;const next=sceneAt(scenes.map(s=>document.getElementById(s.anchor)?.getBoundingClientRect().top??Infinity),trigger);if(next.id!==scene.id)updateScene(next);}
+ function syncScroll(){const trigger=innerWidth<=900?Math.min(innerHeight*.8,root.getBoundingClientRect().bottom+35):innerHeight*.33;readingActive=($('euler-product')?.getBoundingClientRect().top??Infinity)<=trigger&&($('numerical-evidence')?.getBoundingClientRect().bottom??-Infinity)>trigger;explicitPlot?.setActive(scene.exhibit==='explicit'&&readingActive);if(!follow.checked)return;const next=sceneAt(scenes.map(s=>document.getElementById(s.anchor)?.getBoundingClientRect().top??Infinity),trigger);if(next.id!==scene.id)updateScene(next);}
  addEventListener('scroll',()=>{if(!scrollFrame)scrollFrame=requestAnimationFrame(()=>{scrollFrame=0;syncScroll();});},{passive:true});
  selector.addEventListener('change',()=>{follow.checked=false;updateScene(scenes.find(s=>s.id===selector.value),true);});follow.addEventListener('change',()=>{if(follow.checked){syncScroll();announce('Following the paper.');}else announce('Manual exploration.');});
  function setView(next){view=clampView(next);labelKey='';requestPixels();updateScene(scene);}
