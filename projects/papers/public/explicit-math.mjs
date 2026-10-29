@@ -74,14 +74,15 @@ export function exactCount(x,mode='pi',midpoint=true){
 export function countLabel(n){return n+' conjugate '+(n===1?'pair':'pairs')+' · '+(2*n)+' zeros';}
 
 // The strip is a map of the published zero locations, not a new evaluation of zeta.
-export function zeroStripModel(count,zeros){
+export function zeroStripModel(count,zeros,hypothetical=null){
  if(!Number.isInteger(count)||count<0||count>zeros.length)throw new RangeError('Invalid number of included zero pairs.');
- const latest=count?zeros[count-1]:null,height=Math.max(20,latest===null?0:latest*1.06+1);
+ const latest=count?zeros[count-1]:null,height=Math.max(20,latest===null?0:latest*1.06+1,hypothetical?hypothetical.gamma*1.06+1:0);
  const raw=height/2,power=10**Math.floor(Math.log10(raw)),step=[1,2,5,10].map(v=>v*power).reduce((best,v)=>Math.abs(Math.log(v/raw))<Math.abs(Math.log(best/raw))?v:best);
  const ticks=[];for(let v=Math.ceil(-height/step)*step;v<=height+step*1e-8;v+=step)ticks.push(v===0?0:v);
  const points=[];
  zeros.forEach((gamma,index)=>{if(gamma<=height)for(const sign of [-1,1])points.push({re:.5,im:sign*gamma,index:index+1,included:index<count,latest:index===count-1});});
- return {xmin:-.25,xmax:1.25,ymin:-height,ymax:height,ticks,points,included:2*count,latest};
+ const hypotheticalPoints=hypothetical?[-1,1].flatMap(sign=>[hypothetical.beta,1-hypothetical.beta].map(re=>({re,im:sign*hypothetical.gamma}))):[];
+ return {xmin:-.25,xmax:1.25,ymin:-height,ymax:height,ticks,points,hypotheticalPoints,included:2*count,latest};
 }
 
 
@@ -109,3 +110,14 @@ export async function buildCurves(zeros,{samples=2401,onProgress=()=>{}}={}){
 }
 
 
+
+// Editorial counterfactual: four zeros counted with multiplicity, not zeta data.
+export function hypotheticalQuartet(x,beta,gamma){
+ if(!(x>=2&&x<=1e6&&beta>=.5&&beta<=.95&&gamma>=5&&gamma<=100))throw new RangeError('Outside the finite quartet experiment.');
+ const u=Math.log(x);
+ return 2*(e1Complex(-beta*u,-gamma*u)[0]+e1Complex(-(1-beta)*u,-gamma*u)[0]);
+}
+export function quartetHarmonic(x,beta,gamma){
+ if(!(x>=2&&x<=1e6&&beta>=.5&&beta<=.95&&gamma>=5&&gamma<=100))throw new RangeError('Outside the finite quartet experiment.');
+ const u=Math.log(x);return -Math.cosh((beta-.5)*u)*Math.cos(gamma*u);
+}

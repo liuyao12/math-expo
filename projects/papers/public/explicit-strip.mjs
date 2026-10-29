@@ -1,10 +1,10 @@
 // A zero-location map shares the explicit formula's count and published table.
 export function createZeroStrip(root,{model,tex}){
  const group=root.querySelector('#explicit-zero-strip'),canvas=root.querySelector('#explicit-strip-plot'),ctx=canvas.getContext('2d'),axes=root.querySelector('#explicit-strip-axes');
- let zeros=[],count=0,axisKey='',axisNodes=[];
+ let zeros=[],count=0,hypothetical=null,axisKey='',axisNodes=[];
  function draw(){
   const box=canvas.getBoundingClientRect();if(!box.width||!box.height)return;
-  const w=box.width,h=box.height,dpr=Math.min(devicePixelRatio||1,2),view=model(count,zeros);
+  const w=box.width,h=box.height,dpr=Math.min(devicePixelRatio||1,2),view=model(count,zeros,hypothetical);
   const width=Math.round(w*dpr),height=Math.round(h*dpr);if(canvas.width!==width||canvas.height!==height){canvas.width=width;canvas.height=height;}
   ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h);ctx.fillStyle='#faf9f3';ctx.fillRect(0,0,w,h);
   const left=27,right=w-6,top=19,bottom=h-35;
@@ -24,6 +24,10 @@ export function createZeroStrip(root,{model,tex}){
    ctx.beginPath();ctx.arc(px(p.re),py(p.im),3.2,0,2*Math.PI);ctx.fillStyle='#ac532f';ctx.fill();
    ctx.beginPath();ctx.arc(px(p.re),py(p.im),5.5,0,2*Math.PI);ctx.strokeStyle='#825526';ctx.lineWidth=1.1;ctx.stroke();
   }
+  for(const p of view.hypotheticalPoints){
+   const x=px(p.re),y=py(p.im);ctx.beginPath();ctx.moveTo(x,y-4);ctx.lineTo(x+4,y);ctx.lineTo(x,y+4);ctx.lineTo(x-4,y);ctx.closePath();ctx.fillStyle='#77549b';ctx.fill();ctx.strokeStyle='#faf9f3';ctx.lineWidth=.7;ctx.stroke();
+  }
+  group.dataset.hypotheticalZeros=String(view.hypotheticalPoints.length);
   const key=JSON.stringify(view.ticks);
   if(key!==axisKey){
    axes.replaceChildren();axisNodes=[];axisKey=key;
@@ -37,9 +41,9 @@ export function createZeroStrip(root,{model,tex}){
    a.el.style.left=x+'px';a.el.style.top=y+'px';
   }
   group.dataset.height=String(view.ymax);group.dataset.includedZeros=String(view.included);group.dataset.latestIndex=String(count);group.dataset.visibleZeros=String(view.points.length);
-  canvas.setAttribute('aria-label','Published zero locations in the critical strip. '+count+' conjugate pairs, or '+view.included+' zeros, are included in the sum. Imaginary coordinates from '+(-view.ymax).toFixed(1)+' to '+view.ymax.toFixed(1)+(view.latest===null?'. No pairs selected.':'. The newest pair is ringed at plus and minus '+view.latest.toFixed(9)+'.'));
+  canvas.setAttribute('aria-label','Published zero locations in the critical strip. '+count+' conjugate pairs, or '+view.included+' published zeros, are included in the sum. '+(hypothetical?'Purple diamonds mark a separate hypothetical quartet, excluded from this count. ':'')+'Imaginary coordinates from '+(-view.ymax).toFixed(1)+' to '+view.ymax.toFixed(1)+(view.latest===null?'. No pairs selected.':'. The newest pair is ringed at plus and minus '+view.latest.toFixed(9)+'.'));
  }
  new ResizeObserver(draw).observe(canvas.parentElement);
- return{setData(data){zeros=data;axisKey='';draw();},setCount(value){if(value===count)return;count=value;draw();},draw};
+ return{setHypothesis(value){hypothetical=value;draw();},setData(data){zeros=data;axisKey='';draw();},setCount(value){if(value===count)return;count=value;draw();},draw};
 }
 

@@ -1,6 +1,6 @@
 export async function initExplicitPlot(root,{version,onManual=()=>{}}={}){
  const panel=root.querySelector('#explicit-panel');if(!panel)return null;
- const {approximation,exactCount,jumps,buildCurves,countLabel,zeroStripModel}=await import('./explicit-math.mjs?v='+encodeURIComponent(version));
+ const {approximation,exactCount,jumps,buildCurves,countLabel,zeroStripModel,hypotheticalQuartet,quartetHarmonic}=await import('./explicit-math.mjs?v='+encodeURIComponent(version));
  const $=id=>root.querySelector('#'+id),canvas=$('explicit-plot'),ctx=canvas.getContext('2d'),axes=$('explicit-axes'),slider=$('explicit-pairs'),status=$('explicit-status');
  let zeros=[],curves=null,n=0,mode='pi',max=30,selection=10,playing=false,lastPlay=0,animation=0,pointerFrame=0,pendingX=null,w=0,h=0,scale=null,ready=false;
  let active=false,visible=false,userPaused=false,dwellUntil=0,cycles=0;
@@ -9,6 +9,8 @@ export async function initExplicitPlot(root,{version,onManual=()=>{}}={}){
  const number=x=>String(Number(x.toFixed(5)));
  const {createZeroStrip}=await import('./explicit-strip.mjs?v='+encodeURIComponent(version));
  const strip=createZeroStrip(root,{model:zeroStripModel,tex});
+ const {createZeroExperiment}=await import('./explicit-experiment.mjs?v='+encodeURIComponent(version));
+ const experiment=createZeroExperiment(root,{tex,quartet:hypotheticalQuartet,harmonic:quartetHarmonic,onChange(value){hold();strip.setHypothesis(value);$('explicit-hypothetical-key').hidden=!value;}});
  function motionStatus(){
   panel.dataset.motion=playing?'playing':userPaused?'paused':'idle';
   panel.dataset.cycle=String(cycles);
@@ -23,7 +25,7 @@ export async function initExplicitPlot(root,{version,onManual=()=>{}}={}){
  function setActive(next){
   if(active===next)return;active=next;
   if(!active){stop();return;}
-  n=0;userPaused=reduced;dwellUntil=performance.now()+600;update();start();
+  n=0;userPaused=reduced||experiment.isOpen;dwellUntil=performance.now()+600;update();start();
   if(reduced&&ready)status.textContent='Autoplay paused for reduced motion · press Play pairs to start';
  }
  function valueAt(x){return approximation(x,n,zeros,mode);}
@@ -101,6 +103,6 @@ export async function initExplicitPlot(root,{version,onManual=()=>{}}={}){
   function failed(error){status.textContent='The approximation could not be prepared. Reload to try again.';panel.dataset.error=error.message;}
   try{worker=new Worker(new URL('./explicit-worker.mjs?v='+encodeURIComponent(version),import.meta.url),{type:'module'});worker.addEventListener('message',({data})=>{if(data.kind==='ready'){accept(data);worker.terminate();}else if(data.kind==='progress')progress(data.n);else if(data.kind==='error'){worker.terminate();failed(Error(data.message));}});worker.addEventListener('error',()=>{worker.terminate();fallback();},{once:true});worker.postMessage({zeros});}catch{fallback();}
  }catch(error){status.textContent=error.message;panel.dataset.error=error.message;}
- return{setMode,setActive,stop,resize:()=>{plot();strip.draw();},get ready(){return ready;}};
+ return{setMode,setActive,stop,openExperiment:()=>experiment.open(),resize:()=>{plot();strip.draw();experiment.draw();},get ready(){return ready;}};
 }
 

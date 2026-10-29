@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {spawnSync} from 'node:child_process';
-import {approximation,e1Complex,exactCount,mobius,buildCurves,zeroPair,primePowers,MOBIUS_TERMS,zeroStripModel} from '../public/explicit-math.mjs';
+import {approximation,e1Complex,exactCount,mobius,buildCurves,zeroPair,primePowers,MOBIUS_TERMS,zeroStripModel,hypotheticalQuartet,quartetHarmonic} from '../public/explicit-math.mjs';
 const root=new URL('../',import.meta.url),read=p=>fs.readFileSync(new URL(p,root),'utf8');
 const data=JSON.parse(read('public/zeta-zeros-200.json')),zeros=data.ordinates;
 assert.equal(zeros.length,200);assert.equal(zeros[0],14.134725142);assert.equal(zeros[199],396.381854223);assert(zeros.every((v,i)=>v>0&&(!i||v>zeros[i-1])));
@@ -44,8 +44,29 @@ for(const id of ['explicit-pairs','explicit-mode','explicit-range','explicit-pla
 for(const text of ['Odlyzko','midpoint','cutoff fixed','no certified bound','Möbius'])assert(html.includes(text),text);
 assert.equal(read('dist/riemann-1859/explicit-reference-values.json'),read('src/sources/explicit-reference-values.json'));
 assert.equal(read('dist/zeta-zeros-200.json'),read('public/zeta-zeros-200.json'));
-for(const file of ['explicit-math.mjs','explicit-reader.mjs','explicit-strip.mjs','explicit-worker.mjs','zeta-reader.mjs']){
+for(const file of ['explicit-math.mjs','explicit-reader.mjs','explicit-strip.mjs','explicit-experiment.mjs','explicit-worker.mjs','zeta-reader.mjs']){
  const r=spawnSync(process.execPath,['--check',new URL('public/'+file,root).pathname],{encoding:'utf8'});assert.equal(r.status,0,r.stderr);
 }
 console.log('Validated 200 sourced zero pairs, '+ref.values.length+' independent 60-digit finite-formula checks in both counting modes (maximum absolute error '+worst.toExponential(3)+'), complex Ei branches, fixed-cutoff Möbius inversion, half-values at prime powers, worker prefix curves, nonmonotone truncation errors, and all 201 synchronized critical-strip camera and zero-inclusion states.');
 
+
+// Direct high-precision Ei values check the counterfactual, separately from zeta data.
+const quartetReferences=JSON.parse(read('src/sources/hypothetical-reference-values.json'));let quartetWorst=0;
+for(const p of quartetReferences.values){
+ const x=Number(p.x),b=Number(p.beta),g=Number(p.gamma);
+ for(const [actual,expected] of [[hypotheticalQuartet(x,b,g),Number(p.count)],[quartetHarmonic(x,b,g),Number(p.harmonic)]]){
+  const error=Math.abs(actual-expected)/Math.max(1,Math.abs(expected));quartetWorst=Math.max(quartetWorst,error);assert(error<2e-11,JSON.stringify({p,actual,error}));
+ }
+ if(b===.5)assert(Math.abs(hypotheticalQuartet(x,b,g)+2*zeroPair(Math.log(x),g))<1e-10);
+ if(x>2&&x<1e6){const dx=x*1e-5,derivative=(hypotheticalQuartet(x+dx,b,g)-hypotheticalQuartet(x-dx,b,g))/(2*dx);assert(Math.abs(derivative-4*quartetHarmonic(x,b,g)/(Math.sqrt(x)*Math.log(x)))<2e-5);}
+}
+for(const b of [.5,.75,.95]){
+ const v=zeroStripModel(0,zeros,{beta:b,gamma:100});assert.equal(v.included,0);assert.equal(v.hypotheticalPoints.length,4);assert(v.ymax>100);
+ assert(v.hypotheticalPoints.every(p=>v.hypotheticalPoints.some(q=>q.re===p.re&&q.im===-p.im)));
+ for(const p of v.hypotheticalPoints)assert(v.hypotheticalPoints.some(q=>Math.abs(q.re-(1-p.re))<1e-12&&q.im===p.im));
+}
+assert.throws(()=>hypotheticalQuartet(1,.75,20.5),RangeError);
+assert.throws(()=>quartetHarmonic(100,.99,20.5),RangeError);
+assert(html.includes('The Riemann hypothesis</h3>'));assert(html.includes('data-zero-experiment'));assert(html.includes('two coincident conjugate pairs'));
+assert.equal(read('dist/riemann-1859/hypothetical-reference-values.json'),read('src/sources/hypothetical-reference-values.json'));
+console.log(`Validated ${quartetReferences.values.length} independent 60-digit hypothetical-quartet references (maximum normalized error ${quartetWorst.toExponential(3)}), count-to-density derivatives, centered multiplicity, and both zero symmetries.`);

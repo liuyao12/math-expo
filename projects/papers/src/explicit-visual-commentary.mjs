@@ -2,7 +2,7 @@ const m=String.raw;
 export const explicitVisualContribution={
  id:'explicit-formula-1859',kind:'interactive',work:'riemann-1859',
  title:'Music of the primes',anchors:['formula','mobius','density'],
- scope:'Finite conjugate-pair truncations of Riemann’s corrected weighted prime-power formula and its fixed six-term Möbius inversion for real x from 2 to 100, with a synchronized expanding map of the included conjugate zero pairs.',
+ scope:'Finite conjugate-pair truncations of Riemann’s corrected weighted prime-power formula and its fixed six-term Möbius inversion for real x from 2 to 100, with a synchronized expanding map of the included conjugate zero pairs and an optional, explicitly hypothetical symmetry-quartet experiment.',
  sources:[
   {title:'Odlyzko · published zeta-zero table',url:'https://www-users.cse.umn.edu/~odlyzko/zeta_tables/'},
   {title:'Riesel and Göhl · normalized explicit formula, equations (4)–(5)',url:'https://doi.org/10.1090/S0025-5718-1970-0277489-3'},
@@ -31,12 +31,30 @@ export function explicitVisualHTML(){return m`
  <div id="explicit-zero-strip" class="explicit-strip-figure" role="group" aria-labelledby="explicit-strip-title">
   <span class="explicit-plot-label" id="explicit-strip-title">Critical strip</span>
   <div class="explicit-strip-frame"><canvas id="explicit-strip-plot" width="150" height="300" role="img" aria-label="Published zero locations in the critical strip. The view expands as more conjugate pairs enter the sum."></canvas><div id="explicit-strip-axes" aria-hidden="true"></div></div>
-  <div class="explicit-strip-key"><span><i class="strip-used"></i>In sum</span><span><i></i>Unused</span></div>
+  <div class="explicit-strip-key"><span><i class="strip-used"></i>In sum</span><span><i></i>Unused</span><span id="explicit-hypothetical-key" hidden><i class="strip-hypothetical"></i>Hypothetical</span></div>
   <p class="explicit-strip-caption">Newest pair ringed</p>
  </div>
  </div>
  <p id="explicit-truncation" class="explicit-explainer">The loop starts at this passage. Pause or move the slider to hold the sum. Dots mark prime midpoints; finite sums can overshoot.</p>
  <div id="explicit-readout" class="explicit-readout"></div>
+ <details id="zero-experiment" class="zero-experiment">
+  <summary>What if a zero were off the line?</summary>
+  <p class="experiment-credit">Editorial experiment · <a href="#hypothesis">Riemann’s conjecture →</a></p>
+  <p>Move a hypothetical quartet away from the critical line. Purple diamonds show the proposed positions; the recorded zeros and prime staircase above remain fixed.</p>
+  <div class="experiment-controls">
+   <label for="experiment-beta">Real part <span>\(\beta\)</span><output id="experiment-beta-value"></output><input id="experiment-beta" type="range" min="0.5" max="0.95" step="0.01" value="0.75"></label>
+   <label for="experiment-gamma">Height <span>\(\gamma\)</span><input id="experiment-gamma" type="number" min="5" max="100" step="0.1" value="20.5" required></label>
+   <label for="experiment-view">Show<select id="experiment-view"><option value="harmonic">Density harmonics</option><option value="count">Weighted count contribution</option></select></label>
+   <label for="experiment-window">Window<select id="experiment-window"><option value="100">Nearby</option><option value="10000" selected>Larger</option><option value="1000000">Larger still</option></select></label>
+  </div>
+  <div id="experiment-positions" class="experiment-math"></div>
+  <div class="experiment-frame"><canvas id="experiment-plot" width="440" height="200" tabindex="0" role="img" aria-label="Contribution of a hypothetical quartet compared with the same four zeros on the critical line. The horizontal axis is logarithmic. Left and right arrows inspect the curve."></canvas><div id="experiment-axes" aria-hidden="true"></div></div>
+  <div class="experiment-legend"><span><i></i>Hypothetical quartet</span><span><i class="centered-key"></i>Centered reference</span></div>
+  <p id="experiment-meaning"></p><div id="experiment-formula" class="experiment-math"></div><div id="experiment-readout" class="experiment-math"></div>
+  <p>In density mode, \(H_\beta(x)=\tfrac14\sqrt{x}\log x\,Q_\beta\prime(x)\). The same factor is used for both models; the plotted envelope is \(\cosh((\beta-\tfrac12)\log x)\).</p>
+  <p>The quartet is \(\beta\pm i\gamma,\ (1-\beta)\pm i\gamma\). The centered comparison puts those same four zeros on the line: two coincident conjugate pairs, counted with multiplicity. It is not one simple pair.</p>
+  <p>This compares individual terms of the formula, not alternative prime numbers or an altered zeta function. The chosen positions, including low heights, are hypothetical. Riemann allows off-line zeros in his formula but does not explicitly develop this experiment. <a href="https://dlmf.nist.gov/25.10" target="_blank" rel="noopener">Zero symmetries · NIST</a> · <a href="hypothetical-reference-values.json">Independent numerical checks</a></p>
+ </details>
  <details class="explicit-inspect"><summary>Inspect an input</summary><form id="explicit-inspect-form"><label for="explicit-x">\(x\)<input id="explicit-x" type="number" min="2" max="30" step="any" value="10" required></label><button type="submit">Inspect</button></form></details>
  <details class="explicit-method"><summary>The formula, zero data &amp; conventions</summary>
   <p>Riemann’s weighted count \(f(x)\) gives weight \(1/k\) to a prime power \(p^k\), with half that weight at its jump. The colored curve keeps the first \(N\) positive zero heights and their conjugates:</p>

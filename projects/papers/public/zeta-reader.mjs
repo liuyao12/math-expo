@@ -5,14 +5,15 @@ if(root){
  const $=id=>document.getElementById(id),canvas=$('zeta-plot'),ctx=canvas.getContext('2d'),frame=canvas.parentElement,labels=$('zeta-axis-labels');
  const follow=$('zeta-follow'),selector=$('zeta-scene'),status=$('zeta-render-state');
  const {initExplicitPlot}=await import('./explicit-reader.mjs?v='+encodeURIComponent(version));
- let explicitPlot=null,readingActive=true;
+ let explicitPlot=null,readingActive=true,experimentRequested=false;
  function showExhibit(kind){
   const isExplicit=kind==='explicit';$('zeta-plane-panel').hidden=isExplicit;$('explicit-panel').hidden=!isExplicit;
   $('zeta-exhibit-title').textContent=isExplicit?'Music of the primes':'Zeta, in color';
   $('zeta-plane-tab').setAttribute('aria-pressed',String(!isExplicit));$('explicit-tab').setAttribute('aria-pressed',String(isExplicit));root.dataset.exhibit=kind;
   explicitPlot?.setActive(isExplicit&&readingActive);if(isExplicit)explicitPlot?.resize();
  }
- initExplicitPlot(root,{version}).then(plot=>{explicitPlot=plot;if(scene.exhibit==='explicit'){explicitPlot.setMode(scene.mode);explicitPlot.setActive(readingActive);}});
+ initExplicitPlot(root,{version}).then(plot=>{explicitPlot=plot;if(experimentRequested)plot.openExperiment();if(scene.exhibit==='explicit'){explicitPlot.setMode(scene.mode);explicitPlot.setActive(readingActive);}});
+ document.addEventListener('click',event=>{if(event.target.closest('[data-zero-experiment]')){experimentRequested=true;follow.checked=true;explicitPlot?.openExperiment();}});
  $('zeta-plane-tab').addEventListener('click',()=>{follow.checked=false;updateScene(scene.exhibit?scenes[3]:scene,true);requestPixels();});
  $('explicit-tab').addEventListener('click',()=>{follow.checked=false;updateScene(scenes.find(s=>s.id==='prime-inversion'),true);});
 
