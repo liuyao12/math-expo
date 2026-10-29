@@ -13,7 +13,13 @@ if(root){
   explicitPlot?.setActive(isExplicit&&readingActive);if(isExplicit)explicitPlot?.resize();
  }
  initExplicitPlot(root,{version}).then(plot=>{explicitPlot=plot;if(experimentRequested)plot.openExperiment();if(scene.exhibit==='explicit'){explicitPlot.setMode(scene.mode);explicitPlot.setActive(readingActive);}});
- document.addEventListener('click',event=>{if(event.target.closest('[data-zero-experiment]')){experimentRequested=true;follow.checked=true;explicitPlot?.openExperiment();}});
+ document.addEventListener('click',event=>{
+  if(!event.target.closest('[data-zero-experiment]'))return;
+  event.preventDefault();experimentRequested=true;follow.checked=true;
+  updateScene(scenes.find(s=>s.id==='prime-inversion'));explicitPlot?.openExperiment();
+  if(location.hash!=='#density')history.pushState(null,'','#density');
+  $('density').scrollIntoView({block:'start',behavior:'instant'});syncScroll();
+ });
  $('zeta-plane-tab').addEventListener('click',()=>{follow.checked=false;updateScene(scene.exhibit?scenes[3]:scene,true);requestPixels();});
  $('explicit-tab').addEventListener('click',()=>{follow.checked=false;updateScene(scenes.find(s=>s.id==='prime-inversion'),true);});
 
