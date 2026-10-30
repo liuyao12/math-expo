@@ -1,4 +1,6 @@
 import assert from 'node:assert/strict';
+import {spawnSync} from 'node:child_process';
+import {squareRootLift} from '../public/surfaces-math.mjs';
 import fs from 'node:fs';
 import {createHash} from 'node:crypto';
 import {passages1851,sections1851,synopsis1851} from '../src/riemann-1851.mjs';
@@ -59,3 +61,18 @@ for(const eps of [.1,.01,.001]){
  near(energy,length*J*J/eps);
 }
 console.log(`Validated all 22 German source sections and translated sections, nine author footnotes, source contents, eight figures, nine reconstructions, reciprocal citation links, and ${samples} disk-map examples.`);
+
+// Check the actual lifted path, including the sheet change at the chosen seam.
+for(let degree=0;degree<=720;degree++){
+ const p=squareRootLift(degree/360),squared=mul(p.w,p.w);near(squared[0],p.z[0]);near(squared[1],p.z[1]);near(norm2(p.w),1);
+ assert.equal(p.sheet,degree===720?1:degree<360?1:2);
+}
+const initial=squareRootLift(0),once=squareRootLift(1),twice=squareRootLift(2);
+for(let k=0;k<2;k++){near(once.z[k],initial.z[k]);near(once.w[k],-initial.w[k]);near(twice.w[k],initial.w[k]);}
+const before=squareRootLift(1-1e-7),after=squareRootLift(1+1e-7);assert(Math.hypot(after.w[0]-before.w[0],after.w[1]-before.w[1])<1e-6);
+assert.throws(()=>squareRootLift(-1),RangeError);assert.throws(()=>squareRootLift(Infinity),RangeError);
+for(const id of ['root-lift-demo','root-lift-progress','root-z-point','root-w-point'])assert(html.includes(`id="${id}"`));
+assert(html.includes('surfaces-reader.mjs?v='));assert(html.includes('surfaces-reader.css?v='));assert(html.includes('branching belongs to the projection'));
+assert(!fs.readFileSync(new URL('../dist/riemann-1859/index.html',import.meta.url),'utf8').includes('surfaces-reader.mjs'));
+for(const file of ['surfaces-reader.mjs','surfaces-math.mjs'])assert.equal(spawnSync(process.execPath,['--check',new URL('../public/'+file,import.meta.url).pathname],{encoding:'utf8'}).status,0);
+console.log('Validated 721 square-root lifting states, continuity across the seam, one-circuit sign change, two-circuit return, and isolated dissertation assets.');
