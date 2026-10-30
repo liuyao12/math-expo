@@ -1,12 +1,6 @@
 // Access describes the linked source, not a license to republish its text.
 // These are companion relationships, not inferred citation-index edges.
 export const authoredCommentaries=[
- {id:'tao-2013',works:['riemann-1859','weil-1949'],author:'Terence Tao',year:2013,
-  title:'The Riemann hypothesis in various settings',publication:'What’s new, 19 July 2013',kind:'Modern exposition',access:'Complete HTML article',html:'tao-2013.html',
-  url:'https://terrytao.wordpress.com/2013/07/19/the-riemann-hypothesis-in-various-settings/',
-  scope:'A broader modern exposition connecting zeta zeros, prime counting, and finite-field analogues. It goes beyond both historical papers and is not presented as their original scope.',
-  evidence:'https://terrytao.wordpress.com/about/',verification:'Complete authored post extracted from the source, excluding reader comments and site widgets; all 866 formula images recovered as LaTeX. The author explicitly permits copying a single article with a source credit.',
-  permission:'https://terrytao.wordpress.com/about/'},
  {id:'goresky-2018',works:['weil-1949'],author:'Mark Goresky',year:2018,
   title:'Commentary on “Numbers of solutions of equations in finite fields” by André Weil',
   publication:'Bulletin of the AMS 55 (2018), pp. 327–329',kind:'Essay',access:'Publisher-hosted article',
@@ -47,3 +41,12 @@ export const authoredCommentaries=[
 
 export const commentariesFor=id=>authoredCommentaries.filter(c=>c.works.includes(id));
 
+
+// Broader exposition is kept separate from a reading of a specific paper.
+export const furtherReading=[ {id:'tao-2013',works:['riemann-1859','weil-1949'],author:'Terence Tao',year:2013,
+  title:'The Riemann hypothesis in various settings',publication:'What’s new, 19 July 2013',kind:'Modern exposition',access:'Complete HTML article',html:'tao-2013.html',
+  url:'https://terrytao.wordpress.com/2013/07/19/the-riemann-hypothesis-in-various-settings/',
+  scope:'A broader modern exposition connecting zeta zeros, prime counting, and finite-field analogues. It goes beyond both historical papers and is not presented as their original scope.',
+  evidence:'https://terrytao.wordpress.com/about/',verification:'Complete authored post extracted from the source, excluding reader comments and site widgets; all 866 formula images recovered as LaTeX. The author explicitly permits copying a single article with a source credit.',
+  permission:'https://terrytao.wordpress.com/about/'}].map(c=>({...c,relation:'further-reading',checked:'2026-10-30',reuse:'Complete single article reproduced under the author’s express reuse permission; source URL credited.'}));
+export const furtherReadingFor=id=>furtherReading.filter(c=>c.works.includes(id));

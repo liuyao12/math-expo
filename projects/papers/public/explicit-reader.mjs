@@ -4,6 +4,7 @@ export async function initExplicitPlot(root,{version,onManual=()=>{}}={}){
  const $=id=>root.querySelector('#'+id),canvas=$('explicit-plot'),ctx=canvas.getContext('2d'),axes=$('explicit-axes'),slider=$('explicit-pairs'),status=$('explicit-status');
  let zeros=[],curves=null,n=0,mode='pi',max=30,selection=10,playing=false,lastPlay=0,animation=0,pointerFrame=0,pendingX=null,w=0,h=0,scale=null,ready=false;
  let active=false,visible=false,userPaused=false,dwellUntil=0,cycles=0;
+ let commentarySuspended=false,resumeAfterCommentary=false;
  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
  const tex=(el,value)=>window.katex?window.katex.render(value,el,{throwOnError:false}):el.textContent=value;
  const number=x=>String(Number(x.toFixed(5)));
@@ -19,12 +20,14 @@ export async function initExplicitPlot(root,{version,onManual=()=>{}}={}){
  function stop(){playing=false;cancelAnimationFrame(animation);$('explicit-play').textContent='Play pairs';motionStatus();}
  function hold(){userPaused=true;stop();}
  function start(){
-  if(playing||!ready||!active||!visible||document.hidden||userPaused)return;
+  if(playing||!ready||!active||!visible||document.hidden||userPaused||commentarySuspended)return;
   playing=true;$('explicit-play').textContent='Pause';lastPlay=0;motionStatus();animation=requestAnimationFrame(animate);
  }
  function setActive(next){
+  if(commentarySuspended)return;
   if(active===next)return;active=next;
   if(!active){stop();return;}
+  if(resumeAfterCommentary){resumeAfterCommentary=false;update();start();return;}
   n=0;userPaused=reduced||experiment.isOpen;dwellUntil=performance.now()+600;update();start();
   if(reduced&&ready)status.textContent='Autoplay paused for reduced motion · press Play pairs to start';
  }
@@ -91,6 +94,12 @@ export async function initExplicitPlot(root,{version,onManual=()=>{}}={}){
  canvas.addEventListener('pointermove',e=>{if(!scale)return;const rect=canvas.getBoundingClientRect();pendingX=2+(e.clientX-rect.left-scale.left)/(scale.right-scale.left)*(max-2);if(!pointerFrame)pointerFrame=requestAnimationFrame(()=>{pointerFrame=0;select(Math.round(pendingX*10)/10);});});
  canvas.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;e.preventDefault();select(e.key==='Home'?2:e.key==='End'?max:Math.round((selection+(e.key==='ArrowLeft'?-.1:.1))*10)/10);});
  new ResizeObserver(()=>plot()).observe(canvas.parentElement);
+ // Opening another reading pane suspends this exhibit without treating its
+ // return as a new scroll entry, which would reset the chosen zero count.
+ window.addEventListener('paper:commentary-mode',event=>{
+  if(event.detail.open){resumeAfterCommentary=active;commentarySuspended=true;active=false;stop();}
+  else commentarySuspended=false;
+ });
  document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();else start();});
  new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible)start();else stop();},{threshold:0}).observe(panel);
  function progress(v){status.textContent='Preparing zero contributions · '+v+' / 200 pairs';}
