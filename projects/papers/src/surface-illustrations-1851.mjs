@@ -1,15 +1,22 @@
 const m=String.raw;
 const label=(tex,x,y)=>m`<span class="surface-label" style="left:${x}%;top:${y}%" aria-hidden="true">\(${tex}\)</span>`;
 export const sheetsIllustration1851=m`<figure class="margin-figure surface-illustration">
- <div id="sheet-joining-picture" class="surface-diagram"><svg viewBox="0 0 320 240" role="img" aria-label="Two copies of a disk slit to the right of their centers. The upper bank of the first joins the lower bank of the second, and the lower bank joins the upper. The two drawn centers represent one surface point."><g fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
- <circle cx="80" cy="65" r="44" fill="#edf0e5" stroke="#a4b19b"/><circle cx="225" cy="175" r="44" fill="#edf0e5" stroke="#a4b19b"/>
- <path d="M80 65h44M225 175h44" stroke="#faf9f3" stroke-width="8"/>
- <path d="M80 62h44M225 178h44" stroke="#a55c39" stroke-width="2.5"/><path d="M80 68h44M225 172h44" stroke="#397d69" stroke-width="2.5"/>
- <path d="M124 62C230 25 300 110 269 178" stroke="#a55c39" stroke-dasharray="4 4"/><path d="M124 68C140 160 165 225 269 172" stroke="#397d69" stroke-dasharray="4 4"/>
- <path d="M270 163l-1 15 10-9M256 173l13-1-8 10" stroke="#775f42"/>
- <circle cx="80" cy="65" r="3" fill="#34482e" stroke="#34482e"/><circle cx="225" cy="175" r="3" fill="#34482e" stroke="#34482e"/>
- </g></svg>${label('S_1',25,7)}${label('S_2',70,98)}${label('z=0',19,39)}${label('z=0',65,84)}${label('\\mathrm A',38,20)}${label('\\mathrm B',35,35)}${label('\\mathrm B',85,65)}${label('\\mathrm A',87,80)}</div>
- <figcaption>The matching banks join crosswise. The two drawn centers represent <em>one</em> winding point on the surface. The slit is a chosen seam; the gaps and separated sheets are drawing conventions.</figcaption>
+ <div id="sheet-joining-picture" class="surface-diagram"><svg viewBox="0 0 340 190" role="img" aria-label="The two-sheet case of Riemann's winding point. Two disks are slit from their centers to the right edge. Bank A on the first disk matches bank A on the second; the two B banks also match. Curved arrows show one circuit on each sheet, interrupted at the slit. The two marked centers are identified as one surface point.">
+ <defs><pattern id="sheet-ink-hatching" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(30)"><path d="M0 0V5" stroke="#827968" stroke-width=".45"/></pattern></defs>
+ <g stroke="#565044" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="82" cy="94" r="59" fill="#f8f6f0" stroke-width="1.25"/>
+  <circle cx="258" cy="94" r="59" fill="#f8f6f0" stroke-width="1.25"/>
+  <path d="M27 113A59 59 0 0 0 126 137A63 63 0 0 1 27 113M203 113A59 59 0 0 0 302 137A63 63 0 0 1 203 113" fill="url(#sheet-ink-hatching)" stroke="none" opacity=".6"/>
+  <path d="M82 94h60M258 94h60" stroke="#f8f6f0" stroke-width="9"/>
+  <path d="M82 90h59M258 98h59" stroke="#a55c39" stroke-width="1.8"/>
+  <path d="M82 98h59M258 90h59" stroke="#397d69" stroke-width="1.8"/>
+  <path d="M114 82A34 34 0 1 0 114 106M290 82A34 34 0 1 0 290 106" fill="none" stroke-width="1.1"/>
+  <path d="M108 109 114 106 115 113M284 109 290 106 291 113" fill="none" stroke-width="1.1"/>
+  <circle cx="82" cy="94" r="2.6" fill="#565044"/>
+  <circle cx="258" cy="94" r="2.6" fill="#565044"/>
+ </g></svg>${label('S_1',24,9)}${label('S_2',76,9)}${label('\\sigma',21,57)}${label('\\sigma',73,57)}${label('\\mathrm A',38,40)}${label('\\mathrm B',38,59)}${label('\\mathrm B',90,40)}${label('\\mathrm A',90,59)}</div>
+ <div class="surface-coordinate-formula">\(S_1\xrightarrow{\text{one circuit}}S_2\xrightarrow{\text{one circuit}}S_1\)</div>
+ <figcaption>The two-sheet cycle in §5. Join each bank \(\mathrm A\) to \(\mathrm A\), and \(\mathrm B\) to \(\mathrm B\): crossing the seam continues the path on the other sheet. One circuit about \(\sigma\) changes sheets; the next returns. The two marked centers are <em>one</em> winding point. The slit and the separation on the page are drawing conventions.</figcaption>
  <section id="root-lift-demo" class="root-lift-demo" aria-labelledby="root-lift-title" data-turns="0">
   <h4 id="root-lift-title">Follow one point around the branch</h4><p class="surface-editorial">Editorial example for §5 · \(w^2=z\)</p>
   <div class="root-lift-plots"><svg viewBox="0 0 320 205" role="img" id="root-lift-plot" aria-label="A loop around zero in the z-plane and its continuously followed square root in the w-plane. One z circuit reaches the other root; two return to the starting root.">
@@ -38,23 +45,4 @@ export const coordinateIllustration1851=m`<figure class="margin-figure surface-i
  <div class="surface-coordinate-formula">\(\zeta=(z-z_0)^{1/2},\quad z=z_0+\zeta^2\)</div>
  <figcaption>The two-sheet case of §14. The four colored half-sheets become four consecutive quarter-sectors of <em>one</em> coordinate disk. The root \(\zeta\) is single-valued on this surface neighborhood.</figcaption>
  <p class="surface-coordinate-note">At its center the surface is regular in \(\zeta\). The projection \(z=z_0+\zeta^2\) has zero derivative there: the branching belongs to the projection. Separated pieces in the drawing do not represent cracks in the surface.</p>
-</figure>`;
-
-export const connectivityIllustration1851=m`<figure class="margin-figure surface-illustration">
- <div id="connectivity-handle-picture" class="surface-diagram"><svg viewBox="0 0 340 240" role="img" aria-label="A simple pen-and-ink sketch of one flat surface with a low arching handle. Both ends of the handle merge into the same sheet; the surface remains visible through the tunnel below.">
- <defs>
-  <pattern id="handle-hatching" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(24)"><path d="M0 0V5" stroke="#746f61" stroke-width=".5"/></pattern>
- </defs>
- <path d="M22 148Q130 133 243 117L319 169Q197 191 83 211Z" fill="#f8f6f0" stroke="#575348" stroke-width="1.1" stroke-linejoin="round"/>
- <path d="M112 160Q163 142 228 156Q224 165 217 174Q164 170 123 181Z" fill="url(#handle-hatching)" opacity=".35"/>
- <path d="M80 162C90 153 90 145 90 128C90 49 217 39 238 117C244 141 248 151 266 156L228 172C207 164 213 145 205 124C190 87 136 91 125 128C119 146 127 160 115 174Z" fill="#f8f6f0"/>
- <path d="M88 159C101 148 99 134 101 122C111 66 202 59 226 116C238 145 237 154 250 163L228 172C207 164 213 145 205 124C190 87 136 91 125 128C119 146 127 160 115 174Z" fill="url(#handle-hatching)" opacity=".32"/>
- <g fill="none" stroke="#514e44" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M80 162C90 153 90 145 90 128C90 49 217 39 238 117C244 141 248 151 266 156" stroke-width="1.5"/>
-  <path d="M115 174C127 160 119 146 125 128C136 91 190 87 205 124C213 145 207 164 228 172" stroke-width="1.5"/>
-  <path d="M93 156C106 139 102 121 113 103M99 162C112 145 109 130 117 115M106 166C117 151 114 139 120 126" stroke-width=".55"/>
-  <path d="M222 107C233 128 229 150 242 159M217 116C226 133 222 152 235 164" stroke-width=".5"/>
-  <path d="M129 161Q165 155 199 158" stroke-width=".5" opacity=".45"/>
- </g></svg></div>
- <figcaption>One sheet with a handle: the arch joins back into the same surface, and the surface continues beneath it. The outer edge is its only boundary. An editorial mental picture for §6’s connectivity discussion; the shading gives depth, not geometric data.</figcaption>
 </figure>`;
