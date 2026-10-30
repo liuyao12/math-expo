@@ -1,3 +1,4 @@
+import './check-weil-1949.mjs';
 import './check-explicit.mjs';
 import './check-zeta-visual.mjs';
 import './check-cartan-1913.mjs';

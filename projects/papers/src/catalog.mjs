@@ -1,3 +1,4 @@
+import {weilWorks,weilPeople,weilConcepts,weilBibliography,weilCitations,weilExternalReferences} from './weil-catalog.mjs';
 import {conceptsCartan1913,externalReferencesCartan1913} from './cartan-1913-catalog.mjs';
 import {attachTextCoverage} from './text-coverage.mjs';
 import {representationWorks,representationPeople,representationBibliography,representationEnglish,representationCitations,conceptsLie1874} from './representation-catalog.mjs';
@@ -46,6 +47,7 @@ worksPoincare.find(w=>w.id==='poincare-1902-surfaces').citationChecked='26 Octob
 // A work record exists independently of whether we have edited its text.
 // Titles are our English renderings; original titles identify the source edition.
 export const works = [
+  ...weilWorks,
   ...representationWorks,
   work1857,
   ...worksPoincare,
@@ -121,9 +123,11 @@ export const works = [
 ];
 
 works.find(w=>w.id==='cartan-1913').externalReferences=externalReferencesCartan1913;
+works.find(w=>w.id==='weil-1949').externalReferences=weilExternalReferences;
 attachTextCoverage(works);
 
 export const people = [
+  ...weilPeople,
   ...representationPeople,
   ...people1899,
   ...people1895,
@@ -158,6 +162,7 @@ existingWeierstrass.bibliography=[...(existingWeierstrass.bibliography??[]),...w
 // Only direct, checked work-to-work citations belong here. Reverse lists are
 // derived from these edges; related works and editorial sources stay separate.
 export const citations = [
+  ...weilCitations,
   ...representationCitations,
   ...citations1902,
   ...citations1857,
@@ -172,6 +177,7 @@ export const citations = [
 ];
 
 export const concepts = [
+  ...weilConcepts,
   ...conceptsCartan1913,
   ...conceptsLie1874,
   ...concepts1902,
@@ -226,6 +232,7 @@ export const concepts = [
 ];
 
 export const bibliographicFields = {
+  ...weilBibliography,
   ...representationBibliography,
   'riemann-1857':bibliography1857,
   ...bibliographyPoincare,

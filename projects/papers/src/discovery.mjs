@@ -1,8 +1,10 @@
+import {weilTerms} from './weil-catalog.mjs';
 import {representationTerms} from './representation-catalog.mjs';
 import {discoveryPoincare} from './poincare-catalog.mjs';
 // Editorial discovery terms. These identify the subject for modern readers;
 // they are not substituted into the author's text or definitions.
 export const discoveryTerms={
+ ...weilTerms,
  ...representationTerms,
  ...discoveryPoincare,
  'euler-1740':['Basel problem','reciprocal series','sine product','zeta values','Dirichlet beta values','Newton identities'],
