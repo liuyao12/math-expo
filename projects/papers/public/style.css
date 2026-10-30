@@ -150,3 +150,5 @@ cite.work-title{font-style:italic}.entity-link.work-link,.work-record h3,.paper-
 .reader:has(.source-weight-table) .reading-nav{max-height:calc(100vh - 36px);overflow-y:auto;scrollbar-width:thin}
 @media(max-width:1000px){.reader:has(.source-weight-table) .reading-nav{max-height:none;overflow:visible}}
 @media(max-width:700px){.source-weight-table{font-size:15px}.source-weight-table td,.source-weight-table th{padding:10px}.source-table-wrap{margin-block:18px}}
+
+.parallel-entry{display:flex;flex-direction:column;gap:6px;margin:22px 0;padding:16px 18px;border:1px solid #c9d1bf;background:#eff1e8;font:13px/1.6 var(--sans)}.parallel-entry span{color:var(--muted);font-size:11px}.record-commentary{font:11px/1.6 var(--sans);color:var(--green);margin-top:8px}
