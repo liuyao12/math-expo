@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {createHash} from 'node:crypto';
+import {commentariesFor} from '../src/authored-commentaries.mjs';
 import {works} from '../src/catalog.mjs';
 import {textCoverage,textCoveragePolicy} from '../src/text-coverage.mjs';
 import {passagesCartan1913} from '../src/cartan-1913.mjs';
@@ -16,12 +17,22 @@ for(const w of works){
  const progress=`<progress max="100" value="${c.percent}"`;
  for(const html of [catalogue,page,...w.authors.map(id=>read('dist/people/'+id+'/index.html'))]){
   assert(html.includes(`data-completion-work="${w.id}" data-completion-status="${c.status}"`));
-  assert(html.includes(progress));
+  if(html===page||c.status==='partial')assert(html.includes(progress));
+  else {assert(html.includes(c.percent===100?'completion-complete':'completion-empty'));}
  }
  assert.equal((page.match(/<progress /g)||[]).length,1);assert(page.includes('What this percentage measures'));
  assert(page.includes('External PDFs and commentary do not contribute'));
 }
-assert.equal((catalogue.match(/<progress /g)||[]).length,works.length);
+assert.equal((catalogue.match(/<progress /g)||[]).length,works.filter(w=>w.textCoverage.status==='partial').length);
+for(const w of works){
+ const snippet=catalogue.match(new RegExp('<article class="work-record"[^>]*data-work="'+w.id+'"[\\s\\S]*?</article>'))?.[0];assert(snippet,w.id);
+ assert.equal(snippet.includes('<progress '),w.textCoverage.status==='partial');
+ if(w.textCoverage.percent===100)assert(snippet.includes('completion-complete')&&snippet.includes('Complete text'));
+ if(w.textCoverage.percent===0)assert(snippet.includes('completion-empty')&&snippet.includes('Text not yet added'));
+ for(const c of commentariesFor(w.id)){assert(snippet.includes('commentary='+c.id+'&amp;view=commentary'));assert(snippet.includes(c.title.replaceAll('&','&amp;')));}
+ assert(!snippet.includes('commentary=tao-2013'));
+}
+
 assert.equal(works.find(w=>w.id==='euler-1748-circle').textCoverage.percent,100);
 assert(textCoverage['euler-1748-circle'].scope.includes('Chapter VIII only'));
 assert.equal(textCoverage['lie-1880'].percent,0); // A located English translation cannot fill an on-site bar.

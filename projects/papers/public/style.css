@@ -152,3 +152,14 @@ cite.work-title{font-style:italic}.entity-link.work-link,.work-record h3,.paper-
 @media(max-width:700px){.source-weight-table{font-size:15px}.source-weight-table td,.source-weight-table th{padding:10px}.source-table-wrap{margin-block:18px}}
 
 .parallel-entry{display:flex;flex-direction:column;gap:6px;margin:22px 0;padding:16px 18px;border:1px solid #c9d1bf;background:#eff1e8;font:13px/1.6 var(--sans)}.parallel-entry span{color:var(--muted);font-size:11px}.record-commentary{font:11px/1.6 var(--sans);color:var(--green);margin-top:8px}
+
+/* Catalogue endpoints use a symbol and explicit wording; only partial texts have bars. */
+.completion-terminal{display:flex;align-items:center;gap:8px;font:11px/1.6 var(--sans);color:var(--muted)}
+.completion-symbol{display:block;flex:none;width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
+.completion-complete .completion-symbol{color:#34764c}.completion-empty .completion-symbol{color:#b3453c}
+.record-commentaries{margin-top:20px;padding-top:14px;border-top:1px solid #e0e2d7;max-width:650px}
+.record-commentaries h4{font:9px/1.6 var(--sans);text-transform:uppercase;letter-spacing:.7px;color:var(--muted);margin:0 0 10px;font-weight:400}
+.record-commentaries ul{list-style:none;padding:0;margin:0}.record-commentaries li{margin:0 0 13px;font-size:14px;line-height:1.65}
+.record-commentaries a{color:var(--green);text-decoration:none}.record-commentaries a:hover i{text-decoration:underline;text-underline-offset:3px}
+.record-commentator{display:block;font:11px/1.7 var(--sans);margin-bottom:3px}.record-commentator .parallel-surname{font-variant-caps:small-caps}
+.record-commentary-availability{display:block;font:9px/1.6 var(--sans);color:var(--muted);margin-top:3px}
