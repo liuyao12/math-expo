@@ -66,6 +66,7 @@ writeFileSync(path.join(dist,'discovery.js'),`window.paperDiscovery={normalizeSe
 const zetaVersion=createHash('sha256').update(['zeta-math.mjs','zeta-reader.mjs','zeta-worker.mjs','zeta-reader.css','explicit-math.mjs','explicit-reader.mjs','explicit-strip.mjs','explicit-experiment.mjs','explicit-worker.mjs','zeta-zeros-200.json'].map(f=>readFileSync(path.join(root,'public',f),'utf8')).join('\n')).digest('hex').slice(0,12);
 const surfaceVersion=createHash('sha256').update(['surfaces-reader.mjs','surfaces-math.mjs','surfaces-reader.css'].map(f=>readFileSync(path.join(root,'public',f),'utf8')).join('\n')).digest('hex').slice(0,12);
 const companionVersion=createHash('sha256').update(['companion-reader.mjs','companion-reader.css'].map(f=>readFileSync(path.join(root,'public',f),'utf8')).join('\n')).digest('hex').slice(0,12);
+const layoutVersion=createHash('sha256').update(['reader-layout.mjs','reader-layout.css'].map(f=>readFileSync(path.join(root,'public',f),'utf8')).join('\n')).digest('hex').slice(0,12);
 const parallelVersion=createHash('sha256').update(['parallel-reader.mjs','parallel-reader.css'].map(f=>readFileSync(path.join(root,'public',f),'utf8')).join('\n')).digest('hex').slice(0,12);
 const nameVersion=createHash('sha256').update(readFileSync(path.join(root,'public/name-links.js'))).digest('hex').slice(0,12);
 const readerVersion=createHash('sha256').update(readFileSync(path.join(root,'public/reader.js'))).update(readFileSync(path.join(root,'src/discovery.mjs'))).update(readFileSync(path.join(root,'public/name-links.js'))).digest('hex').slice(0,12);
@@ -112,6 +113,15 @@ function save(route,html){
   const entry=`<p class="parallel-entry"><a href="compare/">${companions.length?'Read with authored commentary →':'Reader with notes &amp; visuals →'}</a><span>${companions.length?companions.length+' authored '+(companions.length===1?'companion':'companions'):'Passage notes, drawings &amp; interactives'}</span></p>`;
   if(html.includes('<div class="paper-tools">'))html=html.replace('<div class="paper-tools">',entry+'<div class="paper-tools">');
   else html=html.replace('<header><p class="eyebrow">','<header>'+entry+'<p class="eyebrow">');
+ }
+ const layoutWork=workMap.get(route.split('/')[0]);
+ if(layoutWork&&(html.includes('class="reading-body"')||html.includes('class="parallel-columns"'))){
+  const isCompare=route.endsWith('/compare'),base=isCompare?'../../':'../';
+  const ordinary=isCompare?readFileSync(path.join(dist,layoutWork.id,'index.html'),'utf8'):html;
+  const nav=ordinary.match(/<nav class="reading-nav"[\s\S]*?<\/nav>/)?.[0]??'';
+  const layoutData={title:layoutWork.title,year:layoutWork.year,base,nav,essays:commentariesFor(layoutWork.id),furtherReading:furtherReadingFor(layoutWork.id)};
+  html=html.replace(/<script[^>]+src="[^"]*(?:parallel-reader|companion-reader)\.mjs[^"]*"[^>]*><\/script>/g,'');
+  html=html.replace('</head>',`<link rel="stylesheet" href="${base}reader-layout.css?v=${layoutVersion}"><script id="reader-layout-data" type="application/json">${JSON.stringify(layoutData).replaceAll('<','\\u003c')}</script><script type="module" src="${base}reader-layout.mjs?v=${layoutVersion}"></script></head>`);
  }
  const dir=path.join(dist,route);mkdirSync(dir,{recursive:true});writeFileSync(path.join(dir,'index.html'),italicizeTitles(html));
 }
