@@ -171,7 +171,7 @@ for(const chapter of chapters){
   if(ids.has(chapter.id))throw Error(`Duplicate chapter: ${chapter.id}`);ids.add(chapter.id);
   if(chapter.sections.length<2)throw Error(`Missing section in ${chapter.id}`);
   for(const section of chapter.sections){
-    for(const text of [section.body,section.note||'']){
+    for(const text of [section.body,section.note||'',section.example?.body||'']){
       if(/[\x00-\x08\x0b\x0c\x0e-\x1f]/.test(text))throw Error(`Control character in ${chapter.id}`);
       for(const match of text.matchAll(/\\\(([\s\S]*?)\\\)|\\\[([\s\S]*?)\\\]/g)){
         const formula=match[1]??match[2];
