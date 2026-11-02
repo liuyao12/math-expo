@@ -22,3 +22,6 @@ The lattice chapter’s `tile-lattice-demo.js` animates the viewing angle, displ
 
 
 Editorial convention: abstract functions evaluate on the right, \(v.L.K\), with \(v.(LK)=(v.L).K\). Coordinate maps are named functions rather than basis subscripts. The left superscript \({}^{g}\!f=g\,f\,\rho(g)^{-1}\) is reserved for a later induced group action; group-action material remains deferred.
+
+
+The inner product chapter uses the two-dimensional span of sine and cosine on \([0,\pi]\) as its running example. A GIF stays in the right margin beside the axioms, signed-product cancellation, Gram matrix, and projection formulas. It sweeps the full interval without a slider; a static companion is selected for reduced motion. The Fourier chapter deliberately moves to the full-period interval \([0,2\pi]\), with its corresponding normalization. Regenerate the GIF with Pillow using the function-inner-product renderer in the scripts directory; mathematical labels remain LaTeX in the reader.

@@ -135,6 +135,33 @@ for(const theta of [Math.PI/6,Math.PI/4,Math.PI/3]){
   }
 }
 console.log('Validated the fixed fourteen-vertex lift, rank four, and hat/turtle projection edge lengths.');
+// Check the interval and normalization used by the running function example.
+const integrate=(fn,left,right)=>{
+  const count=4096,step=(right-left)/count;
+  let sum=0;for(let i=0;i<count;i++)sum+=fn(left+(i+.5)*step);
+  return sum*step;
+};
+const scalarNear=(actual,expected,label)=>{
+  if(Math.abs(actual-expected)>1e-7)throw Error('Function-space check failed: '+label);
+};
+scalarNear(integrate(t=>Math.sin(t)*Math.cos(t),0,Math.PI),0,'orthogonality on the chosen interval');
+scalarNear(integrate(t=>Math.sin(t)**2,0,Math.PI),Math.PI/2,'sine squared length');
+scalarNear(integrate(t=>Math.cos(t)**2,0,Math.PI),Math.PI/2,'cosine squared length');
+scalarNear(integrate(t=>Math.sin(t)*Math.cos(t),0,Math.PI/2),.5,'positive half');
+scalarNear(integrate(t=>Math.sin(t)*Math.cos(t),Math.PI/2,Math.PI),-.5,'negative half');
+for(const end of [0,Math.PI/4,Math.PI/2,3*Math.PI/4,Math.PI]){
+  scalarNear(integrate(t=>Math.sin(t)*Math.cos(t),0,end),.5*Math.sin(end)**2,'animation accumulated integral');
+}
+for(const [a,b] of [[1,0],[0,1],[2,-3],[-.5,1.25]]){
+  const h=t=>a*Math.sin(t)+b*Math.cos(t);
+  scalarNear(integrate(t=>h(t)**2,0,Math.PI),Math.PI/2*(a*a+b*b),'Gram norm');
+  scalarNear(integrate(t=>h(t)*Math.sin(t),0,Math.PI)/(Math.PI/2),a,'projection coefficient');
+  scalarNear(integrate(t=>(h(t)-a*Math.sin(t))*Math.sin(t),0,Math.PI),0,'perpendicular residual');
+}
+for(const name of ['function-inner-product.gif','function-inner-product-still.png']){
+  if(!fs.existsSync(path.join(root,'assets',name)))throw Error('Missing running-example asset: '+name);
+}
+console.log('Validated function-space orthogonality, half-interval cancellation, Gram norms, projections, and the GIF’s accumulated integral.');
 vm.runInNewContext(fs.readFileSync(path.join(root,'course-site/chapters.js'),'utf8'),context);
 const katexContext = {};
 vm.runInNewContext(fs.readFileSync(path.join(root,'course-site/vendor/katex/katex.min.js'),'utf8'),katexContext);

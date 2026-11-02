@@ -58,11 +58,11 @@
     'four-d':['Two independent rotations','A projected tesseract.','Each control rotates a different coordinate plane in four dimensions. The display is a two-dimensional view of a three-dimensional projection.'],
     gram:['Tilt the basis','Two unit vectors, a changing Gram matrix.','The dashed sides complete the sum of the two basis vectors. Their coordinates stay fixed while its length changes.'],
     eigenvectors:['Which directions persist?','Compare a vector with its image.','An eigenvector and its image lie on the same line through the origin.'],
-    'sine-cosine':['Perpendicular functions','An integral collects signed contributions.','The product is shaded up to the selected endpoint. Over a full period, the positive and negative contributions cancel.'],
     fourier:['Build a function from modes','A periodic triangle wave.','The dashed curve is the target. Add odd cosine modes to improve its finite orthogonal approximation.'],
     eigenfunction:['A mode changes amplitude','A heat-equation example.','The original shape is dashed. Its evolving multiple retains the same spatial pattern.']
   };
   function mountDemo(holder,name) {
+    if(name==='function-inner-product'){holder.innerHTML="<span class=\"margin-label\">A RUNNING EXAMPLE</span>\n<figure class=\"figure function-example\">\n<h3>Functions on one interval.</h3>\n<p class=\"figure-sub\">Follow the same pair while reading the definition.</p>\n<div class=\"function-legend\"><span class=\"function-sine\">\\(f=\\sin\\) · solid</span><span class=\"function-cosine\">\\(g=\\cos\\) · dashed</span></div>\n<div class=\"function-animation-stage\">\n<picture><source media=\"(prefers-reduced-motion: reduce)\" srcset=\"assets/function-inner-product-still.png\">\n<img src=\"assets/function-inner-product.gif\" width=\"640\" height=\"680\" alt=\"A guide sweeps the interval from zero to pi. Sine and cosine appear above their signed product. The blue positive area and orange negative area cancel, while the accumulated integral rises and returns to zero.\"></picture>\n<div class=\"function-axis\" aria-hidden=\"true\"><span>\\(0\\)</span><span>\\(\\pi/2\\)</span><span>\\(\\pi\\)</span></div>\n<span class=\"function-half\" aria-hidden=\"true\">\\(\\frac12\\)</span>\n</div>\n<div class=\"function-example-result\">\\(\\langle f,g\\rangle=\\int_0^\\pi(t.f)(t.g)\\,dt=0\\)</div>\n<figcaption class=\"figure-caption\">Equal signed areas cancel. Neither function is zero; their inner product is. The lower graph shows the integral so far, whose maximum is \\(1/2\\).</figcaption>\n</figure>";return;}
     if(name==='hat-turtle'){cleanups.push(window.mountTileLatticeDemo(holder,{math}));return;}
     if(name==='polytopes'||name==='ball-cube'){cleanups.push(window.mountHigherGeometry(holder,name,{math}));return;}
     if(name==='matrix-product'){cleanups.push(window.mountMatrixProductDemo(holder,{math}));return;}
@@ -75,7 +75,7 @@
     const [title,sub,caption]=descriptions[name];
     holder.innerHTML=`<span class="margin-label">EXPLORE ALONGSIDE THE TEXT</span><div class="figure"><h3>${title}</h3><p class="figure-sub">${sub}</p><svg class="diagram" role="img" aria-label="${title}. ${caption}"></svg><div class="figure-controls"></div><div class="math-readout" aria-live="polite"></div><p class="figure-caption">${caption}</p></div>`;
     const root=holder.querySelector('.figure'),svg=root.querySelector('svg'),controls=root.querySelector('.figure-controls'),readout=root.querySelector('.math-readout');
-    const drawMap={space:spaceDemo,'projection-composition':projectionDemo,reflection:reflectionDemo,'four-d':fourDemo,gram:gramDemo,eigenvectors:eigenDemo,'sine-cosine':sineDemo,fourier:fourierDemo,eigenfunction:modeDemo};
+    const drawMap={space:spaceDemo,'projection-composition':projectionDemo,reflection:reflectionDemo,'four-d':fourDemo,gram:gramDemo,eigenvectors:eigenDemo,fourier:fourierDemo,eigenfunction:modeDemo};
     drawMap[name](root,svg,controls,readout);
   }
   function spaceDemo(root,svg,controls,readout){
@@ -147,22 +147,6 @@
       arrow(svg,o,p(v),colors.blue,2);arrow(svg,o,p(transformed),colors.green,2.5);mathLabel(svg,[p(v)[0]-10,p(v)[1]-10],'v');mathLabel(svg,[p(transformed)[0]+13,p(transformed)[1]-11],'v.L');math(readout,'\\begin{gathered}'+expression+'\\\\x=v.c,\\quad y=v.L.c\\end{gathered}',true);outputRange(root,input,`${input.value}^{\\circ}`);
     };controls.querySelectorAll('button').forEach(button=>button.addEventListener('click',()=>{mode=button.dataset.map;controls.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));draw();}));input.addEventListener('input',draw);observe(svg,draw);
   }
-  function sineDemo(root,svg,controls,readout){
-    controls.innerHTML=range('integral-end','Integration endpoint',0,200,200);const input=controls.querySelector('input');
-    const draw=()=>{const {w}=scene(svg,1);const h=275;svg.setAttribute('viewBox',`0 0 ${w} ${h}`);svg.setAttribute('height',h);const left=24,right=w-17,x=t=>left+(right-left)*t/(2*Math.PI),t=+input.value*Math.PI/100,upper=71,lower=191,amp=35;
-      text(svg,[left,14],'Functions');text(svg,[left,139],'Signed product');
-      line(svg,[[w-143,10],[w-128,10]],colors.blue,1.8);mathLabel(svg,[w-104,10],'\\sin x',43);
-      line(svg,[[w-74,10],[w-59,10]],colors.orange,1.8,'5 3');mathLabel(svg,[w-34,10],'\\cos x',43);
-      for(const y of [upper,lower])line(svg,[[left,y],[right,y]],colors.grid);
-      for(const [fn,color,dash] of [[Math.sin,colors.blue,''],[Math.cos,colors.orange,'5 3']]){const points=Array.from({length:161},(_,i)=>{const a=2*Math.PI*i/160;return [x(a),upper-amp*fn(a)];});line(svg,points,color,1.8,dash);}
-      const sample=Array.from({length:161},(_,i)=>{const a=t*i/160;return {a,value:Math.sin(a)*Math.cos(a)};});
-      for(const positive of [true,false]){const points=[[left,lower],...sample.map(({a,value})=>[x(a),lower-70*(positive?Math.max(0,value):Math.min(0,value))]),[x(t),lower]];element('polygon',{points:points.map(p=>p.join(',')).join(' '),fill:positive?colors.blue:colors.orange,'fill-opacity':.18},svg);}
-      line(svg,Array.from({length:201},(_,i)=>{const a=2*Math.PI*i/200;return[x(a),lower-70*Math.sin(a)*Math.cos(a)];}),colors.ink,1.4);
-      line(svg,[[x(t),30],[x(t),232]],colors.muted,1,'3 4');for(const [a,label] of [[0,'0'],[Math.PI,'\\pi'],[2*Math.PI,'2\\pi']])mathLabel(svg,[x(a),247],label);
-      const end=+input.value===200?'2\\pi':+input.value===100?'\\pi':+input.value===0?'0':`${format(+input.value/100)}\\pi`;
-      math(readout,`\\int_0^{${end}}\\sin x\\cos x\\,dx=${format(.5*Math.sin(t)**2)}`);outputRange(root,input,`t=${end}`);
-    };input.addEventListener('input',draw);observe(svg,draw);
-  }
   function fourierDemo(root,svg,controls,readout){
     controls.innerHTML=range('fourier-modes','Number of odd cosine modes',1,12,3);const input=controls.querySelector('input');
     const draw=()=>{const {w,h}=scene(svg);const left=21,right=w-16,top=28,bottom=h-35,mid=(top+bottom)/2,amp=(bottom-top)/3.7,x=t=>left+(right-left)*t/(2*Math.PI),p=(t,y)=>[x(t),mid-amp*y],count=+input.value;
@@ -188,10 +172,20 @@
     document.getElementById('chapter-footer').innerHTML='<a href="#geometry"><span>BEGIN PART I</span>From Platonic solids to four dimensions →</a>';
     document.title='The course at a glance — Linear Algebra';
   }
+
+  function chapterSections(chapter){
+    const prose=(section,i)=>'<div class="prose"><h2><span class="section-number">'+Number(chapter.number)+'.'+(i+1)+'</span>'+section.title+'</h2>'+section.body+'</div>';
+    if(chapter.runningDemo){
+      const sections=chapter.sections.map((section,i)=>'<section class="chapter-reading-section">'+prose(section,i)+'</section>').join('');
+      return '<div class="chapter-running-grid"><aside class="margin running-example" aria-label="Running example: functions on an interval"><div data-demo="'+chapter.runningDemo+'"></div></aside><div class="running-prose">'+sections+'</div></div>';
+    }
+    return chapter.sections.map((section,i)=>'<section class="section-grid">'+prose(section,i)+'<aside class="margin" aria-label="Example for '+section.title+'">'+(section.demo?'<div data-demo="'+section.demo+'"></div>':'<span class="margin-label">IN THE MARGIN</span><p class="margin-note">'+(section.note||'')+'</p>')+'</aside></section>').join('');
+  }
+
   function renderChapter(chapter){
     document.getElementById('breadcrumb').textContent=`CHAPTER ${chapter.number}`;
     document.getElementById('reader-chapter-title').textContent=chapter.short;
-    chapterElement.innerHTML=`<header class="chapter-heading"><p class="eyebrow">CHAPTER ${chapter.number}</p><h1>${chapter.title}</h1><p class="dek">${chapter.subtitle}</p><div class="chapter-meta"><span>Chapter sketch</span><span>Definitions & examples</span></div></header><hr class="chapter-rule"><p class="chapter-intro">${chapter.intro}</p>${chapter.sections.map((section,i)=>`<section class="section-grid"><div class="prose"><h2><span class="section-number">${Number(chapter.number)}.${i+1}</span>${section.title}</h2>${section.body}</div><aside class="margin" aria-label="Example for ${section.title}">${section.demo?`<div data-demo="${section.demo}"></div>`:`<span class="margin-label">IN THE MARGIN</span><p class="margin-note">${section.note || ''}</p>`}</aside></section>`).join('')}<div class="next-concepts"><h3>IDEAS TO TAKE WITH YOU</h3><div class="concept-list">${chapter.concepts.map(concept=>`<span>${concept}</span>`).join('')}</div></div>`;
+    chapterElement.innerHTML=`<header class="chapter-heading"><p class="eyebrow">CHAPTER ${chapter.number}</p><h1>${chapter.title}</h1><p class="dek">${chapter.subtitle}</p><div class="chapter-meta"><span>Chapter sketch</span><span>Definitions & examples</span></div></header><hr class="chapter-rule"><p class="chapter-intro">${chapter.intro}</p>${chapterSections(chapter)}<div class="next-concepts"><h3>IDEAS TO TAKE WITH YOU</h3><div class="concept-list">${chapter.concepts.map(concept=>`<span>${concept}</span>`).join('')}</div></div>`;
     const index=chapters.indexOf(chapter),previous=chapters[index-1],next=chapters[index+1];
     document.getElementById('chapter-footer').innerHTML=`${previous?`<a href="#${previous.id}"><span>PREVIOUS CHAPTER</span>← ${previous.short}</a>`:'<a href="#outline"><span>STEP BACK</span>← The course at a glance</a>'}${next?`<a href="#${next.id}"><span>NEXT CHAPTER</span>${next.short} →</a>`:'<a href="#outline"><span>RETURN TO</span>The course at a glance →</a>'}`;
     chapterElement.querySelectorAll('[data-demo]').forEach(holder=>mountDemo(holder,holder.dataset.demo));

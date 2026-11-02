@@ -9,9 +9,9 @@ for (const file of readdirSync(path.join(root, 'course-site'))) {
   if (file !== 'dist') cpSync(path.join(root, 'course-site', file), path.join(destination, file), { recursive: true });
 }
 mkdirSync(path.join(destination, 'assets'), { recursive: true });
-for (const name of ['orthogonal-projection.gif', 'orthogonal-projection-still.png']) {
+for (const name of ['orthogonal-projection.gif', 'orthogonal-projection-still.png', 'function-inner-product.gif', 'function-inner-product-still.png']) {
   const source = path.join(root, 'assets', name);
-  if (!existsSync(source)) throw new Error(`Missing projection asset: ${name}`);
+  if (!existsSync(source)) throw new Error(`Missing textbook asset: ${name}`);
   cpSync(source, path.join(destination, 'assets', name));
 }
 console.log('Built the textbook reader in dist/');
