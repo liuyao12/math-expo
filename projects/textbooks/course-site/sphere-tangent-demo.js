@@ -6,20 +6,31 @@
   const scale=(a,k)=>a.map(x=>k*x);
   const extent=.68;
   const startAngle=Math.atan(Math.sqrt(2));
+  const axes=['x','y','z'];
+  const representatives=p=>p.map((coordinate,i)=>p.map((x,j)=>(i===j?1:0)-coordinate*x));
   function state(angle){
-    const c=Math.cos(angle),s=Math.sin(angle),h=Math.SQRT1_2;
-    const p=[c,s*h,s*h],q=[-s,c*h,c*h],r=[0,-h,h];
-    const gradient=[1-c*c,-c*s*h,-c*s*h];
+    const c=Math.cos(angle),s=Math.sin(angle);
+    const azimuth=Math.PI/4+.45*Math.sin(2*(angle-startAngle)),a=Math.cos(azimuth),b=Math.sin(azimuth);
+    const p=[c,s*a,s*b],q=[-s,c*a,c*b],r=[0,-b,a];
+    const gradients=representatives(p),gradient=gradients[0];
     const normal=scale(p,c);
     const tangent=scale(add(q,r),.5);
-    return {p,q,r,gradient,normal,tangent,value:tangent[0]};
+    const weighted=gradients.map((g,i)=>scale(g,p[i]));
+    const terms=p.map((x,i)=>x*tangent[i]);
+    return {p,q,r,gradient,gradients,normal,tangent,value:tangent[0],values:tangent,weighted,terms,residual:dot(p,tangent)};
   }
-  function levelVectors(angle,value){
+  function levelVectors(angle,value,axis=0){
     const {q,r}=state(angle);
-    if(Math.abs(q[0])<1e-10)return value===0?{wholePlane:true}:null;
-    const a=value/q[0];
-    if(Math.abs(a)>extent)return null;
-    return {wholePlane:false,vectors:[add(scale(q,a),scale(r,-extent)),add(scale(q,a),scale(r,extent))]};
+    const a=q[axis],b=r[axis],points=[];
+    if(Math.hypot(a,b)<1e-10)return value===0?{wholePlane:true}:null;
+    const include=(u,v)=>{
+      if(Math.abs(u)>extent+1e-10||Math.abs(v)>extent+1e-10)return;
+      if(!points.some(([x,y])=>Math.hypot(x-u,y-v)<1e-9))points.push([u,v]);
+    };
+    if(Math.abs(b)>1e-10)for(const u of [-extent,extent])include(u,(value-a*u)/b);
+    if(Math.abs(a)>1e-10)for(const v of [-extent,extent])include((value-b*v)/a,v);
+    if(points.length<2)return null;
+    return {wholePlane:false,vectors:points.slice(0,2).map(([u,v])=>add(scale(q,u),scale(r,v)))};
   }
   const formulas={
     point:'p',
@@ -27,46 +38,71 @@
     zero:'0',
     positive:'\\frac12',
     ambient:'e_x=[1,0,0]',
-    representative:'(\\mathrm dx_p)^\\sharp',
+    representative:'g_x=(\\mathrm dx_p)^\\sharp',
+    representativeY:'g_y=(\\mathrm dy_p)^\\sharp',
+    representativeZ:'g_z=(\\mathrm dz_p)^\\sharp',
     test:'v',
+    chooseX:'\\mathrm dx_p',
+    chooseY:'\\mathrm dy_p',
+    chooseZ:'\\mathrm dz_p',
     coordinate:'\\mathrm dx_p:v\\longmapsto v_x',
     projection:'(\\mathrm dx_p)^\\sharp=e_x-(p.x)p.',
-    pairing:'v.\\mathrm dx_p=\\langle v,(\\mathrm dx_p)^\\sharp\\rangle.'
+    pairing:'v.\\mathrm dx_p=\\langle v,(\\mathrm dx_p)^\\sharp\\rangle.',
+    relation:'x\\,\\mathrm dx_p+y\\,\\mathrm dy_p+z\\,\\mathrm dz_p=0.',
+    pointCoordinates:'p=[x,y,z]',
+    evaluatedRelation:'xv_x+yv_y+zv_z=0.',
+    raisedRelation:'xg_x+yg_y+zg_z=0.',
+    weightedX:'xg_x',
+    weightedY:'yg_y',
+    weightedZ:'zg_z',
+    zeroVector:'\\mathbf0'
   };
   const pointFormula=p=>'p=['+p.map(number).join(',')+']';
-  const valueFormula=value=>'v.\\mathrm dx_p='+number(value);
+  const valueFormula=(value,axis=0)=>'v.\\mathrm d'+axes[axis]+'_p='+number(value);
+  const relationFormula=terms=>terms.map(x=>'('+ (Math.abs(x)<.0005?'0':x.toFixed(3))+')').join('+')+'\\approx0';
+  const coordinateFormula=axis=>'\\mathrm d'+axes[axis]+'_p:v\\longmapsto v_'+axes[axis];
+  const projectionFormula=axis=>'g_'+axes[axis]+'=e_'+axes[axis]+'-(p.'+axes[axis]+')p.';
+  const ambientFormula=axis=>'e_'+axes[axis]+'=['+axes.map((_,i)=>i===axis?1:0).join(',')+']';
   function number(x){return Math.abs(x)<.005?'0':x.toFixed(2);}
-  window.SPHERE_TANGENT={state,levelVectors,extent,startAngle,formulas,pointFormula,valueFormula};
+  window.SPHERE_TANGENT={state,levelVectors,representatives,extent,startAngle,formulas,pointFormula,valueFormula,relationFormula,coordinateFormula,projectionFormula,ambientFormula};
 
   window.mountSphereTangentDemo=(holder,{math})=>{
     holder.innerHTML='<figure class="figure sphere-tangent-example">'+
-      '<h3>A coordinate on a moving tangent plane.</h3>'+
-      '<p class="sphere-intro">The point moves on the unit sphere. Read a tangent vector’s first ambient component with <span data-formula="coordinate"></span>.</p>'+
+      '<h3>Three coordinates, one relation.</h3>'+
+      '<p class="sphere-intro">The differentials read a tangent vector’s three ambient components. Choose a measurement to see its level lines.</p>'+
+      '<div class="sphere-coordinate-choices" role="group" aria-label="Choose a tangent coordinate measurement">'+
+      axes.map((axis,i)=>'<button type="button" data-axis="'+i+'" aria-pressed="'+(i===0)+'" aria-label="Show the '+axis+'-coordinate measurement"><span data-formula="choose'+axis.toUpperCase()+'"></span></button>').join('')+'</div>'+
+      '<div class="sphere-selected-coordinate" data-formula="coordinate"></div>'+
       '<div class="sphere-tangent-stage">'+
-      '<canvas width="880" height="800" role="img" aria-label="A moving sphere point and its tangent plane. Level lines on the plane depict a scalar coordinate, not an arrow. An orange ambient direction projects to a blue tangent vector. A purple tangent vector has a changing coordinate value shown below."></canvas>'+
+      '<canvas width="880" height="880" role="img" aria-label="A moving sphere point and its tangent plane. Colored arrows are the three projected coordinate directions. Level lines depict the selected scalar coordinate. A purple tangent vector has three coordinate measurements shown below."></canvas>'+
       '<span class="sphere-point-label" data-formula="point" aria-hidden="true"></span>'+
       '<span class="sphere-level-label" data-level="-0.5" data-formula="negative" aria-hidden="true"></span>'+
       '<span class="sphere-level-label" data-level="0" data-formula="zero" aria-hidden="true"></span>'+
       '<span class="sphere-level-label" data-level="0.5" data-formula="positive" aria-hidden="true"></span></div>'+
-      '<div class="sphere-legend"><span class="sphere-ambient" data-formula="ambient"></span><span class="sphere-representative" data-formula="representative"></span><span class="sphere-test" data-formula="test"></span></div>'+
+      '<div class="sphere-legend"><span class="sphere-representative" data-formula="representative"></span><span class="sphere-representative-y" data-formula="representativeY"></span><span class="sphere-representative-z" data-formula="representativeZ"></span><span class="sphere-test" data-formula="test"></span></div>'+
+      '<p class="sphere-ambient-note">Dashed ambient direction: <span data-formula="ambient"></span>.</p>'+
       '<p class="sphere-level-caption">The level lines label the tangent vectors by their coordinate value. The plane is drawn at the moving point; an arrow from that point depicts a tangent vector.</p>'+
-      '<div class="sphere-coordinate-readout"><span class="sphere-readout-label">POINT AND TANGENT COORDINATE</span><div data-live="point"></div><div data-live="value"></div></div>'+
+      '<div class="sphere-coordinate-readout"><span class="sphere-readout-label">POINT AND TANGENT COORDINATES</span><div data-live="point"></div><div class="sphere-values"><span data-live="value-x"></span><span data-live="value-y"></span><span data-live="value-z"></span></div></div>'+
       '<div class="sphere-projection-formula" data-formula="projection"></div>'+
-      '<div class="sphere-pairing-formula" data-formula="pairing"></div>'+
+      '<div class="sphere-relation"><span class="sphere-readout-label">A RELATION BETWEEN THE COVECTORS</span><div data-formula="pointCoordinates"></div><div data-formula="relation"></div><p>Applied to the purple tangent vector:</p><div data-formula="evaluatedRelation"></div><p class="sphere-rounding-note">Rounded contributions:</p><div class="sphere-relation-numbers" data-live="relation"></div></div>'+
+      '<div class="sphere-triangle"><span class="sphere-readout-label">THE SAME RELATION AFTER RAISING</span><div data-formula="raisedRelation"></div><canvas width="880" height="360" role="img" aria-label="The three weighted projected vectors are placed head to tail. The last returns to the starting point, showing that their vector sum is zero."></canvas><div class="sphere-weighted-legend"><span data-formula="weightedX"></span><span data-formula="weightedY"></span><span data-formula="weightedZ"></span></div><p>The weighted arrows close head to tail. They represent the covectors through the metric; the covectors themselves remain scalar measurements.</p></div>'+
       '<div class="figure-controls"><button type="button" class="sphere-play"></button></div>'+
-      '<figcaption class="figure-caption">The blue arrow represents the coordinate through the inner product. The coordinate itself is a scalar-valued function of tangent vectors. The globe is shown transparently so the tangent plane remains visible on the far side. At either pole of the first coordinate axis, the projection is zero: every tangent vector has first component zero.</figcaption></figure>';
+      '<figcaption class="figure-caption">Since tangent vectors are perpendicular to the radius, their weighted coordinate measurements sum to zero. The globe is shown transparently. At a coordinate-axis pole the corresponding differential vanishes on the whole tangent plane.</figcaption></figure>';
     const root=holder.querySelector('.sphere-tangent-example');
     root.querySelectorAll('[data-formula]').forEach(node=>math(node,formulas[node.dataset.formula]));
-    const canvas=root.querySelector('canvas'),ctx=canvas.getContext('2d');
+    const canvas=root.querySelector('.sphere-tangent-stage canvas'),ctx=canvas.getContext('2d');
     ctx.scale(2,2);
+    const triangle=root.querySelector('.sphere-triangle canvas'),triangleContext=triangle.getContext('2d');triangleContext.scale(2,2);
     const button=root.querySelector('.sphere-play'),pointLabel=root.querySelector('.sphere-point-label');
     const levelLabels=[...root.querySelectorAll('[data-level]')];
     const reduced=matchMedia('(prefers-reduced-motion: reduce)');
     const camera=[4/Math.sqrt(29),-3/Math.sqrt(29),2/Math.sqrt(29)];
     const horizontal=[.6,.8,0],vertical=[-8/(5*Math.sqrt(29)),6/(5*Math.sqrt(29)),25/(5*Math.sqrt(29))];
-    const project=p=>[207+120*dot(p,horizontal),205-120*dot(p,vertical)];
-    const colors={ink:'#3b5942',grid:'#9eaf95',plane:'#dfe7d7',ambient:'#b46c32',gradient:'#347ba5',test:'#8a5f94'};
-    let angle=startAngle,phase=0,raf=0,last=0,lastMath=-Infinity,visible=false,disposed=false,playing=!reduced.matches;
+    const project=p=>[220+112*dot(p,horizontal),220-112*dot(p,vertical)];
+    const colors={ink:'#3b5942',test:'#8a5f94'};
+    const gradientColors=['#347ba5','#39816c','#ba7136'];
+    const choices=[...root.querySelectorAll('[data-axis]')];
+    let selected=0,angle=startAngle,phase=0,raf=0,last=0,lastMath=-Infinity,visible=false,disposed=false,playing=!reduced.matches;
     // Begin at the diagonal point used in the accompanying worked example.
     let low=0,high=Math.PI;
     for(let i=0;i<50;i++){const mid=(low+high)/2;if(mid-.28*Math.sin(2*mid)<startAngle)low=mid;else high=mid;}
@@ -89,15 +125,32 @@
       ctx.closePath();ctx.fillStyle=color;ctx.fill();
     }
     function position(node,p,dx=0,dy=0){
-      const [x,y]=project(p);node.style.left=(100*(x+dx)/440)+'%';node.style.top=(100*(y+dy)/400)+'%';
+      const [x,y]=project(p);node.style.left=(100*(x+dx)/440)+'%';node.style.top=(100*(y+dy)/440)+'%';
+    }
+    function drawTriangle(model){
+      const {weighted,q,r}=model;
+      const points=[[0,0,0],weighted[0],add(weighted[0],weighted[1])];
+      const flat=points.map(v=>[dot(v,q),dot(v,r)]);
+      const center=[0,1].map(i=>(Math.min(...flat.map(p=>p[i]))+Math.max(...flat.map(p=>p[i])))/2);
+      const view=v=>[220+300*(dot(v,q)-center[0]),90-300*(dot(v,r)-center[1])];
+      triangleContext.clearRect(0,0,440,180);
+      points.forEach((from,i)=>{
+        const to=add(from,weighted[i]),a=view(from),b=view(to),dx=b[0]-a[0],dy=b[1]-a[1],length=Math.hypot(dx,dy);
+        triangleContext.beginPath();triangleContext.moveTo(...a);triangleContext.lineTo(...b);triangleContext.strokeStyle=gradientColors[i];triangleContext.lineWidth=2.4;triangleContext.stroke();
+        if(length>3){
+          const ux=dx/length,uy=dy/length,size=Math.min(7,length*.4);
+          triangleContext.beginPath();triangleContext.moveTo(...b);triangleContext.lineTo(b[0]-size*ux+size*.4*uy,b[1]-size*uy-size*.4*ux);triangleContext.lineTo(b[0]-size*ux-size*.4*uy,b[1]-size*uy+size*.4*ux);triangleContext.closePath();triangleContext.fillStyle=gradientColors[i];triangleContext.fill();
+        }
+      });
+      const origin=view([0,0,0]);triangleContext.beginPath();triangleContext.arc(...origin,3,0,2*Math.PI);triangleContext.fillStyle=colors.ink;triangleContext.fill();
     }
     function draw(timestamp=0,forceMath=false){
-      const model=state(angle),{p,q,r,gradient,normal,tangent,value}=model;
-      root.dataset.angle=String(angle);root.dataset.coordinate=String(value);
-      ctx.clearRect(0,0,440,400);
-      const globe=ctx.createRadialGradient(168,164,16,207,205,127);
+      const model=state(angle),{p,q,r,gradients,tangent,values,terms,residual}=model,gradient=gradients[selected];
+      root.dataset.angle=String(angle);root.dataset.coordinate=String(values[selected]);root.dataset.axis=axes[selected];root.dataset.relationResidual=String(residual);
+      ctx.clearRect(0,0,440,440);
+      const globe=ctx.createRadialGradient(181,179,16,220,220,119);
       globe.addColorStop(0,'#f7f9f2');globe.addColorStop(1,'#dce6d3');
-      ctx.beginPath();ctx.arc(207,205,120,0,Math.PI*2);ctx.fillStyle=globe;ctx.fill();ctx.strokeStyle='#b0c2a3';ctx.lineWidth=1;ctx.stroke();
+      ctx.beginPath();ctx.arc(220,220,112,0,Math.PI*2);ctx.fillStyle=globe;ctx.fill();ctx.strokeStyle='#b0c2a3';ctx.lineWidth=1;ctx.stroke();
       for(let axis=0;axis<3;axis++){
         for(let j=0;j<100;j++){
           const a=[0,0,0],b=[0,0,0];
@@ -108,34 +161,37 @@
       }
       const onPlane=(u,v)=>add(p,add(scale(q,u),scale(r,v)));
       // Color the patch by the one-form value of the displacement, not by height.
-      for(let i=0;i<32;i++){
-        const a=-extent+2*extent*i/32,b=-extent+2*extent*(i+1)/32;
-        const coordinate=(a+b)/2*q[0],opacity=.10+.26*Math.abs(coordinate);
+      for(let i=0;i<12;i++)for(let j=0;j<12;j++){
+        const a=-extent+2*extent*i/12,b=-extent+2*extent*(i+1)/12,c=-extent+2*extent*j/12,d=-extent+2*extent*(j+1)/12;
+        const coordinate=(a+b)/2*q[selected]+(c+d)/2*r[selected],opacity=.10+.26*Math.abs(coordinate);
         const fill=Math.abs(coordinate)<.025?'rgba(222,230,214,.72)':coordinate>0?'rgba(75,135,174,'+opacity+')':'rgba(190,130,77,'+opacity+')';
-        path([onPlane(a,-extent),onPlane(b,-extent),onPlane(b,extent),onPlane(a,extent)],fill);
+        path([onPlane(a,c),onPlane(b,c),onPlane(b,d),onPlane(a,d)],fill);
       }
       path([onPlane(-extent,-extent),onPlane(extent,-extent),onPlane(extent,extent),onPlane(-extent,extent),onPlane(-extent,-extent)],null,'#8fa781',1.15);
       for(const c of [-.5,-.25,0,.25,.5]){
-        const level=levelVectors(angle,c);
+        const level=levelVectors(angle,c,selected);
         if(level&&!level.wholePlane)path(level.vectors.map(v=>add(p,v)),null,c===0?'#839b79':'#a6b59c',c===0?1.2:.8);
       }
       levelLabels.forEach(node=>{
-        const level=levelVectors(angle,Number(node.dataset.level));
+        const level=levelVectors(angle,Number(node.dataset.level),selected);
         node.hidden=!level;
         if(level)position(node,level.wholePlane?p:add(p,level.vectors[1]),0,-7);
       });
       path([[0,0,0],scale(p,1.33)],null,'#8fa180',1,[4,4]);
-      const ambientEnd=add(p,[1,0,0]),projectionEnd=add(p,gradient);
-      path([projectionEnd,ambientEnd],null,colors.ambient,1,[4,3]);
+      const ambientEnd=add(p,axes.map((_,i)=>i===selected?1:0)),projectionEnd=add(p,gradient);
+      path([projectionEnd,ambientEnd],null,'#8b9587',1,[4,3]);
       // Never draw the covector as an arrow. This is its metric representative.
-      arrow(p,ambientEnd,colors.ambient,2.1);
-      arrow(p,projectionEnd,colors.gradient,2.8);
+      path([p,ambientEnd],null,'#8b9587',1.3,[4,3]);
+      gradients.forEach((g,i)=>{if(i!==selected)arrow(p,add(p,g),gradientColors[i],1.7);});
+      arrow(p,projectionEnd,gradientColors[selected],2.8);
       arrow(p,add(p,tangent),colors.test,1.9);
       const [px,py]=project(p);ctx.beginPath();ctx.arc(px,py,3.8,0,Math.PI*2);ctx.fillStyle=colors.ink;ctx.fill();
       position(pointLabel,p,-10,-14);
+      drawTriangle(model);
       if(!document.documentElement.classList.contains('notation-moving')&&(forceMath||timestamp-lastMath>180)){
         math(root.querySelector('[data-live="point"]'),pointFormula(p));
-        math(root.querySelector('[data-live="value"]'),valueFormula(value));
+        axes.forEach((axis,i)=>math(root.querySelector('[data-live="value-'+axis+'"]'),valueFormula(values[i],i)));
+        math(root.querySelector('[data-live="relation"]'),relationFormula(terms));
         lastMath=timestamp;
       }
     }
@@ -155,9 +211,18 @@
       else if(!active()&&raf){cancelAnimationFrame(raf);raf=0;last=0;}
     }
     function toggle(){playing=!playing;schedule();}
+    function select(event){
+      selected=Number(event.currentTarget.dataset.axis);
+      choices.forEach(button=>button.setAttribute('aria-pressed',String(Number(button.dataset.axis)===selected)));
+      math(root.querySelector('[data-formula="coordinate"]'),coordinateFormula(selected));
+      math(root.querySelector('[data-formula="projection"]'),projectionFormula(selected));
+      math(root.querySelector('[data-formula="ambient"]'),ambientFormula(selected));
+      draw(performance.now(),true);
+    }
     function motionChange(){if(reduced.matches)playing=false;schedule();}
     function settled(){draw(performance.now(),true);}
     button.addEventListener('click',toggle);
+    choices.forEach(button=>button.addEventListener('click',select));
     reduced.addEventListener('change',motionChange);
     document.addEventListener('visibilitychange',schedule);
     document.addEventListener('matrixconventionsettled',settled);
@@ -170,6 +235,7 @@
       document.removeEventListener('visibilitychange',schedule);
       document.removeEventListener('matrixconventionsettled',settled);
       button.removeEventListener('click',toggle);
+      choices.forEach(button=>button.removeEventListener('click',select));
     };
   };
 })();

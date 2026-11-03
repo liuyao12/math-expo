@@ -137,23 +137,32 @@ console.log('Validated coordinate reconstruction, metric invariance, new matrix-
 const sphere=context.window.SPHERE_TANGENT;
 const dot3=(a,b)=>a.reduce((sum,x,i)=>sum+x*b[i],0);
 for(let i=0;i<=128;i++){
-  const angle=2*Math.PI*i/128,{p,q,r,tangent,gradient,normal,value}=sphere.state(angle);
+  const angle=2*Math.PI*i/128,{p,q,r,tangent,gradient,gradients,normal,value,weighted,terms}=sphere.state(angle);
   near([[dot3(p,p),dot3(q,q),dot3(r,r),dot3(tangent,tangent)]],[[1,1,1,.5]],'moving orthonormal frame and test vector');
   near([[dot3(p,q),dot3(p,r),dot3(q,r),dot3(p,tangent),dot3(p,gradient)]],[[0,0,0,0,0]],'moving vectors are tangent');
   near([gradient.map((x,j)=>x+normal[j])],[[1,0,0]],'ambient direction splits into projected and normal components');
   near([[dot3(tangent,gradient),dot3(gradient,gradient)]],[[value,1-p[0]**2]],'one-form evaluation equals metric pairing throughout motion');
-  for(const c of [-.5,-.25,0,.25,.5]){
-    const level=sphere.levelVectors(angle,c);
+  near([weighted.reduce((sum,g)=>sum.map((x,j)=>x+g[j]),[0,0,0])],[[0,0,0]],'weighted projected coordinate vectors close');
+  near([[terms.reduce((a,b)=>a+b,0)]],[[0]],'weighted scalar coordinate measurements cancel');
+  for(let axis=0;axis<3;axis++){
+    near([[dot3(p,gradients[axis]),dot3(q,gradients[axis]),dot3(r,gradients[axis])]],[[0,q[axis],r[axis]]],'each gradient represents its coordinate covector on the full tangent plane');
+    for(const c of [-.5,-.25,0,.25,.5]){
+    const level=sphere.levelVectors(angle,c,axis);
     if(!level)continue;
     if(level.wholePlane){
-      near([[q[0],r[0],c]],[[0,0,0]],'coordinate vanishes on the whole tangent plane at a pole');
+      near([[q[axis],r[axis],c]],[[0,0,0]],'coordinate vanishes on the whole tangent plane at a pole');
     }else{
-      for(const v of level.vectors)near([[v[0],dot3(v,p)]],[[c,0]],'covector level set is a constant coordinate of tangent vectors');
+      for(const v of level.vectors)near([[v[axis],dot3(v,p)]],[[c,0]],'covector level set is a constant coordinate of tangent vectors');
+    }
     }
   }
 }
+for(let axis=0;axis<3;axis++)for(const sign of [-1,1]){
+  const p=[0,0,0];p[axis]=sign;
+  near([sphere.representatives(p)[axis]],[[0,0,0]],'each coordinate differential vanishes at its own two poles');
+}
 near([sphere.state(sphere.startAngle).p],[[1/Math.sqrt(3),1/Math.sqrt(3),1/Math.sqrt(3)]],'animation begins at the worked example');
-console.log('Validated 129 moving tangent planes, projection decomposition, metric representation, level sets, and the zero covector at both coordinate poles.');
+console.log('Validated 129 moving tangent planes, all three coordinate level sets and metric representatives, the weighted covector/vector relation, and all six coordinate poles.');
 vm.runInNewContext(fs.readFileSync(path.join(root,'course-site/hat-turtle.js'),'utf8'),context);
 const tile=context.window.HAT_TURTLE;
 if(tile.vertices.length!==14)throw Error('Expected fourteen fixed tile vertices');
@@ -266,7 +275,7 @@ for(const entry of notation.entries){
   }
 }
 const css=fs.readFileSync(path.join(root,'course-site/vendor/katex/katex.min.css'),'utf8');
-for(const formula of [...Object.values(sphere.formulas),sphere.pointFormula(sphere.state(sphere.startAngle).p),...[-1,0,.577,1].map(sphere.valueFormula)]){
+for(const formula of [...Object.values(sphere.formulas),sphere.pointFormula(sphere.state(sphere.startAngle).p),sphere.relationFormula(sphere.state(sphere.startAngle).terms),...[0,1,2].flatMap(axis=>[sphere.coordinateFormula(axis),sphere.projectionFormula(axis),sphere.ambientFormula(axis),...[-1,0,.577,1].map(value=>sphere.valueFormula(value,axis))])]){
   for(const mode of ['row','column'])katexContext.katex.renderToString(notation.convert(formula,mode),{throwOnError:true,trust:notation.trust});
   formulas++;
 }

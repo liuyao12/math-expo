@@ -86,7 +86,7 @@
 .sphere-tangent-example{font:400 13px/1.7 var(--serif);color:#586b51}
 .sphere-tangent-example .sphere-intro{margin:12px 0 0}
 .sphere-tangent-stage{position:relative;margin:0 -6px}
-.sphere-tangent-stage canvas{display:block;width:100%;height:auto;aspect-ratio:11/10}
+.sphere-tangent-stage canvas{display:block;width:100%;height:auto;aspect-ratio:1}
 .sphere-point-label,.sphere-level-label{position:absolute;transform:translate(-50%,-50%);font-size:12px;pointer-events:none;background:#f1f2ebcc;border-radius:2px;padding:0 2px}
 .sphere-point-label{color:#355b3e}
 .sphere-level-label{font-size:10px;color:#607858}
@@ -102,3 +102,19 @@
 .sphere-coordinate-readout [data-live=value]{color:#8a5f94}
 .sphere-projection-formula,.sphere-pairing-formula{text-align:center;font-size:11px;margin:12px 0}
 .example-choice>.example-followup{border-top:1px solid #d6dfce}
+.sphere-coordinate-choices{display:flex;gap:6px;margin:12px 0 8px}
+.sphere-coordinate-choices button{flex:1;background:transparent;border:1px solid #cdd7c4;border-radius:3px;padding:7px;min-height:36px;color:#607858}
+.sphere-coordinate-choices button[aria-pressed=true]{background:#e1e9d9;border-color:#99b18b;color:var(--green)}
+.sphere-selected-coordinate{text-align:center;margin:8px 0}
+.sphere-legend .sphere-representative-y{color:#39816c}.sphere-legend .sphere-representative-z{color:#ba7136}
+.sphere-ambient-note{font-size:11px;margin:8px 0;color:#7a8573}
+.sphere-values{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px;font-size:11px;margin-top:7px}
+.sphere-values>:nth-child(1){color:#347ba5}.sphere-values>:nth-child(2){color:#39816c}.sphere-values>:nth-child(3){color:#ba7136}
+.sphere-relation{border-top:1px solid #dbe1d1;padding-top:14px;text-align:center;font-size:11px}
+.sphere-relation p{font-size:12px;margin:11px 0 7px}
+.sphere-relation-numbers{margin:9px 0 16px;font-size:10px;color:#687e5c}
+.sphere-triangle{border-top:1px solid #dbe1d1;padding-top:14px;text-align:center;font-size:12px}
+.sphere-triangle canvas{display:block;width:100%;height:auto;aspect-ratio:22/9}
+.sphere-weighted-legend{display:flex;justify-content:center;gap:18px;font-size:11px}
+.sphere-weighted-legend>span:nth-child(1){color:#347ba5}.sphere-weighted-legend>span:nth-child(2){color:#39816c}.sphere-weighted-legend>span:nth-child(3){color:#ba7136}
+.sphere-triangle p{text-align:left;line-height:1.7;margin:12px 0}
