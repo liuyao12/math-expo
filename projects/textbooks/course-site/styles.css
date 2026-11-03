@@ -81,3 +81,5 @@
 .example-choice>.figure,.example-choice>[data-demo]>.figure{border:0;border-radius:0;margin:0}
 .example-choice>[data-demo]>.margin-label{display:none}
 .example-choice>.side-example>:first-child{margin-top:0}
+
+.sphere-tangent-diagram{max-width:340px;width:100%;height:auto;margin:4px auto 16px}.side-example .sphere-tangent-diagram{display:block}

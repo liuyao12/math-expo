@@ -105,6 +105,35 @@ for(const formula of ['w.(v^\\flat)=[x]G[y]^{\\mathsf T}.','v^\\flat\\longleftri
   for(const mode of ['row','column'])if(notation.convert(formula,mode)!==formula)throw Error('Toggle changed a fixed vector/covector coordinate formula');
 }
 console.log('Validated the plane metric, lowering/raising, covector evaluation, coordinate gradient, and fixed duality formulas in both modes.');
+const alternateFrame=[[1,-1,0],[1,1,-2]],alternateMetric=product(alternateFrame,transpose(alternateFrame));
+near(alternateMetric,[[2,0],[0,6]],'perpendicular alternative frame');
+near(product(alternateMetric,[[-1/2],[3/2]]),[[-1],[9]],'same lowered vector in the alternative coordinates');
+near(product([[-1/2,3/2]],[[-1],[9]]),product([[1,2]],[[4],[5]]),'covector measurement survives coordinate change');
+for(const [s,t] of [[1,2],[2,-1],[-3,4]]){
+  const oldRow=[[s,t]],newRow=[[(s-t)/2,(s+t)/2]],ambient=[[s,t,-s-t]];
+  near(product(oldRow,transpose(planeLift)),ambient,'two components reconstruct three');
+  near(product(newRow,alternateFrame),ambient,'changed coordinates reconstruct the same vector');
+  near(product(oldRow,planeMetric,transpose(oldRow)),product(newRow,alternateMetric,transpose(newRow)),'length survives coordinate change');
+}
+for(const mode of ['row','column']){
+  const expected=mode==='row'?['Y=XA.','Z=YB=XAB.','[z]=[x]A.']:['Y=AX.','Z=BY=BAX.','[z]^{\\mathsf T}=A[x]^{\\mathsf T}.'];
+  ['Y=AX.','Z=BY=BAX.','[z]^{\\mathsf T}=A[x]^{\\mathsf T}.'].forEach((tex,i)=>{
+    if(notation.convert(tex,mode)!==expected[i])throw Error('Incorrect concrete matrix convention: '+tex);
+  });
+}
+for(const p of [[1/Math.sqrt(3),1/Math.sqrt(3),1/Math.sqrt(3)],[1,0,0],[0,.6,.8]]){
+  const normal=product(transpose([p]),[p]);
+  const tangent=normal.map((r,i)=>r.map((v,j)=>(i===j?1:0)-v));
+  near(product(tangent,tangent),tangent,'sphere tangent projection is idempotent');
+  near(transpose(tangent),tangent,'sphere tangent projection is symmetric');
+  const direction=product([[2,-1,3]],tangent),coordinateGradient=product([[1,0,0]],tangent);
+  near(product(direction,transpose([p])),[[0]],'projected direction is tangent');
+  near(product(direction,transpose(coordinateGradient)),[[direction[0][0]]],'coordinate differential equals gradient pairing');
+  const shiftedCovector=[[1+2*p[0]],[2*p[1]],[2*p[2]]];
+  near(product(direction,shiftedCovector),[[direction[0][0]]],'normal covector coefficients give the same tangent measurement');
+}
+if(!fs.existsSync(path.join(root,'course-site/assets/sphere-tangent.svg')))throw Error('Missing sphere tangent diagram');
+console.log('Validated coordinate reconstruction, metric invariance, new matrix-toggle formulas, sphere tangent projections, and redundant covector descriptions.');
 vm.runInNewContext(fs.readFileSync(path.join(root,'course-site/hat-turtle.js'),'utf8'),context);
 const tile=context.window.HAT_TURTLE;
 if(tile.vertices.length!==14)throw Error('Expected fourteen fixed tile vertices');

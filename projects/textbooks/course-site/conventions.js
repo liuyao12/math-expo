@@ -19,6 +19,9 @@
   add("X=[x]^{\\mathsf T}.","X=[x].","coordinate-representation");
   add("X=[x]^{\\mathsf T},\\qquad Y=[y]^{\\mathsf T}.","X=[x],\\qquad Y=[y].","coordinate-pair");
   add("C=[a]^{\\mathsf T},\\qquad D=[b]^{\\mathsf T}.","C=[a],\\qquad D=[b].","coefficient-pair");
+  add("Y=AX.","Y=XA.","concrete-matrix-action");
+  add("Z=BY=BAX.","Z=YB=XAB.","concrete-matrix-composition");
+  add("[z]^{\\mathsf T}=A[x]^{\\mathsf T}.","[z]=[x]A.","plane-reconstruction");
   add("[v.L.d]^{\\mathsf T}=A[v.c]^{\\mathsf T}.","[v.L.d]=[v.c]A.","coordinate-map");
   add("[v.L.K.e]^{\\mathsf T}=BA[v.c]^{\\mathsf T}.","[v.L.K.e]=[v.c]AB.","coordinate-composition");
   add("v\\cdot w=X^{\\mathsf T}GY.","v\\cdot w=XGY^{\\mathsf T}.","metric");

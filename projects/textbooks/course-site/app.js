@@ -177,7 +177,7 @@
     const prose=(section,i)=>'<div class="prose"><h2><span class="section-number">'+Number(chapter.number)+'.'+(i+1)+'</span>'+section.title+'</h2>'+section.body+'</div>';
     const exampleBody=example=>example.demo?'<div data-demo="'+example.demo+'"></div>':'<div class="figure side-example">'+example.body+'</div>';
     const margin=(section,i)=>{
-      if(section.examples)return '<span class="margin-label">TWO RUNNING EXAMPLES</span><div class="example-accordion">'+section.examples.map((example,j)=>'<details class="example-choice" name="examples-'+chapter.id+'-'+i+'"'+((section.openExample||0)===j?' open':'')+'><summary>'+example.title+'</summary>'+exampleBody(example)+'</details>').join('')+'</div>';
+      if(section.examples)return '<span class="margin-label">RUNNING EXAMPLES</span><div class="example-accordion">'+section.examples.map((example,j)=>'<details class="example-choice" name="examples-'+chapter.id+'-'+i+'"'+((section.openExample||0)===j?' open':'')+'><summary>'+example.title+'</summary>'+exampleBody(example)+'</details>').join('')+'</div>';
       if(section.example)return '<span class="margin-label">'+(section.example.label||'RUNNING EXAMPLE')+'</span><div class="figure side-example"><h3>'+section.example.title+'</h3>'+section.example.body+'</div>';
       return section.demo?'<div data-demo="'+section.demo+'"></div>':'<span class="margin-label">IN THE MARGIN</span><p class="margin-note">'+(section.note||'')+'</p>';
     };
