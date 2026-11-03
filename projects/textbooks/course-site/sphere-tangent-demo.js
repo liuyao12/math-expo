@@ -6,6 +6,11 @@
   const scale=(a,k)=>a.map(x=>k*x);
   const extent=.68;
   const startAngle=Math.atan(Math.sqrt(2));
+  const defaultView={yaw:Math.atan2(-3,4),pitch:Math.asin(2/Math.sqrt(29))};
+  function cameraFrame(yaw,pitch){
+    const c=Math.cos(pitch),s=Math.sin(pitch),a=Math.cos(yaw),b=Math.sin(yaw);
+    return {normal:[c*a,c*b,s],horizontal:[-b,a,0],vertical:[-s*a,-s*b,c]};
+  }
   const axes=['x','y','z'];
   const representatives=p=>p.map((coordinate,i)=>p.map((x,j)=>(i===j?1:0)-coordinate*x));
   function state(angle){
@@ -64,7 +69,7 @@
   const projectionFormula=axis=>'g_'+axes[axis]+'=e_'+axes[axis]+'-(p.'+axes[axis]+')p.';
   const ambientFormula=axis=>'e_'+axes[axis]+'=['+axes.map((_,i)=>i===axis?1:0).join(',')+']';
   function number(x){return Math.abs(x)<.005?'0':x.toFixed(2);}
-  window.SPHERE_TANGENT={state,levelVectors,representatives,extent,startAngle,formulas,pointFormula,valueFormula,relationFormula,coordinateFormula,projectionFormula,ambientFormula};
+  window.SPHERE_TANGENT={state,levelVectors,representatives,extent,startAngle,defaultView,cameraFrame,formulas,pointFormula,valueFormula,relationFormula,coordinateFormula,projectionFormula,ambientFormula};
 
   window.mountSphereTangentDemo=(holder,{math})=>{
     holder.innerHTML='<figure class="figure sphere-tangent-example">'+
@@ -73,8 +78,10 @@
       '<div class="sphere-coordinate-choices" role="group" aria-label="Choose a tangent coordinate measurement">'+
       axes.map((axis,i)=>'<button type="button" data-axis="'+i+'" aria-pressed="'+(i===0)+'" aria-label="Show the '+axis+'-coordinate measurement"><span data-formula="choose'+axis.toUpperCase()+'"></span></button>').join('')+'</div>'+
       '<div class="sphere-selected-coordinate" data-formula="coordinate"></div>'+
+      '<p class="sphere-view-help">Drag the sphere to change viewpoint. Arrow keys rotate it when focused; Home resets the view.</p>'+
+      '<div class="sphere-view-controls"><button type="button" class="sphere-play"></button><button type="button" class="sphere-face-plane" title="Pause motion and look straight at the current tangent plane">Face tangent plane</button><button type="button" class="sphere-reset-view">Reset view</button></div>'+
       '<div class="sphere-tangent-stage">'+
-      '<canvas width="880" height="880" role="img" aria-label="A moving sphere point and its tangent plane. Colored arrows are the three projected coordinate directions. Level lines depict the selected scalar coordinate. A purple tangent vector has three coordinate measurements shown below."></canvas>'+
+      '<canvas width="880" height="880" role="img" tabindex="0" aria-keyshortcuts="ArrowLeft ArrowRight ArrowUp ArrowDown Home" aria-label="Interactive sphere view. Drag or use arrow keys to rotate the camera; Home resets the view. Colored arrows are the three projected coordinate directions. Level lines depict the selected scalar coordinate. A purple tangent vector has three coordinate measurements shown below."></canvas>'+
       '<span class="sphere-point-label" data-formula="point" aria-hidden="true"></span>'+
       '<span class="sphere-level-label" data-level="-0.5" data-formula="negative" aria-hidden="true"></span>'+
       '<span class="sphere-level-label" data-level="0" data-formula="zero" aria-hidden="true"></span>'+
@@ -86,7 +93,6 @@
       '<div class="sphere-projection-formula" data-formula="projection"></div>'+
       '<div class="sphere-relation"><span class="sphere-readout-label">A RELATION BETWEEN THE COVECTORS</span><div data-formula="pointCoordinates"></div><div data-formula="relation"></div><p>Applied to the purple tangent vector:</p><div data-formula="evaluatedRelation"></div><p class="sphere-rounding-note">Rounded contributions:</p><div class="sphere-relation-numbers" data-live="relation"></div></div>'+
       '<div class="sphere-triangle"><span class="sphere-readout-label">THE SAME RELATION AFTER RAISING</span><div data-formula="raisedRelation"></div><canvas width="880" height="360" role="img" aria-label="The three weighted projected vectors are placed head to tail. The last returns to the starting point, showing that their vector sum is zero."></canvas><div class="sphere-weighted-legend"><span data-formula="weightedX"></span><span data-formula="weightedY"></span><span data-formula="weightedZ"></span></div><p>The weighted arrows close head to tail. They represent the covectors through the metric; the covectors themselves remain scalar measurements.</p></div>'+
-      '<div class="figure-controls"><button type="button" class="sphere-play"></button></div>'+
       '<figcaption class="figure-caption">Since tangent vectors are perpendicular to the radius, their weighted coordinate measurements sum to zero. The globe is shown transparently. At a coordinate-axis pole the corresponding differential vanishes on the whole tangent plane.</figcaption></figure>';
     const root=holder.querySelector('.sphere-tangent-example');
     root.querySelectorAll('[data-formula]').forEach(node=>math(node,formulas[node.dataset.formula]));
@@ -94,15 +100,16 @@
     ctx.scale(2,2);
     const triangle=root.querySelector('.sphere-triangle canvas'),triangleContext=triangle.getContext('2d');triangleContext.scale(2,2);
     const button=root.querySelector('.sphere-play'),pointLabel=root.querySelector('.sphere-point-label');
+    const resetButton=root.querySelector('.sphere-reset-view'),faceButton=root.querySelector('.sphere-face-plane');
     const levelLabels=[...root.querySelectorAll('[data-level]')];
     const reduced=matchMedia('(prefers-reduced-motion: reduce)');
-    const camera=[4/Math.sqrt(29),-3/Math.sqrt(29),2/Math.sqrt(29)];
-    const horizontal=[.6,.8,0],vertical=[-8/(5*Math.sqrt(29)),6/(5*Math.sqrt(29)),25/(5*Math.sqrt(29))];
-    const project=p=>[220+112*dot(p,horizontal),220-112*dot(p,vertical)];
+    let yaw=defaultView.yaw,pitch=defaultView.pitch;
+    let {normal:camera,horizontal,vertical}=cameraFrame(yaw,pitch);
+    const project=p=>[220+104*dot(p,horizontal),220-104*dot(p,vertical)];
     const colors={ink:'#3b5942',test:'#8a5f94'};
     const gradientColors=['#347ba5','#39816c','#ba7136'];
     const choices=[...root.querySelectorAll('[data-axis]')];
-    let selected=0,angle=startAngle,phase=0,raf=0,last=0,lastMath=-Infinity,visible=false,disposed=false,playing=!reduced.matches;
+    let selected=0,angle=startAngle,phase=0,raf=0,last=0,lastMath=-Infinity,visible=false,disposed=false,playing=!reduced.matches,dragging=null;
     // Begin at the diagonal point used in the accompanying worked example.
     let low=0,high=Math.PI;
     for(let i=0;i<50;i++){const mid=(low+high)/2;if(mid-.28*Math.sin(2*mid)<startAngle)low=mid;else high=mid;}
@@ -147,10 +154,11 @@
     function draw(timestamp=0,forceMath=false){
       const model=state(angle),{p,q,r,gradients,tangent,values,terms,residual}=model,gradient=gradients[selected];
       root.dataset.angle=String(angle);root.dataset.coordinate=String(values[selected]);root.dataset.axis=axes[selected];root.dataset.relationResidual=String(residual);
+      root.dataset.viewYaw=String(yaw);root.dataset.viewPitch=String(pitch);
       ctx.clearRect(0,0,440,440);
-      const globe=ctx.createRadialGradient(181,179,16,220,220,119);
+      const globe=ctx.createRadialGradient(184,182,15,220,220,111);
       globe.addColorStop(0,'#f7f9f2');globe.addColorStop(1,'#dce6d3');
-      ctx.beginPath();ctx.arc(220,220,112,0,Math.PI*2);ctx.fillStyle=globe;ctx.fill();ctx.strokeStyle='#b0c2a3';ctx.lineWidth=1;ctx.stroke();
+      ctx.beginPath();ctx.arc(220,220,104,0,Math.PI*2);ctx.fillStyle=globe;ctx.fill();ctx.strokeStyle='#b0c2a3';ctx.lineWidth=1;ctx.stroke();
       for(let axis=0;axis<3;axis++){
         for(let j=0;j<100;j++){
           const a=[0,0,0],b=[0,0,0];
@@ -195,7 +203,7 @@
         lastMath=timestamp;
       }
     }
-    function active(){return playing&&visible&&!document.hidden&&!disposed;}
+    function active(){return playing&&visible&&!document.hidden&&!disposed&&!dragging;}
     function frame(timestamp){
       raf=0;
       if(!active()){last=0;return;}
@@ -210,7 +218,47 @@
       if(active()&&!raf){last=0;raf=requestAnimationFrame(frame);}
       else if(!active()&&raf){cancelAnimationFrame(raf);raf=0;last=0;}
     }
-    function toggle(){playing=!playing;schedule();}
+    function toggle(){playing=!playing;schedule();if(!playing)draw(performance.now(),true);}
+    function setView(nextYaw,nextPitch,refreshMath=false){
+      yaw=Math.atan2(Math.sin(nextYaw),Math.cos(nextYaw));
+      pitch=Math.max(-Math.PI/2,Math.min(Math.PI/2,nextPitch));
+      ({normal:camera,horizontal,vertical}=cameraFrame(yaw,pitch));
+      draw(performance.now(),refreshMath);
+    }
+    function resetView(){setView(defaultView.yaw,defaultView.pitch);}
+    function facePlane(){
+      const {p}=state(angle);
+      playing=false;schedule();
+      setView(Math.atan2(p[1],p[0]),Math.asin(p[2]),true);
+    }
+    function startDrag(event){
+      if(dragging||!event.isPrimary||(event.pointerType==='mouse'&&event.button!==0))return;
+      event.preventDefault();canvas.focus({preventScroll:true});
+      dragging={id:event.pointerId,x:event.clientX,y:event.clientY};
+      canvas.setPointerCapture(event.pointerId);root.classList.add('is-dragging');schedule();
+      draw(performance.now(),true);
+    }
+    function moveDrag(event){
+      if(!dragging||dragging.id!==event.pointerId)return;
+      event.preventDefault();
+      const rect=canvas.getBoundingClientRect(),sensitivity=1.25*Math.PI/Math.max(1,Math.min(rect.width,rect.height));
+      const dx=event.clientX-dragging.x,dy=event.clientY-dragging.y;
+      dragging.x=event.clientX;dragging.y=event.clientY;
+      setView(yaw-dx*sensitivity,pitch+dy*sensitivity);
+    }
+    function stopDrag(event){
+      if(!dragging||(event.pointerId!==undefined&&event.pointerId!==dragging.id))return;
+      const id=dragging.id;dragging=null;root.classList.remove('is-dragging');
+      if(canvas.hasPointerCapture(id))canvas.releasePointerCapture(id);
+      schedule();
+    }
+    function keyboardView(event){
+      const step=Math.PI/24;
+      const changes={ArrowLeft:[step,0],ArrowRight:[-step,0],ArrowUp:[0,-step],ArrowDown:[0,step]};
+      if(event.key==='Home'){event.preventDefault();resetView();return;}
+      const change=changes[event.key];if(!change)return;
+      event.preventDefault();setView(yaw+change[0],pitch+change[1]);
+    }
     function select(event){
       selected=Number(event.currentTarget.dataset.axis);
       choices.forEach(button=>button.setAttribute('aria-pressed',String(Number(button.dataset.axis)===selected)));
@@ -222,6 +270,10 @@
     function motionChange(){if(reduced.matches)playing=false;schedule();}
     function settled(){draw(performance.now(),true);}
     button.addEventListener('click',toggle);
+    resetButton.addEventListener('click',resetView);faceButton.addEventListener('click',facePlane);
+    canvas.addEventListener('pointerdown',startDrag);canvas.addEventListener('pointermove',moveDrag);
+    canvas.addEventListener('pointerup',stopDrag);canvas.addEventListener('pointercancel',stopDrag);canvas.addEventListener('lostpointercapture',stopDrag);
+    canvas.addEventListener('keydown',keyboardView);window.addEventListener('blur',stopDrag);
     choices.forEach(button=>button.addEventListener('click',select));
     reduced.addEventListener('change',motionChange);
     document.addEventListener('visibilitychange',schedule);
@@ -235,6 +287,10 @@
       document.removeEventListener('visibilitychange',schedule);
       document.removeEventListener('matrixconventionsettled',settled);
       button.removeEventListener('click',toggle);
+      resetButton.removeEventListener('click',resetView);faceButton.removeEventListener('click',facePlane);
+      canvas.removeEventListener('pointerdown',startDrag);canvas.removeEventListener('pointermove',moveDrag);
+      canvas.removeEventListener('pointerup',stopDrag);canvas.removeEventListener('pointercancel',stopDrag);canvas.removeEventListener('lostpointercapture',stopDrag);
+      canvas.removeEventListener('keydown',keyboardView);window.removeEventListener('blur',stopDrag);
       choices.forEach(button=>button.removeEventListener('click',select));
     };
   };

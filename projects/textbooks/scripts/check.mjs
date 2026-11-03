@@ -162,7 +162,21 @@ for(let axis=0;axis<3;axis++)for(const sign of [-1,1]){
   near([sphere.representatives(p)[axis]],[[0,0,0]],'each coordinate differential vanishes at its own two poles');
 }
 near([sphere.state(sphere.startAngle).p],[[1/Math.sqrt(3),1/Math.sqrt(3),1/Math.sqrt(3)]],'animation begins at the worked example');
+const initialCamera=sphere.cameraFrame(sphere.defaultView.yaw,sphere.defaultView.pitch);
+near([initialCamera.normal],[[4/Math.sqrt(29),-3/Math.sqrt(29),2/Math.sqrt(29)]],'reset camera matches the established view');
+for(const [yaw,pitch] of [[0,0],[Math.PI/2,0],[1.2,Math.PI/2],[-2,-Math.PI/2],[sphere.defaultView.yaw,sphere.defaultView.pitch]]){
+  const {normal,horizontal,vertical}=sphere.cameraFrame(yaw,pitch);
+  near([[dot3(normal,normal),dot3(horizontal,horizontal),dot3(vertical,vertical),dot3(normal,horizontal),dot3(normal,vertical),dot3(horizontal,vertical)]],[[1,1,1,0,0,0]],'orbit camera remains orthonormal, including at its poles');
+}
+for(const angle of [0,sphere.startAngle,2.1,4.7]){
+  const {p,gradients}=sphere.state(angle),frame=sphere.cameraFrame(Math.atan2(p[1],p[0]),Math.asin(p[2]));
+  near([[dot3(p,frame.normal),dot3(p,frame.horizontal),dot3(p,frame.vertical)]],[[1,0,0]],'face-plane camera looks along the normal');
+  for(const a of gradients)for(const b of gradients){
+    near([[dot3(a,frame.horizontal)*dot3(b,frame.horizontal)+dot3(a,frame.vertical)*dot3(b,frame.vertical)]],[[dot3(a,b)]],'face-plane view preserves tangent lengths and angles');
+  }
+}
 console.log('Validated 129 moving tangent planes, all three coordinate level sets and metric representatives, the weighted covector/vector relation, and all six coordinate poles.');
+console.log('Validated orbit-camera frames, reset direction, and undistorted face-on tangent-plane projections.');
 vm.runInNewContext(fs.readFileSync(path.join(root,'course-site/hat-turtle.js'),'utf8'),context);
 const tile=context.window.HAT_TURTLE;
 if(tile.vertices.length!==14)throw Error('Expected fourteen fixed tile vertices');

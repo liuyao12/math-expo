@@ -118,3 +118,10 @@
 .sphere-weighted-legend{display:flex;justify-content:center;gap:18px;font-size:11px}
 .sphere-weighted-legend>span:nth-child(1){color:#347ba5}.sphere-weighted-legend>span:nth-child(2){color:#39816c}.sphere-weighted-legend>span:nth-child(3){color:#ba7136}
 .sphere-triangle p{text-align:left;line-height:1.7;margin:12px 0}
+.sphere-view-help{font-size:11px;line-height:1.6;margin:10px 0 8px;color:#75856b}
+.sphere-view-controls{display:flex;flex-wrap:wrap;gap:6px}
+.sphere-view-controls button{background:transparent;border:1px solid #cdd7c4;border-radius:3px;padding:6px 8px;min-height:34px;font-size:10px}
+.sphere-view-controls .sphere-play[aria-pressed=true]{background:#e1e9d9}
+.sphere-tangent-stage canvas{touch-action:none;cursor:grab}
+.sphere-tangent-stage canvas:focus-visible{outline:2px solid var(--green);outline-offset:-2px;border-radius:4px}
+.sphere-tangent-example.is-dragging .sphere-tangent-stage canvas{cursor:grabbing}
