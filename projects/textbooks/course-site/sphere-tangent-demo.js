@@ -227,7 +227,7 @@
     document.addEventListener('visibilitychange',schedule);
     document.addEventListener('matrixconventionsettled',settled);
     const observer=new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;schedule();},{rootMargin:'80px'});
-    observer.observe(canvas);
+    observer.observe(root);
     draw(0,true);schedule();
     return ()=>{
       disposed=true;cancelAnimationFrame(raf);observer.disconnect();
