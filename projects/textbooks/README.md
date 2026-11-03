@@ -34,3 +34,6 @@ The sphere example in the covector and projection sections now loops automatical
 
 
 The sphere view supports mouse, pen, and touch drag to orbit the camera, with arrow-key rotation and Home to restore the initial view. Dragging holds the point temporarily, then resumes its previous motion state. The nearby Face tangent plane control pauses the point and looks along its radius; Reset view changes only the camera. The separate weighted-vector triangle retains its intrinsic plane view. Camera-frame checks include polar views and verify that looking face-on preserves tangent lengths and angles.
+
+
+Dragging the marked sphere point now pauses the animation and places it directly on the unit sphere; dragging elsewhere still orbits the camera. Picking retains the point’s current visible or hidden hemisphere, and clamps outside drags to the sphere’s rim. Shift with the arrow keys moves the point without changing the camera. All tangent geometry, three coordinate measurements, level sets, and the weighted relation are recomputed at the chosen point. Play resumes continuously through the chosen point using a rotated copy of the animation path; the ambient coordinate axes stay fixed. The tangent frame is carried along during manipulation rather than reconstructed from the old path parameter.

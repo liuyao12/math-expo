@@ -4,6 +4,8 @@
   const dot=(a,b)=>a.reduce((sum,x,i)=>sum+x*b[i],0);
   const add=(a,b)=>a.map((x,i)=>x+b[i]);
   const scale=(a,k)=>a.map(x=>k*x);
+  const cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
+  const unit=a=>{const n=Math.hypot(...a);if(n<1e-12)throw Error('A sphere direction must be nonzero');return scale(a,1/n);};
   const extent=.68;
   const startAngle=Math.atan(Math.sqrt(2));
   const defaultView={yaw:Math.atan2(-3,4),pitch:Math.asin(2/Math.sqrt(29))};
@@ -13,19 +15,48 @@
   }
   const axes=['x','y','z'];
   const representatives=p=>p.map((coordinate,i)=>p.map((x,j)=>(i===j?1:0)-coordinate*x));
-  function state(angle){
-    const c=Math.cos(angle),s=Math.sin(angle);
-    const azimuth=Math.PI/4+.45*Math.sin(2*(angle-startAngle)),a=Math.cos(azimuth),b=Math.sin(azimuth);
-    const p=[c,s*a,s*b],q=[-s,c*a,c*b],r=[0,-b,a];
+  function fromFrame(p,q,r){
     const gradients=representatives(p),gradient=gradients[0];
-    const normal=scale(p,c);
+    const normal=scale(p,p[0]);
     const tangent=scale(add(q,r),.5);
     const weighted=gradients.map((g,i)=>scale(g,p[i]));
     const terms=p.map((x,i)=>x*tangent[i]);
     return {p,q,r,gradient,gradients,normal,tangent,value:tangent[0],values:tangent,weighted,terms,residual:dot(p,tangent)};
   }
-  function levelVectors(angle,value,axis=0){
-    const {q,r}=state(angle);
+  function state(angle){
+    const c=Math.cos(angle),s=Math.sin(angle);
+    const azimuth=Math.PI/4+.45*Math.sin(2*(angle-startAngle)),a=Math.cos(azimuth),b=Math.sin(azimuth);
+    return fromFrame([c,s*a,s*b],[-s,c*a,c*b],[0,-b,a]);
+  }
+  function stateAtPoint(point,previousQ){
+    const p=unit(point);
+    const leastAxis=p.reduce((best,x,i)=>Math.abs(x)<Math.abs(p[best])?i:best,0);
+    let reference=previousQ||axes.map((_,i)=>i===leastAxis?1:0);
+    let q=add(reference,scale(p,-dot(reference,p)));
+    if(Math.hypot(...q)<1e-7){
+      reference=axes.map((_,i)=>i===leastAxis?1:0);
+      q=add(reference,scale(p,-dot(reference,p)));
+    }
+    q=unit(q);
+    return fromFrame(p,q,unit(cross(p,q)));
+  }
+  function unprojectPoint(u,v,frame,side=1){
+    const radius=Math.hypot(u,v);
+    if(radius>1){u/=radius;v/=radius;}
+    const depth=radius>=1?0:(side<0?-1:1)*Math.sqrt(Math.max(0,1-u*u-v*v));
+    return unit(add(add(scale(frame.horizontal,u),scale(frame.vertical,v)),scale(frame.normal,depth)));
+  }
+  function rotationBetweenFrames(from,to){
+    const source=[from.p,from.q,from.r],target=[to.p,to.q,to.r];
+    return axes.map((_,i)=>axes.map((_,j)=>source.reduce((sum,v,k)=>sum+target[k][i]*v[j],0)));
+  }
+  function rotatedState(angle,rotation){
+    const base=state(angle),apply=v=>rotation.map(row=>dot(row,v));
+    // The ambient coordinate axes stay fixed, so recompute their representatives.
+    return fromFrame(apply(base.p),apply(base.q),apply(base.r));
+  }
+  function levelVectorsAt(model,value,axis=0){
+    const {q,r}=model;
     const a=q[axis],b=r[axis],points=[];
     if(Math.hypot(a,b)<1e-10)return value===0?{wholePlane:true}:null;
     const include=(u,v)=>{
@@ -37,6 +68,7 @@
     if(points.length<2)return null;
     return {wholePlane:false,vectors:points.slice(0,2).map(([u,v])=>add(scale(q,u),scale(r,v)))};
   }
+  const levelVectors=(angle,value,axis=0)=>levelVectorsAt(state(angle),value,axis);
   const formulas={
     point:'p',
     negative:'-\\frac12',
@@ -69,7 +101,7 @@
   const projectionFormula=axis=>'g_'+axes[axis]+'=e_'+axes[axis]+'-(p.'+axes[axis]+')p.';
   const ambientFormula=axis=>'e_'+axes[axis]+'=['+axes.map((_,i)=>i===axis?1:0).join(',')+']';
   function number(x){return Math.abs(x)<.005?'0':x.toFixed(2);}
-  window.SPHERE_TANGENT={state,levelVectors,representatives,extent,startAngle,defaultView,cameraFrame,formulas,pointFormula,valueFormula,relationFormula,coordinateFormula,projectionFormula,ambientFormula};
+  window.SPHERE_TANGENT={state,stateAtPoint,unprojectPoint,rotationBetweenFrames,rotatedState,levelVectors,levelVectorsAt,representatives,extent,startAngle,defaultView,cameraFrame,formulas,pointFormula,valueFormula,relationFormula,coordinateFormula,projectionFormula,ambientFormula};
 
   window.mountSphereTangentDemo=(holder,{math})=>{
     holder.innerHTML='<figure class="figure sphere-tangent-example">'+
@@ -78,10 +110,10 @@
       '<div class="sphere-coordinate-choices" role="group" aria-label="Choose a tangent coordinate measurement">'+
       axes.map((axis,i)=>'<button type="button" data-axis="'+i+'" aria-pressed="'+(i===0)+'" aria-label="Show the '+axis+'-coordinate measurement"><span data-formula="choose'+axis.toUpperCase()+'"></span></button>').join('')+'</div>'+
       '<div class="sphere-selected-coordinate" data-formula="coordinate"></div>'+
-      '<p class="sphere-view-help">Drag the sphere to change viewpoint. Arrow keys rotate it when focused; Home resets the view.</p>'+
+      '<p class="sphere-view-help">Drag the point to place it and pause motion. Drag elsewhere to rotate the view. Arrow keys rotate; Shift + arrow keys move the point. Home resets the view.</p>'+
       '<div class="sphere-view-controls"><button type="button" class="sphere-play"></button><button type="button" class="sphere-face-plane" title="Pause motion and look straight at the current tangent plane">Face tangent plane</button><button type="button" class="sphere-reset-view">Reset view</button></div>'+
       '<div class="sphere-tangent-stage">'+
-      '<canvas width="880" height="880" role="img" tabindex="0" aria-keyshortcuts="ArrowLeft ArrowRight ArrowUp ArrowDown Home" aria-label="Interactive sphere view. Drag or use arrow keys to rotate the camera; Home resets the view. Colored arrows are the three projected coordinate directions. Level lines depict the selected scalar coordinate. A purple tangent vector has three coordinate measurements shown below."></canvas>'+
+      '<canvas width="880" height="880" role="img" tabindex="0" aria-keyshortcuts="ArrowLeft ArrowRight ArrowUp ArrowDown Shift+ArrowLeft Shift+ArrowRight Shift+ArrowUp Shift+ArrowDown Home" aria-label="Interactive sphere view. Drag the marked point to move it on the sphere and pause motion. Drag elsewhere to rotate the camera. Arrow keys rotate; Shift with arrow keys moves the point; Home resets the view. Colored arrows represent the three coordinate measurements, whose level lines can be selected."></canvas>'+
       '<span class="sphere-point-label" data-formula="point" aria-hidden="true"></span>'+
       '<span class="sphere-level-label" data-level="-0.5" data-formula="negative" aria-hidden="true"></span>'+
       '<span class="sphere-level-label" data-level="0" data-formula="zero" aria-hidden="true"></span>'+
@@ -109,7 +141,8 @@
     const colors={ink:'#3b5942',test:'#8a5f94'};
     const gradientColors=['#347ba5','#39816c','#ba7136'];
     const choices=[...root.querySelectorAll('[data-axis]')];
-    let selected=0,angle=startAngle,phase=0,raf=0,last=0,lastMath=-Infinity,visible=false,disposed=false,playing=!reduced.matches,dragging=null;
+    let selected=0,angle=startAngle,phase=0,raf=0,last=0,lastMath=-Infinity,visible=false,disposed=false,playing=!reduced.matches,dragging=null,manualModel=null,orbitRotation=null;
+    const currentState=()=>manualModel||(orbitRotation?rotatedState(angle,orbitRotation):state(angle));
     // Begin at the diagonal point used in the accompanying worked example.
     let low=0,high=Math.PI;
     for(let i=0;i<50;i++){const mid=(low+high)/2;if(mid-.28*Math.sin(2*mid)<startAngle)low=mid;else high=mid;}
@@ -152,9 +185,10 @@
       const origin=view([0,0,0]);triangleContext.beginPath();triangleContext.arc(...origin,3,0,2*Math.PI);triangleContext.fillStyle=colors.ink;triangleContext.fill();
     }
     function draw(timestamp=0,forceMath=false){
-      const model=state(angle),{p,q,r,gradients,tangent,values,terms,residual}=model,gradient=gradients[selected];
+      const model=currentState(),{p,q,r,gradients,tangent,values,terms,residual}=model,gradient=gradients[selected];
       root.dataset.angle=String(angle);root.dataset.coordinate=String(values[selected]);root.dataset.axis=axes[selected];root.dataset.relationResidual=String(residual);
       root.dataset.viewYaw=String(yaw);root.dataset.viewPitch=String(pitch);
+      root.dataset.point=JSON.stringify(p);root.dataset.tangent=JSON.stringify(tangent);
       ctx.clearRect(0,0,440,440);
       const globe=ctx.createRadialGradient(184,182,15,220,220,111);
       globe.addColorStop(0,'#f7f9f2');globe.addColorStop(1,'#dce6d3');
@@ -177,11 +211,11 @@
       }
       path([onPlane(-extent,-extent),onPlane(extent,-extent),onPlane(extent,extent),onPlane(-extent,extent),onPlane(-extent,-extent)],null,'#8fa781',1.15);
       for(const c of [-.5,-.25,0,.25,.5]){
-        const level=levelVectors(angle,c,selected);
+        const level=levelVectorsAt(model,c,selected);
         if(level&&!level.wholePlane)path(level.vectors.map(v=>add(p,v)),null,c===0?'#839b79':'#a6b59c',c===0?1.2:.8);
       }
       levelLabels.forEach(node=>{
-        const level=levelVectors(angle,Number(node.dataset.level),selected);
+        const level=levelVectorsAt(model,Number(node.dataset.level),selected);
         node.hidden=!level;
         if(level)position(node,level.wholePlane?p:add(p,level.vectors[1]),0,-7);
       });
@@ -193,7 +227,9 @@
       gradients.forEach((g,i)=>{if(i!==selected)arrow(p,add(p,g),gradientColors[i],1.7);});
       arrow(p,projectionEnd,gradientColors[selected],2.8);
       arrow(p,add(p,tangent),colors.test,1.9);
-      const [px,py]=project(p);ctx.beginPath();ctx.arc(px,py,3.8,0,Math.PI*2);ctx.fillStyle=colors.ink;ctx.fill();
+      const [px,py]=project(p);
+      ctx.beginPath();ctx.arc(px,py,10,0,Math.PI*2);ctx.strokeStyle='#537e55aa';ctx.lineWidth=1.2;ctx.stroke();
+      ctx.beginPath();ctx.arc(px,py,6,0,Math.PI*2);ctx.fillStyle=colors.ink;ctx.fill();ctx.strokeStyle='#f7f9f2';ctx.lineWidth=1.5;ctx.stroke();
       position(pointLabel,p,-10,-14);
       drawTriangle(model);
       if(!document.documentElement.classList.contains('notation-moving')&&(forceMath||timestamp-lastMath>180)){
@@ -218,7 +254,12 @@
       if(active()&&!raf){last=0;raf=requestAnimationFrame(frame);}
       else if(!active()&&raf){cancelAnimationFrame(raf);raf=0;last=0;}
     }
-    function toggle(){playing=!playing;schedule();if(!playing)draw(performance.now(),true);}
+    function toggle(){
+      if(!playing&&manualModel){
+        orbitRotation=rotationBetweenFrames(state(angle),manualModel);manualModel=null;
+      }
+      playing=!playing;schedule();if(!playing)draw(performance.now(),true);
+    }
     function setView(nextYaw,nextPitch,refreshMath=false){
       yaw=Math.atan2(Math.sin(nextYaw),Math.cos(nextYaw));
       pitch=Math.max(-Math.PI/2,Math.min(Math.PI/2,nextPitch));
@@ -227,36 +268,66 @@
     }
     function resetView(){setView(defaultView.yaw,defaultView.pitch);}
     function facePlane(){
-      const {p}=state(angle);
+      const {p}=currentState();
       playing=false;schedule();
       setView(Math.atan2(p[1],p[0]),Math.asin(p[2]),true);
     }
     function startDrag(event){
       if(dragging||!event.isPrimary||(event.pointerType==='mouse'&&event.button!==0))return;
       event.preventDefault();canvas.focus({preventScroll:true});
-      dragging={id:event.pointerId,x:event.clientX,y:event.clientY};
+      const rect=canvas.getBoundingClientRect(),[px,py]=project(currentState().p);
+      const local=[(event.clientX-rect.left)*440/rect.width,(event.clientY-rect.top)*440/rect.height];
+      const hitRadius=(event.pointerType==='touch'?24:16)*440/rect.width;
+      const mode=Math.hypot(local[0]-px,local[1]-py)<=hitRadius?'point':'view';
+      dragging={id:event.pointerId,x:event.clientX,y:event.clientY,mode,offset:[local[0]-px,local[1]-py],side:dot(currentState().p,camera)<0?-1:1};
+      if(mode==='point'){manualModel=currentState();playing=false;}
+      root.dataset.dragMode=mode;canvas.style.cursor=mode==='point'?'move':'grabbing';
       canvas.setPointerCapture(event.pointerId);root.classList.add('is-dragging');schedule();
       draw(performance.now(),true);
     }
     function moveDrag(event){
-      if(!dragging||dragging.id!==event.pointerId)return;
+      if(!dragging){hoverPoint(event);return;}
+      if(dragging.id!==event.pointerId)return;
       event.preventDefault();
       const rect=canvas.getBoundingClientRect(),sensitivity=1.25*Math.PI/Math.max(1,Math.min(rect.width,rect.height));
+      if(dragging.mode==='point'){
+        const x=(event.clientX-rect.left)*440/rect.width-dragging.offset[0],y=(event.clientY-rect.top)*440/rect.height-dragging.offset[1];
+        placePoint(x,y,dragging.side);return;
+      }
       const dx=event.clientX-dragging.x,dy=event.clientY-dragging.y;
       dragging.x=event.clientX;dragging.y=event.clientY;
       setView(yaw-dx*sensitivity,pitch+dy*sensitivity);
     }
     function stopDrag(event){
       if(!dragging||(event.pointerId!==undefined&&event.pointerId!==dragging.id))return;
-      const id=dragging.id;dragging=null;root.classList.remove('is-dragging');
+      const {id,mode}=dragging;dragging=null;root.classList.remove('is-dragging');root.dataset.dragMode='';canvas.style.cursor='';
       if(canvas.hasPointerCapture(id))canvas.releasePointerCapture(id);
       schedule();
+      if(mode==='point')draw(performance.now(),true);
     }
+    function placePoint(x,y,side,refreshMath=false){
+      const before=currentState();
+      const p=unprojectPoint((x-220)/104,(220-y)/104,{normal:camera,horizontal,vertical},side);
+      manualModel=stateAtPoint(p,before.q);
+      draw(performance.now(),refreshMath);
+    }
+    function hoverPoint(event){
+      const rect=canvas.getBoundingClientRect(),[x,y]=project(currentState().p);
+      const dx=event.clientX-rect.left-x*rect.width/440,dy=event.clientY-rect.top-y*rect.height/440;
+      canvas.style.cursor=Math.hypot(dx,dy)<=16?'move':'';
+    }
+    function leaveCanvas(){if(!dragging)canvas.style.cursor='';}
     function keyboardView(event){
       const step=Math.PI/24;
       const changes={ArrowLeft:[step,0],ArrowRight:[-step,0],ArrowUp:[0,-step],ArrowDown:[0,step]};
       if(event.key==='Home'){event.preventDefault();resetView();return;}
       const change=changes[event.key];if(!change)return;
+      if(event.shiftKey){
+        event.preventDefault();
+        const {p}=currentState(),[x,y]=project(p),offsets={ArrowLeft:[-6,0],ArrowRight:[6,0],ArrowUp:[0,-6],ArrowDown:[0,6]};
+        const [dx,dy]=offsets[event.key];
+        playing=false;schedule();placePoint(x+dx,y+dy,dot(p,camera)<0?-1:1,true);return;
+      }
       event.preventDefault();setView(yaw+change[0],pitch+change[1]);
     }
     function select(event){
@@ -273,6 +344,7 @@
     resetButton.addEventListener('click',resetView);faceButton.addEventListener('click',facePlane);
     canvas.addEventListener('pointerdown',startDrag);canvas.addEventListener('pointermove',moveDrag);
     canvas.addEventListener('pointerup',stopDrag);canvas.addEventListener('pointercancel',stopDrag);canvas.addEventListener('lostpointercapture',stopDrag);
+    canvas.addEventListener('pointerleave',leaveCanvas);
     canvas.addEventListener('keydown',keyboardView);window.addEventListener('blur',stopDrag);
     choices.forEach(button=>button.addEventListener('click',select));
     reduced.addEventListener('change',motionChange);
@@ -290,6 +362,7 @@
       resetButton.removeEventListener('click',resetView);faceButton.removeEventListener('click',facePlane);
       canvas.removeEventListener('pointerdown',startDrag);canvas.removeEventListener('pointermove',moveDrag);
       canvas.removeEventListener('pointerup',stopDrag);canvas.removeEventListener('pointercancel',stopDrag);canvas.removeEventListener('lostpointercapture',stopDrag);
+      canvas.removeEventListener('pointerleave',leaveCanvas);
       canvas.removeEventListener('keydown',keyboardView);window.removeEventListener('blur',stopDrag);
       choices.forEach(button=>button.removeEventListener('click',select));
     };

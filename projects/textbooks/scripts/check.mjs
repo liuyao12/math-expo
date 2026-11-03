@@ -177,6 +177,27 @@ for(const angle of [0,sphere.startAngle,2.1,4.7]){
 }
 console.log('Validated 129 moving tangent planes, all three coordinate level sets and metric representatives, the weighted covector/vector relation, and all six coordinate poles.');
 console.log('Validated orbit-camera frames, reset direction, and undistorted face-on tangent-plane projections.');
+const chosenPoints=[[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1],[1,2,3],[-.3,.8,-.5]];
+for(const point of chosenPoints){
+  const chosen=sphere.stateAtPoint(point,point),{p,q,r,tangent,weighted}=chosen;
+  near([[dot3(p,p),dot3(q,q),dot3(r,r),dot3(p,q),dot3(p,r),dot3(q,r),dot3(p,tangent)]],[[1,1,1,0,0,0,0]],'chosen point has an orthonormal tangent frame');
+  near([weighted.reduce((sum,v)=>sum.map((x,i)=>x+v[i]),[0,0,0])],[[0,0,0]],'weighted covector relation holds at arbitrary chosen points');
+  for(const frame of [initialCamera,sphere.cameraFrame(.7,Math.PI/2),sphere.cameraFrame(-1.1,-.4)]){
+    const picked=sphere.unprojectPoint(dot3(p,frame.horizontal),dot3(p,frame.vertical),frame,dot3(p,frame.normal)<0?-1:1);
+    if(Math.hypot(...picked.map((x,i)=>x-p[i]))>1e-7)throw Error('Sphere picking does not recover the point on its current hemisphere');
+    const rim=sphere.unprojectPoint(1.5,.5,frame);
+    near([[dot3(rim,rim),dot3(rim,frame.normal)]],[[1,0]],'point dragging beyond the sphere clamps to its rim');
+  }
+  for(let axis=0;axis<3;axis++)for(const value of [-.5,0,.5]){
+    const level=sphere.levelVectorsAt(chosen,value,axis);
+    if(level&&!level.wholePlane)for(const v of level.vectors)near([[v[axis],dot3(v,p)]],[[value,0]],'level sets follow arbitrary chosen points');
+  }
+  const angle=1.3,rotation=sphere.rotationBetweenFrames(sphere.state(angle),chosen),continued=sphere.rotatedState(angle,rotation);
+  near([continued.p,continued.q,continued.r],[p,q,r],'resuming animation preserves the chosen point and tangent frame');
+  const later=sphere.rotatedState(angle+.4,rotation);
+  near([[dot3(later.p,later.p),dot3(later.p,later.tangent)]],[[1,0]],'resumed motion stays on the sphere with tangent measurements');
+}
+console.log('Validated arbitrary-point tangent frames, signed sphere picking, rim clamping, coordinate level sets, and continuous animation resumption.');
 vm.runInNewContext(fs.readFileSync(path.join(root,'course-site/hat-turtle.js'),'utf8'),context);
 const tile=context.window.HAT_TURTLE;
 if(tile.vertices.length!==14)throw Error('Expected fourteen fixed tile vertices');
