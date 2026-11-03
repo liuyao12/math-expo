@@ -7,7 +7,7 @@ window.COURSE = {
     },
     {
       "id": "II",
-      "title": "The geometry of functions"
+      "title": "Inner products and functions"
     }
   ],
   "chapters": [
@@ -227,12 +227,13 @@ window.COURSE = {
       "number": "08",
       "short": "Inner product spaces",
       "title": "An inner product<br>gives vectors geometry.",
-      "subtitle": "Length, angle, perpendicularity, and projection follow from one structure. Develop the general theory, with a concrete example alongside each step.",
+      "subtitle": "Length, angle, perpendicularity, and projection follow from one structure. A plane and a space of functions give two concrete examples alongside the general theory.",
       "concepts": [
         "Inner product axioms",
         "Norms and angles",
         "Orthogonality",
         "Gram matrices",
+        "Vectors and covectors",
         "Projections"
       ],
       "intro": "Euclidean geometry gave us addition, scaling, and the dot product. We now isolate the rules that let us measure vectors, without tying those rules to a particular coordinate system or kind of object. We begin with real inner product spaces and their finite-dimensional geometry.",
@@ -240,39 +241,92 @@ window.COURSE = {
         {
           "title": "Define the structure, independently of coordinates.",
           "body": "\n<p>An inner product supplies a space with a way to measure pairs of vectors. We introduce addition, real scaling, and measurement together. Later we will ask what remains when measurement is set aside.</p>\n<div class=\"definition\"><span class=\"definition-label\">DEFINITION · REAL INNER PRODUCT SPACE</span>\n<p>A real inner product space is a set \\(V\\) with vector addition and real scalar multiplication obeying the linear rules below, together with a pairing \\(\\langle\\cdot,\\cdot\\rangle:V\\times V\\to\\mathbb R\\), satisfying the following for all \\(u,v,w\\in V\\) and \\(a,b\\in\\mathbb R\\):</p>\n\\[\\begin{aligned}\n\\langle au+bv,w\\rangle&=a\\langle u,w\\rangle+b\\langle v,w\\rangle,\\\\\n\\langle u,v\\rangle&=\\langle v,u\\rangle,\\\\\n\\langle v,v\\rangle&\\geq0,\\\\\n\\langle v,v\\rangle=0&\\iff v=0.\n\\end{aligned}\\]\n<p>These are linearity in the first argument, symmetry, and positive definiteness. Symmetry also gives linearity in the second argument.</p></div>\n<details><summary>Linear rules for addition and scaling</summary>\n<p>Addition is associative and commutative, has a zero, and gives every vector an additive inverse. For real scalars \\(a,b\\),</p>\n\\[\\begin{aligned}\na(u+v)&=au+av,\\\\\n(a+b)v&=av+bv,\\\\\na(bv)&=(ab)v,\\\\\n1v&=v.\n\\end{aligned}\\]\n</details>\n<p>The ordinary Euclidean dot product satisfies these axioms. The definition retains the structure we have used in geometry without requiring vectors to be arrows or coordinate lists.</p>\n",
-          "example": {
-            "title": "Functions on a fixed interval.",
-            "body": "\n<p>Take the real continuous functions on \\([0,\\pi]\\). Add and scale their values point by point:</p>\n\\[t.(ah+bk)=a(t.h)+b(t.k).\\]\n<p>Use the pairing</p>\n\\[\\langle h,k\\rangle=\\int_0^\\pi(t.h)(t.k)\\,dt.\\]\n<p>Linearity comes from the integral; symmetry comes from multiplication of real values. A whole function is one vector in this example.</p>\n"
-          }
+          "examples": [
+            {
+              "title": "The plane",
+              "body": "\n\\[V=\\{(x,y,z):x+y+z=0\\}.\\]\n<svg class=\"diagram plane-example-diagram\" viewBox=\"0 0 300 170\" role=\"img\" aria-label=\"A plane through the origin, with an oblique coordinate grid and two coordinate direction arrows.\">\n<defs><marker id=\"plane-direction-arrow\" markerWidth=\"7\" markerHeight=\"7\" refX=\"5\" refY=\"3\" orient=\"auto\"><path d=\"M0 0 6 3 0 6\" fill=\"none\" stroke=\"#436b52\" stroke-width=\"1.4\"/></marker></defs>\n<path d=\"M24 87 135 29 277 84 166 142Z\" fill=\"#e0e8da\" stroke=\"#b4c6ab\"/>\n<g stroke=\"#bdcdb5\" stroke-width=\"1\"><path d=\"M61 68 203 123M98 49 240 104M71 105 182 47M118 124 229 65\"/></g>\n<g stroke=\"#436b52\" stroke-width=\"2\" marker-end=\"url(#plane-direction-arrow)\"><path d=\"M150 85 219 112\"/><path d=\"M150 85 96 113\"/></g><circle cx=\"150\" cy=\"85\" r=\"3\" fill=\"#436b52\"/>\n</svg>\n<p>Use coordinates \\([s,t]\\) for \\((s,t,-s-t)\\). Addition and scaling stay in the plane. It is a two-dimensional space, even though its points have three ambient coordinates.</p>\n<p>The two arrows are the coordinate directions \\((1,0,-1)\\) and \\((0,1,-1)\\). Give the plane the dot product inherited from the surrounding Euclidean space. We will keep this plane beside us as vectors become functions and measurements.</p>\n"
+            },
+            {
+              "title": "Functions on an interval",
+              "body": "\n<p>Take the real continuous functions on \\([0,\\pi]\\). Add and scale pointwise:</p>\n\\[t.(ah+bk)=a(t.h)+b(t.k).\\]\n<p>Use the pairing</p>\n\\[\\langle h,k\\rangle=\\int_0^\\pi(t.h)(t.k)\\,dt.\\]\n<p>Linearity comes from integration and symmetry from multiplication. A whole function is one vector. This larger space is infinite-dimensional; we will also use a two-dimensional subspace.</p>\n"
+            }
+          ],
+          "openExample": 0
         },
         {
           "title": "Recover length, distance, and angle.",
           "body": "\n<div class=\"definition\"><span class=\"definition-label\">NORM AND DISTANCE</span>\n<p>The norm, or length, of a vector is</p>\n\\[\\|v\\|=\\sqrt{\\langle v,v\\rangle}.\\]\n<p>The distance between two vectors is the length of their difference:</p>\n\\[(u,v).d=\\|u-v\\|.\\]\n</div>\n<p>Positive definiteness makes the zero vector the only vector of zero length. Bilinearity gives \\(\\|av\\|=|a|\\|v\\|\\): scaling a vector scales its length by the absolute value of the scalar.</p>\n<p>The Cauchy–Schwarz inequality gives the bound that makes angle possible:</p>\n\\[|\\langle u,v\\rangle|\\leq\\|u\\|\\,\\|v\\|.\\]\n<p>For \\(v\\ne0\\), expand the nonnegative squared length of \\(u-tv\\) and choose \\(t=\\langle u,v\\rangle/\\|v\\|^2\\) to obtain this inequality. For nonzero \\(u,v\\), define their angle in \\([0,\\pi]\\) by</p>\n\\[\\cos\\theta=\\frac{\\langle u,v\\rangle}{\\|u\\|\\,\\|v\\|}.\\]\n<p>The same inequality gives the triangle inequality \\(\\|u+v\\|\\leq\\|u\\|+\\|v\\|\\). Length and distance retain the familiar geometric rules.</p>\n",
-          "example": {
-            "title": "A square cannot cancel itself.",
-            "body": "\n\\[\\|h\\|^2=\\int_0^\\pi(t.h)^2\\,dt.\\]\n<p>The integrand is nonnegative. If a continuous function is nonzero somewhere, its square remains positive on a small interval. Its squared length is therefore positive.</p>\n<p>The zero vector is the function that vanishes everywhere. Vanishing at a few points, or even many points, does not give a nonzero function zero length.</p>\n"
-          }
+          "examples": [
+            {
+              "title": "The plane",
+              "body": "\n<p>A vector with coordinate list \\([a,b]\\) is the displacement \\((a,b,-a-b)\\). Its squared length is</p>\n\\[\\|v\\|^2=a^2+b^2+(a+b)^2.\\]\n<p>This is positive for every nonzero list. Each coordinate direction has length \\(\\sqrt2\\), and their inner product is \\(1\\). Their angle is therefore \\(\\pi/3\\).</p>\n<p>The list \\([1,1]\\) describes \\((1,1,-2)\\), whose length is \\(\\sqrt6\\). Squaring and adding just the two coordinate entries would miss the geometry.</p>\n"
+            },
+            {
+              "title": "Functions on an interval",
+              "body": "\n\\[\\|h\\|^2=\\int_0^\\pi(t.h)^2\\,dt.\\]\n<p>The square cannot cancel itself. A continuous function that is nonzero somewhere has a positive integral of its square, so this pairing is positive definite.</p>\n<p>The zero vector is the function that vanishes everywhere, rather than a function that merely vanishes at some points.</p>\n<p>For \\(f=\\sin\\) and \\(g=\\cos\\),</p>\n\\[\\|f\\|^2=\\|g\\|^2=\\frac\\pi2.\\]\n"
+            }
+          ],
+          "openExample": 0
         },
         {
           "title": "Orthogonality gives perpendicular decomposition.",
           "body": "\n<div class=\"definition\"><span class=\"definition-label\">ORTHOGONAL VECTORS</span>\n<p>Two vectors are orthogonal when</p>\n\\[u\\perp v\\quad\\Longleftrightarrow\\quad\\langle u,v\\rangle=0.\\]\n</div>\n<p>This condition can be checked without a drawing. Expanding a squared length gives</p>\n\\[\\|u+v\\|^2=\\|u\\|^2+2\\langle u,v\\rangle+\\|v\\|^2.\\]\n<p>Thus orthogonality is exactly what makes the Pythagorean identity hold:</p>\n\\[u\\perp v\\quad\\Longleftrightarrow\\quad\\|u+v\\|^2=\\|u\\|^2+\\|v\\|^2.\\]\n<p>A family \\(e_1,\\ldots,e_k\\) is orthonormal when its vectors are pairwise orthogonal and each has length one. Equivalently, \\(\\langle e_i,e_j\\rangle=\\delta_{ij}\\), where \\(\\delta_{ij}\\) is one for equal indices and zero otherwise.</p>\n<p>Orthogonal components contribute independently to squared length. That fact will let us reconstruct a vector from measurements and find its nearest point in a subspace.</p>\n",
-          "demo": "function-inner-product"
+          "examples": [
+            {
+              "title": "The plane",
+              "body": "\n<p>In the plane \\(x+y+z=0\\), consider the vectors with coordinate lists \\([1,-1]\\) and \\([1,1]\\). Their ambient displacements are</p>\n\\[(1,-1,0),\\qquad (1,1,-2).\\]\n<p>Their inner product is zero. Their squared lengths are \\(2\\) and \\(6\\); their sum is \\((2,0,-2)\\), of squared length \\(8\\).</p>\n\\[8=2+6.\\]\n<p>The original coordinate directions were oblique, but these two combinations are perpendicular. Orthogonality belongs to the vectors and metric, not to the appearance of their coordinate lists.</p>\n"
+            },
+            {
+              "title": "Functions on an interval",
+              "demo": "function-inner-product"
+            }
+          ],
+          "openExample": 1
         },
         {
           "title": "A Gram matrix expresses the geometry in coordinates.",
-          "body": "\n<p>When \\(V\\) is finite-dimensional, choose a coordinate map \\(c:V\\to\\mathbb R^n\\). Let \\(u_1,\\ldots,u_n\\) be its coordinate directions, so that \\(x=v.c\\) means \\(v=\\sum_i x_i u_i\\).</p>\n<div class=\"definition\"><span class=\"definition-label\">GRAM MATRIX</span>\n\\[G_{ij}=\\langle u_i,u_j\\rangle.\\]\n<p>For coordinate lists \\(x=v.c\\) and \\(y=w.c\\),</p>\n\\[\\langle v,w\\rangle=[x]G[y]^{\\mathsf T},\\]\n\\[\\|v\\|^2=[x]G[x]^{\\mathsf T}.\\]\n</div>\n<p>Here \\([x]\\) is the literal one-row matrix made from \\(x\\). These identities use that fixed row wrapper in either toggle mode. The abstract vector, its coordinate list, and its matrix remain distinct.</p>\n<p>The Gram matrix is symmetric and positive definite. Orthonormal coordinate directions give \\(G=I\\); other coordinate directions require the Gram matrix to recover the same geometric measurements.</p>\n<p>We can also choose a different inner product on the same space. In two coordinates, for example, the positive-definite matrix \\(H=\\operatorname{diag}(1,4)\\) gives</p>\n\\[\\langle v,w\\rangle_H=x_1y_1+4x_2y_2.\\]\n<p>Its vectors of unit length satisfy \\(x_1^2+4x_2^2=1\\), an ellipse in these coordinates. The inner product is part of the geometric structure, beyond addition and scaling alone.</p>\n",
-          "example": {
-            "title": "A plane made of functions.",
-            "body": "\n<p>Let \\(f=\\sin\\), \\(g=\\cos\\), and \\(E=\\operatorname{span}\\{f,g\\}\\) on \\([0,\\pi]\\). The animation shows \\(\\langle f,g\\rangle=0\\), while</p>\n\\[\\|f\\|^2=\\|g\\|^2=\\frac{\\pi}{2}.\\]\n<p>The two directions are independent: evaluate a zero combination at \\(0\\) and at \\(\\pi/2\\). Define coordinates by</p>\n\\[(af+bg).\\kappa=[a,b].\\]\n<p>The Gram matrix and length are</p>\n\\[G=\\frac{\\pi}{2}I_2,\\]\n\\[\\|af+bg\\|^2=\\frac{\\pi}{2}(a^2+b^2).\\]\n<p>Scaling both functions by \\(\\sqrt{2/\\pi}\\) makes them orthonormal. This function plane is two-dimensional, even though the larger space of continuous functions is infinite-dimensional.</p>\n"
-          }
+          "body": "\n<p>When \\(V\\) is finite-dimensional, choose a coordinate map \\(c:V\\to\\mathbb R^n\\). Let \\(u_1,\\ldots,u_n\\) be its coordinate directions, so that \\(x=v.c\\) means \\(v=\\sum_i x_i u_i\\).</p>\n<div class=\"definition\"><span class=\"definition-label\">GRAM MATRIX</span>\n\\[G_{ij}=\\langle u_i,u_j\\rangle.\\]\n<p>For coordinate lists \\(x=v.c\\) and \\(y=w.c\\),</p>\n\\[\\langle v,w\\rangle=[x]G[y]^{\\mathsf T},\\]\n\\[\\|v\\|^2=[x]G[x]^{\\mathsf T}.\\]\n</div>\n<p>Here \\([x]\\) is the literal one-row matrix made from \\(x\\). These identities use that fixed row wrapper in either toggle mode. The abstract vector, its coordinate list, and its matrix remain distinct.</p>\n<p>These entries are also called the metric components: \\(g_{ij}=G_{ij}\\). The Gram matrix is symmetric and positive definite. Orthonormal coordinate directions give \\(G=I\\); other coordinate directions require the Gram matrix to recover the same geometric measurements.</p>\n<p>We can also choose a different inner product on the same space. In two coordinates, for example, the positive-definite matrix \\(H=\\operatorname{diag}(1,4)\\) gives</p>\n\\[\\langle v,w\\rangle_H=x_1y_1+4x_2y_2.\\]\n<p>Its vectors of unit length satisfy \\(x_1^2+4x_2^2=1\\), an ellipse in these coordinates. The inner product is part of the geometric structure, beyond addition and scaling alone.</p>\n",
+          "examples": [
+            {
+              "title": "The plane",
+              "body": "\n<p>Pair the two coordinate directions in the ambient space:</p>\n\\[G=\\begin{bmatrix}2&1\\\\1&2\\end{bmatrix}.\\]\n<p>If \\(v.c=[a,b]\\) and \\(w.c=[r,q]\\), then</p>\n\\[\\langle v,w\\rangle=2ar+aq+br+2bq.\\]\n<p>This is exactly the dot product of \\((a,b,-a-b)\\) with \\((r,q,-r-q)\\). The off-diagonal entries record that our two coordinate directions are not perpendicular.</p>\n<p>The unit circle of the plane has coordinate equation</p>\n\\[2a^2+2ab+2b^2=1.\\]\n<p>Its coordinate picture is an ellipse; its geometry in the plane is still a circle.</p>\n"
+            },
+            {
+              "title": "Functions on an interval",
+              "body": "\n<p>Let \\(f=\\sin\\), \\(g=\\cos\\), and \\(E=\\operatorname{span}\\{f,g\\}\\) on \\([0,\\pi]\\). Give this function plane coordinates</p>\n\\[(af+bg).\\kappa=[a,b].\\]\n<p>The two functions are orthogonal, each of squared length \\(\\pi/2\\). Thus</p>\n\\[G_E=\\frac\\pi2 I_2.\\]\n\\[\\|af+bg\\|^2=\\frac\\pi2(a^2+b^2).\\]\n<p>The directions are independent: evaluate a zero combination at \\(0\\) and at \\(\\pi/2\\). This example is finite-dimensional even though the space of all continuous functions is not.</p>\n"
+            }
+          ],
+          "openExample": 0
+        },
+        {
+          "title": "An inner product turns a vector into a covector.",
+          "body": "\n<p>A vector is a direction. A covector is a linear, real-valued measurement of directions. The dual space \\(V^*\\) consists of all these measurements. Evaluation needs no inner product:</p>\n\\[(av+bw).\\lambda=a(v.\\lambda)+b(w.\\lambda).\\]\n<div class=\"definition\"><span class=\"definition-label\">LOWERING · FIX ONE INPUT OF THE PAIRING</span>\n<p>An inner product associates to each vector \\(v\\) a covector \\(v^\\flat\\):</p>\n\\[v\\longmapsto v^\\flat,\\qquad w.(v^\\flat)=\\langle v,w\\rangle.\\]\n<p>Fix the first input; let the second vary. This function of the second input is the covector.</p></div>\n<p>For row coordinate lists \\(x=v.c\\) and \\(y=w.c\\), the measurement is</p>\n\\[w.(v^\\flat)=[x]G[y]^{\\mathsf T}.\\]\n<p>Represent a covector by a column \\(B\\), so that evaluation is \\(w.\\lambda=[y]B\\). Symmetry of \\(G\\) gives the concrete operation</p>\n\\[v^\\flat\\longleftrightarrow B=G[x]^{\\mathsf T}.\\]\n<p><strong>Transpose the row, then multiply by the Gram matrix on the left.</strong> Conversely, the vector \\(\\lambda^\\sharp\\) associated to a covector with column \\(B\\) has row coordinates</p>\n\\[[\\lambda^\\sharp.c]=(G^{-1}B)^{\\mathsf T}.\\]\n<p>The row and column distinguish a coordinate list from a dual measurement. In orthonormal coordinates, \\(G=I\\), so lowering reduces to transposition. In other coordinates, the metric supplies the correction.</p>\n<p>In finite dimensions this is an isomorphism \\(V\\to V^*\\). Positivity makes it injective, and the two spaces have the same dimension. Without a prescribed inner product, evaluation still makes sense, but this identification is no longer supplied.</p>\n<details><summary>Raising and lowering indices</summary>\n<p>Write the vector components with upper indices and the covector components with lower indices. With repeated indices summed,</p>\n\\[v_i=g_{ij}v^j,\\qquad v^i=g^{ij}v_j,\\qquad (g^{ij})=G^{-1}.\\]\n<p>This is the same operation in index notation.</p></details>\n",
+          "examples": [
+            {
+              "title": "The plane",
+              "body": "\n<p>The coordinate functions \\(s,t\\) assign numbers to points on our plane. Their differentials measure changes in those numbers:</p>\n\\[w.\\mathrm ds=r,\\qquad w.\\mathrm dt=q,\\]\n<p>when \\(w.c=[r,q]\\). A linear polynomial \\(\\ell=\\alpha s+\\beta t\\) has the constant differential</p>\n\\[\\mathrm d\\ell=\\alpha\\,\\mathrm ds+\\beta\\,\\mathrm dt.\\]\n<p>Linear functions and constant one-forms each form a two-dimensional space. Differentiation connects them without using a metric.</p>\n<h4>Now use the metric.</h4>\n<p>For \\(v.c=[a,b]\\),</p>\n\\[v^\\flat=(2a+b)\\,\\mathrm ds+(a+2b)\\,\\mathrm dt.\\]\n<p>In particular, the vector with list \\([1,2]\\) gives the covector \\(4\\,\\mathrm ds+5\\,\\mathrm dt\\), represented by the column</p>\n\\[\\begin{bmatrix}4\\\\5\\end{bmatrix}.\\]\n<p>In the other direction, \\(\\mathrm ds\\) gives the gradient of \\(s\\), with coordinate list \\([2/3,-1/3]\\). Its ambient displacement is \\((2/3,-1/3,-1/3)\\): the projection of \\((1,0,0)\\) onto the plane.</p>\n<details><summary>A quadratic polynomial on the same plane</summary>\n\\[f=st,\\qquad \\mathrm df=t\\,\\mathrm ds+s\\,\\mathrm dt.\\]\n<p>At a point \\(p\\), the value \\(p.f\\) is a number; the differential \\(\\mathrm df_p\\) is a covector measuring directional change. The gradient is the vector \\((\\mathrm df_p)^\\sharp\\). If \\(p\\) has coordinates \\([s,t]\\), its coordinate list is</p>\n\\[\\left[\\frac{2t-s}{3},\\frac{2s-t}{3}\\right].\\]\n<p>The differential does not require a metric. The gradient does.</p></details>\n"
+            },
+            {
+              "title": "Functions on an interval",
+              "body": "\n<p>Stay in the two-dimensional space \\(E=\\operatorname{span}\\{\\sin,\\cos\\}\\). Evaluation at zero is a covector:</p>\n\\[h.\\operatorname{ev}_0=0.h.\\]\n<p>If \\(h=a\\sin+b\\cos\\), this measurement returns \\(b\\). Its column is</p>\n\\[B=\\begin{bmatrix}0\\\\1\\end{bmatrix}.\\]\n<p>Raising with \\(G_E^{-1}=(2/\\pi)I_2\\) gives the representing vector</p>\n\\[(\\operatorname{ev}_0)^\\sharp=\\frac2\\pi\\cos.\\]\n\\[h.\\operatorname{ev}_0=\\left\\langle h,\\frac2\\pi\\cos\\right\\rangle.\\]\n<p>Here the vector is a function, while the covector measures functions. This representation is for the finite plane \\(E\\); it is not a claim about point evaluation on the entire continuous-function space.</p>\n"
+            }
+          ],
+          "openExample": 0
         },
         {
           "title": "Project by retaining the perpendicular components.",
           "body": "\n<p>Let \\(W\\) be a finite-dimensional subspace with orthonormal basis \\(e_1,\\ldots,e_k\\). Orthogonal projection onto \\(W\\) is</p>\n\\[v.\\mathcal P_W=\\sum_{i=1}^k\\langle v,e_i\\rangle e_i.\\]\n<p>The retained vector \\(p=v.\\mathcal P_W\\) lies in \\(W\\), and the residual \\(r=v-p\\) is perpendicular to every vector in \\(W\\). For any \\(w\\in W\\),</p>\n\\[\\|v-w\\|^2=\\|r\\|^2+\\|p-w\\|^2.\\]\n<p>Consequently, \\(p\\) is the unique nearest point in \\(W\\). This is the same perpendicular decomposition and nearest-point argument we used in Euclidean geometry.</p>\n<p>For a line spanned by a nonzero vector \\(u\\), normalization can be written directly into the formula:</p>\n\\[v.\\mathcal P_u=\\frac{\\langle v,u\\rangle}{\\langle u,u\\rangle}\\,u.\\]\n<p>For independent directions \\(u_1,\\ldots,u_k\\) that are not orthonormal, write \\(p=\\sum_i a_i u_i\\). With their Gram matrix \\(G\\) and measurements \\(b_i=\\langle u_i,v\\rangle\\), the coefficients satisfy</p>\n\\[[a]G=[b].\\]\n<p>Thus the projection and Gram-matrix tools survive the abstraction. They depend on the inner product axioms, not on how the vectors are pictured.</p>\n",
-          "example": {
-            "title": "Keep one function direction.",
-            "body": "\n<p>For \\(h=af+bg\\), with the same sine and cosine functions,</p>\n\\[h.\\mathcal P_f=\\frac{\\langle h,f\\rangle}{\\langle f,f\\rangle}\\,f=af.\\]\n<p>The residual is \\(bg\\), orthogonal to the retained component. Hence</p>\n\\[\\|af+bg\\|^2=\\|af\\|^2+\\|bg\\|^2.\\]\n<h4>The measurement matters.</h4>\n<p>Restrict the functions to \\([0,\\pi/2]\\) and use the integral on that interval instead. Their inner product becomes \\(1/2\\), so they are no longer orthogonal. The interval and pairing supply the geometry.</p>\n<p>Fourier approximation will retain more function directions using this same projection principle.</p>\n"
-          }
+          "examples": [
+            {
+              "title": "The plane",
+              "body": "\n<p>Project the vector with coordinates \\([1,2]\\) onto the direction \\([1,0]\\), using the plane’s metric.</p>\n<p>The relevant inner product is \\(4\\), and the target direction has squared length \\(2\\). The projected coordinate list is therefore \\([2,0]\\), leaving residual \\([-1,2]\\).</p>\n\\[\\langle p,v-p\\rangle=0.\\]\n<p>In ambient coordinates, the perpendicular decomposition is</p>\n\\[(1,2,-3)=(2,0,-2)+(-1,2,-1).\\]\n<p>The squared lengths give</p>\n\\[14=8+6.\\]\n<p>Keeping just the first coordinate would have given the wrong projection. The Gram matrix supplies the correction.</p>\n"
+            },
+            {
+              "title": "Functions on an interval",
+              "body": "\n<p>Take \\(f=\\sin\\) and \\(g=\\cos\\) on \\([0,\\pi]\\), with the integral pairing from the animation. Their span \\(E\\) is two-dimensional. Define coordinates by</p>\n\\[(af+bg).\\kappa=[a,b].\\]\n\\[G_E=\\frac\\pi2 I_2.\\]\n<p>For \\(h=af+bg\\), orthogonal projection onto the sine direction gives</p>\n\\[h.\\mathcal P_f=\\frac{\\langle h,f\\rangle}{\\langle f,f\\rangle}\\,f=af.\\]\n<p>The residual is \\(bg\\), perpendicular to the retained component, so</p>\n\\[\\|h\\|^2=\\frac\\pi2(a^2+b^2).\\]\n<p>Scaling each function by \\(\\sqrt{2/\\pi}\\) makes the pair orthonormal. Fourier approximation will retain more function directions by the same projection principle.</p>\n<details><summary>The interval supplies part of the geometry</summary>\n<p>On \\([0,\\pi/2]\\), using that interval’s integral instead, the sine/cosine pairing is \\(1/2\\). They are no longer orthogonal.</p></details>\n"
+            }
+          ],
+          "openExample": 1
         }
       ]
     },

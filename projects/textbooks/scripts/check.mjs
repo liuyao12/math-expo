@@ -87,6 +87,24 @@ for(const mode of ['row','column']){
   if(mode==='column'&&(!defs.includes('mathsf T')||normal!=='GC=D.'))throw Error('Column coefficient matrices disagree with the normal equations');
 }
 console.log('Validated list/matrix distinction, invariant postfix evaluation, scalar matrix results, and rectangular coordinate composition.');
+// The plane x+y+z=0: vectors, dual measurements, and metric-dependent gradients.
+const planeLift=[[1,0],[0,1],[-1,-1]],planeMetric=product(transpose(planeLift),planeLift),planeInverse=inverse2(planeMetric);
+near(planeMetric,[[2,1],[1,2]],'plane coordinate metric');
+for(const coordinates of [[[1,2]],[[2,-1]],[[-3,4]]]){
+  const lowered=product(planeMetric,transpose(coordinates));
+  near(transpose(product(planeInverse,lowered)),coordinates,'raising reverses lowering');
+  for(const direction of [[[1,0]],[[0,1]],[[3,-2]]]){
+    near(product(direction,lowered),product(coordinates,planeMetric,transpose(direction)),'covector evaluation equals inner product');
+    near(product(coordinates,planeMetric,transpose(direction)),product(transpose(product(planeLift,transpose(coordinates))),planeLift,transpose(direction)),'intrinsic pairing equals ambient dot product');
+  }
+}
+near(product(planeMetric,[[1],[2]]),[[4],[5]],'concrete lowered covector');
+near(product(planeLift,planeInverse,[[1],[0]]),[[2/3],[-1/3],[-1/3]],'gradient of the coordinate function');
+near(product([[2,0]],planeMetric,[[-1],[2]]),[[0]],'plane projection has perpendicular residual');
+for(const formula of ['w.(v^\\flat)=[x]G[y]^{\\mathsf T}.','v^\\flat\\longleftrightarrow B=G[x]^{\\mathsf T}.','[\\lambda^\\sharp.c]=(G^{-1}B)^{\\mathsf T}.']){
+  for(const mode of ['row','column'])if(notation.convert(formula,mode)!==formula)throw Error('Toggle changed a fixed vector/covector coordinate formula');
+}
+console.log('Validated the plane metric, lowering/raising, covector evaluation, coordinate gradient, and fixed duality formulas in both modes.');
 vm.runInNewContext(fs.readFileSync(path.join(root,'course-site/hat-turtle.js'),'utf8'),context);
 const tile=context.window.HAT_TURTLE;
 if(tile.vertices.length!==14)throw Error('Expected fourteen fixed tile vertices');
@@ -171,7 +189,7 @@ for(const chapter of chapters){
   if(ids.has(chapter.id))throw Error(`Duplicate chapter: ${chapter.id}`);ids.add(chapter.id);
   if(chapter.sections.length<2)throw Error(`Missing section in ${chapter.id}`);
   for(const section of chapter.sections){
-    for(const text of [section.body,section.note||'',section.example?.body||'']){
+    for(const text of [section.body,section.note||'',section.example?.body||'',...(section.examples||[]).map(example=>example.body||'')]){
       if(/[\x00-\x08\x0b\x0c\x0e-\x1f]/.test(text))throw Error(`Control character in ${chapter.id}`);
       for(const match of text.matchAll(/\\\(([\s\S]*?)\\\)|\\\[([\s\S]*?)\\\]/g)){
         const formula=match[1]??match[2];
