@@ -4,8 +4,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const context = { window:{} };
-for (const file of ['hat-turtle.js','chapters.js','app.js','conventions.js','matrix-demo.js','higher-geometry.js','tile-lattice-demo.js']) new vm.Script(fs.readFileSync(path.join(root,'course-site',file),'utf8'), { filename:file });
-for (const file of ['conventions.js','matrix-demo.js','higher-geometry.js']) vm.runInNewContext(fs.readFileSync(path.join(root,'course-site',file),'utf8'),context);
+for (const file of ['hat-turtle.js','chapters.js','app.js','conventions.js','matrix-demo.js','higher-geometry.js','tile-lattice-demo.js','sphere-tangent-demo.js']) new vm.Script(fs.readFileSync(path.join(root,'course-site',file),'utf8'), { filename:file });
+for (const file of ['conventions.js','matrix-demo.js','higher-geometry.js','sphere-tangent-demo.js']) vm.runInNewContext(fs.readFileSync(path.join(root,'course-site',file),'utf8'),context);
 const notation=context.window.MATRIX_NOTATION;
 const {models,ballVolume}=context.window.HIGHER_GEOMETRY;
 for(const [name,vertices,edges] of [['cube',16,32],['cross',8,24],['cell24',24,96]]){
@@ -134,6 +134,26 @@ for(const p of [[1/Math.sqrt(3),1/Math.sqrt(3),1/Math.sqrt(3)],[1,0,0],[0,.6,.8]
 }
 if(!fs.existsSync(path.join(root,'course-site/assets/sphere-tangent.svg')))throw Error('Missing sphere tangent diagram');
 console.log('Validated coordinate reconstruction, metric invariance, new matrix-toggle formulas, sphere tangent projections, and redundant covector descriptions.');
+const sphere=context.window.SPHERE_TANGENT;
+const dot3=(a,b)=>a.reduce((sum,x,i)=>sum+x*b[i],0);
+for(let i=0;i<=128;i++){
+  const angle=2*Math.PI*i/128,{p,q,r,tangent,gradient,normal,value}=sphere.state(angle);
+  near([[dot3(p,p),dot3(q,q),dot3(r,r),dot3(tangent,tangent)]],[[1,1,1,.5]],'moving orthonormal frame and test vector');
+  near([[dot3(p,q),dot3(p,r),dot3(q,r),dot3(p,tangent),dot3(p,gradient)]],[[0,0,0,0,0]],'moving vectors are tangent');
+  near([gradient.map((x,j)=>x+normal[j])],[[1,0,0]],'ambient direction splits into projected and normal components');
+  near([[dot3(tangent,gradient),dot3(gradient,gradient)]],[[value,1-p[0]**2]],'one-form evaluation equals metric pairing throughout motion');
+  for(const c of [-.5,-.25,0,.25,.5]){
+    const level=sphere.levelVectors(angle,c);
+    if(!level)continue;
+    if(level.wholePlane){
+      near([[q[0],r[0],c]],[[0,0,0]],'coordinate vanishes on the whole tangent plane at a pole');
+    }else{
+      for(const v of level.vectors)near([[v[0],dot3(v,p)]],[[c,0]],'covector level set is a constant coordinate of tangent vectors');
+    }
+  }
+}
+near([sphere.state(sphere.startAngle).p],[[1/Math.sqrt(3),1/Math.sqrt(3),1/Math.sqrt(3)]],'animation begins at the worked example');
+console.log('Validated 129 moving tangent planes, projection decomposition, metric representation, level sets, and the zero covector at both coordinate poles.');
 vm.runInNewContext(fs.readFileSync(path.join(root,'course-site/hat-turtle.js'),'utf8'),context);
 const tile=context.window.HAT_TURTLE;
 if(tile.vertices.length!==14)throw Error('Expected fourteen fixed tile vertices');
@@ -246,6 +266,10 @@ for(const entry of notation.entries){
   }
 }
 const css=fs.readFileSync(path.join(root,'course-site/vendor/katex/katex.min.css'),'utf8');
+for(const formula of [...Object.values(sphere.formulas),sphere.pointFormula(sphere.state(sphere.startAngle).p),...[-1,0,.577,1].map(sphere.valueFormula)]){
+  for(const mode of ['row','column'])katexContext.katex.renderToString(notation.convert(formula,mode),{throwOnError:true,trust:notation.trust});
+  formulas++;
+}
 for(const match of css.matchAll(/url\((fonts\/[^)]+)\)/g)){
   if(!fs.existsSync(path.join(root,'course-site/vendor/katex',match[1])))throw Error(`Missing math font: ${match[1]}`);
 }

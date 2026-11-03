@@ -83,3 +83,22 @@
 .example-choice>.side-example>:first-child{margin-top:0}
 
 .sphere-tangent-diagram{max-width:340px;width:100%;height:auto;margin:4px auto 16px}.side-example .sphere-tangent-diagram{display:block}
+.sphere-tangent-example{font:400 13px/1.7 var(--serif);color:#586b51}
+.sphere-tangent-example .sphere-intro{margin:12px 0 0}
+.sphere-tangent-stage{position:relative;margin:0 -6px}
+.sphere-tangent-stage canvas{display:block;width:100%;height:auto;aspect-ratio:11/10}
+.sphere-point-label,.sphere-level-label{position:absolute;transform:translate(-50%,-50%);font-size:12px;pointer-events:none;background:#f1f2ebcc;border-radius:2px;padding:0 2px}
+.sphere-point-label{color:#355b3e}
+.sphere-level-label{font-size:10px;color:#607858}
+.sphere-level-label[hidden]{display:none}
+.sphere-legend{display:flex;flex-wrap:wrap;gap:9px 14px;align-items:center;font-size:11px;margin:0 0 12px}
+.sphere-legend>span{display:inline-flex;align-items:center;gap:5px}
+.sphere-legend>span:before{content:'';width:15px;border-top:2px solid currentColor}
+.sphere-ambient{color:#b46c32}.sphere-representative{color:#347ba5}.sphere-test{color:#8a5f94}
+.sphere-level-caption{font-size:12px;line-height:1.7;margin:10px 0}
+.sphere-coordinate-readout{border-top:1px solid #dbe1d1;border-bottom:1px solid #dbe1d1;padding:12px 0;margin:13px 0;text-align:center}
+.sphere-readout-label{display:block;font:500 8px/1.5 var(--sans);letter-spacing:1.2px;color:#819078;margin-bottom:8px}
+.sphere-coordinate-readout [data-live]{min-height:27px}
+.sphere-coordinate-readout [data-live=value]{color:#8a5f94}
+.sphere-projection-formula,.sphere-pairing-formula{text-align:center;font-size:11px;margin:12px 0}
+.example-choice>.example-followup{border-top:1px solid #d6dfce}
