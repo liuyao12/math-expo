@@ -157,9 +157,9 @@ cite.work-title{font-style:italic}.entity-link.work-link,.work-record h3,.paper-
 .completion-terminal{display:flex;align-items:center;gap:8px;font:11px/1.6 var(--sans);color:var(--muted)}
 .completion-symbol{display:block;flex:none;width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
 .completion-complete .completion-symbol{color:#34764c}.completion-empty .completion-symbol{color:#b3453c}
-.record-commentaries{margin-top:20px;padding-top:14px;border-top:1px solid #e0e2d7;max-width:650px}
-.record-commentaries h4{font:9px/1.6 var(--sans);text-transform:uppercase;letter-spacing:.7px;color:var(--muted);margin:0 0 10px;font-weight:400}
+.record-commentaries{margin-top:20px;padding:16px 18px 6px;border:1px solid #d8cfe4;border-left:3px solid #8b72a6;border-radius:4px;background:#efebf6;max-width:650px}
+.record-commentaries h4{font:10px/1.6 var(--sans);text-transform:uppercase;letter-spacing:.7px;color:#665078;margin:0 0 12px;font-weight:600}
 .record-commentaries ul{list-style:none;padding:0;margin:0}.record-commentaries li{margin:0 0 13px;font-size:14px;line-height:1.65}
-.record-commentaries a{color:var(--green);text-decoration:none}.record-commentaries a:hover i{text-decoration:underline;text-underline-offset:3px}
+.record-commentaries a{color:#59446e;text-decoration:none}.record-commentaries a:hover i{text-decoration:underline;text-underline-offset:3px}
 .record-commentator{display:block;font:11px/1.7 var(--sans);margin-bottom:3px}.record-commentator .parallel-surname{font-variant-caps:small-caps}
 .record-commentary-availability{display:block;font:9px/1.6 var(--sans);color:var(--muted);margin-top:3px}

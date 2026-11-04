@@ -36,8 +36,32 @@ export const authoredCommentaries=[
  {id:'reck-dedekind',works:['dedekind-1872','dedekind-1888'],author:'Erich Reck',year:2025,
   title:'Dedekind’s Contributions to the Foundations of Mathematics',publication:'Stanford Encyclopedia of Philosophy; first published 2008, substantially revised 2025',kind:'Scholarly survey',access:'Free web essay',
   url:'https://plato.stanford.edu/entries/dedekind-foundations/',scope:'A broader survey of Dedekind’s foundational writings, including the two essays on continuity and numbers. It is not a line-by-line commentary.',
-  evidence:'https://plato.stanford.edu/entries/dedekind-foundations/',verification:'Author, revision date, and scope verified in the encyclopedia entry.'}
-].map(c=>({...c,checked:'2026-10-30',reuse:c.html?'Complete single article reproduced under the author’s express reuse permission; source URL credited.':'Linked external source; no full-text republication license established.'}));
+  evidence:'https://plato.stanford.edu/entries/dedekind-foundations/',verification:'Author, revision date, and scope verified in the encyclopedia entry.'},
+ {id:'monks-2019',works:['euler-1740'],author:'Kenneth M. Monks',year:2019,checked:'2026-11-03',
+  title:'Euler’s Calculation of the Sum of the Reciprocals of the Squares: A Mini-Primary Source Project for Calculus 2 Students',
+  publication:'Convergence, August 2019. DOI: 10.4169/convergence20190801',kind:'Guided reading',access:'Free publisher article and project PDF',
+  url:'https://old.maa.org/node/1880109',document:'https://old.maa.org/sites/default/files/images/upload_library/46/Barnett_TRIUMPHS_MiniPSPs/MiniPSP_EulerCalculuation_SumReciprocalPowers_2019_07_28.pdf',
+  scope:'A calculus-level guided reading of Euler’s reciprocal-square calculation in De summis serierum reciprocarum (E41). Selected historical passages, explanations, and student tasks develop the sine-product argument; it is not a commentary on every section of the paper.',
+  evidence:'https://old.maa.org/node/1880109',verification:'Author, August 2019 publication, DOI, and explicit identification of E41 verified against the MAA article. The linked project is dated 5 August 2019. This is the same Monks work already listed in the catalogue and citation index.'},
+ {id:'dittrich-2016',works:['riemann-1859'],author:'Walter Dittrich',year:2016,checked:'2026-11-03',
+  title:'On Riemann’s Paper, “On the Number of Primes Less Than a Given Magnitude”',
+  publication:'arXiv:1609.02301 (2016); version 3, 2 August 2017, 50 pages',kind:'Mathematical commentary',access:'Free author preprint',
+  url:'https://arxiv.org/abs/1609.02301v3',document:'https://arxiv.org/pdf/1609.02301v3',
+  scope:'A sustained analysis of the 1859 paper: analytic continuation, entire-function products, zeta zeros, and the explicit prime-counting formula. Later justifications and modern formulations are Dittrich’s commentary, rather than additional claims by Riemann.',
+  evidence:'https://arxiv.org/abs/1609.02301v3',verification:'Title, author, original submission, version date, length, and direct engagement with the 1859 paper verified in the author’s arXiv record. The linked version uses arXiv’s non-exclusive distribution license; that license does not grant us republication rights.'},
+ {id:'crosby-2016',works:['dedekind-1872'],author:'Chase Crosby',year:2016,checked:'2026-11-03',
+  title:'An Examination of Richard Dedekind’s “Continuity and Irrational Numbers”',
+  publication:'Rose-Hulman Undergraduate Mathematics Journal 17, no. 1 (2016), Article 9',kind:'Guided reading',access:'Free journal article',
+  url:'https://scholar.rose-hulman.edu/rhumj/vol17/iss1/9/',document:'https://scholar.rose-hulman.edu/cgi/viewcontent.cgi?article=1008&context=rhumj',
+  scope:'A section-by-section examination of all seven sections of Dedekind’s continuity essay, explaining the construction by cuts and briefly discussing a criticism at the end. An undergraduate historical exposition, supervised by Richard Delaware, rather than an expert critical edition.',
+  evidence:'https://scholar.rose-hulman.edu/rhumj/vol17/iss1/9/',verification:'Author, journal issue, article number, seven-section scope, and faculty sponsor verified in the journal’s own abstract and recommended citation. The article body was not fully inspected; this record does not certify every mathematical explanation.'},
+ {id:'sieg-schlimm-2005',works:['dedekind-1872','dedekind-1888'],author:'Wilfried Sieg and Dirk Schlimm',year:2005,checked:'2026-11-03',
+  title:'Dedekind’s Analysis of Number: Systems and Axioms',
+  publication:'Synthese 147, no. 1 (2005), pp. 121–170. DOI: 10.1007/s11229-004-6300-9',kind:'Historical analysis',access:'Free university-hosted author manuscript',
+  url:'https://www.cmu.edu/dietrich/philosophy/docs/tech-reports/153_Sieg.pdf',document:'https://www.cmu.edu/dietrich/philosophy/docs/tech-reports/153_Sieg.pdf',
+  scope:'A historical and philosophical analysis of Dedekind’s treatment of number, systems, and axioms, drawing on the 1872 and 1888 essays and their drafts. Its interpretation of Dedekind’s methods is attributed to the commentators; it is not a line-by-line edition.',
+  evidence:'https://link.springer.com/article/10.1007/s11229-004-6300-9',verification:'Authors, publication year, volume, and pagination verified against the publisher and Sieg’s Carnegie Mellon publication list. The university hosts an author manuscript headed “to appear in Synthese”; it is distinguished here from the final typeset article.'}
+].map(c=>({...c,checked:c.checked??'2026-10-30',reuse:c.html?'Complete single article reproduced under the author’s express reuse permission; source URL credited.':'Linked external source; no full-text republication license established.'}));
 
 export const commentariesFor=id=>authoredCommentaries.filter(c=>c.works.includes(id));
 
