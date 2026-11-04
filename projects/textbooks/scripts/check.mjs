@@ -4,8 +4,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const context = { window:{} };
-for (const file of ['hat-turtle.js','chapters.js','app.js','conventions.js','matrix-demo.js','higher-geometry.js','tile-lattice-demo.js','sphere-tangent-demo.js']) new vm.Script(fs.readFileSync(path.join(root,'course-site',file),'utf8'), { filename:file });
-for (const file of ['conventions.js','matrix-demo.js','higher-geometry.js','sphere-tangent-demo.js']) vm.runInNewContext(fs.readFileSync(path.join(root,'course-site',file),'utf8'),context);
+for (const file of ['hat-turtle.js','chapters.js','app.js','conventions.js','matrix-demo.js','higher-geometry.js','tile-lattice-demo.js','sphere-tangent-demo.js','tangent-area-demo.js']) new vm.Script(fs.readFileSync(path.join(root,'course-site',file),'utf8'), { filename:file });
+for (const file of ['conventions.js','matrix-demo.js','higher-geometry.js','sphere-tangent-demo.js','tangent-area-demo.js']) vm.runInNewContext(fs.readFileSync(path.join(root,'course-site',file),'utf8'),context);
 const notation=context.window.MATRIX_NOTATION;
 const {models,ballVolume}=context.window.HIGHER_GEOMETRY;
 for(const [name,vertices,edges] of [['cube',16,32],['cross',8,24],['cell24',24,96]]){
@@ -198,6 +198,30 @@ for(const point of chosenPoints){
   near([[dot3(later.p,later.p),dot3(later.p,later.tangent)]],[[1,0]],'resumed motion stays on the sphere with tangent measurements');
 }
 console.log('Validated arbitrary-point tangent frames, signed sphere picking, rim clamping, coordinate level sets, and continuous animation resumption.');
+const exterior=context.window.TANGENT_AREA;
+for(const [a,b] of [[[1,0],[0,1]],[[.9,.1],[.12,.9]],[[1,-.5],[-.2,.8]],[[.8,.4],[1.6,.8]]]){
+  const u=exterior.vector(a),v=exterior.vector(b),det=a[0]*b[1]-a[1]*b[0];
+  near([[dot3(u,exterior.p),dot3(v,exterior.p)]],[[0,0]],'exterior demo vectors lie in the tangent plane');
+  for(const [i,j,k] of [[0,1,2],[1,2,0],[2,0,1]]){
+    const value=exterior.wedge(u,v,i,j);
+    near([[value,exterior.wedge(v,u,i,j),exterior.wedge(u,u,i,j)]],[[det*exterior.p[k],-value,0]],'wedge reads projected area and reverses under swap');
+    near([[exterior.wedge(u.map((x,n)=>x+v[n]),v,i,j)]],[[value]],'wedge is linear and alternating');
+  }
+  let lastError=Infinity;
+  for(const epsilon of [.85,.2,.01,0]){
+    const magnified=exterior.patch(u,epsilon),error=Math.hypot(...magnified.map((x,i)=>x-u[i]));
+    if(error>lastError+1e-12)throw Error('Magnified surface patch does not approach its tangent vector');
+    lastError=error;
+    if(epsilon>0){const surface=magnified.map((x,i)=>exterior.p[i]+epsilon*x);near([[dot3(surface,surface)]],[[1]],'zoomed patch comes from the unit sphere');}
+    else near([magnified],[u],'fully zoomed patch is the tangent plane');
+  }
+  for(const reading of exterior.readings){
+    const expected=reading.degree===1?[u[reading.axis],v[reading.axis]]:[exterior.wedge(u,v,...reading.axes)];
+    near([exterior.measure(u,v,reading)],[expected],'coordinate/area thermometer receives the corresponding scalar measurement');
+  }
+}
+console.log('Validated signed coordinate and wedge readings, alternating/bilinear area rules, and sphere-patch convergence to the tangent plane.');
+
 vm.runInNewContext(fs.readFileSync(path.join(root,'course-site/hat-turtle.js'),'utf8'),context);
 const tile=context.window.HAT_TURTLE;
 if(tile.vertices.length!==14)throw Error('Expected fourteen fixed tile vertices');
@@ -310,6 +334,11 @@ for(const entry of notation.entries){
   }
 }
 const css=fs.readFileSync(path.join(root,'course-site/vendor/katex/katex.min.css'),'utf8');
+for(const formula of [...Object.values(exterior.formulas),...exterior.readings.flatMap(reading=>[reading.tex,exterior.evaluationTex(reading,0),exterior.evaluationTex(reading,1)]),exterior.rowTex('u',exterior.vector([.9,.1]))]){
+  for(const mode of ['row','column'])katexContext.katex.renderToString(notation.convert(formula,mode),{throwOnError:true,trust:notation.trust});
+  formulas++;
+}
+
 for(const formula of [...Object.values(sphere.formulas),sphere.pointFormula(sphere.state(sphere.startAngle).p),sphere.relationFormula(sphere.state(sphere.startAngle).terms),...[0,1,2].flatMap(axis=>[sphere.coordinateFormula(axis),sphere.projectionFormula(axis),sphere.ambientFormula(axis),...[-1,0,.577,1].map(value=>sphere.valueFormula(value,axis))])]){
   for(const mode of ['row','column'])katexContext.katex.renderToString(notation.convert(formula,mode),{throwOnError:true,trust:notation.trust});
   formulas++;

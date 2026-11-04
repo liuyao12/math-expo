@@ -272,7 +272,8 @@ window.COURSE = {
         "Orthogonality",
         "Gram matrices",
         "Vectors and covectors",
-        "Projections"
+        "Projections",
+        "Signed area and wedge products"
       ],
       "intro": "The coordinate chapter separated a vector from its different numerical descriptions. We now ask what structure makes lengths, angles, and projections work in any such space. The definition gathers rules we already know from rows and matrices; the plane and sphere keep the geometry in view, while functions test how far it extends.",
       "sections": [
@@ -391,6 +392,11 @@ window.COURSE = {
             }
           ],
           "openExample": 2
+        },
+        {
+          "title": "Coordinate readings extend to signed area.",
+          "body": "\n<p>Return to a surface point \\(p\\). Imagine magnifying a shrinking patch around it, keeping the first-order displacements at a fixed scale. The limiting linear space is the tangent plane \\(T_pS^2\\). It extends without bound; the drawing shows a finite window.</p>\n<p>The functions \\(\\mathrm dx_p,\\mathrm dy_p,\\mathrm dz_p\\) are coordinates on this plane of tangent vectors:</p>\n\\[w.\\mathrm dx_p=w_x,\\qquad w.\\mathrm dy_p=w_y,\\qquad w.\\mathrm dz_p=w_z.\\]\n<p>They read a vector’s signed components. Two such readings turn an ordered pair of tangent vectors into the signed area of a projected parallelogram.</p>\n<div class=\"definition\"><span class=\"definition-label\">FIRST WEDGE PRODUCT · AN ORIENTED AREA MEASUREMENT</span>\n<p>For covectors \\(\\alpha,\\beta\\), define</p>\n\\[(u,v).(\\alpha\\wedge\\beta)=(u.\\alpha)(v.\\beta)-(u.\\beta)(v.\\alpha).\\]\n<p>In particular,</p>\n\\[(u,v).(\\mathrm dx_p\\wedge\\mathrm dy_p)=u_xv_y-u_yv_x.\\]\n<p>This determinant is the signed area in the coordinate plane. Exchanging the inputs reverses its sign. Parallel inputs give zero.</p></div>\n<p>The thermometer is the central picture: a form is a scalar measurement. A one-form reads one arrow; a two-form reads an ordered pair. The arrows change while the measuring rule stays fixed. No inner product is needed to form a wedge product.</p>\n<details><summary>What the zoom means</summary>\n<p>For a unit sphere point \\(p\\) and a fixed tangent vector \\(w\\), the surface point in its direction is</p>\n\\[\\frac{p+\\epsilon w}{\\|p+\\epsilon w\\|}.\\]\n<p>Translate back to \\(p\\) and magnify by \\(1/\\epsilon\\):</p>\n\\[\\frac1\\epsilon\\left(\\frac{p+\\epsilon w}{\\|p+\\epsilon w\\|}-p\\right)\\longrightarrow w.\\]\n<p>Every fixed tangent vector appears in this limit. The tangent plane is the linear model of the surface at the chosen point.</p></details>\n<details><summary>From signed area to signed volume</summary>\n<p>Three coordinate forms measure the signed volume of a parallelepiped:</p>\n\\[(u,v,w).(\\mathrm dx\\wedge\\mathrm dy\\wedge\\mathrm dz)=\\det\\begin{bmatrix}u_x&u_y&u_z\\\\v_x&v_y&v_z\\\\w_x&w_y&w_z\\end{bmatrix}.\\]\n<p>In a two-dimensional tangent plane, any three tangent vectors are dependent, so this volume is zero. A nonzero volume measurement requires three independent directions.</p></details>\n",
+          "demo": "tangent-area"
         }
       ]
     },
