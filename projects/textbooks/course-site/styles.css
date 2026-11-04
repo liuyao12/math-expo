@@ -125,30 +125,8 @@
 .sphere-tangent-stage canvas{touch-action:none;cursor:grab}
 .sphere-tangent-stage canvas:focus-visible{outline:2px solid var(--green);outline-offset:-2px;border-radius:4px}
 .sphere-tangent-example.is-dragging .sphere-tangent-stage canvas{cursor:grabbing}
-.tangent-area-example{margin:0;font:400 13px/1.7 var(--serif);color:#586b51}
-.tangent-area-example .area-intro{margin:12px 0}
-.area-zoom-label{display:block;font:400 11px/1.6 var(--sans);color:#718166;margin:13px 0 4px}
-.area-zoom-label input{display:block;width:100%;accent-color:var(--green);min-height:26px;margin:4px 0}
-.area-zoom-readout{text-align:center;font-size:11px;min-height:25px}
-.area-reading-choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;margin:12px 0}
-.area-reading-choices button{background:transparent;border:1px solid #d0dbc8;border-radius:3px;min-height:34px;padding:6px 2px;font-size:11px}
-.area-reading-choices button[aria-pressed=true]{background:#dfe8d6;border-color:#9db68d;color:var(--green)}
-.area-experiment{display:grid;grid-template-columns:minmax(0,1fr) 78px;gap:7px;align-items:center;min-height:215px}
-.area-plane-stage{position:relative;min-width:0}
-.area-plane-stage canvas{display:block;width:100%;height:auto;aspect-ratio:10/9;touch-action:none;cursor:grab}
-.area-plane-stage canvas:focus-visible{outline:2px solid var(--green);outline-offset:-2px}
-.area-vector-label,.area-origin{position:absolute;transform:translate(-50%,-50%);font-size:12px;pointer-events:none}
-.area-vector-label[data-vector=u]{color:#497654}.area-vector-label[data-vector=v]{color:#865b98}.area-origin{color:#64765a}
-.area-thermometers{display:flex;gap:6px;justify-content:center;align-items:center;min-width:0}
-.area-meter{width:36px;text-align:center}
-.area-meter-input{min-height:22px;font-size:10px}
-.area-meter-track{position:relative;width:12px;height:155px;margin:7px auto;border:1px solid #bdcbb3;background:#fafbf7;border-radius:3px}
-.area-meter-fill{position:absolute;left:1px;right:1px;border-radius:1px}
-.area-meter-zero{position:absolute;top:50%;left:-4px;width:20px;border-top:1px solid #88977f}
-.area-meter-tick{position:absolute;left:-15px;width:13px;font-size:8px;transform:translateY(-50%);color:#839078}
-.area-meter-high{top:0}.area-meter-mid{top:50%}.area-meter-low{top:100%}
-.area-meter-value{font-size:9px;min-height:24px}
-.area-evaluation{text-align:center;min-height:28px;margin:7px 0;font-size:12px}
-.area-vector-values{border-top:1px solid #dce3d2;padding-top:11px;font-size:10px}
-.area-vector-values>div{min-height:24px}
-.area-vector-values>[data-vector-value=u]{color:#497654}.area-vector-values>[data-vector-value=v]{color:#865b98}
+.tangent-area-film{margin:0;padding:0;overflow:hidden;background:#0b0e16;border-color:#25303e;color:#c3cfdf}
+.tangent-area-film img{display:block;width:100%;height:auto}
+.tangent-area-film figcaption{padding:15px 16px 18px;font:400 13px/1.8 var(--serif);color:#b8c7d9}
+.tangent-area-film .katex{font-size:.95em}
+.tangent-area-film .film-wedge-formula{display:block;text-align:center;margin:10px 0}

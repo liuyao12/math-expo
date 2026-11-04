@@ -221,6 +221,20 @@ for(const [a,b] of [[[1,0],[0,1]],[[.9,.1],[.12,.9]],[[1,-.5],[-.2,.8]],[[.8,.4]
   }
 }
 console.log('Validated signed coordinate and wedge readings, alternating/bilinear area rules, and sphere-patch convergence to the tangent plane.');
+const film=JSON.parse(fs.readFileSync(path.join(root,'assets/tangent-area-film.json'),'utf8'));
+if(film.width!==720||film.height!==720||film.duration_ms<20000||film.frames.length<300)throw Error('Incomplete tangent-area film');
+for(const frame of film.frames){
+  near([frame.values],[exterior.measure(frame.u,frame.v,exterior.readings[frame.reading])],'film thermometers agree with the coordinate/wedge model');
+  near([[dot3(frame.u,exterior.p),dot3(frame.v,exterior.p)]],[[0,0]],'film arrows remain tangent vectors');
+}
+const positive=film.frames.find(frame=>frame.phase==='positive'),negative=film.frames.find(frame=>frame.phase==='negative');
+if(!positive||!negative||positive.values[0]<=0||negative.values[0]>=0)throw Error('Film does not show signed area reversal');
+near([negative.values],[positive.values.map(x=>-x)],'film swaps reverse area without changing its magnitude');
+for(const frame of film.frames.filter(frame=>frame.phase==='parallel'))near([frame.values],[[0]],'film parallel inputs give zero');
+const gif=fs.readFileSync(path.join(root,'assets/tangent-area.gif'));
+if(!/^GIF8[79]a$/.test(gif.subarray(0,6).toString())||gif.readUInt16LE(6)!==720||gif.readUInt16LE(8)!==720||gif.length>5*1024*1024)throw Error('Invalid or oversized tangent-area GIF');
+if(!fs.existsSync(path.join(root,'assets/tangent-area-still.png')))throw Error('Missing reduced-motion companion');
+console.log('Validated every film reading, positive/negative/parallel scenes, GIF dimensions, and the static companion.');
 
 vm.runInNewContext(fs.readFileSync(path.join(root,'course-site/hat-turtle.js'),'utf8'),context);
 const tile=context.window.HAT_TURTLE;
