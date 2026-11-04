@@ -1,3 +1,4 @@
+import dedekindText from './dedekind-text.json' with {type:'json'};
 // Access describes the linked source, not a license to republish its text.
 // These are companion relationships, not inferred citation-index edges.
 export const authoredCommentaries=[
@@ -53,6 +54,10 @@ export const authoredCommentaries=[
   title:'An Examination of Richard Dedekind’s “Continuity and Irrational Numbers”',
   publication:'Rose-Hulman Undergraduate Mathematics Journal 17, no. 1 (2016), Article 9',kind:'Guided reading',access:'Free journal article',
   url:'https://scholar.rose-hulman.edu/rhumj/vol17/iss1/9/',document:'https://scholar.rose-hulman.edu/cgi/viewcontent.cgi?article=1008&context=rhumj',
+  readingLinks:{kind:'section-guide',work:'dedekind-1872',
+   notice:'Editorial section guide, prepared by Math Expo. Crosby’s abstract says that his article discusses all seven sections. The headings and paragraph tags below identify Dedekind’s sections; they are not a transcription or quotations from Crosby’s article.',
+   evidence:'https://scholar.rose-hulman.edu/rhumj/vol17/iss1/9/',
+   blocks:dedekindText.essays.find(e=>e.id==='dedekind-1872').sections.filter(s=>s.id!=='d72-preface').map(s=>({id:'crosby-2016-'+s.id,label:s.range,title:s.title,paper:s.rows}))},
   scope:'A section-by-section examination of all seven sections of Dedekind’s continuity essay, explaining the construction by cuts and briefly discussing a criticism at the end. An undergraduate historical exposition, supervised by Richard Delaware, rather than an expert critical edition.',
   evidence:'https://scholar.rose-hulman.edu/rhumj/vol17/iss1/9/',verification:'Author, journal issue, article number, seven-section scope, and faculty sponsor verified in the journal’s own abstract and recommended citation. The article body was not fully inspected; this record does not certify every mathematical explanation.'},
  {id:'sieg-schlimm-2005',works:['dedekind-1872','dedekind-1888'],author:'Wilfried Sieg and Dirk Schlimm',year:2005,checked:'2026-11-03',

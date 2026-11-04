@@ -1,4 +1,5 @@
 import './check-parallel-reader.mjs';
+import './check-reading-links.mjs';
 import './check-weil-1949.mjs';
 import './check-explicit.mjs';
 import './check-zeta-visual.mjs';

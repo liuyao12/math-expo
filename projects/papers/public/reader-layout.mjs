@@ -1,5 +1,7 @@
 // Contents scroll independently. The paper, its passage notes, and its
 // exhibits share one reading surface; whole-work essays overlay that surface.
+const linkVersion=new URL(import.meta.url).searchParams.get('v')??'1';
+const {createReadingLinks}=await import('./reading-links.mjs?v='+encodeURIComponent(linkVersion));
 const config=JSON.parse(document.getElementById('reader-layout-data').textContent);
 const primary=document.querySelector('.reading-body')??document.getElementById('primary-scroll');
 const el=(tag,attrs={},text)=>{const node=document.createElement(tag);for(const [key,value] of Object.entries(attrs))node.setAttribute(key,value);if(text!==undefined)node.textContent=text;return node;};
@@ -25,7 +27,8 @@ if(primary){
  toolbar.append(el('a',{href:config.base+'commentaries/',class:'work-browse'},'Browse commentaries'));
  marginHeader.append(marginTitle,essayClose);
  const authored=el('div',{id:'work-authored',class:'work-authored',tabindex:'0',role:'region','aria-label':'Authored commentary — scroll independently'});
- margin.append(marginHeader,authored);
+ const linkControls=el('div',{class:'work-link-controls',hidden:''});
+ margin.append(marginHeader,linkControls,authored);
  // Keep every note beside its original passage, including its drawings and
  // controls. Stable note anchors also support links from the previous layout.
  const passageNotes=[...primary.querySelectorAll('.passage > .commentary')];
@@ -40,6 +43,18 @@ if(primary){
    const article=el('article',{'data-authored-id':essay.id,class:'work-essay'});
    article.append(el('p',{class:'note-type'},essay.kind+' · Source record'),el('h2',{},essay.author));
    const heading=el('h3');heading.append(el('i',{},essay.title));article.append(heading,el('p',{class:'work-publication'},essay.publication),el('p',{},essay.scope),el('a',{href:essay.url,target:'_blank',rel:'noopener'},'Original source ↗'),el('p',{class:'work-availability'},'The full text has not yet been added here. This source is linked; permission to republish its text has not been established.'));
+   if(essay.readingLinks){
+    const guide=el('section',{class:'work-section-guide','aria-label':'Editorial section guide'});
+    guide.append(el('h3',{},'Section guide'),el('p',{class:'work-guide-notice'},essay.readingLinks.notice));
+    for(const part of essay.readingLinks.blocks){
+     const block=el('section',{id:part.id,class:'work-linked-section','data-paper-anchors':part.paper.join(' '),'data-link-label':part.label});
+     block.append(el('span',{class:'note-type'},part.label),el('h4',{},part.title));
+     const tags=el('nav',{class:'work-paragraph-tags','aria-label':'Corresponding paper paragraphs'});
+     for(const id of part.paper){const passage=primary.querySelector(`[id="${id}"]`),name=passage?.getAttribute('aria-label')??id;tags.append(el('a',{href:'#'+id,'data-paper-jump':id},name));}
+     block.append(tags);guide.append(block);
+    }
+    article.append(guide);
+   }
    authored.append(article);
   }
  }else authored.append(el('p',{class:'work-availability'},'No authored commentary has been attached to this paper yet. Passage notes and illustrations remain beside the paper.'));
@@ -64,12 +79,13 @@ if(primary){
  document.documentElement.classList.add('work-reader-root');
  document.body.classList.remove('parallel-reader','commentary-collapsed','notes-hidden');document.body.classList.add('work-reader');
  let essayOpen=false,essayPosition=0;
+ const readingLinks=createReadingLinks({paper:textScroll,commentary:authored,controls:linkControls,isOpen:()=>essayOpen,getArticle:()=>[...authored.querySelectorAll('[data-authored-id]')].find(article=>!article.hidden)});
  const essayPositions=new Map();let selectedEssay='';
  function chooseEssay(id){
   if(!config.essays.some(essay=>essay.id===id))return;
   essayPositions.set(selectedEssay,authored.scrollTop);selectedEssay=id;essayChoice.value=id;
   authored.querySelectorAll('[data-authored-id]').forEach(node=>{node.hidden=node.dataset.authoredId!==id;});
-  authored.scrollTop=essayPositions.get(id)??0;
+  authored.scrollTop=essayPositions.get(id)??0;readingLinks.refresh({align:essayOpen});
  }
  function setAuthored(open,sync=false){
   const changed=essayOpen!==open;
@@ -80,7 +96,7 @@ if(primary){
   for(const rail of primary.querySelectorAll('.zeta-rail,.surfaces-rail'))rail.inert=open;
   essayToggle.textContent=open?'Collapse authored commentary':'Authored commentary';essayToggle.setAttribute('aria-expanded',String(open));
   if(sync){const url=new URL(location.href);url.searchParams.set('view',open?'commentary':'notes');history.replaceState(null,'',url);}
-  requestAnimationFrame(()=>{window.dispatchEvent(new Event('resize'));});
+  requestAnimationFrame(()=>{window.dispatchEvent(new Event('resize'));if(changed&&open)readingLinks.followPaper();});
  }
  essayToggle.addEventListener('click',()=>setAuthored(!essayOpen,true));
  essayClose.addEventListener('click',()=>{setAuthored(false,true);essayToggle.focus();});
