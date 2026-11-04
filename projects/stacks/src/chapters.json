@@ -1,0 +1,821 @@
+[
+  {
+    "slug": "introduction",
+    "title": "Introduction",
+    "group": "Preliminaries",
+    "number": 1,
+    "tag": "0000"
+  },
+  {
+    "slug": "conventions",
+    "title": "Conventions",
+    "group": "Preliminaries",
+    "number": 2,
+    "tag": "0002"
+  },
+  {
+    "slug": "sets",
+    "title": "Set Theory",
+    "group": "Preliminaries",
+    "number": 3,
+    "tag": "0007"
+  },
+  {
+    "slug": "categories",
+    "title": "Categories",
+    "group": "Preliminaries",
+    "number": 4,
+    "tag": "0011"
+  },
+  {
+    "slug": "topology",
+    "title": "Topology",
+    "group": "Preliminaries",
+    "number": 5,
+    "tag": "004C"
+  },
+  {
+    "slug": "sheaves",
+    "title": "Sheaves on Spaces",
+    "group": "Preliminaries",
+    "number": 6,
+    "tag": "006A"
+  },
+  {
+    "slug": "sites",
+    "title": "Sites and Sheaves",
+    "group": "Preliminaries",
+    "number": 7,
+    "tag": "00UZ"
+  },
+  {
+    "slug": "stacks",
+    "title": "Stacks",
+    "group": "Preliminaries",
+    "number": 8,
+    "tag": "0266"
+  },
+  {
+    "slug": "fields",
+    "title": "Fields",
+    "group": "Preliminaries",
+    "number": 9,
+    "tag": "09FA"
+  },
+  {
+    "slug": "algebra",
+    "title": "Commutative Algebra",
+    "group": "Preliminaries",
+    "number": 10,
+    "tag": "00AO"
+  },
+  {
+    "slug": "brauer",
+    "title": "Brauer Groups",
+    "group": "Preliminaries",
+    "number": 11,
+    "tag": "073W"
+  },
+  {
+    "slug": "homology",
+    "title": "Homological Algebra",
+    "group": "Preliminaries",
+    "number": 12,
+    "tag": "00ZU"
+  },
+  {
+    "slug": "derived",
+    "title": "Derived Categories",
+    "group": "Preliminaries",
+    "number": 13,
+    "tag": "05QI"
+  },
+  {
+    "slug": "simplicial",
+    "title": "Simplicial Methods",
+    "group": "Preliminaries",
+    "number": 14,
+    "tag": "0162"
+  },
+  {
+    "slug": "more-algebra",
+    "title": "More on Algebra",
+    "group": "Preliminaries",
+    "number": 15,
+    "tag": "05E3"
+  },
+  {
+    "slug": "smoothing",
+    "title": "Smoothing Ring Maps",
+    "group": "Preliminaries",
+    "number": 16,
+    "tag": "07BW"
+  },
+  {
+    "slug": "modules",
+    "title": "Sheaves of Modules",
+    "group": "Preliminaries",
+    "number": 17,
+    "tag": "01AC"
+  },
+  {
+    "slug": "sites-modules",
+    "title": "Modules on Sites",
+    "group": "Preliminaries",
+    "number": 18,
+    "tag": "03A4"
+  },
+  {
+    "slug": "injectives",
+    "title": "Injectives",
+    "group": "Preliminaries",
+    "number": 19,
+    "tag": "01D4"
+  },
+  {
+    "slug": "cohomology",
+    "title": "Cohomology of Sheaves",
+    "group": "Preliminaries",
+    "number": 20,
+    "tag": "01DW"
+  },
+  {
+    "slug": "sites-cohomology",
+    "title": "Cohomology on Sites",
+    "group": "Preliminaries",
+    "number": 21,
+    "tag": "01FQ"
+  },
+  {
+    "slug": "dga",
+    "title": "Differential Graded Algebra",
+    "group": "Preliminaries",
+    "number": 22,
+    "tag": "09JD"
+  },
+  {
+    "slug": "dpa",
+    "title": "Divided Power Algebra",
+    "group": "Preliminaries",
+    "number": 23,
+    "tag": "09PD"
+  },
+  {
+    "slug": "sdga",
+    "title": "Differential Graded Sheaves",
+    "group": "Preliminaries",
+    "number": 24,
+    "tag": "0FQS"
+  },
+  {
+    "slug": "hypercovering",
+    "title": "Hypercoverings",
+    "group": "Preliminaries",
+    "number": 25,
+    "tag": "01FX"
+  },
+  {
+    "slug": "schemes",
+    "title": "Schemes",
+    "group": "Schemes",
+    "number": 26,
+    "tag": "01H8"
+  },
+  {
+    "slug": "constructions",
+    "title": "Constructions of Schemes",
+    "group": "Schemes",
+    "number": 27,
+    "tag": "01LE"
+  },
+  {
+    "slug": "properties",
+    "title": "Properties of Schemes",
+    "group": "Schemes",
+    "number": 28,
+    "tag": "01OH"
+  },
+  {
+    "slug": "morphisms",
+    "title": "Morphisms of Schemes",
+    "group": "Schemes",
+    "number": 29,
+    "tag": "01QL"
+  },
+  {
+    "slug": "coherent",
+    "title": "Cohomology of Schemes",
+    "group": "Schemes",
+    "number": 30,
+    "tag": "01X6"
+  },
+  {
+    "slug": "divisors",
+    "title": "Divisors",
+    "group": "Schemes",
+    "number": 31,
+    "tag": "01WO"
+  },
+  {
+    "slug": "limits",
+    "title": "Limits of Schemes",
+    "group": "Schemes",
+    "number": 32,
+    "tag": "01YT"
+  },
+  {
+    "slug": "varieties",
+    "title": "Varieties",
+    "group": "Schemes",
+    "number": 33,
+    "tag": "0209"
+  },
+  {
+    "slug": "topologies",
+    "title": "Topologies on Schemes",
+    "group": "Schemes",
+    "number": 34,
+    "tag": "020K"
+  },
+  {
+    "slug": "descent",
+    "title": "Descent",
+    "group": "Schemes",
+    "number": 35,
+    "tag": "0238"
+  },
+  {
+    "slug": "perfect",
+    "title": "Derived Categories of Schemes",
+    "group": "Schemes",
+    "number": 36,
+    "tag": "08CU"
+  },
+  {
+    "slug": "more-morphisms",
+    "title": "More on Morphisms",
+    "group": "Schemes",
+    "number": 37,
+    "tag": "02GX"
+  },
+  {
+    "slug": "flat",
+    "title": "More on Flatness",
+    "group": "Schemes",
+    "number": 38,
+    "tag": "057M"
+  },
+  {
+    "slug": "groupoids",
+    "title": "Groupoid Schemes",
+    "group": "Schemes",
+    "number": 39,
+    "tag": "022L"
+  },
+  {
+    "slug": "more-groupoids",
+    "title": "More on Groupoid Schemes",
+    "group": "Schemes",
+    "number": 40,
+    "tag": "04LA"
+  },
+  {
+    "slug": "etale",
+    "title": "\u00c9tale Morphisms of Schemes",
+    "group": "Schemes",
+    "number": 41,
+    "tag": "024J"
+  },
+  {
+    "slug": "chow",
+    "title": "Chow Homology",
+    "group": "Topics in Scheme Theory",
+    "number": 42,
+    "tag": "02P3"
+  },
+  {
+    "slug": "intersection",
+    "title": "Intersection Theory",
+    "group": "Topics in Scheme Theory",
+    "number": 43,
+    "tag": "0AZ6"
+  },
+  {
+    "slug": "pic",
+    "title": "Picard Schemes of Curves",
+    "group": "Topics in Scheme Theory",
+    "number": 44,
+    "tag": "0B92"
+  },
+  {
+    "slug": "weil",
+    "title": "Weil Cohomology Theories",
+    "group": "Topics in Scheme Theory",
+    "number": 45,
+    "tag": "0FFG"
+  },
+  {
+    "slug": "adequate",
+    "title": "Adequate Modules",
+    "group": "Topics in Scheme Theory",
+    "number": 46,
+    "tag": "06Z1"
+  },
+  {
+    "slug": "dualizing",
+    "title": "Dualizing Complexes",
+    "group": "Topics in Scheme Theory",
+    "number": 47,
+    "tag": "08XG"
+  },
+  {
+    "slug": "duality",
+    "title": "Duality for Schemes",
+    "group": "Topics in Scheme Theory",
+    "number": 48,
+    "tag": "0DWE"
+  },
+  {
+    "slug": "discriminant",
+    "title": "Discriminants and Differents",
+    "group": "Topics in Scheme Theory",
+    "number": 49,
+    "tag": "0DWH"
+  },
+  {
+    "slug": "derham",
+    "title": "de Rham Cohomology",
+    "group": "Topics in Scheme Theory",
+    "number": 50,
+    "tag": "0FK4"
+  },
+  {
+    "slug": "local-cohomology",
+    "title": "Local Cohomology",
+    "group": "Topics in Scheme Theory",
+    "number": 51,
+    "tag": "0DWN"
+  },
+  {
+    "slug": "algebraization",
+    "title": "Algebraic and Formal Geometry",
+    "group": "Topics in Scheme Theory",
+    "number": 52,
+    "tag": "0EI5"
+  },
+  {
+    "slug": "curves",
+    "title": "Algebraic Curves",
+    "group": "Topics in Scheme Theory",
+    "number": 53,
+    "tag": "0BRV"
+  },
+  {
+    "slug": "resolve",
+    "title": "Resolution of Surfaces",
+    "group": "Topics in Scheme Theory",
+    "number": 54,
+    "tag": "0ADW"
+  },
+  {
+    "slug": "models",
+    "title": "Semistable Reduction",
+    "group": "Topics in Scheme Theory",
+    "number": 55,
+    "tag": "0C2P"
+  },
+  {
+    "slug": "functors",
+    "title": "Functors and Morphisms",
+    "group": "Topics in Scheme Theory",
+    "number": 56,
+    "tag": "0GNG"
+  },
+  {
+    "slug": "equiv",
+    "title": "Derived Categories of Varieties",
+    "group": "Topics in Scheme Theory",
+    "number": 57,
+    "tag": "0FY0"
+  },
+  {
+    "slug": "pione",
+    "title": "Fundamental Groups of Schemes",
+    "group": "Topics in Scheme Theory",
+    "number": 58,
+    "tag": "0BQ6"
+  },
+  {
+    "slug": "etale-cohomology",
+    "title": "\u00c9tale Cohomology",
+    "group": "Topics in Scheme Theory",
+    "number": 59,
+    "tag": "03N1"
+  },
+  {
+    "slug": "crystalline",
+    "title": "Crystalline Cohomology",
+    "group": "Topics in Scheme Theory",
+    "number": 60,
+    "tag": "07GI"
+  },
+  {
+    "slug": "proetale",
+    "title": "Pro-\u00e9tale Cohomology",
+    "group": "Topics in Scheme Theory",
+    "number": 61,
+    "tag": "0965"
+  },
+  {
+    "slug": "relative-cycles",
+    "title": "Relative Cycles",
+    "group": "Topics in Scheme Theory",
+    "number": 62,
+    "tag": "0H4B"
+  },
+  {
+    "slug": "more-etale",
+    "title": "More \u00c9tale Cohomology",
+    "group": "Topics in Scheme Theory",
+    "number": 63,
+    "tag": "0F4U"
+  },
+  {
+    "slug": "trace",
+    "title": "The Trace Formula",
+    "group": "Topics in Scheme Theory",
+    "number": 64,
+    "tag": "0F5P"
+  },
+  {
+    "slug": "spaces",
+    "title": "Algebraic Spaces",
+    "group": "Algebraic Spaces",
+    "number": 65,
+    "tag": "025R"
+  },
+  {
+    "slug": "spaces-properties",
+    "title": "Properties of Algebraic Spaces",
+    "group": "Algebraic Spaces",
+    "number": 66,
+    "tag": "03BO"
+  },
+  {
+    "slug": "spaces-morphisms",
+    "title": "Morphisms of Algebraic Spaces",
+    "group": "Algebraic Spaces",
+    "number": 67,
+    "tag": "03H8"
+  },
+  {
+    "slug": "decent-spaces",
+    "title": "Decent Algebraic Spaces",
+    "group": "Algebraic Spaces",
+    "number": 68,
+    "tag": "06NK"
+  },
+  {
+    "slug": "spaces-cohomology",
+    "title": "Cohomology of Algebraic Spaces",
+    "group": "Algebraic Spaces",
+    "number": 69,
+    "tag": "071T"
+  },
+  {
+    "slug": "spaces-limits",
+    "title": "Limits of Algebraic Spaces",
+    "group": "Algebraic Spaces",
+    "number": 70,
+    "tag": "07SB"
+  },
+  {
+    "slug": "spaces-divisors",
+    "title": "Divisors on Algebraic Spaces",
+    "group": "Algebraic Spaces",
+    "number": 71,
+    "tag": "0838"
+  },
+  {
+    "slug": "spaces-over-fields",
+    "title": "Algebraic Spaces over Fields",
+    "group": "Algebraic Spaces",
+    "number": 72,
+    "tag": "06DR"
+  },
+  {
+    "slug": "spaces-topologies",
+    "title": "Topologies on Algebraic Spaces",
+    "group": "Algebraic Spaces",
+    "number": 73,
+    "tag": "03Y4"
+  },
+  {
+    "slug": "spaces-descent",
+    "title": "Descent and Algebraic Spaces",
+    "group": "Algebraic Spaces",
+    "number": 74,
+    "tag": "03YE"
+  },
+  {
+    "slug": "spaces-perfect",
+    "title": "Derived Categories of Spaces",
+    "group": "Algebraic Spaces",
+    "number": 75,
+    "tag": "08EY"
+  },
+  {
+    "slug": "spaces-more-morphisms",
+    "title": "More on Morphisms of Spaces",
+    "group": "Algebraic Spaces",
+    "number": 76,
+    "tag": "049F"
+  },
+  {
+    "slug": "spaces-flat",
+    "title": "Flatness on Algebraic Spaces",
+    "group": "Algebraic Spaces",
+    "number": 77,
+    "tag": "0CU3"
+  },
+  {
+    "slug": "spaces-groupoids",
+    "title": "Groupoids in Algebraic Spaces",
+    "group": "Algebraic Spaces",
+    "number": 78,
+    "tag": "0437"
+  },
+  {
+    "slug": "spaces-more-groupoids",
+    "title": "More on Groupoids in Spaces",
+    "group": "Algebraic Spaces",
+    "number": 79,
+    "tag": "04P4"
+  },
+  {
+    "slug": "bootstrap",
+    "title": "Bootstrap",
+    "group": "Algebraic Spaces",
+    "number": 80,
+    "tag": "046A"
+  },
+  {
+    "slug": "spaces-pushouts",
+    "title": "Pushouts of Algebraic Spaces",
+    "group": "Algebraic Spaces",
+    "number": 81,
+    "tag": "0AHT"
+  },
+  {
+    "slug": "spaces-chow",
+    "title": "Chow Groups of Spaces",
+    "group": "Topics in Geometry",
+    "number": 82,
+    "tag": "0EDQ"
+  },
+  {
+    "slug": "groupoids-quotients",
+    "title": "Quotients of Groupoids",
+    "group": "Topics in Geometry",
+    "number": 83,
+    "tag": "048A"
+  },
+  {
+    "slug": "spaces-more-cohomology",
+    "title": "More on Cohomology of Spaces",
+    "group": "Topics in Geometry",
+    "number": 84,
+    "tag": "0DFR"
+  },
+  {
+    "slug": "spaces-simplicial",
+    "title": "Simplicial Spaces",
+    "group": "Topics in Geometry",
+    "number": 85,
+    "tag": "09VI"
+  },
+  {
+    "slug": "spaces-duality",
+    "title": "Duality for Spaces",
+    "group": "Topics in Geometry",
+    "number": 86,
+    "tag": "0E4V"
+  },
+  {
+    "slug": "formal-spaces",
+    "title": "Formal Algebraic Spaces",
+    "group": "Topics in Geometry",
+    "number": 87,
+    "tag": "0AHW"
+  },
+  {
+    "slug": "restricted",
+    "title": "Algebraization of Formal Spaces",
+    "group": "Topics in Geometry",
+    "number": 88,
+    "tag": "0AM7"
+  },
+  {
+    "slug": "spaces-resolve",
+    "title": "Resolution of Surfaces Revisited",
+    "group": "Topics in Geometry",
+    "number": 89,
+    "tag": "0BH6"
+  },
+  {
+    "slug": "formal-defos",
+    "title": "Formal Deformation Theory",
+    "group": "Deformation Theory",
+    "number": 90,
+    "tag": "06G7"
+  },
+  {
+    "slug": "defos",
+    "title": "Deformation Theory",
+    "group": "Deformation Theory",
+    "number": 91,
+    "tag": "08KW"
+  },
+  {
+    "slug": "cotangent",
+    "title": "The Cotangent Complex",
+    "group": "Deformation Theory",
+    "number": 92,
+    "tag": "08P5"
+  },
+  {
+    "slug": "examples-defos",
+    "title": "Deformation Problems",
+    "group": "Deformation Theory",
+    "number": 93,
+    "tag": "0DVK"
+  },
+  {
+    "slug": "algebraic",
+    "title": "Algebraic Stacks",
+    "group": "Algebraic Stacks",
+    "number": 94,
+    "tag": "026K"
+  },
+  {
+    "slug": "examples-stacks",
+    "title": "Examples of Stacks",
+    "group": "Algebraic Stacks",
+    "number": 95,
+    "tag": "04SL"
+  },
+  {
+    "slug": "stacks-sheaves",
+    "title": "Sheaves on Algebraic Stacks",
+    "group": "Algebraic Stacks",
+    "number": 96,
+    "tag": "06TF"
+  },
+  {
+    "slug": "criteria",
+    "title": "Criteria for Representability",
+    "group": "Algebraic Stacks",
+    "number": 97,
+    "tag": "05XE"
+  },
+  {
+    "slug": "artin",
+    "title": "Artin's Axioms",
+    "group": "Algebraic Stacks",
+    "number": 98,
+    "tag": "07SZ"
+  },
+  {
+    "slug": "quot",
+    "title": "Quot and Hilbert Spaces",
+    "group": "Algebraic Stacks",
+    "number": 99,
+    "tag": "05X4"
+  },
+  {
+    "slug": "stacks-properties",
+    "title": "Properties of Algebraic Stacks",
+    "group": "Algebraic Stacks",
+    "number": 100,
+    "tag": "04X8"
+  },
+  {
+    "slug": "stacks-morphisms",
+    "title": "Morphisms of Algebraic Stacks",
+    "group": "Algebraic Stacks",
+    "number": 101,
+    "tag": "04XM"
+  },
+  {
+    "slug": "stacks-limits",
+    "title": "Limits of Algebraic Stacks",
+    "group": "Algebraic Stacks",
+    "number": 102,
+    "tag": "0CMM"
+  },
+  {
+    "slug": "stacks-cohomology",
+    "title": "Cohomology of Algebraic Stacks",
+    "group": "Algebraic Stacks",
+    "number": 103,
+    "tag": "073P"
+  },
+  {
+    "slug": "stacks-perfect",
+    "title": "Derived Categories of Stacks",
+    "group": "Algebraic Stacks",
+    "number": 104,
+    "tag": "08MW"
+  },
+  {
+    "slug": "stacks-introduction",
+    "title": "Introducing Algebraic Stacks",
+    "group": "Algebraic Stacks",
+    "number": 105,
+    "tag": "072H"
+  },
+  {
+    "slug": "stacks-more-morphisms",
+    "title": "More on Morphisms of Stacks",
+    "group": "Algebraic Stacks",
+    "number": 106,
+    "tag": "0BPK"
+  },
+  {
+    "slug": "stacks-geometry",
+    "title": "The Geometry of Stacks",
+    "group": "Algebraic Stacks",
+    "number": 107,
+    "tag": "0DQR"
+  },
+  {
+    "slug": "moduli",
+    "title": "Moduli Stacks",
+    "group": "Topics in Moduli Theory",
+    "number": 108,
+    "tag": "0DLT"
+  },
+  {
+    "slug": "moduli-curves",
+    "title": "Moduli of Curves",
+    "group": "Topics in Moduli Theory",
+    "number": 109,
+    "tag": "0DMG"
+  },
+  {
+    "slug": "examples",
+    "title": "Examples",
+    "group": "Miscellany",
+    "number": 110,
+    "tag": "026Z"
+  },
+  {
+    "slug": "exercises",
+    "title": "Exercises",
+    "group": "Miscellany",
+    "number": 111,
+    "tag": "0275"
+  },
+  {
+    "slug": "guide",
+    "title": "Guide to Literature",
+    "group": "Miscellany",
+    "number": 112,
+    "tag": "03B0"
+  },
+  {
+    "slug": "desirables",
+    "title": "Desirables",
+    "group": "Miscellany",
+    "number": 113,
+    "tag": "02B4"
+  },
+  {
+    "slug": "coding",
+    "title": "Coding Style",
+    "group": "Miscellany",
+    "number": 114,
+    "tag": "02BY"
+  },
+  {
+    "slug": "obsolete",
+    "title": "Obsolete",
+    "group": "Miscellany",
+    "number": 115,
+    "tag": "073T"
+  },
+  {
+    "slug": "fdl",
+    "title": "GNU Free Documentation License",
+    "group": "Miscellany",
+    "number": 116,
+    "tag": "02C1"
+  },
+  {
+    "slug": "index",
+    "title": "Auto Generated Index",
+    "group": "Miscellany",
+    "number": 117,
+    "tag": null
+  }
+]

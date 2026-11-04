@@ -2,11 +2,12 @@
   "name": "math-expo",
   "private": true,
   "type": "module",
-  "workspaces": ["projects/papers", "projects/textbooks"],
+  "workspaces": ["projects/papers", "projects/textbooks", "projects/stacks"],
   "scripts": {
     "build": "node scripts/build.mjs",
     "check": "node scripts/check.mjs",
     "build:papers": "npm run build --workspace=projects/papers",
-    "build:textbooks": "npm run build --workspace=projects/textbooks"
+    "build:textbooks": "npm run build --workspace=projects/textbooks",
+    "build:stacks": "npm run build --workspace=projects/stacks"
   }
 }

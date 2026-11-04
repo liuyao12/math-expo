@@ -29,7 +29,7 @@ jobs:
           node-version: '24'
           package-manager-cache: false
       - uses: actions/configure-pages@v5
-      - name: Build both mathematics projects
+      - name: Build all three mathematics projects
         run: npm run build
       - name: Validate mathematics and local resources
         run: npm run check

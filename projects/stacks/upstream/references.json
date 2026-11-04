@@ -1,0 +1,122 @@
+{
+  "algebra-section-spectrum-ring": {
+    "tag": "00DY",
+    "number": "10.17",
+    "kind": "section"
+  },
+  "modules-section-internal-hom": {
+    "tag": "01CM",
+    "number": "17.22",
+    "kind": "section"
+  },
+  "schemes-definition-locally-ringed-space": {
+    "tag": "01HB",
+    "number": "26.2.1",
+    "kind": "definition"
+  },
+  "schemes-example-affine-space-zero-doubled": {
+    "tag": "01JD",
+    "number": "26.14.3",
+    "kind": "example"
+  },
+  "schemes-example-not-affine": {
+    "tag": "01IL",
+    "number": "26.9.3",
+    "kind": "example"
+  },
+  "schemes-example-projective-line": {
+    "tag": "01JE",
+    "number": "26.14.4",
+    "kind": "example"
+  },
+  "schemes-lemma-glue": {
+    "tag": "01JB",
+    "number": "26.14.1",
+    "kind": "lemma"
+  },
+  "schemes-lemma-glue-schemes": {
+    "tag": "01JC",
+    "number": "26.14.2",
+    "kind": "lemma"
+  },
+  "schemes-lemma-isomorphism-locally-ringed": {
+    "tag": "01HC",
+    "number": "26.2.2",
+    "kind": "lemma"
+  },
+  "schemes-section-glueing-schemes": {
+    "tag": "01JA",
+    "number": "26.14",
+    "kind": "section"
+  },
+  "schemes-section-locally-ringed-spaces": {
+    "tag": "01HA",
+    "number": "26.2",
+    "kind": "section"
+  },
+  "sheaves-definition-composition-maps-ringed-spaces": {
+    "tag": "0093",
+    "number": "6.25.3",
+    "kind": "definition"
+  },
+  "sheaves-definition-f-map": {
+    "tag": "008J",
+    "number": "6.21.7",
+    "kind": "definition"
+  },
+  "sheaves-example-continuous-map-ringed": {
+    "tag": "0092",
+    "number": "6.25.2",
+    "kind": "example"
+  },
+  "sheaves-example-germs-functions": {
+    "tag": "007C",
+    "number": "6.11.4",
+    "kind": "example"
+  },
+  "sheaves-lemma-compose-f-maps-stalks": {
+    "tag": "008M",
+    "number": "6.21.10",
+    "kind": "lemma"
+  },
+  "sheaves-lemma-extend-off-basis": {
+    "tag": "009N",
+    "number": "6.30.6",
+    "kind": "lemma"
+  },
+  "sheaves-lemma-f-map": {
+    "tag": "008K",
+    "number": "6.21.8",
+    "kind": "lemma"
+  },
+  "sheaves-lemma-glue-maps": {
+    "tag": "04TN",
+    "number": "6.33.1",
+    "kind": "lemma"
+  },
+  "sheaves-lemma-glue-sheaves": {
+    "tag": "00AL",
+    "number": "6.33.2",
+    "kind": "lemma"
+  },
+  "sheaves-lemma-glue-sheaves-structures": {
+    "tag": "00AM",
+    "number": "6.33.3",
+    "kind": "lemma"
+  },
+  "sheaves-lemma-mapping-property-glue": {
+    "tag": "00AN",
+    "number": "6.33.4",
+    "kind": "lemma"
+  },
+  "sheaves-section-glueing-sheaves": {
+    "tag": "00AK",
+    "number": "6.33",
+    "kind": "section"
+  },
+  "sheaves-section-ringed-spaces": {
+    "tag": "0090",
+    "number": "6.25",
+    "kind": "section"
+  }
+}

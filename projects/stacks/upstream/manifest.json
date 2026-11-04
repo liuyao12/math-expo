@@ -1,0 +1,33 @@
+{
+  "repository": "https://github.com/stacks/stacks-project",
+  "commit": "a04446e57ec1fbc252a871afcec7752fb2807b14",
+  "sections": [
+    {
+      "chapter": "schemes",
+      "label": "section-locally-ringed-spaces",
+      "slug": "local-functions",
+      "title": "Locally ringed spaces",
+      "tag": "01HA",
+      "number": "26.2",
+      "kind": "section"
+    },
+    {
+      "chapter": "sheaves",
+      "label": "section-glueing-sheaves",
+      "slug": "gluing-sheaves",
+      "title": "Glueing sheaves",
+      "tag": "00AK",
+      "number": "6.33",
+      "kind": "section"
+    },
+    {
+      "chapter": "schemes",
+      "label": "section-glueing-schemes",
+      "slug": "gluing-spaces",
+      "title": "Glueing schemes",
+      "tag": "01JA",
+      "number": "26.14",
+      "kind": "section"
+    }
+  ]
+}

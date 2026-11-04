@@ -1,13 +1,14 @@
 # Math Expo
 
-Two independent mathematics projects in one repository.
+Three independent mathematics projects in one repository.
 
 | Project | Source | Website |
 | --- | --- | --- |
 | Papers | `projects/papers/` | [Read the papers](https://liuyao12.github.io/math-expo/papers/) |
 | Reimagined textbooks | `projects/textbooks/` | [Read the textbook](https://liuyao12.github.io/math-expo/textbooks/) |
+| Stacks Reader | `projects/stacks/` | [Read with an example](https://liuyao12.github.io/math-expo/stacks/) |
 
-The [Math Expo homepage](https://liuyao12.github.io/math-expo/) links to both projects. They share a repository and deployment but retain their own source, design, build scripts, and checks.
+The [Math Expo homepage](https://liuyao12.github.io/math-expo/) links to all three projects. They share a repository and deployment but retain their own source, design, build scripts, and checks.
 
 ## Papers
 
@@ -19,6 +20,10 @@ Each work is presented on its own mathematical terms. Connections between works 
 
 New expositions of established mathematics. The current working text, *Linear Algebra — From Euclidean geometry to higher and even infinite-dimensional spaces*, develops linear algebra from Euclidean geometry toward inner product spaces of functions and Fourier approximation.
 
+## Stacks Reader
+
+A companion edition of the Stacks Project: longer continuous readings, original statements and expandable proofs, and one running example alongside the mathematics. The first reading follows gluing through locally ringed spaces, sheaves, and schemes with the Riemann sphere. [Source and editorial notes](projects/stacks/README.md).
+
 ## Build and validate
 
 Requires Node.js 24. No dependency installation is needed; the math renderer and fonts are vendored.
@@ -29,13 +34,14 @@ npm run check
 python3 -m http.server 8000 --directory dist
 ```
 
-The root build assembles both projects into `dist/papers/` and `dist/textbooks/`, with a shared homepage in `dist/index.html`. All links and asset paths support GitHub Pages’ `/math-expo/` prefix.
+The root build assembles all three projects into `dist/papers/`, `dist/textbooks/`, and `dist/stacks/`, with a shared homepage in `dist/index.html`. All links and asset paths support GitHub Pages’ `/math-expo/` prefix.
 
 Each project can also be built independently:
 
 ```sh
 npm run build:papers
 npm run build:textbooks
+npm run build:stacks
 ```
 
-The workflow in `.github/workflows/pages.yml` builds, checks, and publishes both projects to GitHub Pages on pushes to `main`. Mathematical notation uses LaTeX, typeset with KaTeX. Third-party licenses are retained with the vendored assets.
+The workflow in `.github/workflows/pages.yml` builds, checks, and publishes all three projects to GitHub Pages on pushes to `main`. Mathematical notation uses LaTeX, typeset with KaTeX. Third-party licenses are retained with the vendored assets.
