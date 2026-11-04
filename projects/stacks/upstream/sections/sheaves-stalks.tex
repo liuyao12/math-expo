@@ -1,0 +1,154 @@
+\section{Stalks}
+\label{section-stalks}
+
+\noindent
+Let $X$ be a topological space. Let $x \in X$ be a point.
+Let $\mathcal{F}$ be a presheaf of sets on $X$.
+The {\it stalk of $\mathcal{F}$ at $x$} is the set
+$$
+\mathcal{F}_x
+=
+\colim_{x\in U} \mathcal{F}(U)
+$$
+where the colimit is over the set of open neighbourhoods
+$U$ of $x$ in $X$. The set of open neighbourhoods is
+partially ordered by (reverse) inclusion:
+We say $U \geq U' \Leftrightarrow U \subset U'$.
+The transition maps in the system are
+given by the restriction maps of $\mathcal{F}$.
+See Categories, Section \ref{categories-section-posets-limits}
+for notation and terminology regarding (co)limits over systems.
+Note that the colimit is a directed colimit.
+Thus it is easy to describe $\mathcal{F}_x$. Namely,
+$$
+\mathcal{F}_x
+=
+\{
+(U, s)
+\mid
+x\in U, s\in \mathcal{F}(U)
+\}/\sim
+$$
+with equivalence relation given by $(U, s) \sim (U', s')$ if and only if
+there exists an open $U'' \subset U \cap U'$ with $x \in U''$ and
+$s|_{U''} = s'|_{U''}$. Given a pair $(U, s)$ we sometimes denote
+$s_x$ the element of $\mathcal{F}_x$ corresponding to the equivalence
+class of $(U, s)$. We sometimes use the phrase
+``image of $s$ in $\mathcal{F}_x$'' to denote $s_x$.
+For example, given two pairs $(U, s)$ and $(U', s')$ we sometimes
+say ``$s$ is equal to $s'$ in $\mathcal{F}_x$'' to indicate
+that $s_x = s'_x$. Other authors use the terminology
+``germ of $s$ at $x$''.
+
+\medskip\noindent
+An obvious consequence of this definition is that
+for any open $U \subset X$ there is a canonical map
+$$
+\mathcal{F}(U)
+\longrightarrow
+\prod\nolimits_{x \in U} \mathcal{F}_x
+$$
+defined by $s \mapsto \prod_{x \in U} (U, s)$. Think about it!
+
+\begin{lemma}
+\label{lemma-sheaf-subset-stalks}
+Let $\mathcal{F}$ be a sheaf of sets on the topological space $X$.
+For every open $U \subset X$ the map
+$$
+\mathcal{F}(U)
+\longrightarrow
+\prod\nolimits_{x \in U} \mathcal{F}_x
+$$
+is injective.
+\end{lemma}
+
+\begin{proof}
+Suppose that $s, s' \in \mathcal{F}(U)$ map to the same element
+in every stalk $\mathcal{F}_x$ for all $x \in U$. This means that
+for every $x \in U$, there exists an open $V^x \subset U$,
+$x \in V^x$ such that $s|_{V^x} = s'|_{V^x}$. But then
+$U = \bigcup_{x \in U} V^x$ is an open covering. Thus by the
+uniqueness in the sheaf condition we see that $s = s'$.
+\end{proof}
+
+\begin{definition}
+\label{definition-separated}
+Let $X$ be a topological space.
+A presheaf of sets $\mathcal{F}$ on $X$ is {\it separated}
+if for every open $U \subset X$ the map
+$\mathcal{F}(U) \to \prod_{x \in U} \mathcal{F}_x$ is
+injective.
+\end{definition}
+
+\noindent
+Another observation is that the construction of the stalk
+$\mathcal{F}_x$ is functorial in the presheaf $\mathcal{F}$.
+In other words, it gives a functor
+$$
+\textit{PSh}(X) \longrightarrow \textit{Sets},
+\ \mathcal{F} \longmapsto \mathcal{F}_x.
+$$
+This functor is called the {\it stalk functor}.
+Namely, if $\varphi : \mathcal{F} \to \mathcal{G}$ is
+a morphism of presheaves, then we define
+$\varphi_x : \mathcal{F}_x \to \mathcal{G}_x$
+by the rule $(U, s) \mapsto (U, \varphi(s))$.
+To see that this works we have to check that
+if $(U, s) = (U', s')$ in $\mathcal{F}_x$ then also
+$(U, \varphi(s)) = (U', \varphi(s'))$ in $\mathcal{G}_x$.
+This is clear since $\varphi$ is compatible with the
+restriction mappings.
+
+\begin{example}
+\label{example-stalk-constant-presheaf}
+Let $X$ be a topological space. Let $A$ be a set.
+Denote temporarily $A_p$ the constant presheaf
+with value $A$ ($p$ for presheaf -- not for point).
+There is a canonical map of presheaves
+$A_p \to \underline{A}$ into the constant sheaf with
+value $A$. For every point we have canonical
+bijections $A = (A_p)_x = \underline{A}_x$, where
+the second map is induced by functoriality from
+the map $A_p \to \underline{A}$.
+\end{example}
+
+
+
+\begin{example}
+\label{example-germs-functions}
+Suppose $X = \mathbf{R}^n$ with the Euclidean topology.
+Consider the presheaf of $\mathcal{C}^\infty$ functions
+on $X$, denoted $\mathcal{C}^\infty_{\mathbf{R}^n}$.
+In other words, $\mathcal{C}^\infty_{\mathbf{R}^n}(U)$ is the set
+of $\mathcal{C}^\infty$-functions $f : U \to \mathbf{R}$.
+As in Example \ref{example-basic-continuous-maps}
+it is easy to show that this is a sheaf. In fact it
+is a sheaf of $\mathbf{R}$-vector spaces.
+
+\medskip\noindent
+Next, let $x \in X = \mathbf{R}^n$ be a point. How do
+we think of an element in the stalk $\mathcal{C}^\infty_{\mathbf{R}^n, x}$?
+Such an element is given by a $\mathcal{C}^\infty$-function
+$f$ whose domain contains $x$. And a pair of such
+functions $f$, $g$ determine
+the same element of the stalk if they agree in a neighbourhood
+of $x$. In other words, an element of $\mathcal{C}^\infty_{\mathbf{R}^n, x}$
+is the same thing as what is sometimes called
+a {\it germ of a $\mathcal{C}^\infty$-function at $x$}.
+\end{example}
+
+\begin{example}
+\label{example-sheaf-product-pointwise-stalk}
+Let $X$ be a topological space. Let $A_x$ be a set for each $x \in X$.
+Consider the sheaf $\mathcal{F} : U \mapsto \prod_{x\in U} A_x$ of Example
+\ref{example-sheaf-product-pointwise}. We would just like to point
+out here that the stalk $\mathcal{F}_x$ of $\mathcal{F}$ at $x$
+is in general {\it not} equal to the set $A_x$. Of course there is
+a map $\mathcal{F}_x \to A_x$, but that is in general the best you
+can say. For example, suppose $x = \lim x_n$ with $x_n \not = x_m$ for
+all $n \not = m$ and suppose that $A_y = \{0, 1\}$ for all $y \in X$. Then
+$\mathcal{F}_x$ maps onto the (infinite) set of tails of sequences
+of $0$s and $1$s. Namely, every open neighbourhood of $x$ contains almost
+all of the $x_n$. On the other hand, if every neighbourhood of $x$ contains
+a point $y$ such that $A_y = \emptyset$, then $\mathcal{F}_x = \emptyset$.
+\end{example}

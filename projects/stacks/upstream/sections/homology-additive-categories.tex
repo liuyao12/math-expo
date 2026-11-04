@@ -1,0 +1,462 @@
+\section{Preadditive and additive categories}
+\label{section-additive-categories}
+
+\noindent
+Here is the definition of a preadditive category.
+
+\begin{definition}
+\label{definition-preadditive}
+A category $\mathcal{A}$ is called {\it preadditive} if each
+morphism set $\Mor_\mathcal{A}(x, y)$ is endowed
+with the structure of an abelian group such that the
+compositions
+$$
+\Mor(x, y) \times \Mor(y, z)
+\longrightarrow
+\Mor(x, z)
+$$
+are bilinear. A functor $F : \mathcal{A} \to \mathcal{B}$ of
+preadditive categories is called {\it additive} if and only
+if $F : \Mor(x, y) \to \Mor(F(x), F(y))$
+is a homomorphism of abelian groups for all
+$x, y \in \Ob(\mathcal{A})$.
+\end{definition}
+
+\noindent
+In particular for every $x, y$ there exists at least
+one morphism $x \to y$, namely the zero map.
+
+\begin{lemma}
+\label{lemma-preadditive-zero}
+Let $\mathcal{A}$ be a preadditive category.
+Let $x$ be an object of $\mathcal{A}$.
+The following are equivalent
+\begin{enumerate}
+\item $x$ is an initial object,
+\item $x$ is a final object, and
+\item $\text{id}_x = 0$ in $\Mor_\mathcal{A}(x, x)$.
+\end{enumerate}
+Furthermore, if such an object $0$ exists, then a morphism
+$\alpha : y \to z$ factors through $0$ if and only if $\alpha = 0$.
+\end{lemma}
+
+\begin{proof}
+First assume that $x$ is either (1) initial or (2) final.
+In both cases, it follows that $\Mor(x,x)$ is a trivial abelian group
+containing $\text{id}_x$, thus $\text{id}_x = 0$ in
+$\Mor(x, x)$, which shows that each of (1) and (2) implies (3).
+
+\medskip\noindent
+Now assume that $\text{id}_x = 0$ in $\Mor(x,x)$. Let $y$
+be an arbitrary object of $\mathcal{A}$ and let $f \in \Mor(x ,y)$.
+Denote $C : \Mor(x,x) \times \Mor(x,y) \to \Mor(x,y)$ the composition map.
+Then $f = C(0, f)$ and since $C$ is bilinear we have $C(0, f) = 0$.
+Thus $f = 0$. Hence $x$ is initial in $\mathcal{A}$.
+A similar argument for $f \in \Mor(y, x)$ can be used to show that
+$x$ is also final. Thus (3) implies both (1) and (2).
+\end{proof}
+
+\begin{definition}
+\label{definition-zero-object}
+In a preadditive category $\mathcal{A}$, we call an object that is both
+final and initial (as in Lemma \ref{lemma-preadditive-zero}) a
+{\it zero object} and denote it $0$.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-preadditive-direct-sum}
+Let $\mathcal{A}$ be a preadditive category.
+Let $x, y \in \Ob(\mathcal{A})$.
+If the product $x \times y$ exists, then so does
+the coproduct $x \amalg y$.
+If the coproduct $x \amalg y$ exists, then so does
+the product $x \times y$. In this case
+also $x \amalg y \cong x \times y$.
+\end{lemma}
+
+\begin{proof}
+Suppose that $z = x \times y$ with projections
+$p : z \to x$ and $q : z \to y$. Denote $i : x \to z$
+the morphism corresponding to $(1, 0)$. Denote $j : y \to z$
+the morphism corresponding to $(0, 1)$. Thus we have the
+commutative diagram
+$$
+\xymatrix{
+x \ar[rr]^1 \ar[rd]^i & & x \\
+& z \ar[ru]^p \ar[rd]^q & \\
+y \ar[rr]^1 \ar[ru]^j & & y
+}
+$$
+where the diagonal compositions are zero. It follows that
+$i \circ p + j \circ q : z \to z$ is the identity since
+it is a morphism which upon composing with $p$ gives $p$
+and upon composing with $q$ gives $q$.
+Suppose given morphisms $a : x \to w$ and $b : y \to w$.
+Then we can form the map $a \circ p + b \circ q : z \to w$.
+In this way we get a bijection $\Mor(z, w)
+= \Mor(x, w) \times \Mor(y, w)$ which
+shows that $z = x \amalg y$.
+
+\medskip\noindent
+We leave it to the reader to construct the morphisms
+$p, q$ given a coproduct $x \amalg y$ instead of a
+product.
+\end{proof}
+
+\begin{definition}
+\label{definition-direct-sum}
+Given a pair of objects $x, y$ in a preadditive category $\mathcal{A}$,
+the {\it direct sum} $x \oplus y$ of $x$ and $y$ is the direct
+product $x \times y$ endowed with the morphisms
+$i, j, p, q$ as in Lemma \ref{lemma-preadditive-direct-sum} above.
+\end{definition}
+
+\begin{remark}
+\label{remark-direct-sum}
+Note that the proof of Lemma \ref{lemma-preadditive-direct-sum}
+shows that given $p$ and $q$ the morphisms $i$, $j$ are uniquely
+determined by the rules $p \circ i = \text{id}_x$,
+$q \circ j = \text{id}_y$, $p \circ j = 0$, $q \circ i = 0$.
+Moreover, we automatically have
+$i \circ p + j \circ q = \text{id}_{x \oplus y}$.
+Similarly, given $i$, $j$ the morphisms $p$ and $q$ are uniquely determined.
+Finally, given objects $x, y, z$ and morphisms
+$i : x \to z$, $j : y \to z$, $p : z \to x$ and
+$q : z \to y$ such that $p \circ i = \text{id}_x$,
+$q \circ j = \text{id}_y$, $p \circ j = 0$, $q \circ i = 0$
+and $i \circ p + j \circ q = \text{id}_z$, then $z$
+is the direct sum of $x$ and $y$ with the four morphisms
+equal to $i, j, p, q$.
+\end{remark}
+
+\begin{lemma}
+\label{lemma-additive-additive}
+Let $\mathcal{A}$, $\mathcal{B}$ be preadditive categories.
+Let $F : \mathcal{A} \to \mathcal{B}$ be an additive functor.
+Then $F$ transforms direct sums to direct sums and zero to zero.
+\end{lemma}
+
+\begin{proof}
+Suppose $F$ is additive. A direct sum $z$
+of $x$ and $y$ is characterized by having morphisms
+$i : x \to z$, $j : y \to z$, $p : z \to x$ and
+$q : z \to y$ such that $p \circ i = \text{id}_x$,
+$q \circ j = \text{id}_y$, $p \circ j = 0$, $q \circ i = 0$
+and $i \circ p + j \circ q = \text{id}_z$, according
+to Remark \ref{remark-direct-sum}. Clearly $F(x), F(y), F(z)$
+and the morphisms $F(i), F(j), F(p), F(q)$ satisfy exactly the
+same relations (by additivity) and we see that $F(z)$ is
+a direct sum of $F(x)$ and $F(y)$.
+Hence, $F$ transforms direct sums to direct sums.
+
+\medskip\noindent
+To see that $F$ transforms zero to zero, use the
+characterization (3) of the zero object in
+Lemma \ref{lemma-preadditive-zero}.
+\end{proof}
+
+\begin{definition}
+\label{definition-additive-category}
+A category $\mathcal{A}$ is called {\it additive}
+if it is preadditive and finite products exist, in other
+words it has a zero object and direct sums.
+\end{definition}
+
+\noindent
+Namely the empty product is a finite product and
+if it exists, then it is a final object.
+
+\begin{definition}
+\label{definition-kernel}
+Let $\mathcal{A}$ be a preadditive category.
+Let $f : x \to y$ be a morphism.
+\begin{enumerate}
+\item A {\it kernel} of $f$ is a morphism
+$i : z \to x$ such that (a) $f \circ i = 0$ and (b)
+for any $i' : z' \to x$ such that $f \circ i' = 0$ there
+exists a unique morphism $g : z' \to z$ such that
+$i' = i \circ g$.
+\item If the kernel of $f$ exists, then we denote
+this $\Ker(f) \to x$.
+\item A {\it cokernel} of $f$ is a morphism
+$p : y \to z$ such that (a) $p \circ f = 0$ and (b)
+for any $p' : y \to z'$ such that $p' \circ f = 0$ there
+exists a unique morphism $g : z \to z'$ such that
+$p' = g \circ p$.
+\item If a cokernel of $f$ exists we denote this
+$y \to \Coker(f)$.
+\item If a kernel of $f$ exists, then a {\it coimage
+of $f$} is a cokernel for the morphism $\Ker(f) \to x$.
+\item If a kernel and coimage exist then we denote this
+$x \to \Coim(f)$.
+\item If a cokernel of $f$ exists, then the {\it image of
+$f$} is a kernel of the morphism $y \to \Coker(f)$.
+\item If a cokernel and image of $f$ exist then we denote
+this $\Im(f) \to y$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+In the above definition, we have spoken of ``the kernel'' and
+``the cokernel'', tacitly using their uniqueness
+up to unique isomorphism. This follows from the Yoneda lemma
+(Categories, Section \ref{categories-section-opposite})
+because the kernel of $f : x \to y$ represents the functor
+sending an object $z$ to the set
+$\Ker(\Mor_\mathcal{A}(z, x) \to \Mor_\mathcal{A}(z, y))$.
+The case of cokernels is dual.
+
+\medskip\noindent
+We first relate the direct sum to kernels as follows.
+
+\begin{lemma}
+\label{lemma-additive-cat-biproduct-kernel}
+Let $\mathcal{C}$ be a preadditive category.
+Let $x \oplus y$ with morphisms $i, j, p, q$ as in
+Lemma \ref{lemma-preadditive-direct-sum}
+be a direct sum in $\mathcal{C}$. Then $i : x \to x \oplus y$
+is a kernel of $q : x \oplus y \rightarrow y$. Dually, $p$ is
+a cokernel for $j$.
+\end{lemma}
+
+\begin{proof}
+Let $f : z' \to x \oplus y$ be a morphism such that $q \circ f = 0$.
+We have to show that there exists a unique morphism $g : z' \to x$
+such that $f = i \circ g$. Since $i \circ p + j \circ q$ is the identity on
+$x \oplus y$ we see that
+$$
+f = (i \circ p + j \circ q) \circ f = i \circ p \circ f
+$$
+and hence $g = p \circ f$ works. Uniqueness holds because $p \circ i$
+is the identity on $x$. The proof of the second statement is dual.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-kernel-mono}
+Let $\mathcal{C}$ be a preadditive category.
+Let $f : x \to y$ be a morphism in $\mathcal{C}$.
+\begin{enumerate}
+\item If a kernel of $f$ exists, then
+this kernel is a monomorphism.
+\item If a cokernel of $f$ exists, then
+this cokernel is an epimorphism.
+\item If a kernel and coimage of $f$ exist, then
+the coimage is an epimorphism.
+\item If a cokernel and image of $f$ exist, then
+the image is a monomorphism.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Part (1) follows easily from the uniqueness required in the
+definition of a kernel. The proof of (2) is dual.
+Part (3) follows from (2), since the coimage is a cokernel.
+Similarly, (4) follows from (1).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-coim-im-map}
+Let $f : x \to y$ be a morphism in a preadditive category
+such that the kernel, cokernel, image and coimage all exist.
+Then $f$ can be factored uniquely as
+$x \to \Coim(f) \to \Im(f) \to y$.
+\end{lemma}
+
+\begin{proof}
+There is a canonical morphism $\Coim(f) \to y$
+because $\Ker(f) \to x \to y$ is zero.
+The composition $\Coim(f) \to y \to \Coker(f)$
+is zero, because it is the unique morphism which gives
+rise to the morphism $x \to y \to \Coker(f)$ which
+is zero
+(the uniqueness follows from
+Lemma \ref{lemma-kernel-mono} (3)).
+Hence $\Coim(f) \to y$ factors uniquely through
+$\Im(f) \to y$, which gives us the desired map.
+\end{proof}
+
+\begin{example}
+\label{example-not-abelian}
+Let $k$ be a field.
+Consider the category
+of filtered vector spaces over $k$.
+(See Definition \ref{definition-filtered}.)
+Consider the filtered vector spaces $(V, F)$ and $(W, F)$ with
+$V = W = k$ and
+$$
+F^iV
+=
+\left\{
+\begin{matrix}
+V & \text{if} & i < 0 \\
+0 & \text{if} & i \geq 0
+\end{matrix}
+\right.
+\text{ and }
+F^iW
+=
+\left\{
+\begin{matrix}
+W & \text{if} & i \leq 0 \\
+0 & \text{if} & i > 0
+\end{matrix}
+\right.
+$$
+The map $f : V \to W$ corresponding to $\text{id}_k$ on the underlying
+vector spaces has trivial kernel and cokernel but is not
+an isomorphism. Note also that $\Coim(f) = V$ and $\Im(f) = W$.
+This means that the category of filtered vector spaces over $k$
+is not abelian.
+\end{example}
+
+\noindent
+We finish this section by some lemmas on splitting images of
+idempotent endormorphisms. Recall that an endomorphism $f$
+is idempotent if $f \circ f = f$.
+
+\begin{remark}
+\label{remark-idempotent-symmetry}
+Let $\mathcal{A}$ be a preadditive category,
+$x$ an object of $\mathcal{A}$,
+and $f : x \to x$ idempotent.
+Writing $g = \text{id} _ x - f$,
+one has $f \circ g = 0$, $g \circ f = 0$, and $g \circ g = g$.
+\end{remark}
+
+\begin{lemma}
+\label{lemma-idempotent-kernel-cokernel}
+Let $\mathcal{A}$ be a preadditive category,
+$x$ be an object of $\mathcal{A}$,
+and $f : x \to x$ be idempotent.
+Write $g = \text{id} _ x - f$
+and recall by Remark \ref{remark-idempotent-symmetry}
+that $f \circ g = g \circ f = 0$.
+\begin{enumerate}
+\item If $f$ has kernel $i : \Ker (f) \to x$
+and $p$ is the unique morphism such that $g = i \circ p$,
+then $p \circ i = \text{id} _ {\Ker (f)}$
+and $p$ is the cokernel of $f$.
+\item If $f$ has cokernel $p : x \to \Coker (f)$
+and $i$ is the unique morphism such that $g = i \circ p$,
+then $p \circ i = \text{id} _ {\Coker (f)}$
+and $i$ is the kernel of $f$.
+\item If $g$ has kernel $j : \Ker (g) \to x$
+and $q$ is the unique morphism such that $f = j \circ q$,
+then $q \circ j = \text{id} _ {\Ker (g)}$
+and $q$ is the cokernel of $g$.
+\item If $g$ has cokernel $q : x \to \Coker (g)$
+and $j$ is the unique morphism such that $f = j \circ q$,
+then $q \circ j = \text{id} _ {\Coker (g)}$
+and $j$ is the kernel of $g$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+As for (1), compute first that $i = (f + g) \circ i = g \circ i$.
+By the construction of $p$, this implies that
+$i \circ p \circ i = g \circ i = i \circ \text{id} _ {\Ker (f)}$.
+By Lemma \ref{lemma-kernel-mono} we conclude that
+$p \circ i = \text{id} _ {\Ker (f)}$.
+
+\medskip\noindent
+It remains to show that $p : x \to \Ker (f)$
+satisfies the universal property of the cokernel of $f$,
+i.e., that given a morphism $a : x \to y$ satisfying $a \circ f = 0$
+there exists a unique morphism $b : \Ker (f) \to y$
+such that $a = b \circ p$.
+Existence follows by first computing that $a = a \circ (f + g) = a \circ g$
+and concluding by the construction of $p$
+that $a = a \circ g = a \circ i \circ p$
+(so that we can take $b = a \circ i$).
+Uniqueness follows from that $b = b \circ p \circ i = a \circ i$
+(so that $a$ determines $b$).
+
+\medskip\noindent
+By duality,
+symmetry (i.e., that $g$ is itself idempotent;
+cf. Remark \ref{remark-idempotent-symmetry}),
+and duality and symmetry respectively, (2), (3), and (4) follow as did (1).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-idempotent-splitting}
+Let $\mathcal{A}$ be a preadditive category,
+$x$ be an object of $\mathcal{A}$,
+and $f : x \to x$ be idempotent.
+Write $g = \text{id} _ x - f$.
+If each of $f$ and $g$ have at least one of a kernel or cokernel
+and in turn morphisms $i , j , p , q$ are constructed
+as in the statement of Lemma \ref{lemma-idempotent-kernel-cokernel},
+then all four (co)kernels exist and
+\begin{align*}
+x
+& \simeq \Ker (f) \oplus \Ker (g) \\
+& \simeq \Coker (f) \oplus \Ker (g) \\
+& \simeq \Ker (f) \oplus \Coker (g) \\
+& \simeq \Coker (f) \oplus \Coker (g)
+\end{align*}
+with the structure of each direct product given by $i , j , p , q$.
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-idempotent-kernel-cokernel}
+$p \circ i = \text{id} _ {\Ker (f)} = \text{id} _ {\Coker (f)}$
+and $q \circ j = \text{id} _ {\Ker (g)} = \text{id} _ {\Coker (g)}$.
+By construction, $i \circ p + j \circ q = f + g = \text{id} _ x$.
+By Remark \ref{remark-direct-sum} the claim follows.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-split-morphism-kernel-cokernel}
+Let $\mathcal{A}$ be a preadditive category,
+$x$ and $y$ be objects of $\mathcal{A}$,
+and $j : y \to x$ and $q : x \to y$ be morphisms
+satisfying $q \circ j = \text{id} _ y$.
+Then
+\begin{enumerate}
+\item $\text{id} _ x - j \circ q$ has kernel $j$.
+\item $\text{id} _ x - j \circ q$ has cokernel $q$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+As for (1), compute first that $(\text{id} _ x - j \circ q) \circ j = 0$.
+We must show that $j$ satisfies the universal property
+of the kernel of $\text{id} _ {x} - j \circ q$,
+i.e., that given a morphism $a : z \to x$
+satisfying $(\text{id} _ x - j \circ q) \circ a = 0$
+there exists a unique morphism $b : z \to y$
+such that $a = j \circ b$.
+Existence follows by computing that $a = j \circ q \circ a$
+(so that we can take $b = q \circ a$).
+Uniqueness follows from that $b = q \circ j \circ b = q \circ a$
+(so that $a$ determines $b$).
+
+\medskip\noindent
+By duality, (2) follows as did (1).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-split-morphism-splitting}
+Let $\mathcal{A}$ be a preadditive category,
+$x$ and $y$ be objects of $\mathcal{A}$,
+and $j : y \to x$ and $q : x \to y$ be morphisms
+satisfying $q \circ j = \text{id} _ y$.
+If $j \circ q$ has at least one of a kernel or cokernel,
+then both (co)kernels exist and
+\begin{align*}
+x
+& \simeq \Ker (j \circ q) \oplus y \\
+& \simeq \Coker (j \circ q) \oplus y
+\end{align*}
+with the structure of either direct product including $j , q$,
+and the canonical (co)kernel morphism,
+and the remaining map uniquely determined.
+\end{lemma}
+
+\begin{proof}
+Write $f = j \circ q$,
+compute that $f \circ f = f$,
+and apply Lemma \ref{lemma-idempotent-splitting}
+and Lemma \ref{lemma-split-morphism-kernel-cokernel}.
+\end{proof}

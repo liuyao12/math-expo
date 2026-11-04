@@ -1,0 +1,240 @@
+\section{Affine schemes}
+\label{section-affine-schemes}
+
+\noindent
+Let $R$ be a ring. Consider the topological space $\Spec(R)$
+associated to $R$, see Algebra, Section \ref{algebra-section-spectrum-ring}.
+We will endow this space with a sheaf of rings $\mathcal{O}_{\Spec(R)}$
+and the resulting pair $(\Spec(R), \mathcal{O}_{\Spec(R)})$
+will be an affine scheme.
+
+\medskip\noindent
+Recall that $\Spec(R)$ has a basis of open sets $D(f)$,
+$f \in R$ which we call standard opens, see Algebra,
+Definition \ref{algebra-definition-Zariski-topology}.
+In addition, the intersection of two standard opens is another:
+$D(f) \cap D(g) = D(fg)$, $f, g\in R$.
+
+\begin{lemma}
+\label{lemma-standard-open}
+Let $R$ be a ring. Let $f \in R$.
+\begin{enumerate}
+\item If $g\in R$ and $D(g) \subset D(f)$, then
+\begin{enumerate}
+\item $f$ is invertible in $R_g$,
+\item $g^e = af$ for some $e \geq 1$ and $a \in R$,
+\item there is a canonical ring map $R_f \to R_g$, and
+\item there is a canonical $R_f$-module map
+$M_f \to M_g$ for any $R$-module $M$.
+\end{enumerate}
+\item Any open covering of $D(f)$ can be refined to a finite
+open covering of the form $D(f) = \bigcup_{i = 1}^n D(g_i)$.
+\item If $g_1, \ldots, g_n \in R$, then $D(f) \subset \bigcup D(g_i)$
+if and only if $g_1, \ldots, g_n$ generate the unit ideal in $R_f$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Recall that $D(g) = \Spec(R_g)$ (see
+Algebra, Lemma \ref{algebra-lemma-standard-open}).
+Thus (a) holds because $f$
+maps to an element of $R_g$ which is not
+contained in any prime ideal, and hence invertible,
+see Algebra, Lemma \ref{algebra-lemma-Zariski-topology}.
+Write the inverse of $f$ in $R_g$ as $a/g^d$.
+This means $g^d - af$ is annihilated by a power of $g$, whence (b).
+For (c), the map $R_f \to R_g$ exists by (a) from the universal property
+of localization, or we can define it by mapping $b/f^n$
+to $a^nb/g^{ne}$. The equality $M_f = M \otimes_R R_f$
+can be used to obtain the map on modules, or
+we can define $M_f \to M_g$ by mapping
+$x/f^n$ to $a^nx/g^{ne}$.
+
+\medskip\noindent
+Recall that $D(f)$ is quasi-compact, see
+Algebra, Lemma \ref{algebra-lemma-qc-open}.
+Hence the second statement follows directly
+from the fact that the standard opens form
+a basis for the topology.
+
+\medskip\noindent
+The third statement follows directly from
+Algebra, Lemma \ref{algebra-lemma-Zariski-topology}.
+\end{proof}
+
+\noindent
+In Sheaves, Section \ref{sheaves-section-bases} we defined
+the notion of a sheaf on a basis, and we showed that it is
+essentially equivalent to the notion of a sheaf on the space,
+see Sheaves, Lemmas \ref{sheaves-lemma-extend-off-basis} and
+\ref{sheaves-lemma-extend-off-basis-structures}. Moreover,
+we showed in
+Sheaves, Lemma \ref{sheaves-lemma-cofinal-systems-coverings-standard-case}
+that it is sufficient to check the sheaf
+condition on a cofinal system of open coverings for each
+standard open. By the lemma above it suffices to check
+on the finite coverings by standard opens.
+
+\begin{definition}
+\label{definition-standard-covering}
+Let $R$ be a ring.
+\begin{enumerate}
+\item A {\it standard open covering} of $\Spec(R)$
+is a covering $\Spec(R) = \bigcup_{i = 1}^n D(f_i)$,
+where $f_1, \ldots, f_n \in R$.
+\item Suppose that $D(f) \subset \Spec(R)$ is a standard
+open. A {\it standard open covering} of $D(f)$
+is a covering $D(f) = \bigcup_{i = 1}^n D(g_i)$,
+where $g_1, \ldots, g_n \in R$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+Let $R$ be a ring. Let $M$ be an $R$-module. We will define
+a presheaf $\widetilde M$ on the basis of standard opens.
+Suppose that $U \subset \Spec(R)$ is a standard open.
+If $f, g \in R$ are such that $D(f) = D(g)$, then
+by Lemma \ref{lemma-standard-open} above there are canonical
+maps $M_f \to M_g$ and $M_g \to M_f$ which are mutually inverse.
+Hence we may choose any $f$ such that $U = D(f)$
+and define
+$$
+\widetilde M(U) = M_f.
+$$
+Note that if $D(g) \subset D(f)$, then by
+Lemma \ref{lemma-standard-open} above we have
+a canonical map
+$$
+\widetilde M(D(f)) = M_f \longrightarrow M_g = \widetilde M(D(g)).
+$$
+Clearly, this defines a presheaf of abelian groups on the basis
+of standard opens. If $M = R$, then $\widetilde R$ is a presheaf
+of rings on the basis of standard opens.
+
+\medskip\noindent
+Let us compute the stalk of $\widetilde M$ at a point $x \in \Spec(R)$.
+Suppose that $x$ corresponds to the prime $\mathfrak p \subset R$.
+By definition of the stalk we see that
+$$
+\widetilde M_x = \colim_{f\in R, f\not\in \mathfrak p} M_f
+$$
+Here the set $\{f \in R, f \not \in \mathfrak p\}$ is preordered by
+the rule $f \geq f' \Leftrightarrow D(f) \subset D(f')$.
+If $f_1, f_2 \in R \setminus \mathfrak p$, then we have
+$f_1f_2 \geq f_1$ in this ordering. Hence by
+Algebra, Lemma \ref{algebra-lemma-localization-colimit}
+we conclude that
+$$
+\widetilde M_x = M_{\mathfrak p}.
+$$
+
+\medskip\noindent
+Next, we check the sheaf condition for the standard open coverings.
+If $D(f) = \bigcup_{i = 1}^n D(g_i)$, then the sheaf condition
+for this covering is equivalent with the exactness of the
+sequence
+$$
+0 \to M_f \to \bigoplus M_{g_i} \to \bigoplus M_{g_ig_j}.
+$$
+Note that $D(g_i) = D(fg_i)$, and hence we can rewrite this
+sequence as the sequence
+$$
+0 \to M_f \to \bigoplus M_{fg_i} \to \bigoplus M_{fg_ig_j}.
+$$
+In addition, by Lemma \ref{lemma-standard-open} above
+we see that $g_1, \ldots, g_n$ generate the unit ideal
+in $R_f$. Thus we may apply
+Algebra, Lemma \ref{algebra-lemma-cover-module}
+to the module $M_f$ over $R_f$ and the elements $g_1, \ldots, g_n$.
+We conclude that the sequence is exact. By the remarks
+made above, we see that $\widetilde M$ is a sheaf
+on the basis of standard opens.
+
+\medskip\noindent
+Thus we conclude from the material in
+Sheaves, Section \ref{sheaves-section-bases}
+that there exists a
+unique sheaf of rings $\mathcal{O}_{\Spec(R)}$
+which agrees with $\widetilde R$ on the standard opens.
+Note that by our computation of stalks above, the
+stalks of this sheaf of rings are all local rings.
+
+\medskip\noindent
+Similarly, for any $R$-module $M$ there exists
+a unique sheaf of $\mathcal{O}_{\Spec(R)}$-modules
+$\mathcal{F}$ which agrees with $\widetilde M$ on the
+standard opens, see
+Sheaves, Lemma \ref{sheaves-lemma-extend-off-basis-module}.
+
+\begin{definition}
+\label{definition-structure-sheaf}
+Let $R$ be a ring.
+\begin{enumerate}
+\item The {\it structure sheaf $\mathcal{O}_{\Spec(R)}$ of the
+spectrum of $R$} is the unique sheaf of rings $\mathcal{O}_{\Spec(R)}$
+which agrees with $\widetilde R$ on the basis of standard opens.
+\item The locally ringed space
+$(\Spec(R), \mathcal{O}_{\Spec(R)})$ is called
+the {\it spectrum} of $R$ and denoted $\Spec(R)$.
+\item The sheaf of $\mathcal{O}_{\Spec(R)}$-modules
+extending $\widetilde M$ to all opens of $\Spec(R)$
+is called the sheaf of $\mathcal{O}_{\Spec(R)}$-modules
+associated to $M$. This sheaf is denoted $\widetilde M$ as
+well.
+\end{enumerate}
+\end{definition}
+
+\noindent
+We summarize the results obtained so far.
+
+\begin{lemma}
+\label{lemma-spec-sheaves}
+Let $R$ be a ring. Let $M$ be an $R$-module. Let $\widetilde M$
+be the sheaf of $\mathcal{O}_{\Spec(R)}$-modules
+associated to $M$.
+\begin{enumerate}
+\item We have $\Gamma(\Spec(R), \mathcal{O}_{\Spec(R)}) = R$.
+\item We have $\Gamma(\Spec(R), \widetilde M) = M$ as an $R$-module.
+\item For every $f \in R$ we have
+$\Gamma(D(f), \mathcal{O}_{\Spec(R)}) = R_f$.
+\item For every $f\in R$ we have $\Gamma(D(f), \widetilde M) = M_f$
+as an $R_f$-module.
+\item Whenever $D(g) \subset D(f)$ the restriction mappings
+on $\mathcal{O}_{\Spec(R)}$ and $\widetilde M$
+are the maps
+$R_f \to R_g$ and $M_f \to M_g$ from Lemma
+\ref{lemma-standard-open}.
+\item Let $\mathfrak p$ be a prime of $R$, and let $x \in \Spec(R)$
+be the corresponding point. We have
+$\mathcal{O}_{\Spec(R), x} = R_{\mathfrak p}$.
+\item Let $\mathfrak p$ be a prime of $R$, and let $x \in \Spec(R)$
+be the corresponding point. We have $\widetilde M_x = M_{\mathfrak p}$
+as an $R_{\mathfrak p}$-module.
+\end{enumerate}
+Moreover, all these identifications are functorial in the $R$
+module $M$. In particular, the functor $M \mapsto \widetilde M$
+is an exact functor from the category of $R$-modules
+to the category of $\mathcal{O}_{\Spec(R)}$-modules.
+\end{lemma}
+
+\begin{proof}
+Assertions (1) - (7) are clear from the discussion above.
+The exactness of the functor $M \mapsto \widetilde M$
+follows from the fact that the functor $M \mapsto M_{\mathfrak p}$
+is exact and the fact that exactness of short exact sequences
+may be checked on stalks, see
+Modules, Lemma \ref{modules-lemma-abelian}.
+\end{proof}
+
+\begin{definition}
+\label{definition-affine-scheme}
+An {\it affine scheme} is a locally ringed space isomorphic
+as a locally ringed space to $\Spec(R)$ for some ring $R$.
+A {\it morphism of affine schemes} is a morphism in the category
+of locally ringed spaces.
+\end{definition}
+
+\noindent
+It turns out that affine schemes play a special role
+among all locally ringed spaces, which is what the next
+section is about.

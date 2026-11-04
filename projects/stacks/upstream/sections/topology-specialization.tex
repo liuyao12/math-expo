@@ -1,0 +1,272 @@
+\section{Specialization}
+\label{section-specialization}
+
+\begin{definition}
+\label{definition-specialization}
+Let $X$ be a topological space.
+\begin{enumerate}
+\item If $x, x' \in X$ then we say $x$ is a {\it specialization} of $x'$,
+or $x'$ is a {\it generalization} of $x$ if $x \in \overline{\{x'\}}$.
+Notation: $x' \leadsto x$.
+\item A subset $T \subset X$ is {\it stable under specialization}
+if for all $x' \in T$ and every specialization $x' \leadsto x$ we have
+$x \in T$.
+\item A subset $T \subset X$ is {\it stable under generalization}
+if for all $x \in T$ and every generalization $x' \leadsto x$ we have
+$x' \in T$.
+\end{enumerate}
+\end{definition}
+
+\begin{lemma}
+\label{lemma-open-closed-specialization}
+Let $X$ be a topological space.
+\begin{enumerate}
+\item Any closed subset of $X$ is stable under specialization.
+\item Any open subset of $X$ is stable under generalization.
+\item A subset $T \subset X$ is stable under specialization
+if and only if
+the complement $T^c$ is stable under generalization.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let $F$ be a closed subset of $X$, if $y\in F$ then $\{y\} \subset F$, so
+$\overline{\{y\}} \subset \overline{F} = F$ as $F$ is closed. Thus for all
+specialization $x$ of $y$, we have $x\in F$.
+
+\medskip\noindent
+Let $x, y\in X$ such that $x\in \overline{\{y\}}$ and let $T$ be a subset of
+$X$. Saying that $T$ is stable under specialization means that $y\in T$ implies
+$x\in T$ and reciprocally saying that $T$ is stable under generalization means
+that $x\in T$ implies $y\in T$. Therefore (3) is proven using contraposition.
+
+\medskip\noindent
+The second property follows from (1) and (3) by considering the complement.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-stable-specialization}
+Let $T \subset X$ be a subset of a topological space $X$.
+The following are equivalent
+\begin{enumerate}
+\item $T$ is stable under specialization, and
+\item $T$ is a (directed) union of closed subsets of $X$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Suppose that $T$ is stable under specialization, then for all $y\in T$ we have
+$\overline{\{y\}} \subset T$. Thus $T = \bigcup_{y\in T} \overline{\{y\}}$
+which is an union of closed subsets of $X$. Reciprocally, suppose that $T =
+\bigcup_{i\in I}F_i$ where $F_i$ are closed subsets of $X$. If $y\in T$ then
+there exists $i\in I$ such that $y\in F_i$. As $F_i$ is closed, we have
+$\overline{\{y\}} \subset F_i \subset T$, which proves that $T$ is stable under
+specialization.
+\end{proof}
+
+\begin{definition}
+\label{definition-lift-specializations}
+Let $f : X \to Y$ be a continuous map of topological spaces.
+\begin{enumerate}
+\item We say that {\it specializations lift along $f$} or that $f$ is
+{\it specializing} if given $y' \leadsto y$ in $Y$ and any $x'\in X$ with
+$f(x') = y'$ there exists a specialization $x' \leadsto x$ of $x'$ in $X$ such
+that $f(x) = y$.
+\item We say that {\it generalizations lift along $f$} or that $f$ is
+{\it generalizing} if given $y' \leadsto y$ in $Y$ and any $x\in X$ with
+$f(x) = y$ there exists a generalization $x' \leadsto x$ of $x$ in $X$ such
+that $f(x') = y'$.
+\end{enumerate}
+\end{definition}
+
+\begin{lemma}
+\label{lemma-lift-specialization-composition}
+Suppose $f : X \to Y$ and $g : Y \to Z$ are continuous maps
+of topological spaces. If specializations lift along both $f$ and $g$
+then specializations lift along $g \circ f$. Similarly for
+``generalizations lift along''.
+\end{lemma}
+
+\begin{proof}
+Let $z'\leadsto z$ be a specialization in $Z$ and let $x' \in X$ such as
+$g\circ f (x') = z'$. Then because specializations lift along $g$, there exists
+a specialization $f(x') \leadsto y$ of $f(x')$ in $Y$ such that $g(y) = z$.
+Likewise, because specializations lift along $f$, there exists a specialization
+$x' \leadsto x$ of $x'$ in $X$ such that $f(x) = y$. It provides a
+specialization $x' \leadsto x$ of $x'$ in $X$ such that $g\circ f(x) = z$. In
+other words, specialization lift along $g\circ f$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-lift-specializations-images}
+Let $f : X \to Y$ be a continuous map of topological spaces.
+\begin{enumerate}
+\item If specializations lift along $f$, and if $T \subset X$
+is stable under specialization, then $f(T) \subset Y$ is
+stable under specialization.
+\item If generalizations lift along $f$, and if $T \subset X$
+is stable under generalization, then $f(T) \subset Y$ is
+stable under generalization.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let $y' \leadsto y$ be a specialization in $Y$ where $y'\in f(T)$ and let
+$x'\in T$ such that $f(x') = y'$. Because specialization lift along $f$, there
+exists a specialization $x'\leadsto x$ of $x'$ in $X$ such that $f(x) = y$. But
+$T$ is stable under specialization so $x\in T$ and then $y \in f(T)$. Therefore
+$f(T)$ is stable under specialization.
+
+\medskip\noindent
+The proof of (2) is identical, using that generalizations lift along $f$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-closed-open-map-specialization}
+Let $f : X \to Y$ be a continuous map of topological spaces.
+\begin{enumerate}
+\item If $f$ is closed then specializations lift along $f$.
+\item If $f$ is open, $X$ is a Noetherian topological space,
+each irreducible closed subset of $X$ has a generic point,
+and $Y$ is Kolmogorov then generalizations lift along $f$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Assume $f$ is closed. Let $y' \leadsto y$ in $Y$ and any $x'\in X$ with
+$f(x') = y'$ be given. Consider the closed subset $T = \overline{\{x'\}}$
+of $X$. Then $f(T) \subset Y$ is a closed subset, and $y' \in f(T)$.
+Hence also $y \in f(T)$. Hence $y = f(x)$ with $x \in T$, i.e.,
+$x' \leadsto x$.
+
+\medskip\noindent
+Assume $f$ is open, $X$ Noetherian, every irreducible closed subset of $X$
+has a generic point, and $Y$ is Kolmogorov.
+Let $y' \leadsto y$ in $Y$ and any $x \in X$ with
+$f(x) = y$ be given. Consider $T = f^{-1}(\{y'\}) \subset X$.
+Take an open neighbourhood $x \in U \subset X$ of $x$.
+Then $f(U) \subset Y$ is open and $y \in f(U)$. Hence also $y' \in f(U)$.
+In other words, $T \cap U \not = \emptyset$. This proves that
+$x \in \overline{T}$. Since $X$ is Noetherian, $T$ is Noetherian
+(Lemma \ref{lemma-Noetherian}).
+Hence it has a decomposition $T = T_1 \cup \ldots \cup T_n$ into irreducible
+components. Then correspondingly
+$\overline{T} = \overline{T_1} \cup \ldots \cup \overline{T_n}$.
+By the above $x \in \overline{T_i}$ for some $i$. By assumption
+there exists a generic point $x' \in \overline{T_i}$, and
+we see that $x' \leadsto x$. As $x' \in \overline{T}$ we see that
+$f(x') \in \overline{\{y'\}}$. Note that
+$f(\overline{T_i}) = f(\overline{\{x'\}}) \subset \overline{\{f(x')\}}$.
+If $f(x') \not = y'$, then since $Y$ is Kolmogorov $f(x')$ is not a generic
+point of the irreducible closed subset $\overline{\{y'\}}$ and the inclusion
+$\overline{\{f(x')\}} \subset \overline{\{y'\}}$
+is strict, i.e., $y' \not \in f(\overline{T_i})$.
+This contradicts the fact that $f(T_i) = \{y'\}$.
+Hence $f(x') = y'$ and we win.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-quotient-kolmogorov}
+Suppose that $s, t : R \to U$ and $\pi : U \to X$ are continuous maps
+of topological spaces such that
+\begin{enumerate}
+\item $\pi$ is open,
+\item $U$ is sober,
+\item $s, t$ have finite fibres,
+\item generalizations lift along $s, t$,
+\item $(t, s)(R) \subset U \times U$ is an equivalence relation on $U$ and
+$X$ is the quotient of $U$ by this equivalence relation (as a set).
+\end{enumerate}
+Then $X$ is Kolmogorov.
+\end{lemma}
+
+\begin{proof}
+Properties (3) and (5) imply that a point $x$ corresponds to an
+finite equivalence class $\{u_1, \ldots, u_n\} \subset U$ of the equivalence
+relation. Suppose that $x' \in X$ is a second point corresponding to
+the equivalence class $\{u'_1, \ldots, u'_m\} \subset U$.
+Suppose that $u_i \leadsto u'_j$ for some $i, j$. Then for any
+$r' \in R$ with $s(r') = u'_j$ by (4) we can find $r \leadsto r'$
+with $s(r) = u_i$. Hence $t(r) \leadsto t(r')$. Since
+$\{u'_1, \ldots, u'_m\} = t(s^{-1}(\{u'_j\}))$ we conclude that
+every element of $\{u'_1, \ldots, u'_m\}$ is the specialization of
+an element of $\{u_1, \ldots, u_n\}$.
+Thus $\overline{\{u_1\}} \cup \ldots \cup \overline{\{u_n\}}$ is
+a union of equivalence classes, hence of the form $\pi^{-1}(Z)$
+for some subset $Z \subset X$. By (1) we see that $Z$ is closed in $X$
+and in fact $Z = \overline{\{x\}}$ because $\pi(\overline{\{u_i\}})
+\subset \overline{\{x\}}$ for each $i$. In other words, $x \leadsto x'$
+if and only if some lift of $x$ in $U$ specializes to some lift of
+$x'$ in $U$, if and only if every lift of $x'$ in $U$ is a specialization
+of some lift of $x$ in $U$.
+
+\medskip\noindent
+Suppose that both $x \leadsto x'$ and $x' \leadsto x$. Say $x$ corresponds
+to $\{u_1, \ldots, u_n\}$ and $x'$ corresponds to $\{u'_1, \ldots, u'_m\}$
+as above. Then, by the results of the preceding paragraph, we can find a
+sequence
+$$
+\ldots \leadsto u'_{j_3} \leadsto u_{i_3} \leadsto u'_{j_2} \leadsto
+u_{i_2} \leadsto u'_{j_1} \leadsto u_{i_1}
+$$
+which must repeat, hence by (2) we conclude that
+$\{u_1, \ldots, u_n\} = \{u'_1, \ldots, u'_m\}$, i.e., $x = x'$.
+Thus $X$ is Kolmogorov.
+\end{proof}
+
+
+\begin{lemma}
+\label{lemma-dimension-specializations-lift}
+Let $f : X \to Y$ be a morphism of topological spaces.
+Suppose that $Y$ is a sober topological space, and $f$ is surjective.
+If either specializations or generalizations lift along $f$, then
+$\dim(X) \geq \dim(Y)$.
+\end{lemma}
+
+\begin{proof}
+Assume specializations lift along $f$.
+Let $Z_0 \subset Z_1 \subset \ldots Z_e \subset Y$ be a chain
+of irreducible closed subsets of $X$. Let $\xi_e \in X$ be a point
+mapping to the generic point of $Z_e$. By assumption there
+exists a specialization
+$\xi_e \leadsto \xi_{e - 1}$ in $X$ such that $\xi_{e - 1}$ maps to
+the generic point of $Z_{e - 1}$. Continuing in this manner we find
+a sequence of specializations
+$$
+\xi_e \leadsto \xi_{e - 1} \leadsto \ldots \leadsto \xi_0
+$$
+with $\xi_i$ mapping to the generic point of $Z_i$.
+This clearly implies the sequence of irreducible closed
+subsets
+$$
+\overline{\{\xi_0\}} \subset
+\overline{\{\xi_1\}} \subset \ldots
+\overline{\{\xi_e\}}
+$$
+is a chain of length $e$ in $X$.
+The case when generalizations lift along $f$ is similar.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-characterize-closed-Noetherian}
+Let $X$ be a Noetherian sober topological space.
+Let $E \subset X$ be a subset of $X$.
+\begin{enumerate}
+\item If $E$ is constructible and stable under specialization, then
+$E$ is closed.
+\item If $E$ is constructible and stable under generalization, then
+$E$ is open.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let $E$ be constructible and stable under generalization.
+Let $Y \subset X$ be an irreducible closed subset with generic point
+$\xi \in Y$. If $E \cap Y$ is nonempty, then it contains $\xi$ (by
+stability under generalization) and hence is dense in $Y$, hence it
+contains a nonempty open of $Y$, see
+Lemma \ref{lemma-characterize-constructible-Noetherian}.
+Thus $E$ is open by
+Lemma \ref{lemma-characterize-open-Noetherian}.
+This proves (2). To prove (1) apply (2) to the complement of $E$ in $X$.
+\end{proof}

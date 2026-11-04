@@ -1,0 +1,35 @@
+\section{Abelian sheaves}
+\label{section-abelian-sheaves}
+
+\begin{definition}
+\label{definition-abelian-sheaf}
+Let $X$ be a topological space.
+\begin{enumerate}
+\item An {\it abelian sheaf on $X$} or
+{\it sheaf of abelian groups on $X$}
+is an abelian presheaf on $X$ such that the underlying presheaf of
+sets is a sheaf.
+\item The category of sheaves of abelian groups
+is denoted $\textit{Ab}(X)$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+Let $X$ be a topological space.
+In the case of an abelian presheaf $\mathcal{F}$ the sheaf
+condition with regards to an open covering $U = \bigcup U_i$
+is often expressed by saying that the complex of abelian groups
+$$
+0 \to \mathcal{F}(U)
+\to \prod\nolimits_i \mathcal{F}(U_i)
+\to \prod\nolimits_{(i_0, i_1)} \mathcal{F}(U_{i_0} \cap U_{i_1})
+$$
+is exact. The first map is the usual one, whereas the second
+maps the element $(s_i)_{i \in I}$ to the element
+$$
+(
+s_{i_0}|_{U_{i_0} \cap U_{i_1}} -
+s_{i_1}|_{U_{i_0} \cap U_{i_1}}
+)_{(i_0, i_1)}
+\in \prod\nolimits_{(i_0, i_1)} \mathcal{F}(U_{i_0} \cap U_{i_1})
+$$

@@ -1,0 +1,64 @@
+\section{Exact functors}
+\label{section-exact-functor}
+
+\noindent
+In this section we define exact functors.
+
+\begin{definition}
+\label{definition-exact}
+Let $F : \mathcal{A} \to \mathcal{B}$ be a functor.
+\begin{enumerate}
+\item Suppose all finite limits exist in $\mathcal{A}$.
+We say $F$ is {\it left exact} if it commutes
+with all finite limits.
+\item Suppose all finite colimits exist in $\mathcal{A}$.
+We say $F$ is {\it right exact} if it commutes
+with all finite colimits.
+\item We say $F$ is {\it exact} if it is both left and right
+exact.
+\end{enumerate}
+\end{definition}
+
+\begin{lemma}
+\label{lemma-characterize-left-exact}
+Let $F : \mathcal{A} \to \mathcal{B}$ be a functor.
+Suppose all finite limits exist in $\mathcal{A}$,
+see Lemma \ref{lemma-finite-limits-exist}.
+The following are equivalent:
+\begin{enumerate}
+\item $F$ is left exact,
+\item $F$ commutes with finite products and equalizers, and
+\item $F$ transforms a final object of $\mathcal{A}$
+into a final object of $\mathcal{B}$, and commutes with fibre products.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Lemma \ref{lemma-limits-products-equalizers} shows that (2) implies (1).
+Suppose (3) holds. The fibre product over the final object is the product.
+If $a, b : A \to B$ are morphisms of $\mathcal{A}$, then the
+equalizer of $a, b$ is
+$$
+(A \times_{a, B, b} A)\times_{(\text{pr}_1, \text{pr}_2), A \times A, \Delta} A.
+$$
+Thus (3) implies (2). Finally (1) implies (3) because
+the empty limit is a final object, and fibre products are limits.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-characterize-right-exact}
+Let $F : \mathcal{A} \to \mathcal{B}$ be a functor.
+Suppose all finite colimits exist in $\mathcal{A}$,
+see Lemma \ref{lemma-colimits-exist}.
+The following are equivalent:
+\begin{enumerate}
+\item $F$ is right exact,
+\item $F$ commutes with finite coproducts and coequalizers, and
+\item $F$ transforms an initial object of $\mathcal{A}$
+into an initial object of $\mathcal{B}$, and commutes with pushouts.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Dual to Lemma \ref{lemma-characterize-left-exact}.
+\end{proof}

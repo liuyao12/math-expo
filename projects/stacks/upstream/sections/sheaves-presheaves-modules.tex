@@ -1,0 +1,113 @@
+\section{Presheaves of modules}
+\label{section-presheaves-modules}
+
+\noindent
+Suppose that $\mathcal{O}$ is a presheaf of rings on $X$.
+We would like to define the notion of a presheaf of
+$\mathcal{O}$-modules over $X$. In analogy with Definition
+\ref{definition-abelian-presheaves} we are tempted to define
+this as a presheaf of sets $\mathcal{F}$ such that for every open
+$U \subset X$ the set $\mathcal{F}(U)$ is endowed with the structure
+of an $\mathcal{O}(U)$-module compatible with restriction mappings
+(of $\mathcal{F}$ and $\mathcal{O}$). However, it is customary
+(and equivalent) to define it as in the following definition.
+
+\begin{definition}
+\label{definition-presheaf-modules}
+Let $X$ be a topological space, and let $\mathcal{O}$ be
+a presheaf of rings on $X$.
+\begin{enumerate}
+\item A {\it presheaf of $\mathcal{O}$-modules}
+is given by an abelian presheaf $\mathcal{F}$ together with a
+map of presheaves of sets
+$$
+\mathcal{O} \times \mathcal{F} \longrightarrow \mathcal{F}
+$$
+such that for every open $U \subset X$ the map
+$\mathcal{O}(U) \times \mathcal{F}(U) \to \mathcal{F}(U)$
+defines the structure of an $\mathcal{O}(U)$-module
+structure on the abelian group $\mathcal{F}(U)$.
+\item A {\it morphism $\varphi : \mathcal{F} \to \mathcal{G}$
+of presheaves of $\mathcal{O}$-modules} is a morphism of abelian presheaves
+$\varphi : \mathcal{F} \to \mathcal{G}$ such that
+the diagram
+$$
+\xymatrix{
+\mathcal{O} \times \mathcal{F} \ar[r] \ar[d]_{\text{id} \times \varphi} &
+\mathcal{F} \ar[d]^{\varphi} \\
+\mathcal{O} \times \mathcal{G} \ar[r] &
+\mathcal{G}
+}
+$$
+commutes.
+\item The set of $\mathcal{O}$-module morphisms as above is
+denoted $\Hom_\mathcal{O}(\mathcal{F}, \mathcal{G})$.
+\item The category of presheaves of $\mathcal{O}$-modules
+is denoted $\textit{PMod}(\mathcal{O})$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+Suppose that $\mathcal{O}_1 \to \mathcal{O}_2$ is a
+morphism of presheaves of rings on $X$. In this case,
+if $\mathcal{F}$ is a presheaf of $\mathcal{O}_2$-modules
+then we can think of $\mathcal{F}$ as a presheaf of
+$\mathcal{O}_1$-modules by using the composition
+$$
+\mathcal{O}_1 \times \mathcal{F}
+\to
+\mathcal{O}_2 \times \mathcal{F}
+\to
+\mathcal{F}.
+$$
+We sometimes denote this by $\mathcal{F}_{\mathcal{O}_1}$
+to indicate the restriction of rings. We call this
+the {\it restriction of $\mathcal{F}$}. We obtain the
+restriction functor
+$$
+\textit{PMod}(\mathcal{O}_2)
+\longrightarrow
+\textit{PMod}(\mathcal{O}_1)
+$$
+
+\medskip\noindent
+On the other hand, given a presheaf of $\mathcal{O}_1$-modules
+$\mathcal{G}$
+we can construct a presheaf of $\mathcal{O}_2$-modules
+$\mathcal{O}_2 \otimes_{p, \mathcal{O}_1} \mathcal{G}$
+by the rule
+$$
+\left(\mathcal{O}_2 \otimes_{p, \mathcal{O}_1} \mathcal{G}\right)(U)
+=
+\mathcal{O}_2(U) \otimes_{\mathcal{O}_1(U)} \mathcal{G}(U)
+$$
+The index $p$ stands for ``presheaf'' and not ``point''.
+This presheaf is called the {\it tensor product presheaf}. We obtain
+the {\it change of rings} functor
+$$
+\textit{PMod}(\mathcal{O}_1)
+\longrightarrow
+\textit{PMod}(\mathcal{O}_2)
+$$
+
+\begin{lemma}
+\label{lemma-adjointness-tensor-restrict-presheaves}
+With $X$, $\mathcal{O}_1$, $\mathcal{O}_2$, $\mathcal{F}$ and
+$\mathcal{G}$ as above there exists a canonical bijection
+$$
+\Hom_{\mathcal{O}_1}(\mathcal{G}, \mathcal{F}_{\mathcal{O}_1})
+=
+\Hom_{\mathcal{O}_2}(
+\mathcal{O}_2 \otimes_{p, \mathcal{O}_1} \mathcal{G},
+\mathcal{F}
+)
+$$
+In other words, the restriction and change of rings functors
+are adjoint to each other.
+\end{lemma}
+
+\begin{proof}
+This follows from the fact that for a ring map
+$A \to B$ the restriction functor and the change
+of ring functor are adjoint to each other.
+\end{proof}

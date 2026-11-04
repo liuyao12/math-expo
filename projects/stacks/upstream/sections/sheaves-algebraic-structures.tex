@@ -1,0 +1,143 @@
+\section{Algebraic structures}
+\label{section-algebraic-structures}
+
+\noindent
+In this section we mildly formalize the notions we have
+encountered in the sections above.
+
+\begin{definition}
+\label{definition-algebraic-structure}
+A {\it type of algebraic structure} is given by a category $\mathcal{C}$
+and a functor $F : \mathcal{C} \to \textit{Sets}$ with the
+following properties
+\begin{enumerate}
+\item $F$ is faithful,
+\item $\mathcal{C}$ has limits and $F$ commutes with limits,
+\item $\mathcal{C}$ has filtered colimits and $F$ commutes with them, and
+\item $F$ reflects isomorphisms.
+\end{enumerate}
+\end{definition}
+
+\noindent
+We make this definition to point out the properties
+we will use in a number of arguments below.  But we will
+not actually study this notion in any great detail, since we
+are prohibited from studying ``big'' categories by convention,
+except for those listed in
+Categories, Remark \ref{categories-remark-big-categories}.
+Among those the following have the required properties.
+
+\begin{lemma}
+\label{lemma-list-algebraic-structures}
+The following categories, endowed with the obvious forgetful
+functor, define types of algebraic structures:
+\begin{enumerate}
+\item The category of pointed sets.
+\item The category of abelian groups.
+\item The category of groups.
+\item The category of monoids.
+\item The category of rings.
+\item The category of $R$-modules for a fixed ring $R$.
+\item The category of Lie algebras over a fixed field.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\noindent
+From now on we will think of a (pre)sheaf of algebraic structures
+and their stalks, in terms of the underlying (pre)sheaf of sets.
+This is allowable by Lemmas \ref{lemma-sheaves-structure} and
+\ref{lemma-stalk-presheaf-values-in-category}.
+
+\medskip\noindent
+In the rest of this section we point out some results
+on algebraic structures that will be useful in the future.
+
+\begin{lemma}
+\label{lemma-properties-algebraic-structures}
+Let $(\mathcal{C}, F)$ be a type of algebraic structure.
+\begin{enumerate}
+\item $\mathcal{C}$ has a final object $0$ and $F(0) = \{ * \}$.
+\item $\mathcal{C}$ has products and $F(\prod A_i) = \prod F(A_i)$.
+\item $\mathcal{C}$ has fibre products and
+$F(A \times_B C) = F(A)\times_{F(B)}F(C)$.
+\item $\mathcal{C}$ has equalizers, and if $E \to A$
+is the equalizer of $a, b : A \to B$, then
+$F(E) \to F(A)$ is the equalizer of $F(a), F(b) : F(A) \to F(B)$.
+\item $A \to B$ is a monomorphism if and only if
+$F(A) \to F(B)$ is injective.
+\item if $F(a) : F(A) \to F(B)$ is surjective, then
+$a$ is an epimorphism.
+\item given $A_1 \to A_2 \to A_3 \to \ldots$, then
+$\colim A_i$ exists and $F(\colim A_i) = \colim F(A_i)$,
+and more generally for any filtered colimit.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Omitted. The only interesting statement is (5) which
+follows because $A \to B$ is a monomorphism if and only if
+$A \to A \times_B A$ is an isomorphism, and then applying
+the fact that $F$ reflects isomorphisms.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-image-contained-in}
+Let $(\mathcal{C}, F)$ be a type of algebraic structure.
+Suppose that $A, B, C \in \Ob(\mathcal{C})$.
+Let $f : A \to B$ and $g : C \to B$ be morphisms of
+$\mathcal{C}$. If $F(g)$ is injective, and
+$\Im(F(f)) \subset \Im(F(g))$, then
+$f$ factors as $f = g \circ t$ for some morphism
+$t : A \to C$.
+\end{lemma}
+
+\begin{proof}
+Consider $A \times_B C$. The assumptions imply that
+$F(A \times_B C) = F(A) \times_{F(B)} F(C) = F(A)$.
+Hence $A = A \times_B C$ because $F$ reflects isomorphisms.
+The result follows.
+\end{proof}
+
+\begin{example}
+\label{example-application-lemma-image-contained-in}
+The lemma will be applied often to the following situation.
+Suppose that we have a diagram
+$$
+\xymatrix{
+A \ar[r] & B \ar[d] \\
+C \ar[r] & D
+}
+$$
+in $\mathcal{C}$. Suppose $C \to D$ is injective on underlying
+sets, and suppose that the composition $A \to B \to D$ has
+image on underlying sets in the image of $C \to D$.
+Then we get a commutative diagram
+$$
+\xymatrix{
+A \ar[r] \ar[d] & B \ar[d] \\
+C \ar[r] & D
+}
+$$
+in $\mathcal{C}$.
+\end{example}
+
+\begin{example}
+\label{example-sheaf-product-pointwise-algebraic-structure}
+Let $F : \mathcal{C} \to \textit{Sets}$ be a
+type of algebraic structures.
+Let $X$ be a topological space. Suppose that
+for every $x \in X$ we are given an object
+$A_x \in \Ob(\mathcal{C})$. Consider the presheaf
+$\Pi$ with values in $\mathcal{C}$ on $X$ defined by the rule
+$\Pi(U) = \prod_{x \in U} A_x$ (with obvious restriction
+mappings). Note that the associated presheaf of sets
+$U \mapsto F(\Pi(U)) = \prod_{x \in U} F(A_x)$ is a sheaf
+by Example \ref{example-sheaf-product-pointwise}.
+Hence $\Pi$ is a sheaf of algebraic structures
+of type $(\mathcal{C} , F)$. This gives many examples
+of sheaves of abelian groups, groups, rings, etc.
+\end{example}

@@ -1,0 +1,148 @@
+\section{Abelian presheaves}
+\label{section-abelian-presheaves}
+
+\noindent
+In this section we briefly point out some features of the
+category of presheaves that allow one to define presheaves
+of abelian groups.
+
+\begin{example}
+\label{example-singleton-presheaf}
+Let $X$ be a topological space. Consider a rule $\mathcal{F}$ that
+associates to every open subset of $X$ a singleton set. Since every set
+has a unique map into a singleton set, there exist unique restriction
+maps $\rho^U_V$. The resulting structure is a presheaf of sets on $X$.
+It is a final object in the category of presheaves of sets on $X$, by the
+property of singleton sets mentioned above. Hence it is
+also unique up to unique isomorphism. We will sometimes write $*$
+for this presheaf.
+\end{example}
+
+\begin{lemma}
+\label{lemma-product-presheaves}
+Let $X$ be a topological space. The category of presheaves of sets
+on $X$ has products (see
+Categories, Definition \ref{categories-definition-product}).
+Moreover, the set of
+sections of the product $\mathcal{F} \times \mathcal{G}$
+over an open $U$ is the product of the sets of sections of
+$\mathcal{F}$ and $\mathcal{G}$ over $U$.
+\end{lemma}
+
+\begin{proof}
+Namely, suppose $\mathcal{F}$ and $\mathcal{G}$ are
+presheaves of sets on the topological space $X$.
+Consider the rule $U \mapsto \mathcal{F}(U) \times \mathcal{G}(U)$,
+denoted $\mathcal{F} \times \mathcal{G}$. If $V \subset U \subset X$
+are open then define the restriction mapping
+$$
+(\mathcal{F} \times \mathcal{G})(U)
+\longrightarrow
+(\mathcal{F} \times \mathcal{G})(V)
+$$
+by mapping $(s, t) \mapsto (s|_V, t|_V)$. Then it is immediately
+clear that $\mathcal{F} \times \mathcal{G}$ is a presheaf.
+Also, there are projection maps
+$p : \mathcal{F} \times \mathcal{G} \to \mathcal{F}$
+and
+$q : \mathcal{F} \times \mathcal{G} \to \mathcal{G}$.
+We leave it to the reader to show that
+for any third presheaf $\mathcal{H}$ we have
+$\Mor(\mathcal{H}, \mathcal{F} \times \mathcal{G})
+= \Mor(\mathcal{H}, \mathcal{F}) \times
+\Mor(\mathcal{H}, \mathcal{G})$.
+\end{proof}
+
+\noindent
+Recall that if $(A, + : A \times A \to A, - : A \to A, 0\in A)$
+is an abelian group, then the zero and the negation maps are
+uniquely determined by the addition law. In other words, it
+makes sense to say ``let $(A, +)$ be an abelian group''.
+
+\begin{lemma}
+\label{lemma-abelian-presheaves}
+Let $X$ be a topological space.
+Let $\mathcal{F}$ be a presheaf of sets.
+Consider the following types of structure on $\mathcal{F}$:
+\begin{enumerate}
+\item For every open $U$ the structure of an abelian group
+on $\mathcal{F}(U)$ such that all restriction maps are
+abelian group homomorphisms.
+\item A map of presheaves
+$+ : \mathcal{F} \times \mathcal{F} \to \mathcal{F}$,
+a map of presheaves $- : \mathcal{F} \to \mathcal{F}$
+and a map $0 : * \to \mathcal{F}$
+(see Example \ref{example-singleton-presheaf})
+satisfying all the axioms of $+, -, 0$ in a usual
+abelian group.
+\item A map of presheaves
+$+ : \mathcal{F} \times \mathcal{F} \to \mathcal{F}$,
+a map of presheaves $- : \mathcal{F} \to \mathcal{F}$
+and a map $0 : * \to \mathcal{F}$
+such that for each open $U \subset X$ the quadruple
+$(\mathcal{F}(U), +, -, 0)$ is an abelian group,
+\item A map of presheaves $+ : \mathcal{F} \times \mathcal{F}
+\to \mathcal{F}$ such that for every open $U \subset X$
+the map $+ : \mathcal{F}(U) \times \mathcal{F}(U) \to \mathcal{F}(U)$
+defines the structure of an abelian group.
+\end{enumerate}
+There are natural bijections between the collections of
+types of data (1) - (4) above.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\noindent
+The lemma says that to give an abelian group object $\mathcal{F}$
+in the category of presheaves is the same as giving a presheaf of sets
+$\mathcal{F}$ such that all the sets $\mathcal{F}(U)$ are endowed
+with the structure of an abelian group and such that all the restriction
+mappings are group homomorphisms. For most algebra structures
+we will take this approach to (pre)sheaves of such objects, i.e.,
+we will define a (pre)sheaf of such objects to be a (pre)sheaf
+$\mathcal{F}$ of sets all of whose sets of sections $\mathcal{F}(U)$
+are endowed with this structure compatibly with the restriction
+mappings.
+
+\begin{definition}
+\label{definition-abelian-presheaves}
+Let $X$ be a topological space.
+\begin{enumerate}
+\item A {\it presheaf of abelian groups on $X$} or an
+{\it abelian presheaf over $X$}
+is a presheaf of sets $\mathcal{F}$ such that for each open
+$U \subset X$ the set $\mathcal{F}(U)$ is endowed with
+the structure of an abelian group, and such that all restriction
+maps $\rho^U_V$ are homomorphisms of abelian groups, see
+Lemma \ref{lemma-abelian-presheaves} above.
+\item A {\it morphism of abelian presheaves over $X$}
+$\varphi : \mathcal{F} \to \mathcal{G}$ is a morphism of presheaves
+of sets which induces
+a homomorphism of abelian groups $\mathcal{F}(U) \to \mathcal{G}(U)$
+for every open $U \subset X$.
+\item The category of presheaves of abelian groups on $X$ is denoted
+$\textit{PAb}(X)$.
+\end{enumerate}
+\end{definition}
+
+\begin{example}
+\label{example-direct-sum-points}
+Let $X$ be a topological space. For each $x \in X$ suppose
+given an abelian group $M_x$. For $U \subset X$ open
+we set
+$$
+\mathcal{F}(U) = \bigoplus\nolimits_{x \in U} M_x.
+$$
+We denote a typical element in this abelian group by
+$\sum_{i = 1}^n m_{x_i}$, where $x_i \in U$ and $m_{x_i} \in M_{x_i}$.
+(Of course we may always choose our representation such that
+$x_1, \ldots, x_n$ are pairwise distinct.)
+We define for $V \subset U \subset X$ open a restriction
+mapping $\mathcal{F}(U) \to \mathcal{F}(V)$ by
+mapping an element $s = \sum_{i = 1}^n m_{x_i}$
+to the element $s|_V = \sum_{x_i \in V} m_{x_i}$.
+We leave it to the reader to verify that this is a
+presheaf of abelian groups.
+\end{example}

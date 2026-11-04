@@ -1,0 +1,47 @@
+\section{Stalks of presheaves of algebraic structures}
+\label{section-stalks-presheaves-structures}
+
+\noindent
+The proof of Lemma \ref{lemma-stalk-abelian-presheaf} will work
+for any type of algebraic structure such that directed
+colimits commute with the forgetful functor.
+
+\begin{lemma}
+\label{lemma-stalk-presheaf-values-in-category}
+Let $\mathcal{C}$ be a category. Let $F : \mathcal{C} \to \textit{Sets}$
+be a functor. Assume that
+\begin{enumerate}
+\item $F$ is faithful, and
+\item directed colimits exist in $\mathcal{C}$ and $F$ commutes with
+them.
+\end{enumerate}
+Let $X$ be a topological space. Let $x \in X$. Let $\mathcal{F}$
+be a presheaf with values in $\mathcal{C}$.
+Then
+$$
+\mathcal{F}_x = \colim_{x\in U} \mathcal{F}(U)
+$$
+exists in $\mathcal{C}$. Its underlying set is equal to the
+stalk of the underlying presheaf of sets of $\mathcal{F}$.
+Furthermore, the construction $\mathcal{F} \mapsto \mathcal{F}_x$
+is a functor from the category of presheaves with values in
+$\mathcal{C}$ to $\mathcal{C}$.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\noindent
+By the very definition, all the morphisms $\mathcal{F}(U)
+\to \mathcal{F}_x$ are morphisms in the category $\mathcal{C}$
+which (after applying the forgetful functor $F$) turn into
+the corresponding maps for the underlying sheaf of sets.
+As usual we will not distinguish between the morphism
+in $\mathcal{C}$ and the underlying map of sets, which
+is permitted since $F$ is faithful.
+
+\medskip\noindent
+This lemma applies in particular to:
+{\it Presheaves of (not necessarily abelian) groups, rings, modules
+over a fixed ring, vector spaces over a fixed field}.

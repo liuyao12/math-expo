@@ -1,0 +1,168 @@
+\section{Finite modules and finitely presented modules}
+\label{section-module-finite-type}
+
+\noindent
+Just some basic notation and lemmas.
+
+\begin{definition}
+\label{definition-module-finite-type}
+Let $R$ be a ring. Let $M$ be an $R$-module.
+\begin{enumerate}
+\item We say $M$ is a {\it finite $R$-module}, or a {\it finitely generated
+$R$-module} if there exist $n \in \mathbf{N}$ and $x_1, \ldots, x_n \in M$
+such that every element of $M$ is an $R$-linear combination of the $x_i$.
+Equivalently, this means there exists a surjection
+$R^{\oplus n} \to M$ for some $n \in \mathbf{N}$.
+\item We say $M$ is a {\it finitely presented $R$-module} or an
+{\it $R$-module of finite presentation} if there exist integers
+$n, m \in \mathbf{N}$ and an exact sequence
+$$
+R^{\oplus m} \longrightarrow R^{\oplus n} \longrightarrow M \longrightarrow 0
+$$
+\end{enumerate}
+\end{definition}
+
+\noindent
+Informally, $M$ is a finitely presented $R$-module if and only if
+it is finitely generated and the module of relations among these
+generators is finitely generated as well.
+A choice of an exact sequence as in the definition is called a
+{\it presentation} of $M$.
+
+\begin{lemma}
+\label{lemma-lift-map}
+Let $R$ be a ring. Let $\alpha : R^{\oplus n} \to M$ and $\beta : N \to M$ be
+module maps. If $\Im(\alpha) \subset \Im(\beta)$, then there
+exists an $R$-module map $\gamma : R^{\oplus n} \to N$ such that
+$\alpha = \beta \circ \gamma$.
+\end{lemma}
+
+\begin{proof}
+Let $e_i = (0, \ldots, 0, 1, 0, \ldots, 0)$ be the $i$th basis vector
+of $R^{\oplus n}$. Let $x_i \in N$ be an element with
+$\alpha(e_i) = \beta(x_i)$ which exists by assumption. Set
+$\gamma(a_1, \ldots, a_n) = \sum a_i x_i$. By construction
+$\alpha = \beta \circ \gamma$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-extension}
+Let $R$ be a ring.
+Let
+$$
+0 \to M_1 \to M_2 \to M_3 \to 0
+$$
+be a short exact sequence of $R$-modules.
+\begin{enumerate}
+\item If $M_1$ and $M_3$ are finite $R$-modules, then $M_2$ is a finite
+$R$-module.
+\item If $M_1$ and $M_3$ are finitely presented $R$-modules, then $M_2$
+is a finitely presented $R$-module.
+\item If $M_2$ is a finite $R$-module, then $M_3$ is a finite $R$-module.
+\item If $M_2$ is a finitely presented $R$-module and $M_1$ is a
+finite $R$-module, then $M_3$ is a finitely presented $R$-module.
+\item If $M_3$ is a finitely presented $R$-module and $M_2$ is a finite
+$R$-module, then $M_1$ is a finite $R$-module.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Proof of (1). If $x_1, \ldots, x_n$ are generators of $M_1$ and
+$y_1, \ldots, y_m \in M_2$ are elements whose images in $M_3$ are
+generators of $M_3$, then $x_1, \ldots, x_n, y_1, \ldots, y_m$
+generate $M_2$.
+
+\medskip\noindent
+Part (3) is immediate from the definition.
+
+\medskip\noindent
+Proof of (5). Assume $M_3$ is finitely presented and $M_2$ finite.
+Choose a presentation
+$$
+R^{\oplus m} \to R^{\oplus n} \to M_3 \to 0
+$$
+By Lemma \ref{lemma-lift-map} there exists a map
+$R^{\oplus n} \to M_2$ such that
+the solid diagram
+$$
+\xymatrix{
+& R^{\oplus m} \ar[r] \ar@{..>}[d] & R^{\oplus n} \ar[r] \ar[d] &
+M_3 \ar[r] \ar[d]^{\text{id}} & 0 \\
+0 \ar[r] & M_1 \ar[r] & M_2 \ar[r] & M_3 \ar[r] & 0
+}
+$$
+commutes. This produces the dotted arrow. By the snake lemma
+(Lemma \ref{lemma-snake}) we see that we get an isomorphism
+$$
+\Coker(R^{\oplus m} \to M_1)
+\cong
+\Coker(R^{\oplus n} \to M_2)
+$$
+In particular we conclude that $\Coker(R^{\oplus m} \to M_1)$
+is a finite $R$-module. Since $\Im(R^{\oplus m} \to M_1)$
+is finite by (3), we see that $M_1$ is finite by part (1).
+
+\medskip\noindent
+Proof of (4). Assume $M_2$ is finitely presented and $M_1$ is finite.
+Choose a presentation $R^{\oplus m} \to R^{\oplus n} \to M_2 \to 0$.
+Choose a surjection $R^{\oplus k} \to M_1$. By Lemma \ref{lemma-lift-map}
+there exists a factorization $R^{\oplus k} \to R^{\oplus n} \to M_2$
+of the composition $R^{\oplus k} \to M_1 \to M_2$. Then
+$R^{\oplus k + m} \to R^{\oplus n} \to M_3 \to 0$
+is a presentation.
+
+\medskip\noindent
+Proof of (2). Assume that $M_1$ and $M_3$ are finitely presented.
+The argument in the proof of part (1) produces a commutative diagram
+$$
+\xymatrix{
+0 \ar[r] & R^{\oplus n} \ar[d] \ar[r] & R^{\oplus n + m} \ar[d] \ar[r] &
+R^{\oplus m} \ar[d] \ar[r] & 0 \\
+0 \ar[r] & M_1 \ar[r] & M_2 \ar[r] & M_3 \ar[r] & 0
+}
+$$
+with surjective vertical arrows. By the snake lemma we obtain a short
+exact sequence
+$$
+0 \to \Ker(R^{\oplus n} \to M_1) \to
+\Ker(R^{\oplus n + m} \to M_2) \to
+\Ker(R^{\oplus m} \to M_3) \to 0
+$$
+By part (5) we see that the outer two modules are finite. Hence the
+middle one is finite too. By (4) we see that $M_2$ is of finite presentation.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-trivial-filter-finite-module}
+\begin{slogan}
+Finite modules have filtrations such that successive quotients are
+cyclic modules.
+\end{slogan}
+Let $R$ be a ring, and let $M$ be a finite $R$-module.
+There exists a filtration by finite $R$-submodules
+$$
+0 = M_0 \subset M_1 \subset \ldots \subset M_n = M
+$$
+such that each quotient $M_i/M_{i - 1}$ is isomorphic
+to $R/I_i$ for some ideal $I_i$ of $R$.
+\end{lemma}
+
+\begin{proof}
+By induction on the number of generators of $M$. Let
+$x_1, \ldots, x_r \in M$ be generators.
+Let $M' = Rx_1 \subset M$. Then $M/M'$ has $r - 1$ generators
+and the induction hypothesis applies. And clearly $M' \cong R/I_1$
+with $I_1 = \{f \in R \mid fx_1 = 0\}$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-finite-over-subring}
+Let $R \to S$ be a ring map.
+Let $M$ be an $S$-module.
+If $M$ is finite as an $R$-module, then $M$ is finite as an $S$-module.
+\end{lemma}
+
+\begin{proof}
+In fact, any $R$-generating set of $M$ is also an $S$-generating set of
+$M$, since the $R$-module structure is induced by the image of $R$ in $S$.
+\end{proof}

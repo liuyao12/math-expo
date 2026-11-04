@@ -1,0 +1,89 @@
+\section{Basic notions}
+\label{section-topology-basic}
+
+\noindent
+The following is a list of basic notions in topology. Some of these notions
+are discussed in more detail in the text that follows and some
+are defined in the list, but others are considered basic and will not
+be defined. If you are not familiar with most of the italicized concepts,
+then we suggest looking at an introductory text on topology before
+continuing.
+
+\begin{enumerate}
+\item
+\label{item-space}
+$X$ is a {\it topological space},
+\item
+\label{item-point}
+$x\in X$ is a {\it point},
+\item
+\label{item-locally-closed}
+$E \subset X$ is a {\it locally closed} subset,
+\item
+\label{item-closed-point}
+$x\in X$ is a {\it closed point},
+\item
+\label{item-dense}
+$E \subset X$ is a {\it dense} subset,
+\item
+\label{item-continuous}
+$f : X_1 \to X_2$ is {\it continuous},
+\item
+\label{item-upper-semi-continuous}
+an extended real function $f : X \to \mathbf{R} \cup \{\infty, -\infty\}$
+is {\it upper semi-continuous} if $\{x \in X \mid f(x) < a\}$ is open for
+all $a \in \mathbf{R}$,
+\item
+\label{item-lower-semi-continuous}
+an extended real function $f : X \to \mathbf{R} \cup \{\infty, -\infty\}$
+is {\it lower semi-continuous} if $\{x \in X \mid f(x) > a\}$ is open for
+all $a \in \mathbf{R}$,
+\item a continuous map of spaces $f : X \to Y$ is
+{\it open} if $f(U)$ is open in $Y$ for $U \subset X$ open,
+\item a continuous map of spaces $f : X \to Y$ is
+{\it closed} if $f(Z)$ is closed in $Y$ for $Z \subset X$ closed,
+\item
+\label{item-neighbourhood}
+a {\it neighbourhood of $x \in X$} is any subset
+$E \subset X$ which contains an open subset that
+contains $x$,
+\item
+\label{item-induced-topology}
+the {\it induced topology} on a subset $E \subset X$,
+\item
+\label{item-covering}
+$\mathcal{U} : U = \bigcup_{i \in I} U_i$ is an
+{\it open covering of} $U$ (note: we allow any $U_i$ to be empty
+and we even allow, in case $U$ is empty, the empty set for $I$),
+\item
+\label{item-subcover}
+a {\it subcover} of a covering as in (\ref{item-covering})
+is an open covering $\mathcal{U}' : U = \bigcup_{i \in I'} U_i$
+where $I' \subset I$,
+\item
+\label{item-refinement}
+the open covering $\mathcal{V}$ is a {\it refinement}
+of the open covering $\mathcal{U}$ (if
+$\mathcal{V} : U = \bigcup_{j \in J} V_j$ and
+$\mathcal{U} : U = \bigcup_{i \in I} U_i$
+this means each $V_j$ is completely contained in one of the $U_i$),
+\item
+\label{item-fundamental-system}
+{\it $\{ E_i \}_{i \in I}$ is a fundamental system of neighbourhoods
+of $x$ in $X$},
+\item
+\label{item-Hausdorff}
+a topological space $X$ is called {\it Hausdorff} or {\it separated}
+if and only if for every distinct pair of points $x, y \in X$ there exist
+disjoint opens $U, V \subset X$ such that $x \in U$, $y \in V$,
+\item the {\it product} of two topological spaces,
+\label{item-product}
+\item
+\label{item-fibre-product}
+the {\it fibre product $X \times_Y Z$} of a pair of continuous maps
+$f : X \to Y$ and $g : Z \to Y$,
+\item
+\label{item-discrete-indiscrete}
+the {\it discrete topology} and the {\it indiscrete topology} on a set,
+\item etc.
+\end{enumerate}

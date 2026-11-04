@@ -1,0 +1,375 @@
+\section{Quasi-compact spaces and maps}
+\label{section-quasi-compact}
+
+\noindent
+The phrase ``compact'' will be reserved
+for Hausdorff topological spaces. And many spaces occurring
+in algebraic geometry are not Hausdorff.
+
+\begin{definition}
+\label{definition-quasi-compact}
+Quasi-compactness.
+\begin{enumerate}
+\item We say that a topological space $X$ is {\it quasi-compact}
+if every open covering of $X$ has a finite subcover.
+\item We say that a continuous map $f : X \to Y$ is {\it quasi-compact}
+if the inverse image $f^{-1}(V)$ of every quasi-compact open $V \subset Y$
+is quasi-compact.
+\item We say a subset $Z \subset X$ is {\it retrocompact}
+if the inclusion map $Z \to X$ is quasi-compact.
+\end{enumerate}
+\end{definition}
+
+\noindent
+In many texts on topology a space is called {\it compact} if it
+is quasi-compact and Hausdorff; and in other texts the Hausdorff
+condition is omitted. To avoid confusion in algebraic geometry
+we use the term quasi-compact. The notion of quasi-compactness
+of a map is very different from the notion of a ``proper map'',
+since there we require (besides closedness and separatedness)
+the inverse image of any quasi-compact subset of the target to be
+quasi-compact, whereas in the definition above we only consider
+quasi-compact {\it open} sets.
+
+\begin{lemma}
+\label{lemma-composition-quasi-compact}
+A composition of quasi-compact maps is quasi-compact.
+\end{lemma}
+
+\begin{proof}
+This is immediate from the definition.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-closed-in-quasi-compact}
+A closed subset of a quasi-compact topological space is quasi-compact.
+\end{lemma}
+
+\begin{proof}
+Let $E \subset X$ be a closed subset of the quasi-compact space $X$.
+Let $E = \bigcup V_j$ be an open covering. Choose $U_j \subset X$
+open such that $V_j = E \cap U_j$. Then $X = (X \setminus E) \cup \bigcup U_j$
+is an open covering of $X$. Hence
+$X = (X \setminus E) \cup U_{j_1} \cup \ldots \cup U_{j_n}$ for some
+$n$ and indices $j_i$. Thus $E = V_{j_1} \cup \ldots \cup V_{j_n}$
+as desired.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-quasi-compact-in-Hausdorff}
+Let $X$ be a Hausdorff topological space.
+\begin{enumerate}
+\item If $E \subset X$ is quasi-compact, then it is closed.
+\item If $E_1, E_2 \subset X$ are disjoint quasi-compact subsets
+then there exists opens $E_i \subset U_i$ with $U_1 \cap U_2 = \emptyset$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Proof of (1). Let $x \in X$, $x \not \in E$.
+For every $e \in E$ we can find disjoint opens $V_e$ and $U_e$
+with $e \in V_e$ and $x \in U_e$. Since $E \subset \bigcup V_e$
+we can find finitely many $e_1, \ldots, e_n$ such that
+$E \subset V_{e_1} \cup \ldots \cup V_{e_n}$. Then
+$U = U_{e_1} \cap \ldots \cap U_{e_n}$ is an open neighbourhood
+of $x$ which avoids $V_{e_1} \cup \ldots \cup V_{e_n}$. In particular
+it avoids $E$. Thus $E$ is closed.
+
+\medskip\noindent
+Proof of (2). In the proof of (1) we have seen that given $x \in E_1$
+we can find an open neighbourhood $x \in U_x$ and an open
+$E_2 \subset V_x$ such that $U_x \cap V_x = \emptyset$. Because
+$E_1$ is quasi-compact we can find a finite number $x_i \in E_1$
+such that $E_1 \subset U = U_{x_1} \cup \ldots \cup U_{x_n}$.
+We take $V = V_{x_1} \cap \ldots \cap V_{x_n}$ to finish the proof.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-closed-in-compact}
+Let $X$ be a quasi-compact Hausdorff space. Let $E \subset X$.
+The following are equivalent: (a) $E$ is closed in $X$, (b)
+$E$ is quasi-compact.
+\end{lemma}
+
+\begin{proof}
+The implication (a) $\Rightarrow$ (b) is
+Lemma \ref{lemma-closed-in-quasi-compact}.
+The implication (b) $\Rightarrow$ (a) is
+Lemma \ref{lemma-quasi-compact-in-Hausdorff}.
+\end{proof}
+
+\noindent
+The following is really a reformulation of the
+quasi-compact property.
+
+\begin{lemma}
+\label{lemma-intersection-closed-in-quasi-compact}
+Let $X$ be a quasi-compact topological space.
+If $\{Z_\alpha\}_{\alpha \in A}$ is a collection of closed subsets
+such that the intersection of each finite subcollection
+is nonempty, then $\bigcap_{\alpha \in A} Z_\alpha$ is nonempty.
+\end{lemma}
+
+\begin{proof}
+We suppose that $\bigcap_{\alpha \in A} Z_{\alpha} = \emptyset$.
+So we have $\bigcup_{\alpha \in A} (X\setminus Z_{\alpha})=X$ by
+complementation. As the subsets $Z_\alpha$ are closed,
+$\bigcup_{\alpha \in A} (X \setminus Z_{\alpha})$
+is an open covering of the quasi-compact space $X$.
+Thus there exists a finite subset $J \subset A$ such that
+$X = \bigcup_{\alpha \in J} (X\setminus Z_{\alpha})$.
+The complementary is then empty, which means that
+$\bigcap_{\alpha \in J} Z_{\alpha} = \emptyset$. It proves there exists a
+finite subcollection of $\{Z_{\alpha}\}_{\alpha \in J}$ verifying
+$\bigcap_{\alpha \in J} Z_{\alpha}=\emptyset$, which concludes by
+contraposition.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-image-quasi-compact}
+Let $f : X \to Y$ be a continuous map of topological spaces.
+\begin{enumerate}
+\item If $X$ is quasi-compact, then $f(X)$ is quasi-compact.
+\item If $f$ is quasi-compact, then $f(X)$ is retrocompact.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+If $f(X) = \bigcup V_i$ is an open covering, then $X = \bigcup f^{-1}(V_i)$
+is an open covering. Hence if $X$ is quasi-compact then
+$X = f^{-1}(V_{i_1}) \cup \ldots \cup f^{-1}(V_{i_n})$ for some
+$i_1, \ldots, i_n \in I$ and hence
+$f(X) = V_{i_1} \cup \ldots \cup V_{i_n}$. This proves (1).
+Assume $f$ is quasi-compact, and let $V \subset Y$ be quasi-compact open.
+Then $f^{-1}(V)$ is quasi-compact, hence by (1) we see that
+$f(f^{-1}(V)) = f(X) \cap V$ is quasi-compact. Hence $f(X)$
+is retrocompact.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-quasi-compact-closed-point}
+Let $X$ be a topological space. Assume that
+\begin{enumerate}
+\item $X$ is nonempty,
+\item $X$ is quasi-compact, and
+\item $X$ is Kolmogorov.
+\end{enumerate}
+Then $X$ has a closed point.
+\end{lemma}
+
+\begin{proof}
+Consider the set
+$$
+\mathcal{T} =
+\{Z \subset X \mid Z = \overline{\{x\}} \text{ for some }x \in X\}
+$$
+of all closures of singletons in $X$. It is nonempty since $X$ is
+nonempty. Make $\mathcal{T}$ into a
+partially ordered set using the relation of inclusion.
+Suppose $Z_\alpha$, $\alpha \in A$ is a totally ordered subset of $\mathcal{T}$.
+By Lemma \ref{lemma-intersection-closed-in-quasi-compact} we see
+that $\bigcap_{\alpha \in A} Z_\alpha \not = \emptyset$. Hence there exists
+some $x \in \bigcap_{\alpha \in A} Z_\alpha$ and we see that
+$Z = \overline{\{x\}}\in \mathcal{T}$ is a lower bound for
+the family. By Zorn's lemma there exists a minimal element
+$Z \in \mathcal{T}$. As $X$ is Kolmogorov we conclude that
+$Z = \{x\}$ for some $x$ and $x \in X$ is a closed point.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-closed-points-quasi-compact}
+Let $X$ be a quasi-compact Kolmogorov space. Then the set $X_0$ of
+closed points of $X$ is quasi-compact.
+\end{lemma}
+
+\begin{proof}
+Let $X_0 = \bigcup U_{i, 0}$ be an open covering.
+Write $U_{i, 0} = X_0 \cap U_i$ for some open $U_i \subset X$.
+Consider the complement $Z$ of $\bigcup U_i$. This is a closed subset of
+$X$, hence quasi-compact (Lemma \ref{lemma-closed-in-quasi-compact})
+and Kolmogorov. By Lemma \ref{lemma-quasi-compact-closed-point}
+if $Z$ is nonempty it would have a closed
+point which contradicts the fact that $X_0 \subset \bigcup U_i$.
+Hence $Z = \emptyset$ and $X = \bigcup U_i$. Since $X$ is quasi-compact
+this covering has a finite subcover and we conclude.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-connected-component-intersection}
+Let $X$ be a topological space.
+Assume
+\begin{enumerate}
+\item $X$ is quasi-compact,
+\item $X$ has a basis for the topology consisting of quasi-compact opens, and
+\item the intersection of two quasi-compact opens is quasi-compact.
+\end{enumerate}
+For any $x \in X$ the connected component of $X$ containing
+$x$ is the intersection of all open and closed subsets
+of $X$ containing $x$.
+\end{lemma}
+
+\begin{proof}
+Let $T$ be the connected component containing $x$.
+Let $S = \bigcap_{\alpha \in A} Z_\alpha$ be the intersection of all
+open and closed subsets $Z_\alpha$ of $X$ containing $x$.
+Note that $S$ is closed in $X$.
+Note that any finite intersection of $Z_\alpha$'s is a $Z_\alpha$.
+Because $T$ is connected and $x \in T$ we have $T \subset S$.
+It suffices to show that $S$ is connected.
+If not, then there exists a disjoint union decomposition
+$S = B \amalg C$ with $B$ and $C$ open and closed in $S$.
+In particular, $B$ and $C$ are closed in $X$, and so quasi-compact by
+Lemma \ref{lemma-closed-in-quasi-compact} and assumption (1).
+By assumption (2) there exist quasi-compact opens
+$U, V \subset X$ with $B = S \cap U$ and $C = S \cap V$ (details omitted).
+Then $U \cap V \cap S = \emptyset$.
+Hence $\bigcap_\alpha U \cap V \cap Z_\alpha = \emptyset$.
+By assumption (3) the intersection $U \cap V$ is quasi-compact.
+By Lemma \ref{lemma-intersection-closed-in-quasi-compact}
+for some $\alpha' \in A$ we have $U \cap V \cap Z_{\alpha'} = \emptyset$.
+Since $X \setminus (U \cup V)$ is disjoint from $S$
+and closed in $X$ hence quasi-compact, we can use the same lemma
+to see that $Z_{\alpha''} \subset U \cup V$ for some $\alpha'' \in A$.
+Then $Z_\alpha = Z_{\alpha'} \cap Z_{\alpha''}$ is contained
+in $U \cup V$ and disjoint from $U \cap V$.
+Hence $Z_\alpha = U \cap Z_\alpha \amalg V \cap Z_\alpha$
+is a decomposition into two open pieces,
+hence $U \cap Z_\alpha$ and $V \cap Z_\alpha$ are open and closed in $X$.
+Thus, if $x \in B$ say, then we see that $S \subset U \cap Z_\alpha$
+and we conclude that $C = \emptyset$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-connected-component-intersection-compact-Hausdorff}
+Let $X$ be a topological space. Assume $X$ is quasi-compact and Hausdorff.
+For any $x \in X$ the connected component of $X$ containing
+$x$ is the intersection of all open and closed subsets
+of $X$ containing $x$.
+\end{lemma}
+
+\begin{proof}
+Let $T$ be the connected component containing $x$.
+Let $S = \bigcap_{\alpha \in A} Z_\alpha$ be the intersection of all
+open and closed subsets $Z_\alpha$ of $X$ containing $x$.
+Note that $S$ is closed in $X$.
+Note that any finite intersection of $Z_\alpha$'s is a $Z_\alpha$.
+Because $T$ is connected and $x \in T$ we have $T \subset S$.
+It suffices to show that $S$ is connected.
+If not, then there exists a disjoint union decomposition
+$S = B \amalg C$ with $B$ and $C$ open and closed in $S$.
+In particular, $B$ and $C$ are closed in $X$, and so quasi-compact by
+Lemma \ref{lemma-closed-in-quasi-compact}.
+By Lemma \ref{lemma-quasi-compact-in-Hausdorff}
+there exist disjoint opens $U, V \subset X$ with $B \subset U$ and
+$C \subset V$. Then $X \setminus U \cup V$ is closed in $X$
+hence quasi-compact (Lemma \ref{lemma-closed-in-quasi-compact}).
+It follows that $(X \setminus U \cup V) \cap Z_\alpha = \emptyset$
+for some $\alpha$ by Lemma \ref{lemma-intersection-closed-in-quasi-compact}.
+In other words, $Z_\alpha \subset U \cup V$. Thus
+$Z_\alpha = Z_\alpha \cap V \amalg Z_\alpha \cap U$
+is a decomposition into two open pieces,
+hence $U \cap Z_\alpha$ and $V \cap Z_\alpha$ are open and closed in $X$.
+Thus, if $x \in B$ say, then we see that $S \subset U \cap Z_\alpha$
+and we conclude that $C = \emptyset$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-closed-union-connected-components}
+Let $X$ be a topological space.
+Assume
+\begin{enumerate}
+\item $X$ is quasi-compact,
+\item $X$ has a basis for the topology consisting of quasi-compact opens, and
+\item the intersection of two quasi-compact opens is quasi-compact.
+\end{enumerate}
+For a subset $T \subset X$ the following are equivalent:
+\begin{enumerate}
+\item[(a)] $T$ is an intersection of open and closed subsets of $X$, and
+\item[(b)] $T$ is closed in $X$ and is a union of connected components of $X$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+It is clear that (a) implies (b).
+Assume (b). Let $x \in X$, $x \not \in T$. Let $x \in C \subset X$
+be the connected component of $X$ containing $x$. By
+Lemma \ref{lemma-connected-component-intersection}
+we see that $C = \bigcap V_\alpha$ is the intersection of all open and
+closed subsets $V_\alpha$ of $X$ which contain $C$.
+In particular, any pairwise intersection $V_\alpha \cap V_\beta$
+occurs as a $V_\alpha$.
+As $T$ is a union of connected components
+of $X$ we see that $C \cap T = \emptyset$. Hence
+$T \cap \bigcap V_\alpha = \emptyset$. Since $T$ is quasi-compact as a
+closed subset of a quasi-compact space (see
+Lemma \ref{lemma-closed-in-quasi-compact})
+we deduce that $T \cap V_\alpha = \emptyset$ for some $\alpha$, see
+Lemma \ref{lemma-intersection-closed-in-quasi-compact}.
+For this $\alpha$ we see that $U_\alpha = X \setminus V_\alpha$
+is an open and closed subset of $X$ which contains $T$ and not $x$.
+The lemma follows.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-Noetherian-quasi-compact}
+Let $X$ be a Noetherian topological space.
+\begin{enumerate}
+\item The space $X$ is quasi-compact.
+\item Any subset of $X$ is retrocompact.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Suppose $X = \bigcup U_i$ is an open covering of $X$ indexed
+by the set $I$ which does not have a refinement by a finite
+open covering. Choose $i_1, i_2, \ldots $ elements of $I$ inductively
+in the following way: Choose $i_{n + 1}$ such that $U_{i_{n + 1}}$
+is not contained in $U_{i_1} \cup \ldots \cup U_{i_n}$. Thus we see that
+$X \supset (X \setminus U_{i_1}) \supset
+(X \setminus U_{i_1} \cup U_{i_2}) \supset \ldots$ is a strictly
+decreasing infinite sequence of closed subsets. This contradicts
+the fact that $X$ is Noetherian. This proves the first assertion.
+The second assertion is now clear since every subset of $X$ is Noetherian by
+Lemma \ref{lemma-Noetherian}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-quasi-compact-locally-Noetherian-Noetherian}
+A quasi-compact locally Noetherian space is Noetherian.
+\end{lemma}
+
+\begin{proof}
+The conditions imply immediately that $X$ has a finite covering by
+Noetherian subsets, and hence is Noetherian by
+Lemma \ref{lemma-finite-union-Noetherian}.
+\end{proof}
+
+\begin{lemma}[Alexander subbase theorem]
+\label{lemma-subbase-theorem}
+Let $X$ be a topological space. Let $\mathcal{B}$ be a subbase for $X$.
+If every covering of $X$ by elements of $\mathcal{B}$ has a finite
+refinement, then $X$ is quasi-compact.
+\end{lemma}
+
+\begin{proof}
+Assume there is an open covering of $X$ which does not have a finite
+refinement. Using Zorn's lemma we can choose a maximal open covering
+$X = \bigcup_{i \in I} U_i$ which does not have a finite refinement
+(details omitted).
+In other words, if $U \subset X$ is any open which does not occur as
+one of the $U_i$, then the covering $X = U \cup \bigcup_{i \in I} U_i$
+does have a finite refinement. Let $I' \subset I$ be the set of indices
+such that $U_i \in \mathcal{B}$. Then $\bigcup_{i \in I'} U_i \not = X$,
+since otherwise we would get a finite refinement covering $X$ by our
+assumption on $\mathcal{B}$. Pick $x \in X$,
+$x \not \in \bigcup_{i \in I'} U_i$. Pick $i \in I$ with $x \in U_i$.
+Pick $V_1, \ldots, V_n \in \mathcal{B}$ such that
+$x \in V_1 \cap \ldots \cap V_n \subset U_i$. This is
+possible as $\mathcal{B}$ is a subbasis for $X$. Note that
+$V_j$ does not occur as a $U_i$. By maximality of the chosen
+covering we see that for each $j$ there exist
+$i_{j, 1}, \ldots, i_{j, n_j} \in I$ such that
+$X = V_j \cup U_{i_{j, 1}} \cup \ldots \cup U_{i_{j, n_j}}$.
+Since $V_1 \cap \ldots \cap V_n \subset U_i$ we conclude that
+$X = U_i \cup \bigcup U_{i_{j, l}}$ a contradiction.
+\end{proof}

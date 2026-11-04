@@ -1,0 +1,173 @@
+\section{Fibre products}
+\label{section-fibre-products}
+
+\begin{definition}
+\label{definition-fibre-products}
+Let $x, y, z\in \Ob(\mathcal{C})$,
+$f\in \Mor_\mathcal{C}(x, y)$
+and $g\in \Mor_{\mathcal C}(z, y)$.
+A {\it fibre product} of $f$ and $g$ is
+an object $x \times_y z\in \Ob(\mathcal{C})$
+together with morphisms
+$p \in \Mor_{\mathcal C}(x \times_y z, x)$ and
+$q \in \Mor_{\mathcal C}(x \times_y z, z)$ making the diagram
+$$
+\xymatrix{
+x \times_y z \ar[r]_q \ar[d]_p & z \ar[d]^g \\
+x \ar[r]^f & y
+}
+$$
+commute, and such that the following universal property holds: for
+any $w\in \Ob(\mathcal{C})$ and morphisms
+$\alpha \in \Mor_{\mathcal C}(w, x)$ and
+$\beta \in \Mor_\mathcal{C}(w, z)$ with
+$f \circ \alpha = g \circ \beta$
+there is a unique
+$\gamma \in \Mor_{\mathcal C}(w, x \times_y z)$ making
+the diagram
+$$
+\xymatrix{
+w \ar[rrrd]^\beta \ar@{-->}[rrd]_\gamma \ar[rrdd]_\alpha & & \\
+& & x \times_y z \ar[d]^p \ar[r]_q & z \ar[d]^g \\
+& & x \ar[r]^f & y
+}
+$$
+commute.
+\end{definition}
+
+\noindent
+If a fibre product exists it is unique up to unique
+isomorphism. This follows from the Yoneda lemma as
+the definition requires $x \times_y z$ to be an object
+of $\mathcal{C}$ such that
+$$
+h_{x \times_y z}(w) = h_x(w) \times_{h_y(w)} h_z(w)
+$$
+functorially in $w$. In other words the fibre product $x \times_y z$
+is an object representing the functor
+$w \mapsto h_x(w) \times_{h_y(w)} h_z(w)$.
+
+\begin{definition}
+\label{definition-cartesian}
+We say a commutative diagram
+$$
+\xymatrix{
+w \ar[r] \ar[d] &
+z \ar[d] \\
+x \ar[r] &
+y
+}
+$$
+in a category is {\it cartesian} if $w$ and the morphisms $w \to x$ and
+$w \to z$ form a fibre product of the morphisms $x \to y$ and $z \to y$.
+\end{definition}
+
+\begin{definition}
+\label{definition-has-fibre-products}
+We say the category $\mathcal{C}$ {\it has fibre products} if
+the fibre product exists for any $f\in \Mor_{\mathcal C}(x, y)$
+and $g\in \Mor_{\mathcal C}(z, y)$.
+\end{definition}
+
+\begin{definition}
+\label{definition-representable-morphism}
+A morphism $f : x \to y$ of a category $\mathcal{C}$ is said to be
+{\it representable} if for every morphism $z \to y$
+in $\mathcal{C}$ the fibre product $x \times_y z$ exists.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-composition-representable}
+Let $\mathcal{C}$ be a category.
+Let $f : x \to y$, and $g : y \to z$ be representable.
+Then $g \circ f : x \to z$ is representable.
+\end{lemma}
+
+\begin{proof}
+Let $t \in \Ob(\mathcal C)$ and $ \varphi \in \Mor_{\mathcal C}(t,z) $.
+As $g$ and $f$ are representable, we obtain commutative diagrams
+$$
+\xymatrix{
+y \times_z t \ar[r]_q \ar[d]_p &
+t \ar[d]^{\varphi} \\
+y \ar[r]^{g} & z
+}
+\quad\quad
+\xymatrix{
+x \times_y (y\! \times_z\! t) \ar[r]_{q'} \ar[d]_{p'} &
+y \times_z t \ar[d]^p \\
+x \ar[r]^f & y
+}
+$$
+with the universal property of Definition \ref{definition-fibre-products}.
+We claim that $x \times_z t = x \times_y (y \times_z t)$
+with morphisms $q \circ q' : x \times_z t \to t$ and $p' : x \times_z t \to x$
+is a fibre product. First, it follows from the commutativity of the
+diagrams above that $\varphi \circ q \circ q' = g \circ f \circ p'$.
+To verify the universal property, let
+$w \in \Ob(\mathcal C)$ and suppose $\alpha : w \to x$ and
+$\beta : w \to t$ are morphisms with
+$\varphi \circ \beta = g \circ f \circ \alpha$.
+By definition of the fibre product, there
+are unique morphisms $\delta$ and $\gamma$ such that
+$$
+\xymatrix{
+w \ar[rrrd]^\beta \ar@{-->}[rrd]_\delta \ar[rrdd]_{f\circ\alpha} & & \\
+& & y \times_z t \ar[d]_p \ar[r]_q & t \ar[d]^{\varphi} \\
+& & y \ar[r]^{g} & z
+}
+$$
+and
+$$
+\xymatrix{
+w \ar[rrrd]^\delta \ar@{-->}[rrd]_\gamma \ar[rrdd]_{\alpha} & & \\
+& & x \times_y (y\!\times_z\! t) \ar[d]_{p'} \ar[r]_{q'} &
+y \times_z t \ar[d]^{p} \\
+& & x \ar[r]^{f} & y
+}
+$$
+commute. Then, $\gamma$ makes the diagram
+$$
+\xymatrix{
+w \ar[rrrd]^\beta \ar@{-->}[rrd]_\gamma \ar[rrdd]_{\alpha} & & \\
+& & x \times_z t \ar[d]_{p'} \ar[r]_{q\circ q'} & t \ar[d]^{\varphi} \\
+& & x \ar[r]^{g\circ f} & z
+}
+$$
+commute. To show its uniqueness, let $\gamma'$ verify $ q\circ q'\circ\gamma' =
+\beta $ and $ p'\circ \gamma' = \alpha $. Because $\gamma$ is unique, we just
+need to prove that $ q'\circ\gamma' = \delta $ and $ p'\circ\gamma' = \alpha $
+to conclude. We supposed the second equality. For the first one, we also need
+to use the uniqueness of delta. Notice that $\delta$ is the only morphism
+verifying $ q\circ\delta = \beta $ and $ p\circ\delta = f\circ\alpha $. We
+already supposed that $ q\circ (q'\circ\gamma') = \beta $. Furthermore, by
+definition of the fibre product, we know that $ f\circ p' = p\circ q' $.
+Therefore:
+$$
+p\circ (q'\circ\gamma') =
+(p\circ q')\circ\gamma' =
+(f\circ p')\circ\gamma' =
+f\circ (p'\circ\gamma') = f\circ\alpha.
+$$
+Then $ q'\circ\gamma' = \delta $, which concludes the proof.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-base-change-representable}
+Let $\mathcal{C}$ be a category.
+Let $f : x \to y$ be representable.
+Let $y' \to y$ be a morphism of $\mathcal{C}$.
+Then the morphism $x' := x \times_y y' \to y'$ is representable also.
+\end{lemma}
+
+\begin{proof}
+Let $z \to y'$ be a morphism. The fibre product
+$x' \times_{y'} z$ is supposed to represent the
+functor
+\begin{eqnarray*}
+w & \mapsto & h_{x'}(w)\times_{h_{y'}(w)} h_z(w) \\
+& = & (h_x(w) \times_{h_y(w)} h_{y'}(w)) \times_{h_{y'}(w)} h_z(w) \\
+& = & h_x(w) \times_{h_y(w)} h_z(w)
+\end{eqnarray*}
+which is representable by assumption.
+\end{proof}

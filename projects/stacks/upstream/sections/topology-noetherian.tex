@@ -1,0 +1,145 @@
+\section{Noetherian topological spaces}
+\label{section-noetherian}
+
+\begin{definition}
+\label{definition-noetherian}
+A topological space is called {\it Noetherian}
+if the descending chain condition holds for
+closed subsets of $X$. A topological space is called
+{\it locally Noetherian} if every point has a neighbourhood
+which is Noetherian.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-Noetherian}
+Let $X$ be a Noetherian topological space.
+\begin{enumerate}
+\item Any subset of $X$ with the induced topology is Noetherian.
+\item The space $X$ has finitely many irreducible components.
+\item Each irreducible component of $X$ contains a nonempty open of $X$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let $T \subset X$ be a subset of $X$.
+Let $T_1 \supset T_2 \supset \ldots$
+be a descending chain of closed subsets of $T$.
+Write $T_i =  T \cap Z_i$ with $Z_i \subset X$ closed.
+Consider the descending chain of closed subsets
+$Z_1 \supset Z_1\cap Z_2 \supset Z_1 \cap Z_2 \cap Z_3 \ldots$
+This stabilizes by assumption and hence the original sequence
+of $T_i$ stabilizes. Thus $T$ is Noetherian.
+
+\medskip\noindent
+Let $A$ be the set of closed subsets of $X$ which do not
+have finitely many irreducible components. Assume that
+$A$ is not empty to arrive at a contradiction.
+The set $A$ is partially ordered by inclusion: $\alpha \leq \alpha'
+\Leftrightarrow Z_{\alpha} \subset Z_{\alpha'}$.
+By the descending chain condition we may find a
+smallest element of $A$, say $Z$. As $Z$ is not a finite
+union of irreducible components, it is not irreducible.
+Hence we can write $Z = Z' \cup Z''$ and both are strictly smaller
+closed subsets. By construction $Z' = \bigcup Z'_i$ and
+$Z'' = \bigcup Z''_j$ are finite unions of their irreducible
+components (Lemma \ref{lemma-irreducible}).
+Hence $Z = \bigcup Z'_i \cup \bigcup Z''_j$ is
+a finite union of irreducible closed subsets.
+After removing redundant members of this expression,
+this will be the decomposition of $Z$ into its irreducible
+components (Lemma \ref{lemma-pick-irreducible-components}), a contradiction.
+
+\medskip\noindent
+Let $Z \subset X$ be an irreducible component of $X$.
+Let $Z_1, \ldots, Z_n$ be the other irreducible components
+of $X$. Consider $U = Z \setminus (Z_1\cup\ldots\cup Z_n)$.
+This is not empty since otherwise the irreducible space
+$Z$ would be contained in one of the other $Z_i$.
+Because $X = Z \cup Z_1 \cup \ldots Z_n$ (see Lemma \ref{lemma-irreducible}),
+also $U = X \setminus (Z_1\cup\ldots\cup Z_n)$
+and hence open in $X$. Thus $Z$ contains a nonempty
+open of $X$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-image-Noetherian}
+Let $f : X \to Y$ be a continuous map of topological spaces.
+\begin{enumerate}
+\item If $X$ is Noetherian, then $f(X)$ is Noetherian.
+\item If $X$ is locally Noetherian and $f$ open, then $f(X)$ is
+locally Noetherian.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+In case (1), suppose that $Z_1 \supset Z_2 \supset Z_3 \supset \ldots$
+is a descending chain of closed subsets of $f(X)$ (as usual with the induced
+topology as a subset of $Y$). Then
+$f^{-1}(Z_1) \supset f^{-1}(Z_2) \supset f^{-1}(Z_3) \supset \ldots$ is
+a descending chain of closed subsets of $X$. Hence this chain stabilizes.
+Since $f(f^{-1}(Z_i)) = Z_i$ we conclude that
+$Z_1 \supset Z_2 \supset Z_3 \supset \ldots$
+stabilizes also. In case (2), let $y \in f(X)$. Choose $x \in X$ with
+$f(x) = y$. By assumption there exists a neighbourhood $E \subset X$ of
+$x$ which is Noetherian. Then $f(E) \subset f(X)$ is a neighbourhood
+which is Noetherian by part (1).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-finite-union-Noetherian}
+Let $X$ be a topological space.
+Let $X_i \subset X$, $i = 1, \ldots, n$ be a finite collection of subsets.
+If each $X_i$ is Noetherian (with the induced topology), then
+$\bigcup_{i = 1, \ldots, n}  X_i$ is Noetherian (with the induced topology).
+\end{lemma}
+
+\begin{proof}
+Let $\{F_m\}_{m \in \mathbf{N}}$ a decreasing sequence of closed subsets
+of $X' = \bigcup_{i = 1, \ldots, n}  X_i$ with the induced topology.
+Then we can find a decreasing sequence $\{G_m\}_{m \in \mathbf{N}}$
+of closed subsets of $X$ verifying $F_m = G_m \cap X'$ for all $m$
+(small detail omitted). As $X_i$ is noetherian and
+$\{G_m \cap X_i\}_{m \in \mathbf{N}}$ a decreasing sequence
+of closed subsets of $X_i$, there exists $m_i \in \mathbf{N}$
+such that for all $m \geq m_i$ we have $G_m \cap X_i = G_{m_i} \cap X_i$.
+Let $m_0 = \max_{i = 1, \ldots, n} m_i$. Then clearly
+$$
+F_m = G_m \cap X' = G_m \cap (X_1 \cup \ldots \cup X_n) =
+(G_m \cap X_1) \cup \ldots (G_m \cap X_n)
+$$
+stabilizes for $m \geq m_0$ and the proof is complete.
+\end{proof}
+
+\begin{example}
+\label{example-locally-Noetherian-no-closed-point}
+Any nonempty, Kolmogorov Noetherian topological space has a closed point
+(combine Lemmas \ref{lemma-quasi-compact-closed-point} and
+\ref{lemma-Noetherian-quasi-compact}).
+Let $X = \{1, 2, 3, \ldots \}$. Define a topology on $X$
+with opens $\emptyset$, $\{1, 2, \ldots, n\}$, $n \geq 1$
+and $X$. Thus $X$ is a locally Noetherian topological space,
+without any closed points. This space cannot be the underlying
+topological space of a locally Noetherian scheme, see
+Properties, Lemma \ref{properties-lemma-locally-Noetherian-closed-point}.
+\end{example}
+
+\begin{lemma}
+\label{lemma-locally-Noetherian-locally-connected}
+Let $X$ be a locally Noetherian topological space.
+Then $X$ is locally connected.
+\end{lemma}
+
+\begin{proof}
+Let $x \in X$. Let $E$ be a neighbourhood of $x$.
+We have to find a connected neighbourhood of $x$ contained
+in $E$. By assumption there exists a neighbourhood $E'$ of $x$
+which is Noetherian. Then $E \cap E'$ is Noetherian, see
+Lemma \ref{lemma-Noetherian}.
+Let $E \cap E' = Y_1 \cup \ldots \cup Y_n$ be the decomposition
+into irreducible components, see
+Lemma \ref{lemma-Noetherian}.
+Let $E'' = \bigcup_{x \in Y_i} Y_i$. This is a connected
+subset of $E \cap E'$ containing $x$. It contains the open
+$E \cap E' \setminus (\bigcup_{x \not \in Y_i} Y_i)$ of $E \cap E'$
+and hence it is a neighbourhood of $x$ in $X$. This proves the lemma.
+\end{proof}

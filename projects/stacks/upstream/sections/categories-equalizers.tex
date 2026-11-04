@@ -1,0 +1,19 @@
+\section{Equalizers}
+\label{section-equalizers}
+
+\begin{definition}
+\label{definition-equalizers}
+Suppose that $X$, $Y$ are objects of a category $\mathcal{C}$
+and that $a, b : X \to Y$ are morphisms. We say a morphism
+$e : Z \to X$ is an {\it equalizer} for the pair $(a, b)$ if
+$a \circ e = b \circ e$ and if $(Z, e)$ satisfies the following
+universal property: For every morphism $t : W \to X$
+in $\mathcal{C}$ such that $a \circ t = b \circ t$ there exists
+a unique morphism $s : W \to Z$ such that $t = e \circ s$.
+\end{definition}
+
+\noindent
+As in the case of the fibre products above, equalizers when
+they exist are unique up to unique isomorphism. There is a
+straightforward generalization of this definition to the
+case where we have more than $2$ morphisms.

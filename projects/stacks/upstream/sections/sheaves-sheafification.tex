@@ -1,0 +1,204 @@
+\section{Sheafification}
+\label{section-sheafification}
+
+\noindent
+In this section we explain how to get the sheafification
+of a presheaf on a topological space. We will use stalks
+to describe the sheafification in this case. This is different
+from the general procedure described in Sites, Section
+\ref{sites-section-sheafification}, and perhaps somewhat
+easier to understand.
+
+\medskip\noindent
+The basic construction is the following. Let $\mathcal{F}$ be a presheaf
+of sets on a topological space $X$.
+For every open $U \subset X$ we define
+$$
+\mathcal{F}^{\#}(U)
+=
+\{
+(s_u) \in \prod\nolimits_{u \in U} \mathcal{F}_u
+\text{ such that }(*)
+\}
+$$
+where $(*)$ is the property:
+\begin{itemize}
+\item[(*)] For every $u \in U$, there exists an open neighbourhood
+$u \in V \subset U$, and a section $\sigma \in \mathcal{F}(V)$
+such that for all $v \in V$ we have $s_v = (V, \sigma)$
+in $\mathcal{F}_v$.
+\end{itemize}
+Note that $(*)$ is a condition for each $u \in U$,
+and that given $u \in U$ the truth of this condition
+depends only on the values $s_v$ for $v$ in any open neighbourhood
+of $u$. Thus it is clear that,
+if $V \subset U \subset X$ are open, the projection maps
+$$
+\prod\nolimits_{u \in U} \mathcal{F}_u
+\longrightarrow
+\prod\nolimits_{v \in V} \mathcal{F}_v
+$$
+maps elements of $\mathcal{F}^{\#}(U)$ into $\mathcal{F}^{\#}(V)$.
+Using these maps as the restriction mappings, we turn $\mathcal{F}^\#$
+into a presheaf of sets on $X$.
+
+\medskip\noindent
+Furthermore, the map $\mathcal{F}(U) \to \prod_{u \in U} \mathcal{F}_u$
+described in Section \ref{section-stalks} clearly has image
+in $\mathcal{F}^{\#}(U)$. In addition, if $V \subset U \subset X$ are
+open then we have the following commutative diagram
+$$
+\xymatrix{
+\mathcal{F}(U) \ar[r] \ar[d] &
+\mathcal{F}^{\#}(U) \ar[r] \ar[d] &
+\prod_{u\in U} \mathcal{F}_u \ar[d] \\
+\mathcal{F}(V) \ar[r] &
+\mathcal{F}^{\#}(V) \ar[r] &
+\prod_{v\in V} \mathcal{F}_v
+}
+$$
+where the vertical maps are induced from the
+restriction mappings. Thus we see that
+there is a canonical morphism of presheaves
+$\mathcal{F} \to \mathcal{F}^{\#}$.
+
+\medskip\noindent
+In Example \ref{example-sheaf-product-pointwise} we saw
+that the rule $\Pi(\mathcal{F}) : U \mapsto \prod_{u\in U} \mathcal{F}_u$
+is a sheaf, with obvious restriction mappings. And by construction
+$\mathcal{F}^{\#}$ is a subpresheaf of this. In other words, we
+have morphisms of presheaves
+$$
+\mathcal{F} \to \mathcal{F}^\# \to \Pi(\mathcal{F}).
+$$
+In addition the rule that associates to $\mathcal{F}$
+the sequence above is clearly functorial in the presheaf $\mathcal{F}$.
+This notation will be
+used in the proofs of the lemmas below.
+
+\begin{lemma}
+\label{lemma-sheafification-sheaf}
+The presheaf $\mathcal{F}^{\#}$ is a sheaf.
+\end{lemma}
+
+\begin{proof}
+It is probably better for the reader to find their own explanation
+of this than to read the proof here. In fact the lemma is true
+for the same reason as why the presheaf of continuous
+function is a sheaf, see Example \ref{example-basic-continuous-maps}
+(and this analogy can be made precise using the ``espace \'etal\'e'').
+
+\medskip\noindent
+Anyway, let $U = \bigcup U_i$ be an open covering.
+Suppose that $s_i = (s_{i, u})_{u \in U_i} \in \mathcal{F}^{\#}(U_i)$
+such that $s_i$ and $s_j$ agree over $U_i \cap U_j$.
+Because $\Pi(\mathcal{F})$ is a sheaf,
+we find an element $s = (s_u)_{u\in U}$ in $\prod_{u\in U} \mathcal{F}_u$
+restricting to $s_i$ on $U_i$. We have to check property $(*)$.
+Pick $u \in U$. Then $u \in U_i$ for some $i$. Hence by $(*)$ for $s_i$,
+there exists a $V$ open, $u \in V \subset U_i$
+and a $\sigma \in \mathcal{F}(V)$
+such that $s_{i, v} = (V, \sigma)$ in $\mathcal{F}_v$
+for all $v \in V$. Since $s_{i, v} = s_v$ we get $(*)$ for $s$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-stalk-sheafification}
+Let $X$ be a topological space.
+Let $\mathcal{F}$ be a presheaf of sets on $X$.
+Let $x \in X$. Then $\mathcal{F}_x = \mathcal{F}^\#_x$.
+\end{lemma}
+
+\begin{proof}
+The map $\mathcal{F}_x \to \mathcal{F}^\#_x$
+is injective, since already the map
+$\mathcal{F}_x \to \Pi(\mathcal{F})_x$ is injective.
+Namely, there is a canonical map $\Pi(\mathcal{F})_x \to \mathcal{F}_x$
+which is a left inverse to the map $\mathcal{F}_x \to \Pi(\mathcal{F})_x$,
+see Example \ref{example-sheaf-product-pointwise-stalk}.
+To show that it is surjective, suppose that
+$\overline{s} \in \mathcal{F}^\#_x$.
+We can find an open neighbourhood $U$ of $x$ such that
+$\overline{s}$ is the equivalence class of $(U, s)$
+with $s \in \mathcal{F}^\#(U)$.
+By definition, this means there exists an open neighbourhood
+$V \subset U$ of $x$ and a section $\sigma \in \mathcal{F}(V)$
+such that $s|_V$ is the image of $\sigma$ in $\Pi(\mathcal{F})(V)$.
+Clearly the class of $(V, \sigma)$ defines an element of
+$\mathcal{F}_x$ mapping to $\overline{s}$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-sheafify-universal}
+Let $\mathcal{F}$ be a presheaf of sets on $X$.
+Any map $\mathcal{F} \to \mathcal{G}$ into a sheaf of sets
+factors uniquely as
+$\mathcal{F} \to \mathcal{F}^\# \to \mathcal{G}$.
+\end{lemma}
+
+\begin{proof}
+Clearly, there is a commutative diagram
+$$
+\xymatrix{
+\mathcal{F} \ar[r] \ar[d] &
+\mathcal{F}^\# \ar[r] \ar[d] &
+\Pi(\mathcal{F}) \ar[d] \\
+\mathcal{G} \ar[r] &
+\mathcal{G}^\# \ar[r] &
+\Pi(\mathcal{G}) \\
+}
+$$
+So it suffices to prove that $\mathcal{G} = \mathcal{G}^\#$.
+To see this it suffices to prove, for every point $x \in X$ the
+map $\mathcal{G}_x \to \mathcal{G}^\#_x$ is bijective, by
+Lemma \ref{lemma-points-exactness}. And this is
+Lemma \ref{lemma-stalk-sheafification} above.
+\end{proof}
+
+\noindent
+This lemma really says that there is an adjoint pair
+of functors: $i : \Sh(X) \to \textit{PSh}(X)$
+(inclusion) and $\# : \textit{PSh}(X) \to \Sh(X)$
+(sheafification). The formula is that
+$$
+\Mor_{\textit{PSh}(X)}(\mathcal{F}, i(\mathcal{G}))
+=
+\Mor_{\Sh(X)}(\mathcal{F}^\#, \mathcal{G})
+$$
+which says that sheafification is a left adjoint of
+the inclusion functor. See Categories, Section
+\ref{categories-section-adjoint}.
+
+\begin{example}
+\label{example-sheafify-constant}
+See Example \ref{example-stalk-constant-presheaf} for notation.
+The map $A_p \to \underline{A}$ induces a map
+$A_p^\# \to \underline{A}$. It is easy to see that this
+is an isomorphism. In words: The sheafification
+of the constant presheaf with value $A$ is the
+constant sheaf with value $A$.
+\end{example}
+
+\begin{lemma}
+\label{lemma-separated-presheaf-into-sheaf}
+Let $X$ be a topological space.
+A presheaf $\mathcal{F}$ is separated (see
+Definition \ref{definition-separated}) if and only if
+the canonical map $\mathcal{F} \to \mathcal{F}^\#$ is injective.
+\end{lemma}
+
+\begin{proof}
+This is clear from the construction of $\mathcal{F}^\#$ in this
+section.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-sheafify-epi-mono}
+Let $X$ be a topological space. The sheafification of a surjective
+(resp.\ injective) morphism of presheaves of sets is surjective
+(resp.\ injective).
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}

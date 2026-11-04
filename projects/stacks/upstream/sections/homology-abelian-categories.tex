@@ -1,0 +1,654 @@
+\section{Abelian categories}
+\label{section-abelian-categories}
+
+\noindent
+An abelian category is a category satisfying just enough axioms so the
+snake lemma holds. An axiom (that is sometimes forgotten)
+is that the canonical map $\Coim(f) \to \Im(f)$
+of Lemma \ref{lemma-coim-im-map} is always an isomorphism.
+Example \ref{example-not-abelian} shows that it is necessary.
+
+\begin{definition}
+\label{definition-abelian-category}
+A category $\mathcal{A}$ is {\it abelian} if
+it is additive, if all kernels and cokernels exist,
+and if the natural map $\Coim(f) \to \Im(f)$
+is an isomorphism for all morphisms $f$ of
+$\mathcal{A}$.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-abelian-opposite}
+Let $\mathcal{A}$ be a preadditive category.
+The additions on sets of morphisms make
+$\mathcal{A}^{opp}$ into a preadditive category.
+Furthermore, $\mathcal{A}$ is additive if and only if $\mathcal{A}^{opp}$
+is additive, and
+$\mathcal{A}$ is abelian if and only if $\mathcal{A}^{opp}$ is abelian.
+\end{lemma}
+
+\begin{proof}
+The first statement is straightforward.
+To see that $\mathcal{A}$ is additive if and only if $\mathcal{A}^{opp}$
+is additive, recall that additivity can be characterized by
+the existence of a zero object and direct sums, which are both
+preserved when passing to the opposite category.
+Finally, to see that
+$\mathcal{A}$ is abelian if and only if $\mathcal{A}^{opp}$ is abelian,
+observes that kernels, cokernels, images and coimages in
+$\mathcal{A}^{opp}$ correspond to
+cokernels, kernels, coimages and images in $\mathcal{A}$,
+respectively.
+\end{proof}
+
+\begin{definition}
+\label{definition-injective-surjective}
+Let $f : x \to y$ be a morphism in an abelian category.
+\begin{enumerate}
+\item We say $f$ is {\it injective} if $\Ker(f) = 0$.
+\item We say $f$ is {\it surjective} if $\Coker(f) = 0$.
+\end{enumerate}
+If $x \to y$ is injective, then we say that $x$ is a {\it subobject}
+of $y$ and we use the notation $x \subset y$. If $x \to y$ is
+surjective, then we say that $y$ is a {\it quotient} of $x$.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-characterize-injective}
+Let $f : x \to y$ be a morphism in an abelian category $\mathcal{A}$. Then
+\begin{enumerate}
+\item $f$ is injective if and only if $f$ is a monomorphism,
+\item $f$ is surjective if and only if $f$ is an epimorphism, and
+\item $f$ is an isomorphism if and only if $f$ is injective and surjective.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Proof of (1). Recall that $\Ker(f)$ is an object representing the
+functor sending $z$ to
+$\Ker(\Mor_\mathcal{A}(z, x) \to \Mor_\mathcal{A}(z, y))$, see
+Definition \ref{definition-kernel}.
+Thus $\Ker(f)$ is $0$ if and only if
+$\Mor_\mathcal{A}(z, x) \to \Mor_\mathcal{A}(z, y)$
+is injective for all $z$ if and only if $f$ is a monomorphism.
+The proof of (2) is similar.
+For the proof of (3) note that an isomorphism is both a monomorphism
+and epimorphism, which by (1), (2) proves $f$ is injective
+and surjective. If $f$ is both injective and surjective, then
+$x = \Coim(f)$ and $y = \Im(f)$ whence $f$ is an isomorphism.
+\end{proof}
+
+\noindent
+In an abelian category, if $x \subset y$ is a subobject,
+then we denote
+$$
+y/x = \Coker(x \to y).
+$$
+
+\begin{lemma}
+\label{lemma-colimit-abelian-category}
+Let $\mathcal{A}$ be an abelian category.
+All finite limits and finite colimits exist in $\mathcal{A}$.
+\end{lemma}
+
+\begin{proof}
+To show that finite limits exist it suffices to show
+that finite products and equalizers exist, see
+Categories, Lemma \ref{categories-lemma-finite-limits-exist}.
+Finite products exist
+by definition and the equalizer of $a, b : x \to y$ is
+the kernel of $a - b$. The argument for finite colimits
+is similar but dual to this.
+\end{proof}
+
+\begin{example}
+\label{example-fibre-product-pushouts}
+Let $\mathcal{A}$ be an abelian category.
+Pushouts and fibre products in $\mathcal{A}$ have the following
+simple descriptions:
+\begin{enumerate}
+\item If $a : x \to y$, $b : z \to y$ are morphisms in $\mathcal{A}$, then
+we have the fibre product:
+$x \times_y z = \Ker((a, -b) : x \oplus z \to y)$.
+\item If $a : y \to x$, $b : y \to z$ are morphisms in $\mathcal{A}$, then
+we have the pushout:
+$x \amalg_y z = \Coker((a, -b) : y \to x \oplus z)$.
+\end{enumerate}
+\end{example}
+
+\begin{definition}
+\label{definition-exact}
+Let $\mathcal{A}$ be an additive category. Consider a sequence of morphisms
+$$
+\ldots \to x \to y \to z \to \ldots
+\quad\text{or}\quad
+x_1 \to x_2 \to \ldots \to x_n
+$$
+in $\mathcal{A}$. We say such a sequence is a {\it complex} if the
+composition of any two consecutive (drawn) arrows is zero.
+If $\mathcal{A}$ is abelian then we say a complex of the first
+type above is {\it exact at $y$} if $\Im(x \to y) = \Ker(y \to z)$
+and we say a complex of the second kind is {\it exact at $x_i$}
+where $1 < i < n$ if
+$\Im(x_{i - 1} \to x_i) = \Ker(x_i \to x_{i + 1})$. We a
+sequence as above is {\it exact} or is an {\it exact sequence} or is an
+{\it exact complex} if it is a complex and exact at every object (in
+the first case) or exact at $x_i$ for all $1 < i < n$ (in the second case).
+There are variants of these notions for sequences of the form
+$$
+\ldots \to x_{-3} \to x_{-2} \to x_{-1}
+\quad\text{and}\quad
+x_1 \to x_2 \to x_3 \to \ldots
+$$
+A {\it short exact sequence} is an exact complex of the form
+$$
+0 \to A  \to B \to C \to 0.
+$$
+\end{definition}
+
+\noindent
+In the following lemma we assume the reader knows what it means
+for a sequence of abelian groups to be exact.
+
+\begin{lemma}
+\label{lemma-check-exactness}
+Let $\mathcal{A}$ be an abelian category.
+Let $0 \to M_1 \to M_2 \to M_3 \to 0$ be a complex of $\mathcal{A}$.
+\begin{enumerate}
+\item $M_1 \to M_2 \to M_3 \to 0$ is exact if and only if
+$$
+0 \to \Hom_\mathcal{A}(M_3, N) \to
+\Hom_\mathcal{A}(M_2, N) \to \Hom_\mathcal{A}(M_1, N)
+$$
+is an exact sequence of abelian groups for all objects $N$ of
+$\mathcal{A}$, and
+\item $0 \to M_1 \to M_2 \to M_3$ is exact if and only if
+$$
+0 \to \Hom_\mathcal{A}(N, M_1) \to \Hom_\mathcal{A}(N, M_2) \to
+\Hom_\mathcal{A}(N, M_3)
+$$
+is an exact sequence of abelian groups for all objects $N$ of $\mathcal{A}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Omitted. Hint: See
+Algebra, Lemma \ref{algebra-lemma-hom-exact}.
+\end{proof}
+
+\begin{definition}
+\label{definition-ses-split}
+Let $\mathcal{A}$ be an abelian category.
+Let $i : A \to B$ and $q : B \to C$ be morphisms
+of $\mathcal{A}$ such that
+$0 \to A \to B \to C \to 0$ is a short
+exact sequence. We say the short exact
+sequence is {\it split} if there exist
+morphisms $j : C \to B$ and $p : B \to A$ such
+that $(B, i, j, p, q)$ is the direct sum of $A$ and $C$.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-ses-split}
+Let $\mathcal{A}$ be an abelian category.
+Let $0 \to A \to B \to C \to 0$
+be a short exact sequence.
+\begin{enumerate}
+\item Given a morphism $s : C \to B$ right inverse to
+$B \to C$, there exists a unique $\pi : B \to A$
+such that $(s, \pi)$ splits the short exact sequence
+as in Definition \ref{definition-ses-split}.
+\item Given a morphism $\pi : B \to A$ left inverse to
+$A \to B$, there exists a unique $s : C \to B$
+such that $(s, \pi)$ splits the short exact sequence
+as in Definition \ref{definition-ses-split}.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Immediate corollary of Lemma \ref{lemma-split-morphism-splitting}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-characterize-cartesian}
+Let $\mathcal{A}$ be an abelian category. Let
+$$
+\xymatrix{
+w\ar[r]^f\ar[d]_g
+& y\ar[d]^h\\
+x\ar[r]^k
+& z
+}
+$$
+be a commutative diagram. 
+\begin{enumerate}
+\item The diagram is cartesian if and only if 
+$$
+0 \to w \xrightarrow{(g, f)} x \oplus y \xrightarrow{(k, -h)} z
+$$
+is exact.
+\item The diagram is cocartesian if and only if 
+$$
+w \xrightarrow{(g, -f)} x \oplus y \xrightarrow{(k, h)} z \to 0
+$$
+is exact.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let $u = (g, f) : w \to x \oplus y$ and $v = (k, -h) : x \oplus y \to z$. 
+Let $p : x \oplus y \to x$ and $q : x \oplus y \to y$ be the canonical 
+projections. Let $i : \Ker(v) \to x \oplus y$ be the canonical 
+injection. By Example \ref{example-fibre-product-pushouts}, the diagram is 
+cartesian if and only if there exists an isomorphism 
+$r : \Ker(v) \to w$ with $f \circ r = q \circ i$ and 
+$g \circ r = p \circ i$. The sequence 
+$0 \to w \overset{u} \to x \oplus y \overset{v} \to z$ is exact if and 
+only if there exists an isomorphism $r : \Ker(v) \to w$ with 
+$u \circ r = i$. But given $r : \Ker(v) \to w$, we have 
+$f \circ r = q \circ i$ and $g \circ r = p \circ i$ if and 
+only if $q \circ u \circ r= f \circ r = q \circ i$ and 
+$p \circ u \circ r = g \circ r = p \circ i$, hence if and only if
+$u \circ r = i$. This proves (1), and then (2) follows by duality. 
+\end{proof}
+
+\begin{lemma}
+\label{lemma-cartesian-kernel}
+Let $\mathcal{A}$ be an abelian category. Let
+$$
+\xymatrix{
+w\ar[r]^f\ar[d]_g
+& y\ar[d]^h\\
+x\ar[r]^k
+& z
+}
+$$
+be a commutative diagram.
+\begin{enumerate}
+\item If the diagram is cartesian, then the morphism 
+$\Ker(f)\to\Ker(k)$ induced by $g$ is an isomorphism.
+\item If the diagram is cocartesian, then the morphism 
+$\Coker(f)\to\Coker(k)$ induced by $h$ is an isomorphism.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Suppose the diagram is cartesian. Let 
+$e:\Ker(f)\to\Ker(k)$ be induced by $g$. Let 
+$i:\Ker(f)\to w$ and $j:\Ker(k)\to x$ be the canonical 
+injections. There exists $t:\Ker(k)\to w$ with $f\circ t=0$ 
+and $g\circ t=j$. Hence, there exists $u:\Ker(k)\to\Ker(f)$ 
+with $i\circ u=t$. It follows 
+$g\circ i\circ u\circ e=g\circ t\circ e=j\circ e=g\circ i$ and 
+$f\circ i\circ u\circ e=0=f\circ i$, hence $i\circ u\circ e=i$. Since 
+$i$ is a monomorphism this implies $u\circ e=\text{id}_{\Ker(f)}$.
+Furthermore, we have $j\circ e\circ u=g\circ i\circ u=g\circ t=j$. 
+Since $j$ is a monomorphism this implies $e\circ u=\text{id}_{\Ker(k)}$.
+This proves (1). Now, (2) follows by duality.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-cartesian-cocartesian}
+Let $\mathcal{A}$ be an abelian category. Let
+$$
+\xymatrix{
+w\ar[r]^f\ar[d]_g
+& y\ar[d]^h\\
+x\ar[r]^k
+& z
+}
+$$
+be a commutative diagram.
+\begin{enumerate}
+\item If the diagram is cartesian and $k$ is an epimorphism, 
+then the diagram is cocartesian and $f$ is an epimorphism.
+\item If the diagram is cocartesian and $g$ is a monomorphism, 
+then the diagram is cartesian and $h$ is a monomorphism.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Suppose the diagram is cartesian and $k$ is an epimorphism. 
+Let $u = (g, f) : w \to x \oplus y$ and let $v = (k, -h) : x \oplus y \to z$. 
+As $k$ is an epimorphism, $v$ is an epimorphism, too. Therefore 
+and by Lemma \ref{lemma-characterize-cartesian}, the sequence 
+$0\to w\overset{u}\to x\oplus y\overset{v}\to z\to 0$ is exact. Thus, the 
+diagram is cocartesian by Lemma \ref{lemma-characterize-cartesian}. Finally, 
+$f$ is an epimorphism by Lemma \ref{lemma-cartesian-kernel} and 
+Lemma \ref{lemma-characterize-injective}. This proves (1), and (2) 
+follows by duality.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-epimorphism-universal-abelian-category}
+Let $\mathcal{A}$ be an abelian category.
+\begin{enumerate}
+\item If $x \to y$ is surjective, then for every $z \to y$ the
+projection $x \times_y z \to z$ is surjective.
+\item If $x \to y$ is injective, then for every $x \to z$ the
+morphism $z \to z \amalg_x y$ is injective.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Immediately from Lemma \ref{lemma-characterize-injective} and
+Lemma \ref{lemma-cartesian-cocartesian}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-check-exactness-fibre-product}
+Let $\mathcal{A}$ be an abelian category. Let $f:x\to y$ and $g:y\to z$ 
+be morphisms with $g\circ f=0$. Then, the following statements are equivalent:
+\begin{enumerate}
+\item The sequence $x\overset{f}\to y\overset{g}\to z$ is exact.
+\item For every $h:w\to y$ with $g\circ h=0$ there exist an object $v$, 
+an epimorphism $k:v\to w$ and a morphism $l:v\to x$ with $h\circ k=f\circ l$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let $i:\Ker(g)\to y$ be the canonical injection. Let 
+$p:x\to\Coim(f)$ be the canonical projection. Let 
+$j:\Im(f)\to\Ker(g)$ be the canonical injection.
+
+\medskip\noindent
+Suppose (1) holds. Let $h:w\to y$ with $g\circ h=0$. There exists 
+$c:w\to\Ker(g)$ with $i\circ c=h$. 
+Let $v=x\times_{\Ker(g)}w$ with canonical projections 
+$k:v\to w$ and $l:v\to x$, so that $c\circ k=j\circ p\circ l$. 
+Then, $h\circ k=i\circ c\circ k=i\circ j\circ p\circ l=f\circ l$. 
+As $j\circ p$ is an epimorphism by hypothesis, $k$ is an 
+epimorphism by Lemma \ref{lemma-cartesian-cocartesian}. This implies (2).
+
+\medskip\noindent
+Suppose (2) holds. Then, $g\circ i=0$. So, there are an object 
+$w$, an epimorphism $k:w\to\Ker(g)$ and a morphism 
+$l:w\to x$ with $f\circ l=i\circ k$. It follows 
+$i\circ j\circ p\circ l=f\circ l=i\circ k$. Since $i$ is a 
+monomorphism we see that $j\circ p\circ l=k$ is an epimorphism. 
+So, $j$ is an epimorphisms and thus an isomorphism. This implies (1).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-exact-kernel-sequence}
+Let $\mathcal{A}$ be an abelian category. Let
+$$
+\xymatrix{
+x \ar[r]^f \ar[d]^\alpha &
+y \ar[r]^g \ar[d]^\beta &
+z \ar[d]^\gamma\\
+u \ar[r]^k & v \ar[r]^l & w
+}
+$$
+be a commutative diagram.
+\begin{enumerate}
+\item If the first row is exact and $k$ is a monomorphism, then the induced 
+sequence $\Ker(\alpha) \to \Ker(\beta) \to \Ker(\gamma)$ 
+is exact.
+\item If the second row is exact and $g$ is an epimorphism, then the induced 
+sequence
+$\Coker(\alpha) \to \Coker(\beta) \to \Coker(\gamma)$ 
+is exact.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Suppose the first row is exact and $k$ is a monomorphism. Let 
+$a:\Ker(\alpha)\to\Ker(\beta)$ and 
+$b:\Ker(\beta)\to\Ker(\gamma)$ be the induced morphisms. 
+Let $h:\Ker(\alpha)\to x$, $i:\Ker(\beta)\to y$ and 
+$j:\Ker(\gamma)\to z$ be the canonical injections. As $j$ is 
+a monomorphism we have $b\circ a=0$. Let $c:s\to\Ker(\beta)$ 
+with $b\circ c=0$. Then, $g\circ i\circ c=j\circ b\circ c=0$. By 
+Lemma \ref{lemma-check-exactness-fibre-product} there are an object $t$, an 
+epimorphism $d:t\to s$ and a morphism $e:t\to x$ with 
+$i\circ c\circ d=f\circ e$. Then, 
+$k\circ \alpha\circ e=\beta\circ f\circ e=\beta\circ i\circ c\circ d=0$. 
+As $k$ is a monomorphism we get $\alpha\circ e=0$. So, there exists 
+$m:t\to\Ker(\alpha)$ with $h\circ m=e$. It follows 
+$i\circ a\circ m=f\circ h\circ m=f\circ e=i\circ c\circ d$. 
+As $i$ is a monomorphism we get $a\circ m=c\circ d$. Thus, 
+Lemma \ref{lemma-check-exactness-fibre-product} implies (1), and then 
+(2) follows by duality.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-snake}
+Let $\mathcal{A}$ be an abelian category. Let
+$$
+\xymatrix{
+& x \ar[r]^f \ar[d]^\alpha &
+y \ar[r]^g \ar[d]^\beta &
+z \ar[r] \ar[d]^\gamma &
+0 \\
+0 \ar[r] & u \ar[r]^k & v \ar[r]^l & w
+}
+$$
+be a commutative diagram with exact rows.
+\begin{enumerate}
+\item There exists a unique morphism
+$\delta : \Ker(\gamma) \to \Coker(\alpha)$
+such that the diagram
+$$
+\xymatrix{
+y \ar[d]_\beta &
+y \times_z \Ker(\gamma) \ar[l]_{\pi'} \ar[r]^{\pi} &
+\Ker(\gamma) \ar[d]^\delta \\
+v \ar[r]^{\iota'} & \Coker(\alpha) \amalg_u v &
+\Coker(\alpha) \ar[l]_\iota
+}
+$$
+commutes, where $\pi$ and $\pi'$ are the canonical projections
+and $\iota$ and $\iota'$ are the canonical coprojections.
+\item The induced sequence
+$$
+\Ker(\alpha) \xrightarrow{f'} \Ker(\beta) \xrightarrow{g'}
+\Ker(\gamma) \xrightarrow{\delta} \Coker(\alpha) \xrightarrow{k'}
+\Coker(\beta) \xrightarrow{l'} \Coker(\gamma)
+$$
+is exact. If $f$ is injective then so is $f'$, and if $l$ is
+surjective then so is $l'$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+As $\pi$ is an epimorphism and $\iota$ is a monomorphism by
+Lemma \ref{lemma-cartesian-cocartesian}, uniqueness of $\delta$ is clear.
+Let $p = y \times_z \Ker(\gamma)$ and $q = \Coker(\alpha) \amalg_u v$.
+Let $h : \Ker(\beta) \to y$, $i : \Ker(\gamma) \to z$ and
+$j : \Ker(\pi) \to p$ be the canonical injections.
+Let $\pi'' : u \to \Coker(\alpha)$ be the canonical projection.
+Keeping in mind Lemma \ref{lemma-cartesian-cocartesian} we get a commutative
+diagram with exact rows
+$$
+\xymatrix{
+0 \ar[r] &
+\Ker(\pi) \ar[r]^j &
+p \ar[r]^{\pi} \ar[d]_{\pi'} &
+\Ker(\gamma) \ar[d]_i \ar[r] & 0 \\
+& x \ar[r]^f \ar[d]_\alpha & y \ar[r]^g \ar[d]_\beta &
+z \ar[d]_\gamma \ar[r] & 0 \\
+0 \ar[r] & u \ar[r]^k \ar[d]_{\pi''} &
+v \ar[r]^l \ar[d]_{\iota'} & w & \\
+0 \ar[r] & \Coker(\alpha) \ar[r]^\iota & q & &
+}
+$$
+As $l \circ \beta \circ \pi' = \gamma \circ i \circ \pi = 0$ and as the third
+row of the diagram above is exact, there is an $a : p \to u$
+with $k \circ a = \beta \circ \pi'$. As the upper right quadrangle of the
+diagram above is cartesian, Lemma \ref{lemma-cartesian-kernel} yields an
+epimorphism $b : x \to \Ker(\pi)$ with $\pi' \circ j \circ b = f$.
+It follows
+$k \circ a \circ j \circ b = \beta \circ \pi' \circ j \circ b =
+\beta \circ f = k \circ \alpha$.
+As $k$ is a monomorphism this implies $a \circ j \circ b = \alpha$. It follows
+$\pi'' \circ a \circ j \circ b = \pi'' \circ \alpha = 0$. As $b$ is an
+epimorphism this
+implies $\pi'' \circ a \circ j = 0$. Therefore, as the top row of the diagram
+above is exact, there exists
+$\delta : \Ker(\gamma) \to \Coker(\alpha)$ with
+$\delta \circ \pi = \pi'' \circ a$. It follows
+$\iota \circ \delta \circ \pi = \iota \circ \pi'' \circ a =
+\iota' \circ k \circ a = \iota' \circ \beta \circ \pi'$
+as desired.
+
+\medskip\noindent
+As the upper right quadrangle in the diagram above is cartesian there
+is a $c : \Ker(\beta) \to p$ with $\pi' \circ c = h$ and $\pi \circ c = g'$.
+It follows
+$\iota \circ \delta \circ g' = \iota \circ \delta \circ \pi \circ c =
+\iota' \circ \beta \circ \pi' \circ c = \iota' \circ \beta \circ h = 0$.
+As $\iota$ is a monomorphism this implies $\delta \circ g' = 0$.
+
+\medskip\noindent
+Next, let $d : r \to \Ker(\gamma)$ with $\delta \circ d = 0$. Applying
+Lemma \ref{lemma-check-exactness-fibre-product} to the exact sequence
+$p \xrightarrow{\pi} \Ker(\gamma) \to 0$ and $d$ yields an object $s$,
+an epimorphism $m : s \to r$ and a morphism $n : s \to p$ with
+$\pi \circ n = d \circ m$. As
+$\pi'' \circ a \circ n = \delta \circ d \circ m = 0$,
+applying Lemma \ref{lemma-check-exactness-fibre-product} to the exact sequence
+$x \xrightarrow{\alpha} u \xrightarrow{p} \Coker(\alpha)$ and
+$a \circ n$ yields an object $t$, an epimorphism $\varepsilon : t \to s$ and
+a morphism $\zeta : t \to x$ with
+$a \circ n \circ \varepsilon = \alpha \circ \zeta$.
+It holds
+$\beta \circ \pi' \circ n \circ \varepsilon =
+k \circ \alpha \circ \zeta = \beta \circ f \circ \zeta$.
+Let $\eta = \pi' \circ n \circ \varepsilon - f \circ \zeta : t \to y$. Then,
+$\beta \circ \eta = 0$. It follows that there is a
+$\vartheta : t \to \Ker(\beta)$ with $\eta = h \circ \vartheta$. It holds
+$i \circ g' \circ \vartheta = g \circ h \circ \vartheta =
+g \circ \pi' \circ n \circ \varepsilon - g \circ f \circ \zeta =
+i \circ \pi \circ n \circ \varepsilon = i \circ d \circ m \circ \varepsilon$.
+As $i$ is a monomorphism we get
+$g' \circ \vartheta = d \circ m \circ \varepsilon$.
+Thus, as $m \circ \varepsilon$ is an epimorphism,
+Lemma \ref{lemma-check-exactness-fibre-product} implies that
+$\Ker(\beta) \xrightarrow{g'} \Ker(\gamma) \xrightarrow{\delta} \Coker(\alpha)$
+is exact. Then, the claim follows by Lemma \ref{lemma-exact-kernel-sequence}
+and duality.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-snake-natural}
+Let $\mathcal{A}$ be an abelian category. Let 
+$$
+\xymatrix{
+& & & x\ar[ld]\ar[rr]\ar[dd]^(.4)\alpha
+& & y\ar[ld]\ar[rr]\ar[dd]^(.4)\beta
+& & z\ar[ld]\ar[rr]\ar[dd]^(.4)\gamma
+& & 0\\
+& & x'\ar[rr]\ar[dd]^(.4){\alpha'}
+& & y'\ar[rr]\ar[dd]^(.4){\beta'}
+& & z'\ar[rr]\ar[dd]^(.4){\gamma'}
+& & 0
+& \\
+& 0\ar[rr]
+& & u\ar[ld]\ar[rr]
+& & v\ar[ld]\ar[rr]
+& & w\ar[ld]
+& & \\
+0\ar[rr]
+& & u'\ar[rr]
+& & v'\ar[rr]
+& & w'
+& & &
+}
+$$
+be a commutative diagram with exact rows. Then, the induced diagram
+$$
+\xymatrix@C=15pt{
+\Ker(\alpha) \ar[r] \ar[d] &
+\Ker(\beta) \ar[r] \ar[d] &
+\Ker(\gamma) \ar[r]^(.45){\delta} \ar[d] &
+\Coker(\alpha) \ar[r] \ar[d] &
+\Coker(\beta) \ar[r] \ar[d] &
+\Coker(\gamma) \ar[d] \\
+\Ker(\alpha') \ar[r] &
+\Ker(\beta') \ar[r] &
+\Ker(\gamma') \ar[r]^(.45){\delta'} &
+\Coker(\alpha') \ar[r] &
+\Coker(\beta') \ar[r] &
+\Coker(\gamma')
+}
+$$
+commutes.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-four-lemma}
+Let $\mathcal{A}$ be an abelian category. Let
+$$
+\xymatrix{
+w \ar[r] \ar[d]^\alpha & x \ar[r] \ar[d]^\beta & y \ar[r] \ar[d]^\gamma &
+z \ar[d]^\delta \\
+w' \ar[r] & x' \ar[r] & y' \ar[r] & z'
+}
+$$
+be a commutative diagram with exact rows.
+\begin{enumerate}
+\item If $\alpha, \gamma$ are surjective and $\delta$ is injective, then
+$\beta$ is surjective.
+\item If $\beta, \delta$ are injective and $\alpha$ is surjective, then
+$\gamma$ is injective.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Assume $\alpha, \gamma$ are surjective and $\delta$ is injective.
+We may replace $w'$ by $\Im(w' \to x')$, i.e., we may assume
+that $w' \to x'$ is injective.
+We may replace $z$ by $\Im(y \to z)$, i.e., we may assume that
+$y \to z$ is surjective. Then we may apply
+Lemma \ref{lemma-snake}
+to
+$$
+\xymatrix{
+& \Ker(y \to z) \ar[r] \ar[d] & y \ar[r] \ar[d] & z \ar[r] \ar[d] & 0 \\
+0 \ar[r] & \Ker(y' \to z') \ar[r] & y' \ar[r] & z'
+}
+$$
+to conclude that $\Ker(y \to z) \to \Ker(y' \to z')$ is
+surjective. Finally, we apply
+Lemma \ref{lemma-snake}
+to
+$$
+\xymatrix{
+& w \ar[r] \ar[d] & x \ar[r] \ar[d] & \Ker(y \to z) \ar[r] \ar[d] & 0 \\
+0 \ar[r] & w' \ar[r] & x' \ar[r] & \Ker(y' \to z')
+}
+$$
+to conclude that $x \to x'$ is surjective. This proves (1). The proof
+of (2) is dual to this.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-five-lemma}
+\begin{reference}
+\cite[Lemma 4.5 page 16]{Eilenberg-Steenrod}
+\end{reference}
+Let $\mathcal{A}$ be an abelian category. Let
+$$
+\xymatrix{
+v \ar[r] \ar[d]^\alpha &
+w \ar[r] \ar[d]^\beta &
+x \ar[r] \ar[d]^\gamma &
+y \ar[r] \ar[d]^\delta &
+z \ar[d]^\epsilon \\
+v' \ar[r] & w' \ar[r] & x' \ar[r] & y' \ar[r] & z'
+}
+$$
+be a commutative diagram with exact rows. If $\beta, \delta$
+are isomorphisms, $\epsilon$ is injective, and $\alpha$ is surjective
+then $\gamma$ is an isomorphism.
+\end{lemma}
+
+\begin{proof}
+Immediate consequence of
+Lemma \ref{lemma-four-lemma}.
+\end{proof}

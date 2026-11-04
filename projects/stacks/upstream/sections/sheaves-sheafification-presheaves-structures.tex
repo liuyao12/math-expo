@@ -1,0 +1,42 @@
+\section{Sheafification of presheaves of algebraic structures}
+\label{section-sheafification-presheaves-structures}
+
+
+\begin{lemma}
+\label{lemma-sheafify-presheaf-structures}
+Let $X$ be a topological space.
+Let $(\mathcal{C}, F)$ be a type of algebraic structure.
+Let $\mathcal{F}$ be a presheaf with values in $\mathcal{C}$
+on $X$. Then there exists a sheaf $\mathcal{F}^\#$ with values
+in $\mathcal{C}$ and a morphism $\mathcal{F} \to \mathcal{F}^\#$
+of presheaves with values in $\mathcal{C}$ with the
+following properties:
+\begin{enumerate}
+\item The map $\mathcal{F} \to \mathcal{F}^\#$ identifies
+the underlying sheaf of sets of $\mathcal{F}^\#$ with
+the sheafification of the underlying presheaf of sets of $\mathcal{F}$.
+\item For any morphism $\mathcal{F} \to \mathcal{G}$, where
+$\mathcal{G}$ is a sheaf with values in $\mathcal{C}$ there exists
+a unique factorization $\mathcal{F} \to \mathcal{F}^\# \to \mathcal{G}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+The proof is the same as the proof of
+Lemma \ref{lemma-sheafify-abelian-presheaf},
+with repeated application of
+Lemma \ref{lemma-image-contained-in} (see also
+Example \ref{example-application-lemma-image-contained-in}).
+The main idea however, is to define $\mathcal{F}^\#(U)$
+as the fibre product in $\mathcal{C}$ of the diagram
+$$
+\xymatrix{
+ &
+\Pi(\mathcal{F})(U) \ar[d] \\
+\prod_{x \in U} \mathcal{F}_x
+\ar[r] &
+\prod_{x \in U} \Pi(\mathcal{F})_x
+}
+$$
+compare Lemma \ref{lemma-diagram-fibre-product}.
+\end{proof}

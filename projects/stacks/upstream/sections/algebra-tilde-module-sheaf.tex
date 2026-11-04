@@ -1,0 +1,240 @@
+\section{Glueing functions}
+\label{section-tilde-module-sheaf}
+
+\noindent
+In this section we show that given an open covering
+$$
+\Spec(R) = \bigcup\nolimits_{i = 1}^n D(f_i)
+$$
+by standard opens, and given an element $h_i \in R_{f_i}$
+for each $i$ such that $h_i = h_j$ as elements of $R_{f_i f_j}$
+then there exists a unique $h \in R$ such that the image of
+$h$ in $R_{f_i}$ is $h_i$. This result can be interpreted
+in two ways:
+\begin{enumerate}
+\item The rule $D(f) \mapsto R_f$ is a sheaf of rings
+on the standard opens, see Sheaves, Section \ref{sheaves-section-bases}.
+\item If we think of elements of $R_f$ as the ``algebraic''
+or ``regular'' functions on $D(f)$, then these glue
+as would continuous, resp.\ differentiable functions
+on a topological, resp.\ differentiable manifold.
+\end{enumerate}
+
+\begin{lemma}
+\label{lemma-cover-module}
+Let $R$ be a ring. Let $f_1, \ldots, f_n$ be elements of $R$
+generating the unit ideal. Let $M$ be an $R$-module.
+The sequence
+$$
+0 \to
+M \xrightarrow{\alpha}
+\bigoplus\nolimits_{i = 1}^n M_{f_i} \xrightarrow{\beta}
+\bigoplus\nolimits_{i, j = 1}^n M_{f_i f_j}
+$$
+is exact, where $\alpha(m) = (m/1, \ldots, m/1)$
+and $\beta(m_1/f_1^{e_1}, \ldots, m_n/f_n^{e_n})
+= (m_i/f_i^{e_i} - m_j/f_j^{e_j})_{(i, j)}$.
+\end{lemma}
+
+\begin{proof}
+It suffices to show that the localization of the sequence at
+any maximal ideal $\mathfrak m$ is exact, see
+Lemma \ref{lemma-characterize-zero-local}.
+Since $f_1, \ldots, f_n$ generate the unit ideal,
+there is an $i$ such that $f_i \not \in \mathfrak m$.
+After renumbering we may assume $i = 1$.
+Note that $(M_{f_i})_\mathfrak m = (M_\mathfrak m)_{f_i}$
+and $(M_{f_if_j})_\mathfrak m = (M_\mathfrak m)_{f_if_j}$, see
+Proposition \ref{proposition-localize-twice-module}.
+In particular $(M_{f_1})_\mathfrak m = M_\mathfrak m$ and
+$(M_{f_1 f_i})_\mathfrak m = (M_\mathfrak m)_{f_i}$, because
+$f_1$ is a unit.
+Note that the maps in the sequence are the canonical ones
+coming from
+Lemma \ref{lemma-universal-property-localization-module}
+and the identity map on $M$.
+Having said all of this, after replacing $R$ by $R_\mathfrak m$,
+$M$ by $M_\mathfrak m$, and $f_i$ by their image in $R_\mathfrak m$,
+and $f_1$ by $1 \in R_\mathfrak m$,
+we reduce to the case where $f_1 = 1$.
+
+\medskip\noindent
+Assume $f_1 = 1$. Injectivity of $\alpha$ is now trivial. Let
+$m = (m_i) \in \bigoplus_{i = 1}^n M_{f_i}$ be in the kernel of $\beta$.
+Then $m_1 \in M_{f_1} = M$. Moreover, $\beta(m) = 0$
+implies that $m_1$ and $m_i$ map to the same element of
+$M_{f_1f_i} = M_{f_i}$. Thus $\alpha(m_1) = m$ and the
+proof is complete.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-standard-covering}
+Let $R$ be a ring, and let $f_1, f_2, \ldots f_n\in R$ generate
+the unit ideal in $R$.
+Then the following sequence is exact:
+$$
+0 \longrightarrow
+R \longrightarrow
+\bigoplus\nolimits_i R_{f_i} \longrightarrow
+\bigoplus\nolimits_{i, j}R_{f_if_j}
+$$
+where the maps $\alpha : R \longrightarrow \bigoplus_i R_{f_i}$
+and $\beta : \bigoplus_i R_{f_i} \longrightarrow \bigoplus_{i, j} R_{f_if_j}$
+are defined as
+$$
+\alpha(x) = \left(\frac{x}{1}, \ldots, \frac{x}{1}\right)
+\text{ and }
+\beta\left(\frac{x_1}{f_1^{r_1}}, \ldots, \frac{x_n}{f_n^{r_n}}\right)
+=
+\left(\frac{x_i}{f_i^{r_i}}-\frac{x_j}{f_j^{r_j}}~\text{in}~R_{f_if_j}\right).
+$$
+\end{lemma}
+
+\begin{proof}
+Special case of Lemma \ref{lemma-cover-module}.
+\end{proof}
+
+\noindent
+The following we have already seen above, but we state it explicitly here
+for convenience.
+
+\begin{lemma}
+\label{lemma-disjoint-implies-product}
+Let $R$ be a ring.
+If $\Spec(R) = U \amalg V$ with both $U$ and $V$ open
+then $R \cong R_1 \times R_2$ with $U \cong \Spec(R_1)$
+and $V \cong \Spec(R_2)$ via the maps in Lemma \ref{lemma-spec-product}.
+Moreover, both $R_1$ and $R_2$ are localizations as well as quotients
+of the ring $R$.
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-disjoint-decomposition} we have
+$U = D(e)$ and $V = D(1-e)$ for some idempotent $e$.
+By Lemma \ref{lemma-standard-covering} we see that
+$R \cong R_e \times R_{1 - e}$ (since clearly $R_{e(1-e)} = 0$
+so the glueing condition is trivial; of course it is
+trivial to prove the product decomposition directly in this
+case). The lemma follows.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-when-injective-covering}
+Let $R$ be a ring.
+Let $f_1, \ldots, f_n \in R$.
+Let $M$ be an $R$-module.
+Then $M \to \bigoplus M_{f_i}$ is injective if and only if
+$$
+M \longrightarrow \bigoplus\nolimits_{i = 1, \ldots, n} M, \quad
+m \longmapsto (f_1m, \ldots, f_nm)
+$$
+is injective.
+\end{lemma}
+
+\begin{proof}
+The map $M \to \bigoplus M_{f_i}$ is injective if and only if
+for all $m \in M$ and $e_1, \ldots, e_n \geq 1$ such that
+$f_i^{e_i}m = 0$, $i = 1, \ldots, n$ we have $m = 0$.
+This clearly implies the displayed map is injective.
+Conversely, suppose the displayed map is injective and
+$m \in M$ and $e_1, \ldots, e_n \geq 1$ are such that
+$f_i^{e_i}m = 0$, $i = 1, \ldots, n$. If $e_i = 1$ for all $i$,
+then we immediately conclude that $m = 0$ from the injectivity of
+the displayed map. Next, we prove this holds for any such data
+by induction on $e = \sum e_i$. The base case is $e = n$, and we have
+just dealt with this. If some $e_i > 1$, then set $m' = f_im$.
+By induction we see that $m' = 0$. Hence we see that $f_i m = 0$,
+i.e., we may take $e_i = 1$ which decreases $e$ and we win.
+\end{proof}
+
+\noindent
+The following lemma is better stated and proved in the more general
+context of flat descent. However, it makes sense to state it here
+since it fits well with the above.
+
+\begin{lemma}
+\label{lemma-glue-modules}
+Let $R$ be a ring. Let $f_1, \ldots, f_n \in R$. Suppose we are given
+the following data:
+\begin{enumerate}
+\item For each $i$ an $R_{f_i}$-module $M_i$.
+\item For each pair $i, j$ an $R_{f_if_j}$-module isomorphism
+$\psi_{ij} : (M_i)_{f_j} \to (M_j)_{f_i}$.
+\end{enumerate}
+which satisfy the ``cocycle condition'' that all the diagrams
+$$
+\xymatrix{
+(M_i)_{f_jf_k}
+\ar[rd]_{\psi_{ij}}
+\ar[rr]^{\psi_{ik}}
+& &
+(M_k)_{f_if_j} \\
+&
+(M_j)_{f_if_k} \ar[ru]_{\psi_{jk}}
+}
+$$
+commute (for all triples $i, j, k$). Given this data define
+$$
+M = \Ker\left(
+\bigoplus\nolimits_{1 \leq i \leq n} M_i
+\longrightarrow
+\bigoplus\nolimits_{1 \leq i, j \leq n} (M_i)_{f_j}
+\right)
+$$
+where $(m_1, \ldots, m_n)$ maps to the element whose
+$(i, j)$th entry is $m_i/1 - \psi_{ji}(m_j/1)$.
+Then the natural map $M \to M_i$ induces an isomorphism
+$M_{f_i} \to M_i$. Moreover $\psi_{ij}(m/1) = m/1$
+for all $m \in M$ (with obvious notation).
+\end{lemma}
+
+\begin{proof}
+To show that $M_{f_1} \to M_1$ is an isomorphism, it suffices
+to show that its localization at every prime $\mathfrak p'$
+of $R_{f_1}$ is an isomorphism, see
+Lemma \ref{lemma-characterize-zero-local}.
+Write $\mathfrak p' = \mathfrak p R_{f_1}$
+for some prime $\mathfrak p \subset R$, $f_1 \not \in \mathfrak p$, see
+Lemma \ref{lemma-standard-open}.
+Since localization is exact
+(Proposition \ref{proposition-localization-exact}),
+we see that
+\begin{align*}
+(M_{f_1})_{\mathfrak p'} & =
+M_\mathfrak p \\
+& =
+\Ker\left(
+\bigoplus\nolimits_{1 \leq i \leq n} M_{i, \mathfrak p}
+\longrightarrow
+\bigoplus\nolimits_{1 \leq i, j \leq n} ((M_i)_{f_j})_\mathfrak p
+\right) \\
+& =
+\Ker\left(
+\bigoplus\nolimits_{1 \leq i \leq n} M_{i, \mathfrak p}
+\longrightarrow
+\bigoplus\nolimits_{1 \leq i, j \leq n} (M_{i, \mathfrak p})_{f_j}
+\right)
+\end{align*}
+Here we also used Proposition \ref{proposition-localize-twice-module}.
+Since $f_1$ is a unit in $R_\mathfrak p$, this reduces us to the case
+where $f_1 = 1$ by replacing $R$ by $R_\mathfrak p$, $f_i$ by the
+image of $f_i$ in $R_\mathfrak p$, $M$ by $M_\mathfrak p$, and
+$f_1$ by $1$.
+
+\medskip\noindent
+Assume $f_1 = 1$. Then $\psi_{1j} : (M_1)_{f_j} \to M_j$
+is an isomorphism for $j = 2, \ldots, n$. If we use these
+isomorphisms to identify $M_j = (M_1)_{f_j}$, then we see
+that $\psi_{ij} : (M_1)_{f_if_j} \to (M_1)_{f_if_j}$ is
+the canonical identification. Thus the complex
+$$
+0 \to M_1 \to
+\bigoplus\nolimits_{1 \leq i \leq n} (M_1)_{f_i}
+\longrightarrow
+\bigoplus\nolimits_{1 \leq i, j \leq n}
+(M_1)_{f_if_j}
+$$
+is exact by Lemma \ref{lemma-cover-module}.
+Thus the first map identifies $M_1$ with $M$ in this case
+and everything is clear.
+\end{proof}

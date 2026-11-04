@@ -1,0 +1,73 @@
+\section{Schemes}
+\label{section-schemes}
+
+\begin{definition}
+\label{definition-scheme}
+\begin{history}
+In \cite{EGA1} what we call a scheme was called a ``pre-sch\'ema'' and the
+name ``sch\'ema'' was reserved for what is a separated scheme in the
+Stacks project. In the second edition \cite{EGA1-second} the terminology
+was changed to the terminology that is now standard. However, one may
+occasionally encounter the terminology ``prescheme'', for example in
+\cite{Murre-lectures}.
+\end{history}
+A {\it scheme} is a locally ringed space with the property that
+every point has an open neighbourhood which is an affine scheme.
+A {\it morphism of schemes} is a morphism of locally
+ringed spaces. The category of schemes will be denoted
+$\Sch$.
+\end{definition}
+
+\noindent
+Let $X$ be a scheme.
+We will use the following (very slight) abuse of language.
+We will say $U \subset X$ is an {\it affine open}, or an {\it open affine}
+if the open subspace $U$ is an affine scheme. We will often
+write $U = \Spec(R)$ to indicate that $U$ is isomorphic
+to $\Spec(R)$ and moreover that we will identify (temporarily)
+$U$ and $\Spec(R)$.
+
+\begin{lemma}
+\label{lemma-open-subspace-scheme}
+Let $X$ be a scheme. Let $j : U \to X$ be an open immersion
+of locally ringed spaces. Then $U$ is a scheme. In particular,
+any open subspace of $X$ is a scheme.
+\end{lemma}
+
+\begin{proof}
+Let $U \subset X$. Let $u \in U$.
+Pick an affine open neighbourhood $u \in V \subset X$.
+Because standard opens of $V$ form a basis of the topology
+on $V$ we see that there exists a $f\in \mathcal{O}_V(V)$
+such that $u \in D(f) \subset U$. And $D(f)$ is an affine scheme
+by Lemma \ref{lemma-standard-open-affine}. This proves that every point
+of $U$ has an open neighbourhood which is affine.
+\end{proof}
+
+\noindent
+Clearly the lemma (or its proof) shows that any scheme
+$X$ has a basis (see Topology, Section \ref{topology-section-bases})
+for the topology consisting of affine opens.
+
+\begin{example}
+\label{example-not-affine}
+Let $k$ be a field.
+An example of a scheme which is not affine is
+given by the open subspace
+$U = \Spec(k[x, y]) \setminus \{ (x, y)\}$
+of the affine scheme $X =\Spec(k[x, y])$.
+It is covered by two affines, namely $D(x) = \Spec(k[x, y, 1/x])$
+and $D(y) = \Spec(k[x, y, 1/y])$ whose intersection is
+$D(xy) = \Spec(k[x, y, 1/xy])$. By the sheaf property
+for $\mathcal{O}_U$ there is an exact sequence
+$$
+0 \to
+\Gamma(U, \mathcal{O}_U) \to
+k[x, y, 1/x] \times k[x, y, 1/y] \to
+k[x, y, 1/xy]
+$$
+We conclude that the map $k[x, y] \to \Gamma(U, \mathcal{O}_U)$
+(coming from the morphism $U \to X$) is an isomorphism.
+Therefore $U$ cannot be affine since if it was then by
+Lemma \ref{lemma-category-affine-schemes} we would have $U \cong X$.
+\end{example}

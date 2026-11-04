@@ -1,0 +1,258 @@
+\section{Miscellany}
+\label{section-miscellany}
+
+\noindent
+The proofs in this section should not refer to any results except
+those from the section on basic notions, Section \ref{section-rings-basic}.
+
+\begin{lemma}
+\label{lemma-product-ideals-in-prime}
+Let $R$ be a ring, $I$ and $J$ two ideals and $\mathfrak p$ a prime ideal
+containing the product $IJ$. Then $\mathfrak{p}$ contains $I$ or $J$.
+\end{lemma}
+
+\begin{proof}
+Assume the contrary and take $x \in I \setminus \mathfrak p$ and
+$y \in J \setminus \mathfrak p$. Their product is an element of
+$IJ \subset \mathfrak p$, which contradicts the assumption that
+$\mathfrak p$ was prime.
+\end{proof}
+
+\begin{lemma}[Prime avoidance]
+\label{lemma-silly}
+\begin{slogan}
+1. In an affine scheme if a finite number of points are contained in an
+open subset then they are contained in a smaller principal open subset.
+2. Affine opens are cofinal among the neighborhoods of a given finite set
+of an affine scheme
+\end{slogan}
+Let $R$ be a ring. Let $I_i \subset R$, $i = 1, \ldots, r$,
+and $J \subset R$ be ideals. Assume
+\begin{enumerate}
+\item $J \not\subset I_i$ for $i = 1, \ldots, r$, and
+\item all but two of $I_i$ are prime ideals.
+\end{enumerate}
+Then there exists an $x \in J$, $x\not\in I_i$ for all $i$.
+\end{lemma}
+
+\begin{proof}
+The result is true for $r = 1$. If $r = 2$, then let $x, y \in J$ with
+$x \not \in I_1$ and $y \not \in I_2$. We are done unless $x \in I_2$
+and $y \in I_1$. Then the element $x + y$ cannot be in $I_1$ (since that
+would mean $x + y - y \in I_1$) and it also cannot be in $I_2$.
+
+\medskip\noindent
+For $r \geq 3$, assume the result holds for $r - 1$. After renumbering
+we may assume that $I_r$ is prime. We may also assume there are no
+inclusions among the $I_i$. Pick $x \in J$, $x \not \in I_i$ for all
+$i = 1, \ldots, r - 1$. If $x \not\in I_r$ we are done. So assume
+$x \in I_r$. If $J I_1 \ldots I_{r - 1} \subset I_r$ then
+$J \subset I_r$ (by Lemma \ref{lemma-product-ideals-in-prime}) a contradiction.
+Pick $y \in J I_1 \ldots I_{r - 1}$, $y \not \in I_r$. Then $x + y$ works.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-silly-silly}
+Let $R$ be a ring. Let $x \in R$, $I \subset R$ an ideal, and
+$\mathfrak p_i$, $i = 1, \ldots, r$ be prime ideals.
+Suppose that $x + I \not \subset \mathfrak p_i$ for
+$i = 1, \ldots, r$. Then there exists a $y \in I$
+such that $x + y \not \in \mathfrak p_i$ for all $i$.
+\end{lemma}
+
+\begin{proof}
+We may assume there are no inclusions among the $\mathfrak p_i$.
+After reordering we may assume $x \not \in \mathfrak p_i$ for $i < s$
+and $x \in \mathfrak p_i$ for $i \geq s$. If $s = r + 1$ then we are done.
+If not, then we can find $y \in I$ with $y \not \in \mathfrak p_s$.
+Choose $f \in \bigcap_{i < s} \mathfrak p_i$ with $f \not \in \mathfrak p_s$.
+Then $x + fy$ is not contained in $\mathfrak p_1, \ldots, \mathfrak p_s$.
+Thus we win by induction on $s$.
+\end{proof}
+
+\begin{lemma}[Chinese remainder]
+\label{lemma-chinese-remainder}
+Let $R$ be a ring.
+\begin{enumerate}
+\item If $I_1, \ldots, I_r$ are ideals such that $I_a + I_b = R$
+when $a \not = b$, then $I_1 \cap \ldots \cap I_r =
+I_1I_2\ldots I_r$ and $R/(I_1I_2\ldots I_r)
+\cong R/I_1 \times \ldots \times R/I_r$.
+\item If $\mathfrak m_1, \ldots, \mathfrak m_r$ are pairwise distinct maximal
+ideals then $\mathfrak m_a + \mathfrak m_b = R$ for $a \not = b$ and the
+above applies.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let us first prove $I_1 \cap \ldots \cap I_r = I_1 \ldots I_r$
+as this will also imply the injectivity of the induced ring
+homomorphism $R/(I_1 \ldots I_r) \rightarrow R/I_1 \times \ldots \times R/I_r$.
+The inclusion $I_1 \cap \ldots \cap I_r \supset I_1 \ldots I_r$ is always
+fulfilled since ideals are closed under multiplication with arbitrary ring
+elements. To prove the other inclusion, we claim that the ideals
+$$
+I_1 \ldots \hat I_i \ldots I_r,\quad i = 1, \ldots, r
+$$
+generate the ring $R$. We prove this by induction on $r$. It holds when
+$r = 2$. If $r > 2$, then we see that $R$ is the sum of the ideals
+$I_1 \ldots \hat I_i \ldots I_{r - 1}$, $i = 1, \ldots, r - 1$.
+Hence $I_r$ is the sum of the ideals
+$I_1 \ldots \hat I_i \ldots I_r$, $i = 1, \ldots, r - 1$.
+Applying the same argument with the reverse ordering on the ideals
+we see that $I_1$ is the sum of the ideals
+$I_1 \ldots \hat I_i \ldots I_r$, $i = 2, \ldots, r$.
+Since $R = I_1 + I_r$ by assumption we see that $R$ is the sum of the
+ideals displayed above. Therefore we can find elements
+$a_i \in I_1 \ldots \hat I_i \ldots I_r$
+such that their sum is one. Multiplying this equation by an element
+of $I_1 \cap \ldots \cap I_r$ gives the other inclusion.
+It remains to show that the canonical map
+$R/(I_1 \ldots I_r) \rightarrow R/I_1 \times \ldots \times R/I_r$
+is surjective. For this, consider its action on the equation
+$1 = \sum_{i=1}^r a_i$ we derived above. On the one hand, a
+ring morphism sends 1 to 1 and on the other hand, the image of any
+$a_i$ is zero in $R/I_j$ for $j \neq i$. Therefore, the image of $a_i$
+in $R/I_i$ is the identity. So given any element
+$(\bar{b_1}, \ldots, \bar{b_r}) \in R/I_1 \times \ldots \times R/I_r$,
+the element $\sum_{i=1}^r a_i \cdot b_i$ is an inverse image in $R$.
+
+\medskip\noindent
+To see (2), by the very definition of being distinct maximal ideals, we have
+$\mathfrak{m}_a + \mathfrak{m}_b = R$ for $a \neq b$ and so the above applies.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-matrix-left-inverse}
+Let $R$ be a ring. Let $n \geq m$. Let $A$ be an
+$n \times m$ matrix with coefficients in $R$. Let $J \subset R$
+be the ideal generated by the $m \times m$ minors of $A$.
+\begin{enumerate}
+\item For any $f \in J$ there exists a $m \times n$ matrix $B$
+such that $BA = f 1_{m \times m}$.
+\item If $f \in R$ and $BA = f 1_{m \times m}$ for some $m \times n$ matrix
+$B$, then $f^m \in J$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+For $I \subset \{1, \ldots, n\}$ with $|I| = m$, we denote
+by $E_I$ the $m \times n$ matrix of the projection
+$$
+R^{\oplus n} = \bigoplus\nolimits_{i \in \{1, \ldots, n\}} R
+\longrightarrow \bigoplus\nolimits_{i \in I} R
+$$
+and set $A_I = E_I A$, i.e., $A_I$ is the $m \times m$ matrix
+whose rows are the rows of $A$ with indices in $I$.
+Let $B_I$ be the adjugate (transpose of
+cofactor) matrix to $A_I$, i.e., such that
+$A_I B_I = B_I A_I = \det(A_I) 1_{m \times m}$.
+The $m \times m$ minors of $A$ are the determinants $\det A_I$
+for all the $I \subset \{1, \ldots, n\}$ with $|I| = m$.
+If $f \in J$ then we can write $f = \sum c_I \det(A_I)$ for some
+$c_I \in R$. Set $B = \sum c_I B_I E_I$ to see that (1) holds.
+
+\medskip\noindent
+If $f 1_{m \times m} = BA$ then by the
+Cauchy-Binet formula (\ref{item-cauchy-binet}) we
+have $f^m = \sum b_I \det(A_I)$ where $b_I$ is the determinant
+of the $m \times m$ matrix whose columns are the columns of $B$ with
+indices in $I$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-matrix-right-inverse}
+Let $R$ be a ring. Let $n \geq m$. Let $A = (a_{ij})$ be an
+$n \times m$ matrix with coefficients in $R$, written in block form
+as
+$$
+A =
+\left(
+\begin{matrix}
+A_1 \\
+A_2
+\end{matrix}
+\right)
+$$
+where $A_1$ has size $m \times m$. Let $B$ be the adjugate (transpose of
+cofactor) matrix to $A_1$. Then
+$$
+AB = 
+\left(
+\begin{matrix}
+f 1_{m \times m} \\
+C
+\end{matrix}
+\right)
+$$
+where $f = \det(A_1)$ and $c_{ij}$ is (up to sign) the determinant of the
+$m \times m$ minor of $A$ corresponding to the rows
+$1, \ldots, \hat j, \ldots, m, i$.
+\end{lemma}
+
+\begin{proof}
+Since the adjugate has the property $A_1B = B A_1 = f$ the first block
+of the expression for $AB$ is correct. Note that
+$$
+c_{ij} = \sum\nolimits_k a_{ik}b_{kj} = \sum (-1)^{j + k}a_{ik} \det(A_1^{jk})
+$$
+where $A_1^{ij}$ means $A_1$ with the $j$th row and $k$th column removed.
+This last expression is the row expansion of the determinant of the matrix
+in the statement of the lemma.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-map-cannot-be-injective}
+\begin{slogan}
+A map of finite free modules cannot be injective if the source has
+rank bigger than the target.
+\end{slogan}
+Let $R$ be a nonzero ring. Let $n \geq 1$. Let $M$ be an $R$-module generated
+by $< n$ elements. Then any $R$-module map $f : R^{\oplus n} \to M$ has a
+nonzero kernel.
+\end{lemma}
+
+\begin{proof}
+Choose a surjection $R^{\oplus n - 1} \to M$.
+We may lift the map $f$ to a map $f' : R^{\oplus n} \to R^{\oplus n - 1}$
+(Lemma \ref{lemma-lift-map}).
+It suffices to prove $f'$ has a nonzero kernel.
+The map $f' : R^{\oplus n} \to R^{\oplus n - 1}$ is given by a
+matrix $A = (a_{ij})$. If one of the $a_{ij}$ is not nilpotent, say
+$a = a_{ij}$ is not, then we can replace $R$ by the localization $R_a$
+and we may assume $a_{ij}$ is a unit. Since if we find a nonzero kernel
+after localization then there was a nonzero kernel to start with as
+localization is exact, see Proposition \ref{proposition-localization-exact}.
+In this case we can do a base change on both $R^{\oplus n}$
+and $R^{\oplus n - 1}$ and reduce to the case where
+$$
+A =
+\left(
+\begin{matrix}
+1 & 0 & 0 & \ldots \\
+0 & a_{22} & a_{23} & \ldots \\
+0 & a_{32} & \ldots \\
+\ldots & \ldots
+\end{matrix}
+\right)
+$$
+Hence in this case we win by induction on $n$. If not then each
+$a_{ij}$ is nilpotent. Set $I = (a_{ij}) \subset R$. Note that
+$I^{m + 1} = 0$ for some $m \geq 0$. Let $m$ be the largest integer
+such that $I^m \not = 0$. Then we see that $(I^m)^{\oplus n}$ is
+contained in the kernel of the map and we win.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-rank}
+\begin{slogan}
+The rank of a finite free module is well defined.
+\end{slogan}
+Let $R$ be a nonzero ring. Let $n, m \geq 0$ be integers.
+If $R^{\oplus n}$ is isomorphic to $R^{\oplus m}$ as
+$R$-modules, then $n = m$.
+\end{lemma}
+
+\begin{proof}
+Immediate from Lemma \ref{lemma-map-cannot-be-injective}.
+\end{proof}

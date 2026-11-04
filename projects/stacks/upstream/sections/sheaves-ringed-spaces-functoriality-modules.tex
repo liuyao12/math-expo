@@ -1,0 +1,158 @@
+\section{Morphisms of ringed spaces and modules}
+\label{section-ringed-spaces-functoriality-modules}
+
+\noindent
+We have now introduced enough notation so that we are able to
+define the pullback and pushforward of modules along a morphism
+of ringed spaces.
+
+\begin{definition}
+\label{definition-pushforward}
+Let $(f, f^\sharp) : (X, \mathcal{O}_X) \to (Y, \mathcal{O}_Y)$
+be a morphism of ringed spaces.
+\begin{enumerate}
+\item Let $\mathcal{F}$ be a sheaf of $\mathcal{O}_X$-modules.
+We define the {\it pushforward} of $\mathcal{F}$ as the
+sheaf of $\mathcal{O}_Y$-modules which as a sheaf
+of abelian groups equals $f_*\mathcal{F}$ and with
+module structure given by the restriction
+via $f^\sharp : \mathcal{O}_Y \to f_*\mathcal{O}_X$
+of the module structure given
+in Lemma \ref{lemma-pushforward-module}.
+\item Let $\mathcal{G}$ be a sheaf of $\mathcal{O}_Y$-modules.
+We define the {\it pullback} $f^*\mathcal{G}$ to be the
+sheaf of $\mathcal{O}_X$-modules defined by the formula
+$$
+f^*\mathcal{G}
+=
+\mathcal{O}_X \otimes_{f^{-1}\mathcal{O}_Y} f^{-1}\mathcal{G}
+$$
+where the ring map $f^{-1}\mathcal{O}_Y \to \mathcal{O}_X$
+is the map corresponding to $f^\sharp$, and where the  module
+structure is given by Lemma \ref{lemma-pullback-module}.
+\end{enumerate}
+\end{definition}
+
+\noindent
+Thus we have defined functors
+\begin{eqnarray*}
+f_* : \textit{Mod}(\mathcal{O}_X)
+& \longrightarrow &
+\textit{Mod}(\mathcal{O}_Y) \\
+f^* : \textit{Mod}(\mathcal{O}_Y)
+& \longrightarrow &
+\textit{Mod}(\mathcal{O}_X)
+\end{eqnarray*}
+The final result on these functors is that they are indeed
+adjoint as expected.
+
+\begin{lemma}
+\label{lemma-adjoint-pullback-pushforward-modules}
+Let $(f, f^\sharp) : (X, \mathcal{O}_X) \to (Y, \mathcal{O}_Y)$
+be a morphism of ringed spaces.
+Let $\mathcal{F}$ be a sheaf of $\mathcal{O}_X$-modules.
+Let $\mathcal{G}$ be a sheaf of $\mathcal{O}_Y$-modules.
+There is a canonical bijection
+$$
+\Hom_{\mathcal{O}_X}(f^*\mathcal{G}, \mathcal{F})
+=
+\Hom_{\mathcal{O}_Y}(\mathcal{G}, f_*\mathcal{F}).
+$$
+In other words: the functor $f^*$ is the left adjoint to
+$f_*$.
+\end{lemma}
+
+\begin{proof}
+This follows from the work we did before:
+\begin{eqnarray*}
+\Hom_{\mathcal{O}_X}(f^*\mathcal{G}, \mathcal{F})
+& = &
+\Mor_{\textit{Mod}(\mathcal{O}_X)}(
+\mathcal{O}_X \otimes_{f^{-1}\mathcal{O}_Y} f^{-1}\mathcal{G}, \mathcal{F}) \\
+& = &
+\Mor_{\textit{Mod}(f^{-1}\mathcal{O}_Y)}(
+f^{-1}\mathcal{G}, \mathcal{F}_{f^{-1}\mathcal{O}_Y}) \\
+& = &
+\Hom_{\mathcal{O}_Y}(\mathcal{G}, f_*\mathcal{F}).
+\end{eqnarray*}
+Here we use Lemmas \ref{lemma-adjointness-tensor-restrict}
+and \ref{lemma-adjoint-push-pull-modules}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-push-pull-composition-modules}
+Let $f : X \to Y$ and $g : Y \to Z$ be morphisms of ringed spaces.
+The functors $(g \circ f)_*$ and $g_* \circ f_*$ are equal.
+There is a canonical isomorphism of functors
+$(g \circ f)^* \cong f^* \circ g^*$.
+\end{lemma}
+
+\begin{proof}
+The result on pushforwards is a consequence of Lemma
+\ref{lemma-pushforward-composition} and our definitions.
+The result on pullbacks follows from this by the same
+argument as in the proof of Lemma \ref{lemma-pullback-composition}.
+\end{proof}
+
+
+\noindent
+Given a morphism of ringed spaces
+$(f, f^\sharp) : (X, \mathcal{O}_X) \to (Y, \mathcal{O}_Y)$,
+and a sheaf of $\mathcal{O}_X$-modules $\mathcal{F}$,
+a sheaf of $\mathcal{O}_Y$-modules $\mathcal{G}$ on $Y$,
+the notion of an {\it $f$-map $\varphi : \mathcal{G} \to \mathcal{F}$
+of sheaves of modules} makes sense. We can just define
+it as an $f$-map $\varphi : \mathcal{G} \to \mathcal{F}$
+of abelian sheaves (see Definition \ref{definition-f-map} and
+Lemma \ref{lemma-f-map}) such that for all open $V \subset Y$ the map
+$$
+\mathcal{G}(V) \longrightarrow \mathcal{F}(f^{-1}V)
+$$
+is an $\mathcal{O}_Y(V)$-module map. Here we think of
+$\mathcal{F}(f^{-1}V)$ as an $\mathcal{O}_Y(V)$-module
+via the map $f^\sharp_V : \mathcal{O}_Y(V) \to \mathcal{O}_X(f^{-1}V)$.
+The set of $f$-maps between
+$\mathcal{G}$ and $\mathcal{F}$ will be in canonical bijection
+with the sets
+$\Mor_{\textit{Mod}(\mathcal{O}_X)}(f^*\mathcal{G}, \mathcal{F})$
+and
+$\Mor_{\textit{Mod}(\mathcal{O}_Y)}(\mathcal{G}, f_*\mathcal{F})$.
+See above.
+
+\medskip\noindent
+Composition of $f$-maps is defined in exactly the
+same manner as in the case of $f$-maps of sheaves of
+sets. In addition, given an $f$-map $\mathcal{G} \to \mathcal{F}$
+as above, and $x \in X$ the induced map on stalks
+$$
+\varphi_x : \mathcal{G}_{f(x)} \longrightarrow \mathcal{F}_x
+$$
+is an $\mathcal{O}_{Y, f(x)}$-module map where the
+$\mathcal{O}_{Y, f(x)}$-module structure on $\mathcal{F}_x$
+comes from the $\mathcal{O}_{X, x}$-module structure via
+the map $f^\sharp_x : \mathcal{O}_{Y, f(x)} \to \mathcal{O}_{X, x}$.
+Here is a related lemma.
+
+\begin{lemma}
+\label{lemma-stalk-pullback-modules}
+Let $(f, f^\sharp) : (X, \mathcal{O}_X) \to (Y, \mathcal{O}_Y)$
+be a morphism of ringed spaces.
+Let $\mathcal{G}$ be a sheaf of $\mathcal{O}_Y$-modules.
+Let $x \in X$. Then
+$$
+(f^*\mathcal{G})_x =
+\mathcal{G}_{f(x)}
+\otimes_{\mathcal{O}_{Y, f(x)}}
+\mathcal{O}_{X, x}
+$$
+as $\mathcal{O}_{X, x}$-modules where the tensor product on the right
+uses $f^\sharp_x : \mathcal{O}_{Y, f(x)} \to \mathcal{O}_{X, x}$.
+\end{lemma}
+
+\begin{proof}
+This follows from Lemma \ref{lemma-stalk-tensor-sheaf-modules}
+and the identification of the stalks of pullback sheaves
+at $x$ with the corresponding stalks at $f(x)$. See the
+formulae in Section \ref{section-presheaves-structures-functorial}
+for example.
+\end{proof}

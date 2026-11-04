@@ -1,0 +1,404 @@
+\section{Definitions}
+\label{section-definition-categories}
+
+\noindent
+We recall the definitions, partly to fix notation.
+
+\begin{definition}
+\label{definition-category}
+A {\it category} $\mathcal{C}$ consists of the following data:
+\begin{enumerate}
+\item A set of objects $\Ob(\mathcal{C})$.
+\item For each pair $x, y \in \Ob(\mathcal{C})$ a set of morphisms
+$\Mor_\mathcal{C}(x, y)$.
+\item For each triple $x, y, z\in \Ob(\mathcal{C})$ a composition
+map $ \Mor_\mathcal{C}(y, z) \times \Mor_\mathcal{C}(x, y)
+\to \Mor_\mathcal{C}(x, z) $, denoted $(\phi, \psi) \mapsto
+\phi \circ \psi$.
+\end{enumerate}
+These data are to satisfy the following rules:
+\begin{enumerate}
+\item For every element $x\in \Ob(\mathcal{C})$ there exists a
+morphism $\text{id}_x\in \Mor_\mathcal{C}(x, x)$ such that
+$\text{id}_x \circ \phi = \phi$ and $\psi \circ \text{id}_x = \psi $ whenever
+these compositions make sense.
+\item Composition is associative, i.e., $(\phi \circ \psi) \circ \chi =
+\phi \circ ( \psi \circ \chi)$ whenever these compositions make sense.
+\end{enumerate}
+\end{definition}
+
+\noindent
+It is customary to require all the morphism sets
+$\Mor_\mathcal{C}(x, y)$ to be disjoint.
+In this way a morphism $\phi : x \to y$ has a unique {\it source} $x$
+and a unique {\it target} $y$. This is not strictly necessary,
+although care has to be taken in formulating condition (2) above
+if it is not the case. It is convenient and we will often assume
+this is the case. In this case we say that $\phi$ and $\psi$ are
+{\it composable} if the source of $\phi$ is equal to the
+target of $\psi$, in which case $\phi \circ \psi$ is defined.
+An equivalent definition would be to define a category
+as a quintuple $(\text{Ob}, \text{Arrows}, s, t, \circ)$
+consisting of a set of objects, a set of morphisms (arrows),
+source, target and composition subject to a long list of axioms.
+We will occasionally use this point of view.
+
+\begin{remark}
+\label{remark-big-categories}
+Big categories. In some texts a category is allowed to have a proper
+class of objects. We will allow this as well in these notes but only
+in the following list of cases (to be updated as we go along).
+In particular, when we say: ``Let $\mathcal{C}$ be a category''
+then it is understood that $\Ob(\mathcal{C})$ is a set.
+\begin{enumerate}
+\item The category $\textit{Sets}$ of sets.
+\item The category $\textit{Ab}$ of abelian groups.
+\item The category $\textit{Groups}$ of groups.
+\item Given a group $G$ the category $G\textit{-Sets}$ of
+sets with a left $G$-action.
+\item Given a ring $R$ the category $\text{Mod}_R$ of $R$-modules.
+\item Given a field $k$ the category of vector spaces over $k$.
+\item The category of rings.
+\item The category of divided power rings, see
+Divided Power Algebra, Section \ref{dpa-section-divided-power-rings}.
+\item The category of schemes.
+\item The category $\textit{Top}$ of topological spaces.
+\item Given a topological space $X$ the category
+$\textit{PSh}(X)$ of presheaves of sets over $X$.
+\item Given a topological space $X$ the category
+$\Sh(X)$ of sheaves of sets over $X$.
+\item Given a topological space $X$ the category
+$\textit{PAb}(X)$ of presheaves of abelian groups over $X$.
+\item Given a topological space $X$ the category
+$\textit{Ab}(X)$ of sheaves of abelian groups over $X$.
+\item Given a small category $\mathcal{C}$ the category of functors
+from $\mathcal{C}$ to $\textit{Sets}$.
+\item Given a category $\mathcal{C}$ the category of presheaves of sets
+over $\mathcal{C}$.
+\item Given a site $\mathcal{C}$ the category of sheaves
+of sets over $\mathcal{C}$.
+\end{enumerate}
+One of the reason to enumerate these here is to try and avoid
+working with something like the ``collection'' of ``big'' categories
+which would be like working with the collection of all classes
+which I think definitively is a meta-mathematical object.
+\end{remark}
+
+\begin{remark}
+\label{remark-unique-identity}
+It follows directly from the definition that any two identity morphisms
+of an object $x$ of $\mathcal{A}$ are the same. Thus we may and will
+speak of {\it the} identity morphism $\text{id}_x$ of $x$.
+\end{remark}
+
+\begin{definition}
+\label{definition-isomorphism}
+A morphism $\phi : x \to y$ is an {\it isomorphism} of the category
+$\mathcal{C}$ if there exists a morphism $\psi : y \to x$
+such that $\phi \circ \psi = \text{id}_y$ and
+$\psi \circ \phi = \text{id}_x$.
+\end{definition}
+
+\noindent
+An isomorphism $\phi$ is also sometimes called an {\it invertible}
+morphism, and the morphism $\psi$ of the definition is called the
+{\it inverse} and denoted $\phi^{-1}$. It is unique if it exists. Note that
+given an object $x$ of a category $\mathcal{A}$ the set of invertible
+elements $\text{Aut}_\mathcal{A}(x)$
+of $\Mor_\mathcal{A}(x, x)$ forms a group under composition.
+This group is called the {\it automorphism} group of $x$ in $\mathcal{A}$.
+
+\begin{definition}
+\label{definition-groupoid}
+A {\it groupoid} is a category where every morphism is an isomorphism.
+\end{definition}
+
+\begin{example}
+\label{example-group-groupoid}
+A group $G$ gives rise to a groupoid with a single object $x$
+and morphisms $\Mor(x, x) = G$, with the composition rule
+given by the group law in $G$. Every groupoid with a single
+object is of this form.
+\end{example}
+
+\begin{example}
+\label{example-set-groupoid}
+A set $C$ gives rise to a groupoid $\mathcal{C}$ defined as follows:
+As objects we take $\Ob(\mathcal{C}) := C$ and for morphisms
+we take $\Mor(x, y)$ empty if $x\neq y$ and equal to
+$\{\text{id}_x\}$ if $x = y$.
+\end{example}
+
+\begin{definition}
+\label{definition-functor}
+A {\it functor} $F : \mathcal{A} \to \mathcal{B}$
+between two categories $\mathcal{A}, \mathcal{B}$ is given by the
+following data:
+\begin{enumerate}
+\item A map $F : \Ob(\mathcal{A}) \to \Ob(\mathcal{B})$.
+\item For every $x, y \in \Ob(\mathcal{A})$ a map
+$F : \Mor_\mathcal{A}(x, y) \to \Mor_\mathcal{B}(F(x), F(y))$,
+denoted $\phi \mapsto F(\phi)$.
+\end{enumerate}
+These data should be compatible with composition and identity morphisms
+in the following manner: $F(\phi \circ \psi) =
+F(\phi) \circ F(\psi)$ for a composable pair $(\phi, \psi)$ of
+morphisms of $\mathcal{A}$ and $F(\text{id}_x) = \text{id}_{F(x)}$.
+\end{definition}
+
+\noindent
+Note that every category $\mathcal{A}$ has an
+{\it identity} functor $\text{id}_\mathcal{A}$.
+In addition, given a functor $G : \mathcal{B} \to \mathcal{C}$
+and a functor $F : \mathcal{A} \to \mathcal{B}$ there is
+a {\it composition} functor $G \circ F : \mathcal{A} \to \mathcal{C}$
+defined in an obvious manner.
+
+\begin{definition}
+\label{definition-faithful}
+Let $F : \mathcal{A} \to \mathcal{B}$ be a functor.
+\begin{enumerate}
+\item We say $F$ is {\it faithful} if
+for any objects $x, y \in \Ob(\mathcal{A})$ the map
+$$
+F : \Mor_\mathcal{A}(x, y) \to \Mor_\mathcal{B}(F(x), F(y))
+$$
+is injective.
+\item If these maps are all bijective then $F$ is called
+{\it fully faithful}.
+\item
+The functor $F$ is called {\it essentially surjective} if for any
+object $y \in \Ob(\mathcal{B})$ there exists an object
+$x \in \Ob(\mathcal{A})$ such that $F(x)$ is isomorphic to $y$ in
+$\mathcal{B}$.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}
+\label{definition-subcategory}
+A {\it subcategory} of a category $\mathcal{B}$ is a category $\mathcal{A}$
+whose objects and arrows form subsets of the objects and arrows of $\mathcal{B}$
+and such that source, target and composition in $\mathcal{A}$ agree with those
+of $\mathcal{B}$ and such that the identity morphism of an object of
+$\mathcal{A}$ matches the one in $\mathcal{B}$. We say $\mathcal{A}$ is a
+{\it full subcategory} of $\mathcal{B}$ if $\Mor_\mathcal{A}(x, y)
+= \Mor_\mathcal{B}(x, y)$ for all $x, y \in \Ob(\mathcal{A})$.
+We say $\mathcal{A}$ is a {\it strictly full} subcategory of $\mathcal{B}$
+if it is a full subcategory and given $x \in \Ob(\mathcal{A})$ any
+object of $\mathcal{B}$ which is isomorphic to $x$ is also in $\mathcal{A}$.
+\end{definition}
+
+\noindent
+If $\mathcal{A} \subset \mathcal{B}$ is a subcategory then the
+identity map is a functor from $\mathcal{A}$ to $\mathcal{B}$.
+Furthermore a subcategory $\mathcal{A} \subset \mathcal{B}$
+is full if and only if the inclusion functor is fully faithful.
+Note that given a category $\mathcal{B}$ the set of full subcategories
+of $\mathcal{B}$ is the same as the set of subsets of
+$\Ob(\mathcal{B})$.
+
+\begin{remark}
+\label{remark-functor-into-sets}
+Suppose that $\mathcal{A}$ is a category.
+A functor $F$ from $\mathcal{A}$ to $\textit{Sets}$
+is a mathematical object (i.e., it is a set not a class or a formula
+of set theory, see
+Sets, Section \ref{sets-section-sets-everything})
+even though the category of sets is ``big''.
+Namely, the range of $F$ on objects will be
+a set $F(\Ob(\mathcal{A}))$ and then we
+may think of $F$ as a functor between
+$\mathcal{A}$ and the full subcategory
+of the category of sets whose
+objects are elements of $F(\Ob(\mathcal{A}))$.
+\end{remark}
+
+\begin{example}
+\label{example-group-homomorphism-functor}
+A homomorphism $p : G\to H$ of groups gives rise to a functor
+between the associated groupoids in Example \ref{example-group-groupoid}. It is
+faithful (resp.\ fully faithful) if and only if $p$ is injective (resp.\ an
+isomorphism).
+\end{example}
+
+\begin{example}
+\label{example-category-over-X}
+Given a category $\mathcal{C}$ and an object $X\in \Ob(\mathcal{C})$
+we define the {\it category of objects over $X$},
+denoted $\mathcal{C}/X$ as follows.
+The objects of $\mathcal{C}/X$ are morphisms $Y\to X$ for
+some $Y\in \Ob(\mathcal{C})$. Morphisms between objects
+$Y\to X$ and $Y'\to X$ are morphisms $Y\to Y'$ in $\mathcal{C}$ that
+make the obvious diagram commute. Note that there is a functor
+$p_X : \mathcal{C}/X\to \mathcal{C}$ which simply forgets the
+morphism. Moreover given a morphism $f : X'\to X$ in
+$\mathcal{C}$ there is an induced functor
+$F : \mathcal{C}/X' \to \mathcal{C}/X$ obtained by composition with $f$,
+and $p_X\circ F = p_{X'}$.
+\end{example}
+
+\begin{example}
+\label{example-category-under-X}
+Given a category $\mathcal{C}$ and an object $X\in \Ob(\mathcal{C})$
+we define the {\it category of objects under $X$},
+denoted $X/\mathcal{C}$ as follows.
+The objects of $X/\mathcal{C}$ are morphisms $X\to Y$ for
+some $Y\in \Ob(\mathcal{C})$. Morphisms between objects
+$X\to Y$ and $X\to Y'$ are morphisms $Y\to Y'$ in $\mathcal{C}$ that
+make the obvious diagram commute. Note that there is a functor
+$p_X : X/\mathcal{C}\to \mathcal{C}$ which simply forgets the
+morphism. Moreover given a morphism $f : X'\to X$ in
+$\mathcal{C}$ there is an induced functor
+$F : X/\mathcal{C} \to X'/\mathcal{C}$
+obtained by composition with $f$,
+and $p_{X'}\circ F = p_X$.
+\end{example}
+
+
+
+
+\begin{definition}
+\label{definition-transformation-functors}
+Let $F, G : \mathcal{A} \to \mathcal{B}$ be functors.
+A {\it natural transformation}, or a {\it morphism of functors}
+$t : F \to G$, is a collection $\{t_x\}_{x\in \Ob(\mathcal{A})}$
+such that
+\begin{enumerate}
+\item $t_x : F(x) \to G(x)$ is a morphism in the category $\mathcal{B}$, and
+\item for every morphism $\phi : x \to y$ of $\mathcal{A}$ the following
+diagram is commutative
+$$
+\xymatrix{
+F(x) \ar[r]^{t_x} \ar[d]_{F(\phi)} & G(x) \ar[d]^{G(\phi)} \\
+F(y) \ar[r]^{t_y} & G(y) }
+$$
+\end{enumerate}
+\end{definition}
+
+\noindent
+Sometimes we use the diagram
+$$
+\xymatrix{
+\mathcal{A}
+\rtwocell^F_G{t}
+&
+\mathcal{B}
+}
+$$
+to indicate that $t$ is a morphism from $F$ to $G$.
+
+\medskip\noindent
+Note that every functor $F$ comes with the {\it identity} transformation
+$\text{id}_F : F \to F$. In addition, given a morphism of
+functors $t : F \to G$ and a morphism of functors $s : E \to F$
+then the {\it composition} $t \circ s$ is defined by the rule
+$$
+(t \circ s)_x = t_x \circ s_x : E(x) \to G(x)
+$$
+for $x \in \Ob(\mathcal{A})$.
+It is easy to verify that this is indeed a morphism of functors
+from $E$ to $G$.
+In this way, given categories
+$\mathcal{A}$ and $\mathcal{B}$ we obtain a new category,
+namely the category of functors between $\mathcal{A}$ and
+$\mathcal{B}$.
+
+\begin{remark}
+\label{remark-functors-sets-sets}
+This is one instance where the same thing does not hold if
+$\mathcal{A}$ is a ``big'' category. For example consider
+functors $\textit{Sets} \to \textit{Sets}$. As we have currently
+defined it such a functor is a class and not a set. In other
+words, it is given by a formula in set theory (with some variables
+equal to specified sets)! It is not a good idea to try to consider
+all possible formulae of set theory as part of the definition of
+a mathematical object. The same problem presents itself when
+considering sheaves on the category of schemes for example.
+We will come back to this point later.
+\end{remark}
+
+\begin{definition}
+\label{definition-equivalence-categories}
+An {\it equivalence of categories}
+$F : \mathcal{A} \to \mathcal{B}$ is a functor such that there
+exists a functor $G : \mathcal{B} \to \mathcal{A}$ such that
+the compositions $F \circ G$ and $G \circ F$ are isomorphic to the
+identity functors $\text{id}_\mathcal{B}$,
+respectively $\text{id}_\mathcal{A}$.
+In this case we say that $G$ is a {\it quasi-inverse} to $F$.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-construct-quasi-inverse}
+Let $F : \mathcal{A} \to \mathcal{B}$ be a fully faithful functor.
+Suppose for every $X \in \Ob(\mathcal{B})$ we are given an
+object $j(X)$ of $\mathcal{A}$ and an isomorphism $i_X : X \to F(j(X))$.
+Then there is a unique functor $j : \mathcal{B} \to \mathcal{A}$
+such that $j$ extends the rule on objects, and the isomorphisms
+$i_X$ define an isomorphism of functors
+$\text{id}_\mathcal{B} \to F \circ j$. Moreover, $j$ and $F$
+are quasi-inverse equivalences of categories.
+\end{lemma}
+
+\begin{proof}
+To construct $j : \mathcal{B} \to \mathcal{A}$, there are two steps. Firstly,
+we define the map $j : \Ob(\mathcal{B}) \to \Ob(\mathcal{A})$ that associates
+$j(X)$ to $X \in \mathcal{B}$. Secondly, if $X,Y \in \Ob(\mathcal{B})$ and
+$\phi : X \to Y$, we consider $\phi' := i_Y \circ\phi\circ i_X^{-1}$. There is
+a unique $\varphi$ verifying $F(\varphi) = \phi'$, using that $F$ is fully
+faithful. We define $j(\phi) = \varphi$. We omit the verification that $j$
+is a functor. By construction the diagram
+$$
+\xymatrix{
+X \ar[r]_-{i_X} \ar[d]_{\phi}
+&
+F(j(X)) \ar[d]^{F\circ j(\phi)}
+\\
+Y \ar[r]^-{i_Y}
+&
+F(j(Y))
+}
+$$
+commutes. Hence, as each $i_X$ is an isomorphism, $\{i_X\}_X$ is an
+isomorphism of functors $\text{id}_\mathcal{B} \to F\circ j$. To conclude, we
+have to also prove that $j \circ F$ is isomorphic to $\text{id}_\mathcal{A}$.
+However, since $F$ is fully faithful, in order to do this it suffices
+to prove this after post-composing with $F$, i.e., it suffices to
+show that $F \circ j \circ F$ is isomorphic to $F \circ \text{id}_\mathcal{A}$
+(small detail omitted). Since $F \circ j \cong \text{id}_\mathcal{B}$
+this is clear.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-equivalence-categories}
+A functor is an equivalence of categories if and only if it is both fully
+faithful and essentially surjective.
+\end{lemma}
+
+\begin{proof}
+Let $F : \mathcal{A} \to \mathcal{B}$ be essentially surjective and fully
+faithful. As by convention all categories are small and as $F$ is essentially
+surjective we can, using the axiom of choice, choose for every
+$X \in \Ob(\mathcal{B})$ an object $j(X)$ of $\mathcal{A}$ and an
+isomorphism $i_X : X \to F(j(X))$. Then we apply
+Lemma \ref{lemma-construct-quasi-inverse}
+using that $F$ is fully faithful.
+\end{proof}
+
+\begin{definition}
+\label{definition-product-category}
+Let $\mathcal{A}$, $\mathcal{B}$ be categories.
+We define the {\it product category}
+$\mathcal{A} \times \mathcal{B}$ to be the category with
+objects
+$\Ob(\mathcal{A} \times \mathcal{B}) =
+\Ob(\mathcal{A}) \times \Ob(\mathcal{B})$
+and
+$$
+\Mor_{\mathcal{A} \times \mathcal{B}}((x, y), (x', y'))
+:=
+\Mor_\mathcal{A}(x, x')\times
+\Mor_\mathcal{B}(y, y').
+$$
+Composition is defined componentwise.
+\end{definition}

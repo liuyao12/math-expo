@@ -1,0 +1,339 @@
+\section{Images of ring maps of finite presentation}
+\label{section-images-finite-presentation}
+
+\noindent
+In this section we prove some results on the
+topology of maps $\Spec(S) \to \Spec(R)$
+induced by ring maps $R \to S$, mainly Chevalley's Theorem.
+In order to do this we will use the notions of constructible sets,
+quasi-compact sets, retrocompact sets, and so on
+which are defined in Topology, Section \ref{topology-section-constructible}.
+
+\begin{lemma}
+\label{lemma-qc-open}
+Let $U \subset \Spec(R)$ be open. The following
+are equivalent:
+\begin{enumerate}
+\item $U$ is retrocompact in $\Spec(R)$,
+\item $U$ is quasi-compact,
+\item $U$ is a finite union of standard opens, and
+\item there exists a finitely generated ideal $I \subset R$ such
+that $X \setminus V(I) = U$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+We have (1) $\Rightarrow$ (2) because $\Spec(R)$ is quasi-compact, see
+Lemma \ref{lemma-quasi-compact}. We have (2) $\Rightarrow$ (3) because
+standard opens form a basis for the topology. Proof of (3) $\Rightarrow$ (1).
+Let $U = \bigcup_{i = 1\ldots n} D(f_i)$. To show that $U$ is retrocompact
+in $\Spec(R)$ it suffices to show that $U \cap V$ is quasi-compact for any
+quasi-compact open $V$ of $\Spec(R)$. Write
+$V = \bigcup_{j = 1\ldots m} D(g_j)$ which is possible by (2) $\Rightarrow$
+(3). Each standard open is homeomorphic to the spectrum of a ring and hence
+quasi-compact, see Lemmas \ref{lemma-standard-open} and
+\ref{lemma-quasi-compact}. Thus
+$U \cap V =
+(\bigcup_{i = 1\ldots n} D(f_i)) \cap (\bigcup_{j = 1\ldots m} D(g_j))
+= \bigcup_{i, j} D(f_i g_j)$ is a finite union of quasi-compact opens
+hence quasi-compact. To finish the proof note
+that (4) is equivalent to (3) by 
+Lemma \ref{lemma-Zariski-topology}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-affine-map-quasi-compact}
+Let $\varphi : R \to S$ be a ring map.
+The induced continuous map $f : \Spec(S) \to \Spec(R)$
+is quasi-compact. For any constructible set $E \subset \Spec(R)$
+the inverse image $f^{-1}(E)$ is constructible in $\Spec(S)$.
+\end{lemma}
+
+\begin{proof}
+We first show that the inverse image of any quasi-compact
+open $U \subset \Spec(R)$ is quasi-compact. By
+Lemma \ref{lemma-qc-open} we may write $U$ as a finite
+open of standard opens. Thus by Lemma \ref{lemma-spec-functorial}
+we see that $f^{-1}(U)$ is a finite union of standard opens.
+Hence $f^{-1}(U)$ is quasi-compact by Lemma \ref{lemma-qc-open} again.
+The second assertion now follows from Topology, Lemma
+\ref{topology-lemma-inverse-images-constructibles}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-constructible}
+Let $R$ be a ring. A subset of $\Spec(R)$ is constructible if and only
+if it can be written as a finite union of subsets of the form
+$D(f) \cap V(g_1, \ldots, g_m)$ for $f, g_1, \ldots, g_m \in R$.
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-qc-open} the subset $D(f)$ and the complement of
+$V(g_1, \ldots, g_m)$ are retro-compact open. Hence
+$D(f) \cap V(g_1, \ldots, g_m)$ is a constructible subset and so is
+any finite union of such. Conversely, let $T \subset \Spec(R)$ be
+constructible. By Topology, Definition \ref{topology-definition-constructible},
+we may assume that $T = U \cap V^c$, where $U, V \subset \Spec(R)$
+are retrocompact open. By Lemma \ref{lemma-qc-open} we may write
+$U = \bigcup_{i = 1, \ldots, n} D(f_i)$ and
+$V = \bigcup_{j = 1, \ldots, m} D(g_j)$. Then
+$T = \bigcup_{i = 1, \ldots, n} \big(D(f_i) \cap V(g_1, \ldots, g_m)\big)$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-constructible-is-image}
+Let $R$ be a ring and let $T \subset \Spec(R)$
+be constructible. Then there exists a ring map $R \to S$ of
+finite presentation such that $T$ is the image of
+$\Spec(S)$ in $\Spec(R)$.
+\end{lemma}
+
+\begin{proof}
+The spectrum of a finite product of rings
+is the disjoint union of the spectra, see
+Lemma \ref{lemma-spec-product}. Hence if $T = T_1 \cup T_2$
+and the result holds for $T_1$ and $T_2$, then the
+result holds for $T$.
+By Lemma \ref{lemma-constructible} we may assume
+that $T = D(f) \cap V(g_1, \ldots, g_m)$.
+In this case $T$ is the image of the map
+$\Spec((R/(g_1, \ldots, g_m))_f) \to \Spec(R)$, see Lemmas
+\ref{lemma-standard-open} and \ref{lemma-spec-closed}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-open-fp}
+Let $R$ be a ring.
+Let $f$ be an element of $R$.
+Let $S = R_f$.
+Then the image of a constructible subset of $\Spec(S)$
+is constructible in $\Spec(R)$.
+\end{lemma}
+
+\begin{proof}
+We repeatedly use Lemma \ref{lemma-qc-open} without mention.
+Let $U, V$ be quasi-compact open in $\Spec(S)$.
+We will show that the image of $U \cap V^c$ is constructible.
+Under the identification
+$\Spec(S) = D(f)$ of Lemma \ref{lemma-standard-open}
+the sets $U, V$ correspond to quasi-compact opens
+$U', V'$ of $\Spec(R)$.
+Hence it suffices to show that $U' \cap (V')^c$
+is constructible in $\Spec(R)$ which is clear.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-closed-fp}
+Let $R$ be a ring.
+Let $I$ be a finitely generated ideal of $R$.
+Let $S = R/I$.
+Then the image of a constructible subset of $\Spec(S)$
+is constructible in $\Spec(R)$.
+\end{lemma}
+
+\begin{proof}
+If $I = (f_1, \ldots, f_m)$, then we see that
+$V(I)$ is the complement of $\bigcup D(f_i)$,
+see Lemma \ref{lemma-Zariski-topology}.
+Hence it is constructible, by Lemma \ref{lemma-qc-open}.
+Denote the map $R \to S$ by $f \mapsto \overline{f}$.
+We have to show that if $\overline{U}, \overline{V}$
+are retrocompact opens of $\Spec(S)$, then the
+image of $\overline{U} \cap \overline{V}^c$
+in $\Spec(R)$ is constructible.
+By Lemma \ref{lemma-qc-open} we may write
+$\overline{U} = \bigcup D(\overline{g_i})$.
+Setting $U = \bigcup D({g_i})$ we see $\overline{U}$
+has image $U \cap V(I)$ which is constructible in
+$\Spec(R)$. Similarly the image of $\overline{V}$ equals
+$V \cap V(I)$ for some retrocompact open $V$ of $\Spec(R)$.
+Hence the image of $\overline{U} \cap \overline{V}^c$
+equals $U \cap V(I) \cap V^c$ as desired.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-affineline-open}
+Let $R$ be a ring. The map $\Spec(R[x]) \to \Spec(R)$
+is open, and the image of any standard open is a quasi-compact
+open.
+\end{lemma}
+
+\begin{proof}
+It suffices to show that the image of a standard open
+$D(f)$, $f\in R[x]$ is quasi-compact open.
+The image of $D(f)$ is the image of
+$\Spec(R[x]_f) \to \Spec(R)$.
+Let $\mathfrak p \subset R$ be a prime ideal.
+Let $\overline{f}$ be the image of $f$ in
+$\kappa(\mathfrak p)[x]$.
+Recall, see Lemma \ref{lemma-in-image},
+that $\mathfrak p$ is in the image
+if and only if $R[x]_f \otimes_R \kappa(\mathfrak p) =
+\kappa(\mathfrak p)[x]_{\overline{f}}$ is not the
+zero ring. This is exactly the condition that $f$ does not map
+to zero in $\kappa(\mathfrak p)[x]$, in other words, that
+some coefficient of $f$ is not in $\mathfrak p$.
+Hence we see: if $f = a_d x^d + \ldots + a_0$, then
+the image of $D(f)$ is $D(a_d) \cup \ldots \cup D(a_0)$.
+\end{proof}
+
+\noindent
+We prove a property of characteristic polynomials which
+will be used below.
+
+\begin{lemma}
+\label{lemma-characteristic-polynomial-prime}
+Let $R \to A$ be a ring homomorphism.
+Assume $A \cong R^{\oplus n}$ as an $R$-module.
+Let $f \in A$. The multiplication map $m_f: A
+\to A$ is $R$-linear and hence
+has a characteristic polynomial
+$P(T) = T^n + r_{n-1}T^{n-1} + \ldots + r_0 \in R[T]$.
+For any prime
+$\mathfrak{p} \in \Spec(R)$, $f$ acts nilpotently on $A
+\otimes_R \kappa(\mathfrak{p})$ if and only if $\mathfrak p \in
+V(r_0, \ldots, r_{n-1})$.
+\end{lemma}
+
+\begin{proof}
+This follows quite easily once we prove that the characteristic
+polynomial $\bar P(T) \in \kappa(\mathfrak p)[T]$ of the
+multiplication map $m_{\bar f}: A \otimes_R \kappa(\mathfrak p) \to
+A \otimes_R \kappa(\mathfrak p)$ which multiplies elements of $A
+\otimes_R \kappa(\mathfrak p)$ by $\bar f$, the image of $f$ viewed in
+$\kappa(\mathfrak p)$, is just the image of $P(T)$ in
+$\kappa(\mathfrak p)[T]$. Let $(a_{ij})$ be the matrix of the map
+$m_f$ with entries in $R$, using a basis $e_1, \ldots, e_n$
+of $A$ as an $R$-module.
+Then, $A \otimes_R \kappa(\mathfrak p) \cong (R \otimes_R
+\kappa(\mathfrak p))^{\oplus n} = \kappa(\mathfrak p)^n$, which is
+an $n$-dimensional vector space over $\kappa(\mathfrak p)$ with
+basis $e_1 \otimes 1, \ldots, e_n \otimes 1$. The image $\bar f = f
+\otimes 1$, and so the multiplication map $m_{\bar f}$ has matrix
+$(a_{ij} \otimes 1)$. Thus, the characteristic polynomial is
+precisely the image of $P(T)$.
+
+\medskip\noindent
+From linear algebra, we know that a linear transformation acts
+nilpotently on an $n$-dimensional vector space if and only if the
+characteristic polynomial is $T^n$ (since the characteristic
+polynomial divides some power of the minimal polynomial). Hence,
+$f$ acts nilpotently on $A \otimes_R \kappa(\mathfrak p)$ if and
+only if $\bar P(T) = T^n$. This occurs if and only if $r_i \in
+\mathfrak p$ for all $0 \leq i \leq n - 1$, that is when $\mathfrak p \in
+V(r_0, \ldots, r_{n - 1}).$
+\end{proof}
+
+\begin{lemma}
+\label{lemma-affineline-special}
+Let $R$ be a ring. Let $f, g \in R[x]$ be polynomials.
+Assume the leading coefficient of $g$ is a unit of $R$.
+There exists elements $r_i\in R$, $i = 1\ldots, n$ such that
+the image of $D(f) \cap V(g)$ in $\Spec(R)$ is
+$\bigcup_{i = 1, \ldots, n} D(r_i)$.
+\end{lemma}
+
+\begin{proof}
+Write $g = ux^d + a_{d-1}x^{d-1} + \ldots + a_0$, where
+$d$ is the degree of $g$, and hence $u \in R^*$.
+Consider the ring $A = R[x]/(g)$.
+It is, as an $R$-module, finite free with basis the images
+of $1, x, \ldots, x^{d-1}$. Consider multiplication
+by (the image of) $f$ on $A$. This is an $R$-module map.
+Hence we can let $P(T) \in R[T]$ be the characteristic polynomial
+of this map. Write $P(T) = T^d + r_{d-1} T^{d-1} + \ldots + r_0$.
+We claim that $r_0, \ldots, r_{d-1}$ have the desired property.
+We will use below the property of characteristic polynomials
+that
+$$
+\mathfrak p \in V(r_0, \ldots, r_{d-1})
+\Leftrightarrow
+\text{multiplication by }f\text{ is nilpotent on }
+A \otimes_R \kappa(\mathfrak p).
+$$
+This was proved in Lemma \ref{lemma-characteristic-polynomial-prime}.
+
+\medskip\noindent
+Suppose $\mathfrak q\in D(f) \cap V(g)$, and let
+$\mathfrak p = \mathfrak q \cap R$. Then there is a nonzero map
+$A \otimes_R \kappa(\mathfrak p) \to \kappa(\mathfrak q)$ which
+is compatible with multiplication by $f$.
+And $f$ acts as a unit on $\kappa(\mathfrak q)$.
+Thus we conclude $\mathfrak p \not \in  V(r_0, \ldots, r_{d-1})$.
+
+\medskip\noindent
+On the other hand, suppose that $r_i \not\in \mathfrak p$ for some
+prime $\mathfrak p$ of $R$ and some $0 \leq i \leq d - 1$.
+Then multiplication by $f$ is not nilpotent on the algebra
+$A \otimes_R \kappa(\mathfrak p)$.
+Hence there exists a prime ideal $\overline{\mathfrak q} \subset
+A \otimes_R \kappa(\mathfrak p)$ not containing the image of $f$.
+The inverse image of $\overline{\mathfrak q}$ in $R[x]$
+is an element of $D(f) \cap V(g)$ mapping to $\mathfrak p$.
+\end{proof}
+
+\begin{theorem}[Chevalley's Theorem]
+\label{theorem-chevalley}
+Suppose that $R \to S$ is of finite presentation.
+The image of a constructible subset of
+$\Spec(S)$ in $\Spec(R)$ is constructible.
+\end{theorem}
+
+\begin{proof}
+Write $S = R[x_1, \ldots, x_n]/(f_1, \ldots, f_m)$.
+We may factor $R \to S$ as $R \to R[x_1] \to R[x_1, x_2]
+\to \ldots \to R[x_1, \ldots, x_{n-1}] \to S$. Hence
+we may assume that $S = R[x]/(f_1, \ldots, f_m)$.
+In this case we factor the map as $R \to R[x] \to S$,
+and by Lemma \ref{lemma-closed-fp} we reduce to
+the case $S = R[x]$. By Lemma \ref{lemma-qc-open} suffices
+to show that if
+$T = (\bigcup_{i = 1\ldots n} D(f_i)) \cap V(g_1, \ldots, g_m)$
+for $f_i , g_j \in R[x]$ then the image in $\Spec(R)$ is
+constructible. Since finite unions of constructible sets
+are constructible, it suffices to deal with the case $n = 1$,
+i.e., when $T = D(f) \cap V(g_1, \ldots, g_m)$.
+
+\medskip\noindent
+Note that if $c \in R$, then we have
+$$
+\Spec(R) =
+V(c) \amalg D(c) =
+\Spec(R/(c)) \amalg \Spec(R_c),
+$$
+and correspondingly $\Spec(R[x]) =
+V(c) \amalg D(c) = \Spec(R/(c)[x]) \amalg
+\Spec(R_c[x])$. The intersection of $T = D(f) \cap V(g_1, \ldots, g_m)$
+with each part still has the same shape, with $f$, $g_i$ replaced
+by their images in $R/(c)[x]$, respectively $R_c[x]$.
+Note that the image of $T$
+in $\Spec(R)$ is the union of the image of
+$T \cap V(c)$ and $T \cap D(c)$. Using Lemmas \ref{lemma-open-fp}
+and \ref{lemma-closed-fp} it suffices to prove the images of both
+parts are constructible in $\Spec(R/(c))$, respectively
+$\Spec(R_c)$.
+
+\medskip\noindent
+Let us assume we have $T = D(f) \cap V(g_1, \ldots, g_m)$
+as above, with $\deg(g_1) \leq \deg(g_2) \leq \ldots \leq \deg(g_m)$.
+We are going to use induction on $m$, and on the
+degrees of the $g_i$. Let $d_1 = \deg(g_1)$, i.e., $g_1 = c x^{d_1} + l.o.t$
+with $c \in R$ not zero. Cutting $R$ up into the pieces
+$R/(c)$ and $R_c$ we either lower the degree of $g_1$ (and this
+is covered by induction)
+or we reduce to the case where $c$ is invertible.
+If $c$ is invertible, and $m > 1$, then write
+$g_2 = c' x^{d_2} + l.o.t$. In this case consider
+$g_2' = g_2 - (c'/c) x^{d_2 - d_1} g_1$. Since the ideals
+$(g_1, g_2, \ldots, g_m)$ and $(g_1, g_2', g_3, \ldots, g_m)$
+are equal we see that $T = D(f) \cap V(g_1, g_2', g_3\ldots, g_m)$.
+But here the degree of $g_2'$ is strictly less than the degree
+of $g_2$ and hence this case is covered by induction.
+
+\medskip\noindent
+The bases case for the induction above are the cases
+(a) $T = D(f) \cap V(g)$ where the leading coefficient
+of $g$ is invertible, and (b) $T = D(f)$. These two cases
+are dealt with in Lemmas \ref{lemma-affineline-special}
+and \ref{lemma-affineline-open}.
+\end{proof}

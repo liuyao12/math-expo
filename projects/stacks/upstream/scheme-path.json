@@ -1,0 +1,4595 @@
+{
+  "title": "From complex functions to schemes",
+  "commit": "a04446e57ec1fbc252a871afcec7752fb2807b14",
+  "units": [
+    {
+      "slug": "topology-functions",
+      "title": "Topology for local functions",
+      "subtitle": "Disks, open sets, and the topology used by spectra",
+      "support": false,
+      "sections": [
+        {
+          "chapter": "topology",
+          "label": "section-topology-basic",
+          "title": "Basic notions",
+          "tag": "004E",
+          "number": "5.2",
+          "kind": "section",
+          "slug": "topology-topology-basic",
+          "route": "topology-functions",
+          "key": "topology-section-topology-basic"
+        },
+        {
+          "chapter": "topology",
+          "label": "section-bases",
+          "title": "Bases",
+          "tag": "004O",
+          "number": "5.5",
+          "kind": "section",
+          "slug": "topology-bases",
+          "route": "topology-functions",
+          "key": "topology-section-bases"
+        },
+        {
+          "chapter": "topology",
+          "label": "section-irreducible-components",
+          "title": "Irreducible components",
+          "tag": "004U",
+          "number": "5.8",
+          "kind": "section",
+          "slug": "topology-irreducible-components",
+          "route": "topology-functions",
+          "key": "topology-section-irreducible-components"
+        },
+        {
+          "chapter": "topology",
+          "label": "section-quasi-compact",
+          "title": "Quasi-compact spaces and maps",
+          "tag": "0059",
+          "number": "5.12",
+          "kind": "section",
+          "slug": "topology-quasi-compact",
+          "route": "topology-functions",
+          "key": "topology-section-quasi-compact"
+        },
+        {
+          "chapter": "topology",
+          "label": "section-specialization",
+          "title": "Specialization",
+          "tag": "0060",
+          "number": "5.19",
+          "kind": "section",
+          "slug": "topology-specialization",
+          "route": "topology-functions",
+          "key": "topology-section-specialization"
+        }
+      ]
+    },
+    {
+      "slug": "rings-and-germs",
+      "title": "Rings, localization, and germs",
+      "subtitle": "From functions to fractions and local rings",
+      "support": false,
+      "sections": [
+        {
+          "chapter": "algebra",
+          "label": "section-conventions",
+          "title": "Conventions",
+          "tag": "00AQ",
+          "number": "10.2",
+          "kind": "section",
+          "slug": "algebra-conventions",
+          "route": "rings-and-germs",
+          "key": "algebra-section-conventions"
+        },
+        {
+          "chapter": "algebra",
+          "label": "section-rings-basic",
+          "title": "Basic notions",
+          "tag": "00AR",
+          "number": "10.3",
+          "kind": "section",
+          "slug": "algebra-rings-basic",
+          "route": "rings-and-germs",
+          "key": "algebra-section-rings-basic"
+        },
+        {
+          "chapter": "algebra",
+          "label": "section-snake",
+          "title": "Snake lemma",
+          "tag": "07JV",
+          "number": "10.4",
+          "kind": "section",
+          "slug": "algebra-snake",
+          "route": "rings-and-germs",
+          "key": "algebra-section-snake"
+        },
+        {
+          "chapter": "algebra",
+          "label": "section-colimits",
+          "title": "Colimits",
+          "tag": "07N7",
+          "number": "10.8",
+          "kind": "section",
+          "slug": "algebra-colimits",
+          "route": "rings-and-germs",
+          "key": "algebra-section-colimits"
+        },
+        {
+          "chapter": "algebra",
+          "label": "section-localization",
+          "title": "Localization",
+          "tag": "00CM",
+          "number": "10.9",
+          "kind": "section",
+          "slug": "algebra-localization",
+          "route": "rings-and-germs",
+          "key": "algebra-section-localization"
+        },
+        {
+          "chapter": "algebra",
+          "label": "section-local-rings",
+          "title": "Local rings",
+          "tag": "07BH",
+          "number": "10.18",
+          "kind": "section",
+          "slug": "algebra-local-rings",
+          "route": "rings-and-germs",
+          "key": "algebra-section-local-rings"
+        }
+      ]
+    },
+    {
+      "slug": "spectra",
+      "title": "The spectrum of a ring",
+      "subtitle": "Polynomial functions, evaluation, and the generic point",
+      "support": false,
+      "sections": [
+        {
+          "chapter": "algebra",
+          "label": "section-spectrum-ring",
+          "title": "The spectrum of a ring",
+          "tag": "00DY",
+          "number": "10.17",
+          "kind": "section",
+          "slug": "algebra-spectrum-ring",
+          "route": "spectra",
+          "key": "algebra-section-spectrum-ring"
+        }
+      ]
+    },
+    {
+      "slug": "sheaves-and-stalks",
+      "title": "Sheaves and stalks",
+      "subtitle": "Holomorphic functions as the guiding sheaf",
+      "support": false,
+      "sections": [
+        {
+          "chapter": "sheaves",
+          "label": "section-sheaves-basic",
+          "title": "Basic notions",
+          "tag": "006C",
+          "number": "6.2",
+          "kind": "section",
+          "slug": "sheaves-sheaves-basic",
+          "route": "sheaves-and-stalks",
+          "key": "sheaves-section-sheaves-basic"
+        },
+        {
+          "chapter": "sheaves",
+          "label": "section-presheaves",
+          "title": "Presheaves",
+          "tag": "006D",
+          "number": "6.3",
+          "kind": "section",
+          "slug": "sheaves-presheaves",
+          "route": "sheaves-and-stalks",
+          "key": "sheaves-section-presheaves"
+        },
+        {
+          "chapter": "sheaves",
+          "label": "section-abelian-presheaves",
+          "title": "Abelian presheaves",
+          "tag": "006G",
+          "number": "6.4",
+          "kind": "section",
+          "slug": "sheaves-abelian-presheaves",
+          "route": "sheaves-and-stalks",
+          "key": "sheaves-section-abelian-presheaves"
+        },
+        {
+          "chapter": "sheaves",
+          "label": "section-presheaves-structures",
+          "title": "Presheaves of algebraic structures",
+          "tag": "006M",
+          "number": "6.5",
+          "kind": "section",
+          "slug": "sheaves-presheaves-structures",
+          "route": "sheaves-and-stalks",
+          "key": "sheaves-section-presheaves-structures"
+        },
+        {
+          "chapter": "sheaves",
+          "label": "section-presheaves-modules",
+          "title": "Presheaves of modules",
+          "tag": "006P",
+          "number": "6.6",
+          "kind": "section",
+          "slug": "sheaves-presheaves-modules",
+          "route": "sheaves-and-stalks",
+          "key": "sheaves-section-presheaves-modules"
+        },
+        {
+          "chapter": "sheaves",
+          "label": "section-sheaves",
+          "title": "Sheaves",
+          "tag": "006S",
+          "number": "6.7",
+          "kind": "section",
+          "slug": "sheaves-sheaves",
+          "route": "sheaves-and-stalks",
+          "key": "sheaves-section-sheaves"
+        },
+        {
+          "chapter": "sheaves",
+          "label": "section-abelian-sheaves",
+          "title": "Abelian sheaves",
+          "tag": "006Z",
+          "number": "6.8",
+          "kind": "section",
+          "slug": "sheaves-abelian-sheaves",
+          "route": "sheaves-and-stalks",
+          "key": "sheaves-section-abelian-sheaves"
+        },
+        {
+          "chapter": "sheaves",
+          "label": "section-sheaves-structures",
+          "title": "Sheaves of algebraic structures",
+          "tag": "0071",
+          "number": "6.9",
+          "kind": "section",
+          "slug": "sheaves-sheaves-structures",
+          "route": "sheaves-and-stalks",
+          "key": "sheaves-section-sheaves-structures"
+        },
+        {
+          "chapter": "sheaves",
+          "label": "section-sheaves-modules",
+          "title": "Sheaves of modules",
+          "tag": "0076",
+          "number": "6.10",
+          "kind": "section",
+          "slug": "sheaves-sheaves-modules",
+          "route": "sheaves-and-stalks",
+          "key": "sheaves-section-sheaves-modules"
+        },
+        {
+          "chapter": "sheaves",
+          "label": "section-stalks",
+          "title": "Stalks",
+          "tag": "0078",
+          "number": "6.11",
+          "kind": "section",
+          "slug": "sheaves-stalks",
+          "route": "sheaves-and-stalks",
+          "key": "sheaves-section-stalks"
+        },
+        {
+          "chapter": "sheaves",
+          "label": "section-stalks-abelian-presheaves",
+          "title": "Stalks of abelian presheaves",
+          "tag": "007E",
+          "number": "6.12",
+          "kind": "section",
+          "slug": "sheaves-stalks-abelian-presheaves",
+          "route": "sheaves-and-stalks",
+          "key": "sheaves-section-stalks-abelian-presheaves"
+        },
+        {
+          "chapter": "sheaves",
+          "label": "section-stalks-presheaves-structures",
+          "title": "Stalks of presheaves of algebraic structures",
+          "tag": "007G",
+          "number": "6.13",
+          "kind": "section",
+          "slug": "sheaves-stalks-presheaves-structures",
+          "route": "sheaves-and-stalks",
+          "key": "sheaves-section-stalks-presheaves-structures"
+        },
+        {
+          "chapter": "sheaves",
+          "label": "section-stalk-presheaves-modules",
+          "title": "Stalks of presheaves of modules",
+          "tag": "007I",
+          "number": "6.14",
+          "kind": "section",
+          "slug": "sheaves-stalk-presheaves-modules",
+          "route": "sheaves-and-stalks",
+          "key": "sheaves-section-stalk-presheaves-modules"
+        },
+        {
+          "chapter": "sheaves",
+          "label": "section-algebraic-structures",
+          "title": "Algebraic structures",
+          "tag": "007L",
+          "number": "6.15",
+          "kind": "section",
+          "slug": "sheaves-algebraic-structures",
+          "route": "sheaves-and-stalks",
+          "key": "sheaves-section-algebraic-structures"
+        },
+        {
+          "chapter": "sheaves",
+          "label": "section-exactness-points",
+          "title": "Exactness and points",
+          "tag": "007S",
+          "number": "6.16",
+          "kind": "section",
+          "slug": "sheaves-exactness-points",
+          "route": "sheaves-and-stalks",
+          "key": "sheaves-section-exactness-points"
+        }
+      ]
+    },
+    {
+      "slug": "sheafification-and-bases",
+      "title": "Sheafification and bases",
+      "subtitle": "Recovering local data and extending it from basic opens",
+      "support": false,
+      "sections": [
+        {
+          "chapter": "sheaves",
+          "label": "section-sheafification",
+          "title": "Sheafification",
+          "tag": "007X",
+          "number": "6.17",
+          "kind": "section",
+          "slug": "sheaves-sheafification",
+          "route": "sheafification-and-bases",
+          "key": "sheaves-section-sheafification"
+        },
+        {
+          "chapter": "sheaves",
+          "label": "section-sheafify-abelian-presheaves",
+          "title": "Sheafification of abelian presheaves",
+          "tag": "0083",
+          "number": "6.18",
+          "kind": "section",
+          "slug": "sheaves-sheafify-abelian-presheaves",
+          "route": "sheafification-and-bases",
+          "key": "sheaves-section-sheafify-abelian-presheaves"
+        },
+        {
+          "chapter": "sheaves",
+          "label": "section-sheafification-presheaves-structures",
+          "title": "Sheafification of presheaves of algebraic structures",
+          "tag": "0086",
+          "number": "6.19",
+          "kind": "section",
+          "slug": "sheaves-sheafification-presheaves-structures",
+          "route": "sheafification-and-bases",
+          "key": "sheaves-section-sheafification-presheaves-structures"
+        },
+        {
+          "chapter": "sheaves",
+          "label": "section-sheafification-presheaves-modules",
+          "title": "Sheafification of presheaves of modules",
+          "tag": "0088",
+          "number": "6.20",
+          "kind": "section",
+          "slug": "sheaves-sheafification-presheaves-modules",
+          "route": "sheafification-and-bases",
+          "key": "sheaves-section-sheafification-presheaves-modules"
+        },
+        {
+          "chapter": "sheaves",
+          "label": "section-bases",
+          "title": "Bases and sheaves",
+          "tag": "009H",
+          "number": "6.30",
+          "kind": "section",
+          "slug": "sheaves-bases",
+          "route": "sheafification-and-bases",
+          "key": "sheaves-section-bases"
+        }
+      ]
+    },
+    {
+      "slug": "ringed-spaces",
+      "title": "Spaces equipped with functions",
+      "subtitle": "Pullback, local homomorphisms, and open subspaces",
+      "support": false,
+      "sections": [
+        {
+          "chapter": "sheaves",
+          "label": "section-presheaves-functorial",
+          "title": "Continuous maps and sheaves",
+          "tag": "008C",
+          "number": "6.21",
+          "kind": "section",
+          "slug": "sheaves-presheaves-functorial",
+          "route": "ringed-spaces",
+          "key": "sheaves-section-presheaves-functorial"
+        },
+        {
+          "chapter": "sheaves",
+          "label": "section-abelian-presheaves-functorial",
+          "title": "Continuous maps and abelian sheaves",
+          "tag": "008N",
+          "number": "6.22",
+          "kind": "section",
+          "slug": "sheaves-abelian-presheaves-functorial",
+          "route": "ringed-spaces",
+          "key": "sheaves-section-abelian-presheaves-functorial"
+        },
+        {
+          "chapter": "sheaves",
+          "label": "section-presheaves-structures-functorial",
+          "title": "Continuous maps and sheaves of algebraic structures",
+          "tag": "008P",
+          "number": "6.23",
+          "kind": "section",
+          "slug": "sheaves-presheaves-structures-functorial",
+          "route": "ringed-spaces",
+          "key": "sheaves-section-presheaves-structures-functorial"
+        },
+        {
+          "chapter": "sheaves",
+          "label": "section-presheaves-modules-functorial",
+          "title": "Continuous maps and sheaves of modules",
+          "tag": "008R",
+          "number": "6.24",
+          "kind": "section",
+          "slug": "sheaves-presheaves-modules-functorial",
+          "route": "ringed-spaces",
+          "key": "sheaves-section-presheaves-modules-functorial"
+        },
+        {
+          "chapter": "sheaves",
+          "label": "section-ringed-spaces",
+          "title": "Ringed spaces",
+          "tag": "0090",
+          "number": "6.25",
+          "kind": "section",
+          "slug": "sheaves-ringed-spaces",
+          "route": "ringed-spaces",
+          "key": "sheaves-section-ringed-spaces"
+        },
+        {
+          "chapter": "sheaves",
+          "label": "section-ringed-spaces-functoriality-modules",
+          "title": "Morphisms of ringed spaces and modules",
+          "tag": "0094",
+          "number": "6.26",
+          "kind": "section",
+          "slug": "sheaves-ringed-spaces-functoriality-modules",
+          "route": "ringed-spaces",
+          "key": "sheaves-section-ringed-spaces-functoriality-modules"
+        },
+        {
+          "chapter": "sheaves",
+          "label": "section-open-immersions",
+          "title": "Open immersions and (pre)sheaves",
+          "tag": "009Z",
+          "number": "6.31",
+          "kind": "section",
+          "slug": "sheaves-open-immersions",
+          "route": "ringed-spaces",
+          "key": "sheaves-section-open-immersions"
+        },
+        {
+          "chapter": "schemes",
+          "label": "section-locally-ringed-spaces",
+          "title": "Locally ringed spaces",
+          "tag": "01HA",
+          "number": "26.2",
+          "kind": "section",
+          "slug": "schemes-locally-ringed-spaces",
+          "route": "ringed-spaces",
+          "key": "schemes-section-locally-ringed-spaces"
+        },
+        {
+          "chapter": "schemes",
+          "label": "section-open-immersion",
+          "title": "Open immersions of locally ringed spaces",
+          "tag": "01HD",
+          "number": "26.3",
+          "kind": "section",
+          "slug": "schemes-open-immersion",
+          "route": "ringed-spaces",
+          "key": "schemes-section-open-immersion"
+        }
+      ]
+    },
+    {
+      "slug": "affine-schemes",
+      "title": "Constructing an affine scheme",
+      "subtitle": "The structure sheaf on a spectrum",
+      "support": false,
+      "sections": [
+        {
+          "chapter": "algebra",
+          "label": "section-more-glueing",
+          "title": "Glueing properties",
+          "tag": "00EN",
+          "number": "10.23",
+          "kind": "section",
+          "slug": "algebra-more-glueing",
+          "route": "affine-schemes",
+          "key": "algebra-section-more-glueing"
+        },
+        {
+          "chapter": "algebra",
+          "label": "section-tilde-module-sheaf",
+          "title": "Glueing functions",
+          "tag": "00EI",
+          "number": "10.24",
+          "kind": "section",
+          "slug": "algebra-tilde-module-sheaf",
+          "route": "affine-schemes",
+          "key": "algebra-section-tilde-module-sheaf"
+        },
+        {
+          "chapter": "modules",
+          "label": "section-kernels",
+          "title": "The abelian category of sheaves of modules",
+          "tag": "01AF",
+          "number": "17.3",
+          "kind": "section",
+          "slug": "modules-kernels",
+          "route": "affine-schemes",
+          "key": "modules-section-kernels"
+        },
+        {
+          "chapter": "schemes",
+          "label": "section-affine-schemes",
+          "title": "Affine schemes",
+          "tag": "01HR",
+          "number": "26.5",
+          "kind": "section",
+          "slug": "schemes-affine-schemes",
+          "route": "affine-schemes",
+          "key": "schemes-section-affine-schemes"
+        },
+        {
+          "chapter": "schemes",
+          "label": "section-category-affine-schemes",
+          "title": "The category of affine schemes",
+          "tag": "01HX",
+          "number": "26.6",
+          "kind": "section",
+          "slug": "schemes-category-affine-schemes",
+          "route": "affine-schemes",
+          "key": "schemes-section-category-affine-schemes"
+        }
+      ]
+    },
+    {
+      "slug": "schemes",
+      "title": "The definition of a scheme",
+      "subtitle": "An atlas made of affine schemes",
+      "support": false,
+      "sections": [
+        {
+          "chapter": "schemes",
+          "label": "section-schemes",
+          "title": "Schemes",
+          "tag": "01II",
+          "number": "26.9",
+          "kind": "section",
+          "slug": "schemes-schemes",
+          "route": "schemes",
+          "key": "schemes-section-schemes"
+        }
+      ]
+    },
+    {
+      "slug": "scheme-support",
+      "title": "Supporting algebra and category language",
+      "subtitle": "Reference sections used by the construction",
+      "support": true,
+      "sections": [
+        {
+          "chapter": "categories",
+          "label": "section-definition-categories",
+          "title": "Definitions",
+          "tag": "0013",
+          "number": "4.2",
+          "kind": "section",
+          "slug": "categories-definition-categories",
+          "route": "scheme-support",
+          "key": "categories-section-definition-categories"
+        },
+        {
+          "chapter": "categories",
+          "label": "section-fibre-products",
+          "title": "Fibre products",
+          "tag": "001U",
+          "number": "4.6",
+          "kind": "section",
+          "slug": "categories-fibre-products",
+          "route": "scheme-support",
+          "key": "categories-section-fibre-products"
+        },
+        {
+          "chapter": "categories",
+          "label": "section-equalizers",
+          "title": "Equalizers",
+          "tag": "0027",
+          "number": "4.10",
+          "kind": "section",
+          "slug": "categories-equalizers",
+          "route": "scheme-support",
+          "key": "categories-section-equalizers"
+        },
+        {
+          "chapter": "categories",
+          "label": "section-limits",
+          "title": "Limits and colimits",
+          "tag": "002D",
+          "number": "4.14",
+          "kind": "section",
+          "slug": "categories-limits",
+          "route": "scheme-support",
+          "key": "categories-section-limits"
+        },
+        {
+          "chapter": "categories",
+          "label": "section-limit-sets",
+          "title": "Limits and colimits in the category of sets",
+          "tag": "002U",
+          "number": "4.15",
+          "kind": "section",
+          "slug": "categories-limit-sets",
+          "route": "scheme-support",
+          "key": "categories-section-limit-sets"
+        },
+        {
+          "chapter": "categories",
+          "label": "section-directed-colimits",
+          "title": "Filtered colimits",
+          "tag": "04AX",
+          "number": "4.19",
+          "kind": "section",
+          "slug": "categories-directed-colimits",
+          "route": "scheme-support",
+          "key": "categories-section-directed-colimits"
+        },
+        {
+          "chapter": "categories",
+          "label": "section-posets-limits",
+          "title": "Limits and colimits over preordered sets",
+          "tag": "002Z",
+          "number": "4.21",
+          "kind": "section",
+          "slug": "categories-posets-limits",
+          "route": "scheme-support",
+          "key": "categories-section-posets-limits"
+        },
+        {
+          "chapter": "categories",
+          "label": "section-exact-functor",
+          "title": "Exact functors",
+          "tag": "0033",
+          "number": "4.23",
+          "kind": "section",
+          "slug": "categories-exact-functor",
+          "route": "scheme-support",
+          "key": "categories-section-exact-functor"
+        },
+        {
+          "chapter": "categories",
+          "label": "section-adjoint",
+          "title": "Adjoint functors",
+          "tag": "0036",
+          "number": "4.24",
+          "kind": "section",
+          "slug": "categories-adjoint",
+          "route": "scheme-support",
+          "key": "categories-section-adjoint"
+        },
+        {
+          "chapter": "algebra",
+          "label": "section-module-finite-type",
+          "title": "Finite modules and finitely presented modules",
+          "tag": "0517",
+          "number": "10.5",
+          "kind": "section",
+          "slug": "algebra-module-finite-type",
+          "route": "scheme-support",
+          "key": "algebra-section-module-finite-type"
+        },
+        {
+          "chapter": "algebra",
+          "label": "section-finite-type",
+          "title": "Ring maps of finite type and of finite presentation",
+          "tag": "00F2",
+          "number": "10.6",
+          "kind": "section",
+          "slug": "algebra-finite-type",
+          "route": "scheme-support",
+          "key": "algebra-section-finite-type"
+        },
+        {
+          "chapter": "algebra",
+          "label": "section-hom",
+          "title": "Internal Hom",
+          "tag": "0581",
+          "number": "10.10",
+          "kind": "section",
+          "slug": "algebra-hom",
+          "route": "scheme-support",
+          "key": "algebra-section-hom"
+        },
+        {
+          "chapter": "algebra",
+          "label": "section-miscellany",
+          "title": "Miscellany",
+          "tag": "00DR",
+          "number": "10.15",
+          "kind": "section",
+          "slug": "algebra-miscellany",
+          "route": "scheme-support",
+          "key": "algebra-section-miscellany"
+        },
+        {
+          "chapter": "algebra",
+          "label": "section-nakayama",
+          "title": "Nakayama's lemma",
+          "tag": "07RC",
+          "number": "10.20",
+          "kind": "section",
+          "slug": "algebra-nakayama",
+          "route": "scheme-support",
+          "key": "algebra-section-nakayama"
+        },
+        {
+          "chapter": "algebra",
+          "label": "section-open-and-closed",
+          "title": "Open and closed subsets of spectra",
+          "tag": "04PN",
+          "number": "10.21",
+          "kind": "section",
+          "slug": "algebra-open-and-closed",
+          "route": "scheme-support",
+          "key": "algebra-section-open-and-closed"
+        },
+        {
+          "chapter": "algebra",
+          "label": "section-images-finite-presentation",
+          "title": "Images of ring maps of finite presentation",
+          "tag": "00F5",
+          "number": "10.29",
+          "kind": "section",
+          "slug": "algebra-images-finite-presentation",
+          "route": "scheme-support",
+          "key": "algebra-section-images-finite-presentation"
+        },
+        {
+          "chapter": "topology",
+          "label": "section-noetherian",
+          "title": "Noetherian topological spaces",
+          "tag": "0050",
+          "number": "5.9",
+          "kind": "section",
+          "slug": "topology-noetherian",
+          "route": "scheme-support",
+          "key": "topology-section-noetherian"
+        },
+        {
+          "chapter": "topology",
+          "label": "section-constructible",
+          "title": "Constructible sets",
+          "tag": "04ZC",
+          "number": "5.15",
+          "kind": "section",
+          "slug": "topology-constructible",
+          "route": "scheme-support",
+          "key": "topology-section-constructible"
+        },
+        {
+          "chapter": "topology",
+          "label": "section-constructible-Noetherian",
+          "title": "Constructible sets and Noetherian spaces",
+          "tag": "053X",
+          "number": "5.16",
+          "kind": "section",
+          "slug": "topology-constructible-Noetherian",
+          "route": "scheme-support",
+          "key": "topology-section-constructible-Noetherian"
+        },
+        {
+          "chapter": "homology",
+          "label": "section-additive-categories",
+          "title": "Preadditive and additive categories",
+          "tag": "09SE",
+          "number": "12.3",
+          "kind": "section",
+          "slug": "homology-additive-categories",
+          "route": "scheme-support",
+          "key": "homology-section-additive-categories"
+        },
+        {
+          "chapter": "homology",
+          "label": "section-abelian-categories",
+          "title": "Abelian categories",
+          "tag": "00ZX",
+          "number": "12.5",
+          "kind": "section",
+          "slug": "homology-abelian-categories",
+          "route": "scheme-support",
+          "key": "homology-section-abelian-categories"
+        },
+        {
+          "chapter": "homology",
+          "label": "section-functors",
+          "title": "Additive functors",
+          "tag": "010M",
+          "number": "12.7",
+          "kind": "section",
+          "slug": "homology-functors",
+          "route": "scheme-support",
+          "key": "homology-section-functors"
+        }
+      ]
+    }
+  ],
+  "routes": {
+    "topology-section-topology-basic": "topology-functions",
+    "topology-item-space": "topology-functions",
+    "topology-item-point": "topology-functions",
+    "topology-item-locally-closed": "topology-functions",
+    "topology-item-closed-point": "topology-functions",
+    "topology-item-dense": "topology-functions",
+    "topology-item-continuous": "topology-functions",
+    "topology-item-upper-semi-continuous": "topology-functions",
+    "topology-item-lower-semi-continuous": "topology-functions",
+    "topology-item-neighbourhood": "topology-functions",
+    "topology-item-induced-topology": "topology-functions",
+    "topology-item-covering": "topology-functions",
+    "topology-item-subcover": "topology-functions",
+    "topology-item-refinement": "topology-functions",
+    "topology-item-fundamental-system": "topology-functions",
+    "topology-item-Hausdorff": "topology-functions",
+    "topology-item-product": "topology-functions",
+    "topology-item-fibre-product": "topology-functions",
+    "topology-item-discrete-indiscrete": "topology-functions",
+    "topology-section-bases": "topology-functions",
+    "topology-definition-base": "topology-functions",
+    "topology-lemma-make-base": "topology-functions",
+    "topology-lemma-refine-covering-basis": "topology-functions",
+    "topology-definition-subbase": "topology-functions",
+    "topology-lemma-subbase": "topology-functions",
+    "topology-lemma-create-map-from-subcollection": "topology-functions",
+    "topology-section-irreducible-components": "topology-functions",
+    "topology-definition-irreducible-components": "topology-functions",
+    "topology-lemma-image-irreducible-space": "topology-functions",
+    "topology-lemma-irreducible": "topology-functions",
+    "topology-lemma-pick-irreducible-components": "topology-functions",
+    "topology-lemma-surjective-continuous-irreducible-components": "topology-functions",
+    "topology-definition-generic-point": "topology-functions",
+    "topology-lemma-sober-subspace": "topology-functions",
+    "topology-lemma-sober-local": "topology-functions",
+    "topology-example-quasi-sober-not-kolmogorov": "topology-functions",
+    "topology-example-kolmogorov-not-quasi-sober": "topology-functions",
+    "topology-example-not-kolmogorov-not-quasi-sober": "topology-functions",
+    "topology-example-sober-subspace": "topology-functions",
+    "topology-example-Hausdorff": "topology-functions",
+    "topology-lemma-irreducible-on-top": "topology-functions",
+    "topology-lemma-irreducible-fibres-irreducible-components": "topology-functions",
+    "topology-lemma-make-sober": "topology-functions",
+    "topology-lemma-remove-irreducible-connected": "topology-functions",
+    "topology-section-quasi-compact": "topology-functions",
+    "topology-definition-quasi-compact": "topology-functions",
+    "topology-lemma-composition-quasi-compact": "topology-functions",
+    "topology-lemma-closed-in-quasi-compact": "topology-functions",
+    "topology-lemma-quasi-compact-in-Hausdorff": "topology-functions",
+    "topology-lemma-closed-in-compact": "topology-functions",
+    "topology-lemma-intersection-closed-in-quasi-compact": "topology-functions",
+    "topology-lemma-image-quasi-compact": "topology-functions",
+    "topology-lemma-quasi-compact-closed-point": "topology-functions",
+    "topology-lemma-closed-points-quasi-compact": "topology-functions",
+    "topology-lemma-connected-component-intersection": "topology-functions",
+    "topology-lemma-connected-component-intersection-compact-Hausdorff": "topology-functions",
+    "topology-lemma-closed-union-connected-components": "topology-functions",
+    "topology-lemma-Noetherian-quasi-compact": "topology-functions",
+    "topology-lemma-quasi-compact-locally-Noetherian-Noetherian": "topology-functions",
+    "topology-lemma-subbase-theorem": "topology-functions",
+    "topology-section-specialization": "topology-functions",
+    "topology-definition-specialization": "topology-functions",
+    "topology-lemma-open-closed-specialization": "topology-functions",
+    "topology-lemma-stable-specialization": "topology-functions",
+    "topology-definition-lift-specializations": "topology-functions",
+    "topology-lemma-lift-specialization-composition": "topology-functions",
+    "topology-lemma-lift-specializations-images": "topology-functions",
+    "topology-lemma-closed-open-map-specialization": "topology-functions",
+    "topology-lemma-quotient-kolmogorov": "topology-functions",
+    "topology-lemma-dimension-specializations-lift": "topology-functions",
+    "topology-lemma-characterize-closed-Noetherian": "topology-functions",
+    "algebra-section-conventions": "rings-and-germs",
+    "algebra-section-rings-basic": "rings-and-germs",
+    "algebra-item-ring": "rings-and-germs",
+    "algebra-item-ring-element-nilpotent": "rings-and-germs",
+    "algebra-item-ring-element-zerodivisor": "rings-and-germs",
+    "algebra-item-ring-element-unit": "rings-and-germs",
+    "algebra-item-ring-element-idempotent": "rings-and-germs",
+    "algebra-item-idempotent-trivial": "rings-and-germs",
+    "algebra-item-ring-homomorphism": "rings-and-germs",
+    "algebra-item-ring-homomorphism-finite-presentation": "rings-and-germs",
+    "algebra-item-ring-homomorphism-finite-type": "rings-and-germs",
+    "algebra-item-ring-homomorphism-finite": "rings-and-germs",
+    "algebra-item-ring-domain": "rings-and-germs",
+    "algebra-item-ring-reduced": "rings-and-germs",
+    "algebra-item-ring-Noetherian": "rings-and-germs",
+    "algebra-item-ring-PID": "rings-and-germs",
+    "algebra-item-ring-Euclidean": "rings-and-germs",
+    "algebra-item-ring-UFD": "rings-and-germs",
+    "algebra-item-ring-dvr": "rings-and-germs",
+    "algebra-item-field": "rings-and-germs",
+    "algebra-item-field-extension": "rings-and-germs",
+    "algebra-item-field-extension-algebraic": "rings-and-germs",
+    "algebra-item-transcendence-basis": "rings-and-germs",
+    "algebra-item-transcendence-degree": "rings-and-germs",
+    "algebra-item-algebraically-closed": "rings-and-germs",
+    "algebra-item-extend-into-algebraically-closed": "rings-and-germs",
+    "algebra-item-ideal": "rings-and-germs",
+    "algebra-item-ideal-radical": "rings-and-germs",
+    "algebra-item-radical-ideal": "rings-and-germs",
+    "algebra-item-ideal-nilpotent": "rings-and-germs",
+    "algebra-item-ideal-locally-nilpotent": "rings-and-germs",
+    "algebra-item-prime-ideal": "rings-and-germs",
+    "algebra-item-prime-product-ideals": "rings-and-germs",
+    "algebra-item-maximal-ideal": "rings-and-germs",
+    "algebra-item-exists-maximal-ideal": "rings-and-germs",
+    "algebra-item-jacobson-radical": "rings-and-germs",
+    "algebra-item-ideal-generated-by": "rings-and-germs",
+    "algebra-item-quotient-ring": "rings-and-germs",
+    "algebra-item-characterize-prime-ideal": "rings-and-germs",
+    "algebra-item-characterize-maximal-ideal": "rings-and-germs",
+    "algebra-item-inverse-image-ideal": "rings-and-germs",
+    "algebra-item-image-ideal": "rings-and-germs",
+    "algebra-item-inverse-image-prime": "rings-and-germs",
+    "algebra-item-module": "rings-and-germs",
+    "algebra-item-annihilator": "rings-and-germs",
+    "algebra-item-submodule": "rings-and-germs",
+    "algebra-item-Noetherian-module": "rings-and-germs",
+    "algebra-item-finite-module": "rings-and-germs",
+    "algebra-item-finitely-generated-module": "rings-and-germs",
+    "algebra-item-finitely-presented-module": "rings-and-germs",
+    "algebra-item-free-module": "rings-and-germs",
+    "algebra-item-extension-free": "rings-and-germs",
+    "algebra-item-isomorphism-theorem": "rings-and-germs",
+    "algebra-item-multiplicative-subset": "rings-and-germs",
+    "algebra-item-localization-ring": "rings-and-germs",
+    "algebra-item-localization-zero": "rings-and-germs",
+    "algebra-item-localize-nonzerodivisors": "rings-and-germs",
+    "algebra-item-products-multiplicative-subsets": "rings-and-germs",
+    "algebra-item-localization-localization": "rings-and-germs",
+    "algebra-item-localization-module": "rings-and-germs",
+    "algebra-item-localization-exact": "rings-and-germs",
+    "algebra-item-localization-localization-module": "rings-and-germs",
+    "algebra-item-localize-ideal": "rings-and-germs",
+    "algebra-item-ideal-in-localization": "rings-and-germs",
+    "algebra-item-submodule-in-localization": "rings-and-germs",
+    "algebra-item-localize-f": "rings-and-germs",
+    "algebra-item-localize-p": "rings-and-germs",
+    "algebra-item-local-ring": "rings-and-germs",
+    "algebra-item-semi-local-ring": "rings-and-germs",
+    "algebra-item-localize-p-local-ring": "rings-and-germs",
+    "algebra-item-residue-field": "rings-and-germs",
+    "algebra-item-tensor-product": "rings-and-germs",
+    "algebra-item-cauchy-binet": "rings-and-germs",
+    "algebra-section-snake": "rings-and-germs",
+    "algebra-lemma-snake": "rings-and-germs",
+    "algebra-section-colimits": "rings-and-germs",
+    "algebra-definition-directed-system": "rings-and-germs",
+    "algebra-lemma-colimit": "rings-and-germs",
+    "algebra-lemma-directed-colimit": "rings-and-germs",
+    "algebra-lemma-zero-directed-limit": "rings-and-germs",
+    "algebra-example-zero-colimit-different": "rings-and-germs",
+    "algebra-definition-homomorphism-directed-systems": "rings-and-germs",
+    "algebra-lemma-homomorphism-limit": "rings-and-germs",
+    "algebra-lemma-directed-colimit-exact": "rings-and-germs",
+    "algebra-example-colimit-not-exact": "rings-and-germs",
+    "algebra-lemma-almost-directed-colimit-exact": "rings-and-germs",
+    "algebra-section-localization": "rings-and-germs",
+    "algebra-definition-multiplicative-subset": "rings-and-germs",
+    "algebra-definition-localization": "rings-and-germs",
+    "algebra-proposition-universal-property-localization": "rings-and-germs",
+    "algebra-lemma-localization-zero": "rings-and-germs",
+    "algebra-lemma-localization-and-modules": "rings-and-germs",
+    "algebra-definition-localization-module": "rings-and-germs",
+    "algebra-lemma-universal-property-localization-module": "rings-and-germs",
+    "algebra-example-localize-at-prime": "rings-and-germs",
+    "algebra-lemma-localization-colimit": "rings-and-germs",
+    "algebra-proposition-localize-twice": "rings-and-germs",
+    "algebra-proposition-localize-twice-module": "rings-and-germs",
+    "algebra-proposition-localization-exact": "rings-and-germs",
+    "algebra-lemma-localize-quotient-modules": "rings-and-germs",
+    "algebra-proposition-localize-quotient": "rings-and-germs",
+    "algebra-lemma-submodule-localization": "rings-and-germs",
+    "algebra-lemma-ideal-in-localization": "rings-and-germs",
+    "algebra-section-local-rings": "rings-and-germs",
+    "algebra-definition-local-ring": "rings-and-germs",
+    "algebra-example-not-local": "rings-and-germs",
+    "algebra-lemma-characterize-local-ring": "rings-and-germs",
+    "algebra-lemma-characterize-local-ring-map": "rings-and-germs",
+    "algebra-remark-fundamental-diagram": "rings-and-germs",
+    "algebra-lemma-in-image": "rings-and-germs",
+    "algebra-remark-local-ring-fibre": "rings-and-germs",
+    "algebra-section-spectrum-ring": "spectra",
+    "algebra-definition-spectrum-ring": "spectra",
+    "algebra-lemma-Zariski-topology": "spectra",
+    "algebra-definition-Zariski-topology": "spectra",
+    "algebra-lemma-spec-functorial": "spectra",
+    "algebra-lemma-spec-localization": "spectra",
+    "algebra-lemma-standard-open": "spectra",
+    "algebra-lemma-spec-closed": "spectra",
+    "algebra-lemma-quasi-compact": "spectra",
+    "algebra-lemma-topology-spec": "spectra",
+    "sheaves-section-sheaves-basic": "sheaves-and-stalks",
+    "sheaves-section-presheaves": "sheaves-and-stalks",
+    "sheaves-definition-presheaf": "sheaves-and-stalks",
+    "sheaves-definition-constant-presheaf": "sheaves-and-stalks",
+    "sheaves-section-abelian-presheaves": "sheaves-and-stalks",
+    "sheaves-example-singleton-presheaf": "sheaves-and-stalks",
+    "sheaves-lemma-product-presheaves": "sheaves-and-stalks",
+    "sheaves-lemma-abelian-presheaves": "sheaves-and-stalks",
+    "sheaves-definition-abelian-presheaves": "sheaves-and-stalks",
+    "sheaves-example-direct-sum-points": "sheaves-and-stalks",
+    "sheaves-section-presheaves-structures": "sheaves-and-stalks",
+    "sheaves-definition-presheaf-values-in-category": "sheaves-and-stalks",
+    "sheaves-definition-underlying-presheaf-sets": "sheaves-and-stalks",
+    "sheaves-section-presheaves-modules": "sheaves-and-stalks",
+    "sheaves-definition-presheaf-modules": "sheaves-and-stalks",
+    "sheaves-lemma-adjointness-tensor-restrict-presheaves": "sheaves-and-stalks",
+    "sheaves-section-sheaves": "sheaves-and-stalks",
+    "sheaves-definition-sheaf": "sheaves-and-stalks",
+    "sheaves-remark-confusion": "sheaves-and-stalks",
+    "sheaves-example-basic-continuous-maps": "sheaves-and-stalks",
+    "sheaves-definition-constant-sheaf": "sheaves-and-stalks",
+    "sheaves-example-sheaf-product-pointwise": "sheaves-and-stalks",
+    "sheaves-example-direct-sum-points-not-sheaf": "sheaves-and-stalks",
+    "sheaves-section-abelian-sheaves": "sheaves-and-stalks",
+    "sheaves-definition-abelian-sheaf": "sheaves-and-stalks",
+    "sheaves-section-sheaves-structures": "sheaves-and-stalks",
+    "sheaves-definition-sheaf-values-in-category": "sheaves-and-stalks",
+    "sheaves-lemma-sheaves-structure": "sheaves-and-stalks",
+    "sheaves-example-C0-sheaf-rings": "sheaves-and-stalks",
+    "sheaves-example-sheaves-topological-spaces": "sheaves-and-stalks",
+    "sheaves-section-sheaves-modules": "sheaves-and-stalks",
+    "sheaves-definition-sheaf-modules": "sheaves-and-stalks",
+    "sheaves-section-stalks": "sheaves-and-stalks",
+    "sheaves-lemma-sheaf-subset-stalks": "sheaves-and-stalks",
+    "sheaves-definition-separated": "sheaves-and-stalks",
+    "sheaves-example-stalk-constant-presheaf": "sheaves-and-stalks",
+    "sheaves-example-germs-functions": "sheaves-and-stalks",
+    "sheaves-example-sheaf-product-pointwise-stalk": "sheaves-and-stalks",
+    "sheaves-section-stalks-abelian-presheaves": "sheaves-and-stalks",
+    "sheaves-lemma-stalk-abelian-presheaf": "sheaves-and-stalks",
+    "sheaves-section-stalks-presheaves-structures": "sheaves-and-stalks",
+    "sheaves-lemma-stalk-presheaf-values-in-category": "sheaves-and-stalks",
+    "sheaves-section-stalk-presheaves-modules": "sheaves-and-stalks",
+    "sheaves-lemma-stalk-module": "sheaves-and-stalks",
+    "sheaves-lemma-stalk-tensor-presheaf-modules": "sheaves-and-stalks",
+    "sheaves-section-algebraic-structures": "sheaves-and-stalks",
+    "sheaves-definition-algebraic-structure": "sheaves-and-stalks",
+    "sheaves-lemma-list-algebraic-structures": "sheaves-and-stalks",
+    "sheaves-lemma-properties-algebraic-structures": "sheaves-and-stalks",
+    "sheaves-lemma-image-contained-in": "sheaves-and-stalks",
+    "sheaves-example-application-lemma-image-contained-in": "sheaves-and-stalks",
+    "sheaves-example-sheaf-product-pointwise-algebraic-structure": "sheaves-and-stalks",
+    "sheaves-section-exactness-points": "sheaves-and-stalks",
+    "sheaves-lemma-points-exactness": "sheaves-and-stalks",
+    "sheaves-definition-injective-surjective": "sheaves-and-stalks",
+    "sheaves-lemma-characterize-epi-mono": "sheaves-and-stalks",
+    "sheaves-lemma-check-homomorphism-stalks": "sheaves-and-stalks",
+    "sheaves-section-sheafification": "sheafification-and-bases",
+    "sheaves-lemma-sheafification-sheaf": "sheafification-and-bases",
+    "sheaves-lemma-stalk-sheafification": "sheafification-and-bases",
+    "sheaves-lemma-sheafify-universal": "sheafification-and-bases",
+    "sheaves-example-sheafify-constant": "sheafification-and-bases",
+    "sheaves-lemma-separated-presheaf-into-sheaf": "sheafification-and-bases",
+    "sheaves-lemma-sheafify-epi-mono": "sheafification-and-bases",
+    "sheaves-section-sheafify-abelian-presheaves": "sheafification-and-bases",
+    "sheaves-lemma-diagram-fibre-product": "sheafification-and-bases",
+    "sheaves-lemma-sheafify-abelian-presheaf": "sheafification-and-bases",
+    "sheaves-section-sheafification-presheaves-structures": "sheafification-and-bases",
+    "sheaves-lemma-sheafify-presheaf-structures": "sheafification-and-bases",
+    "sheaves-section-sheafification-presheaves-modules": "sheafification-and-bases",
+    "sheaves-lemma-sheafification-presheaf-modules": "sheafification-and-bases",
+    "sheaves-lemma-adjointness-tensor-restrict": "sheafification-and-bases",
+    "sheaves-lemma-stalk-tensor-sheaf-modules": "sheafification-and-bases",
+    "sheaves-section-bases": "sheafification-and-bases",
+    "sheaves-definition-presheaf-basis": "sheafification-and-bases",
+    "sheaves-definition-sheaf-basis": "sheafification-and-bases",
+    "sheaves-lemma-cofinal-systems-coverings": "sheafification-and-bases",
+    "sheaves-lemma-cofinal-systems-coverings-standard-case": "sheafification-and-bases",
+    "sheaves-lemma-condition-star-sections": "sheafification-and-bases",
+    "sheaves-lemma-extend-off-basis": "sheafification-and-bases",
+    "sheaves-lemma-restrict-basis-equivalence": "sheafification-and-bases",
+    "sheaves-definition-sheaf-structures-basis": "sheafification-and-bases",
+    "sheaves-lemma-extend-off-basis-structures": "sheafification-and-bases",
+    "sheaves-lemma-restrict-basis-equivalence-structures": "sheafification-and-bases",
+    "sheaves-definition-sheaf-modules-basis": "sheafification-and-bases",
+    "sheaves-lemma-extend-off-basis-module": "sheafification-and-bases",
+    "sheaves-lemma-restrict-basis-equivalence-modules": "sheafification-and-bases",
+    "sheaves-lemma-f-map-basis-below-structures": "sheafification-and-bases",
+    "sheaves-lemma-f-map-basis-below-modules": "sheafification-and-bases",
+    "sheaves-lemma-f-map-basis-above-and-below-structures": "sheafification-and-bases",
+    "sheaves-lemma-f-map-basis-above-and-below-modules": "sheafification-and-bases",
+    "sheaves-section-presheaves-functorial": "ringed-spaces",
+    "sheaves-lemma-pushforward-sheaf": "ringed-spaces",
+    "sheaves-lemma-pushforward-composition": "ringed-spaces",
+    "sheaves-lemma-pullback-presheaves": "ringed-spaces",
+    "sheaves-lemma-stalk-pullback-presheaf": "ringed-spaces",
+    "sheaves-lemma-stalk-pullback": "ringed-spaces",
+    "sheaves-lemma-pullback-composition": "ringed-spaces",
+    "sheaves-definition-f-map": "ringed-spaces",
+    "sheaves-lemma-f-map": "ringed-spaces",
+    "sheaves-definition-composition-f-maps": "ringed-spaces",
+    "sheaves-lemma-compose-f-maps-stalks": "ringed-spaces",
+    "sheaves-section-abelian-presheaves-functorial": "ringed-spaces",
+    "sheaves-lemma-pullback-abelian-stalk": "ringed-spaces",
+    "sheaves-section-presheaves-structures-functorial": "ringed-spaces",
+    "sheaves-lemma-f-map-sets-algebraic-structures": "ringed-spaces",
+    "sheaves-section-presheaves-modules-functorial": "ringed-spaces",
+    "sheaves-lemma-pushforward-presheaf-module": "ringed-spaces",
+    "sheaves-lemma-pullback-presheaf-module": "ringed-spaces",
+    "sheaves-lemma-adjoint-push-pull-presheaves-modules": "ringed-spaces",
+    "sheaves-lemma-adjoint-pull-push-presheaves-modules": "ringed-spaces",
+    "sheaves-lemma-pushforward-module": "ringed-spaces",
+    "sheaves-lemma-pullback-module": "ringed-spaces",
+    "sheaves-lemma-adjoint-push-pull-modules": "ringed-spaces",
+    "sheaves-lemma-adjoint-pull-push-modules": "ringed-spaces",
+    "sheaves-section-ringed-spaces": "ringed-spaces",
+    "sheaves-definition-ringed-space": "ringed-spaces",
+    "sheaves-example-continuous-map-ringed": "ringed-spaces",
+    "sheaves-definition-composition-maps-ringed-spaces": "ringed-spaces",
+    "sheaves-section-ringed-spaces-functoriality-modules": "ringed-spaces",
+    "sheaves-definition-pushforward": "ringed-spaces",
+    "sheaves-lemma-adjoint-pullback-pushforward-modules": "ringed-spaces",
+    "sheaves-lemma-push-pull-composition-modules": "ringed-spaces",
+    "sheaves-lemma-stalk-pullback-modules": "ringed-spaces",
+    "sheaves-section-open-immersions": "ringed-spaces",
+    "sheaves-lemma-j-pullback": "ringed-spaces",
+    "sheaves-definition-restriction": "ringed-spaces",
+    "sheaves-definition-j-shriek": "ringed-spaces",
+    "sheaves-lemma-j-shriek": "ringed-spaces",
+    "sheaves-definition-j-shriek-structures": "ringed-spaces",
+    "sheaves-lemma-j-shriek-abelian": "ringed-spaces",
+    "sheaves-lemma-j-shriek-structures": "ringed-spaces",
+    "sheaves-lemma-j-shriek-modules": "ringed-spaces",
+    "sheaves-lemma-equivalence-categories-open": "ringed-spaces",
+    "sheaves-lemma-equivalence-categories-open-abelian": "ringed-spaces",
+    "sheaves-lemma-equivalence-categories-open-structures": "ringed-spaces",
+    "sheaves-lemma-equivalence-categories-open-modules": "ringed-spaces",
+    "sheaves-remark-j-shriek-not-exact": "ringed-spaces",
+    "schemes-section-locally-ringed-spaces": "ringed-spaces",
+    "schemes-definition-locally-ringed-space": "ringed-spaces",
+    "schemes-lemma-isomorphism-locally-ringed": "ringed-spaces",
+    "schemes-section-open-immersion": "ringed-spaces",
+    "schemes-definition-immersion-locally-ringed-spaces": "ringed-spaces",
+    "schemes-example-open-subspace": "ringed-spaces",
+    "schemes-definition-open-subspace": "ringed-spaces",
+    "schemes-lemma-open-immersion": "ringed-spaces",
+    "schemes-lemma-restrict-map-to-opens": "ringed-spaces",
+    "algebra-section-more-glueing": "affine-schemes",
+    "algebra-lemma-characterize-zero-local": "affine-schemes",
+    "algebra-lemma-cover": "affine-schemes",
+    "algebra-lemma-cover-upstairs": "affine-schemes",
+    "algebra-section-tilde-module-sheaf": "affine-schemes",
+    "algebra-lemma-cover-module": "affine-schemes",
+    "algebra-lemma-standard-covering": "affine-schemes",
+    "algebra-lemma-disjoint-implies-product": "affine-schemes",
+    "algebra-lemma-when-injective-covering": "affine-schemes",
+    "algebra-lemma-glue-modules": "affine-schemes",
+    "modules-section-kernels": "affine-schemes",
+    "modules-lemma-abelian": "affine-schemes",
+    "modules-lemma-limits-colimits": "affine-schemes",
+    "modules-lemma-exactness-pushforward-pullback": "affine-schemes",
+    "modules-lemma-j-shriek-exact": "affine-schemes",
+    "modules-lemma-section-direct-sum-quasi-compact": "affine-schemes",
+    "schemes-section-affine-schemes": "affine-schemes",
+    "schemes-lemma-standard-open": "affine-schemes",
+    "schemes-definition-standard-covering": "affine-schemes",
+    "schemes-definition-structure-sheaf": "affine-schemes",
+    "schemes-lemma-spec-sheaves": "affine-schemes",
+    "schemes-definition-affine-scheme": "affine-schemes",
+    "schemes-section-category-affine-schemes": "affine-schemes",
+    "schemes-lemma-morphism-into-affine-where-point-goes": "affine-schemes",
+    "schemes-lemma-f-open": "affine-schemes",
+    "schemes-lemma-f-open-affine": "affine-schemes",
+    "schemes-lemma-morphism-into-affine": "affine-schemes",
+    "schemes-lemma-category-affine-schemes": "affine-schemes",
+    "schemes-lemma-standard-open-affine": "affine-schemes",
+    "schemes-lemma-fibre-product-affine-schemes": "affine-schemes",
+    "schemes-lemma-disjoint-union-affines": "affine-schemes",
+    "schemes-section-schemes": "schemes",
+    "schemes-definition-scheme": "schemes",
+    "schemes-lemma-open-subspace-scheme": "schemes",
+    "schemes-example-not-affine": "schemes",
+    "categories-section-definition-categories": "scheme-support",
+    "categories-definition-category": "scheme-support",
+    "categories-remark-big-categories": "scheme-support",
+    "categories-remark-unique-identity": "scheme-support",
+    "categories-definition-isomorphism": "scheme-support",
+    "categories-definition-groupoid": "scheme-support",
+    "categories-example-group-groupoid": "scheme-support",
+    "categories-example-set-groupoid": "scheme-support",
+    "categories-definition-functor": "scheme-support",
+    "categories-definition-faithful": "scheme-support",
+    "categories-definition-subcategory": "scheme-support",
+    "categories-remark-functor-into-sets": "scheme-support",
+    "categories-example-group-homomorphism-functor": "scheme-support",
+    "categories-example-category-over-X": "scheme-support",
+    "categories-example-category-under-X": "scheme-support",
+    "categories-definition-transformation-functors": "scheme-support",
+    "categories-remark-functors-sets-sets": "scheme-support",
+    "categories-definition-equivalence-categories": "scheme-support",
+    "categories-lemma-construct-quasi-inverse": "scheme-support",
+    "categories-lemma-equivalence-categories": "scheme-support",
+    "categories-definition-product-category": "scheme-support",
+    "categories-section-fibre-products": "scheme-support",
+    "categories-definition-fibre-products": "scheme-support",
+    "categories-definition-cartesian": "scheme-support",
+    "categories-definition-has-fibre-products": "scheme-support",
+    "categories-definition-representable-morphism": "scheme-support",
+    "categories-lemma-composition-representable": "scheme-support",
+    "categories-lemma-base-change-representable": "scheme-support",
+    "categories-section-equalizers": "scheme-support",
+    "categories-definition-equalizers": "scheme-support",
+    "categories-section-limits": "scheme-support",
+    "categories-definition-limit": "scheme-support",
+    "categories-definition-colimit": "scheme-support",
+    "categories-remark-diagram-small": "scheme-support",
+    "categories-remark-limit-colim": "scheme-support",
+    "categories-remark-cones-and-cocones": "scheme-support",
+    "categories-definition-product": "scheme-support",
+    "categories-definition-coproduct": "scheme-support",
+    "categories-lemma-functorial-colimit": "scheme-support",
+    "categories-lemma-functorial-limit": "scheme-support",
+    "categories-lemma-colimits-commute": "scheme-support",
+    "categories-lemma-limits-products-equalizers": "scheme-support",
+    "categories-lemma-colimits-coproducts-coequalizers": "scheme-support",
+    "categories-section-limit-sets": "scheme-support",
+    "categories-section-directed-colimits": "scheme-support",
+    "categories-definition-directed": "scheme-support",
+    "categories-lemma-directed-commutes": "scheme-support",
+    "categories-lemma-cofinal-in-filtered": "scheme-support",
+    "categories-lemma-preserve-products": "scheme-support",
+    "categories-lemma-colimits-abelian-as-sets": "scheme-support",
+    "categories-lemma-split-into-connected": "scheme-support",
+    "categories-lemma-preserve-injective-maps": "scheme-support",
+    "categories-lemma-split-into-directed": "scheme-support",
+    "categories-lemma-almost-directed-commutes-equalizers": "scheme-support",
+    "categories-section-posets-limits": "scheme-support",
+    "categories-definition-directed-set": "scheme-support",
+    "categories-definition-system-over-poset": "scheme-support",
+    "categories-remark-preorder-versus-partial-order": "scheme-support",
+    "categories-definition-directed-system": "scheme-support",
+    "categories-lemma-directed-category-system": "scheme-support",
+    "categories-remark-trick-needed": "scheme-support",
+    "categories-lemma-nonempty-limit": "scheme-support",
+    "categories-section-exact-functor": "scheme-support",
+    "categories-definition-exact": "scheme-support",
+    "categories-lemma-characterize-left-exact": "scheme-support",
+    "categories-lemma-characterize-right-exact": "scheme-support",
+    "categories-section-adjoint": "scheme-support",
+    "categories-definition-adjoint": "scheme-support",
+    "categories-lemma-adjoint-exists": "scheme-support",
+    "categories-lemma-left-adjoint-composed-fully-faithful": "scheme-support",
+    "categories-lemma-adjoint-fully-faithful": "scheme-support",
+    "categories-lemma-adjoint-exact": "scheme-support",
+    "categories-lemma-exact-adjoint": "scheme-support",
+    "categories-lemma-unit-counit-relations": "scheme-support",
+    "categories-lemma-transformation-between-functors-and-adjoints": "scheme-support",
+    "categories-lemma-compose-counits": "scheme-support",
+    "categories-equation-compose-counits": "scheme-support",
+    "algebra-section-module-finite-type": "scheme-support",
+    "algebra-definition-module-finite-type": "scheme-support",
+    "algebra-lemma-lift-map": "scheme-support",
+    "algebra-lemma-extension": "scheme-support",
+    "algebra-lemma-trivial-filter-finite-module": "scheme-support",
+    "algebra-lemma-finite-over-subring": "scheme-support",
+    "algebra-section-finite-type": "scheme-support",
+    "algebra-definition-finite-type": "scheme-support",
+    "algebra-lemma-compose-finite-type": "scheme-support",
+    "algebra-lemma-finite-presentation-independent": "scheme-support",
+    "algebra-lemma-finitely-presented-over-subring": "scheme-support",
+    "algebra-section-hom": "scheme-support",
+    "algebra-lemma-hom-exact": "scheme-support",
+    "algebra-lemma-hom-from-finitely-presented": "scheme-support",
+    "algebra-section-miscellany": "scheme-support",
+    "algebra-lemma-product-ideals-in-prime": "scheme-support",
+    "algebra-lemma-silly": "scheme-support",
+    "algebra-lemma-silly-silly": "scheme-support",
+    "algebra-lemma-chinese-remainder": "scheme-support",
+    "algebra-lemma-matrix-left-inverse": "scheme-support",
+    "algebra-lemma-matrix-right-inverse": "scheme-support",
+    "algebra-lemma-map-cannot-be-injective": "scheme-support",
+    "algebra-lemma-rank": "scheme-support",
+    "algebra-section-nakayama": "scheme-support",
+    "algebra-lemma-NAK": "scheme-support",
+    "algebra-item-nakayama": "scheme-support",
+    "algebra-lemma-NAK-localization": "scheme-support",
+    "algebra-lemma-when-surjective-local": "scheme-support",
+    "algebra-section-open-and-closed": "scheme-support",
+    "algebra-lemma-idempotent-spec": "scheme-support",
+    "algebra-lemma-spec-product": "scheme-support",
+    "algebra-lemma-disjoint-decomposition": "scheme-support",
+    "algebra-lemma-characterize-spec-connected": "scheme-support",
+    "algebra-lemma-ideal-is-squared-union-connected": "scheme-support",
+    "algebra-section-images-finite-presentation": "scheme-support",
+    "algebra-lemma-qc-open": "scheme-support",
+    "algebra-lemma-affine-map-quasi-compact": "scheme-support",
+    "algebra-lemma-constructible": "scheme-support",
+    "algebra-lemma-constructible-is-image": "scheme-support",
+    "algebra-lemma-open-fp": "scheme-support",
+    "algebra-lemma-closed-fp": "scheme-support",
+    "algebra-lemma-affineline-open": "scheme-support",
+    "algebra-lemma-characteristic-polynomial-prime": "scheme-support",
+    "algebra-lemma-affineline-special": "scheme-support",
+    "algebra-theorem-chevalley": "scheme-support",
+    "topology-section-noetherian": "scheme-support",
+    "topology-definition-noetherian": "scheme-support",
+    "topology-lemma-Noetherian": "scheme-support",
+    "topology-lemma-image-Noetherian": "scheme-support",
+    "topology-lemma-finite-union-Noetherian": "scheme-support",
+    "topology-example-locally-Noetherian-no-closed-point": "scheme-support",
+    "topology-lemma-locally-Noetherian-locally-connected": "scheme-support",
+    "topology-section-constructible": "scheme-support",
+    "topology-definition-constructible": "scheme-support",
+    "topology-lemma-constructible": "scheme-support",
+    "topology-lemma-inverse-images-constructibles": "scheme-support",
+    "topology-lemma-open-immersion-constructible-inverse-image": "scheme-support",
+    "topology-lemma-quasi-compact-open-immersion-constructible-image": "scheme-support",
+    "topology-lemma-collate-constructible": "scheme-support",
+    "topology-lemma-intersect-constructible-with-closed": "scheme-support",
+    "topology-lemma-intersect-constructible-with-retrocompact": "scheme-support",
+    "topology-lemma-closed-constructible-image": "scheme-support",
+    "topology-lemma-constructible-is-retrocompact": "scheme-support",
+    "topology-lemma-intersect-constructible-with-constructible": "scheme-support",
+    "topology-lemma-constructible-in-constructible": "scheme-support",
+    "topology-lemma-locally-closed-constructible-image": "scheme-support",
+    "topology-lemma-collate-constructible-from-constructible": "scheme-support",
+    "topology-lemma-generic-point-in-constructible": "scheme-support",
+    "topology-section-constructible-Noetherian": "scheme-support",
+    "topology-lemma-constructible-Noetherian-space": "scheme-support",
+    "topology-lemma-constructible-map-Noetherian": "scheme-support",
+    "topology-lemma-characterize-constructible-Noetherian": "scheme-support",
+    "topology-lemma-constructible-neighbourhood-Noetherian": "scheme-support",
+    "topology-lemma-characterize-open-Noetherian": "scheme-support",
+    "homology-section-additive-categories": "scheme-support",
+    "homology-definition-preadditive": "scheme-support",
+    "homology-lemma-preadditive-zero": "scheme-support",
+    "homology-definition-zero-object": "scheme-support",
+    "homology-lemma-preadditive-direct-sum": "scheme-support",
+    "homology-definition-direct-sum": "scheme-support",
+    "homology-remark-direct-sum": "scheme-support",
+    "homology-lemma-additive-additive": "scheme-support",
+    "homology-definition-additive-category": "scheme-support",
+    "homology-definition-kernel": "scheme-support",
+    "homology-lemma-additive-cat-biproduct-kernel": "scheme-support",
+    "homology-lemma-kernel-mono": "scheme-support",
+    "homology-lemma-coim-im-map": "scheme-support",
+    "homology-example-not-abelian": "scheme-support",
+    "homology-remark-idempotent-symmetry": "scheme-support",
+    "homology-lemma-idempotent-kernel-cokernel": "scheme-support",
+    "homology-lemma-idempotent-splitting": "scheme-support",
+    "homology-lemma-split-morphism-kernel-cokernel": "scheme-support",
+    "homology-lemma-split-morphism-splitting": "scheme-support",
+    "homology-section-abelian-categories": "scheme-support",
+    "homology-definition-abelian-category": "scheme-support",
+    "homology-lemma-abelian-opposite": "scheme-support",
+    "homology-definition-injective-surjective": "scheme-support",
+    "homology-lemma-characterize-injective": "scheme-support",
+    "homology-lemma-colimit-abelian-category": "scheme-support",
+    "homology-example-fibre-product-pushouts": "scheme-support",
+    "homology-definition-exact": "scheme-support",
+    "homology-lemma-check-exactness": "scheme-support",
+    "homology-definition-ses-split": "scheme-support",
+    "homology-lemma-ses-split": "scheme-support",
+    "homology-lemma-characterize-cartesian": "scheme-support",
+    "homology-lemma-cartesian-kernel": "scheme-support",
+    "homology-lemma-cartesian-cocartesian": "scheme-support",
+    "homology-lemma-epimorphism-universal-abelian-category": "scheme-support",
+    "homology-lemma-check-exactness-fibre-product": "scheme-support",
+    "homology-lemma-exact-kernel-sequence": "scheme-support",
+    "homology-lemma-snake": "scheme-support",
+    "homology-lemma-snake-natural": "scheme-support",
+    "homology-lemma-four-lemma": "scheme-support",
+    "homology-lemma-five-lemma": "scheme-support",
+    "homology-section-functors": "scheme-support",
+    "homology-lemma-additive-functor": "scheme-support",
+    "homology-lemma-exact-functor": "scheme-support",
+    "homology-lemma-exact-functor-ext": "scheme-support",
+    "homology-lemma-adjoint-get-abelian": "scheme-support"
+  },
+  "assumed_background": [
+    "Sets and functions",
+    "Basic undergraduate algebra",
+    "Familiarity with holomorphic functions, germs, and Riemann surfaces"
+  ],
+  "scope": "The definitions and construction leading to a scheme, retaining complete source sections and their module variants. Later-theory cross-references and alternative viewpoints remain linked to Stacks.",
+  "source_reference_audit": [
+    {
+      "section": "topology-section-topology-basic",
+      "tag": "004E",
+      "references": [
+        {
+          "label": "topology-item-covering",
+          "tag": "004K",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "topology-section-bases",
+      "tag": "004O",
+      "references": [
+        {
+          "label": "topology-definition-base",
+          "tag": "004P",
+          "included": true
+        },
+        {
+          "label": "topology-definition-base",
+          "tag": "004P",
+          "included": true
+        },
+        {
+          "label": "topology-definition-base",
+          "tag": "004P",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-make-base",
+          "tag": "0D5P",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-make-base",
+          "tag": "0D5P",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "topology-section-irreducible-components",
+      "tag": "004U",
+      "references": [
+        {
+          "label": "topology-lemma-irreducible",
+          "tag": "004W",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-image-irreducible-space",
+          "tag": "0379",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-irreducible",
+          "tag": "004W",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-pick-irreducible-components",
+          "tag": "0G2Y",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-sober-subspace",
+          "tag": "0B31",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-sober-subspace",
+          "tag": "0B31",
+          "included": true
+        },
+        {
+          "label": "topology-example-quasi-sober-not-kolmogorov",
+          "tag": "0B32",
+          "included": true
+        },
+        {
+          "label": "topology-example-kolmogorov-not-quasi-sober",
+          "tag": "0B33",
+          "included": true
+        },
+        {
+          "label": "topology-definition-irreducible-components",
+          "tag": "004V",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-irreducible",
+          "tag": "004W",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-image-irreducible-space",
+          "tag": "0379",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-irreducible-on-top",
+          "tag": "004Z",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "topology-section-quasi-compact",
+      "tag": "0059",
+      "references": [
+        {
+          "label": "topology-lemma-closed-in-quasi-compact",
+          "tag": "005C",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-quasi-compact-in-Hausdorff",
+          "tag": "08YB",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-intersection-closed-in-quasi-compact",
+          "tag": "005D",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-closed-in-quasi-compact",
+          "tag": "005C",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-quasi-compact-closed-point",
+          "tag": "005E",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-closed-in-quasi-compact",
+          "tag": "005C",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-intersection-closed-in-quasi-compact",
+          "tag": "005D",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-closed-in-quasi-compact",
+          "tag": "005C",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-quasi-compact-in-Hausdorff",
+          "tag": "08YB",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-closed-in-quasi-compact",
+          "tag": "005C",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-intersection-closed-in-quasi-compact",
+          "tag": "005D",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-connected-component-intersection",
+          "tag": "005F",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-closed-in-quasi-compact",
+          "tag": "005C",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-intersection-closed-in-quasi-compact",
+          "tag": "005D",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-Noetherian",
+          "tag": "0052",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-finite-union-Noetherian",
+          "tag": "0053",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "topology-section-specialization",
+      "tag": "0060",
+      "references": [
+        {
+          "label": "topology-lemma-Noetherian",
+          "tag": "0052",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-characterize-constructible-Noetherian",
+          "tag": "053Z",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-characterize-open-Noetherian",
+          "tag": "0541",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "algebra-section-conventions",
+      "tag": "00AQ",
+      "references": []
+    },
+    {
+      "section": "algebra-section-rings-basic",
+      "tag": "00AR",
+      "references": [
+        {
+          "label": "algebra-definition-finite-type",
+          "tag": "00F3",
+          "included": true
+        },
+        {
+          "label": "algebra-definition-finite-type",
+          "tag": "00F3",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "algebra-section-snake",
+      "tag": "07JV",
+      "references": [
+        {
+          "label": "homology-section-abelian-categories",
+          "tag": "00ZX",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "algebra-section-colimits",
+      "tag": "07N7",
+      "references": [
+        {
+          "label": "categories-section-limits",
+          "tag": "002D",
+          "included": true
+        },
+        {
+          "label": "categories-section-posets-limits",
+          "tag": "002Z",
+          "included": true
+        },
+        {
+          "label": "categories-definition-directed-set",
+          "tag": "00D3",
+          "included": true
+        },
+        {
+          "label": "categories-definition-system-over-poset",
+          "tag": "0030",
+          "included": true
+        },
+        {
+          "label": "categories-section-posets-limits",
+          "tag": "002Z",
+          "included": true
+        },
+        {
+          "label": "categories-definition-colimit",
+          "tag": "002F",
+          "included": true
+        },
+        {
+          "label": "categories-lemma-colimits-coproducts-coequalizers",
+          "tag": "002P",
+          "included": true
+        },
+        {
+          "label": "categories-section-directed-colimits",
+          "tag": "04AX",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-directed-colimit",
+          "tag": "00D6",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-zero-directed-limit",
+          "tag": "00D7",
+          "included": true
+        },
+        {
+          "label": "categories-lemma-functorial-colimit",
+          "tag": "002K",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-colimit",
+          "tag": "00D5",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-directed-colimit",
+          "tag": "00D6",
+          "included": true
+        },
+        {
+          "label": "algebra-example-zero-colimit-different",
+          "tag": "00D8",
+          "included": true
+        },
+        {
+          "label": "algebra-example-zero-colimit-different",
+          "tag": "00D8",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-directed-colimit-exact",
+          "tag": "00DB",
+          "included": true
+        },
+        {
+          "label": "categories-lemma-split-into-directed",
+          "tag": "002X",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-directed-colimit-exact",
+          "tag": "00DB",
+          "included": true
+        },
+        {
+          "label": "categories-lemma-split-into-directed",
+          "tag": "002X",
+          "included": true
+        },
+        {
+          "label": "categories-lemma-directed-category-system",
+          "tag": "0032",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-directed-colimit-exact",
+          "tag": "00DB",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "algebra-section-localization",
+      "tag": "00CM",
+      "references": [
+        {
+          "label": "fields-example-quotient-field",
+          "tag": "09FJ",
+          "included": false
+        },
+        {
+          "label": "algebra-lemma-universal-property-localization-module",
+          "tag": "07K0",
+          "included": true
+        },
+        {
+          "label": "algebra-proposition-localize-quotient",
+          "tag": "00CT",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-submodule-localization",
+          "tag": "00CU",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "algebra-section-local-rings",
+      "tag": "07BH",
+      "references": [
+        {
+          "label": "algebra-lemma-spec-localization",
+          "tag": "00E3",
+          "included": true
+        },
+        {
+          "label": "algebra-proposition-localize-quotient",
+          "tag": "00CT",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-chinese-remainder",
+          "tag": "00DT",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-characterize-local-ring",
+          "tag": "00E9",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-spec-localization",
+          "tag": "00E3",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-spec-closed",
+          "tag": "00E5",
+          "included": true
+        },
+        {
+          "label": "algebra-remark-fundamental-diagram",
+          "tag": "00E6",
+          "included": true
+        },
+        {
+          "label": "algebra-remark-fundamental-diagram",
+          "tag": "00E6",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "algebra-section-spectrum-ring",
+      "tag": "00DY",
+      "references": [
+        {
+          "label": "algebra-item-radical-ideal",
+          "tag": "00BI",
+          "included": true
+        },
+        {
+          "label": "algebra-definition-spectrum-ring",
+          "tag": "00DZ",
+          "included": true
+        },
+        {
+          "label": "algebra-item-inverse-image-prime",
+          "tag": "00BV",
+          "included": true
+        },
+        {
+          "label": "algebra-item-localization-zero",
+          "tag": "00C6",
+          "included": true
+        },
+        {
+          "label": "algebra-item-localize-ideal",
+          "tag": "00CD",
+          "included": true
+        },
+        {
+          "label": "algebra-item-localize-nonzerodivisors",
+          "tag": "00C7",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-spec-functorial",
+          "tag": "00E2",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-spec-functorial",
+          "tag": "00E2",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-spec-localization",
+          "tag": "00E3",
+          "included": true
+        },
+        {
+          "label": "algebra-example-affine-open-not-standard",
+          "tag": "00F1",
+          "included": false
+        },
+        {
+          "label": "algebra-item-isomorphism-theorem",
+          "tag": "00C3",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-Zariski-topology",
+          "tag": "00E0",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-quasi-compact",
+          "tag": "00E8",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-standard-open",
+          "tag": "00E4",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "sheaves-section-sheaves-basic",
+      "tag": "006C",
+      "references": []
+    },
+    {
+      "section": "sheaves-section-presheaves",
+      "tag": "006D",
+      "references": []
+    },
+    {
+      "section": "sheaves-section-abelian-presheaves",
+      "tag": "006G",
+      "references": [
+        {
+          "label": "categories-definition-product",
+          "tag": "002I",
+          "included": true
+        },
+        {
+          "label": "sheaves-example-singleton-presheaf",
+          "tag": "006H",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-abelian-presheaves",
+          "tag": "006J",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "sheaves-section-presheaves-structures",
+      "tag": "006M",
+      "references": [
+        {
+          "label": "sheaves-definition-abelian-presheaves",
+          "tag": "006K",
+          "included": true
+        },
+        {
+          "label": "sites-definition-presheaf",
+          "tag": "00V3",
+          "included": false
+        },
+        {
+          "label": "sheaves-definition-presheaf-values-in-category",
+          "tag": "006N",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "sheaves-section-presheaves-modules",
+      "tag": "006P",
+      "references": [
+        {
+          "label": "sheaves-definition-abelian-presheaves",
+          "tag": "006K",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "sheaves-section-sheaves",
+      "tag": "006S",
+      "references": [
+        {
+          "label": "sheaves-example-direct-sum-points",
+          "tag": "006L",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "sheaves-section-abelian-sheaves",
+      "tag": "006Z",
+      "references": []
+    },
+    {
+      "section": "sheaves-section-sheaves-structures",
+      "tag": "0071",
+      "references": [
+        {
+          "label": "sheaves-definition-underlying-presheaf-sets",
+          "tag": "006O",
+          "included": true
+        },
+        {
+          "label": "categories-lemma-limits-products-equalizers",
+          "tag": "002N",
+          "included": true
+        },
+        {
+          "label": "sheaves-example-sheaves-topological-spaces",
+          "tag": "0075",
+          "included": true
+        },
+        {
+          "label": "sheaves-definition-sheaf-values-in-category",
+          "tag": "0072",
+          "included": true
+        },
+        {
+          "label": "sheaves-example-basic-continuous-maps",
+          "tag": "006V",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-sheaves-structure",
+          "tag": "0073",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-sheaves-structure",
+          "tag": "0073",
+          "included": true
+        },
+        {
+          "label": "sheaves-example-sheaf-product-pointwise",
+          "tag": "006X",
+          "included": true
+        },
+        {
+          "label": "sheaves-definition-sheaf-values-in-category",
+          "tag": "0072",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "sheaves-section-sheaves-modules",
+      "tag": "0076",
+      "references": [
+        {
+          "label": "sheaves-definition-presheaf-modules",
+          "tag": "006Q",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "sheaves-section-stalks",
+      "tag": "0078",
+      "references": [
+        {
+          "label": "categories-section-posets-limits",
+          "tag": "002Z",
+          "included": true
+        },
+        {
+          "label": "sheaves-example-basic-continuous-maps",
+          "tag": "006V",
+          "included": true
+        },
+        {
+          "label": "sheaves-example-sheaf-product-pointwise",
+          "tag": "006X",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "sheaves-section-stalks-abelian-presheaves",
+      "tag": "007E",
+      "references": [
+        {
+          "label": "categories-definition-directed-set",
+          "tag": "00D3",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "sheaves-section-stalks-presheaves-structures",
+      "tag": "007G",
+      "references": [
+        {
+          "label": "sheaves-lemma-stalk-abelian-presheaf",
+          "tag": "007F",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "sheaves-section-stalk-presheaves-modules",
+      "tag": "007I",
+      "references": []
+    },
+    {
+      "section": "sheaves-section-algebraic-structures",
+      "tag": "007L",
+      "references": [
+        {
+          "label": "categories-remark-big-categories",
+          "tag": "0015",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-sheaves-structure",
+          "tag": "0073",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-stalk-presheaf-values-in-category",
+          "tag": "007H",
+          "included": true
+        },
+        {
+          "label": "sheaves-example-sheaf-product-pointwise",
+          "tag": "006X",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "sheaves-section-exactness-points",
+      "tag": "007S",
+      "references": [
+        {
+          "label": "sheaves-lemma-sheaf-subset-stalks",
+          "tag": "0079",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-image-contained-in",
+          "tag": "007P",
+          "included": true
+        },
+        {
+          "label": "sheaves-example-application-lemma-image-contained-in",
+          "tag": "007Q",
+          "included": true
+        },
+        {
+          "label": "modules-section-kernels",
+          "tag": "01AF",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "sheaves-section-sheafification",
+      "tag": "007X",
+      "references": [
+        {
+          "label": "sites-section-sheafification",
+          "tag": "00W1",
+          "included": false
+        },
+        {
+          "label": "sheaves-section-stalks",
+          "tag": "0078",
+          "included": true
+        },
+        {
+          "label": "sheaves-example-sheaf-product-pointwise",
+          "tag": "006X",
+          "included": true
+        },
+        {
+          "label": "sheaves-example-basic-continuous-maps",
+          "tag": "006V",
+          "included": true
+        },
+        {
+          "label": "sheaves-example-sheaf-product-pointwise-stalk",
+          "tag": "007D",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-points-exactness",
+          "tag": "007T",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-stalk-sheafification",
+          "tag": "007Z",
+          "included": true
+        },
+        {
+          "label": "categories-section-adjoint",
+          "tag": "0036",
+          "included": true
+        },
+        {
+          "label": "sheaves-example-stalk-constant-presheaf",
+          "tag": "007B",
+          "included": true
+        },
+        {
+          "label": "sheaves-definition-separated",
+          "tag": "007A",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "sheaves-section-sheafify-abelian-presheaves",
+      "tag": "0083",
+      "references": [
+        {
+          "label": "sheaves-lemma-stalk-sheafification",
+          "tag": "007Z",
+          "included": true
+        },
+        {
+          "label": "sheaves-section-sheafification",
+          "tag": "007X",
+          "included": true
+        },
+        {
+          "label": "sheaves-section-sheafification",
+          "tag": "007X",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-stalk-sheafification",
+          "tag": "007Z",
+          "included": true
+        },
+        {
+          "label": "sheaves-section-sheafification",
+          "tag": "007X",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-stalk-abelian-presheaf",
+          "tag": "007F",
+          "included": true
+        },
+        {
+          "label": "sheaves-example-sheaf-product-pointwise-algebraic-structure",
+          "tag": "007R",
+          "included": true
+        },
+        {
+          "label": "sheaves-section-sheafification",
+          "tag": "007X",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-diagram-fibre-product",
+          "tag": "0084",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-stalk-abelian-presheaf",
+          "tag": "007F",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-stalk-sheafification",
+          "tag": "007Z",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-stalk-sheafification",
+          "tag": "007Z",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-check-homomorphism-stalks",
+          "tag": "007W",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "sheaves-section-sheafification-presheaves-structures",
+      "tag": "0086",
+      "references": [
+        {
+          "label": "sheaves-lemma-sheafify-abelian-presheaf",
+          "tag": "0085",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-image-contained-in",
+          "tag": "007P",
+          "included": true
+        },
+        {
+          "label": "sheaves-example-application-lemma-image-contained-in",
+          "tag": "007Q",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-diagram-fibre-product",
+          "tag": "0084",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "sheaves-section-sheafification-presheaves-modules",
+      "tag": "0088",
+      "references": [
+        {
+          "label": "sheaves-section-presheaves-modules",
+          "tag": "006P",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-adjointness-tensor-restrict-presheaves",
+          "tag": "006R",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-stalk-tensor-presheaf-modules",
+          "tag": "007K",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "sheaves-section-bases",
+      "tag": "009H",
+      "references": [
+        {
+          "label": "sheaves-lemma-cofinal-systems-coverings",
+          "tag": "009K",
+          "included": true
+        },
+        {
+          "label": "sheaves-definition-sheaf-basis",
+          "tag": "009J",
+          "included": true
+        },
+        {
+          "label": "sheaves-definition-sheaf-basis",
+          "tag": "009J",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-condition-star-sections",
+          "tag": "009M",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-condition-star-sections",
+          "tag": "009M",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-sheafification-sheaf",
+          "tag": "007Y",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-extend-off-basis",
+          "tag": "009N",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-cofinal-systems-coverings",
+          "tag": "009K",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-cofinal-systems-coverings-standard-case",
+          "tag": "009L",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-condition-star-sections",
+          "tag": "009M",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-extend-off-basis",
+          "tag": "009N",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-diagram-fibre-product",
+          "tag": "0084",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-image-contained-in",
+          "tag": "007P",
+          "included": true
+        },
+        {
+          "label": "sheaves-example-application-lemma-image-contained-in",
+          "tag": "007Q",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-extend-off-basis-structures",
+          "tag": "009Q",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-cofinal-systems-coverings",
+          "tag": "009K",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-cofinal-systems-coverings-standard-case",
+          "tag": "009L",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-condition-star-sections",
+          "tag": "009M",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-extend-off-basis",
+          "tag": "009N",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-extend-off-basis-structures",
+          "tag": "009Q",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-extend-off-basis",
+          "tag": "009N",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-extend-off-basis-module",
+          "tag": "009T",
+          "included": true
+        },
+        {
+          "label": "sheaves-definition-f-map",
+          "tag": "008J",
+          "included": true
+        },
+        {
+          "label": "sheaves-section-presheaves-structures-functorial",
+          "tag": "008P",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-restrict-basis-equivalence-structures",
+          "tag": "009R",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-f-map",
+          "tag": "008K",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-f-map-sets-algebraic-structures",
+          "tag": "008Q",
+          "included": true
+        },
+        {
+          "label": "sheaves-section-ringed-spaces-functoriality-modules",
+          "tag": "0094",
+          "included": true
+        },
+        {
+          "label": "sheaves-definition-f-map",
+          "tag": "008J",
+          "included": true
+        },
+        {
+          "label": "sheaves-section-presheaves-structures-functorial",
+          "tag": "008P",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-extend-off-basis",
+          "tag": "009N",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-condition-star-sections",
+          "tag": "009M",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-f-map-basis-below-structures",
+          "tag": "009V",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-f-map-sets-algebraic-structures",
+          "tag": "008Q",
+          "included": true
+        },
+        {
+          "label": "sheaves-definition-f-map",
+          "tag": "008J",
+          "included": true
+        },
+        {
+          "label": "sheaves-section-ringed-spaces-functoriality-modules",
+          "tag": "0094",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "sheaves-section-presheaves-functorial",
+      "tag": "008C",
+      "references": [
+        {
+          "label": "categories-lemma-functorial-colimit",
+          "tag": "002K",
+          "included": true
+        },
+        {
+          "label": "categories-lemma-colimits-commute",
+          "tag": "002M",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-f-map",
+          "tag": "008K",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-stalk-sheafification",
+          "tag": "007Z",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-stalk-pullback-presheaf",
+          "tag": "008G",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-pushforward-composition",
+          "tag": "008E",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-f-map",
+          "tag": "008K",
+          "included": true
+        },
+        {
+          "label": "sheaves-definition-f-map",
+          "tag": "008J",
+          "included": true
+        },
+        {
+          "label": "sheaves-definition-composition-f-maps",
+          "tag": "008L",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "sheaves-section-abelian-presheaves-functorial",
+      "tag": "008N",
+      "references": [
+        {
+          "label": "sheaves-section-presheaves-functorial",
+          "tag": "008C",
+          "included": true
+        },
+        {
+          "label": "sheaves-section-presheaves-functorial",
+          "tag": "008C",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-pullback-presheaves",
+          "tag": "008F",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-pullback-presheaves",
+          "tag": "008F",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-pushforward-sheaf",
+          "tag": "008D",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-stalk-pullback-presheaf",
+          "tag": "008G",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-stalk-pullback",
+          "tag": "008H",
+          "included": true
+        },
+        {
+          "label": "sheaves-definition-f-map",
+          "tag": "008J",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "sheaves-section-presheaves-structures-functorial",
+      "tag": "008P",
+      "references": [
+        {
+          "label": "sheaves-lemma-pullback-presheaves",
+          "tag": "008F",
+          "included": true
+        },
+        {
+          "label": "sheaves-definition-f-map",
+          "tag": "008J",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "sheaves-section-presheaves-modules-functorial",
+      "tag": "008R",
+      "references": [
+        {
+          "label": "categories-lemma-directed-commutes",
+          "tag": "002W",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-pullback-presheaf-module",
+          "tag": "008T",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-pushforward-presheaf-module",
+          "tag": "008S",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-pullback-presheaves",
+          "tag": "008F",
+          "included": true
+        },
+        {
+          "label": "sheaves-section-abelian-presheaves-functorial",
+          "tag": "008N",
+          "included": true
+        },
+        {
+          "label": "sheaves-section-abelian-presheaves-functorial",
+          "tag": "008N",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-pullback-presheaf-module",
+          "tag": "008T",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-pushforward-presheaf-module",
+          "tag": "008S",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-adjointness-tensor-restrict-presheaves",
+          "tag": "006R",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-adjoint-push-pull-presheaves-modules",
+          "tag": "008U",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-pullback-presheaves",
+          "tag": "008F",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-pushforward-presheaf-module",
+          "tag": "008S",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-pushforward-sheaf",
+          "tag": "008D",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-pullback-presheaf-module",
+          "tag": "008T",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-sheafification-presheaf-modules",
+          "tag": "0089",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-pullback-module",
+          "tag": "008X",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-pushforward-module",
+          "tag": "008W",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-adjoint-push-pull-presheaves-modules",
+          "tag": "008U",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-sheafification-presheaf-modules",
+          "tag": "0089",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-pullback-module",
+          "tag": "008X",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-pushforward-module",
+          "tag": "008W",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-adjointness-tensor-restrict",
+          "tag": "008A",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-adjoint-push-pull-modules",
+          "tag": "008Y",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "sheaves-section-ringed-spaces",
+      "tag": "0090",
+      "references": [
+        {
+          "label": "sheaves-definition-f-map",
+          "tag": "008J",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-f-map",
+          "tag": "008K",
+          "included": true
+        },
+        {
+          "label": "sheaves-example-continuous-map-ringed",
+          "tag": "0092",
+          "included": true
+        },
+        {
+          "label": "sheaves-example-C0-sheaf-rings",
+          "tag": "0074",
+          "included": true
+        },
+        {
+          "label": "sheaves-definition-f-map",
+          "tag": "008J",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-f-map-sets-algebraic-structures",
+          "tag": "008Q",
+          "included": true
+        },
+        {
+          "label": "sheaves-definition-composition-f-maps",
+          "tag": "008L",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "sheaves-section-ringed-spaces-functoriality-modules",
+      "tag": "0094",
+      "references": [
+        {
+          "label": "sheaves-lemma-pushforward-module",
+          "tag": "008W",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-pullback-module",
+          "tag": "008X",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-adjointness-tensor-restrict",
+          "tag": "008A",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-adjoint-push-pull-modules",
+          "tag": "008Y",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-pushforward-composition",
+          "tag": "008E",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-pullback-composition",
+          "tag": "008I",
+          "included": true
+        },
+        {
+          "label": "sheaves-definition-f-map",
+          "tag": "008J",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-f-map",
+          "tag": "008K",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-stalk-tensor-sheaf-modules",
+          "tag": "008B",
+          "included": true
+        },
+        {
+          "label": "sheaves-section-presheaves-structures-functorial",
+          "tag": "008P",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "sheaves-section-open-immersions",
+      "tag": "009Z",
+      "references": [
+        {
+          "label": "sheaves-section-presheaves-functorial",
+          "tag": "008C",
+          "included": true
+        },
+        {
+          "label": "sheaves-section-presheaves-functorial",
+          "tag": "008C",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-j-pullback",
+          "tag": "00A0",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-pullback-module",
+          "tag": "008X",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-j-pullback",
+          "tag": "00A0",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-j-pullback",
+          "tag": "00A0",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-j-pullback",
+          "tag": "00A0",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-j-pullback",
+          "tag": "00A0",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-j-shriek",
+          "tag": "00A3",
+          "included": true
+        },
+        {
+          "label": "categories-section-exact-functor",
+          "tag": "0033",
+          "included": true
+        },
+        {
+          "label": "modules-lemma-j-shriek-exact",
+          "tag": "01AK",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "schemes-section-locally-ringed-spaces",
+      "tag": "01HA",
+      "references": [
+        {
+          "label": "sheaves-section-ringed-spaces",
+          "tag": "0090",
+          "included": true
+        },
+        {
+          "label": "sheaves-definition-f-map",
+          "tag": "008J",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-f-map",
+          "tag": "008K",
+          "included": true
+        },
+        {
+          "label": "sheaves-example-continuous-map-ringed",
+          "tag": "0092",
+          "included": true
+        },
+        {
+          "label": "sheaves-example-germs-functions",
+          "tag": "007C",
+          "included": true
+        },
+        {
+          "label": "algebra-section-spectrum-ring",
+          "tag": "00DY",
+          "included": true
+        },
+        {
+          "label": "sheaves-definition-composition-maps-ringed-spaces",
+          "tag": "0093",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-compose-f-maps-stalks",
+          "tag": "008M",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "schemes-section-open-immersion",
+      "tag": "01HD",
+      "references": [
+        {
+          "label": "sheaves-definition-restriction",
+          "tag": "00A1",
+          "included": true
+        },
+        {
+          "label": "schemes-example-open-subspace",
+          "tag": "01HF",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-pullback-composition",
+          "tag": "008I",
+          "included": true
+        },
+        {
+          "label": "schemes-lemma-isomorphism-locally-ringed",
+          "tag": "01HC",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "algebra-section-more-glueing",
+      "tag": "00EN",
+      "references": [
+        {
+          "label": "algebra-lemma-Zariski-topology",
+          "tag": "00E0",
+          "included": true
+        },
+        {
+          "label": "algebra-proposition-localization-exact",
+          "tag": "00CS",
+          "included": true
+        },
+        {
+          "label": "algebra-proposition-localize-twice",
+          "tag": "02C6",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-characterize-zero-local",
+          "tag": "00HN",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-characterize-zero-local",
+          "tag": "00HN",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-extension",
+          "tag": "0519",
+          "included": true
+        },
+        {
+          "label": "algebra-proposition-localize-twice",
+          "tag": "02C6",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-characterize-zero-local",
+          "tag": "00HN",
+          "included": true
+        },
+        {
+          "label": "algebra-proposition-localize-twice",
+          "tag": "02C6",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-characterize-zero-local",
+          "tag": "00HN",
+          "included": true
+        },
+        {
+          "label": "algebra-proposition-localization-exact",
+          "tag": "00CS",
+          "included": true
+        },
+        {
+          "label": "algebra-proposition-localization-exact",
+          "tag": "00CS",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-cover",
+          "tag": "00EO",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-finite-presentation-independent",
+          "tag": "00R2",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "algebra-section-tilde-module-sheaf",
+      "tag": "00EI",
+      "references": [
+        {
+          "label": "sheaves-section-bases",
+          "tag": "009H",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-characterize-zero-local",
+          "tag": "00HN",
+          "included": true
+        },
+        {
+          "label": "algebra-proposition-localize-twice-module",
+          "tag": "02C7",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-universal-property-localization-module",
+          "tag": "07K0",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-cover-module",
+          "tag": "00EK",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-spec-product",
+          "tag": "00ED",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-disjoint-decomposition",
+          "tag": "00EE",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-standard-covering",
+          "tag": "00EJ",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-characterize-zero-local",
+          "tag": "00HN",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-standard-open",
+          "tag": "00E4",
+          "included": true
+        },
+        {
+          "label": "algebra-proposition-localization-exact",
+          "tag": "00CS",
+          "included": true
+        },
+        {
+          "label": "algebra-proposition-localize-twice-module",
+          "tag": "02C7",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-cover-module",
+          "tag": "00EK",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "modules-section-kernels",
+      "tag": "01AF",
+      "references": [
+        {
+          "label": "sheaves-definition-ringed-space",
+          "tag": "0091",
+          "included": true
+        },
+        {
+          "label": "sheaves-definition-sheaf-modules",
+          "tag": "0077",
+          "included": true
+        },
+        {
+          "label": "homology-definition-preadditive",
+          "tag": "00ZY",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-points-exactness",
+          "tag": "007T",
+          "included": true
+        },
+        {
+          "label": "homology-definition-direct-sum",
+          "tag": "0102",
+          "included": true
+        },
+        {
+          "label": "homology-definition-additive-category",
+          "tag": "0104",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-stalk-sheafification",
+          "tag": "007Z",
+          "included": true
+        },
+        {
+          "label": "sheaves-section-exactness-points",
+          "tag": "007S",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-sheafification-presheaf-modules",
+          "tag": "0089",
+          "included": true
+        },
+        {
+          "label": "homology-definition-abelian-category",
+          "tag": "0109",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-points-exactness",
+          "tag": "007T",
+          "included": true
+        },
+        {
+          "label": "categories-definition-product",
+          "tag": "002I",
+          "included": true
+        },
+        {
+          "label": "categories-definition-coproduct",
+          "tag": "002J",
+          "included": true
+        },
+        {
+          "label": "modules-lemma-abelian",
+          "tag": "01AG",
+          "included": true
+        },
+        {
+          "label": "homology-lemma-colimit-abelian-category",
+          "tag": "010D",
+          "included": true
+        },
+        {
+          "label": "categories-lemma-limits-products-equalizers",
+          "tag": "002N",
+          "included": true
+        },
+        {
+          "label": "categories-lemma-colimits-coproducts-coequalizers",
+          "tag": "002P",
+          "included": true
+        },
+        {
+          "label": "modules-lemma-abelian",
+          "tag": "01AG",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-directed-colimit-exact",
+          "tag": "00DB",
+          "included": true
+        },
+        {
+          "label": "categories-section-exact-functor",
+          "tag": "0033",
+          "included": true
+        },
+        {
+          "label": "homology-lemma-exact-functor",
+          "tag": "010N",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-adjoint-pullback-pushforward-modules",
+          "tag": "0096",
+          "included": true
+        },
+        {
+          "label": "categories-section-adjoint",
+          "tag": "0036",
+          "included": true
+        },
+        {
+          "label": "modules-lemma-abelian",
+          "tag": "01AG",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-pullback-abelian-stalk",
+          "tag": "008O",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-j-shriek-abelian",
+          "tag": "00A5",
+          "included": true
+        },
+        {
+          "label": "modules-lemma-limits-colimits",
+          "tag": "01AH",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "schemes-section-affine-schemes",
+      "tag": "01HR",
+      "references": [
+        {
+          "label": "algebra-section-spectrum-ring",
+          "tag": "00DY",
+          "included": true
+        },
+        {
+          "label": "algebra-definition-Zariski-topology",
+          "tag": "00E1",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-standard-open",
+          "tag": "00E4",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-Zariski-topology",
+          "tag": "00E0",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-qc-open",
+          "tag": "00F6",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-Zariski-topology",
+          "tag": "00E0",
+          "included": true
+        },
+        {
+          "label": "sheaves-section-bases",
+          "tag": "009H",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-extend-off-basis",
+          "tag": "009N",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-extend-off-basis-structures",
+          "tag": "009Q",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-cofinal-systems-coverings-standard-case",
+          "tag": "009L",
+          "included": true
+        },
+        {
+          "label": "schemes-lemma-standard-open",
+          "tag": "01HS",
+          "included": true
+        },
+        {
+          "label": "schemes-lemma-standard-open",
+          "tag": "01HS",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-localization-colimit",
+          "tag": "00CR",
+          "included": true
+        },
+        {
+          "label": "schemes-lemma-standard-open",
+          "tag": "01HS",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-cover-module",
+          "tag": "00EK",
+          "included": true
+        },
+        {
+          "label": "sheaves-section-bases",
+          "tag": "009H",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-extend-off-basis-module",
+          "tag": "009T",
+          "included": true
+        },
+        {
+          "label": "schemes-lemma-standard-open",
+          "tag": "01HS",
+          "included": true
+        },
+        {
+          "label": "modules-lemma-abelian",
+          "tag": "01AG",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "schemes-section-category-affine-schemes",
+      "tag": "01HX",
+      "references": [
+        {
+          "label": "sheaves-definition-f-map",
+          "tag": "008J",
+          "included": true
+        },
+        {
+          "label": "modules-lemma-s-open",
+          "tag": "01CY",
+          "included": false
+        },
+        {
+          "label": "schemes-lemma-f-open",
+          "tag": "01HZ",
+          "included": true
+        },
+        {
+          "label": "algebra-definition-spectrum-ring",
+          "tag": "00DZ",
+          "included": true
+        },
+        {
+          "label": "schemes-lemma-spec-sheaves",
+          "tag": "01HV",
+          "included": true
+        },
+        {
+          "label": "schemes-lemma-morphism-into-affine-where-point-goes",
+          "tag": "01HY",
+          "included": true
+        },
+        {
+          "label": "schemes-lemma-f-open",
+          "tag": "01HZ",
+          "included": true
+        },
+        {
+          "label": "sheaves-lemma-f-map-basis-below-structures",
+          "tag": "009V",
+          "included": true
+        },
+        {
+          "label": "schemes-lemma-spec-sheaves",
+          "tag": "01HV",
+          "included": true
+        },
+        {
+          "label": "schemes-lemma-standard-open",
+          "tag": "01HS",
+          "included": true
+        },
+        {
+          "label": "schemes-lemma-morphism-into-affine-where-point-goes",
+          "tag": "01HY",
+          "included": true
+        },
+        {
+          "label": "schemes-lemma-morphism-into-affine-where-point-goes",
+          "tag": "01HY",
+          "included": true
+        },
+        {
+          "label": "schemes-definition-affine-scheme",
+          "tag": "01HW",
+          "included": true
+        },
+        {
+          "label": "schemes-lemma-morphism-into-affine",
+          "tag": "01I1",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-standard-open",
+          "tag": "00E4",
+          "included": true
+        },
+        {
+          "label": "schemes-lemma-open-immersion",
+          "tag": "01HH",
+          "included": true
+        },
+        {
+          "label": "schemes-lemma-morphism-into-affine",
+          "tag": "01I1",
+          "included": true
+        },
+        {
+          "label": "categories-section-fibre-products",
+          "tag": "001U",
+          "included": true
+        },
+        {
+          "label": "schemes-lemma-morphism-into-affine",
+          "tag": "01I1",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-spec-product",
+          "tag": "00ED",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "schemes-section-schemes",
+      "tag": "01II",
+      "references": [
+        {
+          "label": "schemes-lemma-standard-open-affine",
+          "tag": "01I3",
+          "included": true
+        },
+        {
+          "label": "topology-section-bases",
+          "tag": "004O",
+          "included": true
+        },
+        {
+          "label": "schemes-lemma-category-affine-schemes",
+          "tag": "01I2",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "categories-section-definition-categories",
+      "tag": "0013",
+      "references": [
+        {
+          "label": "dpa-section-divided-power-rings",
+          "tag": "07GT",
+          "included": false
+        },
+        {
+          "label": "sets-section-sets-everything",
+          "tag": "0009",
+          "included": false
+        },
+        {
+          "label": "categories-example-group-groupoid",
+          "tag": "0019",
+          "included": true
+        },
+        {
+          "label": "categories-lemma-construct-quasi-inverse",
+          "tag": "05SG",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "categories-section-fibre-products",
+      "tag": "001U",
+      "references": [
+        {
+          "label": "categories-definition-fibre-products",
+          "tag": "001V",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "categories-section-equalizers",
+      "tag": "0027",
+      "references": []
+    },
+    {
+      "section": "categories-section-limits",
+      "tag": "002D",
+      "references": [
+        {
+          "label": "categories-remark-big-categories",
+          "tag": "0015",
+          "included": true
+        },
+        {
+          "label": "categories-section-limit-sets",
+          "tag": "002U",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "categories-section-limit-sets",
+      "tag": "002U",
+      "references": [
+        {
+          "label": "categories-section-directed-colimits",
+          "tag": "04AX",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "categories-section-directed-colimits",
+      "tag": "04AX",
+      "references": [
+        {
+          "label": "categories-section-limit-sets",
+          "tag": "002U",
+          "included": true
+        },
+        {
+          "label": "categories-lemma-directed-commutes",
+          "tag": "002W",
+          "included": true
+        },
+        {
+          "label": "categories-section-limit-sets",
+          "tag": "002U",
+          "included": true
+        },
+        {
+          "label": "categories-lemma-split-into-connected",
+          "tag": "09WS",
+          "included": true
+        },
+        {
+          "label": "categories-section-limit-sets",
+          "tag": "002U",
+          "included": true
+        },
+        {
+          "label": "categories-lemma-split-into-directed",
+          "tag": "002X",
+          "included": true
+        },
+        {
+          "label": "categories-lemma-split-into-directed",
+          "tag": "002X",
+          "included": true
+        },
+        {
+          "label": "categories-lemma-directed-commutes",
+          "tag": "002W",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "categories-section-posets-limits",
+      "tag": "002Z",
+      "references": [
+        {
+          "label": "categories-remark-preorder-versus-partial-order",
+          "tag": "0CN1",
+          "included": true
+        },
+        {
+          "label": "categories-definition-directed-set",
+          "tag": "00D3",
+          "included": true
+        },
+        {
+          "label": "categories-lemma-functorial-colimit",
+          "tag": "002K",
+          "included": true
+        },
+        {
+          "label": "categories-lemma-functorial-limit",
+          "tag": "002L",
+          "included": true
+        },
+        {
+          "label": "categories-definition-system-over-poset",
+          "tag": "0030",
+          "included": true
+        },
+        {
+          "label": "categories-lemma-cofinal",
+          "tag": "04E7",
+          "included": false
+        },
+        {
+          "label": "categories-lemma-cofinal",
+          "tag": "04E7",
+          "included": false
+        },
+        {
+          "label": "categories-definition-cofinal",
+          "tag": "04E6",
+          "included": false
+        },
+        {
+          "label": "categories-lemma-directed-category-system",
+          "tag": "0032",
+          "included": true
+        },
+        {
+          "label": "categories-lemma-directed-category-system",
+          "tag": "0032",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "categories-section-exact-functor",
+      "tag": "0033",
+      "references": [
+        {
+          "label": "categories-lemma-finite-limits-exist",
+          "tag": "002O",
+          "included": false
+        },
+        {
+          "label": "categories-lemma-limits-products-equalizers",
+          "tag": "002N",
+          "included": true
+        },
+        {
+          "label": "categories-lemma-colimits-exist",
+          "tag": "002Q",
+          "included": false
+        },
+        {
+          "label": "categories-lemma-characterize-left-exact",
+          "tag": "0035",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "categories-section-adjoint",
+      "tag": "0036",
+      "references": [
+        {
+          "label": "categories-lemma-yoneda",
+          "tag": "001P",
+          "included": false
+        },
+        {
+          "label": "categories-definition-adjoint",
+          "tag": "0037",
+          "included": true
+        },
+        {
+          "label": "categories-definition-adjoint",
+          "tag": "0037",
+          "included": true
+        },
+        {
+          "label": "categories-lemma-left-adjoint-composed-fully-faithful",
+          "tag": "0FWV",
+          "included": true
+        },
+        {
+          "label": "categories-definition-adjoint",
+          "tag": "0037",
+          "included": true
+        },
+        {
+          "label": "categories-remark-limit-colim",
+          "tag": "002H",
+          "included": true
+        },
+        {
+          "label": "categories-definition-adjoint",
+          "tag": "0037",
+          "included": true
+        },
+        {
+          "label": "categories-lemma-adjoint-exact",
+          "tag": "0038",
+          "included": true
+        },
+        {
+          "label": "categories-definition-adjoint",
+          "tag": "0037",
+          "included": true
+        },
+        {
+          "label": "categories-equation-compose-counits",
+          "tag": "0DV1",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "algebra-section-module-finite-type",
+      "tag": "0517",
+      "references": [
+        {
+          "label": "algebra-lemma-lift-map",
+          "tag": "07JX",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-snake",
+          "tag": "07JW",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-lift-map",
+          "tag": "07JX",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "algebra-section-finite-type",
+      "tag": "00F2",
+      "references": [
+        {
+          "label": "algebra-lemma-compose-finite-type",
+          "tag": "00F4",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "algebra-section-hom",
+      "tag": "0581",
+      "references": [
+        {
+          "label": "algebra-lemma-localization-and-modules",
+          "tag": "07JY",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-hom-exact",
+          "tag": "0582",
+          "included": true
+        },
+        {
+          "label": "algebra-proposition-localization-exact",
+          "tag": "00CS",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-hom-exact",
+          "tag": "0582",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "algebra-section-miscellany",
+      "tag": "00DR",
+      "references": [
+        {
+          "label": "algebra-section-rings-basic",
+          "tag": "00AR",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-product-ideals-in-prime",
+          "tag": "07K1",
+          "included": true
+        },
+        {
+          "label": "algebra-item-cauchy-binet",
+          "tag": "0F0K",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-lift-map",
+          "tag": "07JX",
+          "included": true
+        },
+        {
+          "label": "algebra-proposition-localization-exact",
+          "tag": "00CS",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-map-cannot-be-injective",
+          "tag": "05WI",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "algebra-section-nakayama",
+      "tag": "07RC",
+      "references": [
+        {
+          "label": "algebra-item-nakayama",
+          "tag": "00DW",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-matrix-left-inverse",
+          "tag": "07DQ",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-contained-in-radical",
+          "tag": "0AME",
+          "included": false
+        },
+        {
+          "label": "algebra-item-nakayama",
+          "tag": "00DW",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-NAK",
+          "tag": "00DV",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-NAK",
+          "tag": "00DV",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-NAK",
+          "tag": "00DV",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "algebra-section-open-and-closed",
+      "tag": "04PN",
+      "references": [
+        {
+          "label": "algebra-lemma-idempotent-spec",
+          "tag": "00EC",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-standard-open",
+          "tag": "00E4",
+          "included": true
+        },
+        {
+          "label": "algebra-section-tilde-module-sheaf",
+          "tag": "00EI",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-quasi-compact",
+          "tag": "00E8",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-Zariski-topology",
+          "tag": "00E0",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-Zariski-topology",
+          "tag": "00E0",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-Zariski-topology",
+          "tag": "00E0",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-disjoint-decomposition",
+          "tag": "00EE",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-NAK",
+          "tag": "00DV",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-idempotent-spec",
+          "tag": "00EC",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-disjoint-decomposition",
+          "tag": "00EE",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "algebra-section-images-finite-presentation",
+      "tag": "00F5",
+      "references": [
+        {
+          "label": "topology-section-constructible",
+          "tag": "04ZC",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-quasi-compact",
+          "tag": "00E8",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-standard-open",
+          "tag": "00E4",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-quasi-compact",
+          "tag": "00E8",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-Zariski-topology",
+          "tag": "00E0",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-qc-open",
+          "tag": "00F6",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-spec-functorial",
+          "tag": "00E2",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-qc-open",
+          "tag": "00F6",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-inverse-images-constructibles",
+          "tag": "005I",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-qc-open",
+          "tag": "00F6",
+          "included": true
+        },
+        {
+          "label": "topology-definition-constructible",
+          "tag": "005G",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-qc-open",
+          "tag": "00F6",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-spec-product",
+          "tag": "00ED",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-constructible",
+          "tag": "0G1P",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-standard-open",
+          "tag": "00E4",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-spec-closed",
+          "tag": "00E5",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-qc-open",
+          "tag": "00F6",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-standard-open",
+          "tag": "00E4",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-Zariski-topology",
+          "tag": "00E0",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-qc-open",
+          "tag": "00F6",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-qc-open",
+          "tag": "00F6",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-in-image",
+          "tag": "00E7",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-characteristic-polynomial-prime",
+          "tag": "00FC",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-closed-fp",
+          "tag": "00FA",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-qc-open",
+          "tag": "00F6",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-open-fp",
+          "tag": "00F9",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-closed-fp",
+          "tag": "00FA",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-affineline-special",
+          "tag": "00FD",
+          "included": true
+        },
+        {
+          "label": "algebra-lemma-affineline-open",
+          "tag": "00FB",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "topology-section-noetherian",
+      "tag": "0050",
+      "references": [
+        {
+          "label": "topology-lemma-irreducible",
+          "tag": "004W",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-pick-irreducible-components",
+          "tag": "0G2Y",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-irreducible",
+          "tag": "004W",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-quasi-compact-closed-point",
+          "tag": "005E",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-Noetherian-quasi-compact",
+          "tag": "04ZA",
+          "included": true
+        },
+        {
+          "label": "properties-lemma-locally-Noetherian-closed-point",
+          "tag": "02IL",
+          "included": false
+        },
+        {
+          "label": "topology-lemma-Noetherian",
+          "tag": "0052",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-Noetherian",
+          "tag": "0052",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "topology-section-constructible",
+      "tag": "04ZC",
+      "references": [
+        {
+          "label": "topology-lemma-inverse-images-constructibles",
+          "tag": "005I",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-composition-quasi-compact",
+          "tag": "005B",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-open-immersion-constructible-inverse-image",
+          "tag": "005J",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-quasi-compact-open-immersion-constructible-image",
+          "tag": "09YD",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-inverse-images-constructibles",
+          "tag": "005I",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-closed-in-quasi-compact",
+          "tag": "005C",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-inverse-images-constructibles",
+          "tag": "005I",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-closed-in-quasi-compact",
+          "tag": "005C",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-closed-in-quasi-compact",
+          "tag": "005C",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-intersect-constructible-with-closed",
+          "tag": "09YE",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-intersect-constructible-with-retrocompact",
+          "tag": "09YF",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-constructible-is-retrocompact",
+          "tag": "09YH",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-constructible-is-retrocompact",
+          "tag": "09YH",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-intersect-constructible-with-constructible",
+          "tag": "09YI",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-intersect-constructible-with-constructible",
+          "tag": "09YI",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-closed-constructible-image",
+          "tag": "09YG",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-quasi-compact-open-immersion-constructible-image",
+          "tag": "09YD",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-intersect-constructible-with-constructible",
+          "tag": "09YI",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-constructible-in-constructible",
+          "tag": "09YJ",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "topology-section-constructible-Noetherian",
+      "tag": "053X",
+      "references": [
+        {
+          "label": "topology-lemma-Noetherian-quasi-compact",
+          "tag": "04ZA",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-constructible-Noetherian-space",
+          "tag": "005L",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-constructible-map-Noetherian",
+          "tag": "053Y",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-Noetherian",
+          "tag": "0052",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-constructible-Noetherian-space",
+          "tag": "005L",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-constructible-Noetherian-space",
+          "tag": "005L",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-constructible-Noetherian-space",
+          "tag": "005L",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-characterize-constructible-Noetherian",
+          "tag": "053Z",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-characterize-constructible-Noetherian",
+          "tag": "053Z",
+          "included": true
+        },
+        {
+          "label": "topology-lemma-constructible-neighbourhood-Noetherian",
+          "tag": "0540",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "homology-section-additive-categories",
+      "tag": "09SE",
+      "references": [
+        {
+          "label": "homology-lemma-preadditive-zero",
+          "tag": "00ZZ",
+          "included": true
+        },
+        {
+          "label": "homology-lemma-preadditive-direct-sum",
+          "tag": "0101",
+          "included": true
+        },
+        {
+          "label": "homology-lemma-preadditive-direct-sum",
+          "tag": "0101",
+          "included": true
+        },
+        {
+          "label": "homology-remark-direct-sum",
+          "tag": "0103",
+          "included": true
+        },
+        {
+          "label": "homology-lemma-preadditive-zero",
+          "tag": "00ZZ",
+          "included": true
+        },
+        {
+          "label": "categories-section-opposite",
+          "tag": "001L",
+          "included": false
+        },
+        {
+          "label": "homology-lemma-preadditive-direct-sum",
+          "tag": "0101",
+          "included": true
+        },
+        {
+          "label": "homology-lemma-kernel-mono",
+          "tag": "0E43",
+          "included": true
+        },
+        {
+          "label": "homology-definition-filtered",
+          "tag": "0121",
+          "included": false
+        },
+        {
+          "label": "homology-remark-idempotent-symmetry",
+          "tag": "0H9N",
+          "included": true
+        },
+        {
+          "label": "homology-lemma-kernel-mono",
+          "tag": "0E43",
+          "included": true
+        },
+        {
+          "label": "homology-remark-idempotent-symmetry",
+          "tag": "0H9N",
+          "included": true
+        },
+        {
+          "label": "homology-lemma-idempotent-kernel-cokernel",
+          "tag": "0H9P",
+          "included": true
+        },
+        {
+          "label": "homology-lemma-idempotent-kernel-cokernel",
+          "tag": "0H9P",
+          "included": true
+        },
+        {
+          "label": "homology-remark-direct-sum",
+          "tag": "0103",
+          "included": true
+        },
+        {
+          "label": "homology-lemma-idempotent-splitting",
+          "tag": "0H9Q",
+          "included": true
+        },
+        {
+          "label": "homology-lemma-split-morphism-kernel-cokernel",
+          "tag": "0H9R",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "homology-section-abelian-categories",
+      "tag": "00ZX",
+      "references": [
+        {
+          "label": "homology-lemma-coim-im-map",
+          "tag": "0107",
+          "included": true
+        },
+        {
+          "label": "homology-example-not-abelian",
+          "tag": "0108",
+          "included": true
+        },
+        {
+          "label": "homology-definition-kernel",
+          "tag": "0106",
+          "included": true
+        },
+        {
+          "label": "categories-lemma-finite-limits-exist",
+          "tag": "002O",
+          "included": false
+        },
+        {
+          "label": "algebra-lemma-hom-exact",
+          "tag": "0582",
+          "included": true
+        },
+        {
+          "label": "homology-definition-ses-split",
+          "tag": "010F",
+          "included": true
+        },
+        {
+          "label": "homology-definition-ses-split",
+          "tag": "010F",
+          "included": true
+        },
+        {
+          "label": "homology-lemma-split-morphism-splitting",
+          "tag": "0H9S",
+          "included": true
+        },
+        {
+          "label": "homology-example-fibre-product-pushouts",
+          "tag": "05PJ",
+          "included": true
+        },
+        {
+          "label": "homology-lemma-characterize-cartesian",
+          "tag": "08N2",
+          "included": true
+        },
+        {
+          "label": "homology-lemma-characterize-cartesian",
+          "tag": "08N2",
+          "included": true
+        },
+        {
+          "label": "homology-lemma-cartesian-kernel",
+          "tag": "08N3",
+          "included": true
+        },
+        {
+          "label": "homology-lemma-characterize-injective",
+          "tag": "010C",
+          "included": true
+        },
+        {
+          "label": "homology-lemma-characterize-injective",
+          "tag": "010C",
+          "included": true
+        },
+        {
+          "label": "homology-lemma-cartesian-cocartesian",
+          "tag": "08N4",
+          "included": true
+        },
+        {
+          "label": "homology-lemma-cartesian-cocartesian",
+          "tag": "08N4",
+          "included": true
+        },
+        {
+          "label": "homology-lemma-check-exactness-fibre-product",
+          "tag": "08N5",
+          "included": true
+        },
+        {
+          "label": "homology-lemma-check-exactness-fibre-product",
+          "tag": "08N5",
+          "included": true
+        },
+        {
+          "label": "homology-lemma-cartesian-cocartesian",
+          "tag": "08N4",
+          "included": true
+        },
+        {
+          "label": "homology-lemma-cartesian-cocartesian",
+          "tag": "08N4",
+          "included": true
+        },
+        {
+          "label": "homology-lemma-cartesian-kernel",
+          "tag": "08N3",
+          "included": true
+        },
+        {
+          "label": "homology-lemma-check-exactness-fibre-product",
+          "tag": "08N5",
+          "included": true
+        },
+        {
+          "label": "homology-lemma-check-exactness-fibre-product",
+          "tag": "08N5",
+          "included": true
+        },
+        {
+          "label": "homology-lemma-check-exactness-fibre-product",
+          "tag": "08N5",
+          "included": true
+        },
+        {
+          "label": "homology-lemma-exact-kernel-sequence",
+          "tag": "08N6",
+          "included": true
+        },
+        {
+          "label": "homology-lemma-snake",
+          "tag": "010H",
+          "included": true
+        },
+        {
+          "label": "homology-lemma-snake",
+          "tag": "010H",
+          "included": true
+        },
+        {
+          "label": "homology-lemma-four-lemma",
+          "tag": "05QA",
+          "included": true
+        }
+      ]
+    },
+    {
+      "section": "homology-section-functors",
+      "tag": "010M",
+      "references": [
+        {
+          "label": "homology-lemma-additive-additive",
+          "tag": "0105",
+          "included": true
+        },
+        {
+          "label": "categories-definition-exact",
+          "tag": "0034",
+          "included": true
+        },
+        {
+          "label": "homology-lemma-additive-functor",
+          "tag": "0DLP",
+          "included": true
+        },
+        {
+          "label": "homology-lemma-additive-cat-biproduct-kernel",
+          "tag": "09QG",
+          "included": true
+        },
+        {
+          "label": "homology-lemma-snake",
+          "tag": "010H",
+          "included": true
+        },
+        {
+          "label": "homology-lemma-colimit-abelian-category",
+          "tag": "010D",
+          "included": true
+        },
+        {
+          "label": "categories-lemma-exact-adjoint",
+          "tag": "0039",
+          "included": true
+        },
+        {
+          "label": "homology-lemma-colimit-abelian-category",
+          "tag": "010D",
+          "included": true
+        },
+        {
+          "label": "categories-lemma-exact-adjoint",
+          "tag": "0039",
+          "included": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,310 @@
+\section{Constructible sets}
+\label{section-constructible}
+
+\begin{definition}
+\label{definition-constructible}
+Let $X$ be a topological space. Let $E \subset X$ be a subset of $X$.
+\begin{enumerate}
+\item We say $E$ is {\it constructible}\footnote{In the second edition
+of EGA I \cite{EGA1-second} this was called a ``globally constructible''
+set and a the terminology ``constructible'' was used for what we call a locally
+constructible set.}
+in $X$ if $E$ is a finite union
+of subsets of the form $U \cap V^c$ where $U, V \subset X$ are open and
+retrocompact in $X$.
+\item We say $E$ is {\it locally constructible} in $X$ if there exists an open
+covering $X = \bigcup V_i$ such that each $E \cap V_i$ is constructible
+in $V_i$.
+\end{enumerate}
+\end{definition}
+
+\begin{lemma}
+\label{lemma-constructible}
+The collection of constructible sets is closed under
+finite intersections, finite unions and complements.
+\end{lemma}
+
+\begin{proof}
+Note that if $U_1$, $U_2$ are open and retrocompact in $X$
+then so is $U_1 \cup U_2$ because the union of two quasi-compact
+subsets of $X$ is quasi-compact. It is also true that
+$U_1 \cap U_2$ is retrocompact. Namely, suppose $U \subset X$
+is quasi-compact open, then $U_2 \cap U$ is quasi-compact because
+$U_2$ is retrocompact in $X$, and then we conclude
+$U_1 \cap (U_2 \cap U)$ is quasi-compact because $U_1$ is
+retrocompact in $X$. From this it is formal to show that
+the complement of a constructible set is constructible,
+that finite unions of constructibles are constructible, and
+that finite intersections of constructibles are constructible.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-inverse-images-constructibles}
+Let $f : X \to Y$ be a continuous map of topological spaces.
+If the inverse image of every retrocompact open subset of $Y$
+is retrocompact in $X$, then inverse images of constructible
+sets are constructible.
+\end{lemma}
+
+\begin{proof}
+This is true because $f^{-1}(U \cap V^c) = f^{-1}(U) \cap f^{-1}(V)^c$,
+combined with the definition of constructible sets.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-open-immersion-constructible-inverse-image}
+Let $U \subset X$ be open. For a constructible set
+$E \subset X$ the intersection $E \cap U$ is constructible
+in $U$.
+\end{lemma}
+
+\begin{proof}
+Suppose that $V \subset X$ is retrocompact open in $X$.
+It suffices to show that $V \cap U$ is retrocompact in $U$
+by Lemma \ref{lemma-inverse-images-constructibles}. To show this
+let $W \subset U$ be open and quasi-compact. Then $W$
+is open and quasi-compact in $X$. Hence $V \cap W = V \cap U \cap W$
+is quasi-compact as $V$ is retrocompact in $X$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-quasi-compact-open-immersion-constructible-image}
+Let $U \subset X$ be a retrocompact open. Let $E \subset U$.
+If $E$ is constructible in $U$, then $E$ is constructible in $X$.
+\end{lemma}
+
+\begin{proof}
+Suppose that $V, W \subset U$ are retrocompact open in $U$.
+Then $V, W$ are retrocompact open in $X$
+(Lemma \ref{lemma-composition-quasi-compact}).
+Hence $V \cap (U \setminus W) = V \cap (X \setminus W)$
+is constructible in $X$. We conclude since every constructible subset of $U$
+is a finite union of subsets of the form $V \cap (U \setminus W)$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-collate-constructible}
+Let $X$ be a topological space. Let $E \subset X$ be a subset.
+Let $X = V_1 \cup \ldots \cup V_m$ be a finite covering by
+retrocompact opens.
+Then $E$ is constructible in $X$ if and only if $E \cap V_j$
+is constructible in $V_j$ for each $j = 1, \ldots, m$.
+\end{lemma}
+
+\begin{proof}
+If $E$ is constructible in $X$, then by
+Lemma \ref{lemma-open-immersion-constructible-inverse-image}
+we see that $E \cap V_j$ is constructible in $V_j$ for all $j$.
+Conversely, suppose that $E \cap V_j$
+is constructible in $V_j$ for each $j = 1, \ldots, m$.
+Then $E = \bigcup E \cap V_j$ is a finite union of
+constructible sets by
+Lemma \ref{lemma-quasi-compact-open-immersion-constructible-image}
+and hence constructible.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-intersect-constructible-with-closed}
+Let $X$ be a topological space. Let $Z \subset X$ be a closed
+subset such that $X \setminus Z$ is quasi-compact.
+Then for a constructible set $E \subset X$ the intersection
+$E \cap Z$ is constructible in $Z$.
+\end{lemma}
+
+\begin{proof}
+Suppose that $V \subset X$ is retrocompact open in $X$.
+It suffices to show that $V \cap Z$ is retrocompact in $Z$
+by Lemma \ref{lemma-inverse-images-constructibles}. To show this
+let $W \subset Z$ be open and quasi-compact. The subset
+$W' = W \cup (X \setminus Z)$ is quasi-compact, open, and $W = Z \cap W'$.
+Hence $V \cap Z \cap W = V \cap Z \cap W'$
+is a closed subset of the quasi-compact open $V \cap W'$
+as $V$ is retrocompact in $X$. Thus $V \cap Z \cap W$ is quasi-compact
+by Lemma \ref{lemma-closed-in-quasi-compact}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-intersect-constructible-with-retrocompact}
+Let $X$ be a topological space. Let $T \subset X$ be a subset. Suppose
+\begin{enumerate}
+\item $T$ is retrocompact in $X$,
+\item quasi-compact opens form a basis for the topology on $X$.
+\end{enumerate}
+Then for a constructible set $E \subset X$ the intersection $E \cap T$ is
+constructible in $T$.
+\end{lemma}
+
+\begin{proof}
+Suppose that $V \subset X$ is retrocompact open in $X$.
+It suffices to show that $V \cap T$ is retrocompact in $T$
+by Lemma \ref{lemma-inverse-images-constructibles}. To show this
+let $W \subset T$ be open and quasi-compact. By assumption (2)
+we can find a quasi-compact open $W' \subset X$
+such that $W = T \cap W'$ (details omitted).
+Hence $V \cap T \cap W = V \cap T \cap W'$
+is the intersection of $T$ with  the quasi-compact open $V \cap W'$
+as $V$ is retrocompact in $X$. Thus $V \cap T \cap W$ is quasi-compact.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-closed-constructible-image}
+Let $Z \subset X$ be a closed subset whose complement is retrocompact open.
+Let $E \subset Z$. If $E$ is constructible in $Z$, then $E$ is constructible
+in $X$.
+\end{lemma}
+
+\begin{proof}
+Suppose that $V \subset Z$ is retrocompact open in $Z$. Consider the open
+subset $\tilde V = V \cup (X \setminus Z)$ of $X$. Let $W \subset X$ be
+quasi-compact open. Then
+$$
+W \cap \tilde V =
+\left(V \cap W\right) \cup \left((X \setminus Z) \cap W\right).
+$$
+The first part is quasi-compact as $V \cap W = V \cap (Z \cap W)$ and
+$(Z \cap W)$ is quasi-compact open in $Z$
+(Lemma \ref{lemma-closed-in-quasi-compact}) and $V$ is retrocompact in $Z$.
+The second part is quasi-compact as $(X \setminus Z)$ is retrocompact in $X$.
+In this way we see that $\tilde V$ is retrocompact in $X$.
+Thus if $V_1, V_2 \subset Z$ are retrocompact open, then
+$$
+V_1 \cap (Z \setminus V_2) = \tilde V_1 \cap (X \setminus \tilde V_2)
+$$
+is constructible in $X$. We conclude since every constructible subset of $Z$
+is a finite union of subsets of the form $V_1 \cap (Z \setminus V_2)$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-constructible-is-retrocompact}
+Let $X$ be a topological space. Every constructible
+subset of $X$ is retrocompact.
+\end{lemma}
+
+\begin{proof}
+Let $E = \bigcup_{i = 1, \ldots, n} U_i \cap V_i^c$ with $U_i, V_i$
+retrocompact open in $X$. Let $W \subset X$ be quasi-compact open.
+Then $E \cap W = \bigcup_{i = 1, \ldots, n} U_i \cap V_i^c \cap W$.
+Thus it suffices to show that $U \cap V^c \cap W$ is quasi-compact
+if $U, V$ are retrocompact open and $W$ is quasi-compact
+open. This is true because $U \cap V^c \cap W$ is a closed
+subset of the quasi-compact $U \cap W$ so
+Lemma \ref{lemma-closed-in-quasi-compact}
+applies.
+\end{proof}
+
+\noindent
+Question: Does the following lemma also hold if we assume $X$ is a
+quasi-compact topological space? Compare with
+Lemma \ref{lemma-intersect-constructible-with-closed}.
+
+\begin{lemma}
+\label{lemma-intersect-constructible-with-constructible}
+Let $X$ be a topological space. Assume
+$X$ has a basis consisting of quasi-compact opens.
+For $E, E'$ constructible in $X$, the intersection
+$E \cap E'$ is constructible in $E$.
+\end{lemma}
+
+\begin{proof}
+Combine Lemmas \ref{lemma-intersect-constructible-with-retrocompact} and
+\ref{lemma-constructible-is-retrocompact}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-constructible-in-constructible}
+Let $X$ be a topological space. Assume
+$X$ has a basis consisting of quasi-compact opens.
+Let $E$ be constructible in $X$ and $F \subset E$ constructible in $E$.
+Then $F$ is constructible in $X$.
+\end{lemma}
+
+\begin{proof}
+Observe that any retrocompact subset $T$ of $X$ has a basis for the induced
+topology consisting of quasi-compact opens. In particular this holds
+for any constructible subset
+(Lemma \ref{lemma-constructible-is-retrocompact}).
+Write $E = E_1 \cup \ldots \cup E_n$ with $E_i = U_i \cap V_i^c$
+where $U_i, V_i \subset X$ are retrocompact open.
+Note that $E_i = E \cap E_i$ is constructible in $E$ by
+Lemma \ref{lemma-intersect-constructible-with-constructible}.
+Hence $F \cap E_i$ is constructible in $E_i$ by
+Lemma \ref{lemma-intersect-constructible-with-constructible}.
+Thus it suffices to prove the lemma in case $E = U \cap V^c$
+where $U, V \subset X$ are retrocompact open.
+In this case the inclusion $E \subset X$ is a composition
+$$
+E = U \cap V^c \to U \to X
+$$
+Then we can apply Lemma \ref{lemma-closed-constructible-image}
+to the first inclusion and
+Lemma \ref{lemma-quasi-compact-open-immersion-constructible-image}
+to the second.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-locally-closed-constructible-image}
+Let $X$ be a quasi-compact topological space having a basis consisting of
+quasi-compact opens such that the intersection of any two
+quasi-compact opens is quasi-compact.
+Let $T \subset X$ be a locally closed subset
+such that $T$ is quasi-compact and $T^c$ is retrocompact in $X$.
+Then $T$ is constructible in $X$.
+\end{lemma}
+
+\begin{proof}
+Note that $T$ is quasi-compact and open in $\overline{T}$.
+Using our basis of quasi-compact opens we can write
+$T = U \cap \overline{T}$ where $U$ is quasi-compact open in $X$.
+Then $V = U \setminus T = U \cap T^c$ is retrocompact in $U$ as $T^c$
+is retrocompact in $X$. Hence $V$ is quasi-compact. Since
+the intersection of any two quasi-compact opens is quasi-compact
+any quasi-compact open of $X$ is retrocompact. Thus $T = U \cap V^c$
+with $U$ and $V = U \setminus T$ retrocompact opens of $X$.
+A fortiori, $T$ is constructible in $X$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-collate-constructible-from-constructible}
+Let $X$ be a topological space which has a basis for the topology
+consisting of quasi-compact opens. Let $E \subset X$ be a subset.
+Let $X = E_1 \cup \ldots \cup E_m$ be a finite covering by constructible
+subsets. Then $E$ is constructible in $X$ if and only if $E \cap E_j$
+is constructible in $E_j$ for each $j = 1, \ldots, m$.
+\end{lemma}
+
+\begin{proof}
+Combine
+Lemmas \ref{lemma-intersect-constructible-with-constructible} and
+\ref{lemma-constructible-in-constructible}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-generic-point-in-constructible}
+Let $X$ be a topological space. Suppose that
+$Z \subset X$ is irreducible. Let $E \subset X$
+be a finite union of locally closed subsets (e.g.\ $E$
+is constructible). The following are equivalent
+\begin{enumerate}
+\item The intersection $E \cap Z$ contains an open
+dense subset of $Z$.
+\item The intersection $E \cap Z$ is dense in $Z$.
+\end{enumerate}
+If $Z$ has a generic point $\xi$, then this is
+also equivalent to
+\begin{enumerate}
+\item[(3)] We have $\xi \in E$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+The implication (1) $\Rightarrow$ (2) is clear. Assume (2).
+Note that $E \cap Z$ is a finite union of locally closed subsets
+$Z_i$ of $Z$. Since $Z$ is irreducible, one of the $Z_i$ must
+be dense in $Z$. Then this $Z_i$ is dense open in $Z$ as it is
+open in its closure. Hence (1) holds.
+
+\medskip\noindent
+Suppose that $\xi \in Z$ is a generic point. If the equivalent conditions
+(1) and (2) hold, then $\xi \in E$. Conversely, if $\xi \in E$ then
+$\xi \in E \cap Z$ and hence $E \cap Z$ is dense in $Z$.
+\end{proof}

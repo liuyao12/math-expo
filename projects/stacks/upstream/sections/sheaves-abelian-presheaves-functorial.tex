@@ -1,0 +1,143 @@
+\section{Continuous maps and abelian sheaves}
+\label{section-abelian-presheaves-functorial}
+
+\noindent
+Let $f : X \to Y$ be a continuous map.
+We claim there are functors
+\begin{eqnarray*}
+f_* : \textit{PAb}(X) & \longrightarrow & \textit{PAb}(Y) \\
+f_* : \textit{Ab}(X) & \longrightarrow & \textit{Ab}(Y) \\
+f_p : \textit{PAb}(Y) & \longrightarrow & \textit{PAb}(X) \\
+f^{-1} : \textit{Ab}(Y) & \longrightarrow & \textit{Ab}(X)
+\end{eqnarray*}
+with similar properties to their counterparts in
+Section \ref{section-presheaves-functorial}.
+To see this we argue in the following way.
+
+\medskip\noindent
+Each of the functors will be constructed in the same
+way as the corresponding functor in
+Section \ref{section-presheaves-functorial}.
+This works because all the colimits in that section
+are directed colimits (but we will work through it below).
+
+\medskip\noindent
+First off, given an abelian presheaf $\mathcal{F}$ on $X$ and
+an abelian presheaf $\mathcal{G}$ on $Y$ we define
+\begin{eqnarray*}
+f_*\mathcal{F}(V) & = & \mathcal{F}(f^{-1}(V)) \\
+f_p\mathcal{G}(U) & = & \colim_{f(U) \subset V} \mathcal{G}(V)
+\end{eqnarray*}
+as abelian groups. The restriction mappings are the same as
+the restriction mappings for presheaves of sets (and they are
+all homomorphisms of abelian groups).
+
+\medskip\noindent
+The assignments $\mathcal{F} \mapsto f_*\mathcal{F}$ and
+$\mathcal{G} \to f_p\mathcal{G}$ are functors on
+the categories of presheaves of abelian groups.
+This is clear, as (for example) a map of abelian presheaves
+$\mathcal{G}_1 \to \mathcal{G}_2$ gives rise to a map of
+directed systems
+$\{\mathcal{G}_1(V)\}_{f(U) \subset V} \to
+\{\mathcal{G}_2(V)\}_{f(U) \subset V}$
+all of whose maps are homomorphisms
+and hence gives rise to a homomorphism of abelian groups
+$f_p\mathcal{G}_1(U) \to f_p\mathcal{G}_2(U)$.
+
+\medskip\noindent
+The functors $f_*$ and $f_p$ are adjoint on the
+category of presheaves of abelian groups, i.e., we have
+$$
+\Mor_{\textit{PAb}(X)}(f_p\mathcal{G}, \mathcal{F})
+=
+\Mor_{\textit{PAb}(Y)}(\mathcal{G}, f_*\mathcal{F}).
+$$
+To prove this, note that the map
+$i_\mathcal{G} : \mathcal{G} \to f_* f_p\mathcal{G}$ from the proof
+of Lemma \ref{lemma-pullback-presheaves}
+is a map of abelian presheaves. Hence if
+$\psi : f_p\mathcal{G} \to \mathcal{F}$
+is a map of abelian presheaves, then the corresponding map
+$\mathcal{G} \to f_*\mathcal{F}$ is the map
+$f_*\psi \circ i_\mathcal{G} :
+\mathcal{G} \to f_* f_p \mathcal{G} \to f_* \mathcal{F}$
+is also a map of abelian presheaves. For the other direction
+we point out that the map
+$c_\mathcal{F} : f_p f_* \mathcal{F} \to \mathcal{F}$
+from the proof of Lemma \ref{lemma-pullback-presheaves} is a
+map of abelian presheaves as well (since it is made out of restriction
+mappings of $\mathcal{F}$ which are all homomorphisms). Hence
+given a map of abelian presheaves $\varphi : \mathcal{G} \to f_*\mathcal{F}$
+the map
+$c_\mathcal{F} \circ f_p\varphi : f_p\mathcal{G} \to \mathcal{F}$
+is a map of abelian presheaves as well. Since these constructions
+$\psi \mapsto f_*\psi$ and $\varphi \mapsto c_\mathcal{F} \circ f_p\varphi$
+are inverse to each other as constructions on maps of presheaves of sets
+we see they are also inverse to each other on maps of abelian presheaves.
+
+\medskip\noindent
+If $\mathcal{F}$ is an abelian sheaf on $Y$, then $f_*\mathcal{F}$
+is an abelian sheaf on $X$. This is true because of the definition
+of an abelian sheaf and because this is true for sheaves of sets,
+see Lemma \ref{lemma-pushforward-sheaf}. This defines the functor
+$f_*$ on the category of abelian sheaves.
+
+\medskip\noindent
+We define $f^{-1}\mathcal{G} = (f_p\mathcal{G})^\#$ as before.
+Adjointness of $f_*$ and $f^{-1}$ follows formally as in
+the case of presheaves of sets. Here is the argument:
+\begin{eqnarray*}
+\Mor_{\textit{Ab}(X)}(f^{-1}\mathcal{G}, \mathcal{F})
+& = &
+\Mor_{\textit{PAb}(X)}(f_p\mathcal{G}, \mathcal{F}) \\
+& = &
+\Mor_{\textit{PAb}(Y)}(\mathcal{G}, f_*\mathcal{F}) \\
+& = &
+\Mor_{\textit{Ab}(Y)}(\mathcal{G}, f_*\mathcal{F})
+\end{eqnarray*}
+
+\begin{lemma}
+\label{lemma-pullback-abelian-stalk}
+Let $f : X \to Y$ be a continuous map.
+\begin{enumerate}
+\item Let $\mathcal{G}$ be an abelian presheaf on $Y$.
+Let $x \in X$. The bijection
+$\mathcal{G}_{f(x)} \to (f_p\mathcal{G})_x$ of
+Lemma \ref{lemma-stalk-pullback-presheaf} is an isomorphism of abelian groups.
+\item Let $\mathcal{G}$ be an abelian sheaf on $Y$.
+Let $x \in X$. The bijection
+$\mathcal{G}_{f(x)} \to (f^{-1}\mathcal{G})_x$ of
+Lemma \ref{lemma-stalk-pullback} is an isomorphism of abelian groups.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\noindent
+Given a continuous map $f : X \to Y$ and sheaves of abelian
+groups $\mathcal{F}$ on $X$, $\mathcal{G}$ on $Y$, the notion
+of an {\it $f$-map $\mathcal{G} \to \mathcal{F}$
+of sheaves of abelian groups} makes sense. We can just define
+it exactly as in Definition \ref{definition-f-map} (replacing maps
+of sets with homomorphisms of abelian groups) or we can
+simply say that it is the same as a map of abelian
+sheaves $\mathcal{G} \to f_*\mathcal{F}$. We will use this
+notion freely in the following. The group of $f$-maps between
+$\mathcal{G}$ and $\mathcal{F}$ will be in canonical bijection
+with the groups
+$\Mor_{\textit{Ab}(X)}(f^{-1}\mathcal{G}, \mathcal{F})$
+and
+$\Mor_{\textit{Ab}(Y)}(\mathcal{G}, f_*\mathcal{F})$.
+
+\medskip\noindent
+Composition of $f$-maps is defined in exactly the
+same manner as in the case of $f$-maps of sheaves of
+sets. In addition, given an $f$-map $\mathcal{G} \to \mathcal{F}$
+as above, the induced maps on stalks
+$$
+\varphi_x : \mathcal{G}_{f(x)} \longrightarrow \mathcal{F}_x
+$$
+are abelian group homomorphisms.

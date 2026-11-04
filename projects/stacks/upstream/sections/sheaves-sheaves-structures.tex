@@ -1,0 +1,175 @@
+\section{Sheaves of algebraic structures}
+\label{section-sheaves-structures}
+
+\noindent
+Let us clarify the definition of sheaves of certain types of structures.
+First, let us reformulate the sheaf condition. Namely, suppose that
+$\mathcal{F}$ is a presheaf of sets on the topological space $X$.
+The sheaf condition can be reformulated as follows. Let
+$U = \bigcup_{i\in I} U_i$ be an open covering. Consider the
+diagram
+$$
+\xymatrix{
+\mathcal{F}(U) \ar[r]
+&
+\prod\nolimits_{i\in I}
+\mathcal{F}(U_i)
+\ar@<1ex>[r] \ar@<-1ex>[r]
+&
+\prod\nolimits_{(i_0, i_1) \in I \times I}
+\mathcal{F}(U_{i_0} \cap U_{i_1})
+}
+$$
+Here the left map is defined by the rule
+$s \mapsto \prod_{i \in I} s|_{U_i}$. The two maps
+on the right are the maps
+$$
+\prod\nolimits_i s_i
+\mapsto
+\prod\nolimits_{(i_0, i_1)} s_{i_0}|_{U_{i_0} \cap U_{i_1}}
+\text{ resp. }
+\prod\nolimits_i s_i
+\mapsto
+\prod\nolimits_{(i_0, i_1)} s_{i_1}|_{U_{i_0} \cap U_{i_1}}.
+$$
+The sheaf condition exactly says that the left arrow
+is the equalizer of the right two. This generalizes
+immediately to the case of presheaves with values in a
+category as long as the category has products.
+
+\begin{definition}
+\label{definition-sheaf-values-in-category}
+Let $X$ be a topological space. Let $\mathcal{C}$ be
+a category with products. A presheaf $\mathcal{F}$ with
+values in $\mathcal{C}$ on $X$ is a {\it sheaf}
+if for every open covering the diagram
+$$
+\xymatrix{
+\mathcal{F}(U) \ar[r]
+&
+\prod\nolimits_{i\in I}
+\mathcal{F}(U_i)
+\ar@<1ex>[r] \ar@<-1ex>[r]
+&
+\prod\nolimits_{(i_0, i_1) \in I \times I}
+\mathcal{F}(U_{i_0} \cap U_{i_1})
+}
+$$
+is an equalizer diagram in the category $\mathcal{C}$.
+\end{definition}
+
+\noindent
+Suppose that $\mathcal{C}$ is a category and that
+$F : \mathcal{C} \to \textit{Sets}$ is a faithful functor.
+A good example to keep in mind is the case where $\mathcal{C}$
+is the category of abelian groups and $F$ is the forgetful functor.
+Consider a presheaf $\mathcal{F}$ with values in $\mathcal{C}$ on $X$.
+We would like to reformulate the condition above in terms
+of the underlying presheaf of sets
+(Definition \ref{definition-underlying-presheaf-sets}).
+Note that the underlying
+presheaf of sets is a sheaf of sets if and only if all the
+diagrams
+$$
+\xymatrix{
+F(\mathcal{F}(U)) \ar[r]
+&
+\prod\nolimits_{i\in I}
+F(\mathcal{F}(U_i))
+\ar@<1ex>[r] \ar@<-1ex>[r]
+&
+\prod\nolimits_{(i_0, i_1) \in I \times I}
+F(\mathcal{F}(U_{i_0} \cap U_{i_1}))
+}
+$$
+of sets -- after applying the forgetful functor $F$ -- are
+equalizer diagrams! Thus we would like $\mathcal{C}$ to have
+products and equalizers and we would like $F$ to commute with
+them. This is equivalent to the condition that $\mathcal{C}$
+has limits and that $F$ commutes with them, see
+Categories, Lemma \ref{categories-lemma-limits-products-equalizers}.
+But this is not yet good enough
+(see Example \ref{example-sheaves-topological-spaces});
+we also need $F$ to {\it reflect isomorphisms}.
+This property means that given a morphism
+$f : A \to A'$ in $\mathcal{C}$, then $f$ is
+an isomorphism if (and only if) $F(f)$ is a bijection.
+
+\begin{lemma}
+\label{lemma-sheaves-structure}
+Suppose the category $\mathcal{C}$ and
+the functor $F : \mathcal{C} \to \textit{Sets}$
+have the following properties:
+\begin{enumerate}
+\item $F$ is faithful,
+\item $\mathcal{C}$ has limits and $F$ commutes with them, and
+\item the functor $F$ reflects isomorphisms.
+\end{enumerate}
+Let $X$ be a topological space. Let $\mathcal{F}$
+be a presheaf with values in $\mathcal{C}$.
+Then $\mathcal{F}$ is a sheaf if and only if the
+underlying presheaf of sets is a sheaf.
+\end{lemma}
+
+\begin{proof}
+Assume that $\mathcal{F}$ is a sheaf. Then
+$\mathcal{F}(U)$ is the equalizer of the diagram
+above and by assumption we see $F(\mathcal{F}(U))$
+is the equalizer of the corresponding diagram
+of sets. Hence $F(\mathcal{F})$ is a sheaf of sets.
+
+\medskip\noindent
+Assume that $F(\mathcal{F})$ is a sheaf.
+Let $E \in \Ob(\mathcal{C})$ be the
+equalizer of the two parallel arrows in
+Definition \ref{definition-sheaf-values-in-category}.
+We get a canonical morphism $\mathcal{F}(U) \to E$,
+simply because $\mathcal{F}$ is a presheaf.
+By assumption, the induced map $F(\mathcal{F}(U)) \to F(E)$
+is an isomorphism, because $F(E)$ is the equalizer
+of the corresponding diagram of sets. Hence we
+see $\mathcal{F}(U) \to E$ is an isomorphism
+by condition (3) of the lemma.
+\end{proof}
+
+\noindent
+The lemma in particular applies to
+{\it sheaves of groups, rings, algebras over a fixed ring, modules
+over a fixed ring, vector spaces over a fixed field, } etc.
+In other words, these are presheaves of groups, rings,
+modules over a fixed ring, vector spaces over a fixed field, etc
+such that the underlying presheaf of sets is a sheaf.
+
+\begin{example}
+\label{example-C0-sheaf-rings}
+Let $X$ be a topological space. For each open $U \subset X$ consider
+the $\mathbf{R}$-algebra
+$\mathcal{C}^{0}(U) = \{ f : U \to \mathbf{R} \mid f\text{ is continuous}\}$.
+There are obvious restriction mappings that turn this into a
+presheaf of $\mathbf{R}$-algebras over $X$.
+By Example \ref{example-basic-continuous-maps} it is a sheaf of sets.
+Hence by the Lemma \ref{lemma-sheaves-structure} it is a sheaf of
+$\mathbf{R}$-algebras over $X$.
+\end{example}
+
+\begin{example}
+\label{example-sheaves-topological-spaces}
+Consider the category of topological spaces $\textit{Top}$.
+There is a natural faithful functor $\textit{Top} \to \textit{Sets}$
+which commutes with products and equalizers. But it does
+not reflect isomorphisms. And, in fact it turns out that
+the analogue of Lemma \ref{lemma-sheaves-structure} is wrong.
+Namely, suppose $X = \mathbf{N}$ with the discrete
+topology. Let $A_i$, for $i \in \mathbf{N}$ be a discrete
+topological space. For any subset $U \subset \mathbf{N}$
+define $\mathcal{F}(U) = \prod_{i\in U} A_i$ with the
+discrete topology. Then this is a presheaf of topological
+spaces whose underlying presheaf of sets is a sheaf, see
+Example \ref{example-sheaf-product-pointwise}.
+However, if each $A_i$ has at least two elements, then
+this is not a sheaf of topological spaces
+according to Definition \ref{definition-sheaf-values-in-category}.
+The reader may check that putting the {\it product topology} on
+each $\mathcal{F}(U) = \prod_{i\in U} A_i$ does lead to a sheaf
+of topological spaces over $X$.
+\end{example}

@@ -1,0 +1,145 @@
+\section{Sheafification of presheaves of modules}
+\label{section-sheafification-presheaves-modules}
+
+\begin{lemma}
+\label{lemma-sheafification-presheaf-modules}
+Let $X$ be a topological space.
+Let $\mathcal{O}$ be a presheaf of rings on $X$.
+Let $\mathcal{F}$ be a presheaf of $\mathcal{O}$-modules.
+Let $\mathcal{O}^\#$ be the sheafification of $\mathcal{O}$.
+Let $\mathcal{F}^\#$ be the sheafification of $\mathcal{F}$
+as a presheaf of abelian groups. There exists a map of
+sheaves of sets
+$$
+\mathcal{O}^\# \times \mathcal{F}^\#
+\longrightarrow
+\mathcal{F}^\#
+$$
+which makes the diagram
+$$
+\xymatrix{
+\mathcal{O} \times \mathcal{F} \ar[r] \ar[d] &
+\mathcal{F} \ar[d] \\
+\mathcal{O}^\# \times \mathcal{F}^\# \ar[r] &
+\mathcal{F}^\#
+}
+$$
+commute and which makes $\mathcal{F}^\#$ into a sheaf
+of $\mathcal{O}^\#$-modules. In addition, if $\mathcal{G}$
+is a sheaf of $\mathcal{O}^\#$-modules, then any morphism
+of presheaves of $\mathcal{O}$-modules $\mathcal{F} \to \mathcal{G}$
+(into the restriction of $\mathcal{G}$ to a $\mathcal{O}$-module)
+factors uniquely as $\mathcal{F} \to \mathcal{F}^\# \to \mathcal{G}$
+where $\mathcal{F}^\# \to \mathcal{G}$ is a morphism of
+$\mathcal{O}^\#$-modules.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\noindent
+This actually means that the functor
+$i : \textit{Mod}(\mathcal{O}^\#) \to \textit{PMod}(\mathcal{O})$
+(combining restriction and including sheaves into presheaves)
+and the sheafification functor of the lemma
+${}^\# : \textit{PMod}(\mathcal{O}) \to \textit{Mod}(\mathcal{O}^\#)$
+are adjoint. In a formula
+$$
+\Mor_{\textit{PMod}(\mathcal{O})}(\mathcal{F}, i\mathcal{G})
+=
+\Mor_{\textit{Mod}(\mathcal{O}^\#)}(\mathcal{F}^\#, \mathcal{G})
+$$
+
+\medskip\noindent
+Let $X$ be a topological space.
+Let $\mathcal{O}_1 \to \mathcal{O}_2$ be
+a morphism of sheaves of rings on $X$.
+In Section \ref{section-presheaves-modules}
+we defined a restriction functor
+and a change of rings functor on presheaves of modules
+associated to this situation.
+
+\medskip\noindent
+If $\mathcal{F}$ is a sheaf of $\mathcal{O}_2$-modules
+then the restriction $\mathcal{F}_{\mathcal{O}_1}$
+of $\mathcal{F}$ is clearly a sheaf
+of $\mathcal{O}_1$-modules. We obtain the restriction functor
+$$
+\textit{Mod}(\mathcal{O}_2)
+\longrightarrow
+\textit{Mod}(\mathcal{O}_1)
+$$
+
+\medskip\noindent
+On the other hand, given a sheaf of $\mathcal{O}_1$-modules
+$\mathcal{G}$ the presheaf of $\mathcal{O}_2$-modules
+$\mathcal{O}_2 \otimes_{p, \mathcal{O}_1} \mathcal{G}$
+is in general not a sheaf. Hence we define the
+{\it tensor product sheaf}
+$\mathcal{O}_2 \otimes_{\mathcal{O}_1} \mathcal{G}$
+by the formula
+$$
+\mathcal{O}_2 \otimes_{\mathcal{O}_1} \mathcal{G}
+=
+(\mathcal{O}_2 \otimes_{p, \mathcal{O}_1} \mathcal{G})^\#
+$$
+as the sheafification of our construction for presheaves.
+We obtain the {\it change of rings} functor
+$$
+\textit{Mod}(\mathcal{O}_1)
+\longrightarrow
+\textit{Mod}(\mathcal{O}_2)
+$$
+
+\begin{lemma}
+\label{lemma-adjointness-tensor-restrict}
+With $X$, $\mathcal{O}_1$, $\mathcal{O}_2$, $\mathcal{F}$ and
+$\mathcal{G}$ as above there exists a canonical bijection
+$$
+\Hom_{\mathcal{O}_1}(\mathcal{G}, \mathcal{F}_{\mathcal{O}_1})
+=
+\Hom_{\mathcal{O}_2}(
+\mathcal{O}_2 \otimes_{\mathcal{O}_1} \mathcal{G},
+\mathcal{F}
+)
+$$
+In other words, the restriction and change of rings functors
+are adjoint to each other.
+\end{lemma}
+
+\begin{proof}
+This follows from
+Lemma \ref{lemma-adjointness-tensor-restrict-presheaves}
+and the fact that
+$\Hom_{\mathcal{O}_2}(
+\mathcal{O}_2 \otimes_{\mathcal{O}_1} \mathcal{G},
+\mathcal{F}
+)
+=
+\Hom_{\mathcal{O}_2}(
+\mathcal{O}_2 \otimes_{p, \mathcal{O}_1} \mathcal{G},
+\mathcal{F}
+)$
+because $\mathcal{F}$ is a sheaf.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-stalk-tensor-sheaf-modules}
+Let $X$ be a topological space.
+Let $\mathcal{O} \to \mathcal{O}'$ be a morphism of
+sheaves of rings on $X$.
+Let $\mathcal{F}$ be a sheaf $\mathcal{O}$-modules.
+Let $x \in X$. We have
+$$
+\mathcal{F}_x \otimes_{\mathcal{O}_x} \mathcal{O}'_x
+=
+(\mathcal{F} \otimes_\mathcal{O} \mathcal{O}')_x
+$$
+as $\mathcal{O}'_x$-modules.
+\end{lemma}
+
+\begin{proof}
+Follows directly from Lemma \ref{lemma-stalk-tensor-presheaf-modules}
+and the fact that taking stalks commutes with sheafification.
+\end{proof}

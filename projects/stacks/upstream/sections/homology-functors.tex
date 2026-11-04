@@ -1,0 +1,280 @@
+\section{Additive functors}
+\label{section-functors}
+
+\noindent
+First a completely silly lemma characterizing additive functors
+between additive categories.
+
+\begin{lemma}
+\label{lemma-additive-functor}
+Let $\mathcal{A}$ and $\mathcal{B}$ be additive categories.
+Let $F : \mathcal{A} \to \mathcal{B}$ be a functor.
+The following are equivalent
+\begin{enumerate}
+\item $F$ is additive,
+\item $F(A) \oplus F(B) \to F(A \oplus B)$ is an isomorphism for
+all $A, B \in \mathcal{A}$, and
+\item $F(A \oplus B) \to F(A) \oplus F(B)$  is an isomorphism for
+all $A, B \in \mathcal{A}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Additive functors commute with direct sums by
+Lemma \ref{lemma-additive-additive} hence (1)
+implies (2) and (3). If (2) holds and $0$ denotes the
+zero object of $\mathcal{A}$, then the map
+$F(0) \oplus F(0) \to F(0 \oplus 0) \cong F(0)$
+being an isomorphism implies that the diagonal map
+$\Hom(F(0), C) \to \Hom(F(0), C) \oplus \Hom(F(0), C)$
+is bijective for all $C$ in $\mathcal{B}$. Thus $F(0)$
+is the zero object of $\mathcal{B}$ and $F$ maps the
+zero morphism between any two objects to the zero morphism.
+Similarly holds if (3) holds. It follows that (2) and (3)
+are equivalent because the composition
+$F(A) \oplus F(B) \to F(A \oplus B) \to F(A) \oplus F(B)$
+is given by the matrix
+$$
+\left(
+\begin{matrix}
+F(1) & F(0) \\
+F(0) & F(1)
+\end{matrix}
+\right)
+$$
+and therefore is the identity map. Assume (2) and (3) hold.
+Let $f, g : A \to B$ be maps. Then $f + g$ is equal to
+the composition
+$$
+A \to A \oplus A \xrightarrow{\text{diag}(f, g)} B \oplus B \to B
+$$
+Apply the functor $F$ and consider the following diagram
+$$
+\xymatrix{
+F(A) \ar[r] \ar[rd] &
+F(A \oplus A) \ar[rr]_{F(\text{diag}(f, g))} & &
+F(B \oplus B) \ar[r] \ar[d] &
+F(B) \\
+&
+F(A) \oplus F(A) \ar[u] \ar[rr]^{\text{diag}(F(f), F(g))} & &
+F(B) \oplus F(B) \ar[ru]
+}
+$$
+We claim this is commutative. For the middle square we can verify it
+separately for each of the four induced maps $F(A) \to F(B)$
+where it follows from the fact that $F$ is a functor and
+transforms zero morphisms into zero morphisms.
+For the triangle on the left, we use that
+$F(A \oplus A) \to F(A) \oplus F(A)$ is an isomorphism
+to see that it suffice to check after composition with
+this map and this check is trivial. Dually for the other triangle.
+Thus going around the bottom is equal to $F(f + g)$ and we conclude.
+\end{proof}
+
+\noindent
+Recall that we defined, in
+Categories, Definition \ref{categories-definition-exact}
+the notion of a ``right exact'', ``left exact'' and
+``exact'' functor in the setting of a functor between
+categories that have finite (co)limits. Thus this
+applies in particular to functors between abelian
+categories.
+
+\begin{lemma}
+\label{lemma-exact-functor}
+Let $\mathcal{A}$ and $\mathcal{B}$ be abelian categories.
+Let $F : \mathcal{A} \to \mathcal{B}$ be a functor.
+\begin{enumerate}
+\item If $F$ is either left or right exact, then it is additive.
+\item $F$ is left exact if and only if
+for every short exact sequence
+$0 \to A \to B \to C \to 0$
+the sequence $0 \to F(A) \to F(B) \to F(C)$
+is exact.
+\item $F$ is right exact if and only if for every short exact sequence
+$0 \to A \to B \to C \to 0$
+the sequence $F(A) \to F(B) \to F(C) \to 0$
+is exact.
+\item $F$ is exact if and only if for every short exact sequence
+$0 \to A \to B \to C \to 0$
+the sequence $0 \to F(A) \to F(B) \to F(C) \to 0$
+is exact.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+If $F$ is left exact, i.e., $F$ commutes with finite limits, then
+$F$ sends products to products, hence $F$ preserved direct sums,
+hence $F$ is additive by Lemma \ref{lemma-additive-functor}.
+On the other hand, suppose that for every short exact sequence
+$0 \to A \to B \to C \to 0$ the sequence $0 \to F(A) \to F(B) \to F(C)$
+is exact. Let $A, B$ be two objects. Then we have a short
+exact sequence
+$$
+0 \to A \to A \oplus B \to B \to 0
+$$
+see for example Lemma \ref{lemma-additive-cat-biproduct-kernel}.
+By assumption, the lower row in the commutative diagram
+$$
+\xymatrix{
+0 \ar[r] &
+F(A) \ar[d] \ar[r] &
+F(A) \oplus F(B) \ar[r] \ar[d] &
+F(B) \ar[d] \ar[r] &
+0 \\
+0 \ar[r] &
+F(A) \ar[r] &
+F(A \oplus B) \ar[r] &
+F(B)
+}
+$$
+is exact. Hence by the snake lemma (Lemma \ref{lemma-snake})
+we conclude that $F(A) \oplus F(B) \to F(A \oplus B)$ is an
+isomorphism. Hence $F$ is additive in this case as well.
+Thus for the rest of the proof we may assume $F$ is additive.
+
+\medskip\noindent
+Denote $f : B \to C$ a map from $B$ to $C$.
+Exactness of $0 \to A \to B \to C$ just means that
+$A = \Ker(f)$. Clearly the kernel of $f$ is
+the equalizer of the two maps $f$ and $0$ from $B$ to $C$.
+Hence if $F$ commutes with limits, then $F(\Ker(f))
+= \Ker(F(f))$ which exactly means that
+$0 \to F(A) \to F(B) \to F(C)$ is exact.
+
+\medskip\noindent
+Conversely, suppose that $F$ is additive and
+transforms any short exact sequence $0 \to A \to B \to C \to 0$ into
+an exact sequence $0 \to F(A) \to F(B) \to F(C)$.
+Because it is additive it commutes with direct sums
+and hence finite products in $\mathcal{A}$. To show
+it commutes with finite limits it therefore
+suffices to show that it commutes with
+equalizers. But equalizers in an abelian category
+are the same as the kernel of the difference map,
+hence it suffices to show that $F$ commutes with
+taking kernels. Let $f : A \to B$ be a morphism.
+Factor $f$ as $A \to I \to B$ with $f' : A \to I$ surjective
+and $i : I \to B$ injective. (This is possible by the
+definition of an abelian category.) Then it is
+clear that $\Ker(f) = \Ker(f')$. Also
+$0 \to \Ker(f') \to A \to I \to 0$
+and
+$0 \to I \to B \to B/I \to 0$
+are short exact. By the condition imposed on $F$
+we see that
+$0 \to F(\Ker(f')) \to F(A) \to F(I)$
+and
+$0 \to F(I) \to F(B) \to F(B/I)$
+are exact. Hence it is also the case that
+$F(\Ker(f'))$ is the kernel of the map
+$F(A) \to F(B)$, and we win.
+
+\medskip\noindent
+The proof of (3) is similar to the proof of (2).
+Statement (4) is a combination of (2) and (3).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-exact-functor-ext}
+Let $\mathcal{A}$ and $\mathcal{B}$ be abelian categories.
+Let $F : \mathcal{A} \to \mathcal{B}$ be an exact functor.
+For every pair of objects $A, B$ of $\mathcal{A}$ the
+functor $F$ induces an abelian group homomorphism
+$$
+\Ext_\mathcal{A}(B, A)
+\longrightarrow
+\Ext_\mathcal{B}(F(B), F(A))
+$$
+which maps the extension $E$ to $F(E)$.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\noindent
+The following lemma is used in the proof that the category of abelian
+sheaves on a site is abelian, where the functor $b$ is sheafification.
+
+\begin{lemma}
+\label{lemma-adjoint-get-abelian}
+Let $a : \mathcal{A} \to \mathcal{B}$ and $b : \mathcal{B} \to \mathcal{A}$
+be functors. Assume that
+\begin{enumerate}
+\item $\mathcal{A}$, $\mathcal{B}$ are additive categories,
+$a$, $b$ are additive functors, and $a$ is right adjoint to $b$,
+\item $\mathcal{B}$ is abelian and $b$ is left exact, and
+\item $ba \cong \text{id}_\mathcal{A}$.
+\end{enumerate}
+Then $\mathcal{A}$ is abelian.
+\end{lemma}
+
+\begin{proof}
+As $\mathcal{B}$ is abelian we see that all finite limits and colimits
+exist in $\mathcal{B}$ by Lemma \ref{lemma-colimit-abelian-category}.
+Since $b$ is a left adjoint we see that $b$ is also right exact
+and hence exact, see
+Categories, Lemma \ref{categories-lemma-exact-adjoint}.
+Let $\varphi : B_1 \to B_2$ be a morphism of $\mathcal{B}$.
+In particular, if $K = \Ker(B_1 \to B_2)$, then $K$ is
+the equalizer of $0$ and $\varphi$ and hence
+$bK$ is the equalizer of $0$ and $b\varphi$, hence
+$bK$ is the kernel of $b\varphi$. Similarly, if
+$Q = \Coker(B_1 \to B_2)$, then $Q$ is
+the coequalizer of $0$ and $\varphi$ and hence
+$bQ$ is the coequalizer of $0$ and $b\varphi$, hence
+$bQ$ is the cokernel of $b\varphi$. Thus we see that every morphism
+of the form $b\varphi$ in $\mathcal{A}$ has a kernel and a cokernel.
+However, since $ba \cong \text{id}$ we see that every morphism of
+$\mathcal{A}$ is of this form, and we conclude that kernels and
+cokernels exist in $\mathcal{A}$. In fact, the argument shows that
+if $\psi : A_1 \to A_2$ is a morphism then
+$$
+\Ker(\psi) = b\Ker(a\psi),
+\quad\text{and}\quad
+\Coker(\psi) = b\Coker(a\psi).
+$$
+Now we still have to show that $\Coim(\psi)= \Im(\psi)$.
+We do this as follows.
+First note that since $\mathcal{A}$ has kernels and cokernels it
+has all finite limits and colimits (see proof of
+Lemma \ref{lemma-colimit-abelian-category}).
+Hence we see by Categories, Lemma \ref{categories-lemma-exact-adjoint}
+that $a$ is left exact and
+hence transforms kernels (=equalizers) into kernels.
+\begin{align*}
+\Coim(\psi)
+& =
+\Coker(\Ker(\psi) \to A_1)
+& \text{by definition} \\
+& =
+b\Coker(a(\Ker(\psi) \to A_1))
+& \text{by formula above} \\
+& =
+b\Coker(\Ker(a\psi) \to aA_1))
+& a\text{ preserves kernels} \\
+& =
+b\Coim(a\psi)
+& \text{by definition} \\
+& =
+b\Im(a\psi)
+& \mathcal{B}\text{ is abelian} \\
+& =
+b\Ker(aA_2 \to \Coker(a\psi))
+& \text{by definition} \\
+& =
+\Ker(baA_2 \to b\Coker(a\psi))
+& b\text{ preserves kernels} \\
+& =
+\Ker(A_2 \to b\Coker(a\psi))
+& ba = \text{id}_\mathcal{A} \\
+& =
+\Ker(A_2 \to \Coker(\psi))
+& \text{by formula above} \\
+& =
+\Im(\psi)
+& \text{by definition}
+\end{align*}
+Thus the lemma holds.
+\end{proof}

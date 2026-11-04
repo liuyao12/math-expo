@@ -1,0 +1,185 @@
+\section{Open and closed subsets of spectra}
+\label{section-open-and-closed}
+
+\noindent
+It turns out that open and closed subsets of a spectrum correspond to
+idempotents of the ring.
+
+\begin{lemma}
+\label{lemma-idempotent-spec}
+Let $R$ be a ring. Let $e \in R$ be an idempotent.
+In this case
+$$
+\Spec(R) = D(e) \amalg D(1-e).
+$$
+\end{lemma}
+
+\begin{proof}
+Note that an idempotent $e$ of a domain is either $1$ or $0$.
+Hence we see that
+\begin{eqnarray*}
+D(e)
+& = &
+\{ \mathfrak p \in \Spec(R)
+\mid
+e \not\in \mathfrak p \} \\
+& = &
+\{ \mathfrak p \in \Spec(R)
+\mid
+e \not = 0\text{ in }\kappa(\mathfrak p) \} \\
+& = &
+\{ \mathfrak p \in \Spec(R)
+\mid
+e = 1\text{ in }\kappa(\mathfrak p) \}
+\end{eqnarray*}
+Similarly we have
+\begin{eqnarray*}
+D(1-e)
+& = &
+\{ \mathfrak p \in \Spec(R)
+\mid
+1 - e \not\in \mathfrak p \} \\
+& = &
+\{ \mathfrak p \in \Spec(R)
+\mid
+e \not = 1\text{ in }\kappa(\mathfrak p) \} \\
+& = &
+\{ \mathfrak p \in \Spec(R)
+\mid
+e = 0\text{ in }\kappa(\mathfrak p) \}
+\end{eqnarray*}
+Since the image of $e$ in any residue field is either $1$ or $0$
+we deduce that $D(e)$ and $D(1-e)$ cover all of $\Spec(R)$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-spec-product}
+Let $R_1$ and $R_2$ be rings.
+Let $R = R_1 \times R_2$.
+The maps $R \to R_1$, $(x, y) \mapsto x$ and $R \to R_2$,
+$(x, y) \mapsto y$
+induce continuous maps $\Spec(R_1) \to \Spec(R)$ and
+$\Spec(R_2) \to \Spec(R)$.
+The induced map
+$$
+\Spec(R_1) \amalg \Spec(R_2)
+\longrightarrow
+\Spec(R)
+$$
+is a homeomorphism. In other words,
+the spectrum of $R = R_1\times R_2$ is the
+disjoint union of the spectrum of $R_1$ and the
+spectrum of $R_2$.
+\end{lemma}
+
+\begin{proof}
+Write $1 = e_1 + e_2$ with $e_1 = (1, 0)$ and $e_2 = (0, 1)$.
+Note that $e_1$ and $e_2 = 1 - e_1$ are idempotents.
+We leave it to the reader to show that
+$R_1 = R_{e_1}$ is the localization of $R$ at $e_1$.
+Similarly for $e_2$.
+Thus the statement of the lemma follows from Lemma
+\ref{lemma-idempotent-spec} combined with Lemma
+\ref{lemma-standard-open}.
+\end{proof}
+
+\noindent
+We reprove the following lemma later after introducing
+a glueing lemma for functions. See Section
+\ref{section-tilde-module-sheaf}.
+
+\begin{lemma}
+\label{lemma-disjoint-decomposition}
+Let $R$ be a ring. For each $U \subset \Spec(R)$
+which is open and closed
+there exists a unique idempotent $e \in R$ such that
+$U = D(e)$. This induces a 1-1 correspondence between
+open and closed subsets $U \subset \Spec(R)$ and
+idempotents $e \in R$.
+\end{lemma}
+
+\begin{proof}
+Let $U \subset \Spec(R)$ be open and closed.
+Since $U$ is closed it is quasi-compact by
+Lemma \ref{lemma-quasi-compact}, and similarly for
+its complement.
+Write $U = \bigcup_{i = 1}^n D(f_i)$ as a finite union of standard opens.
+Similarly, write $\Spec(R) \setminus U = \bigcup_{j = 1}^m D(g_j)$
+as a finite union of standard opens. Since $\emptyset =
+D(f_i) \cap D(g_j) = D(f_i g_j)$ we see that $f_i g_j$ is
+nilpotent by Lemma \ref{lemma-Zariski-topology}.
+Let $I = (f_1, \ldots, f_n) \subset R$ and let
+$J = (g_1, \ldots, g_m) \subset R$.
+Note that $V(J)$ equals $U$, that $V(I)$
+equals the complement of $U$, so $\Spec(R) = V(I) \amalg V(J)$.
+By the remark on nilpotency above,
+we see that $(IJ)^N = (0)$ for some sufficiently large integer $N$.
+Since $\bigcup D(f_i) \cup \bigcup D(g_j) = \Spec(R)$
+we see that $I + J = R$, see Lemma \ref{lemma-Zariski-topology}.
+By raising this equation to the $2N$th power we conclude that
+$I^N + J^N = R$. Write $1 = x + y$ with $x \in I^N$ and $y \in J^N$.
+Then $0 = xy = x(1 - x)$ as $I^N J^N = (0)$. Thus $x = x^2$
+is idempotent and contained
+in $I^N \subset I$. The idempotent $y = 1 - x$ is contained in $J^N \subset J$. 
+This shows that the idempotent $x$ maps to $1$ in every residue field
+$\kappa(\mathfrak p)$ for $\mathfrak p \in V(J)$ and that $x$ maps to $0$
+in $\kappa(\mathfrak p)$ for every $\mathfrak p \in V(I)$.
+
+\medskip\noindent
+To see uniqueness suppose that $e_1, e_2$ are
+distinct idempotents in $R$. We have to show there
+exists a prime $\mathfrak p$ such that $e_1 \in \mathfrak p$
+and $e_2 \not \in \mathfrak p$, or conversely.
+Write $e_i' = 1 - e_i$. If $e_1 \not = e_2$, then
+$0 \not = e_1 - e_2  = e_1(e_2 + e_2') - (e_1 + e_1')e_2
+= e_1 e_2' - e_1' e_2$. Hence either the idempotent
+$e_1 e_2' \not = 0$ or $e_1' e_2 \not = 0$. An idempotent
+is not nilpotent, and hence we find a prime
+$\mathfrak p$ such that either $e_1e_2' \not \in \mathfrak p$
+or $e_1'e_2 \not \in \mathfrak p$, by Lemma \ref{lemma-Zariski-topology}.
+It is easy to see this gives the desired prime.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-characterize-spec-connected}
+Let $R$ be a nonzero ring. Then $\Spec(R)$ is
+connected if and only if $R$ has no nontrivial
+idempotents.
+\end{lemma}
+
+\begin{proof}
+Obvious from Lemma \ref{lemma-disjoint-decomposition}
+and the definition of a connected topological space.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-ideal-is-squared-union-connected}
+Let $I \subset R$ be a finitely generated ideal of a ring $R$
+such that $I = I^2$. Then
+\begin{enumerate}
+\item there exists an idempotent $e \in R$ such that $I = (e)$,
+\item $R/I \cong R_{e'}$ for the idempotent $e' = 1 - e \in R$, and
+\item $V(I)$ is open and closed in $\Spec(R)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+By Nakayama's Lemma \ref{lemma-NAK} there exists an element
+$f = 1 + i$, $i \in I$ such that $fI = 0$. Then $f^2 = f + fi = f$
+is an idempotent. Consider the idempotent $e = 1 - f = -i \in I$.
+For $j \in I$ we have $ej = j - fj = j$ hence $I = (e)$.
+This proves (1).
+
+\medskip\noindent
+Parts (2) and (3) follow from (1). Namely, we have
+$V(I) = V(e) = \Spec(R) \setminus D(e)$ which is open and
+closed by either Lemma \ref{lemma-idempotent-spec} or
+Lemma \ref{lemma-disjoint-decomposition}. This proves (3).
+For (2) observe that the map $R \to R_{e'}$ is surjective
+since $x/(e')^n = x/e' = xe'/(e')^2 = xe'/e' = x/1$ in $R_{e'}$.
+The kernel of the map $R \to R_{e'}$ is the set of elements of
+$R$ annihilated by a positive power of $e'$. Since $e'$ is
+idempotent this is the ideal of elements annihilated by $e'$
+which is the ideal $I = (e)$ as $e + e' = 1$ is a pair
+of orthogonal idempotents. This proves (2).
+\end{proof}

@@ -22,7 +22,7 @@
   const dataNode=$('#example-data');
   let current='local-functions',follow=true,selectionPinned=false,data={},passages=[],keys=[],lastReading=current,lastReadingContext=null,activeContext=null;
   if(dataNode){
-    data=JSON.parse(dataNode.textContent);keys=Object.keys(data);passages=$$('.passage[data-example]');
+    data=JSON.parse(dataNode.textContent);keys=Object.keys(data);current=keys[0];lastReading=current;passages=$$('.passage[data-example]');
     const setExample=(key,manual=false,context=null)=>{
       if(!data[key])return;current=key;
       if(manual)follow=false;

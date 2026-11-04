@@ -1,0 +1,312 @@
+\section{Limits and colimits}
+\label{section-limits}
+
+\noindent
+Let $\mathcal{C}$ be a category. A {\it diagram} in $\mathcal{C}$ is
+simply a functor $M : \mathcal{I} \to \mathcal{C}$. We say that
+$\mathcal{I}$ is the {\it index category} or that $M$ is an
+$\mathcal{I}$-diagram. We will use the notation $M_i$ to denote the
+image of the object
+$i$ of $\mathcal{I}$. Hence for $\phi : i \to i'$ a morphism
+in $\mathcal{I}$ we have $M(\phi) : M_i \to M_{i'}$.
+
+\begin{definition}
+\label{definition-limit}
+A {\it limit} of the $\mathcal{I}$-diagram $M$ in the category
+$\mathcal{C}$ is given by an object $\lim_\mathcal{I} M$ in $\mathcal{C}$
+together with morphisms $p_i : \lim_\mathcal{I} M \to M_i$ such that
+\begin{enumerate}
+\item for $\phi : i \to i'$ a morphism
+in $\mathcal{I}$ we have $p_{i'} = M(\phi) \circ p_i$, and
+\item for any object $W$ in $\mathcal{C}$ and any family of
+morphisms $q_i : W \to M_i$ (indexed by $i \in \Ob(\mathcal{I})$)
+such that for all $\phi : i \to i'$
+in $\mathcal{I}$ we have $q_{i'} = M(\phi) \circ q_i$ there
+exists a unique morphism $q : W \to \lim_\mathcal{I} M$ such that
+$q_i = p_i \circ q$ for every object $i$ of $\mathcal{I}$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+Limits $(\lim_\mathcal{I} M, (p_i)_{i\in \Ob(\mathcal{I})})$ are
+(if they exist)
+unique up to unique isomorphism by the uniqueness requirement
+in the definition. Products of pairs, fibre products, and equalizers are
+examples of limits. The limit over the empty diagram is a final object
+of $\mathcal{C}$.
+In the category of sets all limits exist.
+The dual notion is that of colimits.
+
+\begin{definition}
+\label{definition-colimit}
+A {\it colimit} of the $\mathcal{I}$-diagram $M$ in the category
+$\mathcal{C}$ is given by an object $\colim_\mathcal{I} M$ in $\mathcal{C}$
+together with morphisms $s_i : M_i \to \colim_\mathcal{I} M$ such that
+\begin{enumerate}
+\item for $\phi : i \to i'$ a morphism
+in $\mathcal{I}$ we have $s_i = s_{i'} \circ M(\phi)$, and
+\item for any object $W$ in $\mathcal{C}$ and any family of
+morphisms $t_i : M_i \to W$ (indexed by $i \in \Ob(\mathcal{I})$)
+such that for all $\phi : i \to i'$
+in $\mathcal{I}$ we have $t_i = t_{i'} \circ M(\phi)$ there
+exists a unique morphism $t : \colim_\mathcal{I} M \to W$ such that
+$t_i = t \circ s_i$ for every object $i$ of $\mathcal{I}$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+Colimits $(\colim_\mathcal{I} M, (s_i)_{i\in \Ob(\mathcal{I})})$ are
+(if they exist) unique up to unique isomorphism by the uniqueness requirement
+in the definition. Coproducts of pairs, pushouts, and coequalizers are
+examples of colimits. The colimit over an empty diagram is an initial object
+of $\mathcal{C}$. In the category of sets all colimits exist.
+
+\begin{remark}
+\label{remark-diagram-small}
+The index category of a (co)limit will never be allowed to have
+a proper class of objects. In this project it means that
+it cannot be one of the categories listed in
+Remark \ref{remark-big-categories}
+\end{remark}
+
+\begin{remark}
+\label{remark-limit-colim}
+We often write $\lim_i M_i$, $\colim_i M_i$,
+$\lim_{i\in \mathcal{I}} M_i$, or $\colim_{i\in \mathcal{I}} M_i$
+instead of the versions indexed by $\mathcal{I}$.
+Using this notation, and using the description of
+limits and colimits of sets in Section \ref{section-limit-sets}
+below, we can say the following.
+Let $M : \mathcal{I} \to \mathcal{C}$ be a diagram.
+\begin{enumerate}
+\item The object $\lim_i M_i$ if it exists satisfies the following property
+$$
+\Mor_\mathcal{C}(W, \lim_i M_i)
+=
+\lim_i \Mor_\mathcal{C}(W, M_i)
+$$
+where the limit on the right takes place in the category of sets.
+\item The object $\colim_i M_i$ if it
+exists satisfies the following property
+$$
+\Mor_\mathcal{C}(\colim_i M_i, W)
+=
+\lim_{i \in \mathcal{I}^{opp}} \Mor_\mathcal{C}(M_i, W)
+$$
+where on the right we have the limit over the opposite category
+with value in the category of sets.
+\end{enumerate}
+By the Yoneda lemma (and its dual) this formula completely determines the
+limit, respectively the colimit.
+\end{remark}
+
+\begin{remark}
+\label{remark-cones-and-cocones}
+Let $M : \mathcal{I} \to \mathcal{C}$ be a diagram. In this setting a
+{\it cone} for $M$ is given by an object $W$ and a family of morphisms
+$q_i : W \to M_i$, $i \in \Ob(\mathcal{I})$ such that for all morphisms
+$\phi : i \to i'$ of $\mathcal{I}$ the diagram
+$$
+\xymatrix{
+& W \ar[dl]_{q_i} \ar[dr]^{q_{i'}} \\
+M_i \ar[rr]^{M(\phi)} & & M_{i'}
+}
+$$
+is commutative. The collection of cones forms a category with an obvious
+notion of morphisms. Clearly, the limit of $M$, if it exists, is a final
+object in the category of cones. Dually, a {\it cocone} for $M$ is given
+by an object $W$ and a family of morphisms $t_i : M_i \to W$ such that for
+all morphisms $\phi : i \to i'$ in $\mathcal{I}$ the diagram
+$$
+\xymatrix{
+M_i \ar[rr]^{M(\phi)} \ar[dr]_{t_i} & & M_{i'} \ar[dl]^{t_{i'}} \\
+& W
+}
+$$
+commutes. The collection of cocones forms a category with an obvious notion
+of morphisms. Similarly to the above the colimit of $M$ exists
+if and only if the category of cocones has an initial object.
+\end{remark}
+
+\noindent
+As an application of the notions of limits and colimits
+we define products and coproducts.
+
+\begin{definition}
+\label{definition-product}
+Suppose that $I$ is a set, and suppose given for every $i \in I$ an
+object $M_i$ of the category $\mathcal{C}$. A {\it product}
+$\prod_{i\in I} M_i$ is by definition $\lim_\mathcal{I} M$
+(if it exists)
+where $\mathcal{I}$ is the category having only identities as
+morphisms and having the elements of $I$ as objects.
+\end{definition}
+
+\noindent
+An important special case is where $I = \emptyset$ in which case the
+product is a final object of the category.
+The morphisms $p_i : \prod M_i \to M_i$ are called the
+{\it projection morphisms}.
+
+\begin{definition}
+\label{definition-coproduct}
+Suppose that $I$ is a set, and suppose given for every $i \in I$ an
+object $M_i$ of the category $\mathcal{C}$. A {\it coproduct}
+$\coprod_{i\in I} M_i$ is by definition $\colim_\mathcal{I} M$
+(if it exists) where $\mathcal{I}$ is the category having only
+identities as morphisms and having the elements of $I$ as objects.
+\end{definition}
+
+\noindent
+An important special case is where $I = \emptyset$ in which case the
+coproduct is an initial object of the category.
+Note that the coproduct comes equipped with morphisms
+$M_i \to \coprod M_i$. These are sometimes called the
+{\it coprojections}.
+
+\begin{lemma}
+\label{lemma-functorial-colimit}
+Suppose that $M : \mathcal{I} \to \mathcal{C}$,
+and $N : \mathcal{J} \to \mathcal{C}$ are diagrams
+whose colimits exist. Suppose
+$H : \mathcal{I} \to \mathcal{J}$ is
+a functor, and suppose $t : M \to N \circ H$
+is a transformation of functors.
+Then there is a unique morphism
+$$
+\theta :
+\colim_\mathcal{I} M
+\longrightarrow
+\colim_\mathcal{J} N
+$$
+such that all the diagrams
+$$
+\xymatrix{
+M_i \ar[d]_{t_i} \ar[r]
+&
+\colim_\mathcal{I} M \ar[d]^{\theta}
+\\
+N_{H(i)} \ar[r]
+&
+\colim_\mathcal{J} N
+}
+$$
+commute.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-functorial-limit}
+Suppose that $M : \mathcal{I} \to \mathcal{C}$,
+and $N : \mathcal{J} \to \mathcal{C}$ are diagrams
+whose limits exist. Suppose $H : \mathcal{I} \to \mathcal{J}$ is
+a functor, and suppose $t : N \circ H \to M$
+is a transformation of functors.
+Then there is a unique morphism
+$$
+\theta :
+\lim_\mathcal{J} N
+\longrightarrow
+\lim_\mathcal{I} M
+$$
+such that all the diagrams
+$$
+\xymatrix{
+\lim_\mathcal{J} N \ar[d]^{\theta} \ar[r]
+&
+N_{H(i)} \ar[d]_{t_i}
+\\
+\lim_\mathcal{I} M \ar[r]
+&
+M_i
+}
+$$
+commute.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+
+\begin{lemma}
+\label{lemma-colimits-commute}
+Let $\mathcal{I}$, $\mathcal{J}$ be index categories. Let
+$M : \mathcal{I} \times \mathcal{J} \to \mathcal{C}$ be a functor.
+Assume that $M_{i, \infty} = \colim_j M_{i,j}$ 
+exists for all $i$. Then the resulting functor
+$M_{-, \infty} : \mathcal{I} \to \mathcal{C}$
+has a colimit if and only if $M$ does, and then the colimits coincide.
+In particular, we have
+$$
+\colim_i \colim_j M_{i, j}
+=
+\colim_{i, j} M_{i, j}
+=
+\colim_j \colim_i M_{i, j}
+$$
+provided all the indicated colimits exist. Similar for limits.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-limits-products-equalizers}
+Let $M : \mathcal{I} \to \mathcal{C}$ be a diagram.
+Write $I = \Ob(\mathcal{I})$ and $A = \text{Arrows}(\mathcal{I})$.
+Denote $s, t : A \to I$ the source and target maps.
+Suppose that $\prod_{i \in I} M_i$ and $\prod_{a \in A} M_{t(a)}$
+exist. Suppose that the equalizer of
+$$
+\xymatrix{
+\prod_{i \in I} M_i
+\ar@<1ex>[r]^\phi \ar@<-1ex>[r]_\psi
+&
+\prod_{a \in A} M_{t(a)}
+}
+$$
+exists, where the morphisms are determined by their components
+as follows: $p_a \circ \psi = M(a) \circ p_{s(a)}$
+and $p_a \circ \phi = p_{t(a)}$. Then this equalizer is the
+limit of the diagram.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+
+\begin{lemma}
+\label{lemma-colimits-coproducts-coequalizers}
+\begin{slogan}
+If all coproducts and coequalizers exist, all colimits exist.
+\end{slogan}
+Let $M : \mathcal{I} \to \mathcal{C}$ be a diagram.
+Write $I = \Ob(\mathcal{I})$ and $A = \text{Arrows}(\mathcal{I})$.
+Denote $s, t : A \to I$ the source and target maps.
+Suppose that $\coprod_{i \in I} M_i$ and $\coprod_{a \in A} M_{s(a)}$
+exist. Suppose that the coequalizer of
+$$
+\xymatrix{
+\coprod_{a \in A} M_{s(a)}
+\ar@<1ex>[r]^\phi \ar@<-1ex>[r]_\psi
+&
+\coprod_{i \in I} M_i
+}
+$$
+exists, where the morphisms are determined by their components
+as follows: The component $M_{s(a)}$ maps via $\psi$
+to the component $M_{t(a)}$ via the morphism $M(a)$.
+The component $M_{s(a)}$ maps via $\phi$ to the component
+$M_{s(a)}$ by the identity morphism. Then this coequalizer is the
+colimit of the diagram.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}

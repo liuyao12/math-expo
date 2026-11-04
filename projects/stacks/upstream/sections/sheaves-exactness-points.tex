@@ -1,0 +1,121 @@
+\section{Exactness and points}
+\label{section-exactness-points}
+
+\noindent
+In any category we have the notion of epimorphism, monomorphism,
+isomorphism, etc.
+
+\begin{lemma}
+\label{lemma-points-exactness}
+Let $X$ be a topological space. Let $\varphi : \mathcal{F} \to \mathcal{G}$
+be a morphism of sheaves of sets on $X$.
+\begin{enumerate}
+\item The map $\varphi$ is a monomorphism in the category of sheaves
+if and only if for all $x \in X$ the map
+$\varphi_x : \mathcal{F}_x \to \mathcal{G}_x$
+is injective.
+\item The map $\varphi$ is an epimorphism in the category of sheaves
+if and only if for all $x \in X$ the map
+$\varphi_x : \mathcal{F}_x \to \mathcal{G}_x$
+is surjective.
+\item The map $\varphi$ is an isomorphism in the category of sheaves
+if and only if for all $x \in X$ the map
+$\varphi_x : \mathcal{F}_x \to \mathcal{G}_x$
+is bijective.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\noindent
+It follows that in the category of sheaves of sets
+the notions epimorphism and monomorphism can be described
+as follows.
+
+\begin{definition}
+\label{definition-injective-surjective}
+Let $X$ be a topological space.
+\begin{enumerate}
+\item A presheaf $\mathcal{F}$ is called a {\it subpresheaf} of a presheaf
+$\mathcal{G}$ if $\mathcal{F}(U) \subset \mathcal{G}(U)$ for all open
+$U \subset X$ such that the restriction maps of $\mathcal{G}$ induce the
+restriction maps of $\mathcal{F}$. If $\mathcal{F}$ and
+$\mathcal{G}$ are sheaves, then $\mathcal{F}$ is called a {\it subsheaf}
+of $\mathcal{G}$. We sometimes indicate this by the notation
+$\mathcal{F} \subset \mathcal{G}$.
+\item A morphism of presheaves of sets $\varphi : \mathcal{F} \to \mathcal{G}$
+on $X$ is called {\it injective} if and only if
+$\mathcal{F}(U) \to \mathcal{G}(U)$ is injective for all $U$ open in $X$.
+\item A morphism of presheaves of sets $\varphi : \mathcal{F} \to \mathcal{G}$
+on $X$ is called {\it surjective} if and only if
+$\mathcal{F}(U) \to \mathcal{G}(U)$ is surjective for all $U$ open in $X$.
+\item A morphism of sheaves of sets $\varphi : \mathcal{F} \to \mathcal{G}$
+on $X$ is called {\it injective} if and only if
+$\mathcal{F}(U) \to \mathcal{G}(U)$ is injective for all $U$ open in $X$.
+\item A morphism of sheaves of sets $\varphi : \mathcal{F} \to \mathcal{G}$
+on $X$ is called {\it surjective} if and only if for every open
+$U$ of $X$ and every section $s$ of $\mathcal{G}(U)$ there exists an
+open covering $U = \bigcup U_i$ such that $s|_{U_i}$ is in
+the image of $\mathcal{F}(U_i) \to \mathcal{G}(U_i)$ for all $i$.
+\end{enumerate}
+\end{definition}
+
+
+\begin{lemma}
+\label{lemma-characterize-epi-mono}
+Let $X$ be a topological space.
+\begin{enumerate}
+\item Epimorphisms (resp.\ monomorphisms) in the category of
+presheaves are exactly the surjective (resp.\ injective) maps
+of presheaves.
+\item Epimorphisms (resp.\ monomorphisms) in the category of
+sheaves are exactly the surjective (resp.\ injective) maps
+of sheaves, and are exactly those maps which are surjective
+(resp.\ injective) on all the stalks.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+
+\begin{lemma}
+\label{lemma-check-homomorphism-stalks}
+let $X$ be a topological space.
+Let $(\mathcal{C}, F)$ be a type of algebraic structure.
+Suppose that $\mathcal{F}$, $\mathcal{G}$ are sheaves on $X$
+with values in $\mathcal{C}$.
+Let $\varphi : \mathcal{F} \to \mathcal{G}$
+be a map of the underlying sheaves of sets.
+If for all points $x \in X$ the map
+$\mathcal{F}_x \to \mathcal{G}_x$
+is a morphism of algebraic structures,
+then $\varphi$ is a morphism of sheaves of algebraic structures.
+\end{lemma}
+
+\begin{proof}
+Let $U$ be an open subset of $X$. Consider the diagram of
+(underlying) sets
+$$
+\xymatrix{
+\mathcal{F}(U) \ar[r] \ar[d] &
+\prod_{x \in U} \mathcal{F}_x \ar[d] \\
+\mathcal{G}(U) \ar[r] &
+\prod_{x \in U} \mathcal{G}_x
+}
+$$
+By assumption, and previous results, all but the left vertical
+arrow are morphisms of algebraic structures. In addition the
+bottom horizontal arrow is injective,
+see Lemma \ref{lemma-sheaf-subset-stalks}.
+Hence we conclude by Lemma \ref{lemma-image-contained-in},
+see also Example \ref{example-application-lemma-image-contained-in}
+\end{proof}
+
+\noindent
+Short exact sequences of abelian sheaves, etc will be discussed
+in the chapter on sheaves of modules. See
+Modules, Section \ref{modules-section-kernels}.

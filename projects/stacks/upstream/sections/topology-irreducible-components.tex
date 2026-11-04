@@ -1,0 +1,387 @@
+\section{Irreducible components}
+\label{section-irreducible-components}
+
+\begin{definition}
+\label{definition-irreducible-components}
+Let $X$ be a topological space.
+\begin{enumerate}
+\item We say $X$ is {\it irreducible}, if $X$ is not empty, and whenever
+$X = Z_1 \cup Z_2$ with $Z_i$ closed, we have $X = Z_1$ or $X = Z_2$.
+\item We say $Z \subset X$ is an {\it irreducible component} of $X$
+if $Z$ is a maximal irreducible subset of $X$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+An irreducible space is obviously connected.
+
+\begin{lemma}
+\label{lemma-image-irreducible-space}
+Let $f : X \to Y$ be a continuous map of topological spaces.
+If $E \subset X$ is an irreducible subset, then $f(E) \subset Y$
+is irreducible as well.
+\end{lemma}
+
+\begin{proof}
+Clearly we may assume $E = X$ (i.e., $X$ irreducible)
+and $f(E) = Y$ (i.e., $f$ surjective). First, $Y \not = \emptyset$
+since $X \not = \emptyset$. Next, assume $Y = Y_1 \cup Y_2$ with
+$Y_1$, $Y_2$ closed. Then $X = X_1 \cup X_2$ with $X_i = f^{-1}(Y_i)$
+closed in $X$. By assumption on $X$, we must have
+$X = X_1$ or $X = X_2$, hence $Y = Y_1$ or $Y = Y_2$
+since $f$ is surjective.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-irreducible}
+Let $X$ be a topological space.
+\begin{enumerate}
+\item If $T \subset X$ is irreducible so is its closure in $X$.
+\item Any irreducible component of $X$ is closed.
+\item Any irreducible subset of $X$ is contained in an
+irreducible component of $X$.
+\item Every point of $X$ is contained in some irreducible component
+of $X$, in other words, $X$ is the union of its irreducible components.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let $\overline{T}$ be the closure of the irreducible subset $T$.
+If $\overline{T} = Z_1 \cup Z_2$ with $Z_i \subset \overline{T}$
+closed, then $T = (T\cap Z_1) \cup (T \cap Z_2)$ and hence
+$T$ equals one of the two, say $T = Z_1 \cap T$. Thus clearly
+$\overline{T} \subset Z_1$. This proves (1). Part (2) follows
+immediately from (1) and the definition of irreducible components.
+
+\medskip\noindent
+Let $T \subset X$ be irreducible. Consider the set $A$ of irreducible subsets
+$T \subset T' \subset X$. Note that $A$ is nonempty since
+$T \in A$. There is a partial ordering on $A$ coming from
+inclusion: $T' \leq T'' \Leftrightarrow T' \subset T''$.
+Choose a maximal totally ordered subset $A' \subset A$, and let
+$E = \bigcup_{T' \in A'} T'$. We claim that $E$ is
+irreducible. Namely, suppose that $E =  Z_1 \cup Z_2$ is a union
+of two closed subsets of $E$. For each $T' \in A'$ we have
+either $T' \subset Z_1$ or $T' \subset Z_2$, by irreducibility
+of $T'$. Suppose that for some $T'_0 \in A'$ we have
+$T'_0 \not\subset Z_1$ (say, if not we're done anyway).
+Then, since $A'$ is totally ordered we see immediately that
+$T' \subset Z_2$ for all $T' \in A'$. Hence $E = Z_2$.
+This proves (3). Part (4) is an immediate consequence of (3)
+as a singleton space is irreducible.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-pick-irreducible-components}
+Let $X$ be a topological space and suppose $X = \bigcup_{i = 1, \ldots, n} X_i$
+where each $X_i$ is an irreducible closed subset of $X$ and no $X_i$
+is contained in the union of the other members.  Then each $X_i$ is an
+irreducible component of $X$ and each irreducible component of $X$
+is one of the $X_i$.
+\end{lemma}
+
+\begin{proof}
+Let $Y$ be an irreducible component of $X$. Write
+$Y = \bigcup_{i = 1, \ldots, n} (Y \cap X_i)$
+and note that each $Y \cap X_i$ is closed in $Y$ since $X_i$ is closed in $X$.
+By irreducibility of $Y$ we see that $Y$ is equal to one of the $Y \cap X_i$,
+i.e., $Y \subset X_i$.  By maximality of irreducible components we
+get $Y = X_i$.
+
+\medskip\noindent
+Conversely, take one of the $X_i$. By Lemma \ref{lemma-irreducible} it is
+contained in an irreducible component $Y$ of $X$. By the previous paragraph
+$Y = X_j$ for some $j$. So $X_i \subset X_j$ and since the original union does
+not have redundant members, $X_i = X_j$, which is an irreducible component.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-surjective-continuous-irreducible-components}
+Let $f : X \to Y$ be a surjective, continuous map of topological spaces.
+If $X$ has a finite number, say $n$, of irreducible components, then
+$Y$ has $\leq n$ irreducible components.
+\end{lemma}
+
+\begin{proof}
+Say $X_1, \ldots, X_n$ are the irreducible components of $X$.
+By Lemmas \ref{lemma-image-irreducible-space} and \ref{lemma-irreducible}
+the closure $Y_i \subset Y$ of $f(X_i)$ is irreducible.
+Since $f$ is surjective, we see that $Y$ is the union of the $Y_i$.
+We may choose a minimal subset $I \subset \{1, \ldots, n\}$
+such that $Y = \bigcup_{i \in I} Y_i$. Then we may apply
+Lemma \ref{lemma-pick-irreducible-components} to see that the $Y_i$
+for $i \in I$ are the irreducible components of $Y$.
+\end{proof}
+
+\noindent
+A singleton is irreducible. Thus if $x \in X$ is a point
+then the closure $\overline{\{x\}}$ is an irreducible closed
+subset of $X$.
+
+\begin{definition}
+\label{definition-generic-point}
+Let $X$ be a topological space.
+\begin{enumerate}
+\item Let $Z \subset X$ be an irreducible closed subset.
+A {\it generic point} of $Z$ is a point $\xi \in Z$ such
+that $Z = \overline{\{\xi\}}$.
+\item The space $X$ is called {\it Kolmogorov}, if for every $x, x' \in X$,
+$x \not = x'$ there exists a closed subset of $X$ which contains
+exactly one of the two points.
+\item The space $X$ is called {\it quasi-sober} if every
+irreducible closed subset has a generic point.
+\item The space $X$ is called {\it sober} if every
+irreducible closed subset has a unique generic point.
+\end{enumerate}
+\end{definition}
+
+\noindent
+A topological space $X$ is Kolmogorov, quasi-sober, resp.\ sober if and
+only if the map $x\mapsto\overline{\{x\}}$ from $X$ to the set of
+irreducible closed subsets of $X$ is injective, surjective, resp.\ bijective.
+Hence we see that a topological space is sober if and only if it is
+quasi-sober and Kolmogorov.
+
+\begin{lemma}
+\label{lemma-sober-subspace}
+Let $X$ be a topological space and let $Y\subset X$.
+\begin{enumerate}
+\item If $X$ is Kolmogorov then so is $Y$.
+\item Suppose $Y$ is locally closed in $X$. If $X$ is quasi-sober then
+so is $Y$.
+\item Suppose $Y$ is locally closed in $X$. If $X$ is sober then so is $Y$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Proof of (1). Suppose $X$ is Kolmogorov. Let $x,y\in Y$ with $x\neq y$. Then
+$\overline{\overline{\{x\}}\cap Y}=\overline{\{x\}}\neq\overline{\{y\}}=
+\overline{\overline{\{y\}}\cap Y}$. Hence
+$\overline{\{x\}}\cap Y\neq\overline{\{y\}}\cap Y$. This shows that $Y$ is
+Kolmogorov.
+
+\medskip\noindent
+Proof of (2). Suppose $X$ is quasi-sober. It suffices to consider the
+cases $Y$ is closed and $Y$ is open. First, suppose $Y$ is closed. Let
+$Z$ be an irreducible closed subset of $Y$. Then $Z$ is an irreducible closed
+subset of $X$. Hence there exists $x \in Z$ with $\overline{\{x\}} = Z$. It
+follows $\overline{\{x\}} \cap Y = Z$. This shows $Y$ is quasi-sober. Second,
+suppose $Y$ is open. Let $Z$ be an irreducible closed subset of $Y$. Then
+$\overline{Z}$ is an irreducible closed subset of $X$. Hence there
+exists $x \in \overline{Z}$ with $\overline{\{x\}}=\overline{Z}$. If
+$x\notin Y$ we get the contradiction
+$Z=Z\cap Y\subset\overline{Z}\cap Y=\overline{\{x\}}\cap Y=\emptyset$.
+Therefore $x\in Y$. It follows $Z=\overline{Z}\cap Y=\overline{\{x\}}\cap Y$.
+This shows $Y$ is quasi-sober.
+
+\medskip\noindent
+Proof of (3). Immediately from (1) and (2).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-sober-local}
+Let $X$ be a topological space and let $(X_i)_{i\in I}$ be a covering of $X$.
+\begin{enumerate}
+\item Suppose $X_i$ is locally closed in $X$ for every $i\in I$. Then, $X$ is
+Kolmogorov if and only if $X_i$ is Kolmogorov for every $i\in I$.
+\item Suppose $X_i$ is open in $X$ for every $i\in I$. Then, $X$ is
+quasi-sober if and only if $X_i$ is quasi-sober for every $i\in I$.
+\item Suppose $X_i$ is open in $X$ for every $i\in I$. Then, $X$ is sober if
+and  only if $X_i$ is sober for every $i\in I$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Proof of (1). If $X$ is Kolmogorov then so is $X_i$ for every $i\in I$ by
+Lemma \ref{lemma-sober-subspace}. Suppose $X_i$ is Kolmogorov for every
+$i\in I$. Let $x,y\in X$ with $\overline{\{x\}}=\overline{\{y\}}$. There exists
+$i\in I$ with $x\in X_i$. There exists an open subset $U\subset X$ such that
+$X_i$ is a closed subset of $U$. If $y\notin U$ we get the contradiction
+$x\in\overline{\{x\}}\cap U=\overline{\{y\}}\cap U=\emptyset$. Hence $y\in U$.
+It follows $y\in\overline{\{y\}}\cap U=\overline{\{x\}}\cap U\subset X_i$.
+This shows $y\in X_i$. It follows
+$\overline{\{x\}}\cap X_i=\overline{\{y\}}\cap X_i$. Since $X_i$ is
+Kolmogorov we get $x=y$. This shows $X$ is Kolmogorov.
+
+\medskip\noindent
+Proof of (2). If $X$ is quasi-sober then so is $X_i$ for every $i\in I$ by
+Lemma \ref{lemma-sober-subspace}. Suppose $X_i$ is quasi-sober for every
+$i\in I$. Let $Y$ be an irreducible closed subset of $X$. As $Y\neq\emptyset$
+there exists $i\in I$ with $X_i\cap Y\neq\emptyset$. As $X_i$ is open in $X$ it
+follows $X_i\cap Y$ is non-empty and open in $Y$, hence irreducible
+and dense in $Y$. Thus $X_i\cap Y$ is an irreducible closed subset of $X_i$. As
+$X_i$ is quasi-sober there exists $x\in X_i\cap Y$ with
+$X_i\cap Y=\overline{\{x\}}\cap X_i\subset\overline{\{x\}}$. Since
+$X_i\cap Y$ is dense in $Y$ and $Y$ is closed in $X$ it follows
+$Y=\overline{X_i\cap Y}\cap Y\subset\overline{X_i\cap Y}\subset
+\overline{\{x\}}\subset Y$. Therefore
+$Y=\overline{\{x\}}$. This shows $X$ is quasi-sober.
+
+\medskip\noindent
+Proof of (3). Immediately from (1) and (2).
+\end{proof}
+
+\begin{example}
+\label{example-quasi-sober-not-kolmogorov}
+Let $X$ be an indiscrete space of cardinality at least $2$. Then $X$ is
+quasi-sober but not Kolmogorov. Moreover, the family of its singletons is a
+covering of $X$ by discrete and hence Kolmogorov spaces.
+\end{example}
+
+\begin{example}
+\label{example-kolmogorov-not-quasi-sober}
+Let $Y$ be an infinite set, furnished with the topology whose closed sets are
+$Y$ and the finite subsets of $Y$. Then $Y$ is Kolmogorov but not quasi-sober.
+However, the family of its singletons is
+a covering by discrete and hence sober spaces.
+\end{example}
+
+\begin{example}
+\label{example-not-kolmogorov-not-quasi-sober}
+Let $X$ and $Y$ be as in Example \ref{example-quasi-sober-not-kolmogorov} and
+Example \ref{example-kolmogorov-not-quasi-sober}. Then, $X\amalg Y$ is neither
+Kolmogorov nor quasi-sober.
+\end{example}
+
+\begin{example}
+\label{example-sober-subspace}
+Let $Z$ be an infinite set and let $z\in Z$. We furnish $Z$ with the topology
+whose closed sets are $Z$ and the finite subsets of $Z\setminus\{z\}$. Then $Z$
+is sober but its subspace $Z\setminus\{z\}$ is not quasi-sober.
+\end{example}
+
+\begin{example}
+\label{example-Hausdorff}
+Recall that a topological space $X$ is Hausdorff iff for every
+distinct pair of points $x, y \in X$ there exist disjoint
+opens $U, V \subset X$ such that $x \in U$, $y \in V$.
+In this case $X$ is irreducible if and only if $X$ is
+a singleton. Similarly, any subset of $X$ is irreducible
+if and only if it is a singleton. Hence a Hausdorff space is
+sober.
+\end{example}
+
+\begin{lemma}
+\label{lemma-irreducible-on-top}
+Let $f : X \to Y$ be a continuous map of topological spaces.
+Assume that
+(a) $Y$ is irreducible,
+(b) $f$ is open, and
+(c) there exists a dense collection of points $y \in Y$ such
+that $f^{-1}(y)$ is irreducible.
+Then $X$ is irreducible.
+\end{lemma}
+
+\begin{proof}
+Suppose $X = Z_1 \cup Z_2$ with $Z_i$ closed.
+Consider the open sets $U_1 = Z_1 \setminus Z_2 = X \setminus Z_2$ and
+$U_2 = Z_2 \setminus Z_1 = X \setminus Z_1$. To get a contradiction
+assume that $U_1$ and $U_2$ are both nonempty. By (b) we see that $f(U_i)$
+is open. By (a) we have $Y$ irreducible and hence
+$f(U_1) \cap f(U_2) \not = \emptyset$. By (c) there is a point $y$ which
+corresponds to a point of this intersection such that the fibre
+$X_y = f^{-1}(y)$ is irreducible. Then $X_y \cap U_1$ and
+$X_y \cap U_2$ are nonempty disjoint open subsets of $X_y$ which is
+a contradiction.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-irreducible-fibres-irreducible-components}
+Let $f : X \to Y$ be a continuous map of topological spaces.
+Assume that (a) $f$ is open, and
+(b) for every $y \in Y$ the fibre $f^{-1}(y)$ is irreducible.
+Then $f$ induces a bijection between irreducible components.
+\end{lemma}
+
+\begin{proof}
+We point out that assumption (b) implies that $f$ is surjective (see
+Definition \ref{definition-irreducible-components}).
+Let $T \subset Y$ be an irreducible component.
+Note that $T$ is closed, see Lemma \ref{lemma-irreducible}.
+The lemma follows if we show that $f^{-1}(T)$ is irreducible
+because any irreducible subset of $X$ maps into an irreducible component
+of $Y$ by Lemma \ref{lemma-image-irreducible-space}.
+Note that $f^{-1}(T) \to T$ satisfies the assumptions
+of Lemma \ref{lemma-irreducible-on-top}. Hence we win.
+\end{proof}
+
+\noindent
+The construction of the following lemma is sometimes called
+the ``soberification''.
+
+\begin{lemma}
+\label{lemma-make-sober}
+\begin{reference}
+\cite[Page 68 ff]{EGA1-second}
+\end{reference}
+Let $X$ be a topological space. There is a canonical continuous map
+$$
+c : X \longrightarrow X'
+$$
+from $X$ to a sober topological space $X'$ which is universal
+among continuous maps from $X$ to sober topological spaces.
+Moreover, the assignment $U' \mapsto c^{-1}(U')$ is a bijection
+between opens of $X'$ and $X$ which commutes with finite intersections
+and arbitrary unions.
+The image $c(X)$ is a Kolmogorov topological space and the
+map $c : X \to c(X)$ is universal for maps of $X$ into Kolmogorov spaces.
+\end{lemma}
+
+\begin{proof}
+Let $X'$ be the set of irreducible closed subsets of $X$ and let
+$$
+c : X \to X', \quad x \mapsto \overline{\{x\}}.
+$$
+For $U \subset X$ open, let $U' \subset X'$ denote the set
+of irreducible closed subsets of $X$ which meet $U$.
+Then $c^{-1}(U') = U$. In particular, if $U_1 \not = U_2$ are open in
+$X$, then $U'_1 \not = U_2'$. Hence $c$ induces
+a bijection between the subsets of $X'$ of the form $U'$ and the
+opens of $X$.
+
+\medskip\noindent
+Let $U_1, U_2$ be open in $X$. Suppose that $Z \in U'_1$ and
+$Z \in U'_2$. Then $Z \cap U_1$ and $Z \cap U_2$ are nonempty
+open subsets of the irreducible space $Z$ and hence $Z \cap U_1 \cap U_2$
+is nonempty. Thus $(U_1 \cap U_2)' = U'_1 \cap U'_2$.
+The rule $U \mapsto U'$ is also compatible with arbitrary unions
+(details omitted). Thus it is clear that the collection of
+$U'$ form a topology on $X'$ and that we have a bijection as
+stated in the lemma.
+
+\medskip\noindent
+Next we show that $X'$ is sober. Let $T \subset X'$ be an irreducible
+closed subset. Let $U \subset X$ be the open such that $X' \setminus T = U'$.
+Then $Z = X \setminus U$ is irreducible because of the properties
+of the bijection of the lemma. We claim that $Z \in T$ is the unique generic
+point. Namely, any open of the form $V' \subset X'$
+which does not contain $Z$ must come from an open $V \subset X$
+which misses $Z$, i.e., is contained in $U$.
+
+\medskip\noindent
+Finally, we check the universal property. Let $f : X \to Y$ be a continuous
+map to a sober topological space. Then we let $f' : X' \to Y$ be the map
+which sends the irreducible closed $Z \subset X$ to the unique generic
+point of $\overline{f(Z)}$. It follows immediately that
+$f' \circ c = f$ as maps of sets, and the properties of $c$ imply that
+$f'$ is continuous. We omit the verification that the continuous
+map $f'$ is unique. We also omit the proof of the statements on
+Kolmogorov spaces.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-remove-irreducible-connected}
+Let $X$ be a connected topological space with a finite number of
+irreducible components $X_1, \ldots, X_n$. If $n > 1$ there is an
+$1 \leq j \leq n$ such that $X' = \bigcup_{i \not = j} X_i$ is connected.
+\end{lemma}
+
+\begin{proof}
+This is a graph theory problem. Let $\Gamma$ be the graph with vertices
+$V = \{1, \ldots, n\}$ and an edge between $i$ and $j$ if and only if
+$X_i \cap X_j$ is nonempty. Connectedness of $X$ means that $\Gamma$
+is connected. Our problem is to find $1 \leq j \leq n$ such that
+$\Gamma \setminus \{j\}$ is still connected. You can do this by choosing
+$j, j' \in E$ with maximal distance and then $j$ works (choose a leaf!).
+Details omitted.
+\end{proof}

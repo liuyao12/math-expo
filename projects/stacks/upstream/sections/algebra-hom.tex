@@ -1,0 +1,114 @@
+\section{Internal Hom}
+\label{section-hom}
+
+\noindent
+If $R$ is a ring, and $M$, $N$ are $R$-modules, then
+$$
+\Hom_R(M, N) = \{ \varphi : M \to N\}
+$$
+is the set of $R$-linear maps from $M$ to $N$. This set comes with
+the structure of an abelian group by setting
+$(\varphi + \psi)(m) = \varphi(m) + \psi(m)$, as usual.
+In fact, $\Hom_R(M, N)$ is also an $R$-module via the rule
+$(x \varphi)(m) = x \varphi(m) = \varphi(xm)$.
+
+\medskip\noindent
+Given maps $a : M \to M'$ and $b : N \to N'$ of $R$-modules, we can
+pre-compose and post-compose homomorphisms by $a$ and $b$. This leads
+to the following commutative diagram
+$$
+\xymatrix{
+\Hom_R(M', N) \ar[d]_{- \circ a} \ar[r]_{b \circ -} &
+\Hom_R(M', N') \ar[d]^{- \circ a} \\
+\Hom_R(M, N) \ar[r]^{b \circ -} &
+\Hom_R(M, N')
+}
+$$
+In fact, the maps in this diagram are $R$-module maps.
+Thus $\Hom_R$ defines an additive functor
+$$
+\text{Mod}_R^{opp} \times \text{Mod}_R \longrightarrow \text{Mod}_R, \quad
+(M, N) \longmapsto \Hom_R(M, N)
+$$
+
+\begin{lemma}
+\label{lemma-hom-exact}
+Exactness and $\Hom_R$. Let $R$ be a ring. Let $M_1$, $M_2$, $M_3$
+be $R$-modules. Let $M_1 \to M_2$ and $M_2 \to M_3$ be $R$-module maps.
+\begin{enumerate}
+\item $M_1 \to M_2 \to M_3 \to 0$ is exact if and only if
+$0 \to \Hom_R(M_3, N) \to \Hom_R(M_2, N) \to \Hom_R(M_1, N)$
+is exact for all $R$-modules $N$.
+\item $0 \to M_1 \to M_2 \to M_3$ is exact if and only if
+$0 \to \Hom_R(N, M_1) \to \Hom_R(N, M_2) \to \Hom_R(N, M_3)$
+is exact for all $R$-modules $N$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-hom-from-finitely-presented}
+Let $R$ be a ring. Let $M$ be a finitely presented $R$-module.
+Let $N$ be an $R$-module.
+\begin{enumerate}
+\item For $f \in R$ we have
+$\Hom_R(M, N)_f = \Hom_{R_f}(M_f, N_f) = \Hom_R(M_f, N_f)$,
+\item for a multiplicative subset $S$ of $R$ we have
+$$
+S^{-1}\Hom_R(M, N) = \Hom_{S^{-1}R}(S^{-1}M, S^{-1}N) =
+\Hom_R(S^{-1}M, S^{-1}N).
+$$
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Part (1) is a special case of part (2).
+The second equality in (2) follows from
+Lemma \ref{lemma-localization-and-modules}.
+Choose a presentation
+$$
+\bigoplus\nolimits_{j = 1, \ldots, m} R
+\longrightarrow
+\bigoplus\nolimits_{i = 1, \ldots, n} R
+\to M \to 0.
+$$
+By
+Lemma \ref{lemma-hom-exact}
+this gives an exact sequence
+$$
+0 \to
+\Hom_R(M, N) \to
+\bigoplus\nolimits_{i = 1, \ldots, n} N
+\longrightarrow
+\bigoplus\nolimits_{j = 1, \ldots, m} N.
+$$
+Inverting $S$ and using Proposition \ref{proposition-localization-exact}
+we get an exact sequence
+$$
+0 \to
+S^{-1}\Hom_R(M, N) \to
+\bigoplus\nolimits_{i = 1, \ldots, n} S^{-1}N
+\longrightarrow
+\bigoplus\nolimits_{j = 1, \ldots, m} S^{-1}N
+$$
+and the result follows since $S^{-1}M$ sits in
+an exact sequence
+$$
+\bigoplus\nolimits_{j = 1, \ldots, m} S^{-1}R
+\longrightarrow
+\bigoplus\nolimits_{i = 1, \ldots, n} S^{-1}R \to S^{-1}M \to 0
+$$
+which induces (by Lemma \ref{lemma-hom-exact})
+the exact sequence
+$$
+0 \to
+\Hom_{S^{-1}R}(S^{-1}M, S^{-1}N) \to
+\bigoplus\nolimits_{i = 1, \ldots, n} S^{-1}N
+\longrightarrow
+\bigoplus\nolimits_{j = 1, \ldots, m} S^{-1}N
+$$
+which is the same as the one above.
+\end{proof}

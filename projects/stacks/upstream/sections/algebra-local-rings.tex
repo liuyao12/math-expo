@@ -1,0 +1,234 @@
+\section{Local rings}
+\label{section-local-rings}
+
+\noindent
+Local rings are the bread and butter of algebraic geometry.
+
+\begin{definition}
+\label{definition-local-ring}
+A {\it local ring} is a ring with exactly one maximal ideal.
+If $R$ is a local ring, then the maximal ideal is often denoted
+$\mathfrak m_R$ and the field $R/\mathfrak m_R$ is called the
+{\it residue field} of the local ring $R$.
+We often say ``let $(R, \mathfrak m)$ be a local ring''
+or ``let $(R, \mathfrak m, \kappa)$ be a local ring''
+to indicate that $R$ is local, $\mathfrak m$ is its unique
+maximal ideal and $\kappa = R/\mathfrak m$ is its residue field.
+A {\it local homomorphism of local rings} is a ring map
+$\varphi : R \to S$ such that $R$ and $S$ are local rings and such
+that $\varphi(\mathfrak m_R) \subset \mathfrak m_S$.
+If it is given that $R$ and $S$ are local rings, then the phrase
+``{\it local ring map $\varphi : R \to S$}'' means that $\varphi$
+is a local homomorphism of local rings.
+\end{definition}
+
+\noindent
+A field is a local ring. Any ring map between fields is a local
+homomorphism of local rings.
+
+\medskip\noindent
+The localization $R_\mathfrak p$ of a ring $R$ at a prime $\mathfrak p$
+is a local ring with maximal ideal $\mathfrak p R_\mathfrak p$. Namely, by
+Lemma \ref{lemma-spec-localization} every prime ideal of $R_\mathfrak p$
+is contained in the prime ideal $\mathfrak p R_\mathfrak p$
+(hence this is a maximal ideal and the only maximal ideal of $R_\mathfrak p$).
+The residue field of $R_\mathfrak p$ is denoted $\kappa(\mathfrak p)$;
+we call it the {\it residue field of $\mathfrak p$}; by
+Proposition \ref{proposition-localize-quotient} we may identify
+$\kappa(\mathfrak p)$ with the field of fractions of the domain $R/\mathfrak p$.
+Via the composition
+$$
+\Spec(\kappa(\mathfrak p)) \to \Spec(R_\mathfrak p) \to \Spec(R)
+$$
+the unique point of the source maps to the point $\mathfrak p$ of the target.
+
+\medskip\noindent
+Let $\varphi : R \to S$ be a ring map. Let $\mathfrak q \subset S$ be a prime
+and consider the prime $\mathfrak p = \varphi^{-1}(\mathfrak q)$ of $R$.
+Since $\varphi(\mathfrak p) \subset \mathfrak q$ the induced ring map
+$$
+R_\mathfrak p \to S_\mathfrak q,\quad r/g \mapsto \varphi(r)/\varphi(g)
+$$
+is a local ring map and we obtain an induced map of residue fields
+$\kappa(\mathfrak p) \to \kappa(\mathfrak q)$.
+
+
+\begin{example}
+\label{example-not-local}
+If $R$ is a local ring and $\mathfrak p \subset R$ is a non-maximal
+prime ideal, then $R \to R_\mathfrak p$ is not a local homomorphism.
+\end{example}
+
+\begin{lemma}
+\label{lemma-characterize-local-ring}
+Let $R$ be a ring. The following are equivalent:
+\begin{enumerate}
+\item $R$ is a local ring,
+\item $\Spec(R)$ has exactly one closed point,
+\item $R$ has a maximal ideal $\mathfrak m$
+and every element of $R \setminus \mathfrak m$
+is a unit, and
+\item $R$ is not the zero ring and for every $x \in R$ either $x$
+or $1 - x$ is invertible or both.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let $R$ be a ring, and $\mathfrak m$ a maximal ideal.
+If $x \in R \setminus \mathfrak m$, and $x$ is not a unit
+then there is a maximal ideal $\mathfrak m'$ containing $x$.
+Hence $R$ has at least two maximal ideals. Conversely,
+if $\mathfrak m'$ is another maximal ideal, then choose
+$x \in \mathfrak m'$, $x \not \in \mathfrak m$. Clearly
+$x$ is not a unit. This proves the equivalence of (1) and (3).
+The equivalence (1) and (2) is tautological.
+If $R$ is local then (4) holds since $x$ is either in $\mathfrak m$
+or not. If (4) holds, and $\mathfrak m$, $\mathfrak m'$ are distinct
+maximal ideals then we may choose $x \in R$ such that
+$x \bmod \mathfrak m' = 0$ and $x \bmod \mathfrak m = 1$
+by the Chinese remainder theorem
+(Lemma \ref{lemma-chinese-remainder}).
+This element $x$ is not invertible and neither is $1 - x$ which is
+a contradiction. Thus (4) and (1) are equivalent.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-characterize-local-ring-map}
+Let $\varphi : R \to S$ be a ring map. Assume $R$ and $S$ are local rings.
+The following are equivalent:
+\begin{enumerate}
+\item $\varphi$ is a local ring map,
+\item $\varphi(\mathfrak m_R) \subset \mathfrak m_S$,
+\item $\varphi^{-1}(\mathfrak m_S) = \mathfrak m_R$, and
+\item for any $x \in R$, if $\varphi(x)$ is invertible in $S$, then $x$
+is invertible in $R$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Conditions (1) and (2) are equivalent by definition.
+If (3) holds then (2) holds. Conversely, if (2) holds, then
+$\varphi^{-1}(\mathfrak m_S)$ is a prime ideal containing
+the maximal ideal $\mathfrak m_R$, hence
+$\varphi^{-1}(\mathfrak m_S) = \mathfrak m_R$. Finally, (4) is the
+contrapositive of (2) by Lemma \ref{lemma-characterize-local-ring}.
+\end{proof}
+
+\begin{remark}
+\label{remark-fundamental-diagram}
+A fundamental commutative diagram associated to a ring map
+$\varphi : R \to S$ and a prime $\mathfrak p \subset R$ is the following
+$$
+\xymatrix{
+\kappa(\mathfrak p) \otimes_R S =
+S_{\mathfrak p}/{\mathfrak p}S_{\mathfrak p}
+&
+S_{\mathfrak p} \ar[l]
+&
+S \ar[r] \ar[l]
+&
+S/\mathfrak pS \ar[r]
+&
+(R \setminus \mathfrak p)^{-1}S/\mathfrak pS
+\\
+\kappa(\mathfrak p) =
+R_{\mathfrak p}/{\mathfrak p}R_{\mathfrak p} \ar[u]
+&
+R_{\mathfrak p} \ar[u] \ar[l]
+&
+R \ar[u] \ar[r] \ar[l]
+&
+R/\mathfrak p \ar[u] \ar[r]
+&
+\kappa(\mathfrak p) \ar[u]
+}
+$$
+In this diagram the outer left and outer right columns are identical.
+On spectra the horizontal maps induce homeomorphisms
+onto their images and the squares induce fibre squares of topological spaces
+(see Lemmas \ref{lemma-spec-localization} and \ref{lemma-spec-closed}).
+This shows that $\mathfrak p$ is in the image of the map on Spec if and
+only if $S \otimes_R \kappa(\mathfrak p)$ is not the zero ring.
+If there does exist a prime $\mathfrak q \subset S$ lying over
+$\mathfrak p$, i.e., with $\mathfrak p = \varphi^{-1}(\mathfrak q)$
+then we can extend the diagram to the following diagram
+$$
+\xymatrix{
+\kappa(\mathfrak q) = S_{\mathfrak q}/{\mathfrak q}S_{\mathfrak q}
+&
+S_{\mathfrak q} \ar[l]
+&
+S \ar[r] \ar[l]
+&
+S/\mathfrak q \ar[r]
+&
+\kappa(\mathfrak q)
+\\
+\kappa(\mathfrak p) \otimes_R S =
+S_{\mathfrak p}/{\mathfrak p}S_{\mathfrak p} \ar[u]
+&
+S_{\mathfrak p} \ar[u] \ar[l]
+&
+S \ar[u] \ar[r] \ar[l]
+&
+S/\mathfrak pS \ar[u] \ar[r]
+&
+(R \setminus \mathfrak p)^{-1}S/\mathfrak pS \ar[u]
+\\
+\kappa(\mathfrak p) =
+R_{\mathfrak p}/{\mathfrak p}R_{\mathfrak p} \ar[u]
+&
+R_{\mathfrak p} \ar[u] \ar[l]
+&
+R \ar[u] \ar[r] \ar[l]
+&
+R/\mathfrak p \ar[u] \ar[r]
+&
+\kappa(\mathfrak p) \ar[u]
+}
+$$
+In this diagram it is still the case that the outer left and outer right
+columns are identical and that on spectra the horizontal maps induce
+homeomorphisms onto their image.
+\end{remark}
+
+\begin{lemma}
+\label{lemma-in-image}
+Let $\varphi : R \to S$ be a ring map. Let $\mathfrak p$
+be a prime of $R$. The following are equivalent
+\begin{enumerate}
+\item $\mathfrak p$ is in the image of
+$\Spec(S) \to \Spec(R)$,
+\item $S \otimes_R \kappa(\mathfrak p) \not = 0$,
+\item $S_{\mathfrak p}/\mathfrak p S_{\mathfrak p} \not = 0$,
+\item $(S/\mathfrak pS)_{\mathfrak p} \not = 0$, and
+\item $\mathfrak p = \varphi^{-1}(\mathfrak pS)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+We have already seen the equivalence of the first two
+in Remark \ref{remark-fundamental-diagram}. The others
+are just reformulations of this.
+\end{proof}
+
+\begin{remark}
+\label{remark-local-ring-fibre}
+Let $R \to S$ be a ring map. Let $\mathfrak q$ be a prime
+ideal of $S$ lying over the prime ideal $\mathfrak p$ of $R$.
+According to Remark \ref{remark-fundamental-diagram}
+the prime $\mathfrak q$ corresponds to a unique prime
+$\overline{\mathfrak q}$ of the fibre ring
+$F = S \otimes_R \kappa(\mathfrak p)$.
+Then we have
+$$
+F_{\overline{\mathfrak q}}
+\cong S_\mathfrak q \otimes_{R_\mathfrak p} \kappa(\mathfrak p)
+\cong S_\mathfrak q/\mathfrak p S_\mathfrak q
+$$
+Namely, there is an obvious ring map
+$F \to S_\mathfrak q \otimes_{R_\mathfrak p} \kappa(\mathfrak p)$
+which is easily seen to be isomorphic to $F \to F_{\overline{\mathfrak q}}$.
+The second isomorphism follows from the fact that $\kappa(\mathfrak p)$
+is the quotient of $R_\mathfrak p$ by $\mathfrak pR_\mathfrak p$.
+\end{remark}

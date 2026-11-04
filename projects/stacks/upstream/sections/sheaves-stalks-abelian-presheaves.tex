@@ -1,0 +1,37 @@
+\section{Stalks of abelian presheaves}
+\label{section-stalks-abelian-presheaves}
+
+\noindent
+We first deal with the case of abelian groups as
+a model for the general case.
+
+\begin{lemma}
+\label{lemma-stalk-abelian-presheaf}
+Let $X$ be a topological space. Let $\mathcal{F}$ be a presheaf
+of abelian groups on $X$. There exists a unique structure of an
+abelian group on $\mathcal{F}_x$ such that for every
+$U \subset X$ open, $x\in U$ the map $\mathcal{F}(U) \to \mathcal{F}_x$
+is a group homomorphism. Moreover,
+$$
+\mathcal{F}_x
+=
+\colim_{x\in U} \mathcal{F}(U)
+$$
+holds in the category of abelian groups.
+\end{lemma}
+
+\begin{proof}
+We define addition of a pair of elements
+$(U, s)$ and $(V, t)$ as the pair $(U \cap V, s|_{U\cap V} +
+t|_{U \cap V})$. The rest is easy to check.
+\end{proof}
+
+\noindent
+What is crucial in the proof above is that the partially ordered set of open
+neighbourhoods is a directed set (Categories, Definition
+\ref{categories-definition-directed-set}). Namely, the coproduct
+of two abelian groups $A, B$ is the direct sum $A \oplus B$, whereas
+the coproduct in the category of sets is the disjoint
+union $A \amalg B$, showing that colimits in the category
+of abelian groups do not agree with colimits in the
+category of sets in general.

@@ -1,0 +1,413 @@
+\section{Continuous maps and sheaves}
+\label{section-presheaves-functorial}
+
+\noindent
+Let $f : X \to Y$ be a continuous map of topological spaces.
+We will define the pushforward and pullback functors for
+presheaves and sheaves.
+
+\medskip\noindent
+Let $\mathcal{F}$ be a presheaf of sets on $X$. We define the
+{\it pushforward} of $\mathcal{F}$ by the rule
+$$
+f_*\mathcal{F}(V) = \mathcal{F}(f^{-1}(V))
+$$
+for any open $V \subset Y$.
+Given $V_1 \subset V_2 \subset Y$ open the restriction map
+is given by the commutativity of the diagram
+$$
+\xymatrix{
+f_*\mathcal{F}(V_2) \ar[d] \ar@{=}[r] &
+\mathcal{F}(f^{-1}(V_2)) \ar[d]^{\text{restriction for }\mathcal{F}} \\
+f_*\mathcal{F}(V_1) \ar@{=}[r] &
+\mathcal{F}(f^{-1}(V_1))
+}
+$$
+It is clear that this defines a presheaf of sets. The construction
+is clearly functorial in the presheaf $\mathcal{F}$ and hence
+we obtain a functor
+$$
+f_* : \textit{PSh}(X) \longrightarrow \textit{PSh}(Y).
+$$
+
+\begin{lemma}
+\label{lemma-pushforward-sheaf}
+Let $f : X \to Y$ be a continuous map.
+Let $\mathcal{F}$ be a sheaf of sets on $X$.
+Then $f_*\mathcal{F}$ is a sheaf on $Y$.
+\end{lemma}
+
+\begin{proof}
+This immediately follows from the fact that
+if $V = \bigcup V_j$ is an open covering in $Y$,
+then $f^{-1}(V) = \bigcup f^{-1}(V_j)$ is an open covering in $X$.
+\end{proof}
+
+\noindent
+As a consequence we obtain a functor
+$$
+f_* : \Sh(X) \longrightarrow \Sh(Y).
+$$
+This is compatible with composition in the following
+strong sense.
+
+\begin{lemma}
+\label{lemma-pushforward-composition}
+Let $f : X \to Y$ and $g : Y \to Z$ be continuous maps
+of topological spaces. The functors $(g \circ f)_*$
+and $g_* \circ f_*$ are equal (on both presheaves
+and sheaves of sets).
+\end{lemma}
+
+\begin{proof}
+This is because $(g \circ f)_*\mathcal{F}(W) =
+\mathcal{F}((g \circ f)^{-1}W)$ and
+$(g_* \circ f_*)\mathcal{F}(W) = \mathcal{F}(f^{-1} g^{-1} W)$
+and $(g \circ f)^{-1}W = f^{-1} g^{-1} W$.
+\end{proof}
+
+\noindent
+Let $\mathcal{G}$ be a presheaf of sets on $Y$.
+The {\it pullback presheaf} $f_p\mathcal{G}$
+of a given presheaf $\mathcal{G}$ is defined as the left adjoint
+of the pushforward $f_*$ on presheaves. In other words it
+should be a presheaf $f_p \mathcal{G}$ on $X$ such that
+$$
+\Mor_{\textit{PSh}(X)}(f_p\mathcal{G}, \mathcal{F})
+=
+\Mor_{\textit{PSh}(Y)}(\mathcal{G}, f_*\mathcal{F}).
+$$
+By the Yoneda lemma this determines the pullback uniquely.
+It turns out that it actually exists.
+
+\begin{lemma}
+\label{lemma-pullback-presheaves}
+Let $f : X \to Y$ be a continuous map.
+There exists a functor
+$f_p : \textit{PSh}(Y) \to \textit{PSh}(X)$
+which is left adjoint to $f_*$. For a presheaf
+$\mathcal{G}$ it is determined by the rule
+$$
+f_p\mathcal{G}(U) = \colim_{f(U) \subset V} \mathcal{G}(V)
+$$
+where the colimit is over the collection of open neighbourhoods
+$V$ of $f(U)$ in $Y$. The colimits are over
+directed partially ordered sets.
+(The restriction mappings of $f_p\mathcal{G}$ are explained in the proof.)
+\end{lemma}
+
+\begin{proof}
+The colimit is over the partially ordered set consisting of open subsets
+$V \subset Y$ which contain $f(U)$ with ordering by reverse inclusion.
+This is a directed partially ordered set, since if $V, V'$ are in it then
+so is $V \cap V'$. Furthermore, if
+$U_1 \subset U_2$, then every open neighbourhood of $f(U_2)$
+is an open neighbourhood of $f(U_1)$. Hence the system defining
+$f_p\mathcal{G}(U_2)$ is a subsystem of the one defining
+$f_p\mathcal{G}(U_1)$ and we obtain a restriction map (for
+example by applying the generalities in Categories,
+Lemma \ref{categories-lemma-functorial-colimit}).
+
+\medskip\noindent
+Note that the construction of the colimit is clearly functorial
+in $\mathcal{G}$, and similarly for the restriction mappings.
+Hence we have defined $f_p$ as a functor.
+
+\medskip\noindent
+A small useful remark is that there exists
+a canonical map $\mathcal{G}(U) \to f_p\mathcal{G}(f^{-1}(U))$,
+because the system of open neighbourhoods
+of $f(f^{-1}(U))$ contains the element $U$. This is compatible
+with restriction mappings. In other words, there is a
+canonical map $i_\mathcal{G} : \mathcal{G} \to f_* f_p \mathcal{G}$.
+
+\medskip\noindent
+Let $\mathcal{F}$ be a presheaf of sets on $X$.
+Suppose that $\psi : f_p\mathcal{G} \to \mathcal{F}$
+is a map of presheaves of sets. The corresponding map
+$\mathcal{G} \to f_*\mathcal{F}$ is the map
+$f_*\psi \circ i_\mathcal{G} :
+\mathcal{G} \to f_* f_p \mathcal{G} \to f_* \mathcal{F}$.
+
+\medskip\noindent
+Another small useful remark is that there exists a
+canonical map $c_\mathcal{F} : f_p f_* \mathcal{F} \to \mathcal{F}$.
+Namely, let $U \subset X$ open.
+For every open neighbourhood $V \supset f(U)$ in $Y$
+there exists a map
+$f_*\mathcal{F}(V) = \mathcal{F}(f^{-1}(V))\to \mathcal{F}(U)$,
+namely the restriction map on $\mathcal{F}$. And this is compatible
+with the restriction mappings between values of $\mathcal{F}$
+on $f^{-1}$ of varying opens containing $f(U)$. Thus we obtain
+a canonical map $f_p f_* \mathcal{F}(U) \to \mathcal{F}(U)$.
+Another trivial verification shows that these maps are compatible
+with restriction maps and define a map $c_\mathcal{F}$
+of presheaves of sets.
+
+\medskip\noindent
+Suppose that $\varphi : \mathcal{G} \to f_*\mathcal{F}$
+is a map of presheaves of sets. Consider $f_p\varphi :
+f_p \mathcal{G} \to f_p f_* \mathcal{F}$.
+Postcomposing with $c_\mathcal{F}$ gives the desired map
+$c_\mathcal{F} \circ f_p\varphi : f_p\mathcal{G} \to \mathcal{F}$.
+We omit the verification that this construction is inverse
+to the construction in the other direction given above.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-stalk-pullback-presheaf}
+Let $f : X \to Y$ be a continuous map.
+Let $x \in X$. Let $\mathcal{G}$ be a presheaf of sets on $Y$.
+There is a canonical bijection of stalks
+$(f_p\mathcal{G})_x = \mathcal{G}_{f(x)}$.
+\end{lemma}
+
+\begin{proof}
+This you can see as follows
+\begin{eqnarray*}
+(f_p\mathcal{G})_x
+& = &
+\colim_{x \in U} f_p\mathcal{G}(U) \\
+& = &
+\colim_{x \in U} \colim_{f(U) \subset V} \mathcal{G}(V) \\
+& = &
+\colim_{f(x) \in V} \mathcal{G}(V) \\
+& = &
+\mathcal{G}_{f(x)}
+\end{eqnarray*}
+Here we have used
+Categories, Lemma \ref{categories-lemma-colimits-commute},
+and the fact that any $V$ open in $Y$ containing $f(x)$
+occurs in the third description above. Details omitted.
+\end{proof}
+
+\noindent
+Let $\mathcal{G}$ be a sheaf of sets on $Y$.
+The {\it pullback sheaf} $f^{-1}\mathcal{G}$ is defined
+by the formula
+$$
+f^{-1}\mathcal{G} = (f_p\mathcal{G})^\# .
+$$
+The pullback $f^{-1}$ is a left adjoint of
+pushforward on sheaves. In other words,
+$$
+\Mor_{\Sh(X)}(f^{-1}\mathcal{G}, \mathcal{F})
+=
+\Mor_{\Sh(Y)}(\mathcal{G}, f_*\mathcal{F}).
+$$
+Namely, we have
+\begin{eqnarray*}
+\Mor_{\Sh(X)}(f^{-1}\mathcal{G}, \mathcal{F})
+& = &
+\Mor_{\textit{PSh}(X)}(f_p\mathcal{G}, \mathcal{F}) \\
+& = &
+\Mor_{\textit{PSh}(Y)}(\mathcal{G}, f_*\mathcal{F}) \\
+& = &
+\Mor_{\Sh(Y)}(\mathcal{G}, f_*\mathcal{F})
+\end{eqnarray*}
+For the first equality we use that sheafification is a left adjoint
+to the inclusion of sheaves in presheaves. For the second equality
+we use that $f_p$ is a left adjoint to $f_*$ on presheaves. We will return
+to this statement in the proof of Lemma \ref{lemma-f-map}.
+
+\begin{lemma}
+\label{lemma-stalk-pullback}
+Let $x \in X$. Let $\mathcal{G}$ be a sheaf of sets on $Y$.
+There is a canonical bijection of stalks
+$(f^{-1}\mathcal{G})_x = \mathcal{G}_{f(x)}$.
+\end{lemma}
+
+\begin{proof}
+This is a combination of Lemmas \ref{lemma-stalk-sheafification}
+and \ref{lemma-stalk-pullback-presheaf}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-pullback-composition}
+Let $f : X \to Y$ and $g : Y \to Z$ be continuous maps
+of topological spaces. The functors $(g \circ f)^{-1}$
+and $f^{-1} \circ g^{-1}$ are canonically isomorphic.
+Similarly $(g \circ f)_p \cong f_p \circ g_p$ on
+presheaves.
+\end{lemma}
+
+\begin{proof}
+To see this
+use that adjoint functors are unique up to unique isomorphism,
+and Lemma \ref{lemma-pushforward-composition}.
+\end{proof}
+
+\begin{definition}
+\label{definition-f-map}
+Let $f : X \to Y$ be a continuous map.
+Let $\mathcal{F}$ be a sheaf of sets on $X$ and
+let $\mathcal{G}$ be a sheaf of sets on $Y$.
+An {\it $f$-map $\xi : \mathcal{G} \to \mathcal{F}$}
+is a collection of maps
+$\xi_V : \mathcal{G}(V) \to \mathcal{F}(f^{-1}(V))$
+indexed by open subsets $V \subset Y$ such that
+$$
+\xymatrix{
+\mathcal{G}(V) \ar[r]_{\xi_V} \ar[d]_{\text{restriction of }\mathcal{G}} &
+\mathcal{F}(f^{-1}V) \ar[d]^{\text{restriction of }\mathcal{F}} \\
+\mathcal{G}(V') \ar[r]^{\xi_{V'}} &
+\mathcal{F}(f^{-1}V')
+}
+$$
+commutes for all $V' \subset V \subset Y$ open.
+\end{definition}
+
+\noindent
+In the literature we sometimes find this defined alternatively
+as in part (4) of Lemma \ref{lemma-f-map} but as the lemma shows there
+is really no difference.
+
+\begin{lemma}
+\label{lemma-f-map}
+Let $f : X \to Y$ be a continuous map.
+There are bijections between the following four sets
+\begin{enumerate}
+\item the set of maps $\mathcal{G} \to f_*\mathcal{F}$,
+\item the set of maps $f^{-1}\mathcal{G} \to \mathcal{F}$,
+\item the set of $f$-maps $\xi : \mathcal{G} \to \mathcal{F}$, and
+\item the set of all collections of maps
+$\xi_{U, V} : \mathcal{G}(V) \to \mathcal{F}(U)$ for all
+$U \subset X$ and $V \subset Y$ open such that $f(U) \subset V$
+compatible with all restriction maps,
+\end{enumerate}
+functorially in $\mathcal{F} \in \Sh(X)$ and $\mathcal{G} \in \Sh(Y)$.
+\end{lemma}
+
+\begin{proof}
+A map of sheaves $a : \mathcal{G} \to f_*\mathcal{F}$
+is by definition a rule which to each open $V$ of $Y$ assigns
+a map $a_V : \mathcal{G}(V) \to f_*\mathcal{F}(V)$
+and we have $f_*\mathcal{F}(V) = \mathcal{F}(f^{-1}(V))$.
+Thus at least the "data" corresponds exactly to what you need
+for an $f$-map $\xi$ from $\mathcal{G}$ to $\mathcal{F}$.
+To show that the sets (1) and (3) are in bijection we observe that
+$a$ is a map of sheaves if and only if corresponding family of maps $a_V$
+satisfy the condition in Definition \ref{definition-f-map}.
+
+\medskip\noindent
+Recall that $f^{-1}\mathcal{G}$ is the sheafification of $f_p\mathcal{G}$.
+By the universal property of sheafification a map of sheaves
+$b : f^{-1}\mathcal{G} \to \mathcal{F}$ is the same thing as a map of
+presheaves $b_p : f_p\mathcal{G} \to \mathcal{F}$ where $f_p$ is the
+functor defined earlier in the section. To give such a map $b_p$
+you need to specify for each open $U$ of $X$ a map
+$$
+b_{p, U} :
+\colim_{f(U) \subset V} \mathcal{G}(V)
+\longrightarrow
+\mathcal{F}(U)
+$$
+compatible with restriction mappings. We may and do view $b_{p, U}$
+as a collection of maps $b_{p, U, V} : \mathcal{G}(V) \to \mathcal{F}(U)$
+for all $V$ open in $Y$ with $f(U) \subset V$. These maps have to be
+compatible with all possible restriction mappings you can think of.
+In other words, we see that $b_p$ corresponds to a collection of maps
+as in (4). Of course, conversely such a collection defines a map
+$b_p$ and in turn a map $b : f^{-1}\mathcal{G} \to \mathcal{F}$.
+
+\medskip\noindent
+To finish the proof of the lemma you have to show that by
+"forgetting structure" the rule that to a collection $\xi_{U, V}$
+as in (4) associates the $f$-map $\xi$ with $\xi_V = \xi_{f^{-1}(V), V}$
+is bijective. To do this, if $\xi$ is a usual $f$-map then we just
+define $\tilde \xi_{U, V}$ to be the composition of
+$\xi_V : \mathcal{G}(V) \to \mathcal{F}(f^{-1}(V))$
+by the restruction map $\mathcal{F}(f^{-1}(V)) \to \mathcal{F}(U)$
+which makes sense exactly because $f(U) \subset V$, i.e.,
+$U \subset f^{-1}(V)$. This finishes the proof.
+\end{proof}
+
+\noindent
+It is sometimes convenient to think about $f$-maps
+instead of maps between sheaves either on $X$ or on $Y$.
+We define composition of $f$-maps as follows.
+
+\begin{definition}
+\label{definition-composition-f-maps}
+Suppose that $f : X \to Y$ and $g : Y \to Z$ are continuous
+maps of topological spaces. Suppose that $\mathcal{F}$ is
+a sheaf on $X$, $\mathcal{G}$ is a sheaf on $Y$, and
+$\mathcal{H}$ is a sheaf on $Z$.
+Let $\varphi : \mathcal{G} \to \mathcal{F}$ be an $f$-map.
+Let $\psi : \mathcal{H} \to \mathcal{G}$ be an $g$-map.
+The {\it composition of $\varphi$ and $\psi$} is the
+$(g \circ f)$-map $\varphi \circ \psi$ defined
+by the commutativity of the diagrams
+$$
+\xymatrix{
+\mathcal{H}(W) \ar[rr]_{(\varphi \circ \psi)_W}
+\ar[rd]_{\psi_W} & &
+\mathcal{F}(f^{-1}g^{-1}W) \\
+&
+\mathcal{G}(g^{-1}W)
+\ar[ru]_{\varphi_{g^{-1}W}}
+}
+$$
+\end{definition}
+
+\noindent
+We leave it to the reader to verify that this works.
+Another way to think about this is to think of
+$\varphi \circ \psi$ as the composition
+$$
+\mathcal{H}
+\xrightarrow{\psi}
+g_*\mathcal{G}
+\xrightarrow{g_*\varphi}
+g_* f_* \mathcal{F} = (g \circ f)_* \mathcal{F}
+$$
+Now, doesn't it seem that thinking about $f$-maps is somehow
+easier?
+
+\medskip\noindent
+Finally, given a continuous map $f : X \to Y$, and an
+$f$-map $\varphi : \mathcal{G} \to \mathcal{F}$ there is
+a natural map on stalks
+$$
+\varphi_x : \mathcal{G}_{f(x)} \longrightarrow \mathcal{F}_x
+$$
+for all $x \in X$. The image of a representative $(V, s)$
+of an element in $\mathcal{G}_{f(x)}$ is mapped to the
+element in $\mathcal{F}_x$ with representative $(f^{-1}V,
+\varphi_V(s))$. We leave it to the reader to see that this
+is well defined. Another way to state it is that it is the
+unique map such that all diagrams
+$$
+\xymatrix{
+\mathcal{F}(f^{-1}V) \ar[r] &
+\mathcal{F}_x \\
+\mathcal{G}(V) \ar[r] \ar[u]^{\varphi_V} &
+\mathcal{G}_{f(x)} \ar[u]^{\varphi_x}
+}
+$$
+(for $f(x) \in V \subset Y$ open) commute.
+
+\begin{lemma}
+\label{lemma-compose-f-maps-stalks}
+Suppose that $f : X \to Y$ and $g : Y \to Z$ are continuous
+maps of topological spaces. Suppose that $\mathcal{F}$ is
+a sheaf on $X$, $\mathcal{G}$ is a sheaf on $Y$, and
+$\mathcal{H}$ is a sheaf on $Z$.
+Let $\varphi : \mathcal{G} \to \mathcal{F}$ be an $f$-map.
+Let $\psi : \mathcal{H} \to \mathcal{G}$ be an $g$-map.
+Let $x \in X$ be a point. The map on stalks
+$(\varphi \circ \psi)_x : \mathcal{H}_{g(f(x))}
+\to \mathcal{F}_x$ is the composition
+$$
+\mathcal{H}_{g(f(x))}
+\xrightarrow{\psi_{f(x)}}
+\mathcal{G}_{f(x)}
+\xrightarrow{\varphi_x}
+\mathcal{F}_x
+$$
+\end{lemma}
+
+\begin{proof}
+Immediate from Definition \ref{definition-composition-f-maps}
+and the definition of the map on stalks above.
+\end{proof}

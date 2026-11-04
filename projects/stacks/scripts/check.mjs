@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createRenderer} from '../src/latex.mjs';
+import {sectionNote} from '../src/scheme-notes.mjs';
 import {examples} from '../src/matches.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url)),dist=path.join(root,'dist');
 const manifest=JSON.parse(fs.readFileSync(path.join(root,'upstream/manifest.json'),'utf8'));
@@ -46,11 +47,50 @@ for(const file of files(dist).filter(f=>f.endsWith('.html'))){
     if(m[1].endsWith('/'))target=path.join(target,'index.html');
     if(!target.startsWith(dist))continue;
     if(!fs.existsSync(target))throw Error('Missing local link: '+m[1]+' in '+file);
+    const hash=m[0].match(/#([^"]+)/)?.[1];
+    if(hash&&target.endsWith('.html')&&!fs.readFileSync(target,'utf8').includes('id="'+hash+'"'))throw Error('Missing target anchor '+m[0]+' in '+file);
   }
   for(const m of source.matchAll(/href="#([^"]+)"/g))if(!source.includes(`id="${m[1]}"`))throw Error('Broken fragment '+m[1]);
 }
+
+const foundation=JSON.parse(fs.readFileSync(path.join(root,'upstream/scheme-path.json'),'utf8'));
+const refs=JSON.parse(fs.readFileSync(path.join(root,'upstream/references.json'),'utf8'));
+let pathProofs=0,pathStatements=0;
+for(const unit of foundation.units){
+  const file=path.join(dist,'read',unit.slug,'index.html'),html=fs.readFileSync(file,'utf8');
+  const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);
+  if(new Set(ids).size!==ids.length)throw Error('Duplicate source anchors in '+unit.slug);
+  let proofs=0,statements=0;
+  for(const section of unit.sections){
+    const source=fs.readFileSync(path.join(root,'upstream/sections',section.slug+'.tex'),'utf8');
+    proofs+=[...source.matchAll(/\\begin\{proof\}/g)].length;
+    statements+=[...source.matchAll(/\\begin\{(?:lemma|definition|example|theorem|proposition|remark|corollary)\}/g)].length;
+    for(const match of source.matchAll(/\\label\{([^}]+)\}/g)){
+      const tag=refs[section.chapter+'-'+match[1]]?.tag;
+      if(!tag||!ids.includes(tag))throw Error('Missing source anchor '+section.slug+' '+match[1]);
+    }
+    const note=sectionNote(section);
+    if(!note.bindings.length||!note.check||!note.result)throw Error('Missing complex function model '+section.slug);
+    const symbols=new Set();
+    for(const b of note.bindings){
+      if(!b.kind)throw Error('Missing object type '+section.slug);
+      if(symbols.has(b.symbol))throw Error('Duplicate object binding '+section.slug);symbols.add(b.symbol);
+      renderer.math(b.symbol);renderer.math(b.value);
+    }
+  }
+  if([...html.matchAll(/<details class="proof">/g)].length!==proofs)throw Error('Lost or initially expanded proof in '+unit.slug);
+  if([...html.matchAll(/class="statement-heading"/g)].length!==statements)throw Error('Lost source statement in '+unit.slug);
+  if(!html.includes('class="math-inline object-ref"'))throw Error('Missing source-symbol matching in '+unit.slug);
+  if(html.includes('katex-error')||html.includes('@@TOKEN'))throw Error('Unrendered source in '+unit.slug);
+  pathProofs+=proofs;pathStatements+=statements;
+}
+const finalDefinition=refs['schemes-definition-scheme'].tag;
+if(!fs.readFileSync(path.join(dist,'read/schemes/index.html'),'utf8').includes(`id="${finalDefinition}"`))throw Error('Missing scheme definition');
+
 const css=fs.readFileSync(path.join(dist,'vendor/katex/katex.min.css'),'utf8');
 for(const m of css.matchAll(/url\(([^)]+)\)/g))if(!fs.existsSync(path.join(dist,'vendor/katex',m[1])))throw Error('Missing KaTeX font '+m[1]);
 const sourceFiles=['COPYING','manifest.json','introduction.tex'];
 for(const file of sourceFiles)if(!fs.existsSync(path.join(dist,'source',file)))throw Error('Missing source or license '+file);
 console.log(`Validated Stacks Reader: ${Object.keys(examples).length} typed object specializations, linked symbols, optional visual, all ${statementCount} source statements, ${proofCount} collapsed proofs, tags, local links, math, fonts, and source license.`);
+
+console.log(`Validated foundation path: ${foundation.units.flatMap(u=>u.sections).length} complete sections, ${pathStatements} statements, ${pathProofs} collapsed proofs, source anchors, typed complex-function models, and cross-reading links.`);
