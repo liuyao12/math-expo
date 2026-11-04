@@ -2,11 +2,23 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createRenderer} from '../src/latex.mjs';
+import {examples} from '../src/matches.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url)),dist=path.join(root,'dist');
 const manifest=JSON.parse(fs.readFileSync(path.join(root,'upstream/manifest.json'),'utf8'));
 const html=fs.readFileSync(path.join(dist,'read/gluing/index.html'),'utf8');
 let proofCount=0,statementCount=0;
 const renderer=createRenderer(root);
+for(const [key,item] of Object.entries(examples)){
+  if(!item.bindings.length||!item.check||!item.result)throw Error('Incomplete specialization: '+key);
+  const symbols=item.bindings.map(b=>b.symbol.replace(/[\s{}]/g,''));
+  if(new Set(symbols).size!==symbols.length)throw Error('Duplicate object assignment: '+key);
+  for(const b of [...item.bindings,...(item.proofBindings||[])]){
+    renderer.math(b.symbol);renderer.math(b.value);
+    if(!b.kind)throw Error('Missing object type: '+key+' '+b.symbol);
+  }
+}
+if(!html.includes('class="math-inline object-ref"')||!html.includes('class="object-matches"'))throw Error('Missing linked object matching');
+if(!html.includes('<details id="example-visual" class="optional-visual">'))throw Error('The visual must be optional and initially closed');
 for(const section of manifest.sections){
   const tex=fs.readFileSync(path.join(root,'upstream/sections',section.slug+'.tex'),'utf8');
   const proofs=[...tex.matchAll(/\\begin\{proof\}/g)].length;
@@ -41,4 +53,4 @@ const css=fs.readFileSync(path.join(dist,'vendor/katex/katex.min.css'),'utf8');
 for(const m of css.matchAll(/url\(([^)]+)\)/g))if(!fs.existsSync(path.join(dist,'vendor/katex',m[1])))throw Error('Missing KaTeX font '+m[1]);
 const sourceFiles=['COPYING','manifest.json','introduction.tex'];
 for(const file of sourceFiles)if(!fs.existsSync(path.join(dist,'source',file)))throw Error('Missing source or license '+file);
-console.log(`Validated Stacks Reader: all ${statementCount} source statements, ${proofCount} collapsed proofs, tags, local links, math, fonts, and source license.`);
+console.log(`Validated Stacks Reader: ${Object.keys(examples).length} typed object specializations, linked symbols, optional visual, all ${statementCount} source statements, ${proofCount} collapsed proofs, tags, local links, math, fonts, and source license.`);

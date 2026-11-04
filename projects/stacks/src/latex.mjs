@@ -72,7 +72,7 @@ export function createRenderer(root) {
     mathCount++;
     tex=diagram(tex.trim()).replace(/\\begin\{eqnarray\*\}/g,'\\begin{aligned}').replace(/\\end\{eqnarray\*\}/g,'\\end{aligned}').replace(/&\s*(=|\\mapsto)\s*&/g,'& $1 ');
     const rendered=context.katex.renderToString(tex,{throwOnError:true,displayMode:display,macros,strict:'ignore',output:'htmlAndMathml'});
-    return display?`<div class="math-display">${rendered}</div>`:rendered;
+    return display?`<div class="math-display">${rendered}</div>`:`<span class="math-inline" data-tex="${escapeHTML(tex)}">${rendered}</span>`;
   }
   function reference(label,chapter){
     const full=references[label]?label:chapter+'-'+label;
