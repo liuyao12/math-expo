@@ -879,7 +879,9 @@ const doubleDual={...model('The natural map to the double dual',[
 \end{aligned}
 \]`,r`The evaluation maps are isomorphisms in finite dimension.`,r`This example opens Eilenberg and Mac Lane’s 1945 paper.`),source:naturalEquivalences};
 const matrixEquivalence=model('Finite-dimensional vector spaces and matrices',[
- b(r`\mathcal A`,r`\mathbf{Mat}_k`,r`Objects are \(n\ge0\), representing \(k^n\). A morphism \(n\to m\) is an \(m\times n\) matrix.`),
+ b(r`\mathcal A`,r`\mathbf{Mat}_k`),
+ b(r`\operatorname{Ob}(\mathcal A)`,r`\mathbb Z_{\ge0}`),
+ b(r`\operatorname{Hom}_{\mathcal A}(n,m)`,r`\operatorname{Mat}_{m\times n}(k)`),
  b(r`\mathcal B`,r`\mathbf{Vect}^{\mathrm{fd}}_k`),
  b('F',r`(n\mapsto k^n,\ A\mapsto(v\mapsto Av))`),
  b('G',r`(V\mapsto \dim_k V,\ f\mapsto [f])`)
@@ -888,7 +890,7 @@ const matrixEquivalence=model('Finite-dimensional vector spaces and matrices',[
 G\circ F=\mathrm{id}_{\mathcal A},\\
 \mathrm{id}_{\mathcal B}\xrightarrow{\sim}F\circ G.
 \end{gathered}
-\]`,r`Choose a basis for each \(V\), using the standard basis for \(k^n\). The coordinates \(V\to k^{\dim_k V}\) give the natural isomorphism.`,r`Every linear map between coordinate spaces is given by a unique matrix, and composition is matrix multiplication. Every finite-dimensional space admits coordinates.`);
+\]`,r`Choose a basis for each \(V\), using the standard basis for \(k^n\). The coordinates \(V\to k^{\dim_k V}\) give the natural isomorphism.`,r`Composition in \(\mathbf{Mat}_k\) is matrix multiplication, and the identity at \(n\) is \(I_n\).`);
 const dual=model('Dualizing reverses the arrows',[
  finiteVect,b(r`\mathcal S`,r`\mathbf{Vect}^{\mathrm{fd}}_{\mathbb R}`),
  b('F',r`(V\mapsto V^*)`),
