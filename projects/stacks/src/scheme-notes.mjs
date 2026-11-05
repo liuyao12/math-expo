@@ -239,10 +239,25 @@ const cechAffine=model('Split an overlap section on an affine line',[
 ],r`An overlap section such as \(1/(z(1-z))\) splits as \(1/z+1/(1-z)\). The two summands extend to their respective charts, so the section is a Čech coboundary after choosing signs.`,r`The lemma shows that every overlap section splits in this way into chart contributions. The first Čech cohomology is zero for this affine cover.`);
 const cechSphere={...model('The residue on the Riemann sphere',[
  b('X',r`\mathbb P^1(\mathbb C)`),
- b(r`\mathcal U`,r`\{\mathbb C_z,\mathbb C_w\}`,r`The two complex charts with \(w=1/z\) on the overlap \(\mathbb C^\times\).`),
- b(r`\mathcal F`,r`\mathcal O_X^{\mathrm{an}}(-2)\cong\Omega_X^1`,r`The sheaf of holomorphic differentials. The frames \(e_0,e_1\) of the twist satisfy \(e_1=z^{-2}e_0\). Differentiating \(w=1/z\) gives \(dw=-z^{-2}dz\), so \(e_0\mapsto dz\) and \(e_1\mapsto -dw\) respect the transition rule and define the isomorphism.`),
+ b(r`\mathcal U`,r`\{\mathbb C_z,\mathbb C_w\}`,r`The overlap is \(\mathbb C^\times\).`),
+ b(r`\mathcal F`,r`\mathcal O_X^{\mathrm{an}}(-2)\cong\Omega_X^1`,r`
+ \[
+ \begin{aligned}
+ w&=1/z, & dw&=-z^{-2}\,dz,\\
+ e_1&=z^{-2}e_0, & -dw&=z^{-2}\,dz.
+ \end{aligned}
+ \]
+ The frames \(e_0,e_1\) of the twist therefore correspond to \(dz,-dw\).`),
  b(r`\omega`,r`\left(\sum_{j\in\mathbb Z}c_jz^j\right)dz`)
-],r`A differential \(a(z)\,dz\) from the first chart contributes only powers \(j\geq 0\). One from the second chart has the form \(b(w)\,dw=-z^{-2}b(1/z)\,dz\), so it contributes only powers \(j\leq -2\). The corresponding Laurent tails converge to entire functions in their respective chart coordinates. Subtracting differences of chart sections therefore reduces every overlap differential to \(c_{-1}\,dz/z\).`,r`The residue \(c_{-1}=\frac{1}{2\pi i}\int_{|z|=1}\omega\), with the circle oriented counterclockwise, vanishes on every Čech coboundary. The overlap form \(dz/z\) has residue \(1\), so its class spans \(H^1(X,\Omega_X^1)\). Both charts and their overlap are Stein, and Cartan’s Theorem B makes this cover acyclic for the holomorphic line bundle.`,r`The untwisted holomorphic function sheaf has transition factor \(1\), so its two chart contributions account for every Laurent power and its first cohomology vanishes.`),
+],r`
+ \[
+ \begin{aligned}
+ a(z)\,dz &= \sum_{j\geq 0} a_j z^j\,dz,\\
+ b(w)\,dw &= -z^{-2}b(1/z)\,dz\\
+          &= \sum_{j\leq -2} \widetilde b_j z^j\,dz.
+ \end{aligned}
+ \]
+ `,r`The two Laurent tails give sections on the two charts. Only the \(j=-1\) term survives their differences. Its coefficient is the residue, and \(dz/z\) has residue \(1\), so \([dz/z]\) generates \(H^1(X,\Omega_X^1)\). Cartan’s Theorem B makes the two charts and their overlap acyclic for this sheaf.`),
  source:{url:'https://www.numdam.org/item/SB_1951-1954__2__213_0/',label:'Serre’s Bourbaki exposé on Cartan’s Theorem B'}};
 const cechPlane=model('Three charts leave one class for the negative cubic twist',[
  b('R',r`k`),

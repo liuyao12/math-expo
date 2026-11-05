@@ -20,9 +20,12 @@ const normalize=s=>s.replace(/[\s{}]/g,'');
 function matchingHTML(item,proof=false,renderer=r){
   const r=renderer;
   const rich=s=>s.replace(/\\\[([\s\S]*?)\\\]/g,(_,t)=>r.math(t,true)).replace(/\\\(([\s\S]*?)\\\)/g,(_,t)=>r.math(t));
+  const paragraphs=(value,cls='')=>value.split(/(\\\[[\s\S]*?\\\])/).filter(part=>part.trim()).map(part=>
+    part.startsWith('\\[')?rich(part):`<p${cls?' class="'+cls+'"':''}>${rich(part.trim())}</p>`
+  ).join('');
   const bindings=proof&&item.proofBindings?[...new Map([...item.proofBindings,...item.bindings].map(b=>[normalize(b.symbol),b])).values()]:item.bindings;
-  const rows=`<ul class="object-matches">${bindings.map(binding=>`<li class="object-row" data-symbol="${esc(normalize(binding.symbol))}" tabindex="-1"><div class="object-formula">${r.math(binding.symbol+'{=}'+binding.value)}</div>${binding.note?`<p class="object-detail">${rich(binding.note)}</p>`:''}</li>`).join('')}</ul>`;
-  return `${item.note?`<p class="case-note">${rich(item.note)}</p>`:''}<p class="match-intro">${item.scope==='section'?'A model for this section':'Objects in this case'}</p>${rows}<div class="case-check"><h4>${item.scope==='section'?'How the model works':proof?'The proof in this case':'Check the hypotheses'}</h4><p>${rich(proof&&item.proof?item.proof:item.check)}</p></div><div class="case-result"><h4>${item.scope==='section'?'Why this section is here':'What the statement says here'}</h4><p>${rich(item.result)}</p></div>${item.source?`<p class="case-note"><a href="${esc(item.source.url)}">${esc(item.source.label)}</a></p>`:''}`;
+  const rows=`<ul class="object-matches">${bindings.map(binding=>`<li class="object-row" data-symbol="${esc(normalize(binding.symbol))}" tabindex="-1"><div class="object-formula">${r.math(binding.symbol+'{=}'+binding.value)}</div>${paragraphs(binding.note,'object-detail')}</li>`).join('')}</ul>`;
+  return `${item.note?`<p class="case-note">${rich(item.note)}</p>`:''}<p class="match-intro">${item.scope==='section'?'A model for this section':'Objects in this case'}</p>${rows}<div class="case-check"><h4>${item.scope==='section'?'How the model works':proof?'The proof in this case':'Check the hypotheses'}</h4>${paragraphs(proof&&item.proof?item.proof:item.check)}</div><div class="case-result"><h4>${item.scope==='section'?'Why this section is here':'What the statement says here'}</h4>${paragraphs(item.result)}</div>${item.source?`<p class="case-note"><a href="${esc(item.source.url)}">${esc(item.source.label)}</a></p>`:''}`;
 }
 const exampleData=Object.fromEntries(Object.entries(examples).map(([key,item])=>[key,{title:item.title,html:matchingHTML(item),proofHtml:item.proof?matchingHTML(item,true):null,symbols:item.bindings.map(b=>normalize(b.symbol))}]));
 const mark=`<svg class="mark" width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><path d="M3 6 14 1 25 6 14 11Z M3 12 14 17 25 12 M3 18 14 23 25 18" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>`;
