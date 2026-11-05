@@ -1,0 +1,258 @@
+\section{Spectral sequences: double complexes}
+\label{section-double-complex}
+
+\noindent
+Let $K^{\bullet, \bullet}$ be a double complex, see
+Section \ref{section-double-complexes}. It is customary to denote
+$H^p_I(K^{\bullet, \bullet})$
+the complex with terms $\Ker(d_1^{p, q})/\Im(d_1^{p - 1, q})$
+(varying $q$) and differential induced by $d_2$.
+Then $H^q_{II}(H^p_I(K^{\bullet, \bullet}))$ denotes its cohomology in
+degree $q$. It is also customary to denote $H^q_{II}(K^{\bullet, \bullet})$
+the complex with terms $\Ker(d_2^{p, q})/\Im(d_2^{p, q - 1})$
+(varying $p$) and differential induced by $d_1$.
+Then $H^p_I(H^q_{II}(K^{\bullet, \bullet}))$ denotes its cohomology in
+degree $p$. It will turn out that these cohomology groups show up
+as the terms in the spectral sequence for a filtration on the
+associated total complex or simple complex, see
+Definition \ref{definition-associated-simple-complex}.
+
+\medskip\noindent
+There are two natural filtrations on the total complex
+$\text{Tot}(K^{\bullet, \bullet})$
+associated to the double complex $K^{\bullet, \bullet}$. Namely, we
+define
+$$
+F_I^p(\text{Tot}^n(K^{\bullet, \bullet})) =
+\bigoplus\nolimits_{i + j = n, \ i \geq p} K^{i, j}
+\quad
+\text{and}
+\quad
+F_{II}^p(\text{Tot}^n(K^{\bullet, \bullet})) =
+\bigoplus\nolimits_{i + j = n, \ j \geq p} K^{i, j}.
+$$
+It is immediately verified that $(\text{Tot}(K^{\bullet, \bullet}), F_I)$ and
+$(\text{Tot}(K^{\bullet, \bullet}), F_{II})$ are filtered complexes.
+By Section \ref{section-filtered-complex}
+we obtain two spectral sequences. It is customary to
+denote $({}'E_r, {}'d_r)_{r \geq 0}$ the spectral sequence associated
+to the filtration $F_I$ and to denote $({}''E_r, {}''d_r)_{r \geq 0}$
+the spectral sequence associated to the filtration $F_{II}$.
+Here is a description of these spectral sequences.
+
+\begin{lemma}
+\label{lemma-ss-double-complex}
+Let $\mathcal{A}$ be an abelian category.
+Let $K^{\bullet, \bullet}$ be a double complex.
+The spectral sequences associated to $K^{\bullet, \bullet}$
+have the following terms:
+\begin{enumerate}
+\item ${}'E_0^{p, q} = K^{p, q}$ with
+${}'d_0^{p, q} = (-1)^p d_2^{p, q} : K^{p, q} \to K^{p, q + 1}$,
+\item ${}''E_0^{p, q} = K^{q, p}$ with
+${}''d_0^{p, q} = d_1^{q, p} : K^{q, p} \to K^{q + 1, p}$,
+\item ${}'E_1^{p, q} = H^q(K^{p, \bullet})$ with
+${}'d_1^{p, q} = H^q(d_1^{p, \bullet})$,
+\item ${}''E_1^{p, q} = H^q(K^{\bullet, p})$ with
+${}''d_1^{p, q} = (-1)^q H^q(d_2^{\bullet, p})$,
+\item ${}'E_2^{p, q} = H^p_I(H^q_{II}(K^{\bullet, \bullet}))$,
+\item ${}''E_2^{p, q} = H^p_{II}(H^q_I(K^{\bullet, \bullet}))$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\noindent
+These spectral sequences define two filtrations on
+$H^n(\text{Tot}(K^{\bullet, \bullet}))$.
+We will denote these $F_I$ and $F_{II}$.
+
+\begin{definition}
+\label{definition-ss-double-complex-converge}
+Let $\mathcal{A}$ be an abelian category.
+Let $K^{\bullet, \bullet}$ be a double complex.
+We say the spectral sequence $({}'E_r, {}'d_r)_{r \geq 0}$
+{\it weakly converges to $H^n(\text{Tot}(K^{\bullet, \bullet}))$},
+{\it abuts to $H^n(\text{Tot}(K^{\bullet, \bullet}))$}, or
+{\it converges to $H^n(\text{Tot}(K^{\bullet, \bullet}))$}
+if Definition \ref{definition-filtered-complex-ss-converges} applies.
+Similarly we say the spectral sequence $({}''E_r, {}''d_r)_{r \geq 0}$
+{\it weakly converges to $H^n(\text{Tot}(K^{\bullet, \bullet}))$},
+{\it abuts to $H^n(\text{Tot}(K^{\bullet, \bullet}))$}, or
+{\it converges to $H^n(\text{Tot}(K^{\bullet, \bullet}))$}
+if Definition \ref{definition-filtered-complex-ss-converges} applies.
+\end{definition}
+
+\noindent
+As mentioned above there is no consistent terminology regarding these
+notions in the literature. In the situation of the definition, we have
+weak convergence of the first spectral sequence if for all $n$
+$$
+\text{gr}_{F_I}(H^n(\text{Tot}(K^{\bullet, \bullet}))) =
+\oplus_{p + q = n} {}'E_\infty^{p, q}
+$$
+via the canonical comparison of
+Lemma \ref{lemma-compute-cohomology-filtered-complex}.
+Similarly the second spectral sequence $({}''E_r, {}''d_r)_{r \geq 0}$
+weakly converges if for all $n$
+$$
+\text{gr}_{F_{II}}(H^n(\text{Tot}(K^{\bullet, \bullet}))) =
+\oplus_{p + q = n} {}''E_\infty^{p, q}
+$$
+via the canonical comparison of
+Lemma \ref{lemma-compute-cohomology-filtered-complex}.
+
+\begin{lemma}
+\label{lemma-first-quadrant-ss}
+Let $\mathcal{A}$ be an abelian category. Let $K^{\bullet, \bullet}$
+be a double complex. Assume that for every $n \in \mathbf{Z}$ there are
+only finitely many nonzero $K^{p, q}$ with $p + q = n$. Then
+\begin{enumerate}
+\item the two spectral sequences associated to $K^{\bullet, \bullet}$
+are bounded,
+\item the filtrations $F_I$, $F_{II}$ on each
+$H^n(\text{Tot}(K^{\bullet, \bullet}))$ are finite,
+\item the spectral sequences $({}'E_r, {}'d_r)_{r \geq 0}$ and
+$({}''E_r, {}''d_r)_{r \geq 0}$ converge to
+$H^*(\text{Tot}(K^{\bullet, \bullet}))$,
+\item if $\mathcal{C} \subset \mathcal{A}$ is a weak Serre subcategory
+and for some $r$ we have ${}'E_r^{p, q} \in \mathcal{C}$ for all
+$p, q \in \mathbf{Z}$, then $H^n(\text{Tot}(K^{\bullet, \bullet}))$
+is in $\mathcal{C}$. Similarly for $({}''E_r, {}''d_r)_{r \geq 0}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Follows immediately from Lemma \ref{lemma-biregular-ss-converges}.
+\end{proof}
+
+\noindent
+Here is our first application of spectral sequences.
+
+\begin{lemma}
+\label{lemma-double-complex-gives-resolution}
+Let $\mathcal{A}$ be an abelian category.
+Let $K^\bullet$ be a complex.
+Let $A^{\bullet, \bullet}$ be a double complex.
+Let $\alpha^p : K^p \to A^{p, 0}$ be morphisms.
+Assume that
+\begin{enumerate}
+\item For every $n \in \mathbf{Z}$ there are only finitely many nonzero
+$A^{p, q}$ with $p + q = n$.
+\item We have $A^{p, q} = 0$ if $q < 0$.
+\item The morphisms $\alpha^p$ give rise to a morphism
+of complexes $\alpha : K^\bullet \to A^{\bullet, 0}$.
+\item The complex $A^{p, \bullet}$ is exact in all degrees
+$q \not = 0$ and the morphism $K^p \to A^{p, 0}$ induces
+an isomorphism $K^p \to \Ker(d_2^{p, 0})$.
+\end{enumerate}
+Then $\alpha$ induces a quasi-isomorphism
+$$
+K^\bullet \longrightarrow \text{Tot}(A^{\bullet, \bullet})
+$$
+of complexes.
+Moreover, there is a variant of this lemma involving the second
+variable $q$ instead of $p$.
+\end{lemma}
+
+\begin{proof}
+The map is simply the map given by the morphisms
+$K^n \to A^{n, 0} \to \text{Tot}^n(A^{\bullet, \bullet})$,
+which are easily seen to define a morphism of complexes.
+Consider the spectral sequence $({}'E_r, {}'d_r)_{r \geq 0}$
+associated to the double complex $A^{\bullet, \bullet}$.
+By Lemma \ref{lemma-first-quadrant-ss} this spectral sequence converges
+and the induced filtration on $H^n(\text{Tot}(A^{\bullet, \bullet}))$
+is finite for each $n$.
+By Lemma \ref{lemma-ss-double-complex} and assumption (4) we have
+${}'E_1^{p, q} = 0$ unless $q = 0$ and $'E_1^{p, 0} = K^p$
+with differential ${}'d_1^{p, 0}$ identified with $d_K^p$.
+Hence ${}'E_2^{p, 0} = H^p(K^\bullet)$ and zero otherwise.
+This clearly implies ${}'d_2^{p, q} = {}'d_3^{p, q} = \ldots = 0$
+for degree reasons. Hence we conclude that
+$H^n(\text{Tot}(A^{\bullet, \bullet})) = H^n(K^\bullet)$.
+We omit the verification that this identification is given by the
+morphism of complexes $K^\bullet \to \text{Tot}(A^{\bullet, \bullet})$
+introduced above.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-homotopy-complex-complexes}
+Let $\mathcal{A}$ be an abelian category.
+Let $M^\bullet$ be a complex of $\mathcal{A}$. Let
+$$
+a :
+M^\bullet[0]
+\longrightarrow
+\left(A^{0, \bullet} \to A^{1, \bullet} \to A^{2, \bullet} \to \ldots \right)
+$$
+be a homotopy equivalence in the category of complexes of complexes
+of $\mathcal{A}$. Then the map
+$\alpha : M^\bullet \to \text{Tot}(A^{\bullet, \bullet})$
+induced by $M^\bullet \to A^{0, \bullet}$ is a homotopy equivalence.
+\end{lemma}
+
+\begin{proof}
+The statement makes sense as a complex of complexes is the same thing
+as a double complex. The assumption means there is a map
+$$
+b :
+\left(A^{0, \bullet} \to A^{1, \bullet} \to A^{2, \bullet} \to \ldots \right)
+\longrightarrow
+M^\bullet[0]
+$$
+such that $a \circ b$ and $b \circ a$ are homotopic to the identity
+in the category of complexes of complexes. This means that $b \circ a$
+is the identity of $M^\bullet[0]$ (because there is only one term in
+degree $0$). Also, observe that $b$ is given by a map
+$b^0 : A^{0, \bullet} \to M^\bullet$ and zero in all other degrees.
+Thus $b$ induces a map
+$\beta : \text{Tot}(A^{\bullet, \bullet}) \to M^\bullet$
+and $\beta \circ \alpha$ is the identity on $M^\bullet$.
+Finally, we have to show that the map
+$\alpha \circ \beta$ is homotopic to the identity.
+For this we choose maps of complexes
+$h^n : A^{n, \bullet} \to A^{n - 1, \bullet}$
+such that $a \circ b - \text{id} = d_1 \circ h + h \circ d_1$
+which exist by assumption. Here $d_1 : A^{n, \bullet} \to A^{n + 1, \bullet}$
+are the differentials of the complex of complexes. We will also
+denote $d_2$ the differentials of the complexes $A^{n, \bullet}$
+for all $n$. Let $h^{n, m} : A^{n, m} \to A^{n - 1, m}$ be the components of
+$h^n$. Then we can consider
+$$
+h' : \text{Tot}(A^{\bullet, \bullet})^k =
+\bigoplus\nolimits_{n + m = k} A^{n, m}
+\to
+\bigoplus\nolimits_{n + m = k - 1} A^{n, m} =
+\text{Tot}(A^{\bullet, \bullet})^{k - 1}
+$$
+given by $h^{n, m}$ on the summand $A^{n, m}$. Then we compute
+that the map
+$$
+d_{\text{Tot}(A^{\bullet, \bullet})} \circ h' +
+h' \circ d_{\text{Tot}(A^{\bullet, \bullet})}
+$$
+restricted to the summand $A^{n, m}$ is equal to
+$$
+d_1^{n - 1, m} \circ h^{n, m} +
+(-1)^{n - 1} d_2^{n - 1, m} \circ h^{n, m} +
+h^{n + 1, m} \circ d_1^{n, m} + h^{n, m + 1} \circ (-1)^nd_2^{n, m}
+$$
+Since $h^n$ is a map of complexes, the terms
+$(-1)^{n - 1} d_2^{n - 1, m} \circ h^{n, m}$ and
+$h^{n, m + 1} \circ (-1)^nd_2^{n, m}$ cancel.
+The other two terms give
+$(\alpha \circ \beta)|_{A^{n, m}} - \text{id}_{A^{n, m}}$
+because $a \circ b - \text{id} = d_1 \circ h + h \circ d_1$.
+This finishes the proof.
+\end{proof}
+
+
+
+
+
+
+
+

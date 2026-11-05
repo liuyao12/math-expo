@@ -1,0 +1,120 @@
+\section{Quasi-coherent sheaves on Proj}
+\label{section-quasi-coherent-proj}
+
+\noindent
+Let $S$ be a graded ring. Let $M$ be a graded $S$-module.
+We saw in Lemma \ref{lemma-proj-sheaves} how to construct a quasi-coherent
+sheaf of modules $\widetilde{M}$ on $\text{Proj}(S)$ and a map
+\begin{equation}
+\label{equation-map-global-sections}
+M_0 \longrightarrow \Gamma(\text{Proj}(S), \widetilde{M})
+\end{equation}
+of the degree $0$ part of $M$ to the global sections of $\widetilde{M}$.
+The degree $0$ part of the $n$th twist $M(n)$ of the graded module $M$ (see
+Algebra, Section \ref{algebra-section-graded})
+is equal to $M_n$. Hence we can get maps
+\begin{equation}
+\label{equation-map-global-sections-degree-n}
+M_n \longrightarrow \Gamma(\text{Proj}(S), \widetilde{M(n)}).
+\end{equation}
+We would like to be able to perform this operation for any quasi-coherent
+sheaf $\mathcal{F}$ on $\text{Proj}(S)$. We will do this by tensoring
+with the $n$th twist of the structure sheaf, see
+Definition \ref{definition-twist}. In order to relate the two notions
+we will use the following lemma.
+
+\begin{lemma}
+\label{lemma-widetilde-tensor}
+Let $S$ be a graded ring.
+Let $(X, \mathcal{O}_X) = (\text{Proj}(S), \mathcal{O}_{\text{Proj}(S)})$
+be the scheme of Lemma \ref{lemma-proj-scheme}.
+Let $f \in S_{+}$ be homogeneous. Let $x \in X$ be a point
+corresponding to the homogeneous prime $\mathfrak p \subset S$.
+Let $M$, $N$ be graded $S$-modules.
+There is a canonical map of $\mathcal{O}_{\text{Proj}(S)}$-modules
+$$
+\widetilde M \otimes_{\mathcal{O}_X} \widetilde N
+\longrightarrow
+\widetilde{M \otimes_S N}
+$$
+which induces the canonical map
+$
+M_{(f)} \otimes_{S_{(f)}} N_{(f)}
+\to
+(M \otimes_S N)_{(f)}
+$
+on sections over $D_{+}(f)$ and the canonical map
+$
+M_{(\mathfrak p)} \otimes_{S_{(\mathfrak p)}} N_{(\mathfrak p)}
+\to
+(M \otimes_S N)_{(\mathfrak p)}
+$
+on stalks at $x$. Moreover, the following diagram
+$$
+\xymatrix{
+M_0 \otimes_{S_0} N_0 \ar[r] \ar[d] &
+(M \otimes_S N)_0 \ar[d] \\
+\Gamma(X, \widetilde M \otimes_{\mathcal{O}_X} \widetilde N) \ar[r] &
+\Gamma(X, \widetilde{M \otimes_S N})
+}
+$$
+is commutative where the vertical maps are given by
+(\ref{equation-map-global-sections}).
+\end{lemma}
+
+\begin{proof}
+To construct a morphism as displayed is the same as constructing
+a $\mathcal{O}_X$-bilinear map
+$$
+\widetilde M \times \widetilde N
+\longrightarrow
+\widetilde{M \otimes_S N}
+$$
+see Modules, Section \ref{modules-section-tensor-product}.
+It suffices to define this on sections over the opens $D_{+}(f)$
+compatible with restriction mappings. On $D_{+}(f)$ we use the
+$S_{(f)}$-bilinear map
+$M_{(f)} \times N_{(f)} \to (M \otimes_S N)_{(f)}$,
+$(x/f^n, y/f^m) \mapsto (x \otimes y)/f^{n + m}$. Details omitted.
+\end{proof}
+
+\begin{remark}
+\label{remark-not-isomorphism}
+In general the map constructed in Lemma \ref{lemma-widetilde-tensor}
+above is not an isomorphism. Here is an example. Let $k$
+be a field. Let $S = k[x, y, z]$ with $k$ in degree $0$ and
+$\deg(x) = 1$, $\deg(y) = 2$, $\deg(z) = 3$.
+Let $M = S(1)$ and $N = S(2)$, see
+Algebra, Section \ref{algebra-section-graded}
+for notation. Then $M \otimes_S N = S(3)$.
+Note that
+\begin{eqnarray*}
+S_z
+& = &
+k[x, y, z, 1/z] \\
+S_{(z)}
+& = &
+k[x^3/z, xy/z, y^3/z^2]
+\cong
+k[u, v, w]/(uw - v^3) \\
+M_{(z)} & = & S_{(z)} \cdot x + S_{(z)} \cdot y^2/z \subset S_z \\
+N_{(z)} & = & S_{(z)} \cdot y + S_{(z)} \cdot x^2 \subset S_z \\
+S(3)_{(z)} & = & S_{(z)} \cdot z \subset S_z
+\end{eqnarray*}
+Consider the maximal ideal $\mathfrak m = (u, v, w) \subset S_{(z)}$.
+It is not hard to see that both $M_{(z)}/\mathfrak mM_{(z)}$
+and $N_{(z)}/\mathfrak mN_{(z)}$ have dimension $2$ over
+$\kappa(\mathfrak m)$. But
+$S(3)_{(z)}/\mathfrak mS(3)_{(z)}$ has dimension $1$.
+Thus the map $M_{(z)} \otimes N_{(z)} \to S(3)_{(z)}$ is not
+an isomorphism.
+\end{remark}
+
+
+
+
+
+
+
+
+

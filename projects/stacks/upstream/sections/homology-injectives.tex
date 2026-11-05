@@ -1,0 +1,89 @@
+\section{Injectives}
+\label{section-injectives}
+
+\begin{definition}
+\label{definition-injective}
+Let $\mathcal{A}$ be an abelian category.
+An object $J \in \Ob(\mathcal{A})$ is
+called {\it injective} if for every injection
+$A \hookrightarrow B$ and every morphism
+$A \to J$ there exists a morphism $B \to J$ making
+the following diagram commute
+$$
+\xymatrix{
+A \ar[r] \ar[d] & B \ar@{-->}[ld] \\
+J &
+}
+$$
+\end{definition}
+
+\noindent
+Here is the obligatory characterization of injective objects.
+
+\begin{lemma}
+\label{lemma-characterize-injectives}
+Let $\mathcal{A}$ be an abelian category.
+Let $I$ be an object of $\mathcal{A}$.
+The following are equivalent:
+\begin{enumerate}
+\item The object $I$ is injective.
+\item The functor $B \mapsto \Hom_\mathcal{A}(B, I)$
+is exact.
+\item Any short exact sequence
+$$
+0 \to I \to A \to B \to 0
+$$
+in $\mathcal{A}$ is split.
+\item We have $\Ext_\mathcal{A}(B, I) = 0$ for
+all $B \in \Ob(\mathcal{A})$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-product-injectives}
+Let $\mathcal{A}$ be an abelian category.
+Suppose $I_\omega$, $\omega \in \Omega$ is a set of injective
+objects of $\mathcal{A}$. If $\prod_{\omega \in \Omega} I_\omega$
+exists then it is injective.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{definition}
+\label{definition-enough-injectives}
+Let $\mathcal{A}$ be an abelian category.
+We say $\mathcal{A}$ has {\it enough injectives}
+if every object $A$ has an injective morphism
+$A \to J$ into an injective object $J$.
+\end{definition}
+
+\begin{definition}
+\label{definition-functorial-injective-embedding}
+Let $\mathcal{A}$ be an abelian category.
+We say that $\mathcal{A}$ has {\it functorial injective embeddings}
+if there exists a functor
+$$
+J : \mathcal{A} \longrightarrow \text{Arrows}(\mathcal{A})
+$$
+such that
+\begin{enumerate}
+\item $s \circ J = \text{id}_\mathcal{A}$,
+\item for any object $A \in \Ob(\mathcal{A})$
+the morphism $J(A)$ is injective, and
+\item for any object $A \in \Ob(\mathcal{A})$
+the object $t(J(A))$ is an injective object of $\mathcal{A}$.
+\end{enumerate}
+We will denote such a functor by
+$A \mapsto (A \to J(A))$.
+\end{definition}
+
+
+
+
+

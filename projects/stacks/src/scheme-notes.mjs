@@ -387,7 +387,7 @@ T_0=wT_1\text{ on }U_1,\\
 X\setminus Z(T_0)=D_+(T_0)
 \end{gathered}
 \]`,r``);
-models.twistCharts=twistCharts;
+Object.assign(models,{twistCharts,twistTensor});
 
 const conic=r`V_+(T_0T_2-T_1^2)`;
 const conicCurve=b('X',conic,r`A smooth conic in \(\mathbb P^2_k\), with \(k\) algebraically closed.`);
@@ -481,15 +481,172 @@ const genusCubic=model('The negative twist supplies the genus of a cubic',[
  H^1(Z,\mathcal O_Z)\cong H^2(\mathbb P^2_k,\mathcal O(-3))\cong k.
  \]
  For degree \(d\), count positive triples of exponents summing to \(d\) to get \(g=(d-1)(d-2)/2\).`);
-Object.assign(models,{tangentDivisor,conicDegree,conicIntersection,cechLine,cechPlane,genusCubic});
+const affineModule=model('A module on each standard open',[
+ b('A',r`k[z]`),
+ b('X',r`\operatorname{Spec} A`),
+ b('M',r`A/(z)`),
+ b(r`\mathcal F`,r`\widetilde M`)
+],r`\[
+\Gamma(X,\mathcal F)=k,\qquad \Gamma(D(z),\mathcal F)=0
+\]`,'');
+const closedPoint=model('The origin as a closed subscheme',[
+ b('X',r`\operatorname{Spec} k[z]`),
+ b('Z',r`\operatorname{Spec}(k[z]/(z))`),
+ b('i',r`Z\hookrightarrow X`)
+],r`\[
+i^{-1}(D(f))=\operatorname{Spec}\bigl((k[z]/(z))_f\bigr)
+\]`,r`Each affine inverse image comes from a quotient of \(k[z]_f\).`);
+const gradedPolynomial=model('Grading by total degree',[
+ b('S',r`k[T_0,T_1]`),
+ b('S_2',r`kT_0^2\oplus kT_0T_1\oplus kT_1^2`),
+ b('M',r`S(-2)`)
+],r`\[
+M_n=S_{n-2},\qquad 1\in M_2\longmapsto T_0^2\in S_2
+\]`,'');
+const projCharts=model('The two standard charts of projective space',[
+ b('S',r`k[T_0,T_1]`),
+ b('X',r`\operatorname{Proj}S=\mathbb P^1_k`),
+ b('z',r`T_1/T_0`),
+ b('w',r`T_0/T_1`)
+],r`\[
+\begin{gathered}
+D_+(T_0)=\operatorname{Spec} k[z],\\
+D_+(T_1)=\operatorname{Spec} k[w],\\
+D_+(T_0T_1)=\operatorname{Spec} k[z,z^{-1}]
+\end{gathered}
+\]`,r`On the overlap, \(w=z^{-1}\).`);
+const properLine=model('The projective line over a field',[
+ b('S',r`\operatorname{Spec}k`),
+ b('X',r`\mathbb P^1_k`),
+ b('f',r`X\to S`)
+],r`\[
+\mathbb P^1_k\times_k Y=\mathbb P^1_Y
+\]`,r`For \(k=\mathbb C\), the complex points of \(X\) form the compact Riemann sphere.`);
+const complexExample=model('Cohomology of a two-term complex',[
+ b('K^0,K^1',r`\mathbb Z,\mathbb Z`),
+ b('d^0',r`(\times n),\quad n\ge2`)
+],r`\[
+H^0(K^\bullet)=0,\quad H^1(K^\bullet)=\mathbb Z/n\mathbb Z
+\]`,'');
+const injectiveExample=model('An injective resolution over the integers',[
+ b('A',r`\mathbb Z`),
+ b('I^0',r`\mathbb Q`),
+ b('I^1',r`\mathbb Q/\mathbb Z`)
+],r`\[
+0\to\mathbb Z\to\mathbb Q\to\mathbb Q/\mathbb Z\to0
+\]`,r`Both terms \(I^0,I^1\) are divisible, hence injective.`);
+const injectivePoint=model('An injective sheaf supported at a point',[
+ b('X',r`\mathbb C`),
+ b('x',r`0`),
+ b('i_x',r`\{x\}\hookrightarrow X`),
+ b('I',r`(i_x)_*(\mathbb Q/\mathbb Z)`)
+],r`\[
+\operatorname{Hom}(\mathcal F,I)
+\cong\operatorname{Hom}(\mathcal F_x,\mathbb Q/\mathbb Z)
+\]`,r`Taking stalks is exact.`);
+const injectiveModulePoint=model('An injective skyscraper module',[
+ b('X',r`\operatorname{Spec} k`),
+ b('x',r`(0)`),
+ b(r`\mathcal I`,r`\mathcal O_X`)
+],r`\[
+\operatorname{Mod}(\mathcal O_X)\cong\operatorname{Vect}_k
+\]`,r`Every short exact sequence of vector spaces splits.`);
+const derivedExample=model('A right derived functor detects torsion',[
+ b('F',r`\operatorname{Hom}_{\mathbb Z}(\mathbb Z/n,-)`),
+ b('A',r`\mathbb Z`)
+],r`\[
+\begin{aligned}
+F(\mathbb Q)&=0,\\
+F(\mathbb Q/\mathbb Z)&\cong \mathbb Z/n,\\
+R^1F(A)&\cong \mathbb Z/n.
+\end{aligned}
+\]`,'');
+const cohomologySphere=model('A holomorphic differential class',[
+ b('X',r`\mathbb P^1(\mathbb C)`),
+ b(r`\mathcal F`,r`\Omega_X^1`)
+],r`\[
+H^0(X,\mathcal F)=0,\quad H^1(X,\mathcal F)=\mathbb C\cdot[dz/z]
+\]`,r`The class is represented on the overlap of the two coordinate charts.`);
+const cechDifferential=model('The Čech differential on three charts',[
+ b('X',r`\mathbb P^2_k`),
+ b('U_i',r`D_+(T_i)`),
+ b(r`\mathcal F`,r`\mathcal O_X(-3)`),
+ b('s_{ij}',r`\text{a section on }U_i\cap U_j`)
+],r`\[
+(\delta s)_{012}=s_{12}-s_{02}+s_{01}
+\]`,r`All terms are restricted to the triple overlap.`);
+const cechDoubleComplex=model('Restrictions in one direction, a resolution in the other',[
+ b(r`\mathcal U`,r`\{U_0,U_1\}`),
+ b(r`\mathcal I^\bullet`,r`\text{an injective resolution of }\mathcal F`),
+ b('K^{p,q}',r`\check{\mathcal C}_{\mathrm{ord}}^p(\mathcal U,\mathcal I^q)`)
+],r`\[
+\begin{aligned}
+K^{1,q}&=\mathcal I^q(U_0\cap U_1),\\
+\operatorname{Tot}(K)^1&=K^{0,1}\oplus K^{1,0}.
+\end{aligned}
+\]`,'');
+const cechSpectral=model('An acyclic cover leaves one row',[
+ b('X',r`\mathbb P^1_k`),
+ b(r`\mathcal U`,r`\{D_+(T_0),D_+(T_1)\}`),
+ b(r`\mathcal F`,r`\mathcal O_X(-2)`)
+],r`\[
+\begin{gathered}
+H^q(U_{i_0\cdots i_p},\mathcal F)=0\quad(q>0),\\
+E_2^{p,0}=\check H^p(\mathcal U,\mathcal F)
+\end{gathered}
+\]`,r`The Čech complex computes \(H^p(X,\mathcal F)\).`);
+const affinePushforward=model('View a closed subscheme from its ambient space',[
+ b('Y',r`\mathbb P^2_k`),
+ b('X',r`V_+(T_0^3+T_1^3+T_2^3)`),
+ b('f',r`X\hookrightarrow Y`),
+ b(r`\mathcal F`,r`\mathcal O_X`)
+],r`\[
+\begin{gathered}
+R^qf_*\mathcal O_X=0\quad(q>0),\\
+H^1(Y,f_*\mathcal O_X)=H^1(X,\mathcal O_X)
+\end{gathered}
+\]`,'');
+const genusExample=model('The genus of the Fermat cubic',[
+ b('k',r`\mathbb C`),
+ b('X',r`V_+(T_0^3+T_1^3+T_2^3)\subset\mathbb P^2_k`)
+],r`\[
+g=\dim_k H^1(X,\mathcal O_X)=1
+\]`,'');
+const embeddedPoint=model('An embedded point on an affine line',[
+ b('A',r`k[x,y]/(x^2,xy)`),
+ b('X',r`\operatorname{Spec}A`)
+],r`\[
+\operatorname{Ann}_A(\bar x)=(\bar x,\bar y)
+\]`,r`The origin is an associated point. The minimal prime is \((\bar x)\).`);
+Object.assign(models,{tangentDivisor,conicDegree,conicIntersection,cechLine,cechPlane,genusCubic,
+ affineModule,closedPoint,gradedPolynomial,projCharts,properLine,complexExample,injectiveExample,
+ injectivePoint,injectiveModulePoint,derivedExample,cohomologySphere,cechDifferential,cechDoubleComplex,cechSpectral,affinePushforward,genusExample,embeddedPoint});
 const groups={
+ affineModule:['modules-quasi-coherent','schemes-quasi-coherent-affine'],
+ closedPoint:['schemes-immersions','morphisms-affine'],
+ properLine:['morphisms-proper'],
+ gradedPolynomial:['algebra-graded'],
+ projCharts:['constructions-proj','constructions-projective-space'],
+ twistTensor:['constructions-quasi-coherent-proj'],
+ complexExample:['homology-complexes'],
+ injectiveExample:['homology-injectives','derived-injective-resolutions'],
+ injectivePoint:['injectives-abelian-sheaves-space'],
+ injectiveModulePoint:['injectives-sheaves-modules-space'],
+ derivedExample:['derived-right-derived-functor'],
+ cohomologySphere:['homology-cohomological-delta-functor','cohomology-cohomology-sheaves'],
+ cechDifferential:['cohomology-cech','cohomology-cech-functor','cohomology-alternating-cech'],
+ cechDoubleComplex:['homology-double-complexes'],
+ cechSpectral:['homology-spectral-sequence','homology-double-complex','cohomology-cech-cohomology-cohomology'],
+ affinePushforward:['cohomology-locality','cohomology-Leray','derived-composition-right-derived-functors'],
+ genusExample:['curves-genus','varieties-curves'],
  cechLine:['coherent-cech-quasi-coherent'],
  cechPlane:['coherent-cohomology-projective-space'],
- genusCubic:['curves-plane-curves'],
- tangentDivisor:['divisors-effective-Cartier-invertible'],
+ genusCubic:['curves-plane-curves','divisors-closed-in-relative-proj'],
+ tangentDivisor:['divisors-effective-Cartier-divisors','divisors-Noetherian-effective-Cartier','divisors-effective-Cartier-invertible'],
+ embeddedPoint:['divisors-embedded'],
  conicDegree:['varieties-divisors-curves'],
  conicIntersection:['intersection-computing-intersection-multiplicities'],
- twistCharts:['constructions-invertible-on-proj'],
+ twistCharts:['modules-invertible','constructions-invertible-on-proj','divisors-invertible-modules'],
  solutionSheaf:['modules-kernels'],connected:['topology-connected-components'],natural:['categories-opposite','categories-formal-cat-cat'],twoFibre:['categories-2-fibre-products'],over:['categories-categories-over-categories'],topology:['topology-topology-basic'],basis:['topology-bases'],irreducible:['topology-irreducible-components'],noetherian:['topology-noetherian'],compact:['topology-quasi-compact'],specialization:['topology-specialization'],
  snake:['algebra-snake'],colimits:['categories-cofinal','algebra-colimits','categories-directed-colimits','categories-posets-limits'],localization:['algebra-localization'],local:['algebra-radical','algebra-local-rings'],spectrum:['algebra-spectrum-ring'],constructible:['topology-constructible','topology-constructible-Noetherian'],
  sheaf:['sheaves-presheaves','sheaves-abelian-presheaves','sheaves-sheaves','sheaves-abelian-sheaves'],
@@ -604,6 +761,8 @@ export function sectionNote(section){
 }
 export function passageNote(section,block){
  const base=sectionNote(section);
+ if(section.slug==='cohomology-cech-cohomology-cohomology'&&block.label==='lemma-cech-spectral-sequence-application')
+  return {...cechSpectral,scope:'statement',examples:[cechSphere]};
  if(section.slug==='constructions-invertible-on-proj'){
   const examples={
    'definition-twist':{...twistCharts,examples:[{...twistSections,scope:'statement'},{...twistTensor,scope:'statement'}]},

@@ -1,31 +1,85 @@
 {
   "0BYD": {
     "title": "Genus of a plane curve",
-    "uses": ["0BYB", "01M7", "01XT", "089W", "0BY7"]
+    "uses": ["0BYB", "01M7", "01XT", "089W", "01DZ", "0BY7"]
   },
   "0BYB": {
     "title": "A plane curve is cut out by one homogeneous equation",
-    "uses": ["0BXL"]
+    "uses": ["0BXL", "0BXK", "0BXG"]
   },
   "0BXL": {
-    "title": "Equations for codimension-one subschemes of projective space"
+    "title": "Equations for codimension-one subschemes of projective space",
+    "uses": ["0BXH", "0BXJ"]
+  },
+  "0BXH": {
+    "title": "Codimension-one subschemes without embedded points give Cartier divisors",
+    "uses": ["01WR"]
+  },
+  "0BXJ": {
+    "title": "Invertible sheaves on projective space over a UFD",
+    "uses": ["01MN"]
+  },
+  "01WR": {
+    "title": "Effective Cartier divisors"
+  },
+  "0BXG": {
+    "title": "One-dimensional Cohen–Macaulay schemes and embedded points"
+  },
+  "0BXK": {
+    "title": "A closed subscheme of Proj and its homogeneous ideal",
+    "uses": ["01IO", "01M3"]
+  },
+  "01IO": {
+    "title": "Immersions of schemes",
+    "uses": ["01IJ"]
+  },
+  "01IJ": {
+    "title": "Definition of a scheme"
   },
   "01M7": {
-    "title": "Associate a sheaf to a graded module"
+    "title": "Associate a sheaf to a graded module",
+    "uses": ["01M3", "01BE"]
+  },
+  "01M3": {
+    "title": "Construct Proj from a graded ring",
+    "uses": ["00JL", "01IJ"]
+  },
+  "01BE": {
+    "title": "Quasi-coherent modules"
+  },
+  "01IA": {
+    "title": "Quasi-coherent modules on an affine scheme come from modules",
+    "uses": ["01BE"]
   },
   "01XT": {
     "title": "Cohomology of twists on projective space",
-    "uses": ["01MN", "01NF", "01XD"]
+    "uses": ["01MN", "01NF", "01NG", "01XD", "01FJ", "01FM"]
   },
   "01MN": {
     "title": "The twist of the structure sheaf",
-    "uses": ["00JL", "01M7"]
+    "uses": ["00JL", "01M7", "01CS"]
+  },
+  "01CS": {
+    "title": "Invertible modules"
   },
   "00JL": {
     "title": "Graded rings and modules"
   },
   "01NF": {
-    "title": "Projective space"
+    "title": "Projective space",
+    "uses": ["01M3"]
+  },
+  "01NG": {
+    "title": "Standard affine charts of projective space",
+    "uses": ["01NF"]
+  },
+  "01FJ": {
+    "title": "The ordered and alternating Čech complexes agree",
+    "uses": ["01EF"]
+  },
+  "01FM": {
+    "title": "The alternating and full Čech complexes compute the same groups",
+    "uses": ["01EF"]
   },
   "01XD": {
     "title": "Compute sheaf cohomology with an affine cover",
@@ -36,13 +90,84 @@
     "uses": ["01X9", "01EW"]
   },
   "01X9": {
-    "title": "The Čech complex of a standard affine cover is exact in positive degrees"
+    "title": "The Čech complex of a standard affine cover is exact in positive degrees",
+    "uses": ["01EF", "01IA"]
   },
   "01EW": {
-    "title": "Deduce cohomology vanishing from a basis of covers"
+    "title": "Deduce cohomology vanishing from a basis of covers",
+    "uses": ["01ES"]
   },
   "01ET": {
-    "title": "Compare Čech cohomology and sheaf cohomology on an acyclic cover"
+    "title": "Compare Čech cohomology and sheaf cohomology on an acyclic cover",
+    "uses": ["01ES"]
+  },
+  "01ES": {
+    "title": "The Čech-to-cohomology spectral sequence",
+    "uses": ["01EN", "015N", "01DZ"]
+  },
+  "01EN": {
+    "title": "Čech cohomology is derived from degree zero on presheaves",
+    "uses": ["01EF", "012X"]
+  },
+  "015N": {
+    "title": "The Grothendieck spectral sequence for composed functors",
+    "uses": ["015B", "011M"]
+  },
+  "012X": {
+    "title": "Spectral sequences of a double complex",
+    "uses": ["0FNB", "011M"]
+  },
+  "0FNB": {
+    "title": "Double complexes and total complexes",
+    "uses": ["010V"]
+  },
+  "011M": {
+    "title": "Spectral sequences"
+  },
+  "01EF": {
+    "title": "The Čech complex of an open cover",
+    "uses": ["010V"]
+  },
+  "01DZ": {
+    "title": "Define sheaf cohomology and higher direct images",
+    "uses": ["015B", "010Q", "01DG", "01DI"]
+  },
+  "015B": {
+    "title": "Higher right derived functors and their long exact sequence",
+    "uses": ["05TI", "0117"]
+  },
+  "05TI": {
+    "title": "Construct a right derived functor using injectives",
+    "uses": ["013K"]
+  },
+  "013K": {
+    "title": "Existence of injective resolutions",
+    "uses": ["0138"]
+  },
+  "0138": {
+    "title": "Enough injectives",
+    "uses": ["0135"]
+  },
+  "0135": {
+    "title": "Injective objects"
+  },
+  "010Q": {
+    "title": "Cohomological delta-functors"
+  },
+  "0117": {
+    "title": "Long exact sequence of cohomology of complexes",
+    "uses": ["010V"]
+  },
+  "010V": {
+    "title": "Complexes and their cohomology"
+  },
+  "01DG": {
+    "title": "Abelian sheaves have enough injectives",
+    "uses": ["0138"]
+  },
+  "01DI": {
+    "title": "Sheaves of modules have enough injectives",
+    "uses": ["0138"]
   },
   "089W": {
     "title": "Compute cohomology after affine pushforward",
@@ -50,14 +175,31 @@
   },
   "01XC": {
     "title": "Higher direct images vanish for affine morphisms",
-    "uses": ["01XB"]
+    "uses": ["01S6", "01E4", "01XB"]
+  },
+  "01S6": {
+    "title": "Affine morphisms"
+  },
+  "01E4": {
+    "title": "Higher direct images from cohomology on inverse images",
+    "uses": ["01DZ"]
   },
   "01F4": {
-    "title": "Use the Leray spectral sequence when higher direct images vanish"
+    "title": "Use the Leray spectral sequence when higher direct images vanish",
+    "uses": ["01F2"]
+  },
+  "01F2": {
+    "title": "The Leray spectral sequence",
+    "uses": ["01DZ", "015N"]
   },
   "0BY7": {
     "title": "Genus of a proper curve",
-    "number": "53.8.1",
-    "kind": "definition"
+    "uses": ["01W1", "0A23", "01DZ"]
+  },
+  "01W1": {
+    "title": "Proper morphisms"
+  },
+  "0A23": {
+    "title": "Curves over a field"
   }
 }

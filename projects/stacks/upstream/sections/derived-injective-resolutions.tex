@@ -1,0 +1,467 @@
+\section{Injective resolutions}
+\label{section-injective-resolutions}
+
+\noindent
+In this section we prove some lemmas regarding the existence
+of injective resolutions in abelian categories having enough injectives.
+
+\begin{definition}
+\label{definition-injective-resolution}
+Let $\mathcal{A}$ be an abelian category.
+Let $A \in \Ob(\mathcal{A})$.
+An {\it injective resolution of $A$} is a complex
+$I^\bullet$ together with a map $A \to I^0$ such
+that:
+\begin{enumerate}
+\item We have $I^n = 0$ for $n < 0$.
+\item Each $I^n$ is an injective object of $\mathcal{A}$.
+\item The map $A \to I^0$ is an isomorphism onto $\Ker(d^0)$.
+\item We have $H^i(I^\bullet) = 0$ for $i > 0$.
+\end{enumerate}
+Hence $A[0] \to I^\bullet$ is a quasi-isomorphism.
+In other words the complex
+$$
+\ldots \to 0 \to A \to I^0 \to I^1 \to \ldots
+$$
+is acyclic.
+Let $K^\bullet$ be a complex in $\mathcal{A}$.
+An {\it injective resolution of $K^\bullet$} is a complex
+$I^\bullet$ together with a map $\alpha : K^\bullet \to I^\bullet$
+of complexes such that
+\begin{enumerate}
+\item We have $I^n = 0$ for $n \ll 0$, i.e., $I^\bullet$ is bounded below.
+\item Each $I^n$ is an injective object of $\mathcal{A}$.
+\item The map $\alpha : K^\bullet \to I^\bullet$ is a
+quasi-isomorphism.
+\end{enumerate}
+\end{definition}
+
+\noindent
+In other words an injective resolution $K^\bullet \to I^\bullet$
+gives rise to a diagram
+$$
+\xymatrix{
+\ldots \ar[r] & K^{n - 1} \ar[d] \ar[r] & K^n \ar[d] \ar[r] &
+K^{n + 1} \ar[d] \ar[r] & \ldots \\
+\ldots \ar[r] & I^{n - 1} \ar[r] & I^n \ar[r] & I^{n + 1} \ar[r] & \ldots
+}
+$$
+which induces an isomorphism on cohomology objects in each degree.
+An injective resolution of an object $A$ of $\mathcal{A}$
+is almost the same thing as an injective resolution of
+the complex $A[0]$.
+
+\begin{lemma}
+\label{lemma-cohomology-bounded-below}
+Let $\mathcal{A}$ be an abelian category.
+Let $K^\bullet$ be a complex of $\mathcal{A}$.
+\begin{enumerate}
+\item If $K^\bullet$ has an injective resolution then
+$H^n(K^\bullet) = 0$ for $n \ll 0$.
+\item If $H^n(K^\bullet) = 0$ for all $n \ll 0$ then there
+exists a quasi-isomorphism $K^\bullet \to L^\bullet$
+with $L^\bullet$ bounded below.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Omitted. For the second statement use
+$L^\bullet = \tau_{\geq n}K^\bullet$ for
+some $n \ll 0$. See
+Homology, Section \ref{homology-section-truncations}
+for the definition of the truncation $\tau_{\geq n}$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-injective-resolutions-exist}
+Let $\mathcal{A}$ be an abelian category.
+Assume $\mathcal{A}$ has enough injectives.
+\begin{enumerate}
+\item Any object of $\mathcal{A}$ has an injective resolution.
+\item If $H^n(K^\bullet) = 0$ for all $n \ll 0$ then
+$K^\bullet$ has an injective resolution.
+\item If $K^\bullet$ is a complex with $K^n = 0$ for $n < a$, then
+there exists an injective resolution $\alpha : K^\bullet \to I^\bullet$
+with $I^n = 0$ for $n < a$ such that each $\alpha^n : K^n \to I^n$ is
+injective.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Proof of (1). First choose an injection $A \to I^0$ of $A$ into an
+injective object of $\mathcal{A}$. Next, choose an injection
+$I_0/A \to I^1$ into an injective object of $\mathcal{A}$.
+Denote $d^0$ the induced map $I^0 \to I^1$.
+Next, choose an injection $I^1/\Im(d^0) \to I^2$ into
+an injective object of $\mathcal{A}$. Denote $d^1$ the induced
+map $I^1 \to I^2$. And so on.
+By Lemma \ref{lemma-cohomology-bounded-below} part (2) follows from part (3).
+Part (3) is a special case of
+Lemma \ref{lemma-subcategory-right-resolution}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-acyclic-is-zero}
+Let $\mathcal{A}$ be an abelian category.
+Let $K^\bullet$ be an acyclic complex.
+Let $I^\bullet$ be bounded below and consisting of injective objects.
+Any morphism $K^\bullet \to I^\bullet$ is homotopic to zero.
+\end{lemma}
+
+\begin{proof}
+Let $\alpha : K^\bullet \to I^\bullet$ be a morphism of
+complexes. Note that $\alpha^j = 0$ for $j \ll 0$ as $I^\bullet$
+is bounded below. In particular, we can find an $n$ such that
+there exist $h^j :  K^j \to I^{j - 1}$ for $j \leq n$ such that
+$\alpha^j = d^{j - 1} \circ h^j + h^{j + 1} \circ d^j$
+for $j < n$. We will show that there exists a morphism
+$h^{n + 1} : K^{n + 1} \to I^n$
+such that $\alpha^n = d^{n - 1} \circ h^n + h^{n + 1} \circ d^n$.
+Note that
+\begin{align*}
+(\alpha^n - d^{n - 1} \circ h^{n - 1}) \circ d^{n - 1}
+& =
+\alpha^{n - 1} \circ d^{n - 1} - d^{n - 1} \circ h^{n - 1} \circ d^{n - 1} \\
+& =
+d^{n - 1} \circ \alpha^{n - 1} - d^{n - 1} \circ h^{n - 1} \circ d^{n - 1} \\
+& =
+d^{n - 1} \circ (d^{n - 2} \circ h^{n - 1} + h^n \circ d^{n - 1})
+- d^{n - 1} \circ h^{n - 1} \circ d^{n - 1} \\
+& = 0
+\end{align*}
+Since $K^\bullet$ is acyclic we have
+$d^{n - 1}(K^{n - 1}) = \Ker(K^n \to K^{n + 1})$.
+Hence we can think of $\alpha^n -  d^{n - 1} \circ h^{n - 1}$
+as a map into $I^n$ defined on the subobject $\Im(K^n \to K^{n + 1})$
+of $K^{n + 1}$. By injectivity of the object $I^n$ we can extend this to
+a map $h^{n + 1} : K^{n + 1} \to I^n$. With this choice the reader
+checks that we indeed have
+$\alpha^n = d^{n - 1} \circ h^n + h^{n + 1} \circ d^n$.
+
+\medskip\noindent
+By induction on $n$ we conclude we can find $h  = (h^j)_{j \in \mathbf{Z}}$
+which forms a homotopy between $\alpha$ and $0$ as desired.
+\end{proof}
+
+\begin{remark}
+\label{remark-easier-proofs}
+Let $\mathcal{A}$ be an abelian category.
+Using the fact that $K(\mathcal{A})$ is a triangulated category we
+may use
+Lemma \ref{lemma-acyclic-is-zero}
+to obtain proofs of some of the lemmas below which are usually proved by
+chasing through diagrams.
+Namely, suppose that $\alpha : K^\bullet \to L^\bullet$ is a quasi-isomorphism
+of complexes. Then
+$$
+(K^\bullet, L^\bullet, C(\alpha)^\bullet, \alpha, i, -p)
+$$
+is a distinguished triangle in $K(\mathcal{A})$
+(Lemma \ref{lemma-the-same-up-to-isomorphisms})
+and $C(\alpha)^\bullet$ is an acyclic complex
+(Lemma \ref{lemma-acyclic}).
+Next, let $I^\bullet$ be a bounded below complex of injective objects. Then
+$$
+\xymatrix{
+\Hom_{K(\mathcal{A})}(C(\alpha)^\bullet, I^\bullet) \ar[r] &
+\Hom_{K(\mathcal{A})}(L^\bullet, I^\bullet) \ar[r] &
+\Hom_{K(\mathcal{A})}(K^\bullet, I^\bullet) \ar[lld] \\
+\Hom_{K(\mathcal{A})}(C(\alpha)^\bullet[-1], I^\bullet)
+}
+$$
+is an exact sequence of abelian groups, see
+Lemma \ref{lemma-representable-homological}.
+At this point
+Lemma \ref{lemma-acyclic-is-zero}
+guarantees that the outer two groups are zero and hence
+$\Hom_{K(\mathcal{A})}(L^\bullet, I^\bullet) =
+\Hom_{K(\mathcal{A})}(K^\bullet, I^\bullet)$.
+\end{remark}
+
+\begin{lemma}
+\label{lemma-morphisms-lift}
+Let $\mathcal{A}$ be an abelian category.
+Consider a solid diagram
+$$
+\xymatrix{
+K^\bullet \ar[r]_\alpha \ar[d]_\gamma & L^\bullet \ar@{-->}[dl]^\beta \\
+I^\bullet
+}
+$$
+where $I^\bullet$ is bounded below and consists of injective
+objects, and $\alpha$ is a quasi-isomorphism.
+\begin{enumerate}
+\item There exists a map of complexes $\beta$ making the diagram
+commute up to homotopy.
+\item If $\alpha$ is injective in every degree
+then we can find a $\beta$ which makes the diagram commute.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+The ``correct'' proof of part (1) is explained in
+Remark \ref{remark-easier-proofs}.
+We also give a direct proof here.
+
+\medskip\noindent
+We first show that (2) implies (1). Namely, let
+$\tilde \alpha : K \to \tilde L^\bullet$, $\pi$, $s$ be as in
+Lemma \ref{lemma-make-injective}. Since $\tilde \alpha$ is injective
+by (2) there exists a morphism $\tilde \beta : \tilde L^\bullet \to I^\bullet$
+such that $\gamma = \tilde \beta \circ \tilde \alpha$. Set
+$\beta = \tilde \beta \circ s$. Then we have
+$$
+\beta \circ \alpha
+=
+\tilde \beta \circ s \circ \pi \circ \tilde \alpha
+\sim
+\tilde \beta \circ \tilde \alpha
+=
+\gamma
+$$
+as desired.
+
+\medskip\noindent
+Assume that $\alpha : K^\bullet \to L^\bullet$ is injective.
+Suppose we have already defined $\beta$ in all degrees
+$\leq n - 1$ compatible with differentials and such that
+$\gamma^j = \beta^j \circ \alpha^j$ for all $j \leq n - 1$.
+Consider the commutative solid diagram
+$$
+\xymatrix{
+K^{n - 1} \ar[r] \ar@/_2pc/[dd]_\gamma \ar[d]^\alpha &
+K^n \ar@/^2pc/[dd]^\gamma \ar[d]^\alpha \\
+L^{n - 1} \ar[r] \ar[d]^\beta &
+L^n \ar@{-->}[d] \\
+I^{n - 1} \ar[r] &
+I^n
+}
+$$
+Thus we see that the dotted arrow is prescribed on the subobjects
+$\alpha(K^n)$ and $d^{n - 1}(L^{n - 1})$. Moreover, these two arrows
+agree on $\alpha(d^{n - 1}(K^{n - 1}))$. Hence if
+\begin{equation}
+\label{equation-qis}
+\alpha(d^{n - 1}(K^{n - 1}))
+=
+\alpha(K^n) \cap d^{n - 1}(L^{n - 1})
+\end{equation}
+then these morphisms glue to a morphism
+$\alpha(K^n) + d^{n - 1}(L^{n - 1}) \to I^n$ and, using the injectivity
+of $I^n$, we can extend this to a morphism from all of $L^n$ into $I^n$.
+After this by induction we get the morphism $\beta$ for all $n$ simultaneously
+(note that we can set $\beta^n = 0$ for all $n \ll 0$ since $I^\bullet$
+is bounded below -- in this way starting the induction).
+
+\medskip\noindent
+It remains to prove the equality (\ref{equation-qis}).
+The reader is encouraged to argue this for themselves with a suitable
+diagram chase. Nonetheless here is our argument.
+Note that the inclusion
+$\alpha(d^{n - 1}(K^{n - 1})) \subset \alpha(K^n) \cap d^{n - 1}(L^{n - 1})$
+is obvious. Take an object $T$ of $\mathcal{A}$ and a morphism
+$x : T \to L^n$ whose image is contained in the subobject
+$\alpha(K^n) \cap d^{n - 1}(L^{n - 1})$.
+Since $\alpha$ is injective we see that $x = \alpha \circ x'$ for
+some $x' : T \to K^n$. Moreover, since $x$ lies in $d^{n - 1}(L^{n - 1})$
+we see that $d^n \circ x = 0$. Hence using injectivity of $\alpha$ again
+we see that $d^n \circ x' = 0$. Thus $x'$ gives a morphism
+$[x'] : T \to H^n(K^\bullet)$. On the other hand the corresponding
+map $[x] : T \to H^n(L^\bullet)$ induced by $x$ is zero by assumption.
+Since $\alpha$ is a quasi-isomorphism we conclude that $[x'] = 0$.
+This of course means exactly that the image of $x'$ is
+contained in $d^{n - 1}(K^{n - 1})$ and we win.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-morphisms-equal-up-to-homotopy}
+Let $\mathcal{A}$ be an abelian category.
+Consider a solid diagram
+$$
+\xymatrix{
+K^\bullet \ar[r]_\alpha \ar[d]_\gamma & L^\bullet \ar@{-->}[dl]^{\beta_i} \\
+I^\bullet
+}
+$$
+where $I^\bullet$ is bounded below and consists of injective
+objects, and $\alpha$ is a quasi-isomorphism.
+Any two morphisms $\beta_1, \beta_2$ making the diagram commute
+up to homotopy are homotopic.
+\end{lemma}
+
+\begin{proof}
+This follows from
+Remark \ref{remark-easier-proofs}.
+We also give a direct argument here.
+
+\medskip\noindent
+Let $\tilde \alpha : K \to \tilde L^\bullet$, $\pi$, $s$ be as in
+Lemma \ref{lemma-make-injective}. If we can show that $\beta_1 \circ\pi$
+is homotopic to $\beta_2 \circ \pi$, then we deduce that
+$\beta_1 \sim \beta_2$ because $\pi \circ s$ is the identity.
+Hence we may assume $\alpha^n : K^n \to L^n$ is the
+inclusion of a direct summand for all $n$. Thus we get a
+short exact sequence of complexes
+$$
+0 \to K^\bullet \to L^\bullet \to M^\bullet \to 0
+$$
+which is termwise split and such that $M^\bullet$ is acyclic.
+We choose splittings $L^n = K^n \oplus M^n$, so we have
+$\beta_i^n : K^n \oplus M^n \to I^n$ and $\gamma^n : K^n \to I^n$.
+In this case the condition on $\beta_i$ is that there are morphisms
+$h_i^n : K^n \to I^{n - 1}$ such that
+$$
+\gamma^n - \beta_i^n|_{K^n} = d \circ h_i^n + h_i^{n + 1} \circ d
+$$
+Thus we see that
+$$
+\beta_1^n|_{K^n} - \beta_2^n|_{K^n}
+=
+d \circ (h_1^n - h_2^n) + (h_1^{n + 1} - h_2^{n + 1}) \circ d
+$$
+Consider the map $h^n : K^n \oplus M^n \to I^{n - 1}$ which
+equals $h_1^n - h_2^n$ on the first summand and zero on the second.
+Then we see that
+$$
+\beta_1^n - \beta_2^n
+-
+(d \circ h^n + h^{n + 1}) \circ d
+$$
+is a morphism of complexes $L^\bullet \to I^\bullet$
+which is identically zero on the subcomplex $K^\bullet$.
+Hence it factors as $L^\bullet \to M^\bullet \to I^\bullet$.
+Thus the result of the lemma follows from Lemma \ref{lemma-acyclic-is-zero}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-morphisms-into-injective-complex}
+Let $\mathcal{A}$ be an abelian category.
+Let $I^\bullet$ be bounded below complex consisting of injective
+objects. Let $L^\bullet \in K(\mathcal{A})$. Then
+$$
+\Mor_{K(\mathcal{A})}(L^\bullet, I^\bullet)
+=
+\Mor_{D(\mathcal{A})}(L^\bullet, I^\bullet).
+$$
+\end{lemma}
+
+\begin{proof}
+Let $a$ be an element of the right hand side.
+We may represent $a = \gamma\alpha^{-1}$ where
+$\alpha : K^\bullet \to L^\bullet$
+is a quasi-isomorphism and $\gamma : K^\bullet \to I^\bullet$ is a map
+of complexes. By
+Lemma \ref{lemma-morphisms-lift}
+we can find a morphism $\beta : L^\bullet \to I^\bullet$ such that
+$\beta \circ \alpha$ is homotopic to $\gamma$. This proves that the
+map is surjective. Let $b$ be an element of the left hand side
+which maps to zero in the right hand side. Then $b$ is the homotopy class
+of a morphism $\beta : L^\bullet \to I^\bullet$ such that there exists a
+quasi-isomorphism $\alpha : K^\bullet \to L^\bullet$ with
+$\beta  \circ \alpha$ homotopic to zero. Then
+Lemma \ref{lemma-morphisms-equal-up-to-homotopy}
+shows that $\beta$ is homotopic to zero also, i.e., $b = 0$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-injective-resolution-ses}
+Let $\mathcal{A}$ be an abelian category.
+Assume $\mathcal{A}$ has enough injectives.
+For any short exact sequence
+$0 \to A^\bullet \to B^\bullet \to C^\bullet \to 0$
+of $\text{Comp}^{+}(\mathcal{A})$ there exists a
+commutative diagram in $\text{Comp}^{+}(\mathcal{A})$
+$$
+\xymatrix{
+0 \ar[r] &
+A^\bullet \ar[r] \ar[d] &
+B^\bullet \ar[r] \ar[d] &
+C^\bullet \ar[r] \ar[d] &
+0 \\
+0 \ar[r] &
+I_1^\bullet \ar[r] &
+I_2^\bullet \ar[r] &
+I_3^\bullet \ar[r] &
+0
+}
+$$
+where the vertical arrows are injective resolutions and
+the rows are short exact sequences of complexes. Additionally,
+\begin{enumerate}
+\item given any injective resolution $A^\bullet \to I^\bullet$
+we may assume $I_1^\bullet = I^\bullet$,
+\item if $A^n = B^n = C^n = 0$ for $n < 0$, then we may
+assume $I_j^n = 0$ for $n < 0$,
+\item we can combine (1) and (2) if also $I^n = 0$ for $n < 0$, and
+\item add more here.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Step 1. Choose an injective resolution $A^\bullet \to I^\bullet$ (see
+Lemma \ref{lemma-injective-resolutions-exist}) or use the given one.
+Recall that $\text{Comp}^{+}(\mathcal{A})$ is an
+abelian category, see
+Homology, Lemma \ref{homology-lemma-cat-cochain-abelian}.
+Hence we may form the pushout along
+the map $A^\bullet \to I^\bullet$ to get
+$$
+\xymatrix{
+0 \ar[r] &
+A^\bullet \ar[r] \ar[d] &
+B^\bullet \ar[r] \ar[d] &
+C^\bullet \ar[r] \ar[d] &
+0 \\
+0 \ar[r] &
+I^\bullet \ar[r] &
+E^\bullet \ar[r] &
+C^\bullet \ar[r] &
+0
+}
+$$
+Because of the $5$-lemma and the last assertion of
+Homology, Lemma \ref{homology-lemma-long-exact-sequence-cochain}
+the map $B^\bullet \to E^\bullet$ is a quasi-isomorphism.
+Note that the lower short exact sequence is termwise split, see
+Homology, Lemma \ref{homology-lemma-characterize-injectives}.
+Hence it suffices to prove the lemma when
+$0 \to A^\bullet \to B^\bullet \to C^\bullet \to 0$ is
+termwise split.
+
+\medskip\noindent
+Step 2. Choose splittings. In other words, write
+$B^n = A^n \oplus C^n$. Denote $\delta : C^\bullet \to A^\bullet[1]$
+the morphism as in
+Homology, Lemma \ref{homology-lemma-ses-termwise-split-cochain}.
+Choose injective resolutions $f_1 : A^\bullet \to I_1^\bullet$
+and $f_3 : C^\bullet \to I_3^\bullet$. (If $A^\bullet$ is a complex of
+injectives, then use $I_1^\bullet = A^\bullet$. If $A^n = C^n = 0$ for
+$n < 0$, then pick these such that $I_1^n = I_3^n = 0$ for $n < 0$, see
+Lemma \ref{lemma-injective-resolutions-exist}.)
+We may assume $f_3$ is injective in
+every degree. By Lemma \ref{lemma-morphisms-lift} we may find
+a morphism $\delta' : I_3^\bullet \to I_1^\bullet[1]$ such
+that $\delta' \circ f_3 = f_1[1] \circ \delta$ (equality of
+morphisms of complexes). Set $I_2^n = I_1^n \oplus I_3^n$.
+Define
+$$
+d_{I_2}^n =
+\left(
+\begin{matrix}
+d_{I_1}^n & (\delta')^n \\
+0 & d_{I_3}^n
+\end{matrix}
+\right)
+$$
+and define the maps $B^n \to I_2^n$ to be given as the
+sum of the maps $A^n \to I_1^n$ and $C^n \to I_3^n$.
+Everything is clear.
+\end{proof}
+
+
+
+
+
+
+
+

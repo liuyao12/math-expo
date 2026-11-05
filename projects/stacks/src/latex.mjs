@@ -21,6 +21,8 @@ export function createRenderer(root, options={}) {
   let mathCount=0;
   const macros={ '\\Spec':'\\operatorname{Spec}', '\\Mor':'\\operatorname{Mor}', '\\Sh':'\\mathit{Sh}', '\\Sch':'\\mathit{Sch}' };
   macros['\\SheafHom']='\\mathop{\\mathcal{H}\\!\\mathit{om}}\\nolimits';
+  macros['\\SheafExt']='\\mathop{\\mathcal{E}\\!\\mathit{xt}}\\nolimits';
+  macros['\\QCoh']='\\mathit{QCoh}';
   for(const name of ['Hom','Ob','colim','Ker','Coker','Coim','Im','Ext','Pic'])macros['\\'+name]='\\operatorname{'+name+'}';
   const braces=(s,start)=>{
     if(s[start]!=='{')throw Error('Expected opening brace: '+s.slice(start,start+40));
@@ -65,6 +67,7 @@ export function createRenderer(root, options={}) {
     }
 
     tex=tex.replace(/\\cite(?:\[([^\]]+)\])?\{([^}]+)\}/g,(_,note,key)=>hold(`<a class="bibliography-ref" href="https://stacks.math.columbia.edu/bibliography#${escapeHTML(key)}" target="_blank" rel="noopener">[${escapeHTML(key)}${note?', '+escapeHTML(note):''}]</a>`));
+    tex=tex.replace(/\\href\{(https?:\/\/[^{}]+)\}\{([^{}]+)\}/g,(_,url,label)=>hold(`<a href="${escapeHTML(url)}" target="_blank" rel="noopener">${inline(label,chapter)}</a>`));
     tex=tex.replace(/\\ref\{([^}]+)\}/g,(_,label)=>hold(reference(label,chapter)));
     tex=tex.replace(/\\label\{([^}]+)\}/g,(_,label)=>hold(anchors('\\label{'+label+'}',chapter)));
     tex=tex.replace(/\\'\{?([A-Za-z])\}?/g,(_,letter)=>(letter+'\u0301').normalize('NFC'));
@@ -127,7 +130,8 @@ export function createRenderer(root, options={}) {
       if(match[1]==='proof'){
         let target=blocks.at(-1);
         if(target?.kind==='prose'){const interstitial=blocks.pop();target=blocks.at(-1);if(!target||target.kind==='prose')throw Error('Unattached proof');target.html+=interstitial.html;}
-        if(!target)throw Error('Unattached proof');target.proof=body(content,section.chapter);
+        if(!target)throw Error('Unattached proof');
+        (target.proofs??=[]).push({title:match[2],html:body(content,section.chapter)});
       }else{
         const label=content.match(/\\label\{([^}]+)\}/)?.[1];
         const ref=references[section.chapter+'-'+label];if(!ref)throw Error('Missing tag for '+label);

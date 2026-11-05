@@ -1,0 +1,365 @@
+\section{Curves}
+\label{section-curves}
+
+\noindent
+In the Stacks project we will use the following as our definition
+of a curve.
+
+\begin{definition}
+\label{definition-curve}
+Let $k$ be a field. A {\it curve} is a variety of dimension $1$ over $k$.
+\end{definition}
+
+\noindent
+Two standard examples of curves over $k$ are the affine line $\mathbf{A}^1_k$
+and the projective line $\mathbf{P}^1_k$. The scheme $X = \Spec(k[x, y]/(f))$
+is a curve if and only if $f \in k[x, y]$ is irreducible.
+
+\medskip\noindent
+Our definition of a curve has the same problems as our definition of a
+variety, see the discussion following Definition \ref{definition-variety}.
+Moreover, it means that every curve comes with a specified field of definition.
+For example $X = \Spec(\mathbf{C}[x])$ is a curve over $\mathbf{C}$
+but we can also view it as a curve over $\mathbf{R}$. The scheme
+$\Spec(\mathbf{Z})$ isn't a curve, even though the schemes $\Spec(\mathbf{Z})$
+and $\mathbf{A}^1_{\mathbf{F}_p}$ behave similarly in many respects.
+
+\begin{lemma}
+\label{lemma-proper-minus-point}
+Let $X$ be a separated, irreducible scheme of dimension $> 0$ over a field $k$.
+Let $x \in X$ be a closed point. The open subscheme $X \setminus \{x\}$
+is not proper over $k$.
+\end{lemma}
+
+\begin{proof}
+Since $X$ is irreducible, $U = X \setminus \{x\}$ is not closed in $X$.
+In particular, the immersion $U \to X$ is not proper.
+By Morphisms, Lemma \ref{morphisms-lemma-image-proper-scheme-closed}
+(here we use $X$ is separated), $U \to \Spec(k)$ is not proper either.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-dim-1-quasi-projective}
+Let $X$ be a separated finite type scheme over a field $k$.
+If $\dim(X) \leq 1$ then $X$ is H-quasi-projective over $k$.
+\end{lemma}
+
+\begin{proof}
+By Proposition \ref{proposition-dim-1-noetherian-separated-has-ample}
+the scheme $X$ has an ample invertible sheaf $\mathcal{L}$.
+By Morphisms, Lemma \ref{morphisms-lemma-quasi-projective-finite-type-over-S}
+we see that $X$ is isomorphic to a locally
+closed subscheme of $\mathbf{P}^n_k$ over $\Spec(k)$. This is
+the definition of being H-quasi-projective over $k$, see
+Morphisms, Definition \ref{morphisms-definition-quasi-projective}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-dim-1-proper-projective}
+Let $X$ be a proper scheme over a field $k$.
+If $\dim(X) \leq 1$ then $X$ is H-projective over $k$.
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-dim-1-quasi-projective} we see that $X$ is a
+locally closed subscheme of $\mathbf{P}^n_k$ for some field $k$.
+Since $X$ is proper over $k$ it follows that $X$ is a closed subscheme
+of $\mathbf{P}^n_k$
+(Morphisms, Lemma \ref{morphisms-lemma-image-proper-scheme-closed}).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-dim-1-projective-completion}
+Let $X$ be a separated scheme of finite type over $k$.
+If $\dim(X) \leq 1$, then there exists an open immersion
+$j : X \to \overline{X}$ with the following properties
+\begin{enumerate}
+\item $\overline{X}$ is H-projective over $k$, i.e., $\overline{X}$
+is a closed subscheme of $\mathbf{P}^d_k$ for some $d$,
+\item $j(X) \subset \overline{X}$ is dense and scheme
+theoretically dense,
+\item $\overline{X} \setminus X = \{x_1, \ldots, x_n\}$
+for some closed points $x_i \in \overline{X}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-dim-1-quasi-projective} we may assume $X$ is a
+locally closed subscheme of $\mathbf{P}^d_k$ for some $d$. Let
+$\overline{X} \subset \mathbf{P}^d_k$ be the scheme theoretic image
+of $X \to \mathbf{P}^d_k$, see Morphisms, Definition
+\ref{morphisms-definition-scheme-theoretic-image}.
+The description in
+Morphisms, Lemma \ref{morphisms-lemma-quasi-compact-immersion}
+gives properties (1) and (2).
+Then $\dim(X) = 1 \Rightarrow \dim(\overline{X}) = 1$ for example by
+looking at generic points, see
+Lemma \ref{lemma-dimension-locally-algebraic}.
+As $\overline{X}$ is Noetherian, it then
+follows that $\overline{X} \setminus X = \{x_1, \ldots, x_n\}$
+is a finite set of closed points.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-reduced-dim-1-projective-completion}
+Let $X$ be a separated scheme of finite type over $k$.
+If $X$ is reduced and $\dim(X) \leq 1$, then there exists
+an open immersion $j : X \to \overline{X}$ such that
+\begin{enumerate}
+\item $\overline{X}$ is H-projective over $k$, i.e., $\overline{X}$
+is a closed subscheme of $\mathbf{P}^d_k$ for some $d$,
+\item $j(X) \subset \overline{X}$ is dense and scheme
+theoretically dense,
+\item $\overline{X} \setminus X = \{x_1, \ldots, x_n\}$
+for some closed points $x_i \in \overline{X}$,
+\item the local rings $\mathcal{O}_{\overline{X}, x_i}$
+are discrete valuation rings for $i = 1, \ldots, n$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let $j : X \to \overline{X}$ be as in
+Lemma \ref{lemma-dim-1-projective-completion}.
+Consider the normalization $X'$ of $\overline{X}$ in
+$X$. By Lemma \ref{lemma-relative-normalization-finite}
+the morphism $X' \to \overline{X}$ is finite.
+By Morphisms, Lemma \ref{morphisms-lemma-finite-projective}
+$X' \to \overline{X}$ is projective. By Morphisms, Lemma
+\ref{morphisms-lemma-projective-over-quasi-projective-is-H-projective}
+we see that $X' \to \overline{X}$ is H-projective.
+By Morphisms, Lemma \ref{morphisms-lemma-H-projective-composition}
+we see that $X' \to \Spec(k)$ is H-projective.
+Let $\{x'_1, \ldots, x'_m\} \subset X'$ be the inverse
+image of $\{x_1, \ldots, x_n\} = \overline{X} \setminus X$.
+Then $\dim(\mathcal{O}_{X', x'_i}) = 1$ for all $1 \leq i \leq m$.
+Hence the local rings $\mathcal{O}_{X', x'}$
+are discrete valuation rings by
+Morphisms, Lemma
+\ref{morphisms-lemma-relative-normalization-normal-codim-1}.
+Then $X \to X'$ and $\{x'_1, \ldots, x'_m\}$ is as desired.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-dim-1-projective-completion-after-insep}
+Let $X$ be a separated scheme of finite type over $k$ with $\dim(X) \leq 1$.
+Then there exists a commutative diagram
+$$
+\xymatrix{
+\overline{Y}_1 \amalg \ldots \amalg \overline{Y}_n \ar[rd] &
+Y_1 \amalg \ldots \amalg Y_n \ar[r]_-\nu \ar[d] \ar[l]^j &
+X_{k'} \ar[r] \ar[d] &
+X \ar[d]^f \\
+& \Spec(k'_1) \amalg \ldots \amalg \Spec(k'_n) \ar[r] &
+\Spec(k') \ar[r] &
+\Spec(k)
+}
+$$
+of schemes with the following properties:
+\begin{enumerate}
+\item $k'/k$ is a finite purely inseparable extension of fields,
+\item $\nu$ is the normalization of $X_{k'}$,
+\item $j$ is an open immersion with dense image,
+\item $k'_i/k'$ is a finite separable extension for $i = 1, \ldots, n$,
+\item $\overline{Y}_i$ is smooth, projective, geometrically irreducible
+dimension $\leq 1$ over $k'_i$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+As we may replace $X$ by its reduction, we may and do assume $X$ is reduced.
+Choose $X \to \overline{X}$ as in
+Lemma \ref{lemma-reduced-dim-1-projective-completion}.
+If we can show the lemma for $\overline{X}$, then the lemma follows
+for $X$ (details omitted).
+Thus we may and do assume $X$ is projective.
+
+\medskip\noindent
+Choose $k'/k$ finite purely inseparable such that the normalization of
+$X_{k'}$ is geometrically normal over $k'$, see
+Lemma \ref{lemma-finite-extension-geometrically-normal}.
+Denote $Y = (X_{k'})^\nu$ the normalization; for properties
+of the normalization, see Section \ref{section-normalization}.
+Then $Y$ is geometrically regular as normal and regular are the same
+in dimension $\leq 1$, see
+Properties, Lemma \ref{properties-lemma-normal-dimension-1-regular}.
+Hence $Y$ is smooth over $k'$ by
+Lemma \ref{lemma-geometrically-regular-smooth}.
+Let $Y = Y_1 \amalg \ldots \amalg Y_n$ be the decomposition
+of $Y$ into irreducible components.
+Set $k'_i = \Gamma(Y_i, \mathcal{O}_{Y_i})$.
+These are finite separable extensions of $k'$ by
+Lemma \ref{lemma-proper-geometrically-reduced-global-sections}.
+The proof is finished by Lemma \ref{lemma-baby-stein}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-regular-point-on-curve}
+Let $k$ be a field. Let $X$ be a curve over $k$. Let $x \in X$ be a closed
+point. We think of $x$ as a (reduced) closed subscheme of $X$ with sheaf
+of ideals $\mathcal{I}$. The following are equivalent
+\begin{enumerate}
+\item $\mathcal{O}_{X, x}$ is regular,
+\item $\mathcal{O}_{X, x}$ is normal,
+\item $\mathcal{O}_{X, x}$ is a discrete valuation ring,
+\item $\mathcal{I}$ is an invertible $\mathcal{O}_X$-module,
+\item $x$ is an effective Cartier divisor on $X$.
+\end{enumerate}
+If $k$ is perfect or if $\kappa(x)$ is separable over $k$,
+these are also equivalent to
+\begin{enumerate}
+\item[(6)] $X \to \Spec(k)$ is smooth at $x$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Since $X$ is a curve, the local ring $\mathcal{O}_{X, x}$ is a Noetherian
+local domain of dimension $1$ (Lemma \ref{lemma-dimension-locally-algebraic}).
+Parts (4) and (5) are equivalent by definition and are equivalent to
+$\mathcal{I}_x = \mathfrak m_x \subset \mathcal{O}_{X, x}$ having one generator
+(Divisors, Lemma \ref{divisors-lemma-effective-Cartier-in-points}).
+The equivalence of (1), (2), (3), (4), and (5) therefore follows from
+Algebra, Lemma \ref{algebra-lemma-characterize-dvr}. The final statement
+follows from Lemma \ref{lemma-dense-smooth-open-variety-over-perfect-field}
+in case $k$ is perfect. If $\kappa(x)/k$ is separable, then the equivalence
+follows from Algebra, Lemma \ref{algebra-lemma-separable-smooth}.
+\end{proof}
+
+\begin{remark}
+\label{remark-smooth-projective-compactification}
+Let $k$ be a field. Let $X$ be a regular curve over $k$. By
+Lemmas \ref{lemma-regular-point-on-curve} and
+\ref{lemma-reduced-dim-1-projective-completion}
+there exists a nonsingular projective curve $\overline{X}$
+which is a compactification of $X$, i.e., there exists an
+open immersion $j : X \to \overline{X}$ such that the complement
+consists of a finite number of closed points. If $k$ is perfect,
+then $X$ and $\overline{X}$ are smooth over $k$ and
+$\overline{X}$ is a smooth projective compactification of $X$.
+\end{remark}
+
+\noindent
+Observe that if an affine scheme $X$ over $k$ is proper over $k$
+then $X$ is finite over $k$ (Morphisms, Lemma
+\ref{morphisms-lemma-finite-proper}) and hence has
+dimension $0$
+(Algebra, Lemma \ref{algebra-lemma-finite-dimensional-algebra} and
+Proposition \ref{algebra-proposition-dimension-zero-ring}).
+Hence a scheme of dimension $> 0$ over $k$ cannot be both affine and
+proper over $k$. Thus the possibilities in the following lemma are
+mutually exclusive.
+
+\begin{lemma}
+\label{lemma-curve-affine-projective}
+Let $X$ be a curve over $k$. Then either $X$ is an affine scheme or $X$
+is H-projective over $k$.
+\end{lemma}
+
+\begin{proof}
+Choose $X \to \overline{X}$ with
+$\overline{X} \setminus X = \{x_1, \ldots, x_r\}$ as in
+Lemma \ref{lemma-reduced-dim-1-projective-completion}.
+Then $\overline{X}$ is a curve as well.
+If $r = 0$, then $X = \overline{X}$ is H-projective over $k$.
+Thus we may assume $r \geq 1$ and our goal is to show that
+$X$ is affine. By Lemma \ref{lemma-open-in-affine-curve-affine}
+it suffices to show that $\overline{X} \setminus \{x_1\}$ is affine.
+This reduces us to the claim stated in the next paragraph.
+
+\medskip\noindent
+Let $X$ be an H-projective curve over $k$. Let $x \in X$ be a closed point
+such that $\mathcal{O}_{X, x}$ is a discrete valuation ring. Claim:
+$U = X \setminus \{x\}$ is affine. By Lemma \ref{lemma-regular-point-on-curve}
+the point $x$ defines an effective Cartier divisor of $X$.
+For $n \geq 1$ denote $nx = x + \ldots + x$ the $n$-fold sum, see
+Divisors, Definition \ref{divisors-definition-sum-effective-Cartier-divisors}.
+Denote $\mathcal{O}_{nx}$ the structure sheaf of $nx$ viewed as a
+coherent module on $X$.
+Since every invertible module on the local scheme $nx$ is trivial
+the first short exact sequence of
+Divisors, Remark \ref{divisors-remark-ses-regular-section}
+reads
+$$
+0 \to \mathcal{O}_X
+\xrightarrow{1} \mathcal{O}_X(nx) \to \mathcal{O}_{nx} \to 0
+$$
+in our case. Note that $\dim_k H^0(X, \mathcal{O}_{nx}) \geq n$.
+Namely, by Lemma \ref{lemma-chi-tensor-finite} we have
+$H^0(X, \mathcal{O}_{nx}) = \mathcal{O}_{X, x}/(\pi^n)$ where $\pi$ in
+$\mathcal{O}_{X, x}$ is a uniformizer and the powers $\pi^i$ map to
+$k$-linearly independent elements in $\mathcal{O}_{X, x}/(\pi^n)$
+for $i = 0, 1, \ldots, n - 1$. We have $\dim_k H^1(X, \mathcal{O}_X) < \infty$
+by Cohomology of Schemes, Lemma
+\ref{coherent-lemma-proper-over-affine-cohomology-finite}.
+If $n > \dim_k H^1(X, \mathcal{O}_X)$
+we conclude from the long exact cohomology sequence
+that there exists an $s \in \Gamma(X, \mathcal{O}_X(nx))$
+which is not a section of $\mathcal{O}_X$.
+If we take $n$ minimal with this property, then $s$ will
+map to a generator of the stalk
+$\left(\mathcal{O}_X(nx)\right)_x$ since otherwise it would
+define a section of $\mathcal{O}_X((n - 1)x) \subset \mathcal{O}_X(nx)$.
+For this $n$ we conclude that $s_0 = 1$ and $s_1 = s$
+generate the invertible module $\mathcal{L} = \mathcal{O}_X(nx)$.
+
+\medskip\noindent
+Consider the corresponding morphism
+$f = \varphi_{\mathcal{L}, (s_0, s_1)} : X \to \mathbf{P}^1_k$
+of Constructions, Section \ref{constructions-section-projective-space}.
+Observe that the inverse image of $D_{+}(T_0)$ is $U = X \setminus \{x\}$
+as the section $s_0$ of $\mathcal{L}$ only vanishes at $x$.
+In particular, $f$ is non-constant, i.e., $\Im(f)$ has more
+than one point. Hence $f$ must map the generic
+point $\eta$ of $X$ to the generic point of $\mathbf{P}^1_k$.
+Hence if $y \in \mathbf{P}^1_k$ is a closed point, then $f^{-1}(\{y\})$
+is a closed set of $X$ not containing $\eta$, hence finite.
+Finally, $f$ is proper\footnote{Namely, a H-projective variety
+is a proper variety by Morphisms, Lemma
+\ref{morphisms-lemma-projective-is-quasi-projective-proper}.
+A morphism of varieties whose source is a proper variety is a proper morphism
+by Morphisms, Lemma \ref{morphisms-lemma-image-proper-scheme-closed}.}.
+By Cohomology of Schemes, Lemma
+\ref{coherent-lemma-proper-finite-fibre-finite-in-neighbourhood}\footnote{One
+can avoid using this lemma which relies on the theorem of formal
+functions. Namely, $X$ is projective hence it suffices to show
+a proper morphism $f : X \to Y$ with finite fibres between quasi-projective
+schemes over $k$ is finite. To do this, one chooses an affine open of $X$
+containing the fibre of $f$ over a point $y$ using that any finite set of
+points of a quasi-projective scheme over $k$ is contained in an affine.
+Shrinking $Y$ to a small affine neighbourhood of $y$ one reduces to the
+case of a proper morphism between affines. Such a morphism is finite by
+Morphisms, Lemma \ref{morphisms-lemma-integral-universally-closed}.}
+we conclude that $f$ is finite. Hence $U = f^{-1}(D_{+}(T_0))$
+is affine.
+\end{proof}
+
+\noindent
+The following lemma combined with Lemma \ref{lemma-proper-minus-point}
+tells us that given a separated scheme $X$ of dimension $1$ and
+of finite type over $k$, then $X \setminus Z$ is affine, whenever the
+closed subset $Z$ meets every irreducible component of $X$.
+
+\begin{lemma}
+\label{lemma-dim-1-nonproper-affine}
+Let $X$ be a separated scheme of finite type over $k$.
+If $\dim(X) \leq 1$ and no irreducible component of $X$
+is proper of dimension $1$, then $X$ is affine.
+\end{lemma}
+
+\begin{proof}
+Let $X = \bigcup X_i$ be the decomposition of $X$ into irreducible components.
+We think of $X_i$ as an integral scheme (using the reduced induced scheme
+structure, see Schemes, Definition
+\ref{schemes-definition-reduced-induced-scheme}).
+In particular $X_i$ is a singleton (hence affine) or a curve
+hence affine by Lemma \ref{lemma-curve-affine-projective}.
+Then $\coprod X_i \to X$ is finite surjective and $\coprod X_i$ is affine.
+Thus we see that $X$ is affine by
+Cohomology of Schemes, Lemma
+\ref{coherent-lemma-image-affine-finite-morphism-affine-Noetherian}.
+\end{proof}
+
+
+
+
+
+

@@ -7,6 +7,13 @@ import {escapeHTML as esc} from './latex.mjs';
 export function separateSourceNotes(html,notes){
  return html.replace(/<details class="source-note"[\s\S]*?<\/details>/g,note=>{notes.push(note);return '';});
 }
+export function renderProofs(proofs,{id,key,tag,label,notes,renderer}){
+ return (proofs||[]).map((proof,index)=>{
+  const proofId=index?`proof-${id}-${index+1}`:`proof-${id}`;
+  const title=proof.title||'Proof.';
+  return `<details class="proof"><summary><span class="proof-label-closed">${esc(title)}</span><span class="proof-label-open">${esc(title)}</span><span class="proof-chevron" aria-hidden="true">+</span></summary><div class="proof-body" id="${proofId}" data-example="${key}" data-proof="true" data-source-label="Proof of ${esc(label)}" data-source-tag="${tag}"><div class="source-body">${separateSourceNotes(proof.html,notes)}</div><span class="proof-end" aria-label="End of proof">${renderer.math('\\square')}</span></div></details>`;
+ }).join('');
+}
 export function sourceRecord(root,section,manifest,notes){
  const tex=fs.readFileSync(path.join(root,'upstream/sections',section.slug+'.tex'),'utf8');
  const repository=manifest.repository||'https://github.com/stacks/stacks-project';

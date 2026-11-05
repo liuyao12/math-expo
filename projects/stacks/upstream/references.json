@@ -4073,5 +4073,2290 @@
     "tag": "0BXU",
     "number": "33.34.4",
     "kind": "lemma"
+  },
+  "algebra-definition-proj": {
+    "tag": "00JN",
+    "number": "10.57.1",
+    "kind": "definition"
+  },
+  "algebra-definition-value-group": {
+    "tag": "00IE",
+    "number": "10.50.13",
+    "kind": "definition"
+  },
+  "algebra-lemma-graded-NAK": {
+    "tag": "0EKB",
+    "number": "10.56.1",
+    "kind": "lemma"
+  },
+  "algebra-lemma-hom-from-tensor-product": {
+    "tag": "00DE",
+    "number": "10.12.8",
+    "kind": "lemma"
+  },
+  "algebra-lemma-integral-closure-graded": {
+    "tag": "077G",
+    "number": "10.56.3",
+    "kind": "lemma"
+  },
+  "algebra-lemma-integral-transitive": {
+    "tag": "00GN",
+    "number": "10.36.6",
+    "kind": "lemma"
+  },
+  "algebra-lemma-polynomial-ring-UFD": {
+    "tag": "0BC1",
+    "number": "10.120.10",
+    "kind": "lemma"
+  },
+  "algebra-lemma-proj-prime": {
+    "tag": "00JR",
+    "number": "10.57.5",
+    "kind": "lemma"
+  },
+  "algebra-lemma-tensor-algebra-localization": {
+    "tag": "0C6F",
+    "number": "10.13.6",
+    "kind": "lemma"
+  },
+  "algebra-lemma-tensor-product-localization": {
+    "tag": "00DL",
+    "number": "10.12.16",
+    "kind": "lemma"
+  },
+  "algebra-lemma-topology-proj": {
+    "tag": "00JP",
+    "number": "10.57.3",
+    "kind": "lemma"
+  },
+  "algebra-lemma-uple-generated-degree-1": {
+    "tag": "0EGH",
+    "number": "10.56.2",
+    "kind": "lemma"
+  },
+  "algebra-section-proj": {
+    "tag": "00JM",
+    "number": "10.57",
+    "kind": "section"
+  },
+  "coherent-proposition-coherent-modules-on-proj": {
+    "tag": "0BXD",
+    "number": "30.14.4",
+    "kind": "proposition"
+  },
+  "coherent-proposition-coherent-modules-on-proj-general": {
+    "tag": "0BXF",
+    "number": "30.15.3",
+    "kind": "proposition"
+  },
+  "cohomology-definition-alternating-cech-complex": {
+    "tag": "01FH",
+    "number": "20.23.1",
+    "kind": "definition"
+  },
+  "cohomology-definition-cech-complex": {
+    "tag": "01EF",
+    "number": "20.9.1",
+    "kind": "definition"
+  },
+  "cohomology-definition-ordered-cech-complex": {
+    "tag": "01FI",
+    "number": "20.23.2",
+    "kind": "definition"
+  },
+  "cohomology-equation-cohomology": {
+    "tag": "0712",
+    "number": "20.2.0.1",
+    "kind": "equation"
+  },
+  "cohomology-equation-cohomology-modules": {
+    "tag": "0714",
+    "number": "20.2.0.3",
+    "kind": "equation"
+  },
+  "cohomology-equation-d-cech": {
+    "tag": "01EE",
+    "number": "20.9.0.1",
+    "kind": "equation"
+  },
+  "cohomology-equation-first-homotopy": {
+    "tag": "01FN",
+    "number": "20.23.6.1",
+    "kind": "equation"
+  },
+  "cohomology-equation-higher-direct-image": {
+    "tag": "0713",
+    "number": "20.2.0.2",
+    "kind": "equation"
+  },
+  "cohomology-equation-higher-direct-image-modules": {
+    "tag": "0715",
+    "number": "20.2.0.4",
+    "kind": "equation"
+  },
+  "cohomology-equation-restriction-mapping": {
+    "tag": "01E2",
+    "number": "20.7.1.1",
+    "kind": "equation"
+  },
+  "cohomology-equation-second-homotopy": {
+    "tag": "01FO",
+    "number": "20.23.6.2",
+    "kind": "equation"
+  },
+  "cohomology-lemma-Leray": {
+    "tag": "01F2",
+    "number": "20.13.4",
+    "kind": "lemma"
+  },
+  "cohomology-lemma-alternating-cech-trivial": {
+    "tag": "0G6T",
+    "number": "20.23.7",
+    "kind": "lemma"
+  },
+  "cohomology-lemma-before-Leray": {
+    "tag": "01EZ",
+    "number": "20.13.1",
+    "kind": "lemma"
+  },
+  "cohomology-lemma-cech-cohomology": {
+    "tag": "01EQ",
+    "number": "20.11.2",
+    "kind": "lemma"
+  },
+  "cohomology-lemma-cech-cohomology-delta-functor-presheaves": {
+    "tag": "01EK",
+    "number": "20.10.2",
+    "kind": "lemma"
+  },
+  "cohomology-lemma-cech-cohomology-derived-presheaves": {
+    "tag": "01EN",
+    "number": "20.10.5",
+    "kind": "lemma"
+  },
+  "cohomology-lemma-cech-h0": {
+    "tag": "01EG",
+    "number": "20.9.2",
+    "kind": "lemma"
+  },
+  "cohomology-lemma-cech-h1": {
+    "tag": "0B8R",
+    "number": "20.11.3",
+    "kind": "lemma"
+  },
+  "cohomology-lemma-cech-spectral-sequence": {
+    "tag": "01ES",
+    "number": "20.11.5",
+    "kind": "lemma"
+  },
+  "cohomology-lemma-cech-trivial": {
+    "tag": "0G6S",
+    "number": "20.9.3",
+    "kind": "lemma"
+  },
+  "cohomology-lemma-cech-vanish": {
+    "tag": "01EV",
+    "number": "20.11.8",
+    "kind": "lemma"
+  },
+  "cohomology-lemma-cohomology-of-open": {
+    "tag": "01E1",
+    "number": "20.7.1",
+    "kind": "lemma"
+  },
+  "cohomology-lemma-cohomology-products": {
+    "tag": "0D0A",
+    "number": "20.11.12",
+    "kind": "lemma"
+  },
+  "cohomology-lemma-higher-direct-images-compose": {
+    "tag": "01F5",
+    "number": "20.13.7",
+    "kind": "lemma"
+  },
+  "cohomology-lemma-include": {
+    "tag": "01ER",
+    "number": "20.11.4",
+    "kind": "lemma"
+  },
+  "cohomology-lemma-injective-trivial-cech": {
+    "tag": "01EP",
+    "number": "20.11.1",
+    "kind": "lemma"
+  },
+  "cohomology-lemma-kill-cohomology-class-on-covering": {
+    "tag": "01E3",
+    "number": "20.7.2",
+    "kind": "lemma"
+  },
+  "cohomology-lemma-localize-higher-direct-images": {
+    "tag": "01E5",
+    "number": "20.7.4",
+    "kind": "lemma"
+  },
+  "cohomology-lemma-modules-abelian": {
+    "tag": "01F1",
+    "number": "20.13.3",
+    "kind": "lemma"
+  },
+  "cohomology-lemma-project-to-ordered": {
+    "tag": "01FK",
+    "number": "20.23.4",
+    "kind": "lemma"
+  },
+  "cohomology-lemma-pushforward-injective": {
+    "tag": "01EX",
+    "number": "20.11.10",
+    "kind": "lemma"
+  },
+  "cohomology-lemma-pushforward-injective-flat": {
+    "tag": "02N5",
+    "number": "20.11.11",
+    "kind": "lemma"
+  },
+  "cohomology-lemma-relative-Leray": {
+    "tag": "01F6",
+    "number": "20.13.8",
+    "kind": "lemma"
+  },
+  "cohomology-lemma-ses-cech-h1": {
+    "tag": "01EU",
+    "number": "20.11.7",
+    "kind": "lemma"
+  },
+  "cohomology-lemma-torsors-h1": {
+    "tag": "02FQ",
+    "number": "20.4.3",
+    "kind": "lemma"
+  },
+  "cohomology-lemma-trivial-torsor": {
+    "tag": "02FP",
+    "number": "20.4.2",
+    "kind": "lemma"
+  },
+  "cohomology-remark-Leray-ss-more-structure": {
+    "tag": "01F3",
+    "number": "20.13.5",
+    "kind": "remark"
+  },
+  "cohomology-remark-compared-ordered-complexes": {
+    "tag": "01FL",
+    "number": "20.23.5",
+    "kind": "remark"
+  },
+  "cohomology-remark-daniel": {
+    "tag": "03BA",
+    "number": "20.7.5",
+    "kind": "remark"
+  },
+  "cohomology-remark-elucidate-lemma": {
+    "tag": "01F0",
+    "number": "20.13.2",
+    "kind": "remark"
+  },
+  "cohomology-section-Leray": {
+    "tag": "01EY",
+    "number": "20.13",
+    "kind": "section"
+  },
+  "cohomology-section-cech": {
+    "tag": "01ED",
+    "number": "20.9",
+    "kind": "section"
+  },
+  "cohomology-section-cech-cohomology-cohomology": {
+    "tag": "01EO",
+    "number": "20.11",
+    "kind": "section"
+  },
+  "cohomology-section-cohomology-sheaves": {
+    "tag": "01DZ",
+    "number": "20.2",
+    "kind": "section"
+  },
+  "cohomology-section-locality": {
+    "tag": "01E0",
+    "number": "20.7",
+    "kind": "section"
+  },
+  "constructions-definition-projective-bundle": {
+    "tag": "01OB",
+    "number": "27.21.1",
+    "kind": "definition"
+  },
+  "constructions-definition-standard-covering": {
+    "tag": "01M5",
+    "number": "27.8.2",
+    "kind": "definition"
+  },
+  "constructions-definition-structure-sheaf": {
+    "tag": "01M6",
+    "number": "27.8.3",
+    "kind": "definition"
+  },
+  "constructions-equation-map-global-sections": {
+    "tag": "0AG1",
+    "number": "27.9.0.1",
+    "kind": "equation"
+  },
+  "constructions-example-not-existence-valuative-big-proj": {
+    "tag": "01MG",
+    "number": "27.8.12",
+    "kind": "example"
+  },
+  "constructions-example-not-existence-valuative-small-proj": {
+    "tag": "01MH",
+    "number": "27.8.13",
+    "kind": "example"
+  },
+  "constructions-example-open-subset-proj": {
+    "tag": "0G5W",
+    "number": "27.8.15",
+    "kind": "example"
+  },
+  "constructions-example-trivial-proj": {
+    "tag": "01MI",
+    "number": "27.8.14",
+    "kind": "example"
+  },
+  "constructions-item-map": {
+    "tag": "01M8",
+    "number": "6",
+    "kind": "item"
+  },
+  "constructions-lemma-apply": {
+    "tag": "01NA",
+    "number": "27.12.3",
+    "kind": "lemma"
+  },
+  "constructions-lemma-apply-relative": {
+    "tag": "01O4",
+    "number": "27.16.11",
+    "kind": "lemma"
+  },
+  "constructions-lemma-canonical-morphism": {
+    "tag": "01LY",
+    "number": "27.4.7",
+    "kind": "lemma"
+  },
+  "constructions-lemma-closed-in-projective-space": {
+    "tag": "03GL",
+    "number": "27.13.7",
+    "kind": "lemma"
+  },
+  "constructions-lemma-globally-generated-omega-twist-1": {
+    "tag": "0B3B",
+    "number": "27.13.9",
+    "kind": "lemma"
+  },
+  "constructions-lemma-glue-relative-proj-twists": {
+    "tag": "01NR",
+    "number": "27.15.5",
+    "kind": "lemma"
+  },
+  "constructions-lemma-proj-quasi-compact": {
+    "tag": "01MD",
+    "number": "27.8.9",
+    "kind": "lemma"
+  },
+  "constructions-lemma-proj-scheme": {
+    "tag": "01MB",
+    "number": "27.8.7",
+    "kind": "lemma"
+  },
+  "constructions-lemma-proj-separated": {
+    "tag": "01MC",
+    "number": "27.8.8",
+    "kind": "lemma"
+  },
+  "constructions-lemma-proj-valuative-criterion": {
+    "tag": "01MF",
+    "number": "27.8.11",
+    "kind": "lemma"
+  },
+  "constructions-lemma-projective-space": {
+    "tag": "01NE",
+    "number": "27.13.1",
+    "kind": "lemma"
+  },
+  "constructions-lemma-projective-space-separated": {
+    "tag": "01NH",
+    "number": "27.13.4",
+    "kind": "lemma"
+  },
+  "constructions-lemma-quasi-coherent-projective-space": {
+    "tag": "03GM",
+    "number": "27.13.8",
+    "kind": "lemma"
+  },
+  "constructions-lemma-relative-proj-base-change": {
+    "tag": "01O3",
+    "number": "27.16.10",
+    "kind": "lemma"
+  },
+  "constructions-lemma-relative-proj-separated": {
+    "tag": "01O2",
+    "number": "27.16.9",
+    "kind": "lemma"
+  },
+  "constructions-lemma-segre-embedding": {
+    "tag": "01WD",
+    "number": "27.13.6",
+    "kind": "lemma"
+  },
+  "constructions-lemma-spec-properties": {
+    "tag": "01LX",
+    "number": "27.4.6",
+    "kind": "lemma"
+  },
+  "constructions-lemma-standard-covering-projective-space": {
+    "tag": "01NG",
+    "number": "27.13.3",
+    "kind": "lemma"
+  },
+  "constructions-lemma-standard-open": {
+    "tag": "01M4",
+    "number": "27.8.1",
+    "kind": "lemma"
+  },
+  "constructions-lemma-standard-open-proj": {
+    "tag": "01MA",
+    "number": "27.8.6",
+    "kind": "lemma"
+  },
+  "constructions-lemma-structure-morphism-proj": {
+    "tag": "01ME",
+    "number": "27.8.10",
+    "kind": "lemma"
+  },
+  "constructions-lemma-surjective-graded-rings-generated-degree-1-map-proj": {
+    "tag": "01N1",
+    "number": "27.11.5",
+    "kind": "lemma"
+  },
+  "constructions-lemma-surjective-graded-rings-map-proj": {
+    "tag": "01N0",
+    "number": "27.11.3",
+    "kind": "lemma"
+  },
+  "constructions-lemma-surjective-graded-rings-map-relative-proj": {
+    "tag": "07ZI",
+    "number": "27.18.3",
+    "kind": "lemma"
+  },
+  "constructions-remark-global-sections-not-isomorphism": {
+    "tag": "01M9",
+    "number": "27.8.5",
+    "kind": "remark"
+  },
+  "constructions-remark-missing-finite-type": {
+    "tag": "01NI",
+    "number": "27.13.5",
+    "kind": "remark"
+  },
+  "constructions-section-projective-space": {
+    "tag": "01ND",
+    "number": "27.13",
+    "kind": "section"
+  },
+  "constructions-section-quasi-coherent-proj": {
+    "tag": "01MJ",
+    "number": "27.9",
+    "kind": "section"
+  },
+  "constructions-section-spec": {
+    "tag": "01LQ",
+    "number": "27.4",
+    "kind": "section"
+  },
+  "curves-definition-genus": {
+    "tag": "0BY7",
+    "number": "53.8.1",
+    "kind": "definition"
+  },
+  "curves-equation-genus": {
+    "tag": "0BY8",
+    "number": "53.8.1.1",
+    "kind": "equation"
+  },
+  "curves-lemma-automatic": {
+    "tag": "0BY5",
+    "number": "53.6.1",
+    "kind": "lemma"
+  },
+  "curves-lemma-duality-dim-1": {
+    "tag": "0BS2",
+    "number": "53.4.1",
+    "kind": "lemma"
+  },
+  "curves-lemma-duality-dim-1-CM": {
+    "tag": "0BS3",
+    "number": "53.4.2",
+    "kind": "lemma"
+  },
+  "curves-lemma-genus-base-change": {
+    "tag": "0BY9",
+    "number": "53.8.2",
+    "kind": "lemma"
+  },
+  "curves-lemma-genus-gorenstein": {
+    "tag": "0C19",
+    "number": "53.8.3",
+    "kind": "lemma"
+  },
+  "curves-lemma-genus-smooth": {
+    "tag": "0C1A",
+    "number": "53.8.4",
+    "kind": "lemma"
+  },
+  "curves-lemma-rr": {
+    "tag": "0BS6",
+    "number": "53.5.2",
+    "kind": "lemma"
+  },
+  "curves-remark-rework-duality-locally-free": {
+    "tag": "0BS4",
+    "number": "53.4.3",
+    "kind": "remark"
+  },
+  "curves-section-genus": {
+    "tag": "0BY6",
+    "number": "53.8",
+    "kind": "section"
+  },
+  "derived-definition-computes": {
+    "tag": "05SX",
+    "number": "13.14.10",
+    "kind": "definition"
+  },
+  "derived-definition-derived-functor": {
+    "tag": "0157",
+    "number": "13.15.3",
+    "kind": "definition"
+  },
+  "derived-definition-right-derived-functor-defined": {
+    "tag": "05S9",
+    "number": "13.14.2",
+    "kind": "definition"
+  },
+  "derived-equation-everywhere": {
+    "tag": "05SW",
+    "number": "13.14.9.1",
+    "kind": "equation"
+  },
+  "derived-equation-long-exact-cohomology-sequence-D": {
+    "tag": "05ST",
+    "number": "13.11.1.1",
+    "kind": "equation"
+  },
+  "derived-lemma-2-out-of-3-defined": {
+    "tag": "05SC",
+    "number": "13.14.6",
+    "kind": "lemma"
+  },
+  "derived-lemma-compose-derived-functors": {
+    "tag": "015M",
+    "number": "13.22.1",
+    "kind": "lemma"
+  },
+  "derived-lemma-derived-canonical-delta-functor": {
+    "tag": "0152",
+    "number": "13.12.1",
+    "kind": "lemma"
+  },
+  "derived-lemma-enough-injectives-right-derived": {
+    "tag": "05TI",
+    "number": "13.20.2",
+    "kind": "lemma"
+  },
+  "derived-lemma-existence-computes": {
+    "tag": "05T1",
+    "number": "13.14.14",
+    "kind": "lemma"
+  },
+  "derived-lemma-grothendieck-spectral-sequence": {
+    "tag": "015N",
+    "number": "13.22.2",
+    "kind": "lemma"
+  },
+  "derived-lemma-higher-derived-functors": {
+    "tag": "015B",
+    "number": "13.20.4",
+    "kind": "lemma"
+  },
+  "derived-lemma-injective-acyclic": {
+    "tag": "05TH",
+    "number": "13.20.1",
+    "kind": "lemma"
+  },
+  "derived-lemma-injective-resolutions-exist": {
+    "tag": "013K",
+    "number": "13.18.3",
+    "kind": "lemma"
+  },
+  "derived-lemma-left-exact-higher-derived": {
+    "tag": "05TD",
+    "number": "13.16.3",
+    "kind": "lemma"
+  },
+  "derived-lemma-leray-acyclicity": {
+    "tag": "015E",
+    "number": "13.16.7",
+    "kind": "lemma"
+  },
+  "derived-lemma-morphisms-lift": {
+    "tag": "013P",
+    "number": "13.18.6",
+    "kind": "lemma"
+  },
+  "derived-lemma-right-derived-delta-functor": {
+    "tag": "05TE",
+    "number": "13.16.6",
+    "kind": "lemma"
+  },
+  "derived-lemma-right-derived-exact-functor": {
+    "tag": "015F",
+    "number": "13.16.9",
+    "kind": "lemma"
+  },
+  "derived-lemma-right-derived-properties": {
+    "tag": "0159",
+    "number": "13.20.3",
+    "kind": "lemma"
+  },
+  "derived-proposition-enough-acyclics": {
+    "tag": "05TA",
+    "number": "13.16.8",
+    "kind": "proposition"
+  },
+  "derived-section-right-derived-functor": {
+    "tag": "0156",
+    "number": "13.20",
+    "kind": "section"
+  },
+  "divisors-lemma-Pic-projective-space-UFD": {
+    "tag": "0BXJ",
+    "number": "31.29.5",
+    "kind": "lemma"
+  },
+  "divisors-lemma-closed-subscheme-proj": {
+    "tag": "0801",
+    "number": "31.32.1",
+    "kind": "lemma"
+  },
+  "divisors-lemma-closed-subscheme-proj-finite": {
+    "tag": "0802",
+    "number": "31.32.4",
+    "kind": "lemma"
+  },
+  "divisors-lemma-closed-subscheme-proj-finite-type": {
+    "tag": "0803",
+    "number": "31.32.5",
+    "kind": "lemma"
+  },
+  "divisors-lemma-composition-admissible-blowups": {
+    "tag": "080L",
+    "number": "31.35.2",
+    "kind": "lemma"
+  },
+  "divisors-lemma-conormal-sheaf-section-projective-bundle": {
+    "tag": "0B3V",
+    "number": "31.32.6",
+    "kind": "lemma"
+  },
+  "divisors-section-closed-in-relative-proj": {
+    "tag": "084M",
+    "number": "31.32",
+    "kind": "section"
+  },
+  "homology-definition-associated-simple-complex": {
+    "tag": "012Z",
+    "number": "12.18.3",
+    "kind": "definition"
+  },
+  "homology-definition-cohomological-delta-functor": {
+    "tag": "010Q",
+    "number": "12.12.1",
+    "kind": "definition"
+  },
+  "homology-definition-cohomology-shift": {
+    "tag": "011H",
+    "number": "12.14.8",
+    "kind": "definition"
+  },
+  "homology-definition-double-complex": {
+    "tag": "012Y",
+    "number": "12.18.1",
+    "kind": "definition"
+  },
+  "homology-definition-enough-injectives": {
+    "tag": "0138",
+    "number": "12.27.4",
+    "kind": "definition"
+  },
+  "homology-definition-filtered-complex-ss-converges": {
+    "tag": "012U",
+    "number": "12.24.9",
+    "kind": "definition"
+  },
+  "homology-definition-functorial-injective-embedding": {
+    "tag": "0139",
+    "number": "12.27.5",
+    "kind": "definition"
+  },
+  "homology-definition-homotopy-equivalent": {
+    "tag": "010X",
+    "number": "12.13.2",
+    "kind": "definition"
+  },
+  "homology-definition-homotopy-equivalent-cochain": {
+    "tag": "0113",
+    "number": "12.13.8",
+    "kind": "definition"
+  },
+  "homology-definition-injective": {
+    "tag": "0135",
+    "number": "12.27.1",
+    "kind": "definition"
+  },
+  "homology-definition-limit-spectral-sequence": {
+    "tag": "011O",
+    "number": "12.20.2",
+    "kind": "definition"
+  },
+  "homology-definition-morphism-delta-functors": {
+    "tag": "010R",
+    "number": "12.12.2",
+    "kind": "definition"
+  },
+  "homology-definition-quasi-isomorphism": {
+    "tag": "010Z",
+    "number": "12.13.4",
+    "kind": "definition"
+  },
+  "homology-definition-quasi-isomorphism-cochain": {
+    "tag": "0115",
+    "number": "12.13.10",
+    "kind": "definition"
+  },
+  "homology-definition-spectral-sequence": {
+    "tag": "011N",
+    "number": "12.20.1",
+    "kind": "definition"
+  },
+  "homology-definition-ss-double-complex-converge": {
+    "tag": "0131",
+    "number": "12.25.2",
+    "kind": "definition"
+  },
+  "homology-definition-universal-delta-functor": {
+    "tag": "010S",
+    "number": "12.12.3",
+    "kind": "definition"
+  },
+  "homology-example-double-complex-as-tensor-product-of": {
+    "tag": "0A5J",
+    "number": "12.18.2",
+    "kind": "example"
+  },
+  "homology-lemma-adjoint-preserve-injectives": {
+    "tag": "015Z",
+    "number": "12.29.1",
+    "kind": "lemma"
+  },
+  "homology-lemma-biregular-ss-converges": {
+    "tag": "012W",
+    "number": "12.24.11",
+    "kind": "lemma"
+  },
+  "homology-lemma-cat-chain-abelian": {
+    "tag": "010Y",
+    "number": "12.13.3",
+    "kind": "lemma"
+  },
+  "homology-lemma-cat-cochain-abelian": {
+    "tag": "0114",
+    "number": "12.13.9",
+    "kind": "lemma"
+  },
+  "homology-lemma-characterize-injectives": {
+    "tag": "0136",
+    "number": "12.27.2",
+    "kind": "lemma"
+  },
+  "homology-lemma-compose-homotopy": {
+    "tag": "010W",
+    "number": "12.13.1",
+    "kind": "lemma"
+  },
+  "homology-lemma-compose-homotopy-cochain": {
+    "tag": "0112",
+    "number": "12.13.7",
+    "kind": "lemma"
+  },
+  "homology-lemma-compute-cohomology-filtered-complex": {
+    "tag": "012Q",
+    "number": "12.24.6",
+    "kind": "lemma"
+  },
+  "homology-lemma-double-complex-gives-resolution": {
+    "tag": "0133",
+    "number": "12.25.4",
+    "kind": "lemma"
+  },
+  "homology-lemma-efface-implies-universal": {
+    "tag": "010T",
+    "number": "12.12.4",
+    "kind": "lemma"
+  },
+  "homology-lemma-first-quadrant-ss": {
+    "tag": "0132",
+    "number": "12.25.3",
+    "kind": "lemma"
+  },
+  "homology-lemma-homotopy-complex-complexes": {
+    "tag": "0FKH",
+    "number": "12.25.5",
+    "kind": "lemma"
+  },
+  "homology-lemma-homotopy-shift-cochain": {
+    "tag": "011I",
+    "number": "12.14.9",
+    "kind": "lemma"
+  },
+  "homology-lemma-long-exact-sequence-chain": {
+    "tag": "0111",
+    "number": "12.13.6",
+    "kind": "lemma"
+  },
+  "homology-lemma-long-exact-sequence-cochain": {
+    "tag": "0117",
+    "number": "12.13.12",
+    "kind": "lemma"
+  },
+  "homology-lemma-map-cohomology-homotopy-cochain": {
+    "tag": "0116",
+    "number": "12.13.11",
+    "kind": "lemma"
+  },
+  "homology-lemma-map-homology-homotopy": {
+    "tag": "0110",
+    "number": "12.13.5",
+    "kind": "lemma"
+  },
+  "homology-lemma-product-abelian-groups-exact": {
+    "tag": "060K",
+    "number": "12.32.1",
+    "kind": "lemma"
+  },
+  "homology-lemma-product-injectives": {
+    "tag": "0137",
+    "number": "12.27.3",
+    "kind": "lemma"
+  },
+  "homology-lemma-ses-termwise-split-cochain": {
+    "tag": "011J",
+    "number": "12.14.10",
+    "kind": "lemma"
+  },
+  "homology-lemma-ses-termwise-split-homotopy-cochain": {
+    "tag": "011L",
+    "number": "12.14.12",
+    "kind": "lemma"
+  },
+  "homology-lemma-ss-double-complex": {
+    "tag": "0130",
+    "number": "12.25.1",
+    "kind": "lemma"
+  },
+  "homology-lemma-uniqueness-universal-delta-functor": {
+    "tag": "010U",
+    "number": "12.12.5",
+    "kind": "lemma"
+  },
+  "homology-remark-allow-translation-functors": {
+    "tag": "0AMI",
+    "number": "12.20.3",
+    "kind": "remark"
+  },
+  "homology-remark-double-complex-complex-of-complexes-first": {
+    "tag": "0G6A",
+    "number": "12.18.6",
+    "kind": "remark"
+  },
+  "homology-remark-double-complex-complex-of-complexes-second": {
+    "tag": "0G6B",
+    "number": "12.18.7",
+    "kind": "remark"
+  },
+  "homology-remark-shift-double-complex": {
+    "tag": "0FLG",
+    "number": "12.18.5",
+    "kind": "remark"
+  },
+  "homology-remark-triple-complex": {
+    "tag": "08BI",
+    "number": "12.18.4",
+    "kind": "remark"
+  },
+  "homology-section-cohomological-delta-functor": {
+    "tag": "010P",
+    "number": "12.12",
+    "kind": "section"
+  },
+  "homology-section-complexes": {
+    "tag": "010V",
+    "number": "12.13",
+    "kind": "section"
+  },
+  "homology-section-double-complex": {
+    "tag": "012X",
+    "number": "12.25",
+    "kind": "section"
+  },
+  "homology-section-double-complexes": {
+    "tag": "0FNB",
+    "number": "12.18",
+    "kind": "section"
+  },
+  "homology-section-filtered-complex": {
+    "tag": "012K",
+    "number": "12.24",
+    "kind": "section"
+  },
+  "homology-section-homotopy-shift": {
+    "tag": "0119",
+    "number": "12.14",
+    "kind": "section"
+  },
+  "homology-section-injectives": {
+    "tag": "0134",
+    "number": "12.27",
+    "kind": "section"
+  },
+  "homology-section-spectral-sequence": {
+    "tag": "011M",
+    "number": "12.20",
+    "kind": "section"
+  },
+  "injectives-lemma-abelian-sheaves-space": {
+    "tag": "01DG",
+    "number": "19.4.1",
+    "kind": "lemma"
+  },
+  "injectives-lemma-sheaves-modules-space": {
+    "tag": "01DI",
+    "number": "19.5.1",
+    "kind": "lemma"
+  },
+  "injectives-section-abelian-sheaves-space": {
+    "tag": "01DF",
+    "number": "19.4",
+    "kind": "section"
+  },
+  "injectives-section-sheaves-modules-space": {
+    "tag": "01DH",
+    "number": "19.5",
+    "kind": "section"
+  },
+  "modules-definition-gamma-star": {
+    "tag": "01CV",
+    "number": "17.25.7",
+    "kind": "definition"
+  },
+  "modules-definition-pic": {
+    "tag": "01CX",
+    "number": "17.25.9",
+    "kind": "definition"
+  },
+  "modules-definition-quasi-coherent": {
+    "tag": "01BE",
+    "number": "17.10.1",
+    "kind": "definition"
+  },
+  "modules-definition-sheaf-associated": {
+    "tag": "01BI",
+    "number": "17.10.6",
+    "kind": "definition"
+  },
+  "modules-example-quasi-coherent": {
+    "tag": "01BL",
+    "number": "17.10.9",
+    "kind": "example"
+  },
+  "modules-lemma-construct-quasi-coherent-sheaves": {
+    "tag": "01BH",
+    "number": "17.10.5",
+    "kind": "lemma"
+  },
+  "modules-lemma-constructions-invertible": {
+    "tag": "01CT",
+    "number": "17.25.5",
+    "kind": "lemma"
+  },
+  "modules-lemma-direct-sum-quasi-coherent": {
+    "tag": "01BF",
+    "number": "17.10.2",
+    "kind": "lemma"
+  },
+  "modules-lemma-finite-presentation-stalk-free": {
+    "tag": "0B8J",
+    "number": "17.11.7",
+    "kind": "lemma"
+  },
+  "modules-lemma-internal-hom": {
+    "tag": "01CN",
+    "number": "17.22.1",
+    "kind": "lemma"
+  },
+  "modules-lemma-invertible": {
+    "tag": "0B8K",
+    "number": "17.25.2",
+    "kind": "lemma"
+  },
+  "modules-lemma-invertible-is-locally-free-rank-1": {
+    "tag": "0B8M",
+    "number": "17.25.4",
+    "kind": "lemma"
+  },
+  "modules-lemma-pic-set": {
+    "tag": "01CW",
+    "number": "17.25.8",
+    "kind": "lemma"
+  },
+  "modules-lemma-pullback-flat": {
+    "tag": "02N4",
+    "number": "17.20.2",
+    "kind": "lemma"
+  },
+  "modules-lemma-pullback-internal-hom": {
+    "tag": "0C6I",
+    "number": "17.22.5",
+    "kind": "lemma"
+  },
+  "modules-lemma-pullback-invertible": {
+    "tag": "0B8L",
+    "number": "17.25.3",
+    "kind": "lemma"
+  },
+  "modules-lemma-pullback-locally-generated": {
+    "tag": "01B3",
+    "number": "17.8.2",
+    "kind": "lemma"
+  },
+  "modules-lemma-pullback-quasi-coherent": {
+    "tag": "01BG",
+    "number": "17.10.4",
+    "kind": "lemma"
+  },
+  "modules-lemma-pullback-tensor-algebra": {
+    "tag": "01CI",
+    "number": "17.21.3",
+    "kind": "lemma"
+  },
+  "modules-lemma-quasi-coherent-module": {
+    "tag": "01BK",
+    "number": "17.10.8",
+    "kind": "lemma"
+  },
+  "modules-lemma-restrict-quasi-coherent": {
+    "tag": "01BJ",
+    "number": "17.10.7",
+    "kind": "lemma"
+  },
+  "modules-lemma-stalk-internal-hom": {
+    "tag": "01CP",
+    "number": "17.22.4",
+    "kind": "lemma"
+  },
+  "modules-lemma-stalk-tensor-algebra": {
+    "tag": "01CH",
+    "number": "17.21.2",
+    "kind": "lemma"
+  },
+  "modules-lemma-stalk-tensor-product": {
+    "tag": "01CB",
+    "number": "17.16.1",
+    "kind": "lemma"
+  },
+  "modules-lemma-tensor-product-pullback": {
+    "tag": "01CD",
+    "number": "17.16.4",
+    "kind": "lemma"
+  },
+  "modules-remark-infinite-direct-sum-quasi-coherent-not": {
+    "tag": "02CF",
+    "number": "17.10.3",
+    "kind": "remark"
+  },
+  "modules-remark-pullback-s-open": {
+    "tag": "0H78",
+    "number": "17.25.11",
+    "kind": "remark"
+  },
+  "modules-section-invertible": {
+    "tag": "01CR",
+    "number": "17.25",
+    "kind": "section"
+  },
+  "modules-section-quasi-coherent": {
+    "tag": "01BD",
+    "number": "17.10",
+    "kind": "section"
+  },
+  "modules-section-symmetric-exterior": {
+    "tag": "01CF",
+    "number": "17.21",
+    "kind": "section"
+  },
+  "modules-section-tensor-product": {
+    "tag": "01CA",
+    "number": "17.16",
+    "kind": "section"
+  },
+  "more-algebra-lemma-invertible": {
+    "tag": "0B8I",
+    "number": "15.119.2",
+    "kind": "lemma"
+  },
+  "more-algebra-section-injectives-modules": {
+    "tag": "01D8",
+    "number": "15.56",
+    "kind": "section"
+  },
+  "more-algebra-section-picard": {
+    "tag": "0AFW",
+    "number": "15.119",
+    "kind": "section"
+  },
+  "morphisms-definition-proper": {
+    "tag": "01W1",
+    "number": "29.42.1",
+    "kind": "definition"
+  },
+  "morphisms-example-thibaut": {
+    "tag": "01QW",
+    "number": "29.3.4",
+    "kind": "example"
+  },
+  "morphisms-lemma-Artinian-affine": {
+    "tag": "01SI",
+    "number": "29.11.14",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-affine-equivalence-algebras": {
+    "tag": "01SA",
+    "number": "29.11.5",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-affine-equivalence-modules": {
+    "tag": "01SB",
+    "number": "29.11.7",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-affine-permanence": {
+    "tag": "01SG",
+    "number": "29.11.12",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-affine-s-open": {
+    "tag": "01SF",
+    "number": "29.11.11",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-affine-separated": {
+    "tag": "01S7",
+    "number": "29.11.2",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-base-change-affine": {
+    "tag": "01SD",
+    "number": "29.11.9",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-base-change-finite-type": {
+    "tag": "01T4",
+    "number": "29.15.4",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-base-change-proper": {
+    "tag": "01W4",
+    "number": "29.42.5",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-base-change-surjective": {
+    "tag": "01S1",
+    "number": "29.9.4",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-closed-immersion-affine": {
+    "tag": "01SE",
+    "number": "29.11.10",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-closed-immersion-finite-presentation": {
+    "tag": "01TV",
+    "number": "29.22.7",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-composition-affine": {
+    "tag": "01SC",
+    "number": "29.11.8",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-composition-finite-type": {
+    "tag": "01T3",
+    "number": "29.15.3",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-dimension-fibre-after-base-change": {
+    "tag": "02FY",
+    "number": "29.29.3",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-get-affine": {
+    "tag": "0C3A",
+    "number": "29.11.15",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-image-proper-is-proper": {
+    "tag": "03GN",
+    "number": "29.42.9",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-image-universally-closed-separated": {
+    "tag": "09MQ",
+    "number": "29.42.11",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-immersion-locally-finite-type": {
+    "tag": "01T5",
+    "number": "29.15.5",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-morphism-affines-affine": {
+    "tag": "01SH",
+    "number": "29.11.13",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-proper-local-on-the-base": {
+    "tag": "01W2",
+    "number": "29.42.3",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-quasi-coherence-scalar-restriction": {
+    "tag": "0H88",
+    "number": "29.11.6",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-quasi-compact-scheme-theoretic-image": {
+    "tag": "01R8",
+    "number": "29.6.3",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-scheme-theoretic-image-is-proper": {
+    "tag": "0AH6",
+    "number": "29.42.10",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-universally-closed-local-on-the-base": {
+    "tag": "02K7",
+    "number": "29.42.2",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-universally-closed-quasi-compact": {
+    "tag": "04XU",
+    "number": "29.42.8",
+    "kind": "lemma"
+  },
+  "morphisms-remark-direct-argument": {
+    "tag": "01S9",
+    "number": "29.11.4",
+    "kind": "remark"
+  },
+  "morphisms-section-affine": {
+    "tag": "01S5",
+    "number": "29.11",
+    "kind": "section"
+  },
+  "morphisms-section-closed-immersions": {
+    "tag": "01QN",
+    "number": "29.2",
+    "kind": "section"
+  },
+  "morphisms-section-closed-immersions-quasi-coherent": {
+    "tag": "01QX",
+    "number": "29.4",
+    "kind": "section"
+  },
+  "morphisms-section-immersions": {
+    "tag": "07RJ",
+    "number": "29.3",
+    "kind": "section"
+  },
+  "morphisms-section-proper": {
+    "tag": "01W0",
+    "number": "29.42",
+    "kind": "section"
+  },
+  "morphisms-section-scheme-theoretic-image": {
+    "tag": "01R5",
+    "number": "29.6",
+    "kind": "section"
+  },
+  "pic-definition-genus": {
+    "tag": "0B9W",
+    "number": "44.6.3",
+    "kind": "definition"
+  },
+  "properties-lemma-ample-quasi-coherent": {
+    "tag": "01QJ",
+    "number": "28.29.3",
+    "kind": "lemma"
+  },
+  "properties-lemma-proj-quasi-coherent": {
+    "tag": "0AG5",
+    "number": "28.29.5",
+    "kind": "lemma"
+  },
+  "properties-lemma-quasi-coherent-colimit-finite-type": {
+    "tag": "01PG",
+    "number": "28.23.3",
+    "kind": "lemma"
+  },
+  "schemes-definition-closed-immersion-locally-ringed-spaces": {
+    "tag": "01HK",
+    "number": "26.4.1",
+    "kind": "definition"
+  },
+  "schemes-definition-closed-subspace": {
+    "tag": "01HN",
+    "number": "26.4.4",
+    "kind": "definition"
+  },
+  "schemes-definition-immersion": {
+    "tag": "01IO",
+    "number": "26.10.2",
+    "kind": "definition"
+  },
+  "schemes-definition-separated": {
+    "tag": "01KK",
+    "number": "26.21.3",
+    "kind": "definition"
+  },
+  "schemes-definition-valuative-criterion": {
+    "tag": "01KD",
+    "number": "26.20.3",
+    "kind": "definition"
+  },
+  "schemes-example-closed-immersion-affines": {
+    "tag": "01IG",
+    "number": "26.8.1",
+    "kind": "example"
+  },
+  "schemes-example-closed-subspace": {
+    "tag": "01HM",
+    "number": "26.4.3",
+    "kind": "example"
+  },
+  "schemes-lemma-base-change-immersion": {
+    "tag": "01JY",
+    "number": "26.18.2",
+    "kind": "lemma"
+  },
+  "schemes-lemma-characterize-closed-immersions": {
+    "tag": "01LD",
+    "number": "26.24.2",
+    "kind": "lemma"
+  },
+  "schemes-lemma-characterize-quasi-separated": {
+    "tag": "01KO",
+    "number": "26.21.6",
+    "kind": "lemma"
+  },
+  "schemes-lemma-closed-immersion": {
+    "tag": "01HO",
+    "number": "26.4.5",
+    "kind": "lemma"
+  },
+  "schemes-lemma-closed-immersion-affine-case": {
+    "tag": "01IH",
+    "number": "26.8.2",
+    "kind": "lemma"
+  },
+  "schemes-lemma-closed-local-target": {
+    "tag": "01HL",
+    "number": "26.4.2",
+    "kind": "lemma"
+  },
+  "schemes-lemma-closed-subspace-scheme": {
+    "tag": "01IN",
+    "number": "26.10.1",
+    "kind": "lemma"
+  },
+  "schemes-lemma-colimit-quasi-coherent": {
+    "tag": "01ID",
+    "number": "26.7.7",
+    "kind": "lemma"
+  },
+  "schemes-lemma-equivalence-quasi-coherent": {
+    "tag": "01IB",
+    "number": "26.7.5",
+    "kind": "lemma"
+  },
+  "schemes-lemma-extension-quasi-coherent": {
+    "tag": "01IE",
+    "number": "26.7.8",
+    "kind": "lemma"
+  },
+  "schemes-lemma-good-subcover": {
+    "tag": "01IX",
+    "number": "26.11.6",
+    "kind": "lemma"
+  },
+  "schemes-lemma-immersion-when-closed": {
+    "tag": "01IQ",
+    "number": "26.10.4",
+    "kind": "lemma"
+  },
+  "schemes-lemma-immersions-monomorphisms": {
+    "tag": "01L7",
+    "number": "26.23.8",
+    "kind": "lemma"
+  },
+  "schemes-lemma-kernel-cokernel-quasi-coherent": {
+    "tag": "01IC",
+    "number": "26.7.6",
+    "kind": "lemma"
+  },
+  "schemes-lemma-points-fibre-product": {
+    "tag": "01JT",
+    "number": "26.17.5",
+    "kind": "lemma"
+  },
+  "schemes-lemma-push-forward-quasi-coherent": {
+    "tag": "01LC",
+    "number": "26.24.1",
+    "kind": "lemma"
+  },
+  "schemes-lemma-quasi-coherent-affine": {
+    "tag": "01IA",
+    "number": "26.7.4",
+    "kind": "lemma"
+  },
+  "schemes-lemma-quasi-compact-affine": {
+    "tag": "01K4",
+    "number": "26.19.2",
+    "kind": "lemma"
+  },
+  "schemes-lemma-quasi-compact-permanence": {
+    "tag": "03GI",
+    "number": "26.21.14",
+    "kind": "lemma"
+  },
+  "schemes-lemma-quasi-compact-preserved-base-change": {
+    "tag": "01K5",
+    "number": "26.19.3",
+    "kind": "lemma"
+  },
+  "schemes-lemma-section-immersion": {
+    "tag": "01KT",
+    "number": "26.21.11",
+    "kind": "lemma"
+  },
+  "schemes-lemma-semi-diagonal": {
+    "tag": "01KS",
+    "number": "26.21.10",
+    "kind": "lemma"
+  },
+  "schemes-lemma-separated-implies-valuative": {
+    "tag": "01KZ",
+    "number": "26.22.1",
+    "kind": "lemma"
+  },
+  "schemes-lemma-separated-permanence": {
+    "tag": "01KU",
+    "number": "26.21.12",
+    "kind": "lemma"
+  },
+  "schemes-lemma-widetilde-constructions": {
+    "tag": "01I8",
+    "number": "26.7.2",
+    "kind": "lemma"
+  },
+  "schemes-lemma-widetilde-pullback": {
+    "tag": "01I9",
+    "number": "26.7.3",
+    "kind": "lemma"
+  },
+  "schemes-proposition-characterize-universally-closed": {
+    "tag": "01KF",
+    "number": "26.20.6",
+    "kind": "proposition"
+  },
+  "schemes-remark-not-reverse-open-closed": {
+    "tag": "01IP",
+    "number": "26.10.3",
+    "kind": "remark"
+  },
+  "schemes-section-closed-immersion": {
+    "tag": "01HJ",
+    "number": "26.4",
+    "kind": "section"
+  },
+  "schemes-section-fibre-products": {
+    "tag": "01JO",
+    "number": "26.17",
+    "kind": "section"
+  },
+  "schemes-section-immersions": {
+    "tag": "01IM",
+    "number": "26.10",
+    "kind": "section"
+  },
+  "schemes-section-quasi-coherent-affine": {
+    "tag": "01I6",
+    "number": "26.7",
+    "kind": "section"
+  },
+  "sheaves-lemma-stalk-skyscraper-adjoint": {
+    "tag": "009C",
+    "number": "6.27.3",
+    "kind": "lemma"
+  },
+  "sheaves-section-limits-sheaves": {
+    "tag": "009E",
+    "number": "6.29",
+    "kind": "section"
+  },
+  "sheaves-section-skyscraper-sheaves": {
+    "tag": "0099",
+    "number": "6.27",
+    "kind": "section"
+  },
+  "topology-definition-locally-quasi-compact": {
+    "tag": "0068",
+    "number": "5.13.1",
+    "kind": "definition"
+  },
+  "varieties-lemma-regular-functions-proper-variety": {
+    "tag": "04L2",
+    "number": "33.26.2",
+    "kind": "lemma"
+  },
+  "algebra-lemma-characterize-dvr": {
+    "tag": "00PD",
+    "number": "10.119.7",
+    "kind": "lemma"
+  },
+  "algebra-lemma-finite-dimensional-algebra": {
+    "tag": "00J6",
+    "number": "10.53.2",
+    "kind": "lemma"
+  },
+  "algebra-lemma-separable-smooth": {
+    "tag": "00TV",
+    "number": "10.140.5",
+    "kind": "lemma"
+  },
+  "coherent-lemma-image-affine-finite-morphism-affine-Noetherian": {
+    "tag": "01YQ",
+    "number": "30.13.3",
+    "kind": "lemma"
+  },
+  "coherent-lemma-proper-over-affine-cohomology-finite": {
+    "tag": "02O6",
+    "number": "30.19.2",
+    "kind": "lemma"
+  },
+  "derived-definition-injective-resolution": {
+    "tag": "013I",
+    "number": "13.18.1",
+    "kind": "definition"
+  },
+  "derived-equation-qis": {
+    "tag": "013Q",
+    "number": "13.18.6.1",
+    "kind": "equation"
+  },
+  "derived-lemma-acyclic": {
+    "tag": "05RT",
+    "number": "13.11.2",
+    "kind": "lemma"
+  },
+  "derived-lemma-acyclic-is-zero": {
+    "tag": "013R",
+    "number": "13.18.4",
+    "kind": "lemma"
+  },
+  "derived-lemma-cohomology-bounded-below": {
+    "tag": "013J",
+    "number": "13.18.2",
+    "kind": "lemma"
+  },
+  "derived-lemma-injective-resolution-ses": {
+    "tag": "013T",
+    "number": "13.18.9",
+    "kind": "lemma"
+  },
+  "derived-lemma-make-injective": {
+    "tag": "013N",
+    "number": "13.9.6",
+    "kind": "lemma"
+  },
+  "derived-lemma-morphisms-equal-up-to-homotopy": {
+    "tag": "013S",
+    "number": "13.18.7",
+    "kind": "lemma"
+  },
+  "derived-lemma-morphisms-into-injective-complex": {
+    "tag": "05TG",
+    "number": "13.18.8",
+    "kind": "lemma"
+  },
+  "derived-lemma-representable-homological": {
+    "tag": "0149",
+    "number": "13.4.2",
+    "kind": "lemma"
+  },
+  "derived-lemma-subcategory-right-resolution": {
+    "tag": "05T6",
+    "number": "13.15.5",
+    "kind": "lemma"
+  },
+  "derived-lemma-the-same-up-to-isomorphisms": {
+    "tag": "014L",
+    "number": "13.9.14",
+    "kind": "lemma"
+  },
+  "derived-remark-easier-proofs": {
+    "tag": "05TF",
+    "number": "13.18.5",
+    "kind": "remark"
+  },
+  "derived-section-injective-resolutions": {
+    "tag": "013G",
+    "number": "13.18",
+    "kind": "section"
+  },
+  "divisors-lemma-effective-Cartier-in-points": {
+    "tag": "0AG8",
+    "number": "31.16.2",
+    "kind": "lemma"
+  },
+  "homology-section-truncations": {
+    "tag": "0118",
+    "number": "12.15",
+    "kind": "section"
+  },
+  "morphisms-definition-quasi-projective": {
+    "tag": "01VW",
+    "number": "29.41.1",
+    "kind": "definition"
+  },
+  "morphisms-definition-scheme-theoretic-image": {
+    "tag": "01R7",
+    "number": "29.6.2",
+    "kind": "definition"
+  },
+  "morphisms-lemma-H-projective-composition": {
+    "tag": "01WE",
+    "number": "29.44.7",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-finite-projective": {
+    "tag": "0B3I",
+    "number": "29.45.16",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-integral-universally-closed": {
+    "tag": "01WM",
+    "number": "29.45.7",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-projective-is-quasi-projective-proper": {
+    "tag": "0BCL",
+    "number": "29.44.13",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-projective-over-quasi-projective-is-H-projective": {
+    "tag": "087S",
+    "number": "29.44.16",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-quasi-projective-finite-type-over-S": {
+    "tag": "01VS",
+    "number": "29.40.3",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-relative-normalization-normal-codim-1": {
+    "tag": "0BXB",
+    "number": "29.54.16",
+    "kind": "lemma"
+  },
+  "properties-lemma-normal-dimension-1-regular": {
+    "tag": "0BX2",
+    "number": "28.12.6",
+    "kind": "lemma"
+  },
+  "schemes-definition-reduced-induced-scheme": {
+    "tag": "01J4",
+    "number": "26.12.5",
+    "kind": "definition"
+  },
+  "varieties-definition-curve": {
+    "tag": "0A23",
+    "number": "33.43.1",
+    "kind": "definition"
+  },
+  "varieties-definition-variety": {
+    "tag": "020D",
+    "number": "33.3.1",
+    "kind": "definition"
+  },
+  "varieties-lemma-baby-stein": {
+    "tag": "0FD1",
+    "number": "33.9.4",
+    "kind": "lemma"
+  },
+  "varieties-lemma-curve-affine-projective": {
+    "tag": "0A27",
+    "number": "33.43.10",
+    "kind": "lemma"
+  },
+  "varieties-lemma-dim-1-nonproper-affine": {
+    "tag": "0A28",
+    "number": "33.43.11",
+    "kind": "lemma"
+  },
+  "varieties-lemma-dim-1-projective-completion": {
+    "tag": "0BXV",
+    "number": "33.43.5",
+    "kind": "lemma"
+  },
+  "varieties-lemma-dim-1-projective-completion-after-insep": {
+    "tag": "0GK5",
+    "number": "33.43.7",
+    "kind": "lemma"
+  },
+  "varieties-lemma-dim-1-quasi-projective": {
+    "tag": "0A25",
+    "number": "33.43.3",
+    "kind": "lemma"
+  },
+  "varieties-lemma-dimension-locally-algebraic": {
+    "tag": "0A21",
+    "number": "33.20.3",
+    "kind": "lemma"
+  },
+  "varieties-lemma-finite-extension-geometrically-normal": {
+    "tag": "0BXT",
+    "number": "33.27.4",
+    "kind": "lemma"
+  },
+  "varieties-lemma-geometrically-regular-smooth": {
+    "tag": "038X",
+    "number": "33.12.6",
+    "kind": "lemma"
+  },
+  "varieties-lemma-open-in-affine-curve-affine": {
+    "tag": "09N9",
+    "number": "33.38.2",
+    "kind": "lemma"
+  },
+  "varieties-lemma-proper-minus-point": {
+    "tag": "0A24",
+    "number": "33.43.2",
+    "kind": "lemma"
+  },
+  "varieties-lemma-reduced-dim-1-projective-completion": {
+    "tag": "0BXW",
+    "number": "33.43.6",
+    "kind": "lemma"
+  },
+  "varieties-lemma-relative-normalization-finite": {
+    "tag": "0BXS",
+    "number": "33.27.3",
+    "kind": "lemma"
+  },
+  "varieties-proposition-dim-1-noetherian-separated-has-ample": {
+    "tag": "09NZ",
+    "number": "33.38.12",
+    "kind": "proposition"
+  },
+  "varieties-remark-smooth-projective-compactification": {
+    "tag": "0H1F",
+    "number": "33.43.9",
+    "kind": "remark"
+  },
+  "varieties-section-curves": {
+    "tag": "0A22",
+    "number": "33.43",
+    "kind": "section"
+  },
+  "varieties-section-normalization": {
+    "tag": "0BXQ",
+    "number": "33.27",
+    "kind": "section"
+  },
+  "algebra-definition-embedded-primes": {
+    "tag": "02M5",
+    "number": "10.67.1",
+    "kind": "definition"
+  },
+  "algebra-lemma-ass-zero-divisors": {
+    "tag": "00LD",
+    "number": "10.63.9",
+    "kind": "lemma"
+  },
+  "algebra-lemma-criterion-no-embedded-primes": {
+    "tag": "031Q",
+    "number": "10.157.2",
+    "kind": "lemma"
+  },
+  "algebra-lemma-criterion-normal": {
+    "tag": "031S",
+    "number": "10.157.4",
+    "kind": "lemma"
+  },
+  "algebra-lemma-depth-drops-by-one": {
+    "tag": "090R",
+    "number": "10.72.7",
+    "kind": "lemma"
+  },
+  "algebra-lemma-flat-intersect-ideals": {
+    "tag": "0BBY",
+    "number": "10.39.2",
+    "kind": "lemma"
+  },
+  "algebra-lemma-invert-prime-elements": {
+    "tag": "0AFU",
+    "number": "10.120.7",
+    "kind": "lemma"
+  },
+  "algebra-lemma-minimal-over-1": {
+    "tag": "00KV",
+    "number": "10.60.11",
+    "kind": "lemma"
+  },
+  "algebra-lemma-no-embedded-primes-endos": {
+    "tag": "02M8",
+    "number": "10.67.4",
+    "kind": "lemma"
+  },
+  "algebra-lemma-normal-domain-intersection-localizations-height-1": {
+    "tag": "031T",
+    "number": "10.157.6",
+    "kind": "lemma"
+  },
+  "algebra-lemma-one-equation": {
+    "tag": "00KW",
+    "number": "10.60.13",
+    "kind": "lemma"
+  },
+  "algebra-lemma-order-vanishing-determinant": {
+    "tag": "02MI",
+    "number": "10.121.7",
+    "kind": "lemma"
+  },
+  "algebra-lemma-product-ideals-principal": {
+    "tag": "09ME",
+    "number": "10.120.16",
+    "kind": "lemma"
+  },
+  "algebra-lemma-regular-sequence-in-neighbourhood": {
+    "tag": "061L",
+    "number": "10.68.6",
+    "kind": "lemma"
+  },
+  "algebra-lemma-remove-embedded-primes": {
+    "tag": "02M6",
+    "number": "10.67.2",
+    "kind": "lemma"
+  },
+  "algebra-lemma-remove-embedded-primes-localize": {
+    "tag": "02M7",
+    "number": "10.67.3",
+    "kind": "lemma"
+  },
+  "algebra-lemma-symbolic-power-flat-extension": {
+    "tag": "0BC0",
+    "number": "10.64.3",
+    "kind": "lemma"
+  },
+  "algebra-lemma-weakly-ass-zero-divisors": {
+    "tag": "05C3",
+    "number": "10.66.7",
+    "kind": "lemma"
+  },
+  "algebra-lemma-zero-at-ass-zero": {
+    "tag": "0311",
+    "number": "10.63.19",
+    "kind": "lemma"
+  },
+  "algebra-proposition-minimal-primes-associated-primes": {
+    "tag": "02CE",
+    "number": "10.63.6",
+    "kind": "proposition"
+  },
+  "coherent-lemma-coherent-support-closed": {
+    "tag": "01Y5",
+    "number": "30.9.7",
+    "kind": "lemma"
+  },
+  "cohomology-equation-cech-functor": {
+    "tag": "01EI",
+    "number": "20.10.0.1",
+    "kind": "equation"
+  },
+  "cohomology-lemma-cech-exact-presheaves": {
+    "tag": "01EJ",
+    "number": "20.10.1",
+    "kind": "lemma"
+  },
+  "cohomology-lemma-cech-map-into": {
+    "tag": "01EL",
+    "number": "20.10.3",
+    "kind": "lemma"
+  },
+  "cohomology-section-cech-functor": {
+    "tag": "01EH",
+    "number": "20.10",
+    "kind": "section"
+  },
+  "derived-definition-complexes-notation": {
+    "tag": "013H",
+    "number": "13.8.1",
+    "kind": "definition"
+  },
+  "derived-lemma-cartan-eilenberg": {
+    "tag": "015I",
+    "number": "13.21.2",
+    "kind": "lemma"
+  },
+  "derived-lemma-compose-derived-functors-general": {
+    "tag": "05T2",
+    "number": "13.14.16",
+    "kind": "lemma"
+  },
+  "derived-section-composition-right-derived-functors": {
+    "tag": "015L",
+    "number": "13.22",
+    "kind": "section"
+  },
+  "divisors-definition-embedded": {
+    "tag": "05AK",
+    "number": "31.4.1",
+    "kind": "definition"
+  },
+  "divisors-definition-pullback-effective-Cartier-divisor": {
+    "tag": "01WV",
+    "number": "31.14.12",
+    "kind": "definition"
+  },
+  "divisors-lemma-S1-no-embedded": {
+    "tag": "0346",
+    "number": "31.4.3",
+    "kind": "lemma"
+  },
+  "divisors-lemma-UFD-one-equation-CM": {
+    "tag": "0BXI",
+    "number": "31.16.10",
+    "kind": "lemma"
+  },
+  "divisors-lemma-ass-support": {
+    "tag": "05AD",
+    "number": "31.2.3",
+    "kind": "lemma"
+  },
+  "divisors-lemma-ass-weakly-ass": {
+    "tag": "05AR",
+    "number": "31.5.8",
+    "kind": "lemma"
+  },
+  "divisors-lemma-associated-affine-open": {
+    "tag": "02OK",
+    "number": "31.2.2",
+    "kind": "lemma"
+  },
+  "divisors-lemma-closure-effective-cartier-divisor": {
+    "tag": "0BD8",
+    "number": "31.29.2",
+    "kind": "lemma"
+  },
+  "divisors-lemma-complement-locally-principal-closed-subscheme": {
+    "tag": "07ZT",
+    "number": "31.14.3",
+    "kind": "lemma"
+  },
+  "divisors-lemma-effective-Cartier-codimension-1": {
+    "tag": "0BCN",
+    "number": "31.16.3",
+    "kind": "lemma"
+  },
+  "divisors-lemma-effective-Cartier-divisor-Sk": {
+    "tag": "0B3R",
+    "number": "31.16.5",
+    "kind": "lemma"
+  },
+  "divisors-lemma-effective-Cartier-divisor-is-a-sum": {
+    "tag": "0BCP",
+    "number": "31.16.11",
+    "kind": "lemma"
+  },
+  "divisors-lemma-effective-Cartier-makes-dimension-drop": {
+    "tag": "056N",
+    "number": "31.14.5",
+    "kind": "lemma"
+  },
+  "divisors-lemma-embedded": {
+    "tag": "05AL",
+    "number": "31.4.2",
+    "kind": "lemma"
+  },
+  "divisors-lemma-extend-invertible-module": {
+    "tag": "0BD9",
+    "number": "31.29.3",
+    "kind": "lemma"
+  },
+  "divisors-lemma-finite-ass": {
+    "tag": "05AF",
+    "number": "31.2.5",
+    "kind": "lemma"
+  },
+  "divisors-lemma-flat-over-integral-integral-fibre": {
+    "tag": "0BCM",
+    "number": "31.11.7",
+    "kind": "lemma"
+  },
+  "divisors-lemma-in-image-pullback": {
+    "tag": "0BD7",
+    "number": "31.29.1",
+    "kind": "lemma"
+  },
+  "divisors-lemma-integral-effective-Cartier-divisor-dvr": {
+    "tag": "0AG9",
+    "number": "31.16.4",
+    "kind": "lemma"
+  },
+  "divisors-lemma-minimal-support-in-ass": {
+    "tag": "05AH",
+    "number": "31.2.9",
+    "kind": "lemma"
+  },
+  "divisors-lemma-no-embedded-points-endos": {
+    "tag": "02OM",
+    "number": "31.4.7",
+    "kind": "lemma"
+  },
+  "divisors-lemma-normal-effective-Cartier-divisor-S1": {
+    "tag": "0B3S",
+    "number": "31.16.6",
+    "kind": "lemma"
+  },
+  "divisors-lemma-open-subscheme-UFD": {
+    "tag": "0BDA",
+    "number": "31.29.4",
+    "kind": "lemma"
+  },
+  "divisors-lemma-pullback-effective-Cartier-defined": {
+    "tag": "02OO",
+    "number": "31.14.13",
+    "kind": "lemma"
+  },
+  "divisors-lemma-pullback-effective-Cartier-divisors-additive": {
+    "tag": "01WW",
+    "number": "31.14.14",
+    "kind": "lemma"
+  },
+  "divisors-lemma-pullback-locally-principal": {
+    "tag": "053P",
+    "number": "31.14.11",
+    "kind": "lemma"
+  },
+  "divisors-lemma-pullback-meromorphic-sections-defined": {
+    "tag": "02OU",
+    "number": "31.24.5",
+    "kind": "lemma"
+  },
+  "divisors-lemma-quasi-projective-Noetherian-pic-effective-Cartier": {
+    "tag": "0AYM",
+    "number": "31.16.12",
+    "kind": "lemma"
+  },
+  "divisors-lemma-reflexive-over-regular-dim-2": {
+    "tag": "0B3N",
+    "number": "31.13.15",
+    "kind": "lemma"
+  },
+  "divisors-lemma-regular-section-associated-points": {
+    "tag": "0AYL",
+    "number": "31.16.1",
+    "kind": "lemma"
+  },
+  "divisors-lemma-remove-embedded-points": {
+    "tag": "02OL",
+    "number": "31.4.6",
+    "kind": "lemma"
+  },
+  "divisors-lemma-scheme-theoretically-dense-contain-embedded-points": {
+    "tag": "083P",
+    "number": "31.4.5",
+    "kind": "lemma"
+  },
+  "divisors-lemma-sum-closed-subschemes-effective-Cartier": {
+    "tag": "07ZV",
+    "number": "31.14.9",
+    "kind": "lemma"
+  },
+  "divisors-lemma-sum-effective-Cartier-divisors": {
+    "tag": "01WU",
+    "number": "31.14.7",
+    "kind": "lemma"
+  },
+  "divisors-lemma-sum-effective-Cartier-divisors-union": {
+    "tag": "0C4R",
+    "number": "31.14.10",
+    "kind": "lemma"
+  },
+  "divisors-lemma-weakass-reduced": {
+    "tag": "0EME",
+    "number": "31.5.12",
+    "kind": "lemma"
+  },
+  "divisors-lemma-wedge-product-ses": {
+    "tag": "0B3T",
+    "number": "31.16.13",
+    "kind": "lemma"
+  },
+  "divisors-lemma-weil-divisor-is-cartier-UFD": {
+    "tag": "0AGA",
+    "number": "31.16.7",
+    "kind": "lemma"
+  },
+  "divisors-section-Noetherian-effective-Cartier": {
+    "tag": "0B3Q",
+    "number": "31.16",
+    "kind": "section"
+  },
+  "divisors-section-effective-Cartier-divisors": {
+    "tag": "01WQ",
+    "number": "31.14",
+    "kind": "section"
+  },
+  "divisors-section-embedded": {
+    "tag": "05AJ",
+    "number": "31.4",
+    "kind": "section"
+  },
+  "divisors-section-invertible-modules": {
+    "tag": "0BD6",
+    "number": "31.29",
+    "kind": "section"
+  },
+  "homology-lemma-characterize-projectives": {
+    "tag": "013C",
+    "number": "12.28.2",
+    "kind": "lemma"
+  },
+  "injectives-proposition-presheaves-modules": {
+    "tag": "01DV",
+    "number": "19.8.5",
+    "kind": "proposition"
+  },
+  "more-algebra-lemma-UFD-Pic-trivial": {
+    "tag": "0BCH",
+    "number": "15.119.3",
+    "kind": "lemma"
+  },
+  "more-algebra-lemma-generalized-valuation-ring-modules": {
+    "tag": "0ASP",
+    "number": "15.126.3",
+    "kind": "lemma"
+  },
+  "more-algebra-lemma-modules-PID": {
+    "tag": "0ASV",
+    "number": "15.126.9",
+    "kind": "lemma"
+  },
+  "more-algebra-lemma-regular-local-UFD": {
+    "tag": "0AG0",
+    "number": "15.123.2",
+    "kind": "lemma"
+  },
+  "morphisms-definition-scheme-theoretic-intersection-union": {
+    "tag": "0C4H",
+    "number": "29.4.4",
+    "kind": "definition"
+  },
+  "morphisms-definition-scheme-theoretically-dense": {
+    "tag": "01RB",
+    "number": "29.7.1",
+    "kind": "definition"
+  },
+  "morphisms-example-scheme-theoretic-closure": {
+    "tag": "056C",
+    "number": "29.7.4",
+    "kind": "example"
+  },
+  "morphisms-lemma-characterize-scheme-theoretically-dense": {
+    "tag": "01RE",
+    "number": "29.7.5",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-flat-base-change-scheme-theoretic-image": {
+    "tag": "081I",
+    "number": "29.26.16",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-fppf-open": {
+    "tag": "01UA",
+    "number": "29.26.10",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-fpqc-quotient-topology": {
+    "tag": "02JY",
+    "number": "29.26.12",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-support-finite-type": {
+    "tag": "056J",
+    "number": "29.5.3",
+    "kind": "lemma"
+  },
+  "properties-lemma-ample-finite-set-in-principal-affine": {
+    "tag": "09NV",
+    "number": "28.30.6",
+    "kind": "lemma"
+  },
+  "properties-lemma-criterion-normal": {
+    "tag": "0345",
+    "number": "28.12.5",
+    "kind": "lemma"
+  },
+  "properties-lemma-immersion-into-noetherian": {
+    "tag": "01OX",
+    "number": "28.5.3",
+    "kind": "lemma"
+  },
+  "properties-lemma-invert-s-sections": {
+    "tag": "01PW",
+    "number": "28.18.2",
+    "kind": "lemma"
+  },
+  "properties-lemma-quasi-affine-invertible-nonvanishing-section": {
+    "tag": "0F20",
+    "number": "28.30.7",
+    "kind": "lemma"
+  },
+  "schemes-definition-inverse-image-closed-subscheme": {
+    "tag": "01JV",
+    "number": "26.17.7",
+    "kind": "definition"
+  },
+  "topology-definition-codimension": {
+    "tag": "02I3",
+    "number": "5.11.1",
+    "kind": "definition"
   }
 }

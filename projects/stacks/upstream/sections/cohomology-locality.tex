@@ -1,0 +1,216 @@
+\section{Locality of cohomology}
+\label{section-locality}
+
+\noindent
+The following lemma says there is no ambiguity in defining the cohomology
+of a sheaf $\mathcal{F}$ over an open.
+
+\begin{lemma}
+\label{lemma-cohomology-of-open}
+Let $X$ be a ringed space.
+Let $U \subset X$ be an open subspace.
+\begin{enumerate}
+\item If $\mathcal{I}$ is an injective $\mathcal{O}_X$-module
+then $\mathcal{I}|_U$ is an injective $\mathcal{O}_U$-module.
+\item For any sheaf of $\mathcal{O}_X$-modules $\mathcal{F}$ we have
+$H^p(U, \mathcal{F}) = H^p(U, \mathcal{F}|_U)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Denote $j : U \to X$ the open immersion.
+Recall that the functor $j^{-1}$ of restriction to $U$ is a right adjoint
+to the functor $j_!$ of extension by $0$, see
+Sheaves, Lemma \ref{sheaves-lemma-j-shriek-modules}.
+Moreover, $j_!$ is exact. Hence (1) follows from
+Homology, Lemma \ref{homology-lemma-adjoint-preserve-injectives}.
+
+\medskip\noindent
+By definition $H^p(U, \mathcal{F}) = H^p(\Gamma(U, \mathcal{I}^\bullet))$
+where $\mathcal{F} \to \mathcal{I}^\bullet$ is an injective resolution
+in $\textit{Mod}(\mathcal{O}_X)$.
+By the above we see that $\mathcal{F}|_U \to \mathcal{I}^\bullet|_U$
+is an injective resolution in $\textit{Mod}(\mathcal{O}_U)$.
+Hence $H^p(U, \mathcal{F}|_U)$ is equal to
+$H^p(\Gamma(U, \mathcal{I}^\bullet|_U))$.
+Of course $\Gamma(U, \mathcal{F}) = \Gamma(U, \mathcal{F}|_U)$ for
+any sheaf $\mathcal{F}$ on $X$.
+Hence the equality
+in (2).
+\end{proof}
+
+\noindent
+Let $X$ be a ringed space.
+Let $\mathcal{F}$ be a sheaf of $\mathcal{O}_X$-modules.
+Let $U \subset V \subset X$ be open subsets.
+Then there is a canonical {\it restriction mapping}
+\begin{equation}
+\label{equation-restriction-mapping}
+H^n(V, \mathcal{F})
+\longrightarrow
+H^n(U, \mathcal{F}), \quad
+\xi \longmapsto \xi|_U
+\end{equation}
+functorial in $\mathcal{F}$. Namely, choose any injective
+resolution $\mathcal{F} \to \mathcal{I}^\bullet$. The restriction
+mappings of the sheaves $\mathcal{I}^p$ give a morphism of complexes
+$$
+\Gamma(V, \mathcal{I}^\bullet)
+\longrightarrow
+\Gamma(U, \mathcal{I}^\bullet)
+$$
+The LHS is a complex representing $R\Gamma(V, \mathcal{F})$
+and the RHS is a complex representing $R\Gamma(U, \mathcal{F})$.
+We get the map on cohomology groups by applying the functor $H^n$.
+As indicated we will use the notation $\xi \mapsto \xi|_U$ to denote this map.
+Thus the rule $U \mapsto H^n(U, \mathcal{F})$ is a presheaf of
+$\mathcal{O}_X$-modules. This presheaf is customarily denoted
+$\underline{H}^n(\mathcal{F})$. We will give another interpretation
+of this presheaf in Lemma \ref{lemma-include}.
+
+\begin{lemma}
+\label{lemma-kill-cohomology-class-on-covering}
+Let $X$ be a ringed space.
+Let $\mathcal{F}$ be a sheaf of $\mathcal{O}_X$-modules.
+Let $U \subset X$ be an open subspace.
+Let $n > 0$ and let $\xi \in H^n(U, \mathcal{F})$.
+Then there exists an open covering
+$U = \bigcup_{i\in I} U_i$ such that $\xi|_{U_i} = 0$ for
+all $i \in I$.
+\end{lemma}
+
+\begin{proof}
+Let $\mathcal{F} \to \mathcal{I}^\bullet$ be an injective resolution.
+Then
+$$
+H^n(U, \mathcal{F}) =
+\frac{\Ker(\mathcal{I}^n(U) \to \mathcal{I}^{n + 1}(U))}
+{\Im(\mathcal{I}^{n - 1}(U) \to \mathcal{I}^n(U))}.
+$$
+Pick an element $\tilde \xi \in \mathcal{I}^n(U)$ representing the
+cohomology class in the presentation above. Since $\mathcal{I}^\bullet$
+is an injective resolution of $\mathcal{F}$ and $n > 0$ we see that
+the complex $\mathcal{I}^\bullet$ is exact in degree $n$. Hence
+$\Im(\mathcal{I}^{n - 1} \to \mathcal{I}^n) =
+\Ker(\mathcal{I}^n \to \mathcal{I}^{n + 1})$ as sheaves.
+Since $\tilde \xi$ is a section of the kernel sheaf over $U$
+we conclude there exists an open covering $U = \bigcup_{i \in I} U_i$
+such that $\tilde \xi|_{U_i}$ is the image under $d$ of a section
+$\xi_i \in \mathcal{I}^{n - 1}(U_i)$. By our definition of the
+restriction $\xi|_{U_i}$ as corresponding to the class of
+$\tilde \xi|_{U_i}$ we conclude.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-describe-higher-direct-images}
+Let $f : X \to Y$ be a morphism of ringed spaces.
+Let $\mathcal{F}$ be a $\mathcal{O}_X$-module.
+The sheaves $R^if_*\mathcal{F}$ are the sheaves
+associated to the presheaves
+$$
+V \longmapsto H^i(f^{-1}(V), \mathcal{F})
+$$
+with restriction mappings as in Equation (\ref{equation-restriction-mapping}).
+There is a similar statement for $R^if_*$ applied to a
+bounded below complex $\mathcal{F}^\bullet$.
+\end{lemma}
+
+\begin{proof}
+Let $\mathcal{F} \to \mathcal{I}^\bullet$ be an injective resolution.
+Then $R^if_*\mathcal{F}$ is by definition the $i$th cohomology sheaf
+of the complex
+$$
+f_*\mathcal{I}^0 \to f_*\mathcal{I}^1 \to f_*\mathcal{I}^2 \to \ldots
+$$
+By definition of the abelian category structure on $\mathcal{O}_Y$-modules
+this cohomology sheaf is the sheaf associated to the presheaf
+$$
+V
+\longmapsto
+\frac{\Ker(f_*\mathcal{I}^i(V) \to f_*\mathcal{I}^{i + 1}(V))}
+{\Im(f_*\mathcal{I}^{i - 1}(V) \to f_*\mathcal{I}^i(V))}
+$$
+and this is obviously equal to
+$$
+\frac{\Ker(\mathcal{I}^i(f^{-1}(V)) \to \mathcal{I}^{i + 1}(f^{-1}(V)))}
+{\Im(\mathcal{I}^{i - 1}(f^{-1}(V)) \to \mathcal{I}^i(f^{-1}(V)))}
+$$
+which is equal to $H^i(f^{-1}(V), \mathcal{F})$
+and we win.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-localize-higher-direct-images}
+Let $f : X \to Y$ be a morphism of ringed spaces.
+Let $\mathcal{F}$ be an $\mathcal{O}_X$-module.
+Let $V \subset Y$ be an open subspace.
+Denote $g : f^{-1}(V) \to V$ the restriction of $f$.
+Then we have
+$$
+R^pg_*(\mathcal{F}|_{f^{-1}(V)}) = (R^pf_*\mathcal{F})|_V
+$$
+There is a similar statement for the
+derived image $Rf_*\mathcal{F}^\bullet$ where $\mathcal{F}^\bullet$
+is a bounded below complex of $\mathcal{O}_X$-modules.
+\end{lemma}
+
+\begin{proof}
+First proof. Apply Lemmas \ref{lemma-describe-higher-direct-images}
+and \ref{lemma-cohomology-of-open} to see the displayed equality.
+Second proof. Choose an injective resolution
+$\mathcal{F} \to \mathcal{I}^\bullet$
+and use that $\mathcal{F}|_{f^{-1}(V)} \to \mathcal{I}^\bullet|_{f^{-1}(V)}$
+is an injective resolution also.
+\end{proof}
+
+\begin{remark}
+\label{remark-daniel}
+Here is a different approach to the proofs of
+Lemmas \ref{lemma-kill-cohomology-class-on-covering} and
+\ref{lemma-describe-higher-direct-images} above.
+Let $(X, \mathcal{O}_X)$ be a ringed space.
+Let $i_X : \textit{Mod}(\mathcal{O}_X) \to \textit{PMod}(\mathcal{O}_X)$
+be the inclusion functor and let $\#$ be the sheafification functor.
+Recall that $i_X$ is left exact and $\#$ is exact.
+\begin{enumerate}
+\item First prove Lemma \ref{lemma-include} below which says that the
+right derived functors of $i_X$ are given by
+$R^pi_X\mathcal{F} = \underline{H}^p(\mathcal{F})$.
+Here is another proof: The equality is clear for $p = 0$.
+Both $(R^pi_X)_{p \geq 0}$ and $(\underline{H}^p)_{p \geq 0}$
+are delta functors vanishing on injectives, hence both are universal,
+hence they are isomorphic. See Homology,
+Section \ref{homology-section-cohomological-delta-functor}.
+\item A restatement of Lemma \ref{lemma-kill-cohomology-class-on-covering}
+is that $(\underline{H}^p(\mathcal{F}))^\# = 0$, $p > 0$ for any sheaf of
+$\mathcal{O}_X$-modules $\mathcal{F}$.
+To see this is true, use that ${}^\#$ is exact so
+$$
+(\underline{H}^p(\mathcal{F}))^\# =
+(R^pi_X\mathcal{F})^\# =
+R^p(\# \circ i_X)(\mathcal{F}) = 0
+$$
+because $\# \circ i_X$ is the identity functor.
+\item Let $f : X \to Y$ be a morphism of ringed spaces.
+Let $\mathcal{F}$ be an $\mathcal{O}_X$-module. The presheaf
+$V \mapsto H^p(f^{-1}V, \mathcal{F})$ is equal to
+$R^p (i_Y \circ f_*)\mathcal{F}$. You can prove this by noticing that
+both give universal delta functors as in the argument of (1) above.
+Hence Lemma \ref{lemma-describe-higher-direct-images}
+says that $R^p f_* \mathcal{F}= (R^p (i_Y \circ f_*)\mathcal{F})^\#$.
+Again using that $\#$ is exact a that $\# \circ i_Y$ is the identity
+functor we see that
+$$
+R^p f_* \mathcal{F} =
+R^p(\# \circ i_Y \circ f_*)\mathcal{F} =
+(R^p (i_Y \circ f_*)\mathcal{F})^\#
+$$
+as desired.
+\end{enumerate}
+\end{remark}
+
+
+
+
+
+

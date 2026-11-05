@@ -1,0 +1,118 @@
+\section{The genus of a curve}
+\label{section-genus}
+
+\noindent
+If $X$ is a smooth projective geometrically irreducible curve over a field $k$,
+then we've previously defined the genus of $X$ as the dimension of
+$H^1(X, \mathcal{O}_X)$, see
+Picard Schemes of Curves, Definition \ref{pic-definition-genus}.
+Observe that $H^0(X, \mathcal{O}_X) = k$ in this case, see
+Varieties, Lemma \ref{varieties-lemma-regular-functions-proper-variety}.
+Let us generalize this as follows.
+
+\begin{definition}
+\label{definition-genus}
+Let $k$ be a field. Let $X$ be a proper scheme over $k$ having
+dimension $1$ and $H^0(X, \mathcal{O}_X) = k$.
+Then the {\it genus} of $X$ is $g = \dim_k H^1(X, \mathcal{O}_X)$.
+\end{definition}
+
+\noindent
+This is sometimes called the {\it arithmetic genus} of $X$.
+In the literature the arithmetic genus of a proper curve $X$
+over $k$ is sometimes defined as
+$$
+p_a(X) = 1 - \chi(X, \mathcal{O}_X) =
+1 - \dim_k H^0(X, \mathcal{O}_X) + \dim_k H^1(X, \mathcal{O}_X)
+$$
+This agrees with our definition when it applies because we assume
+$H^0(X, \mathcal{O}_X) = k$. But note that
+\begin{enumerate}
+\item $p_a(X)$ can be negative, and
+\item $p_a(X)$ depends on the base field $k$ and should be written $p_a(X/k)$.
+\end{enumerate}
+For example if $k = \mathbf{Q}$
+and $X = \mathbf{P}^1_{\mathbf{Q}(i)}$ then
+$p_a(X/\mathbf{Q}) = -1$ and $p_a(X/\mathbf{Q}(i)) = 0$.
+
+\medskip\noindent
+The assumption that $H^0(X, \mathcal{O}_X) = k$ in our definition has
+two consequences. On the one hand, it means there is no confusion about
+the base field. On the other hand, it implies the scheme $X$ is
+Cohen-Macaulay and equidimensional of dimension $1$
+(Lemma \ref{lemma-automatic}). If $\omega_X$ denotes the dualizing
+module as in Lemmas \ref{lemma-duality-dim-1} and
+\ref{lemma-duality-dim-1-CM} we see that
+\begin{equation}
+\label{equation-genus}
+g = \dim_k H^1(X, \mathcal{O}_X) = \dim_k H^0(X, \omega_X)
+\end{equation}
+by duality, see Remark \ref{remark-rework-duality-locally-free}.
+
+\medskip\noindent
+If $X$ is proper over $k$ of dimension $\leq 1$ and $H^0(X, \mathcal{O}_X)$
+is not equal to the ground field $k$, instead of using the arithmetic genus
+$p_a(X)$ given by the displayed formula above we shall use the invariant
+$\chi(X, \mathcal{O}_X)$. In fact, it is advocated in
+\cite[page 276]{FAC} and \cite[Introduction]{Hirzebruch}
+that we should call $\chi(X, \mathcal{O}_X)$ the arithmetic genus.
+
+\begin{lemma}
+\label{lemma-genus-base-change}
+Let $k'/k$ be a field extension. Let $X$ be a proper scheme over $k$ having
+dimension $1$ and $H^0(X, \mathcal{O}_X) = k$. Then $X_{k'}$ is a
+proper scheme over $k'$
+having dimension $1$ and $H^0(X_{k'}, \mathcal{O}_{X_{k'}}) = k'$.
+Moreover the genus of $X_{k'}$ is equal to the genus of $X$.
+\end{lemma}
+
+\begin{proof}
+The dimension of $X_{k'}$ is $1$ for example by
+Morphisms, Lemma \ref{morphisms-lemma-dimension-fibre-after-base-change}.
+The morphism $X_{k'} \to \Spec(k')$ is proper by
+Morphisms, Lemma \ref{morphisms-lemma-base-change-proper}.
+The equality $H^0(X_{k'}, \mathcal{O}_{X_{k'}}) = k'$ follows from
+Cohomology of Schemes, Lemma
+\ref{coherent-lemma-flat-base-change-cohomology}.
+The equality of the genus follows from the same lemma.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-genus-gorenstein}
+Let $k$ be a field. Let $X$ be a proper scheme over $k$ having
+dimension $1$ and $H^0(X, \mathcal{O}_X) = k$. If $X$ is Gorenstein,
+then
+$$
+\deg(\omega_X) = 2g - 2
+$$
+where $g$ is the genus of $X$ and $\omega_X$ is as in
+Lemma \ref{lemma-duality-dim-1}.
+\end{lemma}
+
+\begin{proof}
+Immediate from Lemma \ref{lemma-rr}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-genus-smooth}
+Let $X$ be a smooth proper curve over a field $k$
+with $H^0(X, \mathcal{O}_X) = k$. Then
+$$
+\dim_k H^0(X, \Omega_{X/k}) = g
+\quad\text{and}\quad
+\deg(\Omega_{X/k}) = 2g - 2
+$$
+where $g$ is the genus of $X$.
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-duality-dim-1} we have $\Omega_{X/k} = \omega_X$.
+Hence the formulas hold by (\ref{equation-genus}) and
+Lemma \ref{lemma-genus-gorenstein}.
+\end{proof}
+
+
+
+
+
+

@@ -1,0 +1,493 @@
+\section{The alternating {\v C}ech complex}
+\label{section-alternating-cech}
+
+\noindent
+This section compares the {\v C}ech complex with the alternating {\v C}ech
+complex and some related complexes.
+
+\medskip\noindent
+Let $X$ be a topological space. Let $\mathcal{U} : U = \bigcup_{i \in I} U_i$
+be an open covering. For $p \geq 0$ set
+$$
+\check{\mathcal{C}}_{alt}^p(\mathcal{U}, \mathcal{F})
+=
+\left\{
+\begin{matrix}
+s \in  \check{\mathcal{C}}^p(\mathcal{U}, \mathcal{F})
+\text{ such that }
+s_{i_0 \ldots i_p} = 0 \text{ if } i_n = i_m \text{ for some } n \not = m\\
+\text{ and }
+s_{i_0\ldots i_n \ldots i_m \ldots i_p}
+=
+-s_{i_0\ldots i_m \ldots i_n \ldots i_p}
+\text{ in any case.}
+\end{matrix}
+\right\}
+$$
+We omit the verification that the differential $d$ of
+Equation (\ref{equation-d-cech}) maps
+$\check{\mathcal{C}}^p_{alt}(\mathcal{U}, \mathcal{F})$ into
+$\check{\mathcal{C}}^{p + 1}_{alt}(\mathcal{U}, \mathcal{F})$.
+
+\begin{definition}
+\label{definition-alternating-cech-complex}
+Let $X$ be a topological space. Let $\mathcal{U} : U = \bigcup_{i \in I} U_i$
+be an open covering. Let $\mathcal{F}$ be an abelian presheaf on $X$.
+The complex $\check{\mathcal{C}}_{alt}^\bullet(\mathcal{U}, \mathcal{F})$
+is the {\it alternating {\v C}ech complex} associated to $\mathcal{F}$ and the
+open covering $\mathcal{U}$.
+\end{definition}
+
+\noindent
+Hence there is a canonical morphism of complexes
+$$
+\check{\mathcal{C}}_{alt}^\bullet(\mathcal{U}, \mathcal{F})
+\longrightarrow
+\check{\mathcal{C}}^\bullet(\mathcal{U}, \mathcal{F})
+$$
+namely the inclusion of the alternating {\v C}ech complex into the
+usual {\v C}ech complex.
+
+\medskip\noindent
+Suppose our covering $\mathcal{U} : U = \bigcup_{i \in I} U_i$ comes
+equipped with a total ordering $<$ on $I$. In this case, set
+$$
+\check{\mathcal{C}}_{ord}^p(\mathcal{U}, \mathcal{F})
+=
+\prod\nolimits_{(i_0, \ldots, i_p) \in I^{p + 1}, i_0 < \ldots < i_p}
+\mathcal{F}(U_{i_0\ldots i_p}).
+$$
+This is an abelian group. For
+$s \in \check{\mathcal{C}}_{ord}^p(\mathcal{U}, \mathcal{F})$ we denote
+$s_{i_0\ldots i_p}$ its value in $\mathcal{F}(U_{i_0\ldots i_p})$.
+We define
+$$
+d : \check{\mathcal{C}}_{ord}^p(\mathcal{U}, \mathcal{F})
+\longrightarrow
+\check{\mathcal{C}}_{ord}^{p + 1}(\mathcal{U}, \mathcal{F})
+$$
+by the formula
+$$
+d(s)_{i_0\ldots i_{p + 1}}
+=
+\sum\nolimits_{j = 0}^{p + 1}
+(-1)^j
+s_{i_0\ldots \hat i_j \ldots i_{p + 1}}|_{U_{i_0\ldots i_{p + 1}}}
+$$
+for any $i_0 < \ldots < i_{p + 1}$. Note that this formula is identical
+to Equation (\ref{equation-d-cech}).
+It is straightforward to see that $d \circ d = 0$. In other words
+$\check{\mathcal{C}}_{ord}^\bullet(\mathcal{U}, \mathcal{F})$ is a complex.
+
+\begin{definition}
+\label{definition-ordered-cech-complex}
+Let $X$ be a topological space.
+Let $\mathcal{U} : U = \bigcup_{i \in I} U_i$ be an open covering.
+Assume given a total ordering on $I$.
+Let $\mathcal{F}$ be an abelian presheaf on $X$.
+The complex $\check{\mathcal{C}}_{ord}^\bullet(\mathcal{U}, \mathcal{F})$
+is the {\it ordered {\v C}ech complex} associated to $\mathcal{F}$, the
+open covering $\mathcal{U}$ and the given total ordering on $I$.
+\end{definition}
+
+\noindent
+This complex is sometimes called the alternating {\v C}ech complex.
+The reason is that there is an obvious comparison map between
+the ordered {\v C}ech complex and the alternating {\v C}ech complex.
+Namely, consider the map
+$$
+c :
+\check{\mathcal{C}}_{ord}^\bullet(\mathcal{U}, \mathcal{F})
+\longrightarrow
+\check{\mathcal{C}}^\bullet(\mathcal{U}, \mathcal{F})
+$$
+given by the rule
+$$
+c(s)_{i_0\ldots i_p} =
+\left\{
+\begin{matrix}
+0 &
+\text{if} &
+i_n = i_m \text{ for some } n \not = m\\
+\text{sgn}(\sigma) s_{i_{\sigma(0)}\ldots i_{\sigma(p)}} &
+\text{if} &
+i_{\sigma(0)} < i_{\sigma(1)} < \ldots < i_{\sigma(p)}
+\end{matrix}
+\right.
+$$
+Here $\sigma$ denotes a permutation of $\{0, \ldots, p\}$ and
+$\text{sgn}(\sigma)$ denotes its sign. The alternating and ordered
+{\v C}ech complexes are often identified in the literature via the map
+$c$. Namely we have the following easy lemma.
+
+\begin{lemma}
+\label{lemma-ordered-alternating}
+Let $X$ be a topological space.
+Let $\mathcal{U} : U = \bigcup_{i \in I} U_i$ be an open covering.
+Assume $I$ comes equipped with a total ordering.
+The map $c$ is a morphism of complexes. In fact it induces
+an isomorphism
+$$
+c : \check{\mathcal{C}}_{ord}^\bullet(\mathcal{U}, \mathcal{F})
+\to \check{\mathcal{C}}_{alt}^\bullet(\mathcal{U}, \mathcal{F})
+$$
+of complexes.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\noindent
+There is also a map
+$$
+\pi :
+\check{\mathcal{C}}^\bullet(\mathcal{U}, \mathcal{F})
+\longrightarrow
+\check{\mathcal{C}}_{ord}^\bullet(\mathcal{U}, \mathcal{F})
+$$
+which is described by the rule
+$$
+\pi(s)_{i_0\ldots i_p} = s_{i_0\ldots i_p}
+$$
+whenever $i_0 < i_1 < \ldots < i_p$.
+
+\begin{lemma}
+\label{lemma-project-to-ordered}
+Let $X$ be a topological space.
+Let $\mathcal{U} : U = \bigcup_{i \in I} U_i$ be an open covering.
+Assume $I$ comes equipped with a total ordering.
+The map $\pi : \check{\mathcal{C}}^\bullet(\mathcal{U}, \mathcal{F})
+\to \check{\mathcal{C}}_{ord}^\bullet(\mathcal{U}, \mathcal{F})$
+is a morphism of complexes. It induces an isomorphism
+$$
+\pi : \check{\mathcal{C}}_{alt}^\bullet(\mathcal{U}, \mathcal{F})
+\to \check{\mathcal{C}}_{ord}^\bullet(\mathcal{U}, \mathcal{F})
+$$
+of complexes which is a left inverse to the morphism $c$.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{remark}
+\label{remark-compared-ordered-complexes}
+This means that if we have two total orderings $<_1$ and $<_2$ on
+the index set $I$, then we get an isomorphism of complexes
+$\tau = \pi_2 \circ c_1 :
+\check{\mathcal{C}}_{ord\text{-}1}(\mathcal{U}, \mathcal{F}) \to
+\check{\mathcal{C}}_{ord\text{-}2}(\mathcal{U}, \mathcal{F})$.
+It is clear that
+$$
+\tau(s)_{i_0 \ldots i_p} =
+\text{sign}(\sigma) s_{i_{\sigma(0)} \ldots i_{\sigma(p)}}
+$$
+where $i_0 <_1 i_1 <_1 \ldots <_1 i_p$ and
+$i_{\sigma(0)} <_2 i_{\sigma(1)} <_2 \ldots <_2 i_{\sigma(p)}$.
+This is the sense in which the ordered {\v C}ech complex is independent
+of the chosen total ordering.
+\end{remark}
+
+\begin{lemma}
+\label{lemma-alternating-usual}
+Let $X$ be a topological space.
+Let $\mathcal{U} : U = \bigcup_{i \in I} U_i$ be an open covering.
+Assume $I$ comes equipped with a total ordering.
+The map $c \circ \pi$ is homotopic to the identity on
+$\check{\mathcal{C}}^\bullet(\mathcal{U}, \mathcal{F})$.
+In particular the inclusion map
+$\check{\mathcal{C}}_{alt}^\bullet(\mathcal{U}, \mathcal{F}) \to
+\check{\mathcal{C}}^\bullet(\mathcal{U}, \mathcal{F})$
+is a homotopy equivalence.
+\end{lemma}
+
+\begin{proof}
+For any multi-index $(i_0, \ldots, i_p) \in I^{p + 1}$ there exists
+a unique permutation $\sigma : \{0, \ldots, p\} \to \{0, \ldots, p\}$
+such that
+$$
+i_{\sigma(0)} \leq i_{\sigma(1)} \leq \ldots \leq i_{\sigma(p)}
+\quad
+\text{and}
+\quad
+\sigma(j) < \sigma(j + 1)
+\quad
+\text{if}
+\quad
+i_{\sigma(j)} = i_{\sigma(j + 1)}.
+$$
+We denote this permutation $\sigma = \sigma^{i_0 \ldots i_p}$.
+
+\medskip\noindent
+For any permutation $\sigma : \{0, \ldots, p\} \to \{0, \ldots, p\}$
+and any $a$, $0 \leq a \leq p$ we denote $\sigma_a$
+the unique permutation of $\{0, \ldots, p\}$ such that
+$\sigma_a(j) = \sigma(j)$ for $0 \leq j < a$ and such that
+$\sigma_a(a) < \sigma_a(a + 1) < \ldots < \sigma_a(p)$.
+So if $p = 3$ and $\sigma$, $\tau$ are given by
+$$
+\begin{matrix}
+\text{id} & 0 & 1 & 2 & 3 \\
+\sigma & 3 & 2 & 1 & 0
+\end{matrix}
+\quad \text{and} \quad
+\begin{matrix}
+\text{id} & 0 & 1 & 2 & 3 \\
+\tau & 3 & 0 & 2 & 1
+\end{matrix}
+$$
+then we have
+$$
+\begin{matrix}
+\text{id} & 0 & 1 & 2 & 3 \\
+\sigma_0 & 0 & 1 & 2 & 3 \\
+\sigma_1 & 3 & 0 & 1 & 2 \\
+\sigma_2 & 3 & 2 & 0 & 1 \\
+\sigma_3 & 3 & 2 & 1 & 0 \\
+\end{matrix}
+\quad \text{and} \quad
+\begin{matrix}
+\text{id} & 0 & 1 & 2 & 3 \\
+\tau_0 & 0 & 1 & 2 & 3 \\
+\tau_1 & 3 & 0 & 1 & 2 \\
+\tau_2 & 3 & 0 & 1 & 2 \\
+\tau_3 & 3 & 0 & 2 & 1 \\
+\end{matrix}
+$$
+It is clear that always $\sigma_0 = \text{id}$ and $\sigma_p = \sigma$.
+
+\medskip\noindent
+Having introduced this notation we define for
+$s \in \check{\mathcal{C}}^{p + 1}(\mathcal{U}, \mathcal{F})$
+the element $h(s) \in \check{\mathcal{C}}^p(\mathcal{U}, \mathcal{F})$
+to be the element with components
+\begin{equation}
+\label{equation-first-homotopy}
+h(s)_{i_0\ldots i_p} =
+\sum\nolimits_{0 \leq a \leq p}
+(-1)^a \text{sign}(\sigma_a)
+s_{i_{\sigma(0)} \ldots i_{\sigma(a)} i_{\sigma_a(a)} \ldots i_{\sigma_a(p)}}
+\end{equation}
+where $\sigma = \sigma^{i_0 \ldots i_p}$. The index
+$i_{\sigma(a)}$ occurs twice in
+$i_{\sigma(0)} \ldots i_{\sigma(a)} i_{\sigma_a(a)} \ldots i_{\sigma_a(p)}$
+once in the first group of $a + 1$ indices and once in the second group
+of $p - a + 1$ indices since $\sigma_a(j) = \sigma(a)$ for some
+$j \geq a$ by definition of $\sigma_a$. Hence the sum makes sense since each
+of the elements
+$s_{i_{\sigma(0)} \ldots i_{\sigma(a)} i_{\sigma_a(a)} \ldots i_{\sigma_a(p)}}$
+is defined over the open $U_{i_0 \ldots i_p}$.
+Note also that for $a = 0$ we get $s_{i_0 \ldots i_p}$ and
+for $a = p$ we get
+$(-1)^p \text{sign}(\sigma) s_{i_{\sigma(0)} \ldots i_{\sigma(p)}}$.
+
+\medskip\noindent
+We claim that
+$$
+(dh + hd)(s)_{i_0 \ldots i_p} =
+s_{i_0 \ldots i_p} -
+\text{sign}(\sigma) s_{i_{\sigma(0)} \ldots i_{\sigma(p)}}
+$$
+where $\sigma = \sigma^{i_0 \ldots i_p}$. We omit the verification
+of this claim. (There is a PARI/gp script called first-homotopy.gp
+in the stacks-project subdirectory scripts which can be used to check
+finitely many instances of this claim.
+We wrote this script to make sure the signs are correct.)
+Write
+$$
+\kappa :
+\check{\mathcal{C}}^\bullet(\mathcal{U}, \mathcal{F})
+\longrightarrow
+\check{\mathcal{C}}^\bullet(\mathcal{U}, \mathcal{F})
+$$
+for the operator given by the rule
+$$
+\kappa(s)_{i_0 \ldots i_p} =
+\text{sign}(\sigma^{i_0 \ldots i_p}) s_{i_{\sigma(0)} \ldots i_{\sigma(p)}}.
+$$
+The claim above implies that $\kappa$ is a morphism of complexes and that
+$\kappa$ is homotopic to the identity map of the {\v C}ech complex.
+This does not immediately imply the lemma since
+the image of the operator $\kappa$ is not the alternating subcomplex.
+Namely, the image of $\kappa$ is the ``semi-alternating'' complex
+$\check{\mathcal{C}}_{semi\text{-}alt}^p(\mathcal{U}, \mathcal{F})$
+where $s$ is a $p$-cochain of this complex if and only if
+$$
+s_{i_0 \ldots i_p} = \text{sign}(\sigma) s_{i_{\sigma(0)} \ldots i_{\sigma(p)}}
+$$
+for any $(i_0, \ldots, i_p) \in I^{p + 1}$ with
+$\sigma = \sigma^{i_0 \ldots i_p}$.
+We introduce yet another variant {\v C}ech complex, namely the semi-ordered
+{\v C}ech complex defined by
+$$
+\check{\mathcal{C}}_{semi\text{-}ord}^p(\mathcal{U}, \mathcal{F})
+=
+\prod\nolimits_{i_0 \leq i_1 \leq \ldots \leq i_p}
+\mathcal{F}(U_{i_0 \ldots i_p})
+$$
+It is easy to see that Equation (\ref{equation-d-cech}) also defines
+a differential and hence that we get a complex. It is also clear
+(analogous to Lemma \ref{lemma-project-to-ordered}) that the projection map
+$$
+\check{\mathcal{C}}_{semi\text{-}alt}^\bullet(\mathcal{U}, \mathcal{F})
+\longrightarrow
+\check{\mathcal{C}}_{semi\text{-}ord}^\bullet(\mathcal{U}, \mathcal{F})
+$$
+is an isomorphism of complexes.
+
+\medskip\noindent
+Hence the Lemma follows if we can show that the obvious inclusion map
+$$
+\check{\mathcal{C}}_{ord}^p(\mathcal{U}, \mathcal{F})
+\longrightarrow
+\check{\mathcal{C}}_{semi\text{-}ord}^p(\mathcal{U}, \mathcal{F})
+$$
+is a homotopy equivalence. To see this we use the homotopy
+\begin{equation}
+\label{equation-second-homotopy}
+h(s)_{i_0 \ldots i_p} =
+\left\{
+\begin{matrix}
+0 & \text{if} & i_0 < i_1 < \ldots < i_p \\
+(-1)^a s_{i_0 \ldots i_{a - 1} i_a i_a i_{a + 1} \ldots i_p}
+& \text{if} & i_0 < i_1 < \ldots < i_{a - 1} < i_a = i_{a + 1}
+\end{matrix}
+\right.
+\end{equation}
+We claim that
+$$
+(dh + hd)(s)_{i_0 \ldots i_p} =
+\left\{
+\begin{matrix}
+0 & \text{if} & i_0 < i_1 < \ldots < i_p \\
+s_{i_0 \ldots i_p}
+& \text{else} &
+\end{matrix}
+\right.
+$$
+We omit the verification. (There is a PARI/gp script called second-homotopy.gp
+in the stacks-project subdirectory scripts which can be used to check
+finitely many instances of this claim.
+We wrote this script to make sure the signs are correct.)
+The claim clearly shows that the composition
+$$
+\check{\mathcal{C}}_{semi\text{-}ord}^\bullet(\mathcal{U}, \mathcal{F})
+\longrightarrow
+\check{\mathcal{C}}_{ord}^\bullet(\mathcal{U}, \mathcal{F})
+\longrightarrow
+\check{\mathcal{C}}_{semi\text{-}ord}^\bullet(\mathcal{U}, \mathcal{F})
+$$
+of the projection with the natural inclusion
+is homotopic to the identity map as desired.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-alternating-cech-trivial}
+Let $X$ be a topological space. Let $\mathcal{F}$ be an abelian presheaf on $X$.
+Let $\mathcal{U} : U = \bigcup_{i \in I} U_i$ be an open covering. If
+$U_i = U$ for some $i \in I$, then the extended alternating {\v C}ech complex
+$$
+\mathcal{F}(U) \to \check{\mathcal{C}}_{alt}^\bullet(\mathcal{U}, \mathcal{F})
+$$
+obtained by putting $\mathcal{F}(U)$ in degree $-1$ with differential given by
+the canonical map of $\mathcal{F}(U)$ into
+$\check{\mathcal{C}}^0(\mathcal{U}, \mathcal{F})$
+is homotopy equivalent to $0$. Similarly, for any total ordering on $I$
+the extended ordered {\v C}ech complex
+$$
+\mathcal{F}(U) \to
+\check{\mathcal{C}}_{ord}^\bullet(\mathcal{U}, \mathcal{F})
+$$
+is homotopy equivalent to $0$.
+\end{lemma}
+
+\begin{proof}[First proof]
+Combine Lemmas \ref{lemma-cech-trivial} and \ref{lemma-alternating-usual}.
+\end{proof}
+
+\begin{proof}[Second proof]
+Since the alternating and ordered {\v C}ech complexes are isomorphic
+it suffices to prove this for the ordered one.
+We will use standard notation: a cochain $s$ of degree $p$
+in the extended ordered {\v C}ech complex has the form
+$s = (s_{i_0 \ldots i_p})$ where $s_{i_0 \ldots i_p}$ is in
+$\mathcal{F}(U_{i_0 \ldots i_p})$ and $i_0 < \ldots < i_p$.
+With this notation we have
+$$
+d(x)_{i_0 \ldots i_{p + 1}} =
+\sum\nolimits_j (-1)^j x_{i_0 \ldots \hat i_j \ldots i_p}
+$$
+Fix an index $i \in I$ with $U = U_i$.
+As homotopy we use the maps
+$$
+h : \text{cochains of degree }p + 1 \to \text{cochains of degree }p
+$$
+given by the rule
+$$
+h(s)_{i_0 \ldots i_p} = 0 \text{ if } i \in \{i_0, \ldots, i_p\}
+\text{ and }
+h(s)_{i_0 \ldots i_p} = 
+(-1)^j s_{i_0 \ldots i_j i i_{j + 1} \ldots i_p} \text{ if not}
+$$
+Here $j$ is the unique index such that $i_j < i < i_{j + 1}$ in the
+second case; also, since $U = U_i$ we have the equality
+$$
+\mathcal{F}(U_{i_0 \ldots i_p}) =
+\mathcal{F}(U_{i_0 \ldots i_j i i_{j + 1} \ldots i_p})
+$$
+which we can use to make sense of thinking of
+$(-1)^j s_{i_0 \ldots i_j i i_{j + 1} \ldots i_p}$
+as an element of $\mathcal{F}(U_{i_0 \ldots i_p})$.
+We will show by a computation that $d h + h d$ equals
+the negative of the identity map which finishes the proof.
+To do this fix $s$ a cochain of degree $p$ and let
+$i_0 < \ldots < i_p$ be elements of $I$.
+
+\medskip\noindent
+Case I: $i \in \{i_0, \ldots, i_p\}$. Say $i = i_t$. Then we have
+$h(d(s))_{i_0 \ldots i_p} = 0$. On the other hand we have
+$$
+d(h(s))_{i_0 \ldots i_p} =
+\sum (-1)^j h(s)_{i_0 \ldots \hat i_j \ldots i_p} =
+(-1)^t h(s)_{i_0 \ldots \hat i \ldots i_p} =
+(-1)^t (-1)^{t - 1} s_{i_0 \ldots i_p}
+$$
+Thus $(dh + hd)(s)_{i_0 \ldots i_p} = -s_{i_0 \ldots i_p}$ as desired.
+
+\medskip\noindent
+Case II: $i \not \in \{i_0, \ldots, i_p\}$. Let $j$ be such that
+$i_j < i < i_{j + 1}$. Then we see that
+\begin{align*}
+h(d(s))_{i_0 \ldots i_p}
+& =
+(-1)^j d(s)_{i_0 \ldots i_j i i_{j + 1} \ldots i_p} \\
+& =
+\sum\nolimits_{j' \leq j} (-1)^{j + j'}
+s_{i_0 \ldots \hat i_{j'} \ldots i_j i i_{j + 1} \ldots i_p} -
+s_{i_0 \ldots i_p} \\
+&
++ \sum\nolimits_{j' > j} (-1)^{j + j' + 1}
+s_{i_0 \ldots i_j i i_{j + 1} \ldots \hat i_{j'} \ldots i_p}
+\end{align*}
+On the other hand we have
+\begin{align*}
+d(h(s))_{i_0 \ldots i_p}
+& =
+\sum\nolimits_{j'} (-1)^{j'} h(s)_{i_0 \ldots \hat i_{j'} \ldots i_p} \\
+& =
+\sum\nolimits_{j' \leq j} (-1)^{j' + j - 1}
+s_{i_0 \ldots \hat i_{j'} \ldots i_j i i_{j + 1} \ldots i_p} \\
+& +
+\sum\nolimits_{j' > j} (-1)^{j' + j}
+s_{i_0 \ldots i_j i i_{j + 1} \ldots \hat i_{j'} \ldots i_p}
+\end{align*}
+Adding these up we obtain
+$(dh + hd)(s)_{i_0 \ldots i_p} = - s_{i_0 \ldots i_p}$
+as desired.
+\end{proof}
+
+
+
+
+

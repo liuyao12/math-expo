@@ -1,0 +1,636 @@
+\section{Proj of a graded ring}
+\label{section-proj}
+
+\noindent
+In this section we construct Proj of a graded ring
+following \cite[II, Section 2]{EGA}.
+
+\medskip\noindent
+Let $S$ be a graded ring. Consider the topological space $\text{Proj}(S)$
+associated to $S$, see Algebra, Section \ref{algebra-section-proj}.
+We will endow this space with a sheaf of rings $\mathcal{O}_{\text{Proj}(S)}$
+such that the resulting pair $(\text{Proj}(S), \mathcal{O}_{\text{Proj}(S)})$
+will be a scheme.
+
+\medskip\noindent
+Recall that $\text{Proj}(S)$ has a basis of open sets $D_{+}(f)$,
+$f \in S_d$, $d \geq 1$ which we call {\it standard opens}, see Algebra,
+Section \ref{algebra-section-proj}. This terminology will always
+imply that $f$ is homogeneous of positive degree even if we forget to
+mention it. In addition, the intersection of two standard opens is another:
+$D_{+}(f) \cap D_{+}(g) = D_{+}(fg)$, for $f, g \in S$ homogeneous of positive
+degree.
+
+\begin{lemma}
+\label{lemma-standard-open}
+Let $S$ be a graded ring. Let $f \in S$ homogeneous of positive degree.
+\begin{enumerate}
+\item If $g\in S$ homogeneous of positive degree
+and $D_{+}(g) \subset D_{+}(f)$, then
+\begin{enumerate}
+\item $f$ is invertible in $S_g$, and
+$f^{\deg(g)}/g^{\deg(f)}$ is invertible in $S_{(g)}$,
+\item $g^e = af$ for some $e \geq 1$ and $a \in S$ homogeneous,
+\item there is a canonical $S$-algebra map $S_f \to S_g$,
+\item there is a canonical $S_0$-algebra map $S_{(f)} \to S_{(g)}$
+compatible with the map $S_f \to S_g$,
+\item the map $S_{(f)} \to S_{(g)}$ induces an isomorphism
+$$
+(S_{(f)})_{g^{\deg(f)}/f^{\deg(g)}} \cong S_{(g)},
+$$
+\item these maps induce a commutative diagram of
+topological spaces
+$$
+\xymatrix{
+D_{+}(g) \ar[d] &
+\{\mathbf{Z}\text{-graded primes of }S_g\} \ar[l] \ar[r] \ar[d] &
+\Spec(S_{(g)}) \ar[d] \\
+D_{+}(f) &
+\{\mathbf{Z}\text{-graded primes of }S_f\} \ar[l] \ar[r] &
+\Spec(S_{(f)})
+}
+$$
+where the horizontal maps are homeomorphisms and the vertical maps
+are open immersions,
+\item there are compatible canonical $S_f$ and $S_{(f)}$-module
+maps $M_f \to M_g$ and $M_{(f)} \to M_{(g)}$ for any graded $S$-module $M$,
+and
+\item the map $M_{(f)} \to M_{(g)}$ induces an isomorphism
+$$
+(M_{(f)})_{g^{\deg(f)}/f^{\deg(g)}} \cong M_{(g)}.
+$$
+\end{enumerate}
+\item Any open covering of $D_{+}(f)$ can be refined to a finite
+open covering of the form $D_{+}(f) = \bigcup_{i = 1}^n D_{+}(g_i)$.
+\item Let $g_1, \ldots, g_n \in S$ be homogeneous of positive degree.
+Then $D_{+}(f) \subset \bigcup D_{+}(g_i)$
+if and only if
+$g_1^{\deg(f)}/f^{\deg(g_1)}, \ldots, g_n^{\deg(f)}/f^{\deg(g_n)}$
+generate the unit ideal in $S_{(f)}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Recall that $D_{+}(g) = \Spec(S_{(g)})$ with identification
+given by the ring maps $S \to S_g \leftarrow S_{(g)}$, see
+Algebra, Lemma \ref{algebra-lemma-topology-proj}.
+Thus $f^{\deg(g)}/g^{\deg(f)}$ is an element of $S_{(g)}$ which is not
+contained in any prime ideal, and hence invertible,
+see Algebra, Lemma \ref{algebra-lemma-Zariski-topology}.
+We conclude that (a) holds.
+Write the inverse of $f$ in $S_g$ as $a/g^d$.
+We may replace $a$ by its homogeneous part of degree $d\deg(g) - \deg(f)$.
+This means $g^d - af$ is annihilated by a power of $g$, whence
+$g^e = af$ for some $a \in S$ homogeneous of degree $e\deg(g) - \deg(f)$.
+This proves (b).
+For (c), the map $S_f \to S_g$ exists by (a) from the universal property
+of localization, or we can define it by mapping $b/f^n$
+to $a^nb/g^{ne}$. This clearly induces a map of the subrings
+$S_{(f)} \to S_{(g)}$ of degree zero elements as well.
+We can similarly define $M_f \to M_g$ and $M_{(f)} \to M_{(g)}$ by mapping
+$x/f^n$ to $a^nx/g^{ne}$. The statements writing $S_{(g)}$
+resp.\ $M_{(g)}$ as principal localizations of $S_{(f)}$ resp.\ $M_{(f)}$
+are clear from the formulas above. The maps in the commutative diagram
+of topological spaces correspond to the ring maps given above. The
+horizontal arrows are homeomorphisms by
+Algebra, Lemma \ref{algebra-lemma-topology-proj}.
+The vertical arrows are open immersions since the left
+one is the inclusion of an open subset.
+
+\medskip\noindent
+The open $D_{+}(f)$ is quasi-compact because it is homeomorphic
+to $\Spec(S_{(f)})$, see  Algebra, Lemma \ref{algebra-lemma-quasi-compact}.
+Hence the second statement follows directly
+from the fact that the standard opens form
+a basis for the topology.
+
+\medskip\noindent
+The third statement follows directly from
+Algebra, Lemma \ref{algebra-lemma-Zariski-topology}.
+\end{proof}
+
+\noindent
+In Sheaves, Section \ref{sheaves-section-bases} we defined
+the notion of a sheaf on a basis, and we showed that it is
+essentially equivalent to the notion of a sheaf on the space,
+see Sheaves, Lemmas \ref{sheaves-lemma-extend-off-basis} and
+\ref{sheaves-lemma-extend-off-basis-structures}. Moreover,
+we showed in
+Sheaves, Lemma \ref{sheaves-lemma-cofinal-systems-coverings-standard-case}
+that it is sufficient to check the sheaf
+condition on a cofinal system of open coverings for each
+standard open. By the lemma above it suffices to check
+on the finite coverings by standard opens.
+
+\begin{definition}
+\label{definition-standard-covering}
+Let $S$ be a graded ring.
+Suppose that $D_{+}(f) \subset \text{Proj}(S)$ is a standard
+open. A {\it standard open covering} of $D_{+}(f)$
+is a covering $D_{+}(f) = \bigcup_{i = 1}^n D_{+}(g_i)$,
+where $g_1, \ldots, g_n \in S$ are homogeneous of positive degree.
+\end{definition}
+
+\noindent
+Let $S$ be a graded ring. Let $M$ be a graded $S$-module. We will define
+a presheaf $\widetilde M$ on the basis of standard opens.
+Suppose that $U \subset \text{Proj}(S)$ is a standard open.
+If $f, g \in S$ are homogeneous of positive degree
+such that $D_{+}(f) = D_{+}(g)$, then
+by Lemma \ref{lemma-standard-open} above there are canonical
+maps $M_{(f)} \to M_{(g)}$ and $M_{(g)} \to M_{(f)}$ which are
+mutually inverse. Hence we may choose any $f$ such that $U = D_{+}(f)$
+and define
+$$
+\widetilde M(U) = M_{(f)}.
+$$
+Note that if $D_{+}(g) \subset D_{+}(f)$, then by
+Lemma \ref{lemma-standard-open} above we have
+a canonical map
+$$
+\widetilde M(D_{+}(f)) = M_{(f)} \longrightarrow
+M_{(g)} = \widetilde M(D_{+}(g)).
+$$
+Clearly, this defines a presheaf of abelian groups on the basis
+of standard opens. If $M = S$, then $\widetilde S$ is a presheaf
+of rings on the basis of standard opens. And for general $M$ we
+see that $\widetilde M$ is a presheaf of $\widetilde S$-modules
+on the basis of standard opens.
+
+\medskip\noindent
+Let us compute the stalk of $\widetilde M$ at a point
+$x \in \text{Proj}(S)$.
+Suppose that $x$ corresponds to the homogeneous prime
+ideal $\mathfrak p \subset S$.
+By definition of the stalk we see that
+$$
+\widetilde M_x
+=
+\colim_{f\in S_d, d > 0, f\not\in \mathfrak p} M_{(f)}
+$$
+Here the set $\{f \in S_d, d > 0, f \not \in \mathfrak p\}$ is preordered by
+the rule $f \geq f' \Leftrightarrow D_{+}(f) \subset D_{+}(f')$.
+If $f_1, f_2 \in S \setminus \mathfrak p$ are homogeneous of positive
+degree, then we have
+$f_1f_2 \geq f_1$ in this ordering. In
+Algebra, Section \ref{algebra-section-proj}
+we defined $M_{(\mathfrak p)}$ as the module whose elements are fractions
+$x/f$ with $x, f$ homogeneous, $\deg(x) = \deg(f)$, $f \not \in \mathfrak p$.
+Since $\mathfrak p \in \text{Proj}(S)$ there exists at least
+one $f_0 \in S$ homogeneous of positive degree with $f_0 \not\in \mathfrak p$.
+Hence $x/f = f_0x/ff_0$ and we see that we may always assume
+the denominator of an element in $M_{(\mathfrak p)}$ has positive degree.
+From these remarks it follows easily that
+$$
+\widetilde M_x = M_{(\mathfrak p)}.
+$$
+
+\medskip\noindent
+Next, we check the sheaf condition for the standard open coverings.
+If $D_{+}(f) = \bigcup_{i = 1}^n D_{+}(g_i)$, then the sheaf condition
+for this covering is equivalent with the exactness of the
+sequence
+$$
+0 \to M_{(f)} \to \bigoplus M_{(g_i)} \to \bigoplus M_{(g_ig_j)}.
+$$
+Note that $D_{+}(g_i) = D_{+}(fg_i)$, and hence we can rewrite this
+sequence as the sequence
+$$
+0 \to M_{(f)} \to \bigoplus M_{(fg_i)} \to \bigoplus M_{(fg_ig_j)}.
+$$
+By Lemma \ref{lemma-standard-open} we see that
+$g_1^{\deg(f)}/f^{\deg(g_1)}, \ldots, g_n^{\deg(f)}/f^{\deg(g_n)}$
+generate the unit ideal in $S_{(f)}$, and that the modules
+$M_{(fg_i)}$, $M_{(fg_ig_j)}$ are the principal localizations
+of the $S_{(f)}$-module $M_{(f)}$ at these elements and their products.
+Thus we may apply Algebra, Lemma \ref{algebra-lemma-cover-module}
+to the module $M_{(f)}$ over $S_{(f)}$ and the elements
+$g_1^{\deg(f)}/f^{\deg(g_1)}, \ldots, g_n^{\deg(f)}/f^{\deg(g_n)}$.
+We conclude that the sequence is exact. By the remarks
+made above, we see that $\widetilde M$ is a sheaf
+on the basis of standard opens.
+
+\medskip\noindent
+Thus we conclude from the material in
+Sheaves, Section \ref{sheaves-section-bases}
+that there exists a
+unique sheaf of rings $\mathcal{O}_{\text{Proj}(S)}$
+which agrees with $\widetilde S$ on the standard opens.
+Note that by our computation of stalks above and
+Algebra, Lemma \ref{algebra-lemma-proj-prime} the
+stalks of this sheaf of rings are all local rings.
+
+\medskip\noindent
+Similarly, for any graded $S$-module $M$ there exists
+a unique sheaf of $\mathcal{O}_{\text{Proj}(S)}$-modules
+$\mathcal{F}$ which agrees with $\widetilde M$ on the
+standard opens, see
+Sheaves, Lemma \ref{sheaves-lemma-extend-off-basis-module}.
+
+\begin{definition}
+\label{definition-structure-sheaf}
+Let $S$ be a graded ring.
+\begin{enumerate}
+\item The {\it structure sheaf $\mathcal{O}_{\text{Proj}(S)}$ of the
+homogeneous spectrum of $S$} is the unique sheaf of rings
+$\mathcal{O}_{\text{Proj}(S)}$
+which agrees with $\widetilde S$ on the basis of standard opens.
+\item The locally ringed space
+$(\text{Proj}(S), \mathcal{O}_{\text{Proj}(S)})$ is called
+the {\it homogeneous spectrum} of $S$ and denoted $\text{Proj}(S)$.
+\item The sheaf of $\mathcal{O}_{\text{Proj}(S)}$-modules
+extending $\widetilde M$ to all opens of $\text{Proj}(S)$
+is called the sheaf of $\mathcal{O}_{\text{Proj}(S)}$-modules
+associated to $M$. This sheaf is denoted $\widetilde M$ as
+well.
+\end{enumerate}
+\end{definition}
+
+\noindent
+We summarize the results obtained so far.
+
+\begin{lemma}
+\label{lemma-proj-sheaves}
+Let $S$ be a graded ring. Let $M$ be a graded $S$-module.
+Let $\widetilde M$ be the sheaf of $\mathcal{O}_{\text{Proj}(S)}$-modules
+associated to $M$.
+\begin{enumerate}
+\item For every $f \in S$ homogeneous of positive degree we have
+$$
+\Gamma(D_{+}(f), \mathcal{O}_{\text{Proj}(S)}) = S_{(f)}.
+$$
+\item For every $f\in S$ homogeneous of positive degree
+we have $\Gamma(D_{+}(f), \widetilde M) = M_{(f)}$
+as an $S_{(f)}$-module.
+\item Whenever $D_{+}(g) \subset D_{+}(f)$ the restriction mappings
+on $\mathcal{O}_{\text{Proj}(S)}$ and $\widetilde M$
+are the maps
+$S_{(f)} \to S_{(g)}$ and $M_{(f)} \to M_{(g)}$ from Lemma
+\ref{lemma-standard-open}.
+\item Let $\mathfrak p$ be a homogeneous prime of $S$ not containing
+$S_{+}$, and let $x \in \text{Proj}(S)$
+be the corresponding point. We have
+$\mathcal{O}_{\text{Proj}(S), x} = S_{(\mathfrak p)}$.
+\item Let $\mathfrak p$ be a homogeneous prime of $S$ not containing
+$S_{+}$, and let $x \in \text{Proj}(S)$
+be the corresponding point. We have $(\widetilde M)_x = M_{(\mathfrak p)}$
+as an $S_{(\mathfrak p)}$-module.
+\item
+\label{item-map}
+There is a canonical ring map
+$
+S_0 \longrightarrow \Gamma(\text{Proj}(S), \widetilde S)
+$
+and a canonical $S_0$-module map
+$
+M_0 \longrightarrow \Gamma(\text{Proj}(S), \widetilde M)
+$
+compatible with the descriptions of sections over standard opens
+and stalks above.
+\end{enumerate}
+Moreover, all these identifications are functorial in the graded
+$S$-module $M$. In particular, the functor $M \mapsto \widetilde M$
+is an exact functor from the category of graded $S$-modules
+to the category of $\mathcal{O}_{\text{Proj}(S)}$-modules.
+\end{lemma}
+
+\begin{proof}
+Assertions (1) - (5) are clear from the discussion above.
+We see (6) since there are canonical maps $M_0 \to M_{(f)}$,
+$x \mapsto x/1$ compatible with the restriction maps
+described in (3). The exactness of the functor $M \mapsto \widetilde M$
+follows from the fact that the functor $M \mapsto M_{(\mathfrak p)}$
+is exact (see Algebra, Lemma \ref{algebra-lemma-proj-prime})
+and the fact that exactness of short exact sequences
+may be checked on stalks, see
+Modules, Lemma \ref{modules-lemma-abelian}.
+\end{proof}
+
+\begin{remark}
+\label{remark-global-sections-not-isomorphism}
+The map from $M_0$ to the global sections of $\widetilde M$
+is generally far from being an isomorphism. A trivial
+example is to take $S = k[x, y, z]$ with $1 = \deg(x) = \deg(y) = \deg(z)$
+(or any number of variables) and to take $M = S/(x^{100}, y^{100}, z^{100})$.
+It is easy to see that $\widetilde M = 0$, but $M_0 = k$.
+\end{remark}
+
+\begin{lemma}
+\label{lemma-standard-open-proj}
+Let $S$ be a graded ring. Let $f \in S$ be homogeneous of positive degree.
+Suppose that $D(g) \subset \Spec(S_{(f)})$ is a standard open.
+Then there exists an $h \in S$ homogeneous of positive degree such that
+$D(g)$ corresponds to $D_{+}(h) \subset D_{+}(f)$ via the homeomorphism
+of Algebra, Lemma \ref{algebra-lemma-topology-proj}. In fact we can
+take $h$ such that $g = h/f^n$ for some $n$.
+\end{lemma}
+
+\begin{proof}
+Write $g = h/f^n$ for some $h$ homogeneous of positive degree
+and some $n \geq 1$. If $D_{+}(h)$ is not contained in
+$D_{+}(f)$ then we replace $h$ by $hf$ and $n$ by $n + 1$.
+Then $h$ has the required shape and $D_{+}(h) \subset D_{+}(f)$
+corresponds to $D(g) \subset \Spec(S_{(f)})$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-proj-scheme}
+Let $S$ be a graded ring.
+The locally ringed space $\text{Proj}(S)$ is a scheme.
+The standard opens $D_{+}(f)$ are affine opens.
+For any graded $S$-module $M$ the sheaf
+$\widetilde M$ is a quasi-coherent sheaf of
+$\mathcal{O}_{\text{Proj}(S)}$-modules.
+\end{lemma}
+
+\begin{proof}
+Consider a standard open $D_{+}(f) \subset \text{Proj}(S)$.
+By Lemmas \ref{lemma-standard-open} and \ref{lemma-proj-sheaves}
+we have $\Gamma(D_{+}(f), \mathcal{O}_{\text{Proj}(S)}) = S_{(f)}$, and
+we have a homeomorphism $\varphi : D_{+}(f) \to \Spec(S_{(f)})$.
+For any standard open $D(g) \subset \Spec(S_{(f)})$ we may
+pick an $h \in S_{+}$ as in Lemma \ref{lemma-standard-open-proj}.
+Then $\varphi^{-1}(D(g)) = D_{+}(h)$, and by
+Lemmas \ref{lemma-proj-sheaves} and \ref{lemma-standard-open} we see
+$$
+\Gamma(D_{+}(h), \mathcal{O}_{\text{Proj}(S)})
+=
+S_{(h)}
+=
+(S_{(f)})_{h^{\deg(f)}/f^{\deg(h)}}
+=
+(S_{(f)})_g
+=
+\Gamma(D(g), \mathcal{O}_{\Spec(S_{(f)})}).
+$$
+Thus the restriction of $\mathcal{O}_{\text{Proj}(S)}$ to
+$D_{+}(f)$ corresponds via the homeomorphism $\varphi$
+exactly to the sheaf $\mathcal{O}_{\Spec(S_{(f)})}$
+as defined in Schemes, Section \ref{schemes-section-affine-schemes}.
+We conclude that $D_{+}(f)$ is an affine scheme isomorphic to
+$\Spec(S_{(f)})$ via $\varphi$ and
+hence that $\text{Proj}(S)$ is a scheme.
+
+\medskip\noindent
+In exactly the same way we show that $\widetilde M$ is a
+quasi-coherent sheaf of $\mathcal{O}_{\text{Proj}(S)}$-modules.
+Namely, the argument above will show that
+$$
+\widetilde M|_{D_{+}(f)} \cong \varphi^*\left(\widetilde{M_{(f)}}\right)
+$$
+which shows that $\widetilde M$ is quasi-coherent.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-proj-separated}
+Let $S$ be a graded ring.
+The scheme $\text{Proj}(S)$ is separated.
+\end{lemma}
+
+\begin{proof}
+We have to show that the canonical morphism
+$\text{Proj}(S) \to \Spec(\mathbf{Z})$
+is separated.
+We will use Schemes, Lemma \ref{schemes-lemma-characterize-separated}.
+Thus it suffices to show given any pair of standard opens
+$D_{+}(f)$ and $D_{+}(g)$ that $D_{+}(f) \cap D_{+}(g) = D_{+}(fg)$
+is affine (clear) and that the ring map
+$$
+S_{(f)} \otimes_{\mathbf{Z}} S_{(g)} \longrightarrow S_{(fg)}
+$$
+is surjective. Any element $s$ in $S_{(fg)}$ is of
+the form $s = h/(f^ng^m)$ with $h \in S$ homogeneous of degree
+$n\deg(f) + m\deg(g)$. We may multiply $h$ by a suitable
+monomial $f^ig^j$ and assume that $n = n' \deg(g)$, and
+$m = m' \deg(f)$. Then we can rewrite $s$ as
+$s = h/f^{(n' + m')\deg(g)} \cdot f^{m'\deg(g)}/g^{m'\deg(f)}$.
+So $s$ is indeed in the image of the displayed arrow.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-proj-quasi-compact}
+Let $S$ be a graded ring.
+The scheme $\text{Proj}(S)$ is quasi-compact if and only
+if there exist finitely many homogeneous elements
+$f_1, \ldots, f_n \in S_{+}$ such that
+$S_{+} \subset \sqrt{(f_1, \ldots, f_n)}$. In this case
+$\text{Proj}(S) = D_+(f_1) \cup \ldots \cup D_+(f_n)$.
+\end{lemma}
+
+\begin{proof}
+Given such a collection of elements the standard affine opens
+$D_{+}(f_i)$ cover $\text{Proj}(S)$ by
+Algebra, Lemma \ref{algebra-lemma-topology-proj}.
+Conversely, if $\text{Proj}(S)$ is quasi-compact, then we
+may cover it by finitely many standard opens
+$D_{+}(f_i)$, $i = 1, \ldots, n$ and we see that
+$S_{+} \subset \sqrt{(f_1, \ldots, f_n)}$ by the
+lemma referenced above.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-structure-morphism-proj}
+Let $S$ be a graded ring. The scheme $\text{Proj}(S)$ has a canonical morphism
+towards the affine scheme $\Spec(S_0)$, agreeing with the map on
+topological spaces coming from
+Algebra, Definition \ref{algebra-definition-proj}.
+\end{lemma}
+
+\begin{proof}
+We saw above that our construction of $\widetilde S$,
+resp.\ $\widetilde M$ gives a sheaf of $S_0$-algebras, resp.\ $S_0$-modules.
+Hence we get a morphism by
+Schemes, Lemma \ref{schemes-lemma-morphism-into-affine}.
+This morphism, when restricted to $D_{+}(f)$ comes from the
+canonical ring map $S_0 \to S_{(f)}$. The maps
+$S \to S_f$, $S_{(f)} \to S_f$ are $S_0$-algebra maps, see
+Lemma \ref{lemma-standard-open}.
+Hence if the homogeneous prime $\mathfrak p \subset S$
+corresponds to the $\mathbf{Z}$-graded prime $\mathfrak p' \subset S_f$
+and the (usual) prime $\mathfrak p'' \subset S_{(f)}$, then
+each of these has the same inverse image in $S_0$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-proj-valuative-criterion}
+Let $S$ be a graded ring. If $S$ is finitely generated as
+an algebra over $S_0$, then
+the morphism $\text{Proj}(S) \to \Spec(S_0)$ satisfies
+the existence and uniqueness parts of the valuative criterion,
+see Schemes, Definition \ref{schemes-definition-valuative-criterion}.
+\end{lemma}
+
+\begin{proof}
+The uniqueness part follows from the fact that $\text{Proj}(S)$ is
+separated (Lemma \ref{lemma-proj-separated} and
+Schemes, Lemma \ref{schemes-lemma-separated-implies-valuative}).
+Choose $x_i \in S_{+}$ homogeneous, $i = 1, \ldots, n$
+which generate $S$ over $S_0$. Let $d_i = \deg(x_i)$ and
+set $d = \text{lcm}\{d_i\}$. Suppose we are given a diagram
+$$
+\xymatrix{
+\Spec(K) \ar[r] \ar[d] & \text{Proj}(S) \ar[d] \\
+\Spec(A) \ar[r] & \Spec(S_0)
+}
+$$
+as in Schemes, Definition \ref{schemes-definition-valuative-criterion}.
+Denote $v : K^* \to \Gamma$ the valuation of $A$, see
+Algebra, Definition \ref{algebra-definition-value-group}.
+We may choose an $f \in S_{+}$ homogeneous such that
+$\Spec(K)$ maps into $D_{+}(f)$. Then we get a commutative
+diagram of ring maps
+$$
+\xymatrix{
+K & S_{(f)} \ar[l]^{\varphi} \\
+A \ar[u] & S_0 \ar[l] \ar[u]
+}
+$$
+After renumbering we may assume that $\varphi(x_i^{\deg(f)}/f^{d_i})$
+is nonzero for $i = 1, \ldots, r$ and zero for $i = r + 1, \ldots, n$.
+Since the open sets $D_{+}(x_i)$ cover $\text{Proj}(S)$ we see that $r \geq 1$.
+Let $i_0 \in \{1, \ldots, r\}$ be an index minimizing
+$\gamma_i = (d/d_i)v(\varphi(x_i^{\deg(f)}/f^{d_i}))$ in $\Gamma$.
+For convenience set $x_0 = x_{i_0}$ and $d_0 = d_{i_0}$.
+The ring map $\varphi$ factors though a map $\varphi' : S_{(fx_0)} \to K$
+which gives a ring map $S_{(x_0)} \to S_{(fx_0)} \to K$.
+The algebra $S_{(x_0)}$ is generated over $S_0$ by the elements
+$x_1^{e_1} \ldots x_n^{e_n}/x_0^{e_0}$, where $\sum e_i d_i = e_0 d_0$.
+If $e_i > 0$ for some $i > r$, then
+$\varphi'(x_1^{e_1} \ldots x_n^{e_n}/x_0^{e_0}) = 0$.
+If $e_i = 0$ for $i > r$, then we have
+\begin{align*}
+d \deg(f) v(\varphi'(x_1^{e_1} \ldots x_r^{e_r}/x_0^{e_0}))
+& =
+d v(\varphi'(x_1^{e_1 \deg(f)} \ldots x_r^{e_r \deg(f)}/x_0^{e_0 \deg(f)})) \\
+& =
+d \sum e_i v(\varphi'(x_i^{\deg(f)}/f^{d_i}))
+- e_0 v(\varphi'(x_0^{\deg(f)}/f^{d_0})) \\
+& =
+\sum e_i d_i \gamma_i - e_0 d_0 \gamma_0 \\
+& \geq
+\sum e_i d_i \gamma_0 - e_0 d_0 \gamma_0 = 0
+\end{align*}
+because $\gamma_0$ is minimal among the $\gamma_i$.
+This implies that $S_{(x_0)}$ maps into $A$ via $\varphi'$.
+The corresponding morphism of schemes
+$\Spec(A) \to \Spec(S_{(x_0)}) = D_{+}(x_0)
+\subset \text{Proj}(S)$ provides the morphism fitting into
+the first commutative diagram of this proof.
+\end{proof}
+
+\noindent
+We saw in the proof of Lemma \ref{lemma-proj-valuative-criterion}
+that, under the hypotheses of that lemma, the morphism
+$\text{Proj}(S) \to \Spec(S_0)$ is quasi-compact as well. Hence (by
+Schemes, Proposition \ref{schemes-proposition-characterize-universally-closed})
+we see that $\text{Proj}(S) \to \Spec(S_0)$ is universally closed in
+the situation of the lemma. We give several examples showing these results
+do not hold without some assumption on the graded ring $S$.
+
+\begin{example}
+\label{example-not-existence-valuative-big-proj}
+Let $\mathbf{C}[X_1, X_2, X_3, \ldots]$ be the graded $\mathbf{C}$-algebra
+with each $X_i$ in degree $1$. Consider the ring map
+$$
+\mathbf{C}[X_1, X_2, X_3, \ldots]
+\longrightarrow
+\mathbf{C}[t^\alpha ; \alpha \in \mathbf{Q}_{\geq 0}]
+$$
+which maps $X_i$ to $t^{1/i}$. The right hand side becomes a valuation ring
+$A$ upon localization at the ideal $\mathfrak m = (t^\alpha ; \alpha > 0)$.
+Let $K$ be the fraction field of $A$. The above gives a morphism
+$\Spec(K) \to \text{Proj}(\mathbf{C}[X_1, X_2, X_3, \ldots])$ which does not
+extend to a morphism defined on all of $\Spec(A)$.
+The reason is that the image of $\Spec(A)$ would be contained
+in one of the $D_{+}(X_i)$ but then $X_{i + 1}/X_i$ would map
+to an element of $A$ which it doesn't since it maps to
+$t^{1/(i + 1) - 1/i}$.
+\end{example}
+
+\begin{example}
+\label{example-not-existence-valuative-small-proj}
+Let $R = \mathbf{C}[t]$ and
+$$
+S = R[X_1, X_2, X_3, \ldots]/(X_i^2 - tX_{i + 1}).
+$$
+The grading is such that $R = S_0$ and $\deg(X_i) = 2^{i - 1}$.
+Note that if $\mathfrak p \in \text{Proj}(S)$ then
+$t \not \in \mathfrak p$ (otherwise $\mathfrak p$ has to contain
+all of the $X_i$ which is not allowed for an element of
+the homogeneous spectrum). Thus we see that
+$D_{+}(X_i) = D_{+}(X_{i + 1})$ for all $i$. Hence
+$\text{Proj}(S)$ is quasi-compact; in fact it is affine
+since it is equal to $D_{+}(X_1)$. It is easy to see that
+the image of $\text{Proj}(S) \to \Spec(R)$ is
+$D(t)$. Hence the morphism $\text{Proj}(S) \to \Spec(R)$
+is not closed. Thus the valuative criterion cannot apply because
+it would imply that the morphism is closed (see
+Schemes, Proposition \ref{schemes-proposition-characterize-universally-closed}
+).
+\end{example}
+
+\begin{example}
+\label{example-trivial-proj}
+Let $A$ be a ring.
+Let $S = A[T]$ as a graded $A$ algebra with $T$ in degree $1$.
+Then the canonical morphism $\text{Proj}(S) \to \Spec(A)$
+(see Lemma \ref{lemma-structure-morphism-proj})
+is an isomorphism.
+\end{example}
+
+\begin{example}
+\label{example-open-subset-proj}
+Let $X = \Spec(A)$ be an affine scheme, and let $U \subset X$
+be an open subscheme.  Grade $A[T]$ by setting $\deg T = 1$.  Define $S$
+to be the subring of $A[T]$ generated by $A$ and all $fT^i$, where $i \ge 0$
+and where $f \in A$ is such that $D(f) \subset U$.  We claim that $S$
+is a graded ring with $S_0 = A$ such that $\text{Proj}(S) \cong U$,
+and this isomorphism identifies the canonical morphism
+$\text{Proj}(S) \to \Spec(A)$ of Lemma \ref{lemma-structure-morphism-proj}
+with the inclusion $U \subset X$.
+
+\medskip\noindent
+Suppose $\mathfrak p \in \text{Proj}(S)$ is such that every $fT \in S_1$
+is in $\mathfrak p$.  Then every generator $fT^i$ with $i \ge 1$
+is in $\mathfrak p$ because $(fT^i)^2 = (fT)(fT^{2i-1}) \in \mathfrak p$
+and $\mathfrak p$ is radical.  But then $\mathfrak p \supset S_+$, which
+is impossible. Consequently $\text{Proj}(S)$ is covered by the standard
+open affine subsets $\{D_+(fT)\}_{fT \in S_1}$.
+
+\medskip\noindent
+Observe that, if $fT \in S_1$, then the inclusion $S \subset A[T]$
+induces a graded isomorphism of $S[(fT)^{-1}]$ with $A[T, T^{-1}, f^{-1}]$.
+Hence the standard open subset $D_+(fT) \cong \Spec(S_{(fT)})$
+is isomorphic to $\Spec(A[T, T^{-1}, f^{-1}]_0) = \Spec(A[f^{-1}])$.
+It is clear that this isomorphism is a restriction of the canonical morphism
+$\text{Proj}(S) \to \Spec(A)$.  If in addition $gT \in S_1$, then
+$S[(fT)^{-1}, (gT)^{-1}] \cong A[T, T^{-1}, f^{-1}, g^{-1}]$
+as graded rings, so $D_+(fT) \cap D_+(gT) \cong \Spec(A[f^{-1}, g^{-1}])$.
+Therefore $\text{Proj}(S)$ is the union of open subschemes $D_+(fT)$
+which are isomorphic to the open subschemes $D(f) \subset X$
+under the canonical morphism, and these open subschemes intersect
+in $\text{Proj}(S)$ in the same way they do in $X$.
+We conclude that the canonical morphism is an isomorphism of
+$\text{Proj}(S)$ with the union of all $D(f) \subset U$, which is $U$.
+\end{example}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

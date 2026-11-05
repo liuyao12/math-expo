@@ -1,0 +1,60 @@
+\section{Cohomology of sheaves}
+\label{section-cohomology-sheaves}
+
+\noindent
+Let $X$ be a topological space. Let $\mathcal{F}$ be an abelian sheaf.
+We know that the category of abelian sheaves on $X$ has enough injectives, see
+Injectives, Lemma \ref{injectives-lemma-abelian-sheaves-space}.
+Hence we can choose an injective resolution
+$\mathcal{F}[0] \to \mathcal{I}^\bullet$. As is customary we define
+\begin{equation}
+\label{equation-cohomology}
+H^i(X, \mathcal{F}) = H^i(\Gamma(X, \mathcal{I}^\bullet))
+\end{equation}
+to be the {\it $i$th cohomology group of the abelian sheaf $\mathcal{F}$}.
+The family of functors $H^i(X, -)$ forms a universal $\delta$-functor
+from $\textit{Ab}(X) \to \textit{Ab}$.
+
+\medskip\noindent
+Let $f : X \to Y$ be a continuous map of topological spaces. With
+$\mathcal{F}[0] \to \mathcal{I}^\bullet$ as above
+we define
+\begin{equation}
+\label{equation-higher-direct-image}
+R^if_*\mathcal{F} = H^i(f_*\mathcal{I}^\bullet)
+\end{equation}
+to be the {\it $i$th higher direct image of $\mathcal{F}$}.
+The family of functors $R^if_*$ forms a universal $\delta$-functor
+from $\textit{Ab}(X) \to \textit{Ab}(Y)$.
+
+\medskip\noindent
+Let $(X, \mathcal{O}_X)$ be a ringed space. Let $\mathcal{F}$ be an
+$\mathcal{O}_X$-module. We know that the category of $\mathcal{O}_X$-modules
+on $X$ has enough injectives, see
+Injectives, Lemma \ref{injectives-lemma-sheaves-modules-space}.
+Hence we can choose an injective resolution
+$\mathcal{F}[0] \to \mathcal{I}^\bullet$. As is customary we define
+\begin{equation}
+\label{equation-cohomology-modules}
+H^i(X, \mathcal{F}) = H^i(\Gamma(X, \mathcal{I}^\bullet))
+\end{equation}
+to be the {\it $i$th cohomology group of $\mathcal{F}$}.
+The family of functors $H^i(X, -)$ forms a universal $\delta$-functor
+from $\textit{Mod}(\mathcal{O}_X) \to \text{Mod}_{\mathcal{O}_X(X)}$.
+
+\medskip\noindent
+Let $f : (X, \mathcal{O}_X) \to (Y, \mathcal{O}_Y)$ be a morphism of ringed
+spaces. With $\mathcal{F}[0] \to \mathcal{I}^\bullet$ as above
+we define
+\begin{equation}
+\label{equation-higher-direct-image-modules}
+R^if_*\mathcal{F} = H^i(f_*\mathcal{I}^\bullet)
+\end{equation}
+to be the {\it $i$th higher direct image of $\mathcal{F}$}.
+The family of functors $R^if_*$ forms a universal $\delta$-functor
+from $\textit{Mod}(\mathcal{O}_X) \to \textit{Mod}(\mathcal{O}_Y)$.
+
+
+
+
+

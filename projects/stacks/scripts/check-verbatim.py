@@ -35,6 +35,7 @@ def source_prose(s):
  s=re.sub(r'\$[^$]*\$',' ',s)
  s=re.sub(r'\\(?:ref|eqref|label)\{[^}]+\}','',s)
  s=re.sub(r'\\cite(?:\[[^\]]*\])?\{[^}]+\}','',s)
+ s=re.sub(r'\\href\{https?://[^{}]+\}\{([^{}]+)\}',r'\1',s)
  s=re.sub(r'\\(?:begin|end)\{[^}]+\}(?:\[[^\]]*\])?','',s)
  s=re.sub(r'\\item(?:\[[^\]]*\])?','',s)
  s=re.sub(r"\\'\{?([A-Za-z])\}?",r'\1',s)

@@ -1,0 +1,401 @@
+\section{Affine morphisms}
+\label{section-affine}
+
+\begin{definition}
+\label{definition-affine}
+A morphism of schemes $f : X \to S$ is called {\it affine} if
+the inverse image of every affine open of $S$ is an affine
+open of $X$.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-affine-separated}
+An affine morphism is separated and quasi-compact.
+\end{lemma}
+
+\begin{proof}
+Let $f : X \to S$ be affine. Quasi-compactness is immediate from
+Schemes, Lemma \ref{schemes-lemma-quasi-compact-affine}.
+We will show $f$ is separated using
+Schemes, Lemma \ref{schemes-lemma-characterize-separated}. Let
+$x_1, x_2 \in X$ be points of $X$ which map to the same point $s \in S$.
+Choose any affine open $W \subset S$ containing $s$. By assumption
+$f^{-1}(W)$ is affine. Apply the lemma cited with $U = V = f^{-1}(W)$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-characterize-affine}
+\begin{reference}
+\cite[II, Corollary 1.3.2]{EGA}
+\end{reference}
+Let $f : X \to S$ be a morphism of schemes.
+The following are equivalent
+\begin{enumerate}
+\item The morphism $f$ is affine.
+\item There exists an affine open covering $S = \bigcup W_j$
+such that each $f^{-1}(W_j)$ is affine.
+\item There exists a quasi-coherent sheaf of $\mathcal{O}_S$-algebras
+$\mathcal{A}$ and an isomorphism
+$X \cong \underline{\Spec}_S(\mathcal{A})$
+of schemes over $S$. See
+Constructions, Section \ref{constructions-section-spec} for notation.
+\end{enumerate}
+Moreover, in this case $X = \underline{\Spec}_S(f_*\mathcal{O}_X)$.
+\end{lemma}
+
+\begin{proof}
+It is obvious that (1) implies (2).
+
+\medskip\noindent
+Assume $S = \bigcup_{j \in J} W_j$ is an affine open covering such that
+each $f^{-1}(W_j)$ is affine. By
+Schemes, Lemma \ref{schemes-lemma-quasi-compact-affine} we see
+that $f$ is quasi-compact. By
+Schemes, Lemma \ref{schemes-lemma-characterize-quasi-separated}
+we see the morphism $f$ is quasi-separated. Hence by
+Schemes, Lemma \ref{schemes-lemma-push-forward-quasi-coherent} the
+sheaf $\mathcal{A} = f_*\mathcal{O}_X$ is a quasi-coherent sheaf
+of $\mathcal{O}_S$-algebras. Thus we have the scheme
+$g : Y = \underline{\Spec}_S(\mathcal{A}) \to S$ over $S$.
+The identity map
+$\text{id} : \mathcal{A} = f_*\mathcal{O}_X \to f_*\mathcal{O}_X$
+provides, via the definition of the relative spectrum,
+a morphism $can : X \to Y$ over $S$, see
+Constructions, Lemma \ref{constructions-lemma-canonical-morphism}.
+By assumption and the lemma just cited
+the restriction $can|_{f^{-1}(W_j)} : f^{-1}(W_j) \to g^{-1}(W_j)$
+is an isomorphism. Thus $can$ is an isomorphism.
+We have shown that (2) implies (3).
+
+\medskip\noindent
+Assume (3). By Constructions, Lemma \ref{constructions-lemma-spec-properties}
+we see that the inverse image of every affine open is affine, and hence
+the morphism is affine by definition.
+\end{proof}
+
+\begin{remark}
+\label{remark-direct-argument}
+We can also argue directly that (2) implies (1) in
+Lemma \ref{lemma-characterize-affine} above as follows.
+Assume $S = \bigcup W_j$ is an affine open covering
+such that each $f^{-1}(W_j)$ is affine.
+First argue that $\mathcal{A} = f_*\mathcal{O}_X$ is quasi-coherent
+as in the proof above.
+Let $\Spec(R) = V \subset S$ be affine open.
+We have to show that $f^{-1}(V)$ is affine. Set
+$A = \mathcal{A}(V) = f_*\mathcal{O}_X(V) = \mathcal{O}_X(f^{-1}(V))$.
+By Schemes, Lemma \ref{schemes-lemma-morphism-into-affine} there is
+a canonical morphism $\psi : f^{-1}(V) \to \Spec(A)$ over
+$\Spec(R) = V$.
+By Schemes, Lemma \ref{schemes-lemma-good-subcover} there exists
+an integer $n \geq 0$, a standard open covering
+$V = \bigcup_{i = 1, \ldots, n} D(h_i)$, $h_i \in R$, and a map
+$a : \{1, \ldots, n\} \to J$ such that each $D(h_i)$ is also
+a standard open of the affine scheme $W_{a(i)}$. The inverse image
+of a standard open under a morphism of affine schemes is standard open, see
+Algebra, Lemma \ref{algebra-lemma-spec-functorial}. Hence we see
+that $f^{-1}(D(h_i))$ is a standard open of $f^{-1}(W_{a(i)})$,
+in particular that $f^{-1}(D(h_i))$ is affine. Because $\mathcal{A}$
+is quasi-coherent we have
+$A_{h_i} = \mathcal{A}(D(h_i)) = \mathcal{O}_X(f^{-1}(D(h_i)))$,
+so $f^{-1}(D(h_i))$ is the spectrum of $A_{h_i}$.
+It follows that the morphism $\psi$ induces an isomorphism of the open
+$f^{-1}(D(h_i))$ with the open $\Spec(A_{h_i})$ of
+$\Spec(A)$. Since $f^{-1}(V) = \bigcup f^{-1}(D(h_i))$
+and $\Spec(A) = \bigcup \Spec(A_{h_i})$ we win.
+\end{remark}
+
+\begin{lemma}
+\label{lemma-affine-equivalence-algebras}
+Let $S$ be a scheme. There is an anti-equivalence of categories
+$$
+\begin{matrix}
+\text{Schemes affine} \\
+\text{over }S
+\end{matrix}
+\longleftrightarrow
+\begin{matrix}
+\text{quasi-coherent sheaves} \\
+\text{of }\mathcal{O}_S\text{-algebras}
+\end{matrix}
+$$
+which associates to $f : X \to S$ the sheaf $f_*\mathcal{O}_X$.
+Moreover, this equivalence is compatible with arbitrary base change.
+\end{lemma}
+
+\begin{proof}
+The functor from right to left is given by $\underline{\Spec}_S$.
+The two functors are mutually inverse by
+Lemma \ref{lemma-characterize-affine} and
+Constructions, Lemma \ref{constructions-lemma-spec-properties} part (3).
+The final statement is
+Constructions, Lemma \ref{constructions-lemma-spec-properties} part (2).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-quasi-coherence-scalar-restriction}
+\begin{reference}
+\cite[I, Proposition 9.6.1]{EGA}
+\end{reference}
+Let $S$ be a scheme and let $\mathcal{A}$ be a quasi-coherent
+$\mathcal{O}_S$-algebra. An $\mathcal{A}$-module is
+quasi-coherent as an $\mathcal{O}_S$-module if and only if
+it is quasi-coherent as an $\mathcal{A}$-module.
+\end{lemma}
+
+\begin{proof}
+Let $\mathcal{F}$ be an $\mathcal{A}$-module.
+If $\mathcal{F}$ is quasi-coherent as an $\mathcal{A}$-module, then
+for every $s \in S$ there exists an open neighbourhood $U$ of $s$
+and an exact sequence
+$$
+\bigoplus\nolimits_J\mathcal{A}|_U\to
+\bigoplus\nolimits_I\mathcal{A}|_U\to
+\mathcal{F}|_U
+$$
+of $\mathcal{A}|_U$-modules.
+Then this is also an exact sequence of $\mathcal{O}_U$-modules.
+Hence $\mathcal{F}|_U$ is quasi-coherent as the cokernel of a morphism
+of quasi-coherent $\mathcal{O}_U$-modules on a scheme. It follows
+that $\mathcal{F}$ is quasi-coherent as an $\mathcal{O}_X$-module.
+
+\medskip\noindent
+Conversely, assume $\mathcal{F}$ is quasi-coherent as an $\mathcal{O}_X$-module.
+Pick an open affine $\Spec(R) = U \subset S$. We have isomorphisms of
+$\mathcal{O}_U$-modules $\mathcal{A}|_U \cong \widetilde{A}$ and
+$\mathcal{F}|_U \cong \widetilde{M}$, for some $R$-algebra $A$
+and some $R$-module $M$. The $\mathcal{A}$-module structure on $\mathcal{F}$
+translates into an $A$-module structure on $M$ compatible with the
+given $R$-module structure (details omitted). Choose an exact sequence
+$$
+\bigoplus\nolimits_J A \to
+\bigoplus\nolimits_I A \to
+M \to 0
+$$
+of $A$-modules. Since the functor $\widetilde{\ }$ is exact, this
+produces an exact sequence
+$$
+\bigoplus\nolimits_J \widetilde{A}\to
+\bigoplus\nolimits_I \widetilde{A}\to
+\widetilde{M} \to 0
+$$
+of $\widetilde{A}$-modules. This means that
+$\mathcal{F}$ is quasi-coherent as an $\mathcal{A}$-module.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-affine-equivalence-modules}
+Let $f : X \to S$ be an affine morphism of schemes.
+Let $\mathcal{A} = f_*\mathcal{O}_X$.
+The functor $\mathcal{F} \mapsto f_*\mathcal{F}$ induces
+an equivalence of categories
+$$
+\left\{
+\begin{matrix}
+\text{category of quasi-coherent}\\
+\mathcal{O}_X\text{-modules}
+\end{matrix}
+\right\}
+\longrightarrow
+\left\{
+\begin{matrix}
+\text{category of quasi-coherent}\\
+\mathcal{A}\text{-modules}
+\end{matrix}
+\right\}
+$$
+Moreover, an $\mathcal{A}$-module is
+quasi-coherent as an $\mathcal{O}_S$-module if and only if
+it is quasi-coherent as an $\mathcal{A}$-module.
+\end{lemma}
+
+\begin{proof}
+The final statement is Lemma \ref{lemma-quasi-coherence-scalar-restriction}.
+By Lemma \ref{lemma-affine-separated} and
+Schemes, Lemma \ref{schemes-lemma-push-forward-quasi-coherent}
+the pushforward $f_*\mathcal{F}$ of a quasi-coherent $\mathcal{O}_X$-module
+$\mathcal{F}$
+is a quasi-coherent $\mathcal{O}_S$-module. Hence a functor as in
+the statement of the lemma.
+
+\medskip\noindent
+We will construct an quasi-inverse $h$ to this functor. Let $\mathcal{G}$
+be a quasi-coherent $\mathcal{A}$-module. Then we set
+$$
+h(\mathcal{G}) = f^*\mathcal{G} \otimes_{f^*\mathcal{A}} \mathcal{O}_X =
+f^*\mathcal{G} \otimes_{f^*f_*\mathcal{O}_X} \mathcal{O}_X
+$$
+Elucidation: the pullback $f^*\mathcal{A} = f^*f_*\mathcal{O}_X$
+is an $\mathcal{O}_X$-algebra, the adjunction map
+$f^*f_*\mathcal{O}_X \to \mathcal{O}_X$ is an algebra homomorphism, and
+the pullback $f^*\mathcal{G}$ is an $f^*\mathcal{A}$-module. Observe that
+$h(\mathcal{G})$ is quasi-coherent as quasi-coherence is preserved by
+pullbacks and change of rings. Observe that there is a functorial map
+$$
+h(f_*\mathcal{F}) =
+f^*f_*\mathcal{F} \otimes_{f^*f_*\mathcal{O}_X} \mathcal{O}_X \to \mathcal{F}
+$$
+coming from the adjunction map $f^*f_*\mathcal{F} \to \mathcal{F}$ and
+a functorial map
+$$
+\mathcal{G} \to f_*h(\mathcal{G}) \quad\text{adjoint to the map}\quad
+f^*\mathcal{G} \to f^*\mathcal{G} \otimes_{f^*f_*\mathcal{O}_X} \mathcal{O}_X
+$$
+which sends a local section $s$ of $f^*\mathcal{F}$ to $s \otimes 1$.
+To finish the proof it suffices to show that these maps are isomorphisms
+for $\mathcal{F}$ and $\mathcal{G}$ as above. This may be checked on the
+members of an affine covering, i.e., when $X$ and $S$ are affine.
+
+\medskip\noindent
+The key algebra observation which makes this work is the
+following: Let $R \to A$ be a ring map. Let $N$ be an $A$-module. Then
+$$
+(N \otimes_R A) \otimes_{(A \otimes_R A)} A = N
+$$
+Namely, the left hand side of this equality is the effect of applying
+$h$ to the quasi-coherent $\widetilde{A}$-module $\widetilde{N}$ on $\Spec(R)$.
+We omit the details.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-composition-affine}
+The composition of affine morphisms is affine.
+\end{lemma}
+
+\begin{proof}
+Let $f : X \to Y$ and $g : Y \to Z$ be affine morphisms.
+Let $U \subset Z$ be affine open. Then $g^{-1}(U)$ is affine
+by assumption on $g$. Whereupon $f^{-1}(g^{-1}(U))$ is affine
+by assumption on $f$. Hence $(g \circ f)^{-1}(U)$ is affine.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-base-change-affine}
+The base change of an affine morphism is affine.
+\end{lemma}
+
+\begin{proof}
+Let $f : X \to S$ be an affine morphism. Let $S' \to S$ be any morphism.
+Denote $f' : X_{S'} = S' \times_S X \to S'$ the base change of $f$.
+For every $s' \in S'$ there exists an open affine neighbourhood
+$s' \in V \subset S'$ which maps into some open affine $U \subset S$.
+By assumption $f^{-1}(U)$ is affine. By the material in
+Schemes, Section \ref{schemes-section-fibre-products} we see
+that $f^{-1}(U)_V = V \times_U f^{-1}(U)$ is affine and equal
+to $(f')^{-1}(V)$. This proves that $S'$ has an open covering by
+affines whose inverse image under $f'$ is affine. We conclude
+by Lemma \ref{lemma-characterize-affine} above.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-closed-immersion-affine}
+A closed immersion is affine.
+\end{lemma}
+
+\begin{proof}
+The first indication of this is
+Schemes, Lemma \ref{schemes-lemma-closed-immersion-affine-case}.
+See Schemes, Lemma \ref{schemes-lemma-closed-subspace-scheme}
+for a complete statement.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-affine-s-open}
+Let $X$ be a scheme.
+Let $\mathcal{L}$ be an invertible $\mathcal{O}_X$-module.
+Let $s \in \Gamma(X, \mathcal{L})$.
+The inclusion morphism $j : X_s \to X$ is affine.
+\end{lemma}
+
+\begin{proof}
+This follows from Properties, Lemma \ref{properties-lemma-affine-cap-s-open}
+and the definition.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-affine-permanence}
+Suppose $g : X \to Y$ is a morphism of schemes over $S$.
+\begin{enumerate}
+\item If $X$ is affine over $S$ and $\Delta : Y \to Y \times_S Y$ is affine,
+then $g$ is affine.
+\item If $X$ is affine over $S$ and $Y$ is separated over $S$,
+then $g$ is affine.
+\item A morphism from an affine scheme to a scheme with affine
+diagonal is affine.
+\item A morphism from an affine scheme to a separated scheme is affine.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Proof of (1). The base change $X \times_S Y \to Y$ is affine by
+Lemma \ref{lemma-base-change-affine}.
+The morphism $(1, g) : X \to X \times_S Y$ is the base change of
+$Y \to Y \times_S Y$ by the morphism $X \times_S Y \to Y \times_S Y$.
+Hence it is affine by
+Lemma \ref{lemma-base-change-affine}.
+The composition of affine morphisms is affine
+(see Lemma \ref{lemma-composition-affine}) and (1) follows.
+Part (2) follows from (1) as a closed immersion is affine
+(see Lemma \ref{lemma-closed-immersion-affine}) and $Y/S$ separated
+means $\Delta$ is a closed immersion. Parts (3) and (4) are special
+cases of (1) and (2).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-morphism-affines-affine}
+A morphism between affine schemes is affine.
+\end{lemma}
+
+\begin{proof}
+Immediate from Lemma \ref{lemma-affine-permanence} with
+$S = \Spec(\mathbf{Z})$. It also follows directly from the
+equivalence of (1) and (2) in Lemma \ref{lemma-characterize-affine}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-Artinian-affine}
+Let $S$ be a scheme.
+Let $A$ be an Artinian ring.
+Any morphism $\Spec(A) \to S$ is affine.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-get-affine}
+Let $j : Y \to X$ be an immersion of schemes.
+Assume there exists an open $U \subset X$ with complement
+$Z = X \setminus U$ such that
+\begin{enumerate}
+\item $U \to X$ is affine,
+\item $j^{-1}(U) \to U$ is affine, and
+\item $j(Y) \cap Z$ is closed.
+\end{enumerate}
+Then $j$ is affine. In particular, if $X$ is affine, so is $Y$.
+\end{lemma}
+
+\begin{proof}
+By Schemes, Definition \ref{schemes-definition-immersion} there exists an
+open subscheme $W \subset X$ such that $j$ factors as a closed immersion
+$i : Y \to W$ followed by the inclusion morphism $W \to X$.
+Since a closed immersion is affine
+(Lemma \ref{lemma-closed-immersion-affine}),
+we see that for every $x \in W$ there is an affine open
+neighbourhood of $x$ in $X$ whose inverse image under $j$ is affine.
+If $x \in U$, then the same thing is true by assumption (2).
+Finally, assume $x \in Z$ and $x \not \in W$. Then $x \not \in j(Y) \cap Z$.
+By assumption (3) we can find an affine open neighbourhood
+$V \subset X$ of $x$ which does not meet $j(Y) \cap Z$.
+Then $j^{-1}(V) = j^{-1}(V \cap U)$ which is affine
+by assumptions (1) and (2). It follows that $j$ is affine by
+Lemma \ref{lemma-characterize-affine}.
+\end{proof}
+
+
+
+
+
+
+

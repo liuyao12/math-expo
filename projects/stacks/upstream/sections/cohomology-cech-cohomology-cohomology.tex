@@ -1,0 +1,477 @@
+\section{{\v C}ech cohomology and cohomology}
+\label{section-cech-cohomology-cohomology}
+
+\begin{lemma}
+\label{lemma-injective-trivial-cech}
+Let $X$ be a ringed space.
+Let $\mathcal{U} : U = \bigcup_{i \in I} U_i$ be an open covering.
+Let $\mathcal{I}$ be an injective $\mathcal{O}_X$-module.
+Then
+$$
+\check{H}^p(\mathcal{U}, \mathcal{I}) =
+\left\{
+\begin{matrix}
+\mathcal{I}(U) & \text{if} & p = 0 \\
+0 & \text{if} & p > 0
+\end{matrix}
+\right.
+$$
+\end{lemma}
+
+\begin{proof}
+An injective $\mathcal{O}_X$-module is also injective as an object in
+the category $\textit{PMod}(\mathcal{O}_X)$ (for example since
+sheafification is an exact left adjoint to the inclusion functor,
+using Homology, Lemma \ref{homology-lemma-adjoint-preserve-injectives}).
+Hence we can apply Lemma \ref{lemma-cech-cohomology-derived-presheaves}
+(or its proof) to see the result.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-cech-cohomology}
+Let $X$ be a ringed space.
+Let $\mathcal{U} : U = \bigcup_{i \in I} U_i$ be an open covering.
+There is a transformation
+$$
+\check{\mathcal{C}}^\bullet(\mathcal{U}, -)
+\longrightarrow
+R\Gamma(U, -)
+$$
+of functors
+$\textit{Mod}(\mathcal{O}_X) \to D^{+}(\mathcal{O}_X(U))$.
+In particular this provides canonical maps
+$\check{H}^p(\mathcal{U}, \mathcal{F}) \to H^p(U, \mathcal{F})$ for
+$\mathcal{F}$ ranging over $\textit{Mod}(\mathcal{O}_X)$.
+\end{lemma}
+
+\begin{proof}
+Let $\mathcal{F}$ be an $\mathcal{O}_X$-module. Choose an injective resolution
+$\mathcal{F} \to \mathcal{I}^\bullet$. Consider the double complex
+$\check{\mathcal{C}}^\bullet(\mathcal{U}, \mathcal{I}^\bullet)$ with terms
+$\check{\mathcal{C}}^p(\mathcal{U}, \mathcal{I}^q)$.
+There is a map of complexes
+$$
+\alpha :
+\Gamma(U, \mathcal{I}^\bullet)
+\longrightarrow
+\text{Tot}(\check{\mathcal{C}}^\bullet(\mathcal{U}, \mathcal{I}^\bullet))
+$$
+coming from the maps
+$\mathcal{I}^q(U) \to \check{H}^0(\mathcal{U}, \mathcal{I}^q)$
+and a map of complexes
+$$
+\beta :
+\check{\mathcal{C}}^\bullet(\mathcal{U}, \mathcal{F})
+\longrightarrow
+\text{Tot}(\check{\mathcal{C}}^\bullet(\mathcal{U}, \mathcal{I}^\bullet))
+$$
+coming from the map $\mathcal{F} \to \mathcal{I}^0$.
+We can apply
+Homology, Lemma \ref{homology-lemma-double-complex-gives-resolution}
+to see that $\alpha$ is a quasi-isomorphism.
+Namely, Lemma \ref{lemma-injective-trivial-cech} implies that
+the $q$th row of the double complex
+$\check{\mathcal{C}}^\bullet(\mathcal{U}, \mathcal{I}^\bullet)$ is a
+resolution of $\Gamma(U, \mathcal{I}^q)$.
+Hence $\alpha$ becomes invertible in $D^{+}(\mathcal{O}_X(U))$ and
+the transformation of the lemma is the composition of $\beta$
+followed by the inverse of $\alpha$. We omit the verification
+that this is functorial.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-cech-h1}
+Let $X$ be a topological space. Let $\mathcal{H}$ be an abelian sheaf
+on $X$. Let $\mathcal{U} : X = \bigcup_{i \in I} U_i$ be an open covering.
+The map
+$$
+\check{H}^1(\mathcal{U}, \mathcal{H}) \longrightarrow H^1(X, \mathcal{H})
+$$
+is injective and identifies $\check{H}^1(\mathcal{U}, \mathcal{H})$ via
+the bijection of Lemma \ref{lemma-torsors-h1}
+with the set of isomorphism classes of $\mathcal{H}$-torsors
+which restrict to trivial torsors over each $U_i$.
+\end{lemma}
+
+\begin{proof}
+To see this we construct an inverse map. Namely, let $\mathcal{F}$ be a
+$\mathcal{H}$-torsor whose restriction to $U_i$ is trivial. By
+Lemma \ref{lemma-trivial-torsor} this means there
+exists a section $s_i \in \mathcal{F}(U_i)$. On $U_{i_0} \cap U_{i_1}$
+there is a unique section $s_{i_0i_1}$ of $\mathcal{H}$ such that
+$s_{i_0i_1} \cdot s_{i_0}|_{U_{i_0} \cap U_{i_1}} =
+s_{i_1}|_{U_{i_0} \cap U_{i_1}}$. A computation shows
+that $s_{i_0i_1}$ is a {\v C}ech cocycle and that its class is well
+defined (i.e., does not depend on the choice of the sections $s_i$).
+The inverse maps the isomorphism class of $\mathcal{F}$ to the cohomology
+class of the cocycle $(s_{i_0i_1})$.
+We omit the verification that this map is indeed an inverse.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-include}
+Let $X$ be a ringed space.
+Consider the functor
+$i : \textit{Mod}(\mathcal{O}_X) \to \textit{PMod}(\mathcal{O}_X)$.
+It is a left exact functor with right derived functors given by
+$$
+R^pi(\mathcal{F}) = \underline{H}^p(\mathcal{F}) :
+U \longmapsto H^p(U, \mathcal{F})
+$$
+see discussion in Section \ref{section-locality}.
+\end{lemma}
+
+\begin{proof}
+It is clear that $i$ is left exact.
+Choose an injective resolution $\mathcal{F} \to \mathcal{I}^\bullet$.
+By definition $R^pi$ is the $p$th cohomology {\it presheaf}
+of the complex $\mathcal{I}^\bullet$. In other words, the
+sections of $R^pi(\mathcal{F})$ over an open $U$ are given by
+$$
+\frac{\Ker(\mathcal{I}^p(U) \to \mathcal{I}^{p + 1}(U))}
+{\Im(\mathcal{I}^{p - 1}(U) \to \mathcal{I}^p(U))}.
+$$
+which is the definition of $H^p(U, \mathcal{F})$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-cech-spectral-sequence}
+Let $X$ be a ringed space.
+Let $\mathcal{U} : U = \bigcup_{i \in I} U_i$ be an open covering.
+For any sheaf of $\mathcal{O}_X$-modules $\mathcal{F}$ there
+is a spectral sequence $(E_r, d_r)_{r \geq 0}$ with
+$$
+E_2^{p, q} = \check{H}^p(\mathcal{U}, \underline{H}^q(\mathcal{F}))
+$$
+converging to $H^{p + q}(U, \mathcal{F})$.
+This spectral sequence is functorial in $\mathcal{F}$.
+\end{lemma}
+
+\begin{proof}
+This is a Grothendieck spectral sequence
+(see
+Derived Categories, Lemma \ref{derived-lemma-grothendieck-spectral-sequence})
+for the functors
+$$
+i :  \textit{Mod}(\mathcal{O}_X) \to \textit{PMod}(\mathcal{O}_X)
+\quad\text{and}\quad
+\check{H}^0(\mathcal{U}, - ) : \textit{PMod}(\mathcal{O}_X)
+\to \text{Mod}_{\mathcal{O}_X(U)}.
+$$
+Namely, we have $\check{H}^0(\mathcal{U}, i(\mathcal{F})) = \mathcal{F}(U)$
+by Lemma \ref{lemma-cech-h0}. We have that $i(\mathcal{I})$ is
+{\v C}ech acyclic by Lemma \ref{lemma-injective-trivial-cech}. And we
+have that $\check{H}^p(\mathcal{U}, -) = R^p\check{H}^0(\mathcal{U}, -)$
+as functors on $\textit{PMod}(\mathcal{O}_X)$
+by Lemma \ref{lemma-cech-cohomology-derived-presheaves}.
+Putting everything together gives the lemma.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-cech-spectral-sequence-application}
+Let $X$ be a ringed space.
+Let $\mathcal{U} : U = \bigcup_{i \in I} U_i$ be an open covering.
+Let $\mathcal{F}$ be an $\mathcal{O}_X$-module.
+Assume that $H^i(U_{i_0 \ldots i_p}, \mathcal{F}) = 0$
+for all $i > 0$, all $p \geq 0$ and all $i_0, \ldots, i_p \in I$.
+Then $\check{H}^p(\mathcal{U}, \mathcal{F}) = H^p(U, \mathcal{F})$
+as $\mathcal{O}_X(U)$-modules.
+\end{lemma}
+
+\begin{proof}
+We will use the spectral sequence of
+Lemma \ref{lemma-cech-spectral-sequence}.
+The assumptions mean that $E_2^{p, q} = 0$ for all $(p, q)$ with
+$q \not = 0$. Hence the spectral sequence degenerates at $E_2$
+and the result follows.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-ses-cech-h1}
+Let $X$ be a ringed space.
+Let
+$$
+0 \to \mathcal{F} \to \mathcal{G} \to \mathcal{H} \to 0
+$$
+be a short exact sequence of $\mathcal{O}_X$-modules.
+Let $U \subset X$ be an open subset.
+If there exists a cofinal system of open coverings $\mathcal{U}$
+of $U$ such that $\check{H}^1(\mathcal{U}, \mathcal{F}) = 0$,
+then the map $\mathcal{G}(U) \to \mathcal{H}(U)$ is
+surjective.
+\end{lemma}
+
+\begin{proof}
+Take an element $s \in \mathcal{H}(U)$. Choose an open covering
+$\mathcal{U} : U = \bigcup_{i \in I} U_i$ such that
+(a) $\check{H}^1(\mathcal{U}, \mathcal{F}) = 0$ and (b)
+$s|_{U_i}$ is the image of a section $s_i \in \mathcal{G}(U_i)$.
+Since we can certainly find $\mathcal{U}$ such that (b) holds
+it follows from the assumptions of the lemma that we can find
+$\mathcal{U}$ such that (a) and (b) both hold.
+Consider the sections
+$$
+s_{i_0i_1} = s_{i_1}|_{U_{i_0i_1}} - s_{i_0}|_{U_{i_0i_1}}.
+$$
+Since $s_i$ lifts $s$ we see that $s_{i_0i_1} \in \mathcal{F}(U_{i_0i_1})$.
+By the vanishing of $\check{H}^1(\mathcal{U}, \mathcal{F})$ we can
+find sections $t_i \in \mathcal{F}(U_i)$ such that
+$$
+s_{i_0i_1} = t_{i_1}|_{U_{i_0i_1}} - t_{i_0}|_{U_{i_0i_1}}.
+$$
+Then clearly the sections $s_i - t_i$ satisfy the sheaf condition
+and glue to a section of $\mathcal{G}$ over $U$ which maps to $s$.
+Hence we win.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-cech-vanish}
+\begin{slogan}
+If higher {\v C}ech cohomology of an abelian sheaf vanishes for all open covers,
+then higher cohomology vanishes.
+\end{slogan}
+Let $X$ be a ringed space.
+Let $\mathcal{F}$ be an $\mathcal{O}_X$-module such that
+$$
+\check{H}^p(\mathcal{U}, \mathcal{F}) = 0
+$$
+for all $p > 0$ and any open covering $\mathcal{U} : U = \bigcup_{i \in I} U_i$
+of an open of $X$. Then $H^p(U, \mathcal{F}) = 0$ for all $p > 0$
+and any open $U \subset X$.
+\end{lemma}
+
+\begin{proof}
+Let $\mathcal{F}$ be a sheaf satisfying the assumption of the lemma.
+We will indicate this by saying ``$\mathcal{F}$ has vanishing higher
+{\v C}ech cohomology for any open covering''.
+Choose an embedding $\mathcal{F} \to \mathcal{I}$ into an
+injective $\mathcal{O}_X$-module.
+By Lemma \ref{lemma-injective-trivial-cech} $\mathcal{I}$ has vanishing higher
+{\v C}ech cohomology for any open covering.
+Let $\mathcal{Q} = \mathcal{I}/\mathcal{F}$
+so that we have a short exact sequence
+$$
+0 \to \mathcal{F} \to \mathcal{I} \to \mathcal{Q} \to 0.
+$$
+By Lemma \ref{lemma-ses-cech-h1} and our assumptions
+this sequence is actually exact as a sequence of presheaves!
+In particular we have a long exact sequence of {\v C}ech cohomology
+groups for any open covering $\mathcal{U}$, see
+Lemma \ref{lemma-cech-cohomology-delta-functor-presheaves}
+for example. This implies that $\mathcal{Q}$ is also an $\mathcal{O}_X$-module
+with vanishing higher {\v C}ech cohomology for all open coverings.
+
+\medskip\noindent
+Next, we look at the long exact cohomology sequence
+$$
+\xymatrix{
+0 \ar[r] &
+H^0(U, \mathcal{F}) \ar[r] &
+H^0(U, \mathcal{I}) \ar[r] &
+H^0(U, \mathcal{Q}) \ar[lld] \\
+&
+H^1(U, \mathcal{F}) \ar[r] &
+H^1(U, \mathcal{I}) \ar[r] &
+H^1(U, \mathcal{Q}) \ar[lld] \\
+&
+\ldots & \ldots & \ldots \\
+}
+$$
+for any open $U \subset X$. Since $\mathcal{I}$ is injective we
+have $H^n(U, \mathcal{I}) = 0$ for $n > 0$ (see
+Derived Categories, Lemma \ref{derived-lemma-higher-derived-functors}).
+By the above we see that $H^0(U, \mathcal{I}) \to H^0(U, \mathcal{Q})$
+is surjective and hence $H^1(U, \mathcal{F}) = 0$.
+Since $\mathcal{F}$ was an arbitrary $\mathcal{O}_X$-module with
+vanishing higher {\v C}ech cohomology we conclude that also
+$H^1(U, \mathcal{Q}) = 0$ since $\mathcal{Q}$ is another of these
+sheaves (see above). By the long exact sequence this in turn implies
+that $H^2(U, \mathcal{F}) = 0$. And so on and so forth.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-cech-vanish-basis}
+(Variant of Lemma \ref{lemma-cech-vanish}.)
+Let $X$ be a ringed space.
+Let $\mathcal{B}$ be a basis for the topology on $X$.
+Let $\mathcal{F}$ be an $\mathcal{O}_X$-module.
+Assume there exists a set of open coverings $\text{Cov}$
+with the following properties:
+\begin{enumerate}
+\item For every $\mathcal{U} \in \text{Cov}$
+with $\mathcal{U} : U = \bigcup_{i \in I} U_i$ we have
+$U, U_i \in \mathcal{B}$ and every $U_{i_0 \ldots i_p} \in \mathcal{B}$.
+\item For every $U \in \mathcal{B}$ the open coverings of $U$
+occurring in $\text{Cov}$ is a cofinal system of open coverings
+of $U$.
+\item For every $\mathcal{U} \in \text{Cov}$ we have
+$\check{H}^p(\mathcal{U}, \mathcal{F}) = 0$ for all $p > 0$.
+\end{enumerate}
+Then $H^p(U, \mathcal{F}) = 0$ for all $p > 0$ and any $U \in \mathcal{B}$.
+\end{lemma}
+
+\begin{proof}
+Let $\mathcal{F}$ and $\text{Cov}$ be as in the lemma.
+We will indicate this by saying ``$\mathcal{F}$ has vanishing higher
+{\v C}ech cohomology for any $\mathcal{U} \in \text{Cov}$''.
+Choose an embedding $\mathcal{F} \to \mathcal{I}$ into an
+injective $\mathcal{O}_X$-module.
+By Lemma \ref{lemma-injective-trivial-cech} $\mathcal{I}$
+has vanishing higher {\v C}ech cohomology for any $\mathcal{U} \in \text{Cov}$.
+Let $\mathcal{Q} = \mathcal{I}/\mathcal{F}$
+so that we have a short exact sequence
+$$
+0 \to \mathcal{F} \to \mathcal{I} \to \mathcal{Q} \to 0.
+$$
+By Lemma \ref{lemma-ses-cech-h1} and our assumption (2)
+this sequence gives rise to an exact sequence
+$$
+0 \to \mathcal{F}(U) \to \mathcal{I}(U) \to \mathcal{Q}(U) \to 0.
+$$
+for every $U \in \mathcal{B}$. Hence for any $\mathcal{U} \in \text{Cov}$
+we get a short exact sequence of {\v C}ech complexes
+$$
+0 \to
+\check{\mathcal{C}}^\bullet(\mathcal{U}, \mathcal{F}) \to
+\check{\mathcal{C}}^\bullet(\mathcal{U}, \mathcal{I}) \to
+\check{\mathcal{C}}^\bullet(\mathcal{U}, \mathcal{Q}) \to 0
+$$
+since each term in the {\v C}ech complex is made up out of a product of
+values over elements of $\mathcal{B}$ by assumption (1).
+In particular we have a long exact sequence of {\v C}ech cohomology
+groups for any open covering $\mathcal{U} \in \text{Cov}$.
+This implies that $\mathcal{Q}$ is also an $\mathcal{O}_X$-module
+with vanishing higher {\v C}ech cohomology for all
+$\mathcal{U} \in \text{Cov}$.
+
+\medskip\noindent
+Next, we look at the long exact cohomology sequence
+$$
+\xymatrix{
+0 \ar[r] &
+H^0(U, \mathcal{F}) \ar[r] &
+H^0(U, \mathcal{I}) \ar[r] &
+H^0(U, \mathcal{Q}) \ar[lld] \\
+&
+H^1(U, \mathcal{F}) \ar[r] &
+H^1(U, \mathcal{I}) \ar[r] &
+H^1(U, \mathcal{Q}) \ar[lld] \\
+&
+\ldots & \ldots & \ldots \\
+}
+$$
+for any $U \in \mathcal{B}$. Since $\mathcal{I}$ is injective we
+have $H^n(U, \mathcal{I}) = 0$ for $n > 0$ (see
+Derived Categories, Lemma \ref{derived-lemma-higher-derived-functors}).
+By the above we see that $H^0(U, \mathcal{I}) \to H^0(U, \mathcal{Q})$
+is surjective and hence $H^1(U, \mathcal{F}) = 0$.
+Since $\mathcal{F}$ was an arbitrary $\mathcal{O}_X$-module with
+vanishing higher {\v C}ech cohomology for all $\mathcal{U} \in \text{Cov}$
+we conclude that also $H^1(U, \mathcal{Q}) = 0$ since $\mathcal{Q}$ is
+another of these sheaves (see above). By the long exact sequence this in
+turn implies that $H^2(U, \mathcal{F}) = 0$. And so on and so forth.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-pushforward-injective}
+Let $f : X \to Y$ be a morphism of ringed spaces.
+Let $\mathcal{I}$ be an injective $\mathcal{O}_X$-module.
+Then
+\begin{enumerate}
+\item $\check{H}^p(\mathcal{V}, f_*\mathcal{I}) = 0$
+for all $p > 0$ and any open covering
+$\mathcal{V} : V = \bigcup_{j \in J} V_j$ of $Y$.
+\item $H^p(V, f_*\mathcal{I}) = 0$ for all $p > 0$ and
+every open $V \subset Y$.
+\end{enumerate}
+In other words, $f_*\mathcal{I}$ is right acyclic for $\Gamma(V, -)$
+(see
+Derived Categories, Definition \ref{derived-definition-derived-functor})
+for any $V \subset Y$ open.
+\end{lemma}
+
+\begin{proof}
+Set $\mathcal{U} : f^{-1}(V) = \bigcup_{j \in J} f^{-1}(V_j)$.
+It is an open covering of $X$ and
+$$
+\check{\mathcal{C}}^\bullet(\mathcal{V}, f_*\mathcal{I}) =
+\check{\mathcal{C}}^\bullet(\mathcal{U}, \mathcal{I}).
+$$
+This is true because
+$$
+f_*\mathcal{I}(V_{j_0 \ldots j_p})
+= \mathcal{I}(f^{-1}(V_{j_0 \ldots j_p})) =
+\mathcal{I}(f^{-1}(V_{j_0}) \cap \ldots \cap f^{-1}(V_{j_p}))
+= \mathcal{I}(U_{j_0 \ldots j_p}).
+$$
+Thus the first statement of the lemma follows from
+Lemma \ref{lemma-injective-trivial-cech}. The second statement
+follows from the first and Lemma \ref{lemma-cech-vanish}.
+\end{proof}
+
+\noindent
+The following lemma implies in particular that
+$f_* : \textit{Ab}(X) \to \textit{Ab}(Y)$ transforms injective
+abelian sheaves into injective abelian sheaves.
+
+\begin{lemma}
+\label{lemma-pushforward-injective-flat}
+Let $f : X \to Y$ be a morphism of ringed spaces.
+Assume $f$ is flat.
+Then $f_*\mathcal{I}$ is an injective $\mathcal{O}_Y$-module
+for any injective $\mathcal{O}_X$-module $\mathcal{I}$.
+\end{lemma}
+
+\begin{proof}
+In this case the functor $f^*$ transforms injections into injections
+(Modules, Lemma \ref{modules-lemma-pullback-flat}).
+Hence the result follows from
+Homology, Lemma \ref{homology-lemma-adjoint-preserve-injectives}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-cohomology-products}
+Let $(X, \mathcal{O}_X)$ be a ringed space. Let $I$ be a set.
+For $i \in I$ let  $\mathcal{F}_i$ be an $\mathcal{O}_X$-module.
+Let $U \subset X$ be open. The canonical map
+$$
+H^p(U, \prod\nolimits_{i \in I} \mathcal{F}_i)
+\longrightarrow
+\prod\nolimits_{i \in I} H^p(U, \mathcal{F}_i)
+$$
+is an isomorphism for $p = 0$ and injective for $p = 1$.
+\end{lemma}
+
+\begin{proof}
+The statement for $p = 0$ is true because the product of sheaves
+is equal to the product of the underlying presheaves, see
+Sheaves, Section \ref{sheaves-section-limits-sheaves}.
+Proof for $p = 1$. Set $\mathcal{F} = \prod \mathcal{F}_i$.
+Let $\xi \in H^1(U, \mathcal{F})$ map to zero in
+$\prod H^1(U, \mathcal{F}_i)$. By locality of cohomology, see
+Lemma \ref{lemma-kill-cohomology-class-on-covering},
+there exists an open covering $\mathcal{U} : U = \bigcup U_j$ such that
+$\xi|_{U_j} = 0$ for all $j$. By Lemma \ref{lemma-cech-h1} this means
+$\xi$ comes from an element
+$\check \xi \in \check H^1(\mathcal{U}, \mathcal{F})$.
+Since the maps
+$\check H^1(\mathcal{U}, \mathcal{F}_i) \to H^1(U, \mathcal{F}_i)$
+are injective for all $i$ (by Lemma \ref{lemma-cech-h1}), and since
+the image of $\xi$ is zero in $\prod H^1(U, \mathcal{F}_i)$ we see
+that the image
+$\check \xi_i = 0$ in $\check H^1(\mathcal{U}, \mathcal{F}_i)$.
+However, since $\mathcal{F} = \prod \mathcal{F}_i$ we see that
+$\check{\mathcal{C}}^\bullet(\mathcal{U}, \mathcal{F})$ is the
+product of the complexes
+$\check{\mathcal{C}}^\bullet(\mathcal{U}, \mathcal{F}_i)$,
+hence by
+Homology, Lemma \ref{homology-lemma-product-abelian-groups-exact}
+we conclude that $\check \xi = 0$ as desired.
+\end{proof}
+
+
+
+
+
+
+

@@ -1,0 +1,430 @@
+\section{Projective space}
+\label{section-projective-space}
+
+\noindent
+Projective space is one of the fundamental objects studied in
+algebraic geometry. In this section we just give its construction
+as $\text{Proj}$ of a polynomial ring. Later we will discover many
+of its beautiful properties.
+
+\begin{lemma}
+\label{lemma-projective-space}
+Let $S = \mathbf{Z}[T_0, \ldots, T_n]$ with $\deg(T_i) = 1$.
+The scheme
+$$
+\mathbf{P}^n_{\mathbf{Z}} = \text{Proj}(S)
+$$
+represents the functor which associates to a scheme $Y$ the pairs
+$(\mathcal{L}, (s_0, \ldots, s_n))$ where
+\begin{enumerate}
+\item $\mathcal{L}$ is an invertible $\mathcal{O}_Y$-module, and
+\item $s_0, \ldots, s_n$ are global sections of $\mathcal{L}$
+which generate $\mathcal{L}$
+\end{enumerate}
+up to the following equivalence:
+$(\mathcal{L}, (s_0, \ldots, s_n)) \sim
+(\mathcal{N}, (t_0, \ldots, t_n))$ $\Leftrightarrow$ there exists
+an isomorphism $\beta : \mathcal{L} \to \mathcal{N}$
+with $\beta(s_i) = t_i$ for $i = 0, \ldots, n$.
+\end{lemma}
+
+\begin{proof}
+This is a special case of Lemma \ref{lemma-apply} above.
+Namely, for any graded ring $A$ we have
+\begin{eqnarray*}
+\Mor_{graded rings}(\mathbf{Z}[T_0, \ldots, T_n], A)
+& = &
+A_1 \times \ldots \times A_1 \\
+\psi & \mapsto & (\psi(T_0), \ldots, \psi(T_n))
+\end{eqnarray*}
+and the degree $1$ part of $\Gamma_*(Y, \mathcal{L})$ is
+just $\Gamma(Y, \mathcal{L})$.
+\end{proof}
+
+\begin{definition}
+\label{definition-projective-space}
+The scheme
+$\mathbf{P}^n_{\mathbf{Z}} = \text{Proj}(\mathbf{Z}[T_0, \ldots, T_n])$
+is called {\it projective $n$-space over $\mathbf{Z}$}.
+Its base change $\mathbf{P}^n_S$ to a scheme $S$ is called
+{\it projective $n$-space over $S$}. If $R$ is a ring the base change
+to $\Spec(R)$ is denoted $\mathbf{P}^n_R$ and called
+{\it projective $n$-space over $R$}.
+\end{definition}
+
+\noindent
+Given a scheme $Y$ over $S$
+and a pair $(\mathcal{L}, (s_0, \ldots, s_n))$ as in
+Lemma \ref{lemma-projective-space}
+the induced morphism to $\mathbf{P}^n_S$ is denoted
+$$
+\varphi_{(\mathcal{L}, (s_0, \ldots, s_n))} :
+Y \longrightarrow \mathbf{P}^n_S
+$$
+This makes sense since the pair defines a morphism into
+$\mathbf{P}^n_{\mathbf{Z}}$ and we already have the structure
+morphism into $S$ so combined we get a morphism into
+$\mathbf{P}^n_S = \mathbf{P}^n_{\mathbf{Z}} \times S$.
+Via Lemma \ref{lemma-relative-proj-base-change}
+we can identify $\mathbf{P}^n_S$ with a relative Proj of
+the graded $\mathcal{O}_S$-algebra $\mathcal{O}_S[T_0, \ldots, T_n]$
+and we can characterize $\varphi_{(\mathcal{L}, (s_0, \ldots, s_n))}$
+as the unique $S$-morphism such that
+$$
+\mathcal{L} =
+\varphi_{(\mathcal{L}, (s_0, \ldots, s_n))}^*\mathcal{O}_{\mathbf{P}^n_S}(1)
+\quad
+\text{and}
+\quad
+s_i = \varphi_{(\mathcal{L}, (s_0, \ldots, s_n))}^*T_i
+$$
+where we think of $T_i$ as a global section of
+$\mathcal{O}_{\mathbf{P}^n_S}(1)$ via the map $\psi$ of
+Lemma \ref{lemma-glue-relative-proj-twists}; details omitted.
+
+\begin{lemma}
+\label{lemma-standard-covering-projective-space}
+Projective $n$-space over $\mathbf{Z}$ is covered by
+$n + 1$ standard opens
+$$
+\mathbf{P}^n_{\mathbf{Z}} =
+\bigcup\nolimits_{i = 0, \ldots, n} D_{+}(T_i)
+$$
+where each $D_{+}(T_i)$ is isomorphic to $\mathbf{A}^n_{\mathbf{Z}}$
+affine $n$-space over $\mathbf{Z}$.
+\end{lemma}
+
+\begin{proof}
+This is true because
+$\mathbf{Z}[T_0, \ldots, T_n]_{+} = (T_0, \ldots, T_n)$ and
+since
+$$
+\Spec
+\left(
+\mathbf{Z}
+\left[\frac{T_0}{T_i}, \ldots, \frac{T_n}{T_i}
+\right]
+\right)
+\cong
+\mathbf{A}^n_{\mathbf{Z}}
+$$
+in an obvious way.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-projective-space-separated}
+Let $S$ be a scheme.
+The structure morphism $\mathbf{P}^n_S \to S$ is
+\begin{enumerate}
+\item separated,
+\item quasi-compact,
+\item satisfies the existence and uniqueness parts of the valuative criterion,
+and
+\item universally closed.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+All these properties are stable under base change (this is clear for the
+last two and for the other two see
+Schemes, Lemmas
+\ref{schemes-lemma-separated-permanence} and
+\ref{schemes-lemma-quasi-compact-preserved-base-change}).
+Hence it suffices to prove them for the morphism
+$\mathbf{P}^n_{\mathbf{Z}} \to \Spec(\mathbf{Z})$.
+Separatedness is Lemma \ref{lemma-proj-separated}. Quasi-compactness follows
+from Lemma \ref{lemma-standard-covering-projective-space}.
+Existence and uniqueness of the valuative criterion follow from
+Lemma \ref{lemma-proj-valuative-criterion}.
+Universally closed follows from the above and
+Schemes, Proposition \ref{schemes-proposition-characterize-universally-closed}.
+\end{proof}
+
+\begin{remark}
+\label{remark-missing-finite-type}
+What's missing in the list of properties above? Well to be sure the property
+of being of finite type. The reason we do not list this here is that we have
+not yet defined the notion of finite type at this point. (Another property
+which is missing is ``smoothness''. And I'm sure there are many more you can
+think of.)
+\end{remark}
+
+\begin{lemma}[Segre embedding]
+\label{lemma-segre-embedding}
+Let $S$ be a scheme. There exists a closed immersion
+$$
+\mathbf{P}^n_S \times_S \mathbf{P}^m_S
+\longrightarrow
+\mathbf{P}^{nm + n + m}_S
+$$
+called the {\it Segre embedding}.
+\end{lemma}
+
+\begin{proof}
+It suffices to prove this when $S = \Spec(\mathbf{Z})$.
+Hence we will drop the index $S$ and work in the absolute setting.
+Write $\mathbf{P}^n = \text{Proj}(\mathbf{Z}[X_0, \ldots, X_n])$,
+$\mathbf{P}^m = \text{Proj}(\mathbf{Z}[Y_0, \ldots, Y_m])$,
+and
+$\mathbf{P}^{nm + n + m} =
+\text{Proj}(\mathbf{Z}[Z_0, \ldots, Z_{nm + n + m}])$.
+In order to map into $\mathbf{P}^{nm + n + m}$ we have to
+write down an invertible sheaf $\mathcal{L}$ on the left hand
+side and $(n + 1)(m + 1)$ sections $s_i$ which generate it.
+See Lemma \ref{lemma-projective-space}.
+The invertible sheaf we take is
+$$
+\mathcal{L} =
+\text{pr}_1^*\mathcal{O}_{\mathbf{P}^n}(1)
+\otimes
+\text{pr}_2^*\mathcal{O}_{\mathbf{P}^m}(1)
+$$
+The sections we take are
+$$
+s_0 = X_0Y_0, \ s_1 = X_1Y_0, \ldots, \ s_n = X_nY_0,
+\ s_{n + 1} = X_0Y_1, \ldots, \ s_{nm + n + m} = X_nY_m.
+$$
+These generate $\mathcal{L}$ since the sections $X_i$ generate
+$\mathcal{O}_{\mathbf{P}^n}(1)$ and the sections $Y_j$ generate
+$\mathcal{O}_{\mathbf{P}^m}(1)$. The induced morphism
+$\varphi$ has the property that
+$$
+\varphi^{-1}(D_{+}(Z_{i + (n + 1)j})) = D_{+}(X_i) \times D_{+}(Y_j).
+$$
+Hence it is an affine morphism. The corresponding ring map in case
+$(i, j) = (0, 0)$ is the map
+$$
+\mathbf{Z}[Z_1/Z_0, \ldots, Z_{nm + n + m}/Z_0]
+\longrightarrow
+\mathbf{Z}[X_1/X_0, \ldots, X_n/X_0, Y_1/Y_0, \ldots, Y_n/Y_0]
+$$
+which maps $Z_i/Z_0$ to the element $X_i/X_0$ for $i \leq n$ and
+the element $Z_{(n + 1)j}/Z_0$ to the element $Y_j/Y_0$. Hence it
+is surjective. A similar argument works for the other affine
+open subsets. Hence the morphism $\varphi$ is a closed immersion
+(see Schemes, Lemma \ref{schemes-lemma-closed-local-target} and
+Example \ref{schemes-example-closed-immersion-affines}.)
+\end{proof}
+
+\noindent
+The following two lemmas are special cases of more general results later, but
+perhaps it makes sense to prove these directly here now. The first one is
+a special case of Divisors, Lemma \ref{divisors-lemma-closed-subscheme-proj}.
+
+\begin{lemma}
+\label{lemma-closed-in-projective-space}
+Let $R$ be a ring. Let $Z \subset \mathbf{P}^n_R$ be a closed subscheme.
+Let
+$$
+I_d = \Ker\left(
+R[T_0, \ldots, T_n]_d
+\longrightarrow
+\Gamma(Z, \mathcal{O}_{\mathbf{P}^n_R}(d)|_Z)\right)
+$$
+Then $I = \bigoplus I_d \subset R[T_0, \ldots, T_n]$ is
+a graded ideal and $Z = \text{Proj}(R[T_0, \ldots, T_n]/I)$.
+\end{lemma}
+
+\begin{proof}
+It is clear that $I$ is a graded ideal.
+Set $Z' = \text{Proj}(R[T_0, \ldots, T_n]/I)$.
+By Lemma \ref{lemma-surjective-graded-rings-generated-degree-1-map-proj}
+we see that $Z'$ is a closed subscheme of $\mathbf{P}^n_R$.
+To see the equality $Z = Z'$
+it suffices to check on an standard affine open
+$D_{+}(T_i)$. By renumbering the homogeneous coordinates we
+may assume $i = 0$. Say $Z \cap D_{+}(T_0)$, resp.\ $Z' \cap D_{+}(T_0)$
+is cut out by the ideal $J$, resp.\ $J'$ of $R[T_1/T_0, \ldots, T_n/T_0]$.
+Then $J'$ is the ideal generated by the elements $F/T_0^{\deg(F)}$ where
+$F \in I$ is homogeneous.
+Suppose the degree of $F \in I$ is $d$. Since $F$ vanishes as a section
+of $\mathcal{O}_{\mathbf{P}^n_R}(d)$ restricted to $Z$ we see that
+$F/T_0^d$ is an element of $J$. Thus $J' \subset J$.
+
+\medskip\noindent
+Conversely, suppose that $f \in J$. If $f$ has total degree
+$d$ in $T_1/T_0, \ldots, T_n/T_0$, then we can write
+$f = F/T_0^d$ for some $F \in R[T_0, \ldots, T_n]_d$.
+Pick $i \in \{1, \ldots, n\}$. Then $Z \cap D_{+}(T_i)$ is
+cut out by some ideal $J_i \subset R[T_0/T_i, \ldots, T_n/T_i]$.
+Moreover,
+$$
+J \cdot
+R\left[
+\frac{T_1}{T_0}, \ldots, \frac{T_n}{T_0},
+\frac{T_0}{T_i}, \ldots, \frac{T_n}{T_i}
+\right]
+=
+J_i \cdot
+R\left[
+\frac{T_1}{T_0}, \ldots, \frac{T_n}{T_0},
+\frac{T_0}{T_i}, \ldots, \frac{T_n}{T_i}
+\right]
+$$
+The left hand side is the localization of $J$ with respect to the
+element $T_i/T_0$ and the right hand side is the localization of $J_i$
+with respect to the element $T_0/T_i$. It follows that
+$T_0^{d_i}F/T_i^{d + d_i}$ is an element of $J_i$ for some $d_i$
+sufficiently large. This proves that $T_0^{\max(d_i)}F$ is an
+element of $I$, because its restriction to each standard affine
+open $D_{+}(T_i)$ vanishes on the closed subscheme
+$Z \cap D_{+}(T_i)$. Hence $f \in J'$ and we conclude $J \subset J'$
+as desired.
+\end{proof}
+
+\noindent
+The following lemma is a special case of the more general
+Properties, Lemmas \ref{properties-lemma-ample-quasi-coherent} or
+\ref{properties-lemma-proj-quasi-coherent}.
+
+\begin{lemma}
+\label{lemma-quasi-coherent-projective-space}
+Let $R$ be a ring.
+Let $\mathcal{F}$ be a quasi-coherent sheaf on $\mathbf{P}^n_R$.
+For $d \geq 0$ set
+$$
+M_d
+=
+\Gamma(\mathbf{P}^n_R,
+\mathcal{F} \otimes_{\mathcal{O}_{\mathbf{P}^n_R}}
+\mathcal{O}_{\mathbf{P}^n_R}(d))
+=
+\Gamma(\mathbf{P}^n_R, \mathcal{F}(d))
+$$
+Then $M = \bigoplus_{d \geq 0} M_d$ is a graded $R[T_0, \ldots, R_n]$-module
+and there is a canonical isomorphism $\mathcal{F} = \widetilde{M}$.
+\end{lemma}
+
+\begin{proof}
+The multiplication maps
+$$
+R[T_0, \ldots, R_n]_e \times M_d \longrightarrow M_{d + e}
+$$
+come from the natural isomorphisms
+$$
+\mathcal{O}_{\mathbf{P}^n_R}(e)
+\otimes_{\mathcal{O}_{\mathbf{P}^n_R}}
+\mathcal{F}(d)
+\longrightarrow
+\mathcal{F}(e + d)
+$$
+see Equation (\ref{equation-global-sections-module}). Let us construct the
+map $c : \widetilde{M} \to \mathcal{F}$. On each of the standard affines
+$U_i = D_{+}(T_i)$ we see that $\Gamma(U_i, \widetilde{M}) = (M[1/T_i])_0$
+where the subscript ${}_0$ means degree $0$ part. An element of this
+can be written as $m/T_i^d$ with $m \in M_d$. Since $T_i$ is a generator
+of $\mathcal{O}(1)$ over $U_i$ we can always write
+$m|_{U_i} = m_i \otimes T_i^d$ where $m_i \in \Gamma(U_i, \mathcal{F})$
+is a unique section. Thus a natural guess is $c(m/T_i^d) = m_i$.
+A small argument, which is omitted here, shows that this gives a
+well defined map $c : \widetilde{M} \to \mathcal{F}$ if we can
+show that
+$$
+(T_i/T_j)^d m_i|_{U_i \cap U_j} = m_j|_{U_i \cap U_j}
+$$
+in $M[1/T_iT_j]$.
+But this is clear since on the overlap the generators $T_i$ and
+$T_j$ of $\mathcal{O}(1)$ differ by the invertible function $T_i/T_j$.
+
+\medskip\noindent
+Injectivity of $c$. We may check for injectivity over the affine opens
+$U_i$. Let $i \in \{0, \ldots, n\}$
+and let $s$ be an element $s = m/T_i^d \in \Gamma(U_i, \widetilde{M})$
+such that $c(m/T_i^d) = 0$. By the description of $c$ above this means that
+$m_i = 0$, hence $m|_{U_i} = 0$. Hence $T_i^em = 0$ in $M$ for some
+$e$. Hence $s = m/T_i^d = T_i^e/T_i^{e + d} = 0$ as desired.
+
+\medskip\noindent
+Surjectivity of $c$. We may check for surjectivity over the affine opens
+$U_i$. By renumbering it suffices to check it over $U_0$.
+Let $s \in \mathcal{F}(U_0)$.
+Let us write $\mathcal{F}|_{U_i} = \widetilde{N_i}$ for some
+$R[T_0/T_i, \ldots, T_0/T_i]$-module $N_i$, which is possible because
+$\mathcal{F}$ is quasi-coherent. So $s$ corresponds to an element
+$x \in N_0$. Then we have that
+$$
+(N_i)_{T_j/T_i} \cong (N_j)_{T_i/T_j}
+$$
+(where the subscripts mean ``principal localization at'')
+as modules over the ring
+$$
+R\left[
+\frac{T_0}{T_i}, \ldots, \frac{T_n}{T_i},
+\frac{T_0}{T_j}, \ldots, \frac{T_n}{T_j}
+\right].
+$$
+This means that for some large integer $d$ there exist elements
+$s_i \in N_i$, $i = 1, \ldots, n$ such that
+$$
+s = (T_i/T_0)^d s_i
+$$
+on $U_0 \cap U_i$. Next, we look at the difference
+$$
+t_{ij} = s_i - (T_j/T_i)^d s_j
+$$
+on $U_i \cap U_j$, $0 < i < j$. By our choice of $s_i$ we know that
+$t_{ij}|_{U_0 \cap U_i \cap U_j} = 0$. Hence there exists a large integer
+$e$ such that $(T_0/T_i)^et_{ij} = 0$. Set $s_i' = (T_0/T_i)^es_i$,
+and $s_0' = s$. Then we will have
+$$
+s_a' = (T_b/T_a)^{e + d} s_b'
+$$
+on $U_a \cap U_b$ for all $a, b$. This is exactly the condition that the
+elements $s'_a$ glue to a global section
+$m \in \Gamma(\mathbf{P}^n_R, \mathcal{F}(e + d))$.
+And moreover $c(m/T_0^{e + d}) = s$ by construction. Hence $c$ is
+surjective and we win.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-globally-generated-omega-twist-1}
+Let $X$ be a scheme. Let $\mathcal{L}$ be an invertible sheaf
+and let $s_0, \ldots, s_n$ be global sections of $\mathcal{L}$
+which generate it. Let $\mathcal{F}$ be the kernel of the induced
+map $\mathcal{O}_X^{\oplus n + 1} \to \mathcal{L}$.
+Then $\mathcal{F} \otimes \mathcal{L}$ is globally generated.
+\end{lemma}
+
+\begin{proof}
+In fact the result is true if $X$ is any locally ringed space.
+The sheaf $\mathcal{F}$ is a finite locally free $\mathcal{O}_X$-module
+of rank $n$. The elements
+$$
+s_{ij} = (0, \ldots, 0, s_j, 0, \ldots, 0, -s_i, 0, \ldots, 0)
+\in \Gamma(X, \mathcal{L}^{\oplus n + 1})
+$$
+with $s_j$ in the $i$th spot and $-s_i$ in the $j$th spot map to zero
+in $\mathcal{L}^{\otimes 2}$. Hence
+$s_{ij} \in \Gamma(X, \mathcal{F} \otimes_{\mathcal{O}_X} \mathcal{L})$.
+A local computation shows that these sections generate
+$\mathcal{F} \otimes \mathcal{L}$.
+
+\medskip\noindent
+Alternative proof. Consider the morphism
+$\varphi : X \to \mathbf{P}^n_\mathbf{Z}$ associated to
+the pair $(\mathcal{L}, (s_0, \ldots, s_n))$. Since the pullback
+of $\mathcal{O}(1)$ is $\mathcal{L}$ and since the pullback
+of $T_i$ is $s_i$, it suffices to prove the lemma in the
+case of $\mathbf{P}^n_\mathbf{Z}$. In this case the sheaf
+$\mathcal{F}$ corresponds to the graded $S = \mathbf{Z}[T_0, \ldots, T_n]$
+module $M$ which fits into the short exact sequence
+$$
+0 \to M \to S^{\oplus n + 1} \to S(1) \to 0
+$$
+where the second map is given by $T_0, \ldots, T_n$. In this
+case the statement above translates into the statement that
+the elements
+$$
+T_{ij} = (0, \ldots, 0, T_j, 0, \ldots, 0, -T_i, 0, \ldots, 0)
+\in M(1)_0
+$$
+generate the graded module $M(1)$ over $S$. We omit the details.
+\end{proof}
+
+
+
+
+
+
+
+

@@ -1,0 +1,129 @@
+\section{Spectral sequences}
+\label{section-spectral-sequence}
+
+\noindent
+A nice discussion of spectral sequences may be found in
+\cite{Eisenbud}. See also \cite{McCleary}, \cite{Lang}, etc.
+
+\begin{definition}
+\label{definition-spectral-sequence}
+Let $\mathcal{A}$ be an abelian category.
+\begin{enumerate}
+\item A {\it spectral sequence in $\mathcal{A}$} is given by a
+system $(E_r, d_r)_{r \geq 1}$ where each $E_r$ is an object
+of $\mathcal{A}$, each $d_r : E_r \to E_r$ is a morphism such
+that $d_r \circ d_r = 0$ and $E_{r + 1} = \Ker(d_r)/\Im(d_r)$
+for $r \geq 1$.
+\item A {\it morphism of spectral sequences}
+$f : (E_r, d_r)_{r \geq 1} \to (E'_r, d'_r)_{r \geq 1}$ is
+given by a family of morphisms $f_r : E_r \to E'_r$ such that
+$f_r \circ d_r = d'_r \circ f_r$ and such that $f_{r + 1}$
+is the morphism induced by $f_r$ via the identifications
+$E_{r + 1} = \Ker(d_r)/\Im(d_r)$
+and
+$E'_{r + 1} = \Ker(d'_r)/\Im(d'_r)$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+We will sometimes loosen this definition somewhat and allow $E_{r + 1}$
+to be an object with a given isomorphism
+$E_{r + 1} \to \Ker(d_r)/\Im(d_r)$.
+In addition we sometimes have a system $(E_r, d_r)_{r \geq r_0}$
+for some $r_0 \in \mathbf{Z}$ satisfying the properties of the definition above
+for indices $\geq r_0$. We will also call this a spectral sequence since by
+a simple renumbering it falls under the definition anyway.
+In fact, the cases $r_0 = 0$ and $r_0 = -1$ can be found in the literature.
+
+\medskip\noindent
+Given a spectral sequence $(E_r, d_r)_{r \geq 1}$ we define
+$$
+0 = B_1 \subset B_2 \subset \ldots \subset B_r \subset \ldots
+\subset Z_r \subset \ldots \subset Z_2 \subset Z_1 = E_1
+$$
+by the following simple procedure. Set $B_2 = \Im(d_1)$
+and $Z_2 = \Ker(d_1)$. Then it is clear that
+$d_2 : Z_2/B_2 \to Z_2/B_2$. Hence we can define $B_3$ as the unique
+subobject of $E_1$ containing $B_2$ such that $B_3/B_2$ is the image
+of $d_2$. Similarly we can define $Z_3$ as the unique subobject of
+$E_1$ containing $B_2$ such that $Z_3/B_2$ is the kernel of $d_2$.
+And so on and so forth. In particular we have
+$$
+E_r = Z_r/B_r
+$$
+for all $r \geq 1$. In case the spectral sequence starts at $r = r_0$
+then we can similarly construct $B_i$, $Z_i$ as subobjects in $E_{r_0}$.
+In fact, in the literature one sometimes finds the notation
+$$
+0 = B_r(E_r) \subset B_{r + 1}(E_r) \subset B_{r + 2}(E_r) \subset \ldots
+\subset Z_{r + 2}(E_r) \subset Z_{r + 1}(E_r) \subset Z_r(E_r) = E_r
+$$
+to denote the filtration described above but starting with $E_r$.
+
+\begin{definition}
+\label{definition-limit-spectral-sequence}
+Let $\mathcal{A}$ be an abelian category.
+Let $(E_r, d_r)_{r \geq 1}$ be a spectral sequence.
+\begin{enumerate}
+\item If the subobjects $Z_{\infty} = \bigcap Z_r$
+and $B_{\infty} = \bigcup B_r$ of $E_1$ exist then we define
+the {\it limit}\footnote{This notation is not universally accepted. In some
+references an additional pair of subobjects
+$Z_\infty$ and $B_\infty$ of $E_1$ such that
+$0 = B_1 \subset B_2 \subset \ldots \subset B_\infty \subset Z_\infty
+\subset \ldots \subset Z_2 \subset Z_1 = E_1$
+is part of the data comprising a spectral sequence!}
+of the spectral sequence to be the object
+$E_{\infty} = Z_{\infty}/B_{\infty}$.
+\item We say that the spectral sequence {\it degenerates at $E_r$}
+if the differentials $d_r, d_{r + 1}, \ldots$ are all zero.
+\end{enumerate}
+\end{definition}
+
+\noindent
+Note that if the spectral sequence degenerates at $E_r$, then
+we have $E_r = E_{r + 1} = \ldots = E_{\infty}$ (and the limit
+exists of course). Also, almost any abelian category we will encounter
+has countable sums and intersections.
+
+\begin{remark}[Variant]
+\label{remark-allow-translation-functors}
+It is often the case that the terms of a spectral sequence have
+additional structure, for example a grading or a bigrading.
+To accommodate this (and to get around certain technical issues)
+we introduce the following notion. Let $\mathcal{A}$ be an
+abelian category. Let $(T_r)_{r \geq 1}$ be a
+sequence of {\it translation} or {\it shift} functors, i.e.,
+$T_r : \mathcal{A} \to \mathcal{A}$ is an isomorphism of categories.
+In this setting a {\it spectral sequence} is given by a system
+$(E_r, d_r)_{r \geq 1}$ where each $E_r$ is an object of
+$\mathcal{A}$, each $d_r : E_r \to T_rE_r$
+is a morphism such that $T_rd_r \circ d_r = 0$ so that
+$$
+\xymatrix{
+\ldots \ar[r] &
+T_r^{-1}E_r \ar[r]^-{T_r^{-1}d_r} &
+E_r \ar[r]^-{d_r} &
+T_rE_r \ar[r]^{T_r d_r} &
+T_r^2E_r \ar[r] & \ldots
+}
+$$
+is a complex and $E_{r + 1} = \Ker(d_r)/\Im(T_r^{-1}d_r)$ for $r \geq 1$.
+It is clear what a {\it morphism of spectral sequences}
+means in this setting. In this setting we can still define
+$$
+0 = B_1 \subset B_2 \subset \ldots \subset B_r \subset \ldots
+\subset Z_r \subset \ldots \subset Z_2 \subset Z_1 = E_1
+$$
+and $Z_\infty$ and $B_\infty$ (if they exist) as above.
+\end{remark}
+
+
+
+
+
+
+
+
+
+

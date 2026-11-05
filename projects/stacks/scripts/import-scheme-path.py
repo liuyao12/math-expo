@@ -87,11 +87,46 @@ for chapter in chapters:
     units.append(dict(slug=chapter['slug'],title=chapter['title'],number=chapter['number'],tag=chapter['tag'],subtitle='The Stacks Project — '+chapter['title'],support=chapter['slug'] in ['categories','homology','modules'],sections=unit))
 # Additional readings have their own scope and do not expand the foundation path.
 reading_specs=[
-    ('twists-and-genus','Twisting sheaves and the genus of a plane curve',
-     'Compute sheaf cohomology with affine charts, then use a negative twist to find the genus of a plane curve.',
-     ['constructions-section-invertible-on-proj',
+    ('twists-and-genus','Sheaf cohomology and the genus of a plane curve',
+     'Starting from schemes, build projective space and sheaf cohomology, then prove the plane-curve genus formula.',
+     ['modules-section-quasi-coherent',
+      'schemes-section-quasi-coherent-affine',
+      'schemes-section-immersions',
+      'morphisms-section-affine',
+      'morphisms-section-proper',
+      'algebra-section-graded',
+      'constructions-section-proj',
+      'constructions-section-quasi-coherent-proj',
+      'modules-section-invertible',
+      'constructions-section-invertible-on-proj',
+      'constructions-section-projective-space',
+      'homology-section-complexes',
+      'homology-section-cohomological-delta-functor',
+      'homology-section-injectives',
+      'injectives-section-abelian-sheaves-space',
+      'injectives-section-sheaves-modules-space',
+      'derived-section-injective-resolutions',
+      'derived-section-right-derived-functor',
+      'cohomology-section-cohomology-sheaves',
+      'cohomology-section-locality',
+      'cohomology-section-cech',
+      'cohomology-section-cech-functor',
+      'homology-section-double-complexes',
+      'homology-section-spectral-sequence',
+      'homology-section-double-complex',
+      'derived-section-composition-right-derived-functors',
+      'cohomology-section-cech-cohomology-cohomology',
+      'cohomology-section-alternating-cech',
+      'cohomology-section-Leray',
       'coherent-section-cech-quasi-coherent',
       'coherent-section-cohomology-projective-space',
+      'divisors-section-embedded',
+      'divisors-section-effective-Cartier-divisors',
+      'divisors-section-Noetherian-effective-Cartier',
+      'divisors-section-invertible-modules',
+      'divisors-section-closed-in-relative-proj',
+      'varieties-section-curves',
+      'curves-section-genus',
       'curves-section-plane-curves']),
     ('projective-twists','Twisting sheaves and intersection multiplicity',
      'Follow the twists from the projective line to Cartier divisors and the intersection of a line with a conic.',
@@ -101,9 +136,17 @@ reading_specs=[
       'intersection-section-computing-intersection-multiplicities']),
 ]
 readings=[]
+core_sections=json.loads((root/'upstream/scheme-core.json').read_text())
+genus_stages={
+    'modules-section-quasi-coherent':'Modules and projective space',
+    'homology-section-complexes':'Sheaf cohomology and Čech complexes',
+    'divisors-section-embedded':'Plane curves and genus',
+}
 for slug, title, deck, keys in reading_specs:
     entries=[]
     for key in keys:
+        if slug=='twists-and-genus' and sections[key]['number'] in core_sections:
+            raise ValueError('Section already in the scheme definition path: '+key)
         s=sections[key]
         filename=s['chapter']+'-'+s['label'].removeprefix('section-')
         (root/'upstream/sections'/(filename+'.tex')).write_text(s['text'])
@@ -111,16 +154,21 @@ for slug, title, deck, keys in reading_specs:
         chapter=next(c for c in chapters if c['slug']==s['chapter'])
         entry['title']=entry['title'].replace(r'{\v C}', 'Č')
         entry.update(slug=filename,chapterTitle=chapter['title'],sha256=hashlib.sha256(s['text'].encode()).hexdigest())
+        if slug=='twists-and-genus' and key in genus_stages:
+            entry['stage']=genus_stages[key]
         entries.append(entry)
     chapter=next(c for c in chapters if c['slug']==entries[0]['chapter'])
-    readings.append(dict(slug=slug,readingTitle=title,deck=deck,title=chapter['title'],
-                         number=chapter['number'],sections=entries))
+    reading=dict(slug=slug,readingTitle=title,deck=deck,title=chapter['title'],
+                 number=chapter['number'],sections=entries)
+    if slug=='twists-and-genus':
+        reading['target']='0BYD'
+    readings.append(reading)
 (root/'upstream/selected-readings.json').write_text(json.dumps(readings,indent=2)+'\n')
 
 # Stacks numbers equations within the subsection, including subsection zero.
 reading_keys=[key for _,_,_,keys in reading_specs for key in keys]
-for key in {owners[label] for key in reading_keys
-            for label in links(sections[key]) if '-equation-' in label}:
+for key in set(reading_keys)|{owners[label] for key in reading_keys
+                             for label in links(sections[key]) if '-equation-' in label}:
     s=sections[key]
     theorem=equation=0
     for match in re.finditer(r'\\begin\{('+envs+r')\}|\\begin\{equation\}\s*\\label\{([^}]+)\}',s['text']):

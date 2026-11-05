@@ -26,7 +26,7 @@ for(const section of manifest.sections){
   const proofs=[...tex.matchAll(/\\begin\{proof\}/g)].length;
   const statements=[...tex.matchAll(/\\begin\{(?:lemma|definition|example)\}/g)].length;
   const parsed=renderer.section(section);
-  if(parsed.filter(b=>b.proof).length!==proofs)throw Error('Lost a source proof: '+section.slug);
+  if(parsed.flatMap(b=>b.proofs||[]).length!==proofs)throw Error('Lost a source proof: '+section.slug);
   if(parsed.filter(b=>b.kind!=='prose').length!==statements)throw Error('Lost a source statement: '+section.slug);
   for(const match of tex.matchAll(/\\label\{([^}]+)\}/g)){
     const refs=JSON.parse(fs.readFileSync(path.join(root,'upstream/references.json'),'utf8'));

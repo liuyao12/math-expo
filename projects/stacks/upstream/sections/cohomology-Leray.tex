@@ -1,0 +1,239 @@
+\section{The Leray spectral sequence}
+\label{section-Leray}
+
+\begin{lemma}
+\label{lemma-before-Leray}
+Let $f : X \to Y$ be a morphism of ringed spaces.
+There is a commutative diagram
+$$
+\xymatrix{
+D^{+}(X) \ar[rr]_-{R\Gamma(X, -)} \ar[d]_{Rf_*} & &
+D^{+}(\mathcal{O}_X(X)) \ar[d]^{\text{restriction}} \\
+D^{+}(Y) \ar[rr]^-{R\Gamma(Y, -)} & &
+D^{+}(\mathcal{O}_Y(Y))
+}
+$$
+More generally for any $V \subset Y$ open and $U = f^{-1}(V)$ there
+is a commutative diagram
+$$
+\xymatrix{
+D^{+}(X) \ar[rr]_-{R\Gamma(U, -)} \ar[d]_{Rf_*} & &
+D^{+}(\mathcal{O}_X(U)) \ar[d]^{\text{restriction}} \\
+D^{+}(Y) \ar[rr]^-{R\Gamma(V, -)} & &
+D^{+}(\mathcal{O}_Y(V))
+}
+$$
+See also Remark \ref{remark-elucidate-lemma} for more explanation.
+\end{lemma}
+
+\begin{proof}
+Let
+$\Gamma_{res} : \textit{Mod}(\mathcal{O}_X) \to \text{Mod}_{\mathcal{O}_Y(Y)}$
+be the functor which associates to an $\mathcal{O}_X$-module $\mathcal{F}$
+the global sections of $\mathcal{F}$ viewed as an $\mathcal{O}_Y(Y)$-module
+via the map $f^\sharp : \mathcal{O}_Y(Y) \to \mathcal{O}_X(X)$. Let
+$restriction : \text{Mod}_{\mathcal{O}_X(X)} \to \text{Mod}_{\mathcal{O}_Y(Y)}$
+be the restriction functor induced by
+$f^\sharp : \mathcal{O}_Y(Y) \to \mathcal{O}_X(X)$. Note that $restriction$
+is exact so that
+its right derived functor is computed by simply applying the restriction
+functor, see
+Derived Categories, Lemma \ref{derived-lemma-right-derived-exact-functor}.
+It is clear that
+$$
+\Gamma_{res}
+=
+restriction \circ \Gamma(X, -)
+=
+\Gamma(Y, -) \circ f_*
+$$
+We claim that
+Derived Categories, Lemma \ref{derived-lemma-compose-derived-functors}
+applies to both compositions. For the first this is clear by our remarks
+above. For the second, it follows from
+Lemma \ref{lemma-pushforward-injective} which implies that
+injective $\mathcal{O}_X$-modules are mapped to $\Gamma(Y, -)$-acyclic
+sheaves on $Y$.
+\end{proof}
+
+\begin{remark}
+\label{remark-elucidate-lemma}
+Here is a down-to-earth explanation of the meaning of
+Lemma \ref{lemma-before-Leray}. It says that given
+$f : X \to Y$ and $\mathcal{F} \in \textit{Mod}(\mathcal{O}_X)$
+and given an injective resolution $\mathcal{F} \to \mathcal{I}^\bullet$
+we have
+$$
+\begin{matrix}
+R\Gamma(X, \mathcal{F}) & \text{is represented by} &
+\Gamma(X, \mathcal{I}^\bullet) \\
+Rf_*\mathcal{F} & \text{is represented by} & f_*\mathcal{I}^\bullet \\
+R\Gamma(Y, Rf_*\mathcal{F}) & \text{is represented by} &
+\Gamma(Y, f_*\mathcal{I}^\bullet)
+\end{matrix}
+$$
+the last fact coming from Leray's acyclicity lemma
+(Derived Categories, Lemma \ref{derived-lemma-leray-acyclicity})
+and Lemma \ref{lemma-pushforward-injective}.
+Finally, it combines this with the trivial observation that
+$$
+\Gamma(X, \mathcal{I}^\bullet)
+=
+\Gamma(Y, f_*\mathcal{I}^\bullet).
+$$
+to arrive at the commutativity of the diagram of the lemma.
+\end{remark}
+
+\begin{lemma}
+\label{lemma-modules-abelian}
+Let $X$ be a ringed space.
+Let $\mathcal{F}$ be an $\mathcal{O}_X$-module.
+\begin{enumerate}
+\item The cohomology groups $H^i(U, \mathcal{F})$ for $U \subset X$ open
+of $\mathcal{F}$ computed as an $\mathcal{O}_X$-module, or computed as an
+abelian sheaf are identical.
+\item Let $f : X \to Y$ be a morphism of ringed spaces.
+The higher direct images $R^if_*\mathcal{F}$ of $\mathcal{F}$
+computed as an $\mathcal{O}_X$-module, or computed as an abelian sheaf
+are identical.
+\end{enumerate}
+There are similar statements in the case of bounded below
+complexes of $\mathcal{O}_X$-modules.
+\end{lemma}
+
+\begin{proof}
+Consider the morphism of ringed spaces
+$(X, \mathcal{O}_X) \to (X, \underline{\mathbf{Z}}_X)$ given
+by the identity on the underlying topological space and by
+the unique map of sheaves of rings
+$\underline{\mathbf{Z}}_X \to \mathcal{O}_X$.
+Let $\mathcal{F}$ be an $\mathcal{O}_X$-module.
+Denote $\mathcal{F}_{ab}$ the same sheaf seen as an
+$\underline{\mathbf{Z}}_X$-module, i.e., seen as a sheaf of
+abelian groups. Let
+$\mathcal{F} \to \mathcal{I}^\bullet$ be an injective resolution.
+By Remark \ref{remark-elucidate-lemma} we see that
+$\Gamma(X, \mathcal{I}^\bullet)$ computes both
+$R\Gamma(X, \mathcal{F})$ and $R\Gamma(X, \mathcal{F}_{ab})$.
+This proves (1).
+
+\medskip\noindent
+To prove (2) we use (1) and Lemma \ref{lemma-describe-higher-direct-images}.
+The result follows immediately.
+\end{proof}
+
+\begin{lemma}[Leray spectral sequence]
+\label{lemma-Leray}
+Let $f : X \to Y$ be a morphism of ringed spaces.
+Let $\mathcal{F}^\bullet$ be
+a bounded below complex of $\mathcal{O}_X$-modules.
+There is a spectral sequence
+$$
+E_2^{p, q} = H^p(Y, R^qf_*(\mathcal{F}^\bullet))
+$$
+converging to $H^{p + q}(X, \mathcal{F}^\bullet)$.
+\end{lemma}
+
+\begin{proof}
+This is just the Grothendieck spectral sequence
+Derived Categories, Lemma \ref{derived-lemma-grothendieck-spectral-sequence}
+coming from the composition of functors
+$\Gamma_{res} = \Gamma(Y, -) \circ f_*$ where $\Gamma_{res}$ is as
+in the proof of Lemma \ref{lemma-before-Leray}.
+To see that the assumptions of
+Derived Categories, Lemma \ref{derived-lemma-grothendieck-spectral-sequence}
+are satisfied, see the proof of Lemma \ref{lemma-before-Leray} or
+Remark \ref{remark-elucidate-lemma}.
+\end{proof}
+
+\begin{remark}
+\label{remark-Leray-ss-more-structure}
+The Leray spectral sequence, the way we proved it in Lemma \ref{lemma-Leray}
+is a spectral sequence of $\Gamma(Y, \mathcal{O}_Y)$-modules. However, it
+is quite easy to see that it is in fact a spectral sequence of
+$\Gamma(X, \mathcal{O}_X)$-modules. For example $f$ gives rise to
+a morphism of ringed spaces
+$f' :  (X, \mathcal{O}_X) \to (Y, f_*\mathcal{O}_X)$.
+By Lemma \ref{lemma-modules-abelian} the terms $E_r^{p, q}$ of the
+Leray spectral sequence for an $\mathcal{O}_X$-module $\mathcal{F}$
+and $f$ are identical with those for $\mathcal{F}$ and $f'$
+at least for $r \geq 2$. Namely, they both agree with the terms of the Leray
+spectral sequence for $\mathcal{F}$ as an abelian sheaf.
+And since $(f_*\mathcal{O}_X)(Y) = \mathcal{O}_X(X)$ we see the result.
+It is often the case
+that the Leray spectral sequence carries additional structure.
+\end{remark}
+
+\begin{lemma}
+\label{lemma-apply-Leray}
+Let $f : X \to Y$ be a morphism of ringed spaces.
+Let $\mathcal{F}$ be an $\mathcal{O}_X$-module.
+\begin{enumerate}
+\item If $R^qf_*\mathcal{F} = 0$ for $q > 0$, then
+$H^p(X, \mathcal{F}) = H^p(Y, f_*\mathcal{F})$ for all $p$.
+\item If $H^p(Y, R^qf_*\mathcal{F}) = 0$ for all $q$ and $p > 0$, then
+$H^q(X, \mathcal{F}) = H^0(Y, R^qf_*\mathcal{F})$ for all $q$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+These are two simple conditions that force the Leray spectral sequence to
+degenerate at $E_2$. You can also prove these facts directly (without using
+the spectral sequence) which is a good exercise in cohomology of sheaves.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-higher-direct-images-compose}
+\begin{slogan}
+The total derived functor of a composition is the
+composition of the total derived functors.
+\end{slogan}
+Let $f : X \to Y$ and $g : Y \to Z$ be morphisms of ringed spaces.
+In this case $Rg_* \circ Rf_* = R(g \circ f)_*$ as functors
+from $D^{+}(X) \to D^{+}(Z)$.
+\end{lemma}
+
+\begin{proof}
+We are going to apply
+Derived Categories, Lemma \ref{derived-lemma-compose-derived-functors}.
+It is clear that $g_* \circ f_* = (g \circ f)_*$, see
+Sheaves, Lemma \ref{sheaves-lemma-pushforward-composition}.
+It remains to show that $f_*\mathcal{I}$ is $g_*$-acyclic.
+This follows from Lemma \ref{lemma-pushforward-injective}
+and the description of the
+higher direct images $R^ig_*$ in
+Lemma \ref{lemma-describe-higher-direct-images}.
+\end{proof}
+
+\begin{lemma}[Relative Leray spectral sequence]
+\label{lemma-relative-Leray}
+Let $f : X \to Y$ and $g : Y \to Z$ be morphisms of ringed spaces.
+Let $\mathcal{F}$ be an $\mathcal{O}_X$-module.
+There is a spectral sequence with
+$$
+E_2^{p, q} = R^pg_*(R^qf_*\mathcal{F})
+$$
+converging to $R^{p + q}(g \circ f)_*\mathcal{F}$.
+This spectral sequence is functorial in $\mathcal{F}$, and there
+is a version for bounded below complexes of $\mathcal{O}_X$-modules.
+\end{lemma}
+
+\begin{proof}
+This is a Grothendieck spectral sequence for composition of functors
+and follows from Lemma \ref{lemma-higher-direct-images-compose} and
+Derived Categories, Lemma \ref{derived-lemma-grothendieck-spectral-sequence}.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
