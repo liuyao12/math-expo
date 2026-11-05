@@ -72,7 +72,7 @@ for(const unit of foundation.units){
       if(!tag||!ids.includes(tag))throw Error('Missing source anchor '+section.slug+' '+match[1]);
     }
     const note=sectionNote(section);
-    if(!note.bindings.length||!note.check||!note.result)throw Error('Missing complex function model '+section.slug);
+    if(!note.bindings.length||!note.check||!note.result)throw Error('Missing example model '+section.slug);
     const symbols=new Set();
     for(const b of note.bindings){
       if(!b.kind)throw Error('Missing object type '+section.slug);
@@ -95,7 +95,7 @@ const sourceFiles=['COPYING','manifest.json','introduction.tex'];
 for(const file of sourceFiles)if(!fs.existsSync(path.join(dist,'source',file)))throw Error('Missing source or license '+file);
 console.log(`Validated Stacks Reader: ${Object.keys(examples).length} typed object specializations, linked symbols, optional visual, all ${statementCount} source statements, ${proofCount} collapsed proofs, tags, local links, math, fonts, and source license.`);
 
-console.log(`Validated foundation path: ${foundation.units.flatMap(u=>u.sections).length} complete sections, ${pathStatements} statements, ${pathProofs} collapsed proofs, source anchors, typed complex-function models, and cross-reading links.`);
+console.log(`Validated foundation path: ${foundation.units.flatMap(u=>u.sections).length} complete sections, ${pathStatements} statements, ${pathProofs} collapsed proofs, source anchors, typed examples, and cross-reading links.`);
 
 const originalChapters=JSON.parse(fs.readFileSync(path.join(root,'src/chapters.json'),'utf8'));
 for(const unit of foundation.units){
