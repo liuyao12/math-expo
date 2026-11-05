@@ -1,0 +1,23 @@
+[
+  {
+    "slug": "projective-twists",
+    "readingTitle": "Twisting sheaves on the projective line",
+    "deck": "Compute the local generators, overlap rule, and global sections of each twist.",
+    "title": "Constructions of Schemes",
+    "number": 27,
+    "sections": [
+      {
+        "chapter": "constructions",
+        "label": "section-invertible-on-proj",
+        "title": "Invertible sheaves on Proj",
+        "tag": "01MM",
+        "number": "27.10",
+        "kind": "section",
+        "source_start_line": 1687,
+        "source_end_line": 2040,
+        "slug": "constructions-invertible-on-proj",
+        "sha256": "b94f42ec3263bce02e99435e34fe9d8772d7cab80913f8888da541721cb14f9e"
+      }
+    ]
+  }
+]

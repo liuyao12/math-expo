@@ -56,9 +56,11 @@ for(const file of files(dist).filter(f=>f.endsWith('.html'))){
 }
 
 const foundation=JSON.parse(fs.readFileSync(path.join(root,'upstream/scheme-path.json'),'utf8'));
+const selectedReadings=JSON.parse(fs.readFileSync(path.join(root,'upstream/selected-readings.json'),'utf8'));
+const originalUnits=[...foundation.units,...selectedReadings];
 const refs=JSON.parse(fs.readFileSync(path.join(root,'upstream/references.json'),'utf8'));
 let pathProofs=0,pathStatements=0;
-for(const unit of foundation.units){
+for(const unit of originalUnits){
   const file=path.join(dist,'read',unit.slug,'index.html'),html=fs.readFileSync(file,'utf8');
   const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);
   if(new Set(ids).size!==ids.length)throw Error('Duplicate source anchors in '+unit.slug);
@@ -84,7 +86,7 @@ for(const unit of foundation.units){
   if([...html.matchAll(/class="statement-heading"/g)].length!==statements)throw Error('Lost source statement in '+unit.slug);
   if(!html.includes('class="object-matches"'))throw Error('Missing margin object matching in '+unit.slug);
   if(html.includes('katex-error')||html.includes('@@TOKEN'))throw Error('Unrendered source in '+unit.slug);
-  pathProofs+=proofs;pathStatements+=statements;
+  if(!unit.readingTitle){pathProofs+=proofs;pathStatements+=statements;}
 }
 const finalDefinition=refs['schemes-definition-scheme'].tag;
 if(!fs.readFileSync(path.join(dist,'read/schemes/index.html'),'utf8').includes(`id="${finalDefinition}"`))throw Error('Missing scheme definition');
@@ -98,8 +100,8 @@ console.log(`Validated Stacks Reader: ${Object.keys(examples).length} typed obje
 console.log(`Validated foundation path: ${foundation.units.flatMap(u=>u.sections).length} complete sections, ${pathStatements} statements, ${pathProofs} collapsed proofs, source anchors, typed examples, and cross-reading links.`);
 
 const originalChapters=JSON.parse(fs.readFileSync(path.join(root,'src/chapters.json'),'utf8'));
-for(const unit of foundation.units){
-  const chapter=originalChapters.find(c=>c.slug===unit.slug);
+for(const unit of originalUnits){
+  const chapter=originalChapters.find(c=>c.slug===unit.sections[0].chapter);
   if(!chapter||chapter.title!==unit.title||chapter.number!==unit.number)throw Error('Changed original chapter title '+unit.slug);
   const html=fs.readFileSync(path.join(dist,'read',unit.slug,'index.html'),'utf8');
   if(!html.includes('<h1>'+escapeHTML(chapter.title)+'</h1>'))throw Error('Missing original chapter heading '+unit.slug);
@@ -127,7 +129,7 @@ const proseCheck=spawnSync('python3',[path.join(root,'scripts/check-verbatim.py'
 if(proseCheck.status!==0)process.exit(proseCheck.status??1);
 console.log(`Validated original titles, prerequisite audit, verbatim source views, and ${Object.keys(diagrams).length} original LaTeX diagrams.`);
 
-for(const route of [...foundation.units.map(u=>u.slug),'gluing']){
+for(const route of [...originalUnits.map(u=>u.slug),'gluing']){
   const html=fs.readFileSync(path.join(dist,'read',route,'index.html'),'utf8');
   const main=html.match(/<main id="main" class="reader-main verbatim-main">([\s\S]*?)<\/main>/)?.[1];
   if(!main)throw Error('Missing verbatim text column '+route);

@@ -85,11 +85,48 @@ for chapter in chapters:
         for label,owner in owners.items():
             if owner==key:routes[label]=chapter['slug']
     units.append(dict(slug=chapter['slug'],title=chapter['title'],number=chapter['number'],tag=chapter['tag'],subtitle='The Stacks Project — '+chapter['title'],support=chapter['slug'] in ['categories','homology','modules'],sections=unit))
+# Additional readings have their own scope and do not expand the foundation path.
+reading_specs=[
+    ('projective-twists','Twisting sheaves on the projective line',
+     'Compute the local generators, overlap rule, and global sections of each twist.',
+     ['constructions-section-invertible-on-proj']),
+]
+readings=[]
+for slug, title, deck, keys in reading_specs:
+    entries=[]
+    for key in keys:
+        s=sections[key]
+        filename=s['chapter']+'-'+s['label'].removeprefix('section-')
+        (root/'upstream/sections'/(filename+'.tex')).write_text(s['text'])
+        entry={k:v for k,v in s.items() if k!='text'}
+        entry.update(slug=filename,sha256=hashlib.sha256(s['text'].encode()).hexdigest())
+        entries.append(entry)
+    chapter=next(c for c in chapters if c['slug']==entries[0]['chapter'])
+    readings.append(dict(slug=slug,readingTitle=title,deck=deck,title=chapter['title'],
+                         number=chapter['number'],sections=entries))
+(root/'upstream/selected-readings.json').write_text(json.dumps(readings,indent=2)+'\n')
+
+# Stacks numbers equations within the subsection, including subsection zero.
+reading_keys=[key for _,_,_,keys in reading_specs for key in keys]
+for key in {owners[label] for key in reading_keys
+            for label in links(sections[key]) if '-equation-' in label}:
+    s=sections[key]
+    theorem=equation=0
+    for match in re.finditer(r'\\begin\{('+envs+r')\}|\\begin\{equation\}\s*\\label\{([^}]+)\}',s['text']):
+        if match[1]:
+            theorem+=1
+            equation=0
+        else:
+            equation+=1
+            label=s['chapter']+'-'+match[2]
+            if label in refs:
+                refs[label].update(number=f"{s['number']}.{theorem}.{equation}",kind='equation')
+
 needed=set()
-for key in selected:
+for key in [*selected,*reading_keys]:
     for lab in re.findall(r'\\(?:ref|eqref|label)\{([^}]+)\}',sections[key]['text']):
         needed.add(lab if lab in refs else sections[key]['chapter']+'-'+lab)
-old=json.loads((root/'upstream/references.json').read_text());old.update({k:refs[k] for k in needed if k in refs})
+old=json.loads((root/'upstream/references.json').read_text());old.update({k:refs[k] for k in sorted(needed) if k in refs})
 (root/'upstream/references.json').write_text(json.dumps(old,indent=2)+'\n')
 source_references=[]
 for key,s in selected.items():

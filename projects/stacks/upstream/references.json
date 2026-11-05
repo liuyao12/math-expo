@@ -3273,5 +3273,120 @@
     "tag": "002S",
     "number": "4.16.1",
     "kind": "definition"
+  },
+  "algebra-section-graded": {
+    "tag": "00JL",
+    "number": "10.56",
+    "kind": "section"
+  },
+  "constructions-definition-twist": {
+    "tag": "01MN",
+    "number": "27.10.1",
+    "kind": "definition"
+  },
+  "constructions-equation-global-sections": {
+    "tag": "01MP",
+    "number": "27.10.1.3",
+    "kind": "equation"
+  },
+  "constructions-equation-global-sections-module": {
+    "tag": "03GK",
+    "number": "27.10.1.4",
+    "kind": "equation"
+  },
+  "constructions-equation-global-sections-more-generally": {
+    "tag": "01MR",
+    "number": "27.10.1.6",
+    "kind": "equation"
+  },
+  "constructions-equation-global-sections-more-generally-simplified": {
+    "tag": "0AG4",
+    "number": "27.10.3.2",
+    "kind": "equation"
+  },
+  "constructions-equation-map-global-sections-degree-n": {
+    "tag": "0AG2",
+    "number": "27.9.0.2",
+    "kind": "equation"
+  },
+  "constructions-equation-map-global-sections-degree-n-simplified": {
+    "tag": "0AG3",
+    "number": "27.10.3.1",
+    "kind": "equation"
+  },
+  "constructions-equation-multiply": {
+    "tag": "01MO",
+    "number": "27.10.1.1",
+    "kind": "equation"
+  },
+  "constructions-equation-multiply-more-generally": {
+    "tag": "01MQ",
+    "number": "27.10.1.5",
+    "kind": "equation"
+  },
+  "constructions-equation-multiply-on-sheaf": {
+    "tag": "03GJ",
+    "number": "27.10.1.2",
+    "kind": "equation"
+  },
+  "constructions-lemma-ample-on-proj": {
+    "tag": "01MW",
+    "number": "27.10.6",
+    "kind": "lemma"
+  },
+  "constructions-lemma-apply-modules": {
+    "tag": "01MT",
+    "number": "27.10.3",
+    "kind": "lemma"
+  },
+  "constructions-lemma-comparison-proj-quasi-coherent": {
+    "tag": "0B5I",
+    "number": "27.10.7",
+    "kind": "lemma"
+  },
+  "constructions-lemma-principal-open": {
+    "tag": "01MV",
+    "number": "27.10.5",
+    "kind": "lemma"
+  },
+  "constructions-lemma-proj-sheaves": {
+    "tag": "01M7",
+    "number": "27.8.4",
+    "kind": "lemma"
+  },
+  "constructions-lemma-when-invertible": {
+    "tag": "01MS",
+    "number": "27.10.2",
+    "kind": "lemma"
+  },
+  "constructions-lemma-where-invertible": {
+    "tag": "01MU",
+    "number": "27.10.4",
+    "kind": "lemma"
+  },
+  "constructions-lemma-widetilde-tensor": {
+    "tag": "01MK",
+    "number": "27.9.1",
+    "kind": "lemma"
+  },
+  "constructions-remark-not-isomorphism": {
+    "tag": "01ML",
+    "number": "27.9.2",
+    "kind": "remark"
+  },
+  "constructions-section-invertible-on-proj": {
+    "tag": "01MM",
+    "number": "27.10",
+    "kind": "section"
+  },
+  "modules-definition-invertible": {
+    "tag": "01CS",
+    "number": "17.25.1",
+    "kind": "definition"
+  },
+  "schemes-lemma-compare-constructions": {
+    "tag": "01I7",
+    "number": "26.7.1",
+    "kind": "lemma"
   }
 }

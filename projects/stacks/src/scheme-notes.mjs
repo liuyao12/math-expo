@@ -183,7 +183,34 @@ models.kernel=model('A kernel represents homogeneous solutions',[
  b('z',r`\ker D=\mathbb C e^z`,'The space of solutions of the homogeneous equation.'),
  b('i',r`(\ker D\hookrightarrow\operatorname{Hol}(U))`,'Include a solution as a holomorphic function.')
 ],r`The composite \(D\circ i\) is zero. Any complex-linear map into \(\operatorname{Hol}(U)\) annihilated by \(D\) has its image in the solution space, so it factors uniquely through this inclusion.`,r`This is the universal property of the kernel, expressed in familiar differential-equation language. The cokernel is \(\operatorname{Hol}(U)/D(\operatorname{Hol}(U))\): it records inhomogeneous right-hand sides modulo those for which a global solution exists.`,r`For the kernel part of this definition, \(U\) is any nonempty connected open subset of \(\mathbb C\), called a domain; it need not be a disk.`);
+
+const projectiveRing=b('S',r`k[T_0,T_1]`,r`The polynomial ring over a field \(k\), graded by total degree with both variables in degree one.`);
+const projectiveLine=b('X',r`\operatorname{Proj}(S)=\mathbb P^1_k`,'The projective line over the field.');
+const twistCharts=model('Glue the two local generators',[
+ projectiveRing,projectiveLine,
+ b('U_0',r`D_+(T_0)=\operatorname{Spec}k[z]`,r`The chart with coordinate \(z=T_1/T_0\).`),
+ b('U_1',r`D_+(T_1)=\operatorname{Spec}k[w]`,r`The chart with coordinate \(w=T_0/T_1\).`),
+ b(r`\mathcal O_X(n)(U_0)`,r`k[z]\,T_0^n`,r`The degree \(n\) part of \(S[T_0^{-1}]\). It is free over the chart ring with generator \(T_0^n\).`),
+ b(r`\mathcal O_X(n)(U_1)`,r`k[w]\,T_1^n`,r`The degree \(n\) part of \(S[T_1^{-1}]\). Negative powers of the chosen coordinate are allowed after inverting it.`)
+],r`The shift has \(S(n)_j=S_{n+j}\), so taking degree zero after localizing the shifted module means taking degree \(n\) in the localized original ring. On the overlap \(w=1/z\), the generators satisfy \(T_1^n=z^nT_0^n\).`,r`A section is described by polynomials \(a(z)\) and \(b(w)\) on the two charts. They glue precisely when \(a(z)=z^n b(1/z)\). For \(n=0\), this is the usual gluing rule for regular functions.`);
+const twistSections=model('Find the global sections from the gluing rule',[
+ projectiveLine,
+ b(r`\mathcal O_X(1)`,r`\widetilde{S(1)}`,r`On the two charts, a section has coefficient polynomials in the generators \(T_0\) and \(T_1\).`),
+ b(r`T_0`,r`(1,w)`,'The coefficient of the first coordinate section on each chart.'),
+ b(r`T_1`,r`(z,1)`,'The coefficient of the second coordinate section on each chart.')
+],r`For \(n\ge 0\), the equality \(a(z)=z^n b(1/z)\) holds exactly when \(a(z)\) has degree at most \(n\) and \(b(w)=w^n a(1/w)\). Homogenizing \(a\) gives the section \(T_0^n a(T_1/T_0)\). For \(n<0\), every term of \(z^n b(1/z)\) has negative degree, so equality forces both polynomials to vanish.`,r`Thus \(H^0(X,\mathcal O_X(n))=S_n\), with dimension \(n+1\) for \(n\ge 0\) and zero otherwise. In degree two the basis is \(T_0^2,T_0T_1,T_1^2\).`);
+const twistTensor=model('Multiply the generators on each chart',[
+ projectiveRing,projectiveLine,
+ b(r`\mathcal O_X(n)|_{U_i}`,r`\mathcal O_{U_i}\,T_i^n`,r`The local generator on \(U_i=D_+(T_i)\).`),
+ b(r`\mathcal O_X(m)|_{U_i}`,r`\mathcal O_{U_i}\,T_i^m`,'The local generator for the other twist.')
+],r`The multiplication map sends \(T_i^n\otimes T_i^m\) to \(T_i^{n+m}\). On the overlap, the product of the transition factors is \(z^nz^m=z^{n+m}\).`,r`The local isomorphisms glue to \(\mathcal O_X(n)\otimes\mathcal O_X(m)\cong\mathcal O_X(n+m)\). Taking \(\mathcal F=\mathcal O_X(m)\) gives \(\mathcal F(n)\cong\mathcal O_X(m+n)\). The tautological line has local generators \((1,z)\) and \((w,1)\). The second equals \(z^{-1}\) times the first on the overlap, giving \(\mathcal O_X(-1)\). Its dual is \(\mathcal O_X(1)\).`);
+const twistOpen=model('A coordinate section picks out an affine chart',[
+ projectiveRing,projectiveLine,b('f',r`T_0`,r`A degree-one homogeneous polynomial giving a section of \(\mathcal O_X(1)\).`),
+ b('W',r`X`,'The two degree-one standard opens already cover the projective line.')
+],r`The section \(T_0\) has coefficient \(1\) in its own chart and coefficient \(w\) in the chart where \(T_1\) is the generator. Its only zero is \(w=0\), the point \([0:1]\).`,r`The locus where the section generates the line bundle is \(D_+(T_0)\). It is affine, with coordinate \(z=T_1/T_0\).`);
+models.twistCharts=twistCharts;
 const groups={
+ twistCharts:['constructions-invertible-on-proj'],
  solutionSheaf:['modules-kernels'],connected:['topology-connected-components'],natural:['categories-opposite','categories-formal-cat-cat'],twoFibre:['categories-2-fibre-products'],over:['categories-categories-over-categories'],topology:['topology-topology-basic'],basis:['topology-bases'],irreducible:['topology-irreducible-components'],noetherian:['topology-noetherian'],compact:['topology-quasi-compact'],specialization:['topology-specialization'],
  snake:['algebra-snake'],colimits:['categories-cofinal','algebra-colimits','categories-directed-colimits','categories-posets-limits'],localization:['algebra-localization'],local:['algebra-radical','algebra-local-rings'],spectrum:['algebra-spectrum-ring'],constructible:['topology-constructible','topology-constructible-Noetherian'],
  sheaf:['sheaves-presheaves','sheaves-abelian-presheaves','sheaves-sheaves','sheaves-abelian-sheaves'],
@@ -267,6 +294,19 @@ export function sectionNote(section){
 }
 export function passageNote(section,block){
  const base=sectionNote(section);
+ if(section.slug==='constructions-invertible-on-proj'){
+  const examples={
+   'definition-twist':{...twistCharts,examples:[{...twistSections,scope:'statement'},{...twistTensor,scope:'statement'}]},
+   'lemma-when-invertible':twistCharts,
+   'lemma-apply-modules':twistTensor,
+   'lemma-where-invertible':twistTensor,
+   'lemma-principal-open':twistOpen,
+   'lemma-ample-on-proj':twistOpen,
+   'lemma-comparison-proj-quasi-coherent':twistSections
+  };
+  const example=examples[block.label];
+  if(example)return {...example,scope:'statement'};
+ }
  if(section.slug==='categories-definition-categories'&&block.label==='definition-functor')return {...fundamentalGroup,scope:'statement',examples:[singularHomology,tangentSpace].map(example=>({...example,scope:'statement'}))};
  if(section.slug==='categories-definition-categories'&&block.label==='definition-transformation-functors')return {...doubleDual,scope:'statement'};
  if(section.slug==='categories-opposite'&&block.label==='definition-contravariant')return {...dual,scope:'statement'};
