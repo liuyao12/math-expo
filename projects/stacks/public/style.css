@@ -36,3 +36,29 @@ body:has(.reader-layout) .site-header{position:sticky;top:0}.reading-progress{he
 
 @media print{.margin-reading-controls,.header-companion-toggle{display:none!important}}
 .collection-scope>summary{cursor:pointer;font:18px/1.7 var(--serif);color:var(--green);padding:12px 0;border-block:1px solid var(--line)}
+
+.example-disclosure {
+  border-bottom: 1px solid var(--line);
+}
+.example-disclosure > summary {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 12px 0;
+  list-style: none;
+  cursor: pointer;
+  font: 18px/1.35 var(--serif);
+  color: var(--green);
+}
+.example-disclosure > summary::-webkit-details-marker { display: none; }
+.example-disclosure > summary:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: -2px;
+}
+.example-chevron {
+  flex: 0 0 1em;
+  text-align: center;
+  font: 14px/1 var(--sans);
+}
+.example-chevron::before { content: "+"; }
+.example-disclosure[open] > summary .example-chevron::before { content: "−"; }

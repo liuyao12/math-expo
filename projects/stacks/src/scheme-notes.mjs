@@ -197,6 +197,27 @@ const groups={
  arithmeticGlue:['algebra-tilde-module-sheaf'],ringPullback:['categories-fibre-products'],setLimits:['categories-limit-sets'],
  abelian:['homology-additive-categories','homology-abelian-categories','homology-functors','categories-exact-functor']
 };
+const additionalExamples={
+ 'sheaves-presheaves':[model('Functions on a discrete two-point space',[
+  twoPoints,b('U',r`\{a\}`,'One open subset. Every subset of this space is open.'),
+  b(r`\mathcal F(U)`,r`\operatorname{Map}(U,\mathbb F_2)\cong\mathbb F_2`,'A function on this singleton is specified by one value.'),
+  b(r`\mathcal F(X)`,r`\mathbb F_2\times\mathbb F_2`,'A function on the whole space is specified by two values.')
+ ],r`Restriction to \(\{a\}\) is the projection \((u,v)\mapsto u\). Restricting further to the empty open gives the unique empty function, whether we start on \(X\) or on \(\{a\}\).`,r`These assignments define a presheaf of sets. The pointwise ring operations also make it a presheaf of rings.`)],
+ 'sheaves-stalks':[model('A germ on a discrete space is a value',[
+  twoPoints,b('x',r`a`,'The point at which we take the stalk.'),
+  b(r`\mathcal F(U)`,r`\operatorname{Map}(U,\mathbb F_2)`,'Functions on each open subset, with ordinary restriction.'),
+  b(r`\mathcal F_x`,r`\mathbb F_2`,'The possible values at the chosen point.')
+ ],r`Every neighbourhood of \(a\) contains the open singleton \(\{a\}\). Two sections represent the same germ at \(a\) exactly when their restrictions to this singleton agree.`,r`The germ represented by \(h\) is determined by \(h(a)\). On this space the stalk computation reduces to restricting once to the smallest neighbourhood.`)],
+ 'schemes-schemes':[model('An affine scheme supported at one point',[
+  b('R',r`\mathbb F_2[\epsilon]/(\epsilon^2)`,'The ring of dual numbers over the field of two elements.'),
+  b('X',r`\operatorname{Spec}(R)`,'The spectrum with its structure sheaf.'),
+  b('x',r`(\epsilon)`,'The unique prime ideal. Every prime contains the nilpotent element.'),
+  b('U',r`X`,'An affine open neighbourhood of the only point.')
+ ],r`The ring \(R\) is local with maximal ideal \((\epsilon)\). The stalk at the only point is \(R\), and the whole space is an affine neighbourhood of that point.`,r`This satisfies the definition with a single chart. The nonzero nilpotent \(\epsilon\) remains visible in the structure sheaf even though the underlying space has just one point.`)]
+};
+export function extraExamples(section){
+ return additionalExamples[section.slug]||[];
+}
 const bySection=Object.fromEntries(Object.entries(groups).flatMap(([name,slugs])=>slugs.map(slug=>[slug,name])));
 export function sectionNote(section){
  const name=bySection[section.slug];if(!name)throw Error('Missing example commentary: '+section.slug);

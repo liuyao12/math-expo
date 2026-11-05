@@ -32,6 +32,9 @@
   let current='local-functions',follow=true,selectionPinned=false,data={},passages=[],keys=[],lastReading=current,lastReadingContext=null,activeContext=null;
   if(dataNode){
     data=JSON.parse(dataNode.textContent);keys=Object.keys(data);current=keys[0];lastReading=current;passages=$$('.passage[data-example]');
+    const exampleTitle=$('#example-title'),exampleContent=$('#example-content');
+    const openCards=new Map();
+    let renderedExampleHTML;
     const setExample=(key,manual=false,context=null)=>{
       if(!data[key])return;current=key;
       if(manual)follow=false;
@@ -39,14 +42,24 @@
       const proof=context?.dataset.proof==='true';
       const changed=activeContext!==context;
       activeContext=context;setSource(context);
-      $('#example-title').textContent=data[key].title;
-      $('#example-content').innerHTML=proof&&data[key].proofHtml?data[key].proofHtml:data[key].html;
+      if(exampleTitle)exampleTitle.textContent=data[key].title;
+      const html=proof&&data[key].proofHtml?data[key].proofHtml:data[key].html;
+      const contentChanged=renderedExampleHTML!==html;
+      if(contentChanged){
+        for(const card of exampleContent.querySelectorAll('[data-example-card]'))openCards.set(card.dataset.exampleCard,card.open);
+        exampleContent.innerHTML=html;
+        renderedExampleHTML=html;
+        for(const card of exampleContent.querySelectorAll('[data-example-card]')){
+          const open=openCards.get(card.dataset.exampleCard);
+          if(open!==undefined)card.open=open;
+        }
+      }
       $('#example-index').textContent=String(keys.indexOf(key)+1).padStart(2,'0');
       $('#example-stage-label').textContent=context?.dataset.sourceLabel||'§26.2 · Locally ringed spaces';
       $('#example-stage-label').href='#'+(context?.id||'local-functions-0');
       $('#follow-reading').setAttribute('aria-pressed',String(follow));$('#follow-reading').textContent=follow?'Following reading':'Follow reading';
       $('#previous-example').disabled=keys.indexOf(key)===0;$('#next-example').disabled=keys.indexOf(key)===keys.length-1;
-      if(changed)$('.example-sticky').scrollTop=0;
+      if(changed&&contentChanged)$('.example-sticky').scrollTop=0;
     };
     $('#previous-example').addEventListener('click',()=>{selectionPinned=false;setExample(keys[Math.max(0,keys.indexOf(current)-1)],true);});
     $('#next-example').addEventListener('click',()=>{selectionPinned=false;setExample(keys[Math.min(keys.length-1,keys.indexOf(current)+1)],true);});
