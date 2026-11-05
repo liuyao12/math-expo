@@ -104,3 +104,9 @@ body:has(.reader-layout) .site-header{position:sticky;top:0}.reading-progress{he
 .dependency-repeat {
   color: var(--muted);
 }
+
+.dependency-section {
+  color: var(--muted);
+  font: 12px/1.5 var(--sans);
+  white-space: nowrap;
+}
