@@ -1,0 +1,63 @@
+{
+  "0BYD": {
+    "title": "Genus of a plane curve",
+    "uses": ["0BYB", "01M7", "01XT", "089W", "0BY7"]
+  },
+  "0BYB": {
+    "title": "A plane curve is cut out by one homogeneous equation",
+    "uses": ["0BXL"]
+  },
+  "0BXL": {
+    "title": "Equations for codimension-one subschemes of projective space"
+  },
+  "01M7": {
+    "title": "Associate a sheaf to a graded module"
+  },
+  "01XT": {
+    "title": "Cohomology of twists on projective space",
+    "uses": ["01MN", "01NF", "01XD"]
+  },
+  "01MN": {
+    "title": "The twist of the structure sheaf",
+    "uses": ["00JL", "01M7"]
+  },
+  "00JL": {
+    "title": "Graded rings and modules"
+  },
+  "01NF": {
+    "title": "Projective space"
+  },
+  "01XD": {
+    "title": "Compute sheaf cohomology with an affine cover",
+    "uses": ["01XB", "01ET"]
+  },
+  "01XB": {
+    "title": "Higher cohomology vanishes on affines",
+    "uses": ["01X9", "01EW"]
+  },
+  "01X9": {
+    "title": "The Čech complex of a standard affine cover is exact in positive degrees"
+  },
+  "01EW": {
+    "title": "Deduce cohomology vanishing from a basis of covers"
+  },
+  "01ET": {
+    "title": "Compare Čech cohomology and sheaf cohomology on an acyclic cover"
+  },
+  "089W": {
+    "title": "Compute cohomology after affine pushforward",
+    "uses": ["01XC", "01F4"]
+  },
+  "01XC": {
+    "title": "Higher direct images vanish for affine morphisms",
+    "uses": ["01XB"]
+  },
+  "01F4": {
+    "title": "Use the Leray spectral sequence when higher direct images vanish"
+  },
+  "0BY7": {
+    "title": "Genus of a proper curve",
+    "number": "53.8.1",
+    "kind": "definition"
+  }
+}
