@@ -13,6 +13,11 @@ const integers=b('R',r`\mathbb Z`,'The ring of integers.');
 const arithmeticSpectrum=b('X',r`\operatorname{Spec}(\mathbb Z)`,'The spectrum of the integers.');
 const twoPoints=b('X',r`\{a,b\}`,'A discrete space with two points.');
 const generic=r`Section model. Additional objects and hypotheses in individual statements and proofs retain their source meanings.`;
+const naturalEquivalences={
+ url:'https://www.ams.org/journals/tran/1945-058-00/S0002-9947-1945-0013131-6/S0002-9947-1945-0013131-6.pdf',
+ label:'Eilenberg and Mac Lane, General Theory of Natural Equivalences (1945), introduction'
+};
+const finiteVect=b(r`\mathcal C`,r`\mathbf{Vect}^{\mathrm{fd}}_{\mathbb R}`,'Finite-dimensional real vector spaces with linear maps.');
 const models={
  topology:model('A topology with a generic point',[
   b('X',r`\{\eta,s\}`,'A space with a generic point and a closed point.'),
@@ -119,14 +124,13 @@ const models={
   b('U',r`\operatorname{Spec}(\mathbb F_2[z])`,r`The chart with coordinate \(z\).`),
   b('V',r`\operatorname{Spec}(\mathbb F_2[w])`,r`The chart with coordinate \(w\).`)
  ],r`The two charts are identified on the standard opens where their coordinates are units. The overlap has ring \(\mathbb F_2[z,z^{-1}]\), with \(w=1/z\).`,r`Each point lies in one of the affine charts, so the glued locally ringed space satisfies the definition of a scheme.`),
- category:model('Objects and maps in abelian groups',[
-  b(r`\mathcal C`,r`\text{a full subcategory of }\operatorname{Ab}`,r`The category with the three groups below as objects and all group homomorphisms between them.`),
-  b('x',r`\mathbb Z`,'The additive group of integers.'),
-  b('y',r`\mathbb Z/6\mathbb Z`,'The quotient group modulo six.'),
-  b('z',r`\mathbb Z/2\mathbb Z`,'The quotient group modulo two.'),
-  b(r`\psi`,r`(x\longrightarrow y)`,'Reduction modulo six.'),
-  b(r`\phi`,r`(y\longrightarrow z)`,'Reduction of a residue class modulo two.')
- ],r`The second reduction is well defined on residue classes modulo \(6\) because \(2\) divides \(6\). The composite \(\phi\circ\psi\) is reduction modulo \(2\) directly.`,r`Group homomorphisms supply the arrows, ordinary composition supplies their composition, and each group has an identity homomorphism.`),
+ category:{...model('Vector spaces and linear maps',[
+  finiteVect,b('x',r`\mathbb R`,'The starting vector space.'),
+  b('y',r`\mathbb R^2`,'The intermediate vector space.'),
+  b('z',r`\mathbb R`,'The target vector space.'),
+  b(r`\psi`,r`(u\mapsto(u,2u))`,'A linear map from the starting space to the intermediate space.'),
+  b(r`\phi`,r`((v,w)\mapsto w)`,'A linear projection from the intermediate space to the target.')
+ ],r`The composite \(\phi\circ\psi\) sends \(u\) to \(2u\), and is again linear. The identity on each space fixes every vector. Composition is associative because it is composition of functions.`,r`This gives the category data in the definition. Each pair of vector spaces has a set of arrows consisting of the linear maps between them.`,r`Eilenberg and Mac Lane opened their 1945 paper with a question from linear algebra. What makes the map from a vector space to its double dual canonical? Categories specify the objects and maps, functors record how constructions act on both, and natural transformations say how the constructions fit together.`),source:naturalEquivalences},
  ringPullback:model('Pairs of integers that agree modulo two',[
   b(r`\mathcal C`,r`\mathbf{CRing}`,'The category of commutative rings with unit.'),
   b('x,z',r`\mathbb Z,\mathbb Z`,'The two rings mapping to a common quotient.'),
@@ -197,6 +201,44 @@ const groups={
  arithmeticGlue:['algebra-tilde-module-sheaf'],ringPullback:['categories-fibre-products'],setLimits:['categories-limit-sets'],
  abelian:['homology-additive-categories','homology-abelian-categories','homology-functors','categories-exact-functor']
 };
+const fundamentalGroup=model('Fundamental groups send loops along a map',[
+ b(r`\mathcal A`,r`\mathbf{Top}_*`,'Pointed topological spaces with basepoint-preserving continuous maps.'),
+ b(r`\mathcal B`,r`\mathbf{Groups}`,'Groups and group homomorphisms.'),
+ b('F',r`\pi_1`,'The functor assigning the group of based loops up to based homotopy.'),
+ b('x,y',r`(S^1,1),(S^1,1)`,'Use the circle based at one for both objects.'),
+ b(r`\phi`,r`(z\mapsto z^2)`,'A continuous self-map fixing the basepoint.')
+],r`The map \(F(\phi)\) sends the loop class \([\gamma]\) to \([\phi\circ\gamma]\). This respects homotopy and loop concatenation. Postcomposing with an identity or with a composite gives exactly the two functor laws.`,r`Under \(F(x)\cong\mathbb Z\) by winding number, \(F(\phi)\) is multiplication by \(2\). A loop once around the circle maps to a loop twice around.`);
+const singularHomology=model('Singular homology sends cycles along a map',[
+ b(r`\mathcal A`,r`\mathbf{Top}`,'Topological spaces and continuous maps.'),
+ b(r`\mathcal B`,r`\mathbf{Ab}`,'Abelian groups and homomorphisms.'),
+ b('A',r`\mathbb Z/3\mathbb Z`,'An example of a fixed abelian group of coefficients.'),
+ b('F',r`H_n(-;A)`,r`Singular homology in a fixed degree \(n\) with these coefficients.`),
+ b('x,y',r`S^1,S^1`,'Use the circle for both objects.'),
+ b(r`\phi`,r`(z\mapsto z^2)`,'A continuous self-map of the circle.')
+],r`The chain map for \(\phi:x\to y\) postcomposes each singular simplex \(\sigma:\Delta^n\to x\) with \(\phi\), keeping its coefficient. Taking a face commutes with postcomposition, so cycles go to cycles and boundaries to boundaries. The same postcomposition rule gives the identity and composition laws.`,r`For \(n=1\) and \(x=y=S^1\), the map on \(H_1(S^1;A)\cong A\) is multiplication by \(2\). The construction works in every fixed degree and with any fixed abelian coefficient group.`);
+const tangentSpace=model('The chain rule makes tangent spaces functorial',[
+ b(r`\mathcal A`,r`\mathbf{Man}_*`,'Pointed smooth manifolds and smooth maps preserving the marked points.'),
+ b(r`\mathcal B`,r`\mathbf{Vect}_{\mathbb R}`,'Real vector spaces and linear maps.'),
+ b('F',r`((M,p)\mapsto T_pM)`,'Assign the tangent space at the marked point.'),
+ b('x',r`(\mathbb R,2)`,'The real line marked at two.'),
+ b('y',r`(\mathbb R,4)`,'The real line marked at four.'),
+ b(r`\phi`,r`(u\mapsto u^2)`,'A smooth map taking the first marked point to the second.'),
+ b(r`F(\phi)`,r`\mathrm d\phi_2`,'The differential at the marked point.')
+],r`For a smooth pointed map, the differential sends \(T_pM\) linearly to \(T_{\phi(p)}N\). The chain rule says \(\mathrm d(g\circ f)_p=\mathrm dg_{f(p)}\circ\mathrm df_p\), and the differential of the identity is the identity.`,r`In the usual coordinates on both tangent lines, \(F(\phi)\) sends \(v\) to \(4v\). For an unpointed smooth map \(f:M\to N\), the same pointwise differentials assemble into the tangent bundle map \(Tf:TM\to TN\).`);
+const doubleDual={...model('The natural map to the double dual',[
+ b(r`\mathcal A`,r`\mathbf{Vect}^{\mathrm{fd}}_{\mathbb R}`,'Finite-dimensional real vector spaces and linear maps.'),
+ b(r`\mathcal B`,r`\mathcal A`,'The same category is the target.'),
+ b('F',r`\operatorname{Id}`,'The identity functor.'),
+ b('G',r`((-)^{**})`,r`The double-dual functor. A linear map \(\phi:V\to W\) goes to \(\phi^{**}:V^{**}\to W^{**}\).`),
+ b('x,y',r`V,W`,'Two finite-dimensional real vector spaces.'),
+ b('t_x',r`(v\mapsto[\lambda\mapsto\lambda(v)])`,r`Evaluation gives a linear map \(V\to V^{**}\). The component \(t_y\) is the same construction on \(W\).`)
+],r`For \(\phi:V\to W\), both paths in the square send \(v\) to the functional on \(W^*\) given by \(\lambda\mapsto\lambda(\phi(v))\). This follows from \(\phi^*(\lambda)=\lambda\circ\phi\).`,r`The evaluation maps are isomorphisms in finite dimension, so \(t\) is a natural isomorphism. Choosing a basis also gives an isomorphism \(V\cong V^*\). Evaluation on the double dual is defined uniformly and commutes with every linear map.`,r`This is the example that opens Eilenberg and Mac Lane’s 1945 paper. The naturality square makes precise what it means for these evaluation maps to work together across all vector spaces.`),source:naturalEquivalences};
+const dual=model('Dualizing reverses the arrows',[
+ finiteVect,b(r`\mathcal S`,r`\mathbf{Vect}^{\mathrm{fd}}_{\mathbb R}`,'The target category of finite-dimensional real vector spaces.'),
+ b('F',r`(V\mapsto V^*)`,'The dual vector space consists of the linear functionals on the original space.'),
+ b(r`\psi`,r`(V\to W)`,'Any linear map between the original vector spaces.'),
+ b(r`F(\psi)`,r`(\lambda\mapsto\lambda\circ\psi)`,r`Precomposition sends \(W^*\) to \(V^*\).`)
+],r`For \(\phi:W\to Z\), a functional on \(Z\) pulls back along \(\phi\) and then along \(\psi\). Thus \(F(\phi\circ\psi)=F(\psi)\circ F(\phi)\).`,r`The reversed arrows give a functor out of the opposite category. Applying duality twice restores the original direction and gives the double-dual functor.`);
 const additionalExamples={
  'sheaves-presheaves':[model('Functions on a discrete two-point space',[
   twoPoints,b('U',r`\{a\}`,'One open subset. Every subset of this space is open.'),
@@ -225,6 +267,9 @@ export function sectionNote(section){
 }
 export function passageNote(section,block){
  const base=sectionNote(section);
+ if(section.slug==='categories-definition-categories'&&block.label==='definition-functor')return {...fundamentalGroup,scope:'statement',examples:[singularHomology,tangentSpace].map(example=>({...example,scope:'statement'}))};
+ if(section.slug==='categories-definition-categories'&&block.label==='definition-transformation-functors')return {...doubleDual,scope:'statement'};
+ if(section.slug==='categories-opposite'&&block.label==='definition-contravariant')return {...dual,scope:'statement'};
  if(section.slug==='sheaves-presheaves'&&block.label==='definition-presheaf')return {...models.presheaf,scope:'statement'};
  if(section.slug==='sheaves-abelian-presheaves'&&block.label==='definition-abelian-presheaves')return {...models.abelianMorphism,scope:'statement'};
  if(section.chapter==='homology'&&block.label==='definition-kernel')return {...models.kernel,scope:'statement'};

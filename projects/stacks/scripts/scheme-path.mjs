@@ -30,9 +30,10 @@ export function buildSchemePath({root,dist,head,header,footer,matchingHTML}){
    const content=blocks.map((b,bi)=>{
     const note=passageNote(s,b),key=note.scope==='statement'?s.slug+'-'+b.label:s.slug;
     if(!data[key]){
-     const examples=[note,...extraExamples(s)];
+     const examples=[note,...(note.examples??extraExamples(s))];
+     const extraPrefix=note.examples?key:s.slug;
      const html=examples.map((item,i)=>{
-      const cardKey=i===0?key:s.slug+'-extra-'+i;
+      const cardKey=i===0?key:extraPrefix+'-extra-'+i;
       return `<details class="example-disclosure" data-example-card="${esc(cardKey)}"${examples.length===1?' open':''}><summary><span class="example-chevron" aria-hidden="true"></span>${esc(item.title)}</summary>${matchingHTML(item,false,r)}</details>`;
      }).join('');
      data[key]={html};
