@@ -41,8 +41,14 @@ def source_prose(s):
  return words(s)
 count=0
 gluing=json.loads((root/'upstream/manifest.json').read_text())
-for unit in manifest['units']+[dict(slug='gluing',sections=gluing['sections'])]:
+core_numbers=json.loads((root/'upstream/scheme-core.json').read_text())
+core_units=[]
+for unit in manifest['units']:
+ sections=[section for section in unit['sections'] if section['number'] in core_numbers]
+ if sections:core_units.append(dict(slug='core-'+unit['slug'],sections=sections))
+for unit in manifest['units']+core_units+[dict(slug='gluing',sections=gluing['sections'])]:
  parser=Prose();parser.feed((root/'dist/read'/unit['slug']/'index.html').read_text())
+ if list(parser.sections)!=[section['tag'] for section in unit['sections']]:raise SystemExit('Unexpected sections in '+unit['slug'])
  for section in unit['sections']:
   raw=(root/'upstream/sections'/(section['slug']+'.tex')).read_bytes()
   if section.get('sha256') and hashlib.sha256(raw).hexdigest()!=section['sha256']:raise SystemExit('Source hash mismatch '+section['slug'])

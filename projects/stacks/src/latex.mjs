@@ -44,7 +44,7 @@ export function createRenderer(root, options={}) {
   function reference(label,chapter){
     const full=references[label]?label:chapter+'-'+label;
     const ref=references[full];if(!ref)throw Error('Unresolved source reference '+full);
-    const route=routeManifest.routes[full];
+    const route=options.routes?.[full]||routeManifest.routes[full];
     const href=selected.has(full)?'#'+ref.tag:route?'../'+route+'/#'+ref.tag:'https://stacks.math.columbia.edu/tag/'+ref.tag;
     return `<a class="source-ref" href="${href}" ${selected.has(full)||route?'':'target="_blank" rel="noopener"'} title="Stacks tag ${ref.tag}">${ref.number}</a>`;
   }
