@@ -133,18 +133,22 @@ body:has(.reader-layout) .site-header{position:sticky;top:0}.reading-progress{he
 .outline-toggle {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  flex: 0 0 24px;
+  justify-content: flex-start;
+  flex: 1;
+  gap: 10px;
   min-height: 29px;
-  padding: 0;
+  padding: 7px 5px;
   border: 0;
   background: transparent;
   color: var(--green);
+  text-align: start;
+  font: 600 11px/1.5 var(--sans);
   cursor: pointer;
 }
 
 .outline-toggle::before {
   content: '';
+  flex: 0 0 5px;
   width: 5px;
   height: 5px;
   border: solid currentColor;
@@ -156,13 +160,8 @@ body:has(.reader-layout) .site-header{position:sticky;top:0}.reading-progress{he
   transform: rotate(45deg);
 }
 
-.outline-stage-toggle {
-  flex: 1;
-  justify-content: flex-start;
-  gap: 10px;
-  padding: 7px 5px;
-  text-align: start;
-  font: 600 11px/1.5 var(--sans);
+.outline-toggle[aria-controls="outline-book"] {
+  font-size: 12px;
 }
 
 .outline-tree a {
@@ -187,8 +186,7 @@ body:has(.reader-layout) .site-header{position:sticky;top:0}.reading-progress{he
   font-size: 9px;
 }
 
-.outline-tree a:hover,
-.outline-tree .outline-current-section {
+.outline-tree a:hover {
   color: var(--green);
 }
 

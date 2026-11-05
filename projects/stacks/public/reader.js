@@ -12,7 +12,7 @@
   const outline=$('#reading-outline'),outlineButton=$('.mobile-outline');
   const outlineLinks=new Map($$('.outline-tree a').map(link=>[link.hash.slice(1),link]));
   const outlineBranches=$$('.outline-toggle').map(button=>[button,document.getElementById(button.getAttribute('aria-controls'))]);
-  let outlineSection,outlineCurrent;
+  let outlineSection;
   const setBranch=(button,list,open)=>{
     if(!open&&list.contains(document.activeElement))button.focus({preventScroll:true});
     button.setAttribute('aria-expanded',String(open));
@@ -20,32 +20,19 @@
   };
   for(const [button,list] of outlineBranches)button.addEventListener('click',()=>setBranch(button,list,list.hidden));
   const revealOutline=()=>{
-    const link=outlineCurrent?.getClientRects().length?outlineCurrent:outlineSection;
-    if(!link?.getClientRects().length)return;
-    const row=link.getBoundingClientRect(),pane=outline.getBoundingClientRect();
+    if(!outlineSection?.getClientRects().length)return;
+    const row=outlineSection.getBoundingClientRect(),pane=outline.getBoundingClientRect();
     if(row.top<pane.top)outline.scrollTop+=row.top-pane.top-8;
     if(row.bottom>pane.bottom)outline.scrollTop+=row.bottom-pane.bottom+8;
   };
-  const followOutline=(section,passage)=>{
+  const followOutline=section=>{
     const sectionLink=outlineLinks.get(section?.id);
-    if(!sectionLink)return;
-    const sectionChanged=sectionLink!==outlineSection;
-    if(sectionChanged){
-      outlineSection?.classList.remove('outline-current-section');
-      outlineSection=sectionLink;
-      outlineSection.classList.add('outline-current-section');
-      for(const [button,list] of outlineBranches){
-        const open=list.contains(sectionLink)||button.parentElement.contains(sectionLink);
-        setBranch(button,list,open);
-      }
-    }
-    const current=outlineLinks.get(passage?.closest('.passage')?.id)||sectionLink;
-    if(current!==outlineCurrent){
-      outlineCurrent?.removeAttribute('aria-current');
-      current.setAttribute('aria-current','location');
-      outlineCurrent=current;
-      revealOutline();
-    }else if(sectionChanged)revealOutline();
+    if(!sectionLink||sectionLink===outlineSection)return;
+    outlineSection?.removeAttribute('aria-current');
+    outlineSection=sectionLink;
+    outlineSection.setAttribute('aria-current','location');
+    for(const [button,list] of outlineBranches)setBranch(button,list,list.contains(sectionLink));
+    revealOutline();
   };
   const closeOutline=()=>{outline?.classList.remove('is-open');outlineButton?.setAttribute('aria-expanded','false');};
   outlineButton?.addEventListener('click',()=>{const open=outline.classList.toggle('is-open');outlineButton.setAttribute('aria-expanded',String(open));if(open)revealOutline();});
@@ -115,7 +102,7 @@
         active=passage;
       }
       if(active){lastReading=active.dataset.example;lastReadingContext=active;if(follow&&(lastReading!==current||activeContext!==active))setExample(lastReading,false,active);}
-      followOutline(section,active);
+      followOutline(section);
       const percent=denominator?Math.max(0,Math.min(1,scrollY/denominator)):0;$('.reading-progress span').style.width=percent*100+'%';
     };
     addEventListener('scroll',()=>{if(!scheduled){scheduled=true;requestAnimationFrame(update);}},{passive:true});

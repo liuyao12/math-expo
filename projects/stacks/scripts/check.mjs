@@ -56,7 +56,11 @@ for(const file of files(dist).filter(f=>f.endsWith('.html'))){
 
 const foundation=JSON.parse(fs.readFileSync(path.join(root,'upstream/scheme-path.json'),'utf8'));
 const selectedReadings=JSON.parse(fs.readFileSync(path.join(root,'upstream/selected-readings.json'),'utf8'));
-const originalUnits=[...foundation.units,...selectedReadings];
+const coreNumbers=JSON.parse(fs.readFileSync(path.join(root,'upstream/scheme-core.json'),'utf8'));
+const coreSections=foundation.units.flatMap(unit=>unit.sections.filter(section=>Object.hasOwn(coreNumbers,section.number)));
+const firstCoreChapter=foundation.units.find(unit=>unit.slug===coreSections[0].chapter);
+const coreReading={...firstCoreChapter,slug:'path-to-schemes',readingTitle:'Path to schemes',sections:coreSections};
+const originalUnits=[...foundation.units,coreReading,...selectedReadings];
 const refs=JSON.parse(fs.readFileSync(path.join(root,'upstream/references.json'),'utf8'));
 let pathProofs=0,pathStatements=0;
 for(const unit of originalUnits){
@@ -103,11 +107,11 @@ for(const unit of originalUnits){
   if(!chapter||chapter.title!==unit.title||chapter.number!==unit.number)throw Error('Changed original chapter title '+unit.slug);
   const html=fs.readFileSync(path.join(dist,'read',unit.slug,'index.html'),'utf8');
   if(!html.includes('<h1>'+escapeHTML(chapter.title)+'</h1>'))throw Error('Missing original chapter heading '+unit.slug);
+  const records=JSON.parse(html.match(/<script type="application\/json" id="source-data">([\s\S]*?)<\/script>/)[1]);
   for(const section of unit.sections){
     const source=fs.readFileSync(path.join(root,'upstream/sections',section.slug+'.tex'),'utf8');
     if(createHash('sha256').update(source).digest('hex')!==section.sha256)throw Error('Altered section source '+section.slug);
     if(!html.includes('<h2>'+section.number+'. '+escapeHTML(section.title)+'</h2>'))throw Error('Changed original section title '+section.slug);
-    const records=JSON.parse(html.match(/<script type="application\/json" id="source-data">([\s\S]*?)<\/script>/)[1]);
     if(!records[section.tag].html.includes('<pre><code>'+escapeHTML(source)+'</code></pre>'))throw Error('Missing margin source '+section.slug);
   }
 }
