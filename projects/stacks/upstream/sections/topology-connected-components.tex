@@ -1,0 +1,231 @@
+\section{Connected components}
+\label{section-connected-components}
+
+\begin{definition}
+\label{definition-connected-components}
+Let $X$ be a topological space.
+\begin{enumerate}
+\item We say $X$ is {\it connected} if $X$ is not empty and whenever
+$X = T_1 \amalg T_2$ with $T_i \subset X$ open and closed, then either
+$T_1 = \emptyset$ or $T_2 = \emptyset$.
+\item We say $T \subset X$ is a {\it connected component} of $X$ if
+$T$ is a maximal connected subset of $X$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+The empty space is not connected.
+
+\begin{lemma}
+\label{lemma-image-connected-space}
+Let $f : X \to Y$ be a continuous map of topological spaces.
+If $E \subset X$ is a connected subset, then $f(E) \subset Y$
+is connected as well.
+\end{lemma}
+
+\begin{proof}
+Let $A \subset f(E)$ an open and closed subset of $f(E)$. Because $f$ is
+continuous, $f^{-1}(A)$ is an open and closed subset of $E$. As $E$ is
+connected, $f^{-1}(A) = \emptyset$ or $f^{-1}(A) = E$. However, $A\subset f(E)$
+implies that $A = f(f^{-1}(A))$. Indeed, if $x\in f(f^{-1}(A))$ then there is
+$y\in f^{-1}(A)$ such that $f(y) = x$ and because $y\in f^{-1}(A)$, we have
+$f(y) \in A$ i.e. $x\in A$. Reciprocally, if $x\in A$, $A\subset f(E)$ implies
+that there is $y\in E$ such that $f(y) = x$. Therefore $y\in f^{-1}(A)$, and
+then $x\in f(f^{-1}(A))$. Thus $A = \emptyset$ or $A = f(E)$ proving that
+$f(E)$ is connected.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-connected-components}
+Let $X$ be a topological space.
+\begin{enumerate}
+\item If $T \subset X$ is connected, then so is its closure.
+\item Any connected component of $X$ is closed (but not necessarily open).
+\item Every connected subset of $X$ is contained in a unique connected
+component of $X$.
+\item Every point of $X$ is contained in a unique connected component, in other
+words, $X$ is the disjoint union of its connected components.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let $\overline{T}$ be the closure of the connected subset $T$.
+Suppose $\overline{T} = T_1 \amalg T_2$ with $T_i \subset \overline{T}$
+open and closed. Then $T = (T\cap T_1) \amalg (T \cap T_2)$. Hence
+$T$ equals one of the two, say $T = T_1 \cap T$. Thus
+$\overline{T} \subset T_1$. This implies (1) and (2).
+
+\medskip\noindent
+Let $A$ be a nonempty set of connected subsets of $X$ such that
+$\Omega = \bigcap_{T \in A} T$ is nonempty. We claim $E = \bigcup_{T \in A} T$
+is connected. Namely, $E$ is nonempty as it contains $\Omega$.
+Say $E = E_1 \amalg E_2$ with $E_i$ closed in $E$. We may assume
+$E_1$ meets $\Omega$ (after renumbering). Then each $T \in A$ meets $E_1$
+and hence must be contained in $E_1$ as $T$ is connected. Hence $E \subset E_1$
+which proves the claim.
+
+\medskip\noindent
+Let $W \subset X$ be a nonempty connected subset.
+If we apply the result of the previous paragraph to the set of all
+connected subsets of $X$ containing $W$, then we see that $E$ is
+a connected component of $X$. This implies existence and uniqueness in (3).
+
+\medskip\noindent
+Let $x \in X$. Taking $W = \{x\}$ in the previous paragraph
+we see that $x$ is contained in a unique connected component of $X$.
+Any two distinct connected components must be disjoint (by the
+result of the second paragraph).
+
+\medskip\noindent
+To get an example where connected components are not open, just take
+an infinite product $\prod_{n \in \mathbf{N}} \{0, 1\}$
+with the product topology. Its connected components are singletons,
+which are not open.
+\end{proof}
+
+\begin{remark}
+\label{remark-quasi-components}
+\begin{reference}
+\cite[Example 6.1.24]{Engelking}
+\end{reference}
+Let $X$ be a topological space and $x \in X$. Let $Z \subset X$ be the
+connected component of $X$ passing through $x$. Consider the intersection
+$E$ of all open and closed subsets of $X$ containing $x$. It is clear that
+$Z \subset E$. In general $Z \not = E$. For example, let
+$X = \{x, y, z_1, z_2, \ldots\}$ with the topology with the following
+basis of opens, $\{z_n\}$, $\{x, z_n, z_{n + 1}, \ldots\}$, and
+$\{y, z_n, z_{n + 1}, \ldots\}$ for all $n$. Then $Z = \{x\}$ and
+$E = \{x, y\}$. We omit the details.
+\end{remark}
+
+\begin{lemma}
+\label{lemma-connected-fibres-quotient-topology-connected-components}
+Let $f : X \to Y$ be a continuous map of topological spaces.
+Assume that
+\begin{enumerate}
+\item all fibres of $f$ are connected, and
+\item a set $T \subset Y$ is closed if and only if $f^{-1}(T)$ is closed.
+\end{enumerate}
+Then $f$ induces a bijection between the sets of connected
+components of $X$ and $Y$.
+\end{lemma}
+
+\begin{proof}
+Let $T \subset Y$ be a connected component.
+Note that $T$ is closed, see Lemma \ref{lemma-connected-components}.
+The lemma follows if we show that $f^{-1}(T)$ is connected
+because any connected subset of $X$ maps into a connected component
+of $Y$ by Lemma \ref{lemma-image-connected-space}.
+Suppose that $f^{-1}(T) = Z_1 \amalg Z_2$
+with $Z_1$, $Z_2$ closed. For any $t \in T$ we see that
+$f^{-1}(\{t\}) = Z_1 \cap f^{-1}(\{t\}) \amalg Z_2 \cap f^{-1}(\{t\})$.
+By (1) we see $f^{-1}(\{t\})$ is connected we conclude that
+either $f^{-1}(\{t\}) \subset Z_1$ or $f^{-1}(\{t\}) \subset Z_2$.
+In other words $T = T_1 \amalg T_2$ with $f^{-1}(T_i) = Z_i$.
+By (2) we conclude that $T_i$ is closed in $Y$.
+Hence either $T_1 = \emptyset$ or $T_2 = \emptyset$ as desired.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-connected-fibres-connected-components}
+Let $f : X \to Y$ be a continuous map of topological spaces.
+Assume that
+(a) $f$ is open,
+(b) all fibres of $f$ are connected.
+Then $f$ induces a bijection between the sets of connected
+components of $X$ and $Y$.
+\end{lemma}
+
+\begin{proof}
+This is a special case of
+Lemma \ref{lemma-connected-fibres-quotient-topology-connected-components}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-finite-fibre-connected-components}
+Let $f : X \to Y$ be a continuous map of nonempty topological spaces. Assume
+that
+(a) $Y$ is connected,
+(b) $f$ is open and closed, and
+(c) there is a point $y\in Y$ such that the fiber $f^{-1}(y)$ is a finite set.
+Then $X$ has at most $|f^{-1}(y)|$ connected components. Hence any connected 
+component $T$ of $X$ is open and closed, and $f(T)$ is a nonempty open and 
+closed subset of $Y$, which is therefore equal to $Y$.
+\end{lemma}
+
+\begin{proof}
+If the topological space $X$ has at least $N$ connected components for some
+$N \in \mathbf{N}$, we find by induction a decomposition
+$X = X_1 \amalg \ldots \amalg X_N$ of $X$ as a disjoint union of $N$ nonempty
+open and closed subsets $X_1, \ldots , X_N$ of $X$. As $f$ is open and closed,
+each $f(X_i)$ is a nonempty open and closed subset of $Y$ and is hence equal to
+$Y$. In particular the intersection $X_i \cap f^{-1}(y)$ is nonempty for each
+$1 \leq i \leq N$. Hence $f^{-1}(y)$ has at least $N$ elements.
+\end{proof}
+
+\begin{definition}
+\label{definition-totally-disconnected}
+A topological space is {\it totally disconnected} if the connected components
+are all singletons.
+\end{definition}
+
+\noindent
+A discrete space is totally disconnected.
+A totally disconnected space need not be discrete, for example
+$\mathbf{Q} \subset \mathbf{R}$ is totally disconnected but not discrete.
+
+\begin{lemma}
+\label{lemma-space-connected-components}
+Let $X$ be a topological space. Let $\pi_0(X)$ be the set of connected
+components of $X$. Let $X \to \pi_0(X)$ be the map which sends
+$x \in X$ to the connected component of $X$ passing through $x$.
+Endow $\pi_0(X)$ with the quotient topology. Then $\pi_0(X)$ is a
+totally disconnected space and any continuous map $X \to Y$
+from $X$ to a totally disconnected space $Y$ factors through $\pi_0(X)$.
+\end{lemma}
+
+\begin{proof}
+By Lemma
+\ref{lemma-connected-fibres-quotient-topology-connected-components}
+the connected components of $\pi_0(X)$ are the singletons.
+We omit the proof of the second statement.
+\end{proof}
+
+\begin{definition}
+\label{definition-locally-connected}
+A topological space $X$ is called {\it locally connected} if
+every point $x \in X$ has a fundamental system of connected neighbourhoods.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-locally-connected}
+Let $X$ be a topological space. If $X$ is locally connected, then
+\begin{enumerate}
+\item any open subset of $X$ is locally connected, and
+\item the connected components of $X$ are open.
+\end{enumerate}
+So also the connected components of open subsets of $X$ are open.
+In particular, every point has a fundamental system of open connected
+neighbourhoods.
+\end{lemma}
+
+\begin{proof}
+For all $x\in X$ let write $\mathcal{N}(x)$ the fundamental system of connected
+neighbourhoods of $x$ and let $U\subset X$ be an open subset of $X$. Then for
+all $x\in U$, $U$ is a neighbourhood of $x$, so the set
+$\{V \in \mathcal{N}(x) | V\subset U\}$
+is not empty and is a fundamental system of connected
+neighbourhoods of $x$ in $U$. Thus $U$ is locally connected and it proves (1).
+
+\medskip\noindent
+Let $x \in \mathcal{C} \subset X$ where $\mathcal{C}$ is the connected component
+of $x$. Because $X$ is locally connected, there exists $\mathcal{N}$ a
+connected neighbourhood of $x$. Therefore by the definition of a connected
+component, we have $\mathcal{N} \subset \mathcal{C}$ and then $\mathcal{C}$ is
+a neighbourhood of $x$. It implies that $\mathcal{C}$ is a neighbourhood of
+each of his point, in other words $\mathcal{C}$ is open and (2) is proven.
+\end{proof}
+
+
+
+

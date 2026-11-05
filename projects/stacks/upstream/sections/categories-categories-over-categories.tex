@@ -1,0 +1,181 @@
+\section{Categories over categories}
+\label{section-categories-over-categories}
+
+\noindent
+In this section we have a functor $p : \mathcal{S} \to \mathcal{C}$.
+We think of $\mathcal{S}$ as being on top and of $\mathcal{C}$ as being
+at the bottom. To make sure that everybody knows what we are talking about
+we define the $2$-category of categories over $\mathcal{C}$.
+
+\begin{definition}
+\label{definition-categories-over-C}
+Let $\mathcal{C}$ be a category.
+The {\it $2$-category of categories over $\mathcal{C}$}
+is the $2$-category defined as follows:
+\begin{enumerate}
+\item Its objects will be functors $p : \mathcal{S} \to \mathcal{C}$.
+\item Its $1$-morphisms $(\mathcal{S}, p) \to (\mathcal{S}', p')$
+will be functors $G : \mathcal{S} \to \mathcal{S}'$ such that
+$p' \circ G = p$.
+\item Its $2$-morphisms $t : G \to H$ for
+$G, H : (\mathcal{S}, p) \to (\mathcal{S}', p')$
+will be morphisms of functors
+such that $p'(t_x) = \text{id}_{p(x)}$
+for all $x \in \Ob(\mathcal{S})$.
+\end{enumerate}
+In this situation we will denote
+$$
+\Mor_{\textit{Cat}/\mathcal{C}}(\mathcal{S}, \mathcal{S}')
+$$
+the category of $1$-morphisms between
+$(\mathcal{S}, p)$ and $(\mathcal{S}', p')$
+\end{definition}
+
+\noindent
+In this $2$-category we define horizontal and vertical composition
+exactly as is done for $\textit{Cat}$ in Section \ref{section-formal-cat-cat}.
+The axioms of a $2$-category are satisfied for the same reason
+that the hold in $\textit{Cat}$. To see this one can also use that
+the axioms hold in $\textit{Cat}$ and verify
+things such as ``vertical composition of $2$-morphisms over $\mathcal{C}$
+gives another $2$-morphism over $\mathcal{C}$''. This is clear.
+
+\medskip\noindent
+Analogously to the fibre of a map of spaces, we have the notion of a
+fibre category, and some notions of lifting associated to this
+situation.
+
+\begin{definition}
+\label{definition-fibre-category}
+Let $\mathcal{C}$ be a category.
+Let $p : \mathcal{S} \to \mathcal{C}$ be a category over $\mathcal{C}$.
+\begin{enumerate}
+\item The {\it fibre category} over an object $U\in \Ob(\mathcal{C})$
+is the category $\mathcal{S}_U$ with objects
+$$
+\Ob(\mathcal{S}_U) = \{x\in \Ob(\mathcal{S}) :
+p(x) = U\}
+$$
+and morphisms
+$$
+\Mor_{\mathcal{S}_U}(x, y) = \{ \phi \in \Mor_\mathcal{S}(x, y) :
+p(\phi) = \text{id}_U\}.
+$$
+\item A {\it lift} of an object $U \in \Ob(\mathcal{C})$
+is an object $x\in \Ob(\mathcal{S})$ such that $p(x) = U$, i.e.,
+$x\in \Ob(\mathcal{S}_U)$. We will also sometime say
+that {\it $x$ lies over $U$}.
+\item Similarly, a {\it lift} of a morphism $f : V \to U$ in $\mathcal{C}$
+is a morphism $\phi : y \to x$ in $\mathcal{S}$ such that $p(\phi) = f$.
+We sometimes say that {\it $\phi$ lies over $f$}.
+\end{enumerate}
+\end{definition}
+
+\noindent
+There are some observations we could make here. For example if
+$F : (\mathcal{S}, p) \to (\mathcal{S}', p')$ is a $1$-morphism
+of categories over $\mathcal{C}$, then $F$ induces functors
+of fibre categories $F : \mathcal{S}_U \to \mathcal{S}'_U$.
+Similarly for $2$-morphisms.
+
+\medskip\noindent
+Here is the obligatory lemma describing the $2$-fibre product in the
+$(2, 1)$-category of categories over $\mathcal{C}$.
+
+\begin{lemma}
+\label{lemma-2-product-categories-over-C}
+Let $\mathcal{C}$ be a category.
+The $(2, 1)$-category of categories
+over $\mathcal{C}$ has 2-fibre products.
+Suppose that
+$F : \mathcal{X} \to \mathcal{S}$ and
+$G : \mathcal{Y} \to \mathcal{S}$ are morphisms of categories over
+$\mathcal{C}$.
+An explicit 2-fibre product
+$\mathcal{X} \times_\mathcal{S}\mathcal{Y}$ is given by the following
+description
+\begin{enumerate}
+\item an object of $\mathcal{X} \times_\mathcal{S} \mathcal{Y}$ is a quadruple
+$(U, x, y, f)$, where $U \in \Ob(\mathcal{C})$,
+$x\in \Ob(\mathcal{X}_U)$, $y\in \Ob(\mathcal{Y}_U)$,
+and $f : F(x) \to G(y)$ is an isomorphism in $\mathcal{S}_U$,
+\item a morphism $(U, x, y, f) \to (U', x', y', f')$ is given by a pair
+$(a, b)$, where $a : x \to x'$ is a morphism in $\mathcal{X}$, and
+$b : y \to y'$ is a
+morphism in $\mathcal{Y}$ such that
+\begin{enumerate}
+\item $a$ and $b$ induce the same morphism $U \to U'$, and
+\item the diagram
+$$
+\xymatrix{
+F(x) \ar[r]^f \ar[d]^{F(a)} & G(y) \ar[d]^{G(b)} \\
+F(x') \ar[r]^{f'} & G(y')
+}
+$$
+is commutative.
+\end{enumerate}
+\end{enumerate}
+The functors $p : \mathcal{X} \times_\mathcal{S}\mathcal{Y} \to \mathcal{X}$
+and $q : \mathcal{X} \times_\mathcal{S}\mathcal{Y} \to \mathcal{Y}$ are the
+forgetful functors in this case. The transformation $\psi : F \circ p \to
+G \circ q$ is given on the object $\xi = (U, x, y, f)$ by
+$\psi_\xi = f : F(p(\xi)) = F(x) \to G(y) = G(q(\xi))$.
+\end{lemma}
+
+\begin{proof}
+Let us check the universal property: let
+$p_\mathcal{W} : \mathcal{W}\to \mathcal{C}$
+be a category over $\mathcal{C}$, let $X : \mathcal{W} \to \mathcal{X}$ and
+$Y : \mathcal{W} \to \mathcal{Y}$ be functors over $\mathcal{C}$, and let
+$t : F \circ X \to G \circ Y$ be an isomorphism of functors over $\mathcal{C}$.
+The desired functor
+$\gamma : \mathcal{W} \to \mathcal{X} \times_\mathcal{S} \mathcal{Y}$
+is given by $W \mapsto (p_\mathcal{W}(W), X(W), Y(W), t_W)$.
+Details omitted; compare with Lemma \ref{lemma-2-fibre-product-categories}.
+\end{proof}
+
+\begin{example}
+\label{example-different-2-fibre-products}
+The constructions of $2$-fibre products of categories over categories given in
+Lemma \ref{lemma-2-product-categories-over-C} and of categories in
+Lemma \ref{lemma-2-fibre-product-categories}
+(as in Example \ref{example-2-fibre-product-categories})
+produce non-equivalent outputs in general.
+Namely, let $\mathcal{S}$ be the groupoid category with one object and two
+arrows, and let $\mathcal{X}$ be the discrete category with one object.
+Taking the $2$-fibre product $\mathcal{X} \times_\mathcal{S} \mathcal{X}$
+as categories yields the discrete category with two objects. However, if
+we view all of these as categories over $\mathcal{S}$, the
+$2$-fiber product $\mathcal{X} \times_\mathcal{S} \mathcal{X}$
+as categories over $\mathcal{S}$ is the discrete category with one object.
+The difference is that (in the notation of
+Lemma \ref{lemma-2-product-categories-over-C}), we were allowed to choose
+any comparison isomorphism $f$ in the first situation, but could only
+choose the identity arrow in the second situation.
+\end{example}
+
+\begin{lemma}
+\label{lemma-fibre-2-fibre-product-categories-over-C}
+Let $\mathcal{C}$ be a category.
+Let $f : \mathcal{X} \to \mathcal{S}$ and
+$g : \mathcal{Y} \to \mathcal{S}$ be morphisms of categories over
+$\mathcal{C}$. For any object $U$ of $\mathcal{C}$ we have
+the following identity of
+fibre categories
+$$
+\left(\mathcal{X} \times_\mathcal{S}\mathcal{Y}\right)_U
+=
+\mathcal{X}_U \times_{\mathcal{S}_U} \mathcal{Y}_U
+$$
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+
+
+
+
+
+

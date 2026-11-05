@@ -4,7 +4,7 @@ Usage: python3 scripts/import-scheme-path.py /absolute/path/to/stacks-project
 The ordinary site build is offline; this command is only needed to update sources.
 """
 from pathlib import Path
-import re,sys,json,subprocess,collections
+import re,sys,json,subprocess,collections,hashlib
 
 root=Path(__file__).resolve().parents[1]
 src=Path(sys.argv[1])
@@ -23,12 +23,12 @@ for c in chapters:
     for n,m in enumerate(starts,1):
         end=starts[n].start() if n<len(starts) else full.find('\\input{chapters}',m.end())
         if end<0:end=len(full)
-        text=full[m.start():end].strip()+'\n'
+        text=full[m.start():end]
         label=re.search(r'\\label\{([^}]+)\}',text)
         if not label:continue
         key=c['slug']+'-'+label[1]
         if key not in tags:continue
-        sections[key]=dict(chapter=c['slug'],label=label[1],title=m[1],tag=tags[key],number=f"{c['number']}.{n}",kind='section',text=text)
+        sections[key]=dict(chapter=c['slug'],label=label[1],title=m[1],tag=tags[key],number=f"{c['number']}.{n}",kind='section',text=text,source_start_line=full.count('\n',0,m.start())+1,source_end_line=full.count('\n',0,end)+(0 if full[end-1:end]=='\n' else 1))
         num=0;kind='section';list_stack=[]
         for token in re.finditer(r'\\begin\{('+envs+r')\}|\\begin\{(enumerate|itemize)\}|\\end\{(enumerate|itemize)\}|\\item\b|\\label\{([^}]+)\}',text):
             if token[1]:num+=1;kind=token[1]
@@ -47,54 +47,69 @@ for c in chapters:
                 refs[full_label]=dict(tag=tags[full_label],number=number,kind=ref_kind)
                 owners[full_label]=key
 
-# A definition/construction path, with module and categorical variants retained.
-# Optional later-theory cross-references in the source remain marked upstream links.
-spec=[
-('topology-functions','Topology for local functions','Disks, open sets, and the topology used by spectra','topology',[2,5,8,12,19]),
-('rings-and-germs','Rings, localization, and germs','From functions to fractions and local rings','algebra',[2,3,4,8,9,18]),
-('spectra','The spectrum of a ring','Polynomial functions, evaluation, and the generic point','algebra',[17]),
-('sheaves-and-stalks','Sheaves and stalks','Holomorphic functions as the guiding sheaf','sheaves',list(range(2,17))),
-('sheafification-and-bases','Sheafification and bases','Recovering local data and extending it from basic opens','sheaves',[17,18,19,20,30]),
-('ringed-spaces','Spaces equipped with functions','Pullback, local homomorphisms, and open subspaces',None,[('sheaves',[21,22,23,24,25,26,31]),('schemes',[2,3])]),
-('affine-schemes','Constructing an affine scheme','The structure sheaf on a spectrum',None,[('algebra',[23,24]),('modules',[3]),('schemes',[5,6])]),
-('schemes','The definition of a scheme','An atlas made of affine schemes','schemes',[9]),
-('scheme-support','Supporting algebra and category language','Reference sections used by the construction',None,[('categories',[2,6,10,14,15,19,21,23,24]),('algebra',[5,6,10,15,20,21,29]),('topology',[9,15,16]),('homology',[3,5,7])])
-]
+# Follow references until every required reference has an included owner section.
+# Exceptions are explicit, human-reviewed source comparisons, alternative proofs,
+# and assumed background, rather than an implicit limit on the import size.
+selection=json.loads((root/'upstream/scheme-selection.json').read_text())
+exceptions=selection['reference_exceptions']
+def printing(text):
+    text=re.sub(r'(?<!\\)%[^\n]*','',text)
+    return re.sub(r'\\begin\{(slogan|history|reference)\}[\s\S]*?\\end\{\1\}','',text)
+def links(s):
+    for lab in re.findall(r'\\(?:ref|eqref)\{([^}]+)\}',printing(s['text'])):
+        yield lab if lab in refs else s['chapter']+'-'+lab
+required=set(selection['seeds']);reasons={k:'Foundation selection: definitions and construction of schemes.' for k in required}
+while True:
+    added={}
+    for key in sorted(required):
+        for label in links(sections[key]):
+            if label in exceptions:continue
+            if label not in owners:raise ValueError('Unresolved prerequisite '+label)
+            owner=owners[label]
+            if owner not in required:added[owner]='Referenced by '+key+' ('+label+').'
+    if not added:break
+    required.update(added);reasons.update(added)
 units=[];selected={};routes={}
-for slug,title,subtitle,chapter,orders in spec:
-    pairs=[(chapter,orders)] if chapter else orders
+chapter_dir=root/'upstream/chapters';chapter_dir.mkdir(exist_ok=True)
+for chapter in chapters:
+    source_sections=sorted((sections[k] for k in required if sections[k]['chapter']==chapter['slug']),key=lambda s:int(s['number'].split('.')[1]))
+    if not source_sections:continue
     unit=[]
-    for chapter,nums in pairs:
-        for n in nums:
-            matches=[(k,s) for k,s in sections.items() if s['chapter']==chapter and s['number'].split('.')[-1]==str(n)]
-            if len(matches)!=1:raise ValueError((chapter,n,matches))
-            key,s=matches[0];filename=s['chapter']+'-'+s['label'].removeprefix('section-')
-            (root/'upstream/sections'/(filename+'.tex')).write_text(s['text'])
-            clean={k:v for k,v in s.items() if k!='text'};clean['slug']=filename;clean['route']=slug;clean['key']=key
-            selected[key]=clean;unit.append(clean)
-            for label,owner in owners.items():
-                if owner==key:routes[label]=slug
-    units.append(dict(slug=slug,title=title,subtitle=subtitle,support=slug=='scheme-support',sections=unit))
-
+    (chapter_dir/(chapter['slug']+'.tex')).write_bytes((src/(chapter['slug']+'.tex')).read_bytes())
+    for s in source_sections:
+        key=s['chapter']+'-'+s['label'];filename=s['chapter']+'-'+s['label'].removeprefix('section-')
+        (root/'upstream/sections'/(filename+'.tex')).write_text(s['text'])
+        clean={k:v for k,v in s.items() if k!='text'}
+        clean.update(slug=filename,route=chapter['slug'],key=key,sha256=hashlib.sha256(s['text'].encode()).hexdigest(),included_because=reasons[key])
+        selected[key]=clean;unit.append(clean)
+        for label,owner in owners.items():
+            if owner==key:routes[label]=chapter['slug']
+    units.append(dict(slug=chapter['slug'],title=chapter['title'],number=chapter['number'],tag=chapter['tag'],subtitle='The Stacks Project — '+chapter['title'],support=chapter['slug'] in ['categories','homology','modules'],sections=unit))
 needed=set()
 for key in selected:
     for lab in re.findall(r'\\(?:ref|eqref|label)\{([^}]+)\}',sections[key]['text']):
         needed.add(lab if lab in refs else sections[key]['chapter']+'-'+lab)
-old=json.loads((root/'upstream/references.json').read_text())
-old.update({k:refs[k] for k in needed if k in refs})
+old=json.loads((root/'upstream/references.json').read_text());old.update({k:refs[k] for k in needed if k in refs})
 (root/'upstream/references.json').write_text(json.dumps(old,indent=2)+'\n')
 source_references=[]
 for key,s in selected.items():
-    links=[]
-    for label in re.findall(r'\\(?:ref|eqref)\{([^}]+)\}',sections[key]['text']):
-        full=label if label in refs else s['chapter']+'-'+label
-        if full in refs:links.append(dict(label=full,tag=refs[full]['tag'],included=full in routes))
-    source_references.append(dict(section=key,tag=s['tag'],references=links))
-data=dict(title='From complex functions to schemes',commit=commit,units=units,routes=routes,
-          assumed_background=['Sets and functions','Basic undergraduate algebra','Familiarity with holomorphic functions, germs, and Riemann surfaces'],
-          scope='The definitions and construction leading to a scheme, retaining complete source sections and their module variants. Later-theory cross-references and alternative viewpoints remain linked to Stacks.',
+    audit=[]
+    for label in links(sections[key]):
+        included=label in routes
+        if not included and label not in exceptions:raise ValueError('Uncovered reference '+label)
+        audit.append(dict(label=label,tag=refs[label]['tag'],included=included,classification='included' if included else 'background' if label.startswith(('sets-','fields-')) else 'additional-reference',reason=None if included else exceptions[label]))
+    source_references.append(dict(section=key,tag=s['tag'],references=audit))
+legacy={}
+for route,keys in json.loads((root/'upstream/legacy-readings.json').read_text()).items():
+    if route in [u['slug']for u in units]:continue
+    anchors={refs[label]['tag']:routes[label]for label,owner in owners.items() if owner in keys and label in routes}
+    legacy[route]=dict(default_route=selected[keys[0]]['route'],default_tag=selected[keys[0]]['tag'],anchors=anchors)
+data=dict(title='The Stacks Project',commit=commit,units=units,routes=routes,legacy_routes=legacy,
+          assumed_background=['Sets and functions','Basic undergraduate algebra'],
+          companion_background='Familiar complex function theory is used for the separate motivating examples.',
+          scope='Complete original sections required for the definition and construction of schemes, with recursively audited references. Original chapter titles, section titles, numbering, wording, and proofs are retained. Explicitly identified additional comparisons and assumed background remain source links.',
           source_reference_audit=source_references)
 (root/'upstream/scheme-path.json').write_text(json.dumps(data,indent=2)+'\n')
-(root/'upstream/preamble.tex').write_text((src/'preamble.tex').read_text())
-print(f'Imported {len(selected)} complete sections in {len(units)} readings; {len(routes)} source anchors.')
+(root/'upstream/preamble.tex').write_bytes((src/'preamble.tex').read_bytes())
+print(f'Imported {len(selected)} verbatim source sections in {len(units)} original chapters; {len(routes)} source anchors.')
 print(collections.Counter(s['chapter'] for s in selected.values()))

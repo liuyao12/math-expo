@@ -1,0 +1,3 @@
+
+# Imported LaTeX is retained byte for byte, including source whitespace.
+projects/stacks/upstream/**/*.tex -whitespace

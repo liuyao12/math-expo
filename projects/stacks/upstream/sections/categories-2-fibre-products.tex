@@ -1,0 +1,616 @@
+\section{2-fibre products}
+\label{section-2-fibre-products}
+
+\noindent
+In this section we introduce $2$-fibre products. Suppose that $\mathcal{C}$
+is a 2-category. We say that a diagram
+$$
+\xymatrix{
+w \ar[r] \ar[d] & y \ar[d] \\
+x \ar[r] & z }
+$$
+2-commutes if the two 1-morphisms $w \to y \to z$ and $w \to x \to z$ are
+2-isomorphic. In a 2-category it is more natural to ask for 2-commutativity
+of diagrams than for actually commuting diagrams. (Indeed, some may say that
+we should not work with strict 2-categories at all, and in a ``weak''
+2-category the notion of a commutative diagram of 1-morphisms does not even
+make sense.) Correspondingly the notion of a fibre product has to be adjusted.
+
+\medskip\noindent
+Let $\mathcal{C}$ be a $2$-category. Let $x, y, z\in \Ob(\mathcal{C})$ and
+$f\in \Mor_\mathcal{C}(x, z)$ and $g\in \Mor_{\mathcal C}(y, z)$.
+In order to define the 2-fibre product of $f$ and $g$ we are going to look at
+2-commutative diagrams
+$$
+\xymatrix{
+& w \ar[r]_a \ar[d]_b & x \ar[d]^{f} \\
+& y \ar[r]^{g} & z. }
+$$
+Now in the case of categories, the fibre product is a final object in the
+category of such diagrams. Correspondingly a 2-fibre product is a final object
+in a 2-category (see definition below). The {\it $2$-category
+of $2$-commutative diagrams over $f$ and $g$}
+is the $2$-category defined as follows:
+\begin{enumerate}
+\item Objects are quadruples $(w, a, b, \phi)$ as above where $\phi$
+is an invertible 2-morphism $\phi : f \circ a \to g \circ b$,
+\item 1-morphisms from $(w', a', b', \phi')$ to $(w, a, b, \phi)$ are given by
+$(k : w' \to w, \alpha : a' \to a \circ k, \beta : b' \to b \circ k)$
+such that
+$$
+\xymatrix{
+f \circ a'
+\ar[rr]_{\text{id}_f \star \alpha}
+\ar[d]_{\phi'}
+& &
+f \circ a \circ k
+\ar[d]^{\phi \star \text{id}_k}
+\\
+g \circ b'
+\ar[rr]^{\text{id}_g \star \beta}
+& &
+g \circ b \circ k
+}
+$$
+is commutative,
+\item given a second $1$-morphism
+$(k', \alpha', \beta') : (w'', a'', b'', \phi'') \to
+(w', \alpha', \beta', \phi')$ the composition of $1$-morphisms
+is given by the rule
+$$
+(k, \alpha, \beta) \circ (k', \alpha', \beta') =
+(k \circ k',
+(\alpha \star \text{id}_{k'}) \circ \alpha',
+(\beta \star \text{id}_{k'}) \circ \beta'),
+$$
+\item a 2-morphism between $1$-morphisms
+$(k_i, \alpha_i, \beta_i)$, $i = 1, 2$ with the same source and target
+is given by a 2-morphism $\delta : k_1 \to k_2$ such that
+$$
+\xymatrix{
+a'
+\ar[rd]_{\alpha_2}
+\ar[r]_{\alpha_1} &
+a \circ k_1
+\ar[d]^{\text{id}_a \star \delta} &
+&
+b \circ k_1
+\ar[d]_{\text{id}_b \star \delta} &
+b'
+\ar[l]^{\beta_1}
+\ar[ld]^{\beta_2}
+\\
+&
+a \circ k_2
+&
+&
+b \circ k_2
+&
+}
+$$
+commute,
+\item vertical composition of $2$-morphisms is given by
+vertical composition of the morphisms $\delta$ in $\mathcal{C}$, and
+\item horizontal composition of the diagram
+$$
+\xymatrix{
+(w'', a'', b'', \phi'')
+\rrtwocell^{(k'_1, \alpha'_1, \beta'_1)}_{(k'_2, \alpha'_2, \beta'_2)}{\delta'}
+& &
+(w', a', b', \phi')
+\rrtwocell^{(k_1, \alpha_1, \beta_1)}_{(k_2, \alpha_2, \beta_2)}{\delta}
+& &
+(w, a, b, \phi)
+}
+$$
+is given by the diagram
+$$
+\xymatrix@C=12pc{
+(w'', a'', b'', \phi'')
+\rtwocell^{(k_1 \circ k'_1, (\alpha_1 \star \text{id}_{k'_1}) \circ \alpha'_1, (\beta_1 \star \text{id}_{k'_1}) \circ \beta'_1)}_{(k_2 \circ k'_2, (\alpha_2 \star \text{id}_{k'_2}) \circ \alpha'_2, (\beta_2 \star \text{id}_{k'_2}) \circ \beta'_2)}{\ \ \ \delta \star \delta'}
+&
+(w, a, b, \phi)
+}
+$$
+\end{enumerate}
+Note that if $\mathcal{C}$ is actually a $(2, 1)$-category,
+the morphisms $\alpha$ and $\beta$ in (2) above are automatically
+also isomorphisms\footnote{In fact it seems in the $2$-category case
+that one could define another 2-category of 2-commutative diagrams where
+the direction of the arrows $\alpha$, $\beta$ is reversed, or even
+where the direction of only one of them is reversed. This is why
+we restrict to $(2, 1)$-categories later on.}.
+In addition the $2$-category of
+$2$-commutative diagrams is also a $(2, 1)$-category if $\mathcal{C}$ is
+a $(2, 1)$-category.
+
+\begin{definition}
+\label{definition-final-object-2-category}
+A {\it final object} of a $(2, 1)$-category
+$\mathcal{C}$ is an object $x$ such that
+\begin{enumerate}
+\item for every $y \in \Ob(\mathcal{C})$ there is a morphism $y \to x$,
+and
+\item every two morphisms $y \to x$ are isomorphic by a unique 2-morphism.
+\end{enumerate}
+\end{definition}
+
+\noindent
+Likely, in the more general case of $2$-categories there are different
+flavours of final objects. We do not want to get into this and hence
+we only define $2$-fibre products in the $(2, 1)$-case.
+
+\begin{definition}
+\label{definition-2-fibre-products}
+Let $\mathcal{C}$ be a $(2, 1)$-category.
+Let $x, y, z\in \Ob(\mathcal{C})$ and
+$f\in \Mor_\mathcal{C}(x, z)$
+and $g\in \Mor_{\mathcal C}(y, z)$. A
+{\it 2-fibre product of $f$ and $g$} is
+a final object in the category of 2-commutative diagrams
+described above. If a 2-fibre product exists we
+will denote it $x \times_z y\in \Ob(\mathcal{C})$, and denote the
+required morphisms $p\in \Mor_{\mathcal C}(x \times_z y, x)$ and
+$q\in \Mor_{\mathcal C}(x \times_z y, y)$ making the diagram
+$$
+\xymatrix{
+& x \times_z y \ar[r]^{p} \ar[d]_q & x \ar[d]^{f} \\
+& y \ar[r]^{g} & z }
+$$
+2-commute and we will denote the given invertible
+2-morphism exhibiting this by $\psi : f \circ p \to g \circ q$.
+\end{definition}
+
+\noindent
+Thus the following universal property holds: for any
+$w\in \Ob(\mathcal{C})$ and morphisms
+$a \in \Mor_{\mathcal C}(w, x)$ and
+$b \in \Mor_\mathcal{C}(w, y)$ with a given 2-isomorphism
+$\phi : f \circ a \to g\circ b$
+there is a $\gamma \in \Mor_{\mathcal C}(w, x \times_z y)$
+making the diagram
+$$
+\xymatrix{
+w\ar[rrrd]^a \ar@{-->}[rrd]_\gamma \ar[rrdd]_b & & \\
+& & x \times_z y \ar[r]_p \ar[d]_q & x \ar[d]^{f} \\
+& & y \ar[r]^{g} & z }
+$$
+2-commute such that for suitable choices of
+$a \to p \circ \gamma$ and $b \to q \circ \gamma$
+the diagram
+$$
+\xymatrix{
+f \circ a \ar[r] \ar[d]_\phi &
+f \circ p \circ \gamma
+\ar[d]^{\psi \star \text{id}_\gamma}
+\\
+g\circ b
+\ar[r]
+&
+g \circ q \circ \gamma
+}
+$$
+commutes. Moreover $\gamma$ is unique up to isomorphism.
+Of course the exact properties are finer than this. All of the
+cases of 2-fibre products that we will need later on come from the following
+example of 2-fibre products in the 2-category of categories.
+
+\begin{example}
+\label{example-2-fibre-product-categories}
+Let $\mathcal{A}$, $\mathcal{B}$, and $\mathcal{C}$ be categories.
+Let $F : \mathcal{A} \to \mathcal{C}$ and $G : \mathcal{B} \to \mathcal{C}$
+be functors. We define a category
+$\mathcal{A} \times_\mathcal{C} \mathcal{B}$ as follows:
+\begin{enumerate}
+\item an object of $\mathcal{A} \times_\mathcal{C} \mathcal{B}$ is a triple
+$(A, B, f)$, where $A\in \Ob(\mathcal{A})$, $B\in \Ob(\mathcal{B})$,
+and $f : F(A) \to G(B)$ is an isomorphism in $\mathcal{C}$,
+\item a morphism $(A, B, f) \to (A', B', f')$ is given by a pair $(a, b)$, where
+$a : A \to A'$ is a morphism in $\mathcal{A}$, and $b : B \to B'$ is a
+morphism in $\mathcal{B}$ such that the diagram
+$$
+\xymatrix{
+F(A) \ar[r]^f \ar[d]^{F(a)} & G(B) \ar[d]^{G(b)} \\
+F(A') \ar[r]^{f'} & G(B')
+}
+$$
+is commutative.
+\end{enumerate}
+Moreover, we define functors
+$p : \mathcal{A} \times_\mathcal{C}\mathcal{B} \to \mathcal{A}$
+and
+$q : \mathcal{A} \times_\mathcal{C}\mathcal{B} \to \mathcal{B}$
+by setting
+$$
+p(A, B, f) = A, \quad q(A, B, f) = B,
+$$
+in other words, these are the forgetful functors.
+We define a transformation of functors $\psi : F \circ p \to G \circ q$.
+On the object $\xi = (A, B, f)$ it is given by
+$\psi_\xi = f : F(p(\xi)) = F(A) \to G(B) = G(q(\xi))$.
+\end{example}
+
+\begin{lemma}
+\label{lemma-2-fibre-product-categories}
+In the $(2, 1)$-category of categories $2$-fibre products exist and
+are given by the construction of
+Example \ref{example-2-fibre-product-categories}.
+\end{lemma}
+
+\begin{proof}
+Let us check the universal property:
+let $\mathcal{W}$ be a category, let
+$a : \mathcal{W} \to \mathcal{A}$ and
+$b : \mathcal{W} \to \mathcal{B}$ be functors, and
+let $t : F \circ a \to G \circ b$ be an isomorphism of functors.
+
+\medskip\noindent
+Consider the functor
+$\gamma : \mathcal{W} \to \mathcal{A} \times_\mathcal{C}\mathcal{B}$
+given by $W \mapsto (a(W), b(W), t_W)$.
+(Check this is a functor omitted.)
+Moreover, consider $\alpha : a \to p \circ \gamma$ and
+$\beta : b \to q \circ \gamma$ obtained from the identities
+$p \circ \gamma = a$ and $q \circ \gamma = b$. Then it is
+clear that $(\gamma, \alpha, \beta)$ is a morphism
+from $(W, a, b, t)$ to
+$(\mathcal{A} \times_\mathcal{C} \mathcal{B}, p, q, \psi)$.
+
+\medskip\noindent
+Let
+$(k, \alpha', \beta') :
+(W, a, b, t) \to (\mathcal{A} \times_\mathcal{C} \mathcal{B}, p, q, \psi)$
+be a second such morphism. For an object $W$ of $\mathcal{W}$ let us write
+$k(W) = (a_k(W), b_k(W), t_{k, W})$. Hence $p(k(W)) = a_k(W)$ and so on.
+The map $\alpha'$ corresponds to functorial maps
+$\alpha' : a(W) \to a_k(W)$. Since we are working in the
+$(2, 1)$-category of categories, in fact each of the maps
+$a(W) \to a_k(W)$ is an isomorphism. We can use these
+(and their counterparts $b(W) \to b_k(W)$) to get isomorphisms
+$$
+\delta_W :
+\gamma(W) = (a(W), b(W), t_W)
+\longrightarrow
+(a_k(W), b_k(W), t_{k, W}) = k(W).
+$$
+It is straightforward to show that $\delta$ defines a
+$2$-isomorphism between $\gamma$ and $k$ in the $2$-category
+of $2$-commutative diagrams as desired.
+\end{proof}
+
+\begin{remark}
+\label{remark-other-description-2-fibre-product}
+Let $\mathcal{A}$, $\mathcal{B}$, and $\mathcal{C}$ be categories.
+Let $F : \mathcal{A} \to \mathcal{C}$ and $G : \mathcal{B} \to \mathcal{C}$
+be functors. Another, slightly more symmetrical, construction of a $2$-fibre
+product $\mathcal{A} \times_\mathcal{C} \mathcal{B}$ is as follows.
+An object is a quintuple $(A, B, C, a, b)$ where $A, B, C$ are objects
+of $\mathcal{A}, \mathcal{B}, \mathcal{C}$ and where $a : F(A) \to C$
+and $b : G(B) \to C$ are isomorphisms. A morphism
+$(A, B, C, a, b) \to (A', B', C', a', b')$ is given by a triple
+of morphisms $A \to A', B \to B', C \to C'$ compatible with the morphisms
+$a, b, a', b'$. We can prove directly that this leads to a $2$-fibre
+product. However, it is easier to observe that the functor
+$(A, B, C, a, b) \mapsto (A, B, b^{-1} \circ a)$ gives an equivalence
+from the category of quintuples to the category constructed in
+Example \ref{example-2-fibre-product-categories}.
+\end{remark}
+
+\begin{lemma}
+\label{lemma-functoriality-2-fibre-product}
+Let
+$$
+\xymatrix{
+& \mathcal{Y} \ar[d]_I \ar[rd]^K & \\
+\mathcal{X} \ar[r]^H \ar[rd]^L &
+\mathcal{Z} \ar[rd]^M & \mathcal{B} \ar[d]^G \\
+& \mathcal{A} \ar[r]^F & \mathcal{C}
+}
+$$
+be a $2$-commutative diagram of categories.
+A choice of isomorphisms
+$\alpha : G \circ K \to M \circ I$ and
+$\beta : M \circ H \to F \circ L$
+determines a morphism
+$$
+\mathcal{X} \times_\mathcal{Z} \mathcal{Y}
+\longrightarrow
+\mathcal{A} \times_\mathcal{C} \mathcal{B}
+$$
+of $2$-fibre products associated to this situation.
+\end{lemma}
+
+\begin{proof}
+Just use the functor
+$$
+(X, Y, \phi) \longmapsto (L(X), K(Y),
+\alpha^{-1}_Y \circ M(\phi) \circ \beta^{-1}_X)
+$$
+on objects and
+$$
+(a, b) \longmapsto (L(a), K(b))
+$$
+on morphisms.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-equivalence-2-fibre-product}
+Assumptions as in Lemma \ref{lemma-functoriality-2-fibre-product}.
+\begin{enumerate}
+\item If $K$ and $L$ are faithful
+then the morphism
+$\mathcal{X} \times_\mathcal{Z} \mathcal{Y} \to
+\mathcal{A} \times_\mathcal{C} \mathcal{B}$
+is faithful.
+\item If $K$ and $L$ are fully faithful and $M$ is faithful
+then the morphism
+$\mathcal{X} \times_\mathcal{Z} \mathcal{Y} \to
+\mathcal{A} \times_\mathcal{C} \mathcal{B}$
+is fully faithful.
+\item If $K$ and $L$ are equivalences and $M$ is fully faithful
+then the morphism
+$\mathcal{X} \times_\mathcal{Z} \mathcal{Y} \to
+\mathcal{A} \times_\mathcal{C} \mathcal{B}$
+is an equivalence.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let $(X, Y, \phi)$ and $(X', Y', \phi')$ be objects of
+$\mathcal{X} \times_\mathcal{Z} \mathcal{Y}$.
+Set $Z = H(X)$ and identify it with $I(Y)$ via $\phi$.
+Also, identify $M(Z)$ with $F(L(X))$ via $\alpha_X$ and
+identify $M(Z)$ with $G(K(Y))$ via $\beta_Y$. Similarly for
+$Z' = H(X')$ and $M(Z')$.
+The map on morphisms is the map
+$$
+\xymatrix{
+\Mor_\mathcal{X}(X, X')
+\times_{\Mor_\mathcal{Z}(Z, Z')}
+\Mor_\mathcal{Y}(Y, Y')
+\ar[d] \\
+\Mor_\mathcal{A}(L(X), L(X'))
+\times_{\Mor_\mathcal{C}(M(Z), M(Z'))}
+\Mor_\mathcal{B}(K(Y), K(Y'))
+}
+$$
+Hence parts (1) and (2) follow. Moreover, if $K$ and $L$
+are equivalences and $M$ is fully faithful, then any object
+$(A, B, \phi)$ is in the essential image for the following reasons:
+Pick $X$, $Y$ such that $L(X) \cong A$ and $K(Y) \cong B$.
+Then the fully faithfulness of $M$ guarantees that we can
+find an isomorphism $H(X) \cong I(Y)$. Some details omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-associativity-2-fibre-product}
+Let
+$$
+\xymatrix{
+\mathcal{A} \ar[rd] & & \mathcal{C} \ar[ld] \ar[rd] & & \mathcal{E} \ar[ld] \\
+& \mathcal{B} & & \mathcal{D}
+}
+$$
+be a diagram of categories and functors.
+Then there is a canonical isomorphism
+$$
+(\mathcal{A} \times_\mathcal{B} \mathcal{C}) \times_\mathcal{D} \mathcal{E}
+\cong
+\mathcal{A} \times_\mathcal{B} (\mathcal{C} \times_\mathcal{D} \mathcal{E})
+$$
+of categories.
+\end{lemma}
+
+\begin{proof}
+Just use the functor
+$$
+((A, C, \phi), E, \psi)
+\longmapsto
+(A, (C, E, \psi), \phi)
+$$
+if you know what I mean.
+\end{proof}
+
+\noindent
+Henceforth we do not write the parentheses when dealing with fibre products
+of more than 2 categories.
+
+\begin{lemma}
+\label{lemma-triple-2-fibre-product-pr02}
+Let
+$$
+\xymatrix{
+\mathcal{A} \ar[rd] & & \mathcal{C} \ar[ld] \ar[rd] & & \mathcal{E} \ar[ld] \\
+& \mathcal{B} \ar[rd]_F & & \mathcal{D} \ar[ld]^G \\
+& & \mathcal{F} &
+}
+$$
+be a commutative diagram of categories and functors.
+Then there is a canonical functor
+$$
+\text{pr}_{02} :
+\mathcal{A} \times_\mathcal{B} \mathcal{C} \times_\mathcal{D} \mathcal{E}
+\longrightarrow
+\mathcal{A} \times_\mathcal{F} \mathcal{E}
+$$
+of categories.
+\end{lemma}
+
+\begin{proof}
+If we write
+$\mathcal{A} \times_\mathcal{B} \mathcal{C}
+\times_\mathcal{D} \mathcal{E}$
+as
+$(\mathcal{A} \times_\mathcal{B} \mathcal{C})
+\times_\mathcal{D} \mathcal{E}$
+then we can just use the functor
+$$
+((A, C, \phi), E, \psi)
+\longmapsto
+(A, E, G(\psi) \circ F(\phi))
+$$
+if you know what I mean.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-2-fibre-product-erase-factor}
+Let
+$$
+\mathcal{A} \to
+\mathcal{B} \leftarrow \mathcal{C} \leftarrow \mathcal{D}
+$$
+be a diagram of categories and functors.
+Then there is a canonical isomorphism
+$$
+\mathcal{A} \times_\mathcal{B} \mathcal{C} \times_\mathcal{C} \mathcal{D}
+\cong
+\mathcal{A} \times_\mathcal{B} \mathcal{D}
+$$
+of categories.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\noindent
+We claim that this means you can work with these $2$-fibre products
+just like with ordinary fibre products. Here are some further lemmas
+that actually come up later.
+
+\begin{lemma}
+\label{lemma-diagonal-1}
+Let
+$$
+\xymatrix{
+\mathcal{C}_3 \ar[r] \ar[d] & \mathcal{S} \ar[d]^\Delta \\
+\mathcal{C}_1 \times \mathcal{C}_2 \ar[r]^{G_1 \times G_2} &
+\mathcal{S} \times \mathcal{S}
+}
+$$
+be a $2$-fibre product of categories.
+Then there is a canonical isomorphism
+$\mathcal{C}_3 \cong
+\mathcal{C}_1 \times_{G_1, \mathcal{S}, G_2} \mathcal{C}_2$.
+\end{lemma}
+
+\begin{proof}
+We may assume that $\mathcal{C}_3$ is the category
+$(\mathcal{C}_1 \times \mathcal{C}_2)\times_{\mathcal{S} \times \mathcal{S}}
+\mathcal{S}$ constructed in Example \ref{example-2-fibre-product-categories}.
+Hence an object is a triple
+$((X_1, X_2), S, \phi)$ where
+$\phi = (\phi_1, \phi_2) : (G_1(X_1), G_2(X_2)) \to (S, S)$
+is an isomorphism. Thus we can associate to this the triple
+$(X_1, X_2, \phi_2^{-1} \circ \phi_1)$.
+Conversely, if $(X_1, X_2, \psi)$ is an object of
+$\mathcal{C}_1 \times_{G_1, \mathcal{S}, G_2} \mathcal{C}_2$,
+then we can associate to this the triple
+$((X_1, X_2), G_2(X_2), (\psi, \text{id}_{G_2(X_2)}))$.
+We claim these constructions given mutually inverse functors.
+We omit describing how to deal with morphisms
+and showing they are mutually inverse.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-diagonal-2}
+Let
+$$
+\xymatrix{
+\mathcal{C}' \ar[r] \ar[d] & \mathcal{S} \ar[d]^\Delta \\
+\mathcal{C} \ar[r]^{(G_1, G_2)} &
+\mathcal{S} \times \mathcal{S}
+}
+$$
+be a $2$-fibre product of categories.
+Then there is a canonical isomorphism
+$$
+\mathcal{C}' \cong
+(\mathcal{C} \times_{G_1, \mathcal{S}, G_2} \mathcal{C})
+\times_{(p, q), \mathcal{C} \times \mathcal{C}, \Delta}
+\mathcal{C}.
+$$
+\end{lemma}
+
+\begin{proof}
+An object of the right hand side is given by
+$((C_1, C_2, \phi), C_3, \psi)$ where
+$\phi : G_1(C_1) \to G_2(C_2)$ is an isomorphism
+and $\psi = (\psi_1, \psi_2) : (C_1, C_2) \to (C_3, C_3)$ is
+an isomorphism. Hence we can associate to this the triple
+$(C_3, G_1(C_1), (G_1(\psi_1^{-1}), \phi^{-1} \circ G_2(\psi_2^{-1})))$
+which is an object of $\mathcal{C}'$.
+Details omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-fibre-product-after-map}
+Let $\mathcal{A} \to \mathcal{C}$, $\mathcal{B} \to \mathcal{C}$
+and $\mathcal{C} \to \mathcal{D}$ be functors between categories.
+Then the diagram
+$$
+\xymatrix{
+\mathcal{A} \times_\mathcal{C} \mathcal{B} \ar[d] \ar[r] &
+\mathcal{A} \times_\mathcal{D} \mathcal{B} \ar[d] \\
+\mathcal{C} \ar[r]^-{\Delta_{\mathcal{C}/\mathcal{D}}} \ar[r] &
+\mathcal{C} \times_\mathcal{D} \mathcal{C}
+}
+$$
+is a $2$-fibre product diagram.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-base-change-diagonal}
+Let
+$$
+\xymatrix{
+\mathcal{U} \ar[d] \ar[r] & \mathcal{V} \ar[d] \\
+\mathcal{X} \ar[r] & \mathcal{Y}
+}
+$$
+be a $2$-fibre product of categories. Then the diagram
+$$
+\xymatrix{
+\mathcal{U} \ar[d] \ar[r] &
+\mathcal{U} \times_\mathcal{V} \mathcal{U} \ar[d] \\
+\mathcal{X} \ar[r] &
+\mathcal{X} \times_\mathcal{Y} \mathcal{X}
+}
+$$
+is $2$-cartesian.
+\end{lemma}
+
+\begin{proof}
+This is a purely $2$-category theoretic statement, valid in any
+$(2, 1)$-category with $2$-fibre products. Explicitly, it follows
+from the following chain of equivalences:
+\begin{align*}
+\mathcal{X} \times_{(\mathcal{X} \times_\mathcal{Y} \mathcal{X})}
+(\mathcal{U} \times_\mathcal{V} \mathcal{U})
+& =
+\mathcal{X} \times_{(\mathcal{X} \times_\mathcal{Y} \mathcal{X})}
+((\mathcal{X} \times_\mathcal{Y} \mathcal{V})
+\times_\mathcal{V} (\mathcal{X} \times_\mathcal{Y} \mathcal{V})) \\
+& =
+\mathcal{X} \times_{(\mathcal{X} \times_\mathcal{Y} \mathcal{X})}
+(\mathcal{X} \times_\mathcal{Y} \mathcal{X}
+\times_\mathcal{Y} \mathcal{V}) \\
+& =
+\mathcal{X} \times_\mathcal{Y} \mathcal{V} = \mathcal{U}
+\end{align*}
+see
+Lemmas \ref{lemma-associativity-2-fibre-product} and
+\ref{lemma-2-fibre-product-erase-factor}.
+\end{proof}
+
+
+
+
+
+
+
+

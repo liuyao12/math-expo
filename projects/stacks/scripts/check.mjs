@@ -1,7 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import {spawnSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
-import {createRenderer} from '../src/latex.mjs';
+import {escapeHTML,createRenderer} from '../src/latex.mjs';
 import {sectionNote} from '../src/scheme-notes.mjs';
 import {examples} from '../src/matches.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url)),dist=path.join(root,'dist');
@@ -94,3 +96,32 @@ for(const file of sourceFiles)if(!fs.existsSync(path.join(dist,'source',file)))t
 console.log(`Validated Stacks Reader: ${Object.keys(examples).length} typed object specializations, linked symbols, optional visual, all ${statementCount} source statements, ${proofCount} collapsed proofs, tags, local links, math, fonts, and source license.`);
 
 console.log(`Validated foundation path: ${foundation.units.flatMap(u=>u.sections).length} complete sections, ${pathStatements} statements, ${pathProofs} collapsed proofs, source anchors, typed complex-function models, and cross-reading links.`);
+
+const originalChapters=JSON.parse(fs.readFileSync(path.join(root,'src/chapters.json'),'utf8'));
+for(const unit of foundation.units){
+  const chapter=originalChapters.find(c=>c.slug===unit.slug);
+  if(!chapter||chapter.title!==unit.title||chapter.number!==unit.number)throw Error('Changed original chapter title '+unit.slug);
+  const html=fs.readFileSync(path.join(dist,'read',unit.slug,'index.html'),'utf8');
+  if(!html.includes('<h1>'+escapeHTML(chapter.title)+'</h1>'))throw Error('Missing original chapter heading '+unit.slug);
+  for(const section of unit.sections){
+    const source=fs.readFileSync(path.join(root,'upstream/sections',section.slug+'.tex'),'utf8');
+    if(createHash('sha256').update(source).digest('hex')!==section.sha256)throw Error('Altered section source '+section.slug);
+    if(!html.includes('<h2>'+section.number+'. '+escapeHTML(section.title)+'</h2>'))throw Error('Changed original section title '+section.slug);
+    if(!html.includes('<pre><code>'+escapeHTML(source)+'</code></pre>'))throw Error('Missing verbatim section source '+section.slug);
+  }
+}
+const selection=JSON.parse(fs.readFileSync(path.join(root,'upstream/scheme-selection.json'),'utf8'));
+for(const section of foundation.source_reference_audit)for(const ref of section.references){
+  if(!ref.included&&(!ref.reason||selection.reference_exceptions[ref.label]!==ref.reason))throw Error('Uncovered prerequisite '+ref.label);
+}
+const diagrams=JSON.parse(fs.readFileSync(path.join(root,'src/diagrams.json'),'utf8'));
+for(const [key,diagram] of Object.entries(diagrams)){
+  if(createHash('sha256').update(diagram.tex).digest('hex').slice(0,24)!==key)throw Error('Altered diagram formula '+key);
+  const svg=fs.readFileSync(path.join(dist,'diagrams',diagram.file));
+  if(createHash('sha256').update(svg).digest('hex')!==diagram.svg_sha256)throw Error('Altered original-source diagram '+key);
+  const xml=svg.toString(),ids=new Set([...xml.matchAll(/\bid=['"]([^'"]+)/g)].map(m=>m[1]));
+  for(const match of xml.matchAll(/xlink:href=['"]#([^'"]+)/g))if(!ids.has(match[1]))throw Error('Missing diagram glyph '+key+' '+match[1]);
+}
+const proseCheck=spawnSync('python3',[path.join(root,'scripts/check-verbatim.py')],{stdio:'inherit'});
+if(proseCheck.status!==0)process.exit(proseCheck.status??1);
+console.log(`Validated original titles, prerequisite audit, verbatim source views, and ${Object.keys(diagrams).length} original LaTeX diagrams.`);

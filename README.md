@@ -22,7 +22,7 @@ New expositions of established mathematics. The current working text, *Linear Al
 
 ## Stacks Reader
 
-A companion edition of the Stacks Project: longer continuous readings, original statements and expandable proofs, and one running example alongside the mathematics. The foundation path collects 69 complete sections leading to the definition of scheme, with complex function theory alongside. A companion reading follows gluing with the Riemann sphere. [Source and editorial notes](projects/stacks/README.md).
+A companion edition of the Stacks Project: longer continuous readings, original statements and expandable proofs, and one running example alongside the mathematics. The foundation path collects 78 complete original sections leading to the definition of scheme, preserving original chapter and section titles, with complex function theory alongside. A companion reading follows gluing with the Riemann sphere. [Source and editorial notes](projects/stacks/README.md).
 
 ## Build and validate
 

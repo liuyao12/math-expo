@@ -1,0 +1,161 @@
+\section{Opposite Categories and the Yoneda Lemma}
+\label{section-opposite}
+
+\begin{definition}
+\label{definition-opposite}
+Given a category $\mathcal{C}$ the {\it opposite category}
+$\mathcal{C}^{opp}$ is the category with the same objects
+as $\mathcal{C}$ but all morphisms reversed.
+\end{definition}
+
+\noindent
+In other words
+$\Mor_{\mathcal{C}^{opp}}(x, y) = \Mor_\mathcal{C}(y, x)$.
+Composition in $\mathcal{C}^{opp}$ is the same as in $\mathcal{C}$
+except backwards: if $\phi : y \to z$ and $\psi : x \to y$
+are morphisms in $\mathcal{C}^{opp}$, in other words arrows
+$z \to y$ and $y \to x$ in $\mathcal{C}$,
+then $\phi \circ^{opp} \psi$ is the morphism $x \to z$
+of $\mathcal{C}^{opp}$ which corresponds to the composition
+$z \to y \to x$ in $\mathcal{C}$.
+
+\begin{definition}
+\label{definition-contravariant}
+Let $\mathcal{C}$, $\mathcal{S}$ be categories.
+A {\it contravariant} functor $F$
+from $\mathcal{C}$ to $\mathcal{S}$
+is a functor $\mathcal{C}^{opp}\to \mathcal{S}$.
+\end{definition}
+
+\noindent
+Concretely, a contravariant functor $F$ is given
+by a map $F : \Ob(\mathcal{C}) \to
+\Ob(\mathcal{S})$ and for every morphism
+$\psi : x \to y$ in $\mathcal{C}$ a morphism
+$F(\psi) : F(y) \to F(x)$. These should satisfy the property
+that, given another morphism
+$\phi : y \to z$, we have $F(\phi \circ \psi)
+= F(\psi) \circ F(\phi)$ as morphisms $F(z) \to F(x)$.
+(Note the reverse of order.)
+
+\begin{definition}
+\label{definition-presheaf}
+Let $\mathcal{C}$ be a category.
+\begin{enumerate}
+\item A {\it presheaf of sets on $\mathcal{C}$}
+or simply a {\it presheaf} is a contravariant functor
+$F$ from $\mathcal{C}$ to $\textit{Sets}$.
+\item The category of presheaves is denoted $\textit{PSh}(\mathcal{C})$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+Of course the category of presheaves is a proper class.
+
+\begin{example}
+\label{example-hom-functor}
+Functor of points.
+For any $U\in \Ob(\mathcal{C})$ there is a contravariant
+functor
+$$
+\begin{matrix}
+h_U & : & \mathcal{C}
+&
+\longrightarrow
+&
+\textit{Sets} \\
+& &
+X
+&
+\longmapsto
+&
+\Mor_\mathcal{C}(X, U)
+\end{matrix}
+$$
+which takes an object $X$ to the set
+$\Mor_\mathcal{C}(X, U)$. In other words $h_U$ is a presheaf.
+Given a morphism $f : X\to Y$ the corresponding map
+$h_U(f) : \Mor_\mathcal{C}(Y, U)\to \Mor_\mathcal{C}(X, U)$
+takes $\phi$ to $\phi\circ f$. We will always denote
+this presheaf $h_U : \mathcal{C}^{opp} \to \textit{Sets}$.
+It is called the {\it representable presheaf} associated to $U$.
+If $\mathcal{C}$ is the category of schemes this functor is
+sometimes referred to as the
+\emph{functor of points} of $U$.
+\end{example}
+
+\noindent
+Note that given a morphism $\phi : U \to V$ in $\mathcal{C}$ we get a
+corresponding natural transformation of functors $h(\phi) : h_U \to h_V$
+defined by composing with the morphism $U \to V$. This turns
+composition of morphisms in $\mathcal{C}$ into composition of
+transformations of functors. In other words we get a functor
+$$
+h :
+\mathcal{C}
+\longrightarrow
+\textit{PSh}(\mathcal{C})
+$$
+Note that the target is a ``big'' category, see
+Remark \ref{remark-big-categories}. On the other hand,
+$h$ is an actual mathematical object (i.e.\ a set), compare Remark
+\ref{remark-functor-into-sets}.
+
+\begin{lemma}[Yoneda lemma]
+\label{lemma-yoneda}
+\begin{reference}
+Appeared in some form in \cite{Yoneda-homology}. Used by Grothendieck in a
+generalized form in \cite{Gr-II}.
+\end{reference}
+Let $U, V \in \Ob(\mathcal{C})$.
+Given any morphism of functors $s : h_U \to h_V$
+there is a unique morphism $\phi : U \to V$
+such that $h(\phi) = s$. In other words the
+functor $h$ is fully faithful. More generally,
+given any contravariant functor $F$ and any object
+$U$ of $\mathcal{C}$ we have a natural bijection
+$$
+\Mor_{\textit{PSh}(\mathcal{C})}(h_U, F) \longrightarrow F(U),
+\quad
+s \longmapsto s_U(\text{id}_U).
+$$
+\end{lemma}
+
+\begin{proof}
+For the first statement, just take
+$\phi = s_U(\text{id}_U) \in \Mor_\mathcal{C}(U, V)$.
+For the second statement, given $\xi \in F(U)$ define
+$s$ by $s_V : h_U(V) \to F(V)$ by sending the element $f : V \to U$
+of $h_U(V) = \Mor_\mathcal{C}(V, U)$ to $F(f)(\xi)$.
+\end{proof}
+
+\begin{definition}
+\label{definition-representable-functor}
+A contravariant functor $F : \mathcal{C}\to \textit{Sets}$ is said
+to be {\it representable} if it is isomorphic to the functor of
+points $h_U$ for some object $U$ of $\mathcal{C}$.
+\end{definition}
+
+\noindent
+Let $\mathcal{C}$ be a category and let
+$F : \mathcal{C}^{opp} \to \textit{Sets}$ be a representable functor.
+Choose an object $U$ of $\mathcal{C}$ and an isomorphism $s : h_U \to F$.
+The Yoneda lemma guarantees that the pair $(U, s)$
+is unique up to unique isomorphism. The object
+$U$ is called an object {\it representing} $F$.
+By the Yoneda lemma the transformation $s$ corresponds to a unique
+element $\xi \in F(U)$. This element is called the {\it universal object}.
+It has the property that for $V \in \Ob(\mathcal{C})$ the map
+$$
+\Mor_\mathcal{C}(V, U) \longrightarrow F(V),\quad
+(f : V \to U) \longmapsto F(f)(\xi)
+$$
+is a bijection. Thus $\xi$ is universal in the sense that every element
+of $F(V)$ is equal to the image of $\xi$ via $F(f)$ for a unique morphism
+$f : V \to U$ in $\mathcal{C}$.
+
+
+
+
+
+
