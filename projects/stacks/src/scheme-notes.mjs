@@ -531,24 +531,22 @@ S^n\hookrightarrow S^{n+1},\quad x\mapsto(x,0),\\
 \varinjlim_n S^n=S^\infty=\bigcup_{n\geq0}S^n.
 \end{gathered}
 \]`,'',r`A map out of \(S^\infty\) is continuous exactly when its restrictions to all the finite spheres are continuous.`);
-const triangulatedChains=model('Chains on the boundary of a tetrahedron',[
+const triangulatedChains=model('Chains of a triangulated manifold',[
  b(r`\mathcal A`,r`\mathbf{Ab}`),
- b('K',r`\partial\Delta^3\quad (|K|\cong S^2)`),
+ b('K',r`\text{a triangulation of }M`),
  b(r`A_\bullet`,r`C_\bullet(K;\mathbb Z)`),
- b('d_i',r`\partial_i`)
+ b('A_i',r`\bigoplus_{\sigma\in K_i}\mathbb Z[\sigma]`),
+ b('d_i',r`\partial_i:A_i\to A_{i-1}`)
 ],r`\[
-0\to\mathbb Z^4\xrightarrow{\partial_2}
-\mathbb Z^6\xrightarrow{\partial_1}\mathbb Z^4\to0
-\]
-\[
-\begin{aligned}
-\partial_2[012]&=[12]-[02]+[01],\\
-\partial_1\partial_2[012]&=0.
-\end{aligned}
-\]`,'',r`The generators are the four triangular faces, six edges, and four vertices. Each vertex of a face occurs twice with opposite signs when you take its boundary twice.`);
-const pairConnectingMap={...model('The connecting map for a disk and its boundary',[
- b('X',r`D^2`),
- b('Y',r`\partial D^2=S^1`),
+\begin{gathered}
+\sigma=[v_0,\ldots,v_i],\\
+\sigma_j=[v_0,\ldots,\widehat v_j,\ldots,v_i],\\
+\partial_i\sigma=\sum_{j=0}^i(-1)^j\sigma_j.
+\end{gathered}
+\]`,r`Each face obtained by deleting two vertices occurs twice with opposite signs, so \(\partial_{i-1}\partial_i=0\).`,r`Order the vertices and take one generator for each \(i\)-simplex in \(K_i\). For \(i>0\), the boundary is the alternating sum of its faces. Set \(\partial_0=0\).`);
+const pairConnectingMap={...model('The connecting map for a manifold and its boundary',[
+ b('X',r`M`),
+ b('Y',r`\partial M`),
  b('A',r`C^\bullet(X,Y;\mathbb Z)`),
  b('B',r`C^\bullet(X;\mathbb Z)`),
  b('C',r`C^\bullet(Y;\mathbb Z)`),
@@ -558,11 +556,11 @@ const pairConnectingMap={...model('The connecting map for a disk and its boundar
 \]
 \[
 \begin{gathered}
-H^1(X)\to H^1(Y)\xrightarrow{\delta}H^2(X,Y),\\
-H^2(X,Y)\to H^2(X)\to H^2(Y),\\[4pt]
+H^n(X)\to H^n(Y)\xrightarrow{\delta}H^{n+1}(X,Y),\\
+H^{n+1}(X,Y)\to H^{n+1}(X)\to H^{n+1}(Y),\\[4pt]
 \delta[\alpha]=[d\widetilde\alpha].
 \end{gathered}
-\]`,r`Extend the boundary cocycle \(\alpha\) to a cochain \(\widetilde\alpha\) on the disk. Its coboundary vanishes on the circle, so it defines a relative class.`,r`The connecting map takes a generator of \(H^1(S^1;\mathbb Z)\) to a generator of \(H^2(D^2,S^1;\mathbb Z)\).`),
+\]`,r`Extend the boundary cocycle \(\alpha\) to a cochain \(\widetilde\alpha\) on \(M\). Its coboundary vanishes on \(\partial M\), so it defines a relative class.`,r`The long exact sequence of \((M,\partial M)\) measures which boundary cohomology classes extend across the manifold. They are exactly the classes in \(\ker\delta\).`),
  source:{url:'https://pi.math.cornell.edu/~hatcher/AT/ATch3.pdf#page=15',label:'Hatcher, Algebraic Topology, §3.1'}};
 const injectiveExample=model('Division lets homomorphisms extend',[
  b('A',r`\mathbb Z`),
