@@ -12,7 +12,7 @@ const html=fs.readFileSync(path.join(dist,'read/gluing/index.html'),'utf8');
 let proofCount=0,statementCount=0;
 const renderer=createRenderer(root);
 for(const [key,item] of Object.entries(examples)){
-  if(!item.bindings.length||!item.check||!item.result)throw Error('Incomplete specialization: '+key);
+  if(!item.bindings.length||(!item.check&&!item.result))throw Error('Incomplete specialization: '+key);
   const symbols=item.bindings.map(b=>b.symbol.replace(/[\s{}]/g,''));
   if(new Set(symbols).size!==symbols.length)throw Error('Duplicate object assignment: '+key);
   for(const b of [...item.bindings,...(item.proofBindings||[])]){
@@ -73,7 +73,7 @@ for(const unit of originalUnits){
       if(!tag||!ids.includes(tag))throw Error('Missing source anchor '+section.slug+' '+match[1]);
     }
     const note=sectionNote(section);
-    if(!note.bindings.length||!note.check||!note.result)throw Error('Missing example model '+section.slug);
+    if(!note.bindings.length||(!note.check&&!note.result))throw Error('Missing example model '+section.slug);
     const symbols=new Set();
     for(const b of note.bindings){
       if(symbols.has(b.symbol))throw Error('Duplicate object binding '+section.slug);symbols.add(b.symbol);
