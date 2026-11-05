@@ -26,7 +26,7 @@ export function buildSchemePath({root,dist,head,header,footer,matchingHTML}){
  for(const unit of [...manifest.units,...coreUnits,...selectedReadings]){
   const r=createRenderer(root,{sections:unit.sections,routes:unit.core?coreRoutes:undefined}),data={},sources={};let proofs=0,statements=0;
   const rich=s=>s.replace(/\\\[([\s\S]*?)\\\]/g,(_,t)=>r.math(t,true)).replace(/\\\(([\s\S]*?)\\\)/g,(_,t)=>r.math(t));
-  const sections=unit.sections.map(s=>{
+  const sections=unit.sections.map((s,index)=>{
    const blocks=r.section(s),sourceNotes=[];
    const content=blocks.map((b,bi)=>{
     const note=passageNote(s,b),key=note.scope==='statement'?s.slug+'-'+b.label:s.slug;
@@ -49,7 +49,7 @@ export function buildSchemePath({root,dist,head,header,footer,matchingHTML}){
     return `<section id="${id}" class="passage ${b.kind}" data-example="${key}" data-source-label="${esc(label)}" data-source-tag="${b.tag||s.tag}" aria-label="${esc(label)}">${html}</section>`;
    }).join('');
    sources[s.tag]=sourceRecord(root,s,manifest,sourceNotes);
-   const chapterHeading=s.chapterTitle&&s.chapter!==unit.sections[0].chapter
+   const chapterHeading=s.chapterTitle&&index>0&&s.chapter!==unit.sections[index-1].chapter
     ?`<p class="eyebrow">${esc(s.chapterTitle)}</p>`:'';
    return `<section class="source-section" id="${s.tag}" data-source-sha256="${s.sha256}"><header class="source-section-header">${chapterHeading}<h2>${s.number}. ${esc(s.title)}</h2></header>${content}</section>`;
   }).join('');

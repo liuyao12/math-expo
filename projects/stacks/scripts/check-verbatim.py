@@ -27,6 +27,7 @@ def words(s):
  s=unicodedata.normalize('NFKD',s)
  return re.findall(r'[A-Za-z0-9]+',''.join(c for c in s if not unicodedata.combining(c)))
 def source_prose(s):
+ s=s.replace(r'{\v C}','Č')
  s=re.sub(r'(?<!\\)%[^\n]*','',s)
  s=re.sub(r'^\\section\{[^\n]+\}\s*\\label\{[^}]+\}','',s)
  s=re.sub(r'\$\$[\s\S]*?\$\$',' ',s)

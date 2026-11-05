@@ -68,6 +68,7 @@ export function createRenderer(root, options={}) {
     tex=tex.replace(/\\ref\{([^}]+)\}/g,(_,label)=>hold(reference(label,chapter)));
     tex=tex.replace(/\\label\{([^}]+)\}/g,(_,label)=>hold(anchors('\\label{'+label+'}',chapter)));
     tex=tex.replace(/\\'\{?([A-Za-z])\}?/g,(_,letter)=>(letter+'\u0301').normalize('NFC'));
+    tex=tex.replaceAll('{\\v C}','Č');
     tex=escapeHTML(tex).replace(/\{\\(?:it|em) ([^{}]+)\}/g,'<em>$1</em>').replace(/\{\\bf ([^{}]+)\}/g,'<strong>$1</strong>');
     tex=tex.replace(/\\textit\{([^{}]+)\}/g,'<em>$1</em>').replace(/\\(?:noindent|medskip|smallskip|bigskip)\b/g,'').replace(/\\%/g,'%').replace(/\\&/g,'&amp;').replace(/\\ /g,' ').replaceAll('~',' ').replaceAll('``','“').replaceAll("''",'”').replaceAll('---','—').replaceAll('--','–').replace(/\s+/g,' ').trim();
     while(tex.includes(prefix))tex=tex.replace(tokenPattern,(_,i)=>tokens[+i]);return tex;
@@ -79,9 +80,17 @@ export function createRenderer(root, options={}) {
   }
   function body(tex,chapter){
     tex=tex.replace(/\\medskip\s*\\noindent/g,'\n\n');
-    let html='',cursor=0;const pattern=/\$\$|\\begin\{(enumerate|itemize|align\*|eqnarray\*|equation|history|reference|slogan)\}/g;let match;
+    let html='',cursor=0;const pattern=/\$\$|\\footnote\{|\\begin\{(enumerate|itemize|align\*|eqnarray\*|equation|history|reference|slogan)\}/g;let match;
     const prose=s=>s.split(/\n\s*\n/).map(p=>inline(p,chapter)).filter(Boolean).map(p=>'<p>'+p+'</p>').join('');
     while((match=pattern.exec(tex))){
+      if(match[0]==='\\footnote{'){
+        const [note,end]=braces(tex,pattern.lastIndex-1);
+        pattern.lastIndex=end;
+        if(!/\$\$|\\begin\{|\n\s*\n/.test(note))continue;
+        html+=prose(tex.slice(cursor,match.index))+'<div class="source-footnote">'+body(note,chapter)+'</div>';
+        cursor=end;
+        continue;
+      }
       html+=prose(tex.slice(cursor,match.index));
       if(match[0]==='$$'){
         const end=tex.indexOf('$$',pattern.lastIndex);if(end<0)throw Error('Unclosed display math');

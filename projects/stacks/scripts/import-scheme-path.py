@@ -87,6 +87,12 @@ for chapter in chapters:
     units.append(dict(slug=chapter['slug'],title=chapter['title'],number=chapter['number'],tag=chapter['tag'],subtitle='The Stacks Project — '+chapter['title'],support=chapter['slug'] in ['categories','homology','modules'],sections=unit))
 # Additional readings have their own scope and do not expand the foundation path.
 reading_specs=[
+    ('twists-and-genus','Twisting sheaves and the genus of a plane curve',
+     'Compute sheaf cohomology with affine charts, then use a negative twist to find the genus of a plane curve.',
+     ['constructions-section-invertible-on-proj',
+      'coherent-section-cech-quasi-coherent',
+      'coherent-section-cohomology-projective-space',
+      'curves-section-plane-curves']),
     ('projective-twists','Twisting sheaves and intersection multiplicity',
      'Follow the twists from the projective line to Cartier divisors and the intersection of a line with a conic.',
      ['constructions-section-invertible-on-proj',
@@ -103,6 +109,7 @@ for slug, title, deck, keys in reading_specs:
         (root/'upstream/sections'/(filename+'.tex')).write_text(s['text'])
         entry={k:v for k,v in s.items() if k!='text'}
         chapter=next(c for c in chapters if c['slug']==s['chapter'])
+        entry['title']=entry['title'].replace(r'{\v C}', 'Č')
         entry.update(slug=filename,chapterTitle=chapter['title'],sha256=hashlib.sha256(s['text'].encode()).hexdigest())
         entries.append(entry)
     chapter=next(c for c in chapters if c['slug']==entries[0]['chapter'])

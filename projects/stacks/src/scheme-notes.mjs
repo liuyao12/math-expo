@@ -231,8 +231,44 @@ const conicIntersection=model('Compute the intersection multiplicity by local le
  b(r`Z=\{\xi\}`,r`\{[1:0:0]\}`,'The sole point of the intersection.'),
  b('f_1',r`T_2/T_0`,'The local equation of the tangent line in the chart containing the point.')
 ],r`The curves meet properly because the intersection has dimension zero. In the conic local ring \(\mathcal O_{W,\xi}=k[z]_{(z)}\), the image of \(f_1\) is \(z^2\). The quotient has a filtration with successive factors \(kz\) and \(k\), both of length one.`,r`The local length formula gives \(e(X,V\cdot W,Z)=2\). This agrees with the degree of the divisor cut out by the section on the conic.`);
-Object.assign(models,{tangentDivisor,conicDegree,conicIntersection});
+
+const cechLine=model('Two affine charts and their mismatch',[
+ projectiveLine,
+ b(r`\mathcal U`,r`\{U_0,U_1\}`,r`The two standard affine charts, with coordinates \(z=T_1/T_0\) and \(w=1/z\).`),
+ b(r`\mathcal F`,r`\mathcal O_X(-2)`,r`The twist with local generators \(e_0=T_0^{-2}\) and \(e_1=z^{-2}e_0\).`),
+ b(r`\Gamma(U_0\cap U_1,\mathcal F)`,r`k[z,z^{-1}]e_0`,'Sections on the overlap, written in the first generator.')
+],r`In the ordered Čech complex the difference map sends chart coefficients \((a(z),b(w))\) to \(z^{-2}b(1/z)-a(z)\). Its kernel consists of chart sections that glue. Its cokernel measures which overlap sections cannot be written as differences of chart sections.`,r`Terms with exponent at least zero come from the first chart. Terms of exponent at most minus two come from the second. Only \(z^{-1}e_0\) survives in \(H^1(X,\mathcal F)\), which is one-dimensional over \(k\). The affine charts and their affine overlap let the comparison lemma identify this Čech computation with sheaf cohomology.`);
+const cechAffine=model('Split an overlap section on an affine line',[
+ b('U',r`\operatorname{Spec}(k[z])`,'The affine line.'),
+ b(r`\mathcal U`,r`\{D(z),D(1-z)\}`,r`These opens cover \(U\) because \(z+(1-z)=1\).`),
+ b(r`\mathcal F`,r`\mathcal O_U`,'The structure sheaf.')
+],r`An overlap section such as \(1/(z(1-z))\) splits as \(1/z+1/(1-z)\). The two summands extend to their respective charts, so the section is a Čech coboundary after choosing signs.`,r`The lemma shows that every overlap section splits in this way into chart contributions. The first Čech cohomology is zero for this affine cover.`);
+const cechSphere={...model('Split a Laurent series on the Riemann sphere',[
+ b('X',r`\mathbb P^1(\mathbb C)`,'The Riemann sphere with its analytic topology.'),
+ b(r`\mathcal U`,r`\{\mathbb C_z,\mathbb C_w\}`,r`The two complex charts with \(w=1/z\) on the punctured-plane overlap.`),
+ b(r`\mathcal F`,r`\mathcal O^{\mathrm{an}}_X(-2)`,r`The sheaf of holomorphic sections of the line bundle glued by \(e_1=z^{-2}e_0\).`),
+ b('h',r`\sum_{j\in\mathbb Z}c_jz^j`,r`An arbitrary holomorphic coefficient on \(\mathbb C^\times\), written as a Laurent series.`)
+],r`The nonnegative powers give an entire function \(a(z)\). The powers of exponent at most minus two can be written \(z^{-2}b(1/z)\) for an entire function \(b(w)\). These parts are differences of chart sections, so only \(c_{-1}z^{-1}\) survives. For the untwisted analytic sheaf \(\mathcal O_X^{\mathrm{an}}\), the factor is \(1\), and the negative and nonnegative powers account for the whole series.`,r`Thus the untwisted sheaf has \(H^1=0\), while \(\mathcal O_X^{\mathrm{an}}(-2)\) has a one-dimensional \(H^1\) detected by the coefficient of \(z^{-1}\). Both charts and the overlap are Stein, so Cartan’s Theorem B makes this cover acyclic for the holomorphic line bundle and the Čech calculation computes sheaf cohomology.`,r`This is the analytic analogue of the affine-cover calculation. The overlap functions are convergent Laurent series here, while the algebraic example uses Laurent polynomials.`),
+ source:{url:'https://www.numdam.org/item/SB_1951-1954__2__213_0/',label:'Serre’s Bourbaki exposé on Cartan’s Theorem B'}};
+const cechPlane=model('Three charts leave one class for the negative cubic twist',[
+ b('R',r`k`,'Work over a field.'),
+ b('n,d',r`2,-3`,'The dimension of the ambient projective space and the twist.'),
+ b('X',r`\mathbb P^2_k`,'The projective plane with its three standard affine charts.'),
+ b(r`\mathcal F`,r`\mathcal O_X(-3)`,'The sheaf whose cohomology will enter the genus calculation.'),
+ b(r`\eta`,r`\frac{1}{T_0T_1T_2}`,'A degree minus three section on the triple overlap.')
+],r`A double overlap inverts only two of the coordinates. A Laurent monomial with all three exponents negative therefore cannot come from a double overlap. At total degree minus three the only such exponent triple is \((-1,-1,-1)\).`,r`The class of \(\eta\) spans \(H^2(X,\mathcal F)\). This is the three-chart version of the missing Laurent term on the projective line.`);
+const genusCubic=model('The negative twist supplies the genus of a cubic',[
+ b('k',r`\mathbb C`,'Use the complex numbers as the base field.'),
+ b('S',r`k[T_0,T_1,T_2]`,'The standard graded coordinate ring of the projective plane.'),
+ b('F',r`T_0^3+T_1^3+T_2^3`,'The homogeneous equation of the smooth Fermat cubic.'),
+ b('d',r`3`,'The degree of the defining equation.'),
+ b('Z',r`V_+(F)`,'The projective curve cut out by the equation.')
+],r`Multiplication by \(F\) identifies the ideal sheaf with \(\mathcal O_{\mathbb P^2_k}(-3)\). The long exact sequence identifies \(H^1(Z,\mathcal O_Z)\) with \(H^2(\mathbb P^2_k,\mathcal O(-3))\), since \(H^1(\mathbb P^2_k,\mathcal O)\) and \(H^2(\mathbb P^2_k,\mathcal O)\) vanish.`,r`The preceding Čech computation gives the class of \(1/(T_0T_1T_2)\) in the latter group, so the cubic has genus one. For general degree \(d\), count the monomials \(T_0^{-a_0}T_1^{-a_1}T_2^{-a_2}\) with \(a_i\geq 1\) and \(a_0+a_1+a_2=d\). Their number is \((d-1)(d-2)/2\).`);
+Object.assign(models,{tangentDivisor,conicDegree,conicIntersection,cechLine,cechPlane,genusCubic});
 const groups={
+ cechLine:['coherent-cech-quasi-coherent'],
+ cechPlane:['coherent-cohomology-projective-space'],
+ genusCubic:['curves-plane-curves'],
  tangentDivisor:['divisors-effective-Cartier-invertible'],
  conicDegree:['varieties-divisors-curves'],
  conicIntersection:['intersection-computing-intersection-multiplicities'],
@@ -333,6 +369,14 @@ export function passageNote(section,block){
   const example=examples[block.label];
   if(example)return {...example,scope:'statement'};
  }
+ if(section.slug==='coherent-cech-quasi-coherent'&&block.label==='lemma-cech-cohomology-quasi-coherent-trivial')
+  return {...cechAffine,scope:'statement'};
+ if(section.slug==='coherent-cech-quasi-coherent'&&block.label==='lemma-cech-cohomology-quasi-coherent')
+  return {...cechLine,scope:'statement',examples:[cechSphere]};
+ if(section.slug==='coherent-cohomology-projective-space'&&block.label==='lemma-cohomology-projective-space-over-ring')
+  return {...cechPlane,scope:'statement',examples:[cechLine]};
+ if(section.slug==='curves-plane-curves'&&block.label==='lemma-genus-plane-curve')
+  return {...genusCubic,scope:'statement'};
  if(section.slug==='divisors-effective-Cartier-invertible'&&
     ['definition-zero-scheme-s','lemma-zero-scheme','lemma-characterize-OD'].includes(block.label))return {...tangentDivisor,scope:'statement'};
  if(section.slug==='varieties-divisors-curves'&&block.label==='lemma-degree-effective-Cartier-divisor')return {...conicDegree,scope:'statement'};

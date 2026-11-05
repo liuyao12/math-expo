@@ -3848,5 +3848,230 @@
     "tag": "0BEI",
     "number": "33.33",
     "kind": "section"
+  },
+  "algebra-lemma-relative-global-complete-intersection-smooth": {
+    "tag": "00TE",
+    "number": "10.137.15",
+    "kind": "lemma"
+  },
+  "algebra-section-smooth": {
+    "tag": "00T1",
+    "number": "10.137",
+    "kind": "section"
+  },
+  "coherent-equation-extended": {
+    "tag": "01XA",
+    "number": "30.2.1.1",
+    "kind": "equation"
+  },
+  "coherent-equation-identify": {
+    "tag": "01XU",
+    "number": "30.8.1.1",
+    "kind": "equation"
+  },
+  "coherent-lemma-affine-diagonal": {
+    "tag": "0BDX",
+    "number": "30.2.5",
+    "kind": "lemma"
+  },
+  "coherent-lemma-cech-cohomology-quasi-coherent": {
+    "tag": "01XD",
+    "number": "30.2.6",
+    "kind": "lemma"
+  },
+  "coherent-lemma-cech-cohomology-quasi-coherent-trivial": {
+    "tag": "01X9",
+    "number": "30.2.1",
+    "kind": "lemma"
+  },
+  "coherent-lemma-cohomology-projective-bundle": {
+    "tag": "01XX",
+    "number": "30.8.4",
+    "kind": "lemma"
+  },
+  "coherent-lemma-cohomology-projective-space-over-base": {
+    "tag": "01XW",
+    "number": "30.8.3",
+    "kind": "lemma"
+  },
+  "coherent-lemma-cohomology-projective-space-over-ring": {
+    "tag": "01XT",
+    "number": "30.8.1",
+    "kind": "lemma"
+  },
+  "coherent-lemma-identify-functorially": {
+    "tag": "01XV",
+    "number": "30.8.2",
+    "kind": "lemma"
+  },
+  "coherent-lemma-quasi-coherent-affine-cohomology-zero": {
+    "tag": "01XB",
+    "number": "30.2.2",
+    "kind": "lemma"
+  },
+  "coherent-lemma-relative-affine-vanishing": {
+    "tag": "01XC",
+    "number": "30.2.3",
+    "kind": "lemma"
+  },
+  "coherent-section-cech-quasi-coherent": {
+    "tag": "01X8",
+    "number": "30.2",
+    "kind": "section"
+  },
+  "coherent-section-cohomology-projective-space": {
+    "tag": "01XS",
+    "number": "30.8",
+    "kind": "section"
+  },
+  "cohomology-lemma-alternating-usual": {
+    "tag": "01FM",
+    "number": "20.23.6",
+    "kind": "lemma"
+  },
+  "cohomology-lemma-apply-Leray": {
+    "tag": "01F4",
+    "number": "20.13.6",
+    "kind": "lemma"
+  },
+  "cohomology-lemma-cech-spectral-sequence-application": {
+    "tag": "01ET",
+    "number": "20.11.6",
+    "kind": "lemma"
+  },
+  "cohomology-lemma-cech-vanish-basis": {
+    "tag": "01EW",
+    "number": "20.11.9",
+    "kind": "lemma"
+  },
+  "cohomology-lemma-describe-higher-direct-images": {
+    "tag": "01E4",
+    "number": "20.7.3",
+    "kind": "lemma"
+  },
+  "cohomology-lemma-functoriality-cech": {
+    "tag": "01FD",
+    "number": "20.15.1",
+    "kind": "lemma"
+  },
+  "cohomology-lemma-homology-complex": {
+    "tag": "01EM",
+    "number": "20.10.4",
+    "kind": "lemma"
+  },
+  "cohomology-lemma-ordered-alternating": {
+    "tag": "01FJ",
+    "number": "20.23.3",
+    "kind": "lemma"
+  },
+  "cohomology-section-alternating-cech": {
+    "tag": "01FG",
+    "number": "20.23",
+    "kind": "section"
+  },
+  "constructions-definition-projective-space": {
+    "tag": "01NF",
+    "number": "27.13.2",
+    "kind": "definition"
+  },
+  "constructions-lemma-projective-space-bundle": {
+    "tag": "01OE",
+    "number": "27.21.5",
+    "kind": "lemma"
+  },
+  "constructions-section-proj": {
+    "tag": "01M3",
+    "number": "27.8",
+    "kind": "section"
+  },
+  "curves-lemma-equation-plane-curve": {
+    "tag": "0BYB",
+    "number": "53.9.1",
+    "kind": "lemma"
+  },
+  "curves-lemma-genus-plane-curve": {
+    "tag": "0BYD",
+    "number": "53.9.3",
+    "kind": "lemma"
+  },
+  "curves-lemma-plane-curve": {
+    "tag": "0BYC",
+    "number": "53.9.2",
+    "kind": "lemma"
+  },
+  "curves-lemma-smooth-plane-curve-point-over-separable": {
+    "tag": "0CCU",
+    "number": "53.9.4",
+    "kind": "lemma"
+  },
+  "curves-section-plane-curves": {
+    "tag": "0BYA",
+    "number": "53.9",
+    "kind": "section"
+  },
+  "derived-lemma-two-ss-complex-functor": {
+    "tag": "015J",
+    "number": "13.21.3",
+    "kind": "lemma"
+  },
+  "divisors-example-closed-subscheme-of-proj": {
+    "tag": "0BXK",
+    "number": "31.32.2",
+    "kind": "example"
+  },
+  "divisors-lemma-codim-1-part": {
+    "tag": "0AGB",
+    "number": "31.16.8",
+    "kind": "lemma"
+  },
+  "divisors-lemma-codimension-1-is-effective-Cartier": {
+    "tag": "0BXH",
+    "number": "31.16.9",
+    "kind": "lemma"
+  },
+  "divisors-lemma-equation-codim-1-in-projective-space": {
+    "tag": "0BXL",
+    "number": "31.32.3",
+    "kind": "lemma"
+  },
+  "divisors-lemma-noetherian-dim-1-CM-no-embedded-points": {
+    "tag": "0BXG",
+    "number": "31.4.4",
+    "kind": "lemma"
+  },
+  "modules-section-locally-free": {
+    "tag": "01C5",
+    "number": "17.14",
+    "kind": "section"
+  },
+  "more-algebra-lemma-homotopy-koszul-abstract": {
+    "tag": "0626",
+    "number": "15.29.5",
+    "kind": "lemma"
+  },
+  "morphisms-definition-affine": {
+    "tag": "01S6",
+    "number": "29.11.1",
+    "kind": "definition"
+  },
+  "morphisms-lemma-characterize-affine": {
+    "tag": "01S8",
+    "number": "29.11.3",
+    "kind": "lemma"
+  },
+  "morphisms-section-universally-bounded": {
+    "tag": "03J3",
+    "number": "29.58",
+    "kind": "section"
+  },
+  "schemes-lemma-characterize-separated": {
+    "tag": "01KP",
+    "number": "26.21.7",
+    "kind": "lemma"
+  },
+  "varieties-lemma-equation-codim-1-in-projective-space": {
+    "tag": "0BXU",
+    "number": "33.34.4",
+    "kind": "lemma"
   }
 }

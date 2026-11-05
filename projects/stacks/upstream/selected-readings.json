@@ -1,5 +1,66 @@
 [
   {
+    "slug": "twists-and-genus",
+    "readingTitle": "Twisting sheaves and the genus of a plane curve",
+    "deck": "Compute sheaf cohomology with affine charts, then use a negative twist to find the genus of a plane curve.",
+    "title": "Constructions of Schemes",
+    "number": 27,
+    "sections": [
+      {
+        "chapter": "constructions",
+        "label": "section-invertible-on-proj",
+        "title": "Invertible sheaves on Proj",
+        "tag": "01MM",
+        "number": "27.10",
+        "kind": "section",
+        "source_start_line": 1687,
+        "source_end_line": 2040,
+        "slug": "constructions-invertible-on-proj",
+        "chapterTitle": "Constructions of Schemes",
+        "sha256": "b94f42ec3263bce02e99435e34fe9d8772d7cab80913f8888da541721cb14f9e"
+      },
+      {
+        "chapter": "coherent",
+        "label": "section-cech-quasi-coherent",
+        "title": "\u010cech cohomology of quasi-coherent sheaves",
+        "tag": "01X8",
+        "number": "30.2",
+        "kind": "section",
+        "source_start_line": 32,
+        "source_end_line": 271,
+        "slug": "coherent-cech-quasi-coherent",
+        "chapterTitle": "Cohomology of Schemes",
+        "sha256": "46112bd120c40fbaed271fc8b6e890bb088e9acb8e288cf20b4c69ba60aeccaf"
+      },
+      {
+        "chapter": "coherent",
+        "label": "section-cohomology-projective-space",
+        "title": "Cohomology of projective space",
+        "tag": "01XS",
+        "number": "30.8",
+        "kind": "section",
+        "source_start_line": 1557,
+        "source_end_line": 2212,
+        "slug": "coherent-cohomology-projective-space",
+        "chapterTitle": "Cohomology of Schemes",
+        "sha256": "8a3189cd4bebc6125f2a4ed9b830ed413d3c7e46db3cf080ca8331e3986f677a"
+      },
+      {
+        "chapter": "curves",
+        "label": "section-plane-curves",
+        "title": "Plane curves",
+        "tag": "0BYA",
+        "number": "53.9",
+        "kind": "section",
+        "source_start_line": 1565,
+        "source_end_line": 1773,
+        "slug": "curves-plane-curves",
+        "chapterTitle": "Algebraic Curves",
+        "sha256": "a742080a20d9a9f3da762ee03a247c43dce658719a669bf7ed6ff313ac7ff11c"
+      }
+    ]
+  },
+  {
     "slug": "projective-twists",
     "readingTitle": "Twisting sheaves and intersection multiplicity",
     "deck": "Follow the twists from the projective line to Cartier divisors and the intersection of a line with a conic.",

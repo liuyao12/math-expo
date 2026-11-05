@@ -1,0 +1,240 @@
+\section{{\v C}ech cohomology of quasi-coherent sheaves}
+\label{section-cech-quasi-coherent}
+
+\noindent
+Let $X$ be a scheme.
+Let $U \subset X$ be an affine open.
+Recall that a {\it standard open covering} of $U$ is a covering
+of the form $\mathcal{U} : U = \bigcup_{i = 1}^n D(f_i)$
+where $f_1, \ldots, f_n \in \Gamma(U, \mathcal{O}_X)$ generate
+the unit ideal, see
+Schemes, Definition \ref{schemes-definition-standard-covering}.
+
+\begin{lemma}
+\label{lemma-cech-cohomology-quasi-coherent-trivial}
+Let $X$ be a scheme.
+Let $\mathcal{F}$ be a quasi-coherent $\mathcal{O}_X$-module.
+Let $\mathcal{U} : U = \bigcup_{i = 1}^n D(f_i)$ be a standard
+open covering of an affine open of $X$.
+Then $\check{H}^p(\mathcal{U}, \mathcal{F}) = 0$ for
+all $p > 0$.
+\end{lemma}
+
+\begin{proof}
+Write $U = \Spec(A)$ for some ring $A$.
+In other words, $f_1, \ldots, f_n$ are elements of $A$
+which generate the unit ideal of $A$.
+Write $\mathcal{F}|_U = \widetilde{M}$ for some $A$-module $M$.
+Clearly the {\v C}ech complex
+$\check{\mathcal{C}}^\bullet(\mathcal{U}, \mathcal{F})$
+is identified with the complex
+$$
+\prod\nolimits_{i_0} M_{f_{i_0}} \to
+\prod\nolimits_{i_0i_1} M_{f_{i_0}f_{i_1}} \to
+\prod\nolimits_{i_0i_1i_2} M_{f_{i_0}f_{i_1}f_{i_2}} \to
+\ldots
+$$
+We are asked to show that the extended complex
+\begin{equation}
+\label{equation-extended}
+0 \to
+M \to
+\prod\nolimits_{i_0} M_{f_{i_0}} \to
+\prod\nolimits_{i_0i_1} M_{f_{i_0}f_{i_1}} \to
+\prod\nolimits_{i_0i_1i_2} M_{f_{i_0}f_{i_1}f_{i_2}} \to
+\ldots
+\end{equation}
+(whose truncation we have studied in
+Algebra, Lemma \ref{algebra-lemma-cover-module}) is exact.
+It suffices to show that (\ref{equation-extended})
+is exact after localizing at a prime $\mathfrak p$, see
+Algebra, Lemma \ref{algebra-lemma-characterize-zero-local}.
+In fact we will show that the extended complex localized
+at $\mathfrak p$ is homotopic to zero.
+
+\medskip\noindent
+There exists an index $i$ such that $f_i \not \in \mathfrak p$.
+Choose and fix such an element $i_{\text{fix}}$. Note that
+$M_{f_{i_{\text{fix}}}, \mathfrak p} = M_{\mathfrak p}$. Similarly
+for a localization at a product $f_{i_0} \ldots f_{i_p}$ and $\mathfrak p$
+we can drop any $f_{i_j}$ for which $i_j = i_{\text{fix}}$.
+Let us define a homotopy
+$$
+h :
+\prod\nolimits_{i_0 \ldots i_{p + 1}}
+M_{f_{i_0} \ldots f_{i_{p + 1}}, \mathfrak p}
+\longrightarrow
+\prod\nolimits_{i_0 \ldots i_p}
+M_{f_{i_0} \ldots f_{i_p}, \mathfrak p}
+$$
+by the rule
+$$
+h(s)_{i_0 \ldots i_p} = s_{i_{\text{fix}} i_0 \ldots i_p}
+$$
+(This is ``dual'' to the homotopy in the proof of
+Cohomology, Lemma \ref{cohomology-lemma-homology-complex}.)
+In other words, $h : \prod_{i_0} M_{f_{i_0}, \mathfrak p} \to M_\mathfrak p$
+is projection onto the factor
+$M_{f_{i_{\text{fix}}}, \mathfrak p} = M_{\mathfrak p}$ and in general
+the map $h$ equal projection onto the factors
+$M_{f_{i_{\text{fix}}} f_{i_1} \ldots f_{i_{p + 1}}, \mathfrak p}
+= M_{f_{i_1} \ldots f_{i_{p + 1}}, \mathfrak p}$. We compute
+\begin{align*}
+(dh + hd)(s)_{i_0 \ldots i_p}
+& =
+\sum\nolimits_{j = 0}^p
+(-1)^j
+h(s)_{i_0 \ldots \hat i_j \ldots i_p}
++
+d(s)_{i_{\text{fix}} i_0 \ldots i_p}\\
+& =
+\sum\nolimits_{j = 0}^p
+(-1)^j
+s_{i_{\text{fix}} i_0 \ldots \hat i_j \ldots i_p}
++
+s_{i_0 \ldots i_p}
++
+\sum\nolimits_{j = 0}^p
+(-1)^{j + 1}
+s_{i_{\text{fix}} i_0 \ldots \hat i_j \ldots i_p} \\
+& =
+s_{i_0 \ldots i_p}
+\end{align*}
+This proves the identity map is homotopic to zero as desired.
+\end{proof}
+
+\noindent
+The following lemma says in particular that for any affine scheme
+$X$ and any quasi-coherent sheaf $\mathcal{F}$ on $X$ we have
+$$
+H^p(X, \mathcal{F}) = 0
+$$
+for all $p > 0$.
+
+\begin{lemma}
+\label{lemma-quasi-coherent-affine-cohomology-zero}
+\begin{slogan}
+Serre vanishing: Higher cohomology vanishes on affine schemes
+for quasi-coherent modules.
+\end{slogan}
+Let $X$ be a scheme.
+Let $\mathcal{F}$ be a quasi-coherent $\mathcal{O}_X$-module.
+For any affine open $U \subset X$ we have
+$H^p(U, \mathcal{F}) = 0$ for all $p > 0$.
+\end{lemma}
+
+\begin{proof}
+We are going to apply
+Cohomology, Lemma \ref{cohomology-lemma-cech-vanish-basis}.
+As our basis $\mathcal{B}$ for the topology of $X$ we are going to use
+the affine opens of $X$.
+As our set $\text{Cov}$ of open coverings we are going to use the standard
+open coverings of affine opens of $X$.
+Next we check that conditions (1), (2) and (3) of
+Cohomology, Lemma \ref{cohomology-lemma-cech-vanish-basis}
+hold. Note that the intersection of standard opens in an affine is
+another standard open. Hence property (1) holds.
+The coverings form a cofinal system of open coverings of any element
+of $\mathcal{B}$, see
+Schemes, Lemma \ref{schemes-lemma-standard-open}.
+Hence (2) holds.
+Finally, condition (3) of the lemma follows from
+Lemma \ref{lemma-cech-cohomology-quasi-coherent-trivial}.
+\end{proof}
+
+\noindent
+Here is a relative version of the vanishing of cohomology of quasi-coherent
+sheaves on affines.
+
+\begin{lemma}
+\label{lemma-relative-affine-vanishing}
+Let $f : X \to S$ be a morphism of schemes.
+Let $\mathcal{F}$ be a quasi-coherent $\mathcal{O}_X$-module.
+If $f$ is affine then $R^if_*\mathcal{F} = 0$ for all $i > 0$.
+\end{lemma}
+
+\begin{proof}
+According to
+Cohomology, Lemma \ref{cohomology-lemma-describe-higher-direct-images}
+the sheaf
+$R^if_*\mathcal{F}$ is the sheaf associated to the presheaf
+$V \mapsto H^i(f^{-1}(V), \mathcal{F}|_{f^{-1}(V)})$.
+By assumption, whenever $V$ is affine we have that $f^{-1}(V)$ is
+affine, see Morphisms, Definition \ref{morphisms-definition-affine}.
+By Lemma \ref{lemma-quasi-coherent-affine-cohomology-zero} we conclude that
+$H^i(f^{-1}(V), \mathcal{F}|_{f^{-1}(V)}) = 0$
+whenever $V$ is affine. Since $S$ has a basis consisting of affine
+opens we win.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-relative-affine-cohomology}
+Let $f : X \to S$ be an affine morphism of schemes.
+Let $\mathcal{F}$ be a quasi-coherent $\mathcal{O}_X$-module.
+Then $H^i(X, \mathcal{F}) = H^i(S, f_*\mathcal{F})$ for all $i \geq 0$.
+\end{lemma}
+
+\begin{proof}
+Follows from Lemma \ref{lemma-relative-affine-vanishing}
+and the Leray spectral sequence. See
+Cohomology, Lemma \ref{cohomology-lemma-apply-Leray}.
+\end{proof}
+
+\noindent
+The following two lemmas explain when {\v C}ech cohomology
+can be used to compute cohomology of quasi-coherent modules.
+
+\begin{lemma}
+\label{lemma-affine-diagonal}
+Let $X$ be a scheme. The following are equivalent
+\begin{enumerate}
+\item $X$ has affine diagonal $\Delta : X \to X \times X$,
+\item for $U, V \subset X$ affine open, the intersection
+$U \cap V$ is affine, and
+\item there exists an open covering $\mathcal{U} : X = \bigcup_{i \in I} U_i$
+such that $U_{i_0 \ldots i_p}$ is affine open for all $p \ge 0$ and all
+$i_0, \ldots, i_p \in I$.
+\end{enumerate}
+In particular this holds if $X$ is separated.
+\end{lemma}
+
+\begin{proof}
+Assume $X$ has affine diagonal. Let $U, V \subset X$ be affine opens.
+Then $U \cap V = \Delta^{-1}(U \times V)$ is affine. Thus (2) holds.
+It is immediate that (2) implies (3). Conversely, if there is a
+covering of $X$ as in (3), then $X \times X = \bigcup U_i \times U_{i'}$
+is an affine open covering, and we see that
+$\Delta^{-1}(U_i \times U_{i'}) = U_i \cap U_{i'}$
+is affine. Then $\Delta$ is an affine morphism by
+Morphisms, Lemma \ref{morphisms-lemma-characterize-affine}.
+The final assertion follows from Schemes, Lemma
+\ref{schemes-lemma-characterize-separated}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-cech-cohomology-quasi-coherent}
+Let $X$ be a scheme.
+Let $\mathcal{U} : X = \bigcup_{i \in I} U_i$ be an open covering such that
+$U_{i_0 \ldots i_p}$ is affine open for all $p \ge 0$ and all
+$i_0, \ldots, i_p \in I$.
+In this case for any quasi-coherent sheaf $\mathcal{F}$ we have
+$$
+\check{H}^p(\mathcal{U}, \mathcal{F}) = H^p(X, \mathcal{F})
+$$
+as $\Gamma(X, \mathcal{O}_X)$-modules for all $p$.
+\end{lemma}
+
+\begin{proof}
+In view of
+Lemma \ref{lemma-quasi-coherent-affine-cohomology-zero}
+this is a special case of
+Cohomology, Lemma
+\ref{cohomology-lemma-cech-spectral-sequence-application}.
+\end{proof}
+
+
+
+
+
+
+

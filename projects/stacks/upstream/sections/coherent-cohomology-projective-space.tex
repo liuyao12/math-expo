@@ -1,0 +1,656 @@
+\section{Cohomology of projective space}
+\label{section-cohomology-projective-space}
+
+\noindent
+In this section we compute the cohomology of the twists of the
+structure sheaf on $\mathbf{P}^n_S$ over a scheme $S$.
+Recall that $\mathbf{P}^n_S$ was defined as the fibre product
+$
+\mathbf{P}^n_S = S \times_{\Spec(\mathbf{Z})} \mathbf{P}^n_{\mathbf{Z}}
+$
+in Constructions, Definition \ref{constructions-definition-projective-space}.
+It was shown to be equal to
+$$
+\mathbf{P}^n_S = \underline{\text{Proj}}_S(\mathcal{O}_S[T_0, \ldots, T_n])
+$$
+in Constructions, Lemma \ref{constructions-lemma-projective-space-bundle}.
+In particular, projective space is a particular case of a projective bundle.
+If $S = \Spec(R)$ is affine then we have
+$$
+\mathbf{P}^n_S = \mathbf{P}^n_R = \text{Proj}(R[T_0, \ldots, T_n]).
+$$
+All these identifications are compatible and compatible with the constructions
+of the twisted structure sheaves $\mathcal{O}_{\mathbf{P}^n_S}(d)$.
+
+\medskip\noindent
+Before we state the result we need some notation.
+Let $R$ be a ring.
+Recall that $R[T_0, \ldots, T_n]$ is a graded
+$R$-algebra where each $T_i$ is homogeneous of degree $1$.
+Denote $(R[T_0, \ldots, T_n])_d$ the degree $d$ summand.
+It is a finite free $R$-module of rank $\binom{n + d}{d}$
+when $d \geq 0$ and zero else.
+It has a basis consisting of monomials $T_0^{e_0} \ldots T_n^{e_n}$
+with $\sum e_i = d$. We will also use the following notation:
+$R[\frac{1}{T_0}, \ldots, \frac{1}{T_n}]$ denotes the $\mathbf{Z}$-graded
+ring with $\frac{1}{T_i}$ in degree $-1$. In particular the
+$\mathbf{Z}$-graded $R[\frac{1}{T_0}, \ldots, \frac{1}{T_n}]$ module
+$$
+\frac{1}{T_0 \ldots T_n} R[\frac{1}{T_0}, \ldots, \frac{1}{T_n}]
+$$
+which shows up in the statement below is zero in degrees
+$\geq -n$, is free on the generator $\frac{1}{T_0 \ldots T_n}$
+in degree $-n - 1$ and is free of rank $(-1)^n\binom{n + d}{d}$ for
+$d \leq -n - 1$.
+
+\begin{lemma}
+\label{lemma-cohomology-projective-space-over-ring}
+\begin{reference}
+\cite[III Proposition 2.1.12]{EGA}
+\end{reference}
+Let $R$ be a ring.
+Let $n \geq 0$ be an integer.
+We have
+$$
+H^q(\mathbf{P}^n, \mathcal{O}_{\mathbf{P}^n_R}(d)) =
+\left\{
+\begin{matrix}
+(R[T_0, \ldots, T_n])_d & \text{if} & q = 0,\ d \geq 0 \\
+\left(\frac{1}{T_0 \ldots T_n} R[\frac{1}{T_0}, \ldots, \frac{1}{T_n}]\right)_d
+& \text{if} & q = n,\ d < 0 \\
+0 & \text{if} & q, n, d\text{ not as above}
+\end{matrix}
+\right.
+$$
+as $R$-modules.
+\end{lemma}
+
+\begin{proof}
+We will use the standard affine open covering
+$$
+\mathcal{U} : \mathbf{P}^n_R = \bigcup\nolimits_{i = 0}^n D_{+}(T_i)
+$$
+to compute the cohomology using the {\v C}ech complex.
+This is permissible by Lemma \ref{lemma-cech-cohomology-quasi-coherent}
+since any intersection of finitely many affine $D_{+}(T_i)$ is also a
+standard affine open (see
+Constructions, Section \ref{constructions-section-proj}).
+In fact, we can use the alternating or ordered {\v C}ech complex according to
+Cohomology, Lemmas \ref{cohomology-lemma-ordered-alternating} and
+\ref{cohomology-lemma-alternating-usual}.
+
+\medskip\noindent
+The ordering we will use on $\{0, \ldots, n\}$ is the usual one.
+Hence the complex we are looking at has terms
+$$
+\check{\mathcal{C}}_{ord}^p(\mathcal{U}, \mathcal{O}_{\mathbf{P}_R}(d))
+=
+\bigoplus\nolimits_{i_0 < \ldots < i_p}
+(R[T_0, \ldots, T_n, \frac{1}{T_{i_0} \ldots T_{i_p}}])_d
+$$
+Moreover, the maps are given by the usual formula
+$$
+d(s)_{i_0 \ldots i_{p + 1}} =
+\sum\nolimits_{j = 0}^{p + 1} (-1)^j s_{i_0 \ldots \hat i_j \ldots i_{p + 1}}
+$$
+see Cohomology, Section \ref{cohomology-section-alternating-cech}.
+Note that each term of this complex has a natural
+$\mathbf{Z}^{n + 1}$-grading. Namely, we get this by declaring a monomial
+$T_0^{e_0} \ldots T_n^{e_n}$ to be homogeneous with weight
+$(e_0, \ldots, e_n) \in \mathbf{Z}^{n + 1}$. It is clear that the differential
+given above respects the grading. In a formula we have
+$$
+\check{\mathcal{C}}_{ord}^\bullet(\mathcal{U}, \mathcal{O}_{\mathbf{P}_R}(d))
+=
+\bigoplus\nolimits_{\vec{e} \in \mathbf{Z}^{n + 1}}
+\check{\mathcal{C}}^\bullet(\vec{e})
+$$
+where not all summands on the right hand side occur (see below).
+Hence in order to compute the cohomology
+modules of the complex it suffices to compute the cohomology of the graded
+pieces and take the direct sum at the end.
+
+\medskip\noindent
+Fix $\vec{e} = (e_0, \ldots, e_n) \in \mathbf{Z}^{n + 1}$. In order for this
+weight to occur in the complex above we need to assume
+$e_0 + \ldots + e_n = d$ (if not then it occurs for a different twist of
+the structure sheaf of course). Assuming this, set
+$$
+NEG(\vec{e}) = \{i \in \{0, \ldots, n\} \mid e_i < 0\}.
+$$
+With this notation the weight $\vec{e}$ summand
+$\check{\mathcal{C}}^\bullet(\vec{e})$ of the {\v C}ech complex above has
+the following terms
+$$
+\check{\mathcal{C}}^p(\vec{e})
+=
+\bigoplus\nolimits_{i_0 < \ldots < i_p,
+\ NEG(\vec{e}) \subset \{i_0, \ldots, i_p\}}
+R \cdot T_0^{e_0} \ldots T_n^{e_n}
+$$
+In other words, the terms corresponding to $i_0 < \ldots < i_p$ such
+that $NEG(\vec{e})$ is not contained in $\{i_0 \ldots i_p\}$ are zero.
+The differential of the complex $\check{\mathcal{C}}^\bullet(\vec{e})$
+is still given by the exact same formula as above.
+
+\medskip\noindent
+Suppose that $NEG(\vec{e}) = \{0, \ldots, n\}$, i.e., that all
+exponents $e_i$ are negative.
+In this case the complex $\check{\mathcal{C}}^\bullet(\vec{e})$ has
+only one term, namely $\check{\mathcal{C}}^n(\vec{e}) =
+R \cdot \frac{1}{T_0^{-e_0} \ldots T_n^{-e_n}}$. Hence in this
+case
+$$
+H^q(\check{\mathcal{C}}^\bullet(\vec{e})) =
+\left\{
+\begin{matrix}
+R \cdot \frac{1}{T_0^{-e_0} \ldots T_n^{-e_n}} & \text{if} & q = n \\
+0 & \text{if} & \text{else}
+\end{matrix}
+\right.
+$$
+The direct sum of all of these terms clearly gives the value
+$$
+\left(\frac{1}{T_0 \ldots T_n} R[\frac{1}{T_0}, \ldots, \frac{1}{T_n}]\right)_d
+$$
+in degree $n$ as stated in the lemma. Moreover these terms do not contribute
+to cohomology in other degrees (also in accordance with the statement of the
+lemma).
+
+\medskip\noindent
+Assume $NEG(\vec{e}) = \emptyset$. In this case the complex
+$\check{\mathcal{C}}^\bullet(\vec{e})$ has a summand $R$ corresponding
+to all $i_0 < \ldots < i_p$.
+Let us compare the complex $\check{\mathcal{C}}^\bullet(\vec{e})$
+to another complex. Namely, consider the affine open covering
+$$
+\mathcal{V} : \Spec(R) = \bigcup\nolimits_{i \in \{0, \ldots, n\}} V_i
+$$
+where $V_i = \Spec(R)$ for all $i$. Consider the alternating
+{\v C}ech complex
+$$
+\check{\mathcal{C}}_{ord}^\bullet(\mathcal{V}, \mathcal{O}_{\Spec(R)})
+$$
+By the same reasoning as above this computes the cohomology of the
+structure sheaf on $\Spec(R)$. Hence we see that
+$H^p(
+\check{\mathcal{C}}_{ord}^\bullet(\mathcal{V}, \mathcal{O}_{\Spec(R)})
+) = R$ if $p = 0$ and is $0$ whenever $p > 0$.
+For these facts, see
+Lemma \ref{lemma-cech-cohomology-quasi-coherent-trivial} and its proof.
+Note that also
+$\check{\mathcal{C}}_{ord}^\bullet(\mathcal{V}, \mathcal{O}_{\Spec(R)})$
+has a summand $R$ for every $i_0 < \ldots < i_p$ and has exactly the same
+differential as $\check{\mathcal{C}}^\bullet(\vec{e})$. In other words
+these complexes are isomorphic complexes and hence have the same cohomology.
+We conclude that
+$$
+H^q(\check{\mathcal{C}}^\bullet(\vec{e})) =
+\left\{
+\begin{matrix}
+R \cdot T_0^{e_0} \ldots T_n^{e_n} & \text{if} & q = 0 \\
+0 & \text{if} & \text{else}
+\end{matrix}
+\right.
+$$
+in the case that $NEG(\vec{e}) = \emptyset$.
+The direct sum of all of these terms clearly gives the value
+$$
+(R[T_0, \ldots, T_n])_d
+$$
+in degree $0$ as stated in the lemma. Moreover these terms do not contribute
+to cohomology in other degrees (also in accordance with the statement of the
+lemma).
+
+\medskip\noindent
+To finish the proof of the lemma we have to show that the complexes
+$\check{\mathcal{C}}^\bullet(\vec{e})$ are acyclic when
+$NEG(\vec{e})$ is neither empty nor equal to $\{0, \ldots, n\}$.
+Pick an index $i_{\text{fix}} \not \in NEG(\vec{e})$ (such an index exists).
+Consider the map
+$$
+h :
+\check{\mathcal{C}}^{p + 1}(\vec{e})
+\to
+\check{\mathcal{C}}^p(\vec{e})
+$$
+given by the rule that for $i_0 < \ldots < i_p$ we have
+$$
+h(s)_{i_0 \ldots i_p} =
+\left\{
+\begin{matrix}
+0 & \text{if} & p \not \in \{0, \ldots, n - 1\} \\
+0 & \text{if} & i_{\text{fix}} \in \{i_0, \ldots, i_p\} \\
+s_{i_{\text{fix}} i_0 \ldots i_p} & \text{if} & i_{\text{fix}} < i_0 \\
+(-1)^a s_{i_0 \ldots i_{a - 1} i_{\text{fix}} i_a \ldots i_p} &
+\text{if} & i_{a - 1} < i_{\text{fix}} < i_a \\
+(-1)^{p + 1} s_{i_0 \ldots i_p i_{\text{fix}}} &
+\text{if} & i_p < i_{\text{fix}}
+\end{matrix}
+\right.
+$$
+Please compare with the proof of
+Lemma \ref{lemma-cech-cohomology-quasi-coherent-trivial}.
+This makes sense because we have
+$$
+NEG(\vec{e}) \subset \{i_0, \ldots, i_p\}
+\Leftrightarrow
+NEG(\vec{e}) \subset \{i_{\text{fix}}, i_0, \ldots, i_p\}
+$$
+The exact same (combinatorial) computation\footnote{
+For example, suppose that $i_0 < \ldots < i_p$ is such that
+$i_{\text{fix}} \not \in \{i_0, \ldots, i_p\}$ and that
+$i_{a - 1} < i_{\text{fix}} < i_a$ for some $1 \leq a \leq p$. Then we have
+\begin{align*}
+&
+(dh + hd)(s)_{i_0 \ldots i_p} \\
+& =
+\sum\nolimits_{j = 0}^p
+(-1)^j
+h(s)_{i_0 \ldots \hat i_j \ldots i_p}
++
+(-1)^a d(s)_{i_0 \ldots i_{a - 1} i_{\text{fix}} i_a \ldots i_p}\\
+& =
+\sum\nolimits_{j = 0}^{a - 1}
+(-1)^{j + a - 1}
+s_{i_0 \ldots \hat i_j \ldots i_{a - 1} i_{\text{fix}} i_a \ldots i_p} +
+\sum\nolimits_{j = a}^p
+(-1)^{j + a}
+s_{i_0 \ldots i_{a - 1} i_{\text{fix}} i_a \ldots \hat i_j \ldots i_p}
++ \\
+&
+\sum\nolimits_{j = 0}^{a - 1}
+(-1)^{a + j}
+s_{i_0 \ldots \hat i_j \ldots i_{a - 1} i_{\text{fix}} i_a \ldots i_p} +
+(-1)^{2a} s_{i_0 \ldots i_p} +
+\sum\nolimits_{j = a}^p
+(-1)^{a + j + 1}
+s_{i_0 \ldots i_{a - 1} i_{\text{fix}} i_a \ldots \hat i_j \ldots i_p}
+\\
+& =
+s_{i_0 \ldots i_p}
+\end{align*}
+as desired. The other cases are similar.}
+as in the proof of Lemma \ref{lemma-cech-cohomology-quasi-coherent-trivial}
+shows that
+$$
+(hd + dh)(s)_{i_0 \ldots i_p}
+=
+s_{i_0 \ldots i_p}
+$$
+Hence we see that the identity map of the complex
+$\check{\mathcal{C}}^\bullet(\vec{e})$ is homotopic to zero
+which implies that it is acyclic.
+\end{proof}
+
+\noindent
+In the following lemma we are going to use the pairing of free
+$R$-modules
+$$
+R[T_0, \ldots, T_n]
+\times
+\frac{1}{T_0 \ldots T_n} R[\frac{1}{T_0}, \ldots, \frac{1}{T_n}]
+\longrightarrow
+R
+$$
+which is defined by the rule
+$$
+(f, g)
+\longmapsto
+\text{coefficient of }
+\frac{1}{T_0 \ldots T_n}
+\text{ in }fg.
+$$
+In other words, the basis element $T_0^{e_0} \ldots T_n^{e_n}$ pairs
+with the basis element $T_0^{d_0} \ldots T_n^{d_n}$ to give $1$ if and only
+if $e_i + d_i = -1$ for all $i$, and pairs to zero in all other cases.
+Using this pairing we get an identification
+$$
+\left(\frac{1}{T_0 \ldots T_n} R[\frac{1}{T_0}, \ldots, \frac{1}{T_n}]\right)_d
+=
+\Hom_R((R[T_0, \ldots, T_n])_{-n - 1 - d}, R)
+$$
+Thus we can reformulate the result of
+Lemma \ref{lemma-cohomology-projective-space-over-ring} as saying that
+\begin{equation}
+\label{equation-identify}
+H^q(\mathbf{P}^n, \mathcal{O}_{\mathbf{P}^n_R}(d)) =
+\left\{
+\begin{matrix}
+(R[T_0, \ldots, T_n])_d & \text{if} & q = 0 \\
+0 & \text{if} & q \not = 0, n \\
+\Hom_R((R[T_0, \ldots, T_n])_{-n - 1 - d}, R)
+& \text{if} & q = n
+\end{matrix}
+\right.
+\end{equation}
+
+\begin{lemma}
+\label{lemma-identify-functorially}
+The identifications of Equation (\ref{equation-identify}) are
+compatible with base change w.r.t.\ ring maps $R \to R'$.
+Moreover, for any $f \in R[T_0, \ldots, T_n]$ homogeneous
+of degree $m$ the map multiplication by $f$
+$$
+\mathcal{O}_{\mathbf{P}^n_R}(d)
+\longrightarrow
+\mathcal{O}_{\mathbf{P}^n_R}(d + m)
+$$
+induces the map on the cohomology group via the identifications
+of Equation (\ref{equation-identify}) which is multiplication by
+$f$ for $H^0$ and the contragredient of multiplication by $f$
+$$
+(R[T_0, \ldots, T_n])_{-n - 1 - (d + m)}
+\longrightarrow
+(R[T_0, \ldots, T_n])_{-n - 1 - d}
+$$
+on $H^n$.
+\end{lemma}
+
+\begin{proof}
+Suppose that $R \to R'$ is a ring map.
+Let $\mathcal{U}$ be the standard affine open covering of $\mathbf{P}^n_R$,
+and let $\mathcal{U}'$ be the standard affine open covering of
+$\mathbf{P}^n_{R'}$. Note that $\mathcal{U}'$ is the pullback of the covering
+$\mathcal{U}$ under the canonical morphism
+$\mathbf{P}^n_{R'} \to \mathbf{P}^n_R$. Hence there
+is a map of {\v C}ech complexes
+$$
+\gamma :
+\check{\mathcal{C}}_{ord}^\bullet(\mathcal{U},
+\mathcal{O}_{\mathbf{P}_R}(d))
+\longrightarrow
+\check{\mathcal{C}}_{ord}^\bullet(\mathcal{U}',
+\mathcal{O}_{\mathbf{P}_{R'}}(d))
+$$
+which is compatible with the map on cohomology by
+Cohomology, Lemma \ref{cohomology-lemma-functoriality-cech}.
+It is clear from the computations in the proof of
+Lemma \ref{lemma-cohomology-projective-space-over-ring}
+that this map of {\v C}ech complexes is compatible with the identifications
+of the cohomology groups in question. (Namely the basis elements for
+the {\v C}ech complex over $R$ simply map to the corresponding basis elements
+for the {\v C}ech complex over $R'$.) Whence the first statement of the lemma.
+
+\medskip\noindent
+Now fix the ring $R$ and consider two homogeneous polynomials
+$f, g \in R[T_0, \ldots, T_n]$ both of the same degree $m$.
+Since cohomology is an additive functor, it is clear that the
+map induced by multiplication by $f + g$ is the same as the sum
+of the maps induced by multiplication by $f$ and the map induced
+by multiplication by $g$. Moreover, since cohomology is a functor,
+a similar result holds for multiplication by a product $fg$ where
+$f, g$ are both homogeneous (but not necessarily of the same degree).
+Hence to verify the second statement of the lemma it suffices to
+prove this when $f = x \in R$ or when $f = T_i$.
+In the case of multiplication by an element $x \in R$ the result
+follows since every cohomology groups or complex in sight has the
+structure of an $R$-module or complex of $R$-modules.
+Finally, we consider the case of multiplication by $T_i$
+as a $\mathcal{O}_{\mathbf{P}^n_R}$-linear map
+$$
+\mathcal{O}_{\mathbf{P}^n_R}(d)
+\longrightarrow
+\mathcal{O}_{\mathbf{P}^n_R}(d + 1)
+$$
+The statement on $H^0$ is clear. For the statement on $H^n$
+consider multiplication by $T_i$ as a map on {\v C}ech complexes
+$$
+\check{\mathcal{C}}_{ord}^\bullet(\mathcal{U},
+\mathcal{O}_{\mathbf{P}_R}(d))
+\longrightarrow
+\check{\mathcal{C}}_{ord}^\bullet(\mathcal{U},
+\mathcal{O}_{\mathbf{P}_R}(d + 1))
+$$
+We are going to use the notation introduced in the proof of
+Lemma \ref{lemma-cohomology-projective-space-over-ring}.
+We consider the effect of multiplication by $T_i$
+in terms of the decompositions
+$$
+\check{\mathcal{C}}_{ord}^\bullet(\mathcal{U}, \mathcal{O}_{\mathbf{P}_R}(d))
+=
+\bigoplus\nolimits_{\vec{e} \in \mathbf{Z}^{n + 1}, \ \sum e_i = d}
+\check{\mathcal{C}}^\bullet(\vec{e})
+$$
+and
+$$
+\check{\mathcal{C}}_{ord}^\bullet(\mathcal{U},
+\mathcal{O}_{\mathbf{P}_R}(d + 1))
+=
+\bigoplus\nolimits_{\vec{e} \in \mathbf{Z}^{n + 1}, \ \sum e_i = d + 1}
+\check{\mathcal{C}}^\bullet(\vec{e})
+$$
+It is clear that it maps the subcomplex
+$\check{\mathcal{C}}^\bullet(\vec{e})$ to the subcomplex
+$\check{\mathcal{C}}^\bullet(\vec{e} + \vec{b}_i)$ where
+$\vec{b}_i = (0, \ldots, 0, 1, 0, \ldots, 0))$ the $i$th basis vector.
+In other words, it maps the summand of $H^n$ corresponding to
+$\vec{e}$ with $e_i < 0$ and $\sum e_i = d$
+to the summand of $H^n$ corresponding to
+$\vec{e} + \vec{b}_i$ (which is zero if $e_i + b_i \geq 0$).
+It is easy to see that this corresponds exactly to the action
+of the contragredient of multiplication by $T_i$ as a map
+$$
+(R[T_0, \ldots, T_n])_{-n - 1 - (d + 1)}
+\longrightarrow
+(R[T_0, \ldots, T_n])_{-n - 1 - d}
+$$
+This proves the lemma.
+\end{proof}
+
+\noindent
+Before we state the relative version we need some notation.
+Namely, recall that $\mathcal{O}_S[T_0, \ldots, T_n]$ is a graded
+$\mathcal{O}_S$-module where each $T_i$ is homogeneous of degree $1$.
+Denote $(\mathcal{O}_S[T_0, \ldots, T_n])_d$ the degree $d$ summand.
+It is a finite locally free sheaf of rank $\binom{n + d}{d}$ on $S$.
+
+\begin{lemma}
+\label{lemma-cohomology-projective-space-over-base}
+Let $S$ be a scheme.
+Let $n \geq 0$ be an integer.
+Consider the structure morphism
+$$
+f : \mathbf{P}^n_S \longrightarrow S.
+$$
+We have
+$$
+R^qf_*(\mathcal{O}_{\mathbf{P}^n_S}(d)) =
+\left\{
+\begin{matrix}
+(\mathcal{O}_S[T_0, \ldots, T_n])_d & \text{if} & q = 0 \\
+0 & \text{if} & q \not = 0, n \\
+\SheafHom_{\mathcal{O}_S}(
+(\mathcal{O}_S[T_0, \ldots, T_n])_{- n - 1 - d}, \mathcal{O}_S)
+& \text{if} & q = n
+\end{matrix}
+\right.
+$$
+\end{lemma}
+
+\begin{proof}
+Omitted. Hint: This follows since the identifications in
+(\ref{equation-identify}) are compatible with affine base change
+by Lemma \ref{lemma-identify-functorially}.
+\end{proof}
+
+\noindent
+Next we state the version for projective bundles associated to finite locally
+free sheaves. Let $S$ be a scheme. Let $\mathcal{E}$ be a finite locally
+free $\mathcal{O}_S$-module of constant rank $n + 1$, see
+Modules, Section \ref{modules-section-locally-free}.
+In this case we think of $\text{Sym}(\mathcal{E})$ as a graded
+$\mathcal{O}_S$-module where $\mathcal{E}$ is the graded part of degree $1$.
+And $\text{Sym}^d(\mathcal{E})$ is the degree $d$ summand.
+It is a finite locally free sheaf of rank $\binom{n + d}{d}$ on $S$.
+Recall that our normalization is that
+$$
+\pi :
+\mathbf{P}(\mathcal{E})
+=
+\underline{\text{Proj}}_S(\text{Sym}(\mathcal{E}))
+\longrightarrow
+S
+$$
+and that there are natural maps
+$\text{Sym}^d(\mathcal{E}) \to \pi_*\mathcal{O}_{\mathbf{P}(\mathcal{E})}(d)$.
+
+\begin{lemma}
+\label{lemma-cohomology-projective-bundle}
+Let $S$ be a scheme. Let $n \geq 1$.
+Let $\mathcal{E}$ be a finite locally
+free $\mathcal{O}_S$-module of constant rank $n + 1$.
+Consider the structure morphism
+$$
+\pi : \mathbf{P}(\mathcal{E}) \longrightarrow S.
+$$
+We have
+$$
+R^q\pi_*(\mathcal{O}_{\mathbf{P}(\mathcal{E})}(d)) =
+\left\{
+\begin{matrix}
+\text{Sym}^d(\mathcal{E}) & \text{if} & q = 0 \\
+0 & \text{if} & q \not = 0, n \\
+\SheafHom_{\mathcal{O}_S}(
+\text{Sym}^{- n - 1 - d}(\mathcal{E})
+\otimes_{\mathcal{O}_S}
+\wedge^{n + 1}\mathcal{E},
+\mathcal{O}_S)
+& \text{if} & q = n
+\end{matrix}
+\right.
+$$
+These identifications are compatible with base change and
+isomorphism between locally free sheaves.
+\end{lemma}
+
+\begin{proof}
+Consider the canonical map
+$$
+\pi^*\mathcal{E} \longrightarrow \mathcal{O}_{\mathbf{P}(\mathcal{E})}(1)
+$$
+and twist down by $1$ to get
+$$
+\pi^*(\mathcal{E})(-1) \longrightarrow \mathcal{O}_{\mathbf{P}(\mathcal{E})}
+$$
+This is a surjective map from a locally free rank $n + 1$ sheaf onto
+the structure sheaf. Hence the corresponding Koszul complex is
+exact (More on Algebra, Lemma
+\ref{more-algebra-lemma-homotopy-koszul-abstract}).
+In other words there is an exact complex
+$$
+0 \to
+\pi^*(\wedge^{n + 1}\mathcal{E})(-n - 1) \to
+\ldots \to
+\pi^*(\wedge^i\mathcal{E})(-i) \to
+\ldots \to
+\pi^*\mathcal{E}(-1) \to
+\mathcal{O}_{\mathbf{P}(\mathcal{E})} \to 0
+$$
+We will think of the term $\pi^*(\wedge^i\mathcal{E})(-i)$ as being
+in degree $-i$.
+We are going to compute the higher direct images
+of this acyclic complex using the first spectral sequence of
+Derived Categories, Lemma \ref{derived-lemma-two-ss-complex-functor}.
+Namely, we see that there is a spectral sequence with terms
+$$
+E_1^{p, q} = R^q\pi_*\left(\pi^*(\wedge^{-p}\mathcal{E})(p)\right)
+$$
+converging to zero! By the projection formula
+(Cohomology, Lemma \ref{cohomology-lemma-projection-formula})
+we have
+$$
+E_1^{p, q} = \wedge^{-p} \mathcal{E} \otimes_{\mathcal{O}_S}
+R^q\pi_*\left(\mathcal{O}_{\mathbf{P}(\mathcal{E})}(p)\right).
+$$
+Note that locally on $S$ the sheaf $\mathcal{E}$ is trivial,
+i.e., isomorphic to $\mathcal{O}_S^{\oplus n + 1}$, hence locally on
+$S$ the morphism $\mathbf{P}(\mathcal{E}) \to S$ can be identified
+with $\mathbf{P}^n_S \to S$. Hence
+locally on $S$ we can use the result of Lemmas
+\ref{lemma-cohomology-projective-space-over-ring},
+\ref{lemma-identify-functorially}, or
+\ref{lemma-cohomology-projective-space-over-base}.
+It follows that $E_1^{p, q} = 0$ unless $(p, q)$ is $(0, 0)$
+or $(-n - 1, n)$. The nonzero terms are
+\begin{align*}
+E_1^{0, 0} & = \pi_*\mathcal{O}_{\mathbf{P}(\mathcal{E})} = \mathcal{O}_S \\
+E_1^{-n - 1, n} & =
+R^n\pi_*\left(\pi^*(\wedge^{n + 1}\mathcal{E})(-n - 1)\right) =
+\wedge^{n + 1}\mathcal{E} \otimes_{\mathcal{O}_S}
+R^n\pi_*\left(\mathcal{O}_{\mathbf{P}(\mathcal{E})}(-n - 1)\right)
+\end{align*}
+Hence there can only be one nonzero
+differential in the spectral sequence namely the map
+$d_{n + 1}^{-n - 1, n} : E_{n + 1}^{-n - 1, n} \to E_{n + 1}^{0, 0}$
+which has to be an isomorphism (because the spectral sequence converges
+to the $0$ sheaf). Thus $E_1^{p, q} = E_{n + 1}^{p, q}$ and
+we obtain a canonical isomorphism
+$$
+\wedge^{n + 1}\mathcal{E} \otimes_{\mathcal{O}_S}
+R^n\pi_*\left(\mathcal{O}_{\mathbf{P}(\mathcal{E})}(-n - 1)\right) =
+R^n\pi_*\left(\pi^*(\wedge^{n + 1}\mathcal{E})(-n - 1)\right)
+\xrightarrow{d_{n + 1}^{-n - 1, n}}
+\mathcal{O}_S
+$$
+Since $\wedge^{n + 1}\mathcal{E}$ is an invertible
+sheaf, this implies that
+$R^n\pi_*\mathcal{O}_{\mathbf{P}(\mathcal{E})}(-n - 1)$ is invertible
+as well and canonically isomorphic to the inverse of
+$\wedge^{n + 1}\mathcal{E}$. In other words we have proved the case
+$d = - n - 1$ of the lemma.
+
+\medskip\noindent
+Working locally on $S$ we see immediately from the computation of
+cohomology in Lemmas \ref{lemma-cohomology-projective-space-over-ring},
+\ref{lemma-identify-functorially}, or
+\ref{lemma-cohomology-projective-space-over-base} the statements on
+vanishing of the lemma. Moreover the result on $R^0\pi_*$ is clear
+as well, since there are canonical maps
+$\text{Sym}^d(\mathcal{E}) \to \pi_* \mathcal{O}_{\mathbf{P}(\mathcal{E})}(d)$
+for all $d$. It remains to show that the description of
+$R^n\pi_*\mathcal{O}_{\mathbf{P}(\mathcal{E})}(d)$ is correct
+for $d < -n - 1$. In order to do this we consider the map
+$$
+\pi^*(\text{Sym}^{-d - n - 1}(\mathcal{E}))
+\otimes_{\mathcal{O}_{\mathbf{P}(\mathcal{E})}}
+\mathcal{O}_{\mathbf{P}(\mathcal{E})}(d)
+\longrightarrow
+\mathcal{O}_{\mathbf{P}(\mathcal{E})}(-n - 1)
+$$
+Applying $R^n\pi_*$ and the projection formula (see above) we get a map
+$$
+\text{Sym}^{-d - n - 1}(\mathcal{E})
+\otimes_{\mathcal{O}_S}
+R^n\pi_*(\mathcal{O}_{\mathbf{P}(\mathcal{E})}(d))
+\longrightarrow
+R^n\pi_*\mathcal{O}_{\mathbf{P}(\mathcal{E})}(-n - 1) =
+(\wedge^{n + 1}\mathcal{E})^{\otimes -1}
+$$
+(the last equality we have shown above).
+Again by the local calculations of Lemmas
+\ref{lemma-cohomology-projective-space-over-ring},
+\ref{lemma-identify-functorially}, or
+\ref{lemma-cohomology-projective-space-over-base}
+it follows that this map induces a perfect pairing between
+$R^n\pi_*(\mathcal{O}_{\mathbf{P}(\mathcal{E})}(d))$ and
+$\text{Sym}^{-d - n - 1}(\mathcal{E}) \otimes \wedge^{n + 1}(\mathcal{E})$
+as desired.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
