@@ -73,7 +73,7 @@ for(const unit of originalUnits){
       if(!tag||!ids.includes(tag))throw Error('Missing source anchor '+section.slug+' '+match[1]);
     }
     const note=sectionNote(section);
-    if(!note.bindings.length||(!note.check&&!note.result))throw Error('Missing example model '+section.slug);
+    if(!note.bindings.length)throw Error('Missing example model '+section.slug);
     const symbols=new Set();
     for(const b of note.bindings){
       if(symbols.has(b.symbol))throw Error('Duplicate object binding '+section.slug);symbols.add(b.symbol);

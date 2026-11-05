@@ -7,6 +7,7 @@ import {separateSourceNotes,renderProofs,sourceRecord,sourcePanel,sourceDataScri
 import {buildSchemePath} from './scheme-path.mjs';
 import {examples} from '../src/matches.mjs';
 import {exampleFor} from '../src/examples.mjs';
+import {renderOutline} from '../src/reading-outline.mjs';
 
 const root=fileURLToPath(new URL('../',import.meta.url));
 const assetVersion=createHash('sha256').update(fs.readFileSync(path.join(root,'public/reader.js'))).update(fs.readFileSync(path.join(root,'public/style.css'))).digest('hex').slice(0,12);
@@ -42,13 +43,17 @@ const home=head('A reader for the Stacks Project','./','Complete sections of the
 fs.writeFileSync(path.join(dist,'index.html'),home);
 
 let proofs=0,statements=0;const gluingSources={};
+const outlineStatements=new Map();
 const sections=r.manifest.sections.map((s,sectionIndex)=>{
   const blocks=r.section(s),sourceNotes=[];
+  const entries=[];
+  outlineStatements.set(s.tag,entries);
   const html=blocks.map((b,i)=>{
     const key=exampleFor(s,b,i),id=b.tag||`${s.slug}-${i}`;
     const sourceLabel=b.kind==='prose'?`§${s.number} · ${s.title}`:`${b.kind[0].toUpperCase()+b.kind.slice(1)} ${b.number}`;
     let content=`<div class="source-body">${separateSourceNotes(b.html,sourceNotes)}</div>`;
     if(b.kind!=='prose'){
+      if(b.tag)entries.push({tag:b.tag,label:sourceLabel});
       statements++;
       content=`<div class="statement-heading"><h3>${b.kind[0].toUpperCase()+b.kind.slice(1)} ${b.number}${b.title?' · '+esc(b.title):''}</h3></div>`+content;
     }
@@ -59,7 +64,7 @@ const sections=r.manifest.sections.map((s,sectionIndex)=>{
   gluingSources[s.tag]=sourceRecord(root,s,r.manifest,sourceNotes);
   return `<section class="source-section" id="${s.tag}" data-example="${exampleFor(s,blocks[0],0)}"><header class="source-section-header"><h2>${s.number}. ${esc(s.title)}</h2></header>${html}</section>`;
 }).join('');
-const toc=r.manifest.sections.map((s,i)=>`<a href="#${s.tag}" data-outline="${s.tag}"><span>0${i+1}</span>${esc(s.title)}</a>`).join('');
+const toc=renderOutline(r.manifest.sections,outlineStatements);
 const reader=head('Gluing local data','../../','A longer reading of Stacks sections 26.2, 6.33, and 26.14 with the Riemann sphere as a running example. Proofs expand individually.')+header('../../',true)+`<div class="reading-progress" aria-hidden="true"><span></span></div><div class="reader-layout"><nav class="reading-outline" id="reading-outline" aria-label="Reading contents"><a class="back-link" href="../../">← All readings</a><p class="eyebrow">In this reading</p><div class="margin-reading-controls"><button id="toggle-proofs" type="button" aria-pressed="false">Show all proofs</button></div>${toc}<div class="outline-note"><span class="eyebrow">Running example</span><p>The Riemann sphere</p><button type="button" class="mobile-example" data-show-example>Open example</button></div><a class="outline-source" href="../../about/">Text, source &amp; attribution ↗</a></nav><main id="main" class="reader-main verbatim-main"><header class="reading-title"><h1>The Stacks Project</h1></header>${sections}</main><aside id="example-dock" class="example-dock" aria-label="Running example: Riemann sphere" tabindex="-1"><div class="example-sticky"><div class="example-header"><p class="eyebrow">The running example</p><button id="close-example" type="button" aria-label="Close running example">×</button></div><h2>The Riemann sphere</h2><p class="matching-guide">The example follows the passage you are reading. Match the source objects with their counterparts here.</p>${sourcePanel(gluingSources[r.manifest.sections[0].tag])}<div class="example-current"><div class="example-step"><a id="example-stage-label" href="#local-functions-0">§26.2 · Locally ringed spaces</a><span id="example-index">01</span></div><h3 id="example-title">${exampleData['local-functions'].title}</h3><div id="example-content">${exampleData['local-functions'].html}</div><details id="example-visual" class="optional-visual"><summary>Optional sphere sketch</summary>${sphere()}</details><div class="example-paging"><button id="previous-example" type="button" aria-label="Previous example explanation">← Previous</button><button id="follow-reading" type="button" aria-pressed="true">Follow reading</button><button id="next-example" type="button" aria-label="Next example explanation">Next →</button></div></div></div></aside></div><script type="application/json" id="example-data">${JSON.stringify(exampleData).replaceAll('<','\\u003c')}</script>`+sourceDataScript(gluingSources)+footer('../../')+'</body></html>';
 fs.mkdirSync(path.join(dist,'read/gluing'),{recursive:true});fs.writeFileSync(path.join(dist,'read/gluing/index.html'),reader);
 

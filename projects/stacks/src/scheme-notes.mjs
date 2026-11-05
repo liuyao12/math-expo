@@ -484,13 +484,11 @@ A&=\mathbb C[t,1/g(t)],\\
 f^{-1}(D(g))&=\operatorname{Spec}\bigl(A[z]/(z^2-t)\bigr).
 \end{aligned}
 \]`,'',r`A branched double cover can be described by adjoining a square root to the ring of each target chart. An affine morphism is one whose inverse images of affine charts admit such ring descriptions.`);
-const gradedPolynomial=model('Which equations make sense on projective points?',[
- b('S',r`k[T_0,T_1]`),
- b('S_2',r`kT_0^2\oplus kT_0T_1\oplus kT_1^2`),
- b('F',r`T_1^2-T_0T_1\in S_2`)
-],r`\[
-F(\lambda T_0,\lambda T_1)=\lambda^2 F(T_0,T_1)
-\]`,'',r`A projective point has many coordinate representatives. The zero set of a homogeneous polynomial is independent of the representative. Grading keeps track of the weight under rescaling.`);
+const gradedPolynomial=model('The graded ring of projective space',[
+ b('S',r`k[t_0,\ldots,t_n]`),
+ b('S_d',r`\left\{\begin{gathered}\text{homogeneous polynomials}\\\text{of degree }d\end{gathered}\right\}`),
+ b(r`\operatorname{Proj}(S)`,r`\mathbb P^n_k`)
+],'','');
 const projCharts=model('The two standard charts of projective space',[
  b('S',r`k[T_0,T_1]`),
  b('X',r`\operatorname{Proj}S=\mathbb P^1_k`),

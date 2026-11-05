@@ -3,6 +3,7 @@ import path from 'node:path';
 import {createRenderer,escapeHTML as esc} from '../src/latex.mjs';
 import {separateSourceNotes,renderProofs,sourceRecord,sourcePanel,sourceDataScript} from '../src/source-column.mjs';
 import {extraExamples,passageNote} from '../src/scheme-notes.mjs';
+import {renderOutline} from '../src/reading-outline.mjs';
 export function buildSchemePath({root,dist,head,header,footer,matchingHTML}){
  const manifest=JSON.parse(fs.readFileSync(path.join(root,'upstream/scheme-path.json'),'utf8'));
  const selectedReadings=JSON.parse(fs.readFileSync(path.join(root,'upstream/selected-readings.json'),'utf8'));
@@ -35,9 +36,12 @@ export function buildSchemePath({root,dist,head,header,footer,matchingHTML}){
  for(const unit of [...manifest.units,...coreUnits,...selectedReadings]){
   const tree=unit.core?schemeTree:unit.target?genusTree:null;
   const r=createRenderer(root,{sections:unit.sections,routes:tree?coreRoutes:undefined}),data={},sources={};let proofs=0,statements=0;
+  const outlineStatements=new Map();
   const rich=s=>s.replace(/\\\[([\s\S]*?)\\\]/g,(_,t)=>r.math(t,true)).replace(/\\\(([\s\S]*?)\\\)/g,(_,t)=>r.math(t));
   const sections=unit.sections.map((s,index)=>{
    const blocks=r.section(s),sourceNotes=[];
+   const entries=[];
+   outlineStatements.set(s.tag,entries);
    if(tree?.nodes[s.tag])tree.locations.set(s.tag,{slug:unit.slug,section:s});
    const content=blocks.map((b,bi)=>{
     const note=passageNote(s,b),key=note.scope==='statement'?s.slug+'-'+b.label:s.slug;
@@ -54,6 +58,7 @@ export function buildSchemePath({root,dist,head,header,footer,matchingHTML}){
     const id=b.tag||s.slug+'-'+bi;
     let html=`<div class="source-body">${separateSourceNotes(b.html,sourceNotes)}</div>`;
     if(b.kind!=='prose'){
+     if(b.tag)entries.push({tag:b.tag,label});
      let heading=esc(label);
      if(tree?.nodes[b.tag]){
       tree.locations.set(b.tag,{slug:unit.slug,section:s});
@@ -73,10 +78,7 @@ export function buildSchemePath({root,dist,head,header,footer,matchingHTML}){
   }).join('');
   if(!unit.readingTitle)stats.push({slug:unit.slug,sections:unit.sections.length,proofs,statements,formulas:r.mathCount});
   const first=Object.keys(data)[0],firstSource=unit.sections[0];
-  const toc=unit.sections.map(s=>{
-   const stage=s.stage?`<p class="eyebrow">${esc(s.stage)}</p>`:'';
-   return stage+`<a href="#${s.tag}" data-outline="${s.tag}"><span>${s.number}</span>${esc(s.title)}</a>`;
-  }).join('');
+  const toc=renderOutline(unit.sections,outlineStatements);
   const chapterNav=(unit.core?coreUnits:manifest.units).map(u=>`<a href="../${u.slug}/" ${u.slug===unit.slug?'aria-current="page"':''}>${u.number}. ${esc(u.title)}</a>`).join('');
   const outlineLink=unit.readingTitle?'<a class="back-link" href="../../#readings-title">← Selected readings</a>':'<a class="back-link" href="../../path/">← Sections for defining schemes</a>';
   const outlineType=unit.readingTitle?'Selected reading':`Chapter ${unit.number} · ${unit.core?'Definition path':'Reference collection'}`;

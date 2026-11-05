@@ -10,8 +10,45 @@
   const search=$('#chapter-search');
   search?.addEventListener('input',()=>{const words=search.value.toLowerCase().trim().split(/\s+/).filter(Boolean);let count=0;$$('.chapter-link').forEach(a=>{const show=words.every(w=>a.dataset.search.includes(w));a.hidden=!show;if(show)count++;});$('#chapter-count').textContent=count+' chapter'+(count===1?'':'s');$('#empty-search').hidden=count!==0;});
   const outline=$('#reading-outline'),outlineButton=$('.mobile-outline');
+  const outlineLinks=new Map($$('.outline-tree a').map(link=>[link.hash.slice(1),link]));
+  const outlineBranches=$$('.outline-toggle').map(button=>[button,document.getElementById(button.getAttribute('aria-controls'))]);
+  let outlineSection,outlineCurrent;
+  const setBranch=(button,list,open)=>{
+    if(!open&&list.contains(document.activeElement))button.focus({preventScroll:true});
+    button.setAttribute('aria-expanded',String(open));
+    list.hidden=!open;
+  };
+  for(const [button,list] of outlineBranches)button.addEventListener('click',()=>setBranch(button,list,list.hidden));
+  const revealOutline=()=>{
+    const link=outlineCurrent?.getClientRects().length?outlineCurrent:outlineSection;
+    if(!link?.getClientRects().length)return;
+    const row=link.getBoundingClientRect(),pane=outline.getBoundingClientRect();
+    if(row.top<pane.top)outline.scrollTop+=row.top-pane.top-8;
+    if(row.bottom>pane.bottom)outline.scrollTop+=row.bottom-pane.bottom+8;
+  };
+  const followOutline=(section,passage)=>{
+    const sectionLink=outlineLinks.get(section?.id);
+    if(!sectionLink)return;
+    const sectionChanged=sectionLink!==outlineSection;
+    if(sectionChanged){
+      outlineSection?.classList.remove('outline-current-section');
+      outlineSection=sectionLink;
+      outlineSection.classList.add('outline-current-section');
+      for(const [button,list] of outlineBranches){
+        const open=list.contains(sectionLink)||button.parentElement.contains(sectionLink);
+        setBranch(button,list,open);
+      }
+    }
+    const current=outlineLinks.get(passage?.closest('.passage')?.id)||sectionLink;
+    if(current!==outlineCurrent){
+      outlineCurrent?.removeAttribute('aria-current');
+      current.setAttribute('aria-current','location');
+      outlineCurrent=current;
+      revealOutline();
+    }else if(sectionChanged)revealOutline();
+  };
   const closeOutline=()=>{outline?.classList.remove('is-open');outlineButton?.setAttribute('aria-expanded','false');};
-  outlineButton?.addEventListener('click',()=>{const open=outline.classList.toggle('is-open');outlineButton.setAttribute('aria-expanded',String(open));});
+  outlineButton?.addEventListener('click',()=>{const open=outline.classList.toggle('is-open');outlineButton.setAttribute('aria-expanded',String(open));if(open)revealOutline();});
   outline?.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeOutline));
   const dock=$('#example-dock');let previousFocus;
   const closeExample=()=>{dock?.classList.remove('is-open');dock?.removeAttribute('aria-modal');dock?.removeAttribute('role');document.body.style.overflow='';previousFocus?.focus();};
@@ -65,13 +102,20 @@
     $('#next-example').addEventListener('click',()=>{selectionPinned=false;setExample(keys[Math.min(keys.length-1,keys.indexOf(current)+1)],true);});
     $('#follow-reading').addEventListener('click',()=>{selectionPinned=false;follow=true;setExample(lastReading,false,lastReadingContext);});
     const sections=$$('.source-section');let scheduled=false;
-    const contexts=$$('.passage[data-example],.proof-body[data-example]');
+    const contexts=new Map(sections.map(section=>[section,[...section.querySelectorAll('.passage[data-example],.proof-body[data-example]')]]));
     const update=()=>{scheduled=false;
       const denominator=document.documentElement.scrollHeight-innerHeight;
       const readingLine=innerHeight*(denominator-scrollY<=1?.55:.3);
-      let active=passages[0];for(const p of contexts){if(!p.getClientRects().length)continue;if(p.getBoundingClientRect().top<=readingLine)active=p;else break;}if(active){lastReading=active.dataset.example;lastReadingContext=active;if(follow&&(lastReading!==current||activeContext!==active))setExample(lastReading,false,active);}
       let section=sections[0];for(const s of sections)if(s.getBoundingClientRect().top<innerHeight*.38)section=s;
-      $$('[data-outline]').forEach(a=>{if(a.dataset.outline===section?.id)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});
+      const candidates=contexts.get(section)||[];
+      let active=candidates[0];
+      for(const passage of candidates){
+        if(!passage.getClientRects().length)continue;
+        if(passage.getBoundingClientRect().top>readingLine)break;
+        active=passage;
+      }
+      if(active){lastReading=active.dataset.example;lastReadingContext=active;if(follow&&(lastReading!==current||activeContext!==active))setExample(lastReading,false,active);}
+      followOutline(section,active);
       const percent=denominator?Math.max(0,Math.min(1,scrollY/denominator)):0;$('.reading-progress span').style.width=percent*100+'%';
     };
     addEventListener('scroll',()=>{if(!scheduled){scheduled=true;requestAnimationFrame(update);}},{passive:true});
@@ -80,7 +124,7 @@
     const resumeSelection=e=>{if(selectionPinned&&!e.defaultPrevented&&!e.target.closest?.('#example-dock')){selectionPinned=false;follow=true;update();}};
     addEventListener('wheel',resumeSelection,{passive:true});addEventListener('touchmove',resumeSelection,{passive:true});
     addEventListener('keydown',e=>{if(['PageDown','PageUp','ArrowDown','ArrowUp','Home','End',' '].includes(e.key))resumeSelection(e);});
-    outline?.querySelectorAll('a[data-outline]').forEach(a=>a.addEventListener('click',resumeSelection));
+    outlineLinks.forEach(a=>a.addEventListener('click',resumeSelection));
     window.addEventListener('beforeprint',()=>{proofs.forEach(p=>{p.dataset.printOpen=String(p.open);p.open=true;});});
     window.addEventListener('afterprint',()=>proofs.forEach(p=>p.open=p.dataset.printOpen==='true'));
   }
