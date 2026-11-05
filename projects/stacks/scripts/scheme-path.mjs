@@ -44,6 +44,8 @@ export function buildSchemePath({root,dist,head,header,footer,matchingHTML}){
  const unitList=(base,units,href=u=>`${base}read/${u.slug}/`)=>units.map(u=>`<a class="reading-entry" href="${href(u)}"><span class="reading-number">${u.number}</span><div><p class="eyebrow">The Stacks Project · Chapter ${u.number}</p><h3>${esc(u.title)}</h3><div class="reading-meta"><span>${u.sections.length} complete sections</span><span>§${u.sections.map(s=>s.number).join(', ')}</span></div></div><span class="entry-arrow" aria-hidden="true">↗</span></a>`).join('');
  for(const unit of [...manifest.units,...coreUnits,coreReading,...selectedReadings]){
   const tree=unit.core?schemeTree:unit.target?genusTree:null;
+  const sectionHeading=unit.target?'h3':'h2';
+  const statementHeading=unit.target?'h4':'h3';
   const r=createRenderer(root,{sections:unit.sections,routes:tree?coreRoutes:undefined}),data={},sources={};let proofs=0,statements=0;
   const rich=s=>s.replace(/\\\[([\s\S]*?)\\\]/g,(_,t)=>r.math(t,true)).replace(/\\\(([\s\S]*?)\\\)/g,(_,t)=>r.math(t));
   const sections=unit.sections.map((s,index)=>{
@@ -70,16 +72,17 @@ export function buildSchemePath({root,dist,head,header,footer,matchingHTML}){
       const kind=b.kind[0].toUpperCase()+b.kind.slice(1);
       heading=`${esc(kind)} <a class="dependency-number" href="../../${tree.url}#${esc(b.tag)}" aria-label="${esc(label)} dependencies">${esc(b.number)}</a>`;
      }
-     statements++;html=`<div class="statement-heading"><h3>${heading}${b.title?' · '+rich(b.title):''}</h3></div>`+html;
+     statements++;html=`<div class="statement-heading"><${statementHeading}>${heading}${b.title?' · '+rich(b.title):''}</${statementHeading}></div>`+html;
     }
     proofs+=b.proofs?.length||0;
     html+=renderProofs(b.proofs,{id,key,tag:b.tag||s.tag,label:label,notes:sourceNotes,renderer:r});
     return `<section id="${id}" class="passage ${b.kind}" data-example="${key}" data-source-label="${esc(label)}" data-source-tag="${b.tag||s.tag}" aria-label="${esc(label)}">${html}</section>`;
    }).join('');
    sources[s.tag]=sourceRecord(root,s,manifest,sourceNotes);
-   const chapterHeading=s.chapterTitle&&index>0&&s.chapter!==unit.sections[index-1].chapter
-    ?`<p class="eyebrow">${esc(s.chapterTitle)}</p>`:'';
-   return `<section class="source-section" id="${s.tag}" data-source-sha256="${s.sha256}"><header class="source-section-header">${chapterHeading}<h2>${s.number}. ${esc(s.title)}</h2></header>${content}</section>`;
+   const chapterHeading=unit.target
+    ?s.stage?`<h2 class="source-chapter-title">${esc(s.stage)}</h2>`:''
+    :s.chapterTitle&&index>0&&s.chapter!==unit.sections[index-1].chapter?`<p class="eyebrow">${esc(s.chapterTitle)}</p>`:'';
+   return `<section class="source-section" id="${s.tag}" data-source-sha256="${s.sha256}"><header class="source-section-header">${chapterHeading}<${sectionHeading}>${s.number}. ${esc(s.title)}</${sectionHeading}></header>${content}</section>`;
   }).join('');
   if(!unit.readingTitle)stats.push({slug:unit.slug,sections:unit.sections.length,proofs,statements,formulas:r.mathCount});
   const first=Object.keys(data)[0],firstSource=unit.sections[0];
@@ -92,7 +95,7 @@ export function buildSchemePath({root,dist,head,header,footer,matchingHTML}){
    ?`<p class="dependency-guide"><a href="#${unit.target}">Genus formula · Lemma ${referencesByTag.get(unit.target).number}</a><br><a href="../../${coreHref}">Prerequisite · Path to schemes</a></p>`
    :unit===coreReading?`<p class="dependency-guide"><a href="#${schemeTree.rootTag}">Definition 26.9.1 · Schemes</a></p>`:'';
   const dependencyLink=tree?`<p class="dependency-guide"><a href="../../${tree.url}#dependency-tree">Dependency tree</a><br>Yellow numbers lead to their place in the tree.</p>`:'';
-  const html=head(unit.readingTitle||unit.title,'../../',`The Stacks Project, Chapter ${unit.number}: ${unit.title}. ${description}`)+header('../../',true)+`<div class="reading-progress" aria-hidden="true"><span></span></div><div class="reader-layout"><nav class="reading-outline" id="reading-outline" aria-label="Reading contents">${outlineLink}<p class="eyebrow">${outlineType}</p><div class="margin-reading-controls"><button id="toggle-proofs" type="button" aria-pressed="false">Show all proofs</button><button class="mobile-example" type="button" data-show-example>Example ↗</button></div>${targetLinks}${dependencyLink}${toc}${unit.readingTitle?'':`<details class="chapter-navigation"><summary>Other chapters</summary>${chapterNav}</details>`}${unit.core&&!unit.readingTitle?`<a href="../${unit.sections[0].chapter}/">Full chapter selection ↗</a>`: ''}<div class="outline-note"><span class="eyebrow">Separate commentary</span><p>Concrete examples</p><button type="button" class="mobile-example" data-show-example>Open example</button></div></nav><main id="main" class="reader-main verbatim-main"><header class="reading-title"><h1>${esc(unit.title)}</h1></header>${sections}</main><aside id="example-dock" class="example-dock" aria-label="Separate commentary with examples" tabindex="-1"><div class="example-sticky"><div class="example-header"><p class="eyebrow">Examples · Commentary</p><button id="close-example" type="button" aria-label="Close example">×</button></div><h2>Motivating examples</h2><p class="matching-guide">See what problem the current concept helps solve. Select a title to expand or collapse the example.</p>${sourcePanel(sources[firstSource.tag])}<div class="example-current"><div class="example-step"><a id="example-stage-label" href="#${firstSource.tag}">§${firstSource.number} · ${esc(firstSource.title)}</a><span id="example-index">01</span></div><div id="example-content">${data[first].html}</div><div class="example-paging"><button id="previous-example" type="button" aria-label="Previous example explanation">← Previous</button><button id="follow-reading" type="button" aria-pressed="true">Follow reading</button><button id="next-example" type="button" aria-label="Next example explanation">Next →</button></div></div></div></aside></div><script type="application/json" id="example-data">${JSON.stringify(data).replaceAll('<','\\u003c')}</script>`+sourceDataScript(sources)+footer('../../')+'</body></html>';
+  const html=head(unit.readingTitle||unit.title,'../../',unit.target?description:`The Stacks Project, Chapter ${unit.number}: ${unit.title}. ${description}`)+header('../../',true)+`<div class="reading-progress" aria-hidden="true"><span></span></div><div class="reader-layout"><nav class="reading-outline" id="reading-outline" aria-label="Reading contents">${outlineLink}<p class="eyebrow">${outlineType}</p><div class="margin-reading-controls"><button id="toggle-proofs" type="button" aria-pressed="false">Show all proofs</button><button class="mobile-example" type="button" data-show-example>Example ↗</button></div>${targetLinks}${dependencyLink}${toc}${unit.readingTitle?'':`<details class="chapter-navigation"><summary>Other chapters</summary>${chapterNav}</details>`}${unit.core&&!unit.readingTitle?`<a href="../${unit.sections[0].chapter}/">Full chapter selection ↗</a>`: ''}<div class="outline-note"><span class="eyebrow">Separate commentary</span><p>Concrete examples</p><button type="button" class="mobile-example" data-show-example>Open example</button></div></nav><main id="main" class="reader-main verbatim-main"><header class="reading-title"><h1>${esc(unit.target?unit.readingTitle:unit.title)}</h1></header>${sections}</main><aside id="example-dock" class="example-dock" aria-label="Separate commentary with examples" tabindex="-1"><div class="example-sticky"><div class="example-header"><p class="eyebrow">Examples · Commentary</p><button id="close-example" type="button" aria-label="Close example">×</button></div><h2>Motivating examples</h2><p class="matching-guide">See what problem the current concept helps solve. Select a title to expand or collapse the example.</p>${sourcePanel(sources[firstSource.tag])}<div class="example-current"><div class="example-step"><a id="example-stage-label" href="#${firstSource.tag}">§${firstSource.number} · ${esc(firstSource.title)}</a><span id="example-index">01</span></div><div id="example-content">${data[first].html}</div><div class="example-paging"><button id="previous-example" type="button" aria-label="Previous example explanation">← Previous</button><button id="follow-reading" type="button" aria-pressed="true">Follow reading</button><button id="next-example" type="button" aria-label="Next example explanation">Next →</button></div></div></div></aside></div><script type="application/json" id="example-data">${JSON.stringify(data).replaceAll('<','\\u003c')}</script>`+sourceDataScript(sources)+footer('../../')+'</body></html>';
   fs.mkdirSync(path.join(dist,'read',unit.slug),{recursive:true});fs.writeFileSync(path.join(dist,'read',unit.slug,'index.html'),html);
 
  }
@@ -134,6 +137,15 @@ export function buildSchemePath({root,dist,head,header,footer,matchingHTML}){
  const genusTreeDir=path.join(dist,genusTree.url);
  fs.mkdirSync(genusTreeDir,{recursive:true});
  fs.writeFileSync(path.join(genusTreeDir,'index.html'),genusPage);
+ for(const directory of ['read','dependencies']){
+  const legacyDir=path.join(dist,directory,'twists-and-genus');
+  const destination=`../${theoremReading.slug}/`;
+  const label=directory==='read'?theoremReading.readingTitle:'Dependency tree for the plane-curve genus formula';
+  const html=head(label,'../../','This page has moved.')+
+   `<main id="main" class="prose-page"><a href="${destination}">${esc(label)}</a></main><script>location.replace(${JSON.stringify(destination)}+location.search+location.hash);</script></body></html>`;
+  fs.mkdirSync(legacyDir,{recursive:true});
+  fs.writeFileSync(path.join(legacyDir,'index.html'),html);
+ }
 
  const referenceStats=stats.filter(entry=>!entry.slug.startsWith('core-'));
  const totalProofs=referenceStats.reduce((a,s)=>a+s.proofs,0),totalStatements=referenceStats.reduce((a,s)=>a+s.statements,0);

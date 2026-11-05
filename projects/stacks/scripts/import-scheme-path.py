@@ -86,9 +86,10 @@ for chapter in chapters:
             if owner==key:routes[label]=chapter['slug']
     units.append(dict(slug=chapter['slug'],title=chapter['title'],number=chapter['number'],tag=chapter['tag'],subtitle='The Stacks Project — '+chapter['title'],support=chapter['slug'] in ['categories','homology','modules'],sections=unit))
 # Additional readings have their own scope and do not expand the foundation path.
+genus_slug='plane-curve-genus'
 reading_specs=[
-    ('twists-and-genus','Sheaf cohomology and the genus of a plane curve',
-     'Starting from schemes, build projective space and sheaf cohomology, then prove the plane-curve genus formula.',
+    (genus_slug,'The genus formula for plane curves',
+     'Read selected sections on homological algebra, projective space, and sheaf cohomology in the original Stacks order.',
      ['modules-section-quasi-coherent',
       'schemes-section-quasi-coherent-affine',
       'schemes-section-immersions',
@@ -137,15 +138,10 @@ reading_specs=[
 ]
 readings=[]
 core_sections=json.loads((root/'upstream/scheme-core.json').read_text())
-genus_stages={
-    'modules-section-quasi-coherent':'Modules and projective space',
-    'homology-section-complexes':'Sheaf cohomology and Čech complexes',
-    'divisors-section-embedded':'Plane curves and genus',
-}
 for slug, title, deck, keys in reading_specs:
     entries=[]
-    for key in keys:
-        if slug=='twists-and-genus' and sections[key]['number'] in core_sections:
+    for key in sorted(keys,key=lambda key:tuple(map(int,sections[key]['number'].split('.')))):
+        if slug==genus_slug and sections[key]['number'] in core_sections:
             raise ValueError('Section already in the scheme definition path: '+key)
         s=sections[key]
         filename=s['chapter']+'-'+s['label'].removeprefix('section-')
@@ -154,13 +150,13 @@ for slug, title, deck, keys in reading_specs:
         chapter=next(c for c in chapters if c['slug']==s['chapter'])
         entry['title']=entry['title'].replace(r'{\v C}', 'Č')
         entry.update(slug=filename,chapterTitle=chapter['title'],sha256=hashlib.sha256(s['text'].encode()).hexdigest())
-        if slug=='twists-and-genus' and key in genus_stages:
-            entry['stage']=genus_stages[key]
+        if slug==genus_slug and (not entries or entries[-1]['chapter']!=s['chapter']):
+            entry['stage']=f"{chapter['number']}. {chapter['title']}"
         entries.append(entry)
     chapter=next(c for c in chapters if c['slug']==entries[0]['chapter'])
     reading=dict(slug=slug,readingTitle=title,deck=deck,title=chapter['title'],
                  number=chapter['number'],sections=entries)
-    if slug=='twists-and-genus':
+    if slug==genus_slug:
         reading['target']='0BYD'
     readings.append(reading)
 (root/'upstream/selected-readings.json').write_text(json.dumps(readings,indent=2)+'\n')

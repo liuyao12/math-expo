@@ -106,13 +106,26 @@ for(const unit of originalUnits){
   const chapter=originalChapters.find(c=>c.slug===unit.sections[0].chapter);
   if(!chapter||chapter.title!==unit.title||chapter.number!==unit.number)throw Error('Changed original chapter title '+unit.slug);
   const html=fs.readFileSync(path.join(dist,'read',unit.slug,'index.html'),'utf8');
-  if(!html.includes('<h1>'+escapeHTML(chapter.title)+'</h1>'))throw Error('Missing original chapter heading '+unit.slug);
+  const title=unit.target?unit.readingTitle:chapter.title;
+  if(!html.includes('<h1>'+escapeHTML(title)+'</h1>'))throw Error('Missing reading heading '+unit.slug);
   const records=JSON.parse(html.match(/<script type="application\/json" id="source-data">([\s\S]*?)<\/script>/)[1]);
+  const sectionHeading=unit.target?'h3':'h2';
   for(const section of unit.sections){
     const source=fs.readFileSync(path.join(root,'upstream/sections',section.slug+'.tex'),'utf8');
     if(createHash('sha256').update(source).digest('hex')!==section.sha256)throw Error('Altered section source '+section.slug);
-    if(!html.includes('<h2>'+section.number+'. '+escapeHTML(section.title)+'</h2>'))throw Error('Changed original section title '+section.slug);
+    if(!html.includes('<'+sectionHeading+'>'+section.number+'. '+escapeHTML(section.title)+'</'+sectionHeading+'>'))throw Error('Changed original section title '+section.slug);
     if(!records[section.tag].html.includes('<pre><code>'+escapeHTML(source)+'</code></pre>'))throw Error('Missing margin source '+section.slug);
+  }
+  if(unit.target){
+    const numbers=unit.sections.map(s=>s.number);
+    const sorted=[...numbers].sort((a,b)=>a.localeCompare(b,'en',{numeric:true}));
+    if(numbers.join()!==sorted.join())throw Error('Sections are out of original order in '+unit.slug);
+    const headings=[...new Set(unit.sections.map(s=>s.chapter))].map(slug=>{
+      const original=originalChapters.find(c=>c.slug===slug);
+      return escapeHTML(original.number+'. '+original.title);
+    });
+    const rendered=[...html.matchAll(/<h2 class="source-chapter-title">([^<]+)<\/h2>/g)].map(m=>m[1]);
+    if(rendered.join()!==headings.join())throw Error('Missing or reordered original chapter headings in '+unit.slug);
   }
 }
 const selection=JSON.parse(fs.readFileSync(path.join(root,'upstream/scheme-selection.json'),'utf8'));
