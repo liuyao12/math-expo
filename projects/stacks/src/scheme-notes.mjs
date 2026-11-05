@@ -228,14 +228,14 @@ U\cap V=\operatorname{Spec}\bigl(\mathbb C[z,z^{-1}]\bigr),\\
 w=z^{-1}
 \end{gathered}
 \]`,r`The gluing uses regular functions. On complex points the same coordinate change gives the holomorphic atlas of the sphere.`,r`One affine chart misses infinity. Gluing affine charts with compatible function rings gives a space that is algebraic near every point.`),
- category:model('Smooth manifolds and smooth maps',[
-  b(r`\mathcal C`,r`\mathbf{Man}`),
-  b('x,y,z',r`M,N,P`),
-  b(r`\psi`,r`M\to N`),
-  b(r`\phi`,r`N\to P`)
+ category:model('Vector spaces and linear maps over a field',[
+  b(r`\mathcal C`,r`\mathbf{Vect}_k`),
+  b('x,y,z',r`U,V,W`),
+  b(r`\psi`,r`U\to V`),
+  b(r`\phi`,r`V\to W`)
  ],r`\[
-\phi\circ\psi:M\to P
-\]`,'',r`Composing smooth maps gives a smooth map. The tangent-space construction will respect this composition by the chain rule.`),
+(\phi\circ\psi)(u)=\phi(\psi(u))
+\]`,'',r`The objects are vector spaces over \(k\). The morphisms are \(k\)-linear maps, with the usual composition and identity maps.`),
  bundlePullback:model('Pull a vector bundle back along a map',[
   b(r`\mathcal C`,r`\mathbf{Top}`),
   b('x,z',r`X,E`),
@@ -878,6 +878,17 @@ const doubleDual={...model('The natural map to the double dual',[
  &=\bigl(t_W F(\phi)(v)\bigr)(\lambda).
 \end{aligned}
 \]`,r`The evaluation maps are isomorphisms in finite dimension.`,r`This example opens Eilenberg and Mac Lane’s 1945 paper.`),source:naturalEquivalences};
+const matrixEquivalence=model('Finite-dimensional vector spaces and matrices',[
+ b(r`\mathcal A`,r`\mathbf{Mat}_k`,r`Objects are \(n\ge0\), representing \(k^n\). A morphism \(n\to m\) is an \(m\times n\) matrix.`),
+ b(r`\mathcal B`,r`\mathbf{Vect}^{\mathrm{fd}}_k`),
+ b('F',r`(n\mapsto k^n,\ A\mapsto(v\mapsto Av))`),
+ b('G',r`(V\mapsto \dim_k V,\ f\mapsto [f])`)
+],r`\[
+\begin{gathered}
+G\circ F=\mathrm{id}_{\mathcal A},\\
+\mathrm{id}_{\mathcal B}\xrightarrow{\sim}F\circ G.
+\end{gathered}
+\]`,r`Choose a basis for each \(V\), using the standard basis for \(k^n\). The coordinates \(V\to k^{\dim_k V}\) give the natural isomorphism.`,r`Every linear map between coordinate spaces is given by a unique matrix, and composition is matrix multiplication. Every finite-dimensional space admits coordinates.`);
 const dual=model('Dualizing reverses the arrows',[
  finiteVect,b(r`\mathcal S`,r`\mathbf{Vect}^{\mathrm{fd}}_{\mathbb R}`),
  b('F',r`(V\mapsto V^*)`),
@@ -940,6 +951,9 @@ export function passageNote(section,block){
  if(section.slug==='intersection-computing-intersection-multiplicities'&&block.label==='lemma-multiplicity-with-effective-Cartier-divisor')return {...conicIntersection,scope:'statement'};
  if(section.slug==='categories-definition-categories'&&block.label==='definition-functor')return {...fundamentalGroup,scope:'statement',examples:[singularHomology,tangentSpace].map(example=>({...example,scope:'statement'}))};
  if(section.slug==='categories-definition-categories'&&block.label==='definition-transformation-functors')return {...doubleDual,scope:'statement'};
+ if(section.slug==='categories-definition-categories'&&
+    ['definition-equivalence-categories','lemma-construct-quasi-inverse','lemma-equivalence-categories'].includes(block.label))
+  return {...matrixEquivalence,scope:'statement'};
  if(section.slug==='categories-opposite'&&block.label==='definition-contravariant')return {...dual,scope:'statement'};
  if(section.slug==='sheaves-presheaves'&&block.label==='definition-presheaf')return {...models.presheaf,scope:'statement'};
  if(section.slug==='sheaves-abelian-presheaves'&&block.label==='definition-abelian-presheaves')return {...models.abelianMorphism,scope:'statement'};
