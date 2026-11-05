@@ -3388,5 +3388,465 @@
     "tag": "01I7",
     "number": "26.7.1",
     "kind": "lemma"
+  },
+  "algebra-lemma-acyclic": {
+    "tag": "00N0",
+    "number": "10.102.8",
+    "kind": "lemma"
+  },
+  "algebra-lemma-dimension-at-a-point-finite-type-field": {
+    "tag": "00P1",
+    "number": "10.116.3",
+    "kind": "lemma"
+  },
+  "algebra-lemma-dimension-is-length": {
+    "tag": "00IY",
+    "number": "10.52.6",
+    "kind": "lemma"
+  },
+  "algebra-lemma-dimension-prime-polynomial-ring": {
+    "tag": "00P0",
+    "number": "10.116.1",
+    "kind": "lemma"
+  },
+  "algebra-lemma-length-additive": {
+    "tag": "00IV",
+    "number": "10.52.3",
+    "kind": "lemma"
+  },
+  "algebra-lemma-length-independent": {
+    "tag": "00IX",
+    "number": "10.52.5",
+    "kind": "lemma"
+  },
+  "algebra-lemma-ord-additive": {
+    "tag": "02MC",
+    "number": "10.121.1",
+    "kind": "lemma"
+  },
+  "algebra-lemma-reformulate-CM": {
+    "tag": "02JN",
+    "number": "10.104.2",
+    "kind": "lemma"
+  },
+  "algebra-lemma-regular-quasi-regular": {
+    "tag": "00LN",
+    "number": "10.69.2",
+    "kind": "lemma"
+  },
+  "algebra-proposition-Auslander-Buchsbaum": {
+    "tag": "090V",
+    "number": "10.111.1",
+    "kind": "proposition"
+  },
+  "algebra-proposition-dimension": {
+    "tag": "00KQ",
+    "number": "10.60.9",
+    "kind": "proposition"
+  },
+  "algebra-proposition-dimension-zero-ring": {
+    "tag": "00KJ",
+    "number": "10.60.7",
+    "kind": "proposition"
+  },
+  "chow-section-cycle-of-closed-subscheme": {
+    "tag": "02QS",
+    "number": "42.9",
+    "kind": "section"
+  },
+  "coherent-lemma-coherent-support-dimension-0": {
+    "tag": "0B3J",
+    "number": "30.9.10",
+    "kind": "lemma"
+  },
+  "coherent-lemma-flat-base-change-cohomology": {
+    "tag": "02KH",
+    "number": "30.5.2",
+    "kind": "lemma"
+  },
+  "coherent-lemma-i-star-equivalence": {
+    "tag": "087T",
+    "number": "30.9.8",
+    "kind": "lemma"
+  },
+  "coherent-lemma-power-ideal-kills-sheaf": {
+    "tag": "01Y9",
+    "number": "30.10.2",
+    "kind": "lemma"
+  },
+  "coherent-lemma-proper-finite-fibre-finite-in-neighbourhood": {
+    "tag": "02OH",
+    "number": "30.21.2",
+    "kind": "lemma"
+  },
+  "coherent-lemma-property": {
+    "tag": "01YI",
+    "number": "30.12.6",
+    "kind": "lemma"
+  },
+  "coherent-lemma-relative-affine-cohomology": {
+    "tag": "089W",
+    "number": "30.2.4",
+    "kind": "lemma"
+  },
+  "coherent-lemma-section-affine-open-kills-classes": {
+    "tag": "01XR",
+    "number": "30.17.4",
+    "kind": "lemma"
+  },
+  "coherent-lemma-surjective-finite-morphism-ample": {
+    "tag": "0B5V",
+    "number": "30.17.2",
+    "kind": "lemma"
+  },
+  "coherent-lemma-vanshing-gives-ample": {
+    "tag": "0B5U",
+    "number": "30.17.1",
+    "kind": "lemma"
+  },
+  "cohomology-lemma-projection-formula": {
+    "tag": "01E8",
+    "number": "20.54.2",
+    "kind": "lemma"
+  },
+  "divisors-definition-effective-Cartier-divisor": {
+    "tag": "01WR",
+    "number": "31.14.1",
+    "kind": "definition"
+  },
+  "divisors-definition-invertible-sheaf-effective-Cartier-divisor": {
+    "tag": "01WX",
+    "number": "31.15.1",
+    "kind": "definition"
+  },
+  "divisors-definition-regular-section": {
+    "tag": "01WY",
+    "number": "31.15.6",
+    "kind": "definition"
+  },
+  "divisors-definition-sum-effective-Cartier-divisors": {
+    "tag": "01WT",
+    "number": "31.14.6",
+    "kind": "definition"
+  },
+  "divisors-definition-zero-scheme-s": {
+    "tag": "02OQ",
+    "number": "31.15.8",
+    "kind": "definition"
+  },
+  "divisors-lemma-Noetherian-scheme-regular-ideal": {
+    "tag": "063I",
+    "number": "31.21.8",
+    "kind": "lemma"
+  },
+  "divisors-lemma-characterize-OD": {
+    "tag": "01X0",
+    "number": "31.15.10",
+    "kind": "lemma"
+  },
+  "divisors-lemma-characterize-effective-Cartier-divisor": {
+    "tag": "01WS",
+    "number": "31.14.2",
+    "kind": "lemma"
+  },
+  "divisors-lemma-complement-effective-Cartier-divisor": {
+    "tag": "07ZU",
+    "number": "31.14.4",
+    "kind": "lemma"
+  },
+  "divisors-lemma-conormal-effective-Cartier-divisor": {
+    "tag": "0B3P",
+    "number": "31.15.2",
+    "kind": "lemma"
+  },
+  "divisors-lemma-difference-effective-Cartier-divisors": {
+    "tag": "02ON",
+    "number": "31.14.8",
+    "kind": "lemma"
+  },
+  "divisors-lemma-filter-after-modification": {
+    "tag": "0AYP",
+    "number": "31.37.1",
+    "kind": "lemma"
+  },
+  "divisors-lemma-invertible-sheaf-sum-effective-Cartier-divisors": {
+    "tag": "02OP",
+    "number": "31.15.4",
+    "kind": "lemma"
+  },
+  "divisors-lemma-pullback-effective-Cartier-divisors": {
+    "tag": "0C4U",
+    "number": "31.15.5",
+    "kind": "lemma"
+  },
+  "divisors-lemma-regular-section-structure-sheaf": {
+    "tag": "01WZ",
+    "number": "31.15.7",
+    "kind": "lemma"
+  },
+  "divisors-lemma-ses-add-divisor": {
+    "tag": "0C4T",
+    "number": "31.15.3",
+    "kind": "lemma"
+  },
+  "divisors-lemma-zero-scheme": {
+    "tag": "02OR",
+    "number": "31.15.9",
+    "kind": "lemma"
+  },
+  "divisors-remark-ses-regular-section": {
+    "tag": "0C6K",
+    "number": "31.15.11",
+    "kind": "remark"
+  },
+  "divisors-section-effective-Cartier-invertible": {
+    "tag": "0C4S",
+    "number": "31.15",
+    "kind": "section"
+  },
+  "intersection-lemma-intersection-multiplicity-CM": {
+    "tag": "0B02",
+    "number": "43.16.1",
+    "kind": "lemma"
+  },
+  "intersection-lemma-multiplicity-lci-CM": {
+    "tag": "0B06",
+    "number": "43.16.5",
+    "kind": "lemma"
+  },
+  "intersection-lemma-multiplicity-with-effective-Cartier-divisor": {
+    "tag": "0B05",
+    "number": "43.16.4",
+    "kind": "lemma"
+  },
+  "intersection-lemma-multiplicity-with-lci": {
+    "tag": "0B04",
+    "number": "43.16.3",
+    "kind": "lemma"
+  },
+  "intersection-lemma-one-ideal-ci": {
+    "tag": "0B03",
+    "number": "43.16.2",
+    "kind": "lemma"
+  },
+  "intersection-lemma-pullback-by-regular-immersion": {
+    "tag": "0AZN",
+    "number": "43.13.2",
+    "kind": "lemma"
+  },
+  "intersection-remark-trivial-generalization": {
+    "tag": "0B00",
+    "number": "43.15.6",
+    "kind": "remark"
+  },
+  "intersection-section-computing-intersection-multiplicities": {
+    "tag": "0B01",
+    "number": "43.16",
+    "kind": "section"
+  },
+  "intersection-theorem-multiplicity-with-koszul": {
+    "tag": "0AZZ",
+    "number": "43.15.5",
+    "kind": "theorem"
+  },
+  "modules-definition-powers": {
+    "tag": "01CU",
+    "number": "17.25.6",
+    "kind": "definition"
+  },
+  "modules-lemma-det-ses": {
+    "tag": "0B38",
+    "number": "17.26.1",
+    "kind": "lemma"
+  },
+  "more-algebra-lemma-noetherian-finite-all-equivalent": {
+    "tag": "09CC",
+    "number": "15.31.7",
+    "kind": "lemma"
+  },
+  "morphisms-definition-degree": {
+    "tag": "02NY",
+    "number": "29.52.8",
+    "kind": "definition"
+  },
+  "morphisms-definition-finite-locally-free": {
+    "tag": "02KA",
+    "number": "29.49.1",
+    "kind": "definition"
+  },
+  "morphisms-lemma-affine-conormal": {
+    "tag": "01R3",
+    "number": "29.32.2",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-closed-immersion-proper": {
+    "tag": "01W5",
+    "number": "29.42.6",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-closed-point-fibre-locally-finite-type": {
+    "tag": "01TF",
+    "number": "29.21.3",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-composition-proper": {
+    "tag": "01W3",
+    "number": "29.42.4",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-finite-proper": {
+    "tag": "01WN",
+    "number": "29.45.11",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-i-star-equivalence": {
+    "tag": "01QY",
+    "number": "29.4.1",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-image-proper-scheme-closed": {
+    "tag": "01W6",
+    "number": "29.42.7",
+    "kind": "lemma"
+  },
+  "morphisms-lemma-quasi-compact-immersion": {
+    "tag": "01RG",
+    "number": "29.7.7",
+    "kind": "lemma"
+  },
+  "properties-lemma-affine-cap-s-open": {
+    "tag": "01PV",
+    "number": "28.27.4",
+    "kind": "lemma"
+  },
+  "varieties-definition-degree-invertible-sheaf": {
+    "tag": "0AYR",
+    "number": "33.44.1",
+    "kind": "definition"
+  },
+  "varieties-lemma-algebraic-scheme-dim-0": {
+    "tag": "06LH",
+    "number": "33.20.2",
+    "kind": "lemma"
+  },
+  "varieties-lemma-ample-curve": {
+    "tag": "0B5X",
+    "number": "33.44.14",
+    "kind": "lemma"
+  },
+  "varieties-lemma-ampleness-in-terms-of-degrees-components": {
+    "tag": "0B5Y",
+    "number": "33.44.15",
+    "kind": "lemma"
+  },
+  "varieties-lemma-check-invertible-sheaf-trivial": {
+    "tag": "0B40",
+    "number": "33.44.12",
+    "kind": "lemma"
+  },
+  "varieties-lemma-chi-tensor-finite": {
+    "tag": "0AYT",
+    "number": "33.33.3",
+    "kind": "lemma"
+  },
+  "varieties-lemma-degree-additive": {
+    "tag": "0AYS",
+    "number": "33.44.3",
+    "kind": "lemma"
+  },
+  "varieties-lemma-degree-and-det": {
+    "tag": "0DJ5",
+    "number": "33.44.8",
+    "kind": "lemma"
+  },
+  "varieties-lemma-degree-base-change": {
+    "tag": "0B59",
+    "number": "33.44.2",
+    "kind": "lemma"
+  },
+  "varieties-lemma-degree-birational-pullback": {
+    "tag": "0AYU",
+    "number": "33.44.4",
+    "kind": "lemma"
+  },
+  "varieties-lemma-degree-effective-Cartier-divisor": {
+    "tag": "0AYY",
+    "number": "33.44.9",
+    "kind": "lemma"
+  },
+  "varieties-lemma-degree-in-terms-of-components": {
+    "tag": "0AYW",
+    "number": "33.44.6",
+    "kind": "lemma"
+  },
+  "varieties-lemma-degree-on-proper-curve": {
+    "tag": "0AYV",
+    "number": "33.44.5",
+    "kind": "lemma"
+  },
+  "varieties-lemma-degree-pullback-map-proper-curves": {
+    "tag": "0AYZ",
+    "number": "33.44.11",
+    "kind": "lemma"
+  },
+  "varieties-lemma-degree-tensor-product": {
+    "tag": "0AYX",
+    "number": "33.44.7",
+    "kind": "lemma"
+  },
+  "varieties-lemma-dense-smooth-open-variety-over-perfect-field": {
+    "tag": "0B8X",
+    "number": "33.25.8",
+    "kind": "lemma"
+  },
+  "varieties-lemma-dim-1-proper-projective": {
+    "tag": "0A26",
+    "number": "33.43.4",
+    "kind": "lemma"
+  },
+  "varieties-lemma-divisible": {
+    "tag": "0C6P",
+    "number": "33.44.10",
+    "kind": "lemma"
+  },
+  "varieties-lemma-euler-characteristic-additive": {
+    "tag": "08AA",
+    "number": "33.33.2",
+    "kind": "lemma"
+  },
+  "varieties-lemma-general-degree-g-line-bundle": {
+    "tag": "0B8Z",
+    "number": "33.44.16",
+    "kind": "lemma"
+  },
+  "varieties-lemma-no-sections-dual-nef": {
+    "tag": "0E22",
+    "number": "33.44.13",
+    "kind": "lemma"
+  },
+  "varieties-lemma-proper-geometrically-reduced-global-sections": {
+    "tag": "0BUG",
+    "number": "33.9.3",
+    "kind": "lemma"
+  },
+  "varieties-lemma-regular-point-on-curve": {
+    "tag": "0B8Y",
+    "number": "33.43.8",
+    "kind": "lemma"
+  },
+  "varieties-lemma-vanishing-degree-2g-and-1-line-bundle": {
+    "tag": "0B90",
+    "number": "33.44.17",
+    "kind": "lemma"
+  },
+  "varieties-section-divisors-curves": {
+    "tag": "0AYQ",
+    "number": "33.44",
+    "kind": "section"
+  },
+  "varieties-section-euler": {
+    "tag": "0BEI",
+    "number": "33.33",
+    "kind": "section"
   }
 }

@@ -66,10 +66,13 @@
     $('#follow-reading').addEventListener('click',()=>{selectionPinned=false;follow=true;setExample(lastReading,false,lastReadingContext);});
     const sections=$$('.source-section');let scheduled=false;
     const contexts=$$('.passage[data-example],.proof-body[data-example]');
-    const update=()=>{scheduled=false;let active=passages[0];for(const p of contexts){if(!p.getClientRects().length)continue;if(p.getBoundingClientRect().top<=innerHeight*.3)active=p;else break;}if(active){lastReading=active.dataset.example;lastReadingContext=active;if(follow&&(lastReading!==current||activeContext!==active))setExample(lastReading,false,active);}
+    const update=()=>{scheduled=false;
+      const denominator=document.documentElement.scrollHeight-innerHeight;
+      const readingLine=innerHeight*(denominator-scrollY<=1?.55:.3);
+      let active=passages[0];for(const p of contexts){if(!p.getClientRects().length)continue;if(p.getBoundingClientRect().top<=readingLine)active=p;else break;}if(active){lastReading=active.dataset.example;lastReadingContext=active;if(follow&&(lastReading!==current||activeContext!==active))setExample(lastReading,false,active);}
       let section=sections[0];for(const s of sections)if(s.getBoundingClientRect().top<innerHeight*.38)section=s;
       $$('[data-outline]').forEach(a=>{if(a.dataset.outline===section?.id)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});
-      const denominator=document.documentElement.scrollHeight-innerHeight;const percent=denominator?Math.max(0,Math.min(1,scrollY/denominator)):0;$('.reading-progress span').style.width=percent*100+'%';
+      const percent=denominator?Math.max(0,Math.min(1,scrollY/denominator)):0;$('.reading-progress span').style.width=percent*100+'%';
     };
     addEventListener('scroll',()=>{if(!scheduled){scheduled=true;requestAnimationFrame(update);}},{passive:true});
     addEventListener('resize',update);setExample(current);update();

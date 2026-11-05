@@ -1,8 +1,8 @@
 [
   {
     "slug": "projective-twists",
-    "readingTitle": "Twisting sheaves on the projective line",
-    "deck": "Compute the local generators, overlap rule, and global sections of each twist.",
+    "readingTitle": "Twisting sheaves and intersection multiplicity",
+    "deck": "Follow the twists from the projective line to Cartier divisors and the intersection of a line with a conic.",
     "title": "Constructions of Schemes",
     "number": 27,
     "sections": [
@@ -16,7 +16,47 @@
         "source_start_line": 1687,
         "source_end_line": 2040,
         "slug": "constructions-invertible-on-proj",
+        "chapterTitle": "Constructions of Schemes",
         "sha256": "b94f42ec3263bce02e99435e34fe9d8772d7cab80913f8888da541721cb14f9e"
+      },
+      {
+        "chapter": "divisors",
+        "label": "section-effective-Cartier-invertible",
+        "title": "Effective Cartier divisors and invertible sheaves",
+        "tag": "0C4S",
+        "number": "31.15",
+        "kind": "section",
+        "source_start_line": 2651,
+        "source_end_line": 2916,
+        "slug": "divisors-effective-Cartier-invertible",
+        "chapterTitle": "Divisors",
+        "sha256": "fa16c326cea8580962c1f68901b214ea8cb71fc10c6e7206b12f4c65803dd3b8"
+      },
+      {
+        "chapter": "varieties",
+        "label": "section-divisors-curves",
+        "title": "Degrees on curves",
+        "tag": "0AYQ",
+        "number": "33.44",
+        "kind": "section",
+        "source_start_line": 9526,
+        "source_end_line": 10184,
+        "slug": "varieties-divisors-curves",
+        "chapterTitle": "Varieties",
+        "sha256": "e3b155177e0eac5279e0524d0fb676afd4ab6ed38be54cc77a8bf29ee17576e7"
+      },
+      {
+        "chapter": "intersection",
+        "label": "section-computing-intersection-multiplicities",
+        "title": "Computing intersection multiplicities",
+        "tag": "0B01",
+        "number": "43.16",
+        "kind": "section",
+        "source_start_line": 1131,
+        "source_end_line": 1310,
+        "slug": "intersection-computing-intersection-multiplicities",
+        "chapterTitle": "Intersection Theory",
+        "sha256": "18f58701d33f03235519025277852b3eca809083f560e83a142ab78f1b42fe11"
       }
     ]
   }

@@ -87,9 +87,12 @@ for chapter in chapters:
     units.append(dict(slug=chapter['slug'],title=chapter['title'],number=chapter['number'],tag=chapter['tag'],subtitle='The Stacks Project — '+chapter['title'],support=chapter['slug'] in ['categories','homology','modules'],sections=unit))
 # Additional readings have their own scope and do not expand the foundation path.
 reading_specs=[
-    ('projective-twists','Twisting sheaves on the projective line',
-     'Compute the local generators, overlap rule, and global sections of each twist.',
-     ['constructions-section-invertible-on-proj']),
+    ('projective-twists','Twisting sheaves and intersection multiplicity',
+     'Follow the twists from the projective line to Cartier divisors and the intersection of a line with a conic.',
+     ['constructions-section-invertible-on-proj',
+      'divisors-section-effective-Cartier-invertible',
+      'varieties-section-divisors-curves',
+      'intersection-section-computing-intersection-multiplicities']),
 ]
 readings=[]
 for slug, title, deck, keys in reading_specs:
@@ -99,7 +102,8 @@ for slug, title, deck, keys in reading_specs:
         filename=s['chapter']+'-'+s['label'].removeprefix('section-')
         (root/'upstream/sections'/(filename+'.tex')).write_text(s['text'])
         entry={k:v for k,v in s.items() if k!='text'}
-        entry.update(slug=filename,sha256=hashlib.sha256(s['text'].encode()).hexdigest())
+        chapter=next(c for c in chapters if c['slug']==s['chapter'])
+        entry.update(slug=filename,chapterTitle=chapter['title'],sha256=hashlib.sha256(s['text'].encode()).hexdigest())
         entries.append(entry)
     chapter=next(c for c in chapters if c['slug']==entries[0]['chapter'])
     readings.append(dict(slug=slug,readingTitle=title,deck=deck,title=chapter['title'],

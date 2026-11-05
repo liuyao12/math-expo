@@ -20,7 +20,8 @@ export function createRenderer(root, options={}) {
   const sourceDiagrams=fs.existsSync(diagramFile)?JSON.parse(fs.readFileSync(diagramFile,'utf8')):{};
   let mathCount=0;
   const macros={ '\\Spec':'\\operatorname{Spec}', '\\Mor':'\\operatorname{Mor}', '\\Sh':'\\mathit{Sh}', '\\Sch':'\\mathit{Sch}' };
-  for(const name of ['Hom','Ob','colim','Ker','Coker','Coim','Im','Ext'])macros['\\'+name]='\\operatorname{'+name+'}';
+  macros['\\SheafHom']='\\mathop{\\mathcal{H}\\!\\mathit{om}}\\nolimits';
+  for(const name of ['Hom','Ob','colim','Ker','Coker','Coim','Im','Ext','Pic'])macros['\\'+name]='\\operatorname{'+name+'}';
   const braces=(s,start)=>{
     if(s[start]!=='{')throw Error('Expected opening brace: '+s.slice(start,start+40));
     let depth=1,i=start+1;

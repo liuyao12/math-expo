@@ -209,7 +209,33 @@ const twistOpen=model('A coordinate section picks out an affine chart',[
  b('W',r`X`,'The two degree-one standard opens already cover the projective line.')
 ],r`The section \(T_0\) has coefficient \(1\) in its own chart and coefficient \(w\) in the chart where \(T_1\) is the generator. Its only zero is \(w=0\), the point \([0:1]\).`,r`The locus where the section generates the line bundle is \(D_+(T_0)\). It is affine, with coordinate \(z=T_1/T_0\).`);
 models.twistCharts=twistCharts;
+
+const conic=r`V_+(T_0T_2-T_1^2)`;
+const conicCurve=b('X',conic,r`A smooth conic in \(\mathbb P^2_k\), with \(k\) algebraically closed.`);
+const doublePoint=b('D',r`\operatorname{Spec}(k[z]/(z^2))`,r`The zero scheme supported at \(p=[1:0:0]\).`);
+const tangentDivisor=model('A tangent line cuts out a double point',[
+ conicCurve,
+ b(r`\mathcal L`,r`\mathcal O_{\mathbb P^2_k}(1)|_X`,'The line bundle of plane linear forms restricted to the conic.'),
+ b('s',r`T_2|_X`,'The section obtained by restricting the equation of the tangent line.'),
+ doublePoint
+],r`On \(T_0\ne 0\), let \(z=T_1/T_0\). The conic equation gives \(T_2/T_0=z^2\). In the local generator \(T_0\), the section \(s\) is therefore \(z^2\). It is a nonzerodivisor in \(k[z]\), and its zero scheme is cut out by \((z^2)\).`,r`Under the parametrization \([u:v]\mapsto[u^2:uv:v^2]\), the restricted line bundle is \(\mathcal O_{\mathbb P^1_k}(2)\), and the section becomes \(v^2\). The ideal of \(D\) is \(\mathcal O_X(-D)\cong\mathcal L^{-1}\), so \(\mathcal O_X(D)\cong\mathcal L\).`);
+const conicDegree=model('The degree counts both copies at the point of tangency',[
+ conicCurve,doublePoint,
+ b(r`\mathcal E`,r`\mathcal O_X`,'Take the rank-one structure sheaf in the degree formula.'),
+ b(r`\mathcal E(D)`,r`\mathcal O_X(D)\cong\mathcal L`,'The line bundle of plane linear forms restricted to the conic.')
+],r`The ring of functions of \(D\) has basis \(1,z\) over \(k\), so \(\deg(D)=2\). The structure sheaf has degree zero by the definition of degree, and the degree formula gives \(\deg(\mathcal L)=2\).`,r`The secant \(T_1=0\) gives a different section of \(\mathcal L\), with two distinct simple zeros. Both sections give zero schemes of degree two. The tangent line concentrates that degree at one point.`);
+const conicIntersection=model('Compute the intersection multiplicity by local length',[
+ b('X',r`\mathbb P^2_k`,'The ambient nonsingular surface over an algebraically closed field.'),
+ b('V',r`V_+(T_2)`,'The tangent line, an effective Cartier divisor.'),
+ b('W',conic,'The smooth conic.'),
+ b(r`Z=\{\xi\}`,r`\{[1:0:0]\}`,'The sole point of the intersection.'),
+ b('f_1',r`T_2/T_0`,'The local equation of the tangent line in the chart containing the point.')
+],r`The curves meet properly because the intersection has dimension zero. In the conic local ring \(\mathcal O_{W,\xi}=k[z]_{(z)}\), the image of \(f_1\) is \(z^2\). The quotient has a filtration with successive factors \(kz\) and \(k\), both of length one.`,r`The local length formula gives \(e(X,V\cdot W,Z)=2\). This agrees with the degree of the divisor cut out by the section on the conic.`);
+Object.assign(models,{tangentDivisor,conicDegree,conicIntersection});
 const groups={
+ tangentDivisor:['divisors-effective-Cartier-invertible'],
+ conicDegree:['varieties-divisors-curves'],
+ conicIntersection:['intersection-computing-intersection-multiplicities'],
  twistCharts:['constructions-invertible-on-proj'],
  solutionSheaf:['modules-kernels'],connected:['topology-connected-components'],natural:['categories-opposite','categories-formal-cat-cat'],twoFibre:['categories-2-fibre-products'],over:['categories-categories-over-categories'],topology:['topology-topology-basic'],basis:['topology-bases'],irreducible:['topology-irreducible-components'],noetherian:['topology-noetherian'],compact:['topology-quasi-compact'],specialization:['topology-specialization'],
  snake:['algebra-snake'],colimits:['categories-cofinal','algebra-colimits','categories-directed-colimits','categories-posets-limits'],localization:['algebra-localization'],local:['algebra-radical','algebra-local-rings'],spectrum:['algebra-spectrum-ring'],constructible:['topology-constructible','topology-constructible-Noetherian'],
@@ -307,6 +333,10 @@ export function passageNote(section,block){
   const example=examples[block.label];
   if(example)return {...example,scope:'statement'};
  }
+ if(section.slug==='divisors-effective-Cartier-invertible'&&
+    ['definition-zero-scheme-s','lemma-zero-scheme','lemma-characterize-OD'].includes(block.label))return {...tangentDivisor,scope:'statement'};
+ if(section.slug==='varieties-divisors-curves'&&block.label==='lemma-degree-effective-Cartier-divisor')return {...conicDegree,scope:'statement'};
+ if(section.slug==='intersection-computing-intersection-multiplicities'&&block.label==='lemma-multiplicity-with-effective-Cartier-divisor')return {...conicIntersection,scope:'statement'};
  if(section.slug==='categories-definition-categories'&&block.label==='definition-functor')return {...fundamentalGroup,scope:'statement',examples:[singularHomology,tangentSpace].map(example=>({...example,scope:'statement'}))};
  if(section.slug==='categories-definition-categories'&&block.label==='definition-transformation-functors')return {...doubleDual,scope:'statement'};
  if(section.slug==='categories-opposite'&&block.label==='definition-contravariant')return {...dual,scope:'statement'};

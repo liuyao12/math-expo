@@ -1,0 +1,266 @@
+\section{Effective Cartier divisors and invertible sheaves}
+\label{section-effective-Cartier-invertible}
+
+\noindent
+Since an effective Cartier divisor has an invertible ideal sheaf
+(Definition \ref{definition-effective-Cartier-divisor}) the
+following definition makes sense.
+
+\begin{definition}
+\label{definition-invertible-sheaf-effective-Cartier-divisor}
+Let $S$ be a scheme. Let $D \subset S$ be an effective Cartier divisor
+with ideal sheaf $\mathcal{I}_D$.
+\begin{enumerate}
+\item The {\it invertible sheaf $\mathcal{O}_S(D)$ associated to $D$}
+is defined by
+$$
+\mathcal{O}_S(D) =
+\SheafHom_{\mathcal{O}_S}(\mathcal{I}_D, \mathcal{O}_S) =
+\mathcal{I}_D^{\otimes -1}.
+$$
+\item The {\it canonical section}, usually denoted $1$ or $1_D$, is the
+global section of $\mathcal{O}_S(D)$ corresponding to
+the inclusion mapping $\mathcal{I}_D \to \mathcal{O}_S$.
+\item We write
+$\mathcal{O}_S(-D) = \mathcal{O}_S(D)^{\otimes -1} = \mathcal{I}_D$.
+\item Given a second effective Cartier divisor $D' \subset S$ we define
+$\mathcal{O}_S(D - D') =
+\mathcal{O}_S(D) \otimes_{\mathcal{O}_S} \mathcal{O}_S(-D')$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+Some comments. We will see below that the assignment
+$D \mapsto \mathcal{O}_S(D)$ turns addition of effective Cartier
+divisors (Definition \ref{definition-sum-effective-Cartier-divisors})
+into addition in the Picard group of $S$
+(Lemma \ref{lemma-invertible-sheaf-sum-effective-Cartier-divisors}).
+However, the expression $D - D'$ in the definition above does not
+have any geometric meaning. More precisely, we can think of the
+set of effective Cartier divisors on $S$ as a commutative monoid
+$\text{EffCart}(S)$ whose zero element is the empty effective Cartier divisor.
+Then the assignment $(D, D') \mapsto \mathcal{O}_S(D - D')$ defines
+a group homomorphism
+$$
+\text{EffCart}(S)^{gp} \longrightarrow \Pic(S)
+$$
+where the left hand side is the group completion of
+$\text{EffCart}(S)$. In other words, when we write $\mathcal{O}_S(D - D')$
+we may think of $D - D'$ as an element of $\text{EffCart}(S)^{gp}$.
+
+\begin{lemma}
+\label{lemma-conormal-effective-Cartier-divisor}
+Let $S$ be a scheme and let $D \subset S$ be an effective Cartier divisor.
+Then the conormal sheaf is $\mathcal{C}_{D/S} = \mathcal{I}_D|_D =
+\mathcal{O}_S(-D)|_D$ and the normal sheaf is
+$\mathcal{N}_{D/S} = \mathcal{O}_S(D)|_D$.
+\end{lemma}
+
+\begin{proof}
+This follows from Morphisms, Lemma \ref{morphisms-lemma-affine-conormal}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-ses-add-divisor}
+Let $X$ be a scheme. Let $D, D' \subset X$ be effective Cartier divisors
+with $D \subset D'$ and let $C \subset X$ be an effective Cartier divisor
+such that $D' = D + C$ (which exists by
+Lemma \ref{lemma-difference-effective-Cartier-divisors}).
+Then there is a short exact sequence
+$$
+0 \to \mathcal{O}_X(-D)|_C \to \mathcal{O}_{D'} \to \mathcal{O}_D \to 0
+$$
+of $\mathcal{O}_X$-modules.
+\end{lemma}
+
+\begin{proof}
+In the statement of the lemma and in the proof we use the equivalence of
+Morphisms, Lemma \ref{morphisms-lemma-i-star-equivalence} to think of
+quasi-coherent modules on closed subschemes of $X$
+as quasi-coherent modules on $X$. Let $\mathcal{I}$ be the ideal
+sheaf of $D$ in $D'$ and let $\mathcal{I}_D = \mathcal{O}_X(-D)$ be
+the ideal sheaf of $D$ in $X$. Then there is a canonical surjection
+$\mathcal{I}_D \to \mathcal{I}$.
+Thus it suffices to show the kernel of this map is equal to
+$\mathcal{I}_C\mathcal{I}_D$ (with obvious notation).
+This can be checked locally, hence we may assume
+$X = \Spec(A)$, $D = \Spec(A/fA)$ and $C = \Spec(A/gA)$ where
+$f, g \in A$ are nonzerodivisors
+(Lemma \ref{lemma-characterize-effective-Cartier-divisor}).
+Then $\mathcal{I}_D$ corresponds to $fA$, the nonzerodivisor $fg \in A$
+generates the ideal of $D'$, and $\mathcal{I}$ corresponds to $I = fA/fgA$.
+Thus the result is clear.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-invertible-sheaf-sum-effective-Cartier-divisors}
+Let $S$ be a scheme.
+Let $D_1$, $D_2$ be effective Cartier divisors on $S$.
+Let $D = D_1 + D_2$.
+Then there is a unique isomorphism
+$$
+\mathcal{O}_S(D_1) \otimes_{\mathcal{O}_S} \mathcal{O}_S(D_2)
+\longrightarrow
+\mathcal{O}_S(D)
+$$
+which maps $1_{D_1} \otimes 1_{D_2}$ to $1_D$.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-pullback-effective-Cartier-divisors}
+Let $f : S' \to S$ be a morphism of schemes.
+Let $D$ be an effective Cartier divisor on $S$.
+If the pullback of $D$ is defined then
+$f^*\mathcal{O}_S(D) = \mathcal{O}_{S'}(f^*D)$
+and the canonical section $1_D$ pulls back to
+the canonical section $1_{f^*D}$.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{definition}
+\label{definition-regular-section}
+Let $(X, \mathcal{O}_X)$ be a locally ringed space.
+Let $\mathcal{L}$ be an invertible sheaf on $X$.
+A global section $s \in \Gamma(X, \mathcal{L})$ is called a
+{\it regular section} if the map $\mathcal{O}_X \to \mathcal{L}$,
+$f \mapsto fs$ is injective.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-regular-section-structure-sheaf}
+Let $X$ be a locally ringed space. Let $f \in \Gamma(X, \mathcal{O}_X)$.
+The following are equivalent:
+\begin{enumerate}
+\item $f$ is a regular section, and
+\item for any $x \in X$ the image $f \in \mathcal{O}_{X, x}$
+is a nonzerodivisor.
+\end{enumerate}
+If $X$ is a scheme these are also equivalent to
+\begin{enumerate}
+\item[(3)] for any affine open $\Spec(A) = U \subset X$
+the image $f \in A$ is a nonzerodivisor,
+\item[(4)] there exists an affine open covering
+$X = \bigcup \Spec(A_i)$ such that
+the image of $f$ in $A_i$ is a nonzerodivisor for all $i$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\noindent
+Note that a global section $s$ of an invertible $\mathcal{O}_X$-module
+$\mathcal{L}$ may be seen as an $\mathcal{O}_X$-module map
+$s : \mathcal{O}_X \to \mathcal{L}$. Its dual is therefore a
+map $s : \mathcal{L}^{\otimes -1} \to \mathcal{O}_X$.
+(See Modules, Definition \ref{modules-definition-powers}
+for the definition of the dual invertible sheaf.)
+
+\begin{definition}
+\label{definition-zero-scheme-s}
+Let $X$ be a scheme. Let $\mathcal{L}$ be an invertible sheaf.
+Let $s \in \Gamma(X, \mathcal{L})$ be a global section.
+The {\it zero scheme} of $s$ is the closed subscheme $Z(s) \subset X$
+defined by the quasi-coherent sheaf of ideals
+$\mathcal{I} \subset \mathcal{O}_X$ which is the image of the
+map $s : \mathcal{L}^{\otimes -1} \to \mathcal{O}_X$.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-zero-scheme}
+Let $X$ be a scheme.
+Let $\mathcal{L}$ be an invertible sheaf.
+Let $s \in \Gamma(X, \mathcal{L})$.
+\begin{enumerate}
+\item Consider closed immersions $i : Z \to X$ such that
+$i^*s \in \Gamma(Z, i^*\mathcal{L})$ is zero
+ordered by inclusion. The zero scheme $Z(s)$ is the
+maximal element of this ordered set.
+\item For any morphism of schemes $f : Y \to X$ we have
+$f^*s = 0$ in $\Gamma(Y, f^*\mathcal{L})$ if and only if
+$f$ factors through $Z(s)$.
+\item The zero scheme $Z(s)$ is a locally principal closed subscheme.
+\item The zero scheme $Z(s)$ is an effective Cartier divisor
+if and only if $s$ is a regular section of $\mathcal{L}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-characterize-OD}
+\begin{slogan}
+Effective Cartier divisors on a scheme are the same as invertible sheaves
+with fixed regular global section.
+\end{slogan}
+Let $X$ be a scheme.
+\begin{enumerate}
+\item If $D \subset X$ is an effective Cartier divisor, then
+the canonical section $1_D$ of $\mathcal{O}_X(D)$ is regular.
+\item Conversely, if $s$ is a regular section of the invertible
+sheaf $\mathcal{L}$, then there exists a unique effective
+Cartier divisor $D = Z(s) \subset X$ and a unique isomorphism
+$\mathcal{O}_X(D) \to \mathcal{L}$ which maps $1_D$ to $s$.
+\end{enumerate}
+The constructions
+$D \mapsto (\mathcal{O}_X(D), 1_D)$ and $(\mathcal{L}, s) \mapsto Z(s)$
+give mutually inverse maps
+$$
+\left\{
+\begin{matrix}
+\text{effective Cartier divisors on }X
+\end{matrix}
+\right\}
+\leftrightarrow
+\left\{
+\begin{matrix}
+\text{isomorphism classes of pairs }(\mathcal{L}, s)\\
+\text{consisting of an invertible }
+\mathcal{O}_X\text{-module}\\
+\mathcal{L}\text{ and a regular global section }s
+\end{matrix}
+\right\}
+$$
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{remark}
+\label{remark-ses-regular-section}
+Let $X$ be a scheme, $\mathcal{L}$ an invertible $\mathcal{O}_X$-module,
+and $s$ a regular section of $\mathcal{L}$. Then the zero scheme
+$D = Z(s)$ is an effective Cartier divisor on $X$ and there are
+short exact sequences
+$$
+0 \to \mathcal{O}_X \to \mathcal{L} \to i_*(\mathcal{L}|_D) \to 0
+\quad\text{and}\quad
+0 \to \mathcal{L}^{\otimes -1} \to \mathcal{O}_X \to i_*\mathcal{O}_D \to 0.
+$$
+Given an effective Cartier divisor $D \subset X$ using
+Lemmas \ref{lemma-characterize-OD} and
+\ref{lemma-conormal-effective-Cartier-divisor}
+we get
+$$
+0 \to \mathcal{O}_X \to \mathcal{O}_X(D) \to i_*(\mathcal{N}_{D/X}) \to 0
+\quad\text{and}\quad
+0 \to \mathcal{O}_X(-D) \to \mathcal{O}_X \to i_*(\mathcal{O}_D) \to 0
+$$
+\end{remark}
+
+
+
+
+
+
