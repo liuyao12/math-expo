@@ -5,7 +5,6 @@ const model=(title,bindings,check,result,note='')=>({title,bindings,check,result
 const X=b('X',r`\mathbb C`);
 const sphereX=b('X',r`\mathbb P^1(\mathbb C)`);
 const U=b('U',r`\text{an open subset of }\mathbb C`,r`A domain is a nonempty connected open set. Here \(U\) can also be disconnected or empty.`);
-const disk=b('U',r`D(a,r)=\{z:|z-a|<r\}`);
 const O=b(r`\mathcal O`,r`\mathcal O^{\mathrm{an}}_{\mathbb C}`);
 const F=b(r`\mathcal F`,r`\mathcal O^{\mathrm{an}}_{\mathbb C}`,'A sheaf; forget multiplication when the source asks for abelian groups or sets.');
 const R=b('R',r`\mathbb C[z]`);
@@ -16,23 +15,27 @@ const naturalEquivalences={
 };
 const finiteVect=b(r`\mathcal C`,r`\mathbf{Vect}^{\mathrm{fd}}_{\mathbb R}`,'Finite-dimensional real vector spaces with linear maps.');
 const models={
- topology:model('Where can a Laurent expansion be used?',[
-  X,b('U',r`\mathbb C^\times`),b('V',r`\{w:0<|w|<1\}`),
-  b('f',r`(z\mapsto 1/z)`)
+ topology:model('A manifold is locally Euclidean',[
+  b('X',r`M`),b('U',r`\text{an open chart domain in }M`),
+  b('V',r`\text{an open subset of }\mathbb R^n`),
+  b('f',r`\varphi:U\xrightarrow{\sim}V`)
  ],r`\[
-f^{-1}(V)=\{z:|z|>1\}
-\]`,'',r`A neighbourhood tells us where a local formula makes sense. Continuity lets us pull that neighbourhood back through a change of variable.`),
- basis:model('Taylor series only need disks',[X,b(r`\mathcal B`,r`\{D(a,r):a\in\mathbb C,\ r>0\}`),disk],r`\[
-h|_{D(a,r)}=\sum_{n\ge0}c_n(z-a)^n
-\]`,'',r`To decide whether a function on an arbitrary open set is holomorphic, check for a convergent power series on a small disk around each point.`),
+W\subset V\text{ open}\ \Longrightarrow\ \varphi^{-1}(W)\text{ open}
+\]`,'',r`A coordinate chart carries Euclidean neighbourhoods back to the manifold. Both directions of the chart are continuous.`),
+ basis:model('Open balls generate the metric topology',[
+  b('X',r`(X,d)\text{ a metric space}`),
+  b(r`\mathcal B`,r`\{B(x,r):x\in X,\ r>0\}`)
+ ],r`\[
+x\in U\text{ open}\ \Longrightarrow\ B(x,r)\subset U
+\]`,r`Choose a sufficiently small \(r>0\) at each \(x\).`,r`Open balls are why continuity between metric spaces can be tested with the usual \(\varepsilon\) and \(\delta\).`),
  irreducible:model('An algebraic line is one piece',[A,b('Z',r`V(z(z-1))`),b(r`\eta`,r`(0)`)],r`\[
 \overline{\{(0)\}}=X
 \]`,r`Every proper closed subset is finite, so any two nonempty opens meet.`,r`An algebraic curve can have separate branches even when it is connected. Irreducibility asks whether it is a single algebraic piece.`),
  compact:model('A finite atlas for local formulas',[
-  sphereX,b(r`\mathcal U`,r`\{U_i\}_{i\in I}\text{ an open cover}`)
+  b('X',r`M\text{ a compact manifold}`),b(r`\mathcal U`,r`\{U_i\}_{i\in I}\text{ a chart cover}`)
  ],r`\[
 \exists\,J\subset I\text{ finite}\quad X=\bigcup_{i\in J}U_i
-\]`,'',r`If local formulas exist near every point of the sphere, finitely many of their domains suffice to cover it.`),
+\]`,'',r`A compact manifold admits a finite atlas. Any atlas already covering it has a finite subcover.`),
  specialization:model('From a generic point to a particular value',[A,b('x',r`\eta=(0)`),b("x'",r`(z-a)`)],r`\[
 (0)\subset(z-a)\quad\Longrightarrow\quad x'\in\overline{\{x\}}
 \]`,'',r`At the generic point, a rational formula is evaluated in \(\mathbb C(z)\). At \(a\), any formula regular there can be specialized by setting \(z=a\).`),
@@ -43,17 +46,26 @@ h|_{D(a,r)}=\sum_{n\ge0}c_n(z-a)^n
  ],r`\[
 R/I\cong\mathbb C[z]
 \]`,'',r`Two polynomials define the same function on the parabola when their difference vanishes there.`),
- modules:model('A family of linear maps has functions as coefficients',[R,b('M',r`R^{\oplus n}`),b('N',r`R^{\oplus m}`)],r`\[
+ modules:model('A vector bundle map is linear over functions',[
+  b('R',r`C^\infty(X)`),b('M',r`\Gamma(X,E)`),b('N',r`\Gamma(X,F)`),
+  b('u',r`E\to F\text{ over }X`)
+ ],r`\[
 \begin{gathered}
-A\in\operatorname{Mat}_{m\times n}(R),\\
-v\longmapsto Av
+\Gamma(u)(s)(x)=u_x(s(x)),\\
+\Gamma(u)(hs)=h\,\Gamma(u)(s)
 \end{gathered}
-\]`,'',r`A linear map between trivial bundles can vary with the base point. A polynomial matrix gives one module map whose evaluation at each point is the corresponding linear map.`),
- snake:model('Exactness measures vanishing and lifting',[R,b('M',r`\mathbb C[z]`),b('N',r`\mathbb C[z]/(z)`,'The value space at the origin.')],r`\[
-0\longrightarrow R\xrightarrow{\ z\ }R\longrightarrow R/(z)\longrightarrow0
-\]`,'',r`Prescribing a value at the origin leaves the freedom to add any function vanishing there. An exact sequence records both the prescription and that freedom.`),
+\]`,'',r`The linear map may vary with the point. Linearity on each fibre gives module linearity on sections.`),
+ snake:model('The boundary of a lifted cycle',[
+  b(r`A_\bullet`,r`C_\bullet(Y)`),b(r`B_\bullet`,r`C_\bullet(X)`),
+  b(r`C_\bullet`,r`C_\bullet(X,Y)`)
+ ],r`\[
+\begin{gathered}
+0\to A_\bullet\to B_\bullet\to C_\bullet\to0,\\
+\delta[c]=[\partial b]\in H_{n-1}(Y).
+\end{gathered}
+\]`,r`Lift the relative cycle \(c\) to \(b\) in \(X\). Its boundary lies in \(Y\).`,r`In the long exact sequence of a pair, the connecting map \(H_n(X,Y)\to H_{n-1}(Y)\) is the lift-and-boundary construction from the snake lemma.`),
  colimits:model('Remember a function only near the point',[
-  b('I',r`\{\text{neighbourhoods of }a\}\text{ in reverse inclusion}`),
+  b('I',r`\{\text{neighbourhoods of }a\}`,'Ordered by reverse inclusion.'),
   b('M_U',r`\operatorname{Hol}(U)`),
   b('M',r`\mathcal O^{\mathrm{an}}_{\mathbb C,a}`)
  ],r`\[
@@ -62,12 +74,14 @@ M=\varinjlim_{U\ni a}\operatorname{Hol}(U),\\
 [h]_a=[g]_a\iff h|_W=g|_W
 \end{gathered}
 \]`,r`Here \(W\) is some common neighbourhood of \(a\).`,r`A Taylor series needs a neighbourhood of its centre, but the germ should forget how large that neighbourhood was.`),
- localization:model('Reciprocals become regular away from their poles',[
-  R,b('S',r`\{1,z,z^2,\ldots\}`),
-  b(r`S^{-1}R`,r`\mathbb C[z,z^{-1}]`)
+ localization:model('Cramer’s rule works where the determinant is invertible',[
+  b('R',r`k[a_{ij}:1\le i,j\le n]`),
+  b('A',r`(a_{ij})`),
+  b('S',r`\{(\det A)^m:m\ge0\}`),
+  b(r`S^{-1}R`,r`R[1/\det A]`)
  ],r`\[
-w=1/z\in S^{-1}R
-\]`,'',r`The two coordinates on the sphere meet where \(z\ne0\). Localization gives the algebraic ring where both coordinates are regular.`),
+A^{-1}=\frac{\operatorname{adj}(A)}{\det A}
+\]`,'',r`Localizing the coordinate ring of all matrices at the determinant gives the coordinate ring of \(\operatorname{GL}_n\).`),
  local:model('Which germs have a reciprocal?',[
   b('R',r`\mathcal O^{\mathrm{an}}_{\mathbb C,a}\cong\mathbb C\{z-a\}`),
   b(r`\mathfrak m`,r`(z-a)`),
@@ -91,13 +105,16 @@ h_i|_{U_i\cap U_j}=h_j|_{U_i\cap U_j}\\
 \Longrightarrow\ \exists!\,h:\ h|_{U_i}=h_i
 \end{gathered}
 \]`,'',r`A function can have different formulas on different patches. Agreement on the overlaps is the condition that lets those formulas define a global holomorphic function.`),
- moduleSheaf:model('A differential has local coefficients',[
-  sphereX,b(r`\mathcal O`,r`\mathcal O_X^{\mathrm{an}}`),b(r`\mathcal F`,r`\Omega_X^1`),
-  b('U',r`\text{an open set in the }z\text{-chart}`),
-  b(r`\mathcal F(U)`,r`\{h(z)\,dz:h\in\operatorname{Hol}(U)\}`)
+ moduleSheaf:model('Differential forms are a module over smooth functions',[
+  b('X',r`M\text{ a smooth manifold}`),
+  b(r`\mathcal O(U)`,r`C^\infty(U)`),
+  b(r`\mathcal F(U)`,r`\Gamma(U,T^*M)`)
  ],r`\[
-w=1/z,\qquad dz=-w^{-2}\,dw
-\]`,'',r`A holomorphic differential can be multiplied by any holomorphic function. Its coefficient depends on the chart, while the product defines an intrinsic section.`),
+\begin{gathered}
+\omega=\sum_j a_j\,dx^j,\\
+h\omega=\sum_j(ha_j)\,dx^j.
+\end{gathered}
+\]`,'',r`A form can be multiplied by a function before or after changing coordinates. This makes the sheaf of one-forms a module over the sheaf of smooth functions.`),
  stalk:model('A holomorphic germ is its convergent Taylor series',[
  X,b('x',r`a\in\mathbb C`),
  b('t',r`z-a`),F,
@@ -113,9 +130,17 @@ w=1/z,\qquad dz=-w^{-2}\,dw
  ],r`\[
 \mathcal F_x/\mathfrak m_x\mathcal F_x\cong\mathbb C\,dz|_x
 \]`,'',r`The germ remembers the entire Taylor series of the coefficient. Its value in the cotangent fibre keeps only the constant term.`),
- exactSheaf:model('A local solution need not be global',[X,b('U',r`\mathbb C^\times`),b(r`\mathcal F`,r`\mathcal O_X^{\mathrm{an}}`,'Holomorphic functions, viewed as a sheaf of complex vector spaces.'),b(r`\mathcal G`,r`\mathcal O_X^{\mathrm{an}}`),b(r`\varphi`,r`D=\frac{d}{dz}-1`)],r`\[
-D(h)=g\quad\Longleftrightarrow\quad(e^{-z}h)'=e^{-z}g
-\]`,r`On a disk, integrate the right-hand side. For \(g=e^z/z\), there is no single-valued primitive on \(\mathbb C^\times\).`),
+ exactSheaf:model('Closed forms are locally exact',[
+  b('X',r`M\text{ a smooth manifold}`),
+  b(r`\mathcal F`,r`\mathcal C^\infty_M`),
+  b(r`\mathcal G`,r`\mathcal Z^1_M`,r`The sheaf of closed smooth one-forms.`),
+  b(r`\varphi`,r`d:\mathcal F\to\mathcal G`)
+ ],r`\[
+\begin{gathered}
+\operatorname{coker}(\varphi)=0\quad\text{as sheaves},\\
+\operatorname{coker}\Gamma(M,\varphi)=H^1_{\mathrm{dR}}(M).
+\end{gathered}
+\]`,'',r`The Poincaré lemma supplies a primitive on small coordinate balls. Periods can obstruct a global primitive.`),
  chartCover:model('The sphere needs a chart at infinity',[
   sphereX,b('U',r`X`),
   b('U_0',r`X\setminus\{\infty\}`),b('U_\infty',r`X\setminus\{0\}`)
@@ -203,25 +228,25 @@ U\cap V=\operatorname{Spec}\bigl(\mathbb C[z,z^{-1}]\bigr),\\
 w=z^{-1}
 \end{gathered}
 \]`,r`The gluing uses regular functions. On complex points the same coordinate change gives the holomorphic atlas of the sphere.`,r`One affine chart misses infinity. Gluing affine charts with compatible function rings gives a space that is algebraic near every point.`),
- category:{...model('Vector spaces and linear maps',[
-  finiteVect,b('x',r`\mathbb R`),
-  b('y',r`\mathbb R^2`),
-  b('z',r`\mathbb R`),
-  b(r`\psi`,r`(u\mapsto(u,2u))`),
-  b(r`\phi`,r`((v,w)\mapsto w)`)
+ category:model('Smooth manifolds and smooth maps',[
+  b(r`\mathcal C`,r`\mathbf{Man}`),
+  b('x,y,z',r`M,N,P`),
+  b(r`\psi`,r`M\to N`),
+  b(r`\phi`,r`N\to P`)
  ],r`\[
-(\phi\circ\psi)(u)=\phi(u,2u)=2u
-\]`,r``,r`Eilenberg and Mac Lane opened their 1945 paper with the natural map to the double dual.`),source:naturalEquivalences},
- ringPullback:model('A function on two axes must agree at the crossing',[
-  b(r`\mathcal C`,r`\mathbf{CRing}`),
-  b('x,z',r`\mathbb C[u],\mathbb C[v]`),
-  b('y',r`\mathbb C`,'Both maps evaluate at the origin.')
+\phi\circ\psi:M\to P
+\]`,'',r`Composing smooth maps gives a smooth map. The tangent-space construction will respect this composition by the chain rule.`),
+ bundlePullback:model('Pull a vector bundle back along a map',[
+  b(r`\mathcal C`,r`\mathbf{Top}`),
+  b('x,z',r`X,E`),
+  b('y',r`B`),
+  b('f,g',r`f:X\to B,\ p:E\to B`)
  ],r`\[
 \begin{gathered}
-x\times_y z=\{(f,g):f(0)=g(0)\},\\
-x\times_y z\cong\mathbb C[u,v]/(uv)
+f^*E=X\times_B E,\\
+(f^*E)_x=E_{f(x)}.
 \end{gathered}
-\]`,'',r`The fibre product keeps the function on each branch and imposes exactly the compatibility at their common point.`),
+\]`,'',r`A point of the pullback is a pair \((x,e)\) with \(f(x)=p(e)\). It puts the fibre over \(f(x)\) above the point \(x\).`),
  setLimits:model('Assemble compatible local functions',[
   b('U,V',r`\text{open subsets of }\mathbb C`),
   b('A,B',r`\operatorname{Hol}(U),\operatorname{Hol}(V)`),
@@ -232,15 +257,24 @@ x\times_y z\cong\mathbb C[u,v]/(uv)
  limits:model('Compatibility is an equalizer',[b('A',r`\prod_i\operatorname{Hol}(U_i)`),b('B',r`\prod_{i,j}\operatorname{Hol}(U_i\cap U_j)`),b('f',r`(s_i)\mapsto(s_i|_{U_i\cap U_j})_{i,j}`),b('g',r`(s_i)\mapsto(s_j|_{U_i\cap U_j})_{i,j}`)],r`\[
 \operatorname{Eq}(f,g)\cong\operatorname{Hol}\bigl(\textstyle\bigcup_i U_i\bigr)
 \]`,r`The equalizer condition is agreement on overlaps.`),
- adjoint:model('A map described on either side',[b('f',r`(z\mapsto z^2)`),b(r`\mathcal F`,r`\mathcal O_Y^{\mathrm{an}}`,'A sheaf of sets or abelian groups on the target.'),b(r`\mathcal G`,r`\mathcal O_X^{\mathrm{an}}`)],r`\[
-\operatorname{Hom}(f^{-1}\mathcal F,\mathcal G)\cong\operatorname{Hom}(\mathcal F,f_*\mathcal G)
-\]`,r`Composition with \(f\) gives the corresponding maps on functions.`),
- idempotent:model('Separate two components',[b('R',r`\operatorname{Hol}(D_1\amalg D_2)`),b('e',r`(1,0)`)],r`\[
+ adjoint:model('The tensor–Hom adjunction for bilinear maps',[
+  b('F',r`-\otimes_k V`),b('G',r`\operatorname{Hom}_k(V,-)`)
+ ],r`\[
+\begin{gathered}
+\operatorname{Hom}_k(U\otimes_k V,W)\\
+\cong \operatorname{Hom}_k(U,G(W)),\\
+h\longmapsto (u\mapsto(v\mapsto h(u\otimes v))).
+\end{gathered}
+\]`,'',r`The tensor–Hom adjunction is the same bilinear operation read in two ways.`),
+ idempotent:model('An idempotent selects an open and closed part',[
+  b('R',r`C(X,\mathbb R)`),b('U',r`\text{an open and closed subset of }X`),
+  b('e',r`\mathbf 1_U`)
+ ],r`\[
 \begin{gathered}
 e^2=e,\\
 R\cong eR\times(1-e)R
 \end{gathered}
-\]`,r`The two factors are the function rings on the two disks.`),
+\]`,r`The two factors are the function rings on \(U\) and \(X\setminus U\).`,r`A continuous real-valued idempotent takes only the values zero and one. Its level sets give a decomposition into open and closed parts.`),
  finite:model('Finitely many equations and generators',[R,b('M',r`R^{\oplus n}`),b('S',r`\mathbb C[z,w]/(w^2-z)`)],r`\[
 \begin{gathered}
 M=\bigoplus_{i=1}^n R e_i,\\
@@ -259,48 +293,69 @@ S=\mathbb C[z,w]/(w^2-z)
 \end{aligned}
 \]`,'',r`Constants are the freedom in choosing a primitive. The residue of \(g(z)\,dz\) is the obstruction to solving \(h'=g\) globally.`)
 };
-models.noetherian=model('Algebraic closed sets cannot keep shrinking',[A,b('Z',r`V(p(z)),\quad p(z)\ne 0`)],r`Every proper closed subset of \(X\) is finite.`,r`A descending chain stabilizes once it reaches a proper closed subset.`);
-models.constructible=model('Finite combinations of vanishing conditions',[A,b('E',r`D(z)\cap V(z-1)`)],r`\[
-E=D(z)\cap V(z-1)=\{(z-1)\}
-\]`,r`The constructible subsets are finite sets of closed points and their complements.`);
+models.noetherian=model('Infinitely many polynomial equations reduce to finitely many',[
+ b('R',r`k[x_1,\ldots,x_n]`),b('X',r`\operatorname{Spec}(R)`),
+ b('I',r`(f_1,f_2,\ldots)`)
+],r`\[
+V(I)=V(f_1,\ldots,f_N)\quad\text{for some }N
+\]`,'',r`By the Hilbert basis theorem, adding equations one at a time eventually stops shrinking the common zero set.`);
+models.constructible=model('Rank strata of matrices',[
+ b('X',r`\mathbb A_k^{mn}`),b('A',r`(a_{ij})_{m\times n}`),
+ b('I_s',r`\text{the ideal of the }s\times s\text{ minors}`)
+],r`\[
+\{\operatorname{rank}A=r\}
+=V(I_{r+1})\setminus V(I_r)
+\]`,'',r`An exact rank asks that all minors of size \(r+1\) vanish and some minor of size \(r\) be nonzero. These are closed and open conditions, respectively.`);
 models.nakayama=model('A fibre can test a finite module',[b('R',r`\mathbb C\{t\}`),b(r`\mathfrak m`,r`(t)`),b('M',r`R^{\oplus n}`)],r`\[
 \begin{aligned}
  \det A(0)\ne0 &\Longrightarrow \det A\in R^\times\\
                &\Longrightarrow A\in\operatorname{GL}_n(R).
 \end{aligned}
 \]`,r`An invertible matrix on the fibre lifts to an invertible matrix of germs.`);
-models.connected=model('Components let functions vary independently',[b('X',r`\mathbb C\setminus\mathbb R`),b('x',r`i`),b('Z',r`\{z:\operatorname{Im}(z)>0\}`)],r`\[
-\pi_0(X)=\bigl\{\{z:\operatorname{Im}z>0\},\{z:\operatorname{Im}z<0\}\bigr\}
-\]`,r`A locally constant function can take an independent value on each component.`);
-models.natural=model('Restriction is a functor',[b(r`\mathcal A`,r`\operatorname{Opens}(\mathbb C)^{\mathrm{op}}`),b(r`\mathcal B`,r`\operatorname{Vect}_{\mathbb C}`),b('F',r`(U\mapsto\operatorname{Hol}(U))`),b('t',r`(h\mapsto2h)`)],r`\[
-(2h)|_V=2(h|_V)
-\]`,r``);
-models.twoFibre=model('Keep an identification, rather than demand equality',[b(r`\mathcal A`,r`\mathcal L`,'The groupoid of one-dimensional complex vector spaces and their isomorphisms.'),b(r`\mathcal B`,r`\mathcal L`)],r`\[
-\begin{gathered}
-(L_1,L_2,\alpha),\\
-\alpha:L_1\xrightarrow{\sim}L_2
-\end{gathered}
-\]`,r``);
-models.over=model('A category of functions lying over open sets',[b(r`\mathcal C`,r`\operatorname{Opens}(\mathbb C)`),b(r`\mathcal A`,r`\{(U,h):h\in\operatorname{Hol}(U)\}`),b('p',r`((U,h)\mapsto U)`)],r`\[
-(U,h)\longrightarrow(V,g)\quad\Longleftrightarrow\quad U\subseteq V,\ h=g|_U
-\]`,r``);
-models.presheaf=model('A local equation must restrict to smaller domains',[X,U,
- b(r`\mathcal F`,r`\mathcal O^{\mathrm{an}}_{\mathbb C}`),
+models.connected=model('The components of a manifold',[
+ b('X',r`M\text{ a manifold}`),b('x',r`x\in M`),
+ b('Z',r`\text{the path component of }x`)
+],r`\[
+H_0(M;\mathbb Z)\cong\bigoplus_{C\in\pi_0(M)}\mathbb Z
+\]`,'',r`Manifolds are locally path connected, so connected components are path components. In degree zero, homology has one generator for each component.`);
+models.natural=model('Exterior differentiation commutes with pullback',[
+ b(r`\mathcal A`,r`\mathbf{Man}^{\mathrm{op}}`),
+ b(r`\mathcal B`,r`\mathbf{Vect}_{\mathbb R}`),
+ b('F,G',r`\Omega^q,\Omega^{q+1}`),b('t_M',r`d:\Omega^q(M)\to\Omega^{q+1}(M)`)
+],r`\[
+f^*(d\omega)=d(f^*\omega)
+\]`,'',r`For every smooth \(f:M\to N\), exterior differentiation can be taken before or after pulling a form back from \(N\).`);
+models.twoFibre=model('A vector bundle with trivialized determinant',[
+ b(r`\mathcal A`,r`\operatorname{Vect}_r(M)^\simeq`,r`The groupoid of rank-\(r\) complex vector bundles.`),
+ b(r`\mathcal B`,r`\{*\}`),
+ b(r`\mathcal C`,r`\operatorname{Line}(M)^\simeq`),
+ b('F',r`(E\mapsto \det E)`),
+ b('G',r`(*\mapsto M\times\mathbb C)`)
+],r`\[
+\alpha:\det E\xrightarrow{\sim}M\times\mathbb C
+\]`,'',r`The fibre over the trivial line has objects \((E,*,\alpha)\). The trivialization is part of the data.`);
+models.over=model('Covering spaces over a fixed base',[
+ b(r`\mathcal C`,r`\mathbf{Top}`),
+ b('X',r`\text{the base space}`),
+ b('p,q',r`E\to X,\ F\to X`)
+],r`\[
+u:(E,p)\to(F,q)\quad\Longleftrightarrow\quad q\circ u=p
+\]`,'',r`In the category of spaces over \(X\), a map between two coverings sends each fibre into the fibre over the same point. A deck transformation is an automorphism over \(X\).`);
+models.presheaf=model('Holomorphic functions can be restricted to smaller domains',[
+ b('X',r`\text{a Riemann surface}`),b('U',r`\text{an open subset of }X`),
+ b(r`\mathcal F`,r`\mathcal O^{\mathrm{an}}_X`),
  b(r`\mathcal F(U)`,r`\{h:U\to\mathbb C\mid h\text{ holomorphic}\}`),
  b(r`\rho^U_V`,r`(h\mapsto h|_V)`),
- b(r`\mathcal G`,r`\mathcal F`),
- b(r`\varphi`,r`D=\frac{d}{dz}-1`,r`For each open \(U\), the map is \(\varphi_U(h)=h'-h\).`)
+ b(r`\mathcal G`,r`\Omega_X^1`),
+ b(r`\varphi`,r`d:h\mapsto dh`)
 ],r`\[
-\begin{gathered}
-D(h)|_V=D(h|_V),\\
-(\ker D)(U)=\{h:h'=h\}
-\end{gathered}
-\]`,r`On a domain, the solutions are \(ce^z\).`,r`We can pose the same differential equation on any open set. A presheaf records the data on each open set and how to pass to a smaller one.`);
+(dh)|_V=d(h|_V)
+\]`,r`The kernel consists of locally constant functions.`,r`The derivative is computed on each domain, and the formula survives restriction. This compatibility makes differentiation a morphism of presheaves.`);
 models.abelianMorphism={...models.presheaf,title:'Differential operators respect addition',
  check:r`\[
- D(ah+bk)=aD(h)+bD(k)
+ d(ah+bk)=a\,dh+b\,dk
  \]`,
- result:r`For constant scalars \(a,b\in\mathbb C\). On a domain, \(\ker D=\mathbb C e^z\).`
+ result:r`Here \(a,b\in\mathbb C\) are constant scalars.`
 };
 models.solutionSheaf=model('The kernel is a sheaf of solutions',[X,U,
  b(r`\mathcal O_X`,r`\underline{\mathbb C}`,'The sheaf of locally constant complex-valued functions, used as scalars.'),
@@ -312,14 +367,14 @@ models.solutionSheaf=model('The kernel is a sheaf of solutions',[X,U,
 \varphi(h)=0\quad\Longleftrightarrow\quad(e^{-z}h)'=0
 \]`,r`The constant of integration is locally constant on \(U\).`,r`The scalar sheaf is \(\underline{\mathbb C}\), whose sections have zero derivative.`);
 models.kernel=model('A kernel represents homogeneous solutions',[
- b(r`\mathcal A`,r`\operatorname{Vect}_{\mathbb C}`),
- b('x',r`\operatorname{Hol}(U)`),b('y',r`\operatorname{Hol}(U)`),
- b('f',r`D:h\mapsto h'-h`),
- b('z',r`\ker D=\mathbb C e^z`),
- b('i',r`(\ker D\hookrightarrow\operatorname{Hol}(U))`)
+ b(r`\mathcal A`,r`\mathbf{Vect}_k`),
+ b('x,y',r`V,V`),
+ b('f',r`T-\lambda\operatorname{id}_V`),
+ b('z',r`E_\lambda=\ker f`),
+ b('i',r`E_\lambda\hookrightarrow V`)
 ],r`\[
-\operatorname{im}(g)\subseteq\ker D\qquad\text{if }D\circ g=0
-\]`,r`Then \(g\) factors uniquely through the inclusion \(i\).`,r`Here \(U\) is a domain.`);
+(T-\lambda\operatorname{id}_V)\circ g=0
+\]`,r`Such a map \(g\) factors uniquely through \(E_\lambda\).`,r`For a linear operator \(T\), the \(\lambda\)-eigenspace collects all solutions of \(Tv=\lambda v\).`);
 
 const projectiveRing=b('S',r`k[T_0,T_1]`,r`The polynomial ring over a field \(k\), graded by total degree with both variables in degree one.`);
 const projectiveLine=b('X',r`\operatorname{Proj}(S)=\mathbb P^1_k`);
@@ -447,26 +502,26 @@ const cechPlane=model('The residue idea with three projective charts',[
 ],r`\[
 H^2(X,\mathcal F)=k\cdot\left[\frac1{T_0T_1T_2}\right]
 \]`,r`A double overlap inverts only two coordinates. The only degree minus three monomial with all three exponents negative survives.`,r`On the sphere, a Laurent term survives because neither chart can supply it. On the projective plane, look for a term on the triple overlap that none of the double overlaps can supply.`);
-const genusCubic=model('Read the genus from the equation of the curve',[
+const planeCurveGenus=model('Read the genus from the equation of the curve',[
  b('k',r`\mathbb C`),
  b('S',r`k[T_0,T_1,T_2]`),
- b('F',r`T_0^3+T_1^3+T_2^3`),
- b('d',r`3`),
- b('Z',r`V_+(F)`)
+ b('F',r`\text{a homogeneous polynomial of degree }d`),
+ b('Z',r`V_+(F)\subset X=\mathbb P^2_k`,r`Assume the curve is smooth.`),
+ b('i',r`Z\hookrightarrow X`)
 ],r`\[
-0\to\mathcal O_{\mathbb P^2_k}(-3)\xrightarrow{F}\mathcal O_{\mathbb P^2_k}\to i_*\mathcal O_Z\to0
+0\to\mathcal O_X(-d)\xrightarrow{F}\mathcal O_X\to i_*\mathcal O_Z\to0
 \]`,r`\[
- H^1(Z,\mathcal O_Z)\cong H^2(\mathbb P^2_k,\mathcal O(-3))\cong k.
+ H^1(Z,\mathcal O_Z)\cong H^2(X,\mathcal O_X(-d)).
  \]
- For degree \(d\), count positive triples of exponents summing to \(d\) to get \(g=(d-1)(d-2)/2\).`,r`A smooth complex plane curve is a compact Riemann surface. To find its genus from its defining polynomial, study functions on the curve by restricting functions from the ambient plane. The kernel is the equation, with its degree recorded by a twist.`);
-const affineModule=model('A sheaf concentrated at a zero of a function',[
- b('A',r`k[z]`),
+ Counting the Laurent monomials with three negative exponents summing to \(-d\) gives \(g=(d-1)(d-2)/2\).`,r`A smooth complex plane curve is a compact Riemann surface. Its defining equation gives a restriction sequence on the ambient plane, with the degree recorded by the twist.`);
+const affineModule=model('A vector bundle restricts by localization',[
+ b('A',r`\Gamma(X,\mathcal O_X)`),
  b('X',r`\operatorname{Spec} A`),
- b('M',r`A/(z)`),
+ b('M',r`\Gamma(X,E)`),
  b(r`\mathcal F`,r`\widetilde M`)
 ],r`\[
-\Gamma(X,\mathcal F)=k,\qquad \Gamma(D(z),\mathcal F)=0
-\]`,'',r`The module \(A/(z)\) records evaluation at the origin. Localizing it tells us where that data is still present. It disappears on every open set that avoids the origin.`);
+\Gamma(D(f),E)=M_f
+\]`,'',r`Here \(E\) is an algebraic vector bundle, viewed as its sheaf of sections. On an affine scheme, the module of global sections recovers the bundle.`);
 const closedPoint=model('A closed immersion remembers the equation',[
  b('X',r`\operatorname{Spec} k[z]`),
  b('Z',r`\operatorname{Spec}(k[z]/(z^2))`),
@@ -474,33 +529,32 @@ const closedPoint=model('A closed immersion remembers the equation',[
 ],r`\[
 i^{-1}(D(f))=\operatorname{Spec}\bigl((k[z]/(z^2))_f\bigr)
 \]`,'',r`The equations \(z=0\) and \(z^2=0\) have the same zero set. The quotient for \(z^2=0\) also retains the linear term of a function at the origin.`);
-const affineDoubleCover=model('Describe a cover by an equation over each chart',[
- b('Y',r`\operatorname{Spec}\mathbb C[t]`),
- b('X',r`\operatorname{Spec}\mathbb C[z]`),
- b('f',r`(t=z^2)`)
+const affineBundle=model('The projection from a vector bundle is affine',[
+ b('Y',r`\text{the base scheme}`),
+ b('E',r`\text{a rank }r\text{ vector bundle on }Y`),
+ b('X',r`\operatorname{Spec}_Y(\operatorname{Sym}E^\vee)`),
+ b('f',r`X\to Y`)
 ],r`\[
-\begin{aligned}
-A&=\mathbb C[t,1/g(t)],\\
-f^{-1}(D(g))&=\operatorname{Spec}\bigl(A[z]/(z^2-t)\bigr).
-\end{aligned}
-\]`,'',r`A branched double cover can be described by adjoining a square root to the ring of each target chart. An affine morphism is one whose inverse images of affine charts admit such ring descriptions.`);
+\begin{gathered}
+U=\operatorname{Spec}A,\quad E|_U\cong\mathcal O_U^r,\\
+f^{-1}(U)\cong\operatorname{Spec}A[t_1,\ldots,t_r].
+\end{gathered}
+\]`,'',r`Over a trivializing affine chart the total space is a product with affine space. Over any affine chart its ring is the symmetric algebra of the module of dual sections.`);
 const gradedPolynomial=model('The graded ring of projective space',[
  b('S',r`k[t_0,\ldots,t_n]`),
  b('S_d',r`\left\{\begin{gathered}\text{homogeneous polynomials}\\\text{of degree }d\end{gathered}\right\}`),
  b(r`\operatorname{Proj}(S)`,r`\mathbb P^n_k`)
 ],'','');
-const projCharts=model('The two standard charts of projective space',[
- b('S',r`k[T_0,T_1]`),
- b('X',r`\operatorname{Proj}S=\mathbb P^1_k`),
- b('z',r`T_1/T_0`),
- b('w',r`T_0/T_1`)
+const projCharts=model('Affine charts from homogeneous coordinates',[
+ b('S',r`k[T_0,\ldots,T_n]`),
+ b('X',r`\operatorname{Proj}S=\mathbb P^n_k`),
+ b('U_i',r`D_+(T_i)`)
 ],r`\[
 \begin{gathered}
-D_+(T_0)=\operatorname{Spec} k[z],\\
-D_+(T_1)=\operatorname{Spec} k[w],\\
-D_+(T_0T_1)=\operatorname{Spec} k[z,z^{-1}]
+S_{(T_i)}=k[T_j/T_i:j\ne i],\\
+U_i=\operatorname{Spec}S_{(T_i)}\cong\mathbb A_k^n.
 \end{gathered}
-\]`,r`On the overlap, \(w=z^{-1}\).`,r`On the sphere we divide by the nonzero homogeneous coordinate to get a chart. \(\operatorname{Proj}\) does this with degree-zero fractions in a graded ring.`);
+\]`,'',r`Normalizing the nonzero coordinate to one gives the usual affine chart. The ratios are precisely the degree-zero generators after inverting \(T_i\).`);
 const properLine=model('A family has a limit at infinity',[
  b('S',r`\operatorname{Spec}\mathbb C`),
  b('X',r`\mathbb P^1_{\mathbb C}`),
@@ -609,12 +663,16 @@ const residueObstruction=model('Can one prescribe a single nonzero residue?',[
 \delta:\mathbb C\xrightarrow{\sim} H^1(X,\mathcal A).
 \end{gathered}
 \]`,r`The boundary class is represented by \(dz/z\) on the overlap, up to sign.`,r`Locally, \(dz/z\) has residue \(1\). The residue theorem rules out a global lift with just that one pole. The connecting map records the obstruction.`);
-const cohomologySphere=model('The residue measures a failure to glue',[
- sphereX,
- b(r`\mathcal F`,r`\Omega_X^1`)
+const deRhamCohomology=model('Sheaf cohomology via differential forms',[
+ b('X',r`M\text{ a smooth manifold}`),
+ b(r`\mathcal F`,r`\underline{\mathbb R}_M`)
 ],r`\[
-H^1(X,\mathcal F)=\mathbb C\cdot[dz/z]
-\]`,r`The two chart differentials can account for all the other Laurent terms.`,r`A differential on the overlap may fail to be a difference of two chart sections. Sheaf cohomology measures that failure. For the sphere, it is exactly the residue.`);
+\begin{gathered}
+0\to\underline{\mathbb R}_M\to\Omega_M^0
+\xrightarrow{d}\Omega_M^1\xrightarrow{d}\cdots,\\
+H^q(M,\underline{\mathbb R}_M)\cong H^q_{\mathrm{dR}}(M).
+\end{gathered}
+\]`,'',r`The Poincaré lemma makes the de Rham resolution exact. Partitions of unity make the sheaves of forms acyclic, so the complex of global forms computes sheaf cohomology.`);
 const cechDifferential=model('The Čech differential on three charts',[
  b('X',r`\mathbb P^2_k`),
  b('U_i',r`D_+(T_i)`),
@@ -623,16 +681,39 @@ const cechDifferential=model('The Čech differential on three charts',[
 ],r`\[
 (\delta s)_{012}=s_{12}-s_{02}+s_{01}
 \]`,r`All terms are restricted to the triple overlap.`,r`Local choices produce pairwise differences. On a triple overlap, passing from chart zero to chart two directly or through chart one must give the same difference.`);
-const cechDoubleComplex=model('Restrictions in one direction, a resolution in the other',[
- b(r`\mathcal U`,r`\{U_0,U_1\}`),
- b(r`\mathcal I^\bullet`,r`\text{an injective resolution of }\mathcal F`),
- b('K^{p,q}',r`\check{\mathcal C}_{\mathrm{ord}}^p(\mathcal U,\mathcal I^q)`)
+const lineBundleCocycle=model('Transition functions are Čech cocycles',[
+ b('X',r`M\text{ a smooth manifold}`),
+ b(r`\mathcal F`,r`(\mathcal C_M^\infty)^\times`),
+ b(r`\mathcal U`,r`\{U_i\}\text{ a trivializing cover of }L`),
+ b('g_{ij}',r`e_j/e_i\quad\text{on }U_i\cap U_j`)
 ],r`\[
-\begin{aligned}
-K^{1,q}&=\mathcal I^q(U_0\cap U_1),\\
-\operatorname{Tot}(K)^1&=K^{0,1}\oplus K^{1,0}.
-\end{aligned}
-\]`,'',r`One direction compares sections across overlaps. The other keeps track of local cohomology using a resolution. The double complex combines the two calculations.`);
+\begin{gathered}
+(\delta g)_{ijk}=g_{jk}\,g_{ik}^{-1}\,g_{ij}=1,\\
+e_i'=h_i e_i\ \Longrightarrow\ g'_{ij}=h_i^{-1}h_jg_{ij}.
+\end{gathered}
+\]`,'',r`Choose local frames \(e_i\) for a real line bundle \(L\). On triple overlaps the coordinate changes compose. Changing the frames multiplies the cocycle by a coboundary.`);
+const cechDeRham=model('The Čech–de Rham double complex',[
+ b('M',r`\text{a smooth manifold}`),
+ b(r`\mathcal U`,r`\{U_i\}\text{ an open cover}`),
+ b('K^{p,q}',r`\check C^p(\mathcal U,\Omega^q)`)
+],r`\[
+\begin{gathered}
+K^{p,q}=\prod_{i_0<\cdots<i_p}\Omega^q(U_{i_0\cdots i_p}),\\
+d_{\operatorname{Tot}}=\delta+(-1)^p d_{\mathrm{dR}}.
+\end{gathered}
+\]`,'',r`The Čech differential changes the overlap degree. Exterior differentiation changes the form degree and commutes with restriction. The sign makes their cross terms cancel in the total complex.`);
+const serreSequence={...model('The Serre spectral sequence of a fibration',[
+ b(r`\mathcal A`,r`\mathbf{Ab}`),
+ b(r`F\to E\to B`,r`\text{a fibration}`),
+ b('B',r`\text{a simply connected CW complex}`)
+],r`\[
+\begin{gathered}
+E_2^{p,q}=H^p(B;H^q(F;\mathbb Z)),\\
+d_r:E_r^{p,q}\to E_r^{p+r,q-r+1},\\
+E_2^{p,q}\Longrightarrow H^{p+q}(E;\mathbb Z).
+\end{gathered}
+\]`,'',r`The fibre gives the coefficients for cohomology on the base. Passing to cohomology page by page eventually gives the graded pieces of a filtration of the total space’s cohomology.`),
+ source:{url:'https://pi.math.cornell.edu/~hatcher/SSAT/SSch1.pdf',label:'Hatcher, The Serre Spectral Sequence, §1.2'}};
 const cechSpectral=model('An acyclic cover leaves one row',[
  b('X',r`\mathbb P^1_k`),
  b(r`\mathcal U`,r`\{D_+(T_0),D_+(T_1)\}`),
@@ -654,25 +735,49 @@ R^qf_*\mathcal O_X=0\quad(q>0),\\
 H^1(Y,f_*\mathcal O_X)=H^1(X,\mathcal O_X)
 \end{gathered}
 \]`,'',r`The plane has standard charts on which the equation of the cubic is explicit. Pushforward lets us calculate the curve’s cohomology on those ambient charts.`);
-const genusExample=model('The genus of the Fermat cubic',[
- b('k',r`\mathbb C`),
- b('X',r`V_+(T_0^3+T_1^3+T_2^3)\subset\mathbb P^2_k`)
+const fibreCohomology=model('The cohomology of the fibres forms a local system',[
+ b('f',r`E\to B`,r`A locally trivial bundle of manifolds with fibre \(F\).`),
+ b(r`\mathcal F`,r`\underline{\mathbb Z}_E`)
 ],r`\[
-g=\dim_k H^1(X,\mathcal O_X)=1
-\]`,'',r`The same smooth complex cubic is a compact surface with one handle. The algebraic definition asks for the dimension of a cohomology group of its functions.`);
+\begin{gathered}
+(R^q f_*\mathcal F)_b\cong H^q(E_b;\mathbb Z),\\
+E_2^{p,q}=H^p(B,R^q f_*\mathcal F),\\
+E_2^{p,q}\Longrightarrow H^{p+q}(E;\mathbb Z).
+\end{gathered}
+\]`,'',r`On a contractible trivializing neighbourhood, the preimage retracts to a fibre. The higher direct image retains the fibre cohomology and its monodromy. Leray then takes cohomology on the base.`);
+const invertibleLine=model('Tensoring by a line bundle has an inverse',[
+ b('X',r`M\text{ a smooth manifold}`),
+ b(r`\mathcal O_X`,r`\mathcal C^\infty_M`),
+ b(r`\mathcal L`,r`\text{the sheaf of sections of a real line bundle}`)
+],r`\[
+\mathcal L\otimes_{\mathcal O_X}\mathcal L^\vee
+\xrightarrow[\sim]{\mathrm{ev}}\mathcal O_X
+\]`,'',r`In a local frame, evaluation pairs the frame with its dual and gives one. Tensoring by the dual therefore undoes tensoring by the line bundle.`);
+const genusExample=model('The genus of a compact Riemann surface',[
+ b('k',r`\mathbb C`),
+ b('X',r`\text{a smooth connected curve}`,r`Projective over \(k\).`),
+ b('M',r`X^{\mathrm{an}}`)
+],r`\[
+\begin{gathered}
+g=\tfrac12\dim_{\mathbb R}H^1(M;\mathbb R),\\
+g=\dim_{\mathbb C}H^0(M,\Omega_M^1)
+ =\dim_{\mathbb C}H^1(X,\mathcal O_X).
+\end{gathered}
+\]`,'',r`The number of handles is also the dimension of the space of holomorphic differentials. On the projective curve the same number is computed from its structure sheaf.`);
 const embeddedPoint=model('An embedded point on an affine line',[
  b('A',r`k[x,y]/(x^2,xy)`),
  b('X',r`\operatorname{Spec}A`)
 ],r`\[
 \operatorname{Ann}_A(\bar x)=(\bar x,\bar y)
 \]`,r`The origin is an associated point. The minimal prime is \((\bar x)\).`);
-Object.assign(models,{tangentDivisor,conicDegree,conicIntersection,cechLine,cechPlane,genusCubic,
- affineModule,closedPoint,affineDoubleCover,gradedPolynomial,projCharts,properLine,padicLimit,sphereColimit,triangulatedChains,pairConnectingMap,injectiveExample,
- injectivePoint,injectiveModulePoint,injectiveResolution,residueObstruction,cohomologySphere,cechDifferential,cechDoubleComplex,cechSpectral,affinePushforward,genusExample,embeddedPoint});
+Object.assign(models,{tangentDivisor,conicDegree,conicIntersection,cechLine,cechPlane,planeCurveGenus,
+ affineModule,closedPoint,affineBundle,gradedPolynomial,projCharts,properLine,padicLimit,sphereColimit,triangulatedChains,pairConnectingMap,injectiveExample,
+ injectivePoint,injectiveModulePoint,injectiveResolution,residueObstruction,deRhamCohomology,cechDifferential,
+ lineBundleCocycle,cechDeRham,serreSequence,cechSpectral,affinePushforward,fibreCohomology,invertibleLine,genusExample,embeddedPoint});
 const groups={
  affineModule:['modules-quasi-coherent','schemes-quasi-coherent-affine'],
  closedPoint:['schemes-immersions'],
- affineDoubleCover:['morphisms-affine'],
+ affineBundle:['morphisms-affine'],
  properLine:['morphisms-proper'],
  gradedPolynomial:['algebra-graded'],
  projCharts:['constructions-proj','constructions-projective-space'],
@@ -686,20 +791,24 @@ const groups={
  injectivePoint:['injectives-abelian-sheaves-space'],
  injectiveModulePoint:['injectives-sheaves-modules-space'],
  residueObstruction:['derived-right-derived-functor'],
- cohomologySphere:['cohomology-cohomology-sheaves'],
- cechDifferential:['cohomology-cech','cohomology-cech-functor','cohomology-alternating-cech'],
- cechDoubleComplex:['homology-double-complexes'],
- cechSpectral:['homology-spectral-sequence','homology-double-complex','cohomology-cech-cohomology-cohomology'],
- affinePushforward:['cohomology-locality','cohomology-Leray','derived-composition-right-derived-functors'],
+ deRhamCohomology:['cohomology-cohomology-sheaves'],
+ lineBundleCocycle:['cohomology-cech','cohomology-alternating-cech'],
+ cechDifferential:['cohomology-cech-functor'],
+ cechDeRham:['homology-double-complexes','homology-double-complex'],
+ serreSequence:['homology-spectral-sequence'],
+ cechSpectral:['cohomology-cech-cohomology-cohomology'],
+ fibreCohomology:['cohomology-locality','cohomology-Leray'],
+ affinePushforward:['derived-composition-right-derived-functors'],
  genusExample:['curves-genus','varieties-curves'],
  cechLine:['coherent-cech-quasi-coherent'],
  cechPlane:['coherent-cohomology-projective-space'],
- genusCubic:['curves-plane-curves','divisors-closed-in-relative-proj'],
+ planeCurveGenus:['curves-plane-curves','divisors-closed-in-relative-proj'],
  tangentDivisor:['divisors-effective-Cartier-divisors','divisors-Noetherian-effective-Cartier','divisors-effective-Cartier-invertible'],
  embeddedPoint:['divisors-embedded'],
  conicDegree:['varieties-divisors-curves'],
  conicIntersection:['intersection-computing-intersection-multiplicities'],
- twistCharts:['modules-invertible','constructions-invertible-on-proj','divisors-invertible-modules'],
+ invertibleLine:['modules-invertible'],
+ twistCharts:['constructions-invertible-on-proj','divisors-invertible-modules'],
  solutionSheaf:['modules-kernels'],connected:['topology-connected-components'],natural:['categories-opposite','categories-formal-cat-cat'],twoFibre:['categories-2-fibre-products'],over:['categories-categories-over-categories'],topology:['topology-topology-basic'],basis:['topology-bases'],irreducible:['topology-irreducible-components'],noetherian:['topology-noetherian'],compact:['topology-quasi-compact'],specialization:['topology-specialization'],
  snake:['algebra-snake'],colimits:['categories-cofinal','algebra-colimits','categories-posets-limits'],localization:['algebra-localization'],local:['algebra-radical','algebra-local-rings'],spectrum:['algebra-spectrum-ring'],constructible:['topology-constructible','topology-constructible-Noetherian'],
  sheaf:['sheaves-presheaves','sheaves-abelian-presheaves','sheaves-sheaves','sheaves-abelian-sheaves','sheaves-presheaves-structures','sheaves-sheaves-structures','sheaves-algebraic-structures'],
@@ -712,7 +821,7 @@ const groups={
  category:['categories-definition-categories'],limits:['categories-connected-limits','categories-finite-limits','categories-equalizers'],adjoint:['categories-adjoint'],
  nakayama:['algebra-nakayama'],modules:['algebra-hom'],finite:['algebra-module-finite-type','algebra-finite-type','algebra-images-finite-presentation'],idempotent:['algebra-open-and-closed'],rings:['algebra-conventions','algebra-rings-basic','algebra-miscellany'],
  chartCover:['sheaves-sheaves-basic'],basisSheaf:['sheaves-bases'],
- regularGlue:['algebra-tilde-module-sheaf'],ringPullback:['categories-fibre-products'],setLimits:['categories-limit-sets'],
+ regularGlue:['algebra-tilde-module-sheaf'],bundlePullback:['categories-fibre-products'],setLimits:['categories-limit-sets'],
  abelian:['homology-additive-categories','homology-abelian-categories','homology-functors','categories-exact-functor']
 };
 const fundamentalGroup=model('Fundamental groups send loops along a map',[
@@ -730,29 +839,28 @@ F(\phi):\mathbb Z\xrightarrow{\times2}\mathbb Z
 const singularHomology=model('Singular homology sends cycles along a map',[
  b(r`\mathcal A`,r`\mathbf{Top}`),
  b(r`\mathcal B`,r`\mathbf{Ab}`),
- b('A',r`\mathbb Z/3\mathbb Z`),
+ b('A',r`\text{an abelian group of coefficients}`),
  b('F',r`H_n(-;A)`,r`Singular homology in a fixed degree \(n\) with these coefficients.`),
- b('x,y',r`S^1,S^1`),
- b(r`\phi`,r`(z\mapsto z^2)`)
+ b('x,y',r`X,Y`),
+ b(r`\phi`,r`X\to Y`)
 ],r`\[
 \begin{gathered}
 \sigma\longmapsto\phi\circ\sigma,\\
-H_1(\phi;A):A\xrightarrow{\times2}A
+H_n(\phi;A):[\textstyle\sum_i a_i\sigma_i]
+\\
+\mapsto[\textstyle\sum_i a_i(\phi\circ\sigma_i)]
 \end{gathered}
 \]`,r`Postcomposition commutes with taking faces, so it descends to homology.`);
 const tangentSpace=model('The chain rule makes tangent spaces functorial',[
  b(r`\mathcal A`,r`\mathbf{Man}_*`,'Pointed smooth manifolds and smooth maps preserving the marked points.'),
  b(r`\mathcal B`,r`\mathbf{Vect}_{\mathbb R}`),
  b('F',r`((M,p)\mapsto T_pM)`),
- b('x',r`(\mathbb R,2)`),
- b('y',r`(\mathbb R,4)`),
- b(r`\phi`,r`(u\mapsto u^2)`),
- b(r`F(\phi)`,r`\mathrm d\phi_2`)
+ b('x',r`(M,p)`),
+ b('y',r`(N,\phi(p))`),
+ b(r`\phi`,r`M\to N`),
+ b(r`F(\phi)`,r`d\phi_p:T_pM\to T_{\phi(p)}N`)
 ],r`\[
-\begin{gathered}
-\mathrm d(g\circ f)_p=\mathrm dg_{f(p)}\circ\mathrm df_p,\\
-\mathrm d\phi_2(v)=4v
-\end{gathered}
+d(g\circ f)_p=dg_{f(p)}\circ df_p
 \]`,'',r`The differential replaces a smooth map by its linear approximation at a point. The chain rule says that these approximations still compose.`);
 const doubleDual={...model('The natural map to the double dual',[
  b(r`\mathcal A`,r`\mathbf{Vect}^{\mathrm{fd}}_{\mathbb R}`),
@@ -822,7 +930,7 @@ export function passageNote(section,block){
  if(section.slug==='coherent-cohomology-projective-space'&&block.label==='lemma-cohomology-projective-space-over-ring')
   return {...cechPlane,scope:'statement',examples:[cechLine]};
  if(section.slug==='curves-plane-curves'&&block.label==='lemma-genus-plane-curve')
-  return {...genusCubic,scope:'statement'};
+  return {...planeCurveGenus,scope:'statement'};
  if(section.slug==='divisors-effective-Cartier-invertible'&&
     ['definition-zero-scheme-s','lemma-zero-scheme','lemma-characterize-OD'].includes(block.label))return {...tangentDivisor,scope:'statement'};
  if(section.slug==='varieties-divisors-curves'&&block.label==='lemma-degree-effective-Cartier-divisor')return {...conicDegree,scope:'statement'};

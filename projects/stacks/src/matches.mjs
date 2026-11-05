@@ -41,20 +41,21 @@ f\circ f=\operatorname{id}_S,\\
 f^\sharp(h)(z)=h(1/z)
 \end{gathered}
 \]`,r`The inverse pullback preserves the maximal ideal at the corresponding point.`,{proof:r`\[h(f(a))=0\quad\Longleftrightarrow\quad (f^\sharp h)(a)=0.\]`}),
-  'sheaf-maps':entry(r`Glue one rule on two charts`,[
-    sphere,...cover,row(r`\mathcal F`,r`\mathcal O_S`,r`sheaf of sets`),row(r`\mathcal G`,r`\mathcal O_S`,r`sheaf of sets`),row(r`\varphi_i`,r`[s\mapsto s^2]`,r`Square a holomorphic function. These are sheaves of sets, so additivity is not a hypothesis.`),row(r`\varphi`,r`[s\mapsto s^2]`)
+  'sheaf-maps':entry(r`The exponential is independent of the chart`,[
+    sphere,...cover,row(r`\mathcal F`,r`\mathcal O_S`),row(r`\mathcal G`,r`\mathcal O_S^\times`),row(r`\varphi_i`,r`\exp|_{U_i}`),row(r`\varphi`,r`\exp:\mathcal O_S\to\mathcal O_S^\times`)
   ],r`\[
-(s^2)|_{U_i\cap U_j}=(s|_{U_i\cap U_j})^2
+(\exp s)|_V=\exp(s|_V)
 \]`,r``,{
-    proofBindings:[row(r`U`,r`V\subset S`),row(r`s`,r`h\in\mathcal O_S(V)`),row(r`\varphi_U(s)`,r`h^2`)],
-    proof:r`\[(h^2)|_T=(h|_T)^2.\]`
+    note:r`Exponentiating a holomorphic function gives a nowhere vanishing one. The operation commutes with both restriction and change of coordinates.`,
+    proofBindings:[row(r`U`,r`V\subset S`),row(r`s`,r`h\in\mathcal O_S(V)`),row(r`\varphi_U(s)`,r`e^h`)],
+    proof:r`\[(e^h)|_T=e^{h|_T}.\]`
   }),
   'transitions':entry(r`The gluing data for local functions`,[
     sphere,...cover,...localSheaves
   ],r`\[
 \varphi_{ii}=\operatorname{id},\qquad\varphi_{\infty 0}=\varphi_{0\infty}^{-1}
 \]`,r``,{note:r`Here the sphere \(S\) is given and the sheaf is glued.`}),
-  'compatible-sections':entry(r`Apply the section formula`,[
+  'compatible-sections':entry(r`A rational function regular across infinity`,[
     sphere,...localSheaves,...pair,row(r`\mathcal F`,r`\mathcal O_S`),row(r`\varphi_i`,r`[(s_0,s_\infty)\mapsto s_i]`)
   ],r`\[
 \frac1{1/w-1}=\frac w{1-w}
@@ -69,17 +70,17 @@ f^\sharp(h)(z)=h(1/z)
 \varphi_{ij}(st)=\varphi_{ij}(s)\varphi_{ij}(t)
 \end{gathered}
 \]`,r``,{proof:r`The equalizer is closed under addition and multiplication because both restriction maps preserve them.`}),
-  'uniqueness':entry(r`Our object in the equivalence`,[
+  'uniqueness':entry(r`The sheaf is recovered from its charts`,[
     sphere,row(r`\operatorname{Sh}(X)`,r`\operatorname{Sh}(S)`),row(r`\mathcal F`,r`\mathcal O_S`),row(r`\mathcal F|_{U_i}`,r`\mathcal O_{U_i}`),row(r`\varphi_{ij}`,r`\text{canonical overlap identification}`)
   ],r`\[
 \mathcal O_S\longmapsto(\mathcal O_{U_i},\varphi_{ij})\longmapsto\mathcal O_S
-\]`,r``,{proof:r`The squaring maps glue uniquely, and the compatible pairs recover the original sheaf.`}),
-  'maps':entry(r`The two mapping properties`,[
-    sphere,row(r`\mathcal F_i`,r`\mathcal O_{U_i}`),row(r`\mathcal G`,r`\mathcal O_S`),row(r`f_i`,r`[s_i\mapsto s_i^2]`),row(r`f`,r`[s\mapsto s^2]`),row(r`g_i`,r`\mathrm{id}_{\mathcal O_{U_i}}`),row(r`g`,r`\mathrm{id}_{\mathcal O_S}`)
+\]`,r``,{proof:r`The compatible pairs recover the original sheaf. Any chartwise maps respecting the transitions give a unique map on these pairs.`}),
+  'maps':entry(r`The exponential and the inclusion of units`,[
+    sphere,row(r`\mathcal F_i`,r`\mathcal O_{U_i}`),row(r`\mathcal G`,r`\mathcal O_S^\times`),row(r`f_i`,r`[s_i\mapsto e^{s_i}]`),row(r`f`,r`\exp`),row(r`g_i`,r`\mathcal O_{U_i}^\times\hookrightarrow\mathcal O_{U_i}`),row(r`g`,r`\mathcal O_S^\times\hookrightarrow\mathcal O_S`)
   ],r`\[
 \begin{gathered}
-f_i(s_i)=s_i^2\ \longmapsto\ f(s)=s^2,\\
-g_i=\operatorname{id}\ \longmapsto\ g=\operatorname{id}
+f_i(s_i)=e^{s_i}\ \longmapsto\ f(s)=e^s,\\
+g_i(u_i)=u_i\ \longmapsto\ g(u)=u.
 \end{gathered}
 \]`,r``),
   'charts':entry(r`Assign the gluing data`,[
@@ -130,14 +131,14 @@ X=U_1\cup U_2,\\
 U_i\cong X_i\ \text{affine}.
 \end{gathered}
 \]`}),
-  'double-origin':entry(r`The comparison example`,[
+  'double-origin':entry(r`Gluing can give two limits of one punctured line`,[
     row(r`k`,r`\mathbb C`),row(r`n`,r`1`),row(r`X_1`,r`\operatorname{Spec}\mathbb C[z]`),row(r`X_2`,r`\operatorname{Spec}\mathbb C[w]`),row(r`\varphi_{12}`,r`[z\mapsto z]`),row(r`X`,r`\text{the doubled-origin line}`),row(r`f`,r`[z\mapsto z,\ w\mapsto w]`,r`map to \(\operatorname{Spec}\mathbb C[t]\)`)
   ],r`\[
 \begin{gathered}
 z=w\quad(z,w\ne0),\\
 0_{X_1}\ne0_{X_2}\text{ in }X
 \end{gathered}
-\]`,r``,{note:r`The doubled-origin line uses the identity transition.`}),
+\]`,r``,{note:r`On complex points, every neighbourhood of either origin meets the same punctured line near zero. The two origins cannot be separated by disjoint neighbourhoods.`}),
   'global-functions':entry(r`The projective-line example`,[
     row(r`k`,r`\mathbb C`),row(r`x`,r`z`),row(r`y`,r`w`),row(r`\mathbf P^1_k`,r`\mathbb P^1_{\mathbb C}`),row(r`g(x)`,r`g(z)`),row(r`g(1/y)`,r`g(1/w)`),row(r`U`,r`\mathbb P^1_{\mathbb C}\setminus\{1\}`),row(r`s`,r`\frac1{z-1}=\frac w{1-w}`)
   ],r`\[
