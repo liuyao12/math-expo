@@ -566,6 +566,8 @@ const properLine=model('A family has a limit at infinity',[
 \]`,'',r`A point that runs off the affine chart can still have a limit on the sphere. The valuative criterion captures this extension property algebraically.`);
 const padicLimit={...model('The inverse limit of congruences',[
  b(r`\mathcal C`,r`\mathbf{CRing}`),
+ b(r`\mathcal I`,r`(\mathbb Z_{\ge1},\le)^{\mathrm{op}}`,
+  r`There is one arrow \(m\to n\) when \(m\ge n\). It acts by reduction modulo \(p^n\).`),
  b('M_n',r`\mathbb Z/p^n\mathbb Z`),
  b('p_n',r`\bigl((a_j)_j\mapsto a_n\bigr)`)
 ],r`\[
@@ -577,6 +579,8 @@ a_{n+1}&\equiv a_n\pmod{p^n}.
  source:{url:'https://math.mit.edu/classes/18.782/2023sp/LectureNotes4.pdf',label:'Sutherland, Introduction to Arithmetic Geometry, Lecture 4'}};
 const sphereColimit=model('The infinite sphere from finite spheres',[
  b(r`\mathcal C`,r`\mathbf{Top}`),
+ b(r`\mathcal I`,r`(\mathbb Z_{\ge0},\le)`,
+  r`There is one arrow \(n\to m\) when \(n\le m\). It acts by appending \(m-n\) zero coordinates.`),
  b('M_n',r`S^n`),
  b('s_n',r`S^n\hookrightarrow S^\infty`)
 ],r`\[
@@ -771,7 +775,7 @@ const embeddedPoint=model('An embedded point on an affine line',[
 \operatorname{Ann}_A(\bar x)=(\bar x,\bar y)
 \]`,r`The origin is an associated point. The minimal prime is \((\bar x)\).`);
 Object.assign(models,{tangentDivisor,conicDegree,conicIntersection,cechLine,cechPlane,planeCurveGenus,
- affineModule,closedPoint,affineBundle,gradedPolynomial,projCharts,properLine,padicLimit,sphereColimit,triangulatedChains,pairConnectingMap,injectiveExample,
+ affineModule,closedPoint,affineBundle,gradedPolynomial,projCharts,properLine,sphereColimit,triangulatedChains,pairConnectingMap,injectiveExample,
  injectivePoint,injectiveModulePoint,injectiveResolution,residueObstruction,deRhamCohomology,cechDifferential,
  lineBundleCocycle,cechDeRham,serreSequence,cechSpectral,affinePushforward,fibreCohomology,invertibleLine,genusExample,embeddedPoint});
 const groups={
@@ -782,8 +786,7 @@ const groups={
  gradedPolynomial:['algebra-graded'],
  projCharts:['constructions-proj','constructions-projective-space'],
  twistTensor:['constructions-quasi-coherent-proj'],
- padicLimit:['categories-limits'],
- sphereColimit:['categories-directed-colimits'],
+ sphereColimit:['categories-limits','categories-directed-colimits'],
  triangulatedChains:['homology-complexes'],
  pairConnectingMap:['homology-cohomological-delta-functor'],
  injectiveExample:['homology-injectives'],
@@ -906,8 +909,8 @@ export function sectionNote(section){
 }
 export function passageNote(section,block){
  const base=sectionNote(section);
- if(section.slug==='categories-limits'&&block.label==='definition-colimit')
-  return {...sphereColimit,scope:'statement'};
+ if(section.slug==='categories-limits'&&block.label==='definition-limit')
+  return {...padicLimit,scope:'statement'};
  if(section.slug==='cohomology-cech-cohomology-cohomology'&&block.label==='lemma-cech-spectral-sequence-application')
   return {...cechSpectral,scope:'statement',examples:[cechSphere]};
  if(section.slug==='constructions-invertible-on-proj'){
