@@ -83,7 +83,7 @@ export function buildSchemePath({root,dist,head,header,footer,matchingHTML}){
   }).join('');
   if(!unit.readingTitle)stats.push({slug:unit.slug,sections:unit.sections.length,proofs,statements,formulas:r.mathCount});
   const first=Object.keys(data)[0],firstSource=unit.sections[0];
-  const toc=renderOutline(unit.sections,unit.readingTitle?'The Stacks Project':undefined);
+  const toc=renderOutline(unit.sections);
   const chapterNav=(unit.core?coreUnits:manifest.units).map(u=>`<a href="../${u.slug}/" ${u.slug===unit.slug?'aria-current="page"':''}>${u.number}. ${esc(u.title)}</a>`).join('');
   const outlineLink=unit.readingTitle?'<a class="back-link" href="../../#readings-title">← Selected readings</a>':'<a class="back-link" href="../../path/">← Sections for defining schemes</a>';
   const outlineType=unit.readingTitle?'Selected reading':`Chapter ${unit.number} · ${unit.core?'Definition path':'Reference collection'}`;

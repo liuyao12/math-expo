@@ -160,10 +160,6 @@ body:has(.reader-layout) .site-header{position:sticky;top:0}.reading-progress{he
   transform: rotate(45deg);
 }
 
-.outline-toggle[aria-controls="outline-book"] {
-  font-size: 12px;
-}
-
 .outline-tree a {
   display: block;
   padding: 5px 3px;
