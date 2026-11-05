@@ -19,6 +19,15 @@
   $$('[data-show-example]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();openExample(a);}));
   $('#close-example')?.addEventListener('click',closeExample);
   document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeExample();closeOutline();}if(e.key==='Tab'&&dock?.classList.contains('is-open')){const controls=[...dock.querySelectorAll('button,input,a[href]')].filter(e=>!e.disabled),first=controls[0],last=controls.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}});
+  const sourceNode=$('#source-data'),sourceData=sourceNode?JSON.parse(sourceNode.textContent):{};
+  let sourceTag='';
+  const setSource=context=>{
+    const section=context?.closest('.source-section'),tag=section?.id;
+    if(!tag||!sourceData[tag])return;
+    if(sourceTag!==tag){$('#source-content').innerHTML=sourceData[tag].html;sourceTag=tag;}
+    const passageTag=context.dataset.sourceTag||tag;
+    $('#original-passage-link').href='https://stacks.math.columbia.edu/tag/'+passageTag;
+  };
   const dataNode=$('#example-data');
   let current='local-functions',follow=true,selectionPinned=false,data={},passages=[],keys=[],lastReading=current,lastReadingContext=null,activeContext=null;
   if(dataNode){
@@ -29,7 +38,7 @@
       context=context||passages.find(p=>p.dataset.example===key);
       const proof=context?.dataset.proof==='true';
       const changed=activeContext!==context;
-      activeContext=context;
+      activeContext=context;setSource(context);
       $('#example-title').textContent=data[key].title;
       $('#example-content').innerHTML=proof&&data[key].proofHtml?data[key].proofHtml:data[key].html;
       $('#example-index').textContent=String(keys.indexOf(key)+1).padStart(2,'0');
@@ -42,19 +51,6 @@
     $('#previous-example').addEventListener('click',()=>{selectionPinned=false;setExample(keys[Math.max(0,keys.indexOf(current)-1)],true);});
     $('#next-example').addEventListener('click',()=>{selectionPinned=false;setExample(keys[Math.min(keys.length-1,keys.indexOf(current)+1)],true);});
     $('#follow-reading').addEventListener('click',()=>{selectionPinned=false;follow=true;setExample(lastReading,false,lastReadingContext);});
-    $$('.reader-main .object-ref').forEach(ref=>{
-      const locate=()=>{
-        const context=ref.closest('.proof-body[data-example],.passage[data-example]');
-        selectionPinned=true;setExample(context.dataset.example,true,context);openExample(ref);
-        const matches=JSON.parse(ref.dataset.matches||JSON.stringify([ref.dataset.match]));
-        const rows=$$('#example-content .object-row').filter(row=>matches.includes(row.dataset.symbol));
-        rows.forEach(row=>row.classList.add('is-matched'));
-        const row=rows.find(row=>row.dataset.symbol===matches[0]);
-        if(row){row.scrollIntoView({block:'nearest',behavior:'instant'});row.focus({preventScroll:true});}
-      };
-      ref.addEventListener('click',locate);
-      ref.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();locate();}});
-    });
     const sections=$$('.source-section');let scheduled=false;
     const contexts=$$('.passage[data-example],.proof-body[data-example]');
     const update=()=>{scheduled=false;let active=passages[0];for(const p of contexts){if(!p.getClientRects().length)continue;if(p.getBoundingClientRect().top<=innerHeight*.3)active=p;else break;}if(active){lastReading=active.dataset.example;lastReadingContext=active;if(follow&&(lastReading!==current||activeContext!==active))setExample(lastReading,false,active);}

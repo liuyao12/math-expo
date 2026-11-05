@@ -20,7 +20,7 @@ for(const [key,item] of Object.entries(examples)){
     if(!b.kind)throw Error('Missing object type: '+key+' '+b.symbol);
   }
 }
-if(!html.includes('class="math-inline object-ref"')||!html.includes('class="object-matches"'))throw Error('Missing linked object matching');
+if(!html.includes('class="object-matches"'))throw Error('Missing margin object matching');
 if(!html.includes('<details id="example-visual" class="optional-visual">'))throw Error('The visual must be optional and initially closed');
 for(const section of manifest.sections){
   const tex=fs.readFileSync(path.join(root,'upstream/sections',section.slug+'.tex'),'utf8');
@@ -82,7 +82,7 @@ for(const unit of foundation.units){
   }
   if([...html.matchAll(/<details class="proof">/g)].length!==proofs)throw Error('Lost or initially expanded proof in '+unit.slug);
   if([...html.matchAll(/class="statement-heading"/g)].length!==statements)throw Error('Lost source statement in '+unit.slug);
-  if(!html.includes('class="math-inline object-ref"'))throw Error('Missing source-symbol matching in '+unit.slug);
+  if(!html.includes('class="object-matches"'))throw Error('Missing margin object matching in '+unit.slug);
   if(html.includes('katex-error')||html.includes('@@TOKEN'))throw Error('Unrendered source in '+unit.slug);
   pathProofs+=proofs;pathStatements+=statements;
 }
@@ -107,7 +107,8 @@ for(const unit of foundation.units){
     const source=fs.readFileSync(path.join(root,'upstream/sections',section.slug+'.tex'),'utf8');
     if(createHash('sha256').update(source).digest('hex')!==section.sha256)throw Error('Altered section source '+section.slug);
     if(!html.includes('<h2>'+section.number+'. '+escapeHTML(section.title)+'</h2>'))throw Error('Changed original section title '+section.slug);
-    if(!html.includes('<pre><code>'+escapeHTML(source)+'</code></pre>'))throw Error('Missing verbatim section source '+section.slug);
+    const records=JSON.parse(html.match(/<script type="application\/json" id="source-data">([\s\S]*?)<\/script>/)[1]);
+    if(!records[section.tag].html.includes('<pre><code>'+escapeHTML(source)+'</code></pre>'))throw Error('Missing margin source '+section.slug);
   }
 }
 const selection=JSON.parse(fs.readFileSync(path.join(root,'upstream/scheme-selection.json'),'utf8'));
@@ -125,3 +126,14 @@ for(const [key,diagram] of Object.entries(diagrams)){
 const proseCheck=spawnSync('python3',[path.join(root,'scripts/check-verbatim.py')],{stdio:'inherit'});
 if(proseCheck.status!==0)process.exit(proseCheck.status??1);
 console.log(`Validated original titles, prerequisite audit, verbatim source views, and ${Object.keys(diagrams).length} original LaTeX diagrams.`);
+
+for(const route of [...foundation.units.map(u=>u.slug),'gluing']){
+  const html=fs.readFileSync(path.join(dist,'read',route,'index.html'),'utf8');
+  const main=html.match(/<main id="main" class="reader-main verbatim-main">([\s\S]*?)<\/main>/)?.[1];
+  if(!main)throw Error('Missing verbatim text column '+route);
+  for(const cls of ['example-jump','object-ref','source-tex','source-note','source-links','edition-note','reading-deck','reading-controls','reading-contents','path-navigation','tag']){
+    if(new RegExp('class="[^"\n]*\\b'+cls+'\\b').test(main))throw Error('Non-source interface in main column: '+route+' '+cls);
+  }
+  if(/<button|role="button"|<details(?! class="proof")/.test(main))throw Error('Only proof-collapse controls may be added to original text: '+route);
+}
+console.log('Validated verbatim source columns: proof-collapse controls only; commentary, source tools, and editorial material remain in margins.');
