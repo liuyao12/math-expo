@@ -510,17 +510,60 @@ const properLine=model('A family has a limit at infinity',[
 ],r`\[
 [1:t^{-1}]=[t:1]\longrightarrow [0:1]\quad(t=0)
 \]`,'',r`A point that runs off the affine chart can still have a limit on the sphere. The valuative criterion captures this extension property algebraically.`);
-const complexExample=model('A holomorphic differential may have no primitive',[
- b('U',r`\mathbb C^\times`),
- b('K^0',r`\operatorname{Hol}(U)`),
- b('K^1',r`\Omega^1(U)`),
- b('d^0',r`(h\mapsto dh)`)
+const padicLimit={...model('The inverse limit of congruences',[
+ b(r`\mathcal C`,r`\mathbf{CRing}`),
+ b('M_n',r`\mathbb Z/p^n\mathbb Z`),
+ b('p_n',r`\bigl((a_j)_j\mapsto a_n\bigr)`)
 ],r`\[
 \begin{aligned}
-H^1(K^\bullet)&=\Omega^1(U)/d\operatorname{Hol}(U),\\
-\oint_{|z|=1}\frac{dz}{z}&=2\pi i.
+\mathbb Z_p&=\varprojlim_n\mathbb Z/p^n\mathbb Z,\\
+a_{n+1}&\equiv a_n\pmod{p^n}.
 \end{aligned}
-\]`,'',r`Integration is locally possible, but a nonzero period prevents a single-valued primitive. Cohomology identifies forms that differ by an exact differential.`);
+\]`,'',r`Reducing from \(p^{n+1}\) to \(p^n\) forgets the last digit. A \(p\)-adic integer is one compatible choice of residue at every precision.`),
+ source:{url:'https://math.mit.edu/classes/18.782/2023sp/LectureNotes4.pdf',label:'Sutherland, Introduction to Arithmetic Geometry, Lecture 4'}};
+const sphereColimit=model('The infinite sphere from finite spheres',[
+ b(r`\mathcal C`,r`\mathbf{Top}`),
+ b('M_n',r`S^n`),
+ b('s_n',r`S^n\hookrightarrow S^\infty`)
+],r`\[
+\begin{gathered}
+S^n\hookrightarrow S^{n+1},\quad x\mapsto(x,0),\\
+\varinjlim_n S^n=S^\infty=\bigcup_{n\geq0}S^n.
+\end{gathered}
+\]`,'',r`A map out of \(S^\infty\) is continuous exactly when its restrictions to all the finite spheres are continuous.`);
+const triangulatedChains=model('Chains on the boundary of a tetrahedron',[
+ b(r`\mathcal A`,r`\mathbf{Ab}`),
+ b('K',r`\partial\Delta^3\quad (|K|\cong S^2)`),
+ b(r`A_\bullet`,r`C_\bullet(K;\mathbb Z)`),
+ b('d_i',r`\partial_i`)
+],r`\[
+0\to\mathbb Z^4\xrightarrow{\partial_2}
+\mathbb Z^6\xrightarrow{\partial_1}\mathbb Z^4\to0
+\]
+\[
+\begin{aligned}
+\partial_2[012]&=[12]-[02]+[01],\\
+\partial_1\partial_2[012]&=0.
+\end{aligned}
+\]`,'',r`The generators are the four triangular faces, six edges, and four vertices. Each vertex of a face occurs twice with opposite signs when you take its boundary twice.`);
+const pairConnectingMap={...model('The connecting map for a disk and its boundary',[
+ b('X',r`D^2`),
+ b('Y',r`\partial D^2=S^1`),
+ b('A',r`C^\bullet(X,Y;\mathbb Z)`),
+ b('B',r`C^\bullet(X;\mathbb Z)`),
+ b('C',r`C^\bullet(Y;\mathbb Z)`),
+ b('F^n',r`H^n`)
+],r`\[
+0\to A\to B\to C\to0
+\]
+\[
+\begin{gathered}
+H^1(X)\to H^1(Y)\xrightarrow{\delta}H^2(X,Y),\\
+H^2(X,Y)\to H^2(X)\to H^2(Y),\\[4pt]
+\delta[\alpha]=[d\widetilde\alpha].
+\end{gathered}
+\]`,r`Extend the boundary cocycle \(\alpha\) to a cochain \(\widetilde\alpha\) on the disk. Its coboundary vanishes on the circle, so it defines a relative class.`,r`The connecting map takes a generator of \(H^1(S^1;\mathbb Z)\) to a generator of \(H^2(D^2,S^1;\mathbb Z)\).`),
+ source:{url:'https://pi.math.cornell.edu/~hatcher/AT/ATch3.pdf#page=15',label:'Hatcher, Algebraic Topology, §3.1'}};
 const injectiveExample=model('Division lets homomorphisms extend',[
  b('A',r`\mathbb Z`),
  b('I',r`\mathbb Q`),
@@ -626,7 +669,7 @@ const embeddedPoint=model('An embedded point on an affine line',[
 \operatorname{Ann}_A(\bar x)=(\bar x,\bar y)
 \]`,r`The origin is an associated point. The minimal prime is \((\bar x)\).`);
 Object.assign(models,{tangentDivisor,conicDegree,conicIntersection,cechLine,cechPlane,genusCubic,
- affineModule,closedPoint,affineDoubleCover,gradedPolynomial,projCharts,properLine,complexExample,injectiveExample,
+ affineModule,closedPoint,affineDoubleCover,gradedPolynomial,projCharts,properLine,padicLimit,sphereColimit,triangulatedChains,pairConnectingMap,injectiveExample,
  injectivePoint,injectiveModulePoint,injectiveResolution,residueObstruction,cohomologySphere,cechDifferential,cechDoubleComplex,cechSpectral,affinePushforward,genusExample,embeddedPoint});
 const groups={
  affineModule:['modules-quasi-coherent','schemes-quasi-coherent-affine'],
@@ -636,12 +679,15 @@ const groups={
  gradedPolynomial:['algebra-graded'],
  projCharts:['constructions-proj','constructions-projective-space'],
  twistTensor:['constructions-quasi-coherent-proj'],
- complexExample:['homology-complexes'],
+ padicLimit:['categories-limits'],
+ sphereColimit:['categories-directed-colimits'],
+ triangulatedChains:['homology-complexes'],
+ pairConnectingMap:['homology-cohomological-delta-functor'],
  injectiveExample:['homology-injectives'],
  injectiveResolution:['derived-injective-resolutions'],
  injectivePoint:['injectives-abelian-sheaves-space'],
  injectiveModulePoint:['injectives-sheaves-modules-space'],
- residueObstruction:['derived-right-derived-functor','homology-cohomological-delta-functor'],
+ residueObstruction:['derived-right-derived-functor'],
  cohomologySphere:['cohomology-cohomology-sheaves'],
  cechDifferential:['cohomology-cech','cohomology-cech-functor','cohomology-alternating-cech'],
  cechDoubleComplex:['homology-double-complexes'],
@@ -657,7 +703,7 @@ const groups={
  conicIntersection:['intersection-computing-intersection-multiplicities'],
  twistCharts:['modules-invertible','constructions-invertible-on-proj','divisors-invertible-modules'],
  solutionSheaf:['modules-kernels'],connected:['topology-connected-components'],natural:['categories-opposite','categories-formal-cat-cat'],twoFibre:['categories-2-fibre-products'],over:['categories-categories-over-categories'],topology:['topology-topology-basic'],basis:['topology-bases'],irreducible:['topology-irreducible-components'],noetherian:['topology-noetherian'],compact:['topology-quasi-compact'],specialization:['topology-specialization'],
- snake:['algebra-snake'],colimits:['categories-cofinal','algebra-colimits','categories-directed-colimits','categories-posets-limits'],localization:['algebra-localization'],local:['algebra-radical','algebra-local-rings'],spectrum:['algebra-spectrum-ring'],constructible:['topology-constructible','topology-constructible-Noetherian'],
+ snake:['algebra-snake'],colimits:['categories-cofinal','algebra-colimits','categories-posets-limits'],localization:['algebra-localization'],local:['algebra-radical','algebra-local-rings'],spectrum:['algebra-spectrum-ring'],constructible:['topology-constructible','topology-constructible-Noetherian'],
  sheaf:['sheaves-presheaves','sheaves-abelian-presheaves','sheaves-sheaves','sheaves-abelian-sheaves','sheaves-presheaves-structures','sheaves-sheaves-structures','sheaves-algebraic-structures'],
  moduleSheaf:['sheaves-presheaves-modules','sheaves-sheaves-modules','sheaves-sheafification-presheaves-modules'],
  stalk:['sheaves-stalks','sheaves-stalks-abelian-presheaves','sheaves-stalks-presheaves-structures'],moduleStalk:['sheaves-stalk-presheaves-modules'],exactSheaf:['sheaves-exactness-points'],
@@ -665,7 +711,7 @@ const groups={
  functorial:['sheaves-presheaves-functorial','sheaves-abelian-presheaves-functorial','sheaves-presheaves-structures-functorial','sheaves-presheaves-modules-functorial','sheaves-ringed-spaces-functoriality-modules'],
  ringed:['sheaves-ringed-spaces','schemes-locally-ringed-spaces'],open:['sheaves-open-immersions','schemes-open-immersion'],
  algebraGlue:['algebra-more-glueing'],affine:['schemes-affine-schemes'],affineMaps:['schemes-category-affine-schemes'],scheme:['schemes-schemes'],
- category:['categories-definition-categories'],limits:['categories-connected-limits','categories-finite-limits','categories-equalizers','categories-limits'],adjoint:['categories-adjoint'],
+ category:['categories-definition-categories'],limits:['categories-connected-limits','categories-finite-limits','categories-equalizers'],adjoint:['categories-adjoint'],
  nakayama:['algebra-nakayama'],modules:['algebra-hom'],finite:['algebra-module-finite-type','algebra-finite-type','algebra-images-finite-presentation'],idempotent:['algebra-open-and-closed'],rings:['algebra-conventions','algebra-rings-basic','algebra-miscellany'],
  chartCover:['sheaves-sheaves-basic'],basisSheaf:['sheaves-bases'],
  regularGlue:['algebra-tilde-module-sheaf'],ringPullback:['categories-fibre-products'],setLimits:['categories-limit-sets'],
@@ -754,6 +800,8 @@ export function sectionNote(section){
 }
 export function passageNote(section,block){
  const base=sectionNote(section);
+ if(section.slug==='categories-limits'&&block.label==='definition-colimit')
+  return {...sphereColimit,scope:'statement'};
  if(section.slug==='cohomology-cech-cohomology-cohomology'&&block.label==='lemma-cech-spectral-sequence-application')
   return {...cechSpectral,scope:'statement',examples:[cechSphere]};
  if(section.slug==='constructions-invertible-on-proj'){
