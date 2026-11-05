@@ -1,17 +1,17 @@
 // Authored commentary. The main column is rendered separately from upstream LaTeX.
 const r=String.raw;
-const b=(symbol,value,kind,detail='')=>({symbol,value,kind,detail});
+const b=(symbol,value,note='')=>({symbol,value,note});
 const model=(title,bindings,check,result,note='')=>({title,bindings,check,result,note,scope:'section'});
-const X=b('X',r`\mathbb C`,'The complex plane with its usual topology.');
-const U=b('U',r`\text{an open set in }\mathbb C`,'An arbitrary open subset of the complex plane.',r`A nonempty connected open set is called a domain. Picture such a domain first; the presheaf is defined on every open set, including disconnected opens and the empty set.`);
-const disk=b('U',r`D(a,r)=\{z:|z-a|<r\}`,'An open disk, used here as a basis neighbourhood.');
-const O=b(r`\mathcal O`,r`\mathcal O^{\mathrm{an}}_{\mathbb C}`,'The sheaf of holomorphic functions.');
+const X=b('X',r`\mathbb C`);
+const U=b('U',r`\text{an open subset of }\mathbb C`,r`A domain is a nonempty connected open set. Here \(U\) can also be disconnected or empty.`);
+const disk=b('U',r`D(a,r)=\{z:|z-a|<r\}`);
+const O=b(r`\mathcal O`,r`\mathcal O^{\mathrm{an}}_{\mathbb C}`);
 const F=b(r`\mathcal F`,r`\mathcal O^{\mathrm{an}}_{\mathbb C}`,'A sheaf; forget multiplication when the source asks for abelian groups or sets.');
-const R=b('R',r`\mathbb C[z]`,'The ring of polynomial functions on the complex line.');
-const A=b('X',r`\operatorname{Spec}(\mathbb C[z])`,'The algebraic affine line, with its Zariski topology.');
-const integers=b('R',r`\mathbb Z`,'The ring of integers.');
-const arithmeticSpectrum=b('X',r`\operatorname{Spec}(\mathbb Z)`,'The spectrum of the integers.');
-const twoPoints=b('X',r`\{a,b\}`,'A discrete space with two points.');
+const R=b('R',r`\mathbb C[z]`);
+const A=b('X',r`\operatorname{Spec}(\mathbb C[z])`);
+const integers=b('R',r`\mathbb Z`);
+const arithmeticSpectrum=b('X',r`\operatorname{Spec}(\mathbb Z)`);
+const twoPoints=b('X',r`\{a,b\}\quad\text{(discrete)}`);
 const generic=r`Section model. Additional objects and hypotheses in individual statements and proofs retain their source meanings.`;
 const naturalEquivalences={
  url:'https://www.ams.org/journals/tran/1945-058-00/S0002-9947-1945-0013131-6/S0002-9947-1945-0013131-6.pdf',
@@ -20,193 +20,187 @@ const naturalEquivalences={
 const finiteVect=b(r`\mathcal C`,r`\mathbf{Vect}^{\mathrm{fd}}_{\mathbb R}`,'Finite-dimensional real vector spaces with linear maps.');
 const models={
  topology:model('A topology with a generic point',[
-  b('X',r`\{\eta,s\}`,'A space with a generic point and a closed point.'),
-  b(r`\mathcal T`,r`\{\varnothing,\{\eta\},X\}`,'The collection of open sets.')
+  b('X',r`\{\eta,s\}`),
+  b(r`\mathcal T`,r`\{\varnothing,\{\eta\},X\}`)
  ],r`These opens are closed under arbitrary unions and finite intersections. The only open neighbourhood of \(s\) is \(X\), so it contains \(\eta\).`,r`The closure of \(\{\eta\}\) is \(X\), while \(\{s\}\) is closed. This is the topology of \(\operatorname{Spec}(\mathbb Z_{(p)})\) for a prime number \(p\).`),
- basis:model('Disks are enough',[X,b(r`\mathcal B`,r`\{D(a,r):a\in\mathbb C,\ r>0\}`,'A basis for the usual topology.'),disk],r`Every point of an open subset lies in a smaller disk inside it. An intersection of two disks need not be a disk, but can be covered by disks.`,r`Knowing local functions and their restrictions on disks is enough to reconstruct them on all opens. Later, standard opens play the same role on a spectrum.`),
- irreducible:model('A different topology on the complex line',[A,b('Z',r`V(z(z-1))`,'The closed set consisting of two closed points.'),b(r`\eta`,r`(0)`,'The generic point of the algebraic line.')],r`A proper Zariski closed subset of this spectrum is finite. Two nonempty opens therefore meet, and the closure of the generic point is the whole spectrum.`,r`This is an irreducible space. The usual complex plane is Hausdorff and has disjoint disks; its usual topology is a different example.`),
+ basis:model('Disks are enough',[X,b(r`\mathcal B`,r`\{D(a,r):a\in\mathbb C,\ r>0\}`),disk],r`Every point of an open subset lies in a smaller disk inside it. An intersection of two disks need not be a disk, but can be covered by disks.`,r`Knowing local functions and their restrictions on disks is enough to reconstruct them on all opens. Later, standard opens play the same role on a spectrum.`),
+ irreducible:model('A different topology on the complex line',[A,b('Z',r`V(z(z-1))`),b(r`\eta`,r`(0)`)],r`A proper Zariski closed subset of this spectrum is finite. Two nonempty opens therefore meet, and the closure of the generic point is the whole spectrum.`,r`This is an irreducible space. The usual complex plane is Hausdorff and has disjoint disks; its usual topology is a different example.`),
  compact:model('Two denominators cover the integer spectrum',[
-  arithmeticSpectrum,b('U_1',r`D(2)`,'The primes that do not contain two.'),
-  b('U_2',r`D(3)`,'The primes that do not contain three.')
+  arithmeticSpectrum,b('U_1',r`D(2)`),
+  b('U_2',r`D(3)`)
  ],r`Since \(3-2=1\), no prime ideal contains both \(2\) and \(3\). Thus \(D(2)\cup D(3)=X\).`,r`For any cover of \(X\) by standard opens \(D(f_i)\), the \(f_i\) generate the unit ideal. An expression for \(1\) uses finitely many of them, and those opens already cover. An arbitrary open cover can first be refined by standard opens.`),
- specialization:model('The point that has no analytic counterpart',[A,b('x',r`\eta=(0)`,'The generic point.'),b("x'",r`(z-a)`,'A closed point, specified by evaluation at a complex number.')],r`The prime ideal inclusion \((0)\subset(z-a)\) says that the closed point lies in the closure of the generic point.`,r`The generic point specializes to every closed point. In a Hausdorff Riemann surface every singleton is closed, so specialization between distinct points disappears.`),
+ specialization:model('The point that has no analytic counterpart',[A,b('x',r`\eta=(0)`),b("x'",r`(z-a)`,'A closed point, specified by evaluation at a complex number.')],r`The prime ideal inclusion \((0)\subset(z-a)\) says that the closed point lies in the closure of the generic point.`,r`The generic point specializes to every closed point. In a Hausdorff Riemann surface every singleton is closed, so specialization between distinct points disappears.`),
  rings:model('Reduction modulo an integer',[
-  integers,b('I',r`(6)`,'The ideal of multiples of six.'),
-  b(r`\varphi`,r`(n\mapsto n\bmod 6)`,'The quotient ring homomorphism.')
+  integers,b('I',r`(6)`),
+  b(r`\varphi`,r`(n\mapsto n\bmod 6)`)
  ],r`The reduction map respects addition and multiplication and sends \(1\) to \(1\). Its kernel is \((6)\).`,r`The ideals \((2)\) and \((3)\) are prime because their quotients are fields. The quotient by \((6)\) has nonzero zero divisors, since \(2\cdot3=0\) there.`),
- modules:model('Vector-valued functions',[R,b('M',r`R^{\oplus n}`,'Polynomial vector-valued functions, a free module.'),b('N',r`R^{\oplus m}`,'A second free module.')],r`Multiplying a vector-valued function by a scalar function is the module operation. A matrix of polynomials gives a module map.`,r`Modules generalize sections of trivial bundles. A general module or sheaf of modules need not come from a vector bundle; local freeness is an extra condition.`),
- snake:model('Exactness measures vanishing and lifting',[R,b('M',r`\mathbb C[z]`,'A module over the polynomial ring.'),b('N',r`\mathbb C[z]/(z)`,'The value space at the origin.')],r`The sequence \(0\to R\xrightarrow{\,z\,}R\to R/(z)\to0\) is exact: vanishing at the origin is precisely divisibility by the coordinate.`,r`Kernels and cokernels record the conditions for solving a local equation. The snake lemma tracks how these conditions change in a commutative diagram. The displayed sequence is a model for exactness, not a full substitution into each diagram.`),
+ modules:model('Vector-valued functions',[R,b('M',r`R^{\oplus n}`),b('N',r`R^{\oplus m}`)],r`Multiplying a vector-valued function by a scalar function is the module operation. A matrix of polynomials gives a module map.`,r`Modules generalize sections of trivial bundles. A general module or sheaf of modules need not come from a vector bundle; local freeness is an extra condition.`),
+ snake:model('Exactness measures vanishing and lifting',[R,b('M',r`\mathbb C[z]`),b('N',r`\mathbb C[z]/(z)`,'The value space at the origin.')],r`The sequence \(0\to R\xrightarrow{\,z\,}R\to R/(z)\to0\) is exact: vanishing at the origin is precisely divisibility by the coordinate.`,r`Kernels and cokernels record the conditions for solving a local equation. The snake lemma tracks how these conditions change in a commutative diagram. The displayed sequence is a model for exactness, not a full substitution into each diagram.`),
  colimits:model('Doubling builds dyadic fractions',[
-  b('I',r`\mathbb Z_{\ge 0}`,'Stages indexed by the nonnegative integers.'),
+  b('I',r`\mathbb Z_{\ge 0}`),
   b('M_i',r`\mathbb Z`,r`The additive group at stage \(i\). The transition to stage \(i+1\) doubles each integer.`),
-  b('M',r`\mathbb Z[1/2]`,'The colimit as an additive group.')
+  b('M',r`\mathbb Z[1/2]`)
  ],r`Send \(a\) at stage \(i\) to \(a/2^i\). This gives the same fraction as \(2a\) at stage \(i+1\). Every dyadic fraction has a representative, and any two equal fractions have the same numerator when moved to a common stage.`,r`For example, \(1\) at stage \(0\) and \(2\) at stage \(1\) represent the same element of the colimit.`),
  localization:model('Allow powers of two in denominators',[
-  integers,b('S',r`\{1,2,2^2,\ldots\}`,'The multiplicative set generated by two.'),
-  b(r`S^{-1}R`,r`\mathbb Z[1/2]`,'The ring of dyadic fractions.')
+  integers,b('S',r`\{1,2,2^2,\ldots\}`),
+  b(r`S^{-1}R`,r`\mathbb Z[1/2]`)
  ],r`Fractions have the form \(m/2^n\). For example, \(1/2\) and \(2/4\) represent the same element.`,r`A ring map out of \(\mathbb Z\) that sends \(2\) to a unit extends uniquely to \(\mathbb Z[1/2]\). The fraction \(1/3\) is absent, since no power of two is divisible by three.`),
  local:model('Localize the integers at a prime',[
-  b('R',r`\mathbb Z_{(p)}`,r`Fractions with denominator prime to the prime number \(p\).`),
-  b(r`\mathfrak m`,r`p\mathbb Z_{(p)}`,'The ideal of fractions whose numerator is divisible by the prime.'),
-  b(r`\kappa`,r`\mathbb F_p`,'The residue field.')
+  b('R',r`\mathbb Z_{(p)}`),
+  b(r`\mathfrak m`,r`p\mathbb Z_{(p)}`),
+  b(r`\kappa`,r`\mathbb F_p`)
  ],r`A fraction \(a/b\) with \(p\nmid b\) is a unit exactly when \(p\nmid a\). In that case \(b/a\) belongs to the same ring.`,r`Every element outside \(\mathfrak m\) is a unit, so \(\mathfrak m\) is the unique maximal ideal. The residue map sends \(a/b\) to \(\bar a\,\bar b^{-1}\).`),
  spectrum:model('Prime numbers as closed points',[
   integers,arithmeticSpectrum,
-  b(r`\mathfrak p`,r`(p)`,'A closed point indexed by a prime number.'),
-  b(r`\eta`,r`(0)`,'The generic point.'),
-  b(r`D(6)`,r`X\setminus\{(2),(3)\}`,'The open where six is invertible.')
+  b(r`\mathfrak p`,r`(p)`),
+  b(r`\eta`,r`(0)`),
+  b(r`D(6)`,r`X\setminus\{(2),(3)\}`)
  ],r`The prime ideals of \(\mathbb Z\) are \((0)\) and \((p)\) for prime numbers \(p\). A closed point \((p)\) lies in \(D(n)\) exactly when \(p\nmid n\).`,r`The point \((0)\) lies in every nonempty open, and its closure is the entire space. A nonzero integer cuts out precisely the closed points indexed by its prime divisors.`),
- sheaf:model('Holomorphic functions, with restriction',[X,U,F,b(r`\mathcal F(U)`,r`\operatorname{Hol}(U)`,'The set of all holomorphic functions on this open set.',r`An element \(h\in\mathcal F(U)\) is a holomorphic map \(h:U\to\mathbb C\), defined on all of \(U\).`),b(r`\rho^U_V`,r`(h\mapsto h|_V)`,'Restriction to any smaller open subset.',r`Here \(V\subseteq U\) is open; it need not be connected.`)],r`Restriction preserves identity and composition. Functions that agree on overlaps glue uniquely, because being holomorphic is local.`,r`A sheaf records compatible functions on all opens. When the source speaks of a presheaf, only the restriction rules are required; the gluing axiom is additional.`),
- moduleSheaf:model('Sections of a trivial holomorphic bundle',[X,O,b(r`\mathcal F`,r`(\mathcal O^{\mathrm{an}}_{\mathbb C})^{\oplus n}`,'Holomorphic vector-valued functions, a sheaf of modules.'),b(r`\mathcal F(U)`,r`\operatorname{Hol}(U)^n`,'The sections of the trivial rank-n bundle over this open.')],r`Restriction and gluing work coordinate by coordinate, and multiplication by a holomorphic function commutes with restriction.`,r`Locally free sheaves behave like bundles. The source allows arbitrary sheaves of modules, which can also contain torsion and need not describe a bundle.`),
+ sheaf:model('Holomorphic functions, with restriction',[X,U,F,b(r`\mathcal F(U)`,r`\{h:U\to\mathbb C\mid h\text{ holomorphic}\}`),b(r`\rho^U_V`,r`(h\mapsto h|_V)`)],r`Restriction preserves identity and composition. Functions that agree on overlaps glue uniquely, because being holomorphic is local.`,r`A sheaf records compatible functions on all opens. When the source speaks of a presheaf, only the restriction rules are required; the gluing axiom is additional.`),
+ moduleSheaf:model('Sections of a trivial holomorphic bundle',[X,O,b(r`\mathcal F`,r`(\mathcal O^{\mathrm{an}}_{\mathbb C})^{\oplus n}`),b(r`\mathcal F(U)`,r`\operatorname{Hol}(U)^n`)],r`Restriction and gluing work coordinate by coordinate, and multiplication by a holomorphic function commutes with restriction.`,r`Locally free sheaves behave like bundles. The source allows arbitrary sheaves of modules, which can also contain torsion and need not describe a bundle.`),
  stalk:model('A holomorphic germ is its convergent Taylor series',[
- X,b('x',r`a\in\mathbb C`,'The point at which we take germs.'),
- b('t',r`z-a`,'The local coordinate centred at this point.'),F,
- b(r`\mathcal F_x`,r`\mathcal O^{\mathrm{an}}_{\mathbb C,a}\cong\mathbb C\{t\}`,'Holomorphic germs, identified with convergent Taylor series.',r`The notation \(\mathbb C\{t\}\) means power series in \(t\) with a positive radius of convergence.`),
- b(r`[f]_a`,r`\sum_{n=0}^{\infty}\frac{f^{(n)}(a)}{n!}t^n`,'The Taylor series corresponding to this germ under the identification above.')
+ X,b('x',r`a\in\mathbb C`),
+ b('t',r`z-a`),F,
+ b(r`\mathcal F_x`,r`\mathcal O^{\mathrm{an}}_{\mathbb C,a}\cong\mathbb C\{t\}`,r`The notation \(\mathbb C\{t\}\) means power series in \(t\) with a positive radius of convergence.`),
+ b(r`[f]_a`,r`\sum_{n=0}^{\infty}\frac{f^{(n)}(a)}{n!}t^n`)
  ],r`A representative \(f\) is holomorphic on some neighbourhood of \(a\). Shrinking that neighbourhood leaves all derivatives at \(a\) unchanged. Two representatives give the same germ exactly when their Taylor series at \(a\) agree: each function equals its series on a sufficiently small disk.`,r`Conversely, a power series with positive radius of convergence sums to a holomorphic function near \(a\), hence defines a germ. Addition and multiplication agree, so this is an isomorphism of rings. The ring \(\mathbb C\{t\}\) contains convergent series; \(\mathbb C[[t]]\) also allows formal series with zero radius of convergence.`,r`This Taylor description uses holomorphicity. Smooth germs, such as those in the main text’s Example 6.11.4, need not be determined by their Taylor series.`),
- moduleStalk:model('A bundle near a point',[X,O,b('x',r`0`,'The origin.'),b(r`\mathcal F`,r`\mathcal O^{\oplus n}`,'The sheaf of holomorphic sections of a trivial bundle.'),b(r`\mathcal F_x`,r`\mathbb C\{t\}^{\oplus n}`,'A module of vector-valued germs, not the fibre itself.',r`Each component is identified with its convergent Taylor series at the origin.`)],r`Taking germs preserves scalar multiplication. The stalk is a module over the local ring of scalar germs.`,r`To obtain the vector-space fibre, take \(\mathcal F_x/\mathfrak m_x\mathcal F_x\cong\mathbb C^n\). A stalk and a fibre retain different amounts of information.`),
- exactSheaf:model('A local solution need not be global',[X,b('U',r`\mathbb C^\times`,'A domain inside the complex plane on which global solvability can fail.'),b(r`\mathcal F`,r`\mathcal O_X^{\mathrm{an}}`,'Holomorphic functions, viewed as a sheaf of complex vector spaces.'),b(r`\mathcal G`,r`\mathcal O_X^{\mathrm{an}}`,'The same sheaf, as the target.'),b(r`\varphi`,r`D=\frac{d}{dz}-1`,'A differential operator, acting by differentiation minus the original function.')],r`On a small disk, solve \(D(h)=g\) by integrating \((e^{-z}h)'=e^{-z}g\). Thus every germ in the target has a preimage: the operator is surjective on stalks.`,r`On the domain \(U=\mathbb C^\times\), the equation \(D(h)=e^z/z\) has no holomorphic solution on all of \(U\), since it would give a single-valued primitive of \(1/z\). Surjectivity of sheaves means local solvability; it does not imply solvability on every open set. The homogeneous kernel consists of solutions of \(h'-h=0\).`),
+ moduleStalk:model('A bundle near a point',[X,O,b('x',r`0`),b(r`\mathcal F`,r`\mathcal O^{\oplus n}`),b(r`\mathcal F_x`,r`\mathbb C\{t\}^{\oplus n}`,r`Each component is identified with its convergent Taylor series at the origin.`)],r`Taking germs preserves scalar multiplication. The stalk is a module over the local ring of scalar germs.`,r`To obtain the vector-space fibre, take \(\mathcal F_x/\mathfrak m_x\mathcal F_x\cong\mathbb C^n\). A stalk and a fibre retain different amounts of information.`),
+ exactSheaf:model('A local solution need not be global',[X,b('U',r`\mathbb C^\times`),b(r`\mathcal F`,r`\mathcal O_X^{\mathrm{an}}`,'Holomorphic functions, viewed as a sheaf of complex vector spaces.'),b(r`\mathcal G`,r`\mathcal O_X^{\mathrm{an}}`),b(r`\varphi`,r`D=\frac{d}{dz}-1`)],r`On a small disk, solve \(D(h)=g\) by integrating \((e^{-z}h)'=e^{-z}g\). Thus every germ in the target has a preimage: the operator is surjective on stalks.`,r`On the domain \(U=\mathbb C^\times\), the equation \(D(h)=e^z/z\) has no holomorphic solution on all of \(U\), since it would give a single-valued primitive of \(1/z\). Surjectivity of sheaves means local solvability; it does not imply solvability on every open set. The homogeneous kernel consists of solutions of \(h'-h=0\).`),
  discreteCover:model('Cover a discrete space by its two points',[
-  twoPoints,b('U',r`X`,'The open set being covered.'),
-  b('U_1',r`\{a\}`,'One open in the cover.'),b('U_2',r`\{b\}`,'The other open in the cover.')
+  twoPoints,b('U',r`X`),
+  b('U_1',r`\{a\}`),b('U_2',r`\{b\}`)
  ],r`The union is \(U\) and the intersection is empty. Each point lies in an open belonging to the cover.`,r`Sections on the two opens can be chosen independently for a sheaf, since their restrictions to the empty overlap agree.`),
  discreteFunctions:model('Functions into the field of two elements',[
   twoPoints,b(r`\mathcal F(U)`,r`\operatorname{Map}(U,\mathbb F_2)`,'The ring of functions on an open set, with pointwise operations.'),
-  b(r`\mathcal F(X)`,r`\mathbb F_2\times\mathbb F_2`,'One coordinate for each point.')
+  b(r`\mathcal F(X)`,r`\mathbb F_2\times\mathbb F_2`)
  ],r`Restriction from \(X\) to \(\{a\}\) projects to the first coordinate. This preserves addition, multiplication, and the unit.`,r`Two singleton sections glue to the unique function with those two values. On the empty open there is one function, forming the zero ring.`),
  discreteBasis:model('A basis of two singletons',[
-  twoPoints,b(r`\mathcal B`,r`\{\{a\},\{b\}\}`,'A basis for the discrete topology.'),
-  b(r`\mathcal F(\{a\})`,r`\mathbb F_2`,'The possible values at the first point.'),
-  b(r`\mathcal F(\{b\})`,r`\mathbb F_2`,'The possible values at the second point.')
+  twoPoints,b(r`\mathcal B`,r`\{\{a\},\{b\}\}`),
+  b(r`\mathcal F(\{a\})`,r`\mathbb F_2`),
+  b(r`\mathcal F(\{b\})`,r`\mathbb F_2`)
  ],r`The intersection of the two distinct basis opens is empty, so no basis neighbourhood imposes a compatibility condition between their sections.`,r`Extending the sheaf to all opens gives \(\mathcal F(X)=\mathbb F_2\times\mathbb F_2\), with the projections as restriction maps.`),
  discreteMap:model('Pull back functions along a map to a point',[
-  twoPoints,b('Y',r`\{c\}`,'A one-point space.'),b('f',r`(X\longrightarrow Y)`,'The map sending both points to the single point.'),
-  b(r`\mathcal O_X(U)`,r`\operatorname{Map}(U,\mathbb F_2)`,'Functions on opens of the source.'),
-  b(r`\mathcal O_Y(V)`,r`\operatorname{Map}(V,\mathbb F_2)`,'Functions on opens of the target.')
+  twoPoints,b('Y',r`\{c\}`),b('f',r`(a\mapsto c,\ b\mapsto c)`),
+  b(r`\mathcal O_X(U)`,r`\operatorname{Map}(U,\mathbb F_2)`),
+  b(r`\mathcal O_Y(V)`,r`\operatorname{Map}(V,\mathbb F_2)`)
  ],r`Since \(f^{-1}(Y)=X\), the direct image has \((f_*\mathcal O_X)(Y)=\mathbb F_2\times\mathbb F_2\).`,r`The map on functions \(\mathcal O_Y\to f_*\mathcal O_X\) takes \(v\) to \((v,v)\) over \(Y\). A value at the target point pulls back to the same value at both source points.`),
  sheafify:model('Independent values at two points',[
-  twoPoints,b('A',r`\mathbb F_2`,'The field of two elements, used as the constant values.'),
+  twoPoints,b('A',r`\mathbb F_2`),
   b(r`\mathcal F(U)`,r`A`,'The constant presheaf on every open set.'),
-  b(r`\mathcal F^\#(U)`,r`\operatorname{Map}(U,A)`,'The sheaf of functions with values in the set of constants.')
+  b(r`\mathcal F^\#(U)`,r`\operatorname{Map}(U,A)`)
  ],r`The stalk at either point is \(A\). Since each singleton is open, every assignment of values to the two points is locally represented by constant sections.`,r`The map \(\mathcal F(X)\to\mathcal F^\#(X)\) sends \(c\) to \((c,c)\). Sheafification adds the two mixed pairs, which come from compatible sections on the disjoint singletons.`),
- functorial:model('Pull a function back by a holomorphic map',[b('X',r`\mathbb C_z`,'The source complex line.'),b('Y',r`\mathbb C_t`,'The target complex line.'),b('f',r`(z\mapsto z^2)`,'A holomorphic map.'),b(r`\mathcal F`,r`\mathcal O_X^{\mathrm{an}}`,'A sheaf on the source.'),b(r`\mathcal G`,r`\mathcal O_Y^{\mathrm{an}}`,'A sheaf on the target.')],r`For an open set in the target, \((f_*\mathcal F)(V)=\mathcal F(f^{-1}(V))\). Composition sends a holomorphic function \(h(t)\) to \(h(z^2)\).`,r`The inverse-image sheaf collects local information from neighbourhoods in the target; the direct image reads sections on their inverse images. A ringed-space map supplies the extra homomorphism \(f^{-1}\mathcal O_Y\to\mathcal O_X\). Module pullback additionally changes scalars.`),
+ functorial:model('Pull a function back by a holomorphic map',[b('X',r`\mathbb C_z`),b('Y',r`\mathbb C_t`),b('f',r`(z\mapsto z^2)`),b(r`\mathcal F`,r`\mathcal O_X^{\mathrm{an}}`),b(r`\mathcal G`,r`\mathcal O_Y^{\mathrm{an}}`)],r`For an open set in the target, \((f_*\mathcal F)(V)=\mathcal F(f^{-1}(V))\). Composition sends a holomorphic function \(h(t)\) to \(h(z^2)\).`,r`The inverse-image sheaf collects local information from neighbourhoods in the target; the direct image reads sections on their inverse images. A ringed-space map supplies the extra homomorphism \(f^{-1}\mathcal O_Y\to\mathcal O_X\). Module pullback additionally changes scalars.`),
  ringed:model('The closed point at a prime number',[
-  b('X',r`\operatorname{Spec}(\mathbb F_p)`,'A scheme with one point.'),
-  b('Y',r`\operatorname{Spec}(\mathbb Z)`,'The spectrum of the integers.'),
-  b('x',r`(0)`,'The unique point of the source.'),
-  b('f',r`(X\longrightarrow Y)`,'The morphism induced by reduction modulo the prime.'),
-  b(r`f^\sharp_x`,r`(\mathbb Z_{(p)}\longrightarrow\mathbb F_p)`,'The residue homomorphism on stalks.')
+  b('X',r`\operatorname{Spec}(\mathbb F_p)`),
+  b('Y',r`\operatorname{Spec}(\mathbb Z)`),
+  b('x',r`(0)`),
+  b('f',r`(X\longrightarrow Y)`),
+  b(r`f^\sharp_x`,r`(\mathbb Z_{(p)}\longrightarrow\mathbb F_p)`)
  ],r`The inverse image of \((0)\) under \(\mathbb Z\to\mathbb F_p\) is \((p)\), so \(f(x)=(p)\). The map on stalks reduces the numerator and denominator modulo \(p\).`,r`The inverse image of the maximal ideal \((0)\) of \(\mathbb F_p\) is \(p\mathbb Z_{(p)}\). This is the local homomorphism condition for the morphism of locally ringed spaces.`),
  open:model('Remove the prime at two',[
-  arithmeticSpectrum,b('U',r`D(2)\cong\operatorname{Spec}(\mathbb Z[1/2])`,'The open subspace where two is invertible.'),
-  b('j',r`(U\hookrightarrow X)`,'The inclusion.'),
-  b(r`\mathcal O_U`,r`\mathcal O_X|_U`,'The restricted structure sheaf.')
+  arithmeticSpectrum,b('U',r`D(2)\cong\operatorname{Spec}(\mathbb Z[1/2])`),
+  b('j',r`(U\hookrightarrow X)`),
+  b(r`\mathcal O_U`,r`\mathcal O_X|_U`)
  ],r`For any open \(V\subseteq U\), the restriction has sections \(\mathcal O_X(V)\). The neighbourhoods contained in \(U\) suffice for taking germs at every point of \(U\).`,r`The stalk at an odd prime \((p)\) is still \(\mathbb Z_{(p)}\). Sections over \(U\) form \(\mathbb Z[1/2]\), and the point \((2)\) is outside their domain.`),
  algebraGlue:model('Detect a module element at its primes',[
-  integers,b('M',r`\mathbb Z/6\mathbb Z`,'A module supported at the primes two and three.'),
-  b(r`M_{(2)}`,r`\mathbb Z/2\mathbb Z`,'The localization at the prime two.'),
-  b(r`M_{(3)}`,r`\mathbb Z/3\mathbb Z`,'The localization at the prime three.')
+  integers,b('M',r`\mathbb Z/6\mathbb Z`),
+  b(r`M_{(2)}`,r`\mathbb Z/2\mathbb Z`),
+  b(r`M_{(3)}`,r`\mathbb Z/3\mathbb Z`)
  ],r`Localizing at \((2)\) inverts \(3\), so \(6m=0\) becomes \(2m=0\). At \((3)\), the relation becomes \(3m=0\). At every other point, \(6\) is invertible and the localized module is zero.`,r`An element that maps to zero at both surviving primes is zero modulo six. This illustrates the test for vanishing by localization.`),
  arithmeticGlue:model('Glue fractions with different allowed denominators',[
-  integers,b('f_1,f_2',r`2,3`,'The generators of a standard open cover.'),
-  b('R_{f_1}',r`\mathbb Z[1/2]`,'Fractions with powers of two as denominators.'),
-  b('R_{f_2}',r`\mathbb Z[1/3]`,'Fractions with powers of three as denominators.'),
-  b('R_{f_1 f_2}',r`\mathbb Z[1/6]`,'The ring on the overlap.')
+  integers,b('f_1,f_2',r`2,3`),
+  b('R_{f_1}',r`\mathbb Z[1/2]`),
+  b('R_{f_2}',r`\mathbb Z[1/3]`),
+  b('R_{f_1 f_2}',r`\mathbb Z[1/6]`)
  ],r`Since \(3-2=1\), the two standard opens cover the spectrum. Compatibility means equality of the two fractions in \(\mathbb Z[1/6]\).`,r`A fraction lying in both rings must have reduced denominator \(1\). Every compatible pair is therefore the restriction of a unique integer.`),
  affine:model('The structure sheaf of the integer spectrum',[
-  integers,arithmeticSpectrum,b(r`\mathcal O_X`,r`\widetilde{\mathbb Z}`,'The structure sheaf.'),
-  b(r`\mathcal O_X(D(2))`,r`\mathbb Z[1/2]`,'Sections over the open where two is invertible.'),
-  b(r`\mathcal O_{X,(2)}`,r`\mathbb Z_{(2)}`,'Germs at the point corresponding to the prime two.')
+  integers,arithmeticSpectrum,b(r`\mathcal O_X`,r`\widetilde{\mathbb Z}`),
+  b(r`\mathcal O_X(D(2))`,r`\mathbb Z[1/2]`),
+  b(r`\mathcal O_{X,(2)}`,r`\mathbb Z_{(2)}`)
  ],r`The rule \(D(n)\mapsto\mathbb Z[1/n]\) gives sections on the standard opens. Compatible fractions glue, and these opens form a basis.`,r`The section \(1/2\) is defined on \(D(2)\), which omits \((2)\). A germ at \((2)\) can have an odd denominator, since it comes from an open neighbourhood of that point.`),
- affineMaps:model('Maps pull functions in the opposite direction',[b('R',r`\mathbb C[t]`,'Functions on the target affine line.'),b('S',r`\mathbb C[z]`,'Functions on the source affine line.'),b(r`\varphi`,r`(p(t)\mapsto p(z^2))`,'A homomorphism from the target ring to the source ring.'),b('f',r`\operatorname{Spec}(S)\longrightarrow\operatorname{Spec}(R)`,'The induced morphism of affine schemes.')],r`A prime ideal is sent to its inverse image. A closed point \((z-a)\) maps to \((t-a^2)\), and the generic point maps to the generic point.`,r`This recovers the familiar holomorphic map \(z\mapsto z^2\) on complex points. Functions pull back contravariantly; the scheme morphism also includes the map on local rings.`),
+ affineMaps:model('Maps pull functions in the opposite direction',[b('R',r`\mathbb C[t]`),b('S',r`\mathbb C[z]`),b(r`\varphi`,r`(p(t)\mapsto p(z^2))`),b('f',r`\operatorname{Spec}(S)\longrightarrow\operatorname{Spec}(R)`)],r`A prime ideal is sent to its inverse image. A closed point \((z-a)\) maps to \((t-a^2)\), and the generic point maps to the generic point.`,r`This recovers the familiar holomorphic map \(z\mapsto z^2\) on complex points. Functions pull back contravariantly; the scheme morphism also includes the map on local rings.`),
  scheme:model('An affine atlas over a finite field',[
-  b('X',r`\mathbb P^1_{\mathbb F_2}`,'The projective line over the field with two elements.'),
-  b('U',r`\operatorname{Spec}(\mathbb F_2[z])`,r`The chart with coordinate \(z\).`),
-  b('V',r`\operatorname{Spec}(\mathbb F_2[w])`,r`The chart with coordinate \(w\).`)
+  b('X',r`\mathbb P^1_{\mathbb F_2}`),
+  b('U',r`\operatorname{Spec}(\mathbb F_2[z])`),
+  b('V',r`\operatorname{Spec}(\mathbb F_2[w])`)
  ],r`The two charts are identified on the standard opens where their coordinates are units. The overlap has ring \(\mathbb F_2[z,z^{-1}]\), with \(w=1/z\).`,r`Each point lies in one of the affine charts, so the glued locally ringed space satisfies the definition of a scheme.`),
  category:{...model('Vector spaces and linear maps',[
-  finiteVect,b('x',r`\mathbb R`,'The starting vector space.'),
-  b('y',r`\mathbb R^2`,'The intermediate vector space.'),
-  b('z',r`\mathbb R`,'The target vector space.'),
-  b(r`\psi`,r`(u\mapsto(u,2u))`,'A linear map from the starting space to the intermediate space.'),
-  b(r`\phi`,r`((v,w)\mapsto w)`,'A linear projection from the intermediate space to the target.')
+  finiteVect,b('x',r`\mathbb R`),
+  b('y',r`\mathbb R^2`),
+  b('z',r`\mathbb R`),
+  b(r`\psi`,r`(u\mapsto(u,2u))`),
+  b(r`\phi`,r`((v,w)\mapsto w)`)
  ],r`The composite \(\phi\circ\psi\) sends \(u\) to \(2u\), and is again linear. The identity on each space fixes every vector. Composition is associative because it is composition of functions.`,r`This gives the category data in the definition. Each pair of vector spaces has a set of arrows consisting of the linear maps between them.`,r`Eilenberg and Mac Lane opened their 1945 paper with a question from linear algebra. What makes the map from a vector space to its double dual canonical? Categories specify the objects and maps, functors record how constructions act on both, and natural transformations say how the constructions fit together.`),source:naturalEquivalences},
  ringPullback:model('Pairs of integers that agree modulo two',[
   b(r`\mathcal C`,r`\mathbf{CRing}`,'The category of commutative rings with unit.'),
-  b('x,z',r`\mathbb Z,\mathbb Z`,'The two rings mapping to a common quotient.'),
+  b('x,z',r`\mathbb Z,\mathbb Z`),
   b('y',r`\mathbb F_2`,'The common target. Both maps are reduction modulo two.'),
   b(r`x\times_y z`,r`\{(m,n)\in\mathbb Z^2:m\equiv n\pmod{2}\}`,'The fibre product, with coordinatewise operations.')
  ],r`The coordinate projections give the maps \(p\) and \(q\). Reducing either coordinate gives the same result.`,r`Given two ring maps \(\alpha,\beta\) with equal reductions, the unique map to the fibre product sends \(w\) to \((\alpha(w),\beta(w))\).`),
  setLimits:model('Compatible choices and identified elements',[
-  b('M_0',r`\{b\}`,'The set mapping into both other sets by inclusion.'),
-  b('M_1',r`\{a,b\}`,'The first set receiving an inclusion.'),
-  b('M_2',r`\{b,c\}`,'The second set receiving an inclusion.')
+  b('M_0',r`\{b\}`),
+  b('M_1',r`\{a,b\}`),
+  b('M_2',r`\{b,c\}`)
  ],r`In the limit, the choice \(m_0=b\) forces both \(m_1\) and \(m_2\) to be \(b\). The only compatible tuple is \((b,b,b)\).`,r`In the colimit, the two arrows identify the three copies of \(b\) in the disjoint union. The resulting set is \(\{a,b,c\}\), the pushout of the two inclusions.`),
- limits:model('Compatibility is an equalizer',[b('A',r`\prod_i\operatorname{Hol}(U_i)`,'Collections of local functions on a cover.'),b('B',r`\prod_{i,j}\operatorname{Hol}(U_i\cap U_j)`,'Functions on pairwise overlaps.'),b('f',r`(s_i)\mapsto(s_i|_{U_i\cap U_j})_{i,j}`,'One restriction map.'),b('g',r`(s_i)\mapsto(s_j|_{U_i\cap U_j})_{i,j}`,'The other restriction map.')],r`The equalizer consists of the families on which the two restriction maps agree. By holomorphic gluing it is precisely the space of global functions on the union.`,r`Limits encode compatibility conditions. Colimits encode identifications and passage to germs; they are different universal constructions.`),
- adjoint:model('A map described on either side',[b('f',r`(z\mapsto z^2)`,'A continuous map between complex lines.'),b(r`\mathcal F`,r`\mathcal O_Y^{\mathrm{an}}`,'A sheaf of sets or abelian groups on the target.'),b(r`\mathcal G`,r`\mathcal O_X^{\mathrm{an}}`,'A sheaf on the source.')],r`Giving a sheaf map \(f^{-1}\mathcal F\to\mathcal G\) is equivalent to giving \(\mathcal F\to f_*\mathcal G\). Pullback of functions is one such map.`,r`The adjunction explains the two interchangeable descriptions of the function map in a morphism of ringed spaces.`),
- idempotent:model('Separate two components',[b('R',r`\operatorname{Hol}(D_1\amalg D_2)`,'Functions on a disjoint union of two disks.'),b('e',r`(1,0)`,'An idempotent function, one on the first disk and zero on the second.')],r`A holomorphic function satisfying \(e^2=e\) takes only the values zero and one, so it is locally constant.`,r`An idempotent splits the ring as a product. On a spectrum this is exactly a decomposition into two open and closed pieces.`),
- finite:model('Finitely many equations and generators',[R,b('M',r`R^{\oplus n}`,'A finitely generated and finitely presented module.'),b('S',r`\mathbb C[z,w]/(w^2-z)`,'A finitely presented algebra over the complex numbers.')],r`The module has finitely many coordinate sections. The algebra describes a plane curve with a finite list of coordinates and relations.`,r`Finiteness hypotheses make local algebra manageable. A finite type algebra and a finitely generated module are different notions; the source states which is intended.`),
- abelian:model('Kernels are spaces of solutions',[b(r`\mathcal A`,r`\operatorname{Vect}_{\mathbb C}`,'An abelian category.'),b('M',r`\operatorname{Hol}(U)`,'Holomorphic functions on a nonempty connected open set, viewed as a complex vector space.'),b('f',r`D:h\mapsto h'-h`,'A complex-linear differential operator.')],r`The equation \(D(h)=0\) is \(h'=h\). Since \((e^{-z}h)'=0\), every solution on a domain is \(h=ce^z\) for a constant \(c\in\mathbb C\).`,r`The kernel is the vector space of homogeneous solutions. The cokernel \(\operatorname{Hol}(U)/D(\operatorname{Hol}(U))\) measures the obstruction to solving an inhomogeneous equation \(D(h)=g\). This is a model in complex vector spaces; differentiation is not linear over arbitrary holomorphic functions.`)
+ limits:model('Compatibility is an equalizer',[b('A',r`\prod_i\operatorname{Hol}(U_i)`),b('B',r`\prod_{i,j}\operatorname{Hol}(U_i\cap U_j)`),b('f',r`(s_i)\mapsto(s_i|_{U_i\cap U_j})_{i,j}`),b('g',r`(s_i)\mapsto(s_j|_{U_i\cap U_j})_{i,j}`)],r`The equalizer consists of the families on which the two restriction maps agree. By holomorphic gluing it is precisely the space of global functions on the union.`,r`Limits encode compatibility conditions. Colimits encode identifications and passage to germs; they are different universal constructions.`),
+ adjoint:model('A map described on either side',[b('f',r`(z\mapsto z^2)`),b(r`\mathcal F`,r`\mathcal O_Y^{\mathrm{an}}`,'A sheaf of sets or abelian groups on the target.'),b(r`\mathcal G`,r`\mathcal O_X^{\mathrm{an}}`)],r`Giving a sheaf map \(f^{-1}\mathcal F\to\mathcal G\) is equivalent to giving \(\mathcal F\to f_*\mathcal G\). Pullback of functions is one such map.`,r`The adjunction explains the two interchangeable descriptions of the function map in a morphism of ringed spaces.`),
+ idempotent:model('Separate two components',[b('R',r`\operatorname{Hol}(D_1\amalg D_2)`),b('e',r`(1,0)`)],r`A holomorphic function satisfying \(e^2=e\) takes only the values zero and one, so it is locally constant.`,r`An idempotent splits the ring as a product. On a spectrum this is exactly a decomposition into two open and closed pieces.`),
+ finite:model('Finitely many equations and generators',[R,b('M',r`R^{\oplus n}`),b('S',r`\mathbb C[z,w]/(w^2-z)`)],r`The module has finitely many coordinate sections. The algebra describes a plane curve with a finite list of coordinates and relations.`,r`Finiteness hypotheses make local algebra manageable. A finite type algebra and a finitely generated module are different notions; the source states which is intended.`),
+ abelian:model('Kernels are spaces of solutions',[b(r`\mathcal A`,r`\operatorname{Vect}_{\mathbb C}`),b('M',r`\operatorname{Hol}(U)`),b('f',r`D:h\mapsto h'-h`)],r`The equation \(D(h)=0\) is \(h'=h\). Since \((e^{-z}h)'=0\), every solution on a domain is \(h=ce^z\) for a constant \(c\in\mathbb C\).`,r`The kernel is the vector space of homogeneous solutions. The cokernel \(\operatorname{Hol}(U)/D(\operatorname{Hol}(U))\) measures the obstruction to solving an inhomogeneous equation \(D(h)=g\). This is a model in complex vector spaces; differentiation is not linear over arbitrary holomorphic functions.`)
 };
-models.noetherian=model('Algebraic closed sets cannot keep shrinking',[A,b('Z',r`V(p(z))`,'A finite closed set when the polynomial is nonzero.')],r`Every proper closed set in this spectrum is finite. A descending chain of closed sets therefore stabilizes after it first becomes proper.`,r`This is the Noetherian condition on a topological space. The usual topology on a complex disk has shrinking closed disks and does not satisfy it.`);
-models.constructible=model('Finite combinations of vanishing conditions',[A,b('E',r`D(z)\cap V(z-1)`,'The closed point at one, expressed using an open and a closed condition.')],r`On this algebraic line the nonempty open sets are complements of finite sets of closed points. They are quasi-compact, including as subsets of other opens.`,r`Constructible sets are finite Boolean combinations of these conditions. Here they are finite sets of closed points or their complements. The generic singleton is not constructible; a small analytic disk is not a Zariski open.`);
-models.nakayama=model('A fibre can test a finite module',[b('R',r`\mathbb C\{t\}`,'A local ring of holomorphic germs.'),b(r`\mathfrak m`,r`(t)`,'Its maximal ideal.'),b('M',r`R^{\oplus n}`,'A finitely generated module of vector-valued germs.')],r`Choose a square matrix of holomorphic germs whose value at the origin is invertible. Its determinant is a unit germ, so the matrix is invertible over the local ring.`,r`Nakayama generalizes the principle that generators of the fibre lift to generators of a finite module over a local ring. Finiteness and the maximal-ideal condition are essential.`);
-models.connected=model('Components let functions vary independently',[b('X',r`\mathbb C\setminus\mathbb R`,'The plane with the real axis removed.'),b('x',r`i`,'A point in the upper half-plane.'),b('Z',r`\{z:\operatorname{Im}(z)>0\}`,'The connected component containing this point.')],r`The upper and lower half-planes are disjoint connected open subsets, and together they cover the space.`,r`A locally constant function is constant on each component, while its values on the two components may differ. This gives a familiar setting for the distinction between local and global data.`);
-models.natural=model('Restriction is a functor',[b(r`\mathcal A`,r`\operatorname{Opens}(\mathbb C)^{\mathrm{op}}`,'Open sets, with arrows directed toward restriction.'),b(r`\mathcal B`,r`\operatorname{Vect}_{\mathbb C}`,'Complex vector spaces and linear maps.'),b('F',r`(U\mapsto\operatorname{Hol}(U))`,'The functor of holomorphic functions.'),b('t',r`(h\mapsto2h)`,'A natural transformation from this functor to itself.')],r`Multiplication by two commutes with restriction on every inclusion of opens. That commuting square is the naturality condition.`,r`The formal rules for functors and their transformations express compatibility of local function operations. This model explains the language; it does not specialize every possible category or transformation in the section.`);
-models.twoFibre=model('Keep an identification, rather than demand equality',[b(r`\mathcal A`,r`\mathcal L`,'The groupoid of one-dimensional complex vector spaces and their isomorphisms.'),b(r`\mathcal B`,r`\mathcal L`,'A second copy of the same groupoid.')],r`Take both functors to be the identity on the groupoid of complex lines. An object of their 2-fibre product is a pair of complex lines together with a specified isomorphism between them. The chosen isomorphism is part of the data.`,r`This resembles identifying bundle fibres on overlaps: one supplies an isomorphism instead of insisting that two independently described fibres are literally equal. The source develops the general categorical construction.`);
-models.over=model('A category of functions lying over open sets',[b(r`\mathcal C`,r`\operatorname{Opens}(\mathbb C)`,'Open subsets, ordered by inclusion.'),b(r`\mathcal A`,r`\{(U,h):h\in\operatorname{Hol}(U)\}`,'Objects are a domain and a holomorphic function on it.'),b('p',r`((U,h)\mapsto U)`,'The functor that forgets the function and remembers the domain.')],r`There is an arrow from one such object to another when their domains are included and the smaller-domain function is the restriction of the larger-domain function.`,r`The category lies over the category of opens. This keeps track of both local data and where that data lives; later formal constructions organize maps that respect this projection.`);
+models.noetherian=model('Algebraic closed sets cannot keep shrinking',[A,b('Z',r`V(p(z)),\quad p(z)\ne 0`)],r`Every proper closed set in this spectrum is finite. A descending chain of closed sets therefore stabilizes after it first becomes proper.`,r`This is the Noetherian condition on a topological space. The usual topology on a complex disk has shrinking closed disks and does not satisfy it.`);
+models.constructible=model('Finite combinations of vanishing conditions',[A,b('E',r`D(z)\cap V(z-1)`)],r`On this algebraic line the nonempty open sets are complements of finite sets of closed points. They are quasi-compact, including as subsets of other opens.`,r`Constructible sets are finite Boolean combinations of these conditions. Here they are finite sets of closed points or their complements. The generic singleton is not constructible; a small analytic disk is not a Zariski open.`);
+models.nakayama=model('A fibre can test a finite module',[b('R',r`\mathbb C\{t\}`),b(r`\mathfrak m`,r`(t)`),b('M',r`R^{\oplus n}`)],r`Choose a square matrix of holomorphic germs whose value at the origin is invertible. Its determinant is a unit germ, so the matrix is invertible over the local ring.`,r`Nakayama generalizes the principle that generators of the fibre lift to generators of a finite module over a local ring. Finiteness and the maximal-ideal condition are essential.`);
+models.connected=model('Components let functions vary independently',[b('X',r`\mathbb C\setminus\mathbb R`),b('x',r`i`),b('Z',r`\{z:\operatorname{Im}(z)>0\}`)],r`The upper and lower half-planes are disjoint connected open subsets, and together they cover the space.`,r`A locally constant function is constant on each component, while its values on the two components may differ. This gives a familiar setting for the distinction between local and global data.`);
+models.natural=model('Restriction is a functor',[b(r`\mathcal A`,r`\operatorname{Opens}(\mathbb C)^{\mathrm{op}}`),b(r`\mathcal B`,r`\operatorname{Vect}_{\mathbb C}`),b('F',r`(U\mapsto\operatorname{Hol}(U))`),b('t',r`(h\mapsto2h)`)],r`Multiplication by two commutes with restriction on every inclusion of opens. That commuting square is the naturality condition.`,r`The formal rules for functors and their transformations express compatibility of local function operations. This model explains the language; it does not specialize every possible category or transformation in the section.`);
+models.twoFibre=model('Keep an identification, rather than demand equality',[b(r`\mathcal A`,r`\mathcal L`,'The groupoid of one-dimensional complex vector spaces and their isomorphisms.'),b(r`\mathcal B`,r`\mathcal L`)],r`Take both functors to be the identity on the groupoid of complex lines. An object of their 2-fibre product is a pair of complex lines together with a specified isomorphism between them. The chosen isomorphism is part of the data.`,r`This resembles identifying bundle fibres on overlaps: one supplies an isomorphism instead of insisting that two independently described fibres are literally equal. The source develops the general categorical construction.`);
+models.over=model('A category of functions lying over open sets',[b(r`\mathcal C`,r`\operatorname{Opens}(\mathbb C)`),b(r`\mathcal A`,r`\{(U,h):h\in\operatorname{Hol}(U)\}`),b('p',r`((U,h)\mapsto U)`)],r`There is an arrow from one such object to another when their domains are included and the smaller-domain function is the restriction of the larger-domain function.`,r`The category lies over the category of opens. This keeps track of both local data and where that data lives; later formal constructions organize maps that respect this projection.`);
 models.presheaf=model('Domains, functions, and a differential operator',[X,U,
- b(r`\mathcal F`,r`(V\mapsto\operatorname{Hol}(V))`,'The rule assigning a set of holomorphic functions to every open set, together with restriction maps.'),
- b(r`\mathcal F(U)`,r`\operatorname{Hol}(U)`,'The set of all holomorphic functions on this open set.',r`An element \(h\in\mathcal F(U)\) is a holomorphic map \(h:U\to\mathbb C\). A section is one such function on all of \(U\).`),
- b(r`\rho^U_V`,r`(h\mapsto h|_V)`,'Restrict a function to a smaller open set.'),
- b(r`\mathcal G`,r`\mathcal F`,'The same presheaf, as the target of the morphism.'),
- b(r`\varphi`,r`D=\frac{d}{dz}-1`,'A differential operator defining a morphism of presheaves of sets.',r`For each open \(U\), the map is \(\varphi_U(h)=h'-h\).`)
+ b(r`\mathcal F`,r`\mathcal O^{\mathrm{an}}_{\mathbb C}`),
+ b(r`\mathcal F(U)`,r`\{h:U\to\mathbb C\mid h\text{ holomorphic}\}`),
+ b(r`\rho^U_V`,r`(h\mapsto h|_V)`),
+ b(r`\mathcal G`,r`\mathcal F`),
+ b(r`\varphi`,r`D=\frac{d}{dz}-1`,r`For each open \(U\), the map is \(\varphi_U(h)=h'-h\).`)
 ],r`Restriction preserves a holomorphic function and its derivative: \(D(h)|_V=D(h|_V)\). This is exactly the commuting square in the definition of a morphism. The identity and composition rules for restrictions are the ordinary rules for restricting functions.`,r`The operator acts consistently on every open set. Later its kernel will be the presheaf of solutions: \((\ker D)(U)=\{h\in\operatorname{Hol}(U):h'-h=0\}\). On a domain these are \(ce^z\); on disconnected opens the constant may differ on each connected component.`,r`The first item in the definition supplies the function spaces and restrictions; the second allows an operation that commutes with those restrictions.`);
 models.abelianMorphism={...models.presheaf,title:'Differential operators respect addition',check:r`The operator is complex-linear: \(D(ah+bk)=aD(h)+bD(k)\) for constants \(a,b\in\mathbb C\), and it commutes with restriction. It therefore gives a morphism of abelian presheaves.`,result:r`The kernel over \(U\) is the additive group of solutions of \(h'-h=0\). On a domain it is the one-dimensional complex vector space \(\mathbb C e^z\). The operator is not a ring homomorphism or a morphism of modules over holomorphic functions: \(D(ah)=a'h+aD(h)\) when \(a\) varies holomorphically.`,note:r`Here the same holomorphic function spaces carry their pointwise addition, rather than only their underlying sets.`};
-models.abelianMorphism.bindings=models.presheaf.bindings.map(binding=>{
- if(binding.symbol===r`\mathcal F`)return {...binding,kind:'Holomorphic functions with pointwise addition, an abelian presheaf.'};
- if(binding.symbol===r`\mathcal F(U)`)return {...binding,kind:'Holomorphic functions, forming an abelian group and a complex vector space.'};
- if(binding.symbol===r`\varphi`)return {...binding,kind:'A complex-linear differential operator, hence a morphism of abelian presheaves.'};
- return binding;
-});
 models.solutionSheaf=model('The kernel is a sheaf of solutions',[X,U,
  b(r`\mathcal O_X`,r`\underline{\mathbb C}`,'The sheaf of locally constant complex-valued functions, used as scalars.'),
  b(r`\mathcal F`,r`\mathcal O_{\mathbb C}^{\mathrm{an}}`,'Holomorphic functions, as a module over locally constant complex scalars.'),
- b(r`\mathcal G`,r`\mathcal F`,'The same sheaf, as the target.'),
- b(r`\varphi`,r`D:h\mapsto h'-h`,'A differential operator linear over these locally constant scalars.'),
- b(r`\operatorname{Ker}(\varphi)(U)`,r`\{h\in\operatorname{Hol}(U):h'-h=0\}`,'The solution space on this open set.')
+ b(r`\mathcal G`,r`\mathcal F`),
+ b(r`\varphi`,r`D:h\mapsto h'-h`),
+ b(r`\operatorname{Ker}(\varphi)(U)`,r`\{h\in\operatorname{Hol}(U):h'-h=0\}`)
 ],r`Restriction takes a solution to a solution. Compatible local solutions glue to a holomorphic function, and its differential equation holds locally, hence everywhere. Thus the kernel really is a sheaf.`,r`On a domain the solutions are \(ce^z\); for an arbitrary open set they are \(h(z)=c(z)e^z\) with \(c\) locally constant. At a point the kernel consists of solution germs.`,r`For this module example the source ring sheaf is explicitly \(\underline{\mathbb C}\). The operator is not linear over the sheaf of holomorphic functions, since \(D(ah)=a'h+aD(h)\).`);
 models.kernel=model('A kernel represents homogeneous solutions',[
- b(r`\mathcal A`,r`\operatorname{Vect}_{\mathbb C}`,'The category of complex vector spaces.'),
- b('x',r`\operatorname{Hol}(U)`,'Holomorphic functions on a domain.'),b('y',r`\operatorname{Hol}(U)`,'The target space.'),
- b('f',r`D:h\mapsto h'-h`,'A complex-linear differential operator.'),
- b('z',r`\ker D=\mathbb C e^z`,'The space of solutions of the homogeneous equation.'),
- b('i',r`(\ker D\hookrightarrow\operatorname{Hol}(U))`,'Include a solution as a holomorphic function.')
+ b(r`\mathcal A`,r`\operatorname{Vect}_{\mathbb C}`),
+ b('x',r`\operatorname{Hol}(U)`),b('y',r`\operatorname{Hol}(U)`),
+ b('f',r`D:h\mapsto h'-h`),
+ b('z',r`\ker D=\mathbb C e^z`),
+ b('i',r`(\ker D\hookrightarrow\operatorname{Hol}(U))`)
 ],r`The composite \(D\circ i\) is zero. Any complex-linear map into \(\operatorname{Hol}(U)\) annihilated by \(D\) has its image in the solution space, so it factors uniquely through this inclusion.`,r`This is the universal property of the kernel, expressed in familiar differential-equation language. The cokernel is \(\operatorname{Hol}(U)/D(\operatorname{Hol}(U))\): it records inhomogeneous right-hand sides modulo those for which a global solution exists.`,r`For the kernel part of this definition, \(U\) is any nonempty connected open subset of \(\mathbb C\), called a domain; it need not be a disk.`);
 
 const projectiveRing=b('S',r`k[T_0,T_1]`,r`The polynomial ring over a field \(k\), graded by total degree with both variables in degree one.`);
-const projectiveLine=b('X',r`\operatorname{Proj}(S)=\mathbb P^1_k`,'The projective line over the field.');
+const projectiveLine=b('X',r`\operatorname{Proj}(S)=\mathbb P^1_k`);
 const twistCharts=model('Glue the two local generators',[
  projectiveRing,projectiveLine,
  b('U_0',r`D_+(T_0)=\operatorname{Spec}k[z]`,r`The chart with coordinate \(z=T_1/T_0\).`),
  b('U_1',r`D_+(T_1)=\operatorname{Spec}k[w]`,r`The chart with coordinate \(w=T_0/T_1\).`),
- b(r`\mathcal O_X(n)(U_0)`,r`k[z]\,T_0^n`,r`The degree \(n\) part of \(S[T_0^{-1}]\). It is free over the chart ring with generator \(T_0^n\).`),
- b(r`\mathcal O_X(n)(U_1)`,r`k[w]\,T_1^n`,r`The degree \(n\) part of \(S[T_1^{-1}]\). Negative powers of the chosen coordinate are allowed after inverting it.`)
+ b(r`\mathcal O_X(n)(U_0)`,r`k[z]\,T_0^n`),
+ b(r`\mathcal O_X(n)(U_1)`,r`k[w]\,T_1^n`)
 ],r`The shift has \(S(n)_j=S_{n+j}\), so taking degree zero after localizing the shifted module means taking degree \(n\) in the localized original ring. On the overlap \(w=1/z\), the generators satisfy \(T_1^n=z^nT_0^n\).`,r`A section is described by polynomials \(a(z)\) and \(b(w)\) on the two charts. They glue precisely when \(a(z)=z^n b(1/z)\). For \(n=0\), this is the usual gluing rule for regular functions.`);
 const twistSections=model('Find the global sections from the gluing rule',[
  projectiveLine,
- b(r`\mathcal O_X(1)`,r`\widetilde{S(1)}`,r`On the two charts, a section has coefficient polynomials in the generators \(T_0\) and \(T_1\).`),
- b(r`T_0`,r`(1,w)`,'The coefficient of the first coordinate section on each chart.'),
- b(r`T_1`,r`(z,1)`,'The coefficient of the second coordinate section on each chart.')
+ b(r`\mathcal O_X(1)`,r`\widetilde{S(1)}`),
+ b(r`T_0`,r`(1,w)`),
+ b(r`T_1`,r`(z,1)`)
 ],r`For \(n\ge 0\), the equality \(a(z)=z^n b(1/z)\) holds exactly when \(a(z)\) has degree at most \(n\) and \(b(w)=w^n a(1/w)\). Homogenizing \(a\) gives the section \(T_0^n a(T_1/T_0)\). For \(n<0\), every term of \(z^n b(1/z)\) has negative degree, so equality forces both polynomials to vanish.`,r`Thus \(H^0(X,\mathcal O_X(n))=S_n\), with dimension \(n+1\) for \(n\ge 0\) and zero otherwise. In degree two the basis is \(T_0^2,T_0T_1,T_1^2\).`);
 const twistTensor=model('Multiply the generators on each chart',[
  projectiveRing,projectiveLine,
- b(r`\mathcal O_X(n)|_{U_i}`,r`\mathcal O_{U_i}\,T_i^n`,r`The local generator on \(U_i=D_+(T_i)\).`),
- b(r`\mathcal O_X(m)|_{U_i}`,r`\mathcal O_{U_i}\,T_i^m`,'The local generator for the other twist.')
+ b(r`\mathcal O_X(n)|_{U_i}`,r`\mathcal O_{U_i}\,T_i^n`),
+ b(r`\mathcal O_X(m)|_{U_i}`,r`\mathcal O_{U_i}\,T_i^m`)
 ],r`The multiplication map sends \(T_i^n\otimes T_i^m\) to \(T_i^{n+m}\). On the overlap, the product of the transition factors is \(z^nz^m=z^{n+m}\).`,r`The local isomorphisms glue to \(\mathcal O_X(n)\otimes\mathcal O_X(m)\cong\mathcal O_X(n+m)\). Taking \(\mathcal F=\mathcal O_X(m)\) gives \(\mathcal F(n)\cong\mathcal O_X(m+n)\). The tautological line has local generators \((1,z)\) and \((w,1)\). The second equals \(z^{-1}\) times the first on the overlap, giving \(\mathcal O_X(-1)\). Its dual is \(\mathcal O_X(1)\).`);
 const twistOpen=model('A coordinate section picks out an affine chart',[
- projectiveRing,projectiveLine,b('f',r`T_0`,r`A degree-one homogeneous polynomial giving a section of \(\mathcal O_X(1)\).`),
- b('W',r`X`,'The two degree-one standard opens already cover the projective line.')
+ projectiveRing,projectiveLine,b('f',r`T_0`),
+ b('W',r`X`)
 ],r`The section \(T_0\) has coefficient \(1\) in its own chart and coefficient \(w\) in the chart where \(T_1\) is the generator. Its only zero is \(w=0\), the point \([0:1]\).`,r`The locus where the section generates the line bundle is \(D_+(T_0)\). It is affine, with coordinate \(z=T_1/T_0\).`);
 models.twistCharts=twistCharts;
 
@@ -215,54 +209,54 @@ const conicCurve=b('X',conic,r`A smooth conic in \(\mathbb P^2_k\), with \(k\) a
 const doublePoint=b('D',r`\operatorname{Spec}(k[z]/(z^2))`,r`The zero scheme supported at \(p=[1:0:0]\).`);
 const tangentDivisor=model('A tangent line cuts out a double point',[
  conicCurve,
- b(r`\mathcal L`,r`\mathcal O_{\mathbb P^2_k}(1)|_X`,'The line bundle of plane linear forms restricted to the conic.'),
- b('s',r`T_2|_X`,'The section obtained by restricting the equation of the tangent line.'),
+ b(r`\mathcal L`,r`\mathcal O_{\mathbb P^2_k}(1)|_X`),
+ b('s',r`T_2|_X`),
  doublePoint
 ],r`On \(T_0\ne 0\), let \(z=T_1/T_0\). The conic equation gives \(T_2/T_0=z^2\). In the local generator \(T_0\), the section \(s\) is therefore \(z^2\). It is a nonzerodivisor in \(k[z]\), and its zero scheme is cut out by \((z^2)\).`,r`Under the parametrization \([u:v]\mapsto[u^2:uv:v^2]\), the restricted line bundle is \(\mathcal O_{\mathbb P^1_k}(2)\), and the section becomes \(v^2\). The ideal of \(D\) is \(\mathcal O_X(-D)\cong\mathcal L^{-1}\), so \(\mathcal O_X(D)\cong\mathcal L\).`);
 const conicDegree=model('The degree counts both copies at the point of tangency',[
  conicCurve,doublePoint,
- b(r`\mathcal E`,r`\mathcal O_X`,'Take the rank-one structure sheaf in the degree formula.'),
- b(r`\mathcal E(D)`,r`\mathcal O_X(D)\cong\mathcal L`,'The line bundle of plane linear forms restricted to the conic.')
+ b(r`\mathcal E`,r`\mathcal O_X`),
+ b(r`\mathcal E(D)`,r`\mathcal O_X(D)\cong\mathcal L`)
 ],r`The ring of functions of \(D\) has basis \(1,z\) over \(k\), so \(\deg(D)=2\). The structure sheaf has degree zero by the definition of degree, and the degree formula gives \(\deg(\mathcal L)=2\).`,r`The secant \(T_1=0\) gives a different section of \(\mathcal L\), with two distinct simple zeros. Both sections give zero schemes of degree two. The tangent line concentrates that degree at one point.`);
 const conicIntersection=model('Compute the intersection multiplicity by local length',[
  b('X',r`\mathbb P^2_k`,'The ambient nonsingular surface over an algebraically closed field.'),
- b('V',r`V_+(T_2)`,'The tangent line, an effective Cartier divisor.'),
+ b('V',r`V_+(T_2)`),
  b('W',conic,'The smooth conic.'),
- b(r`Z=\{\xi\}`,r`\{[1:0:0]\}`,'The sole point of the intersection.'),
- b('f_1',r`T_2/T_0`,'The local equation of the tangent line in the chart containing the point.')
+ b(r`Z=\{\xi\}`,r`\{[1:0:0]\}`),
+ b('f_1',r`T_2/T_0`)
 ],r`The curves meet properly because the intersection has dimension zero. In the conic local ring \(\mathcal O_{W,\xi}=k[z]_{(z)}\), the image of \(f_1\) is \(z^2\). The quotient has a filtration with successive factors \(kz\) and \(k\), both of length one.`,r`The local length formula gives \(e(X,V\cdot W,Z)=2\). This agrees with the degree of the divisor cut out by the section on the conic.`);
 
 const cechLine=model('Two affine charts and their mismatch',[
  projectiveLine,
  b(r`\mathcal U`,r`\{U_0,U_1\}`,r`The two standard affine charts, with coordinates \(z=T_1/T_0\) and \(w=1/z\).`),
  b(r`\mathcal F`,r`\mathcal O_X(-2)`,r`The twist with local generators \(e_0=T_0^{-2}\) and \(e_1=z^{-2}e_0\).`),
- b(r`\Gamma(U_0\cap U_1,\mathcal F)`,r`k[z,z^{-1}]e_0`,'Sections on the overlap, written in the first generator.')
+ b(r`\Gamma(U_0\cap U_1,\mathcal F)`,r`k[z,z^{-1}]e_0`)
 ],r`In the ordered Čech complex the difference map sends chart coefficients \((a(z),b(w))\) to \(z^{-2}b(1/z)-a(z)\). Its kernel consists of chart sections that glue. Its cokernel measures which overlap sections cannot be written as differences of chart sections.`,r`Terms with exponent at least zero come from the first chart. Terms of exponent at most minus two come from the second. Only \(z^{-1}e_0\) survives in \(H^1(X,\mathcal F)\), which is one-dimensional over \(k\). The affine charts and their affine overlap let the comparison lemma identify this Čech computation with sheaf cohomology.`);
 const cechAffine=model('Split an overlap section on an affine line',[
- b('U',r`\operatorname{Spec}(k[z])`,'The affine line.'),
+ b('U',r`\operatorname{Spec}(k[z])`),
  b(r`\mathcal U`,r`\{D(z),D(1-z)\}`,r`These opens cover \(U\) because \(z+(1-z)=1\).`),
- b(r`\mathcal F`,r`\mathcal O_U`,'The structure sheaf.')
+ b(r`\mathcal F`,r`\mathcal O_U`)
 ],r`An overlap section such as \(1/(z(1-z))\) splits as \(1/z+1/(1-z)\). The two summands extend to their respective charts, so the section is a Čech coboundary after choosing signs.`,r`The lemma shows that every overlap section splits in this way into chart contributions. The first Čech cohomology is zero for this affine cover.`);
 const cechSphere={...model('The residue on the Riemann sphere',[
- b('X',r`\mathbb P^1(\mathbb C)`,'The Riemann sphere with its analytic topology.'),
+ b('X',r`\mathbb P^1(\mathbb C)`),
  b(r`\mathcal U`,r`\{\mathbb C_z,\mathbb C_w\}`,r`The two complex charts with \(w=1/z\) on the overlap \(\mathbb C^\times\).`),
  b(r`\mathcal F`,r`\mathcal O_X^{\mathrm{an}}(-2)\cong\Omega_X^1`,r`The sheaf of holomorphic differentials. The frames \(e_0,e_1\) of the twist satisfy \(e_1=z^{-2}e_0\). Differentiating \(w=1/z\) gives \(dw=-z^{-2}dz\), so \(e_0\mapsto dz\) and \(e_1\mapsto -dw\) respect the transition rule and define the isomorphism.`),
- b(r`\omega`,r`h(z)\,dz`,r`A holomorphic differential on the overlap, with Laurent expansion \(h(z)=\sum_{j\in\mathbb Z}c_jz^j\).`)
+ b(r`\omega`,r`\left(\sum_{j\in\mathbb Z}c_jz^j\right)dz`)
 ],r`A differential \(a(z)\,dz\) from the first chart contributes only powers \(j\geq 0\). One from the second chart has the form \(b(w)\,dw=-z^{-2}b(1/z)\,dz\), so it contributes only powers \(j\leq -2\). The corresponding Laurent tails converge to entire functions in their respective chart coordinates. Subtracting differences of chart sections therefore reduces every overlap differential to \(c_{-1}\,dz/z\).`,r`The residue \(c_{-1}=\frac{1}{2\pi i}\int_{|z|=1}\omega\), with the circle oriented counterclockwise, vanishes on every Čech coboundary. The overlap form \(dz/z\) has residue \(1\), so its class spans \(H^1(X,\Omega_X^1)\). Both charts and their overlap are Stein, and Cartan’s Theorem B makes this cover acyclic for the holomorphic line bundle.`,r`The untwisted holomorphic function sheaf has transition factor \(1\), so its two chart contributions account for every Laurent power and its first cohomology vanishes.`),
  source:{url:'https://www.numdam.org/item/SB_1951-1954__2__213_0/',label:'Serre’s Bourbaki exposé on Cartan’s Theorem B'}};
 const cechPlane=model('Three charts leave one class for the negative cubic twist',[
- b('R',r`k`,'Work over a field.'),
- b('n,d',r`2,-3`,'The dimension of the ambient projective space and the twist.'),
- b('X',r`\mathbb P^2_k`,'The projective plane with its three standard affine charts.'),
- b(r`\mathcal F`,r`\mathcal O_X(-3)`,'The sheaf whose cohomology will enter the genus calculation.'),
- b(r`\eta`,r`\frac{1}{T_0T_1T_2}`,'A degree minus three section on the triple overlap.')
+ b('R',r`k`),
+ b('n,d',r`2,-3`),
+ b('X',r`\mathbb P^2_k`),
+ b(r`\mathcal F`,r`\mathcal O_X(-3)`),
+ b(r`\eta`,r`\frac{1}{T_0T_1T_2}`)
 ],r`A double overlap inverts only two of the coordinates. A Laurent monomial with all three exponents negative therefore cannot come from a double overlap. At total degree minus three the only such exponent triple is \((-1,-1,-1)\).`,r`The class of \(\eta\) spans \(H^2(X,\mathcal F)\). This is the three-chart version of the missing Laurent term on the projective line.`);
 const genusCubic=model('The negative twist supplies the genus of a cubic',[
- b('k',r`\mathbb C`,'Use the complex numbers as the base field.'),
- b('S',r`k[T_0,T_1,T_2]`,'The standard graded coordinate ring of the projective plane.'),
- b('F',r`T_0^3+T_1^3+T_2^3`,'The homogeneous equation of the smooth Fermat cubic.'),
- b('d',r`3`,'The degree of the defining equation.'),
- b('Z',r`V_+(F)`,'The projective curve cut out by the equation.')
+ b('k',r`\mathbb C`),
+ b('S',r`k[T_0,T_1,T_2]`),
+ b('F',r`T_0^3+T_1^3+T_2^3`),
+ b('d',r`3`),
+ b('Z',r`V_+(F)`)
 ],r`Multiplication by \(F\) identifies the ideal sheaf with \(\mathcal O_{\mathbb P^2_k}(-3)\). The long exact sequence identifies \(H^1(Z,\mathcal O_Z)\) with \(H^2(\mathbb P^2_k,\mathcal O(-3))\), since \(H^1(\mathbb P^2_k,\mathcal O)\) and \(H^2(\mathbb P^2_k,\mathcal O)\) vanish.`,r`The preceding Čech computation gives the class of \(1/(T_0T_1T_2)\) in the latter group, so the cubic has genus one. For general degree \(d\), count the monomials \(T_0^{-a_0}T_1^{-a_1}T_2^{-a_2}\) with \(a_i\geq 1\) and \(a_0+a_1+a_2=d\). Their number is \((d-1)(d-2)/2\).`);
 Object.assign(models,{tangentDivisor,conicDegree,conicIntersection,cechLine,cechPlane,genusCubic});
 const groups={
@@ -292,58 +286,58 @@ const groups={
 };
 const fundamentalGroup=model('Fundamental groups send loops along a map',[
  b(r`\mathcal A`,r`\mathbf{Top}_*`,'Pointed topological spaces with basepoint-preserving continuous maps.'),
- b(r`\mathcal B`,r`\mathbf{Groups}`,'Groups and group homomorphisms.'),
+ b(r`\mathcal B`,r`\mathbf{Groups}`),
  b('F',r`\pi_1`,'The functor assigning the group of based loops up to based homotopy.'),
- b('x,y',r`(S^1,1),(S^1,1)`,'Use the circle based at one for both objects.'),
- b(r`\phi`,r`(z\mapsto z^2)`,'A continuous self-map fixing the basepoint.')
+ b('x,y',r`(S^1,1),(S^1,1)`),
+ b(r`\phi`,r`(z\mapsto z^2)`)
 ],r`The map \(F(\phi)\) sends the loop class \([\gamma]\) to \([\phi\circ\gamma]\). This respects homotopy and loop concatenation. Postcomposing with an identity or with a composite gives exactly the two functor laws.`,r`Under \(F(x)\cong\mathbb Z\) by winding number, \(F(\phi)\) is multiplication by \(2\). A loop once around the circle maps to a loop twice around.`);
 const singularHomology=model('Singular homology sends cycles along a map',[
- b(r`\mathcal A`,r`\mathbf{Top}`,'Topological spaces and continuous maps.'),
- b(r`\mathcal B`,r`\mathbf{Ab}`,'Abelian groups and homomorphisms.'),
- b('A',r`\mathbb Z/3\mathbb Z`,'An example of a fixed abelian group of coefficients.'),
+ b(r`\mathcal A`,r`\mathbf{Top}`),
+ b(r`\mathcal B`,r`\mathbf{Ab}`),
+ b('A',r`\mathbb Z/3\mathbb Z`),
  b('F',r`H_n(-;A)`,r`Singular homology in a fixed degree \(n\) with these coefficients.`),
- b('x,y',r`S^1,S^1`,'Use the circle for both objects.'),
- b(r`\phi`,r`(z\mapsto z^2)`,'A continuous self-map of the circle.')
+ b('x,y',r`S^1,S^1`),
+ b(r`\phi`,r`(z\mapsto z^2)`)
 ],r`The chain map for \(\phi:x\to y\) postcomposes each singular simplex \(\sigma:\Delta^n\to x\) with \(\phi\), keeping its coefficient. Taking a face commutes with postcomposition, so cycles go to cycles and boundaries to boundaries. The same postcomposition rule gives the identity and composition laws.`,r`For \(n=1\) and \(x=y=S^1\), the map on \(H_1(S^1;A)\cong A\) is multiplication by \(2\). The construction works in every fixed degree and with any fixed abelian coefficient group.`);
 const tangentSpace=model('The chain rule makes tangent spaces functorial',[
  b(r`\mathcal A`,r`\mathbf{Man}_*`,'Pointed smooth manifolds and smooth maps preserving the marked points.'),
- b(r`\mathcal B`,r`\mathbf{Vect}_{\mathbb R}`,'Real vector spaces and linear maps.'),
- b('F',r`((M,p)\mapsto T_pM)`,'Assign the tangent space at the marked point.'),
- b('x',r`(\mathbb R,2)`,'The real line marked at two.'),
- b('y',r`(\mathbb R,4)`,'The real line marked at four.'),
- b(r`\phi`,r`(u\mapsto u^2)`,'A smooth map taking the first marked point to the second.'),
- b(r`F(\phi)`,r`\mathrm d\phi_2`,'The differential at the marked point.')
+ b(r`\mathcal B`,r`\mathbf{Vect}_{\mathbb R}`),
+ b('F',r`((M,p)\mapsto T_pM)`),
+ b('x',r`(\mathbb R,2)`),
+ b('y',r`(\mathbb R,4)`),
+ b(r`\phi`,r`(u\mapsto u^2)`),
+ b(r`F(\phi)`,r`\mathrm d\phi_2`)
 ],r`For a smooth pointed map, the differential sends \(T_pM\) linearly to \(T_{\phi(p)}N\). The chain rule says \(\mathrm d(g\circ f)_p=\mathrm dg_{f(p)}\circ\mathrm df_p\), and the differential of the identity is the identity.`,r`In the usual coordinates on both tangent lines, \(F(\phi)\) sends \(v\) to \(4v\). For an unpointed smooth map \(f:M\to N\), the same pointwise differentials assemble into the tangent bundle map \(Tf:TM\to TN\).`);
 const doubleDual={...model('The natural map to the double dual',[
- b(r`\mathcal A`,r`\mathbf{Vect}^{\mathrm{fd}}_{\mathbb R}`,'Finite-dimensional real vector spaces and linear maps.'),
- b(r`\mathcal B`,r`\mathcal A`,'The same category is the target.'),
- b('F',r`\operatorname{Id}`,'The identity functor.'),
+ b(r`\mathcal A`,r`\mathbf{Vect}^{\mathrm{fd}}_{\mathbb R}`),
+ b(r`\mathcal B`,r`\mathcal A`),
+ b('F',r`\operatorname{Id}`),
  b('G',r`((-)^{**})`,r`The double-dual functor. A linear map \(\phi:V\to W\) goes to \(\phi^{**}:V^{**}\to W^{**}\).`),
- b('x,y',r`V,W`,'Two finite-dimensional real vector spaces.'),
+ b('x,y',r`V,W`),
  b('t_x',r`(v\mapsto[\lambda\mapsto\lambda(v)])`,r`Evaluation gives a linear map \(V\to V^{**}\). The component \(t_y\) is the same construction on \(W\).`)
 ],r`For \(\phi:V\to W\), both paths in the square send \(v\) to the functional on \(W^*\) given by \(\lambda\mapsto\lambda(\phi(v))\). This follows from \(\phi^*(\lambda)=\lambda\circ\phi\).`,r`The evaluation maps are isomorphisms in finite dimension, so \(t\) is a natural isomorphism. Choosing a basis also gives an isomorphism \(V\cong V^*\). Evaluation on the double dual is defined uniformly and commutes with every linear map.`,r`This is the example that opens Eilenberg and Mac Lane’s 1945 paper. The naturality square makes precise what it means for these evaluation maps to work together across all vector spaces.`),source:naturalEquivalences};
 const dual=model('Dualizing reverses the arrows',[
- finiteVect,b(r`\mathcal S`,r`\mathbf{Vect}^{\mathrm{fd}}_{\mathbb R}`,'The target category of finite-dimensional real vector spaces.'),
- b('F',r`(V\mapsto V^*)`,'The dual vector space consists of the linear functionals on the original space.'),
- b(r`\psi`,r`(V\to W)`,'Any linear map between the original vector spaces.'),
+ finiteVect,b(r`\mathcal S`,r`\mathbf{Vect}^{\mathrm{fd}}_{\mathbb R}`),
+ b('F',r`(V\mapsto V^*)`),
+ b(r`\psi`,r`(V\to W)`),
  b(r`F(\psi)`,r`(\lambda\mapsto\lambda\circ\psi)`,r`Precomposition sends \(W^*\) to \(V^*\).`)
 ],r`For \(\phi:W\to Z\), a functional on \(Z\) pulls back along \(\phi\) and then along \(\psi\). Thus \(F(\phi\circ\psi)=F(\psi)\circ F(\phi)\).`,r`The reversed arrows give a functor out of the opposite category. Applying duality twice restores the original direction and gives the double-dual functor.`);
 const additionalExamples={
  'sheaves-presheaves':[model('Functions on a discrete two-point space',[
-  twoPoints,b('U',r`\{a\}`,'One open subset. Every subset of this space is open.'),
-  b(r`\mathcal F(U)`,r`\operatorname{Map}(U,\mathbb F_2)\cong\mathbb F_2`,'A function on this singleton is specified by one value.'),
-  b(r`\mathcal F(X)`,r`\mathbb F_2\times\mathbb F_2`,'A function on the whole space is specified by two values.')
+  twoPoints,b('U',r`\{a\}`),
+  b(r`\mathcal F(U)`,r`\operatorname{Map}(U,\mathbb F_2)\cong\mathbb F_2`),
+  b(r`\mathcal F(X)`,r`\mathbb F_2\times\mathbb F_2`)
  ],r`Restriction to \(\{a\}\) is the projection \((u,v)\mapsto u\). Restricting further to the empty open gives the unique empty function, whether we start on \(X\) or on \(\{a\}\).`,r`These assignments define a presheaf of sets. The pointwise ring operations also make it a presheaf of rings.`)],
  'sheaves-stalks':[model('A germ on a discrete space is a value',[
-  twoPoints,b('x',r`a`,'The point at which we take the stalk.'),
-  b(r`\mathcal F(U)`,r`\operatorname{Map}(U,\mathbb F_2)`,'Functions on each open subset, with ordinary restriction.'),
-  b(r`\mathcal F_x`,r`\mathbb F_2`,'The possible values at the chosen point.')
+  twoPoints,b('x',r`a`),
+  b(r`\mathcal F(U)`,r`\operatorname{Map}(U,\mathbb F_2)`),
+  b(r`\mathcal F_x`,r`\mathbb F_2`)
  ],r`Every neighbourhood of \(a\) contains the open singleton \(\{a\}\). Two sections represent the same germ at \(a\) exactly when their restrictions to this singleton agree.`,r`The germ represented by \(h\) is determined by \(h(a)\). On this space the stalk computation reduces to restricting once to the smallest neighbourhood.`)],
  'schemes-schemes':[model('An affine scheme supported at one point',[
   b('R',r`\mathbb F_2[\epsilon]/(\epsilon^2)`,'The ring of dual numbers over the field of two elements.'),
-  b('X',r`\operatorname{Spec}(R)`,'The spectrum with its structure sheaf.'),
+  b('X',r`\operatorname{Spec}(R)`),
   b('x',r`(\epsilon)`,'The unique prime ideal. Every prime contains the nilpotent element.'),
-  b('U',r`X`,'An affine open neighbourhood of the only point.')
+  b('U',r`X`)
  ],r`The ring \(R\) is local with maximal ideal \((\epsilon)\). The stalk at the only point is \(R\), and the whole space is an affine neighbourhood of that point.`,r`This satisfies the definition with a single chart. The nonzero nilpotent \(\epsilon\) remains visible in the structure sheaf even though the underlying space has just one point.`)]
 };
 export function extraExamples(section){
@@ -388,11 +382,11 @@ export function passageNote(section,block){
  if(section.slug==='sheaves-abelian-presheaves'&&block.label==='definition-abelian-presheaves')return {...models.abelianMorphism,scope:'statement'};
  if(section.chapter==='homology'&&block.label==='definition-kernel')return {...models.kernel,scope:'statement'};
  if(block.label==='definition-local-ring')return {...models.local,scope:'statement'};
- if(block.label==='definition-scheme')return {...models.scheme,scope:'statement',note:r`The two affine charts exhibit the condition in the definition.`,bindings:[...models.scheme.bindings,b(r`\Sch`,r`\text{the category of schemes}`,'Its objects are schemes; its arrows are local morphisms of locally ringed spaces.') ]};
+ if(block.label==='definition-scheme')return {...models.scheme,scope:'statement',note:r`The two affine charts exhibit the condition in the definition.`,bindings:[...models.scheme.bindings,b(r`\Sch`,r`\text{the category of schemes}`) ]};
  if(block.label==='example-not-affine')return {...model('The punctured affine plane over a finite field',[
-  b('k',r`\mathbb F_2`,'The base field.'),
-  b('X',r`\operatorname{Spec}(k[x,y])`,'The affine plane.'),
-  b('U',r`X\setminus\{(x,y)\}`,'The open complement of the origin.')
+  b('k',r`\mathbb F_2`),
+  b('X',r`\operatorname{Spec}(k[x,y])`),
+  b('U',r`X\setminus\{(x,y)\}`)
  ],r`The opens \(D(x)\) and \(D(y)\) cover \(U\). Their coordinate rings intersect in \(k[x,y]\) inside \(k(x,y)\), since the denominators are powers of relatively prime polynomials.`,r`The restriction map on global functions is an isomorphism. If \(U\) were affine, the inclusion \(U\hookrightarrow X\) would therefore be an isomorphism of affine schemes. The missing origin rules this out.`),scope:'statement'};
  return base;
 }

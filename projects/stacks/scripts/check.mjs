@@ -17,7 +17,6 @@ for(const [key,item] of Object.entries(examples)){
   if(new Set(symbols).size!==symbols.length)throw Error('Duplicate object assignment: '+key);
   for(const b of [...item.bindings,...(item.proofBindings||[])]){
     renderer.math(b.symbol);renderer.math(b.value);
-    if(!b.kind)throw Error('Missing object type: '+key+' '+b.symbol);
   }
 }
 if(!html.includes('class="object-matches"'))throw Error('Missing margin object matching');
@@ -77,7 +76,6 @@ for(const unit of originalUnits){
     if(!note.bindings.length||!note.check||!note.result)throw Error('Missing example model '+section.slug);
     const symbols=new Set();
     for(const b of note.bindings){
-      if(!b.kind)throw Error('Missing object type '+section.slug);
       if(symbols.has(b.symbol))throw Error('Duplicate object binding '+section.slug);symbols.add(b.symbol);
       renderer.math(b.symbol);renderer.math(b.value);
     }
@@ -95,7 +93,7 @@ const css=fs.readFileSync(path.join(dist,'vendor/katex/katex.min.css'),'utf8');
 for(const m of css.matchAll(/url\(([^)]+)\)/g))if(!fs.existsSync(path.join(dist,'vendor/katex',m[1])))throw Error('Missing KaTeX font '+m[1]);
 const sourceFiles=['COPYING','manifest.json','introduction.tex'];
 for(const file of sourceFiles)if(!fs.existsSync(path.join(dist,'source',file)))throw Error('Missing source or license '+file);
-console.log(`Validated Stacks Reader: ${Object.keys(examples).length} typed object specializations, linked symbols, optional visual, all ${statementCount} source statements, ${proofCount} collapsed proofs, tags, local links, math, fonts, and source license.`);
+console.log(`Validated Stacks Reader: ${Object.keys(examples).length} object specializations, linked symbols, optional visual, all ${statementCount} source statements, ${proofCount} collapsed proofs, tags, local links, math, fonts, and source license.`);
 
 console.log(`Validated foundation path: ${foundation.units.flatMap(u=>u.sections).length} complete sections, ${pathStatements} statements, ${pathProofs} collapsed proofs, source anchors, typed examples, and cross-reading links.`);
 
