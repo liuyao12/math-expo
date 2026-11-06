@@ -134,6 +134,7 @@ body:has(.reader-layout) .site-header{position:sticky;top:0}.reading-progress{he
 .dependency-graph [data-kind="lemma"] { --node-fill: #e3eddd; --node-stroke: #46704d; }
 .dependency-graph [data-kind="section"] { --node-fill: #ecebe6; --node-stroke: #625f54; }
 .dependency-graph [data-kind="example"] { --node-fill: #f9e5d5; --node-stroke: #9b562e; }
+.dependency-graph [data-kind="situation"] { --node-fill: #f2e8cf; --node-stroke: #8b6b30; }
 .dependency-graph .dependency-node { touch-action: none; text-decoration: none; cursor: pointer; }
 .graph-node-body { fill: var(--node-fill, #edf0e6); stroke: var(--node-stroke, var(--green)); stroke-width: 1.4; }
 .graph-node-ring { fill: none; stroke: transparent; stroke-width: 2.6; pointer-events: none; }

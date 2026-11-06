@@ -82,7 +82,7 @@ export function renderDependencyGraph(tree,references,base,idPrefix=''){
  const lines=edges.map(([from,to])=>`<line data-from="${esc(from.tag)}" data-to="${esc(to.tag)}" x1="${from.x}" y1="${from.y}" x2="${to.x}" y2="${to.y}" marker-end="url(#${idPrefix}dependency-arrow)"/>`).join('');
  const links=entries.map(node=>`<a id="${idPrefix}${esc(node.tag)}" data-tag="${esc(node.tag)}" data-kind="${esc(node.kind)}" class="dependency-node${node.root?' dependency-target':''}" href="${esc(node.href)}" aria-label="${esc(node.label)}"${node.section?` data-section="${esc(node.section)}"`:''} transform="translate(${node.x} ${node.y})"><title>${esc(node.label)}</title><circle class="graph-node-ring" r="26"/><circle class="graph-node-body" r="22"/><text text-anchor="middle" dy=".35em">${esc(node.tag)}</text></a>`).join('');
  const root=nodes.get(tree.rootTag);
- const legend=[['definition','Definition'],['proposition','Proposition'],['lemma','Lemma'],['section','Section'],['example','Example']]
+ const legend=[['definition','Definition'],['proposition','Proposition'],['lemma','Lemma'],['section','Section'],['example','Example'],['situation','Situation']]
   .filter(([kind])=>entries.some(node=>node.kind===kind))
   .map(([kind,label])=>`<li data-kind="${kind}">${label}</li>`).join('');
  return `<div class="dependency-graph">

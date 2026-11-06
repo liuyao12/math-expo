@@ -16,6 +16,11 @@ export function buildSchemePath({root,dist,head,header,footer,renderExampleCard,
  });
  const genusTree=dependencyTree('genus',theoremReading.target,`dependencies/${theoremReading.slug}/`);
  const schemeTree=dependencyTree('scheme','01IJ','dependencies/scheme/');
+ const grrTree=dependencyTree('grr',grrReading.target,`dependencies/${grrReading.slug}/`);
+ const graphs=[schemeTree,genusTree,grrTree];
+ const locations=new Map();
+ const dependencyNumber=(graph,tag,number,label)=>
+  `<a class="dependency-number" data-dependency-tag="${esc(tag)}" aria-haspopup="dialog" href="../../${graph.url}#${esc(tag)}" aria-label="${esc(label)} dependencies">${esc(number)}</a>`;
  const references=JSON.parse(fs.readFileSync(path.join(root,'upstream/references.json'),'utf8'));
  const referencesByTag=new Map(Object.values(references).map(ref=>[ref.tag,ref]));
  const allSections=manifest.units.flatMap(u=>u.sections),stats=[],readerPages=[];
@@ -46,14 +51,17 @@ export function buildSchemePath({root,dist,head,header,footer,renderExampleCard,
  const grrRoutes={...coreRoutes,...routesFor(theoremReading)};
  const unitList=(base,units,href=u=>`${base}read/${u.slug}/`)=>units.map(u=>`<a class="reading-entry" href="${href(u)}"><span class="reading-number">${u.number}</span><div><p class="eyebrow">The Stacks Project · Chapter ${u.number}</p><h3>${esc(u.title)}</h3><div class="reading-meta"><span>${u.sections.length} complete sections</span><span>§${u.sections.map(s=>s.number).join(', ')}</span></div></div><span class="entry-arrow" aria-hidden="true">↗</span></a>`).join('');
  for(const unit of [...manifest.units,...coreUnits,coreReading,...selectedReadings]){
-  const tree=unit.core?schemeTree:unit===theoremReading?genusTree:null;
+  const tree=unit.core?schemeTree:unit===theoremReading?genusTree:unit===grrReading?grrTree:null;
+  const locate=(tag,section)=>{
+   if((unit===coreReading||unit.target)&&graphs.some(graph=>graph.nodes[tag]))locations.set(tag,{slug:unit.slug,section});
+  };
   const sectionHeading=unit.target?'h3':'h2';
   const statementHeading=unit.target?'h4':'h3';
   const r=createRenderer(root,{sections:unit.sections,routes:unit===grrReading?grrRoutes:tree?coreRoutes:undefined}),data={},sources={};let proofs=0,statements=0;
   const rich=s=>s.replace(/\\\[([\s\S]*?)\\\]/g,(_,t)=>r.math(t,true)).replace(/\\\(([\s\S]*?)\\\)/g,(_,t)=>r.math(t));
   const sections=unit.sections.map((s,index)=>{
    const blocks=r.section(s),sourceNotes=[];
-   if(tree?.nodes[s.tag])tree.locations.set(s.tag,{slug:unit.slug,section:s});
+   locate(s.tag,s);
    const content=blocks.map((b,bi)=>{
     const note=passageNote(s,b),key=note.scope==='statement'?s.slug+'-'+b.label:s.slug;
     if(!data[key]){
@@ -69,11 +77,11 @@ export function buildSchemePath({root,dist,head,header,footer,renderExampleCard,
     const id=b.tag||s.slug+'-'+bi;
     let html=`<div class="source-body">${separateSourceNotes(b.html,sourceNotes)}</div>`;
     if(b.kind!=='prose'){
+     locate(b.tag,s);
      let heading=esc(label);
      if(tree?.nodes[b.tag]){
-      tree.locations.set(b.tag,{slug:unit.slug,section:s});
       const kind=b.kind[0].toUpperCase()+b.kind.slice(1);
-      heading=`${esc(kind)} <a class="dependency-number" data-dependency-tag="${esc(b.tag)}" aria-haspopup="dialog" href="../../${tree.url}#${esc(b.tag)}" aria-label="${esc(label)} dependencies">${esc(b.number)}</a>`;
+      heading=`${esc(kind)} ${dependencyNumber(tree,b.tag,b.number,label)}`;
      }
      statements++;html=`<div class="statement-heading"><${statementHeading}>${heading}${b.title?' · '+rich(b.title):''}</${statementHeading}></div>`+html;
     }
@@ -85,7 +93,9 @@ export function buildSchemePath({root,dist,head,header,footer,renderExampleCard,
    const chapterHeading=unit.target
     ?s.stage?`<h2 class="source-chapter-title">${esc(s.stage)}</h2>`:''
     :s.chapterTitle&&index>0&&s.chapter!==unit.sections[index-1].chapter?`<p class="eyebrow">${esc(s.chapterTitle)}</p>`:'';
-   return `<section class="source-section" id="${s.tag}" data-source-sha256="${s.sha256}"><header class="source-section-header">${chapterHeading}<${sectionHeading}>${s.number}. ${esc(s.title)}</${sectionHeading}></header>${content}</section>`;
+   const number=tree===grrTree&&tree.nodes[s.tag]
+    ?dependencyNumber(tree,s.tag,s.number,`Section ${s.number}`):s.number;
+   return `<section class="source-section" id="${s.tag}" data-source-sha256="${s.sha256}"><header class="source-section-header">${chapterHeading}<${sectionHeading}>${number}. ${esc(s.title)}</${sectionHeading}></header>${content}</section>`;
   }).join('');
   if(!unit.readingTitle)stats.push({slug:unit.slug,sections:unit.sections.length,proofs,statements,formulas:r.mathCount});
   const first=Object.keys(data)[0],firstSource=unit.sections[0];
@@ -104,11 +114,12 @@ export function buildSchemePath({root,dist,head,header,footer,renderExampleCard,
   readerPages.push({slug:unit.slug,html,tree});
 
  }
- for(const [tag,location] of schemeTree.locations){
-  if(genusTree.nodes[tag]&&!genusTree.locations.has(tag))genusTree.locations.set(tag,location);
- }
- for(const tag of Object.keys(genusTree.nodes)){
-  if(!genusTree.locations.has(tag))throw Error('Missing selected prerequisite '+tag);
+ for(const graph of graphs){
+  for(const tag of Object.keys(graph.nodes)){
+   const location=locations.get(tag);
+   if(!location&&graph!==schemeTree)throw Error('Missing selected prerequisite '+tag+' for '+graph.url);
+   if(location)graph.locations.set(tag,location);
+  }
  }
  const graphScript=`<script defer src="../../dependency-graph.js?v=${assetVersion}"></script>`;
  const graphHTML=(tree,prefix)=>renderDependencyGraph(tree,referencesByTag,'../../',prefix);
@@ -122,11 +133,17 @@ export function buildSchemePath({root,dist,head,header,footer,renderExampleCard,
   fs.mkdirSync(dir,{recursive:true});
   fs.writeFileSync(path.join(dir,'index.html'),html+inset+'</body></html>');
  }
- const genusPage=head('Dependency graph for the plane-curve genus formula','../../','Selected prerequisites for the plane-curve genus formula.')+header('../../')+
-  `<main id="main" class="prose-page"><p class="eyebrow">Selected reading</p><h1 id="dependency-tree">Dependency graph</h1><p class="lead">Explore the definitions and lemmas used by the genus formula.</p><p>Arrows point from prerequisites to the results that use them. Select a tag to open its passage, or drag a node to rearrange the graph.</p><p><a href="../../read/${theoremReading.slug}/">← ${esc(theoremReading.readingTitle)}</a> · <a href="../../${coreHref}">Prerequisite · Path to schemes</a></p>${graphHTML(genusTree)}</main>`+graphScript+footer('../../')+'</body></html>';
- const genusTreeDir=path.join(dist,genusTree.url);
- fs.mkdirSync(genusTreeDir,{recursive:true});
- fs.writeFileSync(path.join(genusTreeDir,'index.html'),genusPage);
+ for(const [reading,graph,description] of [
+  [theoremReading,genusTree,'Explore the definitions and lemmas used by the genus formula.'],
+  [grrReading,grrTree,'Follow the constructions that give meaning to the Grothendieck–Riemann–Roch formula.']
+ ]){
+  const title=`Dependency graph for ${reading.readingTitle}`;
+  const page=head(title,'../../',description)+header('../../')+
+   `<main id="main" class="prose-page"><p class="eyebrow">Selected reading</p><h1 id="dependency-tree">Dependency graph</h1><p class="lead">${esc(description)}</p><p>Arrows point from prerequisites to the results that use them. Select a tag to open its passage, or drag a node to rearrange the graph.</p><p><a href="../../read/${reading.slug}/">← ${esc(reading.readingTitle)}</a> · <a href="../../${coreHref}">Prerequisite · Path to schemes</a></p>${graphHTML(graph)}</main>`+graphScript+footer('../../')+'</body></html>';
+  const dir=path.join(dist,graph.url);
+  fs.mkdirSync(dir,{recursive:true});
+  fs.writeFileSync(path.join(dir,'index.html'),page);
+ }
  for(const directory of ['read','dependencies']){
   const legacyDir=path.join(dist,directory,'twists-and-genus');
   const destination=`../${theoremReading.slug}/`;
