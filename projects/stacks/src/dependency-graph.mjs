@@ -65,13 +65,16 @@ export function renderDependencyGraph(tree,references,base,idPrefix=''){
  visit(tree.rootTag,0);
  if(depths.size!==Object.keys(tree.nodes).length)throw Error('Disconnected reading dependency in '+tree.url);
 
+ const readingSlug=tree.locations.get(tree.rootTag)?.slug;
  const nodes=new Map([...depths].map(([tag,depth])=>{
   const node=tree.nodes[tag],ref=references.get(tag)||node;
   if(!ref?.number)throw Error('Missing dependency metadata for '+tag);
   const location=tree.locations.get(tag);
+  const outsideReading=!location||location.slug!==readingSlug;
+  const origin=outsideReading?` · ${location?.readingTitle||"The Stacks Project"}`:"";
   const route=location?`${base}read/${location.slug}/`:null;
-  return [tag,{tag,depth,kind:ref.kind,root:tag===tree.rootTag,
-   label:`${ref.kind[0].toUpperCase()+ref.kind.slice(1)} ${ref.number} · ${node.title}`,
+  return [tag,{tag,depth,kind:ref.kind,root:tag===tree.rootTag,outsideReading,
+   label:`${ref.kind[0].toUpperCase()+ref.kind.slice(1)} ${ref.number} · ${node.title}${origin}`,
    href:route?`${route}#${tag}`:`https://stacks.math.columbia.edu/tag/${tag}`,
    section:route&&location.section.tag!==tag?`${route}#${location.section.tag}`:null
   }];
@@ -80,14 +83,14 @@ export function renderDependencyGraph(tree,references,base,idPrefix=''){
  const edges=entries.flatMap(node=>(tree.nodes[node.tag].uses||[]).map(used=>[nodes.get(used),node]));
  const [width,height]=layout(entries,edges);
  const lines=edges.map(([from,to])=>`<line data-from="${esc(from.tag)}" data-to="${esc(to.tag)}" x1="${from.x}" y1="${from.y}" x2="${to.x}" y2="${to.y}" marker-end="url(#${idPrefix}dependency-arrow)"/>`).join('');
- const links=entries.map(node=>`<a id="${idPrefix}${esc(node.tag)}" data-tag="${esc(node.tag)}" data-kind="${esc(node.kind)}" class="dependency-node${node.root?' dependency-target':''}" href="${esc(node.href)}" aria-label="${esc(node.label)}"${node.section?` data-section="${esc(node.section)}"`:''} transform="translate(${node.x} ${node.y})"><title>${esc(node.label)}</title><circle class="graph-node-ring" r="26"/><circle class="graph-node-body" r="22"/><text text-anchor="middle" dy=".35em">${esc(node.tag)}</text></a>`).join('');
+ const links=entries.map(node=>`<a id="${idPrefix}${esc(node.tag)}" data-tag="${esc(node.tag)}" data-kind="${esc(node.kind)}" class="dependency-node${node.root?' dependency-target':''}${node.outsideReading?' outside-reading':''}" href="${esc(node.href)}" aria-label="${esc(node.label)}"${node.section?` data-section="${esc(node.section)}"`:''} transform="translate(${node.x} ${node.y})"><title>${esc(node.label)}</title><circle class="graph-node-ring" r="26"/><circle class="graph-node-body" r="22"/><text text-anchor="middle" dy=".35em">${esc(node.tag)}</text></a>`).join('');
  const root=nodes.get(tree.rootTag);
  const legend=[['definition','Definition'],['proposition','Proposition'],['lemma','Lemma'],['section','Section'],['example','Example'],['situation','Situation']]
   .filter(([kind])=>entries.some(node=>node.kind===kind))
   .map(([kind,label])=>`<li data-kind="${kind}">${label}</li>`).join('');
  return `<div class="dependency-graph">
   <div class="graph-controls" aria-label="Graph zoom" hidden><button type="button" data-zoom="out" aria-label="Zoom out">−</button><button type="button" data-zoom="fit">Fit graph</button><button type="button" data-zoom="in" aria-label="Zoom in">+</button></div>
-  <ul class="graph-legend" aria-label="Node colors">${legend}</ul>
+  <ul class="graph-legend" aria-label="Node colors">${legend}${entries.some(node=>node.outsideReading)?'<li class="graph-legend-outside">Outside this reading</li>':''}</ul>
   <div class="graph-viewport">
    <svg viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" aria-label="Dependency graph">
     <defs><marker class="graph-arrow" id="${idPrefix}dependency-arrow" markerUnits="userSpaceOnUse" refX="27" refY="4" markerWidth="8" markerHeight="8" viewBox="0 0 8 8" orient="auto" overflow="visible"><path d="M0 0L8 4L0 8Z"/></marker></defs>

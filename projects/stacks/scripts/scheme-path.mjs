@@ -53,7 +53,7 @@ export function buildSchemePath({root,dist,head,header,footer,renderExampleCard,
  for(const unit of [...manifest.units,...coreUnits,coreReading,...selectedReadings]){
   const tree=unit.core?schemeTree:unit===theoremReading?genusTree:unit===grrReading?grrTree:null;
   const locate=(tag,section)=>{
-   if((unit===coreReading||unit.target)&&graphs.some(graph=>graph.nodes[tag]))locations.set(tag,{slug:unit.slug,section});
+   if((unit===coreReading||unit.target)&&graphs.some(graph=>graph.nodes[tag]))locations.set(tag,{slug:unit.slug,readingTitle:unit.readingTitle,section});
   };
   const sectionHeading=unit.target?'h3':'h2';
   const statementHeading=unit.target?'h4':'h3';

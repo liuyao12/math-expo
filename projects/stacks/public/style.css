@@ -129,6 +129,11 @@ body:has(.reader-layout) .site-header{position:sticky;top:0}.reading-progress{he
   border: 1px solid var(--node-stroke);
   border-radius: 50%;
 }
+.graph-legend-outside::before {
+  --node-fill: #f4f5ef;
+  --node-stroke: #737d73;
+  border-style: dashed;
+}
 .dependency-graph [data-kind="definition"] { --node-fill: #d9eaf9; --node-stroke: #2e6188; }
 .dependency-graph [data-kind="proposition"] { --node-fill: #eadff5; --node-stroke: #6b4a89; }
 .dependency-graph [data-kind="lemma"] { --node-fill: #e3eddd; --node-stroke: #46704d; }
@@ -137,6 +142,11 @@ body:has(.reader-layout) .site-header{position:sticky;top:0}.reading-progress{he
 .dependency-graph [data-kind="situation"] { --node-fill: #f2e8cf; --node-stroke: #8b6b30; }
 .dependency-graph .dependency-node { touch-action: none; text-decoration: none; cursor: pointer; }
 .graph-node-body { fill: var(--node-fill, #edf0e6); stroke: var(--node-stroke, var(--green)); stroke-width: 1.4; }
+.outside-reading .graph-node-body {
+  fill: color-mix(in srgb, var(--node-fill, #edf0e6) 36%, #fbfaf6);
+  stroke: color-mix(in srgb, var(--node-stroke, var(--green)) 74%, #fbfaf6);
+  stroke-dasharray: 3 2;
+}
 .graph-node-ring { fill: none; stroke: transparent; stroke-width: 2.6; pointer-events: none; }
 .dependency-node text { fill: var(--ink); font: 600 13px var(--sans); user-select: none; }
 .dependency-node.dependency-target .graph-node-ring { stroke: #a57622; }
