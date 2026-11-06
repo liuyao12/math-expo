@@ -878,6 +878,17 @@ const doubleDual={...model('The natural map to the double dual',[
  &=\bigl(t_W F(\phi)(v)\bigr)(\lambda).
 \end{aligned}
 \]`,r`The evaluation maps are isomorphisms in finite dimension.`,r`This example opens Eilenberg and Mac Lane’s 1945 paper.`),source:naturalEquivalences};
+const coordinateSpaces=model('Coordinate spaces form a full subcategory',[
+ b(r`\mathcal B`,r`\mathbf{Vect}_k`),
+ b(r`\operatorname{Ob}(\mathcal A)`,r`\{k^n:n\ge 0\}`),
+ b('x,y',r`k^n,k^m`)
+],r`\[
+\begin{aligned}
+\Mor_{\mathcal A}(k^n,k^m)
+&=\Mor_{\mathcal B}(k^n,k^m)\\
+&\cong\operatorname{Mat}_{m\times n}(k).
+\end{aligned}
+\]`,'');
 const matrixEquivalence=model('Finite-dimensional vector spaces and matrices',[
  b(r`\mathcal A`,r`\mathbf{Mat}_k`),
  b(r`\operatorname{Ob}(\mathcal A)`,r`\mathbb Z_{\ge0}`),
@@ -952,6 +963,7 @@ export function passageNote(section,block){
  if(section.slug==='varieties-divisors-curves'&&block.label==='lemma-degree-effective-Cartier-divisor')return {...conicDegree,scope:'statement'};
  if(section.slug==='intersection-computing-intersection-multiplicities'&&block.label==='lemma-multiplicity-with-effective-Cartier-divisor')return {...conicIntersection,scope:'statement'};
  if(section.slug==='categories-definition-categories'&&block.label==='definition-functor')return {...fundamentalGroup,scope:'statement',examples:[singularHomology,tangentSpace].map(example=>({...example,scope:'statement'}))};
+ if(section.slug==='categories-definition-categories'&&block.label==='definition-subcategory')return {...coordinateSpaces,scope:'statement'};
  if(section.slug==='categories-definition-categories'&&block.label==='definition-transformation-functors')return {...doubleDual,scope:'statement'};
  if(section.slug==='categories-definition-categories'&&
     ['definition-equivalence-categories','lemma-construct-quasi-inverse','lemma-equivalence-categories'].includes(block.label))
