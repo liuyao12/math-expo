@@ -1,7 +1,7 @@
 [
   {
-    "slug": "plane-curve-genus",
-    "readingTitle": "The genus formula for plane curves",
+    "slug": "curves",
+    "readingTitle": "Algebraic curves",
     "deck": "Read selected sections on homological algebra, projective space, and sheaf cohomology in the original Stacks order.",
     "title": "Commutative Algebra",
     "number": 10,
@@ -530,7 +530,7 @@
     "target": "0BYD"
   },
   {
-    "slug": "grothendieck-riemann-roch",
+    "slug": "grr",
     "readingTitle": "Grothendieck\u2013Riemann\u2013Roch",
     "deck": "From cycles and Chern classes to the Grothendieck\u2013Riemann\u2013Roch formula, with the smooth curve case alongside.",
     "title": "Morphisms of Schemes",

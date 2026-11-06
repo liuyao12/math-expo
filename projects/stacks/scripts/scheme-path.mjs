@@ -94,7 +94,7 @@ export function buildSchemePath({root,dist,head,header,footer,renderExampleCard}
   const outlineType=unit.readingTitle?'Selected reading':`Chapter ${unit.number} · ${unit.core?'Definition path':'Reference collection'}`;
   const description=unit.deck|| (unit.core?'Sections on the path to the definition of schemes.':'Complete original sections from the reference collection.');
   const targetLinks=unit===grrReading
-   ?`<p class="dependency-guide"><a href="#${unit.target}">Section ${referencesByTag.get(unit.target).number} · Formula</a><br><a href="../../${coreHref}">Prerequisite · Path to schemes</a><br><a href="../${theoremReading.slug}/">Prerequisite · The genus formula for plane curves</a></p>`
+   ?`<p class="dependency-guide"><a href="#${unit.target}">Section ${referencesByTag.get(unit.target).number} · Formula</a><br><a href="../../${coreHref}">Prerequisite · Path to schemes</a><br><a href="../${theoremReading.slug}/">Prerequisite · ${esc(theoremReading.readingTitle)}</a></p>`
    :unit===theoremReading
    ?`<p class="dependency-guide"><a href="#${unit.target}">Genus formula · Lemma ${referencesByTag.get(unit.target).number}</a><br><a href="../../${coreHref}">Prerequisite · Path to schemes</a></p>`
    :unit===coreReading?`<p class="dependency-guide"><a href="#${schemeTree.rootTag}">Definition 26.9.1 · Schemes</a></p>`:'';

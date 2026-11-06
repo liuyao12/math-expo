@@ -86,8 +86,8 @@ for chapter in chapters:
             if owner==key:routes[label]=chapter['slug']
     units.append(dict(slug=chapter['slug'],title=chapter['title'],number=chapter['number'],tag=chapter['tag'],subtitle='The Stacks Project — '+chapter['title'],support=chapter['slug'] in ['categories','homology','modules'],sections=unit))
 # Additional readings have their own scope and do not expand the foundation path.
-genus_slug='plane-curve-genus'
-grr_slug='grothendieck-riemann-roch'
+genus_slug='curves'
+grr_slug='grr'
 reading_targets={genus_slug:'0BYD',grr_slug:'02UO'}
 sections_by_tag={section['tag']:key for key,section in sections.items()}
 grr_tags=[
@@ -101,7 +101,7 @@ grr_tags=[
     '0AZ0','02UK','02UM','02UN','02UO',
 ]
 reading_specs=[
-    (genus_slug,'The genus formula for plane curves',
+    (genus_slug,'Algebraic curves',
      'Read selected sections on homological algebra, projective space, and sheaf cohomology in the original Stacks order.',
      ['modules-section-quasi-coherent',
       'schemes-section-quasi-coherent-affine',
