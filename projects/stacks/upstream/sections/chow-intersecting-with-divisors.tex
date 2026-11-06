@@ -1,0 +1,199 @@
+\section{Intersecting with an invertible sheaf}
+\label{section-intersecting-with-divisors}
+
+\noindent
+In this section we study the following construction.
+
+\begin{definition}
+\label{definition-cap-c1}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$ be locally of finite type over $S$.
+Let $\mathcal{L}$ be an invertible $\mathcal{O}_X$-module.
+We define, for every integer $k$, an operation
+$$
+c_1(\mathcal{L}) \cap - :
+Z_{k + 1}(X) \to \CH_k(X)
+$$
+called {\it intersection with the first Chern class of $\mathcal{L}$}.
+\begin{enumerate}
+\item Given an integral closed subscheme $i : W \to X$ with
+$\dim_\delta(W) = k + 1$ we define
+$$
+c_1(\mathcal{L}) \cap [W] = i_*(c_1({i^*\mathcal{L}}) \cap [W])
+$$
+where the right hand side is defined in
+Definition \ref{definition-divisor-invertible-sheaf}.
+\item For a general $(k + 1)$-cycle $\alpha = \sum n_i [W_i]$ we set
+$$
+c_1(\mathcal{L}) \cap \alpha = \sum n_i c_1(\mathcal{L}) \cap [W_i]
+$$
+\end{enumerate}
+\end{definition}
+
+\noindent
+Write each $c_1(\mathcal{L}) \cap W_i = \sum_j n_{i, j} [Z_{i, j}]$
+with $\{Z_{i, j}\}_j$ a locally finite sum
+of integral closed subschemes of $W_i$. Since $\{W_i\}$ is a locally
+finite collection of integral closed subschemes on $X$, it follows
+easily that $\{Z_{i, j}\}_{i, j}$ is a locally finite collection
+of closed subschemes of $X$. Hence
+$c_1(\mathcal{L}) \cap \alpha = \sum n_in_{i, j}[Z_{i, j}]$
+is a cycle. Another, more convenient, way to think about this
+is to observe that the morphism $\coprod W_i \to X$ is
+proper. Hence $c_1(\mathcal{L}) \cap \alpha$ can be viewed
+as the pushforward of a class in $\CH_k(\coprod W_i) = \prod \CH_k(W_i)$.
+This also explains why the result is well defined up to rational
+equivalence on $X$.
+
+\medskip\noindent
+The main goal for the next few sections is to show that intersecting with
+$c_1(\mathcal{L})$ factors through rational equivalence.
+This is not a triviality.
+
+\begin{lemma}
+\label{lemma-c1-cap-additive}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$ be locally of finite type over $S$.
+Let $\mathcal{L}$, $\mathcal{N}$ be an invertible sheaves on $X$.
+Then
+$$
+c_1(\mathcal{L}) \cap \alpha  + c_1(\mathcal{N}) \cap \alpha =
+c_1(\mathcal{L} \otimes_{\mathcal{O}_X} \mathcal{N}) \cap \alpha
+$$
+in $\CH_k(X)$ for every $\alpha \in Z_{k + 1}(X)$. Moreover,
+$c_1(\mathcal{O}_X) \cap \alpha = 0$ for all $\alpha$.
+\end{lemma}
+
+\begin{proof}
+The additivity follows directly from
+Divisors, Lemma \ref{divisors-lemma-c1-additive}
+and the definitions. To see that $c_1(\mathcal{O}_X) \cap \alpha = 0$
+consider the section $1 \in \Gamma(X, \mathcal{O}_X)$. This restricts
+to an everywhere nonzero section on any integral closed subscheme
+$W \subset X$. Hence $c_1(\mathcal{O}_X) \cap [W] = 0$ as desired.
+\end{proof}
+
+\noindent
+Recall that $Z(s) \subset X$ denotes the zero scheme of a global section
+$s$ of an invertible sheaf on a scheme $X$, see
+Divisors, Definition \ref{divisors-definition-zero-scheme-s}.
+
+\begin{lemma}
+\label{lemma-prepare-geometric-cap}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $Y$ be locally of finite type over $S$.
+Let $\mathcal{L}$ be an invertible $\mathcal{O}_Y$-module.
+Let $s \in \Gamma(Y, \mathcal{L})$.
+Assume
+\begin{enumerate}
+\item $\dim_\delta(Y) \leq k + 1$,
+\item $\dim_\delta(Z(s)) \leq k$, and
+\item for every generic point $\xi$ of an irreducible component of
+$Z(s)$ of $\delta$-dimension $k$ the multiplication by $s$
+induces an injection $\mathcal{O}_{Y, \xi} \to \mathcal{L}_\xi$.
+\end{enumerate}
+Write $[Y]_{k + 1} = \sum n_i[Y_i]$ where $Y_i \subset Y$ are the
+irreducible components of $Y$ of $\delta$-dimension $k + 1$.
+Set $s_i = s|_{Y_i} \in \Gamma(Y_i, \mathcal{L}|_{Y_i})$. Then
+\begin{equation}
+\label{equation-equal-as-cycles}
+[Z(s)]_k =  \sum n_i[Z(s_i)]_k
+\end{equation}
+as $k$-cycles on $Y$.
+\end{lemma}
+
+\begin{proof}
+Let $Z \subset Y$ be an integral closed subscheme of
+$\delta$-dimension $k$. Let $\xi \in Z$ be its generic point.
+We want to compare the coefficient $n$ of $[Z]$ in the expression
+$\sum n_i[Z(s_i)]_k$ with the coefficient $m$ of $[Z]$ in the
+expression $[Z(s)]_k$. Choose a generator $s_\xi \in \mathcal{L}_\xi$.
+Write $A = \mathcal{O}_{Y, \xi}$, $L = \mathcal{L}_\xi$.
+Then $L = As_\xi$. Write $s = f s_\xi$ for some (unique) $f \in A$.
+Hypothesis (3) means that $f : A \to A$ is injective.
+Since $\dim_\delta(Y) \leq k + 1$ and $\dim_\delta(Z) = k$
+we have $\dim(A) = 0$ or $1$. We have
+$$
+m = \text{length}_A(A/(f))
+$$
+which is finite in either case.
+
+\medskip\noindent
+If $\dim(A) = 0$, then $f : A \to A$ being injective
+implies that $f \in A^*$. Hence in this case $m$ is zero.
+Moreover, the condition $\dim(A) = 0$ means that $\xi$
+does not lie on any irreducible component of $\delta$-dimension
+$k + 1$, i.e., $n = 0$ as well.
+
+\medskip\noindent
+Now, let $\dim(A) = 1$.
+Since $A$ is a Noetherian local ring it has finitely
+many minimal primes $\mathfrak q_1, \ldots, \mathfrak q_t$.
+These correspond 1-1 with the $Y_i$ passing through $\xi'$.
+Moreover $n_i = \text{length}_{A_{\mathfrak q_i}}(A_{\mathfrak q_i})$.
+Also, the multiplicity of $[Z]$ in $[Z(s_i)]_k$ is
+$\text{length}_A(A/(f, \mathfrak q_i))$.
+Hence the equation to prove in this case is
+$$
+\text{length}_A(A/(f))
+=
+\sum \text{length}_{A_{\mathfrak q_i}}(A_{\mathfrak q_i})
+\text{length}_A(A/(f, \mathfrak q_i))
+$$
+which follows from
+Lemma \ref{lemma-additivity-divisors-restricted}.
+\end{proof}
+
+\noindent
+The following lemma is a useful result in order to compute the intersection
+product of the $c_1$ of an invertible sheaf and the cycle associated
+to a closed subscheme.
+Recall that $Z(s) \subset X$ denotes the zero scheme of a global section
+$s$ of an invertible sheaf on a scheme $X$, see
+Divisors, Definition \ref{divisors-definition-zero-scheme-s}.
+
+\begin{lemma}
+\label{lemma-geometric-cap}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$ be locally of finite type over $S$.
+Let $\mathcal{L}$ be an invertible $\mathcal{O}_X$-module.
+Let $Y \subset X$ be a closed subscheme.
+Let $s \in \Gamma(Y, \mathcal{L}|_Y)$.
+Assume
+\begin{enumerate}
+\item $\dim_\delta(Y) \leq k + 1$,
+\item $\dim_\delta(Z(s)) \leq k$, and
+\item for every generic point $\xi$ of an irreducible component of
+$Z(s)$ of $\delta$-dimension $k$ the multiplication by $s$
+induces an injection
+$\mathcal{O}_{Y, \xi} \to (\mathcal{L}|_Y)_\xi$\footnote{For example,
+this holds if $s$ is a regular section of $\mathcal{L}|_Y$.}.
+\end{enumerate}
+Then
+$$
+c_1(\mathcal{L}) \cap [Y]_{k + 1} = [Z(s)]_k
+$$
+in $\CH_k(X)$.
+\end{lemma}
+
+\begin{proof}
+Write
+$$
+[Y]_{k + 1} = \sum n_i[Y_i]
+$$
+where $Y_i \subset Y$ are the irreducible components of
+$Y$ of $\delta$-dimension $k + 1$ and $n_i > 0$.
+By assumption the restriction
+$s_i = s|_{Y_i} \in \Gamma(Y_i, \mathcal{L}|_{Y_i})$ is not
+zero, and hence is a regular section. By Lemma \ref{lemma-compute-c1}
+we see that $[Z(s_i)]_k$ represents $c_1(\mathcal{L}|_{Y_i})$.
+Hence by definition
+$$
+c_1(\mathcal{L}) \cap [Y]_{k + 1} = \sum n_i[Z(s_i)]_k
+$$
+Thus the result follows from Lemma \ref{lemma-prepare-geometric-cap}.
+\end{proof}
+
+
+
+

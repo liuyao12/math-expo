@@ -1,0 +1,80 @@
+\section{Principal divisors}
+\label{section-principal-divisors}
+
+\noindent
+The following definition is the analogue of
+Divisors, Definition \ref{divisors-definition-principal-divisor}
+in our current setup.
+
+\begin{definition}
+\label{definition-principal-divisor}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$ be locally of finite type over $S$. Assume $X$ is
+integral with $\dim_\delta(X) = n$.
+Let $f \in R(X)^*$. The {\it principal divisor
+associated to $f$} is the $(n - 1)$-cycle
+$$
+\text{div}(f) = \text{div}_X(f) = \sum \text{ord}_Z(f) [Z]
+$$
+defined in Divisors, Definition \ref{divisors-definition-principal-divisor}.
+This makes sense because prime divisors have $\delta$-dimension $n - 1$ by
+Lemma \ref{lemma-divisor-delta-dimension}.
+\end{definition}
+
+\noindent
+In the situation of the definition for $f, g \in R(X)^*$ we have
+$$
+\text{div}_X(fg) = \text{div}_X(f) + \text{div}_X(g)
+$$
+in $Z_{n - 1}(X)$. See Divisors, Lemma \ref{divisors-lemma-div-additive}.
+The following lemma will be superseded by the more general
+Lemma \ref{lemma-flat-pullback-rational-equivalence}.
+
+\begin{lemma}
+\label{lemma-flat-pullback-principal-divisor}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$, $Y$ be locally of finite type over $S$. Assume $X$, $Y$
+are integral and $n = \dim_\delta(Y)$.
+Let $f : X \to Y$ be a flat morphism of relative dimension $r$.
+Let $g \in R(Y)^*$. Then
+$$
+f^*(\text{div}_Y(g)) = \text{div}_X(g)
+$$
+in $Z_{n + r - 1}(X)$.
+\end{lemma}
+
+\begin{proof}
+Note that since $f$ is flat it is dominant so that
+$f$ induces an embedding $R(Y) \subset R(X)$, and hence
+we may think of $g$ as an element of $R(X)^*$.
+Let $Z \subset X$ be an integral closed subscheme of
+$\delta$-dimension $n + r - 1$. Let $\xi \in Z$
+be its generic point. If $\dim_\delta(f(Z)) > n - 1$,
+then we see that the coefficient of $[Z]$ in the left and
+right hand side of the equation is zero.
+Hence we may assume that $Z' = \overline{f(Z)}$ is an
+integral closed subscheme of $Y$ of $\delta$-dimension $n - 1$.
+Let $\xi' = f(\xi)$. It is the generic point of $Z'$.
+Set $A = \mathcal{O}_{Y, \xi'}$, $B = \mathcal{O}_{X, \xi}$.
+The ring map $A \to B$ is a flat local homomorphism of
+Noetherian local domains of dimension $1$.
+We have $g$ in the fraction field of $A$. What we have to show is that
+$$
+\text{ord}_A(g) \text{length}_B(B/\mathfrak m_AB)
+=
+\text{ord}_B(g).
+$$
+This follows from Algebra, Lemma \ref{algebra-lemma-pullback-module}
+(details omitted).
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+

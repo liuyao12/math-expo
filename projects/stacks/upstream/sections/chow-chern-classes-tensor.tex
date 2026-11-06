@@ -1,0 +1,137 @@
+\section{The Chern character and tensor products}
+\label{section-chern-classes-tensor}
+
+\noindent
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$ be locally of finite type over $S$.
+We define the {\it Chern character} of a finite locally free
+$\mathcal{O}_X$-module to be the formal expression
+$$
+ch({\mathcal E}) = \sum\nolimits_{i=1}^r e^{x_i}
+$$
+if the $x_i$ are the Chern roots of ${\mathcal E}$. Writing this
+as a polynomial in the Chern classes we obtain
+\begin{align*}
+ch(\mathcal{E})
+& =
+r(\mathcal{E})
++
+c_1(\mathcal{E}) +
+\frac{1}{2}(c_1(\mathcal{E})^2 - 2c_2(\mathcal{E}))
++
+\frac{1}{6}(c_1(\mathcal{E})^3 - 3c_1(\mathcal{E})c_2(\mathcal{E}) + 3c_3(\mathcal{E})) \\
+& \quad\quad +
+\frac{1}{24}(c_1(\mathcal{E})^4 - 4c_1(\mathcal{E})^2c_2(\mathcal{E}) + 4c_1(\mathcal{E})c_3(\mathcal{E}) + 2c_2(\mathcal{E})^2 - 4c_4(\mathcal{E}))
++
+\ldots \\
+& =
+\sum\nolimits_{p = 0, 1, 2, \ldots} \frac{P_p(\mathcal{E})}{p!}
+\end{align*}
+with $P_p$ polynomials in the Chern classes as in
+Example \ref{example-power-sum}. The degree $p$ component of
+the above is
+$$
+ch_p(\mathcal{E}) = \frac{P_p(\mathcal{E})}{p!} \in A^p(X) \otimes \mathbf{Q}
+$$
+What does it mean that the coefficients are rational numbers?
+Well this simply means that we think of
+$ch_p(\mathcal{E})$ as an element of $A^p(X) \otimes \mathbf{Q}$.
+
+\begin{remark}
+\label{remark-extend-chern-character-to-finite-locally-free}
+In the discussion above we have defined the components of the Chern character
+$ch_p(\mathcal{E}) \in A^p(X) \otimes \mathbf{Q}$
+of $\mathcal{E}$ even if the rank of $\mathcal{E}$
+is not constant. See Remarks \ref{remark-extend-to-finite-locally-free} and
+\ref{remark-equalities-nonconstant-rank}. Thus the full Chern character
+of $\mathcal{E}$ is
+an element of $\prod_{p \geq 0} (A^p(X) \otimes \mathbf{Q})$. If $X$
+is quasi-compact and $\dim(X) < \infty$ (usual dimension), then one can show
+using Lemma \ref{lemma-vanish-above-dimension} and the splitting principle
+that $ch(\mathcal{E}) \in A^*(X) \otimes \mathbf{Q}$.
+\end{remark}
+
+\begin{lemma}
+\label{lemma-chern-character-additive}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}. Let $X$ be locally
+of finite type over $S$. Let
+$
+0 \to \mathcal{E}_1 \to \mathcal{E} \to \mathcal{E}_2 \to 0
+$
+be a short exact sequence of finite locally free $\mathcal{O}_X$-modules.
+Then we have the equality
+$$
+ch(\mathcal{E}) = ch(\mathcal{E}_1) + ch(\mathcal{E}_2)
+$$
+More precisely, we have
+$P_p(\mathcal{E}) = P_p(\mathcal{E}_1) + P_p(\mathcal{E}_2)$
+in $A^p(X)$ where $P_p$ is as in Example \ref{example-power-sum}.
+\end{lemma}
+
+\begin{proof}
+It suffices to prove the more precise statement. By
+Section \ref{section-splitting-principle}
+this follows because if $x_{1, i}$, $i = 1, \ldots, r_1$
+and $x_{2, i}$, $i = 1, \ldots, r_2$ are the
+Chern roots of $\mathcal{E}_1$ and $\mathcal{E}_2$, then
+$x_{1, 1}, \ldots, x_{1, r_1}, x_{2, 1}, \ldots, x_{2, r_2}$
+are the Chern roots of $\mathcal{E}$. Hence we get the result
+from our choice of $P_p$ in Example \ref{example-power-sum}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-chern-character-multiplicative}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}. Let $X$ be locally
+of finite type over $S$. Let $\mathcal{E}_1$ and $\mathcal{E}_2$
+be finite locally free $\mathcal{O}_X$-modules.
+Then we have the equality
+$$
+ch(\mathcal{E}_1 \otimes_{\mathcal{O}_X} \mathcal{E}_2) =
+ch(\mathcal{E}_1) ch(\mathcal{E}_2)
+$$
+More precisely, we have
+$$
+P_p(\mathcal{E}_1 \otimes_{\mathcal{O}_X} \mathcal{E}_2) =
+\sum\nolimits_{p_1 + p_2 = p}
+{p \choose p_1} P_{p_1}(\mathcal{E}_1) P_{p_2}(\mathcal{E}_2)
+$$
+in $A^p(X)$ where $P_p$ is as in Example \ref{example-power-sum}.
+\end{lemma}
+
+\begin{proof}
+It suffices to prove the more precise statement. By
+Section \ref{section-splitting-principle}
+this follows because if $x_{1, i}$, $i = 1, \ldots, r_1$
+and $x_{2, i}$, $i = 1, \ldots, r_2$ are the
+Chern roots of $\mathcal{E}_1$ and $\mathcal{E}_2$, then
+$x_{1, i} + x_{2, j}$, $1 \leq i \leq r_1$, $1 \leq j \leq r_2$
+are the Chern roots of $\mathcal{E}_1 \otimes \mathcal{E}_2$.
+Hence we get the result from the binomial formula for
+$(x_{1, i} + x_{2, j})^p$ and the
+shape of our polynomials $P_p$ in Example \ref{example-power-sum}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-chern-character-dual}
+In Situation \ref{situation-setup} let $X$ be locally of finite type over $S$.
+Let $\mathcal{E}$ be a finite locally free $\mathcal{O}_X$-module
+with dual $\mathcal{E}^\vee$. Then
+$ch_i(\mathcal{E}^\vee) = (-1)^i ch_i(\mathcal{E})$ in
+$A^i(X) \otimes \mathbf{Q}$.
+\end{lemma}
+
+\begin{proof}
+Follows from the corresponding result for Chern classes
+(Lemma \ref{lemma-chern-classes-dual}).
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+

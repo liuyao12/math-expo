@@ -779,7 +779,120 @@ Object.assign(models,{tangentDivisor,conicDegree,conicIntersection,cechLine,cech
  affineModule,closedPoint,affineBundle,gradedPolynomial,projCharts,properLine,sphereColimit,triangulatedChains,pairConnectingMap,injectiveExample,
  injectivePoint,injectiveModulePoint,injectiveResolution,residueObstruction,deRhamCohomology,cechDifferential,
  lineBundleCocycle,cechDeRham,serreSequence,cechSpectral,affinePushforward,fibreCohomology,invertibleLine,genusExample,embeddedPoint});
+const curve=b('X',r`C\text{, a smooth connected projective curve over }\mathbb C`);
+const curveBase=b('S',r`\operatorname{Spec}\mathbb C`);
+const curveLine=b(r`\mathcal L`,r`\mathcal O_C(D)`);
+const curveDifferentials=model('Holomorphic differentials and tangent vectors',[
+ curve,b('Y',r`\operatorname{Spec}\mathbb C`),b('f',r`(C\to Y)`)
+],r`\[
+\Omega_{C/\mathbb C}^{1,\mathrm{an}}|_U=\mathcal O_U\,dz,
+\qquad T_C^{\mathrm{an}}|_U=\mathcal O_U\,\partial_z
+\]`,r`Here \(z\) is a local holomorphic coordinate on \(U\subset C^{\mathrm{an}}\).`);
+const curveSetup=model('Dimension at the points of a curve',[
+ curveBase,curve,b(r`\eta`,r`\text{the generic point of }C`),b('p',r`\text{a closed point of }C`)
+],r`\[
+\delta(\ast)=0,\qquad\delta_C(\eta)=1,\qquad\delta_C(p)=0.
+\]`,'');
+const curveCycles=model('A zero-cycle is a divisor on a smooth curve',[
+ curve,b('D',r`\textstyle\sum_p n_p[p]`)
+],r`\[
+Z_1(C)=\mathbb Z[C],
+\qquad Z_0(C)=\bigoplus_{p\in C(\mathbb C)}\mathbb Z[p].
+\]`,'');
+const curvePushforward=model('Push a divisor down a map of curves',[
+ curve,b('f',r`(C\to C')\text{ finite}`),b('p',r`p\in C(\mathbb C)`)
+],r`\[
+f_*[p]=[f(p)],\qquad f_*[C]=\deg(f)[C'].
+\]`,'');
+const curveRationalEquivalence=model('Zeros and poles of a meromorphic function',[
+ curve,b('h',r`\text{a nonzero meromorphic function on }C^{\mathrm{an}}`)
+],r`\[
+\begin{gathered}
+\operatorname{div}(h)=\sum_p\operatorname{ord}_p(h)[p],\\
+\operatorname{CH}_0(C)=\operatorname{Div}(C)/\operatorname{Prin}(C).
+\end{gathered}
+\]`,'');
+const curveNorm=model('The norm carries principal divisors downstairs',[
+ curve,b('f',r`(C\to C')\text{ finite}`),b('h',r`h\in\mathbb C(C)^\times`)
+],r`\[
+ f_*\operatorname{div}(h)
+ =\operatorname{div}\bigl(N_{\mathbb C(C)/\mathbb C(C')}(h)\bigr).
+\]`,'');
+const curveFirstChern=model('The divisor of a meromorphic section',[
+ curve,curveLine,b('s',r`\text{a nonzero meromorphic section of }\mathcal L`)
+],r`\[
+c_1(\mathcal L)\cap[C]=[\operatorname{div}(s)]=[D]
+\quad\text{in }\operatorname{CH}_0(C).
+\]`,r`Changing \(s\) multiplies it by a meromorphic function, adding a principal divisor.`);
+const curveBivariant=model('A Chern class acts after every pullback',[
+ curve,curveLine,b('f',r`(C'\to C)`)
+],r`\[
+c_1(\mathcal L)_f:[C']\longmapsto[f^*D].
+\]`,r`For a finite map, the coefficient of a point in the pullback of a single point is its ramification index.`);
+const curveProjectiveBundle=model('The projective bundle of a trivial bundle',[
+ curve,b(r`\mathcal E`,r`\mathcal O_C^{\oplus r}`),b(r`P`,r`C\times\mathbb P^{r-1}`),
+ b(r`\xi`,r`c_1(\mathcal O_P(1))`)
+],r`\[
+\operatorname{CH}^*(P)
+=\operatorname{CH}^*(C)[\xi]/(\xi^r).
+\]`,'');
+const curveChernClasses=model('The Chern class of a split bundle on a curve',[
+ curve,b(r`\mathcal E`,r`L_1\oplus L_2`),b('x_i',r`c_1(L_i)`)
+],r`\[
+\begin{gathered}
+c(\mathcal E)=(1+x_1)(1+x_2),\\
+c_1(\mathcal E)=c_1(L_1\otimes L_2),\quad c_2(\mathcal E)=0.
+\end{gathered}
+\]`,'');
+const curveDegree=model('Push points to the base field',[
+ curve,b('p',r`(C\to\operatorname{Spec}\mathbb C)`),b('D',r`\textstyle\sum_x n_x[x]`)
+],r`\[
+p_*[D]=\sum_x n_x=\deg D.
+\]`,'');
+const curveCharacter=model('The Chern character on a curve',[
+ curve,curveLine,b(r`\mathcal E`,r`\mathcal L`)
+],r`\[
+\operatorname{ch}(\mathcal L)=e^{c_1(\mathcal L)}
+=1+c_1(\mathcal L).
+\]`,'');
+const curveTodd=model('The Todd class of the tangent line bundle',[
+ curve,b(r`\mathcal E`,r`T_C`),b('x',r`c_1(T_C)`)
+],r`\[
+\operatorname{Td}(T_C)=1+\tfrac12 c_1(T_C),
+\qquad\deg c_1(T_C)=2-2g.
+\]`,r`On the Riemann surface, the first Chern class of the complex tangent line is the Euler class of the real tangent plane.`);
+const curveRiemannRoch=model('Riemann–Roch for a line bundle on a curve',[
+ curve,b('Y',r`\operatorname{Spec}\mathbb C`),b('f',r`(C\to Y)`),
+ b(r`\mathcal E`,r`L=\mathcal O_C(D)`),b('r','1'),
+ b(r`R^i f_*\mathcal E`,r`H^i(C,L)`),b(r`T_{X/Y}`,r`T_C`)
+],r`\[
+\begin{aligned}
+[\operatorname{ch}(L)\operatorname{Td}(T_C)]_1
+ &=c_1(L)+\tfrac12c_1(T_C),\\
+h^0(C,L)-h^1(C,L)
+ &=\deg D+1-g.
+\end{aligned}
+\]`,r`Pushforward to the point takes the degree of the codimension-one term.`);
+Object.assign(models,{
+ curveDifferentials,curveSetup,curveCycles,curvePushforward,curveRationalEquivalence,
+ curveNorm,curveFirstChern,curveBivariant,curveProjectiveBundle,curveChernClasses,
+ curveDegree,curveCharacter,curveTodd,curveRiemannRoch
+});
 const groups={
+ curveDifferentials:['morphisms-sheaf-differentials','morphisms-smooth'],
+ curveSetup:['chow-setup'],
+ curveCycles:['chow-cycles'],
+ curvePushforward:['chow-proper-pushforward'],
+ curveRationalEquivalence:['chow-principal-divisors','chow-rational-equivalence'],
+ curveNorm:['chow-properties-rational-equivalence'],
+ curveFirstChern:['chow-divisor-invertible-sheaf','chow-intersecting-with-divisors'],
+ curveBivariant:['chow-bivariant','chow-chow-cohomology'],
+ curveProjectiveBundle:['chow-projective-space-bundle-formula'],
+ curveChernClasses:['chow-chern-classes-vector-bundles','chow-intersecting-chern-classes','chow-splitting-principle'],
+ curveDegree:['chow-degree-zero-cycles'],
+ curveCharacter:['chow-chern-classes-tensor'],
+ curveTodd:['chow-todd-classes'],
+ curveRiemannRoch:['chow-grr'],
  affineModule:['modules-quasi-coherent','schemes-quasi-coherent-affine'],
  closedPoint:['schemes-immersions'],
  affineBundle:['morphisms-affine'],

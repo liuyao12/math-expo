@@ -1,0 +1,201 @@
+\section{Chow cohomology and the first Chern class}
+\label{section-chow-cohomology}
+
+\noindent
+We will be most interested in $A^p(X) = A^p(X \to X)$, which will always mean
+the bivariant cohomology classes for $\text{id}_X$. Namely, that is where
+Chern classes will live.
+
+\begin{definition}
+\label{definition-chow-cohomology}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$ be locally of finite type over $S$. The {\it Chow cohomology}
+of $X$ is the graded $\mathbf{Z}$-algebra $A^*(X)$ whose degree
+$p$ component is $A^p(X \to X)$.
+\end{definition}
+
+\noindent
+Warning: It is not clear that the $\mathbf{Z}$-algebra structure
+on $A^*(X)$ is commutative, but we will see that Chern classes live
+in its center.
+
+\begin{remark}
+\label{remark-pullback-cohomology}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $f : Y' \to Y$ be a morphism of schemes locally of finite type over $S$.
+As a special case of Remark \ref{remark-restriction-bivariant}
+there is a canonical $\mathbf{Z}$-algebra map $res : A^*(Y) \to A^*(Y')$.
+This map is often denoted $f^*$ in the literature.
+\end{remark}
+
+\begin{lemma}
+\label{lemma-cap-c1-bivariant}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$ be locally of finite type over $S$.
+Let $\mathcal{L}$ be an invertible $\mathcal{O}_X$-module.
+Then the rule that to $f : X' \to X$ assigns
+$c_1(f^*\mathcal{L}) \cap - : \CH_k(X') \to \CH_{k - 1}(X')$
+is a bivariant class of degree $1$.
+\end{lemma}
+
+\begin{proof}
+This follows from Lemmas \ref{lemma-factors},
+\ref{lemma-pushforward-cap-c1},
+\ref{lemma-flat-pullback-cap-c1}, and
+\ref{lemma-gysin-commutes-cap-c1}.
+\end{proof}
+
+\noindent
+The lemma above finally allows us to make the following definition.
+
+\begin{definition}
+\label{definition-first-chern-class}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}. Let $X$
+be locally of finite type over $S$. Let $\mathcal{L}$ be an invertible
+$\mathcal{O}_X$-module. The {\it first Chern class}
+$c_1(\mathcal{L}) \in A^1(X)$ of $\mathcal{L}$
+is the bivariant class of Lemma \ref{lemma-cap-c1-bivariant}.
+\end{definition}
+
+\noindent
+For finite locally free modules we construct the Chern classes in
+Section \ref{section-intersecting-chern-classes}.
+Let us prove that $c_1(\mathcal{L})$ is in the center of $A^*(X)$.
+
+\begin{lemma}
+\label{lemma-c1-center}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$ be locally of finite type over $S$.
+Let $\mathcal{L}$ be an invertible $\mathcal{O}_X$-module.
+Then
+\begin{enumerate}
+\item $c_1(\mathcal{L}) \in A^1(X)$ is in the center of $A^*(X)$ and
+\item if $f : X' \to X$ is locally of finite type and $c \in A^*(X' \to X)$,
+then $c \circ c_1(\mathcal{L}) = c_1(f^*\mathcal{L}) \circ c$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Of course (2) implies (1).
+Let $p : L \to X$ be as in Lemma \ref{lemma-linebundle} and let $o : X \to L$
+be the zero section. Denote $p' : L' \to X'$ and $o' : X' \to L'$
+their base changes. By Lemma \ref{lemma-linebundle-formulae} we have
+$$
+p^*(c_1(\mathcal{L}) \cap \alpha) = - o_* \alpha
+\quad\text{and}\quad
+(p')^*(c_1(f^*\mathcal{L}) \cap \alpha') = - o'_* \alpha'
+$$
+Since $c$ is a bivariant class we have
+\begin{align*}
+(p')^*(c \cap c_1(\mathcal{L}) \cap \alpha)
+& =
+c \cap p^*(c_1(\mathcal{L}) \cap \alpha) \\
+& =
+- c \cap o_* \alpha \\
+& =
+- o'_*(c \cap \alpha) \\
+& =
+(p')^*(c_1(f^*\mathcal{L}) \cap c \cap \alpha)
+\end{align*}
+Since $(p')^*$ is injective by one of the lemmas cited above we obtain
+$c \cap c_1(\mathcal{L}) \cap \alpha =
+c_1(f^*\mathcal{L}) \cap c \cap \alpha$.
+The same is true after any base change by $Y \to X$ locally of finite type
+and hence we have the equality of bivariant classes stated in (2).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-vanish-above-dimension}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}. Let $X$ be a
+finite type scheme over $S$ which has an ample invertible sheaf.
+Assume $d = \dim(X) < \infty$ (here we really mean dimension and
+not $\delta$-dimension).
+Then for any invertible sheaves $\mathcal{L}_1, \ldots, \mathcal{L}_{d + 1}$
+on $X$ we have
+$c_1(\mathcal{L}_1) \circ \ldots \circ c_1(\mathcal{L}_{d + 1}) = 0$
+in $A^{d + 1}(X)$.
+\end{lemma}
+
+\begin{proof}
+We prove this by induction on $d$. The base case $d = 0$ is true because
+in this case $X$ is a finite set of closed points and hence every invertible
+module is trivial. Assume $d > 0$. By Divisors, Lemma
+\ref{divisors-lemma-quasi-projective-Noetherian-pic-effective-Cartier}
+we can write $\mathcal{L}_{d + 1} \cong \mathcal{O}_X(D) \otimes
+\mathcal{O}_X(D')^{\otimes -1}$ for some effective Cartier divisors
+$D, D' \subset X$. Then $c_1(\mathcal{L}_{d + 1})$ is the difference
+of $c_1(\mathcal{O}_X(D))$ and $c_1(\mathcal{O}_X(D'))$ and hence
+we may assume $\mathcal{L}_{d + 1} = \mathcal{O}_X(D)$ for some
+effective Cartier divisor.
+
+\medskip\noindent
+Denote $i : D \to X$ the inclusion morphism and denote
+$i^* \in A^1(D \to X)$ the bivariant class given by the
+Gysin hommomorphism as in Lemma \ref{lemma-gysin-bivariant}.
+We have $i_* \circ i^* = c_1(\mathcal{L}_{d + 1})$
+in $A^1(X)$ by Lemma \ref{lemma-support-cap-effective-Cartier}
+(and Lemma \ref{lemma-push-proper-bivariant}
+to make sense of the left hand side).
+Since $c_1(\mathcal{L}_i)$ commutes with
+both $i_*$ and $i^*$ (by definition of bivariant classes)
+we conclude that
+$$
+c_1(\mathcal{L}_1) \circ \ldots \circ c_1(\mathcal{L}_{d + 1}) =
+i_* \circ c_1(\mathcal{L}_1) \circ \ldots \circ c_1(\mathcal{L}_d) \circ i^* =
+i_* \circ c_1(\mathcal{L}_1|_D) \circ \ldots \circ c_1(\mathcal{L}_d|_D)
+\circ i^*
+$$
+Thus we conclude by induction on $d$. Namely, we have $\dim(D) < d$
+as none of the generic points of $X$ are in $D$.
+\end{proof}
+
+\begin{remark}
+\label{remark-ring-loc-classes}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $Z \to X$ be a closed immersion of schemes locally of
+finite type over $S$ and let $p \geq 0$. In this setting we define
+$$
+A^{(p)}(Z \to X) =
+\prod\nolimits_{i \leq p - 1} A^i(X) \times
+\prod\nolimits_{i \geq p} A^i(Z \to X).
+$$
+Then $A^{(p)}(Z \to X)$ canonically comes equipped with the structure
+of a graded algebra. In fact, more generally there is a multiplication
+$$
+A^{(p)}(Z \to X) \times A^{(q)}(Z \to X)
+\longrightarrow A^{(\max(p, q))}(Z \to X)
+$$
+In order to define these we define maps
+\begin{align*}
+A^i(Z \to X) \times A^j(X) & \to A^{i + j}(Z \to X) \\
+A^i(X) \times A^j(Z \to X) & \to A^{i + j}(Z \to X) \\
+A^i(Z \to X) \times A^j(Z \to X) & \to A^{i + j}(Z \to X)
+\end{align*}
+For the first we use composition of bivariant classes.
+For the second we use restriction
+$A^i(X) \to A^i(Z)$ (Remark \ref{remark-restriction-bivariant}) and
+composition $A^i(Z) \times A^j(Z \to X) \to A^{i + j}(Z \to X)$.
+For the third, we send $(c, c')$ to $res(c) \circ c'$
+where $res : A^i(Z \to X) \to A^i(Z)$ is the restriction map (see
+Remark \ref{remark-restriction-bivariant}). We omit the
+verification that these multiplications are associative in a suitable sense.
+\end{remark}
+
+\begin{remark}
+\label{remark-res-push}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $Z \to X$ be a closed immersion of schemes locally of
+finite type over $S$. Denote $res : A^p(Z \to X) \to A^p(Z)$
+the restriction map of Remark \ref{remark-restriction-bivariant}.
+For $c \in A^p(Z \to X)$ we have
+$res(c) \cap \alpha = c \cap i_*\alpha$ for $\alpha \in \CH_*(Z)$.
+Namely $res(c) \cap \alpha = c \cap \alpha$
+and compatibility of $c$ with proper pushforward
+gives $(Z \to Z)_*(c \cap \alpha) = c \cap (Z \to X)_*\alpha$.
+\end{remark}
+
+
+
+
+
+

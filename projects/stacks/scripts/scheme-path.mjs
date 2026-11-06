@@ -7,7 +7,8 @@ import {renderOutline} from '../src/reading-outline.mjs';
 export function buildSchemePath({root,dist,head,header,footer,renderExampleCard}){
  const manifest=JSON.parse(fs.readFileSync(path.join(root,'upstream/scheme-path.json'),'utf8'));
  const selectedReadings=JSON.parse(fs.readFileSync(path.join(root,'upstream/selected-readings.json'),'utf8'));
- const theoremReading=selectedReadings.find(unit=>unit.target);
+ const theoremReading=selectedReadings.find(unit=>unit.target==='0BYD');
+ const grrReading=selectedReadings.find(unit=>unit.target==='02UO');
  const dependencyTree=(name,rootTag,url)=>({
   nodes:JSON.parse(fs.readFileSync(path.join(root,'src',name+'-dependencies.json'),'utf8')),
   rootTag,url,locations:new Map()
@@ -36,17 +37,18 @@ export function buildSchemePath({root,dist,head,header,footer,renderExampleCard}
   })))
  };
  const coreHref=`read/${coreReading.slug}/`;
- const coreRoutes={};
- for(const section of coreReading.sections){
+ const routesFor=reading=>Object.fromEntries(reading.sections.flatMap(section=>{
   const tex=fs.readFileSync(path.join(root,'upstream/sections',`${section.slug}.tex`),'utf8');
-  for(const match of tex.matchAll(/\\label\{([^}]+)\}/g))coreRoutes[`${section.chapter}-${match[1]}`]=coreReading.slug;
- }
+  return [...tex.matchAll(/\\label\{([^}]+)\}/g)].map(match=>[`${section.chapter}-${match[1]}`,reading.slug]);
+ }));
+ const coreRoutes=routesFor(coreReading);
+ const grrRoutes={...coreRoutes,...routesFor(theoremReading)};
  const unitList=(base,units,href=u=>`${base}read/${u.slug}/`)=>units.map(u=>`<a class="reading-entry" href="${href(u)}"><span class="reading-number">${u.number}</span><div><p class="eyebrow">The Stacks Project · Chapter ${u.number}</p><h3>${esc(u.title)}</h3><div class="reading-meta"><span>${u.sections.length} complete sections</span><span>§${u.sections.map(s=>s.number).join(', ')}</span></div></div><span class="entry-arrow" aria-hidden="true">↗</span></a>`).join('');
  for(const unit of [...manifest.units,...coreUnits,coreReading,...selectedReadings]){
-  const tree=unit.core?schemeTree:unit.target?genusTree:null;
+  const tree=unit.core?schemeTree:unit===theoremReading?genusTree:null;
   const sectionHeading=unit.target?'h3':'h2';
   const statementHeading=unit.target?'h4':'h3';
-  const r=createRenderer(root,{sections:unit.sections,routes:tree?coreRoutes:undefined}),data={},sources={};let proofs=0,statements=0;
+  const r=createRenderer(root,{sections:unit.sections,routes:unit===grrReading?grrRoutes:tree?coreRoutes:undefined}),data={},sources={};let proofs=0,statements=0;
   const rich=s=>s.replace(/\\\[([\s\S]*?)\\\]/g,(_,t)=>r.math(t,true)).replace(/\\\(([\s\S]*?)\\\)/g,(_,t)=>r.math(t));
   const sections=unit.sections.map((s,index)=>{
    const blocks=r.section(s),sourceNotes=[];
@@ -91,7 +93,9 @@ export function buildSchemePath({root,dist,head,header,footer,renderExampleCard}
   const outlineLink=unit.readingTitle?'<a class="back-link" href="../../#readings-title">← Selected readings</a>':'<a class="back-link" href="../../path/">← Sections for defining schemes</a>';
   const outlineType=unit.readingTitle?'Selected reading':`Chapter ${unit.number} · ${unit.core?'Definition path':'Reference collection'}`;
   const description=unit.deck|| (unit.core?'Sections on the path to the definition of schemes.':'Complete original sections from the reference collection.');
-  const targetLinks=unit.target
+  const targetLinks=unit===grrReading
+   ?`<p class="dependency-guide"><a href="#${unit.target}">Section ${referencesByTag.get(unit.target).number} · Formula</a><br><a href="../../${coreHref}">Prerequisite · Path to schemes</a><br><a href="../${theoremReading.slug}/">Prerequisite · The genus formula for plane curves</a></p>`
+   :unit===theoremReading
    ?`<p class="dependency-guide"><a href="#${unit.target}">Genus formula · Lemma ${referencesByTag.get(unit.target).number}</a><br><a href="../../${coreHref}">Prerequisite · Path to schemes</a></p>`
    :unit===coreReading?`<p class="dependency-guide"><a href="#${schemeTree.rootTag}">Definition 26.9.1 · Schemes</a></p>`:'';
   const dependencyLink=tree?`<p class="dependency-guide"><a href="../../${tree.url}#dependency-tree">Dependency tree</a><br>Yellow numbers lead to their place in the tree.</p>`:'';
@@ -157,5 +161,5 @@ export function buildSchemePath({root,dist,head,header,footer,renderExampleCard}
   const html=head('Original chapter and section titles','../../','This reading now uses the original Stacks chapter organization.')+`<main id="main" class="prose-page"><p>This reading now uses the original Stacks chapter titles.</p><a href="${href}">Continue to the original chapter and section</a></main><script>const route=${JSON.stringify(legacy)};const hash=location.hash.slice(1);const tag=hash.replace(/^proof-/,'');location.replace('../'+(route.anchors[tag]||route.default_route)+'/'+(hash?'#'+hash:'#'+route.default_tag));</script></body></html>`;
   fs.mkdirSync(path.join(dist,'read',slug),{recursive:true});fs.writeFileSync(path.join(dist,'read',slug,'index.html'),html);
  }
- return {sections:allSections.length,proofs:totalProofs,statements:totalStatements,readings:referenceStats,coreSections:coreSections.length,coreChapters:coreUnits.length,coreHref,theoremReading};
+ return {sections:allSections.length,proofs:totalProofs,statements:totalStatements,readings:referenceStats,coreSections:coreSections.length,coreChapters:coreUnits.length,coreHref,theoremReading,grrReading};
 }

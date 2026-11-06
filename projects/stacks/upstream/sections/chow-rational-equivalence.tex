@@ -1,0 +1,221 @@
+\section{Rational equivalence}
+\label{section-rational-equivalence}
+
+\noindent
+In this section we define {\it rational equivalence} on $k$-cycles.
+We will allow locally finite sums of images of
+principal divisors (under closed immersions). This leads to some
+pretty strange phenomena, see Example \ref{example-weird}.
+However, if we do not allow these then we do not know how to prove that
+capping with Chern classes of line bundles factors through rational
+equivalence.
+
+\begin{definition}
+\label{definition-rational-equivalence}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$ be a scheme locally of finite type over $S$.
+Let $k \in \mathbf{Z}$.
+\begin{enumerate}
+\item Given any locally finite collection $\{W_j \subset X\}$
+of integral closed subschemes with $\dim_\delta(W_j) = k + 1$,
+and any $f_j \in R(W_j)^*$ we may consider
+$$
+\sum (i_j)_*\text{div}(f_j) \in Z_k(X)
+$$
+where $i_j : W_j \to X$ is the inclusion morphism.
+This makes sense as the morphism
+$\coprod i_j : \coprod W_j \to X$ is proper.
+\item We say that $\alpha \in Z_k(X)$ is {\it rationally equivalent to zero}
+if $\alpha$ is a cycle of the form displayed above.
+\item We say $\alpha, \beta \in Z_k(X)$ are
+{\it rationally equivalent} and we write $\alpha \sim_{rat} \beta$
+if $\alpha - \beta$ is rationally equivalent to zero.
+\item We define
+$$
+\CH_k(X) = Z_k(X) / \sim_{rat}
+$$
+to be the {\it Chow group of $k$-cycles on $X$}. This is sometimes called
+the {\it Chow group of $k$-cycles modulo rational equivalence on $X$}.
+\end{enumerate}
+\end{definition}
+
+\noindent
+There are many other interesting (adequate) equivalence relations.
+Rational equivalence is the coarsest one of them all.
+
+\begin{remark}
+\label{remark-chow-group-pointwise}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$ be locally of finite type over $S$. Let $k \in \mathbf{Z}$.
+Let us show that we have a presentation
+$$
+\bigoplus\nolimits_{\delta(x) = k + 1}' K_1^M(\kappa(x))
+\xrightarrow{\partial}
+\bigoplus\nolimits_{\delta(x) = k}' K_0^M(\kappa(x)) \to
+\CH_k(X) \to 0
+$$
+Here we use the notation and conventions introduced in
+Remark \ref{remark-cycles-pointwise} and in addition
+\begin{enumerate}
+\item $K_1^M(\kappa(x)) = \kappa(x)^*$ is the degree $1$ part of
+the Milnor K-theory of the residue field $\kappa(x)$ of the point
+$x \in X$ (see Remark \ref{remark-gersten-complex-milnor}), and
+\item the differential $\partial$ is defined as follows:
+given an element $\xi = \sum_x f_x$ we denote $W_x = \overline{x}$
+the integral closed subscheme of $X$ with generic point $x$ and we set
+$$
+\partial(\xi) = \sum (W_x \to X)_*\text{div}(f_x)
+$$
+in $Z_k(X)$ which makes sense as we have seen that the second
+term of the complex is equal to $Z_k(X)$ by
+Remark \ref{remark-cycles-pointwise}.
+\end{enumerate}
+The fact that we obtain a presentation of $\CH_k(X)$ follows
+immediately by comparing with Definition \ref{definition-rational-equivalence}.
+\end{remark}
+
+\noindent
+A very simple but important lemma is the following.
+
+\begin{lemma}
+\label{lemma-restrict-to-open}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$ be a scheme locally of finite type over $S$.
+Let $U \subset X$ be an open subscheme, and denote
+$i : Y = X \setminus U \to X$ as a reduced closed subscheme of $X$.
+Let $k \in \mathbf{Z}$.
+Suppose $\alpha, \beta \in Z_k(X)$.
+If $\alpha|_U \sim_{rat} \beta|_U$ then there exist a cycle
+$\gamma \in Z_k(Y)$ such that
+$$
+\alpha \sim_{rat} \beta + i_*\gamma.
+$$
+In other words, the sequence
+$$
+\xymatrix{
+\CH_k(Y) \ar[r]^{i_*} & \CH_k(X) \ar[r]^{j^*} & \CH_k(U) \ar[r] & 0
+}
+$$
+is an exact complex of abelian groups.
+\end{lemma}
+
+\begin{proof}
+Let $\{W_j\}_{j \in J}$ be a locally finite collection of integral closed
+subschemes of $U$ of $\delta$-dimension $k + 1$, and let $f_j \in R(W_j)^*$
+be elements such that $(\alpha - \beta)|_U = \sum (i_j)_*\text{div}(f_j)$
+as in the definition. Set $W_j' \subset X$ equal
+to the closure of $W_j$. Suppose that $V \subset X$ is a quasi-compact
+open. Then also $V \cap U$ is quasi-compact open in $U$ as
+$V$ is Noetherian. Hence the set
+$\{j \in J \mid W_j \cap V \not = \emptyset\}
+= \{j \in J \mid W'_j \cap V \not = \emptyset\}$
+is finite since $\{W_j\}$ is locally finite. In other words we see that
+$\{W'_j\}$ is also locally finite. Since $R(W_j) = R(W'_j)$ we see
+that
+$$
+\alpha - \beta - \sum (i'_j)_*\text{div}(f_j)
+$$
+is a cycle supported on $Y$ and the lemma follows (see
+Lemma \ref{lemma-exact-sequence-open}).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-exact-sequence-closed-chow}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$ be locally of finite type over $S$. Let $X_1, X_2 \subset X$
+be closed subschemes such that $X = X_1 \cup X_2$ set theoretically.
+For every $k \in \mathbf{Z}$ the sequence of abelian groups
+$$
+\xymatrix{
+\CH_k(X_1 \cap X_2) \ar[r] &
+\CH_k(X_1) \oplus \CH_k(X_2) \ar[r] &
+\CH_k(X) \ar[r] &
+0
+}
+$$
+is exact. Here $X_1 \cap X_2$ is the scheme theoretic intersection and the
+maps are the pushforward maps with one multiplied by $-1$.
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-exact-sequence-closed} the arrow
+$\CH_k(X_1) \oplus \CH_k(X_2) \to \CH_k(X)$ is surjective.
+Suppose that $(\alpha_1, \alpha_2)$ maps to zero under this map.
+Write $\alpha_1 = \sum n_{1, i}[W_{1, i}]$ and
+$\alpha_2 = \sum n_{2, i}[W_{2, i}]$. Then we obtain a locally
+finite collection $\{W_j\}_{j \in J}$ of integral closed
+subschemes of $X$ of $\delta$-dimension $k + 1$ and $f_j \in R(W_j)^*$
+such that
+$$
+\sum n_{1, i}[W_{1, i}] + \sum n_{2, i}[W_{2, i}] = \sum (i_j)_*\text{div}(f_j)
+$$
+as cycles on $X$ where $i_j : W_j \to X$ is the inclusion morphism.
+Choose a disjoint union decomposition $J = J_1 \amalg J_2$ such that
+$W_j \subset X_1$ if $j \in J_1$ and $W_j \subset X_2$ if $j \in J_2$.
+(This is possible because the $W_j$ are integral.) Then we can write
+the equation above as
+$$
+\sum n_{1, i}[W_{1, i}] - \sum\nolimits_{j \in J_1} (i_j)_*\text{div}(f_j) =
+- \sum n_{2, i}[W_{2, i}] + \sum\nolimits_{j \in J_2} (i_j)_*\text{div}(f_j)
+$$
+Hence this expression is a cycle (!) on $X_1 \cap X_2$. In other words
+the element $(\alpha_1, \alpha_2)$ is in the image of the first arrow
+and the proof is complete.
+\end{proof}
+
+\begin{example}
+\label{example-weird}
+Here is a ``strange'' example.
+Suppose that $S$ is the spectrum of a field $k$
+with $\delta$ as in Example \ref{example-field}.
+Suppose that $X = C_1 \cup C_2 \cup \ldots$ is an infinite
+union of curves $C_j \cong \mathbf{P}^1_k$ glued together
+in the following way: The point $\infty \in C_j$ is glued
+transversally to the point $0 \in C_{j + 1}$ for $j = 1, 2, 3, \ldots$.
+Take the point $0 \in C_1$. This gives a zero cycle
+$[0] \in Z_0(X)$. The ``strangeness'' in this situation is
+that actually $[0] \sim_{rat} 0$! Namely we can choose
+the rational function $f_j \in R(C_j)$ to be the function
+which has a simple zero at $0$ and a simple pole at $\infty$
+and no other zeros or poles. Then we see that the sum
+$\sum (i_j)_*\text{div}(f_j)$ is exactly the $0$-cycle
+$[0]$. In fact it turns out that $\CH_0(X) = 0$ in this example.
+If you find this too bizarre, then you can just
+make sure your spaces are always quasi-compact
+(so $X$ does not even exist for you).
+\end{example}
+
+\begin{remark}
+\label{remark-infinite-sums-rational-equivalences}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$ be a scheme locally of finite type over $S$.
+Suppose we have infinite collections $\alpha_i, \beta_i \in Z_k(X)$,
+$i \in I$ of $k$-cycles on $X$. Suppose that the supports
+of $\alpha_i$ and $\beta_i$ form locally finite collections
+of closed subsets of $X$ so that $\sum \alpha_i$
+and $\sum \beta_i$ are defined as cycles. Moreover, assume that
+$\alpha_i \sim_{rat} \beta_i$ for each $i$. Then it is not
+clear that $\sum \alpha_i \sim_{rat} \sum \beta_i$. Namely,
+the problem is that the rational equivalences may be
+given by locally finite
+families $\{W_{i, j}, f_{i, j} \in R(W_{i, j})^*\}_{j \in J_i}$
+but the union $\{W_{i, j}\}_{i \in I, j\in J_i}$ may not
+be locally finite.
+
+\medskip\noindent
+In many cases in practice, one has a locally finite family of closed
+subsets $\{T_i\}_{i \in I}$ such that $\alpha_i, \beta_i$
+are supported on $T_i$ and such that $\alpha_i = \beta_i$
+in $\CH_k(T_i)$, in other words, the families
+$\{W_{i, j}, f_{i, j} \in R(W_{i, j})^*\}_{j \in J_i}$
+consist of subschemes $W_{i, j} \subset T_i$. In this case it is true that
+$\sum \alpha_i \sim_{rat} \sum \beta_i$ on $X$, simply because
+the family $\{W_{i, j}\}_{i \in I, j\in J_i}$ is automatically
+locally finite in this case.
+\end{remark}
+
+
+
+
+
+

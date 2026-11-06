@@ -1,0 +1,294 @@
+\section{Projective space bundle formula}
+\label{section-projective-space-bundle-formula}
+
+\noindent
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$ be locally of finite type over $S$.
+Consider a finite locally free $\mathcal{O}_X$-module
+$\mathcal{E}$ of rank $r$.
+Our convention is that the {\it projective bundle associated to
+$\mathcal{E}$} is the morphism
+$$
+\xymatrix{
+\mathbf{P}(\mathcal{E}) =
+\underline{\text{Proj}}_X(\text{Sym}^*(\mathcal{E}))
+\ar[r]^-\pi
+& X
+}
+$$
+over $X$ with
+$\mathcal{O}_{\mathbf{P}(\mathcal{E})}(1)$ normalized so that
+$\pi_*(\mathcal{O}_{\mathbf{P}(\mathcal{E})}(1)) = \mathcal{E}$.
+In particular there is a surjection
+$\pi^*\mathcal{E} \to \mathcal{O}_{\mathbf{P}(\mathcal{E})}(1)$.
+We will say informally ``let $(\pi : P \to X, \mathcal{O}_P(1))$
+be the projective bundle associated to $\mathcal{E}$'' to denote
+the situation where $P = \mathbf{P}(\mathcal{E})$ and
+$\mathcal{O}_P(1) = \mathcal{O}_{\mathbf{P}(\mathcal{E})}(1)$.
+
+\begin{lemma}
+\label{lemma-cap-projective-bundle}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$ be locally of finite type over $S$.
+Let $\mathcal{E}$ be a finite locally free $\mathcal{O}_X$-module
+$\mathcal{E}$ of rank $r$. Let $(\pi : P \to X, \mathcal{O}_P(1))$
+be the projective bundle associated to $\mathcal{E}$.
+For any $\alpha \in \CH_k(X)$ the element
+$$
+\pi_*\left(
+c_1(\mathcal{O}_P(1))^s \cap \pi^*\alpha
+\right)
+\in
+\CH_{k + r - 1 - s}(X)
+$$
+is $0$ if $s < r - 1$ and is equal to $\alpha$ when $s = r - 1$.
+\end{lemma}
+
+\begin{proof}
+Let $Z \subset X$ be an integral closed subscheme of $\delta$-dimension $k$.
+Note that $\pi^*[Z] = [\pi^{-1}(Z)]$ as $\pi^{-1}(Z)$ is integral of
+$\delta$-dimension $r - 1$.
+If $s < r - 1$, then by construction
+$c_1(\mathcal{O}_P(1))^s \cap \pi^*[Z]$
+is represented by a $(k + r - 1 - s)$-cycle supported on
+$\pi^{-1}(Z)$. Hence the pushforward of this cycle
+is zero for dimension reasons.
+
+\medskip\noindent
+Let $s = r - 1$. By the argument given above we see that
+$\pi_*(c_1(\mathcal{O}_P(1))^s \cap \pi^*\alpha) = n [Z]$
+for some $n \in \mathbf{Z}$. We want to show that $n = 1$.
+For the same dimension reasons
+as above it suffices to prove this result after replacing $X$ by
+$X \setminus T$ where $T \subset Z$ is a proper closed subset.
+Let $\xi$ be the generic point of $Z$.
+We can choose elements $e_1, \ldots, e_{r - 1} \in \mathcal{E}_\xi$
+which form part of a basis of $\mathcal{E}_\xi$.
+These give rational sections $s_1, \ldots, s_{r - 1}$
+of $\mathcal{O}_P(1)|_{\pi^{-1}(Z)}$ whose common zero set
+is the closure of the image a rational section of
+$\mathbf{P}(\mathcal{E}|_Z) \to Z$ union a closed subset whose
+support maps to a proper closed subset $T$ of $Z$.
+After removing $T$ from $X$ (and correspondingly $\pi^{-1}(T)$
+from $P$), we see that $s_1, \ldots, s_n$ form a sequence
+of global sections
+$s_i \in \Gamma(\pi^{-1}(Z), \mathcal{O}_{\pi^{-1}(Z)}(1))$
+whose common zero set is the image of a section $Z \to \pi^{-1}(Z)$.
+Hence we see successively that
+\begin{eqnarray*}
+\pi^*[Z] & = & [\pi^{-1}(Z)] \\
+c_1(\mathcal{O}_P(1)) \cap \pi^*[Z] & = & [Z(s_1)] \\
+c_1(\mathcal{O}_P(1))^2 \cap \pi^*[Z] & = & [Z(s_1) \cap Z(s_2)] \\
+\ldots & = & \ldots \\
+c_1(\mathcal{O}_P(1))^{r - 1} \cap \pi^*[Z] & = &
+[Z(s_1) \cap \ldots \cap Z(s_{r - 1})]
+\end{eqnarray*}
+by repeated applications of Lemma \ref{lemma-geometric-cap}.
+Since the pushforward by $\pi$ of the image of a
+section of $\pi$ over $Z$ is clearly $[Z]$ we see the result
+when $\alpha = [Z]$. We omit the verification that these
+arguments imply the result for a general cycle $\alpha = \sum n_j [Z_j]$.
+\end{proof}
+
+\begin{lemma}[Projective space bundle formula]
+\label{lemma-chow-ring-projective-bundle}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$ be locally of finite type over $S$.
+Let $\mathcal{E}$ be a finite locally free $\mathcal{O}_X$-module
+$\mathcal{E}$ of rank $r$. Let $(\pi : P \to X, \mathcal{O}_P(1))$
+be the projective bundle associated to $\mathcal{E}$.
+The map
+$$
+\bigoplus\nolimits_{i = 0}^{r - 1}
+\CH_{k + i}(X)
+\longrightarrow
+\CH_{k + r - 1}(P),
+$$
+$$
+(\alpha_0, \ldots, \alpha_{r-1})
+\longmapsto
+\pi^*\alpha_0 +
+c_1(\mathcal{O}_P(1)) \cap \pi^*\alpha_1
++ \ldots +
+c_1(\mathcal{O}_P(1))^{r - 1} \cap \pi^*\alpha_{r-1}
+$$
+is an isomorphism.
+\end{lemma}
+
+\begin{proof}
+Fix $k \in \mathbf{Z}$. We first show the map is injective.
+Suppose that $(\alpha_0, \ldots, \alpha_{r - 1})$ is an element
+of the left hand side that maps to zero.
+By Lemma \ref{lemma-cap-projective-bundle} we see that
+$$
+0 = \pi_*(\pi^*\alpha_0 +
+c_1(\mathcal{O}_P(1)) \cap \pi^*\alpha_1
++ \ldots +
+c_1(\mathcal{O}_P(1))^{r - 1} \cap \pi^*\alpha_{r-1})
+= \alpha_{r - 1}
+$$
+Next, we see that
+$$
+0 = \pi_*(c_1(\mathcal{O}_P(1)) \cap (\pi^*\alpha_0 +
+c_1(\mathcal{O}_P(1)) \cap \pi^*\alpha_1
++ \ldots +
+c_1(\mathcal{O}_P(1))^{r - 2} \cap \pi^*\alpha_{r - 2}))
+= \alpha_{r - 2}
+$$
+and so on. Hence the map is injective.
+
+\medskip\noindent
+It remains to show the map is surjective.
+Let $X_i$, $i \in I$ be the irreducible components of $X$.
+Then $P_i = \mathbf{P}(\mathcal{E}|_{X_i})$, $i \in I$
+are the irreducible components of $P$. Consider the commutative
+diagram
+$$
+\xymatrix{
+\coprod P_i \ar[d]_{\coprod \pi_i} \ar[r]_p & P \ar[d]^\pi \\
+\coprod X_i \ar[r]^q & X
+}
+$$
+Observe that $p_*$ is surjective. If $\beta \in \CH_k(\coprod X_i)$
+then $\pi^* q_* \beta = p_*(\coprod \pi_i)^* \beta$, see
+Lemma \ref{lemma-flat-pullback-proper-pushforward}. Similarly for
+capping with $c_1(\mathcal{O}(1))$ by
+Lemma \ref{lemma-pushforward-cap-c1}.
+Hence, if the map of the lemma is surjective for each
+of the morphisms $\pi_i : P_i \to X_i$, then the map is
+surjective for $\pi : P \to X$. Hence we may assume $X$ is irreducible.
+Thus $\dim_\delta(X) < \infty$ and in particular we may use
+induction on $\dim_\delta(X)$.
+
+\medskip\noindent
+The result is clear if $\dim_\delta(X) < k$.
+Let $\alpha \in \CH_{k + r - 1}(P)$.
+For any locally closed subscheme $T \subset X$ denote
+$\gamma_T : \bigoplus \CH_{k + i}(T) \to \CH_{k + r - 1}(\pi^{-1}(T))$
+the map
+$$
+\gamma_T(\alpha_0, \ldots, \alpha_{r - 1})
+= \pi^*\alpha_0 + \ldots +
+c_1(\mathcal{O}_{\pi^{-1}(T)}(1))^{r - 1} \cap \pi^*\alpha_{r - 1}.
+$$
+Suppose for some nonempty open $U \subset X$ we have
+$\alpha|_{\pi^{-1}(U)} = \gamma_U(\alpha_0, \ldots, \alpha_{r - 1})$.
+Then we may choose lifts $\alpha'_i \in \CH_{k + i}(X)$ and we
+see that $\alpha - \gamma_X(\alpha'_0, \ldots, \alpha'_{r - 1})$
+is by Lemma \ref{lemma-restrict-to-open}
+rationally equivalent to a $k$-cycle on $P_Y = \mathbf{P}(\mathcal{E}|_Y)$
+where $Y = X \setminus U$ as a reduced closed subscheme.
+Note that $\dim_\delta(Y) < \dim_\delta(X)$.
+By induction the result holds
+for $P_Y \to Y$ and hence the result holds for $\alpha$.
+Hence we may replace $X$ by any nonempty open of $X$.
+
+\medskip\noindent
+In particular we may assume that $\mathcal{E} \cong \mathcal{O}_X^{\oplus r}$.
+In this case $\mathbf{P}(\mathcal{E}) = X \times \mathbf{P}^{r - 1}$.
+Let us use the stratification
+$$
+\mathbf{P}^{r - 1} = \mathbf{A}^{r - 1}
+\amalg \mathbf{A}^{r - 2}
+\amalg \ldots
+\amalg \mathbf{A}^0
+$$
+The closure of each stratum is a $\mathbf{P}^{r - 1 - i}$ which is a
+representative of $c_1(\mathcal{O}(1))^i \cap [\mathbf{P}^{r - 1}]$.
+Hence $P$ has a similar stratification
+$$
+P = U^{r - 1} \amalg U^{r - 2} \amalg \ldots \amalg U^0
+$$
+Let $P^i$ be the closure of $U^i$. Let $\pi^i : P^i \to X$
+be the restriction of $\pi$ to $P^i$.
+Let $\alpha \in \CH_{k + r - 1}(P)$. By
+Lemma \ref{lemma-pullback-affine-fibres-surjective}
+we can write $\alpha|_{U^{r - 1}} = \pi^*\alpha_0|_{U^{r - 1}}$
+for some $\alpha_0 \in \CH_k(X)$. Hence the difference
+$\alpha - \pi^*\alpha_0$ is the image of some
+$\alpha' \in \CH_{k + r - 1}(P^{r - 2})$.
+By Lemma \ref{lemma-pullback-affine-fibres-surjective}
+again we can write
+$\alpha'|_{U^{r - 2}} = (\pi^{r - 2})^*\alpha_1|_{U^{r - 2}}$
+for some $\alpha_1 \in \CH_{k + 1}(X)$.
+By Lemma \ref{lemma-relative-effective-cartier}
+we see that the image of $(\pi^{r - 2})^*\alpha_1$
+represents $c_1(\mathcal{O}_P(1)) \cap \pi^*\alpha_1$.
+We also see that
+$\alpha - \pi^*\alpha_0 - c_1(\mathcal{O}_P(1)) \cap \pi^*\alpha_1$
+is the image of some $\alpha'' \in \CH_{k + r - 1}(P^{r - 3})$.
+And so on.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-vectorbundle}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$ be locally of finite type over $S$.
+Let $\mathcal{E}$ be a finite locally free sheaf of rank $r$ on $X$.
+Let
+$$
+p :
+E = \underline{\Spec}(\text{Sym}^*(\mathcal{E}))
+\longrightarrow
+X
+$$
+be the associated vector bundle over $X$.
+Then $p^* : \CH_k(X) \to \CH_{k + r}(E)$ is an isomorphism for all $k$.
+\end{lemma}
+
+\begin{proof}
+(For the case of linebundles, see Lemma \ref{lemma-linebundle}.)
+For surjectivity see Lemma \ref{lemma-pullback-affine-fibres-surjective}.
+Let $(\pi  : P \to X, \mathcal{O}_P(1))$
+be the projective space bundle associated
+to the finite locally free sheaf $\mathcal{E} \oplus \mathcal{O}_X$.
+Let $s \in \Gamma(P, \mathcal{O}_P(1))$ correspond to the global
+section $(0, 1) \in \Gamma(X, \mathcal{E} \oplus \mathcal{O}_X)$.
+Let $D = Z(s) \subset P$. Note that
+$(\pi|_D : D \to X , \mathcal{O}_P(1)|_D)$
+is the projective space bundle associated
+to $\mathcal{E}$. We denote $\pi_D = \pi|_D$ and
+$\mathcal{O}_D(1) = \mathcal{O}_P(1)|_D$.
+Moreover, $D$ is an effective
+Cartier divisor on $P$. Hence $\mathcal{O}_P(D) = \mathcal{O}_P(1)$
+(see Divisors, Lemma \ref{divisors-lemma-characterize-OD}).
+Also there is an isomorphism
+$E \cong P \setminus D$. Denote $j : E \to P$ the
+corresponding open immersion.
+For injectivity we use that the kernel of
+$$
+j^* :
+\CH_{k + r}(P)
+\longrightarrow
+\CH_{k + r}(E)
+$$
+are the cycles supported in the effective Cartier divisor $D$,
+see Lemma \ref{lemma-restrict-to-open}. So if $p^*\alpha = 0$, then
+$\pi^*\alpha = i_*\beta$ for some $\beta \in \CH_{k + r}(D)$.
+By Lemma \ref{lemma-chow-ring-projective-bundle} we may write
+$$
+\beta = \pi_D^*\beta_0 +
+\ldots + c_1(\mathcal{O}_D(1))^{r - 1} \cap \pi_D^* \beta_{r - 1}.
+$$
+for some $\beta_i \in \CH_{k + i}(X)$.
+By Lemmas \ref{lemma-relative-effective-cartier}
+and \ref{lemma-pushforward-cap-c1}
+this implies
+$$
+\pi^*\alpha = i_*\beta =
+c_1(\mathcal{O}_P(1)) \cap \pi^*\beta_0 +
+\ldots +
+c_1(\mathcal{O}_D(1))^r \cap \pi^*\beta_{r - 1}.
+$$
+Since the rank of $\mathcal{E} \oplus \mathcal{O}_X$ is $r + 1$
+this contradicts Lemma \ref{lemma-pushforward-cap-c1} unless all
+$\alpha$ and all $\beta_i$ are zero.
+\end{proof}
+
+
+
+
+
+
+
+

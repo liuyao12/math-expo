@@ -1,0 +1,93 @@
+\section{The Chern classes of a vector bundle}
+\label{section-chern-classes-vector-bundles}
+
+\noindent
+We can use the projective space bundle formula to define the
+Chern classes of a rank $r$ vector bundle in terms of the expansion
+of $c_1(\mathcal{O}(1))^r$ in terms of the lower powers, see
+formula (\ref{equation-chern-classes}).
+The reason for the signs will be explained later.
+
+\begin{definition}
+\label{definition-chern-classes}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$ be locally of finite type over $S$.
+Assume $X$ is integral and $n = \dim_\delta(X)$.
+Let $\mathcal{E}$ be a finite locally free sheaf of rank $r$
+on $X$. Let $(\pi : P \to X, \mathcal{O}_P(1))$ be the projective space
+bundle associated to $\mathcal{E}$.
+\begin{enumerate}
+\item By Lemma \ref{lemma-chow-ring-projective-bundle} there are
+elements $c_i \in \CH_{n - i}(X)$, $i = 0, \ldots, r$
+such that $c_0 = [X]$, and
+\begin{equation}
+\label{equation-chern-classes}
+\sum\nolimits_{i = 0}^r
+(-1)^i c_1(\mathcal{O}_P(1))^i \cap \pi^*c_{r - i}
+= 0.
+\end{equation}
+\item With notation as above we set
+$c_i(\mathcal{E}) \cap [X] = c_i$
+as an element of $\CH_{n - i}(X)$.
+We call these the {\it Chern classes of $\mathcal{E}$ on $X$}.
+\item The {\it total Chern class of $\mathcal{E}$ on $X$}
+is the combination
+$$
+c({\mathcal E}) \cap [X] =
+c_0({\mathcal E}) \cap [X]
++ c_1({\mathcal E}) \cap [X] + \ldots
++ c_r({\mathcal E}) \cap [X]
+$$
+which is an element of
+$\CH_*(X) = \bigoplus_{k \in \mathbf{Z}} \CH_k(X)$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+Let us check that this does not give a new notion in case the
+vector bundle has rank $1$.
+
+\begin{lemma}
+\label{lemma-first-chern-class}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$ be locally of finite type over $S$.
+Assume $X$ is integral and $n = \dim_\delta(X)$.
+Let $\mathcal{L}$ be an invertible $\mathcal{O}_X$-module.
+The first Chern class of $\mathcal{L}$ on $X$ of
+Definition \ref{definition-chern-classes}
+is equal to the Weil divisor associated to $\mathcal{L}$
+by Definition \ref{definition-divisor-invertible-sheaf}.
+\end{lemma}
+
+\begin{proof}
+In this proof we use $c_1(\mathcal{L}) \cap [X]$ to denote the
+construction of Definition \ref{definition-divisor-invertible-sheaf}.
+Since $\mathcal{L}$ has rank $1$ we have
+$\mathbf{P}(\mathcal{L}) = X$ and
+$\mathcal{O}_{\mathbf{P}(\mathcal{L})}(1) = \mathcal{L}$
+by our normalizations. Hence (\ref{equation-chern-classes})
+reads
+$$
+(-1)^1 c_1(\mathcal{L}) \cap c_0 + (-1)^0 c_1 = 0
+$$
+Since $c_0 = [X]$, we conclude $c_1 = c_1(\mathcal{L}) \cap [X]$
+as desired.
+\end{proof}
+
+\begin{remark}
+\label{remark-equation-signs}
+We could also rewrite equation \ref{equation-chern-classes} as
+\begin{equation}
+\label{equation-signs}
+\sum\nolimits_{i = 0}^r
+c_1(\mathcal{O}_P(-1))^i \cap \pi^*c_{r - i}
+= 0.
+\end{equation}
+but we find it easier to work with the tautological quotient
+sheaf $\mathcal{O}_P(1)$ instead of
+its dual.
+\end{remark}
+
+
+
+

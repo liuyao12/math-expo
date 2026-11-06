@@ -1,0 +1,620 @@
+\section{Smooth morphisms}
+\label{section-smooth}
+
+\noindent
+Let $f : X \to Y$ be a continuous map of topological spaces.
+Consider the following condition:
+For every $x \in X$ there exist open neighbourhoods
+$x \in U \subset X$ and $f(x) \in V \subset Y$, and an integer $d$
+such that $f(U) \subset V$ and such that we obtain
+a commutative diagram
+$$
+\xymatrix{
+X \ar[d] &
+U \ar[l] \ar[d] \ar[r]_-\pi &
+V \times \mathbf{R}^d \ar[ld] \\
+Y & V \ar[l]
+}
+$$
+where $\pi$ is a homeomorphism onto an open subset.
+Smooth morphisms of schemes are the analogue of these maps
+in the category of schemes. See
+Lemma \ref{lemma-smooth-locally-standard-smooth}
+and
+Lemma \ref{lemma-smooth-etale-over-affine-space}.
+
+\medskip\noindent
+Contrary to expectations (perhaps) the notion
+of a smooth ring map is not defined solely in terms
+of the module of differentials. Namely, recall that
+$R \to A$ is a {\it smooth ring map} if $A$ is of finite presentation over $R$
+and if the naive cotangent complex of $A$ over $R$ is quasi-isomorphic
+to a projective module placed in degree $0$, see
+Algebra, Definition \ref{algebra-definition-smooth}.
+
+\begin{definition}
+\label{definition-smooth}
+Let $f : X \to S$ be a morphism of schemes.
+\begin{enumerate}
+\item We say that $f$ is {\it smooth at $x \in X$} if
+there exist an affine open neighbourhood $\Spec(A) = U \subset X$
+of $x$ and affine open $\Spec(R) = V \subset S$
+with $f(U) \subset V$ such that the induced ring map
+$R \to A$ is smooth.
+\item We say that $f$ is {\it smooth} if it is smooth at every point of $X$.
+\item A morphism of affine schemes $f : X \to S$
+is called {\it standard smooth} if there exists a standard smooth ring
+map $R \to R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$ (see
+Algebra, Definition \ref{algebra-definition-standard-smooth})
+such that $X \to S$ is isomorphic to
+$$
+\Spec(R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)) \to \Spec(R).
+$$
+\end{enumerate}
+\end{definition}
+
+\noindent
+A pleasing feature of this definition is that the set of points
+where a morphism is smooth is automatically open.
+
+\medskip\noindent
+Note that there is no separation or quasi-compactness hypotheses in the
+definition. Hence the question of being smooth is local in nature on
+the source. Here is the precise result.
+
+\begin{lemma}
+\label{lemma-smooth-characterize}
+Let $f : X \to S$ be a morphism of schemes.
+The following are equivalent
+\begin{enumerate}
+\item The morphism $f$ is smooth.
+\item For every affine opens $U \subset X$, $V \subset S$
+with $f(U) \subset V$ the ring map
+$\mathcal{O}_S(V) \to \mathcal{O}_X(U)$ is smooth.
+\item There exists an open covering $S = \bigcup_{j \in J} V_j$
+and open coverings $f^{-1}(V_j) = \bigcup_{i \in I_j} U_i$ such
+that each of the morphisms $U_i \to V_j$, $j\in J, i\in I_j$
+is smooth.
+\item There exists an affine open covering $S = \bigcup_{j \in J} V_j$
+and affine open coverings $f^{-1}(V_j) = \bigcup_{i \in I_j} U_i$ such
+that the ring map $\mathcal{O}_S(V_j) \to \mathcal{O}_X(U_i)$ is
+smooth, for all $j\in J, i\in I_j$.
+\end{enumerate}
+Moreover, if $f$ is smooth then for
+any open subschemes $U \subset X$, $V \subset S$ with $f(U) \subset V$
+the restriction $f|_U : U \to V$ is smooth.
+\end{lemma}
+
+\begin{proof}
+This follows from Lemma \ref{lemma-locally-P} if we show that
+the property ``$R \to A$ is smooth'' is local.
+We check conditions (a), (b) and (c) of Definition
+\ref{definition-property-local}.
+By Algebra, Lemma \ref{algebra-lemma-base-change-smooth}
+being smooth is stable under base change and hence
+we conclude (a) holds. By
+Algebra, Lemma \ref{algebra-lemma-compose-smooth}
+being smooth is stable under composition and for any ring
+$R$ the ring map $R \to R_f$ is (standard) smooth.
+We conclude (b) holds. Finally, property (c) is true
+according to Algebra, Lemma \ref{algebra-lemma-locally-smooth}.
+\end{proof}
+
+\noindent
+The following lemma characterizes a smooth morphism as a
+flat, finitely presented morphism with smooth fibres.
+Note that schemes smooth over a field are discussed in more detail in
+Varieties, Section \ref{varieties-section-smooth}.
+
+\begin{lemma}
+\label{lemma-smooth-flat-smooth-fibres}
+Let $f : X \to S$ be a morphism of schemes.
+If $f$ is flat, locally of finite presentation, and all
+fibres $X_s$ are smooth, then $f$
+is smooth.
+\end{lemma}
+
+\begin{proof}
+Follows from Algebra, Lemma \ref{algebra-lemma-flat-fibre-smooth}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-composition-smooth}
+The composition of two morphisms which are smooth is smooth.
+\end{lemma}
+
+\begin{proof}
+In the proof of Lemma \ref{lemma-smooth-characterize}
+we saw that being smooth is a local property of ring maps.
+Hence the first statement of the lemma follows from
+Lemma \ref{lemma-composition-type-P} combined
+with the fact that being smooth is a property of ring maps that is
+stable under composition, see
+Algebra, Lemma \ref{algebra-lemma-compose-smooth}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-base-change-smooth}
+The base change of a morphism which is smooth is smooth.
+\end{lemma}
+
+\begin{proof}
+In the proof of Lemma \ref{lemma-smooth-characterize}
+we saw that being smooth is a local property of ring maps.
+Hence the lemma follows from
+Lemma \ref{lemma-composition-type-P} combined
+with the fact that being smooth is a property of ring maps that is
+stable under base change, see
+Algebra, Lemma \ref{algebra-lemma-base-change-smooth}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-open-immersion-smooth}
+Any open immersion is smooth.
+\end{lemma}
+
+\begin{proof}
+This is true because an open immersion is a local isomorphism.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-smooth-syntomic}
+A smooth morphism is syntomic.
+\end{lemma}
+
+\begin{proof}
+See Algebra, Lemma \ref{algebra-lemma-smooth-syntomic}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-smooth-locally-finite-presentation}
+A smooth morphism is locally of finite presentation.
+\end{lemma}
+
+\begin{proof}
+True because a smooth ring map is of finite presentation by
+definition.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-smooth-flat}
+A smooth morphism is flat.
+\end{lemma}
+
+\begin{proof}
+Combine Lemmas \ref{lemma-syntomic-flat} and \ref{lemma-smooth-syntomic}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-smooth-open}
+A smooth morphism is universally open.
+\end{lemma}
+
+\begin{proof}
+Combine
+Lemmas \ref{lemma-smooth-flat},
+\ref{lemma-smooth-locally-finite-presentation}, and
+\ref{lemma-fppf-open}.
+Or alternatively, combine
+Lemmas \ref{lemma-smooth-syntomic},
+\ref{lemma-syntomic-open}.
+\end{proof}
+
+\noindent
+The following lemma says locally any smooth morphism is standard smooth.
+Hence we can use standard smooth morphisms as a {\it local model}
+for a smooth morphism.
+
+\begin{lemma}
+\label{lemma-smooth-locally-standard-smooth}
+\begin{slogan}
+Smooth morphisms are locally standard smooth.
+\end{slogan}
+Let $f : X  \to S$ be a morphism of schemes.
+Let $x \in X$ be a point.
+Let $V \subset S$ be an affine open neighbourhood of $f(x)$.
+The following are equivalent
+\begin{enumerate}
+\item The morphism $f$ is smooth at $x$.
+\item There exists an affine open $U \subset X$,
+with $x \in U$ and $f(U) \subset V$ such that the
+induced morphism $f|_U : U \to V$ is standard smooth.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Follows from the definitions and
+Algebra, Lemmas \ref{algebra-lemma-standard-smooth}
+and \ref{algebra-lemma-smooth-syntomic}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-smooth-omega-finite-locally-free}
+Let $f : X \to S$ be a morphism of schemes.
+Assume $f$ is smooth.
+Then the module of differentials $\Omega_{X/S}$ of $X$ over $S$
+is finite locally free and
+$$
+\text{rank}_x(\Omega_{X/S}) = \dim_x(X_{f(x)})
+$$
+for every $x \in X$.
+\end{lemma}
+
+\begin{proof}
+The statement is local on $X$ and $S$.
+By Lemma \ref{lemma-smooth-locally-standard-smooth}
+above we may assume that $f$ is a standard smooth morphism of affines.
+In this case the result follows from
+Algebra, Lemma \ref{algebra-lemma-standard-smooth}
+(and the definition of a relative global complete intersection, see
+Algebra,
+Definition \ref{algebra-definition-relative-global-complete-intersection}).
+\end{proof}
+
+\noindent
+Lemma \ref{lemma-smooth-omega-finite-locally-free}
+says that the following definition makes sense.
+
+\begin{definition}
+\label{definition-smooth-relative-dimension}
+Let $d \geq 0$ be an integer. We say a morphism of schemes $f : X \to S$
+is {\it smooth of relative dimension $d$} if $f$ is smooth and
+$\Omega_{X/S}$ is finite locally free of constant rank $d$.
+\end{definition}
+
+\noindent
+In other words, $f$ is smooth and the nonempty fibres are equidimensional
+of dimension $d$. By Lemma \ref{lemma-smooth-at-point} below this is also
+the same as requiring: (a) $f$ is locally of finite presentation, (b) $f$ is
+flat, (c) all nonempty fibres equidimensional of dimension $d$, and (d)
+$\Omega_{X/S}$ finite locally free of rank $d$. It is not enough to simply
+assume that $f$ is flat, of finite presentation, and $\Omega_{X/S}$ is
+finite locally free of rank $d$. A counter example is given by
+$\Spec(\mathbf{F}_p[t]) \to \Spec(\mathbf{F}_p[t^p])$.
+
+\medskip\noindent
+Here is a differential criterion of smoothness at a point.
+There are many variants of this result
+all of which may be useful at some point. We will just add them
+here as needed.
+
+\begin{lemma}
+\label{lemma-smooth-at-point}
+Let $f : X \to S$ be a morphism of schemes.
+Let $x \in X$.
+Set $s = f(x)$.
+Assume $f$ is locally of finite presentation.
+The following are equivalent:
+\begin{enumerate}
+\item The morphism $f$ is smooth at $x$.
+\item The local ring map $\mathcal{O}_{S, s} \to \mathcal{O}_{X, x}$
+is flat and $X_s \to \Spec(\kappa(s))$ is smooth at $x$.
+\item The local ring map $\mathcal{O}_{S, s} \to \mathcal{O}_{X, x}$
+is flat and the $\mathcal{O}_{X, x}$-module $\Omega_{X/S, x}$
+can be generated by at most $\dim_x(X_{f(x)})$ elements.
+\item The local ring map $\mathcal{O}_{S, s} \to \mathcal{O}_{X, x}$
+is flat and the $\kappa(x)$-vector space
+$$
+\Omega_{X_s/s, x} \otimes_{\mathcal{O}_{X_s, x}} \kappa(x) =
+\Omega_{X/S, x} \otimes_{\mathcal{O}_{X, x}} \kappa(x)
+$$
+can be generated by at most $\dim_x(X_{f(x)})$ elements.
+\item There exist affine opens $U \subset X$,
+and $V \subset S$ such that $x \in U$, $f(U) \subset V$ and the
+induced morphism $f|_U : U \to V$ is standard smooth.
+\item There exist affine opens $\Spec(A) = U \subset X$
+and $\Spec(R) = V \subset S$ with $x \in U$ corresponding
+to $\mathfrak q \subset A$, and $f(U) \subset V$
+such that there exists a presentation
+$$
+A = R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)
+$$
+with
+$$
+g =
+\det
+\left(
+\begin{matrix}
+\partial f_1/\partial x_1 &
+\partial f_2/\partial x_1 &
+\ldots &
+\partial f_c/\partial x_1 \\
+\partial f_1/\partial x_2 &
+\partial f_2/\partial x_2 &
+\ldots &
+\partial f_c/\partial x_2 \\
+\ldots & \ldots & \ldots & \ldots \\
+\partial f_1/\partial x_c &
+\partial f_2/\partial x_c &
+\ldots &
+\partial f_c/\partial x_c
+\end{matrix}
+\right)
+$$
+mapping to an element of $A$ not in $\mathfrak q$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Note that if $f$ is smooth at $x$, then we see from Lemma
+\ref{lemma-smooth-locally-standard-smooth} that (5) holds, and (6) is a slightly
+weakened version of (5). Moreover, $f$ smooth implies that the ring
+map $\mathcal{O}_{S, s} \to \mathcal{O}_{X, x}$ is flat (see
+Lemma \ref{lemma-smooth-flat}) and that $\Omega_{X/S}$ is
+finite locally free of rank equal to
+$\dim_x(X_s)$ (see Lemma \ref{lemma-smooth-omega-finite-locally-free}).
+Thus (1) implies (3) and (4). By Lemma \ref{lemma-base-change-smooth}
+we also see that (1) implies (2).
+
+\medskip\noindent
+By Lemma \ref{lemma-base-change-differentials}
+the module of differentials $\Omega_{X_s/s}$ of the fibre $X_s$
+over $\kappa(s)$ is the pullback of the module of differentials
+$\Omega_{X/S}$ of $X$ over $S$. Hence the displayed equality in
+part (4) of the lemma. By Lemma \ref{lemma-finite-type-differentials}
+these modules are of finite type. Hence the minimal number of
+generators of the modules
+$\Omega_{X/S, x}$ and $\Omega_{X_s/s, x}$ is the same and equal to the
+dimension of this $\kappa(x)$-vector space by Nakayama's Lemma
+(Algebra, Lemma \ref{algebra-lemma-NAK}). This in particular shows that
+(3) and (4) are equivalent.
+
+\medskip\noindent
+Algebra, Lemma \ref{algebra-lemma-flat-fibre-smooth} shows that
+(2) implies (1).
+Algebra, Lemma \ref{algebra-lemma-characterize-smooth-over-field}
+shows that (3) and (4) imply (2). Finally, (6) implies (5)
+see for example Algebra, Example \ref{algebra-example-make-standard-smooth}
+and (5) implies (1) by Algebra, Lemma \ref{algebra-lemma-standard-smooth}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-set-points-where-fibres-smooth}
+Let
+$$
+\xymatrix{
+X' \ar[r]_{g'} \ar[d]_{f'} & X \ar[d]^f \\
+S' \ar[r]^g & S
+}
+$$
+be a cartesian diagram of schemes. Let $W \subset X$, resp.\ $W' \subset X'$
+be the open subscheme of points where $f$, resp.\ $f'$ is smooth.
+Then $W' = (g')^{-1}(W)$ if
+\begin{enumerate}
+\item $f$ is flat and locally of finite presentation, or
+\item $f$ is locally of finite presentation and $g$ is flat.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Assume first that $f$ locally of finite type. Consider the set
+$$
+T = \{x \in X \mid X_{f(x)}\text{ is smooth over }\kappa(f(x))\text{ at }x\}
+$$
+and the corresponding set $T' \subset X'$ for $f'$. Then we claim
+$T' = (g')^{-1}(T)$. Namely, let $s' \in S'$ be a point, and let
+$s = g(s')$. Then we have
+$$
+X'_{s'} =
+\Spec(\kappa(s')) \times_{\Spec(\kappa(s))} X_s
+$$
+In other words the fibres of the base change are the base changes
+of the fibres. Hence the claim is equivalent to
+Algebra, Lemma \ref{algebra-lemma-smooth-field-change-local}.
+
+\medskip\noindent
+Thus case (1) follows because in case (1) $T$ is the (open) set of points
+where $f$ is smooth by Lemma \ref{lemma-smooth-at-point}.
+
+\medskip\noindent
+In case (2) let $x' \in W'$. Then $g'$ is flat at $x'$
+(Lemma \ref{lemma-base-change-module-flat}) and
+$g \circ f'$ is flat at $x'$ (Lemma \ref{lemma-composition-module-flat}).
+It follows that $f$ is flat at $x = g'(x')$
+by Lemma \ref{lemma-flat-permanence}. On the other hand, since
+$x' \in T'$ (Lemma \ref{lemma-base-change-smooth})
+we see that $x \in T$. Hence $f$ is smooth at $x$ by
+Lemma \ref{lemma-smooth-at-point}.
+\end{proof}
+
+\noindent
+Here is a lemma that actually uses the vanishing of $H^{-1}$
+of the naive cotangent complex for a smooth ring map.
+
+\begin{lemma}
+\label{lemma-triangle-differentials-smooth}
+Let $f : X \to Y$, $g : Y \to S$ be morphisms of schemes.
+Assume $f$ is smooth. Then
+$$
+0 \to f^*\Omega_{Y/S} \to \Omega_{X/S} \to \Omega_{X/Y} \to 0
+$$
+(see Lemma \ref{lemma-triangle-differentials}) is short exact.
+\end{lemma}
+
+\begin{proof}
+The algebraic version of this lemma is the following:
+Given ring maps $A \to B \to C$ with $B \to C$ smooth, then the sequence
+$$
+0 \to C \otimes_B \Omega_{B/A} \to \Omega_{C/A} \to \Omega_{C/B} \to 0
+$$
+of
+Algebra, Lemma \ref{algebra-lemma-exact-sequence-differentials}
+is exact. This is
+Algebra, Lemma \ref{algebra-lemma-triangle-differentials-smooth}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-differentials-relative-immersion-smooth}
+Let $i : Z \to X$ be an immersion of schemes over $S$.
+Assume that $Z$ is smooth over $S$. Then the
+canonical exact sequence
+$$
+0 \to \mathcal{C}_{Z/X} \to i^*\Omega_{X/S} \to \Omega_{Z/S} \to 0
+$$
+of
+Lemma \ref{lemma-differentials-relative-immersion}
+is short exact.
+\end{lemma}
+
+\begin{proof}
+The algebraic version of this lemma is the following:
+Given ring maps $A \to B \to C$ with $A \to C$ smooth and $B \to C$
+surjective with kernel $J$, then the sequence
+$$
+0 \to J/J^2 \to C \otimes_B \Omega_{B/A} \to \Omega_{C/A} \to 0
+$$
+of
+Algebra, Lemma \ref{algebra-lemma-differential-seq}
+is exact. This is
+Algebra, Lemma \ref{algebra-lemma-differential-seq-smooth}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-two-immersions-smooth}
+Let
+$$
+\xymatrix{
+Z \ar[r]_i \ar[rd]_j & X \ar[d] \\
+& Y
+}
+$$
+be a commutative diagram of schemes where $i$ and $j$ are immersions
+and $X \to Y$ is smooth.
+Then the canonical exact sequence
+$$
+0 \to  \mathcal{C}_{Z/Y} \to \mathcal{C}_{Z/X} \to i^*\Omega_{X/Y} \to 0
+$$
+of
+Lemma \ref{lemma-two-immersions}
+is exact.
+\end{lemma}
+
+\begin{proof}
+The algebraic version of this lemma is the following:
+Given ring maps $A \to B \to C$ with $A \to C$ surjective and $A \to B$
+smooth, then the sequence
+$$
+0 \to I/I^2 \to J/J^2 \to C \otimes_B \Omega_{B/A} \to 0
+$$
+of
+Algebra, Lemma \ref{algebra-lemma-application-NL}
+is exact. This is
+Algebra, Lemma \ref{algebra-lemma-application-NL-smooth}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-smooth-permanence}
+Let
+$$
+\xymatrix{
+X \ar[rr]_f \ar[rd]_p & &
+Y \ar[dl]^q \\
+& S
+}
+$$
+be a commutative diagram of morphisms of schemes. Assume that
+\begin{enumerate}
+\item $f$ is surjective, and smooth,
+\item $p$ is smooth, and
+\item $q$ is locally of finite presentation\footnote{In fact this
+is implied by (1) and (2), see
+Descent, Lemma \ref{descent-lemma-flat-finitely-presented-permanence}.
+Moreover, it suffices to assume $f$ is surjective, flat and locally
+of finite presentation, see
+Descent, Lemma \ref{descent-lemma-smooth-permanence}.}.
+\end{enumerate}
+Then $q$ is smooth.
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-flat-permanence} we see that $q$ is flat.
+Pick a point $y \in Y$. Pick a point $x \in X$ mapping to $y$.
+Suppose $f$ has relative dimension $a$ at $x$ and $p$ has relative
+dimension $b$ at $x$. By Lemma \ref{lemma-smooth-omega-finite-locally-free}
+this means that $\Omega_{X/S, x}$ is free of rank $b$ and $\Omega_{X/Y, x}$
+is free of rank $a$. By the short exact sequence
+of Lemma \ref{lemma-triangle-differentials-smooth}
+this means that $(f^*\Omega_{Y/S})_x$ is free
+of rank $b - a$. By Nakayama's Lemma this implies that
+$\Omega_{Y/S, y}$ can be generated by $b - a$ elements.
+Also, by Lemma \ref{lemma-dimension-fibre-at-a-point-additive} we see that
+$\dim_y(Y_s) = b - a$. Hence we conclude that
+$Y \to S$ is smooth at $y$ by Lemma \ref{lemma-smooth-at-point} part (2).
+\end{proof}
+
+\noindent
+In the situation of the following lemma the image of $\sigma$ is
+locally on $X$ cut out by a regular sequence, see
+Divisors, Lemma \ref{divisors-lemma-section-smooth-regular-immersion}.
+
+\begin{lemma}
+\label{lemma-section-smooth-morphism}
+Let $f : X \to S$ be a morphism of schemes.
+Let $\sigma : S \to X$ be a section of $f$.
+Let $s \in S$ be a point such that $f$ is smooth at $x = \sigma(s)$.
+Then there exist affine open neighbourhoods
+$\Spec(A) = U \subset S$ of $s$ and $\Spec(B) = V \subset X$
+of $x$ such that
+\begin{enumerate}
+\item $f(V) \subset U$ and $\sigma(U) \subset V$,
+\item with $I = \Ker(\sigma^\# : B \to A)$ the module $I/I^2$
+is a free $A$-module, and
+\item $B^\wedge \cong A[[x_1, \ldots, x_d]]$ as $A$-algebras where
+$B^\wedge$ denotes the completion of $B$ with respect to $I$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Pick an affine open $U \subset S$ containing $s$
+Pick an affine open $V \subset f^{-1}(U)$ containing $x$.
+Pick an affine open $U' \subset \sigma^{-1}(V)$ containing $s$.
+Note that $V' = f^{-1}(U') \cap V$ is affine as it is equal to the
+fibre product $V' = U' \times_U V$. Then $U'$ and $V'$ satisfy (1).
+Write $U' = \Spec(A')$ and $V' = \Spec(B')$. By
+Algebra, Lemma \ref{algebra-lemma-section-smooth}
+the module $I'/(I')^2$ is finite locally free as a $A'$-module.
+Hence after replacing $U'$ by a smaller affine open $U'' \subset U'$
+and $V'$ by $V'' = V' \cap f^{-1}(U'')$ we obtain the situation where
+$I''/(I'')^2$ is free, i.e., (2) holds. In this case (3) holds also by
+Algebra, Lemma \ref{algebra-lemma-section-smooth}.
+\end{proof}
+
+\noindent
+The dimension of a scheme $X$ at a point $x$
+(Properties, Definition \ref{properties-definition-dimension})
+is just the dimension of $X$ at $x$ as a topological space, see
+Topology, Definition \ref{topology-definition-Krull}.
+This is not the dimension of the local ring $\mathcal{O}_{X,x}$, in general.
+
+\begin{lemma}
+\label{lemma-smoothness-dimension}
+Let $f : X \to Y$ be a smooth morphism of locally Noetherian schemes.
+For every point $x$ in $X$ with image $y$ in $Y$,
+$$
+\dim_x(X) = \dim_y(Y) + \dim_x(X_y),
+$$
+where $X_y$ denotes the fiber over $y$.
+\end{lemma}
+
+\begin{proof}
+After replacing $X$ by an open neighborhood of $x$,
+there is a natural number $d$ such that all fibers
+of $X \to Y$ have dimension $d$ at every point, see
+Lemma \ref{lemma-smooth-omega-finite-locally-free}.
+Then $f$ is flat (Lemma \ref{lemma-smooth-flat}),
+locally of finite type (Lemma \ref{lemma-smooth-locally-finite-presentation}),
+and of relative dimension $d$. Hence the result follows from
+Lemma \ref{lemma-rel-dimension-dimension}.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+

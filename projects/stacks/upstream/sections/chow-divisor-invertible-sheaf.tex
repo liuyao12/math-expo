@@ -1,0 +1,137 @@
+\section{The divisor associated to an invertible sheaf}
+\label{section-divisor-invertible-sheaf}
+
+\noindent
+The following definition is the analogue of
+Divisors, Definition \ref{divisors-definition-divisor-invertible-sheaf}
+in our current setup.
+
+\begin{definition}
+\label{definition-divisor-invertible-sheaf}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$ be locally of finite type over $S$. Assume $X$ is
+integral and $n = \dim_\delta(X)$.
+Let $\mathcal{L}$ be an invertible $\mathcal{O}_X$-module.
+\begin{enumerate}
+\item For any nonzero meromorphic section $s$ of $\mathcal{L}$
+we define the {\it Weil divisor associated to $s$} is the
+$(n - 1)$-cycle
+$$
+\text{div}_\mathcal{L}(s) =
+\sum \text{ord}_{Z, \mathcal{L}}(s) [Z]
+$$
+defined in Divisors, Definition
+\ref{divisors-definition-divisor-invertible-sheaf}.
+This makes sense because Weil divisors have $\delta$-dimension $n - 1$
+by Lemma \ref{lemma-divisor-delta-dimension}.
+\item We define {\it Weil divisor associated to $\mathcal{L}$} as
+$$
+c_1(\mathcal{L}) \cap [X] =
+\text{class of }\text{div}_\mathcal{L}(s) \in \CH_{n - 1}(X)
+$$
+where $s$ is any nonzero meromorphic section of $\mathcal{L}$ over
+$X$. This is well defined by
+Divisors, Lemma \ref{divisors-lemma-divisor-meromorphic-well-defined}.
+\end{enumerate}
+\end{definition}
+
+\noindent
+Let $X$ and $S$ be as in Definition \ref{definition-divisor-invertible-sheaf}
+above. Set $n = \dim_\delta(X)$. It is clear from the definitions that
+$Cl(X) = \CH_{n - 1}(X)$ where $Cl(X)$ is the Weil divisor class group of $X$
+as defined in Divisors, Definition \ref{divisors-definition-class-group}.
+The map
+$$
+\Pic(X) \longrightarrow \CH_{n - 1}(X), \quad
+\mathcal{L} \longmapsto c_1(\mathcal{L}) \cap [X]
+$$
+is the same as the map $\Pic(X) \to Cl(X)$ constructed in
+Divisors, Equation (\ref{divisors-equation-c1}) for arbitrary
+locally Noetherian integral schemes. In particular, this map
+is a homomorphism of abelian groups, it is injective if $X$ is
+a normal scheme, and an isomorphism if all local rings of $X$
+are UFDs. See Divisors, Lemmas \ref{divisors-lemma-normal-c1-injective} and
+\ref{divisors-lemma-local-rings-UFD-c1-bijective}.
+There are some cases where it is easy to compute the
+Weil divisor associated to an invertible sheaf.
+
+\begin{lemma}
+\label{lemma-compute-c1}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$ be locally of finite type over $S$. Assume $X$ is
+integral and $n = \dim_\delta(X)$.
+Let $\mathcal{L}$ be an invertible $\mathcal{O}_X$-module.
+Let $s \in \Gamma(X, \mathcal{L})$ be a nonzero global section.
+Then
+$$
+\text{div}_\mathcal{L}(s) = [Z(s)]_{n - 1}
+$$
+in $Z_{n - 1}(X)$ and
+$$
+c_1(\mathcal{L}) \cap [X] = [Z(s)]_{n - 1}
+$$
+in $\CH_{n - 1}(X)$.
+\end{lemma}
+
+\begin{proof}
+Let $Z \subset X$ be an integral closed subscheme of
+$\delta$-dimension $n - 1$. Let $\xi \in Z$ be its generic
+point. Choose a generator $s_\xi \in \mathcal{L}_\xi$.
+Write $s = fs_\xi$ for some $f \in \mathcal{O}_{X, \xi}$.
+By definition of $Z(s)$, see
+Divisors, Definition \ref{divisors-definition-zero-scheme-s}
+we see that $Z(s)$ is cut out by a quasi-coherent
+sheaf of ideals $\mathcal{I} \subset \mathcal{O}_X$ such
+that $\mathcal{I}_\xi = (f)$. Hence
+$\text{length}_{\mathcal{O}_{X, \xi}}(\mathcal{O}_{Z(s), \xi})
+=
+\text{length}_{\mathcal{O}_{X, \xi}}(\mathcal{O}_{X, \xi}/(f))
+=
+\text{ord}_{\mathcal{O}_{X, \xi}}(f)$ as desired.
+\end{proof}
+
+\noindent
+The following lemma will be superseded by the more general
+Lemma \ref{lemma-flat-pullback-cap-c1}.
+
+\begin{lemma}
+\label{lemma-flat-pullback-divisor-invertible-sheaf}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$, $Y$ be locally of finite type over $S$. Assume $X$, $Y$
+are integral and $n = \dim_\delta(Y)$.
+Let $\mathcal{L}$ be an invertible $\mathcal{O}_Y$-module.
+Let $f : X \to Y$ be a flat morphism of relative dimension $r$. Then
+$$
+f^*(c_1(\mathcal{L}) \cap [Y]) = c_1(f^*\mathcal{L}) \cap [X]
+$$
+in $\CH_{n + r - 1}(X)$.
+\end{lemma}
+
+\begin{proof}
+Let $s$ be a nonzero meromorphic section of $\mathcal{L}$.
+We will show that actually
+$f^*\text{div}_\mathcal{L}(s) = \text{div}_{f^*\mathcal{L}}(f^*s)$
+and hence the lemma holds.
+To see this let $\xi \in Y$ be a point and let $s_\xi \in \mathcal{L}_\xi$
+be a generator. Write $s = gs_\xi$ with $g \in R(Y)^*$.
+Then there is an open neighbourhood $V \subset Y$ of $\xi$
+such that $s_\xi \in \mathcal{L}(V)$ and such that $s_\xi$ generates
+$\mathcal{L}|_V$. Hence we see that
+$$
+\text{div}_\mathcal{L}(s)|_V = \text{div}_Y(g)|_V.
+$$
+In exactly the same way, since $f^*s_\xi$ generates $f^*\mathcal{L}$
+over $f^{-1}(V)$ and since $f^*s = g f^*s_\xi$ we also
+have
+$$
+\text{div}_\mathcal{L}(f^*s)|_{f^{-1}(V)}
+=
+\text{div}_X(g)|_{f^{-1}(V)}.
+$$
+Thus the desired equality of cycles over $f^{-1}(V)$ follows from the
+corresponding result for pullbacks of principal divisors, see
+Lemma \ref{lemma-flat-pullback-principal-divisor}.
+\end{proof}
+
+
+

@@ -1,0 +1,101 @@
+\section{Cycles}
+\label{section-cycles}
+
+\noindent
+Since we are not assuming our schemes are quasi-compact we have
+to be a little careful when defining cycles. We have to allow
+infinite sums because a rational function may have infinitely many
+poles for example. In any case, if $X$ is quasi-compact then a
+cycle is a finite sum as usual.
+
+\begin{definition}
+\label{definition-cycles}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$ be locally of finite type over $S$.
+Let $k \in \mathbf{Z}$.
+\begin{enumerate}
+\item A {\it cycle on $X$} is a formal sum
+$$
+\alpha = \sum n_Z [Z]
+$$
+where the sum is over integral closed subschemes $Z \subset X$,
+each $n_Z \in \mathbf{Z}$, and the collection
+$\{Z; n_Z \not = 0\}$ is locally finite
+(Topology, Definition \ref{topology-definition-locally-finite}).
+\item A {\it $k$-cycle} on $X$ is a cycle
+$$
+\alpha = \sum n_Z [Z]
+$$
+where $n_Z \not = 0 \Rightarrow \dim_\delta(Z) = k$.
+\item The abelian group of all $k$-cycles on $X$ is denoted $Z_k(X)$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+In other words, a $k$-cycle on $X$
+is a locally finite formal $\mathbf{Z}$-linear
+combination of integral closed subschemes of $\delta$-dimension $k$.
+Addition of $k$-cycles $\alpha = \sum n_Z[Z]$ and
+$\beta = \sum m_Z[Z]$ is given by
+$$
+\alpha + \beta = \sum (n_Z + m_Z)[Z],
+$$
+i.e., by adding the coefficients.
+
+\begin{remark}
+\label{remark-cycles-pointwise}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$ be locally of finite type over $S$. Let $k \in \mathbf{Z}$.
+Then we can write
+$$
+Z_k(X) = \bigoplus\nolimits_{\delta(x) = k}' K_0^M(\kappa(x))
+\quad\subset\quad
+\bigoplus\nolimits_{\delta(x) = k} K_0^M(\kappa(x))
+$$
+with the following notation and conventions:
+\begin{enumerate}
+\item $K_0^M(\kappa(x)) = \mathbf{Z}$ is the degree $0$ part of
+the Milnor K-theory of the residue field $\kappa(x)$ of the point
+$x \in X$ (see Remark \ref{remark-gersten-complex-milnor}), and
+\item the direct sum on the right is over all points $x \in X$
+with $\delta(x) = k$,
+\item the notation $\bigoplus'_x$ signifies that we consider the
+subgroup consisting of locally finite elements; namely, elements
+$\sum_x n_x$ such that for every quasi-compact open $U \subset X$
+the set of $x \in U$ with $n_x \not = 0$ is finite.
+\end{enumerate}
+\end{remark}
+
+\begin{definition}
+\label{definition-support-cycle}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$ be locally of finite type over $S$.
+The {\it support} of a cycle $\alpha = \sum n_Z [Z]$ on $X$
+is
+$$
+\text{Supp}(\alpha) = \bigcup\nolimits_{n_Z \not = 0} Z \subset X
+$$
+\end{definition}
+
+\noindent
+Since the collection $\{Z; n_Z \not = 0\}$ is locally finite
+we see that $\text{Supp}(\alpha)$ is a closed subset of $X$.
+If $\alpha$ is a $k$-cycle, then every irreducible component $Z$
+of $\text{Supp}(\alpha)$ has $\delta$-dimension $k$.
+
+\begin{definition}
+\label{definition-effective-cycle}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$ be locally of finite type over $S$.
+A cycle $\alpha$ on $X$ is {\it effective} if it
+can be written as $\alpha =\sum n_Z [Z]$ with $n_Z \geq 0$ for all $Z$.
+\end{definition}
+
+\noindent
+The set of all effective cycles is a monoid because the sum of
+two effective cycles is effective, but it is not a group
+(unless $X = \emptyset$).
+
+
+
+

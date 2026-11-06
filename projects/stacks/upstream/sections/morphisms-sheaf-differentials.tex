@@ -1,0 +1,522 @@
+\section{Sheaf of differentials of a morphism}
+\label{section-sheaf-differentials}
+
+\noindent
+We suggest the reader take a look at the corresponding section
+in the chapter on commutative algebra
+(Algebra, Section \ref{algebra-section-differentials})
+and the corresponding section in the chapter on sheaves of modules
+(Modules, Section \ref{modules-section-differentials}).
+
+\begin{definition}
+\label{definition-sheaf-differentials}
+Let $f : X \to S$ be a morphism of schemes.
+The {\it sheaf of differentials $\Omega_{X/S}$ of $X$ over $S$} is
+the sheaf of differentials of $f$ viewed as a morphism of ringed spaces
+(Modules, Definition \ref{modules-definition-differentials})
+equipped with its {\it universal $S$-derivation}
+$$
+\text{d}_{X/S} : \mathcal{O}_X \longrightarrow \Omega_{X/S}.
+$$
+\end{definition}
+
+\noindent
+It turns out that $\Omega_{X/S}$ is a quasi-coherent $\mathcal{O}_X$-module
+for example as it is isomorphic to the conormal sheaf
+of the diagonal morphism $\Delta : X \to X \times_S X$
+(Lemma \ref{lemma-differentials-diagonal}).
+We have defined the module of differentials of $X$ over $S$ using a
+universal property, namely as the receptacle of the universal derivation.
+If you have any other construction of the sheaf of relative differentials
+which satisfies this universal property then, by the Yoneda lemma,
+it will be canonically isomorphic to the one defined above. For convenience
+we restate the universal property here.
+
+\begin{lemma}
+\label{lemma-universal-derivation-universal}
+Let $f : X \to S$ be a morphism of schemes. The map
+$$
+\Hom_{\mathcal{O}_X}(\Omega_{X/S}, \mathcal{F})
+\longrightarrow
+\text{Der}_S(\mathcal{O}_X, \mathcal{F}),\quad
+\alpha \longmapsto \alpha \circ \text{d}_{X/S}
+$$
+is an isomorphism of functors $\textit{Mod}(\mathcal{O}_X) \to \textit{Sets}$.
+\end{lemma}
+
+\begin{proof}
+This is just a restatement of the definition.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-differentials-restrict-open}
+Let $f : X \to S$ be a morphism of schemes.
+Let $U \subset X$, $V \subset S$ be open subschemes such
+that $f(U) \subset V$. Then there is a unique isomorphism
+$\Omega_{X/S}|_U = \Omega_{U/V}$ of $\mathcal{O}_U$-modules such that
+$\text{d}_{X/S}|_U = \text{d}_{U/V}$.
+\end{lemma}
+
+\begin{proof}
+This is a special case of
+Modules, Lemma \ref{modules-lemma-localize-differentials}
+if we use the canonical identification
+$f^{-1}\mathcal{O}_S|_U = (f|_U)^{-1}\mathcal{O}_V$.
+\end{proof}
+
+\noindent
+From now on we will use these canonical identifications and simply
+write $\Omega_{U/S}$ or $\Omega_{U/V}$ for the restriction of
+$\Omega_{X/S}$ to $U$.
+
+\begin{lemma}
+\label{lemma-affine-case-derivation}
+Let $R \to A$ be a ring map. Let $\mathcal{F}$
+be a sheaf of $\mathcal{O}_X$-modules
+on $X = \Spec(A)$. Set $S = \Spec(R)$.
+The rule which associates to an $S$-derivation on $\mathcal{F}$
+its action on global sections defines a bijection between
+the set of $S$-derivations of $\mathcal{F}$ and the set of
+$R$-derivations on $M = \Gamma(X, \mathcal{F})$.
+\end{lemma}
+
+\begin{proof}
+Let $D : A \to M$ be an $R$-derivation. We have to show there exists
+a unique $S$-derivation on $\mathcal{F}$ which gives rise to
+$D$ on global sections. Let $U = D(f) \subset X$ be a standard affine open.
+Any element of $\Gamma(U, \mathcal{O}_X)$ is of the form
+$a/f^n$ for some $a \in A$ and $n \geq 0$. By the Leibniz rule
+we have
+$$
+D(a)|_U = a/f^n D(f^n)|_U + f^n D(a/f^n)
+$$
+in $\Gamma(U, \mathcal{F})$. Since $f$ acts invertibly
+on $\Gamma(U, \mathcal{F})$ this completely determines
+the value of $D(a/f^n) \in \Gamma(U, \mathcal{F})$.
+This proves uniqueness. Existence follows by simply defining
+$$
+D(a/f^n) := (1/f^n) D(a)|_U - a/f^{2n} D(f^n)|_U
+$$
+and proving this has all the desired properties (on the basis
+of standard opens of $X$). Details omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-differentials-affine}
+Let $f : X \to S$ be a morphism of schemes. For any pair of affine opens
+$\Spec(A) = U \subset X$, $\Spec(R) = V \subset S$ with $f(U) \subset V$
+there is a unique isomorphism
+$$
+\Gamma(U, \Omega_{X/S}) = \Omega_{A/R}.
+$$
+compatible with $\text{d}_{X/S}$ and $\text{d} : A \to \Omega_{A/R}$.
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-differentials-restrict-open} we may replace
+$X$ and $S$ by $U$ and $V$. Thus we may assume $X = \Spec(A)$
+and $S = \Spec(R)$ and we have to show the lemma with $U = X$
+and $V = S$. Consider the $A$-module $M = \Gamma(X, \Omega_{X/S})$
+together with the $R$-derivation $\text{d}_{X/S} : A \to M$.
+Let $N$ be another $A$-module and denote $\widetilde{N}$ the quasi-coherent
+$\mathcal{O}_X$-module associated to $N$, see
+Schemes, Section \ref{schemes-section-quasi-coherent-affine}.
+Precomposing by $\text{d}_{X/S} : A \to M$ we get an arrow
+$$
+\alpha : \Hom_A(M, N) \longrightarrow \text{Der}_R(A, N)
+$$
+Using Lemmas \ref{lemma-universal-derivation-universal} and
+\ref{lemma-affine-case-derivation} we get identifications
+$$
+\Hom_{\mathcal{O}_X}(\Omega_{X/S}, \widetilde{N}) =
+\text{Der}_S(\mathcal{O}_X, \widetilde{N}) =
+\text{Der}_R(A, N)
+$$
+Taking global sections determines an arrow
+$\Hom_{\mathcal{O}_X}(\Omega_{X/S}, \widetilde{N}) \to \Hom_R(M, N)$.
+Combining this arrow and the identifications above we get an arrow
+$$
+\beta : \text{Der}_R(A, N) \longrightarrow \Hom_R(M, N)
+$$
+Checking what happens on global sections, we find that $\alpha$
+and $\beta$ are each others inverse. Hence we see that
+$\text{d}_{X/S} : A \to M$ satisfies
+the same universal property as $\text{d} : A \to \Omega_{A/R}$,
+see Algebra, Lemma \ref{algebra-lemma-universal-omega}. Thus the Yoneda lemma
+(Categories, Lemma \ref{categories-lemma-yoneda})
+implies there is a unique isomorphism of $A$-modules
+$M \cong \Omega_{A/R}$ compatible with derivations.
+\end{proof}
+
+\begin{remark}
+\label{remark-differentials-glue}
+The lemma above gives a second way of constructing the module of
+differentials. Namely, let $f : X \to S$ be a morphism of schemes.
+Consider the collection of all affine opens $U \subset X$ which
+map into an affine open of $S$. These form a basis for the topology
+on $X$. Thus it suffices to define $\Gamma(U, \Omega_{X/S})$
+for such $U$. We simply set $\Gamma(U, \Omega_{X/S}) = \Omega_{A/R}$ if
+$A$, $R$ are as in Lemma \ref{lemma-differentials-affine} above.
+This works, but it takes somewhat more algebraic preliminaries
+to construct the restriction mappings and to verify the sheaf
+condition with this ansatz.
+\end{remark}
+
+\noindent
+The following lemma gives yet another way to define the sheaf of
+differentials and it in particular shows that $\Omega_{X/S}$
+is quasi-coherent if $X$ and $S$ are schemes.
+
+\begin{lemma}
+\label{lemma-differentials-diagonal}
+Let $f : X \to S$ be a morphism of schemes. There is a canonical
+isomorphism between $\Omega_{X/S}$ and the conormal sheaf of
+the diagonal morphism $\Delta_{X/S} : X \longrightarrow X \times_S X$.
+\end{lemma}
+
+\begin{proof}
+We first establish the existence of a couple of ``global'' sheaves
+and global maps of sheaves, and further down we describe
+the constructions over some affine opens.
+
+\medskip\noindent
+Recall that $\Delta = \Delta_{X/S} : X \to X \times_S X$
+is an immersion, see Schemes, Lemma \ref{schemes-lemma-diagonal-immersion}.
+Let $\mathcal{J}$ be the ideal sheaf of the immersion
+which lives over some open subscheme $W$ of $X \times_S X$
+such that $\Delta(X) \subset W$ is closed. Let us take the one that
+was found in the proof of
+Schemes, Lemma \ref{schemes-lemma-diagonal-immersion}.
+Note that the sheaf of rings $\mathcal{O}_W/\mathcal{J}^2$
+is supported on $\Delta(X)$. Moreover it sits in a
+short exact sequence of sheaves
+$$
+0 \to \mathcal{J}/\mathcal{J}^2
+\to \mathcal{O}_W/\mathcal{J}^2
+\to \Delta_*\mathcal{O}_X
+\to 0.
+$$
+Using $\Delta^{-1}$ we can think of this as a surjection of
+sheaves of $f^{-1}\mathcal{O}_S$-algebras with kernel the
+conormal sheaf of $\Delta$ (see Definition \ref{definition-conormal-sheaf}
+and Lemma \ref{lemma-affine-conormal}).
+$$
+0 \to \mathcal{C}_{X/X \times_S X}
+\to \Delta^{-1}(\mathcal{O}_W/\mathcal{J}^2)
+\to \mathcal{O}_X
+\to 0
+$$
+This places us in the situation of
+Modules, Lemma \ref{modules-lemma-double-structure-gives-derivation}.
+The projection morphisms $p_i : X \times_S X \to X$, $i = 1, 2$ induce
+maps of sheaves of rings
+$(p_i)^\sharp : (p_i)^{-1}\mathcal{O}_X \to \mathcal{O}_{X \times_S X}$.
+We may restrict to $W$ and quotient by $\mathcal{J}^2$ to get
+$(p_i)^{-1}\mathcal{O}_X \to \mathcal{O}_W/\mathcal{J}^2$.
+Since $\Delta^{-1}p_i^{-1}\mathcal{O}_X = \mathcal{O}_X$
+we get maps
+$$
+s_i : \mathcal{O}_X \to \Delta^{-1}(\mathcal{O}_W/\mathcal{J}^2).
+$$
+Both $s_1$ and $s_2$ are sections to the map
+$\Delta^{-1}(\mathcal{O}_W/\mathcal{J}^2) \to \mathcal{O}_X$,
+as in Modules, Lemma \ref{modules-lemma-double-structure-gives-derivation}.
+Thus we get an $S$-derivation
+$\text{d} = s_2 - s_1 : \mathcal{O}_X \to \mathcal{C}_{X/X \times_S X}$.
+By the universal property of the module of differentials we find a
+unique $\mathcal{O}_X$-linear map
+$$
+\Omega_{X/S} \longrightarrow \mathcal{C}_{X/X \times_S X},\quad
+f\text{d}g \longmapsto fs_2(g) - fs_1(g)
+$$
+To see the map is an isomorphism, let us work this out over suitable affine
+opens. We can cover $X$ by affine opens $\Spec(A) = U \subset X$
+whose image is contained in an affine open $\Spec(R) = V \subset S$.
+According to the proof of Schemes, Lemma \ref{schemes-lemma-diagonal-immersion}
+$U \times_V U \subset X \times_S X$ is an affine open
+contained in the open $W$ mentioned above. Also
+$U \times_V U = \Spec(A \otimes_R A)$.
+The sheaf $\mathcal{J}$ corresponds to the ideal
+$J = \Ker(A \otimes_R A \to A)$.
+The short exact sequence to the short exact sequence
+of $A \otimes_R A$-modules
+$$
+0 \to J/J^2 \to (A \otimes_R A)/J^2 \to A \to 0
+$$
+The sections $s_i$ correspond to the ring maps
+$$
+A \longrightarrow (A \otimes_R A)/J^2,\quad
+s_1 : a \mapsto a \otimes 1,\quad
+s_2 : a \mapsto 1 \otimes a.
+$$
+By Lemma \ref{lemma-affine-conormal} we have
+$\Gamma(U, \mathcal{C}_{X/X \times_S X}) = J/J^2$ and
+by Lemma \ref{lemma-differentials-affine}
+we have $\Gamma(U, \Omega_{X/S}) = \Omega_{A/R}$.
+The map above is the map $a \text{d}b \mapsto a \otimes b - ab \otimes 1$
+which is shown to be an isomorphism in
+Algebra, Lemma \ref{algebra-lemma-differentials-diagonal}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-functoriality-differentials}
+Let
+$$
+\xymatrix{
+X' \ar[d] \ar[r]_f & X \ar[d] \\
+S' \ar[r] & S
+}
+$$
+be a commutative diagram of schemes. The canonical map
+$\mathcal{O}_X \to f_*\mathcal{O}_{X'}$ composed with the map
+$f_*\text{d}_{X'/S'} : f_*\mathcal{O}_{X'} \to f_*\Omega_{X'/S'}$ is a
+$S$-derivation. Hence we obtain a canonical map of $\mathcal{O}_X$-modules
+$\Omega_{X/S} \to f_*\Omega_{X'/S'}$, and by
+adjointness of $f_*$ and $f^*$ a
+canonical $\mathcal{O}_{X'}$-module homomorphism
+$$
+c_f : f^*\Omega_{X/S} \longrightarrow \Omega_{X'/S'}.
+$$
+It is uniquely characterized by the property that
+$f^*\text{d}_{X/S}(h)$ maps to $\text{d}_{X'/S'}(f^* h)$
+for any local section $h$ of $\mathcal{O}_X$.
+\end{lemma}
+
+\begin{proof}
+This is a special case of
+Modules, Lemma \ref{modules-lemma-functoriality-differentials-ringed-spaces}.
+In the case of schemes we can also use the functoriality of
+the conormal sheaves (see Lemma \ref{lemma-conormal-functorial}) and
+Lemma \ref{lemma-differentials-diagonal} to define $c_f$.
+Or we can use the characterization in the last line of the lemma to
+glue maps defined on affine patches
+(see Algebra, Equation (\ref{algebra-equation-functorial-omega})).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-triangle-differentials}
+Let $f : X \to Y$, $g : Y \to S$ be morphisms of schemes.
+Then there is a canonical exact sequence
+$$
+f^*\Omega_{Y/S} \to \Omega_{X/S} \to \Omega_{X/Y} \to 0
+$$
+where the maps come from applications of
+Lemma \ref{lemma-functoriality-differentials}.
+\end{lemma}
+
+\begin{proof}
+This is the sheafified version of
+Algebra, Lemma \ref{algebra-lemma-exact-sequence-differentials}.
+Alternatively, there is a general version for morphisms of ringed
+spaces, see Modules, Lemma \ref{modules-lemma-triangle-differentials}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-base-change-differentials}
+Let $X \to S$ be a morphism of schemes.
+Let $g : S' \to S$ be a morphism of schemes.
+Let $X' = X_{S'}$ be the base change of $X$.
+Denote $g' : X' \to X$ the projection.
+Then the map
+$$
+(g')^*\Omega_{X/S} \to \Omega_{X'/S'}
+$$
+of Lemma \ref{lemma-functoriality-differentials} is an isomorphism.
+\end{lemma}
+
+\begin{proof}
+This is the sheafified version of
+Algebra, Lemma \ref{algebra-lemma-differentials-base-change}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-differential-product}
+Let $f : X \to S$ and $g : Y \to S$ be morphisms of schemes with the same
+target. Let $p : X \times_S Y \to X$ and $q : X \times_S Y \to Y$ be the
+projection morphisms. The maps from
+Lemma \ref{lemma-functoriality-differentials}
+$$
+p^*\Omega_{X/S} \oplus q^*\Omega_{Y/S}
+\longrightarrow
+\Omega_{X \times_S Y/S}
+$$
+give an isomorphism.
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-base-change-differentials} the composition
+$p^*\Omega_{X/S} \to \Omega_{X \times_S Y/S} \to \Omega_{X \times_S Y/Y}$
+is an isomorphism, and similarly for $q$. Moreover, the cokernel
+of $p^*\Omega_{X/S} \to \Omega_{X \times_S Y/S}$ is
+$\Omega_{X \times_S Y/X}$ by
+Lemma \ref{lemma-triangle-differentials}. The result follows.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-finite-type-differentials}
+Let $f : X \to S$ be a morphism of schemes.
+If $f$ is locally of finite type, then $\Omega_{X/S}$ is
+a finite type $\mathcal{O}_X$-module.
+\end{lemma}
+
+\begin{proof}
+Immediate from
+Algebra, Lemma \ref{algebra-lemma-differentials-finitely-generated},
+Lemma \ref{lemma-differentials-affine},
+Lemma \ref{lemma-locally-finite-type-characterize}, and
+Properties, Lemma \ref{properties-lemma-finite-type-module}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-finite-presentation-differentials}
+Let $f : X \to S$ be a morphism of schemes.
+If $f$ is locally of finite presentation, then $\Omega_{X/S}$ is
+an $\mathcal{O}_X$-module of finite presentation.
+\end{lemma}
+
+\begin{proof}
+Immediate from
+Algebra, Lemma \ref{algebra-lemma-differentials-finitely-presented},
+Lemma \ref{lemma-differentials-affine},
+Lemma \ref{lemma-locally-finite-presentation-characterize}, and
+Properties, Lemma \ref{properties-lemma-finite-presentation-module}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-immersion-differentials}
+If $X \to S$ is an immersion, or more generally a monomorphism, then
+$\Omega_{X/S}$ is zero.
+\end{lemma}
+
+\begin{proof}
+This is true because $\Delta_{X/S}$ is an isomorphism in this case
+and hence has trivial conormal sheaf. Hence $\Omega_{X/S} = 0$
+by Lemma \ref{lemma-differentials-diagonal}. The algebraic version is
+Algebra, Lemma \ref{algebra-lemma-trivial-differential-surjective}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-differentials-relative-immersion}
+Let $i : Z \to X$ be an immersion of schemes over $S$.
+There is a canonical exact sequence
+$$
+\mathcal{C}_{Z/X} \to i^*\Omega_{X/S} \to \Omega_{Z/S} \to 0
+$$
+where the first arrow is induced by $\text{d}_{X/S}$
+and the second arrow comes from Lemma \ref{lemma-functoriality-differentials}.
+\end{lemma}
+
+\begin{proof}
+This is the sheafified version of
+Algebra, Lemma \ref{algebra-lemma-differential-seq}. However
+we should make sure we can define the first arrow globally.
+Hence we explain the meaning of ``induced by $\text{d}_{X/S}$'' here.
+Namely, we may assume that $i$ is a closed immersion by
+shrinking $X$. Let $\mathcal{I} \subset \mathcal{O}_X$
+be the sheaf of ideals corresponding to $Z \subset X$.
+Then $\text{d}_{X/S} : \mathcal{I} \to \Omega_{X/S}$
+maps the subsheaf $\mathcal{I}^2 \subset \mathcal{I}$ to
+$\mathcal{I}\Omega_{X/S}$. Hence it induces a map
+$\mathcal{I}/\mathcal{I}^2 \to \Omega_{X/S}/\mathcal{I}\Omega_{X/S}$
+which is $\mathcal{O}_X/\mathcal{I}$-linear.
+By Lemma \ref{lemma-i-star-equivalence} this corresponds to a map
+$\mathcal{C}_{Z/X} \to i^*\Omega_{X/S}$ as desired.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-differentials-relative-immersion-section}
+Let $i : Z \to X$ be an immersion of schemes over $S$, and
+assume $i$ (locally) has a left inverse. Then the canonical
+sequence
+$$
+0 \to \mathcal{C}_{Z/X} \to i^*\Omega_{X/S} \to \Omega_{Z/S} \to 0
+$$
+of
+Lemma \ref{lemma-differentials-relative-immersion}
+is (locally) split exact. In particular, if $s : S \to X$ is a section
+of the structure morphism $X \to S$ then the map
+$\mathcal{C}_{S/X} \to s^*\Omega_{X/S}$ induced by
+$\text{d}_{X/S}$ is an isomorphism.
+\end{lemma}
+
+\begin{proof}
+It follows from Algebra, Lemma \ref{algebra-lemma-differential-seq-split}
+that the result holds when $X, Z, S$ are affine. In general we conclude
+the sequence is locally split exact. If $g : X \to Z$ is a left inverse
+of $i$, then $i^*c_g$ is a right inverse of the map
+$i^*\Omega_{X/S} \to \Omega_{Z/S}$ by
+Modules, Lemma \ref{modules-lemma-check-functoriality-differentials}. 
+This implies the sequence is split by
+Homology, Lemma \ref{homology-lemma-ses-split}.
+Finally, if $s$ is a section, then it is an immersion $s : Z = S \to X$
+over $S$ (see Schemes, Lemma \ref{schemes-lemma-section-immersion})
+and in that case $\Omega_{Z/S} = 0$.
+\end{proof}
+
+\begin{remark}
+\label{remark-differentials-diagonal}
+Let $X \to S$ be a morphism of schemes. According to
+Lemma \ref{lemma-differential-product}
+we have
+$$
+\Omega_{X \times_S X/S} =
+\text{pr}_1^*\Omega_{X/S} \oplus \text{pr}_2^*\Omega_{X/S}
+$$
+On the other hand, the diagonal morphism $\Delta : X \to X \times_S X$
+is an immersion, which locally has a left inverse. Hence by
+Lemma \ref{lemma-differentials-relative-immersion-section}
+we obtain a canonical short exact sequence
+$$
+0 \to \mathcal{C}_{X/X \times_S X} \to \Omega_{X/S} \oplus \Omega_{X/S}
+\to \Omega_{X/S} \to 0
+$$
+Note that the right arrow is $(1, 1)$ which is indeed a split surjection.
+On the other hand, by Lemma \ref{lemma-differentials-diagonal}
+we have an identification $\Omega_{X/S} = \mathcal{C}_{X/X \times_S X}$.
+Because we chose $\text{d}_{X/S}(f) = s_2(f) - s_1(f)$ in this
+identification it turns out that the left arrow is the map
+$(-1, 1)$\footnote{Namely,
+the local section $\text{d}_{X/S}(f) = 1 \otimes f - f \otimes 1$ of the
+ideal sheaf of $\Delta$ maps via $\text{d}_{X \times_S X/X}$ to the
+local section
+$1 \otimes 1 \otimes 1 \otimes f - 1 \otimes f \otimes 1 \otimes 1
+-1 \otimes 1 \otimes f \otimes 1 + f \otimes 1 \otimes 1 \otimes 1 =
+\text{pr}_2^*\text{d}_{X/S}(f) - \text{pr}_1^*\text{d}_{X/S}(f)$.}.
+\end{remark}
+
+\begin{lemma}
+\label{lemma-two-immersions}
+Let
+$$
+\xymatrix{
+Z \ar[r]_i \ar[rd]_j & X \ar[d] \\
+& Y
+}
+$$
+be a commutative diagram of schemes where $i$ and $j$ are immersions.
+Then there is a canonical exact sequence
+$$
+\mathcal{C}_{Z/Y} \to
+\mathcal{C}_{Z/X} \to
+i^*\Omega_{X/Y} \to 0
+$$
+where the first arrow comes from
+Lemma \ref{lemma-conormal-functorial}
+and the second from
+Lemma \ref{lemma-differentials-relative-immersion}.
+\end{lemma}
+
+\begin{proof}
+The algebraic version of this is
+Algebra, Lemma \ref{algebra-lemma-application-NL}.
+\end{proof}
+
+
+
+
+
+
+
+
+
+

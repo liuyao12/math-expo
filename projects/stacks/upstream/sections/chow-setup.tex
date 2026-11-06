@@ -1,0 +1,168 @@
+\section{Setup}
+\label{section-setup}
+
+\noindent
+We will throughout work over a locally Noetherian universally
+catenary base $S$ endowed with a dimension function $\delta$.
+Although it is likely possible to generalize (parts of) the
+discussion in the chapter, it seems that this is a good first
+approximation. It is exactly the generality discussed in \cite{Thorup}.
+We usually do not assume our schemes are
+separated or quasi-compact. Many interesting algebraic stacks
+are non-separated and/or non-quasi-compact and this is a good
+case study to see how to develop a reasonable theory for those as well.
+In order to reference these hypotheses we give it a number.
+
+\begin{situation}
+\label{situation-setup}
+Here $S$ is a locally Noetherian, and universally catenary scheme.
+Moreover, we assume $S$ is endowed with a dimension function
+$\delta : S \longrightarrow \mathbf{Z}$.
+\end{situation}
+
+\noindent
+See Morphisms, Definition \ref{morphisms-definition-universally-catenary}
+for the notion of a universally catenary scheme, and see
+Topology, Definition \ref{topology-definition-dimension-function}
+for the notion of a dimension function. Recall that any locally
+Noetherian catenary scheme locally has a dimension function, see
+Properties, Lemma \ref{properties-lemma-catenary-dimension-function}.
+Moreover, there are lots of schemes which are universally catenary,
+see Morphisms, Lemma \ref{morphisms-lemma-ubiquity-uc}.
+
+\medskip\noindent
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Any scheme $X$ locally of finite type over $S$ is locally Noetherian
+and catenary. In fact, $X$ has a canonical dimension function
+$$
+\delta = \delta_{X/S} : X \longrightarrow \mathbf{Z}
+$$
+associated to $(f : X \to S, \delta)$ given by the rule
+$\delta_{X/S}(x) = \delta(f(x)) + \text{trdeg}_{\kappa(f(x))}\kappa(x)$.
+See Morphisms, Lemma \ref{morphisms-lemma-dimension-function-propagates}.
+Moreover, if $h : X \to Y$ is a morphism of schemes locally of finite
+type over $S$, and $x \in X$, $y = h(x)$,
+then obviously
+$\delta_{X/S}(x) = \delta_{Y/S}(y) + \text{trdeg}_{\kappa(y)}\kappa(x)$.
+We will freely use this function and its properties in the following.
+
+\medskip\noindent
+Here are the basic examples of setups as above.
+In fact, the main interest lies in the case where the base
+is the spectrum of a field, or the case where the base
+is the spectrum of a Dedekind ring (e.g.\ $\mathbf{Z}$,
+or a discrete valuation ring).
+
+\begin{example}
+\label{example-field}
+Here $S = \Spec(k)$ and $k$ is a field.
+We set $\delta(pt) = 0$ where $pt$ indicates the unique point of $S$.
+The pair $(S, \delta)$ is an example of a situation as in
+Situation \ref{situation-setup} by
+Morphisms, Lemma \ref{morphisms-lemma-ubiquity-uc}.
+\end{example}
+
+\begin{example}
+\label{example-domain-dimension-1}
+Here $S = \Spec(A)$, where $A$ is a Noetherian domain
+of dimension $1$.
+For example we could consider $A = \mathbf{Z}$.
+We set $\delta(\mathfrak p) = 0$ if
+$\mathfrak p$ is a maximal ideal and $\delta(\mathfrak p) = 1$
+if $\mathfrak p = (0)$ corresponds to the generic point.
+This is an example of Situation \ref{situation-setup} by
+Morphisms, Lemma \ref{morphisms-lemma-ubiquity-uc}.
+\end{example}
+
+\begin{example}
+\label{example-CM-irreducible}
+Here $S$ is a Cohen-Macaulay scheme. Then $S$ is universally catenary by
+Morphisms, Lemma \ref{morphisms-lemma-ubiquity-uc}.
+We set $\delta(s) = -\dim(\mathcal{O}_{S, s})$.
+If $s' \leadsto s$ is a nontrivial specialization of points of $S$,
+then $\mathcal{O}_{S, s'}$ is the localization of $\mathcal{O}_{S, s}$
+at a nonmaximal prime ideal $\mathfrak p \subset \mathcal{O}_{S, s}$, see
+Schemes, Lemma \ref{schemes-lemma-specialize-points}.
+Thus $\dim(\mathcal{O}_{S, s}) =
+\dim(\mathcal{O}_{S, s'}) + \dim(\mathcal{O}_{S, s}/\mathfrak p) >
+\dim(\mathcal{O}_{S, s'})$ by
+Algebra, Lemma \ref{algebra-lemma-CM-dim-formula}.
+Hence $\delta(s') > \delta(s)$. If $s' \leadsto s$ is
+an immediate specialization, then there is no prime
+ideal strictly between $\mathfrak p$ and $\mathfrak m_s$
+and we find $\delta(s') = \delta(s) + 1$. Thus $\delta$
+is a dimension function. In other words, the pair $(S, \delta)$
+is an example of Situation \ref{situation-setup}.
+\end{example}
+
+\noindent
+If $S$ is Jacobson and $\delta$ sends closed points to zero, then $\delta$
+is the function sending a point to the dimension of its closure.
+
+\begin{lemma}
+\label{lemma-delta-is-dimension}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Assume in addition $S$ is a Jacobson scheme, and $\delta(s) = 0$ for every
+closed point $s$ of $S$. Let $X$ be locally of finite type over $S$.
+Let $Z \subset X$ be an integral closed subscheme and let
+$\xi \in Z$ be its generic point. The following integers are the same:
+\begin{enumerate}
+\item $\delta_{X/S}(\xi)$,
+\item $\dim(Z)$, and
+\item $\dim(\mathcal{O}_{Z, z})$ where $z$ is a closed point of $Z$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let $X \to S$, $\xi \in Z \subset X$ be as in the lemma.
+Since $X$ is locally of finite type over $S$ we see that
+$X$ is Jacobson, see
+Morphisms, Lemma \ref{morphisms-lemma-Jacobson-universally-Jacobson}.
+Hence closed points of $X$ are dense in every closed subset of $Z$
+and map to closed points of $S$. Hence given any chain
+of irreducible closed subsets of $Z$ we can end it with a closed point of $Z$.
+It follows that $\dim(Z) = \sup_z(\dim(\mathcal{O}_{Z, z})$
+(see Properties, Lemma \ref{properties-lemma-codimension-local-ring})
+where $z \in Z$ runs over the closed points of $Z$.
+Note that $\dim(\mathcal{O}_{Z, z}) = \delta(\xi) - \delta(z)$
+by the properties of a dimension function.
+For each closed $z \in Z$ the field extension
+$\kappa(z)/\kappa(f(z))$ is finite, see Morphisms,
+Lemma \ref{morphisms-lemma-jacobson-finite-type-points}.
+Hence $\delta_{X/S}(z) = \delta(f(z)) = 0$ for $z \in Z$ closed.
+It follows that all three integers are equal.
+\end{proof}
+
+\noindent
+In the situation of the lemma above the
+value of $\delta$ at the generic point of a closed irreducible subset
+is the dimension of the irreducible closed subset.
+However, in general we cannot expect the equality to hold.
+For example if $S = \Spec(\mathbf{C}[[t]])$ and
+$X = \Spec(\mathbf{C}((t)))$ then we would get
+$\delta(x) = 1$ for the unique point of $X$, but $\dim(X) = 0$.
+Still we want to think of $\delta_{X/S}$ as giving the
+dimension of the irreducible closed subschemes. Thus we introduce
+the following terminology.
+
+\begin{definition}
+\label{definition-delta-dimension}
+Let $(S, \delta)$ as in Situation \ref{situation-setup}.
+For any scheme $X$ locally of finite type over $S$
+and any irreducible closed subset $Z \subset X$ we define
+$$
+\dim_\delta(Z) = \delta(\xi)
+$$
+where $\xi \in Z$ is the generic point of $Z$.
+We will call this the {\it $\delta$-dimension of $Z$}.
+If $Z$ is a closed subscheme of $X$, then we define
+$\dim_\delta(Z)$ as the supremum of the $\delta$-dimensions
+of its irreducible components.
+\end{definition}
+
+
+
+
+
+
+

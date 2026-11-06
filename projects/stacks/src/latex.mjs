@@ -19,7 +19,7 @@ export function createRenderer(root, options={}) {
   const diagramFile=path.join(root,'src/diagrams.json');
   const sourceDiagrams=fs.existsSync(diagramFile)?JSON.parse(fs.readFileSync(diagramFile,'utf8')):{};
   let mathCount=0;
-  const macros={ '\\Spec':'\\operatorname{Spec}', '\\Mor':'\\operatorname{Mor}', '\\Sh':'\\mathit{Sh}', '\\Sch':'\\mathit{Sch}' };
+  const macros={ '\\Spec':'\\operatorname{Spec}', '\\CH':'\\operatorname{CH}', '\\Mor':'\\operatorname{Mor}', '\\Sh':'\\mathit{Sh}', '\\Sch':'\\mathit{Sch}' };
   macros['\\SheafHom']='\\mathop{\\mathcal{H}\\!\\mathit{om}}\\nolimits';
   macros['\\SheafExt']='\\mathop{\\mathcal{E}\\!\\mathit{xt}}\\nolimits';
   macros['\\QCoh']='\\mathit{QCoh}';
@@ -122,7 +122,7 @@ export function createRenderer(root, options={}) {
   function section(section){
     let tex=fs.readFileSync(path.join(root,'upstream/sections',section.slug+'.tex'),'utf8').replace(/(?<!\\)%[^\n]*/g,'');
     tex=tex.replace(/^\\section\{[^\n]+\}\s*\\label\{[^}]+\}/,'').trim();
-    const blocks=[];let cursor=0;const pattern=/\\begin\{(definition|lemma|example|theorem|proposition|corollary|remark|proof)\}(?:\[([^\]]+)\])?/g;let match;
+    const blocks=[];let cursor=0;const pattern=/\\begin\{(definition|lemma|example|theorem|proposition|corollary|remark|situation|proof)\}(?:\[([^\]]+)\])?/g;let match;
     const pushProse=s=>{if(s.trim())blocks.push({kind:'prose',html:body(s,section.chapter)});};
     while((match=pattern.exec(tex))){
       pushProse(tex.slice(cursor,match.index));

@@ -1,0 +1,307 @@
+\section{The splitting principle}
+\label{section-splitting-principle}
+
+\noindent
+In our setting it is not so easy to say what the splitting principle
+exactly says/is. Here is a possible formulation.
+
+\begin{lemma}
+\label{lemma-splitting-principle}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}. Let $X$ be locally
+of finite type over $S$. Let $\mathcal{E}_i$ be a finite collection of
+locally free $\mathcal{O}_X$-modules of rank $r_i$. There exists a projective
+flat morphism $\pi : P \to X$ of relative dimension $d$ such that
+\begin{enumerate}
+\item for any morphism $f : Y \to X$ the map
+$\pi_Y^* : \CH_*(Y) \to \CH_{* + d}(Y \times_X P)$ is injective, and
+\item each $\pi^*\mathcal{E}_i$ has a filtration
+whose successive quotients $\mathcal{L}_{i, 1}, \ldots, \mathcal{L}_{i, r_i}$
+are invertible ${\mathcal O}_P$-modules.
+\end{enumerate}
+Moreover, when (1) holds the restriction map $A^*(X) \to A^*(P)$
+(Remark \ref{remark-pullback-cohomology}) is injective.
+\end{lemma}
+
+\begin{proof}
+We may assume $r_i \geq 1$ for all $i$. We will prove the lemma by induction
+on $\sum (r_i - 1)$. If this integer is $0$, then $\mathcal{E}_i$
+is invertible for all $i$ and we conclude by taking $\pi = \text{id}_X$.
+If not, then we can pick an $i$ such that $r_i > 1$ and consider the
+morphism $\pi_i : P_i = \mathbf{P}(\mathcal{E}_i) \to X$.
+We have a short exact sequence
+$$
+0 \to \mathcal{F} \to \pi_i^*\mathcal{E}_i \to \mathcal{O}_{P_i}(1) \to 0
+$$
+of finite locally free $\mathcal{O}_{P_i}$-modules of ranks $r_i - 1$,
+$r_i$, and $1$. Observe that $\pi_i^*$ is injective on chow groups
+after any base change by the projective bundle formula
+(Lemma \ref{lemma-chow-ring-projective-bundle}).
+By the induction hypothesis applied to the finite locally free
+$\mathcal{O}_{P_i}$-modules $\mathcal{F}$ and $\pi_{i'}^*\mathcal{E}_{i'}$
+for $i' \not = i$, we find a morphism $\pi : P \to P_i$ with
+properties stated as in the lemma. Then the composition
+$\pi_i \circ \pi : P \to X$ does the job. Some details omitted.
+\end{proof}
+
+\begin{remark}
+\label{remark-the-proof-shows-more}
+The proof of Lemma \ref{lemma-splitting-principle}
+shows that the morphism $\pi : P \to X$ has the following additional
+properties:
+\begin{enumerate}
+\item $\pi$ is a finite composition of projective space bundles
+associated to locally free modules of finite constant rank, and
+\item for every $\alpha \in \CH_k(X)$ we have
+$\alpha = \pi_*(\xi_1 \cap \ldots \cap \xi_d \cap \pi^*\alpha)$
+where $\xi_i$ is the first Chern class of some invertible
+$\mathcal{O}_P$-module.
+\end{enumerate}
+The second observation follows from the first and
+Lemma \ref{lemma-cap-projective-bundle}.
+We will add more observations here as needed.
+\end{remark}
+
+\noindent
+Let $(S, \delta)$, $X$, and $\mathcal{E}_i$ be as in
+Lemma \ref{lemma-splitting-principle}.
+The {\it splitting principle} refers to the practice of symbolically writing
+$$
+c(\mathcal{E}_i) = \prod (1 + x_{i, j})
+$$
+The symbols $x_{i, 1}, \ldots, x_{i, r_i}$ are called the {\it Chern roots}
+of $\mathcal{E}_i$. In other words, the $p$th Chern class of $\mathcal{E}_i$
+is the $p$th elementary symmetric function in the Chern roots.
+The usefulness of the splitting principle comes from the assertion that
+in order to prove a polynomial relation among Chern classes of the
+$\mathcal{E}_i$ it is enough to prove the corresponding relation among the
+Chern roots.
+
+\medskip\noindent
+Namely, let $\pi : P \to X$ be as in Lemma \ref{lemma-splitting-principle}.
+Recall that there is a canonical $\mathbf{Z}$-algebra map
+$\pi^* : A^*(X) \to A^*(P)$, see
+Remark \ref{remark-pullback-cohomology}. The injectivity of $\pi_Y^*$
+on Chow groups for every $Y$ over $X$, implies that the map
+$\pi^* : A^*(X) \to A^*(P)$ is injective (details omitted).
+We have
+$$
+\pi^*c(\mathcal{E}_i) = \prod (1 + c_1(\mathcal{L}_{i, j}))
+$$
+by Lemma \ref{lemma-chern-filter-by-linebundles}. Thus we may think of the
+Chern roots $x_{i, j}$ as the elements $c_1(\mathcal{L}_{i, j}) \in A^*(P)$
+and the displayed equation as taking place in $A^*(P)$ after
+applying the injective map $\pi^* : A^*(X) \to A^*(P)$ to the left
+hand side of the equation.
+
+\medskip\noindent
+To see how this works, it is best to give some examples.
+
+\begin{lemma}
+\label{lemma-chern-classes-dual}
+In Situation \ref{situation-setup} let $X$ be locally of finite type over $S$.
+Let $\mathcal{E}$ be a finite locally free $\mathcal{O}_X$-module
+with dual $\mathcal{E}^\vee$. Then
+$$
+c_i(\mathcal{E}^\vee) = (-1)^i c_i(\mathcal{E})
+$$
+in $A^i(X)$.
+\end{lemma}
+
+\begin{proof}
+Choose a morphism $\pi : P \to X$ as in
+Lemma \ref{lemma-splitting-principle}.
+By the injectivity of $\pi^*$ (after any base change)
+it suffices to prove the relation between
+the Chern classes of $\mathcal{E}$ and $\mathcal{E}^\vee$
+after pulling back to $P$. Thus we may assume there
+exist invertible $\mathcal{O}_X$-modules
+${\mathcal L}_i$, $i = 1, \ldots, r$
+and a filtration
+$$
+0 = \mathcal{E}_0 \subset \mathcal{E}_1 \subset \mathcal{E}_2
+\subset \ldots \subset \mathcal{E}_r = \mathcal{E}
+$$
+such that $\mathcal{E}_i/\mathcal{E}_{i - 1} \cong \mathcal{L}_i$.
+Then we obtain the dual filtration
+$$
+0 = \mathcal{E}_r^\perp \subset \mathcal{E}_1^\perp \subset \mathcal{E}_2^\perp
+\subset \ldots \subset \mathcal{E}_0^\perp = \mathcal{E}^\vee
+$$
+such that $\mathcal{E}_{i - 1}^\perp/\mathcal{E}_i^\perp \cong
+\mathcal{L}_i^{\otimes -1}$.
+Set $x_i = c_1(\mathcal{L}_i)$.
+Then $c_1(\mathcal{L}_i^{\otimes -1}) = - x_i$
+by Lemma \ref{lemma-c1-cap-additive}.
+By Lemma \ref{lemma-chern-filter-by-linebundles}
+we have
+$$
+c(\mathcal{E}) = \prod\nolimits_{i = 1}^r (1 + x_i)
+\quad\text{and}\quad
+c(\mathcal{E}^\vee) = \prod\nolimits_{i = 1}^r (1 - x_i)
+$$
+in $A^*(X)$. The result follows from a formal computation
+which we omit.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-chern-classes-tensor-product}
+In Situation \ref{situation-setup} let $X$ be locally of finite type over $S$.
+Let $\mathcal{E}$ and $\mathcal{F}$ be a finite locally free
+$\mathcal{O}_X$-modules of ranks $r$ and $s$. Then we have
+$$
+c_1(\mathcal{E} \otimes \mathcal{F})
+=
+r c_1(\mathcal{F}) + s c_1(\mathcal{E})
+$$
+$$
+c_2(\mathcal{E} \otimes \mathcal{F})
+=
+r c_2(\mathcal{F}) + s c_2(\mathcal{E}) +
+{r \choose 2} c_1(\mathcal{F})^2 +
+(rs - 1) c_1(\mathcal{F})c_1(\mathcal{E}) +
+{s \choose 2} c_1(\mathcal{E})^2
+$$
+and so on in $A^*(X)$.
+\end{lemma}
+
+\begin{proof}
+Arguing exactly as in the proof of Lemma \ref{lemma-chern-classes-dual}
+we may assume we have
+invertible $\mathcal{O}_X$-modules
+${\mathcal L}_i$, $i = 1, \ldots, r$
+${\mathcal N}_i$, $i = 1, \ldots, s$
+filtrations
+$$
+0 = \mathcal{E}_0 \subset \mathcal{E}_1 \subset \mathcal{E}_2
+\subset \ldots \subset \mathcal{E}_r = \mathcal{E}
+\quad\text{and}\quad
+0 = \mathcal{F}_0 \subset \mathcal{F}_1 \subset \mathcal{F}_2
+\subset \ldots \subset \mathcal{F}_s = \mathcal{F}
+$$
+such that $\mathcal{E}_i/\mathcal{E}_{i - 1} \cong \mathcal{L}_i$
+and such that $\mathcal{F}_j/\mathcal{F}_{j - 1} \cong \mathcal{N}_j$.
+Ordering pairs $(i, j)$ lexicographically
+we obtain a filtration
+$$
+0 \subset \ldots \subset
+\mathcal{E}_i \otimes \mathcal{F}_j
++
+\mathcal{E}_{i - 1} \otimes \mathcal{F}
+\subset \ldots \subset \mathcal{E} \otimes \mathcal{F}
+$$
+with successive quotients
+$$
+\mathcal{L}_1 \otimes \mathcal{N}_1,
+\mathcal{L}_1 \otimes \mathcal{N}_2,
+\ldots,
+\mathcal{L}_1 \otimes \mathcal{N}_s,
+\mathcal{L}_2 \otimes \mathcal{N}_1,
+\ldots,
+\mathcal{L}_r \otimes \mathcal{N}_s
+$$
+By Lemma \ref{lemma-chern-filter-by-linebundles}
+we have
+$$
+c(\mathcal{E}) = \prod (1 + x_i),
+\quad
+c(\mathcal{F}) = \prod (1 + y_j),
+\quad\text{and}\quad
+c(\mathcal{E} \otimes \mathcal{F}) = \prod (1 + x_i + y_j),
+$$
+in $A^*(X)$. The result follows from a formal computation
+which we omit.
+\end{proof}
+
+\begin{remark}
+\label{remark-equalities-nonconstant-rank}
+The equalities proven above remain true even when we work with
+finite locally free
+$\mathcal{O}_X$-modules whose rank is allowed to be nonconstant.
+In fact, we can work with polynomials in the rank and the
+Chern classes as follows. Consider the  graded polynomial ring
+$\mathbf{Z}[r, c_1, c_2, c_3, \ldots]$
+where $r$ has degree $0$ and $c_i$ has degree $i$. Let
+$$
+P \in \mathbf{Z}[r, c_1, c_2, c_3, \ldots]
+$$
+be a homogeneous polynomial of degree $p$. Then for any finite locally
+free $\mathcal{O}_X$-module $\mathcal{E}$ on $X$ we can consider
+$$
+P(\mathcal{E}) =
+P(r(\mathcal{E}), c_1(\mathcal{E}), c_2(\mathcal{E}), c_3(\mathcal{E}), \ldots)
+\in A^p(X)
+$$
+see Remark \ref{remark-extend-to-finite-locally-free} for notation and
+conventions. To prove relations among these polynomials (for multiple
+finite locally free modules) we can work locally on $X$ and use the splitting
+principle as above. For example, we claim that
+$$
+c_2(\SheafHom_{\mathcal{O}_X}(\mathcal{E}, \mathcal{E})) =
+P(\mathcal{E})
+$$
+where $P = 2rc_2 - (r - 1)c_1^2$.
+Namely, since $\SheafHom_{\mathcal{O}_X}(\mathcal{E}, \mathcal{E}) =
+\mathcal{E} \otimes \mathcal{E}^\vee$ this follows easily from
+Lemmas \ref{lemma-chern-classes-dual} and
+\ref{lemma-chern-classes-tensor-product}
+above by decomposing $X$ into parts where the rank
+of $\mathcal{E}$ is constant as in
+Remark \ref{remark-extend-to-finite-locally-free}.
+\end{remark}
+
+\begin{example}
+\label{example-power-sum}
+For every $p \geq 1$ there is a unique homogeneous polynomial
+$P_p \in \mathbf{Z}[c_1, c_2, c_3, \ldots]$ of degree $p$
+such that, for any $n \geq p$ we have
+$$
+P_p(s_1, s_2, \ldots, s_p) = \sum x_i^p
+$$
+in $\mathbf{Z}[x_1, \ldots, x_n]$ where $s_1, \ldots, s_p$ are the
+elementary symmetric polynomials in $x_1, \ldots, x_n$, so
+$$
+s_i = \sum\nolimits_{1 \leq j_1 < \ldots < j_i \leq n}
+x_{j_1}x_{j_2} \ldots x_{j_i}
+$$
+The existence of $P_p$ comes from the well known fact that
+the elementary symmetric functions generate the ring of
+all symmetric functions over the integers. Another way to
+characterize $P_p \in \mathbf{Z}[c_1, c_2, c_3, \ldots]$ is that we have
+$$
+\log(1 + c_1 + c_2 + c_3 + \ldots) =
+\sum\nolimits_{p \geq 1} (-1)^{p - 1}\frac{P_p}{p}
+$$
+as formal power series. This is clear by writing
+$1 + c_1 + c_2 + \ldots = \prod (1 + x_i)$ and applying
+the power series for the logarithm function. Expanding the left
+hand side we get
+\begin{align*}
+& (c_1 + c_2 + \ldots) - (1/2)(c_1 + c_2 + \ldots)^2 +
+(1/3)(c_1 + c_2 + \ldots)^3 - \ldots \\
+& =
+c_1 + (c_2 - (1/2)c_1^2) + (c_3 - c_1c_2 + (1/3)c_1^3) + \ldots
+\end{align*}
+In this way we find that
+\begin{align*}
+P_1 & = c_1, \\
+P_2 & = c_1^2 - 2c_2, \\
+P_3 & = c_1^3 - 3c_1c_2 + 3c_3, \\
+P_4 & = c_1^4 - 4c_1^2c_2 + 4c_1c_3 + 2c_2^2 - 4c_4,
+\end{align*}
+and so on. Since the Chern classes of a finite locally free
+$\mathcal{O}_X$-module $\mathcal{E}$ are the elementary symmetric
+polynomials in the Chern roots $x_i$, we see that
+$$
+P_p(\mathcal{E}) = \sum x_i^p
+$$
+For convenience we set $P_0 = r$ in $\mathbf{Z}[r, c_1, c_2, c_3, \ldots]$
+so that $P_0(\mathcal{E}) = r(\mathcal{E})$ as a bivariant class
+(as in Remarks \ref{remark-extend-to-finite-locally-free} and
+\ref{remark-equalities-nonconstant-rank}).
+\end{example}
+
+
+
+
+
+

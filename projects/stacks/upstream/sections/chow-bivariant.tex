@@ -1,0 +1,197 @@
+\section{Bivariant intersection theory}
+\label{section-bivariant}
+
+\noindent
+In order to intelligently talk about higher Chern classes of vector
+bundles we introduce bivariant chow classes as in \cite{F}.
+Our definition differs from \cite{F} in two respects:
+(1) we work in a different setting, and (2) we only require
+our bivariant classes commute with the Gysin homomorphisms for
+zero schemes of sections of invertible modules
+(Section \ref{section-intersecting-effective-Cartier}).
+We will see later, in Lemma \ref{lemma-gysin-commutes}, that our
+bivariant classes commute with all higher codimension Gysin homomorphisms
+and hence satisfy all properties required of them in \cite{F}; see
+also \cite[Theorem 17.1]{F}.
+
+\begin{definition}
+\label{definition-bivariant-class}
+\begin{reference}
+Similar to \cite[Definition 17.1]{F}
+\end{reference}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $f : X \to Y$ be a morphism of schemes locally of finite type over $S$.
+Let $p \in \mathbf{Z}$.
+A {\it bivariant class $c$ of degree $p$ for $f$} is given by a rule
+which assigns to every locally of finite type morphism $Y' \to Y$
+and every $k$ a map
+$$
+c \cap - : \CH_k(Y') \longrightarrow \CH_{k - p}(X')
+$$
+where $X' = Y' \times_Y X$, satisfying the following conditions
+\begin{enumerate}
+\item if $Y'' \to Y'$ is a proper, then
+$c \cap (Y'' \to Y')_*\alpha'' = (X'' \to X')_*(c \cap \alpha'')$
+for all $\alpha''$ on $Y''$ where $X'' = Y'' \times_Y X$,
+\item if $Y'' \to Y'$ is flat locally of finite type of
+fixed relative dimension, then
+$c \cap (Y'' \to Y')^*\alpha' = (X'' \to X')^*(c \cap \alpha')$
+for all $\alpha'$ on $Y'$, and
+\item if $(\mathcal{L}', s', i' : D' \to Y')$ is as in
+Definition \ref{definition-gysin-homomorphism}
+with pullback $(\mathcal{N}', t', j' : E' \to X')$ to $X'$,
+then we have $c \cap (i')^*\alpha' = (j')^*(c \cap \alpha')$
+for all $\alpha'$ on $Y'$.
+\end{enumerate}
+The collection of all bivariant classes of degree $p$ for $f$ is
+denoted $A^p(X \to Y)$.
+\end{definition}
+
+\noindent
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}. Let $X \to Y$
+and $Y \to Z$
+be morphisms of schemes locally of finite type over $S$. Let
+$p \in \mathbf{Z}$. It is clear that $A^p(X \to Y)$ is an abelian group.
+Moreover, it is clear that we have a bilinear composition
+$$
+A^p(X \to Y) \times A^q(Y \to Z) \to A^{p + q}(X \to Z)
+$$
+which is associative.
+
+\begin{lemma}
+\label{lemma-flat-pullback-bivariant}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $f : X \to Y$ be a flat morphism of relative dimension $r$
+between schemes locally of finite type over $S$.
+Then the rule that to $Y' \to Y$ assigns
+$(f')^* : \CH_k(Y') \to \CH_{k + r}(X')$ where $X' = X \times_Y Y'$
+is a bivariant class of degree $-r$.
+\end{lemma}
+
+\begin{proof}
+This follows from
+Lemmas \ref{lemma-flat-pullback-rational-equivalence},
+\ref{lemma-compose-flat-pullback},
+\ref{lemma-flat-pullback-proper-pushforward}, and
+\ref{lemma-gysin-flat-pullback}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-gysin-bivariant}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$ be locally of finite type over $S$.
+Let $(\mathcal{L}, s, i : D \to X)$ be a triple as in
+Definition \ref{definition-gysin-homomorphism}.
+Then the rule that to $f : X' \to X$ assigns
+$(i')^* : \CH_k(X') \to \CH_{k - 1}(D')$ where $D' = D \times_X X'$
+is a bivariant class of degree $1$.
+\end{lemma}
+
+\begin{proof}
+This follows from Lemmas \ref{lemma-gysin-factors},
+\ref{lemma-closed-in-X-gysin},
+\ref{lemma-gysin-flat-pullback}, and
+\ref{lemma-gysin-commutes-gysin}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-push-proper-bivariant}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $f : X \to Y$ and $g : Y \to Z$ be morphisms of
+schemes locally of finite type over $S$.
+Let $c \in A^p(X \to Z)$ and assume $f$ is proper.
+Then the rule that to $Z' \to Z$ assigns
+$\alpha \longmapsto f'_*(c \cap \alpha)$
+is a bivariant class denoted $f_* \circ c \in A^p(Y \to Z)$.
+\end{lemma}
+
+\begin{proof}
+This follows from Lemmas \ref{lemma-compose-pushforward},
+\ref{lemma-flat-pullback-proper-pushforward}, and
+\ref{lemma-closed-in-X-gysin}.
+\end{proof}
+
+\begin{remark}
+\label{remark-restriction-bivariant}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}. Let $X \to Y$
+and $Y' \to Y$ be morphisms of schemes locally of finite type over $S$.
+Let $X' = Y' \times_Y X$. Then there is an obvious restriction map
+$$
+A^p(X \to Y) \longrightarrow A^p(X' \to Y'),\quad
+c \longmapsto res(c)
+$$
+obtained by viewing a scheme $Y''$ locally of finite type over $Y'$
+as a scheme locally of finite type over $Y$ and setting
+$res(c) \cap \alpha'' = c \cap \alpha''$ for any $\alpha'' \in \CH_k(Y'')$.
+This restriction operation is compatible with compositions in an
+obvious manner.
+\end{remark}
+
+\begin{remark}
+\label{remark-bivariant-commute}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}. Let $X$ be
+locally of finite type over $S$. For $i = 1, 2$ let $Z_i \to X$
+be a morphism of schemes locally of finite type. Let
+$c_i \in A^{p_i}(Z_i \to X)$, $i = 1, 2$ be bivariant classes.
+For any $\alpha \in \CH_k(X)$ we can ask whether
+$$
+c_1 \cap c_2 \cap \alpha = c_2 \cap c_1 \cap \alpha
+$$
+in $\CH_{k - p_1 - p_2}(Z_1 \times_X Z_2)$. If this is true and if it holds
+after any base change by $X' \to X$ locally of finite type, then we say
+$c_1$ and $c_2$ {\it commute}. Of course this is the same thing as saying that
+$$
+res(c_1) \circ c_2 = res(c_2) \circ c_1
+$$
+in $A^{p_1 + p_2}(Z_1 \times_X Z_2 \to X)$. Here
+$res(c_1) \in A^{p_1}(Z_1 \times_X Z_2 \to Z_2)$ is the restriction of $c_1$
+as in Remark \ref{remark-restriction-bivariant}; similarly for $res(c_2)$.
+\end{remark}
+
+\begin{example}
+\label{example-gysin-commute}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}. Let $X$ be locally
+of finite type over $S$. Let $(\mathcal{L}, s, i : D \to X)$ a triple as in
+Definition \ref{definition-gysin-homomorphism}. Let $Z \to X$ be a morphism
+of schemes locally of finite type and let $c \in A^p(Z \to X)$ be a
+bivariant class. Then the bivariant Gysin class $c' \in A^1(D \to X)$ of
+Lemma \ref{lemma-gysin-bivariant} commutes with $c$ in the sense of
+Remark \ref{remark-bivariant-commute}. Namely, this is a restatement of
+condition (3) of Definition \ref{definition-bivariant-class}.
+\end{example}
+
+\begin{remark}
+\label{remark-more-general-bivariant}
+There is a more general type of bivariant class that doesn't seem to be
+considered in the literature. Namely, suppose we are given a diagram
+$$
+X \longrightarrow Z \longleftarrow Y
+$$
+of schemes locally of finite type over $(S, \delta)$ as in
+Situation \ref{situation-setup}. Let $p \in \mathbf{Z}$.
+Then we can consider a rule $c$ which assigns to every $Z' \to Z$
+locally of finite type maps
+$$
+c \cap - : \CH_k(Y') \longrightarrow \CH_{k - p}(X')
+$$
+for all $k \in \mathbf{Z}$
+where $X' = X \times_Z Z'$ and $Y' = Z' \times_Z Y$ compatible with
+\begin{enumerate}
+\item proper pushforward if given $Z'' \to Z'$ proper,
+\item flat pullback if given $Z'' \to Z'$ flat
+of fixed relative dimension, and
+\item Gysin maps if given $D' \subset Z'$ as in
+Definition \ref{definition-gysin-homomorphism}.
+\end{enumerate}
+We omit the detailed formulations. Suppose we denote the collection
+of all such operations $A^p(X \to Z \leftarrow Y)$. A simple example
+of the utility of this concept is when we have a proper morphism
+$f : X_2 \to X_1$. Then $f_*$ isn't a bivariant operation in the sense of
+Definition \ref{definition-bivariant-class} but it is in the
+above generalized sense, namely, $f_* \in A^0(X_1 \to X_1 \leftarrow X_2)$.
+\end{remark}
+
+
+
+
+

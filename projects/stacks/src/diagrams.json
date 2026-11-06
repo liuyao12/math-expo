@@ -1529,5 +1529,193 @@
     "width": 331.265769,
     "height": 50.959803,
     "svg_sha256": "4b7ff0fce4c26adbf18c69f48987da8d31639947ab3fca1ecdb27961c4115aa4"
+  },
+  "d322b47ea07ddb8fd1f46f76": {
+    "key": "d322b47ea07ddb8fd1f46f76",
+    "tex": "\\xymatrix{\nX' \\ar[d] \\ar[r]_f & X \\ar[d] \\\\\nS' \\ar[r] & S\n}",
+    "sections": [
+      "morphisms-sheaf-differentials"
+    ],
+    "file": "d322b47ea07ddb8fd1f46f76.svg",
+    "width": 49.92774,
+    "height": 45.110579,
+    "svg_sha256": "eaa8794941db64440b73b06bba66eed4e3a3c12a299ba58e3faeb62ad5b283bf"
+  },
+  "a011cbd457583e061e8aa946": {
+    "key": "a011cbd457583e061e8aa946",
+    "tex": "\\xymatrix{\nZ \\ar[r]_i \\ar[rd]_j & X \\ar[d] \\\\\n& Y\n}",
+    "sections": [
+      "morphisms-sheaf-differentials",
+      "morphisms-smooth"
+    ],
+    "file": "a011cbd457583e061e8aa946.svg",
+    "width": 45.301775,
+    "height": 43.500187,
+    "svg_sha256": "aa2e84ab06ef25ce281251b590c5ff52ba65e6115b8f3d222440e963bc214499"
+  },
+  "f8373ac8ac5b51b581536033": {
+    "key": "f8373ac8ac5b51b581536033",
+    "tex": "\\xymatrix{\nX \\ar[d] &\nU \\ar[l] \\ar[d] \\ar[r]_-\\pi &\nV \\times \\mathbf{R}^d \\ar[ld] \\\\\nY & V \\ar[l]\n}",
+    "sections": [
+      "morphisms-smooth"
+    ],
+    "file": "f8373ac8ac5b51b581536033.svg",
+    "width": 109.372487,
+    "height": 46.610456,
+    "svg_sha256": "08747c03ad43940a418c46a7b22b495b53275b9778b019b8602a0c356ef95693"
+  },
+  "793d5e85142103117ad6dfe3": {
+    "key": "793d5e85142103117ad6dfe3",
+    "tex": "\\xymatrix{\nX' \\ar[r]_{g'} \\ar[d]_{f'} & X \\ar[d]^f \\\\\nS' \\ar[r]^g & S\n}",
+    "sections": [
+      "morphisms-smooth"
+    ],
+    "file": "793d5e85142103117ad6dfe3.svg",
+    "width": 57.363049,
+    "height": 45.110579,
+    "svg_sha256": "11f071ec3d0d5f3ed4b575c7355bcf527493b2c4689f512840fe958737fc95f4"
+  },
+  "e942dce84c2751a7757e0e78": {
+    "key": "e942dce84c2751a7757e0e78",
+    "tex": "\\xymatrix{\nX \\ar[rr]_f \\ar[rd]_p & &\nY \\ar[dl]^q \\\\\n& S\n}",
+    "sections": [
+      "morphisms-smooth"
+    ],
+    "file": "e942dce84c2751a7757e0e78.svg",
+    "width": 82.817176,
+    "height": 43.719365,
+    "svg_sha256": "9598a29166f2ecd8fa58a5bc9a868220a24cf20554b2db5e3d917f3b3724a039"
+  },
+  "428163dd8fc8badc79188ccb": {
+    "key": "428163dd8fc8badc79188ccb",
+    "tex": "\\xymatrix{\nZ_k(X_1 \\cap X_2) \\ar[r] &\nZ_k(X_1) \\oplus Z_k(X_2) \\ar[r] &\nZ_k(X) \\ar[r] &\n0\n}",
+    "sections": [
+      "chow-proper-pushforward"
+    ],
+    "file": "428163dd8fc8badc79188ccb.svg",
+    "width": 254.648534,
+    "height": 9.96264,
+    "svg_sha256": "430ca66c68b6af79a3bce45fbfdbd166dc20529bb46656278b00fcc27d8565f5"
+  },
+  "f17cf22278492732356358f7": {
+    "key": "f17cf22278492732356358f7",
+    "tex": "\\xymatrix{\nZ \\ar[r]_i \\ar[d]_{f|_Z} &\nX \\ar[d]^f \\\\\nZ' \\ar[r]^{i'} & Y\n}",
+    "sections": [
+      "chow-proper-pushforward"
+    ],
+    "file": "f17cf22278492732356358f7.svg",
+    "width": 61.808248,
+    "height": 43.841163,
+    "svg_sha256": "7f408295fe9af037eae5c23a8e24681abd133118e4fae003bb69ecba1ac44f24"
+  },
+  "e659e8f1b1badf3a47c63a5d": {
+    "key": "e659e8f1b1badf3a47c63a5d",
+    "tex": "\\xymatrix{\n\\CH_k(Y) \\ar[r]^{i_*} & \\CH_k(X) \\ar[r]^{j^*} & \\CH_k(U) \\ar[r] & 0\n}",
+    "sections": [
+      "chow-rational-equivalence"
+    ],
+    "file": "e659e8f1b1badf3a47c63a5d.svg",
+    "width": 200.563734,
+    "height": 14.648957,
+    "svg_sha256": "d3f03c95984737a1c921735b06dde8e15cc88dca4d14e4fec91be5e430408670"
+  },
+  "69f03b1c29a20887d3e79e5d": {
+    "key": "69f03b1c29a20887d3e79e5d",
+    "tex": "\\xymatrix{\n\\CH_k(X_1 \\cap X_2) \\ar[r] &\n\\CH_k(X_1) \\oplus \\CH_k(X_2) \\ar[r] &\n\\CH_k(X) \\ar[r] &\n0\n}",
+    "sections": [
+      "chow-rational-equivalence"
+    ],
+    "file": "69f03b1c29a20887d3e79e5d.svg",
+    "width": 286.133838,
+    "height": 9.96264,
+    "svg_sha256": "38bf8ee57dd4efa5b7bc7645ea84b955d40f2bcb215aeb56354d9a5d0386c8b0"
+  },
+  "24467aac8cf51840b9a67817": {
+    "key": "24467aac8cf51840b9a67817",
+    "tex": "\\xymatrix{\nW \\ar[r]_i \\ar[d]_{p'} & X \\ar[d]^p \\\\\nW' \\ar[r]^{i'} & Y\n}",
+    "sections": [
+      "chow-properties-rational-equivalence"
+    ],
+    "file": "24467aac8cf51840b9a67817.svg",
+    "width": 57.870367,
+    "height": 44.060341,
+    "svg_sha256": "e40e22b684f61b90a57c8d0874a66c583c0eaf8ce4ca7ef7c60f200573c86cf8"
+  },
+  "5bea0ff21eca8eef9215b529": {
+    "key": "5bea0ff21eca8eef9215b529",
+    "tex": "\\xymatrix{\nW_\\eta \\ar[r] \\ar[d]_c & W \\ar[d]^{p'} \\\\\n\\Spec(K) \\ar[r] & W'\n}",
+    "sections": [
+      "chow-properties-rational-equivalence"
+    ],
+    "file": "5bea0ff21eca8eef9215b529.svg",
+    "width": 82.187543,
+    "height": 49.002351,
+    "svg_sha256": "3ccca11d5f4ab60717fe2f29ae5d630c6d6459bc086a4f03d8fbe8431f614a5a"
+  },
+  "32100910f16c955975343bca": {
+    "key": "32100910f16c955975343bca",
+    "tex": "\\xymatrix{\n\\mathbf{P}(\\mathcal{E}) =\n\\underline{\\text{Proj}}_X(\\text{Sym}^*(\\mathcal{E}))\n\\ar[r]^-\\pi\n& X\n}",
+    "sections": [
+      "chow-projective-space-bundle-formula"
+    ],
+    "file": "32100910f16c955975343bca.svg",
+    "width": 145.147261,
+    "height": 12.912897,
+    "svg_sha256": "e010fae01e9b388b2be6466d5fc34fe097b78ef2dfb6097fd6f85f3000174092"
+  },
+  "80a0060b1322b40fb642ff4e": {
+    "key": "80a0060b1322b40fb642ff4e",
+    "tex": "\\xymatrix{\n\\coprod P_i \\ar[d]_{\\coprod \\pi_i} \\ar[r]_p & P \\ar[d]^\\pi \\\\\n\\coprod X_i \\ar[r]^q & X\n}",
+    "sections": [
+      "chow-projective-space-bundle-formula"
+    ],
+    "file": "80a0060b1322b40fb642ff4e.svg",
+    "width": 72.34655,
+    "height": 49.813322,
+    "svg_sha256": "a1867b4212a1cf392fca1f81c42569d6f15f69be63f5b899279b716c8da54f06"
+  },
+  "9107a0c4658f5a4aba7d55ad": {
+    "key": "9107a0c4658f5a4aba7d55ad",
+    "tex": "\\xymatrix{\nP' \\ar@{=}[r] \\ar[d]_{\\pi'} &\n\\coprod P_a \\ar[d]_{\\coprod \\pi_a} \\ar[r]_{\\coprod i'_a} &\nP \\ar[d]^\\pi \\\\\nX' \\ar@{=}[r] &\n\\coprod W_a \\ar[r]^{\\coprod i_a} &\nX\n}",
+    "sections": [
+      "chow-intersecting-chern-classes"
+    ],
+    "file": "9107a0c4658f5a4aba7d55ad.svg",
+    "width": 113.265994,
+    "height": 49.872721,
+    "svg_sha256": "cf0929aac4de8829c6f5b8917b38f864508703aa59e8bcec1b5e3b4229799250"
+  },
+  "6ebb8bd04af14ad5b867d5c7": {
+    "key": "6ebb8bd04af14ad5b867d5c7",
+    "tex": "\\xymatrix{\nP_X \\ar[r]_-{p'} \\ar[d]_{\\pi_X} & P \\ar[d]^\\pi \\\\\nX \\ar[r]^p & Y\n}",
+    "sections": [
+      "chow-intersecting-chern-classes"
+    ],
+    "file": "6ebb8bd04af14ad5b867d5c7.svg",
+    "width": 62.109412,
+    "height": 44.24737,
+    "svg_sha256": "6aaa59c2388d391220e326544270c7513107db456ae7e1e86c658ea7d6d2baa7"
+  },
+  "33d72d44995599a7dabdca9e": {
+    "key": "33d72d44995599a7dabdca9e",
+    "tex": "\\xymatrix{\nP_X = \\mathbf{P}(f^*\\mathcal{E}) \\ar[r]_-{f'} \\ar[d]_{\\pi_X} &\nP \\ar[d]^\\pi \\\\\nX \\ar[r]^f & Y\n}",
+    "sections": [
+      "chow-intersecting-chern-classes"
+    ],
+    "file": "33d72d44995599a7dabdca9e.svg",
+    "width": 100.481104,
+    "height": 45.745112,
+    "svg_sha256": "85920128b6b3cd4bcd008a3a2feb893adb900963e857dcc4da8167dccf688d7c"
+  },
+  "c2163a3d2e4104523c5b9d65": {
+    "key": "c2163a3d2e4104523c5b9d65",
+    "tex": "\\xymatrix{\nP_D = \\mathbf{P}(\\mathcal{E}|_D) \\ar[r]_-{i'} \\ar[d]_{\\pi_D} &\nP \\ar[d]^\\pi \\\\\nD \\ar[r]^i & X\n}",
+    "sections": [
+      "chow-intersecting-chern-classes"
+    ],
+    "file": "c2163a3d2e4104523c5b9d65.svg",
+    "width": 100.117037,
+    "height": 45.745112,
+    "svg_sha256": "825b38a211dea35823c1810ef01a86071640e20e896fcd6c0695a8dac6d9cf76"
   }
 }

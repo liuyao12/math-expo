@@ -61,6 +61,14 @@ const coreSections=foundation.units.flatMap(unit=>unit.sections.filter(section=>
 const firstCoreChapter=foundation.units.find(unit=>unit.slug===coreSections[0].chapter);
 const coreReading={...firstCoreChapter,slug:'scheme',readingTitle:'Path to schemes',sections:coreSections};
 const originalUnits=[...foundation.units,coreReading,...selectedReadings];
+const grrIndex=selectedReadings.findIndex(unit=>unit.target==='02UO');
+const grr=selectedReadings[grrIndex];
+if(grr?.sections.at(-1)?.tag!=='02UO')throw Error('The GRR reading must end at Stacks tag 02UO');
+const earlierTags=new Set([coreReading,...selectedReadings.slice(0,grrIndex)]
+  .flatMap(unit=>unit.sections.map(section=>section.tag)));
+for(const section of grr.sections){
+  if(earlierTags.has(section.tag))throw Error('GRR repeats an earlier section: '+section.tag);
+}
 const refs=JSON.parse(fs.readFileSync(path.join(root,'upstream/references.json'),'utf8'));
 let pathProofs=0,pathStatements=0;
 for(const unit of originalUnits){
@@ -71,7 +79,7 @@ for(const unit of originalUnits){
   for(const section of unit.sections){
     const source=fs.readFileSync(path.join(root,'upstream/sections',section.slug+'.tex'),'utf8');
     proofs+=[...source.matchAll(/\\begin\{proof\}/g)].length;
-    statements+=[...source.matchAll(/\\begin\{(?:lemma|definition|example|theorem|proposition|remark|corollary)\}/g)].length;
+    statements+=[...source.matchAll(/\\begin\{(?:lemma|definition|example|theorem|proposition|remark|corollary|situation)\}/g)].length;
     for(const match of source.matchAll(/\\label\{([^}]+)\}/g)){
       const tag=refs[section.chapter+'-'+match[1]]?.tag;
       if(!tag||!ids.includes(tag))throw Error('Missing source anchor '+section.slug+' '+match[1]);
