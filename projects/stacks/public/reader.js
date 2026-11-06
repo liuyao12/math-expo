@@ -42,7 +42,17 @@
   const openExample=trigger=>{if(matchMedia('(max-width:760px)').matches){previousFocus=trigger;dock.classList.add('is-open');dock.setAttribute('role','dialog');dock.setAttribute('aria-modal','true');document.body.style.overflow='hidden';$('#close-example').focus();drawAll();}else dock.focus({preventScroll:true});};
   $$('[data-show-example]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();openExample(a);}));
   $('#close-example')?.addEventListener('click',closeExample);
-  document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeExample();closeOutline();}if(e.key==='Tab'&&dock?.classList.contains('is-open')){const controls=[...dock.querySelectorAll('button,input,a[href]')].filter(e=>!e.disabled),first=controls[0],last=controls.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}});
+  document.addEventListener('keydown',event=>{
+    if(event.key==='Escape'){closeExample();closeOutline();}
+    if(event.key!=='Tab'||!dock?.classList.contains('is-open'))return;
+    const controls=[...dock.querySelectorAll('button,input,a[href],summary')].filter(control=>{
+      const closed=control.closest('details:not([open])');
+      return !control.disabled&&control.getClientRects().length&&(!closed||closed.firstElementChild===control);
+    });
+    const first=controls[0],last=controls.at(-1);
+    if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}
+    if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}
+  });
   const sourceNode=$('#source-data'),sourceData=sourceNode?JSON.parse(sourceNode.textContent):{};
   let sourceTag='';
   const setSource=context=>{
@@ -56,7 +66,7 @@
   let current='local-functions',follow=true,selectionPinned=false,data={},passages=[],keys=[],lastReading=current,lastReadingContext=null,activeContext=null;
   if(dataNode){
     data=JSON.parse(dataNode.textContent);keys=Object.keys(data);current=keys[0];lastReading=current;passages=$$('.passage[data-example]');
-    const exampleTitle=$('#example-title'),exampleContent=$('#example-content');
+    const exampleContent=$('#example-content');
     const openCards=new Map();
     let renderedExampleHTML;
     const setExample=(key,manual=false,context=null)=>{
@@ -66,7 +76,6 @@
       const proof=context?.dataset.proof==='true';
       const changed=activeContext!==context;
       activeContext=context;setSource(context);
-      if(exampleTitle)exampleTitle.textContent=data[key].title;
       const html=proof&&data[key].proofHtml?data[key].proofHtml:data[key].html;
       const contentChanged=renderedExampleHTML!==html;
       if(contentChanged){

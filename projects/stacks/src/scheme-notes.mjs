@@ -492,6 +492,7 @@ const cechSphere={...model('The residue on the Riemann sphere',[
  \end{aligned}
  \]
  `,r`The two Laurent tails extend to the two charts. The \(j=-1\) term is the residue and gives the surviving class \([dz/z]\).`,r`Can a differential on the overlap be written as a difference of holomorphic differentials on the two charts? Cartan’s Theorem B lets this overlap question compute \(H^1\).`),
+ kind:'analogy',
  source:{url:'https://www.numdam.org/item/SB_1951-1954__2__213_0/',label:'Serre’s Bourbaki exposé on Cartan’s Theorem B'}};
 const cechPlane=model('The residue idea with three projective charts',[
  b('R',r`k`),
@@ -757,7 +758,7 @@ const invertibleLine=model('Tensoring by a line bundle has an inverse',[
 \mathcal L\otimes_{\mathcal O_X}\mathcal L^\vee
 \xrightarrow[\sim]{\mathrm{ev}}\mathcal O_X
 \]`,'',r`In a local frame, evaluation pairs the frame with its dual and gives one. Tensoring by the dual therefore undoes tensoring by the line bundle.`);
-const genusExample=model('The genus of a compact Riemann surface',[
+const genusExample={...model('The genus of a compact Riemann surface',[
  b('k',r`\mathbb C`),
  b('X',r`\text{a smooth connected curve}`,r`Projective over \(k\).`),
  b('M',r`X^{\mathrm{an}}`)
@@ -767,7 +768,7 @@ g=\tfrac12\dim_{\mathbb R}H^1(M;\mathbb R),\\
 g=\dim_{\mathbb C}H^0(M,\Omega_M^1)
  =\dim_{\mathbb C}H^1(X,\mathcal O_X).
 \end{gathered}
-\]`,'',r`The number of handles is also the dimension of the space of holomorphic differentials. On the projective curve the same number is computed from its structure sheaf.`);
+\]`,'',r`The number of handles is also the dimension of the space of holomorphic differentials. On the projective curve the same number is computed from its structure sheaf.`),kind:'analogy'};
 const embeddedPoint=model('An embedded point on an affine line',[
  b('A',r`k[x,y]/(x^2,xy)`),
  b('X',r`\operatorname{Spec}A`)
