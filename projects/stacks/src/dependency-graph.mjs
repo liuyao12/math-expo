@@ -37,19 +37,21 @@ function layout(nodes,edges){
   }
   for(const node of nodes){
    node.vx*=.61;node.vy*=.61;
-   node.x+=node.vx;node.y+=node.vy;
+   node.x+=node.vx;
+   const band=node.depth*68;
+   node.y=Math.max(band-20,Math.min(band+20,node.y+node.vy));
   }
  }
  const padding=40;
- const left=Math.min(...nodes.map(node=>node.x))-padding,top=Math.min(...nodes.map(node=>node.y))-padding;
+ const left=Math.min(...nodes.map(node=>node.x))-padding,bottom=Math.max(...nodes.map(node=>node.y))+padding;
  for(const node of nodes){
   node.x=Math.round(node.x-left);
-  node.y=Math.round(node.y-top);
+  node.y=Math.round(bottom-node.y);
  }
  return [Math.max(...nodes.map(node=>node.x))+padding,Math.max(...nodes.map(node=>node.y))+padding];
 }
 
-export function renderDependencyGraph(tree,references,base){
+export function renderDependencyGraph(tree,references,base,idPrefix=''){
  const depths=new Map(),ancestors=new Set();
  const visit=(tag,depth)=>{
   if(!tree.nodes[tag])throw Error('Unknown dependency '+tag);
@@ -68,7 +70,7 @@ export function renderDependencyGraph(tree,references,base){
   if(!ref?.number)throw Error('Missing dependency metadata for '+tag);
   const location=tree.locations.get(tag);
   const route=location?`${base}read/${location.slug}/`:null;
-  return [tag,{tag,depth,root:tag===tree.rootTag,
+  return [tag,{tag,depth,kind:ref.kind,root:tag===tree.rootTag,
    label:`${ref.kind[0].toUpperCase()+ref.kind.slice(1)} ${ref.number} · ${node.title}`,
    href:route?`${route}#${tag}`:`https://stacks.math.columbia.edu/tag/${tag}`,
    section:route&&location.section.tag!==tag?`${route}#${location.section.tag}`:null
@@ -77,18 +79,21 @@ export function renderDependencyGraph(tree,references,base){
  const entries=[...nodes.values()];
  const edges=entries.flatMap(node=>(tree.nodes[node.tag].uses||[]).map(used=>[nodes.get(used),node]));
  const [width,height]=layout(entries,edges);
- const lines=edges.map(([from,to])=>`<line data-from="${esc(from.tag)}" data-to="${esc(to.tag)}" x1="${from.x}" y1="${from.y}" x2="${to.x}" y2="${to.y}" marker-end="url(#dependency-arrow)"/>`).join('');
- const links=entries.map(node=>`<a id="${esc(node.tag)}" class="dependency-node${node.root?' dependency-target':''}" href="${esc(node.href)}" aria-label="${esc(node.label)}"${node.section?` data-section="${esc(node.section)}"`:''} transform="translate(${node.x} ${node.y})"><title>${esc(node.label)}</title><circle r="22"/><text text-anchor="middle" dy=".35em">${esc(node.tag)}</text></a>`).join('');
+ const lines=edges.map(([from,to])=>`<line data-from="${esc(from.tag)}" data-to="${esc(to.tag)}" x1="${from.x}" y1="${from.y}" x2="${to.x}" y2="${to.y}" marker-end="url(#${idPrefix}dependency-arrow)"/>`).join('');
+ const links=entries.map(node=>`<a id="${idPrefix}${esc(node.tag)}" data-tag="${esc(node.tag)}" data-kind="${esc(node.kind)}" class="dependency-node${node.root?' dependency-target':''}" href="${esc(node.href)}" aria-label="${esc(node.label)}"${node.section?` data-section="${esc(node.section)}"`:''} transform="translate(${node.x} ${node.y})"><title>${esc(node.label)}</title><circle class="graph-node-ring" r="26"/><circle class="graph-node-body" r="22"/><text text-anchor="middle" dy=".35em">${esc(node.tag)}</text></a>`).join('');
  const root=nodes.get(tree.rootTag);
+ const legend=[['definition','Definition'],['proposition','Proposition'],['lemma','Lemma'],['section','Section'],['example','Example']]
+  .filter(([kind])=>entries.some(node=>node.kind===kind))
+  .map(([kind,label])=>`<li data-kind="${kind}">${label}</li>`).join('');
  return `<div class="dependency-graph">
   <div class="graph-controls" aria-label="Graph zoom" hidden><button type="button" data-zoom="out" aria-label="Zoom out">−</button><button type="button" data-zoom="fit">Fit graph</button><button type="button" data-zoom="in" aria-label="Zoom in">+</button></div>
+  <ul class="graph-legend" aria-label="Node colors">${legend}</ul>
   <div class="graph-viewport">
    <svg viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" aria-label="Dependency graph">
-    <defs><marker id="dependency-arrow" markerUnits="userSpaceOnUse" refX="27" refY="4" markerWidth="8" markerHeight="8" viewBox="0 0 8 8" orient="auto" overflow="visible"><path d="M0 0L8 4L0 8Z"/></marker></defs>
+    <defs><marker class="graph-arrow" id="${idPrefix}dependency-arrow" markerUnits="userSpaceOnUse" refX="27" refY="4" markerWidth="8" markerHeight="8" viewBox="0 0 8 8" orient="auto" overflow="visible"><path d="M0 0L8 4L0 8Z"/></marker></defs>
     <g class="graph-edges" aria-hidden="true">${lines}</g><g>${links}</g>
    </svg>
   </div>
   <p class="graph-detail"><a data-graph-passage href="${esc(root.href)}">${esc(root.label)}</a> <a data-graph-section${root.section?` href="${esc(root.section)}"`:' hidden'}>Read section ↗</a></p>
- </div>
- <script defer src="${base}dependency-graph.js"></script>`;
+ </div>`;
 }

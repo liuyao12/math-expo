@@ -104,17 +104,75 @@ body:has(.reader-layout) .site-header{position:sticky;top:0}.reading-progress{he
   background: #fbfaf6;
 }
 .graph-viewport svg { display: block; width: 100%; height: auto; margin-inline: auto; }
+.graph-viewport { cursor: grab; }
+.graph-viewport.is-panning { cursor: grabbing; }
 .graph-edges { stroke: #869284; stroke-width: 1.35; pointer-events: none; }
-#dependency-arrow path { fill: #869284; }
-.dependency-graph .dependency-node { touch-action: none; text-decoration: none; }
-.dependency-node circle { fill: #edf0e6; stroke: var(--green); stroke-width: 1.4; }
+.graph-arrow path { fill: #869284; }
+
+.graph-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .3rem .85rem;
+  margin: .4rem 0;
+  padding: 0;
+  list-style: none;
+  color: var(--ink);
+  font: 12px var(--sans);
+}
+.graph-legend li::before {
+  content: "";
+  display: inline-block;
+  width: .7em;
+  height: .7em;
+  margin-inline-end: .3em;
+  background: var(--node-fill);
+  border: 1px solid var(--node-stroke);
+  border-radius: 50%;
+}
+.dependency-graph [data-kind="definition"] { --node-fill: #d9eaf9; --node-stroke: #2e6188; }
+.dependency-graph [data-kind="proposition"] { --node-fill: #eadff5; --node-stroke: #6b4a89; }
+.dependency-graph [data-kind="lemma"] { --node-fill: #e3eddd; --node-stroke: #46704d; }
+.dependency-graph [data-kind="section"] { --node-fill: #ecebe6; --node-stroke: #625f54; }
+.dependency-graph [data-kind="example"] { --node-fill: #f9e5d5; --node-stroke: #9b562e; }
+.dependency-graph .dependency-node { touch-action: none; text-decoration: none; cursor: pointer; }
+.graph-node-body { fill: var(--node-fill, #edf0e6); stroke: var(--node-stroke, var(--green)); stroke-width: 1.4; }
+.graph-node-ring { fill: none; stroke: transparent; stroke-width: 2.6; pointer-events: none; }
 .dependency-node text { fill: var(--ink); font: 600 13px var(--sans); user-select: none; }
-.dependency-node.dependency-target circle { fill: #ffeda0; stroke-width: 2; }
-.dependency-node:target circle,
-.dependency-node:focus-visible circle,
-.dependency-node:hover circle { fill: #ffeda0; stroke: var(--ink); stroke-width: 2.8; }
+.dependency-node.dependency-target .graph-node-ring { stroke: #a57622; }
+.dependency-node:target .graph-node-ring,
+.dependency-node.is-current .graph-node-ring { stroke: #a57622; stroke-width: 4; }
+.dependency-node:focus-visible .graph-node-body,
+.dependency-node:hover .graph-node-body { stroke-width: 3; }
 .graph-detail { min-height: 2em; }
 .graph-detail [data-graph-section] { margin-inline-start: .55em; white-space: nowrap; font: 12px var(--sans); }
+
+body:has(.dependency-dialog[open]) { overflow: hidden; }
+.dependency-dialog {
+  box-sizing: border-box;
+  width: min(860px, calc(100% - 24px));
+  max-width: none;
+  max-height: calc(100dvh - 24px);
+  padding: clamp(.7rem, 2.2vw, 1.4rem);
+  border: 1px solid var(--line);
+  border-radius: .55rem;
+  background: var(--paper);
+  color: var(--ink);
+}
+.dependency-dialog::backdrop { background: #202b27a6; }
+.dependency-dialog > header { display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
+.dependency-dialog h2 { margin: 0; font-size: clamp(19px, 3vw, 25px); }
+.dependency-dialog header button {
+  padding: .4rem .65rem;
+  border: 1px solid var(--line);
+  border-radius: .2rem;
+  background: var(--paper);
+  color: var(--ink);
+  font: 13px var(--sans);
+  cursor: pointer;
+}
+.dependency-dialog .graph-viewport { height: min(56dvh, 500px); max-height: none; }
+.dependency-dialog .graph-detail { margin: .6rem 0 0; font-size: 15px; }
+.dependency-dialog .graph-hint { margin: .4rem 0; color: var(--muted); font: 12px var(--sans); }
 
 .outline-tree,
 .outline-tree ul {
