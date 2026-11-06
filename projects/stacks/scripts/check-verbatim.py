@@ -49,7 +49,7 @@ for unit in manifest['units']:
  sections=[section for section in unit['sections'] if section['number'] in core_numbers]
  if sections:core_units.append(dict(slug='core-'+unit['slug'],sections=sections))
 selected_readings=json.loads((root/'upstream/selected-readings.json').read_text())
-core_reading=dict(slug='path-to-schemes',sections=[section for unit in core_units for section in unit['sections']])
+core_reading=dict(slug='scheme',sections=[section for unit in core_units for section in unit['sections']])
 for unit in manifest['units']+core_units+[core_reading]+selected_readings+[dict(slug='gluing',sections=gluing['sections'])]:
  parser=Prose();parser.feed((root/'dist/read'/unit['slug']/'index.html').read_text())
  if list(parser.sections)!=[section['tag'] for section in unit['sections']]:raise SystemExit('Unexpected sections in '+unit['slug'])

@@ -59,7 +59,7 @@ const selectedReadings=JSON.parse(fs.readFileSync(path.join(root,'upstream/selec
 const coreNumbers=JSON.parse(fs.readFileSync(path.join(root,'upstream/scheme-core.json'),'utf8'));
 const coreSections=foundation.units.flatMap(unit=>unit.sections.filter(section=>Object.hasOwn(coreNumbers,section.number)));
 const firstCoreChapter=foundation.units.find(unit=>unit.slug===coreSections[0].chapter);
-const coreReading={...firstCoreChapter,slug:'path-to-schemes',readingTitle:'Path to schemes',sections:coreSections};
+const coreReading={...firstCoreChapter,slug:'scheme',readingTitle:'Path to schemes',sections:coreSections};
 const originalUnits=[...foundation.units,coreReading,...selectedReadings];
 const refs=JSON.parse(fs.readFileSync(path.join(root,'upstream/references.json'),'utf8'));
 let pathProofs=0,pathStatements=0;

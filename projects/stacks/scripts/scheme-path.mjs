@@ -26,7 +26,7 @@ export function buildSchemePath({root,dist,head,header,footer,renderExampleCard}
   return sections.length?[{...unit,slug:`core-${unit.slug}`,sections,core:true}]:[];
  });
  const coreReading={
-  slug:'path-to-schemes',
+  slug:'scheme',
   readingTitle:'Path to schemes',
   title:coreUnits[0].title,
   number:coreUnits[0].number,
