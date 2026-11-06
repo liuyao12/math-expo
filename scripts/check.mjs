@@ -12,5 +12,5 @@ for (const file of ['index.html', 'papers/index.html', 'papers/riemann-1854/inde
 }
 const home = readFileSync(path.join(root, 'dist/index.html'), 'utf8');
 for (const target of ['papers/', 'textbooks/', 'stacks/']) if (!home.includes(`href="${target}"`)) throw Error(`Missing project link: ${target}`);
-for (const file of ['stacks/index.html','stacks/path/index.html','stacks/read/schemes/index.html','stacks/read/gluing/index.html','stacks/about/index.html','stacks/license/index.html']) if (!existsSync(path.join(root, 'dist', file))) throw Error(`Missing Stacks reader page: ${file}`);
+for (const file of ['stacks/index.html','stacks/path/index.html','stacks/dependencies/scheme/index.html','stacks/read/schemes/index.html','stacks/read/gluing/index.html','stacks/about/index.html','stacks/license/index.html']) if (!existsSync(path.join(root, 'dist', file))) throw Error(`Missing Stacks reader page: ${file}`);
 console.log('Validated the shared site and all three project routes.');
