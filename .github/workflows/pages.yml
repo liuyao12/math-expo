@@ -4,14 +4,6 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
-    inputs:
-      runner:
-        description: Runner for this publication
-        type: choice
-        default: ubuntu-latest
-        options:
-          - ubuntu-latest
-          - math-expo-local-53f0316
 
 permissions:
   contents: read
@@ -23,11 +15,7 @@ concurrency:
 jobs:
   publish:
     if: github.ref == 'refs/heads/main'
-    runs-on: ${{ inputs.runner || 'ubuntu-latest' }}
-    env:
-      LOCAL_RUNNER_MACHINE: ${{ secrets.MATH_EXPO_TEMP_RUNNER_MACHINE_53F0316 }}
-      LOCAL_RUNNER_MACHINE_SHORT: ${{ secrets.MATH_EXPO_TEMP_RUNNER_MACHINE_SHORT_53F0316 }}
-      LOCAL_RUNNER_HOME: ${{ secrets.MATH_EXPO_TEMP_RUNNER_HOME_53F0316 }}
+    runs-on: ubuntu-latest
     permissions:
       contents: read
       pages: write
