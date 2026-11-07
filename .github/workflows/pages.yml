@@ -4,16 +4,6 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
-    inputs:
-      runner:
-        description: Temporary publication runner
-        type: choice
-        default: ubuntu-latest
-        options:
-          - ubuntu-latest
-          - ubuntu-24.04-arm
-          - ubuntu-slim
-          - math-expo-headings-once
 
 permissions:
   contents: read
@@ -25,12 +15,7 @@ concurrency:
 jobs:
   publish:
     if: github.ref == 'refs/heads/main'
-    runs-on: ${{ inputs.runner || 'ubuntu-latest' }}
-    env:
-      MATH_EXPO_TEMP_HEADINGS_MACHINE: ${{ secrets.MATH_EXPO_TEMP_HEADINGS_MACHINE }}
-      MATH_EXPO_TEMP_HEADINGS_MACHINE_SHORT: ${{ secrets.MATH_EXPO_TEMP_HEADINGS_MACHINE_SHORT }}
-      MATH_EXPO_TEMP_HEADINGS_HOME: ${{ secrets.MATH_EXPO_TEMP_HEADINGS_HOME }}
-
+    runs-on: ubuntu-latest
     permissions:
       contents: read
       pages: write
