@@ -4,7 +4,9 @@ import {spawnSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import {escapeHTML,createRenderer} from '../src/latex.mjs';
-import {sectionNote} from '../src/scheme-notes.mjs';
+import {notesFor,noteTags} from '../src/scheme-notes.mjs';
+import {loadReadingCatalog,loadReadings,loadReferenceReadings,assembleReading} from '../src/readings.mjs';
+import assert from 'node:assert/strict';
 import {examples} from '../src/matches.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url)),dist=path.join(root,'dist');
 const manifest=JSON.parse(fs.readFileSync(path.join(root,'upstream/manifest.json'),'utf8'));
@@ -55,16 +57,21 @@ for(const file of files(dist).filter(f=>f.endsWith('.html'))){
 }
 
 const foundation=JSON.parse(fs.readFileSync(path.join(root,'upstream/scheme-path.json'),'utf8'));
-const selectedReadings=JSON.parse(fs.readFileSync(path.join(root,'upstream/selected-readings.json'),'utf8'));
-const coreNumbers=JSON.parse(fs.readFileSync(path.join(root,'upstream/scheme-core.json'),'utf8'));
-const coreSections=foundation.units.flatMap(unit=>unit.sections.filter(section=>Object.hasOwn(coreNumbers,section.number)));
-const firstCoreChapter=foundation.units.find(unit=>unit.slug===coreSections[0].chapter);
-const coreReading={...firstCoreChapter,slug:'scheme',readingTitle:'Path to schemes',sections:coreSections};
-const originalUnits=[...foundation.units,coreReading,...selectedReadings];
+const catalog=loadReadingCatalog(root);
+const selectedReadings=loadReadings(root,catalog);
+const coreReading=selectedReadings.find(reading=>reading.role==='foundation');
+const originalUnits=[...foundation.units,...selectedReadings,...loadReferenceReadings(root,catalog)];
+for(const tag of noteTags)if(!catalog.sectionForTag.has(tag))throw Error('Unresolved commentary tag '+tag);
+assert.deepEqual(notesFor('ZZZZ','ZZZY').examples,[],'Commentary must be optional');
+assert.throws(()=>assembleReading({...coreReading,sections:['ZZZZ']},catalog),/Unknown section tag/);
+assert.throws(()=>assembleReading({...coreReading,target:'ZZZZ',sections:coreReading.sections.map(s=>s.tag)},catalog),/outside/);
+const coreTags=coreReading.sections.map(section=>section.tag);
+assert.throws(()=>assembleReading({...coreReading,sections:[...coreTags,coreTags[0]]},catalog),/Repeated section tag/);
+assert.deepEqual(assembleReading({...coreReading,sections:[...coreTags].reverse()},catalog).sections.map(s=>s.tag),coreTags,'Selections must retain original Stacks order');
 const grrIndex=selectedReadings.findIndex(unit=>unit.target==='02UO');
 const grr=selectedReadings[grrIndex];
 if(grr?.sections.at(-1)?.tag!=='02UO')throw Error('The GRR reading must end at Stacks tag 02UO');
-const earlierTags=new Set([coreReading,...selectedReadings.slice(0,grrIndex)]
+const earlierTags=new Set(selectedReadings.slice(0,grrIndex)
   .flatMap(unit=>unit.sections.map(section=>section.tag)));
 for(const section of grr.sections){
   if(earlierTags.has(section.tag))throw Error('GRR repeats an earlier section: '+section.tag);
@@ -84,17 +91,17 @@ for(const unit of originalUnits){
       const tag=refs[section.chapter+'-'+match[1]]?.tag;
       if(!tag||!ids.includes(tag))throw Error('Missing source anchor '+section.slug+' '+match[1]);
     }
-    const note=sectionNote(section);
-    if(!note.bindings.length)throw Error('Missing example model '+section.slug);
-    const symbols=new Set();
-    for(const b of note.bindings){
-      if(symbols.has(b.symbol))throw Error('Duplicate object binding '+section.slug);symbols.add(b.symbol);
-      renderer.math(b.symbol);renderer.math(b.value);
+    const passages=renderer.section(section);
+    for(const passage of passages)for(const note of notesFor(section.tag,passage.tag).examples){
+      const symbols=new Set();
+      for(const b of note.bindings||[]){
+        if(symbols.has(b.symbol))throw Error('Duplicate object binding '+section.slug);symbols.add(b.symbol);
+        renderer.math(b.symbol);renderer.math(b.value);
+      }
     }
   }
   if([...html.matchAll(/<details class="proof">/g)].length!==proofs)throw Error('Lost or initially expanded proof in '+unit.slug);
   if([...html.matchAll(/class="statement-heading"/g)].length!==statements)throw Error('Lost source statement in '+unit.slug);
-  if(!html.includes('class="object-matches"'))throw Error('Missing margin object matching in '+unit.slug);
   if(html.includes('katex-error')||html.includes('@@TOKEN'))throw Error('Unrendered source in '+unit.slug);
   if(!unit.readingTitle){pathProofs+=proofs;pathStatements+=statements;}
 }
@@ -103,7 +110,7 @@ if(!fs.readFileSync(path.join(dist,'read/schemes/index.html'),'utf8').includes(`
 
 const css=fs.readFileSync(path.join(dist,'vendor/katex/katex.min.css'),'utf8');
 for(const m of css.matchAll(/url\(([^)]+)\)/g))if(!fs.existsSync(path.join(dist,'vendor/katex',m[1])))throw Error('Missing KaTeX font '+m[1]);
-const sourceFiles=['COPYING','manifest.json','introduction.tex'];
+const sourceFiles=['COPYING','manifest.json','introduction.tex','sections.json','readings.json'];
 for(const file of sourceFiles)if(!fs.existsSync(path.join(dist,'source',file)))throw Error('Missing source or license '+file);
 console.log(`Validated Stacks Reader: ${Object.keys(examples).length} object specializations, linked symbols, optional visual, all ${statementCount} source statements, ${proofCount} collapsed proofs, tags, local links, math, fonts, and source license.`);
 
@@ -114,10 +121,10 @@ for(const unit of originalUnits){
   const chapter=originalChapters.find(c=>c.slug===unit.sections[0].chapter);
   if(!chapter||chapter.title!==unit.title||chapter.number!==unit.number)throw Error('Changed original chapter title '+unit.slug);
   const html=fs.readFileSync(path.join(dist,'read',unit.slug,'index.html'),'utf8');
-  const title=unit.target?unit.readingTitle:chapter.title;
+  const title=unit.chapterHeadings?unit.readingTitle:chapter.title;
   if(!html.includes('<h1>'+escapeHTML(title)+'</h1>'))throw Error('Missing reading heading '+unit.slug);
   const records=JSON.parse(html.match(/<script type="application\/json" id="source-data">([\s\S]*?)<\/script>/)[1]);
-  const sectionHeading=unit.target?'h3':'h2';
+  const sectionHeading=unit.chapterHeadings?'h3':'h2';
   const headings=html.replace(/<a class="dependency-number"[^>]*>([\d.]+)<\/a>/g,'$1');
   for(const section of unit.sections){
     const source=fs.readFileSync(path.join(root,'upstream/sections',section.slug+'.tex'),'utf8');
@@ -125,7 +132,7 @@ for(const unit of originalUnits){
     if(!headings.includes('<'+sectionHeading+'>'+section.number+'. '+escapeHTML(section.title)+'</'+sectionHeading+'>'))throw Error('Changed original section title '+section.slug);
     if(!records[section.tag].html.includes('<pre><code>'+escapeHTML(source)+'</code></pre>'))throw Error('Missing margin source '+section.slug);
   }
-  if(unit.target){
+  if(unit.chapterHeadings){
     const numbers=unit.sections.map(s=>s.number);
     const sorted=[...numbers].sort((a,b)=>a.localeCompare(b,'en',{numeric:true}));
     if(numbers.join()!==sorted.join())throw Error('Sections are out of original order in '+unit.slug);

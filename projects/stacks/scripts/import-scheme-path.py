@@ -85,101 +85,33 @@ for chapter in chapters:
         for label,owner in owners.items():
             if owner==key:routes[label]=chapter['slug']
     units.append(dict(slug=chapter['slug'],title=chapter['title'],number=chapter['number'],tag=chapter['tag'],subtitle='The Stacks Project — '+chapter['title'],support=chapter['slug'] in ['categories','homology','modules'],sections=unit))
-# Additional readings have their own scope and do not expand the foundation path.
-genus_slug='curves'
-grr_slug='grr'
-reading_targets={genus_slug:'0BYD',grr_slug:'02UO'}
+# Reading scopes are authorable stable section tags, independent of commentary.
+# The catalog stores each verbatim source section once for reuse in any reading.
+specs=json.loads((root/'src/readings.json').read_text())+json.loads((root/'src/reference-readings.json').read_text())
 sections_by_tag={section['tag']:key for key,section in sections.items()}
-grr_tags=[
-    # Relative differentials and smooth morphisms.
-    '01UM','01V4',
-    # Setup, cycles, principal divisors, Chow groups, and proper pushforward.
-    '02QK','02QQ','02R3','02RN','02RV','02S0',
-    # From the divisor of a line bundle to Chern classes of vector bundles.
-    '02SI','02SN','0B75','0FDV','02TV','02TZ','02U4',
-    # Degree, Chern roots and character, Todd classes, and the formula.
-    '0AZ0','02UK','02UM','02UN','02UO',
-]
-reading_specs=[
-    (genus_slug,'Algebraic curves',
-     'Read selected sections on homological algebra, projective space, and sheaf cohomology in the original Stacks order.',
-     ['modules-section-quasi-coherent',
-      'schemes-section-quasi-coherent-affine',
-      'schemes-section-immersions',
-      'morphisms-section-affine',
-      'morphisms-section-proper',
-      'algebra-section-graded',
-      'constructions-section-proj',
-      'constructions-section-quasi-coherent-proj',
-      'modules-section-invertible',
-      'constructions-section-invertible-on-proj',
-      'constructions-section-projective-space',
-      'homology-section-complexes',
-      'homology-section-cohomological-delta-functor',
-      'homology-section-injectives',
-      'injectives-section-abelian-sheaves-space',
-      'injectives-section-sheaves-modules-space',
-      'derived-section-injective-resolutions',
-      'derived-section-right-derived-functor',
-      'cohomology-section-cohomology-sheaves',
-      'cohomology-section-locality',
-      'cohomology-section-cech',
-      'cohomology-section-cech-functor',
-      'homology-section-double-complexes',
-      'homology-section-spectral-sequence',
-      'homology-section-double-complex',
-      'derived-section-composition-right-derived-functors',
-      'cohomology-section-cech-cohomology-cohomology',
-      'cohomology-section-alternating-cech',
-      'cohomology-section-Leray',
-      'coherent-section-cech-quasi-coherent',
-      'coherent-section-cohomology-projective-space',
-      'divisors-section-embedded',
-      'divisors-section-effective-Cartier-divisors',
-      'divisors-section-Noetherian-effective-Cartier',
-      'divisors-section-invertible-modules',
-      'divisors-section-closed-in-relative-proj',
-      'varieties-section-curves',
-      'curves-section-genus',
-      'curves-section-plane-curves']),
-    (grr_slug,'Grothendieck–Riemann–Roch',
-     'From cycles and Chern classes to the Grothendieck–Riemann–Roch formula, with the smooth curve case alongside.',
-     [sections_by_tag[tag] for tag in grr_tags]),
-    ('projective-twists','Twisting sheaves and intersection multiplicity',
-     'Follow the twists from the projective line to Cartier divisors and the intersection of a line with a conic.',
-     ['constructions-section-invertible-on-proj',
-      'divisors-section-effective-Cartier-invertible',
-      'varieties-section-divisors-curves',
-      'intersection-section-computing-intersection-multiplicities']),
-]
-readings=[]
-covered_numbers=set(json.loads((root/'upstream/scheme-core.json').read_text()))
-for slug, title, deck, keys in reading_specs:
-    entries=[]
-    for key in sorted(keys,key=lambda key:tuple(map(int,sections[key]['number'].split('.')))):
-        if slug in reading_targets and sections[key]['number'] in covered_numbers:
-            raise ValueError('Section already in an earlier selected reading: '+key)
-        s=sections[key]
-        filename=s['chapter']+'-'+s['label'].removeprefix('section-')
-        (root/'upstream/sections'/(filename+'.tex')).write_text(s['text'])
-        entry={k:v for k,v in s.items() if k!='text'}
-        chapter=next(c for c in chapters if c['slug']==s['chapter'])
-        entry['title']=entry['title'].replace(r'{\v C}', 'Č')
-        entry.update(slug=filename,chapterTitle=chapter['title'],sha256=hashlib.sha256(s['text'].encode()).hexdigest())
-        if slug in reading_targets and (not entries or entries[-1]['chapter']!=s['chapter']):
-            entry['stage']=f"{chapter['number']}. {chapter['title']}"
-        entries.append(entry)
-    chapter=next(c for c in chapters if c['slug']==entries[0]['chapter'])
-    reading=dict(slug=slug,readingTitle=title,deck=deck,title=chapter['title'],
-                 number=chapter['number'],sections=entries)
-    if slug in reading_targets:
-        reading['target']=reading_targets[slug]
-        covered_numbers.update(s['number'] for s in entries)
-    readings.append(reading)
-(root/'upstream/selected-readings.json').write_text(json.dumps(readings,indent=2)+'\n')
+reading_keys=[]
+for spec in specs:
+    if len(spec['sections'])!=len(set(spec['sections'])):
+        raise ValueError('Repeated section tag in '+spec['slug'])
+    for tag in spec['sections']:
+        if tag not in sections_by_tag:raise ValueError('Unknown section tag '+tag)
+        reading_keys.append(sections_by_tag[tag])
+    if spec.get('target'):
+        target_label=next((label for label,tag in tags.items() if tag==spec['target']),None)
+        if not target_label or owners.get(target_label) not in [sections_by_tag[tag] for tag in spec['sections']]:
+            raise ValueError('Target outside reading '+spec['slug'])
+catalog={}
+for key in sorted(set(selected)|set(reading_keys),key=lambda key:tuple(map(int,sections[key]['number'].split('.')))):
+    section=sections[key]
+    filename=section['chapter']+'-'+section['label'].removeprefix('section-')
+    (root/'upstream/sections'/(filename+'.tex')).write_text(section['text'])
+    entry={k:v for k,v in section.items() if k!='text'}
+    if key not in selected:entry['title']=entry['title'].replace(r'{\v C}', 'Č')
+    entry.update(slug=filename,sha256=hashlib.sha256(section['text'].encode()).hexdigest())
+    catalog[section['tag']]=entry
+(root/'upstream/sections.json').write_text(json.dumps(catalog,indent=2)+'\n')
 
 # Stacks numbers equations within the subsection, including subsection zero.
-reading_keys=[key for _,_,_,keys in reading_specs for key in keys]
 for key in set(reading_keys)|{owners[label] for key in reading_keys
                              for label in links(sections[key]) if '-equation-' in label}:
     s=sections[key]

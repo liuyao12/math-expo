@@ -84,7 +84,7 @@ body:has(.reader-layout) .site-header{position:sticky;top:0}.reading-progress{he
   justify-content: flex-end;
   margin-bottom: .4rem;
 }
-.graph-controls[hidden] { display: none; }
+.graph-controls[hidden], .example-paging[hidden] { display: none; }
 .graph-controls button {
   padding: .35rem .65rem;
   border: 1px solid var(--line);

@@ -43,14 +43,15 @@ def source_prose(s):
  return words(s)
 count=0
 gluing=json.loads((root/'upstream/manifest.json').read_text())
-core_numbers=json.loads((root/'upstream/scheme-core.json').read_text())
+catalog=json.loads((root/'upstream/sections.json').read_text())
+specs=json.loads((root/'src/readings.json').read_text())+json.loads((root/'src/reference-readings.json').read_text())
+selected_readings=[dict(spec,sections=sorted([catalog[tag] for tag in spec['sections']],key=lambda s:tuple(map(int,s['number'].split('.')))))for spec in specs]
+core_tags=set(next(spec['sections'] for spec in specs if spec.get('role')=='foundation'))
 core_units=[]
 for unit in manifest['units']:
- sections=[section for section in unit['sections'] if section['number'] in core_numbers]
+ sections=[section for section in unit['sections'] if section['tag'] in core_tags]
  if sections:core_units.append(dict(slug='core-'+unit['slug'],sections=sections))
-selected_readings=json.loads((root/'upstream/selected-readings.json').read_text())
-core_reading=dict(slug='scheme',sections=[section for unit in core_units for section in unit['sections']])
-for unit in manifest['units']+core_units+[core_reading]+selected_readings+[dict(slug='gluing',sections=gluing['sections'])]:
+for unit in manifest['units']+core_units+selected_readings+[dict(slug='gluing',sections=gluing['sections'])]:
  parser=Prose();parser.feed((root/'dist/read'/unit['slug']/'index.html').read_text())
  if list(parser.sections)!=[section['tag'] for section in unit['sections']]:raise SystemExit('Unexpected sections in '+unit['slug'])
  for section in unit['sections']:

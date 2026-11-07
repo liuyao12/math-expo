@@ -65,7 +65,9 @@
   const dataNode=$('#example-data');
   let current='local-functions',follow=true,selectionPinned=false,data={},passages=[],keys=[],lastReading=current,lastReadingContext=null,activeContext=null;
   if(dataNode){
-    data=JSON.parse(dataNode.textContent);keys=Object.keys(data);current=keys[0];lastReading=current;passages=$$('.passage[data-example]');
+    data=JSON.parse(dataNode.textContent);
+    keys=Object.keys(data).filter(key=>data[key].html||data[key].proofHtml);
+    current=Object.keys(data)[0];lastReading=current;passages=$$('.passage[data-example]');
     const exampleContent=$('#example-content');
     const openCards=new Map();
     let renderedExampleHTML;
@@ -78,6 +80,8 @@
       activeContext=context;setSource(context);
       const html=proof&&data[key].proofHtml?data[key].proofHtml:data[key].html;
       const contentChanged=renderedExampleHTML!==html;
+      $('.example-paging').hidden=!html;
+      $('#example-index').hidden=!html;
       if(contentChanged){
         for(const card of exampleContent.querySelectorAll('[data-example-card]'))openCards.set(card.dataset.exampleCard,card.open);
         exampleContent.innerHTML=html;

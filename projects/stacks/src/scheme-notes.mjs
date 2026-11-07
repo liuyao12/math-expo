@@ -878,68 +878,68 @@ Object.assign(models,{
  curveNorm,curveFirstChern,curveBivariant,curveProjectiveBundle,curveChernClasses,
  curveDegree,curveCharacter,curveTodd,curveRiemannRoch
 });
-const groups={
- curveDifferentials:['morphisms-sheaf-differentials','morphisms-smooth'],
- curveSetup:['chow-setup'],
- curveCycles:['chow-cycles'],
- curvePushforward:['chow-proper-pushforward'],
- curveRationalEquivalence:['chow-principal-divisors','chow-rational-equivalence'],
- curveNorm:['chow-properties-rational-equivalence'],
- curveFirstChern:['chow-divisor-invertible-sheaf','chow-intersecting-with-divisors'],
- curveBivariant:['chow-bivariant','chow-chow-cohomology'],
- curveProjectiveBundle:['chow-projective-space-bundle-formula'],
- curveChernClasses:['chow-chern-classes-vector-bundles','chow-intersecting-chern-classes','chow-splitting-principle'],
- curveDegree:['chow-degree-zero-cycles'],
- curveCharacter:['chow-chern-classes-tensor'],
- curveTodd:['chow-todd-classes'],
- curveRiemannRoch:['chow-grr'],
- affineModule:['modules-quasi-coherent','schemes-quasi-coherent-affine'],
- closedPoint:['schemes-immersions'],
- affineBundle:['morphisms-affine'],
- properLine:['morphisms-proper'],
- gradedPolynomial:['algebra-graded'],
- projCharts:['constructions-proj','constructions-projective-space'],
- twistTensor:['constructions-quasi-coherent-proj'],
- sphereColimit:['categories-limits','categories-directed-colimits'],
- triangulatedChains:['homology-complexes'],
- pairConnectingMap:['homology-cohomological-delta-functor'],
- injectiveExample:['homology-injectives'],
- injectiveResolution:['derived-injective-resolutions'],
- injectivePoint:['injectives-abelian-sheaves-space'],
- injectiveModulePoint:['injectives-sheaves-modules-space'],
- residueObstruction:['derived-right-derived-functor'],
- deRhamCohomology:['cohomology-cohomology-sheaves'],
- lineBundleCocycle:['cohomology-cech','cohomology-alternating-cech'],
- cechDifferential:['cohomology-cech-functor'],
- cechDeRham:['homology-double-complexes','homology-double-complex'],
- serreSequence:['homology-spectral-sequence'],
- cechSpectral:['cohomology-cech-cohomology-cohomology'],
- fibreCohomology:['cohomology-locality','cohomology-Leray'],
- affinePushforward:['derived-composition-right-derived-functors'],
- genusExample:['curves-genus','varieties-curves'],
- cechLine:['coherent-cech-quasi-coherent'],
- cechPlane:['coherent-cohomology-projective-space'],
- planeCurveGenus:['curves-plane-curves','divisors-closed-in-relative-proj'],
- tangentDivisor:['divisors-effective-Cartier-divisors','divisors-Noetherian-effective-Cartier','divisors-effective-Cartier-invertible'],
- embeddedPoint:['divisors-embedded'],
- conicDegree:['varieties-divisors-curves'],
- conicIntersection:['intersection-computing-intersection-multiplicities'],
- invertibleLine:['modules-invertible'],
- twistCharts:['constructions-invertible-on-proj','divisors-invertible-modules'],
- solutionSheaf:['modules-kernels'],connected:['topology-connected-components'],natural:['categories-opposite','categories-formal-cat-cat'],twoFibre:['categories-2-fibre-products'],over:['categories-categories-over-categories'],topology:['topology-topology-basic'],basis:['topology-bases'],irreducible:['topology-irreducible-components'],noetherian:['topology-noetherian'],compact:['topology-quasi-compact'],specialization:['topology-specialization'],
- snake:['algebra-snake'],colimits:['categories-cofinal','algebra-colimits','categories-posets-limits'],localization:['algebra-localization'],local:['algebra-radical','algebra-local-rings'],spectrum:['algebra-spectrum-ring'],constructible:['topology-constructible','topology-constructible-Noetherian'],
- sheaf:['sheaves-presheaves','sheaves-abelian-presheaves','sheaves-sheaves','sheaves-abelian-sheaves','sheaves-presheaves-structures','sheaves-sheaves-structures','sheaves-algebraic-structures'],
- moduleSheaf:['sheaves-presheaves-modules','sheaves-sheaves-modules','sheaves-sheafification-presheaves-modules'],
- stalk:['sheaves-stalks','sheaves-stalks-abelian-presheaves','sheaves-stalks-presheaves-structures'],moduleStalk:['sheaves-stalk-presheaves-modules'],exactSheaf:['sheaves-exactness-points'],
- sheafify:['sheaves-sheafification','sheaves-sheafify-abelian-presheaves','sheaves-sheafification-presheaves-structures'],
- functorial:['sheaves-presheaves-functorial','sheaves-abelian-presheaves-functorial','sheaves-presheaves-structures-functorial','sheaves-presheaves-modules-functorial','sheaves-ringed-spaces-functoriality-modules'],
- ringed:['sheaves-ringed-spaces','schemes-locally-ringed-spaces'],open:['sheaves-open-immersions','schemes-open-immersion'],
- algebraGlue:['algebra-more-glueing'],affine:['schemes-affine-schemes'],affineMaps:['schemes-category-affine-schemes'],scheme:['schemes-schemes'],
- category:['categories-definition-categories'],limits:['categories-connected-limits','categories-finite-limits','categories-equalizers'],adjoint:['categories-adjoint'],
- nakayama:['algebra-nakayama'],modules:['algebra-hom'],finite:['algebra-module-finite-type','algebra-finite-type','algebra-images-finite-presentation'],idempotent:['algebra-open-and-closed'],rings:['algebra-conventions','algebra-rings-basic','algebra-miscellany'],
- chartCover:['sheaves-sheaves-basic'],basisSheaf:['sheaves-bases'],
- regularGlue:['algebra-tilde-module-sheaf'],bundlePullback:['categories-fibre-products'],setLimits:['categories-limit-sets'],
- abelian:['homology-additive-categories','homology-abelian-categories','homology-functors','categories-exact-functor']
+const sectionGroups={
+ curveDifferentials:['01UM','01V4'],
+ curveSetup:['02QK'],
+ curveCycles:['02QQ'],
+ curvePushforward:['02R3'],
+ curveRationalEquivalence:['02RN','02RV'],
+ curveNorm:['02S0'],
+ curveFirstChern:['02SI','02SN'],
+ curveBivariant:['0B75','0FDV'],
+ curveProjectiveBundle:['02TV'],
+ curveChernClasses:['02TZ','02U4','02UK'],
+ curveDegree:['0AZ0'],
+ curveCharacter:['02UM'],
+ curveTodd:['02UN'],
+ curveRiemannRoch:['02UO'],
+ affineModule:['01BD','01I6'],
+ closedPoint:['01IM'],
+ affineBundle:['01S5'],
+ properLine:['01W0'],
+ gradedPolynomial:['00JL'],
+ projCharts:['01M3','01ND'],
+ twistTensor:['01MJ'],
+ sphereColimit:['002D','04AX'],
+ triangulatedChains:['010V'],
+ pairConnectingMap:['010P'],
+ injectiveExample:['0134'],
+ injectiveResolution:['013G'],
+ injectivePoint:['01DF'],
+ injectiveModulePoint:['01DH'],
+ residueObstruction:['0156'],
+ deRhamCohomology:['01DZ'],
+ lineBundleCocycle:['01ED','01FG'],
+ cechDifferential:['01EH'],
+ cechDeRham:['0FNB','012X'],
+ serreSequence:['011M'],
+ cechSpectral:['01EO'],
+ fibreCohomology:['01E0','01EY'],
+ affinePushforward:['015L'],
+ genusExample:['0BY6','0A22'],
+ cechLine:['01X8'],
+ cechPlane:['01XS'],
+ planeCurveGenus:['0BYA','084M'],
+ tangentDivisor:['01WQ','0B3Q','0C4S'],
+ embeddedPoint:['05AJ'],
+ conicDegree:['0AYQ'],
+ conicIntersection:['0B01'],
+ invertibleLine:['01CR'],
+ twistCharts:['01MM','0BD6'],
+ solutionSheaf:['01AF'],connected:['004R'],natural:['001L','003D'],twoFibre:['003O'],over:['02XG'],topology:['004E'],basis:['004O'],irreducible:['004U'],noetherian:['0050'],compact:['0059'],specialization:['0060'],
+ snake:['07JV'],colimits:['09WN','07N7','002Z'],localization:['00CM'],local:['0AMD','07BH'],spectrum:['00DY'],constructible:['04ZC','053X'],
+ sheaf:['006D','006G','006S','006Z','006M','0071','007L'],
+ moduleSheaf:['006P','0076','0088'],
+ stalk:['0078','007E','007G'],moduleStalk:['007I'],exactSheaf:['007S'],
+ sheafify:['007X','0083','0086'],
+ functorial:['008C','008N','008P','008R','0094'],
+ ringed:['0090','01HA'],open:['009Z','01HD'],
+ algebraGlue:['00EN'],affine:['01HR'],affineMaps:['01HX'],scheme:['01II'],
+ category:['0013'],limits:['04AQ','04AS','0027'],adjoint:['0036'],
+ nakayama:['07RC'],modules:['0581'],finite:['0517','00F2','00F5'],idempotent:['04PN'],rings:['00AQ','00AR','00DR'],
+ chartCover:['006C'],basisSheaf:['009H'],
+ regularGlue:['00EI'],bundlePullback:['001U'],setLimits:['002U'],
+ abelian:['09SE','00ZX','010M','0033']
 };
 const fundamentalGroup=model('Fundamental groups send loops along a map',[
  b(r`\mathcal A`,r`\mathbf{Top}_*`,'Pointed topological spaces with basepoint-preserving continuous maps.'),
@@ -1025,7 +1025,7 @@ const dual=model('Dualizing reverses the arrows',[
 F(\phi\circ\psi)=F(\psi)\circ F(\phi)
 \]`,r`Precomposition gives the reversed order.`);
 const additionalExamples={
- 'schemes-schemes':[model('A point with a first-order neighbourhood',[
+ '01II':[model('A point with a first-order neighbourhood',[
   b('R',r`\mathbb C[\epsilon]/(\epsilon^2)`),
   b('X',r`\operatorname{Spec}(R)`),
   b('x',r`(\epsilon)`),
@@ -1037,63 +1037,56 @@ h\longmapsto h(0)+h'(0)\epsilon
 \end{gathered}
 \]`,'',r`The underlying space is a single point. Its structure ring also remembers the linear term of a Taylor expansion.`)]
 };
-export function extraExamples(section){
- return additionalExamples[section.slug]||[];
-}
-const bySection=Object.fromEntries(Object.entries(groups).flatMap(([name,slugs])=>slugs.map(slug=>[slug,name])));
-export function sectionNote(section){
- const name=bySection[section.slug];if(!name)throw Error('Missing example commentary: '+section.slug);
- return models[name];
-}
-export function passageNote(section,block){
- const base=sectionNote(section);
- if(section.slug==='categories-limits'&&block.label==='definition-limit')
-  return {...padicLimit,scope:'statement'};
- if(section.slug==='cohomology-cech-cohomology-cohomology'&&block.label==='lemma-cech-spectral-sequence-application')
-  return {...cechSpectral,scope:'statement',examples:[cechSphere]};
- if(section.slug==='constructions-invertible-on-proj'){
-  const examples={
-   'definition-twist':{...twistCharts,examples:[{...twistSections,scope:'statement'},{...twistTensor,scope:'statement'}]},
-   'lemma-when-invertible':twistCharts,
-   'lemma-apply-modules':twistTensor,
-   'lemma-where-invertible':twistTensor,
-   'lemma-principal-open':twistOpen,
-   'lemma-ample-on-proj':twistOpen,
-   'lemma-comparison-proj-quasi-coherent':twistSections
-  };
-  const example=examples[block.label];
-  if(example)return {...example,scope:'statement'};
- }
- if(section.slug==='coherent-cech-quasi-coherent'&&block.label==='lemma-cech-cohomology-quasi-coherent-trivial')
-  return {...cechAffine,scope:'statement'};
- if(section.slug==='coherent-cech-quasi-coherent'&&block.label==='lemma-cech-cohomology-quasi-coherent')
-  return {...cechLine,scope:'statement',examples:[cechSphere]};
- if(section.slug==='coherent-cohomology-projective-space'&&block.label==='lemma-cohomology-projective-space-over-ring')
-  return {...cechPlane,scope:'statement',examples:[cechLine]};
- if(section.slug==='curves-plane-curves'&&block.label==='lemma-genus-plane-curve')
-  return {...planeCurveGenus,scope:'statement'};
- if(section.slug==='divisors-effective-Cartier-invertible'&&
-    ['definition-zero-scheme-s','lemma-zero-scheme','lemma-characterize-OD'].includes(block.label))return {...tangentDivisor,scope:'statement'};
- if(section.slug==='varieties-divisors-curves'&&block.label==='lemma-degree-effective-Cartier-divisor')return {...conicDegree,scope:'statement'};
- if(section.slug==='intersection-computing-intersection-multiplicities'&&block.label==='lemma-multiplicity-with-effective-Cartier-divisor')return {...conicIntersection,scope:'statement'};
- if(section.slug==='categories-definition-categories'&&block.label==='definition-functor')return {...fundamentalGroup,scope:'statement',examples:[singularHomology,tangentSpace].map(example=>({...example,scope:'statement'}))};
- if(section.slug==='categories-definition-categories'&&block.label==='definition-subcategory')return {...coordinateSpaces,scope:'statement'};
- if(section.slug==='categories-definition-categories'&&block.label==='definition-transformation-functors')return {...doubleDual,scope:'statement'};
- if(section.slug==='categories-definition-categories'&&
-    ['definition-equivalence-categories','lemma-construct-quasi-inverse','lemma-equivalence-categories'].includes(block.label))
-  return {...matrixEquivalence,scope:'statement'};
- if(section.slug==='categories-opposite'&&block.label==='definition-contravariant')return {...dual,scope:'statement'};
- if(section.slug==='sheaves-presheaves'&&block.label==='definition-presheaf')return {...models.presheaf,scope:'statement'};
- if(section.slug==='sheaves-abelian-presheaves'&&block.label==='definition-abelian-presheaves')return {...models.abelianMorphism,scope:'statement'};
- if(section.chapter==='homology'&&block.label==='definition-kernel')return {...models.kernel,scope:'statement'};
- if(block.label==='definition-local-ring')return {...models.local,scope:'statement'};
- if(block.label==='definition-scheme')return {...models.scheme,scope:'statement',bindings:[...models.scheme.bindings,b(r`\Sch`,r`\text{the category of schemes}`) ]};
- if(block.label==='example-not-affine')return {...model('The punctured affine plane over a finite field',[
+const passageNotes={
+ '002E':padicLimit,
+ '01ET':{...cechSpectral,examples:[cechSphere]},
+ '01MN':{...twistCharts,examples:[{...twistSections,scope:"statement"},{...twistTensor,scope:"statement"}]},
+ '01MS':twistCharts,
+ '01MT':twistTensor,
+ '01MU':twistTensor,
+ '01MV':twistOpen,
+ '01MW':twistOpen,
+ '0B5I':twistSections,
+ '01X9':cechAffine,
+ '01XD':{...cechLine,examples:[cechSphere]},
+ '01XT':{...cechPlane,examples:[cechLine]},
+ '0BYD':planeCurveGenus,
+ '02OQ':tangentDivisor,
+ '02OR':tangentDivisor,
+ '01X0':tangentDivisor,
+ '0AYY':conicDegree,
+ '0B05':conicIntersection,
+ '001B':{...fundamentalGroup,examples:[singularHomology,tangentSpace].map(example=>({...example,scope:"statement"}))},
+ '001D':coordinateSpaces,
+ '001I':doubleDual,
+ '001J':matrixEquivalence,
+ '05SG':matrixEquivalence,
+ '02C3':matrixEquivalence,
+ '001N':dual,
+ '006E':models.presheaf,
+ '006K':models.abelianMorphism,
+ '0106':models.kernel,
+ '07BI':models.local,
+ '01IJ':{...models.scheme,bindings:[...models.scheme.bindings,b(r`\Sch`,r`\text{the category of schemes}`)]},
+ '01IL':model('The punctured affine plane over a finite field',[
   b('k',r`\mathbb F_2`),
   b('X',r`\operatorname{Spec}(k[x,y])`),
   b('U',r`X\setminus\{(x,y)\}`)
  ],r`\[
 \Gamma(U,\mathcal O_U)=k[x,y,1/x]\cap k[x,y,1/y]=k[x,y]
-\]`,r`An affine \(U\) would make \(U\hookrightarrow X\) an isomorphism by the equality of global rings. The origin lies outside \(U\).`),scope:'statement'};
- return base;
+\]`,r`An affine \(U\) would make \(U\hookrightarrow X\) an isomorphism by the equality of global rings. The origin lies outside \(U\).`),
+};
+const sectionNotes=Object.fromEntries(Object.entries(sectionGroups)
+ .flatMap(([name,tags])=>tags.map(tag=>[tag,models[name]])));
+
+export const noteTags=[...Object.keys(sectionNotes),...Object.keys(passageNotes)];
+
+export function notesFor(sectionTag,passageTag){
+ const passage=passageNotes[passageTag];
+ const primary=passage?{...passage,scope:'statement'}:sectionNotes[sectionTag];
+ if(!primary)return {tag:sectionTag,examples:[]};
+ return {
+  tag:passage?passageTag:sectionTag,
+  examples:[primary,...(primary.examples??additionalExamples[sectionTag]??[])]
+ };
 }
