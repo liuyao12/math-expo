@@ -559,31 +559,33 @@ const properLine=model('A family has a limit at infinity',[
 ],r`\[
 [1:t^{-1}]=[t:1]\longrightarrow [0:1]\quad(t=0)
 \]`,'',r`A point that runs off the affine chart can still have a limit on the sphere. The valuative criterion captures this extension property algebraically.`);
-const padicLimit={...model('The inverse limit of congruences',[
+const padicLimit={...model('The p-adic integers',[
  b(r`\mathcal C`,r`\mathbf{CRing}`),
- b(r`\mathcal I`,r`(\mathbb Z_{\ge1},\le)^{\mathrm{op}}`,
-  r`There is one arrow \(m\to n\) when \(m\ge n\). It acts by reduction modulo \(p^n\).`),
- b('M_n',r`\mathbb Z/p^n\mathbb Z`),
- b('p_n',r`\bigl((a_j)_j\mapsto a_n\bigr)`)
+ b(r`\mathcal I`,r`(\mathbb Z_{\ge1},\ge)`,
+  r`One arrow \(m\to n\) for \(m\ge n\).`)
 ],r`\[
-\begin{aligned}
-\mathbb Z_p&=\varprojlim_n\mathbb Z/p^n\mathbb Z,\\
-a_{n+1}&\equiv a_n\pmod{p^n}.
-\end{aligned}
-\]`,'',r`Reducing from \(p^{n+1}\) to \(p^n\) forgets the last digit. A \(p\)-adic integer is one compatible choice of residue at every precision.`),
- source:{url:'https://math.mit.edu/classes/18.782/2023sp/LectureNotes4.pdf',label:'Sutherland, Introduction to Arithmetic Geometry, Lecture 4'}};
+\mathbb Z/p\mathbb Z
+\longleftarrow\mathbb Z/p^2\mathbb Z
+\longleftarrow\mathbb Z/p^3\mathbb Z
+\longleftarrow\cdots
+\]
+\[
+\mathbb Z_p=\varprojlim_{n\ge1}\mathbb Z/p^n\mathbb Z.
+\]`,'',r`For a prime \(p\), with reduction maps.`),
+ source:{url:'https://stacks.math.columbia.edu/tag/08YH',label:'Also in Stacks, §5.26 (08YH)'}};
 const sphereColimit=model('The infinite sphere from finite spheres',[
  b(r`\mathcal C`,r`\mathbf{Top}`),
  b(r`\mathcal I`,r`(\mathbb Z_{\ge0},\le)`,
-  r`There is one arrow \(n\to m\) when \(n\le m\). It acts by appending \(m-n\) zero coordinates.`),
- b('M_n',r`S^n`),
- b('s_n',r`S^n\hookrightarrow S^\infty`)
+  r`One arrow \(n\to m\) for \(n\le m\).`)
 ],r`\[
 \begin{gathered}
-S^n\hookrightarrow S^{n+1},\quad x\mapsto(x,0),\\
-\varinjlim_n S^n=S^\infty=\bigcup_{n\geq0}S^n.
+S^0\hookrightarrow S^1\hookrightarrow S^2\hookrightarrow\cdots,\\
+x\longmapsto(x,0).
 \end{gathered}
-\]`,'',r`A map out of \(S^\infty\) is continuous exactly when its restrictions to all the finite spheres are continuous.`);
+\]
+\[
+S^\infty=\varinjlim_{n\ge0}S^n=\bigcup_{n\ge0}S^n.
+\]`,r`Give the union the colimit topology.`);
 const triangulatedChains=model('Chains of a triangulated manifold',[
  b(r`\mathcal A`,r`\mathbf{Ab}`),
  b('K',r`\text{a triangulation of }M`),
@@ -894,7 +896,7 @@ const sectionGroups={
  gradedPolynomial:['00JL'],
  projCharts:['01M3','01ND'],
  twistTensor:['01MJ'],
- sphereColimit:['002D','04AX'],
+ sphereColimit:['04AX'],
  triangulatedChains:['010V'],
  pairConnectingMap:['010P'],
  injectiveExample:['0134'],
@@ -1031,6 +1033,7 @@ h\longmapsto h(0)+h'(0)\epsilon
 };
 const passageNotes={
  '002E':padicLimit,
+ '002F':sphereColimit,
  '01ET':{...cechSpectral,examples:[cechSphere]},
  '01MN':{...twistCharts,examples:[{...twistSections,scope:"statement"},{...twistTensor,scope:"statement"}]},
  '01MS':twistCharts,
