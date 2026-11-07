@@ -70,6 +70,61 @@
     current=Object.keys(data)[0];lastReading=current;passages=$$('.passage[data-example]');
     const exampleContent=$('#example-content');
     const openCards=new Map();
+    if(dock.dataset.exampleLayout==='anchored'){
+      const main=$('#main'),tools=dock.querySelector('.example-sticky');
+      const flow=document.createElement('div');
+      flow.className='example-flow';
+      const notes=keys.map(key=>{
+        const anchor=document.getElementById(key);
+        if(!anchor||!main.contains(anchor)||!data[key].html)return null;
+        const peg=anchor.classList.contains('source-section')
+          ?anchor.querySelector('.source-section-header > :is(h2,h3):not(.source-chapter-title)')||anchor
+          :anchor.querySelector('.statement-heading')||anchor;
+        const band=document.createElement('div');
+        band.className='example-band';band.dataset.exampleAnchor=key;
+        const note=document.createElement('div');
+        note.className='floating-example example-current';
+        const label=document.createElement('div');label.className='example-step';
+        const link=document.createElement('a');link.href='#'+key;
+        link.textContent=anchor.dataset.sourceLabel||peg.textContent.trim();
+        label.append(link);note.append(label);
+        note.insertAdjacentHTML('beforeend',data[key].html);
+        band.append(note);
+        return {anchor,peg,band};
+      }).filter(Boolean).sort((a,b)=>a.anchor.compareDocumentPosition(b.anchor)&Node.DOCUMENT_POSITION_FOLLOWING?-1:1);
+      flow.append(...notes.map(note=>note.band));dock.append(flow);
+      dock.classList.add('has-floating-examples');
+      let layoutPending=false;
+      const layout=()=>{
+        layoutPending=false;
+        if(matchMedia('(max-width:760px)').matches)return;
+        const origin=flow.getBoundingClientRect().top;
+        flow.style.left=getComputedStyle(dock).paddingLeft;
+        const top=99+tools.getBoundingClientRect().height+12;
+        flow.style.setProperty('--example-top',top+'px');
+        flow.style.setProperty('--example-viewport',Math.max(80,innerHeight-top-16)+'px');
+        const positions=notes.map(note=>note.peg.getBoundingClientRect().top-origin);
+        const end=main.getBoundingClientRect().bottom-origin;
+        notes.forEach(({band},index)=>{
+          const height=Math.max(1,(positions[index+1]??end)-positions[index]-12);
+          band.style.top=positions[index]+'px';band.style.height=height+'px';
+          band.style.setProperty('--example-span',height+'px');
+        });
+      };
+      const scheduleLayout=()=>{if(!layoutPending){layoutPending=true;requestAnimationFrame(layout);}};
+      const observer=new ResizeObserver(scheduleLayout);observer.observe(main);observer.observe(tools);
+      addEventListener('resize',scheduleLayout);document.fonts?.ready.then(scheduleLayout);
+      layout();
+      // Keep the desktop notes and the mobile panel's disclosure choices in sync.
+      dock.addEventListener('toggle',event=>{
+        const card=event.target;
+        if(!card.matches('.example-disclosure[data-example-card]'))return;
+        openCards.set(card.dataset.exampleCard,card.open);
+        for(const other of dock.querySelectorAll('[data-example-card]')){
+          if(other!==card&&other.dataset.exampleCard===card.dataset.exampleCard&&other.open!==card.open)other.open=card.open;
+        }
+      },true);
+    }
     let renderedExampleHTML;
     const setExample=(key,manual=false,context=null)=>{
       if(!data[key])return;current=key;

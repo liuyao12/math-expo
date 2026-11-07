@@ -14,6 +14,8 @@ All three selected readings use `scripts/reading-generator.mjs`. `src/readings.j
 
 `src/scheme-notes.mjs` contains the separate authored commentary. Its `sectionGroups` and `passageNotes` attach examples to stable Stacks section or statement tags. `notesFor(sectionTag, passageTag)` returns those cards in any reading containing the passage. Notes are optional. An unannotated tag produces no card, and multiple examples can share a tag. The optional complex-analysis examples assume familiarity with holomorphic functions.
 
+On desktop, each tagged note starts beside its source heading and floats down the margin until the next annotated tag pushes it away. Opening proofs and resizing repositions the anchors. Tall notes scroll within the available space; the mobile panel retains its passage navigation and shares the same collapsed-card choices.
+
 Examples should recall a recognizable construction through concise formulas and a brief explanation where useful. They need not assign every source symbol or supply a proof. Use a commutative diagram whenever it communicates the example, analogy, or comment more clearly. Simple squares can use KaTeX’s `CD` environment inside display math. A note can have an empty `bindings` array and consist entirely of displayed formulas, a diagram, and short prose.
 
 When reviewing individual examples with the user, first quote the relevant retained Stacks definition or theorem verbatim, with a link to its tag, and let the user supply the example. A diagram can be written out directly, with its indexing category made explicit. An example can also occur elsewhere in Stacks; keep it beside the concept it illustrates and link to the upstream occurrence.

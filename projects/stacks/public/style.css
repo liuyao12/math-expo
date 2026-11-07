@@ -63,6 +63,32 @@ body:has(.reader-layout) .site-header{position:sticky;top:0}.reading-progress{he
 .example-chevron::before { content: "+"; }
 .example-disclosure[open] > summary .example-chevron::before { content: "−"; }
 
+.example-flow { display: none; }
+@media (min-width: 761px) {
+  .has-floating-examples > .example-sticky {
+    z-index: 2;
+    background: var(--paper);
+    max-height: 40vh;
+  }
+  .has-floating-examples > .example-sticky > .example-current { display: none; }
+  .example-flow {
+    display: block;
+    position: absolute;
+    inset: 0 0 0 29px;
+    overflow-anchor: none;
+  }
+  .example-band { position: absolute; width: 100%; }
+  .floating-example {
+    position: sticky;
+    top: var(--example-top);
+    max-height: min(var(--example-viewport), var(--example-span));
+    overflow: auto;
+    scrollbar-width: thin;
+    background: var(--paper);
+    padding-bottom: 0;
+  }
+}
+
 .dependency-number {
   background: #ffeda0;
   color: #292412;
