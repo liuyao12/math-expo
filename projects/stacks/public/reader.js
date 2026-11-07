@@ -119,6 +119,7 @@
       let stickyTop=99;
       layoutAnchors=()=>{
         if(mobile())return;
+        for(const {band} of notes)band.hidden=false;
         const origin=flow.getBoundingClientRect().top;
         flow.style.left=getComputedStyle(dock).paddingLeft;
         stickyTop=99+tools.getBoundingClientRect().height+12;
@@ -126,18 +127,28 @@
         flow.style.setProperty('--example-top',stickyTop+'px');
         flow.style.setProperty('--example-viewport',available+'px');
         const positions=notes.map(note=>note.peg.getBoundingClientRect().top-origin);
+        const titles=entry=>[...entry.note.querySelectorAll('.example-disclosure > summary')].map(summary=>summary.textContent.trim()).join('\n');
+        const visible=notes.filter((entry,index)=>{
+          const next=notes[index+1];
+          const headings=[...entry.note.querySelectorAll('.example-step,.example-disclosure > summary')].reduce((height,node)=>height+node.getBoundingClientRect().height,0);
+          // Prefer the definition's group to an adjacent duplicate at its section introduction.
+          const repeated=next&&entry.anchor.classList.contains('source-section')&&next.anchor.closest('.source-section')===entry.anchor&&positions[index+1]-positions[index]<headings+12&&titles(entry)===titles(next);
+          entry.band.hidden=Boolean(repeated);entry.start=positions[index];
+          return !repeated;
+        });
         const end=main.getBoundingClientRect().bottom-origin;
-        notes.forEach((entry,index)=>{
+        visible.forEach((entry,index)=>{
           const {band,note}=entry;
-          const height=Math.max(1,(positions[index+1]??end)-positions[index]-12);
+          const height=Math.max(1,(visible[index+1]?.start??end)-entry.start-12);
           entry.span=height;
-          band.style.top=positions[index]+'px';band.style.height=height+'px';
+          band.style.top=entry.start+'px';band.style.height=height+'px';
           band.style.setProperty('--example-span',height+'px');
           fitGroup(note,Math.min(height,available));
         });
       };
       fitFloating=()=>{
         for(const {band,note} of notes){
+          if(band.hidden)continue;
           const box=band.getBoundingClientRect();
           if(box.bottom<0||box.top>innerHeight)continue;
           const top=Math.max(stickyTop,box.top);

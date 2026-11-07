@@ -34,6 +34,10 @@ try{
    }
    const group=mobile||slug==='gluing'?page.locator('#example-content'):page.locator('.example-band[data-example-anchor="'+tag+'"] .floating-example');
    await settle(page);await headingsVisible(group,page);
+   if(!mobile){
+    const crowded=await page.locator('.example-band:not([hidden])').evaluateAll(bands=>bands.map(b=>({tag:b.dataset.exampleAnchor,space:b.clientHeight,headings:[...b.querySelectorAll('.example-step,.example-disclosure > summary')].reduce((height,n)=>height+n.getBoundingClientRect().height,0)})).filter(b=>b.headings>b.space));
+    assert.deepEqual(crowded,[],'All tagged heading groups fit without colliding');
+   }
    const cards=group.locator(':scope > .example-disclosure'),count=await cards.count();assert(count>=1);
    for(let index=0;index<count;index++){
     const card=cards.nth(index),key=await card.getAttribute('data-example-card');
@@ -70,7 +74,7 @@ try{
  await assertExclusive(page.locator('#example-content'),'001B');
  await page.locator('#close-example').click();await page.setViewportSize({width:1440,height:900});
  await page.locator('main details.proof').first().evaluate(n=>n.open=true);await settle(page);
- const drift=await page.locator('.example-band').evaluateAll(bands=>bands.map(b=>{
+ const drift=await page.locator('.example-band:not([hidden])').evaluateAll(bands=>bands.map(b=>{
   const a=document.getElementById(b.dataset.exampleAnchor),p=a.classList.contains('source-section')?a.querySelector('.source-section-header > :is(h2,h3):not(.source-chapter-title)')||a:a.querySelector('.statement-heading')||a;
   return Math.abs(b.getBoundingClientRect().top-p.getBoundingClientRect().top);
  }));
