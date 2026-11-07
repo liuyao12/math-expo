@@ -11,13 +11,13 @@ on:
         default: ubuntu-latest
         options:
           - ubuntu-latest
-          - math-expo-once-7b725bc
+          - math-expo-once-7b725bc-retry
 
 permissions:
   contents: read
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.ref }}-retry-7b725bc
   cancel-in-progress: true
 
 jobs:
