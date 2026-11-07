@@ -228,14 +228,12 @@ U\cap V=\operatorname{Spec}\bigl(\mathbb C[z,z^{-1}]\bigr),\\
 w=z^{-1}
 \end{gathered}
 \]`,r`The gluing uses regular functions. On complex points the same coordinate change gives the holomorphic atlas of the sphere.`,r`One affine chart misses infinity. Gluing affine charts with compatible function rings gives a space that is algebraic near every point.`),
- category:model('Vector spaces and linear maps over a field',[
+ category:model('Vector spaces',[
   b(r`\mathcal C`,r`\mathbf{Vect}_k`),
-  b('x,y,z',r`U,V,W`),
-  b(r`\psi`,r`U\to V`),
-  b(r`\phi`,r`V\to W`)
- ],r`\[
-(\phi\circ\psi)(u)=\phi(\psi(u))
-\]`,'',r`The objects are vector spaces over \(k\). The morphisms are \(k\)-linear maps, with the usual composition and identity maps.`),
+  b(r`\operatorname{Ob}(\mathcal C)`,r`\{\text{vector spaces over a field }k\}`),
+  b(r`\operatorname{Mor}(V,W)`,r`\{\text{linear maps }V\to W\}`),
+  b(r`\mathrm{id}_V`,r`\text{identity map }V\to V`)
+ ],'','Composition is composition of linear maps.'),
  bundlePullback:model('Pull a vector bundle back along a map',[
   b(r`\mathcal C`,r`\mathbf{Top}`),
   b('x,z',r`X,E`),
