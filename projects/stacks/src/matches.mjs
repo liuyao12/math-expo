@@ -7,7 +7,7 @@ const pair=[row(r`W`,r`S\setminus\{1\}`),row(r`s_0`,r`\frac1{z-1}`),row(r`s_\inf
 const entry=(title,bindings,check,result,extra={})=>({title,bindings,check,result,...extra});
 
 export const examples={
-  'local-functions':entry(r`Spaces equipped with functions`,[
+  'local-functions':entry(r`functions on the sphere`,[
     sphere,row(r`\mathcal O_X`,r`\mathcal O_S`,r`\(\mathcal O_S(V)\) is the ring of holomorphic functions on \(V\subset S\).`),
     row(r`Y`,r`S`,r`target locally ringed space`),
     row(r`\mathcal O_Y`,r`\mathcal O_S`),
@@ -18,7 +18,7 @@ export const examples={
   ],r`\[
 (h\circ f)|_{f^{-1}V}=(h|_V)\circ f|_{f^{-1}V}
 \]`,r``,{note:r`Use \(M=N=S\) in the source’s smooth-manifold example.`}),
-  'stalks':entry(r`The local ring at a chosen point`,[
+  'stalks':entry(r`local ring`,[
     sphere,row(r`x`,r`a=1`),
     row(r`\mathcal O_{X,x}`,r`\mathcal O_{S,1}`,r`Germs of holomorphic functions near \(1\). Functions have the same germ if they agree on some neighbourhood of \(1\).`),
     row(r`\mathfrak m_x`,r`\{h:h(1)=0\}`),row(r`\kappa(x)`,r`\mathbb C`,r`The quotient map is evaluation at \(1\).`),
@@ -26,14 +26,14 @@ export const examples={
   ],r`\[
 h\in\mathfrak m_1\quad\Longrightarrow\quad (h\circ f)(1)=h(1)=0
 \]`,r``),
-  'pullback':entry(r`Composition in this case`,[
+  'pullback':entry(r`composition of pullbacks`,[
     row(r`X`,r`S`),row(r`Y`,r`S`),row(r`Z`,r`S`),
     row(r`f`,r`[z\mapsto z^2]`),row(r`g`,r`[t\mapsto t^3]`),row(r`g\circ f`,r`[z\mapsto z^6]`),
     row(r`x`,r`a`),row(r`\mathcal O_{Z,g(f(x))}`,r`\mathcal O_{S,a^6}`)
   ],r`\[
 h\longmapsto (t\mapsto h(t^3))\longmapsto (z\mapsto h(z^6))
 \]`,r``),
-  'isomorphisms':entry(r`An actual isomorphism`,[
+  'isomorphisms':entry(r`inversion`,[
     row(r`X`,r`S`),row(r`Y`,r`S`),row(r`f`,r`[z\mapsto1/z]`,r`For this lemma use inversion; it exchanges zero and infinity and is its own inverse.`),row(r`f^\sharp`,r`[h\mapsto h(1/z)]`)
   ],r`\[
 \begin{gathered}
@@ -41,7 +41,7 @@ f\circ f=\operatorname{id}_S,\\
 f^\sharp(h)(z)=h(1/z)
 \end{gathered}
 \]`,r`The inverse pullback preserves the maximal ideal at the corresponding point.`,{proof:r`\[h(f(a))=0\quad\Longleftrightarrow\quad (f^\sharp h)(a)=0.\]`}),
-  'sheaf-maps':entry(r`The exponential is independent of the chart`,[
+  'sheaf-maps':entry(r`exponential map`,[
     sphere,...cover,row(r`\mathcal F`,r`\mathcal O_S`),row(r`\mathcal G`,r`\mathcal O_S^\times`),row(r`\varphi_i`,r`\exp|_{U_i}`),row(r`\varphi`,r`\exp:\mathcal O_S\to\mathcal O_S^\times`)
   ],r`\[
 (\exp s)|_V=\exp(s|_V)
@@ -50,19 +50,19 @@ f^\sharp(h)(z)=h(1/z)
     proofBindings:[row(r`U`,r`V\subset S`),row(r`s`,r`h\in\mathcal O_S(V)`),row(r`\varphi_U(s)`,r`e^h`)],
     proof:r`\[(e^h)|_T=e^{h|_T}.\]`
   }),
-  'transitions':entry(r`The gluing data for local functions`,[
+  'transitions':entry(r`gluing local functions`,[
     sphere,...cover,...localSheaves
   ],r`\[
 \varphi_{ii}=\operatorname{id},\qquad\varphi_{\infty 0}=\varphi_{0\infty}^{-1}
 \]`,r``,{note:r`Here the sphere \(S\) is given and the sheaf is glued.`}),
-  'compatible-sections':entry(r`A rational function regular across infinity`,[
+  'compatible-sections':entry(r`a rational function`,[
     sphere,...localSheaves,...pair,row(r`\mathcal F`,r`\mathcal O_S`),row(r`\varphi_i`,r`[(s_0,s_\infty)\mapsto s_i]`)
   ],r`\[
 \frac1{1/w-1}=\frac w{1-w}
 \]`,r`The expressions agree on the overlap and glue on \(W\).`,{
     proofBindings:pair,proof:r`\[(s_0,s_\infty)|_V=(s_0|_{V\cap U_0},s_\infty|_{V\cap U_\infty}).\]`
   }),
-  'operations':entry(r`Retain the ring and module structures`,[
+  'operations':entry(r`rings and modules`,[
     sphere,row(r`\mathcal O`,r`\mathcal O_S`),row(r`\mathcal F_i`,r`\mathcal O_{U_i}`,r`sheaf of rings and modules`),row(r`\varphi_{ij}`,r`\text{coordinate substitution}`),row(r`\mathcal F(W)`,r`\{(s_0,s_\infty):s_0(z)=s_\infty(1/z)\}`)
   ],r`\[
 \begin{gathered}
@@ -70,12 +70,12 @@ f^\sharp(h)(z)=h(1/z)
 \varphi_{ij}(st)=\varphi_{ij}(s)\varphi_{ij}(t)
 \end{gathered}
 \]`,r``,{proof:r`The equalizer is closed under addition and multiplication because both restriction maps preserve them.`}),
-  'uniqueness':entry(r`The sheaf is recovered from its charts`,[
+  'uniqueness':entry(r`a sheaf from its charts`,[
     sphere,row(r`\operatorname{Sh}(X)`,r`\operatorname{Sh}(S)`),row(r`\mathcal F`,r`\mathcal O_S`),row(r`\mathcal F|_{U_i}`,r`\mathcal O_{U_i}`),row(r`\varphi_{ij}`,r`\text{canonical overlap identification}`)
   ],r`\[
 \mathcal O_S\longmapsto(\mathcal O_{U_i},\varphi_{ij})\longmapsto\mathcal O_S
 \]`,r``,{proof:r`The compatible pairs recover the original sheaf. Any chartwise maps respecting the transitions give a unique map on these pairs.`}),
-  'maps':entry(r`The exponential and the inclusion of units`,[
+  'maps':entry(r`exponential and units`,[
     sphere,row(r`\mathcal F_i`,r`\mathcal O_{U_i}`),row(r`\mathcal G`,r`\mathcal O_S^\times`),row(r`f_i`,r`[s_i\mapsto e^{s_i}]`),row(r`f`,r`\exp`),row(r`g_i`,r`\mathcal O_{U_i}^\times\hookrightarrow\mathcal O_{U_i}`),row(r`g`,r`\mathcal O_S^\times\hookrightarrow\mathcal O_S`)
   ],r`\[
 \begin{gathered}
@@ -83,7 +83,7 @@ f_i(s_i)=e^{s_i}\ \longmapsto\ f(s)=e^s,\\
 g_i(u_i)=u_i\ \longmapsto\ g(u)=u.
 \end{gathered}
 \]`,r``),
-  'charts':entry(r`Assign the gluing data`,[
+  'charts':entry(r`gluing data`,[
 
     row(r`I`,r`\{1,2\}`),
     row(r`X_i`,r`\begin{cases}\mathbb C_z&i=1\\\mathbb C_w&i=2\end{cases}`,r`separate locally ringed spaces`),
@@ -96,7 +96,7 @@ U_{ii}=X_i,\\
 \varphi_{ji}\circ\varphi_{ij}=\operatorname{id}_{U_{ij}}
 \end{gathered}
 \]`,r``,{note:r`The next lemma denotes the image of \(X_i\) by \(U_i\).`}),
-  'quotient':entry(r`Identify the constructed objects`,[
+  'quotient':entry(r`glued objects`,[
 
     row(r`X`,r`S=\mathbb P^1(\mathbb C)`),
     row(r`X_i`,r`\begin{cases}\mathbb C_z&i=1\\\mathbb C_w&i=2\end{cases}`),
@@ -116,7 +116,7 @@ U_{ii}=X_i,\\
     proofBindings:[row(r`x`,r`2\in X_1`),row(r`x'`,r`1/2\in X_2`),row(r`\varphi_{i,*}\mathcal O_i`,r`\mathcal O_{U_i}`)],
     proof:r`\[2\in\mathbb C_z\ \sim\ 1/2\in\mathbb C_w.\] The two chart origins remain distinct.`
   }),
-  'scheme':entry(r`The scheme specialization`,[
+  'scheme':entry(r`algebraic charts`,[
 
     row(r`X_i`,r`\begin{cases}\operatorname{Spec}\mathbb C[z]&i=1\\\operatorname{Spec}\mathbb C[w]&i=2\end{cases}`),
     row(r`U_i`,r`\varphi_i(X_i)`),
@@ -131,7 +131,7 @@ X=U_1\cup U_2,\\
 U_i\cong X_i\ \text{affine}.
 \end{gathered}
 \]`}),
-  'double-origin':entry(r`Gluing can give two limits of one punctured line`,[
+  'double-origin':entry(r`doubled origin`,[
     row(r`k`,r`\mathbb C`),row(r`n`,r`1`),row(r`X_1`,r`\operatorname{Spec}\mathbb C[z]`),row(r`X_2`,r`\operatorname{Spec}\mathbb C[w]`),row(r`\varphi_{12}`,r`[z\mapsto z]`),row(r`X`,r`\text{the doubled-origin line}`),row(r`f`,r`[z\mapsto z,\ w\mapsto w]`,r`map to \(\operatorname{Spec}\mathbb C[t]\)`)
   ],r`\[
 \begin{gathered}
@@ -139,7 +139,7 @@ z=w\quad(z,w\ne0),\\
 0_{X_1}\ne0_{X_2}\text{ in }X
 \end{gathered}
 \]`,r``,{note:r`On complex points, every neighbourhood of either origin meets the same punctured line near zero. The two origins cannot be separated by disjoint neighbourhoods.`}),
-  'global-functions':entry(r`The projective-line example`,[
+  'global-functions':entry(r`projective line`,[
     row(r`k`,r`\mathbb C`),row(r`x`,r`z`),row(r`y`,r`w`),row(r`\mathbf P^1_k`,r`\mathbb P^1_{\mathbb C}`),row(r`g(x)`,r`g(z)`),row(r`g(1/y)`,r`g(1/w)`),row(r`U`,r`\mathbb P^1_{\mathbb C}\setminus\{1\}`),row(r`s`,r`\frac1{z-1}=\frac w{1-w}`)
   ],r`\[
 \begin{gathered}
