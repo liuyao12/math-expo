@@ -9,12 +9,12 @@ permissions:
   contents: read
 
 concurrency:
-  group: github-pages
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   publish:
-    runs-on: macos-15
+    runs-on: ubuntu-latest
     permissions:
       contents: read
       pages: write
