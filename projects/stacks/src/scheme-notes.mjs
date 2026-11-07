@@ -951,21 +951,16 @@ F(\phi)[\gamma]=[\phi\circ\gamma],\\
 F(\phi):\mathbb Z\xrightarrow{\times2}\mathbb Z
 \end{gathered}
 \]`,'',r`Winding number gives a geometric invariant of loops. Sending loops along a map also gives a map of their invariants, and this must respect composition.`);
-const singularHomology=model('Singular homology sends cycles along a map',[
- b(r`\mathcal A`,r`\mathbf{Top}`),
- b(r`\mathcal B`,r`\mathbf{Ab}`),
- b('A',r`\text{an abelian group of coefficients}`),
- b('F',r`H_n(-;A)`,r`Singular homology in a fixed degree \(n\) with these coefficients.`),
- b('x,y',r`X,Y`),
- b(r`\phi`,r`X\to Y`)
+const singularHomology=model('Singular homology',[
+ b('F',r`H_n(-;\mathbb Z):\mathbf{Top}\to\mathbf{Ab}`),
+ b('F(X)',r`H_n(X;\mathbb Z)`),
+ b('F(f)',r`f_*:H_n(X;\mathbb Z)\to H_n(Y;\mathbb Z)`)
 ],r`\[
-\begin{gathered}
-\sigma\longmapsto\phi\circ\sigma,\\
-H_n(\phi;A):[\textstyle\sum_i a_i\sigma_i]
-\\
-\mapsto[\textstyle\sum_i a_i(\phi\circ\sigma_i)]
-\end{gathered}
-\]`,r`Postcomposition commutes with taking faces, so it descends to homology.`);
+\begin{aligned}
+(g\circ f)_*&=g_*\circ f_*,\\
+(\mathrm{id}_X)_*&=\mathrm{id}_{H_n(X;\mathbb Z)}.
+\end{aligned}
+\]`,'',r`For a fixed \(n\ge0\) and continuous maps \(f:X\to Y\), \(g:Y\to Z\).`);
 const tangentSpace=model('The chain rule makes tangent spaces functorial',[
  b(r`\mathcal A`,r`\mathbf{Man}_*`,'Pointed smooth manifolds and smooth maps preserving the marked points.'),
  b(r`\mathcal B`,r`\mathbf{Vect}_{\mathbb R}`),
@@ -1054,7 +1049,7 @@ const passageNotes={
  '01X0':tangentDivisor,
  '0AYY':conicDegree,
  '0B05':conicIntersection,
- '001B':{...fundamentalGroup,examples:[singularHomology,tangentSpace].map(example=>({...example,scope:"statement"}))},
+ '001B':{...singularHomology,examples:[fundamentalGroup,tangentSpace].map(example=>({...example,scope:"statement"}))},
  '001D':coordinateSpaces,
  '001I':doubleDual,
  '001J':matrixEquivalence,
