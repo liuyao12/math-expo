@@ -12,6 +12,8 @@ The definition path selects complete sections for the definitions and the constr
 
 All three selected readings use `scripts/reading-generator.mjs`. `src/readings.json` lists their target Stacks tags, selected section tags, prerequisite readings, and graph data. `src/readings.mjs` resolves those tags against the shared `upstream/sections.json` catalog and assembles complete sections in their original chapter order. Reused prerequisites link back to their reading. The source importer uses the same configuration, so a reading’s scope is defined in one place.
 
+Dependency graph nodes display the original definition, lemma, or section number. Their stable Stacks tags continue to identify links and source passages.
+
 `src/scheme-notes.mjs` contains the separate authored commentary. Its `sectionGroups` and `passageNotes` attach examples to stable Stacks section or statement tags. `notesFor(sectionTag, passageTag)` returns those cards in any reading containing the passage. Notes are optional. An unannotated tag produces no card, and multiple examples can share a tag. The optional complex-analysis examples assume familiarity with holomorphic functions.
 
 On desktop, each tagged group starts beside its source heading and floats down the margin until the next annotated tag pushes it away. Opening proofs and resizing repositions the anchors. Every example heading stays outside the scrolling body. Opening an example closes the others attached to that tag; clicking it again closes it. Long bodies scroll within the space left after reserving all the headings. The mobile panel shares the same accordion choices.
@@ -22,7 +24,9 @@ All example introductions, bindings, calculations, and conclusions use bullets f
 
 Keep example headings succinct: name the concept or construction, such as “fundamental group” or “tangent space.” Put explanations and claims in the body.
 
-When reviewing individual examples with the user, first quote the relevant retained Stacks definition or theorem verbatim, with a link to its tag, and let the user supply the example. A diagram can be written out directly, with its indexing category made explicit. An example can also occur elsewhere in Stacks; keep it beside the concept it illustrates and link to the upstream occurrence.
+Cards support `kind: 'analogy'` and `kind: 'non-example'`, with ordinary examples as the default. A non-example can have a brief `correction` explaining the change that makes it an example; this appears as a final bullet.
+
+When reviewing examples with the user, work one chapter at a time and prioritize the dependency graph nodes. Present two retained Stacks definitions or theorems at a time, verbatim and with source links, so the user can supply an example for one while the other is being implemented. A diagram can be written out directly, with its indexing category made explicit. An example can also occur elsewhere in Stacks; keep it beside the concept it illustrates and link to the upstream occurrence.
 
 ## Build
 

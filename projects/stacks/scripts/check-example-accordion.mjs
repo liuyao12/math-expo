@@ -23,7 +23,7 @@ try{
   const mobile=viewport.width<=760;
   const page=await browser.newPage({viewport,isMobile:mobile,hasTouch:mobile,reducedMotion:'reduce'});
   page.on('pageerror',error=>errors.push(error.message));
-  for(const [slug,anchor,tag=anchor] of [['scheme','001B'],['curves','01MN'],['curves','01XD'],['grr','02UO'],['gluing','local-functions-0','local-functions']]){
+  for(const [slug,anchor,tag=anchor] of [['scheme','001B'],['scheme','005A'],['curves','01MN'],['curves','01XD'],['grr','02UO'],['gluing','local-functions-0','local-functions']]){
    await page.goto(url(slug,anchor),{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);
    const source=page.locator('main [id="'+anchor+'"]');
    await source.evaluate(n=>scrollBy({top:n.getBoundingClientRect().top-innerHeight*.3+25,behavior:'instant'}));
@@ -39,6 +39,11 @@ try{
     assert.deepEqual(crowded,[],'All tagged heading groups fit without colliding');
    }
    const cards=group.locator(':scope > .example-disclosure'),count=await cards.count();assert(count>=1);
+   if(tag==='005A'){
+    assert.equal(await cards.first().locator('summary').innerText(),'Non-example: usual topology');
+    assert.equal(await cards.last().locator('summary').innerText(),'Example: Zariski topology');
+    assert((await cards.first().locator('.example-correction').textContent()).includes('Correction: Use the Zariski topology'));
+   }
    for(let index=0;index<count;index++){
     const card=cards.nth(index),key=await card.getAttribute('data-example-card');
     if(!await card.evaluate(n=>n.open))await card.locator('summary').click();

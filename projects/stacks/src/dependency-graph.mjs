@@ -73,7 +73,7 @@ export function renderDependencyGraph(tree,references,base,idPrefix=''){
   const outsideReading=!location||location.slug!==readingSlug;
   const origin=outsideReading?` · ${location?.readingTitle||"The Stacks Project"}`:"";
   const route=location?`${base}${location.slug}/`:null;
-  return [tag,{tag,depth,kind:ref.kind,root:tag===tree.rootTag,outsideReading,
+  return [tag,{tag,depth,number:String(ref.number),kind:ref.kind,root:tag===tree.rootTag,outsideReading,
    label:`${ref.kind[0].toUpperCase()+ref.kind.slice(1)} ${ref.number} · ${node.title}${origin}`,
    href:route?`${route}#${tag}`:`https://stacks.math.columbia.edu/tag/${tag}`,
    section:route&&location.section.tag!==tag?`${route}#${location.section.tag}`:null
@@ -83,7 +83,7 @@ export function renderDependencyGraph(tree,references,base,idPrefix=''){
  const edges=entries.flatMap(node=>(tree.nodes[node.tag].uses||[]).map(used=>[nodes.get(used),node]));
  const [width,height]=layout(entries,edges);
  const lines=edges.map(([from,to])=>`<line data-from="${esc(from.tag)}" data-to="${esc(to.tag)}" x1="${from.x}" y1="${from.y}" x2="${to.x}" y2="${to.y}" marker-end="url(#${idPrefix}dependency-arrow)"/>`).join('');
- const links=entries.map(node=>`<a id="${idPrefix}${esc(node.tag)}" data-tag="${esc(node.tag)}" data-kind="${esc(node.kind)}" class="dependency-node${node.root?' dependency-target':''}${node.outsideReading?' outside-reading':''}" href="${esc(node.href)}" aria-label="${esc(node.label)}"${node.section?` data-section="${esc(node.section)}"`:''} transform="translate(${node.x} ${node.y})"><title>${esc(node.label)}</title><circle class="graph-node-ring" r="26"/><circle class="graph-node-body" r="22"/><text text-anchor="middle" dy=".35em">${esc(node.tag)}</text></a>`).join('');
+ const links=entries.map(node=>`<a id="${idPrefix}${esc(node.tag)}" data-tag="${esc(node.tag)}" data-kind="${esc(node.kind)}" class="dependency-node${node.root?' dependency-target':''}${node.outsideReading?' outside-reading':''}" href="${esc(node.href)}" aria-label="${esc(node.label)}"${node.section?` data-section="${esc(node.section)}"`:''} transform="translate(${node.x} ${node.y})"><title>${esc(node.label)}</title><circle class="graph-node-ring" r="26"/><circle class="graph-node-body" r="22"/><text text-anchor="middle" dy=".35em" style="font-size:${Math.min(13,Math.round(76/node.number.length))}px">${esc(node.number)}</text></a>`).join('');
  const root=nodes.get(tree.rootTag);
  const legend=[['definition','Definition'],['proposition','Proposition'],['lemma','Lemma'],['section','Section'],['example','Example'],['situation','Situation']]
   .filter(([kind])=>entries.some(node=>node.kind===kind))

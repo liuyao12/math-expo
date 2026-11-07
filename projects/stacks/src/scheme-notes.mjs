@@ -18,20 +18,23 @@ const models={
  ],r`\[
 W\subset V\text{ open}\ \Longrightarrow\ \varphi^{-1}(W)\text{ open}
 \]`,'',r`A coordinate chart carries Euclidean neighbourhoods back to the manifold. Both directions of the chart are continuous.`),
- basis:model('metric balls',[
-  b('X',r`(X,d)\text{ a metric space}`),
-  b(r`\mathcal B`,r`\{B(x,r):x\in X,\ r>0\}`)
- ],r`\[
-x\in U\text{ open}\ \Longrightarrow\ B(x,r)\subset U
-\]`,r`Choose a sufficiently small \(r>0\) at each \(x\).`,r`Open balls are why continuity between metric spaces can be tested with the usual \(\varepsilon\) and \(\delta\).`),
+ basis:model('Euclidean space',[
+  b('X',r`\mathbb R^n`),
+  b(r`\mathcal B`,r`\{B_r(q):q\in\mathbb Q^n,\ r\in\mathbb Q_{>0}\}`,r`\(B_r(q)\) is an open ball.`)
+ ],'',''),
  irreducible:model('affine line',[A,b('Z',r`V(z(z-1))`),b(r`\eta`,r`(0)`)],r`\[
 \overline{\{(0)\}}=X
 \]`,r`Every proper closed subset is finite, so any two nonempty opens meet.`,r`An algebraic curve can have separate branches even when it is connected. Irreducibility asks whether it is a single algebraic piece.`),
- compact:model('finite atlases',[
-  b('X',r`M\text{ a compact manifold}`),b(r`\mathcal U`,r`\{U_i\}_{i\in I}\text{ a chart cover}`)
- ],r`\[
-\exists\,J\subset I\text{ finite}\quad X=\bigcup_{i\in J}U_i
-\]`,'',r`A compact manifold admits a finite atlas. Any atlas already covering it has a finite subcover.`),
+ compact:{...model('usual topology',[b('X',r`\mathbb C`)],r`\[
+\begin{gathered}
+\mathbb C=\bigcup_{n\ge1}\{z:|z|<n\},\\
+\text{no finite subcover}.
+\end{gathered}
+\]`,''),kind:'non-example',
+ correction:r`Use the Zariski topology on \(\mathbb C\).`,
+ examples:[model('Zariski topology',[b('X',r`\mathbb C`)],r`\[
+U\ne\varnothing\text{ open}\ \Longrightarrow\ \mathbb C\setminus U\text{ finite}.
+\]`,r`Every open cover has a finite subcover.`)]},
  specialization:model('specialization',[A,b('x',r`\eta=(0)`),b("x'",r`(z-a)`)],r`\[
 (0)\subset(z-a)\quad\Longrightarrow\quad x'\in\overline{\{x\}}
 \]`,'',r`At the generic point, a rational formula is evaluated in \(\mathbb C(z)\). At \(a\), any formula regular there can be specialized by setting \(z=a\).`),
@@ -1067,6 +1070,8 @@ h\longmapsto h(0)+h'(0)\epsilon
 \]`,'',r`The underlying space is a single point. Its structure ring also remembers the linear term of a Taylor expansion.`)]
 };
 const passageNotes={
+ '004P':models.basis,
+ '005A':models.compact,
  '002E':padicLimit,
  '002F':sphereColimit,
  '01ET':{...cechSpectral,examples:[cechSphere]},
