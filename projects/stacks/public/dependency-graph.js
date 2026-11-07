@@ -10,6 +10,8 @@
  const nodes=[...svg.querySelectorAll('.dependency-node')];
  const edges=[...svg.querySelectorAll('.graph-edges line')];
  const bounds=svg.viewBox.baseVal;
+ const edgePadding=Number(svg.dataset.nodeRadius||26)+2;
+ let activeTrigger=null;
 
  const describe=node=>{
   passage.textContent=node.getAttribute('aria-label');
@@ -31,14 +33,14 @@
  }
 
  let zoom=1;
+ const fitWidth=()=>Math.min(viewport.clientWidth,(dialog?viewport.clientHeight:innerHeight*.75)*bounds.width/bounds.height);
+ const maxZoom=()=>dialog?Math.max(4,bounds.width*3/fitWidth()):4;
  const fit=()=>{
   if(dialog&&!dialog.open)return;
-  const viewHeight=dialog?viewport.clientHeight:innerHeight*.75;
-  const fitWidth=Math.min(viewport.clientWidth,viewHeight*bounds.width/bounds.height);
-  svg.style.width=`${Math.round(fitWidth*zoom)}px`;
+  svg.style.width=`${Math.round(fitWidth()*zoom)}px`;
   svg.style.margin=dialog&&zoom>1?`${viewport.clientHeight/2}px ${viewport.clientWidth/2}px`:'';
-  controls.querySelector('[data-zoom="out"]').disabled=zoom===1;
-  controls.querySelector('[data-zoom="in"]').disabled=zoom===4;
+  controls.querySelector('[data-zoom="out"]').disabled=zoom<=1;
+  controls.querySelector('[data-zoom="in"]').disabled=zoom>=maxZoom();
  };
  const viewportCenter=()=>{
   const board=viewport.getBoundingClientRect(),image=svg.getBoundingClientRect();
@@ -57,14 +59,24 @@
   const action=event.target.dataset.zoom;
   if(!action)return;
   const center=viewportCenter();
-  zoom=action==='fit'?1:Math.max(1,Math.min(4,zoom*(action==='in'?1.45:1/1.45)));
+  zoom=action==='fit'?1:Math.max(1,Math.min(maxZoom(),zoom*(action==='in'?1.45:1/1.45)));
   fit();
   centerAt(center);
  });
- window.addEventListener('resize',fit);
+ const placeDialog=()=>{
+  if(!dialog?.open||!activeTrigger)return;
+  const anchor=activeTrigger.getBoundingClientRect(),box=dialog.getBoundingClientRect();
+  const left=Math.max(12,Math.min(innerWidth-box.width-12,anchor.left));
+  const below=anchor.bottom+10,above=anchor.top-box.height-10;
+  const top=below+box.height<=innerHeight-12?below:above>=12?above:Math.max(12,Math.min(innerHeight-box.height-12,below));
+  dialog.style.left=left+'px';dialog.style.top=top+'px';
+ };
+ window.addEventListener('resize',()=>{
+  if(dialog?.open){const center=viewportCenter();placeDialog();fit();centerAt(center);}else fit();
+ });
  fit();
 
- if(dialog&&typeof dialog.showModal==='function'){
+ if(dialog&&typeof dialog.show==='function'){
   document.addEventListener('click',event=>{
    const trigger=event.target.closest('[data-dependency-tag]');
    if(!trigger||event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
@@ -74,12 +86,31 @@
    graph.querySelector('.is-current')?.classList.remove('is-current');
    node.classList.add('is-current');
    describe(node);
-   dialog.showModal();
-   zoom=2.15;
+   activeTrigger?.setAttribute('aria-expanded','false');activeTrigger=trigger;
+   activeTrigger.setAttribute('aria-expanded','true');
+   if(!dialog.open)dialog.show();
+   placeDialog();
+   // Keep nodes at a readable local scale, independent of the full graph size.
+   const localScale=Math.min(1.3,viewport.clientHeight/240);
+   zoom=Math.max(1,bounds.width*localScale/fitWidth());
    fit();
    const position=node.transform.baseVal.getItem(0).matrix;
    centerAt({x:position.e/bounds.width,y:position.f/bounds.height});
+   dialog.querySelector('header button').focus({preventScroll:true});
   });
+  document.addEventListener('pointerdown',event=>{
+   if(dialog.open&&!dialog.contains(event.target)&&!event.target.closest('[data-dependency-tag]'))dialog.close();
+  });
+  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&dialog.open){event.preventDefault();dialog.close();}});
+  dialog.addEventListener('close',()=>{
+   const trigger=activeTrigger;activeTrigger=null;trigger?.setAttribute('aria-expanded','false');trigger?.focus({preventScroll:true});
+  });
+  dialog.addEventListener('toggle',event=>{if(event.target.matches('details.graph-key'))placeDialog();},true);
+  window.addEventListener('scroll',()=>{
+   if(!dialog.open||!activeTrigger)return;
+   const anchor=activeTrigger.getBoundingClientRect();
+   if(anchor.bottom<0||anchor.top>innerHeight)dialog.close();else placeDialog();
+  },{passive:true});
   graph.addEventListener('click',event=>{
    if(!event.defaultPrevented&&event.target.closest('a[href]'))dialog.close();
   });
@@ -120,8 +151,8 @@
    suppressClick=true;
   }
   const p=point(event);
-  const nx=Math.max(28,Math.min(bounds.width-28,p.x+dx));
-  const ny=Math.max(28,Math.min(bounds.height-28,p.y+dy));
+  const nx=Math.max(edgePadding,Math.min(bounds.width-edgePadding,p.x+dx));
+  const ny=Math.max(edgePadding,Math.min(bounds.height-edgePadding,p.y+dy));
   node.setAttribute('transform',`translate(${nx} ${ny})`);
   for(const line of edges){
    if(line.dataset.from===node.dataset.tag){line.setAttribute('x1',nx);line.setAttribute('y1',ny);}

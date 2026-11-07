@@ -117,7 +117,7 @@ export function buildReadings({root,dist,head,header,footer,renderExampleCard,as
  for(const {slug,html,tree} of readerPages){
   const inset=tree?`<dialog class="dependency-dialog" aria-labelledby="dependency-dialog-title">
    <header><h2 id="dependency-dialog-title">Dependency graph</h2><form method="dialog"><button type="submit" autofocus>Close</button></form></header>
-   <p class="graph-hint">Drag the background to pan. Zoom out to see more, or select a numbered node to jump to its passage.</p>
+   <p class="graph-hint">Drag to explore; zoom out for the full graph.</p>
    ${graphHTML(tree,'inset-','../')}
   </dialog>${graphScript('../')}`:'';
   const dir=path.join(dist,slug);

@@ -200,21 +200,24 @@ body:has(.reader-layout) .site-header{position:sticky;top:0}.reading-progress{he
 .graph-detail { min-height: 2em; }
 .graph-detail [data-graph-section] { margin-inline-start: .55em; white-space: nowrap; font: 12px var(--sans); }
 
-body:has(.dependency-dialog[open]) { overflow: hidden; }
 .dependency-dialog {
   box-sizing: border-box;
-  width: min(860px, calc(100% - 24px));
+  position: fixed;
+  inset: 12px auto auto 12px;
+  z-index: 50;
+  margin: 0;
+  width: min(500px, calc(100% - 24px));
   max-width: none;
   max-height: calc(100dvh - 24px);
-  padding: clamp(.7rem, 2.2vw, 1.4rem);
+  padding: .75rem;
   border: 1px solid var(--line);
   border-radius: .55rem;
   background: var(--paper);
   color: var(--ink);
+  box-shadow: 0 10px 36px #202b2730;
 }
-.dependency-dialog::backdrop { background: #202b27a6; }
 .dependency-dialog > header { display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
-.dependency-dialog h2 { margin: 0; font-size: clamp(19px, 3vw, 25px); }
+.dependency-dialog h2 { margin: 0; font-size: 19px; }
 .dependency-dialog header button {
   padding: .4rem .65rem;
   border: 1px solid var(--line);
@@ -224,9 +227,10 @@ body:has(.dependency-dialog[open]) { overflow: hidden; }
   font: 13px var(--sans);
   cursor: pointer;
 }
-.dependency-dialog .graph-viewport { height: min(56dvh, 500px); max-height: none; }
-.dependency-dialog .graph-detail { margin: .6rem 0 0; font-size: 15px; }
-.dependency-dialog .graph-hint { margin: .4rem 0; color: var(--muted); font: 12px var(--sans); }
+.dependency-dialog .graph-viewport { height: min(34dvh, 260px); max-height: none; overscroll-behavior: contain; }
+.dependency-dialog .graph-detail { margin: .5rem 0 0; font-size: 13px; line-height: 1.4; max-height: 4.2em; overflow: auto; }
+.dependency-dialog .graph-hint { margin: .35rem 0; color: var(--muted); font: 11px/1.4 var(--sans); }
+.graph-key > summary { cursor: pointer; color: var(--muted); font: 11px/1.5 var(--sans); margin: .2rem 0; }
 
 .outline-tree,
 .outline-tree ul {

@@ -12,7 +12,7 @@ The definition path selects complete sections for the definitions and the constr
 
 All three selected readings use `scripts/reading-generator.mjs`. `src/readings.json` lists their target Stacks tags, selected section tags, prerequisite readings, and graph data. `src/readings.mjs` resolves those tags against the shared `upstream/sections.json` catalog and assembles complete sections in their original chapter order. Reused prerequisites link back to their reading. The source importer uses the same configuration, so a reading’s scope is defined in one place.
 
-Dependency graph nodes display the original definition, lemma, or section number. Their stable Stacks tags continue to identify links and source passages.
+Dependency graph nodes display a type initial and the original number, such as `D 5.5.1` or `L 10.17.2`. Their stable Stacks tags continue to identify links and source passages. A yellow number opens a compact, nonmodal inset beside that number, centered at a readable scale on its neighborhood. Pan or zoom out to explore the rest of the graph; select a node to read its passage. Escape, Close, or a click outside dismisses the inset.
 
 `src/scheme-notes.mjs` contains the separate authored commentary. Its `sectionGroups` and `passageNotes` attach examples to stable Stacks section or statement tags. `notesFor(sectionTag, passageTag)` returns those cards in any reading containing the passage. Notes are optional. An unannotated tag produces no card, and multiple examples can share a tag. The optional complex-analysis examples assume familiarity with holomorphic functions.
 
@@ -26,13 +26,15 @@ Keep example headings succinct: name the concept or construction, such as “fun
 
 Cards support `kind: 'analogy'` and `kind: 'non-example'`, with ordinary examples as the default. A non-example can have a brief `correction` explaining the change that makes it an example; this appears as a final bullet.
 
-When reviewing examples with the user, work one chapter at a time and prioritize the dependency graph nodes. Present two retained Stacks definitions or theorems at a time, verbatim and with source links, so the user can supply an example for one while the other is being implemented. A diagram can be written out directly, with its indexing category made explicit. An example can also occur elsewhere in Stacks; keep it beside the concept it illustrates and link to the upstream occurrence.
+When reviewing examples with the user, work one chapter at a time and prioritize the dependency graph nodes. Post two numbered retained Stacks statements directly in chat, verbatim and with source links. Accept answers in separate messages and start implementing the first answer while the second is pending; do not require a joint submission. A diagram can be written out directly, with its indexing category made explicit. An example can also occur elsewhere in Stacks; keep it beside the concept it illustrates and link to the upstream occurrence.
 
 ## Build
 
 No npm installation is required. Builds use Node; checks also use Python 3. From this directory run `node scripts/build.mjs` and `node scripts/check.mjs`, or build all projects from the repository root. The reader is published at `/math-expo/stacks/`.
 
 The optional browser regression `scripts/check-example-accordion.mjs` uses an installed Playwright and Chromium. Set `PLAYWRIGHT_MODULE` to the module's absolute path and, if necessary, `BROWSER_PATH` to the browser executable. Set `STACKS_BASE` to the local or deployed Stacks base URL, ending in `/`.
+
+`scripts/check-dependency-inset.mjs` uses the same variables to check compact local graph views, typed numbers, zoom, dismissal, and navigation on desktop and mobile.
 
 ## Source and future readings
 
