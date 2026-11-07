@@ -949,16 +949,23 @@ F(\phi)[\gamma]=[\phi\circ\gamma],\\
 F(\phi):\mathbb Z\xrightarrow{\times2}\mathbb Z
 \end{gathered}
 \]`,'',r`Winding number gives a geometric invariant of loops. Sending loops along a map also gives a map of their invariants, and this must respect composition.`);
-const singularHomology=model('Singular homology',[
- b('F',r`H_n(-;\mathbb Z):\mathbf{Top}\to\mathbf{Ab}`),
- b('F(X)',r`H_n(X;\mathbb Z)`),
- b('F(f)',r`f_*:H_n(X;\mathbb Z)\to H_n(Y;\mathbb Z)`)
+const singularHomology=model('singular homology',[
+ b(r`\mathcal A`,r`\mathbf{Top}\text{ of topological spaces}`),
+ b(r`\mathcal B`,r`\mathbf{Ab}\text{ of abelian groups}`)
 ],r`\[
 \begin{aligned}
-(g\circ f)_*&=g_*\circ f_*,\\
-(\mathrm{id}_X)_*&=\mathrm{id}_{H_n(X;\mathbb Z)}.
+F=H_n(-;\mathbb Z):\mathbf{Top}&\longrightarrow\mathbf{Ab}\\
+X&\longmapsto H_n(X;\mathbb Z)
 \end{aligned}
-\]`,'',r`For a fixed \(n\ge0\) and continuous maps \(f:X\to Y\), \(g:Y\to Z\).`);
+\]
+For a morphism \(f:X\to Y\) in the category \(\mathbf{Top}\),
+\[
+F(f)=f_*:H_n(X;\mathbb Z)\longrightarrow H_n(Y;\mathbb Z)
+\]
+is a homomorphism of abelian groups, such that
+\[
+(f\circ g)_*=f_*\circ g_*\qquad\text{(functoriality)}
+\]`,'');
 const tangentSpace=model('The chain rule makes tangent spaces functorial',[
  b(r`\mathcal A`,r`\mathbf{Man}_*`,'Pointed smooth manifolds and smooth maps preserving the marked points.'),
  b(r`\mathcal B`,r`\mathbf{Vect}_{\mathbb R}`),
