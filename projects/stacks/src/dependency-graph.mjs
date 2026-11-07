@@ -72,7 +72,7 @@ export function renderDependencyGraph(tree,references,base,idPrefix=''){
   const location=tree.locations.get(tag);
   const outsideReading=!location||location.slug!==readingSlug;
   const origin=outsideReading?` · ${location?.readingTitle||"The Stacks Project"}`:"";
-  const route=location?`${base}read/${location.slug}/`:null;
+  const route=location?`${base}${location.slug}/`:null;
   return [tag,{tag,depth,kind:ref.kind,root:tag===tree.rootTag,outsideReading,
    label:`${ref.kind[0].toUpperCase()+ref.kind.slice(1)} ${ref.number} · ${node.title}${origin}`,
    href:route?`${route}#${tag}`:`https://stacks.math.columbia.edu/tag/${tag}`,

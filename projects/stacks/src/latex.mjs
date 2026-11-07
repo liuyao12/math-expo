@@ -37,7 +37,7 @@ export function createRenderer(root, options={}) {
     if(tex.includes('\\xymatrix')&&Object.keys(sourceDiagrams).length){
       const key=createHash('sha256').update(tex.trim()).digest('hex').slice(0,24),diagram=sourceDiagrams[key];
       if(!diagram)throw Error('Missing original-source diagram '+key+'; regenerate source diagrams.');
-      return `<div class="math-display original-diagram"><img class="source-diagram" src="../../diagrams/${diagram.file}?v=${diagram.svg_sha256.slice(0,12)}" width="${Math.ceil(diagram.width*1.8)}" height="${Math.ceil(diagram.height*1.8)}" alt="Commutative diagram typeset from the original Stacks LaTeX" loading="lazy"></div>`;
+      return `<div class="math-display original-diagram"><img class="source-diagram" src="../diagrams/${diagram.file}?v=${diagram.svg_sha256.slice(0,12)}" width="${Math.ceil(diagram.width*1.8)}" height="${Math.ceil(diagram.height*1.8)}" alt="Commutative diagram typeset from the original Stacks LaTeX" loading="lazy"></div>`;
     }
     if(tex.includes('\\xymatrix'))throw Error('Original-source diagram assets are required.');
     tex=tex.trim().replace(/\\begin\{eqnarray\*\}/g,'\\begin{aligned}').replace(/\\end\{eqnarray\*\}/g,'\\end{aligned}').replace(/&\s*(=|\\mapsto)\s*&/g,'& $1 ');

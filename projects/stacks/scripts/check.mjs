@@ -9,8 +9,9 @@ import {loadReadingCatalog,loadReadings,loadReferenceReadings,assembleReading} f
 import assert from 'node:assert/strict';
 import {examples} from '../src/matches.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url)),dist=path.join(root,'dist');
+if(fs.existsSync(path.join(dist,'read')))throw Error('Retired /read/ routes must not be generated, including redirects');
 const manifest=JSON.parse(fs.readFileSync(path.join(root,'upstream/manifest.json'),'utf8'));
-const html=fs.readFileSync(path.join(dist,'read/gluing/index.html'),'utf8');
+const html=fs.readFileSync(path.join(dist,'gluing/index.html'),'utf8');
 let proofCount=0,statementCount=0;
 const renderer=createRenderer(root);
 for(const [key,item] of Object.entries(examples)){
@@ -46,6 +47,7 @@ for(const file of files(dist).filter(f=>f.endsWith('.html'))){
   const source=fs.readFileSync(file,'utf8');
   for(const m of source.matchAll(/(?:href|src)="([^"#]+)(?:#[^"]*)?"/g)){
     if(/^(https?:|mailto:|data:)/.test(m[1]))continue;
+    if(/(?:^|\/)read\//.test(m[1]))throw Error('Retired reader URL in '+file+': '+m[1]);
     let target=path.resolve(path.dirname(file),m[1].split('?')[0]);
     if(m[1].endsWith('/'))target=path.join(target,'index.html');
     if(!target.startsWith(dist))continue;
@@ -79,7 +81,7 @@ for(const section of grr.sections){
 const refs=JSON.parse(fs.readFileSync(path.join(root,'upstream/references.json'),'utf8'));
 let pathProofs=0,pathStatements=0;
 for(const unit of originalUnits){
-  const file=path.join(dist,'read',unit.slug,'index.html'),html=fs.readFileSync(file,'utf8');
+  const file=path.join(dist,unit.slug,'index.html'),html=fs.readFileSync(file,'utf8');
   const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);
   if(new Set(ids).size!==ids.length)throw Error('Duplicate source anchors in '+unit.slug);
   let proofs=0,statements=0;
@@ -106,7 +108,7 @@ for(const unit of originalUnits){
   if(!unit.readingTitle){pathProofs+=proofs;pathStatements+=statements;}
 }
 const finalDefinition=refs['schemes-definition-scheme'].tag;
-if(!fs.readFileSync(path.join(dist,'read/schemes/index.html'),'utf8').includes(`id="${finalDefinition}"`))throw Error('Missing scheme definition');
+if(!fs.readFileSync(path.join(dist,'schemes/index.html'),'utf8').includes(`id="${finalDefinition}"`))throw Error('Missing scheme definition');
 
 const css=fs.readFileSync(path.join(dist,'vendor/katex/katex.min.css'),'utf8');
 for(const m of css.matchAll(/url\(([^)]+)\)/g))if(!fs.existsSync(path.join(dist,'vendor/katex',m[1])))throw Error('Missing KaTeX font '+m[1]);
@@ -120,7 +122,7 @@ const originalChapters=JSON.parse(fs.readFileSync(path.join(root,'src/chapters.j
 for(const unit of originalUnits){
   const chapter=originalChapters.find(c=>c.slug===unit.sections[0].chapter);
   if(!chapter||chapter.title!==unit.title||chapter.number!==unit.number)throw Error('Changed original chapter title '+unit.slug);
-  const html=fs.readFileSync(path.join(dist,'read',unit.slug,'index.html'),'utf8');
+  const html=fs.readFileSync(path.join(dist,unit.slug,'index.html'),'utf8');
   const title=unit.chapterHeadings?unit.readingTitle:chapter.title;
   if(!html.includes('<h1>'+escapeHTML(title)+'</h1>'))throw Error('Missing reading heading '+unit.slug);
   const records=JSON.parse(html.match(/<script type="application\/json" id="source-data">([\s\S]*?)<\/script>/)[1]);
@@ -131,6 +133,7 @@ for(const unit of originalUnits){
     if(createHash('sha256').update(source).digest('hex')!==section.sha256)throw Error('Altered section source '+section.slug);
     if(!headings.includes('<'+sectionHeading+'>'+section.number+'. '+escapeHTML(section.title)+'</'+sectionHeading+'>'))throw Error('Changed original section title '+section.slug);
     if(!records[section.tag].html.includes('<pre><code>'+escapeHTML(source)+'</code></pre>'))throw Error('Missing margin source '+section.slug);
+    if(!fs.existsSync(path.resolve(path.dirname(path.join(dist,unit.slug,'index.html')),records[section.tag].download)))throw Error('Broken margin source download '+section.slug);
   }
   if(unit.chapterHeadings){
     const numbers=unit.sections.map(s=>s.number);
@@ -161,7 +164,7 @@ if(proseCheck.status!==0)process.exit(proseCheck.status??1);
 console.log(`Validated original titles, prerequisite audit, verbatim source views, and ${Object.keys(diagrams).length} original LaTeX diagrams.`);
 
 for(const route of [...originalUnits.map(u=>u.slug),'gluing']){
-  const html=fs.readFileSync(path.join(dist,'read',route,'index.html'),'utf8');
+  const html=fs.readFileSync(path.join(dist,route,'index.html'),'utf8');
   const main=html.match(/<main id="main" class="reader-main verbatim-main">([\s\S]*?)<\/main>/)?.[1];
   if(!main)throw Error('Missing verbatim text column '+route);
   for(const cls of ['example-jump','object-ref','source-tex','source-note','source-links','edition-note','reading-deck','reading-controls','reading-contents','path-navigation','tag']){

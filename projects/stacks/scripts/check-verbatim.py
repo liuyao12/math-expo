@@ -52,7 +52,7 @@ for unit in manifest['units']:
  sections=[section for section in unit['sections'] if section['tag'] in core_tags]
  if sections:core_units.append(dict(slug='core-'+unit['slug'],sections=sections))
 for unit in manifest['units']+core_units+selected_readings+[dict(slug='gluing',sections=gluing['sections'])]:
- parser=Prose();parser.feed((root/'dist/read'/unit['slug']/'index.html').read_text())
+ parser=Prose();parser.feed((root/'dist'/unit['slug']/'index.html').read_text())
  if list(parser.sections)!=[section['tag'] for section in unit['sections']]:raise SystemExit('Unexpected sections in '+unit['slug'])
  for section in unit['sections']:
   raw=(root/'upstream/sections'/(section['slug']+'.tex')).read_bytes()
