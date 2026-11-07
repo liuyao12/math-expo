@@ -981,7 +981,7 @@ X @= X
 \]
 \[
 u_x:E_x\longrightarrow F_x\quad\text{linear}.
-\]`,r`Vector bundles and their bundle maps form a subcategory of \(\mathbf{Man}/X\).`,r`Vector bundles \(p:E\to X\) and \(q:F\to X\) over a fixed smooth manifold \(X\).`);
+\]`,r`The bundle projections are objects of \(\mathbf{Man}/X\), and bundle maps give morphisms there.`,r`Vector bundles \(p:E\to X\) and \(q:F\to X\) over a fixed smooth manifold \(X\).`);
 const pointedSpacesUnder=model('Pointed spaces',[
  b(r`\mathcal C`,r`\mathbf{Top}`),
  b('X',r`\{*\}`)
