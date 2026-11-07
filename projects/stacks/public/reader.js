@@ -39,13 +39,13 @@
   outline?.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeOutline));
   const dock=$('#example-dock');let previousFocus;
   const closeExample=()=>{dock?.classList.remove('is-open');dock?.removeAttribute('aria-modal');dock?.removeAttribute('role');document.body.style.overflow='';previousFocus?.focus();};
-  const openExample=trigger=>{if(matchMedia('(max-width:760px)').matches){previousFocus=trigger;dock.classList.add('is-open');dock.setAttribute('role','dialog');dock.setAttribute('aria-modal','true');document.body.style.overflow='hidden';$('#close-example').focus();drawAll();}else dock.focus({preventScroll:true});};
+  const openExample=trigger=>{if(matchMedia('(max-width:760px)').matches){previousFocus=trigger;dock.classList.add('is-open');dock.setAttribute('role','dialog');dock.setAttribute('aria-modal','true');document.body.style.overflow='hidden';$('#close-example').focus();dock.dispatchEvent(new Event('examplepanelchange'));drawAll();}else dock.focus({preventScroll:true});};
   $$('[data-show-example]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();openExample(a);}));
   $('#close-example')?.addEventListener('click',closeExample);
   document.addEventListener('keydown',event=>{
     if(event.key==='Escape'){closeExample();closeOutline();}
     if(event.key!=='Tab'||!dock?.classList.contains('is-open'))return;
-    const controls=[...dock.querySelectorAll('button,input,a[href],summary')].filter(control=>{
+    const controls=[...dock.querySelectorAll('button,input,a[href],summary,[tabindex="0"]')].filter(control=>{
       const closed=control.closest('details:not([open])');
       return !control.disabled&&control.getClientRects().length&&(!closed||closed.firstElementChild===control);
     });
@@ -70,8 +70,30 @@
     current=Object.keys(data)[0];lastReading=current;passages=$$('.passage[data-example]');
     const exampleContent=$('#example-content');
     const openCards=new Map();
+    const tools=dock.querySelector('.example-sticky');
+    const mobile=()=>matchMedia('(max-width:760px)').matches;
+    const fitGroup=(group,available)=>{
+      // Reserve room for every heading; only the open card's body may scroll.
+      const chrome=[...group.children].reduce((height,child)=>{
+        if(!child.matches('.example-disclosure'))return height+child.getBoundingClientRect().height;
+        const style=getComputedStyle(child);
+        return height+child.querySelector('summary').getBoundingClientRect().height+parseFloat(style.borderTopWidth)+parseFloat(style.borderBottomWidth);
+      },0);
+      group.style.setProperty('--example-body-room',Math.max(0,available-chrome)+'px');
+    };
+    const fitPanel=()=>{
+      if(!exampleContent.getClientRects().length)return;
+      const available=innerHeight-Math.max(mobile()?65:99,tools.getBoundingClientRect().top)-16;
+      const contentBox=exampleContent.getBoundingClientRect();
+      const outside=contentBox.top-tools.getBoundingClientRect().top+exampleContent.parentElement.getBoundingClientRect().bottom-contentBox.bottom+parseFloat(getComputedStyle(tools).paddingBottom);
+      fitGroup(exampleContent,Math.max(0,available-outside));
+    };
+    let layoutAnchors=()=>{},fitFloating=()=>{},layoutPending=false;
+    const fitVisibleExamples=()=>{if(mobile()||dock.dataset.exampleLayout!=='anchored')fitPanel();else fitFloating();};
+    const layoutExamples=()=>{layoutPending=false;layoutAnchors();fitVisibleExamples();};
+    const scheduleExampleLayout=()=>{if(!layoutPending){layoutPending=true;requestAnimationFrame(layoutExamples);}};
     if(dock.dataset.exampleLayout==='anchored'){
-      const main=$('#main'),tools=dock.querySelector('.example-sticky');
+      const main=$('#main');
       const flow=document.createElement('div');
       flow.className='example-flow';
       const notes=keys.map(key=>{
@@ -90,41 +112,62 @@
         label.append(link);note.append(label);
         note.insertAdjacentHTML('beforeend',data[key].html);
         band.append(note);
-        return {anchor,peg,band};
+        return {anchor,peg,band,note,span:0};
       }).filter(Boolean).sort((a,b)=>a.anchor.compareDocumentPosition(b.anchor)&Node.DOCUMENT_POSITION_FOLLOWING?-1:1);
       flow.append(...notes.map(note=>note.band));dock.append(flow);
       dock.classList.add('has-floating-examples');
-      let layoutPending=false;
-      const layout=()=>{
-        layoutPending=false;
-        if(matchMedia('(max-width:760px)').matches)return;
+      let stickyTop=99;
+      layoutAnchors=()=>{
+        if(mobile())return;
         const origin=flow.getBoundingClientRect().top;
         flow.style.left=getComputedStyle(dock).paddingLeft;
-        const top=99+tools.getBoundingClientRect().height+12;
-        flow.style.setProperty('--example-top',top+'px');
-        flow.style.setProperty('--example-viewport',Math.max(80,innerHeight-top-16)+'px');
+        stickyTop=99+tools.getBoundingClientRect().height+12;
+        const available=Math.max(0,innerHeight-stickyTop-16);
+        flow.style.setProperty('--example-top',stickyTop+'px');
+        flow.style.setProperty('--example-viewport',available+'px');
         const positions=notes.map(note=>note.peg.getBoundingClientRect().top-origin);
         const end=main.getBoundingClientRect().bottom-origin;
-        notes.forEach(({band},index)=>{
+        notes.forEach((entry,index)=>{
+          const {band,note}=entry;
           const height=Math.max(1,(positions[index+1]??end)-positions[index]-12);
+          entry.span=height;
           band.style.top=positions[index]+'px';band.style.height=height+'px';
           band.style.setProperty('--example-span',height+'px');
+          fitGroup(note,Math.min(height,available));
         });
       };
-      const scheduleLayout=()=>{if(!layoutPending){layoutPending=true;requestAnimationFrame(layout);}};
-      const observer=new ResizeObserver(scheduleLayout);observer.observe(main);observer.observe(tools);
-      addEventListener('resize',scheduleLayout);document.fonts?.ready.then(scheduleLayout);
-      layout();
-      // Keep the desktop notes and the mobile panel's disclosure choices in sync.
-      dock.addEventListener('toggle',event=>{
-        const card=event.target;
-        if(!card.matches('.example-disclosure[data-example-card]'))return;
-        openCards.set(card.dataset.exampleCard,card.open);
-        for(const other of dock.querySelectorAll('[data-example-card]')){
-          if(other!==card&&other.dataset.exampleCard===card.dataset.exampleCard&&other.open!==card.open)other.open=card.open;
+      fitFloating=()=>{
+        for(const {band,note} of notes){
+          const box=band.getBoundingClientRect();
+          if(box.bottom<0||box.top>innerHeight)continue;
+          const top=Math.max(stickyTop,box.top);
+          fitGroup(note,Math.max(0,Math.min(innerHeight-16,box.bottom)-top));
         }
-      },true);
+      };
+      new ResizeObserver(scheduleExampleLayout).observe(main);
     }
+    new ResizeObserver(scheduleExampleLayout).observe(tools);
+    addEventListener('resize',scheduleExampleLayout);document.fonts?.ready.then(scheduleExampleLayout);
+    dock.addEventListener('examplepanelchange',scheduleExampleLayout);
+    const setCardOpen=(card,open)=>{
+      for(const other of dock.querySelectorAll('[data-example-card]')){
+        if(other.dataset.exampleGroup!==card.dataset.exampleGroup)continue;
+        if(!open&&other.dataset.exampleCard!==card.dataset.exampleCard)continue;
+        const selected=open&&other.dataset.exampleCard===card.dataset.exampleCard;
+        openCards.set(other.dataset.exampleCard,selected);
+        if(other.open!==selected)other.open=selected;
+      }
+      scheduleExampleLayout();
+    };
+    dock.addEventListener('click',event=>{
+      const summary=event.target.closest('.example-disclosure > summary');
+      if(!summary)return;
+      event.preventDefault();setCardOpen(summary.parentElement,!summary.parentElement.open);
+    });
+    dock.addEventListener('toggle',event=>{
+      if(event.target.matches('.example-disclosure[data-example-card]'))setCardOpen(event.target,event.target.open);
+      else scheduleExampleLayout();
+    },true);
     let renderedExampleHTML;
     const setExample=(key,manual=false,context=null)=>{
       if(!data[key])return;current=key;
@@ -152,6 +195,7 @@
       $('#follow-reading').setAttribute('aria-pressed',String(follow));$('#follow-reading').textContent=follow?'Following reading':'Follow reading';
       $('#previous-example').disabled=keys.indexOf(key)===0;$('#next-example').disabled=keys.indexOf(key)===keys.length-1;
       if(changed&&contentChanged)$('.example-sticky').scrollTop=0;
+      scheduleExampleLayout();
     };
     $('#previous-example').addEventListener('click',()=>{selectionPinned=false;setExample(keys[Math.max(0,keys.indexOf(current)-1)],true);});
     $('#next-example').addEventListener('click',()=>{selectionPinned=false;setExample(keys[Math.min(keys.length-1,keys.indexOf(current)+1)],true);});
@@ -172,6 +216,7 @@
       if(active){lastReading=active.dataset.example;lastReadingContext=active;if(follow&&(lastReading!==current||activeContext!==active))setExample(lastReading,false,active);}
       followOutline(section);
       const percent=denominator?Math.max(0,Math.min(1,scrollY/denominator)):0;$('.reading-progress span').style.width=percent*100+'%';
+      fitVisibleExamples();
     };
     addEventListener('scroll',()=>{if(!scheduled){scheduled=true;requestAnimationFrame(update);}},{passive:true});
     addEventListener('resize',update);setExample(current);update();

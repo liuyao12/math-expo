@@ -26,15 +26,16 @@ function matchingHTML(item,proof=false,renderer=r){
     part.startsWith('\\[')?rich(part):`<p${cls?' class="'+cls+'"':''}>${rich(part.trim())}</p>`
   ).join('');
   const bindings=proof&&item.proofBindings?[...new Map([...item.proofBindings,...item.bindings].map(b=>[normalize(b.symbol),b])).values()]:item.bindings;
-  const rows=bindings.length?`<ul class="object-matches">${bindings.map(binding=>`<li class="object-row" data-symbol="${esc(normalize(binding.symbol))}" tabindex="-1"><div class="object-formula">${r.math(binding.symbol+'{=}'+binding.value)}</div>${paragraphs(binding.note,'object-detail')}</li>`).join('')}</ul>`:'';
-  const points=item.points?.length?`<ul class="example-points">${item.points.map(point=>`<li>${paragraphs(point)}</li>`).join('')}</ul>`:'';
+  const rows=bindings.map(binding=>`<li class="object-row" data-symbol="${esc(normalize(binding.symbol))}" tabindex="-1"><div class="object-formula">${r.math(binding.symbol+'{=}'+binding.value)}</div>${paragraphs(binding.note,'object-detail')}</li>`).join('');
+  const points=(item.points||[]).map(point=>`<li>${paragraphs(point)}</li>`).join('');
   const calculation=paragraphs(proof&&item.proof?item.proof:item.check);
   const conclusion=paragraphs(item.result);
-  return `${paragraphs(item.note||'','case-note')}${rows}${points}${calculation?`<div class="case-check">${calculation}</div>`:''}${conclusion?`<div class="case-result">${conclusion}</div>`:''}${item.source?`<p class="case-note"><a href="${esc(item.source.url)}">${esc(item.source.label)}</a></p>`:''}`;
+  const items=rows+points+(calculation?`<li class="case-check">${calculation}</li>`:'')+(conclusion?`<li class="case-result">${conclusion}</li>`:'');
+  return `${paragraphs(item.note||'','case-note')}${items?`<ul class="example-points object-matches">${items}</ul>`:''}${item.source?`<p class="case-note"><a href="${esc(item.source.url)}">${esc(item.source.label)}</a></p>`:''}`;
 }
-function renderExampleCard(item,key,open,proof=false,renderer=r){
+function renderExampleCard(item,key,open,proof=false,renderer=r,group=key){
   const label=item.kind==='analogy'?'Analogy':'Example';
-  return `<details class="example-disclosure" data-example-card="${esc(key)}"${open?' open':''}><summary><span class="example-chevron" aria-hidden="true"></span><span>${label}: ${esc(item.title)}</span></summary>${matchingHTML(item,proof,renderer)}</details>`;
+  return `<details class="example-disclosure" data-example-card="${esc(key)}" data-example-group="${esc(group)}"${open?' open':''}><summary><span class="example-chevron" aria-hidden="true"></span><span>${label}: ${esc(item.title)}</span></summary><div class="example-body" tabindex="0" role="region" aria-label="${label}: ${esc(item.title)}">${matchingHTML(item,proof,renderer)}</div></details>`;
 }
 const exampleData=Object.fromEntries(Object.entries(examples).map(([key,item])=>[key,{
   html:renderExampleCard(item,key,true),

@@ -22,7 +22,7 @@ for(const [key,item] of Object.entries(examples)){
     renderer.math(b.symbol);renderer.math(b.value);
   }
 }
-if(!html.includes('class="object-matches"'))throw Error('Missing margin object matching');
+if(!/class="[^"]*\bobject-matches\b/.test(html))throw Error('Missing margin object matching');
 if(!html.includes('<details id="example-visual" class="optional-visual">'))throw Error('The visual must be optional and initially closed');
 for(const section of manifest.sections){
   const tex=fs.readFileSync(path.join(root,'upstream/sections',section.slug+'.tex'),'utf8');

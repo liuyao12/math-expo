@@ -59,7 +59,7 @@ export function buildReadings({root,dist,head,header,footer,renderExampleCard,as
     const notes=notesFor(s.tag,b.tag),key=notes.tag;
     if(!data[key]){
      const html=notes.examples.map((item,index)=>
-      renderExampleCard(item,index?key+'-extra-'+index:key,notes.examples.length===1,false,r)
+      renderExampleCard(item,index?key+'-extra-'+index:key,notes.examples.length===1,false,r,key)
      ).join('');
      data[key]={html};
     }

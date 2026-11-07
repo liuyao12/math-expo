@@ -63,10 +63,22 @@ body:has(.reader-layout) .site-header{position:sticky;top:0}.reading-progress{he
 .example-chevron::before { content: "+"; }
 .example-disclosure[open] > summary .example-chevron::before { content: "−"; }
 
-.example-current .example-points { margin: 0; padding-left: 18px; }
+.example-current .example-points { margin: 0; padding-left: 18px; list-style: disc; }
 .example-current .example-points > li { padding-left: 2px; margin-bottom: 16px; }
+.example-current .example-points > .object-row { display: list-item; border: 0; padding-block: 0; }
 .example-points > li::marker { color: var(--muted); }
 .example-points > li > .math-display:first-child { margin-top: 0; }
+.example-body {
+  display: flow-root;
+  max-height: var(--example-body-room, calc(100dvh - 320px));
+  overflow-y: auto;
+  overflow-x: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
+}
+.example-body:focus-visible { outline: 1px solid var(--green); outline-offset: -1px; }
+.example-dock .margin-source-reference { max-height: 25dvh; overflow: auto; scrollbar-width: thin; }
 
 .example-flow { display: none; }
 @media (min-width: 761px) {
@@ -87,7 +99,7 @@ body:has(.reader-layout) .site-header{position:sticky;top:0}.reading-progress{he
     position: sticky;
     top: var(--example-top);
     max-height: min(var(--example-viewport), var(--example-span));
-    overflow: auto;
+    overflow: visible;
     scrollbar-width: thin;
     background: var(--paper);
     padding-bottom: 0;

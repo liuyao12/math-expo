@@ -14,17 +14,19 @@ All three selected readings use `scripts/reading-generator.mjs`. `src/readings.j
 
 `src/scheme-notes.mjs` contains the separate authored commentary. Its `sectionGroups` and `passageNotes` attach examples to stable Stacks section or statement tags. `notesFor(sectionTag, passageTag)` returns those cards in any reading containing the passage. Notes are optional. An unannotated tag produces no card, and multiple examples can share a tag. The optional complex-analysis examples assume familiarity with holomorphic functions.
 
-On desktop, each tagged note starts beside its source heading and floats down the margin until the next annotated tag pushes it away. Opening proofs and resizing repositions the anchors. Tall notes scroll within the available space; the mobile panel retains its passage navigation and shares the same collapsed-card choices.
+On desktop, each tagged group starts beside its source heading and floats down the margin until the next annotated tag pushes it away. Opening proofs and resizing repositions the anchors. Every example heading stays outside the scrolling body. Opening an example closes the others attached to that tag; clicking it again closes it. Long bodies scroll within the space left after reserving all the headings. The mobile panel shares the same accordion choices.
 
 Examples should recall a recognizable construction through concise formulas and a brief explanation where useful. They need not assign every source symbol or supply a proof. Use a commutative diagram whenever it communicates the example, analogy, or comment more clearly. Simple squares can use KaTeX’s `CD` environment inside display math. A note can have an empty `bindings` array and consist entirely of displayed formulas, a diagram, and short prose.
 
-Use bullets for parallel identifications, assignments, and properties, as in the singular homology example. An optional `points` array renders each item as a bullet, supporting the same inline and displayed LaTeX as the rest of the note.
+All example bindings, calculations, and conclusions use bullets for parallel identifications, assignments, and properties. An optional `points` array supports additional bullets with the same inline and displayed LaTeX as the rest of the note.
 
 When reviewing individual examples with the user, first quote the relevant retained Stacks definition or theorem verbatim, with a link to its tag, and let the user supply the example. A diagram can be written out directly, with its indexing category made explicit. An example can also occur elsewhere in Stacks; keep it beside the concept it illustrates and link to the upstream occurrence.
 
 ## Build
 
 No npm installation is required. Builds use Node; checks also use Python 3. From this directory run `node scripts/build.mjs` and `node scripts/check.mjs`, or build all projects from the repository root. The reader is published at `/math-expo/stacks/`.
+
+The optional browser regression `scripts/check-example-accordion.mjs` uses an installed Playwright and Chromium. Set `PLAYWRIGHT_MODULE` to the module's absolute path and, if necessary, `BROWSER_PATH` to the browser executable. Set `STACKS_BASE` to the local or deployed Stacks base URL, ending in `/`.
 
 ## Source and future readings
 
