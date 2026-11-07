@@ -9,10 +9,6 @@ const O=b(r`\mathcal O`,r`\mathcal O^{\mathrm{an}}_{\mathbb C}`);
 const F=b(r`\mathcal F`,r`\mathcal O^{\mathrm{an}}_{\mathbb C}`,'A sheaf; forget multiplication when the source asks for abelian groups or sets.');
 const R=b('R',r`\mathbb C[z]`);
 const A=b('X',r`\operatorname{Spec}(\mathbb C[z])`);
-const naturalEquivalences={
- url:'https://www.ams.org/journals/tran/1945-058-00/S0002-9947-1945-0013131-6/S0002-9947-1945-0013131-6.pdf',
- label:'Eilenberg and Mac Lane, General Theory of Natural Equivalences (1945), introduction'
-};
 const finiteVect=b(r`\mathcal C`,r`\mathbf{Vect}^{\mathrm{fd}}_{\mathbb R}`,'Finite-dimensional real vector spaces with linear maps.');
 const models={
  topology:model('A manifold is locally Euclidean',[
@@ -972,19 +968,22 @@ const tangentSpace=model('The chain rule makes tangent spaces functorial',[
 ],r`\[
 d(g\circ f)_p=dg_{f(p)}\circ df_p
 \]`,'',r`The differential replaces a smooth map by its linear approximation at a point. The chain rule says that these approximations still compose.`);
-const doubleDual={...model('The natural map to the double dual',[
- b(r`\mathcal A`,r`\mathbf{Vect}^{\mathrm{fd}}_{\mathbb R}`),
- b(r`\mathcal B`,r`\mathcal A`),
- b('F',r`\operatorname{Id}`),
- b('G',r`((-)^{**})`,r`The double-dual functor. A linear map \(\phi:V\to W\) goes to \(\phi^{**}:V^{**}\to W^{**}\).`),
- b('x,y',r`V,W`),
- b('t_x',r`(v\mapsto[\lambda\mapsto\lambda(v)])`,r`Evaluation gives a linear map \(V\to V^{**}\). The component \(t_y\) is the same construction on \(W\).`)
-],r`\[
-\begin{aligned}
-\bigl(G(\phi)t_V(v)\bigr)(\lambda)&=\lambda(\phi(v))\\
- &=\bigl(t_W F(\phi)(v)\bigr)(\lambda).
-\end{aligned}
-\]`,r`The evaluation maps are isomorphisms in finite dimension.`,r`This example opens Eilenberg and Mac Lane’s 1945 paper.`),source:naturalEquivalences};
+const hurewicz={...model('The Hurewicz map',[],r`\[
+\begin{gathered}
+h_X:\pi_n(X,x_0)\longrightarrow H_n(X;\mathbb Z),\\
+[\alpha:S^n\to X]\longmapsto\alpha_*[S^n].
+\end{gathered}
+\]
+\[
+\begin{CD}
+\pi_n(X,x_0) @>{h_X}>> H_n(X;\mathbb Z) \\
+@V{\pi_n(f)}VV @VV{H_n(f;\mathbb Z)}V \\
+\pi_n(Y,y_0) @>>{h_Y}> H_n(Y;\mathbb Z)
+\end{CD}
+\]`,r`A based map from a sphere carries its fundamental class to a homology class.`,r`For fixed \(n\ge1\) and a based continuous map \(f:(X,x_0)\to(Y,y_0)\).`),source:{
+ url:'https://people.math.rochester.edu/faculty/doug/otherpapers/MayConcise.pdf',
+ label:'May, A Concise Course in Algebraic Topology, §15.1'
+}};
 const coordinateSpaces=model('Coordinate spaces form a full subcategory',[
  b(r`\mathcal B`,r`\mathbf{Vect}_k`),
  b(r`\operatorname{Ob}(\mathcal A)`,r`\{k^n:n\ge 0\}`),
@@ -1051,7 +1050,7 @@ const passageNotes={
  '0B05':conicIntersection,
  '001B':{...singularHomology,examples:[fundamentalGroup,tangentSpace].map(example=>({...example,scope:"statement"}))},
  '001D':coordinateSpaces,
- '001I':doubleDual,
+ '001I':hurewicz,
  '001J':matrixEquivalence,
  '05SG':matrixEquivalence,
  '02C3':matrixEquivalence,

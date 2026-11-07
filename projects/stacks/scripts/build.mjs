@@ -26,7 +26,7 @@ function matchingHTML(item,proof=false,renderer=r){
     part.startsWith('\\[')?rich(part):`<p${cls?' class="'+cls+'"':''}>${rich(part.trim())}</p>`
   ).join('');
   const bindings=proof&&item.proofBindings?[...new Map([...item.proofBindings,...item.bindings].map(b=>[normalize(b.symbol),b])).values()]:item.bindings;
-  const rows=`<ul class="object-matches">${bindings.map(binding=>`<li class="object-row" data-symbol="${esc(normalize(binding.symbol))}" tabindex="-1"><div class="object-formula">${r.math(binding.symbol+'{=}'+binding.value)}</div>${paragraphs(binding.note,'object-detail')}</li>`).join('')}</ul>`;
+  const rows=bindings.length?`<ul class="object-matches">${bindings.map(binding=>`<li class="object-row" data-symbol="${esc(normalize(binding.symbol))}" tabindex="-1"><div class="object-formula">${r.math(binding.symbol+'{=}'+binding.value)}</div>${paragraphs(binding.note,'object-detail')}</li>`).join('')}</ul>`:'';
   const calculation=paragraphs(proof&&item.proof?item.proof:item.check);
   const conclusion=paragraphs(item.result);
   return `${paragraphs(item.note||'','case-note')}${rows}${calculation?`<div class="case-check">${calculation}</div>`:''}${conclusion?`<div class="case-result">${conclusion}</div>`:''}${item.source?`<p class="case-note"><a href="${esc(item.source.url)}">${esc(item.source.label)}</a></p>`:''}`;

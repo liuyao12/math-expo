@@ -14,6 +14,8 @@ All three selected readings use `scripts/reading-generator.mjs`. `src/readings.j
 
 `src/scheme-notes.mjs` contains the separate authored commentary. Its `sectionGroups` and `passageNotes` attach examples to stable Stacks section or statement tags. `notesFor(sectionTag, passageTag)` returns those cards in any reading containing the passage. Notes are optional. An unannotated tag produces no card, and multiple examples can share a tag. The optional complex-analysis examples assume familiarity with holomorphic functions.
 
+Examples should recall a recognizable construction through concise formulas and a brief explanation where useful. They need not assign every source symbol or supply a proof. Use a commutative diagram whenever it communicates the example, analogy, or comment more clearly. Simple squares can use KaTeX’s `CD` environment inside display math. A note can have an empty `bindings` array and consist entirely of displayed formulas, a diagram, and short prose.
+
 ## Build
 
 No npm installation is required. Builds use Node; checks also use Python 3. From this directory run `node scripts/build.mjs` and `node scripts/check.mjs`, or build all projects from the repository root. The reader is published at `/math-expo/stacks/`.
