@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   publish:
-    runs-on: ubuntu-24.04
+    runs-on: macos-15
     permissions:
       contents: read
       pages: write
