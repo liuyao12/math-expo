@@ -1,0 +1,203 @@
+\section{Extensions}
+\label{section-extensions}
+
+\begin{definition}
+\label{definition-extension}
+Let $\mathcal{A}$ be an abelian category.
+Let $A, B \in \Ob(\mathcal{A})$.
+An {\it extension $E$ of $B$ by $A$} is a short
+exact sequence
+$$
+0 \to A \to E \to B \to 0.
+$$
+A {\it morphism of extensions} between two
+extensions $0 \to A \to E \to B \to 0$ and
+$0 \to A \to F \to B \to 0$ means a morphism
+$f : E \to F$ in $\mathcal{A}$ making the diagram
+$$
+\xymatrix{
+0 \ar[r] &
+A \ar[r] \ar[d]^{\text{id}} &
+E \ar[r] \ar[d]^f &
+B \ar[r] \ar[d]^{\text{id}} &
+0 \\
+0 \ar[r] &
+A \ar[r] &
+F \ar[r] &
+B \ar[r] &
+0
+}
+$$
+commutative.
+Thus, the extensions of $B$ by $A$ form a category.
+\end{definition}
+
+\noindent
+By abuse of language we often omit mention of the
+morphisms $A \to E$ and $E \to B$, although they are
+definitively part of the structure of an extension.
+
+\begin{definition}
+\label{definition-ext-group}
+Let $\mathcal{A}$ be an abelian category.
+Let $A, B \in \Ob(\mathcal{A})$.
+The set of isomorphism classes of extensions
+of $B$ by $A$ is denoted
+$$
+\Ext_\mathcal{A}(B, A).
+$$
+This is called the {\it $\Ext$-group}.
+\end{definition}
+
+\noindent
+This definition works, because by our conventions
+$\Ob(\mathcal{A})$ is a set, and hence
+$\Ext_\mathcal{A}(B, A)$ is a set.
+In any of the cases of ``big'' abelian categories
+listed in Categories, Remark \ref{categories-remark-big-categories}
+one can check by hand that $\Ext_\mathcal{A}(B, A)$
+is a set as well. Also, we will see later that this is
+always the case when $\mathcal{A}$ has either enough projectives
+or enough injectives. Insert future reference here.
+
+\medskip\noindent
+Actually we can turn $\Ext_\mathcal{A}(-, -)$ into a
+functor
+$$
+\mathcal{A} \times \mathcal{A}^{opp} \longrightarrow \textit{Sets}, \quad
+(A, B) \longmapsto \Ext_\mathcal{A}(B, A)
+$$
+as follows:
+\begin{enumerate}
+\item Given a morphism $B' \to B$ and an extension
+$E$ of $B$ by $A$ we define $E' = E \times_B B'$.
+By Lemma \ref{lemma-cartesian-kernel} we have the following
+commutative diagram of short exact sequences
+$$
+\xymatrix{
+0 \ar[r] & A \ar[r] \ar[d] & E' \ar[r] \ar[d] & B' \ar[r] \ar[d] & 0 \\
+0 \ar[r] & A \ar[r] & E \ar[r] & B \ar[r] & 0
+}
+$$
+The extension $E'$ is called the {\it pullback of $E$ via
+$B' \to B$}.
+\item Given a morphism $A \to A'$ and an extension
+$E$ of $B$ by $A$ we define $E' = A' \amalg_A E$.
+By Lemma \ref{lemma-cartesian-cocartesian}
+we have the following commutative diagram
+of short exact sequences
+$$
+\xymatrix{
+0 \ar[r] & A \ar[r] \ar[d] & E \ar[r] \ar[d] & B \ar[r] \ar[d] & 0 \\
+0 \ar[r] & A' \ar[r] & E' \ar[r] & B \ar[r] & 0
+}
+$$
+The extension $E'$ is called the {\it pushout of $E$ via
+$A \to A'$}.
+\end{enumerate}
+To see that this defines a functor as indicated above
+there are several things to verify. First of all
+functoriality in the variable $B$ requires that
+$(E \times_B B') \times_{B'} B'' = E \times_B B''$
+which is a general property of fibre products.
+Dually one deals with functoriality in the
+variable $A$. Finally, given $A \to A'$ and
+$B' \to B$ we have to show that
+$$
+A' \amalg_A (E \times_B B')
+\cong
+(A' \amalg_A E)\times_B B'
+$$
+as extensions of $B'$ by $A'$. Recall that $A' \amalg_A E$
+is a quotient of $A' \oplus E$.
+Thus the right hand side is a quotient of
+$A' \oplus E \times_B B'$, and it is straightforward to see that
+the kernel is exactly what you need in order to
+get the left hand side.
+
+\medskip\noindent
+Note that if $E_1$ and $E_2$ are extensions of
+$B$ by $A$, then $E_1\oplus E_2$ is an extension
+of $B \oplus B$ by $A\oplus A$. We
+push out by the sum map $A \oplus A \to A$ and we
+pull back by the diagonal map $B \to B \oplus B$ to get
+an extension $E_1 + E_2$ of $B$ by $A$.
+$$
+\xymatrix{
+0 \ar[r] &
+A \oplus A \ar[r] \ar[d]_\Sigma &
+E_1 \oplus E_2 \ar[r] \ar[d] &
+B \oplus B \ar[r] \ar[d] &
+0 \\
+0 \ar[r] &
+A \ar[r] &
+E' \ar[r] &
+B \oplus B \ar[r] &
+0\\
+0 \ar[r] &
+A \ar[r] \ar[u] &
+E_1 + E_2 \ar[r] \ar[u] &
+B \ar[r] \ar[u]^\Delta &
+0
+}
+$$
+The extension $E_1 + E_2$ is called the {\it Baer sum} of the
+given extensions.
+
+\begin{lemma}
+\label{lemma-baer-sum}
+The construction $(E_1, E_2) \mapsto E_1 + E_2$
+above defines a commutative group
+law on $\Ext_\mathcal{A}(B, A)$ which is
+functorial in both variables.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-six-term-sequence-ext}
+Let $\mathcal{A}$ be an abelian category.
+Let $0 \to M_1 \to M_2 \to M_3 \to 0$ be a short exact sequence
+in $\mathcal{A}$.
+\begin{enumerate}
+\item There is a canonical six term exact sequence of abelian groups
+$$
+\xymatrix{
+0 \ar[r] &
+\Hom_\mathcal{A}(M_3, N) \ar[r] &
+\Hom_\mathcal{A}(M_2, N) \ar[r] &
+\Hom_\mathcal{A}(M_1, N) \ar[lld] \\
+& \Ext_\mathcal{A}(M_3, N) \ar[r] &
+\Ext_\mathcal{A}(M_2, N) \ar[r] &
+\Ext_\mathcal{A}(M_1, N)
+}
+$$
+for all objects $N$ of $\mathcal{A}$, and
+\item there is a canonical six term exact sequence of abelian groups
+$$
+\xymatrix{
+0 \ar[r] &
+\Hom_\mathcal{A}(N, M_1) \ar[r] &
+\Hom_\mathcal{A}(N, M_2) \ar[r] &
+\Hom_\mathcal{A}(N, M_3) \ar[lld] \\
+& \Ext_\mathcal{A}(N, M_1) \ar[r] &
+\Ext_\mathcal{A}(N, M_2) \ar[r] &
+\Ext_\mathcal{A}(N, M_3)
+}
+$$
+for all objects $N$ of $\mathcal{A}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Omitted. Hint: The boundary maps are defined using either the pushout
+or pullback of the given short exact sequence.
+\end{proof}
+
+
+
+
+
+

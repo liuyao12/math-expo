@@ -1,0 +1,248 @@
+\section{Transcendence}
+\label{section-transcendence}
+
+\noindent
+We recall the standard definitions.
+
+\begin{definition}
+\label{definition-transcendence}
+Let $K/k$ be a field extension.
+\begin{enumerate}
+\item A collection of elements $\{x_i\}_{i \in I}$ of $K$ is called
+{\it algebraically independent} over $k$ if the map
+$$
+k[X_i; i\in I] \longrightarrow K
+$$
+which maps $X_i$ to $x_i$ is injective.
+\item The field of fractions of a polynomial ring
+$k[x_i; i \in I]$ is denoted $k(x_i; i\in I)$.
+\item A {\it purely transcendental extension} of $k$ is any
+field extension $K/k$ isomorphic to the field of
+fractions of a polynomial ring over $k$.
+\item A {\it transcendence basis} of $K/k$ is a
+collection of elements $\{x_i\}_{i \in I}$ which are
+algebraically independent over $k$ and such that
+the extension $K/k(x_i; i\in I)$ is algebraic.
+\end{enumerate}
+\end{definition}
+
+\begin{example}
+\label{example-pi-transcendental}
+The field $\mathbf{Q}(\pi)$ is purely transcendental because
+$\pi$ isn't the root of a nonzero polynomial with rational coefficients.
+In particular, $\mathbf{Q}(\pi) \cong \mathbf{Q}(x)$.
+\end{example}
+
+\begin{lemma}
+\label{lemma-transcendence-degree}
+Let $E/F$ be a field extension. A transcendence basis of $E$ over $F$ exists.
+Any two transcendence bases have the same cardinality.
+\end{lemma}
+
+\begin{proof}
+Let $A$ be an algebraically independent subset of $E$. Let $G$ be a subset
+of $E$ containing $A$ that generates $E/F$. We claim we can find a
+transcendence basis $B$ such that $A \subset B \subset G$.
+To prove this, consider the collection $\mathcal{B}$ of algebraically
+independent subsets whose members are subsets of $G$ that contain $A$.
+Define a partial ordering on $\mathcal{B}$ using inclusion.
+Then $\mathcal{B}$ contains at least one element $A$.
+The union of the elements of a totally ordered subset $T$ of $\mathcal{B}$
+is an algebraically independent subset of $E$ over $F$ since any algebraic
+dependence relation would have occurred in one of the elements of $T$
+(since polynomials only involve finitely many variables). The union also
+contains $A$ and is contained in $G$. By Zorn's lemma, there is a maximal
+element $B \in \mathcal{B}$. Now we claim $E$ is algebraic over $F(B)$.
+This is because if it wasn't then there would be an element
+$f \in G$ transcendental over $F(B)$ since $F(G) = E$. Then
+$B \cup\{f\}$ would be algebraically independent contradicting the
+maximality of $B$. Thus $B$ is our transcendence basis.
+
+\medskip\noindent
+Let $B$ and $B'$ be two transcendence bases. Without loss of generality, we
+can assume that $|B'| \leq |B|$. Now we divide the proof into two cases: the
+first case is that $B$ is an infinite set. Then for each $\alpha \in B'$,
+there is a finite set $B_{\alpha} \subset B$ such that $\alpha$ is algebraic
+over
+$F(B_{\alpha})$ since any algebraic dependence relation only uses finitely many
+indeterminates. Then we define $B^* = \bigcup_{\alpha\in B'} B_{\alpha}$.
+By construction, $B^* \subset B$, but we claim that in fact the two sets are
+equal. To see this, suppose that they are not equal, say there is an element
+$\beta \in B \setminus B^*$. We know $\beta$ is algebraic over $F(B')$ which
+is algebraic over $F(B^*)$. Therefore $\beta$ is algebraic over $F(B^*)$, a
+contradiction. So $|B| \leq |\bigcup_{\alpha \in B'} B_{\alpha}|$.
+Now if $B'$ is finite, then so is $B$ so we can assume $B'$ is infinite;
+this means
+$$
+|B| \leq |\bigcup\nolimits_{\alpha \in B'} B_{\alpha}| = |B'|
+$$
+because each $B_\alpha$ is finite and $B'$ is infinite. Therefore in the
+infinite case, $|B| = |B'|$.
+
+\medskip\noindent
+Now we need to look at the case where $B$ is finite.
+In this case, $B'$ is also finite, so suppose
+$B = \{\alpha_1, \ldots, \alpha_n\}$ and
+$B' = \{\beta_1, \ldots, \beta_m\}$ with $m \leq n$.
+We perform induction on $m$: if $m = 0$ then $E/F$ is algebraic so
+$B = \emptyset$ so $n = 0$. If $m > 0$, there is an irreducible polynomial
+$f \in F[x, y_1, \ldots, y_n]$ such that
+$f(\beta_1, \alpha_1, \ldots, \alpha_n) = 0$ and such that $x$ occurs in $f$.
+Since $\beta_1$ is not algebraic over $F$, $f$ must involve some $y_i$
+so without loss of generality, assume $f$ uses $y_1$.
+Let $B^* = \{\beta_1, \alpha_2, \ldots, \alpha_n\}$.
+We claim that $B^*$ is a basis for $E/F$. To prove this claim, we see that
+we have a tower of algebraic extensions
+$$
+E/ F(B^*, \alpha_1) / F(B^*)
+$$
+since $\alpha_1$ is algebraic over $F(B^*)$.
+Now we claim that $B^*$ (counting multiplicity of elements) is
+algebraically independent over $F$ because if it weren't, then there would be an
+irreducible $g\in F[x, y_2, \ldots, y_n]$ such that
+$g(\beta_1, \alpha_2, \ldots, \alpha_n) = 0$
+which must involve $x$ making $\beta_1$
+algebraic over $F(\alpha_2, \ldots, \alpha_n)$ which would make $\alpha_1$
+algebraic over $F(\alpha_2, \ldots, \alpha_n)$ which is impossible.
+So this means that $\{\alpha_2, \ldots, \alpha_n\}$ and
+$\{\beta_2, \ldots, \beta_m\}$ are bases for $E$ over $F(\beta_1)$
+which means by induction, $m = n$.
+\end{proof}
+
+\begin{definition}
+\label{definition-transcendence-degree}
+Let $K/k$ be a field extension.
+The {\it transcendence degree} of $K$ over $k$ is
+the cardinality of a transcendence basis of $K$ over $k$.
+It is denoted $\text{trdeg}_k(K)$.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-transcendence-degree-tower}
+Let $L/K/k$ be field extensions.
+Then
+$$
+\text{trdeg}_k(L) =
+\text{trdeg}_K(L) +
+\text{trdeg}_k(K).
+$$
+\end{lemma}
+
+\begin{proof}
+Choose a transcendence basis $A \subset K$ of $K$ over $k$.
+Choose a transcendence basis $B \subset L$ of $L$ over $K$.
+Then it is straightforward to see that $A \cup B$ is a transcendence
+basis of $L$ over $k$.
+\end{proof}
+
+\begin{example}
+\label{example-pi-e-transcendental}
+Consider the field extension $\mathbf{Q}(e, \pi)$ formed by
+adjoining the numbers $e$ and $\pi$. This field extension has transcendence
+degree at least $1$ since both $e$ and $\pi$ are transcendental over the
+rationals. However, this field extension might have transcendence
+degree $2$ if $e$ and $\pi$ are algebraically independent. Whether or
+not this is true is unknown and whence the problem of determining
+$\text{trdeg}(\mathbf{Q}(e, \pi))$ is open.
+\end{example}
+
+\begin{example}
+\label{example-function-field-not-unique-transcendence-basis}
+Let $F$ be a field and $E = F(t)$. Then $\{t\}$ is a
+transcendence basis since $E = F(t)$. However, $\{t^2\}$
+is also a transcendence basis since $F(t)/F(t^2)$ is algebraic.
+This illustrates that while we can always decompose an extension
+$E/F$ into an algebraic extension $E/F'$ and a
+purely transcendental extension $F'/F$, this decomposition is not unique and
+depends on choice of transcendence basis.
+\end{example}
+
+\begin{example}
+\label{example-riemann-surface-transcendence}
+Let $X$ be a compact Riemann surface. Then the function field
+$\mathbf{C}(X)$ (see Example \ref{example-field-of-meromorphic-functions})
+has transcendence degree one over $\mathbf{C}$. In fact, {\it any}
+finitely generated extension of $\mathbf{C}$ of transcendence degree
+one arises from a Riemann surface. There is even an equivalence of
+categories between the category of compact Riemann surfaces and
+(non-constant) holomorphic maps and the opposite of the category of finitely
+generated extensions of $\mathbf{C}$ of transcendence degree $1$
+and morphisms of $\mathbf{C}$-algebras. See \cite{Forster}.
+
+\medskip\noindent
+There is an algebraic version of the above statement as well. Given an
+(irreducible) algebraic curve in projective space over an algebraically
+closed field $k$ (e.g. the complex numbers), one can consider its
+``field of rational functions'': basically, functions that look like
+quotients of polynomials, where the denominator does not identically
+vanish on the curve. There is a similar anti-equivalence of categories
+(Algebraic Curves, Theorem \ref{curves-theorem-curves-rational-maps})
+between smooth projective curves and
+non-constant morphisms of curves and finitely generated extensions of $k$ of
+transcendence degree one. See \cite{H}.
+\end{example}
+
+\begin{definition}
+\label{definition-algebraically-closed-in}
+Let $K/k$ be a field extension.
+\begin{enumerate}
+\item The {\it algebraic closure of $k$ in $K$} is the subfield
+$k'$ of $K$ consisting of elements of $K$ which are algebraic over $k$.
+\item We say $k$ is {\it algebraically closed in $K$} if
+every element of $K$ which is algebraic over $k$ is
+contained in $k$.
+\end{enumerate}
+\end{definition}
+
+\begin{lemma}
+\label{lemma-purely-transcendental-degree}
+Let $k'/k$ be a finite extension of fields. Let
+$k'(x_1, \ldots, x_r)/k(x_1, \ldots, x_r)$ be the
+induced extension of purely transcendental extensions.
+Then $[k'(x_1, \ldots, x_r) : k(x_1, \ldots, x_r)] = [k' : k] < \infty$.
+\end{lemma}
+
+\begin{proof}
+By multiplicativity of degrees of extensions
+(Lemma \ref{lemma-multiplicativity-degrees})
+it suffices to prove this when $k'$ is generated by a single element
+$\alpha \in k'$ over $k$. Let $f \in k[T]$ be the minimal polynomial
+of $\alpha$ over $k$. Then $k'(x_1, \ldots, x_r)$ is generated
+by $\alpha, x_1, \ldots, x_r$ over $k$ and hence $k'(x_1, \ldots, x_r)$
+is generated by $\alpha$ over $k(x_1, \ldots, x_r)$.
+Thus it suffices to show that $f$ is still irreducible as
+an element of $k(x_1, \ldots, x_r)[T]$. We only sketch the proof.
+It is clear that $f$ is irreducible as an element of
+$k[x_1, \ldots, x_r, T]$ for example because $f$ is monic
+as a polynomial in $T$ and any putative factorization in
+$k[x_1, \ldots, x_r, T]$ would lead to a factorization in $k[T]$
+by setting $x_i$ equal to $0$. By Gauss' lemma we conclude.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-algebraic-closure-in-finitely-generated}
+Let $K/k$ be a finitely generated field extension.
+The algebraic closure of $k$ in $K$ is finite over $k$.
+\end{lemma}
+
+\begin{proof}
+Let $x_1, \ldots, x_r \in K$ be a transcendence basis for $K$
+over $k$. Then $n = [K : k(x_1, \ldots, x_r)] < \infty$.
+Suppose that $k \subset k' \subset K$ with $k'/k$ finite.
+In this case
+$[k'(x_1, \ldots, x_r) : k(x_1, \ldots, x_r)] = [k' : k] < \infty$, see
+Lemma \ref{lemma-purely-transcendental-degree}.
+Hence
+$$
+[k' : k] = [k'(x_1, \ldots, x_r) : k(x_1, \ldots, x_r)] \leq
+[K : k(x_1, \ldots, x_r)] = n.
+$$
+In other words, the degrees of finite subextensions are bounded
+and the lemma follows.
+\end{proof}
+
+
+
+
+
+

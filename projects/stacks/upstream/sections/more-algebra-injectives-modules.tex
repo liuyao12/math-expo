@@ -1,0 +1,272 @@
+\section{Injective modules}
+\label{section-injectives-modules}
+
+\noindent
+Some lemmas on injective modules.
+
+\begin{definition}
+\label{definition-projective}
+Let $R$ be a ring. An $R$-module $J$ is {\it injective} if and only if
+the functor $\Hom_R(-, J) : \text{Mod}_R \to \text{Mod}_R$ is
+an exact functor.
+\end{definition}
+
+\noindent
+The functor $\Hom_R(- , M)$ is left exact for any $R$-module $M$, see
+Algebra, Lemma \ref{algebra-lemma-hom-exact}.
+Hence the condition for $J$ to be injective really signifies that given
+an injection of $R$-modules $M \to M'$ the map
+$\Hom_R(M', J) \to \Hom_R(M, J)$ is surjective.
+
+\medskip\noindent
+Before we reformulate this in terms of ${Ext}$-modules we discuss the
+relationship between $\Ext^1_R(M, N)$ and extensions as in
+Homology, Section \ref{homology-section-extensions}.
+
+\begin{lemma}
+\label{lemma-relation-ext-ext}
+Let $R$ be a ring. Let $\mathcal{A}$ be the abelian category of
+$R$-modules. There is a canonical isomorphism
+$\Ext_\mathcal{A}(M, N) = \Ext^1_R(M, N)$
+compatible with the long exact sequences of
+Algebra, Lemmas \ref{algebra-lemma-long-exact-seq-ext} and
+\ref{algebra-lemma-reverse-long-exact-seq-ext}
+and the $6$-term exact sequences of
+Homology, Lemma \ref{homology-lemma-six-term-sequence-ext}.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-characterize-injective}
+Let $R$ be a ring. Let $J$ be an $R$-module.
+The following are equivalent
+\begin{enumerate}
+\item $J$ is injective,
+\item $\Ext^1_R(M, J) = 0$ for every $R$-module $M$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let $0 \to M'' \to M' \to M \to 0$ be a short exact sequence of $R$-modules.
+Consider the long exact sequence
+$$
+\begin{matrix}
+0
+\to \Hom_R(M, J)
+\to \Hom_R(M', J)
+\to \Hom_R(M'', J)
+\\
+\phantom{0\ }
+\to \Ext^1_R(M, J)
+\to \Ext^1_R(M', J)
+\to \Ext^1_R(M'', J)
+\to \ldots
+\end{matrix}
+$$
+of Algebra, Lemma \ref{algebra-lemma-reverse-long-exact-seq-ext}.
+Thus we see that (2) implies (1). Conversely, if $J$ is injective
+then the $\Ext$-group is zero by
+Homology, Lemma \ref{homology-lemma-characterize-injectives} and
+Lemma \ref{lemma-relation-ext-ext}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-characterize-injective-bis}
+Let $R$ be a ring. Let $J$ be an $R$-module.
+The following are equivalent
+\begin{enumerate}
+\item $J$ is injective,
+\item $\Ext^1_R(R/I, J) = 0$ for every ideal $I \subset R$, and
+\item for an ideal $I \subset R$ and module map $I \to J$
+there exists an extension $R \to J$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+If $I \subset R$ is an ideal, then the short exact sequence
+$0 \to I \to R \to R/I \to 0$ gives an exact sequence
+$$
+\Hom_R(R, J) \to
+\Hom_R(I, J) \to
+\Ext^1_R(R/I, J) \to 0
+$$
+by Algebra, Lemma \ref{algebra-lemma-reverse-long-exact-seq-ext}
+and the fact that $\Ext^1_R(R, J) = 0$ as $R$ is projective
+(Algebra, Lemma \ref{algebra-lemma-characterize-projective}).
+Thus (2) and (3) are equivalent. In this proof
+we will show that (1) $\Leftrightarrow$ (3) which is known
+as Baer's criterion.
+
+\medskip\noindent
+Assume (1). Given a module map $I \to J$ as in (3) we find
+the extension $R \to J$ because the map
+$\Hom_R(R, J) \to \Hom_R(I, J)$ is surjective
+by definition.
+
+\medskip\noindent
+Assume (3). Let $M \subset N$ be an inclusion of $R$-modules.
+Let $\varphi : M \to J$ be a homomorphism. We will show that $\varphi$
+extends to $N$ which finishes the proof of the lemma.
+Consider the set of homomorphisms $\varphi' : M' \to J$
+with $M \subset M' \subset N$ and $\varphi'|_M = \varphi$.
+Define $(M', \varphi') \geq (M'', \varphi'')$ if
+and only if $M' \supset M''$ and $\varphi'|_{M''} = \varphi''$.
+If $(M_i, \varphi_i)_{i \in I}$ is a totally
+ordered collection of such pairs, then we obtain a map
+$\bigcup_{i \in I} M_i \to J$ defined by $a \in M_i$
+maps to $\varphi_i(a)$. Thus Zorn's lemma applies.
+To conclude we have to show that if the pair
+$(M', \varphi')$ is maximal then $M' = N$.
+In other words, it suffices to show, given
+any subgroup $M \subset N$, $M \not = N$ and
+any $\varphi : M \to J$, then we can find
+$\varphi' : M' \to J$ with $M \subset M' \subset N$
+such that (a) the inclusion $M \subset M'$ is strict, and
+(b) the morphism $\varphi'$ extends $\varphi$.
+
+\medskip\noindent
+To prove this, pick $x \in N$, $x \not \in M$.
+Let $I = \{f \in R \mid fx \in M\}$. This is an ideal of $R$.
+Define a homomorphism $\psi : I \to J$ by $f \mapsto \varphi(fx)$.
+Extend to a map $\tilde\psi : R \to J$ which is possible by assumption (3).
+By our choice of $I$ the kernel of
+$M \oplus R \to J$, $(y, f) \mapsto \varphi(y) + \tilde\psi(f)$
+contains the kernel of the map $M \oplus R \to N$,
+$(y, f) \mapsto y + fx$. Hence this homomorphism factors
+through the image $M' = M + Rx$ and this extends the given homomorphism
+as desired.
+\end{proof}
+
+\noindent
+In the rest of this section we prove that there are enough injective
+modules over a ring $R$. We start with the fact that $\mathbf{Q}/\mathbf{Z}$
+is an injective abelian group. This follows from
+Lemma \ref{lemma-injective-abelian}.
+
+\begin{definition}
+\label{definition-simple-functors}
+Let $R$ be a ring.
+\begin{enumerate}
+\item For any $R$-module $M$ over $R$ we denote
+$M^\vee = \Hom(M, \mathbf{Q}/\mathbf{Z})$
+with its natural $R$-module structure. We think
+of {\it $M \mapsto M^\vee$} as a contravariant functor
+from the category of $R$-modules to itself.
+\item For any $R$-module $M$ we denote
+$$
+F(M) = \bigoplus\nolimits_{m \in M} R[m]
+$$
+the {\it free module} with basis given by the elements $[m]$ with
+$m \in M$. We let $F(M)\to M$, $\sum f_i [m_i] \mapsto \sum f_i m_i$
+be the natural surjection of $R$-modules.
+We think of $M \mapsto (F(M) \to M)$ as a functor from
+the category of $R$-modules to the category of
+arrows in $R$-modules.
+\end{enumerate}
+\end{definition}
+
+\begin{lemma}
+\label{lemma-vee-exact}
+Let $R$ be a ring.
+The functor $M \mapsto M^\vee$ is exact.
+\end{lemma}
+
+\begin{proof}
+This because $\mathbf{Q}/\mathbf{Z}$
+is an injective abelian group by Lemma \ref{lemma-injective-abelian}.
+\end{proof}
+
+\noindent
+There is a canonical map $ev : M \to (M^\vee)^\vee$
+given by evaluation: given $x \in M$ we let
+$ev(x) \in (M^\vee)^\vee = \Hom(M^\vee, \mathbf{Q}/\mathbf{Z})$
+be the map $\varphi \mapsto \varphi(x)$.
+
+\begin{lemma}
+\label{lemma-ev-injective}
+For any $R$-module $M$ the evaluation map
+$ev : M \to (M^\vee)^\vee$ is injective.
+\end{lemma}
+
+\begin{proof}
+You can check this using that $\mathbf{Q}/\mathbf{Z}$ is an injective
+abelian group. Namely, if $x \in M$ is not zero, then let
+$M' \subset M$ be the cyclic group it generates. There exists
+a nonzero map $M' \to \mathbf{Q}/\mathbf{Z}$ which necessarily does
+not annihilate $x$. This extends to
+a map $\varphi : M \to \mathbf{Q}/\mathbf{Z}$
+and then $ev(x)(\varphi) = \varphi(x) \not = 0$.
+\end{proof}
+
+\noindent
+The canonical surjection $F(M) \to M$ of $R$-modules turns into
+a canonical injection, see above, of $R$-modules
+$$
+(M^\vee)^\vee \longrightarrow (F(M^\vee))^\vee.
+$$
+Set $J(M) = (F(M^\vee))^\vee$. The composition of $ev$ with this
+the displayed map gives $M \to J(M)$ functorially in $M$.
+
+\begin{lemma}
+\label{lemma-JM-injective}
+Let $R$ be a ring. For every $R$-module $M$ the
+$R$-module $J(M)$ is injective.
+\end{lemma}
+
+\begin{proof}
+Note that $J(M) \cong \prod_{\varphi \in M^\vee} R^\vee$ as an $R$-module.
+As the product of injective modules is injective, it suffices to
+show that $R^\vee$ is injective. For this we use that
+$$
+\Hom_R(N, R^\vee) =
+\Hom_R(N, \Hom_{\mathbf{Z}}(R, \mathbf{Q}/\mathbf{Z})) =
+N^\vee
+$$
+and the
+fact that $(-)^\vee$ is an exact functor by Lemma
+\ref{lemma-vee-exact}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-injectives-modules}
+Let $R$ be a ring.
+The construction above defines a covariant functor
+$M \mapsto (M \to J(M))$ from the category of
+$R$-modules to the category of arrows of $R$-modules
+such that for every module $M$ the output
+$M \to J(M)$ is an injective map of $M$ into
+an injective $R$-module $J(M)$.
+\end{lemma}
+
+\begin{proof}
+Follows from the above.
+\end{proof}
+
+\noindent
+In particular, for any map of $R$-modules $M \to N$
+there is an associated morphism $J(M) \to J(N)$
+making the following diagram commute:
+$$
+\xymatrix{
+M \ar[d] \ar[r] & N \ar[d] \\
+J(M) \ar[r] & J(N) }
+$$
+This is the kind of construction we would like to have in general.
+In Homology, Section \ref{homology-section-injectives}
+we introduced terminology to express this. Namely,
+we say this means that the category of $R$-modules
+has functorial injective embeddings.
+
+
+
+
+
+
+
+
+
+
+

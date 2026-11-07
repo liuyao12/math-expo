@@ -1,0 +1,241 @@
+\section{Purely inseparable extensions}
+\label{section-purely-inseparable}
+
+\noindent
+Purely inseparable extensions are the opposite of the separable
+extensions defined in the previous section. These extensions only
+show up in positive characteristic.
+
+\begin{definition}
+\label{definition-purely-inseparable}
+Let $F$ be a field of characteristic $p > 0$. Let $K/F$ be an extension.
+\begin{enumerate}
+\item An element $\alpha \in K$ is {\it purely inseparable} over $F$
+if there exists a power $q$ of $p$ such that $\alpha^q \in F$.
+\item The extension $K/F$ is said to be {\it purely inseparable}
+if and only if every element of $K$ is purely inseparable over $F$.
+\end{enumerate}
+If we have a field extension $L/M$ (with no condition on the characteristic
+of $M$), then we will say the extension is {\it purely inseparable}
+if either $L = M$ or the characteristic of $M$ is a prime number $p$
+and $L/M$ is purely inseparable in the sense defined above.
+\end{definition}
+
+\noindent
+Observe that a purely inseparable extension is necessarily algebraic.
+Let $F$ be a field of characteristic $p > 0$.
+An example of a purely inseparable extension is gotten by adjoining
+the $p$th root of an element $t \in F$ which does not yet have one. Namely,
+the lemma below shows that $P = x^p - t$ is irreducible, and hence
+$$
+K = F[x]/(P) = F[t^{1/p}]
+$$
+is a field. And $K$ is purely inseparable over $F$ because every element
+$$
+a_0 + a_1t^{1/p} + \ldots + a_{p - 1}t^{(p - 1)/p},\quad a_i \in F
+$$
+of $K$ has $p$th power equal to
+$$
+(a_0 + a_1t^{1/p} + \ldots + a_{p - 1}t^{(p - 1)/p})^p =
+a_0^p + a_1^p t + \ldots + a_{p - 1}^pt^{p - 1} \in F
+$$
+This situation occurs for the field
+$\mathbf{F}_p(t)$ of rational functions over $\mathbf{F}_p$.
+
+\begin{lemma}
+\label{lemma-take-pth-root}
+Let $p$ be a prime number. Let $F$ be a field of characteristic $p$.
+Let $t \in F$ be an element which does not have a $p$th root in $F$.
+Then the polynomial $x^p - t$ is irreducible over $F$.
+\end{lemma}
+
+\begin{proof}
+To see this, suppose that we have a factorization
+$x^p - t = f g$. Taking derivatives we get $f' g + f g' = 0$.
+Note that neither $f' = 0$ nor $g' = 0$ as the degrees of $f$ and $g$
+are smaller than $p$. Moreover, $\deg(f') < \deg(f)$ and $\deg(g') < \deg(g)$.
+We conclude that $f$ and $g$ have a factor in common. Thus if $x^p - t$
+is reducible, then it is of the form $x^p - t = c f^n$ for some irreducible
+$f$, $c \in F^*$, and $n > 1$. Since $p$ is a prime number this
+implies $n = p$ and $f$ linear, which would imply $x^p - t$ has a root
+in $F$. Contradiction.
+\end{proof}
+
+\noindent
+We will see that taking $p$th roots is a very important operation in
+characteristic $p$.
+
+\begin{lemma}
+\label{lemma-purely-inseparable-permanence}
+Let $E/k$ and $F/E$ be purely inseparable extensions of fields. Then $F/k$
+is a purely inseparable extension of fields.
+\end{lemma}
+
+\begin{proof}
+Say the characteristic of $k$ is $p$. Choose $\alpha \in F$. Then
+$\alpha^q \in E$ for some $p$-power $q$. Whereupon $(\alpha^q)^{q'} \in k$
+for some $p$-power $q'$. Hence $\alpha^{qq'} \in k$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-purely-inseparable-elements}
+Let $E/k$ be a field extension. Then the elements of $E$ purely-inseparable
+over $k$ form a subextension of $E/k$.
+\end{lemma}
+
+\begin{proof}
+Let $p$ be the characteristic of $k$.
+Let $\alpha, \beta \in E$ be purely inseparable over $k$. Say
+$\alpha^q \in k$ and $\beta^{q'} \in k$ for some $p$-powers $q, q'$.
+If $q''$ is a $p$-power, then
+$(\alpha + \beta)^{q''} = \alpha^{q''} + \beta^{q''}$.
+Hence if $q'' \geq q, q'$, then we conclude that $\alpha + \beta$
+is purely inseparable over $k$. Similarly for the difference,
+product and quotient of $\alpha$ and $\beta$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-finite-purely-inseparable}
+Let $E/F$ be a finite purely inseparable field extension of
+characteristic $p > 0$. Then there exists a sequence of elements
+$\alpha_1, \ldots, \alpha_n \in E$ such that we obtain a tower
+of fields
+$$
+E = F(\alpha_1, \ldots, \alpha_n) \supset
+F(\alpha_1, \ldots, \alpha_{n - 1}) \supset
+\ldots
+\supset F(\alpha_1) \supset F
+$$
+such that each intermediate extension is of degree $p$ and comes
+from adjoining a $p$th root. Namely,
+$\alpha_i^p \in F(\alpha_1, \ldots, \alpha_{i - 1})$
+is an element which does not have a $p$th root in
+$F(\alpha_1, \ldots, \alpha_{i - 1})$ for $i = 1, \ldots, n$.
+\end{lemma}
+
+\begin{proof}
+By induction on the degree of $E/F$. If the degree of the extension is $1$
+then the result is clear (with $n = 0$). If not, then choose
+$\alpha \in E$, $\alpha \not \in F$. Say $\alpha^{p^r} \in F$ for some
+$r > 0$. Pick $r$ minimal and replace $\alpha$ by $\alpha^{p^{r - 1}}$.
+Then $\alpha \not \in F$, but $\alpha^p \in F$. Then $t = \alpha^p$ is not
+a $p$th power in $F$ (because that would imply $\alpha \in F$, see
+Lemma \ref{lemma-nr-roots-unchanged} or its proof).
+Thus $F \subset F(\alpha)$ is a subextension of degree $p$
+(Lemma \ref{lemma-take-pth-root}). By induction we find
+$\alpha_1, \ldots, \alpha_n \in E$ generating $E/F(\alpha)$
+satisfying the conclusions of the lemma.
+The sequence $\alpha, \alpha_1, \ldots, \alpha_n$ does the job
+for the extension $E/F$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-separable-first}
+\begin{slogan}
+Any algebraic field extension is uniquely a separable field extension
+followed by a purely inseparable one.
+\end{slogan}
+Let $E/F$ be an algebraic field extension. There exists a unique subextension
+$E/E_{sep}/F$ such that $E_{sep}/F$ is separable and $E/E_{sep}$ is
+purely inseparable.
+\end{lemma}
+
+\begin{proof}
+If the characteristic is zero we set $E_{sep} = E$. Assume the characteristic
+is $p > 0$. Let $E_{sep}$ be the set of elements of $E$ which are separable
+over $F$. This is a subextension by Lemma \ref{lemma-separable-elements}
+and of course $E_{sep}$ is separable over $F$. Given an $\alpha$ in $E$
+there exists a $p$-power $q$ such that $\alpha^q$ is separable over $F$.
+Namely, $q$ is that power of $p$ such that the minimal polynomial of
+$\alpha$ is of the form $P(x^q)$ with $P$ separable algebraic, see
+Lemma \ref{lemma-irreducible-polynomials}. Hence $E/E_{sep}$ is purely
+inseparable. Uniqueness is clear.
+\end{proof}
+
+\begin{definition}
+\label{definition-insep-degree}
+Let $E/F$ be an algebraic field extension. Let $E_{sep}$ be the subextension
+found in Lemma \ref{lemma-separable-first}.
+\begin{enumerate}
+\item The integer $[E_{sep} : F]$ is called the {\it separable
+degree} of the extension. Notation $[E : F]_s$.
+\item The integer $[E : E_{sep}]$ is called the {\it inseparable
+degree}, or the {\it degree of inseparability} of the extension.
+Notation $[E : F]_i$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+Of course in characteristic $0$ we have $[E : F] = [E : F]_s$ and
+$[E : F]_i = 1$. By multiplicativity
+(Lemma \ref{lemma-multiplicativity-degrees}) we have
+$$
+[E : F] = [E : F]_s [E : F]_i
+$$
+even in case some of these degrees are infinite. In fact, the separable
+degree and the inseparable degree are multiplicative too (see
+Lemma \ref{lemma-multiplicativity-all-degrees}).
+
+\begin{lemma}
+\label{lemma-separable-degree}
+Let $K/F$ be a finite extension. Let $\overline{F}$ be an algebraic
+closure of $F$. Then $[K : F]_s = |\Mor_F(K, \overline{F})|$.
+\end{lemma}
+
+\begin{proof}
+We first prove this when $K/F$ is purely inseparable. Namely, we claim that
+in this case there is a unique map $K \to \overline{F}$. This can be
+seen by choosing a sequence of elements $\alpha_1, \ldots, \alpha_n \in K$
+as in Lemma \ref{lemma-finite-purely-inseparable}. The irreducible polynomial
+of $\alpha_i$ over $F(\alpha_1, \ldots, \alpha_{i - 1})$ is $x^p - \alpha_i^p$.
+Applying Lemma \ref{lemma-count-embeddings-explicitly} we see that
+$|\Mor_F(K, \overline{F})| = 1$. On the other hand, $[K : F]_s = 1$
+in this case hence the equality holds.
+
+\medskip\noindent
+Let's return to a general finite extension $K/F$. In this case
+choose $F \subset K_s \subset K$ as in Lemma \ref{lemma-separable-first}.
+By Lemma \ref{lemma-separable-equality} we have
+$|\Mor_F(K_s, \overline{F})| = [K_s : F] = [K : F]_s$.
+On the other hand, every field map $\sigma' : K_s \to \overline{F}$
+extends to a unique field map $\sigma : K \to \overline{F}$ by the
+result of the previous paragraph. In other words
+$|\Mor_F(K, \overline{F})| = |\Mor_F(K_s, \overline{F})|$
+and the proof is done.
+\end{proof}
+
+\begin{lemma}[Multiplicativity]
+\label{lemma-multiplicativity-all-degrees}
+Suppose given a tower of algebraic field extensions $K/E/F$. Then
+$$
+[K : F]_s = [K : E]_s [E : F]_s
+\quad\text{and}\quad
+[K : F]_i = [K : E]_i [E : F]_i
+$$
+\end{lemma}
+
+\begin{proof}
+We first prove this in case $K$ is finite over $F$. Since we have
+multiplicativity for the usual degree (by
+Lemma \ref{lemma-multiplicativity-degrees}) it suffices to prove
+one of the two formulas. By Lemma \ref{lemma-separable-degree} we have
+$[K : F]_s = |\Mor_F(K, \overline{F})|$. By the same lemma,
+given any $\sigma \in \Mor_F(E, \overline{F})$ the number of extensions
+of $\sigma$ to a map $\tau : K \to \overline{F}$ is $[K : E]_s$.
+Namely, via $E \cong \sigma(E) \subset \overline{F}$ we can view
+$\overline{F}$ as an algebraic closure of $E$. Combined with the
+fact that there are $[E : F]_s = |\Mor_F(E, \overline{F})|$ choices
+for $\sigma$ we obtain the result.
+
+\medskip\noindent
+We omit the proof if the extensions are infinite.
+\end{proof}
+
+
+
+
+
+
+
+
+

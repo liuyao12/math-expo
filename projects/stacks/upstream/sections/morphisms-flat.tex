@@ -1,0 +1,380 @@
+\section{Flat morphisms}
+\label{section-flat}
+
+\noindent
+Flatness is one of the most important technical tools in algebraic geometry.
+In this section we introduce this notion. We intentionally limit the discussion
+to straightforward observations, apart from Lemma \ref{lemma-fppf-open}.
+A very important class of results, namely criteria for flatness, are
+discussed in
+Algebra, Sections \ref{algebra-section-criteria-flatness},
+\ref{algebra-section-flatness-artinian},
+\ref{algebra-section-more-flatness-criteria}, and
+More on Morphisms, Section
+\ref{more-morphisms-section-criterion-flat-fibres}.
+There is a chapter dedicated to advanced material on flat morphisms of
+schemes, namely More on Flatness, Section \ref{flat-section-introduction}.
+
+\medskip\noindent
+Recall that a module $M$ over a ring $R$ is {\it flat} if the functor
+$-\otimes_R M : \text{Mod}_R \to \text{Mod}_R$ is exact. A ring map
+$R \to A$ is said to be {\it flat} if $A$ is flat as an $R$-module.
+See
+Algebra, Definition \ref{algebra-definition-flat}.
+
+\begin{definition}
+\label{definition-flat}
+Let $f : X \to S$ be a morphism of schemes.
+Let $\mathcal{F}$ be a quasi-coherent sheaf of $\mathcal{O}_X$-modules.
+\begin{enumerate}
+\item We say $f$ is {\it flat at a point $x \in X$} if the
+local ring $\mathcal{O}_{X, x}$ is flat over the local ring
+$\mathcal{O}_{S, f(x)}$.
+\item We say that $\mathcal{F}$ is {\it flat over $S$ at a point $x \in X$}
+if the stalk $\mathcal{F}_x$ is a flat $\mathcal{O}_{S, f(x)}$-module.
+\item We say $f$ is {\it flat} if $f$ is flat at every point of $X$.
+\item We say that $\mathcal{F}$ is {\it flat over $S$} if
+$\mathcal{F}$ is flat over $S$ at every point $x$ of $X$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+Thus we see that $f$ is flat if and only if
+the structure sheaf $\mathcal{O}_X$ is flat over $S$.
+
+\begin{lemma}
+\label{lemma-flat-module-characterize}
+Let $f : X \to S$ be a morphism of schemes.
+Let $\mathcal{F}$ be a quasi-coherent sheaf of $\mathcal{O}_X$-modules.
+The following are equivalent
+\begin{enumerate}
+\item The sheaf $\mathcal{F}$ is flat over $S$.
+\item For every affine opens $U \subset X$, $V \subset S$
+with $f(U) \subset V$ the $\mathcal{O}_S(V)$-module $\mathcal{F}(U)$ is flat.
+\item There exists an open covering $S = \bigcup_{j \in J} V_j$
+and open coverings $f^{-1}(V_j) = \bigcup_{i \in I_j} U_i$ such
+that each of the modules $\mathcal{F}|_{U_i}$ is
+flat over $V_j$, for all $j\in J, i\in I_j$.
+\item There exists an affine open covering $S = \bigcup_{j \in J} V_j$
+and affine open coverings $f^{-1}(V_j) = \bigcup_{i \in I_j} U_i$ such
+that $\mathcal{F}(U_i)$ is a flat $\mathcal{O}_S(V_j)$-module, for all
+$j\in J, i\in I_j$.
+\end{enumerate}
+Moreover, if $\mathcal{F}$ is flat over $S$ then for
+any open subschemes $U \subset X$, $V \subset S$ with $f(U) \subset V$
+the restriction $\mathcal{F}|_U$ is flat over $V$.
+\end{lemma}
+
+\begin{proof}
+Let $R \to A$ be a ring map. Let $M$ be an $A$-module.
+If $M$ is $R$-flat, then for all primes
+$\mathfrak q$ the module $M_{\mathfrak q}$ is flat over $R_{\mathfrak p}$
+with $\mathfrak p$ the prime of $R$ lying under $\mathfrak q$. Conversely, if
+$M_{\mathfrak q}$ is flat over $R_{\mathfrak p}$ for all primes $\mathfrak q$
+of $A$, then $M$ is flat over $R$. See
+Algebra, Lemma \ref{algebra-lemma-flat-localization}.
+This equivalence easily implies the statements of the lemma.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-flat-characterize}
+Let $f : X \to S$ be a morphism of schemes.
+The following are equivalent
+\begin{enumerate}
+\item The morphism $f$ is flat.
+\item For every affine opens $U \subset X$, $V \subset S$
+with $f(U) \subset V$ the ring map
+$\mathcal{O}_S(V) \to \mathcal{O}_X(U)$ is flat.
+\item There exists an open covering $S = \bigcup_{j \in J} V_j$
+and open coverings $f^{-1}(V_j) = \bigcup_{i \in I_j} U_i$ such
+that each of the morphisms $U_i \to V_j$, $j\in J, i\in I_j$
+is flat.
+\item There exists an affine open covering $S = \bigcup_{j \in J} V_j$
+and affine open coverings $f^{-1}(V_j) = \bigcup_{i \in I_j} U_i$ such
+that $\mathcal{O}_S(V_j) \to \mathcal{O}_X(U_i)$ is flat, for all
+$j\in J, i\in I_j$.
+\end{enumerate}
+Moreover, if $f$ is flat then for
+any open subschemes $U \subset X$, $V \subset S$ with $f(U) \subset V$
+the restriction $f|_U : U \to V$ is flat.
+\end{lemma}
+
+\begin{proof}
+This is a special case of Lemma \ref{lemma-flat-module-characterize}
+above.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-pushforward-flat-affine}
+Let $f : X \to Y$ be an affine morphism of schemes over a base scheme $S$.
+Let $\mathcal{F}$ be a quasi-coherent $\mathcal{O}_X$-module.
+Then $\mathcal{F}$ is flat over $S$ if and only if
+$f_*\mathcal{F}$ is flat over $S$.
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-flat-module-characterize} and the fact that
+$f$ is an affine morphism, this reduces us to the affine case.
+Say $X \to Y \to S$ corresponds to the ring maps $C \leftarrow B \leftarrow A$.
+Let $N$ be the $C$-module corresponding to $\mathcal{F}$.
+Recall that $f_*\mathcal{F}$ corresponds to $N$ viewed as a $B$-module, see
+Schemes, Lemma \ref{schemes-lemma-widetilde-pullback}.
+Thus the result is clear.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-composition-module-flat}
+Let $X \to Y \to Z$ be morphisms of schemes. Let $\mathcal{F}$ be a
+quasi-coherent $\mathcal{O}_X$-module. Let $x \in X$ with image $y$ in $Y$.
+If $\mathcal{F}$ is flat over $Y$ at $x$, and $Y$ is flat over $Z$ at
+$y$, then $\mathcal{F}$ is flat over $Z$ at $x$.
+\end{lemma}
+
+\begin{proof}
+See Algebra, Lemma \ref{algebra-lemma-composition-flat}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-composition-flat}
+The composition of flat morphisms is flat.
+\end{lemma}
+
+\begin{proof}
+This is a special case of Lemma \ref{lemma-composition-module-flat}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-base-change-module-flat}
+Let $f : X \to S$ be a morphism of schemes.
+Let $\mathcal{F}$ be a quasi-coherent sheaf of $\mathcal{O}_X$-modules.
+Let $g : S' \to S$ be a morphism of schemes.
+Denote $g' : X' = X_{S'} \to X$ the projection.
+Let $x' \in X'$ be a point with image $x = g'(x') \in X$.
+If $\mathcal{F}$ is flat over $S$ at $x$, then
+$(g')^*\mathcal{F}$ is flat over $S'$ at $x'$.
+In particular, if $\mathcal{F}$ is flat over $S$, then
+$(g')^*\mathcal{F}$ is flat over $S'$.
+\end{lemma}
+
+\begin{proof}
+See Algebra, Lemma \ref{algebra-lemma-flat-base-change}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-base-change-flat}
+The base change of a flat morphism is flat.
+\end{lemma}
+
+\begin{proof}
+This is a special case of Lemma \ref{lemma-base-change-module-flat}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-generalizations-lift-flat}
+Let $f : X \to S$ be a flat morphism of schemes.
+Then generalizations lift along $f$, see
+Topology, Definition \ref{topology-definition-lift-specializations}.
+\end{lemma}
+
+\begin{proof}
+See Algebra, Section \ref{algebra-section-going-up}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-fppf-open}
+A flat morphism locally of finite presentation is universally open.
+\end{lemma}
+
+\begin{proof}
+This follows from Lemmas \ref{lemma-generalizations-lift-flat} and
+Lemma \ref{lemma-locally-finite-presentation-universally-open} above.
+We can also argue directly as follows.
+
+\medskip\noindent
+Let $f : X \to S$ be flat and locally of finite presentation.
+By Lemmas \ref{lemma-base-change-flat} and
+\ref{lemma-base-change-finite-presentation} any base change of $f$ is flat
+and locally of finite presentation. Hence it suffices to show $f$ is open.
+To show $f$ is open it suffices to show that we may cover
+$X$ by open affines $X = \bigcup U_i$ such that $U_i \to S$
+is open. We may cover $X$ by affine opens $U_i \subset X$ such that each
+$U_i$ maps into an affine open $V_i \subset S$ and such that
+the induced ring map $\mathcal{O}_S(V_i) \to \mathcal{O}_X(U_i)$ is
+flat and of finite presentation (Lemmas \ref{lemma-flat-characterize} and
+\ref{lemma-locally-finite-presentation-characterize}).
+Then $U_i \to V_i$ is open by
+Algebra, Proposition \ref{algebra-proposition-fppf-open}
+and the proof is complete.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-pf-flat-module-open}
+Let $f : X \to Y$ be a morphism of schemes.
+Let $\mathcal{F}$ be a quasi-coherent $\mathcal{O}_X$-module.
+Assume $f$ locally finite presentation, $\mathcal{F}$ of
+finite type, $X = \text{Supp}(\mathcal{F})$, and
+$\mathcal{F}$ flat over $Y$. Then $f$ is universally open.
+\end{lemma}
+
+\begin{proof}
+By Lemmas \ref{lemma-base-change-module-flat},
+\ref{lemma-base-change-finite-presentation}, and
+\ref{lemma-support-finite-type}
+the assumptions are preserved under base change.
+By Lemma \ref{lemma-locally-finite-presentation-universally-open}
+it suffices to show that generalizations lift along $f$.
+This follows from Algebra, Lemma \ref{algebra-lemma-going-down-flat-module}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-fpqc-quotient-topology}
+\begin{reference}
+\cite[Expose VIII, Corollaire 4.3]{SGA1} and
+\cite[IV, Corollaire 2.3.12]{EGA}
+\end{reference}
+Let $f : X \to Y$ be a quasi-compact, surjective, flat morphism.
+A subset $T \subset Y$ is open (resp.\ closed) if and only
+$f^{-1}(T)$ is open (resp.\ closed). In other words, $f$ is
+a submersive morphism.
+\end{lemma}
+
+\begin{proof}
+The question is local on $Y$, hence we may assume that $Y$ is affine.
+In this case $X$ is quasi-compact as $f$ is quasi-compact.
+Write $X = X_1 \cup \ldots \cup X_n$ as a finite union of affine opens.
+Then $f' : X' = X_1 \amalg \ldots \amalg X_n \to Y$ is a surjective
+flat morphism of affine schemes. Note that for $T \subset Y$ we have
+$(f')^{-1}(T) = f^{-1}(T) \cap X_1 \amalg \ldots \amalg f^{-1}(T) \cap X_n$.
+Hence, $f^{-1}(T)$ is open if and only if $(f')^{-1}(T)$ is open.
+Thus we may assume both $X$ and $Y$ are affine.
+
+\medskip\noindent
+Let $f : \Spec(B) \to \Spec(A)$ be a surjective morphism of affine schemes
+corresponding to a flat ring map $A \to B$. Suppose that $f^{-1}(T)$ is
+closed, say $f^{-1}(T) = V(J)$ for $J \subset B$ an ideal. Then
+$T = f(f^{-1}(T)) = f(V(J))$ is the image of $\Spec(B/J) \to \Spec(A)$
+(here we use that $f$ is surjective). On the other hand, generalizations
+lift along $f$ (Lemma \ref{lemma-generalizations-lift-flat}).
+Hence by Topology, Lemma \ref{topology-lemma-lift-specializations-images}
+we see that $Y \setminus T = f(X \setminus f^{-1}(T))$ is stable under
+generalization. Hence $T$ is stable under specialization
+(Topology, Lemma \ref{topology-lemma-open-closed-specialization}).
+Thus $T$ is closed by
+Algebra, Lemma \ref{algebra-lemma-image-stable-specialization-closed}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-flat-permanence}
+Let $h : X \to Y$ be a morphism of schemes over $S$.
+Let $\mathcal{G}$ be a quasi-coherent sheaf on $Y$.
+Let $x \in X$ with $y = h(x) \in Y$. If $h$ is flat at $x$, then
+$$
+\mathcal{G}\text{ flat over }S\text{ at }y
+\Leftrightarrow
+h^*\mathcal{G}\text{ flat over }S\text{ at }x.
+$$
+In particular: If $h$ is surjective and flat, then
+$\mathcal{G}$ is flat over $S$, if and only if
+$h^*\mathcal{G}$ is flat over $S$. If $h$ is surjective and
+flat, and $X$ is flat over $S$, then $Y$ is flat over $S$.
+\end{lemma}
+
+\begin{proof}
+You can prove this by applying
+Algebra, Lemma \ref{algebra-lemma-flatness-descends-more-general}.
+Here is a direct proof. Let $s \in S$ be the image of $y$.
+Consider the local ring maps
+$\mathcal{O}_{S, s} \to \mathcal{O}_{Y, y} \to \mathcal{O}_{X, x}$.
+By assumption the ring map $\mathcal{O}_{Y, y} \to \mathcal{O}_{X, x}$
+is faithfully flat, see
+Algebra, Lemma \ref{algebra-lemma-local-flat-ff}.
+Let $N = \mathcal{G}_y$. Note that
+$h^*\mathcal{G}_x = N \otimes_{\mathcal{O}_{Y, y}} \mathcal{O}_{X, x}$, see
+Sheaves, Lemma \ref{sheaves-lemma-stalk-pullback-modules}.
+Let $M' \to M$ be an injection of $\mathcal{O}_{S, s}$-modules.
+By the faithful flatness mentioned above we have
+\begin{align*}
+\Ker(
+M' \otimes_{\mathcal{O}_{S, s}} N \to M \otimes_{\mathcal{O}_{S, s}} N)
+\otimes_{\mathcal{O}_{Y, y}} \mathcal{O}_{X, x} \\
+=
+\Ker(
+M' \otimes_{\mathcal{O}_{S, s}} N
+\otimes_{\mathcal{O}_{Y, y}} \mathcal{O}_{X, x}
+\to
+M \otimes_{\mathcal{O}_{S, s}} N
+\otimes_{\mathcal{O}_{Y, y}} \mathcal{O}_{X, x})
+\end{align*}
+Hence the equivalence of the lemma follows from the second characterization
+of flatness in
+Algebra, Lemma \ref{algebra-lemma-flat}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-flat-pullback-support}
+Let $f : Y \to X$ be a morphism of schemes. Let $\mathcal{F}$ be
+a finite type quasi-coherent $\mathcal{O}_X$-module with scheme
+theoretic support $Z \subset X$. If $f$ is flat,
+then $f^{-1}(Z)$ is the scheme theoretic support of $f^*\mathcal{F}$.
+\end{lemma}
+
+\begin{proof}
+Using the characterization of scheme theoretic support on affines
+as given in Lemma \ref{lemma-scheme-theoretic-support} we reduce to
+Algebra, Lemma \ref{algebra-lemma-annihilator-flat-base-change}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-flat-morphism-scheme-theoretically-dense-open}
+Let $f : X \to Y$ be a flat morphism of schemes. Let $V \subset Y$ be
+a retrocompact open which is scheme theoretically dense. Then $f^{-1}V$
+is scheme theoretically dense in $X$.
+\end{lemma}
+
+\begin{proof}
+We will use the characterization of
+Lemma \ref{lemma-characterize-scheme-theoretically-dense}.
+We have to show that for any open $U \subset X$ the map
+$\mathcal{O}_X(U) \to \mathcal{O}_X(U \cap f^{-1}V)$ is injective.
+It suffices to prove this when $U$ is an affine open which maps into
+an affine open $W \subset Y$. Say $W = \Spec(A)$ and $U = \Spec(B)$.
+Then $V \cap W = D(f_1) \cup \ldots \cup D(f_n)$ for some
+$f_i \in A$, see
+Algebra, Lemma \ref{algebra-lemma-qc-open}.
+Thus we have to show that
+$B \to B_{f_1} \times \ldots \times B_{f_n}$ is injective.
+We are given that $A \to A_{f_1} \times \ldots \times A_{f_n}$ is injective
+and that $A \to B$ is flat. Since $B_{f_i} = A_{f_i} \otimes_A B$ we win.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-flat-base-change-scheme-theoretic-image}
+\begin{slogan}
+Taking scheme theoretic images commutes with flat base change
+in the quasi-compact case
+\end{slogan}
+Let $f : X \to Y$ be a flat morphism of schemes. Let $g : V \to Y$ be a
+quasi-compact morphism of schemes. Let $Z \subset Y$ be the scheme theoretic
+image of $g$ and let $Z' \subset X$ be the scheme theoretic image of the
+base change $V \times_Y X \to X$. Then $Z' = f^{-1}Z$.
+\end{lemma}
+
+\begin{proof}
+Recall that $Z$ is cut out by
+$\mathcal{I} = \Ker(\mathcal{O}_Y \to g_*\mathcal{O}_V)$
+and $Z'$ is cut out by
+$\mathcal{I}' = \Ker(\mathcal{O}_X \to
+(V \times_Y X \to X)_*\mathcal{O}_{V \times_Y X})$, see
+Lemma \ref{lemma-quasi-compact-scheme-theoretic-image}.
+Hence the question is local on $X$ and $Y$ and we may assume $X$ and $Y$
+affine. Note that we may replace $V$ by $\coprod V_i$ where
+$V = V_1 \cup \ldots \cup V_n$ is a finite affine open covering.
+Hence we may assume $g$ is affine. In this case
+$(V \times_Y X \to X)_*\mathcal{O}_{V \times_Y X}$ is the pullback
+of $g_*\mathcal{O}_V$ by $f$. Since $f$ is flat we conclude that
+$f^*\mathcal{I} = \mathcal{I}'$ and the lemma holds.
+\end{proof}
+
+
+
+

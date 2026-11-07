@@ -1,0 +1,884 @@
+\section{Colimits and maps of finite presentation}
+\label{section-colimits-flat}
+
+\noindent
+In this section we prove some preliminary lemmas
+which will eventually help us prove result using
+absolute Noetherian reduction.
+In Categories, Section \ref{categories-section-directed-colimits}
+we discuss filtered colimits in general.
+Here is an example of this very general notion.
+
+\begin{lemma}
+\label{lemma-ring-colimit-fp-category}
+Let $R \to A$ be a ring map. Consider the category $\mathcal{I}$ of all
+diagrams of $R$-algebra maps $A' \to A$ with $A'$ finitely presented over
+$R$. Then $\mathcal{I}$ is filtered, and the colimit of the $A'$ over
+$\mathcal{I}$ is isomorphic to $A$.
+\end{lemma}
+
+\begin{proof}
+The category\footnote{To avoid set theoretical difficulties we
+consider only $A' \to A$ such that $A'$ is a quotient of
+$R[x_1, x_2, x_3, \ldots]$.}
+$\mathcal{I}$ is nonempty as $R \to R$ is an object of it.
+Consider a pair of objects $A' \to A$, $A'' \to A$ of $\mathcal{I}$.
+Then $A' \otimes_R A'' \to A$ is in
+$\mathcal{I}$ (use Lemmas \ref{lemma-compose-finite-type} and
+\ref{lemma-base-change-finiteness}). The ring maps
+$A' \to A' \otimes_R A''$ and $A'' \to A' \otimes_R A''$
+define arrows in $\mathcal{I}$ thereby proving the second defining
+property of a filtered category, see
+Categories, Definition \ref{categories-definition-directed}.
+Finally, suppose that we have two morphisms $\sigma, \tau : A' \to A''$
+in $\mathcal{I}$. If $x_1, \ldots, x_r \in A'$ are generators of
+$A'$ as an $R$-algebra, then we can consider
+$A''' = A''/(\sigma(x_i) - \tau(x_i))$.
+This is a finitely presented $R$-algebra and the given $R$-algebra map
+$A'' \to A$ factors through the surjection $\nu : A'' \to A'''$.
+Thus $\nu$ is a morphism in $\mathcal{I}$ equalizing $\sigma$ and $\tau$
+as desired.
+
+\medskip\noindent
+The fact that our index category is cofiltered means that we may
+compute the value of $B = \colim_{A' \to A} A'$ in the category of sets
+(some details omitted; compare with the discussion in
+Categories, Section \ref{categories-section-directed-colimits}).
+To see that $B \to A$ is surjective, for
+every $a \in A$ we can use $R[x] \to A$, $x \mapsto a$ to see that
+$a$ is in the image of $B \to A$. Conversely, if $b \in B$ is mapped
+to zero in $A$, then we can find $A' \to A$ in $\mathcal{I}$ and
+$a' \in A'$ which maps to $b$. Then $A'/(a') \to A$ is in $\mathcal{I}$
+as well and the map $A' \to B$ factors as $A' \to A'/(a') \to B$
+which shows that $b = 0$ as desired.
+\end{proof}
+
+\noindent
+Often it is easier to think about colimits over preordered sets.
+Let $(\Lambda, \geq)$ a preordered set.
+A system of rings over $\Lambda$ is given by
+a ring $R_\lambda$ for every $\lambda \in \Lambda$,
+and a morphism $R_\lambda \to R_\mu$ whenever $\lambda \leq \mu$.
+These morphisms have to satisfy the rule that
+$R_\lambda \to R_\mu \to R_\nu$ is equal to the map
+$R_\lambda \to R_\nu$ for all $\lambda \leq \mu \leq \nu$.
+See Categories, Section \ref{categories-section-posets-limits}.
+We will often assume that $(I, \leq)$ is {\it directed},
+which means that $\Lambda$ is nonempty and
+given $\lambda, \mu \in \Lambda$
+there exists a $\nu \in \Lambda$ with $\lambda \leq \nu$ and $\mu \leq \nu$.
+Recall that the colimit $\colim_\lambda R_\lambda$
+is sometimes called a ``direct limit'' in this case
+(but we will not use this terminology).
+
+\medskip\noindent
+Note that Categories, Lemma \ref{categories-lemma-directed-category-system}
+tells us that colimits over filtered index categories are the same
+thing as colimits over directed sets.
+
+\begin{lemma}
+\label{lemma-ring-colimit-fp}
+Let $R \to A$ be a ring map. There exists a directed system $A_\lambda$ of
+$R$-algebras of finite presentation such that $A = \colim_\lambda A_\lambda$.
+If $A$ is of finite type over $R$ we may arrange it so that all the
+transition maps in the system of $A_\lambda$ are surjective.
+\end{lemma}
+
+\begin{proof}
+The first proof is that this follows from
+Lemma \ref{lemma-ring-colimit-fp-category} and
+Categories, Lemma \ref{categories-lemma-directed-category-system}.
+
+\medskip\noindent
+Second proof.
+Compare with the proof of Lemma \ref{lemma-module-colimit-fp}.
+Consider any finite subset $S \subset A$, and any finite
+collection of polynomial relations $E$ among the elements of $S$.
+So each $s \in S$ corresponds to $x_s \in A$ and
+each $e \in E$ consists of a polynomial
+$f_e \in R[X_s; s\in S]$ such that $f_e(x_s) = 0$.
+Let $A_{S, E} = R[X_s; s\in S]/(f_e; e\in E)$
+which is a finitely presented $R$-algebra.
+There are canonical maps $A_{S, E} \to A$.
+If $S \subset S'$ and if the elements of
+$E$ correspond, via the map $R[X_s; s \in S] \to R[X_s; s\in S']$,
+to a subset of $E'$, then there is an obvious map
+$A_{S, E} \to A_{S', E'}$ commuting with the
+maps to $A$. Thus, setting $\Lambda$ equal the set of pairs
+$(S, E)$ with ordering by inclusion as above, we get a
+directed partially ordered set.
+It is clear that the colimit of this directed system is $A$.
+
+\medskip\noindent
+For the last statement, suppose $A = R[x_1, \ldots, x_n]/I$.
+In this case, consider the subset $\Lambda' \subset \Lambda$
+consisting of those systems $(S, E)$ above
+with $S = \{x_1, \ldots, x_n\}$. It is easy to see that
+still $A = \colim_{\lambda' \in \Lambda'} A_{\lambda'}$.
+Moreover, the transition maps are clearly surjective.
+\end{proof}
+
+\noindent
+It turns out that we can characterize ring maps of finite
+presentation as follows. This in some sense says that the
+algebras of finite presentation are the ``compact'' objects
+in the category of $R$-algebras.
+
+\begin{lemma}
+\label{lemma-characterize-finite-presentation}
+Let $\varphi : R \to S$ be a ring map. The following are equivalent
+\begin{enumerate}
+\item $\varphi$ is of finite presentation,
+\item for every directed system $A_\lambda$ of $R$-algebras
+the map
+$$
+\colim_\lambda \Hom_R(S, A_\lambda) \longrightarrow
+\Hom_R(S, \colim_\lambda A_\lambda)
+$$
+is bijective, and
+\item for every directed system $A_\lambda$ of $R$-algebras
+the map
+$$
+\colim_\lambda \Hom_R(S, A_\lambda) \longrightarrow
+\Hom_R(S, \colim_\lambda A_\lambda)
+$$
+is surjective.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Assume (1) and write $S = R[x_1, \ldots, x_n] / (f_1, \ldots, f_m)$.
+Let $A = \colim A_\lambda$. Observe that an $R$-algebra homomorphism
+$S \to A$ or $S \to A_\lambda$ is determined by the images of
+$x_1, \ldots, x_n$. Hence it is clear that
+$\colim_\lambda \Hom_R(S, A_\lambda) \to \Hom_R(S, A)$
+is injective. To see that it is surjective, let $\chi : S \to A$
+be an $R$-algebra homomorphism. Then each
+$x_i$ maps to some element in the image of some $A_{\lambda_i}$.
+We may pick $\mu \geq \lambda_i$, $i = 1, \ldots, n$ and
+assume $\chi(x_i)$ is the image of $y_i \in A_\mu$ for
+$i = 1, \ldots, n$. Consider $z_j = f_j(y_1, \ldots, y_n) \in A_\mu$.
+Since $\chi$ is a homomorphism the image of $z_j$ in
+$A = \colim_\lambda A_\lambda$ is zero. Hence there exists a
+$\mu_j \geq \mu$ such that $z_j$ maps to zero in $A_{\mu_j}$.
+Pick $\nu \geq \mu_j$, $j = 1, \ldots, m$. Then the
+images of $z_1, \ldots, z_m$ are zero in $A_\nu$. This
+exactly means that the $y_i$ map to elements
+$y'_i \in A_\nu$ which satisfy the relations $f_j(y'_1, \ldots, y'_n) = 0$.
+Thus we obtain a ring map $S \to A_\nu$. This shows that
+(1) implies (2).
+
+\medskip\noindent
+It is clear that (2) implies (3). Assume (3).
+By Lemma \ref{lemma-ring-colimit-fp} we may write
+$S = \colim_\lambda S_\lambda$ with $S_\lambda$
+of finite presentation over $R$. Then the identity map
+factors as
+$$
+S \to S_\lambda \to S
+$$
+for some $\lambda$. This implies that $S$
+is finitely presented over $S_\lambda$ by
+Lemma \ref{lemma-compose-finite-type} part (4)
+applied to $S \to S_\lambda \to S$. Applying part (2) of the same
+lemma to $R \to S_\lambda \to S$ we conclude that $S$ is of finite
+presentation over $R$.
+\end{proof}
+
+\noindent
+Using the basic material above we can give a criterion of when
+an algebra $A$ is a filtered colimit of given type of algebra
+as follows.
+
+\begin{lemma}
+\label{lemma-when-colimit}
+Let $R \to \Lambda$ be a ring map. Let $\mathcal{E}$ be a set of $R$-algebras
+such that each $A \in \mathcal{E}$ is of finite presentation over $R$.
+Then the following two statements are equivalent
+\begin{enumerate}
+\item $\Lambda$ is a filtered colimit of elements of $\mathcal{E}$, and
+\item for any $R$ algebra map $A \to \Lambda$ with $A$ of finite
+presentation over $R$ we can find a factorization $A \to B \to \Lambda$
+with $B \in \mathcal{E}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Suppose that $\mathcal{I} \to \mathcal{E}$, $i \mapsto A_i$
+is a filtered diagram such that $\Lambda = \colim_i A_i$.
+Let $A \to \Lambda$ be an $R$-algebra map with $A$ of finite
+presentation over $R$. Then we get a factorization $A \to A_i \to \Lambda$
+by applying Lemma \ref{lemma-characterize-finite-presentation}.
+Thus (1) implies (2).
+
+\medskip\noindent
+Consider the category
+$\mathcal{I}$ of Lemma \ref{lemma-ring-colimit-fp-category}.
+By Categories, Lemma \ref{categories-lemma-cofinal-in-filtered}
+the full subcategory $\mathcal{J}$ consisting of those
+$A \to \Lambda$ with $A \in \mathcal{E}$ is cofinal in $\mathcal{I}$ and
+is a filtered category. Then $\Lambda$ is also the colimit
+over $\mathcal{J}$ by Categories, Lemma \ref{categories-lemma-cofinal}.
+\end{proof}
+
+\noindent
+But more is true. Namely, given $R = \colim_\lambda R_\lambda$
+we see that the category of finitely presented $R$-modules is equivalent
+to the limit of the category of finitely presented $R_\lambda$-modules.
+Similarly for the categories of finitely presented $R$-algebras.
+
+\begin{lemma}
+\label{lemma-module-map-property-in-colimit}
+Let $A$ be a ring and let $M, N$ be $A$-modules.
+Suppose that $R = \colim_{i \in I} R_i$ is a directed colimit
+of $A$-algebras.
+\begin{enumerate}
+\item If $M$ is a finite $A$-module, and $u, u' : M \to N$ are
+$A$-module maps such that
+$u \otimes 1 = u' \otimes 1 : M \otimes_A R \to N \otimes_A R$
+then for some $i$ we have
+$u \otimes 1 = u' \otimes 1 : M \otimes_A R_i \to N \otimes_A R_i$.
+\item If $N$ is a finite $A$-module and $u : M \to N$ is an $A$-module
+map such that $u \otimes 1 : M \otimes_A R \to N \otimes_A R$ is surjective,
+then for some $i$ the map $u \otimes 1 : M \otimes_A R_i \to N \otimes_A R_i$
+is surjective.
+\item If $N$ is a finitely presented $A$-module, and
+$v : N \otimes_A R \to M \otimes_A R$ is an $R$-module
+map, then there exists an $i$ and an $R_i$-module map
+$v_i : N \otimes_A R_i \to M \otimes_A R_i$ such that $v = v_i \otimes 1$.
+\item If $M$ is a finite $A$-module, $N$ is a finitely presented $A$-module,
+and $u : M \to N$ is an $A$-module map such that
+$u \otimes 1 : M \otimes_A R \to N \otimes_A R$ is an isomorphism, then
+for some $i$ the map $u \otimes 1 : M \otimes_A R_i \to N \otimes_A R_i$
+is an isomorphism.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+To prove (1) assume $u$ is as in (1) and
+let $x_1, \ldots, x_m \in M$ be generators. Since
+$N \otimes_A R = \colim_i N \otimes_A R_i$
+we may pick an $i \in I$ such that $u(x_j) \otimes 1 = u'(x_j) \otimes 1$
+in $M \otimes_A R_i$, $j = 1, \ldots, m$.
+For such an $i$ we have
+$u \otimes 1 = u' \otimes 1 : M \otimes_A R_i \to N \otimes_A R_i$.
+
+\medskip\noindent
+To prove (2) assume $u \otimes 1$ surjective and
+let $y_1, \ldots, y_m \in N$ be generators. Since
+$N \otimes_A R = \colim_i N \otimes_A R_i$
+we may pick an $i \in I$ and $z_j \in M \otimes_A R_i$, $j = 1, \ldots, m$
+whose images in $N \otimes_A R$ equal $y_j \otimes 1$.
+For such an $i$ the map $u \otimes 1 : M \otimes_A R_i \to N \otimes_A R_i$
+is surjective.
+
+\medskip\noindent
+To prove (3) let $y_1, \ldots, y_m \in N$ be generators. Let
+$K = \Ker(A^{\oplus m} \to N)$ where the map is given by
+the rule $(a_1, \ldots, a_m) \mapsto \sum a_j x_j$. Let $k_1, \ldots, k_t$
+be generators for $K$. Say $k_s = (k_{s1}, \ldots, k_{sm})$.
+Since $M \otimes_A R = \colim_i M \otimes_A R_i$
+we may pick an $i \in I$ and $z_j \in M \otimes_A R_i$, $j = 1, \ldots, m$
+whose images in $M \otimes_A R$ equal $v(y_j \otimes 1)$.
+We want to use the $z_j$ to define the map
+$v_i : N \otimes_A R_i \to M \otimes_A R_i$.
+Since $K \otimes_A R_i \to R_i^{\oplus m} \to N \otimes_A R_i \to 0$
+is a presentation, it suffices to check that $\xi_s = \sum_j k_{sj}z_j$ is
+zero in $M \otimes_A R_i$ for each $s = 1, \ldots, t$. This may not
+be the case, but since the image of $\xi_s$ in $M \otimes_A R$ is zero
+we see that it will be the case after increasing $i$ a bit.
+
+\medskip\noindent
+To prove (4) assume $u \otimes 1$ is an isomorphism, that
+$M$ is finite, and that $N$ is finitely presented.
+Let $v : N \otimes_A R \to M \otimes_A R$ be an inverse to
+$u \otimes 1$. Apply part (3) to get a map
+$v_i : N \otimes_A R_i \to M \otimes_A R_i$ for some $i$.
+Apply part (1) to see that, after increasing $i$ we have
+$v_i \circ (u \otimes 1) = \text{id}_{M \otimes_R R_i}$ and
+$(u \otimes 1) \circ v_i = \text{id}_{N \otimes_R R_i}$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-colimit-category-fp-modules}
+Suppose that $R = \colim_{\lambda \in \Lambda} R_\lambda$ is a directed colimit
+of rings. Then the category of finitely presented $R$-modules is
+the colimit of the categories of finitely presented $R_\lambda$-modules.
+More precisely
+\begin{enumerate}
+\item Given a finitely presented $R$-module $M$ there exists a
+$\lambda \in \Lambda$ and a finitely presented $R_\lambda$-module
+$M_\lambda$ such that $M \cong M_\lambda \otimes_{R_\lambda} R$.
+\item Given a $\lambda \in \Lambda$, finitely presented
+$R_\lambda$-modules $M_\lambda, N_\lambda$, and an $R$-module map
+$\varphi : M_\lambda \otimes_{R_\lambda} R \to N_\lambda \otimes_{R_\lambda} R$,
+then there exists a $\mu \geq \lambda$ and an $R_\mu$-module map
+$\varphi_\mu : M_\lambda \otimes_{R_\lambda} R_\mu \to
+N_\lambda \otimes_{R_\lambda} R_\mu$
+such that $\varphi = \varphi_\mu \otimes 1_R$.
+\item Given a $\lambda \in \Lambda$, finitely presented
+$R_\lambda$-modules $M_\lambda, N_\lambda$, and $R_\lambda$-module maps
+$\varphi, \psi : M_\lambda \to N_\lambda$
+such that $\varphi \otimes 1_R = \psi \otimes 1_R$, then
+$\varphi \otimes 1_{R_\mu} = \psi \otimes 1_{R_\mu}$ for some
+$\mu \geq \lambda$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+To prove (1) choose a presentation
+$R^{\oplus m} \to R^{\oplus n} \to M \to 0$.
+Suppose that the first map is given by the matrix $A = (a_{ij})$.
+We can choose a $\lambda \in \Lambda$ and a matrix
+$A_\lambda = (a_{\lambda, ij})$ with coefficients in $R_\lambda$
+which maps to $A$ in $R$.
+Then we simply let $M_\lambda$ be the $R_\lambda$-module with presentation
+$R_\lambda^{\oplus m} \to R_\lambda^{\oplus n} \to M_\lambda \to 0$
+where the first arrow is given by $A_\lambda$.
+
+\medskip\noindent
+Parts (2) and (3) follow from
+Lemma \ref{lemma-module-map-property-in-colimit}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-algebra-map-property-in-colimit}
+Let $A$ be a ring and let $B, C$ be $A$-algebras.
+Suppose that $R = \colim_{i \in I} R_i$ is a directed colimit
+of $A$-algebras.
+\begin{enumerate}
+\item If $B$ is a finite type $A$-algebra, and $u, u' : B \to C$ are
+$A$-algebra maps such that
+$u \otimes 1 = u' \otimes 1 : B \otimes_A R \to C \otimes_A R$
+then for some $i$ we have
+$u \otimes 1 = u' \otimes 1 : B \otimes_A R_i \to C \otimes_A R_i$.
+\item If $C$ is a finite type $A$-algebra and $u : B \to C$ is an
+$A$-algebra map such that
+$u \otimes 1 : B \otimes_A R \to C \otimes_A R$ is surjective, then
+for some $i$ the map $u \otimes 1 : B \otimes_A R_i \to C \otimes_A R_i$
+is surjective.
+\item If $C$ is of finite presentation over $A$ and
+$v : C \otimes_A R \to B \otimes_A R$ is an $R$-algebra map, then there
+exists an $i$ and an $R_i$-algebra map
+$v_i : C \otimes_A R_i \to B \otimes_A R_i$ such that
+$v = v_i \otimes 1$.
+\item If $B$ is a finite type $A$-algebra, $C$ is a finitely presented
+$A$-algebra, and
+$u \otimes 1 : B \otimes_A R \to C \otimes_A R$ is an isomorphism, then
+for some $i$ the map $u \otimes 1 : B \otimes_A R_i \to C \otimes_A R_i$
+is an isomorphism.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+To prove (1) assume $u$ is as in (1) and
+let $x_1, \ldots, x_m \in B$ be generators. Since
+$B \otimes_A R = \colim_i B \otimes_A R_i$
+we may pick an $i \in I$ such that $u(x_j) \otimes 1 = u'(x_j) \otimes 1$
+in $B \otimes_A R_i$, $j = 1, \ldots, m$.
+For such an $i$ we have
+$u \otimes 1 = u' \otimes 1 : B \otimes_A R_i \to C \otimes_A R_i$.
+
+\medskip\noindent
+To prove (2) assume $u \otimes 1$ surjective and
+let $y_1, \ldots, y_m \in C$ be generators. Since
+$B \otimes_A R = \colim_i B \otimes_A R_i$
+we may pick an $i \in I$ and $z_j \in B \otimes_A R_i$, $j = 1, \ldots, m$
+whose images in $C \otimes_A R$ equal $y_j \otimes 1$.
+For such an $i$ the map $u \otimes 1 : B \otimes_A R_i \to C \otimes_A R_i$
+is surjective.
+
+\medskip\noindent
+To prove (3) let $c_1, \ldots, c_m \in C$ be generators. Let
+$K = \Ker(A[x_1, \ldots, x_m] \to N)$ where the map is given by
+the rule $x_j \mapsto \sum c_j$. Let $f_1, \ldots, f_t$
+be generators for $K$ as an ideal in $A[x_1, \ldots, x_m]$.
+We think of $f_j = f_j(x_1, \ldots, x_m)$ as a polynomial.
+Since $B \otimes_A R = \colim_i B \otimes_A R_i$
+we may pick an $i \in I$ and $z_j \in B \otimes_A R_i$, $j = 1, \ldots, m$
+whose images in $B \otimes_A R$ equal $v(c_j \otimes 1)$.
+We want to use the $z_j$ to define a map
+$v_i : C \otimes_A R_i \to B \otimes_A R_i$.
+Since $K \otimes_A R_i \to R_i[x_1, \ldots, x_m] \to C \otimes_A R_i \to 0$
+is a presentation, it suffices to check that
+$\xi_s = f_j(z_1, \ldots, z_m)$ is
+zero in $B \otimes_A R_i$ for each $s = 1, \ldots, t$. This may not
+be the case, but since the image of $\xi_s$ in $B \otimes_A R$ is zero
+we see that it will be the case after increasing $i$ a bit.
+
+\medskip\noindent
+To prove (4) assume $u \otimes 1$ is an isomorphism, that
+$B$ is a finite type $A$-algebra, and that $C$ is a finitely presented
+$A$-algebra. Let $v : B \otimes_A R \to C \otimes_A R$ be an inverse to
+$u \otimes 1$. Let $v_i : C \otimes_A R_i \to B \otimes_A R_i$ be as
+in part (3). Apply part (1) to see that, after increasing $i$ we have
+$v_i \circ (u \otimes 1) = \text{id}_{B \otimes_R R_i}$ and
+$(u \otimes 1) \circ v_i = \text{id}_{C \otimes_R R_i}$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-colimit-category-fp-algebras}
+Suppose that $R = \colim_{\lambda \in \Lambda} R_\lambda$ is a directed colimit
+of rings. Then the category of finitely presented $R$-algebras is
+the colimit of the categories of finitely presented $R_\lambda$-algebras.
+More precisely
+\begin{enumerate}
+\item Given a finitely presented $R$-algebra $A$ there exists a
+$\lambda \in \Lambda$ and a finitely presented $R_\lambda$-algebra
+$A_\lambda$ such that $A \cong A_\lambda \otimes_{R_\lambda} R$.
+\item Given a $\lambda \in \Lambda$, finitely presented
+$R_\lambda$-algebras $A_\lambda, B_\lambda$, and an $R$-algebra map
+$\varphi : A_\lambda \otimes_{R_\lambda} R \to B_\lambda \otimes_{R_\lambda} R$,
+then there exists a $\mu \geq \lambda$ and an $R_\mu$-algebra map
+$\varphi_\mu : A_\lambda \otimes_{R_\lambda} R_\mu \to
+B_\lambda \otimes_{R_\lambda} R_\mu$
+such that $\varphi = \varphi_\mu \otimes 1_R$.
+\item Given a $\lambda \in \Lambda$, finitely presented
+$R_\lambda$-algebras $A_\lambda, B_\lambda$, and $R_\lambda$-algebra maps
+$\varphi_\lambda, \psi_\lambda : A_\lambda \to B_\lambda$
+such that $\varphi \otimes 1_R = \psi \otimes 1_R$, then
+$\varphi \otimes 1_{R_\mu} = \psi \otimes 1_{R_\mu}$ for some
+$\mu \geq \lambda$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+To prove (1) choose a presentation
+$A = R[x_1, \ldots, x_n]/(f_1, \ldots, f_m)$.
+We can choose a $\lambda \in \Lambda$ and elements
+$f_{\lambda, j} \in R_\lambda[x_1, \ldots, x_n]$ mapping to
+$f_j \in R[x_1, \ldots, x_n]$.
+Then we simply let
+$A_\lambda =
+R_\lambda[x_1, \ldots, x_n]/(f_{\lambda, 1}, \ldots, f_{\lambda, m})$.
+
+\medskip\noindent
+Parts (2) and (3) follow from
+Lemma \ref{lemma-algebra-map-property-in-colimit}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-limit-no-condition-local}
+Suppose $R \to S$ is a local homomorphism of local rings.
+There exists a directed set $(\Lambda, \leq)$, and
+a system of local homomorphisms $R_\lambda \to S_\lambda$
+of local rings such that
+\begin{enumerate}
+\item The colimit of the system $R_\lambda \to S_\lambda$
+is equal to $R \to S$.
+\item Each $R_\lambda$ is essentially of finite type
+over $\mathbf{Z}$.
+\item Each $S_\lambda$ is essentially of finite type
+over $R_\lambda$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Denote $\varphi : R  \to S$ the ring map.
+Let $\mathfrak m \subset R$ be the maximal ideal
+of $R$ and let $\mathfrak n \subset S$ be the maximal
+ideal of $S$. Let
+$$
+\Lambda = \{
+(A, B)
+\mid
+A \subset R, B \subset S, \# A < \infty, \# B < \infty, \varphi(A) \subset B
+\}.
+$$
+As partial ordering we take the inclusion relation. For each
+$\lambda = (A, B) \in \Lambda$ we let $R'_\lambda$ be
+the sub $\mathbf{Z}$-algebra generated by
+$a \in A$, and we let $S'_\lambda$ be the sub
+$\mathbf{Z}$-algebra generated by $b$, $b \in B$.
+Let $R_\lambda$ be the localization of $R'_\lambda$
+at the prime ideal $R'_\lambda \cap \mathfrak m$ and let
+$S_\lambda$ be the localization of $S'_\lambda$ at
+the prime ideal $S'_\lambda \cap \mathfrak n$.
+In a picture
+$$
+\xymatrix{
+B \ar[r] &
+S'_\lambda \ar[r] &
+S_\lambda \ar[r] &
+S \\
+A \ar[r] \ar[u] &
+R'_\lambda \ar[r] \ar[u] &
+R_\lambda \ar[r] \ar[u] &
+R \ar[u]
+}.
+$$
+The transition maps are clear. We leave the proofs of the other
+assertions to the reader.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-limit-essentially-finite-type}
+Suppose $R \to S$ is a local homomorphism of local rings.
+Assume that $S$ is essentially of finite type over $R$.
+Then there exists a directed set $(\Lambda, \leq)$, and
+a system of local homomorphisms $R_\lambda \to S_\lambda$
+of local rings such that
+\begin{enumerate}
+\item The colimit of the system $R_\lambda \to S_\lambda$
+is equal to $R \to S$.
+\item Each $R_\lambda$ is essentially of finite type
+over $\mathbf{Z}$.
+\item Each $S_\lambda$ is essentially of finite type
+over $R_\lambda$.
+\item For each $\lambda \leq \mu$ the map
+$S_\lambda \otimes_{R_\lambda} R_\mu \to S_\mu$
+presents $S_\mu$ as the localization of a quotient
+of $S_\lambda \otimes_{R_\lambda} R_\mu$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Denote $\varphi : R  \to S$ the ring map.
+Let $\mathfrak m \subset R$ be the maximal ideal
+of $R$ and let $\mathfrak n \subset S$ be the maximal
+ideal of $S$. Let $x_1, \ldots, x_n \in S$ be elements such that
+$S$ is a localization of the sub $R$-algebra of $S$
+generated by $x_1, \ldots, x_n$. In other words, $S$
+is a quotient of a localization of the polynomial ring
+$R[x_1, \ldots, x_n]$.
+
+\medskip\noindent
+Let $\Lambda = \{ A \subset R \mid \# A < \infty\}$
+be the set of finite subsets of $R$.
+As partial ordering we take the inclusion relation. For each
+$\lambda = A \in \Lambda$ we let $R'_\lambda$ be
+the sub $\mathbf{Z}$-algebra generated by
+$a \in A$, and we let $S'_\lambda$ be the sub
+$\mathbf{Z}$-algebra generated by $\varphi(a)$, $a \in A$
+and the elements $x_1, \ldots, x_n$. Let $R_\lambda$ be
+the localization of $R'_\lambda$ at the prime ideal
+$R'_\lambda \cap \mathfrak m$ and let
+$S_\lambda$ be the localization of $S'_\lambda$ at
+the prime ideal $S'_\lambda \cap \mathfrak n$.
+In a picture
+$$
+\xymatrix{
+\varphi(A) \amalg \{x_i\} \ar[r] &
+S'_\lambda \ar[r] &
+S_\lambda \ar[r] &
+S \\
+A \ar[r] \ar[u] &
+R'_\lambda \ar[r] \ar[u] &
+R_\lambda \ar[r] \ar[u] &
+R \ar[u]
+}
+$$
+It is clear that if $A \subset B$ corresponds to
+$\lambda \leq \mu$ in $\Lambda$, then there are
+canonical maps $R_\lambda \to R_\mu$, and $S_\lambda \to S_\mu$
+and we obtain a system over the directed set $\Lambda$.
+
+\medskip\noindent
+The assertion that $R = \colim R_\lambda$ is clear
+because all the maps $R_\lambda \to R$ are injective and
+any element of $R$ eventually is in the image. The same
+argument works for $S = \colim S_\lambda$.
+Assertions (2), (3) are true by construction.
+The final assertion holds because clearly
+the maps $S'_\lambda \otimes_{R'_\lambda} R'_\mu
+\to S'_\mu$ are surjective.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-limit-essentially-finite-presentation}
+Suppose $R \to S$ is a local homomorphism of local rings.
+Assume that $S$ is essentially of finite presentation over $R$.
+Then there exists a directed set $(\Lambda, \leq)$, and
+a system of local homomorphism $R_\lambda \to S_\lambda$
+of local rings such that
+\begin{enumerate}
+\item The colimit of the system $R_\lambda \to S_\lambda$
+is equal to $R \to S$.
+\item Each $R_\lambda$ is essentially of finite type
+over $\mathbf{Z}$.
+\item Each $S_\lambda$ is essentially of finite type
+over $R_\lambda$.
+\item For each $\lambda \leq \mu$ the map
+$S_\lambda \otimes_{R_\lambda} R_\mu \to S_\mu$
+presents $S_\mu$ as the localization of
+$S_\lambda \otimes_{R_\lambda} R_\mu$
+at a prime ideal.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+By assumption we may choose an isomorphism
+$\Phi : (R[x_1, \ldots, x_n]/I)_{\mathfrak q} \to S$
+where $I \subset R[x_1, \ldots, x_n]$ is a finitely generated ideal,
+and $\mathfrak q \subset R[x_1, \ldots, x_n]/I$ is a prime.
+(Note that $R \cap \mathfrak q$
+is equal to the maximal ideal $\mathfrak m$ of $R$.)
+We also choose generators $f_1, \ldots, f_m \in I$ for the ideal $I$.
+Write $R$ in any way as a colimit $R = \colim R_\lambda$
+over a directed set $(\Lambda, \leq )$, with each $R_\lambda$
+local and essentially of finite type over $\mathbf{Z}$.
+There exists some $\lambda_0 \in \Lambda$ such that $f_j$ is the image
+of some $f_{j, \lambda_0} \in R_{\lambda_0}[x_1, \ldots, x_n]$.
+For all $\lambda \geq \lambda_0$ denote
+$f_{j, \lambda} \in R_{\lambda}[x_1, \ldots, x_n]$ the image
+of $f_{j, \lambda_0}$. Thus we obtain a system of ring maps
+$$
+R_\lambda[x_1, \ldots, x_n]/(f_{1, \lambda}, \ldots, f_{m, \lambda})
+\to
+R[x_1, \ldots, x_n]/(f_1, \ldots, f_m) \to S
+$$
+Set $\mathfrak q_\lambda$ the inverse image of $\mathfrak q$.
+Set $S_\lambda = (R_\lambda[x_1, \ldots, x_n]/
+(f_{1, \lambda}, \ldots, f_{m, \lambda}))_{\mathfrak q_\lambda}$.
+We leave it to the reader to see that this works.
+\end{proof}
+
+\begin{remark}
+\label{remark-suitable-systems-limits}
+Suppose that $R \to S$ is a local homomorphism
+of local rings, which is essentially of finite presentation.
+Take any system $(\Lambda, \leq)$, $R_\lambda \to S_\lambda$
+with the properties listed in
+Lemma \ref{lemma-limit-essentially-finite-type}.
+What may happen is that this is the ``wrong'' system, namely,
+it may happen that property (4) of
+Lemma \ref{lemma-limit-essentially-finite-presentation} is not
+satisfied. Here is an example. Let $k = \mathbf{F}_2$. Consider the ring
+$$
+R = \text{localization of }
+k[z, y_1, y_2, \ldots]/(y_i^2 - zy_{i + 1})
+\text{ at }(z, y_1, y_2, \ldots)
+$$
+Set $S = R/zR$. As system take $\Lambda = \mathbf{N}$ and
+$$
+R_n = \text{localization of }
+k[z, y_1, \ldots, y_n]/(\{y_i^2 - zy_{i + 1}\}_{i \leq n-1})
+\text{ at }(z, y_1, \ldots, y_n)
+$$
+and $S_n = R_n/(z, y_n^2)$. All the maps
+$S_n \otimes_{R_n} R_{n + 1} \to S_{n + 1}$
+are not localizations (i.e., isomorphisms in this case)
+since $1 \otimes y_{n + 1}^2$ maps to zero.
+If we take instead $S_n' = R_n/zR_n$ then the
+maps $S'_n \otimes_{R_n} R_{n + 1} \to S'_{n + 1}$ are
+isomorphisms. The moral of this remark is that we do have to be
+a little careful in choosing the systems.
+\end{remark}
+
+\begin{lemma}
+\label{lemma-limit-module-essentially-finite-presentation}
+Suppose $R \to S$ is a local homomorphism of local rings.
+Assume that $S$ is essentially of finite presentation over $R$.
+Let $M$ be a finitely presented $S$-module.
+Then there exists a directed set $(\Lambda, \leq)$, and
+a system of local homomorphisms $R_\lambda \to S_\lambda$
+of local rings together with $S_\lambda$-modules $M_\lambda$,
+such that
+\begin{enumerate}
+\item The colimit of the system $R_\lambda \to S_\lambda$
+is equal to $R \to S$. The colimit of the system $M_\lambda$
+is $M$.
+\item Each $R_\lambda$ is essentially of finite type
+over $\mathbf{Z}$.
+\item Each $S_\lambda$ is essentially of finite type
+over $R_\lambda$.
+\item Each $M_\lambda$ is finite over $S_\lambda$.
+\item For each $\lambda \leq \mu$ the map
+$S_\lambda \otimes_{R_\lambda} R_\mu \to S_\mu$
+presents $S_\mu$ as the localization of
+$S_\lambda \otimes_{R_\lambda} R_\mu$
+at a prime ideal.
+\item For each $\lambda \leq \mu$ the map
+$M_\lambda \otimes_{S_\lambda} S_\mu \to M_\mu$
+is an isomorphism.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+As in the proof of Lemma \ref{lemma-limit-essentially-finite-presentation}
+we may first write $R = \colim R_\lambda$ as a directed colimit
+of local $\mathbf{Z}$-algebras which are essentially of finite type.
+Next, we may assume that for some $\lambda_1 \in \Lambda$ there
+exist $f_{j, \lambda_1} \in R_{\lambda_1}[x_1, \ldots, x_n]$
+such that
+$$
+S =
+\colim_{\lambda \geq \lambda_1} S_\lambda, \text{ with }
+S_\lambda =
+(R_\lambda[x_1, \ldots, x_n]/
+(f_{1, \lambda}, \ldots, f_{m, \lambda}))_{\mathfrak q_\lambda}
+$$
+Choose a presentation
+$$
+S^{\oplus s} \to S^{\oplus t} \to M \to 0
+$$
+of $M$ over $S$. Let $A \in \text{Mat}(t \times s, S)$ be
+the matrix of the presentation. For some $\lambda_2 \in \Lambda$,
+$\lambda_2 \geq \lambda_1$
+we can find a matrix $A_{\lambda_2} \in \text{Mat}(t \times s, S_{\lambda_2})$
+which maps to $A$. For all $\lambda \geq \lambda_2$ we let
+$M_\lambda = \Coker(S_\lambda^{\oplus s} \xrightarrow{A_\lambda}
+S_\lambda^{\oplus t})$. We leave it to the reader to see that
+this works.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-limit-no-condition}
+Suppose $R \to S$ is a ring map.
+Then there exists a directed set $(\Lambda, \leq)$, and
+a system of ring maps $R_\lambda \to S_\lambda$
+such that
+\begin{enumerate}
+\item The colimit of the system $R_\lambda \to S_\lambda$
+is equal to $R \to S$.
+\item Each $R_\lambda$ is of finite type
+over $\mathbf{Z}$.
+\item Each $S_\lambda$ is of finite type
+over $R_\lambda$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+This is the non-local version of
+Lemma \ref{lemma-limit-no-condition-local}.
+Proof is similar and left to the reader.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-limit-integral}
+Suppose $R \to S$ is a ring map.
+Assume that $S$ is integral over $R$.
+Then there exists a directed set $(\Lambda, \leq)$, and
+a system of ring maps $R_\lambda \to S_\lambda$
+such that
+\begin{enumerate}
+\item The colimit of the system $R_\lambda \to S_\lambda$
+is equal to $R \to S$.
+\item Each $R_\lambda$ is of finite type
+over $\mathbf{Z}$.
+\item Each $S_\lambda$ is finite over $R_\lambda$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Consider the set $\Lambda$ of pairs $(E, F)$ where $E \subset R$
+is a finite subset, $F \subset S$ is a finite subset, and
+every element $f \in F$ is the root of a monic $P(X) \in R[X]$
+whose coefficients are in $E$. Say $(E, F) \leq (E', F')$
+if $E \subset E'$ and $F \subset F'$.
+Given $\lambda = (E, F) \in \Lambda$ set $R_\lambda \subset R$ equal
+to the $\mathbf{Z}$-subalgebra of $R$ generated by $E$ and
+$S_\lambda \subset S$ equal to the $\mathbf{Z}$-subalgebra generated by
+$F$ and the image of $E$ in $S$. It is clear that $R = \colim R_\lambda$.
+We have $S = \colim S_\lambda$ as every element of $S$ is integral
+over $S$. The ring maps $R_\lambda \to S_\lambda$ are finite by
+Lemma \ref{lemma-characterize-finite-in-terms-of-integral} and the fact that
+$S_\lambda$ is generated over $R_\lambda$ by the elements of
+$F$ which are integral over $R_\lambda$ by our condition on the
+pairs $(E, F)$. The lemma follows.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-limit-finite-type}
+Suppose $R \to S$ is a ring map.
+Assume that $S$ is of finite type over $R$.
+Then there exists a directed set $(\Lambda, \leq)$, and
+a system of ring maps $R_\lambda \to S_\lambda$
+such that
+\begin{enumerate}
+\item The colimit of the system $R_\lambda \to S_\lambda$
+is equal to $R \to S$.
+\item Each $R_\lambda$ is of finite type
+over $\mathbf{Z}$.
+\item Each $S_\lambda$ is of finite type
+over $R_\lambda$.
+\item For each $\lambda \leq \mu$ the map
+$S_\lambda \otimes_{R_\lambda} R_\mu \to S_\mu$
+presents $S_\mu$ as a quotient
+of $S_\lambda \otimes_{R_\lambda} R_\mu$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+This is the non-local version of
+Lemma \ref{lemma-limit-essentially-finite-type}.
+Proof is similar and left to the reader.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-limit-finite-presentation}
+Suppose $R \to S$ is a ring map.
+Assume that $S$ is of finite presentation over $R$.
+Then there exists a directed set $(\Lambda, \leq)$, and
+a system of ring maps $R_\lambda \to S_\lambda$
+such that
+\begin{enumerate}
+\item The colimit of the system $R_\lambda \to S_\lambda$
+is equal to $R \to S$.
+\item Each $R_\lambda$ is of finite type
+over $\mathbf{Z}$.
+\item Each $S_\lambda$ is of finite type
+over $R_\lambda$.
+\item For each $\lambda \leq \mu$ the map
+$S_\lambda \otimes_{R_\lambda} R_\mu \to S_\mu$
+is an isomorphism.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+This is the non-local version of
+Lemma \ref{lemma-limit-essentially-finite-presentation}.
+Proof is similar and left to the reader.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-limit-module-finite-presentation}
+Suppose $R \to S$ is a ring map.
+Assume that $S$ is of finite presentation over $R$.
+Let $M$ be a finitely presented $S$-module.
+Then there exists a directed set $(\Lambda, \leq)$, and
+a system of ring maps $R_\lambda \to S_\lambda$
+together with $S_\lambda$-modules $M_\lambda$,
+such that
+\begin{enumerate}
+\item The colimit of the system $R_\lambda \to S_\lambda$
+is equal to $R \to S$. The colimit of the system $M_\lambda$
+is $M$.
+\item Each $R_\lambda$ is of finite type
+over $\mathbf{Z}$.
+\item Each $S_\lambda$ is of finite type
+over $R_\lambda$.
+\item Each $M_\lambda$ is finite over $S_\lambda$.
+\item For each $\lambda \leq \mu$ the map
+$S_\lambda \otimes_{R_\lambda} R_\mu \to S_\mu$
+is an isomorphism.
+\item For each $\lambda \leq \mu$ the map
+$M_\lambda \otimes_{S_\lambda} S_\mu \to M_\mu$
+is an isomorphism.
+\end{enumerate}
+In particular, for every $\lambda \in \Lambda$ we have
+$$
+M = M_\lambda \otimes_{S_\lambda} S
+= M_\lambda \otimes_{R_\lambda} R.
+$$
+\end{lemma}
+
+\begin{proof}
+This is the non-local version of
+Lemma \ref{lemma-limit-module-essentially-finite-presentation}.
+Proof is similar and left to the reader.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

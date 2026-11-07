@@ -1,0 +1,108 @@
+\section{Projective modules over a local ring}
+\label{section-projective-local-ring}
+
+\noindent
+In this section we prove a very cute result:
+a projective module $M$ over a local ring is free
+(Theorem \ref{theorem-projective-free-over-local-ring} below).
+Note that with  the additional assumption that $M$ is finite, this result is
+Lemma \ref{lemma-finite-flat-local}.
+In general we have:
+
+\begin{lemma}
+\label{lemma-projective-free}
+Let $R$ be a ring.  Then every projective $R$-module is free if and only if
+every countably generated projective $R$-module is free.
+\end{lemma}
+
+\begin{proof}
+Follows immediately from
+Theorem \ref{theorem-projective-direct-sum}.
+\end{proof}
+
+\noindent
+Here is a criterion for a countably generated module to be free.
+
+\begin{lemma}
+\label{lemma-freeness-criteria}
+Let $M$ be a countably generated $R$-module with the following property:
+if $M = N \oplus N'$ with $N'$ a finite free $R$-module, then
+any element of $N$ is contained in a free direct summand of $N$.
+Then $M$ is free.
+\end{lemma}
+
+\begin{proof}
+Let $x_1, x_2, \ldots$ be a countable set of generators for $M$.
+We inductively construct finite free direct summands
+$F_1, F_2, \ldots$ of $M$ such that for all $n$ we have
+that $F_1 \oplus \ldots \oplus F_n$ is a direct summand of $M$
+which contains $x_1, \ldots, x_n$. Namely, given $F_1, \ldots, F_n$
+with the desired properties, write
+$$
+M = F_1 \oplus \ldots \oplus F_n \oplus N
+$$
+and let $x \in N$ be the image of $x_{n + 1}$.
+Then we can find a free direct summand $F_{n + 1} \subset N$
+containing $x$ by the assumption in the statement of the lemma.
+Of course we can replace $F_{n + 1}$ by a finite free direct
+summand of $F_{n + 1}$ and the induction step is complete.
+Then $M = \bigoplus_{i = 1}^{\infty} F_i$ is free.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-projective-freeness-criteria}
+Let $P$ be a projective module over a local ring $R$.  Then any element of $P$
+is contained in a free direct summand of $P$.
+\end{lemma}
+
+\begin{proof}
+Since $P$ is projective it is a direct summand of some free $R$-module $F$, say
+$F = P \oplus Q$.  Let $x \in P$ be the element that we wish to show is
+contained in a free direct summand of $P$.  Let $B$ be a basis of $F$ such that
+the number of basis elements needed in the expression of $x$ is minimal, say $x
+= \sum_{i=1}^n a_i e_i$ for some $e_i \in B$ and $a_i \in R$.  Then no $a_j$
+can be expressed as a linear combination of the other $a_i$; for if $a_j =
+\sum_{i \neq  j} a_i b_i$ for some $b_i \in R$, then replacing $e_i$ by $e_i +
+b_ie_j$ for $i \neq j$ and leaving unchanged the other elements of $B$, we get
+a new basis for $F$ in terms of which $x$ has a shorter expression.
+
+\medskip\noindent
+Let $e_i = y_i + z_i, y_i \in P, z_i \in Q$ be the decomposition of $e_i$ into
+its $P$- and $Q$-components.  Write $y_i = \sum_{j=1}^{n} b_{ij} e_j + t_i$,
+where $t_i$ is a linear combination of elements in $B$ other than $e_1, \ldots,
+e_n$.  To finish the proof it suffices to show that the matrix $(b_{ij})$ is
+invertible.  For then the map $F \to F$ sending $e_i \mapsto y_i$ for
+$i=1, \ldots, n$ and fixing $B \setminus \{e_1, \ldots, e_n\}$ is an
+isomorphism,
+so that $y_1, \ldots, y_n$ together with $B \setminus \{e_1, \ldots, e_n\}$
+form a basis for $F$.  Then the submodule $N$ spanned by $y_1, \ldots, y_n$
+is a free submodule of $P$; $N$ is a direct summand of $P$ since $N \subset P$
+and both $N$ and $P$ are direct summands of $F$; and $x \in N$ since $x \in P$
+implies $x = \sum_{i=1}^n a_i e_i = \sum_{i=1}^n a_i y_i$.
+
+\medskip\noindent
+Now we prove that $(b_{ij})$ is invertible. Plugging $y_i = \sum_{j=1}^{n}
+b_{ij} e_j + t_i$ into $\sum_{i=1}^n a_i e_i = \sum_{i=1}^n a_i y_i$ and
+equating the coefficients of $e_j$ gives $a_j = \sum_{i=1}^n a_i b_{ij}$.  But
+as noted above, our choice of $B$ guarantees that no $a_j$ can be written as a
+linear combination of the other $a_i$.  Thus $b_{ij}$ is a non-unit for $i \neq
+j$, and $1-b_{ii}$ is a non-unit---so in particular $b_{ii}$ is a unit---for
+all $i$.  But a matrix over a local ring having units along the diagonal and
+non-units elsewhere is invertible, as its determinant is a unit.
+\end{proof}
+
+\begin{theorem}
+\label{theorem-projective-free-over-local-ring}
+\begin{slogan}
+Projective modules over local rings are free.
+\end{slogan}
+If $P$ is a projective module over a local ring $R$, then $P$ is free.
+\end{theorem}
+
+\begin{proof}
+Follows from Lemmas \ref{lemma-projective-free}, \ref{lemma-freeness-criteria},
+and \ref{lemma-projective-freeness-criteria}.
+\end{proof}
+
+
+

@@ -1,0 +1,180 @@
+\section{Universally catenary schemes}
+\label{section-universally-catenary}
+
+\noindent
+Recall that a topological space $X$ is called {\it catenary} if
+for every pair of irreducible closed subsets $T \subset T'$
+there exist a maximal chain of irreducible closed subsets
+$$
+T = T_0 \subset T_1 \subset \ldots \subset T_e = T'
+$$
+and every such chain has the same length. See
+Topology, Definition \ref{topology-definition-catenary}.
+Recall that a scheme is catenary if its underlying topological space
+is catenary. See Properties, Definition \ref{properties-definition-catenary}.
+
+\begin{definition}
+\label{definition-universally-catenary}
+Let $S$ be a scheme. Assume $S$ is locally Noetherian.
+We say $S$ is {\it universally catenary} if for every
+morphism $X \to S$ locally of finite type the scheme $X$ is catenary.
+\end{definition}
+
+\noindent
+This is a ``better'' notion than catenary as there exist Noetherian schemes
+which are catenary but not universally catenary. See
+Examples, Section \ref{examples-section-non-catenary-Noetherian-local}.
+Many schemes are universally catenary, see
+Lemma \ref{lemma-ubiquity-uc} below.
+
+\medskip\noindent
+Recall that a ring $A$ is called {\it catenary} if
+for any pair of prime ideals $\mathfrak p \subset \mathfrak q$
+there exists a maximal chain of primes
+$$
+\mathfrak p =
+\mathfrak p_0 \subset \ldots \subset \mathfrak p_e
+= \mathfrak q
+$$
+and all of these have the same length. See
+Algebra, Definition \ref{algebra-definition-catenary}.
+We have seen the relationship between catenary schemes and
+catenary rings in Properties, Section \ref{properties-section-catenary}.
+Recall that a ring $A$ is called {\it universally catenary} if
+$A$ is Noetherian and for every finite type ring map $A \to B$
+the ring $B$ is catenary. See
+Algebra, Definition \ref{algebra-definition-universally-catenary}.
+Many interesting rings which come up
+in algebraic geometry satisfy this property.
+
+\begin{lemma}
+\label{lemma-universally-catenary-local}
+Let $S$ be a locally Noetherian scheme. The following are equivalent
+\begin{enumerate}
+\item $S$ is universally catenary,
+\item there exists an open covering of $S$ all of whose members are
+universally catenary schemes,
+\item for every affine open $\Spec(R) = U \subset S$ the ring
+$R$ is universally catenary, and
+\item there exists an affine open covering $S = \bigcup U_i$ such
+that each $U_i$ is the spectrum of a universally catenary ring.
+\end{enumerate}
+Moreover, in this case any scheme locally of finite type over $S$
+is universally catenary as well.
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-immersion-locally-finite-type} an open immersion
+is locally of finite type. A composition of morphisms locally of
+finite type is locally of finite type
+(Lemma \ref{lemma-composition-finite-type}). Thus it is clear that if $S$ is
+universally catenary then any open and any scheme locally of finite
+type over $S$ is universally catenary as well. This proves the final
+statement of the lemma and that (1) implies (2).
+
+\medskip\noindent
+If $\Spec(R)$ is a universally catenary scheme, then every
+scheme $\Spec(A)$ with $A$ a finite type $R$-algebra is
+catenary. Hence all these rings $A$ are catenary by
+Algebra, Lemma \ref{algebra-lemma-catenary}.
+Thus $R$ is universally catenary. Combined with the remarks above we
+conclude that (1) implies (3), and (2) implies (4). Of course
+(3) implies (4) trivially.
+
+\medskip\noindent
+To finish the proof we show that (4) implies (1).
+Assume (4) and let $X \to S$ be a morphism locally of finite type.
+We can find an affine open covering $X = \bigcup V_j$ such that
+each $V_j \to S$ maps into one of the $U_i$. By
+Lemma \ref{lemma-locally-finite-type-characterize}
+the induced ring map $\mathcal{O}(U_i) \to \mathcal{O}(V_j)$ is
+of finite type. Hence $\mathcal{O}(V_j)$ is catenary. Hence
+$X$ is catenary by Properties, Lemma \ref{properties-lemma-catenary-local}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-universally-catenary-local-rings-universally-catenary}
+Let $S$ be a locally Noetherian scheme.
+The following are equivalent:
+\begin{enumerate}
+\item $S$ is universally catenary, and
+\item all local rings $\mathcal{O}_{S, s}$ of $S$ are universally catenary.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Assume that all local rings of $S$ are universally catenary.
+Let $f : X \to S$ be locally of finite type.
+We know that $X$ is catenary if and only if $\mathcal{O}_{X, x}$ is
+catenary for all $x \in X$. If $f(x) = s$, then $\mathcal{O}_{X, x}$
+is essentially of finite type over $\mathcal{O}_{S, s}$. Hence
+$\mathcal{O}_{X, x}$ is catenary by the assumption that
+$\mathcal{O}_{S, s}$ is universally catenary.
+
+\medskip\noindent
+Conversely, assume that $S$ is universally catenary. Let $s \in S$.
+We may replace $S$ by an affine open neighbourhood of $s$ by
+Lemma \ref{lemma-universally-catenary-local}. Say $S = \Spec(R)$
+and $s$ corresponds to the prime ideal $\mathfrak p$. Any finite
+type $R_{\mathfrak p}$-algebra $A'$ is of the form
+$A_{\mathfrak p}$ for some finite type $R$-algebra $A$.
+By assumption (and Lemma \ref{lemma-universally-catenary-local} if you like)
+the ring $A$ is catenary, and hence $A'$ (a localization of $A$) is
+catenary. Thus $R_{\mathfrak p}$ is universally catenary.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-catenary-check-irreducible}
+Let $S$ be a locally Noetherian scheme. Then $S$ is universally catenary
+if and only if the irreducible components of $S$ are universally catenary.
+\end{lemma}
+
+\begin{proof}
+Omitted. For the affine case, please see
+Algebra, Lemma \ref{algebra-lemma-catenary-check-irreducible}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-ubiquity-uc}
+The following types of schemes are universally catenary.
+\begin{enumerate}
+\item Any scheme locally of finite type over a field.
+\item Any scheme locally of finite type over a Cohen-Macaulay scheme.
+\item Any scheme locally of finite type over $\mathbf{Z}$.
+\item Any scheme locally of finite type over a $1$-dimensional
+Noetherian domain.
+\item And so on.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+All of these follow from the fact that a
+Cohen-Macaulay ring is universally catenary, see
+Algebra, Lemma \ref{algebra-lemma-CM-ring-catenary}.
+Also, use the last assertion of
+Lemma \ref{lemma-universally-catenary-local}.
+Some details omitted.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,140 @@
+\section{Codimension and catenary spaces}
+\label{section-catenary-spaces}
+
+\noindent
+We only define the codimension of irreducible closed subsets.
+
+\begin{definition}
+\label{definition-codimension}
+Let $X$ be a topological space.
+Let $Y \subset X$ be an irreducible closed subset.
+The {\it codimension} of $Y$ in $X$ is the supremum of
+the lengths $e$ of chains
+$$
+Y = Y_0 \subset Y_1 \subset \ldots \subset Y_e \subset X
+$$
+of irreducible closed subsets in $X$ starting with $Y$.
+We will denote this $\text{codim}(Y, X)$.
+\end{definition}
+
+\noindent
+The codimension is an element of $\{0, 1, 2, \ldots\} \cup \{\infty\}$.
+If $\text{codim}(Y, X) < \infty$, then every chain can be extended to
+a maximal chain (but these do not all have to have the same length).
+
+\begin{lemma}
+\label{lemma-codimension-at-generic-point}
+Let $X$ be a topological space.
+Let $Y \subset X$ be an irreducible closed subset.
+Let $U \subset X$ be an open subset such that $Y \cap U$ is nonempty.
+Then
+$$
+\text{codim}(Y, X) = \text{codim}(Y \cap U, U)
+$$
+\end{lemma}
+
+\begin{proof}
+The rule $T \mapsto \overline{T}$ defines a bijective
+inclusion preserving map between the closed irreducible subsets
+of $U$ and the closed irreducible subsets of $X$ which meet $U$.
+Using this the lemma easily follows. Details omitted.
+\end{proof}
+
+\begin{example}
+\label{example-Noetherian-infinite-codimension}
+Let $X = [0, 1]$ be the unit interval with the following
+topology: The sets $[0, 1]$, $(1 - 1/n, 1]$ for $n \in \mathbf{N}$, and
+$\emptyset$ are open. So the closed sets are
+$\emptyset$, $\{0\}$, $[0, 1 - 1/n]$ for $n > 1$ and $[0, 1]$.
+This is clearly a Noetherian topological space.
+But the irreducible closed subset $Y = \{0\}$ has infinite
+codimension $\text{codim}(Y, X) = \infty$.
+To see this we just remark that all the closed sets
+$[0, 1 - 1/n]$ are irreducible.
+\end{example}
+
+\begin{definition}
+\label{definition-catenary}
+Let $X$ be a topological space. We say $X$ is {\it catenary} if
+for every pair of irreducible closed subsets $T \subset T'$
+we have $\text{codim}(T, T') < \infty$ and every maximal chain
+of irreducible closed subsets
+$$
+T = T_0 \subset T_1 \subset \ldots \subset T_e = T'
+$$
+has the same length (equal to the codimension).
+\end{definition}
+
+\begin{lemma}
+\label{lemma-catenary}
+Let $X$ be a topological space.
+The following are equivalent:
+\begin{enumerate}
+\item $X$ is catenary,
+\item $X$ has an open covering by catenary spaces.
+\end{enumerate}
+Moreover, in this case any locally closed subspace of $X$ is catenary.
+\end{lemma}
+
+\begin{proof}
+Suppose that $X$ is catenary and that $U \subset X$ is an open
+subset. The rule $T \mapsto \overline{T}$ defines a bijective
+inclusion preserving map between the closed irreducible subsets
+of $U$ and the closed irreducible subsets of $X$ which meet $U$.
+Using this the lemma easily follows. Details omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-catenary-in-codimension}
+Let $X$ be a topological space. The following are equivalent:
+\begin{enumerate}
+\item $X$ is catenary, and
+\item for every pair of irreducible closed subsets $Y \subset Y'$ we have
+$\text{codim}(Y, Y') < \infty$ and for every triple
+$Y \subset Y' \subset Y''$ of irreducible closed subsets we have
+$$
+\text{codim}(Y, Y'') = \text{codim}(Y, Y') + \text{codim}(Y', Y'').
+$$
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let suppose that $X$ is catenary. According to
+Definition \ref{definition-catenary}, for every pair of
+irreducible closed subsets $Y \subset Y'$ we have
+$\text{codim}(Y,Y') < \infty$. Let $Y \subset Y' \subset Y''$
+be a triple of irreducible closed subsets of $X$. Let
+$$
+Y = Y_0 \subset Y_1 \subset ... \subset Y_{e_1} = Y'
+$$
+be a maximal chain of irreducible closed subsets between $Y$ and $Y'$
+where $e_1 = \text{codim}(Y,Y')$. Let also
+$$
+Y' = Y_{e_1} \subset Y_{e_1 + 1}\subset ... \subset Y_{e_1 + e_2} = Y''
+$$
+be a maximal chain of irreducible closed subsets between $Y'$
+and $Y''$ where $e_2 = \text{codim}(Y',Y'')$.
+As the two chains are maximal, the concatenation
+$$
+Y = Y_0\subset Y_1 \subset ... \subset Y_{e_1} = Y' =
+Y_{e_1} \subset Y_{e_1+1}\subset ... \subset Y_{e_1+e_2}=Y''
+$$
+is maximal too (between $Y$ and $Y''$) and its length equals to $e_1 + e_2$.
+As $X$ is catenary, each maximal chain has the same length equals to the
+codimension. Thus the point (2) that
+$\text{codim}(Y,Y'') = e_1 + e_2 = \text{codim}(Y,Y') + \text{codim}(Y',Y'')$
+is verified.
+
+\medskip\noindent
+For the reciprocal, we show by induction that : if $Y = Y_1 \subset ... \subset
+Y_n = Y'$, then $ \text{codim}(Y,Y') = \text{codim}(Y_1,Y_2) + ... +
+\text{codim}(Y_{n-1},Y_n)$. Therefore, it forces maximal chains to have the
+same length.
+\end{proof}
+
+
+
+
+
+
+

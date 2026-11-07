@@ -1,0 +1,351 @@
+\section{Relatively ample sheaves}
+\label{section-relatively-ample}
+
+\noindent
+Let $X$ be a scheme and $\mathcal{L}$ an invertible sheaf on $X$.
+Then $\mathcal{L}$ is ample on $X$ if $X$ is quasi-compact and
+every point of $X$ is contained in an affine open of the form
+$X_s$, where $s \in \Gamma(X, \mathcal{L}^{\otimes n})$ and $n \geq 1$, see
+Properties, Definition \ref{properties-definition-ample}.
+We turn this into a relative notion as follows.
+
+\begin{definition}
+\label{definition-relatively-ample}
+\begin{reference}
+\cite[II Definition 4.6.1]{EGA}
+\end{reference}
+Let $f : X \to S$ be a morphism of schemes.
+Let $\mathcal{L}$ be an invertible $\mathcal{O}_X$-module.
+We say $\mathcal{L}$ is {\it relatively ample}, or {\it $f$-relatively ample},
+or {\it ample on $X/S$}, or {\it $f$-ample} if $f : X \to S$
+is quasi-compact, and if for every affine open $V \subset S$
+the restriction of $\mathcal{L}$ to the open subscheme
+$f^{-1}(V)$ of $X$ is ample.
+\end{definition}
+
+\noindent
+We note that the existence of a relatively ample sheaf on $X$ does not
+force the morphism $X \to S$ to be of finite type.
+
+\begin{lemma}
+\label{lemma-ample-power-ample}
+Let $X \to S$ be a morphism of schemes.
+Let $\mathcal{L}$ be an invertible $\mathcal{O}_X$-module.
+Let $n \geq 1$. Then $\mathcal{L}$ is $f$-ample if and only if
+$\mathcal{L}^{\otimes n}$ is $f$-ample.
+\end{lemma}
+
+\begin{proof}
+This follows from Properties, Lemma \ref{properties-lemma-ample-power-ample}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-relatively-ample-separated}
+Let $f : X \to S$ be a morphism of schemes.
+If there exists an $f$-ample invertible sheaf, then
+$f$ is separated.
+\end{lemma}
+
+\begin{proof}
+Being separated is local on the base (see
+Schemes, Lemma \ref{schemes-lemma-characterize-separated} for example;
+it also follows easily from the definition).
+Hence we may assume $S$ is affine and $X$
+has an ample invertible sheaf. In this case the
+result follows from
+Properties, Lemma \ref{properties-lemma-ample-separated}.
+\end{proof}
+
+\noindent
+There are many ways to characterize relatively ample invertible
+sheaves, analogous to the equivalent conditions in
+Properties, Proposition \ref{properties-proposition-characterize-ample}.
+We will add these here as needed.
+
+\begin{lemma}
+\label{lemma-characterize-relatively-ample}
+\begin{reference}
+\cite[II, Proposition 4.6.3]{EGA}
+\end{reference}
+Let $f : X \to S$ be a quasi-compact morphism of schemes.
+Let $\mathcal{L}$ be an invertible sheaf on $X$.
+The following are equivalent:
+\begin{enumerate}
+\item The invertible sheaf $\mathcal{L}$ is $f$-ample.
+\item There exists an open covering $S = \bigcup V_i$
+such that each $\mathcal{L}|_{f^{-1}(V_i)}$ is ample
+relative to $f^{-1}(V_i) \to V_i$.
+\item There exists an affine open covering $S = \bigcup V_i$
+such that each $\mathcal{L}|_{f^{-1}(V_i)}$ is ample.
+\item There exists a quasi-coherent graded $\mathcal{O}_S$-algebra
+$\mathcal{A}$ and a map of graded $\mathcal{O}_X$-algebras
+$\psi : f^*\mathcal{A} \to \bigoplus_{d \geq 0} \mathcal{L}^{\otimes d}$
+such that $U(\psi) = X$ and
+$$
+r_{\mathcal{L}, \psi} :
+X
+\longrightarrow
+\underline{\text{Proj}}_S(\mathcal{A})
+$$
+is an open immersion (see Constructions, Lemma
+\ref{constructions-lemma-invertible-map-into-relative-proj} for notation).
+\item The morphism $f$ is quasi-separated and
+part (4) above holds with
+$\mathcal{A} = f_*(\bigoplus_{d \geq 0} \mathcal{L}^{\otimes d})$
+and $\psi$ the adjunction mapping.
+\item Same as (4) but just requiring $r_{\mathcal{L}, \psi}$
+to be an immersion.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+It is immediate from the definition that (1) implies (2) and
+(2) implies (3). It is clear that (5) implies (4).
+
+\medskip\noindent
+Assume (3) holds for the affine open covering $S = \bigcup V_i$.
+We are going to show (5) holds.
+Since each $f^{-1}(V_i)$ has an ample invertible sheaf we see
+that $f^{-1}(V_i)$ is separated
+(Properties, Lemma \ref{properties-lemma-ample-separated}).
+Hence $f$ is separated. By
+Schemes, Lemma \ref{schemes-lemma-push-forward-quasi-coherent}
+we see that $\mathcal{A} = f_*(\bigoplus_{d \geq 0} \mathcal{L}^{\otimes d})$
+is a quasi-coherent graded $\mathcal{O}_S$-algebra.
+Denote $\psi : f^*\mathcal{A} \to \bigoplus_{d \geq 0} \mathcal{L}^{\otimes d}$
+the adjunction mapping.
+The description of the open $U(\psi)$ in
+Constructions, Section
+\ref{constructions-section-invertible-relative-proj}
+and the definition of ampleness
+of $\mathcal{L}|_{f^{-1}(V_i)}$ show that $U(\psi) = X$.
+Moreover, Constructions,
+Lemma \ref{constructions-lemma-invertible-map-into-relative-proj} part (3)
+shows that the restriction of $r_{\mathcal{L}, \psi}$ to
+$f^{-1}(V_i)$ is the same as the morphism from
+Properties, Lemma \ref{properties-lemma-map-into-proj}
+which is an open immersion according to
+Properties, Lemma \ref{properties-lemma-ample-immersion-into-proj}.
+Hence (5) holds.
+
+\medskip\noindent
+Let us show that (4) implies (1). Assume (4).
+Denote $\pi : \underline{\text{Proj}}_S(\mathcal{A}) \to S$
+the structure morphism. Choose $V \subset S$ affine open. By
+Constructions, Definition \ref{constructions-definition-relative-proj}
+we see that $\pi^{-1}(V) \subset \underline{\text{Proj}}_S(\mathcal{A})$
+is equal to $\text{Proj}(A)$ where $A = \mathcal{A}(V)$
+as a graded ring. Hence $r_{\mathcal{L}, \psi}$ maps
+$f^{-1}(V)$ isomorphically onto
+a quasi-compact open of $\text{Proj}(A)$.
+Moreover, $\mathcal{L}^{\otimes d}$ is isomorphic to the pullback of
+$\mathcal{O}_{\text{Proj}(A)}(d)$ for some $d \geq 1$.
+(See part (3) of Constructions,
+Lemma \ref{constructions-lemma-invertible-map-into-relative-proj}
+and the final statement of Constructions,
+Lemma \ref{constructions-lemma-invertible-map-into-proj}.)
+This implies that $\mathcal{L}|_{f^{-1}(V)}$ is ample by
+Properties, Lemmas \ref{properties-lemma-open-in-proj-ample}
+and \ref{properties-lemma-ample-power-ample}.
+
+\medskip\noindent
+Assume (6). By the equivalence of (1) - (5) above we see that the
+property of being relatively ample on $X/S$ is local on $S$. Hence
+we may assume that $S$ is affine, and we have to show that
+$\mathcal{L}$ is ample on $X$. In this case the morphism
+$r_{\mathcal{L}, \psi}$ is identified with the morphism, also denoted
+$r_{\mathcal{L}, \psi} : X \to \text{Proj}(A)$ associated to the map
+$\psi : A = \mathcal{A}(V) \to \Gamma_*(X, \mathcal{L})$.
+(See references above.) As above we also see that
+$\mathcal{L}^{\otimes d}$ is the pullback of the sheaf
+$\mathcal{O}_{\text{Proj}(A)}(d)$ for some $d \geq 1$.
+Moreover, since $X$ is quasi-compact we
+see that $X$ gets identified with a closed subscheme of a
+quasi-compact open subscheme $Y \subset \text{Proj}(A)$.
+By
+Constructions, Lemma
+\ref{constructions-lemma-ample-on-proj}
+(see also
+Properties, Lemma
+\ref{properties-lemma-open-in-proj-ample})
+we see that $\mathcal{O}_Y(d')$ is an ample invertible sheaf on
+$Y$ for some $d' \geq 1$. Since the restriction of an ample
+sheaf to a closed subscheme is ample, see
+Properties, Lemma
+\ref{properties-lemma-ample-on-closed}
+we conclude that the pullback of
+$\mathcal{O}_Y(d')$ is ample. Combining these results with
+Properties, Lemma
+\ref{properties-lemma-ample-power-ample}
+we conclude that $\mathcal{L}$ is ample as desired.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-ample-over-affine}
+\begin{reference}
+\cite[II Corollary 4.6.6]{EGA}
+\end{reference}
+Let $f : X \to S$ be a morphism of schemes.
+Let $\mathcal{L}$ be an invertible $\mathcal{O}_X$-module.
+Assume $S$ affine.
+Then $\mathcal{L}$ is $f$-relatively ample if and only
+if $\mathcal{L}$ is ample on $X$.
+\end{lemma}
+
+\begin{proof}
+Immediate from Lemma \ref{lemma-characterize-relatively-ample}
+and the definitions.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-quasi-affine-O-ample}
+\begin{reference}
+\cite[II Proposition 5.1.6]{EGA}
+\end{reference}
+Let $f : X \to S$ be a morphism of schemes. Then $f$ is quasi-affine
+if and only if $\mathcal{O}_X$ is $f$-relatively ample.
+\end{lemma}
+
+\begin{proof}
+Follows from Properties, Lemma \ref{properties-lemma-quasi-affine-O-ample}
+and the definitions.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-pullback-ample-tensor-relatively-ample}
+Let $f : X \to Y$ be a morphism of schemes, $\mathcal{M}$
+an invertible $\mathcal{O}_Y$-module, and $\mathcal{L}$ an
+invertible $\mathcal{O}_X$-module.
+\begin{enumerate}
+\item If $\mathcal{L}$ is $f$-ample and $\mathcal{M}$
+is ample, then $\mathcal{L} \otimes f^*\mathcal{M}^{\otimes a}$ is ample
+for $a \gg 0$.
+\item If $\mathcal{M}$ is ample
+and $f$ quasi-affine, then $f^*\mathcal{M}$ is ample.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Assume $\mathcal{L}$ is $f$-ample and $\mathcal{M}$ ample.
+By assumption $Y$ and $f$ are quasi-compact (see
+Definition \ref{definition-relatively-ample} and
+Properties, Definition \ref{properties-definition-ample}).
+Hence $X$ is quasi-compact. By Properties, Lemma
+\ref{properties-lemma-ample-separated} the scheme $Y$ is
+separated and by Lemma \ref{lemma-relatively-ample-separated}
+the morphism $f$ is separated. Hence $X$ is separated by
+Schemes, Lemma \ref{schemes-lemma-separated-permanence}.
+Pick $x \in X$. We can choose $m \geq 1$
+and $t \in \Gamma(Y, \mathcal{M}^{\otimes m})$ such that $Y_t$
+is affine and $f(x) \in Y_t$. Since $\mathcal{L}$ restricts to an
+ample invertible sheaf on $f^{-1}(Y_t) = X_{f^*t}$
+we can choose $n \geq 1$ and $s \in \Gamma(X_{f^*t}, \mathcal{L}^{\otimes n})$
+with $x \in (X_{f^*t})_s$ with $(X_{f^*t})_s$ affine.
+By Properties, Lemma \ref{properties-lemma-invert-s-sections} part (2)
+whose assumptions are satisfied by the above,
+there exists an integer $e \geq 1$ and a section
+$s' \in \Gamma(X, \mathcal{L}^{\otimes n} \otimes f^*\mathcal{M}^{\otimes em})$
+which restricts to $s(f^*t)^e$ on $X_{f^*t}$. For any $b > 0$
+consider the section $s'' = s'(f^*t)^b$ of
+$\mathcal{L}^{\otimes n} \otimes f^*\mathcal{M}^{\otimes (e + b)m}$.
+Then $X_{s''} = (X_{f^*t})_s$ is an affine open of $X$ containing $x$.
+Picking $b$ such that $n$ divides $e + b$ we see
+$\mathcal{L}^{\otimes n} \otimes f^*\mathcal{M}^{\otimes (e + b)m}$
+is the $n$th power of $\mathcal{L} \otimes f^*\mathcal{M}^{\otimes a}$
+for some $a$ and we can get any $a$ divisible by $m$ and big enough.
+Since $X$ is quasi-compact a finite number of these affine opens
+cover $X$. We conclude that for some $a$ sufficiently divisible and
+large enough the invertible sheaf
+$\mathcal{L} \otimes f^*\mathcal{M}^{\otimes a}$ is ample on $X$.
+On the other hand, we know that $\mathcal{M}^{\otimes c}$
+(and hence its pullback to $X$) is globally generated for all $c \gg 0$
+by Properties, Proposition \ref{properties-proposition-characterize-ample}.
+Thus $\mathcal{L} \otimes f^*\mathcal{M}^{\otimes a + c}$ is ample
+(Properties, Lemma \ref{properties-lemma-ample-tensor-globally-generated})
+for $c \gg 0$ and (1) is proved.
+
+\medskip\noindent
+Part (2) follows from Lemma \ref{lemma-quasi-affine-O-ample},
+Properties, Lemma \ref{properties-lemma-ample-power-ample}, and
+part (1).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-ample-composition}
+Let $g : Y \to S$ and $f : X \to Y$ be morphisms of schemes.
+Let $\mathcal{M}$ be an invertible $\mathcal{O}_Y$-module.
+Let $\mathcal{L}$ be an invertible $\mathcal{O}_X$-module.
+If $S$ is quasi-compact, $\mathcal{M}$ is $g$-ample, and
+$\mathcal{L}$ is $f$-ample, then
+$\mathcal{L} \otimes f^*\mathcal{M}^{\otimes a}$
+is $g \circ f$-ample for $a \gg 0$.
+\end{lemma}
+
+\begin{proof}
+Let $S = \bigcup_{i = 1, \ldots, n} V_i$ be a finite affine open covering.
+By Lemma \ref{lemma-characterize-relatively-ample}
+it suffices to prove that 
+$\mathcal{L} \otimes f^*\mathcal{M}^{\otimes a}$
+is ample on $(g \circ f)^{-1}(V_i)$ for $i = 1, \ldots, n$.
+Thus the lemma follows from
+Lemma \ref{lemma-pullback-ample-tensor-relatively-ample}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-ample-base-change}
+Let $f : X \to S$ be a morphism of schemes.
+Let $\mathcal{L}$ be an invertible $\mathcal{O}_X$-module.
+Let $S' \to S$ be a morphism of schemes.
+Let $f' : X' \to S'$ be the base change of $f$ and denote
+$\mathcal{L}'$ the pullback of $\mathcal{L}$ to $X'$.
+If $\mathcal{L}$ is $f$-ample, then $\mathcal{L}'$ is $f'$-ample.
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-characterize-relatively-ample} it suffices
+to find an affine open covering $S' = \bigcup U'_i$
+such that $\mathcal{L}'$ restricts to an ample invertible
+sheaf on $(f')^{-1}(U_i')$ for all $i$. We may choose $U'_i$
+mapping into an affine open $U_i \subset S$. In this case the
+morphism $(f')^{-1}(U'_i) \to f^{-1}(U_i)$ is affine as a base
+change of the affine morphism $U'_i \to U_i$
+(Lemma \ref{lemma-base-change-affine}). Thus
+$\mathcal{L}'|_{(f')^{-1}(U'_i)}$ is ample by
+Lemma \ref{lemma-pullback-ample-tensor-relatively-ample}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-ample-permanence}
+Let $g : Y \to S$ and $f : X \to Y$ be morphisms of schemes.
+Let $\mathcal{L}$ be an invertible $\mathcal{O}_X$-module.
+If $\mathcal{L}$ is $g \circ f$-ample and $f$ is
+quasi-compact\footnote{This follows if $g$ is quasi-separated by
+Schemes, Lemma \ref{schemes-lemma-quasi-compact-permanence}.}
+then $\mathcal{L}$ is $f$-ample.
+\end{lemma}
+
+\begin{proof}
+Assume $f$ is quasi-compact and $\mathcal{L}$ is $g \circ f$-ample.
+Let $U \subset S$ be an affine open and let $V \subset Y$ be
+an affine open with $g(V) \subset U$.
+Then $\mathcal{L}|_{(g \circ f)^{-1}(U)}$ is ample on
+$(g \circ f)^{-1}(U)$ by assumption.
+Since $f^{-1}(V) \subset (g \circ f)^{-1}(U)$ we see that
+$\mathcal{L}|_{f^{-1}(V)}$ is ample on $f^{-1}(V)$ by
+Properties, Lemma \ref{properties-lemma-ample-on-locally-closed}.
+Namely, $f^{-1}(V) \to (g \circ f)^{-1}(U)$ is a quasi-compact
+open immersion by
+Schemes, Lemma \ref{schemes-lemma-quasi-compact-permanence}
+as $(g \circ f)^{-1}(U)$ is separated
+(Properties, Lemma \ref{properties-lemma-ample-separated})
+and $f^{-1}(V)$ is quasi-compact (as $f$ is quasi-compact).
+Thus we conclude that $\mathcal{L}$ is $f$-ample by
+Lemma \ref{lemma-characterize-relatively-ample}.
+\end{proof}
+
+
+
+
+
+
+

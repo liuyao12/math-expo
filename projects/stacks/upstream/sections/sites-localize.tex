@@ -1,0 +1,467 @@
+\section{Localization}
+\label{section-localize}
+
+\noindent
+Let $\mathcal{C}$ be a site.
+Let $U \in \Ob(\mathcal{C})$.
+See
+Categories, Example \ref{categories-example-category-over-X}
+for the definition of the category $\mathcal{C}/U$ of
+objects over $U$. We turn $\mathcal{C}/U$ into a site
+by declaring a family of morphisms $\{V_j \to V\}$ of
+objects over $U$ to be a covering of $\mathcal{C}/U$
+if and only if it is a covering in $\mathcal{C}$.
+Consider the forgetful functor
+$$
+j_U : \mathcal{C}/U \longrightarrow \mathcal{C}.
+$$
+This is clearly cocontinuous and continuous. Hence by
+Lemma \ref{lemma-when-shriek} we obtain a morphism of topoi
+$$
+j_U : \Sh(\mathcal{C}/U) \longrightarrow \Sh(\mathcal{C})
+$$
+given by $j_U^{-1}$ and $j_{U*}$ and a functor $j_{U!}$
+left adjoint to $j_U^{-1}$.
+
+\begin{definition}
+\label{definition-localize}
+Let $\mathcal{C}$ be a site.
+Let $U \in \Ob(\mathcal{C})$.
+\begin{enumerate}
+\item The site $\mathcal{C}/U$ is called the {\it localization of
+the site $\mathcal{C}$ at the object $U$}.
+\item The morphism of topoi
+$j_U : \Sh(\mathcal{C}/U) \to \Sh(\mathcal{C})$
+is called the {\it localization morphism}.
+\item The functor $j_{U*}$ is called the {\it direct image functor}.
+\item For a sheaf $\mathcal{F}$ on $\mathcal{C}$ the sheaf
+$j_U^{-1}\mathcal{F}$ is called the {\it restriction of $\mathcal{F}$
+to $\mathcal{C}/U$}.
+\item For a sheaf $\mathcal{G}$ on $\mathcal{C}/U$
+the sheaf $j_{U!}\mathcal{G}$ is called the
+{\it extension of $\mathcal{G}$ by the empty set}.
+\end{enumerate}
+\end{definition}
+
+\noindent
+The restriction $j_U^{-1}\mathcal{F}$ is the sheaf
+defined by the rule $j_U^{-1}\mathcal{F}(X/U) = \mathcal{F}(X)$ as expected.
+The extension by the empty set also has a very easy description in
+this case; here it is.
+
+\begin{lemma}
+\label{lemma-describe-j-shriek}
+Let $\mathcal{C}$ be a site.
+Let $U \in \Ob(\mathcal{C})$.
+Let $\mathcal{G}$ be a presheaf on $\mathcal{C}/U$.
+Then $j_{U!}(\mathcal{G}^\#)$ is the sheaf associated to the presheaf
+$$
+V
+\longmapsto
+\coprod\nolimits_{\varphi \in \Mor_\mathcal{C}(V, U)}
+\mathcal{G}(V \xrightarrow{\varphi} U)
+$$
+with obvious restriction mappings.
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-when-shriek} we have
+$j_{U!}(\mathcal{G}^\#) = ((j_U)_p\mathcal{G}^\#)^\#$.
+By Lemma \ref{lemma-technical-up} this is equal to $((j_U)_p\mathcal{G})^\#$.
+Hence it suffices to prove that $(j_U)_p$ is given by
+the formula above for any presheaf $\mathcal{G}$ on $\mathcal{C}/U$.
+OK, and by the definition in Section \ref{section-functoriality-PSh} we have
+$$
+(j_U)_p\mathcal{G}(V)
+=
+\colim_{(W/U, V \to W)} \mathcal{G}(W)
+$$
+Now it is clear that the category of pairs $(W/U, V \to W)$
+has an object $O_\varphi = (\varphi : V \to U, \text{id} : V \to V)$ for every
+$\varphi : V \to U$, and moreover for any object there is a unique
+morphism from one of the $O_\varphi$ into it. The result follows.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-describe-j-shriek-representable}
+Let $\mathcal{C}$ be a site.
+Let $U \in \Ob(\mathcal{C})$.
+Let $X/U$ be an object of $\mathcal{C}/U$.
+Then we have $j_{U!}(h_{X/U}^\#) = h_X^\#$.
+\end{lemma}
+
+\begin{proof}
+Denote $p : X \to U$ the structure morphism of $X$.
+By Lemma \ref{lemma-describe-j-shriek} we see $j_{U!}(h_{X/U}^\#)$
+is the sheaf associated to the presheaf
+$$
+V
+\longmapsto
+\coprod\nolimits_{\varphi \in \Mor_\mathcal{C}(V, U)}
+\{\psi : V \to X \mid p \circ \psi = \varphi\}
+$$
+This is clearly the same thing as $\Mor_\mathcal{C}(V, X)$.
+Hence the lemma follows.
+\end{proof}
+
+\noindent
+We have $j_{U!}(*) = h_U^\#$ by either of the
+two lemmas above. Hence for every sheaf
+$\mathcal{G}$ over $\mathcal{C}/U$ there is a canonical map
+of sheaves $j_{U!}\mathcal{G} \to h_U^\#$. This characterizes
+sheaves in the essential image of $j_{U!}$.
+
+\begin{lemma}
+\label{lemma-essential-image-j-shriek}
+Let $\mathcal{C}$ be a site.
+Let $U \in \Ob(\mathcal{C})$.
+The functor $j_{U!}$ gives an equivalence of categories
+$$
+\Sh(\mathcal{C}/U)
+\longrightarrow
+\Sh(\mathcal{C})/h_U^\#
+$$
+\end{lemma}
+
+\begin{proof}
+Let us denote objects of $\mathcal{C}/U$ as pairs $(X, a)$
+where $X$ is an object of $\mathcal{C}$ and $a : X \to U$ is
+a morphism of $\mathcal{C}$. Similarly, objects of
+$\Sh(\mathcal{C})/h_U^\#$ are pairs $(\mathcal{F}, \varphi)$.
+The functor $\Sh(\mathcal{C}/U) \to \Sh(\mathcal{C})/h_U^\#$
+sends $\mathcal{G}$ to the pair $(j_{U!}\mathcal{G}, \gamma)$
+where $\gamma$ is the composition of
+$j_{U!}\mathcal{G} \to j_{U!}*$ with the identification
+$j_{U!}* = h_U^\#$.
+
+\medskip\noindent
+Let us construct a functor from
+$\Sh(\mathcal{C})/h_U^\#$ to $\Sh(\mathcal{C}/U)$.
+Suppose that $(\mathcal{F}, \varphi)$ is given.
+For an object $(X, a)$ of $\mathcal{C}/U$
+we consider the set $\mathcal{F}_\varphi(X, a)$
+of elements $s \in \mathcal{F}(X)$ which under $\varphi$ map to the image
+of $a \in \Mor_\mathcal{C}(X, U) = h_U(X)$ in
+$h_U^\#(X)$. It is easy to see that
+$(X, a) \mapsto \mathcal{F}_\varphi(X, a)$ is
+a sheaf on $\mathcal{C}/U$. Clearly, the rule
+$(\mathcal{F}, \varphi) \mapsto \mathcal{F}_\varphi$
+defines a functor $\Sh(\mathcal{C})/h_U^\# \to \Sh(\mathcal{C}/U)$.
+
+\medskip\noindent
+Consider also the functor
+$\textit{PSh}(\mathcal{C})/h_U \to \textit{PSh}(\mathcal{C}/U)$,
+$(\mathcal{F}, \varphi) \mapsto \mathcal{F}_\varphi$
+where $\mathcal{F}_\varphi(X, a)$ is defined as the set of elements
+of $\mathcal{F}(X)$ mapping to $a \in h_U(X)$.
+We claim that the diagram
+$$
+\xymatrix{
+\textit{PSh}(\mathcal{C})/h_U \ar[r] \ar[d] &
+\textit{PSh}(\mathcal{C}/U) \ar[d] \\
+\Sh(\mathcal{C})/h_U^\# \ar[r] &
+\Sh(\mathcal{C}/U)
+}
+$$
+commutes, where the vertical arrows are given by sheafification.
+To see this\footnote{An alternative is to describe
+$\mathcal{F}_\varphi$ by the cartesian diagram
+$$
+\vcenter{
+\xymatrix{
+\mathcal{F}_\varphi \ar[r] \ar[d] & {*} \ar[d] \\
+\mathcal{F}|_{\mathcal{C}/U} \ar[r] & h_U|_{\mathcal{C}/U}
+}
+}
+\quad\text{for presheaves and}\quad
+\vcenter{
+\xymatrix{
+\mathcal{F}_\varphi \ar[r] \ar[d] & {*} \ar[d] \\
+\mathcal{F}|_{\mathcal{C}/U} \ar[r] & h_U^\#|_{\mathcal{C}/U}
+}
+}
+$$
+for sheaves and use that restriction to $\mathcal{C}/U$ commutes
+with sheafification.}, it
+suffices to prove that the construction commutes with
+the functor $\mathcal{F} \mapsto \mathcal{F}^+$ of
+Lemmas \ref{lemma-plus-presheaf} and \ref{lemma-plus-functorial}
+and Theorem \ref{theorem-plus}.
+Commutation with $\mathcal{F} \mapsto \mathcal{F}^+$ follows from the fact
+that given $(X, a)$ the categories of coverings of $(X, a)$ in
+$\mathcal{C}/U$ and coverings of $X$ in $\mathcal{C}$
+are canonically identified.
+
+\medskip\noindent
+Next, let $\textit{PSh}(\mathcal{C}/U) \to \textit{PSh}(\mathcal{C})/h_U$
+send $\mathcal{G}$ to the pair $(j_{U!}^{PSh}\mathcal{G}, \gamma)$
+where $j_{U!}^{PSh}\mathcal{G}$ the presheaf defined by the formula
+in Lemma \ref{lemma-describe-j-shriek} and $\gamma$ is the composition of
+$j_{U!}^{PSh}\mathcal{G} \to j_{U!}*$ with the identification
+$j_{U!}^{PSh}* = h_U$ (obvious from the formula).
+Then it is immediately clear that the diagram
+$$
+\xymatrix{
+\textit{PSh}(\mathcal{C}/U) \ar[r] \ar[d] &
+\textit{PSh}(\mathcal{C})/h_U \ar[d] \\
+\Sh(\mathcal{C}/U) \ar[r] &
+\Sh(\mathcal{C})/h_U^\#
+}
+$$
+commutes, where the vertical arrows are sheafification.
+Putting everything together it suffices to show there are
+functorial isomorphisms $(j_{U!}^{PSh}\mathcal{G})_\gamma = \mathcal{G}$
+for $\mathcal{G}$ in $\textit{PSh}(\mathcal{C}/U)$
+and $j_{U!}^{PSh}\mathcal{F}_\varphi = \mathcal{F}$
+for $(\mathcal{F}, \varphi)$ in $\textit{PSh}(\mathcal{C})/h_U$.
+The value of the presheaf $(j_{U!}^{PSh}\mathcal{G})_\gamma$
+on $(X, a)$ is the fibre of the map
+$$
+\coprod\nolimits_{a' : X \to U} \mathcal{G}(X, a') \to \Mor_\mathcal{C}(X, U)
+$$
+over $a$ which is $\mathcal{G}(X, a)$. This proves the first equality.
+The value of the presheaf $j_{U!}^{PSh}\mathcal{F}_\varphi$ is
+on $X$ is
+$$
+\coprod\nolimits_{a : X \to U} \mathcal{F}_\varphi(X, a) =
+\mathcal{F}(X)
+$$
+because given a set map $S \to S'$ the set $S$ is the disjoint
+union of its fibres.
+\end{proof}
+
+\noindent
+Lemma \ref{lemma-essential-image-j-shriek}
+says the functor $j_{U!}$ is the composition
+$$
+\Sh(\mathcal{C}/U) \rightarrow
+\Sh(\mathcal{C})/h_U^\# \rightarrow
+\Sh(\mathcal{C})
+$$
+where the first arrow is an equivalence.
+
+\begin{lemma}
+\label{lemma-j-shriek-commutes-equalizers-fibre-products}
+Let $\mathcal{C}$ be a site. Let $U \in \Ob(\mathcal{C})$.
+The functor $j_{U!}$ commutes with fibre products and equalizers (and
+more generally finite connected limits). In particular, if
+$\mathcal{F} \subset \mathcal{F}'$ in $\Sh(\mathcal{C}/U)$, then
+$j_{U!}\mathcal{F} \subset j_{U!}\mathcal{F}'$.
+\end{lemma}
+
+\begin{proof}
+Via Lemma \ref{lemma-essential-image-j-shriek}
+and the fact that an equivalence of categories commutes
+with all limits, this reduces to the fact that the functor
+$\Sh(\mathcal{C})/h_U^\# \rightarrow \Sh(\mathcal{C})$
+commutes with fibre products and equalizers. Alternatively, one can
+prove this directly using the description of $j_{U!}$ in
+Lemma \ref{lemma-describe-j-shriek}
+using that sheafification is exact. (Also, in case $\mathcal{C}$ has
+fibre products and equalizers, the result follows from
+Lemma \ref{lemma-preserve-equalizers}.)
+\end{proof}
+
+\begin{lemma}
+\label{lemma-j-shriek-reflects-injections-surjections}
+Let $\mathcal{C}$ be a site. Let $U \in \Ob(\mathcal{C})$.
+The functor $j_{U!}$ reflects injections and surjections.
+\end{lemma}
+
+\begin{proof}
+We have to show $j_{U!}$ reflects monomorphisms and epimorphisms, see
+Lemma \ref{lemma-mono-epi-sheaves}.
+Via Lemma \ref{lemma-essential-image-j-shriek}
+this reduces to the fact that the functor
+$\Sh(\mathcal{C})/h_U^\# \to \Sh(\mathcal{C})$
+reflects monomorphisms and epimorphisms.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-compute-j-shriek-restrict}
+Let $\mathcal{C}$ be a site. Let $U \in \Ob(\mathcal{C})$.
+For any sheaf $\mathcal{F}$ on $\mathcal{C}$ we have
+$j_{U!}j_U^{-1}\mathcal{F} = \mathcal{F} \times h_U^\#$.
+\end{lemma}
+
+\begin{proof}
+This is clear from the description of $j_{U!}$ in
+Lemma \ref{lemma-describe-j-shriek}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-relocalize}
+Let $\mathcal{C}$ be a site.
+Let $f : V \to U$ be a morphism of $\mathcal{C}$.
+Then there exists a commutative diagram
+$$
+\xymatrix{
+\mathcal{C}/V \ar[rd]_{j_V} \ar[rr]_j & &
+\mathcal{C}/U \ar[ld]^{j_U} \\
+& \mathcal{C} &
+}
+$$
+of continuous and cocontinuous functors.
+The functor $j : \mathcal{C}/V \to \mathcal{C}/U$,
+$(a : W \to V) \mapsto (f \circ a : W \to U)$
+is identified with the functor
+$j_{V/U} : (\mathcal{C}/U)/(V/U) \to \mathcal{C}/U$
+via the identification $(\mathcal{C}/U)/(V/U) = \mathcal{C}/V$.
+Moreover we have $j_{V!} = j_{U!} \circ j_!$,
+$j_V^{-1} = j^{-1} \circ j_U^{-1}$, and
+$j_{V*} = j_{U*} \circ j_*$.
+\end{lemma}
+
+\begin{proof}
+The commutativity of the diagram is immediate.
+The agreement of $j$ with $j_{V/U}$ follows from the definitions. By
+Lemma \ref{lemma-composition-cocontinuous}
+we see that the following diagram of morphisms of topoi
+\begin{equation}
+\label{equation-relocalize}
+\vcenter{
+\xymatrix{
+\Sh(\mathcal{C}/V) \ar[rd]_{j_V} \ar[rr]_j & &
+\Sh(\mathcal{C}/U) \ar[ld]^{j_U} \\
+& \Sh(\mathcal{C}) &
+}
+}
+\end{equation}
+is commutative. This proves that
+$j_V^{-1} = j^{-1} \circ j_U^{-1}$ and $j_{V*} = j_{U*} \circ j_*$.
+The equality $j_{V!} = j_{U!} \circ j_!$
+follows formally from adjointness properties.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-relocalize-explicit}
+Notation $\mathcal{C}$, $f : V \to U$, $j_U$, $j_V$, and $j$ as in
+Lemma \ref{lemma-relocalize}. Via the identifications
+$\Sh(\mathcal{C}/V) = \Sh(\mathcal{C})/h_V^\#$
+and
+$\Sh(\mathcal{C}/U) = \Sh(\mathcal{C})/h_U^\#$
+of
+Lemma \ref{lemma-essential-image-j-shriek}
+we have
+\begin{enumerate}
+\item the functor $j^{-1}$ has the following description
+$$
+j^{-1}(\mathcal{H} \xrightarrow{\varphi} h_U^\#)
+=
+(\mathcal{H} \times_{\varphi, h_U^\#, f} h_V^\# \to h_V^\#).
+$$
+\item the functor $j_!$ has the following description
+$$
+j_!(\mathcal{H} \xrightarrow{\varphi} h_V^\#) =
+(\mathcal{H} \xrightarrow{h_f \circ \varphi} h_U^\#)
+$$
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Proof of (2). Recall that the identification
+$\Sh(\mathcal{C}/V) \to \Sh(\mathcal{C})/h_V^\#$
+sends $\mathcal{G}$ to $j_{V!}\mathcal{G} \to j_{V!}(*) = h_V^\#$
+and similarly for
+$\Sh(\mathcal{C}/U) \to \Sh(\mathcal{C})/h_U^\#$.
+Thus $j_!\mathcal{G}$ is mapped to
+$j_{U!}(j_!\mathcal{G}) \to j_{U!}(*) = h_U^\#$
+and (2) follows because $j_{U!}j_! = j_{V!}$
+by Lemma \ref{lemma-relocalize}.
+
+\medskip\noindent
+The reader can now prove (1) by using that $j^{-1}$ is the
+right adjoint to $j_!$ and using that the rule in (1)
+is the right adjoint to the rule in (2). Here is a direct proof.
+Suppose that $\varphi : \mathcal{H} \to h_U^\#$ is an object of
+$\Sh(\mathcal{C})/h_U^\#$. By the proof of
+Lemma \ref{lemma-essential-image-j-shriek}
+this corresponds to the sheaf
+$\mathcal{H}_\varphi$ on $\mathcal{C}/U$ defined by the rule
+$$
+(a : W \to U)
+\longmapsto
+\{ s \in \mathcal{H}(W) \mid \varphi(s) = a\}
+$$
+on $\mathcal{C}/U$. The pullback $j^{-1}\mathcal{H}_\varphi$ to
+$\mathcal{C}/V$ is given by the rule
+$$
+(a : W \to V)
+\longmapsto
+\{ s \in \mathcal{H}(W) \mid \varphi(s) = f \circ a\}
+$$
+by the description of $j^{-1} = j_{U/V}^{-1}$ as the restriction
+of $\mathcal{H}_\varphi$ to $\mathcal{C}/V$.
+On the other hand, applying the rule to the object
+$$
+\xymatrix{
+\mathcal{H}' = \mathcal{H} \times_{\varphi, h_U^\#, f} h_V^\#
+\ar[rr]^-{\varphi'} & & h_V^\#
+}
+$$
+of $\Sh(\mathcal{C})/h_V^\#$
+we get $\mathcal{H}'_{\varphi'}$
+given by
+\begin{align*}
+(a : W \to V)
+\longmapsto
+&  \{ s' \in \mathcal{H}'(W) \mid \varphi'(s') = a\} \\
+= &
+\{ (s, a') \in \mathcal{H}(W) \times h_V^\#(W) \mid
+a' = a \text{ and } \varphi(s) = f \circ a'\}
+\end{align*}
+which is exactly the same rule as the one describing
+$j^{-1}\mathcal{H}_\varphi$ above.
+\end{proof}
+
+\begin{remark}
+\label{remark-localize-presheaves}
+Localization and presheaves. Let $\mathcal{C}$ be a category.
+Let $U$ be an object of $\mathcal{C}$. Strictly speaking the functors
+$j_U^{-1}$, $j_{U*}$ and $j_{U!}$ have not been defined for presheaves.
+But of course, we can think of a presheaf as a sheaf for the
+chaotic topology on $\mathcal{C}$ (see Example \ref{example-indiscrete}).
+Hence we also obtain a functor
+$$
+j_U^{-1} :
+\textit{PSh}(\mathcal{C})
+\longrightarrow
+\textit{PSh}(\mathcal{C}/U)
+$$
+and functors
+$$
+j_{U*}, j_{U!} :
+\textit{PSh}(\mathcal{C}/U)
+\longrightarrow
+\textit{PSh}(\mathcal{C})
+$$
+which are right, left adjoint to $j_U^{-1}$. By
+Lemma \ref{lemma-describe-j-shriek}
+we see that $j_{U!}\mathcal{G}$ is the presheaf
+$$
+V \longmapsto
+\coprod\nolimits_{\varphi \in \Mor_\mathcal{C}(V, U)}
+\mathcal{G}(V \xrightarrow{\varphi} U)
+$$
+In addition the functor $j_{U!}$ commutes with fibre products and
+equalizers.
+\end{remark}
+
+\begin{remark}
+\label{remark-localization-cartesian-cocontinuous}
+Let $\mathcal{C}$ be a site. Let $U \to V$ be a morphism of $\mathcal{C}$.
+The cocontinuous functors $\mathcal{C}/U \to \mathcal{C}$ and
+$j : \mathcal{C}/U \to \mathcal{C}/V$ (Lemma \ref{lemma-relocalize})
+satisfy property $P$ of Remark \ref{remark-cartesian-cocontinuous}.
+For example, if we have objects $(X/U)$, $(W/V)$, a morphism
+$g : j(X/U) \to (W/V)$, and a covering $\{f_i  : (W_i/V) \to (W/V)\}$ then
+$(X \times_W W_i/U)$ is an avatar of $(X/U) \times_{g, (W/V), f_i} (W_i/V)$
+and the family $\{(X \times_W W_i/U) \to (X/U)\}$ is a covering
+of $\mathcal{C}/U$.
+\end{remark}
+
+
+
+
+
+

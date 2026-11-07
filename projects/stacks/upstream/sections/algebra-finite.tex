@@ -1,0 +1,73 @@
+\section{Finite ring maps}
+\label{section-finite}
+
+\noindent
+Here is the definition.
+
+\begin{definition}
+\label{definition-finite-ring-map}
+Let $\varphi : R \to S$ be a ring map. We say $\varphi : R \to S$ is
+{\it finite} if $S$ is finite as an $R$-module.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-finite-module-over-finite-extension}
+Let $R \to S$ be a finite ring map.
+Let $M$ be an $S$-module.
+Then $M$ is finite as an $R$-module if and only if $M$ is finite
+as an $S$-module.
+\end{lemma}
+
+\begin{proof}
+One of the implications follows from
+Lemma \ref{lemma-finite-over-subring}.
+To see the other assume that $M$ is finite as an $S$-module.
+Pick $x_1, \ldots, x_n \in S$ which generate $S$ as an $R$-module.
+Pick $y_1, \ldots, y_m \in M$ which generate $M$ as an $S$-module.
+Then $x_i y_j$ generate $M$ as an $R$-module.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-finite-transitive}
+Suppose that $R \to S$ and $S \to T$ are finite ring maps.
+Then $R \to T$ is finite.
+\end{lemma}
+
+\begin{proof}
+If $t_i$ generate $T$ as an $S$-module and $s_j$ generate $S$ as an
+$R$-module, then $t_i s_j$ generate $T$ as an $R$-module.
+(Also follows from
+Lemma \ref{lemma-finite-module-over-finite-extension}.)
+\end{proof}
+
+\begin{lemma}
+\label{lemma-finite-finite-type}
+Let $\varphi : R \to S$ be a ring map.
+\begin{enumerate}
+\item If $\varphi$ is finite, then $\varphi$ is of finite type.
+\item If $S$ is of finite presentation as an $R$-module, then
+$\varphi$ is of finite presentation.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+For (1) if $x_1, \ldots, x_n \in S$ generate $S$ as an $R$-module,
+then $x_1, \ldots, x_n$ generate $S$ as an $R$-algebra. For (2),
+suppose that $\sum r_j^ix_i = 0$, $j = 1, \ldots, m$ is a set
+of generators of the relations among the $x_i$ when viewed as
+$R$-module generators of $S$. Furthermore, write
+$1 = \sum r_ix_i$ for some $r_i \in R$ and
+$x_ix_j = \sum r_{ij}^k x_k$ for some $r_{ij}^k \in R$.
+Then
+$$
+S = R[t_1, \ldots, t_n]/
+(\sum r_j^it_i,\ 1 - \sum r_it_i,\ t_it_j - \sum r_{ij}^k t_k)
+$$
+as an $R$-algebra which proves (2).
+\end{proof}
+
+\noindent
+For more information on finite ring maps, please see
+Section \ref{section-finite-ring-extensions}.
+
+

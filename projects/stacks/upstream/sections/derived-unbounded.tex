@@ -1,0 +1,274 @@
+\section{Unbounded complexes}
+\label{section-unbounded}
+
+\noindent
+A reference for the material in this section is \cite{Spaltenstein}.
+The following lemma is useful to find ``good'' left resolutions of
+unbounded complexes.
+
+\begin{lemma}
+\label{lemma-special-direct-system}
+Let $\mathcal{A}$ be an abelian category. Let
+$\mathcal{P} \subset \Ob(\mathcal{A})$ be a subset.
+Assume $\mathcal{P}$ contains $0$, is closed under (finite) direct sums,
+and every object of $\mathcal{A}$ is a quotient of an
+element of $\mathcal{P}$. Let $K^\bullet$ be a complex.
+There exists a commutative diagram
+$$
+\xymatrix{
+P_1^\bullet \ar[d] \ar[r] & P_2^\bullet \ar[d] \ar[r] & \ldots \\
+\tau_{\leq 1}K^\bullet \ar[r] & \tau_{\leq 2}K^\bullet \ar[r] & \ldots
+}
+$$
+in the category of complexes such that
+\begin{enumerate}
+\item the vertical arrows are quasi-isomorphisms and termwise surjective,
+\item $P_n^\bullet$ is a bounded above complex with terms in
+$\mathcal{P}$,
+\item the arrows $P_n^\bullet \to P_{n + 1}^\bullet$
+are termwise split injections and each cokernel
+$P^i_{n + 1}/P^i_n$ is an element of $\mathcal{P}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+We are going to use that the homotopy category $K(\mathcal{A})$ is a
+triangulated category, see Proposition
+\ref{proposition-homotopy-category-triangulated}.
+By Lemma \ref{lemma-subcategory-left-resolution} we can find a
+termwise surjective map of complexes $P_1^\bullet \to \tau_{\leq 1}K^\bullet$
+which is a quasi-isomorphism
+such that the terms of $P_1^\bullet$ are in $\mathcal{P}$.
+By induction it suffices, given
+$P_1^\bullet, \ldots, P_n^\bullet$ to construct
+$P_{n + 1}^\bullet$ and the maps
+$P_n^\bullet \to P_{n + 1}^\bullet$ and
+$P_{n + 1}^\bullet \to \tau_{\leq n + 1}K^\bullet$.
+
+\medskip\noindent
+Choose a distinguished triangle
+$P_n^\bullet \to \tau_{\leq n + 1}K^\bullet \to C^\bullet \to P_n^\bullet[1]$
+in $K(\mathcal{A})$. Applying
+Lemma \ref{lemma-subcategory-left-resolution} we choose a
+map of complexes $Q^\bullet \to C^\bullet$
+which is a quasi-isomorphism such that the terms of $Q^\bullet$
+are in $\mathcal{P}$. By the axioms of triangulated categories
+we may fit the composition $Q^\bullet \to C^\bullet \to P_n^\bullet[1]$ into
+a distinguished triangle
+$P_n^\bullet \to P_{n + 1}^\bullet \to Q^\bullet \to P_n^\bullet[1]$
+in $K(\mathcal{A})$.
+By Lemma \ref{lemma-improve-distinguished-triangle-homotopy}
+we may and do assume
+$0 \to P_n^\bullet \to P_{n + 1}^\bullet \to Q^\bullet \to 0$
+is a termwise split short exact sequence. This implies that
+the terms of $P_{n + 1}^\bullet$ are in $\mathcal{P}$ and that
+$P_n^\bullet \to P_{n + 1}^\bullet$ is a termwise split injection
+whose cokernels are in $\mathcal{P}$.
+By the axioms of triangulated categories we obtain a map
+of distinguished triangles
+$$
+\xymatrix{
+P_n^\bullet \ar[r] \ar[d] &
+P_{n + 1}^\bullet \ar[r] \ar[d] &
+Q^\bullet \ar[r] \ar[d] &
+P_n^\bullet[1] \ar[d] \\
+P_n^\bullet \ar[r] &
+\tau_{\leq n + 1}K^\bullet \ar[r] &
+C^\bullet \ar[r] &
+P_n^\bullet[1]
+}
+$$
+in the triangulated category $K(\mathcal{A})$. Choose an actual morphism of
+complexes $f : P_{n + 1}^\bullet \to \tau_{\leq n + 1}K^\bullet$.
+The left square of the diagram above commutes up to homotopy, but as
+$P_n^\bullet \to P_{n + 1}^\bullet$ is a termwise split injection
+we can lift the homotopy and modify our choice of $f$ to make it commute.
+Finally, $f$ is a quasi-isomorphism, because both $P_n^\bullet \to P_n^\bullet$
+and $Q^\bullet \to C^\bullet$ are.
+
+\medskip\noindent
+At this point we have all the properties we want, except we don't know
+that the map $f : P_{n + 1}^\bullet \to \tau_{\leq n + 1}K^\bullet$
+is termwise surjective. Since we have the commutative diagram
+$$
+\xymatrix{
+P_n^\bullet \ar[d] \ar[r] & P_{n + 1}^\bullet \ar[d] \\
+\tau_{\leq n}K^\bullet \ar[r] & \tau_{\leq n + 1}K^\bullet
+}
+$$
+of complexes, by induction hypothesis we see that $f$ is surjective
+on terms in all degrees except possibly $n$ and $n + 1$. Choose
+an object $P \in \mathcal{P}$ and a surjection $q : P \to K^n$.
+Consider the map
+$$
+g :
+P^\bullet = (\ldots \to 0 \to P \xrightarrow{1} P \to 0 \to \ldots)
+\longrightarrow
+\tau_{\leq n + 1}K^\bullet
+$$
+with first copy of $P$ in degree $n$ and maps given by
+$q$ in degree $n$ and $d_K \circ q$ in degree $n + 1$.
+This is a surjection in degree $n$ and the cokernel in
+degree $n + 1$ is $H^{n + 1}(\tau_{\leq n + 1}K^\bullet)$;
+to see this recall that $\tau_{\leq n + 1}K^\bullet$ has
+$\Ker(d_K^{n + 1})$ in degree $n + 1$.
+However, since $f$ is a quasi-isomorphism we know that
+$H^{n + 1}(f)$ is surjective. Hence after replacing 
+$f : P_{n + 1}^\bullet \to \tau_{\leq n + 1}K^\bullet$
+by
+$f \oplus g : P_{n + 1}^\bullet \oplus P^\bullet \to \tau_{\leq n + 1}K^\bullet$
+we win.
+\end{proof}
+
+\noindent
+In some cases we can use the lemma above to show that a left derived
+functor is everywhere defined.
+
+\begin{proposition}
+\label{proposition-left-derived-exists}
+Let $F : \mathcal{A} \to \mathcal{B}$ be a right exact functor
+of abelian categories. Let $\mathcal{P} \subset \Ob(\mathcal{A})$ be a
+subset. Assume
+\begin{enumerate}
+\item $\mathcal{P}$ contains $0$, is closed under (finite) direct sums,
+and every object of $\mathcal{A}$ is a quotient of an
+element of $\mathcal{P}$,
+\item for any bounded above acyclic complex $P^\bullet$ of
+$\mathcal{A}$ with $P^n \in \mathcal{P}$ for all $n$ the
+complex $F(P^\bullet)$ is exact,
+\item $\mathcal{A}$ and $\mathcal{B}$ have colimits
+of systems over $\mathbf{N}$,
+\item colimits over $\mathbf{N}$ are exact in both
+$\mathcal{A}$ and $\mathcal{B}$, and
+\item $F$ commutes with colimits over $\mathbf{N}$.
+\end{enumerate}
+Then $LF$ is defined on all of $D(\mathcal{A})$.
+\end{proposition}
+
+\begin{proof}
+By (1) and Lemma \ref{lemma-subcategory-left-resolution} for any bounded
+above complex $K^\bullet$ there exists a quasi-isomorphism
+$P^\bullet \to K^\bullet$ with $P^\bullet$ bounded above and
+$P^n \in \mathcal{P}$ for all $n$. Suppose that
+$s : P^\bullet \to (P')^\bullet$ is a quasi-isomorphism of bounded
+above complexes consisting of objects of $\mathcal{P}$. Then
+$F(P^\bullet) \to F((P')^\bullet)$ is a quasi-isomorphism because
+$F(C(s)^\bullet)$ is acyclic by assumption (2). This already shows that
+$LF$ is defined on $D^{-}(\mathcal{A})$ and that a bounded above
+complex consisting of objects of $\mathcal{P}$ computes $LF$, see
+Lemma \ref{lemma-find-existence-computes}.
+
+\medskip\noindent
+Next, let $K^\bullet$ be an arbitrary complex of $\mathcal{A}$.
+Choose a diagram
+$$
+\xymatrix{
+P_1^\bullet \ar[d] \ar[r] & P_2^\bullet \ar[d] \ar[r] & \ldots \\
+\tau_{\leq 1}K^\bullet \ar[r] & \tau_{\leq 2}K^\bullet \ar[r] & \ldots
+}
+$$
+as in Lemma \ref{lemma-special-direct-system}. Note that
+the map $\colim P_n^\bullet \to K^\bullet$ is a quasi-isomorphism
+because colimits over $\mathbf{N}$ in $\mathcal{A}$ are exact
+and $H^i(P_n^\bullet) = H^i(K^\bullet)$ for $n > i$. We claim that
+$$
+F(\colim P_n^\bullet) = \colim F(P_n^\bullet)
+$$
+(termwise colimits) is $LF(K^\bullet)$, i.e., that $\colim P_n^\bullet$
+computes $LF$. To see this, by Lemma \ref{lemma-find-existence-computes},
+it suffices to prove the following claim. Suppose that
+$$
+\colim Q_n^\bullet = Q^\bullet
+\xrightarrow{\ \alpha\ }
+P^\bullet = \colim P_n^\bullet
+$$
+is a quasi-isomorphism of complexes, such that each
+$P_n^\bullet$, $Q_n^\bullet$ is a bounded above complex whose terms are
+in $\mathcal{P}$ and the maps $P_n^\bullet \to \tau_{\leq n}P^\bullet$ and
+$Q_n^\bullet \to \tau_{\leq n}Q^\bullet$ are quasi-isomorphisms.
+Claim: $F(\alpha)$ is a quasi-isomorphism.
+
+\medskip\noindent
+The problem is that we do not assume that $\alpha$ is given as a colimit
+of maps between the complexes $P_n^\bullet$ and $Q_n^\bullet$. However,
+for each $n$ we know that the solid arrows in the diagram
+$$
+\xymatrix{
+& R^\bullet \ar@{..>}[d] \\
+P_n^\bullet \ar[d] &
+L^\bullet \ar@{..>}[l] \ar@{..>}[r] &
+Q_n^\bullet \ar[d] \\
+\tau_{\leq n}P^\bullet \ar[rr]^{\tau_{\leq n}\alpha} & &
+\tau_{\leq n}Q^\bullet
+}
+$$
+are quasi-isomorphisms. Because quasi-isomorphisms form a multiplicative
+system in $K(\mathcal{A})$ (see Lemma \ref{lemma-acyclic})
+we can find a quasi-isomorphism
+$L^\bullet \to P_n^\bullet$ and map of complexes $L^\bullet \to Q_n^\bullet$
+such that the diagram above commutes up to homotopy. Then
+$\tau_{\leq n}L^\bullet \to L^\bullet$ is a quasi-isomorphism.
+Hence (by the first part of the proof) we can find a bounded above
+complex $R^\bullet$ whose terms are in $\mathcal{P}$ and a quasi-isomorphism
+$R^\bullet \to L^\bullet$ (as indicated in the diagram). Using the result
+of the first paragraph of the proof we see that
+$F(R^\bullet) \to F(P_n^\bullet)$ and $F(R^\bullet) \to F(Q_n^\bullet)$
+are quasi-isomorphisms. Thus we obtain an isomorphism
+$H^i(F(P_n^\bullet)) \to H^i(F(Q_n^\bullet))$ fitting into the commutative
+diagram
+$$
+\xymatrix{
+H^i(F(P_n^\bullet)) \ar[r] \ar[d] &
+H^i(F(Q_n^\bullet)) \ar[d] \\
+H^i(F(P^\bullet)) \ar[r] &
+H^i(F(Q^\bullet))
+}
+$$
+The exact same argument shows that these maps are also compatible
+as $n$ varies. Since by (4) and (5) we have
+$$
+H^i(F(P^\bullet)) =
+H^i(F(\colim P_n^\bullet)) =
+H^i(\colim F(P_n^\bullet)) = \colim H^i(F(P_n^\bullet))
+$$
+and similarly for $Q^\bullet$ we conclude that
+$H^i(\alpha) : H^i(F(P^\bullet) \to H^i(F(Q^\bullet)$ is an isomorphism
+and the claim follows.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-special-inverse-system}
+Let $\mathcal{A}$ be an abelian category. Let
+$\mathcal{I} \subset \Ob(\mathcal{A})$ be a subset.
+Assume $\mathcal{I}$ contains $0$, is closed under (finite) products,
+and every object of $\mathcal{A}$ is a subobject of an
+element of $\mathcal{I}$. Let $K^\bullet$ be a complex.
+There exists a commutative diagram
+$$
+\xymatrix{
+\ldots \ar[r] &
+\tau_{\geq -2}K^\bullet \ar[r] \ar[d] &
+\tau_{\geq -1}K^\bullet \ar[d] \\
+\ldots \ar[r] & I_2^\bullet \ar[r] & I_1^\bullet
+}
+$$
+in the category of complexes such that
+\begin{enumerate}
+\item the vertical arrows are quasi-isomorphisms and termwise injective,
+\item $I_n^\bullet$ is a bounded below complex with terms in $\mathcal{I}$,
+\item the arrows $I_{n + 1}^\bullet \to I_n^\bullet$ are termwise split
+surjections and $\Ker(I^i_{n + 1} \to I^i_n)$ is an element of $\mathcal{I}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+This lemma is dual to
+Lemma \ref{lemma-special-direct-system}.
+\end{proof}
+
+
+
+
+
+
+

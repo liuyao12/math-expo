@@ -1,0 +1,90 @@
+\section{Karoubian categories}
+\label{section-karoubian}
+
+\noindent
+Skip this section on a first reading.
+
+\begin{definition}
+\label{definition-karoubian}
+Let $\mathcal{C}$ be a preadditive category. We say $\mathcal{C}$
+is {\it Karoubian} if every idempotent endomorphism of an object
+of $\mathcal{C}$ has a kernel.
+\end{definition}
+
+\noindent
+The dual notion would be that every idempotent endomorphism of an
+object has a cokernel. However, in view of the (dual of the)
+following lemma that would be an equivalent notion.
+
+\begin{lemma}
+\label{lemma-karoubian}
+Let $\mathcal{C}$ be a preadditive category. The following
+are equivalent
+\begin{enumerate}
+\item $\mathcal{C}$ is Karoubian,
+\item every idempotent endomorphism of an object of $\mathcal{C}$ has a
+cokernel, and
+\item given an idempotent endomorphism $p : z \to z$ of $\mathcal{C}$
+there exists a direct sum decomposition $z = x \oplus y$ such
+that $p$ corresponds to the projection onto $y$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Immediate via Lemmas \ref{lemma-idempotent-kernel-cokernel},
+\ref{lemma-idempotent-splitting}, and \ref{lemma-additive-cat-biproduct-kernel}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-projectors-have-images}
+Let $\mathcal{D}$ be a preadditive category.
+\begin{enumerate}
+\item If $\mathcal{D}$ has countable products and kernels of maps which
+have a right inverse, then $\mathcal{D}$ is Karoubian.
+\item If $\mathcal{D}$ has countable coproducts and cokernels of
+maps which have a left inverse, then $\mathcal{D}$ is Karoubian.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let $X$ be an object of $\mathcal{D}$ and let $e : X \to X$ be an idempotent.
+The functor
+$$
+W \longmapsto \Ker(
+\Mor_\mathcal{D}(W, X)
+\xrightarrow{e}
+\Mor_\mathcal{D}(W, X)
+)
+$$
+is representable if and only if $e$ has a kernel. Note that for any
+abelian group $A$ and idempotent endomorphism $e : A \to A$ we have
+$$
+\Ker(e : A \to A)
+= \Ker(\Phi :
+\prod\nolimits_{n \in \mathbf{N}} A
+\to
+\prod\nolimits_{n \in \mathbf{N}} A
+)
+$$
+where
+$$
+\Phi(a_1, a_2, a_3, \ldots) = (ea_1 + (1 - e)a_2, ea_2 + (1 - e)a_3, \ldots)
+$$
+Moreover, $\Phi$ has the right inverse
+$$
+\Psi(a_1, a_2, a_3, \ldots) =
+(a_1, (1 - e)a_1 + ea_2, (1 - e)a_2 + ea_3, \ldots).
+$$
+Hence (1) holds. The proof of (2) is dual (using the dual definition
+of a Karoubian category, namely condition (2) of
+Lemma \ref{lemma-karoubian}).
+\end{proof}
+
+
+
+
+
+
+
+
+

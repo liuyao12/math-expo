@@ -1,0 +1,603 @@
+\section{Relative Proj as a functor}
+\label{section-relative-proj}
+
+\noindent
+We place ourselves in Situation \ref{situation-relative-proj}.
+So $S$ is a scheme and $\mathcal{A} = \bigoplus_{d \geq 0} \mathcal{A}_d$
+is a quasi-coherent graded $\mathcal{O}_S$-algebra.
+In this section we relativize the construction of
+$\text{Proj}$ by constructing a functor which the relative
+homogeneous spectrum will represent.
+As a result we will construct a morphism of schemes
+$$
+\underline{\text{Proj}}_S(\mathcal{A}) \longrightarrow S
+$$
+which above affine opens of $S$ will look like the homogeneous spectrum
+of a graded ring. The discussion will be modeled after our
+discussion of the relative spectrum in Section \ref{section-spec}.
+The easier method using glueing schemes of the form
+$\text{Proj}(A)$, $A = \Gamma(U, \mathcal{A})$, $U \subset S$
+affine open, is explained in Section \ref{section-relative-proj-via-glueing},
+and the result in this section will be shown to be isomorphic to that one.
+
+\medskip\noindent
+Fix for the moment an integer $d \geq 1$.
+We denote $\mathcal{A}^{(d)} = \bigoplus_{n \geq 0} \mathcal{A}_{nd}$
+similarly to the notation in Algebra, Section \ref{algebra-section-graded}.
+Let $T$ be a scheme.
+Let us consider {\it quadruples $(d, f : T \to S, \mathcal{L}, \psi)$
+over $T$} where
+\begin{enumerate}
+\item $d$ is the integer we fixed above,
+\item $f : T \to S$ is a morphism of schemes,
+\item $\mathcal{L}$ is an invertible $\mathcal{O}_T$-module, and
+\item
+$\psi : f^*\mathcal{A}^{(d)} \to \bigoplus_{n \geq 0}\mathcal{L}^{\otimes n}$
+is a homomorphism of graded $\mathcal{O}_T$-algebras
+such that $f^*\mathcal{A}_d \to \mathcal{L}$ is surjective.
+\end{enumerate}
+Given a morphism $h : T' \to T$ and a quadruple
+$(d, f, \mathcal{L}, \psi)$ over $T$ we can pull it back to the
+quadruple $(d, f \circ h, h^*\mathcal{L}, h^*\psi)$ over $T'$.
+Given two quadruples $(d, f, \mathcal{L}, \psi)$ and
+$(d, f', \mathcal{L}', \psi')$ over $T$ with the same integer $d$
+we say they are {\it strictly equivalent} if $f = f'$ and there exists
+an isomorphism $\beta : \mathcal{L} \to \mathcal{L}'$
+such that $\beta \circ \psi = \psi'$ as graded $\mathcal{O}_T$-algebra maps
+$f^*\mathcal{A}^{(d)} \to \bigoplus_{n \geq 0} (\mathcal{L}')^{\otimes n}$.
+
+\medskip\noindent
+For each integer $d \geq 1$ we define
+\begin{eqnarray*}
+F_d : \Sch^{opp} & \longrightarrow & \textit{Sets}, \\
+T & \longmapsto &
+\{\text{strict equivalence classes of }
+(d, f : T \to S, \mathcal{L}, \psi)
+\text{ as above}\}
+\end{eqnarray*}
+with pullbacks as defined above.
+
+\begin{lemma}
+\label{lemma-proj-base-change}
+In Situation \ref{situation-relative-proj}. Let $d \geq 1$.
+Let $F_d$ be the functor
+associated to $(S, \mathcal{A})$ above.
+Let $g : S' \to S$ be a morphism of schemes.
+Set $\mathcal{A}' = g^*\mathcal{A}$. Let $F_d'$ be the
+functor associated to $(S', \mathcal{A}')$ above.
+Then there is a canonical isomorphism
+$$
+F'_d \cong h_{S'} \times_{h_S} F_d
+$$
+of functors.
+\end{lemma}
+
+\begin{proof}
+A quadruple
+$(d, f' : T \to S', \mathcal{L}',
+\psi' : (f')^*(\mathcal{A}')^{(d)} \to
+\bigoplus_{n \geq 0} (\mathcal{L}')^{\otimes n})$
+is the same as a quadruple
+$(d, f, \mathcal{L},
+\psi : f^*\mathcal{A}^{(d)} \to
+\bigoplus_{n \geq 0} \mathcal{L}^{\otimes n})$
+together with a factorization of $f$ as $f = g \circ f'$. Namely,
+the correspondence is $f = g \circ f'$, $\mathcal{L} = \mathcal{L}'$
+and $\psi = \psi'$ via the identifications
+$(f')^*(\mathcal{A}')^{(d)} = (f')^*g^*(\mathcal{A}^{(d)}) =
+f^*\mathcal{A}^{(d)}$. Hence the lemma.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-relative-proj-affine}
+In Situation \ref{situation-relative-proj}. Let $F_d$ be the functor
+associated to $(d, S, \mathcal{A})$ above.
+If $S$ is affine, then $F_d$ is representable by the open subscheme
+$U_d$ (\ref{equation-Ud})
+of the scheme $\text{Proj}(\Gamma(S, \mathcal{A}))$.
+\end{lemma}
+
+\begin{proof}
+Write $S = \Spec(R)$ and $A = \Gamma(S, \mathcal{A})$.
+Then $A$ is a graded $R$-algebra and $\mathcal{A} = \widetilde A$.
+To prove the lemma we have to identify the functor $F_d$
+with the functor $F_d^{triples}$ of triples defined in Section
+\ref{section-morphisms-proj}.
+
+\medskip\noindent
+Let $(d, f : T \to S, \mathcal{L}, \psi)$ be a quadruple.
+We may think of $\psi$ as a $\mathcal{O}_S$-module map
+$\mathcal{A}^{(d)} \to \bigoplus_{n \geq 0} f_*\mathcal{L}^{\otimes n}$.
+Since $\mathcal{A}^{(d)}$ is quasi-coherent this is the same
+thing as an $R$-linear homomorphism of graded rings
+$A^{(d)} \to \Gamma(S, \bigoplus_{n \geq 0} f_*\mathcal{L}^{\otimes n})$.
+Clearly, $\Gamma(S, \bigoplus_{n \geq 0} f_*\mathcal{L}^{\otimes n}) =
+\Gamma_*(T, \mathcal{L})$. Thus we may associate to
+the quadruple the triple $(d, \mathcal{L}, \psi)$.
+
+\medskip\noindent
+Conversely, let $(d, \mathcal{L}, \psi)$ be a triple.
+The composition $R \to A_0 \to \Gamma(T, \mathcal{O}_T)$
+determines a morphism $f : T \to S = \Spec(R)$, see
+Schemes, Lemma \ref{schemes-lemma-morphism-into-affine}.
+With this choice of $f$ the map
+$A^{(d)} \to \Gamma(S, \bigoplus_{n \geq 0} f_*\mathcal{L}^{\otimes n})$
+is $R$-linear, and hence corresponds to a $\psi$ which we
+can use for a quadruple $(d, f : T \to S, \mathcal{L}, \psi)$.
+We omit the verification that this establishes an isomorphism
+of functors $F_d = F_d^{triples}$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-relative-proj-d}
+In Situation \ref{situation-relative-proj}.
+The functor $F_d$ is representable by a scheme.
+\end{lemma}
+
+\begin{proof}
+We are going to use Schemes, Lemma \ref{schemes-lemma-glue-functors}.
+
+\medskip\noindent
+First we check that $F_d$ satisfies the sheaf property for the
+Zariski topology. Namely, suppose that $T$ is a scheme,
+that $T = \bigcup_{i \in I} U_i$ is an open covering,
+and that $(d, f_i, \mathcal{L}_i, \psi_i) \in F_d(U_i)$ such that
+$(d, f_i, \mathcal{L}_i, \psi_i)|_{U_i \cap U_j}$ and
+$(d, f_j, \mathcal{L}_j, \psi_j)|_{U_i \cap U_j}$ are strictly
+equivalent. This implies that the morphisms $f_i : U_i \to S$
+glue to a morphism of schemes $f : T \to S$ such that
+$f|_{I_i} = f_i$, see Schemes, Section \ref{schemes-section-glueing-schemes}.
+Thus $f_i^*\mathcal{A}^{(d)} = f^*\mathcal{A}^{(d)}|_{U_i}$.
+It also implies there exist isomorphisms
+$\beta_{ij} : \mathcal{L}_i|_{U_i \cap U_j} \to \mathcal{L}_j|_{U_i \cap U_j}$
+such that $\beta_{ij} \circ \psi_i = \psi_j$ on $U_i \cap U_j$.
+Note that the isomorphisms $\beta_{ij}$ are uniquely determined
+by this requirement because the maps $f_i^*\mathcal{A}_d \to \mathcal{L}_i$
+are surjective. In particular we see that
+$\beta_{jk} \circ \beta_{ij} = \beta_{ik}$ on $U_i \cap U_j \cap U_k$.
+Hence by Sheaves,
+Section \ref{sheaves-section-glueing-sheaves} the invertible sheaves
+$\mathcal{L}_i$ glue to an invertible $\mathcal{O}_T$-module
+$\mathcal{L}$ and the morphisms $\psi_i$ glue to
+morphism of $\mathcal{O}_T$-algebras
+$\psi : f^*\mathcal{A}^{(d)} \to \bigoplus_{n \geq 0} \mathcal{L}^{\otimes n}$.
+This proves that $F_d$ satisfies the sheaf condition with respect to
+the Zariski topology.
+
+\medskip\noindent
+Let $S = \bigcup_{i \in I} U_i$ be an affine open covering.
+Let $F_{d, i} \subset F_d$ be the subfunctor consisting of
+those pairs $(f : T \to S, \varphi)$ such that
+$f(T) \subset U_i$.
+
+\medskip\noindent
+We have to show each $F_{d, i}$ is representable.
+This is the case because $F_{d, i}$ is identified with
+the functor associated to $U_i$ equipped with
+the quasi-coherent graded $\mathcal{O}_{U_i}$-algebra
+$\mathcal{A}|_{U_i}$ by Lemma \ref{lemma-proj-base-change}.
+Thus the result follows from Lemma \ref{lemma-relative-proj-affine}.
+
+\medskip\noindent
+Next we show that $F_{d, i} \subset F_d$ is representable by open immersions.
+Let $(f : T \to S, \varphi) \in F_d(T)$. Consider $V_i = f^{-1}(U_i)$.
+It follows from the definition of $F_{d, i}$ that given $a : T' \to T$
+we have $a^*(f, \varphi) \in F_{d, i}(T')$ if and only if $a(T') \subset V_i$.
+This is what we were required to show.
+
+\medskip\noindent
+Finally, we have to show that the collection $(F_{d, i})_{i \in I}$
+covers $F_d$. Let $(f : T \to S, \varphi) \in F_d(T)$.
+Consider $V_i = f^{-1}(U_i)$. Since $S = \bigcup_{i \in I} U_i$
+is an open covering of $S$ we see that $T = \bigcup_{i \in I} V_i$
+is an open covering of $T$. Moreover $(f, \varphi)|_{V_i} \in F_{d, i}(V_i)$.
+This finishes the proof of the lemma.
+\end{proof}
+
+\noindent
+At this point we can redo the material at the end of
+Section \ref{section-morphisms-proj} in the current
+relative setting and define a functor
+which is representable by
+$\underline{\text{Proj}}_S(\mathcal{A})$. To do this we introduce the
+notion of equivalence between two
+quadruples $(d, f : T \to S, \mathcal{L}, \psi)$ and
+$(d', f' : T \to S, \mathcal{L}', \psi')$ with possibly different
+values of the integers $d, d'$. Namely, we say these
+are {\it equivalent} if $f = f'$, and there exists an
+isomorphism $\beta : \mathcal{L}^{\otimes d'} \to (\mathcal{L}')^{\otimes d}$
+such that
+$\beta \circ \psi|_{f^*\mathcal{A}^{(dd')}} = \psi'|_{f^*\mathcal{A}^{(dd')}}$.
+The following lemma implies that this defines an equivalence relation.
+(This is not a complete triviality.)
+
+\begin{lemma}
+\label{lemma-equivalent-relative}
+In Situation \ref{situation-relative-proj}.
+Let $T$ be a scheme.
+Let $(d, f, \mathcal{L}, \psi)$, $(d', f', \mathcal{L}', \psi')$
+be two quadruples over $T$. The following are equivalent:
+\begin{enumerate}
+\item Let $m = \text{lcm}(d, d')$. Write $m = ad = a'd'$.
+We have $f = f'$ and there exists
+an isomorphism
+$\beta : \mathcal{L}^{\otimes a} \to (\mathcal{L}')^{\otimes a'}$
+with the property that $\beta \circ \psi|_{f^*\mathcal{A}^{(m)}}$
+and $\psi'|_{f^*\mathcal{A}^{(m)}}$ agree
+as graded ring maps
+$f^*\mathcal{A}^{(m)} \to \bigoplus_{n \geq 0} (\mathcal{L}')^{\otimes mn}$.
+\item The quadruples $(d, f, \mathcal{L}, \psi)$ and
+$(d', f', \mathcal{L}', \psi')$ are equivalent.
+\item We have $f = f'$ and
+for some positive integer $m = ad = a'd'$ there exists an isomorphism
+$\beta : \mathcal{L}^{\otimes a} \to (\mathcal{L}')^{\otimes a'}$
+with the property that $\beta \circ \psi|_{f^*\mathcal{A}^{(m)}}$
+and $\psi'|_{f^*\mathcal{A}^{(m)}}$ agree
+as graded ring maps
+$f^*\mathcal{A}^{(m)} \to \bigoplus_{n \geq 0} (\mathcal{L}')^{\otimes mn}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Clearly (1) implies (2) and (2) implies (3) by restricting to
+more divisible degrees and powers of invertible sheaves.
+Assume (3) for some integer $m = ad = a'd'$. Let
+$m_0 = \text{lcm}(d, d')$ and write it as $m_0 = a_0d = a'_0d'$.
+We are given an isomorphism
+$\beta : \mathcal{L}^{\otimes a} \to (\mathcal{L}')^{\otimes a'}$
+with the property described in (3). We want to find an isomorphism
+$\beta_0 : \mathcal{L}^{\otimes a_0} \to (\mathcal{L}')^{\otimes a'_0}$
+having that property as well.
+Since by assumption the maps $\psi : f^*\mathcal{A}_d \to \mathcal{L}$
+and $\psi' : (f')^*\mathcal{A}_{d'} \to \mathcal{L}'$ are surjective the
+same is true for the maps
+$\psi : f^*\mathcal{A}_{m_0} \to \mathcal{L}^{\otimes a_0}$
+and $\psi' : (f')^*\mathcal{A}_{m_0} \to (\mathcal{L}')^{\otimes a_0}$.
+Hence if $\beta_0$ exists it is uniquely determined by the
+condition that $\beta_0 \circ \psi = \psi'$. This means that
+we may work locally on $T$. Hence we may assume that
+$f = f' : T \to S$ maps into an affine open, in other words
+we may assume that $S$ is affine. In this case the result follows
+from the corresponding result for triples (see Lemma \ref{lemma-equivalent})
+and the fact that triples and quadruples correspond in the
+affine base case (see proof of Lemma \ref{lemma-relative-proj-affine}).
+\end{proof}
+
+\noindent
+Suppose $d' = ad$. Consider the transformation of functors $F_d \to F_{d'}$
+which assigns to the quadruple $(d, f, \mathcal{L}, \psi)$ over
+$T$ the quadruple
+$(d', f, \mathcal{L}^{\otimes a}, \psi|_{f^*\mathcal{A}^{(d')}})$.
+One of the implications of Lemma \ref{lemma-equivalent-relative} is that the
+transformation $F_d \to F_{d'}$ is injective!
+For a quasi-compact scheme $T$ we define
+$$
+F(T) = \bigcup\nolimits_{d \in \mathbf{N}} F_d(T)
+$$
+with transition maps as explained above. This clearly defines a
+contravariant functor on the category of quasi-compact schemes
+with values in sets. For a general scheme
+$T$ we define
+$$
+F(T)
+=
+\lim_{V \subset T\text{ quasi-compact open}} F(V).
+$$
+In other words, an element $\xi$ of $F(T)$ corresponds to a compatible system
+of choices of elements $\xi_V \in F(V)$ where $V$ ranges over the
+quasi-compact opens of $T$.
+We omit the definition of the pullback map $F(T) \to F(T')$
+for a morphism $T' \to T$ of schemes.
+Thus we have defined our functor
+\begin{equation}
+\label{equation-proj}
+F : \Sch^{opp} \longrightarrow \textit{Sets}
+\end{equation}
+
+\begin{lemma}
+\label{lemma-relative-proj}
+In Situation \ref{situation-relative-proj}.
+The functor $F$ above is representable by a scheme.
+\end{lemma}
+
+\begin{proof}
+Let $U_d \to S$ be the scheme representing the functor $F_d$
+defined above. Let $\mathcal{L}_d$,
+$\psi^d : \pi_d^*\mathcal{A}^{(d)} \to
+\bigoplus_{n \geq 0} \mathcal{L}_d^{\otimes n}$ be the universal object.
+If $d | d'$, then we may consider the quadruple
+$(d', \pi_d, \mathcal{L}_d^{\otimes d'/d}, \psi^d|_{\mathcal{A}^{(d')}})$
+which determines a canonical morphism $U_d \to U_{d'}$ over $S$.
+By construction this morphism corresponds to the transformation
+of functors $F_d \to F_{d'}$ defined above.
+
+\medskip\noindent
+For every affine open $\Spec(R) = V \subset S$
+setting $A = \Gamma(V, \mathcal{A})$ we have a canonical
+identification of the base change $U_{d, V}$ with the corresponding open
+subscheme of $\text{Proj}(A)$, see Lemma \ref{lemma-relative-proj-affine}.
+Moreover, the morphisms $U_{d, V} \to U_{d', V}$ constructed above
+correspond to the inclusions of opens in $\text{Proj}(A)$.
+Thus we conclude that $U_d \to U_{d'}$ is an open immersion.
+
+\medskip\noindent
+This allows us to construct $X$
+by glueing the schemes $U_d$ along the open immersions $U_d \to U_{d'}$.
+Technically, it is convenient to choose a sequence
+$d_1 | d_2 | d_3 | \ldots$ such that every positive integer
+divides one of the $d_i$ and to simply take
+$X = \bigcup U_{d_i}$ using the open immersions above.
+It is then a simple matter to prove that $X$ represents the
+functor $F$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-glueing-gives-functor-proj}
+In Situation \ref{situation-relative-proj}.
+The scheme $\pi : \underline{\text{Proj}}_S(\mathcal{A}) \to S$
+constructed in Lemma \ref{lemma-glue-relative-proj}
+and the scheme representing the functor $F$
+are canonically isomorphic as schemes over $S$.
+\end{lemma}
+
+\begin{proof}
+Let $X$ be the scheme representing the functor $F$.
+Note that $X$ is a scheme over $S$ since the functor $F$
+comes equipped with a natural transformation $F \to h_S$.
+Write $Y = \underline{\text{Proj}}_S(\mathcal{A})$.
+We have to show that $X \cong Y$ as $S$-schemes.
+We give two arguments.
+
+\medskip\noindent
+The first argument uses the construction of $X$ as the union
+of the schemes $U_d$ representing $F_d$ in the
+proof of Lemma \ref{lemma-relative-proj}.
+Over each affine open of $S$ we can identify $X$ with the homogeneous spectrum
+of the sections of $\mathcal{A}$ over that open, since this was
+true for the opens $U_d$. Moreover, these identifications
+are compatible with further restrictions to smaller affine opens.
+On the other hand, $Y$ was constructed by glueing these
+homogeneous spectra.
+Hence we can glue these isomorphisms to an isomorphism
+between $X$ and $\underline{\text{Proj}}_S(\mathcal{A})$ as
+desired. Details omitted.
+
+\medskip\noindent
+Here is the second argument.
+Lemma \ref{lemma-glue-relative-proj-twists}
+shows that there exists a morphism of graded algebras
+$$
+\psi : \pi^*\mathcal{A}
+\longrightarrow
+\bigoplus\nolimits_{n \geq 0} \mathcal{O}_Y(n)
+$$
+over $Y$ which on sections over affine opens of $S$ agrees with
+(\ref{equation-global-sections}). Hence for every $y \in Y$
+there exists an open neighbourhood $V \subset Y$ of $y$
+and an integer $d \geq 1$ such that for $d | n$ the sheaf
+$\mathcal{O}_Y(n)|_V$ is invertible and the multiplication maps
+$\mathcal{O}_Y(n)|_V \otimes_{\mathcal{O}_V} \mathcal{O}_Y(m)|_V
+\to \mathcal{O}_Y(n + m)|_V$ are isomorphisms. Thus
+$\psi$ restricted to the sheaf $\pi^*\mathcal{A}^{(d)}|_V$
+gives an element of $F_d(V)$. Since the opens $V$ cover $Y$
+we see ``$\psi$'' gives rise to an element of $F(Y)$.
+Hence a canonical morphism $Y \to X$ over $S$.
+Because this construction is completely canonical to see
+that it is an isomorphism we may work locally on $S$.
+Hence we reduce to the case $S$ affine where the result is clear.
+\end{proof}
+
+\begin{definition}
+\label{definition-relative-proj}
+Let $S$ be a scheme. Let $\mathcal{A}$ be a quasi-coherent sheaf of
+graded $\mathcal{O}_S$-algebras. The
+{\it relative homogeneous spectrum of $\mathcal{A}$ over $S$},
+or the {\it homogeneous spectrum of $\mathcal{A}$ over $S$}, or the
+{\it relative Proj of $\mathcal{A}$ over $S$} is the scheme
+constructed in Lemma \ref{lemma-glue-relative-proj} which represents the
+functor $F$ (\ref{equation-proj}), see
+Lemma \ref{lemma-glueing-gives-functor-proj}.
+We denote it $\pi : \underline{\text{Proj}}_S(\mathcal{A}) \to S$.
+\end{definition}
+
+\noindent
+The relative Proj comes equipped with a quasi-coherent
+sheaf of $\mathbf{Z}$-graded algebras
+$\bigoplus_{n \in \mathbf{Z}}
+\mathcal{O}_{\underline{\text{Proj}}_S(\mathcal{A})}(n)$
+(the twists of the structure sheaf) and
+a ``universal'' homomorphism of graded algebras
+$$
+\psi_{univ} :
+\mathcal{A}
+\longrightarrow
+\pi_*\left(
+\bigoplus\nolimits_{n \geq 0}
+\mathcal{O}_{\underline{\text{Proj}}_S(\mathcal{A})}(n)
+\right)
+$$
+see Lemma \ref{lemma-glue-relative-proj-twists}. We may also think of this
+as a homomorphism
+$$
+\psi_{univ} :
+\pi^*\mathcal{A}
+\longrightarrow
+\bigoplus\nolimits_{n \geq 0}
+\mathcal{O}_{\underline{\text{Proj}}_S(\mathcal{A})}(n)
+$$
+if we like. The following lemma is a formulation of the
+universality of this object.
+
+\begin{lemma}
+\label{lemma-tie-up-psi}
+In Situation \ref{situation-relative-proj}.
+Let $(f : T \to S, d, \mathcal{L}, \psi)$
+be a quadruple. Let
+$r_{d, \mathcal{L}, \psi} : T \to \underline{\text{Proj}}_S(\mathcal{A})$
+be the associated $S$-morphism.
+There exists an isomorphism
+of $\mathbf{Z}$-graded $\mathcal{O}_T$-algebras
+$$
+\theta :
+r_{d, \mathcal{L}, \psi}^*\left(
+\bigoplus\nolimits_{n \in \mathbf{Z}}
+\mathcal{O}_{\underline{\text{Proj}}_S(\mathcal{A})}(nd)
+\right)
+\longrightarrow
+\bigoplus\nolimits_{n \in \mathbf{Z}} \mathcal{L}^{\otimes n}
+$$
+such that the following diagram commutes
+$$
+\xymatrix{
+\mathcal{A}^{(d)} \ar[rr]_-{\psi}
+ \ar[rd]_-{\psi_{univ}} & &
+f_*\left(
+\bigoplus\nolimits_{n \in \mathbf{Z}}
+\mathcal{L}^{\otimes n}
+\right) \\
+ &
+\pi_*\left(
+\bigoplus\nolimits_{n \geq 0}
+\mathcal{O}_{\underline{\text{Proj}}_S(\mathcal{A})}(nd)
+\right) \ar[ru]_\theta
+}
+$$
+The commutativity of this diagram uniquely determines $\theta$.
+\end{lemma}
+
+\begin{proof}
+Note that the quadruple $(f : T \to S, d, \mathcal{L}, \psi)$
+defines an element of $F_d(T)$. Let
+$U_d \subset \underline{\text{Proj}}_S(\mathcal{A})$
+be the locus
+where the sheaf $\mathcal{O}_{\underline{\text{Proj}}_S(\mathcal{A})}(d)$
+is invertible and generated by the image of
+$\psi_{univ} : \pi^*\mathcal{A}_d \to
+\mathcal{O}_{\underline{\text{Proj}}_S(\mathcal{A})}(d)$.
+Recall that $U_d$ represents the functor $F_d$, see the proof
+of Lemma \ref{lemma-relative-proj}. Hence the result will follow
+if we can show the quadruple
+$(U_d \to S, d, \mathcal{O}_{U_d}(d), \psi_{univ}|_{\mathcal{A}^{(d)}})$
+is the universal family, i.e., the representing object in $F_d(U_d)$.
+We may do this after restricting to an affine open of $S$ because
+(a) the formation of the functors $F_d$ commutes with base change
+(see Lemma \ref{lemma-proj-base-change}), and (b) the pair
+$(\bigoplus_{n \in \mathbf{Z}}
+\mathcal{O}_{\underline{\text{Proj}}_S(\mathcal{A})}(n),
+\psi_{univ})$
+is constructed by glueing over affine opens in $S$
+(see Lemma \ref{lemma-glue-relative-proj-twists}).
+Hence we may assume that $S$ is affine. In this case the functor
+of quadruples $F_d$ and the functor of triples $F_d$ agree
+(see proof of Lemma \ref{lemma-relative-proj-affine}) and moreover
+Lemma \ref{lemma-proj-functor-strict}
+shows that $(d, \mathcal{O}_{U_d}(d), \psi^d)$
+is the universal triple over $U_d$.
+Going backwards through the identifications in the proof of
+Lemma \ref{lemma-relative-proj-affine} shows that
+$(U_d \to S, d, \mathcal{O}_{U_d}(d), \psi_{univ}|_{\mathcal{A}^{(d)}})$
+is the universal quadruple as desired.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-relative-proj-separated}
+Let $S$ be a scheme and $\mathcal{A}$ be a quasi-coherent sheaf
+of graded $\mathcal{O}_S$-algebras. The morphism
+$\pi : \underline{\text{Proj}}_S(\mathcal{A}) \to S$
+is separated.
+\end{lemma}
+
+\begin{proof}
+To prove a morphism is separated we may work locally on the base,
+see Schemes, Section \ref{schemes-section-separation-axioms}.
+By construction $\underline{\text{Proj}}_S(\mathcal{A})$ is
+over any affine $U \subset S$ isomorphic to
+$\text{Proj}(A)$ with $A = \mathcal{A}(U)$. By
+Lemma \ref{lemma-proj-separated} we see that $\text{Proj}(A)$ is separated.
+Hence $\text{Proj}(A) \to U$ is separated (see
+Schemes, Lemma \ref{schemes-lemma-compose-after-separated}) as desired.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-relative-proj-base-change}
+Let $S$ be a scheme and $\mathcal{A}$ be a quasi-coherent sheaf
+of graded $\mathcal{O}_S$-algebras. Let $g : S' \to S$ be any morphism
+of schemes. Then there is a canonical isomorphism
+$$
+r :
+\underline{\text{Proj}}_{S'}(g^*\mathcal{A})
+\longrightarrow
+S' \times_S \underline{\text{Proj}}_S(\mathcal{A})
+$$
+as well as a corresponding isomorphism
+$$
+\theta :
+r^*\text{pr}_2^*\left(\bigoplus\nolimits_{d \in \mathbf{Z}}
+\mathcal{O}_{\underline{\text{Proj}}_S(\mathcal{A})}(d)\right)
+\longrightarrow
+\bigoplus\nolimits_{d \in \mathbf{Z}}
+\mathcal{O}_{\underline{\text{Proj}}_{S'}(g^*\mathcal{A})}(d)
+$$
+of $\mathbf{Z}$-graded
+$\mathcal{O}_{\underline{\text{Proj}}_{S'}(g^*\mathcal{A})}$-algebras.
+\end{lemma}
+
+\begin{proof}
+This follows from Lemma \ref{lemma-proj-base-change} and the construction
+of $\underline{\text{Proj}}_S(\mathcal{A})$ in
+Lemma \ref{lemma-relative-proj} as the union
+of the schemes $U_d$ representing the functors $F_d$.
+In terms of the construction of relative Proj via glueing
+this isomorphism is given by the isomorphisms constructed
+in Lemma \ref{lemma-base-change-map-proj} which provides us with
+the isomorphism $\theta$. Some details omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-apply-relative}
+Let $S$ be a scheme.
+Let $\mathcal{A}$ be a quasi-coherent sheaf of graded $\mathcal{O}_S$-modules
+generated as an $\mathcal{A}_0$-algebra by $\mathcal{A}_1$.
+In this case the scheme $X = \underline{\text{Proj}}_S(\mathcal{A})$
+represents the functor $F_1$ which associates to a scheme
+$f : T \to S$ over $S$ the set of pairs $(\mathcal{L}, \psi)$, where
+\begin{enumerate}
+\item $\mathcal{L}$ is an invertible $\mathcal{O}_T$-module, and
+\item $\psi : f^*\mathcal{A} \to \bigoplus_{n \geq 0} \mathcal{L}^{\otimes n}$
+is a graded $\mathcal{O}_T$-algebra homomorphism such that
+$f^*\mathcal{A}_1 \to \mathcal{L}$ is surjective
+\end{enumerate}
+up to strict equivalence as above. Moreover, in this case all the
+quasi-coherent sheaves
+$\mathcal{O}_{\underline{\text{Proj}}(\mathcal{A})}(n)$
+are invertible
+$\mathcal{O}_{\underline{\text{Proj}}(\mathcal{A})}$-modules
+and the multiplication maps induce isomorphisms
+$
+\mathcal{O}_{\underline{\text{Proj}}(\mathcal{A})}(n)
+\otimes_{\mathcal{O}_{\underline{\text{Proj}}(\mathcal{A})}}
+\mathcal{O}_{\underline{\text{Proj}}(\mathcal{A})}(m) =
+\mathcal{O}_{\underline{\text{Proj}}(\mathcal{A})}(n + m)$.
+\end{lemma}
+
+\begin{proof}
+Under the assumptions of the lemma the sheaves
+$\mathcal{O}_{\underline{\text{Proj}}(\mathcal{A})}(n)$
+are invertible and the multiplication maps isomorphisms
+by Lemma \ref{lemma-relative-proj} and
+Lemma \ref{lemma-apply}
+over affine opens of $S$. Thus $X$ actually represents the
+functor $F_1$, see proof of Lemma \ref{lemma-relative-proj}.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+

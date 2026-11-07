@@ -1,0 +1,517 @@
+\section{Relative normalization}
+\label{section-normalization-X-in-Y}
+
+\noindent
+In this section we construct the {\it normalization of one scheme in another}.
+
+\begin{lemma}
+\label{lemma-integral-closure}
+Let $X$ be a scheme. Let $\mathcal{A}$ be a quasi-coherent sheaf
+of $\mathcal{O}_X$-algebras. The subsheaf $\mathcal{A}' \subset \mathcal{A}$
+defined by the rule
+$$
+U \longmapsto \{f \in \mathcal{A}(U) \mid
+f_x \in \mathcal{A}_x \text{ integral over } \mathcal{O}_{X, x}
+\text{ for all }x \in U\}
+$$
+is a quasi-coherent $\mathcal{O}_X$-algebra, the stalk $\mathcal{A}'_x$
+is the integral closure of $\mathcal{O}_{X, x}$ in $\mathcal{A}_x$, and
+for any affine open $U \subset X$ the ring
+$\mathcal{A}'(U) \subset \mathcal{A}(U)$ is
+the integral closure of $\mathcal{O}_X(U)$ in $\mathcal{A}(U)$.
+\end{lemma}
+
+\begin{proof}
+This is a subsheaf by the local nature of the conditions.
+It is an $\mathcal{O}_X$-algebra by
+Algebra, Lemma \ref{algebra-lemma-integral-closure-is-ring}.
+Let $U \subset X$ be an affine open. Say $U = \Spec(R)$
+and say $\mathcal{A}$ is the quasi-coherent sheaf associated to
+the $R$-algebra $A$. Then according to
+Algebra, Lemma \ref{algebra-lemma-integral-closure-stalks}
+the value of $\mathcal{A}'$ over $U$ is given by the integral
+closure $A'$ of $R$ in $A$. This proves the last assertion of
+the lemma. To prove that $\mathcal{A}'$ is quasi-coherent, it
+suffices to show that $\mathcal{A}'(D(f)) = A'_f$. This follows
+from the fact that integral closure and localization commute, see
+Algebra, Lemma \ref{algebra-lemma-integral-closure-localize}.
+The same fact shows that the stalks are as advertised.
+\end{proof}
+
+\begin{definition}
+\label{definition-integral-closure}
+Let $X$ be a scheme. Let $\mathcal{A}$ be a quasi-coherent sheaf
+of $\mathcal{O}_X$-algebras. The {\it integral closure of $\mathcal{O}_X$
+in $\mathcal{A}$} is the quasi-coherent $\mathcal{O}_X$-subalgebra
+$\mathcal{A}' \subset \mathcal{A}$ constructed in
+Lemma \ref{lemma-integral-closure} above.
+\end{definition}
+
+\noindent
+In the setting of the definition above we can consider the morphism
+of relative spectra
+$$
+\xymatrix{
+Y = \underline{\Spec}_X(\mathcal{A}) \ar[rr] \ar[rd] & &
+X' = \underline{\Spec}_X(\mathcal{A}') \ar[ld] \\
+& X &
+}
+$$
+see Lemma \ref{lemma-affine-equivalence-algebras}.
+The scheme $X' \to X$ will be the normalization of $X$ in the scheme $Y$.
+Here is a slightly more general setting. Suppose we have a
+quasi-compact and quasi-separated morphism $f : Y \to X$
+of schemes. In this case the sheaf of
+$\mathcal{O}_X$-algebras $f_*\mathcal{O}_Y$ is quasi-coherent, see
+Schemes, Lemma \ref{schemes-lemma-push-forward-quasi-coherent}.
+Taking the integral closure $\mathcal{O}' \subset f_*\mathcal{O}_Y$
+we obtain a quasi-coherent sheaf of $\mathcal{O}_X$-algebras
+whose relative spectrum is the normalization of $X$ in $Y$. Here is
+the formal definition.
+
+\begin{definition}
+\label{definition-normalization-X-in-Y}
+Let $f : Y \to X$ be a quasi-compact and quasi-separated morphism of schemes.
+Let $\mathcal{O}'$ be the integral closure of $\mathcal{O}_X$ in
+$f_*\mathcal{O}_Y$. The {\it normalization of $X$ in $Y$} is the
+scheme\footnote{The scheme $X'$ need not be normal, for example if
+$Y = X$ and $f = \text{id}_X$, then $X' = X$.}
+$$
+\nu : X' = \underline{\Spec}_X(\mathcal{O}') \to X
+$$
+over $X$. It comes equipped with a natural factorization
+$$
+Y \xrightarrow{f'} X' \xrightarrow{\nu} X
+$$
+of the initial morphism $f$.
+\end{definition}
+
+\noindent
+The factorization is the composition of the canonical morphism
+$Y \to \underline{\Spec}_X(f_*\mathcal{O}_Y)$ (see
+Constructions, Lemma
+\ref{constructions-lemma-canonical-morphism})
+and the morphism of relative spectra coming from the inclusion map
+$\mathcal{O}' \to f_*\mathcal{O}_Y$. We can characterize the
+normalization as follows.
+
+\begin{lemma}
+\label{lemma-characterize-normalization}
+Let $f : Y \to X$ be a quasi-compact and quasi-separated morphism of schemes.
+The factorization $f = \nu \circ f'$, where $\nu : X' \to X$ is the
+normalization of $X$ in $Y$ is characterized by the following
+two properties:
+\begin{enumerate}
+\item the morphism $\nu$ is integral, and
+\item for any factorization $f = \pi \circ g$, with $\pi : Z \to X$
+integral, there exists a commutative diagram
+$$
+\xymatrix{
+Y \ar[d]_{f'} \ar[r]_g & Z \ar[d]^\pi \\
+X' \ar[ru]^h \ar[r]^\nu & X
+}
+$$
+for some unique morphism $h : X' \to Z$.
+\end{enumerate}
+Moreover, the morphism $f' : Y \to X'$ is dominant and in (2) the
+morphism $h : X' \to Z$ is the normalization of $Z$ in $Y$.
+\end{lemma}
+
+\begin{proof}
+Let $\mathcal{O}' \subset f_*\mathcal{O}_Y$ be the integral closure of
+$\mathcal{O}_X$ as in Definition \ref{definition-normalization-X-in-Y}.
+The morphism $\nu$ is integral by construction, which proves (1).
+Assume given a factorization $f = \pi \circ g$ with $\pi : Z \to X$
+integral as in (2). By Definition \ref{definition-integral}
+$\pi$ is affine, and hence $Z$ is the relative
+spectrum of a quasi-coherent sheaf of $\mathcal{O}_X$-algebras $\mathcal{B}$.
+The morphism $g : Y \to Z$ corresponds to a map of $\mathcal{O}_X$-algebras
+$\chi : \mathcal{B} \to f_*\mathcal{O}_Y$. Since $\mathcal{B}(U)$ is
+integral over $\mathcal{O}_X(U)$ for every affine open $U \subset X$
+(by Definition \ref{definition-integral})
+we see from Lemma \ref{lemma-integral-closure}
+that $\chi(\mathcal{B}) \subset \mathcal{O}'$.
+By the functoriality of the relative spectrum
+Lemma \ref{lemma-affine-equivalence-algebras}
+this provides us with a unique morphism
+$h : X' \to Z$. We omit the verification that the diagram commutes.
+
+\medskip\noindent
+It is clear that (1) and (2) characterize the factorization $f = \nu \circ f'$
+since it characterizes it as an initial object in a category.
+
+\medskip\noindent
+From the universal property in (2) we see that $f'$ does not factor through
+a proper closed subscheme of $X'$. Hence the scheme theoretic image of $f'$
+is $X'$. Since $f'$ is quasi-compact (by Schemes, Lemma
+\ref{schemes-lemma-quasi-compact-permanence} and the fact that $\nu$ is
+separated as an affine morphism) we see that $f'(Y)$ is dense in $X'$.
+Hence $f'$ is dominant.
+
+\medskip\noindent
+Observe that $g$ is quasi-compact and quasi-separated by
+Schemes, Lemmas \ref{schemes-lemma-compose-after-separated} and
+\ref{schemes-lemma-quasi-compact-permanence}. Thus the last statement
+of the lemma makes sense.
+The morphism $h$ in (2) is integral by Lemma \ref{lemma-finite-permanence}.
+Given a factorization $g = \pi' \circ g'$ with $\pi' : Z' \to Z$
+integral, we get a factorization $f = (\pi \circ \pi') \circ g'$ and
+we get a morphism $h' : X' \to Z'$. Uniqueness implies that
+$\pi' \circ h' = h$. Hence the characterization (1), (2) applies
+to the morphism $h : X' \to Z$ which gives the final assertion of the lemma.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-functoriality-normalization}
+Let
+$$
+\xymatrix{
+Y_2 \ar[d]_{f_2} \ar[r] & Y_1 \ar[d]^{f_1} \\
+X_2 \ar[r] & X_1
+}
+$$
+be a commutative diagram of morphisms of schemes.
+Assume $f_1$, $f_2$ quasi-compact and quasi-separated.
+Let $f_i = \nu_i \circ f_i'$, $i = 1, 2$
+be the canonical factorizations, where $\nu_i : X_i' \to X_i$ is
+the normalization of $X_i$ in $Y_i$. Then there exists a unique
+arrow $X'_2 \to X'_1$ fitting into a
+commutative diagram
+$$
+\xymatrix{
+Y_2 \ar[d]_{f_2'} \ar[r] & Y_1 \ar[d]^{f_1'} \\
+X_2' \ar[d]_{\nu_2} \ar[r] & X_1' \ar[d]^{\nu_1} \\
+X_2 \ar[r] & X_1
+}
+$$
+\end{lemma}
+
+\begin{proof}
+By Lemmas \ref{lemma-characterize-normalization} (1)
+and \ref{lemma-base-change-finite}
+the base change $X_2 \times_{X_1} X'_1 \to X_2$
+is integral. Note that $f_2$ factors through this morphism.
+Hence we get a unique morphism
+$X'_2 \to X_2 \times_{X_1} X'_1$ from
+Lemma \ref{lemma-characterize-normalization} (2).
+This gives the arrow $X'_2 \to X'_1$ fitting into
+the commutative diagram and uniqueness follows as well.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-normalization-localization}
+Let $f : Y \to X$ be a quasi-compact and quasi-separated morphism of schemes.
+Let $U \subset X$ be an open subscheme and set $V = f^{-1}(U)$.
+Then the normalization of $U$ in $V$ is the inverse image of $U$
+in the normalization of $X$ in $Y$.
+\end{lemma}
+
+\begin{proof}
+Clear from the construction.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-normalization-is-normalization}
+Let $f : Y \to X$ be a quasi-compact and quasi-separated morphism of schemes.
+Let $X'$ be the normalization of $X$ in $Y$. Then the normalization of
+$X'$ in $Y$ is $X'$.
+\end{lemma}
+
+\begin{proof}
+If $Y \to X'' \to X'$ is the normalization of $X'$ in $Y$, then
+we can apply Lemma \ref{lemma-characterize-normalization}
+to the composition $X'' \to X$ to get a canonical morphism
+$h : X' \to X''$ over $X$. We omit the verification that the
+morphisms $h$ and $X'' \to X'$ are mutually inverse (using uniqueness
+of the factorization in the lemma).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-normalization-in-reduced}
+Let $f : Y \to X$ be a quasi-compact and quasi-separated morphism of schemes.
+Let $X' \to X$ be the normalization of $X$ in $Y$. If $Y$ is reduced, so
+is $X'$.
+\end{lemma}
+
+\begin{proof}
+This follows from the fact that a subring of a reduced ring is reduced.
+Some details omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-normalization-generic}
+Let $f : Y \to X$ be a quasi-compact and quasi-separated morphism of schemes.
+Let $X' \to X$ be the normalization of $X$ in $Y$. Every generic point of
+an irreducible component of $X'$ is the image of a generic point of
+an irreducible component of $Y$.
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-normalization-localization} we may assume $X = \Spec(A)$
+is affine. Choose a finite affine open covering $Y = \bigcup \Spec(B_i)$.
+Then $X' = \Spec(A')$ and the morphisms $\Spec(B_i) \to Y \to X'$
+jointly define an injective $A$-algebra map $A' \to \prod B_i$.
+Thus the lemma follows from
+Algebra, Lemma \ref{algebra-lemma-injective-minimal-primes-in-image}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-normalization-in-disjoint-union}
+Let $f : Y \to X$ be a quasi-compact and quasi-separated morphism of schemes.
+Suppose that $Y = Y_1 \amalg Y_2$ is a disjoint union of two schemes.
+Write $f_i = f|_{Y_i}$. Let $X_i'$ be the normalization of $X$ in $Y_i$.
+Then $X_1' \amalg X_2'$ is the normalization of $X$ in $Y$.
+\end{lemma}
+
+\begin{proof}
+In terms of integral closures this corresponds to the following fact:
+Let $A \to B$ be a ring map. Suppose that $B = B_1 \times B_2$.
+Let $A_i'$ be the integral closure of $A$ in $B_i$. Then
+$A_1' \times A_2'$ is the integral closure of $A$ in $B$.
+The reason this works is that the elements $(1, 0)$ and $(0, 1)$ of $B$
+are idempotents and hence integral over $A$. Thus the integral closure
+$A'$ of $A$ in $B$ is a product and it is not hard to see that the factors
+are the integral closures $A'_i$ as described above (some details
+omitted).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-normalization-in-universally-closed}
+Let $f : X \to S$ be a quasi-compact, quasi-separated and
+universally closed morphisms of schemes.
+Then $f_*\mathcal{O}_X$ is integral over $\mathcal{O}_S$. In other
+words, the normalization of $S$ in $X$ is equal to the factorization
+$$
+X \longrightarrow \underline{\Spec}_S(f_*\mathcal{O}_X)
+\longrightarrow S
+$$
+of Constructions, Lemma \ref{constructions-lemma-canonical-morphism}.
+\end{lemma}
+
+\begin{proof}
+The question is local on $S$, hence we may assume $S = \Spec(R)$
+is affine. Let $h \in \Gamma(X, \mathcal{O}_X)$. We have to show that
+$h$ satisfies a monic equation over $R$. Think of $h$ as a morphism
+as in the following commutative diagram
+$$
+\xymatrix{
+X \ar[rr]_h \ar[rd]_f & & \mathbf{A}^1_S \ar[ld] \\
+& S &
+}
+$$
+Let $Z \subset \mathbf{A}^1_S$ be the scheme theoretic image of $h$,
+see Definition \ref{definition-scheme-theoretic-image}.
+The morphism $h$ is quasi-compact as $f$ is quasi-compact and
+$\mathbf{A}^1_S \to S$ is separated, see
+Schemes, Lemma \ref{schemes-lemma-quasi-compact-permanence}.
+By Lemma \ref{lemma-quasi-compact-scheme-theoretic-image} the
+morphism $X \to Z$ is dominant. By
+Lemma \ref{lemma-image-proper-scheme-closed} the morphism
+$X \to Z$ is closed. Hence $h(X) = Z$ (set theoretically).
+Thus we can use
+Lemma \ref{lemma-image-proper-is-proper}
+to conclude that $Z \to S$ is universally closed (and even proper).
+Since $Z \subset \mathbf{A}^1_S$, we see that $Z \to S$ is affine
+and proper, hence integral by Lemma \ref{lemma-integral-universally-closed}.
+Writing $\mathbf{A}^1_S = \Spec(R[T])$ we conclude that
+the ideal $I \subset R[T]$ of $Z$ contains a monic polynomial
+$P(T) \in R[T]$. Hence $P(h) = 0$ and we win.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-normalization-in-integral}
+Let $f : Y \to X$ be an integral morphism.
+Then the normalization of $X$ in $Y$ is equal to $Y$.
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-integral-universally-closed} this is a special case of
+Lemma \ref{lemma-normalization-in-universally-closed}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-normal-normalization}
+Let $f : Y \to X$ be a quasi-compact and quasi-separated morphism
+of schemes. Let $X'$ be the normalization of $X$ in $Y$. Assume
+\begin{enumerate}
+\item $Y$ is a normal scheme,
+\item quasi-compact opens of $Y$ have finitely many irreducible components.
+\end{enumerate}
+Then $X'$ is a disjoint union of integral normal schemes. Moreover,
+the morphism $Y \to X'$ is dominant and induces a bijection of
+irreducible components.
+\end{lemma}
+
+\begin{proof}
+Let $U \subset X$ be an affine open. Consider the
+inverse image $U'$ of $U$ in $X'$.
+Set $V = f^{-1}(U)$. By Lemma \ref{lemma-normalization-localization}
+we $V \to U' \to U$ is the normalization of $U$ in $V$. Say
+$U = \Spec(A)$. Then $V$ is quasi-compact, and hence has a finite number of
+irreducible components by assumption. Hence
+$V = \coprod_{i = 1, \ldots n} V_i$ is a finite disjoint union of
+normal integral schemes by
+Properties, Lemma \ref{properties-lemma-normal-locally-finite-nr-irreducibles}.
+By Lemma \ref{lemma-normalization-in-disjoint-union}
+we see that $U' = \coprod_{i = 1, \ldots, n} U_i'$,
+where $U'_i$ is the normalization of $U$ in $V_i$.
+By Properties, Lemma \ref{properties-lemma-normal-integral-sections}
+we see that $B_i = \Gamma(V_i, \mathcal{O}_{V_i})$ is a normal domain.
+Note that $U_i' = \Spec(A_i')$, where $A_i' \subset B_i$
+is the integral closure of $A$ in $B_i$, see
+Lemma \ref{lemma-integral-closure}. By
+Algebra, Lemma \ref{algebra-lemma-integral-closure-in-normal}
+we see that $A_i' \subset B_i$ is a normal domain.
+Hence $U' = \coprod U_i'$ is a finite union of normal integral schemes
+and hence is normal.
+
+\medskip\noindent
+As $X'$ has an open covering by the schemes $U'$ we conclude from
+Properties, Lemma \ref{properties-lemma-locally-normal} that $X'$ is normal.
+On the other hand, each $U'$ is a finite disjoint union of irreducible
+schemes, hence every quasi-compact open of $X'$ has finitely many irreducible
+components (by a topological argument which we omit). Thus $X'$
+is a disjoint union of normal integral schemes by
+Properties, Lemma \ref{properties-lemma-normal-locally-finite-nr-irreducibles}.
+It is clear from the description of $X'$ above that $Y \to X'$
+is dominant and induces a bijection on irreducible components
+$V \to U'$ for every affine open $U \subset X$. The bijection of
+irreducible components for the morphism $Y \to X'$
+follows from this by a topological argument (omitted).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-nagata-normalization-finite-general}
+Let $f : X \to S$ be a morphism. Assume that
+\begin{enumerate}
+\item $S$ is a Nagata scheme,
+\item $f$ is quasi-compact and quasi-separated,
+\item quasi-compact opens of $X$ have finitely many irreducible components,
+\item if $x \in X$ is a generic point of an irreducible component,
+then the field extension $\kappa(x)/\kappa(f(x))$ is finitely
+generated, and
+\item $X$ is reduced.
+\end{enumerate}
+Then the normalization $\nu : S' \to S$ of $S$ in $X$ is finite.
+\end{lemma}
+
+\begin{proof}
+There is an immediate reduction to the case $S = \Spec(R)$
+where $R$ is a Nagata ring by assumption (1). We have to show that
+the integral closure $A$ of $R$ in $\Gamma(X, \mathcal{O}_X)$ is
+finite over $R$. Since $f$ is quasi-compact by assumption (2) we can write
+$X = \bigcup_{i = 1, \ldots, n} U_i$ with each $U_i$ affine.
+Say $U_i = \Spec(B_i)$. Each $B_i$ is reduced by assumption (5)
+and has finitely many minimal primes
+$\mathfrak q_{i1}, \ldots, \mathfrak q_{im_i}$
+by assumption (3) and
+Algebra, Lemma \ref{algebra-lemma-irreducible}.
+We have
+$$
+\Gamma(X, \mathcal{O}_X) \subset B_1 \times \ldots \times B_n
+\subset
+\prod\nolimits_{i = 1, \ldots, n}
+\prod\nolimits_{j = 1, \ldots, m_i} (B_i)_{\mathfrak q_{ij}}
+$$
+the second inclusion by
+Algebra, Lemma \ref{algebra-lemma-reduced-ring-sub-product-fields}.
+We have $\kappa(\mathfrak q_{ij}) = (B_i)_{\mathfrak q_{ij}}$ by
+Algebra, Lemma \ref{algebra-lemma-minimal-prime-reduced-ring}.
+Hence the integral closure $A$ of $R$ in $\Gamma(X, \mathcal{O}_X)$
+is contained in the product of the integral closures $A_{ij}$ of
+$R$ in $\kappa(\mathfrak q_{ij})$. Since $R$ is Noetherian
+it suffices to show that $A_{ij}$ is a finite $R$-module for each $i, j$.
+Let $\mathfrak p_{ij} \subset R$ be the image of $\mathfrak q_{ij}$.
+As $\kappa(\mathfrak q_{ij})/\kappa(\mathfrak p_{ij})$
+is a finitely generated field extension by assumption (4),
+we see that $R \to \kappa(\mathfrak q_{ij})$ is essentially of finite type.
+Thus $R \to A_{ij}$ is finite by Algebra, Lemma
+\ref{algebra-lemma-nagata-in-reduced-finite-type-finite-integral-closure}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-nagata-normalization-finite}
+Let $f : X \to S$ be a morphism. Assume that
+\begin{enumerate}
+\item $S$ is a Nagata scheme,
+\item $f$ is of finite type,
+\item $X$ is reduced.
+\end{enumerate}
+Then the normalization $\nu : S' \to S$ of $S$ in $X$ is finite.
+\end{lemma}
+
+\begin{proof}
+This is a special case of
+Lemma \ref{lemma-nagata-normalization-finite-general}.
+Namely, (2) holds as the finite type morphism $f$ is quasi-compact
+by definition and quasi-separated by
+Lemma \ref{lemma-finite-type-Noetherian-quasi-separated}.
+Condition (3) holds because $X$ is locally Noetherian by
+Lemma \ref{lemma-finite-type-noetherian}. Finally, condition (4)
+holds because a finite type morphism induces finitely generated
+residue field extensions.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-relative-normalization-normal-codim-1}
+Let $f : Y \to X$ be a finite type morphism of schemes with $Y$ reduced
+and $X$ Nagata. Let $X'$ be the normalization of $X$ in $Y$.
+Let $x' \in X'$ be a point such that
+\begin{enumerate}
+\item $\dim(\mathcal{O}_{X', x'}) = 1$, and
+\item the fibre of $Y \to X'$ over $x'$ is empty.
+\end{enumerate}
+Then $\mathcal{O}_{X', x'}$ is a discrete valuation ring.
+\end{lemma}
+
+\begin{proof}
+We can replace $X$ by an affine neighbourhood of the image of $x'$.
+Hence we may assume $X = \Spec(A)$ with $A$ Nagata.
+By Lemma \ref{lemma-nagata-normalization-finite}
+the morphism $X' \to X$ is finite. Hence we can write
+$X' = \Spec(A')$ for a finite $A$-algebra $A'$.
+By Lemma \ref{lemma-normalization-is-normalization}
+after replacing $X$ by $X'$
+we reduce to the case described in the next paragraph.
+
+\medskip\noindent
+The case $X = X' = \Spec(A)$ with $A$ Noetherian.
+Let $\mathfrak p \subset A$ be the prime ideal
+corresponding to our point $x'$. Choose $g \in \mathfrak p$
+not contained in any minimal prime of $A$ (use prime avoidance
+and the fact that $A$ has finitely many minimal primes, see
+Algebra, Lemmas \ref{algebra-lemma-silly} and
+\ref{algebra-lemma-Noetherian-irreducible-components}).
+Set $Z = f^{-1}V(g) \subset Y$; it is a closed subscheme of $Y$.
+Then $f(Z)$ does not contain any generic point by choice of $g$
+and does not contain $x'$ because $x'$ is not in the image of $f$.
+The closure of $f(Z)$ is the set of specializations of points
+of $f(Z)$ by Lemma \ref{lemma-reach-points-scheme-theoretic-image}.
+Thus the closure of $f(Z)$ does not contain $x'$ because
+the condition $\dim(\mathcal{O}_{X', x'}) = 1$ implies only
+the generic points of $X = X'$ specialize to $x'$.
+In other words, after replacing $X$ by an affine open
+neighbourhood of $x'$ we may assume that $f^{-1}V(g) = \emptyset$.
+Thus $g$ maps to an invertible global function on $Y$ and
+we obtain a factorization
+$$
+A \to A_g \to \Gamma(Y, \mathcal{O}_Y)
+$$
+Since $X = X'$ this implies that $A$ is equal to the integral
+closure of $A$ in $A_g$. By
+Algebra, Lemma \ref{algebra-lemma-integral-closure-localize}
+we conclude that $A_\mathfrak p$ is the integral closure
+of $A_\mathfrak p$ in $A_\mathfrak p[1/g]$.
+By our choice of $g$, since $\dim(A_\mathfrak p) = 1$
+and since $A$ is reduced we see that $A_\mathfrak p[1/g]$
+is a finite product of fields (the product of the residue fields
+of the minimal primes contained in $\mathfrak p$). Hence $A_\mathfrak p$ is
+normal (Algebra, Lemma \ref{algebra-lemma-characterize-reduced-ring-normal})
+and the proof is complete. Some details omitted.
+\end{proof}
+
+
+
+
+
+

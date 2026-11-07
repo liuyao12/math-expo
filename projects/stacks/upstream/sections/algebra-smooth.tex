@@ -1,0 +1,740 @@
+\section{Smooth ring maps}
+\label{section-smooth}
+
+\noindent
+Let us motivate the definition of a smooth ring map by an example.
+Suppose $R$ is a ring and $S = R[x, y]/(f)$ for some nonzero $f \in R[x, y]$.
+In this case there is an exact sequence
+$$
+S \to
+S\text{d}x \oplus S\text{d}y \to
+\Omega_{S/R} \to 0
+$$
+where the first arrow maps $1$ to
+$\frac{\partial f}{\partial x} \text{d}x +
+\frac{\partial f}{\partial y} \text{d}y$ see
+Section \ref{section-netherlander}.
+We conclude that $\Omega_{S/R}$ is locally free of rank $1$ if
+the partial derivatives of $f$ generate the unit ideal in $S$.
+In this case $S$ is smooth of relative dimension $1$ over $R$.
+But it can happen that $\Omega_{S/R}$ is locally free of rank $2$
+namely if both partial derivatives of $f$ are zero. For example if
+for a prime $p$ we have $p = 0$ in $R$ and $f = x^p + y^p$ then this
+happens. Here $R \to S$ is a relative global complete intersection
+of relative dimension $1$ which is not smooth.
+Hence, in order to check that a ring map
+is smooth it is not sufficient to check whether the module of differentials
+is free. The correct condition is the following.
+
+\begin{definition}
+\label{definition-smooth}
+A ring map $R \to S$ is {\it smooth} if it is of finite presentation
+and the naive cotangent complex $\NL_{S/R}$ is quasi-isomorphic to a
+finite projective $S$-module placed in degree $0$: this means
+that $H_1(\NL_{S/R}) = 0$ and that $\Omega_{S/R}$ is a finite projective
+$S$-module.
+\end{definition}
+
+\noindent
+Let $R \to S$ be a ring map. By Lemma \ref{lemma-NL-homotopy} for any
+presentation $\alpha : P \to S$ we have $H_1(\NL(\alpha)) = H_1(\NL_{S/R})$
+and $H_0(\NL(\alpha)) = \Omega_{S/R}$. Thus, if $R \to S$ is smooth,
+then for any surjection $\alpha : R[x_1, \ldots, x_n] \to S$ with kernel
+$I$ the map
+$$
+I/I^2
+\longrightarrow
+\Omega_{R[x_1, \ldots, x_n]/R} \otimes_{R[x_1, \ldots, x_n]} S
+$$
+is an injective map whose cokernel is a finite projective $S$-module.
+Thus the displayed arrow is a split injection. In other words
+$\bigoplus_{i = 1}^n S \text{d}x_i \cong I/I^2 \oplus \Omega_{S/R}$
+as $S$-modules and $I/I^2$ is a finite projective
+$S$-module as well. Conversely, if $R \to S$ is of finite presentation
+and we have a surjection $\alpha : R[x_1, \ldots, x_n] \to S$ with kernel
+$I$ such that the displayed arrow is a split injection, then $R \to S$
+is smooth.
+
+\begin{lemma}
+\label{lemma-localize-smooth}
+Let $R \to S$ be a smooth ring map.
+Any localization $S_g$ is smooth over $R$.
+If $f \in R$ maps to an invertible element of $S$,
+then $R_f \to S$ is smooth.
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-localize-NL} the naive cotangent
+complex for $S_g$ over $R$ is the base change of the naive cotangent
+complex of $S$ over $R$. The assumption is that the naive cotangent
+complex of $S/R$ is $\Omega_{S/R}$ and that this is a finite projective
+$S$-module. Hence so is its base change. Thus $S_g$ is smooth over $R$.
+
+\medskip\noindent
+The second assertion follows in the same way from
+Lemma \ref{lemma-NL-localize-bottom}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-base-change-smooth}
+\begin{slogan}
+Smoothness is preserved under base change
+\end{slogan}
+Let $R \to S$ be a smooth ring map.
+Let $R \to R'$ be any ring map.
+Then the base change $R' \to S' = R' \otimes_R S$ is smooth.
+\end{lemma}
+
+\begin{proof}
+Let $\alpha : R[x_1, \ldots, x_n] \to S$ be a presentation
+with kernel $I$. Let $\alpha' : R'[x_1, \ldots, x_n] \to R' \otimes_R S$
+be the induced presentation. Let $I' = \Ker(\alpha')$.
+Since $0 \to I \to R[x_1, \ldots, x_n] \to S \to 0$
+is exact, the sequence
+$R' \otimes_R I \to R'[x_1, \ldots, x_n] \to R' \otimes_R S \to 0$
+is exact. Thus $R' \otimes_R I \to I'$ is surjective.
+By Definition \ref{definition-smooth} there is a short exact sequence
+$$
+0 \to I/I^2 \to
+\Omega_{R[x_1, \ldots, x_n]/R} \otimes_{R[x_1, \ldots, x_n]} S \to
+\Omega_{S/R} \to
+0
+$$
+and the $S$-module $\Omega_{S/R}$ is finite projective.
+In particular $I/I^2$ is a direct summand of
+$\Omega_{R[x_1, \ldots, x_n]/R} \otimes_{R[x_1, \ldots, x_n]} S$.
+Consider the commutative diagram
+$$
+\xymatrix{
+R' \otimes_R (I/I^2) \ar[r] \ar[d] &
+R' \otimes_R (\Omega_{R[x_1, \ldots, x_n]/R} \otimes_{R[x_1, \ldots, x_n]} S)
+\ar[d] \\
+I'/(I')^2 \ar[r] &
+\Omega_{R'[x_1, \ldots, x_n]/R'}
+\otimes_{R'[x_1, \ldots, x_n]} (R' \otimes_R S)
+}
+$$
+Since the right vertical map is an isomorphism we see that
+the left vertical map is injective and surjective by what was
+said above. Thus we conclude that $\NL(\alpha')$ is quasi-isomorphic
+to $\Omega_{S'/R'} \cong S' \otimes_S \Omega_{S/R}$ placed in degree $0$.
+This module is finite projective since it is the base change
+of a finite projective module.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-smooth-over-field}
+Let $k$ be a field.
+Let $S$ be a smooth $k$-algebra.
+Then $S$ is a local complete intersection.
+\end{lemma}
+
+\begin{proof}
+By Lemmas \ref{lemma-base-change-smooth} and
+\ref{lemma-lci-field-change} it suffices to prove this when
+$k$ is algebraically closed. Choose a presentation
+$\alpha : k[x_1, \ldots, x_n] \to S$ with kernel $I$. Let $\mathfrak m$
+be a maximal ideal of $S$, and let $\mathfrak m' \supset I$ be the
+corresponding maximal ideal of $k[x_1, \ldots, x_n]$.
+We will show that condition (5) of
+Lemma \ref{lemma-lci}
+holds (with $\mathfrak m$ instead of $\mathfrak q$).
+We may write $\mathfrak m' = (x_1 - a_1, \ldots, x_n - a_n)$
+for some $a_i \in k$, because $k$ is algebraically closed, see
+Theorem \ref{theorem-nullstellensatz}.
+By our assumption that $k \to S$ is smooth the $S$-module map
+$\text{d} : I/I^2 \to \bigoplus_{i = 1}^n S \text{d}x_i$
+is a split injection. Hence the corresponding map
+$I/\mathfrak m' I \to \bigoplus \kappa(\mathfrak m') \text{d}x_i$
+is injective. Say $\dim_{\kappa(\mathfrak m')}(I/\mathfrak m' I) = c$
+and pick $f_1, \ldots, f_c \in I$ which map to a $\kappa(\mathfrak m')$-basis
+of $I/\mathfrak m' I$. By
+Nakayama's Lemma \ref{lemma-NAK}
+we see that $f_1, \ldots, f_c$ generate $I_{\mathfrak m'}$ over
+$k[x_1, \ldots, x_n]_{\mathfrak m'}$. Consider the commutative diagram
+$$
+\xymatrix{
+I \ar[r] \ar[d] & I/I^2 \ar[rr] \ar[d] & &
+I/\mathfrak m'I \ar[d] \\
+\Omega_{k[x_1, \ldots, x_n]/k} \ar[r] &
+\bigoplus S\text{d}x_i \ar[rr]^{\text{d}x_i \mapsto x_i - a_i} & &
+\mathfrak m'/(\mathfrak m')^2
+}
+$$
+(proof commutativity omitted). The middle vertical map is the one defining
+the naive cotangent complex of $\alpha$. Note that the right lower
+horizontal arrow induces an isomorphism
+$\bigoplus \kappa(\mathfrak m') \text{d}x_i \to \mathfrak m'/(\mathfrak m')^2$.
+Hence our generators $f_1, \ldots, f_c$ of $I_{\mathfrak m'}$ map to a
+collection of elements in $k[x_1, \ldots, x_n]_{\mathfrak m'}$ whose
+classes in $\mathfrak m'/(\mathfrak m')^2$ are linearly independent
+over $\kappa(\mathfrak m')$. Therefore they form a regular sequence
+in the ring $k[x_1, \ldots, x_n]_{\mathfrak m'}$ by
+Lemma \ref{lemma-regular-ring-CM}.
+This verifies condition (5) of
+Lemma \ref{lemma-lci}
+hence $S_g$ is a global complete intersection over $k$ for some
+$g \in S$, $g \not \in \mathfrak m$. As this works for any maximal
+ideal of $S$ we conclude that $S$ is a local complete intersection over $k$.
+\end{proof}
+
+\begin{definition}
+\label{definition-standard-smooth}
+Let $R$ be a ring. Given integers $n \geq c \geq 0$ and
+$f_1, \ldots, f_c \in R[x_1, \ldots, x_n]$ we say
+$$
+R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)
+$$
+is a {\it standard smooth algebra over $R$} if the polynomial
+$$
+g =
+\det
+\left(
+\begin{matrix}
+\partial f_1/\partial x_1 &
+\partial f_2/\partial x_1 &
+\ldots &
+\partial f_c/\partial x_1 \\
+\partial f_1/\partial x_2 &
+\partial f_2/\partial x_2 &
+\ldots &
+\partial f_c/\partial x_2 \\
+\ldots & \ldots & \ldots & \ldots \\
+\partial f_1/\partial x_c &
+\partial f_2/\partial x_c &
+\ldots &
+\partial f_c/\partial x_c
+\end{matrix}
+\right)
+$$
+maps to an invertible element in $R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$.
+We say an $R$-algebra $S$ is {\it standard smooth} or that
+the ring map $R \to S$ is {\it standard smooth} if there exist
+$n \geq c \geq 0$ and $f_1, \ldots, f_c \in R[x_1, \ldots, x_n]$
+such that $R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$ is a standard smooth
+algebra over $R$ and $S$ is isomorphic to
+$R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$ as an $R$-algebra.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-standard-smooth}
+Let
+$S = R[x_1, \ldots, x_n]/(f_1, \ldots, f_c) = R[x_1, \ldots, x_n]/I$
+be a standard smooth algebra. Then
+\begin{enumerate}
+\item the ring map $R \to S$ is smooth,
+\item the $S$-module $\Omega_{S/R}$ is free on
+$\text{d}x_{c + 1}, \ldots, \text{d}x_n$,
+\item the $S$-module $I/I^2$ is free on the classes of $f_1, \ldots, f_c$,
+\item for any $g \in S$ the ring map $R \to S_g$ is standard smooth,
+\item for any ring map $R \to R'$ the base change
+$R' \to R'\otimes_R S$ is standard smooth,
+\item if $f \in R$ maps to an invertible element in $S$, then
+$R_f \to S$ is standard smooth, and
+\item the ring $S$ is a relative global complete intersection over $R$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Consider the naive cotangent complex of the given presentation
+$$
+(f_1, \ldots, f_c)/(f_1, \ldots, f_c)^2
+\longrightarrow
+\bigoplus\nolimits_{i = 1}^n S \text{d}x_i
+$$
+Let us compose this map with the projection onto the first $c$ direct summands
+of the direct sum. According to the definition of a standard smooth
+algebra the classes $f_i \bmod (f_1, \ldots, f_c)^2$ map to a basis of
+$\bigoplus_{i = 1}^c S\text{d}x_i$. We conclude that
+$(f_1, \ldots, f_c)/(f_1, \ldots, f_c)^2$ is free of rank $c$ with
+a basis given by the elements $f_i \bmod (f_1, \ldots, f_c)^2$, and
+that the homology in degree $0$, i.e., $\Omega_{S/R}$,
+of the naive cotangent complex is a free $S$-module with basis the images of
+$\text{d}x_{c + j}$, $j = 1, \ldots, n - c$.
+In particular, this proves $R \to S$ is smooth.
+
+\medskip\noindent
+The proofs of (4) and (6) are omitted. But see the example below and
+the proof of
+Lemma \ref{lemma-base-change-relative-global-complete-intersection}.
+
+\medskip\noindent
+Let $\varphi : R \to R'$ be any ring map.
+Denote $S' = R'[x_1, \ldots, x_n]/(f_1^\varphi, \ldots, f_c^\varphi)$
+where $f^\varphi$ is the polynomial obtained from $f \in R[x_1, \ldots, x_n]$
+by applying $\varphi$ to all the coefficients. Then $S' \cong R' \otimes_R S$.
+Moreover, the determinant of Definition \ref{definition-standard-smooth}
+for $S'/R'$ is equal to $g^\varphi$. Its image in $S'$ is therefore
+the image of $g$ via $R[x_1, \ldots, x_n] \to S \to S'$
+and hence invertible. This proves (5).
+
+\medskip\noindent
+To prove (7) it suffices to show that
+$S \otimes_R \kappa(\mathfrak p)$ has dimension $n - c$
+for every prime $\mathfrak p \subset R$.
+By (5) it suffices to prove that any standard smooth
+algebra $k[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$
+over a field $k$ has dimension $n - c$. We already
+know that $k[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$ is a local
+complete intersection by Lemma \ref{lemma-smooth-over-field}.
+Hence, since $I/I^2$ is free of rank $c$ we see that
+$k[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$ has dimension
+$n - c$, by Lemma \ref{lemma-lci} for example.
+\end{proof}
+
+\begin{example}
+\label{example-make-standard-smooth}
+Let $R$ be a ring.
+Let $f_1, \ldots, f_c \in R[x_1, \ldots, x_n]$.
+Let
+$$
+h =
+\det
+\left(
+\begin{matrix}
+\partial f_1/\partial x_1 &
+\partial f_2/\partial x_1 &
+\ldots &
+\partial f_c/\partial x_1 \\
+\partial f_1/\partial x_2 &
+\partial f_2/\partial x_2 &
+\ldots &
+\partial f_c/\partial x_2 \\
+\ldots & \ldots & \ldots & \ldots \\
+\partial f_1/\partial x_c &
+\partial f_2/\partial x_c &
+\ldots &
+\partial f_c/\partial x_c
+\end{matrix}
+\right).
+$$
+Set $S = R[x_1, \ldots, x_{n + 1}]/(f_1, \ldots, f_c, x_{n + 1}h - 1)$.
+This is an example of a standard smooth algebra, except that the
+presentation is wrong and the variables should be in the
+following order:
+$x_1, \ldots, x_c, x_{n + 1}, x_{c + 1}, \ldots, x_n$.
+\end{example}
+
+\begin{lemma}
+\label{lemma-compose-standard-smooth}
+A composition of standard smooth ring maps is standard smooth.
+\end{lemma}
+
+\begin{proof}
+Suppose that $R \to S$ and $S \to S'$ are standard smooth. We choose
+presentations
+$S =  R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$
+and
+$S' = S[y_1, \ldots, y_m]/(g_1, \ldots, g_d)$.
+Choose elements $g_j' \in R[x_1, \ldots, x_n, y_1, \ldots, y_m]$ mapping
+to the $g_j$. In this way we see
+$S' = R[x_1, \ldots, x_n, y_1, \ldots, y_m]/
+(f_1, \ldots, f_c, g'_1, \ldots, g'_d)$.
+To show that $S'$ is standard smooth it suffices to verify
+that the determinant
+$$
+\det
+\left(
+\begin{matrix}
+\partial f_1/\partial x_1 &
+\ldots &
+\partial f_c/\partial x_1 &
+\partial g_1/\partial x_1 &
+\ldots &
+\partial g_d/\partial x_1 \\
+\ldots &
+\ldots &
+\ldots &
+\ldots &
+\ldots &
+\ldots  \\
+\partial f_1/\partial x_c &
+\ldots &
+\partial f_c/\partial x_c &
+\partial g_1/\partial x_c &
+\ldots &
+\partial g_d/\partial x_c \\
+0 &
+\ldots &
+0 &
+\partial g_1/\partial y_1 &
+\ldots &
+\partial g_d/\partial y_1 \\
+\ldots &
+\ldots &
+\ldots &
+\ldots &
+\ldots &
+\ldots  \\
+0 &
+\ldots &
+0 &
+\partial g_1/\partial y_d &
+\ldots &
+\partial g_d/\partial y_d
+\end{matrix}
+\right)
+$$
+is invertible in $S'$. This is clear since it is the product
+of the two determinants which were assumed to be invertible
+by hypothesis.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-smooth-syntomic}
+Let $R \to S$ be a smooth ring map.
+There exists an open covering of $\Spec(S)$ by
+standard opens $D(g)$ such that each $S_g$ is standard smooth
+over $R$. In particular $R \to S$ is syntomic.
+\end{lemma}
+
+\begin{proof}
+Choose a presentation $\alpha : R[x_1, \ldots, x_n] \to S$
+with kernel $I = (f_1, \ldots, f_m)$. For every subset
+$E \subset \{1, \ldots, m\}$ consider the open
+subset $U_E$ where the classes $f_e, e\in E$ freely generate
+the finite projective $S$-module $I/I^2$, see Lemma \ref{lemma-cokernel-flat}.
+We may cover $\Spec(S)$ by standard opens $D(g)$ each
+completely contained in one of the opens $U_E$. For such a $g$
+we look at the presentation
+$$
+\beta : R[x_1, \ldots, x_n, x_{n + 1}] \longrightarrow S_g
+$$
+mapping $x_{n + 1}$ to $1/g$. Setting $J = \Ker(\beta)$ we
+use Lemma \ref{lemma-principal-localization-NL} to see that
+$J/J^2 \cong (I/I^2)_g \oplus S_g$ is free.
+We may and do replace $S$ by $S_g$. Then using
+Lemma \ref{lemma-huber} we may assume we have a presentation
+$\alpha : R[x_1, \ldots, x_n] \to S$ with kernel $I = (f_1, \ldots, f_c)$
+such that $I/I^2$ is free on the classes of $f_1, \ldots, f_c$.
+
+\medskip\noindent
+Using the presentation $\alpha$ obtained at the end of the previous
+paragraph, we more or less repeat this argument with
+the basis elements $\text{d}x_1, \ldots, \text{d}x_n$
+of $\Omega_{R[x_1, \ldots, x_n]/R}$.
+Namely, for any subset $E \subset \{1, \ldots, n\}$ of cardinality $c$
+we may consider the open subset $U_E$ of $\Spec(S)$ where
+the differential of $\NL(\alpha)$ composed with the projection
+$$
+S^{\oplus c} \cong I/I^2
+\longrightarrow
+\Omega_{R[x_1, \ldots, x_n]/R} \otimes_{R[x_1, \ldots, x_n]} S
+\longrightarrow
+\bigoplus\nolimits_{i \in E} S\text{d}x_i
+$$
+is an isomorphism. Again we may find a covering of $\Spec(S)$
+by (finitely many) standard opens $D(g)$ such that each $D(g)$
+is completely contained in one of the opens $U_E$.
+By renumbering, we may assume $E = \{1, \ldots, c\}$.
+For a $g$ with $D(g) \subset U_E$ we look at the presentation
+$$
+\beta : R[x_1, \ldots, x_n, x_{n + 1}] \to S_g
+$$
+mapping $x_{n + 1}$ to $1/g$. Setting $J = \Ker(\beta)$
+we conclude from Lemma \ref{lemma-principal-localization-NL}
+that $J = (f_1, \ldots, f_c, fx_{n + 1} - 1)$ where $\alpha(f) = g$
+and that the composition
+$$
+J/J^2 \longrightarrow
+\Omega_{R[x_1, \ldots, x_{n + 1}]/R} \otimes_{R[x_1, \ldots, x_{n + 1}]} S_g
+\longrightarrow
+\bigoplus\nolimits_{i = 1}^c S_g\text{d}x_i \oplus S_g \text{d}x_{n + 1}
+$$
+is an isomorphism. Reordering the coordinates as
+$x_1, \ldots, x_c, x_{n + 1}, x_{c + 1}, \ldots, x_n$
+we conclude that $S_g$ is standard smooth over $R$ as desired.
+
+\medskip\noindent
+This finishes the proof as standard smooth algebras are syntomic
+(Lemmas \ref{lemma-standard-smooth} and
+\ref{lemma-relative-global-complete-intersection})
+and being syntomic over $R$ is local on $S$
+(Lemma \ref{lemma-local-syntomic}).
+\end{proof}
+
+\begin{definition}
+\label{definition-smooth-at-prime}
+Let $R \to S$ be a ring map.
+Let $\mathfrak q$ be a prime of $S$.
+We say $R \to S$ is {\it smooth at $\mathfrak q$} if there
+exists a $g \in S$, $g \not \in \mathfrak q$ such
+that $R \to S_g$ is smooth.
+\end{definition}
+
+\noindent
+For ring maps of finite presentation we can characterize this as follows.
+
+\begin{lemma}
+\label{lemma-smooth-at-point}
+Let $R \to S$ be of finite presentation. Let $\mathfrak q$ be a
+prime of $S$. The following are equivalent
+\begin{enumerate}
+\item $R \to S$ is smooth at $\mathfrak q$,
+\item $H_1(L_{S/R})_\mathfrak q = 0$ and
+$\Omega_{S/R, \mathfrak q}$ is a finite free $S_\mathfrak q$-module,
+\item $H_1(L_{S/R})_\mathfrak q = 0$ and
+$\Omega_{S/R, \mathfrak q}$ is a projective $S_\mathfrak q$-module, and
+\item $H_1(L_{S/R})_\mathfrak q = 0$ and
+$\Omega_{S/R, \mathfrak q}$ is a flat $S_\mathfrak q$-module.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+We will use without further mention that formation of the
+naive cotangent complex commutes with localization, see
+Section \ref{section-netherlander}, especially
+Lemma \ref{lemma-localize-NL}.
+Note that $\Omega_{S/R}$ is a finitely presented $S$-module, see
+Lemma \ref{lemma-differentials-finitely-presented}. Hence
+(2), (3), and (4) are equivalent by Lemma \ref{lemma-finite-projective}.
+It is clear that (1) implies the equivalent conditions (2), (3), and (4).
+Assume (2) holds. Writing $S_\mathfrak q$ as
+the colimit of principal localizations we see from
+Lemma \ref{lemma-colimit-category-fp-modules}
+that we can find a $g \in S$, $g \not \in \mathfrak q$ such that
+$(\Omega_{S/R})_g$ is finite free. Choose a presentation
+$\alpha : R[x_1, \ldots, x_n] \to S$ with kernel $I$. We may work
+with $\NL(\alpha)$ instead of $\NL_{S/R}$, see
+Lemma \ref{lemma-NL-homotopy}. The surjection
+$$
+\Omega_{R[x_1, \ldots, x_n]/R} \otimes_{R[x_1, \ldots, x_n]} S
+\to \Omega_{S/R} \to 0
+$$
+has a right inverse after inverting $g$ because $(\Omega_{S/R})_g$ is
+projective. Hence the image of
+$\text{d} : (I/I^2)_g \to
+\Omega_{R[x_1, \ldots, x_n]/R} \otimes_{R[x_1, \ldots, x_n]} S_g$
+is a direct summand and this map has a right inverse too.
+We conclude that $H_1(L_{S/R})_g$ is a quotient of $(I/I^2)_g$.
+In particular $H_1(L_{S/R})_g$ is a finite $S_g$-module.
+Thus the vanishing of $H_1(L_{S/R})_{\mathfrak q}$
+implies the vanishing of $H_1(L_{S/R})_{gg'}$ for some $g' \in S$,
+$g' \not \in \mathfrak q$. Then $R \to S_{gg'}$ is smooth by
+definition.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-locally-smooth}
+\begin{slogan}
+A ring map is smooth if and only if it is smooth at all primes of the target
+\end{slogan}
+Let $R \to S$ be a ring map.
+Then $R \to S$ is smooth if and only if $R \to S$ is smooth
+at every prime $\mathfrak q$ of $S$.
+\end{lemma}
+
+\begin{proof}
+The direct implication is trivial. Suppose that $R \to S$ is smooth
+at every prime $\mathfrak q$ of $S$. Since $\Spec(S)$ is
+quasi-compact, see Lemma \ref{lemma-quasi-compact},
+there exists a finite covering
+$\Spec(S) = \bigcup D(g_i)$ such that each $S_{g_i}$ is
+smooth. By Lemma \ref{lemma-cover-upstairs} this implies that
+$S$ is of finite presentation over $R$. According to
+Lemma \ref{lemma-localize-NL} we see that
+$\NL_{S/R} \otimes_S S_{g_i}$ is quasi-isomorphic to a finite projective
+$S_{g_i}$-module placed in degree $0$. By Lemma \ref{lemma-finite-projective}
+this implies that $\NL_{S/R}$ is quasi-isomorphic to a finite
+projective $S$-module placed in degree $0$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-compose-smooth}
+A composition of smooth ring maps is smooth.
+\end{lemma}
+
+\begin{proof}
+You can prove this in many different ways. One way is to use
+the snake lemma (Lemma \ref{lemma-snake}), the Jacobi-Zariski sequence
+(Lemma \ref{lemma-exact-sequence-NL}), combined with the
+characterization of projective modules as being
+direct summands of free modules (Lemma \ref{lemma-characterize-projective}).
+Another proof can be obtained by combining
+Lemmas \ref{lemma-smooth-syntomic}, \ref{lemma-compose-standard-smooth}
+and \ref{lemma-locally-smooth}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-product-smooth}
+Let $R$ be a ring. Let $S = S' \times S''$ be a product of $R$-algebras.
+Then $S$ is smooth over $R$ if and only if both $S'$ and $S''$ are
+smooth over $R$.
+\end{lemma}
+
+\begin{proof}
+Omitted. Hints: By Lemma \ref{lemma-locally-smooth} we can check smoothness
+one prime at a time. Since $\Spec(S)$ is the disjoint union of
+$\Spec(S')$ and $\Spec(S'')$ by Lemma \ref{lemma-spec-product}
+we find that smoothness of $R \to S$ at $\mathfrak q$ corresponds
+to either smoothness of $R \to S'$ at the corresponding prime or
+smoothness of $R \to S''$ at the corresponding prime.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-relative-global-complete-intersection-smooth}
+Let $R$ be a ring. Let $S = R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$
+be a relative global complete intersection.
+Let $\mathfrak q \subset S$ be a prime. Then $R \to S$
+is smooth at $\mathfrak q$ if and only if there exists a
+subset $I \subset \{1, \ldots, n\}$ of cardinality $c$
+such that the polynomial
+$$
+g_I = \det (\partial f_j/\partial x_i)_{j = 1, \ldots, c, \ i \in I}.
+$$
+does not map to an element of $\mathfrak q$.
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-relative-global-complete-intersection-conormal}
+we see that the naive cotangent complex
+associated to the given presentation of $S$ is the complex
+$$
+\bigoplus\nolimits_{j = 1}^c S \cdot f_j
+\longrightarrow
+\bigoplus\nolimits_{i = 1}^n S \cdot \text{d}x_i, \quad
+f_j \longmapsto \sum \frac{\partial f_j}{\partial x_i} \text{d}x_i.
+$$
+The maximal minors of the matrix giving the map are exactly
+the polynomials $g_I$.
+
+\medskip\noindent
+Assume $g_I$ maps to $g \in S$, with $g \not \in \mathfrak q$.
+Then the algebra $S_g$ is smooth over $R$. Namely, its naive
+cotangent complex is quasi-isomorphic to the complex above
+localized at $g$, see Lemma \ref{lemma-localize-NL}. And by
+construction it is quasi-isomorphic to a free rank $n - c$
+module in degree $0$.
+
+\medskip\noindent
+Conversely, suppose that all $g_I$ end up in $\mathfrak q$.
+In this case the complex above tensored with $\kappa(\mathfrak q)$
+does not have maximal rank, and hence there is no localization
+by an element $g \in S$, $g \not \in \mathfrak q$
+where this map becomes a split injection. By Lemma \ref{lemma-localize-NL}
+again there is no such localization which is smooth over $R$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-flat-fibre-smooth}
+Let $R \to S$ be a ring map.
+Let $\mathfrak q \subset S$ be a prime lying over the
+prime $\mathfrak p$ of $R$. Assume
+\begin{enumerate}
+\item there exists a $g \in S$, $g \not\in \mathfrak q$
+such that $R \to S_g$ is of finite presentation,
+\item the local ring homomorphism
+$R_{\mathfrak p} \to S_{\mathfrak q}$ is flat,
+\item the fibre $S \otimes_R \kappa(\mathfrak p)$ is smooth
+over $\kappa(\mathfrak p)$ at the prime corresponding
+to $\mathfrak q$.
+\end{enumerate}
+Then $R \to S$ is smooth at $\mathfrak q$.
+\end{lemma}
+
+\begin{proof}
+By Lemmas \ref{lemma-syntomic} and \ref{lemma-smooth-over-field}
+we see that there exists a $g \in S$ such that $S_g$ is a
+relative global complete intersection. Replacing $S$ by $S_g$ we may assume
+$S = R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$ is a relative
+global complete intersection.
+For any subset $I \subset \{1, \ldots, n\}$ of cardinality
+$c$ consider the polynomial
+$g_I = \det (\partial f_j/\partial x_i)_{j = 1, \ldots, c, i \in I}$
+of Lemma \ref{lemma-relative-global-complete-intersection-smooth}.
+Note that the image $\overline{g}_I$ of $g_I$ in the polynomial ring
+$\kappa(\mathfrak p)[x_1, \ldots, x_n]$ is the determinant
+of the partial derivatives of the images $\overline{f}_j$ of the $f_j$
+in the ring $\kappa(\mathfrak p)[x_1, \ldots, x_n]$. Thus the lemma follows
+by applying Lemma \ref{lemma-relative-global-complete-intersection-smooth}
+both to $R \to S$ and to
+$\kappa(\mathfrak p) \to S \otimes_R \kappa(\mathfrak p)$.
+\end{proof}
+
+\noindent
+Note that the sets $U, V$ in the following lemma
+are open by definition.
+
+\begin{lemma}
+\label{lemma-flat-base-change-locus-smooth}
+Let $R \to S$ be a ring map of finite presentation.
+Let $R \to R'$ be a flat ring map.
+Denote $S' = R' \otimes_R S$ the base change.
+Let $U \subset \Spec(S)$ be the set of primes at
+which $R \to S$ is smooth.
+Let $V \subset \Spec(S')$ the set of primes at
+which $R' \to S'$ is smooth.
+Then $V$ is the inverse image of $U$ under the
+map $f : \Spec(S') \to \Spec(S)$.
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-change-base-NL} we see that
+$\NL_{S/R} \otimes_S S'$ is homotopy equivalent to $\NL_{S'/R'}$.
+This already implies that $f^{-1}(U) \subset V$.
+
+\medskip\noindent
+Let $\mathfrak q' \subset S'$ be a prime lying over
+$\mathfrak q \subset S$. Assume $\mathfrak q' \in V$.
+We have to show that $\mathfrak q \in U$.
+Since $S \to S'$ is flat, we see that $S_{\mathfrak q} \to S'_{\mathfrak q'}$
+is faithfully flat (Lemma \ref{lemma-local-flat-ff}). Thus the vanishing of
+$H_1(L_{S'/R'})_{\mathfrak q'}$ implies the
+vanishing of $H_1(L_{S/R})_{\mathfrak q}$.
+By Lemma \ref{lemma-finite-projective-descends}
+applied to the $S_{\mathfrak q}$-module $(\Omega_{S/R})_{\mathfrak q}$
+and the map $S_{\mathfrak q} \to S'_{\mathfrak q'}$ we see that
+$(\Omega_{S/R})_{\mathfrak q}$ is projective. Hence
+$R \to S$ is smooth at $\mathfrak q$ by
+Lemma \ref{lemma-smooth-at-point}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-smooth-field-change-local}
+Let $K/k$ be a field extension.
+Let $S$ be a finite type algebra over $k$.
+Let $\mathfrak q_K$ be a prime of $S_K = K \otimes_k S$
+and let $\mathfrak q$ be the corresponding prime of $S$.
+Then $S$ is smooth over $k$ at $\mathfrak q$ if and only if
+$S_K$ is smooth at $\mathfrak q_K$ over $K$.
+\end{lemma}
+
+\begin{proof}
+This is a special case of Lemma \ref{lemma-flat-base-change-locus-smooth}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-lift-smooth}
+Let $R$ be a ring and let $I \subset R$ be an ideal.
+Let $R/I \to \overline{S}$ be a smooth ring map.
+Then there exists elements $\overline{g}_i \in \overline{S}$
+which generate the unit ideal of $\overline{S}$
+such that each $\overline{S}_{g_i} \cong S_i/IS_i$
+for some (standard) smooth ring $S_i$ over $R$.
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-smooth-syntomic} we find a collection of elements
+$\overline{g}_i \in \overline{S}$
+which generate the unit ideal of $\overline{S}$
+such that each $\overline{S}_{g_i}$ is standard smooth over $R/I$.
+Hence we may assume that $\overline{S}$ is standard smooth
+over $R/I$. Write
+$\overline{S} =
+(R/I)[x_1, \ldots, x_n]/(\overline{f}_1, \ldots, \overline{f}_c)$
+as in Definition \ref{definition-standard-smooth}.
+Choose $f_1, \ldots, f_c \in R[x_1, \ldots, x_n]$
+lifting $\overline{f}_1, \ldots, \overline{f}_c$. Set
+$S = R[x_1, \ldots, x_n, x_{n + 1}]/(f_1, \ldots, f_c, x_{n + 1}\Delta - 1)$
+where $\Delta = \det(\frac{\partial f_j}{\partial x_i})_{i, j = 1, \ldots, c}$
+as in Example \ref{example-make-standard-smooth}.
+This proves the lemma.
+\end{proof}
+
+
+
+
+
+
+
+

@@ -1,0 +1,72 @@
+\section{Limits and colimits of presheaves}
+\label{section-limits-colimits-PSh}
+
+\noindent
+Let $\mathcal{C}$ be a category.
+Limits and colimits exist in the category
+$\textit{PSh}(\mathcal{C})$. In addition, for any
+$U \in \Ob(\mathcal{C})$ the functor
+$$
+\textit{PSh}(\mathcal{C})
+\longrightarrow
+\textit{Sets}, \quad
+\mathcal{F}
+\longmapsto
+\mathcal{F}(U)
+$$
+commutes with limits and colimits. Perhaps the easiest way to prove
+these statements is the following. Given a diagram
+$
+\mathcal{F} :
+\mathcal{I}
+\to
+\textit{PSh}(\mathcal{C})
+$
+define presheaves
+$$
+\mathcal{F}_{\lim} :
+U
+\longmapsto
+\lim_{i \in \mathcal{I}} \mathcal{F}_i(U)
+\text{  and  }
+\mathcal{F}_{\colim} :
+U
+\longmapsto
+\colim_{i \in \mathcal{I}} \mathcal{F}_i(U)
+$$
+There are clearly projection maps $\mathcal{F}_{\lim} \to \mathcal{F}_i$
+and canonical maps $\mathcal{F}_i \to \mathcal{F}_{\colim}$. These
+maps satisfy the requirements of the maps of a limit (resp.\ colimit)
+of Categories, Definition \ref{categories-definition-limit}
+(resp.\ Categories, Definition \ref{categories-definition-colimit}).
+Indeed, they clearly form a cone, resp. a cocone, over $\mathcal{F}$.
+Furthermore, if $(\mathcal{G}, q_i : \mathcal{G} \to \mathcal{F}_i)$
+is another
+system (as in the definition of a limit), then we get for every
+$U$ a system of maps $\mathcal{G}(U) \to \mathcal{F}_i(U)$
+with suitable functoriality requirements. And thus a unique
+map $\mathcal{G}(U) \to \mathcal{F}_{\lim}(U)$. It is easy
+to verify these are compatible  as we vary $U$ and arise from
+the desired map $\mathcal{G} \to \mathcal{F}_{\lim}$.
+A similar argument works in the case of the colimit.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,599 @@
+\section{Differentials}
+\label{section-differentials}
+
+\noindent
+In this section we define the module of differentials of a ring map.
+
+\begin{definition}
+\label{definition-derivation}
+Let $\varphi : R \to S$ be a ring map and let $M$ be an $S$-module.
+A {\it derivation}, or more precisely an
+{\it $R$-derivation} into $M$ is a map $D : S \to M$
+which is additive, annihilates elements of $\varphi(R)$,
+and satisfies the {\it Leibniz rule}: $D(ab) = aD(b) + bD(a)$.
+\end{definition}
+
+\noindent
+Note that $D(ra) = rD(a)$ if $r \in R$ and $a \in S$. An equivalent
+definition is that an $R$-derivation is an $R$-linear map
+$D : S \to M$ which satisfies the Leibniz rule.
+The set of all $R$-derivations forms an
+$S$-module: Given two $R$-derivations $D, D'$
+the sum $D + D' : S \to M$, $a \mapsto D(a)+D'(a)$
+is an $R$-derivation, and given an $R$-derivation $D$
+and an element $c\in S$ the scalar multiple $cD : S \to M$,
+$a \mapsto cD(a)$ is an $R$-derivation. We denote this
+$S$-module
+$$
+\text{Der}_R(S, M).
+$$
+Also, if $\alpha : M \to N$ is an $S$-module map, then the
+composition $\alpha \circ D$ is an $R$-derivation into
+$N$. In this way the assignment $M \mapsto \text{Der}_R(S, M)$
+is a covariant functor.
+
+\medskip\noindent
+Consider the following map of free $S$-modules
+$$
+\bigoplus\nolimits_{(a, b)\in S^2} S[(a, b)] \oplus
+\bigoplus\nolimits_{(f, g)\in S^2} S[(f, g)] \oplus
+\bigoplus\nolimits_{r\in R} S[r]
+\longrightarrow
+\bigoplus\nolimits_{a\in S} S[a]
+$$
+defined by the rules
+$$
+[(a, b)] \longmapsto [a + b] - [a] - [b],\quad
+[(f, g)] \longmapsto [fg] -f[g] - g[f],\quad
+[r]      \longmapsto [\varphi(r)]
+$$
+with obvious notation. Let $\Omega_{S/R}$ be the cokernel of this map.
+There is a map $\text{d} : S \to \Omega_{S/R}$ which maps $a$ to the
+class $\text{d}a$ of $[a]$ in the cokernel. This is an $R$-derivation
+by the relations imposed on $\Omega_{S/R}$, in other words
+$$
+\text{d}(a + b) = \text{d}a + \text{d}b, \quad
+\text{d}(fg) = f\text{d}g + g\text{d}f, \quad
+\text{d}\varphi(r) = 0
+$$
+where $a,b,f,g \in S$ and $r \in R$.
+
+\begin{definition}
+\label{definition-differentials}
+The pair $(\Omega_{S/R}, \text{d})$ is called the {\it module
+of K\"ahler differentials} or the {\it module of differentials}
+of $S$ over $R$.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-universal-omega}
+\begin{slogan}
+Maps out of the module of differentials are the same as derivations.
+\end{slogan}
+The module of differentials of $S$ over $R$ has the following
+universal property. The map
+$$
+\Hom_S(\Omega_{S/R}, M)
+\longrightarrow
+\text{Der}_R(S, M), \quad
+\alpha
+\longmapsto
+\alpha \circ \text{d}
+$$
+is an isomorphism of functors.
+\end{lemma}
+
+\begin{proof}
+By definition an $R$-derivation is a rule which associates
+to each $a \in S$ an element $D(a) \in M$. Thus $D$ gives
+rise to a map $[D] : \bigoplus S[a] \to M$. However, the conditions
+of being an $R$-derivation exactly mean that $[D]$ annihilates
+the image of the map in the displayed presentation of
+$\Omega_{S/R}$ above.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-trivial-differential-surjective}
+Suppose that $R \to S$ is surjective.
+Then $\Omega_{S/R} = 0$.
+\end{lemma}
+
+\begin{proof}
+You can see this either because all $R$-derivations
+clearly have to be zero, or because
+the map in the presentation of $\Omega_{S/R}$ is surjective.
+\end{proof}
+
+\noindent
+Suppose that
+\begin{equation}
+\label{equation-functorial-omega}
+\vcenter{
+\xymatrix{
+S \ar[r]_\varphi
+&
+S'
+\\
+R \ar[r]^\psi \ar[u]^\alpha
+&
+R' \ar[u]_\beta
+}
+}
+\end{equation}
+is a commutative diagram of rings. In this case there is a
+natural map of modules of differentials fitting into the
+commutative diagram
+$$
+\xymatrix{
+\Omega_{S/R} \ar[r] &
+\Omega_{S'/R'}
+\\
+S \ar[u]^{\text{d}} \ar[r]^{\varphi}
+&
+S' \ar[u]_{\text{d}}
+}
+$$
+To construct the map just use the obvious map
+between the presentations for $\Omega_{S/R}$ and $\Omega_{S'/R'}$.
+Namely,
+\begin{equation}
+\label{equation-map-presentations}
+\vcenter{
+\xymatrix{
+\bigoplus S'[(a', b')]
+\oplus
+\bigoplus S'[(f', g')]
+\oplus
+\bigoplus S'[r'] \ar[r]
+&
+\bigoplus S' [a'] \\
+ \\
+\bigoplus S[(a, b)]
+\oplus
+\bigoplus S[(f, g)]
+\oplus
+\bigoplus S[r] \ar[r]
+\ar[uu]^{
+\begin{matrix}
+[(a, b)] \mapsto [(\varphi(a), \varphi(b))] \\
+[(f, g)] \mapsto [(\varphi(f), \varphi(g))] \\
+[r]\mapsto [\psi(r)]
+\end{matrix}
+} &
+\bigoplus S[a] \ar[uu]_{[a] \mapsto [\varphi(a)]}
+}
+}
+\end{equation}
+The result is simply that $f\text{d}g \in \Omega_{S/R}$ is
+mapped to $\varphi(f)\text{d}\varphi(g)$.
+
+
+\begin{lemma}
+\label{lemma-colimit-differentials}
+Let $I$ be a directed set.
+Let $(R_i \to S_i, \varphi_{ii'})$ be a system of
+ring maps over $I$, see
+Categories, Section \ref{categories-section-posets-limits}.
+Then we have
+$$
+\Omega_{S/R} =
+\colim_i \Omega_{S_i/R_i}.
+$$
+where $R \to S = \colim (R_i \to S_i)$.
+\end{lemma}
+
+\begin{proof}
+This is clear from the defining presentation of $\Omega_{S/R}$
+and the functoriality of this described above.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-differential-surjective}
+In diagram (\ref{equation-functorial-omega}), suppose
+that $S \to S'$ is surjective with kernel $I \subset S$.
+Then $\Omega_{S/R} \to \Omega_{S'/R'}$ is surjective with
+kernel generated as an $S$-module by the elements
+$\text{d}a$, where $a \in S$ is such that $\varphi(a) \in \beta(R')$.
+(This includes in particular the elements $\text{d}(i)$, $i \in I$.)
+\end{lemma}
+
+\begin{proof}[First proof]
+Consider the map of presentations (\ref{equation-map-presentations}).
+Clearly the right vertical
+map of free modules is surjective. Thus the map is surjective.
+Suppose that some element $\eta$ of $\Omega_{S/R}$ maps to zero in
+$\Omega_{S'/R'}$. Write $\eta$ as the image of $\sum s_i[a_i]$ for some
+$s_i, a_i \in S$. Then we see that $\sum \varphi(s_i)[\varphi(a_i)]$
+is the image of an element
+$$
+\theta = \sum s_j'[a_j', b_j'] + \sum s_k'[f_k', g_k'] + \sum s_l'[r_l']
+$$
+in the upper left corner of the diagram.
+Since $\varphi$ is surjective, the terms
+$s_j'[a_j', b_j']$ and $s_k'[f_k', g_k']$ are in the image
+of elements in the lower right corner. Thus, modifying
+$\eta$ and $\theta$ by subtracting the images of these
+elements, we may assume $\theta = \sum s_l'[r_l']$.
+In other words, we see $\sum \varphi(s_i)[\varphi(a_i)]$ is of the form
+$\sum s'_l [\beta(r'_l)]$.
+Next, we may assume that we have some $a' \in S'$
+such that $a' = \varphi(a_i)$ for all $i$ and $a' = \beta(r_l')$
+for all $l$. This is clear from the direct sum decomposition
+of the upper right corner of the diagram. Choose $a \in S$ with
+$\varphi(a) = a'$. Then we can write $a_i = a + x_i$
+for some $x_i \in I$. Thus we may assume that all $a_i$ are equal to
+$a$ by using the relations that are allowed. But then we may
+assume our element is of the form $s[a]$. We still know that
+$\varphi(s)[a'] = \sum \varphi(s_l')[\beta(r_l')]$.
+Hence either $\varphi(s) = 0$ and we're done, or
+$a' = \varphi(a)$ is in the image of $\beta$ and we're done as well.
+\end{proof}
+
+\begin{proof}[Second proof]
+We will use the universal property of modules of differentials
+given in Lemma \ref{lemma-universal-omega} without further mention.
+
+\medskip\noindent
+In (\ref{equation-functorial-omega}) let $R'' = S \times_{S'} R'$.
+Then we have following diagram:
+$$
+\xymatrix{
+S \ar[r] & S \ar[r] & S' \\
+R \ar[r] \ar[u] & R'' \ar[r] \ar[u] & R' \ar[u]
+}
+$$
+Let $M$ be an $S$-module. It follows immediately from the definitions that
+an $R$-derivation $D : S \to M$ is an $R''$-derivation if and only if
+it annihilates the elements in the image of $R'' \to S$. The universal
+property translates this into the statement that the natural map
+$\Omega_{S/R} \to \Omega_{S/R''}$ is surjective with kernel generated
+as an $S$-module by the image of $R''$.
+
+\medskip\noindent
+From the previous paragraph we see that it suffices to show that
+$\Omega_{S/R} \to \Omega_{S'/R'}$ is an isomorphism
+when $S \to S'$ is surjective
+and $R = S \times_{S'} R'$. Let $M'$ be an $S'$-module. Observe that any
+$R'$-derivation $D' : S' \to M'$ gives an $R$-derivation by precomposing
+with $S \to S'$. Conversely, suppose $M$ is an $S$-module and $D : S \to M$
+is an $R$-derivation. If $i \in I$, then there exist an $a \in R$ with
+$\alpha(a) = i$ (as $R = S \times_{S'} R'$). It follows that $D(i) = 0$
+and hence $0 = D(is) = iD(s)$ for all $s \in S$. Thus the image of $D$
+is contained in the submodule $M' \subset M$ of elements annihilated by $I$
+and moreover the induced map $S \to M'$ factors through an $R'$-derivation
+$S' \to M'$. It is an exercise to use the universal property to see that
+this means $\Omega_{S/R} \to \Omega_{S'/R'}$ is an isomorphism; details
+omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-exact-sequence-differentials}
+Let $A \to B \to C$ be ring maps.
+Then there is a canonical exact sequence
+$$
+C \otimes_B \Omega_{B/A} \to
+\Omega_{C/A} \to
+\Omega_{C/B} \to 0
+$$
+of $C$-modules.
+\end{lemma}
+
+\begin{proof}
+We get a diagram (\ref{equation-functorial-omega}) by putting
+$R = A$, $S = C$, $R' = B$, and $S' = C$.
+By Lemma \ref{lemma-differential-surjective} the map
+$\Omega_{C/A} \to \Omega_{C/B}$ is surjective, and the kernel
+is generated by the elements $\text{d}(c)$, where $c \in C$
+is in the image of $B \to C$. The lemma follows.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-differentials-localize}
+Let $\varphi : A \to B$ be a ring map.
+\begin{enumerate}
+\item If $S \subset A$ is a multiplicative subset mapping to
+invertible elements of $B$, then $\Omega_{B/A} = \Omega_{B/S^{-1}A}$.
+\item If $S \subset B$ is a multiplicative subset then
+$S^{-1}\Omega_{B/A} = \Omega_{S^{-1}B/A}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+To show the equality of (1) it is enough to show that any
+$A$-derivation $D : B \to M$ annihilates the elements $\varphi(s)^{-1}$.
+This is clear from the Leibniz rule applied to
+$1 = \varphi(s) \varphi(s)^{-1}$.
+To show (2) note that there is an obvious map
+$S^{-1}\Omega_{B/A} \to \Omega_{S^{-1}B/A}$.
+To show it is an isomorphism it is enough to show that
+there is a $A$-derivation $\text{d}'$ of $S^{-1}B$ into $S^{-1}\Omega_{B/A}$.
+To define it we simply set
+$\text{d}'(b/s) = (1/s)\text{d}b - (1/s^2)b\text{d}s$.
+Details omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-differential-seq}
+In diagram (\ref{equation-functorial-omega}),
+suppose that $S \to S'$ is surjective with kernel $I \subset S$,
+and assume that $R' = R$.
+Then there is a canonical exact sequence of $S'$-modules
+$$
+I/I^2
+\longrightarrow
+\Omega_{S/R} \otimes_S S'
+\longrightarrow
+\Omega_{S'/R}
+\longrightarrow
+0
+$$
+The leftmost map is characterized by the rule that
+$f \in I$ maps to $\text{d}f \otimes 1$.
+\end{lemma}
+
+\begin{proof}
+The middle term is $\Omega_{S/R} \otimes_S S/I$.
+For $f \in I$ denote $\overline{f}$ the image of $f$ in $I/I^2$.
+To show that the map $\overline{f} \mapsto \text{d}f \otimes 1$
+is well defined we just have to check that
+$\text{d} f_1f_2 \otimes 1 = 0$ if $f_1, f_2 \in I$.
+And this is clear from the Leibniz rule
+$\text{d} f_1f_2 \otimes 1 = (f_1 \text{d}f_2 + f_2 \text{d} f_1 )\otimes 1 =
+\text{d}f_2 \otimes f_1 + \text{d}f_1 \otimes f_2 = 0$.
+A similar computation show this map is $S' = S/I$-linear.
+
+\medskip\noindent
+The map $\Omega_{S/R} \otimes_S S' \to \Omega_{S'/R}$
+is the canonical $S'$-linear map associated to the
+$S$-linear map $\Omega_{S/R} \to \Omega_{S'/R}$.
+It is surjective because $\Omega_{S/R} \to \Omega_{S'/R}$
+is surjective by Lemma \ref{lemma-differential-surjective}.
+
+\medskip\noindent
+The composite of the two maps is zero because
+$\text{d}f$ maps to zero in $\Omega_{S'/R}$
+for $f \in I$. Note that exactness just says that
+the kernel of $\Omega_{S/R} \to \Omega_{S'/R}$
+is generated as an $S$-submodule by the submodule $I\Omega_{S/R}$ together
+with the elements $\text{d}f$, with $f \in I$. We know by
+Lemma \ref{lemma-differential-surjective}
+that this kernel is generated by the elements $\text{d}(a)$
+where $\varphi(a) = \beta(r)$ for some $r \in R$.
+But then $a = \alpha(r) + a - \alpha(r)$, so
+$\text{d}(a) = \text{d}(a - \alpha(r))$. And
+$a - \alpha(r) \in I$ since $\varphi(a - \alpha(r)) =
+\varphi(a) - \varphi(\alpha(r)) = \beta(r) - \beta(r) = 0$.
+We conclude the elements $\text{d}f$ with $f \in I$ already
+generate the kernel as an $S$-module, as desired.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-differential-seq-split}
+In diagram (\ref{equation-functorial-omega}),
+suppose that $S \to S'$ is surjective with kernel $I \subset S$,
+and assume that $R' = R$. Moreover, assume that there exists
+an $R$-algebra map $S' \to S$ which is a right inverse to
+$S \to S'$. Then the exact sequence of $S'$-modules
+of Lemma \ref{lemma-differential-seq} turns into a short exact sequence
+$$
+0 \longrightarrow
+I/I^2
+\longrightarrow
+\Omega_{S/R} \otimes_S S'
+\longrightarrow
+\Omega_{S'/R}
+\longrightarrow
+0
+$$
+which is even a split short exact sequence.
+\end{lemma}
+
+\begin{proof}
+Let $\beta : S' \to S$ be the right inverse to the surjection
+$\alpha : S \to S'$. Consider the map
+$$
+D : S \longrightarrow I/I^2,
+\quad
+x \longmapsto x - \beta(\alpha(x))
+$$
+It is easy to show that $D$ is an $R$-derivation (omitted).
+Moreover $x D(s) = 0$ if $x \in I, s \in S$. Hence, by the universal property
+$D$ induces a map $\tau : \Omega_{S/R} \otimes_S S' \to I/I^2$.
+We omit the verification that it is a left inverse to
+$\text{d} : I/I^2  \to \Omega_{S/R} \otimes_S S'$. Hence we win.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-differential-mod-power-ideal}
+Let $R \to S$ be a ring map. Let $I \subset S$ be an ideal.
+Let $n \geq 1$ be an integer. Set $S' = S/I^{n + 1}$.
+The map $\Omega_{S/R} \to \Omega_{S'/R}$ induces an
+isomorphism
+$$
+\Omega_{S/R} \otimes_S S/I^n
+\longrightarrow
+\Omega_{S'/R} \otimes_{S'} S/I^n.
+$$
+\end{lemma}
+
+\begin{proof}
+This follows from Lemma \ref{lemma-differential-seq} and the fact that
+$\text{d}(I^{n + 1}) \subset I^n\Omega_{S/R}$ by the
+Leibniz rule for $\text{d}$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-differentials-base-change}
+Suppose that we have ring maps $R \to R'$ and $R \to S$.
+Set $S' = S \otimes_R R'$, so that we obtain a diagram
+(\ref{equation-functorial-omega}). Then the canonical map defined above
+induces an isomorphism $\Omega_{S/R} \otimes_R R' = \Omega_{S'/R'}$.
+\end{lemma}
+
+\begin{proof}
+Let $\text{d}' : S' = S \otimes_R R' \to \Omega_{S/R} \otimes_R R'$ denote the
+map $\text{d}'( \sum a_i \otimes x_i ) = \sum \text{d}(a_i) \otimes x_i$.
+It exists because the map $S \times R' \to \Omega_{S/R} \otimes_R R'$,
+$(a, x)\mapsto \text{d}a \otimes_R x$ is $R$-bilinear.
+This is an $R'$-derivation, as can be verified by a simple computation.
+We will show that $(\Omega_{S/R} \otimes_R R', \text{d}')$ satisfies
+the universal property. Let $D : S' \to M'$ be an $R'$-derivation
+into an $S'$-module. The composition $S \to S' \to M'$ is an $R$-derivation,
+hence we get an $S$-linear map $\varphi_D : \Omega_{S/R} \to M'$. We may
+tensor this with $R'$ and get the map $\varphi'_D :
+\Omega_{S/R} \otimes_R R' \to M'$, $\varphi'_D(\eta \otimes x) =
+x\varphi_D(\eta)$. It is clear that $D = \varphi'_D \circ \text{d}'$.
+\end{proof}
+
+\noindent
+The multiplication map $S \otimes_R S \to S$ is the $R$-algebra
+map which maps $a \otimes b$ to $ab$ in $S$. It is also an
+$S$-algebra map, if we think of $S \otimes_R S$ as an $S$-algebra
+via either of the maps $S \to S \otimes_R S$.
+
+\begin{lemma}
+\label{lemma-differentials-diagonal}
+Let $R \to S$ be a ring map. Let $J = \Ker(S \otimes_R S \to S)$
+be the kernel of the multiplication map. There is a canonical
+isomorphism of $S$-modules $\Omega_{S/R} \to J/J^2$,
+$a \text{d} b \mapsto a \otimes b - ab \otimes 1$.
+\end{lemma}
+
+\begin{proof}[First proof]
+Apply Lemma \ref{lemma-differential-seq-split} to the commutative diagram
+$$
+\xymatrix{
+S \otimes_R S \ar[r] & S \\
+S \ar[r] \ar[u] & S \ar[u]
+}
+$$
+where the left vertical arrow is $a \mapsto a \otimes 1$. We get the
+exact sequence
+$0 \to J/J^2 \to
+\Omega_{S \otimes_R S/S} \otimes_{S \otimes_R S} S \to \Omega_{S/S} \to 0$.
+By Lemma \ref{lemma-trivial-differential-surjective}
+the term $\Omega_{S/S}$ is $0$, and we obtain an
+isomorphism between the other two terms. We have
+$\Omega_{S \otimes_R S/S} = \Omega_{S/R} \otimes_S (S \otimes_R S)$
+by Lemma \ref{lemma-differentials-base-change} as $S \to S \otimes_R S$
+is the base change of $R \to S$ and hence
+$$
+\Omega_{S \otimes_R S/S} \otimes_{S \otimes_R S} S =
+\Omega_{S/R} \otimes_S (S \otimes_R S) \otimes_{S \otimes_R S} S =
+\Omega_{S/R}
+$$
+We omit the verification that the map is given by the rule of the lemma.
+\end{proof}
+
+\begin{proof}[Second proof]
+First we show that the rule $a \text{d} b \mapsto a \otimes b - ab \otimes 1$
+is well defined. In order to do this we have to show
+that $\text{d}r$ and $a\text{d}b + b \text{d}a - d(ab)$ map to zero.
+The first because $r \otimes 1 - 1 \otimes r = 0$ by definition
+of the tensor product. The second because
+$$
+(a \otimes b - ab \otimes 1) +
+(b \otimes a - ba \otimes 1) -
+(1 \otimes ab - ab \otimes 1)
+=
+(a \otimes 1 - 1\otimes a)(1\otimes b - b \otimes 1)
+$$
+is in $J^2$.
+
+\medskip\noindent
+We construct a map in the other direction.
+We may think of $S \to S \otimes_R S$, $a \mapsto a \otimes 1$
+as the base change of $R \to S$. Hence we have
+$\Omega_{S \otimes_R S/S} = \Omega_{S/R} \otimes_S (S \otimes_R S)$,
+by Lemma \ref{lemma-differentials-base-change}.
+At this point the sequence of Lemma \ref{lemma-differential-seq} gives a map
+$$
+J/J^2  \to \Omega_{S \otimes_R S/ S} \otimes_{S \otimes_R S} S
+= (\Omega_{S/R} \otimes_S (S \otimes_R S))\otimes_{S \otimes_R S} S
+= \Omega_{S/R}.
+$$
+We leave it to the reader to see it is the inverse of the map
+above.
+\end{proof}
+
+
+
+
+\begin{lemma}
+\label{lemma-differentials-polynomial-ring}
+If $S = R[x_1, \ldots, x_n]$, then
+$\Omega_{S/R}$ is a finite free $S$-module with
+basis $\text{d}x_1, \ldots, \text{d}x_n$.
+\end{lemma}
+
+\begin{proof}
+We first show that $\text{d}x_1, \ldots, \text{d}x_n$
+generate $\Omega_{S/R}$ as an $S$-module. To prove this
+we show that $\text{d}g$ can be expressed as a
+sum $\sum g_i \text{d}x_i$ for any $g \in R[x_1, \ldots, x_n]$.
+We do this by induction on the (total) degree of $g$.
+It is clear if the degree of $g$ is $0$, because then
+$\text{d}g = 0$. If the degree of $g$ is $> 0$, then
+we may write $g$ as $c + \sum g_i x_i$ with $c\in R$
+and $\deg(g_i) < \deg(g)$. By the Leibniz rule we have
+$\text{d}g = \sum g_i \text{d} x_i + \sum x_i \text{d}g_i$,
+and hence we win by induction.
+
+\medskip\noindent
+Consider the $R$-derivation $\partial / \partial x_i :
+R[x_1, \ldots, x_n] \to R[x_1, \ldots, x_n]$. (We leave it to
+the reader to define this; the defining property
+being that $\partial / \partial x_i (x_j) = \delta_{ij}$.)
+By the universal property this corresponds to an $S$-module map $l_i :
+\Omega_{S/R} \to R[x_1, \ldots, x_n]$ which maps $\text{d}x_i$
+to $1$ and $\text{d}x_j$ to $0$ for $j \not = i$.
+Thus it is clear that there are no $S$-linear relations
+among the elements $\text{d}x_1, \ldots, \text{d}x_n$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-differentials-finitely-presented}
+Suppose $R \to S$ is of finite presentation.
+Then $\Omega_{S/R}$ is a finitely presented
+$S$-module.
+\end{lemma}
+
+\begin{proof}
+Write $S = R[x_1, \ldots, x_n]/(f_1, \ldots, f_m)$.
+Write $I = (f_1, \ldots, f_m)$. According
+to Lemma \ref{lemma-differential-seq} there is an exact sequence
+of $S$-modules
+$$
+I/I^2
+\to
+\Omega_{R[x_1, \ldots, x_n]/R} \otimes_{R[x_1, \ldots, x_n]} S
+\to
+\Omega_{S/R}
+\to
+0
+$$
+The result follows from the fact that $I/I^2$ is a finite
+$S$-module (generated by the images of the $f_i$), and that
+the middle term is finite free by
+Lemma \ref{lemma-differentials-polynomial-ring}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-differentials-finitely-generated}
+Suppose $R \to S$ is of finite type.
+Then $\Omega_{S/R}$ is finitely generated
+$S$-module.
+\end{lemma}
+
+\begin{proof}
+This is very similar to, but easier than the proof
+of Lemma \ref{lemma-differentials-finitely-presented}.
+\end{proof}
+
+
+
+
+
+
+
+

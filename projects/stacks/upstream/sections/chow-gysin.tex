@@ -1,0 +1,244 @@
+\section{Gysin homomorphisms and rational equivalence}
+\label{section-gysin}
+
+\noindent
+In this section we use the key formula to show the Gysin homomorphism
+factor through rational equivalence. We also prove an important
+commutativity property.
+
+\begin{lemma}
+\label{lemma-gysin-factors-general}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$ be locally of finite type over $S$.
+Let $X$ be integral and $n = \dim_\delta(X)$.
+Let $i : D \to X$ be an effective Cartier divisor.
+Let $\mathcal{N}$ be an invertible $\mathcal{O}_X$-module
+and let $t$ be a nonzero meromorphic section of $\mathcal{N}$.
+Then $i^*\text{div}_\mathcal{N}(t) = c_1(\mathcal{N}|_D) \cap [D]_{n - 1}$
+in $\CH_{n - 2}(D)$.
+\end{lemma}
+
+\begin{proof}
+Write $\text{div}_\mathcal{N}(t) = \sum \text{ord}_{Z_i, \mathcal{N}}(t)[Z_i]$
+for some integral closed subschemes $Z_i \subset X$ of $\delta$-dimension
+$n - 1$. We may assume that the family $\{Z_i\}$ is locally
+finite, that $t \in \Gamma(U, \mathcal{N}|_U)$ is a generator
+where $U = X \setminus \bigcup Z_i$, and that every irreducible component
+of $D$ is one of the $Z_i$, see
+Divisors, Lemmas \ref{divisors-lemma-components-locally-finite},
+\ref{divisors-lemma-divisor-locally-finite}, and
+\ref{divisors-lemma-divisor-meromorphic-locally-finite}.
+
+\medskip\noindent
+Set $\mathcal{L} = \mathcal{O}_X(D)$. Denote
+$s \in \Gamma(X, \mathcal{O}_X(D)) = \Gamma(X, \mathcal{L})$
+the canonical section. We will apply the discussion of
+Section \ref{section-key} to our current situation.
+For each $i$ let $\xi_i \in Z_i$ be its generic point. Let
+$B_i = \mathcal{O}_{X, \xi_i}$. For each $i$ we pick generators
+$s_i \in \mathcal{L}_{\xi_i}$ and $t_i \in \mathcal{N}_{\xi_i}$
+over $B_i$ but we insist that we pick $s_i = s$ if $Z_i \not \subset D$.
+Write $s = f_i s_i$ and $t = g_i t_i$ with $f_i, g_i \in B_i$.
+Then $\text{ord}_{Z_i, \mathcal{N}}(t) = \text{ord}_{B_i}(g_i)$.
+On the other hand, we have $f_i \in B_i$ and
+$$
+[D]_{n - 1} = \sum \text{ord}_{B_i}(f_i)[Z_i]
+$$
+because of our choices of $s_i$. We claim that
+$$
+i^*\text{div}_\mathcal{N}(t) =
+\sum \text{ord}_{B_i}(g_i) \text{div}_{\mathcal{L}|_{Z_i}}(s_i|_{Z_i})
+$$
+as cycles. More precisely, the right hand side is a cycle
+representing the left hand side. Namely, this is clear by our
+formula for $\text{div}_\mathcal{N}(t)$ and the fact that
+$\text{div}_{\mathcal{L}|_{Z_i}}(s_i|_{Z_i}) = [Z(s_i|_{Z_i})]_{n - 2} =
+[Z_i \cap D]_{n - 2}$ when $Z_i \not \subset D$ because in
+that case $s_i|_{Z_i} = s|_{Z_i}$ is a regular section, see
+Lemma \ref{lemma-compute-c1}. Similarly,
+$$
+c_1(\mathcal{N}) \cap [D]_{n - 1} =
+\sum \text{ord}_{B_i}(f_i) \text{div}_{\mathcal{N}|_{Z_i}}(t_i|_{Z_i})
+$$
+The key formula (Lemma \ref{lemma-key-formula}) gives the equality
+$$
+\sum \left(
+\text{ord}_{B_i}(f_i) \text{div}_{\mathcal{N}|_{Z_i}}(t_i|_{Z_i}) -
+\text{ord}_{B_i}(g_i) \text{div}_{\mathcal{L}|_{Z_i}}(s_i|_{Z_i}) \right) =
+\sum \text{div}_{Z_i}(\partial_{B_i}(f_i, g_i))
+$$
+of cycles. If $Z_i \not \subset D$, then $f_i = 1$ and hence
+$\text{div}_{Z_i}(\partial_{B_i}(f_i, g_i)) = 0$. Thus we get a rational
+equivalence between our specific cycles representing
+$i^*\text{div}_\mathcal{N}(t)$ and $c_1(\mathcal{N}) \cap [D]_{n - 1}$
+on $D$. This finishes the proof.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-gysin-factors}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$ be locally of finite type over $S$.
+Let $(\mathcal{L}, s, i : D \to X)$ be as in
+Definition \ref{definition-gysin-homomorphism}.
+The Gysin homomorphism factors through rational equivalence to
+give a map $i^* : \CH_{k + 1}(X) \to \CH_k(D)$.
+\end{lemma}
+
+\begin{proof}
+Let $\alpha \in Z_{k + 1}(X)$ and assume that $\alpha \sim_{rat} 0$.
+This means there exists a locally finite collection of integral
+closed subschemes $W_j \subset X$ of $\delta$-dimension $k + 2$
+and $f_j \in R(W_j)^*$ such that
+$\alpha = \sum i_{j, *}\text{div}_{W_j}(f_j)$.
+Set $X' = \coprod W_i$ and consider the diagram
+$$
+\xymatrix{
+D' \ar[d]_q \ar[r]_{i'} & X' \ar[d]^p \\
+D \ar[r]^i & X
+}
+$$
+of Remark \ref{remark-pullback-pairs}. Since $X' \to X$ is proper
+we see that $i^*p_* = q_*(i')^*$ by Lemma \ref{lemma-closed-in-X-gysin}.
+As we know that $q_*$ factors through rational equivalence
+(Lemma \ref{lemma-proper-pushforward-rational-equivalence}), it suffices
+to prove the result for $\alpha' = \sum \text{div}_{W_j}(f_j)$
+on $X'$. Clearly this reduces us to the case where $X$ is integral
+and $\alpha = \text{div}(f)$ for some $f \in R(X)^*$.
+
+\medskip\noindent
+Assume $X$ is integral and $\alpha = \text{div}(f)$ for some $f \in R(X)^*$.
+If $X = D$, then we see that $i^*\alpha$ is equal
+to $c_1(\mathcal{L}) \cap \alpha$.
+This is rationally equivalent to zero by Lemma \ref{lemma-factors}.
+If $D \not = X$, then we see that $i^*\text{div}_X(f)$ is equal to
+$c_1(\mathcal{O}_D) \cap [D]_{n - 1}$ in $\CH_{n - 2}(D)$ by
+Lemma \ref{lemma-gysin-factors-general}. Of course
+capping with $c_1(\mathcal{O}_D)$ is the zero map
+(Lemma \ref{lemma-c1-cap-additive}).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-gysin-back}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}. Let $X$ be locally
+of finite type over $S$. Let $(\mathcal{L}, s, i : D \to X)$ be as in
+Definition \ref{definition-gysin-homomorphism}. Then
+$i^*i_* : \CH_k(D) \to \CH_{k - 1}(D)$ sends $\alpha$ to
+$c_1(\mathcal{L}|_D) \cap \alpha$.
+\end{lemma}
+
+\begin{proof}
+This is immediate from the definition of $i_*$ on cycles
+and the definition of $i^*$ given in
+Definition \ref{definition-gysin-homomorphism}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-gysin-commutes-cap-c1}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}. Let $X$ be
+locally of finite type over $S$. Let $(\mathcal{L}, s, i : D \to X)$
+be a triple as in Definition \ref{definition-gysin-homomorphism}.
+Let $\mathcal{N}$ be an invertible $\mathcal{O}_X$-module.
+Then $i^*(c_1(\mathcal{N}) \cap \alpha) = c_1(i^*\mathcal{N}) \cap i^*\alpha$
+in $\CH_{k - 2}(D)$ for all $\alpha \in \CH_k(X)$.
+\end{lemma}
+
+\begin{proof}
+With exactly the same proof as in Lemma \ref{lemma-gysin-factors}
+this follows from Lemmas
+\ref{lemma-pushforward-cap-c1},
+\ref{lemma-cap-commutative}, and
+\ref{lemma-gysin-factors-general}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-gysin-commutes-gysin}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}. Let $X$ be locally
+of finite type over $S$. Let $(\mathcal{L}, s, i : D \to X)$ and
+$(\mathcal{L}', s', i' : D' \to X)$ be two triples as in
+Definition \ref{definition-gysin-homomorphism}. Then the diagram
+$$
+\xymatrix{
+\CH_k(X) \ar[r]_{i^*} \ar[d]_{(i')^*} & \CH_{k - 1}(D) \ar[d]^{j^*} \\
+\CH_{k - 1}(D') \ar[r]^{(j')^*} & \CH_{k - 2}(D \cap D')
+}
+$$
+commutes where each of the maps is a Gysin map.
+\end{lemma}
+
+\begin{proof}
+Denote $j : D \cap D' \to D$ and $j' : D \cap D' \to D'$ the closed
+immersions corresponding to $(\mathcal{L}|_{D'}, s|_{D'}$ and
+$(\mathcal{L}'_D, s|_D)$. We have to show that
+$(j')^*i^*\alpha = j^* (i')^*\alpha$ for all $\alpha \in \CH_k(X)$.
+Let $W \subset X$ be an integral closed subscheme of dimension $k$.
+Let us prove the equality in case $\alpha = [W]$. We will deduce
+it from the key formula.
+
+\medskip\noindent
+We let $\sigma$ be a nonzero meromorphic section of $\mathcal{L}|_W$
+which we require to be equal to $s|_W$ if $W \not \subset D$.
+We let $\sigma'$ be a nonzero meromorphic section of $\mathcal{L}'|_W$
+which we require to be equal to $s'|_W$ if $W \not \subset D'$.
+Write
+$$
+\text{div}_{\mathcal{L}|_W}(\sigma) =
+\sum \text{ord}_{Z_i, \mathcal{L}|_W}(\sigma)[Z_i] = \sum n_i[Z_i]
+$$
+and similarly
+$$
+\text{div}_{\mathcal{L}'|_W}(\sigma') =
+\sum \text{ord}_{Z_i, \mathcal{L}'|_W}(\sigma')[Z_i] = \sum n'_i[Z_i]
+$$
+as in the discussion in Section \ref{section-key}.
+Then we see that $Z_i \subset D$ if $n_i \not = 0$ and
+$Z'_i \subset D'$ if $n'_i \not = 0$. For each $i$, let $\xi_i \in Z_i$
+be the generic point. As in Section \ref{section-key} we choose
+for each $i$ an element
+$\sigma_i \in \mathcal{L}_{\xi_i}$, resp.\ $\sigma'_i \in \mathcal{L}'_{\xi_i}$
+which generates over $B_i = \mathcal{O}_{W, \xi_i}$
+and which is equal to the image of
+$s$, resp.\ $s'$ if $Z_i \not \subset D$, resp.\ $Z_i \not \subset D'$.
+Write $\sigma = f_i \sigma_i$ and $\sigma' = f'_i\sigma'_i$ so that
+$n_i = \text{ord}_{B_i}(f_i)$ and
+$n'_i = \text{ord}_{B_i}(f'_i)$.
+From our definitions it follows that
+$$
+(j')^*i^*[W] =
+\sum \text{ord}_{B_i}(f_i) \text{div}_{\mathcal{L}'|_{Z_i}}(\sigma'_i|_{Z_i})
+$$
+as cycles and
+$$
+j^*(i')^*[W] =
+\sum \text{ord}_{B_i}(f'_i) \text{div}_{\mathcal{L}|_{Z_i}}(\sigma_i|_{Z_i})
+$$
+The key formula (Lemma \ref{lemma-key-formula}) now gives the equality
+$$
+\sum \left(
+\text{ord}_{B_i}(f_i) \text{div}_{\mathcal{L}'|_{Z_i}}(\sigma'_i|_{Z_i}) -
+\text{ord}_{B_i}(f'_i) \text{div}_{\mathcal{L}|_{Z_i}}(\sigma_i|_{Z_i})
+\right) =
+\sum \text{div}_{Z_i}(\partial_{B_i}(f_i, f'_i))
+$$
+of cycles. Note that $\text{div}_{Z_i}(\partial_{B_i}(f_i, f'_i)) = 0$ if
+$Z_i \not \subset D \cap D'$ because in this case either $f_i = 1$
+or $f'_i = 1$. Thus we get a rational equivalence between our specific
+cycles representing $(j')^*i^*[W]$ and $j^*(i')^*[W]$ on $D \cap D' \cap W$.
+By Remark \ref{remark-infinite-sums-rational-equivalences}
+the result follows for general $\alpha$.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

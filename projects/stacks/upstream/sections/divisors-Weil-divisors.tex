@@ -1,0 +1,158 @@
+\section{Weil divisors}
+\label{section-Weil-divisors}
+
+\noindent
+We will introduce Weil divisors and rational equivalence of Weil
+divisors for locally Noetherian integral schemes.
+Since we are not assuming our schemes are quasi-compact we have
+to be a little careful when defining Weil divisors. We have to allow
+infinite sums of prime divisors because a rational function may have
+infinitely many poles for example. For quasi-compact schemes our
+Weil divisors are finite sums as usual. Here is a basic lemma we will
+often use to prove collections of closed subschemes are locally finite.
+
+\begin{lemma}
+\label{lemma-components-locally-finite}
+Let $X$ be a locally Noetherian scheme. Let $Z \subset X$ be a closed
+subscheme. The collection of irreducible components of $Z$
+is locally finite in $X$.
+\end{lemma}
+
+\begin{proof}
+Let $U \subset X$ be a quasi-compact open subscheme. Then $U$ is a Noetherian
+scheme, and hence has a Noetherian underlying topological space
+(Properties, Lemma \ref{properties-lemma-Noetherian-topology}).
+Hence every subspace is Noetherian and
+has finitely many irreducible components
+(see Topology, Lemma \ref{topology-lemma-Noetherian}).
+\end{proof}
+
+\noindent
+Recall that if $Z$ is an irreducible closed subset of a scheme $X$,
+then the codimension of $Z$ in $X$ is equal to the dimension
+of the local ring $\mathcal{O}_{X, \xi}$, where $\xi \in Z$
+is the generic point. See
+Properties, Lemma \ref{properties-lemma-codimension-local-ring}.
+
+\begin{definition}
+\label{definition-Weil-divisor}
+Let $X$ be a locally Noetherian integral scheme.
+\begin{enumerate}
+\item A {\it prime divisor} is an integral closed subscheme $Z \subset X$
+of codimension $1$.
+\item A {\it Weil divisor} is a formal sum $D = \sum n_Z Z$ where
+the sum is over prime divisors of $X$ and the collection
+$\{Z \mid n_Z \not = 0\}$ is locally finite
+(Topology, Definition \ref{topology-definition-locally-finite}).
+\end{enumerate}
+The group of all Weil divisors on $X$ is denoted $\text{Div}(X)$.
+\end{definition}
+
+\noindent
+Our next task is to define the Weil divisor associated to a rational
+function. In order to do this we use the order of vanishing of a
+rational function along a prime divisor which is defined as follows.
+
+\begin{definition}
+\label{definition-order-vanishing}
+Let $X$ be a locally Noetherian integral scheme. Let $f \in R(X)^*$.
+For every prime divisor $Z \subset X$ we define the
+{\it order of vanishing of $f$ along $Z$} as the integer
+$$
+\text{ord}_Z(f) = \text{ord}_{\mathcal{O}_{X, \xi}}(f)
+$$
+where the right hand side is the notion of
+Algebra, Definition \ref{algebra-definition-ord}
+and $\xi$ is the generic point of $Z$.
+\end{definition}
+
+\noindent
+Note that for $f, g \in R(X)^*$ we have
+$$
+\text{ord}_Z(fg) = \text{ord}_Z(f) + \text{ord}_Z(g).
+$$
+Of course it can happen that $\text{ord}_Z(f) < 0$.
+In this case we say that $f$ has a {\it pole} along $Z$
+and that $-\text{ord}_Z(f) > 0$ is the
+{\it order of pole of $f$ along $Z$}. It is important to note
+that the condition $\text{ord}_Z(f) \geq 0$ is {\bf not} equivalent
+to the condition $f \in \mathcal{O}_{X, \xi}$ unless the local
+ring $\mathcal{O}_{X, \xi}$ is a discrete valuation ring.
+
+\begin{lemma}
+\label{lemma-divisor-locally-finite}
+Let $X$ be a locally Noetherian integral scheme. Let $f \in R(X)^*$.
+Then the collections
+$$
+\{Z \subset X \mid Z\text{ a prime divisor with generic point }\xi
+\text{ and }f\text{ not in }\mathcal{O}_{X, \xi}\}
+$$
+and
+$$
+\{Z \subset X \mid Z \text{ a prime divisor and }\text{ord}_Z(f) \not = 0\}
+$$
+are locally finite in $X$.
+\end{lemma}
+
+\begin{proof}
+There exists a nonempty open subscheme $U \subset X$ such that $f$
+corresponds to a section of $\Gamma(U, \mathcal{O}_X^*)$. Hence the
+prime divisors which can occur in the sets of the lemma are all
+irreducible components of $X \setminus U$.
+Hence Lemma \ref{lemma-components-locally-finite} gives the desired result.
+\end{proof}
+
+\noindent
+This lemma allows us to make the following definition.
+
+\begin{definition}
+\label{definition-principal-divisor}
+Let $X$ be a locally Noetherian integral scheme. Let $f \in R(X)^*$.
+The {\it principal Weil divisor associated to $f$} is the Weil divisor
+$$
+\text{div}(f) = \text{div}_X(f) = \sum \text{ord}_Z(f) [Z]
+$$
+where the sum is over prime divisors and $\text{ord}_Z(f)$ is as in
+Definition \ref{definition-order-vanishing}. This makes sense
+by Lemma \ref{lemma-divisor-locally-finite}.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-div-additive}
+Let $X$ be a locally Noetherian integral scheme. Let $f, g \in R(X)^*$. Then
+$$
+\text{div}_X(fg) = \text{div}_X(f) + \text{div}_X(g)
+$$
+as Weil divisors on $X$.
+\end{lemma}
+
+\begin{proof}
+This is clear from the additivity of the $\text{ord}$ functions.
+\end{proof}
+
+\noindent
+We see from the lemma above that the collection of principal Weil divisors
+form a subgroup of the group of all Weil divisors. This leads to the following
+definition.
+
+\begin{definition}
+\label{definition-class-group}
+Let $X$ be a locally Noetherian integral scheme. The
+{\it Weil divisor class group} of $X$ is the quotient of
+the group of Weil divisors by the subgroup of principal Weil divisors.
+Notation: $\text{Cl}(X)$.
+\end{definition}
+
+\noindent
+By construction we obtain an exact complex
+\begin{equation}
+\label{equation-Weil-divisor-class}
+R(X)^* \xrightarrow{\text{div}} \text{Div}(X) \to \text{Cl}(X) \to 0
+\end{equation}
+which we can think of as a presentation of $\text{Cl}(X)$. Our next task
+is to relate the Weil divisor class group to the Picard group.
+
+
+
+
+

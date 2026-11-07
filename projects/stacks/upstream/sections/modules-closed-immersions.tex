@@ -1,0 +1,102 @@
+\section{Closed immersions and abelian sheaves}
+\label{section-closed-immersions}
+
+\noindent
+Recall that we think of an abelian sheaf on a topological space $X$ as a
+sheaf of $\underline{\mathbf{Z}}_X$-modules. Thus we may apply any results,
+definitions for sheaves of modules to abelian sheaves.
+
+\begin{lemma}
+\label{lemma-i-star-exact}
+Let $X$ be a topological space. Let $Z \subset X$ be a closed subset.
+Denote $i : Z \to X$ the inclusion map. The functor
+$$
+i_* : \textit{Ab}(Z) \longrightarrow \textit{Ab}(X)
+$$
+is exact, fully faithful, with essential image exactly those
+abelian sheaves whose support is contained in $Z$. The functor $i^{-1}$
+is a left inverse to $i_*$.
+\end{lemma}
+
+\begin{proof}
+Exactness follows from the description of
+stalks in Sheaves, Lemma \ref{sheaves-lemma-stalks-closed-pushforward}
+and Lemma \ref{lemma-abelian}. The rest was shown in
+Sheaves, Lemma \ref{sheaves-lemma-equivalence-categories-closed-abelian}.
+\end{proof}
+
+\noindent
+Let $\mathcal{F}$ be an abelian sheaf on the topological space $X$. Given
+a closed subset $Z$, there is a canonical abelian subsheaf of $\mathcal{F}$
+which consists of exactly those sections whose support is contained in $Z$.
+Here is the exact statement.
+
+\begin{remark}
+\label{remark-sections-support-in-closed}
+Let $X$ be a topological space. Let $Z \subset X$ be a closed subset.
+Let $\mathcal{F}$ be an abelian sheaf on $X$. For $U \subset X$ open set, define
+$$
+\mathcal{H}_Z(\mathcal{F})(U) =
+\{s \in \mathcal{F}(U) \mid
+\text{ the support of }s\text{ is contained in }Z \cap U\}.
+$$
+Then $\mathcal{H}_Z(\mathcal{F})$ is an abelian subsheaf of $\mathcal{F}$.
+It is the largest abelian subsheaf of $\mathcal{F}$ whose support is
+contained in $Z$. By Lemma \ref{lemma-i-star-exact} we may (and we do)
+view $\mathcal{H}_Z(\mathcal{F})$ as an abelian sheaf on $Z$.
+In this way we obtain a left exact functor
+$$
+\textit{Ab}(X) \longrightarrow \textit{Ab}(Z),\quad
+\mathcal{F} \longmapsto \mathcal{H}_Z(\mathcal{F})
+\text{ viewed as abelian sheaf on }Z
+$$
+All of the statements made above follow directly from
+Lemma \ref{lemma-support-section-closed}.
+\end{remark}
+
+\noindent
+This seems like a good opportunity to show that the functor
+$i_*$ has a right adjoint on abelian sheaves.
+
+\begin{lemma}
+\label{lemma-i-star-right-adjoint}
+Let $i : Z \to X$ be the inclusion of a closed subset into the
+topological space $X$. The functor $\textit{Ab}(X) \to \textit{Ab}(Z)$,
+$\mathcal{F} \mapsto \mathcal{H}_Z(\mathcal{F})$ of
+Remark \ref{remark-sections-support-in-closed}
+is a right adjoint to $i_* : \textit{Ab}(Z) \to \textit{Ab}(X)$.
+In particular $i_*$ commutes with arbitrary colimits.
+\end{lemma}
+
+\begin{proof}
+We have to show that for any abelian sheaf $\mathcal{F}$ on $X$ and any
+abelian sheaf $\mathcal{G}$ on $Z$ we have
+$$
+\Hom_{\textit{Ab}(X)}(i_*\mathcal{G}, \mathcal{F}) =
+\Hom_{\textit{Ab}(Z)}(\mathcal{G}, \mathcal{H}_Z(\mathcal{F}))
+$$
+This is clear because after all any section of $i_*\mathcal{G}$
+has support in $Z$. Details omitted.
+\end{proof}
+
+\begin{remark}
+\label{remark-i-star-right-adjoint}
+In Sheaves, Remark \ref{sheaves-remark-i-star-not-exact}
+we showed that $i_*$ as a functor
+on the categories of sheaves of sets
+does not have a right adjoint simply because
+it is not exact. However, it is very close to being
+true, in fact, the functor $i_*$ is exact on sheaves
+of pointed sets, sections with support in $Z$ can
+be defined for sheaves of pointed sets, and $\mathcal{H}_Z$
+makes sense and is a right adjoint to $i_*$.
+\end{remark}
+
+
+
+
+
+
+
+
+

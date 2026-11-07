@@ -1,0 +1,361 @@
+\section{Quasi-finite maps}
+\label{section-quasi-finite}
+
+\noindent
+Consider a ring map $R \to S$ of finite type.
+A map $\Spec(S) \to \Spec(R)$ is quasi-finite
+at a point if that point is isolated in its fibre.
+This means that the fibre is zero dimensional at that point.
+In this section we study the basic properties of this
+important but technical notion. More advanced material
+can be found in the next section.
+
+\begin{lemma}
+\label{lemma-isolated-point}
+Let $k$ be a field.
+Let $S$ be a finite type $k$-algebra.
+Let $\mathfrak q$ be a prime of $S$.
+The following are equivalent:
+\begin{enumerate}
+\item $\mathfrak q$ is an isolated point of $\Spec(S)$,
+\item $S_{\mathfrak q}$ is finite over $k$,
+\item there exists a $g \in S$, $g \not\in \mathfrak q$ such that
+$D(g) = \{ \mathfrak q \}$,
+\item $\dim_{\mathfrak q} \Spec(S) = 0$,
+\item $\mathfrak q$ is a closed point of $\Spec(S)$ and
+$\dim(S_{\mathfrak q}) = 0$, and
+\item the field extension $\kappa(\mathfrak q)/k$ is finite
+and $\dim(S_{\mathfrak q}) = 0$.
+\end{enumerate}
+In this case $S = S_{\mathfrak q} \times S'$ for some
+finite type $k$-algebra $S'$. Also, the element $g$
+as in (3) has the property $S_{\mathfrak q} = S_g$.
+\end{lemma}
+
+\begin{proof}
+Suppose $\mathfrak q$ is an isolated point of $\Spec(S)$, i.e.,
+$\{\mathfrak q\}$ is open in $\Spec(S)$.
+Because $\Spec(S)$ is a Jacobson space (see
+Lemmas \ref{lemma-finite-type-field-Jacobson} and
+\ref{lemma-jacobson})
+we see that $\mathfrak q$ is a closed point. Hence
+$\{\mathfrak q\}$ is open and closed in $\Spec(S)$.
+By
+Lemmas \ref{lemma-disjoint-decomposition} and
+\ref{lemma-disjoint-implies-product} we may
+write $S = S_1 \times S_2$ with $\mathfrak q$
+corresponding to the only point $\Spec(S_1)$.
+Hence $S_1 = S_{\mathfrak q}$ is a zero dimensional
+ring of finite type over $k$. Hence it is finite over $k$
+for example by Lemma \ref{lemma-Noether-normalization}.
+We have proved (1) implies (2).
+
+\medskip\noindent
+Suppose $S_{\mathfrak q}$ is finite over $k$.
+Then $S_{\mathfrak q}$ is Artinian local, see
+Lemma \ref{lemma-finite-dimensional-algebra}. So
+$\Spec(S_{\mathfrak q}) = \{\mathfrak qS_{\mathfrak q}\}$ by
+Lemma \ref{lemma-artinian-finite-length}.
+Consider the exact sequence $0 \to K \to S \to S_{\mathfrak q}
+\to Q \to 0$. It is clear that $K_{\mathfrak q} = Q_{\mathfrak q} = 0$.
+Also, $K$ is a finite $S$-module as $S$ is Noetherian and
+$Q$ is a finite $S$-module since $S_{\mathfrak q}$ is finite over $k$.
+Hence there exists $g \in S$, $g \not \in \mathfrak q$ such that
+$K_g = Q_g = 0$. Thus $S_{\mathfrak q} = S_g$ and
+$D(g) = \{ \mathfrak q \}$. We have proved that (2) implies (3).
+
+\medskip\noindent
+Suppose $D(g) =  \{ \mathfrak q \}$. Since $D(g)$ is open by
+construction of the topology on $\Spec(S)$ we see that
+$\mathfrak q$ is an isolated point of $\Spec(S)$.
+We have proved that (3) implies (1).
+In other words (1), (2) and (3) are equivalent.
+
+\medskip\noindent
+Assume $\dim_{\mathfrak q} \Spec(S) = 0$. This means that
+there is some open neighbourhood of $\mathfrak q$ in $\Spec(S)$
+which has dimension zero. Then there is an open neighbourhood of the
+form $D(g)$ which has dimension zero. Since $S_g$ is Noetherian
+we conclude that $S_g$ is Artinian and
+$D(g) = \Spec(S_g)$ is a finite discrete set, see
+Proposition \ref{proposition-dimension-zero-ring}.
+Thus $\mathfrak q$ is an isolated point of $D(g)$ and,
+by the equivalence of (1) and (2) above applied to
+$\mathfrak qS_g \subset S_g$, we see that
+$S_{\mathfrak q} = (S_g)_{\mathfrak qS_g}$ is finite over $k$.
+Hence (4) implies (2). It is clear that (1) implies (4).
+Thus (1) -- (4) are all equivalent.
+
+\medskip\noindent
+Lemma \ref{lemma-dimension-closed-point-finite-type-field}
+gives the implication (5) $\Rightarrow$ (4).
+The implication (4) $\Rightarrow$ (6) follows from
+Lemma \ref{lemma-dimension-at-a-point-finite-type-field}.
+The implication (6) $\Rightarrow$ (5) follows from
+Lemma \ref{lemma-finite-residue-extension-closed}.
+At this point we know (1) -- (6) are equivalent.
+
+\medskip\noindent
+The two statements at the end of the lemma we saw during the
+course of the proof of the equivalence of (1), (2) and (3) above.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-isolated-point-fibre}
+\begin{slogan}
+Equivalent conditions for isolated points in fibres
+\end{slogan}
+Let $R \to S$ be a ring map of finite type.
+Let $\mathfrak q \subset S$ be a prime lying over
+$\mathfrak p \subset R$. Let $F = \Spec(S \otimes_R \kappa(\mathfrak p))$
+be the fibre of $\Spec(S) \to \Spec(R)$, see
+Remark \ref{remark-fundamental-diagram}.
+Denote $\overline{\mathfrak q} \in F$ the point corresponding to
+$\mathfrak q$. The following are equivalent
+\begin{enumerate}
+\item $\overline{\mathfrak q}$ is an isolated point of $F$,
+\item $S_{\mathfrak q}/\mathfrak pS_{\mathfrak q}$ is finite over
+$\kappa(\mathfrak p)$,
+\item there exists a $g \in S$, $g \not \in \mathfrak q$ such that
+the only prime of $D(g)$ mapping to $\mathfrak p$ is $\mathfrak q$,
+\item $\dim_{\overline{\mathfrak q}}(F) = 0$,
+\item $\overline{\mathfrak q}$ is a closed point of $F$ and
+$\dim(S_{\mathfrak q}/\mathfrak pS_{\mathfrak q}) = 0$, and
+\item the field extension $\kappa(\mathfrak q)/\kappa(\mathfrak p)$
+is finite and $\dim(S_{\mathfrak q}/\mathfrak pS_{\mathfrak q}) = 0$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Note that $S_{\mathfrak q}/\mathfrak pS_{\mathfrak q} =
+(S \otimes_R \kappa(\mathfrak p))_{\overline{\mathfrak q}}$.
+Moreover $S \otimes_R \kappa(\mathfrak p)$ is of finite type over
+$\kappa(\mathfrak p)$.
+The conditions correspond exactly to the conditions of
+Lemma \ref{lemma-isolated-point}
+for the $\kappa(\mathfrak p)$-algebra $S \otimes_R \kappa(\mathfrak p)$
+and the prime $\overline{\mathfrak q}$, hence they are equivalent.
+\end{proof}
+
+\begin{definition}
+\label{definition-quasi-finite}
+Let $R \to S$ be a finite type ring map.
+Let $\mathfrak q \subset S$ be a prime.
+\begin{enumerate}
+\item If the equivalent conditions of Lemma \ref{lemma-isolated-point-fibre}
+are satisfied then we say $R \to S$ is {\it quasi-finite at $\mathfrak q$}.
+\item We say a ring map $A \to B$ is {\it quasi-finite}
+if it is of finite type and quasi-finite at all primes of $B$.
+\end{enumerate}
+\end{definition}
+
+\begin{lemma}
+\label{lemma-quasi-finite-above-p}
+Let $R \to S$ be a finite type ring map
+and $\mathfrak p$ be a prime ideal of $R$.
+Then the following are equivalent:
+\begin{enumerate}
+\item $R \to S$ is quasi-finite at all primes of $S$ lying over $\mathfrak p$,
+\item $S \otimes_R \kappa(\mathfrak p)$ is a finite
+$\kappa(\mathfrak p)$-algebra, and
+\item $\Spec(S \otimes_R \kappa(\mathfrak p))$ is a finite set.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Condition (1) says the topology on
+$\Spec(S \otimes_R \kappa(\mathfrak p))$ is discrete (as every point
+is open). Hence the equivalence of (1), (2), (3) follows from
+Lemma \ref{lemma-finite-type-algebra-finite-nr-primes}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-quasi-finite}
+Let $R \to S$ be a finite type ring map. Then $R \to S$ is quasi-finite
+if and only if for all primes $\mathfrak p \subset R$ the ring
+$S \otimes_R \kappa(\mathfrak p)$ is finite over $\kappa(\mathfrak p)$.
+\end{lemma}
+
+\begin{proof}
+Follows immediately from the more general
+Lemma \ref{lemma-quasi-finite-above-p}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-quasi-finite-local}
+Let $R \to S$ be a finite type ring map. Let $\mathfrak q \subset S$
+be a prime lying over $\mathfrak p \subset R$. Let
+$f \in R$, $f \not \in \mathfrak p$ and $g \in S$, $g \not \in \mathfrak q$.
+Then $R \to S$ is quasi-finite at $\mathfrak q$ if and only if
+$R_f \to S_{fg}$ is quasi-finite at $\mathfrak qS_{fg}$.
+\end{lemma}
+
+\begin{proof}
+The fibre of $\Spec(S_{fg}) \to \Spec(R_f)$ is homeomorphic
+to an open subset of the fibre of $\Spec(S) \to \Spec(R)$.
+Hence the lemma follows from part (1) of the equivalent conditions of
+Lemma \ref{lemma-isolated-point-fibre}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-four-rings}
+Let
+$$
+\xymatrix{
+S \ar[r] & S' & &
+\mathfrak q \ar@{-}[r] & \mathfrak q' \\
+R \ar[u] \ar[r] &  R' \ar[u] & &
+\mathfrak p \ar@{-}[r] \ar@{-}[u] & \mathfrak p' \ar@{-}[u]
+}
+$$
+be a commutative diagram of rings with primes as indicated.
+Assume $R \to S$ of finite type, and $S \otimes_R R' \to S'$ surjective.
+If $R \to S$ is quasi-finite at $\mathfrak q$, then
+$R' \to S'$ is quasi-finite at $\mathfrak q'$.
+\end{lemma}
+
+\begin{proof}
+Write $S \otimes_R \kappa(\mathfrak p) = S_1 \times S_2$
+with $S_1$ finite over $\kappa(\mathfrak p)$ and such that
+$\mathfrak q$ corresponds to a point of $S_1$ as in
+Lemma \ref{lemma-isolated-point}. This product decomposition
+induces a corresponding product decomposition for any
+$S \otimes_R \kappa(\mathfrak p)$-algebra. In particular,
+we obtain $S' \otimes_{R'} \kappa(\mathfrak p') = S'_1 \times S'_2$.
+Because $S \otimes_R R' \to S'$ is surjective the canonical map
+$(S \otimes_R \kappa(\mathfrak p)) \otimes_{\kappa(\mathfrak p)}
+\kappa(\mathfrak p') \to S' \otimes_{R'} \kappa(\mathfrak p')$
+is surjective and hence
+$S_i \otimes_{\kappa(\mathfrak p)} \kappa(\mathfrak p') \to S'_i$
+is surjective. It follows that $S'_1$ is finite over $\kappa(\mathfrak p')$.
+The map $S' \otimes_{R'} \kappa(\mathfrak p') \to
+\kappa(\mathfrak q')$ factors through $S_1'$
+(i.e.\ it annihilates the factor $S_2'$)
+because the map $S \otimes_R \kappa(\mathfrak p) \to
+\kappa(\mathfrak q)$ factors through $S_1$
+(i.e.\ it annihilates the factor $S_2$). Thus
+$\mathfrak q'$ corresponds to a point of
+$\Spec(S_1')$ in the disjoint union decomposition
+of the fibre: $\Spec(S' \otimes_{R'} \kappa(\mathfrak p'))
+= \Spec(S_1') \amalg \Spec(S_2')$, see
+Lemma \ref{lemma-spec-product}.
+Since $S_1'$ is finite over a field, it is Artinian ring,
+and hence $\Spec(S_1')$ is a finite discrete set.
+(See Proposition \ref{proposition-dimension-zero-ring}.)
+We conclude $\mathfrak q'$ is isolated in its fibre as
+desired.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-quasi-finite-composition}
+A composition of quasi-finite ring maps is quasi-finite.
+\end{lemma}
+
+\begin{proof}
+Suppose $A \to B$ and $B \to C$ are quasi-finite ring maps. By
+Lemma \ref{lemma-compose-finite-type}
+we see that $A \to C$ is of finite type.
+Let $\mathfrak r \subset C$  be a prime of $C$ lying over
+$\mathfrak q \subset B$ and $\mathfrak p \subset A$. Since $A \to B$ and
+$B \to C$ are quasi-finite at $\mathfrak q$ and $\mathfrak r$ respectively,
+then there exist $b \in B$ and $c \in C$ such that $\mathfrak q$ is
+the only prime of $D(b)$ which maps to $\mathfrak p$ and similarly
+$\mathfrak r$ is  the only prime of $D(c)$ which maps to $\mathfrak q$.
+If $c' \in C$ is the image of $b \in B$, then $\mathfrak r$ is the only
+prime of $D(cc')$ which maps to $\mathfrak p$.
+Therefore $A \to C$ is quasi-finite at $\mathfrak r$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-quasi-finite-base-change}
+Let $R \to S$ be a ring map of finite type.
+Let $R \to R'$ be any ring map. Set $S' = R' \otimes_R S$.
+\begin{enumerate}
+\item The set
+$\{\mathfrak q' \mid R' \to S' \text{ quasi-finite at }\mathfrak q'\}$
+is the inverse image of the corresponding set of $\Spec(S)$
+under the canonical map $\Spec(S') \to \Spec(S)$.
+\item If $\Spec(R') \to \Spec(R)$ is surjective,
+then $R \to S$ is quasi-finite if and only if $R' \to S'$ is quasi-finite.
+\item Any base change of a quasi-finite ring map is quasi-finite.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let $\mathfrak p' \subset R'$ be a prime lying over $\mathfrak p \subset R$.
+Then the fibre ring $S' \otimes_{R'} \kappa(\mathfrak p')$ is the
+base change of the fibre ring $S \otimes_R \kappa(\mathfrak p)$
+by the field extension $\kappa(\mathfrak p) \to \kappa(\mathfrak p')$.
+Hence the first assertion follows from the invariance of dimension
+under field extension
+(Lemma \ref{lemma-dimension-at-a-point-preserved-field-extension})
+and Lemma \ref{lemma-isolated-point}.
+The stability of quasi-finite maps under base change follows from
+this and the stability of finite type property under base change.
+The second assertion follows
+since the assumption implies that given a prime $\mathfrak q \subset S$ we can
+find a prime $\mathfrak q' \subset S'$ lying over it.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-quasi-finite-permanence}
+Let $A \to B$ and $B \to C$ be ring homomorphisms such that $A \to C$
+is of finite type. Let $\mathfrak r$ be a prime of $C$ lying over
+$\mathfrak q \subset B$ and $\mathfrak p \subset A$.
+If $A \to C$ is quasi-finite at $\mathfrak r$, then
+$B \to C$ is quasi-finite at $\mathfrak r$.
+\end{lemma}
+
+\begin{proof}
+Observe that $B \to C$ is of finite type
+(Lemma \ref{lemma-compose-finite-type})
+so that the statement makes sense.
+Let us use characterization (3) of Lemma \ref{lemma-isolated-point-fibre}.
+If $A \to C$ is quasi-finite at $\mathfrak r$, then
+there exists some $c \in C$ such that
+$$
+\{\mathfrak r' \subset C \text{ lying over }\mathfrak p\} \cap D(c) =
+\{\mathfrak{r}\}.
+$$
+Since the primes $\mathfrak r' \subset C$ lying over $\mathfrak q$
+form a subset of the primes $\mathfrak r' \subset C$ lying over
+$\mathfrak p$ we conclude $B \to C$ is quasi-finite at $\mathfrak r$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-generically-finite}
+Let $R \to S$ be a ring map of finite type.
+Let $\mathfrak p \subset R$ be a minimal prime.
+Assume that there are at most finitely many primes of $S$
+lying over $\mathfrak p$. Then there exists a
+$g \in R$, $g \not \in \mathfrak p$ such that the
+ring map $R_g \to S_g$ is finite.
+\end{lemma}
+
+\begin{proof}
+Let $x_1, \ldots, x_n$ be generators of $S$ over $R$.
+By Lemma \ref{lemma-quasi-finite-above-p} the assumption means that
+$S \otimes_R \kappa(\mathfrak p) = S_{\mathfrak p}/\mathfrak pS_{\mathfrak p}$
+is a finite $\kappa(\mathfrak p)$-algebra.
+Thus we may find monic polynomials
+$P_i \in R_{\mathfrak p}[X]$ such that $P_i(x_i)$ maps to zero
+in $S_{\mathfrak p}/\mathfrak pS_{\mathfrak p}$.
+Since $\mathfrak p$ is a minimal prime,
+$\mathfrak pR_{\mathfrak p}$ is a locally nilpotent ideal, see
+Lemma \ref{lemma-minimal-prime-reduced-ring}.
+Hence $\mathfrak pS_{\mathfrak p}$ is a locally nilpotent ideal, see
+Lemma \ref{lemma-locally-nilpotent}. Thus
+there exist $e_i \geq 1$ such that $P(x_i)^{e_i} = 0$
+in $S_{\mathfrak p}$. Let $g_1 \in R$, $g_1 \not \in \mathfrak p$
+be an element such that $P_i$ has coefficients in $R[1/g_1]$ for all $i$.
+Next, let $g_2 \in R$, $g_2 \not \in \mathfrak p$ be an element
+such that $P(x_i)^{e_i} = 0$ in $S_{g_1g_2}$. Setting $g = g_1g_2$
+we win.
+\end{proof}
+
+
+
+
+
+
+

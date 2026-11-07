@@ -1,0 +1,611 @@
+\section{Spectral sequences: filtered complexes}
+\label{section-filtered-complex}
+
+\begin{definition}
+\label{definition-filtered-complex}
+Let $\mathcal{A}$ be an abelian category.
+A {\it filtered complex $K^\bullet$ of $\mathcal{A}$}
+is a complex of $\text{Fil}(\mathcal{A})$ (see
+Definition \ref{definition-filtered}).
+\end{definition}
+
+\noindent
+We will denote the filtration on the objects by $F$. Thus
+$F^pK^n$ denotes the $p$th step in the filtration of the $n$th term of the
+complex. Note that each $F^pK^\bullet$ is a complex of $\mathcal{A}$.
+Hence we could also have defined a filtered complex as a filtered object
+in the (abelian) category of complexes of $\mathcal{A}$.
+In particular $\text{gr} K^\bullet$ is a graded object of the
+category of complexes of $\mathcal{A}$.
+
+\medskip\noindent
+To describe the spectral sequence associated to such an object
+we assume, for the moment, that $\mathcal{A}$ is an abelian category
+which has countable direct sums and countable direct sums are exact
+(this is not automatic, see Remark \ref{remark-direct-sums-not-exact}).
+Let us denote $d$ the differential of $K$. Forgetting the grading
+we can think of $\bigoplus K^n$ as a filtered differential object of
+$\mathcal{A}$. Hence according to Section \ref{section-filtered-differential}
+we obtain a spectral sequence $(E_r, d_r)_{r \geq 0}$. In this section
+we work out the terms of this spectral sequence, and we endow the terms
+of this spectral sequence with additional structure coming from the
+grading of $K$.
+
+\medskip\noindent
+First we point out that $E_0^p = \text{gr}^p K^\bullet$ is a
+complex and hence is graded. Thus $E_0$ is bigraded in a natural
+way. It is customary to use the bigrading
+$$
+E_0 = \bigoplus\nolimits_{p, q} E_0^{p, q},
+\quad
+E_0^{p, q} = \text{gr}^p K^{p + q}
+$$
+The idea is that $p + q$ should be thought of as the {\it total degree} of
+the (co)homology classes. Also, $p$ is called the {\it filtration degree},
+and $q$ is called the {\it complementary degree}.
+The differential $d_0$ is compatible with this
+bigrading in the following way
+$$
+d_0  = \bigoplus d_0^{p, q},
+\quad
+d_0^{p, q} : E_0^{p, q} \to E_0^{p, q + 1}.
+$$
+Namely, $d_0^p$ is just the differential on the complex
+$\text{gr}^p K^\bullet$ (which occurs as $\text{gr}^pE_0$ just shifted
+a bit).
+
+\medskip\noindent
+To go further we identify the objects $B_r^p$ and $Z_r^p$ introduced
+in Section \ref{section-filtered-differential} as graded objects and
+we work out the corresponding decompositions of the differentials.
+We do this in a completely straightforward manner, but again we warn
+the reader that our notation is not the same as notation found
+elsewhere. We define
+$$
+Z_r^{p, q} =
+\frac{F^pK^{p + q} \cap d^{-1}(F^{p + r}K^{p + q + 1}) + F^{p + 1}K^{p + q}}
+{F^{p + 1}K^{p + q}}
+$$
+and
+$$
+B_r^{p, q} =
+\frac{F^pK^{p + q} \cap d(F^{p - r + 1}K^{p + q - 1}) + F^{p + 1}K^{p + q}}
+{F^{p + 1}K^{p + q}}
+$$
+and of course $E_r^{p, q} = Z_r^{p, q}/B_r^{p, q}$.
+With these definitions it is completely clear that
+$Z_r^p = \bigoplus_q Z_r^{p, q}$,
+$B_r^p = \bigoplus_q B_r^{p, q}$, and
+$E_r^p = \bigoplus_q E_r^{p, q}$. Moreover, we have
+$$
+0 \subset \ldots \subset B_r^{p, q} \subset
+\ldots
+\subset Z_r^{p, q} \subset \ldots \subset E_0^{p, q}
+$$
+Also, the map $d_r^p$ decomposes as the direct sum of the maps
+$$
+d_r^{p, q} : E_r^{p, q} \longrightarrow E_r^{p + r, q - r + 1},
+\quad
+z + F^{p + 1}K^{p + q}
+\mapsto
+dz + F^{p + r + 1}K^{p + q + 1}
+$$
+where $z \in F^pK^{p + q} \cap d^{-1}(F^{p + r}K^{p + q + 1})$.
+
+\begin{lemma}
+\label{lemma-spectral-sequence-filtered-complex}
+Let $\mathcal{A}$ be an abelian category. Let $(K^\bullet, F)$ be a
+filtered complex of $\mathcal{A}$. There is a spectral sequence
+$(E_r, d_r)_{r \geq 0}$ in the category of bigraded objects of $\mathcal{A}$
+associated to $(K^\bullet, F)$ such that $d_r$ has bidegree $(r, - r + 1)$
+and such that $E_r$ has bigraded pieces $E_r^{p, q}$ and maps
+$d_r^{p, q} : E_r^{p, q} \to E_r^{p + r, q - r + 1}$ as given above.
+Furthermore, we have $E_0^{p, q} = \text{gr}^p(K^{p + q})$,
+$d_0^{p, q} = \text{gr}^p(d^{p + q})$,
+and $E_1^{p, q} = H^{p + q}(\text{gr}^p(K^\bullet))$.
+\end{lemma}
+
+\begin{proof}
+If $\mathcal{A}$ has countable direct sums and if countable direct
+sums are exact, then this follows from the discussion above.
+In general, we proceed as follows; we strongly suggest the reader
+skip this proof. Consider the bigraded object $A = (F^{p + 1}K^{p + 1 + q})$
+of $\mathcal{A}$, i.e., we put $F^{p + 1}K^{p + 1 + q}$ in degree $(p, q)$
+(the funny shift in numbering to get numbering correct later on).
+We endow it with a differential $d : A \to A[0, 1]$ by using $d$
+on each component. Then $(A, d)$ is a differential bigraded object.
+Consider the map
+$$
+\alpha : A \to A[-1, 1]
+$$
+which is given in degree $(p, q)$ by the inclusion
+$F^{p + 1}K^{p + 1 + q} \to F^pK^{p + 1 + q}$.
+This is an injective morphism of differential objects
+$\alpha : (A, d) \to (A, d)[-1, 1]$. Hence, we can apply
+Remark \ref{remark-differential-object-selfmap}
+with $S = [0, 1]$ and $T = [1, -1]$.
+The corresponding spectral sequence $(E_r, d_r)_{r \geq 0}$
+of bigraded objects is the spectral sequence we are looking
+for. Let us unwind the definitions a bit. First of all we have
+$E_r = (E_r^{p, q})$. Then, since $T^rS = [r, -r + 1]$
+we have $d_r : E_r \to E_r[r, -r + 1]$ which means that
+$d_r^{p, q} : E_r^{p, q} \to E_r^{p + r, q - r + 1}$.
+
+\medskip\noindent
+To see that the description of the graded pieces hold, we argue
+as above. Namely, first we have
+$$
+E_0 = \Coker(\alpha : A \to A[-1, 1])[0, -1] =
+\Coker(\alpha[0, -1] : A[0, -1] \to A[-1, 0])
+$$
+and by our choice of numbering above this gives
+$$
+E_0^{p, q} = \Coker(F^{p + 1}K^{p + q} \to F^pK^{p + q}) = \text{gr}^pK^{p + q}
+$$
+The first differential is given by
+$d_0^{p, q} = \text{gr}^pd^{p + q} : E_0^{p, q} \to E_0^{p, q + 1}$.
+Next, the description of the boundaries $B_r$ and the cocycles $Z_r$
+in Remark \ref{remark-differential-object-selfmap}
+translates into a straightforward manner into the formulae
+for $Z_r^{p, q}$ and $B_r^{p, q}$ given above.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-spectral-sequence-filtered-complex-d1}
+Let $\mathcal{A}$ be an abelian category.
+Let $(K^\bullet, F)$ be a filtered complex of $\mathcal{A}$.
+Assume $\mathcal{A}$ has countable direct sums.
+Let $(E_r, d_r)_{r \geq 0}$ be the spectral sequence
+associated to $(K^\bullet, F)$.
+\begin{enumerate}
+\item The map
+$$
+d_1^{p, q} :
+E_1^{p, q} = H^{p + q}(\text{gr}^p(K^\bullet))
+\longrightarrow
+E_1^{p + 1, q} = H^{p + q + 1}(\text{gr}^{p + 1}(K^\bullet))
+$$
+is equal to the boundary map in cohomology associated to the short
+exact sequence of complexes
+$$
+0 \to \text{gr}^{p + 1}(K^\bullet) \to
+F^pK^\bullet/F^{p + 2}K^\bullet \to \text{gr}^p(K^\bullet) \to 0.
+$$
+\item Assume that $d(F^pK) \subset F^{p + 1}K$ for all $p \in \mathbf{Z}$.
+Then $d$ induces the zero differential on $\text{gr}^p(K^\bullet)$
+and hence
+$E_1^{p, q} = \text{gr}^p(K^\bullet)^{p + q}$.
+Furthermore, in this case
+$$
+d_1^{p, q} :
+E_1^{p, q} = \text{gr}^p(K^\bullet)^{p + q}
+\longrightarrow
+E_1^{p + 1, q} = \text{gr}^{p + 1}(K^\bullet)^{p + q + 1}
+$$
+is the morphism induced by $d$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+This is clear from the formula given for the differential
+$d_1^{p, q}$ just above Lemma \ref{lemma-spectral-sequence-filtered-complex}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-spectral-sequence-filtered-complex-functorial}
+Let $\mathcal{A}$ be an abelian category.
+Let $\alpha : (K^\bullet, F) \to (L^\bullet, F)$ be a morphism of
+filtered complexes of $\mathcal{A}$. Let $(E_r(K), d_r)_{r \geq 0}$,
+resp.\ $(E_r(L), d_r)_{r \geq 0}$ be the spectral sequence associated
+to $(K^\bullet, F)$, resp.\ $(L^\bullet, F)$.
+The morphism $\alpha$ induces a canonical morphism of spectral
+sequences $\{\alpha_r : E_r(K) \to E_r(L)\}_{r \geq 0}$ compatible
+with the bigradings.
+\end{lemma}
+
+\begin{proof}
+Obvious from the explicit representation of the terms of the
+spectral sequences.
+\end{proof}
+
+\begin{definition}
+\label{definition-filtration-cohomology-filtered-complex}
+Let $\mathcal{A}$ be an abelian category.
+Let $(K^\bullet, F)$ be a filtered complex of $\mathcal{A}$.
+The {\it induced filtration} on $H^n(K^\bullet)$ is the filtration defined
+by $F^pH^n(K^\bullet) = \Im(H^n(F^pK^\bullet) \to H^n(K^\bullet))$.
+\end{definition}
+
+\noindent
+Writing out what this means we see that
+\begin{equation}
+\label{equation-filtration-cohomology}
+F^pH^n(K^\bullet, d) =
+\frac{\Ker(d) \cap F^pK^n + \Im(d) \cap K^n}{\Im(d) \cap K^n}
+\end{equation}
+and hence we see that
+\begin{equation}
+\label{equation-graded-cohomology}
+\text{gr}^p H^n(K^\bullet) =
+\frac{\Ker(d) \cap F^pK^n}{\Ker(d) \cap F^{p + 1}K^n + \Im(d) \cap F^pK^n}
+\end{equation}
+(one intermediate step omitted).
+
+\begin{lemma}
+\label{lemma-compute-cohomology-filtered-complex}
+Let $\mathcal{A}$ be an abelian category. Let $(K^\bullet, F)$ be a filtered
+complex of $\mathcal{A}$. If $Z_\infty^{p, q}$ and $B_\infty^{p, q}$ exist
+(see proof), then
+\begin{enumerate}
+\item the limit $E_\infty$ exists and is a bigraded object having
+$E_\infty^{p, q} = Z_\infty^{p, q}/B_\infty^{p, q}$ in bidegree $(p, q)$,
+\item the $p$th graded part $\text{gr}^pH^n(K^\bullet)$ of the
+$n$th cohomology object of $K^\bullet$ is a subquotient of
+$E_\infty^{p, n - p}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+The objects $Z_\infty$, $B_\infty$, and the limit
+$E_\infty = Z_\infty/B_\infty$ of
+Definition \ref{definition-limit-spectral-sequence}
+are bigraded objects of $\mathcal{A}$ by our construction of the
+spectral sequence in Lemma \ref{lemma-spectral-sequence-filtered-complex}.
+Since $Z_r^{p, q}$, resp.\ $B_r^{p, q}$ is the bidegree $(p, q)$
+part of $Z_r$, resp.\ $B_r$, if we assume that
+$$
+Z_\infty^{p, q} = \bigcap\nolimits_r Z_r^{p, q} =
+\bigcap\nolimits_r
+\frac{F^pK^{p + q} \cap d^{-1}(F^{p + r}K^{p + q + 1}) + F^{p + 1}K^{p + q}}
+{F^{p + 1}K^{p + q}}
+$$
+and
+$$
+B_\infty^{p, q} = \bigcup\nolimits_r B_r^{p, q} =
+\bigcup\nolimits_r
+\frac{F^pK^{p + q} \cap d(F^{p - r + 1}K^{p + q - 1}) + F^{p + 1}K^{p + q}}
+{F^{p + 1}K^{p + q}}
+$$
+exist, then $Z_\infty$ and $B_\infty$ exist with bidegree $(p, q)$
+parts $Z_\infty^{p, q}$ and $B_\infty^{p, q}$ (follows from an elementary
+argument about unions and intersections of bigraded objects). Thus
+$$
+E_\infty^{p, q} =
+\frac{\bigcap_r (F^pK^{p + q} \cap d^{-1}(F^{p + r}K^{p + q + 1})
++ F^{p + 1}K^{p + q})}
+{\bigcup_r (F^pK^{p + q} \cap d(F^{p - r + 1}K^{p + q - 1})
++ F^{p + 1}K^{p + q})}.
+$$
+where the top and the bottom exist. With $n = p + q$ we have
+\begin{equation}
+\label{equation-on-top-bigraded}
+\Ker(d) \cap F^pK^{n} + F^{p + 1}K^{n}
+\subset
+\bigcap\nolimits_r
+\left(
+F^pK^{n} \cap d^{-1}(F^{p + r}K^{n + 1}) + F^{p + 1}K^{n}
+\right)
+\end{equation}
+and
+\begin{equation}
+\label{equation-at-bottom-bigraded}
+\bigcup\nolimits_r
+\left(
+F^pK^{n} \cap d(F^{p - r + 1}K^{n - 1}) + F^{p + 1}K^{n}
+\right)
+\subset
+\Im(d) \cap F^pK^{n} + F^{p + 1}K^{n}.
+\end{equation}
+Thus a subquotient of $E_\infty^{p, q}$ is
+$$
+\frac{\Ker(d) \cap F^pK^{n} + F^{p + 1}K^n}
+{\Im(d) \cap F^pK^{n} + F^{p + 1}K^{n}} =
+\frac{\Ker(d) \cap F^pK^n}{\Im(d) \cap F^pK^n + \Ker(d) \cap F^{p + 1}K^n}
+$$
+Comparing with (\ref{equation-graded-cohomology}) we conclude.
+\end{proof}
+
+\begin{definition}
+\label{definition-bounded-ss}
+Let $\mathcal{A}$ be an abelian category. Let $(E_r, d_r)_{r \geq r_0}$
+be a spectral sequence of bigraded objects of
+$\mathcal{A}$ with $d_r$ of bidegree $(r, -r + 1)$.
+We say such a spectral sequence is
+\begin{enumerate}
+\item {\it regular} if for all $p, q \in \mathbf{Z}$ there is
+a $b = b(p, q)$ such that the maps
+$d_r^{p, q} : E_r^{p, q} \to E_r^{p + r, q - r + 1}$ are zero for $r \geq b$,
+\item {\it coregular} if for all $p, q \in \mathbf{Z}$ there is a
+$b = b(p, q)$ such that the maps
+$d_r^{p - r, q + r - 1} : E_r^{p - r, q + r - 1} \to E_r^{p, q}$
+are zero for $r \geq b$,
+\item {\it bounded} if for all $n$
+there are only a finite number of nonzero $E_{r_0}^{p, n - p}$,
+\item {\it bounded below} if for all $n$ there is a $b = b(n)$ such that
+$E_{r_0}^{p, n - p} = 0$ for $p \geq b$.
+\item {\it bounded above} if for all $n$ there is a $b = b(n)$ such that
+$E_{r_0}^{p, n - p} = 0$ for $p \leq b$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+Bounded below means that if we look at $E_r^{p, q}$ on the line
+$p + q = n$ (whose slope is $-1$) we obtain zeros as $(p, q)$
+moves down and to the right.
+As mentioned above there is no consistent terminology regarding
+these notions in the literature.
+
+\begin{lemma}
+\label{lemma-relate-boundedness}
+In the situation of Definition \ref{definition-bounded-ss}.
+Let $Z_r^{p, q}, B_r^{p, q} \subset E_{r_0}^{p, q}$ be the
+$(p, q)$-graded parts of $Z_r, B_r$ defined as in
+Section \ref{section-spectral-sequence}.
+\begin{enumerate}
+\item The spectral sequence is regular if and only if for all $p, q$
+there exists an $r = r(p, q)$ such that
+$Z_r^{p, q} = Z_{r + 1}^{p, q} = \ldots$
+\item The spectral sequence is coregular if and only if for all $p, q$
+there exists an $r = r(p, q)$ such that
+$B_r^{p, q} = B_{r + 1}^{p, q} = \ldots$
+\item The spectral sequence is bounded if and only if it is both
+bounded below and bounded above.
+\item If the spectral sequence is bounded below, then it is regular.
+\item If the spectral sequence is bounded above, then it is coregular.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Omitted. Hint: If $E_r^{p, q} = 0$, then we have $E_{r'}^{p, q} = 0$
+for all $r' \geq r$.
+\end{proof}
+
+\begin{definition}
+\label{definition-filtered-complex-ss-converges}
+Let $\mathcal{A}$ be an abelian category. Let $(K^\bullet, F)$ be a
+filtered complex of $\mathcal{A}$. We say the spectral sequence
+associated to $(K^\bullet, F)$
+\begin{enumerate}
+\item {\it weakly converges to $H^*(K^\bullet)$} if
+$\text{gr}^pH^n(K^\bullet) = E_{\infty}^{p, n - p}$
+via Lemma \ref{lemma-compute-cohomology-filtered-complex}
+for all $p, n \in \mathbf{Z}$,
+\item {\it abuts to $H^*(K^\bullet)$} if it weakly converges to
+$H^*(K^\bullet)$ and $\bigcap_p F^pH^n(K^\bullet) = 0$ and
+$\bigcup_p F^p H^n(K^\bullet) = H^n(K^\bullet)$ for all $n$,
+\item {\it converges to $H^*(K^\bullet)$} if it is regular,
+abuts to $H^*(K^\bullet)$, and
+$H^n(K^\bullet) = \lim_p H^n(K^\bullet)/F^pH^n(K^\bullet)$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+Weak convergence, abutment, or convergence is symbolized by the notation
+$E_r^{p, q} \Rightarrow H^{p + q}(K^\bullet)$.
+As mentioned above there is no consistent terminology regarding
+these notions in the literature.
+
+\begin{lemma}
+\label{lemma-filtered-complex-ss-converges}
+Let $\mathcal{A}$ be an abelian category. Let $(K^\bullet, F)$ be a filtered
+complex of $\mathcal{A}$. The associated spectral sequence
+\begin{enumerate}
+\item weakly converges to $H^*(K^\bullet)$ if and only if for every
+$p, q \in \mathbf{Z}$ we have equality in equations
+(\ref{equation-at-bottom-bigraded}) and (\ref{equation-on-top-bigraded}),
+\item abuts to $H^*(K)$ if and only if it weakly converges to $H^*(K^\bullet)$
+and we have
+$\bigcap_p (\Ker(d) \cap F^pK^n + \Im(d) \cap K^n) = \Im(d) \cap K^n$
+and
+$\bigcup_p (\Ker(d) \cap F^pK^n + \Im(d) \cap K^n) = \Ker(d) \cap K^n$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Immediate from the discussions above.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-biregular-ss-converges}
+Let $\mathcal{A}$ be an abelian category. Let $(K^\bullet, F)$ be a
+filtered complex of $\mathcal{A}$. Assume that the filtration on each $K^n$
+is finite (see Definition \ref{definition-filtered}). Then
+\begin{enumerate}
+\item the spectral sequence associated to $(K^\bullet, F)$ is bounded,
+\item the filtration on each $H^n(K^\bullet)$ is finite,
+\item the spectral sequence associated to $(K^\bullet, F)$ converges
+to $H^*(K^\bullet)$,
+\item if $\mathcal{C} \subset \mathcal{A}$ is a weak Serre subcategory
+and for some $r$ we have $E_r^{p, q} \in \mathcal{C}$ for all
+$p, q \in \mathbf{Z}$, then $H^n(K^\bullet)$ is in $\mathcal{C}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Part (1) follows as $E_0^{p, n - p} = \text{gr}^p K^n$.
+Part (2) is clear from Equation (\ref{equation-filtration-cohomology}).
+We will use Lemma \ref{lemma-filtered-complex-ss-converges} to prove
+that the spectral sequence weakly converges. Fix $p, n \in \mathbf{Z}$.
+The right hand side of (\ref{equation-on-top-bigraded})
+is equal to $F^pK^n \cap \Ker(d) + F^{p + 1}K^n$ because
+$F^{p + r}K^n = 0$ for $r \gg 0$. Thus (\ref{equation-on-top-bigraded})
+is an equality. The left hand side of (\ref{equation-at-bottom-bigraded})
+is equal to $F^pK^n \cap \Im(d) + F^{p + 1}K^n$ because
+$F^{p - r + 1}K^{n - 1} = K^{n - 1}$ for $r \gg 0$.
+Thus (\ref{equation-at-bottom-bigraded}) is an equality. Since the filtration
+on $H^n(K^\bullet)$ is finite by (2) we see that we have abutment.
+To prove we have convergence we have to show the spectral sequence is
+regular which follows as it is bounded
+(Lemma \ref{lemma-relate-boundedness}) and we have
+to show that $H^n(K^\bullet) = \lim_p H^n(K^\bullet)/F^pH^n(K^\bullet)$
+which follows from the fact that the filtration on $H^*(K^\bullet)$
+is finite proved in part (2).
+
+\medskip\noindent
+Proof of (4). Assume that for some $r \geq 0$ we have
+$E_r^{p, q} \in \mathcal{C}$ for some weak Serre subcategory
+$\mathcal{C}$ of $\mathcal{A}$. Then $E_{r + 1}^{p, q}$ is
+in $\mathcal{C}$ as well, see
+Lemma \ref{lemma-characterize-weak-serre-subcategory}.
+By boundedness proved above (which implies that the spectral sequence
+is both regular and coregular, see Lemma \ref{lemma-relate-boundedness})
+we can find an $r' \geq r$ such that $E_\infty^{p, q} = E_{r'}^{p, q}$
+for all $p, q$ with $p + q = n$. Thus $H^n(K^\bullet)$ is an object
+of $\mathcal{A}$ which has a finite filtration whose graded pieces
+are in $\mathcal{C}$. This implies that $H^n(K^\bullet)$ is in $\mathcal{C}$
+by Lemma \ref{lemma-characterize-weak-serre-subcategory}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-biregular-ss-relation-in-K0}
+Let $\mathcal{A}$ be an abelian category. Let $(K^\bullet, F)$ be a
+filtered complex of $\mathcal{A}$. Assume that the filtration on each $K^n$
+is finite (see Definition \ref{definition-filtered}) and that for some
+$r$ we have only a finite number of nonzero $E_r^{p, q}$. Then
+only a finite number of $H^n(K^\bullet)$ are nonzero and we have
+$$
+\sum (-1)^n[H^n(K^\bullet)] = \sum (-1)^{p + q} [E_r^{p, q}]
+$$
+in $K_0(\mathcal{A}')$ where $\mathcal{A}'$ is the smallest weak
+Serre subcategory of $\mathcal{A}$ containing the objects
+$E_r^{p, q}$.
+\end{lemma}
+
+\begin{proof}
+Denote $E_r^{even}$ and $E_r^{odd}$ the even and odd part of $E_r$
+defined as the direct sum of the $(p, q)$ components with $p + q$ even
+and odd. The differential $d_r$ defines maps
+$\varphi : E_r^{even} \to E_r^{odd}$ and $\psi : E_r^{odd} \to E_r^{even}$
+whose compositions either way give zero.
+Then we see that
+\begin{align*}
+[E_r^{even}] - [E_r^{odd}] & =
+[\Ker(\varphi)] + [\Im(\varphi)] - [\Ker(\psi)] - [\Im(\psi)] \\
+& =
+[\Ker(\varphi)/\Im(\psi)] - [\Ker(\psi)/\Im(\varphi)] \\
+& =
+[E_{r + 1}^{even}] - [E_{r + 1}^{odd}]
+\end{align*}
+Note that all the intervening objects are in the smallest Serre
+subcategory containing the objects $E_r^{p, q}$.
+Continuing in this manner we see that we can increase $r$ at will.
+Since there are only a finite number of pairs $(p, q)$ for which
+$E_r^{p, q}$ is nonzero, a property which is inherited by
+$E_{r + 1}, E_{r + 2}, \ldots$, we see that we may assume that $d_r = 0$.
+At this stage we see that $H^n(K^\bullet)$ has a finite filtration
+(Lemma \ref{lemma-biregular-ss-converges}) whose graded pieces
+are exactly the $E_r^{p, n - p}$ and the result is clear.
+\end{proof}
+
+\noindent
+The following lemma is more a kind of sanity check for our definitions.
+Surely, if we have a filtered complex such that for every $n$ we have
+$$
+H^n(F^pK^\bullet) = 0\text{ for }p \gg 0
+\quad\text{and}\quad
+H^n(F^pK^\bullet) = H^n(K^\bullet)\text{ for }p \ll 0,
+$$
+then the corresponding spectral sequence should converge?
+
+\begin{lemma}
+\label{lemma-ss-converges-trivial}
+Let $\mathcal{A}$ be an abelian category. Let $(K^\bullet, F)$ be a
+filtered complex of $\mathcal{A}$. Assume
+\begin{enumerate}
+\item for every $n$ there exist $p_0(n)$ such that
+$H^n(F^pK^\bullet) = 0$ for $p \geq p_0(n)$,
+\item for every $n$ there exist $p_1(n)$ such that
+$H^n(F^pK^\bullet) \to H^n(K^\bullet)$ is an isomorphism
+for $p \leq p_1(n)$.
+\end{enumerate}
+Then
+\begin{enumerate}
+\item the spectral sequence associated to $(K^\bullet, F)$ is bounded,
+\item the filtration on each $H^n(K^\bullet)$ is finite,
+\item the spectral sequence associated to $(K^\bullet, F)$ converges
+to $H^*(K^\bullet)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Fix $n$. Using the long exact cohomology sequence associated to
+the short exact sequence of complexes
+$$
+0 \to F^{p + 1}K^\bullet \to F^pK^\bullet \to \text{gr}^pK^\bullet \to 0
+$$
+we find that $E_1^{p, n - p} = 0$ for $p \geq \max(p_0(n), p_0(n + 1))$ and
+$p < \min(p_1(n), p_1(n + 1))$. Hence the spectral sequence is bounded
+(Definition \ref{definition-bounded-ss}). This proves (1).
+
+\medskip\noindent
+It is clear from the assumptions and
+Definition \ref{definition-filtration-cohomology-filtered-complex}
+that the filtration on $H^n(K^\bullet)$ is finite. This proves (2).
+
+\medskip\noindent
+Next we prove that the spectral sequence weakly converges to
+$H^*(K^\bullet)$ using
+Lemma \ref{lemma-filtered-complex-ss-converges}.
+Let us show that we have equality in (\ref{equation-on-top-bigraded}).
+Namely, for $p + r > p_0(n + 1)$ the map
+$$
+d : F^pK^{n} \cap d^{-1}(F^{p + r}K^{n + 1}) \to F^{p + r}K^{n + 1}
+$$
+ends up in the image of $d : F^{p + r}K^n \to F^{p + r}K^{n + 1}$
+because the complex $F^{p + r}K^\bullet$ is exact in degree $n + 1$.
+We conclude that $F^pK^{n} \cap d^{-1}(F^{p + r}K^{n + 1}) =
+d(F^{p + r}K^n) + \Ker(d) \cap F^pK^n$. Hence for such $r$ we have
+$$
+\Ker(d) \cap F^pK^{n} + F^{p + 1}K^{n} =
+F^pK^{n} \cap d^{-1}(F^{p + r}K^{n + 1}) + F^{p + 1}K^{n}
+$$
+which proves the desired equality. To show that we have equality in
+(\ref{equation-at-bottom-bigraded}) we use that for $p - r + 1 < p_1(n - 1)$
+we have
+$$
+d(F^{p - r + 1}K^{n - 1}) = \Im(d) \cap F^{p - r + 1}K^n
+$$
+because the map $F^{p - r + 1}K^\bullet \to K^\bullet$ induces an
+isomorphism on cohomology in degree $n - 1$. This shows that
+we have
+$$
+F^pK^{n} \cap d(F^{p - r + 1}K^{n - 1}) + F^{p + 1}K^{n} =
+\Im(d) \cap F^pK^{n} + F^{p + 1}K^{n}
+$$
+for such $r$ which proves the desired equality.
+
+\medskip\noindent
+To see that the spectral sequence abuts to $H^*(K^\bullet)$ using
+Lemma \ref{lemma-filtered-complex-ss-converges} we have to show that
+$\bigcap_p (\Ker(d) \cap F^pK^n + \Im(d) \cap K^n) = \Im(d) \cap K^n$
+and
+$\bigcup_p (\Ker(d) \cap F^pK^n + \Im(d) \cap K^n) = \Ker(d) \cap K^n$.
+For $p \geq p_0(n)$ we have
+$\Ker(d) \cap F^pK^n + \Im(d) \cap K^n = \Im(d) \cap K^n$
+and for $p \leq p_1(n)$ we have
+$\Ker(d) \cap F^pK^n + \Im(d) \cap K^n = \Ker(d) \cap K^n$.
+Combining weak convergence, abutment, and boundedness we see
+that (2) and (3) are true.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

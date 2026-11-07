@@ -1,0 +1,130 @@
+\section{Locally free sheaves}
+\label{section-locally-free}
+
+\noindent
+Let $(X, \mathcal{O}_X)$ be a ringed space.
+Our conventions allow (some of) the stalks $\mathcal{O}_{X, x}$
+to be the zero ring. This means we have to be a little careful
+when defining the rank of a locally free sheaf.
+
+\begin{definition}
+\label{definition-locally-free}
+Let $(X, \mathcal{O}_X)$ be a ringed space.
+Let $\mathcal{F}$ be a sheaf of $\mathcal{O}_X$-modules.
+\begin{enumerate}
+\item We say $\mathcal{F}$ is {\it locally free} if for every
+point $x \in X$ there exist a set $I$ and an open
+neighbourhood $x \in U \subset X$
+such that $\mathcal{F}|_U$ is isomorphic to
+$\bigoplus_{i \in I} \mathcal{O}_X|_U$ as an $\mathcal{O}_X|_U$-module.
+\item We say $\mathcal{F}$ is {\it finite locally free} if we may
+choose the index sets $I$ to be finite.
+\item We say $\mathcal{F}$ is {\it finite locally free of rank $r$}
+if we may choose the index sets $I$ to have cardinality $r$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+A finite direct sum of (finite) locally free sheaves is (finite)
+locally free. However, it may not be the case that an infinite direct
+sum of locally free sheaves is locally free.
+
+\begin{lemma}
+\label{lemma-locally-free-quasi-coherent}
+Let $(X, \mathcal{O}_X)$ be a ringed space.
+Let $\mathcal{F}$ be a sheaf of $\mathcal{O}_X$-modules.
+If $\mathcal{F}$ is locally free then it is quasi-coherent.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-pullback-locally-free}
+Let $f : (X, \mathcal{O}_X) \to (Y, \mathcal{O}_Y)$
+be a morphism of ringed spaces. If $\mathcal{G}$ is
+a locally free $\mathcal{O}_Y$-module, then
+$f^*\mathcal{G}$ is a locally free $\mathcal{O}_X$-module.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-rank}
+Let $(X, \mathcal{O}_X)$ be a ringed space.
+Suppose that the support of $\mathcal{O}_X$ is $X$,
+i.e., all stalks of $\mathcal{O}_X$ are nonzero rings.
+Let $\mathcal{F}$ be a locally free sheaf of $\mathcal{O}_X$-modules.
+There exists a locally constant function
+$$
+\text{rank}_\mathcal{F} :
+X \longrightarrow \{0, 1, 2, \ldots\}\cup\{\infty\}
+$$
+such that for any point $x \in X$ the cardinality of any
+set $I$ such that $\mathcal{F}$ is isomorphic to
+$\bigoplus_{i\in I} \mathcal{O}_X$ in a neighbourhood
+of $x$ is $\text{rank}_\mathcal{F}(x)$.
+\end{lemma}
+
+\begin{proof}
+Under the assumption of the lemma the cardinality of $I$ can be read off
+from the rank of the free module $\mathcal{F}_x$ over the nonzero ring
+$\mathcal{O}_{X, x}$, and it is constant in a neighbourhood of $x$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-map-finite-locally-free}
+Let $(X, \mathcal{O}_X)$ be a ringed space. Let $r \geq 0$.
+Let $\varphi : \mathcal{F} \to \mathcal{G}$ be a map of finite
+locally free $\mathcal{O}_X$-modules of rank $r$.
+Then $\varphi$ is an isomorphism if and only if $\varphi$
+is surjective.
+\end{lemma}
+
+\begin{proof}
+Assume $\varphi$ is surjective. Pick $x \in X$.
+There exists an open neighbourhood $U$ of $x$
+such that both $\mathcal{F}|_U$ and $\mathcal{G}|_U$ are
+isomorphic to $\mathcal{O}_U^{\oplus r}$.
+Pick lifts of the free generators of $\mathcal{G}|_U$
+to obtain a map $\psi : \mathcal{G}|_U \to \mathcal{F}|_U$
+such that $\varphi|_U \circ \psi = \text{id}$.
+Hence we conclude that the map
+$\Gamma(U, \mathcal{F}) \to \Gamma(U, \mathcal{G})$
+induced by $\varphi$ is surjective. Since both
+$\Gamma(U, \mathcal{F})$ and $\Gamma(U, \mathcal{G})$
+are isomorphic to $\Gamma(U, \mathcal{O}_U)^{\oplus r}$
+as an $\Gamma(U, \mathcal{O}_U)$-module we may
+apply Algebra, Lemma \ref{algebra-lemma-fun} to see that
+$\Gamma(U, \mathcal{F}) \to \Gamma(U, \mathcal{G})$
+is injective. This finishes the proof.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-direct-summand-of-locally-free-is-locally-free}
+Let $(X, \mathcal{O}_X)$ be a ringed space. If all stalks $\mathcal{O}_{X, x}$
+are local rings, then any direct summand of a finite locally free
+$\mathcal{O}_X$-module is finite locally free.
+\end{lemma}
+
+\begin{proof}
+Assume $\mathcal{F}$ is a direct summand of the finite locally free
+$\mathcal{O}_X$-module $\mathcal{H}$.
+Let $x \in X$ be a point. Then $\mathcal{H}_x$ is a finite free
+$\mathcal{O}_{X, x}$-module.
+Because $\mathcal{O}_{X, x}$ is local, we see that
+$\mathcal{F}_x \cong \mathcal{O}_{X, x}^{\oplus r}$ for some $r$, see
+Algebra, Lemma \ref{algebra-lemma-finite-projective}.
+By Lemma \ref{lemma-finite-presentation-stalk-free}
+we see that $\mathcal{F}$ is free of rank $r$ in an open neighbourhood of $x$.
+(Note that $\mathcal{F}$ is of finite presentation as a summand of
+$\mathcal{H}$.)
+\end{proof}
+
+
+
+
+

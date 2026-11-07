@@ -1,0 +1,584 @@
+\section{More flatness criteria}
+\label{section-more-flatness-criteria}
+
+\noindent
+The following lemma is often used in algebraic geometry to show that a finite
+morphism from a normal surface to a smooth surface is flat. It is a partial
+converse to
+Lemma \ref{lemma-finite-flat-over-regular-CM}
+because an injective finite local ring map certainly satisfies condition (3).
+
+\begin{lemma}
+\label{lemma-CM-over-regular-flat}
+\begin{slogan}
+Miracle flatness
+\end{slogan}
+Let $R \to S$ be a local homomorphism of Noetherian local
+rings. Assume
+\begin{enumerate}
+\item $R$ is regular,
+\item $S$ Cohen-Macaulay,
+\item $\dim(S) = \dim(R) + \dim(S/\mathfrak m_R S)$.
+\end{enumerate}
+Then $R \to S$ is flat.
+\end{lemma}
+
+\begin{proof}
+By induction on $\dim(R)$. The case $\dim(R) = 0$ is trivial, because
+then $R$ is a field. Assume $\dim(R) > 0$. By (3) this implies that
+$\dim(S) > 0$. Let $\mathfrak q_1, \ldots, \mathfrak q_r$ be the minimal
+primes of $S$. Note that $\mathfrak q_i \not \supset \mathfrak m_R S$ since
+$$
+\dim(S/\mathfrak q_i) = \dim(S) > \dim(S/\mathfrak m_R S)
+$$
+the first equality by Lemma \ref{lemma-maximal-chain-CM} and the
+inequality by (3). Thus
+$\mathfrak p_i = R \cap \mathfrak q_i$ is not equal to $\mathfrak m_R$.
+Pick $x \in \mathfrak m_R$, $x \not \in \mathfrak m_R^2$, and
+$x \not \in \mathfrak p_i$, see
+Lemma \ref{lemma-silly}.
+Hence we see that $x$ is not contained in any of the minimal
+primes of $S$. Hence $x$ is a nonzerodivisor on $S$ by (2), see
+Lemma \ref{lemma-reformulate-CM} and
+$S/xS$ is Cohen-Macaulay with $\dim(S/xS) = \dim(S) - 1$.
+By (1) and Lemma \ref{lemma-regular-ring-CM} the ring $R/xR$ is regular
+with $\dim(R/xR) = \dim(R) - 1$.
+By induction we see that $R/xR \to S/xS$ is flat. Hence we
+conclude by Lemma \ref{lemma-variant-local-criterion-flatness}
+and the remark following it.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-flat-over-regular}
+Let $R \to S$ be a homomorphism of Noetherian local rings.
+Assume that $R$ is a regular local ring and that a regular system
+of parameters maps to a regular sequence in $S$. Then $R \to S$
+is flat.
+\end{lemma}
+
+\begin{proof}
+Suppose that $x_1, \ldots, x_d$ are a system of parameters of $R$
+which map to a regular sequence in $S$. Note that
+$S/(x_1, \ldots, x_d)S$ is flat over $R/(x_1, \ldots, x_d)$
+as the latter is a field. Then $x_d$ is a nonzerodivisor in
+$S/(x_1, \ldots, x_{d - 1})S$ hence $S/(x_1, \ldots, x_{d - 1})S$
+is flat over $R/(x_1, \ldots, x_{d - 1})$ by the local criterion
+of flatness (see Lemma \ref{lemma-variant-local-criterion-flatness}
+and remarks following). Then $x_{d - 1}$ is a nonzerodivisor in
+$S/(x_1, \ldots, x_{d - 2})S$ hence $S/(x_1, \ldots, x_{d - 2})S$
+is flat over $R/(x_1, \ldots, x_{d - 2})$ by the local criterion
+of flatness (see Lemma \ref{lemma-variant-local-criterion-flatness}
+and remarks following). Continue till one reaches the conclusion
+that $S$ is flat over $R$.
+\end{proof}
+
+\noindent
+The following lemma is the key to proving that results for finitely presented
+modules over finitely presented rings over a base ring follow from the
+corresponding results for finite modules in the Noetherian case.
+
+\begin{lemma}
+\label{lemma-colimit-eventually-flat}
+Let $R \to S$, $M$, $\Lambda$, $R_\lambda \to S_\lambda$, $M_\lambda$
+be as in Lemma \ref{lemma-limit-module-essentially-finite-presentation}.
+Assume that $M$ is flat over $R$.
+Then for some $\lambda \in \Lambda$ the module
+$M_\lambda$ is flat over $R_\lambda$.
+\end{lemma}
+
+\begin{proof}
+Pick some $\lambda \in \Lambda$ and consider
+$$
+\text{Tor}_1^{R_\lambda}(M_\lambda, R_\lambda/\mathfrak m_\lambda)
+=
+\Ker(\mathfrak m_\lambda \otimes_{R_\lambda} M_\lambda
+\to M_\lambda).
+$$
+See Remark \ref{remark-Tor-ring-mod-ideal}. The right hand side
+shows that this is a finitely generated $S_\lambda$-module (because
+$S_\lambda$ is Noetherian and the modules in question are finite).
+Let $\xi_1, \ldots, \xi_n$ be generators.
+Because $M$ is flat over $R$ we
+have that $0 = \Ker(\mathfrak m_\lambda R \otimes_R M \to M)$.
+Since $\otimes$ commutes with colimits we see there exists
+a $\lambda' \geq \lambda$ such that each $\xi_i$ maps to
+zero in
+$\mathfrak m_{\lambda}R_{\lambda'} \otimes_{R_{\lambda'}} M_{\lambda'}$.
+Hence we see that
+$$
+\text{Tor}_1^{R_\lambda}(M_\lambda, R_\lambda/\mathfrak m_\lambda)
+\longrightarrow
+\text{Tor}_1^{R_{\lambda'}}(M_{\lambda'},
+R_{\lambda'}/\mathfrak m_{\lambda}R_{\lambda'})
+$$
+is zero. Note that
+$M_\lambda \otimes_{R_\lambda} R_\lambda/\mathfrak m_\lambda$
+is flat over $R_\lambda/\mathfrak m_\lambda$ because this last
+ring is a field. Hence we may apply Lemma
+\ref{lemma-another-variant-local-criterion-flatness}
+to get that $M_{\lambda'}$ is flat over $R_{\lambda'}$.
+\end{proof}
+
+\noindent
+Using the lemma above we can start to reprove the results of
+Section \ref{section-criteria-flatness}
+in the non-Noetherian case.
+
+\begin{lemma}
+\label{lemma-mod-injective-general}
+Suppose that $R \to S$ is a local homomorphism of local rings.
+Denote $\mathfrak m$ the maximal ideal of $R$.
+Let $u : M \to N$ be a map of $S$-modules.
+Assume
+\begin{enumerate}
+\item $S$ is essentially of finite presentation over $R$,
+\item $M$, $N$ are finitely presented over $S$,
+\item $N$ is flat over $R$, and
+\item $\overline{u} : M/\mathfrak mM \to N/\mathfrak mN$ is injective.
+\end{enumerate}
+Then $u$ is injective, and $N/u(M)$ is flat over $R$.
+\end{lemma}
+
+\begin{proof}
+By
+Lemma \ref{lemma-limit-module-essentially-finite-presentation}
+and its proof we can find a system $R_\lambda \to S_\lambda$ of
+local ring maps together with maps of $S_\lambda$-modules
+$u_\lambda : M_\lambda \to N_\lambda$ satisfying the conclusions
+(1) -- (6) for both $N$ and $M$ of that lemma and such that the
+colimit of the maps $u_\lambda$ is $u$. By
+Lemma \ref{lemma-colimit-eventually-flat}
+we may assume that $N_\lambda$ is flat over $R_\lambda$ for all
+sufficiently large $\lambda$. Denote $\mathfrak m_\lambda \subset R_\lambda$
+the maximal ideal and $\kappa_\lambda = R_\lambda / \mathfrak m_\lambda$,
+resp.\ $\kappa = R/\mathfrak m$ the residue fields.
+
+\medskip\noindent
+Consider the map
+$$
+\Psi_\lambda :
+M_\lambda/\mathfrak m_\lambda M_\lambda \otimes_{\kappa_\lambda} \kappa
+\longrightarrow
+M/\mathfrak m M.
+$$
+Since $S_\lambda/\mathfrak m_\lambda S_\lambda$ is essentially of finite type
+over the field $\kappa_\lambda$ we see that the tensor product
+$S_\lambda/\mathfrak m_\lambda S_\lambda \otimes_{\kappa_\lambda} \kappa$
+is essentially of finite type over $\kappa$. Hence it is a Noetherian
+ring and we conclude the kernel of $\Psi_\lambda$ is finitely generated.
+Since $M/\mathfrak m M$ is the colimit of the system
+$M_\lambda/\mathfrak m_\lambda M_\lambda$ and $\kappa$ is the colimit of
+the fields $\kappa_\lambda$ there exists a $\lambda' > \lambda$ such that
+the kernel of $\Psi_\lambda$ is generated by the kernel of
+$$
+\Psi_{\lambda, \lambda'} :
+M_\lambda/\mathfrak m_\lambda M_\lambda
+\otimes_{\kappa_\lambda}
+\kappa_{\lambda'}
+\longrightarrow
+M_{\lambda'}/\mathfrak m_{\lambda'} M_{\lambda'}.
+$$
+By construction there exists a multiplicative subset
+$W \subset S_\lambda \otimes_{R_\lambda} R_{\lambda'}$ such that
+$S_{\lambda'} = W^{-1}(S_\lambda \otimes_{R_\lambda} R_{\lambda'})$ and
+$$
+W^{-1}(M_\lambda/\mathfrak m_\lambda M_\lambda
+\otimes_{\kappa_\lambda}
+\kappa_{\lambda'})
+=
+M_{\lambda'}/\mathfrak m_{\lambda'} M_{\lambda'}.
+$$
+Now suppose that $x$ is an element of the kernel of
+$$
+\Psi_{\lambda'} :
+M_{\lambda'}/\mathfrak m_{\lambda'} M_{\lambda'}
+\otimes_{\kappa_{\lambda'}} \kappa
+\longrightarrow
+M/\mathfrak m M.
+$$
+Then for some $w \in W$ we have
+$wx \in M_\lambda/\mathfrak m_\lambda M_\lambda \otimes \kappa$.
+Hence $wx \in \Ker(\Psi_\lambda)$. Hence $wx$ is a linear
+combination of elements in the kernel of $\Psi_{\lambda, \lambda'}$.
+Hence $wx = 0$ in $M_{\lambda'}/\mathfrak m_{\lambda'} M_{\lambda'}
+\otimes_{\kappa_{\lambda'}} \kappa$, hence $x = 0$ because $w$ is invertible
+in $S_{\lambda'}$.
+We conclude that the kernel of $\Psi_{\lambda'}$ is zero for all sufficiently
+large $\lambda'$!
+
+\medskip\noindent
+By the result of the preceding paragraph we may assume that
+the kernel of $\Psi_\lambda$ is zero for all $\lambda$ sufficiently large,
+which implies that the map
+$M_\lambda/\mathfrak m_\lambda M_\lambda \to M/\mathfrak m M$
+is injective. Combined with $\overline{u}$ being injective this
+formally implies that also
+$\overline{u_\lambda} : M_\lambda/\mathfrak m_\lambda M_\lambda
+\to N_\lambda/\mathfrak m_\lambda N_\lambda$ is injective.
+By
+Lemma \ref{lemma-mod-injective}
+we conclude that (for all sufficiently large $\lambda$) the map
+$u_\lambda$ is injective and that $N_\lambda/u_\lambda(M_\lambda)$ is flat
+over $R_\lambda$.
+The lemma follows.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-grothendieck-general}
+Suppose that $R \to S$ is a local ring homomorphism of local rings.
+Denote $\mathfrak m$ the maximal ideal of $R$.
+Suppose
+\begin{enumerate}
+\item $S$ is essentially of finite presentation over $R$,
+\item $S$ is flat over $R$, and
+\item $f \in S$ is a nonzerodivisor in $S/{\mathfrak m}S$.
+\end{enumerate}
+Then $S/fS$ is flat over $R$, and $f$ is a nonzerodivisor in $S$.
+\end{lemma}
+
+\begin{proof}
+Follows directly from Lemma \ref{lemma-mod-injective-general}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-grothendieck-regular-sequence-general}
+Suppose that $R \to S$ is a local ring homomorphism of local rings.
+Denote $\mathfrak m$ the maximal ideal of $R$.
+Suppose
+\begin{enumerate}
+\item $R \to S$ is essentially of finite presentation,
+\item $R \to S$ is flat, and
+\item $f_1, \ldots, f_c$ is a sequence of elements of
+$S$ such that the images $\overline{f}_1, \ldots, \overline{f}_c$
+form a regular sequence in $S/{\mathfrak m}S$.
+\end{enumerate}
+Then $f_1, \ldots, f_c$ is a regular sequence in $S$ and each
+of the quotients $S/(f_1, \ldots, f_i)$ is flat over $R$.
+\end{lemma}
+
+\begin{proof}
+Induction and Lemma \ref{lemma-grothendieck-general}.
+\end{proof}
+
+\noindent
+Here is the version of the local criterion of flatness for the case
+of local ring maps which are locally of finite presentation.
+
+\begin{lemma}
+\label{lemma-variant-local-criterion-flatness-general}
+Let $R \to S$ be a local homomorphism of local rings.
+Let $I \not = R$ be an ideal in $R$. Let $M$ be an $S$-module. Assume
+\begin{enumerate}
+\item $S$ is essentially of finite presentation over $R$,
+\item $M$ is of finite presentation over $S$,
+\item $\text{Tor}_1^R(M, R/I) = 0$, and
+\item $M/IM$ is flat over $R/I$.
+\end{enumerate}
+Then $M$ is flat over $R$.
+\end{lemma}
+
+\begin{proof}
+Let $\Lambda$, $R_\lambda \to S_\lambda$, $M_\lambda$ be as in
+Lemma \ref{lemma-limit-module-essentially-finite-presentation}.
+Denote $I_\lambda \subset R_\lambda$ the inverse image of $I$.
+In this case the system
+$R/I \to S/IS$, $M/IM$, $R_\lambda \to S_\lambda/I_\lambda S_\lambda$,
+and $M_\lambda/I_\lambda M_\lambda$ satisfies the conclusions of
+Lemma \ref{lemma-limit-module-essentially-finite-presentation}
+as well. Hence by
+Lemma \ref{lemma-colimit-eventually-flat}
+we may assume (after shrinking the index set $\Lambda$)
+that $M_\lambda/I_\lambda M_\lambda$ is flat for all $\lambda$.
+Pick some $\lambda$ and consider
+$$
+\text{Tor}_1^{R_\lambda}(M_\lambda, R_\lambda/I_\lambda)
+=
+\Ker(I_\lambda \otimes_{R_\lambda} M_\lambda
+\to M_\lambda).
+$$
+See Remark \ref{remark-Tor-ring-mod-ideal}. The right hand side
+shows that this is a finitely generated $S_\lambda$-module (because
+$S_\lambda$ is Noetherian and the modules in question are finite).
+Let $\xi_1, \ldots, \xi_n$ be generators.
+Because $\text{Tor}_1^R(M, R/I) = 0$ and since $\otimes$ commutes
+with colimits we see there exists
+a $\lambda' \geq \lambda$ such that each $\xi_i$ maps to
+zero in
+$\text{Tor}_1^{R_{\lambda'}}(M_{\lambda'}, R_{\lambda'}/I_{\lambda'})$.
+The composition of the maps
+$$
+\xymatrix{
+R_{\lambda'} \otimes_{R_\lambda}
+\text{Tor}_1^{R_\lambda}(M_\lambda, R_\lambda/I_\lambda)
+\ar[d]^{\text{surjective by Lemma \ref{lemma-surjective-on-tor-one}}} \\
+\text{Tor}_1^{R_\lambda}(M_\lambda, R_{\lambda'}/I_\lambda R_{\lambda'})
+\ar[d]^{\text{surjective up to localization by
+Lemma \ref{lemma-surjective-on-tor-one-trivial}}} \\
+\text{Tor}_1^{R_{\lambda'}}(M_{\lambda'}, R_{\lambda'}/I_\lambda R_{\lambda'})
+\ar[d]^{\text{surjective by Lemma \ref{lemma-surjective-on-tor-one}}} \\
+\text{Tor}_1^{R_{\lambda'}}(M_{\lambda'}, R_{\lambda'}/I_{\lambda'}).
+}
+$$
+is surjective up to a localization by the reasons indicated.
+The localization is necessary since $M_{\lambda'}$ is not equal
+to $M_\lambda \otimes_{R_\lambda} R_{\lambda'}$. Namely, it is equal
+to $M_\lambda \otimes_{S_\lambda} S_{\lambda'}$ and $S_{\lambda'}$
+is the localization of $S_{\lambda} \otimes_{R_\lambda} R_{\lambda'}$ whence
+the statement up to a localization (or tensoring with $S_{\lambda'}$).
+Note that
+Lemma \ref{lemma-surjective-on-tor-one}
+applies to the first and third arrows because
+$M_\lambda/I_\lambda M_\lambda$ is flat over
+$R_\lambda/I_\lambda$ and because $M_{\lambda'}/I_\lambda M_{\lambda'}$
+is flat over $R_{\lambda'}/I_\lambda R_{\lambda'}$ as it is a base
+change of the flat module $M_\lambda/I_\lambda M_\lambda$.
+The composition maps the generators $\xi_i$ to zero as we explained above.
+We finally conclude that
+$\text{Tor}_1^{R_{\lambda'}}(M_{\lambda'}, R_{\lambda'}/I_{\lambda'})$
+is zero. This implies that $M_{\lambda'}$ is flat over $R_{\lambda'}$ by
+Lemma \ref{lemma-variant-local-criterion-flatness}.
+\end{proof}
+
+\noindent
+Please compare the lemma below to
+Lemma \ref{lemma-criterion-flatness-fibre-Noetherian}
+(the case of Noetherian local rings) and
+Lemma \ref{lemma-criterion-flatness-fibre-nilpotent}
+(the case of a nilpotent ideal in the base).
+
+\begin{lemma}[Crit\`ere de platitude par fibres]
+\label{lemma-criterion-flatness-fibre}
+Let $R$, $S$, $S'$ be local rings and let $R \to S \to S'$ be local ring
+homomorphisms. Let $M$ be an $S'$-module. Let $\mathfrak m \subset R$
+be the maximal ideal. Assume
+\begin{enumerate}
+\item The ring maps $R \to S$ and $R \to S'$ are essentially
+of finite presentation.
+\item The module $M$ is of finite presentation over $S'$.
+\item The module $M$ is not zero.
+\item The module $M/\mathfrak mM$ is a flat $S/\mathfrak mS$-module.
+\item The module $M$ is a flat $R$-module.
+\end{enumerate}
+Then $S$ is flat over $R$ and $M$ is a flat $S$-module.
+\end{lemma}
+
+\begin{proof}
+As in the proof of Lemma \ref{lemma-limit-essentially-finite-presentation}
+we may first write $R = \colim R_\lambda$ as a directed colimit
+of local $\mathbf{Z}$-algebras which are essentially of finite type.
+Denote $\mathfrak p_\lambda$ the maximal ideal of $R_\lambda$.
+Next, we may assume that for some $\lambda_1 \in \Lambda$ there
+exist $f_{j, \lambda_1} \in R_{\lambda_1}[x_1, \ldots, x_n]$
+such that
+$$
+S =
+\colim_{\lambda \geq \lambda_1} S_\lambda, \text{ with }
+S_\lambda =
+(R_\lambda[x_1, \ldots, x_n]/
+(f_{1, \lambda}, \ldots, f_{u, \lambda}))_{\mathfrak q_\lambda}
+$$
+For some $\lambda_2 \in \Lambda$,
+$\lambda_2 \geq \lambda_1$ there exist
+$g_{j, \lambda_2} \in R_{\lambda_2}[x_1, \ldots, x_n, y_1, \ldots, y_m]$
+with images
+$\overline{g}_{j, \lambda_2} \in S_{\lambda_2}[y_1, \ldots, y_m]$
+such that
+$$
+S' =
+\colim_{\lambda \geq \lambda_2} S'_\lambda, \text{ with }
+S'_\lambda =
+(S_\lambda[y_1, \ldots, y_m]/
+(\overline{g}_{1, \lambda}, \ldots,
+\overline{g}_{v, \lambda}))_{\overline{\mathfrak q}'_\lambda}
+$$
+Note that this also implies that
+$$
+S'_\lambda =
+(R_\lambda[x_1, \ldots, x_n, y_1, \ldots, y_m]/
+(g_{1, \lambda}, \ldots, g_{v, \lambda}))_{\mathfrak q'_\lambda}
+$$
+Choose a presentation
+$$
+(S')^{\oplus s} \to (S')^{\oplus t} \to M \to 0
+$$
+of $M$ over $S'$. Let $A \in \text{Mat}(t \times s, S')$ be
+the matrix of the presentation. For some $\lambda_3 \in \Lambda$,
+$\lambda_3 \geq \lambda_2$
+we can find a matrix $A_{\lambda_3} \in \text{Mat}(t \times s, S_{\lambda_3})$
+which maps to $A$. For all $\lambda \geq \lambda_3$ we let
+$M_\lambda = \Coker((S'_\lambda)^{\oplus s} \xrightarrow{A_\lambda}
+(S'_\lambda)^{\oplus t})$.
+
+\medskip\noindent
+With these choices, we have for each $\lambda_3 \leq \lambda \leq \mu$
+that $S_\lambda \otimes_{R_{\lambda}} R_\mu \to S_\mu$ is a localization,
+$S'_\lambda \otimes_{S_{\lambda}} S_\mu \to S'_\mu$ is a localization, and
+the map $M_\lambda \otimes_{S'_\lambda} S'_\mu \to M_\mu$ is an
+isomorphism. This also implies that
+$S'_\lambda \otimes_{R_{\lambda}} R_\mu \to S'_\mu$ is a localization.
+Thus, since $M$ is flat over $R$ we see by
+Lemma \ref{lemma-colimit-eventually-flat} that
+for all $\lambda$ big enough the module $M_\lambda$ is
+flat over $R_\lambda$.
+Moreover, note that
+$
+\mathfrak m = \colim \mathfrak p_\lambda
+$,
+$
+S/\mathfrak mS = \colim S_\lambda/\mathfrak p_\lambda S_\lambda
+$,
+$
+S'/\mathfrak mS' = \colim S'_\lambda/\mathfrak p_\lambda S'_\lambda
+$,
+and
+$
+M/\mathfrak mM = \colim M_\lambda/\mathfrak p_\lambda M_\lambda
+$. Also, for each $\lambda_3 \leq \lambda \leq \mu$ we see (from the
+properties listed above) that
+$$
+S'_\lambda/\mathfrak p_\lambda S'_\lambda
+\otimes_{S_{\lambda}/\mathfrak p_\lambda S_\lambda}
+S_\mu/\mathfrak p_\mu S_\mu
+\longrightarrow
+S'_\mu/\mathfrak p_\mu S'_\mu
+$$
+is a localization, and the map
+$$
+M_\lambda / \mathfrak p_\lambda M_\lambda
+\otimes_{S'_\lambda/\mathfrak p_\lambda S'_\lambda}
+S'_\mu /\mathfrak p_\mu S'_\mu
+\longrightarrow
+M_\mu/\mathfrak p_\mu M_\mu
+$$
+is an isomorphism. Hence the system
+$(S_\lambda/\mathfrak p_\lambda S_\lambda \to
+S'_\lambda/\mathfrak p_\lambda S'_\lambda,
+M_\lambda/\mathfrak p_\lambda M_\lambda)$
+is a system as in
+Lemma \ref{lemma-limit-module-essentially-finite-presentation} as well.
+We may apply Lemma \ref{lemma-colimit-eventually-flat} again because
+$M/\mathfrak m M$ is assumed flat over $S/\mathfrak mS$ and we see that
+$M_\lambda/\mathfrak p_\lambda M_\lambda$ is flat over
+$S_\lambda/\mathfrak p_\lambda S_\lambda$ for all $\lambda$ big enough.
+Thus for $\lambda$ big enough the data
+$R_\lambda \to S_\lambda \to S'_\lambda, M_\lambda$ satisfies
+the hypotheses of Lemma \ref{lemma-criterion-flatness-fibre-Noetherian}.
+Pick such a $\lambda$. Then $S = S_\lambda \otimes_{R_\lambda} R$
+is flat over $R$, and $M = M_\lambda \otimes_{S_\lambda} S$
+is flat over $S$ (since the base change of a flat module is flat).
+\end{proof}
+
+\noindent
+The following is an easy consequence of the ``crit\`ere de platitude par
+fibres'' Lemma \ref{lemma-criterion-flatness-fibre}. For more results of
+this kind see More on Flatness, Section \ref{flat-section-introduction}.
+
+\begin{lemma}
+\label{lemma-criterion-flatness-fibre-fp-over-ft}
+Let $R$, $S$, $S'$ be local rings and let $R \to S \to S'$ be local ring
+homomorphisms. Let $M$ be an $S'$-module. Let $\mathfrak m \subset R$
+be the maximal ideal. Assume
+\begin{enumerate}
+\item $R \to S'$ is essentially of finite presentation,
+\item $R \to S$ is essentially of finite type,
+\item $M$ is of finite presentation over $S'$,
+\item $M$ is not zero,
+\item $M/\mathfrak mM$ is a flat $S/\mathfrak mS$-module, and
+\item $M$ is a flat $R$-module.
+\end{enumerate}
+Then $S$ is essentially of finite presentation and flat over $R$
+and $M$ is a flat $S$-module.
+\end{lemma}
+
+\begin{proof}
+As $S$ is essentially of finite presentation over $R$ we can write
+$S = C_{\overline{\mathfrak q}}$ for some finite type $R$-algebra $C$.
+Write $C = R[x_1, \ldots, x_n]/I$. Denote
+$\mathfrak q \subset R[x_1, \ldots, x_n]$ be the prime ideal corresponding
+to $\overline{\mathfrak q}$. Then we see that $S = B/J$ where
+$B = R[x_1, \ldots, x_n]_{\mathfrak q}$ is essentially of finite presentation
+over $R$ and $J = IB$. We can find $f_1, \ldots, f_k \in J$ such that
+the images $\overline{f}_i \in B/\mathfrak mB$
+generate the image $\overline{J}$ of $J$ in the Noetherian ring
+$B/\mathfrak mB$. Hence there exist finitely generated ideals
+$J' \subset J$ such that $B/J' \to B/J$ induces an isomorphism
+$$
+(B/J') \otimes_R R/\mathfrak m \longrightarrow
+B/J \otimes_R R/\mathfrak m = S/\mathfrak mS.
+$$
+For any $J'$ as above we see that
+Lemma \ref{lemma-criterion-flatness-fibre}
+applies to the ring maps
+$$
+R \longrightarrow B/J' \longrightarrow S'
+$$
+and the module $M$. Hence we conclude that $B/J'$ is flat over $R$
+for any choice $J'$ as above. Now, if $J' \subset J' \subset J$ are
+two finitely generated ideals as above, then we conclude that
+$B/J' \to B/J''$ is a surjective map between flat $R$-algebras
+which are essentially of finite presentation which is an isomorphism
+modulo $\mathfrak m$. Hence
+Lemma \ref{lemma-mod-injective-general}
+implies that $B/J' = B/J''$, i.e., $J' = J''$. Clearly this means that
+$J$ is finitely generated, i.e., $S$ is essentially of finite presentation
+over $R$. Thus we may apply
+Lemma \ref{lemma-criterion-flatness-fibre}
+to $R \to S \to S'$ and we win.
+\end{proof}
+
+\begin{lemma}[Crit\`ere de platitude par fibres: locally nilpotent case]
+\label{lemma-criterion-flatness-fibre-locally-nilpotent}
+Let
+$$
+\xymatrix{
+S \ar[rr] & & S' \\
+& R \ar[lu] \ar[ru]
+}
+$$
+be a commutative diagram in the category of rings.
+Let $I \subset R$ be a locally nilpotent ideal and
+$M$ an $S'$-module. Assume
+\begin{enumerate}
+\item $R \to S$ is of finite type,
+\item $R \to S'$ is of finite presentation,
+\item $M$ is a finitely presented $S'$-module,
+\item $M/IM$ is flat as a $S/IS$-module, and
+\item $M$ is flat as an $R$-module.
+\end{enumerate}
+Then $M$ is a flat $S$-module and $S_\mathfrak q$ is flat
+and essentially of finite presentation over $R$
+for every $\mathfrak q \subset S$ such that
+$M \otimes_S \kappa(\mathfrak q)$ is nonzero.
+\end{lemma}
+
+\begin{proof}
+If $M \otimes_S \kappa(\mathfrak q)$ is nonzero, then
+$S' \otimes_S \kappa(\mathfrak q)$ is nonzero and hence
+there exists a prime $\mathfrak q' \subset S'$ lying over
+$\mathfrak q$ (Lemma \ref{lemma-in-image}). Let
+$\mathfrak p \subset R$ be the image of $\mathfrak q$ in $\Spec(R)$.
+Then $I \subset \mathfrak p$ as $I$ is locally nilpotent
+hence $M/\mathfrak p M$ is flat over $S/\mathfrak pS$.
+Hence we may apply Lemma \ref{lemma-criterion-flatness-fibre-fp-over-ft}
+to $R_\mathfrak p \to S_\mathfrak q \to S'_{\mathfrak q'}$
+and $M_{\mathfrak q'}$. We conclude that $M_{\mathfrak q'}$
+is flat over $S$ and $S_\mathfrak q$ is flat and essentially
+of finite presentation over $R$.
+Since $\mathfrak q'$ was an arbitrary prime of $S'$ we also
+see that $M$ is flat over $S$ (Lemma \ref{lemma-flat-localization}).
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

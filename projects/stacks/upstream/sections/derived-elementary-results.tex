@@ -1,0 +1,799 @@
+\section{Elementary results on triangulated categories}
+\label{section-elementary-results}
+
+\noindent
+Most of the results in this section are proved for pre-triangulated categories
+and a fortiori hold in any triangulated category.
+
+\begin{lemma}
+\label{lemma-composition-zero}
+Let $\mathcal{D}$ be a pre-triangulated category.
+Let $(X, Y, Z, f, g, h)$ be a distinguished triangle.
+Then $g \circ f = 0$,
+$h \circ g = 0$ and $f[1] \circ h = 0$.
+\end{lemma}
+
+\begin{proof}
+By TR1 we know $(X, X, 0, 1, 0, 0)$ is a distinguished triangle.
+Apply TR3 to
+$$
+\xymatrix{
+X \ar[r] \ar[d]^1 &
+X \ar[r] \ar[d]^f &
+0 \ar[r] \ar@{-->}[d] &
+X[1] \ar[d]^{1[1]} \\
+X \ar[r]^f &
+Y \ar[r]^g &
+Z \ar[r]^h &
+X[1]
+}
+$$
+Of course the dotted arrow is the zero map. Hence the commutativity of
+the diagram implies that $g \circ f = 0$. For the other cases
+rotate the triangle, i.e., apply TR2.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-representable-homological}
+Let $\mathcal{D}$ be a pre-triangulated category.
+For any object $W$ of $\mathcal{D}$ the functor
+$\Hom_\mathcal{D}(W, -)$ is homological, and the functor
+$\Hom_\mathcal{D}(-, W)$ is cohomological.
+\end{lemma}
+
+\begin{proof}
+Consider a distinguished triangle $(X, Y, Z, f, g, h)$.
+We have already seen that $g \circ f = 0$, see
+Lemma \ref{lemma-composition-zero}.
+Suppose $a : W \to Y$ is a morphism such that $g \circ a = 0$.
+Then we get a commutative diagram
+$$
+\xymatrix{
+W \ar[r]_1 \ar@{..>}[d]^b &
+W \ar[r] \ar[d]^a &
+0 \ar[r] \ar[d]^0 &
+W[1] \ar@{..>}[d]^{b[1]} \\
+X \ar[r] & Y \ar[r] & Z \ar[r] & X[1]
+}
+$$
+Both rows are distinguished triangles (use TR1 for the top row).
+Hence we can fill the dotted arrow $b$ (first rotate using TR2,
+then apply TR3, and then rotate back). This proves the lemma.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-third-isomorphism-triangle}
+Let $\mathcal{D}$ be a pre-triangulated category.
+Let
+$$
+(a, b, c) : (X, Y, Z, f, g, h) \to (X', Y', Z', f', g', h')
+$$
+be a morphism of distinguished triangles. If two among $a, b, c$
+are isomorphisms so is the third.
+\end{lemma}
+
+\begin{proof}
+Assume that $a$ and $c$ are isomorphisms.
+For any object $W$ of $\mathcal{D}$ write
+$H_W( - ) = \Hom_\mathcal{D}(W, -)$.
+Then we get a commutative diagram of abelian groups
+$$
+\xymatrix{
+H_W(Z[-1]) \ar[r] \ar[d] &
+H_W(X) \ar[r] \ar[d] &
+H_W(Y) \ar[r] \ar[d] &
+H_W(Z) \ar[r] \ar[d] &
+H_W(X[1]) \ar[d] \\
+H_W(Z'[-1]) \ar[r] &
+H_W(X') \ar[r] &
+H_W(Y') \ar[r] &
+H_W(Z') \ar[r] &
+H_W(X'[1])
+}
+$$
+By assumption the right two and left two vertical arrows are bijective.
+As $H_W$ is homological by
+Lemma \ref{lemma-representable-homological}
+and the five lemma
+(Homology, Lemma \ref{homology-lemma-five-lemma})
+it follows that the middle vertical arrow is an isomorphism.
+Hence by Yoneda's lemma, see
+Categories, Lemma \ref{categories-lemma-yoneda}
+we see that $b$ is an isomorphism.
+This implies the other cases by rotating (using TR2).
+\end{proof}
+
+\begin{remark}
+\label{remark-special-triangles}
+Let $\mathcal{D}$ be an additive category with translation functors $[n]$
+as in Definition \ref{definition-triangle}. Let us call a triangle
+$(X, Y, Z, f, g, h)$ {\it special}\footnote{This is nonstandard notation.}
+if for every object $W$ of $\mathcal{D}$
+the long sequence of abelian groups
+$$
+\ldots \to
+\Hom_\mathcal{D}(W, X) \to
+\Hom_\mathcal{D}(W, Y) \to
+\Hom_\mathcal{D}(W, Z) \to
+\Hom_\mathcal{D}(W, X[1]) \to \ldots
+$$
+is exact.  The proof of Lemma \ref{lemma-third-isomorphism-triangle}
+shows that if
+$$
+(a, b, c) : (X, Y, Z, f, g, h) \to (X', Y', Z', f', g', h')
+$$
+is a morphism of special triangles and if two among $a, b, c$
+are isomorphisms so is the third. There is a dual statement for
+{\it co-special} triangles, i.e., triangles which turn into long
+exact sequences on applying the functor $\Hom_\mathcal{D}(-, W)$.
+Thus distinguished triangles are special and co-special, but in
+general there are many more (co-)special triangles, than there are
+distinguished triangles.
+\end{remark}
+
+\begin{lemma}
+\label{lemma-third-map-square-zero}
+Let $\mathcal{D}$ be a pre-triangulated category.
+Let
+$$
+(0, b, 0), (0, b', 0) : (X, Y, Z, f, g, h) \to (X, Y, Z, f, g, h)
+$$
+be endomorphisms of a distinguished triangle. Then $bb' = 0$.
+\end{lemma}
+
+\begin{proof}
+Picture
+$$
+\xymatrix{
+X \ar[r] \ar[d]^0 &
+Y \ar[r] \ar[d]^{b, b'} \ar@{..>}[ld]^\alpha &
+Z \ar[r] \ar[d]^0 \ar@{..>}[ld]^\beta &
+X[1] \ar[d]^0 \\
+X \ar[r] & Y \ar[r] & Z \ar[r] & X[1]
+}
+$$
+Applying
+Lemma \ref{lemma-representable-homological}
+we find dotted arrows $\alpha$ and $\beta$ such that
+$b' = f \circ \alpha$ and $b = \beta \circ g$. Then
+$bb' = \beta \circ g \circ f \circ \alpha = 0$
+as $g \circ f = 0$ by
+Lemma \ref{lemma-composition-zero}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-third-map-idempotent}
+Let $\mathcal{D}$ be a pre-triangulated category.
+Let $(X, Y, Z, f, g, h)$ be a distinguished triangle.
+If
+$$
+\xymatrix{
+Z \ar[r]_h \ar[d]_c & X[1] \ar[d]^{a[1]} \\
+Z \ar[r]^h & X[1]
+}
+$$
+is commutative and $a^2 = a$, $c^2 = c$, then there exists a
+morphism $b : Y \to Y$ with $b^2 = b$ such that
+$(a, b, c)$ is an endomorphism of the triangle $(X, Y, Z, f, g, h)$.
+\end{lemma}
+
+\begin{proof}
+By TR3 there exists a morphism $b'$ such that
+$(a, b', c)$ is an endomorphism of $(X, Y, Z, f, g, h)$.
+Then $(0, (b')^2 - b', 0)$ is also an endomorphism. By
+Lemma \ref{lemma-third-map-square-zero}
+we see that $(b')^2 - b'$ has square zero.
+Set $b = b' - (2b' - 1)((b')^2 - b') = 3(b')^2 - 2(b')^3$.
+A computation shows that $(a, b, c)$ is an endomorphism and
+that $b^2 - b = (4(b')^2 - 4b' - 3)((b')^2 - b')^2 = 0$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-cone-triangle-unique-isomorphism}
+Let $\mathcal{D}$ be a pre-triangulated category.
+Let $f : X \to Y$ be a morphism of $\mathcal{D}$.
+There exists a distinguished triangle $(X, Y, Z, f, g, h)$ which
+is unique up to (nonunique) isomorphism of triangles.
+More precisely, given a second such distinguished triangle
+$(X, Y, Z', f, g', h')$ there exists an isomorphism
+$$
+(1, 1, c) : (X, Y, Z, f, g, h) \longrightarrow (X, Y, Z', f, g', h')
+$$
+\end{lemma}
+
+\begin{proof}
+Existence by TR1. Uniqueness up to isomorphism by TR3 and
+Lemma \ref{lemma-third-isomorphism-triangle}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-uniqueness-third-arrow}
+Let $\mathcal{D}$ be a pre-triangulated category. Let
+$$
+(a, b, c) : (X, Y, Z, f, g, h) \to (X', Y', Z', f', g', h')
+$$
+be a morphism of distinguished triangles. If one of the following
+conditions holds
+\begin{enumerate}
+\item $\Hom(Y, X') = 0$,
+\item $\Hom(Z, Y') = 0$,
+\item $\Hom(X, X') = \Hom(Z, X') = 0$,
+\item $\Hom(Z, X') = \Hom(Z, Z') = 0$, or
+\item $\Hom(X[1], Z') = \Hom(Z, X') = 0$
+\end{enumerate}
+then $b$ is the unique morphism from $Y \to Y'$ such that
+$(a, b, c)$ is a morphism of triangles.
+\end{lemma}
+
+\begin{proof}
+If we have a second morphism of triangles $(a, b', c)$
+then $(0, b - b', 0)$ is a morphism of triangles. Hence we
+have to show: the only morphism $b : Y \to Y'$ such that
+$X \to Y \to Y'$ and $Y \to Y' \to Z'$ are zero is $0$.
+We will use Lemma \ref{lemma-representable-homological}
+without further mention. In particular, condition (3) implies (1).
+Given condition (1) if the composition $g' \circ b : Y \to Y' \to Z'$
+is zero, then $b$ lifts to a morphism $Y \to X'$ which has to be zero.
+This proves (1).
+
+\medskip\noindent
+The proof of (2) and (4) are dual to this argument.
+
+\medskip\noindent
+Assume (5). Consider the diagram
+$$
+\xymatrix{
+X \ar[r]_f \ar[d]^0 &
+Y \ar[r]_g \ar[d]^b &
+Z \ar[r]_h \ar[d]^0 \ar@{..>}[ld]^\epsilon &
+X[1] \ar[d]^0 \\
+X' \ar[r]^{f'} &
+Y' \ar[r]^{g'} &
+Z' \ar[r]^{h'} &
+X'[1]
+}
+$$
+We may choose $\epsilon$ such that $b = \epsilon \circ g$.
+Then $g' \circ \epsilon \circ g = 0$ which implies that
+$g' \circ \epsilon = \delta \circ h$ for some
+$\delta \in \Hom(X[1], Z')$. Since $\Hom(X[1], Z') = 0$
+we conclude that $g' \circ \epsilon = 0$. Hence
+$\epsilon = f' \circ \gamma$ for some $\gamma \in \Hom(Z, X')$.
+Since $\Hom(Z, X') = 0$ we conclude that $\epsilon = 0$
+and hence $b = 0$ as desired.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-third-object-zero}
+Let $\mathcal{D}$ be a pre-triangulated category.
+Let $f : X \to Y$ be a morphism of $\mathcal{D}$.
+The following are equivalent
+\begin{enumerate}
+\item $f$ is an isomorphism,
+\item $(X, Y, 0, f, 0, 0)$ is a distinguished triangle, and
+\item for any distinguished triangle $(X, Y, Z, f, g, h)$ we have $Z = 0$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+By TR1 the triangle $(X, X, 0, 1, 0, 0)$ is distinguished.
+Let $(X, Y, Z, f, g, h)$ be a distinguished triangle.
+By TR3 there is a map of distinguished triangles
+$(1, f, 0) : (X, X, 0) \to (X, Y, Z)$.
+If $f$ is an isomorphism, then $(1, f, 0)$ is an isomorphism
+of triangles by Lemma \ref{lemma-third-isomorphism-triangle}
+and $Z = 0$. Conversely, if $Z = 0$, then $(1, f, 0)$ is an
+isomorphism of triangles as well, hence $f$ is an isomorphism.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-direct-sum-triangles}
+Let $\mathcal{D}$ be a pre-triangulated category.
+Let $(X, Y, Z, f, g, h)$ and $(X', Y', Z', f', g', h')$ be triangles.
+The following are equivalent
+\begin{enumerate}
+\item $(X \oplus X', Y \oplus Y', Z \oplus Z',
+f \oplus f', g \oplus g', h \oplus h')$
+is a distinguished triangle,
+\item both $(X, Y, Z, f, g, h)$ and $(X', Y', Z', f', g', h')$ are
+distinguished triangles.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Assume (2). By TR1 we may choose a distinguished triangle
+$(X \oplus X', Y \oplus Y', Q, f \oplus f', g'', h'')$.
+By TR3 we can find morphisms of distinguished triangles
+$(X, Y, Z, f, g, h) \to
+(X \oplus X', Y \oplus Y', Q, f \oplus f', g'', h'')$
+and
+$(X', Y', Z', f', g', h') \to
+(X \oplus X', Y \oplus Y', Q, f \oplus f', g'', h'')$.
+Taking the direct sum of these morphisms
+we obtain a morphism of triangles
+$$
+\xymatrix{
+(X \oplus X', Y \oplus Y', Z \oplus Z',
+f \oplus f', g \oplus g', h \oplus h')
+\ar[d]^{(1, 1, c)} \\
+(X \oplus X', Y \oplus Y', Q, f \oplus f', g'', h'').
+}
+$$
+In the terminology of Remark \ref{remark-special-triangles}
+this is a map of special triangles (because a direct sum of special
+triangles is special) and we conclude
+that $c$ is an isomorphism. Thus (1) holds.
+
+\medskip\noindent
+Assume (1). We will show that $(X, Y, Z, f, g, h)$ is a distinguished
+triangle. First observe that $(X, Y, Z, f, g, h)$ is a special triangle
+(terminology from Remark \ref{remark-special-triangles})
+as a direct summand of the distinguished hence special
+triangle $(X \oplus X', Y \oplus Y', Z \oplus Z',
+f \oplus f', g \oplus g', h \oplus h')$. Using TR1 let
+$(X, Y, Q, f, g'', h'')$ be a distinguished triangle. By TR3 there exists
+a morphism of distinguished triangles
+ $(X \oplus X', Y \oplus Y', Z \oplus Z',
+f \oplus f', g \oplus g', h \oplus h') \to (X, Y, Q, f, g'', h'')$.
+Composing this with the inclusion map we get a morphism of triangles
+$$
+(1, 1, c) :
+(X, Y, Z, f, g, h)
+\longrightarrow
+(X, Y, Q, f, g'', h'')
+$$
+By Remark \ref{remark-special-triangles}
+we find that $c$ is an isomorphism and we conclude
+that (2) holds.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-split}
+Let $\mathcal{D}$ be a pre-triangulated category.
+Let $(X, Y, Z, f, g, h)$ be a distinguished triangle.
+\begin{enumerate}
+\item If $h = 0$, then there exists a right inverse $s : Z \to Y$ to $g$.
+\item For any right inverse $s : Z \to Y$ of $g$ the map
+$f \oplus s : X \oplus Z \to Y$ is an isomorphism.
+\item For any objects $X', Z'$ of $\mathcal{D}$ the triangle
+$(X', X' \oplus Z', Z', (1, 0), (0, 1), 0)$ is distinguished.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+To see (1) use that
+$\Hom_\mathcal{D}(Z, Y) \to \Hom_\mathcal{D}(Z, Z) \to
+\Hom_\mathcal{D}(Z, X[1])$
+is exact by
+Lemma \ref{lemma-representable-homological}.
+By the same token, if $s$ is as in (2), then $h = 0$ and the sequence
+$$
+0 \to \Hom_\mathcal{D}(W, X) \to \Hom_\mathcal{D}(W, Y)
+\to \Hom_\mathcal{D}(W, Z) \to 0
+$$
+is split exact (split by $s : Z \to Y$). Hence by Yoneda's lemma we
+see that $X \oplus Z \to Y$ is an isomorphism. The last assertion follows
+from TR1 and
+Lemma \ref{lemma-direct-sum-triangles}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-when-split}
+Let $\mathcal{D}$ be a pre-triangulated category.
+Let $f : X \to Y$ be a morphism of $\mathcal{D}$.
+The following are equivalent
+\begin{enumerate}
+\item $f$ has a kernel,
+\item $f$ has a cokernel,
+\item $f$ is the isomorphic to a composition
+$K \oplus Z \to Z \to Z \oplus Q$ of a projection and coprojection
+for some objects $K, Z, Q$ of $\mathcal{D}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Any morphism isomorphic to a map of the form
+$X' \oplus Z \to Z \oplus Y'$ has both a kernel and a cokernel.
+Hence (3) $\Rightarrow$ (1), (2).
+Next we prove (1) $\Rightarrow$ (3).
+Suppose first that $f : X \to Y$ is a monomorphism, i.e., its kernel is zero.
+By TR1 there exists a distinguished triangle $(X, Y, Z, f, g, h)$.
+By Lemma \ref{lemma-composition-zero} the composition
+$f \circ h[-1] = 0$. As $f$ is a monomorphism we see that $h[-1] = 0$
+and hence $h = 0$. Then
+Lemma \ref{lemma-split}
+implies that $Y = X \oplus Z$, i.e., we see that (3) holds.
+Next, assume $f$ has a kernel $K$. As $K \to X$ is a monomorphism we
+conclude $X = K \oplus X'$ and $f|_{X'} : X' \to Y$ is a monomorphism.
+Hence $Y = X' \oplus Y'$ and we win.
+The implication (2) $\Rightarrow$ (3) is dual to this.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-products-sums-shifts-triangles}
+Let $\mathcal{D}$ be a pre-triangulated category.
+Let $I$ be a set.
+\begin{enumerate}
+\item Let $X_i$, $i \in I$ be a family of objects of $\mathcal{D}$.
+\begin{enumerate}
+\item If $\prod X_i$ exists, then $(\prod X_i)[1] = \prod X_i[1]$.
+\item If $\bigoplus X_i$ exists, then $(\bigoplus X_i)[1] = \bigoplus X_i[1]$.
+\end{enumerate}
+\item Let $X_i \to Y_i \to Z_i \to X_i[1]$ be a family of distinguished
+triangles of $\mathcal{D}$.
+\begin{enumerate}
+\item If $\prod X_i$, $\prod Y_i$, $\prod Z_i$ exist, then
+$\prod X_i \to \prod Y_i \to \prod Z_i \to \prod X_i[1]$
+is a distinguished triangle.
+\item If $\bigoplus X_i$, $\bigoplus Y_i$,
+$\bigoplus Z_i$ exist, then
+$\bigoplus X_i \to \bigoplus Y_i \to \bigoplus Z_i \to \bigoplus X_i[1]$
+is a distinguished triangle.
+\end{enumerate}
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Part (1) is true because $[1]$ is an autoequivalence of $\mathcal{D}$
+and because direct sums and products are defined in terms of the
+category structure. Let us prove (2)(a). Choose a distinguished triangle
+$\prod X_i \to \prod Y_i \to Z \to \prod X_i[1]$. For each $j$ we can
+use TR3 to choose a morphism $p_j : Z \to Z_j$
+fitting into a morphism of distinguished
+triangles with the projection maps $\prod X_i \to X_j$ and $\prod Y_i \to Y_j$.
+Using the definition of products we obtain a map
+$\prod p_i : Z \to \prod Z_i$ fitting into a morphism
+of triangles from the distinguished triangle to the triangle
+made out of the products. Observe that the ``product'' triangle
+$\prod X_i \to \prod Y_i \to \prod Z_i \to \prod X_i[1]$
+is special in the terminology of Remark \ref{remark-special-triangles}
+because products of exact sequences of abelian groups are exact.
+Hence Remark \ref{remark-special-triangles} shows that
+the morphism of triangles is an isomorphism and we conclude by TR1.
+The proof of (2)(b) is dual.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-projectors-have-images-triangulated}
+Let $\mathcal{D}$ be a pre-triangulated category.
+If $\mathcal{D}$ has countable products, then $\mathcal{D}$
+is Karoubian.
+If $\mathcal{D}$ has countable coproducts, then $\mathcal{D}$
+is Karoubian.
+\end{lemma}
+
+\begin{proof}
+Assume $\mathcal{D}$ has countable products. By
+Homology, Lemma \ref{homology-lemma-projectors-have-images}
+it suffices to check that morphisms which have a right inverse have kernels.
+Any morphism which has a right inverse is an epimorphism, hence
+has a kernel by
+Lemma \ref{lemma-when-split}.
+The second statement is dual to the first.
+\end{proof}
+
+\noindent
+The following lemma makes it slightly easier to prove that a
+pre-triangulated category is triangulated.
+
+\begin{lemma}
+\label{lemma-easier-axiom-four}
+Let $\mathcal{D}$ be a pre-triangulated category.
+In order to prove TR4 it suffices to show that given
+any pair of composable morphisms
+$f : X \to Y$ and $g : Y \to Z$ there exist
+\begin{enumerate}
+\item isomorphisms $i : X' \to X$, $j : Y' \to Y$ and
+$k : Z' \to Z$, and then setting $f' = j^{-1}fi : X' \to Y'$ and
+$g' = k^{-1}gj : Y' \to Z'$ there exist
+\item distinguished triangles
+$(X', Y', Q_1, f', p_1, d_1)$,
+$(X', Z', Q_2, g' \circ f', p_2, d_2)$
+and
+$(Y', Z', Q_3, g', p_3, d_3)$,
+such that the assertion of TR4 holds.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+The replacement of $X, Y, Z$ by $X', Y', Z'$ is harmless by our
+definition of distinguished triangles and their isomorphisms.
+The lemma follows from the fact that the distinguished triangles
+$(X', Y', Q_1, f', p_1, d_1)$,
+$(X', Z', Q_2, g' \circ f', p_2, d_2)$
+and
+$(Y', Z', Q_3, g', p_3, d_3)$
+are unique up to isomorphism by
+Lemma \ref{lemma-cone-triangle-unique-isomorphism}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-triangulated-subcategory}
+Let $\mathcal{D}$ be a pre-triangulated category.
+Assume that $\mathcal{D}'$ is an additive full subcategory of $\mathcal{D}$.
+The following are equivalent
+\begin{enumerate}
+\item there exists a set of triangles $\mathcal{T}'$ such that
+$(\mathcal{D}', \mathcal{T}')$ is a pre-triangulated subcategory
+of $\mathcal{D}$,
+\item $\mathcal{D}'$ is preserved under $[1]$ and
+$[1] : \mathcal{D}' \to \mathcal{D}'$ is an auto-equivalence and
+given any morphism $f : X \to Y$ in $\mathcal{D}'$ there exists
+a distinguished triangle $(X, Y, Z, f, g, h)$ in $\mathcal{D}$
+such that $Z$ is isomorphic to an object of $\mathcal{D}'$.
+\end{enumerate}
+In this case $\mathcal{T}'$ as in (1) is the set of distinguished triangles
+$(X, Y, Z, f, g, h)$ of $\mathcal{D}$ such that
+$X, Y, Z \in \Ob(\mathcal{D}')$. Finally, if $\mathcal{D}$
+is a triangulated category, then (1) and (2) are also equivalent to
+\begin{enumerate}
+\item[(3)] $\mathcal{D}'$ is a triangulated subcategory.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-exact-functor-additive}
+An exact functor of pre-triangulated categories is additive.
+\end{lemma}
+
+\begin{proof}
+Let $F : \mathcal{D} \to \mathcal{D}'$ be an exact functor of
+pre-triangulated categories. Since
+$(0, 0, 0, 1_0, 1_0, 0)$ is a distinguished triangle of $\mathcal{D}$
+the triangle
+$$
+(F(0), F(0), F(0), 1_{F(0)}, 1_{F(0)}, F(0))
+$$
+is distinguished in $\mathcal{D}'$.
+This implies that $1_{F(0)} \circ 1_{F(0)}$ is zero, see
+Lemma \ref{lemma-composition-zero}.
+Hence $F(0)$ is the zero object of $\mathcal{D}'$. This also implies
+that $F$ applied to any zero morphism is zero (since a morphism in
+an additive category is zero if and only if it factors through the
+zero object). Next, using that
+$(X, X \oplus Y, Y, (1, 0), (0, 1), 0)$ is a distinguished triangle by
+Lemma \ref{lemma-split} part (3), we see that
+$(F(X), F(X \oplus Y), F(Y), F(1, 0), F(0, 1), 0)$ is
+one too. This implies that the map $F(X) \oplus F(Y) \to F(X \oplus Y)$
+is an isomorphism by Lemma \ref{lemma-split} part (2). To finish we apply
+Homology, Lemma \ref{homology-lemma-additive-functor}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-exact-equivalence}
+Let $F : \mathcal{D} \to \mathcal{D}'$ be a fully faithful exact functor
+of pre-triangulated categories. Then a triangle $(X, Y, Z, f, g, h)$
+of $\mathcal{D}$ is distinguished if and only if
+$(F(X), F(Y), F(Z), F(f), F(g), F(h))$ is distinguished in $\mathcal{D}'$.
+\end{lemma}
+
+\begin{proof}
+The ``only if'' part is clear. Assume $(F(X), F(Y), F(Z))$ is
+distinguished in $\mathcal{D}'$. Pick a distinguished triangle
+$(X, Y, Z', f, g', h')$ in $\mathcal{D}$. By
+Lemma \ref{lemma-cone-triangle-unique-isomorphism}
+there exists an isomorphism of triangles
+$$
+(1, 1, c') : (F(X), F(Y), F(Z)) \longrightarrow (F(X), F(Y), F(Z')).
+$$
+Since $F$ is fully faithful, there exists a morphism $c : Z \to Z'$
+such that $F(c) = c'$. Then $(1, 1, c)$ is an isomorphism between
+$(X, Y, Z)$ and $(X, Y, Z')$. Hence $(X, Y, Z)$ is distinguished
+by TR1.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-composition-exact}
+Let $\mathcal{D}, \mathcal{D}', \mathcal{D}''$ be pre-triangulated categories.
+Let $F : \mathcal{D} \to \mathcal{D}'$ and
+$F' : \mathcal{D}' \to \mathcal{D}''$ be exact functors.
+Then $F' \circ F$ is an exact functor.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-exact-compose-homological-functor}
+Let $\mathcal{D}$ be a pre-triangulated category.
+Let $\mathcal{A}$ be an abelian category.
+Let $H : \mathcal{D} \to \mathcal{A}$ be a homological functor.
+\begin{enumerate}
+\item Let $\mathcal{D}'$ be a pre-triangulated category.
+Let $F : \mathcal{D}' \to \mathcal{D}$ be an exact functor.
+Then the composition $H \circ F$ is a homological functor as well.
+\item Let $\mathcal{A}'$ be an abelian category. Let
+$G : \mathcal{A} \to \mathcal{A}'$ be an exact functor.
+Then $G \circ H$ is a homological functor as well.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-exact-compose-delta-functor}
+Let $\mathcal{D}$ be a triangulated category.
+Let $\mathcal{A}$ be an abelian category.
+Let $G : \mathcal{A} \to \mathcal{D}$ be a $\delta$-functor.
+\begin{enumerate}
+\item Let $\mathcal{D}'$ be a triangulated category.
+Let $F : \mathcal{D} \to \mathcal{D}'$ be an exact functor.
+Then the composition $F \circ G$ is a $\delta$-functor as well.
+\item Let $\mathcal{A}'$ be an abelian category. Let
+$H : \mathcal{A}' \to \mathcal{A}$ be an exact functor.
+Then $G \circ H$ is a $\delta$-functor as well.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-compose-delta-functor-homological}
+Let $\mathcal{D}$ be a triangulated category.
+Let $\mathcal{A}$ and $\mathcal{B}$ be abelian categories.
+Let $G : \mathcal{A} \to \mathcal{D}$ be a $\delta$-functor.
+Let $H : \mathcal{D} \to \mathcal{B}$ be a homological functor.
+Assume that $H^{-1}(G(A)) = 0$ for all $A$ in $\mathcal{A}$.
+Then the collection
+$$
+\{H^n \circ G, H^n(\delta_{A \to B \to C})\}_{n \geq 0}
+$$
+is a $\delta$-functor from $\mathcal{A} \to \mathcal{B}$, see
+Homology, Definition \ref{homology-definition-cohomological-delta-functor}.
+\end{lemma}
+
+\begin{proof}
+The notation signifies the following. If
+$0 \to A \xrightarrow{a} B \xrightarrow{b} C \to 0$ is
+a short exact sequence in $\mathcal{A}$, then
+$$
+\delta = \delta_{A \to B \to C} : G(C) \to G(A)[1]
+$$
+is a morphism in $\mathcal{D}$ such that
+$(G(A), G(B), G(C), a, b, \delta)$ is
+a distinguished triangle, see
+Definition \ref{definition-delta-functor}.
+Then $H^n(\delta) : H^n(G(C)) \to H^n(G(A)[1]) = H^{n + 1}(G(A))$
+is clearly functorial in the short exact sequence.
+Finally, the long exact cohomology sequence
+(\ref{equation-long-exact-cohomology-sequence})
+combined with the vanishing of $H^{-1}(G(C))$
+gives a long exact sequence
+$$
+0 \to H^0(G(A)) \to H^0(G(B)) \to H^0(G(C))
+\xrightarrow{H^0(\delta)} H^1(G(A)) \to \ldots
+$$
+in $\mathcal{B}$ as desired.
+\end{proof}
+
+\noindent
+The proof of the following result uses TR4.
+
+\begin{proposition}
+\label{proposition-9}
+Let $\mathcal{D}$ be a triangulated category. Any commutative diagram
+$$
+\xymatrix{
+X \ar[r] \ar[d] & Y \ar[d] \\
+X' \ar[r] & Y'
+}
+$$
+can be extended to a diagram
+$$
+\xymatrix{
+X \ar[r] \ar[d] & Y \ar[r] \ar[d] & Z \ar[r] \ar[d] & X[1] \ar[d] \\
+X' \ar[r] \ar[d] & Y' \ar[r] \ar[d] & Z' \ar[r] \ar[d] & X'[1] \ar[d] \\
+X'' \ar[r] \ar[d] & Y'' \ar[r] \ar[d] & Z'' \ar[r] \ar[d] & X''[1] \ar[d] \\
+X[1] \ar[r] & Y[1] \ar[r] & Z[1] \ar[r] & X[2]
+}
+$$
+where all the squares are commutative, except for the lower right square
+which is anticommutative. Moreover, each of the rows and columns are
+distinguished triangles. Finally, the morphisms on the bottom row
+(resp.\ right column) are obtained from the morphisms of the top row
+(resp.\ left column) by applying $[1]$.
+\end{proposition}
+
+\begin{proof}
+During this proof we avoid writing the arrows in order to make the proof
+legible. Choose distinguished triangles
+$(X, Y, Z)$, $(X', Y', Z')$, $(X, X', X'')$, $(Y, Y', Y'')$, and
+$(X, Y', A)$. Note that the morphism $X \to Y'$ is both equal
+to the composition $X \to Y \to Y'$ and equal to the composition
+$X \to X' \to Y'$. Hence, we can find morphisms
+\begin{enumerate}
+\item $a : Z \to A$ and $b : A \to Y''$, and
+\item $a' : X'' \to A$ and $b' : A \to Z'$
+\end{enumerate}
+as in TR4. Denote $c : Y'' \to Z[1]$ the composition
+$Y'' \to Y[1] \to Z[1]$ and denote $c' : Z' \to X''[1]$ the composition
+$Z' \to X'[1] \to X''[1]$. The conclusion of our application TR4
+are that
+\begin{enumerate}
+\item $(Z, A, Y'', a, b, c)$, $(X'', A, Z', a', b', c')$
+are distinguished triangles,
+\item $(X, Y, Z) \to (X, Y', A)$,
+$(X, Y', A) \to (Y, Y', Y'')$,
+$(X, X', X'') \to (X, Y', A)$,
+$(X, Y', A) \to (X', Y', Z')$
+are morphisms of triangles.
+\end{enumerate}
+First using that
+$(X, X', X'') \to (X, Y', A)$ and $(X, Y', A) \to (Y, Y', Y'')$.
+are morphisms of triangles we see the first of the diagrams
+$$
+\vcenter{
+\xymatrix{
+X' \ar[r] \ar[d] & Y' \ar[d] \\
+X'' \ar[r]^{b \circ a'} \ar[d] & Y'' \ar[d] \\
+X[1] \ar[r] & Y[1]
+}
+}
+\quad\text{and}\quad
+\vcenter{
+\xymatrix{
+Y \ar[r] \ar[d] & Z \ar[d]^{b' \circ a} \ar[r] & X[1] \ar[d] \\
+Y' \ar[r] & Z' \ar[r] & X'[1]
+}
+}
+$$
+is commutative. The second is commutative too using that
+$(X, Y, Z) \to (X, Y', A)$ and $(X, Y', A) \to (X', Y', Z')$ are morphisms
+of triangles. At this point we choose a distinguished triangle
+$(X'', Y'' , Z'')$ starting with the map $b \circ a' : X'' \to Y''$.
+
+\medskip\noindent
+Next we apply TR4 one more time to the morphisms
+$X'' \to A \to Y''$ and the triangles
+$(X'', A, Z', a', b', c')$,
+$(X'', Y'', Z'')$, and
+$(A, Y'', Z[1], b, c , -a[1])$ to get morphisms
+$a'' : Z' \to Z''$ and $b'' : Z'' \to Z[1]$.
+Then $(Z', Z'', Z[1], a'', b'', - b'[1] \circ a[1])$ is a distinguished
+triangle, hence also $(Z, Z', Z'', -b' \circ a, a'', -b'')$
+and hence also $(Z, Z', Z'', b' \circ a, a'', b'')$.
+Moreover, $(X'', A, Z') \to (X'', Y'', Z'')$ and
+$(X'', Y'', Z'') \to (A, Y'', Z[1], b, c , -a[1])$
+are morphisms of triangles.
+At this point we have defined all the distinguished triangles
+and all the morphisms, and all that's left is to verify some
+commutativity relations.
+
+\medskip\noindent
+To see that the middle square in the diagram commutes, note
+that the arrow $Y' \to Z'$ factors as $Y' \to A \to Z'$
+because $(X, Y', A) \to (X', Y', Z')$ is a morphism of triangles.
+Similarly, the morphism $Y' \to Y''$ factors as
+$Y' \to A \to Y''$ because $(X, Y', A) \to (Y, Y', Y'')$ is a
+morphism of triangles. Hence the middle square commutes because
+the square with sides $(A, Z', Z'', Y'')$ commutes as
+$(X'', A, Z') \to (X'', Y'', Z'')$ is a morphism of triangles (by TR4).
+The square with sides $(Y'', Z'', Y[1], Z[1])$ commutes
+because $(X'', Y'', Z'') \to (A, Y'', Z[1], b, c , -a[1])$
+is a morphism of triangles and $c : Y'' \to Z[1]$ is the composition
+$Y'' \to Y[1] \to Z[1]$.
+The square with sides $(Z', X'[1], X''[1], Z'')$ is commutative
+because $(X'', A, Z') \to (X'', Y'', Z'')$ is a morphism of triangles
+and $c' : Z' \to X''[1]$ is the composition $Z' \to X'[1] \to X''[1]$.
+Finally, we have to show that the square with sides
+$(Z'', X''[1], Z[1], X[2])$ anticommutes. This holds because
+$(X'', Y'', Z'') \to (A, Y'', Z[1], b, c , -a[1])$
+is a morphism of triangles and we're done.
+\end{proof}
+
+
+
+
+
+
+
+

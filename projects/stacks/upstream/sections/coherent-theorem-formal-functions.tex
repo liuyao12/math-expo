@@ -1,0 +1,549 @@
+\section{The theorem on formal functions}
+\label{section-theorem-formal-functions}
+
+\noindent
+In this section we study the behaviour of cohomology of
+sequences of sheaves either of the form $\{I^n\mathcal{F}\}_{n \geq 0}$
+or of the form $\{\mathcal{F}/I^n\mathcal{F}\}_{n \geq 0}$ as
+$n$ varies.
+
+\medskip\noindent
+Here and below we use the following notation.
+Given a morphism of schemes $f : X \to Y$, a quasi-coherent sheaf
+$\mathcal{F}$ on $X$, and a quasi-coherent sheaf of ideals
+$\mathcal{I} \subset \mathcal{O}_Y$ we denote
+$\mathcal{I}^n\mathcal{F}$ the quasi-coherent subsheaf generated
+by products of local sections of $f^{-1}(\mathcal{I}^n)$ and
+$\mathcal{F}$. In a formula
+$$
+\mathcal{I}^n\mathcal{F}
+=
+\Im\left(
+f^*(\mathcal{I}^n) \otimes_{\mathcal{O}_X} \mathcal{F}
+\longrightarrow
+\mathcal{F}
+\right).
+$$
+Note that there are natural maps
+$$
+f^{-1}(\mathcal{I}^n) \otimes_{f^{-1}\mathcal{O}_Y} \mathcal{I}^m\mathcal{F}
+\longrightarrow
+f^*(\mathcal{I}^n) \otimes_{\mathcal{O}_X} \mathcal{I}^m\mathcal{F}
+\longrightarrow
+\mathcal{I}^{n + m}\mathcal{F}
+$$
+Hence a section of $\mathcal{I}^n$ will give rise to a
+map $R^pf_*(\mathcal{I}^m\mathcal{F}) \to
+R^pf_*(\mathcal{I}^{n + m}\mathcal{F})$ by functoriality
+of higher direct images. Localizing and then sheafifying we
+see that there are $\mathcal{O}_Y$-module maps
+$$
+\mathcal{I}^n \otimes_{\mathcal{O}_Y} R^pf_*(\mathcal{I}^m\mathcal{F})
+\longrightarrow
+R^pf_*(\mathcal{I}^{n + m}\mathcal{F}).
+$$
+In other words we see that
+$\bigoplus_{n \geq 0} R^pf_*(\mathcal{I}^n\mathcal{F})$
+is a graded $\bigoplus_{n \geq 0} \mathcal{I}^n$-module.
+
+\medskip\noindent
+If $Y = \Spec(A)$ and $\mathcal{I} = \widetilde{I}$ we denote
+$\mathcal{I}^n\mathcal{F}$ simply $I^n\mathcal{F}$. The maps
+introduced above give $M = \bigoplus H^p(X, I^n\mathcal{F})$ the
+structure of a graded $S = \bigoplus I^n$-module. If $f$ is proper,
+$A$ is Noetherian and $\mathcal{F}$ is coherent, then this turns out
+to be a module of finite type.
+
+\begin{lemma}
+\label{lemma-cohomology-powers-ideal-times-F}
+\begin{reference}
+\cite[III Cor 3.3.2]{EGA}
+\end{reference}
+Let $A$ be a Noetherian ring.
+Let $I \subset A$ be an ideal.
+Set $B = \bigoplus_{n \geq 0} I^n$.
+Let $f : X \to \Spec(A)$ be a proper morphism.
+Let $\mathcal{F}$ be a coherent sheaf on $X$.
+Then for every $p \geq 0$ the graded $B$-module
+$\bigoplus_{n \geq 0} H^p(X, I^n\mathcal{F})$ is
+a finite $B$-module.
+\end{lemma}
+
+\begin{proof}
+Let $\mathcal{B} = f^*\widetilde{B}$. Since $\mathcal{B}$ surjects
+onto $\bigoplus I^n\mathcal{O}_X$ it is clear that
+$\bigoplus I^n\mathcal{F}$ is a finite type graded $\mathcal{B}$-module.
+Hence the result follows from Lemma \ref{lemma-graded-finiteness} part (1).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-cohomology-powers-ideal-times-sheaf}
+Given a morphism of schemes $f : X \to Y$, a quasi-coherent sheaf
+$\mathcal{F}$ on $X$, and a quasi-coherent sheaf of ideals
+$\mathcal{I} \subset \mathcal{O}_Y$. Assume $Y$ locally
+Noetherian, $f$ proper, and $\mathcal{F}$ coherent.
+Then
+$$
+\mathcal{M} =
+\bigoplus\nolimits_{n \geq 0} R^pf_*(\mathcal{I}^n\mathcal{F})
+$$
+is a graded $\mathcal{A} = \bigoplus_{n \geq 0} \mathcal{I}^n$-module
+which is quasi-coherent and of finite type.
+\end{lemma}
+
+\begin{proof}
+The statement is local on $Y$, hence this reduces to the
+case where $Y$ is affine. In the affine case the result follows
+from Lemma \ref{lemma-cohomology-powers-ideal-times-F}.
+Details omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-cohomology-powers-ideal-application}
+Let $A$ be a Noetherian ring.
+Let $I \subset A$ be an ideal.
+Let $f : X \to \Spec(A)$ be a proper morphism.
+Let $\mathcal{F}$ be a coherent sheaf on $X$.
+Then for every $p \geq 0$ there exists an integer $c \geq 0$
+such that
+\begin{enumerate}
+\item the multiplication map
+$I^{n - c} \otimes H^p(X, I^c\mathcal{F}) \to H^p(X, I^n\mathcal{F})$
+is surjective for all $n \geq c$,
+\item the image of $H^p(X, I^{n + m}\mathcal{F}) \to H^p(X, I^n\mathcal{F})$
+is contained in the submodule $I^{m - e} H^p(X, I^n\mathcal{F})$
+where $e = \max(0, c - n)$ for $n + m \geq c$, $n, m \geq 0$,
+\item we have
+$$
+\Ker(H^p(X, I^n\mathcal{F}) \to H^p(X, \mathcal{F})) =
+\Ker(H^p(X, I^n\mathcal{F}) \to H^p(X, I^{n - c}\mathcal{F}))
+$$
+for $n \geq c$,
+\item there are maps $I^nH^p(X, \mathcal{F}) \to H^p(X, I^{n - c}\mathcal{F})$
+for $n \geq c$ such that the compositions
+$$
+H^p(X, I^n\mathcal{F}) \to 
+I^{n - c}H^p(X, \mathcal{F}) \to
+H^p(X, I^{n - 2c}\mathcal{F})
+$$
+and
+$$
+I^nH^p(X, \mathcal{F}) \to
+H^p(X, I^{n - c}\mathcal{F}) \to
+I^{n - 2c}H^p(X, \mathcal{F})
+$$
+for $n \geq 2c$ are the canonical ones, and
+\item the inverse systems $(H^p(X, I^n\mathcal{F}))$ and
+$(I^nH^p(X, \mathcal{F}))$ are pro-isomorphic.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Write $M_n = H^p(X, I^n\mathcal{F})$ for $n \geq 1$ and
+$M_0 = H^p(X, \mathcal{F})$ so that we have maps
+$\ldots \to M_3 \to M_2 \to M_1 \to M_0$. Setting
+$B = \bigoplus_{n \geq 0} I^n$, then $M = \bigoplus_{n \geq 0} M_n$
+is a finite graded $B$-module, see
+Lemma \ref{lemma-cohomology-powers-ideal-times-F}.
+Observe that the products
+$B_n \otimes M_m \to M_{m + n}$, $a \otimes m \mapsto a \cdot m$
+are compatible with the maps in our inverse system in the sense
+that the diagrams
+$$
+\xymatrix{
+B_n \otimes_A M_m \ar[r] \ar[d] & M_{n + m} \ar[d] \\
+B_n \otimes_A M_{m'} \ar[r] & M_{n + m'}
+}
+$$
+commute for $n, m' \geq 0$ and $m \geq m'$.
+
+\medskip\noindent
+Proof of (1). Choose $d_1, \ldots, d_t \geq 0$ and $x_i \in M_{d_i}$
+such that $M$ is generated by $x_1, \ldots, x_t$ over $B$.
+For any $c \geq \max\{d_i\}$ we conclude that
+$B_{n - c} \cdot M_c = M_n$ for $n \geq c$ and we conclude (1) is true.
+
+\medskip\noindent
+Proof of (2). Let $c$ be as in the proof of (1). Let $n + m \geq c$.
+We have $M_{n + m} = B_{n + m - c} \cdot M_c$.
+If $c > n$ then we use $M_c \to M_n$ and the compatibility of products
+with transition maps pointed out above to conclude that
+the image of $M_{n + m} \to M_n$ is contained in $I^{n + m - c}M_n$.
+If $c \leq n$, then we write $M_{n + m} = B_m \cdot B_{n - c} \cdot M_c =
+B_m \cdot M_n$ to see that the image is contained in $I^m M_n$.
+This proves (2).
+
+\medskip\noindent
+Let $K_n \subset M_n$ be the kernel of the map $M_n \to M_0$. The
+compatibility of products with transition maps pointed out above
+shows that $K = \bigoplus K_n \subset M$ is a graded $B$-submodule.
+As $B$ is Noetherian and $M$ is a finitely generated graded $B$-module,
+this shows that $K$ is a finitely generated graded $B$-module.
+Choose $d'_1, \ldots, d'_{t'} \geq 0$ and $y_i \in K_{d'_i}$
+such that $K$ is generated by $y_1, \ldots, y_{t'}$ over $B$.
+Set $c = \max(d'_i, d'_j)$. Since $y_i \in \Ker(M_{d'_i} \to M_0)$
+we see that $B_n \cdot y_i \subset \Ker(M_{n + d'_i} \to M_n)$.
+In this way we see that $K_n = \Ker(M_n \to M_{n - c})$ for $n \geq c$.
+This proves (3).
+
+\medskip\noindent
+Consider the following commutative solid diagram
+$$
+\xymatrix{
+I^n \otimes_A M_0 \ar[r] \ar[d] &
+I^nM_0 \ar[r] \ar@{..>}[d] &
+M_0 \ar[d] \\
+M_n \ar[r] &
+M_{n - c} \ar[r] &
+M_0
+}
+$$
+Since the kernel of the surjective arrow $I^n \otimes_A M_0 \to I^nM_0$
+maps into $K_n$ by the above we obtain the dotted arrow and the
+composition $I^nM_0 \to M_{n - c} \to M_0$ is the canonical map.
+Then clearly the composition $I^nM_0 \to M_{n - c} \to I^{n - 2c}M_0$
+is the canonical map for $n \geq 2c$. Consider the composition
+$M_n \to I^{n - c}M_0 \to M_{n - 2c}$. The first map
+sends an element of the form $a \cdot m$
+with $a \in I^{n - c}$ and $m \in M_c$
+to $a m'$ where $m'$ is the image of $m$ in $M_0$.
+Then the second map sends this to $a \cdot m'$ in $M_{n - 2c}$ and
+we see (4) is true.
+
+\medskip\noindent
+Part (5) is an immediate consequence of (4) and the definition of
+morphisms of pro-objects.
+\end{proof}
+
+\noindent
+In the situation of Lemmas \ref{lemma-cohomology-powers-ideal-times-F} and
+\ref{lemma-cohomology-powers-ideal-application} consider the inverse
+system
+$$
+\mathcal{F}/I\mathcal{F} \leftarrow
+\mathcal{F}/I^2\mathcal{F} \leftarrow
+\mathcal{F}/I^3\mathcal{F} \leftarrow \ldots
+$$
+We would like to know what happens to the cohomology groups.
+Here is a first result.
+
+\begin{lemma}
+\label{lemma-ML-cohomology-powers-ideal}
+Let $A$ be a Noetherian ring.
+Let $I \subset A$ be an ideal.
+Let $f : X \to \Spec(A)$ be a proper morphism.
+Let $\mathcal{F}$ be a coherent sheaf on $X$.
+Fix $p \geq 0$. There exists a $c \geq 0$ such that
+\begin{enumerate}
+\item for all $n \geq c$ we have
+$$
+\Ker(H^p(X, \mathcal{F}) \to H^p(X, \mathcal{F}/I^n\mathcal{F})) \subset
+I^{n - c}H^p(X, \mathcal{F}).
+$$
+\item the inverse system
+$$
+\left(H^p(X, \mathcal{F}/I^n\mathcal{F})\right)_{n \in \mathbf{N}}
+$$
+satisfies the Mittag-Leffler condition (see
+Homology, Definition \ref{homology-definition-Mittag-Leffler}), and
+\item we have
+$$
+\Im(H^p(X, \mathcal{F}/I^k\mathcal{F})
+\to H^p(X, \mathcal{F}/I^n\mathcal{F}))
+=
+\Im(H^p(X, \mathcal{F})
+\to H^p(X, \mathcal{F}/I^n\mathcal{F}))
+$$
+for all $k \geq n + c$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let $c = \max\{c_p, c_{p + 1}\}$, where $c_p, c_{p + 1}$ are the integers
+found in Lemma \ref{lemma-cohomology-powers-ideal-application} for
+$H^p$ and $H^{p + 1}$.
+
+\medskip\noindent
+Let us prove part (1). Consider the short exact sequence
+$$
+0 \to I^n\mathcal{F} \to \mathcal{F} \to \mathcal{F}/I^n\mathcal{F} \to 0
+$$
+From the long exact cohomology sequence we see that
+$$
+\Ker(
+H^p(X, \mathcal{F}) \to H^p(X, \mathcal{F}/I^n\mathcal{F})
+)
+=
+\Im(
+H^p(X, I^n\mathcal{F}) \to H^p(X, \mathcal{F})
+)
+$$
+Hence by Lemma \ref{lemma-cohomology-powers-ideal-application} part (2)
+we see that this is contained in $I^{n - c}H^p(X, \mathcal{F})$ for $n \geq c$.
+
+\medskip\noindent
+Note that part (3) implies part (2) by definition of the Mittag-Leffler
+systems.
+
+\medskip\noindent
+Let us prove part (3). Fix an $n$. Consider the commutative diagram
+$$
+\xymatrix{
+0 \ar[r] &
+I^n\mathcal{F} \ar[r] &
+\mathcal{F} \ar[r] &
+\mathcal{F}/I^n\mathcal{F} \ar[r] &
+0 \\
+0 \ar[r] &
+I^{n + m}\mathcal{F} \ar[r] \ar[u] &
+\mathcal{F} \ar[r] \ar[u] &
+\mathcal{F}/I^{n + m}\mathcal{F} \ar[r] \ar[u] &
+0
+}
+$$
+This gives rise to the following commutative diagram
+$$
+\xymatrix{
+H^p(X, \mathcal{F}) \ar[r] &
+H^p(X, \mathcal{F}/I^n\mathcal{F}) \ar[r]_\delta &
+H^{p + 1}(X, I^n\mathcal{F}) \ar[r] &
+H^{p + 1}(X, \mathcal{F}) \\
+H^p(X, \mathcal{F}) \ar[r] \ar[u]^1 &
+H^p(X, \mathcal{F}/I^{n + m}\mathcal{F}) \ar[r] \ar[u]^\gamma &
+H^{p + 1}(X, I^{n + m}\mathcal{F}) \ar[u]^\alpha \ar[r]^-\beta &
+H^{p + 1}(X, \mathcal{F}) \ar[u]_1
+}
+$$
+with exact rows. By
+Lemma \ref{lemma-cohomology-powers-ideal-application} part (4) the kernel
+of $\beta$ is equal to the kernel of $\alpha$ for $m \geq c$.
+By a diagram chase this shows that the image of $\gamma$ is contained
+in the kernel of $\delta$ which shows that part (3) is true
+(set $k = n + m$ to get it).
+\end{proof}
+
+\begin{theorem}[Theorem on formal functions]
+\label{theorem-formal-functions}
+Let $A$ be a Noetherian ring.
+Let $I \subset A$ be an ideal.
+Let $f : X \to \Spec(A)$ be a proper morphism.
+Let $\mathcal{F}$ be a coherent sheaf on $X$.
+Fix $p \geq 0$.
+The system of maps
+$$
+H^p(X, \mathcal{F})/I^nH^p(X, \mathcal{F})
+\longrightarrow
+H^p(X, \mathcal{F}/I^n\mathcal{F})
+$$
+define an isomorphism of limits
+$$
+H^p(X, \mathcal{F})^\wedge
+\longrightarrow
+\lim_n H^p(X, \mathcal{F}/I^n\mathcal{F})
+$$
+where the left hand side is the completion of the $A$-module
+$H^p(X, \mathcal{F})$ with respect to the ideal $I$, see
+Algebra, Section \ref{algebra-section-completion}.
+Moreover, this is in fact a homeomorphism for the limit topologies.
+\end{theorem}
+
+\begin{proof}
+This follows from Lemma \ref{lemma-ML-cohomology-powers-ideal} as follows.
+Set $M = H^p(X, \mathcal{F})$, $M_n = H^p(X, \mathcal{F}/I^n\mathcal{F})$,
+and denote $N_n = \Im(M \to M_n)$. By
+Lemma \ref{lemma-ML-cohomology-powers-ideal} parts (2) and (3) we see that
+$(M_n)$ is a Mittag-Leffler system with
+$N_n \subset M_n$ equal to the image of $M_k$ for all $k \gg n$.
+It follows that $\lim M_n = \lim N_n$ as topological modules (with limit
+topologies). On the other hand, the $N_n$ form an inverse system of quotients
+of the module $M$ and hence $\lim N_n$ is the completion of $M$
+with respect to the topology given by the kernels $K_n = \Ker(M \to N_n)$.
+By Lemma \ref{lemma-ML-cohomology-powers-ideal} part (1)
+we have $K_n \subset I^{n - c}M$ and since $N_n \subset M_n$
+is annihilated by $I^n$ we have $I^n M \subset K_n$.
+Thus the topology defined using the submodules $K_n$
+as a fundamental system of open neighbourhoods of $0$
+is the same as the $I$-adic topology and we find that the
+induced map $M^\wedge = \lim M/I^nM \to \lim N_n = \lim M_n$
+is an isomorphism of topological modules\footnote{
+To be sure, the limit topology on $M^\wedge$ is the same as its
+$I$-adic topology as follows from
+Algebra, Lemma \ref{algebra-lemma-hathat-finitely-generated}.
+See More on Algebra, Section \ref{more-algebra-section-topological-ring}.}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-spell-out-theorem-formal-functions}
+Let $A$ be a ring. Let $I \subset A$ be an ideal. Assume $A$ is
+Noetherian and complete with respect to $I$.
+Let $f : X \to \Spec(A)$ be a proper morphism.
+Let $\mathcal{F}$ be a coherent sheaf on $X$.
+Then
+$$
+H^p(X, \mathcal{F}) = \lim_n H^p(X, \mathcal{F}/I^n\mathcal{F})
+$$
+for all $p \geq 0$.
+\end{lemma}
+
+\begin{proof}
+This is a reformulation of the theorem on formal functions
+(Theorem \ref{theorem-formal-functions}) in the
+case of a complete Noetherian base ring. Namely, in this case the
+$A$-module $H^p(X, \mathcal{F})$ is finite
+(Lemma \ref{lemma-proper-over-affine-cohomology-finite}) hence
+$I$-adically complete (Algebra, Lemma \ref{algebra-lemma-completion-tensor})
+and we see that completion on the left hand side is not necessary.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-formal-functions-stalk}
+Given a morphism of schemes $f : X \to Y$ and a quasi-coherent sheaf
+$\mathcal{F}$ on $X$. Assume
+\begin{enumerate}
+\item $Y$ locally Noetherian,
+\item $f$ proper, and
+\item $\mathcal{F}$ coherent.
+\end{enumerate}
+Let $y \in Y$ be a point. Consider the infinitesimal neighbourhoods
+$$
+\xymatrix{
+X_n =
+\Spec(\mathcal{O}_{Y, y}/\mathfrak m_y^n) \times_Y X
+\ar[r]_-{i_n} \ar[d]_{f_n} &
+X \ar[d]^f \\
+\Spec(\mathcal{O}_{Y, y}/\mathfrak m_y^n) \ar[r]^-{c_n} & Y
+}
+$$
+of the fibre $X_1 = X_y$ and set $\mathcal{F}_n = i_n^*\mathcal{F}$.
+Then we have
+$$
+\left(R^pf_*\mathcal{F}\right)_y^\wedge
+\cong
+\lim_n H^p(X_n, \mathcal{F}_n)
+$$
+as $\mathcal{O}_{Y, y}^\wedge$-modules.
+\end{lemma}
+
+\begin{proof}
+This is just a reformulation of a special case of the theorem
+on formal functions, Theorem \ref{theorem-formal-functions}.
+Let us spell it out. Note that $\mathcal{O}_{Y, y}$ is a Noetherian
+local ring. Consider the canonical morphism
+$c : \Spec(\mathcal{O}_{Y, y}) \to Y$, see
+Schemes, Equation (\ref{schemes-equation-canonical-morphism}).
+This is a flat morphism as it identifies local rings.
+Denote momentarily $f' : X' \to \Spec(\mathcal{O}_{Y, y})$
+the base change of $f$ to this local ring. We see that
+$c^*R^pf_*\mathcal{F} = R^pf'_*\mathcal{F}'$ by
+Lemma \ref{lemma-flat-base-change-cohomology}.
+Moreover, the infinitesimal neighbourhoods of
+the fibre $X_y$ and $X'_y$ are identified (verification omitted; hint:
+the morphisms $c_n$ factor through $c$).
+
+\medskip\noindent
+Hence we may assume that $Y = \Spec(A)$ is the spectrum of
+a Noetherian local ring $A$ with maximal ideal $\mathfrak m$
+and that $y \in Y$ corresponds to the closed point (i.e., to $\mathfrak m$).
+In particular it follows that
+$$
+\left(R^pf_*\mathcal{F}\right)_y =
+\Gamma(Y, R^pf_*\mathcal{F}) =
+H^p(X, \mathcal{F}).
+$$
+
+\medskip\noindent
+In this case also, the morphisms $c_n$ are each closed immersions.
+Hence their base changes $i_n$ are closed immersions as well.
+Note that $i_{n, *}\mathcal{F}_n = i_{n, *}i_n^*\mathcal{F}
+= \mathcal{F}/\mathfrak m^n\mathcal{F}$. By the Leray spectral sequence
+for $i_n$, and Lemma \ref{lemma-finite-pushforward-coherent} we see that
+$$
+H^p(X_n, \mathcal{F}_n) =
+H^p(X, i_{n, *}\mathcal{F}_n) =
+H^p(X, \mathcal{F}/\mathfrak m^n\mathcal{F})
+$$
+Hence we may indeed apply the theorem on formal functions to compute
+the limit in the statement of the lemma and we win.
+\end{proof}
+
+\noindent
+Here is a lemma which we will generalize later to fibres of
+dimension $ > 0$, namely the next lemma.
+
+\begin{lemma}
+\label{lemma-higher-direct-images-zero-finite-fibre}
+Let $f : X \to Y$ be a morphism of schemes.
+Let $y \in Y$.
+Assume
+\begin{enumerate}
+\item $Y$ locally Noetherian,
+\item $f$ is proper, and
+\item $f^{-1}(\{y\})$ is finite.
+\end{enumerate}
+Then for any coherent sheaf $\mathcal{F}$ on $X$ we have
+$(R^pf_*\mathcal{F})_y = 0$ for all $p > 0$.
+\end{lemma}
+
+\begin{proof}
+The fibre $X_y$ is finite, and by
+Morphisms, Lemma \ref{morphisms-lemma-finite-fibre} it
+is a finite discrete space. Moreover, the underlying topological
+space of each infinitesimal neighbourhood $X_n$ is the same.
+Hence each of the schemes $X_n$ is affine according to
+Schemes, Lemma \ref{schemes-lemma-scheme-finite-discrete-affine}.
+Hence it follows that $H^p(X_n, \mathcal{F}_n) = 0$ for all
+$p > 0$. Hence we see that $(R^pf_*\mathcal{F})_y^\wedge = 0$
+by Lemma \ref{lemma-formal-functions-stalk}.
+Note that $R^pf_*\mathcal{F}$ is coherent by
+Proposition \ref{proposition-proper-pushforward-coherent} and
+hence $R^pf_*\mathcal{F}_y$ is a finite
+$\mathcal{O}_{Y, y}$-module. By Nakayama's lemma
+(Algebra, Lemma \ref{algebra-lemma-NAK})
+if the completion of a finite module over a local ring
+is zero, then the module is zero. Whence
+$(R^pf_*\mathcal{F})_y = 0$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-higher-direct-images-zero-above-dimension-fibre}
+Let $f : X \to Y$ be a morphism of schemes.
+Let $y \in Y$.
+Assume
+\begin{enumerate}
+\item $Y$ locally Noetherian,
+\item $f$ is proper, and
+\item $\dim(X_y) = d$.
+\end{enumerate}
+Then for any coherent sheaf $\mathcal{F}$ on $X$ we have
+$(R^pf_*\mathcal{F})_y = 0$ for all $p > d$.
+\end{lemma}
+
+\begin{proof}
+The fibre $X_y$ is of finite type over $\Spec(\kappa(y))$.
+Hence $X_y$ is a Noetherian scheme by
+Morphisms, Lemma \ref{morphisms-lemma-finite-type-noetherian}.
+Hence the underlying topological space of $X_y$ is Noetherian, see
+Properties, Lemma \ref{properties-lemma-Noetherian-topology}.
+Moreover, the underlying topological space of each infinitesimal
+neighbourhood $X_n$ is the same as that of $X_y$.
+Hence $H^p(X_n, \mathcal{F}_n) = 0$ for all $p > d$ by
+Cohomology, Proposition \ref{cohomology-proposition-vanishing-Noetherian}.
+Hence we see that $(R^pf_*\mathcal{F})_y^\wedge = 0$
+by Lemma \ref{lemma-formal-functions-stalk} for $p > d$.
+Note that $R^pf_*\mathcal{F}$ is coherent by
+Proposition \ref{proposition-proper-pushforward-coherent} and
+hence $R^pf_*\mathcal{F}_y$ is a finite
+$\mathcal{O}_{Y, y}$-module. By Nakayama's lemma
+(Algebra, Lemma \ref{algebra-lemma-NAK})
+if the completion of a finite module over a local ring
+is zero, then the module is zero. Whence
+$(R^pf_*\mathcal{F})_y = 0$.
+\end{proof}
+
+
+
+
+
+
+
+

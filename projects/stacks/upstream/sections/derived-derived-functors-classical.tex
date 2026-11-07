@@ -1,0 +1,304 @@
+\section{Derived functors on derived categories}
+\label{section-derived-functors-classical}
+
+\noindent
+In practice derived functors come about most often when given an
+additive functor between abelian categories.
+
+\begin{situation}
+\label{situation-classical}
+Here $F : \mathcal{A} \to \mathcal{B}$ is an additive functor between
+abelian categories. This induces exact functors
+$$
+F : K(\mathcal{A}) \to K(\mathcal{B}), \quad
+K^{+}(\mathcal{A}) \to K^{+}(\mathcal{B}), \quad
+K^{-}(\mathcal{A}) \to K^{-}(\mathcal{B}).
+$$
+See Lemma \ref{lemma-additive-exact-homotopy-category}.
+We also denote $F$ the composition $K(\mathcal{A}) \to D(\mathcal{B})$,
+$K^{+}(\mathcal{A}) \to D^{+}(\mathcal{B})$, and
+$K^{-}(\mathcal{A}) \to D^-(\mathcal{B})$ of $F$ with the localization
+functor $K(\mathcal{B}) \to D(\mathcal{B})$, etc. This situation leads
+to four derived functors we will consider in the following.
+\begin{enumerate}
+\item The right derived functor of
+$F : K(\mathcal{A}) \to D(\mathcal{B})$
+relative to the multiplicative system $\text{Qis}(\mathcal{A})$.
+\item The right derived functor of
+$F : K^{+}(\mathcal{A}) \to D^{+}(\mathcal{B})$
+relative to the multiplicative system $\text{Qis}^{+}(\mathcal{A})$.
+\item The left derived functor of
+$F : K(\mathcal{A}) \to D(\mathcal{B})$
+relative to the multiplicative system $\text{Qis}(\mathcal{A})$.
+\item The left derived functor of
+$F : K^{-}(\mathcal{A}) \to D^{-}(\mathcal{B})$
+relative to the multiplicative system $\text{Qis}^-(\mathcal{A})$.
+\end{enumerate}
+Each of these cases is an example of
+Situation \ref{situation-derived-functor}.
+\end{situation}
+
+\noindent
+Some of the ambiguity that may arise is alleviated by the following.
+
+\begin{lemma}
+\label{lemma-irrelevant}
+In
+Situation \ref{situation-classical}.
+\begin{enumerate}
+\item Let $X$ be an object of $K^{+}(\mathcal{A})$.
+The right derived functor of $K(\mathcal{A}) \to D(\mathcal{B})$
+is defined at $X$ if and only if the right derived functor of
+$K^{+}(\mathcal{A}) \to D^{+}(\mathcal{B})$ is defined at $X$.
+Moreover, the values are canonically isomorphic.
+\item Let $X$ be an object of $K^{+}(\mathcal{A})$.
+Then $X$ computes the right derived functor of
+$K(\mathcal{A}) \to D(\mathcal{B})$
+if and only if $X$ computes the right derived functor of
+$K^{+}(\mathcal{A}) \to D^{+}(\mathcal{B})$.
+\item Let $X$ be an object of $K^{-}(\mathcal{A})$.
+The left derived functor of $K(\mathcal{A}) \to D(\mathcal{B})$
+is defined at $X$ if and only if the left derived functor of
+$K^{-}(\mathcal{A}) \to D^{-}(\mathcal{B})$ is defined at $X$.
+Moreover, the values are canonically isomorphic.
+\item Let $X$ be an object of $K^{-}(\mathcal{A})$.
+Then $X$ computes the left derived functor of
+$K(\mathcal{A}) \to D(\mathcal{B})$ if and only if $X$ computes
+the left derived functor of $K^{-}(\mathcal{A}) \to D^{-}(\mathcal{B})$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let $X$ be an object of $K^{+}(\mathcal{A})$.
+Consider a quasi-isomorphism $s : X \to X'$ in $K(\mathcal{A})$.
+By
+Lemma \ref{lemma-complex-cohomology-bounded}
+there exists quasi-isomorphism $X' \to X''$ with $X''$ bounded below.
+Hence we see that $X/\text{Qis}^+(\mathcal{A})$ is cofinal
+in $X/\text{Qis}(\mathcal{A})$. Thus it is clear that (1) holds.
+Part (2) follows directly from part (1).
+Parts (3) and (4) are dual to parts (1) and (2).
+\end{proof}
+
+\noindent
+Given an object $A$ of an abelian category $\mathcal{A}$ we get a complex
+$$
+A[0] = ( \ldots \to 0 \to A \to 0 \to \ldots )
+$$
+where $A$ is placed in degree zero. Hence a functor
+$\mathcal{A} \to K(\mathcal{A})$, $A \mapsto A[0]$.
+Let us temporarily say that a partial functor is one that is
+defined on a subcategory.
+
+\begin{definition}
+\label{definition-derived-functor}
+In
+Situation \ref{situation-classical}.
+\begin{enumerate}
+\item The {\it right derived functors of $F$} are the partial functors
+$RF$ associated to cases (1) and (2) of
+Situation \ref{situation-classical}.
+\item The {\it left derived functors of $F$} are the partial functors
+$LF$ associated to cases (3) and (4) of
+Situation \ref{situation-classical}.
+\item An object $A$ of $\mathcal{A}$ is said to be
+{\it right acyclic for $F$}, or {\it acyclic for $RF$}
+if $A[0]$ computes $RF$.
+\item An object $A$ of $\mathcal{A}$ is said to be
+{\it left acyclic for $F$}, or {\it acyclic for $LF$}
+if $A[0]$ computes $LF$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+The following few lemmas give some criteria for the existence of
+enough acyclics.
+
+\begin{lemma}
+\label{lemma-subcategory-left-resolution}
+Let $\mathcal{A}$ be an abelian category. Let
+$\mathcal{P} \subset \Ob(\mathcal{A})$ be a subset containing $0$
+such that every object of $\mathcal{A}$ is a quotient of an element of
+$\mathcal{P}$. Let $a \in \mathbf{Z}$.
+\begin{enumerate}
+\item Given $K^\bullet$ with $K^n = 0$ for $n > a$
+there exists a quasi-isomorphism $P^\bullet \to K^\bullet$
+with $P^n \in \mathcal{P}$ and $P^n \to K^n$ surjective
+for all $n$ and $P^n = 0$ for $n > a$.
+\item Given $K^\bullet$ with $H^n(K^\bullet) = 0$ for $n > a$
+there exists a quasi-isomorphism $P^\bullet \to K^\bullet$
+with $P^n \in \mathcal{P}$ for all $n$ and $P^n = 0$ for $n > a$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Proof of part (1). Consider the following induction hypothesis $IH_n$:
+There are $P^j \in \mathcal{P}$, $j \geq n$, with $P^j = 0$ for $j > a$,
+maps $d^j : P^j \to P^{j + 1}$ for $j \geq n$, and surjective maps
+$\alpha^j : P^j \to K^j$ for $j \geq n$ such that the diagram
+$$
+\xymatrix{
+& &
+P^n \ar[d]^\alpha \ar[r] &
+P^{n + 1} \ar[d]^\alpha \ar[r] &
+P^{n + 2} \ar[d]^\alpha \ar[r] &
+\ldots \\
+\ldots \ar[r] &
+K^{n - 1} \ar[r] &
+K^n \ar[r] &
+K^{n + 1} \ar[r] &
+K^{n + 2} \ar[r] &
+\ldots
+}
+$$
+is commutative, such that $d^{j + 1} \circ d^j = 0$ for $j \geq n$,
+such that $\alpha$ induces isomorphisms
+$\Ker(d^j)/\Im(d^{j - 1}) \to H^j(K^\bullet)$
+for $j > n$, and such that $\alpha : \Ker(d^n) \to \Ker(d_K^n)$
+is surjective. Then we choose a surjection
+$$
+P^{n - 1}
+\longrightarrow
+K^{n - 1} \times_{K^n} \Ker(d^n) =
+K^{n - 1} \times_{\Ker(d_K^n)} \Ker(d^n)
+$$
+with $P^{n - 1}$ in $\mathcal{P}$. This allows us to extend the diagram
+above to
+$$
+\xymatrix{
+& P^{n - 1} \ar[d]^\alpha \ar[r] &
+P^n \ar[d]^\alpha \ar[r] &
+P^{n + 1} \ar[d]^\alpha \ar[r] &
+P^{n + 2} \ar[d]^\alpha \ar[r] &
+\ldots \\
+\ldots \ar[r] &
+K^{n - 1} \ar[r] &
+K^n \ar[r] &
+K^{n + 1} \ar[r] &
+K^{n + 2} \ar[r] &
+\ldots
+}
+$$
+The reader easily checks that $IH_{n - 1}$ holds with this choice.
+
+\medskip\noindent
+We finish the proof of (1) as follows.
+First we note that $IH_n$ is true for $n = a + 1$ since
+we can just take $P^j = 0$ for $j > a$. Hence we see that
+proceeding by descending induction we produce a complex $P^\bullet$
+with $P^n = 0$ for $n > a$
+consisting of objects from $\mathcal{P}$, and a termwise
+surjective quasi-isomorphism $\alpha : P^\bullet \to K^\bullet$ as desired.
+
+\medskip\noindent
+Proof of part (2). The assumption implies that the morphism
+$\tau_{\leq a}K^\bullet \to K^\bullet$
+(Homology, Section \ref{homology-section-truncations})
+is a quasi-isomorphism.
+Apply part (1) to find $P^\bullet \to \tau_{\leq a}K^\bullet$.
+The composition $P^\bullet \to K^\bullet$ is the desired quasi-isomorphism.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-subcategory-right-resolution}
+Let $\mathcal{A}$ be an abelian category. Let
+$\mathcal{I} \subset \Ob(\mathcal{A})$ be a subset containing $0$
+such that every object of $\mathcal{A}$ is a subobject of an element of
+$\mathcal{I}$. Let $a \in \mathbf{Z}$.
+\begin{enumerate}
+\item Given $K^\bullet$ with $K^n = 0$ for $n < a$
+there exists a quasi-isomorphism $K^\bullet \to I^\bullet$
+with $K^n \to I^n$ injective and $I^n \in \mathcal{I}$ for all $n$
+and $I^n = 0$ for $n < a$,
+\item Given $K^\bullet$ with $H^n(K^\bullet) = 0$
+for $n < a$ there exists a quasi-isomorphism $K^\bullet \to I^\bullet$
+with $I^n \in \mathcal{I}$ and $I^n = 0$ for $n < a$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+This lemma is dual to Lemma \ref{lemma-subcategory-left-resolution}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-subcategory-right-acyclics}
+In
+Situation \ref{situation-classical}.
+Let $\mathcal{I} \subset \Ob(\mathcal{A})$ be a subset with the
+following properties:
+\begin{enumerate}
+\item every object of $\mathcal{A}$ is a subobject of an element of
+$\mathcal{I}$,
+\item for any short exact sequence $0 \to P \to Q \to R \to 0$ of
+$\mathcal{A}$ with $P, Q \in \mathcal{I}$, then $R \in \mathcal{I}$,
+and $0 \to F(P) \to F(Q) \to F(R) \to 0$ is exact.
+\end{enumerate}
+Then every object of $\mathcal{I}$ is acyclic for $RF$.
+\end{lemma}
+
+\begin{proof}
+Pick $A \in \mathcal{I}$. Let $A[0] \to K^\bullet$
+be a quasi-isomorphism with $K^\bullet$
+bounded below. Then we can find a quasi-isomorphism
+$K^\bullet \to I^\bullet$ with $I^\bullet$ bounded below and
+each $I^n \in \mathcal{I}$, see
+Lemma \ref{lemma-subcategory-right-resolution}\footnote{By (1)
+we see that $\mathcal{I}$ is nonempty. Pick $P$ in $\mathcal{I}$.
+Then the short exact sequence $0 \to P \to P \to 0 \to 0$ and assumption (2)
+shows that $0$ is in $\mathcal{I}$. Thus the lemma applies.}.
+Hence we see that these resolutions are cofinal in the category
+$A[0]/\text{Qis}^{+}(\mathcal{A})$. To finish the proof it therefore
+suffices to show that for any quasi-isomorphism
+$A[0] \to I^\bullet$ with $I^\bullet$ bounded below and $I^n \in \mathcal{I}$
+we have $F(A)[0] \to F(I^\bullet)$ is a quasi-isomorphism.
+To see this suppose that $I^n = 0$ for $n < n_0$. Of course we may assume
+that $n_0 < 0$. Starting with $n = n_0$ we prove inductively that
+$\Im(d^{n - 1}) = \Ker(d^n)$ and $\Im(d^{-1})$
+are elements of $\mathcal{I}$ using property (2) and the exact sequences
+$$
+0 \to \Ker(d^n) \to I^n \to \Im(d^n) \to 0.
+$$
+Moreover, property (2) also guarantees that the complex
+$$
+0 \to F(I^{n_0}) \to F(I^{n_0 + 1}) \to \ldots \to F(I^{-1}) \to
+F(\Im(d^{-1})) \to 0
+$$
+is exact. The exact sequence
+$0 \to \Im(d^{-1}) \to I^0 \to I^0/\Im(d^{-1}) \to 0$
+implies that $I^0/\Im(d^{-1})$ is an element of $\mathcal{I}$.
+The exact sequence $0 \to A \to I^0/\Im(d^{-1}) \to \Im(d^0) \to 0$
+then implies that $\Im(d^0) = \Ker(d^1)$ is an elements of
+$\mathcal{I}$ and from then on one continues as before to show that
+$\Im(d^{n - 1}) = \Ker(d^n)$ is an element of $\mathcal{I}$
+for all $n > 0$. Applying $F$ to each of the short exact sequences
+mentioned above and using (2) we observe that $F(A)[0] \to F(I^\bullet)$
+is an isomorphism as desired.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-subcategory-left-acyclics}
+In
+Situation \ref{situation-classical}.
+Let $\mathcal{P} \subset \Ob(\mathcal{A})$ be a subset with the
+following properties:
+\begin{enumerate}
+\item every object of $\mathcal{A}$ is a quotient of an element of
+$\mathcal{P}$,
+\item for any short exact sequence $0 \to P \to Q \to R \to 0$ of
+$\mathcal{A}$ with $Q, R \in \mathcal{P}$, then $P \in \mathcal{P}$,
+and $0 \to F(P) \to F(Q) \to F(R) \to 0$ is exact.
+\end{enumerate}
+Then every object of $\mathcal{P}$ is acyclic for $LF$.
+\end{lemma}
+
+\begin{proof}
+Dual to the proof of
+Lemma \ref{lemma-subcategory-right-acyclics}.
+\end{proof}
+
+
+
+
+
+
+

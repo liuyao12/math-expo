@@ -1,0 +1,187 @@
+\section{Base change in algebraic geometry}
+\label{section-base-change}
+
+\noindent
+One motivation for the introduction of the language of schemes
+is that it gives a very precise notion of what it means to
+define a variety over a particular field. For example a variety
+$X$ over $\mathbf{Q}$ is synonymous
+(Varieties, Definition \ref{varieties-definition-variety})
+with $X \to \Spec(\mathbf{Q})$ which is of finite type,
+separated, irreducible and reduced\footnote{Of course algebraic
+geometers still quibble over whether one should require $X$ to be
+geometrically irreducible over $\mathbf{Q}$.}. In any case, the idea
+is more generally to work with schemes over a given {\it base scheme},
+often denoted $S$. We use the language: ``let $X$ be a scheme over $S$''
+to mean simply that $X$ comes equipped with a morphism $X \to S$.
+In diagrams we will try to picture the {\it structure morphism}
+$X \to S$ as a downward arrow from $X$ to $S$.
+We are often more interested in the properties of $X$ relative
+to $S$ rather than the internal geometry of $X$.
+For example, we would like to know things about the fibres of $X \to S$,
+what happens to $X$ after base change, and so on.
+
+\medskip\noindent
+We introduce some of the language that is customarily used.
+Of course this language is just a special case of thinking
+about the category of objects over a given object in a category,
+see Categories, Example \ref{categories-example-category-over-X}.
+
+\begin{definition}
+\label{definition-base-change}
+Let $S$ be a scheme.
+\begin{enumerate}
+\item We say $X$ is a {\it scheme over $S$} to mean that $X$
+comes equipped with a morphism of schemes $X \to S$.
+The morphism $X \to S$ is sometimes called the
+{\it structure morphism}.
+\item If $R$ is a ring we say
+$X$ is a {\it scheme over $R$} instead of
+$X$ is a scheme over $\Spec(R)$.
+\item A {\it morphism $f : X \to Y$ of schemes over $S$}
+is a morphism of schemes such that the composition
+$X \to Y \to S$ of $f$ with the structure morphism of $Y$ is
+equal to the structure morphism of $X$.
+\item We denote $\Mor_S(X, Y)$ the set of all morphisms
+from $X$ to $Y$ over $S$.
+\item Let $X$ be a scheme over $S$. Let $S' \to S$ be a
+morphism of schemes. The {\it base change} of $X$
+is the scheme $X_{S'} = S' \times_S X$ over $S'$.
+\item Let $f : X \to Y$ be a morphism of schemes over $S$. Let $S' \to S$
+be a morphism of schemes. The {\it base change} of $f$ is
+the induced morphism $f' : X_{S'} \to Y_{S'}$ (namely the
+morphism $\text{id}_{S'} \times_{\text{id}_S} f$).
+\item Let $R$ be a ring. Let $X$ be a scheme over $R$.
+Let $R \to R'$ be a ring map. The {\it base change} $X_{R'}$
+is the scheme $\Spec(R') \times_{\Spec(R)} X$
+over $R'$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+Here is a typical result.
+
+\begin{lemma}
+\label{lemma-base-change-immersion}
+Let $S$ be a scheme. Let $f : X \to Y$ be an
+immersion (resp.\ closed immersion, resp. open immersion)
+of schemes over $S$. Then any base change of $f$ is an
+immersion (resp.\ closed immersion, resp. open immersion).
+\end{lemma}
+
+\begin{proof}
+We can think of the base change of $f$ via the morphism
+$S' \to S$ as the top left vertical arrow in the following
+commutative diagram:
+$$
+\xymatrix{
+X_{S'} \ar[r] \ar[d] & X \ar[d] \ar@/^4ex/[dd] \\
+Y_{S'} \ar[r] \ar[d] & Y \ar[d] \\
+S' \ar[r] & S
+}
+$$
+The diagram implies $X_{S'} \cong Y_{S'} \times_Y X$,
+and the lemma follows from Lemma \ref{lemma-fibre-product-immersion}.
+\end{proof}
+
+\noindent
+In fact this type of result is so typical that there is a
+piece of language to express it. Here it is.
+
+\begin{definition}
+\label{definition-preserved-by-base-change}
+Properties and base change.
+\begin{enumerate}
+\item Let $\mathcal{P}$ be a property of schemes over a base.
+We say that $\mathcal{P}$ is {\it preserved under arbitrary base change},
+or simply that $\mathcal{P}$ is {\it preserved under base change}
+if whenever $X/S$
+has $\mathcal{P}$, any base change $X_{S'}/S'$ has $\mathcal{P}$.
+\item Let $\mathcal{P}$ be a property of morphisms of schemes over a base.
+We say that $\mathcal{P}$ is {\it preserved under arbitrary base change},
+or simply that {\it preserved under base change} if whenever
+$f : X \to Y$ over $S$ has $\mathcal{P}$, any base change
+$f' : X_{S'} \to Y_{S'}$ over $S'$ has $\mathcal{P}$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+At this point we can say that ``being a closed immersion'' is
+preserved under arbitrary base change.
+
+\begin{definition}
+\label{definition-fibre}
+Let $f : X \to S$ be a morphism of schemes.
+Let $s \in S$ be a point.
+The {\it scheme theoretic fibre $X_s$ of $f$ over $s$},
+or simply the {\it fibre of $f$ over $s$},
+is the scheme fitting in the following fibre product diagram
+$$
+\xymatrix{
+X_s = \Spec(\kappa(s)) \times_S X \ar[r] \ar[d] &
+X \ar[d] \\
+\Spec(\kappa(s)) \ar[r] &
+S
+}
+$$
+We think of the fibre $X_s$ always as a scheme over $\kappa(s)$.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-fibre-topological}
+Let $f : X \to S$ be a morphism of schemes.
+Consider the diagrams
+$$
+\vcenter{
+\xymatrix{
+X_s \ar[r] \ar[d] & X \ar[d] \\
+\Spec(\kappa(s)) \ar[r] & S
+}
+}
+\quad\text{and}\quad
+\vcenter{
+\xymatrix{
+\Spec(\mathcal{O}_{S, s}) \times_S X \ar[r] \ar[d] & X \ar[d] \\
+\Spec(\mathcal{O}_{S, s}) \ar[r] & S
+}
+}
+$$
+In both cases these diagrams induce fibre squares of topological
+spaces and in particular, the top horizontal arrow is a homeomorphism
+onto its image.
+\end{lemma}
+
+\begin{proof}
+Choose an open affine $U \subset S$ that contains $s$.
+The bottom horizontal morphisms factor through $U$, see
+Lemma \ref{lemma-morphism-from-spec-local-ring} for example.
+Thus we may assume that $S$ is affine. If $X$ is also affine, then
+the result follows from
+Algebra, Remark \ref{algebra-remark-fundamental-diagram}.
+In the general case the result follows by covering $X$ by open affines.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-local-ring-fibre}
+Let $f : X \to S$ be a morphism of schemes. Let $x \in X$
+with image $s \in S$. Thinking of $x$ as a point of $X_s$
+(see Lemma \ref{lemma-fibre-topological}) we have
+$$
+\mathcal{O}_{X_s, x} \cong
+\mathcal{O}_{X, x}/\mathfrak m_s\mathcal{O}_{X, x} \cong
+\mathcal{O}_{X, x} \otimes_{\mathcal{O}_{S, s}} \kappa(s)
+$$
+\end{lemma}
+
+\begin{proof}
+As in the proof of Lemma \ref{lemma-fibre-topological} this reduces
+to the case where $X$ and $S$ are affine. In the affine case the statement
+translates to Algebra, Remark \ref{algebra-remark-local-ring-fibre}.
+\end{proof}
+
+
+
+
+
+
+

@@ -9,6 +9,10 @@ import {loadReadingCatalog,loadReadings,loadReferenceReadings,assembleReading} f
 import assert from 'node:assert/strict';
 import {examples} from '../src/matches.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url)),dist=path.join(root,'dist');
+const sourceIndexTests=spawnSync('python3',[path.join(root,'scripts/test-source-index.py')],{stdio:'inherit'});
+if(sourceIndexTests.status!==0)process.exit(sourceIndexTests.status??1);
+const dependencyAudit=spawnSync('python3',[path.join(root,'scripts/audit-dependencies.py')],{stdio:'inherit'});
+if(dependencyAudit.status!==0)process.exit(dependencyAudit.status??1);
 if(fs.existsSync(path.join(dist,'read')))throw Error('Retired /read/ routes must not be generated, including redirects');
 const manifest=JSON.parse(fs.readFileSync(path.join(root,'upstream/manifest.json'),'utf8'));
 const html=fs.readFileSync(path.join(dist,'gluing/index.html'),'utf8');
@@ -43,6 +47,11 @@ if(html.includes('katex-error'))throw Error('Math rendering failed.');
 const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);
 if(new Set(ids).size!==ids.length)throw Error('Duplicate reading anchors');
 function files(dir){return fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>e.isDirectory()?files(path.join(dir,e.name)):[path.join(dir,e.name)]);}
+const anchorsByFile=new Map();
+const anchorsFor=file=>{
+  if(!anchorsByFile.has(file))anchorsByFile.set(file,new Set([...fs.readFileSync(file,'utf8').matchAll(/\bid="([^"]+)"/g)].map(m=>m[1])));
+  return anchorsByFile.get(file);
+};
 for(const file of files(dist).filter(f=>f.endsWith('.html'))){
   const source=fs.readFileSync(file,'utf8');
   for(const m of source.matchAll(/(?:href|src)="([^"#]+)(?:#[^"]*)?"/g)){
@@ -53,9 +62,9 @@ for(const file of files(dist).filter(f=>f.endsWith('.html'))){
     if(!target.startsWith(dist))continue;
     if(!fs.existsSync(target))throw Error('Missing local link: '+m[1]+' in '+file);
     const hash=m[0].match(/#([^"]+)/)?.[1];
-    if(hash&&target.endsWith('.html')&&!fs.readFileSync(target,'utf8').includes('id="'+hash+'"'))throw Error('Missing target anchor '+m[0]+' in '+file);
+    if(hash&&target.endsWith('.html')&&!anchorsFor(target).has(hash))throw Error('Missing target anchor '+m[0]+' in '+file);
   }
-  for(const m of source.matchAll(/href="#([^"]+)"/g))if(!source.includes(`id="${m[1]}"`))throw Error('Broken fragment '+m[1]);
+  for(const m of source.matchAll(/href="#([^"]+)"/g))if(!anchorsFor(file).has(m[1]))throw Error('Broken fragment '+m[1]);
 }
 
 const foundation=JSON.parse(fs.readFileSync(path.join(root,'upstream/scheme-path.json'),'utf8'));
@@ -88,7 +97,7 @@ for(const unit of originalUnits){
   for(const section of unit.sections){
     const source=fs.readFileSync(path.join(root,'upstream/sections',section.slug+'.tex'),'utf8');
     proofs+=[...source.matchAll(/\\begin\{proof\}/g)].length;
-    statements+=[...source.matchAll(/\\begin\{(?:lemma|definition|example|theorem|proposition|remark|corollary|situation)\}/g)].length;
+    statements+=[...source.matchAll(/\\begin\{(?:lemma|definition|example|exercise|theorem|proposition|remarks?|corollary|situation|discussion|notation)\}/g)].length;
     for(const match of source.matchAll(/\\label\{([^}]+)\}/g)){
       const tag=refs[section.chapter+'-'+match[1]]?.tag;
       if(!tag||!ids.includes(tag))throw Error('Missing source anchor '+section.slug+' '+match[1]);

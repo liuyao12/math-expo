@@ -1,0 +1,124 @@
+\section{Jacobson schemes}
+\label{section-jacobson}
+
+\noindent
+Recall that a space is said to be {\it Jacobson} if the closed points are
+dense in every closed subset, see
+Topology, Section \ref{topology-section-space-jacobson}.
+
+\begin{definition}
+\label{definition-jacobson}
+A scheme $S$ is said to be {\it Jacobson} if its underlying topological
+space is Jacobson.
+\end{definition}
+
+\noindent
+Recall that a ring $R$ is Jacobson if every radical ideal of $R$
+is the intersection of maximal ideals, see
+Algebra, Definition \ref{algebra-definition-ring-jacobson}.
+
+\begin{lemma}
+\label{lemma-affine-jacobson}
+An affine scheme $\Spec(R)$ is Jacobson if and only if
+the ring $R$ is Jacobson.
+\end{lemma}
+
+\begin{proof}
+This is Algebra, Lemma \ref{algebra-lemma-jacobson}.
+\end{proof}
+
+\noindent
+Here is the standard result characterizing Jacobson schemes.
+Intuitively it claims that Jacobson $\Leftrightarrow$ locally Jacobson.
+
+\begin{lemma}
+\label{lemma-locally-jacobson}
+Let $X$ be a scheme. The following are equivalent:
+\begin{enumerate}
+\item The scheme $X$ is Jacobson.
+\item The scheme $X$ is ``locally Jacobson'' in the sense of
+Definition \ref{definition-locally-P}.
+\item For every affine open $U \subset X$ the ring $\mathcal{O}_X(U)$
+is Jacobson.
+\item There exists an affine open covering $X = \bigcup U_i$ such that
+each $\mathcal{O}_X(U_i)$ is Jacobson.
+\item There exists an open covering $X = \bigcup X_j$
+such that each open subscheme $X_j$ is Jacobson.
+\end{enumerate}
+Moreover, if $X$ is Jacobson then every open subscheme
+is Jacobson.
+\end{lemma}
+
+\begin{proof}
+The final assertion of the lemma holds by
+Topology, Lemma \ref{topology-lemma-jacobson-inherited}.
+The equivalence of (5) and (1) is
+Topology, Lemma \ref{topology-lemma-jacobson-local}.
+Hence, using Lemma \ref{lemma-affine-jacobson},
+we see that (1) $\Leftrightarrow$ (2).
+To finish proving the lemma it suffices to show that ``Jacobson''
+is a local property of rings, see Lemma \ref{lemma-locally-P}.
+Any localization of a Jacobson ring at an element is Jacobson, see
+Algebra, Lemma \ref{algebra-lemma-Jacobson-invert-element}.
+Suppose $R$ is a ring, $f_1, \ldots, f_n \in R$ generate the unit
+ideal and each $R_{f_i}$ is Jacobson. Then we see that
+$\Spec(R) = \bigcup D(f_i)$ is a union of open subsets
+which are all Jacobson, and hence $\Spec(R)$ is Jacobson
+by Topology, Lemma \ref{topology-lemma-jacobson-local} again.
+This proves the second property of Definition \ref{definition-property-local}.
+\end{proof}
+
+\noindent
+Many schemes used commonly in algebraic geometry are Jacobson, see
+Morphisms, Lemma \ref{morphisms-lemma-ubiquity-Jacobson-schemes}.
+We mention here the following interesting case.
+
+\begin{lemma}
+\label{lemma-complement-closed-point-Jacobson}
+Examples of Noetherian Jacobson schemes.
+\begin{enumerate}
+\item If $(R, \mathfrak m)$ is a Noetherian local ring, then
+the punctured spectrum $\Spec(R) \setminus \{\mathfrak m\}$
+is a Jacobson scheme.
+\item If $R$ is a Noetherian ring with Jacobson radical $\text{rad}(R)$
+then $\Spec(R) \setminus V(\text{rad}(R))$ is a Jacobson scheme.
+\item If $(R, I)$ is a Zariski pair (More on Algebra, Definition
+\ref{more-algebra-definition-zariski-pair})
+with $R$ Noetherian, then $\Spec(R) \setminus V(I)$ is a
+Jacobson scheme.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Proof of (3). Observe that $\Spec(R) - V(I)$ has a covering by the affine
+opens $\Spec(R_f)$ for $f \in I$. The rings $R_f$ are Jacobson by
+More on Algebra, Lemma
+\ref{more-algebra-lemma-noetherian-zariski-jacobson-complement}.
+Hence $\Spec(R) \setminus V(I)$ is Jacobson by
+Lemma \ref{lemma-locally-jacobson}.
+Parts (1) and (2) are special cases of (3).
+
+\medskip\noindent
+Direct proof of case (1).
+Since $\Spec(R)$ is a Noetherian scheme,
+$S$ is a Noetherian scheme (Lemma \ref{lemma-locally-closed-in-Noetherian}).
+Hence $S$ is a sober, Noetherian topological space (use
+Schemes, Lemma \ref{schemes-lemma-scheme-sober}).
+Assume $S$ is not Jacobson to
+get a contradiction. By
+Topology, Lemma \ref{topology-lemma-non-jacobson-Noetherian-characterize}
+there exists some non-closed point $\xi \in S$
+such that $\{\xi\}$ is locally closed. This corresponds
+to a prime $\mathfrak p \subset R$ such that (1) there exists
+a prime $\mathfrak q$, $\mathfrak p \subset \mathfrak q \subset \mathfrak m$
+with both inclusions strict, and (2) $\{\mathfrak p\}$ is open in
+$\Spec(R/\mathfrak p)$. This is impossible by Algebra,
+Lemma \ref{algebra-lemma-Noetherian-local-domain-dim-2-infinite-opens}.
+\end{proof}
+
+
+
+
+
+
+

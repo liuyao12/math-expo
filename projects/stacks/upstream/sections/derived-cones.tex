@@ -1,0 +1,770 @@
+\section{Cones and termwise split sequences}
+\label{section-cones}
+
+\noindent
+Let $\mathcal{A}$ be an additive category, and let
+$K(\mathcal{A})$ denote the category of complexes of
+$\mathcal{A}$ with morphisms given by morphisms of
+complexes up to homotopy. Note that the shift functors
+$[n]$ on complexes, see
+Homology, Definition \ref{homology-definition-shift-cochain},
+give rise to functors $[n] : K(\mathcal{A}) \to K(\mathcal{A})$
+such that $[n] \circ [m] = [n + m]$ and $[0] = \text{id}$.
+
+\begin{definition}
+\label{definition-cone}
+Let $\mathcal{A}$ be an additive category.
+Let $f : K^\bullet \to L^\bullet$ be a morphism of
+complexes of $\mathcal{A}$. The {\it cone} of $f$
+is the complex $C(f)^\bullet$ given by
+$C(f)^n = L^n \oplus K^{n + 1}$ and
+differential
+$$
+d_{C(f)}^n =
+\left(
+\begin{matrix}
+d^n_L & f^{n + 1} \\
+0 & -d_K^{n + 1}
+\end{matrix}
+\right)
+$$
+It comes equipped with canonical morphisms of complexes
+$i : L^\bullet \to C(f)^\bullet$ and $p : C(f)^\bullet \to K^\bullet[1]$
+induced by the obvious maps $L^n \to C(f)^n \to K^{n + 1}$.
+\end{definition}
+
+\noindent
+In other words $(K, L, C(f), f, i, p)$ forms a triangle:
+$$
+K^\bullet \to L^\bullet \to C(f)^\bullet \to K^\bullet[1]
+$$
+The formation of this triangle is
+functorial in the following sense.
+
+\begin{lemma}
+\label{lemma-functorial-cone}
+Suppose that
+$$
+\xymatrix{
+K_1^\bullet \ar[r]_{f_1} \ar[d]_a & L_1^\bullet \ar[d]^b \\
+K_2^\bullet \ar[r]^{f_2} & L_2^\bullet
+}
+$$
+is a diagram of morphisms of complexes which is commutative
+up to homotopy. Then there exists a morphism
+$c : C(f_1)^\bullet \to C(f_2)^\bullet$ which gives rise to
+a morphism of triangles
+$(a, b, c) : (K_1^\bullet, L_1^\bullet, C(f_1)^\bullet, f_1, i_1, p_1)
+\to
+(K_2^\bullet, L_2^\bullet, C(f_2)^\bullet, f_2, i_2, p_2)$
+of $K(\mathcal{A})$.
+\end{lemma}
+
+\begin{proof}
+Let $h^n : K_1^n \to L_2^{n - 1}$ be a family of morphisms such that
+$b \circ f_1 - f_2 \circ a= d \circ h + h \circ d$.
+Define $c^n$ by the matrix
+$$
+c^n =
+\left(
+\begin{matrix}
+b^n & h^{n + 1} \\
+0 & a^{n + 1}
+\end{matrix}
+\right) :
+L_1^n \oplus K_1^{n + 1} \to L_2^n \oplus K_2^{n + 1}
+$$
+A matrix computation show that $c$ is a morphism of complexes.
+It is trivial that $c \circ i_1 = i_2 \circ b$, and it is
+trivial also to check that $p_2 \circ c = a \circ p_1$.
+\end{proof}
+
+\noindent
+Note that the morphism $c : C(f_1)^\bullet \to C(f_2)^\bullet$
+constructed in the
+proof of Lemma \ref{lemma-functorial-cone} in general depends on the
+chosen homotopy $h$ between $f_2 \circ a$ and $b \circ f_1$.
+
+\begin{lemma}
+\label{lemma-map-from-cone}
+Suppose that $f: K^\bullet \to L^\bullet$ and $g : L^\bullet \to M^\bullet$
+are morphisms of complexes such that $g \circ f$ is homotopic to zero.
+Then
+\begin{enumerate}
+\item $g$ factors through a morphism $C(f)^\bullet \to M^\bullet$, and
+\item $f$ factors through a morphism $K^\bullet \to C(g)^\bullet[-1]$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+The assumptions say that the diagram
+$$
+\xymatrix{
+K^\bullet \ar[r]_f \ar[d] & L^\bullet \ar[d]^g \\
+0 \ar[r] & M^\bullet
+}
+$$
+commutes up to homotopy.
+Since the cone on $0 \to M^\bullet$ is $M^\bullet$ the
+map $C(f)^\bullet \to C(0 \to M^\bullet) = M^\bullet$
+of Lemma \ref{lemma-functorial-cone}
+is the map in (1). The cone on $K^\bullet \to 0$ is
+$K^\bullet[1]$ and applying Lemma \ref{lemma-functorial-cone}
+gives a map $K^\bullet[1] \to C(g)^\bullet$. Applying
+$[-1]$ we obtain the map in (2).
+\end{proof}
+
+\noindent
+Note that the morphisms $C(f)^\bullet \to M^\bullet$ and
+$K^\bullet \to C(g)^\bullet[-1]$ constructed in the proof
+of Lemma \ref{lemma-map-from-cone} in general depend on the
+chosen homotopy.
+
+\begin{definition}
+\label{definition-termwise-split-map}
+Let $\mathcal{A}$ be an additive category.
+A {\it termwise split injection $\alpha : A^\bullet \to B^\bullet$}
+is a morphism of complexes such that each $A^n \to B^n$
+is isomorphic to the inclusion of a direct summand.
+A {\it termwise split surjection $\beta : B^\bullet \to C^\bullet$}
+is a morphism of complexes such that each $B^n \to C^n$
+is isomorphic to the projection onto a direct summand.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-make-commute-map}
+Let $\mathcal{A}$ be an additive category.
+Let
+$$
+\xymatrix{
+A^\bullet \ar[r]_f \ar[d]_a & B^\bullet \ar[d]^b \\
+C^\bullet \ar[r]^g & D^\bullet
+}
+$$
+be a diagram of morphisms of complexes commuting up to homotopy.
+If $f$ is a termwise split injection, then $b$ is homotopic to a
+morphism which makes the diagram commute.
+If $g$ is a termwise split surjection, then $a$ is homotopic to a
+morphism which makes the diagram commute.
+\end{lemma}
+
+\begin{proof}
+Let $h^n : A^n \to D^{n - 1}$ be a collection of morphisms
+such that $bf - ga = dh + hd$. Suppose that $\pi^n : B^n \to A^n$
+are morphisms splitting the morphisms $f^n$.
+Take $b' = b - dh\pi - h\pi d$.
+Suppose $s^n : D^n \to C^n$ are morphisms splitting the morphisms
+$g^n : C^n \to D^n$. Take $a' = a + dsh + shd$.
+Computations omitted.
+\end{proof}
+
+\noindent
+The following lemma can be used to replace a morphism of complexes
+by a morphism where in each degree the map is the injection of a
+direct summand.
+
+\begin{lemma}
+\label{lemma-make-injective}
+Let $\mathcal{A}$ be an additive category.
+Let $\alpha : K^\bullet \to L^\bullet$ be a morphism
+of complexes of $\mathcal{A}$.
+There exists a factorization
+$$
+\xymatrix{
+K^\bullet \ar[r]^{\tilde \alpha} \ar@/_1pc/[rr]_\alpha &
+\tilde L^\bullet \ar[r]^\pi &
+L^\bullet
+}
+$$
+such that
+\begin{enumerate}
+\item $\tilde \alpha$ is a termwise split injection (see
+Definition \ref{definition-termwise-split-map}),
+\item there is a map of complexes $s : L^\bullet \to \tilde L^\bullet$
+such that $\pi \circ s = \text{id}_{L^\bullet}$ and such that
+$s \circ \pi$ is homotopic to $\text{id}_{\tilde L^\bullet}$.
+\end{enumerate}
+Moreover, if both $K^\bullet$ and $L^\bullet$ are in
+$K^{+}(\mathcal{A})$, $K^{-}(\mathcal{A})$, or $K^b(\mathcal{A})$,
+then so is $\tilde L^\bullet$.
+\end{lemma}
+
+\begin{proof}
+We set
+$$
+\tilde L^n = L^n \oplus K^n \oplus K^{n + 1}
+$$
+and we define
+$$
+d^n_{\tilde L} =
+\left(
+\begin{matrix}
+d^n_L & 0 & 0 \\
+0 & d^n_K & \text{id}_{K^{n + 1}} \\
+0 & 0 & -d^{n + 1}_K
+\end{matrix}
+\right)
+$$
+In other words, $\tilde L^\bullet = L^\bullet \oplus C(1_{K^\bullet})$.
+Moreover, we set
+$$
+\tilde \alpha =
+\left(
+\begin{matrix}
+\alpha \\
+\text{id}_{K^n} \\
+0
+\end{matrix}
+\right)
+$$
+which is clearly a split injection. It is also clear that it defines a morphism
+of complexes. We define
+$$
+\pi =
+\left(
+\begin{matrix}
+\text{id}_{L^n} &
+0 &
+0
+\end{matrix}
+\right)
+$$
+so that clearly $\pi \circ \tilde \alpha = \alpha$. We set
+$$
+s =
+\left(
+\begin{matrix}
+\text{id}_{L^n} \\
+0 \\
+0
+\end{matrix}
+\right)
+$$
+so that $\pi \circ s = \text{id}_{L^\bullet}$. Finally,
+let $h^n : \tilde L^n \to \tilde L^{n - 1}$ be the map
+which maps the summand $K^n$ of $\tilde L^n$ via the identity morphism
+to the summand $K^n$ of $\tilde L^{n - 1}$. Then it is a trivial matter
+(see computations in remark below) to prove that
+$$
+\text{id}_{\tilde L^\bullet} - s \circ \pi
+=
+d \circ h + h \circ d
+$$
+which finishes the proof of the lemma.
+\end{proof}
+
+\begin{remark}
+\label{remark-compute-modules}
+To see the last displayed equality in the proof above we can argue
+with elements as follows. We have
+$s\pi(l, k, k^{+}) = (l, 0, 0)$.
+Hence the morphism of the left hand side maps
+$(l, k, k^{+})$ to $(0, k, k^{+})$.
+On the other hand $h(l, k, k^{+}) = (0, 0, k)$ and
+$d(l, k, k^{+}) = (dl, dk + k^{+}, -dk^{+})$.
+Hence $(dh + hd)(l, k, k^{+}) =
+d(0, 0, k) + h(dl, dk + k^{+}, -dk^{+}) =
+(0, k, -dk) + (0, 0, dk + k^{+}) = (0, k, k^{+})$
+as desired.
+\end{remark}
+
+\begin{lemma}
+\label{lemma-make-surjective}
+Let $\mathcal{A}$ be an additive category.
+Let $\alpha : K^\bullet \to L^\bullet$ be a morphism
+of complexes of $\mathcal{A}$.
+There exists a factorization
+$$
+\xymatrix{
+K^\bullet \ar[r]^i \ar@/_1pc/[rr]_\alpha &
+\tilde K^\bullet \ar[r]^{\tilde \alpha} &
+L^\bullet
+}
+$$
+such that
+\begin{enumerate}
+\item $\tilde \alpha$ is a termwise split surjection (see
+Definition \ref{definition-termwise-split-map}),
+\item there is a map of complexes $s : \tilde K^\bullet \to K^\bullet$
+such that $s \circ i = \text{id}_{K^\bullet}$ and such that
+$i \circ s$ is homotopic to $\text{id}_{\tilde K^\bullet}$.
+\end{enumerate}
+Moreover, if both $K^\bullet$ and $L^\bullet$ are in
+$K^{+}(\mathcal{A})$, $K^{-}(\mathcal{A})$, or $K^b(\mathcal{A})$,
+then so is $\tilde K^\bullet$.
+\end{lemma}
+
+\begin{proof}
+Dual to Lemma \ref{lemma-make-injective}.
+Take
+$$
+\tilde K^n = K^n \oplus L^{n - 1} \oplus L^n
+$$
+and we define
+$$
+d^n_{\tilde K} =
+\left(
+\begin{matrix}
+d^n_K & 0 & 0 \\
+0 & - d^{n - 1}_L & \text{id}_{L^n} \\
+0 & 0 & d^n_L
+\end{matrix}
+\right)
+$$
+in other words $\tilde K^\bullet = K^\bullet \oplus C(1_{L^\bullet[-1]})$.
+Moreover, we set
+$$
+\tilde \alpha =
+\left(
+\begin{matrix}
+\alpha &
+0 &
+\text{id}_{L^n}
+\end{matrix}
+\right)
+$$
+which is clearly a split surjection. It is also clear that it defines a
+morphism of complexes. We define
+$$
+i =
+\left(
+\begin{matrix}
+\text{id}_{K^n} \\
+0 \\
+0
+\end{matrix}
+\right)
+$$
+so that clearly $\tilde \alpha \circ i = \alpha$. We set
+$$
+s =
+\left(
+\begin{matrix}
+\text{id}_{K^n} &
+0 &
+0
+\end{matrix}
+\right)
+$$
+so that $s \circ i = \text{id}_{K^\bullet}$. Finally,
+let $h^n : \tilde K^n \to \tilde K^{n - 1}$ be the map
+which maps the summand $L^{n - 1}$ of $\tilde K^n$ via the identity morphism
+to the summand $L^{n - 1}$ of $\tilde K^{n - 1}$. Then it is a trivial matter
+to prove that
+$$
+\text{id}_{\tilde K^\bullet} - i \circ s
+=
+d \circ h + h \circ d
+$$
+which finishes the proof of the lemma.
+\end{proof}
+
+\begin{definition}
+\label{definition-split-ses}
+Let $\mathcal{A}$ be an additive category.
+A {\it termwise split exact sequence of complexes of $\mathcal{A}$}
+is a complex of complexes
+$$
+0 \to
+A^\bullet \xrightarrow{\alpha}
+B^\bullet \xrightarrow{\beta}
+C^\bullet \to 0
+$$
+together with given direct sum decompositions
+$B^n = A^n \oplus C^n$
+compatible with $\alpha^n$ and $\beta^n$.
+We often write $s^n : C^n \to B^n$ and $\pi^n : B^n \to A^n$
+for the maps induced by the direct sum decompositions.
+According to
+Homology, Lemma \ref{homology-lemma-ses-termwise-split-cochain}
+we get an associated morphism of complexes
+$$
+\delta : C^\bullet \longrightarrow A^\bullet[1]
+$$
+which in degree $n$ is the map $\pi^{n + 1} \circ d_B^n \circ s^n$.
+In other words
+$(A^\bullet, B^\bullet, C^\bullet, \alpha, \beta, \delta)$
+forms a triangle
+$$
+A^\bullet \to B^\bullet \to C^\bullet \to A^\bullet[1]
+$$
+This will be the {\it triangle associated to the termwise
+split sequence of complexes}.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-triangle-independent-splittings}
+Let $\mathcal{A}$ be an additive category. Let
+$0 \to A^\bullet \to B^\bullet \to C^\bullet \to 0$
+be termwise split exact sequences as in
+Definition \ref{definition-split-ses}.
+Let $(\pi')^n$, $(s')^n$ be a second collection of splittings.
+Denote $\delta' : C^\bullet \longrightarrow A^\bullet[1]$ the
+morphism associated to this second set of splittings.
+Then
+$$
+(1, 1, 1) :
+(A^\bullet, B^\bullet, C^\bullet, \alpha, \beta, \delta)
+\longrightarrow
+(A^\bullet, B^\bullet, C^\bullet, \alpha, \beta, \delta')
+$$
+is an isomorphism of triangles in $K(\mathcal{A})$.
+\end{lemma}
+
+\begin{proof}
+The statement simply means that $\delta$ and $\delta'$ are
+homotopic maps of complexes. This is
+Homology, Lemma \ref{homology-lemma-ses-termwise-split-homotopy-cochain}.
+\end{proof}
+
+\begin{remark}
+\label{remark-make-commute}
+Let $\mathcal{A}$ be an additive category.
+Let $0 \to A_i^\bullet \to B_i^\bullet \to C_i^\bullet \to 0$, $i = 1, 2$
+be termwise split exact sequences. Suppose that
+$a : A_1^\bullet \to A_2^\bullet$,
+$b : B_1^\bullet \to B_2^\bullet$, and
+$c : C_1^\bullet \to C_2^\bullet$ are morphisms of complexes
+such that
+$$
+\xymatrix{
+A_1^\bullet \ar[d]_a \ar[r] &
+B_1^\bullet \ar[r] \ar[d]_b &
+C_1^\bullet \ar[d]_c \\
+A_2^\bullet \ar[r] & B_2^\bullet \ar[r] & C_2^\bullet
+}
+$$
+commutes in $K(\mathcal{A})$. In general, there does {\bf not} exist
+a morphism $b' : B_1^\bullet \to B_2^\bullet$ which is homotopic to $b$
+such that the diagram above commutes in the category of complexes.
+Namely, consider
+Examples, Equation (\ref{examples-equation-commutes-up-to-homotopy}).
+If we could replace the middle map there by a homotopic one such that
+the diagram commutes, then we would have additivity of traces which we do not.
+\end{remark}
+
+\begin{lemma}
+\label{lemma-nilpotent}
+Let $\mathcal{A}$ be an additive category.
+Let $0 \to A_i^\bullet \to B_i^\bullet \to C_i^\bullet \to 0$, $i = 1, 2, 3$
+be termwise split exact sequences of complexes. Let
+$b : B_1^\bullet \to B_2^\bullet$ and $b' : B_2^\bullet \to B_3^\bullet$
+be morphisms of complexes such that
+$$
+\vcenter{
+\xymatrix{
+A_1^\bullet \ar[d]_0 \ar[r] &
+B_1^\bullet \ar[r] \ar[d]_b &
+C_1^\bullet \ar[d]_0 \\
+A_2^\bullet \ar[r] & B_2^\bullet \ar[r] & C_2^\bullet
+}
+}
+\quad\text{and}\quad
+\vcenter{
+\xymatrix{
+A_2^\bullet \ar[d]^0 \ar[r] &
+B_2^\bullet \ar[r] \ar[d]^{b'} &
+C_2^\bullet \ar[d]^0 \\
+A_3^\bullet \ar[r] & B_3^\bullet \ar[r] & C_3^\bullet
+}
+}
+$$
+commute in $K(\mathcal{A})$. Then $b' \circ b = 0$ in $K(\mathcal{A})$.
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-make-commute-map} we can replace $b$ and $b'$ by homotopic
+maps such that the right square of the left diagram commutes and the
+left square of the right diagram commutes. In other words, we have
+$\Im(b^n) \subset \Im(A_2^n \to B_2^n)$ and
+$\Ker((b')^n) \supset \Im(A_2^n \to B_2^n)$.
+Then $b' \circ b = 0$ as a map of complexes.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-third-isomorphism}
+Let $\mathcal{A}$ be an additive category.
+Let $f_1 : K_1^\bullet \to L_1^\bullet$ and
+$f_2 : K_2^\bullet \to L_2^\bullet$ be morphisms of complexes.
+Let
+$$
+(a, b, c) :
+(K_1^\bullet, L_1^\bullet, C(f_1)^\bullet, f_1, i_1, p_1)
+\longrightarrow
+(K_2^\bullet, L_2^\bullet, C(f_2)^\bullet, f_2, i_2, p_2)
+$$
+be any morphism of triangles of $K(\mathcal{A})$.
+If $a$ and $b$ are homotopy equivalences then so is $c$.
+\end{lemma}
+
+\begin{proof}
+Let $a^{-1} : K_2^\bullet \to K_1^\bullet$ be a morphism of complexes which
+is inverse to $a$ in $K(\mathcal{A})$.
+Let $b^{-1} : L_2^\bullet \to L_1^\bullet$ be a morphism of complexes which
+is inverse to $b$ in $K(\mathcal{A})$.
+Let $c' : C(f_2)^\bullet \to C(f_1)^\bullet$
+be the morphism from Lemma \ref{lemma-functorial-cone} applied
+to $f_1 \circ a^{-1} = b^{-1} \circ f_2$. If we can show that
+$c \circ c'$ and $c' \circ c$ are isomorphisms in $K(\mathcal{A})$
+then we win. Hence it suffices to prove the following: Given
+a morphism of triangles
+$(1, 1, c) : (K^\bullet, L^\bullet, C(f)^\bullet, f, i, p)$
+in $K(\mathcal{A})$ the morphism $c$ is an isomorphism in $K(\mathcal{A})$.
+By assumption the two squares in the diagram
+$$
+\xymatrix{
+L^\bullet \ar[r] \ar[d]_1 &
+C(f)^\bullet \ar[r] \ar[d]_c &
+K^\bullet[1] \ar[d]_1 \\
+L^\bullet \ar[r] &
+C(f)^\bullet \ar[r] &
+K^\bullet[1]
+}
+$$
+commute up to homotopy. By construction of $C(f)^\bullet$ the rows
+form termwise split sequences of complexes. Thus we see that
+$(c - 1)^2 = 0$ in $K(\mathcal{A})$ by Lemma \ref{lemma-nilpotent}.
+Hence $c$ is an isomorphism in $K(\mathcal{A})$ with inverse $2 - c$.
+\end{proof}
+
+\noindent
+Hence if $a$ and $b$ are homotopy equivalences then
+the resulting morphism of triangles is an isomorphism of triangles
+in $K(\mathcal{A})$.
+It turns out that the collection of triangles of $K(\mathcal{A})$
+given by cones and the collection of triangles of $K(\mathcal{A})$
+given by termwise split sequences of complexes are the same
+up to isomorphisms, at least up to sign!
+
+\begin{lemma}
+\label{lemma-the-same-up-to-isomorphisms}
+Let $\mathcal{A}$ be an additive category.
+\begin{enumerate}
+\item Given a termwise split sequence of complexes
+$(\alpha : A^\bullet \to B^\bullet,
+\beta : B^\bullet \to C^\bullet, s^n, \pi^n)$
+there exists a homotopy equivalence $C(\alpha)^\bullet \to C^\bullet$
+such that the diagram
+$$
+\xymatrix{
+A^\bullet \ar[r] \ar[d] & B^\bullet \ar[d] \ar[r] &
+C(\alpha)^\bullet \ar[r]_{-p} \ar[d] & A^\bullet[1] \ar[d] \\
+A^\bullet \ar[r] & B^\bullet \ar[r] &
+C^\bullet \ar[r]^\delta & A^\bullet[1]
+}
+$$
+defines an isomorphism of triangles in $K(\mathcal{A})$.
+\item Given a morphism of complexes $f : K^\bullet \to L^\bullet$
+there exists an isomorphism of triangles
+$$
+\xymatrix{
+K^\bullet \ar[r] \ar[d] & \tilde L^\bullet \ar[d] \ar[r] &
+M^\bullet \ar[r]_{\delta} \ar[d] & K^\bullet[1] \ar[d] \\
+K^\bullet \ar[r] & L^\bullet \ar[r] &
+C(f)^\bullet \ar[r]^{-p} & K^\bullet[1]
+}
+$$
+where the upper triangle is the triangle associated to a
+termwise split exact sequence $K^\bullet \to \tilde L^\bullet \to M^\bullet$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Proof of (1). We have $C(\alpha)^n = B^n \oplus A^{n + 1}$
+and we simply define $C(\alpha)^n \to C^n$ via the projection
+onto $B^n$ followed by $\beta^n$. This defines
+a morphism of complexes because the compositions
+$A^{n + 1} \to B^{n + 1} \to C^{n + 1}$ are zero.
+To get a homotopy inverse we take
+$C^\bullet \to C(\alpha)^\bullet$ given by
+$(s^n , -\delta^n)$ in degree $n$. This is a morphism of complexes
+because the morphism $\delta^n$ can be characterized as the
+unique morphism $C^n \to A^{n + 1}$ such that
+$d \circ s^n - s^{n + 1} \circ d = \alpha \circ \delta^n$,
+see proof of
+Homology, Lemma \ref{homology-lemma-ses-termwise-split-cochain}.
+The composition
+$C^\bullet \to C(\alpha)^\bullet \to C^\bullet$ is the identity.
+The composition $C(\alpha)^\bullet \to C^\bullet \to C(\alpha)^\bullet$
+is equal to the morphism
+$$
+\left(
+\begin{matrix}
+s^n \circ \beta^n & 0 \\
+-\delta^n \circ \beta^n & 0
+\end{matrix}
+\right)
+$$
+To see that this is homotopic to the identity map
+use the homotopy $h^n : C(\alpha)^n \to C(\alpha)^{n - 1}$
+given by the matrix
+$$
+\left(
+\begin{matrix}
+0 & 0 \\
+\pi^n & 0
+\end{matrix}
+\right) : C(\alpha)^n = B^n \oplus A^{n + 1} \to
+B^{n - 1} \oplus A^n = C(\alpha)^{n - 1}
+$$
+It is trivial to verify that
+$$
+\left(
+\begin{matrix}
+1 & 0 \\
+0 & 1
+\end{matrix}
+\right)
+-
+\left(
+\begin{matrix}
+s^n \\
+-\delta^n
+\end{matrix}
+\right)
+\left(
+\begin{matrix}
+\beta^n & 0
+\end{matrix}
+\right)
+=
+\left(
+\begin{matrix}
+d & \alpha^n \\
+0 & -d
+\end{matrix}
+\right)
+\left(
+\begin{matrix}
+0 & 0 \\
+\pi^n & 0
+\end{matrix}
+\right)
++
+\left(
+\begin{matrix}
+0 & 0 \\
+\pi^{n + 1} & 0
+\end{matrix}
+\right)
+\left(
+\begin{matrix}
+d & \alpha^{n + 1} \\
+0 & -d
+\end{matrix}
+\right)
+$$
+To finish the proof of (1) we have to show that the morphisms
+$-p : C(\alpha)^\bullet \to A^\bullet[1]$ (see
+Definition \ref{definition-cone})
+and  $C(\alpha)^\bullet \to C^\bullet \to A^\bullet[1]$ agree up
+to homotopy. This is clear from the above. Namely, we can use the homotopy
+inverse $(s, -\delta) : C^\bullet \to C(\alpha)^\bullet$
+and check instead that the two maps
+$C^\bullet \to A^\bullet[1]$ agree. And note that
+$p \circ (s, -\delta) = -\delta$ as desired.
+
+\medskip\noindent
+Proof of (2). We let $\tilde f : K^\bullet \to \tilde L^\bullet$,
+$s : L^\bullet \to \tilde L^\bullet$
+and $\pi : \tilde L^\bullet \to L^\bullet$ be as in
+Lemma \ref{lemma-make-injective}. By
+Lemmas \ref{lemma-functorial-cone} and \ref{lemma-third-isomorphism}
+the triangles $(K^\bullet, L^\bullet, C(f), i, p)$ and
+$(K^\bullet, \tilde L^\bullet, C(\tilde f), \tilde i, \tilde p)$
+are isomorphic. Note that we can compose isomorphisms of
+triangles. Thus we may replace $L^\bullet$ by
+$\tilde L^\bullet$ and $f$ by $\tilde f$. In other words
+we may assume that $f$ is a termwise split injection.
+In this case the result follows from part (1).
+\end{proof}
+
+
+\begin{lemma}
+\label{lemma-sequence-maps-split}
+Let $\mathcal{A}$ be an additive category.
+Let $A_1^\bullet \to A_2^\bullet \to \ldots \to A_n^\bullet$
+be a sequence of composable morphisms of complexes.
+There exists a commutative diagram
+$$
+\xymatrix{
+A_1^\bullet \ar[r] &
+A_2^\bullet \ar[r] &
+\ldots \ar[r] &
+A_n^\bullet \\
+B_1^\bullet \ar[r] \ar[u] &
+B_2^\bullet \ar[r] \ar[u] &
+\ldots \ar[r] &
+B_n^\bullet \ar[u]
+}
+$$
+such that each morphism $B_i^\bullet \to B_{i + 1}^\bullet$
+is a termwise split injection and each $B_i^\bullet \to A_i^\bullet$
+is a homotopy equivalence. Moreover, if all $A_i^\bullet$ are in
+$K^{+}(\mathcal{A})$, $K^{-}(\mathcal{A})$, or $K^b(\mathcal{A})$,
+then so are the $B_i^\bullet$.
+\end{lemma}
+
+\begin{proof}
+The case $n = 1$ is without content.
+Lemma \ref{lemma-make-injective} is the case $n = 2$.
+Suppose we have constructed the diagram
+except for $B_n^\bullet$. Apply Lemma \ref{lemma-make-injective} to
+the composition $B_{n - 1}^\bullet \to A_{n - 1}^\bullet \to A_n^\bullet$.
+The result is a factorization
+$B_{n - 1}^\bullet \to B_n^\bullet \to A_n^\bullet$
+as desired.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-rotate-triangle}
+Let $\mathcal{A}$ be an additive category. Let
+$(\alpha : A^\bullet \to B^\bullet, \beta : B^\bullet \to C^\bullet, s^n,
+\pi^n)$ be a termwise split sequence of complexes.
+Let $(A^\bullet, B^\bullet, C^\bullet, \alpha, \beta, \delta)$
+be the associated triangle.
+Then the triangle
+$(C^\bullet[-1], A^\bullet, B^\bullet, \delta[-1], \alpha, \beta)$
+is isomorphic to the triangle
+$(C^\bullet[-1], A^\bullet, C(\delta[-1])^\bullet, \delta[-1], i, p)$.
+\end{lemma}
+
+\begin{proof}
+We write $B^n = A^n \oplus C^n$ and we identify $\alpha^n$ and $\beta^n$
+with the natural inclusion and projection maps. By construction of $\delta$ we
+have
+$$
+d_B^n =
+\left(
+\begin{matrix}
+d_A^n & \delta^n \\
+0 & d_C^n
+\end{matrix}
+\right)
+$$
+On the other hand the cone of $\delta[-1] : C^\bullet[-1] \to A^\bullet$
+is given as $C(\delta[-1])^n = A^n \oplus C^n$ with differential identical
+with the matrix above! Whence the lemma.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-rotate-cone}
+Let $\mathcal{A}$ be an additive category.
+Let $f : K^\bullet \to L^\bullet$ be a morphism of complexes.
+The triangle $(L^\bullet, C(f)^\bullet, K^\bullet[1], i, p, f[1])$ is
+the triangle associated to the termwise split sequence
+$$
+0 \to L^\bullet \to C(f)^\bullet \to K^\bullet[1] \to 0
+$$
+coming from the definition of the cone of $f$.
+\end{lemma}
+
+\begin{proof}
+Immediate from the definitions.
+\end{proof}
+
+
+
+
+
+

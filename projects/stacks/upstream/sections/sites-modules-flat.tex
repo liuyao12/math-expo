@@ -1,0 +1,627 @@
+\section{Flat modules}
+\label{section-flat}
+
+\noindent
+We can define flat modules exactly as in the case of modules over rings.
+
+\begin{definition}
+\label{definition-flat}
+Let $\mathcal{C}$ be a category.
+Let $\mathcal{O}$ be a presheaf of rings.
+\begin{enumerate}
+\item A presheaf $\mathcal{F}$ of $\mathcal{O}$-modules is called
+{\it flat} if the functor
+$$
+\textit{PMod}(\mathcal{O})
+\longrightarrow
+\textit{PMod}(\mathcal{O}), \quad
+\mathcal{G} \mapsto \mathcal{G} \otimes_{p, \mathcal{O}} \mathcal{F}
+$$
+is exact.
+\item A map $\mathcal{O} \to \mathcal{O}'$ of presheaves of rings
+is called {\it flat} if $\mathcal{O}'$ is flat as a presheaf of
+$\mathcal{O}$-modules.
+\item If $\mathcal{C}$ is a site, $\mathcal{O}$ is a sheaf of rings
+and $\mathcal{F}$ is a sheaf of $\mathcal{O}$-modules, then we
+say $\mathcal{F}$ is {\it flat} if the functor
+$$
+\textit{Mod}(\mathcal{O})
+\longrightarrow
+\textit{Mod}(\mathcal{O}), \quad
+\mathcal{G} \mapsto \mathcal{G} \otimes_\mathcal{O} \mathcal{F}
+$$
+is exact.
+\item A map $\mathcal{O} \to \mathcal{O}'$ of sheaves of rings on a site
+is called {\it flat} if $\mathcal{O}'$ is flat as a sheaf of
+$\mathcal{O}$-modules.
+\end{enumerate}
+\end{definition}
+
+\noindent
+The notion of a flat module or flat ring map is intrinsic
+(Section \ref{section-intrinsic}).
+
+\begin{lemma}
+\label{lemma-flatness-presheaves}
+Let $\mathcal{C}$ be a category.
+Let $\mathcal{O}$ be a presheaf of rings.
+Let $\mathcal{F}$ be a presheaf of $\mathcal{O}$-modules.
+If each $\mathcal{F}(U)$ is a flat $\mathcal{O}(U)$-module,
+then $\mathcal{F}$ is flat.
+\end{lemma}
+
+\begin{proof}
+This is immediate from the definitions.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-flatness-sheafification}
+Let $\mathcal{C}$ be a site.
+Let $\mathcal{O}$ be a presheaf of rings.
+Let $\mathcal{F}$ be a presheaf of $\mathcal{O}$-modules.
+If $\mathcal{F}$ is a flat $\mathcal{O}$-module, then
+$\mathcal{F}^\#$ is a flat $\mathcal{O}^\#$-module.
+\end{lemma}
+
+\begin{proof}
+Omitted. (Hint: Sheafification is exact.)
+\end{proof}
+
+\begin{lemma}
+\label{lemma-flatness-sheafification-refined}
+Let $\mathcal{C}$ be a site. Let $\mathcal{O}$ be a presheaf of rings.
+Let $\mathcal{F}$ be a presheaf of $\mathcal{O}$-modules. Assume
+that every object $U$ of $\mathcal{C}$ has a covering $\{U_i \to U\}_{i \in I}$
+such that $\mathcal{F}(U_i)$ is a flat $\mathcal{O}(U_i)$-module.
+Then $\mathcal{F}^\#$ is a flat $\mathcal{O}^\#$-module.
+\end{lemma}
+
+\begin{proof}
+Let $\mathcal{G} \subset \mathcal{G}'$ be an inclusion of
+$\mathcal{O}^\#$-modules. We have to show that
+$$
+\mathcal{G} \otimes_{\mathcal{O}^\#} \mathcal{F}^\#
+\longrightarrow
+\mathcal{G}' \otimes_{\mathcal{O}^\#} \mathcal{F}^\#
+$$
+is injective. By Lemma \ref{lemma-sheafification-tensor}
+the source of this arrow is the sheafification of
+the presheaf $\mathcal{G} \otimes_{p, \mathcal{O}} \mathcal{F}$
+and similarly for the target. If $U$ is an object of $\mathcal{C}$ such that
+$\mathcal{F}(U)$ is a flat $\mathcal{O}(U)$-module, then
+$$
+(\mathcal{G} \otimes_{p, \mathcal{O}} \mathcal{F})(U) =
+\mathcal{G}(U) \otimes_{\mathcal{O}(U)} \mathcal{F}(U)
+\longrightarrow
+\mathcal{G}'(U) \otimes_{\mathcal{O}(U)} \mathcal{F}(U) =
+(\mathcal{G}' \otimes_{p, \mathcal{O}} \mathcal{F})(U)
+$$
+is injective. Hence we reduce to showing: given a map of presheaves
+$f : \mathcal{H} \to \mathcal{H}'$ on $\mathcal{C}$ such that
+every $U$ in $\mathcal{C}$ has a covering $\{U_i \to U\}_{i \in I}$
+with $\mathcal{H}(U_i) \to \mathcal{H}'(U_i)$ injective, then
+$f^\#$ is injective. This we leave to the reader as an exercise.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-colimits-flat}
+Colimits and tensor product.
+\begin{enumerate}
+\item A filtered colimit of flat presheaves of modules
+is flat. A direct sum of flat presheaves of modules is flat.
+\item A filtered colimit of flat sheaves of modules is flat.
+A direct sum of flat sheaves of modules is flat.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Part (1) follows from Lemma \ref{lemma-tensor-commute-colimits} and
+Algebra, Lemma \ref{algebra-lemma-directed-colimit-exact}
+by looking at sections over objects.
+To see part (2), use Lemma \ref{lemma-tensor-commute-colimits} and
+the fact that a filtered colimit of exact
+complexes is an exact complex (this uses that sheafification is exact
+and commutes with colimits). Some details omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-restriction-flat}
+Let $(\mathcal{C}, \mathcal{O})$ be a ringed site.
+Let $U$ be an object of $\mathcal{C}$.
+If $\mathcal{F}$ is a flat $\mathcal{O}$-module, then
+$\mathcal{F}|_U$ is a flat $\mathcal{O}_U$-module.
+\end{lemma}
+
+\begin{proof}
+Let $\mathcal{G}_1 \to \mathcal{G}_2 \to \mathcal{G}_3$ be
+an exact complex of $\mathcal{O}_U$-modules.
+Since $j_{U!}$ is exact (Lemma \ref{lemma-extension-by-zero-exact})
+and $\mathcal{F}$ is flat as an $\mathcal{O}$-modules
+then we see that the complex made up of the modules
+$$
+j_{U!}(\mathcal{G}_i \otimes_{\mathcal{O}_U} \mathcal{F}|_U) =
+j_{U!}\mathcal{G}_i \otimes_\mathcal{O} \mathcal{F}
+$$
+(Lemma \ref{lemma-j-shriek-and-tensor}) is exact. We conclude that
+$\mathcal{G}_1 \otimes_{\mathcal{O}_U} \mathcal{F}|_U \to
+\mathcal{G}_2 \otimes_{\mathcal{O}_U} \mathcal{F}|_U \to
+\mathcal{G}_3 \otimes_{\mathcal{O}_U} \mathcal{F}|_U$
+is exact by
+Lemma \ref{lemma-j-shriek-reflects-exactness}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-j-shriek-flat}
+Let $\mathcal{C}$ be a category.
+Let $\mathcal{O}$ be a presheaf of rings.
+Let $U$ be an object of $\mathcal{C}$.
+Consider the functor $j_U : \mathcal{C}/U \to \mathcal{C}$.
+\begin{enumerate}
+\item The presheaf of $\mathcal{O}$-modules
+$j_{U!}\mathcal{O}_U$ (see
+Remark \ref{remark-localize-presheaves})
+is flat.
+\item If $\mathcal{C}$ is a site, $\mathcal{O}$ is a sheaf of rings,
+$j_{U!}\mathcal{O}_U$ is a flat sheaf of $\mathcal{O}$-modules.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Proof of (1). By the discussion in
+Remark \ref{remark-localize-presheaves}
+we see that
+$$
+j_{U!}\mathcal{O}_U(V)
+=
+\bigoplus\nolimits_{\varphi \in \Mor_\mathcal{C}(V, U)}
+\mathcal{O}(V)
+$$
+which is a flat $\mathcal{O}(V)$-module. Hence (1) follows from
+Lemma \ref{lemma-flatness-presheaves}.
+Then (2) follows as $j_{U!}\mathcal{O}_U = (j_{U!}\mathcal{O}_U)^\#$
+(the first $j_{U!}$ on sheaves, the second on presheaves)
+and Lemma \ref{lemma-flatness-sheafification}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-module-quotient-flat}
+Let $\mathcal{C}$ be a category.
+Let $\mathcal{O}$ be a presheaf of rings.
+\begin{enumerate}
+\item Any presheaf of $\mathcal{O}$-modules is a quotient of
+a direct sum $\bigoplus j_{U_i!}\mathcal{O}_{U_i}$.
+\item Any presheaf of $\mathcal{O}$-modules is a quotient of
+a flat presheaf of $\mathcal{O}$-modules.
+\item If $\mathcal{C}$ is a site, $\mathcal{O}$ is a sheaf of rings,
+then any sheaf of $\mathcal{O}$-modules is a quotient of
+a direct sum $\bigoplus j_{U_i!}\mathcal{O}_{U_i}$.
+\item If $\mathcal{C}$ is a site, $\mathcal{O}$ is a sheaf of rings,
+then any sheaf of $\mathcal{O}$-modules is a quotient of
+a flat sheaf of $\mathcal{O}$-modules.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Proof of (1). For every object $U$ of $\mathcal{C}$ and every
+$s \in \mathcal{F}(U)$ we get a morphism
+$j_{U!}\mathcal{O}_U \to \mathcal{F}$, namely the adjoint to
+the morphism $\mathcal{O}_U \to \mathcal{F}|_U$, $1 \mapsto s$.
+Clearly the map
+$$
+\bigoplus\nolimits_{(U, s)} j_{U!}\mathcal{O}_U
+\longrightarrow
+\mathcal{F}
+$$
+is surjective. The source is flat by combining Lemmas
+\ref{lemma-colimits-flat} and \ref{lemma-j-shriek-flat}
+which proves (2). The sheaf case follows from this either by
+sheafifying or repeating the same argument.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-flat-tor-zero}
+Let $\mathcal{C}$ be a category.
+Let $\mathcal{O}$ be a presheaf of rings.
+Let
+$$
+0 \to \mathcal{F}'' \to \mathcal{F}' \to \mathcal{F} \to 0
+$$
+be a short exact sequence of presheaves of $\mathcal{O}$-modules.
+Let $\mathcal{G}$ be a presheaf of $\mathcal{O}$-modules.
+\begin{enumerate}
+\item If $\mathcal{F}$ is a flat presheaf of modules, then
+the sequence
+$$
+0 \to
+\mathcal{F}'' \otimes_{p, \mathcal{O}} \mathcal{G} \to
+\mathcal{F}' \otimes_{p, \mathcal{O}} \mathcal{G} \to
+\mathcal{F} \otimes_{p, \mathcal{O}} \mathcal{G} \to 0
+$$
+is exact.
+\item If $\mathcal{C}$ is a site, $\mathcal{O}$,
+$\mathcal{F}$, $\mathcal{F}'$, $\mathcal{F}''$, and
+$\mathcal{G}$ are sheaves, and $\mathcal{F}$ is flat
+as a sheaf of modules, then the sequence
+$$
+0 \to
+\mathcal{F}'' \otimes_\mathcal{O} \mathcal{G} \to
+\mathcal{F}' \otimes_\mathcal{O} \mathcal{G} \to
+\mathcal{F} \otimes_\mathcal{O} \mathcal{G} \to 0
+$$
+is exact.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Choose a flat presheaf of $\mathcal{O}$-modules $\mathcal{G}'$
+which surjects onto $\mathcal{G}$. This is possible by
+Lemma \ref{lemma-module-quotient-flat}. Let
+$\mathcal{G}'' = \Ker(\mathcal{G}' \to \mathcal{G})$.
+The lemma follows by applying the snake lemma to the following
+diagram
+$$
+\begin{matrix}
+ & & 0 & & 0 & & 0 & & \\
+ & & \uparrow & & \uparrow & & \uparrow & & \\
+ & & \mathcal{F}'' \otimes_{p, \mathcal{O}} \mathcal{G} & \to &
+     \mathcal{F}' \otimes_{p, \mathcal{O}} \mathcal{G} & \to &
+     \mathcal{F} \otimes_{p, \mathcal{O}} \mathcal{G} & \to & 0 \\
+ & & \uparrow & & \uparrow & & \uparrow & & \\
+0 & \to & \mathcal{F}'' \otimes_{p, \mathcal{O}} \mathcal{G}' & \to &
+          \mathcal{F}' \otimes_{p, \mathcal{O}} \mathcal{G}' & \to &
+          \mathcal{F} \otimes_{p, \mathcal{O}} \mathcal{G}' & \to & 0 \\
+ & & \uparrow & & \uparrow & & \uparrow & & \\
+ & & \mathcal{F}'' \otimes_{p, \mathcal{O}} \mathcal{G}'' & \to &
+     \mathcal{F}' \otimes_{p, \mathcal{O}} \mathcal{G}'' & \to &
+     \mathcal{F} \otimes_{p, \mathcal{O}} \mathcal{G}'' & \to & 0 \\
+ & & & & & & \uparrow & & \\
+ & & & & & & 0 & &
+\end{matrix}
+$$
+with exact rows and columns. The middle row is exact because tensoring
+with the flat module $\mathcal{G}'$ is exact. The proof in the case
+of sheaves is exactly the same.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-flat-ses}
+Let $\mathcal{C}$ be a category.
+Let $\mathcal{O}$ be a presheaf of rings.
+Let
+$$
+0 \to
+\mathcal{F}_2 \to
+\mathcal{F}_1 \to
+\mathcal{F}_0 \to 0
+$$
+be a short exact sequence of presheaves of $\mathcal{O}$-modules.
+\begin{enumerate}
+\item If $\mathcal{F}_2$ and $\mathcal{F}_0$ are flat so is
+$\mathcal{F}_1$.
+\item If $\mathcal{F}_1$ and $\mathcal{F}_0$ are flat so is
+$\mathcal{F}_2$.
+\end{enumerate}
+If $\mathcal{C}$ is a site and $\mathcal{O}$ is a
+sheaf of rings then the same result holds in $\textit{Mod}(\mathcal{O})$.
+\end{lemma}
+
+\begin{proof}
+Let $\mathcal{G}^\bullet$ be an arbitrary exact complex of presheaves
+of $\mathcal{O}$-modules. Assume that $\mathcal{F}_0$ is flat.
+By Lemma \ref{lemma-flat-tor-zero} we see that
+$$
+0 \to
+\mathcal{G}^\bullet \otimes_{p, \mathcal{O}} \mathcal{F}_2 \to
+\mathcal{G}^\bullet \otimes_{p, \mathcal{O}} \mathcal{F}_1 \to
+\mathcal{G}^\bullet \otimes_{p, \mathcal{O}} \mathcal{F}_0 \to 0
+$$
+is a short exact sequence of complexes of presheaves of
+$\mathcal{O}$-modules. Hence (1) and (2) follow from the snake lemma.
+The case of sheaves of modules is proved in the same way.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-flat-resolution-of-flat}
+Let $\mathcal{C}$ be a category.
+Let $\mathcal{O}$ be a presheaf of rings.
+Let
+$$
+\ldots \to
+\mathcal{F}_2 \to
+\mathcal{F}_1 \to
+\mathcal{F}_0 \to
+\mathcal{Q} \to 0
+$$
+be an exact complex of presheaves of $\mathcal{O}$-modules.
+If $\mathcal{Q}$ and all $\mathcal{F}_i$ are flat $\mathcal{O}$-modules,
+then for any presheaf $\mathcal{G}$ of $\mathcal{O}$-modules the
+complex
+$$
+\ldots \to
+\mathcal{F}_2 \otimes_{p, \mathcal{O}} \mathcal{G} \to
+\mathcal{F}_1 \otimes_{p, \mathcal{O}} \mathcal{G} \to
+\mathcal{F}_0 \otimes_{p, \mathcal{O}} \mathcal{G} \to
+\mathcal{Q} \otimes_{p, \mathcal{O}} \mathcal{G} \to 0
+$$
+is exact also. If $\mathcal{C}$ is a site and $\mathcal{O}$ is a
+sheaf of rings then the same result holds $\textit{Mod}(\mathcal{O})$.
+\end{lemma}
+
+\begin{proof}
+Follows from Lemma \ref{lemma-flat-tor-zero} by splitting the complex
+into short exact sequences and using Lemma \ref{lemma-flat-ses} to
+prove inductively that $\Im(\mathcal{F}_{i + 1} \to \mathcal{F}_i)$
+is flat.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-tensor-flats}
+Let $(\mathcal{C}, \mathcal{O})$ be a ringed site. If $\mathcal{G}$ and
+$\mathcal{F}$ are flat $\mathcal{O}$-modules, then
+$\mathcal{G} \otimes_\mathcal{O} \mathcal{F}$ is a flat $\mathcal{O}$-module.
+\end{lemma}
+
+\begin{proof}
+This is true because
+$$
+(\mathcal{G} \otimes_\mathcal{O} \mathcal{F}) \otimes_\mathcal{O} \mathcal{H}
+=
+\mathcal{G} \otimes_\mathcal{O} (\mathcal{F} \otimes_\mathcal{O} \mathcal{H})
+$$
+and a composition of exact functors is exact.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-flat-change-of-rings}
+Let $\mathcal{O}_1 \to \mathcal{O}_2$ be a map of sheaves
+of rings on a site $\mathcal{C}$. If $\mathcal{G}$ is a
+flat $\mathcal{O}_1$-module, then
+$\mathcal{G} \otimes_{\mathcal{O}_1} \mathcal{O}_2$
+is a flat $\mathcal{O}_2$-module.
+\end{lemma}
+
+\begin{proof}
+This is true because
+$$
+(\mathcal{G} \otimes_{\mathcal{O}_1} \mathcal{O}_2)
+\otimes_{\mathcal{O}_2} \mathcal{H}
+=
+\mathcal{G} \otimes_{\mathcal{O}_1} \mathcal{F}
+$$
+(as sheaves of abelian groups for example).
+\end{proof}
+
+\noindent
+The following lemma is the analogue of the equational criterion of
+flatness (Algebra, Lemma \ref{algebra-lemma-flat-eq}).
+
+\begin{lemma}
+\label{lemma-flat-eq}
+Let $(\mathcal{C}, \mathcal{O})$ be a ringed site. Let $\mathcal{F}$ be an
+$\mathcal{O}$-module. The following are equivalent
+\begin{enumerate}
+\item $\mathcal{F}$ is a flat $\mathcal{O}$-module.
+\item Let $U$ be an object of $\mathcal{C}$ and let
+$$
+\mathcal{O}_U \xrightarrow{(f_1, \ldots, f_n)}
+\mathcal{O}_U^{\oplus n} \xrightarrow{(s_1, \ldots, s_n)}
+\mathcal{F}|_U
+$$
+be a complex of $\mathcal{O}_U$-modules. Then there exists a covering
+$\{U_i \to U\}$ and for each $i$ a factorization
+$$
+\mathcal{O}_{U_i}^{\oplus n}
+\xrightarrow{B_i}
+\mathcal{O}_{U_i}^{\oplus l_i} \xrightarrow{(t_{i1}, \ldots, t_{il_i})}
+\mathcal{F}|_{U_i}
+$$
+of $(s_1, \ldots, s_n)|_{U_i}$ such that
+$B_i \circ (f_1, \ldots, f_n)|_{U_i} = 0$.
+\item Let $U$ be an object of $\mathcal{C}$ and let
+$$
+\mathcal{O}_U^{\oplus m} \xrightarrow{A}
+\mathcal{O}_U^{\oplus n} \xrightarrow{(s_1, \ldots, s_n)}
+\mathcal{F}|_U
+$$
+be a complex of $\mathcal{O}_U$-modules. Then there exists a covering
+$\{U_i \to U\}$ and for each $i$ a factorization
+$$
+\mathcal{O}_{U_i}^{\oplus n}
+\xrightarrow{B_i}
+\mathcal{O}_{U_i}^{\oplus l_i} \xrightarrow{(t_{i1}, \ldots, t_{il_i})}
+\mathcal{F}|_{U_i}
+$$
+of $(s_1, \ldots, s_n)|_{U_i}$ such that
+$B_i \circ A|_{U_i} = 0$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Assume (1). Let $\mathcal{I} \subset \mathcal{O}_U$ be the sheaf of ideals
+generated by $f_1, \ldots, f_n$. Then $\sum f_j \otimes s_j$ is
+a section of $\mathcal{I} \otimes_{\mathcal{O}_U} \mathcal{F}|_U$
+which maps to zero in $\mathcal{F}|_U$. As $\mathcal{F}|_U$ is flat
+(Lemma \ref{lemma-restriction-flat}) the map
+$\mathcal{I} \otimes_{\mathcal{O}_U} \mathcal{F}|_U \to \mathcal{F}|_U$
+is injective. Since $\mathcal{I} \otimes_{\mathcal{O}_U} \mathcal{F}|_U$
+is the sheaf associated to the presheaf tensor product, we see
+there exists a covering $\{U_i \to U\}$ such
+that $\sum f_j|_{U_i} \otimes s_j|_{U_i}$ is zero in
+$\mathcal{I}(U_i) \otimes_{\mathcal{O}(U_i)} \mathcal{F}(U_i)$.
+Unwinding the definitions using Algebra, Lemma \ref{algebra-lemma-relations}
+we find $t_{i1}, \ldots, t_{i l_i} \in \mathcal{F}(U_i)$ and
+$a_{ijk} \in \mathcal{O}(U_i)$
+such that $\sum_j a_{ijk}f_j|_{U_i} = 0$ and
+$s_j|_{U_i} = \sum_k a_{ijk}t_{ik}$.
+Thus (2) holds.
+
+\medskip\noindent
+Assume (2). Let $U$, $n$, $m$, $A$ and $s_1, \ldots, s_n$ as in (3) be given.
+Observe that $A$ has $m$ columns. We will prove the assertion of (3)
+is true by induction on $m$. For the base case $m = 0$ we
+can take the covering $\{U \to U\}$ and for the factorization we use
+$\mathcal{O}_U^n \to \mathcal{O}_U^n \to \mathcal{F}|_U$ where
+the first map is the identity and the second is $(s_1, \ldots, s_n)$.
+Assume $m > 0$. Let $(f_1, \ldots, f_n)$ be the last column of $A$
+and apply (2). This gives new diagrams
+$$
+\mathcal{O}_{U_i}^{\oplus m} \xrightarrow{B_i \circ A|_{U_i}}
+\mathcal{O}_{U_i}^{\oplus l_i} \xrightarrow{(t_{i1}, \ldots, t_{il_i})}
+\mathcal{F}|_{U_i}
+$$
+but the last column of $A_i = B_i \circ A|_{U_i}$ is zero.
+Hence we can apply the induction hypothesis to
+$U_i$, $l_i$, $m - 1$, the matrix consisting of
+the first $m - 1$ columns of $A_i$, and $t_{i1}, \ldots, t_{il_i}$
+to get coverings $\{U_{ij} \to U_j\}$ and factorizations
+$$
+\mathcal{O}_{U_{ij}}^{\oplus l_i}
+\xrightarrow{C_{ij}}
+\mathcal{O}_{U_{ij}}^{\oplus k_{ij}}
+\xrightarrow{(v_{ij1}, \ldots, v_{ij k_{ij}})}
+\mathcal{F}|_{U_{ij}}
+$$
+of $(t_{i1}, \ldots, t_{il_i})|_{U_{ij}}$ such that
+$C_i \circ B_i|_{U_{ij}} \circ A|_{U_{ij}} = 0$.
+Then $\{U_{ij} \to U\}$ is a covering and we get the
+desired factorizations
+using $B_{ij} = C_i \circ B_i|_{U_{ij}}$ and
+$v_{ija}$. In this way we see that (2) implies (3).
+
+\medskip\noindent
+Assume (3). Let $\mathcal{G} \to \mathcal{H}$ be an injective homomorphism
+of $\mathcal{O}$-modules. We have to show that
+$\mathcal{G} \otimes_\mathcal{O} \mathcal{F} \to
+\mathcal{H} \otimes_\mathcal{O} \mathcal{F}$
+is injective. Let $U$ be an object of $\mathcal{C}$
+and let $s \in (\mathcal{G} \otimes_\mathcal{O} \mathcal{F})(U)$
+be a section which maps to zero in
+$\mathcal{H} \otimes_\mathcal{O} \mathcal{F}$.
+We have to show that $s$ is zero. Since
+$\mathcal{G} \otimes_\mathcal{O} \mathcal{F}$
+is a sheaf, it suffices to find a covering $\{U_i \to U\}_{i \in I}$
+of $\mathcal{C}$ such that $s|_{U_i}$ is zero for all $i \in I$.
+Hence we may always replace $U$ by the members of a covering.
+In particular, since $\mathcal{G} \otimes_\mathcal{O} \mathcal{F}$
+is the sheafification of $\mathcal{G} \otimes_{p, \mathcal{O}} \mathcal{F}$
+we may assume that $s$ is the image of $s' \in 
+\mathcal{G}(U) \otimes_{\mathcal{O}(U)} \mathcal{F}(U)$.
+Arguing similarly for $\mathcal{H} \otimes_\mathcal{O} \mathcal{F}$
+we may assume that $s'$ maps to zero in
+$\mathcal{H}(U) \otimes_{\mathcal{O}(U)} \mathcal{F}(U)$.
+Write $\mathcal{F}(U) = \colim M_\alpha$ as a filtered colimit of finitely
+presented $\mathcal{O}(U)$-modules $M_\alpha$
+(Algebra, Lemma \ref{algebra-lemma-module-colimit-fp}).
+Since tensor product commutes with filtered colimits
+(Algebra, Lemma \ref{algebra-lemma-tensor-products-commute-with-limits})
+we can choose an $\alpha$ such that $s'$
+comes from some $s'' \in \mathcal{G}(U) \otimes_{\mathcal{O}(U)} M_\alpha$
+and such that $s''$ maps to zero in
+$\mathcal{H}(U) \otimes_{\mathcal{O}(U)} M_\alpha$.
+Fix $\alpha$ and $s''$.
+Choose a presentation
+$$
+\mathcal{O}(U)^{\oplus m} \xrightarrow{A} \mathcal{O}(U)^{\oplus n}
+\to M_\alpha \to 0
+$$
+We apply (3) to the corresponding complex of $\mathcal{O}_U$-modules
+$$
+\mathcal{O}_U^{\oplus m} \xrightarrow{A}
+\mathcal{O}_U^{\oplus n} \xrightarrow{(s_1, \ldots, s_n)}
+\mathcal{F}|_U
+$$
+After replacing $U$ by the members of the covering $U_i$
+we find that the map
+$$
+M_\alpha \to \mathcal{F}(U)
+$$
+factors through a free module $\mathcal{O}(U)^{\oplus l}$ for some $l$.
+Since $\mathcal{G}(U) \to \mathcal{H}(U)$ is injective
+we conclude that
+$$
+\mathcal{G}(U) \otimes_{\mathcal{O}(U)} \mathcal{O}(U)^{\oplus l}
+\to
+\mathcal{H}(U) \otimes_{\mathcal{O}(U)} \mathcal{O}(U)^{\oplus l}
+$$
+is injective too. Hence as $s''$ maps to zero in the module on
+the right, it also maps to zero in the module on the left, i.e.,
+$s$ is zero as desired.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-flat-over-thickening}
+Let $\mathcal{C}$ be a site. Let $\mathcal{O}' \to \mathcal{O}$
+be a surjection of sheaves of rings whose kernel $\mathcal{I}$ is
+an ideal of square zero. Let $\mathcal{F}'$ be an $\mathcal{O}'$-module
+and set $\mathcal{F} = \mathcal{F}'/\mathcal{I}\mathcal{F}'$.
+The following are equivalent
+\begin{enumerate}
+\item $\mathcal{F}'$ is a flat $\mathcal{O}'$-module, and
+\item $\mathcal{F}$ is a flat $\mathcal{O}$-module and
+$\mathcal{I} \otimes_\mathcal{O} \mathcal{F} \to \mathcal{F}'$
+is injective.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+If (1) holds, then
+$\mathcal{F} = \mathcal{F}' \otimes_{\mathcal{O}'} \mathcal{O}$ is
+flat over $\mathcal{O}$ by
+Lemma \ref{lemma-flat-change-of-rings}
+and we see the map
+$\mathcal{I} \otimes_\mathcal{O} \mathcal{F} \to \mathcal{F}'$
+is injective by applying $- \otimes_{\mathcal{O}'} \mathcal{F}'$
+to the exact sequence
+$0 \to \mathcal{I} \to \mathcal{O}' \to \mathcal{O} \to 0$, see
+Lemma \ref{lemma-flat-tor-zero}.
+Assume (2). In the rest of the proof we will use without further mention
+that $\mathcal{K} \otimes_{\mathcal{O}'} \mathcal{F}' =
+\mathcal{K} \otimes_\mathcal{O} \mathcal{F}$
+for any $\mathcal{O}'$-module $\mathcal{K}$ annihilated by $\mathcal{I}$.
+Let $\alpha : \mathcal{G}' \to \mathcal{H}'$
+be an injective map of $\mathcal{O}'$-modules. Let
+$\mathcal{G} \subset \mathcal{G}'$, resp.\ $\mathcal{H} \subset \mathcal{H}'$
+be the subsheaf of sections annihilated by $\mathcal{I}$.
+Consider the diagram
+$$
+\xymatrix{
+\mathcal{G} \otimes_{\mathcal{O}'} \mathcal{F}' \ar[r] \ar[d] &
+\mathcal{G}' \otimes_{\mathcal{O}'} \mathcal{F}' \ar[r] \ar[d] &
+\mathcal{G}'/\mathcal{G} \otimes_{\mathcal{O}'} \mathcal{F}' \ar[r] \ar[d] &
+0 \\
+\mathcal{H} \otimes_{\mathcal{O}'} \mathcal{F}' \ar[r] &
+\mathcal{H}' \otimes_{\mathcal{O}'} \mathcal{F}' \ar[r] &
+\mathcal{H}'/\mathcal{H} \otimes_{\mathcal{O}'} \mathcal{F}' \ar[r] & 0
+}
+$$
+Note that $\mathcal{G}'/\mathcal{G}$ and $\mathcal{H}'/\mathcal{H}$
+are annihilated by $\mathcal{I}$ and that
+$\mathcal{G}'/\mathcal{G} \to \mathcal{H}'/\mathcal{H}$ is injective.
+Thus the right vertical arrow is injective as $\mathcal{F}$ is flat
+over $\mathcal{O}$. The same is true for the left vertical arrow.
+Hence the middle vertical arrow is injective and $\mathcal{F}'$ is flat.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-neighbourhood-isomorphism}
+Let $\mathcal{C}$ be a site. Let $\mathcal{O} \to \mathcal{O}'$
+be a flat homomorphism of sheaves of rings. Let
+$\mathcal{I} \subset \mathcal{O}$
+be a sheaf of ideals such that the induced map
+$\mathcal{O}/\mathcal{I} \to \mathcal{O}'/\mathcal{I}\mathcal{O}'$
+is an isomorphism. For any $\mathcal{O}$-module $\mathcal{F}$
+annihilated by $\mathcal{I}^n$ for some $n \geq 0$ the map
+$\text{id} \otimes 1 :
+\mathcal{F} \to \mathcal{F} \otimes_\mathcal{O} \mathcal{O}'$
+is an isomorphism.
+\end{lemma}
+
+\begin{proof}
+Omitted. Hint: See More on Algebra, Lemma
+\ref{more-algebra-lemma-neighbourhood-isomorphism}.
+\end{proof}
+
+
+
+
+

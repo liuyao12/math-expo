@@ -1,0 +1,66 @@
+\section{Primitive elements}
+\label{section-primitive-element}
+
+\noindent
+Let $E/F$ be a finite extension of fields. An element $\alpha \in E$
+is called a {\it primitive element of $E$ over $F$} if $E = F(\alpha)$.
+
+\begin{lemma}[Primitive element]
+\label{lemma-primitive-element}
+Let $E/F$ be a finite extension of fields. The following are equivalent
+\begin{enumerate}
+\item there exists a primitive element for $E$ over $F$, and
+\item there are finitely many subextensions $E/K/F$.
+\end{enumerate}
+Moreover, (1) and (2) hold if $E/F$ is separable.
+\end{lemma}
+
+\begin{proof}
+Let $\alpha \in E$ be a primitive element. Let $P$ be the minimal
+polynomial of $\alpha$ over $F$. Next, let $E/K/F$ be a subextension.
+Let $Q$ be the minimal polynomial of $\alpha$ over $K$. Observe that
+$\deg(Q) = [E : K]$. Writing $Q = x^d + \sum_{i < d} a_i x^i$ we claim that
+$K$ is equal to $L = F(a_0, \ldots, a_{d - 1})$. Indeed $\alpha$ has degree
+$d$ over $L$ and $L \subset K$. Hence $[E : L] = [E : K]$ and it follows
+that $[K : L] = 1$, i.e., $K = L$.
+Thus it suffices to show there are at most finitely many possibilities
+for the polynomial $Q$. This is clear because we have a factorization
+$P = QR$  in $K[x]$ in particular in $E[x]$. Since we have unique
+factorization in $E[x]$ there are at most finitely many monic
+factors of $P$ in $E[x]$.
+
+\medskip\noindent
+If $F$ is a finite field (equivalently $E$ is a finite field), then
+$E/F$ has a primitive element by the discussion in
+Section \ref{section-finite}.
+Next, assume $F$ is infinite and there are at most finitely many proper
+subfields $E/K/F$. List them, say $K_1, \ldots, K_N$. Then
+each $K_i \subset E$ is a proper sub $F$-vector space. As $F$ is infinite
+we can find a vector $\alpha \in E$ with $\alpha \not \in K_i$ for all $i$
+(a vector space can never be equal to a finite union of proper subvector spaces;
+details omitted). Then $\alpha$ is a primitive element for $E$ over $F$.
+
+\medskip\noindent
+Having established the equivalence of (1) and (2) we now turn to
+the final statement of the lemma. Choose an algebraic closure
+$\overline{F}$ of $F$. Enumerate the elements
+$\sigma_1, \ldots, \sigma_n \in \Mor_F(E, \overline{F})$.
+Since $E/F$ is separable we have $n = [E : F]$ by
+Lemma \ref{lemma-separable-equality}.
+Note that if $i \not = j$, then
+$$
+V_{ij} = \Ker(\sigma_i - \sigma_j : E \longrightarrow \overline{F})
+$$
+is not equal to $E$. Hence arguing as in the preceding paragraph
+we can find $\alpha \in E$ with $\alpha \not \in V_{ij}$ for all
+$i \not = j$. It follows that $|\Mor_F(F(\alpha), \overline{F})| \geq n$.
+On the other hand $[F(\alpha) : F] \leq [E : F]$. Hence equality
+by Lemma \ref{lemma-separable-equality}
+and we conclude that $E = F(\alpha)$.
+\end{proof}
+
+
+
+
+
+

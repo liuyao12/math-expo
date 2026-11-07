@@ -1,0 +1,190 @@
+\section{Support and dimension of modules}
+\label{section-support}
+
+\noindent
+Some basic results on the support and dimension of modules.
+
+\begin{lemma}
+\label{lemma-filter-Noetherian-module}
+Let $R$ be a Noetherian ring, and let $M$ be a finite $R$-module.
+There exists a filtration by $R$-submodules
+$$
+0 = M_0 \subset M_1 \subset \ldots \subset M_n = M
+$$
+such that each quotient $M_i/M_{i-1}$ is isomorphic
+to $R/\mathfrak p_i$ for some prime ideal $\mathfrak p_i$
+of $R$.
+\end{lemma}
+
+\begin{proof}[First proof]
+By Lemma \ref{lemma-trivial-filter-finite-module}
+it suffices to do the case $M = R/I$ for some ideal $I$.
+Consider the set $S$ of ideals $J$ such that the lemma
+does not hold for the module $R/J$, and order it by
+inclusion. To arrive at a
+contradiction, assume that $S$ is not empty. Because
+$R$ is Noetherian, $S$ has a maximal element $J$.
+By definition of $S$, the ideal $J$ cannot be prime.
+Pick $a, b\in R$ such that $ab \in J$, but neither
+$a \in J$ nor $b\in J$. Consider the filtration
+$0 \subset aR/(J \cap aR) \subset R/J$.
+Note that both the submodule $aR/(J \cap aR)$ and the quotient
+module $(R/J)/(aR/(J \cap aR))$ are cyclic modules; write
+them as $R/J'$ and $R/J''$ so we have a short exact sequence
+$0 \to R/J' \to R/J \to R/J'' \to 0$.
+The inclusion $J \subset J'$ is strict
+as $b \in J'$ and the inclusion $J \subset J''$ is strict as $a \in J''$.
+Hence by maximality of $J$, both $R/J'$ and $R/J''$ have a filtration as
+above and hence so does $R/J$. Contradiction.
+\end{proof}
+
+\begin{proof}[Second proof]
+For an $R$-module $M$ we say $P(M)$ holds if there exists a filtration
+as in the statement of the lemma. Observe that $P$ is stable under
+extensions and holds for $0$. By Lemma \ref{lemma-trivial-filter-finite-module}
+it suffices to prove $P(R/I)$ holds for every ideal $I$.
+If not then because $R$ is Noetherian, there is a maximal
+counter example $J$. By Example \ref{example-oka-family-property-modules} and
+Proposition \ref{proposition-oka}
+the ideal $J$ is prime which is a contradiction.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-filter-primes-in-support}
+Let $R$, $M$, $M_i$, $\mathfrak p_i$ as in
+Lemma \ref{lemma-filter-Noetherian-module}.
+Then $\text{Supp}(M) = \bigcup V(\mathfrak p_i)$
+and in particular $\mathfrak p_i \in \text{Supp}(M)$.
+\end{lemma}
+
+\begin{proof}
+This follows from Lemmas \ref{lemma-support-closed} and
+\ref{lemma-support-quotient}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-support-point}
+Suppose that $R$ is a Noetherian local ring with
+maximal ideal $\mathfrak m$. Let $M$ be a nonzero finite
+$R$-module. Then $\text{Supp}(M) = \{ \mathfrak m\}$
+if and only if $M$ has finite length over $R$.
+\end{lemma}
+
+\begin{proof}
+Assume that $\text{Supp}(M) = \{ \mathfrak m\}$.
+It suffices to show that all the primes $\mathfrak p_i$
+in the filtration of Lemma \ref{lemma-filter-Noetherian-module}
+are the maximal ideal. This is clear by
+Lemma \ref{lemma-filter-primes-in-support}.
+
+\medskip\noindent
+Suppose that $M$ has finite length over $R$.
+Then $\mathfrak m^n M = 0$ by Lemma \ref{lemma-length-infinite}.
+Since some element of $\mathfrak m$ maps to a unit
+in $R_{\mathfrak p}$ for any prime
+$\mathfrak p \not = \mathfrak m$ in $R$ we see $M_{\mathfrak p} = 0$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-Noetherian-power-ideal-kills-module}
+Let $R$ be a Noetherian ring.
+Let $I \subset R$ be an ideal.
+Let $M$ be a finite $R$-module.
+Then $I^nM = 0$ for some $n \geq 0$ if and only if
+$\text{Supp}(M) \subset V(I)$.
+\end{lemma}
+
+\begin{proof}
+Indeed, $I^nM = 0$ is equivalent to $I^n \subset \text{Ann}(M)$.
+Since $R$ is Noetherian, this is equivalent to
+$I \subset \sqrt{\text{Ann}(M)}$, see
+Lemma \ref{lemma-Noetherian-power}.
+This in turn is equivalent to $V(I) \supset V(\text{Ann}(M))$, see
+Lemma \ref{lemma-Zariski-topology}.
+By Lemma \ref{lemma-support-closed}
+this is equivalent to $V(I) \supset \text{Supp}(M)$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-filter-minimal-primes-in-support}
+Let $R$, $M$, $M_i$, $\mathfrak p_i$ as in
+Lemma \ref{lemma-filter-Noetherian-module}.
+The minimal elements of the set $\{\mathfrak p_i\}$
+are the minimal elements of $\text{Supp}(M)$.
+The number of times a minimal prime $\mathfrak p$
+occurs is
+$$
+\#\{i \mid \mathfrak p_i = \mathfrak p\}
+=
+\text{length}_{R_\mathfrak p} M_{\mathfrak p}.
+$$
+\end{lemma}
+
+\begin{proof}
+The first statement follows because
+$\text{Supp}(M) = \bigcup V(\mathfrak p_i)$, see
+Lemma \ref{lemma-filter-primes-in-support}.
+Let $\mathfrak p \in \text{Supp}(M)$ be minimal.
+The support of $M_{\mathfrak p}$ is the set
+consisting of the maximal ideal $\mathfrak p R_{\mathfrak p}$.
+Hence by Lemma \ref{lemma-support-point} the length
+of $M_{\mathfrak p}$ is finite and $> 0$. Next we
+note that $M_{\mathfrak p}$ has a filtration with subquotients
+$
+(R/\mathfrak p_i)_{\mathfrak p}
+=
+R_{\mathfrak p}/{\mathfrak p_i}R_{\mathfrak p}
+$.
+These are zero if $\mathfrak p_i \not \subset \mathfrak p$
+and equal to $\kappa(\mathfrak p)$ if $\mathfrak p_i \subset
+\mathfrak p$ because by minimality of $\mathfrak p$
+we have $\mathfrak p_i = \mathfrak p$ in this case.
+The result follows since $\kappa(\mathfrak p)$ has length $1$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-support-dimension-d}
+Let $R$ be a Noetherian local ring.
+Let $M$ be a finite $R$-module.
+Then $d(M) = \dim(\text{Supp}(M))$ where $d(M)$ is as in
+Definition \ref{definition-d}.
+\end{lemma}
+
+\begin{proof}
+Let $M_i, \mathfrak p_i$ be as in Lemma \ref{lemma-filter-Noetherian-module}.
+By Lemma \ref{lemma-hilbert-ses-chi} we obtain the equality
+$d(M) = \max \{ d(R/\mathfrak p_i) \}$. By
+Proposition \ref{proposition-dimension} we have
+$d(R/\mathfrak p_i) = \dim(R/\mathfrak p_i)$.
+Trivially $\dim(R/\mathfrak p_i) = \dim V(\mathfrak p_i)$.
+Since all minimal primes of $\text{Supp}(M)$ occur among
+the $\mathfrak p_i$ (Lemma \ref{lemma-filter-minimal-primes-in-support}) we win.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-ses-dimension}
+Let $R$ be a Noetherian ring. Let $0 \to M' \to M \to M'' \to 0$
+be a short exact sequence of finite $R$-modules. Then
+$\max\{\dim(\text{Supp}(M')), \dim(\text{Supp}(M''))\} =
+\dim(\text{Supp}(M))$.
+\end{lemma}
+
+\begin{proof}
+If $R$ is local, this follows immediately from
+Lemmas \ref{lemma-support-dimension-d} and \ref{lemma-hilbert-ses-chi}.
+A more elementary argument, which works also if $R$ is not local,
+is to use that $\text{Supp}(M')$, $\text{Supp}(M'')$, and
+$\text{Supp}(M)$ are closed (Lemma \ref{lemma-support-closed})
+and that $\text{Supp}(M) = \text{Supp}(M') \cup \text{Supp}(M'')$
+(Lemma \ref{lemma-support-quotient}).
+\end{proof}
+
+
+
+
+
+
+
+
+
+

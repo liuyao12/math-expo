@@ -1,0 +1,254 @@
+\section{Points of finite type and Jacobson schemes}
+\label{section-points-finite-type}
+
+\noindent
+Let $S$ be a scheme. A finite type point $s$ of $S$ is a point such
+that the morphism $\Spec(\kappa(s)) \to S$ is of finite type.
+The reason for studying this is that finite type points can replace
+closed points in a certain sense and in certain situations.
+There are always enough of them for example. Moreover, a scheme
+is Jacobson if and only if all finite type points are closed points.
+
+\begin{lemma}
+\label{lemma-point-finite-type}
+Let $S$ be a scheme. Let $k$ be a field.
+Let $f : \Spec(k) \to S$ be a morphism.
+The following are equivalent:
+\begin{enumerate}
+\item The morphism $f$ is of finite type.
+\item The morphism $f$ is locally of finite type.
+\item There exists an affine open $U = \Spec(R)$ of $S$
+such that $f$ corresponds to a finite ring map $R \to k$.
+\item There exists an affine open $U = \Spec(R)$ of $S$
+such that the image of $f$ consists of a closed point $u$ in $U$
+and the field extension $k/\kappa(u)$ is finite.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+The equivalence of (1) and (2) is obvious as $\Spec(k)$
+is a singleton and hence any morphism from it is quasi-compact.
+
+\medskip\noindent
+Suppose $f$ is locally of finite type. Choose any affine open
+$\Spec(R) = U \subset S$ such that the image of $f$
+is contained in $U$, and the ring map $R \to k$
+is of finite type. Let $\mathfrak p \subset R$ be the kernel.
+Then $R/\mathfrak p \subset k$ is of finite type. By
+Algebra, Lemma \ref{algebra-lemma-field-finite-type-over-domain}
+there exist a $\overline{f} \in R/\mathfrak p$ such that
+$(R/\mathfrak p)_{\overline{f}}$ is a field and
+$(R/\mathfrak p)_{\overline{f}} \to k$ is a finite field
+extension. If $f \in R$ is a lift of $\overline{f}$, then
+we see that $k$ is a finite $R_f$-module. Thus (2) $\Rightarrow$ (3).
+
+\medskip\noindent
+Suppose that $\Spec(R) = U \subset S$ is an affine open
+such that $f$ corresponds to a finite ring map $R \to k$.
+Then $f$ is locally of finite type
+by Lemma \ref{lemma-locally-finite-type-characterize}.
+Thus (3) $\Rightarrow$ (2).
+
+\medskip\noindent
+Suppose $R \to k$ is finite. The image of $R \to k$ is a field
+over which $k$ is finite by
+Algebra, Lemma \ref{algebra-lemma-integral-under-field}.
+Hence the kernel of $R \to k$ is a maximal ideal.
+Thus (3) $\Rightarrow$ (4).
+
+\medskip\noindent
+The implication (4) $\Rightarrow$ (3) is immediate.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-artinian-finite-type}
+Let $S$ be a scheme.
+Let $A$ be an Artinian local ring with residue field $\kappa$.
+Let $f : \Spec(A) \to S$ be a morphism of schemes.
+Then $f$ is of finite type if and only if the composition
+$\Spec(\kappa) \to \Spec(A) \to S$ is of finite type.
+\end{lemma}
+
+\begin{proof}
+Since the morphism $\Spec(\kappa) \to \Spec(A)$ is of finite
+type it is clear that if $f$ is of finite type so is the composition
+$\Spec(\kappa) \to S$ (see Lemma \ref{lemma-composition-finite-type}).
+For the converse, note that $\Spec(A) \to S$ maps into some affine open
+$U = \Spec(B)$ of $S$ as $\Spec(A)$ has only one point. To finish
+apply Algebra, Lemma
+\ref{algebra-lemma-essentially-of-finite-type-into-artinian-local}
+to $B \to A$.
+\end{proof}
+
+\noindent
+Recall that given a point $s$ of a scheme $S$ there is a canonical
+morphism $\Spec(\kappa(s)) \to S$, see
+Schemes, Section \ref{schemes-section-points}.
+
+\begin{definition}
+\label{definition-finite-type-point}
+Let $S$ be a scheme.
+Let us say that a point $s$ of $S$ is a {\it finite type point}
+if the canonical morphism $\Spec(\kappa(s)) \to S$ is of finite type.
+We denote $S_{\text{ft-pts}}$ the set of finite type points of $S$.
+\end{definition}
+
+\noindent
+We can describe the set of finite type points as follows.
+
+\begin{lemma}
+\label{lemma-identify-finite-type-points}
+Let $S$ be a scheme. We have
+$$
+S_{\text{ft-pts}} = \bigcup\nolimits_{U \subset S\text{ open}} U_0
+$$
+where $U_0$ is the set of closed points of $U$.
+Here we may let $U$ range over all opens or over all affine opens of $S$.
+\end{lemma}
+
+\begin{proof}
+Immediate from Lemma \ref{lemma-point-finite-type}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-finite-type-points-morphism}
+Let $f : T \to S$ be a morphism of schemes.
+If $f$ is locally of finite type, then
+$f(T_{\text{ft-pts}}) \subset S_{\text{ft-pts}}$.
+\end{lemma}
+
+\begin{proof}
+If $T$ is the spectrum of a field this is Lemma \ref{lemma-point-finite-type}.
+In general it follows since the composition of morphisms locally of finite
+type is locally of finite type (Lemma \ref{lemma-composition-finite-type}).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-finite-type-points-surjective-morphism}
+Let $f : T \to S$ be a morphism of schemes.
+If $f$ is locally of finite type and surjective, then
+$f(T_{\text{ft-pts}}) = S_{\text{ft-pts}}$.
+\end{lemma}
+
+\begin{proof}
+We have $f(T_{\text{ft-pts}}) \subset S_{\text{ft-pts}}$ by
+Lemma \ref{lemma-finite-type-points-morphism}.
+Let $s \in S$ be a finite type point. As $f$ is surjective the scheme
+$T_s = \Spec(\kappa(s)) \times_S T$ is nonempty, therefore
+has a finite type point $t \in T_s$ by
+Lemma \ref{lemma-identify-finite-type-points}.
+Now $T_s \to T$ is a morphism of finite type as a base change
+of $s \to S$
+(Lemma \ref{lemma-base-change-finite-type}).
+Hence the image of $t$ in $T$ is a finite type point by
+Lemma \ref{lemma-finite-type-points-morphism}
+which maps to $s$ by construction.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-enough-finite-type-points}
+Let $S$ be a scheme.
+For any locally closed subset $T \subset S$ we have
+$$
+T \not = \emptyset
+\Rightarrow
+T \cap S_{\text{ft-pts}} \not = \emptyset.
+$$
+In particular, for any closed subset $T \subset S$ we
+see that $T \cap S_{\text{ft-pts}}$ is dense in $T$.
+\end{lemma}
+
+\begin{proof}
+Note that $T$ carries a scheme structure (see
+Schemes, Lemma \ref{schemes-lemma-reduced-closed-subscheme})
+such that $T \to S$ is a locally closed immersion.
+Any locally closed immersion is locally of finite type,
+see Lemma \ref{lemma-immersion-locally-finite-type}.
+Hence by Lemma \ref{lemma-finite-type-points-morphism}
+we see $T_{\text{ft-pts}} \subset S_{\text{ft-pts}}$.
+Finally, any nonempty affine open of $T$ has at least one closed point
+which is a finite type point of $T$ by
+Lemma \ref{lemma-identify-finite-type-points}.
+\end{proof}
+
+\noindent
+It follows that most of the material from
+Topology, Section \ref{topology-section-space-jacobson} goes through
+with the set of closed points replaced by the set of points of
+finite type.
+In fact, if $S$ is Jacobson then we recover the closed points as
+the finite type points.
+
+\begin{lemma}
+\label{lemma-jacobson-finite-type-points}
+Let $S$ be a scheme. The following are equivalent:
+\begin{enumerate}
+\item the scheme $S$ is Jacobson,
+\item $S_{\text{ft-pts}}$ is the set of closed points of $S$,
+\item for all $T \to S$ locally of finite type
+closed points map to closed points, and
+\item for all $T \to S$ locally of finite type
+closed points $t \in T$ map to closed points $s \in S$ with
+$\kappa(s) \subset \kappa(t)$ finite.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+We have trivially (4) $\Rightarrow$ (3) $\Rightarrow$ (2).
+Lemma \ref{lemma-enough-finite-type-points} shows that (2) implies (1).
+Hence it suffices to show that (1) implies (4).
+Suppose that $T \to S$ is locally of finite type.
+Choose $t \in T$ closed and let $s \in S$ be the image.
+Choose affine open neighbourhoods $\Spec(R) = U \subset S$ of $s$ and
+$\Spec(A) = V \subset T$ of $t$ with $V$ mapping into $U$.
+The induced ring map $R \to A$ is of finite type
+(see Lemma \ref{lemma-locally-finite-type-characterize}) and $R$ is Jacobson
+by Properties, Lemma \ref{properties-lemma-locally-jacobson}.
+Thus the result follows from
+Algebra, Proposition \ref{algebra-proposition-Jacobson-permanence}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-Jacobson-universally-Jacobson}
+Let $S$ be a Jacobson scheme.
+Any scheme locally of finite type over $S$ is Jacobson.
+\end{lemma}
+
+\begin{proof}
+This is clear from
+Algebra, Proposition \ref{algebra-proposition-Jacobson-permanence}
+(and Properties, Lemma \ref{properties-lemma-locally-jacobson} and
+Lemma \ref{lemma-locally-finite-type-characterize}).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-ubiquity-Jacobson-schemes}
+The following types of schemes are Jacobson.
+\begin{enumerate}
+\item Any scheme locally of finite type over a field.
+\item Any scheme locally of finite type over $\mathbf{Z}$.
+\item Any scheme locally of finite type over a $1$-dimensional
+Noetherian domain with infinitely many primes.
+\item A scheme of the form $\Spec(R) \setminus \{\mathfrak m\}$
+where $(R, \mathfrak m)$ is a Noetherian local ring.
+Also any scheme locally of finite type over it.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+We will use Lemma \ref{lemma-Jacobson-universally-Jacobson} without mention.
+The spectrum of a field is clearly Jacobson.
+The spectrum of $\mathbf{Z}$ is Jacobson, see
+Algebra, Lemma \ref{algebra-lemma-pid-jacobson}.
+For (3) see
+Algebra, Lemma \ref{algebra-lemma-noetherian-dim-1-Jacobson}.
+For (4) see
+Properties, Lemma \ref{properties-lemma-complement-closed-point-Jacobson}.
+\end{proof}
+
+
+
+
+
+
+

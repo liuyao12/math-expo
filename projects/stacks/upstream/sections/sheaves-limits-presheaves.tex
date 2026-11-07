@@ -1,0 +1,33 @@
+\section{Limits and colimits of presheaves}
+\label{section-limits-presheaves}
+
+\noindent
+Let $X$ be a topological space.
+Let $\mathcal{I} \to \textit{PSh}(X)$, $i \mapsto \mathcal{F}_i$
+be a diagram.
+\begin{enumerate}
+\item Both $\lim_i \mathcal{F}_i$ and $\colim_i \mathcal{F}_i$
+exist.
+\item For any open $U \subset X$ we have
+$$
+(\lim_i \mathcal{F}_i)(U) =
+\lim_i \mathcal{F}_i(U)
+$$
+and
+$$
+(\colim_i \mathcal{F}_i)(U) =
+\colim_i \mathcal{F}_i(U).
+$$
+\item Let $x \in X$ be a point. In general the stalk of
+$\lim_i \mathcal{F}_i$ at $x$ is not equal to
+the limit of the stalks. But if the index category is finite
+then it is the case. In other words, the stalk functor is
+left exact (see Categories, Definition \ref{categories-definition-exact}).
+\item Let $x \in X$. We always have
+$$
+(\colim_i \mathcal{F}_i)_x =
+\colim_i \mathcal{F}_{i, x}.
+$$
+\end{enumerate}
+The proofs are all easy.
+

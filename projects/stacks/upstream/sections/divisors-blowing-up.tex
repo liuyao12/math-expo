@@ -1,0 +1,470 @@
+\section{Blowing up}
+\label{section-blowing-up}
+
+\noindent
+Blowing up is an important tool in algebraic geometry.
+
+\begin{definition}
+\label{definition-blow-up}
+Let $X$ be a scheme. Let $\mathcal{I} \subset \mathcal{O}_X$ be a
+quasi-coherent sheaf of ideals, and let $Z \subset X$ be the closed subscheme
+corresponding to $\mathcal{I}$, see
+Schemes, Definition \ref{schemes-definition-immersion}.
+The {\it blowing up of $X$ along $Z$}, or the
+{\it blowing up of $X$ in the ideal sheaf $\mathcal{I}$} is
+the morphism
+$$
+b :
+\underline{\text{Proj}}_X
+\left(\bigoplus\nolimits_{n \geq 0} \mathcal{I}^n\right)
+\longrightarrow
+X
+$$
+The {\it exceptional divisor} of the blowup is the inverse image
+$b^{-1}(Z)$. Sometimes $Z$ is called the {\it center} of the blowup.
+\end{definition}
+
+\noindent
+We will see later that the exceptional divisor is an effective Cartier
+divisor. Moreover, the blowing up is characterized as the ``smallest'' scheme
+over $X$ such that the inverse image of $Z$ is an effective Cartier divisor.
+
+\medskip\noindent
+If $b : X' \to X$ is the blowup of $X$ in $Z$, then we often denote
+$\mathcal{O}_{X'}(n)$ the twists of the structure sheaf. Note that these
+are invertible $\mathcal{O}_{X'}$-modules and that
+$\mathcal{O}_{X'}(n) = \mathcal{O}_{X'}(1)^{\otimes n}$
+because $X'$ is the relative Proj of a quasi-coherent graded
+$\mathcal{O}_X$-algebra which is generated in degree $1$, see
+Constructions, Lemma \ref{constructions-lemma-apply-relative}.
+Note that $\mathcal{O}_{X'}(1)$ is $b$-relatively very ample, even though
+$b$ need not be of finite type or even quasi-compact, because
+$X'$ comes equipped with a closed immersion into $\mathbf{P}(\mathcal{I})$,
+see Morphisms, Example \ref{morphisms-example-very-ample}.
+
+\begin{lemma}
+\label{lemma-blowing-up-affine}
+Let $X$ be a scheme. Let $\mathcal{I} \subset \mathcal{O}_X$ be a
+quasi-coherent sheaf of ideals. Let $U = \Spec(A)$ be an affine open
+subscheme of $X$ and let $I \subset A$ be the ideal corresponding to
+$\mathcal{I}|_U$. If $b : X' \to X$ is the blowup of $X$ in $\mathcal{I}$,
+then there is a canonical isomorphism
+$$
+b^{-1}(U) = \text{Proj}(\bigoplus\nolimits_{d \geq 0} I^d)
+$$
+of $b^{-1}(U)$ with the homogeneous spectrum of the Rees algebra
+of $I$ in $A$. Moreover, $b^{-1}(U)$ has an affine open covering by
+spectra of the affine blowup algebras $A[\frac{I}{a}]$.
+\end{lemma}
+
+\begin{proof}
+The first statement is clear from the construction of the relative Proj via
+glueing, see Constructions, Section
+\ref{constructions-section-relative-proj-via-glueing}.
+For $a \in I$ denote $a^{(1)}$ the element $a$ seen as an element of
+degree $1$ in the Rees algebra $\bigoplus_{n \geq 0} I^n$.
+Since these elements generate the Rees algebra over $A$ we see that
+$\text{Proj}(\bigoplus_{d \geq 0} I^d)$ is covered by the affine opens
+$D_{+}(a^{(1)})$. The affine scheme $D_{+}(a^{(1)})$ is the spectrum of
+the affine blowup algebra $A' = A[\frac{I}{a}]$, see
+Algebra, Definition \ref{algebra-definition-blow-up}.
+This finishes the proof.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-flat-base-change-blowing-up}
+\begin{slogan}
+Blowing up commutes with flat base change.
+\end{slogan}
+Let $X_1 \to X_2$ be a flat morphism of schemes. Let $Z_2 \subset X_2$ be a
+closed subscheme. Let $Z_1$ be the inverse image of $Z_2$ in $X_1$.
+Let $X'_i$ be the blowup of $Z_i$ in $X_i$. Then there exists a cartesian
+diagram
+$$
+\xymatrix{
+X_1' \ar[r] \ar[d] & X_2' \ar[d] \\
+X_1 \ar[r] & X_2
+}
+$$
+of schemes.
+\end{lemma}
+
+\begin{proof}
+Let $\mathcal{I}_2$ be the ideal sheaf of $Z_2$ in $X_2$.
+Denote $g : X_1 \to X_2$ the given morphism. Then the ideal sheaf
+$\mathcal{I}_1$ of $Z_1$ is the image of
+$g^*\mathcal{I}_2 \to \mathcal{O}_{X_1}$
+(by definition of the inverse image, see
+Schemes, Definition \ref{schemes-definition-inverse-image-closed-subscheme}).
+By Constructions, Lemma \ref{constructions-lemma-relative-proj-base-change}
+we see that $X_1 \times_{X_2} X_2'$ is the relative Proj of
+$\bigoplus_{n \geq 0} g^*\mathcal{I}_2^n$. Because $g$ is flat the map
+$g^*\mathcal{I}_2^n \to \mathcal{O}_{X_1}$ is injective with image
+$\mathcal{I}_1^n$. Thus we see that $X_1 \times_{X_2} X_2' = X_1'$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-blowing-up-gives-effective-Cartier-divisor}
+Let $X$ be a scheme. Let $Z \subset X$ be a closed subscheme.
+The blowing up $b : X' \to X$ of $Z$ in $X$
+has the following properties:
+\begin{enumerate}
+\item $b|_{b^{-1}(X \setminus Z)} : b^{-1}(X \setminus Z) \to X \setminus Z$
+is an isomorphism,
+\item the exceptional divisor $E = b^{-1}(Z)$ is an effective Cartier divisor
+on $X'$,
+\item there is a canonical isomorphism
+$\mathcal{O}_{X'}(-1) = \mathcal{O}_{X'}(E)$
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+As blowing up commutes with restrictions to open subschemes
+(Lemma \ref{lemma-flat-base-change-blowing-up}) the first statement
+just means that $X' = X$ if $Z = \emptyset$. In this case we are blowing
+up in the ideal sheaf $\mathcal{I} = \mathcal{O}_X$ and the result follows from
+Constructions, Example \ref{constructions-example-trivial-proj}.
+
+\medskip\noindent
+The second statement is local on $X$, hence we may assume $X$ affine.
+Say $X = \Spec(A)$ and $Z = \Spec(A/I)$. By Lemma \ref{lemma-blowing-up-affine}
+we see that $X'$ is covered by the spectra of the affine blowup algebras
+$A' = A[\frac{I}{a}]$. Then $IA' = aA'$ and $a$ maps to a nonzerodivisor
+in $A'$ according to Algebra, Lemma \ref{algebra-lemma-affine-blowup}.
+This proves the lemma as the inverse image of $Z$ in $\Spec(A')$
+corresponds to $\Spec(A'/IA') \subset \Spec(A')$.
+
+\medskip\noindent
+Consider the canonical map
+$\psi_{univ, 1} : b^*\mathcal{I} \to \mathcal{O}_{X'}(1)$, see
+discussion following Constructions, Definition
+\ref{constructions-definition-relative-proj}.
+We claim that this factors through an isomorphism
+$\mathcal{I}_E \to \mathcal{O}_{X'}(1)$ (which proves the final assertion).
+Namely, on the affine open corresponding to the blowup algebra
+$A' = A[\frac{I}{a}]$ mentioned above $\psi_{univ, 1}$ corresponds to
+the $A'$-module map
+$$
+I \otimes_A A'
+\longrightarrow
+\left(\Big(\bigoplus\nolimits_{d \geq 0} I^d\Big)_{a^{(1)}}\right)_1
+$$
+where $a^{(1)}$ is as in Algebra, Definition \ref{algebra-definition-blow-up}.
+We omit the verification that this is the map
+$I \otimes_A A' \to IA' = aA'$.
+\end{proof}
+
+\begin{lemma}[Universal property blowing up]
+\label{lemma-universal-property-blowing-up}
+Let $X$ be a scheme. Let $Z \subset X$ be a closed subscheme.
+Let $\mathcal{C}$ be the full subcategory of $(\Sch/X)$ consisting
+of $Y \to X$ such that the inverse image of $Z$ is an effective
+Cartier divisor on $Y$. Then the blowing up $b : X' \to X$ of $Z$ in $X$
+is a final object of $\mathcal{C}$.
+\end{lemma}
+
+\begin{proof}
+We see that $b : X' \to X$ is an object of $\mathcal{C}$ according to
+Lemma \ref{lemma-blowing-up-gives-effective-Cartier-divisor}.
+Let $f : Y \to X$ be an object of $\mathcal{C}$. We have to show there exists
+a unique morphism $Y \to X'$ over $X$. Let $D = f^{-1}(Z)$.
+Let $\mathcal{I} \subset \mathcal{O}_X$ be the ideal sheaf of $Z$
+and let $\mathcal{I}_D$ be the ideal sheaf of $D$. Then
+$f^*\mathcal{I} \to \mathcal{I}_D$ is a surjection
+to an invertible $\mathcal{O}_Y$-module. This extends to a map
+$\psi : \bigoplus f^*\mathcal{I}^d \to \bigoplus \mathcal{I}_D^d$
+of graded $\mathcal{O}_Y$-algebras. (We observe that
+$\mathcal{I}_D^d = \mathcal{I}_D^{\otimes d}$ as $D$ is an
+effective Cartier divisor.) By the material in
+Constructions, Section \ref{constructions-section-relative-proj}
+the triple $(1, f : Y \to X, \psi)$ defines a morphism $Y \to X'$ over $X$.
+The restriction
+$$
+Y \setminus D \longrightarrow X' \setminus b^{-1}(Z) = X \setminus Z
+$$
+is unique. The open $Y \setminus D$ is scheme theoretically dense in $Y$
+according to Lemma \ref{lemma-complement-effective-Cartier-divisor}.
+Thus the morphism $Y \to X'$ is unique by
+Morphisms, Lemma \ref{morphisms-lemma-equality-of-morphisms}
+(also $b$ is separated by Constructions, Lemma
+\ref{constructions-lemma-relative-proj-separated}).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-characterize-affine-blowup}
+Let $b : X' \to X$ be the blowing up of the scheme $X$ along a closed
+subscheme $Z$. Let $U = \Spec(A)$ be an affine open of $X$ and let
+$I \subset A$ be the ideal corresponding to $Z \cap U$.
+Let $a \in I$ and let $x' \in X'$ be a point mapping to a point of $U$.
+Then $x'$ is a point of the affine open $U' = \Spec(A[\frac{I}{a}])$
+if and only if the image of $a$ in $\mathcal{O}_{X', x'}$ cuts
+out the exceptional divisor.
+\end{lemma}
+
+\begin{proof}
+Since the exceptional divisor over $U'$ is cut out by the image of
+$a$ in $A' = A[\frac{I}{a}]$ one direction is clear. Conversely, assume
+that the image of $a$ in $\mathcal{O}_{X', x'}$ cuts out $E$.
+Since every element of $I$ maps to an element of the ideal
+defining $E$ over $b^{-1}(U)$ we see that elements of $I$ become
+divisible by $a$ in $\mathcal{O}_{X', x'}$. Thus for $f \in I^n$
+we can write $f = \psi(f) a^n$ for some $\psi(f) \in \mathcal{O}_{X', x'}$.
+Observe that since $a$ maps to a nonzerodivisor of $\mathcal{O}_{X', x'}$
+the element $\psi(f)$ is uniquely characterized by this. Then we
+define
+$$
+A' \longrightarrow \mathcal{O}_{X', x'},\quad
+f/a^n \longmapsto \psi(f)
+$$
+Here we use the description of blowup algebras given following
+Algebra, Definition \ref{definition-blow-up}. The uniqueness mentioned
+above shows that this is an $A$-algebra homomorphism.
+This gives a morphism $\Spec(\mathcal{O}_{X', x"}) \to \Spec(A') = U'$.
+By the universal property of blowing up
+(Lemma \ref{lemma-universal-property-blowing-up})
+this is a morphism over
+$X'$, which of course implies that $x' \in U'$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-blow-up-effective-Cartier-divisor}
+Let $X$ be a scheme. Let $Z \subset X$ be an effective Cartier divisor.
+The blowup of $X$ in $Z$ is the identity morphism of $X$.
+\end{lemma}
+
+\begin{proof}
+Immediate from the universal property of blowups
+(Lemma \ref{lemma-universal-property-blowing-up}).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-blow-up-reduced-scheme}
+Let $X$ be a scheme. Let $\mathcal{I} \subset \mathcal{O}_X$ be a
+quasi-coherent sheaf of ideals. If $X$ is reduced, then the
+blowup $X'$ of $X$ in $\mathcal{I}$ is reduced.
+\end{lemma}
+
+\begin{proof}
+Combine Lemma \ref{lemma-blowing-up-affine}
+with Algebra, Lemma \ref{algebra-lemma-blowup-reduced}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-blow-up-integral-scheme}
+Let $X$ be a scheme. Let $\mathcal{I} \subset \mathcal{O}_X$ be a
+nonzero quasi-coherent sheaf of ideals. If $X$ is integral, then the
+blowup $X'$ of $X$ in $\mathcal{I}$ is integral.
+\end{lemma}
+
+\begin{proof}
+Combine Lemma \ref{lemma-blowing-up-affine}
+with Algebra, Lemma \ref{algebra-lemma-blowup-domain}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-blow-up-and-irreducible-components}
+Let $X$ be a scheme. Let $Z \subset X$ be a closed subscheme.
+Let $b : X' \to X$ be the blowing up of $X$ along $Z$. Then
+$b$ induces an bijective map from the set of generic points
+of irreducible components of $X'$ to the set of generic points of
+irreducible components of $X$ which are not in $Z$.
+\end{lemma}
+
+\begin{proof}
+The exceptional divisor $E \subset X'$ is an effective Cartier divisor
+and $X' \setminus E \to X \setminus Z$ is an isomorphism, see
+Lemma \ref{lemma-blowing-up-gives-effective-Cartier-divisor}.
+Thus it suffices to show the following: given an effective
+Cartier divisor $D \subset S$ of a scheme $S$ none of the
+generic points of irreducible components of $S$ are contained in $D$.
+To see this, we may replace $S$ by the members of an affine open
+covering. Hence by Lemma \ref{lemma-characterize-effective-Cartier-divisor}
+we may assume $S = \Spec(A)$ and $D = V(f)$ where $f \in A$
+is a nonzerodivisor. Then we have to show $f$ is not contained
+in any minimal prime ideal $\mathfrak p \subset A$.
+If so, then $f$ would map to a nonzerodivisor contained
+in the maximal ideal of $R_\mathfrak p$ which is a contradiction
+with Algebra, Lemma \ref{algebra-lemma-minimal-prime-reduced-ring}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-blow-up-pullback-effective-Cartier}
+Let $X$ be a scheme. Let $b : X' \to X$ be a blowup of $X$ in a closed
+subscheme. The pullback $b^{-1}D$ is defined
+for all effective Cartier divisors $D \subset X$
+and pullbacks of meromorphic functions are defined for $b$
+(Definitions
+\ref{definition-pullback-effective-Cartier-divisor} and
+\ref{definition-pullback-meromorphic-sections}).
+\end{lemma}
+
+\begin{proof}
+By Lemmas \ref{lemma-blowing-up-affine} and
+\ref{lemma-characterize-effective-Cartier-divisor}
+this reduces to the following algebra fact:
+Let $A$ be a ring, $I \subset A$ an ideal, $a \in I$, and $x \in A$
+a nonzerodivisor. Then the image of $x$ in $A[\frac{I}{a}]$ is a
+nonzerodivisor. Namely, suppose that $x (y/a^n) = 0$ in $A[\frac{I}{a}]$.
+Then $a^mxy = 0$ in $A$ for some $m$. Hence $a^my = 0$ as $x$ is a
+nonzerodivisor. Whence $y/a^n$ is zero in $A[\frac{I}{a}]$ as desired.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-blowing-up-two-ideals}
+Let $X$ be a scheme. Let $\mathcal{I}, \mathcal{J} \subset \mathcal{O}_X$
+be quasi-coherent sheaves of ideals. Let $b : X' \to X$
+be the blowing up of $X$ in $\mathcal{I}$. Let $b' : X'' \to X'$ be the
+blowing up of $X'$ in $b^{-1}\mathcal{J} \mathcal{O}_{X'}$. Then $X'' \to X$
+is canonically isomorphic to the blowing up of $X$ in $\mathcal{I}\mathcal{J}$.
+\end{lemma}
+
+\begin{proof}
+Let $E \subset X'$ be the exceptional divisor of $b$ which is an effective
+Cartier divisor by
+Lemma \ref{lemma-blowing-up-gives-effective-Cartier-divisor}.
+Then $(b')^{-1}E$ is an effective Cartier divisor on $X''$ by
+Lemma \ref{lemma-blow-up-pullback-effective-Cartier}.
+Let $E' \subset X''$ be the exceptional divisor of $b'$ (also an effective
+Cartier divisor). Consider the effective Cartier divisor
+$E'' = E' + (b')^{-1}E$. By construction the ideal of $E''$ is
+$(b \circ b')^{-1}\mathcal{I} (b \circ b')^{-1}\mathcal{J} \mathcal{O}_{X''}$.
+Hence according to Lemma \ref{lemma-universal-property-blowing-up}
+there is a canonical morphism from $X''$ to the blowup $c : Y \to X$
+of $X$ in $\mathcal{I}\mathcal{J}$. Conversely, as $\mathcal{I}\mathcal{J}$
+pulls back to an invertible ideal we see that
+$c^{-1}\mathcal{I}\mathcal{O}_Y$ defines
+an effective Cartier divisor, see
+Lemma \ref{lemma-sum-closed-subschemes-effective-Cartier}.
+Thus a morphism $c' : Y \to X'$ over $X$ by
+Lemma \ref{lemma-universal-property-blowing-up}.
+Then $(c')^{-1}b^{-1}\mathcal{J}\mathcal{O}_Y = c^{-1}\mathcal{J}\mathcal{O}_Y$
+which also defines an effective Cartier divisor. Thus a morphism
+$c'' : Y \to X''$ over $X'$. We omit the verification that this
+morphism is inverse to the morphism $X'' \to Y$ constructed earlier.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-blowing-up-projective}
+Let $X$ be a scheme. Let $\mathcal{I} \subset \mathcal{O}_X$ be a
+quasi-coherent sheaf of ideals. Let $b : X' \to X$ be the blowing up of $X$
+in the ideal sheaf $\mathcal{I}$. If $\mathcal{I}$ is of finite type, then
+\begin{enumerate}
+\item $b : X' \to X$ is a projective morphism, and
+\item $\mathcal{O}_{X'}(1)$ is a $b$-relatively ample invertible sheaf.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+The surjection of graded $\mathcal{O}_X$-algebras
+$$
+\text{Sym}_{\mathcal{O}_X}^*(\mathcal{I})
+\longrightarrow
+\bigoplus\nolimits_{d \geq 0} \mathcal{I}^d
+$$
+defines via Constructions, Lemma
+\ref{constructions-lemma-surjective-generated-degree-1-map-relative-proj}
+a closed immersion
+$$
+X' = \underline{\text{Proj}}_X (\bigoplus\nolimits_{d \geq 0} \mathcal{I}^d)
+\longrightarrow
+\mathbf{P}(\mathcal{I}).
+$$
+Hence $b$ is projective, see
+Morphisms, Definition \ref{morphisms-definition-projective}.
+The second statement follows for example from the characterization
+of relatively ample invertible sheaves in
+Morphisms, Lemma \ref{morphisms-lemma-characterize-relatively-ample}.
+Some details omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-composition-finite-type-blowups}
+\begin{slogan}
+Composition of blowing ups is a blowing up
+\end{slogan}
+Let $X$ be a quasi-compact and quasi-separated scheme.
+Let $Z \subset X$ be a closed subscheme of finite presentation.
+Let $b : X' \to X$ be the blowing up with center $Z$. Let $Z' \subset X'$ be
+a closed subscheme of finite presentation.
+Let $X'' \to X'$ be the blowing up with center $Z'$.
+There exists a closed subscheme $Y \subset X$ of finite presentation,
+such that
+\begin{enumerate}
+\item $Y = Z \cup b(Z')$ set theoretically, and
+\item the composition $X'' \to X$ is isomorphic to the blowing up
+of $X$ in $Y$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+The condition that $Z \to X$ is of finite presentation means that
+$Z$ is cut out by a finite type quasi-coherent sheaf of ideals
+$\mathcal{I} \subset \mathcal{O}_X$, see
+Morphisms, Lemma \ref{morphisms-lemma-closed-immersion-finite-presentation}.
+Write $\mathcal{A} = \bigoplus_{n \geq 0} \mathcal{I}^n$ so that
+$X' = \underline{\text{Proj}}(\mathcal{A})$.
+Note that $X \setminus Z$ is a quasi-compact open of $X$ by
+Properties, Lemma \ref{properties-lemma-quasi-coherent-finite-type-ideals}.
+Since $b^{-1}(X \setminus Z) \to X \setminus Z$ is an isomorphism
+(Lemma \ref{lemma-blowing-up-gives-effective-Cartier-divisor}) the same
+result shows that
+$b^{-1}(X \setminus Z) \setminus Z'$ is quasi-compact open in $X'$.
+Hence $U = X \setminus (Z \cup b(Z'))$ is quasi-compact open in $X$.
+By Lemma \ref{lemma-closed-subscheme-proj-finite-type}
+there exist a $d > 0$ and a finite type
+$\mathcal{O}_X$-submodule $\mathcal{F} \subset \mathcal{I}^d$ such
+that $Z' = \underline{\text{Proj}}(\mathcal{A}/\mathcal{F}\mathcal{A})$
+and such that the support of $\mathcal{I}^d/\mathcal{F}$ is contained
+in $X \setminus U$.
+
+\medskip\noindent
+Since $\mathcal{F} \subset \mathcal{I}^d$ is an $\mathcal{O}_X$-submodule
+we may think of $\mathcal{F} \subset \mathcal{I}^d \subset \mathcal{O}_X$
+as a finite type quasi-coherent sheaf of ideals on $X$. Let's denote this
+$\mathcal{J} \subset \mathcal{O}_X$ to prevent confusion. Since
+$\mathcal{I}^d / \mathcal{J}$ and $\mathcal{O}/\mathcal{I}^d$
+are supported on $X \setminus U$ we see that $V(\mathcal{J})$ is contained
+in $X \setminus U$. Conversely, as $\mathcal{J} \subset \mathcal{I}^d$
+we see that $Z \subset V(\mathcal{J})$. Over
+$X \setminus Z \cong X' \setminus b^{-1}(Z)$ the sheaf of ideals
+$\mathcal{J}$ cuts out $Z'$ (see displayed formula below). Hence
+$V(\mathcal{J})$ equals $Z \cup b(Z')$. It follows that also
+$V(\mathcal{I}\mathcal{J}) = Z \cup b(Z')$ set theoretically. Moreover,
+$\mathcal{I}\mathcal{J}$ is an ideal of finite type as a product of two such.
+We claim that $X'' \to X$ is isomorphic to the blowing up of $X$ in
+$\mathcal{I}\mathcal{J}$ which finishes the proof of the lemma by setting
+$Y = V(\mathcal{I}\mathcal{J})$.
+
+\medskip\noindent
+First, recall that the blowup of $X$ in $\mathcal{I}\mathcal{J}$
+is the same as the blowup of $X'$ in $b^{-1}\mathcal{J} \mathcal{O}_{X'}$,
+see Lemma \ref{lemma-blowing-up-two-ideals}.
+Hence it suffices to show that the blowup of $X'$ in
+$b^{-1}\mathcal{J} \mathcal{O}_{X'}$ agrees with the blowup of $X'$
+in $Z'$. We will show that
+$$
+b^{-1}\mathcal{J} \mathcal{O}_{X'} = \mathcal{I}_E^d \mathcal{I}_{Z'}
+$$
+as ideal sheaves on $X''$. This will prove what we want as
+$\mathcal{I}_E^d$ cuts out the effective Cartier divisor $dE$
+and we can use Lemmas \ref{lemma-blow-up-effective-Cartier-divisor} and
+\ref{lemma-blowing-up-two-ideals}.
+
+\medskip\noindent
+To see the displayed equality of the ideals we may work locally.
+With notation $A$, $I$, $a \in I$ as in Lemma \ref{lemma-blowing-up-affine}
+we see that $\mathcal{F}$ corresponds to an $R$-submodule $M \subset I^d$
+mapping isomorphically to an ideal $J \subset R$. The condition
+$Z' = \underline{\text{Proj}}(\mathcal{A}/\mathcal{F}\mathcal{A})$
+means that $Z' \cap \Spec(A[\frac{I}{a}])$ is cut out by the ideal
+generated by the elements $m/a^d$, $m \in M$. Say the element $m \in M$
+corresponds to the function $f \in J$. Then in the affine blowup algebra
+$A' = A[\frac{I}{a}]$ we see that $f = (a^dm)/a^d = a^d (m/a^d)$.
+Thus the equality holds.
+\end{proof}
+
+
+
+
+
+

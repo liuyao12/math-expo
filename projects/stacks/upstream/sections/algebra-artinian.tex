@@ -1,0 +1,130 @@
+\section{Artinian rings}
+\label{section-artinian}
+
+\noindent
+Artinian rings, and especially local Artinian rings,
+play an important role in algebraic geometry, for example
+in deformation theory.
+
+\begin{definition}
+\label{definition-artinian}
+A ring $R$ is {\it Artinian} if it satisfies the
+descending chain condition for ideals.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-finite-dimensional-algebra}
+Suppose $R$ is a finite dimensional algebra over a field.
+Then $R$ is Artinian.
+\end{lemma}
+
+\begin{proof}
+The descending chain condition for ideals obviously holds.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-artinian-finite-nr-max}
+If $R$ is Artinian then $R$ has only finitely many maximal ideals.
+\end{lemma}
+
+\begin{proof}
+Suppose that $\mathfrak m_i$, $i = 1, 2, 3, \ldots$ are
+pairwise distinct maximal ideals.
+Then $\mathfrak m_1 \supset \mathfrak m_1\cap \mathfrak m_2
+\supset \mathfrak m_1 \cap \mathfrak m_2 \cap \mathfrak m_3 \supset \ldots$
+is an infinite descending sequence (because by the Chinese
+remainder theorem all the maps $R \to \oplus_{i = 1}^n R/\mathfrak m_i$
+are surjective).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-artinian-radical-nilpotent}
+Let $R$ be Artinian. The Jacobson radical of $R$ is a nilpotent ideal.
+\end{lemma}
+
+\begin{proof}
+Let $I \subset R$ be the Jacobson radical.
+Note that $I \supset I^2 \supset I^3 \supset \ldots$ is a descending
+sequence. Thus $I^n = I^{n + 1}$ for some $n$.
+Set $J = \{ x\in R \mid xI^n = 0\}$. We have to show $J = R$.
+If not, choose an ideal $J' \not = J$, $J \subset J'$ minimal (possible
+by the Artinian property). Then $J'/J$ is a simple $R$-module, hence
+isomorphic to $R/\mathfrak m$ for some maximal ideal $\mathfrak m$,
+see Lemma \ref{lemma-characterize-length-1}.
+Then $\mathfrak m I^n$ kills $J'$. Since $I \subset \mathfrak m$
+we conclude that $I^{n + 1} = I^n$ kills $J'$. Hence $J' = J$
+which is a contradiction.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-product-local}
+Any ring with finitely many maximal ideals and
+locally nilpotent Jacobson radical is the product of its localizations
+at its maximal ideals. Also, all primes are maximal.
+\end{lemma}
+
+\begin{proof}
+Let $R$ be a ring with finitely many maximal ideals
+$\mathfrak m_1, \ldots, \mathfrak m_n$.
+Let $I = \bigcap_{i = 1}^n \mathfrak m_i$
+be the Jacobson radical of $R$. Assume $I$ is locally nilpotent.
+Let $\mathfrak p$ be a prime ideal of $R$.
+Since every prime contains every nilpotent
+element of $R$ we see
+$ \mathfrak p \supset \mathfrak m_1 \cap \ldots \cap \mathfrak m_n$.
+Since $\mathfrak m_1 \cap \ldots \cap \mathfrak m_n \supset
+\mathfrak m_1 \ldots \mathfrak m_n$
+we conclude $\mathfrak p \supset \mathfrak m_1 \ldots \mathfrak m_n$.
+Hence $\mathfrak p \supset \mathfrak m_i$ for some $i$, and so
+$\mathfrak p = \mathfrak m_i$. Thus the spectrum of $R$
+is the discrete topological space $\{\mathfrak m_1, \ldots, \mathfrak m_n\}$.
+By Lemma \ref{lemma-disjoint-implies-product} applied $n - 1$ times
+we find that $R = R_1 \times \ldots \times R_n$ where the
+spectrum of $R_i$ is a singleton for each $i$.
+Thus $R_i$ is a local ring and since it is a localization of $R$
+(by the lemma), it is one of the local rings of $R$ as desired.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-artinian-finite-length}
+A ring $R$ is Artinian if and only if it has finite length
+as a module over itself. Any such ring $R$ is both Artinian and
+Noetherian, any prime ideal of $R$ is a maximal ideal, and $R$ is equal
+to the (finite) product of its localizations at its maximal ideals.
+\end{lemma}
+
+\begin{proof}
+If $R$ has finite length over itself then it satisfies both
+the ascending chain condition and the descending chain
+condition for ideals. Hence it is both Noetherian and Artinian.
+Any Artinian ring is equal to product of its localizations
+at maximal ideals by Lemmas \ref{lemma-artinian-finite-nr-max},
+\ref{lemma-artinian-radical-nilpotent}, and \ref{lemma-product-local}.
+
+\medskip\noindent
+Suppose that $R$ is Artinian. We will show $R$ has finite
+length over itself. It suffices to exhibit a chain of
+submodules whose successive quotients have finite length.
+By what we said above
+we may assume that $R$ is local, with maximal ideal $\mathfrak m$.
+By Lemma \ref{lemma-artinian-radical-nilpotent} we have
+$\mathfrak m^n =0$ for some $n$.
+Consider the sequence
+$0 = \mathfrak m^n \subset \mathfrak m^{n-1} \subset
+\ldots \subset \mathfrak m \subset R$. By Lemma
+\ref{lemma-dimension-is-length} the length of each subquotient
+$\mathfrak m^j/\mathfrak m^{j + 1}$ is the dimension of this
+as a vector space over $\kappa(\mathfrak m)$. This has to be
+finite since otherwise we would have an infinite descending
+chain of sub vector spaces which would correspond to an
+infinite descending chain of ideals in $R$.
+\end{proof}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,455 @@
+\section{Modules of differentials}
+\label{section-differentials}
+
+\noindent
+In this section we briefly explain how to define the module of relative
+differentials for a morphism of ringed spaces. We suggest the reader take
+a look at the corresponding section in the chapter on commutative algebra
+(Algebra, Section \ref{algebra-section-differentials}).
+
+\begin{definition}
+\label{definition-derivation}
+Let $X$ be a topological space. Let $\varphi : \mathcal{O}_1 \to \mathcal{O}_2$
+be a homomorphism of sheaves of rings. Let $\mathcal{F}$ be an
+$\mathcal{O}_2$-module. An {\it $\mathcal{O}_1$-derivation} or more precisely
+a {\it $\varphi$-derivation} into $\mathcal{F}$ is a map
+$D : \mathcal{O}_2 \to \mathcal{F}$ which is additive, annihilates the image
+of $\mathcal{O}_1 \to \mathcal{O}_2$, and satisfies the
+{\it Leibniz rule}
+$$
+D(ab) = aD(b) + D(a)b
+$$
+for all $a, b$ local sections of $\mathcal{O}_2$ (wherever they are both
+defined). We denote $\text{Der}_{\mathcal{O}_1}(\mathcal{O}_2, \mathcal{F})$
+the set of $\varphi$-derivations into $\mathcal{F}$.
+\end{definition}
+
+\noindent
+This is the sheaf theoretic analogue of
+Algebra, Definition \ref{algebra-definition-derivation}.
+Given a derivation $D : \mathcal{O}_2 \to \mathcal{F}$
+as in the definition the map on global sections
+$$
+D : \Gamma(X, \mathcal{O}_2) \longrightarrow \Gamma(X, \mathcal{F})
+$$
+is a $\Gamma(X, \mathcal{O}_1)$-derivation as in the algebra definition.
+Note that if $\alpha : \mathcal{F} \to \mathcal{G}$ is a map of
+$\mathcal{O}_2$-modules, then there is an induced map
+$$
+\text{Der}_{\mathcal{O}_1}(\mathcal{O}_2, \mathcal{F})
+\longrightarrow
+\text{Der}_{\mathcal{O}_1}(\mathcal{O}_2, \mathcal{G})
+$$
+given by the rule $D \mapsto \alpha \circ D$. In other words
+we obtain a functor.
+
+\begin{lemma}
+\label{lemma-universal-module}
+Let $X$ be a topological space. Let $\varphi : \mathcal{O}_1 \to \mathcal{O}_2$
+be a homomorphism of sheaves of rings. The functor
+$$
+\textit{Mod}(\mathcal{O}_2) \longrightarrow \textit{Ab}, \quad
+\mathcal{F} \longmapsto \text{Der}_{\mathcal{O}_1}(\mathcal{O}_2, \mathcal{F})
+$$
+is representable.
+\end{lemma}
+
+\begin{proof}
+This is proved in exactly the same way as the analogous statement in algebra.
+During this proof, for any sheaf of sets $\mathcal{F}$ on $X$,
+let us denote $\mathcal{O}_2[\mathcal{F}]$ the sheafification of the
+presheaf $U \mapsto \mathcal{O}_2(U)[\mathcal{F}(U)]$ where this denotes
+the free $\mathcal{O}_2(U)$-module on the set $\mathcal{F}(U)$.
+For $s \in \mathcal{F}(U)$ we denote $[s]$ the corresponding section
+of $\mathcal{O}_2[\mathcal{F}]$ over $U$. If $\mathcal{F}$ is a sheaf of
+$\mathcal{O}_2$-modules, then there is a canonical map
+$$
+c : \mathcal{O}_2[\mathcal{F}] \longrightarrow \mathcal{F}
+$$
+which on the presheaf level is given by the rule
+$\sum f_s[s] \mapsto \sum f_s s$. We will employ the short hand
+$[s] \mapsto s$ to
+describe this map and similarly for other maps below. Consider
+the map of $\mathcal{O}_2$-modules
+\begin{equation}
+\label{equation-define-module-differentials}
+\begin{matrix}
+\mathcal{O}_2[\mathcal{O}_2 \times \mathcal{O}_2] \oplus
+\mathcal{O}_2[\mathcal{O}_2 \times \mathcal{O}_2] \oplus
+\mathcal{O}_2[\mathcal{O}_1] &
+\longrightarrow &
+\mathcal{O}_2[\mathcal{O}_2] \\
+[(a, b)] \oplus [(f, g)] \oplus [h] & \longmapsto & [a + b] - [a] - [b] + \\
+& & [fg] - g[f] - f[g] + \\
+& & [\varphi(h)]
+\end{matrix}
+\end{equation}
+with short hand notation as above. Set $\Omega_{\mathcal{O}_2/\mathcal{O}_1}$
+equal to the cokernel of this map. Then it is clear that there exists
+a map of sheaves of sets
+$$
+\text{d} : \mathcal{O}_2 \longrightarrow \Omega_{\mathcal{O}_2/\mathcal{O}_1}
+$$
+mapping a local section $f$ to the image of $[f]$ in
+$\Omega_{\mathcal{O}_2/\mathcal{O}_1}$. By construction $\text{d}$
+is a $\mathcal{O}_1$-derivation. Next, let $\mathcal{F}$
+be a sheaf of $\mathcal{O}_2$-modules and let
+$D : \mathcal{O}_2 \to \mathcal{F}$ be a $\mathcal{O}_1$-derivation.
+Then we can consider the $\mathcal{O}_2$-linear map
+$\mathcal{O}_2[\mathcal{O}_2] \to \mathcal{F}$ which sends $[g]$ to $D(g)$.
+It follows from the definition of a derivation that this map annihilates
+sections in the image of the map (\ref{equation-define-module-differentials})
+and hence defines a map
+$$
+\alpha_D : \Omega_{\mathcal{O}_2/\mathcal{O}_1} \longrightarrow \mathcal{F}
+$$
+Since it is clear that $D = \alpha_D \circ \text{d}$ the lemma is proved.
+\end{proof}
+
+\begin{definition}
+\label{definition-module-differentials}
+Let $X$ be a topological space. Let $\varphi : \mathcal{O}_1 \to \mathcal{O}_2$
+be a homomorphism of sheaves of rings on $X$. The {\it module of differentials}
+of $\varphi$ is the object representing the functor
+$\mathcal{F} \mapsto \text{Der}_{\mathcal{O}_1}(\mathcal{O}_2, \mathcal{F})$
+which exists by Lemma \ref{lemma-universal-module}.
+It is denoted $\Omega_{\mathcal{O}_2/\mathcal{O}_1}$, and the {\it universal
+$\varphi$-derivation} is denoted
+$\text{d} : \mathcal{O}_2 \to \Omega_{\mathcal{O}_2/\mathcal{O}_1}$.
+\end{definition}
+
+\noindent
+Note that $\Omega_{\mathcal{O}_2/\mathcal{O}_1}$ is the cokernel of
+the map (\ref{equation-define-module-differentials}) of
+$\mathcal{O}_2$-modules. Moreover the map $\text{d}$ is described
+by the rule that $\text{d}f$ is the image of the local section $[f]$.
+
+\begin{lemma}
+\label{lemma-differentials-sheafify}
+Let $X$ be a topological space. Let $\varphi : \mathcal{O}_1 \to \mathcal{O}_2$
+be a homomorphism of sheaves of rings on $X$. Then
+$\Omega_{\mathcal{O}_2/\mathcal{O}_1}$ is the sheaf associated to the
+presheaf $U \mapsto \Omega_{\mathcal{O}_2(U)/\mathcal{O}_1(U)}$.
+\end{lemma}
+
+\begin{proof}
+Consider the map (\ref{equation-define-module-differentials}). There is
+a similar map of presheaves whose value on the open $U$ is
+$$
+\mathcal{O}_2(U)[\mathcal{O}_2(U) \times \mathcal{O}_2(U)] \oplus
+\mathcal{O}_2(U)[\mathcal{O}_2(U) \times \mathcal{O}_2(U)] \oplus
+\mathcal{O}_2(U)[\mathcal{O}_1(U)]
+\longrightarrow
+\mathcal{O}_2(U)[\mathcal{O}_2(U)]
+$$
+The cokernel of this map has value $\Omega_{\mathcal{O}_2(U)/\mathcal{O}_1(U)}$
+over $U$ by the construction of the module of differentials in 
+Algebra, Definition \ref{algebra-definition-differentials}.
+On the other hand, the sheaves in (\ref{equation-define-module-differentials})
+are the sheafifications of the presheaves above. Thus the result follows
+as sheafification is exact.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-localize-differentials}
+Let $X$ be a topological space. Let $\varphi : \mathcal{O}_1 \to \mathcal{O}_2$
+be a homomorphism of sheaves of rings. For $U \subset X$ open
+there is a canonical isomorphism
+$$
+\Omega_{\mathcal{O}_2/\mathcal{O}_1}|_U =
+\Omega_{(\mathcal{O}_2|_U)/(\mathcal{O}_1|_U)}
+$$
+compatible with universal derivations.
+\end{lemma}
+
+\begin{proof}
+Holds because $\Omega_{\mathcal{O}_2/\mathcal{O}_1}$
+is the cokernel of the map (\ref{equation-define-module-differentials}).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-pullback-differentials}
+Let $f : Y \to X$ be a continuous map of topological spaces.
+Let $\varphi : \mathcal{O}_1 \to \mathcal{O}_2$
+be a homomorphism of sheaves of rings on $X$.
+Then there is a canonical identification
+$f^{-1}\Omega_{\mathcal{O}_2/\mathcal{O}_1} =
+\Omega_{f^{-1}\mathcal{O}_2/f^{-1}\mathcal{O}_1}$
+compatible with universal derivations.
+\end{lemma}
+
+\begin{proof}
+This holds because the sheaf $\Omega_{\mathcal{O}_2/\mathcal{O}_1}$
+is the cokernel of the map (\ref{equation-define-module-differentials})
+and a similar statement holds for
+$\Omega_{f^{-1}\mathcal{O}_2/f^{-1}\mathcal{O}_1}$,
+because the functor $f^{-1}$ is exact, and because
+$f^{-1}(\mathcal{O}_2[\mathcal{O}_2]) =
+f^{-1}\mathcal{O}_2[f^{-1}\mathcal{O}_2]$,
+$f^{-1}(\mathcal{O}_2[\mathcal{O}_2 \times \mathcal{O}_2]) =
+f^{-1}\mathcal{O}_2[f^{-1}\mathcal{O}_2 \times f^{-1}\mathcal{O}_2]$, and
+$f^{-1}(\mathcal{O}_2[\mathcal{O}_1]) =
+f^{-1}\mathcal{O}_2[f^{-1}\mathcal{O}_1]$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-stalk-module-differentials}
+Let $X$ be a topological space. Let $\mathcal{O}_1 \to \mathcal{O}_2$
+be a homomorphism of sheaves of rings on $X$. Let $x \in X$. Then we have
+$\Omega_{\mathcal{O}_2/\mathcal{O}_1, x} =
+\Omega_{\mathcal{O}_{2, x}/\mathcal{O}_{1, x}}$.
+\end{lemma}
+
+\begin{proof}
+This is a special case of Lemma \ref{lemma-pullback-differentials}
+for the inclusion map $\{x\} \to X$. An alternative proof is to use
+Lemma \ref{lemma-differentials-sheafify},
+Sheaves, Lemma \ref{sheaves-lemma-stalk-sheafification}, and
+Algebra, Lemma \ref{algebra-lemma-colimit-differentials}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-functoriality-differentials}
+Let $X$ be a topological space. Let
+$$
+\xymatrix{
+\mathcal{O}_2 \ar[r]_\varphi & \mathcal{O}_2' \\
+\mathcal{O}_1 \ar[r] \ar[u] & \mathcal{O}'_1 \ar[u]
+}
+$$
+be a commutative diagram of sheaves of rings on $X$. The map
+$\mathcal{O}_2 \to \mathcal{O}'_2$ composed with the map
+$\text{d} : \mathcal{O}'_2 \to \Omega_{\mathcal{O}'_2/\mathcal{O}'_1}$
+is a $\mathcal{O}_1$-derivation. Hence we obtain a canonical map of
+$\mathcal{O}_2$-modules
+$\Omega_{\mathcal{O}_2/\mathcal{O}_1} \to
+\Omega_{\mathcal{O}'_2/\mathcal{O}'_1}$.
+It is uniquely characterized by the property that
+$\text{d}(f) \mapsto \text{d}(\varphi(f))$
+for any local section $f$ of $\mathcal{O}_2$.
+In this way $\Omega_{-/-}$ becomes a functor on the category
+of arrows of sheaves of rings.
+\end{lemma}
+
+\begin{proof}
+This lemma proves itself.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-differential-seq}
+In Lemma \ref{lemma-functoriality-differentials} suppose that
+$\mathcal{O}_2 \to \mathcal{O}'_2$ is surjective with kernel
+$\mathcal{I} \subset \mathcal{O}_2$ and assume that
+$\mathcal{O}_1 = \mathcal{O}'_1$. Then there is a canonical exact
+sequence of $\mathcal{O}'_2$-modules
+$$
+\mathcal{I}/\mathcal{I}^2
+\longrightarrow
+\Omega_{\mathcal{O}_2/\mathcal{O}_1} \otimes_{\mathcal{O}_2} \mathcal{O}'_2
+\longrightarrow
+\Omega_{\mathcal{O}'_2/\mathcal{O}_1}
+\longrightarrow
+0
+$$
+The leftmost map is characterized by the rule that a local section
+$f$ of $\mathcal{I}$ maps to $\text{d}f \otimes 1$.
+\end{lemma}
+
+\begin{proof}
+For a local section $f$ of $\mathcal{I}$ denote $\overline{f}$ the image of
+$f$ in $\mathcal{I}/\mathcal{I}^2$. To show that the map
+$\overline{f} \mapsto \text{d}f \otimes 1$ is well defined we just have to
+check that $\text{d} f_1f_2 \otimes 1 = 0$ if $f_1, f_2$ are local sections
+of $\mathcal{I}$. And this is clear from the Leibniz rule
+$\text{d} f_1f_2 \otimes 1 =
+(f_1 \text{d}f_2 + f_2 \text{d} f_1 )\otimes 1 =
+\text{d}f_2 \otimes f_1 + \text{d}f_1 \otimes f_2 = 0$.
+A similar computation show this map is
+$\mathcal{O}'_2 = \mathcal{O}_2/\mathcal{I}$-linear. The map on the right
+is the one from Lemma \ref{lemma-functoriality-differentials}. To see
+that the sequence is exact, we can check on stalks
+(Lemma \ref{lemma-abelian}). By
+Lemma \ref{lemma-stalk-module-differentials}
+this follows from
+Algebra, Lemma \ref{algebra-lemma-differential-seq}.
+\end{proof}
+
+\begin{definition}
+\label{definition-differentials}
+Let $(f, f^\sharp) : (X, \mathcal{O}_X) \to (S, \mathcal{O}_S)$
+be a morphism of ringed spaces.
+\begin{enumerate}
+\item Let $\mathcal{F}$ be an $\mathcal{O}_X$-module. An {\it $S$-derivation}
+into $\mathcal{F}$ is a $f^{-1}\mathcal{O}_S$-derivation, or more
+precisely a $f^\sharp$-derivation in the sense of
+Definition \ref{definition-derivation}.
+We denote $\text{Der}_S(\mathcal{O}_X, \mathcal{F})$
+the set of $S$-derivations into $\mathcal{F}$.
+\item The {\it sheaf of differentials $\Omega_{X/S}$ of $X$ over $S$}
+is the module of differentials $\Omega_{\mathcal{O}_X/f^{-1}\mathcal{O}_S}$
+endowed with its universal
+$S$-derivation $\text{d}_{X/S} : \mathcal{O}_X \to \Omega_{X/S}$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+Here is a particular situation where derivations come up
+naturally.
+
+\begin{lemma}
+\label{lemma-double-structure-gives-derivation}
+Let $(f, f^\sharp) : (X, \mathcal{O}_X) \to (S, \mathcal{O}_S)$
+be a morphism of ringed spaces. Consider a short exact sequence
+$$
+0 \to \mathcal{I} \to \mathcal{A} \to \mathcal{O}_X \to 0
+$$
+Here $\mathcal{A}$ is a sheaf of $f^{-1}\mathcal{O}_S$-algebras,
+$\pi : \mathcal{A} \to \mathcal{O}_X$ is a surjection
+of sheaves of $f^{-1}\mathcal{O}_S$-algebras, and
+$\mathcal{I} = \Ker(\pi)$ is its kernel. Assume $\mathcal{I}$ an ideal
+sheaf with square zero in $\mathcal{A}$. So $\mathcal{I}$
+has a natural structure of an $\mathcal{O}_X$-module.
+A section $s : \mathcal{O}_X \to \mathcal{A}$ of $\pi$
+is a $f^{-1}\mathcal{O}_S$-algebra map such that $\pi \circ s = \text{id}$.
+Given any section $s : \mathcal{O}_X \to \mathcal{A}$
+of $\pi$ and any $S$-derivation $D : \mathcal{O}_X \to \mathcal{I}$
+the map
+$$
+s + D : \mathcal{O}_X \to \mathcal{A}
+$$
+is a section of $\pi$ and every section $s'$ is of the form $s + D$
+for a unique $S$-derivation $D$.
+\end{lemma}
+
+\begin{proof}
+Recall that the $\mathcal{O}_X$-module structure on $\mathcal{I}$
+is given by $h \tau = \tilde h \tau$ (multiplication in $\mathcal{A}$)
+where $h$ is a local section of $\mathcal{O}_X$, and
+$\tilde h$ is a local lift of $h$ to a local
+section of $\mathcal{A}$, and $\tau$ is a local section of $\mathcal{I}$.
+In particular, given $s$, we may use $\tilde h = s(h)$.
+To verify that $s + D$ is a homomorphism of sheaves of rings we
+compute
+\begin{eqnarray*}
+(s + D)(ab) & = & s(ab) + D(ab) \\
+& = & s(a)s(b) + aD(b) + D(a)b \\
+& = & s(a) s(b) + s(a)D(b) + D(a)s(b) \\
+& = & (s(a) + D(a))(s(b) + D(b))
+\end{eqnarray*}
+by the Leibniz rule. In the same manner one shows
+$s + D$ is a $f^{-1}\mathcal{O}_S$-algebra
+map because $D$ is an $S$-derivation. Conversely, given $s'$ we set
+$D = s' - s$. Details omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-functoriality-differentials-ringed-spaces}
+Let
+$$
+\xymatrix{
+X' \ar[d]_{h'} \ar[r]_f & X \ar[d]^h \\
+S' \ar[r]^g & S
+}
+$$
+be a commutative diagram of ringed spaces.
+\begin{enumerate}
+\item The canonical map $\mathcal{O}_X \to f_*\mathcal{O}_{X'}$ composed with
+$f_*\text{d}_{X'/S'} : f_*\mathcal{O}_{X'} \to f_*\Omega_{X'/S'}$ is a
+$S$-derivation and we obtain a canonical map of $\mathcal{O}_X$-modules
+$\Omega_{X/S} \to f_*\Omega_{X'/S'}$.
+\item The commutative diagram
+$$
+\xymatrix{
+f^{-1}\mathcal{O}_X \ar[r] & \mathcal{O}_{X'} \\
+f^{-1}h^{-1}\mathcal{O}_S \ar[u] \ar[r] & (h')^{-1}\mathcal{O}_{S'} \ar[u]
+}
+$$
+induces by Lemmas \ref{lemma-pullback-differentials} and
+\ref{lemma-functoriality-differentials}
+a canonical map $f^{-1}\Omega_{X/S} \to \Omega_{X'/S'}$.
+\end{enumerate}
+These two maps correspond (via adjointness of $f_*$ and $f^*$ and
+via $f^*\Omega_{X/S} =
+f^{-1}\Omega_{X/S} \otimes_{f^{-1}\mathcal{O}_X} \mathcal{O}_{X'}$ and
+Sheaves, Lemma \ref{sheaves-lemma-adjointness-tensor-restrict})
+to the same $\mathcal{O}_{X'}$-module homomorphism
+$$
+c_f : f^*\Omega_{X/S} \longrightarrow \Omega_{X'/S'}
+$$
+which is uniquely characterized by the property that
+$f^*\text{d}_{X/S}(a)$ maps to $\text{d}_{X'/S'}(f^*a)$
+for any local section $a$ of $\mathcal{O}_X$.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-check-functoriality-differentials}
+Let
+$$
+\xymatrix{
+X'' \ar[d] \ar[r]_g & X' \ar[d] \ar[r]_f & X \ar[d] \\
+S'' \ar[r] & S' \ar[r] & S
+}
+$$
+be a commutative diagram of ringed spaces. With notation as in
+Lemma \ref{lemma-functoriality-differentials-ringed-spaces} we have
+$$
+c_{f \circ g} = c_g \circ g^* c_f
+$$
+as maps $(f \circ g)^*\Omega_{X/S} \to \Omega_{X''/S''}$.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-triangle-differentials}
+Let $f : X \to Y$, $g : Y \to S$ be morphisms of ringed spaces
+Then there is a canonical exact sequence
+$$
+f^*\Omega_{Y/S} \to \Omega_{X/S} \to \Omega_{X/Y} \to 0
+$$
+where the maps come from applications of
+Lemma \ref{lemma-functoriality-differentials-ringed-spaces}.
+\end{lemma}
+
+\begin{proof}
+By taking induced maps in stalks at $x \in X$ and using
+Lemma \ref{lemma-stalk-module-differentials} we obtain a sequence
+$$
+\mathcal{O}_{X, x} \otimes_{\mathcal{O}_{Y, f(x)}}
+\Omega_{\mathcal{O}_{Y, f(x)}/\mathcal{O}_{S, g(f(x))}} \to
+\Omega_{\mathcal{O}_{X, x}/\mathcal{O}_{S, g(f(x))}} \to
+\Omega_{\mathcal{O}_{X, x}/\mathcal{O}_{Y, f(x)}} \to 0
+$$
+It suffices to see that the maps of the sequence are the same as
+the ones in Algebra, Lemma \ref{algebra-lemma-exact-sequence-differentials}.
+This is because the characterization of the maps in
+Lemma \ref{lemma-functoriality-differentials-ringed-spaces}
+and because via the isomorphism of
+Sheaves, Lemma \ref{sheaves-lemma-stalk-pullback-modules}
+we have $(f^*s)_x = s_x \otimes 1$,
+for any local section $s$ of a sheaf of $\mathcal{O}_Y$-modules.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

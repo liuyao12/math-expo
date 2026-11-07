@@ -1,0 +1,46 @@
+\section{The homotopy category}
+\label{section-homotopy}
+
+\noindent
+Let $\mathcal{A}$ be an additive category. The homotopy category
+$K(\mathcal{A})$ of $\mathcal{A}$ is the category of complexes of
+$\mathcal{A}$ with morphisms given by morphisms of complexes up to homotopy.
+Here is the formal definition.
+
+\begin{definition}
+\label{definition-complexes-notation}
+Let $\mathcal{A}$ be an additive category.
+\begin{enumerate}
+\item We set $\text{Comp}(\mathcal{A}) = \text{CoCh}(\mathcal{A})$
+be the {\it category of (cochain) complexes}.
+\item A complex $K^\bullet$ is said to be
+{\it bounded below} if $K^n = 0$ for all $n \ll 0$.
+\item A complex $K^\bullet$ is said to be
+{\it bounded above} if $K^n = 0$ for all $n \gg 0$.
+\item A complex $K^\bullet$ is said to be
+{\it bounded} if $K^n = 0$ for all $|n| \gg 0$.
+\item We let
+$\text{Comp}^{+}(\mathcal{A})$, $\text{Comp}^{-}(\mathcal{A})$,
+resp.\ $\text{Comp}^b(\mathcal{A})$ be the full subcategory
+of $\text{Comp}(\mathcal{A})$ whose objects are the complexes
+which are bounded below, bounded above, resp.\ bounded.
+\item We let $K(\mathcal{A})$ be the category with the same objects
+as $\text{Comp}(\mathcal{A})$ but as morphisms homotopy classes of
+maps of complexes (see
+Homology, Lemma \ref{homology-lemma-compose-homotopy-cochain}).
+\item We let $K^{+}(\mathcal{A})$, $K^{-}(\mathcal{A})$,
+resp.\ $K^b(\mathcal{A})$ be the full subcategory of $K(\mathcal{A})$
+whose objects are bounded below, bounded above, resp.\ bounded
+complexes of $\mathcal{A}$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+It will turn out that the categories $K(\mathcal{A})$,
+$K^{+}(\mathcal{A})$, $K^{-}(\mathcal{A})$, and $K^b(\mathcal{A})$
+are triangulated categories. To prove this we first develop
+some machinery related to cones and split exact sequences.
+
+
+
+

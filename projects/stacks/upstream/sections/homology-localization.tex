@@ -1,0 +1,207 @@
+\section{Localization}
+\label{section-localization}
+
+\noindent
+In this section we note how Gabriel-Zisman localization interacts with
+the additive structure on a category.
+
+\begin{lemma}
+\label{lemma-localization-preadditive}
+Let $\mathcal{C}$ be a preadditive category.
+Let $S$ be a left or right multiplicative system.
+There exists a unique preadditive structure on
+$S^{-1}\mathcal{C}$ such that the localization functor
+$Q : \mathcal{C} \to S^{-1}\mathcal{C}$ is additive.
+\end{lemma}
+
+\begin{proof}
+We will prove this in the case $S$ is a left multiplicative system.
+The case where $S$ is a right multiplicative system is dual.
+Suppose that $X, Y$ are objects of $\mathcal{C}$ and that
+$\alpha, \beta : X \to Y$ are morphisms in $S^{-1}\mathcal{C}$. According to
+Categories, Lemma \ref{categories-lemma-morphisms-left-localization}
+we may represent these by pairs $s^{-1}f, s^{-1}g$ with common denominator $s$.
+Suppose that we have a pre-additive structure on $S^{-1}\mathcal{C}$ and
+that $Q$ is additive. Then
+\begin{align*}
+s^{-1}f+s^{-1}g
+&=Q(s)^{-1}\circ Q(f)+Q(s)^{-1}\circ Q(g)\\
+&=Q(s)^{-1}\circ(Q(f)+Q(g))\\
+&=Q(s)^{-1}\circ Q(f+g)\\
+&=s^{-1}(f+g).
+\end{align*}
+Hence, the pre-additive structure on $S^{-1}\mathcal{C}$ is unique if it
+exists. Correspondingly, we define $\alpha + \beta$ to be the
+equivalence class of $s^{-1}(f + g)$ and in the rest of the proof we show
+that this is well defined and that composition is bilinear.
+Once this is done it is clear that $Q$ is an additive functor.
+
+\medskip\noindent
+Let us show construction above is well defined.
+An abstract way of saying this is that filtered colimits of
+abelian groups agree with filtered colimits of sets and to use
+Categories,
+Equation (\ref{categories-equation-left-localization-morphisms-colimit}).
+We can work this out in a bit more detail as follows.
+Say $s : Y \to Y_1$ and $f, g : X \to Y_1$. Suppose we have a second
+representation of $\alpha, \beta$ as $(s')^{-1}f', (s')^{-1}g'$ with
+$s' : Y \to Y_2$ and $f', g' : X \to Y_2$. By
+Categories, Remark \ref{categories-remark-left-localization-morphisms-colimit}
+we can find a morphism $s_3 : Y \to Y_3$ and morphisms
+$a_1 : Y_1 \to Y_3$, $a_2 : Y_2 \to Y_3$ such that
+$a_1 \circ s = s_3 = a_2 \circ s'$ and also
+$a_1 \circ f = a_2 \circ f'$ and $a_1 \circ g = a_2 \circ g'$.
+Hence we see that $s^{-1}(f + g)$ is equivalent to
+\begin{align*}
+s_3^{-1}(a_1 \circ (f + g)) & =
+s_3^{-1}(a_1 \circ f + a_1 \circ g) \\
+& = s_3^{-1}(a_2 \circ f' + a_2 \circ g') \\
+& = s_3^{-1}(a_2 \circ (f' + g'))
+\end{align*}
+which is equivalent to $(s')^{-1}(f' + g')$.
+
+\medskip\noindent
+Fix $s : Y \to Y'$ and $f, g : X \to Y'$ with
+$\alpha = s^{-1}f$ and $\beta = s^{-1}g$ as morphisms $X \to Y$
+in $S^{-1}\mathcal{C}$.
+To show that composition is bilinear first consider the case of a
+morphism $\gamma : Y \to Z$ in $S^{-1}\mathcal{C}$. Say $\gamma = t^{-1}h$
+for some $h : Y \to Z'$ and $t : Z \to Z'$ in $S$. Using LMS2 we
+choose morphisms $a : Y' \to Z''$ and $t' : Z' \to Z''$ in $S$ such
+that $a \circ s = t' \circ h$. Picture
+$$
+\xymatrix{
+& & Z \ar[d]^t \\
+& Y \ar[r]^h \ar[d]^s & Z' \ar[d]^{t'} \\
+X \ar[r]^{f, g} & Y' \ar[r]^a & Z''
+}
+$$
+Then
+$\gamma \circ \alpha = (t' \circ t)^{-1}(a \circ f)$ and
+$\gamma \circ \beta = (t' \circ t)^{-1}(a \circ g)$.
+Hence we see that $\gamma \circ (\alpha + \beta)$ is represented
+by $(t' \circ t)^{-1}(a \circ (f + g)) =
+(t' \circ t)^{-1}(a \circ f + a \circ g)$ which represents
+$\gamma \circ \alpha + \gamma \circ \beta$.
+
+\medskip\noindent
+Finally, assume that $\delta : W \to X$ is another morphism of
+$S^{-1}\mathcal{C}$. Say $\delta = r^{-1}i$ for some
+$i : W \to X'$ and $r : X \to X'$ in $S$. We claim that we can find
+a morphism $s' : Y' \to Y''$ in $S$ and morphisms $a'', b'' : X' \to Y''$
+such that the following diagram commutes
+$$
+\xymatrix{
+& & & Y \ar[d]^s \\
+& X \ar[rr]^{f, g, f + g} \ar[d]^r & & Y' \ar[d]^{s'} \\
+W \ar[r]^i & X' \ar[rr]^{a'', b'', a'' + b''} & & Y''
+}
+$$
+Namely, using LMS2 we can first choose
+$s_1 : Y' \to Y_1$, $s_2 : Y' \to Y_2$ in $S$ and
+$a : X' \to Y_1$, $b : X' \to Y_2$ such that
+$a \circ r = s_1 \circ f$ and $b \circ r = s_2 \circ f$.
+Then using that the category $Y'/S$ is filtered (see
+Categories, Remark \ref{categories-remark-left-localization-morphisms-colimit}),
+we can
+find a $s' : Y' \to Y''$ and morphisms $a' : Y_1 \to Y''$, $b' : Y_2 \to Y''$
+such that $s' = a' \circ s_1$ and $s' = b' \circ s_2$. Setting
+$a'' = a' \circ a$ and $b'' = b' \circ b$ works.
+At this point we see that the compositions
+$\alpha \circ \delta$ and $\beta \circ \delta$ are represented by
+$(s' \circ s)^{-1}(a'' \circ i)$ and $(s' \circ s)^{-1}(b'' \circ i)$.
+Hence $\alpha \circ \delta + \beta \circ \delta$ is represented
+by $(s' \circ s)^{-1}(a'' \circ i + b'' \circ i) =
+(s' \circ s)^{-1}((a'' + b'') \circ i)$
+which by the diagram again is a representative
+of $(\alpha + \beta) \circ \delta$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-localization-additive}
+Let $\mathcal{C}$ be an additive category.
+Let $S$ be a left or right multiplicative system.
+Then $S^{-1}\mathcal{C}$ is an additive category and the localization functor
+$Q : \mathcal{C} \to S^{-1}\mathcal{C}$ is additive.
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-localization-preadditive}
+we see that $S^{-1}\mathcal{C}$ is preadditive and that $Q$ is additive.
+By Lemma \ref{lemma-additive-additive} we conclude that $S^{-1}\mathcal{C}$
+has a zero object and direct sums.
+\end{proof}
+
+\noindent
+The following lemma describes the ``kernel''
+of the localization functor in case we invert a multiplicative system.
+
+\begin{lemma}
+\label{lemma-kernel-localization}
+Let $\mathcal{C}$ be an additive category. Let $S$ be a multiplicative
+system. Let $X$ be an object
+of $\mathcal{C}$. The following are equivalent
+\begin{enumerate}
+\item $Q(X) = 0$ in $S^{-1}\mathcal{C}$,
+\item there exists $Y \in \Ob(\mathcal{C})$ such that
+$0 : X \to Y$ is an element of $S$, and
+\item there exists $Z \in \Ob(\mathcal{C})$ such that
+$0 : Z \to X$ is an element of $S$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+If (2) holds we see that $0 = Q(0) : Q(X) \to Q(Y)$ is an isomorphism.
+In the additive category $S^{-1}\mathcal{C}$ this implies that $Q(X) = 0$.
+Hence (2) $\Rightarrow$ (1). Similarly, (3) $\Rightarrow$ (1).
+Suppose that $Q(X) = 0$. This implies that the morphism
+$f : 0 \to X$ is transformed into an isomorphism in $S^{-1}\mathcal{C}$.
+Hence by
+Categories, Lemma \ref{categories-lemma-what-gets-inverted}
+there exists a morphism $g : Z \to 0$ such that $fg \in S$. This proves
+(1) $\Rightarrow$ (3). Similarly, (1) $\Rightarrow$ (2).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-localization-abelian}
+Let $\mathcal{A}$ be an abelian category.
+\begin{enumerate}
+\item If $S$ is a left multiplicative system, then
+the category $S^{-1}\mathcal{A}$ has cokernels and the functor
+$Q : \mathcal{A} \to S^{-1}\mathcal{A}$ commutes with them.
+\item If $S$ is a right multiplicative system, then
+the category $S^{-1}\mathcal{A}$ has kernels and the functor
+$Q : \mathcal{A} \to S^{-1}\mathcal{A}$ commutes with them.
+\item If $S$ is a multiplicative system, then the category
+$S^{-1}\mathcal{A}$ is abelian and the functor
+$Q : \mathcal{A} \to S^{-1}\mathcal{A}$ is exact.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Assume $S$ is a left multiplicative system. Let $a : X \to Y$ be a morphism
+of $S^{-1}\mathcal{A}$. Then $a = s^{-1}f$ for some $s : Y \to Y'$
+in $S$ and $f : X \to Y'$. Since $Q(s)$ is an isomorphism we see that
+the existence of $\Coker(a : X \to Y)$ is equivalent to the existence
+of $\Coker(Q(f) : X \to Y')$. Since $\Coker(Q(f))$ is the
+coequalizer of $0$ and $Q(f)$ we see that $\Coker(Q(f))$ is
+represented by $Q(\Coker(f))$ by
+Categories, Lemma \ref{categories-lemma-left-localization-limits}.
+This proves (1).
+
+\medskip\noindent
+Part (2) is dual to part (1).
+
+\medskip\noindent
+If $S$ is a multiplicative system, then $S$ is both a left and a right
+multiplicative system. Thus we see that $S^{-1}\mathcal{A}$ has
+kernels and cokernels and $Q$ commutes with kernels and cokernels.
+To finish the proof of (3) we have to show that $\Coim = \Im$ in
+$S^{-1}\mathcal{A}$. Again using that any arrow in $S^{-1}\mathcal{A}$
+is isomorphic to an arrow $Q(f)$ we see that the result follows
+from the result for $\mathcal{A}$.
+\end{proof}
+
+
+
+

@@ -1,0 +1,370 @@
+\section{Localization of ringed sites}
+\label{section-localize}
+
+\noindent
+Let $(\mathcal{C}, \mathcal{O})$ be a ringed site.
+Let $U \in \Ob(\mathcal{C})$.
+We explain the counterparts of the results in
+Sites, Section \ref{sites-section-localize}
+in this setting.
+
+\medskip\noindent
+Denote
+$\mathcal{O}_U = j_U^{-1}\mathcal{O}$ the restriction of $\mathcal{O}$
+to the site $\mathcal{C}/U$. It is described by the simple
+rule $\mathcal{O}_U(V/U) = \mathcal{O}(V)$. With this notation
+the localization morphism $j_U$ becomes a morphism of ringed topoi
+$$
+(j_U, j_U^\sharp) :
+(\Sh(\mathcal{C}/U), \mathcal{O}_U)
+\longrightarrow
+(\Sh(\mathcal{C}), \mathcal{O})
+$$
+namely, we take $j_U^\sharp : j_U^{-1}\mathcal{O} \to \mathcal{O}_U$
+the identity map.
+Moreover, we obtain the following descriptions for pushforward
+and pullback of modules.
+
+\begin{definition}
+\label{definition-localize-ringed-site}
+Let $(\mathcal{C}, \mathcal{O})$ be a ringed site.
+Let $U \in \Ob(\mathcal{C})$.
+\begin{enumerate}
+\item The ringed site $(\mathcal{C}/U, \mathcal{O}_U)$ is called the
+{\it localization of the ringed site $(\mathcal{C}, \mathcal{O})$
+at the object $U$}.
+\item The morphism of ringed topoi
+$(j_U, j_U^\sharp) :
+(\Sh(\mathcal{C}/U), \mathcal{O}_U)
+\to
+(\Sh(\mathcal{C}), \mathcal{O})$
+is called the {\it localization morphism}.
+\item The functor
+$j_{U*} : \textit{Mod}(\mathcal{O}_U) \to \textit{Mod}(\mathcal{O})$
+is called the {\it direct image functor}.
+\item For a sheaf of $\mathcal{O}$-modules $\mathcal{F}$ on $\mathcal{C}$
+the sheaf $j_U^*\mathcal{F}$ is called the
+{\it restriction of $\mathcal{F}$ to $\mathcal{C}/U$}.
+We will sometimes denote it by
+$\mathcal{F}|_{\mathcal{C}/U}$ or even $\mathcal{F}|_U$.
+It is described by the simple rule $j_U^*(\mathcal{F})(X/U) = \mathcal{F}(X)$.
+\item The left adjoint
+$j_{U!} : \textit{Mod}(\mathcal{O}_U) \to \textit{Mod}(\mathcal{O})$
+of restriction is called {\it extension by zero}. It exists and is
+exact by
+Lemmas \ref{lemma-extension-by-zero} and
+\ref{lemma-extension-by-zero-exact}.
+\end{enumerate}
+\end{definition}
+
+\noindent
+As in the topological case, see
+Sheaves, Section \ref{sheaves-section-open-immersions},
+the extension by zero $j_{U!}$ functor is different from
+extension by the empty set $j_{U!}$ defined on sheaves of sets.
+Here is the lemma defining extension by zero.
+
+\begin{lemma}
+\label{lemma-extension-by-zero}
+Let $(\mathcal{C}, \mathcal{O})$ be a ringed site.
+Let $U \in \Ob(\mathcal{C})$.
+The restriction functor
+$j_U^* : \textit{Mod}(\mathcal{O}) \to \textit{Mod}(\mathcal{O}_U)$
+has a left adjoint
+$j_{U!} : \textit{Mod}(\mathcal{O}_U) \to \textit{Mod}(\mathcal{O})$.
+So
+$$
+\Mor_{\textit{Mod}(\mathcal{O}_U)}(\mathcal{G}, j_U^*\mathcal{F})
+=
+\Mor_{\textit{Mod}(\mathcal{O})}(j_{U!}\mathcal{G}, \mathcal{F})
+$$
+for $\mathcal{F} \in \Ob(\textit{Mod}(\mathcal{O}))$
+and $\mathcal{G} \in \Ob(\textit{Mod}(\mathcal{O}_U))$.
+Moreover, the extension by zero $j_{U!}\mathcal{G}$ of $\mathcal{G}$
+is the sheaf associated to the presheaf
+$$
+V
+\longmapsto
+\bigoplus\nolimits_{\varphi \in \Mor_\mathcal{C}(V, U)}
+\mathcal{G}(V \xrightarrow{\varphi} U)
+$$
+with obvious restriction mappings and an obvious $\mathcal{O}$-module
+structure.
+\end{lemma}
+
+\begin{proof}
+The $\mathcal{O}$-module structure on the presheaf is defined as
+follows. If $f \in \mathcal{O}(V)$ and
+$s \in \mathcal{G}(V \xrightarrow{\varphi} U)$, then
+we define $f \cdot s = fs$ where
+$f \in \mathcal{O}_U(\varphi : V \to U) = \mathcal{O}(V)$
+(because $\mathcal{O}_U$ is the restriction of $\mathcal{O}$ to
+$\mathcal{C}/U$).
+
+\medskip\noindent
+Similarly, let $\alpha : \mathcal{G} \to \mathcal{F}|_U$ be a
+morphism of $\mathcal{O}_U$-modules. In this case we can define
+a map from the presheaf of the lemma into $\mathcal{F}$ by mapping
+$$
+\bigoplus\nolimits_{\varphi \in \Mor_\mathcal{C}(V, U)}
+\mathcal{G}(V \xrightarrow{\varphi} U)
+\longrightarrow
+\mathcal{F}(V)
+$$
+by the rule that $s \in \mathcal{G}(V \xrightarrow{\varphi} U)$
+maps to $\alpha(s) \in \mathcal{F}(V)$. It is clear that this is
+$\mathcal{O}$-linear, and hence induces a morphism of
+$\mathcal{O}$-modules $\alpha' : j_{U!}\mathcal{G} \to \mathcal{F}$
+by the properties of sheafification of modules
+(Lemma \ref{lemma-sheafification-presheaf-modules}).
+
+\medskip\noindent
+Conversely, let $\beta : j_{U!}\mathcal{G} \to \mathcal{F}$
+by a map of $\mathcal{O}$-modules.
+Recall from Sites, Section \ref{sites-section-localize}
+that there exists an extension by the empty set
+$j^{Sh}_{U!} : \Sh(\mathcal{C}/U) \to \Sh(\mathcal{C})$
+on sheaves of sets which is left adjoint to $j_U^{-1}$.
+Moreover, $j^{Sh}_{U!}\mathcal{G}$ is the sheaf associated to the presheaf
+$$
+V
+\longmapsto
+\coprod\nolimits_{\varphi \in \Mor_\mathcal{C}(V, U)}
+\mathcal{G}(V \xrightarrow{\varphi} U)
+$$
+Hence there is a natural map
+$j^{Sh}_{U!}\mathcal{G} \to j_{U!}\mathcal{G}$ of sheaves of sets.
+Hence precomposing $\beta$ by this map we get a map of sheaves of sets
+$j^{Sh}_{U!}\mathcal{G} \to \mathcal{F}$ which by adjunction corresponds
+to a map of sheaves of sets $\beta' : \mathcal{G} \to \mathcal{F}|_U$.
+We claim that $\beta'$ is $\mathcal{O}_U$-linear. Namely, suppose
+that $\varphi : V \to U$ is an object of $\mathcal{C}/U$ and that
+$s, s' \in \mathcal{G}(\varphi : V \to U)$, and
+$f \in \mathcal{O}(V) = \mathcal{O}_U(\varphi : V \to U)$.
+Then by the discussion above we see that
+$\beta'(s + s')$, resp.\  $\beta'(fs)$ in $\mathcal{F}|_U(\varphi : V \to U)$
+correspond to $\beta(s + s')$, resp.\ $\beta(fs)$ in
+$\mathcal{F}(V)$. Since $\beta$ is a homomorphism we conclude.
+
+\medskip\noindent
+To conclude the proof of the lemma we have to show that the constructions
+$\alpha \mapsto \alpha'$ and $\beta \mapsto \beta'$ are mutually inverse.
+We omit the verifications.
+\end{proof}
+
+\noindent
+Note that we have in the situation of
+Definition \ref{definition-localize-ringed-site} we have
+\begin{equation}
+\label{equation-map-lower-shriek-OU-into-module}
+\Hom_\mathcal{O}(j_{U!}\mathcal{O}_U, \mathcal{F}) =
+\Hom_{\mathcal{O}_U}(\mathcal{O}_U, j_U^*\mathcal{F}) =
+\mathcal{F}(U)
+\end{equation}
+for every $\mathcal{O}$-module $\mathcal{F}$. Namely, the first equality
+holds by the adjointness of $j_{U!}$ and $j_U^*$ and the second because
+$\Hom_{\mathcal{O}_U}(\mathcal{O}_U, j_U^*\mathcal{F}) =
+j_U^*\mathcal{F}(U/U) = \mathcal{F}|_U(U/U) = \mathcal{F}(U)$.
+
+\begin{lemma}
+\label{lemma-extension-by-zero-exact}
+Let $(\mathcal{C}, \mathcal{O})$ be a ringed site.
+Let $U \in \Ob(\mathcal{C})$.
+The functor
+$j_{U!} : \textit{Mod}(\mathcal{O}_U) \to \textit{Mod}(\mathcal{O})$
+is exact.
+\end{lemma}
+
+\begin{proof}
+Since $j_{U!}$ is a left adjoint to $j_U^*$ we see that it is right exact
+(see
+Categories, Lemma \ref{categories-lemma-exact-adjoint}
+and
+Homology, Section \ref{homology-section-functors}).
+Hence it suffices to show that if $\mathcal{G}_1 \to \mathcal{G}_2$
+is an injective map of $\mathcal{O}_U$-modules, then
+$j_{U!}\mathcal{G}_1 \to j_{U!}\mathcal{G}_2$ is injective.
+The map on sections of presheaves over an object $V$
+(as in Lemma \ref{lemma-extension-by-zero}) is the map
+$$
+\bigoplus\nolimits_{\varphi \in \Mor_\mathcal{C}(V, U)}
+\mathcal{G}_1(V \xrightarrow{\varphi} U)
+\longrightarrow
+\bigoplus\nolimits_{\varphi \in \Mor_\mathcal{C}(V, U)}
+\mathcal{G}_2(V \xrightarrow{\varphi} U)
+$$
+which is injective by assumption. Since sheafification is exact by
+Lemma \ref{lemma-sheafification-exact}
+we conclude $j_{U!}\mathcal{G}_1 \to j_{U!}\mathcal{G}_2$ is injective and
+we win.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-j-shriek-reflects-exactness}
+Let $(\mathcal{C}, \mathcal{O})$ be a ringed site.
+Let $U \in \Ob(\mathcal{C})$. A complex of $\mathcal{O}_U$-modules
+$\mathcal{G}_1 \to \mathcal{G}_2 \to \mathcal{G}_3$ is exact
+if and only if
+$j_{U!}\mathcal{G}_1 \to j_{U!}\mathcal{G}_2 \to j_{U!}\mathcal{G}_3$
+is exact as a sequence of $\mathcal{O}$-modules.
+\end{lemma}
+
+\begin{proof}
+We already know that $j_{U!}$ is exact, see
+Lemma \ref{lemma-extension-by-zero-exact}.
+Thus it suffices to show that
+$j_{U!} :  \textit{Mod}(\mathcal{O}_U) \to \textit{Mod}(\mathcal{O})$
+reflects injections and surjections.
+
+\medskip\noindent
+For every $\mathcal{G}$ in $\textit{Mod}(\mathcal{O}_U)$
+we have the unit $\mathcal{G} \to j_U^*j_{U!}\mathcal{G}$
+of the adjunction. We claim this map is an injection of sheaves.
+Namely, looking at the construction of Lemma \ref{lemma-extension-by-zero}
+we see that this map is the sheafification of the rule sending the object
+$V/U$ of $\mathcal{C}/U$ to the injective map
+$$
+\mathcal{G}(V/U) \longrightarrow
+\bigoplus\nolimits_{\varphi \in \Mor_\mathcal{C}(V, U)}
+\mathcal{G}(V \xrightarrow{\varphi} U)
+$$
+given by the inclusion of the summand corresponding to the structure
+morphism $V \to U$. Since sheafification is exact the claim follows.
+Some details omitted.
+
+\medskip\noindent
+If $\mathcal{G} \to \mathcal{G}'$ is a map of $\mathcal{O}_U$-modules with
+$j_{U!}\mathcal{G} \to j_{U!}\mathcal{G}'$ injective,
+then $j_U^*j_{U!}\mathcal{G} \to j_U^*j_{U!}\mathcal{G}'$ is injective
+(restriction is exact), hence
+$\mathcal{G} \to j_U^*j_{U!}\mathcal{G}'$ is injective, hence
+$\mathcal{G} \to \mathcal{G}'$ is injective.
+We conclude that $j_{U!}$ reflects injections.
+
+\medskip\noindent
+Let $a : \mathcal{G} \to \mathcal{G}'$ be a map of $\mathcal{O}_U$-modules
+such that $j_{U!}\mathcal{G} \to j_{U!}\mathcal{G}'$ is surjective.
+Let $\mathcal{H}$ be the cokernel of $a$.
+Then $j_{U!}\mathcal{H} = 0$ as $j_{U!}$ is exact.
+By the above the map $\mathcal{H} \to j^*_U j_{U!}\mathcal{H}$
+is injective. Hence $\mathcal{H} = 0$ as desired.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-relocalize}
+Let $(\mathcal{C}, \mathcal{O})$ be a ringed site.
+Let $f : V \to U$ be a morphism of $\mathcal{C}$.
+Then there exists a commutative diagram
+$$
+\xymatrix{
+(\Sh(\mathcal{C}/V), \mathcal{O}_V)
+\ar[rd]_{(j_V, j_V^\sharp)} \ar[rr]_{(j, j^\sharp)} & &
+(\Sh(\mathcal{C}/U), \mathcal{O}_U)
+\ar[ld]^{(j_U, j_U^\sharp)} \\
+& (\Sh(\mathcal{C}), \mathcal{O}) &
+}
+$$
+of ringed topoi. Here $(j, j^\sharp)$ is the localization morphism
+associated to the object $V/U$ of the ringed site
+$(\mathcal{C}/V, \mathcal{O}_V)$.
+\end{lemma}
+
+\begin{proof}
+The only thing to check is that
+$j_V^\sharp = j^\sharp \circ j^{-1}(j_U^\sharp)$,
+since everything else follows directly from
+Sites, Lemma \ref{sites-lemma-relocalize} and
+Sites, Equation (\ref{sites-equation-relocalize}).
+We omit the verification of the equality.
+\end{proof}
+
+\begin{remark}
+\label{remark-localize-shriek-equal}
+In the situation of Lemma \ref{lemma-extension-by-zero}
+the diagram
+$$
+\xymatrix{
+\textit{Mod}(\mathcal{O}_U) \ar[r]_{j_{U!}} \ar[d]_{forget} &
+\textit{Mod}(\mathcal{O}_\mathcal{C}) \ar[d]^{forget} \\
+\textit{Ab}(\mathcal{C}/U) \ar[r]^{j^{Ab}_{U!}} &
+\textit{Ab}(\mathcal{C})
+}
+$$
+commutes. This is clear from the explicit description of the functor
+$j_{U!}$ in the lemma.
+\end{remark}
+
+\begin{remark}
+\label{remark-localize-presheaves}
+Localization and presheaves of modules; see
+Sites, Remark \ref{sites-remark-localize-presheaves}.
+Let $\mathcal{C}$ be a category.
+Let $\mathcal{O}$ be a presheaf of rings.
+Let $U$ be an object of $\mathcal{C}$.
+Strictly speaking the functors $j_U^*$, $j_{U*}$ and $j_{U!}$
+have not been defined for presheaves of $\mathcal{O}$-modules.
+But of course, we can think of a presheaf as a sheaf for the
+chaotic topology on $\mathcal{C}$ (see
+Sites, Examples \ref{sites-example-indiscrete}).
+Hence we also obtain a functor
+$$
+j_U^* :
+\textit{PMod}(\mathcal{O})
+\longrightarrow
+\textit{PMod}(\mathcal{O}_U)
+$$
+and functors
+$$
+j_{U*}, j_{U!} :
+\textit{PMod}(\mathcal{O}_U)
+\longrightarrow
+\textit{PMod}(\mathcal{O})
+$$
+which are right, left adjoint to $j_U^*$. Inspecting the proof of
+Lemma \ref{lemma-extension-by-zero} we see that $j_{U!}\mathcal{G}$
+is the presheaf
+$$
+V \longmapsto
+\bigoplus\nolimits_{\varphi \in \Mor_\mathcal{C}(V, U)}
+\mathcal{G}(V \xrightarrow{\varphi} U)
+$$
+In addition the functor $j_{U!}$ is exact (by
+Lemma \ref{lemma-extension-by-zero-exact} in the
+case of the discrete topologies). Moreover, if $\mathcal{C}$
+is actually a site, and $\mathcal{O}$ is actually a sheaf of rings,
+then the diagram
+$$
+\xymatrix{
+\textit{Mod}(\mathcal{O}_U) \ar[r]_{j_{U!}} \ar[d]_{forget} &
+\textit{Mod}(\mathcal{O}) \\
+\textit{PMod}(\mathcal{O}_U) \ar[r]^{j_{U!}} &
+\textit{PMod}(\mathcal{O}) \ar[u]_{(\ )^\#}
+}
+$$
+commutes.
+\end{remark}
+
+\begin{lemma}
+\label{lemma-restrict-back}
+Let $\mathcal{C}$ be a site. Let $U \in \Ob(\mathcal{C})$.
+Assume that every $X$ in $\mathcal{C}$ has at most
+one morphism to $U$. Let $\mathcal{F}$ be an abelian sheaf on $\mathcal{C}/U$.
+The canonical maps $\mathcal{F} \to j_U^{-1}j_{U!}\mathcal{F}$
+and $j_U^{-1}j_{U*}\mathcal{F} \to \mathcal{F}$ are
+isomorphisms.
+\end{lemma}
+
+\begin{proof}
+This is a special case of Lemma \ref{lemma-back-and-forth}
+because the assumption on $U$ is equivalent to the fully faithfulness
+of the localization functor $\mathcal{C}/U \to \mathcal{C}$.
+\end{proof}
+
+
+
+
+
+
+
+
+

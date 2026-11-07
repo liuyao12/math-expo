@@ -1,0 +1,375 @@
+\section{Finite projective modules}
+\label{section-finite-projective-modules}
+
+\begin{definition}
+\label{definition-locally-free}
+Let $R$ be a ring and $M$ an $R$-module.
+\begin{enumerate}
+\item We say that $M$ is {\it locally free} if we can cover $\Spec(R)$ by
+standard opens $D(f_i)$, $i \in I$ such that $M_{f_i}$ is a free
+$R_{f_i}$-module for all $i \in I$.
+\item We say that $M$ is {\it finite locally free} if we can choose
+the covering such that each $M_{f_i}$ is finite free.
+\item We say that $M$ is {\it finite locally free of rank $r$}
+if we can choose the covering such that each $M_{f_i}$ is isomorphic
+to $R_{f_i}^{\oplus r}$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+Note that a finite locally free $R$-module is automatically
+finitely presented by Lemma \ref{lemma-cover}. Moreover, if $M$ is a
+finite locally free module of rank $r$ over a ring $R$ and if
+$R$ is nonzero, then $r$ is uniquely determined by
+Lemma \ref{lemma-rank} (because at least one of the
+localizations $	R_{f_i}$ is a nonzero ring).
+
+\begin{lemma}
+\label{lemma-finite-projective}
+Let $R$ be a ring and let $M$ be an $R$-module.
+The following are equivalent
+\begin{enumerate}
+\item $M$ is finitely presented and $R$-flat,
+\item $M$ is finite projective,
+\item $M$ is a direct summand of a finite free $R$-module,
+\item $M$ is finitely presented and
+for all $\mathfrak p \in \Spec(R)$ the
+localization $M_{\mathfrak p}$ is free,
+\item $M$ is finitely presented and
+for all maximal ideals $\mathfrak m \subset R$ the
+localization $M_{\mathfrak m}$ is free,
+\item $M$ is finite and locally free,
+\item $M$ is finite locally free, and
+\item $M$ is finite, for every prime $\mathfrak p$ the module
+$M_{\mathfrak p}$ is free, and the function
+$$
+\rho_M : \Spec(R) \to \mathbf{Z}, \quad
+\mathfrak p
+\longmapsto
+\dim_{\kappa(\mathfrak p)} M \otimes_R \kappa(\mathfrak p)
+$$
+is locally constant in the Zariski topology.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+First suppose $M$ is finite projective, i.e., (2) holds.
+Take a surjection $R^n \to M$ and let $K$ be the kernel.
+Since $M$ is projective,
+$0 \to K \to R^n \to M \to 0$ splits.
+Hence (2) $\Rightarrow$ (3).
+The implication (3) $\Rightarrow$ (2) follows from the fact that
+a direct summand of a projective is projective, see
+Lemma \ref{lemma-characterize-projective}.
+
+\medskip\noindent
+Assume (3), so we can write $K \oplus M \cong R^{\oplus n}$.
+So $K$ is a  direct summand of $R^n$ and thus finitely generated.
+This shows $M = R^{\oplus n}/K$ is finitely presented.
+In other words, (3) $\Rightarrow$ (1).
+
+\medskip\noindent
+Assume $M$ is finitely presented and flat, i.e., (1) holds.
+We will prove that (7) holds. Pick any prime $\mathfrak p$ and
+$x_1, \ldots, x_r \in M$ which map to a basis of
+$M \otimes_R \kappa(\mathfrak p)$. By
+Nakayama's lemma (in the form of Lemma \ref{lemma-NAK-localization})
+these elements generate $M_g$ for some $g \in R$, $g \not \in \mathfrak p$.
+The corresponding surjection $\varphi : R_g^{\oplus r} \to M_g$
+has the following two properties: (a) $\Ker(\varphi)$ is a finite
+$R_g$-module (see Lemma \ref{lemma-extension})
+and (b) $\Ker(\varphi) \otimes \kappa(\mathfrak p) = 0$
+by flatness of $M_g$ over $R_g$ (see
+Lemma \ref{lemma-flat-tor-zero}).
+Hence by Nakayama's lemma again there exists a $g' \in R_g$ such that
+$\Ker(\varphi)_{g'} = 0$. In other words, $M_{gg'}$ is free.
+
+\medskip\noindent
+A finite locally free module is a finite module, see
+Lemma \ref{lemma-cover},
+hence (7) $\Rightarrow$ (6).
+It is clear that (6) $\Rightarrow$ (7) and that (7) $\Rightarrow$ (8).
+
+\medskip\noindent
+A finite locally free module is a finitely presented module, see
+Lemma \ref{lemma-cover},
+hence (7) $\Rightarrow$ (4).
+Of course (4) implies (5).
+Since we may check flatness locally (see
+Lemma \ref{lemma-flat-localization})
+we conclude that (5) implies (1).
+At this point we have
+$$
+\xymatrix{
+(2) \ar@{<=>}[r] & (3) \ar@{=>}[r] & (1) \ar@{=>}[r] &
+(7)  \ar@{<=>}[r] \ar@{=>}[rd] \ar@{=>}[d] & (6) \\
+& & (5) \ar@{=>}[u] & (4) \ar@{=>}[l] & (8)
+}
+$$
+
+\medskip\noindent
+Suppose that $M$ satisfies (1), (4), (5), (6), and (7).
+We will prove that (3) holds. It suffices
+to show that $M$ is projective. We have to show that $\Hom_R(M, -)$
+is exact. Let $0 \to N'' \to N \to N'\to 0$ be a short exact sequence of
+$R$-module. We have to show that
+$0 \to \Hom_R(M, N'') \to \Hom_R(M, N) \to
+\Hom_R(M, N') \to 0$ is exact.
+As $M$ is finite locally free there exist a covering
+$\Spec(R) = \bigcup D(f_i)$ such that $M_{f_i}$ is finite free.
+By
+Lemma \ref{lemma-hom-from-finitely-presented}
+we see that
+$$
+0 \to \Hom_R(M, N'')_{f_i} \to \Hom_R(M, N)_{f_i} \to
+\Hom_R(M, N')_{f_i} \to 0
+$$
+is equal to
+$0 \to \Hom_{R_{f_i}}(M_{f_i}, N''_{f_i}) \to
+\Hom_{R_{f_i}}(M_{f_i}, N_{f_i}) \to
+\Hom_{R_{f_i}}(M_{f_i}, N'_{f_i}) \to 0$
+which is exact as $M_{f_i}$ is free and as the localization
+$0 \to N''_{f_i} \to N_{f_i} \to N'_{f_i} \to 0$
+is exact (as localization is exact). Whence we see that
+$0 \to \Hom_R(M, N'') \to \Hom_R(M, N) \to
+\Hom_R(M, N') \to 0$ is exact by
+Lemma \ref{lemma-cover}.
+
+\medskip\noindent
+Finally, assume that (8) holds. Pick a maximal ideal $\mathfrak m \subset R$.
+Pick $x_1, \ldots, x_r \in M$ which map to a $\kappa(\mathfrak m)$-basis of
+$M \otimes_R \kappa(\mathfrak m) = M/\mathfrak mM$. In particular
+$\rho_M(\mathfrak m) = r$. By
+Nakayama's Lemma \ref{lemma-NAK}
+there exists an $f \in R$, $f \not \in \mathfrak m$ such that
+$x_1, \ldots, x_r$ generate $M_f$ over $R_f$. By the assumption that
+$\rho_M$ is locally constant there exists a $g \in R$, $g \not \in \mathfrak m$
+such that $\rho_M$ is constant equal to $r$ on $D(g)$. We claim that
+$$
+\Psi : R_{fg}^{\oplus r} \longrightarrow M_{fg}, \quad
+(a_1, \ldots, a_r) \longmapsto \sum a_i x_i
+$$
+is an isomorphism. This claim will show that $M$ is finite locally
+free, i.e., that (7) holds. To see the claim
+it suffices to show that the induced map on localizations
+$\Psi_{\mathfrak p} : R_{\mathfrak p}^{\oplus r} \to M_{\mathfrak p}$
+is an isomorphism for all $\mathfrak p \in D(fg)$, see
+Lemma \ref{lemma-characterize-zero-local}.
+By our choice of $f$ the map $\Psi_{\mathfrak p}$
+is surjective. By assumption (8) we have
+$M_{\mathfrak p} \cong R_{\mathfrak p}^{\oplus \rho_M(\mathfrak p)}$
+and by our choice of $g$ we have $\rho_M(\mathfrak p) = r$.
+Hence $\Psi_{\mathfrak p}$ determines a surjection
+$R_{\mathfrak p}^{\oplus r} \to
+M_{\mathfrak p} \cong R_{\mathfrak p}^{\oplus r}$
+whence is an isomorphism by
+Lemma \ref{lemma-fun}.
+(Of course this last fact follows from a simple matrix argument also.)
+\end{proof}
+
+\begin{lemma}
+\label{lemma-finite-projective-reduced}
+Let $R$ be a reduced ring and let $M$ be an $R$-module. Then the
+equivalent conditions of Lemma \ref{lemma-finite-projective}
+are also equivalent to
+\begin{enumerate}
+\item[(9)] $M$ is finite and the function
+$\rho_M : \Spec(R) \to \mathbf{Z}$, $\mathfrak p \mapsto
+\dim_{\kappa(\mathfrak p)} M \otimes_R \kappa(\mathfrak p)$
+is locally constant in the Zariski topology.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Pick a maximal ideal $\mathfrak m \subset R$.
+Pick $x_1, \ldots, x_r \in M$ which map to a $\kappa(\mathfrak m)$-basis of
+$M \otimes_R \kappa(\mathfrak m) = M/\mathfrak mM$. In particular
+$\rho_M(\mathfrak m) = r$. By
+Nakayama's Lemma \ref{lemma-NAK}
+there exists an $f \in R$, $f \not \in \mathfrak m$ such that
+$x_1, \ldots, x_r$ generate $M_f$ over $R_f$. By the assumption that
+$\rho_M$ is locally constant there exists a $g \in R$, $g \not \in \mathfrak m$
+such that $\rho_M$ is constant equal to $r$ on $D(g)$. We claim that
+$$
+\Psi : R_{fg}^{\oplus r} \longrightarrow M_{fg}, \quad
+(a_1, \ldots, a_r) \longmapsto \sum a_i x_i
+$$
+is an isomorphism. This claim will show that $M$ is finite locally
+free, i.e., that (7) holds. Since $\Psi$ is surjective, it suffices to
+show that $\Psi$ is injective. Since $R_{fg}$ is reduced,
+it suffices to show that $\Psi$ is injective after localization
+at all minimal primes $\mathfrak p$ of $R_{fg}$, see
+Lemma \ref{lemma-reduced-ring-sub-product-fields}.
+However, we know that $R_\mathfrak p = \kappa(\mathfrak p)$
+by Lemma \ref{lemma-minimal-prime-reduced-ring} and
+$\rho_M(\mathfrak p) = r$ hence $\Psi_\mathfrak p :
+R_\mathfrak p^{\oplus r} \to M \otimes_R \kappa(\mathfrak p)$
+is an isomorphism as a surjective map of finite dimensional
+vector spaces of the same dimension.
+\end{proof}
+
+\begin{remark}
+\label{remark-warning}
+It is not true that a finite $R$-module which is
+$R$-flat is automatically projective. A counter
+example is where $R = \mathcal{C}^\infty(\mathbf{R})$
+is the ring of infinitely differentiable functions on
+$\mathbf{R}$, and $M = R_{\mathfrak m} = R/I$ where
+$\mathfrak m = \{f \in R \mid f(0) = 0\}$ and
+$I = \{f \in R \mid \exists \epsilon, \epsilon > 0 :
+f(x) = 0\ \forall x, |x| < \epsilon\}$.
+\end{remark}
+
+\begin{lemma}
+\label{lemma-finite-flat-local}
+(Warning: see Remark \ref{remark-warning}.)
+Suppose $R$ is a local ring, and $M$ is a finite
+flat $R$-module. Then $M$ is finite free.
+\end{lemma}
+
+\begin{proof}
+Follows from the equational criterion of flatness, see
+Lemma \ref{lemma-flat-eq}. Namely, suppose that
+$x_1, \ldots, x_r \in M$ map to a basis of
+$M/\mathfrak mM$. By Nakayama's Lemma \ref{lemma-NAK}
+these elements generate $M$. We want to show there
+is no relation among the $x_i$. Instead, we will show
+by induction on $n$ that if $x_1, \ldots, x_n \in M$
+are linearly independent in the vector space
+$M/\mathfrak mM$ then they are independent over $R$.
+
+\medskip\noindent
+The base case of the induction is where we have
+$x \in M$, $x \not\in \mathfrak mM$ and a relation
+$fx = 0$. By the equational criterion there
+exist $y_j \in M$ and $a_j \in R$ such that
+$x = \sum a_j y_j$ and $fa_j = 0$ for all $j$.
+Since $x \not\in \mathfrak mM$ we see that
+at least one $a_j$ is a unit and hence $f = 0 $.
+
+\medskip\noindent
+Suppose that $\sum f_i x_i$ is a relation among $x_1, \ldots, x_n$.
+By our choice of $x_i$ we have $f_i \in \mathfrak m$.
+According to the equational criterion of flatness there exist
+$a_{ij} \in R$ and $y_j \in M$ such that
+$x_i = \sum a_{ij} y_j$ and $\sum f_i a_{ij} = 0$.
+Since $x_n \not \in \mathfrak mM$ we see that
+$a_{nj}\not\in \mathfrak m$ for at least one $j$.
+Since $\sum f_i a_{ij} = 0$ we get
+$f_n = \sum_{i = 1}^{n-1} (-a_{ij}/a_{nj}) f_i$.
+The relation $\sum f_i x_i = 0$ now can be rewritten
+as $\sum_{i = 1}^{n-1} f_i( x_i + (-a_{ij}/a_{nj}) x_n) = 0$.
+Note that the elements $x_i + (-a_{ij}/a_{nj}) x_n$ map
+to $n-1$ linearly independent elements of $M/\mathfrak mM$.
+By induction assumption we get that all the $f_i$, $i \leq n-1$
+have to be zero, and also $f_n = \sum_{i = 1}^{n-1} (-a_{ij}/a_{nj}) f_i$.
+This proves the induction step.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-finite-projective-descends}
+Let $R \to S$ be a flat local homomorphism of local rings.
+Let $M$ be a finite $R$-module. Then $M$ is finite projective
+over $R$ if and only if $M \otimes_R S$ is finite projective
+over $S$.
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-finite-projective} being finite projective
+over a local ring is the same thing as being finite free.
+Suppose that $M \otimes_R S$ is a finite free $S$-module.
+Pick $x_1, \ldots, x_r \in M$ whose images in $M/\mathfrak m_RM$
+form a basis over $\kappa(\mathfrak m)$. Then
+we see that $x_1 \otimes 1, \ldots, x_r \otimes 1$
+are a basis for $M \otimes_R S$. This implies that
+the map $R^{\oplus r} \to M, (a_i) \mapsto \sum a_i x_i$
+becomes an isomorphism after tensoring with $S$.
+By faithful flatness of $R \to S$, see Lemma \ref{lemma-local-flat-ff}
+we see that it is an isomorphism.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-locally-free-semi-local-free}
+Let $R$ be a semi-local ring.
+Let $M$ be a finite locally free module.
+If $M$ has constant rank, then $M$ is free. In particular, if $R$ has
+connected spectrum, then $M$ is free.
+\end{lemma}
+
+\begin{proof}
+Omitted. Hints: First show that $M/\mathfrak m_iM$ has the
+same dimension $d$ for all maximal ideal $\mathfrak m_1, \ldots, \mathfrak m_n$
+of $R$ using the rank is constant.
+Next, show that there exist elements $x_1, \ldots, x_d \in M$
+which form a basis for each $M/\mathfrak m_iM$ by the Chinese
+remainder theorem. Finally show that $x_1, \ldots, x_d$ is a basis for $M$.
+\end{proof}
+
+\noindent
+Here is a technical lemma that is used in the chapter on groupoids.
+
+\begin{lemma}
+\label{lemma-semi-local-module-basis-in-submodule}
+Let $R$ be a local ring with maximal ideal $\mathfrak m$ and
+infinite residue field.
+Let $R \to S$ be a ring map.
+Let $M$ be an $S$-module and let $N \subset M$ be an $R$-submodule.
+Assume
+\begin{enumerate}
+\item $S$ is semi-local and $\mathfrak mS$ is contained in the
+Jacobson radical of $S$,
+\item $M$ is a finite free $S$-module, and
+\item $N$ generates $M$ as an $S$-module.
+\end{enumerate}
+Then $N$ contains an $S$-basis of $M$.
+\end{lemma}
+
+\begin{proof}
+Assume $M$ is free of rank $n$. Let $I \subset S$ be the Jacobson radical.
+By Nakayama's Lemma \ref{lemma-NAK} a sequence of elements
+$m_1, \ldots, m_n$ is a basis for $M$ if and only if
+$\overline{m}_i \in M/IM$ generate $M/IM$. Hence we may replace
+$M$ by $M/IM$, $N$ by $N/(N \cap IM)$, $R$ by $R/\mathfrak m$,
+and $S$ by $S/IS$. In this case we see that $S$ is a finite product
+of fields $S = k_1 \times \ldots \times k_r$ and
+$M = k_1^{\oplus n} \times \ldots \times k_r^{\oplus n}$.
+The fact that $N \subset M$ generates $M$ as an $S$-module
+means that there exist $x_j \in N$ such that a linear combination
+$\sum a_j x_j$ with $a_j \in S$ has a nonzero component in each
+factor $k_i^{\oplus n}$.
+Because $R = k$ is an infinite field, this means that also
+some linear combination $y = \sum c_j x_j$ with $c_j \in k$ has a
+nonzero component in each factor. Hence $y \in N$ generates a
+free direct summand $Sy \subset M$. By induction on $n$ the result
+holds for $M/Sy$ and the submodule $\overline{N} = N/(N \cap Sy)$.
+In other words there exist $\overline{y}_2, \ldots, \overline{y}_n$
+in $\overline{N}$ which (freely) generate $M/Sy$. Then
+$y, y_2, \ldots, y_n$ (freely) generate $M$ and we win.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-evaluation-map-iso-finite-projective}
+Let $R$ be ring. Let $L$, $M$, $N$ be $R$-modules.
+The canonical map
+$$
+\Hom_R(M, N) \otimes_R L \to \Hom_R(M, N \otimes_R L)
+$$
+is an isomorphism if $M$ is finite projective.
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-finite-projective} we see that $M$
+is finitely presented as well as finite locally free.
+By Lemmas \ref{lemma-hom-from-finitely-presented} and
+\ref{lemma-tensor-product-localization} formation of
+the left and right hand side of the arrow commutes with
+localization. We may check that our map is an isomorphism
+after localization, see Lemma \ref{lemma-cover}.
+Thus we may assume $M$ is finite free. In this case
+the lemma is immediate.
+\end{proof}
+
+
+ 
+
+

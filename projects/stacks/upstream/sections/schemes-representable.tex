@@ -1,0 +1,243 @@
+\section{A representability criterion}
+\label{section-representable}
+
+\noindent
+In this section we reformulate the glueing lemma
+of Section \ref{section-glueing-schemes} in terms
+of functors. We recall some of the material from
+Categories, Section \ref{categories-section-opposite}.
+Recall that given a scheme $X$ we
+can define a functor
+$$
+h_X : \Sch^{opp}
+\longrightarrow
+\textit{Sets}, \quad
+T \longmapsto \Mor(T, X).
+$$
+This is called the {\it functor of points of $X$}.
+
+\medskip\noindent
+Let $F$ be a contravariant functor from the category
+of schemes to the category of sets. In a formula
+$$
+F : \Sch^{opp}
+\longrightarrow
+\textit{Sets}.
+$$
+We will use the same terminology as in Sites, Section
+\ref{sites-section-presheaves}. Namely, given a scheme
+$T$, an element $\xi \in F(T)$, and a morphism $f : T' \to T$
+we will denote $f^*\xi$ the element $F(f)(\xi)$, and sometimes
+we will even use the notation $\xi|_{T'}$
+
+\begin{definition}
+\label{definition-representable-functor}
+(See Categories, Definition \ref{categories-definition-representable-functor}.)
+Let $F$ be a contravariant functor from the category
+of schemes to the category of sets (as above).
+We say that $F$ is {\it representable by a scheme}
+or {\it representable} if there exists a scheme $X$
+such that $h_X \cong F$.
+\end{definition}
+
+\noindent
+Suppose that $F$ is representable by the scheme $X$ and that
+$s : h_X \to F$ is an isomorphism.
+By Categories, Yoneda Lemma \ref{categories-lemma-yoneda}
+the pair $(X, s : h_X \to F)$ is unique up to unique
+isomorphism if it exists.
+Moreover, the Yoneda lemma says that
+given any contravariant functor $F$ as above
+and any scheme $Y$, we have a bijection
+$$
+\Mor_{\text{Fun}(\Sch^{opp}, \textit{Sets})} (h_Y, F)
+\longrightarrow
+F(Y), \quad
+s \longmapsto s(\text{id}_Y).
+$$
+Here is the reverse construction. Given any $\xi \in F(Y)$
+the transformation of functors $s_\xi : h_Y \to F$
+associates to any morphism $f : T \to Y$ the
+element $f^*\xi \in F(T)$.
+
+\medskip\noindent
+In particular, in the case that $F$ is representable, there exists
+a scheme $X$ and an element $\xi \in F(X)$ such that the corresponding
+morphism $h_X \to F$ is an isomorphism.
+In this case we also say {\it the pair $(X, \xi)$ represents $F$}.
+The element $\xi \in F(X)$
+is often called the {\it ``universal family''} for reasons that will become
+more clear when we talk about algebraic stacks (insert future reference here).
+For the moment we simply observe that the fact that if the pair $(X, \xi)$
+represents $F$, then every element $\xi' \in F(T)$ for any $T$ is of
+the form $\xi' = f^*\xi$ for a unique morphism $f : T \to X$.
+
+\begin{example}
+\label{example-global-sections}
+Consider the rule which associates to every scheme $T$ the set
+$F(T) = \Gamma(T, \mathcal{O}_T)$. We can turn this into a contravariant
+functor by using for a morphism $f : T' \to T$ the pullback map
+$f^\sharp : \Gamma(T, \mathcal{O}_T) \to \Gamma(T', \mathcal{O}_{T'})$.
+Given a ring $R$ and an element $t \in R$ there exists a unique
+ring homomorphism $\mathbf{Z}[x] \to R$ which maps $x$ to $t$.
+Thus, using Lemma \ref{lemma-morphism-into-affine}, we see that
+$$
+\Mor(T, \Spec(\mathbf{Z}[x])) =
+\Hom(\mathbf{Z}[x], \Gamma(T, \mathcal{O}_T)) =
+\Gamma(T, \mathcal{O}_T).
+$$
+This does indeed
+give an isomorphism $h_{\Spec(\mathbf{Z}[x])} \to F$.
+What is the ``universal family'' $\xi$? To get it we have to
+apply the identifications above to $\text{id}_{\Spec(\mathbf{Z}[x])}$.
+Clearly under the identifications above this gives
+that
+$\xi = x \in \Gamma(\Spec(\mathbf{Z}[x]),
+\mathcal{O}_{\Spec(\mathbf{Z}[x])}) = \mathbf{Z}[x]$
+as expected.
+\end{example}
+
+\begin{definition}
+\label{definition-representable-by-open-immersions}
+Let $F$ be a contravariant functor on the category
+of schemes with values in sets.
+\begin{enumerate}
+\item We say that $F$ {\it satisfies the sheaf property for the
+Zariski topology} if for every scheme $T$ and every open covering
+$T = \bigcup_{i \in I} U_i$, and for any collection of elements
+$\xi_i \in F(U_i)$ such that $\xi_i|_{U_i \cap U_j} =
+\xi_j|_{U_i \cap U_j}$ there exists a unique element
+$\xi \in F(T)$ such that $\xi_i = \xi|_{U_i}$ in $F(U_i)$.
+\item A {\it subfunctor $H \subset F$} is a rule that associates
+to every scheme $T$ a subset $H(T) \subset F(T)$ such that
+the maps $F(f) : F(T) \to F(T')$ maps $H(T)$ into
+$H(T')$ for all morphisms of schemes $f : T' \to T$.
+\item Let $H \subset F$ be a subfunctor. We say that
+$H \subset F$ is {\it representable by open immersions}
+if for all pairs $(T, \xi)$, where $T$ is a scheme and $\xi \in F(T)$
+there exists an open subscheme $U_\xi \subset T$ with the following
+property:
+\begin{itemize}
+\item[(*)] A morphism $f : T' \to T$ factors through $U_\xi$ if and only
+if $f^*\xi \in H(T')$.
+\end{itemize}
+\item Let $I$ be a set. For each $i \in I$ let $H_i \subset F$
+be a subfunctor. We say that the collection $(H_i)_{i \in I}$
+{\it covers $F$} if and only if for every $\xi \in F(T)$
+there exists an open covering $T = \bigcup U_i$ such that
+$\xi|_{U_i} \in H_i(U_i)$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+In condition (4), if $H_i \subset F$ is representable by open immersions
+for all $i$, then to check $(H_i)_{i \in I}$ covers $F$, it suffices to
+check $F(T) = \bigcup H_i(T)$ whenever $T$ is the spectrum of a field.
+
+\begin{lemma}
+\label{lemma-glue-functors}
+Let $F$ be a contravariant functor on the category of schemes
+with values in the category of sets. Suppose that
+\begin{enumerate}
+\item $F$ satisfies the sheaf property for the Zariski topology,
+\item there exists a set $I$ and a collection of subfunctors
+$F_i \subset F$ such that
+\begin{enumerate}
+\item each $F_i$ is representable,
+\item each $F_i \subset F$ is representable by open immersions, and
+\item the collection $(F_i)_{i \in I}$ covers $F$.
+\end{enumerate}
+\end{enumerate}
+Then $F$ is representable.
+\end{lemma}
+
+\begin{proof}
+Let $X_i$ be a scheme representing $F_i$ and let
+$\xi_i \in F_i(X_i) \subset F(X_i)$ be the ``universal family''.
+Because $F_j \subset F$ is representable by open immersions,
+there exists an open $U_{ij} \subset X_i$ such that
+$T \to X_i$ factors through $U_{ij}$ if and only if
+$\xi_i|_T \in F_j(T)$. In particular
+$\xi_i|_{U_{ij}} \in F_j(U_{ij})$ and therefore we obtain a
+canonical morphism $\varphi_{ij} : U_{ij} \to X_j$ such that
+$\varphi_{ij}^*\xi_j = \xi_i|_{U_{ij}}$. By definition of $U_{ji}$
+this implies that $\varphi_{ij}$ factors through $U_{ji}$.
+Since $(\varphi_{ij} \circ \varphi_{ji})^*\xi_j
+=\varphi_{ji}^*(\varphi_{ij}^*\xi_j) =
+\varphi_{ji}^*\xi_i = \xi_j$ we conclude that
+$\varphi_{ij} \circ \varphi_{ji} = \text{id}_{U_{ji}}$
+because the pair $(X_j, \xi_j)$ represents $F_j$.
+In particular the maps $\varphi_{ij} : U_{ij} \to U_{ji}$
+are isomorphisms of schemes.
+Next we have to show that
+$\varphi_{ij}^{-1}(U_{ji} \cap U_{jk}) = U_{ij} \cap U_{ik}$.
+This is true because (a) $U_{ji} \cap U_{jk}$ is the largest
+open of $U_{ji}$ such that $\xi_j$ restricts to an element
+of $F_k$, (b) $U_{ij} \cap U_{ik}$ is the largest
+open of $U_{ij}$ such that $\xi_i$ restricts to an element
+of $F_k$, and (c) $\varphi_{ij}^*\xi_j = \xi_i$. Moreover,
+the cocycle condition in Section \ref{section-glueing-schemes}
+follows because both
+$\varphi_{jk}|_{U_{ji} \cap U_{jk}} \circ
+\varphi_{ij}|_{U_{ij} \cap U_{ik}}$ and
+$\varphi_{ik}|_{U_{ij} \cap U_{ik}}$ pullback $\xi_k$
+to the element $\xi_i$.
+Thus we may apply Lemma \ref{lemma-glue-schemes}
+to obtain a scheme $X$ with an open
+covering $X = \bigcup U_i$ and isomorphisms $\varphi_i : X_i \to U_i$
+with properties as in Lemma \ref{lemma-glue}.
+Let $\xi_i' = (\varphi_i^{-1})^* \xi_i$.
+The conditions of Lemma \ref{lemma-glue} imply that
+$\xi_i'|_{U_i \cap U_j} = \xi_j'|_{U_i \cap U_j}$.
+Therefore, by the condition that $F$ satisfies the sheaf
+condition in the Zariski topology we see that
+there exists an element $\xi' \in F(X)$ such that
+$\xi_i = \varphi_i^*\xi'|_{U_i}$ for all $i$.
+Since $\varphi_i$ is an isomorphism we also get that
+$(U_i, \xi'|_{U_i})$ represents the functor $F_i$.
+
+\medskip\noindent
+We claim that the pair $(X, \xi')$ represents the functor $F$.
+To show this, let $T$ be a scheme and let $\xi \in F(T)$.
+We will construct a unique morphism $g : T \to X$ such that
+$g^*\xi' = \xi$. Namely, by the condition that the subfunctors
+$F_i$ cover $F$ there exists an open covering $T = \bigcup V_i$
+such that for each $i$ the restriction $\xi|_{V_i} \in F_i(V_i)$.
+Moreover, since each of the inclusions $F_i \subset F$ are representable
+by open immersions we may assume that each $V_i \subset T$ is maximal
+open with this property.
+Because, $(U_i, \xi'|_{U_i})$ represents the functor $F_i$ we
+get a unique morphism $g_i : V_i \to U_i$ such that
+$g_i^*\xi'|_{U_i} = \xi|_{V_i}$. On the overlaps $V_i \cap V_j$
+the morphisms $g_i$ and $g_j$ agree, for example because they both
+pull back $\xi'|_{U_i \cap U_j} \in F_i(U_i \cap U_j)$
+to the same element. Thus the morphisms $g_i$ glue to a unique morphism
+from $T \to X$ as desired.
+\end{proof}
+
+\begin{remark}
+\label{remark-representable-locally-ringed}
+Suppose the functor $F$ is defined on all locally ringed spaces,
+and if conditions of Lemma \ref{lemma-glue-functors} are replaced by
+the following:
+\begin{enumerate}
+\item $F$ satisfies the sheaf property on the category of locally ringed
+spaces,
+\item there exists a set $I$ and a collection of subfunctors
+$F_i \subset F$ such that
+\begin{enumerate}
+\item each $F_i$ is representable by a scheme,
+\item each $F_i \subset F$ is representable by open immersions
+on the category of locally ringed spaces, and
+\item the collection $(F_i)_{i \in I}$ covers $F$
+as a functor on the category of locally ringed spaces.
+\end{enumerate}
+\end{enumerate}
+We leave it to the reader to spell this out further.
+Then the end result is that the functor $F$ is
+representable in the category of locally ringed spaces
+and that the representing object is a scheme.
+\end{remark}
+
+
+

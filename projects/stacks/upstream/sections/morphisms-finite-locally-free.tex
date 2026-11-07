@@ -1,0 +1,228 @@
+\section{Finite locally free morphisms}
+\label{section-finite-locally-free}
+
+\noindent
+In many papers the authors use finite flat morphisms when they really mean
+finite locally free morphisms. The reason is that if the base is locally
+Noetherian then this is the same thing. But in general it is not, see
+Exercises, Exercise \ref{exercises-exercise-flat-not-projective}.
+
+\begin{definition}
+\label{definition-finite-locally-free}
+Let $f : X \to S$ be a morphism of schemes.
+We say $f$ is {\it finite locally free} if $f$ is
+affine and $f_*\mathcal{O}_X$ is a finite locally
+free $\mathcal{O}_S$-module. In this case we say $f$ is
+has {\it rank} or {\it degree} $d$
+if the sheaf $f_*\mathcal{O}_X$ is finite locally free of degree $d$.
+\end{definition}
+
+\noindent
+Note that if $f : X \to S$ is finite locally free then $S$ is the disjoint
+union of open and closed subschemes $S_d$ such that $f^{-1}(S_d) \to S_d$
+is finite locally free of degree $d$.
+
+\begin{lemma}
+\label{lemma-finite-flat}
+Let $f : X \to S$ be a morphism of schemes.
+The following are equivalent:
+\begin{enumerate}
+\item $f$ is finite locally free,
+\item $f$ is finite, flat, and locally of finite presentation.
+\end{enumerate}
+If $S$ is locally Noetherian these are also equivalent to
+\begin{enumerate}
+\item[(3)] $f$ is finite and flat.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let $V \subset S$ be affine open. In all three cases
+the morphism is affine hence $f^{-1}(V)$ is affine.
+Thus we may write $V = \Spec(R)$ and $f^{-1}(V) = \Spec(A)$
+for some $R$-algebra $A$.
+Assume (1). This means we can cover $S$ by affine opens
+$V = \Spec(R)$ such that $A$ is finite free as an $R$-module.
+Then $R \to A$ is of finite presentation by
+Algebra, Lemma \ref{algebra-lemma-finite-finite-type}.
+Thus (2) holds. Conversely, assume (2).
+For every affine open $V = \Spec(R)$ of $S$ the ring map
+$R \to A$ is finite and of finite presentation and $A$ is flat
+as an $R$-module. By
+Algebra, Lemma \ref{algebra-lemma-finite-finitely-presented-extension}
+we see that $A$ is finitely presented as an $R$-module.
+Thus Algebra, Lemma \ref{algebra-lemma-finite-projective}
+implies $A$ is finite locally free. Thus (1) holds.
+The Noetherian case follows as a finite module over a Noetherian ring
+is a finitely presented module, see Algebra,
+Lemma \ref{algebra-lemma-Noetherian-finite-type-is-finite-presentation}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-composition-finite-locally-free}
+A composition of finite locally free morphisms is finite locally free.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-base-change-finite-locally-free}
+A base change of a finite locally free morphism is finite locally free.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-finite-locally-free}
+Let $f : X \to S$ be a finite locally free morphism of schemes.
+There exists a disjoint union decomposition
+$S = \coprod_{d \geq 0} S_d$ by open and closed subschemes
+such that setting $X_d = f^{-1}(S_d)$ the restrictions
+$f|_{X_d}$ are finite locally free morphisms $X_d \to S_d$
+of degree $d$.
+\end{lemma}
+
+\begin{proof}
+This is true because a finite locally free sheaf locally has
+a well defined rank. Details omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-massage-finite}
+Let $f : Y \to X$ be a finite morphism with $X$ affine.
+There exists a diagram
+$$
+\xymatrix{
+Z' \ar[rd] &
+Y' \ar[l]^i \ar[d] \ar[r] &
+Y \ar[d] \\
+ & X' \ar[r] & X
+}
+$$
+where
+\begin{enumerate}
+\item $Y' \to Y$ and $X' \to X$ are surjective finite locally free,
+\item $Y' = X' \times_X Y$,
+\item $i : Y' \to Z'$ is a closed immersion,
+\item $Z' \to X'$ is finite locally free, and
+\item $Z' = \bigcup_{j = 1, \ldots, m} Z'_j$ is a (set theoretic)
+finite union of closed subschemes, each of which maps isomorphically
+to $X'$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Write $X = \Spec(A)$ and $Y = \Spec(B)$. See also
+More on Algebra, Section \ref{more-algebra-section-descent-flatness-integral}.
+Let $x_1, \ldots, x_n \in B$ be generators of $B$ over $A$.
+For each $i$ we can choose a monic polynomial $P_i(T) \in A[T]$
+such that $P(x_i) = 0$ in $B$. By
+Algebra, Lemma \ref{algebra-lemma-adjoin-roots}
+(applied $n$ times) there exists a finite locally free ring
+extension $A \subset A'$ such that each $P_i$ splits completely:
+$$
+P_i(T) = \prod\nolimits_{k = 1, \ldots, d_i} (T - \alpha_{ik})
+$$
+for certain $\alpha_{ik} \in A'$. Set
+$$
+C = A'[T_1, \ldots, T_n]/(P_1(T_1), \ldots, P_n(T_n))
+$$
+and $B' = A' \otimes_A B$. The map $C \to B'$, $T_i \mapsto 1 \otimes x_i$
+is an $A'$-algebra surjection. Setting $X' = \Spec(A')$,
+$Y' = \Spec(B')$ and $Z' = \Spec(C)$ we see that
+(1) -- (4) hold. Part (5) holds because set theoretically
+$\Spec(C)$ is the union of the closed subschemes
+cut out by the ideals
+$$
+(T_1 - \alpha_{1k_1}, T_2 - \alpha_{2k_2}, \ldots, T_n - \alpha_{nk_n})
+$$
+for any $1 \leq k_i \leq d_i$.
+\end{proof}
+
+\noindent
+The following lemma is stated in the correct generality
+in Lemma \ref{lemma-image-nowhere-dense-quasi-finite} below.
+
+\begin{lemma}
+\label{lemma-image-nowhere-dense-finite}
+Let $f : Y \to X$ be a finite morphism of schemes.
+Let $T \subset Y$ be a closed nowhere dense subset of $Y$.
+Then $f(T) \subset X$ is a closed nowhere dense subset of $X$.
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-finite-proper} we know that $f(T) \subset X$ is closed.
+Let $X = \bigcup X_i$ be an affine covering.
+Since $T$ is nowhere dense in $Y$, we see that also $T \cap f^{-1}(X_i)$
+is nowhere dense in $f^{-1}(X_i)$. Hence if we can prove the theorem in the
+affine case, then we see that $f(T) \cap X_i$ is nowhere dense.
+This then implies that $T$ is nowhere dense in $X$ by
+Topology, Lemma \ref{topology-lemma-nowhere-dense-local}.
+
+\medskip\noindent
+Assume $X$ is affine. Choose a diagram
+$$
+\xymatrix{
+Z' \ar[rd] &
+Y' \ar[l]^i \ar[d]^{f'} \ar[r]_a &
+Y \ar[d]^f \\
+ & X' \ar[r]^b & X
+}
+$$
+as in Lemma \ref{lemma-massage-finite}. The morphisms $a$, $b$ are
+open since they are finite locally free
+(Lemmas \ref{lemma-finite-flat} and \ref{lemma-fppf-open}).
+Hence $T' = a^{-1}(T)$ is nowhere dense, see
+Topology, Lemma \ref{topology-lemma-open-inverse-image-closed-nowhere-dense}.
+The morphism $b$ is surjective and open.
+Hence, if we can prove $f'(T') = b^{-1}(f(T))$ is
+nowhere dense, then $f(T)$ is nowhere dense, see
+Topology, Lemma \ref{topology-lemma-open-inverse-image-closed-nowhere-dense}.
+As $i$ is a closed immersion, by
+Topology, Lemma \ref{topology-lemma-closed-image-nowhere-dense}
+we see that $i(T') \subset Z'$ is closed and nowhere dense.
+Thus we have reduced the problem to the case discussed
+in the following paragraph.
+
+\medskip\noindent
+Assume that $Y = \bigcup_{i = 1, \ldots, n} Y_i$ is a finite union of
+closed subsets, each mapping isomorphically to $X$. Consider
+$T_i = Y_i \cap T$. If each of the $T_i$ is nowhere dense in $Y_i$,
+then each $f(T_i)$ is nowhere dense in $X$ as $Y_i \to X$ is an isomorphism.
+Hence $f(T) = f(T_i)$ is a finite union of nowhere dense closed
+subsets of $X$ and we win, see
+Topology, Lemma \ref{topology-lemma-nowhere-dense}.
+Suppose not, say $T_1$ contains a nonempty open $V \subset Y_1$.
+We are going to show this leads to a contradiction.
+Consider $Y_2 \cap V \subset V$. This is either
+a proper closed subset, or equal to $V$. In the first case we replace
+$V$ by $V \setminus V \cap Y_2$, so $V \subset T_1$ is open in $Y_1$ and
+does not meet $Y_2$. In the second case we have
+$V \subset Y_1 \cap Y_2$ is open in both $Y_1$ and $Y_2$.
+Repeat sequentially with $i = 3, \ldots, n$. The result is a disjoint
+union decomposition
+$$
+\{1, \ldots, n\} = I_1 \amalg I_2, \quad 1 \in I_1
+$$
+and an open $V$ of $Y_1$ contained in $T_1$ such that $V \subset Y_i$
+for $i \in I_1$ and $V \cap Y_i = \emptyset$ for $i \in I_2$. Set
+$U = f(V)$. This is an open of $X$ since $f|_{Y_1} : Y_1 \to X$ is
+an isomorphism. Then
+$$
+f^{-1}(U) = V\ \amalg\ \bigcup\nolimits_{i \in I_2} (Y_i \cap f^{-1}(U))
+$$
+As $\bigcup_{i \in I_2} Y_i$ is closed, this implies that
+$V \subset f^{-1}(U)$ is open, hence $V \subset Y$ is open.
+This contradicts the assumption that $T$ is nowhere dense in $Y$, as desired.
+\end{proof}
+
+
+
+
+
+
+

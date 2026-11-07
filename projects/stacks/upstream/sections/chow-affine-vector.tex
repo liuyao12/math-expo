@@ -1,0 +1,426 @@
+\section{Affine bundles}
+\label{section-affine-vector}
+
+\noindent
+For an affine bundle the pullback map is surjective on Chow groups.
+
+\begin{lemma}
+\label{lemma-pullback-affine-fibres-surjective}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$, $Y$ be locally of finite type over $S$.
+Let $f : X \to Y$ be a flat morphism of relative dimension $r$.
+Assume that for every $y \in Y$, there exists an open neighbourhood
+$U \subset Y$ such that $f|_{f^{-1}(U)} : f^{-1}(U) \to U$
+is identified with the morphism $U \times \mathbf{A}^r \to U$.
+Then $f^* : \CH_k(Y) \to \CH_{k + r}(X)$ is surjective for all
+$k \in \mathbf{Z}$.
+\end{lemma}
+
+\begin{proof}
+Let $\alpha \in \CH_{k + r}(X)$.
+Write $\alpha = \sum m_j[W_j]$ with $m_j \not = 0$ and
+$W_j$ pairwise distinct integral closed subschemes of
+$\delta$-dimension $k + r$. Then the family $\{W_j\}$
+is locally finite in $X$. For any quasi-compact open
+$V \subset Y$ we see that $f^{-1}(V) \cap W_j$
+is nonempty only for finitely many $j$. Hence the
+collection $Z_j = \overline{f(W_j)}$ of closures
+of images is a locally finite collection of integral
+closed subschemes of $Y$.
+
+\medskip\noindent
+Consider the fibre product diagrams
+$$
+\xymatrix{
+f^{-1}(Z_j) \ar[r] \ar[d]_{f_j} & X \ar[d]^f \\
+Z_j \ar[r] & Y
+}
+$$
+Suppose that $[W_j] \in Z_{k + r}(f^{-1}(Z_j))$
+is rationally equivalent to $f_j^*\beta_j$ for some
+$k$-cycle $\beta_j \in \CH_k(Z_j)$. Then
+$\beta = \sum m_j \beta_j$ will be a $k$-cycle on $Y$
+and $f^*\beta = \sum m_j f_j^*\beta_j$ will be rationally
+equivalent to $\alpha$ (see
+Remark \ref{remark-infinite-sums-rational-equivalences}).
+This reduces us to the case $Y$ integral, and
+$\alpha = [W]$ for some integral closed subscheme
+of $X$ dominating $Y$. In particular we may
+assume that $d = \dim_\delta(Y) < \infty$.
+
+\medskip\noindent
+Hence we can use induction on $d = \dim_\delta(Y)$.
+If $d < k$, then $\CH_{k + r}(X) = 0$ and the lemma holds.
+By assumption there exists a dense open $V \subset Y$ such
+that $f^{-1}(V) \cong V \times \mathbf{A}^r$ as schemes over $V$.
+Suppose that we can show that $\alpha|_{f^{-1}(V)} = f^*\beta$
+for some $\beta \in Z_k(V)$. By Lemma \ref{lemma-exact-sequence-open}
+we see that
+$\beta = \beta'|_V$ for some $\beta' \in Z_k(Y)$.
+By the exact sequence
+$\CH_k(f^{-1}(Y \setminus V)) \to \CH_k(X) \to \CH_k(f^{-1}(V))$
+of Lemma \ref{lemma-restrict-to-open}
+we see that $\alpha - f^*\beta'$ comes from
+a cycle $\alpha' \in \CH_{k + r}(f^{-1}(Y \setminus V))$.
+Since $\dim_\delta(Y \setminus V) < d$ we win by
+induction on $d$.
+
+\medskip\noindent
+Thus we may assume that $X = Y \times \mathbf{A}^r$.
+In this case we can factor $f$ as
+$$
+X = Y \times \mathbf{A}^r \to
+Y \times \mathbf{A}^{r - 1} \to \ldots \to
+Y \times \mathbf{A}^1 \to Y.
+$$
+Hence it suffices to do the case $r = 1$. By the argument in the
+second paragraph of the proof we are reduced to the case
+$\alpha = [W]$, $Y$ integral, and $W \to Y$ dominant.
+Again we can do induction on $d = \dim_\delta(Y)$.
+If $W = Y \times \mathbf{A}^1$, then $[W] = f^*[Y]$.
+Lastly, $W \subset Y \times \mathbf{A}^1$ is a proper inclusion,
+then $W \to Y$ induces a finite field extension $R(W)/R(Y)$.
+Let $P(T) \in R(Y)[T]$ be the monic irreducible polynomial such
+that the generic fibre of $W \to Y$ is cut out by $P$ in
+$\mathbf{A}^1_{R(Y)}$. Let $V \subset Y$ be a nonempty open such
+that $P \in \Gamma(V, \mathcal{O}_Y)[T]$, and such that
+$W \cap f^{-1}(V)$ is still cut out by $P$. Then we see that
+$\alpha|_{f^{-1}(V)} \sim_{rat} 0$ and hence $\alpha \sim_{rat} \alpha'$
+for some cycle $\alpha'$ on $(Y \setminus V) \times \mathbf{A}^1$.
+By induction on the dimension we win.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-linebundle}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$ be locally of finite type over $S$.
+Let $\mathcal{L}$ be an invertible $\mathcal{O}_X$-module.
+Let
+$$
+p :
+L = \underline{\Spec}(\text{Sym}^*(\mathcal{L}))
+\longrightarrow
+X
+$$
+be the associated vector bundle over $X$.
+Then $p^* : \CH_k(X) \to \CH_{k + 1}(L)$ is an isomorphism for all $k$.
+\end{lemma}
+
+\begin{proof}
+For surjectivity see Lemma \ref{lemma-pullback-affine-fibres-surjective}.
+Let $o : X \to L$ be the zero section of $L \to X$, i.e., the morphism
+corresponding to the surjection $\text{Sym}^*(\mathcal{L}) \to \mathcal{O}_X$
+which maps $\mathcal{L}^{\otimes n}$ to zero for all $n > 0$.
+Then $p \circ o = \text{id}_X$ and $o(X)$ is an effective
+Cartier divisor on $L$. Hence by Lemma \ref{lemma-relative-effective-cartier}
+we see that $o^* \circ p^* = \text{id}$ and we conclude that $p^*$ is
+injective too.
+\end{proof}
+
+\begin{remark}
+\label{remark-when-isomorphism}
+We will see later (Lemma \ref{lemma-vectorbundle}) that if $X$ is a
+vector bundle of rank $r$ over $Y$ then the pullback map
+$\CH_k(Y) \to \CH_{k + r}(X)$
+is an isomorphism. This is true whenever $X \to Y$ satisfies
+the assumptions of Lemma \ref{lemma-pullback-affine-fibres-surjective}, see
+\cite[Lemma 2.2]{Totaro-group}. We will sketch a proof in
+Remark \ref{remark-higher-chow-isomorphism} using higher chow groups.
+\end{remark}
+
+\begin{lemma}
+\label{lemma-linebundle-formulae}
+In the situation of Lemma \ref{lemma-linebundle} denote $o : X \to L$
+the zero section (see proof of the lemma). Then we have
+\begin{enumerate}
+\item $o(X)$ is the zero scheme of a regular global section of
+$p^*\mathcal{L}^{\otimes -1}$,
+\item $o_* : \CH_k(X) \to \CH_k(L)$ as $o$ is a closed immersion,
+\item $o^* : \CH_{k + 1}(L) \to \CH_k(X)$ as $o(X)$
+is an effective Cartier divisor,
+\item $o^* p^* : \CH_k(X) \to \CH_k(X)$ is the identity map,
+\item $o_*\alpha = - p^*(c_1(\mathcal{L}) \cap \alpha)$ for any
+$\alpha \in \CH_k(X)$, and
+\item $o^* o_* : \CH_k(X) \to \CH_{k - 1}(X)$ is equal to the map
+$\alpha \mapsto - c_1(\mathcal{L}) \cap \alpha$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Since $p_*\mathcal{O}_L = \text{Sym}^*(\mathcal{L})$ we have
+$p_*(p^*\mathcal{L}^{\otimes -1}) =
+\text{Sym}^*(\mathcal{L}) \otimes_{\mathcal{O}_X} \mathcal{L}^{\otimes -1}$
+by the projection formula
+(Cohomology, Lemma \ref{cohomology-lemma-projection-formula})
+and the section mentioned in (1) is
+the canonical trivialization $\mathcal{O}_X \to
+\mathcal{L} \otimes_{\mathcal{O}_X} \mathcal{L}^{\otimes -1}$.
+We omit the proof that the vanishing locus of
+this section is precisely $o(X)$. This proves (1).
+
+\medskip\noindent
+Parts (2), (3), and (4) we've seen in the course of the proof of
+Lemma \ref{lemma-linebundle}. Of course (4) is the first
+formula in Lemma \ref{lemma-relative-effective-cartier}.
+
+\medskip\noindent
+Part (5) follows from the second formula in
+Lemma \ref{lemma-relative-effective-cartier},
+additivity of capping with $c_1$ (Lemma \ref{lemma-c1-cap-additive}),
+and the fact that capping with $c_1$ commutes with flat pullback
+(Lemma \ref{lemma-flat-pullback-cap-c1}).
+
+\medskip\noindent
+Part (6) follows from Lemma \ref{lemma-gysin-back}
+and the fact that $o^*p^*\mathcal{L} = \mathcal{L}$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-decompose-section}
+Let $Y$ be a scheme. Let $\mathcal{L}_i$, $i = 1, 2$ be invertible
+$\mathcal{O}_Y$-modules. Let $s$ be a global section of
+$\mathcal{L}_1 \otimes_{\mathcal{O}_Y} \mathcal{L}_2$.
+Denote $i : D \to Y$ the zero scheme of $s$.
+Then there exists a commutative diagram
+$$
+\xymatrix{
+D_1 \ar[r]_{i_1} \ar[d]_{p_1} &
+L \ar[d]^p &
+D_2 \ar[l]^{i_2} \ar[d]^{p_2} \\
+D \ar[r]^i &
+Y &
+D \ar[l]_i
+}
+$$
+and sections $s_i$ of $p^*\mathcal{L}_i$ such that
+the following hold:
+\begin{enumerate}
+\item $p^*s = s_1 \otimes s_2$,
+\item $p$ is of finite type and flat of relative dimension $1$,
+\item $D_i$ is the zero scheme of $s_i$,
+\item $D_i \cong
+\underline{\Spec}(\text{Sym}^*(\mathcal{L}_{3 - i}^{\otimes -1})|_D))$
+over $D$ for $i = 1, 2$,
+\item $p^{-1}D = D_1 \cup D_2$ (scheme theoretic union),
+\item $D_1 \cap D_2$ (scheme theoretic intersection) maps
+isomorphically to $D$, and
+\item $D_1 \cap D_2 \to D_i$
+is the zero section of the line bundle $D_i \to D$ for $i = 1, 2$.
+\end{enumerate}
+Moreover, the formation of this diagram and the sections $s_i$
+commutes with arbitrary base change.
+\end{lemma}
+
+\begin{proof}
+Let $p : X \to Y$ be the relative spectrum of the quasi-coherent
+sheaf of $\mathcal{O}_Y$-algebras
+$$
+\mathcal{A} =
+\left(\bigoplus\nolimits_{a_1, a_2 \geq 0}
+\mathcal{L}_1^{\otimes -a_1} \otimes_{\mathcal{O}_Y}
+\mathcal{L}_2^{\otimes -a_2}\right)/\mathcal{J}
+$$
+where $\mathcal{J}$ is the ideal generated by local sections of
+the form $st - t$ for $t$ a local section of any summand
+$\mathcal{L}_1^{\otimes -a_1} \otimes \mathcal{L}_2^{\otimes -a_2}$
+with $a_1, a_2 > 0$. The sections $s_i$ viewed as maps
+$p^*\mathcal{L}_i^{\otimes -1} \to \mathcal{O}_X$ are defined as the adjoints
+of the maps $\mathcal{L}_i^{\otimes -1} \to \mathcal{A} = p_*\mathcal{O}_X$.
+For any $y \in Y$ we can choose an affine
+open $V \subset Y$, say $V = \Spec(A)$, containing $y$ and
+trivializations $z_i : \mathcal{O}_V \to \mathcal{L}_i^{\otimes -1}|_V$.
+Observe that $f = s(z_1z_2) \in A$ cuts out the closed subscheme $D$.
+Then clearly
+$$
+p^{-1}(V) = \Spec(B[z_1, z_2]/(z_1 z_2 - f))
+$$
+Since $D_i$ is cut out by $z_i$ everything is clear.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-decompose-section-formulae}
+In the situation of Lemma \ref{lemma-decompose-section}
+assume $Y$ is locally of finite type over $(S, \delta)$ as in
+Situation \ref{situation-setup}. Then we have
+$i_1^*p^*\alpha = p_1^*i^*\alpha$
+in $\CH_k(D_1)$ for all $\alpha \in \CH_k(Y)$.
+\end{lemma}
+
+\begin{proof}
+Let $W \subset Y$ be an integral closed subscheme of $\delta$-dimension $k$.
+We distinguish two cases.
+
+\medskip\noindent
+Assume $W \subset D$. Then
+$i^*[W] = c_1(\mathcal{L}_1) \cap [W] + c_1(\mathcal{L}_2) \cap [W]$
+in $\CH_{k - 1}(D)$ by our definition of Gysin homomorphisms and the
+additivity of Lemma \ref{lemma-c1-cap-additive}.
+Hence $p_1^*i^*[W] =
+p_1^*(c_1(\mathcal{L}_1) \cap [W]) + p_1^*(c_1(\mathcal{L}_2) \cap [W])$.
+On the other hand, we have
+$p^*[W] = [p^{-1}(W)]_{k + 1}$ by construction of flat pullback.
+And $p^{-1}(W) = W_1 \cup W_2$ (scheme theoretically)
+where $W_i = p_i^{-1}(W)$ is a line bundle over $W$
+by the lemma (since formation of the diagram commutes with base change).
+Then $[p^{-1}(W)]_{k + 1} = [W_1] + [W_2]$ as $W_i$ are integral closed
+subschemes of $L$ of $\delta$-dimension $k + 1$. Hence
+\begin{align*}
+i_1^*p^*[W]
+& =
+i_1^*[p^{-1}(W)]_{k + 1} \\
+& =
+i_1^*([W_1] + [W_2]) \\
+& =
+c_1(p_1^*\mathcal{L}_1) \cap [W_1] + [W_1 \cap W_2]_k \\
+& =
+c_1(p_1^*\mathcal{L}_1) \cap p_1^*[W] + [W_1 \cap W_2]_k \\
+& =
+p_1^*(c_1(\mathcal{L}_1) \cap [W]) + [W_1 \cap W_2]_k
+\end{align*}
+by construction of Gysin homomorphisms, the definition of flat pullback
+(for the second equality), and compatibility of $c_1 \cap -$
+with flat pullback (Lemma \ref{lemma-flat-pullback-cap-c1}).
+Since $W_1 \cap W_2$ is the zero section of the line bundle
+$W_1 \to W$ we see from Lemma \ref{lemma-linebundle-formulae}
+that $[W_1 \cap W_2]_k = p_1^*(c_1(\mathcal{L}_2) \cap [W])$.
+Note that here we use the fact that $D_1$ is the line bundle
+which is the relative spectrum of the inverse of $\mathcal{L}_2$.
+Thus we get the same thing as before.
+
+\medskip\noindent
+Assume $W \not \subset D$. In this case, both $i_1^*p^*[W]$
+and $p_1^*i^*[W]$ are represented by the $k - 1$ cycle associated
+to the scheme theoretic inverse image of $W$ in $D_1$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-normal-cone-effective-Cartier}
+In Situation \ref{situation-setup} let $X$ be a scheme locally
+of finite type over $S$. Let $(\mathcal{L}, s, i : D \to X)$
+be a triple as in Definition \ref{definition-gysin-homomorphism}.
+There exists a commutative diagram
+$$
+\xymatrix{
+D' \ar[r]_{i'} \ar[d]_p & X' \ar[d]^g \\
+D \ar[r]^i & X
+}
+$$
+such that
+\begin{enumerate}
+\item $p$ and $g$ are of finite type and flat of relative dimension $1$,
+\item $p^* : \CH_k(D) \to \CH_{k + 1}(D')$ is injective for all $k$,
+\item $D' \subset X'$ is the zero scheme of a global section
+$s' \in \Gamma(X', \mathcal{O}_{X'})$,
+\item $p^*i^* = (i')^*g^*$ as maps $\CH_k(X) \to \CH_k(D')$.
+\end{enumerate}
+Moreover, these properties remain true after arbitrary base change
+by morphisms $Y \to X$ which are locally of finite type.
+\end{lemma}
+
+\begin{proof}
+Observe that $(i')^*$ is defined because we have the triple
+$(\mathcal{O}_{X'}, s', i' : D' \to X')$ as in
+Definition \ref{definition-gysin-homomorphism}. Thus the statement makes sense.
+
+\medskip\noindent
+Set $\mathcal{L}_1 = \mathcal{O}_X$, $\mathcal{L}_2 = \mathcal{L}$
+and apply Lemma \ref{lemma-decompose-section} with the section $s$ of
+$\mathcal{L} = \mathcal{L}_1 \otimes_{\mathcal{O}_X} \mathcal{L}_2$.
+Take $D' = D_1$. The results now follow from the lemma, from
+Lemma \ref{lemma-decompose-section-formulae}
+and injectivity by
+Lemma \ref{lemma-linebundle}.
+\end{proof}
+
+\begin{remark}
+\label{remark-higher-chow-isomorphism}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $Y$ be locally of finite type over $S$. Let $r \geq 0$. Let
+$f : X \to Y$ be a morphism of schemes. Assume every $y \in Y$
+is contained in an open $V \subset Y$ such that
+$f^{-1}(V) \cong V \times \mathbf{A}^r$ as schemes over $V$.
+In this remark we sketch a proof of the fact that
+$f^* : \CH_k(Y) \to \CH_{k + r}(X)$ is an isomorphism.
+First, by Lemma \ref{lemma-pullback-affine-fibres-surjective}
+the map is surjective. Let $\alpha \in \CH_k(Y)$ with $f^*\alpha = 0$.
+We will prove that $\alpha = 0$.
+
+\medskip\noindent
+Step 1. We may assume that $\dim_\delta(Y) < \infty$. (This is immediate
+in all cases in practice so we suggest the reader skip this step.)
+Namely, any rational equivalence witnessing that $f^*\alpha = 0$ on $X$,
+will use a locally finite collection of integral closed subschemes 
+of dimension $k + r + 1$. Taking the union of the closures of the images
+of these in $Y$ we get a closed subscheme $Y' \subset Y$
+of $\dim_\delta(Y') \leq k + r + 1$ such that
+$\alpha$ is the image of some $\alpha' \in \CH_k(Y')$
+and such that $(f')^*\alpha = 0$ where $f'$ is the base change of $f$ to $Y'$.
+
+\medskip\noindent
+Step 2. Assume $d = \dim_\delta(Y) < \infty$. Then we can use induction on
+$d$. If $d < k$, then $\alpha = 0$ and we are done; this is the base case
+of the induction.
+In general, our assumption on $f$ shows we can choose a dense open
+$V \subset Y$ such that $U = f^{-1}(V) = \mathbf{A}^r_V$.
+Denote $Y' \subset Y$ the complement of $V$ as a reduced closed
+subscheme and set $X' = f^{-1}(Y')$. Consider
+$$
+\xymatrix{
+\CH^M_{k + r}(U, 1) \ar[r] &
+\CH_{k + r}(X') \ar[r] &
+\CH_{k + r}(X) \ar[r] &
+\CH_{k + r}(U) \ar[r] &
+0 \\
+\CH^M_k(V, 1) \ar[r] \ar[u] &
+\CH_k(Y') \ar[r] \ar[u] &
+\CH_k(Y) \ar[r] \ar[u] &
+\CH_k(V) \ar[r] \ar[u] &
+0
+}
+$$
+Here we use the first higher Chow groups of $V$ and $U$ and the
+six term exact sequences constructed in Remark \ref{remark-higher-chow},
+as well as flat pullback for these higher chow groups and
+compatibility of flat pullback with these six term exact sequences.
+Since $U = \mathbf{A}^r_V$ the vertical map on the right is an isomorphism.
+The map $\CH_k(Y') \to \CH_{k + r}(X')$ is bijective by induction on $d$.
+Hence to finish the argument is suffices to show that
+$$
+\CH^M_k(V, 1) \longrightarrow \CH^M_{k + r}(U, 1)
+$$
+is surjective. Arguing as in the proof of
+Lemma \ref{lemma-pullback-affine-fibres-surjective}
+this reduces to Step 3 below.
+
+\medskip\noindent
+Step 3. Let $F$ be a field. Then $\CH^M_0(\mathbf{A}^1_F, 1) = 0$.
+(In the proof of the lemma cited above we proved analogously that
+$\CH_0(\mathbf{A}^1_F) = 0$.) We have
+$$
+\CH^M_0(\mathbf{A}^1_F, 1) = \Coker\left(
+\partial : K^M_2(F(T)) \longrightarrow
+\bigoplus\nolimits_{\mathfrak p \subset F[T]\text{ maximal}}
+\kappa(\mathfrak p)^*\right)
+$$
+The classical argument for the vanishing of the cokernel is to
+show by induction on the degree of $\kappa(\mathfrak p)/F$
+that the summand corresponding to $\mathfrak p$ is in the image.
+If $\mathfrak p$ is generated by the
+irreducible monic polynomial $P(T) \in F[T]$ and if
+$u \in \kappa(x)^*$ is the residue class of some
+$Q(T) \in F[T]$ with $\deg(Q) < \deg(P)$ then one shows that
+$\partial(Q, P)$ produces the element $u$ at $\mathfrak p$
+and perhaps some other units at primes dividing $Q$ which
+have lower degree. This finishes the sketch of the proof.
+\end{remark}
+
+
+
+
+
+
+
+
+
+
+

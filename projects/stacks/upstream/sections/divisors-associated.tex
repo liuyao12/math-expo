@@ -1,0 +1,265 @@
+\section{Associated points}
+\label{section-associated}
+
+\noindent
+Let $R$ be a ring and let $M$ be an $R$-module.
+Recall that a prime $\mathfrak p \subset R$ is {\it associated} to $M$
+if there exists an element of $M$ whose annihilator is $\mathfrak p$.
+See Algebra, Definition \ref{algebra-definition-associated}.
+Here is the definition of associated points
+for quasi-coherent sheaves on schemes
+as given in \cite[IV Definition 3.1.1]{EGA}.
+
+\begin{definition}
+\label{definition-associated}
+Let $X$ be a scheme.
+Let $\mathcal{F}$ be a quasi-coherent sheaf on $X$.
+\begin{enumerate}
+\item We say $x \in X$ is {\it associated} to $\mathcal{F}$
+if the maximal ideal
+$\mathfrak m_x$ is associated to the $\mathcal{O}_{X, x}$-module
+$\mathcal{F}_x$.
+\item We denote $\text{Ass}(\mathcal{F})$ or $\text{Ass}_X(\mathcal{F})$
+the set of associated points of $\mathcal{F}$.
+\item The {\it associated points of $X$} are the associated
+points of $\mathcal{O}_X$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+These definitions are most useful when $X$ is locally Noetherian
+and $\mathcal{F}$ of finite type.
+For example it may happen that a generic point of an irreducible
+component of $X$ is not associated to $X$, see
+Example \ref{example-no-associated-prime}.
+In the non-Noetherian case it may be more convenient to use weakly
+associated points, see
+Section \ref{section-weakly-associated}.
+Let us link the scheme theoretic notion with the algebraic notion
+on affine opens; note that this correspondence works perfectly only
+for locally Noetherian schemes.
+
+\begin{lemma}
+\label{lemma-associated-affine-open}
+Let $X$ be a scheme. Let $\mathcal{F}$ be a quasi-coherent sheaf on $X$.
+Let $\Spec(A) = U \subset X$ be an affine open, and set
+$M = \Gamma(U, \mathcal{F})$.
+Let $x \in U$, and let $\mathfrak p \subset A$ be the corresponding prime.
+\begin{enumerate}
+\item If $\mathfrak p$ is associated to $M$, then $x$ is associated
+to $\mathcal{F}$.
+\item If $\mathfrak p$ is finitely generated, then the converse holds
+as well.
+\end{enumerate}
+In particular, if $X$ is locally Noetherian, then the equivalence
+$$
+\mathfrak p \in \text{Ass}(M) \Leftrightarrow x \in \text{Ass}(\mathcal{F})
+$$
+holds for all pairs $(\mathfrak p, x)$ as above.
+\end{lemma}
+
+\begin{proof}
+This follows from
+Algebra, Lemma \ref{algebra-lemma-associated-primes-localize}.
+But we can also argue directly as follows.
+Suppose $\mathfrak p$ is associated to $M$.
+Then there exists an $m \in M$ whose annihilator is $\mathfrak p$.
+Since localization is exact we see that
+$\mathfrak pA_{\mathfrak p}$ is the annihilator of
+$m/1 \in M_{\mathfrak p}$. Since $M_{\mathfrak p} = \mathcal{F}_x$
+(Schemes, Lemma \ref{schemes-lemma-spec-sheaves})
+we conclude that $x$ is associated to $\mathcal{F}$.
+
+\medskip\noindent
+Conversely, assume that $x$ is associated to $\mathcal{F}$,
+and $\mathfrak p$ is finitely generated.
+As $x$ is associated to $\mathcal{F}$
+there exists an element $m' \in M_{\mathfrak p}$ whose
+annihilator is $\mathfrak pA_{\mathfrak p}$. Write
+$m' = m/f$ for some $f \in A$, $f \not \in \mathfrak p$.
+The annihilator $I$ of $m$ is an ideal of $A$ such that
+$IA_{\mathfrak p} = \mathfrak pA_{\mathfrak p}$. Hence
+$I \subset \mathfrak p$, and $(\mathfrak p/I)_{\mathfrak p} = 0$.
+Since $\mathfrak p$ is finitely generated,
+there exists a $g \in A$, $g \not \in \mathfrak p$ such that
+$g(\mathfrak p/I) = 0$. Hence the annihilator of $gm$ is
+$\mathfrak p$ and we win.
+
+\medskip\noindent
+If $X$ is locally Noetherian, then $A$ is Noetherian
+(Properties, Lemma \ref{properties-lemma-locally-Noetherian})
+and $\mathfrak p$ is always finitely generated.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-ass-support}
+Let $X$ be a scheme.
+Let $\mathcal{F}$ be a quasi-coherent $\mathcal{O}_X$-module.
+Then $\text{Ass}(\mathcal{F}) \subset \text{Supp}(\mathcal{F})$.
+\end{lemma}
+
+\begin{proof}
+This is immediate from the definitions.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-ses-ass}
+Let $X$ be a scheme.
+Let $0 \to \mathcal{F}_1 \to \mathcal{F}_2 \to \mathcal{F}_3 \to 0$
+be a short exact sequence of quasi-coherent sheaves on $X$.
+Then
+$\text{Ass}(\mathcal{F}_2) \subset
+\text{Ass}(\mathcal{F}_1) \cup \text{Ass}(\mathcal{F}_3)$
+and
+$\text{Ass}(\mathcal{F}_1) \subset \text{Ass}(\mathcal{F}_2)$.
+\end{lemma}
+
+\begin{proof}
+For every point $x \in X$ the sequence of stalks
+$0 \to \mathcal{F}_{1, x} \to \mathcal{F}_{2, x} \to \mathcal{F}_{3, x} \to 0$
+is a short exact sequence of $\mathcal{O}_{X, x}$-modules.
+Hence the lemma follows from
+Algebra, Lemma \ref{algebra-lemma-ass}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-finite-ass}
+Let $X$ be a locally Noetherian scheme.
+Let $\mathcal{F}$ be a coherent $\mathcal{O}_X$-module.
+Then $\text{Ass}(\mathcal{F}) \cap U$ is finite for
+every quasi-compact open $U \subset X$.
+\end{lemma}
+
+\begin{proof}
+This is true because the set of associated primes of a finite module over
+a Noetherian ring is finite, see
+Algebra, Lemma \ref{algebra-lemma-finite-ass}.
+To translate from schemes to algebra use that $U$ is a finite union of
+affine opens, each of these opens is the spectrum of a Noetherian ring
+(Properties, Lemma \ref{properties-lemma-locally-Noetherian}),
+$\mathcal{F}$ corresponds to a finite module over this ring
+(Cohomology of Schemes, Lemma \ref{coherent-lemma-coherent-Noetherian}),
+and finally use
+Lemma \ref{lemma-associated-affine-open}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-ass-zero}
+Let $X$ be a locally Noetherian scheme. Let $\mathcal{F}$ be a
+quasi-coherent $\mathcal{O}_X$-module. Then
+$$
+\mathcal{F} = 0 \Leftrightarrow \text{Ass}(\mathcal{F}) = \emptyset.
+$$
+\end{lemma}
+
+\begin{proof}
+If $\mathcal{F} = 0$, then $\text{Ass}(\mathcal{F}) = \emptyset$
+by definition. Conversely, if $\text{Ass}(\mathcal{F}) = \emptyset$,
+then $\mathcal{F} = 0$ by
+Algebra, Lemma \ref{algebra-lemma-ass-zero}.
+To translate from schemes to algebra, restrict to any affine and use
+Lemma \ref{lemma-associated-affine-open}.
+\end{proof}
+
+\begin{example}
+\label{example-no-associated-prime}
+Let $k$ be a field. The ring $R = k[x_1, x_2, x_3, \ldots]/(x_i^2)$
+is local with locally nilpotent maximal ideal $\mathfrak m$.
+There exists no element of $R$ which has annihilator $\mathfrak m$.
+Hence $\text{Ass}(R) = \emptyset$, and $X = \Spec(R)$
+is an example of a scheme which has no associated points.
+\end{example}
+
+\begin{lemma}
+\label{lemma-restriction-injective-open-contains-ass}
+Let $X$ be a locally Noetherian scheme. Let $\mathcal{F}$ be a quasi-coherent
+$\mathcal{O}_X$-module. If $U \subset X$ is open and
+$\text{Ass}(\mathcal{F}) \subset U$, then
+$\Gamma(X, \mathcal{F}) \to \Gamma(U, \mathcal{F})$ is injective.
+\end{lemma}
+
+\begin{proof}
+Let $s \in \Gamma(X, \mathcal{F})$ be a section which restricts to zero on $U$.
+Let $\mathcal{F}' \subset \mathcal{F}$ be the image of the map
+$\mathcal{O}_X \to \mathcal{F}$ defined by $s$. Then
+$\text{Supp}(\mathcal{F}') \cap U = \emptyset$. On the other hand,
+$\text{Ass}(\mathcal{F}') \subset \text{Ass}(\mathcal{F})$
+by Lemma \ref{lemma-ses-ass}. Since also
+$\text{Ass}(\mathcal{F}') \subset \text{Supp}(\mathcal{F}')$
+(Lemma \ref{lemma-ass-support}) we conclude
+$\text{Ass}(\mathcal{F}') = \emptyset$.
+Hence $\mathcal{F}' = 0$ by Lemma \ref{lemma-ass-zero}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-minimal-support-in-ass}
+Let $X$ be a locally Noetherian scheme.
+Let $\mathcal{F}$ be a quasi-coherent $\mathcal{O}_X$-module.
+Let $x \in \text{Supp}(\mathcal{F})$ be a point in the support
+of $\mathcal{F}$ which is not a specialization of another point of
+$\text{Supp}(\mathcal{F})$. Then $x \in \text{Ass}(\mathcal{F})$.
+In particular, any generic point of an irreducible component of $X$
+is an associated point of $X$.
+\end{lemma}
+
+\begin{proof}
+Since $x \in \text{Supp}(\mathcal{F})$ the module $\mathcal{F}_x$
+is not zero. Hence
+$\text{Ass}(\mathcal{F}_x) \subset \Spec(\mathcal{O}_{X, x})$
+is nonempty by
+Algebra, Lemma \ref{algebra-lemma-ass-zero}.
+On the other hand, by assumption
+$\text{Supp}(\mathcal{F}_x) = \{\mathfrak m_x\}$.
+Since
+$\text{Ass}(\mathcal{F}_x) \subset \text{Supp}(\mathcal{F}_x)$
+(Algebra, Lemma \ref{algebra-lemma-ass-support})
+we see that $\mathfrak m_x$ is associated to $\mathcal{F}_x$
+and we win.
+\end{proof}
+
+\noindent
+The following lemma is the analogue of
+More on Algebra, Lemma \ref{more-algebra-lemma-check-injective-on-ass}.
+
+\begin{lemma}
+\label{lemma-check-injective-on-ass}
+Let $X$ be a locally Noetherian scheme. Let
+$\varphi : \mathcal{F} \to \mathcal{G}$ be a map of
+quasi-coherent $\mathcal{O}_X$-modules.
+Assume that for every $x \in X$
+at least one of the following happens
+\begin{enumerate}
+\item $\mathcal{F}_x \to \mathcal{G}_x$ is injective, or
+\item $x \not \in \text{Ass}(\mathcal{F})$.
+\end{enumerate}
+Then $\varphi$ is injective.
+\end{lemma}
+
+\begin{proof}
+The assumptions imply that $\text{Ass}(\Ker(\varphi)) = \emptyset$
+and hence $\Ker(\varphi) = 0$ by Lemma \ref{lemma-ass-zero}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-check-isomorphism-via-depth-and-ass}
+Let $X$ be a locally Noetherian scheme. Let
+$\varphi : \mathcal{F} \to \mathcal{G}$ be a map of
+quasi-coherent $\mathcal{O}_X$-modules. Assume $\mathcal{F}$ is coherent
+and that for every $x \in X$ one of the following happens
+\begin{enumerate}
+\item $\mathcal{F}_x \to \mathcal{G}_x$ is an isomorphism, or
+\item $\text{depth}(\mathcal{F}_x) \geq 2$ and
+$x \not \in \text{Ass}(\mathcal{G})$.
+\end{enumerate}
+Then $\varphi$ is an isomorphism.
+\end{lemma}
+
+\begin{proof}
+This is a translation of More on Algebra, Lemma
+\ref{more-algebra-lemma-check-isomorphism-via-depth-and-ass}
+into the language of schemes.
+\end{proof}
+
+
+
+

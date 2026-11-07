@@ -1,0 +1,500 @@
+\section{Zariski's Main Theorem}
+\label{section-Zariski}
+
+\noindent
+In this section our aim is to prove the algebraic version of
+Zariski's Main theorem. This theorem will be the basis of many
+further developments in the theory of schemes and morphisms of
+schemes later in the Stacks project.
+
+\medskip\noindent
+Let $R \to S$ be a ring map of finite type.
+Our goal in this section is to show that the set
+of points of $\Spec(S)$ where the map is quasi-finite
+is {\it open} (Theorem \ref{theorem-main-theorem}).
+In fact, it will turn out that there exists
+a finite ring map $R \to S'$ such that in some sense the quasi-finite
+locus of $S/R$ is open in $\Spec(S')$
+(but we will not prove this in the algebra chapter since we do not
+develop the language of schemes here -- for the case where $R \to S$
+is quasi-finite see Lemma \ref{lemma-quasi-finite-open-integral-closure}).
+These statements are somewhat tricky to prove and
+we do it by a long list of lemmas concerning integral and
+finite extensions of rings. This material may be found
+in \cite{Henselian}, and \cite{Peskine}. We also found notes
+by Thierry Coquand helpful.
+
+\begin{lemma}
+\label{lemma-make-integral-trivial}
+Let $\varphi : R \to S$ be a ring map.
+Suppose $t \in S$ satisfies the
+relation $\varphi(a_0) + \varphi(a_1)t + \ldots + \varphi(a_n) t^n = 0$.
+Then $\varphi(a_n)t$ is integral over $R$.
+\end{lemma}
+
+\begin{proof}
+Namely, multiply the equation
+$\varphi(a_0) + \varphi(a_1)t + \ldots + \varphi(a_n) t^n = 0$
+with $\varphi(a_n)^{n-1}$ and write it as
+$\varphi(a_0 a_n^{n-1}) +
+\varphi(a_1 a_n^{n-2}) (\varphi(a_n)t) +
+\ldots +
+(\varphi(a_n) t)^n = 0$.
+\end{proof}
+
+\noindent
+The following lemma is in some sense the key lemma in this
+section.
+
+\begin{lemma}
+\label{lemma-make-integral-trick}
+Let $R$ be a ring. Let $\varphi : R[x] \to S$ be
+a ring map. Let $t \in S$.
+Assume that (a) $t$ is integral over $R[x]$,
+and (b) there exists a monic $p \in R[x]$ such that
+$t \varphi(p) \in \Im(\varphi)$. Then there
+exists a $q \in R[x]$ such that $t - \varphi(q)$
+is integral over $R$.
+\end{lemma}
+
+\begin{proof}
+Write $t \varphi(p) = \varphi(r)$ for some $r \in R[x]$.
+Using euclidean division, write $r = qp + r'$ with
+$q, r' \in R[x]$ and $\deg(r') < \deg(p)$. We may replace
+$t$ by $t - \varphi(q)$ which is still integral over
+$R[x]$, so that we obtain $t \varphi(p) = \varphi(r')$.
+In the ring $S_t$ we may write this as
+$\varphi(p) - (1/t) \varphi(r') = 0$.
+This implies that $\varphi(x)$ gives an element of the
+localization $S_t$ which is integral over
+$\varphi(R)[1/t] \subset S_t$. On the other hand,
+$t$ is integral over the subring $\varphi(R)[\varphi(x)] \subset S$.
+Combined we conclude that $t$ is integral over
+the subring $\varphi(R)[1/t] \subset S_t$, see Lemma
+\ref{lemma-integral-transitive}. In other words
+there exists an equation of the form
+$$
+t^d + \sum\nolimits_{i < d}
+\left(\sum\nolimits_{j = 0, \ldots, n_i} \varphi(r_{i, j})/t^j\right) t^i = 0
+$$
+in $S_t$ with $r_{i, j} \in R$. This means that
+$t^{d + N} +
+\sum_{i < d} \sum_{j = 0, \ldots, n_i} \varphi(r_{i, j}) t^{i + N - j} = 0$
+in $S$ for some $N$ large enough. In other words
+$t$ is integral over $R$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-combine-lemmas}
+Let $R$ be a ring. Let $\varphi : R[x] \to S$ be
+a ring map. Let $t \in S$. Assume $t$ is integral
+over $R[x]$. Let $p \in R[x]$, $p = a_0 + a_1x + \ldots +
+a_k x^k$ such that $t \varphi(p) \in \Im(\varphi)$.
+Then there exists a $q \in R[x]$ and $n \geq 0$
+such that $\varphi(a_k)^n t - \varphi(q)$ is integral
+over $R$.
+\end{lemma}
+
+\begin{proof}
+Let $R'$ and $S'$ be the localization of $R$ and $S$ at the element $a_k$.
+Let $\varphi' : R'[x] \to S'$ be the localization of $\varphi$.
+Let $t' \in S'$ be the image of $t$. Set $p' = p/a_k \in R'[x]$.
+Then $t' \varphi'(p') \in \Im(\varphi')$ since $t \varphi(p) \in \Im(\varphi)$.
+As $p'$ is monic, by
+Lemma \ref{lemma-make-integral-trick} there exists a $q' \in R'[x]$
+such that $t' - \varphi'(q')$ is integral over $R'$.
+We may choose an $n \geq 0$ and an element $q \in R[x]$
+such that $a_k^n q'$ is the image of $q$.
+Then $\varphi(a_k)^n t - \varphi(q)$ is an element of $S$ whose
+image in $S'$ is integral over $R'$.
+By Lemma \ref{lemma-integral-closure-localize}
+there exists an $m \geq 0$ such that
+$\varphi(a_k)^m(\varphi(a_k)^n t - \varphi(q))$ is integral over $R$.
+Thus $\varphi(a_k)^{m + n}t - \varphi(a_k^m q)$
+is integral over $R$ as desired.
+\end{proof}
+
+\begin{situation}
+\label{situation-one-transcendental-element}
+Let $R$ be a ring.
+Let $\varphi : R[x] \to S$ be finite.
+Let
+$$
+J = \{ g \in S \mid gS \subset \Im(\varphi)\}
+$$
+be the ``conductor ideal'' of $\varphi$.
+Assume $\varphi(R) \subset S$ integrally closed in $S$.
+\end{situation}
+
+\begin{lemma}
+\label{lemma-leading-coefficient-in-J}
+In Situation \ref{situation-one-transcendental-element}.
+Suppose $u \in S$, $a_0, \ldots, a_k \in R$,
+$u \varphi(a_0 + a_1x + \ldots + a_k x^k) \in J$.
+Then there exists an $m \geq 0$ such that
+$u \varphi(a_k)^m \in J$.
+\end{lemma}
+
+\begin{proof}
+Assume that $S$ is generated by $t_1, \ldots, t_n$
+as an $R[x]$-module. In this case
+$J = \{ g \in S \mid gt_i \in \Im(\varphi)\text{ for all }i\}$.
+Note that each element $u t_i$ is integral over
+$R[x]$, see Lemma \ref{lemma-finite-is-integral}.
+We have $\varphi(a_0 + a_1x + \ldots + a_k x^k) u t_i \in
+\Im(\varphi)$. By Lemma \ref{lemma-combine-lemmas}, for
+each $i$ there exists an integer $n_i$ and an element
+$q_i \in R[x]$ such that $\varphi(a_k^{n_i}) u t_i - \varphi(q_i)$
+is integral over $R$. By assumption this element is in $\varphi(R)$
+and hence $\varphi(a_k^{n_i}) u t_i \in \Im(\varphi)$.
+It follows that $m = \max\{n_1, \ldots, n_n\}$ works.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-all-coefficients-in-J}
+In Situation \ref{situation-one-transcendental-element}.
+Suppose $u \in S$, $a_0, \ldots, a_k \in R$,
+$u \varphi(a_0 + a_1x + \ldots + a_k x^k) \in \sqrt{J}$.
+Then $u \varphi(a_i) \in \sqrt{J}$ for all $i$.
+\end{lemma}
+
+\begin{proof}
+Under the assumptions of the lemma we have
+$u^n \varphi(a_0 + a_1x + \ldots + a_k x^k)^n \in J$ for
+some $n \geq 1$. By Lemma \ref{lemma-leading-coefficient-in-J}
+we deduce $u^n \varphi(a_k^{nm}) \in J$ for some $m \geq 1$.
+Thus $u \varphi(a_k) \in \sqrt{J}$, and so
+$u \varphi(a_0 + a_1x + \ldots + a_k x^k) - u \varphi(a_k x^k) =
+u \varphi(a_0 + a_1x + \ldots + a_{k-1} x^{k-1}) \in \sqrt{J}$.
+We win by induction on $k$.
+\end{proof}
+
+\noindent
+This lemma suggests the following definition.
+
+\begin{definition}
+\label{definition-strongly-transcendental}
+Given an inclusion of rings $R \subset S$ and
+an element $x \in S$ we say that $x$ is
+{\it strongly transcendental over $R$} if
+whenever $u(a_0 + a_1 x + \ldots + a_k x^k) = 0$
+with $u \in S$ and $a_i \in R$, then
+we have $ua_i = 0$ for all $i$.
+\end{definition}
+
+\noindent
+Note that if $S$ is a domain then this is the same as
+saying that $x$ as an element of the fraction field of
+$S$ is transcendental over the fraction field of $R$.
+
+\begin{lemma}
+\label{lemma-reduced-strongly-transcendental-minimal-prime}
+Suppose $R \subset S$ is an inclusion of reduced rings
+and suppose that $x \in S$ is strongly transcendental over $R$.
+Let $\mathfrak q \subset S$ be a minimal prime
+and let $\mathfrak p = R \cap \mathfrak q$.
+Then the image of $x$ in $S/\mathfrak q$ is strongly
+transcendental over the subring $R/\mathfrak p$.
+\end{lemma}
+
+\begin{proof}
+Suppose $u(a_0 + a_1x + \ldots + a_k x^k) \in \mathfrak q$.
+By Lemma \ref{lemma-minimal-prime-reduced-ring}
+the local ring $S_{\mathfrak q}$ is a field,
+and hence $u(a_0 + a_1x + \ldots + a_k x^k) $ is zero
+in $S_{\mathfrak q}$. Thus $uu'(a_0 + a_1x + \ldots + a_k x^k) = 0$
+for some $u' \in S$, $u' \not\in \mathfrak q$.
+Since $x$ is strongly transcendental over $R$ we get
+$uu'a_i = 0$ for all $i$. This in turn implies
+that $ua_i \in \mathfrak q$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-domains-transcendental-not-quasi-finite}
+Suppose $R\subset S$ is an inclusion of domains and
+let $x \in S$. Assume $x$ is (strongly) transcendental over $R$
+and that $S$ is finite over $R[x]$. Then $R \to S$ is not
+quasi-finite at any prime of $S$.
+\end{lemma}
+
+\begin{proof}
+As a first case, assume that $R$ is normal, see
+Definition \ref{definition-ring-normal}.
+By Lemma \ref{lemma-polynomial-ring-normal}
+we see that $R[x]$ is normal.
+Take a prime $\mathfrak q \subset S$,
+and set $\mathfrak p = R \cap \mathfrak q$.
+Assume that the extension $\kappa(\mathfrak p)
+\subset \kappa(\mathfrak q)$ is finite.
+This would be the case if $R \to S$ is
+quasi-finite at $\mathfrak q$.
+Let $\mathfrak r = R[x] \cap \mathfrak q$.
+Then since $\kappa(\mathfrak p)
+\subset \kappa(\mathfrak r) \subset \kappa(\mathfrak q)$
+we see that the extension $\kappa(\mathfrak p)
+\subset \kappa(\mathfrak r)$ is finite too.
+Thus the inclusion $\mathfrak r \supset \mathfrak p R[x]$
+is strict. By going down for $R[x] \subset S$,
+see Proposition \ref{proposition-going-down-normal-integral},
+we find a prime $\mathfrak q' \subset \mathfrak q$,
+lying over the prime $\mathfrak pR[x]$. Hence
+the fibre $\Spec(S \otimes_R \kappa(\mathfrak p))$
+contains a point not equal to $\mathfrak q$,
+namely $\mathfrak q'$, whose closure contains $\mathfrak q$ and hence
+$\mathfrak q$ is not isolated in its fibre.
+
+\medskip\noindent
+If $R$ is not normal, let $R \subset R' \subset K$ be
+the integral closure $R'$ of $R$ in its field of fractions
+$K$. Let $S \subset S' \subset L$ be the subring $S'$ of
+the field of fractions $L$ of $S$ generated by $R'$ and
+$S$. Note that by construction the map $S \otimes_R R'
+\to S'$ is surjective. This implies that $R'[x] \subset S'$
+is finite. Also, the map $S \subset S'$
+induces a surjection on $\Spec$, see
+Lemma \ref{lemma-integral-overring-surjective}.
+We conclude by Lemma \ref{lemma-four-rings} and the normal case
+we just discussed.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-reduced-strongly-transcendental-not-quasi-finite}
+Suppose $R \subset S$ is an inclusion of reduced rings.
+Assume $x \in S$ be strongly transcendental over $R$,
+and $S$ finite over $R[x]$. Then $R \to S$ is not
+quasi-finite at any prime of $S$.
+\end{lemma}
+
+\begin{proof}
+Let $\mathfrak q \subset S$ be any prime.
+Choose a minimal prime $\mathfrak q' \subset \mathfrak q$.
+According to Lemmas
+\ref{lemma-reduced-strongly-transcendental-minimal-prime} and
+\ref{lemma-domains-transcendental-not-quasi-finite}
+the extension $R/(R \cap \mathfrak q') \subset
+S/\mathfrak q'$ is not quasi-finite at the prime corresponding
+to $\mathfrak q$. By Lemma \ref{lemma-four-rings}
+the extension $R \to S$ is not quasi-finite
+at $\mathfrak q$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-quasi-finite-monogenic}
+Let $R$ be a ring. Let $S = R[x]/I$.
+Let $\mathfrak q \subset S$ be a prime.
+Assume $R \to S$ is quasi-finite at $\mathfrak q$.
+Let $S' \subset S$ be the integral closure of $R$ in $S$.
+Then there exists an element
+$g \in S'$, $g \not\in \mathfrak q$ such that
+$S'_g \cong S_g$.
+\end{lemma}
+
+\begin{proof}
+Let $\mathfrak p$ be the image of $\mathfrak q$ in $\Spec(R)$.
+There exists an $f \in I$, $f = a_nx^n + \ldots + a_0$ such that
+$a_i \not \in \mathfrak p$ for some $i$. Namely, otherwise the fibre ring
+$S \otimes_R \kappa(\mathfrak p)$ would be $\kappa(\mathfrak p)[x]$
+and the map would not be quasi-finite at any prime lying
+over $\mathfrak p$. We conclude there exists a relation
+$b_m x^m + \ldots + b_0 = 0$ with $b_j \in S'$, $j = 0, \ldots, m$
+and $b_j \not \in \mathfrak q \cap S'$ for some $j$.
+We prove the lemma by induction on $m$. The base case is
+$m = 0$ is vacuous (because the statements $b_0 = 0$ and
+$b_0 \not \in \mathfrak q$ are contradictory).
+
+\medskip\noindent
+The case $b_m \not \in \mathfrak q$. In this case $x$ is integral
+over $S'_{b_m}$, in fact $b_mx \in S'$ by
+Lemma \ref{lemma-make-integral-trivial}.
+Hence the injective map $S'_{b_m} \to S_{b_m}$ is also surjective, i.e.,
+an isomorphism as desired.
+
+\medskip\noindent
+The case $b_m \in \mathfrak q$. In this case we have $b_mx \in S'$ by
+Lemma \ref{lemma-make-integral-trivial}.
+Set $b'_{m - 1} = b_mx + b_{m - 1}$. Then
+$$
+b'_{m - 1}x^{m - 1} + b_{m - 2}x^{m - 2} + \ldots + b_0 = 0
+$$
+Since $b'_{m - 1}$ is congruent to $b_{m - 1}$ modulo $S' \cap \mathfrak q$
+we see that it is still the case that one of
+$b'_{m - 1}, b_{m - 2}, \ldots, b_0$ is not in $S' \cap \mathfrak q$.
+Thus we win by induction on $m$.
+\end{proof}
+
+\begin{theorem}[Zariski's Main Theorem]
+\label{theorem-main-theorem}
+Let $R$ be a ring. Let $R \to S$ be a finite type $R$-algebra.
+Let $S' \subset S$ be the integral closure of $R$ in $S$.
+Let $\mathfrak q \subset S$ be a prime of $S$.
+If $R \to S$ is quasi-finite at $\mathfrak q$ then
+there exists a $g \in S'$, $g \not \in \mathfrak q$
+such that $S'_g \cong S_g$.
+\end{theorem}
+
+\begin{proof}
+There exist finitely many elements
+$x_1, \ldots, x_n \in S$ such that $S$ is finite
+over the $R$-sub algebra generated by $x_1, \ldots, x_n$. (For
+example generators of $S$ over $R$.) We prove the proposition
+by induction on the minimal such number $n$.
+
+\medskip\noindent
+The case $n = 0$ is trivial, because in this case $S' = S$,
+see Lemma \ref{lemma-finite-is-integral}.
+
+\medskip\noindent
+The case $n = 1$. We may replace $R$ by its integral closure in $S$
+(Lemma \ref{lemma-quasi-finite-permanence} guarantees that $R \to S$
+is still quasi-finite at $\mathfrak q$). Thus we may assume
+$R \subset S$ is integrally closed in $S$, in other words $R = S'$.
+Consider the map $\varphi : R[x] \to S$, $x \mapsto x_1$.
+(We will see that $\varphi$ is not injective below.)
+By assumption $\varphi$ is finite. Hence we are in Situation
+\ref{situation-one-transcendental-element}.
+Let $J \subset S$ be the ``conductor ideal'' defined
+in Situation \ref{situation-one-transcendental-element}.
+Consider the diagram
+$$
+\xymatrix{
+R[x] \ar[r] & S \ar[r] & S/\sqrt{J} & R/(R \cap \sqrt{J})[x] \ar[l]
+\\
+& R \ar[lu] \ar[r] \ar[u] & R/(R \cap \sqrt{J}) \ar[u] \ar[ru] &
+}
+$$
+According to Lemma \ref{lemma-all-coefficients-in-J}
+the image of $x$ in the quotient $S/\sqrt{J}$
+is strongly transcendental over $R/ (R \cap \sqrt{J})$.
+Hence by Lemma \ref{lemma-reduced-strongly-transcendental-not-quasi-finite}
+the ring map $R/ (R \cap \sqrt{J}) \to S/\sqrt{J}$
+is not quasi-finite at any prime of $S/\sqrt{J}$.
+By Lemma \ref{lemma-four-rings} we deduce that $\mathfrak q$
+does not lie in $V(J) \subset \Spec(S)$.
+Thus there exists an element $s \in J$,
+$s \not\in \mathfrak q$. By definition of $J$ we may write
+$s = \varphi(f)$ for some polynomial $f \in R[x]$.
+Let $I = \Ker(\varphi : R[x] \to S)$. Since $\varphi(f) \in J$
+we get $(R[x]/I)_f \cong S_{\varphi(f)}$. Also $s \not \in \mathfrak q$
+means that $f \not \in \varphi^{-1}(\mathfrak q)$. Thus
+$\varphi^{-1}(\mathfrak q)/I$ is a prime of $R[x]/I$
+at which $R \to R[x]/I$ is quasi-finite, see
+Lemma \ref{lemma-quasi-finite-local}. Note that $R$ is integrally closed
+in $R[x]/I$ since $R$ is integrally closed in $S$. By
+Lemma \ref{lemma-quasi-finite-monogenic}
+there exists an element $h \in R$, $h \not \in R \cap \mathfrak q$
+such that $R_h \cong (R[x]/I)_h$. Thus
+$(R[x]/I)_{fh} = S_{\varphi(fh)}$ is isomorphic to a principal
+localization $R_{h'}$ of $R$ for some
+$h' \in R$, $h' \not \in \mathfrak q$.
+
+\medskip\noindent
+The case $n > 1$. Consider the subring $R' \subset S$
+which is the integral closure of $R[x_1, \ldots, x_{n-1}]$
+in $S$. By Lemma \ref{lemma-quasi-finite-permanence} the extension
+$S/R'$ is quasi-finite at $\mathfrak q$. Also, note
+that $S$ is finite over $R'[x_n]$.
+By the case $n = 1$ above, there exists a $g' \in R'$,
+$g' \not \in \mathfrak q$ such that
+$(R')_{g'} \cong S_{g'}$. At this point we cannot
+apply induction to $R \to R'$ since $R'$ may not be finite type over $R$.
+Since $S$ is finitely generated over $R$ we deduce in particular
+that $(R')_{g'}$ is finitely generated over $R$. Say
+the elements $g'$, and $y_1/(g')^{n_1}, \ldots, y_N/(g')^{n_N}$
+with $y_i \in R'$
+generate $(R')_{g'}$ over $R$. Let $R''$ be the $R$-sub algebra
+of $R'$ generated by $x_1, \ldots, x_{n-1}, y_1, \ldots, y_N, g'$.
+This has the property $(R'')_{g'} \cong S_{g'}$. Surjectivity
+because of how we chose $y_i$, injectivity because
+$R'' \subset R'$, and localization is exact. Note that
+$R''$ is finite over $R[x_1, \ldots, x_{n-1}]$ because
+of our choice of $R'$, see Lemma \ref{lemma-characterize-integral}.
+Let $\mathfrak q'' = R'' \cap \mathfrak q$. Since
+$(R'')_{\mathfrak q''} = S_{\mathfrak q}$ we see that
+$R \to R''$ is quasi-finite at $\mathfrak q''$, see
+Lemma \ref{lemma-isolated-point-fibre}.
+We apply our induction hypothesis to $R \to R''$, $\mathfrak q''$
+and $x_1, \ldots, x_{n-1} \in R''$ and we find a subring
+$R''' \subset R''$ which is integral over $R$ and an
+element $g'' \in R'''$, $g'' \not \in \mathfrak q''$
+such that $(R''')_{g''} \cong (R'')_{g''}$. Write the image of $g'$ in
+$(R'')_{g''}$ as $g'''/(g'')^n$ for some $g''' \in  R'''$.
+Set $g = g''g''' \in R'''$. Then it is clear that $g \not\in
+\mathfrak q$ and $(R''')_g \cong S_g$. Since by construction
+we have $R''' \subset S'$ we also have $S'_g \cong S_g$ as desired.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-quasi-finite-open}
+Let $R \to S$ be a finite type ring map.
+The set of points $\mathfrak q$ of $\Spec(S)$ at which
+$S/R$ is quasi-finite is open in $\Spec(S)$.
+\end{lemma}
+
+\begin{proof}
+Let $\mathfrak q \subset S$ be a point at which the ring map
+is quasi-finite. By Theorem \ref{theorem-main-theorem}
+there exists an integral ring map $R \to S'$, $S' \subset S$
+and an element $g \in S'$, $g\not \in \mathfrak q$ such that
+$S'_g \cong S_g$. Since $S$ and hence $S_g$ are of finite type
+over $R$ we may find finitely many elements
+$y_1, \ldots, y_N$ of $S'$ such that $S''_g \cong S_g$
+where $S'' \subset S'$ is the sub $R$-algebra generated
+by $g, y_1, \ldots, y_N$. Since $S''$ is finite over $R$
+(see Lemma \ref{lemma-characterize-integral}) we see that
+$S''$ is quasi-finite over $R$ (see Lemma \ref{lemma-quasi-finite}).
+It is easy to see that this implies that $S''_g$ is quasi-finite over $R$,
+for example because the property of being quasi-finite at a prime depends
+only on the local ring at the prime. Thus we see that $S_g$ is quasi-finite
+over $R$. By the same token this implies that $R \to S$ is quasi-finite
+at every prime of $S$ which lies in $D(g)$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-quasi-finite-open-integral-closure}
+Let $R \to S$ be a finite type ring map.
+Suppose that $S$ is quasi-finite over $R$.
+Let $S' \subset S$ be the integral closure of $R$ in $S$. Then
+\begin{enumerate}
+\item $\Spec(S) \to \Spec(S')$ is a homeomorphism
+onto an open subset,
+\item if $g \in S'$ and $D(g)$ is contained in the image
+of the map, then $S'_g \cong S_g$, and
+\item there exists a finite $R$-algebra $S'' \subset S'$
+such that (1) and (2) hold for the ring map
+$S'' \to S$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Because $S/R$ is quasi-finite we may apply
+Theorem \ref{theorem-main-theorem} to
+each point $\mathfrak q$ of $\Spec(S)$.
+Since $\Spec(S)$ is quasi-compact, see
+Lemma \ref{lemma-quasi-compact}, we may choose
+a finite number of $g_i \in S'$, $i = 1, \ldots, n$
+such that $S'_{g_i} = S_{g_i}$, and such that
+$g_1, \ldots, g_n$ generate the unit ideal in $S$
+(in other words the standard opens of $\Spec(S)$ associated
+to $g_1, \ldots, g_n$ cover all of $\Spec(S)$).
+
+\medskip\noindent
+Suppose that $D(g) \subset \Spec(S')$
+is contained in the image. Then $D(g) \subset \bigcup D(g_i)$.
+In other words, $g_1, \ldots, g_n$ generate the unit ideal of
+$S'_g$. Note that $S'_{gg_i} \cong S_{gg_i}$ by our choice
+of $g_i$. Hence $S'_g \cong S_g$ by Lemma \ref{lemma-cover}.
+
+\medskip\noindent
+We construct a finite algebra $S'' \subset S'$ as
+in (3). To do this note that each $S'_{g_i} \cong S_{g_i}$
+is a finite type $R$-algebra. For each $i$ pick
+some elements $y_{ij} \in S'$ such that each
+$S'_{g_i}$ is generated as $R$-algebra by $1/g_i$
+and the elements $y_{ij}$. Then set $S''$
+equal to the sub $R$-algebra of $S'$ generated by all $g_i$
+and all the $y_{ij}$. Details omitted.
+\end{proof}
+
+
+
+

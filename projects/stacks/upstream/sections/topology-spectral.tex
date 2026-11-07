@@ -1,0 +1,501 @@
+\section{Spectral spaces}
+\label{section-spectral}
+
+\noindent
+The material in this section is taken from \cite{Hochster} and
+\cite{Hochster-thesis}. In his thesis Hochster proves (among
+other things) that the spectral spaces are exactly the topological
+spaces that occur as the spectrum of a ring.
+
+\begin{definition}
+\label{definition-spectral-space}
+A topological space $X$ is called {\it spectral} if it is sober,
+quasi-compact, the intersection of two quasi-compact opens is
+quasi-compact, and the collection of quasi-compact opens forms a
+basis for the topology. A continuous map $f : X \to Y$ of spectral
+spaces is called {\it spectral} if the inverse image of a quasi-compact
+open is quasi-compact.
+\end{definition}
+
+\noindent
+In other words a continuous map of spectral spaces is spectral if and
+only if it is quasi-compact (Definition \ref{definition-quasi-compact}).
+
+\medskip\noindent
+Let $X$ be a spectral space. The {\it constructible topology} on $X$
+is the topology which has as a subbase of opens the sets $U$ and $U^c$
+where $U$ is a quasi-compact open of $X$. Note that since $X$ is spectral
+an open $U \subset X$ is retrocompact if and only if $U$ is quasi-compact.
+Hence the constructible topology can also be characterized as the coarsest
+topology such that every constructible subset of $X$ is both open and closed
+(see Section \ref{section-constructible} for definitions and properties of
+constructible sets).
+It follows that a subset of $X$ is open, resp.\ closed in the constructible
+topology if and only if it is a union, resp.\ intersection of constructible
+subsets. Since the collection of quasi-compact opens is a basis for the topology
+on $X$ we see that the constructible topology is stronger than the
+given topology on $X$.
+
+\begin{lemma}
+\label{lemma-constructible-hausdorff-quasi-compact}
+Let $X$ be a spectral space. The constructible topology is
+Hausdorff, totally disconnected, and quasi-compact.
+\end{lemma}
+
+\begin{proof}
+Let $x, y \in X$ with $x \not = y$. Since $X$ is sober, there
+is an open subset $U$ containing exactly one of the two points $x, y$.
+Say $x \in U$. We may replace $U$ by a quasi-compact open
+neighbourhood of $x$ contained in $U$. Then $U$ and $U^c$ are open and
+closed in the constructible topology. Hence $X$ is Hausdorff in the
+constructible topology because $x \in U$ and $y \in U^c$ are
+disjoint opens in the constructible topology. The existence of $U$
+also implies $x$ and $y$ are in distinct connected components in the
+constructible topology, whence $X$ is totally disconnected in the
+constructible topology.
+
+\medskip\noindent
+Let $\mathcal{B}$ be the collection of subsets $B \subset X$
+with $B$ either quasi-compact open or closed with quasi-compact
+complement. If $B \in \mathcal{B}$ then $B^c \in \mathcal{B}$.
+It suffices to show every covering $X = \bigcup_{i \in I} B_i$
+with $B_i \in \mathcal{B}$ has a finite refinement, see
+Lemma \ref{lemma-subbase-theorem}.
+Taking complements we see that we have to show that any family
+$\{B_i\}_{i \in I}$ of elements of $\mathcal{B}$
+such that $B_{i_1} \cap \ldots \cap B_{i_n} \not = \emptyset$
+for all $n$ and all $i_1, \ldots, i_n \in I$
+has a common point of intersection. We may and do assume
+$B_i \not = B_{i'}$ for $i \not = i'$.
+
+\medskip\noindent
+To get a contradiction assume $\{B_i\}_{i \in I}$ is a family
+of elements of $\mathcal{B}$ having the finite intersection property
+but empty intersection. An application of Zorn's lemma shows that we
+may assume our family is maximal (details omitted).
+Let $I' \subset I$ be those indices such that
+$B_i$ is closed and set $Z = \bigcap_{i \in I'} B_i$.
+This is a closed subset of $X$ which is nonempty by Lemma
+\ref{lemma-intersection-closed-in-quasi-compact}.
+If $Z$ is reducible, then we can write $Z = Z' \cup Z''$
+as a union of two closed subsets, neither equal to $Z$. This means in
+particular that we can find a quasi-compact open $U' \subset X$ meeting
+$Z'$ but not $Z''$. Similarly, we can find a quasi-compact open
+$U'' \subset X$ meeting $Z''$ but not $Z'$. Set $B' = X \setminus U'$ and
+$B'' = X \setminus U''$. Note that $Z'' \subset B'$ and $Z' \subset B''$.
+If there exist a finite number of indices $i_1, \ldots, i_n \in I$ such
+that $B' \cap B_{i_1} \cap \ldots \cap B_{i_n} = \emptyset$
+as well as a finite number of indices $j_1, \ldots, j_m \in I$ such that
+$B'' \cap B_{j_1} \cap \ldots \cap B_{j_m} = \emptyset$
+then we find that
+$Z \cap B_{i_1} \cap \ldots \cap B_{i_n} \cap B_{j_1} \cap \ldots \cap B_{j_m}
+= \emptyset$.
+However, the set
+$B_{i_1} \cap \ldots \cap B_{i_n} \cap B_{j_1} \cap \ldots \cap B_{j_m}$
+is quasi-compact hence we would find a finite number of
+indices $i'_1, \ldots, i'_l \in I'$ with
+$B_{i_1} \cap \ldots \cap B_{i_n} \cap B_{j_1} \cap \ldots \cap
+B_{j_m} \cap B_{i'_1} \cap \ldots \cap B_{i'_l} = \emptyset$, a contradiction.
+Thus we see that we may add either $B'$ or $B''$ to the given family
+contradicting maximality. We conclude that $Z$ is irreducible. However,
+this leads to a contradiction as well, as now every nonempty (by the
+same argument as above) open $Z \cap B_i$ for $i \in I \setminus I'$
+contains the unique generic point of $Z$. This contradiction proves the lemma.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-fibres-spectral-map-quasi-compact}
+Let $f : X \to Y$ be a spectral map of spectral spaces. Then
+\begin{enumerate}
+\item $f$ is continuous in the constructible topology,
+\item the fibres of $f$ are quasi-compact, and
+\item the image is closed in the constructible topology.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let $X'$ and $Y'$ denote $X$ and $Y$ endowed with the constructible topology
+which are quasi-compact Hausdorff spaces by
+Lemma \ref{lemma-constructible-hausdorff-quasi-compact}.
+Part (1) says $X' \to Y'$ is continuous and follows immediately from the
+definitions. Part (3) follows as $f(X')$ is a quasi-compact subset of the
+Hausdorff space $Y'$, see Lemma \ref{lemma-quasi-compact-in-Hausdorff}.
+We have a commutative diagram
+$$
+\xymatrix{
+X' \ar[r] \ar[d] & X \ar[d] \\
+Y' \ar[r] & Y
+}
+$$
+of continuous maps of topological spaces. Since $Y'$ is Hausdorff
+we see that the fibres $X'_y$ are closed in $X'$. As $X'$ is quasi-compact
+we see that $X'_y$ is quasi-compact
+(Lemma \ref{lemma-closed-in-quasi-compact}).
+As $X'_y \to X_y$ is a surjective continuous map we conclude
+that $X_y$ is quasi-compact (Lemma \ref{lemma-image-quasi-compact}).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-spectral-if-continuous-wrt-constructible-top}
+Let $X$ and $Y$ be spectral spaces. Let $f : X \to Y$ be a continuous map.
+Then $f$ is spectral if and only if $f$ is continuous in the constructible
+topology.
+\end{lemma}
+
+\begin{proof}
+The only if part of this is
+Lemma \ref{lemma-fibres-spectral-map-quasi-compact}.
+Assume $f$ is continuous in the constructible topology.
+Let $V \subset Y$ be quasi-compact open.
+Then $V$ is open and closed in the constructible topology.
+Hence $f^{-1}(V)$ is open and closed in the constructible topology.
+Hence $f^{-1}(V)$ is quasi-compact in the constructible topology
+as $X$ is quasi-compact in the constructible topology by
+Lemma \ref{lemma-constructible-hausdorff-quasi-compact}.
+Since the identity $f^{-1}(V) \to f^{-1}(V)$ is surjective
+and continuous from the constructible topology to the usual
+topology, we conclude that $f^{-1}(V)$ is quasi-compact
+in the topology of $X$ by Lemma \ref{lemma-image-quasi-compact}.
+This finishes the proof.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-spectral-sub}
+Let $X$ be a spectral space. Let $E \subset X$ be closed in the constructible
+topology (for example constructible or closed). Then $E$ with the induced
+topology is a spectral space.
+\end{lemma}
+
+\begin{proof}
+Let $Z \subset E$ be a closed irreducible subset. Let $\eta$ be the generic
+point of the closure $\overline{Z}$ of $Z$ in $X$. To prove that $E$
+is sober, we show that $\eta \in E$. If not, then since $E$ is closed
+in the constructible topology, there exists a constructible subset
+$F \subset X$ such that $\eta \in F$ and $F \cap E = \emptyset$.
+By Lemma \ref{lemma-generic-point-in-constructible} this implies
+$F \cap \overline{Z}$ contains a nonempty open subset of $\overline{Z}$.
+But this is impossible as $\overline{Z}$ is the closure of $Z$ and
+$Z \cap F = \emptyset$.
+
+\medskip\noindent
+Since $E$ is closed in the constructible topology, it is quasi-compact
+in the constructible topology
+(Lemmas \ref{lemma-closed-in-quasi-compact} and
+\ref{lemma-constructible-hausdorff-quasi-compact}). Hence a fortiori it is
+quasi-compact in the topology coming from $X$. If $U \subset X$
+is a quasi-compact open, then $E \cap U$ is closed in the constructible
+topology, hence quasi-compact (as seen above). It follows that the
+quasi-compact open subsets of $E$ are the intersections $E \cap U$
+with $U$ quasi-compact open in $X$. These form a basis for the topology.
+Finally, given two $U, U' \subset X$ quasi-compact opens, the intersection
+$(E \cap U) \cap (E \cap U') = E \cap (U \cap U')$ and $U \cap U'$
+is quasi-compact as $X$ is spectral. This finishes the proof.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-constructible-stable-specialization-closed}
+Let $X$ be a spectral space. Let $E \subset X$ be a subset closed
+in the constructible topology (for example constructible).
+\begin{enumerate}
+\item If $x \in \overline{E}$, then $x$ is the specialization of a point of
+$E$.
+\item If $E$ is stable under specialization, then $E$ is closed.
+\item If $E' \subset X$ is open in the constructible topology
+(for example constructible) and stable under generalization, then $E'$ is open.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Proof of (1). Let $x \in \overline{E}$. Let $\{U_i\}$ be the set of
+quasi-compact open neighbourhoods of $x$. A finite intersection of the
+$U_i$ is another one. The intersection $U_i \cap E$ is nonempty for all
+$i$. Since the subsets $U_i \cap E$ are closed in the constructible topology
+we see that $\bigcap (U_i \cap E)$ is nonempty by
+Lemma \ref{lemma-constructible-hausdorff-quasi-compact} and
+Lemma \ref{lemma-intersection-closed-in-quasi-compact}.
+Since $\{U_i\}$ is a
+fundamental system of open neighbourhoods of $x$, we see that
+$\bigcap U_i$ is the set of generalizations of $x$. Thus
+$x$ is a specialization of a point of $E$.
+
+\medskip\noindent
+Part (2) is immediate from (1).
+
+\medskip\noindent
+Proof of (3). Assume $E'$ is as in (3). The complement of $E'$ is closed
+in the constructible topology (Lemma \ref{lemma-constructible})
+and closed under specialization
+(Lemma \ref{lemma-open-closed-specialization}).
+Hence the complement is closed by (2), i.e., $E'$ is open.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-two-points}
+Let $X$ be a spectral space. Let $x, y \in X$. Then either there exists
+a third point specializing to both $x$ and $y$, or there exist disjoint
+open neighbourhoods containing $x$ and $y$.
+\end{lemma}
+
+\begin{proof}
+Let $\{U_i\}$ be the set of quasi-compact open neighbourhoods of $x$.
+A finite intersection of the $U_i$ is another one.
+Let $\{V_j\}$ be the set of quasi-compact open neighbourhoods of $y$.
+A finite intersection of the $V_j$ is another one.
+If $U_i \cap V_j$ is empty for some $i, j$ we are done.
+If not, then the intersection $U_i \cap V_j$ is nonempty
+for all $i$ and $j$. The sets $U_i \cap V_j$ are closed in the constructible
+topology on $X$. By
+Lemma \ref{lemma-constructible-hausdorff-quasi-compact}
+we see that $\bigcap (U_i \cap V_j)$ is nonempty
+(Lemma \ref{lemma-intersection-closed-in-quasi-compact}).
+Since $X$ is a sober space and $\{U_i\}$ is a
+fundamental system of open neighbourhoods of $x$, we see that
+$\bigcap U_i$ is the set of generalizations of $x$.
+Similarly, $\bigcap V_j$ is the set of generalizations of $y$.
+Thus any element of $\bigcap (U_i \cap V_j)$ specializes to both
+$x$ and $y$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-characterize-profinite-spectral}
+Let $X$ be a spectral space. The following are equivalent:
+\begin{enumerate}
+\item $X$ is profinite,
+\item $X$ is Hausdorff,
+\item $X$ is totally disconnected,
+\item every quasi-compact open is closed,
+\item there are no nontrivial specializations between points,
+\item every point of $X$ is closed,
+\item every point of $X$ is the generic point of an irreducible component
+of $X$,
+\item the constructible topology equals the given topology on $X$, and
+\item add more here.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Lemma \ref{lemma-profinite} shows the implication (1) $\Rightarrow$ (3).
+Irreducible components are closed, so if $X$ is totally disconnected, then
+every point is closed. So (3) implies (6). The equivalence of (6) and (5)
+is immediate, and (6) $\Leftrightarrow$ (7) holds because $X$ is sober.
+Assume (5). Then all constructible subsets of $X$ are closed
+(Lemma \ref{lemma-constructible-stable-specialization-closed}), in
+particular all quasi-compact opens are closed. So (5) implies (4).
+Since $X$ is sober, for any two points there is a quasi-compact open
+containing exactly one of them, hence (4) implies (2).
+Parts (4) and (8) are equivalent by the definition of the
+constructible topology.
+It remains to prove (2) implies (1). Suppose $X$ is Hausdorff. Every
+quasi-compact open is also closed
+(Lemma \ref{lemma-quasi-compact-in-Hausdorff}). This implies $X$
+is totally disconnected. Hence it is profinite, by
+Lemma \ref{lemma-profinite}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-spectral-pi0}
+If $X$ is a spectral space, then $\pi_0(X)$ is a profinite space.
+\end{lemma}
+
+\begin{proof}
+Combine Lemmas \ref{lemma-connected-component-intersection} and
+\ref{lemma-pi0-profinite}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-product-spectral-spaces}
+The product of two spectral spaces is spectral.
+\end{lemma}
+
+\begin{proof}
+Let $X$, $Y$ be spectral spaces. Denote $p : X \times Y \to X$ and
+$q : X \times Y \to Y$ the projections. Let $Z \subset X \times Y$ be a
+closed irreducible subset. Then $p(Z) \subset X$ is irreducible
+and $q(Z) \subset Y$ is irreducible. Let $x \in X$ be the generic
+point of the closure of $p(X)$ and let $y \in Y$ be the generic
+point of the closure of $q(Y)$. If $(x, y) \not \in Z$, then
+there exist opens $x \in U \subset X$, $y \in V \subset Y$ such
+that $Z \cap U \times V = \emptyset$. Hence $Z$ is contained
+in $(X \setminus U) \times Y \cup X \times (Y \setminus V)$.
+Since $Z$ is irreducible, we see that either
+$Z \subset (X \setminus U) \times Y$ or $Z \subset X \times (Y \setminus V)$.
+In the first case $p(Z) \subset (X \setminus U)$ and in the
+second case $q(Z) \subset (Y \setminus V)$. Both cases are absurd
+as $x$ is in the closure of $p(Z)$ and $y$ is in the closure of
+$q(Z)$. Thus we conclude that $(x, y) \in Z$, which means that
+$(x, y)$ is the generic point for $Z$.
+
+\medskip\noindent
+A basis of the topology of $X \times Y$ are the opens of the form
+$U \times V$ with $U \subset X$ and $V \subset Y$ quasi-compact open
+(here we use that $X$ and $Y$ are spectral). Then $U \times V$ is
+quasi-compact as the product of quasi-compact spaces is quasi-compact.
+Moreover, any quasi-compact open of $X \times Y$ is a finite union
+of such quasi-compact rectangles $U \times V$. It follows that
+the intersection of two such is again quasi-compact
+(since $X$ and $Y$ are spectral). This concludes the proof.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-spectral-bijective}
+Let $f : X \to Y$ be a continuous map of topological spaces. If
+\begin{enumerate}
+\item $X$ and $Y$ are spectral,
+\item $f$ is spectral and bijective, and
+\item generalizations (resp.\ specializations) lift along $f$.
+\end{enumerate}
+Then $f$ is a homeomorphism.
+\end{lemma}
+
+\begin{proof}
+Since $f$ is spectral it defines a continuous map between $X$ and $Y$ in
+the constructible topology. By
+Lemmas \ref{lemma-constructible-hausdorff-quasi-compact} and
+\ref{lemma-bijective-map}
+it follows that $X \to Y$ is a homeomorphism in the constructible
+topology. Let $U \subset X$ be quasi-compact open.
+Then $f(U)$ is constructible in $Y$. Let $y \in Y$ specialize
+to a point in $f(U)$. By the last assumption we see that $f^{-1}(y)$
+specializes to a point of $U$. Hence $f^{-1}(y) \in U$. Thus $y \in f(U)$.
+It follows that $f(U)$ is open, see
+Lemma \ref{lemma-constructible-stable-specialization-closed}.
+Whence $f$ is a homeomorphism.
+To prove the lemma in case specializations lift along $f$
+one shows instead that $f(Z)$ is closed if $X \setminus Z$ is a
+quasi-compact open of $X$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-directed-inverse-limit-finite-sober-spectral-spaces}
+The inverse limit of a directed inverse system of finite sober
+topological spaces is a spectral topological space.
+\end{lemma}
+
+\begin{proof}
+Let $I$ be a directed set. Let $X_i$ be an inverse
+system of finite sober spaces over $I$. Let $X = \lim X_i$ which exists
+by Lemma \ref{lemma-limits}. As a set $X = \lim X_i$. Denote
+$p_i : X \to X_i$ the projection.
+Because $I$ is directed we may apply Lemma \ref{lemma-describe-limits}.
+A basis for the topology is given by the opens
+$p_i^{-1}(U_i)$ for $U_i \subset X_i$ open. Since an open covering of
+$p_i^{-1}(U_i)$ is in particular an open covering in the profinite
+topology, we conclude that $p_i^{-1}(U_i)$ is quasi-compact.
+Given $U_i \subset X_i$ and $U_j \subset X_j$, then
+$p_i^{-1}(U_i) \cap p_j^{-1}(U_j) = p_k^{-1}(U_k)$
+for some $k \geq i, j$ and open $U_k \subset X_k$. Finally, if $Z \subset X$
+is irreducible and closed, then $p_i(Z) \subset X_i$ is irreducible
+and therefore has a unique generic point $\xi_i$ (because $X_i$
+is a finite sober topological space). Then $\xi = \lim \xi_i$ is a
+generic point of $Z$ (it is a point of $Z$ as $Z$ is closed).
+This finishes the proof.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-spectral-closed-in-product-two-point-space}
+Let $W$ be the topological space with two points, one closed,
+the other not. A topological space is spectral if and only if
+it is homeomorphic to a subspace of a product of
+copies of $W$ which is closed in the constructible topology.
+\end{lemma}
+
+\begin{proof}
+Write $W = \{0, 1\}$ where $0$ is a specialization of $1$ but not vice versa.
+Let $I$ be a set. The space $\prod_{i \in I} W$ is spectral by
+Lemma \ref{lemma-directed-inverse-limit-finite-sober-spectral-spaces}.
+Thus we see that a subspace of $\prod_{i \in I} W$ closed in the
+constructible topology is
+a spectral space by Lemma \ref{lemma-spectral-sub}.
+
+\medskip\noindent
+For the converse, let $X$ be a spectral space. Let $U \subset X$ be a
+quasi-compact open. Consider the continuous map
+$$
+f_U : X \longrightarrow W
+$$
+which maps every point in $U$ to $1$ and every point in $X \setminus U$ to $0$.
+Taking the product of these maps we obtain a continuous map
+$$
+f = \prod f_U : X \longrightarrow \prod\nolimits_U W
+$$
+By construction the map $f : X \to Y$ is spectral. By
+Lemma \ref{lemma-fibres-spectral-map-quasi-compact}
+the image of $f$ is closed in the constructible topology.
+If $x', x \in X$ are distinct, then since $X$ is sober either $x'$
+is not a specialization of $x$ or conversely. In either case (as the
+quasi-compact opens form a basis for the topology of $X$) there
+exists a quasi-compact open $U \subset X$ such that $f_U(x') \not = f_U(x)$.
+Thus $f$ is injective. Let $Y = f(X)$ endowed with the induced topology.
+Let $y' \leadsto y$ be a specialization in $Y$ and say
+$f(x') = y'$ and $f(x) = y$. Arguing as above we see that
+$x' \leadsto x$, since otherwise there is a $U$ such that
+$x \in U$ and $x' \not \in U$, which would imply
+$f_U(x') \not \leadsto f_U(x)$.
+We conclude that $f : X \to Y$ is a homeomorphism by
+Lemma \ref{lemma-spectral-bijective}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-spectral-inverse-limit-finite-sober-spaces}
+A topological space is spectral if and only if it is a directed
+inverse limit of finite sober topological spaces.
+\end{lemma}
+
+\begin{proof}
+One direction is given by
+Lemma \ref{lemma-directed-inverse-limit-finite-sober-spectral-spaces}.
+For the converse, assume $X$ is spectral. Then we
+may assume $X \subset \prod_{i \in I} W$ is a subset closed
+in the constructible topology where $W = \{0, 1\}$ as in
+Lemma \ref{lemma-spectral-closed-in-product-two-point-space}.
+We can write
+$$
+\prod\nolimits_{i \in I} W =
+\lim_{J \subset I\text{ finite }} \prod\nolimits_{j \in J} W
+$$
+as a cofiltered limit.
+For each $J$, let $X_J \subset \prod_{j \in J} W$ be the image of $X$.
+Then we see that $X = \lim X_J$ as sets because $X$ is closed in
+the product with the constructible topology (detail omitted).
+A formal argument (omitted) on limits shows that $X = \lim X_J$ as topological
+spaces.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-Noetherian-goes-to-spectral}
+Let $X$ be a topological space and let $c : X \to X'$ be the universal
+map from $X$ to a sober topological space, see
+Lemma \ref{lemma-make-sober}.
+\begin{enumerate}
+\item If $X$ is quasi-compact, so is $X'$.
+\item If $X$ is quasi-compact, has a basis of quasi-compact opens,
+and the intersection of two quasi-compact opens is quasi-compact, then
+$X'$ is spectral.
+\item If $X$ is Noetherian, then $X'$ is a Noetherian spectral space.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let $U \subset X$ be open and let $U' \subset X'$ be the corresponding
+open, i.e., the open such that $c^{-1}(U') = U$.
+Then $U$ is quasi-compact if and only if $U'$ is quasi-compact,
+as pulling back by $c$ is a bijection between the opens of
+$X$ and $X'$ which commutes with unions. This in particular proves (1).
+
+\medskip\noindent
+Proof of (2). It follows from the above that $X'$ has a basis of
+quasi-compact opens. Since $c^{-1}$ also
+commutes with intersections of pairs of opens, we see that
+the intersection of two quasi-compact opens $X'$ is quasi-compact.
+Finally, $X'$ is quasi-compact by (1) and sober by construction.
+Hence $X'$ is spectral.
+
+\medskip\noindent
+Proof of (3). It is immediate that $X'$ is Noetherian as this is defined
+in terms of the acc for open subsets which holds for $X$. We have
+already seen in (2) that $X'$ is spectral.
+\end{proof}
+
+
+
+

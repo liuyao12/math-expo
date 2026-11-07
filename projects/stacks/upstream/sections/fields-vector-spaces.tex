@@ -1,0 +1,42 @@
+\section{Vector spaces}
+\label{section-vector-spaces}
+
+\noindent
+One reason fields are so nice is that the theory of modules over fields
+(i.e. vector spaces), is very simple.
+
+\begin{lemma}
+\label{lemma-vector-space-is-free}
+If $k$ is a field, then every $k$-module is free.
+\end{lemma}
+
+\begin{proof}
+Indeed, by linear algebra we know that a $k$-module (i.e. vector space)
+$V$ has a {\it basis} $\mathcal{B} \subset V$, which defines an isomorphism
+from the free vector space on $\mathcal{B}$ to $V$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-field-semi-simple}
+Every exact sequence of modules over a field splits.
+\end{lemma}
+
+\begin{proof}
+This follows from Lemma \ref{lemma-vector-space-is-free} as every vector
+space is a projective module.
+\end{proof}
+
+\noindent
+This is another reason why much of the theory in future chapters will not say
+very much about fields, since modules behave in such a simple manner.
+Note that Lemma \ref{lemma-field-semi-simple} is a statement about the
+{\it category} of $k$-modules (for $k$ a field), because the notion of
+exactness is inherently arrow-theoretic, i.e., makes use of purely categorical
+notions, and can in fact be phrased within a so-called {\it abelian category}.
+
+\medskip\noindent
+Henceforth, since the study of modules over a field is linear algebra, and
+since the ideal theory of fields is not very interesting, we shall study what
+this chapter is really about: {\it extensions} of fields.
+
+

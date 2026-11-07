@@ -1,0 +1,353 @@
+\section{Homotopy and the shift functor}
+\label{section-homotopy-shift}
+
+\noindent
+It is an annoying feature that signs and indices
+have to be part of any discussion of homological
+algebra\footnote{Please let us know if you notice sign errors or
+if you have improvements to our conventions.}.
+
+\begin{definition}
+\label{definition-shift}
+Let $\mathcal{A}$ be an additive category.
+Let $A_\bullet$ be a chain complex
+with boundary maps $d_{A, n} : A_n \to A_{n - 1}$.
+For any $k \in \mathbf{Z}$ we define the
+{\it $k$-shifted chain complex $A[k]_\bullet$}
+as follows:
+\begin{enumerate}
+\item we set $A[k]_n = A_{n + k}$, and
+\item we set $d_{A[k], n} : A[k]_n \to A[k]_{n - 1}$
+equal to $d_{A[k], n} = (-1)^k d_{A, n + k}$.
+\end{enumerate}
+If $f : A_\bullet \to B_\bullet$ is a morphism of
+chain complexes, then we let
+$f[k] : A[k]_\bullet \to B[k]_\bullet$ be the
+morphism of chain complexes with
+$f[k]_n = f_{k + n}$.
+\end{definition}
+
+\noindent
+Of course this means we have functors
+$[k] : \text{Ch}(\mathcal{A}) \to \text{Ch}(\mathcal{A})$
+which mutually commute (on the nose, without
+any intervening isomorphisms of functors),
+such that $A[k][l]_\bullet = A[k + l]_\bullet$ and
+with $[0] = \text{id}_{\text{Ch}(\mathcal{A})}$.
+
+\medskip\noindent
+Recall that we view $\mathcal{A}$ as a full subcategory of
+$\text{Ch}(\mathcal{A})$, see Section \ref{section-complexes}.
+Thus for any object $A$ of $\mathcal{A}$ the notation $A[k]$
+refers to the unique chain complex zero in all degrees except having
+$A$ in degree $-k$.
+
+\begin{definition}
+\label{definition-homology-shift}
+Let $\mathcal{A}$ be an abelian category.
+Let $A_\bullet$ be a chain complex
+with boundary maps $d_{A, n} : A_n \to A_{n - 1}$.
+For any $k \in \mathbf{Z}$ we identify
+{\it $H_{i + k}(A_\bullet) \rightarrow H_i(A[k]_\bullet)$}
+via the identification
+$A_{i + k} = A[k]_i$.
+\end{definition}
+
+\noindent
+This identification is functorial in $A_\bullet$.
+Note that since no signs are involved in this
+definition we actually get a compatible system
+of identifications of all the homology
+objects $H_{i - k}(A[k]_\bullet)$, which are
+further compatible with the identifications
+$A[k][l]_\bullet = A[k + l]_\bullet$ and
+with $[0] = \text{id}_{\text{Ch}(\mathcal{A})}$.
+
+\medskip\noindent
+Let $\mathcal{A}$ be an additive category.
+Suppose that $A_\bullet$ and $B_\bullet$ are
+chain complexes, $a, b : A_\bullet \to B_\bullet$ are
+morphisms of chain complexes, and $\{h_i : A_i \to B_{i + 1}\}$
+is a homotopy between $a$ and $b$. Recall that this means
+that
+$a_i - b_i = d_{i + 1} \circ h_i + h_{i - 1} \circ d_i$.
+What if $a = b$? Then we obtain the formula
+$0 = d_{i + 1} \circ h_i + h_{i - 1} \circ d_i$,
+in other words, $ - d_{i + 1} \circ h_i = h_{i - 1} \circ d_i$.
+By definition above this means the collection $\{h_i\}$
+above defines a morphism of chain complexes
+$$
+A_\bullet \longrightarrow B[1]_\bullet.
+$$
+Such a thing is the same as a morphism $A[-1]_\bullet \to B_\bullet$
+by our remarks above. This proves the following lemma.
+
+\begin{lemma}
+\label{lemma-homotopy-shift}
+Let $\mathcal{A}$ be an additive category.
+Suppose that $A_\bullet$ and $B_\bullet$ are
+chain complexes. Given any morphism of chain
+complexes $a : A_\bullet \to B_\bullet$ there
+is a bijection between the set of homotopies
+from $a$ to $a$ and
+$\Mor_{\text{Ch}(\mathcal{A})}(A_\bullet, B[1]_\bullet)$.
+More generally, the set of homotopies between
+$a$ and $b$ is either empty or a principal homogeneous
+space under the group
+$\Mor_{\text{Ch}(\mathcal{A})}(A_\bullet, B[1]_\bullet)$.
+\end{lemma}
+
+\begin{proof}
+See above.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-ses-termwise-split}
+Let $\mathcal{A}$ be an abelian category.
+Let
+$$
+0 \to A_\bullet \to B_\bullet \to C_\bullet \to 0
+$$
+be a short exact sequence of complexes.
+Suppose that $\{s_n : C_n \to B_n\}$ is a family
+of morphisms which split the short exact sequences
+$0 \to A_n \to B_n \to C_n \to 0$. Let
+$\pi_n : B_n \to A_n$ be the associated
+projections, see Lemma \ref{lemma-ses-split}.
+Then the family of morphisms
+$$
+\pi_{n - 1} \circ d_{B, n} \circ s_n
+:
+C_n \to A_{n - 1}
+$$
+define a morphism of complexes $\delta(s) : C_\bullet \to A[-1]_\bullet$.
+\end{lemma}
+
+\begin{proof}
+Denote $i : A_\bullet \to B_\bullet$ and $q : B_\bullet \to C_\bullet$
+the maps of complexes in the short exact sequence. Then
+$i_{n - 1} \circ \pi_{n - 1} \circ d_{B, n} \circ s_n =
+d_{B, n} \circ s_n - s_{n - 1} \circ d_{C, n}$. Hence
+$i_{n - 2} \circ d_{A, n - 1} \circ \pi_{n - 1} \circ d_{B, n} \circ s_n =
+d_{B, n - 1} \circ (d_{B, n} \circ s_n - s_{n - 1} \circ d_{C, n}) =
+- d_{B, n - 1} \circ s_{n - 1} \circ d_{C, n}$ as desired.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-ses-termwise-split-long}
+Notation and assumptions as in Lemma \ref{lemma-ses-termwise-split} above.
+The morphism of complexes $\delta(s) : C_\bullet \to A[-1]_\bullet$
+induces the maps
+$$
+H_i(\delta(s)) :
+H_i(C_\bullet) \longrightarrow H_i(A[-1]_\bullet) = H_{i - 1}(A_\bullet)
+$$
+which occur in the long exact homology sequence associated
+to the short exact sequence of chain complexes by
+Lemma \ref{lemma-long-exact-sequence-chain}.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-ses-termwise-split-homotopy}
+Notation and assumptions as in Lemma \ref{lemma-ses-termwise-split} above.
+Suppose $\{s'_n : C_n \to B_n\}$ is a second choice of splittings.
+Write $s'_n = s_n + i_n \circ h_n$ for some unique
+morphisms $h_n : C_n \to A_n$. The family of maps
+$\{h_n : C_n \to A[-1]_{n + 1}\}$ is a homotopy between
+the associated morphisms
+$\delta(s), \delta(s') : C_\bullet \to A[-1]_\bullet$.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{definition}
+\label{definition-shift-cochain}
+Let $\mathcal{A}$ be an additive category.
+Let $A^\bullet$ be a cochain complex
+with boundary maps $d_A^n : A^n \to A^{n + 1}$.
+For any $k \in \mathbf{Z}$ we define the
+{\it $k$-shifted cochain complex $A[k]^\bullet$}
+as follows:
+\begin{enumerate}
+\item we set $A[k]^n = A^{n + k}$, and
+\item we set $d_{A[k]}^n : A[k]^n \to A[k]^{n + 1}$
+equal to $d_{A[k]}^n = (-1)^k d_A^{n + k}$.
+\end{enumerate}
+If $f : A^\bullet \to B^\bullet$ is a morphism of
+cochain complexes, then we let
+$f[k] : A[k]^\bullet \to B[k]^\bullet$ be the
+morphism of cochain complexes with
+$f[k]^n = f^{k + n}$.
+\end{definition}
+
+\noindent
+Of course this means we have functors
+$[k] : \text{CoCh}(\mathcal{A}) \to \text{CoCh}(\mathcal{A})$
+which mutually commute (on the nose, without
+any intervening isomorphisms of functors) and
+such that $A[k][l]^\bullet = A[k + l]^\bullet$ and
+with $[0] = \text{id}_{\text{CoCh}(\mathcal{A})}$.
+
+\medskip\noindent
+Recall that we view $\mathcal{A}$ as a full subcategory of
+$\text{CoCh}(\mathcal{A})$, see Section \ref{section-complexes}.
+Thus for any object $A$ of $\mathcal{A}$ the notation $A[k]$
+refers to the unique cochain complex zero in all degrees except having
+$A$ in degree $-k$.
+
+\begin{definition}
+\label{definition-cohomology-shift}
+Let $\mathcal{A}$ be an abelian category.
+Let $A^\bullet$ be a cochain complex
+with boundary maps $d_A^n : A^n \to A^{n + 1}$.
+For any $k \in \mathbf{Z}$ we identify
+{\it $H^{i + k}(A^\bullet) \longrightarrow H^i(A[k]^\bullet)$}
+via the identification $A^{i + k} = A[k]^i$.
+\end{definition}
+
+\noindent
+This identification is functorial in $A^\bullet$.
+Note that since no signs are involved in this
+definition we actually get a compatible system
+of identifications of all the homology
+objects $H^{i - k}(A[k]^\bullet)$, which are
+further compatible with the identifications
+$A[k][l]^\bullet = A[k + l]^\bullet$ and
+with $[0] = \text{id}_{\text{CoCh}(\mathcal{A})}$.
+
+\medskip\noindent
+Let $\mathcal{A}$ be an additive category.
+Suppose that $A^\bullet$ and $B^\bullet$ are
+cochain complexes, $a, b : A^\bullet \to B^\bullet$ are
+morphisms of cochain complexes, and $\{h^i : A^i \to B^{i - 1}\}$
+is a homotopy between $a$ and $b$. Recall that this means
+that
+$a^i - b^i = d^{i - 1} \circ h^i + h^{i + 1} \circ d^i$.
+What if $a = b$? Then we obtain the formula
+$0 = d^{i - 1} \circ h^i + h^{i + 1} \circ d^i$,
+in other words, $ - d^{i - 1} \circ h^i = h^{i + 1} \circ d^i$.
+By definition above this means the collection $\{h^i\}$
+above defines a morphism of cochain complexes
+$$
+A^\bullet \longrightarrow B[-1]^\bullet.
+$$
+Such a thing is the same as a morphism $A[1]^\bullet \to B^\bullet$
+by our remarks above. This proves the following lemma.
+
+\begin{lemma}
+\label{lemma-homotopy-shift-cochain}
+Let $\mathcal{A}$ be an additive category.
+Suppose that $A^\bullet$ and $B^\bullet$ are
+cochain complexes. Given any morphism of cochain
+complexes $a : A^\bullet \to B^\bullet$ there
+is a bijection between the set of homotopies
+from $a$ to $a$ and
+$\Mor_{\text{CoCh}(\mathcal{A})}(A^\bullet, B[-1]^\bullet)$.
+More generally, the set of homotopies between
+$a$ and $b$ is either empty or a principal homogeneous
+space under the group
+$\Mor_{\text{CoCh}(\mathcal{A})}(A^\bullet, B[-1]^\bullet)$.
+\end{lemma}
+
+\begin{proof}
+See above.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-ses-termwise-split-cochain}
+Let $\mathcal{A}$ be an additive category.
+Let
+$$
+0 \to A^\bullet \to B^\bullet \to C^\bullet \to 0
+$$
+be a complex (!) of complexes.
+Suppose that we are given splittings $B^n = A^n \oplus C^n$
+compatible with the maps in the displayed sequence.
+Let $s^n : C^n \to B^n$ and $\pi^n : B^n \to A^n$ be the
+corresponding maps. Then the family of morphisms
+$$
+\pi^{n + 1} \circ d_B^n \circ s^n
+:
+C^n \to A^{n + 1}
+$$
+define a morphism of complexes $\delta : C^\bullet \to A[1]^\bullet$.
+\end{lemma}
+
+\begin{proof}
+Denote $i : A^\bullet \to B^\bullet$ and $q : B^\bullet \to C^\bullet$
+the maps of complexes in the short exact sequence. Then
+$i^{n + 1} \circ \pi^{n + 1} \circ d_B^n \circ s^n =
+d_B^n \circ s^n - s^{n + 1} \circ d_C^n$. Hence
+$i^{n + 2} \circ d_A^{n + 1} \circ \pi^{n + 1} \circ d_B^n \circ s^n =
+d_B^{n + 1} \circ (d_B^n \circ s^n - s^{n + 1} \circ d_C^n) =
+- d_B^{n + 1} \circ s^{n + 1} \circ d_C^n$ as desired.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-ses-termwise-split-long-cochain}
+Notation and assumptions as in
+Lemma \ref{lemma-ses-termwise-split-cochain} above.
+Assume in addition that $\mathcal{A}$ is abelian.
+The morphism of complexes $\delta : C^\bullet \to A[1]^\bullet$
+induces the maps
+$$
+H^i(\delta) :
+H^i(C^\bullet) \longrightarrow H^i(A[1]^\bullet) = H^{i + 1}(A^\bullet)
+$$
+which occur in the long exact homology sequence associated
+to the short exact sequence of cochain complexes by
+Lemma \ref{lemma-long-exact-sequence-cochain}.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-ses-termwise-split-homotopy-cochain}
+Notation and assumptions as in
+Lemma \ref{lemma-ses-termwise-split-cochain}.
+Let $\alpha : A^\bullet \to B^\bullet$,
+$\beta : B^\bullet \to C^\bullet$ be the given
+morphisms of complexes.
+Suppose $(s')^n : C^n \to B^n$ and $(\pi')^n : B^n \to A^n$
+is a second choice of splittings.
+Write $(s')^n = s^n + \alpha^n \circ h^n$ and
+$(\pi')^n = \pi^n + g^n \circ \beta^n$ for some unique
+morphisms $h^n : C^n \to A^n$ and $g^n : C^n \to A^n$. Then
+\begin{enumerate}
+\item $g^n = - h^n$, and
+\item the family of maps $\{g^n : C^n \to A[1]^{n - 1}\}$ is a homotopy
+between $\delta, \delta' : C^\bullet \to A[1]^\bullet$, more precisely
+$(\delta')^n = \delta^n + g^{n + 1} \circ d_C^n + d_{A[1]}^{n - 1} \circ g^n$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+As $(s')^n$ and $(\pi')^n$ are splittings we have $(\pi')^n \circ (s')^n = 0$.
+Hence
+$$
+0 = ( \pi^n + g^n \circ \beta^n ) \circ ( s^n + \alpha^n \circ h^n ) =
+g^n \circ \beta^n \circ s^n + \pi^n \circ \alpha^n \circ h^n =
+g^n + h^n
+$$
+which proves (1). We compute $(\delta')^n$ as follows
+$$
+( \pi^{n + 1} + g^{n + 1} \circ \beta^{n + 1} )
+\circ d_B^n \circ
+( s^n + \alpha^n \circ h^n )
+= \delta^n + g^{n + 1} \circ d_C^n + d_A^n \circ h^n
+$$
+Since $h^n = -g^n$ and since $d_{A[1]}^{n - 1} = -d_A^n$ we conclude that (2)
+holds.
+\end{proof}
+
+
+
+

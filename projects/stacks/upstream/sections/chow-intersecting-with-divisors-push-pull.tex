@@ -1,0 +1,209 @@
+\section{Intersecting with an invertible sheaf and push and pull}
+\label{section-intersecting-with-divisors-push-pull}
+
+\noindent
+In this section we prove that the operation $c_1(\mathcal{L}) \cap -$
+commutes with flat pullback and proper pushforward.
+
+\begin{lemma}
+\label{lemma-prepare-flat-pullback-cap-c1}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$, $Y$ be locally of finite type over $S$.
+Let $f : X \to Y$ be a flat morphism of relative dimension $r$.
+Let $\mathcal{L}$ be an invertible sheaf on $Y$.
+Assume $Y$ is integral and $n = \dim_\delta(Y)$.
+Let $s$ be a nonzero meromorphic section of $\mathcal{L}$.
+Then we have
+$$
+f^*\text{div}_\mathcal{L}(s) = \sum n_i\text{div}_{f^*\mathcal{L}|_{X_i}}(s_i)
+$$
+in $Z_{n + r - 1}(X)$. Here the sum is over the irreducible
+components $X_i \subset X$ of $\delta$-dimension $n + r$,
+the section $s_i = f|_{X_i}^*(s)$ is the pullback of $s$, and
+$n_i = m_{X_i, X}$ is the multiplicity of $X_i$ in $X$.
+\end{lemma}
+
+\begin{proof}
+To prove this equality of cycles, we may work locally on $Y$.
+Hence we may assume $Y$ is affine and $s = p/q$ for some nonzero
+sections $p \in \Gamma(Y, \mathcal{L})$ and $q \in \Gamma(Y, \mathcal{O})$.
+If we can show both
+$$
+f^*\text{div}_\mathcal{L}(p) =
+\sum n_i\text{div}_{f^*\mathcal{L}|_{X_i}}(p_i)
+\quad\text{and}\quad
+f^*\text{div}_\mathcal{O}(q) =
+\sum n_i\text{div}_{\mathcal{O}_{X_i}}(q_i)
+$$
+(with obvious notations) then we win by the
+additivity, see Divisors, Lemma \ref{divisors-lemma-c1-additive}.
+Thus we may assume that $s \in \Gamma(Y, \mathcal{L})$.
+In this case we may apply the equality
+(\ref{equation-equal-as-cycles}) to see that
+$$
+[Z(f^*(s))]_{k + r - 1} =
+\sum n_i\text{div}_{f^*\mathcal{L}|_{X_i}}(s_i)
+$$
+where $f^*(s) \in f^*\mathcal{L}$ denotes the pullback of $s$ to $X$.
+On the other hand we have
+$$
+f^*\text{div}_\mathcal{L}(s) = f^*[Z(s)]_{k - 1}
+= [f^{-1}(Z(s))]_{k + r - 1},
+$$
+by Lemmas \ref{lemma-compute-c1} and \ref{lemma-pullback-coherent}.
+Since $Z(f^*(s)) = f^{-1}(Z(s))$ we win.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-flat-pullback-cap-c1}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$, $Y$ be locally of finite type over $S$.
+Let $f : X \to Y$ be a flat morphism of relative dimension $r$.
+Let $\mathcal{L}$ be an invertible sheaf on $Y$.
+Let $\alpha$ be a $k$-cycle on $Y$.
+Then
+$$
+f^*(c_1(\mathcal{L}) \cap \alpha) = c_1(f^*\mathcal{L}) \cap f^*\alpha
+$$
+in $\CH_{k + r - 1}(X)$.
+\end{lemma}
+
+\begin{proof}
+Write $\alpha = \sum n_i[W_i]$. We will show that
+$$
+f^*(c_1(\mathcal{L}) \cap [W_i]) = c_1(f^*\mathcal{L}) \cap f^*[W_i]
+$$
+in $\CH_{k + r - 1}(X)$ by producing a rational equivalence
+on the closed subscheme $f^{-1}(W_i)$ of $X$.
+By the discussion in
+Remark \ref{remark-infinite-sums-rational-equivalences}
+this will prove the equality of the lemma is true.
+
+\medskip\noindent
+Let $W \subset Y$ be an integral closed subscheme of $\delta$-dimension $k$.
+Consider the closed subscheme $W' = f^{-1}(W) = W \times_Y X$
+so that we have the fibre product diagram
+$$
+\xymatrix{
+W' \ar[r] \ar[d]_h & X \ar[d]^f \\
+W \ar[r] & Y
+}
+$$
+We have to show that
+$f^*(c_1(\mathcal{L}) \cap [W]) = c_1(f^*\mathcal{L}) \cap f^*[W]$.
+Choose a nonzero meromorphic section $s$ of $\mathcal{L}|_W$.
+Let $W'_i \subset W'$ be the irreducible components of
+$\delta$-dimension $k + r$. Write $[W']_{k + r} = \sum n_i[W'_i]$
+with $n_i$ the multiplicity of $W'_i$ in $W'$ as per definition.
+So $f^*[W] = \sum n_i[W'_i]$ in $Z_{k + r}(X)$.
+Since each $W'_i \to W$ is dominant we
+see that $s_i = s|_{W'_i}$ is a nonzero meromorphic section for
+each $i$. By Lemma \ref{lemma-prepare-flat-pullback-cap-c1}
+we have the following equality of cycles
+$$
+h^*\text{div}_{\mathcal{L}|_W}(s) =
+\sum n_i\text{div}_{f^*\mathcal{L}|_{W'_i}}(s_i)
+$$
+in $Z_{k + r - 1}(W')$. This finishes the proof since
+the left hand side is a cycle on $W'$ which pushes to
+$f^*(c_1(\mathcal{L}) \cap [W])$ in $\CH_{k + r - 1}(X)$
+and the right hand side is a cycle on $W'$ which pushes to
+$c_1(f^*\mathcal{L}) \cap f^*[W]$ in $\CH_{k + r - 1}(X)$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-equal-c1-as-cycles}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$, $Y$ be locally of finite type over $S$.
+Let $f : X \to Y$ be a proper morphism.
+Let $\mathcal{L}$ be an invertible sheaf on $Y$.
+Let $s$ be a nonzero meromorphic section $s$ of $\mathcal{L}$ on $Y$.
+Assume $X$, $Y$ integral, $f$ dominant, and $\dim_\delta(X) = \dim_\delta(Y)$.
+Then
+$$
+f_*\left(\text{div}_{f^*\mathcal{L}}(f^*s)\right) =
+[R(X) : R(Y)]\text{div}_\mathcal{L}(s).
+$$
+as cycles on $Y$. In particular
+$$
+f_*(c_1(f^*\mathcal{L}) \cap [X]) =
+[R(X) : R(Y)] c_1(\mathcal{L}) \cap [Y] =
+c_1(\mathcal{L}) \cap f_*[X]
+$$
+\end{lemma}
+
+\begin{proof}
+The last equation follows from the first since $f_*[X] = [R(X) : R(Y)][Y]$
+by definition. It turns out that we can re-use
+Lemma \ref{lemma-proper-pushforward-alteration}
+to prove this. Namely, since we are trying to prove an equality
+of cycles, we may work locally on $Y$. Hence we may assume
+that $\mathcal{L} = \mathcal{O}_Y$. In this case $s$
+corresponds to a rational function $g \in R(Y)$, and
+we are simply trying to prove
+$$
+f_*\left(\text{div}_X(g)\right) =
+[R(X) : R(Y)]\text{div}_Y(g).
+$$
+Comparing with the result of the aforementioned
+Lemma \ref{lemma-proper-pushforward-alteration}
+we see this true since
+$\text{Nm}_{R(X)/R(Y)}(g) = g^{[R(X) : R(Y)]}$
+as $g \in R(Y)^*$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-pushforward-cap-c1}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$, $Y$ be locally of finite type over $S$.
+Let $p : X \to Y$ be a proper morphism.
+Let $\alpha \in Z_{k + 1}(X)$.
+Let $\mathcal{L}$ be an invertible sheaf on $Y$.
+Then
+$$
+p_*(c_1(p^*\mathcal{L}) \cap \alpha) = c_1(\mathcal{L}) \cap p_*\alpha
+$$
+in $\CH_k(Y)$.
+\end{lemma}
+
+\begin{proof}
+Suppose that $p$ has the property that for every integral
+closed subscheme $W \subset X$ the map $p|_W : W \to Y$
+is a closed immersion. Then, by definition of capping
+with $c_1(\mathcal{L})$ the lemma holds.
+
+\medskip\noindent
+We will use this remark to reduce to a special case. Namely,
+write $\alpha = \sum n_i[W_i]$ with $n_i \not = 0$ and $W_i$ pairwise
+distinct. Let $W'_i \subset Y$ be the image of $W_i$ (as an integral
+closed subscheme). Consider the diagram
+$$
+\xymatrix{
+X' = \coprod W_i \ar[r]_-q \ar[d]_{p'} & X \ar[d]^p \\
+Y' = \coprod W'_i \ar[r]^-{q'} & Y.
+}
+$$
+Since $\{W_i\}$ is locally finite on $X$, and $p$ is proper
+we see that $\{W'_i\}$ is locally finite on $Y$ and that
+$q, q', p'$ are also proper morphisms.
+We may think of $\sum n_i[W_i]$ also as a $k$-cycle
+$\alpha' \in Z_k(X')$. Clearly $q_*\alpha' = \alpha$.
+We have
+$q_*(c_1(q^*p^*\mathcal{L}) \cap \alpha')
+= c_1(p^*\mathcal{L}) \cap q_*\alpha'$
+and
+$(q')_*(c_1((q')^*\mathcal{L}) \cap p'_*\alpha') =
+c_1(\mathcal{L}) \cap q'_*p'_*\alpha'$ by the initial
+remark of the proof. Hence it suffices to prove the lemma
+for the morphism $p'$ and the cycle $\sum n_i[W_i]$.
+Clearly, this means we may assume $X$, $Y$ integral,
+$f : X \to Y$ dominant and $\alpha = [X]$.
+In this case the result follows from
+Lemma \ref{lemma-equal-c1-as-cycles}.
+\end{proof}
+
+
+
+
+
+

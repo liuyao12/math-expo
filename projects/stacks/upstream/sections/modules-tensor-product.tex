@@ -1,0 +1,256 @@
+\section{Tensor product}
+\label{section-tensor-product}
+
+\noindent
+We have already briefly discussed the tensor product in the setting
+of change of rings in Sheaves, Sections
+\ref{sheaves-section-presheaves-modules} and
+\ref{sheaves-section-sheafification-presheaves-modules}.
+Let us generalize this to tensor products of modules.
+
+\medskip\noindent
+Let $(X, \mathcal{O}_X)$ be a ringed space and let
+$\mathcal{F}$ and $\mathcal{G}$ be $\mathcal{O}_X$-modules.
+We define first the {\it tensor product presheaf}
+$$
+\mathcal{F} \otimes_{p, \mathcal{O}_X} \mathcal{G}
+$$
+as the rule which assigns to $U \subset X$ open the
+$\mathcal{O}_X(U)$-module
+$\mathcal{F}(U) \otimes_{\mathcal{O}_X(U)} \mathcal{G}(U)$.
+Having defined this we define the {\it tensor product sheaf}
+as the sheafification of the above:
+$$
+\mathcal{F} \otimes_{\mathcal{O}_X} \mathcal{G}
+=
+(\mathcal{F} \otimes_{p, \mathcal{O}_X} \mathcal{G})^\#
+$$
+This can be characterized as the sheaf of
+$\mathcal{O}_X$-modules such that for any third
+sheaf of $\mathcal{O}_X$-modules $\mathcal{H}$
+we have
+$$
+\Hom_{\mathcal{O}_X}
+(\mathcal{F} \otimes_{\mathcal{O}_X} \mathcal{G}, \mathcal{H})
+=
+\text{Bilin}_{\mathcal{O}_X}(\mathcal{F} \times \mathcal{G}, \mathcal{H}).
+$$
+Here the right hand side indicates the set of bilinear maps of sheaves
+of $\mathcal{O}_X$-modules as defined in Section \ref{section-bilinear}.
+
+\medskip\noindent
+The tensor product of modules $M, N$ over a ring $R$ satisfies symmetry,
+namely $M \otimes_R N = N \otimes_R M$, hence the same holds for
+tensor products of sheaves of modules, i.e., we have
+$$
+\mathcal{F} \otimes_{\mathcal{O}_X} \mathcal{G}
+=
+\mathcal{G} \otimes_{\mathcal{O}_X} \mathcal{F}
+$$
+functorial in $\mathcal{F}$, $\mathcal{G}$.
+And since tensor product of modules satisfies associativity we
+also get canonical functorial isomorphisms
+$$
+(\mathcal{F} \otimes_{\mathcal{O}_X} \mathcal{G})
+\otimes_{\mathcal{O}_X} \mathcal{H}
+=
+\mathcal{F} \otimes_{\mathcal{O}_X}
+(\mathcal{G} \otimes_{\mathcal{O}_X} \mathcal{H})
+$$
+functorial in $\mathcal{F}$, $\mathcal{G}$, and $\mathcal{H}$.
+
+\begin{lemma}
+\label{lemma-stalk-tensor-product}
+Let $(X, \mathcal{O}_X)$ be a ringed space.
+Let $\mathcal{F}$, $\mathcal{G}$ be $\mathcal{O}_X$-modules.
+Let $x \in X$. There is a canonical isomorphism
+of $\mathcal{O}_{X, x}$-modules
+$$
+(\mathcal{F} \otimes_{\mathcal{O}_X} \mathcal{G})_x
+=
+\mathcal{F}_x \otimes_{\mathcal{O}_{X, x}} \mathcal{G}_x
+$$
+functorial in $\mathcal{F}$ and $\mathcal{G}$.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-tensor-product-sheafification}
+Let $(X, \mathcal{O}_X)$ be a ringed space.
+Let $\mathcal{F}'$, $\mathcal{G}'$ be presheaves of $\mathcal{O}_X$-modules
+with sheafifications $\mathcal{F}$, $\mathcal{G}$. Then
+$\mathcal{F} \otimes_{\mathcal{O}_X} \mathcal{G} =
+(\mathcal{F}' \otimes_{p, \mathcal{O}_X} \mathcal{G}')^\#$.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+
+\begin{lemma}
+\label{lemma-tensor-product-exact}
+Let $(X, \mathcal{O}_X)$ be a ringed space.
+Let $\mathcal{G}$ be an $\mathcal{O}_X$-module.
+If
+$\mathcal{F}_1
+\to \mathcal{F}_2
+\to \mathcal{F}_3
+\to 0$
+is an exact sequence of $\mathcal{O}_X$-modules then
+the induced sequence
+$$
+\mathcal{F}_1 \otimes_{\mathcal{O}_X} \mathcal{G} \to
+\mathcal{F}_2 \otimes_{\mathcal{O}_X} \mathcal{G} \to
+\mathcal{F}_3 \otimes_{\mathcal{O}_X} \mathcal{G} \to
+0
+$$
+is exact.
+\end{lemma}
+
+\begin{proof}
+This follows from the fact that exactness may be checked at stalks
+(Lemma \ref{lemma-abelian}), the description of stalks
+(Lemma \ref{lemma-stalk-tensor-product}) and the corresponding
+result for tensor products of modules
+(Algebra, Lemma \ref{algebra-lemma-tensor-product-exact}).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-tensor-product-pullback}
+Let $f : (X, \mathcal{O}_X) \to (Y, \mathcal{O}_Y)$ be
+a morphism of ringed spaces. Let $\mathcal{F}$, $\mathcal{G}$
+be $\mathcal{O}_Y$-modules. Then
+$f^*(\mathcal{F} \otimes_{\mathcal{O}_Y} \mathcal{G})
+= f^*\mathcal{F} \otimes_{\mathcal{O}_X} f^*\mathcal{G}$
+functorially in $\mathcal{F}$, $\mathcal{G}$.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-tensor-commute-colimits}
+Let $(X, \mathcal{O}_X)$ be a ringed space.
+For any $\mathcal{O}_X$-module $\mathcal{F}$ the functor
+$$
+\textit{Mod}(\mathcal{O}_X) \longrightarrow \textit{Mod}(\mathcal{O}_X)
+, \quad
+\mathcal{G} \longmapsto \mathcal{F} \otimes_{\mathcal{O}_X} \mathcal{G}
+$$
+commutes with arbitrary colimits.
+\end{lemma}
+
+\begin{proof}
+Let $I$ be a preordered set and let $\{\mathcal{G}_i\}$ be
+a system over $I$. Set $\mathcal{G} = \colim_i \mathcal{G}_i$.
+Recall that $\mathcal{G}$ is the sheaf associated to the presheaf
+$\mathcal{G}' : U \mapsto \colim_i \mathcal{G}_i(U)$, see
+Sheaves, Section \ref{sheaves-section-limits-sheaves}.
+By
+Lemma \ref{lemma-tensor-product-sheafification}
+the tensor product $\mathcal{F} \otimes_{\mathcal{O}_X} \mathcal{G}$
+is the sheafification of the presheaf
+$$
+U \longmapsto
+\mathcal{F}(U) \otimes_{\mathcal{O}_X(U)} \colim_i \mathcal{G}_i(U) =
+\colim_i \mathcal{F}(U) \otimes_{\mathcal{O}_X(U)} \mathcal{G}_i(U)
+$$
+where the equality sign is
+Algebra, Lemma \ref{algebra-lemma-tensor-products-commute-with-limits}.
+Hence the lemma follows from the description of colimits in
+$\textit{Mod}(\mathcal{O}_X)$, see Lemma \ref{lemma-limits-colimits}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-tensor-product-permanence}
+Let $(X, \mathcal{O}_X)$ be a ringed space.
+Let $\mathcal{F}$, $\mathcal{G}$ be $\mathcal{O}_X$-modules.
+\begin{enumerate}
+\item If $\mathcal{F}$, $\mathcal{G}$ are locally generated
+by sections, so is $\mathcal{F} \otimes_{\mathcal{O}_X} \mathcal{G}$.
+\item If $\mathcal{F}$, $\mathcal{G}$ are of finite type,
+so is $\mathcal{F} \otimes_{\mathcal{O}_X} \mathcal{G}$.
+\item If $\mathcal{F}$, $\mathcal{G}$ are quasi-coherent,
+so is $\mathcal{F} \otimes_{\mathcal{O}_X} \mathcal{G}$.
+\item If $\mathcal{F}$, $\mathcal{G}$ are of finite presentation,
+so is $\mathcal{F} \otimes_{\mathcal{O}_X} \mathcal{G}$.
+\item If $\mathcal{F}$ is of finite presentation and $\mathcal{G}$ is coherent,
+then $\mathcal{F} \otimes_{\mathcal{O}_X} \mathcal{G}$ is coherent.
+\item If $\mathcal{F}$, $\mathcal{G}$ are coherent,
+so is $\mathcal{F} \otimes_{\mathcal{O}_X} \mathcal{G}$.
+\item If $\mathcal{F}$, $\mathcal{G}$ are locally free,
+so is $\mathcal{F} \otimes_{\mathcal{O}_X} \mathcal{G}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+We first prove that the tensor product of locally free
+$\mathcal{O}_X$-modules is locally free. This follows if we show
+that
+$(\bigoplus_{i \in I} \mathcal{O}_X) \otimes_{\mathcal{O}_X}
+(\bigoplus_{j \in J} \mathcal{O}_X) \cong
+\bigoplus_{(i, j) \in I \times J} \mathcal{O}_X$.
+The sheaf $\bigoplus_{i \in I} \mathcal{O}_X$ is the sheaf associated
+to the presheaf $U \mapsto \bigoplus_{i \in I} \mathcal{O}_X(U)$.
+Hence the tensor product is the sheaf associated
+to the presheaf
+$$
+U \longmapsto
+(\bigoplus\nolimits_{i \in I} \mathcal{O}_X(U))
+\otimes_{\mathcal{O}_X(U)}
+(\bigoplus\nolimits_{j \in J} \mathcal{O}_X(U)).
+$$
+We deduce what we want since for any ring $R$ we have
+$(\bigoplus_{i \in I} R) \otimes_R (\bigoplus_{j \in J} R) =
+\bigoplus_{(i, j) \in I \times J} R$.
+
+\medskip\noindent
+If $\mathcal{F}_2 \to \mathcal{F}_1 \to \mathcal{F} \to 0$
+is exact, then by Lemma \ref{lemma-tensor-product-exact}
+the complex
+$\mathcal{F}_2 \otimes_{\mathcal{O}_X} \mathcal{G} \to
+\mathcal{F}_1 \otimes_{\mathcal{O}_X} \mathcal{G} \to
+\mathcal{F} \otimes_{\mathcal{O}_X} \mathcal{G} \to 0$
+is exact. Using this we can prove (5). Namely, in this case there
+exists locally such an exact sequence with $\mathcal{F}_i$, $i = 1, 2$
+finite free. Hence the two terms
+$\mathcal{F}_2 \otimes_{\mathcal{O}_X} \mathcal{G}$ and
+$\mathcal{F}_1 \otimes_{\mathcal{O}_X} \mathcal{G}$
+are isomorphic to finite direct sums of $\mathcal{G}$ (for example
+by Lemma \ref{lemma-tensor-commute-colimits}).
+Since finite direct sums are coherent sheaves, these are coherent
+and so is the cokernel of the map, see Lemma \ref{lemma-coherent-abelian}.
+
+\medskip\noindent
+And if also
+$\mathcal{G}_2 \to \mathcal{G}_1 \to \mathcal{G} \to 0$
+is exact, then we see that
+$$
+\mathcal{F}_2 \otimes_{\mathcal{O}_X} \mathcal{G}_1
+\oplus
+\mathcal{F}_1 \otimes_{\mathcal{O}_X} \mathcal{G}_2
+\to
+\mathcal{F}_1 \otimes_{\mathcal{O}_X} \mathcal{G}_1
+\to
+\mathcal{F} \otimes_{\mathcal{O}_X} \mathcal{G}
+\to 0
+$$
+is exact. Using this we can for example prove (3).
+Namely, the assumption means that we can locally find presentations
+as above with $\mathcal{F}_i$ and $\mathcal{G}_i$
+free $\mathcal{O}_X$-modules. Hence the displayed presentation
+is a presentation of the tensor product by free sheaves as well.
+
+\medskip\noindent
+The proof of the other statements is omitted.
+\end{proof}
+
+
+
+
+

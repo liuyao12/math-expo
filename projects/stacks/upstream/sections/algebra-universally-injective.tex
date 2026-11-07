@@ -1,0 +1,532 @@
+\section{Universally injective module maps}
+\label{section-universally-injective}
+
+\noindent
+Next we discuss universally injective module maps, which
+are in a sense complementary to flat modules (see Lemma
+\ref{lemma-flat-universally-injective}).  We follow Lazard's thesis
+\cite{Autour};  also see \cite{Lam}.
+
+\begin{definition}
+\label{definition-universally-injective}
+Let $f: M \to N$ be a map of $R$-modules.  Then $f$ is called
+{\it universally injective} if for every $R$-module $Q$, the map $f
+\otimes_R \text{id}_Q: M \otimes_R Q \to N \otimes_R Q$
+is injective.  A sequence $0 \to M_1 \to M_2 \to M_3
+\to 0$ of $R$-modules is called {\it universally exact} if it is exact
+and $M_1 \to M_2$ is universally injective.
+\end{definition}
+
+\begin{example}
+\label{example-universally-exact}
+Examples of universally exact sequences.
+\begin{enumerate}
+\item A split short exact sequence is universally exact since tensoring
+commutes with taking direct sums.
+\item The colimit of a directed system of universally exact sequences is
+universally exact.  This follows from the fact that taking directed colimits is
+exact and that tensoring commutes with taking colimits.  In particular the
+colimit of a directed system of split exact sequences is universally exact.  We
+will see below that, conversely, any universally exact sequence arises in this
+way.
+\end{enumerate}
+\end{example}
+
+\noindent
+Next we give a list of criteria for a short exact sequence to be universally
+exact.  They are analogues of criteria for flatness given above.  Parts (3)-(6)
+below correspond, respectively, to the criteria for flatness given in
+Lemmas \ref{lemma-flat-eq}, \ref{lemma-flat-factors-free},
+\ref{lemma-flat-surjective-hom}, and
+Theorem \ref{theorem-lazard}.
+
+\begin{theorem}
+\label{theorem-universally-exact-criteria}
+Let
+$$
+0 \to M_1 \xrightarrow{f_1} M_2 \xrightarrow{f_2} M_3 \to 0
+$$
+be an exact sequence of $R$-modules.  The following are equivalent:
+\begin{enumerate}
+\item The sequence $0 \to M_1 \to M_2 \to M_3
+\to 0$ is universally exact.
+\item For every finitely presented $R$-module $Q$, the sequence
+$$
+0 \to M_1 \otimes_R Q \to M_2 \otimes_R Q \to
+M_3 \otimes_R Q \to 0
+$$
+is exact.
+\item Given elements $x_i \in M_1$ $(i = 1, \ldots, n)$, $y_j \in M_2$ $(j = 1,
+\ldots, m)$, and $a_{ij} \in R$ $(i = 1, \ldots, n, j = 1, \ldots, m)$ such that
+for all $i$
+$$
+f_1(x_i) = \sum\nolimits_j a_{ij} y_j,
+$$
+there exists $z_j \in M_1$ $(j =1, \ldots, m)$ such that for all $i$,
+$$
+x_i = \sum\nolimits_j a_{ij} z_j .
+$$
+\item Given a commutative diagram of $R$-module maps
+$$
+\xymatrix{
+R^n \ar[r] \ar[d] &  R^m \ar[d] \\
+M_1 \ar[r]^{f_1}        &  M_2
+}
+$$
+where $m$ and $n$ are integers, there exists a map $R^m \to M_1$ making
+the top triangle commute.
+\item For every finitely presented $R$-module $P$, the $R$-module
+map $\Hom_R(P, M_2) \to \Hom_R(P, M_3)$ is surjective.
+\item The sequence $0 \to M_1 \to M_2 \to M_3
+\to 0$ is the colimit of a directed system of split exact sequences of
+the form
+$$
+0 \to M_{1} \to M_{2, i} \to M_{3, i} \to 0
+$$
+where the $M_{3, i}$ are finitely presented.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Obviously (1) implies (2).
+
+\medskip\noindent
+Next we show (2) implies (3).  Let $f_1(x_i) = \sum_j a_{ij} y_j$ be relations
+as in (3).  Let $(d_j)$ be a basis for $R^m$, $(e_i)$ a basis for $R^n$, and
+$R^m \to R^n$ the map given by $d_j \mapsto \sum_i a_{ij} e_i$.
+Let $Q$ be the cokernel of $R^m \to R^n$.  Then tensoring
+$R^m \to R^n \to Q \to 0$ by the map $f_1: M_1 \to M_2$, we get a
+commutative diagram
+$$
+\xymatrix{
+M_1^{\oplus m} \ar[r] \ar[d] & M_1^{\oplus n} \ar[r] \ar[d] & M_1 \otimes_R Q
+\ar[r] \ar[d] & 0 \\
+M_2^{\oplus m} \ar[r] & M_2^{\oplus n} \ar[r] & M_2 \otimes_R Q \ar[r] & 0
+}
+$$
+where $M_1^{\oplus m} \to M_1^{\oplus n}$ is given by
+$$
+(z_1, \ldots, z_m) \mapsto
+(\sum\nolimits_j a_{1j} z_j, \ldots, \sum\nolimits_j a_{nj} z_j),
+$$
+and $M_2^{\oplus m} \to M_2^{\oplus n}$ is given similarly.  We want to
+show $x = (x_1, \ldots, x_n) \in M_1^{\oplus n}$ is in the image of $M_1^{\oplus
+m} \to M_1^{\oplus n}$.  By (2) the map $M_1 \otimes Q \to M_2
+\otimes Q$ is injective, hence by exactness of the top row it is enough to show
+$x$ maps to $0$ in $M_2 \otimes Q$, and so by exactness of the bottom row it is
+enough to show the image of $x$ in $M_2^{\oplus n}$ is in the image of
+$M_2^{\oplus m} \to M_2^{\oplus n}$.  This is true by assumption.
+
+\medskip\noindent
+Condition (4) is just a translation of (3) into diagram form.
+
+\medskip\noindent
+Next we show (4) implies (5). Let $\varphi : P \to M_3$ be a map from a
+finitely presented $R$-module $P$.  We must show that $\varphi$ lifts to a map
+$P \to M_2$.  Choose a presentation of $P$,
+$$
+R^n \xrightarrow{g_1} R^m \xrightarrow{g_2} P \to 0.
+$$
+Using freeness of $R^n$ and $R^m$, we can construct $h_2: R^m \to M_2$
+and then $h_1: R^n \to M_1$ such that the following diagram commutes
+$$
+\xymatrix{
+         & R^n \ar[r]^{g_1} \ar[d]^{h_1} & R^m \ar[r]^{g_2} \ar[d]^{h_2} & P
+\ar[r] \ar[d]^{\varphi} & 0 \\
+0 \ar[r] & M_1 \ar[r]^{f_1} & M_2 \ar[r]^{f_2} & M_3 \ar[r] & 0 .
+}
+$$
+By (4) there is a map $k_1: R^m \to M_1$ such that $k_1 \circ g_1 =
+h_1$.  Now define $h'_2: R^m \to M_2$ by $h_2' = h_2 - f_1 \circ k_1$.
+Then
+$$
+h'_2 \circ g_1 = h_2 \circ g_1 - f_1 \circ k_1 \circ g_1 =
+h_2 \circ g_1 - f_1 \circ h_1 = 0 .
+$$
+Hence by passing to the quotient $h'_2$ defines a map $\varphi': P \to
+M_2$ such that $\varphi' \circ g_2 = h_2'$.  In a diagram, we have
+$$
+\xymatrix{
+R^m \ar[r]^{g_2} \ar[d]_{h'_2} & P \ar[d]^{\varphi} \ar[dl]_{\varphi'} \\
+M_2 \ar[r]^{f_2} & M_3.
+}
+$$
+where the top triangle commutes.  We claim that $\varphi'$ is the desired lift,
+i.e.\ that $f_2 \circ \varphi' = \varphi$.  From the definitions we have
+$$
+f_2 \circ \varphi' \circ g_2 = f_2 \circ h'_2 =
+f_2 \circ h_2 - f_2 \circ f_1 \circ k_1 = f_2 \circ h_2 =
+\varphi \circ g_2.
+$$
+Since $g_2$ is surjective, this finishes the proof.
+
+\medskip\noindent
+Now we show (5) implies (6). Write $M_{3}$ as the colimit of a directed system
+of finitely presented modules $M_{3, i}$, see
+Lemma \ref{lemma-module-colimit-fp}. Let $M_{2, i}$ be the fiber product
+of $M_{3, i}$ and $M_{2}$ over $M_{3}$---by definition this is the submodule of
+$M_2 \times M_{3, i}$ consisting of elements whose two projections onto $M_3$
+are equal. Let $M_{1, i}$ be the kernel of the projection
+$M_{2, i} \to M_{3, i}$. Then we have a directed system of exact sequences
+$$
+0 \to M_{1, i} \to M_{2, i} \to M_{3, i} \to 0,
+$$
+and for each $i$ a map of exact sequences
+$$
+\xymatrix{
+0  \ar[r] & M_{1, i} \ar[d] \ar[r]  &  M_{2, i}  \ar[r] \ar[d] & M_{3, i} \ar[d]
+\ar[r] & 0 \\
+0  \ar[r] & M_{1} \ar[r]  &  M_{2}  \ar[r] & M_{3} \ar[r] & 0
+}
+$$
+compatible with the directed system.  From the definition of the fiber product
+$M_{2, i}$, it follows that the map $M_{1, i} \to M_1$ is an isomorphism.
+ By (5) there is a map $M_{3, i} \to M_{2}$ lifting $M_{3, i} \to
+M_3$, and by the universal property of the fiber product this gives rise to a
+section of $M_{2, i} \to M_{3, i}$.  Hence the sequences
+$$
+0 \to M_{1, i} \to M_{2, i} \to M_{3, i} \to 0
+$$
+split.  Passing to the colimit, we have a commutative diagram
+$$
+\xymatrix{
+0  \ar[r] & \colim M_{1, i} \ar[d]^{\cong} \ar[r]  &  \colim M_{2, i}
+ \ar[r]
+\ar[d] & \colim M_{3, i} \ar[d]^{\cong} \ar[r] & 0 \\
+0  \ar[r] & M_{1} \ar[r]  &  M_{2}  \ar[r] & M_{3} \ar[r] & 0
+}
+$$
+with exact rows and outer vertical maps isomorphisms.  Hence $\colim
+M_{2, i}
+\to M_2$ is also an isomorphism and (6) holds.
+
+\medskip\noindent
+Condition (6) implies (1) by
+Example \ref{example-universally-exact} (2).
+\end{proof}
+
+\noindent
+The previous theorem shows that a universally exact sequence is always a
+colimit of split short exact sequences.  If the cokernel of a universally
+injective map is finitely presented, then in fact the map itself splits:
+
+\begin{lemma}
+\label{lemma-universally-exact-split}
+Let
+$$
+0 \to M_1 \to M_2 \to M_3 \to 0
+$$
+be an exact sequence of $R$-modules.  Suppose $M_3$ is of finite presentation.
+Then
+$$
+0 \to M_1 \to M_2 \to M_3 \to 0
+$$
+is universally exact if and only if it is split.
+\end{lemma}
+
+\begin{proof}
+A split short exact sequence is always universally exact, see
+Example \ref{example-universally-exact}.
+Conversely, if the sequence is universally exact, then by
+Theorem \ref{theorem-universally-exact-criteria} (5)
+applied to $P = M_3$, the map $M_2 \to M_3$ admits a section.
+\end{proof}
+
+\noindent
+The following lemma shows how universally injective maps are complementary to
+flat modules.
+
+\begin{lemma}
+\label{lemma-flat-universally-injective}
+Let $M$ be an $R$-module.  Then $M$ is flat if and only if any exact sequence
+of $R$-modules
+$$
+0 \to M_1 \to M_2 \to M \to 0
+$$
+is universally exact.
+\end{lemma}
+
+\begin{proof}
+This follows from Lemma \ref{lemma-flat-surjective-hom} and
+Theorem \ref{theorem-universally-exact-criteria} (5).
+\end{proof}
+
+\begin{example}
+\label{example-universally-exact-non-split-non-flat}
+Non-split and non-flat universally exact sequences.
+\begin{enumerate}
+\item In spite of
+Lemma \ref{lemma-universally-exact-split},
+it is possible to  have a short exact sequence of $R$-modules
+$$
+0 \to M_1 \to M_2 \to M_3 \to 0
+$$
+that is universally exact but non-split.  For instance, take $R = \mathbf{Z}$,
+let $M_1 = \bigoplus_{n=1}^{\infty} \mathbf{Z}$, let $M_{2} = \prod_{n =
+1}^{\infty} \mathbf{Z}$, and let $M_{3}$ be the cokernel of the inclusion $M_1
+\to M_2$.  Then $M_1, M_2, M_3$ are all flat since they are torsion-free
+(More on Algebra, Lemma \ref{more-algebra-lemma-dedekind-torsion-free-flat}),
+so by Lemma \ref{lemma-flat-universally-injective},
+$$
+0 \to M_1 \to M_2 \to M_3 \to 0
+$$
+is universally exact.  However there can be no section $s: M_3 \to
+M_2$.  In fact, if $x$ is the image of $(2, 2^2, 2^3, \ldots) \in M_2$ in $M_3$,
+then any module map $s: M_3 \to M_2$ must kill $x$.  This is because $x
+\in 2^n M_3$ for any $n \geq 1$, hence $s(x)$ is divisible by $2^n$ for all $n
+\geq 1$ and so must be $0$.
+\item In spite of Lemma \ref{lemma-flat-universally-injective}, it is possible
+to have a short exact sequence of $R$-modules
+$$
+0 \to M_1 \to M_2 \to M_3 \to 0
+$$
+that is universally exact but with $M_1, M_2, M_3$ all non-flat.  In fact if $M$
+is any non-flat module, just take the split exact sequence
+$$
+0 \to M \to M \oplus M \to M \to 0.
+$$
+For instance over $R = \mathbf{Z}$, take $M$ to be any torsion module.
+\item Taking the direct sum of an exact sequence as in (1) with one as in (2),
+we get a short exact sequence of $R$-modules
+$$
+0 \to M_1 \to M_2 \to M_3 \to 0
+$$
+that is universally exact, non-split, and such that
+$M_1, M_2, M_3$ are all non-flat.
+\end{enumerate}
+\end{example}
+
+\begin{lemma}
+\label{lemma-ui-flat-domain}
+Let $0 \to M_1 \to M_2 \to M_3 \to 0$ be a universally exact sequence
+of $R$-modules, and suppose $M_2$ is flat.
+Then $M_1$ and $M_3$ are flat.
+\end{lemma}
+
+\begin{proof}
+Let $0 \to N \to N' \to N'' \to 0$ be a short exact sequence of
+$R$-modules. Consider the commutative diagram
+$$
+\xymatrix{
+M_1 \otimes_R N \ar[r] \ar[d] &
+M_2 \otimes_R N \ar[r] \ar[d] &
+M_3 \otimes_R N \ar[d] \\
+M_1 \otimes_R N' \ar[r] \ar[d] &
+M_2 \otimes_R N' \ar[r] \ar[d] &
+M_3 \otimes_R N' \ar[d] \\
+M_1 \otimes_R N'' \ar[r] &
+M_2 \otimes_R N'' \ar[r] &
+M_3 \otimes_R N''
+}
+$$
+(we have dropped the $0$'s on the boundary).
+By assumption the rows give short exact sequences and the arrow
+$M_2 \otimes N \to M_2 \otimes N'$ is injective. Clearly this implies
+that $M_1 \otimes N \to M_1 \otimes N'$ is injective and we see that $M_1$
+is flat. In particular the left and middle columns give rise to short
+exact sequences. It follows from a diagram chase that the arrow
+$M_3 \otimes N \to M_3 \otimes N'$ is injective. Hence $M_3$ is flat.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-universally-injective-tensor}
+Let $R$ be a ring.
+Let $M \to M'$ be a universally injective $R$-module map.
+Then for any $R$-module $N$ the map $M \otimes_R N \to M' \otimes_R N$
+is universally injective.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-composition-universally-injective}
+Let $R$ be a ring. A composition of universally injective
+$R$-module maps is universally injective.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-universally-injective-permanence}
+Let $R$ be a ring. Let $M \to M'$ and $M' \to M''$ be $R$-module maps.
+If their composition $M \to M''$ is universally injective, then
+$M \to M'$ is universally injective.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-universally-injective-check-stalks}
+Let $R \to S$ be a ring map.
+Let $M \to M'$ be a map of $S$-modules.
+The following are equivalent
+\begin{enumerate}
+\item $M \to M'$ is universally injective as a map of $R$-modules,
+\item for each prime $\mathfrak q$ of $S$ the map
+$M_{\mathfrak q} \to M'_{\mathfrak q}$ is universally injective
+as a map of $R$-modules,
+\item for each maximal ideal $\mathfrak m$ of $S$ the map
+$M_{\mathfrak m} \to M'_{\mathfrak m}$ is universally injective
+as a map of $R$-modules,
+\item for each prime $\mathfrak q$ of $S$ the map
+$M_{\mathfrak q} \to M'_{\mathfrak q}$ is universally injective
+as a map of $R_{\mathfrak p}$-modules, where $\mathfrak p$ is the
+inverse image of $\mathfrak q$ in $R$, and
+\item for each maximal ideal $\mathfrak m$ of $S$ the map
+$M_{\mathfrak m} \to M'_{\mathfrak m}$ is universally injective
+as a map of $R_{\mathfrak p}$-modules, where $\mathfrak p$ is the
+inverse image of $\mathfrak m$ in $R$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let $N$ be an $R$-module. Let $\mathfrak q$ be a prime of $S$ lying over
+the prime $\mathfrak p$ of $R$. Then we have
+$$
+(M \otimes_R N)_{\mathfrak q} =
+M_{\mathfrak q} \otimes_R N =
+M_{\mathfrak q} \otimes_{R_{\mathfrak p}} N_{\mathfrak p}.
+$$
+Moreover, the same thing holds for $M'$ and localization is exact.
+Also, if $N$ is an $R_{\mathfrak p}$-module, then $N_{\mathfrak p} = N$.
+Using this the equivalences can be proved in a straightforward manner.
+
+\medskip\noindent
+For example, suppose that (5) holds. Let
+$K = \Ker(M \otimes_R N \to M' \otimes_R N)$. By the remarks
+above we see that $K_{\mathfrak m} = 0$ for each maximal ideal $\mathfrak m$
+of $S$. Hence $K = 0$ by
+Lemma \ref{lemma-characterize-zero-local}.
+Thus (1) holds. Conversely, suppose that (1) holds. Take any
+$\mathfrak q \subset S$ lying over $\mathfrak p \subset R$.
+Take any module $N$ over $R_{\mathfrak p}$. Then
+by assumption $\Ker(M \otimes_R N \to M' \otimes_R N) = 0$.
+Hence by the formulae above and the fact that $N = N_{\mathfrak p}$
+we see that
+$\Ker(M_{\mathfrak q} \otimes_{R_{\mathfrak p}} N \to
+M'_{\mathfrak q} \otimes_{R_{\mathfrak p}} N) = 0$. In other words
+(4) holds. Of course (4) $\Rightarrow$ (5) is immediate. Hence
+(1), (4) and (5) are all equivalent.
+We omit the proof of the other equivalences.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-universally-injective-localize}
+Let $\varphi : A \to B$ be a ring map. Let $S \subset A$ and
+$S' \subset B$ be multiplicative subsets such that $\varphi(S) \subset S'$.
+Let $M \to M'$ be a map of $B$-modules.
+\begin{enumerate}
+\item If $M \to M'$ is universally injective as a map of $A$-modules,
+then $(S')^{-1}M \to (S')^{-1}M'$ is universally injective as a map of
+$A$-modules and as a map of $S^{-1}A$-modules.
+\item If $M$ and $M'$ are $(S')^{-1}B$-modules, then $M \to M'$
+is universally injective as a map of $A$-modules if and only if
+it is universally injective as a map of $S^{-1}A$-modules.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+You can prove this using
+Lemma \ref{lemma-universally-injective-check-stalks}
+but you can also prove it directly as follows.
+Assume $M \to M'$ is $A$-universally injective.
+Let $Q$ be an $A$-module. Then $Q \otimes_A M \to Q \otimes_A M'$
+is injective. Since localization is exact we see that
+$(S')^{-1}(Q \otimes_A M) \to (S')^{-1}(Q \otimes_A M')$ is injective.
+As $(S')^{-1}(Q \otimes_A M) = Q \otimes_A (S')^{-1}M$ and similarly for $M'$
+we see that
+$Q \otimes_A (S')^{-1}M \to Q \otimes_A (S')^{-1}M'$ is injective, hence
+$(S')^{-1}M \to (S')^{-1}M'$ is universally injective as a map of
+$A$-modules. This proves the first part of (1).
+To see (2) we can use the following two facts: (a) if $Q$ is an
+$S^{-1}A$-module, then $Q \otimes_A S^{-1}A = Q$, i.e., tensoring
+with $Q$ over $A$ is the same thing as tensoring with $Q$ over $S^{-1}A$,
+(b) if $M$ is any $A$-module on which the elements of $S$ are invertible,
+then $M \otimes_A Q = M \otimes_{S^{-1}A} S^{-1}Q$.
+Part (2) follows from this immediately.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-check-universally-injective-into-flat}
+Let $R$ be a ring and let $M \to M'$ be a map of $R$-modules.
+If $M'$ is flat, then $M \to M'$ is universally injective if
+and only if $M/IM \to M'/IM'$ is injective for every finitely
+generated ideal $I$ of $R$.
+\end{lemma}
+
+\begin{proof}
+It suffices to show that $M \otimes_R Q \to M' \otimes_R Q$ is
+injective for every finite $R$-module $Q$, see
+Theorem \ref{theorem-universally-exact-criteria}.
+Then $Q$ has a finite filtration
+$0 = Q_0 \subset Q_1 \subset \ldots \subset Q_n = Q$
+by submodules whose subquotients
+are isomorphic to cyclic modules $R/I_i$, see
+Lemma \ref{lemma-trivial-filter-finite-module}.
+Since $M'$ is flat, we obtain a filtration
+$$
+\xymatrix{
+M \otimes Q_1 \ar[r] \ar[d] &
+M \otimes Q_2 \ar[r] \ar[d] &
+\ldots \ar[r] &
+M \otimes Q \ar[d] \\
+M' \otimes Q_1 \ar@{^{(}->}[r] &
+M' \otimes Q_2 \ar@{^{(}->}[r] &
+\ldots \ar@{^{(}->}[r] &
+M' \otimes Q
+}
+$$
+of $M' \otimes_R Q$ by submodules $M' \otimes_R Q_i$ whose successive
+quotients are $M' \otimes_R R/I_i = M'/I_iM'$. A simple induction argument
+shows that it suffices to check $M/I_i M \to M'/I_i M'$ is injective.
+Note that the collection of finitely generated ideals $I'_i \subset I_i$
+is a directed set. Thus $M/I_iM = \colim M/I'_iM$ is a filtered
+colimit, similarly for $M'$, the maps $M/I'_iM \to M'/I'_i M'$ are
+injective by assumption, and since filtered colimits are exact
+(Lemma \ref{lemma-directed-colimit-exact}) we conclude.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-base-change-along-universally-injective-ring-map}
+Let $R \to S$ be a ring map which is universally injective
+as a map of $R$-modules. Then the functor $M \mapsto M \otimes_R S$
+on $R$-modules reflects injections, surjections, and isomorphisms.
+\end{lemma}
+
+\begin{proof}
+Let $M \to N$ be a map of $R$-modules with kernel $K$ and cokernel $Q$.
+If $M \otimes_R S \to N \otimes_R S$ is injective, then
+the image of $K \otimes_R S \to M \otimes_R S$ is zero.
+Since $K \subset K \otimes_R S$ and $M \subset M \otimes_R S$
+we conclude that $K = 0$.
+On the other hand, if $M \otimes_R S \to N \otimes_R S$ is surjective,
+then $Q \otimes_R S$ is zero (by right exactness of tensor product).
+Hence $Q \subset Q \otimes_R S$ is zero too.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-faithfully-flat-universally-injective}
+Let $R \to S$ be a faithfully flat ring map.
+Then $R \to S$ is universally injective as a map of $R$-modules.
+In particular $R \cap IS = I$ for any ideal $I \subset R$.
+\end{lemma}
+
+\begin{proof}
+Let $N$ be an $R$-module. We have to show that $N \to N \otimes_R S$ is
+injective. As $S$ is faithfully flat as an $R$-module, it suffices to prove
+this after tensoring with $S$. Hence it suffices to show that
+$N \otimes_R S \to N \otimes_R S \otimes_R S$,
+$n \otimes s \mapsto n \otimes 1 \otimes s$ is injective. This is true
+because there is a retraction, namely,
+$n \otimes s \otimes s' \mapsto n \otimes ss'$.
+\end{proof}
+
+
+
+

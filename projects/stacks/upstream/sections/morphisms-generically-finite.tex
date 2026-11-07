@@ -1,0 +1,389 @@
+\section{Generically finite morphisms}
+\label{section-generically-finite}
+
+\noindent
+In this section we characterize maps between schemes
+which are locally of finite type and which are ``generically finite''
+in some sense.
+
+\begin{lemma}
+\label{lemma-generically-finite}
+Let $X$, $Y$ be schemes.
+Let $f : X \to Y$ be locally of finite type.
+Let $\eta \in Y$ be a generic point of an irreducible component
+of $Y$. The following are equivalent:
+\begin{enumerate}
+\item the set $f^{-1}(\{\eta\})$ is finite,
+\item there exist affine opens $U_i \subset X$, $i = 1, \ldots, n$
+and $V \subset Y$ with $f(U_i) \subset V$,
+$\eta \in V$ and $f^{-1}(\{\eta\}) \subset \bigcup U_i$
+such that each $f|_{U_i} : U_i \to V$ is finite.
+\end{enumerate}
+If $f$ is quasi-separated, then these are also equivalent to
+\begin{enumerate}
+\item[(3)] there exist affine opens $V \subset Y$,
+and $U \subset X$ with $f(U) \subset V$,
+$\eta \in V$ and $f^{-1}(\{\eta\}) \subset U$
+such that $f|_U : U \to V$ is finite.
+\end{enumerate}
+If $f$ is quasi-compact and quasi-separated,
+then these are also equivalent to
+\begin{enumerate}
+\item[(4)] there exists an affine open $V \subset Y$, $\eta \in V$
+such that $f^{-1}(V) \to V$ is finite.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+The question is local on the base. Hence we may replace $Y$ by an
+affine neighbourhood of $\eta$, and we may and do assume throughout
+the proof below that $Y$ is affine, say $Y = \Spec(R)$.
+
+\medskip\noindent
+It is clear that (2) implies (1).
+Assume that $f^{-1}(\{\eta\}) = \{\xi_1, \ldots, \xi_n\}$ is finite.
+Choose affine opens $U_i \subset X$ with $\xi_i \in U_i$.
+By Algebra, Lemma \ref{algebra-lemma-generically-finite} we see
+that after replacing $Y$ by a standard open in
+$Y$ each of the morphisms $U_i \to Y$ is finite.
+In other words (2) holds.
+
+\medskip\noindent
+It is clear that (3) implies (1). Assume $f$ is quasi-separated and (1).
+Write $f^{-1}(\{\eta\}) = \{\xi_1, \ldots, \xi_n\}$. There are no
+specializations among the $\xi_i$ by Lemma \ref{lemma-finite-fibre}.
+Since each $\xi_i$ maps to the generic
+point $\eta$ of an irreducible component of $Y$, there cannot be a
+nontrivial specialization $\xi \leadsto \xi_i$ in $X$
+(since $\xi$ would map to $\eta$ as well).
+We conclude each $\xi_i$ is a generic point of an
+irreducible component of $X$.
+Since $Y$ is affine and $f$ quasi-separated we see $X$ is quasi-separated.
+By Properties, Lemma \ref{properties-lemma-maximal-points-affine}
+we can find an affine open $U \subset X$ containing each $\xi_i$.
+By Algebra, Lemma \ref{algebra-lemma-generically-finite} we see
+that after replacing $Y$ by a standard open in
+$Y$ the morphisms $U \to Y$ is finite.
+In other words (3) holds.
+
+\medskip\noindent
+It is clear that (4) implies all of (1) -- (3) with no further assumptions
+on $f$. Suppose that $f$ is quasi-compact and quasi-separated. We have to
+show that the equivalent conditions (1) -- (3) imply (4).
+Let $U$, $V$ be as in (3). Replace $Y$ by $V$. Since $f$ is quasi-compact
+and $Y$ is quasi-compact (being affine) we see that $X$ is quasi-compact.
+Hence $Z = X \setminus U$ is quasi-compact, hence the morphism
+$f|_Z : Z \to Y$ is quasi-compact. By construction of $Z$ we see that
+$\eta \not \in f(Z)$. Hence by
+Lemma \ref{lemma-quasi-compact-generic-point-not-in-image}
+we see that there exists an affine open
+neighbourhood $V'$ of $\eta$ in $Y$ such that $f^{-1}(V') \cap Z = \emptyset$.
+Then we have $f^{-1}(V') \subset U$ and this means
+that $f^{-1}(V') \to V'$ is finite.
+\end{proof}
+
+\begin{example}
+\label{example-counter-generically-finite}
+Let $A = \prod_{n \in \mathbf{N}} \mathbf{F}_2$.
+Every element of $A$ is an idempotent. Hence every prime ideal is maximal
+with residue field $\mathbf{F}_2$.
+Thus the topology on $X = \Spec(A)$ is totally disconnected
+and quasi-compact. The projection maps $A \to \mathbf{F}_2$ define open
+points of $\Spec(A)$. It cannot be the case that all the points
+of $X$ are open since $X$ is quasi-compact. Let $x \in X$ be a closed
+point which is not open. Then we can form a scheme $Y$ which is two
+copies of $X$ glued along $X \setminus \{x\}$. In other words, this
+is $X$ with $x$ doubled, compare
+Schemes, Example \ref{schemes-example-affine-space-zero-doubled}.
+The morphism
+$f : Y \to X$ is quasi-compact, finite type and has finite fibres
+but is not quasi-separated.
+The point $x \in X$ is a generic point of an irreducible component
+of $X$ (since $X$ is totally disconnected). But properties (3) and (4)
+of Lemma \ref{lemma-generically-finite} do not hold. The reason is that
+for any open neighbourhood $x \in U \subset X$ the inverse image
+$f^{-1}(U)$ is not affine because functions on $f^{-1}(U)$ cannot
+separate the two points lying over $x$ (proof omitted; this is a
+nice exercise). Hence the condition that $f$ is quasi-separated is
+necessary in parts (3) and (4) of the lemma.
+\end{example}
+
+\begin{remark}
+\label{remark-quasi-finite-finite-over-dense-open}
+An alternative to
+Lemma \ref{lemma-generically-finite}
+is the statement that a quasi-finite morphism is finite
+over a dense open of the target. This will be shown in
+More on Morphisms,
+Lemma \ref{more-morphisms-lemma-quasi-finite-finite-over-dense-open}.
+\end{remark}
+
+\begin{lemma}
+\label{lemma-quasi-finiteness-over-generic-point}
+Let $X$, $Y$ be schemes. Let $f : X \to Y$ be locally of finite type.
+Let $X^0$, resp.\ $Y^0$ denote the set of generic points of irreducible
+components of $X$, resp.\ $Y$. Let $\eta \in Y^0$. The following are
+equivalent
+\begin{enumerate}
+\item $f^{-1}(\{\eta\}) \subset X^0$,
+\item $f$ is quasi-finite at all points lying over $\eta$,
+\item $f$ is quasi-finite at all $\xi \in X^0$ lying over $\eta$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Condition (1) implies there are no specializations among the points
+of the fibre $X_\eta$. Hence (2) holds by
+Lemma \ref{lemma-quasi-finite-at-point-characterize}.
+The implication (2) $\Rightarrow$ (3) is immediate.
+Since $\eta$ is a generic point of $Y$, the generic points of $X_\eta$
+are generic points of $X$. Hence (3) and 
+Lemma \ref{lemma-quasi-finite-at-point-characterize}
+imply the generic points of $X_\eta$ are also closed.
+Thus all points of $X_\eta$ are generic and we see that (1) holds.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-finite-over-dense-open}
+Let $X$, $Y$ be schemes. Let $f : X \to Y$ be locally of finite type.
+Let $X^0$, resp.\ $Y^0$ denote the set of generic points of irreducible
+components of $X$, resp.\ $Y$. Assume
+\begin{enumerate}
+\item $X^0$ and $Y^0$ are finite and $f^{-1}(Y^0) = X^0$,
+\item either $f$ is quasi-compact or $f$ is separated.
+\end{enumerate}
+Then there exists a dense open $V \subset Y$
+such that $f^{-1}(V) \to V$ is finite.
+\end{lemma}
+
+\begin{proof}
+Since $Y$ has finitely many irreducible components, we can find a dense
+open which is a disjoint union of its irreducible components. Thus we may
+assume $Y$ is irreducible affine with generic point $\eta$. Then the fibre
+over $\eta$ is finite as $X^0$ is finite.
+
+\medskip\noindent
+Assume $f$ is separated and $Y$ irreducible affine. Choose $V \subset Y$
+and $U \subset X$ as in Lemma \ref{lemma-generically-finite} part (3).
+Since $f|_U : U \to V$ is finite, we see that $U \subset f^{-1}(V)$
+is closed as well as open (Lemmas \ref{lemma-image-proper-scheme-closed} and
+\ref{lemma-finite-proper}). Thus $f^{-1}(V) = U \amalg W$ for some
+open subscheme $W$ of $X$. However, since $U$ contains all the generic
+points of $X$ we conclude that $W = \emptyset$ as desired.
+
+\medskip\noindent
+Assume $f$ is quasi-compact and $Y$ irreducible affine. Then $X$ is
+quasi-compact, hence there exists a dense open subscheme $U \subset X$
+which is separated
+(Properties, Lemma \ref{properties-lemma-quasi-compact-dense-open-separated}).
+Since the set of generic points $X^0$ is finite, we see that $X^0 \subset U$.
+Thus $\eta \not \in f(X \setminus U)$. Since $X \setminus U \to Y$ is
+quasi-compact, we conclude that there is a nonempty open $V \subset Y$
+such that $f^{-1}(V) \subset U$, see Lemma \ref{lemma-quasi-compact-dominant}.
+After replacing $X$ by $f^{-1}(V)$ and $Y$ by $V$ we reduce to the
+separated case which we dealt with in the preceding paragraph.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-birational-isomorphism-over-dense-open}
+Let $X$, $Y$ be schemes. Let $f : X \to Y$ be a birational morphism
+between schemes which have finitely many irreducible components.
+Assume
+\begin{enumerate}
+\item either $f$ is quasi-compact or $f$ is separated, and
+\item either $f$ is locally of finite type and $Y$ is reduced or
+$f$ is locally of finite presentation.
+\end{enumerate}
+Then there exists a dense open $V \subset Y$
+such that $f^{-1}(V) \to V$ is an isomorphism.
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-finite-over-dense-open} we may assume that $f$ is finite.
+Since $Y$ has finitely many irreducible components, we can find a dense
+open which is a disjoint union of its irreducible components. Thus we may
+assume $Y$ is irreducible. By Lemma \ref{lemma-birational-birational} we find
+a nonempty open $U \subset X$ such that $f|_U : U \to Y$ is an open immersion.
+After removing the closed (as $f$ finite)
+subset $f(X \setminus U)$ from $Y$ we see that $f$ is an isomorphism.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-finite-degree}
+Let $X$, $Y$ be integral schemes.
+Let $f : X \to Y$ be locally of finite type.
+Assume $f$ is dominant.
+The following are equivalent:
+\begin{enumerate}
+\item the extension $R(Y) \subset R(X)$ has
+transcendence degree $0$,
+\item the extension $R(Y) \subset R(X)$ is finite,
+\item there exist nonempty affine opens $U \subset X$
+and $V \subset Y$ such that $f(U) \subset V$
+and $f|_U : U \to V$ is finite, and
+\item the generic point of $X$ is the only point of $X$ mapping to
+the generic point of $Y$.
+\end{enumerate}
+If $f$ is separated or if $f$ is quasi-compact, then these are
+also equivalent to
+\begin{enumerate}
+\item[(5)] there exists a nonempty affine open $V \subset Y$ such
+that $f^{-1}(V) \to V$ is finite.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Choose any affine opens $\Spec(A) = U \subset X$
+and $\Spec(R) = V \subset Y$ such that $f(U) \subset V$.
+Then $R$ and $A$ are domains by definition. The ring map
+$R \to A$ is of finite type
+(Lemma \ref{lemma-locally-finite-type-characterize}).
+By Lemma \ref{lemma-dominant-finite-number-irreducible-components}
+the generic point of $X$ maps to the generic point of $Y$
+hence $R \to A$ is injective. Let $K = R(Y)$ be the fraction field
+of $R$ and $L = R(X)$ the fraction field of $A$. Then $L/K$
+is a finitely generated field extension. Hence we see that
+(1) is equivalent to (2).
+
+\medskip\noindent
+Suppose (2) holds. Let $x_1, \ldots, x_n \in A$ be generators
+of $A$ over $R$. By assumption there exist nonzero polynomials
+$P_i(X) \in R[X]$ such that $P_i(x_i) = 0$. Let $f_i \in R$ be the
+leading coefficient of $P_i$. Then we conclude that
+$R_{f_1 \ldots f_n} \to A_{f_1 \ldots f_n}$ is finite, i.e., (3) holds.
+Note that (3) implies (2). So now we see that (1), (2) and (3) are all
+equivalent.
+
+\medskip\noindent
+Let $\eta$ be the generic point of $X$, and let $\eta' \in Y$ be the
+generic point of $Y$. Assume (4). Then
+$\dim_\eta(X_{\eta'}) = 0$ and we see that $R(X) = \kappa(\eta)$ has
+transcendence degree $0$ over $R(Y) = \kappa(\eta')$ by
+Lemma \ref{lemma-dimension-fibre-at-a-point}.
+In other words (1) holds. Assume the equivalent conditions (1), (2) and
+(3). Suppose that $x \in X$ is a point mapping to $\eta'$.
+As $x$ is a specialization of $\eta$,
+this gives inclusions $R(Y) \subset \mathcal{O}_{X, x} \subset R(X)$,
+which implies $\mathcal{O}_{X, x}$ is a field, see
+Algebra, Lemma \ref{algebra-lemma-integral-over-field}.
+Hence $x = \eta$. Thus we see that (1) -- (4)
+are all equivalent.
+
+\medskip\noindent
+It is clear that (5) implies (3) with no additional assumptions on
+$f$. What remains is to prove that if $f$ is either separated or
+quasi-compact, then the equivalent conditions (1) -- (4) imply (5).
+This follows from Lemma \ref{lemma-finite-over-dense-open}.
+\end{proof}
+
+\begin{definition}
+\label{definition-degree}
+Let $X$ and $Y$ be integral schemes.
+Let $f : X \to Y$ be locally of finite type and dominant.
+Assume $[R(X) : R(Y)] < \infty$, or any other of the equivalent
+conditions (1) -- (4) of Lemma \ref{lemma-finite-degree}.
+Then the positive integer
+$$
+\deg(X/Y) = [R(X) : R(Y)]
+$$
+is called the {\it degree of $X$ over $Y$}.
+\end{definition}
+
+\noindent
+It is possible to extend this notion to a morphism
+$f : X \to Y$ if (a) $Y$ is integral with generic point $\eta$,
+(b) $f$ is locally of finite type, and (c) $f^{-1}(\{\eta\})$ is finite.
+In this case we can define
+$$
+\deg(X/Y)
+=
+\sum\nolimits_{\xi \in X, \ f(\xi) = \eta}
+\dim_{R(Y)} (\mathcal{O}_{X, \xi}).
+$$
+Namely, given that $R(Y) = \kappa(\eta) = \mathcal{O}_{Y, \eta}$
+(Lemma \ref{lemma-integral-scheme-rational-functions})
+the dimensions above are finite by
+Lemma \ref{lemma-generically-finite} above.
+However, for most applications the definition given above
+is the right one.
+
+\begin{lemma}
+\label{lemma-degree-composition}
+Let $X$, $Y$, $Z$ be integral schemes.
+Let $f : X \to Y$ and $g : Y \to Z$ be dominant morphisms locally
+of finite type. Assume that $[R(X) : R(Y)] < \infty$ and
+$[R(Y) : R(Z)] < \infty$. Then
+$$
+\deg(X/Z) = \deg(X/Y) \deg(Y/Z).
+$$
+\end{lemma}
+
+\begin{proof}
+This comes from the multiplicativity of degrees in towers
+of finite extensions of fields, see
+Fields, Lemma \ref{fields-lemma-multiplicativity-degrees}.
+\end{proof}
+
+\begin{remark}
+\label{remark-definition-generically-finite}
+Let $f : X \to Y$ be a morphism of schemes which is locally of finite type.
+There are (at least) two properties that we could use to define
+{\it generically finite} morphisms. These correspond to whether you
+want the property to be local on the source or local on the target:
+\begin{enumerate}
+\item (Local on the target; suggested by Ravi Vakil.)
+Assume every quasi-compact open of $Y$ has finitely
+many irreducible components (for example if $Y$ is locally Noetherian).
+The requirement is that the inverse image of each generic point is finite, see
+Lemma \ref{lemma-generically-finite}.
+\item (Local on the source.) The requirement is that there exists
+a dense open $U \subset X$ such that $U \to Y$ is locally quasi-finite.
+\end{enumerate}
+In case (1) the requirement can be formulated without the auxiliary
+condition on $Y$, but probably doesn't give the right notion for
+general schemes. Property (2) as formulated doesn't imply that the fibres
+over generic points are finite; however, if $f$ is
+quasi-compact and $Y$ is as in (1) then it does.
+\end{remark}
+
+\begin{definition}
+\label{definition-modification}
+Let $X$ be an integral scheme. A {\it modification of $X$}
+is a birational proper morphism $f : X' \to X$ with $X'$
+integral.
+\end{definition}
+
+\noindent
+Let $f : X' \to X$ be a modification as in the definition. By
+Lemma \ref{lemma-finite-degree} there exists a nonempty $U \subset X$ such
+that $f^{-1}(U) \to U$ is finite. By generic flatness
+(Proposition \ref{proposition-generic-flatness})
+we may assume $f^{-1}(U) \to U$ is flat and of finite presentation.
+So $f^{-1}(U) \to U$ is finite locally free (Lemma \ref{lemma-finite-flat}).
+Since $f$ is birational, the degree of $X'$ over $X$ is $1$.
+Hence $f^{-1}(U) \to U$ is finite locally free of degree $1$,
+in other words it is an isomorphism. Thus we can {\it redefine} a
+modification to be a proper morphism $f : X' \to X$ of integral schemes
+such that $f^{-1}(U) \to U$ is an isomorphism for some nonempty open
+$U \subset X$.
+
+\begin{definition}
+\label{definition-alteration}
+\begin{reference}
+\cite[Definition 2.20]{alterations}
+\end{reference}
+Let $X$ be an integral scheme. An {\it alteration of $X$}
+is a proper dominant morphism $f : Y \to X$ with $Y$ integral such
+that $f^{-1}(U) \to U$ is finite for some nonempty open $U \subset X$.
+\end{definition}
+
+\noindent
+This is the definition as given in \cite{alterations}, except that
+here we do not require $X$ and $Y$ to be Noetherian. Arguing as above
+we see that an alteration is a proper dominant morphism $f : Y \to X$
+of integral schemes which induces a finite extension of
+function fields, i.e., such that the equivalent conditions of
+Lemma \ref{lemma-finite-degree} hold.
+
+
+

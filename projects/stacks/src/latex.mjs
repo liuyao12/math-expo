@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
+import {macros as sharedMacros} from '../public/math-config.js';
 
 export const escapeHTML = s => String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 export function createRenderer(root, options={}) {
@@ -18,12 +19,8 @@ export function createRenderer(root, options={}) {
   }
   const diagramFile=path.join(root,'src/diagrams.json');
   const sourceDiagrams=fs.existsSync(diagramFile)?JSON.parse(fs.readFileSync(diagramFile,'utf8')):{};
-  let mathCount=0;
-  const macros={ '\\Spec':'\\operatorname{Spec}', '\\CH':'\\operatorname{CH}', '\\Mor':'\\operatorname{Mor}', '\\Sh':'\\mathit{Sh}', '\\Sch':'\\mathit{Sch}' };
-  macros['\\SheafHom']='\\mathop{\\mathcal{H}\\!\\mathit{om}}\\nolimits';
-  macros['\\SheafExt']='\\mathop{\\mathcal{E}\\!\\mathit{xt}}\\nolimits';
-  macros['\\QCoh']='\\mathit{QCoh}';
-  for(const name of ['Hom','Ob','colim','Ker','Coker','Coim','Im','Ext','Pic'])macros['\\'+name]='\\operatorname{'+name+'}';
+  let mathCount=0,activeChapter;
+  const macros={...sharedMacros};
   const braces=(s,start)=>{
     if(s[start]!=='{')throw Error('Expected opening brace: '+s.slice(start,start+40));
     let depth=1,i=start+1;
@@ -40,9 +37,19 @@ export function createRenderer(root, options={}) {
       return `<div class="math-display original-diagram"><img class="source-diagram" src="../diagrams/${diagram.file}?v=${diagram.svg_sha256.slice(0,12)}" width="${Math.ceil(diagram.width*1.8)}" height="${Math.ceil(diagram.height*1.8)}" alt="Commutative diagram typeset from the original Stacks LaTeX" loading="lazy"></div>`;
     }
     if(tex.includes('\\xymatrix'))throw Error('Original-source diagram assets are required.');
-    tex=tex.trim().replace(/\\begin\{eqnarray\*\}/g,'\\begin{aligned}').replace(/\\end\{eqnarray\*\}/g,'\\end{aligned}').replace(/&\s*(=|\\mapsto)\s*&/g,'& $1 ');
-    const rendered=context.katex.renderToString(tex,{throwOnError:true,displayMode:display,macros,strict:'ignore',output:'htmlAndMathml'});
-    return display?`<div class="math-display">${rendered}</div>`:`<span class="math-inline" data-tex="${escapeHTML(tex)}">${rendered}</span>`;
+    tex=tex.trim().replace(/\\begin\{eqnarray\*?\}/g,'\\begin{aligned}').replace(/\\end\{eqnarray\*?\}/g,'\\end{aligned}').replace(/&\s*(=|\\mapsto|\\longrightarrow|\\longmapsto)\s*&/g,'& $1 ').replace(/\\nonumber\b/g,'');
+    tex=tex.replace(/\\(eqref|ref)\{([^}]+)\}/g,(_,command,label)=>{
+      const full=references[label]?label:activeChapter+'-'+label,ref=references[full];
+      if(!ref)throw Error('Unresolved source reference in math '+full);
+      const route=options.routes?.[full]||routeManifest.routes[full];
+      const href=selected.has(full)?'#'+ref.tag:route?'../'+route+'/#'+ref.tag:'https://stacks.math.columbia.edu/tag/'+ref.tag;
+      return '\\href{'+href+'}{\\text{'+(command==='eqref'?'('+ref.number+')':ref.number)+'}}';
+    });
+    let rendered;
+    try{rendered=context.katex.renderToString(tex,{throwOnError:true,displayMode:display,macros,strict:'ignore',output:options.lazyMath?'mathml':'htmlAndMathml',trust:context=>context.command==='\\href'});}
+    catch(error){if(options.onMathError)return options.onMathError(error,tex);throw new Error(error.message+'\nSource formula: '+tex);}
+    const lazy=options.lazyMath?' math-lazy':'',data=` data-tex="${escapeHTML(tex)}"`;
+    return display?`<div class="math-display${lazy}"${options.lazyMath?data:''}>${rendered}</div>`:`<span class="math-inline${lazy}"${data}>${rendered}</span>`;
   }
   function reference(label,chapter){
     const full=references[label]?label:chapter+'-'+label;
@@ -70,7 +77,11 @@ export function createRenderer(root, options={}) {
     tex=tex.replace(/\\href\{(https?:\/\/[^{}]+)\}\{([^{}]+)\}/g,(_,url,label)=>hold(`<a href="${escapeHTML(url)}" target="_blank" rel="noopener">${inline(label,chapter)}</a>`));
     tex=tex.replace(/\\ref\{([^}]+)\}/g,(_,label)=>hold(reference(label,chapter)));
     tex=tex.replace(/\\label\{([^}]+)\}/g,(_,label)=>hold(anchors('\\label{'+label+'}',chapter)));
-    tex=tex.replace(/\\'\{?([A-Za-z])\}?/g,(_,letter)=>(letter+'\u0301').normalize('NFC'));
+    const accents={'"':'\u0308',"'":'\u0301','`':'\u0300','^':'\u0302','~':'\u0303','=':'\u0304','.':'\u0307',u:'\u0306',v:'\u030C',H:'\u030B',c:'\u0327',r:'\u030A',k:'\u0328'};
+    tex=tex.replace(/\{\\(["'`^~=.])([A-Za-z])\}/g,(_,accent,letter)=>(letter+accents[accent]).normalize('NFC'));
+    tex=tex.replace(/\{\\([uvHcrk])\s+([A-Za-z])\}/g,(_,accent,letter)=>(letter+accents[accent]).normalize('NFC'));
+    tex=tex.replace(/\\(["'`^~=.])\{?([A-Za-z])\}?/g,(_,accent,letter)=>(letter+accents[accent]).normalize('NFC'));
+    tex=tex.replace(/\\([uvHcrk])(?:\{([A-Za-z])\}|\s+([A-Za-z]))/g,(_,accent,a,b)=>((a||b)+accents[accent]).normalize('NFC'));
     tex=tex.replaceAll('{\\v C}','Č');
     tex=escapeHTML(tex).replace(/\{\\(?:it|em) ([^{}]+)\}/g,'<em>$1</em>').replace(/\{\\bf ([^{}]+)\}/g,'<strong>$1</strong>');
     tex=tex.replace(/\\textit\{([^{}]+)\}/g,'<em>$1</em>').replace(/\\(?:noindent|medskip|smallskip|bigskip)\b/g,'').replace(/\\%/g,'%').replace(/\\&/g,'&amp;').replace(/\\ /g,' ').replaceAll('~',' ').replaceAll('``','“').replaceAll("''",'”').replaceAll('---','—').replaceAll('--','–').replace(/\s+/g,' ').trim();
@@ -83,7 +94,7 @@ export function createRenderer(root, options={}) {
   }
   function body(tex,chapter){
     tex=tex.replace(/\\medskip\s*\\noindent/g,'\n\n');
-    let html='',cursor=0;const pattern=/\$\$|\\footnote\{|\\begin\{(enumerate|itemize|align\*|eqnarray\*|equation|history|reference|slogan)\}/g;let match;
+    let html='',cursor=0;const pattern=/\$\$|\\footnote\{|\\begin\{(enumerate|itemize|align\*|eqnarray\*?|equation|history|reference|slogan)\}/g;let match;
     const prose=s=>s.split(/\n\s*\n/).map(p=>inline(p,chapter)).filter(Boolean).map(p=>'<p>'+p+'</p>').join('');
     while((match=pattern.exec(tex))){
       if(match[0]==='\\footnote{'){
@@ -120,9 +131,10 @@ export function createRenderer(root, options={}) {
     return html+prose(tex.slice(cursor));
   }
   function section(section){
+    activeChapter=section.chapter;
     let tex=fs.readFileSync(path.join(root,'upstream/sections',section.slug+'.tex'),'utf8').replace(/(?<!\\)%[^\n]*/g,'');
     tex=tex.replace(/^\\section\{[^\n]+\}\s*\\label\{[^}]+\}/,'').trim();
-    const blocks=[];let cursor=0;const pattern=/\\begin\{(definition|lemma|example|theorem|proposition|corollary|remark|situation|proof)\}(?:\[([^\]]+)\])?/g;let match;
+    const blocks=[];let cursor=0;const pattern=/\\begin\{(definition|lemma|example|exercise|theorem|proposition|corollary|remarks?|situation|discussion|notation|proof)\}(?:\[([^\]]+)\])?/g;let match;
     const pushProse=s=>{if(s.trim())blocks.push({kind:'prose',html:body(s,section.chapter)});};
     while((match=pattern.exec(tex))){
       pushProse(tex.slice(cursor,match.index));

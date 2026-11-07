@@ -1,0 +1,173 @@
+\section{Finite extensions}
+\label{section-finite-extensions}
+
+\noindent
+If $F/E$ is a field extension, then evidently $F$ is also a vector space
+over $E$ (the scalar action is just multiplication in $F$).
+
+\begin{definition}
+\label{definition-degree}
+Let $F/E$ be an extension of fields. The dimension of $F$ considered as an
+$E$-vector space is called the {\it degree} of the extension and is
+denoted $[F : E]$. If $[F : E] < \infty$ then $F$ is said to be a
+{\it finite} extension of $E$.
+\end{definition}
+
+\begin{example}
+\label{example-C-over-R}
+The field $\mathbf{C}$ is a two dimensional vector space over $\mathbf{R}$
+with basis $1, i$. Thus $\mathbf{C}$ is a finite extension of $\mathbf{R}$
+of degree 2.
+\end{example}
+
+\begin{lemma}
+\label{lemma-finite-goes-up}
+Let $K/E/F$ be a tower of algebraic field extensions.
+If $K$ is finite over $F$, then $K$ is finite over $E$.
+\end{lemma}
+
+\begin{proof}
+Direct from the definition.
+\end{proof}
+
+\noindent
+Let us now consider the degree in the most important special example, that
+given by Lemma \ref{lemma-field-extension-generated-by-one-element}, in the
+next two examples.
+
+\begin{example}[Degree of a rational function field]
+\label{example-degree-rational-function-field}
+If $k$ is any field, then the rational function field $k(t)$ is
+{\it not} a finite extension. For example the elements
+$\left\{t^n, n \in \mathbf{Z}\right\}$ are linearly independent over $k$.
+
+\medskip\noindent
+In fact, if $k$ is uncountable, then $k(t)$ is {\it uncountably} dimensional
+as a $k$-vector space. To show this, we claim that the family of elements
+$\{1/(t- \alpha), \alpha \in k\} \subset k(t)$ is linearly independent over
+$k$. A nontrivial relation between them would lead to a contradiction: for
+instance, if one works over $\mathbf{C}$, then this follows because
+$\frac{1}{t-\alpha}$, when considered as a meromorphic function on
+$\mathbf{C}$, has a pole at $\alpha$ and nowhere else.
+Consequently any sum $\sum c_i \frac{1}{t - \alpha_i}$ for the $c_i \in k^*$,
+and $\alpha_i \in k$ distinct, would have poles at each of the $\alpha_i$.
+In particular, it could not be zero.
+
+\medskip\noindent
+Amusingly, this leads to a quick proof of the Hilbert Nullstellensatz over
+the complex numbers. For a slightly more general result, see
+Algebra, Theorem \ref{algebra-theorem-uncountable-nullstellensatz}.
+\end{example}
+
+\begin{lemma}
+\label{lemma-finite-finitely-generated}
+A finite extension of fields is a finitely generated field extension.
+The converse is not true.
+\end{lemma}
+
+\begin{proof}
+Let $F/E$ be a finite extension of fields. Let $\alpha_1, \ldots, \alpha_n$
+be a basis of $F$ as a vector space over $E$. Then
+$F = E(\alpha_1, \ldots, \alpha_n)$ hence $F/E$ is a finitely generated
+field extension. The converse is not true as follows from
+Example \ref{example-degree-rational-function-field}.
+\end{proof}
+
+\begin{example}[Degree of a simple algebraic extension]
+\label{example-degree-simple-algebraic-extension}
+Consider a monogenic field extension $E/k$ of the form discussed in
+Example \ref{example-monogenic-extension}.
+In other words, $E = k[t]/(P)$ for $P \in k[t]$ an irreducible polynomial.
+Then the degree $[E : k]$ is just the degree $d = \deg(P)$ of the
+polynomial $P$. Indeed, say
+\begin{equation}
+\label{equation-P}
+P = a_d t^d + a_{d - 1} t^{d - 1} + \ldots + a_0.
+\end{equation}
+with $a_d \not = 0$. Then the images of $1, t, \ldots, t^{d - 1}$ in
+$k[t]/(P)$ are linearly independent over $k$, because any relation involving
+them would have degree strictly smaller than that of $P$, and $P$ is the
+element of smallest degree in the ideal $(P)$.
+
+\medskip\noindent
+Conversely, the set $S = \{1, t, \ldots, t^{d - 1}\}$ (or more
+properly their images) spans $k[t]/(P)$ as a vector space.
+Indeed, we have by (\ref{equation-P}) that $a_d t^d$ lies in the span of $S$.
+Since $a_d$ is invertible, we see that $t^d$ is in the span of $S$.
+Similarly, the relation $t P(t) = 0$ shows that the image of $t^{d + 1}$
+lies in the span of $\{1, t, \ldots, t^d\}$ --- by what was just shown, thus
+in the span of $S$. Working upward inductively, we find
+that the image of $t^n$ for $n \geq d$ lies in the span of $S$.
+\end{example}
+
+\noindent
+This confirms the observation that $[\mathbf{C}: \mathbf{R}] = 2$, for
+instance. More generally, if $k$ is a field, and $\alpha \in k$ is not a
+square, then the irreducible polynomial $x^2 - \alpha \in k[x]$ allows one
+to construct an extension $k[x]/(x^2 - \alpha)$ of degree two.
+We shall write this as $k(\sqrt{\alpha})$. Such extensions will be called
+{\it quadratic,} for obvious reasons.
+
+\medskip\noindent
+The basic fact about the degree is that it is {\it multiplicative in towers.}
+
+\begin{lemma}[Multiplicativity]
+\label{lemma-multiplicativity-degrees}
+Suppose given a tower of fields $F/E/k$. Then
+$$
+[F:k] = [F:E][E:k]
+$$
+\end{lemma}
+
+\begin{proof}
+Let $\alpha_1, \ldots, \alpha_n \in F$ be an $E$-basis for $F$. Let
+$\beta_1, \ldots, \beta_m \in E$ be a $k$-basis for $E$. Then the claim is
+that the set of products
+$\{\alpha_i \beta_j, 1 \leq i \leq n, 1 \leq j \leq m\}$
+is a $k$-basis for $F$. Indeed, let us check first that they span $F$ over $k$.
+
+\medskip\noindent
+By assumption, the $\{\alpha_i\}$ span $F$ over $E$. So if
+$f \in F$, there are $a_i \in E$ with
+$$
+f = \sum\nolimits_i a_i \alpha_i,
+$$
+and, for each $i$, we can write $a_i = \sum b_{ij} \beta_j$ for some
+$b_{ij} \in k$. Putting these together, we find
+$$
+f = \sum\nolimits_{i,j} b_{ij} \alpha_i \beta_j,
+$$
+proving that the $\{\alpha_i \beta_j\}$ span $F$ over $k$.
+
+\medskip\noindent
+Suppose now that there existed a nontrivial relation
+$$
+\sum\nolimits_{i,j} c_{ij} \alpha_i \beta_j = 0
+$$
+for the $c_{ij} \in k$. In that case, we would have
+$$
+\sum\nolimits_i \alpha_i \left( \sum\nolimits_j c_{ij} \beta_j \right) = 0,
+$$
+and the inner terms lie in $E$ as the $\beta_j$ do. Now $E$-linear
+independence of the $\{\alpha_i\}$ shows that the inner sums are all zero.
+Then $k$-linear independence of the $\{\beta_j\}$ shows that the
+$c_{ij}$ all vanish.
+\end{proof}
+
+\noindent
+We sidetrack to a slightly tangential definition.
+
+\begin{definition}
+\label{definition-number-field}
+A field $K$ is said to be a {\it number field} if it has characteristic
+$0$ and the extension $K/\mathbf{Q}$ is finite.
+\end{definition}
+
+\noindent
+Number fields are the basic objects in algebraic number theory. We shall see
+later that,
+for the analog of the integers $\mathbf{Z}$ in a number field, something kind
+of like unique factorization still holds (though strict unique factorization
+generally does not!).
+
+

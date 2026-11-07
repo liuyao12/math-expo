@@ -1,0 +1,241 @@
+\section{Preparation for tame symbols}
+\label{section-preparation-tame-symbol}
+
+\noindent
+In this section we put some lemma that will help us define the
+tame symbol in the next section.
+
+\begin{lemma}
+\label{lemma-glue-at-max}
+Let $A$ be a Noetherian ring. Let $\mathfrak m_1, \ldots, \mathfrak m_r$
+be pairwise distinct maximal ideals of $A$. For $i = 1, \ldots, r$ let
+$\varphi_i : A_{\mathfrak m_i} \to B_i$ be a ring map whose
+kernel and cokernel are annihilated by a power
+of $\mathfrak m_i$. Then there exists a ring map $\varphi : A \to B$ such
+that
+\begin{enumerate}
+\item the localization of $\varphi$ at $\mathfrak m_i$ is
+isomorphic to $\varphi_i$, and
+\item $\Ker(\varphi)$ and $\Coker(\varphi)$ are annihilated
+by a power of $\mathfrak m_1 \cap \ldots \cap \mathfrak m_r$.
+\end{enumerate}
+Moreover, if each $\varphi_i$ is finite, injective, or
+surjective then so is $\varphi$.
+\end{lemma}
+
+\begin{proof}
+Set $I = \mathfrak m_1 \cap \ldots \cap \mathfrak m_r$. Set
+$A_i = A_{\mathfrak m_i}$ and $A' = \prod A_i$.
+Then $IA' = \prod \mathfrak m_i A_i$ and $A \to A'$
+is a flat ring map such that $A/I \cong A'/IA'$.
+Thus we may use More on Algebra, Lemma
+\ref{more-algebra-lemma-application-formal-glueing}
+to see that there exists an $A$-module map $\varphi : A \to B$
+with $\varphi_i$ isomorphic to the localization of $\varphi$
+at $\mathfrak m_i$. Then we can use the discussion in
+More on Algebra, Remark \ref{more-algebra-remark-formal-glueing-algebras}
+to endow $B$ with an $A$-algebra structure
+matching the given $A$-algebra structure on $B_i$.
+The final statement of the lemma follows easily from
+the fact that $\Ker(\varphi)_{\mathfrak m_i} \cong \Ker(\varphi_i)$
+and $\Coker(\varphi)_{\mathfrak m_i} \cong \Coker(\varphi_i)$.
+\end{proof}
+
+\noindent
+The following lemma is very similar to
+Algebra, Lemma \ref{algebra-lemma-nonregular-dimension-one}.
+
+\begin{lemma}
+\label{lemma-Noetherian-domain-dim-1-two-elements}
+Let $(R, \mathfrak m)$ be a Noetherian local ring of dimension $1$.
+Let $a, b \in R$ be nonzerodivisors.
+There exists a finite ring extension $R \subset R'$
+with $R'/R$ annihilated by a power of $\mathfrak m$
+and nonzerodivisors $t, a', b' \in R'$ such that
+$a = ta'$ and $b = tb'$ and $R' = a'R' + b'R'$.
+\end{lemma}
+
+\begin{proof}
+If $a$ or $b$ is a unit, then the lemma is true with $R = R'$.
+Thus we may assume $a, b \in \mathfrak m$.
+Set $I = (a, b)$. The idea is to blow up $R$ in $I$.
+Instead of doing the algebraic argument we work geometrically.
+Let $X = \text{Proj}(\bigoplus_{d \geq 0} I^d)$.
+By Divisors, Lemma
+\ref{divisors-lemma-blowing-up-gives-effective-Cartier-divisor}
+the morphism $X \to \Spec(R)$ is an isomorphism over
+the punctured spectrum $U = \Spec(R) \setminus \{\mathfrak m\}$.
+Thus we may and do view $U$ as an open subscheme of $X$.
+The morphism $X \to \Spec(R)$ is projective by
+Divisors, Lemma \ref{divisors-lemma-blowing-up-projective}.
+Also, every generic point of $X$ lies in $U$, for example
+by Divisors, Lemma \ref{divisors-lemma-blow-up-and-irreducible-components}.
+It follows from Varieties, Lemma \ref{varieties-lemma-finite-in-codim-1}
+that $X \to \Spec(R)$ is finite. Thus $X = \Spec(R')$ is
+affine and $R \to R'$ is finite. We have $R_a \cong R'_a$ as $U = D(a)$.
+Hence a power of $a$ annihilates the finite $R$-module $R'/R$.
+As $\mathfrak m = \sqrt{(a)}$ we see that $R'/R$ is annihilated
+by a power of $\mathfrak m$. By
+Divisors, Lemma \ref{divisors-lemma-blowing-up-gives-effective-Cartier-divisor}
+we see that $IR'$ is a locally principal ideal.
+Since $R'$ is semi-local we see that $IR'$ is principal,
+see Algebra, Lemma \ref{algebra-lemma-locally-free-semi-local-free},
+say $IR' = (t)$. Then we have $a = a't$ and $b = b't$ and everything is
+clear.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-not-infinitely-divisible}
+Let $(R, \mathfrak m)$ be a Noetherian local ring of dimension $1$.
+Let $a, b \in R$ be nonzerodivisors with $a \in \mathfrak m$.
+There exists an integer $n = n(R, a, b)$ such that for a finite ring
+extension $R \subset R'$ if $b = a^m c$ for some $c \in R'$, then $m \leq n$.
+\end{lemma}
+
+\begin{proof}
+Choose a minimal prime $\mathfrak q \subset R$. Observe that
+$\dim(R/\mathfrak q) = 1$, in particular $R/\mathfrak q$ is not a field.
+We can choose a discrete valuation ring $A$ dominating $R/\mathfrak q$
+with the same fraction field, see
+Algebra, Lemma \ref{algebra-lemma-dominate-by-dimension-1}. Observe that
+$a$ and $b$ map to nonzero elements of $A$ as nonzerodivisors in $R$
+are not contained in $\mathfrak q$. Let $v$ be the discrete valuation on $A$.
+Then $v(a) > 0$ as $a \in \mathfrak m$.
+We claim $n = v(b)/v(a)$ works.
+
+\medskip\noindent
+Let $R \subset R'$ be given. Set $A' = A \otimes_R R'$.
+Since $\Spec(R') \to \Spec(R)$ is surjective
+(Algebra, Lemma \ref{algebra-lemma-integral-overring-surjective})
+also $\Spec(A') \to \Spec(A)$ is surjective
+(Algebra, Lemma \ref{algebra-lemma-surjective-spec-radical-ideal}).
+Pick a prime $\mathfrak q' \subset A'$ lying over $(0) \subset A$.
+Then $A \subset A'' = A'/\mathfrak q'$ is a finite extension of rings
+(again inducing a surjection on spectra).
+Pick a maximal ideal $\mathfrak m'' \subset A''$
+lying over the maximal ideal of $A$ and a discrete valuation ring
+$A'''$ dominating $A''_{\mathfrak m''}$ (see lemma cited above).
+Then $A \to A'''$ is an extension of discrete valuation rings
+and we have $b = a^m c$ in $A'''$. Thus $v'''(b) \geq mv'''(a)$.
+Since $v''' = ev$ where $e$ is the ramification index
+of $A'''/A$, we find that $m \leq n$ as desired.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-prepare-tame-symbol}
+Let $(A, \mathfrak m)$ be a Noetherian local ring of dimension $1$.
+Let $r \geq 2$ and let $a_1, \ldots, a_r \in A$ be nonzerodivisors
+not all units.
+Then there exist
+\begin{enumerate}
+\item a finite ring extension $A \subset B$ with
+$B/A$ annihilated by a power of $\mathfrak m$,
+\item for each maximal ideal $\mathfrak m_j \subset B$
+a nonzerodivisor $\pi_j \in B_j = B_{\mathfrak m_j}$, and
+\item factorizations $a_i = u_{i, j} \pi_j^{e_{i, j}}$ in $B_j$
+with $u_{i, j} \in B_j$ units and $e_{i, j} \geq 0$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Since at least one $a_i$ is not a unit we find that $\mathfrak m$
+is not an associated prime of $A$. Moreover, for any $A \subset B$
+as in the statement $\mathfrak m$ is not an associated prime of $B$
+and $\mathfrak m_j$ is not an associate prime of $B_j$.
+Keeping this in mind will help check the arguments below.
+
+\medskip\noindent
+First, we claim that it suffices to prove the lemma for $r = 2$.
+We will argue this by induction on $r$; we suggest the reader
+skip the proof. Suppose we are given $A \subset B$ and $\pi_j$ in
+$B_j = B_{\mathfrak m_j}$ and factorizations
+$a_i = u_{i, j} \pi_j^{e_{i, j}}$ for $i = 1, \ldots, r - 1$ in $B_j$
+with $u_{i, j} \in B_j$ units and $e_{i, j} \geq 0$.
+Then by the case $r = 2$ for $\pi_j$ and $a_r$ in $B_j$
+we can find extensions $B_j \subset C_j$ and for every maximal ideal
+$\mathfrak m_{j, k}$ of $C_j$ a nonzerodivisor
+$\pi_{j, k} \in C_{j, k} = (C_j)_{\mathfrak m_{j, k}}$
+and factorizations
+$$
+\pi_j = v_{j, k} \pi_{j, k}^{f_{j, k}}
+\quad\text{and}\quad
+a_r = w_{j, k} \pi_{j, k}^{g_{j, k}}
+$$
+as in the lemma. There exists a unique finite extension $B \subset C$
+with $C/B$ annihilated by a power of $\mathfrak m$ such
+that $C_j \cong C_{\mathfrak m_j}$ for all $j$, see
+Lemma \ref{lemma-glue-at-max}.
+The maximal ideals of $C$ correspond $1$-to-$1$
+to the maximal ideals $\mathfrak m_{j, k}$ in the localizations
+and in these localizations we have
+$$
+a_i = u_{i, j} \pi_j^{e_{i, j}} =
+u_{i, j} v_{j, k}^{e_{i, j}} \pi_{j, k}^{e_{i, j}f_{j, k}}
+$$
+for $i \leq r - 1$. Since $a_r$ factors correctly too the
+proof of the induction step is complete.
+
+\medskip\noindent
+Proof of the case $r = 2$. We will use induction on
+$$
+\ell = \min(\text{length}_A(A/a_1A),\ \text{length}_A(A/a_2A)).
+$$
+If $\ell = 0$, then either $a_1$ or $a_2$ is a unit and
+the lemma holds with $A = B$. Thus we may and do assume $\ell > 0$.
+
+\medskip\noindent
+Suppose we have a finite extension of rings $A \subset A'$ such that
+$A'/A$ is annihilated by a power of $\mathfrak m$ and such that
+$\mathfrak m$ is not an associated prime of $A'$.
+Let $\mathfrak m_1, \ldots, \mathfrak m_r \subset A'$
+be the maximal ideals and set $A'_i = A'_{\mathfrak m_i}$.
+If we can solve the problem for $a_1, a_2$ in each $A'_i$,
+then we can apply Lemma \ref{lemma-glue-at-max}
+to produce a solution for $a_1, a_2$ in $A$.
+Choose $x \in \{a_1, a_2\}$ such that $\ell = \text{length}_A(A/xA)$.
+By Lemma \ref{lemma-compare-periodic-lengths} 
+and (\ref{equation-multiplicity-coker-ker})
+we have $\text{length}_A(A/xA) = \text{length}_A(A'/xA')$.
+On the other hand, we have
+$$
+\text{length}_A(A'/xA') =
+\sum [\kappa(\mathfrak m_i) : \kappa(\mathfrak m)]
+\text{length}_{A'_i}(A'_i/xA'_i)
+$$
+by Algebra, Lemma \ref{algebra-lemma-pushdown-module}.
+Since $x \in \mathfrak m$ we see that each term on the right hand side
+is positive. We conclude that the induction hypothesis applies
+to $a_1, a_2$ in each $A'_i$ if $r > 1$ or if $r = 1$ and
+$[\kappa(\mathfrak m_1) : \kappa(\mathfrak m)] > 1$.
+We conclude that we may assume each $A'$ as above is local with
+the same residue field as $A$.
+
+\medskip\noindent
+Applying the discussion of the previous paragraph,
+we may replace $A$ by the ring constructed in
+Lemma \ref{lemma-Noetherian-domain-dim-1-two-elements}
+for $a_1, a_2 \in A$. Then since $A$ is local we find,
+after possibly switching $a_1$ and $a_2$, that $a_2 \in (a_1)$.
+Write $a_2 = a_1^m c$ with $m > 0$ maximal. In fact, by
+Lemma \ref{lemma-not-infinitely-divisible}
+we may assume $m$ is maximal even after replacing $A$
+by any finite extension $A \subset A'$ as in the previous paragraph.
+If $c$ is a unit, then we are done. If not, then we replace
+$A$ by the ring constructed in
+Lemma \ref{lemma-Noetherian-domain-dim-1-two-elements}
+for $a_1, c \in A$. Then either (1) $c = a_1 c'$ or
+(2) $a_1 = c a'_1$. The first case cannot happen since
+it would give $a_2 = a_1^{m + 1} c'$ contradicting the
+maximality of $m$. In the second case we get
+$a_1 = c a'_1$ and $a_2 = c^{m + 1} (a'_1)^m$.
+Then it suffices to prove the lemma for $A$ and $c, a'_1$.
+If $a'_1$ is a unit we're done and if not, then
+$\text{length}_A(A/cA) < \ell$ because $cA$ is a strictly
+bigger ideal than $a_1A$. Thus we win by induction hypothesis.
+\end{proof}
+
+
+
+
+
+

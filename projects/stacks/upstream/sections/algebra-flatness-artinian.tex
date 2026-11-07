@@ -1,0 +1,290 @@
+\section{Flatness criteria over Artinian rings}
+\label{section-flatness-artinian}
+
+\noindent
+We discuss some flatness criteria for modules over Artinian rings.
+Note that an Artinian local ring has a nilpotent maximal ideal
+so that the following two lemmas apply to Artinian local rings.
+
+\begin{lemma}
+\label{lemma-local-artinian-basis-when-flat}
+Let $(R, \mathfrak m)$ be a local ring with nilpotent maximal ideal
+$\mathfrak m$. Let $M$ be a flat $R$-module.
+If $A$ is a set and $x_\alpha \in M$, $\alpha \in A$ is a collection
+of elements of $M$, then the following are equivalent:
+\begin{enumerate}
+\item $\{\overline{x}_\alpha\}_{\alpha \in A}$ forms a basis
+for the vector space $M/\mathfrak mM$ over $R/\mathfrak m$, and
+\item $\{x_\alpha\}_{\alpha \in A}$ forms a basis for $M$ over $R$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+The implication (2) $\Rightarrow$ (1) is immediate.
+Assume (1). By Nakayama's Lemma \ref{lemma-NAK}
+the elements $x_\alpha$ generate $M$. Then one gets a short exact
+sequence
+$$
+0 \to K \to \bigoplus\nolimits_{\alpha \in A} R \to M \to 0
+$$
+Tensoring with $R/\mathfrak m$ and using Lemma \ref{lemma-flat-tor-zero}
+we obtain $K/\mathfrak mK = 0$. By Nakayama's Lemma \ref{lemma-NAK}
+we conclude $K = 0$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-local-artinian-characterize-flat}
+Let $R$ be a local ring with nilpotent maximal ideal. Let $M$ be an $R$-module.
+The following are equivalent
+\begin{enumerate}
+\item $M$ is flat over $R$,
+\item $M$ is a free $R$-module, and
+\item $M$ is a projective $R$-module.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Since any projective module is flat (as a direct summand of a free module)
+and every free module is projective, it suffices to prove that a flat module
+is free. Let $M$ be a flat module. Let $A$ be a set and let $x_\alpha \in M$,
+$\alpha \in A$ be elements such that
+$\overline{x_\alpha} \in M/\mathfrak m M$ forms a basis over the residue
+field of $R$. By
+Lemma \ref{lemma-local-artinian-basis-when-flat}
+the $x_\alpha$ are a basis for $M$ over $R$ and we win.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-lift-basis}
+Let $R$ be a ring.
+Let $I \subset R$ be an ideal.
+Let $M$ be an $R$-module.
+Let $A$ be a set and let $x_\alpha \in M$, $\alpha \in A$ be a collection
+of elements of $M$.
+Assume
+\begin{enumerate}
+\item $I$ is nilpotent,
+\item $\{\overline{x}_\alpha\}_{\alpha \in A}$ forms a basis for $M/IM$ over
+$R/I$, and
+\item $\text{Tor}_1^R(R/I, M) = 0$.
+\end{enumerate}
+Then $M$ is free on $\{x_\alpha\}_{\alpha \in A}$ over $R$.
+\end{lemma}
+
+\begin{proof}
+Let $R$, $I$, $M$, $\{x_\alpha\}_{\alpha \in A}$ be as in the lemma
+and satisfy assumptions (1), (2), and (3). By
+Nakayama's Lemma \ref{lemma-NAK}
+the elements $x_\alpha$ generate $M$ over $R$.
+The assumption $\text{Tor}_1^R(R/I, M) = 0$ implies that we have a short
+exact sequence
+$$
+0 \to I \otimes_R M \to M \to M/IM \to 0.
+$$
+Let $\sum f_\alpha x_\alpha = 0$ be a relation in $M$.
+By choice of $x_\alpha$ we see that $f_\alpha \in I$.
+Hence we conclude that $\sum f_\alpha \otimes x_\alpha = 0$ in
+$I \otimes_R M$. The map $I \otimes_R M \to I/I^2 \otimes_{R/I} M/IM$
+and the fact that $\{x_\alpha\}_{\alpha \in A}$ forms a basis
+for $M/IM$ implies that $f_\alpha \in I^2$! Hence we conclude that
+there are no relations among the images of the $x_\alpha$ in
+$M/I^2M$. In other words, we see that $M/I^2M$ is free with basis
+the images of the $x_\alpha$. Using the map
+$I \otimes_R M \to I/I^3 \otimes_{R/I^2} M/I^2M$
+we then conclude that $f_\alpha \in I^3$!
+And so on. Since $I^n = 0$ for some $n$ by assumption (1) we win.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-prepare-lift-flatness}
+Let $\varphi : R \to R'$ be a ring map.
+Let $I \subset R$ be an ideal.
+Let $M$ be an $R$-module.
+Assume
+\begin{enumerate}
+\item $M/IM$ is flat over $R/I$, and
+\item $R' \otimes_R M$ is flat over $R'$.
+\end{enumerate}
+Set $I_2 = \varphi^{-1}(\varphi(I^2)R')$.
+Then $M/I_2M$ is flat over $R/I_2$.
+\end{lemma}
+
+\begin{proof}
+We may replace $R$, $M$, and $R'$ by $R/I_2$, $M/I_2M$, and
+$R'/\varphi(I)^2R'$. Then $I^2 = 0$ and $\varphi$ is injective. By
+Lemma \ref{lemma-what-does-it-mean}
+and the fact that $I^2 = 0$ it suffices to prove that
+$\text{Tor}^R_1(R/I, M) = K = \Ker(I \otimes_R M \to M)$ is zero.
+Set $M' = M \otimes_R R'$ and $I' = IR'$.
+By assumption the map $I' \otimes_{R'} M' \to M'$ is injective.
+Hence $K$ maps to zero in
+$$
+I' \otimes_{R'} M' = I' \otimes_R M = I' \otimes_{R/I} M/IM.
+$$
+Then $I \to I'$ is an injective map of $R/I$-modules.
+Since $M/IM$ is flat over $R/I$ the map
+$$
+I \otimes_{R/I} M/IM \longrightarrow I' \otimes_{R/I} M/IM
+$$
+is injective. This implies that $K$ is zero in
+$I \otimes_R M = I \otimes_{R/I} M/IM$ as desired.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-lift-flatness}
+Let $\varphi : R \to R'$ be a ring map.
+Let $I \subset R$ be an ideal.
+Let $M$ be an $R$-module.
+Assume
+\begin{enumerate}
+\item $I$ is nilpotent,
+\item $R \to R'$ is injective,
+\item $M/IM$ is flat over $R/I$, and
+\item $R' \otimes_R M$ is flat over $R'$.
+\end{enumerate}
+Then $M$ is flat over $R$.
+\end{lemma}
+
+\begin{proof}
+Define inductively $I_1 = I$ and $I_{n + 1} = \varphi^{-1}(\varphi(I_n)^2R')$
+for $n \geq 1$. Note that by
+Lemma \ref{lemma-prepare-lift-flatness}
+we find that $M/I_nM$ is flat over $R/I_n$ for each $n \geq 1$.
+It is clear that $\varphi(I_{n + 1}) \subset \varphi(I)^{2^n}R'$. Since
+$I$ is nilpotent we see that $\varphi(I_n) = 0$ for some $n$. As
+$\varphi$ is injective we conclude that $I_n = 0$ for some $n$ and
+we win.
+\end{proof}
+
+\noindent
+Here is the local Artinian version of the local criterion for flatness.
+
+\begin{lemma}
+\label{lemma-artinian-variant-local-criterion-flatness}
+Let $R$ be an Artinian local ring. Let $M$ be an $R$-module.
+Let $I \subset R$ be a proper ideal. The following are
+equivalent
+\begin{enumerate}
+\item $M$ is flat over $R$, and
+\item $M/IM$ is flat over $R/I$ and $\text{Tor}_1^R(R/I, M) = 0$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+The implication (1) $\Rightarrow$ (2) follows immediately from the
+definitions. Assume $M/IM$ is flat over $R/I$ and
+$\text{Tor}_1^R(R/I, M) = 0$. By
+Lemma \ref{lemma-local-artinian-characterize-flat}
+this implies that $M/IM$ is free over $R/I$. Pick a set $A$
+and elements $x_\alpha \in M$ such that the images in $M/IM$ form
+a basis. By
+Lemma \ref{lemma-lift-basis}
+we conclude that $M$ is free and in particular flat.
+\end{proof}
+
+\noindent
+It turns out that flatness descends along injective homomorphism
+whose source is an Artinian ring.
+
+\begin{lemma}
+\label{lemma-descent-flatness-injective-map-artinian-rings}
+Let $R \to S$ be a ring map. Let $M$ be an $R$-module.
+Assume
+\begin{enumerate}
+\item $R$ is Artinian
+\item $R \to S$ is injective, and
+\item $M \otimes_R S$ is a flat $S$-module.
+\end{enumerate}
+Then $M$ is a flat $R$-module.
+\end{lemma}
+
+\begin{proof}
+First proof: Let $I \subset R$ be the Jacobson radical of $R$.
+Then $I$ is nilpotent and $M/IM$ is flat over $R/I$ as $R/I$
+is a product of fields, see
+Section \ref{section-artinian}.
+Hence $M$ is flat by an application of
+Lemma \ref{lemma-lift-flatness}.
+
+\medskip\noindent
+Second proof: By
+Lemma \ref{lemma-artinian-finite-length}
+we may write $R = \prod R_i$ as a finite product of local Artinian
+rings. This induces similar product decompositions for both $R$ and $S$.
+Hence we reduce to the case where $R$ is local Artinian (details omitted).
+
+\medskip\noindent
+Assume that $R \to S$, $M$ are as in the lemma satisfying (1), (2), and (3)
+and in addition that $R$ is local with maximal ideal $\mathfrak m$.
+Let $A$ be a set and $x_\alpha \in A$ be elements such that
+$\overline{x}_\alpha$ forms a basis for $M/\mathfrak mM$
+over $R/\mathfrak m$. By
+Nakayama's Lemma \ref{lemma-NAK}
+we see that the elements $x_\alpha$ generate $M$ as an $R$-module.
+Set $N = S \otimes_R M$ and $I = \mathfrak mS$.
+Then $\{1 \otimes x_\alpha\}_{\alpha \in A}$ is a family of elements
+of $N$ which form a basis for $N/IN$. Moreover, since $N$ is flat over
+$S$ we have $\text{Tor}_1^S(S/I, N) = 0$. Thus we conclude from
+Lemma \ref{lemma-lift-basis}
+that $N$ is free on $\{1 \otimes x_\alpha\}_{\alpha \in A}$.
+The injectivity of $R \to S$ then guarantees that there cannot be a
+nontrivial relation among the $x_\alpha$ with coefficients in $R$.
+\end{proof}
+
+\noindent
+Please compare the lemma below to
+Lemma \ref{lemma-criterion-flatness-fibre-Noetherian}
+(the case of Noetherian local rings),
+Lemma \ref{lemma-criterion-flatness-fibre}
+(the case of finitely presented algebras), and
+Lemma \ref{lemma-criterion-flatness-fibre-locally-nilpotent}
+(the case of locally nilpotent ideals).
+
+\begin{lemma}[Crit\`ere de platitude par fibres: Nilpotent case]
+\label{lemma-criterion-flatness-fibre-nilpotent}
+Let
+$$
+\xymatrix{
+S \ar[rr] & & S' \\
+& R \ar[lu] \ar[ru]
+}
+$$
+be a commutative diagram in the category of rings.
+Let $I \subset R$ be a nilpotent ideal and $M$ an $S'$-module. Assume
+\begin{enumerate}
+\item The module $M/IM$ is a flat $S/IS$-module.
+\item The module $M$ is a flat $R$-module.
+\end{enumerate}
+Then $M$ is a flat $S$-module and $S_{\mathfrak q}$ is flat over $R$
+for every $\mathfrak q \subset S$ such that $M \otimes_S \kappa(\mathfrak q)$
+is nonzero.
+\end{lemma}
+
+\begin{proof}
+As $M$ is flat over $R$ tensoring with the short exact
+sequence $0 \to I \to R \to R/I \to 0$ gives a short exact sequence
+$$
+0 \to I \otimes_R M \to M \to M/IM \to 0.
+$$
+Note that $I \otimes_R M \to IS \otimes_S M$ is surjective. Combined with
+the above this means both maps in
+$$
+I \otimes_R M \to IS \otimes_S M \to M
+$$
+are injective. Hence $\text{Tor}_1^S(IS, M) = 0$ (see
+Remark \ref{remark-Tor-ring-mod-ideal})
+and we conclude that $M$ is a flat $S$-module by
+Lemma \ref{lemma-what-does-it-mean}.
+To finish we need to show that $S_{\mathfrak q}$ is flat over
+$R$ for any prime $\mathfrak q \subset S$ such that
+$M \otimes_S \kappa(\mathfrak q)$ is nonzero. This follows from
+Lemma \ref{lemma-ff} and \ref{lemma-flat-permanence}.
+\end{proof}
+
+
+
+
+
+
+
+

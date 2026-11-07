@@ -1,0 +1,54 @@
+\section{Roots of unity}
+\label{section-roots-of-1}
+
+\noindent
+Let $F$ be a field. For an integer $n \geq 1$ we set
+$$
+\mu_n(F) = \{\zeta \in F \mid \zeta^n = 1\}
+$$
+This is called the {\it group of $n$th roots of unity} or
+{\it $n$th roots of $1$}. It is an abelian group under multiplication
+with neutral element given by $1$.
+Observe that in a field the number of roots of a polynomial of degree $d$
+is always at most $d$. Hence we see that $|\mu_n(F)| \leq n$
+as it is defined by a polynomial equation of degree $n$.
+Of course every element of $\mu_n(F)$ has order dividing $n$.
+Moreover, the subgroups
+$$
+\mu_d(F) \subset \mu_n(F),\quad d | n
+$$
+each have at most $d$ elements. This implies that $\mu_n(F)$ is cyclic.
+
+\begin{lemma}
+\label{lemma-cyclic}
+Let $A$ be an abelian group of exponent dividing $n$ such that
+$\{x \in A \mid dx = 0\}$ has cardinality at most $d$ for all $d | n$.
+Then $A$ is cyclic of order dividing $n$.
+\end{lemma}
+
+\begin{proof}
+The conditions imply that $|A| \leq n$, in particular $A$ is finite.
+The structure of finite abelian groups shows that
+$A = \mathbf{Z}/e_1\mathbf{Z} \oplus \ldots \oplus \mathbf{Z}/e_r\mathbf{Z}$
+for some integers $1 < e_1 | e_2 | \ldots | e_r$. This would imply
+that $\{x \in A \mid e_1 x = 0\}$ has cardinality $e_1^r$. Hence
+$r = 1$.
+\end{proof}
+
+\noindent
+Applying this to the field $\mathbf{F}_p$ we obtain the celebrated result
+that the group $(\mathbf{Z}/p\mathbf{Z})^*$ is a cyclic group. More about
+this in the section on finite fields.
+
+\medskip\noindent
+One more observation is often useful: If $F$ has characteristic
+$p > 0$, then $\mu_{p^n}(F) = \{1\}$. This is true because raising
+to the $p$th power is an injective map on fields of characteristic $p$
+as we have seen in the proof of Lemma \ref{lemma-nr-roots-unchanged}.
+(Of course, it also follows from the statement of that lemma itself.)
+
+
+
+
+
+

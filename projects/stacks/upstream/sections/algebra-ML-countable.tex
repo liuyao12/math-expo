@@ -1,0 +1,139 @@
+\section{Countably generated Mittag-Leffler modules}
+\label{section-ML-countable}
+
+\noindent
+It turns out that countably generated Mittag-Leffler modules have a
+particularly simple structure.
+
+\begin{lemma}
+\label{lemma-ML-countable-colimit}
+Let $M$ be an $R$-module.  Write $M = \colim_{i \in I} M_i$ where $(M_i,
+f_{ij})$ is a directed system of finitely presented $R$-modules.  If $M$ is
+Mittag-Leffler and countably generated, then there is a directed countable
+subset $I' \subset I$ such that $M \cong \colim_{i \in I'} M_i$.
+\end{lemma}
+
+\begin{proof}
+Let $x_1, x_2, \ldots$ be a countable set of generators for $M$.  For each $x_n$
+choose $i \in I$ such that $x_n$ is in the image of the canonical map $f_i:
+M_i \to M$; let $I'_{0} \subset I$ be the set of all these $i$.  Now
+since $M$ is Mittag-Leffler, for each $i \in I'_{0}$ we can choose $j \in I$
+such that $j \geq i$ and $f_{ij}: M_i \to M_j$ factors through
+$f_{ik}: M_i \to M_k$ for all $k \geq i$  (condition (3) of Proposition
+\ref{proposition-ML-characterization}); let $I'_1$ be the union of $I'_0$ with
+all of these $j$.  Since $I'_1$ is a countable, we can enlarge it to a
+countable directed set $I'_{2} \subset I$.  Now we can apply the same procedure
+to $I'_{2}$ as we did to $I'_{0}$ to get a new countable set $I'_{3} \subset
+I$.  Then we enlarge $I'_{3}$ to a countable directed set $I'_{4}$.  Continuing
+in this way---adding in a $j$ as in Proposition
+\ref{proposition-ML-characterization} (3) for each $ i \in I'_{\ell}$ if $\ell$
+is odd and enlarging $I'_{\ell}$ to a directed set if $\ell$ is even---we get a
+sequence of subsets $I'_{\ell} \subset I$ for $\ell \geq 0$.  The union $I' =
+\bigcup I'_{\ell}$ satisfies:
+\begin{enumerate}
+\item $I'$ is countable and directed;
+\item each $x_n$ is in the image of $f_i: M_i \to M$ for some $i
+\in I'$;
+\item if $i \in I'$, then there is $j \in I'$ such that $j \geq i$ and $f_{ij}:
+M_i \to M_j$ factors through $f_{ik}: M_i \to M_k$ for all
+$k \in I$ with $k \geq i$.  In particular $\Ker(f_{ik}) \subset \Ker(f_{ij})$
+for $k \geq i$.
+\end{enumerate}
+We claim that the canonical map $\colim_{i \in I'} M_i \to
+\colim_{i
+\in I} M_i = M$ is an isomorphism.  By (2) it is surjective.  For injectivity,
+suppose $x \in \colim_{i \in I'} M_i$ maps to $0$ in $\colim_{i \in
+I} M_i$.
+Representing $x$ by an element $\tilde{x} \in M_i$ for some $i \in I'$, this
+means that $f_{ik}(\tilde{x}) = 0$ for some $k \in I, k \geq i$.  But then by
+(3) there is $j \in I', j \geq i,$ such that $f_{ij}(\tilde{x}) = 0$.  Hence $x
+= 0$ in $\colim_{i \in I'} M_i$.
+\end{proof}
+
+\noindent
+Lemma \ref{lemma-ML-countable-colimit}
+implies that a countably generated Mittag-Leffler module $M$ over
+$R$ is the colimit of a system
+$$
+M_1 \to M_2 \to M_3 \to M_4 \to \ldots
+$$
+with each $M_n$ a finitely presented $R$-module. To see this argue as in the
+proof of
+Lemma \ref{lemma-ML-limit-nonempty}
+to see that a countable directed set has a cofinal
+subset isomorphic to $(\mathbf{N}, \geq)$. Suppose
+$R = k[x_1, x_2, x_3, \ldots]$ and $M = R/(x_i)$. Then $M$ is finitely
+generated but not finitely presented, hence not Mittag-Leffler (see
+Example \ref{example-ML} part (1)).
+But of course you can write $M = \colim_n M_n$ by taking
+$M_n = R/(x_1, \ldots, x_n)$, hence the condition that you can write
+$M$ as such a limit does not imply that $M$ is Mittag-Leffler.
+
+\begin{lemma}
+\label{lemma-ML-countable}
+Let $R$ be a ring.
+Let $M$ be an $R$-module.
+Assume $M$ is Mittag-Leffler and countably generated.
+For any $R$-module map $f : P \to M$ with $P$ finitely generated there
+exists an endomorphism $\alpha : M \to M$ such that
+\begin{enumerate}
+\item $\alpha : M \to M$ factors through a finitely presented $R$-module, and
+\item $\alpha \circ f = f$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Write $M = \colim_{i \in I} M_i$ as a directed colimit of finitely
+presented $R$-modules with $I$ countable, see
+Lemma \ref{lemma-ML-countable-colimit}.
+The transition maps are denoted $f_{ij}$ and we use $f_i : M_i \to M$
+to denote the canonical maps into $M$. Set $N = \prod_{s \in I} M_s$. Denote
+$$
+M_i^* = \Hom_R(M_i, N) = \prod\nolimits_{s \in I} \Hom_R(M_i, M_s)
+$$
+so that $(M_i^*)$ is an inverse system of $R$-modules over $I$.
+Note that $\Hom_R(M, N) = \lim M_i^*$.
+As $M$ is Mittag-Leffler, we find for every
+$i \in I$ an index $k(i) \geq i$ such that
+$$
+E_i := \bigcap\nolimits_{i' \geq i} \Im(M_{i'}^* \to M_i^*)
+=
+\Im(M_{k(i)}^* \to M_i^*)
+$$
+Choose and fix $j \in I$ such that $\Im(P \to M) \subset \Im(M_j \to M)$.
+This is possible as $P$ is finitely generated. Set $k = k(j)$.
+Let
+$x = (0, \ldots, 0, \text{id}_{M_k}, 0, \ldots, 0) \in M_k^*$ and
+note that this maps to $y = (0, \ldots, 0, f_{jk}, 0, \ldots, 0) \in M_j^*$.
+By our choice of $k$ we see that $y \in E_j$. By
+Example \ref{example-ML-surjective-maps}
+the transition maps $E_i \to E_j$ are surjective for each $i \geq j$
+and $\lim E_i = \lim M_i^* = \Hom_R(M, N)$. Hence
+Lemma \ref{lemma-ML-limit-nonempty}
+guarantees there exists an element $z \in \Hom_R(M, N)$
+which maps to $y$ in $E_j \subset M_j^*$. Let $z_k$ be the $k$th component
+of $z$. Then $z_k : M \to M_k$ is a homomorphism such that
+$$
+\xymatrix{
+M \ar[r]_{z_k} & M_k \\
+M_j \ar[ru]_{f_{jk}} \ar[u]^{f_j}
+}
+$$
+commutes. Let $\alpha : M \to M$ be the composition
+$f_k \circ z_k : M \to M_k \to M$.
+Then $\alpha$ factors through a finitely presented module by construction and
+$\alpha \circ f_j = f_j$. Since the image of $f$ is contained in the image of
+$f_j$ this also implies that $\alpha \circ f = f$.
+\end{proof}
+
+\noindent
+We will see later (see
+Lemma \ref{lemma-split-ML-henselian})
+that
+Lemma \ref{lemma-ML-countable}
+means that a countably generated Mittag-Leffler module over a henselian local
+ring is a direct sum of finitely presented modules.
+
+
+
+

@@ -1,0 +1,263 @@
+\section{A key lemma}
+\label{section-key-lemma}
+
+\noindent
+In this section we apply the results above to prove
+Lemma \ref{lemma-milnor-gersten-low-degree}.
+This lemma is a low degree case of the statement
+that there is a complex for Milnor K-theory similar
+to the Gersten-Quillen complex in Quillen's K-theory.
+See Remark \ref{remark-gersten-complex-milnor}.
+
+\begin{lemma}
+\label{lemma-perpare-key}
+Let $(A, \mathfrak m)$ be a $2$-dimensional Noetherian local ring.
+Let $t \in \mathfrak m$ be a nonzerodivisor. Say
+$V(t) = \{\mathfrak m, \mathfrak q_1, \ldots, \mathfrak q_r\}$.
+Let $A_{\mathfrak q_i} \subset B_i$ be a finite ring
+extension with $B_i/A_{\mathfrak q_i}$ annihilated by a power of
+$t$. Then there exists a finite extension $A \subset B$ of
+local rings identifying residue fields
+with $B_i \cong B_{\mathfrak q_i}$ and $B/A$ annihilated
+by a power of $t$.
+\end{lemma}
+
+\begin{proof}
+Choose $n > 0$ such that $B_i \subset t^{-n}A_{\mathfrak q_i}$.
+Let $M \subset t^{-n}A$, resp.\ $M' \subset t^{-2n}A$ be the
+$A$-submodule consisting of elements mapping to $B_i$ in
+$t^{-n}A_{\mathfrak q_i}$, resp.\ $t^{-2n}A_{\mathfrak q_i}$.
+Then $M \subset M'$ are finite $A$-modules as $A$ is Noetherian
+and $M_{\mathfrak q_i} = M'_{\mathfrak q_i} = B_i$ as localization
+is exact. Thus $M'/M$ is annihilated by $\mathfrak m^c$ for some
+$c > 0$. Observe that $M \cdot M \subset M'$ under the multiplication
+$t^{-n}A \times t^{-n}A \to t^{-2n}A$. Hence
+$B = A + \mathfrak m^{c + 1}M$ is a finite $A$-algebra with the correct
+localizations. We omit the verification that $B$ is local with
+maximal ideal $\mathfrak m + \mathfrak m^{c + 1}M$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-key-nonzerodivisors}
+Let $(A, \mathfrak m)$ be a $2$-dimensional Noetherian local ring.
+Let $a, b \in A$ be nonzerodivisors.
+Then we have
+$$
+\sum
+\text{ord}_{A/\mathfrak q}(\partial_{A_{\mathfrak q}}(a, b))
+=
+0
+$$
+where the sum is over the height $1$ primes $\mathfrak q$ of $A$.
+\end{lemma}
+
+\begin{proof}
+If $\mathfrak q$ is a height $1$ prime of $A$ such that $a, b$
+map to a unit of $A_\mathfrak q$, then $\partial_{A_\mathfrak q}(a, b) = 1$.
+Thus the sum is finite. In fact, if
+$V(ab) = \{\mathfrak m, \mathfrak q_1, \ldots, \mathfrak q_r\}$
+then the sum is over $i = 1, \ldots, r$.
+For each $i$ we pick an extension $A_{\mathfrak q_i} \subset B_i$
+as in Lemma \ref{lemma-prepare-tame-symbol} for $a, b$.
+By Lemma \ref{lemma-perpare-key} with $t = ab$ and the given list of primes
+we may assume we have a finite local extension $A \subset B$
+with $B/A$ annihilated by a power of $ab$ and such that
+for each $i$ the $B_{\mathfrak q_i} \cong B_i$.
+Observe that if $\mathfrak q_{i, j}$ are the primes of $B$
+lying over $\mathfrak q_i$ then we have
+$$
+\text{ord}_{A/\mathfrak q_i}(\partial_{A_{\mathfrak q_i}}(a, b))
+=
+\sum\nolimits_j
+\text{ord}_{B/\mathfrak q_{i, j}}(\partial_{B_{\mathfrak q_{i, j}}}(a, b))
+$$
+by Lemma \ref{lemma-norm-down-tame-symbol} and
+Algebra, Lemma \ref{algebra-lemma-finite-extension-dim-1}.
+Thus we may replace $A$ by $B$ and
+reduce to the case discussed in the next paragraph.
+
+\medskip\noindent
+Assume for each $i$ there is a nonzerodivisor
+$\pi_i \in A_{\mathfrak q_i}$ and units $u_i, v_i \in A_{\mathfrak q_i}$
+such that for some integers $e_i, f_i \geq 0$ we have
+$$
+a = u_i \pi_i^{e_i},\quad b = v_i \pi_i^{f_i}
+$$
+in $A_{\mathfrak q_i}$. Setting
+$m_i = \text{length}_{A_{\mathfrak q_i}}(A_{\mathfrak q_i}/\pi_i)$
+we have
+$\partial_{A_{\mathfrak q_i}}(a, b) =
+((-1)^{e_if_i}u_i^{f_i}v_i^{-e_i})^{m_i}$ by definition.
+Since $a, b$ are nonzerodivisors the
+$(2, 1)$-periodic complex $(A/(ab), a, b)$ has vanishing cohomology.
+Denote $M_i$ the image of $A/(ab)$ in $A_{\mathfrak q_i}/(ab)$.
+Then we have a map
+$$
+A/(ab) \longrightarrow \bigoplus M_i
+$$
+whose kernel and cokernel are supported in $\{\mathfrak m\}$
+and hence have finite length. Thus we see that
+$$
+\sum e_A(M_i, a, b) = 0
+$$
+by Lemma \ref{lemma-compare-periodic-lengths}. Hence it suffices to show
+$e_A(M_i, a, b) =
+- \text{ord}_{A/\mathfrak q_i}(\partial_{A_{\mathfrak q_i}}(a, b))$.
+
+\medskip\noindent
+Let us prove this first, in case $\pi_i, u_i, v_i$ are the images
+of elements $\pi_i, u_i, v_i \in A$ (using the same symbols
+should not cause any confusion). In this case we get
+\begin{align*}
+e_A(M_i, a, b) & =
+e_A(M_i, u_i\pi_i^{e_i}, v_i\pi_i^{f_i}) \\
+& =
+e_A(M_i, \pi_i^{e_i}, \pi_i^{f_i}) -
+e_A(\pi_i^{e_i}M_i, 0, u_i) +
+e_A(\pi_i^{f_i}M_i, 0, v_i) \\
+& =
+0 -
+f_im_i\text{ord}_{A/\mathfrak q_i}(u_i) +
+e_im_i\text{ord}_{A/\mathfrak q_i}(v_i) \\
+& =
+-m_i\text{ord}_{A/\mathfrak q_i}(u_i^{f_i}v_i^{-e_i}) =
+-\text{ord}_{A/\mathfrak q_i}(\partial_{A_{\mathfrak q_i}}(a, b))
+\end{align*}
+The second equality holds by Lemma \ref{lemma-multiply-period-length}.
+Observe that
+$M_i \subset (M_i)_{\mathfrak q_i} = A_{\mathfrak q_i}/(\pi_i^{e_i + f_i})$
+and
+$(\pi_i^{e_i}M_i)_{\mathfrak q_i} \cong A_{\mathfrak q_i}/\pi_i^{f_i}$ and
+$(\pi_i^{f_i}M_i)_{\mathfrak q_i} \cong A_{\mathfrak q_i}/\pi_i^{e_i}$.
+The $0$ in the third equality comes from
+Lemma \ref{lemma-powers-period-length-zero}
+and the other two terms come from
+Lemma \ref{lemma-length-multiplication}.
+The last two equalities follow from multiplicativity of
+the order function and from the definition of our tame symbol.
+
+\medskip\noindent
+In general, we may first choose $c \in A$, $c \not \in \mathfrak q_i$
+such that $c\pi_i \in A$. After replacing $\pi_i$ by $c\pi_i$
+and $u_i$ by $c^{-e_i}u_i$ and $v_i$ by $c^{-f_i}v_i$
+we may and do assume $\pi_i$ is in $A$.
+Next, choose an $c \in A$, $c \not \in \mathfrak q_i$
+with $cu_i, cv_i \in A$. Then we observe that
+$$
+e_A(M_i, ca, cb) = e_A(M_i, a, b) - e_A(aM_i, 0, c) + e_A(bM_i, 0, c)
+$$
+by Lemma \ref{lemma-length-multiplication}.
+On the other hand, we have
+$$
+\partial_{A_{\mathfrak q_i}}(ca, cb) =
+c^{m_i(f_i - e_i)}\partial_{A_{\mathfrak q_i}}(a, b)
+$$
+in $\kappa(\mathfrak q_i)^*$ because $c$ is a unit in $A_{\mathfrak q_i}$.
+The arguments in the previous paragraph show that
+$e_A(M_i, ca, cb) = -
+\text{ord}_{A/\mathfrak q_i}(\partial_{A_{\mathfrak q_i}}(ca, cb))$.
+Thus it suffices to prove
+$$
+e_A(aM_i, 0, c) = \text{ord}_{A/\mathfrak q_i}(c^{m_if_i})
+\quad\text{and}\quad
+e_A(bM_i, 0, c) = \text{ord}_{A/\mathfrak q_i}(c^{m_ie_i})
+$$
+and this follows from Lemma \ref{lemma-length-multiplication}
+by the description (see above)
+of what happens when we localize at $\mathfrak q_i$.
+\end{proof}
+
+\begin{lemma}[Key Lemma]
+\label{lemma-milnor-gersten-low-degree}
+\begin{reference}
+When $A$ is an excellent ring this is \cite[Proposition 1]{Kato-Milnor-K}.
+\end{reference}
+Let $A$ be a $2$-dimensional Noetherian local domain with fraction field $K$.
+Let $f, g \in K^*$.
+Let $\mathfrak q_1, \ldots, \mathfrak q_t$ be the height
+$1$ primes $\mathfrak q$ of $A$ such that either $f$ or $g$ is not an
+element of $A^*_{\mathfrak q}$.
+Then we have
+$$
+\sum\nolimits_{i = 1, \ldots, t}
+\text{ord}_{A/\mathfrak q_i}(\partial_{A_{\mathfrak q_i}}(f, g))
+=
+0
+$$
+We can also write this as
+$$
+\sum\nolimits_{\text{height}(\mathfrak q) = 1}
+\text{ord}_{A/\mathfrak q}(\partial_{A_{\mathfrak q}}(f, g))
+=
+0
+$$
+since at any height $1$ prime $\mathfrak q$
+of $A$ where $f, g \in A^*_{\mathfrak q}$
+we have $\partial_{A_{\mathfrak q}}(f, g) = 1$.
+\end{lemma}
+
+\begin{proof}
+Since the tame symbols $\partial_{A_{\mathfrak q}}(f, g)$ are
+bilinear and the order functions $\text{ord}_{A/\mathfrak q}$
+are additive it suffices to prove the formula when
+$f$ and $g$ are elements of $A$. This case is proven in
+Lemma \ref{lemma-key-nonzerodivisors}.
+\end{proof}
+
+\begin{remark}[Milnor K-theory]
+\label{remark-gersten-complex-milnor}
+For a field $k$ let us denote $K^M_*(k)$ the quotient of
+the tensor algebra on $k^*$ divided by the two-sided ideal
+generated by the elements $x \otimes 1 - x$ for $x \in k \setminus \{0, 1\}$.
+Thus $K^M_0(k) = \mathbf{Z}$, $K_1^M(k) = k^*$, and
+$$
+K^M_2(k) = k^* \otimes_\mathbf{Z} k^* / \langle x \otimes 1 - x \rangle
+$$
+If $A$ is a discrete valuation ring with fraction field $F = \text{Frac}(A)$
+and residue field $\kappa$, there is a tame symbol
+$$
+\partial_A : K_{i + 1}^M(F) \to K_i^M(\kappa)
+$$
+defined as in Section \ref{section-tame-symbol}; see \cite{Kato-Milnor-K}.
+More generally, this map can be extended to the case where $A$ is an
+excellent local domain of dimension $1$ using normalization and norm
+maps on $K_i^M$, see \cite{Kato-Milnor-K}; presumably the method in
+Section \ref{section-tame-symbol} can be used to extend the construction
+of the tame symbol $\partial_A$ to arbitrary Noetherian local domains $A$
+of dimension $1$. Next, let $X$ be a Noetherian scheme with a
+dimension function $\delta$. Then we can use these tame symbols to get
+the arrows in the following:
+$$
+\bigoplus\nolimits_{\delta(x) = j + 1} K^M_{i + 1}(\kappa(x))
+\longrightarrow
+\bigoplus\nolimits_{\delta(x) = j} K^M_i(\kappa(x))
+\longrightarrow
+\bigoplus\nolimits_{\delta(x) = j - 1} K^M_{i - 1}(\kappa(x))
+$$
+However, it is not clear, that the composition is zero, i.e., that
+we obtain a complex of abelian groups.
+For excellent $X$ this is shown in \cite{Kato-Milnor-K}.
+When $i = 1$ and $j$ arbitrary, this follows from
+Lemma \ref{lemma-milnor-gersten-low-degree}.
+\end{remark}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

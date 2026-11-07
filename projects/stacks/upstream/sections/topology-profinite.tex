@@ -1,0 +1,148 @@
+\section{Profinite spaces}
+\label{section-profinite}
+
+\noindent
+Here is the definition.
+
+\begin{definition}
+\label{definition-profinite}
+A topological space is {\it profinite} if it is homeomorphic to a limit
+of a diagram of finite discrete spaces.
+\end{definition}
+
+\noindent
+This is not the most convenient characterization of a profinite space.
+
+\begin{lemma}
+\label{lemma-profinite}
+Let $X$ be a topological space.
+The following are equivalent
+\begin{enumerate}
+\item $X$ is a profinite space, and
+\item $X$ is Hausdorff, quasi-compact, and totally disconnected.
+\end{enumerate}
+If this is true, then $X$ is a cofiltered limit of finite discrete
+spaces.
+\end{lemma}
+
+\begin{proof}
+Assume (1). Choose a diagram $i \mapsto X_i$ of finite discrete spaces
+such that $X = \lim X_i$. As each $X_i$ is Hausdorff and quasi-compact we find
+that $X$ is quasi-compact by Lemma \ref{lemma-inverse-limit-quasi-compact}.
+If $x, x' \in X$ are distinct points, then $x$ and $x'$ map to
+distinct points in some $X_i$. Hence $x$ and $x'$ have disjoint
+open neighbourhoods, i.e., $X$ is Hausdorff. In exactly the same way
+we see that $X$ is totally disconnected.
+
+\medskip\noindent
+Assume (2). Let $\mathcal{I}$ be the set of finite disjoint union
+decompositions $X = \coprod_{i \in I} U_i$ with $U_i$ nonempty open
+(and closed) for all $i \in I$.
+For each $I \in \mathcal{I}$ there is a continuous map
+$X \to I$ sending a point of $U_i$ to $i$. We define a partial
+ordering: $I \leq I'$ for $I, I' \in \mathcal{I}$ if and only
+if the covering corresponding to $I'$ refines the covering corresponding
+to $I$. In this case we obtain a canonical map $I' \to I$. In other
+words we obtain an inverse system of finite discrete spaces over $\mathcal{I}$.
+The maps $X \to I$ fit together and we obtain a continuous map
+$$
+X \longrightarrow \lim_{I \in \mathcal{I}} I
+$$
+We claim this map is a homeomorphism, which finishes the proof.
+(The final assertion follows too as the partially ordered set
+$\mathcal{I}$ is directed: given two disjoint union decompositions
+of $X$ we can find a third refining both.)
+Namely, the map is injective as $X$ is totally disconnected
+and hence $\{x\}$ is the intersection of all open and closed subsets
+of $X$ containing $x$
+(Lemma \ref{lemma-connected-component-intersection-compact-Hausdorff})
+and  the map is surjective by
+Lemma \ref{lemma-intersection-closed-in-quasi-compact}.
+By Lemma \ref{lemma-bijective-map} the map is a homeomorphism.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-directed-inverse-limit-profinite}
+A limit of profinite spaces is profinite.
+\end{lemma}
+
+\begin{proof}
+Let $i \mapsto X_i$ be a diagram of profinite spaces
+over the index category $\mathcal{I}$.
+Let us use the characterization of profinite spaces in
+Lemma \ref{lemma-profinite}. In particular each $X_i$ is
+Hausdorff, quasi-compact, and totally disconnected.
+By Lemma \ref{lemma-limits} the limit $X = \lim X_i$ exists.
+By Lemma \ref{lemma-inverse-limit-quasi-compact}
+the limit $X$ is quasi-compact. Let $x, x' \in X$ be distinct points.
+Then there exists an $i$ such that $x$ and $x'$
+have distinct images $x_i$ and $x'_i$ in $X_i$
+under the projection $X \to X_i$. Then $x_i$ and $x'_i$
+have disjoint open neighbourhoods in $X_i$. Taking the
+inverse images of these opens we conclude that $X$ is Hausdorff.
+Similarly, $x_i$ and $x'_i$ are in distinct connected components
+of $X_i$ whence necessarily $x$ and $x'$ must be in distinct
+connected components of $X$. Hence $X$ is totally disconnected.
+This finishes the proof.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-profinite-refine-open-covering}
+Let $X$ be a profinite space. Every open covering of $X$ has a refinement
+by a finite covering $X = \coprod U_i$ with $U_i$ open and closed.
+\end{lemma}
+
+\begin{proof}
+Write $X = \lim X_i$ as a limit of an inverse system of finite discrete
+spaces over a directed set $I$ (Lemma \ref{lemma-profinite}).
+Denote $f_i : X \to X_i$ the projection.
+For every point $x = (x_i) \in X$ a fundamental system of open neighbourhoods
+is the collection $f_i^{-1}(\{x_i\})$. Thus, as $X$ is quasi-compact, we may
+assume we have an open covering
+$$
+X = f_{i_1}^{-1}(\{x_{i_1}\}) \cup \ldots \cup f_{i_n}^{-1}(\{x_{i_n}\})
+$$
+Choose $i \in I$ with $i \geq i_j$ for $j = 1, \ldots, n$ (this is possible
+as $I$ is a directed set). Then we see
+that the covering
+$$
+X = \coprod\nolimits_{t \in X_i} f_i^{-1}(\{t\})
+$$
+refines the given covering and is of the desired form.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-pi0-profinite}
+Let $X$ be a topological space. If $X$ is quasi-compact
+and every connected component of $X$ is the intersection
+of the open and closed subsets containing it, then $\pi_0(X)$
+is a profinite space.
+\end{lemma}
+
+\begin{proof}
+We will use Lemma \ref{lemma-profinite} to prove this.
+Since $\pi_0(X)$ is the image of a quasi-compact space it is
+quasi-compact (Lemma \ref{lemma-image-quasi-compact}).
+It is totally disconnected by construction
+(Lemma \ref{lemma-space-connected-components}).
+Let $C, D \subset X$ be distinct connected components of $X$.
+Write $C = \bigcap U_\alpha$ as the intersection of the open and
+closed subsets of $X$ containing $C$. Any finite intersection
+of $U_\alpha$'s is another. Since $\bigcap U_\alpha \cap D = \emptyset$
+we conclude that $U_\alpha \cap D = \emptyset$ for some $\alpha$
+(use Lemmas \ref{lemma-connected-components},
+\ref{lemma-closed-in-quasi-compact} and
+\ref{lemma-intersection-closed-in-quasi-compact})
+Since $U_\alpha$ is open and closed, it is the union of the
+connected components it contains, i.e., $U_\alpha$ is the inverse
+image of some open and closed subset $V_\alpha \subset \pi_0(X)$.
+This proves that the points corresponding to $C$ and $D$
+are contained in disjoint open subsets, i.e., $\pi_0(X)$ is
+Hausdorff.
+\end{proof}
+
+
+
+
+
+

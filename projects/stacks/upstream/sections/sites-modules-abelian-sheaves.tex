@@ -1,0 +1,164 @@
+\section{Abelian sheaves}
+\label{section-abelian-sheaves}
+
+\noindent
+Let $\mathcal{C}$ be a site.
+The category of abelian sheaves on $\mathcal{C}$ is denoted
+$\textit{Ab}(\mathcal{C})$. It is the full subcategory of
+$\textit{PAb}(\mathcal{C})$ consisting of those abelian presheaves
+whose underlying presheaves of sets are sheaves.
+Properties ($\alpha$) -- ($\zeta$) of
+Sites, Section \ref{sites-section-sheaves-algebraic-structures}
+hold, see
+Sites,
+Proposition \ref{sites-proposition-functoriality-algebraic-structures-topoi}.
+In particular the inclusion functor
+$\textit{Ab}(\mathcal{C}) \to \textit{PAb}(\mathcal{C})$
+has a left adjoint, namely the sheafification functor
+$\mathcal{G} \mapsto \mathcal{G}^\#$.
+
+\medskip\noindent
+We suggest the reader prove the lemma on a piece of scratch paper rather
+than reading the proof.
+
+\begin{lemma}
+\label{lemma-abelian-abelian}
+Let $\mathcal{C}$ be a site. Let $\varphi : \mathcal{F} \to \mathcal{G}$
+be a morphism of abelian sheaves on $\mathcal{C}$.
+\begin{enumerate}
+\item The category $\textit{Ab}(\mathcal{C})$ is an abelian category.
+\item The kernel $\Ker(\varphi)$ of $\varphi$ is the same as the
+kernel of $\varphi$ as a morphism of presheaves.
+\item The morphism $\varphi$ is injective
+(Homology, Definition \ref{homology-definition-injective-surjective})
+if and only if $\varphi$ is injective as a map of presheaves
+(Sites, Definition \ref{sites-definition-presheaves-injective-surjective}),
+if and only if $\varphi$ is injective as a map of sheaves
+(Sites, Definition \ref{sites-definition-sheaves-injective-surjective}).
+\item The cokernel $\Coker(\varphi)$ of $\varphi$ is the sheafification
+of the cokernel of $\varphi$ as a morphism of presheaves.
+\item The morphism $\varphi$ is surjective
+(Homology, Definition \ref{homology-definition-injective-surjective})
+if and only if $\varphi$ is surjective as a map of sheaves
+(Sites, Definition \ref{sites-definition-sheaves-injective-surjective}).
+\item A complex of abelian sheaves
+$$
+\mathcal{F} \to \mathcal{G} \to \mathcal{H}
+$$
+is exact at $\mathcal{G}$ if and only if for all
+$U \in \Ob(\mathcal{C})$ and all $s \in \mathcal{G}(U)$
+mapping to zero in $\mathcal{H}(U)$ there exists a covering
+$\{U_i \to U\}_{i \in I}$ in $\mathcal{C}$ such that each
+$s|_{U_i}$ is in the image of $\mathcal{F}(U_i) \to \mathcal{G}(U_i)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+We claim that Homology, Lemma \ref{homology-lemma-adjoint-get-abelian}
+applies to the categories $\mathcal{A} = \textit{Ab}(\mathcal{C})$
+and $\mathcal{B} = \textit{PAb}(\mathcal{C})$, and the functors
+$a : \mathcal{A} \to \mathcal{B}$ (inclusion),  and
+$b : \mathcal{B} \to \mathcal{A}$ (sheafification).
+Let us check the assumptions of
+Homology, Lemma \ref{homology-lemma-adjoint-get-abelian}.
+Assumption (1) is that $\mathcal{A}$, $\mathcal{B}$ are additive categories,
+$a$, $b$ are additive functors, and $a$ is right adjoint to $b$.
+The first two statements are clear and adjointness is
+Sites, Section \ref{sites-section-sheaves-algebraic-structures} ($\epsilon$).
+Assumption (2) says that $\textit{PAb}(\mathcal{C})$ is abelian
+which we saw in Section \ref{section-abelian-pre-sheaves} and
+that sheafification is left exact, which is
+Sites, Section \ref{sites-section-sheaves-algebraic-structures} ($\zeta$).
+The final assumption is that $ba \cong \text{id}_\mathcal{A}$ which is
+Sites, Section \ref{sites-section-sheaves-algebraic-structures} ($\delta$).
+Hence Homology, Lemma \ref{homology-lemma-adjoint-get-abelian}
+applies and we conclude that $\textit{Ab}(\mathcal{C})$ is abelian.
+
+\medskip\noindent
+In the proof of Homology, Lemma \ref{homology-lemma-adjoint-get-abelian}
+it is shown that $\Ker(\varphi)$ and $\Coker(\varphi)$
+are equal to the sheafification of the kernel and cokernel of $\varphi$
+as a morphism of abelian presheaves. This proves (4). Since the kernel
+is a equalizer (i.e., a limit) and since sheafification commutes with
+finite limits, we conclude that (2) holds.
+
+\medskip\noindent
+Statement (2) implies (3). Statement (4) implies (5) by our description
+of sheafification. The characterization of exactness in (6) follows from
+(2) and (5), and the fact that the sequence is exact if and only if
+$\Im(\mathcal{F} \to \mathcal{G}) =
+\Ker(\mathcal{G} \to \mathcal{H})$.
+\end{proof}
+
+\noindent
+Another way to say part (6) of the lemma is that a
+sequence of abelian sheaves
+$$
+\mathcal{F}_1 \longrightarrow
+\mathcal{F}_2 \longrightarrow
+\mathcal{F}_3
+$$
+is exact if and only if the sheafification of
+$U \mapsto \Im(\mathcal{F}_1(U) \to \mathcal{F}_2(U))$
+is equal to the kernel of $\mathcal{F}_2 \to \mathcal{F}_3$.
+
+\begin{lemma}
+\label{lemma-limits-colimits-abelian-sheaves}
+Let $\mathcal{C}$ be a site.
+\begin{enumerate}
+\item All limits and colimits exist in $\textit{Ab}(\mathcal{C})$.
+\item Limits are the same as the corresponding limits of abelian presheaves
+over $\mathcal{C}$ (i.e., commute with taking sections over objects of
+$\mathcal{C}$).
+\item Finite direct sums are the same as the corresponding finite direct sums
+in the category of abelian pre-sheaves over $\mathcal{C}$.
+\item A colimit is the sheafification of the corresponding colimit in
+the category of abelian presheaves.
+\item Filtered colimits are exact.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-limits-colimits-abelian-presheaves} limits and colimits
+of abelian presheaves exist, and are described by taking limits and colimits
+on the level of sections over objects.
+
+\medskip\noindent
+Let $\mathcal{I} \to \textit{Ab}(\mathcal{C})$, $i \mapsto \mathcal{F}_i$
+be a diagram. Let $\lim_i \mathcal{F}_i$ be the limit of the diagram
+as an abelian presheaf. By Sites, Lemma \ref{sites-lemma-limit-sheaf}
+this is an abelian sheaf. Then it is quite easy to see that
+$\lim_i \mathcal{F}_i$ is the limit of the diagram in
+$\textit{Ab}(\mathcal{C})$. This proves limits exist and (2) holds.
+
+\medskip\noindent
+By Categories, Lemma \ref{categories-lemma-adjoint-exact}, and because
+sheafification is left adjoint to the inclusion functor we see that
+$\colim_i \mathcal{F}$ exists and is the sheafification of the colimit
+in $\textit{PAb}(\mathcal{C})$. This proves colimits exist and (4) holds.
+
+\medskip\noindent
+Finite direct sums are the same thing as finite products in any abelian
+category. Hence (3) follows from (2).
+
+\medskip\noindent
+Proof of (5). The statement means that given a system
+$0 \to \mathcal{F}_i \to \mathcal{G}_i \to \mathcal{H}_i \to 0$
+of exact sequences of abelian sheaves over a directed set $I$ the sequence
+$0 \to \colim \mathcal{F}_i \to \colim \mathcal{G}_i \to
+\colim \mathcal{H}_i \to 0$ is exact as well. A formal argument using
+Homology, Lemma \ref{homology-lemma-check-exactness} and the
+definition of colimits shows that the sequence
+$\colim \mathcal{F}_i \to \colim \mathcal{G}_i \to \colim \mathcal{H}_i \to 0$
+is exact. Note that $\colim \mathcal{F}_i \to \colim \mathcal{G}_i$
+is the sheafification of the map of presheaf colimits which is
+injective as each of the maps $\mathcal{F}_i \to \mathcal{G}_i$ is
+injective. Since sheafification is exact we conclude.
+\end{proof}
+
+
+
+
+
+
+

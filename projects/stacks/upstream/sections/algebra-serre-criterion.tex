@@ -1,0 +1,262 @@
+\section{Serre's criterion for normality}
+\label{section-serre-criterion}
+
+\noindent
+We introduce the following properties of Noetherian rings.
+
+\begin{definition}
+\label{definition-conditions}
+Let $R$ be a Noetherian ring.
+Let $k \geq 0$ be an integer.
+\begin{enumerate}
+\item We say $R$ has property {\it $(R_k)$} if for every prime $\mathfrak p$
+of height $\leq k$ the local ring $R_{\mathfrak p}$ is regular.
+We also say that $R$ is {\it regular in codimension $\leq k$}.
+\item We say $R$ has property {\it $(S_k)$} if for every prime $\mathfrak p$
+the local ring $R_{\mathfrak p}$ has depth at least
+$\min\{k, \dim(R_{\mathfrak p})\}$.
+\item Let $M$ be a finite $R$-module. We say $M$ has property $(S_k)$
+if for every prime $\mathfrak p$ the module
+$M_{\mathfrak p}$ has depth at least
+$\min\{k, \dim(\text{Supp}(M_{\mathfrak p}))\}$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+Any Noetherian ring has property $(S_0)$ and so does any finite module
+over it. Our convention that the depth of the zero module is $\infty$
+(see Section \ref{section-depth}) and the dimension of the empty set is
+$-\infty$ (see Topology, Section \ref{topology-section-krull-dimension})
+guarantees that the zero module has property $(S_k)$ for all $k$.
+
+\begin{lemma}
+\label{lemma-criterion-no-embedded-primes}
+Let $R$ be a Noetherian ring.
+Let $M$ be a finite $R$-module.
+The following are equivalent:
+\begin{enumerate}
+\item $M$ has no embedded associated prime, and
+\item $M$ has property $(S_1)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let $\mathfrak p$ be an embedded associated prime of $M$.
+Then there exists another associated prime $\mathfrak q$ of $M$
+such that $\mathfrak p \supset \mathfrak q$. In particular this
+implies that $\dim(\text{Supp}(M_{\mathfrak p})) \geq 1$ (since $\mathfrak q$
+is in the support as well). On the other hand $\mathfrak pR_{\mathfrak p}$
+is associated to $M_{\mathfrak p}$
+(Lemma \ref{lemma-associated-primes-localize}) and hence
+$\text{depth}(M_{\mathfrak p}) = 0$
+(see Lemma \ref{lemma-ideal-nonzerodivisor}).
+In other words $(S_1)$ does not hold.
+Conversely, if $(S_1)$ does not hold then there exists a prime
+$\mathfrak p$ such that $\dim(\text{Supp}(M_{\mathfrak p})) \geq 1$
+and $\text{depth}(M_{\mathfrak p}) = 0$. Since
+$\text{depth}(M_{\mathfrak p}) = 0$, we see that
+$\mathfrak p \in \text{Ass}(M)$ by the two Lemmas
+\ref{lemma-associated-primes-localize} and \ref{lemma-ideal-nonzerodivisor}.
+Since $\dim(\text{Supp}(M_{\mathfrak p})) \geq 1$, there
+is a prime $\mathfrak q \in \text{Supp}(M)$ with
+$\mathfrak q \subset \mathfrak p$, $\mathfrak q \not = \mathfrak p$.
+We can take such a $\mathfrak q$ that is minimal in
+$\text{Supp}(M)$. Then by
+Proposition \ref{proposition-minimal-primes-associated-primes}
+we have $\mathfrak q \in \text{Ass}(M)$ and hence
+$\mathfrak p$ is an embedded associated prime.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-criterion-reduced}
+\begin{slogan}
+Reduced equals R0 plus S1.
+\end{slogan}
+Let $R$ be a Noetherian ring.
+The following are equivalent:
+\begin{enumerate}
+\item $R$ is reduced, and
+\item $R$ has properties $(R_0)$ and $(S_1)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Suppose that $R$ is reduced. Then $R_{\mathfrak p}$ is a field for
+every minimal prime $\mathfrak p$ of $R$, according to
+Lemma \ref{lemma-minimal-prime-reduced-ring}. Hence we have $(R_0)$.
+Let $\mathfrak p$ be a prime of height $\geq 1$. Then $A = R_{\mathfrak p}$
+is a reduced local ring of dimension $\geq 1$. Hence its maximal
+ideal $\mathfrak m$ is not an associated prime
+since this would mean there exists an $x \in \mathfrak m$
+with annihilator $\mathfrak m$ so $x^2 = 0$. Hence the depth of
+$A = R_{\mathfrak p}$ is at least one, by Lemma \ref{lemma-ass-zero-divisors}.
+This shows that $(S_1)$ holds.
+
+\medskip\noindent
+Conversely, assume that $R$ satisfies $(R_0)$ and $(S_1)$.
+If $\mathfrak p$ is a minimal prime of $R$, then
+$R_{\mathfrak p}$ is a field by $(R_0)$, and hence is reduced.
+If $\mathfrak p$ is not minimal, then we see that $R_{\mathfrak p}$
+has depth $\geq 1$ by $(S_1)$ and we conclude there exists an element
+$t \in \mathfrak pR_{\mathfrak p}$ such that
+$R_{\mathfrak p} \to R_{\mathfrak p}[1/t]$ is injective.
+Now $R_\mathfrak p[1/t]$ is contained in the product
+of its localizations at prime ideals, see
+Lemma \ref{lemma-characterize-zero-local}.
+This implies that $R_{\mathfrak p}$ is a subring of a product of
+localizations of $R$ at $\mathfrak p \supset \mathfrak q$ with
+$t \not \in \mathfrak q$. Since these primes have smaller height
+by induction on the height we conclude that $R$ is reduced.
+\end{proof}
+
+\begin{lemma}[Serre's criterion for normality]
+\label{lemma-criterion-normal}
+\begin{reference}
+\cite[IV, Theorem 5.8.6]{EGA}
+\end{reference}
+\begin{slogan}
+Normal equals R1 plus S2.
+\end{slogan}
+Let $R$ be a Noetherian ring.
+The following are equivalent:
+\begin{enumerate}
+\item $R$ is a normal ring, and
+\item $R$ has properties $(R_1)$ and $(S_2)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Proof of (1) $\Rightarrow$ (2). Assume $R$ is normal, i.e., all
+localizations $R_{\mathfrak p}$ at primes are normal domains.
+In particular we see that $R$ has $(R_0)$ and $(S_1)$ by
+Lemma \ref{lemma-criterion-reduced}. Hence it suffices to show
+that a local Noetherian normal domain $R$ of dimension $d$ has
+depth $\geq \min(2, d)$ and is regular if $d = 1$. The assertion
+if $d = 1$ follows from Lemma \ref{lemma-characterize-dvr}.
+
+\medskip\noindent
+Let $R$ be a local Noetherian normal domain with maximal ideal
+$\mathfrak m$ and dimension $d \geq 2$. Apply
+Lemma \ref{lemma-hart-serre-loc-thm} to $R$.
+It is clear that $R$ does not fall into cases (1) or (2)
+of the lemma.
+Let $R \to R'$ as in (4) of the lemma.
+Since $R$ is a domain we have $R \subset R'$. Since $\mathfrak m$
+is not an associated prime of $R'$ there exists an $x \in \mathfrak m$
+which is a nonzerodivisor on $R'$. Then $R_x = R'_x$ so
+$R$ and $R'$ are domains with the same fraction field. But
+finiteness of $R \subset R'$ implies every element of $R'$ is integral
+over $R$ (Lemma \ref{lemma-finite-is-integral})
+and we conclude that $R = R'$ as $R$ is normal.
+This means (4) does not happen. Thus we get the remaining possibility
+(3), i.e., $\text{depth}(R) \geq 2$ as desired.
+
+\medskip\noindent
+Proof of (2) $\Rightarrow$ (1). Assume $R$ satisfies $(R_1)$ and $(S_2)$.
+By Lemma \ref{lemma-criterion-reduced} we conclude that $R$ is
+reduced. Hence it suffices to show that if $R$ is a reduced local
+Noetherian ring of dimension $d$ satisfying $(S_2)$ and $(R_1)$
+then $R$ is a normal domain. If $d = 0$, the result is clear.
+If $d = 1$, then the result follows from Lemma \ref{lemma-characterize-dvr}.
+
+\medskip\noindent
+Let $R$ be a reduced local Noetherian ring with maximal ideal
+$\mathfrak m$ and dimension $d \geq 2$ which satisfies $(R_1)$ and
+$(S_2)$. By Lemma \ref{lemma-characterize-reduced-ring-normal}
+it suffices to show that $R$ is integrally closed in its
+total ring of fractions $Q(R)$. Pick $x \in Q(R)$ which is integral
+over $R$. Then $R' = R[x]$ is a finite ring extension of $R$
+(Lemma \ref{lemma-characterize-finite-in-terms-of-integral}).
+Because $\dim(R_\mathfrak p) < d$ for
+every nonmaximal prime $\mathfrak p \subset R$
+we have $R_\mathfrak p = R'_\mathfrak p$ by induction.
+Hence the support of $R'/R$ is $\{\mathfrak m\}$.
+It follows that $R'/R$ is annihilated by a power of $\mathfrak m$
+(Lemma \ref{lemma-Noetherian-power-ideal-kills-module}).
+By Lemma \ref{lemma-hart-serre-loc-thm} this
+contradicts the assumption that the depth of $R$ is $\geq 2 = \min(2, d)$
+and the proof is complete.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-regular-normal}
+A regular ring is normal.
+\end{lemma}
+
+\begin{proof}
+Let $R$ be a regular ring. By
+Lemma \ref{lemma-criterion-normal}
+it suffices to prove that $R$ is $(R_1)$ and $(S_2)$.
+As a regular local ring is Cohen-Macaulay, see
+Lemma \ref{lemma-regular-ring-CM},
+it is clear that $R$ is $(S_2)$.
+Property $(R_1)$ is immediate.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-normal-domain-intersection-localizations-height-1}
+Let $R$ be a Noetherian normal domain with fraction field $K$. Then
+\begin{enumerate}
+\item for any nonzero $a \in R$ the quotient $R/aR$ has no embedded primes,
+and all its associated primes have height $1$
+\item
+$$
+R = \bigcap\nolimits_{\text{height}(\mathfrak p) = 1} R_{\mathfrak p}
+$$
+\item For any nonzero $x \in K$ the quotient $R/(R \cap xR)$
+has no embedded primes, and all its associates primes have height $1$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-criterion-normal} we see that $R$ has $(S_2)$.
+Hence for any nonzero element $a \in R$ we see that $R/aR$ has $(S_1)$
+(use Lemma \ref{lemma-depth-in-ses} for example)
+Hence $R/aR$ has no embedded primes
+(Lemma \ref{lemma-criterion-no-embedded-primes}).
+We conclude the associated primes of $R/aR$ are exactly
+the minimal primes $\mathfrak p$ over $(a)$, which have height $1$
+as $a$ is not zero (Lemma \ref{lemma-minimal-over-1}). This proves (1).
+
+\medskip\noindent
+Thus, given $b \in R$ we have $b \in aR$ if and only if
+$b \in aR_{\mathfrak p}$ for every minimal prime $\mathfrak p$
+over $(a)$ (see Lemma \ref{lemma-zero-at-ass-zero}).
+These primes all have height $1$ as seen above so
+$b/a \in R$ if and only if $b/a \in R_{\mathfrak p}$ for all
+height 1 primes. Hence (2) holds.
+
+\medskip\noindent
+For (3) write $x = a/b$. Let $\mathfrak p_1, \ldots, \mathfrak p_r$
+be the minimal primes over $(ab)$. These all have height 1 by the above.
+Then we see that
+$R \cap xR = \bigcap_{i = 1, \ldots, r} (R \cap xR_{\mathfrak p_i})$
+by part (2) of the lemma. Hence $R/(R \cap xR)$ is a submodule of
+$\bigoplus R/(R \cap xR_{\mathfrak p_i})$.
+As $R_{\mathfrak p_i}$ is a discrete valuation ring (by property $(R_1)$
+for the Noetherian normal domain $R$, see Lemma \ref{lemma-criterion-normal})
+we have $xR_{\mathfrak p_i} = \mathfrak p_i^{e_i}R_{\mathfrak p_i}$
+for some $e_i \in \mathbf{Z}$. Hence the direct sum is equal
+to $\bigoplus_{e_i > 0} R/\mathfrak p_i^{(e_i)}$, see
+Definition \ref{definition-symbolic-power}.
+By Lemma \ref{lemma-symbolic-power-associated}
+the only associated prime of the module
+$R/\mathfrak p^{(n)}$ is $\mathfrak p$. Hence the set of associate primes
+of $R/(R \cap xR)$ is a subset of $\{\mathfrak p_i\}$ and there are
+no inclusion relations among them. This proves (3).
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

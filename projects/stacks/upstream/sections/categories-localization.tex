@@ -1,0 +1,984 @@
+\section{Localization in categories}
+\label{section-localization}
+
+\noindent
+The basic idea of this section is given a category $\mathcal{C}$
+and a set of arrows $S$ to construct a functor
+$F : \mathcal{C} \to S^{-1}\mathcal{C}$
+such that all elements of $S$ become invertible in $S^{-1}\mathcal{C}$
+and such that $F$ is universal among all functors with this property.
+References for this section are \cite[Chapter I, Section 2]{GZ}
+and \cite[Chapter II, Section 2]{Verdier}.
+
+\begin{definition}
+\label{definition-multiplicative-system}
+Let $\mathcal{C}$ be a category. A set of arrows $S$ of $\mathcal{C}$ is
+called a {\it left multiplicative system} if it has the following properties:
+\begin{enumerate}
+\item[LMS1] The identity of every object of $\mathcal{C}$ is in $S$ and
+the composition of two composable elements of $S$ is in $S$.
+\item[LMS2] Every solid diagram
+$$
+\xymatrix{
+X \ar[d]_t \ar[r]_g & Y \ar@{..>}[d]^s \\
+Z \ar@{..>}[r]^f & W
+}
+$$
+with $t \in S$ can be completed to a commutative dotted square with
+$s \in S$.
+\item[LMS3] For every pair of morphisms $f, g : X \to Y$ and
+$t \in S$ with target $X$ such that $f \circ t = g \circ t$
+there exists an $s \in S$ with source $Y$ such that
+$s \circ f = s \circ g$.
+\end{enumerate}
+A set of arrows $S$ of $\mathcal{C}$ is
+called a {\it right multiplicative system}
+if it has the following properties:
+\begin{enumerate}
+\item[RMS1] The identity of every object of $\mathcal{C}$ is in $S$ and
+the composition of two composable elements of $S$ is in $S$.
+\item[RMS2] Every solid diagram
+$$
+\xymatrix{
+X \ar@{..>}[d]_t \ar@{..>}[r]_g & Y \ar[d]^s \\
+Z \ar[r]^f & W
+}
+$$
+with $s \in S$ can be completed to a commutative dotted square with
+$t \in S$.
+\item[RMS3] For every pair of morphisms $f, g : X \to Y$ and
+$s \in S$ with source $Y$ such that $s \circ f = s \circ g$
+there exists a $t \in S$ with target $X$ such that
+$f \circ t = g \circ t$.
+\end{enumerate}
+A set of arrows $S$ of $\mathcal{C}$ is called a {\it multiplicative system}
+if it is both a left multiplicative system and a right multiplicative system.
+In other words, this means that MS1, MS2, MS3 hold, where
+MS1 $=$ LMS1 $+$ RMS1, MS2 $=$ LMS2 $+$ RMS2, and
+MS3 $=$ LMS3 $+$ RMS3. (That said, of course LMS1 $=$ RMS1
+$=$ MS1.)
+\end{definition}
+
+\noindent
+These conditions are useful to construct the categories $S^{-1}\mathcal{C}$
+as follows.
+
+\medskip\noindent
+{\bf Left calculus of fractions.}
+Let $\mathcal{C}$ be a category and let $S$ be a left multiplicative
+system. We define a new category $S^{-1}\mathcal{C}$ as follows
+(we verify this works in the proof of
+Lemma \ref{lemma-left-localization}):
+\begin{enumerate}
+\item We set $\Ob(S^{-1}\mathcal{C}) = \Ob(\mathcal{C})$.
+\item Morphisms $X \to Y$ of $S^{-1}\mathcal{C}$ are given by pairs
+$(f : X \to Y', s : Y \to Y')$ with $s \in S$ up to equivalence.
+(The equivalence is defined below. Think of the equivalence class
+of a pair $(f, s)$ as $s^{-1}f : X \to Y$.)
+\item Two pairs $(f_1 : X \to Y_1, s_1 : Y \to Y_1)$ and
+$(f_2 : X \to Y_2, s_2 : Y \to Y_2)$ are said to be equivalent
+if there exist a third pair $(f_3 : X \to Y_3, s_3 : Y \to Y_3)$
+and morphisms $u : Y_1 \to Y_3$ and $v : Y_2 \to Y_3$ of $\mathcal{C}$
+fitting into the commutative diagram
+$$
+\xymatrix{
+ & Y_1 \ar[d]^u & \\
+X \ar[ru]^{f_1} \ar[r]^{f_3} \ar[rd]_{f_2} &
+Y_3 &
+Y \ar[lu]_{s_1} \ar[l]_{s_3} \ar[ld]^{s_2} \\
+& Y_2 \ar[u]_v &
+}
+$$
+\item The composition of the equivalence classes of the pairs
+$(f : X \to Y', s : Y \to Y')$ and $(g : Y \to Z', t : Z \to Z')$
+is defined as the equivalence class of a pair
+$(h \circ f : X \to Z'', u \circ t : Z \to Z'')$
+where $h$ and $u \in S$ are chosen to fit into a commutative diagram
+$$
+\xymatrix{
+Y \ar[d]_s \ar[r]_g & Z' \ar[d]^u \\
+Y' \ar[r]^h & Z''
+}
+$$
+which exists by assumption.
+\item The identity morphism $X \to X$ in $S^{-1} \mathcal{C}$ is the
+equivalence class of the pair $(\text{id} : X \to X,
+\text{id} : X \to X)$.
+\end{enumerate}
+
+\begin{lemma}
+\label{lemma-left-localization}
+Let $\mathcal{C}$ be a category and let $S$ be a left multiplicative
+system.
+\begin{enumerate}
+\item The relation on pairs defined above is an equivalence relation.
+\item The composition rule given above is well defined on equivalence
+classes.
+\item Composition is associative (and the identity morphisms satisfy
+the identity axioms), and hence $S^{-1}\mathcal{C}$ is a category.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Proof of (1). Let us say two pairs $p_1 = (f_1 : X \to Y_1, s_1 : Y \to Y_1)$
+and $p_2 = (f_2 : X \to Y_2, s_2 : Y \to Y_2)$ are elementary equivalent
+if there exists a morphism $a : Y_1 \to Y_2$ of $\mathcal{C}$ such that
+$a \circ f_1 = f_2$ and $a \circ s_1 = s_2$. Diagram:
+$$
+\xymatrix{
+X \ar@{=}[d] \ar[r]_{f_1} & Y_1 \ar[d]^a & Y \ar[l]^{s_1} \ar@{=}[d] \\
+X \ar[r]^{f_2} & Y_2 & Y \ar[l]_{s_2}
+}
+$$
+Let us denote this property by saying $p_1Ep_2$.
+Note that $pEp$ and $aEb, bEc \Rightarrow aEc$.
+(Despite its name, $E$ is not an equivalence
+relation.)
+Part (1) claims that the relation
+$p \sim p' \Leftrightarrow \exists q: pEq \wedge p'Eq$
+(where $q$ is supposed to be a pair satisfying the
+same conditions as $p$ and $p'$)
+is an equivalence relation. A simple formal argument, using the properties
+of $E$ above, shows that it suffices to prove
+$p_3Ep_1, p_3Ep_2 \Rightarrow p_1 \sim p_2$.
+Thus suppose that we are given a commutative diagram
+$$
+\xymatrix{
+ & Y_1 & \\
+X \ar[ru]^{f_1} \ar[r]^{f_3} \ar[rd]_{f_2} &
+Y_3 \ar[u]_{a_{31}} \ar[d]^{a_{32}} &
+Y \ar[lu]_{s_1} \ar[l]_{s_3} \ar[ld]^{s_2} \\
+& Y_2 &
+}
+$$
+with $s_i \in S$.
+First we apply LMS2 to get a commutative diagram
+$$
+\xymatrix{
+Y \ar[d]_{s_1} \ar[r]_{s_2} & Y_2 \ar@{..>}[d]^{a_{24}} \\
+Y_1 \ar@{..>}[r]^{a_{14}} & Y_4
+}
+$$
+with $a_{24} \in S$. Then, we have
+$$
+a_{14} \circ a_{31} \circ s_3 =
+a_{14} \circ s_1 =
+a_{24} \circ s_2 =
+a_{24} \circ a_{32} \circ s_3.
+$$
+Hence, by LMS3, there exists a
+morphism $s_{44} : Y_4 \to Y'_4$ such that $s_{44} \in S$ and
+$s_{44} \circ a_{14} \circ a_{31}
+= s_{44} \circ a_{24} \circ a_{32}$.
+Hence, after replacing $Y_4$, $a_{14}$ and $a_{24}$ by $Y'_4$,
+$s_{44} \circ a_{14}$ and $s_{44} \circ a_{24}$, we may assume
+that $a_{14} \circ a_{31} = a_{24} \circ a_{32}$ (and
+we still have $a_{24} \in S$ and
+$a_{14} \circ s_1 = a_{24} \circ s_2$). Set
+$$
+f_4 =
+a_{14} \circ f_1 =
+a_{14} \circ a_{31} \circ f_3 =
+a_{24} \circ a_{32} \circ f_3 =
+a_{24} \circ f_2
+$$
+and
+$s_4 = a_{14} \circ s_1 = a_{24} \circ s_2$. Then, the diagram
+$$
+\xymatrix{
+X \ar@{=}[d] \ar[r]_{f_1} & Y_1 \ar[d]^{a_{14}} & Y \ar[l]^{s_1} \ar@{=}[d] \\
+X \ar[r]^{f_4} & Y_4 & Y \ar[l]_{s_4}
+}
+$$
+commutes, and we have $s_4 \in S$ (by LMS1). Thus, $p_1 E p_4$,
+where $p_4 = (f_4, s_4)$. Similarly, $p_2 E p_4$. Combining these,
+we find $p_1 \sim p_2$.
+
+\medskip\noindent
+Proof of (2). Let $p = (f : X \to Y', s : Y \to Y')$ and
+$q = (g : Y \to Z', t : Z \to Z')$ be pairs as in the definition of composition
+above. To compose we choose a diagram
+$$
+\xymatrix{
+Y \ar[d]_s \ar[r]_g & Z' \ar[d]^{u_2} \\
+Y' \ar[r]^{h_2} & Z_2
+}
+$$
+with $u_2 \in S$. We first show that the equivalence class of the pair
+$r_2 = (h_2 \circ f : X \to Z_2, u_2 \circ t : Z \to Z_2)$
+is independent of the choice of $(Z_2, h_2, u_2)$. Namely, suppose
+that $(Z_3, h_3, u_3)$ is another choice with corresponding composition
+$r_3 = (h_3 \circ f : X \to Z_3, u_3 \circ t : Z \to Z_3)$.
+Then by LMS2 we can choose a diagram
+$$
+\xymatrix{
+Z' \ar[d]_{u_2} \ar[r]_{u_3} & Z_3 \ar[d]^{u_{34}} \\
+Z_2 \ar[r]^{h_{24}} & Z_4
+}
+$$
+with $u_{34} \in S$. We have $h_2 \circ s = u_2 \circ g$
+and similarly $h_3 \circ s = u_3 \circ g$. Now,
+$$
+u_{34} \circ h_3 \circ s
+= u_{34} \circ u_3 \circ g
+= h_{24} \circ u_2 \circ g
+= h_{24} \circ h_2 \circ s.
+$$
+Hence, LMS3 shows that there
+exist a $Z'_4$ and an $s_{44} : Z_4 \to Z'_4$ such that
+$s_{44} \circ u_{34} \circ h_3 = s_{44} \circ h_{24} \circ h_2$.
+Replacing $Z_4$, $h_{24}$ and $u_{34}$ by $Z'_4$,
+$s_{44} \circ h_{24}$ and $s_{44} \circ u_{34}$, we may
+assume that $u_{34} \circ h_3 = h_{24} \circ h_2$.
+Meanwhile, the relations $u_{34} \circ u_3 = h_{24} \circ u_2$
+and $u_{34} \in S$ continue to hold. We can now set
+$h_4 = u_{34} \circ h_3 = h_{24} \circ h_2$ and
+$u_4 = u_{34} \circ u_3 = h_{24} \circ u_2$. Then, we have a
+commutative diagram
+$$
+\xymatrix{
+X \ar@{=}[d] \ar[r]_{h_2\circ f} &
+Z_2 \ar[d]^{h_{24}} &
+Z \ar[l]^{u_2 \circ t} \ar@{=}[d] \\
+X \ar@{=}[d] \ar[r]^{h_4\circ f} &
+Z_4 &
+Z \ar@{=}[d] \ar[l]_{u_4 \circ t} \\
+X \ar[r]^{h_3 \circ f} &
+Z_3 \ar[u]^{u_{34}} &
+Z \ar[l]_{u_3 \circ t}
+}
+$$
+Hence we obtain a pair
+$r_4 =
+(h_4 \circ f : X \to Z_4, u_4 \circ t : Z \to Z_4)$
+and the above diagram shows that we have $r_2Er_4$ and
+$r_3Er_4$, whence $r_2 \sim r_3$, as desired. Thus it now
+makes sense to define $p \circ q$ as the equivalence class of
+all possible pairs $r$ obtained as above.
+
+\medskip\noindent
+To finish the proof of (2) we have to show that given pairs
+$p_1, p_2, q$ such that $p_1Ep_2$ then $p_1 \circ q = p_2 \circ q$ and
+$q \circ p_1 = q \circ p_2$ whenever the compositions make sense.
+To do this, write $p_1 = (f_1 : X \to Y_1, s_1 : Y \to Y_1)$ and
+$p_2 = (f_2 : X \to Y_2, s_2 : Y \to Y_2)$ and let
+$a : Y_1 \to Y_2$ be a morphism of $\mathcal{C}$ such that
+$f_2 = a \circ f_1$ and $s_2 = a \circ s_1$.
+First assume that $q = (g : Y \to Z', t : Z \to Z')$.
+In this case choose a commutative diagram as the one on the left
+$$
+\vcenter{
+\xymatrix{
+Y \ar[d]_{s_2} \ar[r]^g & Z' \ar[d]^u \\
+Y_2 \ar[r]^h & Z''
+}
+}
+\quad
+\Rightarrow
+\quad
+\vcenter{
+\xymatrix{
+Y \ar[d]_{s_1} \ar[r]^g & Z' \ar[d]^u \\
+Y_1 \ar[r]^{h \circ a} & Z''
+}
+}
+$$
+(with $u \in S$),
+which implies the diagram on the right is commutative as well.
+Using these diagrams we see that both compositions $q \circ p_1$
+and $q \circ p_2$ are the equivalence class of
+$(h \circ a \circ f_1 : X \to Z'', u \circ t : Z \to Z'')$.
+Thus $q \circ p_1 = q \circ p_2$.
+The proof of the other case, in which we have to show
+$p_1 \circ q = p_2 \circ q$, is omitted. (It is similar to the
+case we did.)
+
+\medskip\noindent
+Proof of (3). We have to prove associativity of composition.
+Consider a solid diagram
+$$
+\xymatrix{
+& & & Z \ar[d] \\
+& & Y \ar[d] \ar[r] & Z' \ar@{..>}[d] \\
+& X \ar[d] \ar[r] & Y' \ar@{..>}[d] \ar@{..>}[r] & Z'' \ar@{..>}[d] \\
+W \ar[r] & X' \ar@{..>}[r] & Y'' \ar@{..>}[r] & Z'''
+}
+$$
+(whose vertical arrows belong to $S$)
+which gives rise to three composable pairs.
+Using LMS2 we can choose the dotted arrows making the squares commutative
+and such that the vertical arrows are in $S$.
+Then it is clear that the composition of the three pairs
+is the equivalence class of the pair
+$(W \to Z''', Z \to Z''')$ gotten by composing the
+horizontal arrows on the bottom row and the vertical arrows
+on the right column.
+
+\medskip\noindent
+We leave it to the reader to check the identity axioms.
+\end{proof}
+
+\begin{remark}
+\label{remark-motivation-localization}
+The motivation for the construction of $S^{-1} \mathcal{C}$ is to
+``force'' the morphisms in $S$ to be invertible by artificially
+creating inverses to them (at the cost of some existing morphisms
+possibly becoming identified with each other). This is similar to
+the localization of a commutative ring at a multiplicative subset,
+and more generally to the localization of a noncommutative ring
+at a right denominator set (see \cite[Section 10A]{Lam}). This is
+more than just a similarity: The construction of
+$S^{-1} \mathcal{C}$ (or, more precisely, its version for
+additive categories $\mathcal{C}$) actually generalizes the
+latter type of localization. Namely, a noncommutative ring can be
+viewed as a pre-additive category with a single object (the morphisms
+being the elements of the ring); a multiplicative subset of this
+ring then becomes a set $S$ of morphisms satisfying LMS1 (aka
+RMS1). Then, the conditions RMS2 and RMS3 for this category and
+this subset $S$ translate into the two conditions
+(``right permutable'' and ``right reversible'') of a right
+denominator set (and similarly for LMS and left denominator sets),
+and $S^{-1} \mathcal{C}$ (with a properly defined additive
+structure) is the one-object category corresponding to the
+localization of the ring.
+\end{remark}
+
+\begin{definition}
+\label{definition-left-localization-as-fraction}
+Let $\mathcal{C}$ be a category and let $S$ be a left multiplicative
+system of morphisms of $\mathcal{C}$. Given any morphism
+$f : X \to Y'$ in $\mathcal{C}$ and any morphism $s : Y \to Y'$ in
+$S$, we denote by {\it $s^{-1} f$} the equivalence class of the pair
+$(f : X \to Y', s : Y \to Y')$. This is a morphism from $X$ to $Y$
+in $S^{-1} \mathcal{C}$.
+\end{definition}
+
+\noindent
+This notation is suggestive, and the things it suggests are true:
+Given any morphism $f : X \to Y'$ in $\mathcal{C}$ and any two
+morphisms $s : Y \to Y'$ and $t : Y' \to Y''$ in $S$, we have
+$\left(t \circ s\right)^{-1} \left(t \circ f\right) = s^{-1} f$.
+Also, for any
+$f : X \to Y'$ and $g : Y' \to Z'$ in $\mathcal{C}$ and all
+$s : Z \to Z'$ in $S$, we have
+$s^{-1} \left(g \circ f\right) = \left(s^{-1} g\right) \circ
+\left(\text{id}_{Y'}^{-1} f\right)$.
+Finally, for any $f : X \to Y'$ in $\mathcal{C}$, all
+$s : Y \to Y'$ in $S$, and $t : Z \to Y$ in $S$, we have
+$\left(s \circ t\right)^{-1} f
+= \left(t^{-1} \text{id}_Y\right)
+\circ \left(s^{-1} f\right)$.
+This is all clear from the definition.
+We can ``write any finite collection of morphisms with the same target
+as fractions with common denominator''.
+
+\begin{lemma}
+\label{lemma-morphisms-left-localization}
+Let $\mathcal{C}$ be a category and let $S$ be a left multiplicative
+system of morphisms of $\mathcal{C}$. Given any finite collection
+$g_i : X_i \to Y$ of morphisms of $S^{-1}\mathcal{C}$
+(indexed by $i$),
+we can find an element $s : Y \to Y'$ of $S$ and
+a family of morphisms $f_i : X_i \to Y'$ of $\mathcal{C}$ such that
+each $g_i$ is the equivalence class of the pair
+$(f_i : X_i \to Y', s : Y \to Y')$.
+\end{lemma}
+
+\begin{proof}
+For each $i$ choose a representative $(X_i \to Y_i, s_i : Y \to Y_i)$
+of $g_i$.
+The lemma follows if we can find a morphism $s : Y \to Y'$ in $S$ such that
+for each $i$ there is a morphism $a_i : Y_i \to Y'$ with
+$a_i \circ s_i = s$. If we have two indices $i = 1, 2$, then we can
+do this by completing the square
+$$
+\xymatrix{
+Y \ar[d]_{s_1} \ar[r]_{s_2} & Y_2 \ar[d]^{t_2} \\
+Y_1 \ar[r]^{a_1} & Y'
+}
+$$
+with $t_2 \in S$ as is possible by
+Definition \ref{definition-multiplicative-system}.
+Then $s = t_2 \circ s_2 \in S$ works.
+If we have $n > 2$ morphisms, then we use the above trick to reduce
+to the case of $n - 1$ morphisms, and we win by induction.
+\end{proof}
+
+\noindent
+There is an easy characterization of equality of morphisms if they
+have the same denominator.
+
+\begin{lemma}
+\label{lemma-equality-morphisms-left-localization}
+Let $\mathcal{C}$ be a category and let $S$ be a left multiplicative
+system of morphisms of $\mathcal{C}$. Let $A, B : X \to Y$ be morphisms
+of $S^{-1}\mathcal{C}$ which are the equivalence classes of
+$(f : X \to Y', s : Y \to Y')$ and $(g : X \to Y', s : Y \to Y')$.
+The following are equivalent
+\begin{enumerate}
+\item $A = B$
+\item there exists a morphism $t : Y' \to Y''$
+in $S$ with $t \circ f = t \circ g$, and
+\item there exists a morphism $a : Y' \to Y''$
+such that $a \circ f = a \circ g$ and $a \circ s \in S$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+We are going to use that $S^{-1}\mathcal{C}$ is a category
+(Lemma \ref{lemma-left-localization}) and we will
+use the notation of Definition \ref{definition-left-localization-as-fraction}
+as well as the discussion following that definition to identify some
+morphisms in $S^{-1}\mathcal{C}$. Thus we write $A = s^{-1}f$ and $B = s^{-1}g$.
+
+\medskip\noindent
+If $A = B$ then
+$(\text{id}_{Y'}^{-1}s) \circ A = (\text{id}_{Y'}^{-1}s) \circ B$.
+We have $(\text{id}_{Y'}^{-1}s) \circ A = \text{id}_{Y'}^{-1}f$
+and $(\text{id}_{Y'}^{-1}s) \circ B = \text{id}_{Y'}^{-1}g$.
+The equality of $\text{id}_{Y'}^{-1}f$ and $\text{id}_{Y'}^{-1}g$
+means by definition that there exists a commutative diagram
+$$
+\xymatrix{
+ & Y' \ar[d]^u & \\
+X \ar[ru]^f \ar[r]^h \ar[rd]_g &
+Z &
+Y' \ar[lu]_{\text{id}_{Y'}} \ar[l]_t \ar[ld]^{\text{id}_{Y'}} \\
+& Y' \ar[u]_v &
+}
+$$
+with $t \in S$. In particular $u = v = t \in S$ and $t \circ f = t\circ g$.
+Thus (1) implies (2).
+
+\medskip\noindent
+The implication (2) $\Rightarrow$ (3) is immediate. Assume $a$ is as in (3).
+Denote $s' = a \circ s \in S$.
+Then $\text{id}_{Y''}^{-1}s'$ is an isomorphism in the category
+$S^{-1}\mathcal{C}$ (with inverse $(s')^{-1}\text{id}_{Y''}$).
+Thus to check $A = B$ it suffices to check that
+$\text{id}_{Y''}^{-1}s' \circ A = \text{id}_{Y''}^{-1}s' \circ B$.
+We compute using the rules discussed in the text following
+Definition \ref{definition-left-localization-as-fraction} that
+$\text{id}_{Y''}^{-1}s' \circ A =
+\text{id}_{Y''}^{-1}(a \circ s) \circ s^{-1}f =
+\text{id}_{Y''}^{-1}(a \circ f) =
+\text{id}_{Y''}^{-1}(a \circ g) =
+\text{id}_{Y''}^{-1}(a \circ s) \circ s^{-1}g =
+\text{id}_{Y''}^{-1}s' \circ B$ and we see that (1) is true.
+\end{proof}
+
+\begin{remark}
+\label{remark-left-localization-morphisms-colimit}
+Let $\mathcal{C}$ be a category. Let $S$ be a left multiplicative system.
+Given an object $Y$ of $\mathcal{C}$ we denote $Y/S$ the category whose
+objects are $s : Y \to Y'$ with $s \in S$ and whose morphisms are
+commutative diagrams
+$$
+\xymatrix{
+& Y \ar[ld]_s \ar[rd]^t & \\
+Y' \ar[rr]^a & & Y''
+}
+$$
+where $a : Y' \to Y''$ is arbitrary. We claim that the category
+$Y/S$ is filtered (see
+Definition \ref{definition-directed}).
+Namely, LMS1 implies that $\text{id}_Y : Y \to Y$
+is in $Y/S$; hence $Y/S$ is nonempty. LMS2 implies that given
+$s_1 : Y \to Y_1$ and $s_2 : Y \to Y_2$ we can find a diagram
+$$
+\xymatrix{
+Y \ar[d]_{s_1} \ar[r]_{s_2} & Y_2 \ar[d]^t \\
+Y_1 \ar[r]^a & Y_3
+}
+$$
+with $t \in S$. Hence $s_1 : Y \to Y_1$ and $s_2 : Y \to Y_2$
+both have maps to $t \circ s_2 : Y \to Y_3$ in $Y/S$. Finally, given
+two morphisms $a, b$ from $s_1 : Y \to Y_1$ to $s_2 : Y \to Y_2$
+in $Y/S$ we see that $a \circ s_1 = b \circ s_1$; hence by LMS3
+there exists a $t : Y_2 \to Y_3$ in $S$ such that
+$t \circ a = t \circ b$.
+Now the combined results of
+Lemmas \ref{lemma-morphisms-left-localization} and
+\ref{lemma-equality-morphisms-left-localization}
+tell us that
+\begin{equation}
+\label{equation-left-localization-morphisms-colimit}
+\Mor_{S^{-1}\mathcal{C}}(X, Y) =
+\colim_{(s : Y \to Y') \in Y/S} \Mor_\mathcal{C}(X, Y')
+\end{equation}
+This formula expressing morphism sets in $S^{-1}\mathcal{C}$ as a filtered
+colimit of morphism sets in $\mathcal{C}$ is occasionally useful.
+\end{remark}
+
+\begin{lemma}
+\label{lemma-properties-left-localization}
+Let $\mathcal{C}$ be a category and let $S$ be a left multiplicative
+system of morphisms of $\mathcal{C}$.
+\begin{enumerate}
+\item The rules $X \mapsto X$ and
+$(f : X \to Y) \mapsto (f : X \to Y, \text{id}_Y : Y \to Y)$
+define a functor $Q : \mathcal{C} \to S^{-1}\mathcal{C}$.
+\item For any $s \in S$ the morphism $Q(s)$ is an isomorphism in
+$S^{-1}\mathcal{C}$.
+\item If $G : \mathcal{C} \to \mathcal{D}$ is any functor such that
+$G(s)$ is invertible for every $s \in S$, then there exists a
+unique functor $H : S^{-1}\mathcal{C} \to \mathcal{D}$
+such that $H \circ Q = G$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Parts (1) and (2) are clear. (In (2), the inverse of $Q(s)$ is
+the equivalence class of the pair $(\text{id}_Y, s)$.)
+To see (3) just set $H(X) = G(X)$
+and set $H((f : X \to Y', s : Y \to Y')) = G(s)^{-1} \circ G(f)$.
+Details omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-left-localization-limits}
+Let $\mathcal{C}$ be a category and let $S$ be a left multiplicative
+system of morphisms of $\mathcal{C}$. The localization functor
+$Q : \mathcal{C} \to S^{-1}\mathcal{C}$ commutes with finite colimits.
+\end{lemma}
+
+\begin{proof}
+Let $\mathcal{I}$ be a finite category and let
+$\mathcal{I} \to \mathcal{C}$, $i \mapsto X_i$
+be a functor whose colimit exists. Then using
+(\ref{equation-left-localization-morphisms-colimit}),
+the fact that $Y/S$ is filtered, and
+Lemma \ref{lemma-directed-commutes} we have
+\begin{align*}
+\Mor_{S^{-1}\mathcal{C}}(Q(\colim X_i), Q(Y))
+& =
+\colim_{(s : Y \to Y') \in Y/S} \Mor_\mathcal{C}(\colim X_i, Y') \\
+& =
+\colim_{(s : Y \to Y') \in Y/S} \lim_i \Mor_\mathcal{C}(X_i, Y') \\
+& =
+\lim_i \colim_{(s : Y \to Y') \in Y/S} \Mor_\mathcal{C}(X_i, Y') \\
+& =
+\lim_i \Mor_{S^{-1}\mathcal{C}}(Q(X_i), Q(Y))
+\end{align*}
+and this isomorphism commutes with the projections
+from both sides to the set
+$\Mor_{S^{-1}\mathcal{C}}(Q(X_j), Q(Y))$ for each
+$j \in \Ob(\mathcal{I})$. Thus, $Q(\colim X_i)$ satisfies
+the universal property for the colimit of the functor
+$i \mapsto Q(X_i)$; hence, it is this colimit, as desired.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-left-localization-diagram}
+Let $\mathcal{C}$ be a category. Let $S$ be a left multiplicative
+system. If $f : X \to Y$, $f' : X' \to Y'$ are two morphisms of
+$\mathcal{C}$ and if
+$$
+\xymatrix{
+Q(X) \ar[d]_{Q(f)} \ar[r]_a & Q(X') \ar[d]^{Q(f')} \\
+Q(Y) \ar[r]^b & Q(Y')
+}
+$$
+is a commutative diagram in $S^{-1}\mathcal{C}$, then there exist
+a morphism $f'' : X'' \to Y''$ in $\mathcal{C}$ and a commutative
+diagram
+$$
+\xymatrix{
+X \ar[d]_f \ar[r]_g & X'' \ar[d]^{f''} & X' \ar[d]^{f'} \ar[l]^s \\
+Y \ar[r]^h & Y'' & Y' \ar[l]_t
+}
+$$
+in $\mathcal{C}$ with $s, t \in S$ and $a = s^{-1}g$, $b = t^{-1}h$.
+\end{lemma}
+
+\begin{proof}
+We choose maps and objects in the following way:
+First write $a = s^{-1}g$ for some $s : X' \to X''$ in $S$ and
+$g : X \to X''$. By LMS2 we can find $t : Y' \to Y''$ in $S$ and
+$f'' : X'' \to Y''$ such that
+$$
+\xymatrix{
+X \ar[d]_f \ar[r]_g & X'' \ar[d]^{f''} & X' \ar[d]^{f'} \ar[l]^s \\
+Y & Y'' & Y' \ar[l]_t
+}
+$$
+commutes. Now in this diagram we are going to repeatedly change our
+choice of
+$$
+X'' \xrightarrow{f''} Y'' \xleftarrow{t} Y'
+$$
+by postcomposing both $t$ and $f''$ by a morphism $d : Y'' \to Y'''$
+with the property that $d \circ t \in S$. According to
+Remark \ref{remark-left-localization-morphisms-colimit}
+we may after such a replacement assume that there exists a morphism
+$h : Y \to Y''$ such that $b = t^{-1}h$ holds\footnote{Here is a
+more down-to-earth way to see this:
+Write $b = q^{-1}i$ for some $q : Y' \to Z$ in $S$ and some
+$i : Y \to Z$. By LMS2 we can find $r : Y'' \to Y'''$ in $S$ and
+$j : Z \to Y'''$ such that $j \circ q = r \circ t$. Now, set
+$d = r$ and $h = j \circ i$.}. At this point we have everything
+as in the lemma except that we don't know that the left square of the
+diagram commutes.
+But the definition of composition in $S^{-1} \mathcal{C}$ shows that
+$b \circ Q\left(f\right)$ is the equivalence class of the pair
+$(h \circ f : X \to Y'', t : Y' \to Y'')$ (since $b$ is the
+equivalence class of the pair $(h : Y \to Y'', t : Y' \to Y'')$,
+while $Q\left(f\right)$ is the equivalence class of the pair
+$(f : X \to Y, \text{id} : Y \to Y)$), while
+$Q\left(f'\right) \circ a$ is the equivalence class of the pair
+$(f'' \circ g : X \to Y'', t : Y' \to Y'')$ (since $a$ is the
+equivalence class of the pair $(g : X \to X'', s : X' \to X'')$,
+while $Q\left(f'\right)$ is the equivalence class of the pair
+$(f' : X' \to Y', \text{id} : Y' \to Y')$).
+Since we know that
+$b \circ Q\left(f\right) = Q\left(f'\right) \circ a$, we thus
+conclude that the equivalence classes of the pairs
+$(h \circ f : X \to Y'', t : Y' \to Y'')$ and
+$(f'' \circ g : X \to Y'', t : Y' \to Y'')$ are equal.
+Hence using
+Lemma \ref{lemma-equality-morphisms-left-localization}
+we can find a morphism $d : Y'' \to Y'''$ such that
+$d \circ t \in S$ and $d \circ h \circ f = d \circ f'' \circ g$.
+Hence we make one more replacement of the kind described
+above and we win.
+\end{proof}
+
+\noindent
+{\bf Right calculus of fractions.}
+Let $\mathcal{C}$ be a category and let $S$ be a right multiplicative
+system. We define a new category $S^{-1}\mathcal{C}$ as follows
+(we verify this works in the proof of
+Lemma \ref{lemma-right-localization}):
+\begin{enumerate}
+\item We set $\Ob(S^{-1}\mathcal{C}) = \Ob(\mathcal{C})$.
+\item Morphisms $X \to Y$ of $S^{-1}\mathcal{C}$ are given by pairs
+$(f : X' \to Y, s : X' \to X)$ with $s \in S$ up to equivalence.
+(The equivalence is defined below. Think of the equivalence class
+of a pair $(f, s)$ as $fs^{-1} : X \to Y$.)
+\item Two pairs $(f_1 : X_1 \to Y, s_1 : X_1 \to X)$ and
+$(f_2 : X_2 \to Y, s_2 : X_2 \to X)$ are said to be equivalent
+if there exist a third pair $(f_3 : X_3 \to Y, s_3 : X_3 \to X)$
+and morphisms $u : X_3 \to X_1$ and $v : X_3 \to X_2$ of $\mathcal{C}$
+fitting into the commutative diagram
+$$
+\xymatrix{
+ & X_1 \ar[ld]_{s_1} \ar[rd]^{f_1} & \\
+X &
+X_3 \ar[l]_{s_3} \ar[u]_u \ar[d]^v \ar[r]^{f_3} &
+Y \\
+& X_2 \ar[lu]^{s_2} \ar[ru]_{f_2} &
+}
+$$
+\item The composition of the equivalence classes of the pairs
+$(f : X' \to Y, s : X' \to X)$ and $(g : Y' \to Z, t : Y' \to Y)$
+is defined as the equivalence class of a pair
+$(g \circ h : X'' \to Z, s \circ u : X'' \to X)$
+where $h$ and $u \in S$ are chosen to fit into a commutative diagram
+$$
+\xymatrix{
+X'' \ar[d]_u \ar[r]^h & Y' \ar[d]^t \\
+X' \ar[r]^f & Y
+}
+$$
+which exists by assumption.
+\item The identity morphism $X \to X$ in $S^{-1} \mathcal{C}$ is the
+equivalence class of the pair $(\text{id} : X \to X,
+\text{id} : X \to X)$.
+\end{enumerate}
+
+\begin{lemma}
+\label{lemma-right-localization}
+Let $\mathcal{C}$ be a category and let $S$ be a right multiplicative
+system.
+\begin{enumerate}
+\item The relation on pairs defined above is an equivalence relation.
+\item The composition rule given above is well defined on equivalence
+classes.
+\item Composition is associative (and the identity morphisms satisfy
+the identity axioms), and hence $S^{-1}\mathcal{C}$ is a category.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+This lemma is dual to
+Lemma \ref{lemma-left-localization}.
+It follows formally from that lemma by replacing
+$\mathcal{C}$ by its opposite category in which
+$S$ is a left multiplicative system.
+\end{proof}
+
+\begin{definition}
+\label{definition-right-localization-as-fraction}
+Let $\mathcal{C}$ be a category and let $S$ be a right multiplicative
+system of morphisms of $\mathcal{C}$. Given any morphism
+$f : X' \to Y$ in $\mathcal{C}$ and any morphism $s : X' \to X$ in
+$S$, we denote by {\it $f s^{-1}$} the equivalence class of the pair
+$(f : X' \to Y, s : X' \to X)$. This is a morphism from $X$ to $Y$
+in $S^{-1} \mathcal{C}$.
+\end{definition}
+
+\noindent
+Identities similar (actually, dual) to the ones in Definition
+\ref{definition-left-localization-as-fraction} hold.
+We can ``write any finite collection of morphisms with the same source
+as fractions with common denominator''.
+
+\begin{lemma}
+\label{lemma-morphisms-right-localization}
+Let $\mathcal{C}$ be a category and let $S$ be a right multiplicative
+system of morphisms of $\mathcal{C}$. Given any finite collection
+$g_i : X \to Y_i$ of morphisms of $S^{-1}\mathcal{C}$
+(indexed by $i$),
+we can find an element $s : X' \to X$ of $S$ and a family
+of morphisms $f_i : X' \to Y_i$ of $\mathcal{C}$ such that
+$g_i$ is the equivalence class of the pair
+$(f_i : X' \to Y_i, s : X' \to X)$.
+\end{lemma}
+
+\begin{proof}
+This lemma is the dual of
+Lemma \ref{lemma-morphisms-left-localization}
+and follows formally from that lemma by replacing all
+categories in sight by their opposites.
+\end{proof}
+
+\noindent
+There is an easy characterization of equality of morphisms if they
+have the same denominator.
+
+\begin{lemma}
+\label{lemma-equality-morphisms-right-localization}
+Let $\mathcal{C}$ be a category and let $S$ be a right multiplicative
+system of morphisms of $\mathcal{C}$. Let $A, B : X \to Y$ be
+morphisms of $S^{-1}\mathcal{C}$ which are the equivalence
+classes of $(f : X' \to Y, s : X' \to X)$ and
+$(g : X' \to Y, s : X' \to X)$. The following are equivalent
+\begin{enumerate}
+\item $A = B$,
+\item there exists a morphism $t : X'' \to X'$ in $S$ with
+$f \circ t = g \circ t$, and
+\item there exists a morphism $a : X'' \to X'$ with
+$f \circ a = g \circ a$ and $s \circ a \in S$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+This is dual to
+Lemma \ref{lemma-equality-morphisms-left-localization}.
+\end{proof}
+
+\begin{remark}
+\label{remark-right-localization-morphisms-colimit}
+Let $\mathcal{C}$ be a category. Let $S$ be a right multiplicative system.
+Given an object $X$ of $\mathcal{C}$ we denote $S/X$ the category whose
+objects are $s : X' \to X$ with $s \in S$ and whose morphisms are
+commutative diagrams
+$$
+\xymatrix{
+X' \ar[rd]_s \ar[rr]_a & & X'' \ar[ld]^t \\
+& X
+}
+$$
+where $a : X' \to X''$ is arbitrary. The category
+$S/X$ is cofiltered (see
+Definition \ref{definition-codirected}).
+(This is dual to the corresponding statement in
+Remark \ref{remark-left-localization-morphisms-colimit}.)
+Now the combined results of
+Lemmas \ref{lemma-morphisms-right-localization} and
+\ref{lemma-equality-morphisms-right-localization}
+tell us that
+\begin{equation}
+\label{equation-right-localization-morphisms-colimit}
+\Mor_{S^{-1}\mathcal{C}}(X, Y) =
+\colim_{(s : X' \to X) \in (S/X)^{opp}} \Mor_\mathcal{C}(X', Y)
+\end{equation}
+This formula expressing morphisms in $S^{-1}\mathcal{C}$ as a filtered
+colimit of morphisms in $\mathcal{C}$ is occasionally useful.
+\end{remark}
+
+\begin{lemma}
+\label{lemma-properties-right-localization}
+Let $\mathcal{C}$ be a category and let $S$ be a right multiplicative
+system of morphisms of $\mathcal{C}$.
+\begin{enumerate}
+\item The rules $X \mapsto X$ and
+$(f : X \to Y) \mapsto (f : X \to Y, \text{id}_X : X \to X)$
+define a functor $Q : \mathcal{C} \to S^{-1}\mathcal{C}$.
+\item For any $s \in S$ the morphism $Q(s)$ is an isomorphism in
+$S^{-1}\mathcal{C}$.
+\item If $G : \mathcal{C} \to \mathcal{D}$ is any functor such that
+$G(s)$ is invertible for every $s \in S$, then there exists a
+unique functor $H : S^{-1}\mathcal{C} \to \mathcal{D}$
+such that $H \circ Q = G$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+This lemma is the dual of
+Lemma \ref{lemma-properties-left-localization}
+and follows formally from that lemma by replacing all
+categories in sight by their opposites.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-right-localization-limits}
+Let $\mathcal{C}$ be a category and let $S$ be a right multiplicative
+system of morphisms of $\mathcal{C}$. The localization functor
+$Q : \mathcal{C} \to S^{-1}\mathcal{C}$ commutes with finite limits.
+\end{lemma}
+
+\begin{proof}
+This is dual to Lemma \ref{lemma-left-localization-limits}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-right-localization-diagram}
+Let $\mathcal{C}$ be a category. Let $S$ be a right multiplicative
+system. If $f : X \to Y$, $f' : X' \to Y'$ are two morphisms of
+$\mathcal{C}$ and if
+$$
+\xymatrix{
+Q(X) \ar[d]_{Q(f)} \ar[r]_a & Q(X') \ar[d]^{Q(f')} \\
+Q(Y) \ar[r]^b & Q(Y')
+}
+$$
+is a commutative diagram in $S^{-1}\mathcal{C}$, then there exist
+a morphism $f'' : X'' \to Y''$ in $\mathcal{C}$ and a commutative
+diagram
+$$
+\xymatrix{
+X \ar[d]_f & X'' \ar[l]^s \ar[d]^{f''} \ar[r]_g & X' \ar[d]^{f'} \\
+Y & Y'' \ar[l]_t \ar[r]^h & Y'
+}
+$$
+in $\mathcal{C}$ with $s, t \in S$ and $a = gs^{-1}$, $b = ht^{-1}$.
+\end{lemma}
+
+\begin{proof}
+This lemma is dual to
+Lemma \ref{lemma-left-localization-diagram}.
+\end{proof}
+
+\noindent
+{\bf Multiplicative systems and two sided calculus of fractions.}
+If $S$ is a multiplicative system then left and right calculus of
+fractions give canonically isomorphic categories.
+
+\begin{lemma}
+\label{lemma-multiplicative-system}
+Let $\mathcal{C}$ be a category and let $S$ be a multiplicative system.
+The category of left fractions and the category of right fractions
+$S^{-1}\mathcal{C}$ are canonically isomorphic.
+\end{lemma}
+
+\begin{proof}
+Denote $\mathcal{C}_{left}$, $\mathcal{C}_{right}$ the two categories
+of fractions. By the universal properties of
+Lemmas \ref{lemma-properties-left-localization} and
+\ref{lemma-properties-right-localization}
+we obtain functors $\mathcal{C}_{left} \to \mathcal{C}_{right}$
+and $\mathcal{C}_{right} \to \mathcal{C}_{left}$.
+By the uniqueness statement in the universal properties, these
+functors are each other's inverse.
+\end{proof}
+
+\begin{definition}
+\label{definition-saturated-multiplicative-system}
+Let $\mathcal{C}$ be a category and let $S$ be a multiplicative system.
+We say $S$ is {\it saturated} if, in addition to MS1, MS2, MS3, we
+also have
+\begin{enumerate}
+\item[MS4] Given three composable morphisms $f, g, h$, if
+$fg, gh \in S$, then $g \in S$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+Note that a saturated multiplicative system contains all isomorphisms.
+Moreover, if $f, g, h$ are composable morphisms in a category and
+$fg, gh$ are isomorphisms, then $g$ is an isomorphism (because then $g$
+has both a left and a right inverse, hence is invertible).
+
+\begin{lemma}
+\label{lemma-what-gets-inverted}
+Let $\mathcal{C}$ be a category and let $S$ be a multiplicative system.
+Denote $Q : \mathcal{C} \to S^{-1}\mathcal{C}$ the localization functor.
+The set
+$$
+\hat S = \{f \in \text{Arrows}(\mathcal{C}) \mid
+Q(f) \text{ is an isomorphism}\}
+$$
+is equal to
+$$
+S' = \{f \in \text{Arrows}(\mathcal{C}) \mid
+\text{there exist }g, h\text{ such that }gf, fh \in S\}
+$$
+and is the smallest saturated multiplicative system containing $S$.
+In particular, if $S$ is saturated, then $\hat S = S$.
+\end{lemma}
+
+\begin{proof}
+It is clear that $S \subset S' \subset \hat S$ because elements of
+$S'$ map to morphisms in $S^{-1}\mathcal{C}$ which have both left
+and right inverses. Note that $S'$ satisfies MS4, and that
+$\hat S$ satisfies MS1. Next, we prove that $S' = \hat S$.
+
+\medskip\noindent
+Let $f \in \hat S$. Let $s^{-1}g = ht^{-1}$ be the inverse morphism
+in $S^{-1}\mathcal{C}$. (We may use both left fractions and right
+fractions to describe morphisms in $S^{-1}\mathcal{C}$, see
+Lemma \ref{lemma-multiplicative-system}.)
+The relation $\text{id}_X = s^{-1}gf$ in $S^{-1}\mathcal{C}$ means
+there exists a commutative diagram
+$$
+\xymatrix{
+ & X' \ar[d]^u & \\
+X \ar[ru]^{gf} \ar[r]^{f'} \ar[rd]_{\text{id}_X} &
+X'' &
+X \ar[lu]_s \ar[l]_{s'} \ar[ld]^{\text{id}_X} \\
+& X \ar[u]_v &
+}
+$$
+for some morphisms $f', u, v$ and $s' \in S$. Hence $ugf = s' \in S$.
+Similarly, using that $\text{id}_Y = fht^{-1}$ one proves that
+$fhw \in S$ for some $w$. We conclude that $f \in S'$. Thus
+$S' = \hat S$. Provided we prove that $S' = \hat S$ is a
+multiplicative system it is now clear that this implies that $S' = \hat S$
+is the smallest saturated system containing $S$.
+
+\medskip\noindent
+Our remarks above take care of MS1 and MS4, so to finish the proof of the
+lemma we have to show that LMS2, RMS2, LMS3, RMS3 hold for $\hat S$.
+Let us check that LMS2 holds for $\hat S$. Suppose we have a solid diagram
+$$
+\xymatrix{
+X \ar[d]_t \ar[r]_g & Y \ar@{..>}[d]^s \\
+Z \ar@{..>}[r]^f & W
+}
+$$
+with $t \in \hat S$. Pick a morphism $a : Z \to Z'$ such that
+$at \in S$. Then we can use LMS2 for $S$ to find a commutative diagram
+$$
+\xymatrix{
+X \ar[d]_t \ar[r]_g & Y \ar[dd]^s \\
+Z \ar[d]_a \\
+Z' \ar[r]^{f'} & W
+}
+$$
+and setting $f = f' \circ a$ we win. The proof of RMS2 is dual to this.
+Finally, suppose given a pair of morphisms $f, g : X \to Y$ and
+$t \in \hat S$ with target $X$ such that $ft = gt$.
+Then we pick a morphism $b$ such that $tb \in S$. Then
+$ftb = gtb$ which implies by LMS3 for $S$ that there exists an $s \in S$
+with source $Y$ such that $sf = sg$ as desired. The proof of
+RMS3 is dual to this.
+\end{proof}
+
+
+
+
+
+
+
+

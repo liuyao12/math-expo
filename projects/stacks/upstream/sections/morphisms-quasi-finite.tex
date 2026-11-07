@@ -1,0 +1,532 @@
+\section{Quasi-finite morphisms}
+\label{section-quasi-finite}
+
+\noindent
+A solid treatment of quasi-finite morphisms is the basis of many developments
+further down the road. It will lead to various versions of Zariski's Main
+Theorem, behaviour of dimensions of fibres, descent for \'etale morphisms, etc,
+etc. Before reading this section it may be a good idea to take a look at
+the algebra results in Algebra, Section \ref{algebra-section-quasi-finite}.
+
+\medskip\noindent
+Recall that a finite type ring map $R \to A$ is quasi-finite at
+a prime $\mathfrak q$ if $\mathfrak q$ defines an isolated point
+of its fibre, see Algebra, Definition \ref{algebra-definition-quasi-finite}.
+
+\begin{definition}
+\label{definition-quasi-finite}
+\begin{reference}
+\cite[II Definition 6.2.3]{EGA}
+\end{reference}
+Let $f : X \to S$ be a morphism of schemes.
+\begin{enumerate}
+\item We say that $f$ is {\it quasi-finite at a point $x \in X$}
+if there exist an affine neighbourhood $\Spec(A) = U \subset X$
+of $x$ and an affine open $\Spec(R) = V \subset S$ such that
+$f(U) \subset V$, the ring map $R \to A$ is of finite type,
+and $R \to A$ is quasi-finite at the prime of $A$ corresponding to $x$
+(see above).
+\item We say $f$ is {\it locally quasi-finite} if $f$ is
+quasi-finite at every point $x$ of $X$.
+\item We say that $f$ is {\it quasi-finite} if $f$ is of finite type
+and every point $x$ is an isolated point of its fibre.
+\end{enumerate}
+\end{definition}
+
+\noindent
+Trivially, a locally quasi-finite morphism is locally of finite type.
+We will see below that a morphism $f$ which is locally of finite type
+is quasi-finite at $x$ if and only if $x$ is isolated in its fibre.
+Moreover, the set of points at which a morphism is quasi-finite is open;
+we will see this in Section \ref{section-Zariski} on Zariski's Main Theorem.
+
+\begin{lemma}
+\label{lemma-algebraic-residue-field-extension-closed-point-fibre}
+Let $f : X \to S$ be a morphism of schemes.
+Let $x \in X$ be a point. Set $s = f(x)$.
+If $\kappa(x)/\kappa(s)$
+is an algebraic field extension, then
+\begin{enumerate}
+\item $x$ is a closed point of its fibre, and
+\item if in addition $s$ is a closed point of $S$, then
+$x$ is a closed point of $X$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+The second statement follows from the first by elementary topology.
+According to Schemes, Lemma \ref{schemes-lemma-fibre-topological}
+to prove the first statement
+we may replace $X$ by $X_s$ and $S$ by $\Spec(\kappa(s))$.
+Thus we may assume that $S = \Spec(k)$ is the spectrum of a field.
+In this case, let $\Spec(A) = U \subset X$ be any affine open
+containing $x$. The point $x$ corresponds to a prime ideal
+$\mathfrak q \subset A$ such that $\kappa(\mathfrak q)/k$
+is an algebraic field extension. By
+Algebra, Lemma \ref{algebra-lemma-finite-residue-extension-closed}
+we see that $\mathfrak q$ is a maximal ideal, i.e., $x \in U$ is a
+closed point. Since the affine opens form
+a basis of the topology of $X$ we conclude that $\{x\}$ is closed.
+\end{proof}
+
+\noindent
+The following lemma is a version of the Hilbert Nullstellensatz.
+
+\begin{lemma}
+\label{lemma-closed-point-fibre-locally-finite-type}
+Let $f : X \to S$ be a morphism of schemes.
+Let $x \in X$ be a point. Set $s = f(x)$.
+Assume $f$ is locally of finite type.
+Then $x$ is a closed point of its fibre
+if and only if $\kappa(x)/\kappa(s)$ is
+a finite field extension.
+\end{lemma}
+
+\begin{proof}
+If the extension is finite, then $x$ is a closed point of
+the fibre by
+Lemma \ref{lemma-algebraic-residue-field-extension-closed-point-fibre}
+above. For the converse, assume that $x$ is a closed point
+of its fibre. Choose affine opens $\Spec(A) = U \subset X$
+and $\Spec(R) = V \subset S$ such that $f(U) \subset V$.
+By Lemma \ref{lemma-locally-finite-type-characterize} the ring map
+$R \to A$ is of finite type. Let $\mathfrak q \subset A$,
+resp.\ $\mathfrak p \subset R$ be the prime ideal corresponding
+to $x$, resp.\ $s$. Consider the fibre ring
+$\overline{A} = A \otimes_R \kappa(\mathfrak p)$.
+Let $\overline{\mathfrak q}$ be the prime of $\overline{A}$
+corresponding to $\mathfrak q$. The assumption that $x$
+is a closed point of its fibre implies that $\overline{\mathfrak q}$
+is a maximal ideal of $\overline{A}$. Since $\overline{A}$
+is an algebra of finite type over the field $\kappa(\mathfrak p)$
+we see by the Hilbert Nullstellensatz, see
+Algebra, Theorem \ref{algebra-theorem-nullstellensatz},
+that $\kappa(\overline{\mathfrak q})$ is a finite extension
+of $\kappa(\mathfrak p)$.
+Since $\kappa(s) = \kappa(\mathfrak p)$ and
+$\kappa(x) = \kappa(\mathfrak q) = \kappa(\overline{\mathfrak q})$
+we win.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-base-change-closed-point-fibre-locally-finite-type}
+Let $f : X \to S$ be a morphism of schemes which is locally of finite type.
+Let $g : S' \to S$ be any morphism. Denote $f' : X' \to S'$ the base change.
+If $x' \in X'$ maps to a point $x \in X$ which is closed in $X_{f(x)}$
+then $x'$ is closed in $X'_{f'(x')}$.
+\end{lemma}
+
+\begin{proof}
+The residue field $\kappa(x')$ is a quotient of
+$\kappa(f'(x')) \otimes_{\kappa(f(x))} \kappa(x)$, see
+Schemes, Lemma \ref{schemes-lemma-points-fibre-product}.
+Hence it is a finite extension of $\kappa(f'(x'))$ as
+$\kappa(x)$ is a finite extension of $\kappa(f(x))$ by
+Lemma \ref{lemma-closed-point-fibre-locally-finite-type}.
+Thus we see that $x'$ is closed in its fibre by applying that lemma
+one more time.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-residue-field-quasi-finite}
+Let $f : X \to S$ be a morphism of schemes.
+Let $x \in X$ be a point. Set $s = f(x)$.
+If $f$ is quasi-finite at $x$, then the residue field
+extension $\kappa(x)/\kappa(s)$ is finite.
+\end{lemma}
+
+\begin{proof}
+This is clear from Algebra, Definition \ref{algebra-definition-quasi-finite}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-quasi-finite-at-point-characterize}
+Let $f : X \to S$ be a morphism of schemes.
+Let $x \in X$ be a point. Set $s = f(x)$.
+Let $X_s$ be the fibre of $f$ at $s$.
+Assume $f$ is locally of finite type.
+The following are equivalent:
+\begin{enumerate}
+\item The morphism $f$ is quasi-finite at $x$.
+\item The point $x$ is isolated in $X_s$.
+\item The point $x$ is closed in $X_s$
+and there is no point $x' \in X_s$, $x' \not = x$
+which specializes to $x$.
+\item For any pair of affine opens
+$\Spec(A) = U \subset X$, $\Spec(R) = V \subset S$ with
+$f(U) \subset V$ and $x \in U$ corresponding to $\mathfrak q \subset A$
+the ring map $R \to A$ is quasi-finite at $\mathfrak q$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Assume $f$ is quasi-finite at $x$. By assumption there exist opens
+$U \subset X$, $V \subset S$ such that $f(U) \subset V$, $x \in U$
+and $x$ an isolated point of $U_s$. Hence $\{x\} \subset U_s$ is an open
+subset. Since $U_s = U \cap X_s \subset X_s$ is also open we conclude
+that $\{x\} \subset X_s$ is an open subset also. Thus we conclude
+that $x$ is an isolated point of $X_s$.
+
+\medskip\noindent
+Note that $X_s$ is a Jacobson scheme by
+Lemma \ref{lemma-ubiquity-Jacobson-schemes}
+(and
+Lemma \ref{lemma-base-change-finite-type}).
+If $x$ is isolated in $X_s$, i.e., $\{x\} \subset X_s$ is open,
+then $\{x\}$ contains a closed point (by the Jacobson property), hence
+$x$ is closed in $X_s$. It is clear that there is no point $x' \in X_s$,
+distinct from $x$, specializing to $x$.
+
+\medskip\noindent
+Assume that $x$ is closed in $X_s$ and that there is no point $x' \in X_s$,
+distinct from $x$, specializing to $x$. Consider a pair of affine opens
+$\Spec(A) = U \subset X$, $\Spec(R) = V \subset S$ with
+$f(U) \subset V$ and $x \in U$. Let $\mathfrak q \subset A$ correspond to
+$x$ and $\mathfrak p \subset R$ correspond to $s$.
+By Lemma \ref{lemma-locally-finite-type-characterize} the ring map
+$R \to A$ is of finite type. Consider the fibre ring
+$\overline{A} = A \otimes_R \kappa(\mathfrak p)$.
+Let $\overline{\mathfrak q}$ be the prime of $\overline{A}$ corresponding
+to $\mathfrak q$. Since $\Spec(\overline{A})$ is an open subscheme of
+the fibre $X_s$ we see that $\overline{q}$ is a maximal ideal
+of $\overline{A}$ and that there is no point of $\Spec(\overline{A})$
+specializing to $\overline{\mathfrak q}$.
+This implies that $\dim(\overline{A}_{\overline{q}}) = 0$.
+Hence by
+Algebra, Definition \ref{algebra-definition-quasi-finite}
+we see that $R \to A$ is quasi-finite at $\mathfrak q$, i.e.,
+$X \to S$ is quasi-finite at $x$ by definition.
+
+\medskip\noindent
+At this point we have shown conditions (1) -- (3) are all equivalent.
+It is clear that (4) implies (1). And it is also clear that
+(2) implies (4) since if $x$ is an isolated point of $X_s$
+then it is also an isolated point of $U_s$ for any open $U$
+which contains it.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-finite-fibre}
+Let $f : X \to S$ be a morphism of schemes.
+Let $s \in S$. Assume that
+\begin{enumerate}
+\item $f$ is locally of finite type, and
+\item $f^{-1}(\{s\})$ is a finite set.
+\end{enumerate}
+Then $X_s$ is a finite discrete topological space, and
+$f$ is quasi-finite at each point of $X$ lying over $s$.
+\end{lemma}
+
+\begin{proof}
+Suppose $T$ is a scheme which (a) is locally of finite type
+over a field $k$, and (b) has finitely many points. Then
+Lemma \ref{lemma-ubiquity-Jacobson-schemes} shows $T$ is a
+Jacobson scheme. A finite Jacobson space is discrete, see
+Topology, Lemma \ref{topology-lemma-finite-jacobson}.
+Apply this remark to the fibre $X_s$ which is locally of finite type over
+$\Spec(\kappa(s))$ to see the first statement. Finally, apply
+Lemma \ref{lemma-quasi-finite-at-point-characterize} to see the second.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-locally-quasi-finite-fibres}
+\begin{slogan}
+Finite type morphisms with discrete fibers are quasi-finite.
+\end{slogan}
+Let $f : X \to S$ be a morphism of schemes.
+Assume $f$ is locally of finite type.
+Then the following are equivalent
+\begin{enumerate}
+\item $f$ is locally quasi-finite,
+\item for every $s \in S$ the fibre $X_s$ is a discrete topological space, and
+\item for every morphism $\Spec(k) \to S$ where $k$ is a field
+the base change $X_k$ has an underlying discrete topological space.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+It is immediate that (3) implies (2).
+Lemma \ref{lemma-quasi-finite-at-point-characterize}
+shows that (2) is equivalent to (1).
+Assume (2) and let $\Spec(k) \to S$ be as in (3).
+Denote $s \in S$ the image  of $\Spec(k) \to S$.
+Then $X_k$ is the base change of $X_s$ via
+$\Spec(k) \to \Spec(\kappa(s))$. Hence every
+point of $X_k$ is closed by
+Lemma \ref{lemma-base-change-closed-point-fibre-locally-finite-type}.
+As $X_k \to \Spec(k)$ is locally of finite type (by
+Lemma \ref{lemma-base-change-finite-type}),
+we may apply
+Lemma \ref{lemma-quasi-finite-at-point-characterize}
+to conclude that every point of $X_k$ is isolated, i.e., $X_k$ has
+a discrete underlying topological space.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-quasi-finite-locally-quasi-compact}
+Let $f : X \to S$ be a morphism of schemes.
+Then $f$ is quasi-finite if and only if $f$ is
+locally quasi-finite and quasi-compact.
+\end{lemma}
+
+\begin{proof}
+Assume $f$ is quasi-finite. It is quasi-compact by Definition
+\ref{definition-finite-type}. Let $x \in X$.
+We see that $f$ is quasi-finite at $x$ by
+Lemma \ref{lemma-quasi-finite-at-point-characterize}.
+Hence $f$ is quasi-compact and locally quasi-finite.
+
+\medskip\noindent
+Assume $f$ is quasi-compact and locally quasi-finite.
+Then $f$ is of finite type. Let $x \in X$ be a point.
+By Lemma \ref{lemma-quasi-finite-at-point-characterize}
+we see that $x$ is an isolated point of its fibre.
+The lemma is proved.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-quasi-finite}
+Let $f : X \to S$ be a morphism of schemes.
+The following are equivalent:
+\begin{enumerate}
+\item $f$ is quasi-finite, and
+\item $f$ is locally of finite type, quasi-compact, and has finite fibres.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Assume $f$ is quasi-finite. In particular $f$ is locally of finite type
+and quasi-compact (since it is of finite type). Let $s \in S$. Since
+every $x \in X_s$ is isolated in $X_s$ we see that
+$X_s = \bigcup_{x \in X_s} \{x\}$ is an open covering. As $f$
+is quasi-compact, the fibre $X_s$ is quasi-compact. Hence we see
+that $X_s$ is finite.
+
+\medskip\noindent
+Conversely, assume $f$ is locally of finite type, quasi-compact
+and has finite fibres. Then it is locally quasi-finite by
+Lemma \ref{lemma-finite-fibre}. Hence it is quasi-finite by
+Lemma \ref{lemma-quasi-finite-locally-quasi-compact}.
+\end{proof}
+
+\noindent
+Recall that a ring map $R \to A$ is quasi-finite if it is
+of finite type and quasi-finite at {\it all} primes of $A$, see
+Algebra, Definition \ref{algebra-definition-quasi-finite}.
+
+\begin{lemma}
+\label{lemma-locally-quasi-finite-characterize}
+Let $f : X \to S$ be a morphism of schemes.
+The following are equivalent
+\begin{enumerate}
+\item The morphism $f$ is locally quasi-finite.
+\item For every pair of affine opens $U \subset X$, $V \subset S$
+with $f(U) \subset V$ the ring map
+$\mathcal{O}_S(V) \to \mathcal{O}_X(U)$ is quasi-finite.
+\item There exists an open covering $S = \bigcup_{j \in J} V_j$
+and open coverings $f^{-1}(V_j) = \bigcup_{i \in I_j} U_i$ such
+that each of the morphisms $U_i \to V_j$, $j\in J, i\in I_j$
+is locally quasi-finite.
+\item There exists an affine open covering $S = \bigcup_{j \in J} V_j$
+and affine open coverings $f^{-1}(V_j) = \bigcup_{i \in I_j} U_i$ such
+that the ring map $\mathcal{O}_S(V_j) \to \mathcal{O}_X(U_i)$ is
+quasi-finite, for all $j\in J, i\in I_j$.
+\end{enumerate}
+Moreover, if $f$ is locally quasi-finite then for
+any open subschemes $U \subset X$, $V \subset S$ with $f(U) \subset V$
+the restriction $f|_U : U \to V$ is locally quasi-finite.
+\end{lemma}
+
+\begin{proof}
+For a ring map $R \to A$ let us define
+$P(R \to A)$ to mean ``$R \to A$ is quasi-finite''
+(see remark above lemma).
+We claim that $P$ is a local property of ring maps.
+We check conditions (a), (b) and (c) of Definition
+\ref{definition-property-local}. In the proof of
+Lemma \ref{lemma-locally-finite-type-characterize}
+we have seen that (a), (b) and (c) hold for the property
+of being ``of finite type''. Note that, for a finite type ring map
+$R \to A$, the property $R \to A$ is quasi-finite at $\mathfrak q$
+depends only on the local ring $A_{\mathfrak q}$ as an
+algebra over $R_{\mathfrak p}$ where $\mathfrak p = R \cap \mathfrak q$
+(usual abuse of notation). Using these remarks (a), (b) and (c) of
+Definition \ref{definition-property-local} follow immediately.
+For example, suppose $R \to A$ is a ring map
+such that all of the ring maps $R \to A_{a_i}$ are quasi-finite
+for $a_1, \ldots, a_n \in A$ generating the unit ideal.
+We conclude that $R \to A$ is of finite type. Also, for any
+prime $\mathfrak q \subset A$ the local ring $A_{\mathfrak q}$
+is isomorphic as an $R$-algebra to the local ring
+$(A_{a_i})_{\mathfrak q_i}$ for some $i$ and some
+$\mathfrak q_i \subset A_{a_i}$. Hence we conclude that
+$R \to A$ is quasi-finite at $\mathfrak q$.
+
+\medskip\noindent
+We conclude that Lemma \ref{lemma-locally-P} applies with $P$
+as in the previous paragraph.
+Hence it suffices to prove that $f$ is locally quasi-finite is
+equivalent to $f$ is locally of type $P$. Since $P(R \to A)$
+is ``$R \to A$ is quasi-finite'' which means $R \to A$ is
+quasi-finite at every prime of $A$, this follows from
+Lemma \ref{lemma-quasi-finite-at-point-characterize}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-composition-quasi-finite}
+The composition of two morphisms which are locally quasi-finite is
+locally quasi-finite. The same is true for quasi-finite morphisms.
+\end{lemma}
+
+\begin{proof}
+In the proof of Lemma \ref{lemma-locally-quasi-finite-characterize}
+we saw that $P = $``quasi-finite'' is a local property of ring maps,
+and that a morphism of schemes is locally quasi-finite if and only if
+it is locally of type $P$ as in Definition \ref{definition-locally-P}.
+Hence the first statement of the lemma follows from
+Lemma \ref{lemma-composition-type-P} combined
+with the fact that being quasi-finite is a property of ring maps that is
+stable under composition, see
+Algebra, Lemma \ref{algebra-lemma-quasi-finite-composition}.
+By the above, Lemma \ref{lemma-quasi-finite-locally-quasi-compact}
+and the fact that compositions of
+quasi-compact morphisms are quasi-compact, see
+Schemes, Lemma \ref{schemes-lemma-composition-quasi-compact}
+we see that the composition of quasi-finite morphisms is
+quasi-finite.
+\end{proof}
+
+\noindent
+We will see later (Lemma \ref{lemma-quasi-finite-points-open})
+that the set $U$ of the following lemma is open.
+
+\begin{lemma}
+\label{lemma-base-change-quasi-finite}
+\begin{slogan}
+(Locally) quasi-finite morphisms are stable under base change.
+\end{slogan}
+Let $f : X \to S$ be a morphism of schemes.
+Let $g : S' \to S$ be a morphism of schemes.
+Denote $f' : X' \to S'$ the base change of $f$ by $g$
+and denote $g' : X' \to X$ the projection.
+Assume $X$ is locally of finite type over $S$.
+\begin{enumerate}
+\item Let $U \subset X$ (resp.\ $U' \subset X'$)
+be the set of points where $f$ (resp.\ $f'$) is quasi-finite.
+Then $U' = U \times_S S' = (g')^{-1}(U)$.
+\item The base change of a locally quasi-finite morphism is
+locally quasi-finite.
+\item The base change of a quasi-finite morphism is
+quasi-finite.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+The first and second assertion follow from the corresponding
+algebra result, see
+Algebra, Lemma \ref{algebra-lemma-quasi-finite-base-change}
+(combined with the fact that $f'$ is also locally of finite type by
+Lemma \ref{lemma-base-change-finite-type}).
+By the above, Lemma \ref{lemma-quasi-finite-locally-quasi-compact}
+and the fact that a base change of a
+quasi-compact morphism is quasi-compact, see
+Schemes, Lemma \ref{schemes-lemma-quasi-compact-preserved-base-change}
+we see that the base change of a quasi-finite morphism
+is quasi-finite.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-quasi-finite-at-a-finite-number-of-points}
+Let $f : X \to S$ be a morphism of schemes of finite type.
+Let $s \in S$. There are at most finitely many points
+of $X$ lying over $s$ at which $f$ is quasi-finite.
+\end{lemma}
+
+\begin{proof}
+The fibre $X_s$ is a scheme of finite type over a field,
+hence Noetherian (Lemma \ref{lemma-finite-type-noetherian}).
+Hence the topology on $X_s$ is Noetherian (Properties, Lemma
+\ref{properties-lemma-Noetherian-topology})
+and can have at most a finite number of isolated points (by elementary
+topology). Thus our lemma follows from
+Lemma \ref{lemma-quasi-finite-at-point-characterize}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-monomorphism-loc-finite-type-loc-quasi-finite}
+Let $f : X \to Y$ be a morphism of schemes.
+If $f$ is locally of finite type and a monomorphism, then $f$
+is separated and locally quasi-finite.
+\end{lemma}
+
+\begin{proof}
+A monomorphism is separated by Schemes, Lemma
+\ref{schemes-lemma-monomorphism-separated}.
+A monomorphism is injective, hence we get $f$
+is quasi-finite at every $x \in X$ for example by
+Lemma \ref{lemma-quasi-finite-at-point-characterize}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-immersion-locally-quasi-finite}
+Any immersion is locally quasi-finite.
+\end{lemma}
+
+\begin{proof}
+This is true because an open immersion is a local isomorphism
+and a closed immersion is clearly quasi-finite.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-permanence-quasi-finite}
+Let $X \to Y$ be a morphism of schemes over a base scheme $S$.
+Let $x \in X$. If $X \to S$ is quasi-finite at $x$, then
+$X \to Y$ is quasi-finite at $x$.
+If $X$ is locally quasi-finite over $S$, then $X \to Y$
+is locally quasi-finite.
+\end{lemma}
+
+\begin{proof}
+Via Lemma \ref{lemma-locally-quasi-finite-characterize} this translates
+into the following algebra
+fact: Given ring maps $A \to B \to C$ such that $A \to C$ is
+quasi-finite, then $B \to C$ is quasi-finite.
+This follows from
+Algebra, Lemma \ref{algebra-lemma-four-rings}
+with $R = A$, $S = S' = C$ and $R' = B$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-quasi-finite-local-source}
+Let $f : X \to Y$ and $g : Y \to S$ be morphisms of schemes.
+If $f$ is surjective, $g \circ f$ locally quasi-finite, and
+$g$ locally of finite type, then $g : Y \to S$  is locally quasi-finite.
+\end{lemma}
+
+\begin{proof}
+Let $x \in X$ with images $y \in Y$ and $s \in S$.
+Since $g \circ f$ is locally quasi-finite by
+Lemma \ref{lemma-residue-field-quasi-finite}
+the extension $\kappa(x)/\kappa(s)$ is finite.
+Hence $\kappa(y)/\kappa(s)$ is finite. Hence
+$y$ is a closed point of $Y_s$ by
+Lemma \ref{lemma-algebraic-residue-field-extension-closed-point-fibre}.
+Since $f$ is surjective, we see that every point of $Y$ is
+closed in its fibre over $S$. Thus by
+Lemma \ref{lemma-quasi-finite-at-point-characterize}
+we conclude that $g$ is quasi-finite at every point.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

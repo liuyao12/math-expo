@@ -1,0 +1,289 @@
+\section{Sheaves of algebraic structures}
+\label{section-sheaves-algebraic-structures}
+
+\noindent
+In Sheaves, Section \ref{sheaves-section-algebraic-structures}
+we introduced a type of algebraic structure to be a pair
+$(\mathcal{A}, s)$, where $\mathcal{A}$ is a category,
+and $s : \mathcal{A} \to \textit{Sets}$ is a functor such
+that
+\begin{enumerate}
+\item $s$ is faithful,
+\item $\mathcal{A}$ has limits and $s$ commutes with limits,
+\item $\mathcal{A}$ has filtered colimits and $s$ commutes with them, and
+\item $s$ reflects isomorphisms.
+\end{enumerate}
+For such a type of algebraic structure we saw that a presheaf
+$\mathcal{F}$ with values in $\mathcal{A}$ on a space $X$ is a sheaf if and
+only if the associated presheaf of sets is a sheaf. Moreover,
+we worked out the notion of stalk, and given a continuous map
+$f : X \to Y$ we defined adjoint functors pushforward and pullback
+on sheaves of algebraic structures which agrees with pushforward
+and pullback on the underlying sheaves of sets. In addition extending
+a sheaf of algebraic structures from a basis to all opens
+of a space, works as expected.
+
+\medskip\noindent
+Part of this material still works in the setting of sites and sheaves.
+Let $(\mathcal{A}, s)$ be a type of algebraic structure.
+Let $\mathcal{C}$ be a site. Let us denote
+$\textit{PSh}(\mathcal{C}, \mathcal{A})$,
+resp.\ $\Sh(\mathcal{C}, \mathcal{A})$ the category
+of presheaves, resp.\ sheaves with values in $\mathcal{A}$ on $\mathcal{C}$.
+\begin{itemize}
+\item[] ($\alpha$) A presheaf with values in $\mathcal{A}$ is
+a sheaf if and only if its underlying presheaf of sets is a sheaf.
+See the proof of Sheaves, Lemma \ref{sheaves-lemma-sheaves-structure}.
+\item[] ($\beta$) Given a presheaf $\mathcal{F}$ with values in
+$\mathcal{A}$ the presheaf ${\mathcal{F}}^\# = (\mathcal{F}^+)^+$
+is a sheaf. This is true since the colimits in the sheafification process
+are filtered, and even colimits over directed sets (see
+Section \ref{section-sheafification}, especially the proof of
+Lemma \ref{lemma-sheafification-exact})
+and since $s$ commutes with filtered colimits.
+\item[] ($\gamma$) We get the following commutative diagram
+$$
+\xymatrix{
+\Sh(\mathcal{C}, \mathcal{A}) \ar@<1ex>[r] \ar[d]_s &
+\textit{PSh}(\mathcal{C}, \mathcal{A}) \ar@<1ex>[l]^{{}^\#} \ar[d]^s\\
+\Sh(\mathcal{C}) \ar@<1ex>[r] &
+\textit{PSh}(\mathcal{C}) \ar@<1ex>[l]
+}
+$$
+\item[] ($\delta$) We have $\mathcal{F} = \mathcal{F}^\#$ if and only if
+$\mathcal{F}$ is a sheaf of algebraic structures.
+\item[] ($\epsilon$) The functor ${}^\#$ is adjoint to the inclusion functor:
+$$
+\Mor_{\textit{PSh}(\mathcal{C}, \mathcal{A})}(\mathcal{G}, \mathcal{F})
+=
+\Mor_{\Sh(\mathcal{C}, \mathcal{A})}(\mathcal{G}^\#, \mathcal{F})
+$$
+The proof is the same as the proof of
+Proposition \ref{proposition-sheafification-adjoint}.
+\item[] ($\zeta$) The functor
+$\mathcal{F} \mapsto \mathcal{F}^\#$ is left exact.
+The proof is the same as the proof of Lemma \ref{lemma-sheafification-exact}.
+\end{itemize}
+
+\begin{definition}
+\label{definition-pushforward-algebraic-structures}
+Let $f : \mathcal{D} \to \mathcal{C}$ be a morphism of sites
+given by a functor $u : \mathcal{C} \to \mathcal{D}$.
+We define the {\it pushforward} functor for presheaves of algebraic structures
+by the rule $u^p\mathcal{F}(U) = \mathcal{F}(uU)$,
+and for sheaves of algebraic structures by the same rule, namely
+$f_*\mathcal{F}(U) = \mathcal{F}(uU)$.
+\end{definition}
+
+\noindent
+The problem comes with trying the define the pullback.
+The reason is that the colimits defining
+the functor $u_p$ in Section \ref{section-functoriality-PSh}
+may not be filtered. Thus the axioms above are not enough in
+general to define the pullback of a (pre)sheaf of algebraic
+structures. Nonetheless, in almost all cases the following
+lemma is sufficient to define pushforward, and pullback
+of (pre)sheaves of algebraic structures.
+
+\begin{lemma}
+\label{lemma-push-pull-good-case}
+Suppose the functor $u : \mathcal{C} \to \mathcal{D}$ satisfies
+the hypotheses of Proposition \ref{proposition-get-morphism},
+and hence gives rise to a morphism of sites
+$f : \mathcal{D} \to \mathcal{C}$. In this case
+the pullback functor $f^{-1}$ (resp.\ $u_p$) and the pushforward
+functor $f_*$ (resp. $u^p$) extend to an adjoint pair of functors on
+the categories of sheaves (resp.\ presheaves)  of algebraic structures.
+Moreover, these functors commute with taking
+the underlying sheaf (resp.\ presheaf) of sets.
+\end{lemma}
+
+\begin{proof}
+We have defined $f_* = u^p$ above.
+In the course of the proof of Proposition \ref{proposition-get-morphism}
+we saw that all the colimits used to define $u_p$ are
+filtered under the assumptions of the proposition.
+Hence we conclude from the definition of a type of
+algebraic structure that we may define $u_p$ by exactly
+the same colimits as a functor on presheaves of algebraic structures.
+Adjointness of $u_p$ and $u^p$ is proved in exactly the
+same way as the proof of Lemma \ref{lemma-adjoints-u}.
+The discussion of sheafification of presheaves of
+algebraic structures above then implies that we may define
+$f^{-1}(\mathcal{F}) = (u_p\mathcal{F})^\#$.
+\end{proof}
+
+\noindent
+We briefly discuss a method for dealing with pullback and
+pushforward for a general morphism of sites, and more generally
+for any morphism of topoi.
+
+\medskip\noindent
+Let $\mathcal{C}$ be a site.
+In the case $\mathcal{A} = \textit{Ab}$,
+we may think of an abelian (pre)sheaf on $\mathcal{C}$
+as a quadruple $(\mathcal{F}, +, 0, i)$.
+Here the data are
+\begin{enumerate}
+\item[(D1)] $\mathcal{F}$ is a sheaf of sets,
+\item[(D2)] $+ : \mathcal{F} \times \mathcal{F} \to \mathcal{F}$ is
+a morphism of sheaves of sets,
+\item[(D3)] $0 : * \to \mathcal{F}$ is a morphism from the
+singleton sheaf (see Example \ref{example-singleton-sheaf})
+to $\mathcal{F}$, and
+\item[(D4)] $i : \mathcal{F} \to \mathcal{F}$ is a morphism of sheaves
+of sets.
+\end{enumerate}
+These data have to satisfy the following axioms
+\begin{enumerate}
+\item[(A1)] $+$ is associative and commutative,
+\item[(A2)] $0$ is a unit for $+$, and
+\item[(A3)] $+ \circ (1, i) = 0 \circ (\mathcal{F} \to *)$.
+\end{enumerate}
+Compare Sheaves, Lemma \ref{sheaves-lemma-abelian-presheaves}.
+Let $f : \mathcal{D} \to \mathcal{C}$ be a morphism of sites.
+Note that since $f^{-1}$ is exact we have
+$f^{-1}* = *$ and
+$f^{-1}(\mathcal{F} \times \mathcal{F}) =
+f^{-1}\mathcal{F} \times f^{-1}\mathcal{F}$.
+Thus we can define $f^{-1}\mathcal{F}$ simply as the quadruple
+$(f^{-1}\mathcal{F}, f^{-1}+, f^{-1}0, f^{-1}i)$. The axioms
+are going to be preserved because $f^{-1}$ is a functor
+which commutes with finite limits. Finally it is not hard
+to check that $f_*$ and $f^{-1}$ are adjoint as usual.
+
+\medskip\noindent
+In \cite{SGA4} this method is used. They introduce something
+called an ``{\it esp\`ece the structure alg\'ebrique $\ll$d\'efinie
+par limites projectives finie$\gg$}''. For such an esp\`ece you
+can use the method described above to define a pair of adjoint
+functors $f^{-1}$ and $f_*$ as above. This clearly works for most
+algebraic structures that one encounters in practice.
+Instead of formalizing this construction we simply list those
+algebraic structures for which this method works (to be
+verified case by case). In fact, this method works for any
+morphism of topoi.
+
+\begin{proposition}
+\label{proposition-functoriality-algebraic-structures-topoi}
+\begin{slogan}
+Morphisms of topoi preserve algebraic structure.
+\end{slogan}
+Let $\mathcal{C}$, $\mathcal{D}$ be sites.
+Let $f = (f^{-1}, f_*)$ be a morphism of topoi
+from $\Sh(\mathcal{D}) \to \Sh(\mathcal{C})$.
+The method introduced above gives rise to an adjoint
+pair of functors $(f^{-1}, f_*)$ on sheaves of algebraic structures
+compatible with taking the underlying sheaves of sets
+for the following types of algebraic structures:
+\begin{enumerate}
+\item pointed sets,
+\item abelian groups,
+\item groups,
+\item monoids,
+\item rings,
+\item modules over a fixed ring, and
+\item lie algebras over a fixed field.
+\end{enumerate}
+Moreover, in each of these cases the results above labeled ($\alpha$),
+($\beta$), ($\gamma$), ($\delta$), ($\epsilon$), and ($\zeta$) hold.
+\end{proposition}
+
+\begin{proof}
+The final statement of the proposition holds simply since each of the listed
+categories, endowed with the obvious forgetful functor, is indeed a type of
+algebraic structure in the sense explained at the beginning of this section.
+See Sheaves, Lemma \ref{sheaves-lemma-list-algebraic-structures}.
+
+\medskip\noindent
+Proof of (2). We think of a sheaf of abelian groups as
+a quadruple $(\mathcal{F}, +, 0, i)$ as explained in the discussion preceding
+the proposition.
+If $(\mathcal{F}, +, 0, i)$ lives on $\mathcal{C}$, then its pullback
+is defined as $(f^{-1}\mathcal{F}, f^{-1}+, f^{-1}0, f^{-1}i)$.
+If $(\mathcal{G}, +, 0, i)$ lives on $\mathcal{D}$, then its pushforward
+is defined as $(f_*\mathcal{G}, f_*+, f_*0, f_*i)$. This works because
+$f_*(\mathcal{G} \times \mathcal{G}) = f_*\mathcal{G} \times f_*\mathcal{G}$.
+Adjointness follows from adjointness of the set based functors,
+since
+$$
+\Mor_{\textit{Ab}(\mathcal{C})}
+((\mathcal{F}_1, +, 0, i), (\mathcal{F}_2, +, 0, i))
+=
+\left\{
+\begin{matrix}
+\varphi \in \Mor_{\Sh(\mathcal{C})}
+(\mathcal{F}_1, \mathcal{F}_2) \\
+\varphi \text{ is compatible with }+, 0, i
+\end{matrix}
+\right\}
+$$
+Details left to the reader.
+
+\medskip\noindent
+This method also works for sheaves of rings by thinking
+of a sheaf of rings (with unit) as a sextuple
+$(\mathcal{O}, + , 0, i, \cdot, 1)$ satisfying a list
+of axioms that you can find in any elementary
+algebra book.
+
+\medskip\noindent
+A sheaf of pointed sets is a pair $(\mathcal{F}, p)$, where
+$\mathcal{F}$ is a sheaf of sets, and $p : * \to \mathcal{F}$
+is a map of sheaves of sets.
+
+\medskip\noindent
+A sheaf of groups is given by a quadruple $(\mathcal{F}, \cdot, 1, i)$
+with suitable axioms.
+
+\medskip\noindent
+A sheaf of monoids is given by a pair $(\mathcal{F}, \cdot)$
+with suitable axiom.
+
+\medskip\noindent
+Let $R$ be a ring. An sheaf of $R$-modules is given by
+a quintuple $(\mathcal{F}, +, 0, i, \{\lambda_r\}_{r \in R})$,
+where the quadruple $(\mathcal{F}, +, 0, i)$ is a sheaf of
+abelian groups as above, and $\lambda_r : \mathcal{F} \to \mathcal{F}$
+is a family of morphisms of sheaves of sets
+such that
+$\lambda_r \circ 0 = 0$,
+$\lambda_r \circ + = + \circ (\lambda_r, \lambda_r)$,
+$\lambda_{r + r'} =
++ \circ \lambda_r \times \lambda_{r'} \circ (\text{id}, \text{id})$,
+$\lambda_{rr'} = \lambda_r \circ \lambda_{r'}$,
+$\lambda_1 = \text{id}$, $\lambda_0 = 0 \circ (\mathcal{F} \to *)$.
+\end{proof}
+
+\noindent
+We will discuss the category of sheaves of modules over a sheaf of rings in
+Modules on Sites, Section \ref{sites-modules-section-sheaves-modules}.
+
+\begin{remark}
+\label{remark-no-pullback-presheaves}
+Let $\mathcal{C}$, $\mathcal{D}$ be sites.
+Let $u : \mathcal{D} \to \mathcal{C}$ be a continuous functor
+which gives rise to a morphism of sites $\mathcal{C} \to \mathcal{D}$.
+Note that even in the case of abelian groups we have not defined
+a pullback functor for presheaves of abelian groups.
+Since all colimits are representable in
+the category of abelian groups, we certainly may define
+a functor $u_p^{ab}$ on abelian presheaves by the same colimits
+as we have used to define $u_p$ on presheaves of sets.
+It will also be the case that $u_p^{ab}$ is adjoint to
+$u^p$ on the categories of abelian presheaves.
+However, it will not always be the case that $u_p^{ab}$
+agrees with $u_p$ on the underlying presheaves of sets.
+\end{remark}
+
+
+
+
+
+
+
+
+
+
+
+

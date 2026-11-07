@@ -1,0 +1,116 @@
+\section{Cycle associated to a coherent sheaf}
+\label{section-cycle-of-coherent-sheaf}
+
+
+
+\begin{lemma}
+\label{lemma-length-finite}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$ be locally of finite type over $S$.
+Let $\mathcal{F}$ be a coherent $\mathcal{O}_X$-module.
+\begin{enumerate}
+\item The collection of irreducible components of the support of
+$\mathcal{F}$ is locally finite.
+\item Let $Z' \subset \text{Supp}(\mathcal{F})$
+be an irreducible component and
+let $\xi \in Z'$ be its generic point.
+Then
+$$
+\text{length}_{\mathcal{O}_{X, \xi}} \mathcal{F}_\xi < \infty
+$$
+\item If $\dim_\delta(\text{Supp}(\mathcal{F})) \leq k$
+and $\xi \in \text{Supp}(\mathcal{F})$ with $\delta(\xi) = k$, then $\xi$ is a
+generic point of an irreducible component of $\text{Supp}(\mathcal{F})$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+By Cohomology of Schemes, Lemma \ref{coherent-lemma-coherent-support-closed}
+the support $Z$ of $\mathcal{F}$ is a closed subset of $X$.
+We may think of $Z$ as a reduced closed subscheme of $X$
+(Schemes, Lemma \ref{schemes-lemma-reduced-closed-subscheme}).
+Hence (1) follows from
+Divisors, Lemma \ref{divisors-lemma-components-locally-finite} applied to $Z$
+and (3) follows from
+Lemma \ref{lemma-multiplicity-finite} applied to $Z$.
+
+\medskip\noindent
+Let $\xi \in Z'$ be as in (2). In this case for any specialization
+$\xi' \leadsto \xi$ in $X$ we have $\mathcal{F}_{\xi'} = 0$.
+Recall that the non-maximal primes of $\mathcal{O}_{X, \xi}$ correspond
+to the points of $X$ specializing to $\xi$
+(Schemes, Lemma \ref{schemes-lemma-specialize-points}).
+Hence $\mathcal{F}_\xi$ is a finite $\mathcal{O}_{X, \xi}$-module
+whose support is $\{\mathfrak m_\xi\}$. Hence it has finite length
+by Algebra, Lemma \ref{algebra-lemma-support-point}.
+\end{proof}
+
+\begin{definition}
+\label{definition-cycle-associated-to-coherent-sheaf}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$ be locally of finite type over $S$.
+Let $\mathcal{F}$ be a coherent $\mathcal{O}_X$-module.
+\begin{enumerate}
+\item For any irreducible component $Z' \subset \text{Supp}(\mathcal{F})$
+with generic point $\xi$ the integer
+$m_{Z', \mathcal{F}} = \text{length}_{\mathcal{O}_{X, \xi}} \mathcal{F}_\xi$
+(Lemma \ref{lemma-length-finite})
+is called the {\it multiplicity of $Z'$ in $\mathcal{F}$}.
+\item Assume $\dim_\delta(\text{Supp}(\mathcal{F})) \leq k$.
+The {\it $k$-cycle associated to $\mathcal{F}$} is
+$$
+[\mathcal{F}]_k
+=
+\sum m_{Z', \mathcal{F}}[Z']
+$$
+where the sum is over the irreducible components of
+$\text{Supp}(\mathcal{F})$ of $\delta$-dimension $k$.
+(This is a $k$-cycle by Lemma \ref{lemma-length-finite}.)
+\end{enumerate}
+\end{definition}
+
+\noindent
+It is important to note that we only define $[\mathcal{F}]_k$
+if $\mathcal{F}$ is coherent and the $\delta$-dimension
+of $\text{Supp}(\mathcal{F})$ does not exceed $k$. In other words,
+by convention, if we write $[\mathcal{F}]_k$ then this implies that
+$\mathcal{F}$ is coherent on $X$ and
+$\dim_\delta(\text{Supp}(\mathcal{F})) \leq k$.
+
+\begin{lemma}
+\label{lemma-cycle-closed-coherent}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$ be locally of finite type over $S$.
+Let $Z \subset X$ be a closed subscheme.
+If $\dim_\delta(Z) \leq k$, then $[Z]_k = [{\mathcal O}_Z]_k$.
+\end{lemma}
+
+\begin{proof}
+This is because in this case the multiplicities $m_{Z', Z}$ and
+$m_{Z', \mathcal{O}_Z}$ agree by definition.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-additivity-sheaf-cycle}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$ be locally of finite type over $S$.
+Let $0 \to \mathcal{F} \to \mathcal{G} \to \mathcal{H} \to 0$
+be a short exact sequence of coherent sheaves on $X$.
+Assume that the $\delta$-dimension of the supports
+of $\mathcal{F}$, $\mathcal{G}$, and $\mathcal{H}$ is $\leq k$.
+Then $[\mathcal{G}]_k = [\mathcal{F}]_k + [\mathcal{H}]_k$.
+\end{lemma}
+
+\begin{proof}
+Follows immediately from additivity of lengths, see
+Algebra, Lemma \ref{algebra-lemma-length-additive}.
+\end{proof}
+
+
+
+
+
+
+
+
+

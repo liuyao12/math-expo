@@ -1,0 +1,538 @@
+\section{Quotients of triangulated categories}
+\label{section-quotients}
+
+\noindent
+Given a triangulated category and a triangulated subcategory we can
+construct another triangulated category by taking the ``quotient''.
+The construction uses a localization. This is similar to the quotient
+of an abelian category by a Serre subcategory, see
+Homology, Section \ref{homology-section-serre-subcategories}.
+Before we do the actual construction we briefly discuss kernels
+of exact functors.
+
+\begin{definition}
+\label{definition-saturated}
+Let $\mathcal{D}$ be a pre-triangulated category. We say a full
+pre-triangulated subcategory $\mathcal{D}'$ of $\mathcal{D}$ is
+{\it saturated} if whenever $X \oplus Y$ is isomorphic to an object
+of $\mathcal{D}'$ then both $X$ and $Y$ are isomorphic to objects
+of $\mathcal{D}'$.
+\end{definition}
+
+\noindent
+A saturated triangulated subcategory is sometimes called a
+{\it thick triangulated subcategory}. In some references, this is
+only used for strictly full triangulated subcategories (and sometimes
+the definition is written such that it implies strictness).
+There is another notion, that of an {\it \'epaisse triangulated
+subcategory}. The definition is that given a commutative diagram
+$$
+\xymatrix{
+& S \ar[rd] \\
+X \ar[ru] \ar[rr] & & Y \ar[r] & T \ar[r] & X[1]
+}
+$$
+where the second line is a distinguished triangle and $S$ and $T$ are isomorphic
+to objects of $\mathcal{D}'$, then also $X$ and $Y$ are isomorphic to objects
+of $\mathcal{D}'$. It turns out that this is equivalent to being
+saturated (this is elementary and can be found in \cite{Rickard-derived})
+and the notion of a saturated category is easier to work with.
+
+\begin{lemma}
+\label{lemma-triangle-functor-kernel}
+Let $F : \mathcal{D} \to \mathcal{D}'$ be an exact functor of
+pre-triangulated categories. Let $\mathcal{D}''$ be the full subcategory
+of $\mathcal{D}$ with objects
+$$
+\Ob(\mathcal{D}'') =
+\{X \in \Ob(\mathcal{D}) \mid F(X) = 0\}
+$$
+Then $\mathcal{D}''$ is a strictly full saturated pre-triangulated
+subcategory of $\mathcal{D}$. If $\mathcal{D}$ is a triangulated category,
+then $\mathcal{D}''$ is a triangulated subcategory.
+\end{lemma}
+
+\begin{proof}
+It is clear that $\mathcal{D}''$ is preserved under $[1]$ and $[-1]$.
+If $(X, Y, Z, f, g, h)$ is a distinguished triangle of $\mathcal{D}$
+and $F(X) = F(Y) = 0$, then also $F(Z) = 0$ as
+$(F(X), F(Y), F(Z), F(f), F(g), F(h))$ is distinguished.
+Hence we may apply
+Lemma \ref{lemma-triangulated-subcategory}
+to see that $\mathcal{D}''$ is a pre-triangulated subcategory (respectively
+a triangulated subcategory if $\mathcal{D}$ is a triangulated category).
+The final assertion of being saturated follows from
+$F(X) \oplus F(Y) = 0 \Rightarrow F(X) = F(Y) = 0$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-homological-functor-kernel}
+Let $H : \mathcal{D} \to \mathcal{A}$ be a homological functor of
+a pre-triangulated category into an abelian category.
+Let $\mathcal{D}'$ be the full subcategory of $\mathcal{D}$ with objects
+$$
+\Ob(\mathcal{D}') =
+\{X \in \Ob(\mathcal{D}) \mid
+H(X[n]) = 0\text{ for all }n \in \mathbf{Z}\}
+$$
+Then $\mathcal{D}'$ is a strictly full saturated pre-triangulated subcategory
+of $\mathcal{D}$. If $\mathcal{D}$ is a triangulated category, then
+$\mathcal{D}'$ is a triangulated subcategory.
+\end{lemma}
+
+\begin{proof}
+It is clear that $\mathcal{D}'$ is preserved under $[1]$ and $[-1]$.
+If $(X, Y, Z, f, g, h)$ is a distinguished triangle of $\mathcal{D}$
+and $H(X[n]) = H(Y[n]) = 0$ for all $n$, then also $H(Z[n]) = 0$ for all $n$
+by the long exact sequence (\ref{equation-long-exact-cohomology-sequence}).
+Hence we may apply
+Lemma \ref{lemma-triangulated-subcategory}
+to see that $\mathcal{D}'$ is a pre-triangulated subcategory (respectively
+a triangulated subcategory if $\mathcal{D}$ is a triangulated category).
+The assertion of being saturated follows from
+\begin{align*}
+H((X \oplus Y)[n]) = 0 & \Rightarrow H(X[n] \oplus Y[n]) = 0 \\
+& \Rightarrow H(X[n]) \oplus H(Y[n]) = 0 \\
+& \Rightarrow H(X[n]) = H(Y[n]) = 0
+\end{align*}
+for all $n \in \mathbf{Z}$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-homological-functor-bounded}
+Let $H : \mathcal{D} \to \mathcal{A}$ be a homological functor of
+a pre-triangulated category into an abelian category.
+Let $\mathcal{D}_H^{+}, \mathcal{D}_H^{-}, \mathcal{D}_H^b$
+be the full subcategory of $\mathcal{D}$ with objects
+$$
+\begin{matrix}
+\Ob(\mathcal{D}_H^{+}) =
+\{X \in \Ob(\mathcal{D}) \mid
+H(X[n]) = 0\text{ for all }n \ll 0\} \\
+\Ob(\mathcal{D}_H^{-}) =
+\{X \in \Ob(\mathcal{D}) \mid
+H(X[n]) = 0\text{ for all }n \gg 0\} \\
+\Ob(\mathcal{D}_H^b) =
+\{X \in \Ob(\mathcal{D}) \mid
+H(X[n]) = 0\text{ for all }|n| \gg 0\}
+\end{matrix}
+$$
+Each of these is a strictly full saturated pre-triangulated subcategory
+of $\mathcal{D}$. If $\mathcal{D}$ is a triangulated category, then
+each is a triangulated subcategory.
+\end{lemma}
+
+\begin{proof}
+Let us prove this for $\mathcal{D}_H^{+}$.
+It is clear that it is preserved under $[1]$ and $[-1]$.
+If $(X, Y, Z, f, g, h)$ is a distinguished triangle of $\mathcal{D}$
+and $H(X[n]) = H(Y[n]) = 0$ for all $n \ll 0$, then also $H(Z[n]) = 0$
+for all $n \ll 0$ by the long exact sequence
+(\ref{equation-long-exact-cohomology-sequence}).
+Hence we may apply
+Lemma \ref{lemma-triangulated-subcategory}
+to see that $\mathcal{D}_H^{+}$ is a pre-triangulated subcategory
+(respectively a triangulated subcategory if $\mathcal{D}$ is a
+triangulated category). The assertion of being saturated follows from
+\begin{align*}
+H((X \oplus Y)[n]) = 0 & \Rightarrow H(X[n] \oplus Y[n]) = 0 \\
+& \Rightarrow H(X[n]) \oplus H(Y[n]) = 0 \\
+& \Rightarrow H(X[n]) = H(Y[n]) = 0
+\end{align*}
+for all $n \in \mathbf{Z}$.
+\end{proof}
+
+\begin{definition}
+\label{definition-kernel-category}
+Let $\mathcal{D}$ be a (pre-)triangulated category.
+\begin{enumerate}
+\item Let $F : \mathcal{D} \to \mathcal{D}'$ be an exact functor.
+The {\it kernel of $F$} is the strictly full saturated
+(pre-)triangulated subcategory described in
+Lemma \ref{lemma-triangle-functor-kernel}.
+\item Let $H : \mathcal{D} \to \mathcal{A}$ be a homological functor.
+The {\it kernel of $H$} is the strictly full saturated
+(pre-)triangulated subcategory described in
+Lemma \ref{lemma-homological-functor-kernel}.
+\end{enumerate}
+These are sometimes denoted $\Ker(F)$ or $\Ker(H)$.
+\end{definition}
+
+\noindent
+The proof of the following lemma uses TR4.
+
+\begin{lemma}
+\label{lemma-construct-multiplicative-system}
+Let $\mathcal{D}$ be a triangulated category.
+Let $\mathcal{D}' \subset \mathcal{D}$ be a full triangulated
+subcategory. Set
+\begin{equation}
+\label{equation-multiplicative-system}
+S =
+\left\{
+\begin{matrix}
+f \in \text{Arrows}(\mathcal{D})
+\text{ such that there exists a distinguished triangle }\\
+(X, Y, Z, f, g, h) \text{ of }\mathcal{D}\text{ with }
+Z\text{ isomorphic to an object of }\mathcal{D}'
+\end{matrix}
+\right\}
+\end{equation}
+Then $S$ is a multiplicative system compatible with the triangulated
+structure on $\mathcal{D}$. In this situation the following are equivalent
+\begin{enumerate}
+\item $S$ is a saturated multiplicative system,
+\item $\mathcal{D}'$ is a saturated triangulated subcategory.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+To prove the first assertion we have to prove that
+MS1, MS2, MS3 and MS5, MS6 hold.
+
+\medskip\noindent
+Proof of MS1. It is clear that identities are in $S$ because
+$(X, X, 0, 1, 0, 0)$ is distinguished for every object $X$ of $\mathcal{D}$
+and because $0$ is an object of $\mathcal{D}'$. Let $f : X \to Y$
+and $g : Y \to Z$ be composable morphisms contained in $S$.
+Choose distinguished triangles $(X, Y, Q_1, f, p_1, d_1)$,
+$(X, Z, Q_2, g \circ f, p_2, d_2)$, and $(Y, Z, Q_3, g, p_3, d_3)$.
+By assumption we know that $Q_1$ and $Q_3$ are isomorphic to objects
+of $\mathcal{D}'$. By TR4 we know there exists a distinguished
+triangle $(Q_1, Q_2, Q_3, a, b, c)$. Since $\mathcal{D}'$ is a
+triangulated subcategory we conclude that $Q_2$ is isomorphic to
+an object of $\mathcal{D}'$. Hence $g \circ f \in S$.
+
+\medskip\noindent
+Proof of MS3. Let $a : X \to Y$ be a morphism and let $t : Z \to X$ be
+an element of $S$ such that $a \circ t = 0$. To prove LMS3 it suffices to
+find an $s \in S$ such that $s \circ a = 0$, compare with the proof of
+Lemma \ref{lemma-triangle-functor-localize}. Choose a distinguished
+triangle $(Z, X, Q, t, g, h)$ using TR1 and TR2. Since $a \circ t = 0$
+we see by
+Lemma \ref{lemma-representable-homological}
+there exists a morphism $i : Q \to Y$ such that $i \circ g = a$.
+Finally, using TR1 again we can choose a triangle
+$(Q, Y, W, i, s, k)$. Here is a picture
+$$
+\xymatrix{
+Z \ar[r]_t & X \ar[r]_g \ar[d]^1 & Q \ar[r] \ar[d]^i & Z[1] \\
+& X \ar[r]_a & Y \ar[d]^s \\
+& & W
+}
+$$
+Since $t \in S$ we see that $Q$ is isomorphic to an object of $\mathcal{D}'$.
+Hence $s \in S$. Finally, $s \circ a = s \circ i \circ g = 0$ as
+$s \circ i = 0$ by Lemma \ref{lemma-composition-zero}.
+We conclude that LMS3 holds.
+The proof of RMS3 is dual.
+
+\medskip\noindent
+Proof of MS5. Follows as distinguished triangles and $\mathcal{D}'$
+are stable under translations
+
+\medskip\noindent
+Proof of MS6. Suppose given a commutative diagram
+$$
+\xymatrix{
+X \ar[r] \ar[d]^s &
+Y \ar[d]^{s'} \\
+X' \ar[r] &
+Y'
+}
+$$
+with $s, s' \in S$. By
+Proposition \ref{proposition-9}
+we can extend this to a nine square diagram. As $s, s'$ are elements of $S$
+we see that $X'', Y''$ are isomorphic to objects of $\mathcal{D}'$.
+Since $\mathcal{D}'$ is a full triangulated subcategory we see that
+$Z''$ is also isomorphic to an object of $\mathcal{D}'$.
+Whence the morphism $Z \to Z'$
+is an element of $S$. This proves MS6.
+
+\medskip\noindent
+MS2 is a formal consequence of MS1, MS5, and MS6, see
+Lemma \ref{lemma-localization-conditions}.
+This finishes the proof of the first assertion of the lemma.
+
+\medskip\noindent
+Let's assume that $S$ is saturated. (In the following we will use
+rotation of distinguished triangles without further mention.)
+Let $X \oplus Y$ be an object isomorphic to an object of $\mathcal{D}'$.
+Consider the morphism $f : 0 \to X$. The composition
+$0 \to X \to X \oplus Y$ is an element
+of $S$ as $(0, X \oplus Y, X \oplus Y, 0, 1, 0)$ is a distinguished
+triangle. The composition $Y[-1] \to 0 \to X$ is an element of $S$
+as $(X, X \oplus Y, Y, (1, 0), (0, 1), 0)$ is a distinguished triangle, see
+Lemma \ref{lemma-split}.
+Hence $0 \to X$ is an element of $S$ (as $S$ is saturated).
+Thus $X$ is isomorphic to an object of $\mathcal{D}'$ as desired.
+
+\medskip\noindent
+Finally, assume $\mathcal{D}'$ is a saturated triangulated subcategory.
+Let
+$$
+W \xrightarrow{h}
+X \xrightarrow{g}
+Y \xrightarrow{f} Z
+$$
+be composable morphisms of $\mathcal{D}$ such that $fg, gh \in S$.
+We will build up a picture of objects as in the diagram below.
+$$
+\xymatrix{
+ & &
+Q_{12} \ar[rd] & &
+Q_{23} \ar[rd] \\
+ &
+Q_1 \ar[ld]_{\! + \! 1} \ar[ru] & &
+Q_2 \ar[ld]_{\! + \! 1} \ar[ll]_{\! + \! 1} \ar[ru] & &
+Q_3 \ar[ld]_{\! + \! 1} \ar[ll]_{\! + \! 1} \\
+W \ar[rr] & &
+X \ar[lu] \ar[rr] & &
+Y \ar[lu] \ar[rr] & &
+Z \ar[lu]
+}
+$$
+First choose distinguished triangles
+$(W, X, Q_1)$, $(X, Y, Q_2)$, $(Y, Z, Q_3)$ $(W, Y, Q_{12})$, and
+$(X, Z, Q_{23})$. Denote $s : Q_2 \to Q_1[1]$ the composition
+$Q_2 \to X[1] \to Q_1[1]$. Denote $t : Q_3 \to Q_2[1]$ the
+composition $Q_3 \to Y[1] \to Q_2[1]$.
+By TR4 applied to the composition $W \to X \to Y$
+and the composition $X \to Y \to Z$ there exist
+distinguished triangles $(Q_1, Q_{12}, Q_2)$ and $(Q_2, Q_{23}, Q_3)$
+which use the morphisms $s$ and $t$.
+The objects $Q_{12}$ and $Q_{23}$ are isomorphic to objects of
+$\mathcal{D}'$ as $W \to Y$ and $X \to Z$ are assumed in $S$.
+Hence also $s[1]t$ is an element of $S$ as $S$ is closed under compositions
+and shifts.
+Note that $s[1]t = 0$ as $Y[1] \to Q_2[1] \to X[2]$ is zero, see
+Lemma \ref{lemma-composition-zero}.
+Hence $Q_3[1] \oplus Q_1[2]$ is isomorphic to an object of
+$\mathcal{D}'$, see Lemma \ref{lemma-split}.
+By assumption on $\mathcal{D}'$ we conclude that $Q_3$ and $Q_1$ are isomorphic
+to objects of $\mathcal{D}'$. Looking at the distinguished triangle
+$(Q_1, Q_{12}, Q_2)$ we conclude that $Q_2$ is also isomorphic to
+an object of $\mathcal{D}'$. Looking at the distinguished triangle
+$(X, Y, Q_2)$ we finally conclude that $g \in S$. (It is also
+follows that $h, f \in S$, but we don't need this.)
+\end{proof}
+
+\begin{definition}
+\label{definition-quotient-category}
+Let $\mathcal{D}$ be a triangulated category.
+Let $\mathcal{B}$ be a full triangulated subcategory.
+We define the {\it quotient category $\mathcal{D}/\mathcal{B}$}
+by the formula $\mathcal{D}/\mathcal{B} = S^{-1}\mathcal{D}$, where
+$S$ is the multiplicative system of $\mathcal{D}$ associated to
+$\mathcal{B}$ via
+Lemma \ref{lemma-construct-multiplicative-system}.
+The localization functor $Q : \mathcal{D} \to \mathcal{D}/\mathcal{B}$
+is called the {\it quotient functor} in this case.
+\end{definition}
+
+\noindent
+Note that the quotient functor
+$Q : \mathcal{D} \to \mathcal{D}/\mathcal{B}$
+is an exact functor of triangulated categories, see
+Proposition \ref{proposition-construct-localization}.
+The universal property of this construction is the following.
+
+\begin{lemma}
+\label{lemma-universal-property-quotient}
+\begin{slogan}
+The universal property of the Verdier quotient.
+\end{slogan}
+Let $\mathcal{D}$ be a triangulated category. Let $\mathcal{B}$
+be a full triangulated subcategory of $\mathcal{D}$. Let
+$Q : \mathcal{D} \to \mathcal{D}/\mathcal{B}$ be the quotient functor.
+\begin{enumerate}
+\item If $H : \mathcal{D} \to \mathcal{A}$ is a homological functor into
+an abelian category $\mathcal{A}$ such that
+$\mathcal{B} \subset \Ker(H)$ then there exists a unique factorization
+$H' : \mathcal{D}/\mathcal{B} \to \mathcal{A}$ such that $H = H' \circ Q$
+and $H'$ is a homological functor too.
+\item If $F : \mathcal{D} \to \mathcal{D}'$ is an exact functor into
+a pre-triangulated category $\mathcal{D}'$ such that
+$\mathcal{B} \subset \Ker(F)$ then there exists a unique factorization
+$F' : \mathcal{D}/\mathcal{B} \to \mathcal{D}'$ such that $F = F' \circ Q$
+and $F'$ is an exact functor too.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+This lemma follows from
+Lemma \ref{lemma-universal-property-localization}.
+Namely, if $f : X \to Y$ is a morphism of $\mathcal{D}$
+such that for some distinguished triangle $(X, Y, Z, f, g, h)$
+the object $Z$ is isomorphic to an object of $\mathcal{B}$, then
+$H(f)$, resp.\ $F(f)$ is an isomorphism under the assumptions of
+(1), resp.\ (2). Details omitted.
+\end{proof}
+
+\noindent
+The kernel of the quotient functor can be described as follows.
+
+\begin{lemma}
+\label{lemma-kernel-quotient}
+Let $\mathcal{D}$ be a triangulated category.
+Let $\mathcal{B}$ be a full triangulated subcategory.
+The kernel of the quotient functor
+$Q : \mathcal{D} \to \mathcal{D}/\mathcal{B}$
+is the strictly full subcategory of $\mathcal{D}$ whose objects are
+$$
+\Ob(\Ker(Q)) =
+\left\{
+\begin{matrix}
+Z \in \Ob(\mathcal{D})
+\text{ such that there exists a }Z' \in \Ob(\mathcal{D}) \\
+\text{ such that }Z \oplus Z'\text{ is isomorphic to an object of }\mathcal{B}
+\end{matrix}
+\right\}
+$$
+In other words it is the smallest strictly full saturated triangulated
+subcategory of $\mathcal{D}$ containing $\mathcal{B}$.
+\end{lemma}
+
+\begin{proof}
+First note that the kernel is automatically a strictly full
+triangulated subcategory containing summands of any of its objects, see
+Lemma \ref{lemma-triangle-functor-kernel}.
+The description of its objects follows from the definitions and
+Lemma \ref{lemma-kernel-localization} part (4).
+\end{proof}
+
+\noindent
+Let $\mathcal{D}$ be a triangulated category.
+At this point we have constructions which induce order
+preserving maps between
+\begin{enumerate}
+\item the partially ordered set of multiplicative systems $S$ in $\mathcal{D}$
+compatible with the triangulated structure, and
+\item the partially ordered set of full triangulated subcategories
+$\mathcal{B} \subset \mathcal{D}$.
+\end{enumerate}
+Namely, the constructions are given by
+$S \mapsto \mathcal{B}(S) = \Ker(Q : \mathcal{D} \to S^{-1}\mathcal{D})$
+and $\mathcal{B} \mapsto S(\mathcal{B})$
+where $S(\mathcal{B})$ is the multiplicative set of
+(\ref{equation-multiplicative-system}), i.e.,
+$$
+S(\mathcal{B}) =
+\left\{
+\begin{matrix}
+f \in \text{Arrows}(\mathcal{D})
+\text{ such that there exists a distinguished triangle }\\
+(X, Y, Z, f, g, h) \text{ of }\mathcal{D}\text{ with }
+Z\text{ isomorphic to an object of }\mathcal{B}
+\end{matrix}
+\right\}
+$$
+Note that it is not the case that these operations are mutually inverse.
+
+\begin{lemma}
+\label{lemma-operations}
+Let $\mathcal{D}$ be a triangulated category. The operations described above
+have the following properties
+\begin{enumerate}
+\item $S(\mathcal{B}(S))$ is the ``saturation'' of $S$, i.e., it is the
+smallest saturated multiplicative system in $\mathcal{D}$ containing $S$, and
+\item $\mathcal{B}(S(\mathcal{B}))$ is the ``saturation'' of $\mathcal{B}$,
+i.e., it is the smallest strictly full saturated triangulated subcategory of
+$\mathcal{D}$ containing $\mathcal{B}$.
+\end{enumerate}
+In particular, the constructions define mutually inverse maps between
+the (partially ordered) set of saturated multiplicative systems in
+$\mathcal{D}$ compatible with the triangulated structure on $\mathcal{D}$
+and
+the (partially ordered) set of strictly full saturated triangulated
+subcategories of $\mathcal{D}$.
+\end{lemma}
+
+\begin{proof}
+First, let's start with a full triangulated subcategory $\mathcal{B}$. Then
+$\mathcal{B}(S(\mathcal{B})) =
+\Ker(Q : \mathcal{D} \to \mathcal{D}/\mathcal{B})$
+and hence (2) is the content of
+Lemma \ref{lemma-kernel-quotient}.
+
+\medskip\noindent
+Next, suppose that $S$ is multiplicative system in $\mathcal{D}$ compatible
+with the triangulation on $\mathcal{D}$. Then
+$\mathcal{B}(S) = \Ker(Q : \mathcal{D} \to S^{-1}\mathcal{D})$.
+Hence (using
+Lemma \ref{lemma-third-object-zero}
+in the localized category)
+\begin{align*}
+S(\mathcal{B}(S))
+& =
+\left\{
+\begin{matrix}
+f \in \text{Arrows}(\mathcal{D})
+\text{ such that there exists a distinguished}\\
+\text{triangle }(X, Y, Z, f, g, h) \text{ of }\mathcal{D}\text{ with }Q(Z) = 0
+\end{matrix}
+\right\}.
+\\
+& =
+\{f \in \text{Arrows}(\mathcal{D}) \mid Q(f)\text{ is an isomorphism}\} \\
+& = \hat S = S'
+\end{align*}
+in the notation of
+Categories, Lemma \ref{categories-lemma-what-gets-inverted}.
+The final statement of that lemma finishes the proof.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-acyclic-general}
+Let $H : \mathcal{D} \to \mathcal{A}$ be a homological functor from a
+triangulated category $\mathcal{D}$ to an abelian category $\mathcal{A}$, see
+Definition \ref{definition-homological}.
+The subcategory $\Ker(H)$ of $\mathcal{D}$ is a strictly full
+saturated triangulated subcategory of $\mathcal{D}$ whose corresponding
+saturated multiplicative system (see
+Lemma \ref{lemma-operations})
+is the set
+$$
+S = \{f \in \text{Arrows}(\mathcal{D}) \mid
+H^i(f)\text{ is an isomorphism for all }i \in \mathbf{Z}\}.
+$$
+The functor $H$ factors through the quotient functor
+$Q : \mathcal{D} \to \mathcal{D}/\Ker(H)$.
+\end{lemma}
+
+\begin{proof}
+The category $\Ker(H)$ is a strictly full saturated triangulated
+subcategory of $\mathcal{D}$ by
+Lemma \ref{lemma-homological-functor-kernel}.
+The set $S$ is a saturated multiplicative system compatible with the
+triangulated structure by
+Lemma \ref{lemma-homological-functor-localize}.
+Recall that the multiplicative system corresponding to
+$\Ker(H)$ is the set
+$$
+\left\{
+\begin{matrix}
+f \in \text{Arrows}(\mathcal{D})
+\text{ such that there exists a distinguished triangle }\\
+(X, Y, Z, f, g, h)\text{ with } H^i(Z) = 0 \text{ for all }i
+\end{matrix}
+\right\}.
+$$
+By the long exact cohomology sequence, see
+(\ref{equation-long-exact-cohomology-sequence}),
+it is clear that $f$ is an element of this set if and only if $f$ is
+an element of $S$. Finally, the factorization of $H$ through $Q$ is a
+consequence of
+Lemma \ref{lemma-universal-property-quotient}.
+\end{proof}
+
+
+
+
+
+
+
+
+
+

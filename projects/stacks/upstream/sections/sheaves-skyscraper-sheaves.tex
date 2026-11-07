@@ -1,0 +1,98 @@
+\section{Skyscraper sheaves and stalks}
+\label{section-skyscraper-sheaves}
+
+\begin{definition}
+\label{definition-skyscraper-sheaf}
+Let $X$ be a topological space.
+\begin{enumerate}
+\item Let $x \in X$ be a point. Denote $i_x : \{x\} \to X$ the inclusion map.
+Let $A$ be a set and think of $A$ as a sheaf on the one point space $\{x\}$.
+We call $i_{x, *}A$ the {\it skyscraper sheaf at $x$ with value $A$}.
+\item If in (1) above $A$ is an abelian group then we think of
+$i_{x, *}A$ as a sheaf of abelian groups on $X$.
+\item If in (1) above $A$ is an algebraic structure then we think
+of $i_{x, *}A$ as a sheaf of algebraic structures.
+\item If $(X, \mathcal{O}_X)$ is a ringed space, then we think
+of $i_x : \{x\} \to X$ as a morphism of ringed spaces
+$(\{x\}, \mathcal{O}_{X, x}) \to (X, \mathcal{O}_X)$
+and if $A$ is a $\mathcal{O}_{X, x}$-module, then we think
+of $i_{x, *}A$ as a sheaf of $\mathcal{O}_X$-modules.
+\item We say a sheaf of sets $\mathcal{F}$ is a {\it skyscraper sheaf}
+if there exists a point $x$ of $X$ and a set $A$ such
+that $\mathcal{F} \cong i_{x, *}A$.
+\item We say a sheaf of abelian groups $\mathcal{F}$ is a
+{\it skyscraper sheaf} if there exists a point $x$ of $X$
+and an abelian group $A$ such that $\mathcal{F} \cong i_{x, *}A$
+as sheaves of abelian groups.
+\item We say a sheaf of algebraic structures $\mathcal{F}$ is a
+{\it skyscraper sheaf} if there exists a point $x$ of $X$
+and an algebraic structure $A$ such that $\mathcal{F} \cong i_{x, *}A$
+as sheaves of algebraic structures.
+\item If $(X, \mathcal{O}_X)$ is a ringed space and
+$\mathcal{F}$ is a sheaf of $\mathcal{O}_X$-modules, then
+we say $\mathcal{F}$ is a {\it skyscraper sheaf} if there
+exists a point $x \in X$ and a $\mathcal{O}_{X, x}$-module
+$A$ such that $\mathcal{F} \cong i_{x, *}A$
+as sheaves of $\mathcal{O}_X$-modules.
+\end{enumerate}
+\end{definition}
+
+\begin{lemma}
+\label{lemma-skyscraper-stalks}
+Let $X$ be a topological space, $x \in X$ a point, and
+$A$ a set. For any point $x' \in X$ the stalk of the
+skyscraper sheaf at $x$ with value $A$ at $x'$ is
+$$
+(i_{x, *}A)_{x'} =
+\left\{
+\begin{matrix}
+A & \text{if} & x' \in \overline{\{x\}} \\
+\{*\} & \text{if} & x' \not\in \overline{\{x\}}
+\end{matrix}
+\right.
+$$
+A similar description holds for the case of
+abelian groups, algebraic structures and
+sheaves of modules.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-stalk-skyscraper-adjoint}
+Let $X$ be a topological space, and let $x \in X$ a point.
+The functors $\mathcal{F} \mapsto \mathcal{F}_x$ and
+$A \mapsto i_{x, *}A$ are adjoint. In a formula
+$$
+\Mor_{\textit{Sets}}(\mathcal{F}_x, A)
+=
+\Mor_{\Sh(X)}(\mathcal{F}, i_{x, *}A).
+$$
+A similar statement holds for the case of
+abelian groups, algebraic structures. In the case of
+sheaves of modules we have
+$$
+\Hom_{\mathcal{O}_{X, x}}(\mathcal{F}_x, A)
+=
+\Hom_{\mathcal{O}_X}(\mathcal{F}, i_{x, *}A).
+$$
+\end{lemma}
+
+\begin{proof}
+Omitted. Hint: The stalk functor can be
+seen as the pullback functor for the morphism $i_x : \{x\} \to X$.
+Then the adjointness follows from adjointness of
+$i_x^{-1}$ and $i_{x, *}$ (resp.\ $i_x^*$ and $i_{x, *}$
+in the case of sheaves of modules).
+\end{proof}
+
+
+
+
+
+
+
+
+

@@ -1717,5 +1717,4022 @@
     "width": 100.117037,
     "height": 45.745112,
     "svg_sha256": "825b38a211dea35823c1810ef01a86071640e20e896fcd6c0695a8dac6d9cf76"
+  },
+  "db1aaf81c461bcad5e640cc0": {
+    "key": "db1aaf81c461bcad5e640cc0",
+    "tex": "\\xymatrix{\n\\ldots \\ar[r] &\nH^i(X) \\ar[r]^{H^i(f)} &\nH^i(Y) \\ar[r]^{H^i(g)} &\nH^i(Z) \\ar[r]^{H^i(h)} &\nH^{i + 1}(X) \\ar[r] & \\ldots\n}",
+    "sections": [
+      "derived-derived-categories"
+    ],
+    "file": "db1aaf81c461bcad5e640cc0.svg",
+    "width": 295.269694,
+    "height": 16.042632,
+    "svg_sha256": "02d47cf820abd19a56a0d14086f49715b0dfbf548ec590fd6aef119509cfc8d0"
+  },
+  "7bff4d7eb733cb2c39941316": {
+    "key": "7bff4d7eb733cb2c39941316",
+    "tex": "\\xymatrix{\nK^\\bullet \\ar[r] & L^\\bullet \\\\\nM^\\bullet \\ar[u] \\ar[r] & N^\\bullet \\ar[u]\n}",
+    "sections": [
+      "derived-derived-categories"
+    ],
+    "file": "7bff4d7eb733cb2c39941316.svg",
+    "width": 57.427513,
+    "height": 43.606262,
+    "svg_sha256": "0aeb9e93ffde46057ee414c71db15afdf2ae899a5c65eec6dc18234cecbc67e8"
+  },
+  "835488a8115b2097691d5a23": {
+    "key": "835488a8115b2097691d5a23",
+    "tex": "\\xymatrix{\nU \\ar[d] \\ar[rr]_-j & & \\Spec(\\Gamma(U, \\mathcal{O}_U)) \\ar[d] \\\\\nU \\ar[r] & V \\ar[r]^-{j'} & \\Spec(\\Gamma(V, \\mathcal{O}_V))\n}",
+    "sections": [
+      "properties-quasi-affine"
+    ],
+    "file": "835488a8115b2097691d5a23.svg",
+    "width": 141.767137,
+    "height": 49.8132,
+    "svg_sha256": "fbe538646f0a4d674bfc2cd4c4a0c1ee4817642a010e59dc83db47c094fea1d0"
+  },
+  "c73d835e306443dedce09ea2": {
+    "key": "c73d835e306443dedce09ea2",
+    "tex": "\\xymatrix{\n0 \\ar[r] &\nA \\ar[r] \\ar[d]^{\\text{id}} &\nE \\ar[r] \\ar[d]^f &\nB \\ar[r] \\ar[d]^{\\text{id}} &\n0 \\\\\n0 \\ar[r] &\nA \\ar[r] &\nF \\ar[r] &\nB \\ar[r] &\n0\n}",
+    "sections": [
+      "homology-extensions"
+    ],
+    "file": "c73d835e306443dedce09ea2.svg",
+    "width": 152.184413,
+    "height": 44.048132,
+    "svg_sha256": "e8074704b4a2ee4f928758d84320a1dde89b9228528b4abbe51bbc02edc9f435"
+  },
+  "7cbd05babf566cb7497e96d4": {
+    "key": "7cbd05babf566cb7497e96d4",
+    "tex": "\\xymatrix{\n0 \\ar[r] & A \\ar[r] \\ar[d] & E' \\ar[r] \\ar[d] & B' \\ar[r] \\ar[d] & 0 \\\\\n0 \\ar[r] & A \\ar[r] & E \\ar[r] & B \\ar[r] & 0\n}",
+    "sections": [
+      "homology-extensions"
+    ],
+    "file": "7cbd05babf566cb7497e96d4.svg",
+    "width": 157.774565,
+    "height": 44.769603,
+    "svg_sha256": "a4d5eea8b209f62a7424448ef09c98535f21cb405c570801139e2a72630128bd"
+  },
+  "5322ef392f3cc1edc1600921": {
+    "key": "5322ef392f3cc1edc1600921",
+    "tex": "\\xymatrix{\n0 \\ar[r] & A \\ar[r] \\ar[d] & E \\ar[r] \\ar[d] & B \\ar[r] \\ar[d] & 0 \\\\\n0 \\ar[r] & A' \\ar[r] & E' \\ar[r] & B \\ar[r] & 0\n}",
+    "sections": [
+      "homology-extensions"
+    ],
+    "file": "5322ef392f3cc1edc1600921.svg",
+    "width": 157.774565,
+    "height": 44.389108,
+    "svg_sha256": "e5f2298632bc2953fe0091175f689d239caa733d30e9e23f93efad86c78487ae"
+  },
+  "5285710381a3f6d36fb572c5": {
+    "key": "5285710381a3f6d36fb572c5",
+    "tex": "\\xymatrix{\n0 \\ar[r] &\nA \\oplus A \\ar[r] \\ar[d]_\\Sigma &\nE_1 \\oplus E_2 \\ar[r] \\ar[d] &\nB \\oplus B \\ar[r] \\ar[d] &\n0 \\\\\n0 \\ar[r] &\nA \\ar[r] &\nE' \\ar[r] &\nB \\oplus B \\ar[r] &\n0\\\\\n0 \\ar[r] &\nA \\ar[r] \\ar[u] &\nE_1 + E_2 \\ar[r] \\ar[u] &\nB \\ar[r] \\ar[u]^\\Delta &\n0\n}",
+    "sections": [
+      "homology-extensions"
+    ],
+    "file": "5285710381a3f6d36fb572c5.svg",
+    "width": 219.961347,
+    "height": 85.025557,
+    "svg_sha256": "94846a06f02953294ca7977a614bc3cc982cab70439ef08cb049df414793c14e"
+  },
+  "07d2e3f10bfc7685899ff599": {
+    "key": "07d2e3f10bfc7685899ff599",
+    "tex": "\\xymatrix{\n0 \\ar[r] &\n\\Hom_\\mathcal{A}(M_3, N) \\ar[r] &\n\\Hom_\\mathcal{A}(M_2, N) \\ar[r] &\n\\Hom_\\mathcal{A}(M_1, N) \\ar[lld] \\\\\n& \\Ext_\\mathcal{A}(M_3, N) \\ar[r] &\n\\Ext_\\mathcal{A}(M_2, N) \\ar[r] &\n\\Ext_\\mathcal{A}(M_1, N)\n}",
+    "sections": [
+      "homology-extensions"
+    ],
+    "file": "07d2e3f10bfc7685899ff599.svg",
+    "width": 282.425981,
+    "height": 49.8132,
+    "svg_sha256": "c56c3fcddaa5d58fe73037a8e579a6dcbe30a8b02c9f6194593e75a032b62707"
+  },
+  "b60365b62a50ff3b0d218632": {
+    "key": "b60365b62a50ff3b0d218632",
+    "tex": "\\xymatrix{\n0 \\ar[r] &\n\\Hom_\\mathcal{A}(N, M_1) \\ar[r] &\n\\Hom_\\mathcal{A}(N, M_2) \\ar[r] &\n\\Hom_\\mathcal{A}(N, M_3) \\ar[lld] \\\\\n& \\Ext_\\mathcal{A}(N, M_1) \\ar[r] &\n\\Ext_\\mathcal{A}(N, M_2) \\ar[r] &\n\\Ext_\\mathcal{A}(N, M_3)\n}",
+    "sections": [
+      "homology-extensions"
+    ],
+    "file": "b60365b62a50ff3b0d218632.svg",
+    "width": 280.765506,
+    "height": 49.8132,
+    "svg_sha256": "49c9472ddda66569bdf62379fe94d4d3573bf28f443b3eccda3edb8c9ed8a93c"
+  },
+  "a93715b800ffd6f1a2cfc132": {
+    "key": "a93715b800ffd6f1a2cfc132",
+    "tex": "\\xymatrix{\nA \\ar[d]_t \\ar[r]_g & B \\ar@{..>}[d]^s \\\\\nC \\ar@{..>}[r]^f & C \\amalg_A B\n}",
+    "sections": [
+      "homology-serre-subcategories"
+    ],
+    "file": "a93715b800ffd6f1a2cfc132.svg",
+    "width": 73.264106,
+    "height": 46.070518,
+    "svg_sha256": "07e5ac590619dee6b9c7f58dfdb71a0e0daa90bb614950a62ceb6258c1951a0f"
+  },
+  "bd9b76684458459407f50f29": {
+    "key": "bd9b76684458459407f50f29",
+    "tex": "\\xymatrix{\nX_{S'} \\ar[r] \\ar[d] & X \\ar[d] \\ar@/^4ex/[dd] \\\\\nY_{S'} \\ar[r] \\ar[d] & Y \\ar[d] \\\\\nS' \\ar[r] & S\n}",
+    "sections": [
+      "schemes-base-change"
+    ],
+    "file": "bd9b76684458459407f50f29.svg",
+    "width": 68.213761,
+    "height": 82.997594,
+    "svg_sha256": "be9ea92655d8add78a810f4422c1e01397a8bb4416fdf6b6680578e1a1fd1189"
+  },
+  "58213c0c5effcb88a95f21ab": {
+    "key": "58213c0c5effcb88a95f21ab",
+    "tex": "\\xymatrix{\nX_s = \\Spec(\\kappa(s)) \\times_S X \\ar[r] \\ar[d] &\nX \\ar[d] \\\\\n\\Spec(\\kappa(s)) \\ar[r] &\nS\n}",
+    "sections": [
+      "schemes-base-change"
+    ],
+    "file": "58213c0c5effcb88a95f21ab.svg",
+    "width": 136.985703,
+    "height": 49.8132,
+    "svg_sha256": "63916e599fd464722703bb249bad81463a2aeffe4b885525771e1286ad634908"
+  },
+  "5c725e2ca60bbd762cad3e92": {
+    "key": "5c725e2ca60bbd762cad3e92",
+    "tex": "\\vcenter{\n\\xymatrix{\nX_s \\ar[r] \\ar[d] & X \\ar[d] \\\\\n\\Spec(\\kappa(s)) \\ar[r] & S\n}\n}\n\\quad\\text{and}\\quad\n\\vcenter{\n\\xymatrix{\n\\Spec(\\mathcal{O}_{S, s}) \\times_S X \\ar[r] \\ar[d] & X \\ar[d] \\\\\n\\Spec(\\mathcal{O}_{S, s}) \\ar[r] & S\n}\n}",
+    "sections": [
+      "schemes-base-change"
+    ],
+    "file": "5c725e2ca60bbd762cad3e92.svg",
+    "width": 239.129604,
+    "height": 50.522609,
+    "svg_sha256": "00a4e2bf8dd1e98d3a2654614e530196d6b5e7f9635ac233abc3081098d52e1b"
+  },
+  "2bd096b9e33f7cb03668a650": {
+    "key": "2bd096b9e33f7cb03668a650",
+    "tex": "\\xymatrix{\nX_{m(n, n')} \\ar[rr] \\ar[d] & & X_{m(n)} \\ar[d]^{a_n} \\\\\nX_{m(n')} \\ar[r]^{a_{n'}} & Y_{n'} \\ar[r] & Y_n\n}",
+    "sections": [
+      "categories-essentially-constant"
+    ],
+    "file": "2bd096b9e33f7cb03668a650.svg",
+    "width": 136.030271,
+    "height": 50.577791,
+    "svg_sha256": "e98dc0a5f76ea301c511c29275cfb06b58480b2980fc9aba70845cf47eeeac54"
+  },
+  "0dd3b22bb6e764479b6652d9": {
+    "key": "0dd3b22bb6e764479b6652d9",
+    "tex": "\\xymatrix{\n\\ldots \\ar[r] &\nX_{m(3)} \\ar[d]^{a_3} \\ar[r] &\nX_{m(2)} \\ar[d]^{a_2} \\ar[r] &\nX_{m(1)} \\ar[d]^{a_1} \\\\\n\\ldots \\ar[r] &\nY_3 \\ar[r] &\nY_2 \\ar[r] &\nY_1\n}",
+    "sections": [
+      "categories-essentially-constant"
+    ],
+    "file": "0dd3b22bb6e764479b6652d9.svg",
+    "width": 177.178194,
+    "height": 47.652372,
+    "svg_sha256": "d10c7d8b6aa6a1a0a7ac15533294becc1c068d5601c218c9a7bcf05da9c670c5"
+  },
+  "6e483bac9523f128287cbc75": {
+    "key": "6e483bac9523f128287cbc75",
+    "tex": "\\xymatrix{\nK^\\bullet & L^\\bullet \\ar[l]^\\alpha \\\\\nP^\\bullet \\ar[u] \\ar@{-->}[ru]_\\beta\n}",
+    "sections": [
+      "derived-projective-resolutions"
+    ],
+    "file": "6e483bac9523f128287cbc75.svg",
+    "width": 53.579193,
+    "height": 43.606262,
+    "svg_sha256": "49f7d32e2f2a1d841a6547fcff364fd08bc369f28a792a73df321143bc19ab8f"
+  },
+  "7576fb3df8ca158c9a9032fb": {
+    "key": "7576fb3df8ca158c9a9032fb",
+    "tex": "\\xymatrix{\nK^\\bullet & L^\\bullet \\ar[l]^\\alpha \\\\\nP^\\bullet \\ar[u] \\ar@{-->}[ru]_{\\beta_i}\n}",
+    "sections": [
+      "derived-projective-resolutions"
+    ],
+    "file": "7576fb3df8ca158c9a9032fb.svg",
+    "width": 53.579193,
+    "height": 43.606262,
+    "svg_sha256": "79b91492fd85712e845a8198e1ea73d43d622d8af6b63e2941e84e350f0b534f"
+  },
+  "6d909bc0ef14db1517191db4": {
+    "key": "6d909bc0ef14db1517191db4",
+    "tex": "\\xymatrix{\n0 \\ar[r] &\nP_1^\\bullet \\ar[r] \\ar[d] &\nP_2^\\bullet \\ar[r] \\ar[d] &\nP_3^\\bullet \\ar[r] \\ar[d] &\n0 \\\\\n0 \\ar[r] &\nA^\\bullet \\ar[r] &\nB^\\bullet \\ar[r] &\nC^\\bullet \\ar[r] &\n0\n}",
+    "sections": [
+      "derived-projective-resolutions"
+    ],
+    "file": "6d909bc0ef14db1517191db4.svg",
+    "width": 166.136974,
+    "height": 45.061847,
+    "svg_sha256": "cf8827d556a4f79f806b208b7f8536b747335331ef345f0be6fb49b52d47739f"
+  },
+  "8e510683ab0170db8cd53b9e": {
+    "key": "8e510683ab0170db8cd53b9e",
+    "tex": "\\xymatrix{\nX \\ar[d]_t \\ar[r]_g & Y \\ar@{..>}[d]^s \\\\\nZ \\ar@{..>}[r]^f & W\n}",
+    "sections": [
+      "categories-localization"
+    ],
+    "file": "8e510683ab0170db8cd53b9e.svg",
+    "width": 51.774076,
+    "height": 43.719365,
+    "svg_sha256": "1192d0acf09f7faef981dc7a9eb825d9f8cf2e572fa8c9e257f25792af4556b0"
+  },
+  "e61b263eeff8a44a0dcbe3db": {
+    "key": "e61b263eeff8a44a0dcbe3db",
+    "tex": "\\xymatrix{\nX \\ar@{..>}[d]_t \\ar@{..>}[r]_g & Y \\ar[d]^s \\\\\nZ \\ar[r]^f & W\n}",
+    "sections": [
+      "categories-localization"
+    ],
+    "file": "e61b263eeff8a44a0dcbe3db.svg",
+    "width": 51.774076,
+    "height": 43.719365,
+    "svg_sha256": "5a98165952943f0a270fa42746081bd2cc3044fc21fef40b62f4555b63f1e8a4"
+  },
+  "5ac450d4bd5b60673ade177a": {
+    "key": "5ac450d4bd5b60673ade177a",
+    "tex": "\\xymatrix{\n & Y_1 \\ar[d]^u & \\\\\nX \\ar[ru]^{f_1} \\ar[r]^{f_3} \\ar[rd]_{f_2} &\nY_3 &\nY \\ar[lu]_{s_1} \\ar[l]_{s_3} \\ar[ld]^{s_2} \\\\\n& Y_2 \\ar[u]_v &\n}",
+    "sections": [
+      "categories-localization"
+    ],
+    "file": "5ac450d4bd5b60673ade177a.svg",
+    "width": 86.387163,
+    "height": 84.679003,
+    "svg_sha256": "38dc8c5bc3e68701eb98945748d35de8c840f16cf178990ec0ae31d8b8feadc4"
+  },
+  "080ef8e98699658c69c3b328": {
+    "key": "080ef8e98699658c69c3b328",
+    "tex": "\\xymatrix{\nY \\ar[d]_s \\ar[r]_g & Z' \\ar[d]^u \\\\\nY' \\ar[r]^h & Z''\n}",
+    "sections": [
+      "categories-localization"
+    ],
+    "file": "080ef8e98699658c69c3b328.svg",
+    "width": 55.209345,
+    "height": 44.891401,
+    "svg_sha256": "1f517192d4990015f9f1a20ca845ffa68bbb112d7ddb91165d085e51322194c4"
+  },
+  "a321c4e3369834c70349b259": {
+    "key": "a321c4e3369834c70349b259",
+    "tex": "\\xymatrix{\nX \\ar@{=}[d] \\ar[r]_{f_1} & Y_1 \\ar[d]^a & Y \\ar[l]^{s_1} \\ar@{=}[d] \\\\\nX \\ar[r]^{f_2} & Y_2 & Y \\ar[l]_{s_2}\n}",
+    "sections": [
+      "categories-localization"
+    ],
+    "file": "a321c4e3369834c70349b259.svg",
+    "width": 86.387163,
+    "height": 46.488934,
+    "svg_sha256": "9d35cd6963a36b6e2a9e0f0d5c877142abe96d8c398c03485ba1c67cb640c52a"
+  },
+  "2a978c82a8de521e2a2db4bc": {
+    "key": "2a978c82a8de521e2a2db4bc",
+    "tex": "\\xymatrix{\n & Y_1 & \\\\\nX \\ar[ru]^{f_1} \\ar[r]^{f_3} \\ar[rd]_{f_2} &\nY_3 \\ar[u]_{a_{31}} \\ar[d]^{a_{32}} &\nY \\ar[lu]_{s_1} \\ar[l]_{s_3} \\ar[ld]^{s_2} \\\\\n& Y_2 &\n}",
+    "sections": [
+      "categories-localization"
+    ],
+    "file": "2a978c82a8de521e2a2db4bc.svg",
+    "width": 86.387163,
+    "height": 84.679003,
+    "svg_sha256": "a79d26efa9393c01ad3051beb9fdd91bec85b68a329a4cafd16909c71eec1596"
+  },
+  "6bcf0b28e470d44dfabe9062": {
+    "key": "6bcf0b28e470d44dfabe9062",
+    "tex": "\\xymatrix{\nY \\ar[d]_{s_1} \\ar[r]_{s_2} & Y_2 \\ar@{..>}[d]^{a_{24}} \\\\\nY_1 \\ar@{..>}[r]^{a_{14}} & Y_4\n}",
+    "sections": [
+      "categories-localization"
+    ],
+    "file": "6bcf0b28e470d44dfabe9062.svg",
+    "width": 64.057111,
+    "height": 46.488934,
+    "svg_sha256": "275ae63bda060ed3b6f58e72c7100bef1f58586a87476cd76d2fab641885f379"
+  },
+  "0533e40b0c10fb2659932243": {
+    "key": "0533e40b0c10fb2659932243",
+    "tex": "\\xymatrix{\nX \\ar@{=}[d] \\ar[r]_{f_1} & Y_1 \\ar[d]^{a_{14}} & Y \\ar[l]^{s_1} \\ar@{=}[d] \\\\\nX \\ar[r]^{f_4} & Y_4 & Y \\ar[l]_{s_4}\n}",
+    "sections": [
+      "categories-localization"
+    ],
+    "file": "0533e40b0c10fb2659932243.svg",
+    "width": 86.387163,
+    "height": 46.488934,
+    "svg_sha256": "70a14f7cbc7dcb7c7f80422bc52b150f6ac68e8ae68a67c6258783096419b743"
+  },
+  "2e544fb11290210df51fc24a": {
+    "key": "2e544fb11290210df51fc24a",
+    "tex": "\\xymatrix{\nY \\ar[d]_s \\ar[r]_g & Z' \\ar[d]^{u_2} \\\\\nY' \\ar[r]^{h_2} & Z_2\n}",
+    "sections": [
+      "categories-localization"
+    ],
+    "file": "2e544fb11290210df51fc24a.svg",
+    "width": 57.806544,
+    "height": 47.132965,
+    "svg_sha256": "c03c7d747b3a3d3f10d421e56374dab21a25c2817cce1e216498849bf9951e2a"
+  },
+  "00fc74b2a257ca8b4de251dc": {
+    "key": "00fc74b2a257ca8b4de251dc",
+    "tex": "\\xymatrix{\nZ' \\ar[d]_{u_2} \\ar[r]_{u_3} & Z_3 \\ar[d]^{u_{34}} \\\\\nZ_2 \\ar[r]^{h_{24}} & Z_4\n}",
+    "sections": [
+      "categories-localization"
+    ],
+    "file": "00fc74b2a257ca8b4de251dc.svg",
+    "width": 66.580636,
+    "height": 47.539171,
+    "svg_sha256": "2ca98cb12f39d035c8d8b14d4dfeda6bae3f60d3c6f6874a2abf5465739e47e1"
+  },
+  "7109d8814a4eb251af60a948": {
+    "key": "7109d8814a4eb251af60a948",
+    "tex": "\\xymatrix{\nX \\ar@{=}[d] \\ar[r]_{h_2\\circ f} &\nZ_2 \\ar[d]^{h_{24}} &\nZ \\ar[l]^{u_2 \\circ t} \\ar@{=}[d] \\\\\nX \\ar@{=}[d] \\ar[r]^{h_4\\circ f} &\nZ_4 &\nZ \\ar@{=}[d] \\ar[l]_{u_4 \\circ t} \\\\\nX \\ar[r]^{h_3 \\circ f} &\nZ_3 \\ar[u]^{u_{34}} &\nZ \\ar[l]_{u_3 \\circ t}\n}",
+    "sections": [
+      "categories-localization"
+    ],
+    "file": "7109d8814a4eb251af60a948.svg",
+    "width": 87.015649,
+    "height": 84.81848,
+    "svg_sha256": "765e303bcfd09e4ac900e8c26af1f56282422e241002e7e1fcf7495df3704820"
+  },
+  "e24a1efe75c1bc531002b4cb": {
+    "key": "e24a1efe75c1bc531002b4cb",
+    "tex": "\\vcenter{\n\\xymatrix{\nY \\ar[d]_{s_2} \\ar[r]^g & Z' \\ar[d]^u \\\\\nY_2 \\ar[r]^h & Z''\n}\n}\n\\quad\n\\Rightarrow\n\\quad\n\\vcenter{\n\\xymatrix{\nY \\ar[d]_{s_1} \\ar[r]^g & Z' \\ar[d]^u \\\\\nY_1 \\ar[r]^{h \\circ a} & Z''\n}\n}",
+    "sections": [
+      "categories-localization"
+    ],
+    "file": "e24a1efe75c1bc531002b4cb.svg",
+    "width": 159.881747,
+    "height": 49.530153,
+    "svg_sha256": "07442482a6c0ed1277acd5b86eeb7b58c3239735f224d90357eb830fdfc7f8da"
+  },
+  "ad3051ef85d869ae5242826a": {
+    "key": "ad3051ef85d869ae5242826a",
+    "tex": "\\xymatrix{\n& & & Z \\ar[d] \\\\\n& & Y \\ar[d] \\ar[r] & Z' \\ar@{..>}[d] \\\\\n& X \\ar[d] \\ar[r] & Y' \\ar@{..>}[d] \\ar@{..>}[r] & Z'' \\ar@{..>}[d] \\\\\nW \\ar[r] & X' \\ar@{..>}[r] & Y'' \\ar@{..>}[r] & Z'''\n}",
+    "sections": [
+      "categories-localization"
+    ],
+    "file": "ad3051ef85d869ae5242826a.svg",
+    "width": 139.021659,
+    "height": 118.815653,
+    "svg_sha256": "b3bee55197951ae279f96ae49880e83744863ae26e99aab12f0b0f54b2eebc8f"
+  },
+  "bb30ea0a4753934c866ddfdd": {
+    "key": "bb30ea0a4753934c866ddfdd",
+    "tex": "\\xymatrix{\nY \\ar[d]_{s_1} \\ar[r]_{s_2} & Y_2 \\ar[d]^{t_2} \\\\\nY_1 \\ar[r]^{a_1} & Y'\n}",
+    "sections": [
+      "categories-localization"
+    ],
+    "file": "bb30ea0a4753934c866ddfdd.svg",
+    "width": 59.485456,
+    "height": 46.82991,
+    "svg_sha256": "fdfa962f0eadc004eede4bdb6ccfa0067397d9fad85fbadd0f45e05f587a4155"
+  },
+  "dbecf78b3f62285b28f0c48f": {
+    "key": "dbecf78b3f62285b28f0c48f",
+    "tex": "\\xymatrix{\n & Y' \\ar[d]^u & \\\\\nX \\ar[ru]^f \\ar[r]^h \\ar[rd]_g &\nZ &\nY' \\ar[lu]_{\\text{id}_{Y'}} \\ar[l]_t \\ar[ld]^{\\text{id}_{Y'}} \\\\\n& Y' \\ar[u]_v &\n}",
+    "sections": [
+      "categories-localization"
+    ],
+    "file": "dbecf78b3f62285b28f0c48f.svg",
+    "width": 89.41825,
+    "height": 82.269057,
+    "svg_sha256": "45ec2ca3706a60c8b5dc371c495905ed64b860dbf9fc72d287606fa5150a4ec9"
+  },
+  "698592fdb28d9bfe943d8cda": {
+    "key": "698592fdb28d9bfe943d8cda",
+    "tex": "\\xymatrix{\n& Y \\ar[ld]_s \\ar[rd]^t & \\\\\nY' \\ar[rr]^a & & Y''\n}",
+    "sections": [
+      "categories-localization"
+    ],
+    "file": "698592fdb28d9bfe943d8cda.svg",
+    "width": 90.597731,
+    "height": 43.841163,
+    "svg_sha256": "04a11c91723b7b6d2212825c981c405c09f4ca15cee4975e7e2dcfcf3171bf8b"
+  },
+  "e0266942dcccbfeb04baec3e": {
+    "key": "e0266942dcccbfeb04baec3e",
+    "tex": "\\xymatrix{\nY \\ar[d]_{s_1} \\ar[r]_{s_2} & Y_2 \\ar[d]^t \\\\\nY_1 \\ar[r]^a & Y_3\n}",
+    "sections": [
+      "categories-localization"
+    ],
+    "file": "e0266942dcccbfeb04baec3e.svg",
+    "width": 55.922134,
+    "height": 46.628411,
+    "svg_sha256": "44871cd20568ff07a24c7ab63c509648256e1d64bcef665007cf095f2e319fdc"
+  },
+  "18645206782d35bdf72fe76e": {
+    "key": "18645206782d35bdf72fe76e",
+    "tex": "\\xymatrix{\nQ(X) \\ar[d]_{Q(f)} \\ar[r]_a & Q(X') \\ar[d]^{Q(f')} \\\\\nQ(Y) \\ar[r]^b & Q(Y')\n}",
+    "sections": [
+      "categories-localization"
+    ],
+    "file": "18645206782d35bdf72fe76e.svg",
+    "width": 97.65998,
+    "height": 49.872721,
+    "svg_sha256": "bd7dba66ebf32a258f95f9617bfb8907dae12ab29da43e31d3114e6992ba161b"
+  },
+  "87740c0a2d67492f06f22e18": {
+    "key": "87740c0a2d67492f06f22e18",
+    "tex": "\\xymatrix{\nX \\ar[d]_f \\ar[r]_g & X'' \\ar[d]^{f''} & X' \\ar[d]^{f'} \\ar[l]^s \\\\\nY \\ar[r]^h & Y'' & Y' \\ar[l]_t\n}",
+    "sections": [
+      "categories-localization"
+    ],
+    "file": "87740c0a2d67492f06f22e18.svg",
+    "width": 100.981227,
+    "height": 44.891401,
+    "svg_sha256": "24a6d8a6ee3585e8a369294ea62d912549aac54e01fda0f558f4c9149826de3b"
+  },
+  "0720b13c1441871d9e6d40ff": {
+    "key": "0720b13c1441871d9e6d40ff",
+    "tex": "\\xymatrix{\nX \\ar[d]_f \\ar[r]_g & X'' \\ar[d]^{f''} & X' \\ar[d]^{f'} \\ar[l]^s \\\\\nY & Y'' & Y' \\ar[l]_t\n}",
+    "sections": [
+      "categories-localization"
+    ],
+    "file": "0720b13c1441871d9e6d40ff.svg",
+    "width": 100.981227,
+    "height": 44.891401,
+    "svg_sha256": "99312c3640d556dd9371352b75bea4a779cca6bbbe3981ab18609eebd27c34c9"
+  },
+  "4f137c5a9eaeef1ad673e674": {
+    "key": "4f137c5a9eaeef1ad673e674",
+    "tex": "\\xymatrix{\n & X_1 \\ar[ld]_{s_1} \\ar[rd]^{f_1} & \\\\\nX &\nX_3 \\ar[l]_{s_3} \\ar[u]_u \\ar[d]^v \\ar[r]^{f_3} &\nY \\\\\n& X_2 \\ar[lu]^{s_2} \\ar[ru]_{f_2} &\n}",
+    "sections": [
+      "categories-localization"
+    ],
+    "file": "4f137c5a9eaeef1ad673e674.svg",
+    "width": 88.857057,
+    "height": 84.679003,
+    "svg_sha256": "87815e52d45820ec103e09a8a6e00657625b09971219205065e8e66e5924b348"
+  },
+  "4870f14e9069a6f191e4158d": {
+    "key": "4870f14e9069a6f191e4158d",
+    "tex": "\\xymatrix{\nX'' \\ar[d]_u \\ar[r]^h & Y' \\ar[d]^t \\\\\nX' \\ar[r]^f & Y\n}",
+    "sections": [
+      "categories-localization"
+    ],
+    "file": "4870f14e9069a6f191e4158d.svg",
+    "width": 55.358407,
+    "height": 47.696959,
+    "svg_sha256": "124ddc0f5ba48bbb37d58ba64f8c286fef9ce1d624d03240e4d5b0e070a4efed"
+  },
+  "45c0c3c3d8fb2c419adfa546": {
+    "key": "45c0c3c3d8fb2c419adfa546",
+    "tex": "\\xymatrix{\nX' \\ar[rd]_s \\ar[rr]_a & & X'' \\ar[ld]^t \\\\\n& X\n}",
+    "sections": [
+      "categories-localization"
+    ],
+    "file": "45c0c3c3d8fb2c419adfa546.svg",
+    "width": 93.790681,
+    "height": 44.550425,
+    "svg_sha256": "1febad644da6fc6c8540f9ce1af89e6fe476955ae0b820668ec8fac4311c82ed"
+  },
+  "9c50f48e86531d6c9b6fd935": {
+    "key": "9c50f48e86531d6c9b6fd935",
+    "tex": "\\xymatrix{\nX \\ar[d]_f & X'' \\ar[l]^s \\ar[d]^{f''} \\ar[r]_g & X' \\ar[d]^{f'} \\\\\nY & Y'' \\ar[l]_t \\ar[r]^h & Y'\n}",
+    "sections": [
+      "categories-localization"
+    ],
+    "file": "9c50f48e86531d6c9b6fd935.svg",
+    "width": 100.981227,
+    "height": 44.891401,
+    "svg_sha256": "5cbb2f3e75e63dc6bdc2994df54b32be794d3d1a802d3d42ee26fb4a9f9ce145"
+  },
+  "7d20ed51e72b26c015cb2f1a": {
+    "key": "7d20ed51e72b26c015cb2f1a",
+    "tex": "\\xymatrix{\n & X' \\ar[d]^u & \\\\\nX \\ar[ru]^{gf} \\ar[r]^{f'} \\ar[rd]_{\\text{id}_X} &\nX'' &\nX \\ar[lu]_s \\ar[l]_{s'} \\ar[ld]^{\\text{id}_X} \\\\\n& X \\ar[u]_v &\n}",
+    "sections": [
+      "categories-localization"
+    ],
+    "file": "7d20ed51e72b26c015cb2f1a.svg",
+    "width": 91.148164,
+    "height": 81.928081,
+    "svg_sha256": "ca32a7873154b46f82e697bf83679fd502de77bc9e03ec66a40a0e183610b96d"
+  },
+  "16252461bcf8c7409ceb3cea": {
+    "key": "16252461bcf8c7409ceb3cea",
+    "tex": "\\xymatrix{\nX \\ar[d]_t \\ar[r]_g & Y \\ar[dd]^s \\\\\nZ \\ar[d]_a \\\\\nZ' \\ar[r]^{f'} & W\n}",
+    "sections": [
+      "categories-localization"
+    ],
+    "file": "16252461bcf8c7409ceb3cea.svg",
+    "width": 53.58997,
+    "height": 80.756045,
+    "svg_sha256": "87820a45166e92412b0cc25c74f31e4a771a7e639f66455c9b9ee4b66a7bdaec"
+  },
+  "fb4e1657c380512943b5f9db": {
+    "key": "fb4e1657c380512943b5f9db",
+    "tex": "\\xymatrix{\n\\Spec(B) \\ar@{->>}[r]^g &\n\\Spec(R[x]/J)  \\ar[r] &\n\\Spec(R[x])\\\\\n\\emptyset \\ar[u] \\ar[r] &\n\\Spec(R[x]/(J + (x)))\\ar[u] \\ar[r] &\n\\Spec(R) \\ar[u]^0\n}",
+    "sections": [
+      "morphisms-integral"
+    ],
+    "file": "fb4e1657c380512943b5f9db.svg",
+    "width": 232.704096,
+    "height": 52.252154,
+    "svg_sha256": "099cbb9f93287ed81458bd9c2672fea59aa1e18a2e9fee537aecd7944ec981de"
+  },
+  "aea252ea24b6e16f745649a6": {
+    "key": "aea252ea24b6e16f745649a6",
+    "tex": "\\xymatrix{\n(I\\cap \\mathfrak m^n) \\otimes_R M \\ar[r] \\ar[d] &\nI \\otimes_R M \\oplus \\mathfrak m^n \\otimes_R M \\ar[r] \\ar[d] &\n(I + \\mathfrak m^n) \\otimes_R M \\ar[d] \\\\\nM \\ar[r] &\nM \\oplus M \\ar[r] &\nM\n}",
+    "sections": [
+      "algebra-criteria-flatness"
+    ],
+    "file": "aea252ea24b6e16f745649a6.svg",
+    "width": 281.88208,
+    "height": 46.987111,
+    "svg_sha256": "3b3acd6c6136e228a82587d80d5b3817a325631c19173eb05ea784bb58c13c7e"
+  },
+  "db274c1fb1dc88c376fc8706": {
+    "key": "db274c1fb1dc88c376fc8706",
+    "tex": "\\xymatrix{\nF_2'/I'F_2' \\ar[r] \\ar[d] &\nF_1'/I'F_1' \\ar[r] \\ar[d] &\nF_0'/I'F_0' \\ar[d] \\\\\nF_2'/I'F_2' \\oplus F_2''/I'F_2'' \\ar[r] &\nF_1'/I'F_1' \\ar[r] &\nF_0'/I'F_0'\n}",
+    "sections": [
+      "algebra-criteria-flatness"
+    ],
+    "file": "db274c1fb1dc88c376fc8706.svg",
+    "width": 213.473239,
+    "height": 49.994366,
+    "svg_sha256": "cfd3126196b6044c0e3d18a953041eacdd542aa7566d22793ac5dbaf23c02dcb"
+  },
+  "53b0ac9be54e2f00b3fd83bb": {
+    "key": "53b0ac9be54e2f00b3fd83bb",
+    "tex": "\\xymatrix{\nS \\ar[r] & S' \\\\\nR \\ar[r] \\ar[u] & R' \\ar[u]\n}",
+    "sections": [
+      "algebra-criteria-flatness"
+    ],
+    "file": "53b0ac9be54e2f00b3fd83bb.svg",
+    "width": 46.84761,
+    "height": 45.110579,
+    "svg_sha256": "74005dd12afe292ca03af4cb7d3582d1a02deeeed48e9c032481771dc13e7000"
+  },
+  "790ee4436fd9f16c32345a58": {
+    "key": "790ee4436fd9f16c32345a58",
+    "tex": "\\xymatrix{\n0 \\ar[r] &\nM' \\ar[r] \\ar[d]^u &\nM \\ar[r] \\ar[d]^v &\nM'' \\ar[r] \\ar[d]^w &\n0 \\\\\n0 \\ar[r] &\nK' \\ar[r] &\nK \\ar[r] &\nK'' \\ar[r] &\n0\n}",
+    "sections": [
+      "more-algebra-determinants"
+    ],
+    "file": "790ee4436fd9f16c32345a58.svg",
+    "width": 168.86837,
+    "height": 45.110579,
+    "svg_sha256": "37c7835a3b97dd15b1ea2bac7777763d1cb751a1c549ed86c79710015b0aa607"
+  },
+  "0cd80b673932f8bf4c031880": {
+    "key": "0cd80b673932f8bf4c031880",
+    "tex": "\\xymatrix{\n\\det(M') \\otimes \\det(M'') \\ar[r]_-\\gamma \\ar[d]_{\\det(u) \\otimes \\det(w)} &\n\\det(M) \\ar[d]^{\\det(v)} \\\\\n\\det(K') \\otimes \\det(K'') \\ar[r]^-\\gamma & \\det(K)\n}",
+    "sections": [
+      "more-algebra-determinants"
+    ],
+    "file": "0cd80b673932f8bf4c031880.svg",
+    "width": 166.241125,
+    "height": 49.872721,
+    "svg_sha256": "60a5b4a6b08b4c55f39da41012ab89dab23ef11acdf1f0b541f5681540ae5123"
+  },
+  "ecfe3ebe58bc86a6159435b8": {
+    "key": "ecfe3ebe58bc86a6159435b8",
+    "tex": "\\xymatrix{\n\\det(K) \\otimes \\det(L/K) \\otimes \\det(M/L) \\ar[r] \\ar[d] &\n\\det(L) \\otimes \\det(M/L) \\ar[d] \\\\\n\\det(K) \\otimes \\det(M/K) \\ar[r] &\n\\det(M)\n}",
+    "sections": [
+      "more-algebra-determinants"
+    ],
+    "file": "ecfe3ebe58bc86a6159435b8.svg",
+    "width": 253.820465,
+    "height": 49.8132,
+    "svg_sha256": "264bf1b8e5c2dc24b02535fb8530de2b2f2e015e5dc102349cc70ef39321a363"
+  },
+  "56e8e7a78ae2f1ed075d778b": {
+    "key": "56e8e7a78ae2f1ed075d778b",
+    "tex": "\\xymatrix{\n\\det(M') \\otimes \\det(M'') \\ar[r]\n\\ar[d]_{\\epsilon \\cdot (\\text{switch tensors})} &\n\\det(M' \\oplus M'') \\ar[d]^{\\det(\\text{switch summands})} \\\\\n\\det(M'') \\otimes \\det(M') \\ar[r] &\n\\det(M'' \\oplus M')\n}",
+    "sections": [
+      "more-algebra-determinants"
+    ],
+    "file": "56e8e7a78ae2f1ed075d778b.svg",
+    "width": 247.995937,
+    "height": 49.872721,
+    "svg_sha256": "0ca6e9c2ae6161373050b61d7b3664570191b189bc5381dad4f388847c043aea"
+  },
+  "fd6640c130123cb05a97ada0": {
+    "key": "fd6640c130123cb05a97ada0",
+    "tex": "\\xymatrix{\nM_i  \\ar[r] \\ar[d] & M_j \\ar[d] \\\\\nM \\ar[r] & N\n}",
+    "sections": [
+      "algebra-descent"
+    ],
+    "file": "fd6640c130123cb05a97ada0.svg",
+    "width": 55.178157,
+    "height": 44.925385,
+    "svg_sha256": "b6681fe6e313e1a771027cd5160328eb1fcc95d40d1646d01d8ee68a4fee9f90"
+  },
+  "440c47fa8b1881b1ca11d6d6": {
+    "key": "440c47fa8b1881b1ca11d6d6",
+    "tex": "\\xymatrix{\nM_i\\otimes_R S  \\ar[r] \\ar[d] & M_j\\otimes_R S \\ar[d] \\\\\nM\\otimes_R S \\ar[r] & N\\otimes_R S\n}",
+    "sections": [
+      "algebra-descent"
+    ],
+    "file": "440c47fa8b1881b1ca11d6d6.svg",
+    "width": 106.847728,
+    "height": 47.525603,
+    "svg_sha256": "5416ff7e91e4452c9932b65125706316f438b6e557d3db6a78322ab40f3a761a"
+  },
+  "37275a3fd1121a5207657e35": {
+    "key": "37275a3fd1121a5207657e35",
+    "tex": "\\xymatrix{\nB_n \\otimes_A M_m \\ar[r] \\ar[d] & M_{n + m} \\ar[d] \\\\\nB_n \\otimes_A M_{m'} \\ar[r] & M_{n + m'}\n}",
+    "sections": [
+      "coherent-theorem-formal-functions"
+    ],
+    "file": "37275a3fd1121a5207657e35.svg",
+    "width": 110.661636,
+    "height": 48.142078,
+    "svg_sha256": "1650eba516de9570bc54a79a7eb0e8b77ac99ac943f498fb5e09c8398e2b6379"
+  },
+  "9e4815cda68ab2be7383b298": {
+    "key": "9e4815cda68ab2be7383b298",
+    "tex": "\\xymatrix{\nI^n \\otimes_A M_0 \\ar[r] \\ar[d] &\nI^nM_0 \\ar[r] \\ar@{..>}[d] &\nM_0 \\ar[d] \\\\\nM_n \\ar[r] &\nM_{n - c} \\ar[r] &\nM_0\n}",
+    "sections": [
+      "coherent-theorem-formal-functions"
+    ],
+    "file": "9e4815cda68ab2be7383b298.svg",
+    "width": 140.960732,
+    "height": 47.043526,
+    "svg_sha256": "9057f7840f867d66bc89333c6a15fdb6a2d552a20aeef7d73b3727d452767769"
+  },
+  "456a0ca39fb7a9c2d2a24aed": {
+    "key": "456a0ca39fb7a9c2d2a24aed",
+    "tex": "\\xymatrix{\n0 \\ar[r] &\nI^n\\mathcal{F} \\ar[r] &\n\\mathcal{F} \\ar[r] &\n\\mathcal{F}/I^n\\mathcal{F} \\ar[r] &\n0 \\\\\n0 \\ar[r] &\nI^{n + m}\\mathcal{F} \\ar[r] \\ar[u] &\n\\mathcal{F} \\ar[r] \\ar[u] &\n\\mathcal{F}/I^{n + m}\\mathcal{F} \\ar[r] \\ar[u] &\n0\n}",
+    "sections": [
+      "coherent-theorem-formal-functions"
+    ],
+    "file": "456a0ca39fb7a9c2d2a24aed.svg",
+    "width": 213.847981,
+    "height": 50.043462,
+    "svg_sha256": "c95c3fa3ac01c3b401e0283e65883127f0377cd2042140c38b195c6b6abf5313"
+  },
+  "cbb1a4d3a8c6424cfbcb7a82": {
+    "key": "cbb1a4d3a8c6424cfbcb7a82",
+    "tex": "\\xymatrix{\nH^p(X, \\mathcal{F}) \\ar[r] &\nH^p(X, \\mathcal{F}/I^n\\mathcal{F}) \\ar[r]_\\delta &\nH^{p + 1}(X, I^n\\mathcal{F}) \\ar[r] &\nH^{p + 1}(X, \\mathcal{F}) \\\\\nH^p(X, \\mathcal{F}) \\ar[r] \\ar[u]^1 &\nH^p(X, \\mathcal{F}/I^{n + m}\\mathcal{F}) \\ar[r] \\ar[u]^\\gamma &\nH^{p + 1}(X, I^{n + m}\\mathcal{F}) \\ar[u]^\\alpha \\ar[r]^-\\beta &\nH^{p + 1}(X, \\mathcal{F}) \\ar[u]_1\n}",
+    "sections": [
+      "coherent-theorem-formal-functions"
+    ],
+    "file": "cbb1a4d3a8c6424cfbcb7a82.svg",
+    "width": 339.143455,
+    "height": 51.224843,
+    "svg_sha256": "37c6be66a5917410307bf8a23b64ba96494b33fe6600f787ebadaa7271404716"
+  },
+  "23fbcf013047fa6ce2e6496e": {
+    "key": "23fbcf013047fa6ce2e6496e",
+    "tex": "\\xymatrix{\nX_n =\n\\Spec(\\mathcal{O}_{Y, y}/\\mathfrak m_y^n) \\times_Y X\n\\ar[r]_-{i_n} \\ar[d]_{f_n} &\nX \\ar[d]^f \\\\\n\\Spec(\\mathcal{O}_{Y, y}/\\mathfrak m_y^n) \\ar[r]^-{c_n} & Y\n}",
+    "sections": [
+      "coherent-theorem-formal-functions"
+    ],
+    "file": "23fbcf013047fa6ce2e6496e.svg",
+    "width": 162.599488,
+    "height": 52.536408,
+    "svg_sha256": "f4a40d51e47d53a5b9ba97c97c89792828ad8a48b5d163f23247b0fe6a3344c9"
+  },
+  "96acc60f587294b77d0520b4": {
+    "key": "96acc60f587294b77d0520b4",
+    "tex": "\\xymatrix{\n\\mathcal{A}_d(V) \\ar[d]_{\\psi} \\ar[r]_{\\psi} &\n\\Gamma(f^{-1}(V), \\mathcal{L}^{\\otimes d}) \\ar[d]^{restrict} \\\\\n\\Gamma(\\pi^{-1}(V),\n\\mathcal{O}_{\\underline{\\text{Proj}}_S(\\mathcal{A})}(d)) \\ar[r]^{\\theta} &\n\\Gamma(f^{-1}(V) \\cap U(\\psi), \\mathcal{L}^{\\otimes d})\n}",
+    "sections": [
+      "constructions-invertible-relative-proj"
+    ],
+    "file": "96acc60f587294b77d0520b4.svg",
+    "width": 235.938538,
+    "height": 56.176147,
+    "svg_sha256": "9b79adc3b9068e541fbe7e943141d938edad587d6ea8a58b04e172109c755f3d"
+  },
+  "44573cdfe8ac3b76cf6fd143": {
+    "key": "44573cdfe8ac3b76cf6fd143",
+    "tex": "\\xymatrix{\nR \\to \\prod_{i_0} R_{f_{i_0}} \\to \\prod_{i_0 < i_1} R_{f_{i_0}f_{i_1}}\n\\to \\ldots \\to R_{f_1\\ldots f_r} \\ar[d] \\\\\nS \\to \\prod_{i_0} S_{f_{i_0}} \\to \\prod_{i_0 < i_1} S_{f_{i_0}f_{i_1}}\n\\to \\ldots \\to S_{f_1\\ldots f_r}\n}",
+    "sections": [
+      "more-algebra-formal-glueing"
+    ],
+    "file": "44573cdfe8ac3b76cf6fd143.svg",
+    "width": 208.809415,
+    "height": 52.911779,
+    "svg_sha256": "0335480453944c7e3ea027b51984f6f085318896abf8914f0fac6a8fd440e29c"
+  },
+  "217df197fc81aba49c294a38": {
+    "key": "217df197fc81aba49c294a38",
+    "tex": "\\xymatrix{\n0 \\ar[r] &\nN \\ar[r] \\ar[d] &\nE \\ar[r] \\ar[d] &\nM \\ar[r] \\ar[d] &\n0 \\\\\n0 \\ar[r] &\nN \\otimes_R S \\ar[r] &\n\\tilde E \\ar[r] &\nM \\otimes_R S \\ar[r] &\n0\n}",
+    "sections": [
+      "more-algebra-formal-glueing"
+    ],
+    "file": "217df197fc81aba49c294a38.svg",
+    "width": 207.288685,
+    "height": 47.063318,
+    "svg_sha256": "2ff84d04fb0779e9b88e8cff05518527cfb9c6e45d640e7f08a9f7d8f7da8953"
+  },
+  "209f7f15ee5baef06e2e164c": {
+    "key": "209f7f15ee5baef06e2e164c",
+    "tex": "\\xymatrix{\n0 \\ar[r] &\n\\Ext_R(R/I^n, N) \\ar[r] \\ar[d] &\nH_1(N, f_\\bullet) \\ar[r] \\ar[d] &\n\\Hom_R(K, N) \\ar[d] \\\\\n0 \\ar[r] &\n\\Ext_S(S/I^nS, N \\otimes S) \\ar[r] &\nH_1(N \\otimes S, f_\\bullet) \\ar[r] &\n\\Hom_S(K \\otimes S, N \\otimes S)\n}",
+    "sections": [
+      "more-algebra-formal-glueing"
+    ],
+    "file": "209f7f15ee5baef06e2e164c.svg",
+    "width": 338.814099,
+    "height": 49.8132,
+    "svg_sha256": "cbb4f6c64186fec4206d5ae541bd2b6b1d43a5be3dd291e40092eb168b5fc13e"
+  },
+  "a4ccefcfb2eab8bee68c2436": {
+    "key": "a4ccefcfb2eab8bee68c2436",
+    "tex": "\\xymatrix{\n\\text{Mod}_R \\ar[r]_-{\\text{Can}} \\ar[d]_{-\\otimes_R R'} &\n\\text{Glue}(R \\to S, f_1, \\ldots, f_t) \\ar[r]_-{H^0} \\ar[d]^{-\\otimes_R R'} &\n\\text{Mod}_R \\ar[d]^{-\\otimes_R R'} \\\\\n\\text{Mod}_{R'} \\ar[r]^-{\\text{Can}} &\n\\text{Glue}(R' \\to S', f_1, \\ldots, f_t) \\ar[r]^-{H^0} &\n\\text{Mod}_{R'}\n}",
+    "sections": [
+      "more-algebra-formal-glueing"
+    ],
+    "file": "a4ccefcfb2eab8bee68c2436.svg",
+    "width": 254.95717,
+    "height": 49.822078,
+    "svg_sha256": "048c12c3d6d7b6da31a557e3c823f410a79673a31dad9ef9073d696f7a90d4b3"
+  },
+  "1eaa8ffc4b159fd9516f952f": {
+    "key": "1eaa8ffc4b159fd9516f952f",
+    "tex": "\\xymatrix{\n0 \\ar[r] &\nH^0(\\mathbf{M}) \\ar[r] \\ar[d] &\nE \\ar[r] \\ar[d] &\nQ \\ar[r] \\ar[d] &\n0 \\\\\n0 \\ar[r] &\nH^0(\\mathbf{M}) \\otimes_R S \\ar[r] &\nM' \\ar[r] &\nQ \\ar[r] &\n0\n}",
+    "sections": [
+      "more-algebra-formal-glueing"
+    ],
+    "file": "1eaa8ffc4b159fd9516f952f.svg",
+    "width": 207.729811,
+    "height": 51.224843,
+    "svg_sha256": "c2f4dcfc481c0251ec0e9365e0300985b10c573dc1547c01a455bcb0e2a0df87"
+  },
+  "a7f9d028014e24a026faf084": {
+    "key": "a7f9d028014e24a026faf084",
+    "tex": "\\xymatrix{\n\\sigma_{\\leq n}A_\\bullet \\ar[d]  &\n\\ldots \\ar[r] &\n0 \\ar[r] \\ar[d] &\nA_n \\ar[r] \\ar[d] &\nA_{n - 1} \\ar[r] \\ar[d] &\n\\ldots \\\\\nA_\\bullet  &\n\\ldots \\ar[r] &\nA_{n + 1} \\ar[r] &\nA_n \\ar[r] &\nA_{n - 1} \\ar[r] &\n\\ldots\n}",
+    "sections": [
+      "homology-truncations"
+    ],
+    "file": "a7f9d028014e24a026faf084.svg",
+    "width": 259.816999,
+    "height": 48.702444,
+    "svg_sha256": "ea2612fe0065f47168324d09ae8795a118477ad4b9af5eb3da7ed92ca0936c0f"
+  },
+  "aeb9be6ce315ff18de6fd652": {
+    "key": "aeb9be6ce315ff18de6fd652",
+    "tex": "\\xymatrix{\nA_\\bullet \\ar[d]  &\n\\ldots \\ar[r] &\nA_{n + 1} \\ar[r] \\ar[d] &\nA_n \\ar[r] \\ar[d] &\nA_{n - 1} \\ar[r] \\ar[d] &\n\\ldots \\\\\n\\sigma_{\\geq n}A_\\bullet  &\n\\ldots \\ar[r] &\nA_{n + 1} \\ar[r] &\nA_n \\ar[r] &\n0 \\ar[r] &\n\\ldots\n}",
+    "sections": [
+      "homology-truncations"
+    ],
+    "file": "aeb9be6ce315ff18de6fd652.svg",
+    "width": 259.816999,
+    "height": 49.18364,
+    "svg_sha256": "78203f6c3f38533e74d948f58c042454330abd817def0a518df689cf8fe0735f"
+  },
+  "2b270ab01f8dbd0e05323ad2": {
+    "key": "2b270ab01f8dbd0e05323ad2",
+    "tex": "\\xymatrix{\n\\tau_{\\geq n}A_\\bullet \\ar[d]  &\n\\ldots \\ar[r] &\nA_{n + 1} \\ar[r] \\ar[d] &\n\\Ker(d_n) \\ar[r] \\ar[d] &\n0 \\ar[r] \\ar[d] &\n\\ldots \\\\\nA_\\bullet  &\n\\ldots \\ar[r] &\nA_{n + 1} \\ar[r] &\nA_n \\ar[r] &\nA_{n - 1} \\ar[r] &\n\\ldots\n}",
+    "sections": [
+      "homology-truncations"
+    ],
+    "file": "2b270ab01f8dbd0e05323ad2.svg",
+    "width": 280.129817,
+    "height": 49.373272,
+    "svg_sha256": "fe0434a298ddf1fc8d6951e9325405820b5957bbbdd0bcda72777f69e33ee979"
+  },
+  "8fa159332cd608ba4b372686": {
+    "key": "8fa159332cd608ba4b372686",
+    "tex": "\\xymatrix{\nA_\\bullet \\ar[d]  &\n\\ldots \\ar[r] &\nA_{n + 1} \\ar[r] \\ar[d] &\nA_n \\ar[r] \\ar[d] &\nA_{n - 1} \\ar[r] \\ar[d] &\n\\ldots \\\\\n\\tau_{\\leq n}A_\\bullet  &\n\\ldots \\ar[r] &\n0 \\ar[r] &\n\\Coker(d_{n + 1}) \\ar[r] &\nA_{n - 1} \\ar[r] &\n\\ldots\n}",
+    "sections": [
+      "homology-truncations"
+    ],
+    "file": "8fa159332cd608ba4b372686.svg",
+    "width": 299.626194,
+    "height": 49.515738,
+    "svg_sha256": "99b304000fe982b9d6014d316f27aa2dc39f63c757b773c366405c400777f32d"
+  },
+  "0e4ba601c14912e26e040832": {
+    "key": "0e4ba601c14912e26e040832",
+    "tex": "\\xymatrix{\n\\sigma_{\\geq n}A^\\bullet \\ar[d]  &\n\\ldots \\ar[r] &\n0 \\ar[r] \\ar[d] &\nA^n \\ar[r] \\ar[d] &\nA^{n + 1} \\ar[r] \\ar[d] &\n\\ldots \\\\\nA^\\bullet  &\n\\ldots \\ar[r] &\nA^{n - 1} \\ar[r] &\nA^n \\ar[r] &\nA^{n + 1} \\ar[r] &\n\\ldots\n}",
+    "sections": [
+      "homology-truncations"
+    ],
+    "file": "0e4ba601c14912e26e040832.svg",
+    "width": 259.816999,
+    "height": 47.637435,
+    "svg_sha256": "e6fb60c671239ab92a7cc588115cddbafb8d0348bc9f0ee3ac0142fdad63dc4e"
+  },
+  "e1b6681232fc8971ba37f80d": {
+    "key": "e1b6681232fc8971ba37f80d",
+    "tex": "\\xymatrix{\nA^\\bullet \\ar[d]  &\n\\ldots \\ar[r] &\nA^{n - 1} \\ar[r] \\ar[d] &\nA^n \\ar[r] \\ar[d] &\nA^{n + 1} \\ar[r] \\ar[d] &\n\\ldots \\\\\n\\sigma_{\\leq n}A^\\bullet &\n\\ldots \\ar[r] &\nA^{n - 1} \\ar[r] &\nA^n \\ar[r] &\n0 \\ar[r] &\n\\ldots \\\\\n}",
+    "sections": [
+      "homology-truncations"
+    ],
+    "file": "e1b6681232fc8971ba37f80d.svg",
+    "width": 259.816999,
+    "height": 50.435926,
+    "svg_sha256": "6bcd77dc10e09fae38813360ebab3fbc6915f0a14a521fc3fffe63964476ff27"
+  },
+  "1c7dc7a9d2858378f1ba0245": {
+    "key": "1c7dc7a9d2858378f1ba0245",
+    "tex": "\\xymatrix{\n\\tau_{\\leq n}A^\\bullet \\ar[d]  &\n\\ldots \\ar[r] &\nA^{n - 1} \\ar[r] \\ar[d] &\n\\Ker(d^n) \\ar[r] \\ar[d] &\n0 \\ar[r] \\ar[d] &\n\\ldots \\\\\nA^\\bullet  &\n\\ldots \\ar[r] &\nA^{n - 1} \\ar[r] &\nA^n \\ar[r] &\nA^{n + 1} \\ar[r] &\n\\ldots\n}",
+    "sections": [
+      "homology-truncations"
+    ],
+    "file": "1c7dc7a9d2858378f1ba0245.svg",
+    "width": 280.129817,
+    "height": 47.637435,
+    "svg_sha256": "17bf44a3bf9a50cc82b770eaea694f773e85ab57275152cf522cc126dcbc00bc"
+  },
+  "b68cfd9bb70009c52245384d": {
+    "key": "b68cfd9bb70009c52245384d",
+    "tex": "\\xymatrix{\nA^\\bullet \\ar[d] &\n\\ldots \\ar[r] &\nA^{n - 1} \\ar[r] \\ar[d] &\nA^n \\ar[r] \\ar[d] &\nA^{n + 1} \\ar[r] \\ar[d] &\n\\ldots \\\\\n\\tau_{\\geq n}A^\\bullet &\n\\ldots \\ar[r] &\n0 \\ar[r] &\n\\Coker(d^{n - 1}) \\ar[r] &\nA^{n + 1} \\ar[r] &\n\\ldots\n}",
+    "sections": [
+      "homology-truncations"
+    ],
+    "file": "b68cfd9bb70009c52245384d.svg",
+    "width": 299.736894,
+    "height": 50.435926,
+    "svg_sha256": "4cd7e79f0fd9f81cf64b4aec1b35de8f210e52f5dc97a0e708082fdd60529a75"
+  },
+  "cb594281484a2ed96b2f3263": {
+    "key": "cb594281484a2ed96b2f3263",
+    "tex": "\\xymatrix{\nX \\ar[r] \\ar[d]^1 &\nX \\ar[r] \\ar[d]^f &\n0 \\ar[r] \\ar@{-->}[d] &\nX[1] \\ar[d]^{1[1]} \\\\\nX \\ar[r]^f &\nY \\ar[r]^g &\nZ \\ar[r]^h &\nX[1]\n}",
+    "sections": [
+      "derived-elementary-results"
+    ],
+    "file": "cb594281484a2ed96b2f3263.svg",
+    "width": 139.239034,
+    "height": 49.8132,
+    "svg_sha256": "9b7344a420c3a727898a268d67f5d85d79685e4fba49c1b36ff74d1d19470f1c"
+  },
+  "9882e267cb7091b2bca2d8c1": {
+    "key": "9882e267cb7091b2bca2d8c1",
+    "tex": "\\xymatrix{\nW \\ar[r]_1 \\ar@{..>}[d]^b &\nW \\ar[r] \\ar[d]^a &\n0 \\ar[r] \\ar[d]^0 &\nW[1] \\ar@{..>}[d]^{b[1]} \\\\\nX \\ar[r] & Y \\ar[r] & Z \\ar[r] & X[1]\n}",
+    "sections": [
+      "derived-elementary-results"
+    ],
+    "file": "9882e267cb7091b2bca2d8c1.svg",
+    "width": 142.885692,
+    "height": 49.8132,
+    "svg_sha256": "9a211e29ddea6304c0ccebffcfade7502efa48a34d5fca118124d3e84c1b9eb6"
+  },
+  "0e2b508a7e94d176a1d5e83e": {
+    "key": "0e2b508a7e94d176a1d5e83e",
+    "tex": "\\xymatrix{\nH_W(Z[-1]) \\ar[r] \\ar[d] &\nH_W(X) \\ar[r] \\ar[d] &\nH_W(Y) \\ar[r] \\ar[d] &\nH_W(Z) \\ar[r] \\ar[d] &\nH_W(X[1]) \\ar[d] \\\\\nH_W(Z'[-1]) \\ar[r] &\nH_W(X') \\ar[r] &\nH_W(Y') \\ar[r] &\nH_W(Z') \\ar[r] &\nH_W(X'[1])\n}",
+    "sections": [
+      "derived-elementary-results"
+    ],
+    "file": "0e2b508a7e94d176a1d5e83e.svg",
+    "width": 327.487496,
+    "height": 49.822078,
+    "svg_sha256": "bb1c86d941eefaaf998f61800ace343569b143100746f1b25f93c2d9e4dcf23f"
+  },
+  "1ab1e75da9dfa94ce6b818c4": {
+    "key": "1ab1e75da9dfa94ce6b818c4",
+    "tex": "\\xymatrix{\nX \\ar[r] \\ar[d]^0 &\nY \\ar[r] \\ar[d]^{b, b'} \\ar@{..>}[ld]^\\alpha &\nZ \\ar[r] \\ar[d]^0 \\ar@{..>}[ld]^\\beta &\nX[1] \\ar[d]^0 \\\\\nX \\ar[r] & Y \\ar[r] & Z \\ar[r] & X[1]\n}",
+    "sections": [
+      "derived-elementary-results"
+    ],
+    "file": "1ab1e75da9dfa94ce6b818c4.svg",
+    "width": 132.309937,
+    "height": 49.8132,
+    "svg_sha256": "41db9e0fdb2d34dd424aedc6034e2600fbdb58cebd8184aae5794903c3dfcca1"
+  },
+  "efe295677dc4a9f5b15d73a5": {
+    "key": "efe295677dc4a9f5b15d73a5",
+    "tex": "\\xymatrix{\nZ \\ar[r]_h \\ar[d]_c & X[1] \\ar[d]^{a[1]} \\\\\nZ \\ar[r]^h & X[1]\n}",
+    "sections": [
+      "derived-elementary-results"
+    ],
+    "file": "efe295677dc4a9f5b15d73a5.svg",
+    "width": 64.371367,
+    "height": 49.8132,
+    "svg_sha256": "b66a70daea2b76a723322dff2bc7c060680660524ab75eab991eb5a9bf5f0d61"
+  },
+  "0a5f3f310db508a75c1c73c8": {
+    "key": "0a5f3f310db508a75c1c73c8",
+    "tex": "\\xymatrix{\nX \\ar[r]_f \\ar[d]^0 &\nY \\ar[r]_g \\ar[d]^b &\nZ \\ar[r]_h \\ar[d]^0 \\ar@{..>}[ld]^\\epsilon &\nX[1] \\ar[d]^0 \\\\\nX' \\ar[r]^{f'} &\nY' \\ar[r]^{g'} &\nZ' \\ar[r]^{h'} &\nX'[1]\n}",
+    "sections": [
+      "derived-elementary-results"
+    ],
+    "file": "0a5f3f310db508a75c1c73c8.svg",
+    "width": 143.490255,
+    "height": 49.822078,
+    "svg_sha256": "a61e90ecdca96470a21cb3fe24629225c16d6b86472a3c2eb55dd17675a0a36c"
+  },
+  "162ccda2ee7b684085a89fef": {
+    "key": "162ccda2ee7b684085a89fef",
+    "tex": "\\xymatrix{\n(X \\oplus X', Y \\oplus Y', Z \\oplus Z',\nf \\oplus f', g \\oplus g', h \\oplus h')\n\\ar[d]^{(1, 1, c)} \\\\\n(X \\oplus X', Y \\oplus Y', Q, f \\oplus f', g'', h'').\n}",
+    "sections": [
+      "derived-elementary-results"
+    ],
+    "file": "162ccda2ee7b684085a89fef.svg",
+    "width": 200.42801,
+    "height": 49.872721,
+    "svg_sha256": "d4442d1fda24112ed1f69431a8c965d85c4adc288be4b721793e2a98e603ba11"
+  },
+  "9957189122e7e721184f0e6b": {
+    "key": "9957189122e7e721184f0e6b",
+    "tex": "\\xymatrix{\nX \\ar[r] \\ar[d] & Y \\ar[d] \\\\\nX' \\ar[r] & Y'\n}",
+    "sections": [
+      "derived-elementary-results"
+    ],
+    "file": "9957189122e7e721184f0e6b.svg",
+    "width": 51.53252,
+    "height": 43.841163,
+    "svg_sha256": "8f78ea7c9f3b5e3d489a333019ec10815a485c55733545911074f7fcc32fd793"
+  },
+  "f74bdcc33b0a339bed4e0b5b": {
+    "key": "f74bdcc33b0a339bed4e0b5b",
+    "tex": "\\xymatrix{\nX \\ar[r] \\ar[d] & Y \\ar[r] \\ar[d] & Z \\ar[r] \\ar[d] & X[1] \\ar[d] \\\\\nX' \\ar[r] \\ar[d] & Y' \\ar[r] \\ar[d] & Z' \\ar[r] \\ar[d] & X'[1] \\ar[d] \\\\\nX'' \\ar[r] \\ar[d] & Y'' \\ar[r] \\ar[d] & Z'' \\ar[r] \\ar[d] & X''[1] \\ar[d] \\\\\nX[1] \\ar[r] & Y[1] \\ar[r] & Z[1] \\ar[r] & X[2]\n}",
+    "sections": [
+      "derived-elementary-results"
+    ],
+    "file": "f74bdcc33b0a339bed4e0b5b.svg",
+    "width": 168.950428,
+    "height": 129.549833,
+    "svg_sha256": "c7254c8cf7bc4b5ddb00a284c3cb4591a2fae3a4c030c7449548ea4ecdd4f25d"
+  },
+  "25c9f19973ada1d809ef3bed": {
+    "key": "25c9f19973ada1d809ef3bed",
+    "tex": "\\vcenter{\n\\xymatrix{\nX' \\ar[r] \\ar[d] & Y' \\ar[d] \\\\\nX'' \\ar[r]^{b \\circ a'} \\ar[d] & Y'' \\ar[d] \\\\\nX[1] \\ar[r] & Y[1]\n}\n}\n\\quad\\text{and}\\quad\n\\vcenter{\n\\xymatrix{\nY \\ar[r] \\ar[d] & Z \\ar[d]^{b' \\circ a} \\ar[r] & X[1] \\ar[d] \\\\\nY' \\ar[r] & Z' \\ar[r] & X'[1]\n}\n}",
+    "sections": [
+      "derived-elementary-results"
+    ],
+    "file": "25c9f19973ada1d809ef3bed.svg",
+    "width": 211.679142,
+    "height": 85.996169,
+    "svg_sha256": "a903a756ff655a8ca24eb204f5a568dd8fab0f8f5039f5f8e73dd04ed989622a"
+  },
+  "b4a6856e92d1ff22a97d1a71": {
+    "key": "b4a6856e92d1ff22a97d1a71",
+    "tex": "\\xymatrix{\nS \\ar[r] & S/\\mathfrak q \\ar[r] & \\kappa(\\mathfrak q) \\\\\nR \\ar[r] \\ar[u] & R/\\mathfrak m \\ar[u]\n}",
+    "sections": [
+      "algebra-ring-jacobson"
+    ],
+    "file": "b4a6856e92d1ff22a97d1a71.svg",
+    "width": 104.637139,
+    "height": 49.8132,
+    "svg_sha256": "f0f8a5e30a4987ed0a5ed94dc45dbbcccddc18a6bb42e1df537f955dd6eb7844"
+  },
+  "454a0843666ca6f3b2fe4d1f": {
+    "key": "454a0843666ca6f3b2fe4d1f",
+    "tex": "\\xymatrix{\nE \\ar[r] \\ar[d] & Y \\ar[d] \\\\\nf(E) \\ar[r] & X\n}",
+    "sections": [
+      "algebra-ring-jacobson"
+    ],
+    "file": "454a0843666ca6f3b2fe4d1f.svg",
+    "width": 59.465379,
+    "height": 47.568275,
+    "svg_sha256": "d5d2d107a91470d801963cffaa50cc08d28f04ef6f15dc767f275d7180a758db"
+  },
+  "3f58eb1e2ec222098de5fa79": {
+    "key": "3f58eb1e2ec222098de5fa79",
+    "tex": "\\xymatrix{\nS \\ar[r] & S/\\mathfrak p S \\\\\nR \\ar[r] \\ar[u] & R/\\mathfrak p \\ar[u]\n}",
+    "sections": [
+      "algebra-ring-jacobson"
+    ],
+    "file": "3f58eb1e2ec222098de5fa79.svg",
+    "width": 59.643854,
+    "height": 49.8132,
+    "svg_sha256": "836a3f674ee821485c08e77b4de23a87c4dde6019426539fec87d416edcd6e54"
+  },
+  "632888b21ff1dea461c26c42": {
+    "key": "632888b21ff1dea461c26c42",
+    "tex": "\\xymatrix{\n\\text{Constr}(Y) \\ar[r]^{E \\mapsto E_0} \\ar[d]^{E \\mapsto f(E)} &\n\\text{Constr}(Y_0) \\ar[d]^{E \\mapsto f(E)} \\\\\n\\text{Constr}(X) \\ar[r]^{E \\mapsto E_0} &\n\\text{Constr}(X_0)\n}",
+    "sections": [
+      "algebra-ring-jacobson"
+    ],
+    "file": "632888b21ff1dea461c26c42.svg",
+    "width": 133.953498,
+    "height": 53.552179,
+    "svg_sha256": "6dc236c72575651b60c002357b0b0b56beef02f424f0329294522c7c23394008"
+  },
+  "8150d14f530e038050131639": {
+    "key": "8150d14f530e038050131639",
+    "tex": "\\xymatrix{\n0 \\ar[r] &\nK \\oplus P_2 \\ar[r]_{(c_1, \\text{id})} \\ar[d] &\nP_1 \\oplus P_2 \\ar[r]_{(p_1, 0)} \\ar[d] &\nM \\ar[r] \\ar@{=}[d] &\n0 \\\\\n0 \\ar[r] &\nP_1 \\oplus L \\ar[r]^{(\\text{id}, c_2)} &\nP_1 \\oplus P_2 \\ar[r]^{(0, p_2)} &\nM \\ar[r] &\n0\n}",
+    "sections": [
+      "algebra-ring-finite-gl-dim"
+    ],
+    "file": "8150d14f530e038050131639.svg",
+    "width": 205.602048,
+    "height": 46.488934,
+    "svg_sha256": "c137fc07b731c3912a87a135dbc01aa0e35ee52197d524c8645e1ceb6947cc96"
+  },
+  "a8d5e1588785c0d025931a8f": {
+    "key": "a8d5e1588785c0d025931a8f",
+    "tex": "\\xymatrix{\n0 \\ar[r] &\nK \\oplus P_2 \\ar[r]_{(c_1, \\text{id})} &\nP_1 \\oplus P_2 \\ar[r]_{(p_1, 0)} &\nM \\ar[r] &\n0 \\\\\n0 \\ar[r] &\nN \\ar[r] \\ar[d] \\ar[u] &\nP_1 \\oplus P_2 \\ar[r]_{(p_1, p_2)}\n\\ar[d]_S \\ar[u]^T &\nM \\ar[r] \\ar@{=}[d] \\ar@{=}[u] &\n0 \\\\\n0 \\ar[r] &\nP_1 \\oplus L \\ar[r]^{(\\text{id}, c_2)} &\nP_1 \\oplus P_2 \\ar[r]^{(0, p_2)} &\nM \\ar[r] &\n0\n}",
+    "sections": [
+      "algebra-ring-finite-gl-dim"
+    ],
+    "file": "a8d5e1588785c0d025931a8f.svg",
+    "width": 205.602048,
+    "height": 84.679003,
+    "svg_sha256": "c6c40e99ee59716b71b396e8883cab436ac5e25846a09cbd3db71e1cdf6ad8f5"
+  },
+  "9cfa121e745e329cf2bb1554": {
+    "key": "9cfa121e745e329cf2bb1554",
+    "tex": "\\xymatrix{\n(f^{-1}V, \\mathcal{O}_{f^{-1}V}) \\ar[r]_{j'} \\ar[d]_{f'} &\n(X, \\mathcal{O}_X) \\ar[d]^f \\\\\n(V, \\mathcal{O}_V) \\ar[r]^j &\n(Y, \\mathcal{O}_Y)\n}",
+    "sections": [
+      "modules-locally-generated"
+    ],
+    "file": "9cfa121e745e329cf2bb1554.svg",
+    "width": 128.058987,
+    "height": 51.279645,
+    "svg_sha256": "872da045c733cc367fa3b908ac712dc24dd16bf3ab302e8d5c0f82a54ecaa42e"
+  },
+  "87611c02c14044103f815983": {
+    "key": "87611c02c14044103f815983",
+    "tex": "\\xymatrix{\nf^{-1}(Z_j) \\ar[r] \\ar[d]_{f_j} & X \\ar[d]^f \\\\\nZ_j \\ar[r] & Y\n}",
+    "sections": [
+      "chow-affine-vector"
+    ],
+    "file": "87611c02c14044103f815983.svg",
+    "width": 76.472097,
+    "height": 51.360054,
+    "svg_sha256": "b0c3fab95bdc254876002a3396a6396338ef3c277309660907e5c967d50354f4"
+  },
+  "94fb3f407934cfbdeeb28587": {
+    "key": "94fb3f407934cfbdeeb28587",
+    "tex": "\\xymatrix{\nD_1 \\ar[r]_{i_1} \\ar[d]_{p_1} &\nL \\ar[d]^p &\nD_2 \\ar[l]^{i_2} \\ar[d]^{p_2} \\\\\nD \\ar[r]^i &\nY &\nD \\ar[l]_i\n}",
+    "sections": [
+      "chow-affine-vector"
+    ],
+    "file": "94fb3f407934cfbdeeb28587.svg",
+    "width": 101.511925,
+    "height": 44.24737,
+    "svg_sha256": "acf974367577581b048485e5a52dfb4b6759f70a36a8b4264a15ed6d73e56c4f"
+  },
+  "6719ef018b2d5443d7448e2b": {
+    "key": "6719ef018b2d5443d7448e2b",
+    "tex": "\\xymatrix{\nD' \\ar[r]_{i'} \\ar[d]_p & X' \\ar[d]^g \\\\\nD \\ar[r]^i & X\n}",
+    "sections": [
+      "chow-affine-vector"
+    ],
+    "file": "6719ef018b2d5443d7448e2b.svg",
+    "width": 55.292726,
+    "height": 44.550425,
+    "svg_sha256": "1aa76be5ec2138a94b4a6b49054d7801d583b1ffebb064ed7ffcc5823e14116d"
+  },
+  "e012cd0db89d94118b8bf8cb": {
+    "key": "e012cd0db89d94118b8bf8cb",
+    "tex": "\\xymatrix{\n\\CH^M_{k + r}(U, 1) \\ar[r] &\n\\CH_{k + r}(X') \\ar[r] &\n\\CH_{k + r}(X) \\ar[r] &\n\\CH_{k + r}(U) \\ar[r] &\n0 \\\\\n\\CH^M_k(V, 1) \\ar[r] \\ar[u] &\n\\CH_k(Y') \\ar[r] \\ar[u] &\n\\CH_k(Y) \\ar[r] \\ar[u] &\n\\CH_k(V) \\ar[r] \\ar[u] &\n0\n}",
+    "sections": [
+      "chow-affine-vector"
+    ],
+    "file": "e012cd0db89d94118b8bf8cb.svg",
+    "width": 317.911096,
+    "height": 53.530738,
+    "svg_sha256": "a18f77780c60e560d8ea1e4968edb4f2cc00a01bbbdd5076c00ce34742d024d9"
+  },
+  "e9ba475156ba2ae21aa169f5": {
+    "key": "e9ba475156ba2ae21aa169f5",
+    "tex": "\\xymatrix{\n\\text{Tor}_i^R(M_1, N_1) \\ar[r] \\ar[d] &\n\\text{Tor}_i^R(M_1, N_2) \\ar[d] \\\\\n\\text{Tor}_i^R(M_2, N_1) \\ar[r] &\n\\text{Tor}_i^R(M_2, N_2) \\\\\n}",
+    "sections": [
+      "algebra-tor"
+    ],
+    "file": "e9ba475156ba2ae21aa169f5.svg",
+    "width": 149.672329,
+    "height": 53.129487,
+    "svg_sha256": "d96b2a73e9633ca280c37adf61d461c769094b416f0fae3538e08490cedb497d"
+  },
+  "17177baf8a35315fc877124f": {
+    "key": "17177baf8a35315fc877124f",
+    "tex": "\\xymatrix{\n\\ldots \\ar[r]^d &\nA_{2, 0} \\ar[r]^d &\nA_{1, 0} \\ar[r]^d &\nA_{0, 0} \\\\\n\\ldots \\ar[r]^d &\nA_{2, 1} \\ar[r]^d \\ar[u]^\\delta &\nA_{1, 1} \\ar[r]^d \\ar[u]^\\delta &\nA_{0, 1} \\ar[u]^\\delta \\\\\n\\ldots \\ar[r]^d &\nA_{2, 2} \\ar[r]^d \\ar[u]^\\delta &\nA_{1, 2} \\ar[r]^d \\ar[u]^\\delta &\nA_{0, 2} \\ar[u]^\\delta \\\\\n&\n\\ldots \\ar[u]^\\delta &\n\\ldots \\ar[u]^\\delta &\n\\ldots \\ar[u]^\\delta \\\\\n}",
+    "sections": [
+      "algebra-tor"
+    ],
+    "file": "17177baf8a35315fc877124f.svg",
+    "width": 154.395298,
+    "height": 124.65431,
+    "svg_sha256": "e6945a2ebb6f5846173489f09bc9f2f68d12860d0792675d0fb6e24057b7e163"
+  },
+  "d1bfb9702c03d8878a6e3f43": {
+    "key": "d1bfb9702c03d8878a6e3f43",
+    "tex": "\\xymatrix{\n\\ldots \\ar[r]^d &\nU(A)_2 \\ar[r]^d &\nU(A)_1 \\ar[r]^d &\nU(A)_0 &\n\\\\\n\\ldots \\ar[r]^d &\nA_{2, 0} \\ar[r]^d \\ar[u] &\nA_{1, 0} \\ar[r]^d \\ar[u] &\nA_{0, 0} \\ar[r] \\ar[u] &\nR(A)_0 \\\\\n\\ldots \\ar[r]^d &\nA_{2, 1} \\ar[r]^d \\ar[u]^\\delta &\nA_{1, 1} \\ar[r]^d \\ar[u]^\\delta &\nA_{0, 1} \\ar[r] \\ar[u]^\\delta &\nR(A)_1 \\ar[u]^\\delta \\\\\n\\ldots \\ar[r]^d &\nA_{2, 2} \\ar[r]^d \\ar[u]^\\delta &\nA_{1, 2} \\ar[r]^d \\ar[u]^\\delta &\nA_{0, 2} \\ar[r] \\ar[u]^\\delta &\nR(A)_2 \\ar[u]^\\delta \\\\\n&\n\\ldots \\ar[u]^\\delta &\n\\ldots \\ar[u]^\\delta &\n\\ldots \\ar[u]^\\delta &\n\\ldots \\ar[u]^\\delta \\\\\n}",
+    "sections": [
+      "algebra-tor"
+    ],
+    "file": "d1bfb9702c03d8878a6e3f43.svg",
+    "width": 239.514323,
+    "height": 166.345228,
+    "svg_sha256": "a082497562c673f90be70f62590c02cbe9daa8388343ac074f31b2dae7101e47"
+  },
+  "c44cd955cd03f0792ec766b8": {
+    "key": "c44cd955cd03f0792ec766b8",
+    "tex": "\\xymatrix{\na_{2, 0} \\ar@{|->}[r] & d(a_{2, 0}) = \\delta(a_{1, 1}) & \\\\\n& a_{1, 1} \\ar@{|->}[u] \\ar@{|->}[r] & d(a_{1, 1}) = \\delta(a_{0, 2}) \\\\\n& & a_{0, 2} \\ar@{|->}[u] \\\\\n}",
+    "sections": [
+      "algebra-tor"
+    ],
+    "file": "c44cd955cd03f0792ec766b8.svg",
+    "width": 216.289001,
+    "height": 89.141643,
+    "svg_sha256": "0676fcc3f76a4674abbb04166504b558ad9e8f9940b31bbf64062a70aa7f18bd"
+  },
+  "fe9bf0710b83a601f7260daf": {
+    "key": "fe9bf0710b83a601f7260daf",
+    "tex": "\\xymatrix{\nH_i(U(A)_\\bullet) \\ar[d] &\n\\mathbf{H}_i(A) \\ar[r] \\ar[l] \\ar[d] &\nH_i(R(A)_\\bullet) \\ar[d] \\\\\nH_i(U(B)_\\bullet) &\n\\mathbf{H}_i(B) \\ar[r] \\ar[l] &\nH_i(R(B)_\\bullet) \\\\\n}",
+    "sections": [
+      "algebra-tor"
+    ],
+    "file": "fe9bf0710b83a601f7260daf.svg",
+    "width": 181.47546,
+    "height": 49.8132,
+    "svg_sha256": "808349a674c3941c4d3fd19dc6a0cbf04a3b095f05c20f2b68ca8cc9bb547718"
+  },
+  "7bdc4af3a3affae8ff946f44": {
+    "key": "7bdc4af3a3affae8ff946f44",
+    "tex": "\\xymatrix{\n0 \\ar[r] &\n\\colim_\\lambda \\SheafHom_{\\mathcal{O}_X}(\\mathcal{F}, \\mathcal{G}_\\lambda)\n\\ar[r] \\ar[d] &\n\\colim_\\lambda \\bigoplus\\nolimits_{i = 1, \\ldots, n} \\mathcal{G}_\\lambda\n\\ar[r] \\ar[d] &\n\\colim_\\lambda \\bigoplus\\nolimits_{j = 1, \\ldots, m} \\mathcal{G}_\\lambda\n\\ar[d] \\\\\n0 \\ar[r] &\n\\SheafHom_{\\mathcal{O}_X}(\\mathcal{F}, \\mathcal{G}) \\ar[r] &\n\\bigoplus\\nolimits_{i = 1, \\ldots, n} \\mathcal{G} \\ar[r] &\n\\bigoplus\\nolimits_{j = 1, \\ldots, m} \\mathcal{G}\n}",
+    "sections": [
+      "modules-internal-hom"
+    ],
+    "file": "7bdc4af3a3affae8ff946f44.svg",
+    "width": 360.448222,
+    "height": 53.588357,
+    "svg_sha256": "0d2f2d94f79242f2d4424c7be5823db6b269432336af368f0922fcfe868fbd34"
+  },
+  "fac091fc912fd38982887549": {
+    "key": "fac091fc912fd38982887549",
+    "tex": "\\xymatrix{\nD' \\ar[d]_q \\ar[r]_{i'} & X' \\ar[d]^p \\\\\nD \\ar[r]^i & X\n}",
+    "sections": [
+      "chow-gysin"
+    ],
+    "file": "fac091fc912fd38982887549.svg",
+    "width": 54.801559,
+    "height": 44.550425,
+    "svg_sha256": "e0bbb3967940e4d054783120f97de9acf7ba4591bf4e7c9248bb34c161bc4e5b"
+  },
+  "7a10ffdcab5383505dc5c647": {
+    "key": "7a10ffdcab5383505dc5c647",
+    "tex": "\\xymatrix{\n\\CH_k(X) \\ar[r]_{i^*} \\ar[d]_{(i')^*} & \\CH_{k - 1}(D) \\ar[d]^{j^*} \\\\\n\\CH_{k - 1}(D') \\ar[r]^{(j')^*} & \\CH_{k - 2}(D \\cap D')\n}",
+    "sections": [
+      "chow-gysin"
+    ],
+    "file": "7a10ffdcab5383505dc5c647.svg",
+    "width": 145.600811,
+    "height": 49.822078,
+    "svg_sha256": "7b6eb26c4c0259431cabc280a82382b88be3ebdbaf20d360060cd31bc2678482"
+  },
+  "5092169c401d5af161c80e0d": {
+    "key": "5092169c401d5af161c80e0d",
+    "tex": "\\xymatrix{\nX' \\ar[r] \\ar[d] & X \\ar[d] \\\\\nY' \\ar[r] & Y\n}",
+    "sections": [
+      "topology-spectral"
+    ],
+    "file": "5092169c401d5af161c80e0d.svg",
+    "width": 49.92774,
+    "height": 44.891401,
+    "svg_sha256": "c5079ddde6228a84abb864a8e9b0d874eca2ff0e3e8ca592aa5db43f181a56e7"
+  },
+  "1a71f5a2eb1acf8bc475c12b": {
+    "key": "1a71f5a2eb1acf8bc475c12b",
+    "tex": "\\xymatrix{\nY \\ar[r]_p \\ar[d]_q & X \\ar[d]^c \\\\\n\\mathbf{P}^1_K \\ar[r]^-{c'} & \\Spec(K)\n}",
+    "sections": [
+      "chow-two-fun"
+    ],
+    "file": "1a71f5a2eb1acf8bc475c12b.svg",
+    "width": 81.141611,
+    "height": 48.267162,
+    "svg_sha256": "47958cbf2e1d9732aeb67006757df7b15936a348cd47aab6005ebef34a57089f"
+  },
+  "f7e19b5212871c7e245e74a9": {
+    "key": "f7e19b5212871c7e245e74a9",
+    "tex": "\\xymatrix{\nD' \\ar[d]_g \\ar[r]_{i'} & X' \\ar[d]^f \\\\\nD \\ar[r]^i & X\n}",
+    "sections": [
+      "chow-intersecting-effective-Cartier"
+    ],
+    "file": "f7e19b5212871c7e245e74a9.svg",
+    "width": 55.490091,
+    "height": 44.550425,
+    "svg_sha256": "78de172f9a344b4067065ce431fb2549e91cbf74a0d57cb20bc2f1102f86b2d4"
+  },
+  "ff3c424a80cd24965268e09b": {
+    "key": "ff3c424a80cd24965268e09b",
+    "tex": "\\xymatrix{\nR^n \\otimes_R (\\prod_{\\alpha} Q_{\\alpha})  \\ar[r]^{\\cong} \\ar[d] &\n\\prod_{\\alpha} (R^n \\otimes_R Q_{\\alpha}) \\ar[d] \\\\\nM \\otimes_R (\\prod_{\\alpha} Q_{\\alpha})  \\ar[r] & \\prod_{\\alpha} ( M\n\\otimes_R Q_{\\alpha}).\n}",
+    "sections": [
+      "algebra-products-tensor"
+    ],
+    "file": "ff3c424a80cd24965268e09b.svg",
+    "width": 167.070404,
+    "height": 53.745146,
+    "svg_sha256": "61ac26ea2d99d930e6a34e68af642cdb623e0cd1e0ec3790f3f7a0bf78e944ac"
+  },
+  "9f4019c218192703bc6520e3": {
+    "key": "9f4019c218192703bc6520e3",
+    "tex": "\\xymatrix{\nR^m \\otimes_R (\\prod_{\\alpha} Q_{\\alpha}) \\ar[r] \\ar[d]^{\\cong} & R^n\n\\otimes_R (\\prod_{\\alpha} Q_{\\alpha}) \\ar[r] \\ar[d]^{\\cong} & M \\otimes_R\n(\\prod_{\\alpha} Q_{\\alpha}) \\ar[r] \\ar[d] & 0 \\\\\n\\prod_{\\alpha} (R^m \\otimes_R Q_{\\alpha}) \\ar[r] & \\prod_{\\alpha} (R^n\n\\otimes_R Q_{\\alpha}) \\ar[r] & \\prod_{\\alpha} (M \\otimes_R Q_{\\alpha})\n\\ar[r] & 0.\n}",
+    "sections": [
+      "algebra-products-tensor"
+    ],
+    "file": "9f4019c218192703bc6520e3.svg",
+    "width": 305.458513,
+    "height": 50.879401,
+    "svg_sha256": "2a5614cd44607042ca9e4c5ce5d0fdb5f77bc820910cb3ba25def6ad94252b6a"
+  },
+  "16f7ed15993f9c95a37fdb5d": {
+    "key": "16f7ed15993f9c95a37fdb5d",
+    "tex": "\\xymatrix{\n& K \\otimes_R R^A \\ar[r] \\ar[d]_{f_3} & F \\otimes_R R^A \\ar[r]\n\\ar[d]_{f_2}^{\\cong} & M \\otimes_R R^A \\ar[r] \\ar[d]_{f_1}^{\\cong} & 0 \\\\\n0 \\ar[r] & K^A \\ar[r] & F^A \\ar[r] & M^A \\ar[r] & 0 .\n}",
+    "sections": [
+      "algebra-products-tensor"
+    ],
+    "file": "16f7ed15993f9c95a37fdb5d.svg",
+    "width": 257.283498,
+    "height": 47.822833,
+    "svg_sha256": "89fee1ef37b55c02fc7aa0d4dfb6d03564d4b3f37b48d7fa1b0f8fbd36afd2d2"
+  },
+  "c01a150003bce1ddcec81567": {
+    "key": "c01a150003bce1ddcec81567",
+    "tex": "\\xymatrix{\n& M_j \\otimes Q \\ar[dr] & \\\\\nP \\otimes Q \\ar[ur] \\ar[rr] & & M \\otimes Q .\n}",
+    "sections": [
+      "algebra-products-tensor"
+    ],
+    "file": "c01a150003bce1ddcec81567.svg",
+    "width": 153.841784,
+    "height": 48.045897,
+    "svg_sha256": "7f775d950f535131536a7758bf1ec2820d6b566af7322470b93933cdccfb3517"
+  },
+  "4369d25bb4a4a8741764d618": {
+    "key": "4369d25bb4a4a8741764d618",
+    "tex": "\\xymatrix{\nM \\otimes_R (\\prod_{\\alpha} Q_{\\alpha}) \\ar[r] & \\prod_{\\alpha} (M\n\\otimes_R Q_{\\alpha}) \\\\\nM_i \\otimes_R (\\prod_{\\alpha} Q_{\\alpha}) \\ar[r]^{\\cong} \\ar[d] \\ar[u] &\n\\prod_{\\alpha} (M_i \\otimes_R Q_{\\alpha}) \\ar[d] \\ar[u] \\\\\nM_j \\otimes_R (\\prod_{\\alpha} Q_{\\alpha}) \\ar[r]^{\\cong} & \\prod_{\\alpha}\n(M_j \\otimes_R Q_{\\alpha})\n}",
+    "sections": [
+      "algebra-products-tensor"
+    ],
+    "file": "4369d25bb4a4a8741764d618.svg",
+    "width": 168.06257,
+    "height": 91.228184,
+    "svg_sha256": "ec62e8e83dac45bf0cef712b96bc395e7b65639134d5811455603e8d6b99ec82"
+  },
+  "e8a5402b7f71319eb2157cdd": {
+    "key": "e8a5402b7f71319eb2157cdd",
+    "tex": "\\xymatrix{\nM \\otimes_R (\\prod_{\\alpha} Q_{\\alpha}) \\ar[r] &\n\\prod_{\\alpha} (M \\otimes_R Q_{\\alpha}) \\\\\nP \\otimes_R (\\prod_{\\alpha} Q_{\\alpha}) \\ar[r]^{\\cong} \\ar[u] &\n\\prod_{\\alpha} (P \\otimes_R Q_{\\alpha}) \\ar[u] .\n}",
+    "sections": [
+      "algebra-products-tensor"
+    ],
+    "file": "e8a5402b7f71319eb2157cdd.svg",
+    "width": 161.83928,
+    "height": 50.879401,
+    "svg_sha256": "9ca62d98cffd500166700469bc4a2ed45778c279599d99771f1abda797e7f5bd"
+  },
+  "3ec07bef1a4b1478fdf19d4a": {
+    "key": "3ec07bef1a4b1478fdf19d4a",
+    "tex": "\\xymatrix{\nP' \\otimes_R (\\prod_{\\alpha} Q_{\\alpha}) \\ar[r]^{\\cong} &\n\\prod_{\\alpha} (P' \\otimes_R Q_{\\alpha}) \\\\\nP \\otimes_R (\\prod_{\\alpha} Q_{\\alpha}) \\ar[r]^{\\cong} \\ar[u] &\n\\prod_{\\alpha} (P \\otimes_R Q_{\\alpha}) \\ar[u] .\n}",
+    "sections": [
+      "algebra-products-tensor"
+    ],
+    "file": "3ec07bef1a4b1478fdf19d4a.svg",
+    "width": 161.506398,
+    "height": 53.753993,
+    "svg_sha256": "1b55384cca48106e41da8369b4646b972229648e6e0f72c9f67bd51c30ac2fa3"
+  },
+  "2a3c5dc0c08e672af20e55b4": {
+    "key": "2a3c5dc0c08e672af20e55b4",
+    "tex": "\\xymatrix{\n0 \\ar[r] & M_1 \\otimes_R (\\prod_{\\alpha} Q_{\\alpha}) \\ar[r] \\ar[d] & M_2\n\\otimes_R (\\prod_{\\alpha} Q_{\\alpha}) \\ar[r] \\ar[d] & M_3 \\otimes_R\n(\\prod_{\\alpha} Q_{\\alpha}) \\ar[r] \\ar[d] & 0 \\\\\n0 \\ar[r] & \\prod_{\\alpha}(M_1 \\otimes Q_{\\alpha}) \\ar[r] & \\prod_{\\alpha}(M_2\n\\otimes Q_{\\alpha}) \\ar[r] & \\prod_{\\alpha}(M_3 \\otimes Q_{\\alpha})\\ar[r] & 0\n}",
+    "sections": [
+      "algebra-products-tensor"
+    ],
+    "file": "2a3c5dc0c08e672af20e55b4.svg",
+    "width": 341.414832,
+    "height": 50.879401,
+    "svg_sha256": "28aaca302a4154463356dc045503a1d8f6e3a8ab6d02287977b66fca3259dbc6"
+  },
+  "753d48b49b1c20f01162c9fa": {
+    "key": "753d48b49b1c20f01162c9fa",
+    "tex": "\\xymatrix{\nM_1 \\otimes_R (\\prod_{\\alpha} Q_{\\alpha}) \\ar[r] \\ar[d] & M_2\n\\otimes_R (\\prod_{\\alpha} Q_{\\alpha}) \\ar[r] \\ar[d] & M_3 \\otimes_R\n(\\prod_{\\alpha} Q_{\\alpha}) \\ar[r] \\ar[d] & 0 \\\\\n\\prod_{\\alpha}(M_1 \\otimes Q_{\\alpha}) \\ar[r] & \\prod_{\\alpha}(M_2\n\\otimes Q_{\\alpha}) \\ar[r] & \\prod_{\\alpha}(M_3 \\otimes Q_{\\alpha})\\ar[r] & 0\n}",
+    "sections": [
+      "algebra-products-tensor"
+    ],
+    "file": "753d48b49b1c20f01162c9fa.svg",
+    "width": 306.515704,
+    "height": 50.879401,
+    "svg_sha256": "5fa38928b29cc73318a76106e6d1adc0d45bd6ba06e729cc56fcb49bdb22d2b4"
+  },
+  "04d11bee6e10c20788da9016": {
+    "key": "04d11bee6e10c20788da9016",
+    "tex": "\\xymatrix{\nM \\otimes_R \\prod_\\alpha Q_\\alpha =\nM \\otimes_S S \\otimes_R \\prod_\\alpha Q_\\alpha \\ar[d] \\\\\nM \\otimes_S \\prod_\\alpha (S \\otimes_R Q_\\alpha) \\ar[d] \\\\\n\\prod_\\alpha (M \\otimes_S S \\otimes_R Q_\\alpha) =\n\\prod_\\alpha (M \\otimes_R Q_\\alpha)\n}",
+    "sections": [
+      "algebra-products-tensor"
+    ],
+    "file": "04d11bee6e10c20788da9016.svg",
+    "width": 168.066098,
+    "height": 91.228184,
+    "svg_sha256": "e35c5229fc51e556326f50df7300a5843ba285d7dd42eb67e96b4bd5e4e45786"
+  },
+  "243e7f94d7b1e4abdf76a386": {
+    "key": "243e7f94d7b1e4abdf76a386",
+    "tex": "\\xymatrix{\nZ' \\ar[d]_{f'} \\ar[r]_{i'} & X \\ar[d]^f \\\\\nZ \\ar[r]^{i} & Y\n}",
+    "sections": [
+      "schemes-closed-immersion"
+    ],
+    "file": "243e7f94d7b1e4abdf76a386.svg",
+    "width": 56.602032,
+    "height": 44.550425,
+    "svg_sha256": "3d633874df0da5ec22c74988acdfc8404b11fe8957afd85f365e6e1dd74c4ee3"
+  },
+  "2fa55788ccbe8f118440953f": {
+    "key": "2fa55788ccbe8f118440953f",
+    "tex": "\\xymatrix{\n(2) \\ar@{<=>}[r] & (3) \\ar@{=>}[r] & (1) \\ar@{=>}[r] &\n(7)  \\ar@{<=>}[r] \\ar@{=>}[rd] \\ar@{=>}[d] & (6) \\\\\n& & (5) \\ar@{=>}[u] & (4) \\ar@{=>}[l] & (8)\n}",
+    "sections": [
+      "algebra-finite-projective-modules"
+    ],
+    "file": "2fa55788ccbe8f118440953f.svg",
+    "width": 181.220551,
+    "height": 49.8132,
+    "svg_sha256": "84b61e56b9f2daf59306733b4ecb4de8b56c666b8737b5084510046993d6790d"
+  },
+  "5f3a5565d2cfc87fa22162d9": {
+    "key": "5f3a5565d2cfc87fa22162d9",
+    "tex": "\\xymatrix{\n&\nL' \\otimes_R M \\ar[r] \\ar[d] &\nL \\otimes_R M \\ar[r] \\ar[d] &\nL'' \\otimes_R M \\ar[r] \\ar[d] &\n0 \\\\\n0 \\ar[r] &\nM \\ar[r] &\nM^{\\oplus n} \\ar[r] &\nM^{\\oplus n - 1} \\ar[r] & 0\n}",
+    "sections": [
+      "algebra-flat"
+    ],
+    "file": "5f3a5565d2cfc87fa22162d9.svg",
+    "width": 245.34498,
+    "height": 46.167696,
+    "svg_sha256": "74899230e05955063c3e9b211c5b0dd5629afa35fa31438d0de34a7caca28ee9"
+  },
+  "b3fe890af25743c0720130e7": {
+    "key": "b3fe890af25743c0720130e7",
+    "tex": "\\xymatrix{\n\\Spec(A) \\ar[r] \\ar[d] &\n\\Spec(A') \\ar[d] \\\\\nU \\ar[r] &\nU'\n}",
+    "sections": [
+      "constructions-spec-via-glueing"
+    ],
+    "file": "b3fe890af25743c0720130e7.svg",
+    "width": 101.975521,
+    "height": 46.355909,
+    "svg_sha256": "8c5653b339443442a2a118816256183221036164d3f2698a6faa6b971f0f4a85"
+  },
+  "177dcab8f65bd5cce04efb20": {
+    "key": "177dcab8f65bd5cce04efb20",
+    "tex": "\\xymatrix{\n\\Spec(\\mathcal{A}(U)) \\ar[r]^{i_U^{-1}} &\n\\pi^{-1}(U) \\ar[rr]^{inclusion} & &\n\\pi^{-1}(U') \\ar[r]^{i_{U'}} &\n\\Spec(\\mathcal{A}(U'))\n}",
+    "sections": [
+      "constructions-spec-via-glueing"
+    ],
+    "file": "177dcab8f65bd5cce04efb20.svg",
+    "width": 291.413767,
+    "height": 16.876667,
+    "svg_sha256": "69c22f8807ff1666162c6267008caea174027a232e35f73dd46d061a9f361a73"
+  },
+  "6ef986c378aa2e8bb4d41ab0": {
+    "key": "6ef986c378aa2e8bb4d41ab0",
+    "tex": "\\xymatrix{\nR[x] \\ar[r] & S \\ar[r] & S/\\sqrt{J} & R/(R \\cap \\sqrt{J})[x] \\ar[l]\n\\\\\n& R \\ar[lu] \\ar[r] \\ar[u] & R/(R \\cap \\sqrt{J}) \\ar[u] \\ar[ru] &\n}",
+    "sections": [
+      "algebra-Zariski"
+    ],
+    "file": "6ef986c378aa2e8bb4d41ab0.svg",
+    "width": 233.547266,
+    "height": 52.934741,
+    "svg_sha256": "b1959f24e9dd82206ea20f7341a6b143b7881015404157f2675d21d248712c14"
+  },
+  "506b5496ec44996baa3f3bd9": {
+    "key": "506b5496ec44996baa3f3bd9",
+    "tex": "\\xymatrix{\nX \\ar@{=}[d] \\ar[rr]_{\\varphi_{\\mathcal{L}, \\psi}} & &\n\\mathbf{P}(V) \\ar[d]^{\\cong} \\\\\nX \\ar[rr]^{\\varphi_{(\\mathcal{L}, (s_0, \\ldots, s_n))}} & &\n\\mathbf{P}^n_k\n}",
+    "sections": [
+      "constructions-projective-bundle"
+    ],
+    "file": "506b5496ec44996baa3f3bd9.svg",
+    "width": 91.153145,
+    "height": 50.060967,
+    "svg_sha256": "03cdf8a5524e3a6be343af8bbe54af731fd6287adada4e672258de3033930486"
+  },
+  "67d11aa71e720d3ece78f3d2": {
+    "key": "67d11aa71e720d3ece78f3d2",
+    "tex": "\\xymatrix{\nN_{k_{-}} & N_{k_{+}} \\ar[d] \\ar[l] \\\\\nM_k & M_{k_{+}} \\ar[l]\n}",
+    "sections": [
+      "coherent-coherent-proj"
+    ],
+    "file": "67d11aa71e720d3ece78f3d2.svg",
+    "width": 66.665239,
+    "height": 50.143603,
+    "svg_sha256": "82d201a696747d999b4bc6522eeb8de2607ba8f942511baa75130dd33ce5d34c"
+  },
+  "076c01515a0b9233b80b9971": {
+    "key": "076c01515a0b9233b80b9971",
+    "tex": "\\xymatrix{\nM_n \\ar[d] \\ar[r] & N_n \\ar[d] \\ar@{=}[rd] \\\\\n\\Gamma(X, \\widetilde{M}(n)) \\ar[r] &\n\\Gamma(X, \\widetilde{N}(n)) \\ar[r]^{\\cong} &\n\\Gamma(X, \\widetilde{M}(n))\n}",
+    "sections": [
+      "coherent-coherent-proj"
+    ],
+    "file": "076c01515a0b9233b80b9971.svg",
+    "width": 210.887297,
+    "height": 49.574622,
+    "svg_sha256": "10f3bbf8281b49d964a979c8ce75e8ae430dcae641e916d5337ebb4d48404b57"
+  },
+  "8278302b52cf543fb14db0ee": {
+    "key": "8278302b52cf543fb14db0ee",
+    "tex": "\\xymatrix{\n\\Spec(K) \\ar[r] \\ar[d] & X \\ar[d] \\\\\n\\Spec(A) \\ar[r] \\ar@{-->}[ru] & S\n}",
+    "sections": [
+      "schemes-valuative-criterion-universal-closedness"
+    ],
+    "file": "8278302b52cf543fb14db0ee.svg",
+    "width": 74.932948,
+    "height": 49.8132,
+    "svg_sha256": "5669d63850c5ff886afe75308fc869af23c45d7cb058a3454276ff60c2ae3487"
+  },
+  "0dd69596a905291cdb527d9a": {
+    "key": "0dd69596a905291cdb527d9a",
+    "tex": "\\xymatrix{\n\\Spec(K) \\ar[r] \\ar[d] & X_{S'} \\ar[r] \\ar[d] & X \\ar[d] \\\\\n\\Spec(A) \\ar[r] \\ar@{-->}[ru] \\ar@{-->}[rru] & S' \\ar[r] & S\n}",
+    "sections": [
+      "schemes-valuative-criterion-universal-closedness"
+    ],
+    "file": "0dd69596a905291cdb527d9a.svg",
+    "width": 121.540853,
+    "height": 49.822078,
+    "svg_sha256": "fb199a2550e16a57d1021d90a24b28f6392bab948338ec25f262a0ef06737dde"
+  },
+  "5175222ca9c09f865b4523fd": {
+    "key": "5175222ca9c09f865b4523fd",
+    "tex": "\\xymatrix{\n\\Spec(K) \\ar[rr] \\ar[d] & & X \\ar[d] \\\\\n\\Spec(A) \\ar[r] \\ar@{-->}[rru] &\n\\Spec(\\mathcal{O}_{S, s}) \\ar[r] & S\n}",
+    "sections": [
+      "schemes-valuative-criterion-universal-closedness"
+    ],
+    "file": "5175222ca9c09f865b4523fd.svg",
+    "width": 152.171897,
+    "height": 50.342741,
+    "svg_sha256": "4f50343b2aa150d8726bf5931cb954456738b93230ec03d546080028696d602d"
+  },
+  "360f69e49c86a545c9161236": {
+    "key": "360f69e49c86a545c9161236",
+    "tex": "\\xymatrix{\n\\Spec(K) \\ar[r]_\\xi \\ar[d] & \\mathbf{P}^1_k \\ar[d] \\\\\n\\Spec(A) \\ar[r]^\\varphi & \\Spec(k)\n}",
+    "sections": [
+      "schemes-valuative-criterion-universal-closedness"
+    ],
+    "file": "360f69e49c86a545c9161236.svg",
+    "width": 98.910597,
+    "height": 51.071457,
+    "svg_sha256": "d855cffc9b3fd165cf96f3c47840699a449f69f563163837312f30e16f0c65a6"
+  },
+  "9c5ea7c1b7cb5f85abd30ffa": {
+    "key": "9c5ea7c1b7cb5f85abd30ffa",
+    "tex": "\\xymatrix{\nK & k[x] \\ar[l]^{\\xi^\\sharp} \\\\\nA \\ar[u] & k \\ar[u] \\ar[l]_{\\varphi^\\sharp}\n}",
+    "sections": [
+      "schemes-valuative-criterion-universal-closedness"
+    ],
+    "file": "9c5ea7c1b7cb5f85abd30ffa.svg",
+    "width": 54.228871,
+    "height": 45.910051,
+    "svg_sha256": "0f4f86f496e86fe61182560a94d178d5a41a812d240f629336877db53a634fa9"
+  },
+  "fe3e56eb99483899bf15226f": {
+    "key": "fe3e56eb99483899bf15226f",
+    "tex": "\\xymatrix{\nP_1^\\bullet \\ar[d] \\ar[r] & P_2^\\bullet \\ar[d] \\ar[r] & \\ldots \\\\\n\\tau_{\\leq 1}K^\\bullet \\ar[r] & \\tau_{\\leq 2}K^\\bullet \\ar[r] & \\ldots\n}",
+    "sections": [
+      "derived-unbounded"
+    ],
+    "file": "fe3e56eb99483899bf15226f.svg",
+    "width": 127.88573,
+    "height": 49.035056,
+    "svg_sha256": "14e34157152c2fccfd8c268992f7374cfd638dbe65c2fa11c01ece4fdadbc24c"
+  },
+  "44dfa96d31ffd871e431939d": {
+    "key": "44dfa96d31ffd871e431939d",
+    "tex": "\\xymatrix{\nP_n^\\bullet \\ar[r] \\ar[d] &\nP_{n + 1}^\\bullet \\ar[r] \\ar[d] &\nQ^\\bullet \\ar[r] \\ar[d] &\nP_n^\\bullet[1] \\ar[d] \\\\\nP_n^\\bullet \\ar[r] &\n\\tau_{\\leq n + 1}K^\\bullet \\ar[r] &\nC^\\bullet \\ar[r] &\nP_n^\\bullet[1]\n}",
+    "sections": [
+      "derived-unbounded"
+    ],
+    "file": "44dfa96d31ffd871e431939d.svg",
+    "width": 175.620006,
+    "height": 50.67579,
+    "svg_sha256": "dad92700633874da19aa747d8a94e4462dd9657ef7ea4e6e9759d8dfd3216599"
+  },
+  "9d11eaa9f6ffd7dfc3427305": {
+    "key": "9d11eaa9f6ffd7dfc3427305",
+    "tex": "\\xymatrix{\nP_n^\\bullet \\ar[d] \\ar[r] & P_{n + 1}^\\bullet \\ar[d] \\\\\n\\tau_{\\leq n}K^\\bullet \\ar[r] & \\tau_{\\leq n + 1}K^\\bullet\n}",
+    "sections": [
+      "derived-unbounded"
+    ],
+    "file": "9d11eaa9f6ffd7dfc3427305.svg",
+    "width": 98.179528,
+    "height": 49.450171,
+    "svg_sha256": "38f1170bfa43496276b3f2d6edd8c3997abf33fdcba3e2d1bd2692b1cc79faf2"
+  },
+  "370248007dc8043de7dfd97a": {
+    "key": "370248007dc8043de7dfd97a",
+    "tex": "\\xymatrix{\n& R^\\bullet \\ar@{..>}[d] \\\\\nP_n^\\bullet \\ar[d] &\nL^\\bullet \\ar@{..>}[l] \\ar@{..>}[r] &\nQ_n^\\bullet \\ar[d] \\\\\n\\tau_{\\leq n}P^\\bullet \\ar[rr]^{\\tau_{\\leq n}\\alpha} & &\n\\tau_{\\leq n}Q^\\bullet\n}",
+    "sections": [
+      "derived-unbounded"
+    ],
+    "file": "370248007dc8043de7dfd97a.svg",
+    "width": 127.509775,
+    "height": 87.009641,
+    "svg_sha256": "183edadcfe91961a4d3afb8a4dda19f09532f02b45cdca0fcf65d8afc5430705"
+  },
+  "8de98c028b12f354e73819d5": {
+    "key": "8de98c028b12f354e73819d5",
+    "tex": "\\xymatrix{\nH^i(F(P_n^\\bullet)) \\ar[r] \\ar[d] &\nH^i(F(Q_n^\\bullet)) \\ar[d] \\\\\nH^i(F(P^\\bullet)) \\ar[r] &\nH^i(F(Q^\\bullet))\n}",
+    "sections": [
+      "derived-unbounded"
+    ],
+    "file": "8de98c028b12f354e73819d5.svg",
+    "width": 125.554059,
+    "height": 51.338237,
+    "svg_sha256": "b9d2f949c0a10e8dbc0d9f08d429e3084790e7aad350c23b48d42296a0a43a5e"
+  },
+  "1f146ac38a4e0bb7a28bb3d3": {
+    "key": "1f146ac38a4e0bb7a28bb3d3",
+    "tex": "\\xymatrix{\n\\ldots \\ar[r] &\n\\tau_{\\geq -2}K^\\bullet \\ar[r] \\ar[d] &\n\\tau_{\\geq -1}K^\\bullet \\ar[d] \\\\\n\\ldots \\ar[r] & I_2^\\bullet \\ar[r] & I_1^\\bullet\n}",
+    "sections": [
+      "derived-unbounded"
+    ],
+    "file": "1f146ac38a4e0bb7a28bb3d3.svg",
+    "width": 139.561528,
+    "height": 48.709394,
+    "svg_sha256": "3f645a103e60cf90eccfa962dae2822128178961ce5b2aae9a9e02b3cd529322"
+  },
+  "4b9a636a0f7fb51854a312cd": {
+    "key": "4b9a636a0f7fb51854a312cd",
+    "tex": "\\xymatrix{\nf^{-1}(Z) \\ar[r] \\ar[d] & X \\ar[d] \\\\\nZ \\ar[r] & Y\n}",
+    "sections": [
+      "chow-flat-pullback"
+    ],
+    "file": "4b9a636a0f7fb51854a312cd.svg",
+    "width": 69.746314,
+    "height": 46.837943,
+    "svg_sha256": "5629bca333894beec8d2f60d8839ddc183a635f5f5ac71f244c5192c0c2ec7d8"
+  },
+  "0fb141e06daeca64b5380355": {
+    "key": "0fb141e06daeca64b5380355",
+    "tex": "\\xymatrix{\nZ_k(Y) \\ar[r]^{i_*} & Z_k(X) \\ar[r]^{j^*} & Z_k(U) \\ar[r] & 0\n}",
+    "sections": [
+      "chow-flat-pullback"
+    ],
+    "file": "0fb141e06daeca64b5380355.svg",
+    "width": 176.944775,
+    "height": 14.648957,
+    "svg_sha256": "f4a18b708df48b06f73562fa5586844f40853ea9c310ec051041a574da6f6c1b"
+  },
+  "a94f1cbb37d3c2e601dbdaf3": {
+    "key": "a94f1cbb37d3c2e601dbdaf3",
+    "tex": "\\xymatrix{\nA_d \\ar[d] \\ar[rr]_{\\psi} & &\nB_d \\ar[d] \\\\\n\\Gamma(X, \\mathcal{O}_X(d)) \\ar[r]^-\\theta &\n\\Gamma(U(\\psi), \\mathcal{O}_Y(d)) &\n\\Gamma(Y, \\mathcal{O}_Y(d)) \\ar[l]\n}",
+    "sections": [
+      "constructions-functoriality-proj"
+    ],
+    "file": "a94f1cbb37d3c2e601dbdaf3.svg",
+    "width": 234.929769,
+    "height": 48.644225,
+    "svg_sha256": "17a8dfbdd34e690e96741edc3809ef638898c4ed1c7b0ed5b38dd3a44829ad6c"
+  },
+  "55672bf947e928f124f1f954": {
+    "key": "55672bf947e928f124f1f954",
+    "tex": "\\xymatrix{\nY = \\text{Proj}(B) \\ar[r]_{r_\\psi} \\ar[d] &\n\\text{Proj}(A) = X \\ar[d] \\\\\n\\Spec(R') \\ar[r] &\n\\Spec(R)\n}",
+    "sections": [
+      "constructions-functoriality-proj"
+    ],
+    "file": "55672bf947e928f124f1f954.svg",
+    "width": 142.130425,
+    "height": 49.822078,
+    "svg_sha256": "2560aec0c52d2a05c72069ac682f753ac6ad3927a9c0c5786c5775eadc94cb10"
+  },
+  "8d4c746bd57e5b4b2c755fae": {
+    "key": "8d4c746bd57e5b4b2c755fae",
+    "tex": "\\xymatrix{\n\\widetilde M \\otimes_{\\mathcal{O}_X} \\widetilde N\n\\ar[d]_{(1) \\otimes (1)} \\ar[r] &\n\\widetilde{M \\otimes_S N} \\ar[d]^{(1)} \\\\\ni^*(\\widetilde{M'} \\otimes_{\\mathcal{O}_{X'}} \\widetilde{N'}) \\ar[r] &\ni^*(\\widetilde{M' \\otimes_{S'} N'})\n}",
+    "sections": [
+      "constructions-functoriality-proj"
+    ],
+    "file": "8d4c746bd57e5b4b2c755fae.svg",
+    "width": 159.743837,
+    "height": 58.449257,
+    "svg_sha256": "dea722829772ad0c4de581ec70a0f0e3712e078e5ceb678c095469d937afa402"
+  },
+  "a5d0613847309c537f14f51e": {
+    "key": "a5d0613847309c537f14f51e",
+    "tex": "\\vcenter{\n\\xymatrix{\n\\mathcal{F}' = (g')^*\\mathcal{F} &\nX' \\ar[r]_{g'} \\ar[d]_{f'} &\nX \\ar[d]^f &\n\\mathcal{F} \\\\\nRf'_*\\mathcal{F}' &\nS' \\ar[r]^g &\nS &\nRf_*\\mathcal{F}\n}\n}",
+    "sections": [
+      "coherent-cohomology-and-base-change"
+    ],
+    "file": "a5d0613847309c537f14f51e.svg",
+    "width": 188.34023,
+    "height": 49.594018,
+    "svg_sha256": "34a0b47ce658d722cfffab058b6e4cc55017cf8bd3699b74496fa4439ead18a7"
+  },
+  "4b97ddffd70635b998e2234d": {
+    "key": "4b97ddffd70635b998e2234d",
+    "tex": "\\xymatrix{\nX' \\ar[d]_{f'} \\ar[r]_{g'} & X \\ar[d]^f \\\\\nS' \\ar[r]^g & S\n}",
+    "sections": [
+      "coherent-cohomology-and-base-change"
+    ],
+    "file": "4b97ddffd70635b998e2234d.svg",
+    "width": 57.363049,
+    "height": 45.110579,
+    "svg_sha256": "1817d5f3b2045d94949cb0a9c3c2fb70420dd79f0b135f454b4b2d6afc43dda2"
+  },
+  "2f3e92c4f995694fd773e413": {
+    "key": "2f3e92c4f995694fd773e413",
+    "tex": "\\xymatrix{\nY \\ar[d]_{g} \\ar[r]_h & X \\ar[d]^f \\\\\n\\Spec(B) \\ar[r] & \\Spec(A)\n}",
+    "sections": [
+      "coherent-cohomology-and-base-change"
+    ],
+    "file": "2f3e92c4f995694fd773e413.svg",
+    "width": 99.765045,
+    "height": 47.568275,
+    "svg_sha256": "fb16bc8b30f541daddf43448f7988acdd569e0e6889eae4653886d65000fc024"
+  },
+  "c8dd5ee96888e7b5b8abbb31": {
+    "key": "c8dd5ee96888e7b5b8abbb31",
+    "tex": "\\xymatrix{\nK_1^\\bullet \\ar[d] \\ar[r] &\nK_2^\\bullet \\ar[d] \\ar[r] & \\ldots \\\\\n\\tau_{\\leq 1}M^\\bullet \\ar[r] &\n\\tau_{\\leq 2}M^\\bullet \\ar[r] & \\ldots\n}",
+    "sections": [
+      "more-algebra-derived-tensor-product"
+    ],
+    "file": "c8dd5ee96888e7b5b8abbb31.svg",
+    "width": 131.040526,
+    "height": 49.035056,
+    "svg_sha256": "8156eaa759c9e3c96fb462f5399c108ac2d87c10c41527f6170c43d546c4f245"
+  },
+  "27f597487f9c59dec98be8ea": {
+    "key": "27f597487f9c59dec98be8ea",
+    "tex": "\\xymatrix{\n\\text{Tot}(K^\\bullet \\otimes_R P^\\bullet) \\ar[r] \\ar[d] &\n\\text{Tot}(K^\\bullet \\otimes_R Q^\\bullet) \\ar[d] \\\\\n\\text{Tot}(L^\\bullet \\otimes_R P^\\bullet) \\ar[r] &\n\\text{Tot}(L^\\bullet \\otimes_R Q^\\bullet)\n}",
+    "sections": [
+      "more-algebra-derived-tensor-product"
+    ],
+    "file": "27f597487f9c59dec98be8ea.svg",
+    "width": 164.221107,
+    "height": 49.8132,
+    "svg_sha256": "4eff001326a5662a9cd4e6648c1b49e94419bebe8c053f8e1e98c00e4b5e7760"
+  },
+  "126903bd96becdba5236625b": {
+    "key": "126903bd96becdba5236625b",
+    "tex": "\\xymatrix{\nK^\\bullet \\ar[r] \\ar[d] &\nN^\\bullet \\ar[r] \\ar[d] &\nM^\\bullet \\ar[r] \\ar[d] &\nK^\\bullet[1] \\ar[d] \\\\\nK^\\bullet \\ar[r] &\nL^\\bullet \\ar[r] &\nC^\\bullet \\ar[r] &\nK^\\bullet[1]\n}",
+    "sections": [
+      "more-algebra-derived-tensor-product"
+    ],
+    "file": "126903bd96becdba5236625b.svg",
+    "width": 155.128271,
+    "height": 49.8132,
+    "svg_sha256": "0156d20078b0357fbaaf69bc36c27a144bf321e2aeab78ef08c05241eafbe1d1"
+  },
+  "d36b3bebfb2c8855472d5ae5": {
+    "key": "d36b3bebfb2c8855472d5ae5",
+    "tex": "\\xymatrix{\nA \\ar[rr]_{\\alpha} & & A \\ar[ld]^g \\\\\n& E \\ar[lu]^f &\n}",
+    "sections": [
+      "homology-exact-couple"
+    ],
+    "file": "d36b3bebfb2c8855472d5ae5.svg",
+    "width": 82.010773,
+    "height": 43.828954,
+    "svg_sha256": "406aea3a95ad6324b015c8cf26b27932382cbaa69ef017684442f3d4ebbccfe8"
+  },
+  "dbb4b810d769180ae3b4f0f9": {
+    "key": "dbb4b810d769180ae3b4f0f9",
+    "tex": "\\xymatrix{\nTE \\ar[r]^-{Tf} &\nTA \\ar[r]^-{T\\alpha} &\nA \\ar[r]^-{g} &\nSE \\ar[r]^{Sf} & SA\n}",
+    "sections": [
+      "homology-exact-couple"
+    ],
+    "file": "dbb4b810d769180ae3b4f0f9.svg",
+    "width": 185.074535,
+    "height": 11.964233,
+    "svg_sha256": "f7fff18b62820921b593dd1314a7cb95282e2749d42be7f68e1b21f3950d5524"
+  },
+  "36dad1fd55bf03a77ef84537": {
+    "key": "36dad1fd55bf03a77ef84537",
+    "tex": "\\xymatrix{\nTA \\ar[rrr]_{T\\alpha} & & &\nA \\ar[ld]^g \\ar[rrr]_\\alpha & & &\nT^{-1}A \\ar[ld]^{T^{-1}g} \\\\\n& TE \\ar[lu]^{Tf} \\ar@{..}[r] & SE & &\nE \\ar[lu]^f \\ar@{..}[r] & T^{-1}SE\n}",
+    "sections": [
+      "homology-exact-couple"
+    ],
+    "file": "36dad1fd55bf03a77ef84537.svg",
+    "width": 296.510853,
+    "height": 46.462701,
+    "svg_sha256": "0d69c1709a39884141b7752e5ea554d1d07dac045a112a14b5a513b7a5029420"
+  },
+  "57c8fd81cec646eadcdbc5a6": {
+    "key": "57c8fd81cec646eadcdbc5a6",
+    "tex": "\\xymatrix{\nX \\ar[d]_f \\ar[r]_s & X' \\ar[d]^{f'} \\\\\nY \\ar[r]^{s'} & Y'\n}",
+    "sections": [
+      "derived-derived-functors"
+    ],
+    "file": "57c8fd81cec646eadcdbc5a6.svg",
+    "width": 56.965743,
+    "height": 44.891401,
+    "svg_sha256": "ec4827b1ebd5b623a2d8cb660c264aab555e72b5215a6181498c3dee55eb9e86"
+  },
+  "e7de74f55c7a69a1f6d092c1": {
+    "key": "e7de74f55c7a69a1f6d092c1",
+    "tex": "\\xymatrix{\nF(X) \\ar[d] \\ar[r] & F(X') \\ar[d] \\ar[r] & RF(X) \\ar[d] \\\\\nF(Y) \\ar[r] & F(Y') \\ar[r] & RF(Y)\n}",
+    "sections": [
+      "derived-derived-functors"
+    ],
+    "file": "e7de74f55c7a69a1f6d092c1.svg",
+    "width": 142.562271,
+    "height": 49.872721,
+    "svg_sha256": "ec600aa5d53d98d36d46a20ba704c0e1f87c3123787d93414dbedc31f54b125a"
+  },
+  "84d579feb3e84f15ce648f67": {
+    "key": "84d579feb3e84f15ce648f67",
+    "tex": "\\xymatrix{\nX' \\ar[d]_{f'} \\ar[r]_s & X \\ar[d]^f \\\\\nY' \\ar[r]^{s'} & Y\n}",
+    "sections": [
+      "derived-derived-functors"
+    ],
+    "file": "84d579feb3e84f15ce648f67.svg",
+    "width": 57.363049,
+    "height": 44.891401,
+    "svg_sha256": "5d870d8ee352aa034817e9b004340a55b86759425311fa9e607ad0accaba4bfd"
+  },
+  "2106334572eec28b14c35f26": {
+    "key": "2106334572eec28b14c35f26",
+    "tex": "\\xymatrix{\nLF(X) \\ar[d] \\ar[r] & F(X') \\ar[d] \\ar[r] & F(X) \\ar[d] \\\\\nLF(Y) \\ar[r] & F(Y') \\ar[r] & F(Y)\n}",
+    "sections": [
+      "derived-derived-functors"
+    ],
+    "file": "2106334572eec28b14c35f26.svg",
+    "width": 141.690958,
+    "height": 49.872721,
+    "svg_sha256": "5b735fa8e543baf8a465a1e2160c6502a51cc23160ef50fcd25b63c35c25657c"
+  },
+  "bed25ec81854f8359b633bf9": {
+    "key": "bed25ec81854f8359b633bf9",
+    "tex": "\\xymatrix{\nA \\ar[d]_{RF(f)} \\ar[r]_-\\alpha &\nF(X') \\ar[r] \\ar[d]^{F(f')} &\nA \\ar[d]^{RF(f)} \\\\\nB \\ar[r]^-\\beta & F(Y') \\ar[r] & B\n}",
+    "sections": [
+      "derived-derived-functors"
+    ],
+    "file": "bed25ec81854f8359b633bf9.svg",
+    "width": 145.983876,
+    "height": 49.872721,
+    "svg_sha256": "a344122aab024feb474f99e9c23765f9f1a93f6d4eaf85a7675c652e33cee477"
+  },
+  "b40704a89a00e28cdc8d5429": {
+    "key": "b40704a89a00e28cdc8d5429",
+    "tex": "\\xymatrix{\n\\colim_\\mathcal{I} \\Mor_{\\mathcal{D}'}(W, F(X'')) \\ar[d] &\n\\Mor_{\\mathcal{D}'}(W, A) \\ar[l] \\ar[d] \\\\\n\\colim_\\mathcal{I} \\Mor_{\\mathcal{D}'}(W, F(Y'')) \\ar[d] &\n\\Mor_{\\mathcal{D}'}(W, B) \\ar[d] \\ar[l] \\\\\n\\colim_\\mathcal{I} \\Mor_{\\mathcal{D}'}(W, F(Z'')) \\ar[d] &\n\\Mor_{\\mathcal{D}'}(W, C) \\ar[d] \\ar[l] \\\\\n\\colim_\\mathcal{I} \\Mor_{\\mathcal{D}'}(W, F(X''[1])) \\ar[d] &\n\\Mor_{\\mathcal{D}'}(W, A[1]) \\ar[d] \\ar[l] \\\\\n\\colim_\\mathcal{I} \\Mor_{\\mathcal{D}'}(W, F(Y''[1])) &\n\\Mor_{\\mathcal{D}'}(W, B[1]) \\ar[l]\n}",
+    "sections": [
+      "derived-derived-functors"
+    ],
+    "file": "b40704a89a00e28cdc8d5429.svg",
+    "width": 215.545767,
+    "height": 169.477669,
+    "svg_sha256": "832f1413aa5e52e92ac93bee5a7ffce35c8ff50db00a81dcfaa85a2897b429cf"
+  },
+  "e91a05b81fcb5fe64680feea": {
+    "key": "e91a05b81fcb5fe64680feea",
+    "tex": "\\xymatrix{\nX \\ar[d]^s & X \\oplus Y \\ar[d] \\ar[l] \\ar[r] & Y \\ar[d]_{s'} \\\\\nX' & Z \\ar[l] \\ar[r] & Y'\n}",
+    "sections": [
+      "derived-derived-functors"
+    ],
+    "file": "e91a05b81fcb5fe64680feea.svg",
+    "width": 110.63024,
+    "height": 44.256263,
+    "svg_sha256": "7d4bb510b30a3a0438cdc6aecf4f3b4ccd2c77ea561b53f312359e4d20abdf3b"
+  },
+  "314022ef306826b9683f06a8": {
+    "key": "314022ef306826b9683f06a8",
+    "tex": "\\xymatrix{\n\\mathcal{D} \\ar[d]_Q \\ar[rrr]_F & & & \\mathcal{D}' \\\\\nS^{-1}\\mathcal{D} & &\nS_\\mathcal{E}^{-1}\\mathcal{E}\n\\ar[ll]_{\\text{fully faithful}}^{\\text{exact}} \\ar[ur]_{RF}\n}",
+    "sections": [
+      "derived-derived-functors"
+    ],
+    "file": "314022ef306826b9683f06a8.svg",
+    "width": 148.062307,
+    "height": 51.845814,
+    "svg_sha256": "bbb6077cbf45cd833054417e25b0113af97e1d4042dd029d9414146943d9c1f0"
+  },
+  "883540f0564a28198f7d3d4c": {
+    "key": "883540f0564a28198f7d3d4c",
+    "tex": "\\xymatrix{\n(F(X), F(Y), F(Z), F(f), F(g), F(h)) \\ar[d] \\\\\n(RF(X), RF(Y), RF(Z), RF(f), RF(g), RF(h))\n}",
+    "sections": [
+      "derived-derived-functors"
+    ],
+    "file": "883540f0564a28198f7d3d4c.svg",
+    "width": 208.335501,
+    "height": 49.8132,
+    "svg_sha256": "60b7868c2af09a921397386b173a8f94529b7b41e930163a613f826a6bc5cb5c"
+  },
+  "0f0782a8b9ca3485d7f71200": {
+    "key": "0f0782a8b9ca3485d7f71200",
+    "tex": "\\xymatrix{\n\\Spec(K) \\ar[rr] \\ar[d] & & X \\ar[d] \\ar[ld] \\\\\n\\Spec(A) \\ar[r] & Z \\ar[r] & Y\n}",
+    "sections": [
+      "morphisms-scheme-theoretic-image"
+    ],
+    "file": "0f0782a8b9ca3485d7f71200.svg",
+    "width": 112.334349,
+    "height": 49.8132,
+    "svg_sha256": "3b4fe4e8e7ede00d4ed100b92573db8a92b52228da446f97156f15c9ce4e0d60"
+  },
+  "0bff21f8a59cb1be558d293b": {
+    "key": "0bff21f8a59cb1be558d293b",
+    "tex": "\\xymatrix{\nX_1 \\ar[d] \\ar[r]_{f_1} & Y_1 \\ar[d] \\\\\nX_2 \\ar[r]^{f_2} & Y_2\n}",
+    "sections": [
+      "morphisms-scheme-theoretic-image"
+    ],
+    "file": "0bff21f8a59cb1be558d293b.svg",
+    "width": 51.647733,
+    "height": 46.488934,
+    "svg_sha256": "bfd6f9c0b3b34b1279208e237486a2a2bf0293ef687d3710d4831106e1f81ba1"
+  },
+  "30ed6e45f59948f713f601cc": {
+    "key": "30ed6e45f59948f713f601cc",
+    "tex": "\\xymatrix{\nX_1 \\ar[r] \\ar[d] & Z_1 \\ar[d] \\ar[r] & Y_1 \\ar[d] \\\\\nX_2 \\ar[r] & Z_2 \\ar[r] & Y_2\n}",
+    "sections": [
+      "morphisms-scheme-theoretic-image"
+    ],
+    "file": "30ed6e45f59948f713f601cc.svg",
+    "width": 92.805921,
+    "height": 46.488934,
+    "svg_sha256": "8ffdc1e9737fb1787946e47412eaf432b299291edf5503797695d626ec49dd65"
+  },
+  "0ab5c086ba7b122d2c9e6579": {
+    "key": "0ab5c086ba7b122d2c9e6579",
+    "tex": "\\xymatrix{\nB \\ar[r] &\nS'_\\lambda \\ar[r] &\nS_\\lambda \\ar[r] &\nS \\\\\nA \\ar[r] \\ar[u] &\nR'_\\lambda \\ar[r] \\ar[u] &\nR_\\lambda \\ar[r] \\ar[u] &\nR \\ar[u]\n}.",
+    "sections": [
+      "algebra-colimits-flat"
+    ],
+    "file": "0ab5c086ba7b122d2c9e6579.svg",
+    "width": 135.42105,
+    "height": 50.61811,
+    "svg_sha256": "5ef7059f54a072b159afaa4bcc7083840c71849a03e2b98de4a4d2683f259d6c"
+  },
+  "a923dbab31d553e9bfef8d78": {
+    "key": "a923dbab31d553e9bfef8d78",
+    "tex": "\\xymatrix{\n\\varphi(A) \\amalg \\{x_i\\} \\ar[r] &\nS'_\\lambda \\ar[r] &\nS_\\lambda \\ar[r] &\nS \\\\\nA \\ar[r] \\ar[u] &\nR'_\\lambda \\ar[r] \\ar[u] &\nR_\\lambda \\ar[r] \\ar[u] &\nR \\ar[u]\n}",
+    "sections": [
+      "algebra-colimits-flat"
+    ],
+    "file": "a923dbab31d553e9bfef8d78.svg",
+    "width": 174.874567,
+    "height": 50.61811,
+    "svg_sha256": "b3a5ddcd2f9ee91c9f57d98b989b04dbe1f261812d4bbb35564f966970ec89ab"
+  },
+  "f328acdd23e442dcc696f7f4": {
+    "key": "f328acdd23e442dcc696f7f4",
+    "tex": "\\xymatrix{\n\\Spec((S \\otimes_k R)_f) \\ar[rd] \\ar[rr] & &\n\\Spec((S' \\otimes_k R)_f) \\ar[ld] \\\\\n& \\Spec(R) &\n}",
+    "sections": [
+      "algebra-going-up"
+    ],
+    "file": "f328acdd23e442dcc696f7f4.svg",
+    "width": 241.144694,
+    "height": 50.043711,
+    "svg_sha256": "98fbef3cc578d311809d74552b2b1a4a7bf0ff98a6b332df45daa36f5b09df1c"
+  },
+  "509ebb1eef1148b992f01662": {
+    "key": "509ebb1eef1148b992f01662",
+    "tex": "\\xymatrix{\n\\mathfrak q' \\ar@{-}[d] \\ar@{-}[r] & ? \\ar@{-}[r] \\ar@{-}[d] & S \\ar@{-}[d] \\\\\n\\mathfrak p' \\ar@{-}[r] & \\mathfrak p \\ar@{-}[r] & R\n}",
+    "sections": [
+      "algebra-going-up"
+    ],
+    "file": "509ebb1eef1148b992f01662.svg",
+    "width": 79.944934,
+    "height": 48.906907,
+    "svg_sha256": "d32be80e2ea6c34279234a9c030d55704e9ac4e8f8eafc1b7b0f7a62236cb694"
+  },
+  "53b6b75d54bcafc62b218994": {
+    "key": "53b6b75d54bcafc62b218994",
+    "tex": "\\xymatrix{\nM \\times N \\ar[rr]^f \\ar[dr]_g & & P\\\\\n& T \\ar[ur]_{\\tilde f}\n}",
+    "sections": [
+      "algebra-tensor-product"
+    ],
+    "file": "53b6b75d54bcafc62b218994.svg",
+    "width": 106.093548,
+    "height": 48.855859,
+    "svg_sha256": "d0f0f2f62632609681d79879bdac177e2e3b350be460f66ba8b1a8a632717a10"
+  },
+  "c6fc04312fdeca0046a7a43b": {
+    "key": "c6fc04312fdeca0046a7a43b",
+    "tex": "\\xymatrix{\nM_i \\otimes N \\ar[r]_{\\mu_i \\otimes 1} \\ar[d]_{\\mu_{ij} \\otimes 1} &\nM \\otimes N \\ar[d]^{\\text{id}} \\\\\nM_j \\otimes N \\ar[r]^{\\mu_j \\otimes 1} &\nM \\otimes N\n}",
+    "sections": [
+      "algebra-tensor-product"
+    ],
+    "file": "c6fc04312fdeca0046a7a43b.svg",
+    "width": 103.219921,
+    "height": 48.589613,
+    "svg_sha256": "92d7b60b59f8a94c14699e91beb7e23695c30825e2c34c0242edebf6cbb468d4"
+  },
+  "bbc068b94a064531a6aeb693": {
+    "key": "bbc068b94a064531a6aeb693",
+    "tex": "\\xymatrix{\nM_i \\times N \\ar[r]^{g_i} \\ar[d]^{\\mu_i \\times \\text{id}} &\nM_i \\otimes N\\ar[r]_{\\text{id}} \\ar[d]_{\\lambda_i} &\nM_i \\otimes N \\ar[d]_{\\mu_i \\otimes \\text{id}} \\ar[rd]^{\\lambda_i} \\\\\nM \\times N \\ar[r]^{\\widehat{\\phi}} &\nP \\ar[r]^{\\psi} & M \\otimes N \\ar[r]^{\\phi} & P\n}",
+    "sections": [
+      "algebra-tensor-product"
+    ],
+    "file": "bbc068b94a064531a6aeb693.svg",
+    "width": 199.505187,
+    "height": 48.595819,
+    "svg_sha256": "c833171cb3acb14f9352cd935987c510baf20ee141c412b01211baf11c3cd0d3"
+  },
+  "120e963e1e1fd1f89a1b4aa8": {
+    "key": "120e963e1e1fd1f89a1b4aa8",
+    "tex": "\\xymatrix{\nR' \\otimes_R (I/I^2) \\ar[r] \\ar[d] &\nR' \\otimes_R (\\Omega_{R[x_1, \\ldots, x_n]/R} \\otimes_{R[x_1, \\ldots, x_n]} S)\n\\ar[d] \\\\\nI'/(I')^2 \\ar[r] &\n\\Omega_{R'[x_1, \\ldots, x_n]/R'}\n\\otimes_{R'[x_1, \\ldots, x_n]} (R' \\otimes_R S)\n}",
+    "sections": [
+      "algebra-smooth"
+    ],
+    "file": "120e963e1e1fd1f89a1b4aa8.svg",
+    "width": 247.684003,
+    "height": 53.328101,
+    "svg_sha256": "9afd5487e8da758025c8c86832aea38d294c16d15443f4b7cb2d6f4ebd151ec3"
+  },
+  "d15998b007a8f9b2343e875c": {
+    "key": "d15998b007a8f9b2343e875c",
+    "tex": "\\xymatrix{\nI \\ar[r] \\ar[d] & I/I^2 \\ar[rr] \\ar[d] & &\nI/\\mathfrak m'I \\ar[d] \\\\\n\\Omega_{k[x_1, \\ldots, x_n]/k} \\ar[r] &\n\\bigoplus S\\text{d}x_i \\ar[rr]^{\\text{d}x_i \\mapsto x_i - a_i} & &\n\\mathfrak m'/(\\mathfrak m')^2\n}",
+    "sections": [
+      "algebra-smooth"
+    ],
+    "file": "d15998b007a8f9b2343e875c.svg",
+    "width": 215.037811,
+    "height": 52.802286,
+    "svg_sha256": "ebf7747a42e75268e10944da2db085045cc6bc83265d436dc2fdbcc710d5e01c"
+  },
+  "5927c8ba24309c39d5caaf4d": {
+    "key": "5927c8ba24309c39d5caaf4d",
+    "tex": "\\xymatrix{\nM \\ar[d] \\ar[r] & N \\ar[d] \\\\\nJ(M) \\ar[r] & J(N) }",
+    "sections": [
+      "more-algebra-injectives-modules"
+    ],
+    "file": "5927c8ba24309c39d5caaf4d.svg",
+    "width": 76.490377,
+    "height": 47.568275,
+    "svg_sha256": "5b46837e1fb2bb64cd9e05866ae3edada57a0db061112dea155b1be2a53f0419"
+  },
+  "6c7c907541bea6dc12f94268": {
+    "key": "6c7c907541bea6dc12f94268",
+    "tex": "\\xymatrix{\nP = \\underline{\\text{Proj}}_S(\\mathcal{A})\n\\ar[rr]_g \\ar[rd]_\\pi & &\n\\underline{\\text{Proj}}_S(\\mathcal{B}) = P'\n\\ar[ld]^{\\pi'} \\\\\n& S &\n}",
+    "sections": [
+      "constructions-twisting-and-proj"
+    ],
+    "file": "6c7c907541bea6dc12f94268.svg",
+    "width": 190.636383,
+    "height": 46.983454,
+    "svg_sha256": "38d9a6598ce0046b8b94d98550fc0e06c8cb59de1c288433b2b2187cc49108ac"
+  },
+  "c777b9a66c450e5489f58708": {
+    "key": "c777b9a66c450e5489f58708",
+    "tex": "\\xymatrix{\n\\mathcal{A}_n(V) \\otimes \\mathcal{L}^{\\otimes n}(V)\n\\ar[r]_{multiply} \\ar[d]^{\\psi \\otimes \\pi^*}\n&\n\\mathcal{B}_n(V) \\ar[dd]^\\psi \\\\\n\\Gamma(\\pi^{-1}V, \\mathcal{O}_P(n)) \\otimes\n\\Gamma(\\pi^{-1}V, \\pi^*\\mathcal{L}^{\\otimes n})\n\\ar[d]^{multiply} \\\\\n\\Gamma(\\pi^{-1}V, \\mathcal{O}_P(n) \\otimes \\pi^*\\mathcal{L}^{\\otimes n})\n&\n\\Gamma(\\pi'^{-1}V, \\mathcal{O}_{P'}(n)) \\ar[l]_-{\\theta_n}\n}",
+    "sections": [
+      "constructions-twisting-and-proj"
+    ],
+    "file": "c777b9a66c450e5489f58708.svg",
+    "width": 255.977567,
+    "height": 91.310653,
+    "svg_sha256": "c29e5e8e819089e596511198fa868decb0bdfcc4ff214b7e4eda74f30fda43cd"
+  },
+  "30444c15e600b89eb9ff74d1": {
+    "key": "30444c15e600b89eb9ff74d1",
+    "tex": "\\xymatrix{\nZ = Y \\times_{(Y \\times_S Y)} X \\ar[r] \\ar[d] &\n X \\ar[d]^{(a , b)} \\\\\nY \\ar[r]^-{\\Delta_{Y/S}} & Y \\times_S Y\n}",
+    "sections": [
+      "schemes-separation-axioms"
+    ],
+    "file": "30444c15e600b89eb9ff74d1.svg",
+    "width": 145.648512,
+    "height": 47.652372,
+    "svg_sha256": "ef4209a76f9d956e6b74265bac773a17ef1dce49375305e533e4d88f74a4638f"
+  },
+  "4e4c9087f57f120a261fc904": {
+    "key": "4e4c9087f57f120a261fc904",
+    "tex": "\\xymatrix{\nX \\times_T Y \\ar[r] \\ar[d] & X \\times_S Y \\ar[d] \\\\\nT \\ar[r]^{\\Delta_{T/S}} \\ar[r] & T \\times_S T\n}",
+    "sections": [
+      "schemes-separation-axioms"
+    ],
+    "file": "4e4c9087f57f120a261fc904.svg",
+    "width": 99.679844,
+    "height": 46.628411,
+    "svg_sha256": "6d0eaab6a120b5a80350dccc7b79e7728cdfcd0f420b17457656ecb0abe6cdf3"
+  },
+  "cb34951c82d5c9a17f88f628": {
+    "key": "cb34951c82d5c9a17f88f628",
+    "tex": "\\xymatrix{\nK[x_1, \\ldots, x_n]_{\\mathfrak q_K'} \\ar[r] &\n(K \\otimes_k S)_{\\mathfrak q_K} \\\\\nk[x_1, \\ldots, x_n]_{\\mathfrak q'} \\ar[r] \\ar[u] &\nS_{\\mathfrak q} \\ar[u]\n}",
+    "sections": [
+      "algebra-dimension-finite-type-algebras-reprise"
+    ],
+    "file": "cb34951c82d5c9a17f88f628.svg",
+    "width": 149.062229,
+    "height": 51.342643,
+    "svg_sha256": "2596d4dd6655fcc0b153499ce9cd515cf59c0544fe9f2fdd995375f916831290"
+  },
+  "33222fe9a4e4fbc7d4b30e05": {
+    "key": "33222fe9a4e4fbc7d4b30e05",
+    "tex": "\\xymatrix{\n\\Spec(K) \\ar[r] \\ar[d] & X \\ar[d] \\\\\n\\Spec(A) \\ar[r] \\ar@{-->}[ru] & X \\times_S X\n}",
+    "sections": [
+      "schemes-valuative-separatedness"
+    ],
+    "file": "33222fe9a4e4fbc7d4b30e05.svg",
+    "width": 101.916416,
+    "height": 49.8132,
+    "svg_sha256": "24c20a56855d812282a09622baf93b468015ae155630dfc268bce070dc4e0252"
+  },
+  "31b12984fb80a3faeb80702f": {
+    "key": "31b12984fb80a3faeb80702f",
+    "tex": "\\xymatrix{\nS \\ar[r] & S' & &\n\\mathfrak q \\ar@{-}[r] & \\mathfrak q' \\\\\nR \\ar[u] \\ar[r] &  R' \\ar[u] & &\n\\mathfrak p \\ar@{-}[r] \\ar@{-}[u] & \\mathfrak p' \\ar@{-}[u]\n}",
+    "sections": [
+      "algebra-quasi-finite"
+    ],
+    "file": "31b12984fb80a3faeb80702f.svg",
+    "width": 149.278225,
+    "height": 48.906907,
+    "svg_sha256": "119ddcad95635141a7393e976ee5b1bb88abae09d78a47b38283a4586fe6c956"
+  },
+  "4e8251e47a2030aa6c698fed": {
+    "key": "4e8251e47a2030aa6c698fed",
+    "tex": "\\xymatrix{\nP \\ar[rd]_\\pi \\ar[rr]_g & & P' \\ar[ld]^{\\pi'} \\\\\n& X &\n}",
+    "sections": [
+      "chow-relations-chern-classes"
+    ],
+    "file": "4e8251e47a2030aa6c698fed.svg",
+    "width": 86.057768,
+    "height": 44.550425,
+    "svg_sha256": "03268ffa49293e11fa1f197ba31e2b77aaf46391d2c9bc8fbd3aea52bc1ca2f7"
+  },
+  "0030fceda9b2fd6773b51ca2": {
+    "key": "0030fceda9b2fd6773b51ca2",
+    "tex": "\\xymatrix{\n\\colim_i H^{q_0}(U, \\mathcal{I}_i) \\ar[d] \\ar[r] &\n\\colim_i H^{q_0}(U, \\mathcal{Q}_i) \\ar[d] \\ar[r] &\n\\colim_i H^{q_0 + 1}(U, \\mathcal{F}_i) \\ar[d] \\ar[r] &\n0 \\ar[d] \\\\\nH^{q_0}(U, \\colim_i \\mathcal{I}_i) \\ar[r] &\nH^{q_0}(U, \\colim_i \\mathcal{Q}_i) \\ar[r] &\nH^{q_0 + 1}(U, \\colim_i \\mathcal{F}_i) \\ar[r] &\n0\n}",
+    "sections": [
+      "cohomology-limits"
+    ],
+    "file": "0030fceda9b2fd6773b51ca2.svg",
+    "width": 327.597853,
+    "height": 51.224843,
+    "svg_sha256": "1f46977bc151c946eaf299b222dfa4224d0358a9e5cb0d04d0cca2827aafa25c"
+  },
+  "daec82f372b2209ef6dc2920": {
+    "key": "daec82f372b2209ef6dc2920",
+    "tex": "\\xymatrix{\nZ' \\ar[rd] &\nY' \\ar[l]^i \\ar[d] \\ar[r] &\nY \\ar[d] \\\\\n & X' \\ar[r] & X\n}",
+    "sections": [
+      "morphisms-finite-locally-free"
+    ],
+    "file": "daec82f372b2209ef6dc2920.svg",
+    "width": 89.815391,
+    "height": 44.891401,
+    "svg_sha256": "8eb5214a9986c7d5961dec84323053a29c00ff858c72b9acf2081bbb1b92d6e4"
+  },
+  "607f446287c8f217e999f57f": {
+    "key": "607f446287c8f217e999f57f",
+    "tex": "\\xymatrix{\nZ' \\ar[rd] &\nY' \\ar[l]^i \\ar[d]^{f'} \\ar[r]_a &\nY \\ar[d]^f \\\\\n & X' \\ar[r]^b & X\n}",
+    "sections": [
+      "morphisms-finite-locally-free"
+    ],
+    "file": "607f446287c8f217e999f57f.svg",
+    "width": 93.055952,
+    "height": 44.891401,
+    "svg_sha256": "69b93fa266426261cb1ea354e2447bd4fd34c113c0c2ff4f35e2496fb161994f"
+  },
+  "b46a5fc07d24140cd55cfbab": {
+    "key": "b46a5fc07d24140cd55cfbab",
+    "tex": "\\xymatrix{\n&\nK \\otimes_R R^\\wedge \\ar[r] \\ar[d] &\nR^{\\oplus t} \\otimes_R R^\\wedge \\ar[r] \\ar[d] &\nM \\otimes_R R^\\wedge \\ar[r] \\ar[d] &\n0 \\\\\n0 \\ar[r] &\nK^\\wedge \\ar[r] &\n(R^{\\oplus t})^\\wedge \\ar[r] &\nM^\\wedge \\ar[r] & 0\n}",
+    "sections": [
+      "algebra-completion-noetherian"
+    ],
+    "file": "b46a5fc07d24140cd55cfbab.svg",
+    "width": 262.689727,
+    "height": 50.27763,
+    "svg_sha256": "cef5f6192e53009d7b103f1afefabebc8d5b7171b95701630c0ab91e924bf330"
+  },
+  "c5b144d6d1e86b046910ae90": {
+    "key": "c5b144d6d1e86b046910ae90",
+    "tex": "\\xymatrix{\n\\mathcal{F}(U) \\ar[r]^{c(\\phi)} \\ar[d]_{\\text{id}}\n&\nu_p\\mathcal{F}(V) \\ar[d]^{g^*}\n\\\\\n\\mathcal{F}(U) \\ar[r]^{c(\\phi \\circ g)}\n&\nu_p\\mathcal{F}(V')\n}",
+    "sections": [
+      "sites-functoriality-PSh"
+    ],
+    "file": "c5b144d6d1e86b046910ae90.svg",
+    "width": 89.538069,
+    "height": 55.519781,
+    "svg_sha256": "8234c432d45581353f620d8004191605379ff759268898bd3d3c5306b1c3f503"
+  },
+  "2b1e612d4ee0670261ced17e": {
+    "key": "2b1e612d4ee0670261ced17e",
+    "tex": "\\xymatrix{\nM  \\ar[r]_f \\ar[d]_g & N \\ar[d]^{g'} \\\\\nM' \\ar[r]^{f'} & N'\n}",
+    "sections": [
+      "algebra-mittag-leffler-modules"
+    ],
+    "file": "2b1e612d4ee0670261ced17e.svg",
+    "width": 58.398774,
+    "height": 43.841163,
+    "svg_sha256": "25a9aef96e81d480ad798cb99cc03d9f695d80067e212f4e14e4eb0fed52d31c"
+  },
+  "a62a44795ca192369ac50047": {
+    "key": "a62a44795ca192369ac50047",
+    "tex": "\\xymatrix{\n  &  M  & \\\\\nM_i \\ar[dr]_g \\ar[ur]^{f_i} \\ar[rr]^{f_{ij}} &\n& M_j \\ar[ul]_{f_j} \\\\\n  & Q  \\ar[ur]_{h'} &\n}",
+    "sections": [
+      "algebra-mittag-leffler-modules"
+    ],
+    "file": "a62a44795ca192369ac50047.svg",
+    "width": 95.817416,
+    "height": 85.94762,
+    "svg_sha256": "ef0119d022b39880425e1ad887a489950d7b6900e8ef7f9fd9edd85cf77b6558"
+  },
+  "2f7427981704ce66f7527755": {
+    "key": "2f7427981704ce66f7527755",
+    "tex": "\\xymatrix{\nP \\ar[d]_{g'} \\ar[r]^{f}           & M  \\\\\nM_i \\ar[ur]^{f_i} \\ar[r]_{f_{ij}} & M_j \\ar[u]_{f_j}\n}",
+    "sections": [
+      "algebra-mittag-leffler-modules"
+    ],
+    "file": "2f7427981704ce66f7527755.svg",
+    "width": 62.245075,
+    "height": 57.224462,
+    "svg_sha256": "99fcb3c49097ead98fe58f37627c6d6365f009fc8c75a2d4c75bd5ce323eadee"
+  },
+  "0cb88cb9772b18699a602f98": {
+    "key": "0cb88cb9772b18699a602f98",
+    "tex": "\\xymatrix{\nF \\otimes_R N \\ar[d] \\ar[r] & Q \\otimes_R N \\\\\nP \\otimes_R N \\ar[ru] \\ar[r] & M \\otimes_R N\n}",
+    "sections": [
+      "algebra-mittag-leffler-modules"
+    ],
+    "file": "0cb88cb9772b18699a602f98.svg",
+    "width": 103.343008,
+    "height": 47.068988,
+    "svg_sha256": "b43f4e1834a6604814e1f6c7da4cec8206b85b22d44325a3304919ab0e7f57e7"
+  },
+  "adca687ad5835e9926411da5": {
+    "key": "adca687ad5835e9926411da5",
+    "tex": "\\xymatrix{\n& &\nP^n \\ar[d]^\\alpha \\ar[r] &\nP^{n + 1} \\ar[d]^\\alpha \\ar[r] &\nP^{n + 2} \\ar[d]^\\alpha \\ar[r] &\n\\ldots \\\\\n\\ldots \\ar[r] &\nK^{n - 1} \\ar[r] &\nK^n \\ar[r] &\nK^{n + 1} \\ar[r] &\nK^{n + 2} \\ar[r] &\n\\ldots\n}",
+    "sections": [
+      "derived-derived-functors-classical"
+    ],
+    "file": "adca687ad5835e9926411da5.svg",
+    "width": 259.734251,
+    "height": 46.243523,
+    "svg_sha256": "1de0996c04e31c5dccbec642d63facde1c3cd180596f32955e2458f799bef488"
+  },
+  "e1badd8ed2e60cb8dc08f379": {
+    "key": "e1badd8ed2e60cb8dc08f379",
+    "tex": "\\xymatrix{\n& P^{n - 1} \\ar[d]^\\alpha \\ar[r] &\nP^n \\ar[d]^\\alpha \\ar[r] &\nP^{n + 1} \\ar[d]^\\alpha \\ar[r] &\nP^{n + 2} \\ar[d]^\\alpha \\ar[r] &\n\\ldots \\\\\n\\ldots \\ar[r] &\nK^{n - 1} \\ar[r] &\nK^n \\ar[r] &\nK^{n + 1} \\ar[r] &\nK^{n + 2} \\ar[r] &\n\\ldots\n}",
+    "sections": [
+      "derived-derived-functors-classical"
+    ],
+    "file": "e1badd8ed2e60cb8dc08f379.svg",
+    "width": 259.734251,
+    "height": 46.243523,
+    "svg_sha256": "dd9219ad869f1f3c02909012432e9e084ddd2f8d9b1de2f76774b10d4ac9d3bc"
+  },
+  "c2e5ab46579ae8d76203f200": {
+    "key": "c2e5ab46579ae8d76203f200",
+    "tex": "\\xymatrix{\nK_1^\\bullet \\ar[r]_{f_1} \\ar[d]_a & L_1^\\bullet \\ar[d]^b \\\\\nK_2^\\bullet \\ar[r]^{f_2} & L_2^\\bullet\n}",
+    "sections": [
+      "derived-cones"
+    ],
+    "file": "c2e5ab46579ae8d76203f200.svg",
+    "width": 55.603306,
+    "height": 48.551904,
+    "svg_sha256": "53f5c20e5fede028de49ddbab2099fc050cedddc7e5a7f981d7b2c7aca27bf51"
+  },
+  "c304aa1ead40463bcd8557eb": {
+    "key": "c304aa1ead40463bcd8557eb",
+    "tex": "\\xymatrix{\nK^\\bullet \\ar[r]_f \\ar[d] & L^\\bullet \\ar[d]^g \\\\\n0 \\ar[r] & M^\\bullet\n}",
+    "sections": [
+      "derived-cones"
+    ],
+    "file": "c304aa1ead40463bcd8557eb.svg",
+    "width": 57.655776,
+    "height": 43.82544,
+    "svg_sha256": "7089c46283b9c77aa350b19bc3f6f1162b53c31830d4df1914cf33c53ad7bb5a"
+  },
+  "1fd2b7a37e793f1cdaceab26": {
+    "key": "1fd2b7a37e793f1cdaceab26",
+    "tex": "\\xymatrix{\nA^\\bullet \\ar[r]_f \\ar[d]_a & B^\\bullet \\ar[d]^b \\\\\nC^\\bullet \\ar[r]^g & D^\\bullet\n}",
+    "sections": [
+      "derived-cones"
+    ],
+    "file": "1fd2b7a37e793f1cdaceab26.svg",
+    "width": 55.805322,
+    "height": 44.100487,
+    "svg_sha256": "52a5feae4c1aaf52725b1232a7a040264fd8c7673f083ac90e8c1f4a94d05be6"
+  },
+  "1c910e67e902455e598455e9": {
+    "key": "1c910e67e902455e598455e9",
+    "tex": "\\xymatrix{\nK^\\bullet \\ar[r]^{\\tilde \\alpha} \\ar@/_1pc/[rr]_\\alpha &\n\\tilde L^\\bullet \\ar[r]^\\pi &\nL^\\bullet\n}",
+    "sections": [
+      "derived-cones"
+    ],
+    "file": "1c910e67e902455e598455e9.svg",
+    "width": 94.827314,
+    "height": 25.698516,
+    "svg_sha256": "8f72612291172457f58bcfc7c9ce9756a81c74f55d51816c3f85e55acf11f29d"
+  },
+  "b1fd05bfe771df8498c4b557": {
+    "key": "b1fd05bfe771df8498c4b557",
+    "tex": "\\xymatrix{\nK^\\bullet \\ar[r]^i \\ar@/_1pc/[rr]_\\alpha &\n\\tilde K^\\bullet \\ar[r]^{\\tilde \\alpha} &\nL^\\bullet\n}",
+    "sections": [
+      "derived-cones"
+    ],
+    "file": "b1fd05bfe771df8498c4b557.svg",
+    "width": 97.221077,
+    "height": 25.698516,
+    "svg_sha256": "4379eeb46945529c6d0b734f9cc0fa949a4facbc4ed7f40f06a93ee55cdb7eea"
+  },
+  "4282a0370dfd512a46703747": {
+    "key": "4282a0370dfd512a46703747",
+    "tex": "\\xymatrix{\nA_1^\\bullet \\ar[d]_a \\ar[r] &\nB_1^\\bullet \\ar[r] \\ar[d]_b &\nC_1^\\bullet \\ar[d]_c \\\\\nA_2^\\bullet \\ar[r] & B_2^\\bullet \\ar[r] & C_2^\\bullet\n}",
+    "sections": [
+      "derived-cones"
+    ],
+    "file": "4282a0370dfd512a46703747.svg",
+    "width": 96.692174,
+    "height": 48.826951,
+    "svg_sha256": "c10572461014d8f4b5f8b4861b18a239684dad6fcfe018edcb02f90828f42980"
+  },
+  "49869ea209e8923d49a1f134": {
+    "key": "49869ea209e8923d49a1f134",
+    "tex": "\\vcenter{\n\\xymatrix{\nA_1^\\bullet \\ar[d]_0 \\ar[r] &\nB_1^\\bullet \\ar[r] \\ar[d]_b &\nC_1^\\bullet \\ar[d]_0 \\\\\nA_2^\\bullet \\ar[r] & B_2^\\bullet \\ar[r] & C_2^\\bullet\n}\n}\n\\quad\\text{and}\\quad\n\\vcenter{\n\\xymatrix{\nA_2^\\bullet \\ar[d]^0 \\ar[r] &\nB_2^\\bullet \\ar[r] \\ar[d]^{b'} &\nC_2^\\bullet \\ar[d]^0 \\\\\nA_3^\\bullet \\ar[r] & B_3^\\bullet \\ar[r] & C_3^\\bullet\n}\n}",
+    "sections": [
+      "derived-cones"
+    ],
+    "file": "49869ea209e8923d49a1f134.svg",
+    "width": 236.661301,
+    "height": 48.966428,
+    "svg_sha256": "25fe4b02ea7152a79c192b028a4bca56368a93eded8cb07789759140ea72b619"
+  },
+  "b3a0c313874aa9abef8f7d8f": {
+    "key": "b3a0c313874aa9abef8f7d8f",
+    "tex": "\\xymatrix{\nL^\\bullet \\ar[r] \\ar[d]_1 &\nC(f)^\\bullet \\ar[r] \\ar[d]_c &\nK^\\bullet[1] \\ar[d]_1 \\\\\nL^\\bullet \\ar[r] &\nC(f)^\\bullet \\ar[r] &\nK^\\bullet[1]\n}",
+    "sections": [
+      "derived-cones"
+    ],
+    "file": "b3a0c313874aa9abef8f7d8f.svg",
+    "width": 120.85448,
+    "height": 49.8132,
+    "svg_sha256": "8b534563c756e92e5fe0baf10bb6de39eb20e1161f3f310183e1c1a0874f3555"
+  },
+  "458d190091aafbb7d91f342d": {
+    "key": "458d190091aafbb7d91f342d",
+    "tex": "\\xymatrix{\nA^\\bullet \\ar[r] \\ar[d] & B^\\bullet \\ar[d] \\ar[r] &\nC(\\alpha)^\\bullet \\ar[r]_{-p} \\ar[d] & A^\\bullet[1] \\ar[d] \\\\\nA^\\bullet \\ar[r] & B^\\bullet \\ar[r] &\nC^\\bullet \\ar[r]^\\delta & A^\\bullet[1]\n}",
+    "sections": [
+      "derived-cones"
+    ],
+    "file": "458d190091aafbb7d91f342d.svg",
+    "width": 161.960491,
+    "height": 49.8132,
+    "svg_sha256": "39fd9b5d0b89d1556688c450422d678b122a4885943adcfd71dfec957092bac0"
+  },
+  "2318e468a3bf6db62b6b6cac": {
+    "key": "2318e468a3bf6db62b6b6cac",
+    "tex": "\\xymatrix{\nK^\\bullet \\ar[r] \\ar[d] & \\tilde L^\\bullet \\ar[d] \\ar[r] &\nM^\\bullet \\ar[r]_{\\delta} \\ar[d] & K^\\bullet[1] \\ar[d] \\\\\nK^\\bullet \\ar[r] & L^\\bullet \\ar[r] &\nC(f)^\\bullet \\ar[r]^{-p} & K^\\bullet[1]\n}",
+    "sections": [
+      "derived-cones"
+    ],
+    "file": "2318e468a3bf6db62b6b6cac.svg",
+    "width": 163.598005,
+    "height": 52.364584,
+    "svg_sha256": "357b0194c692e9bbaec834773a2faf983fe9c6bd793dc785d6157185e748f5f1"
+  },
+  "c0b4a540e1f5b3cdecbf44b5": {
+    "key": "c0b4a540e1f5b3cdecbf44b5",
+    "tex": "\\xymatrix{\nA_1^\\bullet \\ar[r] &\nA_2^\\bullet \\ar[r] &\n\\ldots \\ar[r] &\nA_n^\\bullet \\\\\nB_1^\\bullet \\ar[r] \\ar[u] &\nB_2^\\bullet \\ar[r] \\ar[u] &\n\\ldots \\ar[r] &\nB_n^\\bullet \\ar[u]\n}",
+    "sections": [
+      "derived-cones"
+    ],
+    "file": "c0b4a540e1f5b3cdecbf44b5.svg",
+    "width": 138.287157,
+    "height": 48.886793,
+    "svg_sha256": "5924b7ede1012623bd2687366b50f9a78c8bfcaa8375e7bba0fd83526e94bf63"
+  },
+  "2d8881894b7fe20a6f6ac20a": {
+    "key": "2d8881894b7fe20a6f6ac20a",
+    "tex": "\\xymatrix{\nW' \\ar[r] \\ar[d]_h & X \\ar[d]^f \\\\\nW \\ar[r] & Y\n}",
+    "sections": [
+      "chow-intersecting-with-divisors-push-pull"
+    ],
+    "file": "2d8881894b7fe20a6f6ac20a.svg",
+    "width": 55.530664,
+    "height": 44.769603,
+    "svg_sha256": "ce277f21986a6c6204d636d2ffb310c6cc5750f96be0a6adbe21407a4f2fc19a"
+  },
+  "3b38f4bb8b9210fb7bc2a68b": {
+    "key": "3b38f4bb8b9210fb7bc2a68b",
+    "tex": "\\xymatrix{\nX' = \\coprod W_i \\ar[r]_-q \\ar[d]_{p'} & X \\ar[d]^p \\\\\nY' = \\coprod W'_i \\ar[r]^-{q'} & Y.\n}",
+    "sections": [
+      "chow-intersecting-with-divisors-push-pull"
+    ],
+    "file": "3b38f4bb8b9210fb7bc2a68b.svg",
+    "width": 89.954132,
+    "height": 50.096286,
+    "svg_sha256": "308877768e0bb038c6ea5e41ac15744973ea5382e9ad96cdbeccc5e627998f91"
+  },
+  "34248af925b37298780c96f6": {
+    "key": "34248af925b37298780c96f6",
+    "tex": "\\xymatrix{\nK_0(R) \\ar[rr] \\ar[d]_{\\text{rank}_R} & &\nK'_0(R) \\ar[d]^{\\text{length}_R} \\\\\n\\mathbf{Z} \\ar[rr]^{\\text{length}_R(R)} & &\n\\mathbf{Z}\n}",
+    "sections": [
+      "algebra-K-groups"
+    ],
+    "file": "34248af925b37298780c96f6.svg",
+    "width": 141.654212,
+    "height": 45.809604,
+    "svg_sha256": "075357e22762a509e1c93f5276e3b6c114f758699e745bee0bfb04d7598dd7a7"
+  },
+  "2e19eac15c2145c54788ac91": {
+    "key": "2e19eac15c2145c54788ac91",
+    "tex": "\\xymatrix{\n0 \\ar[r] &\nA^\\bullet \\ar[r]_a \\ar[d]_f &\nB^\\bullet \\ar[r]_b \\ar[d]_g &\nC^\\bullet \\ar[r] \\ar[d]_h &\n0 \\\\\n0 \\ar[r] &\n(A')^\\bullet \\ar[r]^{a'} &\n(B')^\\bullet \\ar[r]^{b'} &\n(C')^\\bullet \\ar[r] &\n0\n}",
+    "sections": [
+      "derived-canonical-delta-functor"
+    ],
+    "file": "2e19eac15c2145c54788ac91.svg",
+    "width": 197.460581,
+    "height": 47.932098,
+    "svg_sha256": "bce906a7b9ba91a4c185ea05613177fa96dfcff7108e6835a22ef87cf43bfd41"
+  },
+  "21d2413c1298d4db1e0e4890": {
+    "key": "21d2413c1298d4db1e0e4890",
+    "tex": "\\xymatrix{\n0 \\ar[r] &\nA^\\bullet \\ar[r] \\ar[d] &\nB^\\bullet \\ar[r] \\ar[d] &\nC^\\bullet \\ar[r] \\ar[d] &\n0 \\\\\n0 \\ar[r] &\nD^\\bullet \\ar[r] &\nE^\\bullet \\ar[r] &\nF^\\bullet \\ar[r] &\n0\n}",
+    "sections": [
+      "derived-canonical-delta-functor"
+    ],
+    "file": "21d2413c1298d4db1e0e4890.svg",
+    "width": 166.882105,
+    "height": 44.100487,
+    "svg_sha256": "26c3ea7a01477075da354b5670221d6949a1c195d93c27b2771d743fea28da43"
+  },
+  "a84f42a3d44691fe99acebeb": {
+    "key": "a84f42a3d44691fe99acebeb",
+    "tex": "\\xymatrix{\n0 \\ar[r] &\nA^\\bullet \\ar[r] &\nB^\\bullet \\ar[r] &\nC^\\bullet \\ar[r] &\n0\n}",
+    "sections": [
+      "derived-canonical-delta-functor"
+    ],
+    "file": "a84f42a3d44691fe99acebeb.svg",
+    "width": 165.829108,
+    "height": 7.352428,
+    "svg_sha256": "213a8fb2d75c85d3ca1d4df50018eecbecda726dd1ea93426950c44b8eea9ee1"
+  },
+  "7e650b97a5cf64facd8cf2f5": {
+    "key": "7e650b97a5cf64facd8cf2f5",
+    "tex": "\\xymatrix{\n0 \\ar[r] \\ar[d] &\n0 \\ar[r] \\ar[d] &\nR \\ar[r]^f \\ar[d]^1 &\nR \\ar[r] \\ar[d] & 0 \\ar[d] \\\\\n0 \\ar[r] & R \\ar[r]^g & R \\ar[r] & 0 \\ar[r] & 0\n}",
+    "sections": [
+      "more-algebra-koszul"
+    ],
+    "file": "7e650b97a5cf64facd8cf2f5.svg",
+    "width": 151.651713,
+    "height": 48.659937,
+    "svg_sha256": "19e66b07bba1237167bb7e0867c89b6623c73984f263dc3819defdf732673fe0"
+  },
+  "ed06c7ebb75a40b8bd393c65": {
+    "key": "ed06c7ebb75a40b8bd393c65",
+    "tex": "\\xymatrix{\nR \\ar[d]_{(1, -g)} \\ar[r]_{fg} & R \\ar[d]^{(0, 1)} \\\\\nR^{\\oplus 2} \\ar[r] & R^{\\oplus 2}\n}\n\\quad\\quad\n\\xymatrix{\nR^{\\oplus 2} \\ar[d]_{(1, 0)} \\ar[r] & R^{\\oplus 2} \\ar[d]^{(f, 1)} \\\\\nR \\ar[r]^{fg} & R\n}",
+    "sections": [
+      "more-algebra-koszul"
+    ],
+    "file": "ed06c7ebb75a40b8bd393c65.svg",
+    "width": 205.494884,
+    "height": 45.811791,
+    "svg_sha256": "2c050e7d3bc5c9043e4f110b615e5c74708efd44cf78583ca45301891bd3b36e"
+  },
+  "08367e416267de9721f9c09e": {
+    "key": "08367e416267de9721f9c09e",
+    "tex": "\\xymatrix{\nM \\ar[r]_{z_k} & M_k \\\\\nM_j \\ar[ru]_{f_{jk}} \\ar[u]^{f_j}\n}",
+    "sections": [
+      "algebra-ML-countable"
+    ],
+    "file": "08367e416267de9721f9c09e.svg",
+    "width": 60.525117,
+    "height": 48.589613,
+    "svg_sha256": "89f280a4449d57a5852ccd462d9f8135e8fc0f0e77f73d799ae55d46731445e1"
+  },
+  "707678866dc1acce0638a1ad": {
+    "key": "707678866dc1acce0638a1ad",
+    "tex": "\\xymatrix{\n& & Z \\ar[d]^t \\\\\n& Y \\ar[r]^h \\ar[d]^s & Z' \\ar[d]^{t'} \\\\\nX \\ar[r]^{f, g} & Y' \\ar[r]^a & Z''\n}",
+    "sections": [
+      "homology-localization"
+    ],
+    "file": "707678866dc1acce0638a1ad.svg",
+    "width": 93.479465,
+    "height": 81.218819,
+    "svg_sha256": "cdd37306c414feb8abf6eaa3b7cf263885f727baa2631d3fe95d3c4423c68128"
+  },
+  "f287e03d9b2d770424b21814": {
+    "key": "f287e03d9b2d770424b21814",
+    "tex": "\\xymatrix{\n& & & Y \\ar[d]^s \\\\\n& X \\ar[rr]^{f, g, f + g} \\ar[d]^r & & Y' \\ar[d]^{s'} \\\\\nW \\ar[r]^i & X' \\ar[rr]^{a'', b'', a'' + b''} & & Y''\n}",
+    "sections": [
+      "homology-localization"
+    ],
+    "file": "f287e03d9b2d770424b21814.svg",
+    "width": 126.876295,
+    "height": 81.437997,
+    "svg_sha256": "79ddd3e1ada5cbf99883763aaa0bba2c51e460521cafc3b33d62fb2f08d056b5"
+  },
+  "3e6e279cce0f44a35a6aa8db": {
+    "key": "3e6e279cce0f44a35a6aa8db",
+    "tex": "\\xymatrix{\nX \\ar[rd] & X' \\ar[d] \\ar[l]^\\pi \\ar[r] & \\mathbf{P}^n_S \\ar[dl] \\\\\n& S &\n}",
+    "sections": [
+      "coherent-chows-lemma"
+    ],
+    "file": "3e6e279cce0f44a35a6aa8db.svg",
+    "width": 93.156132,
+    "height": 46.141625,
+    "svg_sha256": "4e0088986a98bc9c3a4e2526cb4a21b7829e4bece1138f511a895dcff6594f89"
+  },
+  "44c4fa2d25693913794d7c22": {
+    "key": "44c4fa2d25693913794d7c22",
+    "tex": "\\xymatrix{\nV_i \\ar[r] \\ar[rd]_{p_i|_{V_i}} & \\pi^{-1}(U_i) \\ar[d] \\\\\n& U_i\n}",
+    "sections": [
+      "coherent-chows-lemma"
+    ],
+    "file": "44c4fa2d25693913794d7c22.svg",
+    "width": 72.063519,
+    "height": 49.149245,
+    "svg_sha256": "958dc6e86d3cfa19f0d4bf9f14275da6a8e9af0d51b0c099006abd6c2ec613b1"
+  },
+  "f53696d289f4491d83c3c5ae": {
+    "key": "f53696d289f4491d83c3c5ae",
+    "tex": "\\xymatrix{\nU \\ar[r] \\ar[rd] & \\pi^{-1}(U) \\ar[d] \\\\\n& U\n}",
+    "sections": [
+      "coherent-chows-lemma"
+    ],
+    "file": "f53696d289f4491d83c3c5ae.svg",
+    "width": 68.483348,
+    "height": 47.057121,
+    "svg_sha256": "83760cd7ed03b3fd4d8779e3834893c7d39c1a4fe8f57409e572862596a9b627"
+  },
+  "88b7b789e4f82f53aea37559": {
+    "key": "88b7b789e4f82f53aea37559",
+    "tex": "\\xymatrix{\n0 \\ar[r] &\nB \\ar[r]_h &\nB \\ar[r] &\nB/hB \\ar[r] & 0 \\\\\n0 \\ar[r] &\nB \\otimes_A I \\ar[r]^h \\ar[u] &\nB \\otimes_A I \\ar[r] \\ar[u] &\nB/hB \\otimes_A I \\ar[r] \\ar[u] & 0\n}",
+    "sections": [
+      "divisors-effective-Cartier-morphisms"
+    ],
+    "file": "88b7b789e4f82f53aea37559.svg",
+    "width": 243.156744,
+    "height": 49.8132,
+    "svg_sha256": "e0ecb300046f0f006888e9223ea14dacf258999d15c8c376b13c1061c57a7390"
+  },
+  "33ae9b2b356dc63232913ae0": {
+    "key": "33ae9b2b356dc63232913ae0",
+    "tex": "\\xymatrix{\nA = \\Gamma(S, \\mathcal{A}) \\ar[r]^{f^*} &\n\\Gamma(T, f^*\\mathcal{A}) \\ar[r]^{\\varphi} &\n\\Gamma(T, \\mathcal{O}_T)\n}",
+    "sections": [
+      "constructions-spec"
+    ],
+    "file": "33ae9b2b356dc63232913ae0.svg",
+    "width": 194.478392,
+    "height": 14.648957,
+    "svg_sha256": "44e23fd34f210fcffe2641d5ca2cad7a0192bee3449054e07dd83df9c113e0b3"
+  },
+  "f9608b1fbd1078501c877742": {
+    "key": "f9608b1fbd1078501c877742",
+    "tex": "\\xymatrix{\nH^i(\\sigma_{\\geq i + 2} F(A^\\bullet)) \\ar[r] \\ar[d] &\nH^i(F(A^\\bullet)) \\ar[r] \\ar[d]^\\alpha &\nH^i(\\sigma_{\\leq i + 1} F(A^\\bullet)) \\ar[r] \\ar[d]^\\beta &\nH^{i + 1}(\\sigma_{\\geq i + 2} F(A^\\bullet)) \\ar[d] \\\\\nH^i(RF(\\sigma_{\\geq i + 2} A^\\bullet)) \\ar[r] &\nH^i(RF(A^\\bullet)) \\ar[r] &\nH^i(RF(\\sigma_{\\leq i + 1} A^\\bullet)) \\ar[r] &\nH^{i + 1}(RF(\\sigma_{\\geq i + 2} A^\\bullet))\n}",
+    "sections": [
+      "derived-higher-derived"
+    ],
+    "file": "f9608b1fbd1078501c877742.svg",
+    "width": 395.893818,
+    "height": 51.950206,
+    "svg_sha256": "88c9c4ddba98ed7185eb41aaaabf8fec666f758a71e5212578ad7cef17f542ef"
+  },
+  "9889b7654c1e04791ba23fdd": {
+    "key": "9889b7654c1e04791ba23fdd",
+    "tex": "\\xymatrix{\n\\eta \\ar[r] \\ar@{|->}[d] & E \\cap Y' \\ar[r] \\ar[d] &\nY' = \\Spec(S/\\mathfrak q) \\ar[r] \\ar[d] &\nY \\ar[d] \\\\\n\\xi \\ar[r] & f(E) \\cap X' \\ar[r] &\nX' = \\Spec(R/\\mathfrak p) \\ar[r] &\nX\n}",
+    "sections": [
+      "algebra-more-images"
+    ],
+    "file": "9889b7654c1e04791ba23fdd.svg",
+    "width": 218.684899,
+    "height": 49.872721,
+    "svg_sha256": "f6161b6042f290562f4a20ab294f37163f6fd326204fd16307c2e3ad83f65722"
+  },
+  "e22a76267c5a76e33ce0eda7": {
+    "key": "e22a76267c5a76e33ce0eda7",
+    "tex": "\\vcenter{\n\\xymatrix{\nS \\ar[r]_{\\phi} & S' \\\\\nR \\ar[r] \\ar[u] & R' \\ar[u]\n}\n}",
+    "sections": [
+      "algebra-netherlander"
+    ],
+    "file": "e22a76267c5a76e33ce0eda7.svg",
+    "width": 46.84761,
+    "height": 45.110579,
+    "svg_sha256": "f80c61712e9fd0921c2fcbdc9b7a0a4422a17974f9acf3b486248207742c4f8c"
+  },
+  "1c6c10850d2f9939b8577711": {
+    "key": "1c6c10850d2f9939b8577711",
+    "tex": "\\xymatrix{\nS \\ar[r]_{\\phi} & S' \\ar[r]_{\\phi'} & S'' \\\\\nR \\ar[r] \\ar[u] & R' \\ar[u] \\ar[r] & R'' \\ar[u]\n}",
+    "sections": [
+      "algebra-netherlander"
+    ],
+    "file": "1c6c10850d2f9939b8577711.svg",
+    "width": 89.469047,
+    "height": 45.110579,
+    "svg_sha256": "a6be556fe8c0bc832127db46a43f6cfb4309630798e4f219477e01434c1aa48e"
+  },
+  "0ff8c493a334b0a79f88f0f2": {
+    "key": "0ff8c493a334b0a79f88f0f2",
+    "tex": "\\xymatrix{\nI/I^2 \\ar[r]^-{\\text{d}}\n\\ar@<1ex>[d]^{\\varphi'_1} \\ar@<-1ex>[d]_{\\varphi_1}\n&\n\\Omega_{P/R} \\otimes_P S\n\\ar@<1ex>[d]^{\\varphi'_0} \\ar@<-1ex>[d]_{\\varphi_0}\n\\ar[ld]_h\n\\\\\nI'/(I')^2 \\ar[r]^-{\\text{d}}\n&\n\\Omega_{P'/R'} \\otimes_{P'} S'\n}",
+    "sections": [
+      "algebra-netherlander"
+    ],
+    "file": "0ff8c493a334b0a79f88f0f2.svg",
+    "width": 122.290639,
+    "height": 55.401404,
+    "svg_sha256": "19010cc1db6684b29512ff191a1b99a814e9578d708669a2b309ba62c06cef6c"
+  },
+  "e41fd2d51013989fd3940f29": {
+    "key": "e41fd2d51013989fd3940f29",
+    "tex": "\\xymatrix{\n0 \\ar[r] &\n\\Omega_{A[x_s]/A} \\otimes C \\ar[r] &\n\\Omega_{A[x_s, y_t]/A} \\otimes C \\ar[r] &\n\\Omega_{B[y_t]/B} \\otimes C \\ar[r] &\n0 \\\\\n&\nI/I^2 \\otimes C \\ar[r] \\ar[u] &\nK/K^2 \\ar[r] \\ar[u] &\nJ/J^2 \\ar[r] \\ar[u] &\n0\n}",
+    "sections": [
+      "algebra-netherlander"
+    ],
+    "file": "e41fd2d51013989fd3940f29.svg",
+    "width": 307.207873,
+    "height": 49.87741,
+    "svg_sha256": "ca2ebf53a2b0a6d5aa8d6899e08039bebc2c663e0176e960ee14ac062cb36384"
+  },
+  "1880c7dd5eb90f32e3d00748": {
+    "key": "1880c7dd5eb90f32e3d00748",
+    "tex": "\\xymatrix{\nB \\ar[r]_\\phi & C \\\\\nA \\ar[r] \\ar[u] & B \\ar[u]\n}",
+    "sections": [
+      "algebra-netherlander"
+    ],
+    "file": "1880c7dd5eb90f32e3d00748.svg",
+    "width": 45.209409,
+    "height": 43.719365,
+    "svg_sha256": "d5cfa212ffde058cb67418b208a8f046a565eac719a9fa2bf89b21d79f8ab190"
+  },
+  "be7f4debc655cc0fdd754a2f": {
+    "key": "be7f4debc655cc0fdd754a2f",
+    "tex": "\\xymatrix{\n0 \\ar[r] &\n\\Omega_{P/A} \\otimes B_g \\ar[r] &\n\\Omega_{P[x]/A} \\otimes B_g \\ar[r] &\n\\Omega_{B[x]/B} \\otimes B_g \\ar[r] &\n0 \\\\\n&\n(I/I^2)_g \\ar[r] \\ar[u] &\nJ/J^2 \\ar[r] \\ar[u] &\n(gx - 1)/(gx - 1)^2 \\ar[r] \\ar[u] &\n0\n}",
+    "sections": [
+      "algebra-netherlander"
+    ],
+    "file": "be7f4debc655cc0fdd754a2f.svg",
+    "width": 313.898755,
+    "height": 50.483663,
+    "svg_sha256": "a68198a50d1d96e16c6998ade56e01b4d3f544ab3c7af2f5e82bb6dc4ed3f5d4"
+  },
+  "37b3f9741b2c159659ba379e": {
+    "key": "37b3f9741b2c159659ba379e",
+    "tex": "\\xymatrix{\nX' \\ar[r]_{g'} \\ar[d]_{f'} &\nX \\ar[d]^f \\\\\nS' \\ar[r]^g &\nS\n}",
+    "sections": [
+      "cohomology-base-change-map"
+    ],
+    "file": "37b3f9741b2c159659ba379e.svg",
+    "width": 57.363049,
+    "height": 45.110579,
+    "svg_sha256": "81247fc2213cfdc67228034795a97de7a9cf4c38a86823541d31a8e0f34c4817"
+  },
+  "8c28e3683b190f20d6d8f29d": {
+    "key": "8c28e3683b190f20d6d8f29d",
+    "tex": "\\xymatrix{\n(g')_*(g')^*\\mathcal{F}^\\bullet \\ar[r] &\n(g')_*\\mathcal{J}^\\bullet \\\\\n\\mathcal{F}^\\bullet \\ar[u]^{adjunction} \\ar[r] &\n\\mathcal{I}^\\bullet \\ar[u]_\\beta\n}",
+    "sections": [
+      "cohomology-base-change-map"
+    ],
+    "file": "8c28e3683b190f20d6d8f29d.svg",
+    "width": 130.602995,
+    "height": 46.140737,
+    "svg_sha256": "3516de02613c0f9aaab35cc021f411bd74e8468d053d6c0ceea2cc9fa6293912"
+  },
+  "b55d27a845f28ae26a9af082": {
+    "key": "b55d27a845f28ae26a9af082",
+    "tex": "\\left(\n\\vcenter{\n\\xymatrix@R=2mm@C=2mm{\nx_{11} & x_{12} \\ar[dl] & x_{13} \\ar[dl] & x_{14} \\ar[dl] & \\ldots  \\\\\nx_{21} & x_{22} \\ar[dl] & x_{23} \\ar[dl] & \\ldots  \\\\\nx_{31} & x_{32} \\ar[dl] & \\ldots \\\\\nx_{41} & \\ldots \\\\\n\\ldots\n}\n}\n\\right).",
+    "sections": [
+      "algebra-transfinite-devissage"
+    ],
+    "file": "b55d27a845f28ae26a9af082.svg",
+    "width": 138.834904,
+    "height": 77.68926,
+    "svg_sha256": "6e7db551da5d4841655bb618a988f7765cd8b93db345fdce5149110df7251d05"
+  },
+  "681246f6546e51c7f2bfd9dd": {
+    "key": "681246f6546e51c7f2bfd9dd",
+    "tex": "\\xymatrix{\nZ \\ar[rd]_g & Z' \\ar[d]^-{g'} \\ar[l]^\\pi \\ar[r]_i & \\mathbf{P}^m_S \\ar[dl] \\\\\n& S &\n}",
+    "sections": [
+      "coherent-proper-pushforward"
+    ],
+    "file": "681246f6546e51c7f2bfd9dd.svg",
+    "width": 91.581525,
+    "height": 46.141625,
+    "svg_sha256": "65a177ccacbef86c996a142f18e71365da49365f9552decc93364037d49bfa9b"
+  },
+  "3d8867025d776f56169aaca9": {
+    "key": "3d8867025d776f56169aaca9",
+    "tex": "\\xymatrix{\nX' = \\Spec(B) \\times_{\\Spec(A)} X\n\\ar[r]_-\\pi \\ar[d]_{f'} &\nX \\ar[d]^f \\\\\n\\Spec(B) \\ar[r] &\n\\Spec(A)\n}",
+    "sections": [
+      "coherent-proper-pushforward"
+    ],
+    "file": "3d8867025d776f56169aaca9.svg",
+    "width": 175.195673,
+    "height": 50.389658,
+    "svg_sha256": "978d16dc590068254ca3606d4a6c3bead24ead30bd0a193388eed4dc8a6a0360"
+  },
+  "c2a4f67dc7481d324fe062b1": {
+    "key": "c2a4f67dc7481d324fe062b1",
+    "tex": "\\xymatrix{\n\\colim_n \\Hom_{\\mathcal{O}_X}(\n\\mathcal{I}^n, \\mathcal{F}')\n\\ar[r] \\ar[d] &\n\\Gamma(U, \\mathcal{F}') \\ar[d] \\\\\n\\colim_n \\Hom_{\\mathcal{O}_X}(\n\\mathcal{I}^n, \\mathcal{F})\n\\ar[r] &\n\\Gamma(U, \\mathcal{F})\n}",
+    "sections": [
+      "coherent-coherent-quasi-compact"
+    ],
+    "file": "c2a4f67dc7481d324fe062b1.svg",
+    "width": 163.712979,
+    "height": 49.87491,
+    "svg_sha256": "06e3f74c2fbc973daca120b1c3e738e59db392467fcc7a9591bb392af2cce76d"
+  },
+  "c8936391903b31a84e9d82a2": {
+    "key": "c8936391903b31a84e9d82a2",
+    "tex": "\\xymatrix{\n\\mathcal{F} \\times \\mathcal{F} \\times \\mathcal{G}\n\\ar[rrr]_{(f \\circ \\text{pr}_{13}, f \\circ \\text{pr}_{23})}\n\\ar[d]_{(+ \\circ \\text{pr}_{12}, \\text{pr}_3)} & & &\n\\mathcal{H} \\times \\mathcal{H}\n\\ar[d]^{+} \\\\\n\\mathcal{F} \\times \\mathcal{G} \\ar[rrr]^f & & &\n\\mathcal{H}\n}",
+    "sections": [
+      "modules-bilinear"
+    ],
+    "file": "c8936391903b31a84e9d82a2.svg",
+    "width": 189.086355,
+    "height": 45.873516,
+    "svg_sha256": "640f7f45ad9df28ac3f3b3030e8dfd546f542c595cf776bf7df057c0c1365889"
+  },
+  "d0b55e4c11df98ac3eb524ad": {
+    "key": "d0b55e4c11df98ac3eb524ad",
+    "tex": "\\xymatrix{\nX' \\ar[r]_{g'} \\ar[d]_{f'} &\nX \\ar[d]^f \\\\\nY' \\ar[r]^g &\nY\n}",
+    "sections": [
+      "cohomology-projection-formula"
+    ],
+    "file": "d0b55e4c11df98ac3eb524ad.svg",
+    "width": 57.363049,
+    "height": 44.891401,
+    "svg_sha256": "afeb32afec55481010ca815f36a7149bf7b6f93b90f56c1da423c86d3f6278b8"
+  },
+  "ab735445f01b54981d2c9030": {
+    "key": "ab735445f01b54981d2c9030",
+    "tex": "\\xymatrix{\nLg^*(Rf_*E \\otimes^\\mathbf{L}_{\\mathcal{O}_Y} K) \\ar[r]_p \\ar[d]_t &\nLg^*Rf_*(E \\otimes^\\mathbf{L}_{\\mathcal{O}_X} Lf^*K) \\ar[d]_b \\\\\nLg^*Rf_*E \\otimes^\\mathbf{L}_{\\mathcal{O}_{Y'}} Lg^*K \\ar[d]_b &\nRf'_*L(g')^*(E \\otimes^\\mathbf{L}_{\\mathcal{O}_X} Lf^*K) \\ar[d]_t \\\\\nRf'_*L(g')^*E \\otimes^\\mathbf{L}_{\\mathcal{O}_{Y'}} Lg^*K \\ar[rd]_p &\nRf'_*(L(g')^*E \\otimes^\\mathbf{L}_{\\mathcal{O}_{Y'}} L(g')^*Lf^*K) \\ar[d]_c \\\\\n& Rf'_*(L(g')^*E \\otimes^\\mathbf{L}_{\\mathcal{O}_{Y'}} L(f')^*Lg^*K)\n}",
+    "sections": [
+      "cohomology-projection-formula"
+    ],
+    "file": "ab735445f01b54981d2c9030.svg",
+    "width": 274.805104,
+    "height": 141.152971,
+    "svg_sha256": "0cc17687c272423e51cc16c423fc22e8dcc14ab44bd83e717d34253ae35b2a0b"
+  },
+  "86319791a2f7fd864612242d": {
+    "key": "86319791a2f7fd864612242d",
+    "tex": "\\xymatrix{\nX_1' \\ar[r] \\ar[d] & X_2' \\ar[d] \\\\\nX_1 \\ar[r] & X_2\n}",
+    "sections": [
+      "divisors-blowing-up"
+    ],
+    "file": "86319791a2f7fd864612242d.svg",
+    "width": 54.117643,
+    "height": 48.028395,
+    "svg_sha256": "b402fe5685a1d3f31b3d965ac6975efd1818af9f69fa675b4c131b4341470a82"
+  },
+  "8826b28cbcc65489ac096834": {
+    "key": "8826b28cbcc65489ac096834",
+    "tex": "\\xymatrix{\n0 \\ar[r] &\n\\mathcal{F} \\ar[r] &\n\\mathcal{O}_X^{\\oplus n} \\ar[rr]^{f_1, \\ldots, f_n} & &\n\\mathcal{O}_X \\ar[r] &\n0\n}",
+    "sections": [
+      "coherent-vanishing"
+    ],
+    "file": "8826b28cbcc65489ac096834.svg",
+    "width": 202.128015,
+    "height": 14.672903,
+    "svg_sha256": "30400d5ad7e3c745aedd5195a1a0a0cf58612334f9dd43cf6c6adf8b1d77d766"
+  },
+  "3664c93be608812aacd700c8": {
+    "key": "3664c93be608812aacd700c8",
+    "tex": "\\xymatrix{\n\\bigoplus\\nolimits_{i = 1, \\ldots, n} \\Gamma(X, \\mathcal{O}_X)\n\\ar[rr]^{f_1, \\ldots, f_n} & &\n\\Gamma(X, \\mathcal{O}_X)\n}",
+    "sections": [
+      "coherent-vanishing"
+    ],
+    "file": "3664c93be608812aacd700c8.svg",
+    "width": 185.89313,
+    "height": 16.079846,
+    "svg_sha256": "2029f9f087581e32d76cddee73dce1c7287882de8e9dd0dbac735a6d787b5334"
+  },
+  "53366459a18916d527db4f21": {
+    "key": "53366459a18916d527db4f21",
+    "tex": "\\xymatrix{\nX_V \\ar[r]^{i_V^{-1}} &\nf^{-1}(V) \\ar[rr]^{inclusion} & &\nf^{-1}(U) \\ar[r]^{i_U} &\nX_U\n}",
+    "sections": [
+      "constructions-relative-glueing"
+    ],
+    "file": "53366459a18916d527db4f21.svg",
+    "width": 213.221331,
+    "height": 16.876667,
+    "svg_sha256": "73944bffc8fb120474119e7be369365b3106c564f3b30de79d3e34165697f4d7"
+  },
+  "9b22652a5e52d74a7e9ceeef": {
+    "key": "9b22652a5e52d74a7e9ceeef",
+    "tex": "\\xymatrix{\nX' \\ar[r]_{g'} \\ar[d]_{f'} & X \\ar[d]^f \\\\\nY' \\ar[r]^g & Y\n}",
+    "sections": [
+      "chow-push-pull"
+    ],
+    "file": "9b22652a5e52d74a7e9ceeef.svg",
+    "width": 57.363049,
+    "height": 44.891401,
+    "svg_sha256": "66d628e6f6fbedbec5d1155e1da696057331ccc97aa113917ee67ca2d1fb3596"
+  },
+  "908c66dd68a693cee68fb5f7": {
+    "key": "908c66dd68a693cee68fb5f7",
+    "tex": "\\xymatrix{\nY \\ar[rd]_f \\ar[rr]_{f'} & & X' \\ar[ld]^\\nu \\\\\n& X &\n}",
+    "sections": [
+      "morphisms-Zariski"
+    ],
+    "file": "908c66dd68a693cee68fb5f7.svg",
+    "width": 87.581208,
+    "height": 44.550425,
+    "svg_sha256": "1c1ce0bd37e0818e4cf69345b147adfe591a5142aee4855b9ff97e63e5a9460d"
+  },
+  "ded636988bd3482ad5b4721c": {
+    "key": "ded636988bd3482ad5b4721c",
+    "tex": "\\xymatrix{\nY \\ar[rd]_f \\ar[rr]_j & & Z \\ar[ld]^\\pi \\\\\n& X &\n}",
+    "sections": [
+      "morphisms-Zariski"
+    ],
+    "file": "ded636988bd3482ad5b4721c.svg",
+    "width": 83.663461,
+    "height": 43.500187,
+    "svg_sha256": "6212bcbc0bf2f614e621f7ddf59547277cb81d118842a2ba80f3d2e52e6d1674"
+  },
+  "75a0947e50b8504f1e8e7493": {
+    "key": "75a0947e50b8504f1e8e7493",
+    "tex": "\\xymatrix{\nX \\times_S Y \\ar[r]_q \\ar[d]_p & Y \\ar[d]^g \\\\\nX \\ar[r]^f & S\n}",
+    "sections": [
+      "schemes-fibre-products"
+    ],
+    "file": "75a0947e50b8504f1e8e7493.svg",
+    "width": 75.32584,
+    "height": 44.466548,
+    "svg_sha256": "f4336a005fc20abd5576a7624af2b98a085696d55151e0081af1adcd6b1db147"
+  },
+  "bd9018f4d3f4cf86d7394030": {
+    "key": "bd9018f4d3f4cf86d7394030",
+    "tex": "\\xymatrix{\nT \\ar[rrrd] \\ar@{-->}[rrd] \\ar[rrdd]\n&\n&\n\\\\\n&\n&\nX \\times_S Y \\ar[d] \\ar[r]\n&\nY \\ar[d]\n\\\\\n&\n&\nX \\ar[r]\n&\nS\n}",
+    "sections": [
+      "schemes-fibre-products"
+    ],
+    "file": "bd9018f4d3f4cf86d7394030.svg",
+    "width": 139.203051,
+    "height": 81.849659,
+    "svg_sha256": "9e91a1481de3946576f169a3fb00b8be265ab936553b40ccf88963f482a39ae8"
+  },
+  "027e73c753802362aa0f0773": {
+    "key": "027e73c753802362aa0f0773",
+    "tex": "\\xymatrix{\nX \\times_S Y\n\\ar@/_/[dddr] \\ar@/^/[rrrd]\n& & & \\\\\n&\n\\Spec(\\kappa(x) \\otimes_{\\kappa(s)} \\kappa(y)/\\mathfrak p)\n\\ar[r] \\ar[d] \\ar@{-->}[lu]\n&\n\\Spec(\\kappa(y)) \\ar[d] \\ar[r] &\nY \\ar[dd] \\\\\n&\n\\Spec(\\kappa(x)) \\ar[r] \\ar[d] &\n\\Spec(\\kappa(s)) \\ar[rd] &\n\\\\\n&\nX \\ar[rr] &\n&\nS\n}",
+    "sections": [
+      "schemes-fibre-products"
+    ],
+    "file": "027e73c753802362aa0f0773.svg",
+    "width": 281.806349,
+    "height": 125.219298,
+    "svg_sha256": "c176b000d6b687bdd8fe5401b0e5184f493e358264a15aec7d1b46a8e020c0b0"
+  },
+  "a19818d0c76b687eb66aaa2d": {
+    "key": "a19818d0c76b687eb66aaa2d",
+    "tex": "\\xymatrix{\nX \\ar[r] \\ar[d] &\n\\mathbf{P}^n_Y \\ar[r] \\ar[dl] &\n\\mathbf{P}^n_{\\mathbf{P}^m_Z} \\ar[dl] \\ar@{=}[r] &\n\\mathbf{P}^n_Z \\times_Z \\mathbf{P}^m_Z \\ar[r] &\n\\mathbf{P}^{nm + n + m}_Z \\ar[ddllll] \\\\\nY \\ar[r] \\ar[d] & \\mathbf{P}^m_Z \\ar[dl] & \\\\\nZ & &\n}",
+    "sections": [
+      "morphisms-projective"
+    ],
+    "file": "a19818d0c76b687eb66aaa2d.svg",
+    "width": 256.73986,
+    "height": 88.187356,
+    "svg_sha256": "8aab1bda02939943daee55e1298289a02e2d0e5c29049929e0e78d4f0e608872"
+  },
+  "45aa7b5da004e14fa37d0d3b": {
+    "key": "45aa7b5da004e14fa37d0d3b",
+    "tex": "\\xymatrix{\n\\ldots \\ar[r] &\nM \\ar[r]^\\varphi &\nN \\ar[r]^\\psi &\nM \\ar[r]^\\varphi &\nN \\ar[r] & \\ldots\n}",
+    "sections": [
+      "chow-periodic-complexes"
+    ],
+    "file": "45aa7b5da004e14fa37d0d3b.svg",
+    "width": 210.658702,
+    "height": 11.675317,
+    "svg_sha256": "00abeb1c232f2c2b9fb754d8d84c4f98f519c7b5cbf562e6d8490ca3b2a54556"
+  },
+  "2e7c10d82de060c47e7ac186": {
+    "key": "2e7c10d82de060c47e7ac186",
+    "tex": "\\xymatrix{\n\\ldots \\ar[r] &\nM \\ar[r]^\\varphi &\nM \\ar[r]^\\psi &\nM \\ar[r]^\\varphi &\nM \\ar[r] & \\ldots\n}",
+    "sections": [
+      "chow-periodic-complexes"
+    ],
+    "file": "2e7c10d82de060c47e7ac186.svg",
+    "width": 213.979622,
+    "height": 11.675317,
+    "svg_sha256": "f211b83bf351811b2996658d7c76ca40589144c9039717224c46c67115cd4865"
+  },
+  "588aefdc700f78dff67fde6a": {
+    "key": "588aefdc700f78dff67fde6a",
+    "tex": "\\vcenter{\n\\xymatrix{\nS \\ar[r]_\\varphi\n&\nS'\n\\\\\nR \\ar[r]^\\psi \\ar[u]^\\alpha\n&\nR' \\ar[u]_\\beta\n}\n}",
+    "sections": [
+      "algebra-differentials"
+    ],
+    "file": "588aefdc700f78dff67fde6a.svg",
+    "width": 54.065935,
+    "height": 45.110579,
+    "svg_sha256": "1168e6ce8f3d7045c92e96dc7b254f932b3ba287dc6dd85f1c29c4c55ff4ea26"
+  },
+  "eebbc3ae7d585cf0f3b2a28e": {
+    "key": "eebbc3ae7d585cf0f3b2a28e",
+    "tex": "\\xymatrix{\n\\Omega_{S/R} \\ar[r] &\n\\Omega_{S'/R'}\n\\\\\nS \\ar[u]^{\\text{d}} \\ar[r]^{\\varphi}\n&\nS' \\ar[u]_{\\text{d}}\n}",
+    "sections": [
+      "algebra-differentials"
+    ],
+    "file": "eebbc3ae7d585cf0f3b2a28e.svg",
+    "width": 79.232476,
+    "height": 46.050664,
+    "svg_sha256": "2b16208e34343cd73df33089e4f78121a76cfee757026088e67bd5d923facd48"
+  },
+  "02b294ce79c5c70891cd5d2c": {
+    "key": "02b294ce79c5c70891cd5d2c",
+    "tex": "\\vcenter{\n\\xymatrix{\n\\bigoplus S'[(a', b')]\n\\oplus\n\\bigoplus S'[(f', g')]\n\\oplus\n\\bigoplus S'[r'] \\ar[r]\n&\n\\bigoplus S' [a'] \\\\\n \\\\\n\\bigoplus S[(a, b)]\n\\oplus\n\\bigoplus S[(f, g)]\n\\oplus\n\\bigoplus S[r] \\ar[r]\n\\ar[uu]^{\n\\begin{matrix}\n[(a, b)] \\mapsto [(\\varphi(a), \\varphi(b))] \\\\\n[(f, g)] \\mapsto [(\\varphi(f), \\varphi(g))] \\\\\n[r]\\mapsto [\\psi(r)]\n\\end{matrix}\n} &\n\\bigoplus S[a] \\ar[uu]_{[a] \\mapsto [\\varphi(a)]}\n}\n}",
+    "sections": [
+      "algebra-differentials"
+    ],
+    "file": "02b294ce79c5c70891cd5d2c.svg",
+    "width": 275.366482,
+    "height": 79.751855,
+    "svg_sha256": "42602b412666d54791da4f60154f0f65521356dc85e568e259e9b2367f6f9b8b"
+  },
+  "ebd0d1636d3bcc02340f0065": {
+    "key": "ebd0d1636d3bcc02340f0065",
+    "tex": "\\xymatrix{\nS \\ar[r] & S \\ar[r] & S' \\\\\nR \\ar[r] \\ar[u] & R'' \\ar[r] \\ar[u] & R' \\ar[u]\n}",
+    "sections": [
+      "algebra-differentials"
+    ],
+    "file": "ebd0d1636d3bcc02340f0065.svg",
+    "width": 89.469029,
+    "height": 45.110579,
+    "svg_sha256": "092e78a05e4a2501c8dfe7f9fda250f293a7e78e59c842570ea59f2e2df5615a"
+  },
+  "60dd6d13b812736a27f91d3f": {
+    "key": "60dd6d13b812736a27f91d3f",
+    "tex": "\\xymatrix{\nS \\otimes_R S \\ar[r] & S \\\\\nS \\ar[r] \\ar[u] & S \\ar[u]\n}",
+    "sections": [
+      "algebra-differentials"
+    ],
+    "file": "60dd6d13b812736a27f91d3f.svg",
+    "width": 67.874324,
+    "height": 44.685726,
+    "svg_sha256": "05f3da0273a185650a3bb9548030302bc383c2f444ba79151cef4af75104b1ae"
+  },
+  "863c0aa21df41926ce7443b2": {
+    "key": "863c0aa21df41926ce7443b2",
+    "tex": "\\xymatrix{\nf^*\\widetilde{M} \\otimes_{\\mathcal{O}_X} f^*\\mathcal{O}_Y(n)\n\\ar[r]\n\\ar[d]_{\\theta_\\mathcal{F} \\otimes \\theta_{\\mathcal{L}^{\\otimes n}}}\n&\nf^*\\widetilde{M(n)}\n\\ar[d]^{\\theta_{\\mathcal{F} \\otimes \\mathcal{L}^{\\otimes n}}}\n\\\\\n\\mathcal{F} \\otimes \\mathcal{L}^{\\otimes n} \\ar[r]^{\\text{id}} &\n\\mathcal{F} \\otimes \\mathcal{L}^{\\otimes n}\n}",
+    "sections": [
+      "properties-ample-quasi-coherent"
+    ],
+    "file": "863c0aa21df41926ce7443b2.svg",
+    "width": 166.324881,
+    "height": 54.083288,
+    "svg_sha256": "e568c37d7c01226218dcfef3ca48c0919862a044860405daae7bf90957638a04"
+  },
+  "9fc9565d4cac0ede78b27fb3": {
+    "key": "9fc9565d4cac0ede78b27fb3",
+    "tex": "\\xymatrix{\n\\Gamma_*(Y, \\mathcal{L}) &\n\\Gamma_*(Y, \\varphi^*\\mathcal{O}_{U_d}(d)) \\ar[l]^-\\alpha &\n\\Gamma_*(U_d, \\mathcal{O}_{U_d}(d)) \\ar[l]^-{\\varphi^*} \\\\\nS^{(d)} \\ar[u]^\\psi & &\nS^{(d)} \\ar[u]^{\\psi^d} \\ar[ul]^{\\psi^d_\\varphi} \\ar[ll]_{\\text{id}}\n}",
+    "sections": [
+      "constructions-morphisms-proj"
+    ],
+    "file": "9fc9565d4cac0ede78b27fb3.svg",
+    "width": 231.440295,
+    "height": 47.0137,
+    "svg_sha256": "ecf4f6edf8e8dd764b926cfd59b820093840956f26249251663eadcce6c5bd7d"
+  },
+  "112bc9a0a3268f02fb7126b8": {
+    "key": "112bc9a0a3268f02fb7126b8",
+    "tex": "\\xymatrix{\n\\Gamma(Y_s, \\mathcal{O}_Y) \\ar[r] &\n\\Gamma(Y_{ss'}, \\mathcal{O}_Y) &\n\\Gamma(Y_{s, '} \\mathcal{O}_Y) \\ar[l]\\\\\nS_{(f)} \\ar[r] \\ar[u]^{\\psi_{(f)}} &\nS_{(ff')} \\ar[u] &\nS_{(f')} \\ar[l] \\ar[u]^{\\psi_{(f')}}\n}",
+    "sections": [
+      "constructions-morphisms-proj"
+    ],
+    "file": "112bc9a0a3268f02fb7126b8.svg",
+    "width": 195.361777,
+    "height": 51.231439,
+    "svg_sha256": "bbc82696a7c08d54a1101c3cb5a162c679d3549d5e1426dc6b9a0674f09588d4"
+  },
+  "ce0655782daeb2b303c06031": {
+    "key": "ce0655782daeb2b303c06031",
+    "tex": "\\xymatrix{\nF_0 \\ar[r] \\ar[d] & M \\ar[d] \\\\\nN_0 \\ar[r] & N\n}",
+    "sections": [
+      "algebra-ext"
+    ],
+    "file": "ce0655782daeb2b303c06031.svg",
+    "width": 52.374439,
+    "height": 46.628411,
+    "svg_sha256": "10eb2bbcb4b3f539c7c40eaee17955747275c7703b9bea1a3b2a567c6e54c33a"
+  },
+  "65946ce117e1e171d7e88b89": {
+    "key": "65946ce117e1e171d7e88b89",
+    "tex": "\\xymatrix{\n0 \\ar[r] &\nK_i \\ar[r] &\nL_i \\ar[r] &\nM_i \\ar[r] &\n0 \\\\\n0 \\ar[r] &\nK_{i + 1} \\ar[r] \\ar[u] &\nL_{i + 1} \\ar[r] \\ar[u] &\nM_{i + 1} \\ar[r] \\ar[u] &\n0}",
+    "sections": [
+      "algebra-inverse-systems"
+    ],
+    "file": "65946ce117e1e171d7e88b89.svg",
+    "width": 193.846084,
+    "height": 47.726963,
+    "svg_sha256": "13a825d087f42f0ae44eafb6b7e9bf44d4f8e3b23c17e5439a4daca5d382000e"
+  },
+  "7d6c26c0149462f37a5e205e": {
+    "key": "7d6c26c0149462f37a5e205e",
+    "tex": "\\xymatrix{\n& S \\ar[rd] \\\\\nX \\ar[ru] \\ar[rr] & & Y \\ar[r] & T \\ar[r] & X[1]\n}",
+    "sections": [
+      "derived-quotients"
+    ],
+    "file": "7d6c26c0149462f37a5e205e.svg",
+    "width": 168.573242,
+    "height": 47.787454,
+    "svg_sha256": "5b2001d1995d937cbc17e97f9598babad403d4666aba869611cca63d65ad0d1f"
+  },
+  "66b75a3140b4ee4d1370f405": {
+    "key": "66b75a3140b4ee4d1370f405",
+    "tex": "\\xymatrix{\nZ \\ar[r]_t & X \\ar[r]_g \\ar[d]^1 & Q \\ar[r] \\ar[d]^i & Z[1] \\\\\n& X \\ar[r]_a & Y \\ar[d]^s \\\\\n& & W\n}",
+    "sections": [
+      "derived-quotients"
+    ],
+    "file": "66b75a3140b4ee4d1370f405.svg",
+    "width": 133.274127,
+    "height": 82.659995,
+    "svg_sha256": "c1f1125e38eea821fe4eca4e9a5ac15767df90e263df68b894d0f7f43fa940c0"
+  },
+  "ce9db4e5c372c993b6ceae32": {
+    "key": "ce9db4e5c372c993b6ceae32",
+    "tex": "\\xymatrix{\nX \\ar[r] \\ar[d]^s &\nY \\ar[d]^{s'} \\\\\nX' \\ar[r] &\nY'\n}",
+    "sections": [
+      "derived-quotients"
+    ],
+    "file": "ce9db4e5c372c993b6ceae32.svg",
+    "width": 55.438074,
+    "height": 43.841163,
+    "svg_sha256": "ffc922e7ae6df923cc7f70287b4c3ef8107196bda36b80df95fdf9a9947e8788"
+  },
+  "2866f487fc86c992edfc85f1": {
+    "key": "2866f487fc86c992edfc85f1",
+    "tex": "\\xymatrix{\n & &\nQ_{12} \\ar[rd] & &\nQ_{23} \\ar[rd] \\\\\n &\nQ_1 \\ar[ld]_{\\! + \\! 1} \\ar[ru] & &\nQ_2 \\ar[ld]_{\\! + \\! 1} \\ar[ll]_{\\! + \\! 1} \\ar[ru] & &\nQ_3 \\ar[ld]_{\\! + \\! 1} \\ar[ll]_{\\! + \\! 1} \\\\\nW \\ar[rr] & &\nX \\ar[lu] \\ar[rr] & &\nY \\ar[lu] \\ar[rr] & &\nZ \\ar[lu]\n}",
+    "sections": [
+      "derived-quotients"
+    ],
+    "file": "2866f487fc86c992edfc85f1.svg",
+    "width": 266.444779,
+    "height": 83.539992,
+    "svg_sha256": "0ce2074571c63563ced941af99a41311daa9e5d90b516f47e339bf805fdc279a"
+  },
+  "7e44db0d68f4e5e2957b7f85": {
+    "key": "7e44db0d68f4e5e2957b7f85",
+    "tex": "\\xymatrix{\nZ \\times_Y X \\ar[r]_{g'} \\ar[d]_{f'} & X \\ar[d]^f \\\\\nZ \\ar[r]^g & Y\n}",
+    "sections": [
+      "topology-proper"
+    ],
+    "file": "7e44db0d68f4e5e2957b7f85.svg",
+    "width": 76.651466,
+    "height": 44.24737,
+    "svg_sha256": "5c2af26a5e45703169b9bafa36568129b8525c1bdbf5ba46dd053454ddebca6b"
+  },
+  "14e0ffc21013cee705dd222c": {
+    "key": "14e0ffc21013cee705dd222c",
+    "tex": "\\xymatrix{\nR^{J'} \\ar[r] \\ar@{^{(}->}[d] & F \\ar[d]^{g} \\\\\nR^{I} \\ar[r]_{f} & M\n}",
+    "sections": [
+      "algebra-characterize-flatness"
+    ],
+    "file": "14e0ffc21013cee705dd222c.svg",
+    "width": 57.482018,
+    "height": 54.943156,
+    "svg_sha256": "0e02ae42d87cbc90fc787c0374485762b3c6f301986f8b79b6ab3e7bb2537f27"
+  },
+  "5b9cb0d091a07ad108993bc0": {
+    "key": "5b9cb0d091a07ad108993bc0",
+    "tex": "\\xymatrix{\n\\text{Proj}(A) \\ar[r] \\ar[d] &\n\\text{Proj}(A') \\ar[d] \\\\\nU \\ar[r] &\nU'\n}",
+    "sections": [
+      "constructions-relative-proj-via-glueing"
+    ],
+    "file": "5b9cb0d091a07ad108993bc0.svg",
+    "width": 100.302893,
+    "height": 46.355909,
+    "svg_sha256": "61bef627e00adcb5b0461db7f1e5e14b2355aa081290fa9af3af115f160595e0"
+  },
+  "739ccf2ed752796229d07195": {
+    "key": "739ccf2ed752796229d07195",
+    "tex": "\\xymatrix{\n\\text{Proj}(A) \\ar[r]^{i_U^{-1}} &\n\\pi^{-1}(U) \\ar[rr]^{inclusion} & &\n\\pi^{-1}(U') \\ar[r]^{i_{U'}} &\n\\text{Proj}(A')\n}",
+    "sections": [
+      "constructions-relative-proj-via-glueing"
+    ],
+    "file": "739ccf2ed752796229d07195.svg",
+    "width": 257.500997,
+    "height": 16.876667,
+    "svg_sha256": "267cd34865e1eae763d91b075e1614a089c26fb7cd8b4522c1a7be28708f5d4b"
+  },
+  "8f3ff1826873fc628f6d914a": {
+    "key": "8f3ff1826873fc628f6d914a",
+    "tex": "\\xymatrix{\nA_n\n\\ar[rr]_\\psi\n\\ar[dr]_-{(\\ref{equation-global-sections})}\n& &\n\\Gamma(\\pi^{-1}(U),\n\\mathcal{O}_{\\underline{\\text{Proj}}_S(\\mathcal{A})}(n)) \\\\\n&\n\\Gamma(\\text{Proj}(A),\n\\mathcal{O}_{\\text{Proj}(A)}(n))\n\\ar[ru]_-{\\theta_U}\n&\n}",
+    "sections": [
+      "constructions-relative-proj-via-glueing"
+    ],
+    "file": "8f3ff1826873fc628f6d914a.svg",
+    "width": 279.838069,
+    "height": 53.904435,
+    "svg_sha256": "0582d3669f90fa4c4249e1ff4f8a656888a2f6c516b86da0ef33e8316377dbc9"
+  },
+  "6b367655006a2da648131f3d": {
+    "key": "6b367655006a2da648131f3d",
+    "tex": "\\xymatrix{\nX \\ar[r] \\ar[d]^a &\nY \\ar[r] \\ar[d]^b &\nZ \\ar[r] \\ar[d]^c &\nX[1] \\ar[d]^{a[1]} \\\\\nX' \\ar[r] &\nY' \\ar[r] &\nZ' \\ar[r] &\nX'[1]\n}",
+    "sections": [
+      "derived-triangulated-definitions"
+    ],
+    "file": "6b367655006a2da648131f3d.svg",
+    "width": 148.33426,
+    "height": 49.822078,
+    "svg_sha256": "8c97b68929a20fc2c8818484a0e539c8ca5d33f8891481dc93b6bbb92c43ac2e"
+  },
+  "35e4920a1958bc4634f7631f": {
+    "key": "35e4920a1958bc4634f7631f",
+    "tex": "\\xymatrix{\nX \\ar[r]^f \\ar[d]^a &\nY \\ar[r]^g \\ar[d]^b &\nZ \\ar[r]^h \\ar@{-->}[d] &\nX[1] \\ar[d]^{a[1]} \\\\\nX' \\ar[r]^{f'} &\nY' \\ar[r]^{g'} &\nZ' \\ar[r]^{h'} &\nX'[1]\n}",
+    "sections": [
+      "derived-triangulated-definitions"
+    ],
+    "file": "35e4920a1958bc4634f7631f.svg",
+    "width": 148.33426,
+    "height": 54.095154,
+    "svg_sha256": "b1c0e522bb91ddea44e4a899da8d64894c501173c64d8db13d91f5b59b390a12"
+  },
+  "378da5eb5114d38ac91129b3": {
+    "key": "378da5eb5114d38ac91129b3",
+    "tex": "\\xymatrix{\nF \\circ [1] \\ar[r]_\\xi \\ar[d]_{a \\star 1} & [1] \\circ F \\ar[d]^{1 \\star a} \\\\\nF' \\circ [1] \\ar[r]^{\\xi'} & [1] \\circ F'\n}",
+    "sections": [
+      "derived-triangulated-definitions"
+    ],
+    "file": "378da5eb5114d38ac91129b3.svg",
+    "width": 90.360468,
+    "height": 49.822078,
+    "svg_sha256": "f9504f89d9a12228fd5e5a9ef919c9283c9f4978caeedf076eaa906f59fd8b73"
+  },
+  "77d35504c4d5445813803281": {
+    "key": "77d35504c4d5445813803281",
+    "tex": "\\xymatrix@C=3pc{\nH^{-1}(Z) \\ar[r]^{H(h[-1])} &\nH^0(X) \\ar[r]^{H(f)} &\nH^0(Y) \\ar[r]^{H(g)} &\nH^0(Z) \\ar[r]^{H(h)} &\nH^1(X)\n}",
+    "sections": [
+      "derived-triangulated-definitions"
+    ],
+    "file": "77d35504c4d5445813803281.svg",
+    "width": 319.856137,
+    "height": 14.94396,
+    "svg_sha256": "3356c5964eaae093261e60d74a49193b3b29a10ef059a578d09c919cacbfb687"
+  },
+  "78e14d7d9e7ef7189c429d12": {
+    "key": "78e14d7d9e7ef7189c429d12",
+    "tex": "\\xymatrix{\nG(C) \\ar[d] \\ar[rr]_{\\delta_{A \\to B \\to C}} & &\nG(A)[1] \\ar[d] \\\\\nG(C') \\ar[rr]^{\\delta_{A' \\to B' \\to C'}} & &\nG(A')[1]\n}",
+    "sections": [
+      "derived-triangulated-definitions"
+    ],
+    "file": "78e14d7d9e7ef7189c429d12.svg",
+    "width": 120.669487,
+    "height": 49.822078,
+    "svg_sha256": "1036fb45aa803447f0c0008da9cbae82d6159b917d3658b8b6aa75800298ddb1"
+  },
+  "e0276a9208b23d1e034c260b": {
+    "key": "e0276a9208b23d1e034c260b",
+    "tex": "\\xymatrix{\nR^{\\oplus n} \\ar[d]_A \\ar[r] & M \\ar[d]^\\varphi \\\\\nR^{\\oplus n} \\ar[r] & M\n}",
+    "sections": [
+      "algebra-cayley-hamilton"
+    ],
+    "file": "e0276a9208b23d1e034c260b.svg",
+    "width": 61.981891,
+    "height": 45.971777,
+    "svg_sha256": "39e1344fda22c43ff779e0b418756accba1ece19de3303a90c50b46a401f2521"
+  },
+  "8ade05280bd51a881da8a20c": {
+    "key": "8ade05280bd51a881da8a20c",
+    "tex": "\\xymatrix{\nR^{\\oplus n} \\ar[d]_A \\ar[r] & M \\ar[d]^\\varphi \\\\\nI^{\\oplus n} \\ar[r] & M\n}",
+    "sections": [
+      "algebra-cayley-hamilton"
+    ],
+    "file": "8ade05280bd51a881da8a20c.svg",
+    "width": 61.981891,
+    "height": 45.752599,
+    "svg_sha256": "dc59b86900377bdff72b5f3c62c0ed1ed83974aab0acaf9af7cec85239fbeb38"
+  },
+  "90e55d1898d54312118b647c": {
+    "key": "90e55d1898d54312118b647c",
+    "tex": "\\xymatrix{\n0 \\ar[r] & M' \\ar[r]\\ar[d]^{\\varphi\\mid_{M'}} & M\\ar[d]^\\varphi \\ar[r] &\nM/M' \\ar[d]^{\\varphi \\bmod M'} \\ar[r] & 0 \\\\\n0 \\ar[r] & M' \\ar[r]                                  & M \\ar[r]\n           & M/M' \\ar[r]                                  & 0,\n}",
+    "sections": [
+      "algebra-cayley-hamilton"
+    ],
+    "file": "90e55d1898d54312118b647c.svg",
+    "width": 183.618077,
+    "height": 49.872721,
+    "svg_sha256": "55b4efef13b5b8d007bd3a991ddb223e04e5fcccd03329ebf1fa680858bfe4b1"
+  },
+  "2a7e9482a354ff6373baaa94": {
+    "key": "2a7e9482a354ff6373baaa94",
+    "tex": "\\xymatrix{\nZ \\ar[r] \\ar[rd] & Y \\times_X Z \\ar[r] \\ar[d] & Z \\ar[d] \\\\\n& Y \\ar[r] & X\n}",
+    "sections": [
+      "morphisms-immersions"
+    ],
+    "file": "2a7e9482a354ff6373baaa94.svg",
+    "width": 110.451172,
+    "height": 44.24737,
+    "svg_sha256": "b289c9127cceabb5103e7f8a2af96af0e27456ce5cdf548ea749606bd19f77de"
+  },
+  "e255ab91479fb0d7a18cdefd": {
+    "key": "e255ab91479fb0d7a18cdefd",
+    "tex": "\\xymatrix{\n\\mathcal{O}_2 \\ar[r]_\\varphi & \\mathcal{O}_2' \\\\\n\\mathcal{O}_1 \\ar[r] \\ar[u] & \\mathcal{O}'_1 \\ar[u]\n}",
+    "sections": [
+      "modules-differentials"
+    ],
+    "file": "e255ab91479fb0d7a18cdefd.svg",
+    "width": 53.174003,
+    "height": 49.837042,
+    "svg_sha256": "d5d9ad486d4cd231ed0257f530f743a4dcd1b4522d8584c6019b7cecce5a47cf"
+  },
+  "69cfafbfe6fc8954b4c69377": {
+    "key": "69cfafbfe6fc8954b4c69377",
+    "tex": "\\xymatrix{\nX' \\ar[d]_{h'} \\ar[r]_f & X \\ar[d]^h \\\\\nS' \\ar[r]^g & S\n}",
+    "sections": [
+      "modules-differentials"
+    ],
+    "file": "69cfafbfe6fc8954b4c69377.svg",
+    "width": 57.458357,
+    "height": 45.110579,
+    "svg_sha256": "5d94249c12a812a339b740b973fd172c7b2d530e434ae1bc006bf9feb64d02bc"
+  },
+  "df3c99524ad4c52be8eac628": {
+    "key": "df3c99524ad4c52be8eac628",
+    "tex": "\\xymatrix{\nf^{-1}\\mathcal{O}_X \\ar[r] & \\mathcal{O}_{X'} \\\\\nf^{-1}h^{-1}\\mathcal{O}_S \\ar[u] \\ar[r] & (h')^{-1}\\mathcal{O}_{S'} \\ar[u]\n}",
+    "sections": [
+      "modules-differentials"
+    ],
+    "file": "df3c99524ad4c52be8eac628.svg",
+    "width": 118.172498,
+    "height": 50.94811,
+    "svg_sha256": "b00f8cf3f8989ff0f0cd20ec3b2ae0721c7a635f52fc43cb3cd7b9a2e7517cda"
+  },
+  "a8a351e15e67c37ad18ef8da": {
+    "key": "a8a351e15e67c37ad18ef8da",
+    "tex": "\\xymatrix{\nX'' \\ar[d] \\ar[r]_g & X' \\ar[d] \\ar[r]_f & X \\ar[d] \\\\\nS'' \\ar[r] & S' \\ar[r] & S\n}",
+    "sections": [
+      "modules-differentials"
+    ],
+    "file": "a8a351e15e67c37ad18ef8da.svg",
+    "width": 93.943224,
+    "height": 45.110579,
+    "svg_sha256": "257ef45fcc96cb3c832f4ba842c2e18e798ffc2e8bcb38f67ace412025d70bb3"
+  },
+  "549588db59f102261f7c81e9": {
+    "key": "549588db59f102261f7c81e9",
+    "tex": "\\xymatrix{\n\\Spec(\\mathcal{O}_{X, x}) \\ar[r] \\ar[d] & X \\ar[d] \\\\\n\\Spec(\\mathcal{O}_{S, s}) \\ar[r] & S\n}",
+    "sections": [
+      "schemes-points"
+    ],
+    "file": "549588db59f102261f7c81e9.svg",
+    "width": 87.719076,
+    "height": 50.522609,
+    "svg_sha256": "ca4d4ea3236ec0503dc783d75acbd286b7de1e380dbce343412f3d99c8017da1"
+  },
+  "61bf821da3557aa3101546e9": {
+    "key": "61bf821da3557aa3101546e9",
+    "tex": "\\xymatrix{\n\\Spec(\\Omega) \\ar[r] \\ar[d] &\n\\Spec(L) \\ar[d]^q \\\\\n\\Spec(K) \\ar[r]^p &\nX\n}",
+    "sections": [
+      "schemes-points"
+    ],
+    "file": "61bf821da3557aa3101546e9.svg",
+    "width": 100.190524,
+    "height": 49.8132,
+    "svg_sha256": "f985fc7e3f90e6302811db21b40800b625124fa4a350e9974b033b95df271ecf"
+  },
+  "07a8a8d5f055646809510542": {
+    "key": "07a8a8d5f055646809510542",
+    "tex": "\\xymatrix{\n\\Omega &\nL \\ar[l] \\\\\nK \\ar[u] &\n\\kappa(x) \\ar[l] \\ar[u]\n}",
+    "sections": [
+      "schemes-points"
+    ],
+    "file": "07a8a8d5f055646809510542.svg",
+    "width": 56.870829,
+    "height": 47.787454,
+    "svg_sha256": "1ea48ed316cf877ba79694022e1ed37dc2d42538a47cca721e588fd7524eeb94"
+  },
+  "6e2bdaa2301f0f464b0f9401": {
+    "key": "6e2bdaa2301f0f464b0f9401",
+    "tex": "\\xymatrix{\n\\Spec(\\kappa(x)) \\ar[r] \\ar[d] &\n\\Spec(\\mathcal{O}_{X, x}) \\ar[r] \\ar[d] &\nX \\ar[d] \\\\\n\\Spec(\\kappa(s)) \\ar[r] &\n\\Spec(\\mathcal{O}_{S, s}) \\ar[r] &\nS.\n}",
+    "sections": [
+      "schemes-points"
+    ],
+    "file": "6e2bdaa2301f0f464b0f9401.svg",
+    "width": 164.740518,
+    "height": 50.522609,
+    "svg_sha256": "47ae64ee64e23d23a71b3458372ef7f16c17acbbb84ff721cbdb4ada1d8c4199"
+  },
+  "eade5bb3fba790a3c9f9e9c6": {
+    "key": "eade5bb3fba790a3c9f9e9c6",
+    "tex": "\\xymatrix{\n& X'' \\ar[rr] \\ar'[d][dd]_h & & Y'' \\ar[dd]^g \\\\\nE'' \\ar[rr] \\ar[dd]_q \\ar[ru]^{j''} & & D'' \\ar[dd]^p \\ar[ru]^{i''} & \\\\\n& X' \\ar'[r][rr] & & Y' \\\\\nE' \\ar[rr] \\ar[ru]^{j'} & & D' \\ar[ru]^{i'}\n}",
+    "sections": [
+      "chow-bivariant-II"
+    ],
+    "file": "eade5bb3fba790a3c9f9e9c6.svg",
+    "width": 143.655387,
+    "height": 119.646713,
+    "svg_sha256": "c66d1542ab2c0bb4bde85f5960a657b835c1ca625e3a55111c2a191fdf6e1e27"
+  },
+  "2ffbc39fb2c874b7b7fe536c": {
+    "key": "2ffbc39fb2c874b7b7fe536c",
+    "tex": "\\xymatrix{\nX' \\times_X X' \\ar[d]^{f''} \\ar@<1ex>[r]^-a \\ar@<-1ex>[r]_-b &\nX' \\ar[d]^{f'} \\ar[r]_h &\nX \\ar[d]^f \\\\\nY' \\times_Y Y' \\ar@<1ex>[r]^-p \\ar@<-1ex>[r]_-q &\nY' \\ar[r]^g &\nY\n}",
+    "sections": [
+      "chow-bivariant-II"
+    ],
+    "file": "2ffbc39fb2c874b7b7fe536c.svg",
+    "width": 126.467648,
+    "height": 60.859538,
+    "svg_sha256": "951d416801dad5d8f9d552da54255cd655095ea51794f483b8c2327b58d79e71"
+  },
+  "2019751149eebb57e658daab": {
+    "key": "2019751149eebb57e658daab",
+    "tex": "\\xymatrix{\nX'_1 \\times_{X_1} X'_1 \\ar[d]^{f''_1} \\ar@<1ex>[r]^-{a_1} \\ar@<-1ex>[r]_-{b_1} &\nX'_1 \\ar[d]^{f'_1} \\ar[r]_{h_1} &\nX_1 \\ar[d]^{f_1} \\\\\nY'_1 \\times_{Y_1} Y'_1 \\ar@<1ex>[r]^-{p_1} \\ar@<-1ex>[r]_-{q_1} &\nY'_1 \\ar[r]^{g_1} &\nY_1\n}",
+    "sections": [
+      "chow-bivariant-II"
+    ],
+    "file": "2019751149eebb57e658daab.svg",
+    "width": 136.767443,
+    "height": 62.852066,
+    "svg_sha256": "ba310037c14cd3a3e87673284030785e60e16db1dec0848c7a10646ffd9ac6ca"
+  },
+  "06d2a225bbb50e0f463de9b1": {
+    "key": "06d2a225bbb50e0f463de9b1",
+    "tex": "\\vcenter{\n\\xymatrix{\nX'_2 \\ar[d]_{s'} \\ar[r]_{h_2} & X_2 \\ar[d]^s \\\\\nX'_1 \\ar[r]^{h_1} & X_1\n}\n}\n\\quad\\text{and}\\quad\n\\vcenter{\n\\xymatrix{\nX'_2 \\ar[d]_{s'} \\ar[r]_{f'_2} & Y'_2 \\ar[d]^{t'} \\\\\nX'_2 \\ar[r]^{f'_1} & Y'_1\n}\n}",
+    "sections": [
+      "chow-bivariant-II"
+    ],
+    "file": "06d2a225bbb50e0f463de9b1.svg",
+    "width": 159.193735,
+    "height": 49.837042,
+    "svg_sha256": "f6e9a52c4b666b88f2a392d73aec2eb53c3f9fae11e44d99afd8a3fa5f342534"
+  },
+  "e4a2d1f4f2e6ebefc28453a4": {
+    "key": "e4a2d1f4f2e6ebefc28453a4",
+    "tex": "\\xymatrix{\nZ \\cap Y \\ar[r] \\ar[d] & Z \\ar[d] \\\\\nY \\ar[r] & X\n}",
+    "sections": [
+      "morphisms-closed-immersions-quasi-coherent"
+    ],
+    "file": "e4a2d1f4f2e6ebefc28453a4.svg",
+    "width": 64.369097,
+    "height": 43.500187,
+    "svg_sha256": "3f94ce99730ef1ab86d79baf45fdb1a0d74c5a31b9846325f9282b879af57bdd"
+  },
+  "05cc4c3525e5f0fa2e914dc5": {
+    "key": "05cc4c3525e5f0fa2e914dc5",
+    "tex": "\\xymatrix{\nX \\cap Y \\ar[r] \\ar[d] & X \\ar[d] \\\\\nY \\ar[r] & X \\cup Y\n}",
+    "sections": [
+      "morphisms-closed-immersions-quasi-coherent"
+    ],
+    "file": "05cc4c3525e5f0fa2e914dc5.svg",
+    "width": 85.418366,
+    "height": 43.719365,
+    "svg_sha256": "b61db085517ba7dac07d682f63a00261831f76770ca20535c9fb764cef107fbf"
+  },
+  "dea105dfa9fa80d2ce7eddf6": {
+    "key": "dea105dfa9fa80d2ce7eddf6",
+    "tex": "\\xymatrix{\nY = \\underline{\\Spec}_X(\\mathcal{A}) \\ar[rr] \\ar[rd] & &\nX' = \\underline{\\Spec}_X(\\mathcal{A}') \\ar[ld] \\\\\n& X &\n}",
+    "sections": [
+      "morphisms-normalization-X-in-Y"
+    ],
+    "file": "dea105dfa9fa80d2ce7eddf6.svg",
+    "width": 203.616638,
+    "height": 46.764276,
+    "svg_sha256": "a78b09c0e80c2000cc3919855deec5f6d69241de847b31ab328aa24512f92397"
+  },
+  "d6ecb2e6d27ec8e8fb3f3d27": {
+    "key": "d6ecb2e6d27ec8e8fb3f3d27",
+    "tex": "\\xymatrix{\nY \\ar[d]_{f'} \\ar[r]_g & Z \\ar[d]^\\pi \\\\\nX' \\ar[ru]^h \\ar[r]^\\nu & X\n}",
+    "sections": [
+      "morphisms-normalization-X-in-Y"
+    ],
+    "file": "d6ecb2e6d27ec8e8fb3f3d27.svg",
+    "width": 57.642003,
+    "height": 43.841163,
+    "svg_sha256": "3560df923fa8954ddcfbae8198603abb5c2be21a116b8fd3fcf163eff2cc0393"
+  },
+  "dfe98461eb13eeee9cbe8473": {
+    "key": "dfe98461eb13eeee9cbe8473",
+    "tex": "\\xymatrix{\nY_2 \\ar[d]_{f_2} \\ar[r] & Y_1 \\ar[d]^{f_1} \\\\\nX_2 \\ar[r] & X_1\n}",
+    "sections": [
+      "morphisms-normalization-X-in-Y"
+    ],
+    "file": "dfe98461eb13eeee9cbe8473.svg",
+    "width": 62.49702,
+    "height": 46.488934,
+    "svg_sha256": "57951a8c10bd2f555db48d420a49ec938dfe529f6fa266ab75a1869ffd5077b0"
+  },
+  "1715111413fa139f541fe6fb": {
+    "key": "1715111413fa139f541fe6fb",
+    "tex": "\\xymatrix{\nY_2 \\ar[d]_{f_2'} \\ar[r] & Y_1 \\ar[d]^{f_1'} \\\\\nX_2' \\ar[d]_{\\nu_2} \\ar[r] & X_1' \\ar[d]^{\\nu_1} \\\\\nX_2 \\ar[r] & X_1\n}",
+    "sections": [
+      "morphisms-normalization-X-in-Y"
+    ],
+    "file": "1715111413fa139f541fe6fb.svg",
+    "width": 62.716058,
+    "height": 86.339403,
+    "svg_sha256": "baf96ac7390392203acfe131c9a6e49d18ed6a12277e31de9709065db6f04524"
+  },
+  "f33d827ed305dd209e0a1af2": {
+    "key": "f33d827ed305dd209e0a1af2",
+    "tex": "\\xymatrix{\nX \\ar[rr]_h \\ar[rd]_f & & \\mathbf{A}^1_S \\ar[ld] \\\\\n& S &\n}",
+    "sections": [
+      "morphisms-normalization-X-in-Y"
+    ],
+    "file": "f33d827ed305dd209e0a1af2.svg",
+    "width": 88.838995,
+    "height": 47.183813,
+    "svg_sha256": "6b3d2edf96a4ac64267394961911d79e0d33afcf6671584e1219c482ad79e48a"
+  },
+  "8b3858f605981413d983327f": {
+    "key": "8b3858f605981413d983327f",
+    "tex": "\\xymatrix{\n0 \\ar[r] &\n\\bigoplus_{j = 1}^m \\mathcal{O}_U \\ar[d]_\\Phi \\ar[r] &\n\\bigoplus_{j = 1}^m \\mathcal{O}_U \\oplus\n\\bigoplus_{i = 1}^n \\mathcal{O}_U \\ar[d]_\\Psi \\ar[r] &\n\\bigoplus_{i = 1}^n \\mathcal{O}_U \\ar[d]_{\\overline{\\Psi}} \\ar[r] &\n0 \\\\\n0 \\ar[r] &\n\\Im(\\varphi) \\ar[r] &\n\\mathcal{G} \\ar[r] &\n\\Coker(\\varphi) \\ar[r] &\n0\n}",
+    "sections": [
+      "modules-coherent"
+    ],
+    "file": "8b3858f605981413d983327f.svg",
+    "width": 305.62032,
+    "height": 51.622724,
+    "svg_sha256": "568a302f80f303f1e374280856cf016098e7be21786fce963dc558c90c48fa3d"
+  },
+  "98d16eac573a841af637c869": {
+    "key": "98d16eac573a841af637c869",
+    "tex": "\\xymatrix{\n0 \\ar[r] &\n0 \\ar[r] \\ar[d] &\n\\bigoplus_{i = 1}^{n} \\mathcal{O}_U \\ar[r] \\ar[d] &\n\\bigoplus_{i = 1}^{n} \\mathcal{O}_U \\ar[r] \\ar[d] &\n0 \\\\\n0 \\ar[r] &\n\\mathcal{F}_1 \\ar[r] &\n\\mathcal{F}_2 \\ar[r] &\n\\mathcal{F}_3 \\ar[r] &\n0\n}",
+    "sections": [
+      "modules-coherent"
+    ],
+    "file": "98d16eac573a841af637c869.svg",
+    "width": 221.834541,
+    "height": 49.257662,
+    "svg_sha256": "5e05261e511c34c337cc91eed1ff859380483c3f3886885ab40bec5acccdbad3"
+  },
+  "b6ea3eecc14633bb53f0cca5": {
+    "key": "b6ea3eecc14633bb53f0cca5",
+    "tex": "\\xymatrix{\n\\mathcal{A}^{(d)} \\ar[rr]_-{\\psi}\n \\ar[rd]_-{\\psi_{univ}} & &\nf_*\\left(\n\\bigoplus\\nolimits_{n \\in \\mathbf{Z}}\n\\mathcal{L}^{\\otimes n}\n\\right) \\\\\n &\n\\pi_*\\left(\n\\bigoplus\\nolimits_{n \\geq 0}\n\\mathcal{O}_{\\underline{\\text{Proj}}_S(\\mathcal{A})}(nd)\n\\right) \\ar[ru]_\\theta\n}",
+    "sections": [
+      "constructions-relative-proj"
+    ],
+    "file": "b6ea3eecc14633bb53f0cca5.svg",
+    "width": 257.098035,
+    "height": 60.346945,
+    "svg_sha256": "d9930f6d1131f84e76845f2e1374909f5256a08a279aecebb91edb2fafdc4956"
+  },
+  "173691fd97f9477901ebf341": {
+    "key": "173691fd97f9477901ebf341",
+    "tex": "\\xymatrix{\nX \\ar[r] \\ar[d]^s &\nY \\ar[r] \\ar[d]^{s'} &\nZ \\ar[r] \\ar@{-->}[d] &\nX[1] \\ar[d]^{s[1]} \\\\\nX' \\ar[r] &\nY' \\ar[r] &\nZ' \\ar[r] &\nX'[1]\n}",
+    "sections": [
+      "derived-localization"
+    ],
+    "file": "173691fd97f9477901ebf341.svg",
+    "width": 147.773041,
+    "height": 49.822078,
+    "svg_sha256": "f257f976a3995afb0e322de6ca2f067ff0dbbd4a835bdf71e940484cdc18f7ea"
+  },
+  "061d06077241bc7d5875fcba": {
+    "key": "061d06077241bc7d5875fcba",
+    "tex": "\\xymatrix{\n0 \\ar[r] \\ar[d]^1 &\nX \\ar[r]_1 \\ar[d]^1 &\nX \\ar[r] \\ar@{-->}[d] &\n0[1] \\ar[d]^{1[1]} \\\\\n0 \\ar[r] &\nX \\ar[r]^f &\nY \\ar[r] &\n0[1]\n}",
+    "sections": [
+      "derived-localization"
+    ],
+    "file": "061d06077241bc7d5875fcba.svg",
+    "width": 134.560225,
+    "height": 49.8132,
+    "svg_sha256": "36ac589cabd534931adbfeee67df6d59164f2f6439fa578c933c42f3a1ec8bba"
+  },
+  "d26f035f7a16b713f728a0fe": {
+    "key": "d26f035f7a16b713f728a0fe",
+    "tex": "\\xymatrix{\nX \\ar[r] \\ar[d]^t &\nY \\ar[r] \\ar@{..>}[d]^{s'} &\nZ \\ar[r] \\ar[d]^1 &\nX[1] \\ar[d]^{t[1]} \\\\\nX' \\ar[r] &\nY' \\ar[r] &\nZ \\ar[r] &\nX'[1]\n}",
+    "sections": [
+      "derived-localization"
+    ],
+    "file": "d26f035f7a16b713f728a0fe.svg",
+    "width": 144.227296,
+    "height": 49.822078,
+    "svg_sha256": "ab0b4c63d0788ca36fd6b0332c1e8f74fa776499fbe6003b5efde96a99396475"
+  },
+  "23103adb6854ebd8987a2e3d": {
+    "key": "23103adb6854ebd8987a2e3d",
+    "tex": "\\xymatrix{\nZ \\ar[r]_t & X \\ar[r]_d \\ar[d]^1 & Q \\ar[r] \\ar[d]^i & Z[1] \\\\\n& X \\ar[r]_a & Y \\ar[d]^j \\\\\n& & W\n}",
+    "sections": [
+      "derived-localization"
+    ],
+    "file": "23103adb6854ebd8987a2e3d.svg",
+    "width": 133.274127,
+    "height": 82.659995,
+    "svg_sha256": "e04262072507a678501ba2d067ed03a1981e066ed9936cde9d5d3e99bd852975"
+  },
+  "300a5225b12fb639df558c55": {
+    "key": "300a5225b12fb639df558c55",
+    "tex": "\\xymatrix{\nZ \\ar[r]_t & X \\ar[r]_u \\ar[d]^1 & Q \\ar[r]_v \\ar[d]^i & Z[1] \\\\\n& X \\ar[r]_a & Y \\ar[d]^j \\\\\n& & W\n}",
+    "sections": [
+      "derived-localization"
+    ],
+    "file": "300a5225b12fb639df558c55.svg",
+    "width": 133.274127,
+    "height": 82.659995,
+    "svg_sha256": "5debef76ade45c7a96a99d4c352a6d9cca5fce99a6c00fcd81784711816eaca6"
+  },
+  "b6589b7c3daacfff43eece7c": {
+    "key": "b6589b7c3daacfff43eece7c",
+    "tex": "\\xymatrix{\nQ(X) \\ar[r]_{Q(f)} \\ar[d]_a & Q(Y) \\ar[d]^b \\\\\nQ(X') \\ar[r]^{Q(f')} & Q(Y')\n}",
+    "sections": [
+      "derived-localization"
+    ],
+    "file": "b6589b7c3daacfff43eece7c.svg",
+    "width": 82.277586,
+    "height": 49.822078,
+    "svg_sha256": "c17499d6a6e93df0e43934c5d6fc96596dcd9e45d75714034b13643b075901c3"
+  },
+  "dd0a73dc9b2f45a2a028c82b": {
+    "key": "dd0a73dc9b2f45a2a028c82b",
+    "tex": "\\xymatrix{\nX \\ar[d]_f \\ar[r]_k & X'' \\ar[d]^{f''} & X' \\ar[d]^{f'} \\ar[l]^s \\\\\nY \\ar[r]^l & Y'' & Y' \\ar[l]_t\n}",
+    "sections": [
+      "derived-localization"
+    ],
+    "file": "dd0a73dc9b2f45a2a028c82b.svg",
+    "width": 100.981227,
+    "height": 44.891401,
+    "svg_sha256": "6f78bfd33e2d9eb805041add258c956c805df2e74173a3d86247ea48ba0781b5"
+  },
+  "e24582f568d22849fcfa0d33": {
+    "key": "e24582f568d22849fcfa0d33",
+    "tex": "\\xymatrix{\nX \\ar[r] \\ar[d]^k &\nY \\ar[r] \\ar[d]^l &\nZ \\ar[r] \\ar[d]^m &\nX[1] \\ar[d]^{g[1]} \\\\\nX'' \\ar[r] &\nY'' \\ar[r] &\nZ'' \\ar[r] &\nX''[1] \\\\\nX' \\ar[r] \\ar[u]_s &\nY' \\ar[r] \\ar[u]_t &\nZ' \\ar[r] \\ar[u]_r &\nX'[1] \\ar[u]_{s[1]}\n}",
+    "sections": [
+      "derived-localization"
+    ],
+    "file": "e24582f568d22849fcfa0d33.svg",
+    "width": 156.189047,
+    "height": 89.690394,
+    "svg_sha256": "7204b7ccbe37d5eea0f866ac8abb1788c73dac6f699605d2dd63fdcb6ca496d9"
+  },
+  "6586570575f70a4e76130bb0": {
+    "key": "6586570575f70a4e76130bb0",
+    "tex": "\\xymatrix{\n(Q(X), Q(Y), Q(Z), Q(f), Q(g), Q(h))\n\\ar[d]^{(a, b, c)} \\\\\n(Q(X'), Q(Y'), Q(Z'), Q(f'), Q(g'), Q(h'))\n}",
+    "sections": [
+      "derived-localization"
+    ],
+    "file": "6586570575f70a4e76130bb0.svg",
+    "width": 179.771526,
+    "height": 49.822078,
+    "svg_sha256": "93ed93ed8073ab0c7458b0f54b16e5dfb9628838fa7fa72551e3e39b4ca1f7b7"
+  },
+  "64c6806026867e273d4db5f3": {
+    "key": "64c6806026867e273d4db5f3",
+    "tex": "\\xymatrix{\nS'_{\\mathfrak q} &  K[x_1, \\ldots, x_n]_{\\mathfrak q'} \\ar[l] \\\\\nS_{\\mathfrak p}\\ar[u] &  k[x_1, \\ldots, x_n]_{\\mathfrak p'} \\ar[u] \\ar[l]\n}",
+    "sections": [
+      "algebra-lci"
+    ],
+    "file": "64c6806026867e273d4db5f3.svg",
+    "width": 104.226653,
+    "height": 51.167471,
+    "svg_sha256": "fb50e37bb71d2be09dd37711a5745c7ded8e7d3d219fae23aa75ab5d35c1d3e2"
+  },
+  "cea790a5e496071b83b8d3bc": {
+    "key": "cea790a5e496071b83b8d3bc",
+    "tex": "\\xymatrix{\nS'_{\\mathfrak n} &  K[x_1, \\ldots, x_n]_{\\mathfrak n'} \\ar[l] \\\\\nS_{\\mathfrak m}\\ar[u] &  k[x_1, \\ldots, x_n]_{\\mathfrak m'} \\ar[u] \\ar[l]\n}",
+    "sections": [
+      "algebra-lci"
+    ],
+    "file": "cea790a5e496071b83b8d3bc.svg",
+    "width": 106.518317,
+    "height": 49.863843,
+    "svg_sha256": "03d422db34c6efba7fe159674cd08e0ec75e05b414c1177264b98f3a5d65fb65"
+  },
+  "966c0d8fc33de24a2d76744a": {
+    "key": "966c0d8fc33de24a2d76744a",
+    "tex": "\\xymatrix{\nB & S \\ar[l] \\\\\nA \\ar[u] & R \\ar[l] \\ar[u]\n}",
+    "sections": [
+      "algebra-lci"
+    ],
+    "file": "966c0d8fc33de24a2d76744a.svg",
+    "width": 45.047863,
+    "height": 43.938543,
+    "svg_sha256": "7ad3e659ce6271c71bb272cdcb9fe28d7a47cc75fa4376b1db04a8dea55e1d5e"
+  },
+  "6a067ed78e50ed2a231f47ee": {
+    "key": "6a067ed78e50ed2a231f47ee",
+    "tex": "\\xymatrix{\n\\mathcal{F}_i \\ar[r] \\ar[d] & \\mathcal{F} \\ar@{=}[d] \\\\\n\\mathcal{F}_i \\oplus \\mathcal{F}_{i'} \\ar[r] & \\mathcal{F}\n}\n\\quad\n\\text{and}\n\\quad\n\\xymatrix{\n\\mathcal{F}_{i'} \\ar[r] \\ar[d] & \\mathcal{F} \\ar@{=}[d] \\\\\n\\mathcal{F}_i \\oplus \\mathcal{F}_{i'} \\ar[r] & \\mathcal{F}\n}",
+    "sections": [
+      "properties-extending-quasi-coherent-sheaves"
+    ],
+    "file": "6a067ed78e50ed2a231f47ee.svg",
+    "width": 189.631619,
+    "height": 46.668261,
+    "svg_sha256": "2f1ea511cf17ad8142aca2289a673354817710c8bc383d0ae9de46586b1ba909"
+  },
+  "5e3ee834d5f3cfaa5c73d348": {
+    "key": "5e3ee834d5f3cfaa5c73d348",
+    "tex": "\\xymatrix{\n\\mathcal{J}_i \\ar[r] & \\mathcal{J}_{i'} \\\\\n\\mathcal{E}_{ik} \\ar[u] \\ar[r] & \\mathcal{E}_{i'k'} \\ar[u]\n}",
+    "sections": [
+      "properties-extending-quasi-coherent-sheaves"
+    ],
+    "file": "5e3ee834d5f3cfaa5c73d348.svg",
+    "width": 59.60589,
+    "height": 46.558672,
+    "svg_sha256": "46b071a42bfd919cf3c0720d08272e0b143e0145af706c35faf2f1b261c3b033"
+  },
+  "08798413d85c4cd82cd8abc4": {
+    "key": "08798413d85c4cd82cd8abc4",
+    "tex": "\\xymatrix{\nM \\ar[r] \\ar[d] & N \\ar[d] \\\\\nM^\\wedge \\ar[r] & N^\\wedge\n}",
+    "sections": [
+      "algebra-completion"
+    ],
+    "file": "08798413d85c4cd82cd8abc4.svg",
+    "width": 60.004506,
+    "height": 43.841163,
+    "svg_sha256": "7568e52ca821c265b2db19d4f9731bdc887b61c791ac427c80425e5607f5a093"
+  },
+  "9ea46ca1b69323ce72a59dc1": {
+    "key": "9ea46ca1b69323ce72a59dc1",
+    "tex": "\\xymatrix{\nX_j \\ar[r]^-{r_{\\mathcal{L}, \\psi}} & U_j \\ar[r] &\n\\mathbf{P}(\\mathcal{E}_j)\n}",
+    "sections": [
+      "morphisms-very-ample"
+    ],
+    "file": "9ea46ca1b69323ce72a59dc1.svg",
+    "width": 106.999713,
+    "height": 13.497694,
+    "svg_sha256": "7efa116c9026a4ef0275da74d468b360b1fee858b6ac2359cf950af8015da44b"
+  },
+  "5bb28df9a106b6c5a22faecc": {
+    "key": "5bb28df9a106b6c5a22faecc",
+    "tex": "\\xymatrix{\nH(A, d) \\ar[rr]_{\\overline{\\alpha}} & & H(A, d) \\ar[ld]^g \\\\\n& H(A/\\alpha A, d) \\ar[lu]^f &\n}",
+    "sections": [
+      "homology-differential-object"
+    ],
+    "file": "5bb28df9a106b6c5a22faecc.svg",
+    "width": 179.030008,
+    "height": 49.8132,
+    "svg_sha256": "b764b6aa3de1ed6a038f28a307c4918b47af552fbb6e4c603a292b0c9db32c21"
+  },
+  "7626df5e76effb79a39cb637": {
+    "key": "7626df5e76effb79a39cb637",
+    "tex": "\\xymatrix{\nR^n \\ar[r] \\ar[d] &  R^m \\ar[d] \\\\\nM_1 \\ar[r]^{f_1}        &  M_2\n}",
+    "sections": [
+      "algebra-universally-injective"
+    ],
+    "file": "7626df5e76effb79a39cb637.svg",
+    "width": 57.975276,
+    "height": 45.741751,
+    "svg_sha256": "68926066fda6e463a99105502e3b66adb683e09bb7f5cda4784e540dc89c3d03"
+  },
+  "47ca79855cf09f232bb9118f": {
+    "key": "47ca79855cf09f232bb9118f",
+    "tex": "\\xymatrix{\nM_1^{\\oplus m} \\ar[r] \\ar[d] & M_1^{\\oplus n} \\ar[r] \\ar[d] & M_1 \\otimes_R Q\n\\ar[r] \\ar[d] & 0 \\\\\nM_2^{\\oplus m} \\ar[r] & M_2^{\\oplus n} \\ar[r] & M_2 \\otimes_R Q \\ar[r] & 0\n}",
+    "sections": [
+      "algebra-universally-injective"
+    ],
+    "file": "47ca79855cf09f232bb9118f.svg",
+    "width": 181.497462,
+    "height": 52.358731,
+    "svg_sha256": "d186974a625047c56f91d9d740cc1b886350635f3e80b11fe0a0f6561ae54b44"
+  },
+  "a75d7e6fbf0171698f69eef5": {
+    "key": "a75d7e6fbf0171698f69eef5",
+    "tex": "\\xymatrix{\n         & R^n \\ar[r]^{g_1} \\ar[d]^{h_1} & R^m \\ar[r]^{g_2} \\ar[d]^{h_2} & P\n\\ar[r] \\ar[d]^{\\varphi} & 0 \\\\\n0 \\ar[r] & M_1 \\ar[r]^{f_1} & M_2 \\ar[r]^{f_2} & M_3 \\ar[r] & 0 .\n}",
+    "sections": [
+      "algebra-universally-injective"
+    ],
+    "file": "a75d7e6fbf0171698f69eef5.svg",
+    "width": 174.516908,
+    "height": 48.987678,
+    "svg_sha256": "aa524f4decbca594feb2c3e9ff6603de5917ce7bd03136afcd4caac0d2604ad7"
+  },
+  "a78607f9d5a3e2b936b63108": {
+    "key": "a78607f9d5a3e2b936b63108",
+    "tex": "\\xymatrix{\nR^m \\ar[r]^{g_2} \\ar[d]_{h'_2} & P \\ar[d]^{\\varphi} \\ar[dl]_{\\varphi'} \\\\\nM_2 \\ar[r]^{f_2} & M_3.\n}",
+    "sections": [
+      "algebra-universally-injective"
+    ],
+    "file": "a78607f9d5a3e2b936b63108.svg",
+    "width": 64.797373,
+    "height": 48.987678,
+    "svg_sha256": "20ede3a3a19dc845176c15aace3feb34f37d1879b1c4c2bb37c35516b3317adb"
+  },
+  "ba9a96b17fe3ea094210334f": {
+    "key": "ba9a96b17fe3ea094210334f",
+    "tex": "\\xymatrix{\n0  \\ar[r] & M_{1, i} \\ar[d] \\ar[r]  &  M_{2, i}  \\ar[r] \\ar[d] & M_{3, i} \\ar[d]\n\\ar[r] & 0 \\\\\n0  \\ar[r] & M_{1} \\ar[r]  &  M_{2}  \\ar[r] & M_{3} \\ar[r] & 0\n}",
+    "sections": [
+      "algebra-universally-injective"
+    ],
+    "file": "ba9a96b17fe3ea094210334f.svg",
+    "width": 186.685375,
+    "height": 47.306425,
+    "svg_sha256": "8e463b00ba44ae528ce1dbd11a14f68568dda240ac6ce59f79a2860c394340af"
+  },
+  "2929d4b9cc545be78a352742": {
+    "key": "2929d4b9cc545be78a352742",
+    "tex": "\\xymatrix{\n0  \\ar[r] & \\colim M_{1, i} \\ar[d]^{\\cong} \\ar[r]  &  \\colim M_{2, i}\n \\ar[r]\n\\ar[d] & \\colim M_{3, i} \\ar[d]^{\\cong} \\ar[r] & 0 \\\\\n0  \\ar[r] & M_{1} \\ar[r]  &  M_{2}  \\ar[r] & M_{3} \\ar[r] & 0\n}",
+    "sections": [
+      "algebra-universally-injective"
+    ],
+    "file": "2929d4b9cc545be78a352742.svg",
+    "width": 261.405176,
+    "height": 47.471364,
+    "svg_sha256": "b5110db0695e5418125df5bfb74c4600a6b4fec9968e3b6a796cbae3e0c26b20"
+  },
+  "398dfade74d9750c237bb778": {
+    "key": "398dfade74d9750c237bb778",
+    "tex": "\\xymatrix{\nM_1 \\otimes_R N \\ar[r] \\ar[d] &\nM_2 \\otimes_R N \\ar[r] \\ar[d] &\nM_3 \\otimes_R N \\ar[d] \\\\\nM_1 \\otimes_R N' \\ar[r] \\ar[d] &\nM_2 \\otimes_R N' \\ar[r] \\ar[d] &\nM_3 \\otimes_R N' \\ar[d] \\\\\nM_1 \\otimes_R N'' \\ar[r] &\nM_2 \\otimes_R N'' \\ar[r] &\nM_3 \\otimes_R N''\n}",
+    "sections": [
+      "algebra-universally-injective"
+    ],
+    "file": "398dfade74d9750c237bb778.svg",
+    "width": 199.735978,
+    "height": 85.841408,
+    "svg_sha256": "23c41e11abd47b8c878ccdeaec3dff8920abebb5e65f369b78fc1ab61b4c2c3c"
+  },
+  "a0d128df4e28d2249a5a0e93": {
+    "key": "a0d128df4e28d2249a5a0e93",
+    "tex": "\\xymatrix{\nM \\otimes Q_1 \\ar[r] \\ar[d] &\nM \\otimes Q_2 \\ar[r] \\ar[d] &\n\\ldots \\ar[r] &\nM \\otimes Q \\ar[d] \\\\\nM' \\otimes Q_1 \\ar@{^{(}->}[r] &\nM' \\otimes Q_2 \\ar@{^{(}->}[r] &\n\\ldots \\ar@{^{(}->}[r] &\nM' \\otimes Q\n}",
+    "sections": [
+      "algebra-universally-injective"
+    ],
+    "file": "a0d128df4e28d2249a5a0e93.svg",
+    "width": 210.100137,
+    "height": 47.930257,
+    "svg_sha256": "5d42148ee023a9eca77129cd9594279fad02012b2db8cb8cd5b5da0495dcb538"
+  },
+  "dad6ea2ac492098d010a58ae": {
+    "key": "dad6ea2ac492098d010a58ae",
+    "tex": "\\xymatrix{\nA_d \\ar[d]_{(\\ref{equation-global-sections})} \\ar[r]_{\\psi} &\n\\Gamma(T, \\mathcal{L}^{\\otimes d}) \\ar[d]^{restrict} \\\\\n\\Gamma(X, \\mathcal{O}_X(d)) \\ar[r]^{\\theta} &\n\\Gamma(U(\\psi), \\mathcal{L}^{\\otimes d})\n}",
+    "sections": [
+      "constructions-invertible-proj"
+    ],
+    "file": "dad6ea2ac492098d010a58ae.svg",
+    "width": 156.599896,
+    "height": 51.782757,
+    "svg_sha256": "3bfe46a2f0f45bbd0f8b12325d25544ea4d0b6aeedded0bf26184082996164d5"
+  },
+  "82b1fcb40ce0d2ba704ee5f5": {
+    "key": "82b1fcb40ce0d2ba704ee5f5",
+    "tex": "\\xymatrix{\n\\overline{X} \\ar[r] \\ar[d] & X \\ar[d] \\\\\n\\overline{S} \\ar[r] & S\n}",
+    "sections": [
+      "varieties-geometrically-integral"
+    ],
+    "file": "82b1fcb40ce0d2ba704ee5f5.svg",
+    "width": 47.401671,
+    "height": 47.30901,
+    "svg_sha256": "d0df475d07e57261e35264b108054d7615babe19e2e3b590ab2344064b4a9008"
+  },
+  "d04f19fa41f08144a9fa1d7f": {
+    "key": "d04f19fa41f08144a9fa1d7f",
+    "tex": "\\xymatrix{\n&\\ \\phantom{}_pu\\mathcal{F}(V) \\ar[r] &\n\\prod {}_pu\\mathcal{F}(V_j) \\ar@<1ex>[r] \\ar@<-1ex>[r] &\n\\prod {}_pu\\mathcal{F}(V_j \\times_V V_{j'}) &\n}",
+    "sections": [
+      "sites-cocontinuous-functors"
+    ],
+    "file": "d04f19fa41f08144a9fa1d7f.svg",
+    "width": 219.391069,
+    "height": 12.065837,
+    "svg_sha256": "ecfa5022e88bd536bf36102caec55e70fb9d5ac1464335f94aa4228ab876b81e"
+  },
+  "0be98281422a3a42decf0f83": {
+    "key": "0be98281422a3a42decf0f83",
+    "tex": "\\xymatrix{\n\\coprod u^p h_{V_j \\times_V V_{j'}} \\ar@<1ex>[r] \\ar@<-1ex>[r] &\n\\coprod u^p h_{V_j} \\ar[r] &\nu^p h_V\n}",
+    "sections": [
+      "sites-cocontinuous-functors"
+    ],
+    "file": "0be98281422a3a42decf0f83.svg",
+    "width": 176.709128,
+    "height": 12.871173,
+    "svg_sha256": "bc25e5a7d3fb918d1782bb71f9d395c555e1d62cfd4a9e65d1c36cae6020511f"
+  },
+  "02781923e8ec58e154528799": {
+    "key": "02781923e8ec58e154528799",
+    "tex": "\\xymatrix{\nu(U) \\ar[r]_{s'} \\ar[d]_s & V_{j'} \\ar[d] \\\\\nV_j \\ar[r] & V\n}",
+    "sections": [
+      "sites-cocontinuous-functors"
+    ],
+    "file": "02781923e8ec58e154528799.svg",
+    "width": 62.293711,
+    "height": 50.267223,
+    "svg_sha256": "962da44d61821cca53494d8d26ccc74a57b70d6be0b4cfa563dfdb7a3b7c6031"
+  },
+  "fd12dca642d84ff26d7283ac": {
+    "key": "fd12dca642d84ff26d7283ac",
+    "tex": "\\xymatrix{\nK \\ar[r] & K' \\\\\nk \\ar[u] \\ar[r] & k' \\ar[u]\n}",
+    "sections": [
+      "algebra-separability-continued",
+      "algebra-separability"
+    ],
+    "file": "fd12dca642d84ff26d7283ac.svg",
+    "width": 49.942371,
+    "height": 45.00099,
+    "svg_sha256": "a941b667a17ef9dbac9b9615d102845f899d34e1536437aef2d89f53f152ed19"
+  },
+  "abe39c161ff67627ead2d811": {
+    "key": "abe39c161ff67627ead2d811",
+    "tex": "\\xymatrix{\n\\Sh(\\mathcal{C}, \\mathcal{A}) \\ar@<1ex>[r] \\ar[d]_s &\n\\textit{PSh}(\\mathcal{C}, \\mathcal{A}) \\ar@<1ex>[l]^{{}^\\#} \\ar[d]^s\\\\\n\\Sh(\\mathcal{C}) \\ar@<1ex>[r] &\n\\textit{PSh}(\\mathcal{C}) \\ar@<1ex>[l]\n}",
+    "sections": [
+      "sites-sheaves-algebraic-structures"
+    ],
+    "file": "abe39c161ff67627ead2d811.svg",
+    "width": 108.980545,
+    "height": 51.916397,
+    "svg_sha256": "4deadedecc1f7867a3497dd780afc06fc93cb9606d51f28b47da02efeda0509f"
+  },
+  "e7cea05719ff68321797bc5d": {
+    "key": "e7cea05719ff68321797bc5d",
+    "tex": "\\xymatrix{\nZ \\ar[r]_i \\ar[d]_f & X \\ar[d]^g \\\\\nZ' \\ar[r]^{i'} & X'\n}",
+    "sections": [
+      "morphisms-conormal-sheaf"
+    ],
+    "file": "e7cea05719ff68321797bc5d.svg",
+    "width": 54.830567,
+    "height": 43.841163,
+    "svg_sha256": "69af5c23c19f10536eba4c266fa23b09d55c4e7dfac5c8222fccf444d6ec525b"
+  },
+  "1f4d50e93ad9002942dee6e6": {
+    "key": "1f4d50e93ad9002942dee6e6",
+    "tex": "\\xymatrix{\nS \\ar[rr] & & S' \\\\\n& R \\ar[lu] \\ar[ru]\n}",
+    "sections": [
+      "algebra-flatness-artinian",
+      "algebra-more-flatness-criteria"
+    ],
+    "file": "1f4d50e93ad9002942dee6e6.svg",
+    "width": 82.350957,
+    "height": 44.769603,
+    "svg_sha256": "381098dc044f77eeda2f49af2b26ee7e88224e31608e37af5b034fc42d95a0f3"
+  },
+  "0c9513ac01d7d6c63a16d312": {
+    "key": "0c9513ac01d7d6c63a16d312",
+    "tex": "\\xymatrix{\n\\Sh(\\mathcal{C}) \\ar[r]^g &\n\\Sh(\\mathcal{D}) \\ar[r]^f &\n\\Sh(\\mathcal{C})\n}",
+    "sections": [
+      "sites-cocontinuous-morphism-topoi"
+    ],
+    "file": "0c9513ac01d7d6c63a16d312.svg",
+    "width": 135.277466,
+    "height": 14.235715,
+    "svg_sha256": "0316f8fa0cd06ce18f08b5bb0a665c7479a2058ced17d55c4ee2529633d00765"
+  },
+  "f539e72c06dc97820f16b263": {
+    "key": "f539e72c06dc97820f16b263",
+    "tex": "\\xymatrix{\n\\mathcal{G} \\otimes_{\\mathcal{O}'} \\mathcal{F}' \\ar[r] \\ar[d] &\n\\mathcal{G}' \\otimes_{\\mathcal{O}'} \\mathcal{F}' \\ar[r] \\ar[d] &\n\\mathcal{G}'/\\mathcal{G} \\otimes_{\\mathcal{O}'} \\mathcal{F}' \\ar[r] \\ar[d] &\n0 \\\\\n\\mathcal{H} \\otimes_{\\mathcal{O}'} \\mathcal{F}' \\ar[r] &\n\\mathcal{H}' \\otimes_{\\mathcal{O}'} \\mathcal{F}' \\ar[r] &\n\\mathcal{H}'/\\mathcal{H} \\otimes_{\\mathcal{O}'} \\mathcal{F}' \\ar[r] & 0\n}",
+    "sections": [
+      "sites-modules-flat"
+    ],
+    "file": "f539e72c06dc97820f16b263.svg",
+    "width": 237.18619,
+    "height": 49.872721,
+    "svg_sha256": "ef263da661bf5f2b670b66a92ed8b037a02610d05e7f0d58d619541a88bef729"
+  },
+  "826ddd8cb7d8886647607d2d": {
+    "key": "826ddd8cb7d8886647607d2d",
+    "tex": "\\xymatrix{\n\\textit{PSh}(\\mathcal{C})/h_U \\ar[r] \\ar[d] &\n\\textit{PSh}(\\mathcal{C}/U) \\ar[d] \\\\\n\\Sh(\\mathcal{C})/h_U^\\# \\ar[r] &\n\\Sh(\\mathcal{C}/U)\n}",
+    "sections": [
+      "sites-localize"
+    ],
+    "file": "826ddd8cb7d8886647607d2d.svg",
+    "width": 120.582803,
+    "height": 51.687718,
+    "svg_sha256": "514bc71de90f8ac544c5a49f8e4113f8005474f7279101af37878850f007db65"
+  },
+  "47e6ea3b518b55b2dee1d0e6": {
+    "key": "47e6ea3b518b55b2dee1d0e6",
+    "tex": "\\vcenter{\n\\xymatrix{\n\\mathcal{F}_\\varphi \\ar[r] \\ar[d] & {*} \\ar[d] \\\\\n\\mathcal{F}|_{\\mathcal{C}/U} \\ar[r] & h_U|_{\\mathcal{C}/U}\n}\n}\n\\quad\\text{for presheaves and}\\quad\n\\vcenter{\n\\xymatrix{\n\\mathcal{F}_\\varphi \\ar[r] \\ar[d] & {*} \\ar[d] \\\\\n\\mathcal{F}|_{\\mathcal{C}/U} \\ar[r] & h_U^\\#|_{\\mathcal{C}/U}\n}\n}",
+    "sections": [
+      "sites-localize"
+    ],
+    "file": "47e6ea3b518b55b2dee1d0e6.svg",
+    "width": 279.345919,
+    "height": 51.729883,
+    "svg_sha256": "01e59ccfe0c85d1e23995e5005467c3547f063ea08c5351bae83b917af2e4a14"
+  },
+  "e52895b835e8e39942e286ad": {
+    "key": "e52895b835e8e39942e286ad",
+    "tex": "\\xymatrix{\n\\textit{PSh}(\\mathcal{C}/U) \\ar[r] \\ar[d] &\n\\textit{PSh}(\\mathcal{C})/h_U \\ar[d] \\\\\n\\Sh(\\mathcal{C}/U) \\ar[r] &\n\\Sh(\\mathcal{C})/h_U^\\#\n}",
+    "sections": [
+      "sites-localize"
+    ],
+    "file": "e52895b835e8e39942e286ad.svg",
+    "width": 120.71403,
+    "height": 51.687718,
+    "svg_sha256": "5420cdc5b06c2cb11d2ee45af4a98e74125ba572bb3d854c897b8a134eb9e21c"
+  },
+  "d3edc2e4a8b84d940adddbdf": {
+    "key": "d3edc2e4a8b84d940adddbdf",
+    "tex": "\\xymatrix{\n\\mathcal{C}/V \\ar[rd]_{j_V} \\ar[rr]_j & &\n\\mathcal{C}/U \\ar[ld]^{j_U} \\\\\n& \\mathcal{C} &\n}",
+    "sections": [
+      "sites-localize"
+    ],
+    "file": "d3edc2e4a8b84d940adddbdf.svg",
+    "width": 102.696398,
+    "height": 45.984216,
+    "svg_sha256": "d8e108ce7fe110b158bc4dc1b7ff39554b91dcefcc9069e0246b5f9982bd4579"
+  },
+  "2fc785084bb06449b1d251d7": {
+    "key": "2fc785084bb06449b1d251d7",
+    "tex": "\\vcenter{\n\\xymatrix{\n\\Sh(\\mathcal{C}/V) \\ar[rd]_{j_V} \\ar[rr]_j & &\n\\Sh(\\mathcal{C}/U) \\ar[ld]^{j_U} \\\\\n& \\Sh(\\mathcal{C}) &\n}\n}",
+    "sections": [
+      "sites-localize"
+    ],
+    "file": "2fc785084bb06449b1d251d7.svg",
+    "width": 159.01899,
+    "height": 49.8132,
+    "svg_sha256": "cf046621dd5b9ab2e03ad8065eabec3c4e2f60bea5b7d7a930dcaf4cedfa2cbe"
+  },
+  "859c4791bd89c2bc86c05926": {
+    "key": "859c4791bd89c2bc86c05926",
+    "tex": "\\xymatrix{\n\\mathcal{H}' = \\mathcal{H} \\times_{\\varphi, h_U^\\#, f} h_V^\\#\n\\ar[rr]^-{\\varphi'} & & h_V^\\#\n}",
+    "sections": [
+      "sites-localize"
+    ],
+    "file": "859c4791bd89c2bc86c05926.svg",
+    "width": 155.175831,
+    "height": 18.491145,
+    "svg_sha256": "89ece601e64262d94aca25b045dff6d35a3ddef1887e7c7b5319acc35c81258c"
+  },
+  "a907c88e987392e7aa342324": {
+    "key": "a907c88e987392e7aa342324",
+    "tex": "\\xymatrix{\nZ' \\ar[r] \\ar[d]_g & X' \\ar[d]^f \\\\\nZ \\ar[r] & X\n}",
+    "sections": [
+      "chow-gysin-higher-codimension"
+    ],
+    "file": "a907c88e987392e7aa342324.svg",
+    "width": 54.984358,
+    "height": 44.550425,
+    "svg_sha256": "08c939243b2efed087b9b1b4255e42eb27495b61f6b76851d2d7cc9e0b37468a"
+  },
+  "8dcd64c39722d9d3b3db723e": {
+    "key": "8dcd64c39722d9d3b3db723e",
+    "tex": "\\xymatrix{\nC_{Z'}X' \\ar[d] \\ar[r] &\nW'_\\infty \\ar[d] \\ar[r] &\nW' \\ar[d] \\ar[r] &\n\\mathbf{P}^1_{X'} \\ar[d] \\\\\nC_ZX \\ar[r] &\nW_\\infty \\ar[r] &\nW \\ar[r] &\n\\mathbf{P}^1_X\n}",
+    "sections": [
+      "chow-gysin-higher-codimension"
+    ],
+    "file": "8dcd64c39722d9d3b3db723e.svg",
+    "width": 165.414419,
+    "height": 51.73161,
+    "svg_sha256": "e9132110bc1964c074c70a3923773aa00da0fe6ce0600f746fec40a8aa074b3a"
+  },
+  "f11aa1a0cf0db1b38ffd1118": {
+    "key": "f11aa1a0cf0db1b38ffd1118",
+    "tex": "\\xymatrix{\nC_{Z'} X' \\ar[d] \\ar[r] & N' \\ar@{=}[d] \\\\\nC_ZX \\times_Z Z' \\ar[r] & N \\times_Z Z'\n}",
+    "sections": [
+      "chow-gysin-higher-codimension"
+    ],
+    "file": "f11aa1a0cf0db1b38ffd1118.svg",
+    "width": 118.14144,
+    "height": 47.880147,
+    "svg_sha256": "f380b2eb59a89a0654703be863a3cc9b04152c0252dd0f0df0baa7bba6ae9eb6"
+  },
+  "a98cacf63a0468a63083c152": {
+    "key": "a98cacf63a0468a63083c152",
+    "tex": "\\xymatrix{\ng^*\\mathcal{N}^\\vee \\ar[r] \\ar[d] &\n(\\mathcal{N}')^\\vee \\ar[d] \\\\\ng^*\\mathcal{C}_{Z/X} \\ar[r] &\n\\mathcal{C}_{Z'/X'}\n}",
+    "sections": [
+      "chow-gysin-higher-codimension"
+    ],
+    "file": "a98cacf63a0468a63083c152.svg",
+    "width": 88.674552,
+    "height": 51.428268,
+    "svg_sha256": "fed875a58ce2424654e2906fd4b33fd95061603e2cb5a2c78bac5529660d202a"
+  },
+  "e07c805fb84dcc529428e3e5": {
+    "key": "e07c805fb84dcc529428e3e5",
+    "tex": "\\xymatrix{\n(\\mathcal{N}'')^\\vee|_Z \\ar[r] \\ar[d] &\n\\mathcal{N}^\\vee \\ar[r] \\ar[d] &\n(\\mathcal{N}')^\\vee \\ar[d] \\\\\n\\mathcal{C}_{Y/X}|_Z \\ar[r] &\n\\mathcal{C}_{Z/X} \\ar[r] &\n\\mathcal{C}_{Z/Y}\n}",
+    "sections": [
+      "chow-gysin-higher-codimension"
+    ],
+    "file": "e07c805fb84dcc529428e3e5.svg",
+    "width": 143.722832,
+    "height": 51.734188,
+    "svg_sha256": "0c1eed2035824da11a60f936424c5b2335318a1e0a88b789578cf2f9f7b80952"
+  },
+  "d460449ea5c90b4afc613c44": {
+    "key": "d460449ea5c90b4afc613c44",
+    "tex": "\\xymatrix{\nN' \\ar[r]_i &\nN \\ar[r] &\n(C_Y X) \\times_Y Z \\\\\nC_Z Y \\ar[r] \\ar[u] &\nC_Z X \\ar[u]\n}",
+    "sections": [
+      "chow-gysin-higher-codimension"
+    ],
+    "file": "d460449ea5c90b4afc613c44.svg",
+    "width": 160.460202,
+    "height": 48.037319,
+    "svg_sha256": "fa5895fa547d74908fc0fd9d0abfed6099d13c9f812e41846a10a2959db3194f"
+  },
+  "a46d09c5e3113a04290ea6d1": {
+    "key": "a46d09c5e3113a04290ea6d1",
+    "tex": "\\xymatrix{\nN' \\ar[d] \\ar[r]_i & N \\ar[d] \\\\\nZ \\ar[r]^-o & (C_Y X) \\times_Y Z\n}",
+    "sections": [
+      "chow-gysin-higher-codimension"
+    ],
+    "file": "a46d09c5e3113a04290ea6d1.svg",
+    "width": 98.463791,
+    "height": 48.618513,
+    "svg_sha256": "6d9468c7460d797a0a473b65bfda41354d1d35fd25ce4f2288228ea80477517a"
+  },
+  "0e892c9f1e9bbbd8721d80a3": {
+    "key": "0e892c9f1e9bbbd8721d80a3",
+    "tex": "\\xymatrix{\nK \\ar[r] & L \\\\\nk(x_1, \\ldots, x_r) \\ar[u] \\ar[r] & k'(x_1^{1/p}, \\ldots, x_r^{1/p}) \\ar[u]\n}",
+    "sections": [
+      "algebra-separability"
+    ],
+    "file": "0e892c9f1e9bbbd8721d80a3.svg",
+    "width": 158.889139,
+    "height": 49.283949,
+    "svg_sha256": "13cc9aa0ce945b37268bd84fa673d0600b89b17de3f3531178a4f575c211bfef"
+  },
+  "28485fc406cceedd90b71556": {
+    "key": "28485fc406cceedd90b71556",
+    "tex": "\\xymatrix{\nK \\ar[r] & L \\\\\nK_{sep}(\\beta) \\ar[r] \\ar[u] & L_{sep} \\ar[u] \\\\\nK_{sep} \\ar[r] \\ar[u] & L_{sep} \\ar@{=}[u] \\\\\nk(x_1, \\ldots, x_r) \\ar[u] \\ar[r] & k'(x_1^{1/p}, \\ldots, x_r^{1/p}) \\ar[u] \\\\\nk \\ar[r] \\ar[u] & k' \\ar[u]\n}",
+    "sections": [
+      "algebra-separability"
+    ],
+    "file": "28485fc406cceedd90b71556.svg",
+    "width": 158.889139,
+    "height": 166.657107,
+    "svg_sha256": "78a394a429d290fb79a79728c7b895ffe997c723e48673407711f35e1b20f088"
+  },
+  "17558e623a75076fb4a04748": {
+    "key": "17558e623a75076fb4a04748",
+    "tex": "\\xymatrix{\nR_{\\lambda'} \\otimes_{R_\\lambda}\n\\text{Tor}_1^{R_\\lambda}(M_\\lambda, R_\\lambda/I_\\lambda)\n\\ar[d]^{\\text{surjective by Lemma \\ref{lemma-surjective-on-tor-one}}} \\\\\n\\text{Tor}_1^{R_\\lambda}(M_\\lambda, R_{\\lambda'}/I_\\lambda R_{\\lambda'})\n\\ar[d]^{\\text{surjective up to localization by\nLemma \\ref{lemma-surjective-on-tor-one-trivial}}} \\\\\n\\text{Tor}_1^{R_{\\lambda'}}(M_{\\lambda'}, R_{\\lambda'}/I_\\lambda R_{\\lambda'})\n\\ar[d]^{\\text{surjective by Lemma \\ref{lemma-surjective-on-tor-one}}} \\\\\n\\text{Tor}_1^{R_{\\lambda'}}(M_{\\lambda'}, R_{\\lambda'}/I_{\\lambda'}).\n}",
+    "sections": [
+      "algebra-more-flatness-criteria"
+    ],
+    "file": "17558e623a75076fb4a04748.svg",
+    "width": 229.106347,
+    "height": 138.46701,
+    "svg_sha256": "8908c1262375d85e2d6893a3e8b3e2788795052f1cbcfee6922b68be78750acb"
+  },
+  "625b2a681ac3fdcf863c2d28": {
+    "key": "625b2a681ac3fdcf863c2d28",
+    "tex": "\\xymatrix{\n0 \\ar[r] &\n\\colim_\\lambda \\SheafHom_\\mathcal{O}(\\mathcal{F}, \\mathcal{G}_\\lambda)\n\\ar[r] \\ar[d] &\n\\colim_\\lambda \\bigoplus\\nolimits_{i = 1, \\ldots, n} \\mathcal{G}_\\lambda\n\\ar[r] \\ar[d] &\n\\colim_\\lambda \\bigoplus\\nolimits_{j = 1, \\ldots, m} \\mathcal{G}_\\lambda\n\\ar[d] \\\\\n0 \\ar[r] &\n\\SheafHom_\\mathcal{O}(\\mathcal{F}, \\mathcal{G}) \\ar[r] &\n\\bigoplus\\nolimits_{i = 1, \\ldots, n} \\mathcal{G} \\ar[r] &\n\\bigoplus\\nolimits_{j = 1, \\ldots, m} \\mathcal{G}\n}",
+    "sections": [
+      "sites-modules-internal-hom"
+    ],
+    "file": "625b2a681ac3fdcf863c2d28.svg",
+    "width": 354.238781,
+    "height": 53.588357,
+    "svg_sha256": "7a4bf51e03e42a00575fe4f49dcd202de04188dfd866b952a68f980b96b1f5f2"
+  },
+  "32520219f5b72c6d9193f306": {
+    "key": "32520219f5b72c6d9193f306",
+    "tex": "\\xymatrix{\n(\\Sh(\\mathcal{C}/V), \\mathcal{O}_V)\n\\ar[rd]_{(j_V, j_V^\\sharp)} \\ar[rr]_{(j, j^\\sharp)} & &\n(\\Sh(\\mathcal{C}/U), \\mathcal{O}_U)\n\\ar[ld]^{(j_U, j_U^\\sharp)} \\\\\n& (\\Sh(\\mathcal{C}), \\mathcal{O}) &\n}",
+    "sections": [
+      "sites-modules-localize"
+    ],
+    "file": "32520219f5b72c6d9193f306.svg",
+    "width": 232.962185,
+    "height": 49.8132,
+    "svg_sha256": "7e3965d7748447e65d156da2e6dd2811c2ca2adb4169ae032df124a6f46db99b"
+  },
+  "325224602e237886630b989b": {
+    "key": "325224602e237886630b989b",
+    "tex": "\\xymatrix{\n\\textit{Mod}(\\mathcal{O}_U) \\ar[r]_{j_{U!}} \\ar[d]_{forget} &\n\\textit{Mod}(\\mathcal{O}_\\mathcal{C}) \\ar[d]^{forget} \\\\\n\\textit{Ab}(\\mathcal{C}/U) \\ar[r]^{j^{Ab}_{U!}} &\n\\textit{Ab}(\\mathcal{C})\n}",
+    "sections": [
+      "sites-modules-localize"
+    ],
+    "file": "325224602e237886630b989b.svg",
+    "width": 122.085445,
+    "height": 49.8132,
+    "svg_sha256": "87ee89a2cdea5272a1a986eac99bb07f7c4f57f6f36fe3575a362bba43d5f1d4"
+  },
+  "5073f2665fbe2d67aeea1bea": {
+    "key": "5073f2665fbe2d67aeea1bea",
+    "tex": "\\xymatrix{\n\\textit{Mod}(\\mathcal{O}_U) \\ar[r]_{j_{U!}} \\ar[d]_{forget} &\n\\textit{Mod}(\\mathcal{O}) \\\\\n\\textit{PMod}(\\mathcal{O}_U) \\ar[r]^{j_{U!}} &\n\\textit{PMod}(\\mathcal{O}) \\ar[u]_{(\\ )^\\#}\n}",
+    "sections": [
+      "sites-modules-localize"
+    ],
+    "file": "5073f2665fbe2d67aeea1bea.svg",
+    "width": 119.993803,
+    "height": 49.8132,
+    "svg_sha256": "329983bdc7c8e959f4f2fd2c8ff859340978e597a3ecb3f396fbb60541e19f4a"
+  },
+  "e2e3ced3b957c585c37719cd": {
+    "key": "e2e3ced3b957c585c37719cd",
+    "tex": "\\xymatrix{\n\\mathcal{F} \\times_\\mathcal{G} \\mathcal{F}\n\\ar@<1ex>[r] \\ar@<-1ex>[r]\n&\n\\mathcal{F} \\ar[r]\n&\n\\mathcal{G}}",
+    "sections": [
+      "sites-sheaves-injective"
+    ],
+    "file": "e2e3ced3b957c585c37719cd.svg",
+    "width": 107.914143,
+    "height": 12.065837,
+    "svg_sha256": "42a0ecc184f5bf709d13a79fb45281b1665f500124bbc7dae143eff6ae19761c"
+  },
+  "879e5d8919058eba8b762723": {
+    "key": "879e5d8919058eba8b762723",
+    "tex": "\\xymatrix{\n& U_i \\ar[rr] & & V_{\\alpha(i)} \\\\\nU_i \\times_U U_j \\ar[rr] \\ar[ur] \\ar[dr] & &\nV_{\\alpha(i)} \\times_V V_{\\alpha(j)} \\ar[ur] \\ar[dr] & \\\\\n& U_j \\ar[rr] & & V_{\\alpha(j)}\n}.",
+    "sections": [
+      "sites-sheafification"
+    ],
+    "file": "879e5d8919058eba8b762723.svg",
+    "width": 227.326922,
+    "height": 90.815784,
+    "svg_sha256": "175114c2a4859266bb1da9bfa0497cc9145794caea949b109acdc3d15867fd94"
+  },
+  "31a8b074a41c87c23f883055": {
+    "key": "31a8b074a41c87c23f883055",
+    "tex": "\\xymatrix{\n\\mathcal{F} \\ar[r] \\ar[d]\n&\n\\mathcal{F}^{+} \\ar[d]\n\\\\\n\\mathcal{G} \\ar[r]\n&\n\\mathcal{G}^{+}\n}",
+    "sections": [
+      "sites-sheafification"
+    ],
+    "file": "31a8b074a41c87c23f883055.svg",
+    "width": 51.639402,
+    "height": 47.422452,
+    "svg_sha256": "f6018fa79203d536fa023837dac0596e3cac3b39aa15a42d3696a6ac1f10e045"
+  },
+  "d19a4d249ab51468bbcc0709": {
+    "key": "d19a4d249ab51468bbcc0709",
+    "tex": "\\xymatrix{\n&\nV_{\\alpha(i)} \\ar[dr]\n\\\\\nU_i \\ar[ur]^{f_i} \\ar[dr]_{g_i}\n&\n&\nV\n\\\\\n&\nV_{\\beta(i)} \\ar[ur]\n}",
+    "sections": [
+      "sites-sheafification"
+    ],
+    "file": "d19a4d249ab51468bbcc0709.svg",
+    "width": 97.423096,
+    "height": 88.767861,
+    "svg_sha256": "02f60c9d309b2519b4080a7ec44d32dcd74def4ae429302f6d8ab518845a2cb0"
+  },
+  "18c119548805dad24d917f16": {
+    "key": "18c119548805dad24d917f16",
+    "tex": "\\xymatrix{\n&\nV_{\\alpha(i)}\n\\\\\nU_i \\ar[r]^-\\varphi \\ar[ur]^{f_i} \\ar[dr]_{g_i}\n&\nV_{\\alpha(i)} \\times_V V_{\\beta(i)} \\ar[u]_{\\text{pr}_1} \\ar[d]^{\\text{pr}_2}\n\\\\\n&\nV_{\\beta(i)}.\n}",
+    "sections": [
+      "sites-sheafification"
+    ],
+    "file": "18c119548805dad24d917f16.svg",
+    "width": 97.889778,
+    "height": 90.815784,
+    "svg_sha256": "20bf7ea9c5eed8e1230190e57990a5a9db4eea8bc67fb0cc103ac630c4dc00d5"
+  },
+  "274ebbc59bded10f044591eb": {
+    "key": "274ebbc59bded10f044591eb",
+    "tex": "\\xymatrix{\n\\mathcal{F} \\ar[r] \\ar[d]\n&\n\\mathcal{F}^{+} \\ar[r] \\ar[d]\n&\n\\mathcal{F}^{++} \\ar[d]\n\\\\\n\\mathcal{G} \\ar[r]\n&\n\\mathcal{G}^{+} \\ar[r]\n&\n\\mathcal{G}^{++}\n}",
+    "sections": [
+      "sites-sheafification"
+    ],
+    "file": "274ebbc59bded10f044591eb.svg",
+    "width": 102.407368,
+    "height": 47.422452,
+    "svg_sha256": "3167d59a8765737829658a4e6fac2ead06f70ecf6525e8481c22837d3daee1ae"
+  },
+  "07bbe89854d5054da060e0fa": {
+    "key": "07bbe89854d5054da060e0fa",
+    "tex": "\\xymatrix{\nF \\ar[r]_\\psi & K \\\\\nA \\ar[u] \\ar[ru]_\\varphi\n}",
+    "sections": [
+      "fields-examples"
+    ],
+    "file": "07bbe89854d5054da060e0fa.svg",
+    "width": 46.156372,
+    "height": 43.500187,
+    "svg_sha256": "117dc845ffaf305cc18fbb952669dccb0f7d75112110729d6844cdd85dee0e4c"
+  },
+  "c9fcf49f56f16b4c42115a85": {
+    "key": "c9fcf49f56f16b4c42115a85",
+    "tex": "\\xymatrix{\nA \\ar[r]_f \\ar[d]_g & B \\ar[d]^{g'} \\\\\nC \\ar[r]^{f'} & C \\amalg_A B\n}",
+    "sections": [
+      "homology-filtrations"
+    ],
+    "file": "c9fcf49f56f16b4c42115a85.svg",
+    "width": 74.384511,
+    "height": 46.070518,
+    "svg_sha256": "085e8f59f215928e954d07c62c9abab73e5652faed66be0004c3edd82130cac8"
+  },
+  "0f452df756d21b4189954e47": {
+    "key": "0f452df756d21b4189954e47",
+    "tex": "\\xymatrix{\nB \\times_A C \\ar[r]_{g'} \\ar[d]_{f'} & B \\ar[d]^f \\\\\nC \\ar[r]^g & A\n}",
+    "sections": [
+      "homology-filtrations"
+    ],
+    "file": "0f452df756d21b4189954e47.svg",
+    "width": 75.254525,
+    "height": 44.685726,
+    "svg_sha256": "522488055cfa51db497736db84420762f88c71d68bbe1d2531b7e6d6095f6600"
+  },
+  "0eb18601c37a1308793d4c71": {
+    "key": "0eb18601c37a1308793d4c71",
+    "tex": "\\xymatrix{\n0 \\ar[r] &\nF^{p + 1}A \\ar[r] \\ar[d]^f &\nF^pA \\ar[r] \\ar[d]^f &\n\\text{gr}^p(A) \\ar[r] \\ar[d]^{\\text{gr}^p(f)} &\n0 \\\\\n0 \\ar[r] &\nF^{p + 1}B \\ar[r] &\nF^pB \\ar[r] &\n\\text{gr}^p(B) \\ar[r] &\n0\n}",
+    "sections": [
+      "homology-filtrations"
+    ],
+    "file": "0eb18601c37a1308793d4c71.svg",
+    "width": 209.012081,
+    "height": 51.224843,
+    "svg_sha256": "16448334870dfda2eb27f0b7fb19b196aa16ffa970721cbe5c33c29a1b57028d"
+  },
+  "81a0a5603045e32518490b87": {
+    "key": "81a0a5603045e32518490b87",
+    "tex": "\\xymatrix{\n0 \\ar[r] & F^nA \\ar[r] \\ar[d] & A \\ar[r] \\ar[d] & A' \\ar[r] \\ar[d] & 0 \\\\\n0 \\ar[r] & F^nB \\ar[r] \\ar[d] & B \\ar[r] \\ar[d] & B' \\ar[r] \\ar[d] & 0 \\\\\n0 \\ar[r] & F^nC \\ar[r] & C \\ar[r] & C' \\ar[r] & 0\n}",
+    "sections": [
+      "homology-filtrations"
+    ],
+    "file": "81a0a5603045e32518490b87.svg",
+    "width": 168.90534,
+    "height": 82.488235,
+    "svg_sha256": "2bd49aea09ea8ad42decff1365fc6df47ad0bc049758779197924e44c52d1822"
+  },
+  "8189024dfa0516a6939a7359": {
+    "key": "8189024dfa0516a6939a7359",
+    "tex": "\\xymatrix{\nE \\ar[rr] & & E' \\\\\n& k \\ar[ru] \\ar[lu] &\n}",
+    "sections": [
+      "fields-extensions"
+    ],
+    "file": "8189024dfa0516a6939a7359.svg",
+    "width": 82.839832,
+    "height": 44.715364,
+    "svg_sha256": "b36c29ce18429ab01cd43bba9560bc2b453627394a2d04e64face137efd53ce8"
   }
 }

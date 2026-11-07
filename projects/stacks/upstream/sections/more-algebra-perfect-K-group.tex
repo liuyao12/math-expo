@@ -1,0 +1,145 @@
+\section{Perfect complexes and K-groups}
+\label{section-perfect-K-group}
+
+\noindent
+We quickly show that the zeroth K-group of the derived category of
+perfect complexes of a ring $R$ is the same as $K_0(R)$ defined in
+Algebra, Section \ref{algebra-section-K-groups}.
+
+\begin{lemma}
+\label{lemma-perfect-to-K-group}
+Let $R$ be a ring. There is a map
+$$
+c : \text{perfect complexes over }R \longrightarrow K_0(R)
+$$
+with the following properties
+\begin{enumerate}
+\item $c(K[n]) = (-1)^nc(K)$ for a perfect complex $K$,
+\item if $K \to L \to M \to K[1]$ is a distinguished triangle of
+perfect complexes, then $c(L) = c(K) + c(M)$,
+\item if $K$ is represented by a finite complex $M^\bullet$
+consisting of finite projective modules, then
+$c(K) = \sum (-1)^i[M_i]$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let $K$ be a perfect object of $D(R)$. By definition we can represent
+$K$ by a finite complex $M^\bullet$ of finite projective $R$-modules.
+We define $c$ by setting
+$$
+c(K) = \sum (-1)^n[M^n]
+$$
+in $K_0(R)$. Of course we have to show that this is well defined,
+but once it is well defined, then (1) and (3) are immediate.
+For the moment we view the map $c$ as defined on complexes of
+finite projective $R$-modules.
+
+\medskip\noindent
+Suppose that $L^\bullet \to M^\bullet$ is a surjective map
+of finite complexes of finite projective $R$-modules.
+Let $K^\bullet$ be the kernel. Then we obtain short exact
+sequences of $R$-modules
+$$
+0 \to K^n \to L^n \to M^n \to 0
+$$
+which are split because $M^n$ is projective. Hence $K^\bullet$
+is also a finite complex of finite projective $R$-modules and
+$c(L^\bullet) = c(K^\bullet) + c(M^\bullet)$ in $K_0(R)$.
+
+\medskip\noindent
+Suppose given finite complex $M^\bullet$ of finite projective $R$-modules
+which is acyclic. Say $M^n = 0$ for $n \not \in [a, b]$. Then we
+can break $M^\bullet$ into short exact sequences
+$$
+\begin{matrix}
+0 \to M^a \to M^{a + 1} \to N^{a + 1} \to 0, \\
+0 \to N^{a + 1} \to M^{a + 2} \to N^{a + 3} \to 0, \\
+\ldots \\
+0 \to N^{b - 3} \to M^{b - 2} \to N^{b - 2} \to 0, \\
+0 \to N^{b - 2} \to M^{b - 1} \to M^b \to 0
+\end{matrix}
+$$
+Arguing by descending induction we see that $N^{b - 2}, \ldots, N^{a + 1}$
+are finite projective $R$-modules, the sequences are split exact, and
+$$
+c(M^\bullet) = \sum (-1)[M^n] = \sum (-1)^n([N^{n - 1}] + [N^n]) = 0
+$$
+Thus our construction gives zero on acyclic complexes.
+
+\medskip\noindent
+It follows formally from the results of the preceding two
+paragraphs that $c$ is well defined and satisfies (2). Namely,
+suppose the finite complexes $M^\bullet$ and $L^\bullet$ of
+finite projective $R$-modules represent the same object
+of $D(R)$. Then we can represent the isomorphism by a map
+$f : M^\bullet \to L^\bullet$ of complexes, see
+Derived Categories, Lemma \ref{derived-lemma-morphisms-from-projective-complex}.
+We obtain a short exact sequence of complexes
+$$
+0 \to L^\bullet \to C(f)^\bullet \to K^\bullet[1] \to 0
+$$
+see Derived Categories, Definition \ref{derived-definition-cone}.
+Since $f$ is a quasi-isomorphism, the cone $C(f)^\bullet$ is
+acyclic (this follows for example from the discussion in
+Derived Categories, Section \ref{derived-section-canonical-delta-functor}).
+Hence
+$$
+0 = c(C(f)^\bullet) = c(L^\bullet) + c(K^\bullet[1]) =
+c(L^\bullet) - c(K^\bullet)
+$$
+as desired. We omit the proof of (2) which is similar.
+\end{proof}
+
+\noindent
+The following lemma shows that $K_0(R)$ is equal to
+$K_0(D_{perf}(R))$.
+
+\begin{lemma}
+\label{lemma-perfect-to-K-group-universal}
+Let $R$ be a ring. Let $D_{perf}(R)$ be the derived category of
+perfect objects, see Lemma \ref{lemma-perfect-ring-classical-generator}.
+The map $c$ of Lemma \ref{lemma-perfect-to-K-group} gives an isomorphism
+$K_0(D_{perf}(R)) = K_0(R)$.
+\end{lemma}
+
+\begin{proof}
+It follows from the definition of $K_0(D_{perf}(R))$
+(Derived Categories, Definition \ref{derived-definition-K-zero})
+that $c$ induces a homomorphism $K_0(D_{perf}(R)) \to K_0(R)$.
+
+\medskip\noindent
+Given a finite projective module $M$ over $R$ let us denote
+$M[0]$ the perfect complex over $R$ which has $M$ sitting in degree $0$
+and zero in other degrees. Given a short exact sequence
+$0 \to M \to M' \to M'' \to 0$ of finite projective modules
+we obtain a distinguished triangle $M[0] \to M'[0] \to M''[0] \to M[1]$, see
+Derived Categories, Section \ref{derived-section-canonical-delta-functor}.
+This shows that we obtain a map $K_0(R) \to K_0(D_{perf}(R))$
+by sending $[M]$ to $[M[0]]$ with apologies for the horrendous notation.
+
+\medskip\noindent
+It is clear that $K_0(R) \to K_0(D_{perf}(R)) \to K_0(R)$ is the identity.
+On the other hand, if $M^\bullet$ is a bounded complex of finite projective
+$R$-modules, then the the existence of the distinguished triangles
+of ``stupid truncations''
+(see Homology, Section \ref{homology-section-truncations})
+$$
+\sigma_{\geq n}M^\bullet \to \sigma_{\geq n - 1}M^\bullet \to
+M^{n - 1}[-n + 1] \to (\sigma_{\geq n}M^\bullet)[1]
+$$
+and induction show that
+$$
+[M^\bullet] = \sum (-1)^i[M^i[0]]
+$$
+in $K_0(D_{perf}(R))$ (with again apologies for the notation).
+Hence the map $K_0(R) \to K_0(D_{perf}(R))$ is surjective which
+finishes the proof.
+\end{proof}
+
+
+
+
+
+
+

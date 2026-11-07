@@ -1,0 +1,277 @@
+\section{Valuative criterion for universal closedness}
+\label{section-valuative-criterion-universal-closedness}
+
+\noindent
+In Topology, Section \ref{topology-section-proper} there is a
+discussion of proper maps as closed maps of topological spaces
+all of whose fibres are quasi-compact, or as maps such that
+all base changes are closed maps. Here is the corresponding notion
+in algebraic geometry.
+
+\begin{definition}
+\label{definition-universally-closed}
+A morphism of schemes $f : X \to S$ is said to be
+{\it universally closed} if every base change
+$f' : X_{S'} \to S'$ is closed.
+\end{definition}
+
+\noindent
+In fact the adjective ``universally'' is often used in this way.
+In other words, given a property $\mathcal{P}$ of morphisms
+then we say that ``$X \to S$ is universally $\mathcal{P}$''
+if and only if every base change $X_{S'} \to S'$ has $\mathcal{P}$.
+
+\medskip\noindent
+Please take a look at Morphisms, Section \ref{morphisms-section-proper} for a
+more detailed discussion of the properties of universally closed morphisms.
+In this section we restrict the discussion to the relationship between
+universal closed morphisms and morphisms satisfying the
+existence part of the valuative criterion.
+
+\begin{lemma}
+\label{lemma-specializations-lift}
+Let $f : X \to S$ be a morphism of schemes.
+\begin{enumerate}
+\item If $f$ is universally closed then specializations lift
+along any base change of $f$, see
+Topology, Definition \ref{topology-definition-lift-specializations}.
+\item If $f$ is quasi-compact and specializations lift
+along any base change of $f$, then $f$ is universally closed.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Part (1) is a direct consequence of
+Topology, Lemma \ref{topology-lemma-closed-open-map-specialization}.
+Part (2) follows from
+Lemmas \ref{lemma-quasi-compact-closed} and
+\ref{lemma-quasi-compact-preserved-base-change}.
+\end{proof}
+
+\begin{definition}
+\label{definition-valuative-criterion}
+Let $f : X \to S$ be a morphism of schemes. We say $f$
+{\it satisfies the existence part of the valuative criterion}
+if given any commutative solid diagram
+$$
+\xymatrix{
+\Spec(K) \ar[r] \ar[d] & X \ar[d] \\
+\Spec(A) \ar[r] \ar@{-->}[ru] & S
+}
+$$
+where $A$ is a valuation ring with field of fractions $K$, the
+dotted arrow exists. We say $f$ {\it satisfies the uniqueness
+part of the valuative criterion} if there is at most one
+dotted arrow given any diagram as above (without requiring
+existence of course).
+\end{definition}
+
+\noindent
+A {\it valuation ring} is a local domain maximal among the relation
+of domination in its fraction field, see
+Algebra, Definition \ref{algebra-definition-valuation-ring}.
+Hence the spectrum of a valuation ring has a unique generic point
+$\eta$ and a unique closed point $0$, and of course we have the
+specialization $\eta \leadsto 0$.
+The significance of valuation rings is that any specialization of
+points in any scheme is the image of $\eta \leadsto 0$
+under some morphism from the spectrum of some valuation ring.
+Here is the precise result.
+
+\begin{lemma}
+\label{lemma-points-specialize}
+\begin{slogan}
+Specializations are witnessed by valuation rings.
+\end{slogan}
+Let $S$ be a scheme. Let $s' \leadsto s$ be a specialization of points of $S$.
+Then
+\begin{enumerate}
+\item there exists a valuation ring $A$ and a morphism
+$f : \Spec(A) \to S$ such that the generic point $\eta$ of
+$\Spec(A)$ maps to $s'$ and the special point maps to $s$, and
+\item given a field extension $K/\kappa(s')$
+we may arrange it so that the extension
+$\kappa(\eta)/\kappa(s')$ induced by $f$
+is isomorphic to the given extension.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let $s' \leadsto s$ be a specialization in $S$, and let
+$K/\kappa(s')$ be an extension of fields. By
+Lemma \ref{lemma-specialize-points}
+and the discussion following
+Lemma \ref{lemma-characterize-points}
+this leads to ring maps $\mathcal{O}_{S, s} \to \kappa(s') \to K$.
+Let $A \subset K$ be any valuation ring whose field of fractions is
+$K$ and which dominates the image of $\mathcal{O}_{S, s} \to K$, see
+Algebra, Lemma \ref{algebra-lemma-dominate}.
+The ring map $\mathcal{O}_{S, s} \to A$ induces the morphism
+$f : \Spec(A) \to S$, see
+Lemma \ref{lemma-morphism-from-spec-local-ring}.
+This morphism has all the desired properties by construction.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-lift-specializations-valuative}
+Let $f : X \to S$ be a morphism of schemes.
+The following are equivalent
+\begin{enumerate}
+\item Specializations lift along any base change of $f$
+\item The morphism $f$ satisfies the existence part of the
+valuative criterion.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Assume (1) holds. Let a solid diagram as in
+Definition \ref{definition-valuative-criterion} be given.
+In order to find the dotted arrow we may replace $X \to S$
+by $X_{\Spec(A)} \to \Spec(A)$ since after all
+the assumption is stable under base change.
+Thus we may assume $S = \Spec(A)$.
+Let $x' \in X$ be the image of $\Spec(K) \to X$, so
+that we have $\kappa(x') \subset K$, see
+Lemma \ref{lemma-characterize-points}.
+By assumption there exists a specialization $x' \leadsto x$
+in $X$ such that $x$ maps to the closed point of $S = \Spec(A)$.
+We get a local ring map $A \to \mathcal{O}_{X, x}$ and a ring
+map $\mathcal{O}_{X, x} \to \kappa(x')$, see
+Lemma \ref{lemma-specialize-points} and the discussion following
+Lemma \ref{lemma-characterize-points}. The composition
+$A \to \mathcal{O}_{X, x} \to \kappa(x') \to K$ is the
+given injection $A \to K$. Since $A \to \mathcal{O}_{X, x}$
+is local, the image of $\mathcal{O}_{X, x} \to K$
+dominates $A$ and hence is equal to $A$, by
+Algebra, Definition \ref{algebra-definition-valuation-ring}.
+Thus we obtain a ring map $\mathcal{O}_{X, x} \to A$ and
+hence a morphism $\Spec(A) \to X$
+(see Lemma \ref{lemma-morphism-from-spec-local-ring} and
+discussion following it). This proves (2).
+
+\medskip\noindent
+Conversely, assume (2) holds. It is immediate that
+the existence part of the valuative criterion holds for
+any base change $X_{S'} \to S'$ of $f$ by considering
+the following commutative diagram
+$$
+\xymatrix{
+\Spec(K) \ar[r] \ar[d] & X_{S'} \ar[r] \ar[d] & X \ar[d] \\
+\Spec(A) \ar[r] \ar@{-->}[ru] \ar@{-->}[rru] & S' \ar[r] & S
+}
+$$
+Namely, the more horizontal dotted arrow will lead to the
+other one by definition of the fibre product. OK, so it clearly
+suffices to show that specializations lift along $f$.
+Let $s' \leadsto s$ be a specialization in $S$, and let
+$x' \in X$ be a point lying over $s'$. Apply
+Lemma \ref{lemma-points-specialize}
+to $s' \leadsto s$ and the extension of fields
+$K = \kappa(x')/\kappa(s')$.
+We get a commutative diagram
+$$
+\xymatrix{
+\Spec(K) \ar[rr] \ar[d] & & X \ar[d] \\
+\Spec(A) \ar[r] \ar@{-->}[rru] &
+\Spec(\mathcal{O}_{S, s}) \ar[r] & S
+}
+$$
+and by condition (2) we get the dotted arrow.
+The image $x$ of the closed point of $\Spec(A)$
+in $X$ will be a solution to our problem, i.e.,
+$x$ is a specialization of $x'$ and maps to $s$.
+\end{proof}
+
+\begin{proposition}[Valuative criterion of universal closedness]
+\label{proposition-characterize-universally-closed}
+Let $f$ be a quasi-compact morphism of schemes.
+Then $f$ is universally closed if and only if $f$
+satisfies the existence part of the valuative criterion.
+\end{proposition}
+
+\begin{proof}
+This is a formal consequence of
+Lemmas \ref{lemma-specializations-lift} and
+\ref{lemma-lift-specializations-valuative} above.
+\end{proof}
+
+\begin{example}
+\label{example-projective-line-universally-closed}
+Let $k$ be a field. Consider the structure morphism
+$p : \mathbf{P}^1_k \to \Spec(k)$ of the projective
+line over $k$, see Example \ref{example-projective-line}.
+Let us use the valuative criterion above to prove that $p$
+is universally closed.
+By construction $\mathbf{P}^1_k$ is covered by two
+affine opens and hence $p$ is quasi-compact.
+Let a commutative diagram
+$$
+\xymatrix{
+\Spec(K) \ar[r]_\xi \ar[d] & \mathbf{P}^1_k \ar[d] \\
+\Spec(A) \ar[r]^\varphi & \Spec(k)
+}
+$$
+be given, where $A$ is a valuation ring and $K$ is its field
+of fractions. Recall that $\mathbf{P}^1_k$ is gotten by glueing
+$\Spec(k[x])$ to $\Spec(k[y])$ by glueing
+$D(x)$ to $D(y)$ via $x = y^{-1}$ (or more symmetrically $xy = 1$).
+To show there is a morphism $\Spec(A) \to \mathbf{P}^1_k$
+fitting diagonally into the diagram above we may assume that $\xi$
+maps into the open $\Spec(k[x])$ (by symmetry). This gives the following
+commutative diagram of rings
+$$
+\xymatrix{
+K & k[x] \ar[l]^{\xi^\sharp} \\
+A \ar[u] & k \ar[u] \ar[l]_{\varphi^\sharp}
+}
+$$
+By Algebra, Lemma \ref{algebra-lemma-valuation-ring-x-or-x-inverse}
+we see that either
+$\xi^\sharp(x) \in A$ or $\xi^\sharp(x)^{-1} \in A$.
+In the first case we get a ring map
+$$
+k[x] \to A,
+\ \lambda \mapsto \varphi^\sharp(\lambda),
+\  x \mapsto \xi^\sharp(x)
+$$
+fitting into the diagram of rings above, and we win.
+In the second case we see that we get a ring map
+$$
+k[y] \to A,
+\ \lambda \mapsto \varphi^\sharp(\lambda),
+\ y \mapsto \xi^\sharp(x)^{-1}.
+$$
+This gives a morphism
+$\Spec(A) \to \Spec(k[y]) \to \mathbf{P}^1_k$
+which fits diagonally into the initial commutative diagram of this example
+(check omitted).
+\end{example}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

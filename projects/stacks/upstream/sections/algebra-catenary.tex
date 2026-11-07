@@ -1,0 +1,223 @@
+\section{Catenary rings}
+\label{section-catenary}
+
+\noindent
+Compare with Topology, Section \ref{topology-section-catenary-spaces}.
+
+\begin{definition}
+\label{definition-catenary}
+A ring $R$ is said to be {\it catenary} if for any pair of prime ideals
+$\mathfrak p \subset \mathfrak q$, there exists an integer bounding the
+lengths of all finite chains of prime ideals
+$\mathfrak p = \mathfrak p_0 \subset \mathfrak p_1 \subset \ldots \subset
+\mathfrak p_e = \mathfrak q$ and all maximal such chains have the same length.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-catenary}
+A ring $R$ is catenary if and only if the topological space
+$\Spec(R)$ is catenary (see
+Topology, Definition \ref{topology-definition-catenary}).
+\end{lemma}
+
+\begin{proof}
+Immediate from the definition and the characterization of
+irreducible closed subsets in Lemma \ref{lemma-irreducible}.
+\end{proof}
+
+\noindent
+In general it is not the case that a finitely generated
+$R$-algebra is catenary if $R$ is. Thus we make the following
+definition.
+
+\begin{definition}
+\label{definition-universally-catenary}
+A Noetherian ring $R$ is said to be {\it universally catenary}
+if every $R$-algebra of finite type is catenary.
+\end{definition}
+
+\noindent
+We restrict to Noetherian rings as it is not clear
+this definition is the right one for non-Noetherian rings.
+By Lemma \ref{lemma-quotient-catenary} to check a Noetherian
+ring $R$ is universally catenary, it suffices to check
+each polynomial algebra $R[x_1, \ldots, x_n]$ is catenary.
+
+\begin{lemma}
+\label{lemma-localization-catenary}
+Any localization of a catenary ring is catenary.
+Any localization of a Noetherian universally catenary
+ring is universally catenary.
+\end{lemma}
+
+\begin{proof}
+Let $A$ be a ring and let $S \subset A$ be a multiplicative subset.
+The description of $\Spec(S^{-1}A)$ in Lemma \ref{lemma-spec-localization}
+shows that if $A$ is catenary, then so is $S^{-1}A$. If $S^{-1}A \to C$
+is of finite type, then $C = S^{-1}B$ for some finite type ring map
+$A \to B$. Hence if $A$ is Noetherian and universally catenary, then
+$B$ is catenary and we see that $C$ is catenary too. This proves the lemma.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-universally-catenary}
+Let $A$ be a Noetherian universally catenary ring.
+Any $A$-algebra essentially of finite type over $A$
+is universally catenary.
+\end{lemma}
+
+\begin{proof}
+If $B$ is a finite type $A$-algebra, then $B$ is Noetherian
+by Lemma \ref{lemma-Noetherian-permanence}. Any finite type
+$B$-algebra is a finite type $A$-algebra and hence catenary
+by our assumption that $A$ is universally catenary. Thus $B$
+is universally catenary. Any localization of $B$ is universally
+catenary by Lemma \ref{lemma-localization-catenary} and this
+finishes the proof.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-catenary-check-local}
+Let $R$ be a ring. The following are equivalent
+\begin{enumerate}
+\item $R$ is catenary,
+\item $R_\mathfrak p$ is catenary for all prime ideals $\mathfrak p$,
+\item $R_\mathfrak m$ is catenary for all maximal ideals $\mathfrak m$.
+\end{enumerate}
+Assume $R$ is Noetherian. The following are equivalent
+\begin{enumerate}
+\item $R$ is universally catenary,
+\item $R_\mathfrak p$ is universally catenary for all prime ideals
+$\mathfrak p$,
+\item $R_\mathfrak m$ is universally catenary for all maximal ideals
+$\mathfrak m$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+The implication (1) $\Rightarrow$ (2) follows from
+Lemma \ref{lemma-localization-catenary} in both cases.
+The implication (2) $\Rightarrow$ (3) is immediate in both cases.
+Assume $R_\mathfrak m$ is catenary for all maximal ideals
+$\mathfrak m$ of $R$. If $\mathfrak p \subset \mathfrak q$ are primes
+in $R$, then choose a maximal ideal $\mathfrak q \subset \mathfrak m$.
+Chains of primes ideals between $\mathfrak p$ and $\mathfrak q$ are
+in 1-to-1 correspondence with chains of prime ideals between
+$\mathfrak pR_\mathfrak m$ and $\mathfrak qR_\mathfrak m$ hence we
+see $R$ is catenary. Assume $R$ is Noetherian and $R_\mathfrak m$ is
+universally catenary for all maximal ideals $\mathfrak m$ of $R$.
+Let $R \to S$ be a finite type ring map. Let $\mathfrak q$ be a prime
+ideal of $S$ lying over the prime $\mathfrak p \subset R$.
+Choose a maximal ideal $\mathfrak p \subset \mathfrak m$ in $R$.
+Then $R_\mathfrak p$ is a localization of $R_\mathfrak m$ hence
+universally catenary by Lemma \ref{lemma-localization-catenary}.
+Then $S_\mathfrak p$ is catenary as a finite type ring over $R_\mathfrak p$.
+Hence $S_\mathfrak q$ is catenary as a localization. Thus $S$ is catenary
+by the first case treated above.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-quotient-catenary}
+Any quotient of a catenary ring is catenary.
+Any quotient of a Noetherian universally catenary ring is
+universally catenary.
+\end{lemma}
+
+\begin{proof}
+Let $A$ be a ring and let $I \subset A$ be an ideal.
+The description of $\Spec(A/I)$ in Lemma \ref{lemma-spec-closed}
+shows that if $A$ is catenary, then so is $A/I$.
+The second statement is a special case of
+Lemma \ref{lemma-universally-catenary}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-catenary-check-irreducible}
+Let $R$ be a Noetherian ring.
+\begin{enumerate}
+\item $R$ is catenary if and only if $R/\mathfrak p$ is catenary
+for every minimal prime $\mathfrak p$.
+\item $R$ is universally catenary if and only if $R/\mathfrak p$ is
+universally catenary for every minimal prime $\mathfrak p$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+If $\mathfrak a \subset \mathfrak b$ is an inclusion of primes of $R$,
+then we can find a minimal prime $\mathfrak p \subset \mathfrak a$
+and the first assertion is clear. We omit the proof of the second.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-CM-ring-catenary}
+A Noetherian Cohen-Macaulay ring is universally catenary.
+More generally, if $R$ is a Noetherian ring and $M$ is
+a Cohen-Macaulay $R$-module with $\text{Supp}(M) = \Spec(R)$,
+then $R$ is universally catenary.
+\end{lemma}
+
+\begin{proof}
+Since a polynomial algebra over $R$ is Cohen-Macaulay,
+by Lemma \ref{lemma-CM-polynomial-algebra},
+it suffices to show that a Cohen-Macaulay ring is
+catenary.
+Let $R$ be Cohen-Macaulay and $\mathfrak p \subset \mathfrak q$
+primes of $R$. By definition $R_{\mathfrak q}$ and
+$R_{\mathfrak p}$ are Cohen-Macaulay.
+Take a maximal chain of primes
+$\mathfrak p = \mathfrak p_0 \subset \mathfrak p_1 \subset
+\ldots \subset \mathfrak p_n = \mathfrak q$.
+Next choose a maximal chain of primes
+$\mathfrak q_0 \subset \mathfrak q_1 \subset \ldots \subset
+\mathfrak q_m = \mathfrak p$. By
+Lemma \ref{lemma-maximal-chain-CM}
+we have $n + m = \dim(R_{\mathfrak q})$. And we have
+$m = \dim(R_{\mathfrak p})$ by the same lemma.
+Hence $n = \dim(R_{\mathfrak q}) - \dim(R_{\mathfrak p})$
+is independent of choices.
+
+\medskip\noindent
+To prove the more general statement, argue exactly as above but
+using Lemmas \ref{lemma-maximal-CM-polynomial-algebra}
+and \ref{lemma-maximal-chain-maximal-CM}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-catenary-Noetherian-local}
+Let $(A, \mathfrak m)$ be a Noetherian local ring. The following are equivalent
+\begin{enumerate}
+\item $A$ is catenary, and
+\item $\mathfrak p \mapsto \dim(A/\mathfrak p)$ is a dimension function
+on $\Spec(A)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+If $A$ is catenary, then $\Spec(A)$ has a dimension function $\delta$ by
+Topology, Lemma \ref{topology-lemma-locally-dimension-function}
+(and Lemma \ref{lemma-catenary}). We may assume $\delta(\mathfrak m) = 0$.
+Then we see that
+$$
+\delta(\mathfrak p) = \text{codim}(V(\mathfrak m), V(\mathfrak p)) =
+\dim(A/\mathfrak p)
+$$
+by Topology, Lemma \ref{topology-lemma-dimension-function-catenary}.
+In this way we see that (1) implies (2). The reverse implication
+follows from
+Topology, Lemma \ref{topology-lemma-dimension-function-catenary}
+as well.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

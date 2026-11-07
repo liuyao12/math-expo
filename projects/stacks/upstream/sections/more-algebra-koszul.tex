@@ -1,0 +1,353 @@
+\section{The Koszul complex}
+\label{section-koszul}
+
+\noindent
+We define the Koszul complex as follows.
+
+\begin{definition}
+\label{definition-koszul}
+Let $R$ be a ring. Let $\varphi : E \to R$ be an $R$-module map. The
+{\it Koszul complex} $K_\bullet(\varphi)$ associated to $\varphi$
+is the commutative differential graded algebra defined as follows:
+\begin{enumerate}
+\item the underlying graded algebra is the exterior algebra
+$K_\bullet(\varphi) = \wedge(E)$,
+\item the differential $d : K_\bullet(\varphi) \to K_\bullet(\varphi)$
+is the unique derivation such that $d(e) = \varphi(e)$ for all
+$e \in E = K_1(\varphi)$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+Explicitly, if $e_1 \wedge \ldots \wedge e_n$ is one of the generators of
+degree $n$ in $K_\bullet(\varphi)$, then
+$$
+d(e_1 \wedge \ldots \wedge e_n) =
+\sum\nolimits_{i = 1, \ldots, n} (-1)^{i + 1}
+\varphi(e_i)e_1 \wedge \ldots \wedge \widehat{e_i} \wedge \ldots \wedge e_n.
+$$
+It is straightforward to see that this gives a well defined derivation
+on the tensor algebra, which annihilates $e \otimes e$ and hence factors
+through the exterior algebra.
+
+\medskip\noindent
+We often assume that $E$ is a finite free module, say $E = R^{\oplus n}$.
+In this case the map $\varphi$ is given by a sequence of elements
+$f_1, \ldots, f_n \in R$.
+
+\begin{definition}
+\label{definition-koszul-complex}
+Let $R$ be a ring and let $f_1, \ldots, f_r \in R$. The
+{\it Koszul complex on $f_1, \ldots, f_r$} is the Koszul complex
+associated to the map $(f_1, \ldots, f_r) : R^{\oplus r} \to R$.
+Notation $K_\bullet(f_\bullet)$, $K_\bullet(f_1, \ldots, f_r)$,
+$K_\bullet(R, f_1, \ldots, f_r)$, or $K_\bullet(R, f_\bullet)$.
+\end{definition}
+
+\noindent
+Of course, if $E$ is finite locally free, then $K_\bullet(\varphi)$ is
+locally on $\Spec(R)$ isomorphic to a Koszul complex
+$K_\bullet(f_1, \ldots, f_r)$.
+This complex has many interesting formal properties.
+
+\begin{lemma}
+\label{lemma-functorial}
+Let $\varphi : E \to R$ and $\varphi' : E' \to R$ be $R$-module maps.
+Let $\psi : E \to E'$ be an $R$-module map such that
+$\varphi' \circ \psi = \varphi$. Then $\psi$ induces a
+homomorphism of differential graded algebras
+$K_\bullet(\varphi) \to K_\bullet(\varphi')$.
+\end{lemma}
+
+\begin{proof}
+This is immediate from the definitions.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-change-basis}
+Let $f_1, \ldots, f_r \in R$ be a sequence.
+Let $(x_{ij})$ be an invertible $r \times r$-matrix with
+coefficients in $R$. Then the complexes
+$K_\bullet(f_\bullet)$ and
+$$
+K_\bullet(\sum x_{1j}f_j, \sum x_{2j}f_j, \ldots, \sum x_{rj}f_j)
+$$
+are isomorphic.
+\end{lemma}
+
+\begin{proof}
+Set $g_i = \sum x_{ij}f_j$.
+The matrix $(x_{ji})$ gives an isomorphism $x : R^{\oplus r} \to R^{\oplus r}$
+such that $(g_1, \ldots, g_r) = (f_1, \ldots, f_r) \circ x$.
+Hence this follows from the functoriality of the Koszul complex
+described in
+Lemma \ref{lemma-functorial}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-homotopy-koszul-abstract}
+Let $R$ be a ring. Let $\varphi : E \to R$ be an $R$-module map.
+Let $e \in E$ with image $f = \varphi(e)$ in $R$. Then
+$$
+f = de + ed
+$$
+as endomorphisms of $K_\bullet(\varphi)$.
+\end{lemma}
+
+\begin{proof}
+This is true because $d(ea) = d(e)a - ed(a) = fa - ed(a)$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-homotopy-koszul}
+Let $R$ be a ring. Let $f_1, \ldots, f_r \in R$ be a sequence.
+Multiplication by $f_i$ on $K_\bullet(f_\bullet)$ is homotopic to
+zero, and in particular the cohomology modules $H_i(K_\bullet(f_\bullet))$
+are annihilated by the ideal $(f_1, \ldots, f_r)$.
+\end{lemma}
+
+\begin{proof}
+Special case of
+Lemma \ref{lemma-homotopy-koszul-abstract}.
+\end{proof}
+
+\noindent
+In
+Derived Categories, Section \ref{derived-section-cones}
+we defined the cone of a morphism of cochain complexes.
+The cone $C(f)_\bullet$ of a morphism of chain complexes
+$f : A_\bullet \to B_\bullet$ is the complex $C(f)_\bullet$ given by
+$C(f)_n = B_n \oplus A_{n - 1}$ and differential
+\begin{equation}
+\label{equation-differential-cone}
+d_{C(f), n} =
+\left(
+\begin{matrix}
+d_{B, n} & f_{n - 1} \\
+0 & -d_{A, n - 1}
+\end{matrix}
+\right)
+\end{equation}
+It comes equipped with canonical morphisms of complexes
+$i : B_\bullet \to C(f)_\bullet$ and
+$p : C(f)_\bullet \to A_\bullet[-1]$
+induced by the obvious maps $B_n \to C(f)_n \to A_{n - 1}$.
+
+\begin{lemma}
+\label{lemma-cone-koszul-abstract}
+Let $R$ be a ring. Let $\varphi : E \to R$ be an $R$-module map.
+Let $f \in R$. Set $E' = E \oplus R$ and define $\varphi' : E' \to R$
+by $\varphi$ on $E$ and multiplication by $f$ on $R$.
+The complex $K_\bullet(\varphi')$ is isomorphic to the
+cone of the map of complexes
+$$
+f :
+K_\bullet(\varphi)
+\longrightarrow
+K_\bullet(\varphi).
+$$
+\end{lemma}
+
+\begin{proof}
+Denote $e_0 \in E'$ the element $1 \in R \subset R \oplus E$.
+By our definition of the cone above we see that
+$$
+C(f)_n = K_n(\varphi) \oplus K_{n - 1}(\varphi) =
+\wedge^n(E) \oplus \wedge^{n - 1}(E) = \wedge^n(E')
+$$
+where in the last $=$ we map $(0, e_1 \wedge \ldots \wedge e_{n - 1})$
+to $e_0 \wedge e_1 \wedge \ldots \wedge e_{n - 1}$ in $\wedge^n(E')$.
+A computation shows that this isomorphism is compatible with
+differentials. Namely, this is clear for elements of the first
+summand as $\varphi'|_E = \varphi$ and $d_{C(f)}$ restricted to
+the first summand is just $d_{K_\bullet(\varphi)}$.
+On the other hand, if $e_1 \wedge \ldots \wedge e_{n - 1}$
+is in the second summand, then
+$$
+d_{C(f)}(0, e_1 \wedge \ldots \wedge e_{n - 1}) =
+fe_1 \wedge \ldots \wedge e_{n - 1}
+- d_{K_\bullet(\varphi)}(e_1 \wedge \ldots \wedge e_{n - 1})
+$$
+and on the other hand
+\begin{align*}
+& d_{K_\bullet(\varphi')}(0, e_0 \wedge e_1 \wedge \ldots \wedge e_{n - 1}) \\
+& =
+\sum\nolimits_{i = 0, \ldots, n - 1}
+(-1)^i \varphi'(e_i)e_0 \wedge \ldots \wedge \widehat{e_i}
+\wedge \ldots \wedge e_{n - 1} \\
+& =
+fe_1 \wedge \ldots \wedge e_{n - 1} +
+\sum\nolimits_{i = 1, \ldots, n - 1}
+(-1)^i \varphi(e_i)e_0 \wedge \ldots \wedge \widehat{e_i}
+\wedge \ldots \wedge e_{n - 1} \\
+& =
+fe_1 \wedge \ldots \wedge e_{n - 1} -
+e_0 \left(\sum\nolimits_{i = 1, \ldots, n - 1}
+(-1)^{i + 1} \varphi(e_i)e_1 \wedge \ldots \wedge \widehat{e_i}
+\wedge \ldots \wedge e_{n - 1}\right)
+\end{align*}
+which is the image of the result of the previous computation.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-cone-koszul}
+Let $R$ be a ring. Let $f_1, \ldots, f_r$ be a sequence of elements
+of $R$. The complex $K_\bullet(f_1, \ldots, f_r)$ is isomorphic to the
+cone of the map of complexes
+$$
+f_r :
+K_\bullet(f_1, \ldots, f_{r - 1})
+\longrightarrow
+K_\bullet(f_1, \ldots, f_{r - 1}).
+$$
+\end{lemma}
+
+\begin{proof}
+Special case of
+Lemma \ref{lemma-cone-koszul-abstract}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-cone-squared}
+Let $R$ be a ring. Let $A_\bullet$ be a complex of $R$-modules.
+Let $f, g \in R$. Let $C(f)_\bullet$ be the cone of
+$f : A_\bullet \to A_\bullet$. Define similarly $C(g)_\bullet$ and
+$C(fg)_\bullet$. Then $C(fg)_\bullet$ is homotopy equivalent to the
+cone of a map
+$$
+C(f)_\bullet[1] \longrightarrow C(g)_\bullet
+$$
+\end{lemma}
+
+\begin{proof}
+We first prove this if $A_\bullet$ is the complex consisting of $R$ placed
+in degree $0$. In this case the complex $C(f)_\bullet$ is the
+complex
+$$
+\ldots \to 0 \to R \xrightarrow{f} R \to 0 \to \ldots
+$$
+with $R$ placed in (homological) degrees $1$ and $0$. The map
+of complexes we use is
+$$
+\xymatrix{
+0 \ar[r] \ar[d] &
+0 \ar[r] \ar[d] &
+R \ar[r]^f \ar[d]^1 &
+R \ar[r] \ar[d] & 0 \ar[d] \\
+0 \ar[r] & R \ar[r]^g & R \ar[r] & 0 \ar[r] & 0
+}
+$$
+The cone of this is the chain complex consisting of $R^{\oplus 2}$ placed in
+degrees $1$ and $0$ and differential (\ref{equation-differential-cone})
+$$
+\left(
+\begin{matrix}
+g & 1 \\
+0 & -f
+\end{matrix}
+\right) :
+R^{\oplus 2} \longrightarrow R^{\oplus 2}
+$$
+To see this chain complex is homotopic to
+$C(fg)_\bullet$, i.e., to $R \xrightarrow{fg} R$,
+consider the maps of complexes
+$$
+\xymatrix{
+R \ar[d]_{(1, -g)} \ar[r]_{fg} & R \ar[d]^{(0, 1)} \\
+R^{\oplus 2} \ar[r] & R^{\oplus 2}
+}
+\quad\quad
+\xymatrix{
+R^{\oplus 2} \ar[d]_{(1, 0)} \ar[r] & R^{\oplus 2} \ar[d]^{(f, 1)} \\
+R \ar[r]^{fg} & R
+}
+$$
+with obvious notation.
+The composition of these two maps in one direction is the
+identity on $C(fg)_\bullet$, but in the other direction
+it isn't the identity. We omit writing out the required homotopy.
+
+\medskip\noindent
+To see the result holds in general, we use that we have a functor
+$K_\bullet \mapsto \text{Tot}(A_\bullet \otimes_R K_\bullet)$
+on the category of complexes which is compatible with homotopies
+and cones. Then we write $C(f)_\bullet$ and $C(g)_\bullet$
+as the total complex of the double complexes
+$$
+(R \xrightarrow{f} R) \otimes_R A_\bullet
+\quad\text{and}\quad
+(R \xrightarrow{g} R) \otimes_R A_\bullet
+$$
+and in this way we deduce the result from the special case discussed above.
+Some details omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-koszul-mult-abstract}
+Let $R$ be a ring. Let $\varphi : E \to R$ be an $R$-module map.
+Let $f, g \in R$. Set $E' = E \oplus R$ and define
+$\varphi'_f, \varphi'_g, \varphi'_{fg} : E' \to R$
+by $\varphi$ on $E$ and multiplication by $f, g, fg$ on $R$.
+The complex $K_\bullet(\varphi'_{fg})$ is homotopy equivalent to the
+cone of a map of complexes
+$$
+K_\bullet(\varphi'_f)[1]
+\longrightarrow
+K_\bullet(\varphi'_g).
+$$
+\end{lemma}
+
+\begin{proof}
+By
+Lemma \ref{lemma-cone-koszul-abstract}
+the complex $K_\bullet(\varphi'_f)$ is isomorphic to the cone of
+multiplication by $f$ on $K_\bullet(\varphi)$ and similarly
+for the other two cases. Hence the lemma follows from
+Lemma \ref{lemma-cone-squared}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-koszul-mult}
+Let $R$ be a ring. Let $f_1, \ldots, f_{r - 1}$ be a sequence of elements
+of $R$. Let $f, g \in R$. The complex
+$K_\bullet(f_1, \ldots, f_{r - 1}, fg)$
+is homotopy equivalent to the cone of a map of complexes
+$$
+K_\bullet(f_1, \ldots, f_{r - 1}, f)[1]
+\longrightarrow
+K_\bullet(f_1, \ldots, f_{r - 1}, g)
+$$
+\end{lemma}
+
+\begin{proof}
+Special case of
+Lemma \ref{lemma-koszul-mult-abstract}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-join-sequences-koszul-complex}
+Let $R$ be a ring.
+Let $f_1, \ldots, f_r$, $g_1, \ldots, g_s$ be elements of $R$.
+Then there is an isomorphism of Koszul complexes
+$$
+K_\bullet(R, f_1, \ldots, f_r, g_1, \ldots, g_s) =
+\text{Tot}(K_\bullet(R, f_1, \ldots, f_r) \otimes_R
+K_\bullet(R, g_1, \ldots, g_s)).
+$$
+\end{lemma}
+
+\begin{proof}
+Omitted. Hint: If $K_\bullet(R, f_1, \ldots, f_r)$ is generated as a
+differential graded algebra by $x_1, \ldots, x_r$ with $\text{d}(x_i) = f_i$
+and $K_\bullet(R, g_1, \ldots, g_s)$ is generated as a
+differential graded algebra by $y_1, \ldots, y_s$ with $\text{d}(y_j) = g_j$,
+then we can think of $K_\bullet(R, f_1, \ldots, f_r, g_1, \ldots, g_s)$
+as the differential graded algebra generated by the sequence of elements
+$x_1, \ldots, x_r, y_1, \ldots, y_s$ with $\text{d}(x_i) = f_i$
+and $\text{d}(y_j) = g_j$.
+\end{proof}
+
+
+
+
+

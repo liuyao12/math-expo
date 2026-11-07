@@ -1,0 +1,607 @@
+\section{Ample invertible sheaves}
+\label{section-ample}
+
+\noindent
+Recall from Modules, Lemma \ref{modules-lemma-s-open}
+that given an invertible sheaf $\mathcal{L}$ on a locally ringed
+space $X$, and given a global section $s$ of $\mathcal{L}$
+the set $X_s = \{x \in X \mid s \not \in \mathfrak m_x\mathcal{L}_x\}$
+is open. A general remark is that
+$X_s \cap X_{s'} = X_{ss'}$, where $ss'$ denote
+the section $s \otimes s' \in \Gamma(X, \mathcal{L} \otimes \mathcal{L}')$.
+
+\begin{definition}
+\label{definition-ample}
+\begin{reference}
+\cite[II Definition 4.5.3]{EGA}
+\end{reference}
+Let $X$ be a scheme.
+Let $\mathcal{L}$ be an invertible $\mathcal{O}_X$-module.
+We say $\mathcal{L}$ is {\it ample} if
+\begin{enumerate}
+\item $X$ is quasi-compact, and
+\item for every $x \in X$ there exists an $n \geq 1$
+and $s \in \Gamma(X, \mathcal{L}^{\otimes n})$ such
+that $x \in X_s$ and $X_s$ is affine.
+\end{enumerate}
+\end{definition}
+
+\begin{lemma}
+\label{lemma-ample-power-ample}
+\begin{reference}
+\cite[II Proposition 4.5.6(i)]{EGA}
+\end{reference}
+Let $X$ be a scheme. Let $\mathcal{L}$ be an invertible $\mathcal{O}_X$-module.
+Let $n \geq 1$. Then $\mathcal{L}$ is ample if and only if
+$\mathcal{L}^{\otimes n}$ is ample.
+\end{lemma}
+
+\begin{proof}
+This follows from the fact that $X_{s^n} = X_s$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-ample-on-closed}
+Let $X$ be a scheme.
+Let $\mathcal{L}$ be an ample invertible $\mathcal{O}_X$-module.
+For any closed subscheme $Z \subset X$ the restriction of
+$\mathcal{L}$ to $Z$ is ample.
+\end{lemma}
+
+\begin{proof}
+This is clear since a closed subset of a quasi-compact space is quasi-compact
+and a closed subscheme of an affine scheme is affine (see
+Schemes, Lemma \ref{schemes-lemma-closed-immersion-affine-case}).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-affine-cap-s-open}
+Let $X$ be a scheme. Let $\mathcal{L}$ be an invertible $\mathcal{O}_X$-module.
+Let $s \in \Gamma(X, \mathcal{L})$. For any affine $U \subset X$
+the intersection $U \cap X_s$ is affine.
+\end{lemma}
+
+\begin{proof}
+This translates into the following algebra problem.
+Let $R$ be a ring. Let $N$ be an invertible $R$-module
+(i.e., locally free of rank 1). Let $s \in N$ be an element.
+Then $V = \{\mathfrak p \mid s \not \in \mathfrak p N\}$ is
+an affine open subset of $\Spec(R)$.
+
+\medskip\noindent
+Let $A = \bigoplus_{n \geq 0} A_n$ be the symmetric algebra of $N$
+(which is commutative) and view $s$ as an element of $A_1$.
+Set $B = A/(s - 1)A$. This is an $R$-algebra whose construction
+commutes with any base change $R \to R'$. Thus $B' = B \otimes_R R'$
+is the zero ring if $s$ maps to zero in $N' = N \otimes_R R'$. It
+follows that if $x \in \Spec(R) \setminus V$, then $B \otimes_R \kappa(x) = 0$.
+We conclude that $\Spec(B) \to \Spec(R)$ factors through $V$ as the
+fibres over $x \not \in V$ are empty. On the other hand, if
+$\Spec(R') \subset V$ is an affine open, then $s$ maps to a basis
+element of $N'$ and we see that $B' = R'[s]/(s - 1) \cong R'$.
+It follows that $\Spec(B) \to V$ is an isomorphism and $V$ is
+indeed affine.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-ample-tensor-globally-generated}
+\begin{reference}
+\cite[II Proposition 4.5.6(ii)]{EGA}
+\end{reference}
+Let $X$ be a scheme. Let $\mathcal{L}$ and $\mathcal{M}$
+be invertible $\mathcal{O}_X$-modules. If
+\begin{enumerate}
+\item $\mathcal{L}$ is ample, and
+\item the open sets $X_t$ where $t \in \Gamma(X, \mathcal{M}^{\otimes m})$
+for $m > 0$ cover $X$,
+\end{enumerate}
+then $\mathcal{L} \otimes \mathcal{M}$ is ample.
+\end{lemma}
+
+\begin{proof}
+We check the conditions of Definition \ref{definition-ample}.
+As $\mathcal{L}$ is ample we see that $X$ is quasi-compact.
+Let $x \in X$. Choose $n \geq 1$, $m \geq 1$,
+$s \in \Gamma(X, \mathcal{L}^{\otimes n})$, and
+$t \in \Gamma(X, \mathcal{M}^{\otimes m})$
+such that $x \in X_s$, $x \in X_t$ and $X_s$ is affine.
+Then $s^mt^n \in \Gamma(X, (\mathcal{L} \otimes \mathcal{M})^{\otimes nm})$,
+$x \in X_{s^mt^n}$, and $X_{s^mt^n}$ is affine by
+Lemma \ref{lemma-affine-cap-s-open}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-affine-s-opens}
+Let $X$ be a scheme. Let $\mathcal{L}$ be an invertible $\mathcal{O}_X$-module.
+Assume the open sets $X_s$, where $s \in \Gamma(X, \mathcal{L}^{\otimes n})$
+and $n \geq 1$, form a basis for the topology on $X$.
+Then among those opens, the open sets $X_s$ which are affine
+form a basis for the topology on $X$.
+\end{lemma}
+
+\begin{proof}
+Let $x \in X$. Choose an affine open neighbourhood
+$\Spec(R) = U \subset X$ of $x$.
+By assumption, there exists
+a $n \geq 1$ and a $s \in \Gamma(X, \mathcal{L}^{\otimes n})$
+such that $X_s \subset U$. By Lemma \ref{lemma-affine-cap-s-open} above
+the intersection $X_s = U \cap X_s$ is affine.
+Since $U$ can be chosen arbitrarily small we win.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-affine-s-opens-cover-quasi-separated}
+Let $X$ be a scheme and $\mathcal{L}$ be an invertible $\mathcal{O}_X$-module.
+Assume for every point $x$ of $X$ there exists $n \geq 1$ and
+$s \in \Gamma(X, \mathcal{L}^{\otimes n})$ such that
+$x \in X_s$ and $X_s$ is affine. Then $X$ is separated.
+\end{lemma}
+
+\begin{proof}
+We show first that $X$ is quasi-separated.  By assumption we
+can find a covering of $X$ by affine opens of the form
+$X_s$.  By Lemma \ref{lemma-affine-cap-s-open}, the
+intersection of any two such sets is affine, so Schemes, Lemma
+\ref{schemes-lemma-characterize-quasi-separated} implies
+that $X$ is quasi-separated.
+
+\medskip\noindent
+To show that $X$ is separated, we can use the valuative
+criterion, Schemes, Lemma
+\ref{schemes-lemma-valuative-criterion-separatedness}.
+Thus, let $A$ be a valuation ring with fraction field $K$
+and consider two morphisms $f, g : \Spec(A) \to X$ such that
+the two compositions $\Spec(K) \to \Spec(A) \to X$ agree.
+As $A$ is local, there exists $p, q \ge 1$, $s \in \Gamma(X,
+\mathcal{L}^{\otimes p})$, and $t \in \Gamma(X,
+\mathcal{L}^{\otimes q})$ such that $X_s$ and $X_t$ are
+affine, $f(\Spec A) \subseteq X_s$, and $g(\Spec A)
+\subseteq X_t$.  We now replace $s$ by $s^q$, $t$ by $t^p$,
+and $\mathcal{L}$ by $\mathcal{L}^{\otimes pq}$.  This is
+harmless as $X_s = X_{s^q}$ and $X_t = X_{t^p}$, and now $s$
+and $t$ are both sections of the same sheaf $\mathcal{L}$.
+
+\medskip\noindent
+The quasi-coherent module $f^*\mathcal{L}$ corresponds to an $A$-module $M$ and
+$g^*\mathcal{L}$ corresponds to an $A$-module $N$ by our
+classification of quasi-coherent modules over affine schemes
+(Schemes, Lemma \ref{schemes-lemma-quasi-coherent-affine}).
+The $A$-modules $M$ and $N$ are locally free of rank
+$1$ (Lemma \ref{lemma-locally-free-module}) and as $A$ is
+local they are free (Algebra, Lemma
+\ref{algebra-lemma-K0-local}).  Therefore we may identify
+$M$ and $N$ with $A$-submodules of $M \otimes_A K$ and $N
+\otimes_A K$.  The equality $f|_{\Spec(K)} = g|_{\Spec(K)}$
+determines an isomorphism $\phi \colon M \otimes_A K \to N
+\otimes_A K$.
+
+\medskip\noindent
+Let $x \in M$ and $y \in N$ be the elements corresponding to
+the pullback of $s$ along $f$ and $g$, respectively.  These
+satisfy $\phi(x \otimes 1) = y \otimes 1$.  The image of $f$
+is contained in $X_s$, so $x \not\in \mathfrak{m}_A M$, that
+is, $x$ generates $M$.  Hence $\phi$ determines an
+isomorphism of $M$ with the submodule of $N$ generated by
+$y$.  Arguing symmetrically using $t$, $\phi^{-1}$
+determines an isomorphism of $N$ with a submodule of $M$.
+Consequently $\phi$ restricts to an isomorphism of $M$ and
+$N$.  Since $x$ generates $M$, its image $y$ generates
+$N$, implying $y \not\in \mathfrak{m}_A N$.  Therefore
+$g(\Spec(A)) \subseteq X_s$.  Because $X_s$ is affine, it is
+separated by Schemes, Lemma \ref{schemes-lemma-affine-separated},
+and we conclude $f = g$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-ample-separated}
+Let $X$ be a scheme. If there exists an ample invertible sheaf on $X$
+then $X$ is separated.
+\end{lemma}
+
+\begin{proof}
+Follows immediately from
+Lemma \ref{lemma-affine-s-opens-cover-quasi-separated} and
+Definition \ref{definition-ample}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-map-into-proj}
+Let $X$ be a scheme.
+Let $\mathcal{L}$ be an invertible $\mathcal{O}_X$-module.
+Set $S = \Gamma_*(X, \mathcal{L})$ as a graded ring.
+If every point of $X$ is contained in one of the
+open subschemes $X_s$, for some $s \in S_{+}$ homogeneous, then
+there is a canonical morphism of schemes
+$$
+f : X \longrightarrow Y = \text{Proj}(S),
+$$
+to the homogeneous spectrum of $S$ (see
+Constructions, Section \ref{constructions-section-proj}).
+This morphism has the following properties
+\begin{enumerate}
+\item $f^{-1}(D_{+}(s)) = X_s$ for any $s \in S_{+}$ homogeneous,
+\item there are $\mathcal{O}_X$-module maps
+$f^*\mathcal{O}_Y(n) \to \mathcal{L}^{\otimes n}$
+compatible with multiplication maps, see
+Constructions, Equation (\ref{constructions-equation-multiply}),
+\item the composition
+$S_n \to \Gamma(Y, \mathcal{O}_Y(n)) \to \Gamma(X, \mathcal{L}^{\otimes n})$
+is the identity map, and
+\item for every $x \in X$ there is an integer $d \geq 1$
+and an open neighbourhood $U \subset X$ of $x$
+such that $f^*\mathcal{O}_Y(dn)|_U \to \mathcal{L}^{\otimes dn}|_U$
+is an isomorphism for all $n \in \mathbf{Z}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Denote $\psi : S \to \Gamma_*(X, \mathcal{L})$ the identity map.
+We are going to use the triple
+$(U(\psi), r_{\mathcal{L}, \psi}, \theta)$ of
+Constructions, Lemma \ref{constructions-lemma-invertible-map-into-proj}.
+By assumption the open subscheme $U(\psi)$ of equals $X$. Hence
+$r_{\mathcal{L}, \psi} : U(\psi) \to Y$ is defined on all of $X$.
+We set $f = r_{\mathcal{L}, \psi}$.
+The maps in part (2) are the components of $\theta$.
+Part (3) follows from condition (2) in the lemma cited above.
+Part (1) follows from (3) combined with condition (1) in the lemma
+cited above. Part (4) follows from the last statement in
+Constructions, Lemma \ref{constructions-lemma-invertible-map-into-proj}
+since the map $\alpha$ mentioned there is an isomorphism.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-map-into-proj-quasi-compact}
+Let $X$ be a scheme. Let $\mathcal{L}$ be an invertible $\mathcal{O}_X$-module.
+Set $S = \Gamma_*(X, \mathcal{L})$.
+Assume (a) every point of $X$ is contained in one of the
+open subschemes $X_s$, for some $s \in S_{+}$ homogeneous,
+and (b) $X$ is quasi-compact. Then the canonical morphism of schemes
+$f : X \longrightarrow \text{Proj}(S)$ of Lemma \ref{lemma-map-into-proj}
+above is quasi-compact with dense image.
+\end{lemma}
+
+\begin{proof}
+To prove $f$ is quasi-compact it suffices to show that $f^{-1}(D_{+}(s))$
+is quasi-compact for any $s \in S_{+}$ homogeneous. Write
+$X = \bigcup_{i = 1, \ldots, n} X_i$ as a finite union of
+affine opens. By Lemma \ref{lemma-affine-cap-s-open} each intersection
+$X_s \cap X_i$ is affine. Hence $X_s = \bigcup_{i = 1, \ldots, n} X_s \cap X_i$
+is quasi-compact. Assume that the image of $f$ is not dense to get
+a contradiction. Then, since the opens $D_+(s)$ with $s \in S_+$ homogeneous
+form a basis for the topology on $\text{Proj}(S)$, we can find such
+an $s$ with $D_+(s) \not = \emptyset$ and $f(X) \cap D_+(s) = \emptyset$.
+By Lemma \ref{lemma-map-into-proj}
+this means $X_s = \emptyset$. By Lemma \ref{lemma-invert-s-sections}
+this means that a power $s^n$ is the zero section of
+$\mathcal{L}^{\otimes n\deg(s)}$.
+This in turn means that $D_+(s) = \emptyset$ which is the
+desired contradiction.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-ample-immersion-into-proj}
+Let $X$ be a scheme. Let $\mathcal{L}$ be an invertible $\mathcal{O}_X$-module.
+Set $S = \Gamma_*(X, \mathcal{L})$.
+Assume $\mathcal{L}$ is ample. Then the canonical morphism of schemes
+$f : X \longrightarrow \text{Proj}(S)$ of Lemma \ref{lemma-map-into-proj}
+is an open immersion with dense image.
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-affine-s-opens-cover-quasi-separated} we see
+that $X$ is quasi-separated. Choose finitely many
+$s_1, \ldots, s_n \in S_{+}$ homogeneous
+such that $X_{s_i}$ are affine, and $X = \bigcup X_{s_i}$.
+Say $s_i$ has degree $d_i$. The inverse image of
+$D_{+}(s_i)$ under $f$ is $X_{s_i}$, see Lemma \ref{lemma-map-into-proj}.
+By Lemma \ref{lemma-invert-s-sections} the ring map
+$$
+(S^{(d_i)})_{(s_i)} = \Gamma(D_{+}(s_i), \mathcal{O}_{\text{Proj}(S)})
+\longrightarrow
+\Gamma(X_{s_i}, \mathcal{O}_X)
+$$
+is an isomorphism. Hence $f$ induces an isomorphism
+$X_{s_i} \to D_{+}(s_i)$. Thus $f$ is an isomorphism of $X$ onto the open
+subscheme $\bigcup_{i = 1, \ldots, n} D_{+}(s_i)$ of $\text{Proj}(S)$.
+The image is dense by Lemma \ref{lemma-map-into-proj-quasi-compact}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-open-in-proj-ample}
+Let $X$ be a scheme.
+Let $S$ be a graded ring. Assume $X$ is quasi-compact,
+and assume there exists an open immersion
+$$
+j : X \longrightarrow Y = \text{Proj}(S).
+$$
+Then $j^*\mathcal{O}_Y(d)$ is an invertible ample sheaf
+for some $d > 0$.
+\end{lemma}
+
+\begin{proof}
+This is Constructions, Lemma \ref{constructions-lemma-ample-on-proj}.
+\end{proof}
+
+\begin{proposition}
+\label{proposition-characterize-ample}
+Let $X$ be a quasi-compact scheme.
+Let $\mathcal{L}$ be an invertible sheaf on $X$.
+Set $S = \Gamma_*(X, \mathcal{L})$.
+The following are equivalent:
+\begin{enumerate}
+\item
+\label{item-ample}
+$\mathcal{L}$ is ample,
+\item
+\label{item-immersion}
+the open sets $X_s$, with $s \in S_{+}$ homogeneous,
+cover $X$ and the associated morphism $X \to \text{Proj}(S)$
+is an open immersion,
+\item
+\label{item-s-basis}
+the open sets $X_s$, with $s \in S_{+}$ homogeneous,
+form a basis for the topology of $X$,
+\item
+\label{item-s-affine-basis}
+the open sets $X_s$, with $s \in S_{+}$ homogeneous,
+which are affine form a basis for the topology of $X$,
+\item
+\label{item-qc-gg}
+for every quasi-coherent sheaf $\mathcal{F}$ on $X$
+the sum of the images of the canonical maps
+$$
+\Gamma(X, \mathcal{F} \otimes_{\mathcal{O}_X} \mathcal{L}^{\otimes n})
+\otimes_{\mathbf{Z}} \mathcal{L}^{\otimes -n}
+\longrightarrow
+\mathcal{F}
+$$
+with $n \geq 1$ equals $\mathcal{F}$,
+\item
+\label{item-qc-i-gg}
+same property as (\ref{item-qc-gg}) with $\mathcal{F}$
+ranging over all quasi-coherent sheaves of ideals,
+\item
+\label{item-c-gg}
+$X$ is quasi-separated and
+for every quasi-coherent sheaf $\mathcal{F}$ of finite type on $X$
+there exists an integer $n_0$ such that
+$\mathcal{F} \otimes_{\mathcal{O}_X} \mathcal{L}^{\otimes n}$
+is globally generated for all $n \geq n_0$,
+\item
+\label{item-c-q}
+$X$ is quasi-separated and
+for every quasi-coherent sheaf $\mathcal{F}$ of finite type on $X$
+there exist integers $n > 0$, $k \geq 0$ such that
+$\mathcal{F}$ is a quotient of a direct sum of $k$ copies of
+$\mathcal{L}^{\otimes - n}$, and
+\item
+\label{item-c-i-q}
+same as in (\ref{item-c-q}) with $\mathcal{F}$ ranging over all
+sheaves of ideals of finite type on $X$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Lemma \ref{lemma-ample-immersion-into-proj} is
+(\ref{item-ample}) $\Rightarrow$ (\ref{item-immersion}).
+Lemmas \ref{lemma-ample-power-ample} and \ref{lemma-open-in-proj-ample}
+provide the implication
+(\ref{item-ample}) $\Leftarrow$ (\ref{item-immersion}).
+The implications (\ref{item-immersion}) $\Rightarrow$
+(\ref{item-s-affine-basis}) $\Rightarrow$ (\ref{item-s-basis})
+are clear from Constructions, Section \ref{constructions-section-proj}.
+Lemma \ref{lemma-affine-s-opens} is
+(\ref{item-s-basis}) $\Rightarrow$ (\ref{item-ample}).
+Thus we see that the first 4 conditions are all equivalent.
+
+\medskip\noindent
+Assume the equivalent conditions (1) -- (4).
+Note that in particular $X$ is separated (as an open
+subscheme of the separated scheme $\text{Proj}(S)$).
+Let $\mathcal{F}$ be a quasi-coherent sheaf on $X$.
+Choose $s \in S_{+}$ homogeneous such that $X_s$ is affine.
+We claim that any section $m \in \Gamma(X_s, \mathcal{F})$
+is in the image of one of the maps displayed in
+(\ref{item-qc-gg}) above. This will imply (\ref{item-qc-gg})
+since these affines $X_s$ cover $X$.
+Namely, by Lemma \ref{lemma-invert-s-sections} we may write
+$m$ as the image of $m' \otimes s^{-n}$ for some
+$n \geq 1$, some
+$m' \in \Gamma(X, \mathcal{F} \otimes \mathcal{L}^{\otimes n})$.
+This proves the claim.
+
+\medskip\noindent
+Clearly (\ref{item-qc-gg}) $\Rightarrow$ (\ref{item-qc-i-gg}).
+Let us assume (\ref{item-qc-i-gg}) and prove $\mathcal{L}$ is
+ample. Pick $x \in X$. Let $U \subset X$ be an affine open
+which contains $x$. Set $Z = X \setminus U$. We may think of
+$Z$ as a reduced closed subscheme, see
+Schemes, Section \ref{schemes-section-reduced}.
+Let $\mathcal{I} \subset \mathcal{O}_X$ be the quasi-coherent
+sheaf of ideals corresponding to the closed subscheme $Z$.
+By assumption (\ref{item-qc-i-gg}), there exists an $n \geq 1$ and a section
+$s \in \Gamma(X, \mathcal{I} \otimes \mathcal{L}^{\otimes n})$
+such that $s$ does not vanish at $x$ (more precisely such that
+$s \not \in \mathfrak m_x \mathcal{I}_x \otimes \mathcal{L}_x^{\otimes n}$).
+We may think of $s$ as a section of $\mathcal{L}^{\otimes n}$.
+Since it clearly vanishes along $Z$ we see that
+$X_s \subset U$. Hence $X_s$ is affine, see
+Lemma \ref{lemma-affine-cap-s-open}.
+This proves that $\mathcal{L}$ is ample.
+At this point we have proved that (1) -- (6) are equivalent.
+
+\medskip\noindent
+Assume the equivalent conditions (1) -- (6). In the following
+we will use the fact that the tensor product of two sheaves of
+modules which are globally generated is globally generated without
+further mention (see
+Modules, Lemma \ref{modules-lemma-tensor-product-globally-generated}).
+By (1) we can find elements $s_i \in S_{d_i}$ with $d_i \geq 1$
+such that $X = \bigcup_{i = 1, \ldots, n} X_{s_i}$.
+Set $d = d_1\ldots d_n$. It follows that $\mathcal{L}^{\otimes d}$
+is globally generated by
+$$
+s_1^{d/d_1}, \ldots, s_n^{d/d_n}.
+$$
+This means that if $\mathcal{L}^{\otimes j}$ is globally generated
+then so is $\mathcal{L}^{\otimes j + dn}$ for all $n \geq 0$.
+Fix a $j \in \{0, \ldots, d - 1\}$. For any point $x \in X$ there
+exists an $n \geq 1$ and a global section $s$ of $\mathcal{L}^{j + dn}$
+which does not vanish at $x$, as follows from (\ref{item-qc-gg}) applied
+to $\mathcal{F} = \mathcal{L}^{\otimes j}$ and ample invertible
+sheaf $\mathcal{L}^{\otimes d}$. Since $X$ is quasi-compact there
+we may find a finite list of integers $n_i$ and global sections
+$s_i$ of $\mathcal{L}^{\otimes j + dn_i}$ which do not vanish at any point
+of $X$. Since $\mathcal{L}^{\otimes d}$ is globally generated this means that
+$\mathcal{L}^{\otimes j + dn}$ is globally generated where $n = \max\{n_i\}$.
+Since we proved this for every congruence class mod $d$ we
+conclude that there exists an $n_0 = n_0(\mathcal{L})$ such that
+$\mathcal{L}^{\otimes n}$ is globally generated for all $n \geq n_0$.
+At this point we see that if $\mathcal{F}$ is globally generated then
+so is $\mathcal{F} \otimes \mathcal{L}^{\otimes n}$ for all
+$n \geq n_0$.
+
+\medskip\noindent
+We continue to assume the equivalent conditions (1) -- (6).
+Let $\mathcal{F}$ be a quasi-coherent
+sheaf of $\mathcal{O}_X$-modules of finite type.
+Denote $\mathcal{F}_n \subset \mathcal{F}$ the image of the canonical
+map of (\ref{item-qc-gg}). By construction
+$\mathcal{F}_n \otimes \mathcal{L}^{\otimes n}$ is
+globally generated. By (\ref{item-qc-gg}) we see
+$\mathcal{F}$ is the sum of the subsheaves $\mathcal{F}_n$,
+$n \geq 1$. By
+Modules, Lemma \ref{modules-lemma-finite-type-quasi-compact-colimit}
+we see that $\mathcal{F} = \sum_{n = 1, \ldots, N} \mathcal{F}_n$
+for some $N \geq 1$. It follows that
+$\mathcal{F} \otimes \mathcal{L}^{\otimes n}$ is globally
+generated whenever $n \geq N + n_0(\mathcal{L})$ with $n_0(\mathcal{L})$
+as above. We conclude that (1) -- (6) implies (\ref{item-c-gg}).
+
+\medskip\noindent
+Assume (\ref{item-c-gg}). Let $\mathcal{F}$ be a quasi-coherent
+sheaf of $\mathcal{O}_X$-modules of finite type.
+By (\ref{item-c-gg}) there exists an integer $n \geq 1$ such that
+the canonical map
+$$
+\Gamma(X, \mathcal{F} \otimes_{\mathcal{O}_X} \mathcal{L}^{\otimes n})
+\otimes_{\mathbf{Z}} \mathcal{L}^{\otimes -n}
+\longrightarrow
+\mathcal{F}
+$$
+is surjective. Let $I$ be the set of finite subsets of
+$\Gamma(X, \mathcal{F} \otimes_{\mathcal{O}_X} \mathcal{L}^{\otimes n})$
+partially ordered by inclusion. Then $I$ is a directed partially ordered set.
+For $i = \{s_1, \ldots, s_{r(i)}\}$ let $\mathcal{F}_i \subset \mathcal{F}$
+be the image of the map
+$$
+\bigoplus\nolimits_{j = 1, \ldots, r(i)} \mathcal{L}^{\otimes -n}
+\longrightarrow
+\mathcal{F}
+$$
+which is multiplication by $s_j$ on the $j$th factor. The surjectivity above
+implies that $\mathcal{F} = \colim_{i \in I} \mathcal{F}_i$.
+Hence Modules, Lemma \ref{modules-lemma-finite-type-quasi-compact-colimit}
+applies and we conclude that
+$\mathcal{F} = \mathcal{F}_i$ for some $i$.
+Hence we have proved (\ref{item-c-q}). In other words,
+(\ref{item-c-gg}) $\Rightarrow$ (\ref{item-c-q}).
+
+\medskip\noindent
+The implication (\ref{item-c-q}) $\Rightarrow$ (\ref{item-c-i-q}) is trivial.
+
+\medskip\noindent
+Finally, assume (\ref{item-c-i-q}).
+Let $\mathcal{I} \subset \mathcal{O}_X$ be a quasi-coherent sheaf
+of ideals. By Lemma \ref{lemma-quasi-coherent-colimit-finite-type}
+(this is where we use the condition that $X$ be quasi-separated)
+we see that $\mathcal{I} = \colim_\alpha I_\alpha$ with
+each $I_\alpha$ quasi-coherent of finite type. Since by assumption each of
+the $I_\alpha$ is a quotient of negative tensor powers of
+$\mathcal{L}$ we conclude the same for $\mathcal{I}$ (but of course
+without the finiteness or boundedness of the powers). Hence
+we conclude that (\ref{item-c-i-q}) implies (\ref{item-qc-i-gg}).
+This ends the proof of the proposition.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-ample-on-locally-closed}
+Let $X$ be a scheme. Let $\mathcal{L}$ be an ample invertible
+$\mathcal{O}_X$-module. Let $i : X' \to X$ be a morphism of schemes.
+Assume at least one of the following conditions holds
+\begin{enumerate}
+\item $i$ is a quasi-compact immersion,
+\item $X'$ is quasi-compact and $i$ is an immersion,
+\item $i$ is quasi-compact and induces a homeomorphism
+between $X'$ and $i(X')$,
+\item $X'$ is quasi-compact and $i$ induces a homeomorphism
+between $X'$ and $i(X')$.
+\end{enumerate}
+Then $i^*\mathcal{L}$ is ample on $X'$.
+\end{lemma}
+
+\begin{proof}
+Observe that in cases (1) and (3) the scheme $X'$ is quasi-compact
+as $X$ is quasi-compact by Definition \ref{definition-ample}.
+Thus it suffices to prove (2) and (4). Since (2) is a special case
+of (4) it suffices to prove (4).
+
+\medskip\noindent
+Assume condition (4) holds. For $s \in \Gamma(X, \mathcal{L}^{\otimes d})$
+denote $s' = i^*s$ the pullback of $s$ to $X'$. Note that
+$s'$ is a section of $(i^*\mathcal{L})^{\otimes d}$. By
+Proposition \ref{proposition-characterize-ample}
+the opens $X_s$, for $s \in \Gamma(X, \mathcal{L}^{\otimes d})$,
+form a basis for the topology on $X$. Since $X'_{s'} = i^{-1}(X_s)$ by
+Modules, Remark \ref{modules-remark-pullback-s-open}
+and since $X' \to i(X')$ is a homeomorphism, we conclude
+the opens $X'_{s'}$ form a basis for the topology of $X'$. Hence
+$i^*\mathcal{L}$ is ample by
+Proposition \ref{proposition-characterize-ample}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-ample-on-product}
+Let $S$ be a quasi-separated scheme. Let $X$, $Y$ be schemes over $S$.
+Let $\mathcal{L}$ be an ample invertible $\mathcal{O}_X$-module
+and let $\mathcal{N}$ be an ample invertible $\mathcal{O}_Y$-module.
+Then $\mathcal{M} = \text{pr}_1^*\mathcal{L}
+\otimes_{\mathcal{O}_{X \times_S Y}} \text{pr}_2^*\mathcal{N}$
+is an ample invertible sheaf on $X \times_S Y$.
+\end{lemma}
+
+\begin{proof}
+The morphism $i : X \times_S Y \to X \times Y$ is a quasi-compact
+immersion, see Schemes, Lemma \ref{schemes-lemma-fibre-product-after-map}.
+On the other hand, $\mathcal{M}$ is the pullback by
+$i$ of the corresponding invertible module on $X \times Y$.
+By Lemma \ref{lemma-ample-on-locally-closed} it suffices to prove the
+lemma for $X \times Y$. We check (1) and (2) of
+Definition \ref{definition-ample} for $\mathcal{M}$ on $X \times Y$.
+
+\medskip\noindent
+Since $X$ and $Y$ are quasi-compact, so is $X \times Y$.
+Let $z \in X \times Y$ be a point. Let $x \in X$ and $y \in Y$
+be the projections. Choose $n > 0$ and
+$s \in \Gamma(X, \mathcal{L}^{\otimes n})$
+such that $X_s$ is an affine open neighbourhood of $x$.
+Choose $m > 0$ and
+$t \in \Gamma(Y, \mathcal{N}^{\otimes m})$
+such that $Y_t$ is an affine open neighbourhood of $y$.
+Then $r = \text{pr}_1^*s \otimes \text{pr}_2^*t$ is a section
+of $\mathcal{M}$ with $(X \times Y)_r = X_s \times Y_t$.
+This is an affine open neighbourhood of $z$ and the proof is complete.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+

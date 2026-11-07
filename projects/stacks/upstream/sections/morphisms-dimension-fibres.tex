@@ -1,0 +1,188 @@
+\section{Morphisms and dimensions of fibres}
+\label{section-dimension-fibres}
+
+\noindent
+Let $X$ be a topological space, and $x \in X$.
+Recall that we have defined $\dim_x(X)$ as the minimum of the
+dimensions of the open neighbourhoods of $x$ in $X$.
+See Topology, Definition \ref{topology-definition-Krull}.
+
+\begin{lemma}
+\label{lemma-dimension-fibre-at-a-point}
+Let $f : X \to S$ be a morphism of schemes.
+Let $x \in X$ and set $s = f(x)$.
+Assume $f$ is locally of finite type.
+Then
+$$
+\dim_x(X_s) =
+\dim(\mathcal{O}_{X_s, x}) + \text{trdeg}_{\kappa(s)}(\kappa(x)).
+$$
+\end{lemma}
+
+\begin{proof}
+This immediately reduces to the case $S = s$, and $X$ affine.
+In this case the result follows from
+Algebra, Lemma \ref{algebra-lemma-dimension-at-a-point-finite-type-field}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-dimension-fibre-at-a-point-additive}
+Let $f : X \to Y$ and $g : Y \to S$ be morphisms of schemes.
+Let $x \in X$ and set $y = f(x)$, $s = g(y)$.
+Assume $f$ and $g$ locally of finite type.
+Then
+$$
+\dim_x(X_s) \leq \dim_x(X_y) + \dim_y(Y_s).
+$$
+Moreover, equality holds if $\mathcal{O}_{X_s, x}$ is flat
+over $\mathcal{O}_{Y_s, y}$, which holds for example if $\mathcal{O}_{X, x}$
+is flat over $\mathcal{O}_{Y, y}$.
+\end{lemma}
+
+\begin{proof}
+Note that $\text{trdeg}_{\kappa(s)}(\kappa(x)) =
+\text{trdeg}_{\kappa(y)}(\kappa(x)) + \text{trdeg}_{\kappa(s)}(\kappa(y))$.
+Thus by Lemma \ref{lemma-dimension-fibre-at-a-point} the statement
+is equivalent to
+$$
+\dim(\mathcal{O}_{X_s, x})
+\leq
+\dim(\mathcal{O}_{X_y, x}) + \dim(\mathcal{O}_{Y_s, y}).
+$$
+For this see Algebra, Lemma \ref{algebra-lemma-dimension-base-fibre-total}.
+For the flat case see
+Algebra, Lemma \ref{algebra-lemma-dimension-base-fibre-equals-total}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-dimension-fibre-after-base-change}
+Let
+$$
+\xymatrix{
+X' \ar[r]_{g'} \ar[d]_{f'} & X \ar[d]^f \\
+S' \ar[r]^g & S
+}
+$$
+be a fibre product diagram of schemes. Assume $f$ locally of finite type.
+Suppose that $x' \in X'$, $x = g'(x')$, $s' = f'(x')$ and
+$s = g(s') = f(x)$. Then
+\begin{enumerate}
+\item $\dim_x(X_s) = \dim_{x'}(X'_{s'})$,
+\item if $F$ is the fibre of the morphism $X'_{s'} \to X_s$
+over $x$, then
+$$
+\dim(\mathcal{O}_{F, x'}) =
+\dim(\mathcal{O}_{X'_{s'}, x'}) - \dim(\mathcal{O}_{X_s, x}) =
+\text{trdeg}_{\kappa(s)}(\kappa(x)) -
+\text{trdeg}_{\kappa(s')}(\kappa(x'))
+$$
+In particular $\dim(\mathcal{O}_{X'_{s'}, x'}) \geq \dim(\mathcal{O}_{X_s, x})$
+and $\text{trdeg}_{\kappa(s)}(\kappa(x)) \geq
+\text{trdeg}_{\kappa(s')}(\kappa(x'))$.
+\item given $s', s, x$ there exists a choice of $x'$ such that
+$\dim(\mathcal{O}_{X'_{s'}, x'}) = \dim(\mathcal{O}_{X_s, x})$ and
+$\text{trdeg}_{\kappa(s)}(\kappa(x)) = \text{trdeg}_{\kappa(s')}(\kappa(x'))$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Part (1) follows immediately from
+Algebra,
+Lemma \ref{algebra-lemma-dimension-at-a-point-preserved-field-extension}.
+Parts (2) and (3) from
+Algebra, Lemma \ref{algebra-lemma-inequalities-under-field-extension}.
+\end{proof}
+
+\noindent
+The following lemma follows from a nontrivial algebraic result.
+Namely, the algebraic version of Zariski's main theorem.
+
+\begin{lemma}
+\label{lemma-openness-bounded-dimension-fibres}
+\begin{reference}
+\cite[IV Theorem 13.1.3]{EGA}
+\end{reference}
+Let $f : X \to S$ be a morphism of schemes.
+Let $n \geq 0$. Assume $f$ is locally of finite type.
+The set
+$$
+U_n = \{x \in X \mid \dim_x X_{f(x)} \leq n\}
+$$
+is open in $X$.
+\end{lemma}
+
+\begin{proof}
+This is immediate from
+Algebra,
+Lemma \ref{algebra-lemma-dimension-fibres-bounded-open-upstairs}
+\end{proof}
+
+\begin{lemma}
+\label{lemma-morphism-finite-type-bounded-dimension}
+Let $f : X \to Y$ be a morphism of finite type with $Y$ quasi-compact.
+Then the dimension of the fibres of $f$ is bounded.
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-openness-bounded-dimension-fibres}
+the set $U_n \subset X$ of points where the dimension of the fibre
+is $\leq n$ is open. Since $f$ is of finite type, every point is
+contained in some $U_n$ (because the dimension of a finite
+type algebra over a field is finite). Since $Y$ is quasi-compact and $f$ is of
+finite type, we see that $X$ is quasi-compact. Hence $X = U_n$ for
+some $n$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-openness-bounded-dimension-fibres-finite-presentation}
+Let $f : X \to S$ be a morphism of schemes.
+Let $n \geq 0$. Assume $f$ is locally of finite presentation.
+The open
+$$
+U_n = \{x \in X \mid \dim_x X_{f(x)} \leq n\}
+$$
+of Lemma \ref{lemma-openness-bounded-dimension-fibres} is retrocompact
+in $X$. (See Topology, Definition \ref{topology-definition-quasi-compact}.)
+\end{lemma}
+
+\begin{proof}
+The topological space $X$ has a basis for its topology consisting of
+affine opens $U \subset X$ such that the induced morphism
+$f|_U : U \to S$ factors through an affine open $V \subset S$. Hence
+it is enough to show that $U \cap U_n$ is quasi-compact for such a $U$.
+Note that $U_n \cap U$ is the same as the open
+$\{x \in U \mid \dim_x U_{f(x)} \leq n\}$. This reduces us to the case
+where $X$ and $S$ are affine. In this case the lemma follows from
+Algebra,
+Lemma \ref{algebra-lemma-dimension-fibres-bounded-quasi-compact-open-upstairs}
+(and Lemma \ref{lemma-locally-finite-presentation-characterize}).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-dimension-fibre-specialization}
+Let $f : X \to S$ be a morphism of schemes.
+Let $x \leadsto x'$ be a nontrivial specialization of points in $X$
+lying over the same point $s \in S$. Assume $f$ is locally of finite type.
+Then
+\begin{enumerate}
+\item $\dim_x(X_s) \leq \dim_{x'}(X_s)$,
+\item $\dim(\mathcal{O}_{X_s, x}) < \dim(\mathcal{O}_{X_s, x'})$, and
+\item $\text{trdeg}_{\kappa(s)}(\kappa(x)) >
+\text{trdeg}_{\kappa(s)}(\kappa(x'))$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Part (1) follows from the fact that any open of $X_s$ containing $x'$
+also contains $x$. Part (2) follows since $\mathcal{O}_{X_s, x}$ is a
+localization of $\mathcal{O}_{X_s, x'}$ at a prime ideal, hence any chain
+of prime ideals in $\mathcal{O}_{X_s, x}$ is part of a strictly longer
+chain of primes in $\mathcal{O}_{X_s, x'}$. The last inequality follows from
+Algebra, Lemma \ref{algebra-lemma-tr-deg-specialization}.
+\end{proof}
+
+
+
+
+
+

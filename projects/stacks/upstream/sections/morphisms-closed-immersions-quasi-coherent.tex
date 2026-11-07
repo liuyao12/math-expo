@@ -1,0 +1,253 @@
+\section{Closed immersions and quasi-coherent sheaves}
+\label{section-closed-immersions-quasi-coherent}
+
+\noindent
+The following lemma finally does for quasi-coherent sheaves on schemes
+what Modules, Lemma \ref{modules-lemma-i-star-exact} does for abelian sheaves.
+See also the discussion in
+Modules, Section \ref{modules-section-closed-immersion}.
+
+\begin{lemma}
+\label{lemma-i-star-equivalence}
+Let $i : Z \to X$ be a closed immersion of schemes. Let
+$\mathcal{I} \subset \mathcal{O}_X$ be the quasi-coherent sheaf of ideals
+cutting out $Z$. The functor
+$$
+i_* :
+\QCoh(\mathcal{O}_Z)
+\longrightarrow
+\QCoh(\mathcal{O}_X)
+$$
+is exact, fully faithful, with essential image those quasi-coherent
+$\mathcal{O}_X$-modules $\mathcal{G}$ such that $\mathcal{I}\mathcal{G} = 0$.
+\end{lemma}
+
+\begin{proof}
+A closed immersion is quasi-compact and separated, see
+Lemmas \ref{lemma-closed-immersion-quasi-compact} and
+\ref{lemma-closed-immersion-separated}. Hence
+Schemes, Lemma \ref{schemes-lemma-push-forward-quasi-coherent}
+applies and the pushforward of a quasi-coherent
+sheaf on $Z$ is indeed a quasi-coherent sheaf on $X$.
+
+\medskip\noindent
+By Modules, Lemma \ref{modules-lemma-i-star-equivalence}
+the functor $i_*$ is fully faithful.
+
+\medskip\noindent
+Now we turn to the description of the essential image of the
+functor $i_*$. We have $\mathcal{I}(i_*\mathcal{F}) = 0$
+for any quasi-coherent $\mathcal{O}_Z$-module, for example by
+Modules, Lemma \ref{modules-lemma-i-star-equivalence}.
+Next, suppose that $\mathcal{G}$
+is any quasi-coherent $\mathcal{O}_X$-module such that
+$\mathcal{I}\mathcal{G} = 0$. It suffices to show that the canonical map
+$$
+\mathcal{G} \longrightarrow i_* i^*\mathcal{G}
+$$
+is an isomorphism\footnote{This was proved in a more general situation
+in the proof of  Modules, Lemma \ref{modules-lemma-i-star-equivalence}.}.
+In the case of schemes and quasi-coherent modules, working affine locally
+on $X$ and using Lemma \ref{lemma-closed-immersion} and
+Schemes, Lemma \ref{schemes-lemma-widetilde-pullback}
+it suffices to prove the following algebraic statement: Given a ring
+$R$, an ideal $I$ and an $R$-module $N$ such that $IN = 0$ the canonical map
+$$
+N \longrightarrow N \otimes_R R/I,\quad
+n \longmapsto n \otimes 1
+$$
+is an isomorphism of $R$-modules. Proof of this easy algebra fact is omitted.
+\end{proof}
+
+\noindent
+Let $i : Z \to X$ be a closed immersion. Because of the lemma above we often,
+by abuse of notation, denote $\mathcal{F}$ the sheaf $i_*\mathcal{F}$ on $X$.
+
+\begin{lemma}
+\label{lemma-largest-quasi-coherent-subsheaf}
+Let $X$ be a scheme. Let $\mathcal{F}$ be a quasi-coherent
+$\mathcal{O}_X$-module. Let $\mathcal{G} \subset \mathcal{F}$
+be a $\mathcal{O}_X$-submodule. There exists a unique quasi-coherent
+$\mathcal{O}_X$-submodule $\mathcal{G}' \subset \mathcal{G}$
+with the following property: For every quasi-coherent $\mathcal{O}_X$-module
+$\mathcal{H}$ the map
+$$
+\Hom_{\mathcal{O}_X}(\mathcal{H}, \mathcal{G}')
+\longrightarrow
+\Hom_{\mathcal{O}_X}(\mathcal{H}, \mathcal{G})
+$$
+is bijective. In particular $\mathcal{G}'$ is the largest quasi-coherent
+$\mathcal{O}_X$-submodule of $\mathcal{F}$ contained in $\mathcal{G}$.
+\end{lemma}
+
+\begin{proof}
+Let $\mathcal{G}_a$, $a \in A$ be the set of quasi-coherent
+$\mathcal{O}_X$-submodules contained in $\mathcal{G}$.
+Then the image $\mathcal{G}'$ of
+$$
+\bigoplus\nolimits_{a \in A} \mathcal{G}_a \longrightarrow \mathcal{F}
+$$
+is quasi-coherent as the image of a map of quasi-coherent sheaves
+on $X$ is quasi-coherent and since a direct sum of quasi-coherent sheaves
+is quasi-coherent, see
+Schemes, Section \ref{schemes-section-quasi-coherent}.
+The module $\mathcal{G}'$ is contained in $\mathcal{G}$. Hence this is the
+largest quasi-coherent $\mathcal{O}_X$-module contained in $\mathcal{G}$.
+
+\medskip\noindent
+To prove the formula, let $\mathcal{H}$ be a quasi-coherent
+$\mathcal{O}_X$-module and let $\alpha : \mathcal{H} \to \mathcal{G}$
+be an $\mathcal{O}_X$-module map. The image of the composition
+$\mathcal{H} \to \mathcal{G} \to \mathcal{F}$ is quasi-coherent
+as the image of a map of quasi-coherent sheaves. Hence it is contained
+in $\mathcal{G}'$. Hence $\alpha$ factors through $\mathcal{G}'$
+as desired.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-i-upper-shriek}
+Let $i : Z \to X$ be a closed immersion of schemes.
+There is a functor\footnote{This is likely nonstandard notation.}
+$i^! : \QCoh(\mathcal{O}_X) \to \QCoh(\mathcal{O}_Z)$
+which is a right adjoint to $i_*$. (Compare
+Modules, Lemma \ref{modules-lemma-i-star-right-adjoint}.)
+\end{lemma}
+
+\begin{proof}
+Given quasi-coherent $\mathcal{O}_X$-module $\mathcal{G}$ we consider
+the subsheaf $\mathcal{H}_Z(\mathcal{G})$ of $\mathcal{G}$ of local sections
+annihilated by $\mathcal{I}$. By
+Lemma \ref{lemma-largest-quasi-coherent-subsheaf}
+there is a canonical largest quasi-coherent $\mathcal{O}_X$-submodule
+$\mathcal{H}_Z(\mathcal{G})'$. By construction we have
+$$
+\Hom_{\mathcal{O}_X}(i_*\mathcal{F}, \mathcal{H}_Z(\mathcal{G})')
+=
+\Hom_{\mathcal{O}_X}(i_*\mathcal{F}, \mathcal{G})
+$$
+for any quasi-coherent $\mathcal{O}_Z$-module $\mathcal{F}$.
+Hence we can set $i^!\mathcal{G} = i^*(\mathcal{H}_Z(\mathcal{G})')$.
+Details omitted.
+\end{proof}
+
+\noindent
+Using the $1$-to-$1$ corresponding between quasi-coherent sheaves
+of ideals and closed subschemes (see
+Lemma \ref{lemma-closed-immersion-bijection-ideals})
+we can define scheme theoretic intersections and unions
+of closed subschemes.
+
+\begin{definition}
+\label{definition-scheme-theoretic-intersection-union}
+Let $X$ be a scheme. Let $Z, Y \subset X$ be closed subschemes
+corresponding to quasi-coherent ideal sheaves
+$\mathcal{I}, \mathcal{J} \subset \mathcal{O}_X$.
+The {\it scheme theoretic intersection} of $Z$ and $Y$
+is the closed subscheme of $X$ cut out by $\mathcal{I} + \mathcal{J}$.
+The {\it scheme theoretic union} of $Z$ and $Y$
+is the closed subscheme of $X$ cut out by
+$\mathcal{I} \cap \mathcal{J}$.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-scheme-theoretic-intersection}
+Let $X$ be a scheme. Let $Z, Y \subset X$ be closed subschemes.
+Let $Z \cap Y$ be the scheme theoretic intersection of $Z$ and $Y$.
+Then $Z \cap Y \to Z$ and $Z \cap Y \to Y$ are closed immersions
+and
+$$
+\xymatrix{
+Z \cap Y \ar[r] \ar[d] & Z \ar[d] \\
+Y \ar[r] & X
+}
+$$
+is a cartesian diagram of schemes, i.e., $Z \cap Y = Z \times_X Y$.
+\end{lemma}
+
+\begin{proof}
+The morphisms $Z \cap Y \to Z$ and $Z \cap Y \to Y$ are closed immersions
+by Lemma \ref{lemma-closed-immersion-ideals}.
+Let $U = \Spec(A)$ be an affine open of $X$ and let $Z \cap U$ and $Y \cap U$
+correspond to the ideals $I \subset A$ and $J \subset A$. Then
+$Z \cap Y \cap U$ corresponds to $I + J \subset A$. Since
+$A/I \otimes_A A/J = A/(I + J)$ we see that the diagram is
+cartesian by our description of fibre products of schemes
+in Schemes, Section \ref{schemes-section-fibre-products}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-scheme-theoretic-union}
+Let $S$ be a scheme. Let $X, Y \subset S$ be closed subschemes.
+Let $X \cup Y$ be the scheme theoretic union of $X$ and $Y$.
+Let $X \cap Y$ be the scheme theoretic intersection of $X$ and $Y$.
+Then $X \to X \cup Y$ and $Y \to X \cup Y$ are closed immersions, there is a
+short exact sequence
+$$
+0 \to \mathcal{O}_{X \cup Y} \to \mathcal{O}_X \times \mathcal{O}_Y
+\to \mathcal{O}_{X \cap Y} \to 0
+$$
+of $\mathcal{O}_S$-modules, and the diagram
+$$
+\xymatrix{
+X \cap Y \ar[r] \ar[d] & X \ar[d] \\
+Y \ar[r] & X \cup Y
+}
+$$
+is cocartesian in the category of schemes, i.e.,
+$X \cup Y = X \amalg_{X \cap Y} Y$.
+\end{lemma}
+
+\begin{proof}
+The morphisms $X \to X \cup Y$ and $Y \to X \cup Y$ are closed immersions
+by Lemma \ref{lemma-closed-immersion-ideals}. In the short exact sequence
+we use the equivalence of Lemma \ref{lemma-i-star-equivalence} to think of
+quasi-coherent modules on closed subschemes of $S$ as quasi-coherent modules
+on $S$. For the first map in the sequence we use the canonical maps
+$\mathcal{O}_{X \cup Y} \to \mathcal{O}_X$ and
+$\mathcal{O}_{X \cup Y} \to \mathcal{O}_Y$
+and for the second map we use the canonical map
+$\mathcal{O}_X \to \mathcal{O}_{X \cap Y}$ and
+the negative of the canonical map
+$\mathcal{O}_Y \to \mathcal{O}_{X \cap Y}$. Then to check
+exactness we may work affine locally.
+Let $U = \Spec(A)$ be an affine open of $S$ and let $X \cap U$ and $Y \cap U$
+correspond to the ideals $I \subset A$ and $J \subset A$. Then
+$(X \cup Y) \cap U$ corresponds to $I \cap J \subset A$
+and $X \cap Y \cap U$ corresponds to $I + J \subset A$.
+Thus exactness follows from the exactness of
+$$
+0 \to A/I \cap J \to A/I \times A/J \to A/(I + J) \to 0
+$$
+To show the diagram is cocartesian, suppose we are given a scheme $T$
+and morphisms of schemes $f : X \to T$, $g : Y \to T$ agreeing
+as morphisms $X \cap Y \to T$. Goal: Show there exists a unique
+morphism $h : X \cup Y \to T$ agreeing with $f$ and $g$.
+To construct $h$ we may work affine locally on $X \cup Y$, see
+Schemes, Section \ref{schemes-section-glueing-schemes}.
+If $s \in X$, $s \not \in Y$, then $X \to X \cup Y$ is
+an isomorphism in a neighbourhood of $s$ and it is clear
+how to construct $h$. Similarly for $s \in Y$, $s \not \in X$.
+For $s \in X \cap Y$ we can pick an affine open
+$V = \Spec(B) \subset T$ containing $f(s) = g(s)$.
+Then we can choose an affine open $U = \Spec(A) \subset S$
+containing $s$ such that $f(X \cap U)$ and $g(Y \cap U)$
+are contained in $V$. The morphisms $f|_{X \cap U}$
+and $g|_{Y \cap V}$ into $V$ correspond to ring maps
+$$
+B \to A/I
+\quad\text{and}\quad
+B \to A/J
+$$
+which agree as maps into $A/(I + J)$. By the short exact sequence
+displayed above there is a unique lift of these ring homomorphism
+to a ring map $B \to A/I \cap J$ as desired.
+\end{proof}
+
+
+
+
+
+
+
+
+

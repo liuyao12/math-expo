@@ -1,0 +1,193 @@
+\section{Functoriality for quasi-coherent modules}
+\label{section-quasi-coherent}
+
+\noindent
+Let $X$ be a scheme. We denote $\QCoh(\mathcal{O}_X)$ the
+category of quasi-coherent $\mathcal{O}_X$-modules as defined in
+Modules, Definition \ref{modules-definition-quasi-coherent}.
+We have seen in
+Section \ref{section-quasi-coherent-affine}
+that the category $\QCoh(\mathcal{O}_X)$ has a lot of good properties
+when $X$ is affine. Since the property of being quasi-coherent is
+local on $X$, these properties are inherited by the category
+of quasi-coherent sheaves on any scheme $X$. We enumerate them here.
+\begin{enumerate}
+\item A sheaf of $\mathcal{O}_X$-modules $\mathcal{F}$ is
+quasi-coherent if and only if the restriction of $\mathcal{F}$
+to each affine open $U = \Spec(R)$ is of the form
+$\widetilde M$ for some $R$-module $M$.
+\item A sheaf of $\mathcal{O}_X$-modules $\mathcal{F}$ is
+quasi-coherent if and only if the restriction of $\mathcal{F}$
+to each of the members of an affine open covering is quasi-coherent.
+\item Any direct sum of quasi-coherent sheaves is quasi-coherent.
+\item Any colimit of quasi-coherent sheaves is quasi-coherent.
+\item
+\label{item-kernel}
+The kernel and cokernel of a morphism of quasi-coherent sheaves
+is quasi-coherent.
+\item Given a short exact sequence of $\mathcal{O}_X$-modules
+$0 \to \mathcal{F}_1 \to \mathcal{F}_2 \to \mathcal{F}_3 \to 0$
+if two out of three are quasi-coherent so is the third.
+\item Given a morphism of schemes $f : Y \to X$ the pullback
+of a quasi-coherent $\mathcal{O}_X$-module is a quasi-coherent
+$\mathcal{O}_Y$-module. See
+Modules, Lemma \ref{modules-lemma-pullback-quasi-coherent}.
+\item Given two quasi-coherent $\mathcal{O}_X$-modules
+the tensor product is quasi-coherent, see
+Modules, Lemma \ref{modules-lemma-tensor-product-permanence}.
+\item Given a quasi-coherent $\mathcal{O}_X$-module $\mathcal{F}$
+the tensor, symmetric and exterior algebras on $\mathcal{F}$
+are quasi-coherent, see
+Modules, Lemma \ref{modules-lemma-whole-tensor-algebra-permanence}.
+\item Given two quasi-coherent $\mathcal{O}_X$-modules
+$\mathcal{F}$, $\mathcal{G}$ such that $\mathcal{F}$
+is of finite presentation, then the internal hom
+$\SheafHom_{\mathcal{O}_X}(\mathcal{F}, \mathcal{G})$
+is quasi-coherent, see
+Modules, Lemma \ref{modules-lemma-internal-hom-locally-kernel-direct-sum}
+and (\ref{item-kernel}) above.
+\end{enumerate}
+On the other hand, it is in general not the case that the
+pushforward of a quasi-coherent module is quasi-coherent.
+Here is a case where this does hold.
+
+\begin{lemma}
+\label{lemma-push-forward-quasi-coherent}
+Let $f : X \to S$ be a morphism of schemes.
+If $f$ is quasi-compact and quasi-separated then
+$f_*$ transforms quasi-coherent $\mathcal{O}_X$-modules
+into quasi-coherent $\mathcal{O}_S$-modules.
+\end{lemma}
+
+\begin{proof}
+The question is local on $S$ and hence we may assume that
+$S$ is affine. Because $X$ is quasi-compact we may write
+$X = \bigcup_{i = 1}^n U_i$ with each $U_i$ open affine.
+Because $f$ is quasi-separated we may write
+$U_i \cap U_j = \bigcup_{k = 1}^{n_{ij}} U_{ijk}$ for some
+affine open $U_{ijk}$, see Lemma \ref{lemma-characterize-quasi-separated}.
+Denote $f_i : U_i \to S$ and $f_{ijk} : U_{ijk} \to S$ the
+restrictions of $f$. For any open $V$ of $S$ and any sheaf
+$\mathcal{F}$ on $X$ we have
+\begin{eqnarray*}
+f_*\mathcal{F}(V) & = & \mathcal{F}(f^{-1}V) \\
+& = &
+\Ker\left(
+\bigoplus\nolimits_i \mathcal{F}(f^{-1}V \cap U_i)
+\to
+\bigoplus\nolimits_{i, j, k} \mathcal{F}(f^{-1}V \cap U_{ijk})\right) \\
+& = &
+\Ker\left(
+\bigoplus\nolimits_i f_{i, *}(\mathcal{F}|_{U_i})(V)
+\to
+\bigoplus\nolimits_{i, j, k} f_{ijk, *}(\mathcal{F}|_{U_{ijk}})(V)\right) \\
+& = &
+\Ker\left(
+\bigoplus\nolimits_i f_{i, *}(\mathcal{F}|_{U_i})
+\to
+\bigoplus\nolimits_{i, j, k} f_{ijk, *}(\mathcal{F}|_{U_{ijk}})\right)(V)
+\end{eqnarray*}
+In other words there is an exact sequence of sheaves
+$$
+0 \to f_*\mathcal{F}
+\to \bigoplus f_{i, *}\mathcal{F}_i
+\to \bigoplus f_{ijk, *}\mathcal{F}_{ijk}
+$$
+where $\mathcal{F}_i, \mathcal{F}_{ijk}$ denotes the
+restriction of $\mathcal{F}$ to the corresponding open.
+If $\mathcal{F}$ is a quasi-coherent $\mathcal{O}_X$-module
+then $\mathcal{F}_i$ is a quasi-coherent $\mathcal{O}_{U_i}$-module
+and $\mathcal{F}_{ijk}$ is a quasi-coherent $\mathcal{O}_{U_{ijk}}$-module.
+Hence by Lemma \ref{lemma-widetilde-pullback} we see that the second and
+third term of the exact sequence are quasi-coherent
+$\mathcal{O}_S$-modules. Thus we conclude that
+$f_*\mathcal{F}$ is a quasi-coherent $\mathcal{O}_S$-module.
+\end{proof}
+
+\noindent
+Using this we can characterize (closed) immersions of schemes
+as follows.
+
+\begin{lemma}
+\label{lemma-characterize-closed-immersions}
+Let $f : X \to Y$ be a morphism of schemes.
+Suppose that
+\begin{enumerate}
+\item $f$ induces a homeomorphism of $X$ with a
+closed subset of $Y$, and
+\item $f^\sharp : \mathcal{O}_Y \to f_*\mathcal{O}_X$
+is surjective.
+\end{enumerate}
+Then $f$ is a closed immersion of schemes.
+\end{lemma}
+
+\begin{proof}
+Assume (1) and (2). By (1) the morphism $f$ is quasi-compact
+(see Topology, Lemma \ref{topology-lemma-closed-in-quasi-compact}).
+Conditions (1) and (2) imply conditions (1) and (2) of
+Lemma \ref{lemma-injective-points-surjective-stalks}.
+Hence $f : X \to Y$ is a monomorphism. In particular, $f$
+is separated, see Lemma \ref{lemma-monomorphism-separated}.
+Hence Lemma \ref{lemma-push-forward-quasi-coherent}
+above applies and we conclude that $f_*\mathcal{O}_X$ is a quasi-coherent
+$\mathcal{O}_Y$-module. Therefore the kernel of
+$\mathcal{O}_Y \to f_*\mathcal{O}_X$ is quasi-coherent
+by Lemma \ref{lemma-extension-quasi-coherent}. Since a quasi-coherent
+sheaf is locally generated by sections (see
+Modules, Definition \ref{modules-definition-quasi-coherent})
+this implies that $f$ is a closed immersion, see
+Definition \ref{definition-closed-immersion-locally-ringed-spaces}.
+\end{proof}
+
+\noindent
+We can use this lemma to prove the following lemma.
+
+\begin{lemma}
+\label{lemma-composition-immersion}
+A composition of immersions of schemes is an immersion,
+a composition of closed immersions of schemes is a closed immersion, and
+a composition of open immersions of schemes is an open immersion.
+\end{lemma}
+
+\begin{proof}
+This is clear for the case of open immersions since an open subspace of
+an open subspace is also an open subspace.
+
+\medskip\noindent
+Suppose $a : Z \to Y$ and $b : Y \to X$ are closed immersions of schemes.
+We will verify that $c = b \circ a$ is also a closed immersion.
+The assumption implies that $a$ and $b$ are homeomorphisms onto closed subsets,
+and hence also $c = b \circ a$ is a homeomorphism onto a closed subset.
+Moreover, the map $\mathcal{O}_X \to c_*\mathcal{O}_Z$ is surjective
+since it factors as the composition of the surjective maps
+$\mathcal{O}_X \to b_*\mathcal{O}_Y$ and
+$b_*\mathcal{O}_Y \to b_*a_*\mathcal{O}_Z$ (surjective as $b_*$ is exact,
+see Modules, Lemma \ref{modules-lemma-i-star-exact}).
+Hence by Lemma \ref{lemma-characterize-closed-immersions}
+above $c$ is a closed immersion.
+
+\medskip\noindent
+Finally, we come to the case of immersions.
+Suppose $a : Z \to Y$ and $b : Y \to X$ are immersions of schemes.
+This means there exist open subschemes
+$V \subset Y$ and $U \subset X$ such that
+$a(Z) \subset V$, $b(Y) \subset U$ and $a : Z \to V$
+and $b : Y \to U$ are closed immersions.
+Since the topology on $Y$ is induced from the topology on
+$U$ we can find an open $U' \subset U$ such that
+$V = b^{-1}(U')$. Then we see that
+$Z \to V = b^{-1}(U') \to U'$ is a composition of
+closed immersions and hence a closed immersion.
+This proves that $Z \to X$ is an immersion and we win.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+

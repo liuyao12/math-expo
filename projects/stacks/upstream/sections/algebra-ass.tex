@@ -1,0 +1,443 @@
+\section{Associated primes}
+\label{section-ass}
+
+\noindent
+Here is the standard definition. For non-Noetherian rings and non-finite
+modules it may be more appropriate to use the definition in
+Section \ref{section-weakly-ass}.
+
+\begin{definition}
+\label{definition-associated}
+Let $R$ be a ring. Let $M$ be an $R$-module.
+A prime $\mathfrak p$ of $R$ is {\it associated} to $M$
+if there exists an element $m \in M$ whose annihilator
+is $\mathfrak p$.
+The set of all such primes is denoted $\text{Ass}_R(M)$
+or $\text{Ass}(M)$.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-ass-support}
+Let $R$ be a ring. Let $M$ be an $R$-module.
+Then $\text{Ass}(M) \subset \text{Supp}(M)$.
+\end{lemma}
+
+\begin{proof}
+If $m \in M$ has annihilator $\mathfrak p$, then in particular
+no element of $R \setminus \mathfrak p$ annihilates $m$.
+Hence $m$ is a nonzero element of $M_{\mathfrak p}$, i.e.,
+$\mathfrak p \in \text{Supp}(M)$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-ass}
+Let $R$ be a ring. Let $0 \to M' \to M \to M'' \to 0$ be a short exact sequence
+of $R$-modules. Then $\text{Ass}(M') \subset \text{Ass}(M)$ and
+$\text{Ass}(M) \subset \text{Ass}(M') \cup \text{Ass}(M'')$.
+Also $\text{Ass}(M' \oplus M'') = \text{Ass}(M') \cup \text{Ass}(M'')$.
+\end{lemma}
+
+\begin{proof}
+If $m' \in M'$, then the annihilator of $m'$ viewed as an element of $M'$
+is the same as the annihilator of $m'$ viewed as an element of $M$. Hence
+the inclusion $\text{Ass}(M') \subset \text{Ass}(M)$. Let $m \in M$
+be an element whose annihilator is a prime ideal $\mathfrak p$. If there
+exists a $g \in R$, $g \not \in \mathfrak p$ such that $m' = gm \in M'$
+then the annihilator of $m'$ is $\mathfrak p$. If there does not
+exist a $g \in R$, $g \not \in \mathfrak p$ such that $gm \in M'$,
+then the annilator of the image $m'' \in M''$ of $m$ is $\mathfrak p$.
+This proves the inclusion
+$\text{Ass}(M) \subset \text{Ass}(M') \cup \text{Ass}(M'')$.
+We omit the proof of the final statement.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-ass-filter}
+Let $R$ be a ring, and $M$ an $R$-module.
+Suppose there exists a filtration by $R$-submodules
+$$
+0 = M_0 \subset M_1 \subset \ldots \subset M_n = M
+$$
+such that each quotient $M_i/M_{i-1}$ is isomorphic to $R/\mathfrak p_i$
+for some prime ideal $\mathfrak p_i$ of $R$.
+Then $\text{Ass}(M) \subset \{\mathfrak p_1, \ldots, \mathfrak p_n\}$.
+\end{lemma}
+
+\begin{proof}
+By induction on the length $n$ of the filtration $\{ M_i \}$.
+Pick $m \in M$ whose annihilator is a prime $\mathfrak p$.
+If $m \in M_{n-1}$ we are done by induction. If not,
+then $m$ maps to a nonzero element of $M/M_{n-1} \cong
+R/\mathfrak p_n$. Hence we have $\mathfrak p \subset \mathfrak p_n$.
+If equality does not hold, then we can find $f \in \mathfrak p_n$,
+$f \not\in \mathfrak p$. In this case the annihilator of $fm$ is still
+$\mathfrak p$ and $fm \in M_{n-1}$. Thus we win by induction.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-finite-ass}
+Let $R$ be a Noetherian ring.
+Let $M$ be a finite $R$-module.
+Then $\text{Ass}(M)$ is finite.
+\end{lemma}
+
+\begin{proof}
+Immediate from Lemma \ref{lemma-ass-filter} and
+Lemma \ref{lemma-filter-Noetherian-module}.
+\end{proof}
+
+\begin{proposition}
+\label{proposition-minimal-primes-associated-primes}
+Let $R$ be a Noetherian ring.
+Let $M$ be a finite $R$-module.
+The following sets of primes are the same:
+\begin{enumerate}
+\item The minimal primes in the support of $M$.
+\item The minimal primes in $\text{Ass}(M)$.
+\item For any filtration $0 = M_0 \subset M_1 \subset \ldots
+\subset M_{n-1} \subset M_n = M$ with $M_i/M_{i-1} \cong R/\mathfrak p_i$
+the minimal primes of the set $\{\mathfrak p_i\}$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Choose a filtration as in (3).
+In Lemma \ref{lemma-filter-minimal-primes-in-support}
+we have seen that the sets in (1) and (3) are equal.
+
+\medskip\noindent
+Let $\mathfrak p$ be a minimal element of the set $\{\mathfrak p_i\}$.
+Let $i$ be minimal such that $\mathfrak p = \mathfrak p_i$.
+Pick $m \in M_i$, $m \not \in M_{i-1}$. The annihilator of $m$
+is contained in $\mathfrak p_i = \mathfrak p$ and contains
+$\mathfrak p_1 \mathfrak p_2 \ldots \mathfrak p_i$. By our choice of
+$i$ and $\mathfrak p$ we have $\mathfrak p_j \not \subset \mathfrak p$
+for $j < i$ and hence we have
+$\mathfrak p_1 \mathfrak p_2 \ldots \mathfrak p_{i - 1}
+\not \subset \mathfrak p_i$. Pick
+$f \in \mathfrak p_1 \mathfrak p_2 \ldots \mathfrak p_{i - 1}$,
+$f \not \in \mathfrak p$. Then $fm$ has annihilator $\mathfrak p$.
+In this way we see that $\mathfrak p$ is an associated prime of $M$.
+By Lemma \ref{lemma-ass-support} we have $\text{Ass}(M) \subset \text{Supp}(M)$
+and hence $\mathfrak p$ is minimal in $\text{Ass}(M)$.
+Thus the set of primes in (1) is contained in the set of primes of (2).
+
+\medskip\noindent
+Let $\mathfrak p$ be a minimal element of $\text{Ass}(M)$.
+Since $\text{Ass}(M) \subset \text{Supp}(M)$ there is a minimal
+element $\mathfrak q$ of $\text{Supp}(M)$ with
+$\mathfrak q \subset \mathfrak p$. We have just shown that
+$\mathfrak q \in \text{Ass}(M)$. Hence $\mathfrak q = \mathfrak p$
+by minimality of $\mathfrak p$. Thus the set of primes in (2) is
+contained in the set of primes of (1).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-ass-zero}
+\begin{slogan}
+Over a Noetherian ring each nonzero module has an associated prime.
+\end{slogan}
+Let $R$ be a Noetherian ring. Let $M$ be an $R$-module.
+Then
+$$
+M = (0) \Leftrightarrow \text{Ass}(M) = \emptyset.
+$$
+\end{lemma}
+
+\begin{proof}
+If $M = (0)$, then $\text{Ass}(M) = \emptyset$ by definition.
+If $M \not = 0$, pick any nonzero finitely generated submodule
+$M' \subset M$, for example a submodule generated by a single nonzero
+element. By
+Lemma \ref{lemma-support-zero}
+we see that $\text{Supp}(M')$ is nonempty. By
+Proposition \ref{proposition-minimal-primes-associated-primes}
+this implies that $\text{Ass}(M')$ is nonempty.
+By
+Lemma \ref{lemma-ass}
+this implies $\text{Ass}(M) \not = \emptyset$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-ass-minimal-prime-support}
+Let $R$ be a Noetherian ring.
+Let $M$ be an $R$-module.
+Any $\mathfrak p \in \text{Supp}(M)$ which is minimal among the elements
+of $\text{Supp}(M)$ is an element of $\text{Ass}(M)$.
+\end{lemma}
+
+\begin{proof}
+If $M$ is a finite $R$-module, then this is a consequence of
+Proposition \ref{proposition-minimal-primes-associated-primes}.
+In general write $M = \bigcup M_\lambda$ as the union of its
+finite submodules, and use that
+$\text{Supp}(M) = \bigcup \text{Supp}(M_\lambda)$
+and
+$\text{Ass}(M) = \bigcup \text{Ass}(M_\lambda)$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-ass-zero-divisors}
+Let $R$ be a Noetherian ring.
+Let $M$ be an $R$-module.
+The union $\bigcup_{\mathfrak q \in \text{Ass}(M)} \mathfrak q$
+is the set of elements of $R$ which are zerodivisors on $M$.
+\end{lemma}
+
+\begin{proof}
+Any element in any associated prime clearly is a zerodivisor on $M$.
+Conversely, suppose $x \in R$ is a zerodivisor on $M$.
+Consider the submodule $N = \{m \in M \mid xm = 0\}$.
+Since $N$ is not zero it has an associated prime $\mathfrak q$ by
+Lemma \ref{lemma-ass-zero}.
+Then $x \in \mathfrak q$ and $\mathfrak q$
+is an associated prime of $M$ by
+Lemma \ref{lemma-ass}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-one-equation-module}
+Let $R$ is a Noetherian local ring, $M$ a finite $R$-module, and
+$f \in \mathfrak m$ an element of the maximal ideal of $R$. Then
+$$
+\dim(\text{Supp}(M/fM)) \leq
+\dim(\text{Supp}(M)) \leq
+\dim(\text{Supp}(M/fM)) + 1
+$$
+If $f$ is not in any of the minimal primes of the support of $M$
+(for example if $f$ is a nonzerodivisor on $M$), then equality
+holds for the right inequality.
+\end{lemma}
+
+\begin{proof}
+(The parenthetical statement follows from Lemma \ref{lemma-ass-zero-divisors}.)
+The first inequality follows from $\text{Supp}(M/fM) \subset \text{Supp}(M)$,
+see Lemma \ref{lemma-support-quotient}. For the second inequality, note
+that $\text{Supp}(M/fM) = \text{Supp}(M) \cap V(f)$, see
+Lemma \ref{lemma-support-quotient}. It follows, for example by
+Lemma \ref{lemma-filter-primes-in-support} and elementary properties
+of dimension, that it suffices to show
+$\dim V(\mathfrak p) \leq \dim (V(\mathfrak p) \cap V(f)) + 1$
+for primes $\mathfrak p$ of $R$. This is a consequence of
+Lemma \ref{lemma-one-equation}.
+Finally, if $f$ is not contained in any minimal
+prime of the support of $M$, then the chains of primes in
+$\text{Supp}(M/fM)$ all give
+rise to chains in $\text{Supp}(M)$ which are at least one step away
+from being maximal.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-ass-functorial}
+Let $\varphi : R \to S$ be a ring map.
+Let $M$ be an $S$-module.
+Then $\Spec(\varphi)(\text{Ass}_S(M)) \subset \text{Ass}_R(M)$.
+\end{lemma}
+
+\begin{proof}
+If $\mathfrak q \in \text{Ass}_S(M)$, then there exists an $m$ in $M$
+such that the annihilator of $m$ in $S$ is $\mathfrak q$. Then the annihilator
+of $m$ in $R$ is $\mathfrak q \cap R$.
+\end{proof}
+
+\begin{remark}
+\label{remark-ass-reverse-functorial}
+Let $\varphi : R \to S$ be a ring map.
+Let $M$ be an $S$-module.
+Then it is not always the case that
+$\Spec(\varphi)(\text{Ass}_S(M)) \supset \text{Ass}_R(M)$.
+For example, consider the ring map
+$R = k \to S = k[x_1, x_2, x_3, \ldots]/(x_i^2)$ and $M = S$.
+Then $\text{Ass}_R(M)$ is not empty, but $\text{Ass}_S(S)$ is empty.
+\end{remark}
+
+\begin{lemma}
+\label{lemma-ass-functorial-Noetherian}
+Let $\varphi : R \to S$ be a ring map.
+Let $M$ be an $S$-module. If $S$ is Noetherian, then
+$\Spec(\varphi)(\text{Ass}_S(M)) = \text{Ass}_R(M)$.
+\end{lemma}
+
+\begin{proof}
+We have already seen in
+Lemma \ref{lemma-ass-functorial}
+that
+$\Spec(\varphi)(\text{Ass}_S(M)) \subset \text{Ass}_R(M)$.
+For the converse, choose a prime $\mathfrak p \in \text{Ass}_R(M)$.
+Let $m \in M$ be an element such that the annihilator of $m$ in $R$
+is $\mathfrak p$. Let $I = \{g \in S \mid gm = 0\}$ be the annihilator
+of $m$ in $S$. Then $R/\mathfrak p \subset S/I$ is injective.
+Combining Lemmas \ref{lemma-injective-minimal-primes-in-image} and
+\ref{lemma-minimal-prime-image-minimal-prime} we see that
+there is a prime $\mathfrak q \subset S$ minimal over $I$
+mapping to $\mathfrak p$. By
+Proposition \ref{proposition-minimal-primes-associated-primes}
+we see that $\mathfrak q$ is an associated prime of $S/I$, hence
+$\mathfrak q$ is an associated prime of $M$ by
+Lemma \ref{lemma-ass}
+and we win.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-ass-quotient-ring}
+Let $R$ be a ring.
+Let $I$ be an ideal.
+Let $M$ be an $R/I$-module.
+Via the canonical injection
+$\Spec(R/I) \to \Spec(R)$
+we have $\text{Ass}_{R/I}(M) = \text{Ass}_R(M)$.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-associated-primes-localize}
+Let $R$ be a ring.
+Let $M$ be an $R$-module.
+Let $\mathfrak p \subset R$ be a prime.
+\begin{enumerate}
+\item If $\mathfrak p \in \text{Ass}(M)$ then
+$\mathfrak pR_{\mathfrak p} \in \text{Ass}(M_{\mathfrak p})$.
+\item If $\mathfrak p$ is finitely generated then the converse holds
+as well.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+If $\mathfrak p \in \text{Ass}(M)$ there exists an element $m \in M$
+whose annihilator is $\mathfrak p$. As localization is exact
+(Proposition \ref{proposition-localization-exact})
+we see that the annihilator of $m/1$ in
+$M_{\mathfrak p}$ is $\mathfrak pR_{\mathfrak p}$ hence (1) holds.
+Assume $\mathfrak pR_{\mathfrak p} \in \text{Ass}(M_{\mathfrak p})$
+and $\mathfrak p = (f_1, \ldots, f_n)$. Let $m/g$ be an element of
+$M_{\mathfrak p}$ whose annihilator is $\mathfrak pR_{\mathfrak p}$.
+This implies that the annihilator of $m$ is contained in $\mathfrak p$.
+As $f_i m/g = 0$ in $M_{\mathfrak p}$ we see there exists a
+$g_i \in R$, $g_i \not \in \mathfrak p$ such that $g_i f_i m = 0$ in $M$.
+Combined we see the annihilator of $g_1\ldots g_nm$ is $\mathfrak p$. Hence
+$\mathfrak p \in \text{Ass}(M)$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-localize-ass}
+Let $R$ be a ring. Let $M$ be an $R$-module.
+Let $S \subset R$ be a multiplicative subset.
+Via the canonical injection $\Spec(S^{-1}R) \to \Spec(R)$
+we have
+\begin{enumerate}
+\item $\text{Ass}_R(S^{-1}M) = \text{Ass}_{S^{-1}R}(S^{-1}M)$,
+\item
+$\text{Ass}_R(M) \cap \Spec(S^{-1}R) \subset \text{Ass}_R(S^{-1}M)$, and
+\item if $R$ is Noetherian this inclusion is an equality.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+For $m \in S^{-1}M$, let $I \subset R$ and $J \subset S^{-1}R$ be the
+annihilators of $m$. Then $I$ is the inverse image of $J$ by the map
+$R \to S^{-1}R$ and $J = S^{-1}I$. The equality in (1) follows by the
+description of the map $\Spec(S^{-1}R) \to \Spec(R)$ in
+Lemma \ref{lemma-spec-localization}.
+For $m \in M$, let $I \subset R$ be the annihilator of $m$ in $R$
+and let $J \subset S^{-1}R$ be the annihilator of $m/1 \in S^{-1}M$.
+We have $J = S^{-1}I$ which implies (2). The equality in the
+Noetherian case follows from Lemma \ref{lemma-associated-primes-localize}
+since for $\mathfrak p \in R$, $S \cap \mathfrak p = \emptyset$ we have
+$M_{\mathfrak p} = (S^{-1}M)_{S^{-1}\mathfrak p}$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-localize-ass-nonzero-divisors}
+Let $R$ be a ring. Let $M$ be an $R$-module.
+Let $S \subset R$ be a multiplicative subset.
+Assume that every $s \in S$ is a nonzerodivisor on $M$.
+Then
+$$
+\text{Ass}_R(M) = \text{Ass}_R(S^{-1}M).
+$$
+\end{lemma}
+
+\begin{proof}
+As $M \subset S^{-1}M$ by assumption we get the inclusion
+$\text{Ass}(M) \subset \text{Ass}(S^{-1}M)$ from
+Lemma \ref{lemma-ass}.
+Conversely, suppose that $n/s \in S^{-1}M$ is an element whose
+annihilator is a prime ideal $\mathfrak p$. Then the annihilator
+of $n \in M$ is also $\mathfrak p$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-ideal-nonzerodivisor}
+Let $R$ be a Noetherian local ring with
+maximal ideal $\mathfrak m$. Let $I \subset \mathfrak m$
+be an ideal. Let $M$ be a finite $R$-module.
+The following are equivalent:
+\begin{enumerate}
+\item There exists an $x \in I$ which is not a zerodivisor on $M$.
+\item We have $I \not \subset \mathfrak q$ for all
+$\mathfrak q \in \text{Ass}(M)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+If there exists a nonzerodivisor $x$ in $I$,
+then $x$ clearly cannot be in any associated
+prime of $M$. Conversely, suppose $I \not \subset \mathfrak q$
+for all $\mathfrak q \in \text{Ass}(M)$. In this case we can
+choose $x \in I$, $x \not \in \mathfrak q$ for all
+$\mathfrak q \in \text{Ass}(M)$ by Lemmas
+\ref{lemma-finite-ass} and \ref{lemma-silly}.
+By Lemma \ref{lemma-ass-zero-divisors} the element $x$
+is not a zerodivisor on $M$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-zero-at-ass-zero}
+Let $R$ be a ring. Let $M$ be an $R$-module. If $R$ is Noetherian
+the map
+$$
+M
+\longrightarrow
+\prod\nolimits_{\mathfrak p \in \text{Ass}(M)} M_{\mathfrak p}
+$$
+is injective.
+\end{lemma}
+
+\begin{proof}
+Let $x \in M$ be an element of the kernel of the map.
+Then if $\mathfrak p$ is an associated prime of $Rx \subset M$
+we see on the one hand that $\mathfrak p \in \text{Ass}(M)$
+(Lemma \ref{lemma-ass}) and
+on the other hand that $(Rx)_{\mathfrak p} \subset M_{\mathfrak p}$
+is not zero. This contradiction shows that $\text{Ass}(Rx) = \emptyset$.
+Hence $Rx = 0$ by
+Lemma \ref{lemma-ass-zero}.
+\end{proof}
+
+\noindent
+This lemma should probably be put somewhere else.
+
+\begin{lemma}
+\label{lemma-dim-not-zero-exists-nonzerodivisor-nonunit}
+Let $k$ be a field. Let $S$ be a finite type $k$ algebra.
+If $\dim(S) > 0$, then there exists an element $f \in S$
+which is a nonzerodivisor and a nonunit.
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-finite-ass} the ring $S$ has finitely many associated
+prime ideals. By Lemma \ref{lemma-finite-type-algebra-finite-nr-primes}
+the ring $S$ has infinitely many maximal ideals. Hence we can choose
+a maximal ideal $\mathfrak m \subset S$ which is not an associated prime
+of $S$. By prime avoidance (Lemma \ref{lemma-silly}),
+we can choose a nonzero $f \in \mathfrak m$ 
+which is not contained in any of the associated primes of $S$.
+By Lemma \ref{lemma-ass-zero-divisors} the element $f$ is a nonzerodivisor
+and as $f \in \mathfrak m$ we see that $f$ is not a unit.
+\end{proof}
+
+
+

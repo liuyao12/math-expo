@@ -1,0 +1,91 @@
+\section{Krull dimension}
+\label{section-krull-dimension}
+
+\begin{definition}
+\label{definition-Krull}
+Let $X$ be a topological space.
+\begin{enumerate}
+\item A {\it chain of irreducible closed subsets} of $X$
+is a sequence $Z_0 \subset Z_1 \subset \ldots \subset Z_n \subset X$
+with $Z_i$ closed irreducible and $Z_i \not = Z_{i + 1}$ for
+$i = 0, \ldots, n - 1$.
+\item The {\it length} of a chain
+$Z_0 \subset Z_1 \subset \ldots \subset Z_n \subset X$
+of irreducible closed subsets of $X$ is the
+integer $n$.
+\item The {\it dimension} or more precisely the {\it Krull dimension}
+$\dim(X)$ of $X$ is the element of
+$\{-\infty, 0, 1, 2, 3, \ldots, \infty\}$ defined by the formula:
+$$
+\dim(X) =
+\sup \{\text{lengths of chains of irreducible closed subsets}\}
+$$
+Thus $\dim(X) = -\infty$ if and only if $X$ is the empty space.
+\item Let $x \in X$.
+The {\it Krull dimension of $X$ at $x$} is defined as
+$$
+\dim_x(X) = \min \{\dim(U), x\in U\subset X\text{ open}\}
+$$
+the minimum of $\dim(U)$ where $U$ runs over the open
+neighbourhoods of $x$ in $X$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+Note that if $U' \subset U \subset X$ are open then
+$\dim(U') \leq \dim(U)$. Hence if $\dim_x(X) = d$ then $x$
+has a fundamental system of open neighbourhoods $U$ with
+$\dim(U) = \dim_x(X)$.
+
+\begin{lemma}
+\label{lemma-dimension-supremum-local-dimensions}
+Let $X$ be a topological space. Then $\dim(X) = \sup \dim_x(X)$
+where the supremum runs over the points $x$ of $X$.
+\end{lemma}
+
+\begin{proof}
+It is clear that $\dim(X) \geq \dim_x(X)$ for all $x \in X$ (see
+discussion following Definition \ref{definition-Krull}).
+Thus an inequality in one direction. For the converse, let $n \geq 0$
+and suppose that $\dim(X) \geq n$. Then we can find a chain of irreducible
+closed subsets $Z_0 \subset Z_1 \subset \ldots \subset Z_n \subset X$.
+Pick $x \in Z_0$. For every open neighbourhood $U$ of $x$ we get
+a chain of irreducible closed subsets
+$$
+Z_0 \cap U \subset Z_1 \cap U \subset \ldots \subset Z_n \cap U
+$$
+in $U$. Namely, the sets $U \cap Z_i$ are irreducible closed in $U$ and the
+inclusions are strict (details omitted; hint: the closure of $U \cap Z_i$
+is $Z_i$).
+In this way we see that $\dim_x(X) \geq n$ which proves the other
+inequality.
+\end{proof}
+
+\begin{example}
+\label{example-Krull-Rn}
+The Krull dimension of the usual Euclidean space
+$\mathbf{R}^n$ is $0$.
+\end{example}
+
+\begin{example}
+\label{example-krull-2set}
+Let $X = \{s, \eta\}$ with open sets given
+by $\{\emptyset, \{\eta\}, \{s, \eta\}\}$.
+In this case a maximal chain of irreducible
+closed subsets is $\{s\} \subset \{s, \eta\}$.
+Hence $\dim(X) = 1$. It is easy to generalize
+this example to get a $(n + 1)$-element topological
+space of Krull dimension $n$.
+\end{example}
+
+\begin{definition}
+\label{definition-equidimensional}
+Let $X$ be a topological space.
+We say that $X$ is {\it equidimensional} if every irreducible
+component of $X$ has the same dimension.
+\end{definition}
+
+
+
+
+

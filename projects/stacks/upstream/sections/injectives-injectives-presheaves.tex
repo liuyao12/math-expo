@@ -1,0 +1,105 @@
+\section{Abelian presheaves on a category}
+\label{section-injectives-presheaves}
+
+\noindent
+Let $\mathcal{C}$ be a category. Recall that this means that
+$\Ob(\mathcal{C})$ is a set. On the one hand, consider abelian
+presheaves on $\mathcal{C}$, see
+Sites, Section \ref{sites-section-presheaves}.
+On the other hand, consider families of abelian groups
+indexed by elements of $\Ob(\mathcal{C})$; in other
+words presheaves on the discrete category with underlying set
+of objects $\Ob(\mathcal{C})$. Let us denote this
+discrete category simply $\Ob(\mathcal{C})$.
+There is a natural functor
+$$
+i : \Ob(\mathcal{C}) \longrightarrow \mathcal{C}
+$$
+and hence there is a natural restriction or forgetful functor
+$$
+v = i^p :
+\textit{PAb}(\mathcal{C})
+\longrightarrow
+\textit{PAb}(\Ob(\mathcal{C}))
+$$
+compare Sites, Section \ref{sites-section-functoriality-PSh}.
+We will denote presheaves
+on $\mathcal{C}$ by $B$ and presheaves on
+$\Ob(\mathcal{C})$ by $A$.
+
+\medskip\noindent
+There are also two functors, namely $i_p$ and ${}_pi$
+which assign an abelian presheaf on $\mathcal{C}$
+to an abelian presheaf on $\Ob(\mathcal{C})$, see
+Sites, Sections \ref{sites-section-functoriality-PSh} and
+\ref{sites-section-more-functoriality-PSh}.
+Here we will use $u = {}_pi$ which is defined (in the case at hand)
+as follows:
+$$
+uA(U) = \prod\nolimits_{U' \to U} A(U').
+$$
+So an element is a family $(a_\phi)_\phi$ with $\phi$
+ranging through all morphisms in $\mathcal{C}$ with target $U$.
+The restriction map on $uA$ corresponding to $g : V \to U$
+maps our element $(a_\phi)_\phi$ to the element
+$(a_{g \circ \psi})_\psi$.
+
+\medskip\noindent
+There is a canonical surjective map $vuA \to A$ and a canonical
+injective map $B \to uvB$. We leave it to the reader to show that
+$$
+\Mor_{\textit{PAb}(\mathcal{C})}(B, uA)
+=
+\Mor_{\textit{PAb}(\Ob(\mathcal{C}))}(vB, A).
+$$
+in this simple case; the general case is in
+Sites, Section \ref{sites-section-functoriality-PSh}.
+Thus the pair $(u, v)$ is an example of a pair of adjoint
+functors, see
+Categories, Section \ref{categories-section-adjoint}.
+
+\medskip\noindent
+At this point we can list the following facts
+about the situation above.
+\begin{enumerate}
+\item The functors $u$ and $v$ are exact. This follows from
+the explicit description of these functors given above.
+\item In particular the functor $v$ transforms injective maps
+into injective maps.
+\item The category $\textit{PAb}(\Ob(\mathcal{C}))$
+has enough injectives.
+\item In fact there is a functorial injective embedding
+$A \mapsto \big(A \to J(A)\big)$ as in
+Homology, Definition \ref{homology-definition-functorial-injective-embedding}.
+Namely, we can take $J(A)$ to be the
+presheaf $U\mapsto J(A(U))$, where
+$J(-)$ is the functor constructed in
+More on Algebra, Section \ref{more-algebra-section-injectives-modules}
+for the ring $\mathbf{Z}$.
+\end{enumerate}
+Putting all of this together gives us the following procedure
+for embedding objects $B$ of $\textit{PAb}(\mathcal{C})$ into
+an injective object: $B \to uJ(vB)$. See
+Homology, Lemma \ref{homology-lemma-adjoint-functorial-injectives}.
+
+\begin{proposition}
+\label{proposition-presheaves-injectives}
+For abelian presheaves on a category there is a functorial injective
+embedding.
+\end{proposition}
+
+\begin{proof}
+See discussion above.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+

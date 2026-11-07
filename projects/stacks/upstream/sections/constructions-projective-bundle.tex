@@ -1,0 +1,299 @@
+\section{Projective bundles}
+\label{section-projective-bundle}
+
+\noindent
+Let $S$ be a scheme.
+Let $\mathcal{E}$ be a quasi-coherent sheaf of $\mathcal{O}_S$-modules.
+By Modules, Lemma \ref{modules-lemma-whole-tensor-algebra-permanence}
+the symmetric algebra $\text{Sym}(\mathcal{E})$ of
+$\mathcal{E}$ over $\mathcal{O}_S$
+is a quasi-coherent sheaf of $\mathcal{O}_S$-algebras.
+Note that it is generated in degree $1$ over $\mathcal{O}_S$.
+Hence it makes sense to apply the construction of the
+previous section to it, specifically Lemmas
+\ref{lemma-relative-proj} and \ref{lemma-apply-relative}.
+
+\begin{definition}
+\label{definition-projective-bundle}
+Let $S$ be a scheme. Let $\mathcal{E}$ be a quasi-coherent
+$\mathcal{O}_S$-module\footnote{The reader may expect here
+the condition that $\mathcal{E}$ is finite locally free. We do not
+do so in order to be consistent with
+\cite[II, Definition 4.1.1]{EGA}.}.
+We denote
+$$
+\pi :
+\mathbf{P}(\mathcal{E}) = \underline{\text{Proj}}_S(\text{Sym}(\mathcal{E}))
+\longrightarrow
+S
+$$
+and we call it the {\it projective bundle associated to $\mathcal{E}$}.
+The symbol $\mathcal{O}_{\mathbf{P}(\mathcal{E})}(n)$
+indicates the invertible $\mathcal{O}_{\mathbf{P}(\mathcal{E})}$-module
+of Lemma \ref{lemma-apply-relative} and is called the $n$th
+{\it twist of the structure sheaf}.
+\end{definition}
+
+\noindent
+According to Lemma \ref{lemma-glue-relative-proj-twists} there are
+canonical $\mathcal{O}_S$-module homomorphisms
+$$
+\text{Sym}^n(\mathcal{E})
+\longrightarrow
+\pi_*\mathcal{O}_{\mathbf{P}(\mathcal{E})}(n)
+\quad\text{equivalently}\quad
+\pi^*\text{Sym}^n(\mathcal{E})
+\longrightarrow
+\mathcal{O}_{\mathbf{P}(\mathcal{E})}(n)
+$$
+for all $n \geq 0$. In particular, for $n = 1$ we have
+$$
+\mathcal{E}
+\longrightarrow
+\pi_*\mathcal{O}_{\mathbf{P}(\mathcal{E})}(1)
+\quad\text{equivalently}\quad
+\pi^*\mathcal{E}
+\longrightarrow
+\mathcal{O}_{\mathbf{P}(\mathcal{E})}(1)
+$$
+and the map $\pi^*\mathcal{E} \to \mathcal{O}_{\mathbf{P}(\mathcal{E})}(1)$
+is a surjection by Lemma \ref{lemma-apply-relative}.
+This is a good way to remember how we have normalized
+our construction of $\mathbf{P}(\mathcal{E})$.
+
+\medskip\noindent
+Warning: In some references the scheme $\mathbf{P}(\mathcal{E})$
+is only defined for $\mathcal{E}$ finite locally free on $S$.
+Moreover sometimes $\mathbf{P}(\mathcal{E})$ is actually defined as our
+$\mathbf{P}(\mathcal{E}^\vee)$ where $\mathcal{E}^\vee$
+is the dual of $\mathcal{E}$ (and this is done only when $\mathcal{E}$ is
+finite locally free).
+
+\medskip\noindent
+Let $S$, $\mathcal{E}$, $\mathbf{P}(\mathcal{E}) \to S$ be as in
+Definition \ref{definition-projective-bundle}. Let $f : T \to S$
+be a scheme over $S$. Let $\psi : f^*\mathcal{E} \to \mathcal{L}$
+be a surjection where $\mathcal{L}$ is an invertible $\mathcal{O}_T$-module.
+The induced graded $\mathcal{O}_T$-algebra map
+$$
+f^*\text{Sym}(\mathcal{E}) = \text{Sym}(f^*\mathcal{E}) \to
+\text{Sym}(\mathcal{L}) = \bigoplus\nolimits_{n \geq 0} \mathcal{L}^{\otimes n}
+$$
+corresponds to a morphism
+$$
+\varphi_{\mathcal{L}, \psi} : T \longrightarrow \mathbf{P}(\mathcal{E})
+$$
+over $S$ by our construction of the relative Proj as the scheme representing
+the functor $F$ in Section \ref{section-relative-proj}. On the other hand,
+given a morphism $\varphi : T \to \mathbf{P}(\mathcal{E})$ over $S$
+we can set $\mathcal{L} = \varphi^*\mathcal{O}_{\mathbf{P}(\mathcal{E})}(1)$
+and $\psi : f^*\mathcal{E} \to \mathcal{L}$ equal to the pullback
+by $\varphi$ of the canonical surjection
+$\pi^*\mathcal{E} \to \mathcal{O}_{\mathbf{P}(\mathcal{E})}(1)$.
+By Lemma \ref{lemma-apply-relative} these constructions
+are inverse bijections between the set of isomorphism classes of pairs
+$(\mathcal{L}, \psi)$ and the set of morphisms
+$\varphi : T \to \mathbf{P}(\mathcal{E})$ over $S$.
+Thus we see that $\mathbf{P}(\mathcal{E})$ represents the functor
+which associates to $f : T \to S$ the set of $\mathcal{O}_T$-module
+quotients of $f^*\mathcal{E}$ which are locally free of rank $1$.
+
+\begin{example}[Projective space of a vector space]
+\label{example-projective-space}
+Let $k$ be a field. Let $V$ be a $k$-vector space. The corresponding
+{\it projective space} is the $k$-scheme
+$$
+\mathbf{P}(V) = \text{Proj}(\text{Sym}(V))
+$$
+where $\text{Sym}(V)$ is the symmetric algebra on $V$ over $k$.
+Of course we have $\mathbf{P}(V) \cong \mathbf{P}^n_k$ if $\dim(V) = n + 1$
+because then the symmetric algebra on $V$ is isomorphic to a polynomial
+ring in $n + 1$ variables. If we
+think of $V$ as a quasi-coherent module on $\Spec(k)$, then $\mathbf{P}(V)$
+is the corresponding projective space bundle over $\Spec(k)$. By the
+discussion above a $k$-valued point $p$ of $\mathbf{P}(V)$ corresponds to
+a surjection of $k$-vector spaces $V \to L_p$ with $\dim(L_p) = 1$.
+More generally, let $X$ be a scheme over $k$, let $\mathcal{L}$ be an
+invertible $\mathcal{O}_X$-module, and let
+$\psi : V \to \Gamma(X, \mathcal{L})$ be a $k$-linear map
+such that $\mathcal{L}$ is generated as an $\mathcal{O}_X$-module
+by the sections in the image of $\psi$. Then the discussion above
+gives a canonical morphism
+$$
+\varphi_{\mathcal{L}, \psi} : X \longrightarrow \mathbf{P}(V)
+$$
+of schemes over $k$ such that there is an isomorphism
+$\theta : \varphi_{\mathcal{L}, \psi}^*\mathcal{O}_{\mathbf{P}(V)}(1)
+\to \mathcal{L}$ and such that $\psi$ agrees with the composition
+$$
+V \to
+\Gamma(\mathbf{P}(V), \mathcal{O}_{\mathbf{P}(V)}(1))
+\to
+\Gamma(X, \varphi_{\mathcal{L}, \psi}^*\mathcal{O}_{\mathbf{P}(V)}(1))
+\to
+\Gamma(X, \mathcal{L})
+$$
+See Lemma \ref{lemma-invertible-map-into-proj}. If
+$V \subset \Gamma(X, \mathcal{L})$ is a subspace, then we will
+denote the morphism constructed above simply as
+$\varphi_{\mathcal{L}, V}$.
+If $\dim(V) = n + 1$ and we choose a basis $v_0, \ldots, v_n$ of $V$
+then the diagram
+$$
+\xymatrix{
+X \ar@{=}[d] \ar[rr]_{\varphi_{\mathcal{L}, \psi}} & &
+\mathbf{P}(V) \ar[d]^{\cong} \\
+X \ar[rr]^{\varphi_{(\mathcal{L}, (s_0, \ldots, s_n))}} & &
+\mathbf{P}^n_k
+}
+$$
+is commutative, where $s_i = \psi(v_i) \in \Gamma(X, \mathcal{L})$, where
+$\varphi_{(\mathcal{L}, (s_0, \ldots, s_n))}$
+is as in Section \ref{section-projective-space},
+and where the right vertical arrow corresponds
+to the isomorphism $k[T_0, \ldots, T_n] \to \text{Sym}(V)$ sending
+$T_i$ to $v_i$.
+\end{example}
+
+\begin{example}
+\label{example-projective-bundle}
+The map $\text{Sym}^n(\mathcal{E}) \to
+\pi_*(\mathcal{O}_{\mathbf{P}(\mathcal{E})}(n))$
+is an isomorphism if $\mathcal{E}$ is locally free, but in general
+need not be an isomorphism. In fact we will give an example where
+this map is not injective for $n = 1$. Set $S = \Spec(A)$ with
+$$
+A = k[u, v, s_1, s_2, t_1, t_2]/I
+$$
+where $k$ is a field and
+$$
+I = (-us_1 + vt_1 + ut_2, vs_1 + us_2 - vt_2, vs_2, ut_1).
+$$
+Denote $\overline{u}$ the class of $u$ in $A$ and similarly for
+the other variables.
+Let $M = (Ax \oplus Ay)/A(\overline{u}x + \overline{v}y)$ so that
+$$
+\text{Sym}(M) = A[x, y]/(\overline{u}x + \overline{v}y)
+= k[x, y, u, v, s_1, s_2, t_1, t_2]/J
+$$
+where
+$$
+J = (-us_1 + vt_1 + ut_2, vs_1 + us_2 - vt_2, vs_2, ut_1, ux + vy).
+$$
+In this case the projective bundle associated to the quasi-coherent
+sheaf $\mathcal{E} = \widetilde{M}$ on $S = \Spec(A)$ is the scheme
+$$
+P =
+\text{Proj}(\text{Sym}(M)).
+$$
+Note that this scheme as an affine open covering
+$P = D_{+}(x) \cup D_{+}(y)$.
+Consider the element
+$m \in M$ which is the image of the element
+$us_1x + vt_2y$. Note that
+$$
+x(us_1x + vt_2y) = (s_1x + s_2y)(ux + vy) \bmod I
+$$
+and
+$$
+y(us_1x + vt_2y) = (t_1x + t_2y)(ux + vy) \bmod I.
+$$
+The first equation implies that $m$ maps to zero as a
+section of $\mathcal{O}_P(1)$ on $D_{+}(x)$ and the second
+that it maps to zero as a section of $\mathcal{O}_P(1)$ on $D_{+}(y)$.
+This shows that $m$ maps to zero in $\Gamma(P, \mathcal{O}_P(1))$.
+On the other hand we claim that $m \not = 0$, so that $m$ gives
+an example of a nonzero global section of $\mathcal{E}$ mapping to zero
+in $\Gamma(P, \mathcal{O}_P(1))$. Assume $m = 0$
+to get a contradiction. In this case there exists
+an element $f \in k[u, v, s_1, s_2, t_1, t_2]$ such that
+$$
+us_1x + vt_2y = f(ux + vy) \bmod I
+$$
+Since $I$ is generated by homogeneous polynomials of degree $2$ we
+may decompose $f$ into its homogeneous components and take the
+degree 1 component. In other words we may assume that
+$$
+f = au + bv + \alpha_1s_1 + \alpha_2s_2 + \beta_1t_1 + \beta_2t_2
+$$
+for some $a, b, \alpha_1, \alpha_2, \beta_1, \beta_2 \in k$.
+The resulting conditions are that
+$$
+\begin{matrix}
+us_1 - u(au + bv + \alpha_1s_1 + \alpha_2s_2 + \beta_1t_1 + \beta_2t_2)
+\in I \\
+vt_2 - v(au + bv + \alpha_1s_1 + \alpha_2s_2 + \beta_1t_1 + \beta_2t_2)
+\in I
+\end{matrix}
+$$
+There are no terms $u^2, uv, v^2$ in the generators of $I$ and
+hence we see $a = b = 0$. Thus we get the relations
+$$
+\begin{matrix}
+us_1 - u(\alpha_1s_1 + \alpha_2s_2 + \beta_1t_1 + \beta_2t_2)
+\in I \\
+vt_2 - v(\alpha_1s_1 + \alpha_2s_2 + \beta_1t_1 + \beta_2t_2)
+\in I
+\end{matrix}
+$$
+We may use the first generator of $I$ to replace any occurrence of
+$us_1$ by $vt_1 + ut_2$, the second generator of $I$ to replace any
+occurrence of $vs_1$ by $-us_2 + vt_2$, the third generator
+to remove occurrences of $vs_2$ and the third to remove occurrences
+of $ut_1$. Then we get the relations
+$$
+\begin{matrix}
+(1 - \alpha_1)vt_1 + (1 - \alpha_1)ut_2 - \alpha_2us_2 - \beta_2ut_2 = 0 \\
+(1 - \alpha_1)vt_2 + \alpha_1us_2 - \beta_1vt_1 - \beta_2vt_2 = 0
+\end{matrix}
+$$
+This implies that $\alpha_1$ should be both $0$ and $1$ which is
+a contradiction as desired.
+\end{example}
+
+
+\begin{lemma}
+\label{lemma-projective-bundle-separated}
+Let $S$ be a scheme.
+The structure morphism $\mathbf{P}(\mathcal{E}) \to S$ of a
+projective bundle over $S$ is separated.
+\end{lemma}
+
+\begin{proof}
+Immediate from Lemma \ref{lemma-relative-proj-separated}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-projective-space-bundle}
+Let $S$ be a scheme. Let $n \geq 0$. Then
+$\mathbf{P}^n_S$ is a projective bundle over $S$.
+\end{lemma}
+
+\begin{proof}
+Note that
+$$
+\mathbf{P}^n_{\mathbf{Z}} =
+\text{Proj}(\mathbf{Z}[T_0, \ldots, T_n]) =
+\underline{\text{Proj}}_{\Spec(\mathbf{Z})}
+\left(\widetilde{\mathbf{Z}[T_0, \ldots, T_n]}\right)
+$$
+where the grading on the ring $\mathbf{Z}[T_0, \ldots, T_n]$ is given by
+$\deg(T_i) = 1$ and the elements of $\mathbf{Z}$ are in degree $0$.
+Recall that $\mathbf{P}^n_S$ is defined as
+$\mathbf{P}^n_{\mathbf{Z}} \times_{\Spec(\mathbf{Z})} S$.
+Moreover, forming the relative homogeneous spectrum commutes with base change,
+see Lemma \ref{lemma-relative-proj-base-change}.
+For any scheme $g : S \to \Spec(\mathbf{Z})$ we have
+$g^*\mathcal{O}_{\Spec(\mathbf{Z})}[T_0, \ldots, T_n]
+= \mathcal{O}_S[T_0, \ldots, T_n]$.
+Combining the above we see that
+$$
+\mathbf{P}^n_S = \underline{\text{Proj}}_S(\mathcal{O}_S[T_0, \ldots, T_n]).
+$$
+Finally, note that
+$\mathcal{O}_S[T_0, \ldots, T_n] = \text{Sym}(\mathcal{O}_S^{\oplus n + 1})$.
+Hence we see that $\mathbf{P}^n_S$ is a projective bundle over $S$.
+\end{proof}
+
+
+

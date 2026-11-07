@@ -1,0 +1,291 @@
+\section{Functoriality of categories of presheaves}
+\label{section-functoriality-PSh}
+
+\noindent
+Let $u : \mathcal{C} \to \mathcal{D}$ be a functor between categories.
+In this case we denote
+$$
+u^p :
+\textit{PSh}(\mathcal{D})
+\longrightarrow
+\textit{PSh}(\mathcal{C})
+$$
+the functor that associates to $\mathcal{G}$ on $\mathcal{D}$ the presheaf
+$u^p\mathcal{G} = \mathcal{G} \circ u$. Note that by the previous section
+this functor commutes with all limits and colimits.
+
+\medskip\noindent
+For $V \in \Ob(\mathcal{D})$ let $\mathcal{I}^u_V$
+denote the category with
+\begin{equation}
+\label{equation-colim-category}
+\begin{matrix}
+\Ob(\mathcal{I}^u_V)
+&
+=
+&
+\{
+(U, \phi)
+\mid
+U \in \Ob(\mathcal{C}),
+\phi : V \to u(U)
+\}
+\\
+\Mor_{\mathcal{I}^u_V}((U, \phi), (U', \phi'))
+&
+=
+&
+\{
+f : U \to U' \text{ in }\mathcal{C}
+\mid
+u(f) \circ \phi = \phi'
+\}
+\end{matrix}
+\end{equation}
+We sometimes drop the superscript ${}^u$ from the notation and we simply write
+$\mathcal{I}_V$.
+We will use these categories to define a left adjoint to the functor $u^p$.
+Before we do so we prove a few technical lemmas.
+
+\begin{lemma}
+\label{lemma-almost-directed}
+Let $u : \mathcal{C} \to \mathcal{D}$ be a functor between categories.
+Suppose that $\mathcal{C}$ has fibre products and equalizers, and that
+$u$ commutes with them. Then the categories $(\mathcal{I}_V)^{opp}$
+satisfy the hypotheses of
+Categories, Lemma \ref{categories-lemma-split-into-directed}.
+\end{lemma}
+
+\begin{proof}
+There are two conditions to check.
+
+\medskip\noindent
+First, suppose we are given three objects
+$\phi : V \to u(U)$, $\phi' : V \to u(U')$, and $\phi'' : V \to u(U'')$
+and morphisms $a : U' \to U$, $b : U'' \to U$ such that
+$u(a) \circ \phi' = \phi$ and $u(b) \circ \phi'' = \phi$.
+We have to show there exists another object $\phi''' : V \to u(U''')$
+and morphisms $c : U''' \to U'$ and $d : U''' \to U''$ such that
+$u(c) \circ \phi''' = \phi'$, $u(d) \circ \phi''' = \phi''$ and
+$a \circ c = b \circ d$. We take $U''' = U' \times_U U''$
+with $c$ and $d$ the projection morphisms. This works as $u$ commutes
+with fibre products; we omit the verification.
+
+\medskip\noindent
+Second, suppose we are given two objects
+$\phi : V \to u(U)$ and $\phi' : V \to u(U')$
+and morphisms $a, b : (U, \phi) \to (U', \phi')$.
+We have to find a morphism $c : (U'', \phi'') \to (U, \phi)$
+which equalizes $a$ and $b$. Let $c : U'' \to U$ be the equalizer of
+$a$ and $b$ in the category $\mathcal{C}$. As $u$ commutes
+with equalizers and since $u(a) \circ \phi = u(b) \circ \phi = \phi'$
+we obtain a morphism $\phi'' : V \to u(U'')$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-directed}
+Let $u : \mathcal{C} \to \mathcal{D}$ be a functor between categories.
+Assume
+\begin{enumerate}
+\item the category $\mathcal{C}$ has a final object $X$ and
+$u(X)$ is a final object of $\mathcal{D}$ , and
+\item the category $\mathcal{C}$ has fibre products and
+$u$ commutes with them.
+\end{enumerate}
+Then the index categories $(\mathcal{I}^u_V)^{opp}$ are filtered (see
+Categories, Definition \ref{categories-definition-directed}).
+\end{lemma}
+
+\begin{proof}
+The assumptions imply that the assumptions of
+Lemma \ref{lemma-almost-directed}
+are satisfied (see the discussion in
+Categories, Section \ref{categories-section-finite-limits}).
+By
+Categories, Lemma \ref{categories-lemma-split-into-directed}
+we see that $\mathcal{I}_V$ is a (possibly empty) disjoint union of
+directed categories.
+Hence it suffices to show that $\mathcal{I}_V$ is connected.
+
+\medskip\noindent
+First, we show that $\mathcal{I}_V$ is nonempty.
+Namely, let $X$ be the final object of $\mathcal{C}$,
+which exists by assumption.
+Let $V \to u(X)$ be the morphism coming from the fact
+that $u(X)$ is final in $\mathcal{D}$ by assumption.
+This gives an object of $\mathcal{I}_V$.
+
+\medskip\noindent
+Second, we show that $\mathcal{I}_V$ is connected.
+Let $\phi_1 : V \to u(U_1)$ and $\phi_2 : V \to u(U_2)$ be
+in $\Ob(\mathcal{I}_V)$. By assumption $U_1\times U_2$
+exists and $u(U_1\times U_2) = u(U_1)\times u(U_2)$.
+Consider the morphism $\phi : V \to u(U_1\times U_2)$
+corresponding to $(\phi_1, \phi_2)$ by the universal property
+of products. Clearly the object $\phi : V \to u(U_1\times U_2)$
+maps to both $\phi_1 : V \to u(U_1)$ and $\phi_2 : V \to u(U_2)$.
+\end{proof}
+
+\noindent
+Given $g : V' \to V$ in $\mathcal{D}$ we get a functor
+$\overline{g} : \mathcal{I}_V \to \mathcal{I}_{V'}$
+by setting $\overline{g}(U, \phi) = (U, \phi \circ g)$
+on objects. Given a presheaf $\mathcal{F}$ on $\mathcal{C}$
+we obtain a functor
+$$
+\mathcal{F}_V :
+\mathcal{I}_V^{opp}
+\longrightarrow
+\textit{Sets}, \quad
+(U, \phi)
+\longmapsto
+\mathcal{F}(U).
+$$
+In other words, $\mathcal{F}_V$ is a presheaf of sets on $\mathcal{I}_V$.
+Note that we have $\mathcal{F}_{V'} \circ \overline{g} = \mathcal{F}_V$.
+We define
+$$
+u_p\mathcal{F}(V) =
+\colim_{\mathcal{I}_V^{opp}} \mathcal{F}_V
+$$
+As a colimit we obtain for each $(U, \phi) \in \Ob(\mathcal{I}_V)$
+a canonical map $\mathcal{F}(U)\xrightarrow{c(\phi)}u_p\mathcal{F}(V)$.
+For $g : V' \to V$ as above there is a
+canonical restriction map
+$g^* : u_p\mathcal{F}(V) \to u_p\mathcal{F}(V')$
+compatible with
+$\mathcal{F}_{V'} \circ \overline{g} = \mathcal{F}_V$
+by Categories, Lemma \ref{categories-lemma-functorial-colimit}.
+It is the unique map so that for all $(U, \phi) \in \Ob(\mathcal{I}_V)$
+the diagram
+$$
+\xymatrix{
+\mathcal{F}(U) \ar[r]^{c(\phi)} \ar[d]_{\text{id}}
+&
+u_p\mathcal{F}(V) \ar[d]^{g^*}
+\\
+\mathcal{F}(U) \ar[r]^{c(\phi \circ g)}
+&
+u_p\mathcal{F}(V')
+}
+$$
+commutes. The uniqueness of these maps implies that we obtain a
+presheaf. This presheaf will be denoted $u_p\mathcal{F}$.
+
+\begin{lemma}
+\label{lemma-recover}
+There is a canonical map
+$\mathcal{F}(U) \to u_p\mathcal{F}(u(U))$,
+which is compatible with restriction maps
+(on $\mathcal{F}$ and on $u_p\mathcal{F}$).
+\end{lemma}
+
+\begin{proof}
+This is just the map $c(\text{id}_{u(U)})$ introduced above.
+\end{proof}
+
+\noindent
+Note that any map of presheaves $\mathcal{F} \to \mathcal{F}'$
+gives rise to compatible systems of maps between functors
+$\mathcal{F}_V \to \mathcal{F}'_V$, and hence to a map
+of presheaves $u_p\mathcal{F} \to u_p\mathcal{F}'$. In other
+words, we have defined a functor
+$$
+u_p :
+\textit{PSh}(\mathcal{C})
+\longrightarrow
+\textit{PSh}(\mathcal{D})
+$$
+
+\begin{lemma}
+\label{lemma-adjoints-u}
+The functor $u_p$ is a left adjoint to the functor $u^p$.
+In other words the formula
+$$
+\Mor_{\textit{PSh}(\mathcal{C})}(\mathcal{F}, u^p\mathcal{G})
+=
+\Mor_{\textit{PSh}(\mathcal{D})}(u_p\mathcal{F}, \mathcal{G})
+$$
+holds bifunctorially in $\mathcal{F}$ and $\mathcal{G}$.
+\end{lemma}
+
+\begin{proof}
+Let $\mathcal{G}$ be a presheaf on $\mathcal{D}$ and let
+$\mathcal{F}$ be a presheaf on $\mathcal{C}$.
+We will show that the displayed formula holds
+by constructing maps either way. We will leave
+it to the reader to verify they are each others inverse.
+
+\medskip\noindent
+Given a map $\alpha : u_p \mathcal{F} \to \mathcal{G}$
+we get $u^p\alpha : u^p u_p \mathcal{F} \to u^p \mathcal{G}$.
+Lemma \ref{lemma-recover} says that there is a
+map $\mathcal{F} \to u^p u_p \mathcal{F}$. The composition
+of the two gives the desired map. (The good thing about this construction
+is that it is clearly functorial in everything in sight.)
+
+\medskip\noindent
+Conversely, given a map $\beta : \mathcal{F} \to u^p\mathcal{G}$
+we get a map $u_p\beta : u_p\mathcal{F} \to u_p u^p\mathcal{G}$.
+Let $V \in \Ob(\mathcal{D})$.
+We claim that the functor $u^p\mathcal{G}_V$ on $\mathcal{I}_V$
+has a canonical map to the constant functor with value $\mathcal{G}(V)$.
+Namely, for every object $(U, \phi)$ of $\mathcal{I}_V$,
+the value of $u^p\mathcal{G}_V$ on this object is $\mathcal{G}(u(U))$
+which maps to $\mathcal{G}(V)$ by $\mathcal{G}(\phi) = \phi^*$.
+This is a transformation of functors because $\mathcal{G}$ is a functor
+itself. This leads to a map $u_p u^p \mathcal{G}(V) \to \mathcal{G}(V)$.
+Another trivial verification shows that this is functorial in $V$
+leading to a map of presheaves $u_p u^p \mathcal{G} \to \mathcal{G}$.
+The composition $u_p\mathcal{F} \to u_p u^p\mathcal{G} \to
+\mathcal{G}$ is the desired map.
+\end{proof}
+
+\begin{remark}
+\label{remark-functoriality-presheaves-values}
+Suppose that $\mathcal{A}$ is a category such that
+any diagram $\mathcal{I}_Y \to \mathcal{A}$ has a
+colimit in $\mathcal{A}$. In this case it is clear
+that there are functors $u^p$ and $u_p$, defined in
+exactly the same way as above, on the categories
+of presheaves with values in $\mathcal{A}$.
+Moreover, the adjointness of the pair
+$u^p$ and $u_p$ continues to hold in this setting.
+\end{remark}
+
+\begin{lemma}
+\label{lemma-pullback-representable-presheaf}
+Let $u : \mathcal{C} \to \mathcal{D}$ be a functor between categories.
+For any object $U$ of $\mathcal{C}$ we have $u_ph_U = h_{u(U)}$.
+\end{lemma}
+
+\begin{proof}
+By adjointness of $u_p$ and $u^p$ we have
+$$
+\Mor_{\textit{PSh}(\mathcal{D})}(u_ph_U, \mathcal{G})
+=
+\Mor_{\textit{PSh}(\mathcal{C})}(h_U, u^p\mathcal{G})
+=
+u^p\mathcal{G}(U) =
+\mathcal{G}(u(U))
+$$
+and hence by Yoneda's lemma we see that $u_ph_U = h_{u(U)}$ as
+presheaves.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

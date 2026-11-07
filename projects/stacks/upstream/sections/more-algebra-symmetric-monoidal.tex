@@ -1,0 +1,141 @@
+\section{Tensor products of complexes}
+\label{section-symmetric-monoidal}
+
+\noindent
+Let $R$ be a ring. The category $\text{Comp}(R)$ of complexes of $R$-modules
+has a symmetric monoidal structure. Namely, suppose that we have two
+complexes of $R$-modules $L^\bullet$ and $M^\bullet$. Using Homology, Example
+\ref{homology-example-double-complex-as-tensor-product-of} and
+Homology, Definition \ref{homology-definition-associated-simple-complex}
+we obtain a third complex of $R$-modules, namely
+$$
+\text{Tot}(L^\bullet \otimes_R M^\bullet)
+$$
+Clearly this construction is functorial in both $L^\bullet$ and $M^\bullet$.
+The associativity constraint will be the canonical isomorphism of complexes
+$$
+\text{Tot}(\text{Tot}(K^\bullet \otimes_R L^\bullet) \otimes_R M^\bullet)
+\longrightarrow
+\text{Tot}(K^\bullet \otimes_R \text{Tot}(L^\bullet \otimes_R M^\bullet))
+$$
+constructed in Homology, Remark \ref{homology-remark-triple-complex}
+from the triple complex $K^\bullet \otimes_R L^\bullet \otimes_R M^\bullet$.
+The commutativity constraint is the canonical isomorphism
+$$
+\text{Tot}(L^\bullet \otimes_R M^\bullet) \to
+\text{Tot}(M^\bullet \otimes_R L^\bullet)
+$$
+which uses the sign $(-1)^{pq}$ on the summand $L^p \otimes_R M^q$.
+To see that it is a map of complexes we compute for
+$x \in L^p$ and $y \in M^q$ that
+$$
+\text{d}(x \otimes y) =
+\text{d}_L(x) \otimes y + (-1)^px \otimes \text{d}_M(y)
+$$
+Our rule says the right hand side is mapped to
+$$
+(-1)^{(p + 1)q}y \otimes \text{d}_L(x) +
+(-1)^{p + p(q + 1)} \text{d}_M(y) \otimes x
+$$
+On the other hand, we see that
+$$
+\text{d}((-1)^{pq}y \otimes x) =
+(-1)^{pq} \text{d}_M(y) \otimes x +
+(-1)^{pq + q} y \otimes \text{d}_L(x)
+$$
+These two expressions agree by inspection as desired.
+
+\begin{lemma}
+\label{lemma-symmetric-monoidal-cat-complexes}
+Let $R$ be a ring. The category $\text{Comp}(R)$ of complexes of $R$-modules
+endowed with the functor
+$(L^\bullet, M^\bullet) \mapsto \text{Tot}(L^\bullet \otimes_R M^\bullet)$
+and associativity and commutativity constraints as above is a symmetric
+monoidal category.
+\end{lemma}
+
+\begin{proof}
+Omitted. Hints: as unit $\mathbf{1}$ we take the complex having
+$R$ in degree $0$ and zero in other degrees with obvious isomorphisms
+$\text{Tot}(\mathbf{1} \otimes_R M^\bullet) = M^\bullet$ and
+$\text{Tot}(K^\bullet \otimes_R \mathbf{1}) = K^\bullet$.
+to prove the lemma you have to check the commutativity
+of various diagrams, see Categories, Definitions
+\ref{categories-definition-monoidal-category} and
+\ref{categories-definition-symmetric-monoidal-category}.
+The verifications are straightforward in each case.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-derived-tor-homotopy}
+Let $R$ be a ring. Let $P^\bullet$ be a complex of $R$-modules.
+Let $\alpha, \beta : L^\bullet \to M^\bullet$ be homotopic
+maps of complexes. Then $\alpha$ and $\beta$ induce homotopic maps
+$$
+\text{Tot}(\alpha \otimes \text{id}_P),
+\text{Tot}(\beta \otimes \text{id}_P) :
+\text{Tot}(L^\bullet \otimes_R P^\bullet)
+\longrightarrow
+\text{Tot}(M^\bullet \otimes_R P^\bullet).
+$$
+In particular the construction
+$L^\bullet \mapsto \text{Tot}(L^\bullet \otimes_R P^\bullet)$
+defines an endo-functor of the homotopy category of complexes.
+\end{lemma}
+
+\begin{proof}
+Say $\alpha = \beta + dh + hd$ for some homotopy $h$ defined by
+$h^n : L^n \to M^{n - 1}$. Set
+$$
+H^n = \bigoplus\nolimits_{a + b = n} h^a \otimes \text{id}_{P^b} :
+\bigoplus\nolimits_{a + b = n} L^a \otimes_R P^b
+\longrightarrow
+\bigoplus\nolimits_{a + b = n} M^{a - 1} \otimes_R P^b
+$$
+Then a straightforward computation shows that
+$$
+\text{Tot}(\alpha \otimes \text{id}_P) =
+\text{Tot}(\beta \otimes \text{id}_P) + dH + Hd
+$$
+as maps $\text{Tot}(L^\bullet \otimes_R P^\bullet) \to
+\text{Tot}(M^\bullet \otimes_R P^\bullet)$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-symmetric-monoidal-homotopy-category}
+Let $R$ be a ring. The homotopy category $K(R)$ of complexes of $R$-modules
+endowed with the functor
+$(L^\bullet, M^\bullet) \mapsto \text{Tot}(L^\bullet \otimes_R M^\bullet)$
+and associativity and commutativity constraints as above is a symmetric
+monoidal category.
+\end{lemma}
+
+\begin{proof}
+This follows from Lemmas \ref{lemma-symmetric-monoidal-cat-complexes} and
+\ref{lemma-derived-tor-homotopy}. Details omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-derived-tor-exact}
+Let $R$ be a ring. Let $P^\bullet$ be a complex of $R$-modules.
+The functors
+$$
+K(R) \longrightarrow K(R), \quad
+L^\bullet \longmapsto \text{Tot}(P^\bullet \otimes_R L^\bullet)
+$$
+and
+$$
+K(R) \longrightarrow K(R), \quad
+L^\bullet \longmapsto \text{Tot}(L^\bullet \otimes_R P^\bullet)
+$$
+are exact functors of triangulated categories.
+\end{lemma}
+
+\begin{proof}
+This follows from Derived Categories, Remark
+\ref{derived-remark-double-complex-as-tensor-product-of}.
+\end{proof}
+
+
+
+

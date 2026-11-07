@@ -1,0 +1,119 @@
+\section{Open morphisms}
+\label{section-open}
+
+\begin{definition}
+\label{definition-open}
+Let $f : X \to S$ be a morphism.
+\begin{enumerate}
+\item We say $f$ is {\it open} if the map on underlying
+topological spaces is open.
+\item We say $f$ is {\it universally open} if for any morphism of
+schemes $S' \to S$ the base change $f' : X_{S'} \to S'$ is open.
+\end{enumerate}
+\end{definition}
+
+\noindent
+According to
+Topology, Lemma \ref{topology-lemma-closed-open-map-specialization}
+generalizations lift along certain types of open maps of topological
+spaces. In fact generalizations lift along any open morphism of schemes
+(see
+Lemma \ref{lemma-open-generizing}).
+Also, we will see that generalizations lift along flat morphisms
+of schemes (Lemma \ref{lemma-generalizations-lift-flat}).
+This sometimes in turn implies that the morphism is open.
+
+\begin{lemma}
+\label{lemma-locally-finite-presentation-universally-open}
+Let $f : X \to S$ be a morphism.
+\begin{enumerate}
+\item If $f$ is locally of finite presentation and generalizations lift
+along $f$, then $f$ is open.
+\item If $f$ is locally of finite presentation and generalizations lift
+along every base change of $f$, then $f$ is universally open.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+It suffices to prove the first assertion.
+This reduces to the case where both $X$ and $S$ are affine.
+In this case the result follows from
+Algebra, Lemma \ref{algebra-lemma-going-up-down-specialization}
+and Proposition \ref{algebra-proposition-fppf-open}.
+\end{proof}
+
+\noindent
+See also Lemma \ref{lemma-fppf-open} for the case of a morphism
+flat of finite presentation.
+
+\begin{lemma}
+\label{lemma-composition-open}
+A composition of (universally) open morphisms is (universally) open.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-scheme-over-field-universally-open}
+Let $k$ be a field. Let $X$ be a scheme over $k$.
+The structure morphism $X \to \Spec(k)$ is universally open.
+\end{lemma}
+
+\begin{proof}
+Let $S \to \Spec(k)$ be a morphism.
+We have to show that the base change $X_S \to S$ is open.
+The question is local on $S$ and $X$, hence we may assume that
+$S$ and $X$ are affine. In this case the result is
+Algebra, Lemma \ref{algebra-lemma-map-into-tensor-algebra-open}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-open-generizing}
+\begin{reference}
+Follows from the implication (a) $\Rightarrow$ (b) in
+\cite[IV, Corollary 1.10.4]{EGA}
+\end{reference}
+Let $\varphi : X \to Y$ be a morphism of schemes.
+If $\varphi$ is open, then $\varphi$ is generizing
+(i.e., generalizations lift along $\varphi$).
+If $\varphi$ is universally open, then $\varphi$ is
+universally generizing.
+\end{lemma}
+
+\begin{proof}
+Assume $\varphi$ is open.
+Let $y' \leadsto y$ be a specialization of points of $Y$.
+Let $x \in X$ with $\varphi(x) = y$.
+Choose affine opens $U \subset X$ and $V \subset Y$ such that
+$\varphi(U) \subset V$ and $x \in U$. Then also $y' \in V$. Hence we
+may replace $X$ by $U$ and $Y$ by $V$ and assume $X$, $Y$ affine.
+The affine case is
+Algebra, Lemma \ref{algebra-lemma-open-going-down}
+(combined with
+Algebra, Lemma \ref{algebra-lemma-going-up-down-specialization}).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-descent-quasi-compact}
+Let $f : X \to Y$ be a morphism of schemes.
+Let $g : Y' \to Y$ be open and surjective such that the base change
+$f' : X' \to Y'$ is quasi-compact. Then $f$ is quasi-compact.
+\end{lemma}
+
+\begin{proof}
+Let $V \subset Y$ be a quasi-compact open. As $g$ is open and surjective
+we can find a quasi-compact open $W' \subset W$ such that $g(W') = V$.
+By assumption $(f')^{-1}(W')$ is quasi-compact. The image of
+$(f')^{-1}(W')$ in $X$ is equal to $f^{-1}(V)$, see
+Lemma \ref{lemma-when-point-maps-to-pair}.
+Hence $f^{-1}(V)$ is quasi-compact as the image of a quasi-compact space, see
+Topology, Lemma \ref{topology-lemma-image-quasi-compact}.
+Thus $f$ is quasi-compact.
+\end{proof}
+
+
+
+
+

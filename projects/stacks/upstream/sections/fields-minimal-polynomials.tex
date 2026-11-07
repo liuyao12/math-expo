@@ -1,0 +1,58 @@
+\section{Minimal polynomials}
+\label{section-minimal-polynomials}
+
+\noindent
+Let $E/k$ be a field extension, and let $\alpha \in E$ be algebraic over $k$.
+Then $\alpha$ satisfies a (nontrivial) polynomial equation in $k[x]$.
+Consider the set of polynomials $P \in k[x]$ such that $P(\alpha) = 0$; by
+hypothesis, this set does not just contain the zero polynomial.
+It is easy to see that this set is an {\it ideal.} Indeed, it is the kernel
+of the map
+$$
+k[x] \to E, \quad x \mapsto \alpha
+$$
+Since $k[x]$ is a PID, there is a {\it generator} $P \in k[x]$ of this
+ideal. If we assume $P$ monic, without loss of generality, then $P$ is
+uniquely determined.
+
+\begin{definition}
+\label{definition-minimal-polynomial}
+The polynomial $P$ above is called the {\it minimal polynomial}
+of $\alpha$ over $k$.
+\end{definition}
+
+\noindent
+The minimal polynomial has the following characterization: it is the monic
+polynomial, of smallest degree, that annihilates $\alpha$. Any nonconstant
+multiple of $P$ will have larger degree, and only multiples of $P$ can
+annihilate $\alpha$. This explains the name {\it minimal}.
+
+\medskip\noindent
+Clearly the minimal polynomial is {\it irreducible}. This is equivalent to the
+assertion that the ideal in $k[x]$ consisting of polynomials annihilating
+$\alpha$ is prime. This follows from the fact that the map
+$k[x] \to E, x \mapsto \alpha$ is a map into a domain (even a field), so the
+kernel is a prime ideal.
+
+\begin{lemma}
+\label{lemma-degree-minimal-polynomial}
+The degree of the minimal polynomial is $[k(\alpha) : k]$.
+\end{lemma}
+
+\begin{proof}
+This is just a restatement of the argument in
+Lemma \ref{lemma-field-extension-generated-by-one-element}: the observation
+is that if $P$ is the minimal polynomial of $\alpha$, then the map
+$$
+k[x]/(P) \to k(\alpha), \quad x \mapsto \alpha
+$$
+is an isomorphism as in the aforementioned proof, and we have counted the
+degree of such an extension (see
+Example \ref{example-degree-simple-algebraic-extension}).
+\end{proof}
+
+\noindent
+So the observation of the above proof is that if $\alpha \in E$ is algebraic,
+then $k(\alpha) \subset E$ is isomorphic to $k[x]/(P)$.
+
+

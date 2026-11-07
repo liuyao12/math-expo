@@ -1,0 +1,223 @@
+\section{Zariski topology of schemes}
+\label{section-topology}
+
+\noindent
+See Topology, Section \ref{topology-section-introduction}
+for some basic material in topology adapted to the Zariski
+topology of schemes.
+
+\begin{lemma}
+\label{lemma-scheme-sober}
+Let $X$ be a scheme.
+Any irreducible closed subset of $X$ has a unique generic point.
+In other words, $X$ is a sober topological space, see
+Topology, Definition \ref{topology-definition-generic-point}.
+\end{lemma}
+
+\begin{proof}
+Let $Z \subset X$ be an irreducible closed subset.
+For every affine open $U \subset X$, $U = \Spec(R)$
+we know that $Z \cap U = V(I)$ for a unique
+radical ideal $I \subset R$. Note that $Z \cap U$ is either
+empty or irreducible. In the second case (which occurs
+for at least one $U$) we see that $I = \mathfrak p$
+is a prime ideal, which is a generic point $\xi$ of $Z \cap U$.
+It follows that $Z = \overline{\{\xi\}}$, in other words
+$\xi$ is a generic point of $Z$. If $\xi'$ was a second
+generic point, then $\xi' \in Z \cap U$ and it follows
+immediately that $\xi' = \xi$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-basis-affine-opens}
+Let $X$ be a scheme. The collection of affine opens
+of $X$ forms a basis for the topology on $X$.
+\end{lemma}
+
+\begin{proof}
+This follows from the discussion on open subschemes
+in Section \ref{section-schemes}.
+\end{proof}
+
+\begin{remark}
+\label{remark-intersection-affine-opens}
+In general the intersection of two affine opens in $X$
+is not affine open. See Example \ref{example-affine-space-zero-doubled}.
+\end{remark}
+
+\begin{lemma}
+\label{lemma-locally-quasi-compact}
+The underlying topological space of any scheme is
+locally quasi-compact, see
+Topology, Definition \ref{topology-definition-locally-quasi-compact}.
+\end{lemma}
+
+\begin{proof}
+This follows from Lemma \ref{lemma-basis-affine-opens} above
+and the fact that the spectrum of a ring is quasi-compact, see
+Algebra, Lemma \ref{algebra-lemma-quasi-compact}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-standard-open-two-affines}
+Let $X$ be a scheme.
+Let $U, V$ be affine opens of $X$, and let $x \in U \cap V$.
+There exists an affine open neighbourhood $W$ of $x$
+such that $W$ is a standard open of both $U$ and $V$.
+\end{lemma}
+
+\begin{proof}
+Write $U = \Spec(A)$ and $V = \Spec(B)$.
+Say $x$ corresponds to the prime $\mathfrak p \subset A$
+and the prime $\mathfrak q \subset B$.
+We may choose an $f \in A$, $f \not \in \mathfrak p$ such that
+$D(f) \subset U \cap V$. Note that any standard open of $D(f)$
+is a standard open of $\Spec(A) = U$. Hence we may assume
+that $U \subset V$. In other words, now we may think of $U$
+as an affine open of $V$. Next we choose a
+$g \in B$, $g \not \in \mathfrak q$ such that
+$D(g) \subset U$. In this case we see that $D(g) = D(g_A)$
+where $g_A \in A$ denotes the image of $g$ by the map $B \to A$.
+Thus the lemma is proved.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-good-subcover}
+Let $X$ be a scheme.
+Let $X = \bigcup_i U_i$ be an affine open covering.
+Let $V \subset X$ be an affine open.
+There exists a standard open covering
+$V = \bigcup_{j = 1, \ldots, m} V_j$ (see
+Definition \ref{definition-standard-covering})
+such that each $V_j$ is a standard open in one of the $U_i$.
+\end{lemma}
+
+\begin{proof}
+Pick $v \in V$. Then $v \in U_i$ for some $i$.
+By Lemma \ref{lemma-standard-open-two-affines} above there exists an open
+$v \in W_v \subset V \cap U_i$ such that
+$W_v$ is a standard open in both $V$ and $U_i$.
+Since $V$ is quasi-compact the lemma follows.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-sheaf-on-affines}
+Let $X$ be a scheme. Let $\mathcal{B}$ be the set of affine opens of $X$.
+Let $\mathcal{F}$ be a presheaf of sets on $\mathcal{B}$, see
+Sheaves, Definition \ref{sheaves-definition-presheaf-basis}. The following
+are equivalent
+\begin{enumerate}
+\item $\mathcal{F}$ is the restriction of a sheaf on $X$ to $\mathcal{B}$,
+\item $\mathcal{F}$ is a sheaf on $\mathcal{B}$, and
+\item $\mathcal{F}(\emptyset)$ is a singleton and
+whenever $U = V \cup W$ with $U, V, W \in \mathcal{B}$ and
+$V, W \subset U$ standard open
+(Algebra, Definition \ref{algebra-definition-Zariski-topology})
+the map
+$$
+\mathcal{F}(U) \longrightarrow \mathcal{F}(V) \times \mathcal{F}(W)
+$$
+is injective with image the set of pairs $(s, t)$
+such that $s|_{V \cap W} = t|_{V \cap W}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+The equivalence of (1) and (2) is
+Sheaves, Lemma \ref{sheaves-lemma-restrict-basis-equivalence}.
+It is clear that (2) implies (3).
+Hence it suffices to prove that (3) implies (2). By
+Sheaves, Lemma \ref{sheaves-lemma-cofinal-systems-coverings-standard-case}
+and Lemma \ref{lemma-standard-open} it suffices to prove the sheaf
+condition holds for standard open coverings
+(Definition \ref{definition-standard-covering})
+of elements of $\mathcal{B}$.
+Let $U = U_1 \cup \ldots \cup U_n$ be a standard open covering
+with $U \subset X$ affine open.
+We will prove the sheaf condition
+for this covering by induction on $n$.
+If $n = 0$, then $U$ is empty and we get the sheaf condition
+by assumption. If $n = 1$, then there is nothing to prove.
+If $n = 2$, then this is assumption (3).
+If $n > 2$, then we write $U_i = D(f_i)$ for $f_i \in A = \mathcal{O}_X(U)$.
+Suppose that $s_i \in \mathcal{F}(U_i)$ are sections such that
+$s_i|_{U_i \cap U_j} = s_j|_{U_i \cap U_j}$ for all $1 \leq i < j \leq n$.
+Since $U = U_1 \cup \ldots \cup U_n$ we have
+$1 = \sum_{i = 1, \ldots, n} a_i f_i$ in $A$ for some $a_i \in A$, see
+Algebra, Lemma \ref{algebra-lemma-Zariski-topology}.
+Set $g = \sum_{i = 1, \ldots, n - 1} a_if_i$.
+Then $U = D(g) \cup D(f_n)$.
+Observe that $D(g) = D(gf_1) \cup \ldots \cup D(gf_{n - 1})$
+is a standard open covering. By induction there is a unique section
+$s' \in \mathcal{F}(D(g))$ which agrees with
+$s_i|_{D(gfi)}$ for $i = 1, \ldots, n - 1$.
+We claim that $s'$ and $s_n$ have the same restriction to
+$D(gf_n)$. This is true by induction and the covering
+$D(gf_n) = D(gf_nf_1) \cup \ldots \cup D(gf_nf_{n - 1})$.
+Thus there is a unique section $s \in \mathcal{F}(U)$
+whose restriction to $D(g)$ is $s'$ and whose restriction
+to $D(f_n)$ is $s_n$. We omit the verification that $s$
+restricts to $s_i$ on $D(f_i)$ for $i = 1, \ldots, n - 1$
+and we omit the verification that $s$ is unique.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-scheme-finite-discrete-affine}
+Let $X$ be a scheme whose underlying topological space
+is a finite discrete set.
+Then $X$ is affine.
+\end{lemma}
+
+\begin{proof}
+Say $X = \{x_1, \ldots, x_n\}$. Then $U_i = \{x_i\}$ is an open neighbourhood
+of $x_i$. By
+Lemma \ref{lemma-basis-affine-opens}
+it is affine. Hence $X$ is a finite disjoint union of affine schemes, and
+hence is affine by
+Lemma \ref{lemma-disjoint-union-affines}.
+\end{proof}
+
+\begin{example}
+\label{example-scheme-without-closed-points}
+There exists a scheme without closed points.
+Namely, let $R$ be a local domain whose spectrum
+looks like
+$(0) = \mathfrak p_0 \subset \mathfrak p_1 \subset \mathfrak p_2
+\subset \ldots \subset \mathfrak m$. Then the open subscheme
+$\Spec(R) \setminus \{\mathfrak m\}$ does not have
+a closed point. To see that such a ring $R$ exists, we use
+that given any totally ordered group $(\Gamma, \geq)$
+there exists a valuation ring $A$ with valuation group $(\Gamma, \geq)$,
+see \cite{Krull}. See Algebra, Section \ref{algebra-section-valuation-rings}
+for notation. We take
+$\Gamma = \mathbf{Z}x_1 \oplus \mathbf{Z}x_2 \oplus \mathbf{Z}x_3 \oplus
+\ldots$ and we define $\sum_i a_i x_i \geq 0$ if and only
+if the first nonzero $a_i$ is $> 0$, or all $a_i = 0$.
+So $x_1 \geq x_2 \geq x_3 \geq  \ldots \geq 0$.
+The subsets $x_i + \Gamma_{\geq 0}$ are prime ideals
+of $(\Gamma, \geq)$, see Algebra, notation above
+Lemma \ref{algebra-lemma-ideals-valuation-ring}. These together
+with $\emptyset$ and $\Gamma_{\geq 0}$ are the only prime ideals.
+Hence $A$ is an example of a ring with the given structure of
+its spectrum, by
+Algebra, Lemma \ref{algebra-lemma-ideals-valuation-ring}.
+\end{example}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

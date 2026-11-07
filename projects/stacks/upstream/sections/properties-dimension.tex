@@ -1,0 +1,198 @@
+\section{Dimension}
+\label{section-dimension}
+
+\noindent
+The dimension of a scheme is just the dimension of its underlying
+topological space.
+
+\begin{definition}
+\label{definition-dimension}
+Let $X$ be a scheme.
+\begin{enumerate}
+\item The {\it dimension} of $X$ is just the dimension of $X$
+as a topological spaces, see
+Topology, Definition \ref{topology-definition-Krull}.
+\item For $x \in X$ we denote $\dim_x(X)$ the dimension of the underlying
+topological space of $X$ at $x$ as in
+Topology, Definition \ref{topology-definition-Krull}.
+We say $\dim_x(X)$ is the {\it dimension of $X$ at $x$}.
+\end{enumerate}
+\end{definition}
+
+\noindent
+As a scheme has a sober underlying topological space
+(Schemes, Lemma \ref{schemes-lemma-scheme-sober})
+we may compute the dimension of $X$ as the supremum of the lengths $n$
+of chains
+$$
+T_0 \subset T_1 \subset \ldots \subset T_n
+$$
+of irreducible closed subsets of $X$, or as the supremum of the lengths $n$
+of chains of specializations
+$$
+\xi_n \leadsto \xi_{n - 1} \leadsto \ldots \leadsto \xi_0
+$$
+of points of $X$.
+
+\begin{lemma}
+\label{lemma-dimension}
+Let $X$ be a scheme. The following are equal
+\begin{enumerate}
+\item The dimension of $X$.
+\item The supremum of the dimensions of the local rings of $X$.
+\item The supremum of $\dim_x(X)$ for $x \in X$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Note that given a chain of specializations
+$$
+\xi_n \leadsto \xi_{n - 1} \leadsto \ldots \leadsto \xi_0
+$$
+of points of $X$ all of the points $\xi_i$ correspond to prime ideals
+of the local ring of $X$ at $\xi_0$ by
+Schemes, Lemma \ref{schemes-lemma-specialize-points}.
+Hence we see that the dimension of $X$ is the supremum of the dimensions
+of its local rings. In particular $\dim_x(X) \geq \dim(\mathcal{O}_{X, x})$
+as $\dim_x(X)$ is the minimum of the dimensions of open neighbourhoods of
+$x$. Thus $\sup_{x \in X} \dim_x(X) \geq \dim(X)$. On the other hand,
+it is clear that $\sup_{x \in X} \dim_x(X) \leq \dim(X)$
+as $\dim(U) \leq \dim(X)$ for any open subset of $X$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-codimension-local-ring}
+Let $X$ be a scheme. Let $Y \subset X$ be an irreducible closed
+subset. Let $\xi \in Y$ be the generic point. Then
+$$
+\text{codim}(Y, X) = \dim(\mathcal{O}_{X, \xi})
+$$
+where the codimension is as defined in
+Topology, Definition \ref{topology-definition-codimension}.
+\end{lemma}
+
+\begin{proof}
+By Topology, Lemma \ref{topology-lemma-codimension-at-generic-point}
+we may replace $X$ by an affine open neighbourhood of $\xi$. In this
+case the result follows easily from
+Algebra, Lemma \ref{algebra-lemma-irreducible-components-containing-x}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-generic-point}
+Let $X$ be a scheme. Let $x \in X$. Then $x$ is a generic point of
+an irreducible component of $X$ if and only if $\dim(\mathcal{O}_{X, x}) = 0$.
+\end{lemma}
+
+\begin{proof}
+This follows from Lemma \ref{lemma-codimension-local-ring} for example.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-locally-Noetherian-dimension-0}
+A locally Noetherian scheme of dimension $0$ is a disjoint
+union of spectra of Artinian local rings.
+\end{lemma}
+
+\begin{proof}
+A Noetherian ring of dimension $0$ is a finite product of Artinian local
+rings, see
+Algebra, Proposition \ref{algebra-proposition-dimension-zero-ring}.
+Hence an affine open of a locally Noetherian scheme $X$ of dimension
+$0$ has discrete underlying topological space. This implies that
+the topology on $X$ is discrete. The lemma follows easily from these
+remarks.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-dimension-zero}
+\begin{reference}
+Email from Ofer Gabber dated June 4, 2016
+\end{reference}
+Let $X$ be a scheme of dimension zero. The following are equivalent
+\begin{enumerate}
+\item $X$ is quasi-separated,
+\item $X$ is separated,
+\item $X$ is Hausdorff,
+\item every affine open is closed.
+\end{enumerate}
+In this case the connected components of $X$ are points and every
+quasi-compact open of $X$ is affine. In particular, if $X$
+is quasi-compact, then $X$ is affine.
+\end{lemma}
+
+\begin{proof}
+As the dimension of $X$ is zero, we see that for any affine open
+$U \subset X$ the space $U$ is profinite and satisfies
+a bunch of other properties which we will use freely below, see
+Algebra, Lemma \ref{algebra-lemma-ring-with-only-minimal-primes}.
+We choose an affine open covering $X = \bigcup U_i$.
+
+\medskip\noindent
+If (4) holds, then $U_i \cap U_j$ is a closed subset of
+$U_i$, hence quasi-compact, hence $X$ is quasi-separated,
+by Schemes, Lemma \ref{schemes-lemma-characterize-quasi-separated},
+hence (1) holds.
+
+\medskip\noindent
+If (1) holds, then $U_i \cap U_j$ is a quasi-compact open
+of $U_i$ hence closed in $U_i$. Then $U_i \cap U_j \to U_i$
+is an open immersion whose image is closed, hence it is a
+closed immersion. In particular $U_i \cap U_j$ is affine
+and $\mathcal{O}(U_i) \to \mathcal{O}_X(U_i \cap U_j)$ is surjective.
+Thus $X$ is separated
+by Schemes, Lemma \ref{schemes-lemma-characterize-separated},
+hence (2) holds.
+
+\medskip\noindent
+Assume (2) and let $x, y \in X$. Say $x \in U_i$. If $y \in U_i$
+too, then we can find disjoint open neighbourhoods of $x$ and $y$
+because $U_i$ is Hausdorff. Say $y \not \in U_i$ and $y \in U_j$.
+Then $y \not \in U_i \cap U_j$ which is an affine open of $U_j$
+and hence closed in $U_j$. Thus we can find an open neighbourhood
+of $y$ not meeting $U_i$ and we conclude that $X$ is Hausdorff,
+hence (3) holds.
+
+\medskip\noindent
+Assume (3). Let $U \subset X$ be affine open.
+Then $U$ is closed in $X$ by Topology, Lemma
+\ref{topology-lemma-quasi-compact-in-Hausdorff}.
+This proves (4) holds.
+
+\medskip\noindent
+Assume $X$ satisfies the equivalent conditions (1) -- (4).
+We prove the final statements of the lemma. Say $x, y \in X$
+with $x \not = y$. Since $y$ does not specialize to $x$ we can
+choose $U \subset X$ affine open with $x \in U$ and $y \not \in U$.
+Then we see that $X = U \amalg (X \setminus U)$ is a decomposistion
+into open and closed subsets which shows that $x$ and $y$ do not belong
+to the same connected component of $X$. Next, assume $U \subset X$
+is a quasi-compact open. Write $U = U_1 \cup \ldots \cup U_n$ as a union
+of affine opens. We will prove by induction on $n$ that $U$ is affine.
+This immediately reduces us to the case $n = 2$. In this case we have
+$U = (U_1 \setminus U_2) \amalg (U_1 \cap U_2) \amalg (U_2 \setminus U_1)$
+and the arguments above show that each of the pieces is affine.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-isolated-dim-0-locally-noetherian}
+Let $x$ be a point of a locally Noetherian scheme $X$.
+Then $\dim_x(X) = 0$ if and only if $x$ is an isolated point of $X$.
+\end{lemma}
+
+\begin{proof}
+If $x$ is an isolated point, then $\{x\}$ is an open subset of $X$
+(Topology, Definition \ref{topology-definition-isolated-point})
+and hence $\dim_x(X) = \dim(\{x\}) = 0$ by definition. Conversely, if
+$\dim_x(X) = 0$, then there exists an open neighbourhood $U \subset X$
+of $x$ such that $\dim(U) = 0$
+(Topology, Definition \ref{topology-definition-Krull}).
+By Lemma \ref{lemma-locally-Noetherian-dimension-0}
+we see that the topology on $U$ is discrete and hence
+$x$ is an isolated point.
+\end{proof}
+
+
+
+
+

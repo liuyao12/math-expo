@@ -1,0 +1,314 @@
+\section{Noetherian local rings}
+\label{section-Noetherian-local}
+
+\noindent
+In all of this section $(R, \mathfrak m, \kappa)$ is a Noetherian local ring.
+We develop some theory on Hilbert functions of modules in this section.
+Let $M$ be a finite $R$-module. We define the {\it Hilbert function}
+of $M$ to be the function
+$$
+\varphi_M : n
+\longmapsto
+\text{length}_R(\mathfrak m^nM/{\mathfrak m}^{n + 1}M)
+$$
+defined for all integers $n \geq 0$. Another important invariant is the
+function
+$$
+\chi_M : n
+\longmapsto
+\text{length}_R(M/{\mathfrak m}^{n + 1}M)
+$$
+defined for all integers $n \geq 0$.
+Note that we have by Lemma \ref{lemma-length-additive}
+that
+$$
+\chi_M(n) = \sum\nolimits_{i = 0}^n \varphi_M(i).
+$$
+There is a variant of this construction which uses an ideal of definition.
+
+\begin{definition}
+\label{definition-ideal-definition}
+Let $(R, \mathfrak m)$ be a local Noetherian ring.
+An ideal $I \subset R$ such that $\sqrt{I} = \mathfrak m$ is called
+{\it an ideal of definition of $R$}.
+\end{definition}
+
+\noindent
+Let $I \subset R$ be an ideal of definition.
+Because $R$ is Noetherian this means that
+$\mathfrak m^r \subset I$ for some $r$, see Lemma
+\ref{lemma-Noetherian-power}. Hence any finite $R$-module
+annihilated by a power of $I$ has a finite length, see Lemma
+\ref{lemma-length-finite}.
+Thus it makes sense to define
+$$
+\varphi_{I, M}(n) = \text{length}_R(I^nM/I^{n + 1}M)
+\quad\text{and}\quad
+\chi_{I, M}(n) = \text{length}_R(M/I^{n + 1}M)
+$$
+for all $n \geq 0$. Again we have that
+$$
+\chi_{I, M}(n) = \sum\nolimits_{i = 0}^n \varphi_{I, M}(i).
+$$
+
+\begin{lemma}
+\label{lemma-differ-finite}
+Suppose that $M' \subset M$ are finite $R$-modules
+with finite length quotient. Then there exists a
+constants $c_1, c_2$ such that for all $n \geq c_2$ we have
+$$
+c_1 + \chi_{I, M'}(n - c_2) \leq \chi_{I, M}(n) \leq
+c_1 + \chi_{I, M'}(n)
+$$
+\end{lemma}
+
+\begin{proof}
+Since $M/M'$ has finite length there is a $c_2 \geq 0$ such that
+$I^{c_2}M \subset M'$. Let $c_1 = \text{length}_R(M/M')$.
+For $n \geq c_2$ we have
+\begin{eqnarray*}
+\chi_{I, M}(n)
+& = &
+\text{length}_R(M/I^{n + 1}M) \\
+& = &
+c_1 + \text{length}_R(M'/I^{n + 1}M) \\
+& \leq &
+c_1 + \text{length}_R(M'/I^{n + 1}M') \\
+& = &
+c_1 + \chi_{I, M'}(n)
+\end{eqnarray*}
+On the other hand, since $I^{c_2}M \subset M'$,
+we have $I^nM \subset I^{n - c_2}M'$ for $n \geq c_2$.
+Thus for $n \geq c_2$ we get
+\begin{eqnarray*}
+\chi_{I, M}(n)
+& = &
+\text{length}_R(M/I^{n + 1}M) \\
+& = &
+c_1 + \text{length}_R(M'/I^{n + 1}M) \\
+& \geq &
+c_1 + \text{length}_R(M'/I^{n + 1 - c_2}M') \\
+& = &
+c_1 + \chi_{I, M'}(n - c_2)
+\end{eqnarray*}
+which finishes the proof.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-hilbert-ses}
+Suppose that $0 \to M' \to M \to M'' \to 0$
+is a short exact sequence of finite $R$-modules.
+Then there exists a submodule $N \subset M'$ with
+finite colength $l$ and $c \geq 0$ such that
+$$
+\chi_{I, M}(n) = \chi_{I, M''}(n) + \chi_{I, N}(n - c) + l
+$$
+and
+$$
+\varphi_{I, M}(n) = \varphi_{I, M''}(n) + \varphi_{I, N}(n - c)
+$$
+for all $n \geq c$.
+\end{lemma}
+
+\begin{proof}
+Note that $M/I^nM \to M''/I^nM''$ is surjective
+with kernel $M' / M' \cap I^nM$. By the Artin-Rees
+Lemma \ref{lemma-Artin-Rees} there exists a
+constant $c$ such that $M' \cap I^nM =
+I^{n - c}(M' \cap I^cM)$. Denote $N = M' \cap I^cM$.
+Note that $I^c M' \subset N \subset M'$.
+Hence $\text{length}_R(M' / M' \cap I^nM)
+= \text{length}_R(M'/N) + \text{length}_R(N/I^{n - c}N)$ for $n \geq c$.
+From the short exact sequence
+$$
+0 \to M' / M' \cap I^nM \to M/I^nM \to M''/I^nM'' \to 0
+$$
+and additivity of lengths (Lemma \ref{lemma-length-additive})
+we obtain the equality
+$$
+\chi_{I, M}(n - 1)
+=
+\chi_{I, M''}(n - 1)
++
+\chi_{I, N}(n - c - 1)
++
+\text{length}_R(M'/N)
+$$
+for $n \geq c$. We have
+$\varphi_{I, M}(n) = \chi_{I, M}(n) - \chi_{I, M}(n - 1)$
+and similarly for the modules $M''$ and $N$. Hence
+we get $\varphi_{I, M}(n) = \varphi_{I, M''}(n) + \varphi_{I, N}(n-c)$ for
+$n \geq c$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-hilbert-change-I}
+Suppose that $I$, $I'$ are two ideals of definition
+for the Noetherian local ring $R$. Let $M$ be a
+finite $R$-module. There exists a constant $a$ such that
+$\chi_{I, M}(n) \leq \chi_{I', M}(an)$ for $n \geq 1$.
+\end{lemma}
+
+\begin{proof}
+There exists an integer $c \geq 1$ such that $(I')^c \subset I$.
+Hence we get a surjection $M/(I')^{c(n + 1)}M \to M/I^{n + 1}M$.
+Whence the result with $a = 2c - 1$.
+\end{proof}
+
+\begin{proposition}
+\label{proposition-hilbert-function-polynomial}
+Let $R$ be a Noetherian local ring. Let $M$ be a finite $R$-module.
+Let $I \subset R$ be an ideal of definition.
+The Hilbert function $\varphi_{I, M}$ and the function
+$\chi_{I, M}$ are numerical polynomials.
+\end{proposition}
+
+\begin{proof}
+Consider the graded ring $S = R/I \oplus I/I^2 \oplus I^2/I^3 \oplus
+\ldots = \bigoplus_{d \geq 0} I^d/I^{d + 1}$. Consider the graded
+$S$-module $N = M/IM \oplus IM/I^2M \oplus \ldots =
+\bigoplus_{d \geq 0} I^dM/I^{d + 1}M$. This pair $(S, N)$ satisfies
+the hypotheses of Proposition \ref{proposition-graded-hilbert-polynomial}.
+Hence the result for $\varphi_{I, M}$ follows from that proposition and
+Lemma \ref{lemma-length-K0}. The result for $\chi_{I, M}$ follows
+from this and Lemma \ref{lemma-numerical-polynomial}.
+\end{proof}
+
+\begin{definition}
+\label{definition-hilbert-polynomial}
+Let $R$ be a Noetherian local ring. Let $M$ be a finite $R$-module.
+The {\it Hilbert polynomial} of $M$ over $R$ is the element
+$P(t) \in \mathbf{Q}[t]$ such that $P(n) = \varphi_M(n)$ for $n \gg 0$.
+\end{definition}
+
+\noindent
+By Proposition \ref{proposition-hilbert-function-polynomial}
+we see that the Hilbert polynomial exists.
+
+\begin{lemma}
+\label{lemma-d-independent}
+Let $R$ be a Noetherian local ring. Let $M$ be a finite $R$-module.
+\begin{enumerate}
+\item The degree of the numerical polynomial $\varphi_{I, M}$ is independent
+of the ideal of definition $I$.
+\item The degree of the numerical polynomial $\chi_{I, M}$ is independent
+of the ideal of definition $I$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Part (2) follows immediately from Lemma \ref{lemma-hilbert-change-I}.
+Part (1) follows from (2) because
+$\varphi_{I, M}(n) = \chi_{I, M}(n) - \chi_{I, M}(n - 1)$
+for $n \geq 1$.
+\end{proof}
+
+\begin{definition}
+\label{definition-d}
+Let $R$ be a local Noetherian ring and $M$ a finite $R$-module.
+We denote {\it $d(M)$} the element of $\{-\infty, 0, 1, 2, \ldots \}$
+defined as follows:
+\begin{enumerate}
+\item If $M = 0$ we set $d(M) = -\infty$,
+\item if $M \not = 0$ then $d(M)$ is the degree of the numerical
+polynomial $\chi_M$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+If $\mathfrak m^nM \not = 0$ for all $n$, then we see that
+$d(M)$ is the degree $+1$ of the Hilbert polynomial of $M$.
+
+\begin{lemma}
+\label{lemma-differ-finite-chi}
+Let $R$ be a Noetherian local ring. Let $I \subset R$ be an ideal
+of definition. Let $M$ be a finite $R$-module
+which does not have finite length. If $M' \subset M$ is a submodule
+with finite colength, then $\chi_{I, M} - \chi_{I, M'}$
+is a polynomial of degree $<$ degree of either polynomial.
+\end{lemma}
+
+\begin{proof}
+Follows from Lemma \ref{lemma-differ-finite} by elementary calculus.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-hilbert-ses-chi}
+Let $R$ be a Noetherian local ring. Let $I \subset R$ be an ideal of
+definition. Let $0 \to M' \to M \to M'' \to 0$ be a short exact sequence
+of finite $R$-modules. Then
+\begin{enumerate}
+\item if $M'$ does not have finite length, then
+$\chi_{I, M} - \chi_{I, M''} - \chi_{I, M'}$
+is a numerical polynomial of degree $<$ the degree of
+$\chi_{I, M'}$,
+\item $\max\{ \deg(\chi_{I, M'}), \deg(\chi_{I, M''}) \} = \deg(\chi_{I, M})$,
+and
+\item $\max\{d(M'), d(M'')\} = d(M)$,
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+We first prove (1). Let $N \subset M'$ be as in Lemma \ref{lemma-hilbert-ses}.
+By Lemma \ref{lemma-differ-finite-chi} the numerical polynomial
+$\chi_{I, M'} - \chi_{I, N}$ has degree $<$ the common degree of
+$\chi_{I, M'}$ and $\chi_{I, N}$. By Lemma \ref{lemma-hilbert-ses}
+the difference
+$$
+\chi_{I, M}(n) - \chi_{I, M''}(n) - \chi_{I, N}(n - c)
+$$
+is constant for $n \gg 0$. By elementary calculus the difference
+$\chi_{I, N}(n) - \chi_{I, N}(n - c)$ has degree $<$ the degree of
+$\chi_{I, N}$ which is bigger than zero (see above). Putting everything
+together we obtain (1).
+
+\medskip\noindent
+Note that the leading coefficients of $\chi_{I, M'}$ and $\chi_{I, M''}$ are
+nonnegative. Thus the degree of $\chi_{I, M'} + \chi_{I, M''}$ is equal
+to the maximum of the degrees. Thus if $M'$ does not have finite
+length, then (2) follows from (1). If $M'$ does have finite length, then
+$I^nM \to I^nM''$ is an isomorphism for all $n \gg 0$ by Artin-Rees
+(Lemma \ref{lemma-Artin-Rees}). Thus $M/I^nM \to M''/I^nM''$ is a
+surjection with kernel $M'$ for $n \gg 0$ and we see that
+$\chi_{I, M}(n) - \chi_{I, M''}(n) = \text{length}(M')$
+for all $n \gg 0$. Thus (2) holds in this case also.
+
+\medskip\noindent
+Proof of (3). This follows from (2) except if one of $M$, $M'$, or $M''$
+is zero. We omit the proof in these special cases.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

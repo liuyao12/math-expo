@@ -1,0 +1,118 @@
+\section{Relative spectrum via glueing}
+\label{section-spec-via-glueing}
+
+\begin{situation}
+\label{situation-relative-spec}
+Here $S$ is a scheme, and $\mathcal{A}$ is a quasi-coherent
+$\mathcal{O}_S$-algebra. This means that $\mathcal{A}$ is a
+sheaf of $\mathcal{O}_S$-algebras which is quasi-coherent as an
+$\mathcal{O}_S$-module.
+\end{situation}
+
+\noindent
+In this section we outline how to construct a morphism
+of schemes
+$$
+\underline{\Spec}_S(\mathcal{A}) \longrightarrow S
+$$
+by glueing the spectra $\Spec(\Gamma(U, \mathcal{A}))$
+where $U$ ranges over the affine opens of $S$. We first show that the
+spectra of the values of $\mathcal{A}$ over affines form a
+suitable collection of schemes, as in Lemma \ref{lemma-relative-glueing}.
+
+\begin{lemma}
+\label{lemma-spec-inclusion}
+In Situation \ref{situation-relative-spec}.
+Suppose $U \subset U' \subset S$ are affine opens.
+Let $A = \mathcal{A}(U)$ and $A' = \mathcal{A}(U')$.
+The map of rings $A' \to A$ induces a morphism
+$\Spec(A) \to \Spec(A')$, and the diagram
+$$
+\xymatrix{
+\Spec(A) \ar[r] \ar[d] &
+\Spec(A') \ar[d] \\
+U \ar[r] &
+U'
+}
+$$
+is cartesian.
+\end{lemma}
+
+\begin{proof}
+Let $R = \mathcal{O}_S(U)$ and $R' = \mathcal{O}_S(U')$.
+Note that the map $R \otimes_{R'} A' \to A$ is an isomorphism as
+$\mathcal{A}$ is quasi-coherent
+(see Schemes, Lemma \ref{schemes-lemma-widetilde-pullback} for example).
+The result follows from the description of the fibre product of
+affine schemes in
+Schemes, Lemma \ref{schemes-lemma-fibre-product-affine-schemes}.
+\end{proof}
+
+\noindent
+In particular the morphism $\Spec(A) \to \Spec(A')$
+of the lemma is an open immersion.
+
+\begin{lemma}
+\label{lemma-transitive-spec}
+In Situation \ref{situation-relative-spec}.
+Suppose $U \subset U' \subset U'' \subset S$ are affine opens.
+Let $A = \mathcal{A}(U)$, $A' = \mathcal{A}(U')$ and $A'' = \mathcal{A}(U'')$.
+The composition of the morphisms
+$\Spec(A) \to \Spec(A')$, and
+$\Spec(A') \to \Spec(A'')$ of
+Lemma \ref{lemma-spec-inclusion} gives the
+morphism $\Spec(A) \to \Spec(A'')$
+of Lemma \ref{lemma-spec-inclusion}.
+\end{lemma}
+
+\begin{proof}
+This follows as the map $A'' \to A$ is the composition of $A'' \to A'$ and
+$A' \to A$ (because $\mathcal{A}$ is a sheaf).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-glue-relative-spec}
+In Situation \ref{situation-relative-spec}.
+There exists a morphism of schemes
+$$
+\pi : \underline{\Spec}_S(\mathcal{A}) \longrightarrow S
+$$
+with the following properties:
+\begin{enumerate}
+\item for every affine open $U \subset S$ there exists an isomorphism
+$i_U : \pi^{-1}(U) \to \Spec(\mathcal{A}(U))$ over $U$, and
+\item for $U \subset U' \subset S$ affine open the composition
+$$
+\xymatrix{
+\Spec(\mathcal{A}(U)) \ar[r]^{i_U^{-1}} &
+\pi^{-1}(U) \ar[rr]^{inclusion} & &
+\pi^{-1}(U') \ar[r]^{i_{U'}} &
+\Spec(\mathcal{A}(U'))
+}
+$$
+is the open immersion of Lemma \ref{lemma-spec-inclusion} above.
+\end{enumerate}
+Moreover, $\underline{\Spec}_S(\mathcal{A})$
+is unique up to unique isomorphism over $S$.
+\end{lemma}
+
+\begin{proof}
+Follows immediately from
+Lemmas \ref{lemma-relative-glueing},
+\ref{lemma-spec-inclusion}, and
+\ref{lemma-transitive-spec}.
+Uniqueness is stated in the last sentence of
+Lemma \ref{lemma-relative-glueing}.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+

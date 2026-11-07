@@ -1,0 +1,131 @@
+\section{Separable extensions}
+\label{section-separability}
+
+\noindent
+In this section we talk about separability for nonalgebraic field extensions.
+This is closely related to the concept of geometrically reduced algebras, see
+Definition \ref{definition-geometrically-reduced}.
+
+\begin{definition}
+\label{definition-separable-field-extension}
+Let $K/k$ be a field extension.
+\begin{enumerate}
+\item We say $K$ is {\it separably generated over $k$} if there exists
+a transcendence basis $\{x_i; i \in I\}$ of $K/k$ such that the extension
+$K/k(x_i; i \in I)$ is a separable algebraic extension.
+\item We say $K$ is {\it separable over $k$} if for every subextension
+$k \subset K' \subset K$ with $K'$ finitely generated
+over $k$, the extension $K'/k$ is separably generated.
+\end{enumerate}
+\end{definition}
+
+\noindent
+With this awkward definition it is not clear that
+a separably generated field extension is itself separable.
+It will turn out that this is the case, see
+Lemma \ref{lemma-separably-generated-separable}.
+
+\begin{lemma}
+\label{lemma-subextensions-are-separable}
+Let $K/k$ be a separable field extension.
+For any subextension $K/K'/k$ the field
+extension $K'/k$ is separable.
+\end{lemma}
+
+\begin{proof}
+This is direct from the definition.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-generating-finitely-generated-separable-field-extensions}
+Let $K/k$ be a separably generated, and finitely generated
+field extension.
+Set $r = \text{trdeg}_k(K)$. Then there exist elements
+$x_1, \ldots, x_{r + 1}$ of $K$ such that
+\begin{enumerate}
+\item $x_1, \ldots, x_r$ is a transcendence basis of $K$ over $k$,
+\item $K = k(x_1, \ldots, x_{r + 1})$, and
+\item $x_{r + 1}$ is separable over $k(x_1, \ldots, x_r)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Combine the definition with Fields, Lemma \ref{fields-lemma-primitive-element}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-make-separably-generated}
+Let $K/k$ be a finitely generated field extension.
+There exists a diagram
+$$
+\xymatrix{
+K \ar[r] & K' \\
+k \ar[u] \ar[r] & k' \ar[u]
+}
+$$
+where $k'/k$, $K'/K$ are finite purely inseparable field
+extensions such that $K'/k'$ is a separably generated field extension.
+\end{lemma}
+
+\begin{proof}
+This lemma is only interesting when the characteristic of $k$ is $p > 0$.
+Choose $x_1, \ldots, x_r$ a transcendence basis of $K$ over $k$.
+As $K$ is finitely generated over $k$ the extension
+$k(x_1, \ldots, x_r) \subset K$ is finite.
+Let $K/K_{sep}/k(x_1, \ldots, x_r)$ be the subextension
+found in
+Fields, Lemma \ref{fields-lemma-separable-first}.
+If $K = K_{sep}$ then we are done.
+We will use induction on $d = [K : K_{sep}]$.
+
+\medskip\noindent
+Assume that $d > 1$. Choose a $\beta \in K$ with
+$\alpha = \beta^p \in K_{sep}$ and $\beta \not \in K_{sep}$.
+Let $P = T^n + a_1T^{n - 1} + \ldots + a_n$
+be the minimal polynomial of $\alpha$ over $k(x_1, \ldots, x_r)$.
+Let $k'/k$ be a finite purely inseparable extension
+obtained by adjoining $p$th roots such that each $a_i$ is a
+$p$th power in $k'(x_1^{1/p}, \ldots, x_r^{1/p})$.
+Such an extension exists; details omitted.
+Let $L$ be a field fitting into the diagram
+$$
+\xymatrix{
+K \ar[r] & L \\
+k(x_1, \ldots, x_r) \ar[u] \ar[r] & k'(x_1^{1/p}, \ldots, x_r^{1/p}) \ar[u]
+}
+$$
+We may and do assume $L$ is the compositum of $K$ and
+$k'(x_1^{1/p}, \ldots, x_r^{1/p})$. Let
+$L/L_{sep}/k'(x_1^{1/p}, \ldots, x_r^{1/p})$
+be the subextension found in
+Fields, Lemma \ref{fields-lemma-separable-first}.
+Then $L_{sep}$ is the compositum of
+$K_{sep}$ and $k'(x_1^{1/p}, \ldots, x_r^{1/p})$.
+The element $\alpha \in L_{sep}$ is a zero of the polynomial
+$P$ all of whose coefficients are $p$th powers in
+$k'(x_1^{1/p}, \ldots, x_r^{1/p})$ and whose roots are
+pairwise distinct. By
+Fields, Lemma \ref{fields-lemma-pth-root}
+we see that $\alpha = (\alpha')^p$ for some $\alpha' \in L_{sep}$.
+Clearly, this means that $\beta$ maps to $\alpha' \in L_{sep}$.
+In other words, we get the tower of fields
+$$
+\xymatrix{
+K \ar[r] & L \\
+K_{sep}(\beta) \ar[r] \ar[u] & L_{sep} \ar[u] \\
+K_{sep} \ar[r] \ar[u] & L_{sep} \ar@{=}[u] \\
+k(x_1, \ldots, x_r) \ar[u] \ar[r] & k'(x_1^{1/p}, \ldots, x_r^{1/p}) \ar[u] \\
+k \ar[r] \ar[u] & k' \ar[u]
+}
+$$
+Thus this construction leads to a new situation with
+$[L : L_{sep}] < [K : K_{sep}]$. By induction we can find
+$k' \subset k''$ and $L \subset L'$ as in the lemma for the
+extension $L/k'$. Then the extensions $k''/k$ and
+$L'/K$ work for the extension $K/k$.
+This proves the lemma.
+\end{proof}
+
+
+
+

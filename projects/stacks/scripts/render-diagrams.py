@@ -5,12 +5,27 @@ Usage: python3 scripts/render-diagrams.py --node /path/to/node --dvisvgm /path/t
 """
 from pathlib import Path
 import argparse,subprocess,tempfile,json,os,re,hashlib
-p=argparse.ArgumentParser();p.add_argument('--node',default='node');p.add_argument('--latex',default='latex');p.add_argument('--dvisvgm',default='dvisvgm');p.add_argument('--texmf-home');args=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('--node',default='node');p.add_argument('--latex',default='latex');p.add_argument('--dvisvgm',default='dvisvgm');p.add_argument('--texmf-home');p.add_argument('--missing-only',action='store_true');args=p.parse_args()
 root=Path(__file__).resolve().parents[1]
 diagrams=json.loads(subprocess.check_output([args.node,str(root/'scripts/collect-diagrams.mjs')],text=True))
+existing=json.loads((root/'src/diagrams.json').read_text())
+if args.missing_only:
+    diagrams=[d for d in diagrams if d['key'] not in existing]
+references=json.loads((root/'upstream/references.json').read_text())
+catalog=json.loads((root/'upstream/sections.json').read_text())
+by_slug={s['slug']:s for s in catalog.values()}
+def formula(d):
+    # Resolve source cross-references as TeX would with its chapter .aux files.
+    # The stored formula/key remains the unmodified source.
+    chapter=by_slug[d['sections'][0]]['chapter']
+    def resolve(match):
+        key=match[1] if match[1] in references else chapter+'-'+match[1]
+        if key not in references:raise ValueError('Missing diagram reference '+key)
+        return references[key]['number']
+    return re.sub(r'\\ref\{([^}]+)\}',resolve,d['tex'])
 preamble=(root/'upstream/preamble.tex').read_text().split('% Macros\n%\n',1)[1].split('% Boxtimes',1)[0]
 tex='\\documentclass{amsart}\n\\usepackage{amsmath,amssymb}\n\\usepackage[all]{xy}\n\\xyoption{2cell}\n\\UseAllTwocells\n\\pagestyle{empty}\n'+preamble+'\n\\begin{document}\n'
-tex+='\n'.join('\\thispagestyle{empty}\\noindent\\hbox{$\\displaystyle '+d['tex']+'$}\\par\\newpage\n' for d in diagrams)+'\\end{document}\n'
+tex+='\n'.join('\\thispagestyle{empty}\\noindent\\hbox{$\\displaystyle '+formula(d)+'$}\\par\\newpage\n' for d in diagrams)+'\\end{document}\n'
 env=os.environ.copy()
 if args.texmf_home:env['TEXMFHOME']=args.texmf_home
 # A separately supplied dvisvgm binary must use the same fonts/configuration as LaTeX.
@@ -34,5 +49,5 @@ with tempfile.TemporaryDirectory(prefix='stacks-diagrams-') as tmp:
         w=float(re.search(r"width='([\d.]+)pt'",text)[1]);h=float(re.search(r"height='([\d.]+)pt'",text)[1])
         name=d['key']+'.svg';(assets/name).write_bytes(data)
         d.update(file=name,width=w,height=h,svg_sha256=hashlib.sha256(data).hexdigest())
-(root/'src/diagrams.json').write_text(json.dumps({d['key']:d for d in diagrams},indent=2)+'\n')
+(root/'src/diagrams.json').write_text(json.dumps({**(existing if args.missing_only else {}),**{d['key']:d for d in diagrams}},indent=2)+'\n')
 print(f'Rendered {len(diagrams)} original Xy-pic diagrams directly from the retained source.')

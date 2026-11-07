@@ -68,6 +68,7 @@ body:has(.reader-layout) .site-header{position:sticky;top:0}.reading-progress{he
 .example-current .example-points > .object-row { display: list-item; border: 0; padding-block: 0; }
 .example-points > li::marker { color: var(--muted); }
 .example-points > li > .math-display:first-child { margin-top: 0; }
+.verbatim-main .math-inline { display: inline-flex; max-width: 100%; overflow: auto hidden; vertical-align: baseline; }
 .example-body {
   display: flow-root;
   max-height: var(--example-body-room, calc(100dvh - 320px));

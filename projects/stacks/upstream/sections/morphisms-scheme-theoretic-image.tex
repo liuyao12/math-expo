@@ -1,0 +1,227 @@
+\section{Scheme theoretic image}
+\label{section-scheme-theoretic-image}
+
+\noindent
+Caution: Some of the material in this section is ultra-general and
+behaves differently from what you might expect.
+
+\begin{lemma}
+\label{lemma-scheme-theoretic-image}
+Let $f : X \to Y$ be a morphism of schemes. There exists a closed
+subscheme $Z \subset Y$ such that $f$ factors through $Z$ and such
+that for any other closed subscheme $Z' \subset Y$ such that $f$
+factors through $Z'$ we have $Z \subset Z'$.
+\end{lemma}
+
+\begin{proof}
+Let $\mathcal{I} = \Ker(\mathcal{O}_Y \to f_*\mathcal{O}_X)$.
+If $\mathcal{I}$ is quasi-coherent then we just take $Z$ to be the
+closed subscheme determined by $\mathcal{I}$, see
+Lemma \ref{lemma-closed-immersion-bijection-ideals}. This works by
+Lemma \ref{lemma-closed-immersion-ideals}.
+In general the same lemma requires us to show that there exists
+a largest quasi-coherent sheaf of ideals $\mathcal{I}'$ contained in
+$\mathcal{I}$.
+This follows from Lemma \ref{lemma-largest-quasi-coherent-subsheaf}.
+\end{proof}
+
+\begin{definition}
+\label{definition-scheme-theoretic-image}
+Let $f : X \to Y$ be a morphism of schemes. The {\it scheme theoretic image}
+of $f$ is the smallest closed subscheme $Z \subset Y$ through which $f$
+factors, see Lemma \ref{lemma-scheme-theoretic-image} above.
+\end{definition}
+
+\noindent
+For a morphism $f : X \to Y$ of schemes with scheme theoretic image $Z$
+we often denote $f : X \to Z$ the factorization of $f$
+through its scheme theoretic image. If the morphism $f$ is not
+quasi-compact, then (in general)
+\begin{enumerate}
+\item the set theoretic inclusion $\overline{f(X)} \subset Z$
+is not an equality, i.e., $f(X) \subset Z$ is not a dense subset, and
+\item the construction of the scheme theoretic image does not commute with
+restriction to open subschemes to $Y$.
+\end{enumerate}
+In Examples, Section \ref{examples-section-scheme-theoretic-image}
+the reader finds an example for both phenomena.
+These phenomena can arise even for immersions, see
+Examples, Section \ref{examples-section-strange-immersion}.
+However, the next lemma shows that both disasters are avoided
+when the morphism is quasi-compact.
+
+\begin{lemma}
+\label{lemma-quasi-compact-scheme-theoretic-image}
+Let $f : X \to Y$ be a morphism of schemes.
+Let $Z \subset Y$ be the scheme theoretic image of $f$.
+If $f$ is quasi-compact then
+\begin{enumerate}
+\item the sheaf of ideals
+$\mathcal{I} = \Ker(\mathcal{O}_Y \to f_*\mathcal{O}_X)$
+is quasi-coherent,
+\item the scheme theoretic image $Z$ is the closed subscheme
+determined by $\mathcal{I}$,
+\item for any open $U \subset Y$ the scheme theoretic image of
+$f|_{f^{-1}(U)} : f^{-1}(U) \to U$ is equal to $Z \cap U$, and
+\item the image $f(X) \subset Z$ is a dense subset of $Z$, in other
+words the morphism $X \to Z$ is dominant
+(see Definition \ref{definition-dominant}).
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Part (4) follows from part (3). To show (3) it suffices
+to prove (1) since the formation of $\mathcal{I}$ commutes with restriction to
+open subschemes of $Y$. And if (1) holds then in the proof of
+Lemma \ref{lemma-scheme-theoretic-image}
+we showed (2). Thus it suffices to prove that $\mathcal{I}$ is quasi-coherent.
+Since the property of being quasi-coherent is
+local we may assume $Y$ is affine. As $f$ is quasi-compact,
+we can find a finite affine open covering
+$X = \bigcup_{i = 1, \ldots, n} U_i$. Denote $f'$ the composition
+$$
+X' = \coprod U_i \longrightarrow X \longrightarrow Y.
+$$
+Then $f_*\mathcal{O}_X$ is a subsheaf of $f'_*\mathcal{O}_{X'}$,
+and hence $\mathcal{I} = \Ker(\mathcal{O}_Y \to f'_*\mathcal{O}_{X'})$.
+By Schemes, Lemma \ref{schemes-lemma-push-forward-quasi-coherent}
+the sheaf $f'_*\mathcal{O}_{X'}$ is quasi-coherent on $Y$. Hence we win.
+\end{proof}
+
+\begin{example}
+\label{example-scheme-theoretic-image}
+If $A \to B$ is a ring map with kernel $I$, then the scheme theoretic image
+of $\Spec(B) \to \Spec(A)$ is the closed subscheme
+$\Spec(A/I)$ of $\Spec(A)$. This follows from
+Lemma \ref{lemma-quasi-compact-scheme-theoretic-image}.
+\end{example}
+
+\noindent
+If the morphism is quasi-compact, then the scheme theoretic image only
+adds points which are specializations of points in the image.
+
+\begin{lemma}
+\label{lemma-reach-points-scheme-theoretic-image}
+Let $f : X \to Y$ be a quasi-compact morphism.
+Let $Z$ be the scheme theoretic image of $f$.
+Let $z \in Z$\footnote{By
+Lemma \ref{lemma-quasi-compact-scheme-theoretic-image} set-theoretically
+$Z$ agrees with the closure of $f(X)$ in $Y$.}.
+There exists a valuation ring $A$ with
+fraction field $K$ and a commutative diagram
+$$
+\xymatrix{
+\Spec(K) \ar[rr] \ar[d] & & X \ar[d] \ar[ld] \\
+\Spec(A) \ar[r] & Z \ar[r] & Y
+}
+$$
+such that the closed point of $\Spec(A)$ maps to $z$. In particular
+any point of $Z$ is the specialization of a point of $f(X)$.
+\end{lemma}
+
+\begin{proof}
+Let $z \in \Spec(R) = V \subset Y$ be an affine open
+neighbourhood of $z$. By
+Lemma \ref{lemma-quasi-compact-scheme-theoretic-image}
+the intersection $Z \cap V$ is the scheme theoretic image of
+$f^{-1}(V) \to V$. Hence we may replace $Y$ by $V$
+and assume $Y = \Spec(R)$ is affine.
+In this case $X$ is quasi-compact as $f$ is quasi-compact.
+Say $X = U_1 \cup \ldots \cup U_n$
+is a finite affine open covering. Write $U_i = \Spec(A_i)$.
+Let $I = \Ker(R \to A_1 \times \ldots \times A_n)$.
+By Lemma \ref{lemma-quasi-compact-scheme-theoretic-image}
+again we see that $Z$ corresponds to the closed subscheme
+$\Spec(R/I)$ of $Y$. If $\mathfrak p \subset R$ is
+the prime corresponding to $z$, then we see that
+$I_{\mathfrak p} \subset R_{\mathfrak p}$ is not an
+equality. Hence (as localization is exact, see
+Algebra, Proposition \ref{algebra-proposition-localization-exact})
+we see that
+$R_{\mathfrak p} \to
+(A_1)_{\mathfrak p} \times \ldots \times (A_n)_{\mathfrak p}$
+is not zero. Hence one of the rings $(A_i)_{\mathfrak p}$ is not zero.
+Hence there exists an $i$ and a prime $\mathfrak q_i \subset A_i$
+lying over a prime $\mathfrak p_i \subset \mathfrak p$.
+By Algebra, Lemma \ref{algebra-lemma-dominate} we can choose a valuation ring
+$A \subset K = \kappa(\mathfrak q_i)$ dominating
+the local ring
+$R_{\mathfrak p}/\mathfrak p_iR_{\mathfrak p} \subset \kappa(\mathfrak q_i)$.
+This gives the desired diagram. Some details omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-factor-factor}
+Let
+$$
+\xymatrix{
+X_1 \ar[d] \ar[r]_{f_1} & Y_1 \ar[d] \\
+X_2 \ar[r]^{f_2} & Y_2
+}
+$$
+be a commutative diagram of schemes. Let $Z_i \subset Y_i$, $i = 1, 2$ be
+the scheme theoretic image of $f_i$. Then the morphism
+$Y_1 \to Y_2$ induces a morphism $Z_1 \to Z_2$ and a
+commutative diagram
+$$
+\xymatrix{
+X_1 \ar[r] \ar[d] & Z_1 \ar[d] \ar[r] & Y_1 \ar[d] \\
+X_2 \ar[r] & Z_2 \ar[r] & Y_2
+}
+$$
+\end{lemma}
+
+\begin{proof}
+The scheme theoretic inverse image of $Z_2$ in $Y_1$
+is a closed subscheme of $Y_1$ through
+which $f_1$ factors. Hence $Z_1$ is contained in this.
+This proves the lemma.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-scheme-theoretic-image-reduced}
+Let $f : X \to Y$ be a morphism of schemes.
+If $X$ is reduced, then the scheme theoretic image of $f$ is
+the reduced induced scheme structure on $\overline{f(X)}$.
+\end{lemma}
+
+\begin{proof}
+This is true because the reduced induced scheme structure on $\overline{f(X)}$
+is clearly the smallest closed subscheme of $Y$ through which $f$ factors,
+see
+Schemes, Lemma \ref{schemes-lemma-map-into-reduction}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-scheme-theoretic-image-of-partial-section}
+Let $f : X \to Y$ be a separated morphism of schemes.
+Let $V \subset Y$ be a retrocompact open. Let $s : V \to X$
+be a morphism such that $f \circ s = \text{id}_V$.
+Let $Y'$ be the scheme theoretic image of $s$.
+Then $Y' \to Y$ is an isomorphism over $V$.
+\end{lemma}
+
+\begin{proof}
+The assumption that $V$ is retrocompact in $Y$
+(Topology, Definition \ref{topology-definition-quasi-compact})
+means that $V \to Y$ is a quasi-compact morphism.
+By Schemes, Lemma \ref{schemes-lemma-quasi-compact-permanence}
+the morphism $s : V \to X$ is quasi-compact.
+Hence the construction of the scheme theoretic image $Y'$
+of $s$ commutes with restriction to opens by
+Lemma \ref{lemma-quasi-compact-scheme-theoretic-image}.
+In particular, we see that $Y' \cap f^{-1}(V)$ is the
+scheme theoretic image of a section of the separated
+morphism $f^{-1}(V) \to V$. Since a section of a separated
+morphism is a closed immersion
+(Schemes, Lemma \ref{schemes-lemma-section-immersion}),
+we conclude that
+$Y' \cap f^{-1}(V) \to V$ is an isomorphism as desired.
+\end{proof}
+
+
+
+
+
+
+

@@ -1,0 +1,628 @@
+\section{Syntomic morphisms}
+\label{section-syntomic}
+
+\noindent
+Syntomic ring maps are flat finitely presented ring maps all of whose fibers
+are local complete intersections. We discuss general local complete
+intersection ring maps in
+More on Algebra, Section \ref{more-algebra-section-lci}.
+
+\begin{definition}
+\label{definition-lci}
+A ring map $R \to S$ is called {\it syntomic}, or we say $S$ is a
+{\it flat local complete intersection over $R$}
+if it is flat, of finite presentation, and if all of its fibre rings
+$S \otimes_R \kappa(\mathfrak p)$ are local complete intersections,
+see Definition \ref{definition-lci-field}.
+\end{definition}
+
+\noindent
+Clearly, an algebra over a field is syntomic over the field
+if and only if it is a local complete intersection. Here is
+a pleasing feature of this definition.
+
+\begin{lemma}
+\label{lemma-syntomic-descends}
+\begin{slogan}
+Being syntomic is fpqc local on the base.
+\end{slogan}
+Let $R \to S$ be a ring map.
+Let $R \to R'$ be a faithfully flat ring map.
+Set $S' = R'\otimes_R S$.
+Then $R \to S$ is syntomic if and only if $R' \to S'$ is syntomic.
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-finite-presentation-descends} and
+Lemma \ref{lemma-flatness-descends} this holds for the property
+of being flat and for the property of being of finite presentation.
+The map $\Spec(R') \to \Spec(R)$ is surjective,
+see Lemma \ref{lemma-ff-rings}. Thus it suffices to show
+given primes $\mathfrak p' \subset R'$ lying over $\mathfrak p \subset R$
+that $S \otimes_R \kappa(\mathfrak p)$ is a local complete
+intersection if and only if $S' \otimes_{R'} \kappa(\mathfrak p')$
+is a local complete intersection. Note that
+$S' \otimes_{R'} \kappa(\mathfrak p') =
+S \otimes_R \kappa(\mathfrak p)
+\otimes_{\kappa(\mathfrak p)} \kappa(\mathfrak p')$.
+Thus Lemma \ref{lemma-lci-field-change} applies.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-base-change-syntomic}
+Any base change of a syntomic map is syntomic.
+\end{lemma}
+
+\begin{proof}
+This is true for being flat, for being of finite presentation,
+and for having local complete intersections as fibres by
+Lemmas \ref{lemma-flat-base-change}, \ref{lemma-compose-finite-type} and
+\ref{lemma-lci-field-change}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-local-syntomic}
+Let $R \to S$ be a ring map.
+Suppose we have $g_1, \ldots g_m \in S$ which generate the
+unit ideal such that each $R \to S_{g_i}$ is syntomic.
+Then $R \to S$ is syntomic.
+\end{lemma}
+
+\begin{proof}
+This is true for being flat and for being of finite presentation by
+Lemmas \ref{lemma-flat-localization} and \ref{lemma-cover-upstairs}.
+The property of having fibre rings which are local complete intersections
+is local on $S$ by its very definition, see
+Definition \ref{definition-lci-field}.
+\end{proof}
+
+\begin{definition}
+\label{definition-relative-global-complete-intersection}
+Let $R \to S$ be a ring map. We say that $R \to S$ is
+a {\it relative global complete intersection} if there exists
+a presentation $S = R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$ and
+every nonempty fibre of $\Spec(S) \to \Spec(R)$ has dimension $n - c$.
+We will say ``let $S = R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$ be a relative
+global complete intersection'' to indicate this situation.
+\end{definition}
+
+\noindent
+The following lemma is occasionally useful to find
+global presentations.
+
+\begin{lemma}
+\label{lemma-huber}
+Let $S$ be a finitely presented $R$-algebra which has a presentation
+$S = R[x_1, \ldots, x_n]/I$ such that $I/I^2$ is free over $S$. Then
+$S$ has a presentation $S = R[y_1, \ldots, y_m]/(f_1, \ldots, f_c)$
+such that $(f_1, \ldots, f_c)/(f_1, \ldots, f_c)^2$ is free with
+basis given by the classes of $f_1, \ldots, f_c$.
+\end{lemma}
+
+\begin{proof}
+Note that $I$ is a finitely generated ideal by
+Lemma \ref{lemma-finite-presentation-independent}.
+Let $f_1, \ldots, f_c \in I$ be elements which map to a basis of $I/I^2$.
+By Nakayama's lemma (Lemma \ref{lemma-NAK})
+there exists a $g \in 1 + I$ such that
+$$
+g \cdot I \subset (f_1, \ldots, f_c)
+$$
+and $I_g \cong (f_1, \ldots, f_c)_g$. Hence we see that
+$$
+S \cong R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)[1/g]
+\cong R[x_1, \ldots, x_n, x_{n + 1}]/(f_1, \ldots, f_c, gx_{n + 1} - 1)
+$$
+as desired. It follows that $f_1, \ldots, f_c,gx_{n + 1} - 1$
+form a basis for
+$(f_1, \ldots, f_c, gx_{n + 1} - 1)/(f_1, \ldots, f_c, gx_{n + 1} - 1)^2$
+for example by applying Lemma \ref{lemma-principal-localization-NL}.
+\end{proof}
+
+
+
+\begin{example}
+\label{example-factor-polynomials}
+Let $n , m \geq 1$ be integers. Consider the ring map
+\begin{eqnarray*}
+R = \mathbf{Z}[a_1, \ldots, a_{n + m}]
+& \longrightarrow &
+S = \mathbf{Z}[b_1, \ldots, b_n, c_1, \ldots, c_m] \\
+a_1 & \longmapsto & b_1 + c_1 \\
+a_2 & \longmapsto & b_2 + b_1 c_1 + c_2 \\
+\ldots & \ldots & \ldots \\
+a_{n + m} & \longmapsto & b_n c_m
+\end{eqnarray*}
+In other words, this is the unique ring map of polynomial rings
+as indicated such that the polynomial factorization
+$$
+x^{n + m} + a_1 x^{n + m - 1} + \ldots + a_{n + m}
+=
+(x^n + b_1 x^{n - 1} + \ldots + b_n)
+(x^m + c_1 x^{m - 1} + \ldots + c_m)
+$$
+holds. Note that $S$ is generated by $n + m$ elements over $R$
+(namely, $b_i, c_j$) and that there are $n + m$ equations
+(namely $a_k = a_k(b_i, c_j)$). In order to show that
+$S$ is a relative global complete intersection over $R$ it suffices
+to prove that all fibres have dimension $0$.
+
+\medskip\noindent
+To prove this, let $R \to k$ be a
+ring map into a field $k$. Say $a_i$ maps to $\alpha_i \in k$.
+Consider the fibre ring $S_k = k \otimes_R S$. Let $k \to K$ be
+a field extension. A $k$-algebra map of $S_k \to K$ is the same thing as
+finding $\beta_1, \ldots, \beta_n, \gamma_1, \ldots, \gamma_m \in K$
+such that
+$$
+x^{n + m} + \alpha_1 x^{n + m - 1} + \ldots + \alpha_{n + m}
+=
+(x^n + \beta_1 x^{n - 1} + \ldots + \beta_n)
+(x^m + \gamma_1 x^{m - 1} + \ldots + \gamma_m).
+$$
+Hence we see there are at most finitely many choices of
+such $n + m$-tuples in $K$. This proves that all fibres
+have finitely many closed points (use Hilbert's Nullstellensatz
+to see they all correspond to solutions in $\overline{k}$ for example)
+and hence that $R \to S$ is a relative global complete intersection.
+
+\medskip\noindent
+Another way to argue this is to show
+$\mathbf{Z}[a_1, \ldots, a_{n + m}] \to
+\mathbf{Z}[b_1, \ldots, b_n, c_1, \ldots, c_m]$ is actually
+also a {\it finite} ring map. Namely, by Lemma \ref{lemma-polynomials-divide}
+each of $b_i, c_j$ is integral over $R$, and hence $R \to S$ is
+finite by Lemma \ref{lemma-characterize-integral}.
+\end{example}
+
+\begin{example}
+\label{example-roots-universal-polynomial}
+Consider the ring map
+\begin{eqnarray*}
+R = \mathbf{Z}[a_1, \ldots, a_n]
+& \longrightarrow &
+S = \mathbf{Z}[\alpha_1, \ldots, \alpha_n] \\
+a_1 & \longmapsto &
+\alpha_1 + \ldots + \alpha_n \\
+\ldots & \ldots & \ldots \\
+a_n & \longmapsto & \alpha_1 \ldots \alpha_n
+\end{eqnarray*}
+In other words this is the unique ring map of polynomial
+rings as indicated such that
+$$
+x^n + a_1 x^{n - 1} + \ldots + a_n
+=
+\prod\nolimits_{i = 1}^n (x + \alpha_i)
+$$
+holds in $\mathbf{Z}[\alpha_i, x]$. Another way to say this
+is that $a_i$ maps to the $i$th elementary symmetric function
+in $\alpha_1, \ldots, \alpha_n$. By the usual theory of elementary
+symmetric polynomials (details omitted) the ring $S$ is finite
+free over $R$ with basis the elements
+$\alpha_1^{e_1} \alpha_2^{e_2} \ldots \alpha_n^{e_n}$ with
+$0 \leq e_i \leq n - i$. A fortiori, the fibre rings of
+$R \to S$ are finite and hence have dimension $0$.
+On the other hand, $S$ is generated by
+$n$ elements over $R$ subject to $n$ equations. Hence $S$
+is a relative global complete intersection over $R$.
+Since the rank of $S$ over $R$ is positive, we also see
+that $S$ is faithfully flat over $R$.
+\end{example}
+
+\begin{lemma}
+\label{lemma-base-change-relative-global-complete-intersection}
+Let $S = R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$ be a
+relative global complete intersection
+(Definition \ref{definition-relative-global-complete-intersection})
+\begin{enumerate}
+\item For any $R \to R'$ the base change
+$R' \otimes_R S = R'[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$ is a relative
+global complete intersection.
+\item For any $g \in S$ which is the image of $h \in R[x_1, \ldots, x_n]$
+the ring
+$S_g = R[x_1, \ldots, x_n, x_{n + 1}]/(f_1, \ldots, f_c, hx_{n + 1} - 1)$
+is a relative global complete intersection.
+\item If $R \to S$ factors as $R \to R_f \to S$ for some $f \in R$.
+Then the ring $S = R_f[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$
+is a relative global complete intersection over $R_f$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-dimension-preserved-field-extension}
+the fibres of a base change have the same dimension as the
+fibres of the original map. Moreover
+$R' \otimes_R R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)
+= R'[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$. Thus (1) follows.
+The proof of (2) is that
+the localization at one element can be described as
+$S_g \cong S[x_{n + 1}]/(gx_{n + 1} - 1)$.
+Assertion (3) follows from (1) since under the assumptions of (3) we have
+$R_f \otimes_R S \cong S$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-localize-relative-complete-intersection}
+Let $R$ be a ring. Let $S = R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$.
+We will find $h \in R[x_1, \ldots, x_n]$ which maps to $g \in S$
+such that
+$$
+S_g = R[x_1, \ldots, x_n, x_{n + 1}]/(f_1, \ldots, f_c, hx_{n + 1} - 1)
+$$
+is a relative global complete intersection with a presentation as in
+Definition \ref{definition-relative-global-complete-intersection}
+in each of the following cases:
+\begin{enumerate}
+\item Let $I \subset R$ be an ideal. If the fibres of
+$\Spec(S/IS) \to \Spec(R/I)$ have dimension $n - c$, then we can
+find $(h, g)$ as above such that $g$ maps to $1 \in S/IS$.
+\item Let $\mathfrak p \subset R$ be a prime. If
+$\dim(S \otimes_R \kappa(\mathfrak p)) = n - c$, then we can
+find $(h, g)$ as above such that $g$ maps to a unit of
+$S \otimes_R \kappa(\mathfrak p)$.
+\item Let $\mathfrak q \subset S$ be a prime lying over
+$\mathfrak p \subset R$. If $\dim_{\mathfrak q}(S/R) = n - c$, then we can
+find $(h, g)$ as above such that $g \not \in \mathfrak q$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Ad (1). By Lemma \ref{lemma-dimension-fibres-bounded-open-upstairs}
+there exists an open subset $W \subset \Spec(S)$ containing $V(IS)$
+such that all fibres of $W \to \Spec(R)$ have dimension $\leq n - c$.
+Say $W = \Spec(S) \setminus V(J)$. Then $V(J) \cap V(IS) = \emptyset$
+hence we can find a $g \in J$ which maps to $1 \in S/IS$.
+Let $h \in R[x_1, \ldots, x_n]$ be any preimage of $g$.
+
+\medskip\noindent
+Ad (2). By Lemma \ref{lemma-dimension-fibres-bounded-open-upstairs}
+there exists an open subset $W \subset \Spec(S)$ containing
+$\Spec(S \otimes_R \kappa(\mathfrak p))$
+such that all fibres of $W \to \Spec(R)$ have dimension $\leq n - c$.
+Say $W = \Spec(S) \setminus V(J)$. Then
+$V(J \cdot S \otimes_R \kappa(\mathfrak p)) = \emptyset$.
+Hence we can find a $g \in J$ which maps to a unit in
+$S \otimes_R \kappa(\mathfrak p)$ (details omitted).
+Let $h \in R[x_1, \ldots, x_n]$ be any preimage of $g$.
+
+\medskip\noindent
+Ad (3). By Lemma \ref{lemma-dimension-fibres-bounded-open-upstairs}
+there exists a $g \in S$, $g \not \in \mathfrak q$
+such that all nonempty fibres of $R \to S_g$
+have dimension $\leq n - c$. Let $h \in R[x_1, \ldots, x_n]$
+be any element that maps to $g$.
+\end{proof}
+
+\noindent
+The following lemma says we can do absolute Noetherian
+approximation for relative global complete intersections.
+
+\begin{lemma}
+\label{lemma-relative-global-complete-intersection-Noetherian}
+Let $R$ be a ring. Let $S = R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$
+be a relative global complete intersection
+(Definition \ref{definition-relative-global-complete-intersection}).
+There exist a finite type $\mathbf{Z}$-subalgebra $R_0 \subset R$
+such that $f_i \in R_0[x_1, \ldots, x_n]$ and such that
+$$
+S_0 = R_0[x_1, \ldots, x_n]/(f_1, \ldots, f_c)
+$$
+is a relative global complete intersection.
+\end{lemma}
+
+\begin{proof}
+Let $R_0 \subset R$ be the $\mathbf{Z}$-algebra of $R$ generated by all the
+coefficients of the polynomials $f_1, \ldots, f_c$. Let
+$S_0 = R_0[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$.
+Clearly, $S = R \otimes_{R_0} S_0$.
+Pick a prime $\mathfrak q \subset S$ and denote
+$\mathfrak p \subset R$, $\mathfrak q_0 \subset S_0$, and
+$\mathfrak p_0 \subset R_0$ the primes it lies over.
+Because $\dim (S \otimes_R \kappa(\mathfrak p) ) = n - c$
+we also have $\dim (S_0 \otimes_{R_0} \kappa(\mathfrak p_0)) = n - c$,
+see Lemma \ref{lemma-dimension-preserved-field-extension}.
+By Lemma \ref{lemma-dimension-fibres-bounded-open-upstairs}
+there exists a $g \in S_0$, $g \not \in \mathfrak q_0$
+such that all nonempty fibres of $R_0 \to (S_0)_g$
+have dimension $\leq n - c$. As $\mathfrak q$ was arbitrary and
+$\Spec(S)$ quasi-compact, we can find finitely many
+$g_1, \ldots, g_m \in S_0$ such that (a) for $j = 1, \ldots, m$
+the nonempty fibres of
+$R_0 \to (S_0)_{g_j}$ have dimension $\leq n - c$ and (b) the image of
+$\Spec(S) \to \Spec(S_0)$ is contained in $D(g_1) \cup \ldots \cup D(g_m)$.
+In other words, the images of $g_1, \ldots, g_m$ in $S = R \otimes_{R_0} S_0$
+generate the unit ideal. After increasing $R_0$ we may assume
+that $g_1, \ldots, g_m$ generate the unit ideal in $S_0$. By (a)
+the nonempty fibres of $R_0 \to S_0$ all have dimension $\leq n - c$
+and we conclude.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-relative-global-complete-intersection-conormal}
+Let $R$ be a ring. Let $S = R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$
+be a relative global complete intersection (Definition
+\ref{definition-relative-global-complete-intersection}). For every prime
+$\mathfrak q$ of $S$, let $\mathfrak q'$ denote the corresponding
+prime of $R[x_1, \ldots, x_n]$. Then
+\begin{enumerate}
+\item $f_1, \ldots, f_c$ is a regular sequence in the local ring
+$R[x_1, \ldots, x_n]_{\mathfrak q'}$,
+\item each of the rings
+$R[x_1, \ldots, x_n]_{\mathfrak q'}/(f_1, \ldots, f_i)$ is flat over $R$, and
+\item the $S$-module $(f_1, \ldots, f_c)/(f_1, \ldots, f_c)^2$
+is free with basis given by the elements $f_i \bmod (f_1, \ldots, f_c)^2$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Assume $R$ is Noetherian. Let $\mathfrak p = R \cap \mathfrak q'$.
+By Lemma \ref{lemma-lci} for example we see
+that $f_1, \ldots, f_c$ form a regular sequence in the local ring
+$R[x_1, \ldots, x_n]_{\mathfrak q'} \otimes_R \kappa(\mathfrak p)$.
+Moreover, the local ring $R[x_1, \ldots, x_n]_{\mathfrak q'}$
+is flat over $R_{\mathfrak p}$. Since $R$, and hence
+$R[x_1, \ldots, x_n]_{\mathfrak q'}$ is Noetherian we see from
+Lemma \ref{lemma-grothendieck-regular-sequence} that (1) and (2) hold.
+
+\medskip\noindent
+Let $R$ be general. Write $R = \colim_{\lambda \in \Lambda} R_\lambda$
+as the filtered colimit of finite type $\mathbf{Z}$-subalgebras (compare with
+Section \ref{section-colimits-flat}). We may assume that
+$f_1, \ldots, f_c \in R_\lambda[x_1, \ldots, x_n]$ for all $\lambda$.
+Let $R_0 \subset R$ be as in
+Lemma \ref{lemma-relative-global-complete-intersection-Noetherian}.
+Then we may assume $R_0 \subset R_\lambda$ for all $\lambda$.
+It follows that $S_\lambda = R_\lambda[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$
+is a relative global complete intersection (as base change of
+$S_0$ via $R_0 \to R_\lambda$, see 
+Lemma \ref{lemma-base-change-relative-global-complete-intersection}).
+Denote $\mathfrak p_\lambda$, $\mathfrak q_\lambda$, $\mathfrak q'_\lambda$
+the prime of $R_\lambda$, $S_\lambda$, $R_\lambda[x_1, \ldots, x_n]$
+induced by $\mathfrak p$, $\mathfrak q$, $\mathfrak q'$.
+With this notation, we have (1) and (2) for each $\lambda$. Since
+$$
+R[x_1, \ldots, x_n]_{\mathfrak q'}/(f_1, \ldots, f_i)
+=
+\colim R_\lambda[x_1, \ldots, x_n]_{\mathfrak q_\lambda'}/(f_1, \ldots, f_i)
+$$
+we deduce flatness in (2) over $R$ from
+Lemma \ref{lemma-colimit-rings-flat}.
+Since we have
+\begin{align*}
+R[x_1, \ldots, x_n]_{\mathfrak q'}/(f_1, \ldots, f_i)
+\xrightarrow{f_{i + 1}}
+R[x_1, \ldots, x_n]_{\mathfrak q'}/(f_1, \ldots, f_i) \\
+=
+\colim
+\left(
+R_\lambda[x_1, \ldots, x_n]_{\mathfrak q_\lambda'}/(f_1, \ldots, f_i)
+\xrightarrow{f_{i + 1}}
+R_\lambda[x_1, \ldots, x_n]_{\mathfrak q_\lambda'}/(f_1, \ldots, f_i)
+\right)
+\end{align*}
+and since filtered colimits are exact
+(Lemma \ref{lemma-directed-colimit-exact})
+we conclude that we have (1).
+
+\medskip\noindent
+Proof of (3). Denote $N$ the $S$-module
+$(f_1, \ldots, f_c)/(f_1, \ldots, f_c)^2$ and $e_i \in N$ the image of $f_i$.
+By Lemma \ref{lemma-regular-quasi-regular} and (1) we know that
+$e_1, \ldots, e_c$ is a basis of $N_\mathfrak q$ for all
+primes $\mathfrak q$ of $S$. By Lemma \ref{lemma-characterize-zero-local}
+we conclude that (3) is true.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-relative-global-complete-intersection}
+A relative global complete intersection is syntomic, i.e., flat.
+\end{lemma}
+
+\begin{proof}
+Let $R \to S$ be a relative global complete intersection.
+The fibres are global complete intersections, and
+$S$ is of finite presentation over $R$.
+Thus the only thing to prove is that $R \to S$ is flat.
+This is true by (2) of
+Lemma \ref{lemma-relative-global-complete-intersection-conormal}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-adjoin-roots}
+Suppose that $A$ is a ring, and
+$P(x) = x^n + b_1 x^{n-1} + \ldots + b_n \in A[x]$ is
+a monic polynomial over $A$. Then there exists a
+syntomic, finite free, faithfully flat ring extension
+$A \subset A'$ such that $P(x) = \prod_{i = 1, \ldots, n} (x - \beta_i)$
+for certain $\beta_i \in A'$.
+\end{lemma}
+
+\begin{proof}
+Take $A' = A \otimes_R S$, where $R$ and $S$ are as in
+Example \ref{example-roots-universal-polynomial},
+where $R \to A$ maps $a_i$ to $b_i$, and let
+$\beta_i = -1 \otimes \alpha_i$. Observe that $R \to S$ is
+faithfully flat and finite free and syntomic by
+Lemma \ref{lemma-relative-global-complete-intersection}.
+These properties are inherited by the base change
+$A \to A'$; some details omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-syntomic}
+Let $R \to S$ be a ring map.
+Let $\mathfrak q \subset S$ be a prime lying over
+the prime $\mathfrak p$ of $R$.
+The following are equivalent:
+\begin{enumerate}
+\item There exists an element $g \in S$, $g \not \in \mathfrak q$ such that
+$R \to S_g$ is syntomic.
+\item There exists an element $g \in S$, $g \not \in \mathfrak q$
+such that $S_g$ is a relative global complete intersection over $R$.
+\item There exists an element $g \in S$, $g \not \in \mathfrak q$,
+such that $R \to S_g$ is of finite presentation,
+the local ring map $R_{\mathfrak p} \to S_{\mathfrak q}$ is flat, and
+the local ring $S_{\mathfrak q}/\mathfrak pS_{\mathfrak q}$ is
+a complete intersection ring over $\kappa(\mathfrak p)$ (see
+Definition \ref{definition-lci-local-ring}).
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+The implication (1) $\Rightarrow$ (3) is Lemma \ref{lemma-lci-at-prime}.
+The implication (2) $\Rightarrow$ (1) is
+Lemma \ref{lemma-relative-global-complete-intersection}.
+It remains to show that (3) implies (2).
+
+\medskip\noindent
+Assume (3). After replacing $S$ by $S_g$ for some $g \in S$,
+$g\not\in \mathfrak q$ we may assume $S$ is finitely presented over $R$.
+Choose a presentation $S = R[x_1, \ldots, x_n]/I$. Let
+$\mathfrak q' \subset R[x_1, \ldots, x_n]$ be the prime corresponding
+to $\mathfrak q$. Write $\kappa(\mathfrak p) = k$.
+Note that $S \otimes_R k = k[x_1, \ldots, x_n]/\overline{I}$ where
+$\overline{I} \subset k[x_1, \ldots, x_n]$ is the ideal generated
+by the image of $I$. Let $\overline{\mathfrak q}' \subset k[x_1, \ldots, x_n]$
+be the prime ideal generated by the image of $\mathfrak q'$.
+By Lemma \ref{lemma-lci-at-prime} the equivalent conditions of
+Lemma \ref{lemma-lci} hold for $\overline{I}$ and $\overline{\mathfrak q}'$.
+Say the dimension of
+$\overline{I}_{\overline{\mathfrak q}'}/
+\overline{\mathfrak q}'\overline{I}_{\overline{\mathfrak q}'}$
+over $\kappa(\overline{\mathfrak q}')$ is $c$.
+Pick $f_1, \ldots, f_c \in I$ mapping to a basis of this vector space.
+The images $\overline{f}_j \in \overline{I}$ generate
+$\overline{I}_{\overline{\mathfrak q}'}$ (by Lemma \ref{lemma-lci}).
+Set $S' = R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$. Let $J$ be the
+kernel of the surjection $S' \to S$. Since $S$ is of finite presentation
+$J$ is a finitely generated ideal
+(Lemma \ref{lemma-compose-finite-type}). Consider the short exact sequence
+$$
+0 \to J \to S' \to S \to 0
+$$
+As $S_\mathfrak q$ is flat over $R$ we see that
+$J_{\mathfrak q'} \otimes_R k \to S'_{\mathfrak q'} \otimes_R k$
+is injective (Lemma \ref{lemma-flat-tor-zero}).
+However, by construction $S'_{\mathfrak q'} \otimes_R k$
+maps isomorphically to $S_\mathfrak q \otimes_R k$. Hence we
+conclude that $J_{\mathfrak q'} \otimes_R k =
+J_{\mathfrak q'}/\mathfrak pJ_{\mathfrak q'} = 0$. By Nakayama's
+lemma (Lemma \ref{lemma-NAK}) we conclude that there exists a
+$g \in R[x_1, \ldots, x_n]$, $g \not \in \mathfrak q'$ such that
+$J_g = 0$. In other words $S'_g \cong S_g$. After further localizing
+we see that $S'$ (and hence $S$) becomes a relative global complete
+intersection by
+Lemma \ref{lemma-localize-relative-complete-intersection}
+as desired.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-syntomic-presentation-ideal-mod-squares}
+Let $R$ be a ring. Let $S = R[x_1, \ldots, x_n]/I$ for some
+finitely generated ideal $I$. If $g \in S$ is such that
+$S_g$ is syntomic over $R$, then $(I/I^2)_g$ is a finite projective
+$S_g$-module.
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-syntomic} there exist finitely many elements
+$g_1, \ldots, g_m \in S$ which generate the unit ideal in $S_g$
+such that each $S_{gg_j}$ is a relative global complete intersection
+over $R$. Since it suffices to prove that $(I/I^2)_{gg_j}$ is
+finite projective, see
+Lemma \ref{lemma-finite-projective},
+we may assume that $S_g$ is a relative global complete intersection.
+In this case the result follows from
+Lemmas \ref{lemma-conormal-module-localize} and
+\ref{lemma-relative-global-complete-intersection-conormal}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-composition-syntomic}
+Let $R \to S$, $S \to S'$ be ring maps.
+\begin{enumerate}
+\item If $R \to S$ and $S \to S'$ are syntomic, then $R \to S'$
+is syntomic.
+\item If $R \to S$ and $S \to S'$ are relative global complete intersections,
+then $R \to S'$ is a relative global complete intersection.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Proof of (2). Say $R \to S$ and $S \to S'$ are relative global complete
+intersections and we have presentations
+$S =  R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$ and
+$S' = S[y_1, \ldots, y_m]/(h_1, \ldots, h_d)$ as in
+Definition \ref{definition-relative-global-complete-intersection}.
+Then
+$$
+S' \cong
+R[x_1, \ldots, x_n, y_1, \ldots, y_m]/(f_1, \ldots, f_c, h'_1, \ldots, h'_d)
+$$
+for some lifts $h_j' \in R[x_1, \ldots, x_n, y_1, \ldots, y_m]$ of the $h_j$.
+Hence it suffices to bound the dimensions of the fibre rings.
+Thus we may assume $R = k$ is a field.
+In this case we see that we have a ring, namely $S$, which is of finite
+type over $k$ and equidimensional of dimension $n - c$, and a
+finite type ring map $S \to S'$ all of whose nonempty fibre
+rings are equidimensional of dimension $m - d$. Then, by
+Lemma \ref{lemma-dimension-base-fibre-total} for example applied
+to localizations at maximal ideals of $S'$, we see that
+$\dim(S') \leq n - c + m - d$ as desired.
+
+\medskip\noindent
+We will reduce part (1) to part (2). Assume $R \to S$ and $S \to S'$
+are syntomic. Let $\mathfrak q' \subset S$ be a prime ideal lying
+over $\mathfrak q \subset S$. By Lemma \ref{lemma-syntomic}
+there exists a $g' \in S'$, $g' \not \in \mathfrak q'$ such that
+$S \to S'_{g'}$ is a relative global complete intersection.
+Similarly, we find $g \in S$, $g \not \in \mathfrak q$ such that
+$R \to S_g$ is a relative global complete intersection.
+By Lemma \ref{lemma-base-change-relative-global-complete-intersection}
+the ring map $S_g \to S_{gg'}$ is a relative global complete intersection.
+By part (2) we see that $R \to S_{gg'}$ is a relative global
+complete intersection and $gg' \not \in \mathfrak q'$.
+Since $\mathfrak q'$ was arbitrary
+combining Lemmas \ref{lemma-syntomic} and \ref{lemma-local-syntomic}
+we see that $R \to S'$ is syntomic (this also uses that the spectrum
+of $S'$ is quasi-compact, see Lemma \ref{lemma-quasi-compact}).
+\end{proof}
+
+\noindent
+The following lemma will be improved later, see
+Smoothing Ring Maps, Proposition \ref{smoothing-proposition-lift-smooth}.
+
+\begin{lemma}
+\label{lemma-lift-syntomic}
+Let $R$ be a ring and let $I \subset R$ be an ideal.
+Let $R/I \to \overline{S}$ be a syntomic map.
+Then there exists elements $\overline{g}_i \in \overline{S}$
+which generate the unit ideal of $\overline{S}$
+such that each $\overline{S}_{g_i} \cong S_i/IS_i$
+for some relative global complete intersection $S_i$
+over $R$.
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-syntomic} we find a collection of elements
+$\overline{g}_i \in \overline{S}$
+which generate the unit ideal of $\overline{S}$
+such that each $\overline{S}_{g_i}$ is a relative
+global complete intersection over $R/I$.
+Hence we may assume that $\overline{S}$ is a
+relative global complete intersection.
+Write
+$\overline{S} =
+(R/I)[x_1, \ldots, x_n]/(\overline{f}_1, \ldots, \overline{f}_c)$
+as in Definition \ref{definition-relative-global-complete-intersection}.
+Choose $f_1, \ldots, f_c \in R[x_1, \ldots, x_n]$
+lifting $\overline{f}_1, \ldots, \overline{f}_c$.
+Set $S = R[x_1, \ldots, x_n]/(f_1, \ldots, f_c)$.
+Note that $S/IS \cong \overline{S}$.
+By Lemma \ref{lemma-localize-relative-complete-intersection}
+we can find $g \in S$ mapping to $1$ in $\overline{S}$ such
+that $S_g$ is a relative global complete intersection over $R$.
+Since $\overline{S} \cong S_g/IS_g$ this finishes the proof.
+\end{proof}
+
+

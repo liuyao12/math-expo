@@ -1,0 +1,71 @@
+\section{Cycle associated to a closed subscheme}
+\label{section-cycle-of-closed-subscheme}
+
+\begin{lemma}
+\label{lemma-multiplicity-finite}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$ be locally of finite type over $S$.
+Let $Z \subset X$ be a closed subscheme.
+\begin{enumerate}
+\item Let $Z' \subset Z$ be an irreducible component and
+let $\xi \in Z'$ be its generic point.
+Then
+$$
+\text{length}_{\mathcal{O}_{X, \xi}} \mathcal{O}_{Z, \xi} < \infty
+$$
+\item If $\dim_\delta(Z) \leq k$ and $\xi \in Z$ with
+$\delta(\xi) = k$, then $\xi$ is a generic point of an
+irreducible component of $Z$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let $Z' \subset Z$, $\xi \in Z'$ be as in (1).
+Then $\dim(\mathcal{O}_{Z, \xi}) = 0$ (for example by
+Properties, Lemma \ref{properties-lemma-codimension-local-ring}).
+Hence $\mathcal{O}_{Z, \xi}$ is Noetherian
+local ring of dimension zero, and hence has finite length over
+itself (see
+Algebra, Proposition \ref{algebra-proposition-dimension-zero-ring}).
+Hence, it also has finite length over $\mathcal{O}_{X, \xi}$, see
+Algebra, Lemma \ref{algebra-lemma-length-independent}.
+
+\medskip\noindent
+Assume $\xi \in Z$ and $\delta(\xi) = k$.
+Consider the closure $Z' = \overline{\{\xi\}}$. It is an irreducible
+closed subscheme with $\dim_\delta(Z') = k$ by definition.
+Since $\dim_\delta(Z) = k$ it must be an irreducible component
+of $Z$. Hence we see (2) holds.
+\end{proof}
+
+\begin{definition}
+\label{definition-cycle-associated-to-closed-subscheme}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$ be locally of finite type over $S$.
+Let $Z \subset X$ be a closed subscheme.
+\begin{enumerate}
+\item For any irreducible component $Z' \subset Z$ with generic point $\xi$
+the integer
+$m_{Z', Z} = \text{length}_{\mathcal{O}_{X, \xi}} \mathcal{O}_{Z, \xi}$
+(Lemma \ref{lemma-multiplicity-finite})
+is called the {\it multiplicity of $Z'$ in $Z$}.
+\item Assume $\dim_\delta(Z) \leq k$.
+The {\it $k$-cycle associated to $Z$} is
+$$
+[Z]_k
+=
+\sum m_{Z', Z}[Z']
+$$
+where the sum is over the irreducible components of $Z$
+of $\delta$-dimension $k$. (This is a $k$-cycle by
+Divisors, Lemma \ref{divisors-lemma-components-locally-finite}.)
+\end{enumerate}
+\end{definition}
+
+\noindent
+It is important to note that we only define $[Z]_k$ if the $\delta$-dimension
+of $Z$ does not exceed $k$. In other words, by convention, if we write
+$[Z]_k$ then this implies that $\dim_\delta(Z) \leq k$.
+
+
+

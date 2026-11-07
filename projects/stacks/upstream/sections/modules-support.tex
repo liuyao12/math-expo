@@ -1,0 +1,82 @@
+\section{Supports of modules and sections}
+\label{section-support}
+
+\begin{definition}
+\label{definition-support}
+Let $(X, \mathcal{O}_X)$ be a ringed space.
+Let $\mathcal{F}$ be a sheaf of $\mathcal{O}_X$-modules.
+\begin{enumerate}
+\item The {\it support of $\mathcal{F}$} is the set of
+points $x \in X$ such that $\mathcal{F}_x \not = 0$.
+\item We denote $\text{Supp}(\mathcal{F})$ the support of $\mathcal{F}$.
+\item Let $s \in \Gamma(X, \mathcal{F})$ be a global section.
+The {\it support of $s$} is the set of points $x \in X$
+such that the image $s_x \in \mathcal{F}_x$ of $s$ is
+not zero.
+\end{enumerate}
+\end{definition}
+
+\noindent
+Of course the support of a local section is then defined also
+since a local section is a global section of the restriction of
+$\mathcal{F}$.
+
+\begin{lemma}
+\label{lemma-support-section-closed}
+Let $(X, \mathcal{O}_X)$ be a ringed space.
+Let $\mathcal{F}$ be a sheaf of $\mathcal{O}_X$-modules.
+Let $U \subset X$ open.
+\begin{enumerate}
+\item The support of $s \in \mathcal{F}(U)$ is closed in $U$.
+\item The support of $fs$ is contained in the intersections
+of the supports of $f \in \mathcal{O}_X(U)$ and $s \in \mathcal{F}(U)$.
+\item The support of $s + s'$ is contained in the union of
+the supports of $s, s' \in \mathcal{F}(U)$.
+\item The support of $\mathcal{F}$ is the union of the supports
+of all local sections of $\mathcal{F}$.
+\item If $\varphi : \mathcal{F} \to \mathcal{G}$ is a morphism of
+$\mathcal{O}_X$-modules, then the support of $\varphi(s)$ is
+contained in the support of $s \in \mathcal{F}(U)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+This is true because if $s_x = 0$, then $s$ is zero
+in an open neighbourhood of $x$ by definition of stalks.
+Similarly for $f$. Details omitted.
+\end{proof}
+
+\noindent
+In general the support of a sheaf of modules is not closed.
+Namely, the sheaf could be an abelian sheaf on $\mathbf{R}$
+(with the usual archimedean topology)
+which is the direct sum of infinitely many nonzero skyscraper
+sheaves each supported at a single point $p_i$ of $\mathbf{R}$.
+Then the support would be the set of points $p_i$
+which may not be closed.
+
+\medskip\noindent
+Another example is to consider the open immersion
+$j : U = (0 , \infty) \to \mathbf{R} = X$, and the abelian sheaf
+$j_!\underline{\mathbf{Z}}_U$. By Sheaves, Section
+\ref{sheaves-section-open-immersions} the support of
+this sheaf is exactly $U$.
+
+\begin{lemma}
+\label{lemma-support-sheaf-rings-closed}
+Let $X$ be a topological space.
+The support of a sheaf of rings is closed.
+\end{lemma}
+
+\begin{proof}
+This is true because (according to our conventions)
+a ring is $0$ if and only if
+$1 = 0$, and hence the support of a sheaf of rings
+is the support of the unit section.
+\end{proof}
+
+
+
+
+
+

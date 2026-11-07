@@ -1,0 +1,371 @@
+\section{Lemmas on bivariant classes}
+\label{section-bivariant-II}
+
+\noindent
+In this section we prove some elementary results on bivariant classes.
+Here is a criterion to see that an operation
+passes through rational equivalence.
+
+\begin{lemma}
+\label{lemma-factors-through-rational-equivalence}
+\begin{reference}
+Very weak form of \cite[Theorem 17.1]{F}
+\end{reference}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $f : X \to Y$ be a morphism of schemes locally of finite type over $S$.
+Let $p \in \mathbf{Z}$. Suppose given a rule
+which assigns to every locally of finite type morphism $Y' \to Y$
+and every $k$ a map
+$$
+c \cap - : Z_k(Y') \longrightarrow \CH_{k - p}(X')
+$$
+where $Y' = X' \times_X Y$, satisfying condition (3) of
+Definition \ref{definition-bivariant-class}
+whenever $\mathcal{L}'|_{D'} \cong \mathcal{O}_{D'}$. Then
+$c \cap -$ factors through rational equivalence.
+\end{lemma}
+
+\begin{proof}
+The statement makes sense because given a triple
+$(\mathcal{L}, s, i : D \to X)$ as in
+Definition \ref{definition-gysin-homomorphism}
+such that $\mathcal{L}|_D \cong \mathcal{O}_D$, then
+the operation $i^*$ is defined on the level of cycles, see
+Remark \ref{remark-gysin-on-cycles}.
+Let $\alpha \in Z_k(X')$ be a cycle which is rationally equivalent to zero.
+We have to show that $c \cap \alpha = 0$. By
+Lemma \ref{lemma-rational-equivalence-family}
+there exists a cycle $\beta \in Z_{k + 1}(X' \times \mathbf{P}^1)$
+such that $\alpha = i_0^*\beta - i_\infty^*\beta$
+where $i_0, i_\infty : X' \to X' \times \mathbf{P}^1$ are the
+closed immersions of $X'$ over $0, \infty$. Since these are
+examples of effective Cartier divisors with trivial normal
+bundles, we see that $c \cap i_0^*\beta = j_0^*(c \cap \beta)$
+and $c \cap i_\infty^*\beta = j_\infty^*(c \cap \beta)$
+where $j_0, j_\infty : Y' \to Y' \times \mathbf{P}^1$ are
+closed immersions as before. Since
+$j_0^*(c \cap \beta) \sim_{rat} j_\infty^*(c \cap \beta)$
+(follows from Lemma \ref{lemma-rational-equivalence-family}) we conclude.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-bivariant-weaker}
+\begin{reference}
+Weak form of \cite[Theorem 17.1]{F}
+\end{reference}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $f : X \to Y$ be a morphism of schemes locally of finite type over $S$.
+Let $p \in \mathbf{Z}$. Suppose given a rule
+which assigns to every locally of finite type morphism $Y' \to Y$
+and every $k$ a map
+$$
+c \cap - : \CH_k(Y') \longrightarrow \CH_{k - p}(X')
+$$
+where $Y' = X' \times_X Y$, satisfying conditions (1), (2) of
+Definition \ref{definition-bivariant-class}
+and condition (3) whenever $\mathcal{L}'|_{D'} \cong \mathcal{O}_{D'}$. Then
+$c \cap -$ is a bivariant class.
+\end{lemma}
+
+\begin{proof}
+Let $Y' \to Y$ be a morphism of schemes which is locally of finite type.
+Let $(\mathcal{L}', s', i' : D' \to Y')$ be as in
+Definition \ref{definition-gysin-homomorphism}
+with pullback $(\mathcal{N}', t', j' : E' \to X')$ to $X'$.
+We have to show that $c \cap (i')^*\alpha' = (j')^*(c \cap \alpha')$
+for all $\alpha' \in \CH_k(Y')$.
+
+\medskip\noindent
+Denote $g : Y'' \to Y'$ the smooth morphism of relative
+dimension $1$ with $i'' : D'' \to Y''$ and $p : D'' \to D'$
+constructed in Lemma \ref{lemma-normal-cone-effective-Cartier}.
+(Warning: $D''$ isn't the full inverse image of $D'$.)
+Denote $f : X'' \to X'$ and $E'' \subset X''$
+their base changes by $X' \to Y'$. Picture
+$$
+\xymatrix{
+& X'' \ar[rr] \ar'[d][dd]_h & & Y'' \ar[dd]^g \\
+E'' \ar[rr] \ar[dd]_q \ar[ru]^{j''} & & D'' \ar[dd]^p \ar[ru]^{i''} & \\
+& X' \ar'[r][rr] & & Y' \\
+E' \ar[rr] \ar[ru]^{j'} & & D' \ar[ru]^{i'}
+}
+$$
+By the properties given in the lemma we know that $\beta' = (i')^*\alpha'$
+is the unique element of $\CH_{k - 1}(D')$ such that
+$p^*\beta' = (i'')^*g^*\alpha'$. Similarly, we know that
+$\gamma' = (j')^*(c \cap \alpha')$ is the unique element of
+$\CH_{k - 1 - p}(E')$ such that $q^*\gamma' = (j'')^*h^*(c \cap \alpha')$.
+Since we know that
+$$
+(j'')^*h^*(c \cap \alpha') =
+(j'')^*(c \cap g^*\alpha') =
+c \cap (i'')^*g^*\alpha'
+$$
+by our assumptions on $c$; note that the modified version of (3)
+assumed in the statement of the lemma applies to $i''$
+and its base change $j''$. We similarly know that
+$$
+q^*(c \cap \beta') = c \cap p^*\beta'
+$$
+We conclude that $\gamma' = c \cap \beta'$ by the uniqueness pointed
+out above.
+\end{proof}
+
+\noindent
+Here a criterion for when a bivariant class is zero.
+
+\begin{lemma}
+\label{lemma-bivariant-zero}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $f : X \to Y$ be a morphism of schemes locally of finite type over $S$.
+Let $c \in A^p(X \to Y)$. For $Y'' \to Y' \to Y$ set
+$X'' = Y'' \times_Y X$ and $X' = Y' \times_Y X$.
+The following are equivalent
+\begin{enumerate}
+\item $c$ is zero,
+\item $c \cap [Y'] = 0$ in $\CH_*(X')$ for every integral scheme $Y'$
+locally of finite type over $Y$, and
+\item for every integral scheme $Y'$ locally of finite type over $Y$,
+there exists a proper birational morphism $Y'' \to Y'$ such that
+$c \cap [Y''] = 0$ in $\CH_*(X'')$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+The implications (1) $\Rightarrow$ (2) $\Rightarrow$ (3) are clear.
+Assumption (3) implies (2) because $(Y'' \to Y')_*[Y''] = [Y']$
+and hence $c \cap [Y'] = (X'' \to X')_*(c \cap [Y''])$ as $c$
+is a bivariant class. Assume (2).
+Let $Y' \to Y$ be locally of finite type. Let $\alpha \in \CH_k(Y')$.
+Write $\alpha = \sum n_i [Y'_i]$ with $Y'_i \subset Y'$ a locally finite
+collection of integral closed subschemes of $\delta$-dimension $k$.
+Then we see that $\alpha$ is pushforward of the cycle
+$\alpha' = \sum n_i[Y'_i]$ on $Y'' = \coprod Y'_i$ under the
+proper morphism $Y'' \to Y'$. By the properties of bivariant
+classes it suffices to prove that $c \cap \alpha' = 0$ in $\CH_{k - p}(X'')$.
+We have $\CH_{k - p}(X'') = \prod \CH_{k - p}(X'_i)$ where
+$X'_i = Y'_i \times_Y X$. This follows immediately
+from the definitions. The projection maps
+$\CH_{k - p}(X'') \to \CH_{k - p}(X'_i)$ are given by flat pullback.
+Since capping with $c$ commutes with
+flat pullback, we see that it suffices to show that $c \cap [Y'_i]$
+is zero in $\CH_{k - p}(X'_i)$ which is true by assumption.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-disjoint-decomposition-bivariant}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $f : X \to Y$ be a morphism of schemes locally of finite type over $S$.
+Assume we have disjoint union decompositions
+$X = \coprod_{i \in I} X_i$ and $Y = \coprod_{j \in J} Y_j$
+by open and closed subschemes
+and a map $a : I \to J$ of sets such that $f(X_i) \subset Y_{a(i)}$.
+Then
+$$
+A^p(X \to Y) = \prod\nolimits_{i \in I} A^p(X_i \to Y_{a(i)})
+$$
+\end{lemma}
+
+\begin{proof}
+Suppose given an element $(c_i) \in \prod_i A^p(X_i \to Y_{a(i)})$.
+Then given $\beta \in \CH_k(Y)$ we can map this to the element of
+$\CH_{k - p}(X)$ whose restriction to $X_i$ is $c_i \cap \beta|_{Y_{a(i)}}$.
+This works because $\CH_{k - p}(X) = \prod_i \CH_{k - p}(X_i)$.
+The same construction works after base change by any $Y' \to Y$
+locally of finite type and we get $c \in A^p(X \to Y)$.
+Thus we obtain a map $\Psi$ from the right hand side of the formula
+to the left hand side of the formula.
+Conversely, given $c \in A^p(X \to Y)$ and an element
+$\beta_i \in \CH_k(Y_{a(i)})$ we can consider the element
+$(c \cap (Y_{a(i)} \to Y)_*\beta_i)|_{X_i}$ in $\CH_{k - p}(X_i)$.
+The same thing works after base change by any $Y' \to Y$
+locally of finite type and we get $c_i \in A^p(X_i \to Y_{a(i)})$.
+Thus we obtain a map $\Phi$ from the left hand
+side of the formula to the right hand side of the formula.
+It is immediate that $\Phi \circ \Psi = \text{id}$.
+For the converse, suppose that $c \in A^p(X \to Y)$ and
+$\beta \in \CH_k(Y)$. Say $\Phi(c) = (c_i)$. Let $j \in J$.
+Because $c$ commutes with flat pullback we get
+$$
+(c \cap \beta)|_{\coprod_{a(i) = j} X_i} =
+c \cap \beta|_{Y_j}
+$$
+Because $c$ commutes with proper pushforward we get
+$$
+(\coprod\nolimits_{a(i) = j} X_i \to X)_*
+((c \cap \beta)|_{\coprod_{a(i) = j} X_i})
+=
+c \cap (Y_j \to Y)_*\beta|_{Y_j}
+$$
+The left hand side is the cycle on $X$ restricting to $(c \cap \beta)|_{X_i}$
+on $X_i$ for $i \in I$ with $a(i) = j$ and $0$ else.
+The right hand side is a cycle on $X$ whose restriction to $X_i$
+is $c_i \cap \beta|_{Y_j}$ for $i \in I$ with $a(i) = j$.
+Thus $c \cap \beta = \Psi((c_i))$ as desired.
+\end{proof}
+
+\begin{remark}
+\label{remark-completion-bivariant}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $f : X \to Y$ be a morphism of schemes locally of finite type over $S$.
+Let $X = \coprod_{i \in I} X_i$ and $Y = \coprod_{j \in J} Y_j$
+be the decomposition of $X$ and $Y$ into their connected components
+(the connected components are open as $X$ and $Y$ are locally Noetherian, see
+Topology, Lemma \ref{topology-lemma-locally-Noetherian-locally-connected} and
+Properties, Lemma \ref{properties-lemma-Noetherian-topology}).
+Let $a(i) \in J$ be the index such that $f(X_i) \subset Y_{a(i)}$.
+Then $A^p(X \to Y) = \prod A^p(X_i \to Y_{a(i)})$ by
+Lemma \ref{lemma-disjoint-decomposition-bivariant}.
+In this setting it is convenient to set
+$$
+A^*(X \to Y)^\wedge = \prod\nolimits_i A^*(X_i \to Y_{a(i)})
+$$
+This ``completed'' bivariant group is the subset
+$$
+A^*(X \to Y)^\wedge \quad\subset\quad \prod\nolimits_{p \geq 0} A^p(X \to Y)
+$$
+consisting of elements $c = (c_0, c_1, c_2, \ldots)$ such that
+for each connected component $X_i$ the image of $c_p$ in
+$A^p(X_i \to Y_{a(i)})$ is zero for almost all $p$.
+If $Y \to Z$ is a second morphism, then the
+composition $A^*(X \to Y) \times A^*(Y \to Z) \to A^*(X \to Z)$
+extends to a composition
+$A^*(X \to Y)^\wedge \times A^*(Y \to Z)^\wedge \to A^*(X \to Z)^\wedge$
+of completions. 
+We sometimes call $A^*(X)^\wedge = A^*(X \to X)^\wedge$ the
+{\it completed bivariant cohomology ring} of $X$.
+\end{remark}
+
+\begin{lemma}
+\label{lemma-envelope-bivariant}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $f : X \to Y$ be a morphism of schemes locally of finite type over $S$.
+Let $g : Y' \to Y$ be an envelope (Definition \ref{definition-envelope})
+and denote $X' = Y' \times_Y X$. Let $p \in \mathbf{Z}$ and let
+$c' \in A^p(X' \to Y')$. If the two restrictions
+$$
+res_1(c') = res_2(c') \in A^p(X' \times_X X' \to Y' \times_Y Y')
+$$
+are equal (see proof), then there exists a unique $c \in A^p(X \to Y)$
+whose restriction $res(c) = c'$ in $A^p(X' \to Y')$.
+\end{lemma}
+
+\begin{proof}
+We have a commutative diagram
+$$
+\xymatrix{
+X' \times_X X' \ar[d]^{f''} \ar@<1ex>[r]^-a \ar@<-1ex>[r]_-b &
+X' \ar[d]^{f'} \ar[r]_h &
+X \ar[d]^f \\
+Y' \times_Y Y' \ar@<1ex>[r]^-p \ar@<-1ex>[r]_-q &
+Y' \ar[r]^g &
+Y
+}
+$$
+The element $res_1(c')$ is the restriction (see
+Remark \ref{remark-restriction-bivariant}) of $c'$ for the cartesian square
+with morphisms $a, f', p, f''$ and the element $res_2(c')$ is the restriction
+of $c'$ for the cartesian square with morphisms $b, f', q, f''$.
+Assume $res_1(c') = res_2(c')$ and let $\beta \in \CH_k(Y)$.
+By Lemma \ref{lemma-envelope} we can find a $\beta' \in \CH_k(Y')$
+with $g_*\beta' = \beta$. Then we set
+$$
+c \cap \beta = h_*(c' \cap \beta')
+$$
+To see that this is independent of the choice of
+$\beta'$ it suffices to show that
+$h_*(c' \cap (p_*\gamma - q_*\gamma))$ is zero
+for $\gamma \in \CH_k(Y' \times_Y Y')$.
+Since $c'$ is a bivariant class we have
+$$
+h_*(c' \cap (p_*\gamma - q_*\gamma)) =
+h_*(a_*(c' \cap \gamma) - b_*(c' \cap \gamma)) = 0
+$$
+the last equality since $h_* \circ a_* = h_* \circ b_*$
+as $h \circ a = h \circ b$.
+
+\medskip\noindent
+Observe that our choice for $c \cap \beta$ is forced
+by the requirement that $res(c) = c'$ and the compatibility
+of bivariant classes with proper pushforward.
+
+\medskip\noindent
+Of course, in order to define the bivariant class $c$ we need
+to construct maps $c \cap -: \CH_k(Y_1) \to \CH_{k + p}(Y_1 \times_Y X)$
+for any morphism $Y_1 \to Y$ locally of finite type satisfying the
+conditions listed in Definition \ref{definition-bivariant-class}.
+Denote $Y'_1 = Y' \times_Y Y_1$, $X_1 = X \times_Y Y_1$.
+The morphism $Y'_1 \to Y_1$ is an envelope by
+Lemma \ref{lemma-base-change-envelope}. Hence we can use the base
+changed diagram
+$$
+\xymatrix{
+X'_1 \times_{X_1} X'_1 \ar[d]^{f''_1} \ar@<1ex>[r]^-{a_1} \ar@<-1ex>[r]_-{b_1} &
+X'_1 \ar[d]^{f'_1} \ar[r]_{h_1} &
+X_1 \ar[d]^{f_1} \\
+Y'_1 \times_{Y_1} Y'_1 \ar@<1ex>[r]^-{p_1} \ar@<-1ex>[r]_-{q_1} &
+Y'_1 \ar[r]^{g_1} &
+Y_1
+}
+$$
+and the same arguments to get a well defined map
+$c \cap - : \CH_k(Y_1) \to \CH_{k + p}(X_1)$ as before.
+
+\medskip\noindent
+Next, we have to check conditions (1), (2), and (3) of
+Definition \ref{definition-bivariant-class} for $c$.
+For example, suppose that $t : Y_2 \to Y_1$ is a proper morphism
+of schemes locally of finite type over $Y$. Denote as above
+the base changes of the first diagram to $Y_1$, resp.\ $Y_2$,
+by subscripts ${}_1$, resp.\ ${}_2$. Denote $t' : Y'_2 \to Y'_1$,
+$s : X_2 \to X_1$, and $s' : X'_2 \to X'_1$ the base changes of $t$
+to $Y'$, $X$, and $X'$. We have to show that
+$$
+s_*(c \cap \beta_2) = c \cap t_*\beta_2
+$$
+for $\beta_2 \in \CH_k(Y_2)$. Choose $\beta'_2 \in \CH_k(Y'_2)$
+with $g_{2, *}\beta'_2 = \beta_2$. Since $c'$ is a bivariant class
+and the diagrams
+$$
+\vcenter{
+\xymatrix{
+X'_2 \ar[d]_{s'} \ar[r]_{h_2} & X_2 \ar[d]^s \\
+X'_1 \ar[r]^{h_1} & X_1
+}
+}
+\quad\text{and}\quad
+\vcenter{
+\xymatrix{
+X'_2 \ar[d]_{s'} \ar[r]_{f'_2} & Y'_2 \ar[d]^{t'} \\
+X'_2 \ar[r]^{f'_1} & Y'_1
+}
+}
+$$
+are cartesian we have
+$$
+s_*(c \cap \beta_2) =
+s_*(h_{2, *}(c' \cap \beta'_2)) =
+h_{1, *}s'_*(c' \cap \beta'_2) =
+h_{1, *}(c' \cap (t'_*\beta'_2))
+$$
+and the final expression computes $c \cap t_*\beta_2$ by construction:
+$t'_*\beta'_2 \in \CH_k(Y'_1)$ is a class whose image by $g_{1, *}$ is
+$t_*\beta_2$. This proves condition (1).
+The other conditions are proved in the same manner
+and we omit the detailed arguments.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

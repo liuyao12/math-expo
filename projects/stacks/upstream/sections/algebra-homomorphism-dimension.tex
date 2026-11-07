@@ -1,0 +1,207 @@
+\section{Homomorphisms and dimension}
+\label{section-homomorphism-dimension}
+
+\noindent
+This section contains a collection of easy results relating
+dimensions of rings when there are maps between them.
+
+\begin{lemma}
+\label{lemma-dimension-going-up}
+Suppose $R \to S$ is a ring map satisfying either going up, see
+Definition \ref{definition-going-up-down}, or going down
+see Definition \ref{definition-going-up-down}.
+Assume in addition that $\Spec(S) \to \Spec(R)$
+is surjective. Then $\dim(R) \leq \dim(S)$.
+\end{lemma}
+
+\begin{proof}
+Assume going up.
+Take any chain $\mathfrak p_0 \subset \mathfrak p_1 \subset \ldots
+\subset \mathfrak p_e$ of prime ideals in $R$.
+By surjectivity we may choose a prime $\mathfrak q_0$ mapping
+to $\mathfrak p_0$. By going up we may extend this to a chain
+of length $e$ of primes $\mathfrak q_i$ lying over
+$\mathfrak p_i$. Thus $\dim(S) \geq \dim(R)$.
+The case of going down is exactly the same.
+See also Topology, Lemma \ref{topology-lemma-dimension-specializations-lift}
+for a purely topological version.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-going-up-maximal-on-top}
+Suppose that $R \to S$ is a ring map with the going up property,
+see Definition \ref{definition-going-up-down}. If
+$\mathfrak q \subset S$ is a maximal ideal.
+Then the inverse image of $\mathfrak q$ in $R$
+is a maximal ideal too.
+\end{lemma}
+
+\begin{proof}
+Trivial.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-integral-dim-up}
+Suppose that $R \to S$ is a ring map such that $S$ is integral over $R$.
+Then $\dim (R) \geq \dim(S)$, and every closed point of $\Spec(S)$
+maps to a closed point of $\Spec(R)$.
+\end{lemma}
+
+\begin{proof}
+Immediate from Lemmas \ref{lemma-integral-no-inclusion} and
+\ref{lemma-going-up-maximal-on-top}
+and the definitions.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-integral-sub-dim-equal}
+Suppose $R \subset S$ and $S$ integral over $R$.
+Then $\dim(R) = \dim(S)$.
+\end{lemma}
+
+\begin{proof}
+This is a combination of Lemmas
+\ref{lemma-integral-going-up},
+\ref{lemma-integral-overring-surjective},
+\ref{lemma-dimension-going-up}, and
+\ref{lemma-integral-dim-up}.
+\end{proof}
+
+\begin{definition}
+\label{definition-fibre}
+Suppose that $R \to S$ is a ring map.
+Let $\mathfrak q \subset S$ be a prime lying
+over the prime $\mathfrak p$ of $R$.
+The {\it local ring of the fibre at $\mathfrak q$}
+is the local ring
+$$
+S_{\mathfrak q}/\mathfrak pS_{\mathfrak q}
+=
+(S/\mathfrak pS)_{\mathfrak q}
+=
+(S \otimes_R \kappa(\mathfrak p))_{\mathfrak q}
+$$
+\end{definition}
+
+\begin{lemma}
+\label{lemma-dimension-base-fibre-total}
+Let $R \to S$ be a homomorphism of Noetherian rings.
+Let $\mathfrak q \subset S$ be a prime lying
+over the prime $\mathfrak p$. Then
+$$
+\dim(S_{\mathfrak q})
+\leq
+\dim(R_{\mathfrak p})
++
+\dim(S_{\mathfrak q}/\mathfrak pS_{\mathfrak q}).
+$$
+\end{lemma}
+
+\begin{proof}
+We use the characterization of dimension of
+Proposition \ref{proposition-dimension}.
+Let $x_1, \ldots, x_d$ be elements of $\mathfrak p$
+generating an ideal of definition of $R_{\mathfrak p}$ with
+$d = \dim(R_{\mathfrak p})$.
+Let $y_1, \ldots, y_e$ be elements of $\mathfrak q$
+generating an ideal of definition of
+$S_{\mathfrak q}/\mathfrak pS_{\mathfrak q}$
+with $e = \dim(S_{\mathfrak q}/\mathfrak pS_{\mathfrak q})$.
+It is clear that $S_{\mathfrak q}/(x_1, \ldots, x_d, y_1, \ldots, y_e)$
+has a nilpotent maximal ideal. Hence
+$x_1, \ldots, x_d, y_1, \ldots, y_e$ generate an ideal of definition
+of $S_{\mathfrak q}$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-dimension-base-fibre-equals-total}
+Let $R \to S$ be a homomorphism of Noetherian rings.
+Let $\mathfrak q \subset S$ be a prime lying
+over the prime $\mathfrak p$. Assume the going down property holds
+for $R \to S$ (for example if $R \to S$ is flat, see
+Lemma \ref{lemma-flat-going-down}). Then
+$$
+\dim(S_{\mathfrak q})
+=
+\dim(R_{\mathfrak p})
++
+\dim(S_{\mathfrak q}/\mathfrak pS_{\mathfrak q}).
+$$
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-dimension-base-fibre-total}
+we have an inequality
+$\dim(S_{\mathfrak q}) \leq
+\dim(R_{\mathfrak p}) + \dim(S_{\mathfrak q}/\mathfrak pS_{\mathfrak q})$.
+To get equality, choose a chain of primes
+$\mathfrak pS \subset \mathfrak q_0 \subset \mathfrak q_1 \subset \ldots
+\subset \mathfrak q_d = \mathfrak q$ with
+$d = \dim(S_{\mathfrak q}/\mathfrak pS_{\mathfrak q})$.
+On the other hand, choose a chain of primes
+$\mathfrak p_0 \subset \mathfrak p_1 \subset \ldots \subset \mathfrak p_e
+= \mathfrak p$ with $e = \dim(R_{\mathfrak p})$.
+By the going down theorem we may choose
+$\mathfrak q_{-1} \subset \mathfrak q_0$ lying over
+$\mathfrak p_{e-1}$. And then we may choose
+$\mathfrak q_{-2} \subset \mathfrak q_{-1}$ lying over
+$\mathfrak p_{e-2}$. Inductively we keep going until we
+get a chain
+$\mathfrak q_{-e} \subset \ldots \subset \mathfrak q_d$
+of length $e + d$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-flat-over-regular-with-regular-fibre}
+Let $R \to S$ be a local homomorphism of local Noetherian rings.
+Assume
+\begin{enumerate}
+\item $R$ is regular,
+\item $S/\mathfrak m_RS$ is regular, and
+\item $R \to S$ is flat.
+\end{enumerate}
+Then $S$ is regular.
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-dimension-base-fibre-equals-total}
+we have
+$\dim(S) = \dim(R) + \dim(S/\mathfrak m_RS)$.
+Pick generators $x_1, \ldots, x_d \in \mathfrak m_R$ with $d = \dim(R)$,
+and pick $y_1, \ldots, y_e \in \mathfrak m_S$
+which generate the maximal ideal of $S/\mathfrak m_RS$ with
+$e = \dim(S/\mathfrak m_RS)$. Then we see that
+$x_1, \ldots, x_d, y_1, \ldots, y_e$ are elements which generate
+the maximal ideal of $S$ and $e + d = \dim(S)$.
+\end{proof}
+
+\noindent
+The lemma below will later be used to show that rings of finite type over
+a field are Cohen-Macaulay if and only if they are quasi-finite flat over
+a polynomial ring. It is a partial converse to
+Lemma \ref{lemma-CM-over-regular-flat}.
+
+\begin{lemma}
+\label{lemma-finite-flat-over-regular-CM}
+Let $R \to S$ be a local homomorphism of Noetherian local rings.
+Assume $R$ Cohen-Macaulay.
+If $S$ is finite flat over $R$, or if $S$ is flat over $R$ and
+$\dim(S) \leq \dim(R)$, then $S$ is Cohen-Macaulay and $\dim(R) = \dim(S)$.
+\end{lemma}
+
+\begin{proof}
+Let $x_1, \ldots, x_d \in \mathfrak m_R$ be a regular sequence
+of length $d = \dim(R)$. By Lemma \ref{lemma-flat-increases-depth}
+this maps to a regular sequence in $S$.
+Hence $S$ is Cohen-Macaulay if $\dim(S) \leq d$. This is true
+if $S$ is finite flat over $R$ by Lemma \ref{lemma-integral-sub-dim-equal}.
+And in the second case we assumed it.
+\end{proof}
+
+
+
+
+
+
+
+

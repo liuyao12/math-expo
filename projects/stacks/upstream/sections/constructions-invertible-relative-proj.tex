@@ -1,0 +1,94 @@
+\section{Invertible sheaves and morphisms into relative Proj}
+\label{section-invertible-relative-proj}
+
+\noindent
+It seems that we may need the following lemma somewhere.
+The situation is the following:
+\begin{enumerate}
+\item Let $S$ be a scheme.
+\item Let $\mathcal{A}$ be a quasi-coherent graded $\mathcal{O}_S$-algebra.
+\item Denote $\pi : \underline{\text{Proj}}_S(\mathcal{A}) \to S$ the relative
+homogeneous spectrum over $S$.
+\item Let $f : X \to S$ be a morphism of schemes.
+\item Let $\mathcal{L}$ be an invertible $\mathcal{O}_X$-module.
+\item Let $\psi : f^*\mathcal{A} \to
+\bigoplus_{d \geq 0} \mathcal{L}^{\otimes d}$
+be a homomorphism of graded $\mathcal{O}_X$-algebras.
+\end{enumerate}
+Given this data set
+$$
+U(\psi) = \bigcup\nolimits_{(U, V, a)} U_{\psi(a)}
+$$
+where $(U, V, a)$ satisfies:
+\begin{enumerate}
+\item $V \subset S$ affine open,
+\item $U = f^{-1}(V)$, and
+\item $a \in \mathcal{A}(V)_{+}$ is homogeneous.
+\end{enumerate}
+Namely, then $\psi(a) \in \Gamma(U, \mathcal{L}^{\otimes \deg(a)})$
+and $U_{\psi(a)}$ is the corresponding open (see
+Modules, Lemma \ref{modules-lemma-s-open}).
+
+\begin{lemma}
+\label{lemma-invertible-map-into-relative-proj}
+With assumptions and notation as above. The morphism
+$\psi$ induces a canonical morphism of schemes over $S$
+$$
+r_{\mathcal{L}, \psi} :
+U(\psi) \longrightarrow \underline{\text{Proj}}_S(\mathcal{A})
+$$
+together with a map of graded $\mathcal{O}_{U(\psi)}$-algebras
+$$
+\theta :
+r_{\mathcal{L}, \psi}^*\left(
+\bigoplus\nolimits_{d \geq 0}
+\mathcal{O}_{\underline{\text{Proj}}_S(\mathcal{A})}(d)
+\right)
+\longrightarrow
+\bigoplus\nolimits_{d \geq 0} \mathcal{L}^{\otimes d}|_{U(\psi)}
+$$
+characterized by the following properties:
+\begin{enumerate}
+\item For every open $V \subset S$ and every $d \geq 0$ the diagram
+$$
+\xymatrix{
+\mathcal{A}_d(V) \ar[d]_{\psi} \ar[r]_{\psi} &
+\Gamma(f^{-1}(V), \mathcal{L}^{\otimes d}) \ar[d]^{restrict} \\
+\Gamma(\pi^{-1}(V),
+\mathcal{O}_{\underline{\text{Proj}}_S(\mathcal{A})}(d)) \ar[r]^{\theta} &
+\Gamma(f^{-1}(V) \cap U(\psi), \mathcal{L}^{\otimes d})
+}
+$$
+is commutative.
+\item For any $d \geq 1$ and any open subscheme $W \subset X$
+such that $\psi|_W : f^*\mathcal{A}_d|_W \to \mathcal{L}^{\otimes d}|_W$
+is surjective the restriction of the morphism $r_{\mathcal{L}, \psi}$
+agrees with the morphism $W \to \underline{\text{Proj}}_S(\mathcal{A})$
+which exists by the construction of the relative homogeneous spectrum,
+see Definition \ref{definition-relative-proj}.
+\item For any affine open $V \subset S$, the restriction
+$$
+(U(\psi) \cap f^{-1}(V), r_{\mathcal{L}, \psi}|_{U(\psi) \cap f^{-1}(V)},
+\theta|_{U(\psi) \cap f^{-1}(V)})
+$$
+agrees via $i_V$ (see Lemma \ref{lemma-glue-relative-proj}) with the triple
+$(U(\psi'), r_{\mathcal{L}, \psi'}, \theta')$
+of Lemma \ref{lemma-invertible-map-into-proj} associated to the map
+$\psi' : A = \mathcal{A}(V) \to \Gamma_*(f^{-1}(V), \mathcal{L}|_{f^{-1}(V)})$
+induced by $\psi$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Use characterization (3) to construct the morphism $r_{\mathcal{L}, \psi}$
+and $\theta$ locally over $S$. Use the uniqueness of
+Lemma \ref{lemma-invertible-map-into-proj}
+to show that the construction glues. Details omitted.
+\end{proof}
+
+
+
+
+
+
+

@@ -1,0 +1,362 @@
+\section{Essentially constant systems}
+\label{section-essentially-constant}
+
+\noindent
+Let $M : \mathcal{I} \to \mathcal{C}$ be a diagram in a category $\mathcal{C}$.
+Assume the index category $\mathcal{I}$ is filtered. In this case
+there are three successively stronger notions which pick out an object
+$X$ of $\mathcal{C}$. The first is just
+$$
+X = \colim_{i \in \mathcal{I}} M_i.
+$$
+Then $X$ comes equipped with the coprojections $M_i \to X$.
+A stronger condition would be to require that $X$ is the colimit and
+that there exist an $i \in \mathcal{I}$ and a morphism $X \to M_i$ such
+that the composition $X \to M_i \to X$ is $\text{id}_X$. An even
+stronger condition is the following.
+
+\begin{definition}
+\label{definition-essentially-constant-diagram}
+Let $M : \mathcal{I} \to \mathcal{C}$ be a diagram in a category
+$\mathcal{C}$.
+\begin{enumerate}
+\item Assume the index category $\mathcal{I}$ is filtered and
+let $(X, \{M_i \to X\}_i)$ be a cocone for $M$, see
+Remark \ref{remark-cones-and-cocones}. We say $M$ is
+{\it essentially constant} with {\it value} $X$ if there exist an
+$i \in \mathcal{I}$ and a morphism $X \to M_i$ such that
+\begin{enumerate}
+\item $X \to M_i \to X$ is $\text{id}_X$, and
+\item for all $j$ there exist $k$ and morphisms $i \to k$ and $j \to k$
+such that the morphism $M_j \to M_k$ equals the composition
+$M_j \to X \to M_i \to M_k$.
+\end{enumerate}
+\item Assume the index category $\mathcal{I}$ is cofiltered and let
+$(X, \{X \to M_i\}_i)$ be a cone for $M$, see
+Remark \ref{remark-cones-and-cocones}. We say
+$M$ is {\it essentially constant} with {\it value} $X$ if
+there exist an $i \in \mathcal{I}$
+and a morphism $M_i \to X$ such that
+\begin{enumerate}
+\item $X \to M_i \to X$ is $\text{id}_X$, and
+\item for all $j$ there exist $k$ and morphisms $k \to i$ and $k \to j$
+such that the morphism $M_k \to M_j$ equals the composition
+$M_k \to M_i \to X \to M_j$.
+\end{enumerate}
+\end{enumerate}
+Please keep in mind Lemma \ref{lemma-essentially-constant-is-limit-colimit}
+when using this definition.
+\end{definition}
+
+\noindent
+Which of the two versions is meant will be clear from context. If there is
+any confusion we will distinguish between these by saying that the first
+version means $M$ is essentially constant as an {\it ind-object}, and in
+the second case we will say it is essentially constant as a {\it pro-object}.
+This terminology is further explained in
+Remarks \ref{remark-ind-category} and \ref{remark-pro-category}.
+In fact we will often use the terminology ``essentially constant system''
+which formally speaking is only defined for systems over directed sets.
+
+\begin{definition}
+\label{definition-essentially-constant-system}
+Let $\mathcal{C}$ be a category. A directed system
+$(M_i, f_{ii'})$ is an {\it essentially constant system}
+if $M$ viewed as a functor $I \to \mathcal{C}$
+defines an essentially constant diagram. A directed inverse system
+$(M_i, f_{ii'})$ is an {\it essentially constant inverse system} if
+$M$ viewed as a functor $I^{opp} \to \mathcal{C}$ defines an
+essentially constant inverse diagram.
+\end{definition}
+
+\noindent
+If $(M_i, f_{ii'})$ is an essentially constant system and the morphisms
+$f_{ii'}$ are monomorphisms, then for all $i \leq i'$ sufficiently large the
+morphisms $f_{ii'}$ are isomorphisms. On the other hand, consider the system
+$$
+\mathbf{Z}^2 \to \mathbf{Z}^2 \to \mathbf{Z}^2 \to \ldots
+$$
+with maps given by $(a, b) \mapsto (a + b, 0)$. This system is essentially
+constant with value $\mathbf{Z}$ but every transition map has a kernel.
+
+\medskip\noindent
+Here is an example of a system which is not essentially constant. Let
+$M = \bigoplus_{n \geq 0} \mathbf{Z}$ and to let $S : M \to M$ be the
+shift operator $(a_0, a_1, \ldots) \mapsto (a_1, a_2, \ldots)$. In this
+case the system $M \to M \to M \to \ldots$ with transition maps $S$
+has colimit $0$ and the composition $0 \to M \to 0$ is the identity,
+but the system is not essentially constant.
+
+\medskip\noindent
+The following lemma is a sanity check.
+
+\begin{lemma}
+\label{lemma-essentially-constant-is-limit-colimit}
+Let $M : \mathcal{I} \to \mathcal{C}$ be a diagram.
+If $\mathcal{I}$ is filtered and $M$ is essentially
+constant as an ind-object, then $X = \colim M_i$ exists and $M$
+is essentially constant with value $X$.
+If $\mathcal{I}$ is cofiltered and $M$ is essentially
+constant as a pro-object, then $X = \lim M_i$ exists and $M$ is
+essentially constant with value $X$.
+\end{lemma}
+
+\begin{proof}
+Omitted. This is a good exercise in the definitions.
+\end{proof}
+
+\begin{remark}
+\label{remark-ind-category}
+Let $\mathcal{C}$ be a category. There exists a big category
+$\text{Ind-}\mathcal{C}$ of {\it ind-objects of} $\mathcal{C}$.
+Namely, if $F : \mathcal{I} \to \mathcal{C}$ and
+$G : \mathcal{J} \to \mathcal{C}$ are filtered diagrams in $\mathcal{C}$,
+then we can define
+$$
+\Mor_{\text{Ind-}\mathcal{C}}(F, G) =
+\lim_i \colim_j \Mor_\mathcal{C}(F(i), G(j)).
+$$
+There is a canonical functor $\mathcal{C} \to \text{Ind-}\mathcal{C}$
+which maps $X$ to the {\it constant system} on $X$. This is a fully
+faithful embedding. In this language one sees that a diagram $F$ is
+essentially constant if and only if $F$ is isomorphic to a constant system.
+If we ever need this material, then we will formulate this into a lemma
+and prove it here.
+\end{remark}
+
+\begin{remark}
+\label{remark-pro-category}
+Let $\mathcal{C}$ be a category. There exists a big category
+$\text{Pro-}\mathcal{C}$ of {\it pro-objects} of $\mathcal{C}$.
+Namely, if $F : \mathcal{I} \to \mathcal{C}$ and
+$G : \mathcal{J} \to \mathcal{C}$ are cofiltered diagrams in $\mathcal{C}$,
+then we can define
+$$
+\Mor_{\text{Pro-}\mathcal{C}}(F, G) =
+\lim_j \colim_i \Mor_\mathcal{C}(F(i), G(j)).
+$$
+There is a canonical functor $\mathcal{C} \to \text{Pro-}\mathcal{C}$
+which maps $X$ to the {\it constant system} on $X$. This is a fully
+faithful embedding. In this language one sees that a diagram $F$ is
+essentially constant if and only if $F$ is isomorphic to a constant system.
+If we ever need this material, then we will formulate this into a lemma
+and prove it here.
+\end{remark}
+
+\begin{example}
+\label{example-pro-morphism-inverse-systems}
+Let $\mathcal{C}$ be a category. Let $(X_n)$ and $(Y_n)$ be inverse
+systems in $\mathcal{C}$ over $\mathbf{N}$ with the usual ordering.
+Picture:
+$$
+\ldots \to X_3 \to X_2 \to X_1
+\quad\text{and}\quad
+\ldots \to Y_3 \to Y_2 \to Y_1
+$$
+Let $a : (X_n) \to (Y_n)$ be a morphism of pro-objects of $\mathcal{C}$.
+What does $a$ amount to? Well, for each $n \in \mathbf{N}$ there should
+exist an $m(n)$ and a morphism $a_n : X_{m(n)} \to Y_n$. These morphisms
+ought to agree in the following sense: for all $n' \geq n$ there exists an
+$m(n', n) \geq m(n'), m(n)$ such that the diagram
+$$
+\xymatrix{
+X_{m(n, n')} \ar[rr] \ar[d] & & X_{m(n)} \ar[d]^{a_n} \\
+X_{m(n')} \ar[r]^{a_{n'}} & Y_{n'} \ar[r] & Y_n
+}
+$$
+commutes. After replacing $m(n)$ by $\max_{k, l \leq n}\{m(n, k), m(k, l)\}$
+we see that we obtain $\ldots \geq m(3) \geq m(2) \geq m(1)$ and a commutative
+diagram
+$$
+\xymatrix{
+\ldots \ar[r] &
+X_{m(3)} \ar[d]^{a_3} \ar[r] &
+X_{m(2)} \ar[d]^{a_2} \ar[r] &
+X_{m(1)} \ar[d]^{a_1} \\
+\ldots \ar[r] &
+Y_3 \ar[r] &
+Y_2 \ar[r] &
+Y_1
+}
+$$
+Given an increasing map $m' : \mathbf{N} \to \mathbf{N}$ with $m' \geq m$
+and setting $a'_i : X_{m'(i)} \to X_{m(i)} \to Y_i$ the pair
+$(m', a')$ defines the same morphism of pro-systems. Conversely, given
+two pairs $(m_1, a_1)$ and $(m_1, a_2)$ as above then these define the same
+morphism of pro-objects if and only if we can find $m' \geq m_1, m_2$
+such that $a'_1 = a'_2$.
+\end{example}
+
+\begin{remark}
+\label{remark-pro-category-copresheaves}
+Let $\mathcal{C}$ be a category. Let $F : \mathcal{I} \to \mathcal{C}$ and
+$G : \mathcal{J} \to \mathcal{C}$ be cofiltered diagrams in $\mathcal{C}$.
+Consider the functors $A, B : \mathcal{C} \to \textit{Sets}$ defined by
+$$
+A(X) = \colim_i \Mor_\mathcal{C}(F(i), X)
+\quad\text{and}\quad
+B(X) = \colim_j \Mor_\mathcal{C}(G(j), X)
+$$
+We claim that a morphism of pro-systems from $F$ to $G$ is the same thing
+as a transformation of functors $t : B \to A$. Namely, given $t$
+we can apply $t$ to the class of $\text{id}_{G(j)}$ in $B(G(j))$
+to get a compatible system of elements
+$\xi_j \in A(G(j)) = \colim_i \Mor_\mathcal{C}(F(i), G(j))$
+which is exactly our definition of a morphism in $\text{Pro-}\mathcal{C}$ in
+Remark \ref{remark-pro-category}. We omit the construction of a
+transformation $B \to A$ given a morphism of pro-objects from $F$ to $G$.
+\end{remark}
+
+\begin{lemma}
+\label{lemma-image-essentially-constant}
+Let $\mathcal{C}$ be a category. Let $M : \mathcal{I} \to \mathcal{C}$
+be a diagram with filtered (resp.\ cofiltered) index category $\mathcal{I}$.
+Let $F : \mathcal{C} \to \mathcal{D}$ be a functor.
+If $M$ is essentially constant as an ind-object (resp.\ pro-object),
+then so is $F \circ M : \mathcal{I} \to \mathcal{D}$.
+\end{lemma}
+
+\begin{proof}
+If $X$ is a value for $M$, then it follows immediately from the
+definition that $F(X)$ is a value for $F \circ M$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-characterize-essentially-constant-ind}
+Let $\mathcal{C}$ be a category. Let $M : \mathcal{I} \to \mathcal{C}$
+be a diagram with filtered index category $\mathcal{I}$.
+The following are equivalent
+\begin{enumerate}
+\item $M$ is an essentially constant ind-object,
+\item there exists a cocone $(X, \{M_i \to X\}_i)$ such that for any
+$W$ in $\mathcal{C}$ the map
+$\colim_i \Mor_\mathcal{C}(W, M_i) \to \Mor_\mathcal{C}(W, X)$
+is bijective,
+\item $X = \colim_i M_i$ exists and for any $W$ in $\mathcal{C}$
+the map
+$\colim_i \Mor_\mathcal{C}(W, M_i) \to \Mor_\mathcal{C}(W, X)$
+is bijective, and
+\item there exists an $i$ in $\mathcal{I}$ and a morphism $X \to M_i$
+such that for any $W$ in $\mathcal{C}$ the map $\Mor_\mathcal{C}(W, X) \to
+\colim_{j \in \mathcal{I}} \Mor_\mathcal{C}(W, M_j)$
+is bijective.
+\end{enumerate}
+In cases (2), (3), and (4) the value of the essentially constant system is $X$.
+\end{lemma}
+
+\begin{proof}
+It is clear that (3) implies (2). Assume (2).
+Then $\text{id}_X \in \Mor_\mathcal{C}(X, X)$
+comes from a morphism $X \to M_i$ for some $i$, i.e., $X \to M_i \to X$
+is the identity. Then both maps
+$$
+\Mor_\mathcal{C}(W, X)
+\longrightarrow
+\colim_i \Mor_\mathcal{C}(W, M_i)
+\longrightarrow
+\Mor_\mathcal{C}(W, X)
+$$
+are bijective for all $W$ where the first one is induced by the morphism
+$X \to M_i$ we found above, and the composition is the identity. This means
+that the composition
+$$
+\colim_i \Mor_\mathcal{C}(W, M_i)
+\longrightarrow
+\Mor_\mathcal{C}(W, X)
+\longrightarrow
+\colim_i \Mor_\mathcal{C}(W, M_i)
+$$
+is the identity too. Setting $W = M_j$ and starting with $\text{id}_{M_j}$
+in the colimit, we see that $M_j \to X \to M_i \to M_k$ is equal to
+$M_j \to M_k$ for some $k$ large enough. This proves (1) holds.
+
+\medskip\noindent
+Assume (4). Let $k$ be an object of $\mathcal{I}$. Setting $W = M_k$
+we deduce there exists a unique morphism $M_k \to X$ such that
+there exists a $j$ and morphisms $k \to j$ and
+$i \to j$ in $\mathcal{I}$ such that $M_k \to X \to M_i \to M_j$
+is equal to $M_k \to M_j$. The uniqueness guarantees that we obtain a
+cocone $(X, \{M_k \to X\})$. In this way we see that (4) implies (2);
+some details omitted.
+
+\medskip\noindent
+We omit the proof that (1) implies the other conditions.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-characterize-essentially-constant-pro}
+Let $\mathcal{C}$ be a category. Let $M : \mathcal{I} \to \mathcal{C}$
+be a diagram with cofiltered index category $\mathcal{I}$.
+The following are equivalent
+\begin{enumerate}
+\item $M$ is an essentially constant pro-object,
+\item there exists a cone $(X, \{X \to M_i\})$
+such that for any $W$ in $\mathcal{C}$ the map
+$\colim_{i \in \mathcal{I}^{opp}} \Mor_\mathcal{C}(M_i, W) \to
+\Mor_\mathcal{C}(X, W)$ is bijective,
+\item $X = \lim_i M_i$ exists and for any $W$ in $\mathcal{C}$
+the map
+$\colim_{i \in \mathcal{I}^{opp}} \Mor_\mathcal{C}(M_i, W) \to
+\Mor_\mathcal{C}(X, W)$ is bijective, and
+\item there exists an $i$ in $\mathcal{I}$ and a morphism $M_i \to X$
+such that for any $W$ in $\mathcal{C}$ the map $\Mor_\mathcal{C}(X, W) \to
+\colim_{j \in \mathcal{I}^{opp}} \Mor_\mathcal{C}(M_j, W)$ is bijective.
+\end{enumerate}
+In cases (2), (3), and (4) the value of the essentially constant system is $X$.
+\end{lemma}
+
+\begin{proof}
+This lemma is dual to Lemma \ref{lemma-characterize-essentially-constant-ind}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-cofinal-essentially-constant}
+Let $\mathcal{C}$ be a category. Let $H : \mathcal{I} \to \mathcal{J}$
+be a functor of filtered index categories. If $H$ is cofinal, then
+any diagram $M : \mathcal{J} \to \mathcal{C}$ is essentially constant
+if and only if $M \circ H$ is essentially constant.
+\end{lemma}
+
+\begin{proof}
+This follows formally from
+Lemmas \ref{lemma-characterize-essentially-constant-ind} and
+\ref{lemma-cofinal}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-essentially-constant-over-product}
+Let $\mathcal{I}$ and $\mathcal{J}$ be filtered categories and denote
+$p : \mathcal{I} \times \mathcal{J} \to \mathcal{J}$ the projection.
+Then $\mathcal{I} \times \mathcal{J}$ is filtered and a diagram
+$M : \mathcal{J} \to \mathcal{C}$ is essentially constant if and only
+if $M \circ p : \mathcal{I} \times \mathcal{J} \to \mathcal{C}$
+is essentially constant.
+\end{lemma}
+
+\begin{proof}
+We omit the verification that $\mathcal{I} \times \mathcal{J}$ is
+filtered. The equivalence follows from
+Lemma \ref{lemma-cofinal-essentially-constant}
+because $p$ is cofinal (verification omitted).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-initial-essentially-constant}
+Let $\mathcal{C}$ be a category. Let $H : \mathcal{I} \to \mathcal{J}$
+be a functor of cofiltered index categories. If $H$ is initial, then
+any diagram $M : \mathcal{J} \to \mathcal{C}$ is essentially constant
+if and only if $M \circ H$ is essentially constant.
+\end{lemma}
+
+\begin{proof}
+This follows formally from
+Lemmas \ref{lemma-characterize-essentially-constant-pro},
+\ref{lemma-initial}, \ref{lemma-cofinal}, and
+the fact that if $\mathcal{I}$ is initial in $\mathcal{J}$,
+then $\mathcal{I}^{opp}$ is cofinal in $\mathcal{J}^{opp}$.
+\end{proof}
+
+
+
+
+

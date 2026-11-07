@@ -1,0 +1,187 @@
+\section{Quasi-affine schemes}
+\label{section-quasi-affine}
+
+\begin{definition}
+\label{definition-quasi-affine}
+A scheme $X$ is called {\it quasi-affine} if it is quasi-compact
+and isomorphic to an open subscheme of an affine scheme.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-quasi-coherent-quasi-affine}
+Let $A$ be a ring and let $U \subset \Spec(A)$ be a quasi-compact
+open subscheme. For $\mathcal{F}$ quasi-coherent on $U$ the canonical map
+$$
+\widetilde{H^0(U, \mathcal{F})}|_U \to \mathcal{F}
+$$
+is an isomorphism.
+\end{lemma}
+
+\begin{proof}
+Denote $j : U \to \Spec(A)$ the inclusion morphism. Then
+$H^0(U, \mathcal{F}) = H^0(\Spec(A), j_*\mathcal{F})$ and
+$j_*\mathcal{F}$ is quasi-coherent by
+Schemes, Lemma \ref{schemes-lemma-push-forward-quasi-coherent}.
+Hence $j_*\mathcal{F} = \widetilde{H^0(U, \mathcal{F})}$ by
+Schemes, Lemma \ref{schemes-lemma-equivalence-quasi-coherent}.
+Restricting back to $U$ we get the lemma.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-invert-f-affine}
+Let $X$ be a scheme. Let $f \in \Gamma(X, \mathcal{O}_X)$.
+Assume $X$ is quasi-compact and quasi-separated and assume that
+$X_f$ is affine. Then the canonical morphism
+$$
+j : X \longrightarrow \Spec(\Gamma(X, \mathcal{O}_X))
+$$
+from Schemes, Lemma \ref{schemes-lemma-morphism-into-affine}
+induces an isomorphism of $X_f = j^{-1}(D(f))$ onto the standard affine
+open $D(f) \subset \Spec(\Gamma(X, \mathcal{O}_X))$.
+\end{lemma}
+
+\begin{proof}
+This is clear as $j$ induces an isomorphism of rings
+$\Gamma(X, \mathcal{O}_X)_f \to \mathcal{O}_X(X_f)$ by
+Lemma \ref{lemma-invert-f-sections} above.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-quasi-affine}
+Let $X$ be a scheme. Then $X$ is quasi-affine if and only if
+the canonical morphism
+$$
+X \longrightarrow \Spec(\Gamma(X, \mathcal{O}_X))
+$$
+from Schemes, Lemma \ref{schemes-lemma-morphism-into-affine} is
+a quasi-compact open immersion.
+\end{lemma}
+
+\begin{proof}
+If the displayed morphism is a quasi-compact open immersion then
+$X$ is isomorphic to a quasi-compact open subscheme of
+$\Spec(\Gamma(X, \mathcal{O}_X))$ and clearly $X$ is quasi-affine.
+
+\medskip\noindent
+Assume $X$ is quasi-affine, say $X \subset \Spec(R)$ is
+quasi-compact open. This in particular implies that $X$ is
+separated, see
+Schemes, Lemma \ref{schemes-lemma-subscheme-of-separated-scheme}.
+Let $A = \Gamma(X, \mathcal{O}_X)$.
+Consider the ring map $R \to A$ coming from
+$R = \Gamma(\Spec(R), \mathcal{O}_{\Spec(R)})$
+and the restriction mapping of the sheaf $\mathcal{O}_{\Spec(R)}$.
+By Schemes, Lemma \ref{schemes-lemma-morphism-into-affine}
+we obtain a factorization:
+$$
+X \longrightarrow
+\Spec(A) \longrightarrow
+\Spec(R)
+$$
+of the inclusion morphism. Let $x \in X$. Choose $r \in R$ such that
+$x \in D(r)$ and $D(r) \subset X$. Denote $f \in A$ the image of $r$
+in $A$. The open $X_f$ of Lemma \ref{lemma-invert-f-sections}
+above is equal to $D(r) \subset X$ and hence $A_f \cong R_r$ by the
+conclusion of that lemma.
+Hence $D(r) \to \Spec(A)$ is an isomorphism onto the
+standard affine open $D(f)$ of $\Spec(A)$. Since $X$
+can be covered by such affine opens $D(f)$ we win.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-cartesian-diagram-quasi-affine}
+Let $U \to V$ be an open immersion of quasi-affine schemes. Then
+$$
+\xymatrix{
+U \ar[d] \ar[rr]_-j & & \Spec(\Gamma(U, \mathcal{O}_U)) \ar[d] \\
+U \ar[r] & V \ar[r]^-{j'} & \Spec(\Gamma(V, \mathcal{O}_V))
+}
+$$
+is cartesian.
+\end{lemma}
+
+\begin{proof}
+The diagram is commutative by Schemes, Lemma
+\ref{schemes-lemma-morphism-into-affine}.
+Write $A = \Gamma(U, \mathcal{O}_U)$ and $B = \Gamma(V, \mathcal{O}_V)$. Let
+$g \in B$ be such that $V_g$ is affine and contained in $U$. This
+means that if $f$ is the image of $g$ in $A$, then $U_f = V_g$. By Lemma
+\ref{lemma-invert-f-affine} we see that $j'$ induces an isomorphism of
+$V_g$ with the standard open $D(g)$ of $\Spec(B)$. Thus
+$V_g \times_{\Spec(B)} \Spec(A) \to \Spec(A)$ is an
+isomorphism onto $D(f) \subset \Spec(A)$. By Lemma \ref{lemma-invert-f-affine}
+again $j$ maps $U_f$ isomorphically to $D(f)$. Thus we see that
+$U_f = U_f \times_{\Spec(B)} \Spec(A)$. Since by
+Lemma \ref{lemma-quasi-affine} we can cover $U$ by $V_g = U_f$ as above,
+we see that $U \to U \times_{\Spec(B)} \Spec(A)$ is an isomorphism.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-quasi-affine-presentation}
+Let $X$ be a quasi-affine scheme. There exists an integer $n \geq 0$,
+an affine scheme $T$, and a morphism $T \to X$ such that for every
+morphism $X' \to X$ with $X'$ affine the fibre product $X' \times_X T$
+is isomorphic to $\mathbf{A}^n_{X'}$ over $X'$.
+\end{lemma}
+
+\begin{proof}
+By definition, there exists a ring $A$ such that $X$ is isomorphic to a
+quasi-compact open subscheme $U \subset \Spec(A)$. Recall that the standard
+opens $D(f) \subset \Spec(A)$ form a basis for the topology, see
+Algebra, Section \ref{algebra-section-spectrum-ring}. Since $U$ is
+quasi-compact we can choose $f_1, \ldots, f_n \in A$ such that
+$U = D(f_1) \cup \ldots \cup D(f_n)$. Thus we may assume
+$X = \Spec(A) \setminus V(I)$ where $I = (f_1, \ldots, f_n)$. We set
+$$
+T = \Spec(A[t, x_1, \ldots, x_n]/(f_1 x_1 + \ldots + f_n x_n - 1))
+$$
+The structure morphism $T \to \Spec(A)$ factors through the open $X$
+to give the morphism $T \to X$. If $X' = \Spec(A')$ and the morphism
+$X' \to X$ corresponds to the ring map $A \to A'$, then the images
+$f'_1, \ldots, f'_n \in A'$ of $f_1, \ldots, f_n$
+generate the unit ideal in $A'$.
+Say $1 = f'_1 a'_1 + \ldots + f'_n a'_n$.
+The base change $X' \times_X T$ is the spectrum of
+$A'[t, x_1, \ldots, x_n]/(f'_1 x_1 + \ldots + f'_n x_n - 1)$.
+We claim the $A'$-algebra homomorphism
+$$
+\varphi :
+A'[y_1, \ldots, y_n]
+\longrightarrow
+A'[t, x_1, \ldots, x_n, x_{n + 1}]/(f'_1 x_1 + \ldots + f'_n x_n - 1)
+$$
+sending $y_i$ to $a'_i t + x_i$ is an isomorphism. The claim finishes
+the proof of the lemma. The inverse of $\varphi$ is given by the $A'$-algebra
+homomorphism
+$$
+\psi :
+A'[t, x_1, \ldots, x_n, x_{n + 1}]/(f'_1 x_1 + \ldots + f'_n x_n - 1)
+\longrightarrow
+A'[y_1, \ldots, y_n]
+$$
+sending $t$ to $-1 + f'_1 y_1 + \ldots + f'_n y_n$ and $x_i$ to
+$y_i + a'_i - a'_i(f'_1 y_1 + \ldots + f'_n y_n)$ for $i = 1, \ldots, n$.
+This makes sense because $\sum f'_ix_i$ is mapped to
+$$
+\begin{matrix}
+\sum f'_i(y_i + a'_i - a'_i(\sum f'_j y_j)) =
+(\sum f'_iy_i) + 1 - (\sum f'_j y_j) = 1
+\end{matrix}
+$$
+To see the maps are mutually inverse one computes as follows:
+$$
+\begin{matrix}
+\varphi(\psi(t) = \varphi(-1 +  \sum f'_i y_i) =
+-1 + \sum f'_i (a'_i t + x_i) = t \\
+\varphi(\psi(x_i)) = \varphi(y_i + a'_i - a'_i(\sum f'_j y_j)) =
+a'_i t + x_i + a'_i - a'_i(\sum f'_ja'_jt + f'_jx_j) = x_i \\
+\psi(\varphi(y_i)) = \psi(a'_i t + x_i) =
+a'_i(-1 + \sum f'_j y_j) + y_i + a'_i - a'_i(\sum f'_j y_j) = y_i
+\end{matrix}
+$$
+This finishes the proof.
+\end{proof}
+
+
+
+

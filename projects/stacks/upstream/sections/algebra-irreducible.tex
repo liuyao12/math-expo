@@ -1,0 +1,160 @@
+\section{Irreducible components of spectra}
+\label{section-irreducible}
+
+\noindent
+We show that irreducible components of
+the spectrum of a ring correspond to the
+minimal primes in the ring.
+
+\begin{lemma}
+\label{lemma-irreducible}
+Let $R$ be a ring.
+\begin{enumerate}
+\item For a prime $\mathfrak p \subset R$ the closure
+of $\{\mathfrak p\}$ in the Zariski topology is $V(\mathfrak p)$.
+In a formula $\overline{\{\mathfrak p\}} = V(\mathfrak p)$.
+\item The irreducible closed subsets of $\Spec(R)$ are
+exactly the subsets $V(\mathfrak p)$, with $\mathfrak p \subset R$
+a prime.
+\item The irreducible components (see Topology,
+Definition \ref{topology-definition-irreducible-components})
+of $\Spec(R)$ are  exactly the subsets $V(\mathfrak p)$,
+with $\mathfrak p \subset R$ a minimal prime.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Note that if $ \mathfrak p \in V(I)$, then
+$I \subset \mathfrak p$. Hence,
+clearly $\overline{\{\mathfrak p\}} = V(\mathfrak p)$.
+In particular $V(\mathfrak p)$ is the closure of
+a singleton and hence irreducible.
+The second assertion implies the third.
+To show the second, let
+$V(I) \subset \Spec(R)$ with $I$ a radical ideal.
+If $I$ is not prime, then choose $a, b\in R$, $a, b\not \in I$
+with $ab\in I$. In this case $V(I, a) \cup V(I, b) = V(I)$,
+but neither $V(I, b) = V(I)$ nor $V(I, a) = V(I)$, by
+Lemma \ref{lemma-Zariski-topology}. Hence $V(I)$ is not
+irreducible.
+\end{proof}
+
+\noindent
+In other words, this lemma shows that every irreducible closed
+subset of $\Spec(R)$ is of the form $V(\mathfrak p)$ for
+some prime $\mathfrak p$. Since $V(\mathfrak p) = \overline{\{\mathfrak p\}}$
+we see that each irreducible closed subset has a unique generic point,
+see Topology, Definition \ref{topology-definition-generic-point}.
+In particular, $\Spec(R)$ is a sober topological space.
+We record this fact in the following lemma.
+
+\begin{lemma}
+\label{lemma-spec-spectral}
+The spectrum of a ring is a spectral space, see Topology, Definition
+\ref{topology-definition-spectral-space}.
+\end{lemma}
+
+\begin{proof}
+Formally this follows from Lemma \ref{lemma-irreducible} and
+Lemma \ref{lemma-topology-spec}. See also discussion above.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-irreducible-components-containing-x}
+Let $R$ be a ring. Let $\mathfrak p \subset R$ be a prime.
+\begin{enumerate}
+\item the set of irreducible closed subsets of $\Spec(R)$
+passing through $\mathfrak p$ is in one-to-one correspondence with
+primes $\mathfrak q \subset R_{\mathfrak p}$.
+\item The set of irreducible components of $\Spec(R)$ passing through
+$\mathfrak p$ is in one-to-one correspondence with minimal
+primes $\mathfrak q \subset R_{\mathfrak p}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Follows from Lemma \ref{lemma-irreducible}
+and the description of $\Spec(R_\mathfrak p)$ in
+Lemma \ref{lemma-spec-localization} which shows that
+$\Spec(R_\mathfrak p)$ corresponds to primes $\mathfrak q$ in $R$
+with $\mathfrak q \subset \mathfrak p$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-standard-open-containing-maximal-point}
+Let $R$ be a ring.
+Let $\mathfrak p$ be a minimal prime of $R$.
+Let $W \subset \Spec(R)$ be a quasi-compact open
+not containing the point $\mathfrak p$. Then there
+exists an $f \in R$, $f \not \in \mathfrak p$ such
+that $D(f) \cap W = \emptyset$.
+\end{lemma}
+
+\begin{proof}
+Since $W$ is quasi-compact we may write it as a finite union
+of standard affine opens $D(g_i)$, $i = 1, \ldots, n$.
+Since $\mathfrak p \not \in W$ we have $g_i \in \mathfrak p$ for
+all $i$. By Lemma \ref{lemma-minimal-prime-reduced-ring}
+each $g_i$ is nilpotent in $R_{\mathfrak p}$. Hence we can find
+an $f \in R$, $f \not \in \mathfrak p$ such that for all $i$ we have
+$f g_i^{n_i} = 0$ for some $n_i > 0$. Then $D(f)$ works.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-ring-with-only-minimal-primes}
+Let $R$ be a ring. Let $X = \Spec(R)$ as a topological space.
+The following are equivalent
+\begin{enumerate}
+\item $X$ is profinite,
+\item $X$ is Hausdorff,
+\item $X$ is totally disconnected.
+\item every quasi-compact open of $X$ is closed,
+\item there are no nontrivial inclusions between its prime ideals,
+\item every prime ideal is a maximal ideal,
+\item every prime ideal is minimal,
+\item every standard open $D(f) \subset X$ is closed, and
+\item add more here.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+First proof. It is clear that (5), (6), and (7) are equivalent.
+It is clear that (4) and (8) are equivalent as every quasi-compact
+open is a finite union of standard opens.
+The implication (7) $\Rightarrow$ (4) follows from
+Lemma \ref{lemma-standard-open-containing-maximal-point}.
+Assume (4) holds. Let $\mathfrak p, \mathfrak p'$ be distinct
+primes of $R$. Choose an $f \in \mathfrak p'$, $f \not \in \mathfrak p$
+(if needed switch $\mathfrak p$ with $\mathfrak p'$).
+Then $\mathfrak p' \not \in D(f)$ and $\mathfrak p \in D(f)$.
+By (4) the open $D(f)$ is also closed.
+Hence $\mathfrak p$ and $\mathfrak p'$ are in disjoint open
+neighbourhoods whose union is $X$. Thus $X$ is Hausdorff and totally
+disconnected. Thus (4) $\Rightarrow$ (2) and (3).
+If (3) holds then there cannot be any specializations
+between points of $\Spec(R)$ and we see that (5) holds.
+If $X$ is Hausdorff then every point is closed, so (2) implies (6).
+Thus (2), (3), (4), (5), (6), (7) and (8) are equivalent.
+Any profinite space is Hausdorff, so (1) implies (2).
+If $X$ satisfies (2) and (3), then $X$ (being quasi-compact by
+Lemma \ref{lemma-quasi-compact}) is profinite by
+Topology, Lemma \ref{topology-lemma-profinite}.
+
+\medskip\noindent
+Second proof. Besides the equivalence of (4) and (8) this follows
+from Lemma \ref{lemma-spec-spectral} and purely topological facts, see
+Topology, Lemma \ref{topology-lemma-characterize-profinite-spectral}.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+

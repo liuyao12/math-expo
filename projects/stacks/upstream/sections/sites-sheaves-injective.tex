@@ -1,0 +1,78 @@
+\section{Injective and surjective maps of sheaves}
+\label{section-sheaves-injective}
+
+\begin{definition}
+\label{definition-sheaves-injective-surjective}
+Let $\mathcal{C}$ be a site, and let $\varphi : \mathcal{F}
+\to \mathcal{G}$ be a map of sheaves of sets.
+\begin{enumerate}
+\item We say that $\varphi$ is {\it injective} if for every object
+$U$ of $\mathcal{C}$ the map $\varphi : \mathcal{F}(U)
+\to \mathcal{G}(U)$ is injective.
+\item We say that $\varphi$ is {\it surjective} if for every object
+$U$ of $\mathcal{C}$ and every section $s\in \mathcal{G}(U)$
+there exists a covering $\{U_i \to U\}$ such that for
+all $i$ the restriction $s|_{U_i}$ is in the image of
+$\varphi : \mathcal{F}(U_i) \to \mathcal{G}(U_i)$.
+\end{enumerate}
+\end{definition}
+
+\begin{lemma}
+\label{lemma-mono-epi-sheaves}
+The injective (resp.\ surjective) maps defined above
+are exactly the monomorphisms (resp.\ epimorphisms) of
+the category $\Sh(\mathcal{C})$. A map of sheaves
+is an isomorphism if and only if it is both injective
+and surjective.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-coequalizer-surjection}
+Let $\mathcal{C}$ be a site. Let $\mathcal{F} \to \mathcal{G}$
+be a surjection of sheaves of sets. Then the diagram
+$$
+\xymatrix{
+\mathcal{F} \times_\mathcal{G} \mathcal{F}
+\ar@<1ex>[r] \ar@<-1ex>[r]
+&
+\mathcal{F} \ar[r]
+&
+\mathcal{G}}
+$$
+represents $\mathcal{G}$ as a coequalizer.
+\end{lemma}
+
+\begin{proof}
+Let $\mathcal{H}$ be a sheaf of sets and let
+$\varphi : \mathcal{F} \to \mathcal{H}$ be a map of sheaves equalizing
+the two maps $\mathcal{F} \times_\mathcal{G} \mathcal{F} \to \mathcal{F}$.
+Let $\mathcal{G}' \subset \mathcal{G}$ be the presheaf image of
+the map $\mathcal{F} \to \mathcal{G}$. As the product
+$\mathcal{F} \times_\mathcal{G} \mathcal{F}$ may be computed in the
+category of presheaves we see that it is equal to the presheaf product
+$\mathcal{F} \times_{\mathcal{G}'} \mathcal{F}$. Hence $\varphi$
+induces a unique map of presheaves $\psi' : \mathcal{G}' \to \mathcal{H}$.
+Since $\mathcal{G}$ is the sheafification of $\mathcal{G}'$ by
+Lemma \ref{lemma-mono-epi-sheaves}
+we conclude that $\psi'$ extends uniquely to a map of sheaves
+$\psi : \mathcal{G} \to \mathcal{H}$. We omit the verification that
+$\varphi$ is equal to the composition of $\psi$ and the given map.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

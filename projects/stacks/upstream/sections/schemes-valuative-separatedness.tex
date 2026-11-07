@@ -1,0 +1,60 @@
+\section{Valuative criterion of separatedness}
+\label{section-valuative-separatedness}
+
+\begin{lemma}
+\label{lemma-separated-implies-valuative}
+Let $f : X \to S$ be a morphism of schemes.
+If $f$ is separated, then $f$ satisfies the uniqueness
+part of the valuative criterion.
+\end{lemma}
+
+\begin{proof}
+Let a diagram as in Definition \ref{definition-valuative-criterion}
+be given. Suppose there are two morphisms
+$a, b : \Spec(A) \to X$ fitting into the diagram.
+Let $Z \subset \Spec(A)$ be the equalizer of $a$ and $b$.
+By Lemma \ref{lemma-where-are-they-equal} this is a closed
+subscheme of $\Spec(A)$. By assumption it contains
+the generic point of $\Spec(A)$. Since $A$ is a domain
+this implies $Z = \Spec(A)$. Hence $a = b$ as desired.
+\end{proof}
+
+\begin{lemma}[Valuative criterion separatedness]
+\label{lemma-valuative-criterion-separatedness}
+\begin{reference}
+\cite[II Proposition 7.2.3]{EGA}
+\end{reference}
+Let $f : X \to S$ be a morphism.
+Assume
+\begin{enumerate}
+\item the morphism $f$ is quasi-separated, and
+\item the morphism $f$ satisfies the uniqueness
+part of the valuative criterion.
+\end{enumerate}
+Then $f$ is separated.
+\end{lemma}
+
+\begin{proof}
+By assumption (1),
+Proposition \ref{proposition-characterize-universally-closed}, and
+Lemmas \ref{lemma-diagonal-immersion} and \ref{lemma-immersion-when-closed}
+we see that it suffices to prove the morphism
+$\Delta_{X/S} : X \to X \times_S X$ satisfies the existence
+part of the valuative criterion.
+Let a solid commutative diagram
+$$
+\xymatrix{
+\Spec(K) \ar[r] \ar[d] & X \ar[d] \\
+\Spec(A) \ar[r] \ar@{-->}[ru] & X \times_S X
+}
+$$
+be given. The lower right arrow corresponds to a
+pair of morphisms $a, b : \Spec(A) \to X$ over $S$.
+By (2) we see that $a = b$. Hence using $a$ as the dotted
+arrow works.
+\end{proof}
+
+
+
+
+

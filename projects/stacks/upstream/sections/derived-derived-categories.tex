@@ -1,0 +1,302 @@
+\section{Derived categories}
+\label{section-derived-categories}
+
+\noindent
+In this section we construct the derived category of an abelian category
+$\mathcal{A}$ by inverting the quasi-isomorphisms in $K(\mathcal{A})$.
+Before we do this recall that the functors
+$H^i : \text{Comp}(\mathcal{A}) \to \mathcal{A}$
+factor through $K(\mathcal{A})$, see
+Homology, Lemma \ref{homology-lemma-map-cohomology-homotopy-cochain}.
+Moreover, in
+Homology, Definition \ref{homology-definition-cohomology-shift}
+we have defined identifications $H^i(K^\bullet[n]) = H^{i + n}(K^\bullet)$.
+At this point it makes sense to redefine
+$$
+H^i(K^\bullet) = H^0(K^\bullet[i])
+$$
+in order to avoid confusion and possible sign errors.
+
+\begin{lemma}
+\label{lemma-cohomology-homological}
+Let $\mathcal{A}$ be an abelian category. The functor
+$$
+H^0 : K(\mathcal{A}) \longrightarrow \mathcal{A}
+$$
+is homological.
+\end{lemma}
+
+\begin{proof}
+Because $H^0$ is a functor, and by our definition of distinguished triangles
+it suffices to prove that given a termwise split short exact sequence
+of complexes $0 \to A^\bullet \to B^\bullet \to C^\bullet \to 0$
+the sequence $H^0(A^\bullet) \to H^0(B^\bullet) \to H^0(C^\bullet)$
+is exact. This follows from
+Homology, Lemma \ref{homology-lemma-long-exact-sequence-cochain}.
+\end{proof}
+
+\noindent
+In particular, this lemma implies that a distinguished triangle
+$(X, Y, Z, f, g, h)$ in $K(\mathcal{A})$ gives rise to a long exact
+cohomology sequence
+\begin{equation}
+\label{equation-long-exact-cohomology-sequence-D}
+\xymatrix{
+\ldots \ar[r] &
+H^i(X) \ar[r]^{H^i(f)} &
+H^i(Y) \ar[r]^{H^i(g)} &
+H^i(Z) \ar[r]^{H^i(h)} &
+H^{i + 1}(X) \ar[r] & \ldots
+}
+\end{equation}
+see (\ref{equation-long-exact-cohomology-sequence}). Moreover, there is
+a compatibility with the long exact sequence of cohomology associated to
+a short exact sequence of complexes (insert future reference here). For
+example, if $(A^\bullet, B^\bullet, C^\bullet, \alpha, \beta, \delta)$
+is the distinguished triangle associated to a termwise split exact
+sequence of complexes (see
+Definition \ref{definition-split-ses}),
+then the cohomology sequence above agrees with the one defined using the
+snake lemma, see
+Homology, Lemma \ref{homology-lemma-long-exact-sequence-cochain}
+and for agreement of sequences, see
+Homology, Lemma \ref{homology-lemma-ses-termwise-split-long-cochain}.
+
+\medskip\noindent
+Recall that a complex $K^\bullet$ is {\it acyclic} if $H^i(K^\bullet) = 0$
+for all $i \in \mathbf{Z}$. Moreover, recall that a morphism of complexes
+$f : K^\bullet \to L^\bullet$ is a {\it quasi-isomorphism} if and only if
+$H^i(f)$ is an isomorphism for all $i$. See
+Homology, Definition \ref{homology-definition-quasi-isomorphism-cochain}.
+
+\begin{lemma}
+\label{lemma-acyclic}
+Let $\mathcal{A}$ be an abelian category. The full subcategory
+$\text{Ac}(\mathcal{A})$ of $K(\mathcal{A})$ consisting of acyclic complexes
+is a strictly full saturated triangulated subcategory of $K(\mathcal{A})$.
+The corresponding saturated multiplicative system (see
+Lemma \ref{lemma-operations})
+of $K(\mathcal{A})$ is the set $\text{Qis}(\mathcal{A})$
+of quasi-isomorphisms. In particular, the kernel of the localization
+functor $Q : K(\mathcal{A}) \to \text{Qis}(\mathcal{A})^{-1}K(\mathcal{A})$
+is $\text{Ac}(\mathcal{A})$ and the functor $H^0$ factors through $Q$.
+\end{lemma}
+
+\begin{proof}
+We know that $H^0$ is a homological functor by
+Lemma \ref{lemma-cohomology-homological}.
+Thus this lemma is a special case of
+Lemma \ref{lemma-acyclic-general}.
+\end{proof}
+
+\begin{definition}
+\label{definition-unbounded-derived-category}
+Let $\mathcal{A}$ be an abelian category.
+Let $\text{Ac}(\mathcal{A})$ and $\text{Qis}(\mathcal{A})$
+be as in
+Lemma \ref{lemma-acyclic}.
+The {\it derived category of $\mathcal{A}$} is the triangulated
+category
+$$
+D(\mathcal{A}) =
+K(\mathcal{A})/\text{Ac}(\mathcal{A}) =
+\text{Qis}(\mathcal{A})^{-1} K(\mathcal{A}).
+$$
+We denote $H^0 : D(\mathcal{A}) \to \mathcal{A}$ the unique functor
+whose composition with the quotient functor gives back the functor
+$H^0$ defined above. Using
+Lemma \ref{lemma-homological-functor-bounded}
+we introduce the strictly full saturated triangulated subcategories
+$D^{+}(\mathcal{A}), D^{-}(\mathcal{A}), D^b(\mathcal{A})$
+whose sets of objects are
+$$
+\begin{matrix}
+\Ob(D^{+}(\mathcal{A})) =
+\{X \in \Ob(D(\mathcal{A})) \mid
+H^n(X) = 0\text{ for all }n \ll 0\} \\
+\Ob(D^{-}(\mathcal{A})) =
+\{X \in \Ob(D(\mathcal{A})) \mid
+H^n(X) = 0\text{ for all }n \gg 0\} \\
+\Ob(D^b(\mathcal{A})) =
+\{X \in \Ob(D(\mathcal{A})) \mid
+H^n(X) = 0\text{ for all }|n| \gg 0\}
+\end{matrix}
+$$
+The category $D^b(\mathcal{A})$ is called the {\it bounded derived
+category} of $\mathcal{A}$.
+\end{definition}
+
+\noindent
+If $K^\bullet$ and $L^\bullet$ are complexes of $\mathcal{A}$
+then we sometimes say ``$K^\bullet$ is {\it quasi-isomorphic} to
+$L^\bullet$'' to indicate that $K^\bullet$ and $L^\bullet$ are
+isomorphic objects of $D(\mathcal{A})$.
+
+\begin{remark}
+\label{remark-existence-derived}
+In this chapter, we consistently work with ``small'' abelian categories
+(as is the convention in the Stacks project). For a ``big'' abelian
+category $\mathcal{A}$, it isn't clear that the derived category
+$D(\mathcal{A})$ exists, because it isn't clear that morphisms in the
+derived category are sets. In fact, in general they aren't, see
+Examples, Lemma \ref{examples-lemma-big-abelian-category}.
+However, if $\mathcal{A}$ is a Grothendieck abelian category, and given
+$K^\bullet, L^\bullet$ in $K(\mathcal{A})$, then by
+Injectives, Theorem \ref{injectives-theorem-K-injective-embedding-grothendieck}
+there exists a quasi-isomorphism $L^\bullet \to I^\bullet$ to a
+K-injective complex $I^\bullet$ and Lemma \ref{lemma-K-injective} shows that
+$$
+\Hom_{D(\mathcal{A})}(K^\bullet, L^\bullet) =
+\Hom_{K(\mathcal{A})}(K^\bullet, I^\bullet)
+$$
+which is a set. Some examples of Grothendieck abelian categories
+are the category of modules over a ring, or more generally
+the category of sheaves of modules on a ringed site.
+\end{remark}
+
+\noindent
+Each of the variants $D^{+}(\mathcal{A}), D^{-}(\mathcal{A}), D^b(\mathcal{A})$
+can be constructed as a localization of the corresponding homotopy category.
+This relies on the following simple lemma.
+
+\begin{lemma}
+\label{lemma-complex-cohomology-bounded}
+Let $\mathcal{A}$ be an abelian category.
+Let $K^\bullet$ be a complex.
+\begin{enumerate}
+\item If $H^n(K^\bullet) = 0$ for all $n \ll 0$, then there exists
+a quasi-isomorphism $K^\bullet \to L^\bullet$ with $L^\bullet$
+bounded below.
+\item If $H^n(K^\bullet) = 0$ for all $n \gg 0$, then there exists
+a quasi-isomorphism $M^\bullet \to K^\bullet$ with $M^\bullet$
+bounded above.
+\item If $H^n(K^\bullet) = 0$ for all $|n| \gg 0$, then there exists
+a commutative diagram of morphisms of complexes
+$$
+\xymatrix{
+K^\bullet \ar[r] & L^\bullet \\
+M^\bullet \ar[u] \ar[r] & N^\bullet \ar[u]
+}
+$$
+where all the arrows are quasi-isomorphisms, $L^\bullet$
+bounded below, $M^\bullet$ bounded above, and $N^\bullet$ a bounded
+complex.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Pick $a \ll 0 \ll b$ and set $M^\bullet = \tau_{\leq b}K^\bullet$,
+$L^\bullet = \tau_{\geq a}K^\bullet$, and
+$N^\bullet = \tau_{\leq b}L^\bullet = \tau_{\geq a}M^\bullet$.
+See
+Homology, Section \ref{homology-section-truncations}
+for the truncation functors.
+\end{proof}
+
+\noindent
+To state the following lemma denote
+$\text{Ac}^{+}(\mathcal{A})$, $\text{Ac}^{-}(\mathcal{A})$,
+resp.\ $\text{Ac}^b(\mathcal{A})$ the intersection of
+$K^{+}(\mathcal{A})$, $K^{-}(\mathcal{A})$, resp.\ $K^b(\mathcal{A})$
+with $\text{Ac}(\mathcal{A})$.
+Denote $\text{Qis}^{+}(\mathcal{A})$, $\text{Qis}^{-}(\mathcal{A})$,
+resp.\ $\text{Qis}^b(\mathcal{A})$ the intersection of
+$K^{+}(\mathcal{A})$, $K^{-}(\mathcal{A})$, resp.\ $K^b(\mathcal{A})$
+with $\text{Qis}(\mathcal{A})$.
+
+\begin{lemma}
+\label{lemma-bounded-derived}
+Let $\mathcal{A}$ be an abelian category. The subcategories
+$\text{Ac}^{+}(\mathcal{A})$, $\text{Ac}^{-}(\mathcal{A})$,
+resp.\ $\text{Ac}^b(\mathcal{A})$
+are strictly full saturated triangulated subcategories
+of $K^{+}(\mathcal{A})$, $K^{-}(\mathcal{A})$, resp.\ $K^b(\mathcal{A})$.
+The corresponding saturated multiplicative systems (see
+Lemma \ref{lemma-operations})
+are the sets $\text{Qis}^{+}(\mathcal{A})$, $\text{Qis}^{-}(\mathcal{A})$,
+resp.\ $\text{Qis}^b(\mathcal{A})$.
+\begin{enumerate}
+\item The kernel of the functor $K^{+}(\mathcal{A}) \to D^{+}(\mathcal{A})$
+is $\text{Ac}^{+}(\mathcal{A})$ and this induces an equivalence
+of triangulated categories
+$$
+K^{+}(\mathcal{A})/\text{Ac}^{+}(\mathcal{A}) =
+\text{Qis}^{+}(\mathcal{A})^{-1}K^{+}(\mathcal{A})
+\longrightarrow
+D^{+}(\mathcal{A})
+$$
+\item The kernel of the functor $K^{-}(\mathcal{A}) \to D^{-}(\mathcal{A})$
+is $\text{Ac}^{-}(\mathcal{A})$ and this induces an equivalence
+of triangulated categories
+$$
+K^{-}(\mathcal{A})/\text{Ac}^{-}(\mathcal{A}) =
+\text{Qis}^{-}(\mathcal{A})^{-1}K^{-}(\mathcal{A})
+\longrightarrow
+D^{-}(\mathcal{A})
+$$
+\item The kernel of the functor $K^b(\mathcal{A}) \to D^b(\mathcal{A})$
+is $\text{Ac}^b(\mathcal{A})$ and this induces an equivalence
+of triangulated categories
+$$
+K^b(\mathcal{A})/\text{Ac}^b(\mathcal{A}) =
+\text{Qis}^b(\mathcal{A})^{-1}K^b(\mathcal{A})
+\longrightarrow
+D^b(\mathcal{A})
+$$
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+The initial statements follow from
+Lemma \ref{lemma-acyclic-general}
+by considering the restriction of the homological functor $H^0$.
+The statement on kernels in (1), (2), (3) is a consequence of the
+definitions in each case.
+Each of the functors is essentially surjective by
+Lemma \ref{lemma-complex-cohomology-bounded}.
+To finish the proof we have to show the functors are fully faithful.
+We first do this for the bounded below version.
+
+\medskip\noindent
+Suppose that $K^\bullet, L^\bullet$ are bounded below complexes.
+A morphism between these in $D(\mathcal{A})$ is of the form
+$s^{-1}f$ for a pair
+$f : K^\bullet \to (L')^\bullet$, $s : L^\bullet \to (L')^\bullet$
+where $s$ is a quasi-isomorphism. This implies that $(L')^\bullet$
+has cohomology bounded below. Hence by
+Lemma \ref{lemma-complex-cohomology-bounded}
+we can choose a quasi-isomorphism
+$s' : (L')^\bullet \to (L'')^\bullet$
+with $(L'')^\bullet$ bounded below. Then the pair $(s' \circ f, s' \circ s)$
+defines a morphism in $\text{Qis}^{+}(\mathcal{A})^{-1}K^{+}(\mathcal{A})$.
+Hence the functor is ``full''. Finally, suppose that the pair
+$f : K^\bullet \to (L')^\bullet$, $s : L^\bullet \to (L')^\bullet$
+defines a morphism in $\text{Qis}^{+}(\mathcal{A})^{-1}K^{+}(\mathcal{A})$
+which is zero in $D(\mathcal{A})$. This means that there exists a
+quasi-isomorphism $s' : (L')^\bullet \to (L'')^\bullet$
+such that $s' \circ f = 0$. Using
+Lemma \ref{lemma-complex-cohomology-bounded}
+once more we obtain a quasi-isomorphism
+$s'' : (L'')^\bullet \to (L''')^\bullet$
+with $(L''')^\bullet$ bounded below.
+Thus we see that $s'' \circ s' \circ f = 0$ which implies that
+$s^{-1}f$ is zero in $\text{Qis}^{+}(\mathcal{A})^{-1}K^{+}(\mathcal{A})$.
+This finishes the proof that the functor in (1) is an equivalence.
+
+\medskip\noindent
+The proof of (2) is dual to the proof of (1).
+To prove (3) we may use the result of (2). Hence it suffices to
+prove that the functor
+$\text{Qis}^b(\mathcal{A})^{-1}K^b(\mathcal{A})
+\to \text{Qis}^{-}(\mathcal{A})^{-1}K^{-}(\mathcal{A})$
+is fully faithful. The argument given in the previous paragraph
+applies directly to show this where we consistently work with complexes
+which are already bounded above.
+\end{proof}
+
+
+
+
+
+
+

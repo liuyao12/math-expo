@@ -1,0 +1,119 @@
+\section{Mittag-Leffler systems}
+\label{section-mittag-leffler}
+
+\noindent
+The purpose of this section is to define Mittag-Leffler systems
+and why this is a useful notion.
+
+\medskip\noindent
+In the following, $I$ will be a directed set, see
+Categories, Definition \ref{categories-definition-directed-set}.
+Let $(A_i, \varphi_{ji}: A_j \to A_i)$ be an inverse
+system of sets or of modules indexed by $I$, see
+Categories, Definition \ref{categories-definition-directed-system}.
+This is a directed inverse system as we assumed $I$ directed
+(Categories, Definition \ref{categories-definition-directed-system}).
+For each $i \in I$, the images $\varphi_{ji}(A_j) \subset A_i$ for $j \geq i$
+form a decreasing directed family of subsets (or submodules) of $A_i$. Let
+$A'_i = \bigcap_{j \geq i} \varphi_{ji}(A_j)$.
+Then $\varphi_{ji}(A'_j) \subset A'_i$ for $j \geq i$, hence by restricting
+we get a directed inverse system $(A'_i, \varphi_{ji}|_{A'_j})$.
+From the construction of the limit of an inverse system in the category
+of sets or modules, we have $\lim A_i = \lim A'_i$.  The Mittag-Leffler
+condition on $(A_i, \varphi_{ji})$ is that $A'_i$ equals
+$\varphi_{ji}(A_j)$ for some $j \geq i$ (and hence equals
+$\varphi_{ki}(A_k)$ for all $k \geq j$):
+
+\begin{definition}
+\label{definition-ML-system}
+Let $(A_i, \varphi_{ji})$ be a directed inverse system of sets over $I$.  Then
+we say  $(A_i, \varphi_{ji})$ is {\it Mittag-Leffler} if for
+each $i \in I$, the family $\varphi_{ji}(A_j) \subset A_i$ for
+$j \geq i$ stabilizes.  Explicitly, this means that for each $i \in I$, there
+exists $j \geq i$ such that for $k \geq j$ we have $\varphi_{ki}(A_k) =
+\varphi_{ji}( A_j)$.  If $(A_i, \varphi_{ji})$ is a directed inverse system
+of modules over a ring $R$, we say that it is Mittag-Leffler if the underlying
+inverse system of sets is Mittag-Leffler.
+\end{definition}
+
+\begin{example}
+\label{example-ML-surjective-maps}
+If $(A_i, \varphi_{ji})$ is a directed inverse system of sets or of modules and
+the maps $\varphi_{ji}$ are surjective, then clearly the system is
+Mittag-Leffler.  Conversely, suppose $(A_i, \varphi_{ji})$ is Mittag-Leffler.
+Let $A'_i \subset A_i$ be the stable image of $\varphi_{ji}(A_j)$ for $j \geq
+i$.  Then $\varphi_{ji}|_{A'_j}: A'_j \to A'_i$ is surjective for
+$j \geq i$ and $\lim A_i = \lim A'_i$.  Hence the limit of the Mittag-Leffler
+system $(A_i, \varphi_{ji})$ can also be written as the limit of a directed
+inverse system over $I$ with surjective maps.
+\end{example}
+
+\begin{lemma}
+\label{lemma-ML-limit-nonempty}
+Let $(A_i, \varphi_{ji})$ be a directed inverse system over $I$.  Suppose $I$
+is countable.  If $(A_i, \varphi_{ji})$ is Mittag-Leffler and the $A_i$ are
+nonempty, then $\lim A_i$ is nonempty.
+\end{lemma}
+
+\begin{proof}
+Let $i_1, i_2, i_3, \ldots$ be an enumeration of the elements of $I$.  Define
+inductively a sequence of elements $j_n \in I$ for $n = 1, 2, 3, \ldots$ by the
+conditions: $j_1 = i_1$, and $j_n \geq i_n$ and $j_n \geq j_m$ for $m < n$.
+ Then the sequence $j_n$ is increasing and forms a cofinal subset of $I$.
+Hence we may assume $I =\{1, 2, 3, \ldots \}$.  So by Example
+\ref{example-ML-surjective-maps} we are reduced to showing that the limit of an
+inverse system of nonempty sets with surjective maps indexed by the positive
+integers is nonempty. This follows from the axiom of choice.
+\end{proof}
+
+\noindent
+The Mittag-Leffler condition will be important for us because of the following
+exactness property.
+
+\begin{lemma}
+\label{lemma-ML-exact-sequence}
+Let
+$$
+0 \to A_i \xrightarrow{f_i} B_i \xrightarrow{g_i} C_i \to 0
+$$
+be an exact sequence of directed inverse systems of abelian groups over $I$.
+Suppose $I$ is countable.  If $(A_i)$ is Mittag-Leffler, then
+$$
+0 \to \lim A_i \to \lim B_i \to \lim C_i\to 0
+$$
+is exact.
+\end{lemma}
+
+\begin{proof}
+Taking limits of directed inverse systems is left exact, hence we only need to
+prove surjectivity of $\lim B_i \to \lim C_i$.  So let $(c_i) \in \lim
+C_i$.  For each $i \in I$, let $E_i = g_i^{-1}(c_i)$, which is nonempty since
+$g_i: B_i \to C_i$ is surjective. The system of maps $\varphi_{ji}: B_j
+\to B_i$ for $(B_i)$ restrict to maps $E_j \to E_i$ which
+make $(E_i)$ into an inverse system of nonempty sets.  It is enough to show
+that $(E_i)$ is Mittag-Leffler. For then Lemma \ref{lemma-ML-limit-nonempty}
+would show $\lim E_i$ is nonempty, and taking any element of $\lim E_i$ would
+give an element of $\lim B_i$ mapping to $(c_i)$.
+
+\medskip\noindent
+By the injection $f_i: A_i \to B_i$ we will regard $A_i$ as a subset of
+$B_i$.  Since $(A_i)$ is Mittag-Leffler, if $i \in I$ then there exists $j \geq
+i$ such that $\varphi_{ki}(A_k) = \varphi_{ji}(A_j)$ for $k \geq j$.  We claim
+that also $\varphi_{ki}(E_k) = \varphi_{ji}(E_j)$ for $k \geq j$.  Always
+$\varphi_{ki}(E_k) \subset \varphi_{ji}(E_j)$ for $k \geq j$.  For the reverse
+inclusion let $e_j \in E_j$, and we need to find $x_k \in E_k$ such that
+$\varphi_{ki}(x_k) = \varphi_{ji}(e_j)$.  Let $e'_k \in E_k$ be any element,
+and set $e'_j = \varphi_{kj}(e'_k)$.  Then $g_j(e_j - e'_j) = c_j - c_j = 0$,
+hence $e_j - e'_j = a_j \in A_j$.  Since $\varphi_{ki}(A_k) =
+\varphi_{ji}(A_j)$, there exists $a_k \in A_k$ such that $\varphi_{ki}(a_k) =
+\varphi_{ji}(a_j)$.  Hence
+$$
+\varphi_{ki}(e'_k + a_k) = \varphi_{ji}(e'_j) + \varphi_{ji}(a_j) =
+\varphi_{ji}(e_j),
+$$
+so we can take $x_k = e'_k + a_k$.
+\end{proof}
+
+
+
+

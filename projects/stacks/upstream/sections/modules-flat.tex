@@ -1,0 +1,278 @@
+\section{Flat modules}
+\label{section-flat}
+
+\noindent
+We can define flat modules exactly as in the case of modules over rings.
+
+\begin{definition}
+\label{definition-flat}
+Let $(X, \mathcal{O}_X)$ be a ringed space.
+An $\mathcal{O}_X$-module $\mathcal{F}$ is {\it flat} if the functor
+$$
+\textit{Mod}(\mathcal{O}_X)
+\longrightarrow
+\textit{Mod}(\mathcal{O}_X), \quad
+\mathcal{G} \mapsto \mathcal{G} \otimes_{\mathcal{O}_X} \mathcal{F}
+$$
+is exact.
+\end{definition}
+
+\noindent
+We can characterize flatness by looking at the stalks.
+
+\begin{lemma}
+\label{lemma-flat-stalks-flat}
+Let $(X, \mathcal{O}_X)$ be a ringed space.
+An $\mathcal{O}_X$-module $\mathcal{F}$ is flat
+if and only if the stalk $\mathcal{F}_x$ is a flat
+$\mathcal{O}_{X, x}$-module for all $x \in X$.
+\end{lemma}
+
+\begin{proof}
+Assume $\mathcal{F}_x$ is a flat $\mathcal{O}_{X, x}$-module for all
+$x \in X$. In this case, if $\mathcal{G} \to \mathcal{H} \to \mathcal{K}$
+is exact, then also
+$\mathcal{G} \otimes_{\mathcal{O}_X} \mathcal{F} \to
+\mathcal{H} \otimes_{\mathcal{O}_X} \mathcal{F} \to
+\mathcal{K} \otimes_{\mathcal{O}_X} \mathcal{F}$
+is exact because we can check exactness at stalks and because
+tensor product commutes with taking stalks, see
+Lemma \ref{lemma-stalk-tensor-product}.
+Conversely, suppose that $\mathcal{F}$ is flat, and let $x \in X$.
+Consider the skyscraper sheaves $i_{x, *} M$ where $M$ is a
+$\mathcal{O}_{X, x}$-module. Note that
+$$
+M \otimes_{\mathcal{O}_{X, x}} \mathcal{F}_x =
+\left(i_{x, *} M \otimes_{\mathcal{O}_X} \mathcal{F}\right)_x
+$$
+again by
+Lemma \ref{lemma-stalk-tensor-product}.
+Since $i_{x, *}$ is exact, we see that the fact that $\mathcal{F}$
+is flat implies that $M \mapsto M \otimes_{\mathcal{O}_{X, x}} \mathcal{F}_x$
+is exact. Hence $\mathcal{F}_x$ is a flat $\mathcal{O}_{X, x}$-module.
+\end{proof}
+
+\noindent
+Thus the following definition makes sense.
+
+\begin{definition}
+\label{definition-flat-at-point}
+Let $(X, \mathcal{O}_X)$ be a ringed space. Let $x \in X$.
+An $\mathcal{O}_X$-module $\mathcal{F}$ is
+{\it flat at $x$} if $\mathcal{F}_x$ is a flat
+$\mathcal{O}_{X, x}$-module.
+\end{definition}
+
+\noindent
+Hence we see that $\mathcal{F}$ is a flat $\mathcal{O}_X$-module
+if and only if it is flat at every point.
+
+\begin{lemma}
+\label{lemma-base-change-flat}
+Let $f : (X, \mathcal{O}_X) \to (Y, \mathcal{O}_Y)$
+be a morphism of ringed spaces. If $\mathcal{G}$ is a flat
+$\mathcal{O}_Y$-module, then $f^*\mathcal{G}$ is a flat
+$\mathcal{O}_X$-module.
+\end{lemma}
+
+\begin{proof}
+Combine Lemma \ref{lemma-flat-stalks-flat} with
+Sheaves, Lemma \ref{sheaves-lemma-stalk-pullback-modules} and
+Algebra, Lemma \ref{algebra-lemma-flat-base-change}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-colimits-flat}
+Let $(X, \mathcal{O}_X)$ be a ringed space.
+A filtered colimit of flat $\mathcal{O}_X$-modules is flat.
+A direct sum of flat $\mathcal{O}_X$-modules is flat.
+\end{lemma}
+
+\begin{proof}
+This follows from
+Lemma \ref{lemma-tensor-commute-colimits},
+Lemma \ref{lemma-stalk-tensor-product},
+Algebra, Lemma \ref{algebra-lemma-directed-colimit-exact},
+and the fact that we can check exactness at stalks.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-j-shriek-flat}
+Let $(X, \mathcal{O}_X)$ be a ringed space.
+Let $U \subset X$ be open. The sheaf $j_{U!}\mathcal{O}_U$
+is a flat sheaf of $\mathcal{O}_X$-modules.
+\end{lemma}
+
+\begin{proof}
+The stalks of $j_{U!}\mathcal{O}_U$ are either zero or equal
+to $\mathcal{O}_{X, x}$. Apply
+Lemma \ref{lemma-flat-stalks-flat}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-module-quotient-flat}
+Let $(X, \mathcal{O}_X)$ be a ringed space.
+\begin{enumerate}
+\item Any sheaf of $\mathcal{O}_X$-modules is a quotient of
+a direct sum $\bigoplus j_{U_i!}\mathcal{O}_{U_i}$.
+\item Any $\mathcal{O}_X$-module is a quotient of
+a flat $\mathcal{O}_X$-module.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let $\mathcal{F}$ be an $\mathcal{O}_X$-module.
+For every open $U \subset X$ and every
+$s \in \mathcal{F}(U)$ we get a morphism
+$j_{U!}\mathcal{O}_U \to \mathcal{F}$, namely the adjoint to
+the morphism $\mathcal{O}_U \to \mathcal{F}|_U$, $1 \mapsto s$.
+Clearly the map
+$$
+\bigoplus\nolimits_{(U, s)} j_{U!}\mathcal{O}_U
+\longrightarrow
+\mathcal{F}
+$$
+is surjective, and the source is flat by combining Lemmas
+\ref{lemma-colimits-flat} and \ref{lemma-j-shriek-flat}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-flat-tor-zero}
+Let $(X, \mathcal{O}_X)$ be a ringed space.
+Let
+$$
+0 \to \mathcal{F}'' \to \mathcal{F}' \to \mathcal{F} \to 0
+$$
+be a short exact sequence of $\mathcal{O}_X$-modules.
+Assume $\mathcal{F}$ is flat. Then for any $\mathcal{O}_X$-module
+$\mathcal{G}$ the sequence
+$$
+0 \to
+\mathcal{F}'' \otimes_\mathcal{O} \mathcal{G} \to
+\mathcal{F}' \otimes_\mathcal{O} \mathcal{G} \to
+\mathcal{F} \otimes_\mathcal{O} \mathcal{G} \to 0
+$$
+is exact.
+\end{lemma}
+
+\begin{proof}
+Using that $\mathcal{F}_x$ is a flat $\mathcal{O}_{X, x}$-module
+for every $x \in X$ and that exactness can be checked on stalks, this
+follows from
+Algebra, Lemma \ref{algebra-lemma-flat-tor-zero}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-flat-ses}
+\begin{slogan}
+Kernels of epimorphisms and extensions of flat sheaves of modules over
+a ringed space are again flat.
+\end{slogan}
+Let $(X, \mathcal{O}_X)$ be a ringed space.
+Let
+$$
+0 \to
+\mathcal{F}_2 \to
+\mathcal{F}_1 \to
+\mathcal{F}_0 \to 0
+$$
+be a short exact sequence of $\mathcal{O}_X$-modules.
+\begin{enumerate}
+\item If $\mathcal{F}_2$ and $\mathcal{F}_0$ are flat so is
+$\mathcal{F}_1$.
+\item If $\mathcal{F}_1$ and $\mathcal{F}_0$ are flat so is
+$\mathcal{F}_2$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Since exactness and flatness may be checked at the level of stalks
+this follows from
+Algebra, Lemma \ref{algebra-lemma-flat-ses}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-flat-resolution-of-flat}
+Let $(X, \mathcal{O}_X)$ be a ringed space.
+Let
+$$
+\ldots \to
+\mathcal{F}_2 \to
+\mathcal{F}_1 \to
+\mathcal{F}_0 \to
+\mathcal{Q} \to 0
+$$
+be an exact complex of $\mathcal{O}_X$-modules.
+If $\mathcal{Q}$ and all $\mathcal{F}_i$ are flat $\mathcal{O}_X$-modules,
+then for any $\mathcal{O}_X$-module $\mathcal{G}$ the complex
+$$
+\ldots \to
+\mathcal{F}_2 \otimes_{\mathcal{O}_X} \mathcal{G} \to
+\mathcal{F}_1 \otimes_{\mathcal{O}_X} \mathcal{G} \to
+\mathcal{F}_0 \otimes_{\mathcal{O}_X} \mathcal{G} \to
+\mathcal{Q} \otimes_{\mathcal{O}_X} \mathcal{G} \to 0
+$$
+is exact also.
+\end{lemma}
+
+\begin{proof}
+Follows from Lemma \ref{lemma-flat-tor-zero} by splitting the complex
+into short exact sequences and using Lemma \ref{lemma-flat-ses} to
+prove inductively that $\Im(\mathcal{F}_{i + 1} \to \mathcal{F}_i)$
+is flat.
+\end{proof}
+
+\noindent
+The following lemma gives one direction of the equational criterion of
+flatness (Algebra, Lemma \ref{algebra-lemma-flat-eq}).
+
+\begin{lemma}
+\label{lemma-flat-eq}
+Let $(X, \mathcal{O}_X)$ be a ringed space. Let $\mathcal{F}$ be a flat
+$\mathcal{O}_X$-module. Let $U \subset X$ be open and let
+$$
+\mathcal{O}_U \xrightarrow{(f_1, \ldots, f_n)}
+\mathcal{O}_U^{\oplus n} \xrightarrow{(s_1, \ldots, s_n)}
+\mathcal{F}|_U
+$$
+be a complex of $\mathcal{O}_U$-modules. For every $x \in U$ there
+exists an open neighbourhood $V \subset U$ of $x$ and a factorization
+$$
+\mathcal{O}_V^{\oplus n}
+\xrightarrow{A}
+\mathcal{O}_V^{\oplus m} \xrightarrow{(t_1, \ldots, t_m)}
+\mathcal{F}|_V
+$$
+of $(s_1, \ldots, s_n)|_V$ such that $A \circ (f_1, \ldots, f_n)|_V = 0$.
+\end{lemma}
+
+\begin{proof}
+Let $\mathcal{I} \subset \mathcal{O}_U$ be the sheaf of ideals
+generated by $f_1, \ldots, f_n$. Then $\sum f_i \otimes s_i$ is
+a section of $\mathcal{I} \otimes_{\mathcal{O}_U} \mathcal{F}|_U$
+which maps to zero in $\mathcal{F}|_U$. As $\mathcal{F}|_U$ is flat
+the map
+$\mathcal{I} \otimes_{\mathcal{O}_U} \mathcal{F}|_U \to \mathcal{F}|_U$
+is injective. Since $\mathcal{I} \otimes_{\mathcal{O}_U} \mathcal{F}|_U$
+is the sheaf associated to the presheaf tensor product, we see
+there exists an open neighbourhood $V \subset U$ of $x$ such
+that $\sum f_i|_V \otimes s_i|_V$ is zero in
+$\mathcal{I}(V) \otimes_{\mathcal{O}(V)} \mathcal{F}(V)$.
+Unwinding the definitions using Algebra, Lemma \ref{algebra-lemma-relations}
+we find $t_1, \ldots, t_m \in \mathcal{F}(V)$ and $a_{ij} \in \mathcal{O}(V)$
+such that $\sum a_{ij}f_i|_V = 0$ and $s_i|_V = \sum a_{ij}t_j$.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

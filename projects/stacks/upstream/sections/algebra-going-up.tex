@@ -1,0 +1,392 @@
+\section{Going up and going down}
+\label{section-going-up}
+
+\noindent
+Suppose $\mathfrak p$, $\mathfrak p'$ are primes
+of the ring $R$. Let $X = \Spec(R)$ with the Zariski
+topology. Denote $x \in X$ the point corresponding
+to $\mathfrak p$ and $x' \in X$ the point corresponding
+to $\mathfrak p'$. Then we have:
+$$
+x' \leadsto x \Leftrightarrow \mathfrak p' \subset \mathfrak p.
+$$
+In words: $x$ is a specialization of $x'$ if and
+only if $\mathfrak p' \subset \mathfrak p$.
+See Topology, Section \ref{topology-section-specialization}
+for terminology and notation.
+
+\begin{definition}
+\label{definition-going-up-down}
+Let $\varphi : R \to S$ be a ring map.
+\begin{enumerate}
+\item We say a $\varphi : R \to S$ satisfies {\it going up} if
+given primes $\mathfrak p \subset \mathfrak p'$ in $R$
+and a prime $\mathfrak q$ in $S$ lying over $\mathfrak p$
+there exists a prime $\mathfrak q'$ of $S$ such that
+(a) $\mathfrak q \subset \mathfrak q'$, and (b)
+$\mathfrak q'$ lies over $\mathfrak p'$.
+\item We say a $\varphi : R \to S$ satisfies {\it going down} if
+given primes $\mathfrak p \subset \mathfrak p'$ in $R$
+and a prime $\mathfrak q'$ in $S$ lying over $\mathfrak p'$
+there exists a prime $\mathfrak q$ of $S$ such that
+(a) $\mathfrak q \subset \mathfrak q'$, and (b)
+$\mathfrak q$ lies over $\mathfrak p$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+So far we have see the following cases of this:
+\begin{enumerate}
+\item An integral ring map satisfies going up, see
+Lemma \ref{lemma-integral-going-up}.
+\item As a special case finite ring maps satisfy going up.
+\item As a special case quotient maps $R \to R/I$ satisfy going up.
+\item A flat ring map satisfies going down, see
+Lemma \ref{lemma-flat-going-down}
+\item As a special case any localization satisfies going down.
+\item An extension $R \subset S$ of domains, with $R$ normal
+and $S$ integral over $R$ satisfies going down, see
+Proposition \ref{proposition-going-down-normal-integral}.
+\end{enumerate}
+Here is another case where going down holds.
+
+\begin{lemma}
+\label{lemma-open-going-down}
+Let $R \to S$ be a ring map. If the induced map
+$\varphi : \Spec(S) \to \Spec(R)$ is open, then
+$R \to S$ satisfies going down.
+\end{lemma}
+
+\begin{proof}
+Suppose that $\mathfrak p \subset \mathfrak p' \subset R$ and
+$\mathfrak q' \subset S$ lies over $\mathfrak p'$. As $\varphi$ is open,
+for every $g \in S$, $g \not \in \mathfrak q'$ we see that $\mathfrak p$
+is in the image of $D(g) \subset \Spec(S)$. In other words
+$S_g \otimes_R \kappa(\mathfrak p)$ is not zero. Since $S_{\mathfrak q'}$
+is the directed colimit of these $S_g$ this implies
+that $S_{\mathfrak q'} \otimes_R \kappa(\mathfrak p)$ is not
+zero, see
+Lemmas \ref{lemma-localization-colimit} and
+\ref{lemma-tensor-products-commute-with-limits}.
+Hence $\mathfrak p$ is in the image of
+$\Spec(S_{\mathfrak q'}) \to \Spec(R)$ as desired.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-going-up-down-specialization}
+Let $R \to S$ be a ring map.
+\begin{enumerate}
+\item $R \to S$ satisfies going down if and only if
+generalizations lift along the map $\Spec(S) \to \Spec(R)$,
+see Topology, Definition \ref{topology-definition-lift-specializations}.
+\item $R \to S$ satisfies going up if and only if
+specializations lift along the map $\Spec(S) \to \Spec(R)$,
+see Topology, Definition \ref{topology-definition-lift-specializations}.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-going-up-down-composition}
+Suppose $R \to S$ and $S \to T$ are ring maps satisfying
+going down. Then so does $R \to T$. Similarly for going up.
+\end{lemma}
+
+\begin{proof}
+According to Lemma \ref{lemma-going-up-down-specialization}
+this follows from
+Topology, Lemma \ref{topology-lemma-lift-specialization-composition}
+\end{proof}
+
+\begin{lemma}
+\label{lemma-image-stable-specialization-closed}
+Let $R \to S$ be a ring map. Let $T \subset \Spec(R)$
+be the image of $\Spec(S)$. If $T$ is stable under specialization,
+then $T$ is closed.
+\end{lemma}
+
+\begin{proof}
+We give two proofs.
+
+\medskip\noindent
+First proof. Let $\mathfrak p \subset R$ be a prime ideal such that
+the corresponding point of $\Spec(R)$ is in the closure
+of $T$. This means that for every $f \in R$, $f \not \in \mathfrak p$
+we have $D(f) \cap T \not = \emptyset$. Note that $D(f) \cap T$
+is the image of $\Spec(S_f)$ in $\Spec(R)$. Hence
+we conclude that $S_f \not = 0$. In other words, $1 \not = 0$ in
+the ring $S_f$. Since $S_{\mathfrak p}$ is the directed colimit
+of the rings $S_f$ we conclude that $1 \not = 0$ in
+$S_{\mathfrak p}$. In other words, $S_{\mathfrak p} \not = 0$ and
+considering the image of $\Spec(S_{\mathfrak p})
+\to \Spec(S) \to \Spec(R)$ we see there exists
+a $\mathfrak p' \in T$ with $\mathfrak p' \subset \mathfrak p$.
+As we assumed $T$ closed under specialization we conclude $\mathfrak p$
+is a point of $T$ as desired.
+
+\medskip\noindent
+Second proof. Let $I = \Ker(R \to S)$. We may replace $R$ by $R/I$.
+In this case the ring map $R \to S$ is injective.
+By Lemma \ref{lemma-injective-minimal-primes-in-image}
+all the minimal primes of $R$ are contained in the image $T$. Hence
+if $T$ is stable under specialization then it contains all primes.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-going-up-closed}
+Let $R \to S$ be a ring map. The following are equivalent:
+\begin{enumerate}
+\item Going up holds for $R \to S$, and
+\item the map $\Spec(S) \to \Spec(R)$ is closed.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+It is a general fact that specializations lift along a
+closed map of topological spaces, see
+Topology, Lemma \ref{topology-lemma-closed-open-map-specialization}.
+Hence the second condition implies the first.
+
+\medskip\noindent
+Assume that going up holds for $R \to S$.
+Let $V(I) \subset \Spec(S)$ be a closed set.
+We want to show that the image of $V(I)$ in $\Spec(R)$ is closed.
+The ring map $S \to S/I$ obviously satisfies going up.
+Hence $R \to S \to S/I$ satisfies going up,
+by Lemma \ref{lemma-going-up-down-composition}.
+Replacing $S$ by $S/I$ it suffices to show the image $T$
+of $\Spec(S)$ in $\Spec(R)$ is closed.
+By Topology, Lemmas \ref{topology-lemma-open-closed-specialization}
+and \ref{topology-lemma-lift-specializations-images} this
+image is stable under specialization. Thus the result follows
+from Lemma \ref{lemma-image-stable-specialization-closed}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-constructible-stable-specialization-closed}
+Let $R$ be a ring. Let $E \subset \Spec(R)$ be a constructible subset.
+\begin{enumerate}
+\item If $E$ is stable under specialization, then $E$ is closed.
+\item If $E$ is stable under generalization, then $E$ is open.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+First proof. The first assertion
+follows from Lemma \ref{lemma-image-stable-specialization-closed}
+combined with Lemma \ref{lemma-constructible-is-image}.
+The second follows because the complement of a constructible
+set is constructible
+(see Topology, Lemma \ref{topology-lemma-constructible}),
+the first part of the lemma and Topology,
+Lemma \ref{topology-lemma-open-closed-specialization}.
+
+\medskip\noindent
+Second proof. Since $\Spec(R)$ is a spectral space by
+Lemma \ref{lemma-spec-spectral} this is a special case of
+Topology, Lemma
+\ref{topology-lemma-constructible-stable-specialization-closed}.
+\end{proof}
+
+\begin{proposition}
+\label{proposition-fppf-open}
+Let $R \to S$ be flat and of finite presentation.
+Then $\Spec(S) \to \Spec(R)$ is open.
+More generally this holds for any ring map $R \to S$ of
+finite presentation which satisfies going down.
+\end{proposition}
+
+\begin{proof}
+If $R \to S$ is flat, then $R \to S$ satisfies going down by
+Lemma \ref{lemma-flat-going-down}. Thus to prove the lemma we may
+assume that $R \to S$ has finite presentation and satisfies going down.
+
+\medskip\noindent
+Since the standard opens $D(g) \subset \Spec(S)$, $g \in S$
+form a basis for the topology, it suffices to prove that the
+image of $D(g)$ is open. Recall that $\Spec(S_g) \to \Spec(S)$
+is a homeomorphism of $\Spec(S_g)$ onto $D(g)$
+(Lemma \ref{lemma-standard-open}).
+Since $S \to S_g$ satisfies going down (see above), we see that
+$R \to S_g$ satisfies going down by
+Lemma \ref{lemma-going-up-down-composition}. Thus after replacing
+$S$ by $S_g$ we see it suffices to prove the image is open.
+By Chevalley's theorem (Theorem \ref{theorem-chevalley})
+the image is a constructible set $E$. And $E$ is stable
+under generalization because $R \to S$ satisfies going down,
+see Topology, Lemmas \ref{topology-lemma-open-closed-specialization}
+and \ref{topology-lemma-lift-specializations-images}.
+Hence $E$ is open by
+Lemma \ref{lemma-constructible-stable-specialization-closed}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-same-image}
+Let $k$ be a field, and let $R$, $S$ be $k$-algebras.
+Let $S' \subset S$ be a sub $k$-algebra, and let $f \in S' \otimes_k R$.
+In the commutative diagram
+$$
+\xymatrix{
+\Spec((S \otimes_k R)_f) \ar[rd] \ar[rr] & &
+\Spec((S' \otimes_k R)_f) \ar[ld] \\
+& \Spec(R) &
+}
+$$
+the images of the diagonal arrows are the same.
+\end{lemma}
+
+\begin{proof}
+Let $\mathfrak p \subset R$ be in the image of the south-west
+arrow. This means (Lemma \ref{lemma-in-image}) that
+$$
+(S' \otimes_k R)_f \otimes_R \kappa(\mathfrak p)
+=
+(S' \otimes_k \kappa(\mathfrak p))_f
+$$
+is not the zero ring, i.e., $S' \otimes_k \kappa(\mathfrak p)$
+is not the zero ring and the image of $f$ in it is not nilpotent.
+The ring map
+$S' \otimes_k \kappa(\mathfrak p) \to S \otimes_k \kappa(\mathfrak p)$
+is injective. Hence also $S \otimes_k \kappa(\mathfrak p)$
+is not the zero ring and the image of $f$ in it is not nilpotent.
+Hence $(S \otimes_k R)_f \otimes_R \kappa(\mathfrak p)$
+is not the zero ring. Thus (Lemma \ref{lemma-in-image})
+we see that $\mathfrak p$ is in the image of the south-east arrow
+as desired.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-map-into-tensor-algebra-open}
+Let $k$ be a field.
+Let $R$ and $S$ be $k$-algebras.
+The map $\Spec(S \otimes_k R) \to \Spec(R)$
+is open.
+\end{lemma}
+
+\begin{proof}
+Let $f \in S \otimes_k R$.
+It suffices to prove that the image of the standard open $D(f)$ is open.
+Let $S' \subset S$ be a finite type $k$-subalgebra such that
+$f \in S' \otimes_k R$. The map $R \to S' \otimes_k R$ is flat
+and of finite presentation, hence the image $U$ of
+$\Spec((S' \otimes_k R)_f) \to \Spec(R)$ is open
+by Proposition \ref{proposition-fppf-open}.
+By Lemma \ref{lemma-same-image} this is also the image of $D(f)$ and we win.
+\end{proof}
+
+\noindent
+Here is a tricky lemma that is sometimes useful.
+
+\begin{lemma}
+\label{lemma-unique-prime-over-localize-below}
+Let $R \to S$ be a ring map.
+Let $\mathfrak p \subset R$ be a prime.
+Assume that
+\begin{enumerate}
+\item there exists a unique prime $\mathfrak q \subset S$ lying over
+$\mathfrak p$, and
+\item either
+\begin{enumerate}
+\item going up holds for $R \to S$, or
+\item going down holds for $R \to S$ and there is at most one prime
+of $S$ above every prime of $R$.
+\end{enumerate}
+\end{enumerate}
+Then $S_{\mathfrak p} = S_{\mathfrak q}$.
+\end{lemma}
+
+\begin{proof}
+Consider any prime $\mathfrak q' \subset S$ which corresponds to
+a point of $\Spec(S_{\mathfrak p})$. This means that
+$\mathfrak p' = R \cap \mathfrak q'$ is contained in $\mathfrak p$.
+Here is a picture
+$$
+\xymatrix{
+\mathfrak q' \ar@{-}[d] \ar@{-}[r] & ? \ar@{-}[r] \ar@{-}[d] & S \ar@{-}[d] \\
+\mathfrak p' \ar@{-}[r] & \mathfrak p \ar@{-}[r] & R
+}
+$$
+Assume (1) and (2)(a).
+By going up there exists a prime $\mathfrak q'' \subset S$
+with $\mathfrak q' \subset \mathfrak q''$ and $\mathfrak q''$
+lying over $\mathfrak p$. By the uniqueness of $\mathfrak q$ we
+conclude that $\mathfrak q'' = \mathfrak q$. In other words
+$\mathfrak q'$ defines a point of $\Spec(S_{\mathfrak q})$.
+
+\medskip\noindent
+Assume (1) and (2)(b).
+By going down there exists a prime $\mathfrak q'' \subset \mathfrak q$
+lying over $\mathfrak p'$. By the uniqueness of primes lying over
+$\mathfrak p'$ we see that $\mathfrak q' = \mathfrak q''$.  In other words
+$\mathfrak q'$ defines a point of $\Spec(S_{\mathfrak q})$.
+
+\medskip\noindent
+In both cases we conclude that the map
+$\Spec(S_{\mathfrak q}) \to \Spec(S_{\mathfrak p})$
+is bijective. Clearly this means all the elements of $S - \mathfrak q$
+are all invertible in $S_{\mathfrak p}$, in other words
+$S_{\mathfrak p} = S_{\mathfrak q}$.
+\end{proof}
+
+\noindent
+The following lemma is a generalization of going down for
+flat ring maps.
+
+\begin{lemma}
+\label{lemma-going-down-flat-module}
+Let $R \to S$ be a ring map. Let $N$ be a finite $S$-module flat over $R$.
+Endow $\text{Supp}(N) \subset \Spec(S)$ with the induced topology.
+Then generalizations lift along $\text{Supp}(N) \to \Spec(R)$.
+\end{lemma}
+
+\begin{proof}
+The meaning of the statement is as follows. Let
+$\mathfrak p \subset \mathfrak p' \subset R$ be primes. Let
+$\mathfrak q' \subset S$ be a prime $\mathfrak q' \in \text{Supp}(N)$
+Then there exists a prime $\mathfrak q \subset \mathfrak q'$,
+$\mathfrak q \in \text{Supp}(N)$ lying over $\mathfrak p$.
+As $N$ is flat over $R$ we see that $N_{\mathfrak q'}$ is flat
+over $R_{\mathfrak p'}$, see Lemma \ref{lemma-flat-localization}.
+As $N_{\mathfrak q'}$ is finite over $S_{\mathfrak q'}$
+and not zero since $\mathfrak q' \in \text{Supp}(N)$ we see
+that $N_{\mathfrak q'} \otimes_{S_{\mathfrak q'}} \kappa(\mathfrak q')$
+is nonzero by Nakayama's Lemma \ref{lemma-NAK}.
+Thus $N_{\mathfrak q'} \otimes_{R_{\mathfrak p'}} \kappa(\mathfrak p')$
+is also not zero. We conclude from Lemma \ref{lemma-ff}
+that $N_{\mathfrak q'} \otimes_{R_{\mathfrak p'}} \kappa(\mathfrak p)$
+is nonzero. Let
+$J \subset S_{\mathfrak q'} \otimes_{R_{\mathfrak p'}} \kappa(\mathfrak p)$
+be the annihilator of the finite nonzero module
+$N_{\mathfrak q'} \otimes_{R_{\mathfrak p'}} \kappa(\mathfrak p)$.
+Since $J$ is a proper ideal we can choose a prime $\mathfrak q \subset S$
+which corresponds to a prime of
+$S_{\mathfrak q'} \otimes_{R_{\mathfrak p'}} \kappa(\mathfrak p)/J$.
+This prime is in the support of $N$, lies over $\mathfrak p$, and
+is contained in $\mathfrak q'$ as desired.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

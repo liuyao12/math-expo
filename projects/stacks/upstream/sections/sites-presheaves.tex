@@ -1,0 +1,94 @@
+\section{Presheaves}
+\label{section-presheaves}
+
+\noindent
+Let $\mathcal{C}$ be a category.
+A {\it presheaf of sets} is a contravariant functor $\mathcal{F}$
+from $\mathcal{C}$ to $\textit{Sets}$ (see Categories, Remark
+\ref{categories-remark-functor-into-sets}).
+So for every object $U$ of $\mathcal{C}$ we have a set
+$\mathcal{F}(U)$. The elements of this set are called
+the {\it sections} of $\mathcal{F}$ over $U$. For every morphism
+$f : V \to U$ the map $\mathcal{F}(f) : \mathcal{F}(U) \to \mathcal{F}(V)$
+is called the {\it restriction map} and is often denoted
+$f^\ast : \mathcal{F}(U) \to \mathcal{F}(V)$. Another way
+of expressing this is to say that $f^*(s)$ is the {\it pullback}
+of $s$ via $f$. Functoriality means that $g^* f^* (s) = (f \circ g)^*(s)$.
+Sometimes we use the notation $s|_V := f^\ast(s)$.
+This notation is consistent with the notion of restriction
+of functions from topology because if $W \to V \to U$
+are morphisms in $\mathcal{C}$ and $s$ is a section of
+$\mathcal{F}$ over $U$ then $s|_W = (s|_V)|_W$ by the
+functorial nature of $\mathcal{F}$. Of course we have to be
+careful since it may very well happen
+that there is more than one morphism $V \to U$ and it is
+certainly not going to be the case that the corresponding
+pullback maps are equal.
+
+\begin{definition}
+\label{definition-presheaves-sets}
+A {\it presheaf of sets} on $\mathcal{C}$ is a contravariant
+functor from $\mathcal{C}$ to $\textit{Sets}$. {\it Morphisms
+of presheaves} are transformations of functors. The category
+of presheaves of sets is denoted $\textit{PSh}(\mathcal{C})$.
+\end{definition}
+
+\noindent
+Note that for any object $U$ of $\mathcal{C}$ the functor of
+points $h_U$, see Categories, Example \ref{categories-example-hom-functor}
+is a presheaf. These are called the {\it representable presheaves}.
+These presheaves have the pleasing property that for any
+presheaf $\mathcal{F}$ we have
+\begin{equation}
+\label{equation-map-representable-into-presheaf}
+\Mor_{\textit{PSh}(\mathcal{C})}(h_U, \mathcal{F})
+=
+\mathcal{F}(U).
+\end{equation}
+This is the Yoneda lemma (Categories, Lemma \ref{categories-lemma-yoneda}).
+
+\medskip\noindent
+Similarly, we can define the notion of a presheaf of abelian groups,
+rings, etc. More generally we may define a presheaf with values in a
+category.
+
+\begin{definition}
+\label{definition-presheaf}
+Let $\mathcal{C}$, $\mathcal{A}$ be categories.
+A {\it presheaf} $\mathcal{F}$ on $\mathcal{C}$
+with values in $\mathcal{A}$ is a contravariant
+functor from $\mathcal{C}$ to $\mathcal{A}$,
+i.e., $\mathcal{F} : \mathcal{C}^{opp} \to \mathcal{A}$.
+A {\it morphism} of presheaves $\mathcal{F} \to \mathcal{G}$
+on $\mathcal{C}$ with values in $\mathcal{A}$ is a transformation
+of functors from $\mathcal{F}$ to $\mathcal{G}$.
+\end{definition}
+
+\noindent
+These form the objects and morphisms of the category of presheaves
+on $\mathcal{C}$ with values in $\mathcal{A}$.
+
+\begin{remark}
+\label{remark-big-presheaves}
+As already pointed out we may consider the category of
+presheaves with values in any of the ``big'' categories
+listed in Categories, Remark \ref{categories-remark-big-categories}.
+These will be ``big'' categories as well and they will be
+listed in the above mentioned remark as we go along.
+\end{remark}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

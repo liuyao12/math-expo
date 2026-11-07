@@ -1,0 +1,340 @@
+\section{Functoriality of Proj}
+\label{section-functoriality-proj}
+
+\noindent
+A graded ring map $\psi : A \to B$ does not always give rise to a morphism of
+associated projective homogeneous spectra. The reason is that
+the inverse image $\psi^{-1}(\mathfrak q)$
+of a homogeneous prime $\mathfrak q \subset B$ may
+contain the irrelevant prime $A_{+}$ even if $\mathfrak q$ does not
+contain $B_{+}$.
+The correct result is stated as follows.
+
+\begin{lemma}
+\label{lemma-morphism-proj}
+Let $A$, $B$ be two graded rings.
+Set $X = \text{Proj}(A)$ and $Y = \text{Proj}(B)$.
+Let $\psi : A \to B$ be a graded ring map.
+Set
+$$
+U(\psi)
+=
+\bigcup\nolimits_{f \in A_{+}\ \text{homogeneous}} D_{+}(\psi(f))
+\subset Y.
+$$
+Then there is a canonical morphism of schemes
+$$
+r_\psi :
+U(\psi)
+\longrightarrow
+X
+$$
+and a map of $\mathbf{Z}$-graded $\mathcal{O}_{U(\psi)}$-algebras
+$$
+\theta = \theta_\psi :
+r_\psi^*\left(
+\bigoplus\nolimits_{d \in \mathbf{Z}} \mathcal{O}_X(d)
+\right)
+\longrightarrow
+\bigoplus\nolimits_{d \in \mathbf{Z}} \mathcal{O}_{U(\psi)}(d).
+$$
+The triple $(U(\psi), r_\psi, \theta)$ is
+characterized by the following properties:
+\begin{enumerate}
+\item For every $d \geq 0$ the diagram
+$$
+\xymatrix{
+A_d \ar[d] \ar[rr]_{\psi} & &
+B_d \ar[d] \\
+\Gamma(X, \mathcal{O}_X(d)) \ar[r]^-\theta &
+\Gamma(U(\psi), \mathcal{O}_Y(d)) &
+\Gamma(Y, \mathcal{O}_Y(d)) \ar[l]
+}
+$$
+is commutative.
+\item For any $f \in A_{+}$ homogeneous
+we have $r_\psi^{-1}(D_{+}(f)) = D_{+}(\psi(f))$ and
+the restriction of $r_\psi$ to $D_{+}(\psi(f))$
+corresponds to the ring map
+$A_{(f)} \to B_{(\psi(f))}$ induced by $\psi$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Clearly condition (2) uniquely determines the morphism of schemes
+and the open subset $U(\psi)$. Pick $f \in A_d$ with $d \geq 1$.
+Note that
+$\mathcal{O}_X(n)|_{D_{+}(f)}$ corresponds to the
+$A_{(f)}$-module $(A_f)_n$ and that
+$\mathcal{O}_Y(n)|_{D_{+}(\psi(f))}$ corresponds to the
+$B_{(\psi(f))}$-module $(B_{\psi(f)})_n$. In other words $\theta$
+when restricted to $D_{+}(\psi(f))$ corresponds to a map of
+$\mathbf{Z}$-graded $B_{(\psi(f))}$-algebras
+$$
+A_f \otimes_{A_{(f)}} B_{(\psi(f))}
+\longrightarrow
+B_{\psi(f)}
+$$
+Condition (1) determines the images of all elements of $A$.
+Since $f$ is an invertible element which is mapped to $\psi(f)$
+we see that $1/f^m$ is mapped to $1/\psi(f)^m$. It easily follows
+from this that $\theta$ is uniquely determined, namely it is
+given by the rule
+$$
+a/f^m \otimes b/\psi(f)^e \longmapsto \psi(a)b/\psi(f)^{m + e}.
+$$
+To show existence we remark that the proof of uniqueness above gave
+a well defined prescription for the morphism $r$ and the map $\theta$
+when restricted to every standard open of the form
+$D_{+}(\psi(f)) \subset U(\psi)$ into $D_{+}(f)$.
+Call these $r_f$ and $\theta_f$.
+Hence we only need to verify that if $D_{+}(f) \subset D_{+}(g)$
+for some $f, g \in A_{+}$ homogeneous, then the restriction of
+$r_g$ to $D_{+}(\psi(f))$ matches $r_f$. This is clear from the
+formulas given for $r$ and $\theta$ above.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-morphism-proj-transitive}
+Let $A$, $B$, and $C$ be graded rings.
+Set $X = \text{Proj}(A)$, $Y = \text{Proj}(B)$ and $Z = \text{Proj}(C)$.
+Let $\varphi : A \to B$, $\psi : B \to C$ be graded ring maps.
+Then we have
+$$
+U(\psi \circ \varphi) = r_\psi^{-1}(U(\varphi))
+\quad
+\text{and}
+\quad
+r_{\psi \circ \varphi}
+=
+r_\varphi \circ r_\psi|_{U(\psi \circ \varphi)}.
+$$
+In addition we have
+$$
+\theta_\psi \circ r_\psi^*\theta_\varphi
+=
+\theta_{\psi \circ \varphi}
+$$
+with obvious notation.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-surjective-graded-rings-map-proj}
+With hypotheses and notation as in Lemma \ref{lemma-morphism-proj} above.
+Assume $A_d \to B_d$ is surjective for all $d \gg 0$. Then
+\begin{enumerate}
+\item $U(\psi) = Y$,
+\item $r_\psi : Y \to X$ is a closed immersion, and
+\item the maps $\theta : r_\psi^*\mathcal{O}_X(n) \to \mathcal{O}_Y(n)$
+are surjective but not isomorphisms in general (even if $A \to B$ is
+surjective).
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Part (1) follows from the definition of $U(\psi)$ and the fact that
+$D_{+}(f) = D_{+}(f^n)$ for any $n > 0$. For $f \in A_{+}$ homogeneous
+we see that $A_{(f)} \to B_{(\psi(f))}$ is surjective because
+any element of $B_{(\psi(f))}$ can be represented by a fraction
+$b/\psi(f)^n$ with $n$ arbitrarily large (which forces the degree of
+$b \in B$ to be large). This proves (2).
+The same argument shows the map
+$$
+A_f \to B_{\psi(f)}
+$$
+is surjective which proves the surjectivity of $\theta$.
+For an example where this map is not an isomorphism
+consider the graded ring $A = k[x, y]$ where $k$ is a field
+and $\deg(x) = 1$, $\deg(y) = 2$. Set $I = (x)$, so that
+$B = k[y]$. Note that $\mathcal{O}_Y(1) = 0$ in this case.
+But it is easy to see that $r_\psi^*\mathcal{O}_X(1)$
+is not zero. (There are less silly examples.)
+\end{proof}
+
+\begin{lemma}
+\label{lemma-eventual-iso-graded-rings-map-proj}
+With hypotheses and notation as in Lemma \ref{lemma-morphism-proj} above.
+Assume $A_d \to B_d$ is an isomorphism for all $d \gg 0$. Then
+\begin{enumerate}
+\item $U(\psi) = Y$,
+\item $r_\psi : Y \to X$ is an isomorphism, and
+\item the maps $\theta : r_\psi^*\mathcal{O}_X(n) \to \mathcal{O}_Y(n)$
+are isomorphisms.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+We have (1) by Lemma \ref{lemma-surjective-graded-rings-map-proj}.
+Let $f \in A_{+}$ be homogeneous. The assumption on $\psi$ implies that
+$A_f \to B_f$ is an isomorphism (details omitted). Thus it is clear that
+$r_\psi$ and $\theta$ restrict to isomorphisms over $D_{+}(f)$.
+The lemma follows.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-surjective-graded-rings-generated-degree-1-map-proj}
+With hypotheses and notation as in Lemma \ref{lemma-morphism-proj} above.
+Assume $A_d \to B_d$ is surjective for $d \gg 0$ and that $A$ is generated
+by $A_1$ over $A_0$. Then
+\begin{enumerate}
+\item $U(\psi) = Y$,
+\item $r_\psi : Y \to X$ is a closed immersion, and
+\item the maps $\theta : r_\psi^*\mathcal{O}_X(n) \to \mathcal{O}_Y(n)$
+are isomorphisms.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+By Lemmas \ref{lemma-eventual-iso-graded-rings-map-proj} and
+\ref{lemma-morphism-proj-transitive}
+we may replace $B$ by the image of $A \to B$
+without changing $X$ or the sheaves $\mathcal{O}_X(n)$.
+Thus we may assume that $A \to B$ is surjective. By
+Lemma \ref{lemma-surjective-graded-rings-map-proj} we get (1) and (2)
+and surjectivity in (3).
+By Lemma \ref{lemma-apply-modules} we see that both
+$\mathcal{O}_X(n)$ and $\mathcal{O}_Y(n)$
+are invertible. Hence $\theta$ is an isomorphism.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-base-change-map-proj}
+\begin{reference}
+\cite[II, Proposition 2.8.10]{EGA}
+\end{reference}
+With hypotheses and notation as in Lemma \ref{lemma-morphism-proj} above.
+Assume there exists a ring map $R \to A_0$ and a ring map
+$R \to R'$ such that $B = R' \otimes_R A$. Then
+\begin{enumerate}
+\item $U(\psi) = Y$,
+\item the diagram
+$$
+\xymatrix{
+Y = \text{Proj}(B) \ar[r]_{r_\psi} \ar[d] &
+\text{Proj}(A) = X \ar[d] \\
+\Spec(R') \ar[r] &
+\Spec(R)
+}
+$$
+is a fibre product square, and
+\item the maps $\theta : r_\psi^*\mathcal{O}_X(n) \to \mathcal{O}_Y(n)$
+are isomorphisms.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+This follows immediately by looking at what happens over the standard
+opens $D_{+}(f)$ for $f \in A_{+}$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-localization-map-proj}
+With hypotheses and notation as in Lemma \ref{lemma-morphism-proj} above.
+Assume there exists a $g \in A_0$ such that $\psi$ induces an
+isomorphism $A_g \to B$. Then
+$U(\psi) = Y$, $r_\psi : Y \to X$ is an open immersion
+which induces an isomorphism of $Y$ with the inverse image
+of $D(g) \subset \Spec(A_0)$. Moreover the map $\theta$
+is an isomorphism.
+\end{lemma}
+
+\begin{proof}
+This is a special case of Lemma \ref{lemma-base-change-map-proj} above.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-d-uple}
+Let $S$ be a graded ring. Let $d \geq 1$. Set $S' = S^{(d)}$ with notation
+as in Algebra, Section \ref{algebra-section-graded}. Set
+$X = \text{Proj}(S)$ and $X' = \text{Proj}(S')$. There is a canonical
+isomorphism $i : X \to X'$ of schemes such that
+\begin{enumerate}
+\item for any graded $S$-module $M$ setting $M' = M^{(d)}$,
+we have a canonical isomorphism $\widetilde{M} \to i^*\widetilde{M'}$,
+\item we have canonical isomorphisms
+$\mathcal{O}_{X}(nd) \to i^*\mathcal{O}_{X'}(n)$
+\end{enumerate}
+and these isomorphisms are compatible with the multiplication maps
+of Lemma \ref{lemma-widetilde-tensor} and hence with the maps
+(\ref{equation-multiply}),
+(\ref{equation-multiply-on-sheaf}),
+(\ref{equation-global-sections}),
+(\ref{equation-global-sections-module}),
+(\ref{equation-multiply-more-generally}), and
+(\ref{equation-global-sections-more-generally}) (see proof for precise
+statements.
+\end{lemma}
+
+\begin{proof}
+The injective ring map $S' \to S$ (which is not a homomorphism of graded rings
+due to our conventions), induces a map $j : \Spec(S) \to \Spec(S')$.
+Given a graded prime ideal $\mathfrak p \subset S$ we see that
+$\mathfrak p' = j(\mathfrak p) = S' \cap \mathfrak p$
+is a graded prime ideal of $S'$.
+Moreover, if $f \in S_+$ is homogeneous and $f \not \in \mathfrak p$, then
+$f^d \in S'_+$ and $f^d \not \in \mathfrak p'$. Conversely, if
+$\mathfrak p' \subset S'$ is a graded prime ideal not containing some
+homogeneous element $f \in S'_+$, then
+$\mathfrak p = \{g \in S \mid g^d \in \mathfrak p'\}$ is a
+graded prime ideal of $S$ not containing $f$ whose image under $j$
+is $\mathfrak p'$. To see that $\mathfrak p$ is an ideal, note
+that if $g, h \in \mathfrak p$, then
+$(g + h)^{2d} \in \mathfrak p'$ by the binomial formula
+and hence $g + h \in \mathfrak p'$ as $\mathfrak p'$ is a prime.
+In this way we see that $j$ induces a homeomorphism $i : X \to X'$.
+Moreover, given $f \in S_+$ homogeneous, then we have
+$S_{(f)} \cong S'_{(f^d)}$. Since these isomorphisms are compatible
+with the restrictions mappings of
+Lemma \ref{lemma-standard-open}, we see that there exists an
+isomorphism $i^\sharp : i^{-1}\mathcal{O}_{X'} \to \mathcal{O}_X$ of
+structure sheaves on $X$ and $X'$, hence $i$ is an isomorphism
+of schemes.
+
+\medskip\noindent
+Let $M$ be a graded $S$-module. Given $f \in S_+$ homogeneous, we have
+$M_{(f)} \cong M'_{(f^d)}$, hence in exactly the same manner as above
+we obtain the isomorphism in (1). The isomorphisms in (2) are a special
+case of (1) for $M = S(nd)$ which gives $M' = S'(n)$. Let $M$ and $N$
+be graded $S$-modules. Then we have
+$$
+M' \otimes_{S'} N' =
+(M \otimes_S N)^{(d)} =
+(M \otimes_S N)'
+$$
+as can be verified directly from the definitions. Having said this
+the compatibility with the multiplication maps of
+Lemma \ref{lemma-widetilde-tensor} is the commutativity of the diagram
+$$
+\xymatrix{
+\widetilde M \otimes_{\mathcal{O}_X} \widetilde N
+\ar[d]_{(1) \otimes (1)} \ar[r] &
+\widetilde{M \otimes_S N} \ar[d]^{(1)} \\
+i^*(\widetilde{M'} \otimes_{\mathcal{O}_{X'}} \widetilde{N'}) \ar[r] &
+i^*(\widetilde{M' \otimes_{S'} N'})
+}
+$$
+This can be seen by looking at the construction of the maps
+over the open $D_+(f) = D_+(f^d)$ where the top horizontal
+arrow is given by the map
+$M_{(f)} \times N_{(f)} \to (M \otimes_S N)_{(f)}$
+and the lower horizontal arrow by the map
+$M'_{(f^d)} \times N'_{(f^d)} \to (M' \otimes_{S'} N')_{(f^d)}$.
+Since these maps agree via the identifications
+$M_{(f)} = M'_{(f^d)}$, etc, we get the desired compatibility.
+We omit the proof of the other compatibilities.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+

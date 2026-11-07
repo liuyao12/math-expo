@@ -1,0 +1,255 @@
+\section{Determinants}
+\label{section-determinants}
+
+\noindent
+Let $R$ be a ring. Let $M$ be a finite projective $R$-module.
+There exists a product decomposition $R = R_0 \times \ldots \times R_t$
+such that in the corresponding decomposition $M = M_0 \times \ldots \times M_t$
+of $M$ we have that $M_i$ is finite locally free of rank $i$ over $R_i$.
+This follows from Algebra, Lemma \ref{algebra-lemma-finite-projective}
+(to see that the rank is locally constant) and
+Algebra, Lemmas \ref{algebra-lemma-disjoint-decomposition} and
+\ref{algebra-lemma-disjoint-implies-product} (to decompose
+$R$ into a product). In this situation we define
+$$
+\det(M) = \wedge^0_{R_0}(M_0) \times \ldots \times \wedge^t_{R_t}(M_t)
+$$
+as an $R$-module. This is a finite locally free module of rank $1$
+as each term is finite locally free of rank $1$.
+If $\varphi : M \to N$ is an isomorphism of finite projective
+$R$-modules, then we obtain a canonical isomorphism
+$$
+\det(\varphi) : \det(M) \longrightarrow \det(N)
+$$
+of locally free modules of rank $1$. More generally, if
+for all primes $\mathfrak p$ of $R$ the ranks of the free modules
+$M_\mathfrak p$ and $N_\mathfrak p$ are the same, then any $R$-module
+homomorphism $\varphi : M \to N$ induces an $R$-module map
+$\det(\varphi) : \det(M) \to \det(N)$. Finally, if $M = N$
+then $\det(\varphi) : \det(M) \to \det(M)$ is an endomorphism
+of an invertible $R$-module. Since $R = \Hom_R(L, L)$
+for an invertible $R$-module we may and do view $\det(\varphi)$
+as an element of $R$. In this way we obtain the {\it determinant}
+$$
+\det : \Hom_R(M, M) \longrightarrow R
+$$
+which is a multiplicative map.
+
+\begin{remark}
+\label{remark-determinant-as-socle}
+Let $R$ be a ring. Let $M$ be a finite projective $R$-module.
+Then we can consider the graded commutative $R$-algebra
+exterior algebra $\wedge^*_R(M)$ on $M$ over $R$.
+A formula for $\det(M)$ is that $\det(M) \subset \wedge^*_R(M)$
+is the annihilator of $M \subset \wedge^*_R(M)$.
+This is sometimes useful as it does not refer to the
+decomposition of $R$ into a product. Of course, to
+prove this satisfies the desired properties one has to
+either decompose $R$ into a product (as above), or one
+has to look at the localizations at primes of $R$.
+\end{remark}
+
+\noindent
+Next, we consider what happens to the determinant give
+a short exact sequence of finite projective modules.
+
+\begin{lemma}
+\label{lemma-det-ses}
+Let $R$ be a ring. Let
+$$
+0 \to M' \to M \to M'' \to 0
+$$
+be a short exact sequence of finite projective $R$-modules. Then there
+is a canonical isomorphism
+$$
+\gamma : \det(M') \otimes \det(M'') \longrightarrow \det(M)
+$$
+\end{lemma}
+
+\begin{proof}[First proof]
+First proof. Decompose $R$ into a product of rings $R_{ij}$ such that
+$M' = \prod M'_{ij}$ and $M'' = \prod M''_{ij}$ where
+$M'_{ij}$ has rank $i$ and $M''_{ij}$ has rank $j$.
+Of course then $M = \prod M_{ij}$ and $M_{ij}$ has rank $i + j$.
+This reduces us to the case where $M'$ and $M''$ have constant
+rank say $i$ and $j$. In this case we have to construct a canonical
+map
+$$
+\wedge^i(M') \otimes \wedge^j(M'') \longrightarrow \wedge^{i + j}(M)
+$$
+To do this choose $m'_1, \ldots, m'_i$ in $M'$ and
+$m''_1, \ldots, m''_j$ in $M''$. Denote $m_1, \ldots, m_i \in M$
+the images of $m'_1, \ldots, m'_i$ and denote
+$m_{i + 1}, \ldots , m_{i + j} \in M$ elements mapping to
+$m''_1, \ldots, m''_j$ in $M''$. Our rule will be that
+$$
+m'_1 \wedge \ldots \wedge m'_i \otimes
+m''_1 \wedge \ldots \wedge m''_j
+\longmapsto
+m_1 \wedge \ldots \wedge m_{i + j}
+$$
+We omit the detailed proof that this is well defined and an isomorphism.
+\end{proof}
+
+\begin{proof}[Second proof]
+We will use the description of $\det(M)$, $\det(M')$, and $\det(M'')$
+given in Remark \ref{remark-determinant-as-socle}. Consider the $R$-algebra
+maps $\wedge^*_R(M') \to \wedge^*_R(M)$ and
+$\wedge^*_R(M) \to \wedge^*_R(M'')$. The first is injective and the
+second is surjective. Take an element $x' \in \det(M') \subset \wedge^*_R(M')$
+and an element $x'' \in \det(M'') \subset \wedge^*_R(M'')$.
+Choose an element $y'' \in \wedge^*(M)$ mapping to $x''$ and set
+$$
+\gamma(x' \otimes x'') = x' \wedge y'' \in \det(M) \subset \wedge^*_R(M)
+$$
+The reader verifies easily by looking at localizations at primes
+that this well defined and an isomorphism. Moreover, this construction
+gives the same map as the construction given in the first proof.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-det-ses-functorial}
+Let $R$ be a ring. Let
+$$
+\xymatrix{
+0 \ar[r] &
+M' \ar[r] \ar[d]^u &
+M \ar[r] \ar[d]^v &
+M'' \ar[r] \ar[d]^w &
+0 \\
+0 \ar[r] &
+K' \ar[r] &
+K \ar[r] &
+K'' \ar[r] &
+0
+}
+$$
+be a commutative diagram of finite projective $R$-modules
+whose vertical arrows are isomorphisms. Then we get a commutative
+diagram of isomorphisms
+$$
+\xymatrix{
+\det(M') \otimes \det(M'') \ar[r]_-\gamma \ar[d]_{\det(u) \otimes \det(w)} &
+\det(M) \ar[d]^{\det(v)} \\
+\det(K') \otimes \det(K'') \ar[r]^-\gamma & \det(K)
+}
+$$
+where the horizontal arrows are the ones constructed
+in Lemma \ref{lemma-det-ses}.
+\end{lemma}
+
+\begin{proof}
+Omitted. Hint: use the second construction of the maps $\gamma$
+in Lemma \ref{lemma-det-ses}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-det-filtration}
+Let $R$ be a ring. Let
+$$
+K \subset L \subset M
+$$
+be $R$-modules such that $K$, $L/K$, and $M/L$ are finite projective
+$R$-modules. Then the diagram
+$$
+\xymatrix{
+\det(K) \otimes \det(L/K) \otimes \det(M/L) \ar[r] \ar[d] &
+\det(L) \otimes \det(M/L) \ar[d] \\
+\det(K) \otimes \det(M/K) \ar[r] &
+\det(M)
+}
+$$
+commutes where the maps are those of Lemma \ref{lemma-det-ses}.
+\end{lemma}
+
+\begin{proof}
+Omitted. Hint: after localizing at a prime of $R$ we can assume
+$K \subset L \subset M$ is isomorphic to
+$R^{\oplus a} \subset R^{\oplus a + b}  \subset R^{\oplus a + b + c}$
+and in this case the result is an evident computation.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-det-direct-sum}
+Let $R$ be a ring. Let $M'$ and $M''$ be two finite projective
+$R$-modules. Then the diagram
+$$
+\xymatrix{
+\det(M') \otimes \det(M'') \ar[r]
+\ar[d]_{\epsilon \cdot (\text{switch tensors})} &
+\det(M' \oplus M'') \ar[d]^{\det(\text{switch summands})} \\
+\det(M'') \otimes \det(M') \ar[r] &
+\det(M'' \oplus M')
+}
+$$
+commutes where $\epsilon = \det( -\text{id}_{M' \otimes M''}) \in R^*$
+and the horizontal arrows are those of Lemma \ref{lemma-det-ses}.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-det-switch}
+Let $R$ be a ring. Let $M$, $N$ be finite projective $R$-modules.
+Let $a : M \to N$ and $b : N \to M$ be $R$-linear maps.
+Then
+$$
+\det(\text{id} + a \circ b) = \det(\text{id} + b \circ a)
+$$
+as elements of $R$.
+\end{lemma}
+
+\begin{proof}
+It suffices to prove the assertion after replacing $R$ by a localization
+at a prime ideal. Thus we may assume $R$ is local and $M$ and $N$ are
+finite free. In this case we have to prove the equality
+$$
+\det(I_n + AB) = \det(I_m + BA)
+$$
+of usual determinants of matrices where $A$ has size $n \times m$
+and $B$ has size $m \times n$. This reduces to the case
+of the ring $R = \mathbf{Z}[a_{ij}, b_{ji}; 1 \leq i \leq n, 1 \leq j \leq m]$
+where $a_{ij}$ and $b_{ij}$ are variables and the entries of the
+matrices $A$ and $B$. Taking the fraction field, this reduces to the
+case of a field of characteristic zero. In characteristic zero there
+is a universal polynomial expressing the determinant of a matrix
+of size $\leq N$ in the traces of the powers of said matrix.
+Hence it suffices to prove
+$$
+\text{Trace}((I_n + AB)^k) = \text{Trace}((I_m + BA)^k)
+$$
+for all $k \geq 1$. Expanding we see that it suffices to prove
+$\text{Trace}((AB)^k) = \text{Trace}((BA)^k)$ for all $k \geq 0$.
+For $k = 1$ this is the well known fact that
+$\text{Trace}(AB) = \text{Trace}(BA)$. For $k > 1$
+it follows from this by writing $(AB)^k = A(BA)^{k - 1}B$
+and $(BA)^k = (BA)^{k - 1} A B$.
+\end{proof}
+
+\noindent
+Recall that we have defined in Algebra, Section \ref{algebra-section-K-groups}
+a group $K_0(R)$ as the free group on isomorphism classes
+of finite projective $R$-modules modulo the relations
+$[M'] + [M''] = [M' \oplus M'']$.
+
+\begin{lemma}
+\label{lemma-det}
+Let $R$ be a ring. There is a map
+$$
+\det : K_0(R) \longrightarrow \Pic(R)
+$$
+which maps $[M]$ to the class of the invertible module
+$\wedge^n(M)$ if $M$ is a finite locally free module of rank $n$.
+\end{lemma}
+
+\begin{proof}
+This follows immediately from the constructions above and in particular
+Lemma \ref{lemma-det-ses} to see that the relations are mapped to $0$.
+\end{proof}
+
+
+
+
+

@@ -1,0 +1,163 @@
+\section{Continuous functors}
+\label{section-continuous-functors}
+
+\begin{definition}
+\label{definition-continuous}
+Let $\mathcal{C}$ and $\mathcal{D}$ be sites.
+A functor $u : \mathcal{C} \to \mathcal{D}$ is called
+{\it continuous} if for every
+$\{V_i \to V\}_{i\in I} \in \text{Cov}(\mathcal{C})$
+we have the following
+\begin{enumerate}
+\item $\{u(V_i) \to u(V)\}_{i\in I}$ is in $\text{Cov}(\mathcal{D})$, and
+\item for any morphism $T \to V$ in $\mathcal{C}$ the morphism
+$u(T \times_V V_i) \to u(T) \times_{u(V)} u(V_i)$ is an isomorphism.
+\end{enumerate}
+\end{definition}
+
+\noindent
+Recall that given a functor $u$ as above, and a presheaf of sets
+$\mathcal{F}$ on $\mathcal{D}$ we have defined
+$u^p\mathcal{F}$ to be simply the presheaf
+$\mathcal{F} \circ u$, in other words
+$$
+u^p\mathcal{F} (V) = \mathcal{F}(u(V))
+$$
+for every object $V$ of $\mathcal{C}$.
+
+\begin{lemma}
+\label{lemma-pushforward-sheaf}
+Let $\mathcal{C}$ and $\mathcal{D}$ be sites.
+Let $u : \mathcal{C} \to \mathcal{D}$ be a continuous functor.
+If $\mathcal{F}$ is a sheaf on $\mathcal{D}$ then
+$u^p\mathcal{F}$ is a sheaf as well.
+\end{lemma}
+
+\begin{proof}
+Let $\{V_i \to V\}$ be a covering.
+By assumption $\{u(V_i) \to u(V)\}$ is a covering
+in $\mathcal{D}$ and $u(V_i \times_V V_j) =
+u(V_i)\times_{u(V)}u(V_j)$. Hence the sheaf condition for
+$u^p\mathcal{F}$ and the covering $\{V_i \to V\}$
+is precisely the same as the sheaf condition for $\mathcal{F}$
+and the covering $\{u(V_i) \to u(V)\}$.
+\end{proof}
+
+\noindent
+In order to avoid confusion we sometimes denote
+$$
+u^s :
+\Sh(\mathcal{D})
+\longrightarrow
+\Sh(\mathcal{C})
+$$
+the functor $u^p$ restricted to the subcategory of sheaves of sets.
+Recall that $u^p$ has a left adjoint
+$u_p : \textit{PSh}(\mathcal{C}) \to \textit{PSh}(\mathcal{D})$, see
+Section \ref{section-functoriality-PSh}.
+
+\begin{lemma}
+\label{lemma-adjoint-sheaves}
+In the situation of Lemma \ref{lemma-pushforward-sheaf}.
+The functor $u_s : \mathcal{G} \mapsto (u_p \mathcal{G})^\#$
+is a left adjoint to $u^s$.
+\end{lemma}
+
+\begin{proof}
+Follows directly from Lemma \ref{lemma-adjoints-u} and
+Proposition \ref{proposition-sheafification-adjoint}.
+\end{proof}
+
+\noindent
+Here is a technical lemma.
+
+\begin{lemma}
+\label{lemma-technical-up}
+In the situation of Lemma \ref{lemma-pushforward-sheaf}.
+For any presheaf $\mathcal{G}$ on $\mathcal{C}$
+we have $(u_p\mathcal{G})^\# = (u_p(\mathcal{G}^\#))^\#$.
+\end{lemma}
+
+\begin{proof}
+For any sheaf $\mathcal{F}$ on $\mathcal{D}$ we have
+\begin{eqnarray*}
+\Mor_{\Sh(\mathcal{D})}(u_s(\mathcal{G}^\#), \mathcal{F})
+& = &
+\Mor_{\Sh(\mathcal{C})}(\mathcal{G}^\#, u^s\mathcal{F}) \\
+& = &
+\Mor_{\textit{PSh}(\mathcal{C})}(\mathcal{G}^\#, u^p\mathcal{F}) \\
+& = &
+\Mor_{\textit{PSh}(\mathcal{C})}(\mathcal{G}, u^p\mathcal{F}) \\
+& = &
+\Mor_{\textit{PSh}(\mathcal{D})}(u_p\mathcal{G}, \mathcal{F}) \\
+& = &
+\Mor_{\Sh(\mathcal{D})}((u_p\mathcal{G})^\#, \mathcal{F})
+\end{eqnarray*}
+and the result follows from the Yoneda lemma.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-pullback-representable-sheaf}
+Let $u : \mathcal{C} \to \mathcal{D}$ be a continuous functor
+between sites.
+For any object $U$ of $\mathcal{C}$ we have $u_sh_U^\# = h_{u(U)}^\#$.
+\end{lemma}
+
+\begin{proof}
+Follows from
+Lemmas \ref{lemma-pullback-representable-presheaf}
+and \ref{lemma-technical-up}.
+\end{proof}
+
+
+\begin{remark}
+\label{remark-quasi-continuous}
+(Skip on first reading.)
+Let $\mathcal{C}$ and $\mathcal{D}$ be sites. Let us
+use the definition of tautologically equivalent families of maps,
+see Definition \ref{definition-combinatorial-tautological}
+to (slightly) weaken the conditions defining continuity.
+Let $u : \mathcal{C} \to \mathcal{D}$ be a functor.
+Let us call $u$ {\it quasi-continuous} if for every
+$\mathcal{V} = \{V_i \to V\}_{i\in I} \in \text{Cov}(\mathcal{C})$
+we have the following
+\begin{enumerate}
+\item[(1')] the family of maps
+$\{u(V_i) \to u(V)\}_{i\in I}$ is tautologically equivalent
+to an element of $\text{Cov}(\mathcal{D})$, and
+\item[(2)] for any morphism $T \to V$ in $\mathcal{C}$ the morphism
+$u(T \times_V V_i) \to u(T) \times_{u(V)} u(V_i)$ is an isomorphism.
+\end{enumerate}
+We are going to see that Lemmas \ref{lemma-pushforward-sheaf}
+and \ref{lemma-adjoint-sheaves} hold in case
+$u$ is quasi-continuous as well.
+
+\medskip\noindent
+We first remark that the morphisms $u(V_i) \to u(V)$ are representable, since
+they are isomorphic to representable morphisms (by the first condition).
+In particular, the family $u(\mathcal{V}) = \{u(V_i) \to u(V)\}_{i\in I}$
+gives rise to a zeroth {\v C}ech cohomology group
+$H^0(u(\mathcal{V}), \mathcal{F})$ for any presheaf $\mathcal{F}$ on
+$\mathcal{D}$.
+Let $\mathcal{U} = \{U_j \to u(V)\}_{j \in J}$ be an element
+of $\text{Cov}(\mathcal{D})$ tautologically
+equivalent to $\{u(V_i) \to u(V)\}_{i \in I}$. Note that $u(\mathcal{V})$
+is a refinement of $\mathcal{U}$ and vice versa. Hence by Remark
+\ref{remark-both-refine-same-H0} we see that
+$H^0(u(\mathcal{V}), \mathcal{F}) = H^0(\mathcal{U}, \mathcal{F})$.
+In particular, if $\mathcal{F}$ is a sheaf, then
+$\mathcal{F}(u(V)) = H^0(u(\mathcal{V}), \mathcal{F})$ because
+of the sheaf property expressed in terms of zeroth {\v C}ech cohomology
+groups. We conclude that $u^p\mathcal{F}$ is a sheaf if $\mathcal{F}$
+is a sheaf, since $H^0(\mathcal{V}, u^p\mathcal{F}) =
+H^0(u(\mathcal{V}), \mathcal{F})$ which we just observed is
+equal to $\mathcal{F}(u(V)) = u^p\mathcal{F}(V)$. Thus Lemma
+\ref{lemma-pushforward-sheaf} holds. Lemma \ref{lemma-adjoint-sheaves}
+follows immediately.
+\end{remark}
+
+
+
+
+
+

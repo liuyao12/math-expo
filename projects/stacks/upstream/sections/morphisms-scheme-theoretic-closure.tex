@@ -1,0 +1,205 @@
+\section{Scheme theoretic closure and density}
+\label{section-scheme-theoretic-closure}
+
+\noindent
+We take the following definition from \cite[IV, Definition 11.10.2]{EGA}.
+
+\begin{definition}
+\label{definition-scheme-theoretically-dense}
+Let $X$ be a scheme. Let $U \subset X$ be an open subscheme.
+\begin{enumerate}
+\item The scheme theoretic image of the morphism $U \to X$
+is called the {\it scheme theoretic closure of $U$ in $X$}.
+\item We say $U$ is {\it scheme theoretically dense in $X$}
+if for every open $V \subset X$ the scheme theoretic closure
+of $U \cap V$ in $V$ is equal to $V$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+With this definition it is
+{\bf not} the case that $U$ is scheme theoretically dense in $X$ if and
+only if the scheme theoretic closure of $U$ is $X$, see
+Example \ref{example-scheme-theretically-dense-not-dense}.
+This is somewhat inelegant; but see
+Lemmas \ref{lemma-scheme-theoretically-dense-quasi-compact} and
+\ref{lemma-reduced-scheme-theoretically-dense}
+below. On the other hand, with this definition $U$ is scheme theoretically
+dense in $X$ if and only if for every $V \subset X$ open the ring map
+$\mathcal{O}_X(V) \to \mathcal{O}_X(U \cap V)$ is injective, see
+Lemma \ref{lemma-characterize-scheme-theoretically-dense}
+below. In particular we see that scheme theoretically dense implies dense
+which is pleasing.
+
+\begin{example}
+\label{example-scheme-theretically-dense-not-dense}
+Here is an example where scheme theoretic closure being $X$ does not
+imply dense for the underlying topological spaces.
+Let $k$ be a field.
+Set $A = k[x, z_1, z_2, \ldots]/(x^n z_n)$
+Set $I = (z_1, z_2, \ldots) \subset A$.
+Consider the affine scheme $X = \Spec(A)$ and the
+open subscheme $U = X \setminus V(I)$.
+Since $A \to \prod_n A_{z_n}$ is injective we see that the scheme theoretic
+closure of $U$ is $X$. Consider the morphism
+$X \to \Spec(k[x])$. This morphism is surjective
+(set all $z_n = 0$ to see this). But the restriction
+of this morphism to $U$ is not surjective because it maps
+to the point $x = 0$. Hence $U$ cannot be topologically dense
+in $X$.
+\end{example}
+
+\begin{lemma}
+\label{lemma-scheme-theoretically-dense-quasi-compact}
+Let $X$ be a scheme.
+Let $U \subset X$ be an open subscheme.
+If the inclusion morphism $U \to X$ is quasi-compact, then $U$
+is scheme theoretically dense in $X$ if and only if the scheme theoretic
+closure of $U$ in $X$ is $X$.
+\end{lemma}
+
+\begin{proof}
+Follows from Lemma \ref{lemma-quasi-compact-scheme-theoretic-image} part (3).
+\end{proof}
+
+\begin{example}
+\label{example-scheme-theoretic-closure}
+Let $A$ be a ring and $X = \Spec(A)$.
+Let $f_1, \ldots, f_n \in A$ and let $U = D(f_1) \cup \ldots \cup D(f_n)$.
+Let $I = \Ker(A \to \prod A_{f_i})$.
+Then the scheme theoretic closure of $U$ in $X$
+is the closed subscheme $\Spec(A/I)$ of $X$.
+Note that $U \to X$ is quasi-compact. Hence by
+Lemma \ref{lemma-scheme-theoretically-dense-quasi-compact}
+we see $U$ is scheme theoretically dense in $X$ if and only if $I = 0$.
+\end{example}
+
+\begin{lemma}
+\label{lemma-characterize-scheme-theoretically-dense}
+Let $j : U \to X$ be an open immersion of schemes.
+Then $U$ is scheme theoretically dense in $X$ if and only if
+$\mathcal{O}_X \to j_*\mathcal{O}_U$ is injective.
+\end{lemma}
+
+\begin{proof}
+If $\mathcal{O}_X \to j_*\mathcal{O}_U$ is injective,
+then the same is true when restricted to any open $V$ of $X$.
+Hence the scheme theoretic closure of $U \cap V$ in $V$
+is equal to $V$, see proof of Lemma \ref{lemma-scheme-theoretic-image}.
+Conversely, suppose that the scheme theoretic
+closure of $U \cap V$ is equal to $V$ for all opens $V$.
+Suppose that $\mathcal{O}_X \to j_*\mathcal{O}_U$ is not injective.
+Then we can find an affine open, say $\Spec(A) = V \subset X$
+and a nonzero element $f \in A$ such that $f$ maps to zero in
+$\Gamma(V \cap U, \mathcal{O}_X)$. In this case the scheme theoretic
+closure of $V \cap U$ in $V$ is clearly contained in $\Spec(A/(f))$
+a contradiction.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-intersection-scheme-theoretically-dense}
+Let $X$ be a scheme. If $U$, $V$ are scheme theoretically dense
+open subschemes of $X$, then so is $U \cap V$.
+\end{lemma}
+
+\begin{proof}
+Let $W \subset X$ be any open.
+Consider the map
+$\mathcal{O}_X(W) \to \mathcal{O}_X(W \cap V)
+\to \mathcal{O}_X(W \cap V \cap U)$.
+By Lemma \ref{lemma-characterize-scheme-theoretically-dense}
+both maps are injective. Hence the composite is injective.
+Hence by Lemma \ref{lemma-characterize-scheme-theoretically-dense}
+$U \cap V$ is scheme theoretically dense in $X$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-quasi-compact-immersion}
+Let $h : Z \to X$ be an immersion. Assume either $h$ is quasi-compact
+or $Z$ is reduced. Let $\overline{Z} \subset X$ be the scheme theoretic
+image of $h$. Then the morphism $Z \to \overline{Z}$ is an open immersion
+which identifies $Z$ with a scheme theoretically dense open
+subscheme of $\overline{Z}$. Moreover, $Z$ is topologically
+dense in $\overline{Z}$.
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-factor-quasi-compact-immersion} or
+Lemma \ref{lemma-factor-reduced-immersion} we can factor
+$Z \to X$ as $Z \to \overline{Z}_1 \to X$ with $Z \to \overline{Z}_1$
+open and $\overline{Z}_1 \to X$ closed. On the other hand, let
+$Z \to \overline{Z} \subset X$ be the scheme theoretic image of
+$Z \to X$. We conclude that $\overline{Z} \subset \overline{Z}_1$.
+Since $Z$ is an open subscheme of $\overline{Z}_1$ it follows
+that $Z$ is an open subscheme of $\overline{Z}$ as well.
+In the case that $Z$ is reduced we know that $Z \subset \overline{Z}_1$
+is topologically dense by the construction of $\overline{Z}_1$ in
+the proof of Lemma \ref{lemma-factor-reduced-immersion}.
+Hence $\overline{Z}_1$ and $\overline{Z}$ have the same
+underlying topological spaces. Thus $\overline{Z} \subset \overline{Z}_1$
+is a closed immersion into a reduced scheme which induces a bijection
+on underlying topological spaces, and hence it is an isomorphism.
+In the case that $Z \to X$ is quasi-compact we argue as follows:
+The assertion that $Z$ is scheme theoretically dense in
+$\overline{Z}$ follows from
+Lemma \ref{lemma-quasi-compact-scheme-theoretic-image} part (3).
+The last assertion follows from
+Lemma \ref{lemma-quasi-compact-scheme-theoretic-image} part (4).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-reduced-scheme-theoretically-dense}
+Let $X$ be a reduced scheme and let $U \subset X$ be an open subscheme.
+Then the following are equivalent
+\begin{enumerate}
+\item $U$ is topologically dense in $X$,
+\item the scheme theoretic closure of $U$ in $X$ is $X$, and
+\item $U$ is scheme theoretically dense in $X$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+This follows from
+Lemma \ref{lemma-quasi-compact-immersion}
+and the fact that a closed subscheme $Z$ of $X$ whose
+underlying topological space equals $X$ must be equal to $X$
+as a scheme.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-reduced-subscheme-closure}
+Let $X$ be a scheme and let $U \subset X$ be a reduced open subscheme.
+Then the following are equivalent
+\begin{enumerate}
+\item the scheme theoretic closure of $U$ in $X$ is $X$, and
+\item $U$ is scheme theoretically dense in $X$.
+\end{enumerate}
+If this holds then $X$ is a reduced scheme.
+\end{lemma}
+
+\begin{proof}
+This follows from
+Lemma \ref{lemma-quasi-compact-immersion}
+and the fact that the scheme theoretic closure of $U$ in $X$ is
+reduced by
+Lemma \ref{lemma-scheme-theoretic-image-reduced}.
+\end{proof}
+
+
+\begin{lemma}
+\label{lemma-equality-of-morphisms}
+Let $S$ be a scheme. Let $X$, $Y$ be schemes over $S$.
+Let $f, g : X \to Y$ be morphisms of schemes over $S$.
+Let $U \subset X$ be an open subscheme such that
+$f|_U = g|_U$. If the scheme theoretic closure of $U$
+in $X$ is $X$ and $Y \to S$ is separated, then $f = g$.
+\end{lemma}
+
+\begin{proof}
+Follows from the definitions and
+Schemes, Lemma \ref{schemes-lemma-where-are-they-equal}.
+\end{proof}
+
+
+
+

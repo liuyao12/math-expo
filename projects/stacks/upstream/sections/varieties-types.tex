@@ -1,0 +1,59 @@
+\section{Types of varieties}
+\label{section-types}
+
+\noindent
+Short section discussion some elementary global properties of varieties.
+
+\begin{definition}
+\label{definition-variety-type}
+Let $k$ be a field. Let $X$ be a variety over $k$.
+\begin{enumerate}
+\item We say $X$ is an {\it affine variety} if $X$ is an affine scheme.
+This is equivalent to requiring $X$ to be isomorphic to a closed
+subscheme of $\mathbf{A}^n_k$ for some $n$.
+\item We say $X$ is a {\it projective variety} if the
+structure morphism $X \to \Spec(k)$ is projective. By
+Morphisms, Lemma \ref{morphisms-lemma-characterize-locally-projective}
+this is true if and only if $X$ is isomorphic to a closed
+subscheme of $\mathbf{P}^n_k$ for some $n$.
+\item We say $X$ is a {\it quasi-projective variety} if
+the structure morphism $X \to \Spec(k)$ is quasi-projective. By
+Morphisms, Lemma \ref{morphisms-lemma-characterize-locally-quasi-projective}
+this is true if and only if $X$ is isomorphic to a
+locally closed subscheme of $\mathbf{P}^n_k$ for some $n$.
+\item A {\it proper variety} is a variety such that the
+morphism $X \to \Spec(k)$ is proper.
+\item A {\it smooth variety} is a variety such that the
+morphism $X \to \Spec(k)$ is smooth.
+\end{enumerate}
+\end{definition}
+
+\noindent
+Note that a projective variety is a proper variety, see
+Morphisms, Lemma \ref{morphisms-lemma-locally-projective-proper}.
+Also, an affine variety is quasi-projective as $\mathbf{A}^n_k$
+is isomorphic to an open subscheme of $\mathbf{P}^n_k$, see
+Constructions,
+Lemma \ref{constructions-lemma-standard-covering-projective-space}.
+
+\begin{lemma}
+\label{lemma-regular-functions-proper-variety}
+Let $X$ be a proper variety over $k$. Then
+\begin{enumerate}
+\item $K = H^0(X, \mathcal{O}_X)$ is a field which is
+a finite extension of the field $k$,
+\item if $X$ is geometrically reduced, then $K/k$ is separable,
+\item if $X$ is geometrically irreducible, then $K/k$
+is purely inseparable,
+\item if $X$ is geometrically integral, then $K = k$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+This is a special case of
+Lemma \ref{lemma-proper-geometrically-reduced-global-sections}.
+\end{proof}
+
+
+
+

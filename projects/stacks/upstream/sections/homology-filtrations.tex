@@ -1,0 +1,497 @@
+\section{Filtrations}
+\label{section-filtrations}
+
+\noindent
+A nice reference for this material is \cite[Section 1]{HodgeII}.
+(Note that our conventions regarding abelian categories are different.)
+
+\begin{definition}
+\label{definition-filtered}
+Let $\mathcal{A}$ be an abelian category.
+\begin{enumerate}
+\item A {\it decreasing filtration} $F$ on an object $A$
+is a family $(F^nA)_{n \in \mathbf{Z}}$ of subobjects of $A$ such that
+$$
+A \supset \ldots \supset F^nA \supset F^{n + 1}A \supset \ldots \supset 0
+$$
+\item A {\it filtered object of $\mathcal{A}$} is
+pair $(A, F)$ consisting of an object $A$ of $\mathcal{A}$
+and a decreasing filtration $F$ on $A$.
+\item A {\it morphism $(A, F) \to (B, F)$ of filtered objects}
+is given by a morphism $\varphi : A \to B$ of $\mathcal{A}$
+such that $\varphi(F^iA) \subset F^iB$ for all $i \in \mathbf{Z}$.
+\item The category of filtered objects is denoted $\text{Fil}(\mathcal{A})$.
+\item Given a filtered object $(A, F)$ and a subobject $X \subset A$ the
+{\it induced filtration} on $X$ is the filtration with $F^nX = X \cap F^nA$.
+\item Given a filtered object $(A, F)$ and a surjection
+$\pi : A \to Y$ the {\it quotient filtration} is the filtration with
+$F^nY = \pi(F^nA)$.
+\item A filtration $F$ on an object $A$ is said to be {\it finite}
+if there exist $n, m$ such that $F^nA = A$ and $F^mA = 0$.
+\item Given a filtered object $(A, F)$ we say $\bigcap F^iA$ exists
+if there exists a biggest subobject of $A$ contained in all $F^iA$.
+We say $\bigcup F^iA$ exists if there exists a smallest subobject
+of $A$ containing all $F^iA$.
+\item The filtration on a filtered object $(A, F)$ is said to be
+{\it separated} if $\bigcap F^iA = 0$ and
+{\it exhaustive} if $\bigcup F^iA = A$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+By abuse of notation we say that a morphism $f : (A, F) \to (B, F)$
+of filtered objects is {\it injective} if $f : A \to B$ is injective
+in the abelian category $\mathcal{A}$. Similarly we say $f$ is
+{\it surjective} if $f : A \to B$ is surjective in the category
+$\mathcal{A}$. Being injective (resp.\ surjective)
+is equivalent to being a monomorphism (resp.\ epimorphism)
+in $\text{Fil}(\mathcal{A})$. By
+Lemma \ref{lemma-filtered}
+this is also equivalent to having zero kernel (resp.\ cokernel).
+
+\begin{lemma}
+\label{lemma-filtered}
+Let $\mathcal{A}$ be an abelian category.
+The category of filtered objects $\text{Fil}(\mathcal{A})$
+has the following properties:
+\begin{enumerate}
+\item It is an additive category.
+\item It has a zero object.
+\item It has kernels and cokernels, images and coimages.
+\item In general it is not an abelian category.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+It is clear that $\text{Fil}(\mathcal{A})$ is additive with direct
+sum given by $(A, F) \oplus (B, F) = (A \oplus B, F)$ where
+$F^p(A \oplus B) = F^pA \oplus F^pB$.
+The kernel of a morphism $f : (A, F) \to (B, F)$ of filtered
+objects is the injection $\Ker(f) \subset A$ where $\Ker(f)$
+is endowed with the induced filtration.
+The cokernel of a morphism $f : A \to B$ of filtered
+objects is the surjection $B \to \Coker(f)$ where $\Coker(f)$
+is endowed with the quotient filtration. Since all kernels and cokernels
+exist, so do all coimages and images. See
+Example \ref{example-not-abelian}
+for the last statement.
+\end{proof}
+
+\begin{definition}
+\label{definition-strict}
+Let $\mathcal{A}$ be an abelian category.
+A morphism $f : A \to B$ of filtered objects of $\mathcal{A}$ is
+said to be {\it strict} if $f(F^iA) = f(A) \cap F^iB$ for
+all $i \in \mathbf{Z}$.
+\end{definition}
+
+\noindent
+This also equivalent to requiring that $f^{-1}(F^iB) = F^iA + \Ker(f)$
+for all $i \in \mathbf{Z}$. We characterize strict morphisms
+as follows.
+
+\begin{lemma}
+\label{lemma-characterize-strict-general}
+Let $\mathcal{A}$ be an abelian category.
+Let $f : A \to B$ be a morphism of filtered objects of $\mathcal{A}$.
+The following are equivalent
+\begin{enumerate}
+\item $f$ is strict,
+\item the morphism $\Coim(f) \to \Im(f)$ of
+Lemma \ref{lemma-coim-im-map}
+is an isomorphism.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Note that $\Coim(f) \to \Im(f)$ is an isomorphism of
+objects of $\mathcal{A}$, and that part (2) signifies that it is
+an isomorphism of filtered objects.
+By the description of kernels and cokernels in the proof of
+Lemma \ref{lemma-filtered}
+we see that the filtration on $\Coim(f)$ is the
+quotient filtration coming from $A \to \Coim(f)$.
+Similarly, the filtration on $\Im(f)$ is the induced
+filtration coming from the injection $\Im(f) \to B$.
+The definition of strict is exactly that the quotient filtration
+is the induced filtration.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-add-summand-strict-monomorphism}
+Let $\mathcal{A}$ be an abelian category.
+Let $f : A \to B$ be a strict monomorphism of filtered objects.
+Let $g : A \to C$ be a morphism of filtered objects.
+Then $f \oplus g : A \to B \oplus C$ is a strict monomorphism.
+\end{lemma}
+
+\begin{proof}
+Clear from the definitions.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-add-summand-strict-epimorphism}
+Let $\mathcal{A}$ be an abelian category.
+Let $f : B \to A$ be a strict epimorphism of filtered objects.
+Let $g : C \to A$ be a morphism of filtered objects.
+Then $f \oplus g : B \oplus C \to A$ is a strict epimorphism.
+\end{lemma}
+
+\begin{proof}
+Clear from the definitions.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-induced-and-quotient-strict}
+Let $\mathcal{A}$ be an abelian category.
+Let $(A, F)$, $(B, F)$ be filtered objects.
+Let $u : A \to B$ be a morphism of filtered objects.
+If $u$ is injective then $u$ is strict if and only if the filtration
+on $A$ is the induced filtration.
+If $u$ is surjective then $u$ is strict if and only if the filtration
+on $B$ is the quotient filtration.
+\end{lemma}
+
+\begin{proof}
+This is immediate from the definition.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-composition-strict}
+Let $\mathcal{A}$ be an abelian category. Let $f : A \to B$, $g : B \to C$
+be strict morphisms of filtered objects.
+\begin{enumerate}
+\item In general the composition $g \circ f$ is not strict.
+\item If $g$ is injective, then $g \circ f$ is strict.
+\item If $f$ is surjective, then $g \circ f$ is strict.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let $B$ a vector space over a field $k$ with basis $e_1, e_2$, with the
+filtration $F^nB = B$ for $n < 0$, with $F^0B = ke_1$, and $F^nB = 0$ for
+$n > 0$. Now take $A = k(e_1 + e_2)$ and $C = B/ke_2$ with filtrations
+induced by $B$, i.e., such that $A \to B$ and $B \to C$ are strict
+(Lemma \ref{lemma-induced-and-quotient-strict}).
+Then $F^n(A) = A$ for $n < 0$ and $F^n(A) = 0$ for $n \geq 0$. 
+Also $F^n(C) = C$ for $n \leq 0$ and $F^n(C) = 0$ for $n > 0$.
+So the (nonzero) composition $A \to C$ is not strict.
+
+\medskip\noindent
+Assume $g$ is injective. Then
+\begin{align*}
+g(f(F^pA)) & = g(f(A) \cap F^pB) \\
+& = g(f(A)) \cap g(F^p(B)) \\
+& = (g \circ f)(A) \cap (g(B) \cap F^pC) \\
+& = (g \circ f)(A) \cap F^pC.
+\end{align*}
+The first equality as $f$ is strict, the second because $g$ is injective,
+the third because $g$ is strict, and the fourth because
+$(g \circ f)(A) \subset g(B)$.
+
+\medskip\noindent
+Assume $f$ is surjective. Then
+\begin{align*}
+(g \circ f)^{-1}(F^iC) & = f^{-1}(F^iB + \Ker(g)) \\
+& = f^{-1}(F^iB) + f^{-1}(\Ker(g)) \\
+& = F^iA + \Ker(f) + \Ker(g \circ f) \\
+& = F^iA + \Ker(g \circ f)
+\end{align*}
+The first equality because $g$ is strict, the second because $f$ is
+surjective, the third because $f$ is strict, and the last because
+$\Ker(f) \subset \Ker(g \circ f)$.
+\end{proof}
+
+\noindent
+The following lemma says that subobjects of a filtered object have a well
+defined filtration independent of a choice of writing the object as a
+cokernel.
+
+\begin{lemma}
+\label{lemma-filtration-subobject}
+Let $\mathcal{A}$ be an abelian category.
+Let $(A, F)$ be a filtered object of $\mathcal{A}$.
+Let $X \subset Y \subset A$ be subobjects of $A$.
+On the object
+$$
+Y/X = \Ker(A/X \to A/Y)
+$$
+the quotient filtration coming from the induced filtration on $Y$ and the
+induced filtration coming from the quotient filtration on $A/X$ agree.
+Any of the morphisms $X \to Y$, $X \to A$, $Y \to A$, $Y \to A/X$,
+$Y \to Y/X$, $Y/X \to A/X$ are strict (with induced/quotient filtrations).
+\end{lemma}
+
+\begin{proof}
+The quotient filtration $Y/X$ is given by
+$F^p(Y/X) = F^pY/(X \cap F^pY) = F^pY/F^pX$
+because $F^pY = Y \cap F^pA$ and $F^pX = X \cap F^pA$.
+The induced filtration from the injection $Y/X \to A/X$ is given by
+\begin{align*}
+F^p(Y/X) & = Y/X \cap F^p(A/X) \\
+& = Y/X \cap (F^pA + X)/X \\
+& = (Y \cap F^pA)/(X \cap F^pA) \\
+& = F^pY/F^pX.
+\end{align*}
+Hence the first statement of the lemma.
+The proof of the other cases is similar.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-pushout-filtered}
+Let $\mathcal{A}$ be an abelian category.
+Let $A, B, C \in \text{Fil}(\mathcal{A})$.
+Let $f : A \to B$ and $g : A \to C$ be morphisms.
+Then there exists a pushout
+$$
+\xymatrix{
+A \ar[r]_f \ar[d]_g & B \ar[d]^{g'} \\
+C \ar[r]^{f'} & C \amalg_A B
+}
+$$
+in $\text{Fil}(\mathcal{A})$. If $f$ is strict, so is $f'$.
+\end{lemma}
+
+\begin{proof}
+Set $C \amalg_A B$ equal to $\Coker((g, -f) : A \to C \oplus B)$
+in $\text{Fil}(\mathcal{A})$. This cokernel exists, by
+Lemma \ref{lemma-filtered}.
+It is a pushout, see
+Example \ref{example-fibre-product-pushouts}.
+Note that $F^p(C \amalg_A B)$ is the image of $F^pC \oplus F^pB$.
+Hence
+$$
+(f')^{-1}(F^p(C \amalg_A B)) = g(f^{-1}(F^pB)) + F^pC
+$$
+Whence the last statement.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-fibre-product-filtered}
+Let $\mathcal{A}$ be an abelian category.
+Let $A, B, C \in \text{Fil}(\mathcal{A})$.
+Let $f : B \to A$ and $g : C \to A$ be morphisms.
+Then there exists a fibre product
+$$
+\xymatrix{
+B \times_A C \ar[r]_{g'} \ar[d]_{f'} & B \ar[d]^f \\
+C \ar[r]^g & A
+}
+$$
+in $\text{Fil}(\mathcal{A})$. If $f$ is strict, so is $f'$.
+\end{lemma}
+
+\begin{proof}
+This lemma is dual to
+Lemma \ref{lemma-pushout-filtered}.
+\end{proof}
+
+\noindent
+Let $\mathcal{A}$ be an abelian category. Let $(A, F)$ be a filtered
+object of $\mathcal{A}$. We denote $\text{gr}^p_F(A) = \text{gr}^p(A)$
+the object $F^pA/F^{p + 1}A$ of $\mathcal{A}$. This defines an
+additive functor
+$$
+\text{gr}^p :
+\text{Fil}(\mathcal{A})
+\longrightarrow
+\mathcal{A}, \quad
+(A, F)
+\longmapsto
+\text{gr}^p(A).
+$$
+Recall that we have defined the category $\text{Gr}(\mathcal{A})$
+of graded objects of $\mathcal{A}$ in Section \ref{section-graded}.
+For $(A, F)$ in $\text{Fil}(\mathcal{A})$ we may set
+$$
+\text{gr}(A) = \text{the graded object of }\mathcal{A}\text{ whose }
+p\text{th graded piece is }\text{gr}^p(A)
+$$
+and if $\mathcal{A}$ has countable direct sums, then we simply have
+$$
+\text{gr}(A) = \bigoplus \text{gr}^p(A)
+$$
+This defines an additive functor
+$$
+\text{gr} :
+\text{Fil}(\mathcal{A})
+\longrightarrow
+\text{Gr}(\mathcal{A}), \quad
+(A, F) \longmapsto \text{gr}(A).
+$$
+
+\begin{lemma}
+\label{lemma-ses-gr}
+Let $\mathcal{A}$ be an abelian category.
+\begin{enumerate}
+\item Let $A$ be a filtered object and $X \subset A$. Then for each $p$
+the sequence
+$$
+0 \to \text{gr}^p(X) \to \text{gr}^p(A) \to \text{gr}^p(A/X) \to 0
+$$
+is exact (with induced filtration on $X$ and quotient filtration on $A/X$).
+\item Let $f : A \to B$ be a morphism of filtered objects of $\mathcal{A}$.
+Then for each $p$ the sequences
+$$
+0 \to \text{gr}^p(\Ker(f)) \to \text{gr}^p(A) \to
+\text{gr}^p(\Coim(f)) \to 0
+$$
+and
+$$
+0 \to \text{gr}^p(\Im(f)) \to \text{gr}^p(B) \to
+\text{gr}^p(\Coker(f)) \to 0
+$$
+are exact.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+We have $F^{p + 1}X = X \cap F^{p + 1}A$, hence map
+$\text{gr}^p(X) \to \text{gr}^p(A)$ is injective. Dually the map
+$\text{gr}^p(A) \to \text{gr}^p(A/X)$ is surjective.
+The kernel of $F^pA/F^{p + 1}A \to A/X + F^{p + 1}A$
+is clearly $F^{p + 1}A + X \cap F^pA/F^{p + 1}A = F^pX/F^{p + 1}X$
+hence exactness in the middle.
+The two short exact sequence of (2) are special cases of the
+short exact sequence of (1).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-characterize-strict}
+Let $\mathcal{A}$ be an abelian category.
+Let $f : A \to B$ be a morphism of finite
+filtered objects of $\mathcal{A}$. The following are equivalent
+\begin{enumerate}
+\item $f$ is strict,
+\item the morphism $\Coim(f) \to \Im(f)$ is an isomorphism,
+\item $\text{gr}(\Coim(f)) \to \text{gr}(\Im(f))$ is an
+isomorphism,
+\item the sequence
+$\text{gr}(\Ker(f)) \to \text{gr}(A) \to \text{gr}(B)$
+is exact,
+\item the sequence $\text{gr}(A) \to \text{gr}(B) \to
+\text{gr}(\Coker(f))$ is exact, and
+\item the sequence
+$$
+0 \to
+\text{gr}(\Ker(f)) \to
+\text{gr}(A) \to
+\text{gr}(B) \to
+\text{gr}(\Coker(f)) \to 0
+$$
+is exact.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+The equivalence of (1) and (2) is
+Lemma \ref{lemma-characterize-strict-general}.
+By
+Lemma \ref{lemma-ses-gr}
+we see that (4), (5), (6) imply (3) and that (3) implies (4), (5), (6).
+Hence it suffices to show that (3) implies (2).
+Thus we have to show that if $f : A \to B$ is an injective and surjective
+map of finite filtered objects which induces and isomorphism
+$\text{gr}(A) \to \text{gr}(B)$, then $f$ induces an isomorphism of
+filtered objects. In other words, we have to show that
+$f(F^pA) = F^pB$ for all $p$.
+As the filtrations are finite we may prove this by descending induction
+on $p$. Suppose that $f(F^{p + 1}A) = F^{p + 1}B$.
+Then commutative diagram
+$$
+\xymatrix{
+0 \ar[r] &
+F^{p + 1}A \ar[r] \ar[d]^f &
+F^pA \ar[r] \ar[d]^f &
+\text{gr}^p(A) \ar[r] \ar[d]^{\text{gr}^p(f)} &
+0 \\
+0 \ar[r] &
+F^{p + 1}B \ar[r] &
+F^pB \ar[r] &
+\text{gr}^p(B) \ar[r] &
+0
+}
+$$
+and the five lemma imply that $f(F^pA) = F^pB$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-filtered-complex}
+Let $\mathcal{A}$ be an abelian category. Let $A \to B \to C$ be a complex
+of filtered objects of $\mathcal{A}$. Assume $\alpha : A \to B$ and
+$\beta : B \to C$ are strict morphisms of filtered objects. Then
+$\text{gr}(\Ker(\beta)/\Im(\alpha)) =
+\Ker(\text{gr}(\beta))/\Im(\text{gr}(\alpha)))$.
+\end{lemma}
+
+\begin{proof}
+This follows formally from
+Lemma \ref{lemma-ses-gr}
+and the fact that
+$\Coim(\alpha) \cong \Im(\alpha)$ and
+$\Coim(\beta) \cong \Im(\beta)$ by
+Lemma \ref{lemma-characterize-strict-general}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-filtered-acyclic}
+Let $\mathcal{A}$ be an abelian category.
+Let $A \to B \to C$ be a complex of filtered objects of $\mathcal{A}$.
+Assume $A, B, C$ have finite filtrations and that
+$\text{gr}(A) \to \text{gr}(B) \to \text{gr}(C)$ is exact.
+Then
+\begin{enumerate}
+\item for each $p \in \mathbf{Z}$ the sequence
+$\text{gr}^p(A) \to \text{gr}^p(B) \to \text{gr}^p(C)$ is exact,
+\item for each $p \in \mathbf{Z}$ the sequence
+$F^p(A) \to F^p(B) \to F^p(C)$ is exact,
+\item for each $p \in \mathbf{Z}$ the sequence
+$A/F^p(A) \to B/F^p(B) \to C/F^p(C)$ is exact,
+\item the maps $A \to B$ and $B \to C$ are strict, and
+\item $A \to B \to C$ is exact (as a sequence in $\mathcal{A}$).
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Part (1) is immediate from the definitions.
+We will prove (3) by induction on the length of the filtrations.
+If each of $A$, $B$, $C$ has only one
+nonzero graded part, then (3) holds as $\text{gr}(A) = A$, etc.
+Let $n$ be the largest integer such that at least one of
+$F^nA, F^nB, F^nC$ is nonzero. Set $A' = A/F^nA$, $B' = B/F^nB$,
+$C' = C/F^nC$ with induced filtrations. Note that
+$\text{gr}(A) = F^nA \oplus \text{gr}(A')$
+and similarly for $B$ and $C$. The induction hypothesis
+applies to $A' \to B' \to C'$, which implies that
+$A/F^p(A) \to B/F^p(B) \to C/F^p(C)$ is exact for $p \geq n$.
+To conclude the same for $p = n + 1$, i.e., to prove that $A \to B \to C$
+is exact we use the commutative diagram
+$$
+\xymatrix{
+0 \ar[r] & F^nA \ar[r] \ar[d] & A \ar[r] \ar[d] & A' \ar[r] \ar[d] & 0 \\
+0 \ar[r] & F^nB \ar[r] \ar[d] & B \ar[r] \ar[d] & B' \ar[r] \ar[d] & 0 \\
+0 \ar[r] & F^nC \ar[r] & C \ar[r] & C' \ar[r] & 0
+}
+$$
+whose rows are short exact sequences of objects of $\mathcal{A}$.
+The proof of (2) is dual. Of course (5) follows from (2).
+
+\medskip\noindent
+To prove (4) denote $f : A \to B$ and $g : B \to C$ the given morphisms.
+We know that $f(F^p(A)) = \Ker(F^p(B) \to F^p(C))$ by (2) and
+$f(A) = \Ker(g)$ by (5). Hence
+$f(F^p(A)) =  \Ker(F^p(B) \to F^p(C)) =
+\Ker(g) \cap F^p(B) = f(A) \cap F^p(B)$ which proves that
+$f$ is strict. The proof that $g$ is strict is dual to this.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+

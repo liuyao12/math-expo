@@ -1,0 +1,247 @@
+\section{Morphisms of sites}
+\label{section-morphism-sites}
+
+\begin{definition}
+\label{definition-morphism-sites}
+Let $\mathcal{C}$ and $\mathcal{D}$ be sites.
+A {\it morphism of sites} $f : \mathcal{D} \to \mathcal{C}$
+is given by a continuous functor $u : \mathcal{C} \to \mathcal{D}$
+such that the functor $u_s$ is exact.
+\end{definition}
+
+\noindent
+Notice how the functor $u$ goes in the direction {\it opposite}
+the morphism $f$. If $f \leftrightarrow u$ is a morphism of sites
+then we use the notation $f^{-1} = u_s$ and $f_* = u^s$.
+The functor $f^{-1}$ is called the {\it pullback functor} and
+the functor $f_*$ is called the {\it pushforward functor}.
+As in topology we have the following adjointness property
+$$
+\Mor_{\Sh(\mathcal{D})}(f^{-1}\mathcal{G}, \mathcal{F})
+=
+\Mor_{\Sh(\mathcal{C})}(\mathcal{G}, f_*\mathcal{F})
+$$
+The motivation for this definition comes from the following
+example.
+
+\begin{example}
+\label{example-continuous-map}
+Let $f : X  \to Y$ be a continuous map of topological spaces.
+Recall that we have sites $X_{Zar}$ and $Y_{Zar}$,
+see Example \ref{example-site-topological}. Consider the functor
+$u : Y_{Zar} \to X_{Zar}$, $V \mapsto f^{-1}(V)$.
+This functor is clearly continuous because inverse images of
+open coverings are open coverings. (Actually, this depends on how
+you chose sets of coverings for $X_{Zar}$ and $Y_{Zar}$.
+But in any case the functor is quasi-continuous, see Remark
+\ref{remark-quasi-continuous}.)
+It is easy to verify that
+the functor $u^s$ equals the usual pushforward functor $f_*$
+from topology. Hence, since $u_s$ is an adjoint and since
+the usual topological pullback functor $f^{-1}$ is an adjoint as well,
+we get a canonical isomorphism $f^{-1} \cong u_s$. Since $f^{-1}$
+is exact we deduce that $u_s$ is exact. Hence $u$ defines a morphism
+of sites $f : X_{Zar} \to Y_{Zar}$, which we may denote
+$f$ as well since we've already seen the functors $u_s, u^s$ agree
+with their usual notions anyway.
+\end{example}
+
+\begin{example}
+\label{example-finer-topology}
+Let $\mathcal{C}$ be a category. Let
+$$
+\text{Cov}(\mathcal{C}) \supset \text{Cov}'(\mathcal{C})
+$$
+be two sets of families of morphisms with fixed target
+which turn $\mathcal{C}$ into a site. Denote $\mathcal{C}_\tau$
+the site corresponding to $\text{Cov}(\mathcal{C})$ and
+$\mathcal{C}_{\tau'}$ the site corresponding to $\text{Cov}'(\mathcal{C})$.
+We claim the identity functor on $\mathcal{C}$ defines a morphism of sites
+$$
+\epsilon : \mathcal{C}_\tau \longrightarrow \mathcal{C}_{\tau'}
+$$
+Namely, observe that $\text{id} : \mathcal{C}_{\tau'} \to \mathcal{C}_\tau$
+is continuous as every
+$\tau'$-covering is a $\tau$-covering. Thus the functor
+$\epsilon_* = \text{id}^s$ is the identity functor on underlying
+presheaves. Hence the left adjoint $\epsilon^{-1}$
+of $\epsilon_*$ sends a $\tau'$-sheaf $\mathcal{F}$
+to the $\tau$-sheafification of $\mathcal{F}$ (by the
+universal property of sheafification).
+Finite limits of $\tau'$-sheaves agree with finite limits
+of presheaves (Lemma \ref{lemma-limit-sheaf}) and $\tau$-sheafification
+commutes with finite limits (Lemma \ref{lemma-sheafification-exact}).
+Thus $\epsilon^{-1}$ is left exact. Since $\epsilon^{-1}$
+is a left adjoint it is also right exact
+(Categories, Lemma \ref{categories-lemma-exact-adjoint}).
+Thus $\epsilon^{-1}$ is exact and we have checked all the
+conditions of Definition \ref{definition-morphism-sites}.
+\end{example}
+
+\begin{lemma}
+\label{lemma-composition-morphisms-sites}
+\begin{slogan}
+Composition of site functors respects continuity of site functors.
+\end{slogan}
+Let $\mathcal{C}_i$, $i = 1, 2, 3$ be sites. Let
+$u : \mathcal{C}_2 \to \mathcal{C}_1$ and
+$v : \mathcal{C}_3 \to \mathcal{C}_2$ be continuous functors
+which induce morphisms of sites. Then the functor
+$u \circ v : \mathcal{C}_3 \to \mathcal{C}_1$ is continuous and
+defines a morphism of sites $\mathcal{C}_1 \to \mathcal{C}_3$.
+\end{lemma}
+
+\begin{proof}
+It is immediate from the definitions that $u \circ v$ is a continuous functor.
+In addition, we clearly have $(u \circ v)^p = v^p \circ u^p$, and hence
+$(u \circ v)^s = v^s \circ u^s$. Hence functors $(u \circ v)_s$  and
+$u_s \circ v_s$ are both left adjoints of $(u \circ v)^s$. Therefore
+$(u \circ v)_s \cong u_s \circ v_s$ and we conclude that $(u \circ v)_s$
+is exact as a composition of exact functors.
+\end{proof}
+
+\begin{definition}
+\label{definition-composition-morphisms-sites}
+Let $\mathcal{C}_i$, $i = 1, 2, 3$ be sites. Let
+$f : \mathcal{C}_1 \to \mathcal{C}_2$ and
+$g : \mathcal{C}_2 \to \mathcal{C}_3$ be morphisms of sites
+given by continuous functors $u : \mathcal{C}_2 \to \mathcal{C}_1$
+and $v : \mathcal{C}_3 \to \mathcal{C}_2$. The {\it composition}
+$g \circ f$ is the morphism of sites corresponding to the
+functor $u \circ v$.
+\end{definition}
+
+\noindent
+In this situation we have $(g \circ f)_* = g_* \circ f_*$ and
+$(g \circ f)^{-1} = f^{-1} \circ g^{-1}$ (see proof of
+Lemma \ref{lemma-composition-morphisms-sites}).
+
+\begin{lemma}
+\label{lemma-directed-morphism}
+Let $\mathcal{C}$ and $\mathcal{D}$ be sites. Let
+$u : \mathcal{C} \to \mathcal{D}$ be continuous.
+Assume all the categories $(\mathcal{I}_V^u)^{opp}$ of
+Section \ref{section-functoriality-PSh}
+are filtered. Then $u$ defines a morphism of sites $\mathcal{D} \to
+\mathcal{C}$, in other words $u_s$ is exact.
+\end{lemma}
+
+\begin{proof}
+Since $u_s$ is the left adjoint of $u^s$ we see that $u_s$ is right
+exact, see Categories, Lemma \ref{categories-lemma-exact-adjoint}.
+Hence it suffices to show that $u_s$ is left exact. In other words
+we have to show that $u_s$ commutes with finite limits.
+Because the categories $\mathcal{I}_Y^{opp}$ are filtered
+we see that $u_p$ commutes with finite limits, see
+Categories, Lemma \ref{categories-lemma-directed-commutes}
+(this also uses the description of limits in $\textit{PSh}$,
+see Section \ref{section-limits-colimits-PSh}).
+And since sheafification commutes with finite limits as well
+(Lemma \ref{lemma-sheafification-exact}) we conclude because
+$u_s = \# \circ u_p$.
+\end{proof}
+
+\begin{proposition}
+\label{proposition-get-morphism}
+Let $\mathcal{C}$ and $\mathcal{D}$ be sites. Let
+$u : \mathcal{C} \to \mathcal{D}$ be continuous.
+Assume furthermore the following:
+\begin{enumerate}
+\item the category $\mathcal{C}$ has a final object $X$ and
+$u(X)$ is a final object of $\mathcal{D}$ , and
+\item the category $\mathcal{C}$ has fibre products and
+$u$ commutes with them.
+\end{enumerate}
+Then $u$ defines a morphism of sites $\mathcal{D} \to
+\mathcal{C}$, in other words $u_s$ is exact.
+\end{proposition}
+
+\begin{proof}
+This follows from Lemmas \ref{lemma-directed} and
+\ref{lemma-directed-morphism}.
+\end{proof}
+
+\begin{remark}
+\label{remark-explain-left-exact}
+The conditions of Proposition \ref{proposition-get-morphism} above
+are equivalent to saying that $u$ is left exact, i.e., commutes
+with finite limits. See
+Categories, Lemmas
+\ref{categories-lemma-finite-limits-exist} and
+\ref{categories-lemma-characterize-left-exact}.
+It seems more natural to phrase it in terms of final objects
+and fibre products since this seems to have more geometric meaning
+in the examples.
+\end{remark}
+
+\noindent
+Lemma \ref{lemma-continuous-with-continuous-left-adjoint} will
+provide another way to prove a continuous functor
+gives rise to a morphism of sites.
+
+\begin{remark}
+\label{remark-quasi-continuous-morphism-sites}
+(Skip on first reading.)
+Let $\mathcal{C}$ and $\mathcal{D}$ be sites. Analogously to
+Definition \ref{definition-morphism-sites} we say that
+a {\it quasi-morphism of sites $f : \mathcal{D} \to \mathcal{C}$}
+is given by a quasi-continuous functor $u : \mathcal{C} \to \mathcal{D}$
+(see Remark \ref{remark-quasi-continuous}) such that $u_s$ is exact.
+The analogue of Proposition \ref{proposition-get-morphism} in this
+setting is obtained by replacing the word ``continuous''
+by the word ``quasi-continuous'', and replacing the word
+``morphism'' by ``quasi-morphism''. The proof is literally the
+same.
+\end{remark}
+
+\noindent
+In Definition \ref{definition-morphism-sites} the condition that $u_s$
+be exact cannot be omitted. For example, the conclusion of the following
+lemma need not hold if one only assumes that $u$ is continuous.
+
+\begin{lemma}
+\label{lemma-morphism-of-sites-covering}
+Let $f : \mathcal{D} \to \mathcal{C}$ be a morphism of sites given by the
+functor $u : \mathcal{C} \to \mathcal{D}$. Given any object $V$ of
+$\mathcal{D}$ there exists a covering $\{V_j \to V\}$ such that for every
+$j$ there exists a morphism $V_j \to u(U_j)$ for some object $U_j$
+of $\mathcal{C}$.
+\end{lemma}
+
+\begin{proof}
+Since $f^{-1} = u_s$ is exact we have $f^{-1}* = *$ where $*$ denotes the
+final object of the category of sheaves
+(Example \ref{example-singleton-sheaf}).
+Since $f^{-1}* = u_s*$ is the sheafification of $u_p*$ we see
+there exists a covering $\{V_j \to V\}$ such that $(u_p*)(V_j)$
+is nonempty. Since $(u_p*)(V_j)$ is a colimit over the category
+$\mathcal{I}^u_{V_j}$ whose objects are morphisms $V_j \to u(U)$
+the lemma follows.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

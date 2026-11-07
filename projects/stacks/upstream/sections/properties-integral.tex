@@ -1,0 +1,108 @@
+\section{Integral, irreducible, and reduced schemes}
+\label{section-integral}
+
+\begin{definition}
+\label{definition-integral}
+Let $X$ be a scheme. We say $X$ is {\it integral} if it is nonempty and
+for every nonempty affine open $\Spec(R) = U \subset X$ the ring $R$
+is an integral domain.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-characterize-reduced}
+Let $X$ be a scheme.
+The following are equivalent.
+\begin{enumerate}
+\item The scheme $X$ is reduced, see
+Schemes, Definition \ref{schemes-definition-reduced}.
+\item There exists an affine open covering $X = \bigcup U_i$
+such that each $\Gamma(U_i, \mathcal{O}_X)$ is reduced.
+\item For every affine open $U \subset X$ the ring
+$\mathcal{O}_X(U)$ is reduced.
+\item For every open $U \subset X$ the ring $\mathcal{O}_X(U)$ is reduced.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+See Schemes, Lemmas \ref{schemes-lemma-reduced} and
+\ref{schemes-lemma-affine-reduced}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-characterize-irreducible}
+Let $X$ be a scheme.
+The following are equivalent.
+\begin{enumerate}
+\item The scheme $X$ is irreducible.
+\item There exists an affine open covering $X = \bigcup_{i \in I} U_i$
+such that $I$ is not empty, $U_i$ is irreducible for all $i \in I$, and
+$U_i \cap U_j \not = \emptyset$ for all $i, j \in I$.
+\item The scheme $X$ is nonempty and every nonempty affine open
+$U \subset X$ is irreducible.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Assume (1). By Schemes, Lemma \ref{schemes-lemma-scheme-sober}
+we see that $X$ has a unique generic point $\eta$. Then
+$X = \overline{\{\eta\}}$. Hence $\eta$ is an element of
+every nonempty affine open $U \subset X$. This implies
+that $\eta \in U$ is dense hence $U$ is irreducible.
+It also implies any two nonempty affines meet.
+Thus (1) implies both (2) and (3).
+
+\medskip\noindent
+Assume (2). Suppose $X = Z_1 \cup Z_2$ is a union of two closed subsets.
+For every $i$ we see that either $U_i \subset Z_1$ or $U_i \subset Z_2$.
+Pick some $i \in I$ and assume $U_i \subset Z_1$ (possibly after renumbering
+$Z_1$, $Z_2$). For any $j \in I$ the open subset $U_i \cap U_j$ is dense in
+$U_j$ and contained in the closed subset $Z_1 \cap U_j$. We conclude that
+also $U_j \subset Z_1$. Thus $X = Z_1$ as desired.
+
+\medskip\noindent
+Assume (3). Choose an affine open covering $X = \bigcup_{i \in I} U_i$.
+We may assume that each $U_i$ is nonempty.
+Since $X$ is nonempty we see that $I$ is not empty.
+By assumption each $U_i$ is irreducible.
+Suppose $U_i \cap U_j = \emptyset$ for some pair $i, j \in I$.
+Then the open $U_i \amalg  U_j = U_i \cup U_j$ is affine, see
+Schemes, Lemma \ref{schemes-lemma-disjoint-union-affines}.
+Hence it is irreducible by assumption which is absurd. We conclude that (3)
+implies (2). The lemma is proved.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-characterize-integral}
+A scheme $X$ is integral if and only if it is reduced and irreducible.
+\end{lemma}
+
+\begin{proof}
+If $X$ is irreducible, then every affine open $\Spec(R) = U \subset X$
+is irreducible. If $X$ is reduced, then $R$ is reduced, by
+Lemma \ref{lemma-characterize-reduced} above. Hence $R$ is reduced
+and $(0)$ is a prime ideal, i.e., $R$ is an integral domain.
+
+\medskip\noindent
+If $X$ is integral, then for every nonempty affine open
+$\Spec(R) = U \subset X$ the ring $R$ is reduced
+and hence $X$ is reduced by Lemma \ref{lemma-characterize-reduced}.
+Moreover, every nonempty affine open is irreducible.
+Hence $X$ is irreducible, see Lemma \ref{lemma-characterize-irreducible}.
+\end{proof}
+
+\noindent
+In Examples, Section
+\ref{examples-section-connected-locally-integral-not-integral}
+we construct a connected affine scheme all of whose local rings are domains,
+but which is not integral.
+
+
+
+
+
+
+
+
+
+
+

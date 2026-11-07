@@ -1,0 +1,385 @@
+\section{Cocontinuous functors and morphisms of topoi}
+\label{section-cocontinuous-morphism-topoi}
+
+\noindent
+It is clear from the above that a cocontinuous functor $u$
+gives a morphism of topoi in the same direction as $u$.
+Thus this is in the opposite direction from the morphism of topoi
+associated (under certain conditions) to a continuous $u$ as in
+Definition \ref{definition-morphism-sites},
+Proposition \ref{proposition-get-morphism}, and
+Lemma \ref{lemma-morphism-sites-topoi}.
+
+\begin{lemma}
+\label{lemma-cocontinuous-morphism-topoi}
+Let $\mathcal{C}$ and $\mathcal{D}$ be sites.
+Let $u : \mathcal{C} \to \mathcal{D}$ be cocontinuous.
+The functors $g_* = {}_su$ and $g^{-1} = (u^p\ )^\#$
+define a morphism of topoi
+$g$ from  $\Sh(\mathcal{C})$ to $\Sh(\mathcal{D})$.
+\end{lemma}
+
+\begin{proof}
+This is exactly the content of Lemma \ref{lemma-exact-cocontinuous}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-composition-cocontinuous}
+\begin{slogan}
+Composition of site functors respects cocontinuity of site functors.
+\end{slogan}
+Let $u : \mathcal{C} \to \mathcal{D}$, and $v : \mathcal{D} \to \mathcal{E}$
+be cocontinuous functors. Then $v \circ u$ is cocontinuous and we
+have $h = g \circ f$
+where $f : \Sh(\mathcal{C}) \to \Sh(\mathcal{D})$,
+resp.\ $g : \Sh(\mathcal{D}) \to \Sh(\mathcal{E})$,
+resp.\ $h : \Sh(\mathcal{C}) \to \Sh(\mathcal{E})$ is the
+morphism of topoi associated to $u$, resp.\ $v$, resp.\ $v \circ u$.
+\end{lemma}
+
+\begin{proof}
+Let $U \in \Ob(\mathcal{C})$.
+Let $\{E_i \to v(u(U))\}$ be a covering of $U$ in $\mathcal{E}$.
+By assumption there exists a covering $\{D_j \to u(U)\}$ in $\mathcal{D}$
+such that $\{v(D_j) \to v(u(U))\}$ refines $\{E_i \to v(u(U))\}$. Also
+by assumption there exists a covering $\{C_l \to U\}$ in $\mathcal{C}$
+such that $\{u(C_l) \to u(U)\}$ refines $\{D_j \to u(U)\}$. Then it is
+true that $\{v(u(C_l)) \to v(u(U))\}$ refines the covering
+$\{E_i \to v(u(U))\}$. This proves that $v \circ u$ is cocontinuous.
+To prove the last assertion it suffices to show that
+${}_sv \circ {}_su = {}_s(v \circ u)$. It suffices to prove that
+${}_pv \circ {}_pu = {}_p(v \circ u)$, see Lemma \ref{lemma-pu-sheaf}.
+Since ${}_pu$, resp.\ ${}_pv$, resp.\ ${}_p(v \circ u)$ is right adjoint to
+$u^p$, resp.\ $v^p$, resp.\ $(v \circ u)^p$ it suffices to prove that
+$u^p \circ v^p = (v \circ u)^p$. And this is direct from the definitions.
+\end{proof}
+
+\begin{example}
+\label{example-open-immersion-cocontinuous}
+Let $X$ be a topological space.
+Let $j : U  \to X$ be the inclusion of an open subspace.
+Recall that we have sites $X_{Zar}$ and $U_{Zar}$,
+see Example \ref{example-site-topological}.
+Recall that we have the functor $u : X_{Zar} \to U_{Zar}$
+associated to $j$ which is continuous and gives rise
+to a morphism of sites $U_{Zar} \to X_{Zar}$,
+see Example \ref{example-continuous-map}.
+This also gives a morphism of topoi $(j_*, j^{-1})$.
+Next, consider the functor
+$v : U_{Zar} \to X_{Zar}$, $V \mapsto v(V) = V$
+(just the same open but now thought of as an object of $X_{Zar}$).
+This functor is cocontinuous. Namely, if $v(V) = \bigcup_{j \in J} W_j$
+is an open covering in $X$, then each $W_j$ must be a subset of
+$U$ and hence is of the form $v(V_j)$,
+and trivially $V = \bigcup_{j \in J} V_j$ is an open covering in $U$.
+We conclude by Lemma \ref{lemma-cocontinuous-morphism-topoi} above
+that there is a morphism of topoi associated to $v$
+$$
+\Sh(U) \longrightarrow \Sh(X)
+$$
+given by ${}_sv$ and $(v^p\ )^\#$. We claim that
+actually $(v^p\ )^\# = j^{-1}$ and that ${}_sv = j_*$,
+in other words, that this is the same morphism of topoi
+as the one given above. Perhaps the easiest way to see
+this is to realize that for any sheaf
+$\mathcal{G}$ on $X$ we have
+$v^p\mathcal{G}(V) = \mathcal{G}(V)$ which according to
+Sheaves, Lemma \ref{sheaves-lemma-j-pullback} is a description
+of $j^{-1}\mathcal{G}$ (and hence sheafification is superfluous
+in this case). The equality of ${}_sv$ and $j_*$ follows by
+uniqueness of adjoint functors (but may also be computed directly).
+\end{example}
+
+\begin{example}
+\label{example-open-map-cocontinuous}
+This example is a slight generalization of
+Example \ref{example-open-immersion-cocontinuous}.
+Let $f : X \to Y$ be a continuous map of topological spaces.
+Assume that $f$ is open.
+Recall that we have sites $X_{Zar}$ and $Y_{Zar}$,
+see Example \ref{example-site-topological}.
+Recall that we have the functor $u : Y_{Zar} \to X_{Zar}$
+associated to $f$ which is continuous and gives rise
+to a morphism of sites $X_{Zar} \to Y_{Zar}$,
+see Example \ref{example-continuous-map}.
+This also gives a morphism of topoi $(f_*, f^{-1})$.
+Next, consider the functor
+$v : X_{Zar} \to Y_{Zar}$, $U \mapsto v(U) = f(U)$.
+This functor is cocontinuous. Namely, if $f(U) = \bigcup_{j \in J} V_j$
+is an open covering in $Y$, then setting $U_j = f^{-1}(V_j) \cap U$
+we get an open covering $U = \bigcup U_j$ such that $f(U) = \bigcup f(U_j)$
+is a refinement of $f(U) = \bigcup V_j$.
+We conclude by Lemma \ref{lemma-cocontinuous-morphism-topoi} above
+that there is a morphism of topoi associated to $v$
+$$
+\Sh(X) \longrightarrow \Sh(Y)
+$$
+given by ${}_sv$ and $(v^p\ )^\#$. We claim that
+actually $(v^p\ )^\# = f^{-1}$ and that ${}_sv = f_*$,
+in other words, that this is the same morphism of topoi
+as the one given above. For any sheaf
+$\mathcal{G}$ on $Y$ we have
+$v^p\mathcal{G}(U) = \mathcal{G}(f(U))$.
+On the other hand, we may compute
+$u_p\mathcal{G}(U) = \colim_{f(U) \subset V} \mathcal{G}(V)
+= \mathcal{G}(f(U))$ because clearly $(f(U), U \subset f^{-1}(f(U)))$
+is an initial object of the category $\mathcal{I}_U^u$ of
+Section \ref{section-functoriality-PSh}.
+Hence $u_p = v^p$ and we conclude $f^{-1} = u_s = (v^p\ )^\#$.
+The equality of ${}_sv$ and $f_*$ follows by
+uniqueness of adjoint functors (but may also be computed directly).
+\end{example}
+
+\noindent
+In the first Example \ref{example-open-immersion-cocontinuous}
+the functor $v$ is also continuous. But in the second
+Example \ref{example-open-map-cocontinuous} it is generally not continuous
+because condition (2) of Definition \ref{definition-continuous} may fail.
+Hence the following lemma applies to the first example, but not to the second.
+
+\begin{lemma}
+\label{lemma-when-shriek}
+\begin{slogan}
+Sheafification is redundant in topoi morphisms associated to simultaneously
+continuous and cocontinuous site functors.
+\end{slogan}
+Let $\mathcal{C}$ and $\mathcal{D}$ be sites.
+Let $u : \mathcal{C} \to \mathcal{D}$ be a functor.
+Assume that
+\begin{enumerate}
+\item[(a)] $u$ is cocontinuous, and
+\item[(b)] $u$ is continuous.
+\end{enumerate}
+Let $g : \Sh(\mathcal{C}) \to \Sh(\mathcal{D})$
+be the associated morphism of topoi. Then
+\begin{enumerate}
+\item sheafification in the formula $g^{-1} = (u^p\ )^\#$ is
+unnecessary, in other words $g^{-1}(\mathcal{G})(U) = \mathcal{G}(u(U))$,
+\item $g^{-1}$ has a left adjoint $g_{!} = (u_p\ )^\#$, and
+\item $g^{-1}$ commutes with arbitrary limits and colimits.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-pushforward-sheaf} for any sheaf $\mathcal{G}$
+on $\mathcal{D}$ the presheaf $u^p\mathcal{G}$ is a sheaf on $\mathcal{C}$
+(and is denoted $u^s\mathcal{G}$). The functor
+$\mathcal{F} \mapsto (u_p\mathcal{F})^\#$ is a left
+adjoint to $u^s$ by Lemma \ref{lemma-adjoint-sheaves}.
+The statement on limits and colimits follows from the
+discussion in Categories, Section \ref{categories-section-adjoint}.
+\end{proof}
+
+\noindent
+In the situation of Lemma \ref{lemma-when-shriek} above we see that we have
+a sequence of adjoint functors
+$$
+g_{!}, \ g^{-1}, \ g_*.
+$$
+The functor $g_!$ is {\it not} exact in general, because it does
+not transform a final object of $\Sh(\mathcal{C})$
+into a final object of $\Sh(\mathcal{D})$ in general.
+See Sheaves, Remark \ref{sheaves-remark-j-shriek-not-exact}.
+On the other hand, in the topological setting of
+Example \ref{example-open-immersion-cocontinuous} the functor
+$j_!$ is exact on abelian sheaves, see
+Modules, Lemma \ref{modules-lemma-j-shriek-exact}. The following lemma gives
+the generalization to the case of sites.
+
+\begin{lemma}
+\label{lemma-preserve-equalizers}
+Let $\mathcal{C}$ and $\mathcal{D}$ be sites.
+Let $u : \mathcal{C} \to \mathcal{D}$ be a functor.
+Assume that
+\begin{enumerate}
+\item[(a)] $u$ is cocontinuous,
+\item[(b)] $u$ is continuous, and
+\item[(c)] fibre products and equalizers exist in $\mathcal{C}$ and
+$u$ commutes with them.
+\end{enumerate}
+In this case the functor $g_!$ above commutes with fibre products and
+equalizers (and more generally with finite connected limits).
+\end{lemma}
+
+\begin{proof}
+Assume (a), (b), and (c).
+We have $g_! = (u_p\ )^\#$. Recall (Lemma \ref{lemma-limit-sheaf}) that
+limits of sheaves are equal to the corresponding limits as presheaves.
+And sheafification commutes with finite limits
+(Lemma \ref{lemma-sheafification-exact}). Thus it
+suffices to show that $u_p$ commutes with fibre products and equalizers.
+To do this it suffices that colimits over the categories
+$(\mathcal{I}_V^u)^{opp}$ of
+Section \ref{section-functoriality-PSh}
+commute with fibre products and equalizers. This follows
+from
+Lemma \ref{lemma-almost-directed}
+and
+Categories, Lemma \ref{categories-lemma-almost-directed-commutes-equalizers}.
+\end{proof}
+
+\noindent
+The following lemma deals with a case that is even more like
+the morphism associated to an open immersion of topological spaces.
+
+\begin{lemma}
+\label{lemma-back-and-forth}
+Let $\mathcal{C}$ and $\mathcal{D}$ be sites.
+Let $u : \mathcal{C} \to \mathcal{D}$ be a functor.
+Assume that
+\begin{enumerate}
+\item[(a)] $u$ is cocontinuous,
+\item[(b)] $u$ is continuous, and
+\item[(c)] $u$ is fully faithful.
+\end{enumerate}
+For $g_!, g^{-1}, g_*$ as above
+the canonical maps $\mathcal{F} \to g^{-1}g_!\mathcal{F}$
+and $g^{-1}g_*\mathcal{F} \to \mathcal{F}$ are isomorphisms
+for all sheaves $\mathcal{F}$ on $\mathcal{C}$.
+\end{lemma}
+
+\begin{proof}
+Let $X$ be an object of $\mathcal{C}$.
+In Lemmas \ref{lemma-pu-sheaf} and \ref{lemma-when-shriek} we have seen that
+sheafification is not necessary for the functors
+$g^{-1} = (u^p\ )^\#$ and $g_{*} = ({}_pu\ )^\#$.
+We may compute
+$(g^{-1}g_{*}\mathcal{F})(X) = g_{*}\mathcal{F}(u(X))
+= \lim \mathcal{F}(Y)$. Here the limit
+is over the category of pairs $(Y, u(Y) \to u(X))$
+where the morphisms $u(Y) \to u(X)$ are not required to be
+of the form $u(\alpha)$ with $\alpha$ a morphism of $\mathcal{C}$.
+By assumption (c) we see that they automatically come from
+morphisms of $\mathcal{C}$ and we deduce that the limit is the
+value on $(X, u(\text{id}_X))$, i.e., $\mathcal{F}(X)$.
+This proves that $g^{-1}g_{*}\mathcal{F} = \mathcal{F}$.
+
+\medskip\noindent
+On the other hand, $(g^{-1}g_{!}\mathcal{F})(X) =
+g_{!}\mathcal{F}(u(X)) = (u_p\mathcal{F})^\#(u(X))$, and
+$u_p\mathcal{F}(u(X)) = \colim \mathcal{F}(Y)$.
+Here the colimit is over the category of pairs $(Y, u(X) \to u(Y))$
+where the morphisms $u(X) \to u(Y)$ are not required to be
+of the form $u(\alpha)$ with $\alpha$ a morphism of $\mathcal{C}$.
+By assumption (c) we see that they automatically come
+from morphisms of $\mathcal{C}$ and we deduce that the colimit is the
+value on $(X, u(\text{id}_X))$, i.e., $\mathcal{F}(X)$. Thus for every
+$X \in \Ob(\mathcal{C})$ we have
+$u_p\mathcal{F}(u(X)) = \mathcal{F}(X)$.
+Since $u$ is cocontinuous and continuous any covering of $u(X)$ in
+$\mathcal{D}$ can be refined by a covering (!) $\{u(X_i) \to u(X)\}$
+of $\mathcal{D}$ where $\{X_i \to X\}$ is a covering in $\mathcal{C}$.
+This implies that $(u_p\mathcal{F})^+(u(X)) = \mathcal{F}(X)$ also,
+since in the colimit defining the value of $(u_p\mathcal{F})^+$
+on $u(X)$ we may restrict to the cofinal system of coverings
+$\{u(X_i) \to u(X)\}$ as above. Hence we see that
+$(u_p\mathcal{F})^+(u(X)) = \mathcal{F}(X)$ for all objects $X$
+of $\mathcal{C}$ as well. Repeating this argument one more time
+gives the equality $(u_p\mathcal{F})^\#(u(X)) = \mathcal{F}(X)$
+for all objects $X$ of $\mathcal{C}$. This produces the desired
+equality $g^{-1}g_!\mathcal{F} = \mathcal{F}$.
+\end{proof}
+
+\noindent
+Finally, here is a case that does not have any corresponding topological
+example. We will use this lemma to see what happens when we enlarge a
+``partial universe'' of schemes keeping the same topology. In the situation
+of the lemma, the morphism of topoi $g : \Sh(\mathcal{C}) \to \Sh(\mathcal{D})$
+identifies $\Sh(\mathcal{C})$ as a subtopos of $\Sh(\mathcal{D})$
+(Section \ref{section-subtopoi}) and moreover, the given embedding has a
+retraction.
+
+\begin{lemma}
+\label{lemma-bigger-site}
+Let $\mathcal{C}$ and $\mathcal{D}$ be sites.
+Let $u : \mathcal{C} \to \mathcal{D}$ be a functor.
+Assume that
+\begin{enumerate}
+\item[(a)] $u$ is cocontinuous,
+\item[(b)] $u$ is continuous,
+\item[(c)] $u$ is fully faithful,
+\item[(d)] fibre products exist in $\mathcal{C}$ and $u$ commutes with them,
+and
+\item[(e)] there exist final objects
+$e_\mathcal{C} \in \Ob(\mathcal{C})$,
+$e_\mathcal{D} \in \Ob(\mathcal{D})$ such that
+$u(e_\mathcal{C}) = e_\mathcal{D}$.
+\end{enumerate}
+Let $g_!, g^{-1}, g_*$ be as above. Then, $u$ defines a morphism of sites
+$f : \mathcal{D} \to \mathcal{C}$ with $f_* = g^{-1}$, $f^{-1} = g_!$.
+The composition
+$$
+\xymatrix{
+\Sh(\mathcal{C}) \ar[r]^g &
+\Sh(\mathcal{D}) \ar[r]^f &
+\Sh(\mathcal{C})
+}
+$$
+is isomorphic to the identity morphism of the topos
+$\Sh(\mathcal{C})$. Moreover, the functor $f^{-1}$ is fully faithful.
+\end{lemma}
+
+\begin{proof}
+By assumption the functor $u$ satisfies the hypotheses of
+Proposition \ref{proposition-get-morphism}. Hence $u$ defines
+a morphism of sites and hence a morphism of topoi $f$ as in
+Lemma \ref{lemma-morphism-sites-topoi}. The formulas
+$f_* = g^{-1}$ and $f^{-1} = g_!$ are clear from the lemma cited and
+Lemma \ref{lemma-when-shriek}.
+We have
+$f_* \circ g_* = g^{-1} \circ g_* \cong \text{id}$, and
+$g^{-1} \circ f^{-1} = g^{-1} \circ g_! \cong \text{id}$
+by Lemma \ref{lemma-back-and-forth}.
+
+\medskip\noindent
+We still have to show that $f^{-1}$ is fully faithful.
+Let $\mathcal{F}, \mathcal{G} \in \Ob(\Sh(\mathcal{C}))$.
+We have to show that the map
+$$
+\Mor_{\Sh(\mathcal{C})}(\mathcal{F}, \mathcal{G})
+\longrightarrow
+\Mor_{\Sh(\mathcal{D})}(f^{-1}\mathcal{F}, f^{-1}\mathcal{G})
+$$
+is bijective. But the right hand side is equal to
+\begin{align*}
+\Mor_{\Sh(\mathcal{D})}(f^{-1}\mathcal{F}, f^{-1}\mathcal{G})
+& =
+\Mor_{\Sh(\mathcal{C})}(\mathcal{F}, f_*f^{-1}\mathcal{G}) \\
+& =
+\Mor_{\Sh(\mathcal{C})}(\mathcal{F}, g^{-1}f^{-1}\mathcal{G}) \\
+& =
+\Mor_{\Sh(\mathcal{C})}(\mathcal{F}, \mathcal{G})
+\end{align*}
+(the first equality by adjunction) which proves what we want.
+\end{proof}
+
+\begin{example}
+\label{example-closed-map-cocontinuous-false}
+Let $X$ be a topological space.
+Let $i : Z  \to X$ be the inclusion of a subset (with induced
+topology). Consider the functor $u : X_{Zar} \to Z_{Zar}$,
+$U \mapsto u(U) = Z \cap U$.
+At first glance it may appear that this functor is cocontinuous as
+well. After all, since $Z$ has the induced topology,
+shouldn't any covering of $U\cap Z$ it come from a covering
+of $U$ in $X$? Not so! Namely, what if $U \cap Z = \emptyset$?
+In that case, the empty covering is a covering of
+$U \cap Z$, and the empty covering can only be refined by
+the empty covering. Thus we conclude that
+$u$ cocontinuous $\Rightarrow$ every nonempty open $U$
+of $X$ has nonempty intersection with $Z$.
+But this is not sufficient. For example, if
+$X = \mathbf{R}$ the real number line with the usual
+topology, and $Z = \mathbf{R} \setminus \{0\}$, then
+there is an open covering of $Z$, namely
+$Z = \{x < 0\} \cup \bigcup_n \{1/n < x\}$ which
+cannot be refined by the restriction of any
+open covering of $X$.
+\end{example}
+
+
+
+
+
+
+

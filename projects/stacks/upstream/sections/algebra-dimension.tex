@@ -1,0 +1,426 @@
+\section{Dimension}
+\label{section-dimension}
+
+\noindent
+Please compare with
+Topology, Section \ref{topology-section-krull-dimension}.
+
+\begin{definition}
+\label{definition-chain-primes}
+Let $R$ be a ring. A {\it chain of prime ideals} is a sequence
+$\mathfrak p_0 \subset \mathfrak p_1 \subset \ldots \subset \mathfrak p_n$
+of prime ideals of $R$ such that $\mathfrak p_i \not = \mathfrak p_{i + 1}$
+for $i = 0, \ldots, n - 1$. The {\it length} of this chain of prime
+ideals is $n$.
+\end{definition}
+
+\noindent
+Recall that we have an inclusion reversing bijection between prime
+ideals of a ring $R$ and irreducible closed subsets of $\Spec(R)$,
+see Lemma \ref{lemma-irreducible}.
+
+\begin{definition}
+\label{definition-Krull}
+The {\it Krull dimension} of the ring $R$ is the
+Krull dimension of the topological space $\Spec(R)$, see
+Topology, Definition \ref{topology-definition-Krull}.
+In other words it is the supremum of the integers $n\geq 0$
+such that $R$ has a chain of prime ideals
+$$
+\mathfrak p_0
+\subset
+\mathfrak p_1
+\subset
+\ldots
+\subset
+\mathfrak p_n, \quad
+\mathfrak p_i \not = \mathfrak p_{i + 1}.
+$$
+of length $n$.
+\end{definition}
+
+\begin{definition}
+\label{definition-height}
+The {\it height} of a prime ideal $\mathfrak p$ of
+a ring $R$ is the dimension of the local ring $R_{\mathfrak p}$.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-dimension-height}
+The Krull dimension of $R$ is the supremum of the
+heights of its (maximal) primes.
+\end{lemma}
+
+\begin{proof}
+This is so because we can always add a maximal ideal at the end of a chain
+of prime ideals.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-Noetherian-dimension-0}
+A Noetherian ring of dimension $0$ is Artinian.
+Conversely, any Artinian ring is Noetherian of dimension zero.
+\end{lemma}
+
+\begin{proof}
+Assume $R$ is a Noetherian ring of dimension $0$.
+By Lemma \ref{lemma-Noetherian-topology} the space $\Spec(R)$
+is Noetherian. By Topology, Lemma \ref{topology-lemma-Noetherian} we see
+that $\Spec(R)$ has finitely many irreducible
+components, say $\Spec(R) = Z_1 \cup \ldots \cup Z_r$.
+According to Lemma \ref{lemma-irreducible} each $Z_i = V(\mathfrak p_i)$
+with $\mathfrak p_i$ a minimal ideal. Since the dimension is $0$
+these $\mathfrak p_i$ are also maximal. Thus $\Spec(R)$
+is the discrete topological space with elements $\mathfrak p_i$.
+All elements $f$ of the Jacobson radical $\bigcap \mathfrak p_i$
+are nilpotent since otherwise $R_f$ would not be the zero ring
+and we would have another prime.
+By Lemma \ref{lemma-product-local} $R$ is equal to
+$\prod R_{\mathfrak p_i}$. Since $R_{\mathfrak p_i}$
+is also Noetherian and dimension $0$, the previous arguments
+show that its radical $\mathfrak p_iR_{\mathfrak p_i}$ is locally nilpotent.
+Lemma \ref{lemma-Noetherian-power} gives
+$\mathfrak p_i^nR_{\mathfrak p_i} = 0$ for some $n \geq 1$.
+By Lemma \ref{lemma-length-finite} we conclude that $R_{\mathfrak p_i}$
+has finite length over $R$. Hence we conclude that $R$
+is Artinian by Lemma \ref{lemma-artinian-finite-length}.
+
+\medskip\noindent
+If $R$ is an Artinian ring then by Lemma \ref{lemma-artinian-finite-length}
+it is Noetherian. All of its primes are maximal by a combination
+of Lemmas \ref{lemma-artinian-finite-nr-max},
+\ref{lemma-artinian-radical-nilpotent} and \ref{lemma-product-local}.
+\end{proof}
+
+\noindent
+In the following we will use the invariant $d(-)$ defined
+in Definition \ref{definition-d}. Here is a warm up lemma.
+
+\begin{lemma}
+\label{lemma-dimension-0-d-0}
+Let $R$ be a Noetherian local ring.
+Then $\dim(R) = 0 \Leftrightarrow d(R) = 0$.
+\end{lemma}
+
+\begin{proof}
+This is because $d(R) = 0$ if and only if $R$ has finite
+length as an $R$-module. See Lemma \ref{lemma-artinian-finite-length}.
+\end{proof}
+
+\begin{proposition}
+\label{proposition-dimension-zero-ring}
+Let $R$ be a ring. The following are equivalent:
+\begin{enumerate}
+\item $R$ is Artinian,
+\item $R$ is Noetherian and $\dim(R) = 0$,
+\item $R$ has finite length as a module over itself,
+\item $R$ is a finite product of Artinian local rings,
+\item $R$ is Noetherian and $\Spec(R)$ is a
+finite discrete topological space,
+\item $R$ is a finite product of Noetherian local rings
+of dimension $0$,
+\item $R$ is a finite product of Noetherian local rings
+$R_i$ with $d(R_i) = 0$,
+\item $R$ is a finite product of Noetherian local rings
+$R_i$ whose maximal ideals are nilpotent,
+\item $R$ is Noetherian, has finitely many maximal
+ideals and its Jacobson radical ideal is nilpotent, and
+\item $R$ is Noetherian and there are no strict inclusions
+among its primes.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+This is a combination of Lemmas
+\ref{lemma-product-local},
+\ref{lemma-artinian-finite-length},
+\ref{lemma-Noetherian-dimension-0}, and
+\ref{lemma-dimension-0-d-0}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-height-1}
+Let $R$ be a local Noetherian ring.
+The following are equivalent:
+\begin{enumerate}
+\item
+\label{item-dim-1}
+$\dim(R) = 1$,
+\item
+\label{item-d-1}
+$d(R) = 1$,
+\item
+\label{item-Vx}
+there exists an $x \in \mathfrak m$, $x$ not nilpotent
+such that $V(x) = \{\mathfrak m\}$,
+\item
+\label{item-x}
+there exists an $x \in \mathfrak m$, $x$ not nilpotent
+such that $\mathfrak m = \sqrt{(x)}$, and
+\item
+\label{item-ideal-1}
+there exists an ideal of definition generated by $1$ element,
+and no ideal of definition is generated by $0$ elements.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+First, assume that $\dim(R) = 1$.
+Let $\mathfrak p_i$ be the minimal primes of $R$.
+Because the dimension is $1$ the only other prime of $R$
+is $\mathfrak m$.
+According to Lemma \ref{lemma-Noetherian-irreducible-components}
+there are finitely many. Hence we can find $x \in \mathfrak m$,
+$x \not \in \mathfrak p_i$, see Lemma \ref{lemma-silly}.
+Thus the only prime containing $x$ is $\mathfrak m$ and
+hence (\ref{item-Vx}).
+
+\medskip\noindent
+If (\ref{item-Vx}) then $\mathfrak m = \sqrt{(x)}$ by
+Lemma \ref{lemma-Zariski-topology}, and hence (\ref{item-x}).
+The converse is clear as well.
+The equivalence of (\ref{item-x}) and (\ref{item-ideal-1}) follows
+from directly the definitions.
+
+\medskip\noindent
+Assume (\ref{item-ideal-1}).
+Let $I = (x)$ be an ideal of definition.
+Note that $I^n/I^{n + 1}$ is a quotient of $R/I$ via multiplication
+by $x^n$ and hence $\text{length}_R(I^n/I^{n + 1})$ is bounded.
+Thus $d(R) = 0$ or $d(R) = 1$, but $d(R) = 0$ is excluded
+by the assumption that $0$ is not an ideal of definition.
+
+\medskip\noindent
+Assume (\ref{item-d-1}). To get a contradiction, assume there
+exist primes $\mathfrak p \subset \mathfrak q \subset \mathfrak m$,
+with both inclusions strict. Pick some ideal of definition $I \subset R$.
+We will repeatedly use
+Lemma \ref{lemma-hilbert-ses-chi}. First of all
+it implies, via the exact sequence
+$0 \to \mathfrak p \to R \to R/\mathfrak p \to 0$,
+that $d(R/\mathfrak p) \leq 1$. But it clearly cannot
+be zero. Pick $x\in \mathfrak q$, $x\not \in \mathfrak p$.
+Consider the short exact sequence
+$$
+0 \to R/\mathfrak p \to R/\mathfrak p \to R/(xR + \mathfrak p) \to 0.
+$$
+This implies that $\chi_{I, R/\mathfrak p} - \chi_{I, R/\mathfrak p}
+- \chi_{I, R/(xR + \mathfrak p)} = - \chi_{I, R/(xR + \mathfrak p)}$
+has degree $ < 1$. In other words, $d(R/(xR + \mathfrak p)) = 0$,
+and hence $\dim(R/(xR + \mathfrak p)) = 0$, by
+Lemma \ref{lemma-dimension-0-d-0}. But $R/(xR + \mathfrak p)$
+has the distinct primes $\mathfrak q/(xR + \mathfrak p)$ and
+$\mathfrak m/(xR + \mathfrak p)$ which gives the desired contradiction.
+\end{proof}
+
+\begin{proposition}
+\label{proposition-dimension}
+Let $R$ be a local Noetherian ring. Let $d \geq 0$ be an integer.
+The following are equivalent:
+\begin{enumerate}
+\item
+\label{item-dim-d}
+$\dim(R) = d$,
+\item
+\label{item-d-d}
+$d(R) = d$,
+\item
+\label{item-ideal-d}
+there exists an ideal of definition generated by $d$ elements,
+and no ideal of definition is generated by fewer than $d$ elements.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+This proof is really just the same as the proof of Lemma
+\ref{lemma-height-1}. We will prove the proposition by induction
+on $d$. By Lemmas \ref{lemma-dimension-0-d-0} and \ref{lemma-height-1}
+we may assume that $d > 1$. Denote the minimal number of
+generators for an ideal of definition of $R$ by $d'(R)$.
+We will prove the inequalities
+$\dim(R) \geq d'(R) \geq d(R) \geq \dim(R)$,
+and hence they are all equal.
+
+\medskip\noindent
+First, assume that $\dim(R) = d$.
+Let $\mathfrak p_i$ be the minimal primes of $R$.
+According to Lemma \ref{lemma-Noetherian-irreducible-components}
+there are finitely many. Hence we can find $x \in \mathfrak m$,
+$x \not \in \mathfrak p_i$, see Lemma \ref{lemma-silly}.
+Note that every maximal chain of primes starts with some $\mathfrak p_i$,
+hence the dimension of $R/xR$ is at most $d-1$. By induction
+there are $x_2, \ldots, x_d$ which generate an ideal of definition
+in $R/xR$. Hence $R$ has an ideal of definition generated
+by (at most) $d$ elements.
+
+\medskip\noindent
+Assume $d'(R) = d$. Let $I = (x_1, \ldots, x_d)$ be an ideal
+of definition. Note that $I^n/I^{n + 1}$ is a quotient of a direct
+sum of $\binom{d + n - 1}{d - 1}$ copies $R/I$ via multiplication
+by all degree $n$ monomials in $x_1, \ldots, x_d$.
+Hence $\text{length}_R(I^n/I^{n + 1})$ is bounded by a polynomial
+of degree $d-1$. Thus $d(R) \leq d$.
+
+\medskip\noindent
+Assume $d(R) = d$. Consider a chain of primes
+$\mathfrak p \subset \mathfrak q \subset
+\mathfrak q_2 \subset \ldots \subset \mathfrak q_e = \mathfrak m$,
+with all inclusions strict, and $e \geq 2$.
+Pick some ideal of definition $I \subset R$.
+We will repeatedly use
+Lemma \ref{lemma-hilbert-ses-chi}. First of all
+it implies, via the exact sequence
+$0 \to \mathfrak p \to R \to R/\mathfrak p \to 0$,
+that $d(R/\mathfrak p) \leq d$. But it clearly cannot
+be zero. Pick $x\in \mathfrak q$, $x\not \in \mathfrak p$.
+Consider the short exact sequence
+$$
+0 \to R/\mathfrak p \to R/\mathfrak p \to R/(xR + \mathfrak p) \to 0.
+$$
+This implies that $\chi_{I, R/\mathfrak p} - \chi_{I, R/\mathfrak p}
+- \chi_{I, R/(xR + \mathfrak p)} = - \chi_{I, R/(xR + \mathfrak p)}$
+has degree $ < d$. In other words, $d(R/(xR + \mathfrak p)) \leq d - 1$,
+and hence $\dim(R/(xR + \mathfrak p)) \leq d - 1$, by
+induction. Now $R/(xR + \mathfrak p)$ has the chain of prime ideals
+$\mathfrak q/(xR + \mathfrak p) \subset \mathfrak q_2/(xR + \mathfrak p)
+\subset \ldots \subset \mathfrak q_e/(xR + \mathfrak p)$ which gives
+$e - 1 \leq d - 1$. Since we started with an arbitrary chain of
+primes this proves that $\dim(R) \leq d(R)$.
+
+\medskip\noindent
+Reading back the reader will see we proved the circular
+inequalities as desired.
+\end{proof}
+
+\noindent
+Let $(R, \mathfrak m)$ be a Noetherian local ring.
+From the above it is clear that $\mathfrak m$ cannot be
+generated by fewer than $\dim(R)$ variables.
+By Nakayama's Lemma \ref{lemma-NAK} the minimal number
+of generators of $\mathfrak m$ equals $\dim_{\kappa(\mathfrak m)}
+\mathfrak m/\mathfrak m^2$. Hence we have the following
+fundamental inequality
+$$
+\dim(R) \leq \dim_{\kappa(\mathfrak m)} \mathfrak m/\mathfrak m^2.
+$$
+It turns out that the rings where equality holds
+have a lot of good properties. They are called
+regular local rings.
+
+\begin{definition}
+\label{definition-regular-local}
+Let $(R, \mathfrak m)$ be a Noetherian local ring of dimension $d$.
+\begin{enumerate}
+\item A {\it system of parameters of $R$} is a sequence of elements
+$x_1, \ldots, x_d \in \mathfrak m$ which generates an ideal of
+definition of $R$,
+\item if there exist $x_1, \ldots, x_d \in \mathfrak m$
+such that $\mathfrak m = (x_1, \ldots, x_d)$ then we call
+$R$ a {\it regular local ring} and $x_1, \ldots, x_d$ a {\it regular
+system of parameters}.
+\end{enumerate}
+\end{definition}
+
+\noindent
+The following lemmas are clear from the proofs of the
+lemmas and proposition above, but we spell them out so we have
+convenient references.
+
+\begin{lemma}
+\label{lemma-minimal-over-1}
+Let $R$ be a Noetherian ring. Let $x \in R$.
+\begin{enumerate}
+\item If $\mathfrak p$ is minimal over $(x)$
+then the height of $\mathfrak p$ is $0$ or $1$.
+\item If $\mathfrak p, \mathfrak q \in \Spec(R)$ and $\mathfrak q$
+is minimal over $(\mathfrak p, x)$, then there is no prime strictly
+between $\mathfrak p$ and $\mathfrak q$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Proof of (1). If $\mathfrak p$ is minimal over $x$, then the only
+prime ideal of $R_\mathfrak p$ containing $x$ is the maximal ideal
+$\mathfrak p R_\mathfrak p$. This is true because the primes of
+$R_\mathfrak p$ correspond $1$-to-$1$ with the primes of $R$ contained
+in $\mathfrak p$, see Lemma \ref{lemma-spec-localization}.
+Hence Lemma \ref{lemma-height-1} shows $\dim(R_\mathfrak p) = 1$
+if $x$ is not nilpotent in $R_\mathfrak p$. Of course, if
+$x$ is nilpotent in $R_\mathfrak p$ the argument gives that
+$\mathfrak pR_\mathfrak p$ is the only prime ideal and we see
+that the height is $0$.
+
+\medskip\noindent
+Proof of (2). By part (1) we see that $\mathfrak q/\mathfrak p$
+is a prime of height $1$ or $0$ in $R/\mathfrak p$. This immediately
+implies there cannot be a prime strictly between $\mathfrak p$
+and $\mathfrak q$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-minimal-over-r}
+Let $R$ be a Noetherian ring. Let $f_1, \ldots, f_r \in R$.
+\begin{enumerate}
+\item If $\mathfrak p$ is minimal over $(f_1, \ldots, f_r)$
+then the height of $\mathfrak p$ is $\leq r$.
+\item If $\mathfrak p, \mathfrak q \in \Spec(R)$ and
+$\mathfrak q$ is minimal over $(\mathfrak p, f_1, \ldots, f_r)$,
+then every chain of primes between $\mathfrak p$ and $\mathfrak q$
+has length at most $r$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Proof of (1). If $\mathfrak p$ is minimal over $f_1, \ldots, f_r$,
+then the only prime ideal of $R_\mathfrak p$ containing $f_1, \ldots, f_r$
+is the maximal ideal $\mathfrak p R_\mathfrak p$. This is true because
+the primes of $R_\mathfrak p$ correspond $1$-to-$1$ with the primes of
+$R$ contained in $\mathfrak p$, see Lemma \ref{lemma-spec-localization}.
+Hence Proposition \ref{proposition-dimension} shows
+$\dim(R_\mathfrak p) \leq r$.
+
+\medskip\noindent
+Proof of (2). By part (1) we see that $\mathfrak q/\mathfrak p$
+is a prime of height $\leq r$. This immediately
+implies the statement about chains of primes between $\mathfrak p$
+and $\mathfrak q$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-one-equation}
+Suppose that $R$ is a Noetherian local ring and $x\in \mathfrak m$ an
+element of its maximal ideal. Then $\dim R \leq \dim R/xR + 1$.
+If $x$ is not contained in any of the minimal primes of $R$
+then equality holds. (For example if $x$ is a nonzerodivisor.)
+\end{lemma}
+
+\begin{proof}
+If $x_1, \ldots, x_{\dim R/xR} \in R$ map to elements of $R/xR$ which
+generate an ideal of definition for $R/xR$, then $x, x_1, \ldots,
+x_{\dim R/xR}$ generate an ideal of definition for $R$. Hence
+the inequality by Proposition \ref{proposition-dimension}.
+On the other hand, if $x$ is not contained in any minimal
+prime of $R$, then the chains of primes in $R/xR$ all give
+rise to chains in $R$ which are at least one step away
+from being maximal.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-elements-generate-ideal-definition}
+Let $(R, \mathfrak m)$ be a Noetherian local ring.
+Suppose $x_1, \ldots, x_d \in \mathfrak m$ generate an
+ideal of definition and $d = \dim(R)$. Then
+$\dim(R/(x_1, \ldots, x_i)) = d - i$ for all $i = 1, \ldots, d$.
+\end{lemma}
+
+\begin{proof}
+Follows either from the proof of Proposition \ref{proposition-dimension},
+or by using induction on $d$ and Lemma \ref{lemma-one-equation}.
+\end{proof}
+
+
+
+
+
+
+

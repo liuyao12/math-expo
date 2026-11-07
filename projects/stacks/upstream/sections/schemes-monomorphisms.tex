@@ -1,0 +1,179 @@
+\section{Monomorphisms}
+\label{section-monomorphisms}
+
+\begin{definition}
+\label{definition-monomorphism}
+A morphism of schemes is called a {\it monomorphism} if it is
+a monomorphism in the category of schemes, see
+Categories, Definition \ref{categories-definition-mono-epi}.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-monomorphism}
+\begin{slogan}
+A scheme morphism is a monomorphism iff its diagonal is an isomorphism.
+\end{slogan}
+Let $j : X \to Y$ be a morphism of schemes.
+Then $j$ is a monomorphism if and only if the
+diagonal morphism $\Delta_{X/Y} : X \to X \times_Y X$ is
+an isomorphism.
+\end{lemma}
+
+\begin{proof}
+This is true in any category with fibre products.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-monomorphism-separated}
+A monomorphism of schemes is separated.
+\end{lemma}
+
+\begin{proof}
+This is true because an isomorphism is a closed immersion,
+and Lemma \ref{lemma-monomorphism} above.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-composition-monomorphism}
+A composition of monomorphisms is a monomorphism.
+\end{lemma}
+
+\begin{proof}
+True in any category.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-base-change-monomorphism}
+The base change of a monomorphism is a monomorphism.
+\end{lemma}
+
+\begin{proof}
+True in any category with fibre products.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-injective-points}
+Let $j : X \to Y$ be a morphism of schemes.
+If $j$ is injective on points, then $j$ is separated.
+\end{lemma}
+
+\begin{proof}
+Let $z$ be a point of $X \times_Y X$. Then $x = \text{pr}_1(z)$ and
+$\text{pr}_2(z)$ are the same because $j$ maps these points to
+the same point $y$ of $Y$. Then we can choose an affine
+open neighbourhood $V \subset Y$ of $y$ and an affine open
+neighbourhood $U \subset X$ of $x$ with $j(U) \subset V$.
+Then $z \in U \times_V U \subset X \times_Y X$.
+Hence $X \times_Y X$ is the union of the affine
+opens $U \times_V U$. Since $\Delta_{X/Y}^{-1}(U \times_V U) = U$
+and since $U \to U \times_V U$ is a closed immersion, we conclude
+that $\Delta_{X/Y}$ is a closed immersion (see argument in the
+proof of Lemma \ref{lemma-diagonal-immersion}).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-injective-points-surjective-stalks}
+Let $j : X \to Y$ be a morphism of schemes.
+If
+\begin{enumerate}
+\item $j$ is injective on points, and
+\item for any $x \in X$ the ring map
+$j^\sharp_x : \mathcal{O}_{Y, j(x)} \to \mathcal{O}_{X, x}$
+is surjective,
+\end{enumerate}
+then $j$ is a monomorphism.
+\end{lemma}
+
+\begin{proof}
+Let $a, b : Z \to X$ be two morphisms of schemes such that
+$j \circ a  = j \circ b$.
+Then (1) implies $a = b$ as underlying
+maps of topological spaces.
+For any $z \in Z$ we have
+$a^\sharp_z \circ j^\sharp_{a(z)} = b^\sharp_z \circ j^\sharp_{b(z)}$
+as maps $\mathcal{O}_{Y, j(a(z))} \to \mathcal{O}_{Z, z}$.
+The surjectivity of the maps
+$j^\sharp_x$ forces $a^\sharp_z = b^\sharp_z$, $\forall z \in Z$.
+This implies that $a^\sharp = b^\sharp$.
+Hence we conclude $a = b$ as morphisms of schemes
+as desired.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-immersions-monomorphisms}
+An immersion of schemes is a monomorphism.
+In particular, any immersion is separated.
+\end{lemma}
+
+\begin{proof}
+We can see this by checking that the criterion of
+Lemma \ref{lemma-injective-points-surjective-stalks} applies.
+More elegantly perhaps, we can use that
+Lemmas \ref{lemma-restrict-map-to-opens} and
+\ref{lemma-characterize-closed-subspace} imply that
+open and closed immersions are monomorphisms and hence
+any immersion (which is a composition of such)
+is a monomorphism.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-subscheme-of-separated-scheme}
+Let $f : X \to S$ be a separated morphism.
+Any locally closed subscheme $Z \subset X$ is separated over $S$.
+\end{lemma}
+
+\begin{proof}
+Follows from Lemma \ref{lemma-immersions-monomorphisms}
+and the fact that a composition of separated morphisms is separated
+(Lemma \ref{lemma-separated-permanence}).
+\end{proof}
+
+\begin{example}
+\label{example-Q-over-Z}
+The morphism $\Spec(\mathbf{Q}) \to \Spec(\mathbf{Z})$
+is a monomorphism. This is true because
+$\mathbf{Q} \otimes_{\mathbf{Z}} \mathbf{Q} = \mathbf{Q}$.
+More generally, for any scheme $S$ and any point $s \in S$ the
+canonical morphism
+$$
+\Spec(\mathcal{O}_{S, s}) \longrightarrow S
+$$
+is a monomorphism.
+\end{example}
+
+\begin{lemma}
+\label{lemma-mono-towards-spec-field}
+Let $k_1, \ldots, k_n$ be fields.
+For any monomorphism of schemes
+$X \to \Spec(k_1 \times \ldots \times k_n)$
+there exists a subset $I \subset \{1, \ldots, n\}$ such
+that $X \cong \Spec(\prod_{i \in I} k_i)$ as
+schemes over $\Spec(k_1 \times \ldots \times k_n)$.
+More generally, if $X = \coprod_{i \in I} \Spec(k_i)$
+is a disjoint union of spectra of fields and $Y \to X$ is a monomorphism,
+then there exists a subset $J \subset I$ such that
+$Y = \coprod_{i \in J} \Spec(k_i)$.
+\end{lemma}
+
+\begin{proof}
+First reduce to the case $n = 1$ (or $\# I = 1$)
+by taking the inverse images of the
+open and closed subschemes $\Spec(k_i)$.
+In this case $X$ has only one point hence is affine.
+The corresponding algebra problem is this:
+If $k \to R$ is an algebra map
+with $R \otimes_k R \cong R$, then $R \cong k$ or $R = 0$.
+This holds for dimension reasons.
+See also
+Algebra, Lemma \ref{algebra-lemma-epimorphism-over-field}
+\end{proof}
+
+
+
+
+
+
+
+
+
+

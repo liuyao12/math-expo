@@ -1,0 +1,413 @@
+\section{Interchanging direct products with tensor}
+\label{section-products-tensor}
+
+\noindent
+Let $M$ be an $R$-module and let $(Q_{\alpha})_{\alpha \in A}$ be a family of
+$R$-modules.  Then there is a canonical map $M \otimes_R \left( \prod_{\alpha
+\in A} Q_{\alpha} \right) \to \prod_{\alpha \in A} ( M \otimes_R
+Q_{\alpha})$ given on pure tensors by $x \otimes (q_{\alpha}) \mapsto (x
+\otimes q_{\alpha})$.  This map is not necessarily injective or surjective, as
+the following example shows.
+
+\begin{example}
+\label{example-Q-not-ML}
+Take $R = \mathbf{Z}$, $M = \mathbf{Q}$, and consider the family $Q_n =
+\mathbf{Z}/n$ for $n \geq 1$.  Then $\prod_n (M \otimes Q_n) = 0$.  However
+there is an injection $\mathbf{Q} \to M \otimes (\prod_n Q_n)$
+obtained by tensoring the injection $\mathbf{Z} \to \prod_n Q_n$ by
+$M$, so $M \otimes (\prod_n Q_n)$ is nonzero.  Thus $M \otimes (\prod_n
+Q_n) \to \prod_n (M \otimes Q_n)$ is not injective.
+
+\medskip\noindent
+On the other hand, take again $R = \mathbf{Z}$, $M = \mathbf{Q}$, and let $Q_n
+= \mathbf{Z}$ for $n \geq 1$.  The image of $M \otimes (\prod_n Q_n)
+\to \prod_n (M \otimes Q_n) = \prod_n M$ consists precisely of
+sequences of the form $(a_n/m)_{n \geq 1}$ with $a_n \in \mathbf{Z}$ and $m$
+some nonzero integer.  Hence the map is not surjective.
+\end{example}
+
+\noindent
+We determine below the precise conditions needed on $M$ for the map $M
+\otimes_R \left( \prod_{\alpha} Q_{\alpha} \right) \to \prod_{\alpha}
+(M \otimes_R Q_{\alpha})$ to be surjective, bijective, or injective for all
+choices of $(Q_{\alpha})_{\alpha \in A}$.  This is relevant because the modules
+for which it is injective turn out to be exactly Mittag-Leffler modules
+(Proposition \ref{proposition-ML-tensor}).  In what follows, if $M$ is an
+$R$-module and $A$ a set, we write $M^A$ for the product $\prod_{\alpha \in A}
+M$.
+
+\begin{proposition}
+\label{proposition-fg-tensor}
+Let $M$ be an $R$-module.  The following are equivalent:
+\begin{enumerate}
+\item $M$ is finitely generated.
+\item For every family $(Q_{\alpha})_{\alpha \in A}$ of $R$-modules, the
+canonical map $M \otimes_R \left( \prod_{\alpha} Q_{\alpha} \right)
+\to \prod_{\alpha} (M \otimes_R Q_{\alpha})$ is surjective.
+\item For every $R$-module $Q$ and every set $A$, the canonical map $M
+\otimes_R Q^{A} \to (M \otimes_R Q)^{A}$ is surjective.
+\item For every set $A$, the canonical map $M \otimes_R R^{A} \to
+M^{A}$ is surjective.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+First we prove (1) implies (2).  Choose a surjection $R^n \to M$ and
+consider the commutative diagram
+$$
+\xymatrix{
+R^n \otimes_R (\prod_{\alpha} Q_{\alpha})  \ar[r]^{\cong} \ar[d] &
+\prod_{\alpha} (R^n \otimes_R Q_{\alpha}) \ar[d] \\
+M \otimes_R (\prod_{\alpha} Q_{\alpha})  \ar[r] & \prod_{\alpha} ( M
+\otimes_R Q_{\alpha}).
+}
+$$
+The top arrow is an isomorphism and the vertical arrows are surjections.  We
+conclude that the bottom arrow is a surjection.
+
+\medskip\noindent
+Obviously (2) implies (3) implies (4), so it remains to prove (4) implies (1).
+In fact for (1) to hold it suffices that the element $d = (x)_{x \in M}$ of
+$M^M$ is in the image of the map $f: M \otimes_R R^{M} \to M^M$.  In
+this case $d = \sum_{i = 1}^{n} f(x_i \otimes a_i)$ for some $x_i \in M$ and
+$a_i \in R^M$.  If for $x \in M$ we write $p_x: M^M \to M$ for the
+projection onto the $x$-th factor, then
+$$
+x = p_x(d) = \sum\nolimits_{i = 1}^{n} p_x(f(x_i \otimes a_i)) =
+\sum\nolimits_{i=1}^{n} p_x(a_i) x_i.
+$$
+Thus $x_1, \ldots, x_n$ generate $M$.
+\end{proof}
+
+\begin{proposition}
+\label{proposition-fp-tensor}
+Let $M$ be an $R$-module.  The following are equivalent:
+\begin{enumerate}
+\item $M$ is finitely presented.
+\item For every family $(Q_{\alpha})_{\alpha \in A}$ of $R$-modules, the
+canonical map $M \otimes_R \left( \prod_{\alpha} Q_{\alpha} \right)
+\to \prod_{\alpha} (M \otimes_R Q_{\alpha})$ is bijective.
+\item For every $R$-module $Q$ and every set $A$, the canonical map $M
+\otimes_R Q^{A} \to (M \otimes_R Q)^{A}$ is bijective.
+\item For every set $A$, the canonical map $M \otimes_R R^{A} \to
+M^{A}$ is bijective.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+First we prove (1) implies (2).  Choose a presentation $R^m \to R^n
+\to M$ and consider the commutative diagram
+$$
+\xymatrix{
+R^m \otimes_R (\prod_{\alpha} Q_{\alpha}) \ar[r] \ar[d]^{\cong} & R^n
+\otimes_R (\prod_{\alpha} Q_{\alpha}) \ar[r] \ar[d]^{\cong} & M \otimes_R
+(\prod_{\alpha} Q_{\alpha}) \ar[r] \ar[d] & 0 \\
+\prod_{\alpha} (R^m \otimes_R Q_{\alpha}) \ar[r] & \prod_{\alpha} (R^n
+\otimes_R Q_{\alpha}) \ar[r] & \prod_{\alpha} (M \otimes_R Q_{\alpha})
+\ar[r] & 0.
+}
+$$
+The first two vertical arrows are isomorphisms and the rows are exact.  This
+implies that the map
+$M \otimes_R (\prod_{\alpha} Q_{\alpha}) \to
+\prod_{\alpha} ( M \otimes_R Q_{\alpha})$
+is surjective and, by a diagram chase, also injective.  Hence (2) holds.
+
+\medskip\noindent
+Obviously (2) implies (3) implies (4), so it remains to prove (4) implies (1).
+From Proposition \ref{proposition-fg-tensor}, if (4) holds we already know that
+$M$ is finitely generated.  So we can choose a surjection $F \to M$
+where $F$ is free and finite.  Let $K$ be the kernel.  We must show $K$ is
+finitely generated.  For any set $A$, we have a commutative diagram
+$$
+\xymatrix{
+& K \otimes_R R^A \ar[r] \ar[d]_{f_3} & F \otimes_R R^A \ar[r]
+\ar[d]_{f_2}^{\cong} & M \otimes_R R^A \ar[r] \ar[d]_{f_1}^{\cong} & 0 \\
+0 \ar[r] & K^A \ar[r] & F^A \ar[r] & M^A \ar[r] & 0 .
+}
+$$
+The map $f_1$ is an isomorphism by assumption, the map $f_2$ is an isomorphism
+since $F$ is free and finite, and the rows are exact.  A diagram chase shows
+that $f_3$ is surjective, hence by Proposition \ref{proposition-fg-tensor} we
+get that $K$ is finitely generated.
+\end{proof}
+
+\noindent
+We need the following lemma for the next proposition.
+
+\begin{lemma}
+\label{lemma-kernel-tensored-fp}
+Let $M$ be an $R$-module, $P$ a finitely presented $R$-module, and $f: P
+\to M$ a map.  Let $Q$ be an $R$-module and suppose $x \in \Ker(P
+\otimes Q \to M \otimes Q)$.  Then there exists a finitely presented
+$R$-module $P'$ and a map $f': P \to P'$ such that $f$ factors through
+$f'$ and $x \in \Ker(P \otimes Q \to P' \otimes Q)$.
+\end{lemma}
+
+\begin{proof}
+Write $M$ as a colimit $M = \colim_{i \in I} M_i$ of a directed system of
+finitely presented modules $M_i$.  Since $P$ is finitely presented, the map $f:
+P \to M$ factors through $M_j \to M$ for some $j \in I$.  Upon
+tensoring by $Q$ we have a commutative diagram
+$$
+\xymatrix{
+& M_j \otimes Q \ar[dr] & \\
+P \otimes Q \ar[ur] \ar[rr] & & M \otimes Q .
+}
+$$
+The image $y$ of $x$ in $M_j \otimes Q$ is in the kernel of $M_j \otimes Q
+\to M \otimes Q$.  Since $M \otimes Q = \colim_{i \in I} (M_i
+\otimes
+Q)$, this means $y$ maps to $0$ in $M_{j'} \otimes Q$ for some $j' \geq j$.
+Thus we may take $P' = M_{j'}$ and $f'$ to be the composite $P \to M_j
+\to M_{j'}$.
+\end{proof}
+
+\begin{proposition}
+\label{proposition-ML-tensor}
+Let $M$ be an $R$-module.  The following are equivalent:
+\begin{enumerate}
+\item $M$ is Mittag-Leffler.
+\item For every family $(Q_{\alpha})_{\alpha \in A}$ of $R$-modules, the
+canonical map $M \otimes_R \left( \prod_{\alpha} Q_{\alpha} \right)
+\to \prod_{\alpha} (M \otimes_R Q_{\alpha})$ is injective.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+First we prove (1) implies (2).  Suppose $M$ is Mittag-Leffler and let $x$ be
+in the kernel of $M \otimes_R (\prod_{\alpha} Q_{\alpha}) \to
+\prod_{\alpha} (M \otimes_R Q_{\alpha})$.  Write $M$ as a colimit $M =
+\colim_{i \in I} M_i$ of a directed system of finitely presented modules
+$M_i$.
+ Then $M \otimes_R (\prod_{\alpha} Q_{\alpha})$ is the colimit of $M_i
+\otimes_R (\prod_{\alpha} Q_{\alpha})$.  So $x$ is the image of an element
+$x_i \in M_i \otimes_R (\prod_{\alpha} Q_{\alpha})$.  We must show that $x_i$
+maps to $0$ in $M_j \otimes_R (\prod_{\alpha} Q_{\alpha})$ for some $j \geq
+i$.  Since $M$ is Mittag-Leffler, we may choose $j \geq i$ such that $M_i
+\to M_j$ and $M_i \to M$ dominate each other.  Then consider
+the commutative diagram
+$$
+\xymatrix{
+M \otimes_R (\prod_{\alpha} Q_{\alpha}) \ar[r] & \prod_{\alpha} (M
+\otimes_R Q_{\alpha}) \\
+M_i \otimes_R (\prod_{\alpha} Q_{\alpha}) \ar[r]^{\cong} \ar[d] \ar[u] &
+\prod_{\alpha} (M_i \otimes_R Q_{\alpha}) \ar[d] \ar[u] \\
+M_j \otimes_R (\prod_{\alpha} Q_{\alpha}) \ar[r]^{\cong} & \prod_{\alpha}
+(M_j \otimes_R Q_{\alpha})
+}
+$$
+whose bottom two horizontal maps are isomorphisms, according to Proposition
+\ref{proposition-fp-tensor}.  Since $x_i$ maps to $0$ in $\prod_{\alpha} (M
+\otimes_R Q_{\alpha})$, its image in $\prod_{\alpha} (M_i \otimes_R
+Q_{\alpha})$ is in the kernel of the map $\prod_{\alpha} (M_i \otimes_R
+Q_{\alpha}) \to \prod_{\alpha} (M \otimes_R Q_{\alpha})$.  But this
+kernel equals the kernel of $\prod_{\alpha} (M_i \otimes_R Q_{\alpha})
+\to \prod_{\alpha} (M_j \otimes_R Q_{\alpha})$ according to the
+choice of $j$.  Thus $x_i$ maps to $0$ in $\prod_{\alpha} (M_j \otimes_R
+Q_{\alpha})$ and hence to $0$ in $M_j \otimes_R (\prod_{\alpha} Q_{\alpha})$.
+
+\medskip\noindent
+Now suppose (2) holds. We prove $M$ satisfies formulation (1) of being
+Mittag-Leffler from Proposition \ref{proposition-ML-characterization}.  Let $f:
+P \to M$ be a map from a finitely presented module $P$ to $M$.  Choose
+a set $B$ of representatives of the isomorphism classes of finitely presented
+$R$-modules. Let $A$ be the set of pairs $(Q, x)$ where $Q \in B$ and $x \in
+\Ker(P \otimes Q \to M \otimes Q)$.  For $\alpha = (Q, x) \in A$, we
+write $Q_{\alpha}$ for $Q$ and $x_{\alpha}$ for $x$.  Consider the commutative
+diagram
+$$
+\xymatrix{
+M \otimes_R (\prod_{\alpha} Q_{\alpha}) \ar[r] &
+\prod_{\alpha} (M \otimes_R Q_{\alpha}) \\
+P \otimes_R (\prod_{\alpha} Q_{\alpha}) \ar[r]^{\cong} \ar[u] &
+\prod_{\alpha} (P \otimes_R Q_{\alpha}) \ar[u] .
+}
+$$
+The top arrow is an injection by assumption, and the bottom arrow is an
+isomorphism by Proposition \ref{proposition-fp-tensor}.  Let $x \in P
+\otimes_R (\prod_{\alpha} Q_{\alpha})$ be the element corresponding to
+$(x_{\alpha}) \in \prod_{\alpha} (P \otimes_R Q_{\alpha})$ under this
+isomorphism.  Then $x \in \Ker( P \otimes_R (\prod_{\alpha} Q_{\alpha})
+\to M \otimes_R (\prod_{\alpha} Q_{\alpha}))$ since the top arrow in
+the diagram is injective.  By Lemma \ref{lemma-kernel-tensored-fp}, we get a
+finitely presented module $P'$ and a map $f': P \to P'$ such that $f: P
+\to M$ factors through $f'$ and $x \in \Ker(P \otimes_R
+(\prod_{\alpha} Q_{\alpha}) \to P' \otimes_R (\prod_{\alpha}
+Q_{\alpha}))$.  We have a commutative diagram
+$$
+\xymatrix{
+P' \otimes_R (\prod_{\alpha} Q_{\alpha}) \ar[r]^{\cong} &
+\prod_{\alpha} (P' \otimes_R Q_{\alpha}) \\
+P \otimes_R (\prod_{\alpha} Q_{\alpha}) \ar[r]^{\cong} \ar[u] &
+\prod_{\alpha} (P \otimes_R Q_{\alpha}) \ar[u] .
+}
+$$
+where both the top and bottom arrows are isomorphisms by Proposition
+\ref{proposition-fp-tensor}.  Thus since $x$ is in the kernel of the left
+vertical map, $(x_{\alpha})$ is in the kernel of the right vertical map.  This
+means $x_{\alpha} \in \Ker(P \otimes_R Q_{\alpha} \to P' \otimes_R
+Q_{\alpha})$ for every $\alpha \in A$.  By the definition of $A$ this means
+$\Ker(P \otimes_R Q \to P' \otimes_R Q) \supset \Ker(P \otimes_R
+Q \to M \otimes_R Q)$ for all finitely presented $Q$ and, since $f: P
+\to M$ factors through $f': P \to P'$, actually equality holds.
+ By Lemma \ref{lemma-domination-fp}, $f$ and $f'$ dominate each other.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-minimal-contains}
+Let $M$ be a flat Mittag-Leffler module over $R$. Let $F$ be an $R$-module
+and let $x \in F \otimes_R M$. Then there exists a smallest submodule
+$F' \subset F$ such that $x \in F' \otimes_R M$.
+Also, $F'$ is a finite $R$-module.
+\end{lemma}
+
+\begin{proof}
+Since $M$ is flat we have $F' \otimes_R M \subset F \otimes_R M$
+if $F' \subset F$ is a submodule, hence the statement makes sense.
+Let $I = \{F' \subset F \mid x \in F' \otimes_R M\}$ and for
+$i \in I$ denote $F_i \subset F$ the corresponding submodule.
+Then $x$ maps to zero under the map
+$$
+F \otimes_R M \longrightarrow \prod (F/F_i \otimes_R M)
+$$
+whence by Proposition \ref{proposition-ML-tensor}
+$x$ maps to zero under the map
+$$
+F \otimes_R M \longrightarrow \left(\prod F/F_i\right) \otimes_R M
+$$
+Since $M$ is flat the kernel of this arrow is
+$(\bigcap F_i) \otimes_R M$ which proves that $F' = \bigcap F_i$.
+To see that $F'$ is a finite module, suppose that
+$x = \sum_{j = 1, \ldots, m} f_j \otimes m_j$ with $f_j \in F'$
+and $m_j \in M$. Then $x \in F'' \otimes_R M$ where $F'' \subset F'$ is
+the submodule generated by $f_1, \ldots, f_m$. Of course then
+$F'' = F'$ and we conclude the final statement holds.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-pure-submodule-ML}
+Let $0 \to M_1 \to M_2 \to M_3 \to 0$ be a
+universally exact sequence of $R$-modules.  Then:
+\begin{enumerate}
+\item If $M_2$ is Mittag-Leffler, then $M_1$ is Mittag-Leffler.
+\item If $M_1$ and $M_3$ are Mittag-Leffler, then $M_2$ is Mittag-Leffler.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+For any family $(Q_{\alpha})_{\alpha \in A}$ of $R$-modules we have a
+commutative diagram
+$$
+\xymatrix{
+0 \ar[r] & M_1 \otimes_R (\prod_{\alpha} Q_{\alpha}) \ar[r] \ar[d] & M_2
+\otimes_R (\prod_{\alpha} Q_{\alpha}) \ar[r] \ar[d] & M_3 \otimes_R
+(\prod_{\alpha} Q_{\alpha}) \ar[r] \ar[d] & 0 \\
+0 \ar[r] & \prod_{\alpha}(M_1 \otimes Q_{\alpha}) \ar[r] & \prod_{\alpha}(M_2
+\otimes Q_{\alpha}) \ar[r] & \prod_{\alpha}(M_3 \otimes Q_{\alpha})\ar[r] & 0
+}
+$$
+with exact rows. Thus (1) and (2) follow from
+Proposition \ref{proposition-ML-tensor}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-quotient-module-ML}
+Let $M_1 \to M_2 \to M_3 \to 0$ be an exact sequence of $R$-modules.
+If $M_1$ is finitely generated and $M_2$ is Mittag-Leffler, then $M_3$
+is Mittag-Leffler.
+\end{lemma}
+
+\begin{proof}
+For any family $(Q_{\alpha})_{\alpha \in A}$ of $R$-modules,
+since tensor product is right exact, we have a commutative diagram
+$$
+\xymatrix{
+M_1 \otimes_R (\prod_{\alpha} Q_{\alpha}) \ar[r] \ar[d] & M_2
+\otimes_R (\prod_{\alpha} Q_{\alpha}) \ar[r] \ar[d] & M_3 \otimes_R
+(\prod_{\alpha} Q_{\alpha}) \ar[r] \ar[d] & 0 \\
+\prod_{\alpha}(M_1 \otimes Q_{\alpha}) \ar[r] & \prod_{\alpha}(M_2
+\otimes Q_{\alpha}) \ar[r] & \prod_{\alpha}(M_3 \otimes Q_{\alpha})\ar[r] & 0
+}
+$$
+with exact rows. By Proposition \ref{proposition-fg-tensor}
+the left vertical arrow is surjective. By
+Proposition \ref{proposition-ML-tensor} the middle vertical arrow
+is injective. A diagram chase shows the right vertical arrow
+is injective. Hence $M_3$ is Mittag-Leffler by
+Proposition \ref{proposition-ML-tensor}.
+\end{proof}
+
+
+\begin{lemma}
+\label{lemma-colimit-universally-injective-ML}
+If $M = \colim M_i$ is the colimit of a directed system of Mittag-Leffler
+$R$-modules $M_i$ with universally injective transition maps, then $M$ is
+Mittag-Leffler.
+\end{lemma}
+
+\begin{proof}
+Let $(Q_{\alpha})_{\alpha \in A}$ be a family of $R$-modules. We have to
+show that $M \otimes_R (\prod Q_\alpha) \to \prod M \otimes_R Q_\alpha$
+is injective and we know that
+$M_i \otimes_R (\prod Q_\alpha) \to \prod M_i \otimes_R Q_\alpha$
+is injective for each $i$, see Proposition \ref{proposition-ML-tensor}.
+Since $\otimes$ commutes with filtered colimits, it suffices to show that
+$\prod M_i \otimes_R Q_\alpha \to \prod M \otimes_R Q_\alpha$
+is injective. This is clear as each of the maps
+$M_i \otimes_R Q_\alpha \to M \otimes_R Q_\alpha$ is injective
+by our assumption that the transition maps are universally injective.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-direct-sum-ML}
+If $M = \bigoplus_{i \in I} M_i$ is a direct sum of $R$-modules, then $M$ is
+Mittag-Leffler if and only if each $M_i$ is Mittag-Leffler.
+\end{lemma}
+
+\begin{proof}
+The ``only if'' direction follows from Lemma \ref{lemma-pure-submodule-ML} (1)
+and the fact that a split short exact sequence is universally exact. The
+converse follows from Lemma \ref{lemma-colimit-universally-injective-ML}
+but we can also argue it directly as follows. First note that if $I$ is
+finite then this follows from Lemma
+\ref{lemma-pure-submodule-ML} (2).  For general $I$, if all $M_i$ are
+Mittag-Leffler then we prove the same of $M$ by verifying condition (1) of
+Proposition \ref{proposition-ML-characterization}.
+Let $f: P \to M$ be a map from a finitely presented module $P$.
+Then $f$ factors as
+$P \xrightarrow{f'} \bigoplus_{i' \in I'} M_{i'} \hookrightarrow
+\bigoplus_{i \in I} M_i$
+for some finite subset $I'$ of $I$.  By the finite case
+$\bigoplus_{i' \in I'} M_{i'}$ is Mittag-Leffler and hence there exists
+a finitely presented  module $Q$ and a map $g: P \to Q$ such that $g$
+and $f'$ dominate each other.  Then also $g$ and $f$ dominate each other.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-flat-ML-over-ML-ring}
+Let $R \to S$ be a ring map. Let $M$ be an $S$-module.
+If $S$ is Mittag-Leffler as an $R$-module, and $M$ is flat and Mittag-Leffler
+as an $S$-module, then $M$ is Mittag-Leffler as an $R$-module.
+\end{lemma}
+
+\begin{proof}
+We deduce this from the characterization of
+Proposition \ref{proposition-ML-tensor}.
+Namely, suppose that $Q_\alpha$ is a family of $R$-modules.
+Consider the composition
+$$
+\xymatrix{
+M \otimes_R \prod_\alpha Q_\alpha =
+M \otimes_S S \otimes_R \prod_\alpha Q_\alpha \ar[d] \\
+M \otimes_S \prod_\alpha (S \otimes_R Q_\alpha) \ar[d] \\
+\prod_\alpha (M \otimes_S S \otimes_R Q_\alpha) =
+\prod_\alpha (M \otimes_R Q_\alpha)
+}
+$$
+The first arrow is injective as $M$ is flat over $S$ and $S$ is
+Mittag-Leffler over $R$ and the second arrow is injective as
+$M$ is Mittag-Leffler over $S$. Hence $M$ is Mittag-Leffler over $R$.
+\end{proof}
+
+

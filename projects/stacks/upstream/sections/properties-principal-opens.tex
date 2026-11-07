@@ -1,0 +1,258 @@
+\section{Sections over principal opens}
+\label{section-principal-opens}
+
+\noindent
+Here is a typical result of this kind. We will use a more naive but
+more direct method of proof in later lemmas.
+
+\begin{lemma}
+\label{lemma-invert-f-sections}
+\begin{slogan}
+Sections of quasi-coherent sheaves have only meromorphic singularities
+at infinity.
+\end{slogan}
+Let $X$ be a scheme. Let $f \in \Gamma(X, \mathcal{O}_X)$.
+Denote $X_f \subset X$ the open where $f$ is invertible, see
+Schemes, Lemma \ref{schemes-lemma-f-open}.
+If $X$ is quasi-compact and quasi-separated, the canonical map
+$$
+\Gamma(X, \mathcal{O}_X)_f \longrightarrow \Gamma(X_f, \mathcal{O}_X)
+$$
+is an isomorphism. Moreover, if $\mathcal{F}$ is a quasi-coherent
+sheaf of $\mathcal{O}_X$-modules the map
+$$
+\Gamma(X, \mathcal{F})_f \longrightarrow \Gamma(X_f, \mathcal{F})
+$$
+is an isomorphism.
+\end{lemma}
+
+\begin{proof}
+Write $R = \Gamma(X, \mathcal{O}_X)$. Consider the canonical morphism
+$$
+\varphi : X \longrightarrow \Spec(R)
+$$
+of schemes, see
+Schemes, Lemma
+\ref{schemes-lemma-morphism-into-affine}.
+Then the inverse image of the standard open $D(f)$ on the
+right hand side is $X_f$ on the left hand side.
+Moreover, since $X$ is assumed quasi-compact and quasi-separated
+the morphism $\varphi$ is quasi-compact and quasi-separated,
+see Schemes, Lemma \ref{schemes-lemma-quasi-compact-affine} and
+\ref{schemes-lemma-compose-after-separated}. Hence by
+Schemes, Lemma \ref{schemes-lemma-push-forward-quasi-coherent}
+we see that $\varphi_*\mathcal{F}$ is quasi-coherent.
+Hence we see that $\varphi_*\mathcal{F} = \widetilde M$
+with $M = \Gamma(X, \mathcal{F})$ as an $R$-module.
+Thus we see that
+$$
+\Gamma(X_f, \mathcal{F}) =
+\Gamma(D(f), \varphi_*\mathcal{F}) =
+\Gamma(D(f), \widetilde M) = M_f
+$$
+which is exactly the content of the lemma. The first displayed isomorphism
+of the lemma follows by taking $\mathcal{F} = \mathcal{O}_X$.
+\end{proof}
+
+\noindent
+Recall that given a scheme $X$, an invertible sheaf $\mathcal{L}$
+on $X$, and a sheaf of $\mathcal{O}_X$-modules $\mathcal{F}$
+we get a graded ring
+$\Gamma_*(X, \mathcal{L}) =
+\bigoplus\nolimits_{n \geq 0} \Gamma(X, \mathcal{L}^{\otimes n})$
+and a graded $\Gamma_*(X, \mathcal{L})$-module
+$\Gamma_*(X, \mathcal{L}, \mathcal{F}) =
+\bigoplus\nolimits_{n \in \mathbf{Z}}
+\Gamma(X, \mathcal{F} \otimes_{\mathcal{O}_X} \mathcal{L}^{\otimes n})$
+see Modules, Definition \ref{modules-definition-gamma-star}.
+If we have moreover a section $s \in \Gamma(X, \mathcal{L})$, then
+we obtain a map
+\begin{equation}
+\label{equation-module-invert-s}
+\Gamma_*(X, \mathcal{L}, \mathcal{F})_{(s)}
+\longrightarrow
+\Gamma(X_s, \mathcal{F}|_{X_s})
+\end{equation}
+which sends $t/s^n$ where
+$t \in \Gamma(X, \mathcal{F} \otimes_{\mathcal{O}_X} \mathcal{L}^{\otimes n})$
+to $t|_{X_s} \otimes s|_{X_s}^{-n}$. This makes sense
+because $X_s \subset X$ is by definition the open over which
+$s$ has an inverse, see Modules, Lemma \ref{modules-lemma-s-open}.
+
+\begin{lemma}
+\label{lemma-invert-s-sections}
+\begin{reference}
+\cite[Section 6.8]{EGA1-second}
+\end{reference}
+Let $X$ be a scheme. Let $\mathcal{L}$ be an invertible sheaf on $X$.
+Let $s \in \Gamma(X, \mathcal{L})$. Let $\mathcal{F}$ be a quasi-coherent
+$\mathcal{O}_X$-module.
+\begin{enumerate}
+\item If $X$ is quasi-compact, then (\ref{equation-module-invert-s})
+is injective, and
+\item if $X$ is quasi-compact and quasi-separated, then
+(\ref{equation-module-invert-s}) is an isomorphism.
+\end{enumerate}
+In particular, the canonical map
+$$
+\Gamma_*(X, \mathcal{L})_{(s)}
+\longrightarrow
+\Gamma(X_s, \mathcal{O}_X),\quad
+a/s^n \longmapsto a \otimes s^{-n}
+$$
+is an isomorphism if $X$ is quasi-compact and quasi-separated.
+\end{lemma}
+
+\begin{proof}
+Assume $X$ is quasi-compact. Choose a finite affine open covering
+$X = U_1 \cup \ldots \cup U_m$ with $U_j$ affine and
+$\mathcal{L}|_{U_j} \cong \mathcal{O}_{U_j}$. Via this isomorphism,
+the image $s|_{U_j}$ corresponds to some
+$f_j \in \Gamma(U_j, \mathcal{O}_{U_j})$. Then
+$X_s \cap U_j = D(f_j)$.
+
+\medskip\noindent
+Proof of (1). Let $t/s^n$ be an element in the kernel of
+(\ref{equation-module-invert-s}). Then $t|_{X_s} = 0$.
+Hence $(t|_{U_j})|_{D(f_j)} = 0$. By
+Lemma \ref{lemma-invert-f-sections} we conclude that
+$f_j^{e_j} t|_{U_j} = 0$ for some
+$e_j \geq 0$. Let $e = \max(e_j)$. Then we see that $t \otimes s^e$
+restricts to zero on $U_j$ for all $j$, hence is zero. Since $t/s^n$
+is equal to $t \otimes s^e/s^{n + e}$ in
+$\Gamma_*(X, \mathcal{L}, \mathcal{F})_{(s)}$ we conclude that $t/s^n = 0$
+as desired.
+
+\medskip\noindent
+Proof of (2). Assume $X$ is quasi-compact and quasi-separated.
+Then $U_j \cap U_{j'}$ is quasi-compact for all pairs $j, j'$, see
+Schemes, Lemma \ref{schemes-lemma-characterize-quasi-separated}.
+By part (1) we know (\ref{equation-module-invert-s}) is injective.
+Let $t' \in \Gamma(X_s, \mathcal{F}|_{X_s})$. For every $j$, there exist an
+integer $e_j \geq 0$ and $t'_j \in \Gamma(U_j, \mathcal{F}|_{U_j})$ such that
+$t'|_{D(f_j)}$ corresponds to $t'_j/f_j^{e_j}$
+via the isomorphism of Lemma \ref{lemma-invert-f-sections}.
+Set $e = \max(e_j)$ and
+$$
+t_j = f_j^{e - e_j} t'_j \otimes q_j^e \in
+\Gamma(U_j,
+(\mathcal{F} \otimes_{\mathcal{O}_X} \mathcal{L}^{\otimes e})|_{U_j})
+$$
+where $q_j \in \Gamma(U_j, \mathcal{L}|_{U_j})$ is the trivializing
+section coming from the isomorphism
+$\mathcal{L}|_{U_j} \cong \mathcal{O}_{U_j}$. In particular we have
+$s|_{U_j} = f_j q_j$. Using this a calculation shows that
+$t_j|_{U_j \cap U_{j'}}$ and $t_{j'}|_{U_j \cap U_{j'}}$
+map to the same section of $\mathcal{F}$ over $U_j \cap U_{j'} \cap X_s$.
+By quasi-compactness of $U_j \cap U_{j'}$ and part (1) there exists an
+integer $e' \geq 0$ such that
+$$
+t_j|_{U_j \cap U_{j'}} \otimes s^{e'}|_{U_j \cap U_{j'}} =
+t_{j'}|_{U_j \cap U_{j'}} \otimes s^{e'}|_{U_j \cap U_{j'}}
+$$
+as sections of $\mathcal{F} \otimes \mathcal{L}^{\otimes e + e'}$ over
+$U_j \cap U_{j'}$. We may choose the same $e'$ to work for all pairs
+$j, j'$. Then the sheaf conditions implies there is a section
+$t \in \Gamma(X, \mathcal{F} \otimes \mathcal{L}^{\otimes e + e'})$
+whose restriction to $U_j$ is $t_j \otimes s^{e'}|_{U_j}$.
+A simple computation shows that $t/s^{e + e'}$ maps to $t'$
+as desired.
+\end{proof}
+
+\noindent
+Let $X$ be a scheme. Let $\mathcal{L}$ be an invertible $\mathcal{O}_X$-module.
+Let $\mathcal{F}$ and $\mathcal{G}$ be quasi-coherent $\mathcal{O}_X$-modules.
+Consider the graded $\Gamma_*(X, \mathcal{L})$-module
+$$
+M = \bigoplus\nolimits_{n \in \mathbf{Z}} \Hom_{\mathcal{O}_X}(\mathcal{F},
+\mathcal{G} \otimes_{\mathcal{O}_X} \mathcal{L}^{\otimes n})
+$$
+Next, let $s \in \Gamma(X, \mathcal{L})$ be a section. Then there is a
+canonical map
+\begin{equation}
+\label{equation-hom-invert-s}
+M_{(s)} \longrightarrow
+\Hom_{\mathcal{O}_{X_s}}(\mathcal{F}|_{X_s}, \mathcal{G}|_{X_s})
+\end{equation}
+which sends $\alpha/s^n$ to the map $\alpha|_{X_s} \otimes s|_{X_s}^{-n}$.
+The following lemma, combined with
+Lemma \ref{lemma-extend-finite-presentation},
+says roughly that, if $X$ is quasi-compact and quasi-separated,
+the category of finitely presented $\mathcal{O}_{X_s}$-modules
+is the category of finitely presented $\mathcal{O}_X$-modules
+with the multiplicative system of maps
+$s^n: \mathcal{F} \to
+\mathcal{F} \otimes_{\mathcal{O}_X} \mathcal{L}^{\otimes n}$ inverted.
+
+\begin{lemma}
+\label{lemma-section-maps-backwards}
+Let $X$ be a scheme. Let $\mathcal{L}$ be an invertible $\mathcal{O}_X$-module.
+Let $s \in \Gamma(X, \mathcal{L})$ be a section.
+Let $\mathcal{F}$, $\mathcal{G}$ be quasi-coherent $\mathcal{O}_X$-modules.
+\begin{enumerate}
+\item If $X$ is quasi-compact and $\mathcal{F}$ is of finite type,
+then (\ref{equation-hom-invert-s}) is injective, and
+\item if $X$ is quasi-compact and quasi-separated and $\mathcal{F}$
+is of finite presentation, then
+(\ref{equation-hom-invert-s})
+is bijective.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+We first prove the lemma in case $X = \Spec(A)$ is affine
+and $\mathcal{L} = \mathcal{O}_X$. In this case $s$ corresponds
+to an element $f \in A$. Say
+$\mathcal{F} = \widetilde{M}$ and $\mathcal{G} = \widetilde{N}$
+for some $A$-modules $M$ and $N$. Then the lemma translates
+(via Lemmas \ref{lemma-finite-type-module} and
+\ref{lemma-finite-presentation-module}) into
+the following algebra statements
+\begin{enumerate}
+\item If $M$ is a finite $A$-module and $\varphi : M \to N$ is
+an $A$-module map such that the induced map $M_f \to N_f$ is zero,
+then $f^n\varphi = 0$ for some $n$.
+\item If $M$ is a finitely presented $A$-module, then
+$\Hom_A(M, N)_f = \Hom_{A_f}(M_f, N_f)$.
+\end{enumerate}
+The second statement is
+Algebra, Lemma \ref{algebra-lemma-hom-from-finitely-presented} and we omit
+the proof of the first statement.
+
+\medskip\noindent
+Next, we prove (1) for general $X$.
+Assume $X$ is quasi-compact and hoose a finite affine open covering
+$X = U_1 \cup \ldots \cup U_m$ with $U_j$ affine and
+$\mathcal{L}|_{U_j} \cong \mathcal{O}_{U_j}$. Via this isomorphism,
+the image $s|_{U_j}$ corresponds to some
+$f_j \in \Gamma(U_j, \mathcal{O}_{U_j})$. Then
+$X_s \cap U_j = D(f_j)$.
+Let $\alpha/s^n$ be an element in the kernel of
+(\ref{equation-hom-invert-s}). Then $\alpha|_{X_s} = 0$.
+Hence $(\alpha|_{U_j})|_{D(f_j)} = 0$. By the affine case treated above
+we conclude that $f_j^{e_j} \alpha|_{U_j} = 0$ for some
+$e_j \geq 0$. Let $e = \max(e_j)$. Then we see that $\alpha \otimes s^e$
+restricts to zero on $U_j$ for all $j$, hence is zero. Since $\alpha/s^n$
+is equal to $\alpha \otimes s^e/s^{n + e}$ in $M_{(s)}$ we conclude that
+$\alpha/s^n = 0$ as desired.
+
+\medskip\noindent
+Proof of (2). Since $\mathcal{F}$ is of finite presentation, the
+sheaf $\SheafHom_{\mathcal{O}_X}(\mathcal{F}, \mathcal{G})$ is
+quasi-coherent, see Schemes, Section \ref{schemes-section-quasi-coherent}.
+Moreover, it is clear that
+$$
+\SheafHom_{\mathcal{O}_X}(\mathcal{F},
+\mathcal{G} \otimes_{\mathcal{O}_X} \mathcal{L}^{\otimes n}) =
+\SheafHom_{\mathcal{O}_X}(\mathcal{F}, \mathcal{G})
+\otimes_{\mathcal{O}_X} \mathcal{L}^{\otimes n}
+$$
+for all $n$. Hence in this case the statement follows from
+Lemma \ref{lemma-invert-s-sections} applied to
+$\SheafHom_{\mathcal{O}_X}(\mathcal{F}, \mathcal{G})$.
+\end{proof}
+
+
+
+
+

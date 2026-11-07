@@ -1,0 +1,209 @@
+\section{Quasi-coherent sheaves and ample invertible sheaves}
+\label{section-ample-quasi-coherent}
+
+\noindent
+Theme of this section: in the presence of an ample invertible sheaf
+every quasi-coherent sheaf comes from a graded module.
+
+\begin{situation}
+\label{situation-ample}
+Let $X$ be a scheme.
+Let $\mathcal{L}$ be an ample invertible sheaf on $X$.
+Set $S = \Gamma_*(X, \mathcal{L})$ as a graded ring.
+Set $Y = \text{Proj}(S)$.
+Let $f : X \to Y$ be the canonical morphism of Lemma \ref{lemma-map-into-proj}.
+It comes equipped with a $\mathbf{Z}$-graded $\mathcal{O}_X$-algebra map
+$\bigoplus f^*\mathcal{O}_Y(n) \to \bigoplus \mathcal{L}^{\otimes n}$.
+\end{situation}
+
+\noindent
+The following lemma is really a special case of the next lemma
+but it seems like a good idea to point out its validity first.
+
+\begin{lemma}
+\label{lemma-ample-gcd-is-one}
+In Situation \ref{situation-ample}.
+The canonical morphism $f : X \to Y$
+maps $X$ into the open subscheme $W = W_1 \subset Y$
+where $\mathcal{O}_Y(1)$ is invertible and where
+all multiplication maps
+$\mathcal{O}_Y(n) \otimes_{\mathcal{O}_Y} \mathcal{O}_Y(m) \to
+\mathcal{O}_Y(n + m)$
+are isomorphisms (see
+Constructions, Lemma \ref{constructions-lemma-where-invertible}).
+Moreover, the maps $f^*\mathcal{O}_Y(n) \to \mathcal{L}^{\otimes n}$
+are all isomorphisms.
+\end{lemma}
+
+\begin{proof}
+By Proposition \ref{proposition-characterize-ample} there exists an integer
+$n_0$ such that $\mathcal{L}^{\otimes n}$ is globally generated for all
+$n \geq n_0$. Let $x \in X$ be a point. By the above we can find
+$a \in S_{n_0}$ and $b \in S_{n_0 + 1}$ such that
+$a$ and $b$ do not vanish at $x$. Hence
+$f(x) \in D_{+}(a) \cap D_{+}(b) = D_{+}(ab)$. By
+Constructions, Lemma \ref{constructions-lemma-where-invertible}
+we see that $f(x) \in W_1$ as desired. By
+Constructions, Lemma \ref{constructions-lemma-invertible-map-into-proj}
+which was used in the construction of the map $f$
+the maps
+$f^*\mathcal{O}_Y(n_0) \to \mathcal{L}^{\otimes n_0}$ and
+$f^*\mathcal{O}_Y(n_0 + 1) \to \mathcal{L}^{\otimes n_0 + 1}$
+are isomorphisms in a neighbourhood of $x$. By compatibility with
+the algebra structure and the fact that $f$ maps into $W$
+we conclude all the maps
+$f^*\mathcal{O}_Y(n) \to \mathcal{L}^{\otimes n}$ are isomorphisms
+in a neighbourhood of $x$. Hence we win.
+\end{proof}
+
+\noindent
+Recall from Modules, Definition \ref{modules-definition-gamma-star}
+that given a locally ringed space $X$, an invertible sheaf $\mathcal{L}$,
+and a $\mathcal{O}_X$-module $\mathcal{F}$ we have the graded
+$\Gamma_*(X, \mathcal{L})$-module
+$$
+\Gamma_*(X, \mathcal{L}, \mathcal{F}) =
+\bigoplus\nolimits_{n \in \mathbf{Z}}
+\Gamma(X, \mathcal{F} \otimes_{\mathcal{O}_X} \mathcal{L}^{\otimes n}).
+$$
+The following lemma says that, in Situation \ref{situation-ample},
+we can recover a quasi-coherent $\mathcal{O}_X$-module $\mathcal{F}$
+from this graded module. Take a look also at
+Constructions, Lemma \ref{constructions-lemma-quasi-coherent-projective-space}
+where we prove this lemma in the special case $X = \mathbf{P}^n_R$.
+
+\begin{lemma}
+\label{lemma-ample-quasi-coherent}
+In Situation \ref{situation-ample}.
+Let $\mathcal{F}$ be a quasi-coherent sheaf on $X$.
+Set $M = \Gamma_*(X, \mathcal{L}, \mathcal{F})$ as a graded $S$-module.
+There are isomorphisms
+$$
+f^*\widetilde{M} \longrightarrow \mathcal{F}
+$$
+functorial in $\mathcal{F}$ such that
+$M_0 \to \Gamma(\text{Proj}(S), \widetilde{M}) \to \Gamma(X, \mathcal{F})$
+is the identity map.
+\end{lemma}
+
+\begin{proof}
+Let $s \in S_{+}$ be homogeneous such that $X_s$ is affine open in $X$.
+Recall that $\widetilde{M}|_{D_{+}(s)}$ corresponds to the
+$S_{(s)}$-module $M_{(s)}$, see
+Constructions, Lemma \ref{constructions-lemma-proj-sheaves}.
+Recall that $f^{-1}(D_{+}(s)) = X_s$.
+As $X$ carries an ample invertible sheaf it is quasi-compact and
+quasi-separated, see Section \ref{section-ample}.
+By Lemma \ref{lemma-invert-s-sections} there is a canonical isomorphism
+$M_{(s)} = \Gamma_*(X, \mathcal{L}, \mathcal{F})_{(s)} \to
+\Gamma(X_s, \mathcal{F})$.
+Since $\mathcal{F}$ is quasi-coherent this leads to
+a canonical isomorphism
+$$
+f^*\widetilde{M}|_{X_s} \to \mathcal{F}|_{X_s}
+$$
+Since $\mathcal{L}$ is ample on $X$ we know that $X$ is covered
+by the affine opens of the form $X_s$. Hence it suffices to prove
+that the displayed maps glue on overlaps. Proof of this is
+omitted.
+\end{proof}
+
+\begin{remark}
+\label{remark-neurotic}
+With assumptions and notation of Lemma \ref{lemma-ample-quasi-coherent}.
+Denote the displayed map of the lemma by $\theta_\mathcal{F}$.
+Note that the isomorphism $f^*\mathcal{O}_Y(n) \to \mathcal{L}^{\otimes n}$
+of Lemma \ref{lemma-ample-gcd-is-one} is just
+$\theta_{\mathcal{L}^{\otimes n}}$.
+Consider the multiplication maps
+$$
+\widetilde{M} \otimes_{\mathcal{O}_Y} \mathcal{O}_Y(n)
+\longrightarrow
+\widetilde{M(n)}
+$$
+see
+Constructions, Equation (\ref{constructions-equation-multiply-more-generally}).
+Pull this back to $X$ and consider
+$$
+\xymatrix{
+f^*\widetilde{M} \otimes_{\mathcal{O}_X} f^*\mathcal{O}_Y(n)
+\ar[r]
+\ar[d]_{\theta_\mathcal{F} \otimes \theta_{\mathcal{L}^{\otimes n}}}
+&
+f^*\widetilde{M(n)}
+\ar[d]^{\theta_{\mathcal{F} \otimes \mathcal{L}^{\otimes n}}}
+\\
+\mathcal{F} \otimes \mathcal{L}^{\otimes n} \ar[r]^{\text{id}} &
+\mathcal{F} \otimes \mathcal{L}^{\otimes n}
+}
+$$
+Here we have used the obvious identification
+$M(n) = \Gamma_*(X, \mathcal{L}, \mathcal{F} \otimes \mathcal{L}^{\otimes n})$.
+This diagram commutes. Proof omitted.
+\end{remark}
+
+\noindent
+It should be possible to deduce the following lemma from
+Lemma \ref{lemma-ample-quasi-coherent} (or conversely) but it seems
+simpler to just repeat the proof.
+
+\begin{lemma}
+\label{lemma-proj-quasi-coherent}
+Let $S$ be a graded ring such that $X = \text{Proj}(S)$ is quasi-compact.
+Let $\mathcal{F}$ be a quasi-coherent $\mathcal{O}_X$-module. Set
+$M = \bigoplus_{n \in \mathbf{Z}} \Gamma(X, \mathcal{F}(n))$ as
+a graded $S$-module, see
+Constructions, Section \ref{constructions-section-invertible-on-proj}.
+The map
+$$
+\widetilde{M} \longrightarrow \mathcal{F}
+$$
+of Constructions, Lemma
+\ref{constructions-lemma-comparison-proj-quasi-coherent}
+is an isomorphism.
+If $X$ is covered by standard opens $D_+(f)$ where $f$ has degree $1$,
+then the induced maps
+$M_n \to \Gamma(X, \mathcal{F}(n))$ are the identity maps.
+\end{lemma}
+
+\begin{proof}
+Since $X$ is quasi-compact we can find homogeneous elements
+$f_1, \ldots, f_n \in S$ of positive degrees such that
+$X = D_+(f_1) \cup \ldots \cup D_+(f_n)$. Let $d$ be the
+least common multiple of the degrees of $f_1, \ldots, f_n$.
+After replacing $f_i$ by a power we may assume that each
+$f_i$ has degree $d$. Then we see that $\mathcal{L} = \mathcal{O}_X(d)$ is
+invertible, the multiplication maps
+$\mathcal{O}_X(ad) \otimes \mathcal{O}_X(bd) \to \mathcal{O}_X((a + b)d)$
+are isomorphisms, and each $f_i$ determines a global section $s_i$
+of $\mathcal{L}$ such that $X_{s_i} = D_+(f_i)$, see
+Constructions, Lemmas \ref{constructions-lemma-where-invertible} and
+\ref{constructions-lemma-principal-open}.
+Thus $\Gamma(X, \mathcal{F}(ad)) =
+\Gamma(X, \mathcal{F} \otimes \mathcal{L}^{\otimes a})$.
+Recall that $\widetilde{M}|_{D_{+}(f_i)}$ corresponds to the
+$S_{(f_i)}$-module $M_{(f_i)}$, see
+Constructions, Lemma \ref{constructions-lemma-proj-sheaves}.
+Since the degree of $f_i$ is $d$, the isomorphism class of
+$M_{(f_i)}$ depends only on the homogeneous summands of $M$ of
+degree divisible by $d$. More precisely, the isomorphism class of
+$M_{(f_i)}$ depends only on the graded $\Gamma_*(X, \mathcal{L})$-module
+$\Gamma_*(X, \mathcal{L}, \mathcal{F})$
+and the image $s_i$ of $f_i$ in $\Gamma_*(X, \mathcal{L})$.
+The scheme $X$ is quasi-compact by assumption and
+separated by Constructions, Lemma \ref{constructions-lemma-proj-separated}.
+By Lemma \ref{lemma-invert-s-sections} there is a canonical isomorphism
+$$
+M_{(f_i)} = \Gamma_*(X, \mathcal{L}, \mathcal{F})_{(s_i)} \to
+\Gamma(X_{s_i}, \mathcal{F}).
+$$
+The construction of the map in Constructions, Lemma
+\ref{constructions-lemma-comparison-proj-quasi-coherent}
+then shows that it is an isomorphism over $D_+(f_i)$
+hence an isomorphism as $X$ is covered by these opens.
+We omit the proof of the final statement.
+\end{proof}
+
+
+
+

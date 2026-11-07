@@ -1,0 +1,223 @@
+\section{Topoi}
+\label{section-topoi}
+
+\noindent
+Here is a definition of a topos which is suitable for our purposes.
+Namely, a topos is the category of sheaves on a site. In order to specify
+a topos you just specify the site. The real difference between a topos
+and a site lies in the definition of morphisms. Namely, it turns out that
+there are lots of morphisms of topoi which do not come from morphisms
+of the underlying sites.
+
+\begin{definition}[Topoi]
+\label{definition-topos}
+A {\it topos} is the category $\Sh(\mathcal{C})$ of sheaves
+on a site $\mathcal{C}$.
+\begin{enumerate}
+\item Let $\mathcal{C}$, $\mathcal{D}$ be sites.
+A {\it morphism of topoi} $f$ from $\Sh(\mathcal{D})$
+to $\Sh(\mathcal{C})$ is given by a pair of functors
+$f_* : \Sh(\mathcal{D}) \to \Sh(\mathcal{C})$
+and
+$f^{-1} : \Sh(\mathcal{C}) \to \Sh(\mathcal{D})$
+such that
+\begin{enumerate}
+\item we have
+$$
+\Mor_{\Sh(\mathcal{D})}(f^{-1}\mathcal{G}, \mathcal{F})
+=
+\Mor_{\Sh(\mathcal{C})}(\mathcal{G}, f_*\mathcal{F})
+$$
+bifunctorially, and
+\item the functor $f^{-1}$ commutes with finite limits, i.e.,
+is left exact.
+\end{enumerate}
+\item Let $\mathcal{C}$, $\mathcal{D}$, $\mathcal{E}$ be sites.
+Given morphisms of topoi
+$f :\Sh(\mathcal{D}) \to \Sh(\mathcal{C})$ and
+$g :\Sh(\mathcal{E}) \to \Sh(\mathcal{D})$ the
+{\it composition $f\circ g$} is the morphism of topoi defined
+by the functors
+$(f \circ g)_* = f_* \circ g_*$ and
+$(f \circ g)^{-1} = g^{-1} \circ f^{-1}$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+Suppose that $\alpha : \mathcal{S}_1 \to \mathcal{S}_2$ is an equivalence of
+(possibly ``big'') categories. If $\mathcal{S}_1$, $\mathcal{S}_2$
+are topoi, then setting $f_* = \alpha$ and $f^{-1}$ equal to a quasi-inverse
+of $\alpha$ gives a morphism $f : \mathcal{S}_1 \to \mathcal{S}_2$ of topoi.
+Moreover this morphism is an equivalence in the $2$-category of topoi (see
+Section \ref{section-2-category}).
+Thus it makes sense to say ``$\mathcal{S}$ is a topos'' if $\mathcal{S}$
+is equivalent to the category of sheaves on a site (and not necessarily
+equal to the category of sheaves on a site). We will occasionally
+use this abuse of notation.
+
+\medskip\noindent
+The {\it empty topos} is the topos
+of sheaves on the site $\mathcal{C}$, where $\mathcal{C}$
+is the empty category. We will sometimes write $\emptyset$ for this site.
+This is a site which has a unique sheaf (since $\emptyset$ has no
+objects). Thus $\Sh(\emptyset)$ is equivalent to the category
+having a single object and a single morphism.
+
+\medskip\noindent
+The {\it punctual topos} is the topos of sheaves on the site
+$\mathcal{C}$ which has a single object $pt$ and one morphism
+$\text{id}_{pt}$ and whose only covering is the covering
+$\{\text{id}_{pt}\}$. We will simply write $pt$ for this site.
+It is clear that the category of sheaves $ = $ the category of
+presheaves $ = $ the category of sets.
+In a formula $\Sh(pt) = \textit{Sets}$.
+
+\medskip\noindent
+Let $\mathcal{C}$ and $\mathcal{D}$ be sites. Let
+$f : \Sh(\mathcal{D}) \to \Sh(\mathcal{C})$ be a morphism of topoi.
+Note that $f_*$ commutes with all limits and that
+$f^{-1}$ commutes with all colimits, see Categories,
+Lemma \ref{categories-lemma-adjoint-exact}.
+In particular, the condition on $f^{-1}$ in the definition above
+guarantees that $f^{-1}$ is exact. Morphisms of topoi are often constructed
+using either Lemma \ref{lemma-cocontinuous-morphism-topoi}
+or the following lemma.
+
+\begin{lemma}
+\label{lemma-morphism-sites-topoi}
+Given a morphism of sites $f : \mathcal{D} \to \mathcal{C}$
+corresponding to the functor $u : \mathcal{C} \to \mathcal{D}$
+the pair of functors $(f^{-1} = u_s, f_* = u^s)$ is a morphism of topoi
+$\Sh(\mathcal{D}) \to \Sh(\mathcal{C})$.
+\end{lemma}
+
+\begin{proof}
+This is obvious from Definition \ref{definition-morphism-sites}.
+\end{proof}
+
+\begin{remark}
+\label{remark-pt-topos}
+There are many sites that give rise to the topos $\Sh(pt)$.
+A useful example is the following. Suppose that $S$ is a set (of sets)
+which contains at least one nonempty element. Let $\mathcal{S}$ be the
+category whose objects are elements of $S$ and whose morphisms are
+arbitrary set maps. Assume that $\mathcal{S}$ has fibre products.
+For example this will be the case if $S = \mathcal{P}(\text{infinite set})$
+is the power set of any infinite set (exercise in set theory).
+Make $\mathcal{S}$ into a site by declaring
+surjective families of maps to be coverings (and choose
+a suitable sufficiently large set of covering families as in
+Sets, Section \ref{sets-section-coverings-site}).
+We claim that $\Sh(\mathcal{S})$ is equivalent to the category of
+sets.
+
+\medskip\noindent
+We first prove this in case $S$ contains $e \in S$ which is a singleton.
+In this case, there is an equivalence of topoi
+$i : \Sh(pt) \to \Sh(\mathcal{S})$ given by
+the functors
+\begin{equation}
+\label{equation-sheaves-pt-sets}
+i^{-1}\mathcal{F} = \mathcal{F}(e), \quad
+i_*E = (U \mapsto \Mor_{\textit{Sets}}(U, E))
+\end{equation}
+Namely, suppose that $\mathcal{F}$ is a sheaf on $\mathcal{S}$.
+For any $U \in \Ob(\mathcal{S}) = S$ we can find a covering
+$\{\varphi_u : e \to U\}_{u \in U}$, where $\varphi_u$
+maps the unique element of $e$ to $u \in U$. The sheaf condition
+implies in this case that
+$\mathcal{F}(U) = \prod_{u \in U} \mathcal{F}(e)$.
+In other words
+$\mathcal{F}(U) = \Mor_{\textit{Sets}}(U, \mathcal{F}(e))$.
+Moreover, this rule is compatible with restriction mappings. Hence
+the functor
+$$
+i_* :
+\textit{Sets} = \Sh(pt)
+\longrightarrow
+\Sh(\mathcal{S}), \quad
+E \longmapsto (U \mapsto \Mor_{\textit{Sets}}(U, E))
+$$
+is an equivalence of categories, and its inverse is the functor
+$i^{-1}$ given above.
+
+\medskip\noindent
+If $\mathcal{S}$ does not contain a singleton, then the functor
+$i_*$ as defined above still makes sense. To show that it is still
+an equivalence in this case, choose any nonempty $\tilde e \in S$
+and a map $\varphi : \tilde e \to \tilde e$ whose image is a singleton.
+For any sheaf $\mathcal{F}$ set
+$$
+\mathcal{F}(e) :=
+\Im(
+\mathcal{F}(\varphi) :
+\mathcal{F}(\tilde e)
+\longrightarrow
+\mathcal{F}(\tilde e)
+)
+$$
+and show that this is a quasi-inverse to $i_*$. Details omitted.
+\end{remark}
+
+\begin{remark}
+\label{remark-morphism-topoi-big}
+(Set theoretical issues related to morphisms of topoi. Skip
+on a first reading.)
+A morphism of topoi as defined above is not a set but a class.
+In other words it is given by a mathematical formula rather
+than a mathematical object. Although we may contemplate
+the collection of all morphisms between two given topoi,
+it is not a good idea to introduce it as a mathematical object.
+On the other hand, suppose $\mathcal{C}$ and $\mathcal{D}$ are
+given sites. Consider a functor
+$\Phi : \mathcal{C} \to \Sh(\mathcal{D})$.
+Such a thing is a set, in other words, it is a mathematical object.
+We may, in succession, ask the following questions on $\Phi$.
+\begin{enumerate}
+\item Is it true, given a sheaf $\mathcal{F}$ on $\mathcal{D}$,
+that the rule
+$U \mapsto \Mor_{\Sh(\mathcal{D})}(\Phi(U), \mathcal{F})$
+defines a sheaf on $\mathcal{C}$? If so, this defines a functor
+$\Phi_* : \Sh(\mathcal{D}) \to \Sh(\mathcal{C})$.
+\item Is it true that $\Phi_*$ has a left adjoint? If so,
+write $\Phi^{-1}$ for this left adjoint.
+\item Is it true that $\Phi^{-1}$ is exact?
+\end{enumerate}
+If the last question still has the answer ``yes'', then we obtain
+a morphism of topoi $(\Phi_*, \Phi^{-1})$. Moreover, given any
+morphism of topoi $(f_*, f^{-1})$ we may set
+$\Phi(U) = f^{-1}(h_U^\#)$ and obtain a functor $\Phi$ as above
+with $f_* \cong \Phi_*$ and $f^{-1} \cong \Phi^{-1}$ (compatible
+with adjoint property).
+The upshot is that by working with the collection of $\Phi$
+instead of morphisms of topoi, we (a) replaced the notion of
+a morphism of topoi by a mathematical object, and (b)
+the collection of $\Phi$ forms a class (and not a collection
+of classes). Of course, more can be said, for example one can work
+out more precisely the significance of conditions (2) and (3) above;
+we do this in the case of points of topoi in Section \ref{section-points}.
+\end{remark}
+
+\begin{remark}
+\label{remark-quasi-continuous-morphism-topoi}
+(Skip on first reading.)
+Let $\mathcal{C}$ and $\mathcal{D}$ be sites.
+A quasi-morphism of sites $f : \mathcal{D} \to \mathcal{C}$
+(see Remark \ref{remark-quasi-continuous-morphism-sites})
+gives rise to a morphism of topoi $f$ from
+$\Sh(\mathcal{D})$ to $\Sh(\mathcal{C})$
+exactly as in Lemma \ref{lemma-morphism-sites-topoi}.
+\end{remark}
+
+
+
+
+
+
+
+
+
+
+
+
+

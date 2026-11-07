@@ -1,0 +1,158 @@
+\section{Cohen-Macaulay rings}
+\label{section-CM-ring}
+
+\noindent
+Most of the results of this section are special cases of the results
+in Section \ref{section-CM}.
+
+\begin{definition}
+\label{definition-local-ring-CM}
+A Noetherian local ring $R$ is called {\it Cohen-Macaulay}
+if it is Cohen-Macaulay as a module over itself.
+\end{definition}
+
+\noindent
+Note that this is equivalent to requiring the existence
+of a $R$-regular sequence $x_1, \ldots, x_d$ of the maximal
+ideal such that $R/(x_1, \ldots, x_d)$ has dimension $0$.
+We will usually just say ``regular sequence'' and not
+``$R$-regular sequence''.
+
+\begin{lemma}
+\label{lemma-reformulate-CM}
+\begin{slogan}
+Regular sequences in Cohen-Macaulay local rings are characterized
+by cutting out something of the correct dimension.
+\end{slogan}
+Let $R$ be a Noetherian local Cohen-Macaulay ring with maximal
+ideal $\mathfrak m $. Let $x_1, \ldots, x_c \in \mathfrak m$ be
+elements. Then
+$$
+x_1, \ldots, x_c
+\text{ is a regular sequence }
+\Leftrightarrow
+\dim(R/(x_1, \ldots, x_c)) = \dim(R) - c
+$$
+If so
+$x_1, \ldots, x_c$ can be extended to
+a regular sequence of length $\dim(R)$ and each quotient
+$R/(x_1, \ldots, x_i)$ is a Cohen-Macaulay ring of dimension
+$\dim(R) - i$.
+\end{lemma}
+
+\begin{proof}
+Special case of Proposition \ref{proposition-CM-module}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-maximal-chain-CM}
+Let $R$ be Noetherian local.
+Suppose $R$ is Cohen-Macaulay of dimension $d$.
+Any maximal chain of ideals $\mathfrak p_0 \subset
+\mathfrak p_1 \subset \ldots \subset \mathfrak p_n$
+has length $n = d$.
+\end{lemma}
+
+\begin{proof}
+Special case of Lemma \ref{lemma-maximal-chain-maximal-CM}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-CM-dim-formula}
+Suppose $R$ is a Noetherian local Cohen-Macaulay ring of dimension $d$.
+For any prime $\mathfrak p \subset R$ we have
+$$
+\dim(R) = \dim(R_{\mathfrak p}) + \dim(R/\mathfrak p).
+$$
+\end{lemma}
+
+\begin{proof}
+Follows immediately from Lemma \ref{lemma-maximal-chain-CM}.
+(Also, this is a special case of Lemma \ref{lemma-dim-formula-maximal-CM}.)
+\end{proof}
+
+\begin{lemma}
+\label{lemma-localize-CM}
+Suppose $R$ is a Cohen-Macaulay local ring.
+For any prime $\mathfrak p \subset R$ the
+ring $R_{\mathfrak p}$ is Cohen-Macaulay as well.
+\end{lemma}
+
+\begin{proof}
+Special case of Lemma \ref{lemma-localize-CM-module}.
+\end{proof}
+
+\begin{definition}
+\label{definition-ring-CM}
+A Noetherian ring $R$ is called {\it Cohen-Macaulay} if all
+its local rings are Cohen-Macaulay.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-CM-polynomial-algebra}
+Suppose $R$ is a Noetherian Cohen-Macaulay ring.
+Any polynomial algebra over $R$ is Cohen-Macaulay.
+\end{lemma}
+
+\begin{proof}
+Special case of Lemma \ref{lemma-maximal-CM-polynomial-algebra}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-dimension-shift}
+Let $R$ be a Noetherian local Cohen-Macaulay ring of dimension $d$.
+Let $0 \to K \to R^{\oplus n} \to M \to 0$ be an exact sequence of
+$R$-modules. Then either $M = 0$, or $\text{depth}(K) > \text{depth}(M)$, or
+$\text{depth}(K) = \text{depth}(M) = d$.
+\end{lemma}
+
+\begin{proof}
+This is a special case of Lemma \ref{lemma-depth-in-ses}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-mcm-resolution}
+Let $R$ be a local Noetherian Cohen-Macaulay ring of dimension $d$.
+Let $M$ be a finite $R$-module of depth $e$.
+There exists an exact complex
+$$
+0 \to K \to F_{d-e-1} \to \ldots \to F_0 \to M \to 0
+$$
+with each $F_i$ finite free and $K$ maximal Cohen-Macaulay.
+\end{lemma}
+
+\begin{proof}
+Immediate from the definition and Lemma \ref{lemma-dimension-shift}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-find-sequence-image-regular}
+Let $\varphi : A \to B$ be a map of local rings.
+Assume that $B$ is Noetherian and Cohen-Macaulay and that
+$\mathfrak m_B = \sqrt{\varphi(\mathfrak m_A) B}$. Then there exists
+a sequence of elements $f_1, \ldots, f_{\dim(B)}$ in $A$
+such that $\varphi(f_1), \ldots, \varphi(f_{\dim(B)})$ is a
+regular sequence in $B$.
+\end{lemma}
+
+\begin{proof}
+By induction on $\dim(B)$ it suffices to prove: If $\dim(B) \geq 1$, then we
+can find an element $f$ of $A$ which maps to a nonzerodivisor in $B$.
+By
+Lemma \ref{lemma-reformulate-CM}
+it suffices to find $f \in A$ whose image in $B$ is not contained in any
+of the finitely many minimal primes $\mathfrak q_1, \ldots, \mathfrak q_r$
+of $B$. By the assumption that
+$\mathfrak m_B = \sqrt{\varphi(\mathfrak m_A) B}$
+we see that $\mathfrak m_A \not \subset \varphi^{-1}(\mathfrak q_i)$.
+Hence we can find $f$ by
+Lemma \ref{lemma-silly}.
+\end{proof}
+
+
+
+
+
+
+
+

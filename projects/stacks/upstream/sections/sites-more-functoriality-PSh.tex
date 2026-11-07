@@ -1,0 +1,183 @@
+\section{More functoriality of presheaves}
+\label{section-more-functoriality-PSh}
+
+\noindent
+In this section we revisit the material of
+Section \ref{section-functoriality-PSh}.
+Let $u : \mathcal{C} \to \mathcal{D}$ be a functor between categories.
+Recall that
+$$
+u^p :
+\textit{PSh}(\mathcal{D})
+\longrightarrow
+\textit{PSh}(\mathcal{C})
+$$
+is the functor that associates to $\mathcal{G}$ on $\mathcal{D}$ the presheaf
+$u^p\mathcal{G} = \mathcal{G} \circ u$. It turns out that this functor
+not only has a left adjoint (namely $u_p$) but also a right adjoint.
+
+\medskip\noindent
+Namely, for any $V \in \Ob(\mathcal{D})$
+we define a category ${}_V\mathcal{I} = {}_V^u\mathcal{I}$.
+Its objects are pairs $(U, \psi : u(U) \to V)$.
+Note that the arrow is in the opposite direction from the arrow
+we used in defining the category $\mathcal{I}_V^u$ in
+Section \ref{section-functoriality-PSh}.
+A morphism $(U, \psi) \to (U', \psi')$ is given
+by a morphism $\alpha : U \to U'$ such that
+$\psi = \psi' \circ u(\alpha)$.
+In addition, given any presheaf of sets $\mathcal{F}$
+on $\mathcal{C}$ we introduce the functor
+${}_V\mathcal{F} : {}_V\mathcal{I}^{opp} \to \textit{Sets}$,
+which is defined by the rule
+${}_V\mathcal{F}(U, \psi) = \mathcal{F}(U)$. We define
+$$
+{}_pu(\mathcal{F})(V) := \lim_{{}_V\mathcal{I}^{opp}} {}_V\mathcal{F}
+$$
+As a limit there are projection maps
+$c(\psi) : {}_pu(\mathcal{F})(V) \to \mathcal{F}(U)$
+for every object $(U, \psi)$ of ${}_V\mathcal{I}$.
+In fact,
+$$
+{}_pu(\mathcal{F})(V)
+=
+\left\{
+\begin{matrix}
+\text{collections }
+s_{(U, \psi)} \in \mathcal{F}(U) \\
+\forall \beta : (U_1, \psi_1) \to (U_2, \psi_2)
+\text{ in }{}_V\mathcal{I} \\
+\text{ we have } \beta^*s_{(U_2, \psi_2)} = s_{(U_1, \psi_1)}
+\end{matrix}
+\right\}
+$$
+where the correspondence is given by $s \mapsto s_{(U, \psi)} = c(\psi)(s)$.
+We leave it to the reader to define the restriction mappings
+${}_pu(\mathcal{F})(V) \to {}_pu(\mathcal{F})(V')$
+associated to any morphism $V' \to V$ of $\mathcal{D}$.
+The resulting presheaf will be denoted ${}_pu\mathcal{F}$.
+
+\begin{lemma}
+\label{lemma-recover-pu}
+There is a canonical map
+${}_pu\mathcal{F}(u(U)) \to \mathcal{F}(U)$,
+which is compatible with restriction maps.
+\end{lemma}
+
+\begin{proof}
+This is just the projection map $c(\text{id}_{u(U)})$ above.
+\end{proof}
+
+\noindent
+Note that any map of presheaves $\mathcal{F} \to \mathcal{F}'$
+gives rise to compatible systems of maps between functors
+${}_V\mathcal{F} \to {}_V\mathcal{F}'$, and hence to a map
+of presheaves ${}_pu\mathcal{F} \to {}_pu\mathcal{F}'$. In other
+words, we have defined a functor
+$$
+{}_pu :
+\textit{PSh}(\mathcal{C})
+\longrightarrow
+\textit{PSh}(\mathcal{D})
+$$
+
+\begin{lemma}
+\label{lemma-adjoints-pu}
+The functor ${}_pu$ is a right adjoint to the functor $u^p$.
+In other words the formula
+$$
+\Mor_{\textit{PSh}(\mathcal{C})}(u^p\mathcal{G}, \mathcal{F})
+=
+\Mor_{\textit{PSh}(\mathcal{D})}(\mathcal{G}, {}_pu\mathcal{F})
+$$
+holds bifunctorially in $\mathcal{F}$ and $\mathcal{G}$.
+\end{lemma}
+
+\begin{proof}
+This is proved in exactly the same way as the proof
+of Lemma \ref{lemma-adjoints-u}. We note that the map
+$u^p{}_pu \mathcal{F} \to \mathcal{F}$ from
+Lemma \ref{lemma-recover-pu} is the map that
+is used to go from the right to the left.
+
+\medskip\noindent
+Alternately, think
+of a presheaf of sets $\mathcal{F}$ on $\mathcal{C}$ as a presheaf
+$\mathcal{F}'$ on $\mathcal{C}^{opp}$ with values in $\textit{Sets}^{opp}$,
+and similarly on $\mathcal{D}$.
+Check that $({}_pu \mathcal{F})' = u_p(\mathcal{F}')$,
+and that $(u^p\mathcal{G})' = u^p(\mathcal{G}')$.
+By Remark \ref{remark-functoriality-presheaves-values}
+we have the adjointness of $u_p$ and $u^p$ for
+presheaves with values in $\textit{Sets}^{opp}$.
+The result then follows formally from this.
+\end{proof}
+
+\noindent
+Thus given a functor $u : \mathcal{C} \to \mathcal{D}$ of categories
+we obtain a sequence of functors
+$$
+u_p, u^p, {}_pu
+$$
+between categories of presheaves where in each consecutive pair the
+first is left adjoint to the second.
+
+\begin{lemma}
+\label{lemma-adjoint-functors}
+Let $u : \mathcal{C} \to \mathcal{D}$ and $v : \mathcal{D} \to \mathcal{C}$
+be functors of categories. Assume that $v$ is right adjoint to $u$.
+Then we have
+\begin{enumerate}
+\item $u^ph_V = h_{v(V)}$ for any $V$ in $\mathcal{D}$,
+\item the category $\mathcal{I}^v_U$ has an initial object,
+\item the category ${}_V^u\mathcal{I}$ has a final object,
+\item ${}_pu = v^p$, and
+\item $u^p = v_p$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Proof of (1). Let $V$ be an object of $\mathcal{D}$. We have
+$u^ph_V = h_{v(V)}$ because
+$u^ph_V(U) = \Mor_\mathcal{D}(u(U), V) = \Mor_\mathcal{C}(U, v(V))$
+by assumption.
+
+\medskip\noindent
+Proof of (2). Let $U$ be an object of $\mathcal{C}$. Let
+$\eta : U \to v(u(U))$ be the map adjoint to the map
+$\text{id} : u(U) \to u(U)$. Then we claim $(u(U), \eta)$
+is an initial object of $\mathcal{I}_U^v$. Namely, given
+an object $(V, \phi : U \to v(V))$ of $\mathcal{I}_U^v$
+the morphism $\phi$ is adjoint to a map $\psi : u(U) \to V$
+which then defines a morphism $(u(U), \eta) \to (V, \phi)$.
+
+\medskip\noindent
+Proof of (3). Let $V$ be an object of $\mathcal{D}$. Let
+$\xi : u(v(V)) \to V$ be the map adjoint to the map
+$\text{id} : v(V) \to v(V)$. Then we claim $(v(V), \xi)$
+is a final object of ${}_V^u\mathcal{I}$. Namely, given
+an object $(U, \psi : u(U) \to V)$ of ${}_V^u\mathcal{I}$
+the morphism $\psi$ is adjoint to a map $\phi : U \to v(V)$
+which then defines a morphism $(U, \psi) \to (v(V), \xi)$.
+
+\medskip\noindent
+Hence for any presheaf $\mathcal{F}$ on $\mathcal{C}$ we have
+\begin{eqnarray*}
+v^p\mathcal{F}(V)
+& = &
+\mathcal{F}(v(V)) \\
+& = &
+\Mor_{\textit{PSh}(\mathcal{C})}(h_{v(V)}, \mathcal{F}) \\
+& = &
+\Mor_{\textit{PSh}(\mathcal{C})}(u^ph_V, \mathcal{F}) \\
+& = &
+\Mor_{\textit{PSh}(\mathcal{D})}(h_V, {}_pu\mathcal{F}) \\
+& = &
+{}_pu\mathcal{F}(V)
+\end{eqnarray*}
+which proves part (4). Part (5) follows by the uniqueness of adjoint functors.
+\end{proof}
+
+
+
+

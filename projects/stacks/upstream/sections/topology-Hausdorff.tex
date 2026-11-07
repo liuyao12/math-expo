@@ -1,0 +1,73 @@
+\section{Hausdorff spaces}
+\label{section-Hausdorff}
+
+\noindent
+The category of topological spaces has finite products.
+
+\begin{lemma}
+\label{lemma-Hausdorff}
+Let $X$ be a topological space. The following are equivalent:
+\begin{enumerate}
+\item $X$ is Hausdorff,
+\item the diagonal $\Delta(X) \subset X \times X$ is closed.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+We suppose that $X$ is Hausdorff. Let $(x, y) \not \in \Delta(X)$, i.e.,
+$x \neq y$. There are $U$ and $V$ disjoint open sets of $X$
+such that $x \in U$ and $y \in V$. This implies that $U \times V \subset
+(X \times X) \setminus \Delta(X) $. This shows that $ (X \times X) \setminus
+\Delta(X)$ is an open set of $ X \times X$ which is equivalent to saying that
+the diagonal $\Delta(X) \subset X \times X$ is closed in $X \times X$.
+The converse is similar:
+The complement $(X \times X) \setminus \Delta(X)$ consists
+precisely of $(x, y) \in X\times X$ with $ x \neq y$. Thus, if $ \Delta(X)
+\subset X \times X$ is closed, then, by the definition of the product topology,
+for every such $ (x, y)$, there are opens $U, V \subset X$ with $(x, y) \in
+U \times V$ and $(U \times V)\cap \Delta(X) = \emptyset$. In other words, with
+$x \in U$ and $y \in V$ such that $U \cap V = \emptyset$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-graph-closed}
+\begin{slogan}
+Graphs of maps to Hausdorff spaces are closed.
+\end{slogan}
+Let $f : X \to Y$ be a continuous map of topological spaces.
+If $Y$ is Hausdorff, then the graph of $f$ is closed in $X \times Y$.
+\end{lemma}
+
+\begin{proof}
+The graph is the inverse image of the diagonal under the map
+$X \times Y \to Y \times Y$. Thus the lemma follows from
+Lemma \ref{lemma-Hausdorff}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-section-closed}
+Let $f : X \to Y$ be a continuous map of topological spaces.
+Let $s : Y \to X$ be a continuous map such that $f \circ s = \text{id}_Y$.
+If $X$ is Hausdorff, then $s(Y)$ is closed.
+\end{lemma}
+
+\begin{proof}
+This follows from Lemma \ref{lemma-Hausdorff} as
+$s(Y) = \{x \in X \mid x = s(f(x))\}$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-fibre-product-closed}
+Let $X \to Z$ and $Y \to Z$ be continuous maps of topological spaces.
+If $Z$ is Hausdorff, then $X \times_Z Y$ is closed in $X \times Y$.
+\end{lemma}
+
+\begin{proof}
+This follows from Lemma \ref{lemma-Hausdorff} as
+$X \times_Z Y$ is the inverse image of $\Delta(Z)$
+under $X \times Y \to Z \times Z$.
+\end{proof}
+
+
+
+

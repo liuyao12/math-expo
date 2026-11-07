@@ -1,0 +1,209 @@
+\section{Limits of spaces}
+\label{section-limits}
+
+\noindent
+The category of topological spaces has products. Namely, if $I$ is a set
+and for $i \in I$ we are given a topological space $X_i$ then we endow
+$\prod_{i \in I} X_i$ with the {\it product topology}. As a basis for
+the topology we use sets of the form $\prod U_i$ where $U_i \subset X_i$
+is open and $U_i = X_i$ for almost all $i$.
+
+\medskip\noindent
+The category of topological spaces has equalizers. Namely, if
+$a, b : X \to Y$ are morphisms of topological spaces, then the
+equalizer of $a$ and $b$ is the subset $\{x \in X \mid a(x) = b(x)\} \subset X$
+endowed with the induced topology.
+
+\begin{lemma}
+\label{lemma-limits}
+The category of topological spaces has limits and the forgetful functor
+to sets commutes with them.
+\end{lemma}
+
+\begin{proof}
+This follows from the discussion above and
+Categories, Lemma \ref{categories-lemma-limits-products-equalizers}.
+It follows from the description above that the forgetful functor
+commutes with limits. Another way to see this is to use
+Categories, Lemma \ref{categories-lemma-adjoint-exact} and use that
+the forgetful functor has a left adjoint, namely the functor which
+assigns to a set the corresponding discrete topological space.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-describe-limits}
+Let $\mathcal{I}$ be a cofiltered category. Let $i \mapsto X_i$ be a diagram
+of topological spaces over $\mathcal{I}$. Let $X = \lim X_i$ be the limit
+with projection maps $f_i : X \to X_i$.
+\begin{enumerate}
+\item Any open of $X$ is of the form $\bigcup_{j \in J} f_j^{-1}(U_j)$
+for some subset $J \subset I$ and opens $U_j \subset X_j$.
+\item Any quasi-compact open of $X$ is of the form
+$f_i^{-1}(U_i)$ for some $i$ and some $U_i \subset X_i$ open.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+The construction of the limit given above shows that $X \subset \prod X_i$
+with the induced topology. A basis for the topology of $\prod X_i$ are
+the opens $\prod U_i$ where $U_i \subset X_i$ is open and $U_i = X_i$
+for almost all $i$. Say $i_1, \ldots, i_n \in \Ob(\mathcal{I})$ are the
+objects such that $U_{i_j} \not = X_{i_j}$. Then
+$$
+X \cap \prod U_i = f_{i_1}^{-1}(U_{i_1}) \cap \ldots \cap f_{i_n}^{-1}(U_{i_n})
+$$
+For a general limit of topological spaces these form a basis for the
+topology on $X$. However, if $\mathcal{I}$ is cofiltered as in the statement
+of the lemma, then we can pick a $j \in \Ob(\mathcal{I})$ and morphisms
+$j \to i_l$, $l = 1, \ldots, n$. Let
+$$
+U_j =
+(X_j \to X_{i_1})^{-1}(U_{i_1}) \cap \ldots \cap
+(X_j \to X_{i_n})^{-1}(U_{i_n})
+$$
+Then it is clear that $X \cap \prod U_i = f_j^{-1}(U_j)$. Thus for any open
+$W$ of $X$ there is a set $A$ and a map $\alpha : A \to \Ob(\mathcal{I})$ and
+opens $U_a \subset X_{\alpha(a)}$ such that
+$W = \bigcup f_{\alpha(a)}^{-1}(U_a)$. Set $J = \Im(\alpha)$ and
+for $j \in J$ set $U_j = \bigcup_{\alpha(a) = j} U_a$ to see that
+$W = \bigcup_{j \in J} f_j^{-1}(U_j)$.
+This proves (1).
+
+\medskip\noindent
+To see (2) suppose that $\bigcup_{j \in J} f_j^{-1}(U_j)$ is quasi-compact.
+Then it is equal to
+$f_{j_1}^{-1}(U_{j_1}) \cup \ldots \cup f_{j_m}^{-1}(U_{j_m})$
+for some $j_1, \ldots, j_m \in J$. Since $\mathcal{I}$ is cofiltered,
+we can pick a $i \in \Ob(\mathcal{I})$ and morphisms
+$i \to j_l$, $l = 1, \ldots, m$. Let
+$$
+U_i =
+(X_i \to X_{j_1})^{-1}(U_{j_1}) \cup \ldots \cup
+(X_i \to X_{j_m})^{-1}(U_{j_m})
+$$
+Then our open equals $f_i^{-1}(U_i)$ as desired. 
+\end{proof}
+
+\begin{lemma}
+\label{lemma-characterize-limit}
+Let $\mathcal{I}$ be a cofiltered category. Let $i \mapsto X_i$ be a diagram
+of topological spaces over $\mathcal{I}$. Let $X$ be a topological
+space such that
+\begin{enumerate}
+\item $X = \lim X_i$ as a set (denote $f_i$ the projection maps),
+\item the sets $f_i^{-1}(U_i)$ for $i \in \Ob(\mathcal{I})$ and
+$U_i \subset X_i$ open form a basis for the topology of $X$.
+\end{enumerate}
+Then $X$ is the limit of the $X_i$ as a topological space.
+\end{lemma}
+
+\begin{proof}
+Follows from the description of the limit topology
+in Lemma \ref{lemma-describe-limits}.
+\end{proof}
+
+\begin{theorem}[Tychonov]
+\label{theorem-tychonov}
+A product of quasi-compact spaces is quasi-compact.
+\end{theorem}
+
+\begin{proof}
+Let $I$ be a set and for $i \in I$ let $X_i$ be a quasi-compact topological
+space. Set $X = \prod X_i$. Let $\mathcal{B}$ be the set of subsets of $X$
+of the form $U_i \times \prod_{i' \in I, i' \not = i} X_{i'}$ where
+$U_i \subset X_i$ is open. By construction this family is a subbasis
+for the topology on $X$. By Lemma \ref{lemma-subbase-theorem} it
+suffices to show that any covering $X = \bigcup_{j \in J} B_j$
+by elements $B_j$ of $\mathcal{B}$ has a finite refinement.
+We can decompose $J = \coprod J_i$ so that if $j \in J_i$, then
+$B_j = U_j \times \prod_{i' \not = i} X_{i'}$ with $U_j \subset X_i$
+open. If $X_i = \bigcup_{j \in J_i} U_j$, then there is a finite
+refinement and we conclude that $X = \bigcup_{j \in J} B_j$
+has a finite refinement. If this is not the case, then for every $i$
+we can choose an point $x_i \in X_i$ which is not in
+$\bigcup_{j \in J_i} U_j$. But then the point $x = (x_i)_{i \in I}$
+is an element of $X$ not contained in $\bigcup_{j \in J} B_j$, a
+contradiction.
+\end{proof}
+
+\noindent
+The following lemma does not hold if one drops the assumption that
+the spaces $X_i$ are Hausdorff, see
+Examples, Section \ref{examples-section-lim-not-quasi-compact}.
+
+\begin{lemma}
+\label{lemma-inverse-limit-quasi-compact}
+Let $\mathcal{I}$ be a category and let $i \mapsto X_i$
+be a diagram over $\mathcal{I}$ in the category of topological
+spaces. If each $X_i$ is quasi-compact and Hausdorff, then
+$\lim X_i$ is quasi-compact.
+\end{lemma}
+
+\begin{proof}
+Recall that $\lim X_i$ is a subspace of $\prod X_i$. By
+Theorem \ref{theorem-tychonov} this product is quasi-compact. Hence it
+suffices to show that $\lim X_i$ is a closed subspace of $\prod X_i$
+(Lemma \ref{lemma-closed-in-quasi-compact}).
+If $\varphi : j \to k$ is a morphism of $\mathcal{I}$, then
+let $\Gamma_\varphi \subset X_j \times X_k$ denote the graph
+of the corresponding continuous map $X_j \to X_k$. By
+Lemma \ref{lemma-graph-closed} this graph is closed.
+It is clear that $\lim X_i$ is the intersection of the
+closed subsets
+$$
+\Gamma_\varphi \times \prod\nolimits_{l \not = j, k} X_l
+\subset \prod X_i
+$$
+Thus the result follows.
+\end{proof}
+
+\noindent
+The following lemma generalizes
+Categories, Lemma \ref{categories-lemma-nonempty-limit}
+and partially generalizes
+Lemma \ref{lemma-intersection-closed-in-quasi-compact}.
+
+\begin{lemma}
+\label{lemma-nonempty-limit}
+Let $\mathcal{I}$ be a cofiltered category and let $i \mapsto X_i$
+be a diagram over $\mathcal{I}$ in the category of topological
+spaces. If each $X_i$ is quasi-compact, Hausdorff, and nonempty, then
+$\lim X_i$ is nonempty.
+\end{lemma}
+
+\begin{proof}
+In the proof of Lemma \ref{lemma-inverse-limit-quasi-compact}
+we have seen that $X = \lim X_i$ is the intersection of the
+closed subsets
+$$
+Z_\varphi = \Gamma_\varphi \times \prod\nolimits_{l \not = j, k} X_l
+$$
+inside the quasi-compact space $\prod X_i$ where $\varphi : j \to k$
+is a morphism of $\mathcal{I}$ and $\Gamma_\varphi \subset X_j \times X_k$
+is the graph of the corresponding morphism $X_j \to X_k$. Hence by
+Lemma \ref{lemma-intersection-closed-in-quasi-compact}
+it suffices to show any finite intersection of these subsets is nonempty.
+Assume $\varphi_t : j_t \to k_t$, $t = 1, \ldots, n$ is a finite collection
+of morphisms of $\mathcal{I}$. Since $\mathcal{I}$ is cofiltered, we can
+pick an object $j$ and a morphism $\psi_t : j \to j_t$ for each $t$.
+For each pair $t, t'$ such that either (a) $j_t = j_{t'}$, or
+(b) $j_t = k_{t'}$, or (c) $k_t = k_{t'}$ we obtain two morphisms
+$j \to l$ with $l = j_t$ in case (a), (b) or $l = k_t$ in case (c).
+Because $\mathcal{I}$ is cofiltered and since there are finitely
+many pairs $(t, t')$ we may choose a map $j' \to j$ which equalizes
+these two morphisms for all such pairs $(t, t')$. Pick an element
+$x \in X_{j'}$ and for each $t$ let $x_{j_t}$, resp.\ $x_{k_t}$
+be the image of $x$ under the morphism $X_{j'} \to X_j \to X_{j_t}$,
+resp.\ $X_{j'} \to X_j \to X_{j_t} \to X_{k_t}$.
+For any index $l \in \Ob(\mathcal{I})$ which is not equal to
+$j_t$ or $k_t$ for some $t$ we pick an arbitrary element $x_l \in X_l$
+(using the axiom of choice). Then $(x_i)_{i \in \Ob(\mathcal{I})}$
+is in the intersection 
+$$
+Z_{\varphi_1} \cap \ldots \cap Z_{\varphi_n}
+$$
+by construction and the proof is complete.
+\end{proof}
+
+
+

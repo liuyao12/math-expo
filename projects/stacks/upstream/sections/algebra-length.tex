@@ -1,0 +1,353 @@
+\section{Length}
+\label{section-length}
+
+\begin{definition}
+\label{definition-length}
+Let $R$ be a ring. For any $R$-module $M$
+we define the {\it length} of $M$ over $R$ by the
+formula
+$$
+\text{length}_R(M)
+=
+\sup
+\{
+n
+\mid
+\exists\ 0 = M_0 \subset M_1 \subset \ldots \subset M_n = M,
+\text{ }M_i \not = M_{i + 1}
+\}.
+$$
+\end{definition}
+
+\noindent
+In other words it is the supremum of the lengths of chains
+of submodules. There is an obvious notion of when a chain
+of submodules is a refinement of another. This gives a
+partial ordering on the collection of all chains of submodules,
+with the smallest chain having the shape $0 = M_0 \subset M_1 = M$
+if $M$ is not zero.
+We note the obvious fact that if the length of
+$M$ is finite, then every chain can be refined to a
+maximal chain. But it is not as obvious that all maximal
+chains have the same length (as we will see later).
+
+\begin{lemma}
+\label{lemma-finite-length-finite}
+\begin{slogan}
+Modules of finite length are finite.
+\end{slogan}
+Let $R$ be a ring.
+Let $M$ be an $R$-module.
+If $\text{length}_R(M) < \infty$ then $M$ is a finite $R$-module.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-length-additive}
+\begin{slogan}
+Length is additive in short exact sequences.
+\end{slogan}
+If $0 \to M' \to M \to M'' \to 0$
+is a short exact sequence of modules over $R$ then
+the length of $M$ is the sum of the
+lengths of $M'$ and $M''$.
+\end{lemma}
+
+\begin{proof}
+Given filtrations of $M'$ and $M''$ of lengths $n', n''$
+it is easy to make a corresponding filtration of $M$
+of length $n' + n''$. Thus we see that $\text{length}_R M
+\geq \text{length}_R M' + \text{length}_R M''$.
+Conversely, given a filtration
+$M_0 \subset M_1 \subset \ldots \subset M_n$ of
+$M$ consider the induced filtrations
+$M_i' = M_i \cap M'$ and $M_i'' = \Im(M_i \to M'')$.
+Let $n'$ (resp.\ $n''$) be the number of steps in the filtration
+$\{M'_i\}$ (resp.\ $\{M''_i\}$).
+If $M_i' = M_{i + 1}'$ and $M_i'' = M_{i + 1}''$ then
+$M_i = M_{i + 1}$. Hence we conclude that $n' + n'' \geq n$.
+Combined with the earlier result we win.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-length-infinite}
+Let $R$ be a local ring with maximal ideal $\mathfrak m$.
+If $M$ is an $R$-module and $\mathfrak m^n M \not = 0$ for all $n \geq 0$,
+then $\text{length}_R(M) = \infty$. In other words, if $M$
+has finite length then $\mathfrak m^nM = 0$ for some $n$.
+\end{lemma}
+
+\begin{proof}
+Assume $\mathfrak m^n M \not = 0$ for all $n\geq 0$.
+Choose $x \in M$ and $f_1, \ldots, f_n \in \mathfrak m$
+such that $f_1f_2 \ldots f_n x \not = 0$.
+The first $n$ steps in the filtration
+$$
+0 \subset R f_1 \ldots f_n x \subset R f_1 \ldots f_{n - 1} x
+\subset \ldots \subset R x \subset M
+$$
+are distinct. For example, if
+$R f_1 x = R f_1 f_2 x$ , then $f_1 x = g f_1 f_2 x$ for some $g$,
+hence $(1 - gf_2) f_1 x = 0$ hence $f_1 x = 0$ as $1 - gf_2$ is a unit
+which is a contradiction with the choice of $x$ and $f_1, \ldots, f_n$.
+Hence the length is infinite.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-length-independent}
+Let $R \to S$ be a ring map. Let $M$ be an $S$-module.
+We always have $\text{length}_R(M) \geq \text{length}_S(M)$.
+If $R \to S$ is surjective then equality holds.
+\end{lemma}
+
+\begin{proof}
+A filtration of $M$ by $S$-submodules gives rise a filtration
+of $M$ by $R$-submodules. This proves the inequality.
+And if $R \to S$ is surjective, then any $R$-submodule
+of $M$ is automatically an $S$-submodule. Hence equality
+in this case.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-dimension-is-length}
+Let $R$ be a ring with maximal ideal $\mathfrak m$.
+Suppose that $M$ is an $R$-module with
+$\mathfrak m M  =  0$. Then the length of $M$ as
+an $R$-module agrees with the dimension of $M$ as
+a $R/\mathfrak m$ vector space.
+The length is finite if and only if $M$ is a finite $R$-module.
+\end{lemma}
+
+\begin{proof}
+The first part is a special case of Lemma \ref{lemma-length-independent}.
+Thus the length is finite if and only if $M$ has a finite basis
+as a $R/\mathfrak m$-vector space if and only if $M$ has a finite
+set of generators as an $R$-module.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-length-localize}
+Let $R$ be a ring. Let $M$ be an $R$-module. Let $S \subset R$ be
+a multiplicative subset. Then
+$\text{length}_R(M) \geq \text{length}_{S^{-1}R}(S^{-1}M)$.
+\end{lemma}
+
+\begin{proof}
+Any submodule $N' \subset S^{-1}M$ is of the form
+$S^{-1}N$ for some $R$-submodule $N \subset M$, by Lemma
+\ref{lemma-submodule-localization}. The lemma follows.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-length-finite}
+Let $R$ be a ring with finitely generated
+maximal ideal $\mathfrak m$. (For example $R$ Noetherian.)
+Suppose that $M$ is a finite $R$-module with
+$\mathfrak m^n M  =  0$ for some $n$.
+Then $\text{length}_R(M) < \infty$.
+\end{lemma}
+
+\begin{proof}
+Consider the filtration
+$0 = \mathfrak m^n M \subset
+\mathfrak m^{n-1} M \subset
+\ldots \subset \mathfrak m M \subset M$.
+All of the subquotients are finitely generated $R$-modules
+to which Lemma \ref{lemma-dimension-is-length} applies. We conclude
+by additivity, see Lemma \ref{lemma-length-additive}.
+\end{proof}
+
+\begin{definition}
+\label{definition-simple-module}
+Let $R$ be a ring. Let $M$ be an $R$-module.
+We say $M$ is {\it simple} if $M \not = 0$ and
+every submodule of $M$ is either equal to $M$ or
+to $0$.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-characterize-length-1}
+Let $R$ be a ring. Let $M$ be an $R$-module.
+The following are equivalent:
+\begin{enumerate}
+\item $M$ is simple,
+\item $\text{length}_R(M) = 1$, and
+\item $M \cong R/\mathfrak m$ for some maximal ideal
+$\mathfrak m \subset R$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let $\mathfrak m$ be a maximal ideal of $R$.
+By Lemma \ref{lemma-dimension-is-length} the module
+$R/\mathfrak m$ has length $1$. The equivalence of
+the first two assertions is tautological.
+Suppose that $M$ is simple. Choose $x \in M$, $x \not = 0$.
+As $M$ is simple we have $M = R \cdot x$.
+Let $I \subset R$ be the annihilator of $x$, i.e.,
+$I = \{f \in R \mid fx = 0\}$. The map $R/I \to M$,
+$f \bmod I \mapsto fx$ is an isomorphism, hence
+$R/I$ is a simple $R$-module. Since $R/I \not = 0$ we see $I \not = R$.
+Let $I \subset \mathfrak m$ be a maximal ideal containing $I$.
+If $I \not = \mathfrak m$, then $\mathfrak m /I \subset R/I$
+is a nontrivial submodule contradicting the simplicity
+of $R/I$. Hence we see $I = \mathfrak m$ as desired.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-simple-pieces}
+Let $R$ be a ring. Let $M$ be a finite length $R$-module.
+Choose any maximal chain of submodules
+$$
+0 = M_0 \subset M_1 \subset M_2 \subset \ldots \subset M_n = M
+$$
+with $M_i \not = M_{i-1}$, $i = 1, \ldots, n$. Then
+\begin{enumerate}
+\item $n = \text{length}_R(M)$,
+\item each $M_i/M_{i-1}$ is simple,
+\item each $M_i/M_{i-1}$ is of the form
+$R/\mathfrak m_i$ for some maximal ideal $\mathfrak m_i$,
+\item given a maximal ideal $\mathfrak m \subset R$
+we have
+$$
+\# \{i \mid \mathfrak m_i = \mathfrak m\}
+=
+\text{length}_{R_{\mathfrak m}} (M_{\mathfrak m}).
+$$
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+If $M_i/M_{i-1}$ is not simple then we can refine the filtration
+and the filtration is not maximal. Thus we see that $M_i/M_{i-1}$
+is simple. By Lemma \ref{lemma-characterize-length-1} the modules
+$M_i/M_{i-1}$ have length $1$ and are of the form $R/\mathfrak m_i$
+for some maximal ideals $\mathfrak m_i$. By additivity of length,
+Lemma \ref{lemma-length-additive}, we see $n = \text{length}_R(M)$.
+Since localization is exact, we see that
+$$
+0 = (M_0)_{\mathfrak m}
+\subset (M_1)_{\mathfrak m}
+\subset (M_2)_{\mathfrak m}
+\subset \ldots
+\subset (M_n)_{\mathfrak m} = M_{\mathfrak m}
+$$
+is a filtration of $M_{\mathfrak m}$ with successive quotients
+$(M_i/M_{i-1})_{\mathfrak m}$. Thus the last statement follows
+directly from the fact that given maximal ideals $\mathfrak m$,
+$\mathfrak m'$ of $R$ we have
+$$
+(R/\mathfrak m')_{\mathfrak m}
+\cong
+\left\{
+\begin{matrix}
+0 &
+\text{if } \mathfrak m \not = \mathfrak m', \\
+R_{\mathfrak m}/\mathfrak m R_{\mathfrak m} &
+\text{if } \mathfrak m  = \mathfrak m'
+\end{matrix}
+\right.
+$$
+This we leave to the reader.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-pushdown-module}
+Let $A$ be a local ring with maximal ideal $\mathfrak m$.
+Let $B$ be a semi-local ring with maximal ideals $\mathfrak m_i$,
+$i = 1, \ldots, n$.
+Suppose that $A \to B$ is a homomorphism such that each $\mathfrak m_i$
+lies over $\mathfrak m$ and such that
+$$
+[\kappa(\mathfrak m_i) : \kappa(\mathfrak m)] < \infty.
+$$
+Let $M$ be a $B$-module of finite length.
+Then
+$$
+\text{length}_A(M) = \sum\nolimits_{i = 1, \ldots, n}
+[\kappa(\mathfrak m_i) : \kappa(\mathfrak m)]
+\text{length}_{B_{\mathfrak m_i}}(M_{\mathfrak m_i}),
+$$
+in particular $\text{length}_A(M) < \infty$.
+\end{lemma}
+
+\begin{proof}
+Choose a maximal chain
+$$
+0 = M_0
+\subset M_1
+\subset M_2
+\subset \ldots
+\subset M_m = M
+$$
+by $B$-submodules as in Lemma \ref{lemma-simple-pieces}.
+Then each quotient $M_j/M_{j - 1}$ is isomorphic to
+$\kappa(\mathfrak m_{i(j)})$ for some $i(j) \in \{1, \ldots, n\}$.
+Moreover
+$\text{length}_A(\kappa(\mathfrak m_i)) =
+[\kappa(\mathfrak m_i) : \kappa(\mathfrak m)]$ by
+Lemma \ref{lemma-dimension-is-length}. The lemma follows
+by additivity of lengths (Lemma \ref{lemma-length-additive}).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-pullback-module}
+Let $A \to B$ be a flat local homomorphism of local rings.
+Then for any $A$-module $M$ we have
+$$
+\text{length}_A(M) \text{length}_B(B/\mathfrak m_AB)
+=
+\text{length}_B(M \otimes_A B).
+$$
+In particular, if $\text{length}_B(B/\mathfrak m_AB) < \infty$
+then $M$ has finite length if and only if $M \otimes_A B$ has finite length.
+\end{lemma}
+
+\begin{proof}
+The ring map $A \to B$ is faithfully flat by
+Lemma \ref{lemma-local-flat-ff}.
+Hence if $0 = M_0 \subset M_1 \subset \ldots \subset M_n = M$
+is a chain of length $n$ in $M$, then the corresponding chain
+$0 = M_0 \otimes_A B \subset M_1 \otimes_A B \subset
+\ldots \subset M_n \otimes_A B = M \otimes_A B$ has length $n$
+also. This proves
+$\text{length}_A(M) = \infty \Rightarrow
+\text{length}_B(M \otimes_A B) = \infty$.
+Next, assume $\text{length}_A(M) < \infty$. In this case we see
+that $M$ has a filtration of length $\ell = \text{length}_A(M)$
+whose quotients are $A/\mathfrak m_A$. Arguing as above
+we see that $M \otimes_A B$ has a filtration of length $\ell$
+whose quotients are isomorphic to
+$B \otimes_A A/\mathfrak m_A =  B/\mathfrak m_AB$.
+Thus the lemma follows.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-pullback-transitive}
+Let $A \to B \to C$ be flat local homomorphisms of local rings. Then
+$$
+\text{length}_B(B/\mathfrak m_A B)
+\text{length}_C(C/\mathfrak m_B C)
+=
+\text{length}_C(C/\mathfrak m_A C)
+$$
+\end{lemma}
+
+\begin{proof}
+Follows from Lemma \ref{lemma-pullback-module} applied to the ring map
+$B \to C$ and the $B$-module $M = B/\mathfrak m_A B$
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,120 @@
+\section{Zerodivisors and total rings of fractions}
+\label{section-total-quotient-ring}
+
+\noindent
+The local ring at a minimal prime has the following properties.
+
+\begin{lemma}
+\label{lemma-minimal-prime-reduced-ring}
+Let $\mathfrak p$ be a minimal prime of a ring $R$.
+Every element of the maximal ideal of $R_{\mathfrak p}$
+is nilpotent. If $R$ is reduced then $R_{\mathfrak p}$
+is a field.
+\end{lemma}
+
+\begin{proof}
+If some element $x$ of ${\mathfrak p}R_{\mathfrak p}$
+is not nilpotent, then $D(x) \not = \emptyset$, see
+Lemma \ref{lemma-Zariski-topology}. This contradicts
+the minimality of $\mathfrak p$. If $R$ is reduced,
+then ${\mathfrak p}R_{\mathfrak p} = 0$ and
+hence it is a field.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-reduced-ring-sub-product-fields}
+Let $R$ be a reduced ring. Then
+\begin{enumerate}
+\item $R$ is a subring of a product of fields,
+\item $R \to \prod_{\mathfrak p\text{ minimal}} R_{\mathfrak p}$
+is an embedding into a product of fields,
+\item $\bigcup_{\mathfrak p\text{ minimal}} \mathfrak p$ is the set
+of zerodivisors of $R$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-minimal-prime-reduced-ring} each of the rings
+$R_\mathfrak p$ is a field. In particular, the kernel of the ring
+map $R \to R_\mathfrak p$ is $\mathfrak p$.
+By Lemma \ref{lemma-Zariski-topology}
+we have $\bigcap_{\mathfrak p} \mathfrak p = (0)$.
+Hence (2) and (1) are true. If $x y = 0$ and $y \not = 0$, then
+$y \not \in \mathfrak p$ for some minimal prime $\mathfrak p$.
+Hence $x \in \mathfrak p$. Thus every zerodivisor of $R$ is contained
+in $\bigcup_{\mathfrak p\text{ minimal}} \mathfrak p$.
+Conversely, suppose that $x \in \mathfrak p$ for some minimal
+prime $\mathfrak p$. Then $x$ maps to zero in $R_\mathfrak p$,
+hence there exists $y \in R$, $y \not \in \mathfrak p$ such that
+$xy = 0$. In other words, $x$ is a zerodivisor. This finishes the
+proof of (3) and the lemma.
+\end{proof}
+
+\noindent
+The total ring of fractions $Q(R)$ of a ring $R$ was introduced in
+Example \ref{example-localize-at-prime}.
+
+\begin{lemma}
+\label{lemma-total-ring-fractions}
+Let $R$ be a ring.
+Let $S \subset R$ be a multiplicative subset consisting of nonzerodivisors.
+Then $Q(R) \cong Q(S^{-1}R)$.
+In particular $Q(R) \cong Q(Q(R))$.
+\end{lemma}
+
+\begin{proof}
+If $x \in S^{-1}R$ is a nonzerodivisor, and
+$x = r/f$ for some $r \in R$, $f \in S$, then
+$r$ is a nonzerodivisor in $R$. Whence the lemma.
+\end{proof}
+
+\noindent
+We can apply glueing results to prove something about
+total rings of fractions $Q(R)$ which we introduced in
+Example \ref{example-localize-at-prime}.
+
+\begin{lemma}
+\label{lemma-total-ring-fractions-no-embedded-points}
+Let $R$ be a ring.
+Assume that $R$ has finitely many minimal primes
+$\mathfrak q_1, \ldots, \mathfrak q_t$, and that
+$\mathfrak q_1 \cup \ldots \cup \mathfrak q_t$ is the set
+of zerodivisors of $R$.
+Then the total ring of fractions $Q(R)$ is equal to
+$R_{\mathfrak q_1} \times \ldots \times R_{\mathfrak q_t}$.
+\end{lemma}
+
+\begin{proof}
+There are natural maps $Q(R) \to R_{\mathfrak q_i}$ since
+any nonzerodivisor is contained in $R \setminus \mathfrak q_i$.
+Hence a natural map
+$Q(R) \to R_{\mathfrak q_1} \times \ldots \times R_{\mathfrak q_t}$.
+For any nonminimal prime $\mathfrak p \subset R$ we see that
+$\mathfrak p \not \subset \mathfrak q_1 \cup \ldots \cup \mathfrak q_t$
+by Lemma \ref{lemma-silly}. Hence
+$\Spec(Q(R)) = \{\mathfrak q_1, \ldots, \mathfrak q_t\}$
+(as subsets of $\Spec(R)$, see Lemma \ref{lemma-spec-localization}).
+Therefore $\Spec(Q(R))$ is a finite discrete set and
+it follows that $Q(R) = A_1 \times \ldots \times A_t$
+with $\Spec(A_i) = \{\mathfrak{q}_i\}$, see
+Lemma \ref{lemma-disjoint-implies-product}.
+Moreover $A_i$ is a local ring, which is a localization
+of $R$. Hence $A_i \cong R_{\mathfrak q_i}$.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,71 @@
+\section{Closed subspaces of affine schemes}
+\label{section-closed-in-affine}
+
+\begin{example}
+\label{example-closed-immersion-affines}
+Let $R$ be a ring.
+Let $I \subset R$ be an ideal.
+Consider the morphism of affine schemes
+$i : Z = \Spec(R/I) \to \Spec(R) = X$.
+By Algebra, Lemma \ref{algebra-lemma-spec-closed}
+this is a homeomorphism of $Z$ onto a closed
+subset of $X$. Moreover, if $I \subset \mathfrak p \subset R$
+is a prime corresponding to a point $x = i(z)$, $x \in X$,
+$z \in Z$, then on stalks we get the map
+$$
+\mathcal{O}_{X, x} = R_{\mathfrak p}
+\longrightarrow
+R_{\mathfrak p}/IR_{\mathfrak p} = \mathcal{O}_{Z, z}
+$$
+Thus we see that $i$ is a closed immersion of locally ringed spaces,
+see Definition \ref{definition-closed-immersion-locally-ringed-spaces}.
+Clearly, this is (isomorphic) to the closed subspace associated
+to the quasi-coherent sheaf of ideals $\widetilde I$, as in
+Example \ref{example-closed-subspace}.
+\end{example}
+
+\begin{lemma}
+\label{lemma-closed-immersion-affine-case}
+\begin{slogan}
+For affine schemes, closed immersions correspond to ideals.
+\end{slogan}
+Let $(X, \mathcal{O}_X) = (\Spec(R), \mathcal{O}_{\Spec(R)})$
+be an affine scheme. Let $i : Z \to X$ be any closed immersion
+of locally ringed spaces. Then there exists a unique ideal
+$I \subset R$ such that the morphism $i : Z \to X$ can be identified
+with the closed immersion $\Spec(R/I) \to \Spec(R)$
+constructed in Example \ref{example-closed-immersion-affines} above.
+\end{lemma}
+
+\begin{proof}
+This is kind of silly! Namely, by Lemma \ref{lemma-closed-immersion}
+we can identify $Z \to X$ with the closed subspace associated to
+a sheaf of ideals $\mathcal{I} \subset \mathcal{O}_X$ as in
+Definition \ref{definition-closed-subspace} and
+Example \ref{example-closed-subspace}.
+By our conventions this sheaf of ideals is locally generated
+by sections as a sheaf of $\mathcal{O}_X$-modules.
+Hence the quotient sheaf $\mathcal{O}_X / \mathcal{I}$
+is locally on $X$ the cokernel
+of a map $\bigoplus_{j \in J} \mathcal{O}_U \to \mathcal{O}_U$.
+Thus by definition, $\mathcal{O}_X / \mathcal{I}$ is quasi-coherent.
+By our results in Section \ref{section-quasi-coherent-affine}
+it is of the form $\widetilde S$ for some $R$-module $S$.
+Moreover, since $\mathcal{O}_X = \widetilde R \to \widetilde S$
+is surjective we see by Lemma \ref{lemma-extension-quasi-coherent}
+that also $\mathcal{I}$ is quasi-coherent, say $\mathcal{I} = \widetilde I$.
+Of course $I \subset R$ and $S = R/I$ and everything is clear.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+

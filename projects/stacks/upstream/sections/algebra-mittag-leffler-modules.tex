@@ -1,0 +1,396 @@
+\section{Mittag-Leffler modules}
+\label{section-mittag-leffler-modules}
+
+\noindent
+A Mittag-Leffler module is (very roughly) a module which can be written
+as a directed limit whose dual is a Mittag-Leffler system. To be able
+to give a precise definition we need to do a bit of work.
+
+\begin{definition}
+\label{definition-ML-inductive-system}
+Let $(M_i, f_{ij})$ be a directed system of $R$-modules.  We say that
+$(M_i, f_{ij})$ is a {\it Mittag-Leffler directed system of modules} if each
+$M_i$ is an $R$-module of finite presentation and if for every $R$-module $N$,
+the inverse system
+$$
+(\Hom_R(M_i, N), \Hom_R(f_{ij}, N))
+$$
+is Mittag-Leffler.
+\end{definition}
+
+\noindent
+We are going to characterize those $R$-modules that are colimits of
+Mittag-Leffler directed systems of modules.
+
+\begin{definition}
+\label{definition-domination}
+Let $f: M \to N$ and $g: M \to M'$ be maps of $R$-modules.
+Then we say $g$ {\it dominates} $f$ if for any $R$-module $Q$, we have $\Ker(f
+\otimes_R \text{id}_Q) \subset \Ker(g \otimes_R \text{id}_Q)$.
+\end{definition}
+
+\noindent
+It is enough to check this condition for finitely presented modules.
+
+\begin{lemma}
+\label{lemma-domination-fp}
+Let $f: M \to N$ and $g: M \to M'$ be maps of $R$-modules.
+Then $g$ dominates $f$ if and only if for any finitely presented $R$-module
+$Q$, we have $\Ker(f \otimes_R \text{id}_Q) \subset \Ker(g \otimes_R
+\text{id}_Q)$.
+\end{lemma}
+
+\begin{proof}
+Suppose $\Ker(f \otimes_R \text{id}_Q) \subset \Ker(g \otimes_R
+\text{id}_Q)$ for all finitely presented modules $Q$.  If $Q$ is an
+arbitrary module, write $Q = \colim_{i \in I} Q_i$ as a colimit of a
+directed
+system of finitely presented modules $Q_i$.  Then $\Ker(f \otimes_R
+\text{id}_{Q_i}) \subset \Ker(g \otimes_R \text{id}_{Q_i})$ for
+all $i$.  Since taking directed colimits is exact and commutes with tensor
+product, it follows that $\Ker(f \otimes_R \text{id}_Q) \subset \Ker(g
+\otimes_R \text{id}_Q)$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-domination-universally-injective}
+Let $f : M \to N$ and $g : M \to M'$ be maps of $R$-modules.
+Consider the pushout of $f$ and $g$,
+$$
+\xymatrix{
+M  \ar[r]_f \ar[d]_g & N \ar[d]^{g'} \\
+M' \ar[r]^{f'} & N'
+}
+$$
+Then $g$ dominates $f$ if and only if $f'$ is universally injective.
+\end{lemma}
+
+\begin{proof}
+Recall that $N'$ is $M' \oplus N$ modulo the submodule consisting of elements
+$(g(x), -f(x))$ for $x \in M$.
+From the construction of $N'$ we have a short exact sequence
+$$
+0 \to \Ker(f) \cap \Ker(g) \to \Ker(f) \to \Ker(f')
+\to 0.
+$$
+Since tensoring commutes with taking pushouts, we have such a short exact
+sequence
+$$
+0 \to \Ker(f \otimes \text{id}_Q ) \cap \Ker(g \otimes
+\text{id}_Q) \to \Ker(f \otimes \text{id}_Q)
+\to \Ker(f' \otimes \text{id}_Q) \to 0
+$$
+for every $R$-module $Q$.  So $f'$ is universally injective if and only if
+$\Ker(f \otimes \text{id}_Q ) \subset \Ker(g \otimes
+\text{id}_Q)$ for every $Q$, if and only if $g$ dominates $f$.
+\end{proof}
+
+\noindent
+The above definition of domination is sometimes related to the usual notion
+of domination of maps as the following lemma shows.
+
+\begin{lemma}
+\label{lemma-domination}
+Let $f: M \to N$ and $g: M \to M'$ be maps of $R$-modules.
+Suppose $\Coker(f)$ is of finite presentation.  Then $g$ dominates $f$ if
+and
+only if $g$ factors through $f$, i.e.\ there exists a module map $h: N
+\to M'$ such that $g = h \circ f$.
+\end{lemma}
+
+\begin{proof}
+Consider the pushout of $f$ and $g$ as in the statement of
+Lemma \ref{lemma-domination-universally-injective}.
+From the construction of the pushout it follows that
+$\Coker(f') = \Coker(f)$, so $\Coker(f')$ is of finite
+presentation.  Then by
+Lemma \ref{lemma-universally-exact-split}, $f'$ is universally injective if and
+only if
+$$
+0 \to M' \xrightarrow{f'} N' \to \Coker(f') \to 0
+$$
+splits. This is the case if and only if there is a map $h' : N' \to M'$
+such that $h' \circ f' = \text{id}_{M'}$.  From the universal
+property of the pushout, the existence of such an $h'$ is equivalent to $g$
+factoring through $f$.
+\end{proof}
+
+
+\begin{proposition}
+\label{proposition-ML-characterization}
+Let $M$ be an $R$-module.  Let $(M_i, f_{ij})$ be a directed system of finitely
+presented $R$-modules, indexed by $I$, such that $M = \colim M_i$.  Let
+$f_i:
+M_i \to M$ be the canonical map.  The following are equivalent:
+\begin{enumerate}
+\item For every finitely presented $R$-module $P$ and module map $f: P
+\to M$, there exists a finitely presented $R$-module $Q$ and a module
+map $g: P \to Q$ such that $g$ and $f$ dominate each other, i.e.,
+$\Ker(f \otimes_R \text{id}_N) = \Ker(g \otimes_R \text{id}_N)$
+for every $R$-module $N$.
+\item For each $i \in I$, there exists $j \geq i$ such that $f_{ij}: M_i
+\to M_j$ dominates $f_i: M_i \to M$.
+\item For each $i \in I$, there exists $j \geq i$ such that $f_{ij}: M_i
+\to M_j$ factors through $f_{ik}: M_i \to M_k$ for all $k \geq
+i$.
+\item For every $R$-module $N$, the inverse system
+$(\Hom_R(M_i, N), \Hom_R(f_{ij}, N))$ is Mittag-Leffler.
+\item For $N = \prod_{s \in I} M_s$, the inverse system
+$(\Hom_R(M_i, N), \Hom_R(f_{ij}, N))$ is Mittag-Leffler.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+First we prove the equivalence of (1) and (2).  Suppose (1) holds and let $i
+\in I$. Corresponding to the map $f_i: M_i \to M$, we can choose $g:
+M_i \to Q$ as in (1).  Since $M_i$ and $Q$ are of finite presentation,
+so is $\Coker(g)$.  Then by Lemma \ref{lemma-domination}, $f_i : M_i
+\to M$ factors through $g: M_i \to Q$, say $f_i = h \circ g$
+for some $h: Q \to M$.  Then since $Q$ is finitely presented, $h$
+factors through $M_j \to M$ for some $j \geq i$, say $h = f_j \circ h'$
+for some $h': Q \to M_j$.  In total we have a commutative diagram
+$$
+\xymatrix{
+  &  M  & \\
+M_i \ar[dr]_g \ar[ur]^{f_i} \ar[rr]^{f_{ij}} &
+& M_j \ar[ul]_{f_j} \\
+  & Q  \ar[ur]_{h'} &
+}
+$$
+Thus $f_{ij}$ dominates $g$.  But $g$ dominates $f_i$, so $f_{ij}$ dominates
+$f_i$.
+
+\medskip\noindent
+Conversely, suppose (2) holds.  Let $P$ be of finite presentation and $f: P
+\to M$ a module map.  Then $f$ factors through $f_i: M_i \to M$
+for some $i \in I$, say $f = f_i \circ g'$ for some $g': P \to M_i$.
+Choose by (2) a $j \geq i$ such that $f_{ij}$ dominates $f_i$.  We have a
+commutative diagram
+$$
+\xymatrix{
+P \ar[d]_{g'} \ar[r]^{f}           & M  \\
+M_i \ar[ur]^{f_i} \ar[r]_{f_{ij}} & M_j \ar[u]_{f_j}
+}
+$$
+From the diagram and the fact that $f_{ij}$ dominates $f_i$, we find that $f$
+and $f_{ij} \circ g'$ dominate each other.  Hence taking $g = f_{ij} \circ g' :
+P \to M_j$ works.
+
+\medskip\noindent
+Next we prove (2) is equivalent to (3).  Let $i \in I$.  It is always true that
+$f_i$ dominates $f_{ik}$ for $k \geq i$, since $f_i$ factors through
+$f_{ik}$.  If (2) holds, choose $j \geq i$ such that $f_{ij}$ dominates
+$f_i$.  Then since domination is a transitive relation, $f_{ij}$ dominates
+$f_{ik}$ for $k \geq i$. All $M_i$ are of finite presentation, so
+$\Coker(f_{ik})$ is of finite presentation for $k \geq i$.  By Lemma
+\ref{lemma-domination}, $f_{ij}$ factors through $f_{ik}$ for all $k \geq i$.
+Thus (2) implies (3).  On the other hand, if (3) holds then for any $R$-module
+$N$, $f_{ij} \otimes_R \text{id}_N$ factors through $f_{ik}
+\otimes_R \text{id}_N$ for $k \geq i$.  So $\Ker(f_{ik} \otimes_R
+\text{id}_N) \subset \Ker(f_{ij} \otimes_R \text{id}_N)$ for $k
+\geq i$.  But $\Ker(f_i \otimes_R \text{id}_N: M_i \otimes_R N
+\to M \otimes_R N)$ is the union of $\Ker(f_{ik} \otimes_R
+\text{id}_N)$ for $k \geq i$.  Thus $\Ker(f_i \otimes_R
+\text{id}_N) \subset \Ker(f_{ij} \otimes_R \text{id}_N)$ for
+any $R$-module $N$, which by definition means $f_{ij}$ dominates $f_i$.
+
+\medskip\noindent
+It is trivial that (3) implies (4) implies (5).  We show (5) implies (3).  Let
+$N = \prod_{s \in I} M_s$. If (5) holds, then given $i \in I$ choose $j \geq i$
+such that
+$$
+\Im( \Hom(M_j, N) \to  \Hom(M_i, N)) =
+\Im( \Hom(M_k, N) \to  \Hom(M_i, N))
+$$
+for all $k \geq j$.  Passing the product over $s \in I$ outside of the
+$\Hom$'s
+and looking at the maps on each component of the product, this says
+$$
+\Im( \Hom(M_j, M_s) \to  \Hom(M_i, M_s)) =
+\Im( \Hom(M_k, M_s) \to   \Hom(M_i, M_s))
+$$
+for all $k \geq j$ and $s \in I$.  Taking $s = j$ we have
+$$
+\Im( \Hom(M_j, M_j) \to  \Hom(M_i, M_j)) =
+\Im( \Hom(M_k, M_j) \to   \Hom(M_i, M_j))
+$$
+for all $k \geq j$.  Since $f_{ij}$ is the image of
+$\text{id} \in  \Hom(M_j, M_j)$ under
+$\Hom(M_j, M_j) \to  \Hom(M_i, M_j)$,
+this shows  that for any $k \geq j$ there is $h \in \Hom(M_k, M_j)$
+such that $f_{ij} = h \circ f_{ik}$.  If $j \geq k$ then we can take
+$h = f_{kj}$. Hence (3) holds.
+\end{proof}
+
+\begin{definition}
+\label{definition-mittag-leffler-module}
+Let $M$ be an $R$-module.  We say that $M$ is {\it Mittag-Leffler} if the
+equivalent conditions of
+Proposition \ref{proposition-ML-characterization}
+hold.
+\end{definition}
+
+\noindent
+In particular a finitely presented module is Mittag-Leffler.
+
+\begin{remark}
+\label{remark-flat-ML}
+Let $M$ be a flat $R$-module. By Lazard's theorem
+(Theorem \ref{theorem-lazard})
+we can write $M = \colim M_i$ as the colimit of a
+directed system $(M_i, f_{ij})$ where the $M_i$ are free
+finite $R$-modules. For $M$ to be Mittag-Leffler, it is enough for the inverse
+system of duals $(\Hom_R(M_i, R), \Hom_R(f_{ij}, R))$ to be
+Mittag-Leffler. This follows from criterion (4) of
+Proposition \ref{proposition-ML-characterization}
+and the fact that for a free finite $R$-module $F$,
+there is a functorial isomorphism
+$\Hom_R(F, R) \otimes_R N \cong \Hom_R(F, N)$
+for any $R$-module $N$.
+\end{remark}
+
+\begin{lemma}
+\label{lemma-tensor-ML-modules}
+If $R$ is a ring and $M$, $N$ are Mittag-Leffler modules over $R$,
+then $M \otimes_R N$ is a Mittag-Leffler module.
+\end{lemma}
+
+\begin{proof}
+Write $M = \colim_{i \in I} M_i$ and $N = \colim_{j \in J} N_j$
+as directed colimits of finitely presented $R$-modules.
+Denote $f_{ii'} : M_i \to M_{i'}$ and $g_{jj'} : N_j \to N_{j'}$ the
+transition maps. Then $M_i \otimes_R N_j$ is a finitely presented
+$R$-module (see
+Lemma \ref{lemma-tensor-finiteness}),
+and $M \otimes_R N = \colim_{(i, j) \in I \times J} M_i \otimes_R M_j$.
+Pick $(i, j) \in I \times J$. By the definition of a Mittag-Leffler module
+we have
+Proposition \ref{proposition-ML-characterization} (3)
+for both systems. In other words there exist $i' \geq i$ and $j' \geq j$
+such that for every choice of $i'' \geq i$ and $j'' \geq j$ there exist
+maps $a : M_{i''} \to M_{i'}$ and $b : M_{j''} \to M_{j'}$ such that
+$f_{ii'} = a \circ f_{ii''}$ and $g_{jj'} = b \circ g_{jj''}$.
+Then it is clear that
+$a \otimes b : M_{i''} \otimes_R N_{j''} \to M_{i'} \otimes_R N_{j'}$
+serves the same purpose for the system
+$(M_i \otimes_R N_j, f_{ii'} \otimes g_{jj'})$.
+Thus by the characterization
+Proposition \ref{proposition-ML-characterization} (3)
+we conclude that $M \otimes_R N$ is Mittag-Leffler.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-ML-also}
+Let $R$ be a ring and $M$ an $R$-module. Then $M$ is Mittag-Leffler if and
+only if for every finite free $R$-module $F$ and module map
+$f: F \to M$, there exists a finitely presented $R$-module $Q$
+and a module map $g : F \to Q$ such that $g$ and $f$ dominate each other, i.e.,
+$\Ker(f \otimes_R \text{id}_N) = \Ker(g \otimes_R \text{id}_N)$
+for every $R$-module $N$.
+\end{lemma}
+
+\begin{proof}
+Since the condition is clear weaker than condition (1) of
+Proposition \ref{proposition-ML-characterization}
+we see that a Mittag-Leffler module satisfies the condition.
+Conversely, suppose that $M$ satisfies the condition and that
+$f : P \to M$ is an $R$-module map from a finitely presented
+$R$-module $P$ into $M$. Choose a surjection $F \to P$ where
+$F$ is a finite free $R$-module. By assumption we can find a map
+$F \to Q$ where $Q$ is a finitely presented $R$-module such that
+$F \to Q$ and $F \to M$ dominate each other. In particular, the kernel
+of $F \to Q$ contains the kernel of $F \to P$, hence we obtain an
+$R$-module map $g : P \to Q$ such that $F \to Q$ is equal to
+the composition $F \to P \to Q$. Let $N$ be any $R$-module and
+consider the commutative diagram
+$$
+\xymatrix{
+F \otimes_R N \ar[d] \ar[r] & Q \otimes_R N \\
+P \otimes_R N \ar[ru] \ar[r] & M \otimes_R N
+}
+$$
+By assumption the kernels of $F \otimes_R N \to Q \otimes_R N$
+and $F \otimes_R N \to M \otimes_R N$ are equal. Hence, as
+$F \otimes_R N \to P \otimes_R N$ is surjective, also the kernels
+of $P \otimes_R N \to Q \otimes_R N$
+and $P \otimes_R N \to M \otimes_R N$ are equal.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-restrict-ML-modules}
+Let $R \to S$ be a finite and finitely presented ring map.
+Let $M$ be an $S$-module.
+If $M$ is a Mittag-Leffler module over $S$ then
+$M$ is a Mittag-Leffler module over $R$.
+\end{lemma}
+
+\begin{proof}
+Assume $M$ is a Mittag-Leffler module over $S$.
+Write $M = \colim M_i$ as a directed colimit of finitely presented
+$S$-modules $M_i$. As $M$ is Mittag-Leffler over $S$ there exists for each
+$i$ an index $j \geq i$ such that for all $k \geq j$ there is a factorization
+$f_{ij} = h \circ f_{ik}$ (where $h$ depends on $i$, the choice of $j$ and
+$k$). Note that by
+Lemma \ref{lemma-finite-finitely-presented-extension}
+the modules $M_i$ are also finitely presented as $R$-modules. Moreover, all
+the maps $f_{ij}, f_{ik}, h$ are maps of $R$-modules. Thus we see that the
+system $(M_i, f_{ij})$ satisfies the same condition when viewed as a system
+of $R$-modules. Thus $M$ is Mittag-Leffler as an $R$-module.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-mod-ideal-ML-modules}
+Let $R$ be a ring.
+Let $S = R/I$ for some finitely generated ideal $I$.
+Let $M$ be an $S$-module.
+Then $M$ is a Mittag-Leffler module over $R$ if and only if
+$M$ is a Mittag-Leffler module over $S$.
+\end{lemma}
+
+\begin{proof}
+One implication follows from
+Lemma \ref{lemma-restrict-ML-modules}.
+To prove the other, assume $M$ is Mittag-Leffler as an $R$-module.
+Write $M = \colim M_i$ as a directed colimit of finitely presented
+$S$-modules. As $I$ is finitely generated, the ring $S$ is finite and finitely
+presented as an $R$-algebra, hence the modules $M_i$ are finitely
+presented as $R$-modules, see
+Lemma \ref{lemma-finite-finitely-presented-extension}.
+Next, let $N$ be any $S$-module. Note that for each $i$ we have
+$\Hom_R(M_i, N) = \Hom_S(M_i, N)$ as $R \to S$ is surjective.
+Hence the condition that the inverse system
+$(\Hom_R(M_i, N))_i$ satisfies Mittag-Leffler, implies that the system
+$(\Hom_S(M_i, N))_i$ satisfies Mittag-Leffler. Thus $M$ is
+Mittag-Leffler over $S$ by definition.
+\end{proof}
+
+\begin{remark}
+\label{remark-go-up-ML-modules}
+Let $R \to S$ be a finite and finitely presented ring map.
+Let $M$ be an $S$-module which is Mittag-Leffler as an $R$-module.
+Then it is in general not the case that $M$ is Mittag-Leffler as
+an $S$-module. For example suppose that $S$ is the ring of dual numbers
+over $R$, i.e., $S = R \oplus R\epsilon$ with $\epsilon^2 = 0$. Then an
+$S$-module consists of an $R$-module $M$ endowed with a square zero
+$R$-linear endomorphism $\epsilon : M \to M$. Now suppose that $M_0$
+is an $R$-module which is not Mittag-Leffler. Choose a presentation
+$F_1 \xrightarrow{u} F_0 \to M_0 \to 0$ with $F_1$ and $F_0$ free $R$-modules.
+Set $M = F_1 \oplus F_0$ with
+$$
+\epsilon =
+\left(
+\begin{matrix}
+0 & 0 \\
+u & 0
+\end{matrix}
+\right) : M \longrightarrow M.
+$$
+Then $M/\epsilon M \cong F_1 \oplus M_0$ is not Mittag-Leffler over
+$R = S/\epsilon S$, hence not Mittag-Leffler over $S$ (see
+Lemma \ref{lemma-mod-ideal-ML-modules}).
+On the other hand, $M/\epsilon M = M \otimes_S S/\epsilon S$ which would
+be Mittag-Leffler over $S$ if $M$ was, see
+Lemma \ref{lemma-tensor-ML-modules}.
+\end{remark}
+
+

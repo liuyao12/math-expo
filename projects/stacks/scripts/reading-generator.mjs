@@ -50,7 +50,7 @@ export function buildReadings({root,dist,head,header,footer,renderExampleCard,as
   };
   const sectionHeading=unit.chapterHeadings?'h3':'h2';
   const statementHeading=unit.chapterHeadings?'h4':'h3';
-  const r=createRenderer(root,{sections:unit.sections,routes:prerequisiteRoutes}),data={},sources={};let proofs=0,statements=0;
+  const r=createRenderer(root,{sections:unit.sections,routes:prerequisiteRoutes,lazyMath:!!unit.readingTitle}),data={},sources={};let proofs=0,statements=0;
   const rich=s=>s.replace(/\\\[([\s\S]*?)\\\]/g,(_,t)=>r.math(t,true)).replace(/\\\(([\s\S]*?)\\\)/g,(_,t)=>r.math(t));
   const sections=unit.sections.map((s,index)=>{
    const blocks=r.section(s),sourceNotes=[];
@@ -122,7 +122,7 @@ export function buildReadings({root,dist,head,header,footer,renderExampleCard,as
   </dialog>${graphScript('../')}`:'';
   const dir=path.join(dist,slug);
   fs.mkdirSync(dir,{recursive:true});
-  fs.writeFileSync(path.join(dir,'index.html'),html+inset+'</body></html>');
+  fs.writeFileSync(path.join(dir,'index.html'),html+inset+(readingSlugs.has(slug)?`<script type="module" src="../math-lazy.js?v=${assetVersion}"></script>`:'')+'</body></html>');
  }
  for(const graph of graphs.filter(graph=>graph.reading!==coreReading)){
   const reading=graph.reading,description=reading.graphDescription||reading.deck;

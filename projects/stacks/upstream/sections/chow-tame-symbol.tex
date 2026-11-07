@@ -1,0 +1,334 @@
+\section{Tame symbols}
+\label{section-tame-symbol}
+
+\noindent
+Consider a Noetherian local ring $(A, \mathfrak m)$ of dimension $1$.
+We denote $Q(A)$ the total ring of fractions of $A$, see
+Algebra, Example \ref{algebra-example-localize-at-prime}.
+The {\it tame symbol} will be a map
+$$
+\partial_A(-, -) : Q(A)^* \times Q(A)^* \longrightarrow \kappa(\mathfrak m)^*
+$$
+satisfying the following properties:
+\begin{enumerate}
+\item $\partial_A(f, gh) = \partial_A(f, g) \partial_A(f, h)$
+\label{item-bilinear}
+for $f, g, h \in Q(A)^*$,
+\item $\partial_A(f, g) \partial_A(g, f) = 1$
+\label{item-skew}
+for $f, g \in Q(A)^*$,
+\item $\partial_A(f, 1 - f) = 1$
+\label{item-1-x}
+for $f \in Q(A)^*$ such that $1 - f \in Q(A)^*$,
+\item $\partial_A(aa', b) = \partial_A(a, b)\partial_A(a', b)$
+\label{item-bilinear-better}
+and $\partial_A(a, bb') = \partial_A(a, b)\partial_A(a, b')$
+for $a, a', b, b' \in A$ nonzerodivisors,
+\item $\partial_A(b, b) = (-1)^m$
+\label{item-skew-better}
+with $m = \text{length}_A(A/bA)$
+for $b \in A$ a nonzerodivisor,
+\item $\partial_A(u, b) = u^m \bmod \mathfrak m$
+\label{item-normalization}
+with $m = \text{length}_A(A/bA)$ for $u \in A$ a unit and
+$b \in A$ a nonzerodivisor, and
+\item
+\label{item-1-x-better}
+$\partial_A(a, b - a)\partial_A(b, b) = \partial_A(b, b - a)\partial_A(a, b)$
+for $a, b \in A$ such that $a, b, b - a$ are nonzerodivisors.
+\end{enumerate}
+Since it is easier to work with elements of $A$ we will
+often think of $\partial_A$ as a map defined on pairs of
+nonzerodivisors of $A$ satisfying (\ref{item-bilinear-better}),
+(\ref{item-skew-better}), (\ref{item-normalization}),
+(\ref{item-1-x-better}). It is an exercise to see that
+setting
+$$
+\partial_A(\frac{a}{b}, \frac{c}{d}) =
+\partial_A(a, c) \partial_A(a, d)^{-1} \partial_A(b, c)^{-1} \partial_A(b, d)
+$$
+we get a well defined map $Q(A)^* \times Q(A)^* \to \kappa(\mathfrak m)^*$
+satisfying (\ref{item-bilinear}), (\ref{item-skew}), (\ref{item-1-x})
+as well as the other properties.
+
+\medskip\noindent
+We do not claim there is a unique map with these properties.
+Instead, we will give a recipe for constructing such a map.
+Namely, given $a_1, a_2 \in A$ nonzerodivisors, we choose
+a ring extension $A \subset B$ and local factorizations
+as in Lemma \ref{lemma-prepare-tame-symbol}.
+Then we define
+\begin{equation}
+\label{equation-tame-symbol}
+\partial_A(a_1, a_2) = \prod\nolimits_j
+\text{Norm}_{\kappa(\mathfrak m_j)/\kappa(\mathfrak m)}
+((-1)^{e_{1, j}e_{2, j}}u_{1, j}^{e_{2, j}}u_{2, j}^{-e_{1, j}}
+\bmod \mathfrak m_j)^{m_j}
+\end{equation}
+where $m_j = \text{length}_{B_j}(B_j/\pi_j B_j)$ and the product
+is taken over the maximal ideals $\mathfrak m_1, \ldots, \mathfrak m_r$ of $B$.
+
+\begin{lemma}
+\label{lemma-well-defined-tame-symbol}
+The formula (\ref{equation-tame-symbol}) determines a
+well defined element of $\kappa(\mathfrak m)^*$. In other words, the
+right hand side does not depend on the choice of the
+local factorizations or the choice of $B$.
+\end{lemma}
+
+\begin{proof}
+Independence of choice of factorizations. Suppose we have
+a Noetherian $1$-dimensional local ring $B$, elements $a_1, a_2 \in B$,
+and nonzerodivisors $\pi, \theta$ such that we can write
+$$
+a_1 = u_1 \pi^{e_1} = v_1 \theta^{f_1},\quad
+a_2 = u_2 \pi^{e_2} = v_2 \theta^{f_2}
+$$
+with $e_i, f_i \geq 0$ integers and $u_i, v_i$ units in $B$.
+Observe that this implies
+$$
+a_1^{e_2} = u_1^{e_2}u_2^{-e_1}a_2^{e_1},\quad
+a_1^{f_2} = v_1^{f_2}v_2^{-f_1}a_2^{f_1}
+$$
+On the other hand, setting
+$m = \text{length}_B(B/\pi B)$ and $k = \text{length}_B(B/\theta B)$
+we find $e_2 m = \text{length}_B(B/a_2 B) = f_2 k$.
+Expanding $a_1^{e_2m} = a_1^{f_2 k}$ using the above we find
+$$
+(u_1^{e_2}u_2^{-e_1})^m =  (v_1^{f_2}v_2^{-f_1})^k
+$$
+This proves the desired equality up to signs. To see the signs
+work out we have to show $me_1e_2$ is even if and only if
+$kf_1f_2$ is even. This follows as both $me_2 = kf_2$ and
+$me_1 = kf_1$ (same argument as above).
+
+\medskip\noindent
+Independence of choice of $B$. Suppose given two extensions
+$A \subset B$ and $A \subset B'$ as in Lemma \ref{lemma-prepare-tame-symbol}.
+Then
+$$
+C = (B \otimes_A B')/(\mathfrak m\text{-power torsion})
+$$
+will be a third one. Thus we may assume we have
+$A \subset B \subset C$ and factorizations over the
+local rings of $B$ and we have to show that using
+the same factorizations over the local rings of $C$
+gives the same element of $\kappa(\mathfrak m)$.
+By transitivity of norms
+(Fields, Lemma \ref{fields-lemma-trace-and-norm-tower})
+this comes down to the following problem:
+if $B$ is a Noetherian local ring of dimension $1$
+and $\pi \in B$ is a nonzerodivisor, then
+$$
+\lambda^m = \prod \text{Norm}_{\kappa_k/\kappa}(\lambda)^{m_k}
+$$
+Here we have used the following notation:
+(1) $\kappa$ is the residue field of $B$,
+(2) $\lambda$ is an element of $\kappa$,
+(3) $\mathfrak m_k \subset C$ are the maximal ideals of $C$,
+(4) $\kappa_k = \kappa(\mathfrak m_k)$ is the residue field of
+$C_k = C_{\mathfrak m_k}$,
+(5) $m = \text{length}_B(B/\pi B)$, and
+(6) $m_k = \text{length}_{C_k}(C_k/\pi C_k)$.
+The displayed equality holds because
+$\text{Norm}_{\kappa_k/\kappa}(\lambda) = \lambda^{[\kappa_k : \kappa]}$
+as $\lambda \in \kappa$ and because $m = \sum m_k[\kappa_k:\kappa]$.
+First, we have $m = \text{length}_B(B/xB) = \text{length}_B(C/\pi C)$
+by Lemma \ref{lemma-compare-periodic-lengths} 
+and (\ref{equation-multiplicity-coker-ker}).
+Finally, we have $\text{length}_B(C/\pi C) = \sum m_k[\kappa_k:\kappa]$
+by Algebra, Lemma \ref{algebra-lemma-pushdown-module}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-tame-symbol}
+The tame symbol (\ref{equation-tame-symbol}) satisfies
+(\ref{item-bilinear-better}), (\ref{item-skew-better}),
+(\ref{item-normalization}), (\ref{item-1-x-better}) and hence
+gives a map $\partial_A : Q(A)^* \times Q(A)^* \to \kappa(\mathfrak m)^*$
+satisfying (\ref{item-bilinear}), (\ref{item-skew}), (\ref{item-1-x}).
+\end{lemma}
+
+\begin{proof}
+Let us prove (\ref{item-bilinear-better}).
+Let $a_1, a_2, a_3 \in A$ be nonzerodivisors.
+Choose $A \subset B$ as in Lemma \ref{lemma-prepare-tame-symbol}
+for $a_1, a_2, a_3$. Then the equality
+$$
+\partial_A(a_1a_2, a_3) = \partial_A(a_1, a_3) \partial_A(a_2, a_3)
+$$
+follows from the equality
+$$
+(-1)^{(e_{1, j} + e_{2, j})e_{3, j}}
+(u_{1, j}u_{2, j})^{e_{3, j}}u_{3, j}^{-e_{1, j} - e_{2, j}} =
+(-1)^{e_{1, j}e_{3, j}}
+u_{1, j}^{e_{3, j}}u_{3, j}^{-e_{1, j}}
+(-1)^{e_{2, j}e_{3, j}}
+u_{2, j}^{e_{3, j}}u_{3, j}^{-e_{2, j}}
+$$
+in $B_j$. Properties (\ref{item-skew-better}) and
+(\ref{item-normalization}) are equally immediate.
+
+\medskip\noindent
+Let us prove (\ref{item-1-x-better}). Let $a_1, a_2, a_1 - a_2 \in A$
+be nonzerodivisors and set $a_3 = a_1 - a_2$.
+Choose $A \subset B$ as in Lemma \ref{lemma-prepare-tame-symbol}
+for $a_1, a_2, a_3$. Then it suffices to show
+$$
+(-1)^{e_{1, j}e_{2, j} + e_{1, j}e_{3, j} + e_{2, j}e_{3, j} + e_{2, j}}
+u_{1, j}^{e_{2, j} - e_{3, j}}
+u_{2, j}^{e_{3, j} - e_{1, j}}
+u_{3, j}^{e_{1, j} - e_{2, j}} \bmod \mathfrak m_j = 1
+$$
+This is clear if $e_{1, j} = e_{2, j} = e_{3, j}$.
+Say $e_{1, j} > e_{2, j}$. Then we see that $e_{3, j} = e_{2, j}$
+because $a_3 = a_1 - a_2$ and we see that $u_{3, j}$
+has the same residue class as $-u_{2, j}$. Hence
+the formula is true -- the signs work out as well
+and this verification is the reason for the choice of signs
+in (\ref{equation-tame-symbol}).
+The other cases are handled in exactly the same manner.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-norm-down-tame-symbol}
+Let $(A, \mathfrak m)$ be a Noetherian local ring of dimension $1$.
+Let $A \subset B$ be a finite ring extension with $B/A$
+annihilated by a power of $\mathfrak m$ and $\mathfrak m$ not
+an associated prime of $B$.
+For $a, b \in A$ nonzerodivisors we have
+$$
+\partial_A(a, b) = \prod
+\text{Norm}_{\kappa(\mathfrak m_j)/\kappa(\mathfrak m)}(\partial_{B_j}(a, b))
+$$
+where the product is over the maximal ideals $\mathfrak m_j$ of $B$
+and $B_j = B_{\mathfrak m_j}$.
+\end{lemma}
+
+\begin{proof}
+Choose $B_j \subset C_j$ as in
+Lemma \ref{lemma-prepare-tame-symbol} for $a, b$.
+By Lemma \ref{lemma-glue-at-max} we can choose a finite ring
+extension $B \subset C$ with $C_j \cong C_{\mathfrak m_j}$ for all $j$.
+Let $\mathfrak m_{j, k} \subset C$ be the maximal ideals of $C$
+lying over $\mathfrak m_j$. Let
+$$
+a = u_{j, k}\pi_{j, k}^{f_{j, k}},\quad
+b = v_{j, k}\pi_{j, k}^{g_{j, k}}
+$$
+be the local factorizations which exist by our choice of
+$C_j \cong C_{\mathfrak m_j}$. By definition we have
+$$
+\partial_A(a, b) = 
+\prod\nolimits_{j, k}
+\text{Norm}_{\kappa(\mathfrak m_{j, k})/\kappa(\mathfrak m)}
+((-1)^{f_{j, k}g_{j, k}}u_{j, k}^{g_{j, k}}v_{j, k}^{-f_{j, k}}
+\bmod \mathfrak m_{j, k})^{m_{j, k}}
+$$
+and
+$$
+\partial_{B_j}(a, b) = 
+\prod\nolimits_k
+\text{Norm}_{\kappa(\mathfrak m_{j, k})/\kappa(\mathfrak m_j)}
+((-1)^{f_{j, k}g_{j, k}}u_{j, k}^{g_{j, k}}v_{j, k}^{-f_{j, k}}
+\bmod \mathfrak m_{j, k})^{m_{j, k}}
+$$
+The result follows by transitivity of norms
+for $\kappa(\mathfrak m_{j, k})/\kappa(\mathfrak m_j)/\kappa(\mathfrak m)$, see
+Fields, Lemma \ref{fields-lemma-trace-and-norm-tower}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-tame-symbol-formally-smooth}
+Let $(A, \mathfrak m, \kappa) \to (A', \mathfrak m', \kappa')$
+be a local homomorphism of Noetherian local rings. Assume $A \to A'$
+is flat and $\dim(A) = \dim(A') = 1$. Set
+$m = \text{length}_{A'}(A'/\mathfrak mA')$.
+For $a_1, a_2 \in A$ nonzerodivisors
+$\partial_A(a_1, a_2)^m$ maps to $\partial_{A'}(a_1, a_2)$
+via $\kappa \to \kappa'$.
+\end{lemma}
+
+\begin{proof}
+If $a_1, a_2$ are both units, then $\partial_A(a_1, a_2) = 1$
+and $\partial_{A'}(a_1, a_2) = 1$ and the result is true.
+If not, then we can choose a ring extension $A \subset B$ and
+local factorizations as in Lemma \ref{lemma-prepare-tame-symbol}.
+Denote $\mathfrak m_1, \ldots, \mathfrak m_m$
+be the maximal ideals of $B$. Let $\mathfrak m_1, \ldots, \mathfrak m_m$
+be the maximal ideals of $B$ with residue fields $\kappa_1, \ldots, \kappa_m$.
+For each $j \in \{1, \ldots, m\}$ denote $\pi_j \in B_j = B_{\mathfrak m_j}$
+a nonzerodivisor such that we have factorizations
+$a_i = u_{i, j}\pi_j^{e_{i, j}}$ as in the lemma.
+By definition we have
+$$
+\partial_A(a_1, a_2) = \prod\nolimits_j
+\text{Norm}_{\kappa_j/\kappa}
+((-1)^{e_{1, j}e_{2, j}}u_{1, j}^{e_{2, j}}u_{2, j}^{-e_{1, j}}
+\bmod \mathfrak m_j)^{m_j}
+$$
+where $m_j = \text{length}_{B_j}(B_j/\pi_j B_j)$.
+
+\medskip\noindent
+Set $B' = A' \otimes_A B$. Since $A'$ is flat over $A$ we see
+that $A' \subset B'$ is a ring extension with $B'/A'$ annihilated
+by a power of $\mathfrak m'$. Let
+$$
+\mathfrak m'_{j, l},\quad l = 1, \ldots, n_j
+$$
+be the maximal ideals of $B'$ lying over $\mathfrak m_j$. Denote
+$\kappa'_{j, l}$ the residue field of $\mathfrak m'_{j, l}$. Denote
+$B'_{j, l}$ the localization of $B'$ at $\mathfrak m'_{j, l}$.
+As factorizations of $a_1$ and $a_2$ in $B'_{j, l}$
+we use the image of the factorizations
+$a_i = u_{i, j} \pi_j^{e_{i, j}}$ given to us in $B_j$.
+By definition we have
+$$
+\partial_{A'}(a_1, a_2) = \prod\nolimits_{j, l}
+\text{Norm}_{\kappa'_{j, l}/\kappa'}
+((-1)^{e_{1, j}e_{2, j}}u_{1, j}^{e_{2, j}}u_{2, j}^{-e_{1, j}}
+\bmod \mathfrak m'_{j, l})^{m'_{j, l}}
+$$
+where $m'_{j, l} = \text{length}_{B'_{j, l}}(B'_{j, l}/\pi_j B'_{j, l})$.
+
+\medskip\noindent
+Comparing the formulae above we see that it suffices to show that
+for each $j$ and for any unit $u \in B_j$ we have
+\begin{equation}
+\label{equation-to-prove}
+\left(\text{Norm}_{\kappa_j/\kappa}(u \bmod \mathfrak m_j)^{m_j}\right)^m
+=
+\prod\nolimits_l
+\text{Norm}_{\kappa'_{j, l}/\kappa'}(u \bmod \mathfrak m'_{j, l})^{m'_{j, l}}
+\end{equation}
+in $\kappa'$. We are going to use the construction of determinants of
+endomorphisms of finite length modules in
+More on Algebra, Section \ref{more-algebra-section-determinants-finite-length}
+to prove this. Set $M = B_j/\pi_j B_j$. By
+More on Algebra, Lemma \ref{more-algebra-lemma-multiplication} we have
+$$
+\text{Norm}_{\kappa_j/\kappa}(u \bmod \mathfrak m_j)^{m_j} =
+\det\nolimits_\kappa(u : M \to M)
+$$
+Thus, by
+More on Algebra, Lemma \ref{more-algebra-lemma-flat-base-change-det},
+the left hand side of (\ref{equation-to-prove}) is equal to
+$\det_{\kappa'}(u : M \otimes_A A' \to M \otimes_A A')$.
+We have an isomorphism
+$$
+M \otimes_A A' = (B_j/\pi_j B_j) \otimes_A A' =
+\bigoplus\nolimits_l B'_{j, l}/\pi_j B'_{j, l}
+$$
+of $A'$-modules. Setting $M'_l = B'_{j, l}/\pi_j B'_{j, l}$ we see that
+$\text{Norm}_{\kappa'_{j, l}/\kappa'}(u \bmod \mathfrak m'_{j, l})^{m'_{j, l}}
+= \det_{\kappa'}(u_j : M'_l \to M'_l)$ by
+More on Algebra, Lemma \ref{more-algebra-lemma-multiplication} again.
+Hence (\ref{equation-to-prove}) holds by multiplicativity of the determinant
+construction, see More on Algebra, Lemma \ref{more-algebra-lemma-ses}.
+\end{proof}
+
+
+
+
+
+

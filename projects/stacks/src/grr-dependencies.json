@@ -1,32 +1,208 @@
 {
   "02UO": {
     "title": "Grothendieck–Riemann–Roch formula",
-    "uses": ["02QL", "02G1", "01W1", "01E4", "02S2", "02UM", "02UN", "0AZ1"]
+    "uses": [
+      "02QL",
+      "02G1",
+      "01W1",
+      "01E4",
+      "02S2",
+      "02UM",
+      "02UN",
+      "0AZ1",
+      "01CM",
+      "01C5",
+      "01T0"
+    ]
   },
-  "02QL": {"title": "Base scheme with a dimension function", "uses": ["01IJ"]},
-  "01IJ": {"title": "Definition of a scheme"},
-  "01W1": {"title": "Proper morphisms", "uses": ["01IJ"]},
-  "01E4": {"title": "Higher direct images from cohomology on opens"},
-  "02G1": {"title": "The cotangent sheaf of a smooth morphism is finite locally free", "uses": ["01V5", "01UQ"]},
-  "01V5": {"title": "Smooth morphisms", "uses": ["01IJ"]},
-  "01UQ": {"title": "Relative differentials", "uses": ["01IJ"]},
-  "02S2": {"title": "Proper pushforward descends to Chow groups", "uses": ["02R4", "02RW"]},
-  "02R4": {"title": "Proper pushforward of cycles", "uses": ["01W1", "02QR"]},
-  "02QR": {"title": "Cycles", "uses": ["02QL"]},
-  "02RO": {"title": "Principal divisors", "uses": ["02QR"]},
-  "02RW": {"title": "Rational equivalence and Chow groups", "uses": ["02QR", "02RO"]},
-  "0AZ1": {"title": "Degree of a zero-cycle", "uses": ["02S2"]},
-  "02SJ": {"title": "Divisor of a rational section of a line bundle", "uses": ["02RO", "02RW", "01CS"]},
-  "01CS": {"title": "Invertible sheaves"},
-  "02SO": {"title": "Intersecting a cycle with the first Chern class", "uses": ["02SJ", "02R4"]},
-  "0B76": {"title": "Bivariant classes act on Chow groups", "uses": ["02RW", "02S2"]},
-  "0B7E": {"title": "Chow cohomology", "uses": ["0B76"]},
-  "0FDW": {"title": "First Chern class in Chow cohomology", "uses": ["0B7E", "02SO"]},
-  "02TX": {"title": "Projective space bundle formula", "uses": ["0FDW"]},
-  "02U0": {"title": "Chern classes of a vector bundle on an integral scheme", "uses": ["02TX"]},
-  "02U5": {"title": "Intersecting cycles with Chern classes", "uses": ["02U0", "02S2"]},
-  "0FE1": {"title": "Chern classes in Chow cohomology", "uses": ["02U5", "0B7E"]},
-  "02UL": {"title": "Splitting principle and Chern roots", "uses": ["0FE1", "02TX"]},
-  "02UM": {"title": "Chern character", "uses": ["02UL"]},
-  "02UN": {"title": "Todd classes", "uses": ["02UL"]}
+  "02QL": {
+    "title": "Base scheme with a dimension function",
+    "uses": [
+      "01IJ",
+      "02I8",
+      "01OU",
+      "02IV",
+      "02J8"
+    ]
+  },
+  "01IJ": {
+    "title": "Definition of a scheme"
+  },
+  "01W1": {
+    "title": "Proper morphisms",
+    "uses": [
+      "01IJ"
+    ]
+  },
+  "01E4": {
+    "title": "Higher direct images from cohomology on opens"
+  },
+  "02G1": {
+    "title": "The cotangent sheaf of a smooth morphism is finite locally free",
+    "uses": [
+      "01V5",
+      "01UQ"
+    ]
+  },
+  "01V5": {
+    "title": "Smooth morphisms",
+    "uses": [
+      "01IJ"
+    ]
+  },
+  "01UQ": {
+    "title": "Relative differentials",
+    "uses": [
+      "01IJ"
+    ]
+  },
+  "02S2": {
+    "title": "Proper pushforward descends to Chow groups",
+    "uses": [
+      "02R4",
+      "02RW"
+    ]
+  },
+  "02R4": {
+    "title": "Proper pushforward of cycles",
+    "uses": [
+      "01W1",
+      "02QR"
+    ]
+  },
+  "02QR": {
+    "title": "Cycles",
+    "uses": [
+      "02QL"
+    ]
+  },
+  "02RO": {
+    "title": "Principal divisors",
+    "uses": [
+      "02QR"
+    ]
+  },
+  "02RW": {
+    "title": "Rational equivalence and Chow groups",
+    "uses": [
+      "02QR",
+      "02RO"
+    ]
+  },
+  "0AZ1": {
+    "title": "Degree of a zero-cycle",
+    "uses": [
+      "02S2"
+    ]
+  },
+  "02SJ": {
+    "title": "Divisor of a rational section of a line bundle",
+    "uses": [
+      "02RO",
+      "02RW",
+      "01CS"
+    ]
+  },
+  "01CS": {
+    "title": "Invertible sheaves"
+  },
+  "02SO": {
+    "title": "Intersecting a cycle with the first Chern class",
+    "uses": [
+      "02SJ",
+      "02R4"
+    ]
+  },
+  "0B76": {
+    "title": "Bivariant classes act on Chow groups",
+    "uses": [
+      "02RW",
+      "02S2"
+    ]
+  },
+  "0B7E": {
+    "title": "Chow cohomology",
+    "uses": [
+      "0B76"
+    ]
+  },
+  "0FDW": {
+    "title": "First Chern class in Chow cohomology",
+    "uses": [
+      "0B7E",
+      "02SO"
+    ]
+  },
+  "02TX": {
+    "title": "Projective space bundle formula",
+    "uses": [
+      "0FDW"
+    ]
+  },
+  "02U0": {
+    "title": "Chern classes of a vector bundle on an integral scheme",
+    "uses": [
+      "02TX"
+    ]
+  },
+  "02U5": {
+    "title": "Intersecting cycles with Chern classes",
+    "uses": [
+      "02U0",
+      "02S2"
+    ]
+  },
+  "0FE1": {
+    "title": "Chern classes in Chow cohomology",
+    "uses": [
+      "02U5",
+      "0B7E"
+    ]
+  },
+  "02UL": {
+    "title": "Splitting principle and Chern roots",
+    "uses": [
+      "0FE1",
+      "02TX"
+    ]
+  },
+  "02UM": {
+    "title": "Chern character",
+    "uses": [
+      "02UL",
+      "01C5",
+      "02UK"
+    ]
+  },
+  "02UN": {
+    "title": "Todd classes",
+    "uses": [
+      "02UL",
+      "02UK"
+    ]
+  },
+  "01CM": {
+    "title": "Internal Hom"
+  },
+  "01C5": {
+    "title": "Locally free sheaves"
+  },
+  "01T0": {
+    "title": "Morphisms of finite type"
+  },
+  "02I8": {
+    "title": "Dimension functions"
+  },
+  "01OU": {
+    "title": "Noetherian schemes"
+  },
+  "02IV": {
+    "title": "Catenary schemes"
+  },
+  "02J8": {
+    "title": "Universally catenary schemes"
+  },
+  "02UK": {
+    "title": "The splitting principle"
+  }
 }

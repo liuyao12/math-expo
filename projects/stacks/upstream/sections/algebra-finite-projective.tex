@@ -1,0 +1,100 @@
+\section{Descent for finite projective modules}
+\label{section-finite-projective}
+
+\noindent
+In this section we give an elementary proof of the fact that the property of
+being a {\it finite} projective module descends along faithfully flat ring
+maps.  The proof does not apply when we drop the finiteness condition.
+However, the method is indicative of the one we shall use to prove descent
+for the property of being a {\it countably generated} projective module---see
+the comments at the end of this section.
+
+\begin{lemma}
+\label{lemma-finite-projective-again}
+Let $M$ be an $R$-module.  Then $M$ is finite projective if and only if $M$ is
+finitely presented and flat.
+\end{lemma}
+
+\begin{proof}
+This is part of
+Lemma \ref{lemma-finite-projective}.
+However, at this point we can give a more elegant proof of the implication
+(1) $\Rightarrow$ (2) of that lemma as follows.
+If $M$ is finitely presented and flat, then take a surjection
+$R^n \to M$.  By
+Lemma \ref{lemma-flat-surjective-hom}
+applied to $P = M$, the map $R^n \to M$ admits a section.
+So $M$ is a direct summand of a  free module and hence projective.
+\end{proof}
+
+\noindent
+Here are some properties of modules that descend.
+
+\begin{lemma}
+\label{lemma-descend-properties-modules}
+Let $R \to S$ be a faithfully flat ring map.
+Let $M$ be an $R$-module. Then
+\begin{enumerate}
+\item if the $S$-module $M \otimes_R S$ is of finite type, then
+$M$ is of finite type,
+\item if the $S$-module $M \otimes_R S$ is of finite presentation, then
+$M$ is of finite presentation,
+\item if the $S$-module $M \otimes_R S$ is flat, then
+$M$ is flat, and
+\item add more here as needed.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Assume $M \otimes_R S$ is of finite type. Let $y_1, \ldots, y_m$ be generators
+of $M \otimes_R S$ over $S$. Write $y_j = \sum x_i \otimes f_i$ for some
+$x_1, \ldots, x_n \in M$. Then we see that the map
+$\varphi : R^{\oplus n} \to M$
+has the property that
+$\varphi \otimes \text{id}_S : S^{\oplus n} \to M \otimes_R S$
+is surjective. Since $R \to S$ is faithfully flat we see that
+$\varphi$ is surjective, and $M$ is finitely generated.
+
+\medskip\noindent
+Assume $M \otimes_R S$ is of finite presentation. By (1) we see that
+$M$ is of finite type. Choose a surjection $R^{\oplus n} \to M$ and
+denote $K$ the kernel. As $R \to S$ is flat we see that $K \otimes_R S$
+is the kernel of the base change $S^{\oplus n} \to M \otimes_R S$.
+As $M \otimes_R S$ is of finite presentation we conclude that $K \otimes_R S$
+is of finite type. Hence by (1) we see that $K$ is of finite type
+and hence $M$ is of finite presentation.
+
+\medskip\noindent
+Part (3) is
+Lemma \ref{lemma-flatness-descends}.
+\end{proof}
+
+\begin{proposition}
+\label{proposition-ffdescent-finite-projectivity}
+Let $R \to S$ be a faithfully flat ring map.  Let $M$ be an $R$-module.
+If the $S$-module $M \otimes_R S$ is finite projective, then $M$ is finite
+projective.
+\end{proposition}
+
+\begin{proof}
+Follows from
+Lemmas \ref{lemma-finite-projective-again} and
+\ref{lemma-descend-properties-modules}.
+\end{proof}
+
+\noindent
+The next few sections are about removing the finiteness assumption by using
+d\'evissage to reduce to the countably generated case.  In the countably
+generated case, the strategy is to find a characterization of countably
+generated projective modules analogous to
+Lemma \ref{lemma-finite-projective-again},
+and then to prove directly that this characterization descends. We do this by
+introducing the notion of a Mittag-Leffler module and proving that if a module
+$M$ is countably generated, then it is projective if and only if it is flat and
+Mittag-Leffler (Theorem \ref{theorem-projectivity-characterization}).  When $M$
+is finitely generated, this statement reduces to Lemma
+\ref{lemma-finite-projective-again} (since, according to
+Example \ref{example-ML} (1),
+a finitely generated module is Mittag-Leffler if and only if it is
+finitely presented).
+

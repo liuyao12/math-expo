@@ -1,0 +1,312 @@
+\section{Coherent sheaves on Proj, II}
+\label{section-coherent-proj-general}
+
+\noindent
+In this section we discuss coherent sheaves on $\text{Proj}(A)$
+where $A$ is a Noetherian graded ring. Most of the results will
+be deduced by sleight of hand from the corresponding result in the
+previous section where we discussed what happens if $A$ is generated
+by degree $1$ elements.
+
+\begin{lemma}
+\label{lemma-coherent-on-proj-general}
+Let $A$ be a Noetherian graded ring. Set $X = \text{Proj}(A)$. Then $X$
+is a Noetherian scheme. Let $\mathcal{F}$ be a coherent $\mathcal{O}_X$-module.
+\begin{enumerate}
+\item There exists an $r \geq 0$ and
+$d_1, \ldots, d_r \in \mathbf{Z}$ and a surjection
+$$
+\bigoplus\nolimits_{j = 1, \ldots, r} \mathcal{O}_X(d_j)
+\longrightarrow \mathcal{F}.
+$$
+\item For any $p$ the cohomology group $H^p(X, \mathcal{F})$ is a finite
+$A_0$-module.
+\item If $p > 0$, then $H^p(X, \mathcal{F}(d)) = 0$ for all $d$ large enough.
+\item For any $k \in \mathbf{Z}$ the graded $A$-module
+$$
+\bigoplus\nolimits_{d \geq k} H^0(X, \mathcal{F}(d))
+$$
+is a finite $A$-module.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+We will prove this by reducing the statement to
+Lemma \ref{lemma-coherent-on-proj}.
+By Algebra, Lemmas \ref{algebra-lemma-graded-Noetherian} and
+\ref{algebra-lemma-S-plus-generated} the ring $A_0$ is Noetherian
+and $A$ is generated over $A_0$ by finitely many elements
+$f_1, \ldots, f_r$ homogeneous of positive degree.
+Let $d$ be a sufficiently divisible integer. Set $A' = A^{(d)}$ with notation
+as in Algebra, Section \ref{algebra-section-graded}.
+Then $A'$ is generated over $A'_0 = A_0$ by elements of
+degree $1$, see Algebra, Lemma \ref{algebra-lemma-uple-generated-degree-1}.
+Thus Lemma \ref{lemma-coherent-on-proj} applies to $X' = \text{Proj}(A')$.
+
+\medskip\noindent
+By Constructions, Lemma \ref{constructions-lemma-d-uple} there exist
+an isomorphism of schemes $i : X \to X'$ and
+isomorphisms $\mathcal{O}_X(nd) \to i^*\mathcal{O}_{X'}(n)$
+compatible with the map $A' \to A$ and the maps
+$A_n \to H^0(X, \mathcal{O}_X(n))$ and $A'_n \to H^0(X', \mathcal{O}_{X'}(n))$.
+Thus Lemma \ref{lemma-coherent-on-proj} implies $X$ is Noetherian and that
+(1) and (2) hold. To see (3) and (4)
+we can use that for any fixed $k$, $p$, and $q$ we have
+$$
+\bigoplus\nolimits_{dn + q \geq k} H^p(X, \mathcal{F}(dn + q)) =
+\bigoplus\nolimits_{dn + q \geq k} H^p(X', (i_*\mathcal{F}(q))(n)
+$$
+by the compatibilities above. If $p > 0$, we have the vanishing of the right
+hand side for $k$ depending on $q$ large enough by
+Lemma \ref{lemma-coherent-on-proj}. Since there are only a finite number
+of congruence classes of integers modulo $d$, we see that (3) holds for
+$\mathcal{F}$ on $X$. If $p = 0$, then we have that the right hand side
+is a finite $A'$-module by Lemma \ref{lemma-coherent-on-proj}. Using
+the finiteness of congruence classes once more, we find that
+$\bigoplus_{n \geq k} H^0(X, \mathcal{F}(n))$ is a finite $A'$-module too.
+Since the $A'$-module structure comes from the $A$-module structure
+(by the compatibilities mentioned above), we conclude it is finite
+as an $A$-module as well.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-recover-tail-graded-module-general}
+Let $A$ be a Noetherian graded ring and let $d$ be the lcm of generators
+of $A$ over $A_0$. Let $M$ be a finite graded $A$-module.
+Set $X = \text{Proj}(A)$ and let $\widetilde{M}$ be
+the quasi-coherent $\mathcal{O}_X$-module on $X$ associated to $M$.
+Let $k \in \mathbf{Z}$.
+\begin{enumerate}
+\item $N' = \bigoplus_{n \geq k} H^0(X, \widetilde{M(n)})$
+is a finite $A$-module,
+\item $N = \bigoplus_{n \geq k} H^0(X, \widetilde{M}(n))$
+is a finite $A$-module,
+\item there is a canonical map $N \to N'$,
+\item if $k$ is small enough there is a canonical map $M \to N'$,
+\item the map $M_n \to N'_n$ is an isomorphism for $n \gg 0$,
+\item $N_n \to N'_n$ is an isomorphism for $d | n$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+The map $N \to N'$ in (3) comes from
+Constructions, Equation (\ref{constructions-equation-multiply-more-generally})
+by taking global sections.
+
+\medskip\noindent
+By
+Constructions, Equation
+(\ref{constructions-equation-global-sections-more-generally})
+there is a map of graded $A$-modules
+$M \to \bigoplus_{n \in \mathbf{Z}} H^0(X, \widetilde{M(n)})$.
+If the generators of $M$ sit in degrees $\geq k$, then the image
+is contained in the submodule
+$N' \subset \bigoplus_{n \in \mathbf{Z}} H^0(X, \widetilde{M(n)})$
+and we get the map in (4).
+
+\medskip\noindent
+By Algebra, Lemmas \ref{algebra-lemma-graded-Noetherian} and
+\ref{algebra-lemma-S-plus-generated} the ring $A_0$ is Noetherian
+and $A$ is generated over $A_0$ by finitely many elements
+$f_1, \ldots, f_r$ homogeneous of positive degree.
+Let $d = \text{lcm}(\deg(f_i))$. Then we see that (6) holds
+for example by
+Constructions, Lemma \ref{constructions-lemma-where-invertible}.
+
+\medskip\noindent
+Because $M$ is a finite $A$-module we see that
+$\widetilde{M}$ is a finite type $\mathcal{O}_X$-module,
+i.e., a coherent $\mathcal{O}_X$-module.
+Thus part (2) follows from Lemma \ref{lemma-coherent-on-proj-general}.
+
+\medskip\noindent
+We will deduce (1) from (2) using a trick. For $q \in \{0, \ldots, d - 1\}$
+write
+$$
+{}^qN = \bigoplus\nolimits_{n + q \geq k} H^0(X, \widetilde{M(q)}(n))
+$$
+By part (2) these are finite $A$-modules. The Noetherian ring $A$
+is finite over $A^{(d)} = \bigoplus_{n \geq 0} A_{dn}$, because
+it is generated by $f_i$ over $A^{(d)}$ and $f_i^d \in A^{(d)}$.
+Hence ${}^qN$ is a finite $A^{(d)}$-module.
+Moreover, $A^{(d)}$ is Noetherian (follows from
+Algebra, Lemma \ref{algebra-lemma-dehomogenize-finite-type}).
+It follows that the $A^{(d)}$-submodule
+${}^qN^{(d)} = \bigoplus_{n \in \mathbf{Z}} {}^qN_{dn}$
+is a finite module over $A^{(d)}$. Using the isomorphisms
+$\widetilde{M(dn + q)} = \widetilde{M(q)}(dn)$ we can write
+$$
+N' =
+\bigoplus\nolimits_{q \in \{0, \ldots, d - 1\}}
+\bigoplus\nolimits_{dn + q \geq k}
+H^0(X, \widetilde{M(q)}(dn)) =
+\bigoplus\nolimits_{q \in \{0, \ldots, d - 1\}} {}^qN^{(d)}
+$$
+Thus $N'$ is finite over $A^{(d)}$ and a fortiori finite over $A$.
+Thus (1) is true.
+
+\medskip\noindent
+Let $K$ be a finite $A$-module such that $\widetilde{K} = 0$. We claim
+that $K_n = 0$ for $d|n$ and $n \gg 0$. Arguing as above we see that
+$K^{(d)}$ is a finite $A^{(d)}$-module. Let
+$x_1, \ldots, x_m \in K$ be homogeneous generators of $K^{(d)}$
+over $A^{(d)}$, say sitting in degrees $d_1, \ldots, d_m$ with $d | d_j$.
+For each $i$ and $j$ there exists an $n_{ij} \geq 0$ such that
+$f_i^{n_{ij}} x_j = 0$ in $K_{d_j + n_{ij}}$: if not then
+$x_j/f_i^{d_i/\deg(f_i)} \in K_{(f_i)}$ would not be zero, i.e.,
+$\widetilde{K}$ would not be zero. Here we use that $\deg(f_i) | d | d_j$
+for all $i, j$. We conclude that $K_n$ is zero for
+$n$ with $d | n$ and $n > \max_j (d_j + \sum_i n_{ij} \deg(f_i))$
+as every element of $K_n$ is a sum of terms where each term is a
+monomials in the $f_i$ times one of the $x_j$ of total degree $n$.
+
+\medskip\noindent
+To finish the proof, we have to show that $M \to N'$ is an isomorphism
+in all sufficiently large degrees. The map $N \to N'$ induces an
+isomorphism $\widetilde{N} \to \widetilde{N'}$ because on the affine
+opens $D_+(f_i) = D_+(f_i^d)$ the corresponding modules are isomorphic:
+$N_{(f_i)} \cong N_{(f_i^d)} \cong N'_{(f_i^d)} \cong N'_{(f_i)}$
+by property (6).
+By Properties, Lemma \ref{properties-lemma-proj-quasi-coherent}
+we have a canonical isomorphism $\widetilde{N} \to \widetilde{M}$.
+The composition $\widetilde{N} \to \widetilde{M} \to \widetilde{N'}$
+is the isomorphism above (proof omitted; hint: look on standard
+affine opens to check this). Thus the map $M \to N'$ induces an isomorphism
+$\widetilde{M} \to \widetilde{N'}$.
+Let $K = \Ker(M \to N')$ and $Q = \Coker(M \to N')$.
+Recall that the functor
+$M \mapsto \widetilde{M}$ is exact, see
+Constructions, Lemma \ref{constructions-lemma-proj-sheaves}.
+Hence we see that $\widetilde{K} = 0$ and $\widetilde{Q} = 0$.
+By the result of the previous paragraph we see that $K_n = 0$ and
+$Q_n = 0$ for $d | n$ and $n \gg 0$. At this point we finally see
+the advantage of using $N'$ over $N$: the functor $M \leadsto N'$
+is compatible with shifts (immediate from the construction).
+Thus, repeating the whole argument with $M$ replaced by $M(q)$
+we find that $K_n = 0$ and $Q_n = 0$ for $n \equiv q \bmod d$
+and $n \gg 0$. Since there are
+only finitely many congruence classes modulo $n$ the proof is finished.
+\end{proof}
+
+\noindent
+Let $A$ be a Noetherian graded ring. Recall that
+$A_+ = \bigoplus_{n > 0} A_n$ is the irrelevant ideal.
+By Algebra, Lemmas \ref{algebra-lemma-graded-Noetherian} and
+\ref{algebra-lemma-S-plus-generated} the ring $A_0$ is Noetherian
+and $A$ is generated over $A_0$ by finitely many elements
+$f_1, \ldots, f_r$ homogeneous of positive degree.
+Let $d = \text{lcm}(\deg(f_i))$. Let $M$ be a graded $A$-module.
+In this situation we say a homogeneous element $x \in M$
+is {\it irrelevant}\footnote{This is nonstandard notation.} if
+$$
+(A_+ x)_{nd} = 0\text{ for all }n \gg 0
+$$
+If $x \in M$ is homogeneous and irrelevant and $f \in A$
+is homogeneous, then $fx$ is irrelevant too. Hence
+the set of irrelevant elements generate a graded submodule
+$M_{irrelevant} \subset M$. We will say $M$ is {\it irrelevant}
+if every homogeneous element of $M$ is irrelevant, i.e.,
+if $M_{irrelevant} = M$.
+If $M$ is finitely generated, then we see that
+this is equivalent to $M_{nd} = 0$ for $n \gg 0$.
+Denote $\text{Mod}_A$ the category of graded $A$-modules,
+$\text{Mod}^{fg}_A$ the full subcategory of finitely generated ones,
+and $\text{Mod}^{fg}_{A, irrelevant}$ the full subcategory of
+irrelevant modules.
+
+\begin{proposition}
+\label{proposition-coherent-modules-on-proj-general}
+Let $A$ be a Noetherian graded ring. Set $X = \text{Proj}(A)$. The functor
+$M \mapsto \widetilde M$ induces an equivalence
+$$
+\text{Mod}^{fg}_A/\text{Mod}^{fg}_{A, irrelevant}
+\longrightarrow
+\textit{Coh}(\mathcal{O}_X)
+$$
+whose quasi-inverse is given by
+$\mathcal{F} \longmapsto \bigoplus_{n \geq 0} \Gamma(X, \mathcal{F}(n))$.
+\end{proposition}
+
+\begin{proof}
+We urge the reader to read the proof in the case where $A$
+is generated in degree $1$ first, see
+Proposition \ref{proposition-coherent-modules-on-proj}.
+Let $f_1, \ldots, f_r \in A$ be homogeneous elements of positive degree
+which generate $A$ over $A_0$. Let $d$ be the lcm of the degrees
+$d_i$ of $f_i$. Let $M$ be a finite $A$-module.
+Let us show that $\widetilde{M}$ is zero if and
+only if $M$ is an irrelevant graded $A$-module (as defined above
+the statement of the proposition). Namely, let $x \in M$ be a
+homogeneous element.
+Choose $k \in \mathbf{Z}$ sufficiently small and let
+$N \to N'$ and $M \to N'$ be as in
+Lemma \ref{lemma-recover-tail-graded-module-general}.
+We may also pick $l$ sufficiently large such that
+$M_n \to N_n$ is an isomorphism for $n \geq l$.
+If $\widetilde{M}$ is zero, then $N = 0$.
+Thus for any $f \in A_+$ homogeneous with
+$\deg(f) + \deg(x) = nd$ and $nd > l$ we see that $fx$ is zero
+because $N_{nd} \to N'_{nd}$ and $M_{nd} \to N'_{nd}$ are isomorphisms.
+Hence $x$ is irrelevant.
+Conversely, assume $M$ is irrelevant. Then $M_{nd}$ is zero
+for $n \gg 0$ (see discussion above proposition).
+Clearly this implies that $M_{(f_i)} = M_{(f_i^{d/\deg(f_i)})} = 0$,
+whence $\widetilde{M} = 0$ by construction.
+
+\medskip\noindent
+It follows that the subcategory $\text{Mod}^{fg}_{A, irrelevant}$
+is a Serre subcategory of $\text{Mod}^{fg}_A$ as the kernel
+of the exact functor $M \mapsto \widetilde M$, see
+Homology, Lemma \ref{homology-lemma-kernel-exact-functor}
+and Constructions, Lemma \ref{constructions-lemma-proj-sheaves}.
+Hence the quotient category on the left of the arrow is defined
+in Homology, Lemma \ref{homology-lemma-serre-subcategory-is-kernel}.
+To define the functor of the proposition, it suffices to show that
+the functor $M \mapsto \widetilde M$ sends irrelevant modules to $0$
+which we have shown above.
+
+\medskip\noindent
+By Lemma \ref{lemma-coherent-on-proj-general} the proposed quasi-inverse
+makes sense. Namely, the lemma shows that
+$\mathcal{F} \longmapsto \bigoplus_{n \geq 0} \Gamma(X, \mathcal{F}(n))$
+is a functor $\textit{Coh}(\mathcal{O}_X) \to \text{Mod}^{fg}_A$
+which we can compose with the quotient functor
+$\text{Mod}^{fg}_A \to \text{Mod}^{fg}_A/\text{Mod}^{fg}_{A, irrelevant}$.
+
+\medskip\noindent
+By Lemma \ref{lemma-recover-tail-graded-module-general}
+the composite left to right to left is isomorphic to the identity functor.
+Namely, let $M$ be a finite graded $A$-module and let
+$k \in \mathbf{Z}$ sufficiently small and let
+$N \to N'$ and $M \to N'$ be as in
+Lemma \ref{lemma-recover-tail-graded-module-general}.
+Then the kernel and cokernel of $M \to N'$ are nonzero in
+only finitely many degrees, hence are irrelevant. Moreover, the
+kernel and cokernel of the map $N \to N'$ are zero in all sufficiently
+large degrees divisible by $d$, hence these are irrelevant modules too.
+Thus $M \to N'$ and $N \to N'$ are both isomorphisms in the quotient
+category, as desired.
+
+\medskip\noindent
+Finally, let $\mathcal{F}$ be a coherent $\mathcal{O}_X$-module.
+Set $M = \bigoplus_{n \in \mathbf{Z}} \Gamma(X, \mathcal{F}(n))$
+viewed as a graded $A$-module, so that our functor sends $\mathcal{F}$ to
+$M_{\geq 0} = \bigoplus_{n \geq 0} M_n$.
+By Properties, Lemma \ref{properties-lemma-proj-quasi-coherent}
+the canonical map $\widetilde M \to \mathcal{F}$
+is an isomorphism. Since the inclusion map
+$M_{\geq 0} \to M$ defines an isomorphism
+$\widetilde{M_{\geq 0}} \to \widetilde M$ we conclude that
+the composite right to left to right is isomorphic to the identity
+functor as well.
+\end{proof}
+
+
+
+
+
+
+
+
+
+

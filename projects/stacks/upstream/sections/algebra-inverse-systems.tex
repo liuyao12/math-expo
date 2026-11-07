@@ -1,0 +1,65 @@
+\section{Inverse systems}
+\label{section-inverse-systems}
+
+\noindent
+In many papers (and in this section) the term {\it inverse system} is
+used to indicate an inverse system over the partially ordered set
+$(\mathbf{N}, \geq)$. We briefly discuss such systems in this section.
+This material will be discussed more broadly in
+Homology, Section \ref{homology-section-inverse-systems}.
+Suppose we are given a ring $R$ and a sequence of $R$-modules
+$$
+M_1 \xleftarrow{\varphi_2} M_2 \xleftarrow{\varphi_3} M_3 \leftarrow \ldots
+$$
+with maps as indicated. By composing successive maps we obtain maps
+$\varphi_{ii'} : M_i \to M_{i'}$ whenever $i \geq i'$ such that moreover
+$\varphi_{ii''} = \varphi_{i'i''} \circ \varphi_{i i'}$ whenever
+$i \geq i' \geq i''$. Conversely, given the system of maps $\varphi_{ii'}$
+we can set $\varphi_i = \varphi_{i(i-1)}$ and recover the maps displayed
+above. In this case
+$$
+\lim M_i
+=
+\{(x_i) \in \prod M_i \mid \varphi_i(x_i) = x_{i - 1}, \ i = 2, 3, \ldots\}
+$$
+compare with
+Categories, Section \ref{categories-section-limit-sets}.
+As explained in
+Homology, Section \ref{homology-section-inverse-systems}
+this is actually a limit in the category of $R$-modules, as defined in
+Categories, Section \ref{categories-section-limits}.
+
+\begin{lemma}
+\label{lemma-Mittag-Leffler}
+Let $R$ be a ring.
+Let $0 \to K_i \to L_i \to M_i \to 0$ be short exact sequences of
+$R$-modules, $i \geq 1$ which fit into maps of short exact sequences
+$$
+\xymatrix{
+0 \ar[r] &
+K_i \ar[r] &
+L_i \ar[r] &
+M_i \ar[r] &
+0 \\
+0 \ar[r] &
+K_{i + 1} \ar[r] \ar[u] &
+L_{i + 1} \ar[r] \ar[u] &
+M_{i + 1} \ar[r] \ar[u] &
+0}
+$$
+If for every $i$ there exists a $c = c(i) \geq i$ such that
+$\Im(K_c \to K_i) = \Im(K_j \to K_i)$
+for all $j \geq c$, then the sequence
+$$
+0 \to \lim K_i \to \lim L_i \to \lim M_i \to 0
+$$
+is exact.
+\end{lemma}
+
+\begin{proof}
+This is a special case of the more general
+Lemma \ref{lemma-ML-exact-sequence}.
+\end{proof}
+
+
+

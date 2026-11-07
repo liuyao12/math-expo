@@ -1,0 +1,178 @@
+\section{Applications of dimension theory}
+\label{section-applications-dimension-theory}
+
+\noindent
+We can use the results on dimension to prove certain rings
+have infinite spectra and to produce more Jacobson rings.
+
+\begin{lemma}
+\label{lemma-Noetherian-local-domain-dim-2-infinite-opens}
+Let $R$ be a Noetherian local domain of dimension $\geq 2$.
+A nonempty open subset $U \subset \Spec(R)$ is
+infinite.
+\end{lemma}
+
+\begin{proof}
+To get a contradiction, assume that $U \subset \Spec(R)$ is finite.
+In this case $(0) \in U$ and $\{(0)\}$ is an open subset of $U$ (because
+the complement of $\{(0)\}$ is the union of the closures of the other points).
+Thus we may assume $U = \{(0)\}$.
+Let $\mathfrak m \subset R$ be the maximal ideal.
+We can find an $x \in \mathfrak m$, $x \not = 0$ such that
+$V(x) \cup U = \Spec(R)$. In other words we see that
+$D(x) = \{(0)\}$. In particular we see
+that $\dim(R/xR) = \dim(R) - 1 \geq 1$, see Lemma \ref{lemma-one-equation}.
+Let $\overline{y}_2, \ldots, \overline{y}_{\dim(R)} \in R/xR$ generate
+an ideal of definition of $R/xR$, see Proposition \ref{proposition-dimension}.
+Choose lifts $y_2, \ldots, y_{\dim(R)} \in R$, so that
+$x, y_2, \ldots, y_{\dim(R)}$ generate an ideal of definition in $R$.
+This implies that $\dim(R/(y_2)) = \dim(R) - 1$ and
+$\dim(R/(y_2, x)) = \dim(R) - 2$, see
+Lemma \ref{lemma-elements-generate-ideal-definition}.
+Hence there exists a prime
+$\mathfrak p$ containing $y_2$ but not $x$. This contradicts
+the fact that $D(x) = \{(0)\}$.
+\end{proof}
+
+\noindent
+The rings $k[[t]]$ where $k$ is a field, or the ring of $p$-adic
+numbers are Noetherian rings of dimension $1$ with finitely many primes.
+This is the maximum dimension for which this can happen.
+
+\begin{lemma}
+\label{lemma-Noetherian-finite-nr-primes}
+A Noetherian ring with finitely many primes has dimension $\leq 1$.
+\end{lemma}
+
+\begin{proof}
+Let $R$ be a Noetherian ring with finitely many primes.
+If $R$ is a local domain, then the lemma follows from
+Lemma \ref{lemma-Noetherian-local-domain-dim-2-infinite-opens}.
+If $R$ is a domain, then $R_\mathfrak m$ has dimension $\leq 1$
+for all maximal ideals $\mathfrak m$ by the local case.
+Hence $\dim(R) \leq 1$ by Lemma \ref{lemma-dimension-height}.
+If $R$ is general, then $\dim(R/\mathfrak q) \leq 1$
+for every minimal prime $\mathfrak q$ of $R$.
+Since every prime contains a minimal prime
+(Lemma \ref{lemma-Zariski-topology}), this implies $\dim(R) \leq 1$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-finite-type-algebra-finite-nr-primes}
+Let $S$ be a nonzero finite type algebra over a field $k$.
+The following are equivalent
+\begin{enumerate}
+\item $\dim(S) = 0$,
+\item $S$ has finitely many primes,
+\item $S$ has finitely many maximal ideals,
+\item $\Spec(S)$ satisfies one of the equivalent conditions of
+Lemma \ref{lemma-ring-with-only-minimal-primes},
+\item $\dim_k(S) < \infty$,
+\item $S$ is Artinian,
+\item $\Spec(S)$ is a discrete topological space,
+\item add more here.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+It is immediate from the definitions that (1) is equivalent to (4)
+by looking at part (5) of Lemma \ref{lemma-ring-with-only-minimal-primes}.
+Recall that $\Spec(S)$ is sober, Noetherian, and Jacobson, see
+Lemmas \ref{lemma-spec-spectral}, \ref{lemma-Noetherian-topology},
+\ref{lemma-finite-type-field-Jacobson}, and \ref{lemma-jacobson}.
+If $S$ has dimension $0$, then every point defines an
+irreducible component and there are only a finite number
+of irreducible components (Topology, Lemma \ref{topology-lemma-Noetherian}).
+Thus (1) implies (2). Trivially (2) implies (3).
+If (3) holds, then $\Spec(S)$ is discrete by
+Topology, Lemma \ref{topology-lemma-finite-jacobson}
+and hence the dimension of $S$ is $0$.
+
+\medskip\noindent
+At this point we know that (1) -- (4) are equivalent.
+The implication (5) $\Rightarrow$ (6) is
+Lemma \ref{lemma-finite-dimensional-algebra}.
+The implication (6) $\Rightarrow$ (7) follows from
+Proposition \ref{proposition-dimension-zero-ring}.
+The implication (7) $\Rightarrow$ (4) is immediate.
+Conversely, if $S$ satisfies (1) -- (4), then $S$ has finitely
+many primes $\mathfrak m_1, \ldots, \mathfrak m_r$ all maximal.
+Note that $\kappa(\mathfrak m_i)$ is a finite extension of $k$ by the
+Hilbert Nullstellensatz (Theorem \ref{theorem-nullstellensatz}).
+By Proposition \ref{proposition-dimension-zero-ring} we also see
+that $S$ is Artinian. Next, Lemma \ref{lemma-artinian-finite-length}
+tells us that $\text{length}_S(S) < \infty$. Thus $\dim_k(S) < \infty$ by
+Lemma \ref{lemma-pushdown-module}. We conclude that
+(1) -- (7) are equivalent. (Note: another and more standard
+way to prove $\dim(S) = 0 \Rightarrow \dim_k(S) < \infty$
+is to use Noether normalization, but we don't have this available to us yet.)
+\end{proof}
+
+\begin{lemma}
+\label{lemma-noetherian-dim-1-Jacobson}
+Noetherian Jacobson rings.
+\begin{enumerate}
+\item Any Noetherian domain $R$ of dimension $1$
+with infinitely many primes is Jacobson.
+\item Any Noetherian ring such that every prime
+$\mathfrak p$ is either maximal or contained in
+infinitely many prime ideals is Jacobson.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Part (1) is a reformulation of Lemma \ref{lemma-pid-jacobson}.
+
+\medskip\noindent
+Let $R$ be a Noetherian ring such that
+every non-maximal prime $\mathfrak p$ is contained
+in infinitely many prime ideals.
+Assume $\Spec(R)$ is not Jacobson to get
+a contradiction.
+By Lemmas \ref{lemma-irreducible}
+and \ref{lemma-Noetherian-topology}
+we see that $\Spec(R)$ is a sober, Noetherian topological space.
+By Topology, Lemma \ref{topology-lemma-non-jacobson-Noetherian-characterize}
+we see that there exists a non-maximal ideal $\mathfrak p \subset R$
+such that $\{\mathfrak p\}$ is a locally closed subset of
+$\Spec(R)$. In other words, $\mathfrak p$ is not maximal
+and $\{\mathfrak p\}$ is an open subset of $V(\mathfrak p)$.
+Consider a prime $\mathfrak q \subset R$ with
+$\mathfrak p \subset \mathfrak q$. Recall that the topology on the spectrum of
+$(R/\mathfrak p)_{\mathfrak q} = R_{\mathfrak q}/\mathfrak pR_{\mathfrak q}$
+is induced from that of $\Spec(R)$, see Lemmas
+\ref{lemma-spec-localization} and \ref{lemma-spec-closed}.
+Hence we see that $\{(0)\}$ is a locally closed subset of
+$\Spec((R/\mathfrak p)_{\mathfrak q})$. By
+Lemma \ref{lemma-Noetherian-local-domain-dim-2-infinite-opens}
+we conclude that $\dim((R/\mathfrak p)_{\mathfrak q}) = 1$.
+Since this holds for every $\mathfrak q \supset \mathfrak p$
+we conclude that $\dim(R/\mathfrak p) = 1$. At this point we use
+the assumption that $\mathfrak p$ is contained in infinitely many
+primes to see that $\Spec(R/\mathfrak p)$ is infinite.
+Hence by part (1) of the lemma we see that
+$V(\mathfrak p) \cong \Spec(R/\mathfrak p)$
+is the closure of its closed points.
+This is the desired contradiction since it means that
+$\{\mathfrak p\} \subset V(\mathfrak p)$ cannot be open.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

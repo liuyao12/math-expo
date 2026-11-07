@@ -1,0 +1,208 @@
+\section{Points of schemes}
+\label{section-points}
+
+\noindent
+Given a scheme $X$ we can define a functor
+$$
+h_X : \Sch^{opp}
+\longrightarrow
+\textit{Sets}, \quad
+T \longmapsto \Mor(T, X).
+$$
+See Categories, Example \ref{categories-example-hom-functor}.
+This is called the {\it functor of points of $X$}.
+A fun part of scheme theory is to find descriptions of
+the internal geometry of $X$ in terms of this functor $h_X$.
+In this section we find a simple way to describe
+points of $X$.
+
+\medskip\noindent
+Let $X$ be a scheme. Let $R$ be a local ring with maximal ideal
+$\mathfrak m \subset R$. Suppose that $f : \Spec(R) \to X$
+is a morphism of schemes. Let $x \in X$ be the image of the closed point
+$\mathfrak m \in \Spec(R)$. Then we obtain a local homomorphism
+of local rings
+$$
+f^\sharp :
+\mathcal{O}_{X, x}
+\longrightarrow
+\mathcal{O}_{\Spec(R), \mathfrak m} = R.
+$$
+
+\begin{lemma}
+\label{lemma-morphism-from-spec-local-ring}
+Let $X$ be a scheme. Let $R$ be a local ring.
+The construction above gives a bijective correspondence
+between morphisms $\Spec(R) \to X$ and pairs
+$(x, \varphi)$ consisting of a point $x \in X$ and
+a local homomorphism of local rings $\varphi : \mathcal{O}_{X, x} \to R$.
+\end{lemma}
+
+\begin{proof}
+Let $A$ be a ring. For any ring homomorphism $\psi : A \to R$
+there exists a unique prime ideal $\mathfrak p \subset A$
+and a factorization $A \to A_{\mathfrak p} \to R$ where the
+last map is a local homomorphism of local rings. Namely,
+$\mathfrak p = \psi^{-1}(\mathfrak m)$. Via
+Lemma \ref{lemma-morphism-into-affine}
+this proves that the lemma holds if $X$ is an affine scheme.
+
+\medskip\noindent
+Let $X$ be a general scheme. Any $x \in X$ is contained in
+an open affine $U \subset X$. By the affine case we conclude that every pair
+$(x, \varphi)$ occurs as the end product of the construction
+above the lemma.
+
+\medskip\noindent
+To finish the proof it suffices to show that any morphism
+$f : \Spec(R) \to X$ has image contained in any affine
+open containing the image $x$ of the closed
+point of $\Spec(R)$. In fact, let $x \in V \subset X$
+be any open neighbourhood containing $x$. Then
+$f^{-1}(V) \subset \Spec(R)$ is an open containing
+the unique closed point and hence equal to $\Spec(R)$.
+\end{proof}
+
+\noindent
+As a special case of the lemma above we obtain for every
+point $x$ of a scheme $X$ a canonical morphism
+\begin{equation}
+\label{equation-canonical-morphism}
+\Spec(\mathcal{O}_{X, x}) \longrightarrow X
+\end{equation}
+corresponding to the identity map on the local ring of $X$ at $x$.
+We may reformulate the lemma above as saying that for any
+morphism $f : \Spec(R) \to X$ there exists a unique point
+$x \in X$ such that $f$ factors as
+$\Spec(R) \to \Spec(\mathcal{O}_{X, x}) \to X$
+where the first map comes from a local homomorphism
+$\mathcal{O}_{X, x} \to R$.
+
+\medskip\noindent
+In case we have a morphism of schemes $f : X \to S$,
+and a point $x$ mapping to a point $s \in S$ we obtain
+a commutative diagram
+$$
+\xymatrix{
+\Spec(\mathcal{O}_{X, x}) \ar[r] \ar[d] & X \ar[d] \\
+\Spec(\mathcal{O}_{S, s}) \ar[r] & S
+}
+$$
+where the left vertical map corresponds to the local ring map
+$f^\sharp_x : \mathcal{O}_{S, s} \to \mathcal{O}_{X, x}$.
+
+\begin{lemma}
+\label{lemma-specialize-points}
+Let $X$ be a scheme.
+Let $x, x' \in X$ be points of $X$.
+Then $x' \in X$ is a generalization of $x$ if and only if
+$x'$ is in the image of the canonical morphism
+$\Spec(\mathcal{O}_{X, x}) \to X$.
+\end{lemma}
+
+\begin{proof}
+A continuous map preserves the relation of specialization/generalization.
+Since every point of $\Spec(\mathcal{O}_{X, x})$ is a
+generalization of the closed point we see every point in the image
+of $\Spec(\mathcal{O}_{X, x}) \to X$ is a generalization of $x$.
+Conversely, suppose that $x'$ is a generalization of $x$.
+Choose an affine open neighbourhood $U = \Spec(R)$ of
+$x$. Then $x' \in U$. Say $\mathfrak p \subset R$ and
+$\mathfrak p' \subset R$ are the primes corresponding
+to $x$ and $x'$. Since $x'$ is a generalization of $x$
+we see that $\mathfrak p' \subset \mathfrak p$. This means
+that $\mathfrak p'$ is in the image of the morphism
+$\Spec(\mathcal{O}_{X, x}) = \Spec(R_{\mathfrak p})
+\to \Spec(R) = U \subset X$ as desired.
+\end{proof}
+
+\noindent
+Now, let us discuss morphisms from spectra of fields.
+Let $(R, \mathfrak m, \kappa)$ be a local ring
+with maximal ideal $\mathfrak m$ and residue field $\kappa$.
+Let $K$ be a field. A local homomorphism $R \to K$ by definition
+factors as $R \to \kappa \to K$, i.e., is the same thing as
+a morphism $\kappa \to K$. Thus we see that morphisms
+$$
+\Spec(K) \longrightarrow X
+$$
+correspond to pairs $(x, \kappa(x) \to K)$. We may define
+a preorder on morphisms of spectra of fields to $X$
+by saying that $\Spec(K) \to X$ dominates
+$\Spec(L) \to X$ if $\Spec(K) \to X$
+factors through $\Spec(L) \to X$. This suggests
+the following notion: Let us temporarily
+say that two morphisms $p : \Spec(K) \to X$ and
+$q : \Spec(L) \to X$ are {\it equivalent} if there exists
+a third field $\Omega$ and a commutative diagram
+$$
+\xymatrix{
+\Spec(\Omega) \ar[r] \ar[d] &
+\Spec(L) \ar[d]^q \\
+\Spec(K) \ar[r]^p &
+X
+}
+$$
+Of course this immediately implies that the unique points of
+all three of the schemes $\Spec(K)$,
+$\Spec(L)$, and $\Spec(\Omega)$
+map to the same $x \in X$. Thus a diagram (by the remarks above)
+corresponds to a point $x \in X$ and a commutative diagram
+$$
+\xymatrix{
+\Omega &
+L \ar[l] \\
+K \ar[u] &
+\kappa(x) \ar[l] \ar[u]
+}
+$$
+of fields. This defines an equivalence relation, because given
+any set of field extensions $K_i/\kappa$ there exists
+some field extension $\Omega/\kappa$ such that all
+the field extensions $K_i$ are contained in the extension $\Omega$.
+
+\begin{lemma}
+\label{lemma-characterize-points}
+Let $X$ be a scheme. Points of $X$ correspond bijectively
+to equivalence classes of morphisms from spectra of
+fields into $X$. Moreover, each equivalence class contains
+a (unique up to unique isomorphism) smallest element
+$\Spec(\kappa(x)) \to X$.
+\end{lemma}
+
+\begin{proof}
+Follows from the discussion above.
+\end{proof}
+
+\noindent
+Of course the morphisms $\Spec(\kappa(x)) \to X$
+factor through the canonical morphisms
+$\Spec(\mathcal{O}_{X, x}) \to X$.
+And the content of Lemma \ref{lemma-specialize-points} is in
+this setting that the morphism $\Spec(\kappa(x')) \to X$
+factors as
+$\Spec(\kappa(x')) \to \Spec(\mathcal{O}_{X, x}) \to X$
+whenever $x'$ is a generalization of $x$.
+In case we have a morphism of schemes $f : X \to S$,
+and a point $x$ mapping to a point $s \in S$ we obtain
+a commutative diagram
+$$
+\xymatrix{
+\Spec(\kappa(x)) \ar[r] \ar[d] &
+\Spec(\mathcal{O}_{X, x}) \ar[r] \ar[d] &
+X \ar[d] \\
+\Spec(\kappa(s)) \ar[r] &
+\Spec(\mathcal{O}_{S, s}) \ar[r] &
+S.
+}
+$$
+
+
+
+
+
+
+
+
+
+

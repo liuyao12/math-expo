@@ -1,0 +1,258 @@
+\section{Noetherian rings}
+\label{section-Noetherian}
+
+\noindent
+A ring $R$ is {\it Noetherian} if any ideal of $R$ is finitely generated.
+This is clearly equivalent to the ascending chain condition for ideals of $R$.
+By
+Lemma \ref{lemma-cohen}
+it suffices to check that every prime ideal of $R$ is finitely generated.
+
+\begin{lemma}
+\label{lemma-Noetherian-permanence}
+\begin{slogan}
+Noetherian property is stable by passage to finite type extension
+and localization.
+\end{slogan}
+Any finitely generated ring over a Noetherian ring
+is Noetherian. Any localization of a Noetherian ring
+is Noetherian.
+\end{lemma}
+
+\begin{proof}
+The statement on localizations follows from the fact
+that any ideal $J \subset S^{-1}R$ is of the form
+$I \cdot S^{-1}R$. Any quotient $R/I$ of a Noetherian
+ring $R$ is Noetherian because any ideal $\overline{J} \subset R/I$
+is of the form $J/I$ for some ideal $I \subset J \subset R$.
+Thus it suffices to show that if $R$ is Noetherian so
+is $R[X]$. Suppose $J_1 \subset J_2 \subset \ldots$ is an
+ascending chain of ideals in $R[X]$. Consider the ideals $I_{i, d}$
+defined as the ideal of elements of $R$ which occur as leading
+coefficients of degree $d$ polynomials in $J_i$.
+Clearly $I_{i, d} \subset I_{i', d'}$ whenever
+$i \leq i'$ and $d \leq d'$. By the ascending chain condition
+in $R$ there are at most finitely many distinct ideals among all of
+the $I_{i, d}$.
+(Hint: Any infinite set of elements of
+$\mathbf{N} \times \mathbf{N}$ contains an increasing
+infinite sequence.)
+Take $i_0$ so large that $I_{i, d} = I_{i_0, d}$
+for all $i \geq i_0$ and all $d$. Suppose $f \in J_i$ for some $i \geq i_0$.
+By induction on the degree $d = \deg(f)$ we show that $f \in J_{i_0}$.
+Namely, there exists a $g\in J_{i_0}$ whose degree is $d$ and which
+has the same leading coefficient as $f$. By induction
+$f - g \in J_{i_0}$ and we win.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-Noetherian-power-series}
+If $R$ is a Noetherian ring, then so is the formal power
+series ring $R[[x_1, \ldots, x_n]]$.
+\end{lemma}
+
+\begin{proof}
+Since $R[[x_1, \ldots, x_{n + 1}]] \cong R[[x_1, \ldots, x_n]][[x_{n + 1}]]$
+it suffices to prove the statement that $R[[x]]$ is Noetherian if
+$R$ is Noetherian. Let $I \subset R[[x]]$ be an ideal.
+We have to show that $I$ is a finitely generated ideal.
+For each integer
+$d$ denote $I_d = \{a \in R \mid ax^d + \text{h.o.t.} \in I\}$.
+Then we see that $I_0 \subset I_1 \subset \ldots$ stabilizes as $R$
+is Noetherian. Choose $d_0$ such that $I_{d_0} = I_{d_0 + 1} = \ldots$.
+For each $d \leq d_0$ choose elements $f_{d, j} \in I \cap (x^d)$,
+$j = 1, \ldots, n_d$ such that if we write
+$f_{d, j} = a_{d, j}x^d + \text{h.o.t}$ then $I_d = (a_{d, j})$.
+Denote $I' = (\{f_{d, j}\}_{d = 0, \ldots, d_0, j = 1, \ldots, n_d})$.
+Then it is clear that $I' \subset I$. Pick $f \in I$.
+First we may choose $c_{d, i} \in R$ such that
+$$
+f - \sum c_{d, i} f_{d, i} \in (x^{d_0 + 1}) \cap I.
+$$
+Next, we can choose $c_{i, 1} \in R$, $i = 1, \ldots, n_{d_0}$ such that
+$$
+f - \sum c_{d, i} f_{d, i} - \sum c_{i, 1}xf_{d_0, i} \in (x^{d_0 + 2}) \cap I.
+$$
+Next, we can choose $c_{i, 2} \in R$, $i = 1, \ldots, n_{d_0}$ such that
+$$
+f - \sum c_{d, i} f_{d, i} - \sum c_{i, 1}xf_{d_0, i}
+- \sum c_{i, 2}x^2f_{d_0, i}
+\in (x^{d_0 + 3}) \cap I.
+$$
+And so on. In the end we see that
+$$
+f = \sum c_{d, i} f_{d, i} +
+\sum\nolimits_i (\sum\nolimits_e c_{i, e} x^e)f_{d_0, i}
+$$
+is contained in $I'$ as desired.
+\end{proof}
+
+\noindent
+The following lemma, although easy, is useful because
+finite type $\mathbf{Z}$-algebras come up quite often in
+a technique called ``absolute Noetherian reduction''.
+
+\begin{lemma}
+\label{lemma-obvious-Noetherian}
+Any finite type algebra over a field is Noetherian.
+Any finite type algebra over $\mathbf{Z}$ is Noetherian.
+\end{lemma}
+
+\begin{proof}
+This is immediate from Lemma \ref{lemma-Noetherian-permanence}
+and the fact that fields are Noetherian rings and that
+$\mathbf{Z}$ is Noetherian ring (because it is a
+principal ideal domain).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-Noetherian-finite-type-is-finite-presentation}
+Let $R$ be a Noetherian ring.
+\begin{enumerate}
+\item Any finite $R$-module is of finite presentation.
+\item Any submodule of a finite $R$-module is finite.
+\item Any finite type $R$-algebra is of finite presentation over $R$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let $M$ be a finite $R$-module. By
+Lemma \ref{lemma-trivial-filter-finite-module}
+we can find a finite filtration of $M$ whose successive quotients are
+of the form $R/I$. Since any ideal is finitely generated, each of
+the quotients $R/I$ is finitely presented. Hence $M$ is finitely
+presented by
+Lemma \ref{lemma-extension}.
+This proves (1).
+
+\medskip\noindent
+Let $N \subset M$ be a submodule. As $M$ is finite, the quotient
+$M/N$ is finite. Thus $M/N$ is of finite presentation by part (1).
+Thus we see that $N$ is finite by Lemma \ref{lemma-extension} part (5).
+This proves part (2).
+
+\medskip\noindent
+To see (3) note that any ideal of
+$R[x_1, \ldots, x_n]$ is finitely generated by
+Lemma \ref{lemma-Noetherian-permanence}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-Noetherian-topology}
+If $R$ is a Noetherian ring then $\Spec(R)$
+is a Noetherian topological space, see Topology,
+Definition \ref{topology-definition-noetherian}.
+\end{lemma}
+
+\begin{proof}
+This is because any closed subset of $\Spec(R)$
+is uniquely of the form $V(I)$ with $I$ a radical ideal,
+see Lemma \ref{lemma-Zariski-topology}.
+And this correspondence is inclusion reversing.
+Thus the result follows from the definitions.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-Noetherian-irreducible-components}
+\begin{slogan}
+A Noetherian affine scheme has finitely many generic points.
+\end{slogan}
+If $R$ is a Noetherian ring then $\Spec(R)$
+has finitely many irreducible components. In other words
+$R$ has finitely many minimal primes.
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-Noetherian-topology} and
+Topology, Lemma \ref{topology-lemma-Noetherian}
+we see there are finitely many irreducible components.
+By Lemma \ref{lemma-irreducible} these correspond to
+minimal primes of $R$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-Noetherian-base-change-finite-type}
+Let $R \to S$ be a ring map. Let $R \to R'$ be of finite type.
+If $S$ is Noetherian, then the base change $S' = R' \otimes_R S$
+is Noetherian.
+\end{lemma}
+
+\begin{proof}
+By Lemma \ref{lemma-base-change-finiteness} finite type is stable under
+base change. Thus $S \to S'$ is of finite type. Since $S$ is Noetherian we
+can apply Lemma \ref{lemma-Noetherian-permanence}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-Noetherian-field-extension}
+Let $k$ be a field and let $R$ be a Noetherian $k$-algebra.
+If $K/k$ is a finitely generated field extension then
+$K \otimes_k R$ is Noetherian.
+\end{lemma}
+
+\begin{proof}
+Since $K/k$ is a finitely generated field extension, there exists
+a finitely generated $k$-algebra $B \subset K$ such that $K$ is
+the fraction field of $B$. In other words, $K = S^{-1}B$
+with $S = B \setminus \{0\}$. Then $K \otimes_k R = S^{-1}(B \otimes_k R)$.
+Then $B \otimes_k R$ is Noetherian by
+Lemma \ref{lemma-Noetherian-base-change-finite-type}.
+Finally, $K \otimes_k R = S^{-1}(B \otimes_k R)$ is Noetherian by
+Lemma \ref{lemma-Noetherian-permanence}.
+\end{proof}
+
+\noindent
+Here are some fun lemmas that are sometimes useful.
+
+\begin{lemma}
+\label{lemma-subring-of-local-ring}
+Let $R$ be a ring and $\mathfrak p \subset R$ be a prime.
+There exists an $f \in R$, $f \not \in \mathfrak p$ such
+that $R_f \to R_\mathfrak p$ is injective in each of the
+following cases
+\begin{enumerate}
+\item $R$ is a domain,
+\item $R$ is Noetherian, or
+\item $R$ is reduced and has finitely many minimal primes.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+If $R$ is a domain, then $R \subset R_\mathfrak p$, hence $f = 1$ works.
+If $R$ is Noetherian, then the kernel $I$ of $R \to R_\mathfrak p$
+is a finitely generated ideal and we can find
+$f \in R$, $f \not \in \mathfrak p$ such that $IR_f = 0$.
+For this $f$ the map $R_f \to R_\mathfrak p$ is injective
+and $f$ works. If $R$ is reduced with finitely
+many minimal primes $\mathfrak p_1, \ldots, \mathfrak p_n$,
+then we can choose
+$f \in \bigcap_{\mathfrak p_i \not \subset \mathfrak p} \mathfrak p_i$,
+$f \not \in \mathfrak p$. Indeed, if $\mathfrak{p}_i\not\subset
+\mathfrak{p}$ then there exist $f_i \in \mathfrak{p}_i$,
+$f_i \not\in \mathfrak{p}$ and $f = \prod f_i$ works.
+For this $f$ we have $R_f \subset R_\mathfrak p$ because the minimal
+primes of $R_f$ correspond to minimal primes of $R_\mathfrak p$
+and we can apply Lemma \ref{lemma-reduced-ring-sub-product-fields}
+(some details omitted).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-surjective-endo-noetherian-ring-is-iso}
+Any surjective endomorphism of a Noetherian ring is an isomorphism.
+\end{lemma}
+
+\begin{proof}
+If $f : R \to R$ were such an endomorphism but not injective, then
+$$
+\Ker(f) \subset \Ker(f \circ f) \subset
+\Ker(f \circ f \circ f) \subset \ldots
+$$
+would be a strictly increasing chain of ideals.
+\end{proof}
+
+
+
+
+
+
+

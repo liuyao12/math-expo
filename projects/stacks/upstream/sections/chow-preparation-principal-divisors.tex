@@ -1,0 +1,76 @@
+\section{Preparation for principal divisors}
+\label{section-preparation-principal-divisors}
+
+\noindent
+Some of the material in this section partially overlaps with the
+discussion in Divisors, Section \ref{divisors-section-Weil-divisors}.
+
+\begin{lemma}
+\label{lemma-divisor-delta-dimension}
+Let $(S, \delta)$ be as in Situation \ref{situation-setup}.
+Let $X$ be locally of finite type over $S$. Assume $X$ is
+integral.
+\begin{enumerate}
+\item If $Z \subset X$ is an integral closed subscheme, then
+the following are equivalent:
+\begin{enumerate}
+\item $Z$ is a prime divisor,
+\item $Z$ has codimension $1$ in $X$, and
+\item $\dim_\delta(Z) = \dim_\delta(X) - 1$.
+\end{enumerate}
+\item If $Z$ is an irreducible component of an effective Cartier
+divisor on $X$, then $\dim_\delta(Z) = \dim_\delta(X) - 1$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Part (1) follows from the definition of a prime divisor
+(Divisors, Definition \ref{divisors-definition-Weil-divisor})
+and the definition of a dimension function
+(Topology, Definition \ref{topology-definition-dimension-function}).
+Let $\xi \in Z$ be the generic point of an irreducible component $Z$ of
+an effective Cartier divisor $D \subset X$.
+Then $\dim(\mathcal{O}_{D, \xi}) = 0$ and
+$\mathcal{O}_{D, \xi} = \mathcal{O}_{X, \xi}/(f)$ for some
+nonzerodivisor $f \in \mathcal{O}_{X, \xi}$ (Divisors,
+Lemma \ref{divisors-lemma-effective-Cartier-in-points}).
+Then $\dim(\mathcal{O}_{X, \xi}) = 1$ by
+Algebra, Lemma \ref{algebra-lemma-one-equation}. Hence $Z$ is as in (1) by
+Properties, Lemma \ref{properties-lemma-codimension-local-ring}
+and the proof is complete.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-finite-in-codimension-one}
+Let $f : X \to Y$ be a morphism of schemes.
+Let $\xi \in Y$ be a point.
+Assume that
+\begin{enumerate}
+\item $X$, $Y$ are integral,
+\item $Y$ is locally Noetherian
+\item $f$ is proper, dominant and $R(Y) \subset R(X)$ is finite, and
+\item $\dim(\mathcal{O}_{Y, \xi}) = 1$.
+\end{enumerate}
+Then there exists an open neighbourhood $V \subset Y$ of $\xi$
+such that $f|_{f^{-1}(V)} : f^{-1}(V) \to V$ is finite.
+\end{lemma}
+
+\begin{proof}
+This lemma is a special case of
+Varieties, Lemma \ref{varieties-lemma-finite-in-codim-1}.
+Here is a direct argument in this case.
+By Cohomology of Schemes,
+Lemma \ref{coherent-lemma-proper-finite-fibre-finite-in-neighbourhood}
+it suffices to prove that $f^{-1}(\{\xi\})$ is finite.
+We replace $Y$ by an affine open, say $Y = \Spec(R)$.
+Note that $R$ is Noetherian, as $Y$ is assumed locally Noetherian.
+Since $f$ is proper it is quasi-compact. Hence we can find a finite
+affine open covering $X = U_1 \cup \ldots \cup U_n$ with
+each $U_i = \Spec(A_i)$. Note that $R \to A_i$ is a
+finite type injective homomorphism of domains such that
+the induced extension of fraction fields is finite.
+Thus the lemma follows
+from Algebra, Lemma \ref{algebra-lemma-finite-in-codim-1}.
+\end{proof}
+
+

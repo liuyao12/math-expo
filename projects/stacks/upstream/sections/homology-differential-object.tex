@@ -1,0 +1,194 @@
+\section{Spectral sequences: differential objects}
+\label{section-differential-object}
+
+\begin{definition}
+\label{definition-differential-object}
+Let $\mathcal{A}$ be an abelian category.
+A {\it differential object} of $\mathcal{A}$
+is a pair $(A, d)$ consisting of an
+object $A$ of $\mathcal{A}$
+endowed with a selfmap $d$ such that $d \circ d = 0$.
+A {\it morphism of differential objects} $(A, d) \to (B, d)$
+is given by a morphism $\alpha : A \to B$ such that
+$d \circ \alpha = \alpha \circ d$.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-differential-objects-abelian}
+\begin{slogan}
+The category of differential objects of an abelian category is itself
+an abelian category.
+\end{slogan}
+Let $\mathcal{A}$ be an abelian category.
+The category of differential objects of $\mathcal{A}$ is abelian.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{definition}
+\label{definition-differential-object-homology}
+For a differential object $(A, d)$ we denote
+$$
+H(A, d) = \Ker(d)/\Im(d)
+$$
+its {\it homology}.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-differential-objects-ses}
+Let $\mathcal{A}$ be an abelian category.
+Let $0 \to (A, d) \to (B, d) \to (C, d) \to 0$ be a short exact sequence
+of differential objects. Then we get an exact homology sequence
+$$
+\ldots \to H(C, d) \to H(A, d) \to H(B, d) \to H(C, d) \to \ldots
+$$
+\end{lemma}
+
+\begin{proof}
+Apply Lemma \ref{lemma-long-exact-sequence-cochain}
+to the short exact sequence of complexes
+$$
+\begin{matrix}
+0 & \to & A & \to & B & \to & C & \to & 0 \\
+& & \downarrow & & \downarrow & & \downarrow \\
+0 & \to & A & \to & B & \to & C & \to & 0 \\
+& & \downarrow & & \downarrow & & \downarrow \\
+0 & \to & A & \to & B & \to & C & \to & 0
+\end{matrix}
+$$
+where the vertical arrows are $d$.
+\end{proof}
+
+\noindent
+We come to an important example of a spectral sequence.
+Let $\mathcal{A}$ be an abelian category.
+Let $(A, d)$ be a differential object of $\mathcal{A}$.
+Let $\alpha : (A, d) \to (A, d)$ be an endomorphism of this differential
+object. If we assume $\alpha$ injective, then we get a short exact sequence
+$$
+0 \to (A, d) \to (A, d) \to (A/\alpha A, d) \to 0
+$$
+of differential objects. By
+Lemma \ref{lemma-differential-objects-ses} we get an exact couple
+$$
+\xymatrix{
+H(A, d) \ar[rr]_{\overline{\alpha}} & & H(A, d) \ar[ld]^g \\
+& H(A/\alpha A, d) \ar[lu]^f &
+}
+$$
+where $g$ is the canonical map and $f$ is the map defined in the snake lemma.
+By Section \ref{section-exact-couple} we get an associated spectral sequence.
+Since in this case we have $E_1 = H(A/\alpha A, d)$,
+it makes sense to define $E_0 = A/\alpha A$ and $d_0 = d$.
+In other words, we start the spectral sequence
+with $r = 0$. According to our conventions in
+Section \ref{section-spectral-sequence} we define a sequence of subobjects
+$$
+0 = B_0 \subset \ldots \subset B_r \subset \ldots
+\subset Z_r \subset \ldots \subset Z_0 = E_0
+$$
+with the property that $E_r = Z_r/B_r$. It follows from
+Lemma \ref{lemma-spectral-sequence-associated-exact-couple}
+that for $r \geq 1$ we have
+\begin{enumerate}
+\item $B_r$ is the image of $(\alpha^{r - 1})^{-1}(d A)$
+under the natural map $A \to A/\alpha A$,
+\item $Z_r$ is the image of $d^{-1}(\alpha^r A)$
+under the natural map $A \to A/\alpha A$, and
+\item $d_r : E_r \to E_r$ is given as follows: given an element $z \in Z_r$
+choose an element $y \in A$ such that $d(z) = \alpha^r(y)$. Then
+$d_r(z + B_r + \alpha A) = y + B_r + \alpha A$.
+\end{enumerate}
+Warning: It is not necessarily the case that
+$\alpha A \subset (\alpha^{r - 1})^{-1}(dA)$, nor
+$\alpha A \subset d^{-1}(\alpha^r A)$. It is true that
+$(\alpha^{r - 1})^{-1}(dA) \subset d^{-1}(\alpha^r A)$.
+We have
+$$
+E_r
+=
+\frac{d^{-1}(\alpha^r A) + \alpha A}{(\alpha^{r - 1})^{-1}(dA) + \alpha A}.
+$$
+It is not hard to verify directly that (1) -- (3) give a spectral sequence.
+
+\begin{definition}
+\label{definition-differential-object-selfmap}
+Let $\mathcal{A}$ be an abelian category.
+Let $(A, d)$ be a differential object of $\mathcal{A}$.
+Let $\alpha : A \to A$ be an injective selfmap of $A$ which
+commutes with $d$. The {\it spectral sequence associated to
+$(A, d, \alpha)$} is the spectral sequence
+$(E_r, d_r)_{r \geq 0}$ described above.
+\end{definition}
+
+\begin{remark}[Variant]
+\label{remark-differential-object-selfmap}
+Let $\mathcal{A}$ be an abelian category and let
+$S, T : \mathcal{A} \to \mathcal{A}$ be shift functors, i.e.,
+isomorphisms of categories. Assume that $TS = ST$ as functors.
+Consider pairs $(A, d)$ consisting of an object $A$ of $\mathcal{A}$
+and a morphism $d : A \to SA$ such that $d \circ S^{-1}d = 0$.
+The category of these objects is abelian.
+We define $H(A, d) = \Ker(d)/\Im(S^{-1}d)$ and we observe that
+$H(SA, Sd) = SH(A, d)$ (canonical isomorphism).
+Given a short exact sequence
+$$
+0 \to (A, d) \to (B, d) \to (C, d) \to 0
+$$
+we obtain a long exact homology sequence
+$$
+\ldots \to S^{-1}H(C, d) \to
+H(A, d) \to H(B, d) \to H(C, d) \to SH(A, d) \to \ldots
+$$
+(note the shifts in the boundary maps). Since $ST = TS$ the functor
+$T$ defines a shift functor on pairs by setting $T(A, d) = (TA, Td)$.
+Next, let $\alpha : (A, d) \to T^{-1}(A, d)$ be injective with
+cokernel $(Q, d)$. Then we get an exact couple as in
+Remark \ref{remark-shifted-exact-couple} with shift functors $TS$ and
+$T$ given by
+$$
+(H(A, d), S^{-1}H(Q, d), \overline{\alpha}, f, g)
+$$
+where $\overline{\alpha} : H(A, d) \to T^{-1}H(A, d)$ is induced by $\alpha$,
+the map $f : S^{-1}H(Q, d) \to H(A, d)$ is the boundary
+map and $g : H(A, d) \to TH(Q, d) = TS(S^{-1}H(Q, d))$ is induced by
+the quotient map $A \to TQ$. Thus we get a spectral sequence as above
+with $E_1 = S^{-1}H(Q, d)$ and differentials $d_r : E_r \to T^rSE_r$.
+As above we set $E_0 = S^{-1}Q$ and $d_0 : E_0 \to SE_0$ given by
+$S^{-1}d : S^{-1}Q \to Q$. If according to our conventions we define
+$B_r \subset Z_r \subset E_0$, then we have for $r \geq 1$ that
+\begin{enumerate}
+\item $SB_r$ is the image of
+$$
+(T^{-r + 1}\alpha \circ \ldots \circ T^{-1}\alpha)^{-1}
+\Im(T^{-r}S^{-1}d)
+$$
+under the natural map $T^{-1}A \to Q$,
+\item $Z_r$ is the image of
+$$
+(S^{-1}T^{-1}d)^{-1}
+\Im(\alpha \circ \ldots \circ T^{r - 1}\alpha)
+$$
+under the natural map $S^{-1}T^{-1}A \to S^{-1}Q$.
+\end{enumerate}
+The differentials can be described as follows: if $x \in Z_r$, then
+pick $x' \in S^{-1}T^{-1}A$ mapping to $x$. Then $S^{-1}T^{-1}d(x')$
+is $(\alpha \circ \ldots \circ T^{r - 1}\alpha)(y)$ for some
+$y \in T^{r - 1}A$. Then $d_r(x) \in T^rSE_r$ is represented by the
+class of the image of $y$ in $T^rSE_0 = T^rQ$ modulo $T^rSB_r$.
+\end{remark}
+
+
+
+
+
+
+
+
+
+
+
+
+

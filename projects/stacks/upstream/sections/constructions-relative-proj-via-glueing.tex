@@ -1,0 +1,201 @@
+\section{Relative Proj via glueing}
+\label{section-relative-proj-via-glueing}
+
+\begin{situation}
+\label{situation-relative-proj}
+Here $S$ is a scheme, and $\mathcal{A}$
+is a quasi-coherent graded $\mathcal{O}_S$-algebra.
+\end{situation}
+
+\noindent
+In this section we outline how to construct a morphism
+of schemes
+$$
+\underline{\text{Proj}}_S(\mathcal{A}) \longrightarrow S
+$$
+by glueing the homogeneous spectra $\text{Proj}(\Gamma(U, \mathcal{A}))$
+where $U$ ranges over the affine opens of $S$. We first show that the
+homogeneous spectra of the values of $\mathcal{A}$ over affines form a
+suitable collection of schemes, as in Lemma \ref{lemma-relative-glueing}.
+
+\begin{lemma}
+\label{lemma-proj-inclusion}
+In Situation \ref{situation-relative-proj}.
+Suppose $U \subset U' \subset S$ are affine opens.
+Let $A = \mathcal{A}(U)$ and $A' = \mathcal{A}(U')$.
+The map of graded rings $A' \to A$ induces a morphism
+$r : \text{Proj}(A) \to \text{Proj}(A')$, and the diagram
+$$
+\xymatrix{
+\text{Proj}(A) \ar[r] \ar[d] &
+\text{Proj}(A') \ar[d] \\
+U \ar[r] &
+U'
+}
+$$
+is cartesian. Moreover there are canonical isomorphisms
+$\theta : r^*\mathcal{O}_{\text{Proj}(A')}(n) \to
+\mathcal{O}_{\text{Proj}(A)}(n)$ compatible with multiplication maps.
+\end{lemma}
+
+\begin{proof}
+Let $R = \mathcal{O}_S(U)$ and $R' = \mathcal{O}_S(U')$.
+Note that the map $R \otimes_{R'} A' \to A$ is an isomorphism as
+$\mathcal{A}$ is quasi-coherent
+(see Schemes, Lemma \ref{schemes-lemma-widetilde-pullback} for example).
+Hence the lemma follows from
+Lemma \ref{lemma-base-change-map-proj}.
+\end{proof}
+
+\noindent
+In particular the morphism $\text{Proj}(A) \to \text{Proj}(A')$
+of the lemma is an open immersion.
+
+\begin{lemma}
+\label{lemma-transitive-proj}
+In Situation \ref{situation-relative-proj}.
+Suppose $U \subset U' \subset U'' \subset S$ are affine opens.
+Let $A = \mathcal{A}(U)$, $A' = \mathcal{A}(U')$ and $A'' = \mathcal{A}(U'')$.
+The composition of the morphisms
+$r : \text{Proj}(A) \to \text{Proj}(A')$, and
+$r' : \text{Proj}(A') \to \text{Proj}(A'')$ of
+Lemma \ref{lemma-proj-inclusion} gives the
+morphism $r'' : \text{Proj}(A) \to \text{Proj}(A'')$
+of Lemma \ref{lemma-proj-inclusion}. A similar statement
+holds for the isomorphisms $\theta$.
+\end{lemma}
+
+\begin{proof}
+This follows from Lemma \ref{lemma-morphism-proj-transitive} since
+the map $A'' \to A$ is the composition of $A'' \to A'$ and
+$A' \to A$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-glue-relative-proj}
+In Situation \ref{situation-relative-proj}.
+There exists a morphism of schemes
+$$
+\pi : \underline{\text{Proj}}_S(\mathcal{A}) \longrightarrow S
+$$
+with the following properties:
+\begin{enumerate}
+\item for every affine open $U \subset S$ there exists an isomorphism
+$i_U : \pi^{-1}(U) \to \text{Proj}(A)$ with $A = \mathcal{A}(U)$, and
+\item for $U \subset U' \subset S$ affine open the composition
+$$
+\xymatrix{
+\text{Proj}(A) \ar[r]^{i_U^{-1}} &
+\pi^{-1}(U) \ar[rr]^{inclusion} & &
+\pi^{-1}(U') \ar[r]^{i_{U'}} &
+\text{Proj}(A')
+}
+$$
+with $A = \mathcal{A}(U)$, $A' = \mathcal{A}(U')$
+is the open immersion of Lemma \ref{lemma-proj-inclusion} above.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Follows immediately from
+Lemmas \ref{lemma-relative-glueing},
+\ref{lemma-proj-inclusion}, and
+\ref{lemma-transitive-proj}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-glue-relative-proj-twists}
+In Situation \ref{situation-relative-proj}.
+The morphism $\pi : \underline{\text{Proj}}_S(\mathcal{A}) \to S$
+of Lemma \ref{lemma-glue-relative-proj} comes with the following
+additional structure.
+There exists a quasi-coherent $\mathbf{Z}$-graded sheaf
+of $\mathcal{O}_{\underline{\text{Proj}}_S(\mathcal{A})}$-algebras
+$\bigoplus\nolimits_{n \in \mathbf{Z}}
+\mathcal{O}_{\underline{\text{Proj}}_S(\mathcal{A})}(n)$,
+and a morphism of graded $\mathcal{O}_S$-algebras
+$$
+\psi :
+\mathcal{A}
+\longrightarrow
+\bigoplus\nolimits_{n \geq 0}
+\pi_*\left(\mathcal{O}_{\underline{\text{Proj}}_S(\mathcal{A})}(n)\right)
+$$
+uniquely determined by the following property:
+For every affine open $U \subset S$ with $A = \mathcal{A}(U)$
+there is an isomorphism
+$$
+\theta_U :
+i_U^*\left(
+\bigoplus\nolimits_{n \in \mathbf{Z}} \mathcal{O}_{\text{Proj}(A)}(n)
+\right)
+\longrightarrow
+\left(
+\bigoplus\nolimits_{n \in \mathbf{Z}}
+\mathcal{O}_{\underline{\text{Proj}}_S(\mathcal{A})}(n)
+\right)|_{\pi^{-1}(U)}
+$$
+of $\mathbf{Z}$-graded $\mathcal{O}_{\pi^{-1}(U)}$-algebras
+such that
+$$
+\xymatrix{
+A_n
+\ar[rr]_\psi
+\ar[dr]_-{(\ref{equation-global-sections})}
+& &
+\Gamma(\pi^{-1}(U),
+\mathcal{O}_{\underline{\text{Proj}}_S(\mathcal{A})}(n)) \\
+&
+\Gamma(\text{Proj}(A),
+\mathcal{O}_{\text{Proj}(A)}(n))
+\ar[ru]_-{\theta_U}
+&
+}
+$$
+is commutative.
+\end{lemma}
+
+\begin{proof}
+We are going to use Lemma \ref{lemma-relative-glueing-sheaves}
+to glue the sheaves of $\mathbf{Z}$-graded algebras
+$\bigoplus_{n \in \mathbf{Z}} \mathcal{O}_{\text{Proj}(A)}(n)$
+for $A = \mathcal{A}(U)$, $U \subset S$ affine open
+over the scheme $\underline{\text{Proj}}_S(\mathcal{A})$.
+We have constructed the data necessary for this in
+Lemma \ref{lemma-proj-inclusion} and we have checked condition (d) of
+Lemma \ref{lemma-relative-glueing-sheaves} in
+Lemma \ref{lemma-transitive-proj}. Hence we get the
+sheaf of $\mathbf{Z}$-graded
+$\mathcal{O}_{\underline{\text{Proj}}_S(\mathcal{A})}$-algebras
+$\bigoplus_{n \in \mathbf{Z}}
+\mathcal{O}_{\underline{\text{Proj}}_S(\mathcal{A})}(n)$
+together with the isomorphisms $\theta_U$ for all
+$U \subset S$ affine open and all $n \in \mathbf{Z}$.
+For every affine open $U \subset S$ with $A = \mathcal{A}(U)$ we have a map
+$A \to \Gamma(\text{Proj}(A),
+\bigoplus_{n \geq 0} \mathcal{O}_{\text{Proj}(A)}(n))$.
+Hence the map $\psi$ exists by functoriality
+of relative glueing, see Remark \ref{remark-relative-glueing-functorial}.
+The diagram of the lemma commutes by construction.
+This characterizes the sheaf of $\mathbf{Z}$-graded
+$\mathcal{O}_{\underline{\text{Proj}}_S(\mathcal{A})}$-algebras
+$\bigoplus \mathcal{O}_{\underline{\text{Proj}}_S(\mathcal{A})}(n)$
+because the proof of Lemma \ref{lemma-morphism-proj} shows that
+having these diagrams commute uniquely determines the maps $\theta_U$.
+Some details omitted.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

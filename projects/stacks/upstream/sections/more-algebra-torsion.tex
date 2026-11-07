@@ -1,0 +1,240 @@
+\section{Torsion modules}
+\label{section-torsion}
+
+\noindent
+In this section ``torsion modules'' will refer to modules supported
+on a given closed subset $V(I)$ of an affine scheme $\Spec(R)$.
+This is different, but analogous to, the notion of a torsion module
+over a domain (Definition \ref{definition-torsion}).
+
+\begin{definition}
+\label{definition-f-power-torsion}
+Let $R$ be a ring. Let $M$ be an $R$-module.
+\begin{enumerate}
+\item Let $I \subset R$ be an ideal. We say $M$ is an
+{\it $I$-power torsion module} if for every $m \in M$ there exists an $n > 0$
+such that $I^n m = 0$.
+\item Let $f \in R$. We say $M$ is
+{\it an $f$-power torsion module} if for each
+$m \in M$, there exists an $n > 0$ such that $f^n m = 0$.
+\end{enumerate}
+\end{definition}
+
+\noindent
+Thus an $f$-power torsion module is the same thing as an $I$-power torsion
+module for $I = (f)$. We will use the notation
+$$
+M[I^n] = \{m \in M \mid I^nm = 0\}
+$$
+and
+$$
+M[I^\infty] = \bigcup M[I^n]
+$$
+for an $R$-module $M$. Thus $M$ is $I$-power torsion if and only if
+$M = M[I^\infty]$ if and only if $M = \bigcup M[I^n]$.
+
+\begin{lemma}
+\label{lemma-I-power-torsion-presentation}
+Let $R$ be a ring.
+Let $I$ be an ideal of $R$.
+Let $M$ be an $I$-power torsion module.
+Then $M$ admits a resolution
+$$
+\ldots \to K_2 \to K_1 \to K_0 \to M \to 0
+$$
+with each $K_i$ a direct sum of copies of $R/I^n$ for $n$ variable.
+\end{lemma}
+
+\begin{proof}
+There is a canonical surjection
+$$
+\oplus_{m \in M} R/I^{n_m} \to M \to 0
+$$
+where $n_m$ is the smallest positive integer such that $I^{n_m} \cdot m = 0$.
+The kernel of the preceding surjection is also an $I$-power torsion module.
+Proceeding inductively, we construct the desired resolution of $M$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-torsion-free}
+Let $R$ be a ring. Let $I$ be an ideal of $R$.
+For any $R$-module $M$ set $M[I^n] = \{m \in M \mid I^nm = 0\}$.
+If $I$ is finitely generated then the following are equivalent
+\begin{enumerate}
+\item $M[I] = 0$,
+\item $M[I^n] = 0$ for all $n \geq 1$, and
+\item if $I = (f_1, \ldots, f_t)$, then the map
+$M \to \bigoplus M_{f_i}$ is injective.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+This follows from
+Algebra, Lemma \ref{algebra-lemma-when-injective-covering}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-divide-by-torsion}
+Let $R$ be a ring. Let $I$ be a finitely generated ideal of $R$.
+\begin{enumerate}
+\item For any $R$-module $M$ we have $(M/M[I^\infty])[I] = 0$.
+\item An extension of $I$-power torsion modules is $I$-power torsion.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let $m \in M$. If $m$ maps to an element of $(M/M[I^\infty])[I]$
+then $Im \subset M[I^\infty]$.
+Write $I = (f_1, \ldots, f_t)$. Then we see that
+$f_i m \in M[I^\infty]$, i.e., $I^{n_i}f_i m = 0$ for some $n_i > 0$.
+Thus we see that $I^Nm = 0$ with $N = \sum n_i + 2$.
+Hence $m$ maps to zero in $(M/M[I^\infty])$ which proves the
+first statement of the lemma.
+
+\medskip\noindent
+For the second, suppose that $0 \to M' \to M \to M'' \to 0$ is a short
+exact sequence of modules with $M'$ and $M''$ both $I$-power torsion
+modules. Then $M[I^\infty] \supset M'$ and hence $M/M[I^\infty]$ is a
+quotient of $M''$ and therefore $I$-power torsion. Combined with
+the first statement and Lemma \ref{lemma-torsion-free} this implies
+that it is zero.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-I-power-torsion}
+Let $I$ be a finitely generated ideal of a ring $R$.
+The $I$-power torsion modules form a Serre subcategory of
+the abelian category $\text{Mod}_R$, see
+Homology, Definition \ref{homology-definition-serre-subcategory}.
+\end{lemma}
+
+\begin{proof}
+It is clear that a submodule and a quotient module of an $I$-power
+torsion module is $I$-power torsion. Moreover, the extension
+of two $I$-power torsion modules is $I$-power torsion by
+Lemma \ref{lemma-divide-by-torsion}.
+Hence the statement of the lemma by
+Homology, Lemma \ref{homology-lemma-characterize-serre-subcategory}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-local-cohomology-closed}
+Let $R$ be a ring and let $I \subset R$ be a finitely generated ideal.
+The subcategory $I^\infty\text{-torsion} \subset \text{Mod}_R$
+depends only on the closed subset $Z = V(I) \subset \Spec(R)$.
+In fact, an $R$-module $M$ is $I$-power torsion if and only if its
+support is contained in $Z$.
+\end{lemma}
+
+\begin{proof}
+Let $M$ be an $R$-module. Let $x \in M$. If $x \in M[I^\infty]$, then $x$
+maps to zero in $M_f$ for all $f \in I$. Hence $x$ maps to zero in
+$M_\mathfrak p$ for all $\mathfrak p \not \supset I$. Conversely, if $x$
+maps to zero in $M_\mathfrak p$ for all $\mathfrak p \not \supset I$,
+then $x$ maps to zero in $M_f$ for all $f \in I$. Hence if
+$I = (f_1, \ldots, f_r)$, then $f_i^{n_i}x = 0$ for some $n_i \geq 1$.
+It follows that $x \in M[I^{\sum n_i}]$. Thus $M[I^\infty]$ is
+the kernel of $M \to \prod_{\mathfrak p \not \in Z} M_\mathfrak p$.
+The second statement of the lemma follows and it implies the first.
+\end{proof}
+
+\noindent
+The next two lemmas should probably go somewhere else.
+
+\begin{lemma}
+\label{lemma-bounded-above-mod-I}
+Let $R$ be a ring. Let $I \subset R$ be an ideal. Let $K$ be an object of
+$D(R)$ such that $H^i(K \otimes_R^\mathbf{L} R/I) = 0$ for $i > 0$. Then
+\begin{enumerate}
+\item $H^i(K \otimes_R^\mathbf{L} R/I^n) = 0$ for all $n \geq 1$
+and $i > 0$,
+\item $H^i(K \otimes_R^\mathbf{L} N) = 0$ for any $I$-power torsion
+$R$-module $N$ and $i > 0$, and
+\item for any $M \in D^b(R)$ whose cohomology modules $H^i(M)$
+are $I$-power torsion and $0$ for $i > 0$ we have
+$H^i(K \otimes_R^\mathbf{L} M) = 0$ for $i > 0$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Proof of (2). We can write $N = \bigcup N[I^n]$. We have
+$K \otimes_R^\mathbf{L} N = \text{hocolim}_n K \otimes_R^\mathbf{L} N[I^n]$
+as tensor products commute with colimits (details omitted; hint: represent
+$K$ by a K-flat complex and compute directly).
+Hence we may assume $N$ is annihilated by $I^n$.
+Consider the $R$-algebra $R' = R/I^n \oplus N$
+where $N$ is an ideal of square zero. It suffices to show that the object
+$K' = K \otimes_R^\mathbf{L} R'$ of $D(R')$ has vanishing cohomology
+in positive degrees.
+We have a surjection $R' \to R/I$ of $R$-algebras whose kernel $J$
+is nilpotent (any product of $n$ elements in the kernel is zero).
+We have
+$$
+K \otimes_R^\mathbf{L} R/I =
+(K \otimes_R^\mathbf{L} R') \otimes_{R'}^\mathbf{L} R/I =
+K' \otimes_{R'}^\mathbf{L} R/I
+$$
+By assumption the complex $K \otimes_R^\mathbf{L} R/I$ has tor-amplitude
+in $[-\infty, 0]$. Thus the conclusion by
+Lemma \ref{lemma-check-tor-dimension-modulo-nilpotent}.
+
+\medskip\noindent
+Part (1) follows trivially from part (2).
+Part (3) follows from part (2), induction on the number of nonzero
+cohomology modules of $M$, and the distinguished triangles of truncation
+from Derived Categories, Remark
+\ref{derived-remark-truncation-distinguished-triangle}. Details omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-derived-vanishing-mod-I}
+Let $R$ be a ring. Let $I \subset R$ be an ideal. Let $K$ be an object of
+$D(R)$ such that $K \otimes_R^\mathbf{L} R/I = 0$ in $D(R)$. Then
+\begin{enumerate}
+\item $K \otimes_R^\mathbf{L} R/I^n = 0$ for all $n \geq 1$,
+\item $K \otimes_R^\mathbf{L} N = 0$ for any $I$-power torsion
+$R$-module $N$,
+\item $K \otimes_R^\mathbf{L} M = 0$ for any $M \in D^b(R)$ whose
+cohomology modules are $I$-power torsion.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Consequence of Lemma \ref{lemma-bounded-above-mod-I} (some details
+omitted).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-torsion-completion}
+\begin{reference}
+Slight generalization of \cite[Lemme~1]{Beauville-Laszlo}.
+\end{reference}
+Let $R \to R'$ be a ring map. Let $I \subset R$ be an ideal such that
+$R/I^n \to R'/I^nR'$ is an isomorphism for $n > 0$.
+For any $I$-power torsion $R$-module $M$ the map $M \to M \otimes_R R'$
+is an isomorphism.
+For example, if $I$ is finitely generated and $R^\wedge$ is the completion
+of $R$ with respect to $I$, then we have $M \cong M \otimes_R R^\wedge$.
+\end{lemma}
+
+\begin{proof}
+If $M$ is annihilated by $I^n$, then
+$$
+M \otimes_R R' \cong
+M \otimes_{R/I^n} R'/I^n R' \cong
+M \otimes_{R/I^n} R/I^n \cong M.
+$$
+If $M$ is $I$-power torsion, then $M = \bigcup M[I^n]$.
+Since tensor products commute with direct limits
+(Algebra, Lemma \ref{algebra-lemma-tensor-products-commute-with-limits}),
+we obtain the desired isomorphism. The last statement is a special
+case of the first statement by Algebra, Lemma
+\ref{algebra-lemma-hathat-finitely-generated}.
+\end{proof}
+
+
+
+
+
+
+

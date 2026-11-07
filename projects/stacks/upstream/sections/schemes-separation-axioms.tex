@@ -1,0 +1,473 @@
+\section{Separation axioms}
+\label{section-separation-axioms}
+
+\noindent
+A topological space $X$ is Hausdorff if and only if the
+diagonal $\Delta \subset X \times X$ is a closed subset.
+The analogue in algebraic geometry is, given a scheme $X$ over
+a base scheme $S$, to consider the
+diagonal morphism
+$$
+\Delta_{X/S} : X \longrightarrow X \times_S X.
+$$
+This is the unique morphism of schemes such that
+$\text{pr}_1 \circ \Delta_{X/S} = \text{id}_X$ and
+$\text{pr}_2 \circ \Delta_{X/S} = \text{id}_X$ (it exists in
+any category with fibre products).
+
+\begin{lemma}
+\label{lemma-diagonal-affines-closed}
+The diagonal morphism of a morphism between affines is closed.
+\end{lemma}
+
+\begin{proof}
+The diagonal morphism associated to the morphism
+$\Spec(S) \to \Spec(R)$ is the morphism on spectra
+corresponding to the ring
+map $S \otimes_R S \to S$, $a \otimes b \mapsto ab$.
+This map is clearly surjective, so $S \cong S \otimes_R S/J$
+for some ideal $J \subset S \otimes_R S$. Hence
+$\Delta$ is a closed immersion according to
+Example \ref{example-closed-immersion-affines}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-diagonal-immersion}
+\begin{slogan}
+The diagonal morphism for relative schemes is an immersion.
+\end{slogan}
+Let $X$ be a scheme over $S$.
+The diagonal morphism $\Delta_{X/S}$ is an immersion.
+\end{lemma}
+
+\begin{proof}
+Recall that if $V \subset X$ is affine open and maps into
+$U \subset S$ affine open, then $V \times_U V$ is affine open
+in $X \times_S X$, see Lemmas \ref{lemma-fibre-product-affines}
+and \ref{lemma-open-fibre-product}.
+Consider the open subscheme $W$ of $X \times_S X$ which
+is the union of these affine opens $V \times_U V$.
+By Lemma \ref{lemma-closed-local-target} it is enough
+to show that each morphism
+$\Delta_{X/S}^{-1}(V \times_U V) \to V \times_U V$ is
+a closed immersion. Since $V = \Delta_{X/S}^{-1}(V \times_U V)$
+we are just checking that $\Delta_{V/U}$ is a closed
+immersion, which is Lemma \ref{lemma-diagonal-affines-closed}.
+\end{proof}
+
+\begin{definition}
+\label{definition-separated}
+Let $f : X \to S$ be a morphism of schemes.
+\begin{enumerate}
+\item We say $f$ is {\it separated} if the diagonal morphism $\Delta_{X/S}$
+is a closed immersion.
+\item We say $f$ is {\it quasi-separated} if the diagonal morphism
+$\Delta_{X/S}$ is a quasi-compact morphism.
+\item We say a scheme $Y$ is {\it separated} if the morphism
+$Y \to \Spec(\mathbf{Z})$ is separated.
+\item We say a scheme $Y$ is {\it quasi-separated} if the morphism
+$Y \to \Spec(\mathbf{Z})$ is quasi-separated.
+\end{enumerate}
+\end{definition}
+
+\noindent
+By Lemmas \ref{lemma-diagonal-immersion} and \ref{lemma-immersion-when-closed}
+we see that $\Delta_{X/S}$ is a closed immersion if an only if
+$\Delta_{X/S}(X) \subset X \times_S X$ is a closed subset. Moreover,
+by Lemma \ref{lemma-closed-immersion-quasi-compact} we see that a
+separated morphism is quasi-separated. The reason for introducing
+quasi-separated morphisms is that nonseparated morphisms come up naturally
+in studying algebraic varieties (especially when doing moduli,
+algebraic stacks, etc). But most often they are still quasi-separated.
+
+\begin{example}
+\label{example-not-quasi-separated}
+Here is an example of a non-quasi-separated morphism.
+Suppose $X = X_1 \cup X_2 \to S = \Spec(k)$ with
+$X_1 = X_2 = \Spec(k[t_1, t_2, t_3, \ldots])$
+glued along the complement of $\{0\} = \{(t_1, t_2, t_3, \ldots)\}$
+(glued as in Example \ref{example-affine-space-zero-doubled}).
+In this case the inverse image of the affine scheme
+$X_1 \times_S X_2$ under $\Delta_{X/S}$ is the scheme
+$\Spec(k[t_1, t_2, t_3, \ldots]) \setminus \{0\}$
+which is not quasi-compact.
+\end{example}
+
+\begin{lemma}
+\label{lemma-where-are-they-equal}
+Let $X$, $Y$ be schemes over $S$.
+Let $a, b : X \to Y$ be morphisms of schemes over $S$.
+There exists a largest locally closed subscheme
+$Z \subset X$ such that $a|_Z = b|_Z$. In fact $Z$ is
+the equalizer of $(a, b)$. Moreover, if $Y$ is separated
+over $S$, then $Z$ is a closed subscheme.
+\end{lemma}
+
+\begin{proof}
+The equalizer of $(a, b)$ is for categorical reasons
+the fibre product $Z$ in the following diagram
+$$
+\xymatrix{
+Z = Y \times_{(Y \times_S Y)} X \ar[r] \ar[d] &
+ X \ar[d]^{(a , b)} \\
+Y \ar[r]^-{\Delta_{Y/S}} & Y \times_S Y
+}
+$$
+Thus the lemma follows from Lemmas
+\ref{lemma-base-change-immersion}, \ref{lemma-diagonal-immersion} and
+Definition \ref{definition-separated}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-characterize-quasi-separated}
+Let $f : X \to S$ be a morphism of schemes.
+The following are equivalent:
+\begin{enumerate}
+\item The morphism $f$ is quasi-separated.
+\item For every pair of affine opens $U, V \subset X$
+which map into a common affine open of $S$ the intersection
+$U \cap V$ is a finite union of affine opens of $X$.
+\item There exists an affine open covering $S = \bigcup_{i \in I} U_i$
+and for each $i$ an affine open covering $f^{-1}U_i = \bigcup_{j \in I_i} V_j$
+such that for each $i$ and each pair $j, j' \in I_i$ the
+intersection $V_j \cap V_{j'}$ is a finite union of affine
+opens of $X$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let us prove that (3) implies (1).
+By Lemma \ref{lemma-affine-covering-fibre-product}
+the covering $X \times_S X = \bigcup_i \bigcup_{j, j'} V_j \times_{U_i} V_{j'}$
+is an affine open covering of $X \times_S X$.
+Moreover, $\Delta_{X/S}^{-1}(V_j \times_{U_i} V_{j'}) = V_j \cap V_{j'}$.
+Hence the implication follows from Lemma \ref{lemma-quasi-compact-affine}.
+
+\medskip\noindent
+The implication (1) $\Rightarrow$ (2) follows from the fact
+that under the hypotheses of (2) the fibre product
+$U \times_S V$ is an affine open of $X \times_S X$.
+The implication (2) $\Rightarrow$ (3) is trivial.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-characterize-separated}
+Let $f : X \to S$ be a morphism of schemes.
+\begin{enumerate}
+\item If $f$ is separated then for every pair of affine
+opens $(U, V)$ of $X$ which map into a
+common affine open of $S$ we have
+\begin{enumerate}
+\item the intersection $U \cap V$ is affine.
+\item the ring map
+$\mathcal{O}_X(U) \otimes_{\mathbf{Z}} \mathcal{O}_X(V)
+\to \mathcal{O}_X(U \cap V)$
+is surjective.
+\end{enumerate}
+\item If any pair of points $x_1, x_2 \in X$ lying over a common
+point $s \in S$ are contained in affine opens $x_1 \in U$,
+$x_2 \in V$ which map into a common affine open of $S$ such
+that (a), (b) hold, then $f$ is separated.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Assume $f$ separated. Suppose $(U, V)$ is a pair as in (1).
+Let $W = \Spec(R)$ be an affine open of $S$ containing
+both $f(U)$ and $f(V)$. Write $U = \Spec(A)$ and
+$V = \Spec(B)$ for $R$-algebras $A$ and $B$.
+By Lemma \ref{lemma-open-fibre-product} we see that
+$U \times_S V = U \times_W V = \Spec(A \otimes_R B)$
+is an affine open of $X \times_S X$. Hence, by
+Lemma \ref{lemma-closed-subspace-scheme} we see that
+$\Delta^{-1}(U \times_S V) \to U \times_S V$
+can be identified with $\Spec((A \otimes_R B)/J) \to \Spec(A \otimes_R B)$
+for some ideal $J \subset A \otimes_R B$.
+Thus $U \cap V = \Delta^{-1}(U \times_S V)$ is affine.
+Assertion (1)(b) holds because
+$A \otimes_{\mathbf{Z}} B \to (A \otimes_R B)/J$ is surjective.
+
+\medskip\noindent
+Assume the hypothesis formulated in (2) holds.
+Clearly the collection of affine opens $U \times_S V$
+for pairs $(U, V)$ as in (2) form an affine open covering
+of $X \times_S X$ (see e.g.\ Lemma \ref{lemma-affine-covering-fibre-product}).
+Hence it suffices to show that each morphism
+$U \cap V = \Delta_{X/S}^{-1}(U \times_S V) \to U \times_S V$
+is a closed immersion, see Lemma \ref{lemma-closed-local-target}.
+By assumption (a) we have $U \cap V = \Spec(C)$ for some ring $C$.
+After choosing an affine open $W = \Spec(R)$ of $S$
+into which both $U$ and $V$ map and writing $U = \Spec(A)$,
+$V = \Spec(B)$ we see that the assumption (b) means
+that the composition
+$$
+A \otimes_{\mathbf{Z}} B \to A \otimes_R B \to C
+$$
+is surjective. Hence $A \otimes_R B \to C$ is surjective and
+we conclude that $\Spec(C) \to \Spec(A \otimes_R B)$
+is a closed immersion.
+\end{proof}
+
+\begin{example}
+\label{example-projective-line-separated}
+Let $k$ be a field. Consider the structure morphism
+$p : \mathbf{P}^1_k \to \Spec(k)$ of the projective
+line over $k$, see Example \ref{example-projective-line}.
+Let us use the lemma above to prove that $p$
+is separated. By construction $\mathbf{P}^1_k$ is covered by two
+affine opens $U = \Spec(k[x])$ and $V = \Spec(k[y])$
+with intersection $U \cap V = \Spec(k[x, y]/(xy - 1))$
+(using obvious notation). Thus it suffices to check that
+conditions (2)(a) and (2)(b) of Lemma \ref{lemma-characterize-separated}
+hold for the pairs of affine opens $(U, U)$, $(U, V)$, $(V, U)$
+and $(V, V)$. For the pairs $(U, U)$ and $(V, V)$ this is trivial.
+For the pair $(U, V)$ this amounts to proving
+that $U \cap V$ is affine, which is true, and that the ring map
+$$
+k[x] \otimes_{\mathbf{Z}} k[y] \longrightarrow k[x, y]/(xy - 1)
+$$
+is surjective. This is clear because any element in the
+right hand side can be written as a sum of a polynomial
+in $x$ and a polynomial in $y$.
+\end{example}
+
+\begin{lemma}
+\label{lemma-fibre-product-after-map}
+Let $f : X \to T$ and $g : Y \to T$ be morphisms of schemes
+with the same target. Let $h : T \to S$ be a morphism of schemes.
+Then the induced morphism $i : X \times_T Y \to X \times_S Y$ is
+an immersion. If $T \to S$ is separated, then $i$ is a closed
+immersion. If $T \to S$ is quasi-separated, then $i$ is a
+quasi-compact morphism.
+\end{lemma}
+
+\begin{proof}
+By general category theory the following diagram
+$$
+\xymatrix{
+X \times_T Y \ar[r] \ar[d] & X \times_S Y \ar[d] \\
+T \ar[r]^{\Delta_{T/S}} \ar[r] & T \times_S T
+}
+$$
+is a fibre product diagram. The lemma follows
+from Lemmas \ref{lemma-diagonal-immersion},
+\ref{lemma-fibre-product-immersion} and
+\ref{lemma-quasi-compact-preserved-base-change}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-semi-diagonal}
+Let $g : X \to Y$ be a morphism of schemes over $S$.
+The morphism $i : X \to X \times_S Y$ is an immersion.
+If $Y$ is separated over $S$ it is a closed immersion.
+If $Y$ is quasi-separated over $S$ it is quasi-compact.
+\end{lemma}
+
+\begin{proof}
+This is a special case of Lemma \ref{lemma-fibre-product-after-map}
+applied to the morphism $X = X \times_Y Y \to X \times_S Y$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-section-immersion}
+Let $f : X \to S$ be a morphism of schemes.
+Let $s : S \to X$ be a section of $f$ (in a formula $f \circ s = \text{id}_S$).
+Then $s$ is an immersion.
+If $f$ is separated then $s$ is a closed immersion.
+If $f$ is quasi-separated, then $s$ is quasi-compact.
+\end{lemma}
+
+\begin{proof}
+This is a special case of Lemma \ref{lemma-semi-diagonal} applied to
+$g =s$ so the morphism $i = s : S \to S \times_S X$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-separated-permanence}
+Permanence properties.
+\begin{enumerate}
+\item A composition of separated morphisms is separated.
+\item A composition of quasi-separated morphisms is quasi-separated.
+\item The base change of a separated morphism is separated.
+\item The base change of a quasi-separated morphism is quasi-separated.
+\item A (fibre) product of separated morphisms is separated.
+\item A (fibre) product of quasi-separated morphisms is quasi-separated.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let $X \to Y \to Z$ be morphisms. Assume that $X \to Y$ and
+$Y \to Z$ are separated. The composition
+$$
+X \to X \times_Y X \to X \times_Z X
+$$
+is closed because the first one is by assumption and the second
+one by Lemma \ref{lemma-fibre-product-after-map}. The same argument
+works for ``quasi-separated'' (with the same references).
+
+\medskip\noindent
+Let $f : X \to Y$ be a morphism of schemes over a base $S$.
+Let $S' \to S$ be a morphism of schemes. Let $f' : X_{S'} \to Y_{S'}$
+be the base change of $f$. Then the diagonal morphism
+of $f'$ is a morphism
+$$
+\Delta_{f'} :
+X_{S'} = S' \times_S X
+\longrightarrow
+X_{S'} \times_{Y_{S'}} X_{S'} = S' \times _S (X \times_Y X)
+$$
+which is easily seen to be the base change of $\Delta_f$.
+Thus (3) and (4) follow from the fact that
+closed immersions and quasi-compact morphisms are preserved
+under arbitrary base change (Lemmas
+\ref{lemma-fibre-product-immersion} and
+\ref{lemma-quasi-compact-preserved-base-change}).
+
+\medskip\noindent
+If $f : X \to Y$ and $g : U \to V$ are morphisms of schemes over a base $S$,
+then $f \times g$ is the composition of $X \times_S U \to X \times_S V$
+(a base change of $g$) and $X \times_S V \to Y \times_S V$ (a base change
+of $f$). Hence (5) and (6) follow from (1) -- (4).
+\end{proof}
+
+\begin{lemma}
+\label{lemma-compose-after-separated}
+\begin{slogan}
+Separated and quasi-separated morphisms satisfy cancellation.
+\end{slogan}
+Let $f : X \to Y$ and $g : Y \to Z$ be morphisms of schemes.
+If $g \circ f$ is separated then so is $f$.
+If $g \circ f$ is quasi-separated then so is $f$.
+\end{lemma}
+
+\begin{proof}
+Assume that $g \circ f$ is separated.
+Consider the factorization $X \to X \times_Y X \to X \times_Z X$
+of the diagonal morphism of $g \circ f$.
+By Lemma \ref{lemma-fibre-product-after-map}
+the last morphism is an immersion. By assumption the image
+of $X$ in $X \times_Z X$ is closed. Hence it is also closed
+in $X \times_Y X$. Thus we see that $X \to X \times_Y X$
+is a closed immersion by Lemma \ref{lemma-immersion-when-closed}.
+
+\medskip\noindent
+Assume that $g \circ f$ is quasi-separated.
+Let $V \subset Y$ be an affine open which maps into an affine
+open of $Z$. Let $U_1, U_2 \subset X$ be affine opens which
+map into $V$. Then $U_1 \cap U_2$ is a finite union of affine
+opens because $U_1, U_2$ map into a common affine open
+of $Z$. Since we may cover $Y$ by affine opens like $V$ we
+deduce the lemma from Lemma \ref{lemma-characterize-quasi-separated}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-quasi-compact-permanence}
+Let $f : X \to Y$ and $g : Y \to Z$ be morphisms of schemes.
+If $g \circ f$ is quasi-compact and $g$ is quasi-separated
+then $f$ is quasi-compact.
+\end{lemma}
+
+\begin{proof}
+This is true because $f$ equals the composition
+$(1, f) : X \to X \times_Z Y \to Y$. The first map
+is quasi-compact by Lemma \ref{lemma-section-immersion}
+because it is a section of the quasi-separated morphism $X \times_Z Y \to X$
+(a base change of $g$, see Lemma \ref{lemma-separated-permanence}).
+The second map is quasi-compact as it
+is the base change of $g \circ f$, see
+Lemma \ref{lemma-quasi-compact-preserved-base-change}.
+And compositions of quasi-compact
+morphisms are quasi-compact, see Lemma \ref{lemma-composition-quasi-compact}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-affine-separated}
+An affine scheme is separated. A morphism from an affine scheme
+to another scheme is separated.
+\end{lemma}
+
+\begin{proof}
+Let $U = \Spec(A)$ be an affine scheme. Then $U \to \Spec(\mathbf{Z})$
+has closed diagonal by Lemma \ref{lemma-diagonal-affines-closed}.
+Thus $U$ is separated by Definition \ref{definition-separated}.
+If $U \to X$ is a morphism of schemes, then we can apply
+Lemma \ref{lemma-compose-after-separated}
+to the morphisms $U \to X \to \Spec(\mathbf{Z})$ to conclude
+that $U \to X$ is separated.
+\end{proof}
+
+\noindent
+You may have been wondering whether the condition
+of only considering pairs of affine opens whose image is contained
+in an affine open is really necessary to be able to conclude
+that their intersection is affine. Often it isn't!
+
+\begin{lemma}
+\label{lemma-curiosity}
+Let $f : X \to S$ be a morphism.
+Assume $f$ is separated and $S$ is a separated scheme.
+Suppose $U \subset X$ and $V \subset X$ are affine open.
+Then $U \cap V$ is affine (and a closed subscheme of $U \times V$).
+\end{lemma}
+
+\begin{proof}
+In this case $X$ is separated by Lemma \ref{lemma-separated-permanence}.
+Hence $U \cap V$ is affine by
+applying Lemma \ref{lemma-characterize-separated} to the
+morphism $X \to \Spec(\mathbf{Z})$.
+\end{proof}
+
+\noindent
+On the other hand, the following example shows that we cannot
+expect the image of an affine to be contained in an affine.
+
+\begin{example}
+\label{example-image-affine-projective}
+Consider the nonaffine scheme
+$U = \Spec(k[x, y]) \setminus \{(x, y)\}$ of
+Example \ref{example-not-affine}. On the other hand, consider the
+scheme
+$$
+\mathbf{GL}_{2, k} = \Spec(k[a, b, c, d, 1/ad - bc]).
+$$
+There is a morphism $\mathbf{GL}_{2, k} \to U$ corresponding
+to the ring map $x \mapsto a$, $y \mapsto b$. It is easy to see that
+this is a surjective morphism, and hence the image is not contained
+in any affine open of $U$. In fact, the affine scheme
+$\mathbf{GL}_{2, k}$ also surjects onto $\mathbf{P}^1_k$, and
+$\mathbf{P}^1_k$ does not even have an immersion into {\it any} affine scheme.
+\end{example}
+
+\begin{remark}
+\label{remark-quasi-compact-and-quasi-separated}
+Let $P$ equal one of the following $4$ properties:
+``quasi-separated'', ``separated'',
+``quasi-compact and quasi-separated'', or ``quasi-compact and separated''.
+Then the following are true
+\begin{enumerate}
+\item Any affine scheme has $P$.
+\item Given a morphism $f : X \to Y$ of scheme where $Y$ has $P$, then
+$f$ has $P$ if and only if $X$ has $P$.
+\item If  $X \to Y$ and $Z \to Y$ are morphisms of schemes
+and $X$, $Y$, $Z$ have $P$, then $X \times_Y Z$ has $P$.
+\end{enumerate}
+Statement (1) is clear.
+Let $f : X \to Y$ be as in (2). If $f$ has $P$, then so does $X$
+by Lemmas \ref{lemma-separated-permanence} and
+\ref{lemma-composition-quasi-compact} applied to
+$X \to Y \to \Spec(\mathbf{Z})$. If $X$ has $P$, then so does $f$ by
+Lemmas \ref{lemma-compose-after-separated} and
+\ref{lemma-quasi-compact-permanence} applied to
+$X \to Y \to \Spec(\mathbf{Z})$.
+Let $X \to Y$ and $Z \to Y$ be as in (3).
+Then the projection $X \times_Y Z \to Z$ has $P$ as a base change of
+the arrow $X \to Y$ which has $P$ by (2), see Lemmas
+\ref{lemma-separated-permanence} and
+\ref{lemma-quasi-compact-preserved-base-change}.
+Hence $X \times_Y Z$ has $P$ by (2).
+\end{remark}
+
+
+
+
+

@@ -1,0 +1,218 @@
+\section{Calculation of some multiplicities}
+\label{section-calculation}
+
+\noindent
+To prove equality of certain cycles later on we need to
+compute some multiplicities. Our main tool, besides the
+elementary lemmas on multiplicities given in the previous section,
+will be Algebra, Lemma \ref{algebra-lemma-order-vanishing-determinant}.
+
+\begin{lemma}
+\label{lemma-length-multiplication}
+Let $R$ be a Noetherian local ring.
+Let $M$ be a finite $R$-module. Let $x \in R$. Assume that
+\begin{enumerate}
+\item $\dim(\text{Supp}(M)) \leq 1$, and
+\item $\dim(\text{Supp}(M/xM)) \leq 0$.
+\end{enumerate}
+Write
+$\text{Supp}(M) = \{\mathfrak m, \mathfrak q_1, \ldots, \mathfrak q_t\}$.
+Then
+$$
+e_R(M, 0, x) =
+\sum\nolimits_{i = 1, \ldots, t}
+\text{ord}_{R/\mathfrak q_i}(x)
+\text{length}_{R_{\mathfrak q_i}}(M_{\mathfrak q_i}).
+$$
+\end{lemma}
+
+\begin{proof}
+We first make some preparatory remarks.
+The result of the lemma holds if $M$ has finite length, i.e., if $t = 0$,
+because both the left hand side and the right hand side are zero
+in this case, see Lemma \ref{lemma-finite-periodic-length}.
+Also, if we have a short exact sequence $0 \to M \to M' \to M'' \to 0$
+of modules satisfying (1) and (2), then lemma for 2 out of 3
+of these implies the lemma for the third by the
+additivity of length (Algebra, Lemma \ref{algebra-lemma-length-additive}) and
+additivty of multiplicities (Lemma \ref{lemma-additivity-periodic-length}).
+
+\medskip\noindent
+Denote $M_i$ the image of $M$ in $M_{\mathfrak q_i}$, so
+$\text{Supp}(M_i) = \{\mathfrak m, \mathfrak q_i\}$.
+The kernel and cokernel of the map $M \to \bigoplus M_i$
+have support $\{\mathfrak m\}$ and hence have finite length.
+By our preparatory remarks, it follows that it suffices to
+prove the lemma for each $M_i$. Thus we may assume that
+$\text{Supp}(M) = \{\mathfrak m, \mathfrak q\}$.
+In this case we have a finite filtration
+$M \supset \mathfrak qM \supset \mathfrak q^2M \supset \ldots \supset
+\mathfrak q^nM = 0$ by Algebra, Lemma
+\ref{algebra-lemma-Noetherian-power-ideal-kills-module}.
+Again additivity shows that it suffices to prove the lemma
+in the case $M$ is annihilated by $\mathfrak q$.
+In this case we can view $M$ as a $R/\mathfrak q$-module,
+i.e., we may assume that $R$ is a Noetherian local domain
+of dimension $1$ with fraction field $K$.
+Dividing by the torsion submodule, i.e., by the
+kernel of $M \to M \otimes_R K = V$ (the torsion has
+finite length hence is handled by our preliminary remarks)
+we may assume that $M \subset V$ is a lattice
+(Algebra, Definition \ref{algebra-definition-lattice}).
+Then $x : M \to M$ is injective and
+$\text{length}_R(M/xM) = d(M, xM)$
+(Algebra, Definition \ref{algebra-definition-distance}). Since
+$\text{length}_K(V) = \dim_K(V)$
+we see that $\det(x : V \to V) = x^{\dim_K(V)}$ and
+$\text{ord}_R(\det(x : V \to V)) = \dim_K(V) \text{ord}_R(x)$.
+Thus the desired equality follows from
+Algebra, Lemma \ref{algebra-lemma-order-vanishing-determinant}
+in this case.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-additivity-divisors-restricted}
+Let $R$ be a Noetherian local ring.
+Let $x \in R$. If $M$ is a finite Cohen-Macaulay module over $R$
+with $\dim(\text{Supp}(M)) = 1$ and $\dim(\text{Supp}(M/xM)) = 0$, then
+$$
+\text{length}_R(M/xM)
+=
+\sum\nolimits_i \text{length}_R(R/(x, \mathfrak q_i))
+\text{length}_{R_{\mathfrak q_i}}(M_{\mathfrak q_i}).
+$$
+where $\mathfrak q_1, \ldots, \mathfrak q_t$ are the
+minimal primes of the support of $M$. If $I \subset R$ is an ideal
+such that $x$ is a nonzerodivisor on $R/I$ and $\dim(R/I) = 1$, then
+$$
+\text{length}_R(R/(x, I))
+=
+\sum\nolimits_i \text{length}_R(R/(x, \mathfrak q_i))
+\text{length}_{R_{\mathfrak q_i}}((R/I)_{\mathfrak q_i})
+$$
+where $\mathfrak q_1, \ldots, \mathfrak q_n$ are the minimal
+primes over $I$.
+\end{lemma}
+
+\begin{proof}
+These are special cases of Lemma \ref{lemma-length-multiplication}.
+\end{proof}
+
+\noindent
+Here is another case where we can determine the value of a multiplicity.
+
+\begin{lemma}
+\label{lemma-powers-period-length-zero}
+Let $R$ be a ring. Let $M$ be an $R$-module.
+Let $\varphi : M \to M$ be an endomorphism and $n > 0$
+such that $\varphi^n = 0$ and such that $\Ker(\varphi)/\Im(\varphi^{n - 1})$
+has finite length as an $R$-module.
+Then
+$$
+e_R(M, \varphi^i, \varphi^{n - i}) = 0
+$$
+for $i = 0, \ldots, n$.
+\end{lemma}
+
+\begin{proof}
+The cases $i = 0, n$ are trivial as $\varphi^0 = \text{id}_M$ by convention.
+Let us think of $M$ as an $R[t]$-module where multiplication by $t$
+is given by $\varphi$. Let us write
+$K_i = \Ker(t^i : M \to M)$ and
+$$
+a_i = \text{length}_R(K_i/t^{n - i}M),\quad
+b_i = \text{length}_R(K_i/tK_{i + 1}),\quad
+c_i = \text{length}_R(K_1/t^iK_{i + 1})
+$$
+Boundary values are $a_0 = a_n = b_0 = c_0 = 0$.
+The $c_i$ are integers for $i < n$ as $K_1/t^iK_{i + 1}$
+is a quotient of $K_1/t^{n - 1}M$ which is assumed to have finite length.
+We will use frequently that $K_i \cap t^jM = t^jK_{i + j}$.
+For $0 < i < n - 1$ we have an exact sequence
+$$
+0 \to
+K_1/t^{n - i - 1}K_{n - i} \to
+K_{i + 1}/t^{n - i - 1}M \xrightarrow{t} K_i/t^{n - i}M
+\to K_i/tK_{i + 1} \to 0
+$$
+By induction on $i$ we conclude that $a_i$ and $b_i$ are
+integers for $i < n$ and that
+$$
+c_{n - i - 1} - a_{i + 1} + a_i - b_i = 0
+$$
+For $0 < i < n - 1$ there is a short exact sequence
+$$
+0 \to
+K_i/tK_{i + 1} \to
+K_{i + 1}/tK_{i + 2} \xrightarrow{t^i}
+K_1/t^{i + 1}K_{i + 2} \to
+K_1/t^iK_{i + 1} \to 0
+$$
+which gives
+$$
+b_i - b_{i + 1} + c_{i + 1} - c_i = 0
+$$
+Since $b_0 = c_0$ we conclude that $b_i = c_i$ for $i < n$.
+Then we see that
+$$
+a_2 = a_1 + b_{n - 2} - b_1,\quad
+a_3 = a_2 + b_{n - 3} - b_2,\quad \ldots
+$$
+It is straightforward to see that this implies $a_i = a_{n - i}$ as desired.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-multiply-period-length}
+Let $(R, \mathfrak m)$ be a Noetherian local ring. Let
+$(M, \varphi, \psi)$ be a $(2, 1)$-periodic complex over $R$
+with $M$ finite and with cohomology groups of finite length over $R$.
+Let $x \in R$ be such that $\dim(\text{Supp}(M/xM)) \leq 0$. Then
+$$
+e_R(M, x\varphi, \psi) = e_R(M, \varphi, \psi) - e_R(\Im(\varphi), 0, x)
+$$
+and
+$$
+e_R(M, \varphi, x\psi) = e_R(M, \varphi, \psi) + e_R(\Im(\psi), 0, x)
+$$
+\end{lemma}
+
+\begin{proof}
+We will only prove the first formula as the second is proved
+in exactly the same manner.
+Let $M' = M[x^\infty]$ be the $x$-power torsion submodule of $M$.
+Consider the short exact sequence $0 \to M' \to M \to M'' \to 0$.
+Then $M''$ is $x$-power torsion free (More on Algebra, Lemma
+\ref{more-algebra-lemma-divide-by-torsion}).
+Since $\varphi$, $\psi$ map $M'$ into $M'$
+we obtain a short exact sequence
+$$
+0 \to (M', \varphi', \psi') \to (M, \varphi, \psi) \to
+(M'', \varphi'', \psi'') \to 0
+$$
+of $(2, 1)$-periodic complexes. Also, we get a short exact sequence
+$0 \to M' \cap \Im(\varphi) \to \Im(\varphi) \to \Im(\varphi'') \to 0$.
+We have
+$e_R(M', \varphi, \psi) = e_R(M', x\varphi, \psi) =
+e_R(M' \cap \Im(\varphi), 0, x) = 0$
+by Lemma \ref{lemma-compare-periodic-lengths}.
+By additivity (Lemma \ref{lemma-additivity-periodic-length})
+we see that it suffices to prove the lemma for $(M'', \varphi'', \psi'')$.
+This reduces us to the case discussed in the next paragraph.
+
+\medskip\noindent
+Assume $x : M \to M$ is injective.
+In this case $\Ker(x\varphi) = \Ker(\varphi)$.
+On the other hand we have a short exact sequence
+$$
+0 \to \Im(\varphi)/x\Im(\varphi) \to
+\Ker(\psi)/\Im(x\varphi) \to \Ker(\psi)/\Im(\varphi) \to 0
+$$
+This together with (\ref{equation-multiplicity-coker-ker}) proves the formula.
+\end{proof}
+
+
+
+
+
+
+

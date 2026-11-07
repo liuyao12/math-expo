@@ -1,0 +1,114 @@
+\section{Catenary schemes}
+\label{section-catenary}
+
+\noindent
+Recall that a topological space $X$ is called {\it catenary} if
+for every pair of irreducible closed subsets $T \subset T'$
+there exist a maximal chain of irreducible closed subsets
+$$
+T = T_0 \subset T_1 \subset \ldots \subset T_e = T'
+$$
+and every such chain has the same length. See
+Topology, Definition \ref{topology-definition-catenary}.
+
+\begin{definition}
+\label{definition-catenary}
+Let $S$ be a scheme. We say $S$ is {\it catenary} if the
+underlying topological space of $S$ is catenary.
+\end{definition}
+
+\noindent
+Recall that a ring $A$ is called {\it catenary} if
+for any pair of prime ideals $\mathfrak p \subset \mathfrak q$
+there exists a maximal chain of primes
+$$
+\mathfrak p =
+\mathfrak p_0 \subset \ldots \subset \mathfrak p_e
+= \mathfrak q
+$$
+and all of these have the same length. See
+Algebra, Definition \ref{algebra-definition-catenary}.
+
+\begin{lemma}
+\label{lemma-catenary-local}
+Let $S$ be a scheme. The following are equivalent
+\begin{enumerate}
+\item $S$ is catenary,
+\item there exists an open covering of $S$ all of whose members are
+catenary schemes,
+\item for every affine open $\Spec(R) = U \subset S$ the ring
+$R$ is catenary, and
+\item there exists an affine open covering $S = \bigcup U_i$ such
+that each $U_i$ is the spectrum of a catenary ring.
+\end{enumerate}
+Moreover, in this case any locally closed subscheme of $S$ is catenary
+as well.
+\end{lemma}
+
+\begin{proof}
+Combine Topology, Lemma \ref{topology-lemma-catenary}, and
+Algebra, Lemma \ref{algebra-lemma-catenary}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-catenary-dimension-function}
+Let $S$ be a locally Noetherian scheme.
+The following are equivalent:
+\begin{enumerate}
+\item $S$ is catenary, and
+\item locally in the Zariski topology there exists a dimension function
+on $S$ (see Topology, Definition \ref{topology-definition-dimension-function}).
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+This follows from
+Topology, Lemmas
+\ref{topology-lemma-catenary},
+\ref{topology-lemma-dimension-function-catenary}, and
+\ref{topology-lemma-locally-dimension-function},
+Schemes, Lemma \ref{schemes-lemma-scheme-sober}
+and finally Lemma \ref{lemma-Noetherian-topology}.
+\end{proof}
+
+\noindent
+It turns out that a scheme is catenary if and only if its local
+rings are catenary.
+
+\begin{lemma}
+\label{lemma-catenary-local-rings-catenary}
+Let $X$ be a scheme. The following are equivalent
+\begin{enumerate}
+\item $X$ is catenary, and
+\item for any $x \in X$ the local ring $\mathcal{O}_{X, x}$ is
+catenary.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Assume $X$ is catenary. Let $x \in X$. By Lemma \ref{lemma-catenary-local}
+we may replace $X$ by an affine open neighbourhood of $x$, and
+then $\Gamma(X, \mathcal{O}_X)$ is a catenary ring. By
+Algebra, Lemma \ref{algebra-lemma-localization-catenary} any
+localization of a catenary ring is
+catenary. Whence $\mathcal{O}_{X, x}$ is catenary.
+
+\medskip\noindent
+Conversely assume all local rings of $X$ are catenary.
+Let $Y \subset Y'$ be an inclusion of irreducible closed
+subsets of $X$. Let $\xi \in Y$ be the generic point.
+Let $\mathfrak p \subset \mathcal{O}_{X, \xi}$ be the prime
+corresponding to the generic point of $Y'$, see
+Schemes, Lemma \ref{schemes-lemma-specialize-points}. By that same
+lemma the irreducible closed subsets of $X$ in between $Y$ and $Y'$
+correspond to primes $\mathfrak q \subset \mathcal{O}_{X, \xi}$
+with $\mathfrak p \subset \mathfrak q \subset \mathfrak m_{\xi}$.
+Hence we see all maximal chains of these are finite and have the
+same length as $\mathcal{O}_{X, \xi}$ is a catenary ring.
+\end{proof}
+
+
+
+
+
+

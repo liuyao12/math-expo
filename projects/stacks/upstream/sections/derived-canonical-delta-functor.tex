@@ -1,0 +1,266 @@
+\section{The canonical delta-functor}
+\label{section-canonical-delta-functor}
+
+\noindent
+The derived category should be the receptacle for the universal
+cohomology functor. In order to state the result we use
+the notion of a $\delta$-functor from an abelian category
+into a triangulated category, see
+Definition \ref{definition-delta-functor}.
+
+\medskip\noindent
+Consider the functor
+$\text{Comp}(\mathcal{A}) \to K(\mathcal{A})$.
+This functor is {\bf not} a $\delta$-functor in general.
+The easiest way to see this is to consider a nonsplit
+short exact sequence $0 \to A \to B \to C \to 0$
+of objects of $\mathcal{A}$. Since
+$\Hom_{K(\mathcal{A})}(C[0], A[1]) = 0$
+we see that any distinguished triangle arising from
+this short exact sequence would look like
+$(A[0], B[0], C[0], a, b, 0)$. But the existence of such a
+distinguished triangle in $K(\mathcal{A})$ implies
+that the extension is split. A contradiction.
+
+\medskip\noindent
+It turns out that the functor
+$\text{Comp}(\mathcal{A}) \to D(\mathcal{A})$ is a
+$\delta$-functor. In order to see this we have to define
+the morphisms $\delta$ associated to a short exact sequence
+$$
+0 \to A^\bullet \xrightarrow{a} B^\bullet \xrightarrow{b} C^\bullet \to 0
+$$
+of complexes in the abelian category $\mathcal{A}$.
+Consider the cone $C(a)^\bullet$ of the morphism $a$.
+We have $C(a)^n = B^n \oplus A^{n + 1}$ and we define
+$q^n : C(a)^n \to C^n$ via the projection to $B^n$ followed
+by $b^n$. Hence a morphism of complexes
+$$
+q : C(a)^\bullet \longrightarrow C^\bullet.
+$$
+It is clear that $q \circ i = b$ where $i$ is as in
+Definition \ref{definition-cone}.
+Note that, as $a^\bullet$ is injective in each degree,
+the kernel of $q$ is identified with the cone of
+$\text{id}_{A^\bullet}$ which is acyclic. Hence we see that
+$q$ is a quasi-isomorphism. According to
+Lemma \ref{lemma-the-same-up-to-isomorphisms}
+the triangle
+$$
+(A, B, C(a), a, i, -p)
+$$
+is a distinguished triangle in $K(\mathcal{A})$.
+As the localization functor
+$K(\mathcal{A}) \to D(\mathcal{A})$ is
+exact we see that $(A, B, C(a), a, i, -p)$ is a distinguished
+triangle in $D(\mathcal{A})$. Since $q$ is a quasi-isomorphism
+we see that $q$ is an isomorphism in $D(\mathcal{A})$.
+Hence we deduce that
+$$
+(A, B, C, a, b, -p \circ q^{-1})
+$$
+is a distinguished triangle of $D(\mathcal{A})$.
+This suggests the following lemma.
+
+\begin{lemma}
+\label{lemma-derived-canonical-delta-functor}
+Let $\mathcal{A}$ be an abelian category. The functor
+$\text{Comp}(\mathcal{A}) \to D(\mathcal{A})$
+defined has the natural structure of a $\delta$-functor,
+with
+$$
+\delta_{A^\bullet \to B^\bullet \to C^\bullet} = - p \circ q^{-1}
+$$
+with $p$ and $q$ as explained above. The same construction turns the
+functors
+$\text{Comp}^{+}(\mathcal{A}) \to D^{+}(\mathcal{A})$,
+$\text{Comp}^{-}(\mathcal{A}) \to D^{-}(\mathcal{A})$, and
+$\text{Comp}^b(\mathcal{A}) \to D^b(\mathcal{A})$
+into $\delta$-functors.
+\end{lemma}
+
+\begin{proof}
+We have already seen that this choice leads to a distinguished
+triangle whenever given a short exact sequence of complexes.
+We have to show that given a commutative diagram
+$$
+\xymatrix{
+0 \ar[r] &
+A^\bullet \ar[r]_a \ar[d]_f &
+B^\bullet \ar[r]_b \ar[d]_g &
+C^\bullet \ar[r] \ar[d]_h &
+0 \\
+0 \ar[r] &
+(A')^\bullet \ar[r]^{a'} &
+(B')^\bullet \ar[r]^{b'} &
+(C')^\bullet \ar[r] &
+0
+}
+$$
+we get the desired commutative diagram of
+Definition \ref{definition-delta-functor} (2).
+By Lemma \ref{lemma-functorial-cone}
+the pair $(f, g)$ induces a canonical morphism
+$c : C(a)^\bullet \to C(a')^\bullet$. It is a simple computation
+to show that $q' \circ c = h \circ q$ and
+$f[1] \circ p = p' \circ c$. From this the result follows directly.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-derived-compare-triangles-ses}
+Let $\mathcal{A}$ be an abelian category.
+Let
+$$
+\xymatrix{
+0 \ar[r] &
+A^\bullet \ar[r] \ar[d] &
+B^\bullet \ar[r] \ar[d] &
+C^\bullet \ar[r] \ar[d] &
+0 \\
+0 \ar[r] &
+D^\bullet \ar[r] &
+E^\bullet \ar[r] &
+F^\bullet \ar[r] &
+0
+}
+$$
+be a commutative diagram of morphisms of complexes
+such that the rows are short exact sequences of complexes, and
+the vertical arrows are quasi-isomorphisms.
+The $\delta$-functor of
+Lemma \ref{lemma-derived-canonical-delta-functor}
+above maps the short exact sequences
+$0 \to A^\bullet \to B^\bullet \to C^\bullet \to 0$
+and
+$0 \to D^\bullet \to E^\bullet \to F^\bullet \to 0$
+to isomorphic distinguished triangles.
+\end{lemma}
+
+\begin{proof}
+Trivial from the fact that $K(\mathcal{A}) \to D(\mathcal{A})$
+transforms quasi-isomorphisms into isomorphisms and that the
+associated distinguished triangles are functorial.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-derived-compare-triangles-split-case}
+Let $\mathcal{A}$ be an abelian category. Let
+$$
+\xymatrix{
+0 \ar[r] &
+A^\bullet \ar[r] &
+B^\bullet \ar[r] &
+C^\bullet \ar[r] &
+0
+}
+$$
+be a short exact sequences of complexes.
+Assume this short exact sequence is termwise split. Let
+$(A^\bullet, B^\bullet, C^\bullet, \alpha, \beta, \delta)$
+be the distinguished triangle of $K(\mathcal{A})$
+associated to the sequence. The $\delta$-functor of
+Lemma \ref{lemma-derived-canonical-delta-functor}
+above maps the short exact sequences
+$0 \to A^\bullet \to B^\bullet \to C^\bullet \to 0$
+to a triangle isomorphic to the distinguished triangle
+$$
+(A^\bullet, B^\bullet, C^\bullet, \alpha, \beta, \delta).
+$$
+\end{lemma}
+
+\begin{proof}
+Follows from
+Lemma \ref{lemma-the-same-up-to-isomorphisms}.
+\end{proof}
+
+\begin{remark}
+\label{remark-truncation-distinguished-triangle}
+Let $\mathcal{A}$ be an abelian category. Let $K^\bullet$ be a complex
+of $\mathcal{A}$. Let $a \in \mathbf{Z}$. We claim there is a canonical
+distinguished triangle
+$$
+\tau_{\leq a}K^\bullet \to K^\bullet \to \tau_{\geq a + 1}K^\bullet \to
+(\tau_{\leq a}K^\bullet)[1]
+$$
+in $D(\mathcal{A})$. Here we have used the canonical truncation functors $\tau$
+from Homology, Section \ref{homology-section-truncations}.
+Namely, we first take the distinguished
+triangle associated by our $\delta$-functor
+(Lemma \ref{lemma-derived-canonical-delta-functor})
+to the short exact sequence of complexes
+$$
+0 \to \tau_{\leq a}K^\bullet \to K^\bullet \to
+K^\bullet/\tau_{\leq a}K^\bullet \to 0
+$$
+Next, we use that the map $K^\bullet \to \tau_{\geq a + 1}K^\bullet$
+factors through a quasi-isomorphism
+$K^\bullet/\tau_{\leq a}K^\bullet \to \tau_{\geq a + 1}K^\bullet$
+by the description of cohomology groups in
+Homology, Section \ref{homology-section-truncations}.
+In a similar way we obtain canonical distinguished triangles
+$$
+\tau_{\leq a}K^\bullet \to \tau_{\leq a + 1}K^\bullet \to
+H^{a + 1}(K^\bullet)[-a-1] \to (\tau_{\leq a}K^\bullet)[1]
+$$
+and
+$$
+H^a(K^\bullet)[-a] \to \tau_{\geq a}K^\bullet \to \tau_{\geq a + 1}K^\bullet
+\to H^a(K^\bullet)[-a + 1]
+$$
+\end{remark}
+
+\begin{lemma}
+\label{lemma-trick-vanishing-composition}
+Let $\mathcal{A}$ be an abelian category. Let
+$$
+K_0^\bullet \to K_1^\bullet \to \ldots \to K_n^\bullet
+$$
+be maps of complexes such that
+\begin{enumerate}
+\item $H^i(K_0^\bullet) = 0$ for $i > 0$,
+\item $H^{-j}(K_j^\bullet) \to H^{-j}(K_{j + 1}^\bullet)$ is zero.
+\end{enumerate}
+Then the composition $K_0^\bullet \to K_n^\bullet$ factors through
+$\tau_{\leq -n}K_n^\bullet \to K_n^\bullet$ in $D(\mathcal{A})$.
+Dually, given maps of complexes
+$$
+K_n^\bullet \to K_{n - 1}^\bullet \to \ldots \to K_0^\bullet
+$$
+such that
+\begin{enumerate}
+\item $H^i(K_0^\bullet) = 0$ for $i < 0$,
+\item $H^j(K_{j + 1}^\bullet) \to H^j(K_j^\bullet)$ is zero,
+\end{enumerate}
+then the composition $K_n^\bullet \to K_0^\bullet$ factors through
+$K_n^\bullet \to \tau_{\geq n}K_n^\bullet$ in $D(\mathcal{A})$.
+\end{lemma}
+
+\begin{proof}
+The case $n = 1$. Since $\tau_{\leq 0}K_0^\bullet = K_0^\bullet$
+in $D(\mathcal{A})$ we can replace
+$K_0^\bullet$ by $\tau_{\leq 0}K_0^\bullet$ and
+$K_1^\bullet$ by $\tau_{\leq 0}K_1^\bullet$.
+Consider the distinguished triangle
+$$
+\tau_{\leq -1}K_1^\bullet \to K_1^\bullet \to
+H^0(K_1^\bullet)[0] \to (\tau_{\leq -1}K_1^\bullet)[1]
+$$
+(Remark \ref{remark-truncation-distinguished-triangle}).
+The composition $K_0^\bullet \to K_1^\bullet \to H^0(K_1^\bullet)[0]$
+is zero as it is equal to $K_0^\bullet \to H^0(K_0^\bullet)[0] \to
+H^0(K_1^\bullet)[0]$ which is zero by assumption.
+The fact that $\Hom_{D(\mathcal{A})}(K_0^\bullet, -)$
+is a homological functor (Lemma \ref{lemma-representable-homological}),
+allows us to find the desired factorization.
+For $n = 2$ we get a factorization
+$K_0^\bullet \to \tau_{\leq -1}K_1^\bullet$ by the case $n = 1$
+and we can apply the case $n = 1$ to the map of complexes
+$\tau_{\leq -1}K_1^\bullet \to \tau_{\leq -1}K_2^\bullet$
+to get a factorization
+$\tau_{\leq -1}K_1^\bullet \to \tau_{\leq -2}K_2^\bullet$.
+The general case is proved in exactly the same manner.
+\end{proof}
+
+
+
+

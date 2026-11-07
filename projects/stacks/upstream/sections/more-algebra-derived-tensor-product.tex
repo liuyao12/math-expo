@@ -1,0 +1,460 @@
+\section{Derived tensor product}
+\label{section-derived-tensor-product}
+
+\noindent
+We can construct the derived tensor product in greater generality.
+In fact, it turns out that the boundedness assumptions are not
+necessary, provided we choose K-flat resolutions.
+
+\begin{definition}
+\label{definition-K-flat}
+Let $R$ be a ring. A complex $K^\bullet$ is called {\it K-flat}
+if for every acyclic complex $M^\bullet$ the total complex
+$\text{Tot}(M^\bullet \otimes_R K^\bullet)$ is acyclic.
+\end{definition}
+
+\begin{lemma}
+\label{lemma-K-flat-quasi-isomorphism}
+Let $R$ be a ring. Let $K^\bullet$ be a K-flat complex.
+Then the functor
+$$
+K(R) \longrightarrow K(R), \quad
+L^\bullet \longmapsto \text{Tot}(L^\bullet \otimes_R K^\bullet)
+$$
+transforms quasi-isomorphisms into quasi-isomorphisms.
+\end{lemma}
+
+\begin{proof}
+Follows from
+Lemma \ref{lemma-derived-tor-exact}
+and the fact that quasi-isomorphisms in $K(R)$
+are characterized by having acyclic cones.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-base-change-K-flat}
+Let $R \to R'$ be a ring map. If $K^\bullet$ is a K-flat complex
+of $R$-modules, then $K^\bullet \otimes_R R'$ is a K-flat complex
+of $R'$-modules.
+\end{lemma}
+
+\begin{proof}
+Follows from the definitions and the fact that
+$(K^\bullet \otimes_R R') \otimes_{R'} L^\bullet =
+K^\bullet \otimes_R L^\bullet$ for any complex
+$L^\bullet$ of $R'$-modules.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-tensor-product-K-flat}
+Let $R$ be a ring. If $K^\bullet$, $L^\bullet$ are K-flat complexes
+of $R$-modules, then $\text{Tot}(K^\bullet \otimes_R L^\bullet)$ is a
+K-flat complex of $R$-modules.
+\end{lemma}
+
+\begin{proof}
+Follows from the isomorphism
+$$
+\text{Tot}(M^\bullet \otimes_R \text{Tot}(K^\bullet \otimes_R L^\bullet))
+=
+\text{Tot}(\text{Tot}(M^\bullet \otimes_R K^\bullet) \otimes_R L^\bullet)
+$$
+and the definition.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-K-flat-two-out-of-three}
+Let $R$ be a ring. Let $(K_1^\bullet, K_2^\bullet, K_3^\bullet)$ be
+a distinguished triangle in $K(R)$. If two out of three
+of $K_i^\bullet$ are K-flat, so is the third.
+\end{lemma}
+
+\begin{proof}
+Follows from
+Lemma \ref{lemma-derived-tor-exact}
+and the fact that in a distinguished triangle in
+$K(R)$ if two out of three are acyclic, so is the third.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-K-flat-two-out-of-three-ses}
+Let $R$ be a ring. Let
+$0 \to K_1^\bullet \to K_2^\bullet \to K_3^\bullet \to 0$ be
+a short exact sequence of complexes. If $K_3^n$ is flat for
+all $n \in \mathbf{Z}$ and two out of three
+of $K_i^\bullet$ are K-flat, so is the third.
+\end{lemma}
+
+\begin{proof}
+Let $L^\bullet$ be a complex of $R$-modules. Then
+$$
+0 \to
+\text{Tot}(L^\bullet \otimes_R K_1^\bullet) \to
+\text{Tot}(L^\bullet \otimes_R K_2^\bullet) \to
+\text{Tot}(L^\bullet \otimes_R K_3^\bullet) \to 0
+$$
+is a short exact sequence of complexes. Namely, for each
+$n, m$ the sequence of modules
+$0 \to L^n \otimes_R K_1^m \to
+L^n \otimes_R K_2^m \to
+L^n \otimes_R K_3^m \to 0$
+is exact by Algebra, Lemma \ref{algebra-lemma-flat-tor-zero}
+and the sequence of complexes is a direct sum of these.
+Thus the lemma follows from this
+and the fact that in a short exact sequence of complexes
+if two out of three are acyclic, so is the third.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-derived-tor-quasi-isomorphism}
+Let $R$ be a ring. Let $P^\bullet$ be a bounded above complex of
+flat $R$-modules. Then $P^\bullet$ is K-flat.
+\end{lemma}
+
+\begin{proof}
+Let $L^\bullet$ be an acyclic complex of $R$-modules.
+Let $\xi \in H^n(\text{Tot}(L^\bullet \otimes_R P^\bullet))$.
+We have to show that $\xi = 0$.
+Since $\text{Tot}^n(L^\bullet \otimes_R P^\bullet)$ is a direct
+sum with terms $L^a \otimes_R P^b$ we see that $\xi$ comes from
+an element in $H^n(\text{Tot}(\tau_{\leq m}L^\bullet \otimes_R P^\bullet))$
+for some $m \in \mathbf{Z}$. Since $\tau_{\leq m}L^\bullet$ is also
+acyclic we may replace $L^\bullet$ by $\tau_{\leq m}L^\bullet$.
+Hence we may assume that $L^\bullet$ is bounded above.
+In this case the spectral sequence of
+Homology, Lemma \ref{homology-lemma-first-quadrant-ss}
+has
+$$
+{}'E_1^{p, q} = H^p(L^\bullet \otimes_R P^q)
+$$
+which is zero as $P^q$ is flat and $L^\bullet$ acyclic. Hence
+$H^*(\text{Tot}(L^\bullet \otimes_R P^\bullet)) = 0$.
+\end{proof}
+
+\noindent
+In the following lemma by a colimit of a system of complexes we mean
+the termwise colimit.
+
+\begin{lemma}
+\label{lemma-colimit-K-flat}
+Let $R$ be a ring.
+Let $K_1^\bullet \to K_2^\bullet \to \ldots$
+be a system of K-flat complexes.
+Then $\colim_i K_i^\bullet$ is K-flat.
+More generally any filtered colimit of K-flat complexes
+is K-flat.
+\end{lemma}
+
+\begin{proof}
+Because we are taking termwise colimits we have
+$$
+\colim_i \text{Tot}(M^\bullet \otimes_R K_i^\bullet) =
+\text{Tot}(M^\bullet \otimes_R \colim_i K_i^\bullet)
+$$
+by Algebra, Lemma \ref{algebra-lemma-tensor-products-commute-with-limits}.
+Hence the lemma follows from the fact that filtered colimits are
+exact, see Algebra, Lemma \ref{algebra-lemma-directed-colimit-exact}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-universally-acyclic-K-flat}
+Let $R$ be a ring. Let $K^\bullet$ be a complex of $R$-modules.
+If $K^\bullet \otimes_R M$ is acyclic for all finitely presented
+$R$-modules $M$, then $K^\bullet$ is K-flat.
+\end{lemma}
+
+\begin{proof}
+We will use repeatedly that tensor product commute with colimits
+(Algebra, Lemma \ref{algebra-lemma-tensor-products-commute-with-limits}).
+Thus we see that $K^\bullet \otimes_R M$ is acyclic for
+any $R$-module $M$, because any $R$-module is a filtered colimit
+of finitely presented $R$-modules $M$, see
+Algebra, Lemma \ref{algebra-lemma-module-colimit-fp}.
+Let $M^\bullet$ be an acyclic complex of $R$-modules.
+We have to show that $\text{Tot}(M^\bullet \otimes_R K^\bullet)$
+is acyclic. Since $M^\bullet = \colim \tau_{\leq n} M^\bullet$ (termwise
+colimit) we have
+$$
+\text{Tot}(M^\bullet \otimes_R K^\bullet) =
+\colim \text{Tot}(\tau_{\leq n} M^\bullet \otimes_R K^\bullet)
+$$
+with truncations as in Homology, Section \ref{homology-section-truncations}.
+As filtered colimits are exact
+(Algebra, Lemma \ref{algebra-lemma-directed-colimit-exact})
+we may replace $M^\bullet$ by $\tau_{\leq n}M^\bullet$ and
+assume that $M^\bullet$ is bounded above.
+In the bounded above case, we can write
+$M^\bullet = \colim \sigma_{\geq -n} M^\bullet$
+where the complexes $\sigma_{\geq -n} M^\bullet$ are bounded
+but possibly no longer acyclic.
+Arguing as above we reduce to the case where $M^\bullet$
+is a bounded complex.
+Finally, for a bounded complex $M^a \to \ldots \to M^b$
+we can argue by induction on the length $b - a$ of the complex.
+The case $b - a = 1$ we have seen above.
+For $b - a > 1$ we consider the split short exact sequence
+of complexes
+$$
+0 \to \sigma_{\geq a + 1}M^\bullet \to M^\bullet \to M^a[-a] \to 0
+$$
+and we apply Lemma \ref{lemma-derived-tor-exact}
+to do the induction step. Some details omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-K-flat-resolution}
+Let $R$ be a ring. For any complex $M^\bullet$ there exists a
+K-flat complex $K^\bullet$ whose terms are flat $R$-modules
+and a quasi-isomorphism $K^\bullet \to M^\bullet$ which is termwise
+surjective.
+\end{lemma}
+
+\begin{proof}
+Let $\mathcal{P} \subset \Ob(\text{Mod}_R)$ be the
+class of flat $R$-modules. By
+Derived Categories, Lemma \ref{derived-lemma-special-direct-system}
+there exists a system
+$K_1^\bullet \to K_2^\bullet \to \ldots$
+and a diagram
+$$
+\xymatrix{
+K_1^\bullet \ar[d] \ar[r] &
+K_2^\bullet \ar[d] \ar[r] & \ldots \\
+\tau_{\leq 1}M^\bullet \ar[r] &
+\tau_{\leq 2}M^\bullet \ar[r] & \ldots
+}
+$$
+with the properties (1), (2), (3) listed in that lemma.
+These properties imply each complex $K_i^\bullet$ is a bounded
+above complex of flat modules. Hence $K_i^\bullet$ is K-flat by
+Lemma \ref{lemma-derived-tor-quasi-isomorphism}.
+The induced map $\colim_i K_i^\bullet \to M^\bullet$
+is a quasi-isomorphism and termwise surjective by construction. The complex
+$\colim_i K_i^\bullet$ is K-flat by
+Lemma \ref{lemma-colimit-K-flat}.
+The terms $\colim K_i^n$ are flat because filtered colimits of
+flat modules are flat, see
+Algebra, Lemma \ref{algebra-lemma-colimit-flat}.
+\end{proof}
+
+\begin{remark}
+\label{remark-P-resolution}
+In fact, we can do better than Lemma \ref{lemma-K-flat-resolution}.
+Namely, we can find a quasi-isomorphism
+$P^\bullet \to M^\bullet$ where $P^\bullet$ is a complex of $R$-modules
+endowed with a filtration
+$$
+0 = F_{-1}P^\bullet \subset F_0P^\bullet \subset
+F_1P^\bullet \subset \ldots \subset P^\bullet
+$$
+by subcomplexes such that
+\begin{enumerate}
+\item $P^\bullet = \bigcup F_pP^\bullet$,
+\item the inclusions $F_iP^\bullet \to F_{i + 1}P^\bullet$
+are termwise split injections,
+\item the quotients $F_{i + 1}P^\bullet/F_iP^\bullet$ are isomorphic to direct
+sums of shifts $R[k]$ (as complexes, so differentials are zero).
+\end{enumerate}
+This will be shown in
+Differential Graded Algebra, Lemma \ref{dga-lemma-resolve}
+(or you can argue as in the proof of
+Lemma \ref{lemma-resolution-filtered-complex}).
+Moreover, given such a complex we obtain a distinguished triangle
+$$
+\bigoplus F_iP^\bullet \to \bigoplus F_iP^\bullet \to M^\bullet
+\to \bigoplus F_iP^\bullet[1]
+$$
+in $D(R)$. Using this we can sometimes reduce statements about general
+complexes to statements about $R[k]$ (this of course only works if the
+statement is preserved under taking direct sums). More precisely, let
+$T$ be a property of objects of $D(R)$. Suppose that
+\begin{enumerate}
+\item if $K_i \in D(R)$, $i \in I$ is a family of objects with
+$T(K_i)$ for all $i \in I$, then $T(\bigoplus K_i)$,
+\item if $K \to L \to M \to K[1]$ is a distinguished triangle and
+$T$ holds for two, then $T$ holds for the third object,
+\item $T(R[k])$ holds for all $k$.
+\end{enumerate}
+Then $T$ holds for all objects of $D(R)$.
+\end{remark}
+
+\begin{lemma}
+\label{lemma-derived-tor-quasi-isomorphism-other-side}
+Let $R$ be a ring. Let
+$\alpha : P^\bullet \to Q^\bullet$ be a quasi-isomorphism of
+K-flat complexes of $R$-modules. For every complex $L^\bullet$
+of $R$-modules the induced map
+$$
+\text{Tot}(\text{id}_L \otimes \alpha) :
+\text{Tot}(L^\bullet \otimes_R P^\bullet)
+\longrightarrow
+\text{Tot}(L^\bullet \otimes_R Q^\bullet)
+$$
+is a quasi-isomorphism.
+\end{lemma}
+
+\begin{proof}
+Choose a quasi-isomorphism $K^\bullet \to L^\bullet$ with
+$K^\bullet$ a K-flat complex, see
+Lemma \ref{lemma-K-flat-resolution}.
+Consider the commutative diagram
+$$
+\xymatrix{
+\text{Tot}(K^\bullet \otimes_R P^\bullet) \ar[r] \ar[d] &
+\text{Tot}(K^\bullet \otimes_R Q^\bullet) \ar[d] \\
+\text{Tot}(L^\bullet \otimes_R P^\bullet) \ar[r] &
+\text{Tot}(L^\bullet \otimes_R Q^\bullet)
+}
+$$
+The result follows as by
+Lemma \ref{lemma-K-flat-quasi-isomorphism}
+the vertical arrows and the top horizontal arrow are quasi-isomorphisms.
+\end{proof}
+
+\noindent
+Let $R$ be a ring.
+Let $M^\bullet$ be an object of $D(R)$.
+Choose a K-flat resolution $K^\bullet \to M^\bullet$, see
+Lemma \ref{lemma-K-flat-resolution}.
+By
+Lemmas \ref{lemma-derived-tor-homotopy} and \ref{lemma-derived-tor-exact}
+we obtain an exact functor of triangulated categories
+$$
+K(R) \longrightarrow K(R), \quad
+L^\bullet \longmapsto \text{Tot}(L^\bullet \otimes_R K^\bullet)
+$$
+By
+Lemma \ref{lemma-K-flat-quasi-isomorphism}
+this functor induces a functor $D(R) \to D(R)$ simply because
+$D(R)$ is the localization of $K(R)$ at quasi-isomorphism.
+As the category of $K$-flat resolutions of $M^\bullet$ is
+cofiltered and as we have
+Lemma \ref{lemma-derived-tor-quasi-isomorphism-other-side}
+the resulting functor (up to isomorphism)
+does not depend on the choice of $K^\bullet$.
+
+\begin{definition}
+\label{definition-derived-tor}
+Let $R$ be a ring. Let $M^\bullet$ be an object of $D(R)$.
+The {\it derived tensor product}
+$$
+- \otimes_R^{\mathbf{L}} M^\bullet : D(R) \longrightarrow D(R)
+$$
+is the exact functor of triangulated categories described above.
+\end{definition}
+
+\noindent
+This functor extends the functor (\ref{equation-derived-tensor-module}).
+It is clear from our explicit constructions that
+there is an isomorphism (involving a choice of signs, see below)
+$$
+M^\bullet \otimes_R^{\mathbf{L}} L^\bullet
+\cong
+L^\bullet \otimes_R^{\mathbf{L}} M^\bullet
+$$
+whenever both $L^\bullet$ and $M^\bullet$ are in $D(R)$.
+Hence when we write $M^\bullet \otimes_R^{\mathbf{L}} L^\bullet$
+we will usually be agnostic about which variable we are using to
+define the derived tensor product with.
+
+\begin{lemma}
+\label{lemma-flip-douoble-tensor-product}
+Let $R$ be a ring. Let $K^\bullet, L^\bullet$ be complexes of $R$-modules.
+There is a canonical isomorphism
+$$
+K^\bullet \otimes_R^\mathbf{L} L^\bullet \longrightarrow
+L^\bullet \otimes_R^\mathbf{L} K^\bullet
+$$
+functorial in both complexes which uses a sign of $(-1)^{pq}$
+for the map $K^p \otimes_R L^q \to L^q \otimes_R K^p$ (see proof
+for explanation).
+\end{lemma}
+
+\begin{proof}
+We may and do replace the complexes by K-flat complexes $K^\bullet$ and
+$L^\bullet$ and then we use the commutativity constraint discussed
+in Section \ref{section-symmetric-monoidal}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-triple-tensor-product}
+Let $R$ be a ring. Let $K^\bullet, L^\bullet, M^\bullet$
+be complexes of $R$-modules. There is a canonical isomorphism
+$$
+(K^\bullet \otimes_R^\mathbf{L} L^\bullet) \otimes_R^\mathbf{L} M^\bullet
+=
+K^\bullet \otimes_R^\mathbf{L} (L^\bullet \otimes_R^\mathbf{L} M^\bullet)
+$$
+functorial in all three complexes.
+\end{lemma}
+
+\begin{proof}
+Replace the complexes by K-flat complexes and use the
+associativity constraint in Section \ref{section-symmetric-monoidal}.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-factor-through-K-flat}
+Let $R$ be a ring. Let $a : K^\bullet \to L^\bullet$ be a map of complexes
+of $R$-modules. If $K^\bullet$ is K-flat, then there exist a complex
+$N^\bullet$ and maps of complexes $b : K^\bullet \to N^\bullet$
+and $c : N^\bullet \to L^\bullet$ such that
+\begin{enumerate}
+\item $N^\bullet$ is K-flat,
+\item $c$ is a quasi-isomorphism,
+\item $a$ is homotopic to $c \circ b$.
+\end{enumerate}
+If the terms of $K^\bullet$ are flat, then we may choose
+$N^\bullet$, $b$, and $c$
+such that the same is true for $N^\bullet$.
+\end{lemma}
+
+\begin{proof}
+We will use that the homotopy category $K(R)$
+is a triangulated category, see Derived Categories, Proposition
+\ref{derived-proposition-homotopy-category-triangulated}.
+Choose a distinguished triangle
+$K^\bullet \to L^\bullet \to C^\bullet \to K^\bullet[1]$.
+Choose a quasi-isomorphism $M^\bullet \to C^\bullet$ with
+$M^\bullet$ K-flat with flat terms, see Lemma \ref{lemma-K-flat-resolution}.
+By the axioms of triangulated categories,
+we may fit the composition $M^\bullet \to C^\bullet \to K^\bullet[1]$
+into a distinguished triangle
+$K^\bullet \to N^\bullet \to M^\bullet \to K^\bullet[1]$.
+By Lemma \ref{lemma-K-flat-two-out-of-three} we see that $N^\bullet$ is K-flat.
+Again using the axioms of triangulated categories,
+we can choose a map $N^\bullet \to L^\bullet$ fitting into
+the following morphism of distinguished triangles
+$$
+\xymatrix{
+K^\bullet \ar[r] \ar[d] &
+N^\bullet \ar[r] \ar[d] &
+M^\bullet \ar[r] \ar[d] &
+K^\bullet[1] \ar[d] \\
+K^\bullet \ar[r] &
+L^\bullet \ar[r] &
+C^\bullet \ar[r] &
+K^\bullet[1]
+}
+$$
+Since two out of three of the arrows are quasi-isomorphisms, so is
+the third arrow $N^\bullet \to L^\bullet$ by the long exact sequences
+of cohomology associated to these distinguished triangles
+(or you can look at the image of this diagram in $D(R)$ and use
+Derived Categories, Lemma \ref{derived-lemma-third-isomorphism-triangle}
+if you like). This finishes the proof of (1), (2), and (3).
+To prove the final assertion, we may choose $N^\bullet$
+such that $N^n \cong M^n \oplus K^n$, see
+Derived Categories, Lemma
+\ref{derived-lemma-improve-distinguished-triangle-homotopy}.
+Hence we get the desired flatness
+if the terms of $K^\bullet$ are flat.
+\end{proof}
+
+
+
+
+
+
+
+

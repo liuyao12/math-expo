@@ -1,0 +1,200 @@
+\section{Periodic complexes and Herbrand quotients}
+\label{section-periodic-complexes}
+
+\noindent
+Of course there is a very general notion of periodic complexes.
+We can require periodicity of the maps, or periodicity of the objects.
+We will add these here as needed. For the moment we only need
+the following cases.
+
+\begin{definition}
+\label{definition-periodic-complex}
+Let $R$ be a ring.
+\begin{enumerate}
+\item A {\it $2$-periodic complex} over $R$ is given
+by a quadruple $(M, N, \varphi, \psi)$ consisting of
+$R$-modules $M$, $N$ and $R$-module maps $\varphi : M \to N$,
+$\psi : N \to M$ such that
+$$
+\xymatrix{
+\ldots \ar[r] &
+M \ar[r]^\varphi &
+N \ar[r]^\psi &
+M \ar[r]^\varphi &
+N \ar[r] & \ldots
+}
+$$
+is a complex. In this setting we define the {\it cohomology modules}
+of the complex to be the $R$-modules
+$$
+H^0(M, N, \varphi, \psi) = \Ker(\varphi)/\Im(\psi)
+\quad\text{and}\quad
+H^1(M, N, \varphi, \psi) = \Ker(\psi)/\Im(\varphi).
+$$
+We say the $2$-periodic complex is {\it exact} if the cohomology
+groups are zero.
+\item A {\it $(2, 1)$-periodic complex} over $R$ is given
+by a triple $(M, \varphi, \psi)$ consisting of an $R$-module $M$ and
+$R$-module maps $\varphi : M \to M$, $\psi : M \to M$
+such that
+$$
+\xymatrix{
+\ldots \ar[r] &
+M \ar[r]^\varphi &
+M \ar[r]^\psi &
+M \ar[r]^\varphi &
+M \ar[r] & \ldots
+}
+$$
+is a complex. Since this is a special case of a $2$-periodic complex
+we have its {\it cohomology modules} $H^0(M, \varphi, \psi)$,
+$H^1(M, \varphi, \psi)$ and a notion of exactness.
+\end{enumerate}
+\end{definition}
+
+\noindent
+In the following we will use any result proved for $2$-periodic
+complexes without further mention for $(2, 1)$-periodic complexes.
+It is clear that the collection of $2$-periodic complexes forms a
+category with morphisms
+$(f, g) : (M, N, \varphi, \psi) \to (M', N', \varphi', \psi')$
+pairs of morphisms $f : M \to M'$ and $g : N \to N'$ such
+that $\varphi' \circ f = g \circ \varphi$ and $\psi' \circ g = f \circ \psi$.
+We obtain an abelian category, with kernels and cokernels as in
+Homology, Lemma \ref{homology-lemma-cat-chain-abelian}.
+
+\begin{definition}
+\label{definition-periodic-length}
+Let $(M, N, \varphi, \psi)$ be a $2$-periodic complex
+over a ring $R$ whose cohomology modules have finite length.
+In this case we define the {\it multiplicity} of $(M, N, \varphi, \psi)$
+to be the integer
+$$
+e_R(M, N, \varphi, \psi) =
+\text{length}_R(H^0(M, N, \varphi, \psi))
+-
+\text{length}_R(H^1(M, N, \varphi, \psi))
+$$
+In the case of a $(2, 1)$-periodic complex $(M, \varphi, \psi)$,
+we denote this by $e_R(M, \varphi, \psi)$ and we will sometimes call this
+the {\it (additive) Herbrand quotient}.
+\end{definition}
+
+\noindent
+If the cohomology groups of $(M, \varphi, \psi)$
+are finite abelian groups, then it is customary to call the
+{\it (multiplicative) Herbrand quotient}
+$$
+q(M, \varphi, \psi) =
+\frac{\# H^0(M, \varphi, \psi)}{\# H^1(M, \varphi, \psi)}
+$$
+In words: the multiplicative Herbrand quotient is the number of elements of
+$H^0$ divided by the number of elements of $H^1$. If $R$ is local and if
+the residue field of $R$ is finite with $q$ elements, then we see that
+$$
+q(M, \varphi, \psi) = q^{e_R(M, \varphi, \psi)}
+$$
+
+\medskip\noindent
+An example of a $(2, 1)$-periodic complex over a ring $R$ is any triple of
+the form $(M, 0, \psi)$ where $M$ is an $R$-module and $\psi$ is an
+$R$-linear map. If the kernel and cokernel of $\psi$ have finite length,
+then we obtain
+\begin{equation}
+\label{equation-multiplicity-coker-ker}
+e_R(M, 0, \psi) = \text{length}_R(\Coker(\psi)) - \text{length}_R(\Ker(\psi))
+\end{equation}
+We state and prove the obligatory lemmas on these notations.
+
+\begin{lemma}
+\label{lemma-additivity-periodic-length}
+Let $R$ be a ring. Suppose that we have a short exact sequence of
+$2$-periodic complexes
+$$
+0 \to (M_1, N_1, \varphi_1, \psi_1)
+\to (M_2, N_2, \varphi_2, \psi_2)
+\to (M_3, N_3, \varphi_3, \psi_3)
+\to 0
+$$
+If two out of three have cohomology modules of finite length so does
+the third and we have
+$$
+e_R(M_2, N_2, \varphi_2, \psi_2) =
+e_R(M_1, N_1, \varphi_1, \psi_1) +
+e_R(M_3, N_3, \varphi_3, \psi_3).
+$$
+\end{lemma}
+
+\begin{proof}
+We abbreviate $A = (M_1, N_1, \varphi_1, \psi_1)$,
+$B = (M_2, N_2, \varphi_2, \psi_2)$ and $C = (M_3, N_3, \varphi_3, \psi_3)$.
+We have a long exact cohomology sequence
+$$
+\ldots
+\to H^1(C)
+\to H^0(A)
+\to H^0(B)
+\to H^0(C)
+\to H^1(A)
+\to H^1(B)
+\to H^1(C)
+\to \ldots
+$$
+This gives a finite exact sequence
+$$
+0 \to I
+\to H^0(A)
+\to H^0(B)
+\to H^0(C)
+\to H^1(A)
+\to H^1(B)
+\to K \to 0
+$$
+with $0 \to K \to H^1(C) \to I \to 0$ a filtration. By additivity of
+the length function (Algebra, Lemma \ref{algebra-lemma-length-additive})
+we see the result.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-finite-periodic-length}
+Let $R$ be a ring. If $(M, N, \varphi, \psi)$ is a $2$-periodic complex
+such that $M$, $N$ have finite length, then
+$e_R(M, N, \varphi, \psi) = \text{length}_R(M) - \text{length}_R(N)$.
+In particular, if $(M, \varphi, \psi)$ is a $(2, 1)$-periodic complex
+such that $M$ has finite length, then
+$e_R(M, \varphi, \psi) = 0$.
+\end{lemma}
+
+\begin{proof}
+Observe that on the category of $2$-periodic complexes with $M$, $N$
+of finite length the quantity ``$\text{length}_R(M) - \text{length}_R(N)$''
+is additive in short exact sequences (precise statement left to the reader).
+Consider the short exact sequence
+$$
+0 \to (M, \Im(\varphi), \varphi, 0) \to
+(M, N, \varphi, \psi) \to (0, N/\Im(\varphi), 0, 0) \to 0
+$$
+The initial remark combined with the additivity of
+Lemma \ref{lemma-additivity-periodic-length}
+reduces us to the cases (a) $M = 0$ and (b) $\varphi$ is surjective.
+We leave those cases to the reader.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-compare-periodic-lengths}
+Let $R$ be a ring. Let $f : (M, \varphi, \psi) \to (M', \varphi', \psi')$
+be a map of $(2, 1)$-periodic complexes whose cohomology modules
+have finite length. If $\Ker(f)$ and $\Coker(f)$ have finite length,
+then $e_R(M, \varphi, \psi) = e_R(M', \varphi', \psi')$.
+\end{lemma}
+
+\begin{proof}
+Apply the additivity of Lemma \ref{lemma-additivity-periodic-length}
+and observe that $(\Ker(f), \varphi, \psi)$ and
+$(\Coker(f), \varphi', \psi')$ have vanishing multiplicity by
+Lemma \ref{lemma-finite-periodic-length}.
+\end{proof}
+
+
+
+

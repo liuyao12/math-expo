@@ -1,0 +1,142 @@
+\section{Embedded primes}
+\label{section-embedded-primes}
+
+\noindent
+Here is the definition.
+
+\begin{definition}
+\label{definition-embedded-primes}
+Let $R$ be a ring.
+Let $M$ be an $R$-module.
+\begin{enumerate}
+\item  The associated primes of $M$ which are
+not minimal among the associated primes of $M$ are called the
+{\it embedded associated primes} of $M$.
+\item The {\it embedded primes of $R$}
+are the embedded associated primes of $R$ as an $R$-module.
+\end{enumerate}
+\end{definition}
+
+\noindent
+Here is a way to get rid of these.
+
+\begin{lemma}
+\label{lemma-remove-embedded-primes}
+Let $R$ be a Noetherian ring.
+Let $M$ be a finite $R$-module.
+Consider the set of $R$-submodules
+$$
+\{
+K \subset M
+\mid
+\text{Supp}(K)
+\text{ nowhere dense in }
+\text{Supp}(M)
+\}.
+$$
+This set has a maximal element $K$ and the quotient
+$M' = M/K$ has the following properties
+\begin{enumerate}
+\item $\text{Supp}(M) = \text{Supp}(M')$,
+\item $M'$ has no embedded associated primes,
+\item for any $f \in R$ which is contained in all
+embedded associated primes of $M$ we have $M_f \cong M'_f$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+We will use Lemma \ref{lemma-finite-ass} and
+Proposition \ref{proposition-minimal-primes-associated-primes}
+without further mention.
+Let $\mathfrak q_1, \ldots, \mathfrak q_t$ denote the
+minimal primes in the support of $M$. Let
+$\mathfrak p_1, \ldots, \mathfrak p_s$ denote the
+embedded associated primes of $M$. Then
+$\text{Ass}(M) = \{\mathfrak q_j, \mathfrak p_i\}$.
+Let
+$$
+K = \{m \in M \mid \text{Supp}(Rm) \subset \bigcup V(\mathfrak p_i)\}
+$$
+It is immediately seen to be a submodule. Since $M$ is finite over a
+Noetherian ring, we know $K$ is finite too. Hence $\text{Supp}(K)$
+is nowhere dense in $\text{Supp}(M)$. Let $K' \subset M$ be another submodule
+with support nowhere dense in $\text{Supp}(M)$. This means
+that $K_{\mathfrak q_j} = 0$. Hence if $m \in K'$,
+then $m$ maps to zero in $M_{\mathfrak q_j}$ which
+in turn implies $(Rm)_{\mathfrak q_j} = 0$.
+On the other hand we have $\text{Ass}(Rm) \subset \text{Ass}(M)$.
+Hence the support of $Rm$ is contained in $\bigcup V(\mathfrak p_i)$.
+Therefore $m \in K$ and thus $K' \subset K$ as $m$ was arbitrary in $K'$.
+
+\medskip\noindent
+Let $M' = M/K$. Since $K_{\mathfrak q_j}=0$ we know
+$M'_{\mathfrak q_j} = M_{\mathfrak q_j}$ for all $j$.
+Hence $M$ and $M'$ have the same support. 
+
+\medskip\noindent
+Suppose $\mathfrak q = \text{Ann}(\overline{m}) \in \text{Ass}(M')$
+where $\overline{m} \in M'$ is the image of $m \in M$.
+Then $m \not \in K$ and hence the support of $Rm$ must contain one of the
+$\mathfrak q_j$. Since $M_{\mathfrak q_j} = M'_{\mathfrak q_j}$,
+we know $\overline{m}$ does not map to zero in $M'_{\mathfrak q_j}$.
+Hence $\mathfrak q \subset \mathfrak q_j$ (actually we have equality),
+which means that all the associated primes of $M'$ are not embedded.
+
+\medskip\noindent
+Let $f$ be an element contained in all $\mathfrak p_i$.
+Then $D(f) \cap \text{supp}(K) = 0$. Hence $M_f = M'_f$
+because $K_f = 0$.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-remove-embedded-primes-localize}
+Let $R$ be a Noetherian ring.
+Let $M$ be a finite $R$-module.
+For any $f \in R$ we have $(M')_f = (M_f)'$ where
+$M \to M'$ and $M_f \to (M_f)'$ are the quotients
+constructed in Lemma \ref{lemma-remove-embedded-primes}.
+\end{lemma}
+
+\begin{proof}
+Omitted.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-no-embedded-primes-endos}
+Let $R$ be a Noetherian ring.
+Let $M$ be a finite $R$-module without embedded associated primes.
+Let $I = \{x \in R \mid xM = 0\}$. Then the ring $R/I$ has no
+embedded primes.
+\end{lemma}
+
+\begin{proof}
+We may replace $R$ by $R/I$.
+Hence we may assume every nonzero element
+of $R$ acts nontrivially on $M$.
+By Lemma \ref{lemma-support-closed} this implies that
+$\Spec(R)$ equals the support of $M$.
+Suppose that $\mathfrak p$ is an embedded prime of $R$.
+Let $x \in R$ be an element whose annihilator is $\mathfrak p$.
+Consider the nonzero module $N = xM \subset M$. It is annihilated
+by $\mathfrak p$. Hence any associated prime $\mathfrak q$ of $N$
+contains $\mathfrak p$ and is also an associated prime of $M$.
+Then $\mathfrak q$ would be an embedded associated prime of
+$M$ which contradicts the assumption of the lemma.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
