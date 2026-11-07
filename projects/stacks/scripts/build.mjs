@@ -27,9 +27,10 @@ function matchingHTML(item,proof=false,renderer=r){
   ).join('');
   const bindings=proof&&item.proofBindings?[...new Map([...item.proofBindings,...item.bindings].map(b=>[normalize(b.symbol),b])).values()]:item.bindings;
   const rows=bindings.length?`<ul class="object-matches">${bindings.map(binding=>`<li class="object-row" data-symbol="${esc(normalize(binding.symbol))}" tabindex="-1"><div class="object-formula">${r.math(binding.symbol+'{=}'+binding.value)}</div>${paragraphs(binding.note,'object-detail')}</li>`).join('')}</ul>`:'';
+  const points=item.points?.length?`<ul class="example-points">${item.points.map(point=>`<li>${paragraphs(point)}</li>`).join('')}</ul>`:'';
   const calculation=paragraphs(proof&&item.proof?item.proof:item.check);
   const conclusion=paragraphs(item.result);
-  return `${paragraphs(item.note||'','case-note')}${rows}${calculation?`<div class="case-check">${calculation}</div>`:''}${conclusion?`<div class="case-result">${conclusion}</div>`:''}${item.source?`<p class="case-note"><a href="${esc(item.source.url)}">${esc(item.source.label)}</a></p>`:''}`;
+  return `${paragraphs(item.note||'','case-note')}${rows}${points}${calculation?`<div class="case-check">${calculation}</div>`:''}${conclusion?`<div class="case-result">${conclusion}</div>`:''}${item.source?`<p class="case-note"><a href="${esc(item.source.url)}">${esc(item.source.label)}</a></p>`:''}`;
 }
 function renderExampleCard(item,key,open,proof=false,renderer=r){
   const label=item.kind==='analogy'?'Analogy':'Example';

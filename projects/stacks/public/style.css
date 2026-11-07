@@ -63,6 +63,11 @@ body:has(.reader-layout) .site-header{position:sticky;top:0}.reading-progress{he
 .example-chevron::before { content: "+"; }
 .example-disclosure[open] > summary .example-chevron::before { content: "−"; }
 
+.example-current .example-points { margin: 0; padding-left: 18px; }
+.example-current .example-points > li { padding-left: 2px; margin-bottom: 16px; }
+.example-points > li::marker { color: var(--muted); }
+.example-points > li > .math-display:first-child { margin-top: 0; }
+
 .example-flow { display: none; }
 @media (min-width: 761px) {
   .has-floating-examples > .example-sticky {
