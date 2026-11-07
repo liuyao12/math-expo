@@ -1,17 +1,23 @@
 {
-  "description": "Audit the prerequisites of highlighted target nodes, their statements/proofs, and explicitly recorded terminology in prose. Complete sections supply context; unrelated results in those sections do not become new targets. Sets and undergraduate algebra remain assumed. GRR has no final proof in this edition.",
+  "description": "Start only at each final target. Follow its required statements and proofs, reviewed conceptual prerequisites, and explicitly scoped prose definitions. Complete owner sections are retained verbatim but do not seed any further dependencies. Overview graphs do not determine selection.",
   "implicit_dependencies": {
     "006N": {
-      "001L": "Opposite categories used for category-valued presheaves."
+      "001L": "Opposite categories used for category-valued presheaves.",
+      "0014": "The category construction or definition used by this passage.",
+      "006E": "The presheaf construction or definition used by this passage."
     },
     "01DZ": {
       "006G": "Abelian presheaves.",
       "0076": "Sheaves of modules and their morphisms.",
-      "007S": "Exactness of sheaves is checked on stalks."
+      "007S": "Exactness of sheaves is checked on stalks.",
+      "015B": "The lemma higher derived functors construction or definition used by this passage.",
+      "010Q": "The cohomological delta functor construction or definition used by this passage."
     },
     "01M7": {
       "00JL": "Graded modules and the shift M(n) are defined in prose.",
-      "00JM": "The topological space Proj and homogeneous localization precede its scheme structure."
+      "00JM": "The topological space Proj and homogeneous localization precede its scheme structure.",
+      "01M3": "The section proj construction or definition used by this passage.",
+      "01BE": "The quasi coherent construction or definition used by this passage."
     },
     "0A23": {
       "04MS": "Dimension in the definition of a curve.",
@@ -20,25 +26,350 @@
     "0BY7": {
       "01OU": "Noetherian schemes in the genus definition.",
       "01T0": "Finite type over a field.",
-      "01W1": "Proper schemes in the genus definition."
+      "01W1": "Proper schemes in the genus definition.",
+      "01DZ": "The section cohomology sheaves construction or definition used by this passage.",
+      "04MS": "Dimension one in the definition of the genus; this is scheme dimension, not the separate definition of a variety/curve."
     },
     "02QL": {
       "02I8": "Dimension functions on topological spaces.",
       "01OU": "Locally Noetherian schemes.",
       "02IV": "Catenary schemes.",
-      "02J8": "Universally catenary schemes."
+      "02J8": "Universally catenary schemes.",
+      "01IJ": "The scheme construction or definition used by this passage."
     },
     "02UM": {
       "01C5": "Finite locally free sheaves and rank are introduced in prose.",
-      "02UK": "Chern roots are introduced in prose after the splitting principle."
+      "02UK": "Chern roots are introduced in prose after the splitting principle.",
+      "02UL": "The lemma splitting principle construction or definition used by this passage."
     },
     "02UN": {
-      "02UK": "The Todd class is defined in prose using Chern roots."
+      "02UK": "The Todd class is defined in prose using Chern roots.",
+      "02UL": "The lemma splitting principle construction or definition used by this passage."
     },
     "02UO": {
       "01CM": "The internal Hom used to define the relative tangent sheaf.",
       "01C5": "Finite locally free sheaves in the hypotheses.",
-      "01T0": "Locally finite type morphisms in the hypotheses."
+      "01T0": "Locally finite type morphisms in the hypotheses.",
+      "02G1": "The lemma smooth omega finite locally free construction or definition used by this passage.",
+      "01W1": "The proper construction or definition used by this passage.",
+      "01E4": "The lemma describe higher direct images construction or definition used by this passage.",
+      "02S2": "The lemma proper pushforward rational equivalence construction or definition used by this passage.",
+      "02UM": "The section chern classes tensor construction or definition used by this passage.",
+      "02UN": "The section todd classes construction or definition used by this passage.",
+      "0AZ1": "The degree zero cycle construction or definition used by this passage."
+    },
+    "01IJ": {
+      "01HW": "The affine scheme construction or definition used by this passage.",
+      "01HB": "The locally ringed space construction or definition used by this passage.",
+      "01HG": "The open subspace construction or definition used by this passage."
+    },
+    "01HW": {
+      "01HU": "The structure sheaf construction or definition used by this passage.",
+      "01HV": "The lemma spec sheaves construction or definition used by this passage.",
+      "01HB": "The locally ringed space construction or definition used by this passage."
+    },
+    "01HU": {
+      "01HS": "The lemma standard open construction or definition used by this passage.",
+      "00EK": "The lemma cover module construction or definition used by this passage.",
+      "009Q": "The lemma extend off basis structures construction or definition used by this passage."
+    },
+    "01HS": {
+      "00E8": "The lemma quasi compact construction or definition used by this passage.",
+      "00CP": "The proposition universal property localization construction or definition used by this passage."
+    },
+    "00E3": {
+      "00CO": "The localization construction or definition used by this passage.",
+      "00E1": "The Zariski topology construction or definition used by this passage."
+    },
+    "00CO": {
+      "00CN": "The multiplicative subset construction or definition used by this passage."
+    },
+    "00E1": {
+      "00E0": "The lemma Zariski topology construction or definition used by this passage."
+    },
+    "00E0": {
+      "00DZ": "The spectrum ring construction or definition used by this passage.",
+      "004P": "The base construction or definition used by this passage."
+    },
+    "00DZ": {
+      "00AR": "The section rings basic construction or definition used by this passage.",
+      "00AQ": "Commutative rings with identity and ring homomorphism conventions."
+    },
+    "004P": {
+      "004E": "The section topology basic construction or definition used by this passage."
+    },
+    "00E8": {
+      "005A": "The quasi compact construction or definition used by this passage."
+    },
+    "005A": {
+      "004E": "The section topology basic construction or definition used by this passage."
+    },
+    "00CP": {
+      "00CO": "The localization construction or definition used by this passage."
+    },
+    "00EK": {
+      "07JZ": "The localization module construction or definition used by this passage."
+    },
+    "00HN": {
+      "07JZ": "The localization module construction or definition used by this passage."
+    },
+    "07JZ": {
+      "00CO": "The localization construction or definition used by this passage."
+    },
+    "009Q": {
+      "009P": "The sheaf structures basis construction or definition used by this passage.",
+      "009N": "The lemma extend off basis construction or definition used by this passage."
+    },
+    "009P": {
+      "009J": "The sheaf basis construction or definition used by this passage.",
+      "007M": "The algebraic structure construction or definition used by this passage."
+    },
+    "007M": {
+      "001B": "The functor construction or definition used by this passage.",
+      "002F": "The colimit construction or definition used by this passage."
+    },
+    "001B": {
+      "0014": "The category construction or definition used by this passage."
+    },
+    "009N": {
+      "009J": "The sheaf basis construction or definition used by this passage.",
+      "0078": "The section stalks construction or definition used by this passage."
+    },
+    "009J": {
+      "004P": "The base construction or definition used by this passage.",
+      "006T": "The sheaf construction or definition used by this passage."
+    },
+    "006T": {
+      "006E": "The presheaf construction or definition used by this passage."
+    },
+    "006E": {
+      "004E": "The section topology basic construction or definition used by this passage.",
+      "006C": "Open coverings and their conventions, used in presheaves and the sheaf axiom."
+    },
+    "01HV": {
+      "01HU": "The structure sheaf construction or definition used by this passage.",
+      "00CR": "The lemma localization colimit construction or definition used by this passage.",
+      "07BI": "The local ring construction or definition used by this passage."
+    },
+    "00CR": {
+      "07JZ": "The localization module construction or definition used by this passage.",
+      "002F": "The colimit construction or definition used by this passage."
+    },
+    "002F": {
+      "001B": "The functor construction or definition used by this passage.",
+      "002U": "The concrete construction of colimits of sets used for germs."
+    },
+    "01HB": {
+      "0091": "The ringed space construction or definition used by this passage.",
+      "007H": "The lemma stalk presheaf values in category construction or definition used by this passage.",
+      "07BI": "The local ring construction or definition used by this passage."
+    },
+    "0091": {
+      "0072": "The sheaf values in category construction or definition used by this passage.",
+      "008J": "The f map construction or definition used by this passage."
+    },
+    "0072": {
+      "006N": "The presheaf values in category construction or definition used by this passage.",
+      "006T": "The sheaf construction or definition used by this passage."
+    },
+    "008J": {
+      "006E": "The presheaf construction or definition used by this passage."
+    },
+    "007H": {
+      "0078": "The section stalks construction or definition used by this passage.",
+      "006N": "The presheaf values in category construction or definition used by this passage."
+    },
+    "0078": {
+      "0031": "The directed system construction or definition used by this passage.",
+      "002F": "The colimit construction or definition used by this passage.",
+      "006E": "The presheaf construction or definition used by this passage."
+    },
+    "01HG": {
+      "01HB": "The locally ringed space construction or definition used by this passage.",
+      "00A1": "The restriction construction or definition used by this passage."
+    },
+    "00A1": {
+      "006T": "The sheaf construction or definition used by this passage.",
+      "004E": "The section topology basic construction or definition used by this passage."
+    },
+    "0BYD": {
+      "01DZ": "The section cohomology sheaves construction or definition used by this passage.",
+      "0BY7": "The genus construction or definition used by this passage.",
+      "01MN": "The twisting sheaves in the short exact sequence.",
+      "01WC": "The closed subscheme of projective space in the genus formula is proper over the field, as required by the definition of genus.",
+      "01W8": "The given closed embedding makes this an H-projective morphism."
+    },
+    "0BYB": {
+      "0BXK": "The example closed subscheme of proj construction or definition used by this passage."
+    },
+    "0BXH": {
+      "01WR": "The effective Cartier divisor construction or definition used by this passage."
+    },
+    "0BXJ": {
+      "01MN": "The twist construction or definition used by this passage."
+    },
+    "0BXK": {
+      "01IO": "The immersion construction or definition used by this passage.",
+      "01M3": "The section proj construction or definition used by this passage."
+    },
+    "01IO": {
+      "01IJ": "The scheme construction or definition used by this passage."
+    },
+    "01M3": {
+      "00JL": "The section graded construction or definition used by this passage.",
+      "01IJ": "The scheme construction or definition used by this passage."
+    },
+    "01IA": {
+      "01BE": "The quasi coherent construction or definition used by this passage."
+    },
+    "01XT": {
+      "01MN": "The twist construction or definition used by this passage.",
+      "01NF": "The projective space whose cohomology is computed.",
+      "01NG": "The lemma standard covering projective space construction or definition used by this passage."
+    },
+    "01MN": {
+      "00JL": "The section graded construction or definition used by this passage.",
+      "01M7": "The lemma proj sheaves construction or definition used by this passage.",
+      "01CS": "The invertible construction or definition used by this passage."
+    },
+    "01NF": {
+      "01M3": "The section proj construction or definition used by this passage."
+    },
+    "01NG": {
+      "01NF": "The projective space construction or definition used by this passage."
+    },
+    "01FJ": {
+      "01EF": "The cech complex construction or definition used by this passage."
+    },
+    "01FM": {
+      "01EF": "The cech complex construction or definition used by this passage."
+    },
+    "01X9": {
+      "01EF": "The cech complex construction or definition used by this passage.",
+      "01IA": "The lemma quasi coherent affine construction or definition used by this passage."
+    },
+    "01EW": {
+      "01ES": "The lemma cech spectral sequence construction or definition used by this passage."
+    },
+    "01ES": {
+      "01DZ": "The section cohomology sheaves construction or definition used by this passage."
+    },
+    "01EN": {
+      "01EF": "The cech complex construction or definition used by this passage.",
+      "012X": "The section double complex construction or definition used by this passage."
+    },
+    "015N": {
+      "015B": "The lemma higher derived functors construction or definition used by this passage.",
+      "011M": "The section spectral sequence construction or definition used by this passage."
+    },
+    "012X": {
+      "011M": "The section spectral sequence construction or definition used by this passage."
+    },
+    "0FNB": {
+      "010V": "The section complexes construction or definition used by this passage."
+    },
+    "01EF": {
+      "010V": "The section complexes construction or definition used by this passage."
+    },
+    "015B": {
+      "0117": "The lemma long exact sequence cochain construction or definition used by this passage."
+    },
+    "013K": {
+      "0138": "The enough injectives construction or definition used by this passage."
+    },
+    "0138": {
+      "0135": "The injective construction or definition used by this passage."
+    },
+    "0117": {
+      "010V": "The section complexes construction or definition used by this passage."
+    },
+    "01DG": {
+      "0138": "The enough injectives construction or definition used by this passage."
+    },
+    "01DI": {
+      "0138": "The enough injectives construction or definition used by this passage."
+    },
+    "01E4": {
+      "01DZ": "The section cohomology sheaves construction or definition used by this passage."
+    },
+    "01F4": {
+      "01F2": "The lemma Leray construction or definition used by this passage."
+    },
+    "01F2": {
+      "01DZ": "The section cohomology sheaves construction or definition used by this passage."
+    },
+    "01W1": {
+      "01IJ": "The scheme construction or definition used by this passage.",
+      "01KK": "Separated morphisms in the definition of proper.",
+      "01T1": "Finite type morphisms in the definition of proper.",
+      "01KB": "Universally closed morphisms in the definition of proper."
+    },
+    "02G1": {
+      "01V5": "The smooth construction or definition used by this passage.",
+      "01UQ": "The sheaf differentials construction or definition used by this passage."
+    },
+    "01V5": {
+      "01IJ": "The scheme construction or definition used by this passage."
+    },
+    "01UQ": {
+      "01IJ": "The scheme construction or definition used by this passage."
+    },
+    "02S2": {
+      "02R4": "The proper pushforward construction or definition used by this passage.",
+      "02RW": "The rational equivalence construction or definition used by this passage."
+    },
+    "02R4": {
+      "01W1": "The proper construction or definition used by this passage.",
+      "02QR": "The cycles construction or definition used by this passage."
+    },
+    "02RO": {
+      "02QR": "The cycles construction or definition used by this passage."
+    },
+    "02RW": {
+      "02QR": "The cycles construction or definition used by this passage.",
+      "02RO": "The principal divisor construction or definition used by this passage."
+    },
+    "02SJ": {
+      "02RO": "The principal divisor construction or definition used by this passage.",
+      "02RW": "The rational equivalence construction or definition used by this passage.",
+      "01CS": "The invertible construction or definition used by this passage."
+    },
+    "02SO": {
+      "02R4": "The proper pushforward construction or definition used by this passage."
+    },
+    "0B76": {
+      "02RW": "The rational equivalence construction or definition used by this passage.",
+      "02S2": "The lemma proper pushforward rational equivalence construction or definition used by this passage."
+    },
+    "0B7E": {
+      "0B76": "The bivariant class construction or definition used by this passage."
+    },
+    "0FDW": {
+      "0B7E": "The chow cohomology construction or definition used by this passage.",
+      "02SO": "The cap c1 construction or definition used by this passage."
+    },
+    "02TX": {
+      "0FDW": "The first chern class construction or definition used by this passage.",
+      "01WC": "The projective space bundle is proper, so its pushforward on cycles is defined."
+    },
+    "02U5": {
+      "02S2": "The lemma proper pushforward rational equivalence construction or definition used by this passage."
+    },
+    "0FE1": {
+      "02U5": "The cap chern classes construction or definition used by this passage.",
+      "0B7E": "The chow cohomology construction or definition used by this passage."
+    },
+    "02UL": {
+      "0FE1": "The chern classes final construction or definition used by this passage."
+    },
+    "0084": {
+      "001V": "The fibre product of sets used in the gluing diagram."
+    },
+    "01AG": {
+      "01AF": "The kernel and cokernel constructions preceding the abelian-category lemma, used in its proof."
+    },
+    "01WC": {
+      "01W8": "Projective and locally projective morphisms in the properness statement."
     }
   },
   "excluded_references": {
@@ -86,107 +417,697 @@
     "007X:00W1": "An alternative, more general construction; the construction on spaces is given here.",
     "006D:00V3": "A comparison with presheaves on general sites; the definition on spaces is given here.",
     "0108:0121": "Background for an additional example of a nonabelian category, not used in the construction.",
-    "00E4:00F1": "A comparison illustrating that an affine open need not be standard; the example is not used in the localization proof."
+    "00E4:00F1": "A comparison illustrating that an affine open need not be standard; the example is not used in the localization proof.",
+    "0BYB:0BXU": "The parenthetical see-also reference is an alternative to the Divisors proof used here.",
+    "01DJ:00V1": "General-category comparison; the functors and adjunction needed here are explicitly constructed and verified in this passage.",
+    "01DJ:00VC": "General-category comparison; the functors and adjunction needed here are explicitly constructed and verified in this passage.",
+    "01DJ:00XF": "General-category comparison; the functors and adjunction needed here are explicitly constructed and verified in this passage.",
+    "01VJ:01Q2": "The see-also reference gives a second version; the proof uses Constructions, Lemma 01MT.",
+    "02NU:02NT": "The alternative second proof is contextual; the first proof from Algebra 00PM and Morphisms 01TG suffices.",
+    "02NU:01TH": "The alternative second proof is contextual; the first proof from Algebra 00PM and Morphisms 01TG suffices.",
+    "05A3:059M": "Alternative characterization after a complete argument using the first cited characterization.",
+    "09G6:00FU": "The closing Nullstellensatz application is additional context, not a prerequisite of the rational-function-field example."
   },
-  "context_sections": {
-    "scheme": [
-      "0013",
-      "001U",
-      "002D",
-      "002U",
-      "04AX",
-      "002Z",
-      "004E",
-      "004O",
-      "0059",
-      "006C",
-      "006D",
-      "006M",
-      "006S",
-      "0071",
-      "0078",
-      "007G",
-      "007L",
-      "007X",
-      "008C",
-      "008P",
-      "0090",
-      "009H",
-      "009Z",
-      "00AQ",
-      "00AR",
-      "00CM",
-      "00DY",
-      "07BH",
-      "00EN",
-      "00EI",
-      "01HA",
-      "01HD",
-      "01HR",
-      "01II"
-    ],
-    "curves": [
-      "00JL",
-      "010P",
-      "010V",
-      "0FNB",
-      "011M",
-      "012X",
-      "0134",
-      "013G",
-      "0156",
-      "015L",
-      "01BD",
-      "01CR",
-      "01DF",
-      "01DH",
-      "01DZ",
-      "01E0",
-      "01ED",
-      "01EH",
-      "01EO",
-      "01EY",
-      "01FG",
-      "01I6",
-      "01IM",
-      "01M3",
-      "01MJ",
-      "01MM",
-      "01ND",
-      "01S5",
-      "01W0",
-      "01X8",
-      "01XS",
-      "05AJ",
-      "01WQ",
-      "0B3Q",
-      "0BD6",
-      "084M",
-      "0A22",
-      "0BY6",
-      "0BYA"
-    ],
-    "grr": [
-      "01UM",
-      "01V4",
-      "02QK",
-      "02QQ",
-      "02R3",
-      "02RN",
-      "02RV",
-      "02S0",
-      "02SI",
-      "02SN",
-      "0B75",
-      "0FDV",
-      "02TV",
-      "02TZ",
-      "02U4",
-      "0AZ0",
-      "02UK",
-      "02UM",
-      "02UN",
-      "02UO"
-    ]
+  "passage_scopes": {
+    "002U": {
+      "part": "introduction",
+      "reason": "The Limits and colimits in the category of sets definition or construction explicitly invoked by the dependent passage.",
+      "requires": []
+    },
+    "004E": {
+      "part": "introduction",
+      "reason": "The Basic notions definition or construction explicitly invoked by the dependent passage.",
+      "requires": []
+    },
+    "0078": {
+      "part": "introduction",
+      "reason": "The Stalks definition or construction explicitly invoked by the dependent passage.",
+      "requires": []
+    },
+    "007X": {
+      "part": "introduction",
+      "reason": "The Sheafification definition or construction explicitly invoked by the dependent passage.",
+      "requires": []
+    },
+    "008C": {
+      "part": "introduction",
+      "reason": "The Continuous maps and sheaves definition or construction explicitly invoked by the dependent passage.",
+      "requires": []
+    },
+    "008N": {
+      "part": "introduction",
+      "reason": "The Continuous maps and abelian sheaves definition or construction explicitly invoked by the dependent passage.",
+      "requires": []
+    },
+    "008P": {
+      "part": "introduction",
+      "reason": "The Continuous maps and sheaves of algebraic structures definition or construction explicitly invoked by the dependent passage.",
+      "requires": []
+    },
+    "009D": {
+      "part": "introduction",
+      "reason": "The Limits and colimits of presheaves definition or construction explicitly invoked by the dependent passage.",
+      "requires": []
+    },
+    "009E": {
+      "part": "introduction",
+      "reason": "The Limits and colimits of sheaves definition or construction explicitly invoked by the dependent passage.",
+      "requires": []
+    },
+    "00AR": {
+      "part": "introduction",
+      "reason": "The Basic notions definition or construction explicitly invoked by the dependent passage.",
+      "requires": []
+    },
+    "00JL": {
+      "part": "introduction",
+      "reason": "The Graded rings definition or construction explicitly invoked by the dependent passage.",
+      "requires": []
+    },
+    "00M9": {
+      "part": "introduction",
+      "reason": "The Completion definition or construction explicitly invoked by the dependent passage.",
+      "requires": []
+    },
+    "010V": {
+      "part": "introduction",
+      "reason": "The Complexes definition or construction explicitly invoked by the dependent passage.",
+      "requires": []
+    },
+    "0118": {
+      "part": "introduction",
+      "reason": "The Truncation of complexes definition or construction explicitly invoked by the dependent passage.",
+      "requires": []
+    },
+    "012X": {
+      "part": "introduction",
+      "reason": "The Spectral sequences: double complexes definition or construction explicitly invoked by the dependent passage.",
+      "requires": []
+    },
+    "014Z": {
+      "part": "introduction",
+      "reason": "The The canonical delta-functor definition or construction explicitly invoked by the dependent passage.",
+      "requires": []
+    },
+    "01CA": {
+      "part": "fragments",
+      "reason": "The Tensor product definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "00CV"
+      ],
+      "fragments": [
+        {
+          "from": "Let $(X, \\mathcal{O}_X)$ be a ringed space and let",
+          "to": "The tensor product of modules $M, N$ over a ring $R$"
+        }
+      ]
+    },
+    "01CM": {
+      "part": "introduction",
+      "reason": "The Internal Hom definition or construction explicitly invoked by the dependent passage.",
+      "requires": []
+    },
+    "01DJ": {
+      "part": "introduction",
+      "reason": "The Abelian presheaves on a category definition or construction explicitly invoked by the dependent passage.",
+      "requires": []
+    },
+    "01JA": {
+      "part": "introduction",
+      "reason": "The Glueing schemes definition or construction explicitly invoked by the dependent passage.",
+      "requires": []
+    },
+    "01LQ": {
+      "part": "introduction",
+      "reason": "The Relative spectrum as a functor definition or construction explicitly invoked by the dependent passage.",
+      "requires": []
+    },
+    "01N4": {
+      "part": "introduction",
+      "reason": "The Morphisms into Proj definition or construction explicitly invoked by the dependent passage.",
+      "requires": []
+    },
+    "01O8": {
+      "part": "introduction",
+      "reason": "The Invertible sheaves and morphisms into relative Proj definition or construction explicitly invoked by the dependent passage.",
+      "requires": []
+    },
+    "02UM": {
+      "part": "introduction",
+      "reason": "The The Chern character and tensor products definition or construction explicitly invoked by the dependent passage.",
+      "requires": []
+    },
+    "02UN": {
+      "part": "introduction",
+      "reason": "The Todd classes definition or construction explicitly invoked by the dependent passage.",
+      "requires": []
+    },
+    "02UO": {
+      "part": "introduction",
+      "reason": "The Grothendieck-Riemann-Roch definition or construction explicitly invoked by the dependent passage.",
+      "requires": []
+    },
+    "07E7": {
+      "part": "introduction",
+      "reason": "The Topological rings and modules definition or construction explicitly invoked by the dependent passage.",
+      "requires": []
+    },
+    "0AYB": {
+      "part": "introduction",
+      "reason": "The The key formula definition or construction explicitly invoked by the dependent passage.",
+      "requires": []
+    },
+    "001L": {
+      "part": "none",
+      "reason": "The Opposite Categories and the Yoneda Lemma definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "001M",
+        "001N"
+      ]
+    },
+    "001U": {
+      "part": "none",
+      "reason": "The Fibre products definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "001V"
+      ]
+    },
+    "002Z": {
+      "part": "none",
+      "reason": "The Limits and colimits over preordered sets definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "0030",
+        "0031"
+      ]
+    },
+    "0036": {
+      "part": "none",
+      "reason": "The Adjoint functors definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "0037"
+      ]
+    },
+    "004U": {
+      "part": "none",
+      "reason": "The Irreducible components definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "004V",
+        "004X"
+      ]
+    },
+    "006C": {
+      "part": "none",
+      "reason": "The Basic notions definition or construction explicitly invoked by the dependent passage.",
+      "requires": []
+    },
+    "006G": {
+      "part": "none",
+      "reason": "The Abelian presheaves definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "006K"
+      ]
+    },
+    "0076": {
+      "part": "none",
+      "reason": "The Sheaves of modules definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "0077"
+      ]
+    },
+    "007S": {
+      "part": "none",
+      "reason": "The Exactness and points definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "007U"
+      ]
+    },
+    "0090": {
+      "part": "none",
+      "reason": "The Ringed spaces definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "0091"
+      ]
+    },
+    "0094": {
+      "part": "none",
+      "reason": "The Morphisms of ringed spaces and modules definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "0095",
+        "0096"
+      ]
+    },
+    "0099": {
+      "part": "none",
+      "reason": "The Skyscraper sheaves and stalks definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "009A"
+      ]
+    },
+    "009H": {
+      "part": "none",
+      "reason": "The Bases and sheaves definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "009I",
+        "009J"
+      ]
+    },
+    "009Z": {
+      "part": "none",
+      "reason": "The Open immersions and (pre)sheaves definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "00A1"
+      ]
+    },
+    "00AK": {
+      "part": "none",
+      "reason": "The Glueing sheaves definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "00AL",
+        "00AN"
+      ]
+    },
+    "00AQ": {
+      "part": "none",
+      "reason": "The Conventions definition or construction explicitly invoked by the dependent passage.",
+      "requires": []
+    },
+    "00CM": {
+      "part": "none",
+      "reason": "The Localization definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "00CO",
+        "07JZ"
+      ]
+    },
+    "00CV": {
+      "part": "none",
+      "reason": "The Tensor products definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "00CW",
+        "00CX"
+      ]
+    },
+    "00FZ": {
+      "part": "none",
+      "reason": "The Jacobson rings definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "00G0"
+      ]
+    },
+    "00H9": {
+      "part": "none",
+      "reason": "The Flat modules and flat ring maps definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "00HB"
+      ]
+    },
+    "00HU": {
+      "part": "none",
+      "reason": "The Going up and going down definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "00HV"
+      ]
+    },
+    "00J4": {
+      "part": "none",
+      "reason": "The Artinian rings definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "00J5"
+      ]
+    },
+    "00JM": {
+      "part": "fragments",
+      "reason": "The Proj of a graded ring definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "00JN",
+        "00JP"
+      ],
+      "fragments": [
+        {
+          "from": "Let $S$ be a graded ring.",
+          "to": "\\begin{lemma}\n\\label{lemma-Z-graded}"
+        },
+        {
+          "from": "For $f \\in S$ homogeneous of degree $> 0$",
+          "to": "\\begin{lemma}[Topology on Proj]"
+        }
+      ]
+    },
+    "00KD": {
+      "part": "none",
+      "reason": "The Dimension definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "00KE",
+        "00KF"
+      ]
+    },
+    "00QL": {
+      "part": "none",
+      "reason": "The Colimits and maps of finite presentation definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "04AX"
+      ]
+    },
+    "010I": {
+      "part": "none",
+      "reason": "The Extensions definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "010J",
+        "010K"
+      ]
+    },
+    "011M": {
+      "part": "none",
+      "reason": "The Spectral sequences definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "011N",
+        "011O"
+      ]
+    },
+    "014D": {
+      "part": "none",
+      "reason": "The Cones and termwise split sequences definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "014E"
+      ]
+    },
+    "0156": {
+      "part": "none",
+      "reason": "The Right derived functors and injective resolutions definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "05TI",
+        "015B"
+      ]
+    },
+    "01C5": {
+      "part": "none",
+      "reason": "The Locally free sheaves definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "01C6"
+      ]
+    },
+    "01D8": {
+      "part": "none",
+      "reason": "The Injective modules definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "01DD"
+      ]
+    },
+    "01E0": {
+      "part": "none",
+      "reason": "The Locality of cohomology definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "01E1"
+      ]
+    },
+    "01FG": {
+      "part": "none",
+      "reason": "The The alternating {\\v C}ech complex definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "01FH",
+        "01FI"
+      ]
+    },
+    "01HJ": {
+      "part": "none",
+      "reason": "The Closed immersions of locally ringed spaces definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "01HK"
+      ]
+    },
+    "01HR": {
+      "part": "none",
+      "reason": "The Affine schemes definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "01HU",
+        "01HV",
+        "01HW"
+      ]
+    },
+    "01I6": {
+      "part": "none",
+      "reason": "The Quasi-coherent sheaves on affines definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "01IA",
+        "01IB"
+      ]
+    },
+    "01II": {
+      "part": "none",
+      "reason": "The Schemes definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "01IJ"
+      ]
+    },
+    "01IZ": {
+      "part": "none",
+      "reason": "The Reduced schemes definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "01J0",
+        "01J4"
+      ]
+    },
+    "01JF": {
+      "part": "none",
+      "reason": "The A representability criterion definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "01JG"
+      ]
+    },
+    "01JO": {
+      "part": "none",
+      "reason": "The Fibre products of schemes definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "01JP"
+      ]
+    },
+    "01KH": {
+      "part": "none",
+      "reason": "The Separation axioms definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "01KK"
+      ]
+    },
+    "01LA": {
+      "part": "none",
+      "reason": "The Functoriality for quasi-coherent modules definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "01BE",
+        "01LB"
+      ]
+    },
+    "01M3": {
+      "part": "none",
+      "reason": "The Proj of a graded ring definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "00JM",
+        "01M6",
+        "01MB"
+      ]
+    },
+    "01MM": {
+      "part": "none",
+      "reason": "The Invertible sheaves on Proj definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "01MN"
+      ]
+    },
+    "01NM": {
+      "part": "none",
+      "reason": "The Relative Proj via glueing definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "01NN",
+        "01NQ"
+      ]
+    },
+    "01OJ": {
+      "part": "none",
+      "reason": "The Integral, irreducible, and reduced schemes definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "01OK"
+      ]
+    },
+    "01OU": {
+      "part": "none",
+      "reason": "The Noetherian schemes definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "01OV"
+      ]
+    },
+    "01R5": {
+      "part": "none",
+      "reason": "The Scheme theoretic image definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "01R7"
+      ]
+    },
+    "01T0": {
+      "part": "none",
+      "reason": "The Morphisms of finite type definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "01T1",
+        "00F3"
+      ]
+    },
+    "01XS": {
+      "part": "none",
+      "reason": "The Cohomology of projective space definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "01XT"
+      ]
+    },
+    "02I8": {
+      "part": "none",
+      "reason": "The Dimension functions definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "02I9"
+      ]
+    },
+    "02IV": {
+      "part": "none",
+      "reason": "The Catenary schemes definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "02IW",
+        "02I1"
+      ]
+    },
+    "04AX": {
+      "part": "none",
+      "reason": "The Filtered colimits definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "002V"
+      ]
+    },
+    "04MS": {
+      "part": "none",
+      "reason": "The Dimension definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "04MT"
+      ]
+    },
+    "05PT": {
+      "part": "none",
+      "reason": "The Essentially constant systems definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "05PU"
+      ]
+    },
+    "09HT": {
+      "part": "none",
+      "reason": "The Splitting fields definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "09HU",
+        "09HV"
+      ]
+    },
+    "0FNB": {
+      "part": "none",
+      "reason": "The Double complexes and associated total complexes definition or construction explicitly invoked by the dependent passage.",
+      "requires": [
+        "012Y",
+        "012Z"
+      ]
+    },
+    "01DZ": {
+      "part": "fragments",
+      "requires": [
+        "01DI"
+      ],
+      "reason": "The definitions of module-valued sheaf cohomology and higher direct images used by these readings; the abelian-sheaf variant is contextual.",
+      "fragments": [
+        {
+          "from": "Let $(X, \\mathcal{O}_X)$ be a ringed space. Let $\\mathcal{F}$ be an"
+        }
+      ]
+    },
+    "02UK": {
+      "part": "fragments",
+      "fragments": [
+        {
+          "from": "Let $(S, \\delta)$, $X$, and $\\mathcal{E}_i$ be as in",
+          "to": "To see how this works"
+        }
+      ],
+      "requires": [
+        "02UL"
+      ],
+      "reason": "The prose definition of Chern roots and its justification by the splitting principle; excludes later examples and tensor/dual formulas."
+    },
+    "0BXK": {
+      "part": "fragments",
+      "fragments": [
+        {
+          "from": "Let $A$ be a graded ring.",
+          "to": "Then we can ask the following two natural questions:"
+        }
+      ],
+      "requires": [],
+      "reason": "Only the construction of the homogeneous ideal I(Z) is used by the plane-curve argument. Saturation computations and the subsequent generalizations are contextual examples."
+    },
+    "0119": {
+      "part": "none",
+      "requires": [
+        "011A",
+        "011B",
+        "011G",
+        "011H"
+      ],
+      "reason": "Shifts of chain/cochain complexes and their homology; excludes unrelated homotopy examples."
+    },
+    "012K": {
+      "part": "none",
+      "requires": [
+        "012L",
+        "012M",
+        "012P",
+        "012Q"
+      ],
+      "reason": "The filtered-complex construction of the spectral sequences explicitly invoked by the double-complex construction."
+    },
+    "006P": {
+      "part": "none",
+      "requires": [
+        "006Q"
+      ],
+      "reason": "The definition of a presheaf of modules used in the tensor construction."
+    },
+    "0088": {
+      "part": "none",
+      "requires": [
+        "0089"
+      ],
+      "reason": "The module structure on the sheafification used to define the tensor product sheaf."
+    },
+    "0GIG": {
+      "part": "introduction",
+      "requires": [],
+      "reason": "The definition of a bilinear map of sheaves used in the tensor universal property."
+    },
+    "0EAH": {
+      "part": "introduction",
+      "requires": [
+        "0EAR"
+      ],
+      "reason": "The definition and well-definedness of the tame symbol used by the key rational-equivalence formula."
+    },
+    "01AF": {
+      "part": "introduction",
+      "requires": [],
+      "reason": "The explicit addition, kernel, and cokernel constructions used by Lemma 01AG; later examples and additional properties are not scheduled."
+    }
+  },
+  "excluded_branches": {
+    "curves": {
+      "00TE": "Smoothness of the Fermat examples is context, not a prerequisite of the genus formula.",
+      "0BXD": "The later saturation discussion in Example 0BXK is context.",
+      "0BXF": "The general-degree saturation discussion in Example 0BXK is context.",
+      "0BYA": "Importing the target section must not schedule all its introductory prose."
+    }
+  },
+  "target_excluded_edges": {
+    "01IJ": {
+      "01HV:01AG": "For defining a scheme, only the ring sections, restrictions, and stalk identifications in Lemma 01HV are used. Its final assertion about exactness of the associated module sheaf is contextual; the later curves reading follows that module assertion and its proof.",
+      "00A1:008X": "The scheme definition uses restriction of sheaves of rings and the open ringed subspace (items 1–3). Item 4 concerns module restrictions and is contextual for this target."
+    }
   }
 }

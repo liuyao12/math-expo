@@ -21253,5 +21253,75 @@
     "tag": "09HG",
     "number": "9.14.3",
     "kind": "lemma"
+  },
+  "fields-section-algebraic-closure": {
+    "tag": "09GP",
+    "number": "9.10",
+    "kind": "section"
+  },
+  "fields-definition-algebraically-closed": {
+    "tag": "09GQ",
+    "number": "9.10.1",
+    "kind": "definition"
+  },
+  "fields-theorem-existence-algebraic-closure": {
+    "tag": "09GT",
+    "number": "9.10.4",
+    "kind": "theorem"
+  },
+  "fields-lemma-algebraic-closures-isomorphic": {
+    "tag": "09GV",
+    "number": "9.10.6",
+    "kind": "lemma"
+  },
+  "fields-lemma-lift-maps": {
+    "tag": "0BME",
+    "number": "9.15.7",
+    "kind": "lemma"
+  },
+  "fields-section-normal": {
+    "tag": "09HL",
+    "number": "9.15",
+    "kind": "section"
+  },
+  "fields-definition-algebraic-closure": {
+    "tag": "09GS",
+    "number": "9.10.3",
+    "kind": "definition"
+  },
+  "fields-definition-normal": {
+    "tag": "09HM",
+    "number": "9.15.1",
+    "kind": "definition"
+  },
+  "fields-lemma-normal-embeddings-differ-by-aut": {
+    "tag": "0BR4",
+    "number": "9.15.10",
+    "kind": "lemma"
+  },
+  "fields-lemma-separable-first-normal": {
+    "tag": "0EXK",
+    "number": "9.15.4",
+    "kind": "lemma"
+  },
+  "fields-lemma-normal-goes-up": {
+    "tag": "09HN",
+    "number": "9.15.2",
+    "kind": "lemma"
+  },
+  "fields-lemma-normal-and-automorphisms": {
+    "tag": "09HS",
+    "number": "9.15.9",
+    "kind": "lemma"
+  },
+  "fields-definition-automorphisms": {
+    "tag": "09HR",
+    "number": "9.15.8",
+    "kind": "definition"
+  },
+  "fields-lemma-C-algebraically-closed": {
+    "tag": "09I5",
+    "number": "9.23.1",
+    "kind": "lemma"
   }
 }

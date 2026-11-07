@@ -5734,5 +5734,16 @@
     "width": 82.839832,
     "height": 44.715364,
     "svg_sha256": "b36c29ce18429ab01cd43bba9560bc2b453627394a2d04e64face137efd53ce8"
+  },
+  "3648cb856b80bd317aa34341": {
+    "key": "3648cb856b80bd317aa34341",
+    "tex": "\\xymatrix{\nL \\ar[r]_\\tau & \\overline{L} \\\\\nM \\ar[u] \\ar[ru]_\\sigma & K \\ar[l] \\ar[u]\n}",
+    "sections": [
+      "fields-normal"
+    ],
+    "file": "3648cb856b80bd317aa34341.svg",
+    "width": 49.077615,
+    "height": 46.093628,
+    "svg_sha256": "653f62af23ce0aaf5b6ca5fd288a6d3d2986ee912c748a5be71bac425cdfb82c"
   }
 }

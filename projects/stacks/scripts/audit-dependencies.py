@@ -4,12 +4,14 @@ Check offline: python3 scripts/audit-dependencies.py
 Refresh from the pinned source: python3 scripts/audit-dependencies.py --refresh SOURCE
 
 Explicit references are followed at statement/proof level. Definitions in prose
-are attached by their section tags in dependency-scope.json. This is a source
-reference audit with a reviewed terminology map, not an automatic proof checker.
+have explicit passage boundaries in dependency-scope.json. Only the final target
+seeds traversal. Complete owner sections and overview graphs never schedule
+additional prerequisites. This is not an automatic proof checker.
 """
 from pathlib import Path
 import argparse, hashlib, json, re, shutil
-from stacks_source import index_source, printing
+from stacks_source import index_source
+from dependency_plan import plan
 
 root = Path(__file__).resolve().parents[1]
 parser = argparse.ArgumentParser(description=__doc__)
@@ -28,44 +30,21 @@ if args.refresh:
 tagfile = source / 'tags/tags' if args.refresh else root / 'upstream/tags'
 tags = {label: tag for tag, label in (line.split(',', 1) for line in tagfile.read_text().splitlines()
                                     if line and not line.startswith('#'))}
-keys = {tag: key for key, tag in tags.items()}
 sections, nodes, refs = index_source(source, chapters, tags)
 base_refs = read('upstream/references.json')
-exceptions = scope['excluded_references']
-edges = scope['excluded_edges']
 reports, prior = {}, set()
 resolved = {}
 for spec in specs:
     prior = set().union(*(resolved[slug] for slug in spec.get('prerequisites', [])))
-    graph = read('src/' + spec['graph'] + '-dependencies.json')
-    seen, todo, reasons, excluded = set(), list(graph), {}, []
-    while todo:
-        tag = todo.pop()
-        if tag in seen: continue
-        if tag not in nodes: raise SystemExit('Missing source chapter for required tag ' + tag)
-        seen.add(tag)
-        node = nodes[tag]
-        implicit = scope['implicit_dependencies'].get(tag, {})
-        uses = set(node['uses']) | set(graph.get(tag, {}).get('uses', [])) | set(implicit)
-        # The setup and definitions preceding a statement belong to its context.
-        # Referencing a section imports it whole, but does not recursively turn
-        # all its unrelated later theorems into prerequisites of our target.
-        if node['section'] != tag:
-            uses.add(node['section'])
-        for used in sorted(uses):
-            key = keys[used]
-            reason = edges.get(tag + ':' + used) or exceptions.get(key)
-            if key.startswith('sets-'):
-                reason = 'Sets and basic undergraduate algebra are assumed.'
-            if reason:
-                excluded.append(dict(from_tag=tag, to_tag=used, reason=reason)); continue
-            reasons.setdefault(used, []).append(dict(from_tag=tag, reason=implicit.get(used, 'Explicit source reference or reviewed graph prerequisite.')))
-            todo.append(used)
-    required = {nodes[tag]['section'] for tag in seen}
+    try:
+        result = plan(spec['target'], nodes, sections, tags, scope)
+    except (ValueError, KeyError) as error:
+        raise SystemExit(str(error))
+    required = set(result['required_sections'])
     selected = set(spec['sections'])
     missing = required - selected - prior
     if args.refresh:
-        selected = required | set(scope['context_sections'][spec['slug']])
+        selected = required.copy()
         selected -= prior
         spec['sections'] = sorted(selected, key=lambda t: tuple(map(int, sections[t]['number'].split('.'))))
         # The formula, not a later result cited for comparison, remains the endpoint.
@@ -74,15 +53,19 @@ for spec in specs:
         if later: raise SystemExit('Required material occurs after target: ' + ', '.join(later))
     elif missing:
         raise SystemExit(spec['slug'] + ': missing prerequisite sections ' + ', '.join(sorted(missing)))
-    reports[spec['slug']] = dict(target=spec['target'], required_tags=sorted(seen),
-                                required_sections=sorted(required),
+    for tag, reason in scope.get('excluded_branches', {}).get(spec['slug'], {}).items():
+        if tag in result['required_tags']:
+            raise SystemExit('Unrelated branch reintroduced in ' + spec['slug'] + ': ' + tag + ' (' + reason + ')')
+    expected_sections = required - prior
+    if not args.refresh and selected != expected_sections:
+        raise SystemExit(spec['slug'] + ': sections outside target dependencies: ' + ', '.join(sorted(selected - expected_sections)))
+    reports[spec['slug']] = dict(target=spec['target'], **result,
                                 reused_sections=sorted(required & prior),
-                                implicit_dependencies={t: scope['implicit_dependencies'][t] for t in sorted(seen) if t in scope['implicit_dependencies']},
-                                excluded_references=sorted(excluded, key=lambda e: (e['from_tag'], e['to_tag'])))
+                                implicit_dependencies={t: scope['implicit_dependencies'][t] for t in result['required_tags'] if t in scope['implicit_dependencies']})
     resolved[spec['slug']] = prior | selected
-    print(f"{spec['slug']}: {len(seen)} required source passages; {len(required)} owner sections; {len(required & (prior-selected))} reused sections; no uncovered prerequisites" + (f" ({len(missing)} sections added)" if args.refresh else ''))
+    print(f"{spec['slug']}: {len(result['required_tags'])} required source passages; {len(required)} owner sections; {len(required & (prior-selected))} reused sections; target dependency coverage verified" + (f" ({len(missing)} sections added)" if args.refresh else ''))
 
-report = dict(commit=read('upstream/manifest.json')['commit'], assumed_background=['Sets and functions', 'Basic undergraduate algebra'], readings=reports)
+report = dict(format_version=2, traversal='Final target only; whole sections are import units, not traversal seeds.', commit=read('upstream/manifest.json')['commit'], assumed_background=['Sets and functions', 'Basic undergraduate algebra'], readings=reports)
 if args.refresh:
     write('src/readings.json', specs)
     # The tag index is metadata, not mathematical text; normalize trailing space

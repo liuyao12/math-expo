@@ -3,7 +3,7 @@ import path from 'node:path';
 import {createRenderer,escapeHTML as esc} from '../src/latex.mjs';
 import {separateSourceNotes,renderProofs,sourceRecord,sourcePanel,sourceDataScript} from '../src/source-column.mjs';
 import {notesFor} from '../src/scheme-notes.mjs';
-import {loadReadingCatalog,loadReadings,loadReferenceReadings} from '../src/readings.mjs';
+import {loadReadingCatalog,loadReadings,loadReferenceReadings,selectedOverview} from '../src/readings.mjs';
 import {renderDependencyGraph} from '../src/dependency-graph.mjs';
 import {renderOutline} from '../src/reading-outline.mjs';
 export function buildReadings({root,dist,head,header,footer,renderExampleCard,assetVersion}){
@@ -13,8 +13,9 @@ export function buildReadings({root,dist,head,header,footer,renderExampleCard,as
  const referenceReadings=loadReferenceReadings(root,catalog);
  const coreReading=readings.find(reading=>reading.role==='foundation');
  if(!coreReading)throw Error('Missing foundation reading');
+ const audit=JSON.parse(fs.readFileSync(path.join(root,'upstream/dependency-audit.json'),'utf8'));
  const graphs=readings.filter(reading=>reading.graph).map(reading=>({
-  nodes:JSON.parse(fs.readFileSync(path.join(root,'src',reading.graph+'-dependencies.json'),'utf8')),
+  nodes:selectedOverview(JSON.parse(fs.readFileSync(path.join(root,'src',reading.graph+'-dependencies.json'),'utf8')),reading.target,audit.readings[reading.slug].required_tags),
   rootTag:reading.target,url:`dependencies/${reading.slug}/`,reading,locations:new Map()
  }));
  const graphsBySlug=new Map(graphs.map(graph=>[graph.reading.slug,graph]));

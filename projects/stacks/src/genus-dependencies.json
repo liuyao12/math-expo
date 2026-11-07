@@ -7,7 +7,8 @@
       "01XT",
       "089W",
       "01DZ",
-      "0BY7"
+      "0BY7",
+      "01WC"
     ]
   },
   "0BYB": {
@@ -315,10 +316,10 @@
     "title": "Genus of a proper curve",
     "uses": [
       "01W1",
-      "0A23",
       "01DZ",
       "01OU",
-      "01T0"
+      "01T0",
+      "04MS"
     ]
   },
   "01W1": {
@@ -354,5 +355,18 @@
   },
   "01OJ": {
     "title": "Integral, irreducible, and reduced schemes"
+  },
+  "01WC": {
+    "title": "Projective morphisms are proper",
+    "uses": [
+      "01W8",
+      "01W1"
+    ]
+  },
+  "01W8": {
+    "title": "Projective morphisms",
+    "uses": [
+      "01NF"
+    ]
   }
 }

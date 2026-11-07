@@ -1,6 +1,20 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
+// An overview may omit prerequisites; it must never add to the selection.
+// Keep only audited nodes reachable from the displayed target.
+export function selectedOverview(nodes,target,requiredTags){
+ const allowed=new Set(requiredTags),selected={};
+ const visit=tag=>{
+  if(selected[tag]||!allowed.has(tag)||!nodes[tag])return;
+  selected[tag]={...nodes[tag],uses:(nodes[tag].uses||[]).filter(used=>allowed.has(used)&&nodes[used])};
+  selected[tag].uses.forEach(visit);
+ };
+ visit(target);
+ if(!selected[target])throw Error('Overview target is outside the audited dependencies: '+target);
+ return selected;
+}
+
 export function loadReadingCatalog(root){
  const sections=JSON.parse(fs.readFileSync(path.join(root,'upstream/sections.json'),'utf8'));
  const references=JSON.parse(fs.readFileSync(path.join(root,'upstream/references.json'),'utf8'));

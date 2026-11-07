@@ -1,0 +1,180 @@
+\section{Algebraic closure}
+\label{section-algebraic-closure}
+
+\noindent
+The ``fundamental theorem of algebra'' states that $\mathbf{C}$ is
+algebraically closed. A beautiful proof of this result uses
+Liouville's theorem in complex analysis, we shall give another
+proof (see Lemma \ref{lemma-C-algebraically-closed}).
+
+\begin{definition}
+\label{definition-algebraically-closed}
+A field $F$ is said to be {\it algebraically closed} if every algebraic
+extension $E/F$ is trivial, i.e., $E = F$.
+\end{definition}
+
+\noindent
+This may not be the definition in every text. Here is the lemma comparing
+it with the other one.
+
+\begin{lemma}
+\label{lemma-algebraically-closed}
+Let $F$ be a field. The following are equivalent
+\begin{enumerate}
+\item $F$ is algebraically closed,
+\item every irreducible polynomial over $F$ is linear,
+\item every nonconstant polynomial over $F$ has a root,
+\item every nonconstant polynomial over $F$ is a product of linear factors.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+If $F$ is algebraically closed, then every irreducible polynomial is linear.
+Namely, if there exists an irreducible polynomial of degree $> 1$, then
+this generates a nontrivial finite (hence algebraic) field extension, see
+Example \ref{example-degree-simple-algebraic-extension}.
+Thus (1) implies (2). If every irreducible polynomial
+is linear, then every irreducible polynomial has a root, whence every
+nonconstant polynomial has a root. Thus (2) implies (3).
+
+\medskip\noindent
+Assume every nonconstant polynomial has a root. Let $P \in F[x]$
+be nonconstant. If $P(\alpha) = 0$ with $\alpha \in F$, then we see
+that $P = (x - \alpha)Q$ for some $Q \in F[x]$ (by division with remainder).
+Thus we can argue by induction on the degree that any nonconstant
+polynomial can be written as a product $c \prod (x - \alpha_i)$.
+
+\medskip\noindent
+Finally, suppose that every nonconstant polynomial over $F$ is a product of
+linear factors. Let $E/F$ be an algebraic extension. Then all the simple
+subextensions $F(\alpha)/F$ of $E$ are necessarily trivial (because the
+only irreducible polynomials are linear by assumption). Thus $E = F$.
+We see that (4) implies (1) and we are done.
+\end{proof}
+
+\noindent
+Now we want to define a ``universal'' algebraic extension of a field.
+Actually, we should be careful: the algebraic closure is {\it not} a
+universal object. That is, the algebraic closure is not unique up to
+{\it unique} isomorphism: it is only unique up to isomorphism. But still,
+it will be very handy, if not functorial.
+
+\begin{definition}
+\label{definition-algebraic-closure}
+Let $F$ be a field. An {\it algebraic closure} of $F$ is a field
+$\overline{F}$ containing $F$ such that:
+\begin{enumerate}
+\item $\overline{F}$ is algebraic over $F$.
+\item $\overline{F}$ is algebraically closed.
+\end{enumerate}
+\end{definition}
+
+\noindent
+If $F$ is algebraically closed, then $F$ is its own algebraic closure.
+We now prove the basic existence result.
+
+\begin{theorem}
+\label{theorem-existence-algebraic-closure}
+Every field has an algebraic closure.
+\end{theorem}
+
+\noindent
+The proof will mostly be a red herring to the rest of the chapter. However, we
+will want to know that it is {\it possible} to embed a field inside an
+algebraically closed field, and we will often assume it done.
+
+\begin{proof}
+Let $F$ be a field. By Lemma \ref{lemma-size-algebraic-extension} the
+cardinality of an algebraic extension of $F$ is bounded by
+$\max(\aleph_0, |F|)$. Choose a set $S$ containing $F$ with
+$|S| > \max(\aleph_0, |F|)$. Let's consider triples
+$(E, \sigma_E, \mu_E)$ where
+\begin{enumerate}
+\item $E$ is a set with $F \subset E \subset S$, and
+\item $\sigma_E : E \times E \to E$ and $\mu_E : E \times E \to E$
+are maps of sets such that $(E, \sigma_E, \mu_E)$ defines the structure
+of a field extension of $F$ (in particular $\sigma_E(a, b) = a +_F b$
+for $a, b \in F$ and similarly for $\mu_E$), and
+\item $E/F$ is an algebraic field extension.
+\end{enumerate}
+The collection of all triples $(E, \sigma_E, \mu_E)$ forms a set $I$.
+For $i \in I$ we will denote $E_i = (E_i, \sigma_i, \mu_i)$ the
+corresponding field extension to $F$. We define a partial ordering on
+$I$ by declaring $i \leq i'$ if and only if $E_i \subset E_{i'}$
+(this makes sense as $E_i$ and $E_{i'}$ are subsets of the same set $S$)
+and we have $\sigma_i = \sigma_{i'}|_{E_i \times E_i}$ and
+$\mu_i = \mu_{i'}|_{E_i \times E_i}$, in other words, $E_{i'}$ is a field
+extension of $E_i$.
+
+\medskip\noindent
+Let $T \subset I$ be a totally ordered subset. Then it is clear that
+$E_T = \bigcup_{i \in T} E_i$ with induced maps $\sigma_T = \bigcup \sigma_i$
+and $\mu_T = \bigcup \mu_i$ is another element of $I$. In other words
+every totally order subset of $I$ has a upper bound in $I$. By Zorn's lemma
+there exists a maximal element $(E, \sigma_E, \mu_E)$ in $I$. We claim that
+$E$ is an algebraic closure. Since by definition of $I$ the extension
+$E/F$ is algebraic, it suffices to show that $E$ is algebraically closed.
+
+\medskip\noindent
+To see this we argue by contradiction. Namely, suppose that $E$ is not
+algebraically closed. Then there exists an irreducible polynomial
+$P$ over $E$ of degree $> 1$, see Lemma \ref{lemma-algebraically-closed}.
+By Lemma \ref{lemma-finite-is-algebraic} we obtain a nontrivial finite
+extension $E' = E[x]/(P)$. Observe that $E'/F$ is algebraic by
+Lemma \ref{lemma-algebraic-permanence}.
+Thus the cardinality of $E'$ is $\leq \max(\aleph_0, |F|)$.
+By elementary set theory we can extend the given injection
+$E \subset S$ to an injection $E' \to S$. In other words, we may
+think of $E'$ as an element of our set $I$ contradicting the
+maximality of $E$. This contradiction completes the proof.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-map-into-algebraic-closure}
+Let $F$ be a field. Let $\overline{F}$ be an algebraic closure of $F$.
+Let $M/F$ be an algebraic extension. Then there is a morphism of
+$F$-extensions $M \to \overline{F}$.
+\end{lemma}
+
+\begin{proof}
+Consider the set $I$ of pairs $(E, \varphi)$ where $F \subset E \subset M$
+is a subextension and $\varphi : E \to \overline{F}$ is a morphism of
+$F$-extensions. We partially order the set $I$ by declaring
+$(E, \varphi) \leq (E', \varphi')$ if and only if $E \subset E'$ and
+$\varphi'|_E = \varphi$. If $T = \{(E_t,  \varphi_t)\} \subset I$
+is a totally ordered subset, then
+$\bigcup \varphi_t : \bigcup E_t \to \overline{F}$ is an element of $I$.
+Thus every totally ordered subset of $I$ has an upper bound.
+By Zorn's lemma there exists a maximal element $(E, \varphi)$ in $I$.
+We claim that $E = M$, which will finish the proof. If not, then
+pick $\alpha \in M$, $\alpha \not \in E$. The $\alpha$ is algebraic
+over $E$, see Lemma \ref{lemma-algebraic-goes-up}.
+Let $P$ be the minimal polynomial of $\alpha$ over $E$.
+Let $P^\varphi$ be the image of $P$ by $\varphi$ in $\overline{F}[x]$.
+Since $\overline{F}$ is algebraically closed there is a root $\beta$
+of $P^\varphi$ in $\overline{F}$. Then we can extend $\varphi$ to
+$\varphi' : E(\alpha) = E[x]/(P) \to \overline{F}$ by mapping
+$x$ to $\beta$. This contradicts the maximality of $(E, \varphi)$
+as desired.
+\end{proof}
+
+\begin{lemma}
+\label{lemma-algebraic-closures-isomorphic}
+Any two algebraic closures of a field are isomorphic.
+\end{lemma}
+
+\begin{proof}
+Let $F$ be a field. If $M$ and $\overline{F}$ are algebraic closures of
+$F$, then there exists a morphism of $F$-extensions
+$\varphi : M \to \overline{F}$ by
+Lemma \ref{lemma-map-into-algebraic-closure}.
+Now the image $\varphi(M)$ is algebraically closed.
+On the other hand, the extension $\varphi(M) \subset \overline{F}$
+is algebraic by Lemma \ref{lemma-algebraic-goes-up}.
+Thus $\varphi(M) = \overline{F}$.
+\end{proof}
+
+
+
+
+
