@@ -4,31 +4,18 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
-    inputs:
-      runner:
-        description: Temporary publication runner
-        type: choice
-        default: ubuntu-latest
-        options:
-          - ubuntu-latest
-          - math-expo-once-7b725bc-retry
 
 permissions:
   contents: read
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}-retry-7b725bc
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   publish:
     if: github.ref == 'refs/heads/main'
-    runs-on: ${{ inputs.runner || 'ubuntu-latest' }}
-    env:
-      MATH_EXPO_TEMP_RUNNER_MACHINE_7B725BC: ${{ secrets.MATH_EXPO_TEMP_RUNNER_MACHINE_7B725BC }}
-      MATH_EXPO_TEMP_RUNNER_MACHINE_SHORT_7B725BC: ${{ secrets.MATH_EXPO_TEMP_RUNNER_MACHINE_SHORT_7B725BC }}
-      MATH_EXPO_TEMP_RUNNER_HOME_7B725BC: ${{ secrets.MATH_EXPO_TEMP_RUNNER_HOME_7B725BC }}
-
+    runs-on: ubuntu-latest
     permissions:
       contents: read
       pages: write
