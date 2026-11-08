@@ -1,3 +1,5 @@
+import {edgeEndpoints} from './graph-geometry.js';
+
 (() => {
  'use strict';
  const graph=document.querySelector('.dependency-graph');
@@ -10,7 +12,11 @@
  const nodes=[...svg.querySelectorAll('.dependency-node')];
  const edges=[...svg.querySelectorAll('.graph-edges line')];
  const bounds=svg.viewBox.baseVal;
- const edgePadding=Number(svg.dataset.nodeRadius||26)+2;
+ const byTag=new Map(nodes.map(node=>[node.dataset.tag,node]));
+ const geometry=node=>{
+  const position=node.transform.baseVal.getItem(0).matrix;
+  return {x:position.e,y:position.f,width:Number(node.dataset.width),height:Number(node.dataset.height)};
+ };
  let activeTrigger=null;
 
  const describe=node=>{
@@ -151,12 +157,15 @@
    suppressClick=true;
   }
   const p=point(event);
-  const nx=Math.max(edgePadding,Math.min(bounds.width-edgePadding,p.x+dx));
-  const ny=Math.max(edgePadding,Math.min(bounds.height-edgePadding,p.y+dy));
+  const {width,height}=geometry(node);
+  const nx=Math.max(width/2+10,Math.min(bounds.width-width/2-10,p.x+dx));
+  const ny=Math.max(height/2+10,Math.min(bounds.height-height/2-10,p.y+dy));
   node.setAttribute('transform',`translate(${nx} ${ny})`);
   for(const line of edges){
-   if(line.dataset.from===node.dataset.tag){line.setAttribute('x1',nx);line.setAttribute('y1',ny);}
-   if(line.dataset.to===node.dataset.tag){line.setAttribute('x2',nx);line.setAttribute('y2',ny);}
+   if(line.dataset.from===node.dataset.tag||line.dataset.to===node.dataset.tag){
+    const coordinates=edgeEndpoints(geometry(byTag.get(line.dataset.from)),geometry(byTag.get(line.dataset.to)));
+    for(const [key,value] of Object.entries(coordinates))line.setAttribute(key,value);
+   }
   }
  });
  const end=event=>{if(drag?.id===event.pointerId)drag=null;};

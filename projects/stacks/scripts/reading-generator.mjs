@@ -14,9 +14,10 @@ export function buildReadings({root,dist,head,header,footer,renderExampleCard,as
  const coreReading=readings.find(reading=>reading.role==='foundation');
  if(!coreReading)throw Error('Missing foundation reading');
  const audit=JSON.parse(fs.readFileSync(path.join(root,'upstream/dependency-audit.json'),'utf8'));
+ const graphLabels=JSON.parse(fs.readFileSync(path.join(root,'src/dependency-labels.json'),'utf8'));
  const graphs=readings.filter(reading=>reading.graph).map(reading=>({
   nodes:selectedOverview(JSON.parse(fs.readFileSync(path.join(root,'src',reading.graph+'-dependencies.json'),'utf8')),reading.target,audit.readings[reading.slug].required_tags),
-  rootTag:reading.target,url:`dependencies/${reading.slug}/`,reading,locations:new Map()
+  rootTag:reading.target,url:`dependencies/${reading.slug}/`,reading,locations:new Map(),labels:graphLabels
  }));
  const graphsBySlug=new Map(graphs.map(graph=>[graph.reading.slug,graph]));
  const schemeTree=graphsBySlug.get(coreReading.slug);
@@ -76,6 +77,7 @@ export function buildReadings({root,dist,head,header,footer,renderExampleCard,as
     const id=b.tag||s.slug+'-'+bi;
     let html=`<div class="source-body">${separateSourceNotes(b.html,sourceNotes)}</div>`;
     if(b.kind!=='prose'){
+     if(b.title&&!/[\\$]/.test(b.title))referencesByTag.set(b.tag,{...referencesByTag.get(b.tag),sourceTitle:b.title});
      locate(b.tag,s);
      let heading=esc(label);
      if(tree?.nodes[b.tag]){
@@ -123,7 +125,7 @@ export function buildReadings({root,dist,head,header,footer,renderExampleCard,as
    if(location)graph.locations.set(tag,location);
   }
  }
- const graphScript=(base='../../')=>`<script defer src="${base}dependency-graph.js?v=${assetVersion}"></script>`;
+ const graphScript=(base='../../')=>`<script type="module" src="${base}dependency-graph.js?v=${assetVersion}"></script>`;
  const graphHTML=(tree,prefix='',base='../../')=>renderDependencyGraph(tree,referencesByTag,base,prefix);
  for(const {slug,html,tree} of readerPages){
   const inset=tree?`<dialog class="dependency-dialog" aria-labelledby="dependency-dialog-title">

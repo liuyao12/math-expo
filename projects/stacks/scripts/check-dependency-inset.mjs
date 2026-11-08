@@ -11,8 +11,26 @@ const visibleCount=graph=>graph.evaluate(g=>{
  return [...g.querySelectorAll('.dependency-node')].filter(n=>{const r=n.querySelector('.graph-node-body').getBoundingClientRect();return r.x+r.width/2>box.left&&r.x+r.width/2<box.right&&r.y+r.height/2>box.top&&r.y+r.height/2<box.bottom;}).length;
 });
 const checkLabels=async graph=>{
- const labels=await graph.locator('.dependency-node').evaluateAll(ns=>ns.map(n=>({tag:n.dataset.tag,text:n.querySelector('text').textContent,width:n.querySelector('text').getBBox().width})));
- for(const label of labels){const ref=refs[label.tag];assert.equal(label.text,ref.kind[0].toUpperCase()+' '+ref.number);assert(label.width<=50,'Label fits its node: '+label.text);}
+ const labels=await graph.locator('.dependency-node').evaluateAll(ns=>ns.map(n=>({
+  tag:n.dataset.tag,text:n.querySelector('.graph-node-number').textContent,
+  box:n.querySelector('.graph-node-body').tagName,
+  caption:n.querySelector('.graph-node-caption')?.textContent,
+  width:Number(n.dataset.width),height:Number(n.dataset.height),
+  lines:[...n.querySelectorAll('text')].map(t=>{const b=t.getBBox();return {x:b.x,y:b.y,width:b.width,height:b.height};})
+ })));
+ for(const label of labels){
+  const ref=refs[label.tag];assert.equal(label.text,ref.kind[0].toUpperCase()+' '+ref.number);
+  assert.equal(label.box,'rect','Nodes are boxes');
+  if(ref.kind==='definition')assert(label.caption,'Definitions show the defined term: '+label.tag);
+  for(const line of label.lines){
+   assert(line.x>=-label.width/2+5&&line.x+line.width<=label.width/2-5,'Text fits the box width: '+label.tag);
+   assert(line.y>=-label.height/2+3&&line.y+line.height<=label.height/2-3,'Text fits the box height: '+label.tag);
+  }
+ }
+ for(const [tag,name] of [['015N','Grothendieck spectral sequence'],['01F2','Leray spectral sequence']]){
+  const label=labels.find(label=>label.tag===tag);
+  if(label)assert.equal(label.caption.replace(/\s+/g,' '),name,'Named theorems retain their source names');
+ }
 };
 try{
  for(const viewport of [{width:1440,height:900},{width:390,height:844}]){
@@ -35,6 +53,21 @@ try{
    assert(scale>=.85&&scale<=1.4,'Readable local scale, independent of graph size');
    const count=await visibleCount(graph),total=await graph.locator('.dependency-node').count();
    assert(count>1&&count<total,'Initial view shows a neighborhood rather than the entire graph');
+   const attached=graph.locator('.graph-edges line[data-from="'+tag+'"],.graph-edges line[data-to="'+tag+'"]');
+   const beforeDrag=await attached.evaluateAll(lines=>lines.map(n=>n.outerHTML));
+   await page.mouse.move(node.x+node.width/2,node.y+node.height/2);
+   await page.mouse.down();await page.mouse.move(node.x+node.width/2+24,node.y+node.height/2+15,{steps:5});await page.mouse.up();
+   assert(await popup.isVisible(),'Dragging a node does not navigate away');
+   assert.notDeepEqual(await attached.evaluateAll(lines=>lines.map(n=>n.outerHTML)),beforeDrag,'Arrows follow dragged boxes');
+   assert(await graph.evaluate(g=>{
+    const nodes=new Map([...g.querySelectorAll('.dependency-node')].map(n=>[n.dataset.tag,n]));
+    return [...g.querySelectorAll('.graph-edges line')].every(line=>['from','to'].every((end,i)=>{
+     const n=nodes.get(line.dataset[end]),p=n.transform.baseVal.getItem(0).matrix;
+     const dx=Math.abs(Number(line.getAttribute('x'+(i+1)))-p.e),dy=Math.abs(Number(line.getAttribute('y'+(i+1)))-p.f);
+     const ratio=Math.max(dx/(Number(n.dataset.width)/2),dy/(Number(n.dataset.height)/2));
+     return ratio>=.999&&ratio<1.5;
+    }));
+   }),'Edges terminate outside the rectangular bodies');
    const oldWidth=await svg.evaluate(n=>n.getBoundingClientRect().width);
    await graph.getByRole('button',{name:'Zoom out',exact:true}).click();
    assert(await svg.evaluate(n=>n.getBoundingClientRect().width)<oldWidth);
