@@ -4,6 +4,14 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      runner:
+        description: Temporary publication runner
+        type: choice
+        default: ubuntu-latest
+        options:
+          - ubuntu-latest
+          - math-expo-proj-once
 
 permissions:
   contents: read
@@ -15,7 +23,12 @@ concurrency:
 jobs:
   publish:
     if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
+    runs-on: ${{ inputs.runner || 'ubuntu-latest' }}
+    env:
+      MATH_EXPO_TEMP_PROJ_MACHINE: ${{ secrets.MATH_EXPO_TEMP_PROJ_MACHINE }}
+      MATH_EXPO_TEMP_PROJ_MACHINE_SHORT: ${{ secrets.MATH_EXPO_TEMP_PROJ_MACHINE_SHORT }}
+      MATH_EXPO_TEMP_PROJ_HOME: ${{ secrets.MATH_EXPO_TEMP_PROJ_HOME }}
+
     permissions:
       contents: read
       pages: write
