@@ -233,7 +233,8 @@
       "01CS": "The invertible construction or definition used by this passage."
     },
     "01NF": {
-      "01M3": "The section proj construction or definition used by this passage."
+      "01M3": "The section proj construction or definition used by this passage.",
+      "01JX": "Projective space over a scheme is defined by base change."
     },
     "01NG": {
       "01NF": "The projective space construction or definition used by this passage."
@@ -375,6 +376,38 @@
       "01IJ": "The affine standard opens establish the scheme condition of Definition 26.9.1.",
       "01M6": "The locally ringed space and associated module sheaf are defined before the lemma.",
       "01BE": "The final assertion uses the definition of a quasi-coherent sheaf."
+    },
+    "04L1": {
+      "020D": "The target is the projective-variety clause of Definition 33.26.1, whose hypotheses require a variety.",
+      "01W8": "Projectivity of the structure morphism in the selected clause."
+    },
+    "020D": {
+      "01KK": "Separated structure morphisms in the definition of a variety.",
+      "01T1": "Finite type structure morphisms in the definition of a variety.",
+      "01IJ": "A variety is a scheme over a field.",
+      "01JX": "Schemes over a field and their structure morphisms.",
+      "01OK": "The integral-scheme condition in the definition of a variety."
+    },
+    "01W8": {
+      "01NF": "Projective space in the H-projective condition and in the closed-embedding characterization over a field.",
+      "01OB": "Projective bundles in the definition of a projective morphism.",
+      "01B5": "Finite type sheaves in the definition of a projective morphism.",
+      "01IO": "Closed immersions in the definition of a projective morphism."
+    },
+    "01OB": {
+      "01OA": "The symmetric-algebra and relative-Proj construction immediately preceding the projective-bundle definition.",
+      "01BE": "The bundle is constructed from a quasi-coherent module."
+    },
+    "01KK": {
+      "01KH": "The diagonal morphism is introduced in prose before the separatedness definition.",
+      "01IO": "Separatedness uses a closed immersion."
+    },
+    "01T1": {
+      "00F3": "Finite type ring maps in the local definition.",
+      "005A": "Quasi-compactness in the global finite type condition."
+    },
+    "01JX": {
+      "01JP": "Base change uses fibre products of schemes."
     }
   },
   "excluded_references": {
@@ -887,10 +920,11 @@
       ]
     },
     "01KH": {
-      "part": "none",
-      "reason": "The Separation axioms definition or construction explicitly invoked by the dependent passage.",
+      "part": "introduction",
+      "reason": "The diagonal morphism is defined in the introduction to the separation axioms; later lemmas are contextual unless separately referenced.",
       "requires": [
-        "01KK"
+        "01KK",
+        "01JP"
       ]
     },
     "01LA": {
@@ -1113,6 +1147,28 @@
       "part": "introduction",
       "requires": [],
       "reason": "The explicit addition, kernel, and cokernel constructions used by Lemma 01AG; later examples and additional properties are not scheduled."
+    },
+    "01OA": {
+      "part": "introduction",
+      "reason": "The symmetric algebra and its relative Proj are constructed in prose immediately before Definition 27.21.1.",
+      "requires": []
+    },
+    "00DM": {
+      "part": "fragments",
+      "reason": "The tensor and symmetric algebra constructions are needed for projective bundles; exterior powers are contextual.",
+      "requires": [
+        "00CV"
+      ],
+      "fragments": [
+        {
+          "from": "Let $R$ be a ring. Let $M$ be an $R$-module.",
+          "to": "We define the {\\it exterior algebra"
+        },
+        {
+          "from": "We define the {\\it symmetric algebra",
+          "to": "\\begin{lemma}"
+        }
+      ]
     }
   },
   "excluded_branches": {
@@ -1127,6 +1183,9 @@
     "01IJ": {
       "01HV:01AG": "For defining a scheme, only the ring sections, restrictions, and stalk identifications in Lemma 01HV are used. Its final assertion about exactness of the associated module sheaf is contextual; the later curves reading follows that module assertion and its proof.",
       "00A1:008X": "The scheme definition uses restriction of sheaves of rings and the open ringed subspace (items 1–3). Item 4 concerns module restrictions and is contextual for this target."
+    },
+    "04L1": {
+      "04L1:01VZ": "The target is item (2), projective varieties; the quasi-projective characterization belongs to contextual item (3)."
     }
   }
 }

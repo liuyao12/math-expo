@@ -5662,5 +5662,17 @@
     "slug": "fields-algebraic-closure",
     "kind": "section",
     "sha256": "3decbedbccd48014920f290d2a40fa3de0d6eb130168968f2d565087697f8db6"
+  },
+  "020C": {
+    "tag": "020C",
+    "label": "section-varieties",
+    "chapter": "varieties",
+    "number": "33.3",
+    "title": "Varieties",
+    "source_start_line": 46,
+    "source_end_line": 147,
+    "slug": "varieties-varieties",
+    "kind": "section",
+    "sha256": "30148f7ec20eb0de59544c92b1bee722b7aa76415a8bfcb5aae6494daeb81be7"
   }
 }

@@ -372,5 +372,124 @@
     "uses": [
       "009Q"
     ]
+  },
+  "04L1": {
+    "title": "Projective varieties (Definition 33.26.1, item 2)",
+    "uses": [
+      "020D",
+      "01W8",
+      "01WB",
+      "01NF"
+    ]
+  },
+  "020D": {
+    "title": "Varieties over a field",
+    "uses": [
+      "01IJ",
+      "01OK",
+      "01KK",
+      "01T1",
+      "01JX"
+    ]
+  },
+  "01OK": {
+    "title": "Integral schemes",
+    "uses": [
+      "01IJ"
+    ]
+  },
+  "01KK": {
+    "title": "Separated morphisms and the diagonal",
+    "uses": [
+      "01JP",
+      "01IO"
+    ]
+  },
+  "01T1": {
+    "title": "Morphisms of finite type",
+    "uses": [
+      "00F3",
+      "005A"
+    ]
+  },
+  "00F3": {
+    "title": "Finite type ring maps"
+  },
+  "01JX": {
+    "title": "Schemes over a base and base change",
+    "uses": [
+      "01JP",
+      "01IJ"
+    ]
+  },
+  "01JP": {
+    "title": "Fibre products of schemes exist",
+    "uses": [
+      "01IJ",
+      "00CV"
+    ]
+  },
+  "00CV": {
+    "title": "Tensor products of modules"
+  },
+  "01IO": {
+    "title": "Closed immersions of schemes",
+    "uses": [
+      "01IJ"
+    ]
+  },
+  "01W8": {
+    "title": "Projective morphisms",
+    "uses": [
+      "01OB",
+      "01IO",
+      "01NF",
+      "01B5"
+    ]
+  },
+  "01B5": {
+    "title": "Finite type sheaves of modules"
+  },
+  "01WB": {
+    "title": "Locally projective morphisms are locally H-projective",
+    "uses": [
+      "01W8",
+      "01N0",
+      "01PB"
+    ]
+  },
+  "01N0": {
+    "title": "Surjective graded ring maps give closed immersions",
+    "uses": [
+      "01MB"
+    ]
+  },
+  "01PB": {
+    "title": "Finite type quasi-coherent sheaves on affine schemes",
+    "uses": [
+      "01B5",
+      "01BE"
+    ]
+  },
+  "01OB": {
+    "title": "Projective bundles",
+    "uses": [
+      "01MB",
+      "01BE",
+      "00DM"
+    ]
+  },
+  "00DM": {
+    "title": "Tensor and symmetric algebras",
+    "uses": [
+      "00CV"
+    ]
+  },
+  "01NF": {
+    "title": "Projective space",
+    "uses": [
+      "01MB",
+      "01JX"
+    ]
   }
 }

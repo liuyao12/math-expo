@@ -21323,5 +21323,20 @@
     "tag": "09I5",
     "number": "9.23.1",
     "kind": "lemma"
+  },
+  "varieties-lemma-product-varieties": {
+    "tag": "05P3",
+    "number": "33.3.3",
+    "kind": "lemma"
+  },
+  "varieties-section-varieties": {
+    "tag": "020C",
+    "number": "33.3",
+    "kind": "section"
+  },
+  "varieties-example-product-not-a-variety": {
+    "tag": "020G",
+    "number": "33.3.2",
+    "kind": "example"
   }
 }

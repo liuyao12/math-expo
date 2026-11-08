@@ -59,7 +59,7 @@ for spec in specs:
     expected_sections = required - prior
     if not args.refresh and selected != expected_sections:
         raise SystemExit(spec['slug'] + ': sections outside target dependencies: ' + ', '.join(sorted(selected - expected_sections)))
-    reports[spec['slug']] = dict(target=spec['target'], **result,
+    reports[spec['slug']] = dict(target=spec['target'], target_label=spec.get('targetLabel'), **result,
                                 reused_sections=sorted(required & prior),
                                 implicit_dependencies={t: scope['implicit_dependencies'][t] for t in result['required_tags'] if t in scope['implicit_dependencies']})
     resolved[spec['slug']] = prior | selected

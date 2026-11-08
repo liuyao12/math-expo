@@ -77,9 +77,9 @@ assert.deepEqual(notesFor('ZZZZ','ZZZY').examples,[],'Commentary must be optiona
 assert.throws(()=>assembleReading({...coreReading,sections:['ZZZZ']},catalog),/Unknown section tag/);
 assert.throws(()=>assembleReading({...coreReading,target:'ZZZZ',sections:coreReading.sections.map(s=>s.tag)},catalog),/outside/);
 const coreTags=coreReading.sections.map(section=>section.tag);
-assert.equal(coreReading.target,'01MB','The first reading reaches the Proj scheme proof');
-for(const tag of ['01II','00JL','00JM','01BD','01M3']){
- assert(coreTags.includes(tag),'First reading includes scheme, grading, Proj, and quasi-coherence prerequisites: '+tag);
+assert.equal(coreReading.target,'04L1','The first reading reaches the definition of projective varieties');
+for(const tag of ['01II','00JL','00JM','01BD','01M3','01ND','020C','04L0']){
+ assert(coreTags.includes(tag),'First reading includes schemes, Proj, projective space, and varieties: '+tag);
 }
 const selectedTags=new Set();
 for(const reading of selectedReadings){
