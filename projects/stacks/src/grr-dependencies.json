@@ -136,7 +136,8 @@
   "02TX": {
     "title": "Projective space bundle formula",
     "uses": [
-      "0FDW"
+      "0FDW",
+      "01MB"
     ]
   },
   "02U0": {
@@ -204,5 +205,93 @@
   },
   "02UK": {
     "title": "The splitting principle"
+  },
+  "01MB": {
+    "title": "Proj is a scheme; its standard opens are affine",
+    "uses": [
+      "01IJ",
+      "01M6",
+      "01M4",
+      "01M7",
+      "01MA",
+      "01BE"
+    ]
+  },
+  "01M6": {
+    "title": "The structure sheaf of Proj",
+    "uses": [
+      "00JL",
+      "00JM",
+      "009T"
+    ]
+  },
+  "01M4": {
+    "title": "Localizations on standard projective opens",
+    "uses": [
+      "00JP"
+    ]
+  },
+  "01M7": {
+    "title": "Sections and stalks of the sheaf associated to a graded module",
+    "uses": [
+      "01M6",
+      "00JR",
+      "01AG"
+    ]
+  },
+  "01MA": {
+    "title": "Standard affine opens inside a projective chart",
+    "uses": [
+      "00JP"
+    ]
+  },
+  "00JL": {
+    "title": "Graded rings and modules"
+  },
+  "00JM": {
+    "title": "The topology and homogeneous localizations of Proj",
+    "uses": [
+      "00JL",
+      "00JN",
+      "00JP"
+    ]
+  },
+  "00JN": {
+    "title": "The homogeneous prime spectrum"
+  },
+  "00JP": {
+    "title": "Standard projective opens are spectra",
+    "uses": [
+      "00JO"
+    ]
+  },
+  "00JO": {
+    "title": "Homogeneous primes after localization"
+  },
+  "00JR": {
+    "title": "Homogeneous localization at a prime is exact",
+    "uses": [
+      "00JP"
+    ]
+  },
+  "01BE": {
+    "title": "Quasi-coherent modules"
+  },
+  "01AG": {
+    "title": "Sheaves of modules form an abelian category",
+    "uses": [
+      "007T",
+      "0109"
+    ]
+  },
+  "007T": {
+    "title": "Exactness of sheaves is checked on stalks"
+  },
+  "0109": {
+    "title": "Abelian categories"
+  },
+  "009T": {
+    "title": "Extend a sheaf of modules from a basis",
+    "uses": []
   }
 }

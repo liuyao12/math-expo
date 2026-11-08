@@ -77,6 +77,20 @@ assert.deepEqual(notesFor('ZZZZ','ZZZY').examples,[],'Commentary must be optiona
 assert.throws(()=>assembleReading({...coreReading,sections:['ZZZZ']},catalog),/Unknown section tag/);
 assert.throws(()=>assembleReading({...coreReading,target:'ZZZZ',sections:coreReading.sections.map(s=>s.tag)},catalog),/outside/);
 const coreTags=coreReading.sections.map(section=>section.tag);
+assert.equal(coreReading.target,'01MB','The first reading reaches the Proj scheme proof');
+for(const tag of ['01II','00JL','00JM','01BD','01M3']){
+ assert(coreTags.includes(tag),'First reading includes scheme, grading, Proj, and quasi-coherence prerequisites: '+tag);
+}
+const selectedTags=new Set();
+for(const reading of selectedReadings){
+ for(const section of reading.sections){
+  assert(!selectedTags.has(section.tag),'Selected readings must link back rather than repeat a section: '+section.tag);
+  selectedTags.add(section.tag);
+ }
+ if(reading===coreReading)continue;
+ const page=fs.readFileSync(path.join(dist,reading.slug,'index.html'),'utf8');
+ assert(page.includes('href="../scheme/#01MB"'),'Later dependency graphs link to the relocated Proj proof');
+}
 assert.throws(()=>assembleReading({...coreReading,sections:[...coreTags,coreTags[0]]},catalog),/Repeated section tag/);
 assert.deepEqual(assembleReading({...coreReading,sections:[...coreTags].reverse()},catalog).sections.map(s=>s.tag),coreTags,'Selections must retain original Stacks order');
 const grrIndex=selectedReadings.findIndex(unit=>unit.target==='02UO');

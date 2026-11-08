@@ -370,6 +370,11 @@
     },
     "01WC": {
       "01W8": "Projective and locally projective morphisms in the properness statement."
+    },
+    "01MB": {
+      "01IJ": "The affine standard opens establish the scheme condition of Definition 26.9.1.",
+      "01M6": "The locally ringed space and associated module sheaf are defined before the lemma.",
+      "01BE": "The final assertion uses the definition of a quasi-coherent sheaf."
     }
   },
   "excluded_references": {
@@ -897,12 +902,26 @@
       ]
     },
     "01M3": {
-      "part": "none",
-      "reason": "The Proj of a graded ring definition or construction explicitly invoked by the dependent passage.",
+      "part": "fragments",
+      "reason": "The construction of the Proj structure sheaf, graded-module sheaves, and their stalks is supplied in unnumbered prose before Definition 27.8.3; follow that construction, not the later separatedness and valuative-criterion results.",
       "requires": [
         "00JM",
         "01M6",
         "01MB"
+      ],
+      "fragments": [
+        {
+          "from": "Let $S$ be a graded ring. Consider the topological space",
+          "to": "\\begin{lemma}\n\\label{lemma-standard-open}"
+        },
+        {
+          "from": "In Sheaves, Section \\ref{sheaves-section-bases} we defined",
+          "to": "\\begin{definition}\n\\label{definition-standard-covering}"
+        },
+        {
+          "from": "Let $S$ be a graded ring. Let $M$ be a graded $S$-module. We will define",
+          "to": "\\begin{definition}\n\\label{definition-structure-sheaf}"
+        }
       ]
     },
     "01MM": {

@@ -8,7 +8,7 @@
   ],
   "readings": {
     "scheme": {
-      "target": "01IJ",
+      "target": "01MB",
       "required_tags": [
         "0014",
         "001B",
@@ -18,6 +18,7 @@
         "001V",
         "002F",
         "002U",
+        "002W",
         "002Z",
         "0030",
         "0031",
@@ -28,28 +29,41 @@
         "006C",
         "006E",
         "006N",
+        "006Q",
         "006T",
         "006V",
         "006X",
         "0072",
+        "0077",
         "0078",
         "007D",
         "007H",
         "007M",
         "007P",
         "007Q",
+        "007S",
+        "007T",
+        "007U",
         "007X",
         "007Y",
         "007Z",
         "0084",
+        "0089",
         "008C",
         "008J",
+        "008T",
+        "008X",
         "0091",
+        "009H",
+        "009I",
         "009J",
+        "009K",
+        "009L",
         "009M",
         "009N",
         "009P",
         "009Q",
+        "009T",
         "00A0",
         "00A1",
         "00AQ",
@@ -75,14 +89,35 @@
         "00EK",
         "00F6",
         "00HN",
+        "00JL",
+        "00JM",
+        "00JN",
+        "00JO",
+        "00JP",
+        "00JR",
+        "00ZY",
+        "0101",
+        "0102",
+        "0104",
+        "0109",
+        "01AF",
+        "01AG",
+        "01BE",
         "01HB",
         "01HF",
         "01HG",
+        "01HR",
         "01HS",
         "01HU",
         "01HV",
         "01HW",
         "01IJ",
+        "01M3",
+        "01M4",
+        "01M6",
+        "01M7",
+        "01MA",
+        "01MB",
         "02C7",
         "07BI",
         "07JZ",
@@ -101,14 +136,19 @@
         "006C",
         "006D",
         "006M",
+        "006P",
         "006S",
         "0071",
+        "0076",
         "0078",
         "007G",
         "007L",
+        "007S",
         "007X",
         "0083",
+        "0088",
         "008C",
+        "008R",
         "0090",
         "009H",
         "009Z",
@@ -119,13 +159,78 @@
         "00EI",
         "00EN",
         "00F5",
+        "00JL",
+        "00JM",
+        "00ZX",
+        "01AF",
+        "01BD",
         "01HA",
         "01HD",
         "01HR",
         "01II",
-        "07BH"
+        "01M3",
+        "04AX",
+        "07BH",
+        "09SE"
       ],
       "passages": {
+        "01MB": {
+          "section": "01M3",
+          "text_sha256": "d6da35f54b0bb1c3ab1fcef22a724cc92add0a895883e2984f5da1703c1323f3",
+          "dependencies": [
+            {
+              "tag": "01BE",
+              "reason": "The final assertion uses the definition of a quasi-coherent sheaf."
+            },
+            {
+              "tag": "01HR",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "01IJ",
+              "reason": "The affine standard opens establish the scheme condition of Definition 26.9.1."
+            },
+            {
+              "tag": "01M4",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "01M6",
+              "reason": "The locally ringed space and associated module sheaf are defined before the lemma."
+            },
+            {
+              "tag": "01M7",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "01MA",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            }
+          ]
+        },
+        "01BE": {
+          "section": "01BD",
+          "text_sha256": "4ec33bba9dc2d23ed23f9ef23bd5dcea472cb98a97bad56b0676e42b57981586",
+          "dependencies": []
+        },
+        "01HR": {
+          "section": "01HR",
+          "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "dependencies": [
+            {
+              "tag": "01HU",
+              "reason": "The Affine schemes definition or construction explicitly invoked by the dependent passage."
+            },
+            {
+              "tag": "01HV",
+              "reason": "The Affine schemes definition or construction explicitly invoked by the dependent passage."
+            },
+            {
+              "tag": "01HW",
+              "reason": "The Affine schemes definition or construction explicitly invoked by the dependent passage."
+            }
+          ]
+        },
         "01IJ": {
           "section": "01II",
           "text_sha256": "54d823d3e37b88bfe6b054d5cbfb630fe7d95d8b75fa204f9d1c3190632e6c29",
@@ -141,6 +246,135 @@
             {
               "tag": "01HW",
               "reason": "The affine scheme construction or definition used by this passage."
+            }
+          ]
+        },
+        "01M4": {
+          "section": "01M3",
+          "text_sha256": "b65d5038d0ad2092e3b69bf8763e1ec5f52d21026efa3fbc3ece8f8233c1c23d",
+          "dependencies": [
+            {
+              "tag": "00E0",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "00E8",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "00JP",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            }
+          ]
+        },
+        "01M6": {
+          "section": "01M3",
+          "text_sha256": "92bd48ef7e949784017063ca7a8a7ac2349bc8baa62405e90fc6b2ea93ef899b",
+          "dependencies": []
+        },
+        "01M7": {
+          "section": "01M3",
+          "text_sha256": "e4029f299f3092f2133d37d29452159d68ec40d335487aa92e88a60eda63f5e4",
+          "dependencies": [
+            {
+              "tag": "00JL",
+              "reason": "Graded modules and the shift M(n) are defined in prose."
+            },
+            {
+              "tag": "00JM",
+              "reason": "The topological space Proj and homogeneous localization precede its scheme structure."
+            },
+            {
+              "tag": "00JR",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "01AG",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "01BE",
+              "reason": "The quasi coherent construction or definition used by this passage."
+            },
+            {
+              "tag": "01M3",
+              "reason": "The section proj construction or definition used by this passage."
+            },
+            {
+              "tag": "01M4",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            }
+          ]
+        },
+        "01MA": {
+          "section": "01M3",
+          "text_sha256": "32b666bb2f4e6f87ddbe1e97c8f1703614183744385187c9d5c10cb1eba3f2a4",
+          "dependencies": [
+            {
+              "tag": "00JP",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            }
+          ]
+        },
+        "01HU": {
+          "section": "01HR",
+          "text_sha256": "ac0f6aa70dbf31526d4f69ec945234efe1d28103ddbd1651a27a6249e7550a10",
+          "dependencies": [
+            {
+              "tag": "009Q",
+              "reason": "The lemma extend off basis structures construction or definition used by this passage."
+            },
+            {
+              "tag": "00EK",
+              "reason": "The lemma cover module construction or definition used by this passage."
+            },
+            {
+              "tag": "01HS",
+              "reason": "The lemma standard open construction or definition used by this passage."
+            }
+          ]
+        },
+        "01HV": {
+          "section": "01HR",
+          "text_sha256": "d802004102cec15d43a0d316e6c5cc5e6497f1763cd79992d3c8dbf8b4bb542d",
+          "dependencies": [
+            {
+              "tag": "00CR",
+              "reason": "The lemma localization colimit construction or definition used by this passage."
+            },
+            {
+              "tag": "01AG",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "01HS",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "01HU",
+              "reason": "The structure sheaf construction or definition used by this passage."
+            },
+            {
+              "tag": "07BI",
+              "reason": "The local ring construction or definition used by this passage."
+            }
+          ]
+        },
+        "01HW": {
+          "section": "01HR",
+          "text_sha256": "748f839ee3d2195a1e06b44643fd79b4e3e36eceb38e1291bd0fd4c7f85836b9",
+          "dependencies": [
+            {
+              "tag": "01HB",
+              "reason": "The locally ringed space construction or definition used by this passage."
+            },
+            {
+              "tag": "01HU",
+              "reason": "The structure sheaf construction or definition used by this passage."
+            },
+            {
+              "tag": "01HV",
+              "reason": "The lemma spec sheaves construction or definition used by this passage."
             }
           ]
         },
@@ -180,211 +414,154 @@
             }
           ]
         },
-        "01HW": {
-          "section": "01HR",
-          "text_sha256": "748f839ee3d2195a1e06b44643fd79b4e3e36eceb38e1291bd0fd4c7f85836b9",
+        "00E0": {
+          "section": "00DY",
+          "text_sha256": "25df23519a52094645469a92e06cc3800e4ce77419c470246d4f5b1207db1f84",
           "dependencies": [
             {
-              "tag": "01HB",
-              "reason": "The locally ringed space construction or definition used by this passage."
+              "tag": "004P",
+              "reason": "The base construction or definition used by this passage."
             },
             {
-              "tag": "01HU",
-              "reason": "The structure sheaf construction or definition used by this passage."
+              "tag": "00BI",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
             },
             {
-              "tag": "01HV",
-              "reason": "The lemma spec sheaves construction or definition used by this passage."
+              "tag": "00DZ",
+              "reason": "The spectrum ring construction or definition used by this passage."
             }
           ]
         },
-        "007H": {
-          "section": "007G",
-          "text_sha256": "7d1fad669a19250477811ff34a8f8bd877443013a92584e0d923efb9a1634c98",
+        "00E8": {
+          "section": "00DY",
+          "text_sha256": "7da859ccd3cb3db14c5930a03bbbb2c5e51db91d4833cc06871a40e072d681ba",
           "dependencies": [
             {
-              "tag": "006N",
-              "reason": "The presheaf values in category construction or definition used by this passage."
+              "tag": "005A",
+              "reason": "The quasi compact construction or definition used by this passage."
             },
             {
-              "tag": "0078",
-              "reason": "The section stalks construction or definition used by this passage."
-            }
-          ]
-        },
-        "0091": {
-          "section": "0090",
-          "text_sha256": "790001ab68bf2826a195c33c058f2f3266bb073b10b085dad72f4e46cb2a6faf",
-          "dependencies": [
-            {
-              "tag": "0072",
-              "reason": "The sheaf values in category construction or definition used by this passage."
-            },
-            {
-              "tag": "008J",
-              "reason": "The f map construction or definition used by this passage."
-            }
-          ]
-        },
-        "07BI": {
-          "section": "07BH",
-          "text_sha256": "21ed5e23fe88b3da9cf220de281dbc12d508f73ec225f5b7843a9926392f8ff4",
-          "dependencies": []
-        },
-        "00A1": {
-          "section": "009Z",
-          "text_sha256": "5ab5a0ba69d5caa5978bbbf5178d3eee7cd97d63f7203ead93ebd15570044973",
-          "dependencies": [
-            {
-              "tag": "004E",
-              "reason": "The section topology basic construction or definition used by this passage."
-            },
-            {
-              "tag": "006T",
-              "reason": "The sheaf construction or definition used by this passage."
-            },
-            {
-              "tag": "00A0",
+              "tag": "00E0",
               "reason": "Reference in the required statement, proof, or selected prose passage."
             }
           ]
         },
-        "01HF": {
-          "section": "01HD",
-          "text_sha256": "bfa3ded1e4c74ba3fde73741b734191be8ae2eab0d34efe794c35c8a58dddaf7",
-          "dependencies": []
-        },
-        "01HU": {
-          "section": "01HR",
-          "text_sha256": "ac0f6aa70dbf31526d4f69ec945234efe1d28103ddbd1651a27a6249e7550a10",
+        "00JP": {
+          "section": "00JM",
+          "text_sha256": "2decde30e674f123e52e363de331f2368840de6aebc5fa8d9cb0dc44207710ab",
           "dependencies": [
             {
+              "tag": "00E4",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "00JO",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            }
+          ]
+        },
+        "00JL": {
+          "section": "00JL",
+          "text_sha256": "7579dc515e9389a5f70bb6270820bafe3b1aacba9c484b0cbc0d24817a0994c1",
+          "dependencies": []
+        },
+        "00JM": {
+          "section": "00JM",
+          "text_sha256": "6d66b643a1765b42b39eff49240744ea5836a1ad91494a641b0d708a8bad5985",
+          "dependencies": [
+            {
+              "tag": "00JN",
+              "reason": "The Proj of a graded ring definition or construction explicitly invoked by the dependent passage."
+            },
+            {
+              "tag": "00JP",
+              "reason": "The Proj of a graded ring definition or construction explicitly invoked by the dependent passage."
+            }
+          ]
+        },
+        "00JR": {
+          "section": "00JM",
+          "text_sha256": "ab29de9d113e382e730cd003d49f41e8ea72d2a1f00737ecb15f3f07e6e75901",
+          "dependencies": [
+            {
+              "tag": "00JP",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            }
+          ]
+        },
+        "01AG": {
+          "section": "01AF",
+          "text_sha256": "dafea5f2daa6bef3c1cb3f7ea64cdddb6058d6c845ef775f076da08c41beb551",
+          "dependencies": [
+            {
+              "tag": "007T",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "0109",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "01AF",
+              "reason": "The kernel and cokernel constructions preceding the abelian-category lemma, used in its proof."
+            }
+          ]
+        },
+        "01M3": {
+          "section": "01M3",
+          "text_sha256": "ef48c83fe373724e22fa61a0b82fb72d306035d5327e52a483806f69c6a6bc39",
+          "dependencies": [
+            {
+              "tag": "009H",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "009L",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "009N",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
               "tag": "009Q",
-              "reason": "The lemma extend off basis structures construction or definition used by this passage."
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "009T",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
             },
             {
               "tag": "00EK",
-              "reason": "The lemma cover module construction or definition used by this passage."
-            },
-            {
-              "tag": "01HS",
-              "reason": "The lemma standard open construction or definition used by this passage."
-            }
-          ]
-        },
-        "01HV": {
-          "section": "01HR",
-          "text_sha256": "d802004102cec15d43a0d316e6c5cc5e6497f1763cd79992d3c8dbf8b4bb542d",
-          "dependencies": [
-            {
-              "tag": "00CR",
-              "reason": "The lemma localization colimit construction or definition used by this passage."
-            },
-            {
-              "tag": "01HS",
               "reason": "Reference in the required statement, proof, or selected prose passage."
             },
             {
-              "tag": "01HU",
-              "reason": "The structure sheaf construction or definition used by this passage."
+              "tag": "00JL",
+              "reason": "The section graded construction or definition used by this passage."
             },
             {
-              "tag": "07BI",
-              "reason": "The local ring construction or definition used by this passage."
-            }
-          ]
-        },
-        "006N": {
-          "section": "006M",
-          "text_sha256": "06ee397b598385e638fb8a5637baad9389af39c19aeb0326a4d87101e88b82a0",
-          "dependencies": [
-            {
-              "tag": "0014",
-              "reason": "The category construction or definition used by this passage."
+              "tag": "00JM",
+              "reason": "The construction of the Proj structure sheaf, graded-module sheaves, and their stalks is supplied in unnumbered prose before Definition 27.8.3; follow that construction, not the later separatedness and valuative-criterion results."
             },
             {
-              "tag": "001L",
-              "reason": "Opposite categories used for category-valued presheaves."
-            },
-            {
-              "tag": "006E",
-              "reason": "The presheaf construction or definition used by this passage."
-            }
-          ]
-        },
-        "0078": {
-          "section": "0078",
-          "text_sha256": "e1f875a17b0328a5364bd5391f840f181308b5fcbb2a258627ee5e0c99702b54",
-          "dependencies": [
-            {
-              "tag": "002F",
-              "reason": "The colimit construction or definition used by this passage."
-            },
-            {
-              "tag": "002Z",
+              "tag": "00JR",
               "reason": "Reference in the required statement, proof, or selected prose passage."
             },
             {
-              "tag": "0031",
-              "reason": "The directed system construction or definition used by this passage."
+              "tag": "01IJ",
+              "reason": "The scheme construction or definition used by this passage."
             },
             {
-              "tag": "006E",
-              "reason": "The presheaf construction or definition used by this passage."
-            }
-          ]
-        },
-        "0072": {
-          "section": "0071",
-          "text_sha256": "3db12f63ff6ffab67ae3bdf6156f16b935f5dee8e437286adf12354250d81669",
-          "dependencies": [
-            {
-              "tag": "006N",
-              "reason": "The presheaf values in category construction or definition used by this passage."
+              "tag": "01M4",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
             },
             {
-              "tag": "006T",
-              "reason": "The sheaf construction or definition used by this passage."
-            }
-          ]
-        },
-        "008J": {
-          "section": "008C",
-          "text_sha256": "ce890501eac337b11aaa080fa6308548ad9dcf67acba0783ed7129883eba0bc2",
-          "dependencies": [
+              "tag": "01M6",
+              "reason": "The construction of the Proj structure sheaf, graded-module sheaves, and their stalks is supplied in unnumbered prose before Definition 27.8.3; follow that construction, not the later separatedness and valuative-criterion results."
+            },
             {
-              "tag": "006E",
-              "reason": "The presheaf construction or definition used by this passage."
-            }
-          ]
-        },
-        "004E": {
-          "section": "004E",
-          "text_sha256": "d465cbd5afbb72eb834ba00fe7af6b0a353d685c1e7e479be10a5ae0280ef720",
-          "dependencies": [
-            {
-              "tag": "004K",
-              "reason": "Reference in the required statement, proof, or selected prose passage."
-            }
-          ]
-        },
-        "006T": {
-          "section": "006S",
-          "text_sha256": "041460b360dfa6a9d137bed749118fd98c2764c6ac5b9058dcb5aa7167313f76",
-          "dependencies": [
-            {
-              "tag": "006E",
-              "reason": "The presheaf construction or definition used by this passage."
-            }
-          ]
-        },
-        "00A0": {
-          "section": "009Z",
-          "text_sha256": "227c909db2901efe85ab39a440668a6b6f26311cfafa2491ef23111483e44d96",
-          "dependencies": [
-            {
-              "tag": "008C",
-              "reason": "Reference in the required statement, proof, or selected prose passage."
+              "tag": "01MB",
+              "reason": "The construction of the Proj structure sheaf, graded-module sheaves, and their stalks is supplied in unnumbered prose before Definition 27.8.3; follow that construction, not the later separatedness and valuative-criterion results."
             }
           ]
         },
@@ -480,86 +657,236 @@
             }
           ]
         },
-        "0014": {
-          "section": "0013",
-          "text_sha256": "c35031670d5359a2a292434585b10d23418dfd0943422d0fdb83627c50d70a6f",
+        "07BI": {
+          "section": "07BH",
+          "text_sha256": "21ed5e23fe88b3da9cf220de281dbc12d508f73ec225f5b7843a9926392f8ff4",
           "dependencies": []
         },
-        "001L": {
-          "section": "001L",
-          "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "007H": {
+          "section": "007G",
+          "text_sha256": "7d1fad669a19250477811ff34a8f8bd877443013a92584e0d923efb9a1634c98",
           "dependencies": [
             {
-              "tag": "001M",
-              "reason": "The Opposite Categories and the Yoneda Lemma definition or construction explicitly invoked by the dependent passage."
+              "tag": "006N",
+              "reason": "The presheaf values in category construction or definition used by this passage."
             },
             {
-              "tag": "001N",
-              "reason": "The Opposite Categories and the Yoneda Lemma definition or construction explicitly invoked by the dependent passage."
+              "tag": "0078",
+              "reason": "The section stalks construction or definition used by this passage."
             }
           ]
         },
-        "006E": {
-          "section": "006D",
-          "text_sha256": "e728b50fec00b5a51ffd85b7518d87d42e03d9b363884124cfca05a3aa077563",
+        "0091": {
+          "section": "0090",
+          "text_sha256": "790001ab68bf2826a195c33c058f2f3266bb073b10b085dad72f4e46cb2a6faf",
+          "dependencies": [
+            {
+              "tag": "0072",
+              "reason": "The sheaf values in category construction or definition used by this passage."
+            },
+            {
+              "tag": "008J",
+              "reason": "The f map construction or definition used by this passage."
+            }
+          ]
+        },
+        "00A1": {
+          "section": "009Z",
+          "text_sha256": "5ab5a0ba69d5caa5978bbbf5178d3eee7cd97d63f7203ead93ebd15570044973",
           "dependencies": [
             {
               "tag": "004E",
               "reason": "The section topology basic construction or definition used by this passage."
             },
             {
-              "tag": "006C",
-              "reason": "Open coverings and their conventions, used in presheaves and the sheaf axiom."
-            }
-          ]
-        },
-        "002F": {
-          "section": "002D",
-          "text_sha256": "f1458903a141c2863ad4ddfc7139d0b3fb66799aa82fc4b71196724d55f9c821",
-          "dependencies": [
-            {
-              "tag": "001B",
-              "reason": "The functor construction or definition used by this passage."
+              "tag": "006T",
+              "reason": "The sheaf construction or definition used by this passage."
             },
             {
-              "tag": "002U",
-              "reason": "The concrete construction of colimits of sets used for germs."
-            }
-          ]
-        },
-        "002Z": {
-          "section": "002Z",
-          "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-          "dependencies": [
-            {
-              "tag": "0030",
-              "reason": "The Limits and colimits over preordered sets definition or construction explicitly invoked by the dependent passage."
+              "tag": "008X",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
             },
             {
-              "tag": "0031",
-              "reason": "The Limits and colimits over preordered sets definition or construction explicitly invoked by the dependent passage."
-            }
-          ]
-        },
-        "0031": {
-          "section": "002Z",
-          "text_sha256": "c08d45c5dca04578e77f3148a6f5b32224e80e97bfc5759296d37d2ecbc0ac54",
-          "dependencies": [
-            {
-              "tag": "00D3",
+              "tag": "00A0",
               "reason": "Reference in the required statement, proof, or selected prose passage."
             }
           ]
         },
-        "004K": {
-          "section": "004E",
-          "text_sha256": "167ed60d6e8b6b31f8a7fd6a8a8e162a0c4ec6e7f0aaf77ab036b8b73f2f035c",
+        "01HF": {
+          "section": "01HD",
+          "text_sha256": "bfa3ded1e4c74ba3fde73741b734191be8ae2eab0d34efe794c35c8a58dddaf7",
           "dependencies": []
         },
-        "008C": {
-          "section": "008C",
-          "text_sha256": "728751ba6c0826c24fb707a60f54fb4fabadf37e148432d3f991fa97d416b388",
+        "004P": {
+          "section": "004O",
+          "text_sha256": "d377f6218350079d8a73be053c97223b8637b9401b2c81340657a80216671469",
+          "dependencies": [
+            {
+              "tag": "004E",
+              "reason": "The section topology basic construction or definition used by this passage."
+            }
+          ]
+        },
+        "00BI": {
+          "section": "00AR",
+          "text_sha256": "5a9ea947333f694a47abe06a49ebf318b63e3d39987198859aa539af5924596d",
           "dependencies": []
+        },
+        "00DZ": {
+          "section": "00DY",
+          "text_sha256": "657c9a7a9aee9f8e8df7cf16e9036b803acab80024e5161c9d3b08ca54681521",
+          "dependencies": [
+            {
+              "tag": "00AQ",
+              "reason": "Commutative rings with identity and ring homomorphism conventions."
+            },
+            {
+              "tag": "00AR",
+              "reason": "The section rings basic construction or definition used by this passage."
+            }
+          ]
+        },
+        "005A": {
+          "section": "0059",
+          "text_sha256": "1130390596261894062899b6e3d0c4af6f6c6297c661ca3324a1b9b1c5c8e614",
+          "dependencies": [
+            {
+              "tag": "004E",
+              "reason": "The section topology basic construction or definition used by this passage."
+            }
+          ]
+        },
+        "00E4": {
+          "section": "00DY",
+          "text_sha256": "e718519560f43960ff8d5441dcecd955634f04bc5992802f189d95f7e04e006c",
+          "dependencies": [
+            {
+              "tag": "00E3",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            }
+          ]
+        },
+        "00JO": {
+          "section": "00JM",
+          "text_sha256": "2d81a4d09919b96836c7ce79e8c4da903028a56f192ba248e37cb4ddade131f4",
+          "dependencies": []
+        },
+        "00JN": {
+          "section": "00JM",
+          "text_sha256": "c8c3fed1859b8ac9cc38c146c34c910b236708b0caf89fe47ec9301051b6c016",
+          "dependencies": []
+        },
+        "007T": {
+          "section": "007S",
+          "text_sha256": "60dd6f85f4242a8bd59c6f35c682f6c7c683eea7acf621eda26e537675b0772a",
+          "dependencies": []
+        },
+        "0109": {
+          "section": "00ZX",
+          "text_sha256": "71bf82d61770e85387a19fb70b7ddfc9fe2d7fffb4dec5a17199db100c9dae22",
+          "dependencies": []
+        },
+        "01AF": {
+          "section": "01AF",
+          "text_sha256": "05247f9902f58bac43fab0dc85250a17283bca207e7cce74f3d0b59ed40b9967",
+          "dependencies": [
+            {
+              "tag": "0077",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "007S",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "007T",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "007Z",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "0089",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "0091",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "00ZY",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "0102",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "0104",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            }
+          ]
+        },
+        "009H": {
+          "section": "009H",
+          "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "dependencies": [
+            {
+              "tag": "009I",
+              "reason": "The Bases and sheaves definition or construction explicitly invoked by the dependent passage."
+            },
+            {
+              "tag": "009J",
+              "reason": "The Bases and sheaves definition or construction explicitly invoked by the dependent passage."
+            }
+          ]
+        },
+        "009L": {
+          "section": "009H",
+          "text_sha256": "e634c68974b63a557edeb136c26c65d22a59d0c0b39725db4ac6f0804a12c984",
+          "dependencies": [
+            {
+              "tag": "009K",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            }
+          ]
+        },
+        "009N": {
+          "section": "009H",
+          "text_sha256": "efb00f2c7bb9c8ee1c3ecaf0583237796f4bbe06d6e374aab16da27ae3a703ac",
+          "dependencies": [
+            {
+              "tag": "0078",
+              "reason": "The section stalks construction or definition used by this passage."
+            },
+            {
+              "tag": "007Y",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "009J",
+              "reason": "The sheaf basis construction or definition used by this passage."
+            },
+            {
+              "tag": "009M",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            }
+          ]
+        },
+        "009T": {
+          "section": "009H",
+          "text_sha256": "da06c423e049afe812f5a248421d74f4082c9323208b3b8deeab1003827a5817",
+          "dependencies": [
+            {
+              "tag": "009N",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "009Q",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            }
+          ]
         },
         "007P": {
           "section": "007L",
@@ -585,28 +912,6 @@
             },
             {
               "tag": "007Z",
-              "reason": "Reference in the required statement, proof, or selected prose passage."
-            }
-          ]
-        },
-        "009N": {
-          "section": "009H",
-          "text_sha256": "efb00f2c7bb9c8ee1c3ecaf0583237796f4bbe06d6e374aab16da27ae3a703ac",
-          "dependencies": [
-            {
-              "tag": "0078",
-              "reason": "The section stalks construction or definition used by this passage."
-            },
-            {
-              "tag": "007Y",
-              "reason": "Reference in the required statement, proof, or selected prose passage."
-            },
-            {
-              "tag": "009J",
-              "reason": "The sheaf basis construction or definition used by this passage."
-            },
-            {
-              "tag": "009M",
               "reason": "Reference in the required statement, proof, or selected prose passage."
             }
           ]
@@ -673,48 +978,6 @@
             }
           ]
         },
-        "00E0": {
-          "section": "00DY",
-          "text_sha256": "25df23519a52094645469a92e06cc3800e4ce77419c470246d4f5b1207db1f84",
-          "dependencies": [
-            {
-              "tag": "004P",
-              "reason": "The base construction or definition used by this passage."
-            },
-            {
-              "tag": "00BI",
-              "reason": "Reference in the required statement, proof, or selected prose passage."
-            },
-            {
-              "tag": "00DZ",
-              "reason": "The spectrum ring construction or definition used by this passage."
-            }
-          ]
-        },
-        "00E4": {
-          "section": "00DY",
-          "text_sha256": "e718519560f43960ff8d5441dcecd955634f04bc5992802f189d95f7e04e006c",
-          "dependencies": [
-            {
-              "tag": "00E3",
-              "reason": "Reference in the required statement, proof, or selected prose passage."
-            }
-          ]
-        },
-        "00E8": {
-          "section": "00DY",
-          "text_sha256": "7da859ccd3cb3db14c5930a03bbbb2c5e51db91d4833cc06871a40e072d681ba",
-          "dependencies": [
-            {
-              "tag": "005A",
-              "reason": "The quasi compact construction or definition used by this passage."
-            },
-            {
-              "tag": "00E0",
-              "reason": "Reference in the required statement, proof, or selected prose passage."
-            }
-          ]
-        },
         "00F6": {
           "section": "00F5",
           "text_sha256": "289d46eb8a570541fc6965c164d88fd0c1e680340895d3af0176c1e9bc565b50",
@@ -733,45 +996,266 @@
             }
           ]
         },
-        "001M": {
-          "section": "001L",
-          "text_sha256": "4113f078627ad8579bea7321ad11ff9a6e70b9f070e0c9d87da6f101a190487b",
-          "dependencies": []
+        "002F": {
+          "section": "002D",
+          "text_sha256": "f1458903a141c2863ad4ddfc7139d0b3fb66799aa82fc4b71196724d55f9c821",
+          "dependencies": [
+            {
+              "tag": "001B",
+              "reason": "The functor construction or definition used by this passage."
+            },
+            {
+              "tag": "002U",
+              "reason": "The concrete construction of colimits of sets used for germs."
+            }
+          ]
         },
-        "001N": {
-          "section": "001L",
-          "text_sha256": "c27b600a660d6cd51b23a53eabd8fc791c82da8b4ee14f8d5c3474a9c4531635",
-          "dependencies": []
-        },
-        "006C": {
-          "section": "006C",
-          "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-          "dependencies": []
-        },
-        "001B": {
-          "section": "0013",
-          "text_sha256": "98035b9f693ad4922a00e8ce061ccc605c1e7927ae9d7989609a22f7f53abee3",
+        "006N": {
+          "section": "006M",
+          "text_sha256": "06ee397b598385e638fb8a5637baad9389af39c19aeb0326a4d87101e88b82a0",
           "dependencies": [
             {
               "tag": "0014",
               "reason": "The category construction or definition used by this passage."
+            },
+            {
+              "tag": "001L",
+              "reason": "Opposite categories used for category-valued presheaves."
+            },
+            {
+              "tag": "006E",
+              "reason": "The presheaf construction or definition used by this passage."
             }
           ]
         },
-        "002U": {
-          "section": "002U",
-          "text_sha256": "dc92974c015451ec00436f7aaf3d4a15ea263a9c474cd6a0e24130fcdf26aaa9",
+        "0078": {
+          "section": "0078",
+          "text_sha256": "e1f875a17b0328a5364bd5391f840f181308b5fcbb2a258627ee5e0c99702b54",
+          "dependencies": [
+            {
+              "tag": "002F",
+              "reason": "The colimit construction or definition used by this passage."
+            },
+            {
+              "tag": "002Z",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "0031",
+              "reason": "The directed system construction or definition used by this passage."
+            },
+            {
+              "tag": "006E",
+              "reason": "The presheaf construction or definition used by this passage."
+            }
+          ]
+        },
+        "0072": {
+          "section": "0071",
+          "text_sha256": "3db12f63ff6ffab67ae3bdf6156f16b935f5dee8e437286adf12354250d81669",
+          "dependencies": [
+            {
+              "tag": "006N",
+              "reason": "The presheaf values in category construction or definition used by this passage."
+            },
+            {
+              "tag": "006T",
+              "reason": "The sheaf construction or definition used by this passage."
+            }
+          ]
+        },
+        "008J": {
+          "section": "008C",
+          "text_sha256": "ce890501eac337b11aaa080fa6308548ad9dcf67acba0783ed7129883eba0bc2",
+          "dependencies": [
+            {
+              "tag": "006E",
+              "reason": "The presheaf construction or definition used by this passage."
+            }
+          ]
+        },
+        "004E": {
+          "section": "004E",
+          "text_sha256": "d465cbd5afbb72eb834ba00fe7af6b0a353d685c1e7e479be10a5ae0280ef720",
+          "dependencies": [
+            {
+              "tag": "004K",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            }
+          ]
+        },
+        "006T": {
+          "section": "006S",
+          "text_sha256": "041460b360dfa6a9d137bed749118fd98c2764c6ac5b9058dcb5aa7167313f76",
+          "dependencies": [
+            {
+              "tag": "006E",
+              "reason": "The presheaf construction or definition used by this passage."
+            }
+          ]
+        },
+        "008X": {
+          "section": "008R",
+          "text_sha256": "64505a9c40b29465338ee113207f5fc0d3d6a008f9e0f6279262b24c6aef613b",
+          "dependencies": [
+            {
+              "tag": "0089",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "008T",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            }
+          ]
+        },
+        "00A0": {
+          "section": "009Z",
+          "text_sha256": "227c909db2901efe85ab39a440668a6b6f26311cfafa2491ef23111483e44d96",
+          "dependencies": [
+            {
+              "tag": "008C",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            }
+          ]
+        },
+        "00AQ": {
+          "section": "00AQ",
+          "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
           "dependencies": []
         },
-        "0030": {
-          "section": "002Z",
-          "text_sha256": "27751a49e83e96f78a1173f0b99b0804962a844fb6dcc4b53bdc84fc9dbc1d2e",
+        "00AR": {
+          "section": "00AR",
+          "text_sha256": "6a98663e04e014e308e80cfd9f6345a60c10d1ccd4f9a457ba5e4a36a49797a0",
           "dependencies": []
         },
-        "00D3": {
-          "section": "002Z",
-          "text_sha256": "8bb2ee71e14663a05b3f5fefbaf09f8954586eca2e37fc4aa1608ba7f9ddd519",
+        "00E3": {
+          "section": "00DY",
+          "text_sha256": "ef7e33a913bc6b815df71b50c56e3014164c463d942f09b22a0a75c6829c4dd5",
+          "dependencies": [
+            {
+              "tag": "00C6",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "00C7",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "00CD",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "00CO",
+              "reason": "The localization construction or definition used by this passage."
+            },
+            {
+              "tag": "00E1",
+              "reason": "The Zariski topology construction or definition used by this passage."
+            },
+            {
+              "tag": "00E2",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            }
+          ]
+        },
+        "0077": {
+          "section": "0076",
+          "text_sha256": "1c9c12bb3d66dba985f9640f8e9e1415a6f7113d8c22d8f9dc0ac5c405863e1b",
+          "dependencies": [
+            {
+              "tag": "006Q",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            }
+          ]
+        },
+        "007S": {
+          "section": "007S",
+          "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "dependencies": [
+            {
+              "tag": "007U",
+              "reason": "The Exactness and points definition or construction explicitly invoked by the dependent passage."
+            }
+          ]
+        },
+        "007Z": {
+          "section": "007X",
+          "text_sha256": "527745fc5d91e9ca4d53e0b01736749b9ff809b77eeaf79124283e3b5aa7899b",
+          "dependencies": [
+            {
+              "tag": "007D",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            }
+          ]
+        },
+        "0089": {
+          "section": "0088",
+          "text_sha256": "6da5a745fbe09ac90dc668e2bc3e9a32e73dc6331af0521c396653b4180a2964",
           "dependencies": []
+        },
+        "00ZY": {
+          "section": "09SE",
+          "text_sha256": "f2f20a29e596bff02bee9eee017d5b551092a1e17065b3a0638ec31466e411c6",
+          "dependencies": []
+        },
+        "0102": {
+          "section": "09SE",
+          "text_sha256": "723be3902e63db5213e2350889e4a860184c409640bb5734371e531d865a6404",
+          "dependencies": [
+            {
+              "tag": "0101",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            }
+          ]
+        },
+        "0104": {
+          "section": "09SE",
+          "text_sha256": "675cbb2c05ee57eb18db573e06c5dd58bc69ba38f1dc3b21733b091d62655a30",
+          "dependencies": []
+        },
+        "009I": {
+          "section": "009H",
+          "text_sha256": "6c93d110842a2c8359211008db549eb05d04e9aff9c17718aceee14d47f14ca2",
+          "dependencies": []
+        },
+        "009J": {
+          "section": "009H",
+          "text_sha256": "e652dd58fca8ffb12cd797da31df852e088fe7993d80018cafeb3ee60fa6b05e",
+          "dependencies": [
+            {
+              "tag": "004P",
+              "reason": "The base construction or definition used by this passage."
+            },
+            {
+              "tag": "006T",
+              "reason": "The sheaf construction or definition used by this passage."
+            }
+          ]
+        },
+        "009K": {
+          "section": "009H",
+          "text_sha256": "aa0b7a7870d8d3718647cfbea0fc0e2e661161e7d3a0d9234f5e76d7a873482d",
+          "dependencies": []
+        },
+        "007Y": {
+          "section": "007X",
+          "text_sha256": "f283a2d4217fdee3018c3f60c0919a328596a9449ab87e6a07ff67fa4e567007",
+          "dependencies": [
+            {
+              "tag": "006V",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            }
+          ]
+        },
+        "009M": {
+          "section": "009H",
+          "text_sha256": "a72db910eb1439525aa4ed17b4efcdd37cf3d8127067da87fa4e9e2728e81c35",
+          "dependencies": [
+            {
+              "tag": "009J",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            }
+          ]
         },
         "001V": {
           "section": "001U",
@@ -788,50 +1272,6 @@
             },
             {
               "tag": "0078",
-              "reason": "Reference in the required statement, proof, or selected prose passage."
-            }
-          ]
-        },
-        "007Z": {
-          "section": "007X",
-          "text_sha256": "527745fc5d91e9ca4d53e0b01736749b9ff809b77eeaf79124283e3b5aa7899b",
-          "dependencies": [
-            {
-              "tag": "007D",
-              "reason": "Reference in the required statement, proof, or selected prose passage."
-            }
-          ]
-        },
-        "007Y": {
-          "section": "007X",
-          "text_sha256": "f283a2d4217fdee3018c3f60c0919a328596a9449ab87e6a07ff67fa4e567007",
-          "dependencies": [
-            {
-              "tag": "006V",
-              "reason": "Reference in the required statement, proof, or selected prose passage."
-            }
-          ]
-        },
-        "009J": {
-          "section": "009H",
-          "text_sha256": "e652dd58fca8ffb12cd797da31df852e088fe7993d80018cafeb3ee60fa6b05e",
-          "dependencies": [
-            {
-              "tag": "004P",
-              "reason": "The base construction or definition used by this passage."
-            },
-            {
-              "tag": "006T",
-              "reason": "The sheaf construction or definition used by this passage."
-            }
-          ]
-        },
-        "009M": {
-          "section": "009H",
-          "text_sha256": "a72db910eb1439525aa4ed17b4efcdd37cf3d8127067da87fa4e9e2728e81c35",
-          "dependencies": [
-            {
-              "tag": "009J",
               "reason": "Reference in the required statement, proof, or selected prose passage."
             }
           ]
@@ -865,108 +1305,96 @@
             }
           ]
         },
-        "004P": {
-          "section": "004O",
-          "text_sha256": "d377f6218350079d8a73be053c97223b8637b9401b2c81340657a80216671469",
+        "001B": {
+          "section": "0013",
+          "text_sha256": "98035b9f693ad4922a00e8ce061ccc605c1e7927ae9d7989609a22f7f53abee3",
           "dependencies": [
             {
-              "tag": "004E",
-              "reason": "The section topology basic construction or definition used by this passage."
+              "tag": "0014",
+              "reason": "The category construction or definition used by this passage."
             }
           ]
         },
-        "00BI": {
-          "section": "00AR",
-          "text_sha256": "5a9ea947333f694a47abe06a49ebf318b63e3d39987198859aa539af5924596d",
+        "002U": {
+          "section": "002U",
+          "text_sha256": "dc92974c015451ec00436f7aaf3d4a15ea263a9c474cd6a0e24130fcdf26aaa9",
           "dependencies": []
         },
-        "00DZ": {
-          "section": "00DY",
-          "text_sha256": "657c9a7a9aee9f8e8df7cf16e9036b803acab80024e5161c9d3b08ca54681521",
-          "dependencies": [
-            {
-              "tag": "00AQ",
-              "reason": "Commutative rings with identity and ring homomorphism conventions."
-            },
-            {
-              "tag": "00AR",
-              "reason": "The section rings basic construction or definition used by this passage."
-            }
-          ]
-        },
-        "00E3": {
-          "section": "00DY",
-          "text_sha256": "ef7e33a913bc6b815df71b50c56e3014164c463d942f09b22a0a75c6829c4dd5",
-          "dependencies": [
-            {
-              "tag": "00C6",
-              "reason": "Reference in the required statement, proof, or selected prose passage."
-            },
-            {
-              "tag": "00C7",
-              "reason": "Reference in the required statement, proof, or selected prose passage."
-            },
-            {
-              "tag": "00CD",
-              "reason": "Reference in the required statement, proof, or selected prose passage."
-            },
-            {
-              "tag": "00CO",
-              "reason": "The localization construction or definition used by this passage."
-            },
-            {
-              "tag": "00E1",
-              "reason": "The Zariski topology construction or definition used by this passage."
-            },
-            {
-              "tag": "00E2",
-              "reason": "Reference in the required statement, proof, or selected prose passage."
-            }
-          ]
-        },
-        "005A": {
-          "section": "0059",
-          "text_sha256": "1130390596261894062899b6e3d0c4af6f6c6297c661ca3324a1b9b1c5c8e614",
-          "dependencies": [
-            {
-              "tag": "004E",
-              "reason": "The section topology basic construction or definition used by this passage."
-            }
-          ]
-        },
-        "006X": {
-          "section": "006S",
-          "text_sha256": "c9f62ce118b1b9817c936d028e908d37d8a324548a4b678f01a0efffb3c4cea0",
+        "0014": {
+          "section": "0013",
+          "text_sha256": "c35031670d5359a2a292434585b10d23418dfd0943422d0fdb83627c50d70a6f",
           "dependencies": []
         },
-        "007D": {
-          "section": "0078",
-          "text_sha256": "e06ad13ff3f44af846be2538cea2462e0a141635a41b7e4f148405141dd1777f",
-          "dependencies": [
-            {
-              "tag": "006X",
-              "reason": "Reference in the required statement, proof, or selected prose passage."
-            }
-          ]
-        },
-        "006V": {
-          "section": "006S",
-          "text_sha256": "90e7a4291238cb0fe8e5784fd2bf7ee21c45b936b75a3fa06ed0d11a2eb2a041",
-          "dependencies": []
-        },
-        "00CN": {
-          "section": "00CM",
-          "text_sha256": "278e12a94770bc651b89e17dcf19075dbba3e9f6b86ffd54368c6c72e32a8fa3",
-          "dependencies": []
-        },
-        "00AQ": {
-          "section": "00AQ",
+        "001L": {
+          "section": "001L",
           "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "dependencies": [
+            {
+              "tag": "001M",
+              "reason": "The Opposite Categories and the Yoneda Lemma definition or construction explicitly invoked by the dependent passage."
+            },
+            {
+              "tag": "001N",
+              "reason": "The Opposite Categories and the Yoneda Lemma definition or construction explicitly invoked by the dependent passage."
+            }
+          ]
+        },
+        "006E": {
+          "section": "006D",
+          "text_sha256": "e728b50fec00b5a51ffd85b7518d87d42e03d9b363884124cfca05a3aa077563",
+          "dependencies": [
+            {
+              "tag": "004E",
+              "reason": "The section topology basic construction or definition used by this passage."
+            },
+            {
+              "tag": "006C",
+              "reason": "Open coverings and their conventions, used in presheaves and the sheaf axiom."
+            }
+          ]
+        },
+        "002Z": {
+          "section": "002Z",
+          "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "dependencies": [
+            {
+              "tag": "0030",
+              "reason": "The Limits and colimits over preordered sets definition or construction explicitly invoked by the dependent passage."
+            },
+            {
+              "tag": "0031",
+              "reason": "The Limits and colimits over preordered sets definition or construction explicitly invoked by the dependent passage."
+            }
+          ]
+        },
+        "0031": {
+          "section": "002Z",
+          "text_sha256": "c08d45c5dca04578e77f3148a6f5b32224e80e97bfc5759296d37d2ecbc0ac54",
+          "dependencies": [
+            {
+              "tag": "00D3",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            }
+          ]
+        },
+        "004K": {
+          "section": "004E",
+          "text_sha256": "167ed60d6e8b6b31f8a7fd6a8a8e162a0c4ec6e7f0aaf77ab036b8b73f2f035c",
           "dependencies": []
         },
-        "00AR": {
-          "section": "00AR",
-          "text_sha256": "6a98663e04e014e308e80cfd9f6345a60c10d1ccd4f9a457ba5e4a36a49797a0",
+        "008T": {
+          "section": "008R",
+          "text_sha256": "5f97151f2d4fcdc996c45ca2b08e0356ab0e50850d19e264ad708125128593d5",
+          "dependencies": [
+            {
+              "tag": "002W",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            }
+          ]
+        },
+        "008C": {
+          "section": "008C",
+          "text_sha256": "728751ba6c0826c24fb707a60f54fb4fabadf37e148432d3f991fa97d416b388",
           "dependencies": []
         },
         "00C6": {
@@ -1004,6 +1432,76 @@
             }
           ]
         },
+        "006Q": {
+          "section": "006P",
+          "text_sha256": "dfae1827cacc283153ba342d886435037aec05de426bfb6f0924a0a0ad9bffaa",
+          "dependencies": []
+        },
+        "007U": {
+          "section": "007S",
+          "text_sha256": "c05bc4bb42031cde21fe145e58ec149673edaf2a7143af7b7b48967de8fa1f06",
+          "dependencies": []
+        },
+        "007D": {
+          "section": "0078",
+          "text_sha256": "e06ad13ff3f44af846be2538cea2462e0a141635a41b7e4f148405141dd1777f",
+          "dependencies": [
+            {
+              "tag": "006X",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            }
+          ]
+        },
+        "0101": {
+          "section": "09SE",
+          "text_sha256": "ee61a9ecb6b3c556be36993e80e9feb1ac6dfcff435e2cce431fba4be086a991",
+          "dependencies": []
+        },
+        "006V": {
+          "section": "006S",
+          "text_sha256": "90e7a4291238cb0fe8e5784fd2bf7ee21c45b936b75a3fa06ed0d11a2eb2a041",
+          "dependencies": []
+        },
+        "006X": {
+          "section": "006S",
+          "text_sha256": "c9f62ce118b1b9817c936d028e908d37d8a324548a4b678f01a0efffb3c4cea0",
+          "dependencies": []
+        },
+        "00CN": {
+          "section": "00CM",
+          "text_sha256": "278e12a94770bc651b89e17dcf19075dbba3e9f6b86ffd54368c6c72e32a8fa3",
+          "dependencies": []
+        },
+        "001M": {
+          "section": "001L",
+          "text_sha256": "4113f078627ad8579bea7321ad11ff9a6e70b9f070e0c9d87da6f101a190487b",
+          "dependencies": []
+        },
+        "001N": {
+          "section": "001L",
+          "text_sha256": "c27b600a660d6cd51b23a53eabd8fc791c82da8b4ee14f8d5c3474a9c4531635",
+          "dependencies": []
+        },
+        "006C": {
+          "section": "006C",
+          "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "dependencies": []
+        },
+        "0030": {
+          "section": "002Z",
+          "text_sha256": "27751a49e83e96f78a1173f0b99b0804962a844fb6dcc4b53bdc84fc9dbc1d2e",
+          "dependencies": []
+        },
+        "00D3": {
+          "section": "002Z",
+          "text_sha256": "8bb2ee71e14663a05b3f5fefbaf09f8954586eca2e37fc4aa1608ba7f9ddd519",
+          "dependencies": []
+        },
+        "002W": {
+          "section": "04AX",
+          "text_sha256": "158f793e85e7d54040e2e4cb8cca7923a6df848ab80a29371c4901cb4e790f04",
+          "dependencies": []
+        },
         "00BV": {
           "section": "00AR",
           "text_sha256": "2b85fe6388fbd463cd6379e605716402e61deff2feb61944740816a30025ab65",
@@ -1011,232 +1509,592 @@
         }
       },
       "paths": {
-        "01IJ": [],
+        "01MB": [],
+        "01BE": [
+          "01MB"
+        ],
+        "01HR": [
+          "01MB"
+        ],
+        "01IJ": [
+          "01MB"
+        ],
+        "01M4": [
+          "01MB"
+        ],
+        "01M6": [
+          "01MB"
+        ],
+        "01M7": [
+          "01MB"
+        ],
+        "01MA": [
+          "01MB"
+        ],
+        "01HU": [
+          "01MB",
+          "01HR"
+        ],
+        "01HV": [
+          "01MB",
+          "01HR"
+        ],
+        "01HW": [
+          "01MB",
+          "01HR"
+        ],
         "01HB": [
+          "01MB",
           "01IJ"
         ],
         "01HG": [
+          "01MB",
           "01IJ"
         ],
-        "01HW": [
-          "01IJ"
+        "00E0": [
+          "01MB",
+          "01M4"
+        ],
+        "00E8": [
+          "01MB",
+          "01M4"
+        ],
+        "00JP": [
+          "01MB",
+          "01M4"
+        ],
+        "00JL": [
+          "01MB",
+          "01M7"
+        ],
+        "00JM": [
+          "01MB",
+          "01M7"
+        ],
+        "00JR": [
+          "01MB",
+          "01M7"
+        ],
+        "01AG": [
+          "01MB",
+          "01M7"
+        ],
+        "01M3": [
+          "01MB",
+          "01M7"
+        ],
+        "009Q": [
+          "01MB",
+          "01HR",
+          "01HU"
+        ],
+        "00EK": [
+          "01MB",
+          "01HR",
+          "01HU"
+        ],
+        "01HS": [
+          "01MB",
+          "01HR",
+          "01HU"
+        ],
+        "00CR": [
+          "01MB",
+          "01HR",
+          "01HV"
+        ],
+        "07BI": [
+          "01MB",
+          "01HR",
+          "01HV"
         ],
         "007H": [
+          "01MB",
           "01IJ",
           "01HB"
         ],
         "0091": [
-          "01IJ",
-          "01HB"
-        ],
-        "07BI": [
+          "01MB",
           "01IJ",
           "01HB"
         ],
         "00A1": [
+          "01MB",
           "01IJ",
           "01HG"
         ],
         "01HF": [
+          "01MB",
           "01IJ",
           "01HG"
         ],
-        "01HU": [
-          "01IJ",
-          "01HW"
+        "004P": [
+          "01MB",
+          "01M4",
+          "00E0"
         ],
-        "01HV": [
-          "01IJ",
-          "01HW"
+        "00BI": [
+          "01MB",
+          "01M4",
+          "00E0"
+        ],
+        "00DZ": [
+          "01MB",
+          "01M4",
+          "00E0"
+        ],
+        "005A": [
+          "01MB",
+          "01M4",
+          "00E8"
+        ],
+        "00E4": [
+          "01MB",
+          "01M4",
+          "00JP"
+        ],
+        "00JO": [
+          "01MB",
+          "01M4",
+          "00JP"
+        ],
+        "00JN": [
+          "01MB",
+          "01M7",
+          "00JM"
+        ],
+        "007T": [
+          "01MB",
+          "01M7",
+          "01AG"
+        ],
+        "0109": [
+          "01MB",
+          "01M7",
+          "01AG"
+        ],
+        "01AF": [
+          "01MB",
+          "01M7",
+          "01AG"
+        ],
+        "009H": [
+          "01MB",
+          "01M7",
+          "01M3"
+        ],
+        "009L": [
+          "01MB",
+          "01M7",
+          "01M3"
+        ],
+        "009N": [
+          "01MB",
+          "01M7",
+          "01M3"
+        ],
+        "009T": [
+          "01MB",
+          "01M7",
+          "01M3"
+        ],
+        "007P": [
+          "01MB",
+          "01HR",
+          "01HU",
+          "009Q"
+        ],
+        "007Q": [
+          "01MB",
+          "01HR",
+          "01HU",
+          "009Q"
+        ],
+        "0084": [
+          "01MB",
+          "01HR",
+          "01HU",
+          "009Q"
+        ],
+        "009P": [
+          "01MB",
+          "01HR",
+          "01HU",
+          "009Q"
+        ],
+        "00HN": [
+          "01MB",
+          "01HR",
+          "01HU",
+          "00EK"
+        ],
+        "02C7": [
+          "01MB",
+          "01HR",
+          "01HU",
+          "00EK"
+        ],
+        "07JZ": [
+          "01MB",
+          "01HR",
+          "01HU",
+          "00EK"
+        ],
+        "07K0": [
+          "01MB",
+          "01HR",
+          "01HU",
+          "00EK"
+        ],
+        "00CP": [
+          "01MB",
+          "01HR",
+          "01HU",
+          "01HS"
+        ],
+        "00F6": [
+          "01MB",
+          "01HR",
+          "01HU",
+          "01HS"
+        ],
+        "002F": [
+          "01MB",
+          "01HR",
+          "01HV",
+          "00CR"
         ],
         "006N": [
+          "01MB",
           "01IJ",
           "01HB",
           "007H"
         ],
         "0078": [
+          "01MB",
           "01IJ",
           "01HB",
           "007H"
         ],
         "0072": [
+          "01MB",
           "01IJ",
           "01HB",
           "0091"
         ],
         "008J": [
+          "01MB",
           "01IJ",
           "01HB",
           "0091"
         ],
         "004E": [
+          "01MB",
           "01IJ",
           "01HG",
           "00A1"
         ],
         "006T": [
+          "01MB",
+          "01IJ",
+          "01HG",
+          "00A1"
+        ],
+        "008X": [
+          "01MB",
           "01IJ",
           "01HG",
           "00A1"
         ],
         "00A0": [
+          "01MB",
           "01IJ",
           "01HG",
           "00A1"
         ],
-        "009Q": [
-          "01IJ",
-          "01HW",
-          "01HU"
+        "00AQ": [
+          "01MB",
+          "01M4",
+          "00E0",
+          "00DZ"
         ],
-        "00EK": [
-          "01IJ",
-          "01HW",
-          "01HU"
+        "00AR": [
+          "01MB",
+          "01M4",
+          "00E0",
+          "00DZ"
         ],
-        "01HS": [
-          "01IJ",
-          "01HW",
-          "01HU"
+        "00E3": [
+          "01MB",
+          "01M4",
+          "00JP",
+          "00E4"
         ],
-        "00CR": [
-          "01IJ",
-          "01HW",
-          "01HV"
+        "0077": [
+          "01MB",
+          "01M7",
+          "01AG",
+          "01AF"
+        ],
+        "007S": [
+          "01MB",
+          "01M7",
+          "01AG",
+          "01AF"
+        ],
+        "007Z": [
+          "01MB",
+          "01M7",
+          "01AG",
+          "01AF"
+        ],
+        "0089": [
+          "01MB",
+          "01M7",
+          "01AG",
+          "01AF"
+        ],
+        "00ZY": [
+          "01MB",
+          "01M7",
+          "01AG",
+          "01AF"
+        ],
+        "0102": [
+          "01MB",
+          "01M7",
+          "01AG",
+          "01AF"
+        ],
+        "0104": [
+          "01MB",
+          "01M7",
+          "01AG",
+          "01AF"
+        ],
+        "009I": [
+          "01MB",
+          "01M7",
+          "01M3",
+          "009H"
+        ],
+        "009J": [
+          "01MB",
+          "01M7",
+          "01M3",
+          "009H"
+        ],
+        "009K": [
+          "01MB",
+          "01M7",
+          "01M3",
+          "009L"
+        ],
+        "007Y": [
+          "01MB",
+          "01M7",
+          "01M3",
+          "009N"
+        ],
+        "009M": [
+          "01MB",
+          "01M7",
+          "01M3",
+          "009N"
+        ],
+        "001V": [
+          "01MB",
+          "01HR",
+          "01HU",
+          "009Q",
+          "0084"
+        ],
+        "007X": [
+          "01MB",
+          "01HR",
+          "01HU",
+          "009Q",
+          "0084"
+        ],
+        "007M": [
+          "01MB",
+          "01HR",
+          "01HU",
+          "009Q",
+          "009P"
+        ],
+        "00CS": [
+          "01MB",
+          "01HR",
+          "01HU",
+          "00EK",
+          "00HN"
+        ],
+        "00CO": [
+          "01MB",
+          "01HR",
+          "01HU",
+          "00EK",
+          "07JZ"
+        ],
+        "001B": [
+          "01MB",
+          "01HR",
+          "01HV",
+          "00CR",
+          "002F"
+        ],
+        "002U": [
+          "01MB",
+          "01HR",
+          "01HV",
+          "00CR",
+          "002F"
         ],
         "0014": [
+          "01MB",
           "01IJ",
           "01HB",
           "007H",
           "006N"
         ],
         "001L": [
+          "01MB",
           "01IJ",
           "01HB",
           "007H",
           "006N"
         ],
         "006E": [
+          "01MB",
           "01IJ",
           "01HB",
           "007H",
           "006N"
         ],
-        "002F": [
-          "01IJ",
-          "01HB",
-          "007H",
-          "0078"
-        ],
         "002Z": [
+          "01MB",
           "01IJ",
           "01HB",
           "007H",
           "0078"
         ],
         "0031": [
+          "01MB",
           "01IJ",
           "01HB",
           "007H",
           "0078"
         ],
         "004K": [
+          "01MB",
           "01IJ",
           "01HG",
           "00A1",
           "004E"
         ],
+        "008T": [
+          "01MB",
+          "01IJ",
+          "01HG",
+          "00A1",
+          "008X"
+        ],
         "008C": [
+          "01MB",
           "01IJ",
           "01HG",
           "00A1",
           "00A0"
         ],
-        "007P": [
-          "01IJ",
-          "01HW",
-          "01HU",
-          "009Q"
+        "00C6": [
+          "01MB",
+          "01M4",
+          "00JP",
+          "00E4",
+          "00E3"
         ],
-        "007Q": [
-          "01IJ",
-          "01HW",
-          "01HU",
-          "009Q"
+        "00C7": [
+          "01MB",
+          "01M4",
+          "00JP",
+          "00E4",
+          "00E3"
         ],
-        "0084": [
-          "01IJ",
-          "01HW",
-          "01HU",
-          "009Q"
+        "00CD": [
+          "01MB",
+          "01M4",
+          "00JP",
+          "00E4",
+          "00E3"
         ],
-        "009N": [
-          "01IJ",
-          "01HW",
-          "01HU",
-          "009Q"
+        "00E1": [
+          "01MB",
+          "01M4",
+          "00JP",
+          "00E4",
+          "00E3"
         ],
-        "009P": [
-          "01IJ",
-          "01HW",
-          "01HU",
-          "009Q"
+        "00E2": [
+          "01MB",
+          "01M4",
+          "00JP",
+          "00E4",
+          "00E3"
         ],
-        "00HN": [
-          "01IJ",
-          "01HW",
-          "01HU",
-          "00EK"
+        "006Q": [
+          "01MB",
+          "01M7",
+          "01AG",
+          "01AF",
+          "0077"
         ],
-        "02C7": [
-          "01IJ",
-          "01HW",
-          "01HU",
-          "00EK"
+        "007U": [
+          "01MB",
+          "01M7",
+          "01AG",
+          "01AF",
+          "007S"
         ],
-        "07JZ": [
-          "01IJ",
-          "01HW",
-          "01HU",
-          "00EK"
+        "007D": [
+          "01MB",
+          "01M7",
+          "01AG",
+          "01AF",
+          "007Z"
         ],
-        "07K0": [
-          "01IJ",
-          "01HW",
-          "01HU",
-          "00EK"
+        "0101": [
+          "01MB",
+          "01M7",
+          "01AG",
+          "01AF",
+          "0102"
         ],
-        "00CP": [
-          "01IJ",
-          "01HW",
-          "01HU",
-          "01HS"
+        "006V": [
+          "01MB",
+          "01M7",
+          "01M3",
+          "009N",
+          "007Y"
         ],
-        "00E0": [
-          "01IJ",
-          "01HW",
+        "006X": [
+          "01MB",
+          "01HR",
           "01HU",
-          "01HS"
+          "009Q",
+          "0084",
+          "007X"
         ],
-        "00E4": [
-          "01IJ",
-          "01HW",
+        "00CN": [
+          "01MB",
+          "01HR",
           "01HU",
-          "01HS"
-        ],
-        "00E8": [
-          "01IJ",
-          "01HW",
-          "01HU",
-          "01HS"
-        ],
-        "00F6": [
-          "01IJ",
-          "01HW",
-          "01HU",
-          "01HS"
+          "00EK",
+          "07JZ",
+          "00CO"
         ],
         "001M": [
+          "01MB",
           "01IJ",
           "01HB",
           "007H",
@@ -1244,6 +2102,7 @@
           "001L"
         ],
         "001N": [
+          "01MB",
           "01IJ",
           "01HB",
           "007H",
@@ -1251,27 +2110,15 @@
           "001L"
         ],
         "006C": [
+          "01MB",
           "01IJ",
           "01HB",
           "007H",
           "006N",
           "006E"
         ],
-        "001B": [
-          "01IJ",
-          "01HB",
-          "007H",
-          "0078",
-          "002F"
-        ],
-        "002U": [
-          "01IJ",
-          "01HB",
-          "007H",
-          "0078",
-          "002F"
-        ],
         "0030": [
+          "01MB",
           "01IJ",
           "01HB",
           "007H",
@@ -1279,203 +2126,25 @@
           "002Z"
         ],
         "00D3": [
+          "01MB",
           "01IJ",
           "01HB",
           "007H",
           "0078",
           "0031"
         ],
-        "001V": [
+        "002W": [
+          "01MB",
           "01IJ",
-          "01HW",
-          "01HU",
-          "009Q",
-          "0084"
-        ],
-        "007X": [
-          "01IJ",
-          "01HW",
-          "01HU",
-          "009Q",
-          "0084"
-        ],
-        "007Z": [
-          "01IJ",
-          "01HW",
-          "01HU",
-          "009Q",
-          "0084"
-        ],
-        "007Y": [
-          "01IJ",
-          "01HW",
-          "01HU",
-          "009Q",
-          "009N"
-        ],
-        "009J": [
-          "01IJ",
-          "01HW",
-          "01HU",
-          "009Q",
-          "009N"
-        ],
-        "009M": [
-          "01IJ",
-          "01HW",
-          "01HU",
-          "009Q",
-          "009N"
-        ],
-        "007M": [
-          "01IJ",
-          "01HW",
-          "01HU",
-          "009Q",
-          "009P"
-        ],
-        "00CS": [
-          "01IJ",
-          "01HW",
-          "01HU",
-          "00EK",
-          "00HN"
-        ],
-        "00CO": [
-          "01IJ",
-          "01HW",
-          "01HU",
-          "00EK",
-          "07JZ"
-        ],
-        "004P": [
-          "01IJ",
-          "01HW",
-          "01HU",
-          "01HS",
-          "00E0"
-        ],
-        "00BI": [
-          "01IJ",
-          "01HW",
-          "01HU",
-          "01HS",
-          "00E0"
-        ],
-        "00DZ": [
-          "01IJ",
-          "01HW",
-          "01HU",
-          "01HS",
-          "00E0"
-        ],
-        "00E3": [
-          "01IJ",
-          "01HW",
-          "01HU",
-          "01HS",
-          "00E4"
-        ],
-        "005A": [
-          "01IJ",
-          "01HW",
-          "01HU",
-          "01HS",
-          "00E8"
-        ],
-        "006X": [
-          "01IJ",
-          "01HW",
-          "01HU",
-          "009Q",
-          "0084",
-          "007X"
-        ],
-        "007D": [
-          "01IJ",
-          "01HW",
-          "01HU",
-          "009Q",
-          "0084",
-          "007Z"
-        ],
-        "006V": [
-          "01IJ",
-          "01HW",
-          "01HU",
-          "009Q",
-          "009N",
-          "007Y"
-        ],
-        "00CN": [
-          "01IJ",
-          "01HW",
-          "01HU",
-          "00EK",
-          "07JZ",
-          "00CO"
-        ],
-        "00AQ": [
-          "01IJ",
-          "01HW",
-          "01HU",
-          "01HS",
-          "00E0",
-          "00DZ"
-        ],
-        "00AR": [
-          "01IJ",
-          "01HW",
-          "01HU",
-          "01HS",
-          "00E0",
-          "00DZ"
-        ],
-        "00C6": [
-          "01IJ",
-          "01HW",
-          "01HU",
-          "01HS",
-          "00E4",
-          "00E3"
-        ],
-        "00C7": [
-          "01IJ",
-          "01HW",
-          "01HU",
-          "01HS",
-          "00E4",
-          "00E3"
-        ],
-        "00CD": [
-          "01IJ",
-          "01HW",
-          "01HU",
-          "01HS",
-          "00E4",
-          "00E3"
-        ],
-        "00E1": [
-          "01IJ",
-          "01HW",
-          "01HU",
-          "01HS",
-          "00E4",
-          "00E3"
-        ],
-        "00E2": [
-          "01IJ",
-          "01HW",
-          "01HU",
-          "01HS",
-          "00E4",
-          "00E3"
+          "01HG",
+          "00A1",
+          "008X",
+          "008T"
         ],
         "00BV": [
-          "01IJ",
-          "01HW",
-          "01HU",
-          "01HS",
+          "01MB",
+          "01M4",
+          "00JP",
           "00E4",
           "00E3",
           "00E2"
@@ -1493,19 +2162,9 @@
           "reason": "An alternative, more general construction; the construction on spaces is given here."
         },
         {
-          "from_tag": "00A1",
-          "to_tag": "008X",
-          "reason": "The scheme definition uses restriction of sheaves of rings and the open ringed subspace (items 1–3). Item 4 concerns module restrictions and is contextual for this target."
-        },
-        {
           "from_tag": "00AR",
           "to_tag": "00F3",
           "reason": "Introductory forward comparison, further example, generalization, or announcement of a later result; not used to establish the target."
-        },
-        {
-          "from_tag": "01HV",
-          "to_tag": "01AG",
-          "reason": "For defining a scheme, only the ring sections, restrictions, and stalk identifications in Lemma 01HV are used. Its final assertion about exactness of the associated module sheaf is contextual; the later curves reading follows that module assertion and its proof."
         }
       ],
       "reused_sections": [],
@@ -1616,6 +2275,9 @@
         "00HN": {
           "07JZ": "The localization module construction or definition used by this passage."
         },
+        "01AG": {
+          "01AF": "The kernel and cokernel constructions preceding the abelian-category lemma, used in its proof."
+        },
         "01HB": {
           "0091": "The ringed space construction or definition used by this passage.",
           "007H": "The lemma stalk presheaf values in category construction or definition used by this passage.",
@@ -1648,6 +2310,21 @@
           "01HW": "The affine scheme construction or definition used by this passage.",
           "01HB": "The locally ringed space construction or definition used by this passage.",
           "01HG": "The open subspace construction or definition used by this passage."
+        },
+        "01M3": {
+          "00JL": "The section graded construction or definition used by this passage.",
+          "01IJ": "The scheme construction or definition used by this passage."
+        },
+        "01M7": {
+          "00JL": "Graded modules and the shift M(n) are defined in prose.",
+          "00JM": "The topological space Proj and homogeneous localization precede its scheme structure.",
+          "01M3": "The section proj construction or definition used by this passage.",
+          "01BE": "The quasi coherent construction or definition used by this passage."
+        },
+        "01MB": {
+          "01IJ": "The affine standard opens establish the scheme condition of Definition 26.9.1.",
+          "01M6": "The locally ringed space and associated module sheaf are defined before the lemma.",
+          "01BE": "The final assertion uses the definition of a quasi-coherent sheaf."
         },
         "07JZ": {
           "00CO": "The localization construction or definition used by this passage."
@@ -1767,11 +2444,14 @@
         "009H",
         "009I",
         "009J",
+        "009K",
+        "009L",
         "009M",
         "009N",
         "009P",
         "009Q",
         "009R",
+        "009T",
         "009V",
         "009Z",
         "00A0",
@@ -3246,27 +3926,59 @@
         },
         "01M3": {
           "section": "01M3",
-          "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "text_sha256": "ef48c83fe373724e22fa61a0b82fb72d306035d5327e52a483806f69c6a6bc39",
           "dependencies": [
+            {
+              "tag": "009H",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "009L",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "009N",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "009Q",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "009T",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "00EK",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
             {
               "tag": "00JL",
               "reason": "The section graded construction or definition used by this passage."
             },
             {
               "tag": "00JM",
-              "reason": "The Proj of a graded ring definition or construction explicitly invoked by the dependent passage."
+              "reason": "The construction of the Proj structure sheaf, graded-module sheaves, and their stalks is supplied in unnumbered prose before Definition 27.8.3; follow that construction, not the later separatedness and valuative-criterion results."
+            },
+            {
+              "tag": "00JR",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
             },
             {
               "tag": "01IJ",
               "reason": "The scheme construction or definition used by this passage."
             },
             {
+              "tag": "01M4",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
               "tag": "01M6",
-              "reason": "The Proj of a graded ring definition or construction explicitly invoked by the dependent passage."
+              "reason": "The construction of the Proj structure sheaf, graded-module sheaves, and their stalks is supplied in unnumbered prose before Definition 27.8.3; follow that construction, not the later separatedness and valuative-criterion results."
             },
             {
               "tag": "01MB",
-              "reason": "The Proj of a graded ring definition or construction explicitly invoked by the dependent passage."
+              "reason": "The construction of the Proj structure sheaf, graded-module sheaves, and their stalks is supplied in unnumbered prose before Definition 27.8.3; follow that construction, not the later separatedness and valuative-criterion results."
             }
           ]
         },
@@ -3995,6 +4707,114 @@
             }
           ]
         },
+        "009H": {
+          "section": "009H",
+          "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "dependencies": [
+            {
+              "tag": "009I",
+              "reason": "The Bases and sheaves definition or construction explicitly invoked by the dependent passage."
+            },
+            {
+              "tag": "009J",
+              "reason": "The Bases and sheaves definition or construction explicitly invoked by the dependent passage."
+            }
+          ]
+        },
+        "009L": {
+          "section": "009H",
+          "text_sha256": "e634c68974b63a557edeb136c26c65d22a59d0c0b39725db4ac6f0804a12c984",
+          "dependencies": [
+            {
+              "tag": "009K",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            }
+          ]
+        },
+        "009N": {
+          "section": "009H",
+          "text_sha256": "efb00f2c7bb9c8ee1c3ecaf0583237796f4bbe06d6e374aab16da27ae3a703ac",
+          "dependencies": [
+            {
+              "tag": "0078",
+              "reason": "The section stalks construction or definition used by this passage."
+            },
+            {
+              "tag": "007Y",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "009J",
+              "reason": "The sheaf basis construction or definition used by this passage."
+            },
+            {
+              "tag": "009M",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            }
+          ]
+        },
+        "009Q": {
+          "section": "009H",
+          "text_sha256": "8f3bd0e9717272e96bddd17013388991834d37d144dee4240624e7387a45cd62",
+          "dependencies": [
+            {
+              "tag": "007P",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "007Q",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "0084",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "009N",
+              "reason": "The lemma extend off basis construction or definition used by this passage."
+            },
+            {
+              "tag": "009P",
+              "reason": "The sheaf structures basis construction or definition used by this passage."
+            }
+          ]
+        },
+        "009T": {
+          "section": "009H",
+          "text_sha256": "da06c423e049afe812f5a248421d74f4082c9323208b3b8deeab1003827a5817",
+          "dependencies": [
+            {
+              "tag": "009N",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "009Q",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            }
+          ]
+        },
+        "00EK": {
+          "section": "00EI",
+          "text_sha256": "cd86caf03fbe1b084025a0f24f9509ea2b2a043d3afb3e7be4c042e8a03edb0c",
+          "dependencies": [
+            {
+              "tag": "00HN",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "02C7",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "07JZ",
+              "reason": "The localization module construction or definition used by this passage."
+            },
+            {
+              "tag": "07K0",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            }
+          ]
+        },
         "01IJ": {
           "section": "01II",
           "text_sha256": "54d823d3e37b88bfe6b054d5cbfb630fe7d95d8b75fa204f9d1c3190632e6c29",
@@ -4023,12 +4843,24 @@
           "text_sha256": "d6da35f54b0bb1c3ab1fcef22a724cc92add0a895883e2984f5da1703c1323f3",
           "dependencies": [
             {
+              "tag": "01BE",
+              "reason": "The final assertion uses the definition of a quasi-coherent sheaf."
+            },
+            {
               "tag": "01HR",
               "reason": "Reference in the required statement, proof, or selected prose passage."
             },
             {
+              "tag": "01IJ",
+              "reason": "The affine standard opens establish the scheme condition of Definition 26.9.1."
+            },
+            {
               "tag": "01M4",
               "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "01M6",
+              "reason": "The locally ringed space and associated module sheaf are defined before the lemma."
             },
             {
               "tag": "01M7",
@@ -4338,28 +5170,6 @@
           "section": "01FG",
           "text_sha256": "ae0ae60ec8f4b69b3419f1ca8746b1c98ffcfb0dd577ca4bff273ba98ffe1ec4",
           "dependencies": []
-        },
-        "00EK": {
-          "section": "00EI",
-          "text_sha256": "cd86caf03fbe1b084025a0f24f9509ea2b2a043d3afb3e7be4c042e8a03edb0c",
-          "dependencies": [
-            {
-              "tag": "00HN",
-              "reason": "Reference in the required statement, proof, or selected prose passage."
-            },
-            {
-              "tag": "02C7",
-              "reason": "Reference in the required statement, proof, or selected prose passage."
-            },
-            {
-              "tag": "07JZ",
-              "reason": "The localization module construction or definition used by this passage."
-            },
-            {
-              "tag": "07K0",
-              "reason": "Reference in the required statement, proof, or selected prose passage."
-            }
-          ]
         },
         "00HN": {
           "section": "00EN",
@@ -5113,6 +5923,134 @@
           "text_sha256": "675cbb2c05ee57eb18db573e06c5dd58bc69ba38f1dc3b21733b091d62655a30",
           "dependencies": []
         },
+        "009I": {
+          "section": "009H",
+          "text_sha256": "6c93d110842a2c8359211008db549eb05d04e9aff9c17718aceee14d47f14ca2",
+          "dependencies": []
+        },
+        "009J": {
+          "section": "009H",
+          "text_sha256": "e652dd58fca8ffb12cd797da31df852e088fe7993d80018cafeb3ee60fa6b05e",
+          "dependencies": [
+            {
+              "tag": "004P",
+              "reason": "The base construction or definition used by this passage."
+            },
+            {
+              "tag": "006T",
+              "reason": "The sheaf construction or definition used by this passage."
+            }
+          ]
+        },
+        "009K": {
+          "section": "009H",
+          "text_sha256": "aa0b7a7870d8d3718647cfbea0fc0e2e661161e7d3a0d9234f5e76d7a873482d",
+          "dependencies": []
+        },
+        "0078": {
+          "section": "0078",
+          "text_sha256": "e1f875a17b0328a5364bd5391f840f181308b5fcbb2a258627ee5e0c99702b54",
+          "dependencies": [
+            {
+              "tag": "002F",
+              "reason": "The colimit construction or definition used by this passage."
+            },
+            {
+              "tag": "002Z",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "0031",
+              "reason": "The directed system construction or definition used by this passage."
+            },
+            {
+              "tag": "006E",
+              "reason": "The presheaf construction or definition used by this passage."
+            }
+          ]
+        },
+        "007Y": {
+          "section": "007X",
+          "text_sha256": "f283a2d4217fdee3018c3f60c0919a328596a9449ab87e6a07ff67fa4e567007",
+          "dependencies": [
+            {
+              "tag": "006V",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            }
+          ]
+        },
+        "009M": {
+          "section": "009H",
+          "text_sha256": "a72db910eb1439525aa4ed17b4efcdd37cf3d8127067da87fa4e9e2728e81c35",
+          "dependencies": [
+            {
+              "tag": "009J",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            }
+          ]
+        },
+        "007P": {
+          "section": "007L",
+          "text_sha256": "06f7c2d5f90a16856fb9c597e9cf7c0b87ccf6095ee855c947973b0e873e7076",
+          "dependencies": []
+        },
+        "007Q": {
+          "section": "007L",
+          "text_sha256": "44927ff91f720681e9751d473b053d3adb558bb4d9e63df8fd7fc3505c940851",
+          "dependencies": []
+        },
+        "0084": {
+          "section": "0083",
+          "text_sha256": "5327b2cd187953ccdf79e6cdf2fa5416afe8719bec79811efbe461ec25929829",
+          "dependencies": [
+            {
+              "tag": "001V",
+              "reason": "The fibre product of sets used in the gluing diagram."
+            },
+            {
+              "tag": "007X",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "007Z",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            }
+          ]
+        },
+        "009P": {
+          "section": "009H",
+          "text_sha256": "ea4358a146401add4a6025cca6d1c317b9bf1dc5df544ffb92e67b545eb9ccc6",
+          "dependencies": [
+            {
+              "tag": "007M",
+              "reason": "The algebraic structure construction or definition used by this passage."
+            },
+            {
+              "tag": "009J",
+              "reason": "The sheaf basis construction or definition used by this passage."
+            }
+          ]
+        },
+        "02C7": {
+          "section": "00CM",
+          "text_sha256": "fb28f1d9be7ee62a1c9fa5ffc1acda4fb002fbce6dc7d1d536420417e3111fb7",
+          "dependencies": []
+        },
+        "07JZ": {
+          "section": "00CM",
+          "text_sha256": "e828701a5c7a8dbe4834025994c2f277a3fe4301a26bd6a28b6a0aac15a7ce1d",
+          "dependencies": [
+            {
+              "tag": "00CO",
+              "reason": "The localization construction or definition used by this passage."
+            }
+          ]
+        },
+        "07K0": {
+          "section": "00CM",
+          "text_sha256": "17949a798e1efe922e6074ee125981b701d117d3665e0cf054fc3d20791247ca",
+          "dependencies": []
+        },
         "01HB": {
           "section": "01HA",
           "text_sha256": "f70548ce260f02df0c12473bf504b2650d675f209d9b4d8c8287f1ad1f8a6cc8",
@@ -5564,26 +6502,6 @@
         "004K": {
           "section": "004E",
           "text_sha256": "167ed60d6e8b6b31f8a7fd6a8a8e162a0c4ec6e7f0aaf77ab036b8b73f2f035c",
-          "dependencies": []
-        },
-        "02C7": {
-          "section": "00CM",
-          "text_sha256": "fb28f1d9be7ee62a1c9fa5ffc1acda4fb002fbce6dc7d1d536420417e3111fb7",
-          "dependencies": []
-        },
-        "07JZ": {
-          "section": "00CM",
-          "text_sha256": "e828701a5c7a8dbe4834025994c2f277a3fe4301a26bd6a28b6a0aac15a7ce1d",
-          "dependencies": [
-            {
-              "tag": "00CO",
-              "reason": "The localization construction or definition used by this passage."
-            }
-          ]
-        },
-        "07K0": {
-          "section": "00CM",
-          "text_sha256": "17949a798e1efe922e6074ee125981b701d117d3665e0cf054fc3d20791247ca",
           "dependencies": []
         },
         "00CS": {
@@ -6528,6 +7446,116 @@
           "text_sha256": "ee61a9ecb6b3c556be36993e80e9feb1ac6dfcff435e2cce431fba4be086a991",
           "dependencies": []
         },
+        "006T": {
+          "section": "006S",
+          "text_sha256": "041460b360dfa6a9d137bed749118fd98c2764c6ac5b9058dcb5aa7167313f76",
+          "dependencies": [
+            {
+              "tag": "006E",
+              "reason": "The presheaf construction or definition used by this passage."
+            }
+          ]
+        },
+        "002F": {
+          "section": "002D",
+          "text_sha256": "f1458903a141c2863ad4ddfc7139d0b3fb66799aa82fc4b71196724d55f9c821",
+          "dependencies": [
+            {
+              "tag": "001B",
+              "reason": "The functor construction or definition used by this passage."
+            },
+            {
+              "tag": "002U",
+              "reason": "The concrete construction of colimits of sets used for germs."
+            }
+          ]
+        },
+        "002Z": {
+          "section": "002Z",
+          "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "dependencies": [
+            {
+              "tag": "0030",
+              "reason": "The Limits and colimits over preordered sets definition or construction explicitly invoked by the dependent passage."
+            },
+            {
+              "tag": "0031",
+              "reason": "The Limits and colimits over preordered sets definition or construction explicitly invoked by the dependent passage."
+            }
+          ]
+        },
+        "0031": {
+          "section": "002Z",
+          "text_sha256": "c08d45c5dca04578e77f3148a6f5b32224e80e97bfc5759296d37d2ecbc0ac54",
+          "dependencies": [
+            {
+              "tag": "00D3",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            }
+          ]
+        },
+        "006E": {
+          "section": "006D",
+          "text_sha256": "e728b50fec00b5a51ffd85b7518d87d42e03d9b363884124cfca05a3aa077563",
+          "dependencies": [
+            {
+              "tag": "004E",
+              "reason": "The section topology basic construction or definition used by this passage."
+            },
+            {
+              "tag": "006C",
+              "reason": "Open coverings and their conventions, used in presheaves and the sheaf axiom."
+            }
+          ]
+        },
+        "006V": {
+          "section": "006S",
+          "text_sha256": "90e7a4291238cb0fe8e5784fd2bf7ee21c45b936b75a3fa06ed0d11a2eb2a041",
+          "dependencies": []
+        },
+        "001V": {
+          "section": "001U",
+          "text_sha256": "d9fb05397c374e20a5a3f767cbbdf7846f130e07338bebb1258ad08e15d7149c",
+          "dependencies": []
+        },
+        "007X": {
+          "section": "007X",
+          "text_sha256": "6f5e522b76c4b1e2d0a014dec43d35f86c0d04a3370e560d06526836e2bc8f6d",
+          "dependencies": [
+            {
+              "tag": "006X",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "0078",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            }
+          ]
+        },
+        "007M": {
+          "section": "007L",
+          "text_sha256": "6f84bdb4d115734af9504c6bfe7327dec617544683027641fe753bfe0770c048",
+          "dependencies": [
+            {
+              "tag": "001B",
+              "reason": "The functor construction or definition used by this passage."
+            },
+            {
+              "tag": "002F",
+              "reason": "The colimit construction or definition used by this passage."
+            }
+          ]
+        },
+        "00CO": {
+          "section": "00CM",
+          "text_sha256": "62c94f31b1841de3ef2c40325d1e66f15e77c77de75e228d8a73f805c4b137c6",
+          "dependencies": [
+            {
+              "tag": "00CN",
+              "reason": "The multiplicative subset construction or definition used by this passage."
+            }
+          ]
+        },
         "007H": {
           "section": "007G",
           "text_sha256": "7d1fad669a19250477811ff34a8f8bd877443013a92584e0d923efb9a1634c98",
@@ -6932,16 +7960,6 @@
             {
               "tag": "01NY",
               "reason": "Reference in the required statement, proof, or selected prose passage."
-            }
-          ]
-        },
-        "00CO": {
-          "section": "00CM",
-          "text_sha256": "62c94f31b1841de3ef2c40325d1e66f15e77c77de75e228d8a73f805c4b137c6",
-          "dependencies": [
-            {
-              "tag": "00CN",
-              "reason": "The multiplicative subset construction or definition used by this passage."
             }
           ]
         },
@@ -7986,30 +9004,6 @@
             }
           ]
         },
-        "006T": {
-          "section": "006S",
-          "text_sha256": "041460b360dfa6a9d137bed749118fd98c2764c6ac5b9058dcb5aa7167313f76",
-          "dependencies": [
-            {
-              "tag": "006E",
-              "reason": "The presheaf construction or definition used by this passage."
-            }
-          ]
-        },
-        "006E": {
-          "section": "006D",
-          "text_sha256": "e728b50fec00b5a51ffd85b7518d87d42e03d9b363884124cfca05a3aa077563",
-          "dependencies": [
-            {
-              "tag": "004E",
-              "reason": "The section topology basic construction or definition used by this passage."
-            },
-            {
-              "tag": "006C",
-              "reason": "Open coverings and their conventions, used in presheaves and the sheaf axiom."
-            }
-          ]
-        },
         "002H": {
           "section": "002D",
           "text_sha256": "be548b96e55eb308941c8e4602b287b3c466f624c9b25ea28c5fa47a2d332466",
@@ -8069,27 +9063,40 @@
             }
           ]
         },
-        "0078": {
-          "section": "0078",
-          "text_sha256": "e1f875a17b0328a5364bd5391f840f181308b5fcbb2a258627ee5e0c99702b54",
+        "001B": {
+          "section": "0013",
+          "text_sha256": "98035b9f693ad4922a00e8ce061ccc605c1e7927ae9d7989609a22f7f53abee3",
           "dependencies": [
             {
-              "tag": "002F",
-              "reason": "The colimit construction or definition used by this passage."
-            },
-            {
-              "tag": "002Z",
-              "reason": "Reference in the required statement, proof, or selected prose passage."
-            },
-            {
-              "tag": "0031",
-              "reason": "The directed system construction or definition used by this passage."
-            },
-            {
-              "tag": "006E",
-              "reason": "The presheaf construction or definition used by this passage."
+              "tag": "0014",
+              "reason": "The category construction or definition used by this passage."
             }
           ]
+        },
+        "002U": {
+          "section": "002U",
+          "text_sha256": "dc92974c015451ec00436f7aaf3d4a15ea263a9c474cd6a0e24130fcdf26aaa9",
+          "dependencies": []
+        },
+        "0030": {
+          "section": "002Z",
+          "text_sha256": "27751a49e83e96f78a1173f0b99b0804962a844fb6dcc4b53bdc84fc9dbc1d2e",
+          "dependencies": []
+        },
+        "00D3": {
+          "section": "002Z",
+          "text_sha256": "8bb2ee71e14663a05b3f5fefbaf09f8954586eca2e37fc4aa1608ba7f9ddd519",
+          "dependencies": []
+        },
+        "006C": {
+          "section": "006C",
+          "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "dependencies": []
+        },
+        "00CN": {
+          "section": "00CM",
+          "text_sha256": "278e12a94770bc651b89e17dcf19075dbba3e9f6b86ffd54368c6c72e32a8fa3",
+          "dependencies": []
         },
         "008X": {
           "section": "008R",
@@ -8112,32 +9119,6 @@
             {
               "tag": "008C",
               "reason": "Reference in the required statement, proof, or selected prose passage."
-            }
-          ]
-        },
-        "009Q": {
-          "section": "009H",
-          "text_sha256": "8f3bd0e9717272e96bddd17013388991834d37d144dee4240624e7387a45cd62",
-          "dependencies": [
-            {
-              "tag": "007P",
-              "reason": "Reference in the required statement, proof, or selected prose passage."
-            },
-            {
-              "tag": "007Q",
-              "reason": "Reference in the required statement, proof, or selected prose passage."
-            },
-            {
-              "tag": "0084",
-              "reason": "Reference in the required statement, proof, or selected prose passage."
-            },
-            {
-              "tag": "009N",
-              "reason": "The lemma extend off basis construction or definition used by this passage."
-            },
-            {
-              "tag": "009P",
-              "reason": "The sheaf structures basis construction or definition used by this passage."
             }
           ]
         },
@@ -8326,11 +9307,6 @@
             }
           ]
         },
-        "001V": {
-          "section": "001U",
-          "text_sha256": "d9fb05397c374e20a5a3f767cbbdf7846f130e07338bebb1258ad08e15d7149c",
-          "dependencies": []
-        },
         "00IC": {
           "section": "00I8",
           "text_sha256": "64fdec03ef980046e0d033c556eec28585ec138a7f1e63464629c601c9825b0e",
@@ -8445,33 +9421,6 @@
             },
             {
               "tag": "01NU",
-              "reason": "Reference in the required statement, proof, or selected prose passage."
-            }
-          ]
-        },
-        "00CN": {
-          "section": "00CM",
-          "text_sha256": "278e12a94770bc651b89e17dcf19075dbba3e9f6b86ffd54368c6c72e32a8fa3",
-          "dependencies": []
-        },
-        "009N": {
-          "section": "009H",
-          "text_sha256": "efb00f2c7bb9c8ee1c3ecaf0583237796f4bbe06d6e374aab16da27ae3a703ac",
-          "dependencies": [
-            {
-              "tag": "0078",
-              "reason": "The section stalks construction or definition used by this passage."
-            },
-            {
-              "tag": "007Y",
-              "reason": "Reference in the required statement, proof, or selected prose passage."
-            },
-            {
-              "tag": "009J",
-              "reason": "The sheaf basis construction or definition used by this passage."
-            },
-            {
-              "tag": "009M",
               "reason": "Reference in the required statement, proof, or selected prose passage."
             }
           ]
@@ -9182,20 +10131,6 @@
             }
           ]
         },
-        "009H": {
-          "section": "009H",
-          "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-          "dependencies": [
-            {
-              "tag": "009I",
-              "reason": "The Bases and sheaves definition or construction explicitly invoked by the dependent passage."
-            },
-            {
-              "tag": "009J",
-              "reason": "The Bases and sheaves definition or construction explicitly invoked by the dependent passage."
-            }
-          ]
-        },
         "0AYM": {
           "section": "0B3Q",
           "text_sha256": "f21d8909e39b06596d371fd89531574142c1364205fb2015ef21a6ce1a987701",
@@ -9553,16 +10488,6 @@
             }
           ]
         },
-        "006C": {
-          "section": "006C",
-          "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-          "dependencies": []
-        },
-        "002U": {
-          "section": "002U",
-          "text_sha256": "dc92974c015451ec00436f7aaf3d4a15ea263a9c474cd6a0e24130fcdf26aaa9",
-          "dependencies": []
-        },
         "00ZZ": {
           "section": "09SE",
           "text_sha256": "8d0729c85d561f497c0c10866048ae1e456c21e1364c4d5f6b843e1fed772fcc",
@@ -9583,44 +10508,6 @@
           "text_sha256": "2b85fe6388fbd463cd6379e605716402e61deff2feb61944740816a30025ab65",
           "dependencies": []
         },
-        "002F": {
-          "section": "002D",
-          "text_sha256": "f1458903a141c2863ad4ddfc7139d0b3fb66799aa82fc4b71196724d55f9c821",
-          "dependencies": [
-            {
-              "tag": "001B",
-              "reason": "The functor construction or definition used by this passage."
-            },
-            {
-              "tag": "002U",
-              "reason": "The concrete construction of colimits of sets used for germs."
-            }
-          ]
-        },
-        "002Z": {
-          "section": "002Z",
-          "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-          "dependencies": [
-            {
-              "tag": "0030",
-              "reason": "The Limits and colimits over preordered sets definition or construction explicitly invoked by the dependent passage."
-            },
-            {
-              "tag": "0031",
-              "reason": "The Limits and colimits over preordered sets definition or construction explicitly invoked by the dependent passage."
-            }
-          ]
-        },
-        "0031": {
-          "section": "002Z",
-          "text_sha256": "c08d45c5dca04578e77f3148a6f5b32224e80e97bfc5759296d37d2ecbc0ac54",
-          "dependencies": [
-            {
-              "tag": "00D3",
-              "reason": "Reference in the required statement, proof, or selected prose passage."
-            }
-          ]
-        },
         "008T": {
           "section": "008R",
           "text_sha256": "5f97151f2d4fcdc996c45ca2b08e0356ab0e50850d19e264ad708125128593d5",
@@ -9635,48 +10522,6 @@
           "section": "008C",
           "text_sha256": "728751ba6c0826c24fb707a60f54fb4fabadf37e148432d3f991fa97d416b388",
           "dependencies": []
-        },
-        "007P": {
-          "section": "007L",
-          "text_sha256": "06f7c2d5f90a16856fb9c597e9cf7c0b87ccf6095ee855c947973b0e873e7076",
-          "dependencies": []
-        },
-        "007Q": {
-          "section": "007L",
-          "text_sha256": "44927ff91f720681e9751d473b053d3adb558bb4d9e63df8fd7fc3505c940851",
-          "dependencies": []
-        },
-        "0084": {
-          "section": "0083",
-          "text_sha256": "5327b2cd187953ccdf79e6cdf2fa5416afe8719bec79811efbe461ec25929829",
-          "dependencies": [
-            {
-              "tag": "001V",
-              "reason": "The fibre product of sets used in the gluing diagram."
-            },
-            {
-              "tag": "007X",
-              "reason": "Reference in the required statement, proof, or selected prose passage."
-            },
-            {
-              "tag": "007Z",
-              "reason": "Reference in the required statement, proof, or selected prose passage."
-            }
-          ]
-        },
-        "009P": {
-          "section": "009H",
-          "text_sha256": "ea4358a146401add4a6025cca6d1c317b9bf1dc5df544ffb92e67b545eb9ccc6",
-          "dependencies": [
-            {
-              "tag": "007M",
-              "reason": "The algebraic structure construction or definition used by this passage."
-            },
-            {
-              "tag": "009J",
-              "reason": "The sheaf basis construction or definition used by this passage."
-            }
-          ]
         },
         "01J2": {
           "section": "01IZ",
@@ -9874,40 +10719,6 @@
             },
             {
               "tag": "01NN",
-              "reason": "Reference in the required statement, proof, or selected prose passage."
-            }
-          ]
-        },
-        "007Y": {
-          "section": "007X",
-          "text_sha256": "f283a2d4217fdee3018c3f60c0919a328596a9449ab87e6a07ff67fa4e567007",
-          "dependencies": [
-            {
-              "tag": "006V",
-              "reason": "Reference in the required statement, proof, or selected prose passage."
-            }
-          ]
-        },
-        "009J": {
-          "section": "009H",
-          "text_sha256": "e652dd58fca8ffb12cd797da31df852e088fe7993d80018cafeb3ee60fa6b05e",
-          "dependencies": [
-            {
-              "tag": "004P",
-              "reason": "The base construction or definition used by this passage."
-            },
-            {
-              "tag": "006T",
-              "reason": "The sheaf construction or definition used by this passage."
-            }
-          ]
-        },
-        "009M": {
-          "section": "009H",
-          "text_sha256": "a72db910eb1439525aa4ed17b4efcdd37cf3d8127067da87fa4e9e2728e81c35",
-          "dependencies": [
-            {
-              "tag": "009J",
               "reason": "Reference in the required statement, proof, or selected prose passage."
             }
           ]
@@ -10570,11 +11381,6 @@
           "text_sha256": "bd260ab0fd613a1071ea83602db1a6ec4022d0004be6b6fac0087fc7e82adbd4",
           "dependencies": []
         },
-        "009I": {
-          "section": "009H",
-          "text_sha256": "6c93d110842a2c8359211008db549eb05d04e9aff9c17718aceee14d47f14ca2",
-          "dependencies": []
-        },
         "01PW": {
           "section": "0B5K",
           "text_sha256": "464c905e058d75200789b6c91dc06ec6931b4025b16c61908e23d5e1820be623",
@@ -10948,58 +11754,10 @@
           "text_sha256": "c27b600a660d6cd51b23a53eabd8fc791c82da8b4ee14f8d5c3474a9c4531635",
           "dependencies": []
         },
-        "001B": {
-          "section": "0013",
-          "text_sha256": "98035b9f693ad4922a00e8ce061ccc605c1e7927ae9d7989609a22f7f53abee3",
-          "dependencies": [
-            {
-              "tag": "0014",
-              "reason": "The category construction or definition used by this passage."
-            }
-          ]
-        },
-        "0030": {
-          "section": "002Z",
-          "text_sha256": "27751a49e83e96f78a1173f0b99b0804962a844fb6dcc4b53bdc84fc9dbc1d2e",
-          "dependencies": []
-        },
-        "00D3": {
-          "section": "002Z",
-          "text_sha256": "8bb2ee71e14663a05b3f5fefbaf09f8954586eca2e37fc4aa1608ba7f9ddd519",
-          "dependencies": []
-        },
         "002W": {
           "section": "04AX",
           "text_sha256": "158f793e85e7d54040e2e4cb8cca7923a6df848ab80a29371c4901cb4e790f04",
           "dependencies": []
-        },
-        "007X": {
-          "section": "007X",
-          "text_sha256": "6f5e522b76c4b1e2d0a014dec43d35f86c0d04a3370e560d06526836e2bc8f6d",
-          "dependencies": [
-            {
-              "tag": "006X",
-              "reason": "Reference in the required statement, proof, or selected prose passage."
-            },
-            {
-              "tag": "0078",
-              "reason": "Reference in the required statement, proof, or selected prose passage."
-            }
-          ]
-        },
-        "007M": {
-          "section": "007L",
-          "text_sha256": "6f84bdb4d115734af9504c6bfe7327dec617544683027641fe753bfe0770c048",
-          "dependencies": [
-            {
-              "tag": "001B",
-              "reason": "The functor construction or definition used by this passage."
-            },
-            {
-              "tag": "002F",
-              "reason": "The colimit construction or definition used by this passage."
-            }
-          ]
         },
         "01J1": {
           "section": "01IZ",
@@ -11156,11 +11914,6 @@
               "reason": "Reference in the required statement, proof, or selected prose passage."
             }
           ]
-        },
-        "006V": {
-          "section": "006S",
-          "text_sha256": "90e7a4291238cb0fe8e5784fd2bf7ee21c45b936b75a3fa06ed0d11a2eb2a041",
-          "dependencies": []
         },
         "008W": {
           "section": "008R",
@@ -15348,6 +16101,36 @@
           "01M7",
           "01AG"
         ],
+        "009H": [
+          "0BYD",
+          "01M7",
+          "01M3"
+        ],
+        "009L": [
+          "0BYD",
+          "01M7",
+          "01M3"
+        ],
+        "009N": [
+          "0BYD",
+          "01M7",
+          "01M3"
+        ],
+        "009Q": [
+          "0BYD",
+          "01M7",
+          "01M3"
+        ],
+        "009T": [
+          "0BYD",
+          "01M7",
+          "01M3"
+        ],
+        "00EK": [
+          "0BYD",
+          "01M7",
+          "01M3"
+        ],
         "01IJ": [
           "0BYD",
           "01M7",
@@ -15472,11 +16255,6 @@
           "0BYD",
           "01XT",
           "01FM"
-        ],
-        "00EK": [
-          "0BYD",
-          "01XT",
-          "01X9"
         ],
         "00HN": [
           "0BYD",
@@ -15805,6 +16583,84 @@
           "01AG",
           "01AF"
         ],
+        "009I": [
+          "0BYD",
+          "01M7",
+          "01M3",
+          "009H"
+        ],
+        "009J": [
+          "0BYD",
+          "01M7",
+          "01M3",
+          "009H"
+        ],
+        "009K": [
+          "0BYD",
+          "01M7",
+          "01M3",
+          "009L"
+        ],
+        "0078": [
+          "0BYD",
+          "01M7",
+          "01M3",
+          "009N"
+        ],
+        "007Y": [
+          "0BYD",
+          "01M7",
+          "01M3",
+          "009N"
+        ],
+        "009M": [
+          "0BYD",
+          "01M7",
+          "01M3",
+          "009N"
+        ],
+        "007P": [
+          "0BYD",
+          "01M7",
+          "01M3",
+          "009Q"
+        ],
+        "007Q": [
+          "0BYD",
+          "01M7",
+          "01M3",
+          "009Q"
+        ],
+        "0084": [
+          "0BYD",
+          "01M7",
+          "01M3",
+          "009Q"
+        ],
+        "009P": [
+          "0BYD",
+          "01M7",
+          "01M3",
+          "009Q"
+        ],
+        "02C7": [
+          "0BYD",
+          "01M7",
+          "01M3",
+          "00EK"
+        ],
+        "07JZ": [
+          "0BYD",
+          "01M7",
+          "01M3",
+          "00EK"
+        ],
+        "07K0": [
+          "0BYD",
+          "01M7",
+          "01M3",
+          "00EK"
+        ],
         "01HB": [
           "0BYD",
           "01M7",
@@ -16038,24 +16894,6 @@
           "01XT",
           "01FM",
           "01EE"
-        ],
-        "02C7": [
-          "0BYD",
-          "01XT",
-          "01X9",
-          "00EK"
-        ],
-        "07JZ": [
-          "0BYD",
-          "01XT",
-          "01X9",
-          "00EK"
-        ],
-        "07K0": [
-          "0BYD",
-          "01XT",
-          "01X9",
-          "00EK"
         ],
         "00CS": [
           "0BYD",
@@ -16528,6 +17366,76 @@
           "01AF",
           "0102"
         ],
+        "006T": [
+          "0BYD",
+          "01M7",
+          "01M3",
+          "009H",
+          "009J"
+        ],
+        "002F": [
+          "0BYD",
+          "01M7",
+          "01M3",
+          "009N",
+          "0078"
+        ],
+        "002Z": [
+          "0BYD",
+          "01M7",
+          "01M3",
+          "009N",
+          "0078"
+        ],
+        "0031": [
+          "0BYD",
+          "01M7",
+          "01M3",
+          "009N",
+          "0078"
+        ],
+        "006E": [
+          "0BYD",
+          "01M7",
+          "01M3",
+          "009N",
+          "0078"
+        ],
+        "006V": [
+          "0BYD",
+          "01M7",
+          "01M3",
+          "009N",
+          "007Y"
+        ],
+        "001V": [
+          "0BYD",
+          "01M7",
+          "01M3",
+          "009Q",
+          "0084"
+        ],
+        "007X": [
+          "0BYD",
+          "01M7",
+          "01M3",
+          "009Q",
+          "0084"
+        ],
+        "007M": [
+          "0BYD",
+          "01M7",
+          "01M3",
+          "009Q",
+          "009P"
+        ],
+        "00CO": [
+          "0BYD",
+          "01M7",
+          "01M3",
+          "00EK",
+          "07JZ"
+        ],
         "007H": [
           "0BYD",
           "01M7",
@@ -16758,13 +17666,6 @@
           "01WB",
           "01W9",
           "01OE"
-        ],
-        "00CO": [
-          "0BYD",
-          "01XT",
-          "01X9",
-          "00EK",
-          "07JZ"
         ],
         "001P": [
           "0BYD",
@@ -17306,22 +18207,6 @@
           "0091",
           "0072"
         ],
-        "006T": [
-          "0BYD",
-          "01DZ",
-          "01DI",
-          "0090",
-          "0091",
-          "0072"
-        ],
-        "006E": [
-          "0BYD",
-          "01DZ",
-          "01DI",
-          "0090",
-          "0091",
-          "008J"
-        ],
         "002H": [
           "0BYD",
           "01DZ",
@@ -17378,13 +18263,53 @@
           "00E4",
           "00E3"
         ],
-        "0078": [
+        "001B": [
           "0BYD",
           "01M7",
           "01M3",
-          "01IJ",
-          "01HB",
-          "007H"
+          "009N",
+          "0078",
+          "002F"
+        ],
+        "002U": [
+          "0BYD",
+          "01M7",
+          "01M3",
+          "009N",
+          "0078",
+          "002F"
+        ],
+        "0030": [
+          "0BYD",
+          "01M7",
+          "01M3",
+          "009N",
+          "0078",
+          "002Z"
+        ],
+        "00D3": [
+          "0BYD",
+          "01M7",
+          "01M3",
+          "009N",
+          "0078",
+          "0031"
+        ],
+        "006C": [
+          "0BYD",
+          "01M7",
+          "01M3",
+          "009N",
+          "0078",
+          "006E"
+        ],
+        "00CN": [
+          "0BYD",
+          "01M7",
+          "01M3",
+          "00EK",
+          "07JZ",
+          "00CO"
         ],
         "008X": [
           "0BYD",
@@ -17401,14 +18326,6 @@
           "01IJ",
           "01HG",
           "00A1"
-        ],
-        "009Q": [
-          "0BYD",
-          "01M7",
-          "01M3",
-          "01IJ",
-          "01HW",
-          "01HU"
         ],
         "00CR": [
           "0BYD",
@@ -17522,14 +18439,6 @@
           "01IN",
           "01IH"
         ],
-        "001V": [
-          "0BYD",
-          "01WC",
-          "01MC",
-          "01KP",
-          "01JR",
-          "001U"
-        ],
         "00IC": [
           "0BYD",
           "01WC",
@@ -17641,22 +18550,6 @@
           "01W9",
           "01OE",
           "01O3"
-        ],
-        "00CN": [
-          "0BYD",
-          "01XT",
-          "01X9",
-          "00EK",
-          "07JZ",
-          "00CO"
-        ],
-        "009N": [
-          "0BYD",
-          "01XT",
-          "01X9",
-          "01IA",
-          "00AK",
-          "00AL"
         ],
         "002N": [
           "0BYD",
@@ -18066,14 +18959,6 @@
           "0BDA",
           "0BCH"
         ],
-        "009H": [
-          "0BYD",
-          "0BYB",
-          "0BXL",
-          "0BXJ",
-          "0BDA",
-          "0BD9"
-        ],
         "0AYM": [
           "0BYD",
           "0BYB",
@@ -18324,24 +19209,6 @@
           "0072",
           "006N"
         ],
-        "006C": [
-          "0BYD",
-          "01DZ",
-          "01DI",
-          "0090",
-          "0091",
-          "008J",
-          "006E"
-        ],
-        "002U": [
-          "0BYD",
-          "01DZ",
-          "01DI",
-          "015Z",
-          "0039",
-          "0038",
-          "002H"
-        ],
         "00ZZ": [
           "0BYD",
           "01DZ",
@@ -18369,33 +19236,6 @@
           "00E3",
           "00E2"
         ],
-        "002F": [
-          "0BYD",
-          "01M7",
-          "01M3",
-          "01IJ",
-          "01HB",
-          "007H",
-          "0078"
-        ],
-        "002Z": [
-          "0BYD",
-          "01M7",
-          "01M3",
-          "01IJ",
-          "01HB",
-          "007H",
-          "0078"
-        ],
-        "0031": [
-          "0BYD",
-          "01M7",
-          "01M3",
-          "01IJ",
-          "01HB",
-          "007H",
-          "0078"
-        ],
         "008T": [
           "0BYD",
           "01M7",
@@ -18413,42 +19253,6 @@
           "01HG",
           "00A1",
           "00A0"
-        ],
-        "007P": [
-          "0BYD",
-          "01M7",
-          "01M3",
-          "01IJ",
-          "01HW",
-          "01HU",
-          "009Q"
-        ],
-        "007Q": [
-          "0BYD",
-          "01M7",
-          "01M3",
-          "01IJ",
-          "01HW",
-          "01HU",
-          "009Q"
-        ],
-        "0084": [
-          "0BYD",
-          "01M7",
-          "01M3",
-          "01IJ",
-          "01HW",
-          "01HU",
-          "009Q"
-        ],
-        "009P": [
-          "0BYD",
-          "01M7",
-          "01M3",
-          "01IJ",
-          "01HW",
-          "01HU",
-          "009Q"
         ],
         "01J2": [
           "0BYD",
@@ -18611,33 +19415,6 @@
           "01OE",
           "01O3",
           "01NY"
-        ],
-        "007Y": [
-          "0BYD",
-          "01XT",
-          "01X9",
-          "01IA",
-          "00AK",
-          "00AL",
-          "009N"
-        ],
-        "009J": [
-          "0BYD",
-          "01XT",
-          "01X9",
-          "01IA",
-          "00AK",
-          "00AL",
-          "009N"
-        ],
-        "009M": [
-          "0BYD",
-          "01XT",
-          "01X9",
-          "01IA",
-          "00AK",
-          "00AL",
-          "009N"
         ],
         "002O": [
           "0BYD",
@@ -19098,15 +19875,6 @@
           "0AGA",
           "0AG8"
         ],
-        "009I": [
-          "0BYD",
-          "0BYB",
-          "0BXL",
-          "0BXJ",
-          "0BDA",
-          "0BD9",
-          "009H"
-        ],
         "01PW": [
           "0BYD",
           "0BYB",
@@ -19386,36 +20154,6 @@
           "006N",
           "001L"
         ],
-        "001B": [
-          "0BYD",
-          "01M7",
-          "01M3",
-          "01IJ",
-          "01HB",
-          "007H",
-          "0078",
-          "002F"
-        ],
-        "0030": [
-          "0BYD",
-          "01M7",
-          "01M3",
-          "01IJ",
-          "01HB",
-          "007H",
-          "0078",
-          "002Z"
-        ],
-        "00D3": [
-          "0BYD",
-          "01M7",
-          "01M3",
-          "01IJ",
-          "01HB",
-          "007H",
-          "0078",
-          "0031"
-        ],
         "002W": [
           "0BYD",
           "01M7",
@@ -19425,26 +20163,6 @@
           "00A1",
           "008X",
           "008T"
-        ],
-        "007X": [
-          "0BYD",
-          "01M7",
-          "01M3",
-          "01IJ",
-          "01HW",
-          "01HU",
-          "009Q",
-          "0084"
-        ],
-        "007M": [
-          "0BYD",
-          "01M7",
-          "01M3",
-          "01IJ",
-          "01HW",
-          "01HU",
-          "009Q",
-          "009P"
         ],
         "01J1": [
           "0BYD",
@@ -19555,16 +20273,6 @@
           "01O3",
           "01NY",
           "01NU"
-        ],
-        "006V": [
-          "0BYD",
-          "01XT",
-          "01X9",
-          "01IA",
-          "00AK",
-          "00AL",
-          "009N",
-          "007Y"
         ],
         "008W": [
           "0BYD",
@@ -22647,14 +23355,19 @@
         "006C",
         "006D",
         "006M",
+        "006P",
         "006S",
         "0071",
+        "0076",
         "0078",
         "007G",
         "007L",
+        "007S",
         "007X",
         "0083",
+        "0088",
         "008C",
+        "008R",
         "0090",
         "009H",
         "009Z",
@@ -22665,11 +23378,19 @@
         "00EI",
         "00EN",
         "00F5",
+        "00JL",
+        "00JM",
+        "00ZX",
+        "01AF",
+        "01BD",
         "01HA",
         "01HD",
         "01HR",
         "01II",
-        "07BH"
+        "01M3",
+        "04AX",
+        "07BH",
+        "09SE"
       ],
       "implicit_dependencies": {
         "001B": {
@@ -22887,6 +23608,11 @@
           "01M3": "The section proj construction or definition used by this passage.",
           "01BE": "The quasi coherent construction or definition used by this passage."
         },
+        "01MB": {
+          "01IJ": "The affine standard opens establish the scheme condition of Definition 26.9.1.",
+          "01M6": "The locally ringed space and associated module sheaf are defined before the lemma.",
+          "01BE": "The final assertion uses the definition of a quasi-coherent sheaf."
+        },
         "01MN": {
           "00JL": "The section graded construction or definition used by this passage.",
           "01M7": "The lemma proj sheaves construction or definition used by this passage.",
@@ -23083,12 +23809,17 @@
         "009D",
         "009E",
         "009F",
+        "009H",
+        "009I",
         "009J",
+        "009K",
+        "009L",
         "009M",
         "009N",
         "009P",
         "009Q",
         "009R",
+        "009T",
         "009V",
         "009Z",
         "00A0",
@@ -42110,27 +42841,59 @@
         },
         "01M3": {
           "section": "01M3",
-          "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "text_sha256": "ef48c83fe373724e22fa61a0b82fb72d306035d5327e52a483806f69c6a6bc39",
           "dependencies": [
+            {
+              "tag": "009H",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "009L",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "009N",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "009Q",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "009T",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "00EK",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
             {
               "tag": "00JL",
               "reason": "The section graded construction or definition used by this passage."
             },
             {
               "tag": "00JM",
-              "reason": "The Proj of a graded ring definition or construction explicitly invoked by the dependent passage."
+              "reason": "The construction of the Proj structure sheaf, graded-module sheaves, and their stalks is supplied in unnumbered prose before Definition 27.8.3; follow that construction, not the later separatedness and valuative-criterion results."
+            },
+            {
+              "tag": "00JR",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
             },
             {
               "tag": "01IJ",
               "reason": "The scheme construction or definition used by this passage."
             },
             {
+              "tag": "01M4",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
               "tag": "01M6",
-              "reason": "The Proj of a graded ring definition or construction explicitly invoked by the dependent passage."
+              "reason": "The construction of the Proj structure sheaf, graded-module sheaves, and their stalks is supplied in unnumbered prose before Definition 27.8.3; follow that construction, not the later separatedness and valuative-criterion results."
             },
             {
               "tag": "01MB",
-              "reason": "The Proj of a graded ring definition or construction explicitly invoked by the dependent passage."
+              "reason": "The construction of the Proj structure sheaf, graded-module sheaves, and their stalks is supplied in unnumbered prose before Definition 27.8.3; follow that construction, not the later separatedness and valuative-criterion results."
             }
           ]
         },
@@ -44623,10 +45386,76 @@
             }
           ]
         },
+        "009H": {
+          "section": "009H",
+          "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "dependencies": [
+            {
+              "tag": "009I",
+              "reason": "The Bases and sheaves definition or construction explicitly invoked by the dependent passage."
+            },
+            {
+              "tag": "009J",
+              "reason": "The Bases and sheaves definition or construction explicitly invoked by the dependent passage."
+            }
+          ]
+        },
+        "009L": {
+          "section": "009H",
+          "text_sha256": "e634c68974b63a557edeb136c26c65d22a59d0c0b39725db4ac6f0804a12c984",
+          "dependencies": [
+            {
+              "tag": "009K",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            }
+          ]
+        },
+        "009T": {
+          "section": "009H",
+          "text_sha256": "da06c423e049afe812f5a248421d74f4082c9323208b3b8deeab1003827a5817",
+          "dependencies": [
+            {
+              "tag": "009N",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "009Q",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            }
+          ]
+        },
         "00JL": {
           "section": "00JL",
           "text_sha256": "7579dc515e9389a5f70bb6270820bafe3b1aacba9c484b0cbc0d24817a0994c1",
           "dependencies": []
+        },
+        "00JR": {
+          "section": "00JM",
+          "text_sha256": "ab29de9d113e382e730cd003d49f41e8ea72d2a1f00737ecb15f3f07e6e75901",
+          "dependencies": [
+            {
+              "tag": "00JP",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            }
+          ]
+        },
+        "01M4": {
+          "section": "01M3",
+          "text_sha256": "b65d5038d0ad2092e3b69bf8763e1ec5f52d21026efa3fbc3ece8f8233c1c23d",
+          "dependencies": [
+            {
+              "tag": "00E0",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "00E8",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "00JP",
+              "reason": "Reference in the required statement, proof, or selected prose passage."
+            }
+          ]
         },
         "01M6": {
           "section": "01M3",
@@ -44638,12 +45467,24 @@
           "text_sha256": "d6da35f54b0bb1c3ab1fcef22a724cc92add0a895883e2984f5da1703c1323f3",
           "dependencies": [
             {
+              "tag": "01BE",
+              "reason": "The final assertion uses the definition of a quasi-coherent sheaf."
+            },
+            {
               "tag": "01HR",
               "reason": "Reference in the required statement, proof, or selected prose passage."
             },
             {
+              "tag": "01IJ",
+              "reason": "The affine standard opens establish the scheme condition of Definition 26.9.1."
+            },
+            {
               "tag": "01M4",
               "reason": "Reference in the required statement, proof, or selected prose passage."
+            },
+            {
+              "tag": "01M6",
+              "reason": "The locally ringed space and associated module sheaf are defined before the lemma."
             },
             {
               "tag": "01M7",
@@ -45883,6 +46724,16 @@
             }
           ]
         },
+        "009I": {
+          "section": "009H",
+          "text_sha256": "6c93d110842a2c8359211008db549eb05d04e9aff9c17718aceee14d47f14ca2",
+          "dependencies": []
+        },
+        "009K": {
+          "section": "009H",
+          "text_sha256": "aa0b7a7870d8d3718647cfbea0fc0e2e661161e7d3a0d9234f5e76d7a873482d",
+          "dependencies": []
+        },
         "01HR": {
           "section": "01HR",
           "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -45898,24 +46749,6 @@
             {
               "tag": "01HW",
               "reason": "The Affine schemes definition or construction explicitly invoked by the dependent passage."
-            }
-          ]
-        },
-        "01M4": {
-          "section": "01M3",
-          "text_sha256": "b65d5038d0ad2092e3b69bf8763e1ec5f52d21026efa3fbc3ece8f8233c1c23d",
-          "dependencies": [
-            {
-              "tag": "00E0",
-              "reason": "Reference in the required statement, proof, or selected prose passage."
-            },
-            {
-              "tag": "00E8",
-              "reason": "Reference in the required statement, proof, or selected prose passage."
-            },
-            {
-              "tag": "00JP",
-              "reason": "Reference in the required statement, proof, or selected prose passage."
             }
           ]
         },
@@ -46080,16 +46913,6 @@
           "section": "00NV",
           "text_sha256": "d2b0f9e9b5df9bc5ff6e68a09229654136360f065744b6d178acd6a3e58b6c2e",
           "dependencies": []
-        },
-        "00JR": {
-          "section": "00JM",
-          "text_sha256": "ab29de9d113e382e730cd003d49f41e8ea72d2a1f00737ecb15f3f07e6e75901",
-          "dependencies": [
-            {
-              "tag": "00JP",
-              "reason": "Reference in the required statement, proof, or selected prose passage."
-            }
-          ]
         },
         "01FH": {
           "section": "01FG",
@@ -59808,7 +60631,67 @@
           "01NE",
           "01NA"
         ],
+        "009H": [
+          "02UO",
+          "02S2",
+          "02RU",
+          "02RH",
+          "02R6",
+          "02O5",
+          "0200",
+          "01VS",
+          "01NF",
+          "01M3"
+        ],
+        "009L": [
+          "02UO",
+          "02S2",
+          "02RU",
+          "02RH",
+          "02R6",
+          "02O5",
+          "0200",
+          "01VS",
+          "01NF",
+          "01M3"
+        ],
+        "009T": [
+          "02UO",
+          "02S2",
+          "02RU",
+          "02RH",
+          "02R6",
+          "02O5",
+          "0200",
+          "01VS",
+          "01NF",
+          "01M3"
+        ],
         "00JL": [
+          "02UO",
+          "02S2",
+          "02RU",
+          "02RH",
+          "02R6",
+          "02O5",
+          "0200",
+          "01VS",
+          "01NF",
+          "01M3"
+        ],
+        "00JR": [
+          "02UO",
+          "02S2",
+          "02RU",
+          "02RH",
+          "02R6",
+          "02O5",
+          "0200",
+          "01VS",
+          "01NF",
+          "01M3"
+        ],
+        "01M4": [
           "02UO",
           "02S2",
           "02RU",
@@ -61072,7 +61955,7 @@
           "01NA",
           "01N9"
         ],
-        "01HR": [
+        "009I": [
           "02UO",
           "02S2",
           "02RU",
@@ -61083,9 +61966,22 @@
           "01VS",
           "01NF",
           "01M3",
-          "01MB"
+          "009H"
         ],
-        "01M4": [
+        "009K": [
+          "02UO",
+          "02S2",
+          "02RU",
+          "02RH",
+          "02R6",
+          "02O5",
+          "0200",
+          "01VS",
+          "01NF",
+          "01M3",
+          "009L"
+        ],
+        "01HR": [
           "02UO",
           "02S2",
           "02RU",
@@ -61253,19 +62149,6 @@
           "01Q1",
           "01PY",
           "05JM"
-        ],
-        "00JR": [
-          "02UO",
-          "02S2",
-          "02RU",
-          "02RH",
-          "02R6",
-          "02O5",
-          "02O1",
-          "0B5T",
-          "01YS",
-          "01MN",
-          "01M7"
         ],
         "01FH": [
           "02UO",
@@ -64848,6 +65731,11 @@
           "00JM": "The topological space Proj and homogeneous localization precede its scheme structure.",
           "01M3": "The section proj construction or definition used by this passage.",
           "01BE": "The quasi coherent construction or definition used by this passage."
+        },
+        "01MB": {
+          "01IJ": "The affine standard opens establish the scheme condition of Definition 26.9.1.",
+          "01M6": "The locally ringed space and associated module sheaf are defined before the lemma.",
+          "01BE": "The final assertion uses the definition of a quasi-coherent sheaf."
         },
         "01MN": {
           "00JL": "The section graded construction or definition used by this passage.",
