@@ -89,8 +89,10 @@ export function buildReadings({root,dist,head,header,footer,renderExampleCard,as
     return `<section id="${id}" class="passage ${b.kind}" data-example="${key}" data-source-label="${esc(label)}" data-source-tag="${b.tag||s.tag}" aria-label="${esc(label)}">${html}</section>`;
    }).join('');
    sources[s.tag]=sourceRecord(root,s,manifest,sourceNotes);
+   const chapter=catalog.chaptersBySlug.get(s.chapter);
    const chapterHeading=unit.chapterHeadings
-    ?s.stage?`<h2 class="source-chapter-title">${esc(s.stage)}</h2>`:''
+    ?s.stage?`<h2 class="source-chapter-title">${esc(s.stage)}</h2>`
+     :`<p class="source-chapter-reminder">${esc(chapter.number+'. '+chapter.title)}</p>`
     :s.chapterTitle&&index>0&&s.chapter!==unit.sections[index-1].chapter?`<p class="eyebrow">${esc(s.chapterTitle)}</p>`:'';
    const number=unit.highlightSections&&tree?.nodes[s.tag]
     ?dependencyNumber(tree,s.tag,s.number,`Section ${s.number}`):s.number;

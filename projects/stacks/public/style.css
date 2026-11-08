@@ -314,9 +314,15 @@ body:has(.reader-layout) .site-header{position:sticky;top:0}.reading-progress{he
   font-weight: 700;
 }
 
-.source-section-header .source-chapter-title {
+.verbatim-main .source-section-header > .source-chapter-title {
   margin: 0 0 18px;
   font-size: clamp(29px, 3vw, 38px);
+  color: var(--green);
+}
+
+.source-section-header > .source-chapter-reminder {
+  margin: 0 0 12px;
+  font: 11px/1.6 var(--sans);
   color: var(--green);
 }
 
