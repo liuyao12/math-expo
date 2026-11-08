@@ -323,3 +323,5 @@ body:has(.reader-layout) .site-header{position:sticky;top:0}.reading-progress{he
 .source-chapter-title + h3 {
   font-weight: 400;
 }
+
+.reading-title-row{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 20px;margin-bottom:12px}.reading-entry .reading-title-row h3{margin:0}.reading-section-count{font:13px/1.6 var(--sans);color:var(--green);white-space:nowrap}
