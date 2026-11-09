@@ -1027,17 +1027,13 @@ h_X:\pi_n(X,x_0)\longrightarrow H_n(X;\mathbb Z),\\
  url:'https://people.math.rochester.edu/faculty/doug/otherpapers/MayConcise.pdf',
  label:'May, A Concise Course in Algebraic Topology, §15.1'
 }};
-const coordinateSpaces=model('coordinate vector spaces',[
- b(r`\mathcal B`,r`\mathbf{Vect}_k`),
- b(r`\operatorname{Ob}(\mathcal A)`,r`\{k^n:n\ge 0\}`),
- b('x,y',r`k^n,k^m`)
-],r`\[
-\begin{aligned}
-\Mor_{\mathcal A}(k^n,k^m)
-&=\Mor_{\mathcal B}(k^n,k^m)\\
-&\cong\operatorname{Mat}_{m\times n}(k).
-\end{aligned}
-\]`,'');
+const coordinateSpaces={...model('coordinate vector spaces',[],'',''),points:[{
+ text:r`\(\mathcal A=\mathbf{Mat}_k\subset\mathbf{Vect}_k=\mathcal B\) via standard coordinates.`,
+ children:[
+  r`\(\operatorname{Ob}(\mathcal A)=\{k^n:n\geq 0\}\)`,
+  r`\(\operatorname{Mor}(k^n,k^m)\cong\) \(\{m\times n\text{ matrices over }k\}\)`
+ ]
+}]};
 const matrixEquivalence=model('matrices',[
  b(r`\mathcal A`,r`\mathbf{Mat}_k`),
  b(r`\operatorname{Ob}(\mathcal A)`,r`\mathbb Z_{\ge0}`),
