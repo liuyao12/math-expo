@@ -82,14 +82,33 @@ for(const tag of ['01II','00JL','00JM','01BD','01M3','01ND','020C','04L0']){
  assert(coreTags.includes(tag),'First reading includes schemes, Proj, projective space, and varieties: '+tag);
 }
 const selectedTags=new Set();
+const reports=JSON.parse(fs.readFileSync(path.join(root,'upstream/dependency-audit.json'),'utf8')).readings;
+const referencesByTag=new Map(Object.values(catalog.references).map(ref=>[ref.tag,ref]));
 for(const reading of selectedReadings){
  for(const section of reading.sections){
   assert(!selectedTags.has(section.tag),'Selected readings must link back rather than repeat a section: '+section.tag);
   selectedTags.add(section.tag);
  }
- if(reading===coreReading)continue;
  const page=fs.readFileSync(path.join(dist,reading.slug,'index.html'),'utf8');
- assert(page.includes('href="../scheme/#01MB"'),'Later dependency graphs link to the relocated Proj proof');
+ if(reading!==coreReading)assert(page.includes('href="../scheme/#01MB"'),'Later dependency graphs link to the relocated Proj proof');
+ const report=reports[reading.slug],local=new Set(reading.sections.map(s=>s.tag));
+ const expected=report.required_tags.filter(tag=>local.has(report.passages[tag].section)&&!['item','equation'].includes(referencesByTag.get(tag).kind));
+ const marks=[...page.matchAll(/<a class="dependency-number" data-dependency-tag="([^"]+)"[^>]*>([^<]+)<\/a>/g)];
+ assert.deepEqual(marks.map(m=>m[1]).sort(),expected.sort(),'Highlight exactly the audited headings in '+reading.slug);
+ assert.deepEqual(new Set(expected.map(tag=>report.passages[tag].section)),local,'Every selected section has an audited highlight');
+ for(const [,tag,label] of marks){
+  const {kind,number}=referencesByTag.get(tag);
+  assert.equal(label,kind==='section'?number:kind[0].toUpperCase()+kind.slice(1)+' '+number);
+ }
+ const graphData=JSON.parse(page.match(/<script type="application\/json" id="dependency-audit-data">([\s\S]*?)<\/script>/)[1]);
+ assert.equal(graphData.target,reading.target);
+ for(const tag of report.required_tags){
+  const entry=graphData.passages[tag];
+  assert.equal(entry.parent,report.paths[tag].at(-1));
+  assert.deepEqual(entry.uses,report.passages[tag].dependencies.map(dep=>dep.tag));
+  assert(anchorsFor(path.join(dist,entry.slug,'index.html')).has(tag),'Audited node links to its source anchor: '+tag);
+ }
+ console.log(`${reading.slug}: ${marks.length} audited highlights across all ${local.size} sections`);
 }
 assert.throws(()=>assembleReading({...coreReading,sections:[...coreTags,coreTags[0]]},catalog),/Repeated section tag/);
 assert.deepEqual(assembleReading({...coreReading,sections:[...coreTags].reverse()},catalog).sections.map(s=>s.tag),coreTags,'Selections must retain original Stacks order');

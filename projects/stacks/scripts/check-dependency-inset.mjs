@@ -5,6 +5,8 @@ const {chromium}=await import(process.env.PLAYWRIGHT_MODULE||'playwright');
 const base=process.env.STACKS_BASE;
 if(!base)throw Error('Set STACKS_BASE to the local or deployed Stacks base URL.');
 const refs=Object.fromEntries(Object.values(JSON.parse(fs.readFileSync(new URL('../upstream/references.json',import.meta.url),'utf8'))).map(ref=>[ref.tag,ref]));
+const audits=JSON.parse(fs.readFileSync(new URL('../upstream/dependency-audit.json',import.meta.url),'utf8')).readings;
+const additional={scheme:['001M'],curves:['05PU','0G2U'],grr:['052Q','00JM']};
 const browser=await chromium.launch({headless:true,...(process.env.BROWSER_PATH?{executablePath:process.env.BROWSER_PATH}:{})});
 const visibleCount=graph=>graph.evaluate(g=>{
  const box=g.querySelector('.graph-viewport').getBoundingClientRect();
@@ -84,6 +86,30 @@ try{
    const href=await destination.getAttribute('href');await destination.click();
    await page.waitForURL(new URL(href,base+slug+'/').href);
    assert.equal(await page.locator('main [id="'+destinationTag+'"]').count(),1,'Node links retain cross-reading navigation');
+   const [additionalTag,prerequisite]=additional[slug];
+   await page.goto(base+slug+'/#'+additionalTag,{waitUntil:'networkidle'});
+   const extra=page.locator('main [data-dependency-tag="'+additionalTag+'"]');
+   assert.equal(await extra.innerText(),'Definition '+refs[additionalTag].number);
+   await extra.click();await popup.waitFor();
+   assert(await popup.locator('[data-graph-overview]').isVisible(),'Audit inset links to the reading overview');
+   assert.equal(await popup.locator('.is-current').getAttribute('data-tag'),additionalTag);
+   assert.equal(await popup.locator('.dependency-target').getAttribute('data-tag'),audits[slug].target);
+   for(const ancestor of audits[slug].paths[additionalTag]){
+    assert.equal(await popup.locator('.dependency-node[data-tag="'+ancestor+'"]').count(),1,'Audit inset shows the route to the target');
+   }
+   await page.keyboard.press('Escape');await popup.waitFor({state:'hidden'});
+   await trigger.click();await popup.waitFor();
+   assert.equal(await popup.locator('.dependency-node').count(),total,'An overview label restores the overview');
+   assert(!(await popup.locator('[data-graph-overview]').isVisible()));
+   await page.keyboard.press('Escape');await popup.waitFor({state:'hidden'});
+   if(prerequisite){
+    await extra.click();await popup.waitFor();
+    await popup.getByRole('button',{name:'Fit graph',exact:true}).click();
+    const reused=popup.locator('.outside-reading[data-tag="'+prerequisite+'"]');
+    assert.equal(await reused.getAttribute('href'),'../scheme/#'+prerequisite);
+    await reused.click();await page.waitForURL(base+'scheme/#'+prerequisite);
+    assert.equal(await page.locator('main [id="'+prerequisite+'"]').count(),1);
+   }
    console.log(`${viewport.width} ${slug}: compact neighborhood, typed numbers, whole-graph zoom, dismissal, navigation`);
   }
   assert.deepEqual(errors,[]);await page.close();

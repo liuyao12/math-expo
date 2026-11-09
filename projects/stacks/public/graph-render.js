@@ -1,5 +1,5 @@
-import {escapeHTML as esc} from './latex.mjs';
-import {edgeEndpoints} from '../public/graph-geometry.js';
+import {edgeEndpoints} from './graph-geometry.js';
+const esc=s=>String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 const nodeWidth=168,nodePadding=6;
 
 function wrapLabel(label){
@@ -95,11 +95,11 @@ export function renderDependencyGraph(tree,references,base,idPrefix=''){
   const origin=outsideReading?` · ${location?.readingTitle||"The Stacks Project"}`:"";
   const route=location?`${base}${location.slug}/`:null;
   const caption=ref.kind==='definition'?(tree.labels.definitions[tag]||node.title)
-   :ref.sourceTitle||tree.labels.namedResults[tag]||(tag===tree.rootTag?node.title:'');
+   :ref.sourceTitle||tree.labels.namedResults[tag]||(tag===tree.rootTag||tree.focusTag===tag?node.title:'');
   const lines=wrapLabel(caption);
   return [tag,{tag,depth,number:String(ref.number),shortLabel:`${ref.kind[0].toUpperCase()} ${ref.number}`,kind:ref.kind,root:tag===tree.rootTag,outsideReading,
    caption,lines,width:nodeWidth,height:lines.length?32+lines.length*16:36,
-   label:`${ref.kind[0].toUpperCase()+ref.kind.slice(1)} ${ref.number} · ${node.title}${origin}`,
+   label:`${ref.kind[0].toUpperCase()+ref.kind.slice(1)} ${ref.number}${node.title?' · '+node.title:''}${origin}`,
    href:route?`${route}#${tag}`:`https://stacks.math.columbia.edu/tag/${tag}`,
    section:route&&location.section.tag!==tag?`${route}#${location.section.tag}`:null
   }];
@@ -116,7 +116,7 @@ export function renderDependencyGraph(tree,references,base,idPrefix=''){
   return `<a id="${idPrefix}${esc(node.tag)}" data-tag="${esc(node.tag)}" data-kind="${esc(node.kind)}" data-width="${node.width}" data-height="${node.height}" class="dependency-node${node.root?' dependency-target':''}${node.outsideReading?' outside-reading':''}" href="${esc(node.href)}" aria-label="${esc(node.label)}"${node.section?` data-section="${esc(node.section)}"`:''} transform="translate(${node.x} ${node.y})"><title>${esc(node.label)}</title><rect class="graph-node-ring" x="${-node.width/2-nodePadding}" y="${-node.height/2-nodePadding}" width="${node.width+nodePadding*2}" height="${node.height+nodePadding*2}" rx="8"/><rect class="graph-node-body" x="${-node.width/2}" y="${-node.height/2}" width="${node.width}" height="${node.height}" rx="4"/><text class="graph-node-number" text-anchor="middle" y="${node.lines.length?-node.height/2+18:4}">${esc(node.shortLabel)}</text>${caption?`<text class="graph-node-caption" text-anchor="middle">${caption}</text>`:''}</a>`;
  }).join('');
  const root=nodes.get(tree.rootTag);
- const legend=[['definition','Definition'],['proposition','Proposition'],['lemma','Lemma'],['section','Section'],['example','Example'],['situation','Situation']]
+ const legend=[['definition','Definition'],['proposition','Proposition'],['lemma','Lemma'],['section','Section'],['example','Example'],['situation','Situation'],['theorem','Theorem'],['corollary','Corollary'],['remark','Remark'],['item','Item'],['equation','Equation']]
   .filter(([kind])=>entries.some(node=>node.kind===kind))
   .map(([kind,label])=>`<li data-kind="${kind}">${kind[0].toUpperCase()} · ${label}</li>`).join('');
  return `<div class="dependency-graph">
@@ -130,4 +130,28 @@ export function renderDependencyGraph(tree,references,base,idPrefix=''){
   </div>
   <p class="graph-detail"><a data-graph-passage href="${esc(root.href)}">${esc(root.label)}</a> <a data-graph-section${root.section?` href="${esc(root.section)}"`:' hidden'}>Read section ↗</a></p>
  </div>`;
+}
+
+// Show the audited route to the target and the selected passage's direct
+// prerequisites. The audit may contain cycles; ancestor edges stay on the
+// route already shown rather than creating a loop in the diagram.
+export function renderPassageGraph(data,tag,base){
+ const nodes={},references=new Map(),locations=new Map();
+ const add=t=>{
+  if(nodes[t])return;
+  const {title,slug,readingTitle,section,kind,number,sourceTitle}=data.passages[t];
+  nodes[t]={title,uses:[]};
+  references.set(t,{kind,number,sourceTitle});
+  locations.set(t,{slug,readingTitle,section:{tag:section}});
+ };
+ add(tag);
+ for(let child=tag,parent; (parent=data.passages[child].parent); child=parent){
+  add(parent);nodes[parent].uses.push(child);
+ }
+ const ancestors=new Set(Object.keys(nodes));
+ for(const used of data.passages[tag].uses){
+  if(ancestors.has(used))continue;
+  add(used);nodes[tag].uses.push(used);
+ }
+ return renderDependencyGraph({nodes,locations,rootTag:data.target,focusTag:tag,labels:{definitions:{},namedResults:{}}},references,base,'inset-');
 }

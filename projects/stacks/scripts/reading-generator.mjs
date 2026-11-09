@@ -4,7 +4,7 @@ import {createRenderer,escapeHTML as esc} from '../src/latex.mjs';
 import {separateSourceNotes,renderProofs,sourceRecord,sourcePanel,sourceDataScript} from '../src/source-column.mjs';
 import {notesFor} from '../src/scheme-notes.mjs';
 import {loadReadingCatalog,loadReadings,loadReferenceReadings,selectedOverview} from '../src/readings.mjs';
-import {renderDependencyGraph} from '../src/dependency-graph.mjs';
+import {renderDependencyGraph} from '../public/graph-render.js';
 import {renderOutline} from '../src/reading-outline.mjs';
 export function buildReadings({root,dist,head,header,footer,renderExampleCard,assetVersion}){
  const manifest=JSON.parse(fs.readFileSync(path.join(root,'upstream/scheme-path.json'),'utf8'));
@@ -17,14 +17,17 @@ export function buildReadings({root,dist,head,header,footer,renderExampleCard,as
  const graphLabels=JSON.parse(fs.readFileSync(path.join(root,'src/dependency-labels.json'),'utf8'));
  const graphs=readings.filter(reading=>reading.graph).map(reading=>({
   nodes:selectedOverview(JSON.parse(fs.readFileSync(path.join(root,'src',reading.graph+'-dependencies.json'),'utf8')),reading.target,audit.readings[reading.slug].required_tags),
-  rootTag:reading.target,url:`dependencies/${reading.slug}/`,reading,locations:new Map(),labels:graphLabels
+  rootTag:reading.target,url:`dependencies/${reading.slug}/`,reading,locations:new Map(),labels:graphLabels,
+  audit:audit.readings[reading.slug]
  }));
  const graphsBySlug=new Map(graphs.map(graph=>[graph.reading.slug,graph]));
  const schemeTree=graphsBySlug.get(coreReading.slug);
  const readingSlugs=new Set(readings.map(reading=>reading.slug));
  const locations=new Map(readings.map(reading=>[reading.slug,new Map()]));
- const dependencyNumber=(graph,tag,number,label)=>
-  `<a class="dependency-number" data-dependency-tag="${esc(tag)}" aria-haspopup="dialog" href="../${graph.url}#${esc(tag)}" aria-label="${esc(label)} dependencies">${esc(number)}</a>`;
+ const dependencyLabel=(graph,tag,text,label=text)=>{
+  const href=graph.nodes[tag]?`../${graph.url}#${tag}`:`https://stacks.math.columbia.edu/tag/${tag}`;
+  return `<a class="dependency-number" data-dependency-tag="${esc(tag)}" aria-haspopup="dialog" href="${esc(href)}" aria-label="${esc(label)} dependencies">${esc(text)}</a>`;
+ };
  const references=catalog.references;
  const referencesByTag=new Map(Object.values(references).map(ref=>[ref.tag,ref]));
  const allSections=manifest.units.flatMap(u=>u.sections),stats=[],readerPages=[];
@@ -53,6 +56,8 @@ export function buildReadings({root,dist,head,header,footer,renderExampleCard,as
  const unitList=(base,units,href=u=>`${base}${u.slug}/`)=>units.map(u=>`<a class="reading-entry" href="${href(u)}"><span class="reading-number">${u.number}</span><div><p class="eyebrow">The Stacks Project · Chapter ${u.number}</p><h3>${esc(u.title)}</h3><div class="reading-meta"><span>${u.sections.length} complete sections</span><span>§${u.sections.map(s=>s.number).join(', ')}</span></div></div><span class="entry-arrow" aria-hidden="true">↗</span></a>`).join('');
  for(const unit of [...manifest.units,...coreUnits,...readings,...referenceReadings]){
   const tree=graphsBySlug.get(unit.slug)||(unit.core?schemeTree:null);
+  const audited=readingSlugs.has(unit.slug)?tree?.audit.passages:null;
+  const marked=tag=>audited?!!audited[tag]:!!tree?.nodes[tag];
   const prerequisiteRoutes=Object.assign({},...(unit.core&&!unit.readingTitle
    ?[coreReading.slug]:unit.prerequisiteSlugs||[]).map(slug=>routesByReading.get(slug)));
   const locate=(tag,section)=>{
@@ -77,13 +82,14 @@ export function buildReadings({root,dist,head,header,footer,renderExampleCard,as
     const id=b.tag||s.slug+'-'+bi;
     let html=`<div class="source-body">${separateSourceNotes(b.html,sourceNotes)}</div>`;
     if(b.kind!=='prose'){
-     if(b.title&&!/[\\$]/.test(b.title))referencesByTag.set(b.tag,{...referencesByTag.get(b.tag),sourceTitle:b.title});
-     locate(b.tag,s);
-     let heading=esc(label);
-     if(tree?.nodes[b.tag]){
-      const kind=b.kind[0].toUpperCase()+b.kind.slice(1);
-      heading=`${esc(kind)} ${dependencyNumber(tree,b.tag,b.number,label)}`;
+     const ref=referencesByTag.get(b.tag);
+     if(b.title&&!/[\\$]/.test(b.title))ref.sourceTitle=b.title;
+     if(b.kind==='definition'&&!ref.term){
+      const term=b.html.match(/<em>([^<>]+)<\/em>/)?.[1];
+      if(term)ref.term=term.replaceAll('&amp;','&').replaceAll('&quot;','"');
      }
+     locate(b.tag,s);
+     const heading=marked(b.tag)?dependencyLabel(tree,b.tag,label):esc(label);
      statements++;html=`<div class="statement-heading"><${statementHeading}>${heading}${b.title?' · '+rich(b.title):''}</${statementHeading}></div>`+html;
     }
     proofs+=b.proofs?.length||0;
@@ -96,8 +102,8 @@ export function buildReadings({root,dist,head,header,footer,renderExampleCard,as
     ?s.stage?`<h2 class="source-chapter-title">${esc(s.stage)}</h2>`
      :`<p class="source-chapter-reminder">${esc(chapter.number+'. '+chapter.title)}</p>`
     :s.chapterTitle&&index>0&&s.chapter!==unit.sections[index-1].chapter?`<p class="eyebrow">${esc(s.chapterTitle)}</p>`:'';
-   const number=unit.highlightSections&&tree?.nodes[s.tag]
-    ?dependencyNumber(tree,s.tag,s.number,`Section ${s.number}`):s.number;
+   const number=unit.highlightSections&&marked(s.tag)
+    ?dependencyLabel(tree,s.tag,s.number,`Section ${s.number}`):s.number;
    return `<section class="source-section" id="${s.tag}" data-source-sha256="${s.sha256}"><header class="source-section-header">${chapterHeading}<${sectionHeading}>${number}. ${esc(s.title)}</${sectionHeading}></header>${content}</section>`;
   }).join('');
   if(!unit.readingTitle)stats.push({slug:unit.slug,sections:unit.sections.length,proofs,statements,formulas:r.mathCount});
@@ -112,7 +118,7 @@ export function buildReadings({root,dist,head,header,footer,renderExampleCard,as
     const prerequisite=readings.find(reading=>reading.slug===slug);
     return `<br><a href="../${prerequisite.slug}/">Prerequisite · ${esc(prerequisite.readingTitle)}</a>`;
    }).join('')}</p>`:'';
-  const dependencyLink=tree?`<p class="dependency-guide"><a href="../${tree.url}#dependency-tree">Dependency graph</a><br>Select a yellow number to open the graph here.</p>`:'';
+  const dependencyLink=tree?`<p class="dependency-guide"><a href="../${tree.url}#dependency-tree">Dependency graph</a><br>Select a yellow label to open its graph here.</p>`:'';
   const html=head(unit.readingTitle||unit.title,'../',unit.chapterHeadings?description:`The Stacks Project, Chapter ${unit.number}: ${unit.title}. ${description}`)+header('../',true)+`<div class="reading-progress" aria-hidden="true"><span></span></div><div class="reader-layout"><nav class="reading-outline" id="reading-outline" aria-label="Reading contents">${outlineLink}<p class="eyebrow">${outlineType}</p><div class="margin-reading-controls"><button id="toggle-proofs" type="button" aria-pressed="false">Show all proofs</button><button class="mobile-example" type="button" data-show-example>Example ↗</button></div>${targetLinks}${dependencyLink}${toc}${unit.readingTitle?'':`<details class="chapter-navigation"><summary>Other chapters</summary>${chapterNav}</details>`}${unit.core&&!unit.readingTitle?`<a href="../${unit.sections[0].chapter}/">Full chapter selection ↗</a>`: ''}<div class="outline-note"><span class="eyebrow">Separate commentary</span><p>Concrete examples</p><button type="button" class="mobile-example" data-show-example>Open example</button></div></nav><main id="main" class="reader-main verbatim-main"><header class="reading-title"><h1>${esc(unit.chapterHeadings?unit.readingTitle:unit.title)}</h1></header>${sections}</main><aside id="example-dock" class="example-dock" data-example-layout="anchored" aria-label="Examples and analogies" tabindex="-1"><div class="example-sticky"><div class="example-header"><button id="close-example" type="button" aria-label="Close example">×</button></div>${sourcePanel(sources[firstSource.tag])}<div class="example-current"><div class="example-step"><a id="example-stage-label" href="#${firstSource.tag}">§${firstSource.number} · ${esc(firstSource.title)}</a><span id="example-index"${data[first].html?'':' hidden'}>01</span></div><div id="example-content">${data[first].html}</div><div class="example-paging"${data[first].html?'':' hidden'}><button id="previous-example" type="button" aria-label="Previous example explanation">← Previous</button><button id="follow-reading" type="button" aria-pressed="true">Follow reading</button><button id="next-example" type="button" aria-label="Next example explanation">Next →</button></div></div></div></aside></div><script type="application/json" id="example-data">${JSON.stringify(data).replaceAll('<','\\u003c')}</script>`+sourceDataScript(sources)+footer('../');
   readerPages.push({slug:unit.slug,html,tree});
 
@@ -127,12 +133,27 @@ export function buildReadings({root,dist,head,header,footer,renderExampleCard,as
  }
  const graphScript=(base='../../')=>`<script type="module" src="${base}dependency-graph.js?v=${assetVersion}"></script>`;
  const graphHTML=(tree,prefix='',base='../../')=>renderDependencyGraph(tree,referencesByTag,base,prefix);
+ const owners=new Map(readings.flatMap(reading=>reading.sections.map(section=>[section.tag,{reading,section}])));
+ const auditData=tree=>{
+  const passages=Object.fromEntries(Object.entries(tree.audit.passages).map(([tag,entry])=>{
+   const owner=owners.get(entry.section),ref=referencesByTag.get(tag);
+   if(!owner||!ref)throw Error('Missing audited passage metadata: '+tag);
+   const sourceTitle=ref.sourceTitle||graphLabels.namedResults[tag];
+   const title=ref.kind==='definition'
+    ?graphLabels.definitions[tag]||ref.term||tree.nodes[tag]?.title||owner.section.title
+    :tree.nodes[tag]?.title||sourceTitle||(ref.kind==='section'?owner.section.title:'');
+   return [tag,{kind:ref.kind,number:ref.number,title,sourceTitle,section:entry.section,
+    slug:owner.reading.slug,readingTitle:owner.reading.readingTitle,parent:tree.audit.paths[tag].at(-1),
+    uses:entry.dependencies.map(dep=>dep.tag)}];
+  }));
+  return JSON.stringify({target:tree.rootTag,passages}).replaceAll('<','\\u003c');
+ };
  for(const {slug,html,tree} of readerPages){
   const inset=tree?`<dialog class="dependency-dialog" aria-labelledby="dependency-dialog-title">
    <header><h2 id="dependency-dialog-title">Dependency graph</h2><form method="dialog"><button type="submit" autofocus>Close</button></form></header>
-   <p class="graph-hint">Drag to explore; zoom out for the full graph.</p>
+   <p class="graph-hint"><span data-graph-hint>Drag to explore; zoom out for the full graph.</span> <a data-graph-overview href="../${tree.url}#dependency-tree" hidden>Reading overview ↗</a></p>
    ${graphHTML(tree,'inset-','../')}
-  </dialog>${graphScript('../')}`:'';
+  </dialog>${readingSlugs.has(slug)?`<script type="application/json" id="dependency-audit-data">${auditData(tree)}</script>`:''}${graphScript('../')}`:'';
   const dir=path.join(dist,slug);
   fs.mkdirSync(dir,{recursive:true});
   fs.writeFileSync(path.join(dir,'index.html'),html+inset+(readingSlugs.has(slug)?`<script type="module" src="../math-lazy.js?v=${assetVersion}"></script>`:'')+'</body></html>');
