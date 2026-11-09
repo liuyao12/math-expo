@@ -63,13 +63,13 @@
     const openCards=new Map();
     const tools=dock.querySelector('.example-sticky');
     const mobile=()=>matchMedia('(max-width:760px)').matches;
-    const fitGroup=(group,available)=>{
-      // Reserve room for every heading; only the open card's body may scroll.
-      const chrome=[...group.children].reduce((height,child)=>{
+    // Reserve room for every heading before sizing the scrollable body.
+    const groupChrome=group=>[...group.children].reduce((height,child)=>{
         if(!child.matches('.example-disclosure'))return height+child.getBoundingClientRect().height;
         const style=getComputedStyle(child);
         return height+child.querySelector('summary').getBoundingClientRect().height+parseFloat(style.borderTopWidth)+parseFloat(style.borderBottomWidth);
-      },0);
+    },0);
+    const fitGroup=(group,available,chrome=groupChrome(group))=>{
       group.style.setProperty('--example-body-room',Math.max(0,available-chrome)+'px');
     };
     const fitPanel=()=>{
@@ -124,17 +124,21 @@
           const headings=[...entry.note.querySelectorAll('.example-step,.example-disclosure > summary')].reduce((height,node)=>height+node.getBoundingClientRect().height,0);
           // Prefer the definition's group to an adjacent duplicate at its section introduction.
           const repeated=next&&entry.anchor.classList.contains('source-section')&&next.anchor.closest('.source-section')===entry.anchor&&positions[index+1]-positions[index]<headings+12&&titles(entry)===titles(next);
-          entry.band.hidden=Boolean(repeated);entry.start=positions[index];
+          entry.start=positions[index];
           return !repeated;
         });
         const end=main.getBoundingClientRect().bottom-origin;
+        // Read heights together before changing any band positions.
+        const reserved=visible.map(({note})=>groupChrome(note));
+        const visibleBands=new Set(visible.map(({band})=>band));
+        for(const {band} of notes)band.hidden=!visibleBands.has(band);
         visible.forEach((entry,index)=>{
           const {band,note}=entry;
           const height=Math.max(1,(visible[index+1]?.start??end)-entry.start-12);
           entry.span=height;
           band.style.top=entry.start+'px';band.style.height=height+'px';
           band.style.setProperty('--example-span',height+'px');
-          fitGroup(note,Math.min(height,available));
+          fitGroup(note,Math.min(height,available),reserved[index]);
         });
       };
       fitFloating=()=>{

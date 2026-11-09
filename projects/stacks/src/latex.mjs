@@ -48,6 +48,13 @@ export function createRenderer(root, options={}) {
     let rendered;
     try{rendered=context.katex.renderToString(tex,{throwOnError:true,displayMode:display,macros,strict:'ignore',output:options.lazyMath?'mathml':'htmlAndMathml',trust:context=>context.command==='\\href'});}
     catch(error){if(options.onMathError)return options.onMathError(error,tex);throw new Error(error.message+'\nSource formula: '+tex);}
+    if(options.lazyMath){
+      // The wrapper already stores the TeX for viewport rendering. Keep only
+      // the native MathML here, without another copy in an annotation.
+      rendered=rendered.match(/<math\b[\s\S]*?<\/math>/)[0]
+        .replace(/<\/?semantics>/g,'')
+        .replace(/<annotation\b[\s\S]*?<\/annotation>/g,'');
+    }
     const lazy=options.lazyMath?' math-lazy':'',data=` data-tex="${escapeHTML(tex)}"`;
     return display?`<div class="math-display${lazy}"${options.lazyMath?data:''}>${rendered}</div>`:`<span class="math-inline${lazy}"${data}>${rendered}</span>`;
   }

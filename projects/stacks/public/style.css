@@ -86,6 +86,7 @@ details[open] > summary .disclosure-chevron {
 .example-points > li::marker { color: var(--muted); }
 .example-points > li > .math-display:first-child { margin-top: 0; }
 .verbatim-main .math-inline { display: inline-flex; max-width: 100%; overflow: auto hidden; vertical-align: baseline; }
+.math-lazy > math { font-size: 1.05em; }
 .example-body {
   display: flow-root;
   max-height: var(--example-body-room, calc(100dvh - 320px));
