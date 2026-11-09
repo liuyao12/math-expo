@@ -85,6 +85,8 @@ details[open] > summary .disclosure-chevron {
 .example-current .example-points > .object-row { display: list-item; border: 0; padding-block: 0; }
 .example-points > li::marker { color: var(--muted); }
 .example-points > li > .math-display:first-child { margin-top: 0; }
+.example-subpoints { list-style: circle; padding-inline-start: 1rem; margin-block: .55rem 0; }
+.example-subpoints > li { margin-block: .5rem; }
 .verbatim-main .math-inline { display: inline-flex; max-width: 100%; overflow: auto hidden; vertical-align: baseline; }
 .math-lazy > math { font-size: 1.05em; }
 .example-body {

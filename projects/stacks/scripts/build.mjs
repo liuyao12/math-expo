@@ -27,7 +27,11 @@ function matchingHTML(item,proof=false,renderer=r){
   ).join('');
   const bindings=proof&&item.proofBindings?[...new Map([...item.proofBindings,...item.bindings].map(b=>[normalize(b.symbol),b])).values()]:item.bindings;
   const rows=bindings.map(binding=>`<li class="object-row" data-symbol="${esc(normalize(binding.symbol))}" tabindex="-1"><div class="object-formula">${r.math(binding.symbol+'{=}'+binding.value)}</div>${paragraphs(binding.note)}</li>`).join('');
-  const points=(item.points||[]).map(point=>`<li>${paragraphs(point)}</li>`).join('');
+  const renderPoint=point=>{
+    if(typeof point==='string')return `<li>${paragraphs(point)}</li>`;
+    return `<li>${paragraphs(point.text)}<ul class="example-subpoints">${point.children.map(renderPoint).join('')}</ul></li>`;
+  };
+  const points=(item.points||[]).map(renderPoint).join('');
   const calculation=paragraphs(proof&&item.proof?item.proof:item.check);
   const conclusion=paragraphs(item.result);
   const correction=item.correction?paragraphs('Correction: '+item.correction):'';
