@@ -18,7 +18,7 @@ const topology=graph=>graph.evaluate(g=>({
 }));
 const checkLabels=async graph=>{
  const labels=await graph.locator('.dependency-node').evaluateAll(ns=>ns.map(n=>({
-  tag:n.dataset.tag,text:n.querySelector('.graph-node-number').textContent,
+  tag:n.dataset.tag,text:n.querySelector('.graph-node-number')?.textContent,enclosure:!!n.dataset.graphCluster,
   box:n.querySelector('.graph-node-body').tagName,
   caption:n.querySelector('.graph-node-caption')?.textContent,
   width:Number(n.dataset.width),height:Number(n.dataset.height),
@@ -26,8 +26,11 @@ const checkLabels=async graph=>{
  })));
  assert(new Set(labels.map(label=>label.width)).size>1,'Boxes vary in width with their labels');
  for(const label of labels){
-  const ref=refs[label.tag];assert.equal(label.text,ref.kind[0].toUpperCase()+' '+ref.number);
+  const ref=refs[label.tag];
+  assert.equal(label.text,label.enclosure?undefined:ref.kind[0].toUpperCase()+' '+ref.number);
   assert.equal(label.box,'rect','Nodes are boxes');
+  if(ref.kind==='section')assert.equal(label.caption,undefined,'Section boxes omit titles');
+  if(label.enclosure)continue;
   if(ref.kind==='definition')assert(label.caption,'Definitions show the defined term: '+label.tag);
   if(!label.caption)assert(label.width-label.lines[0].width<26,'Number-only boxes hug their labels');
   for(const line of label.lines){
@@ -62,7 +65,7 @@ try{
    const graph=popup.locator('.dependency-graph'),board=graph.locator('.graph-viewport'),svg=graph.locator('svg');
    await checkLabels(graph);
    const groups=await graph.evaluate(g=>[...g.querySelectorAll('[data-graph-cluster]')].map(frame=>{
-    const tag=frame.dataset.graphCluster,bounds=frame.getBoundingClientRect();
+    const tag=frame.dataset.graphCluster,bounds=frame.querySelector('.graph-node-body').getBoundingClientRect();
     const members=[...g.querySelectorAll(`[data-graph-group="${tag}"]`)];
     const contains=members.every(n=>{
      const box=n.querySelector('.graph-node-body').getBoundingClientRect();
@@ -73,7 +76,7 @@ try{
    assert(groups.length>0,'Sections with multiple passages have frames');
    for(const {tag,contains,members} of groups){
     assert(contains,'The frame encloses every member of '+tag);
-    const expected=Object.entries(audits[slug].passages).filter(([,p])=>p.section===tag).map(([t])=>t);
+    const expected=Object.entries(audits[slug].passages).filter(([t,p])=>t!==tag&&p.section===tag).map(([t])=>t);
     assert.deepEqual(members.sort(),expected.sort(),'A frame groups only its own audited passages');
    }
    assert.equal(await popup.evaluate(n=>n.matches(':modal')),false,'Inset leaves the reading usable');
@@ -95,13 +98,13 @@ try{
    assert.notDeepEqual(await attached.evaluateAll(lines=>lines.map(n=>n.outerHTML)),beforeDrag,'Arrows follow dragged boxes');
    assert(await graph.evaluate(g=>{
     const nodes=new Map([...g.querySelectorAll('.dependency-node')].map(n=>[n.dataset.tag,n]));
-    return [...g.querySelectorAll('.graph-edges line')].every(line=>['from','to'].every((end,i)=>{
+    return [...g.querySelectorAll('.graph-edges line')].every(line=>Number(line.getAttribute('y1'))<Number(line.getAttribute('y2'))&&['from','to'].every((end,i)=>{
      const n=nodes.get(line.dataset[end]),p=n.transform.baseVal.getItem(0).matrix;
      const x=Number(line.getAttribute('x'+(i+1)))-p.e,y=Number(line.getAttribute('y'+(i+1)))-p.f;
      const rect=n.querySelector('.graph-node-body');
      return rect.isPointInFill(new DOMPoint(x*.995,y*.995))&&!rect.isPointInFill(new DOMPoint(x*1.005,y*1.005));
     }));
-   }),'Edges meet the box borders, including rounded corners');
+   }),'Every arrow runs down and meets both box borders');
    const oldWidth=await svg.evaluate(n=>n.getBoundingClientRect().width);
    await graph.getByRole('button',{name:'Zoom out',exact:true}).click();
    assert(await svg.evaluate(n=>n.getBoundingClientRect().width)<oldWidth);
@@ -148,16 +151,24 @@ try{
   await page.goto(base+'scheme/#009H',{waitUntil:'networkidle'});
   await page.locator('main [data-dependency-tag="009H"]').click();
   const sectionPopup=page.getByRole('dialog',{name:'Dependency graph'});
-  const header=await sectionPopup.locator('[data-tag="009H"] .graph-node-body').boundingBox();
+  const frame=sectionPopup.locator('[data-tag="009H"] .graph-node-body');
+  const viewportBox=await sectionPopup.locator('.graph-viewport').boundingBox();
+  let frameBox=await frame.boundingBox();
+  while(frameBox.x<viewportBox.x+2){
+   await sectionPopup.getByRole('button',{name:'Zoom out',exact:true}).click();
+   frameBox=await frame.boundingBox();
+  }
   const groupPositions=()=>sectionPopup.locator('[data-graph-cluster="009H"],[data-graph-group="009H"]').evaluateAll(nodes=>nodes.map(n=>{
    const m=n.transform.baseVal.getItem(0).matrix;
    return [m.e,m.f];
   }));
   const before=await groupPositions();
-  await page.mouse.move(header.x+header.width/2,header.y+header.height/2);
-  await page.mouse.down();await page.mouse.move(header.x+header.width/2+24,header.y+header.height/2+15,{steps:5});await page.mouse.up();
+  const x=frameBox.x+2,y=viewportBox.y+viewportBox.height/2;
+  await page.mouse.move(x,y);
+  await page.mouse.down();await page.mouse.move(x+24,y+15,{steps:5});await page.mouse.up();
   const deltas=(await groupPositions()).map(([x,y],i)=>[x-before[i][0],y-before[i][1]]);
-  assert(deltas.length>2&&Math.hypot(...deltas[0])>5,'The section header drags the frame');
+  assert(deltas.length>2&&Math.abs(deltas[0][0])>5,'Dragging the border moves the section box');
+  assert(deltas.every(([,y])=>Math.abs(y)<.01),'Dragging preserves dependency levels');
   assert(deltas.every(([x,y])=>Math.hypot(x-deltas[0][0],y-deltas[0][1])<.01),'The frame and all its passages move together');
   assert.deepEqual(errors,[]);await page.close();
  }

@@ -178,8 +178,6 @@ details[open] > summary .disclosure-chevron {
 .graph-viewport svg { display: block; width: 100%; height: auto; margin-inline: auto; }
 .graph-viewport { cursor: grab; }
 .graph-viewport.is-panning { cursor: grabbing; }
-.graph-section-frame { fill: #f0eee7; stroke: #bbb4a5; stroke-width: 1.2; pointer-events: none; }
-.graph-section-frame.outside-reading { fill: #f6f5ef; stroke-dasharray: 4 3; }
 .graph-edges { stroke: #869284; stroke-width: 1.35; pointer-events: none; }
 .graph-arrow path { fill: #869284; }
 
@@ -221,6 +219,9 @@ details[open] > summary .disclosure-chevron {
   stroke: color-mix(in srgb, var(--node-stroke, var(--green)) 74%, #fbfaf6);
   stroke-dasharray: 3 2;
 }
+.dependency-graph [data-graph-cluster] { touch-action: auto; }
+[data-graph-cluster] .graph-node-body { fill: #f0eee7; stroke: #aaa292; }
+[data-graph-cluster].outside-reading .graph-node-body { fill: #f6f5ef; }
 .graph-node-ring { fill: none; stroke: transparent; stroke-width: 2.6; pointer-events: none; }
 .dependency-node text { fill: var(--ink); font: 600 13px var(--sans); user-select: none; }
 .dependency-node .graph-node-caption { font: 400 12px var(--sans); }

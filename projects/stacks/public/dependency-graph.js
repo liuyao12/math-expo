@@ -1,4 +1,4 @@
-import {edgeEndpoints} from './graph-geometry.js';
+import {edgeEndpoints,sectionBoxPadding} from './graph-geometry.js?section-levels';
 
 (() => {
  'use strict';
@@ -17,9 +17,18 @@ import {edgeEndpoints} from './graph-geometry.js';
  for(const node of nodes)groups.get(node.dataset.graphGroup)?.members.push(node);
  const geometry=node=>{
   const position=node.transform.baseVal.getItem(0).matrix;
-  return {x:position.e,y:position.f,width:Number(node.dataset.width),height:Number(node.dataset.height)};
+  return {x:position.e,y:position.f,width:Number(node.dataset.width),height:Number(node.dataset.height),
+   portY:node.dataset.portY===undefined?undefined:Number(node.dataset.portY)};
  };
  const translate=(node,x,y)=>node.setAttribute('transform',`translate(${x} ${y})`);
+ const point=event=>new DOMPoint(event.clientX,event.clientY).matrixTransform(svg.getScreenCTM().inverse());
+ const dragNode=event=>{
+  const node=event.target.closest('.dependency-node');
+  if(!node?.dataset.graphCluster)return node;
+  const {x,y,width,height}=geometry(node),p=point(event);
+  const distance=Math.min(width/2-Math.abs(p.x-x),height/2-Math.abs(p.y-y));
+  return distance<=8?node:null;
+ };
  let activeTrigger=null;
 
  const describe=node=>{
@@ -127,35 +136,41 @@ import {edgeEndpoints} from './graph-geometry.js';
 
  let pan=null;
  viewport.addEventListener('pointerdown',event=>{
-  if(event.pointerType!=='mouse'||event.button!==0||event.target.closest('.dependency-node'))return;
+  if(event.pointerType!=='mouse'||event.button!==0||dragNode(event))return;
   pan={id:event.pointerId,x:event.clientX,y:event.clientY,left:viewport.scrollLeft,top:viewport.scrollTop};
-  viewport.setPointerCapture(event.pointerId);
-  viewport.classList.add('is-panning');
  });
  viewport.addEventListener('pointermove',event=>{
   if(pan?.id!==event.pointerId)return;
+  if(!viewport.hasPointerCapture(event.pointerId)){
+   if(Math.hypot(event.clientX-pan.x,event.clientY-pan.y)<5)return;
+   viewport.setPointerCapture(event.pointerId);
+   viewport.classList.add('is-panning');
+  }
   viewport.scrollLeft=pan.left+pan.x-event.clientX;
   viewport.scrollTop=pan.top+pan.y-event.clientY;
  });
- viewport.addEventListener('lostpointercapture',()=>{
+ const endPan=event=>{
+  if(pan?.id!==event.pointerId)return;
   pan=null;
   viewport.classList.remove('is-panning');
- });
+ };
+ viewport.addEventListener('lostpointercapture',endPan);
+ window.addEventListener('pointerup',endPan);
+ window.addEventListener('pointercancel',endPan);
 
- const point=event=>new DOMPoint(event.clientX,event.clientY).matrixTransform(svg.getScreenCTM().inverse());
  let drag=null, suppressClick=false;
  svg.addEventListener('pointerdown',event=>{
   suppressClick=false;
-  const node=event.target.closest('.dependency-node');
+  const node=dragNode(event);
   if(!node||event.button!==0||!event.isPrimary)return;
   const start=point(event),position=node.transform.baseVal.getItem(0).matrix;
-  drag={node,id:event.pointerId,x:event.clientX,y:event.clientY,dx:position.e-start.x,dy:position.f-start.y};
+  drag={node,id:event.pointerId,x:event.clientX,dx:position.e-start.x};
  });
  svg.addEventListener('pointermove',event=>{
   if(!drag||drag.id!==event.pointerId)return;
-  const {node,x,y,dx,dy}=drag;
+  const {node,x,dx}=drag;
   if(!suppressClick){
-   if(Math.hypot(event.clientX-x,event.clientY-y)<5)return;
+   if(Math.abs(event.clientX-x)<5)return;
    node.setPointerCapture(event.pointerId);
    suppressClick=true;
   }
@@ -163,27 +178,22 @@ import {edgeEndpoints} from './graph-geometry.js';
   const current=geometry(node),group=groups.get(node.dataset.graphGroup);
   const moved=new Set([node.dataset.tag]);
   const clamp=(value,min,max)=>Math.max(min,Math.min(max,value));
-  if(group&&node.dataset.tag===node.dataset.graphGroup){
-   const {frame,members}=group,center=frame.transform.baseVal.getItem(0).matrix;
-   const halfWidth=frame.width.baseVal.value/2,halfHeight=frame.height.baseVal.value/2;
-   const moveX=clamp(p.x+dx-current.x,halfWidth+10-center.e,bounds.width-halfWidth-10-center.e);
-   const moveY=clamp(p.y+dy-current.y,halfHeight+10-center.f,bounds.height-halfHeight-10-center.f);
-   translate(frame,center.e+moveX,center.f+moveY);
-   for(const member of members){
+  if(node.dataset.graphCluster){
+   const halfWidth=current.width/2;
+   const nextX=clamp(p.x+dx,halfWidth+10,bounds.width-halfWidth-10);
+   translate(node,nextX,current.y);
+   for(const member of groups.get(node.dataset.graphCluster).members){
     const {x,y}=geometry(member);
-    translate(member,x+moveX,y+moveY);
+    translate(member,x+nextX-current.x,y);
     moved.add(member.dataset.tag);
    }
   }else{
-   let left=10,top=10,right=bounds.width-10,bottom=bounds.height-10;
+   let left=10,right=bounds.width-10;
    if(group){
-    const {frame}=group,center=frame.transform.baseVal.getItem(0).matrix;
-    const header=geometry(byTag.get(node.dataset.graphGroup));
-    const halfWidth=frame.width.baseVal.value/2,halfHeight=frame.height.baseVal.value/2;
-    left=center.e-halfWidth+14;right=center.e+halfWidth-14;
-    top=header.y+header.height/2+14;bottom=center.f+halfHeight-14;
+    const {x,width}=geometry(group.frame);
+    left=x-width/2+sectionBoxPadding;right=x+width/2-sectionBoxPadding;
    }
-   translate(node,clamp(p.x+dx,left+current.width/2,right-current.width/2),clamp(p.y+dy,top+current.height/2,bottom-current.height/2));
+   translate(node,clamp(p.x+dx,left+current.width/2,right-current.width/2),current.y);
   }
   for(const line of edges){
    if(moved.has(line.dataset.from)||moved.has(line.dataset.to)){
