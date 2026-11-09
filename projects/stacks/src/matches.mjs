@@ -1,18 +1,18 @@
 const r=String.raw;
 const row=(symbol,value,note='')=>({symbol,value,note});
 const sphere=row(r`X`,r`S=\mathbb P^1(\mathbb C)`);
-const cover=[row(r`I`,r`\{0,\infty\}`),row(r`U_i`,r`\begin{cases}S\setminus\{\infty\}&i=0\\S\setminus\{0\}&i=\infty\end{cases}`,r`The coordinates are \(z\) on \(U_0\) and \(w=1/z\) on \(U_\infty\).`)];
-const localSheaves=[row(r`\mathcal F_i`,r`\mathcal O_{U_i}`,r`Holomorphic functions on each chart, regarded as sets.`),row(r`\varphi_{ij}`,r`\text{coordinate substitution}`,r`In particular, \(\varphi_{0\infty}:s_0(z)\mapsto s_0(1/w)\). The reverse transition is its inverse.`)];
+const cover=[row(r`I`,r`\{0,\infty\}`),row(r`U_i`,r`\begin{cases}S\setminus\{\infty\}&i=0\\S\setminus\{0\}&i=\infty\end{cases}`,r`\(z\) on \(U_0\), \(w=1/z\) on \(U_\infty\).`)];
+const localSheaves=[row(r`\mathcal F_i`,r`\mathcal O_{U_i}`,r`Holomorphic functions, as sets.`),row(r`\varphi_{ij}`,r`\text{coordinate substitution}`,r`\(\varphi_{0\infty}:s_0(z)\mapsto s_0(1/w)\).`)];
 const pair=[row(r`W`,r`S\setminus\{1\}`),row(r`s_0`,r`\frac1{z-1}`),row(r`s_\infty`,r`\frac w{1-w}`)];
 const entry=(title,bindings,check,result,extra={})=>({title,bindings,check,result,...extra});
 
 export const examples={
   'local-functions':entry(r`functions on the sphere`,[
-    sphere,row(r`\mathcal O_X`,r`\mathcal O_S`,r`\(\mathcal O_S(V)\) is the ring of holomorphic functions on \(V\subset S\).`),
+    sphere,row(r`\mathcal O_X`,r`\mathcal O_S`,r`\(\mathcal O_S(V)=\{h:V\to\mathbb C\mid h\text{ holomorphic}\}\).`),
     row(r`Y`,r`S`,r`target locally ringed space`),
     row(r`\mathcal O_Y`,r`\mathcal O_S`),
     row(r`M`,r`S`,r`smooth manifold in the source’s illustration`),row(r`N`,r`S`,r`target smooth manifold in that illustration`),
-    row(r`f`,r`[z\mapsto z^2]`,r`It extends over infinity, taking infinity to infinity.`),
+    row(r`f`,r`[z\mapsto z^2]`,r`\(f(\infty)=\infty\).`),
     row(r`f^\sharp`,r`[h\mapsto h\circ f]`),
     row(r`f_*\mathcal O_X`,r`[V\mapsto\mathcal O_S(f^{-1}(V))]`)
   ],r`\[
@@ -20,8 +20,8 @@ export const examples={
 \]`,r``,{note:r`Use \(M=N=S\) in the source’s smooth-manifold example.`}),
   'stalks':entry(r`local ring`,[
     sphere,row(r`x`,r`a=1`),
-    row(r`\mathcal O_{X,x}`,r`\mathcal O_{S,1}`,r`Germs of holomorphic functions near \(1\). Functions have the same germ if they agree on some neighbourhood of \(1\).`),
-    row(r`\mathfrak m_x`,r`\{h:h(1)=0\}`),row(r`\kappa(x)`,r`\mathbb C`,r`The quotient map is evaluation at \(1\).`),
+    row(r`\mathcal O_{X,x}`,r`\mathcal O_{S,1}`,r`Convergent Taylor series at \(1\).`),
+    row(r`\mathfrak m_x`,r`\{h:h(1)=0\}`),row(r`\kappa(x)`,r`\mathbb C`,r`Evaluation at \(1\).`),
     row(r`f`,r`[z\mapsto z^2]`)
   ],r`\[
 h\in\mathfrak m_1\quad\Longrightarrow\quad (h\circ f)(1)=h(1)=0
@@ -34,7 +34,7 @@ h\in\mathfrak m_1\quad\Longrightarrow\quad (h\circ f)(1)=h(1)=0
 h\longmapsto (t\mapsto h(t^3))\longmapsto (z\mapsto h(z^6))
 \]`,r``),
   'isomorphisms':entry(r`inversion`,[
-    row(r`X`,r`S`),row(r`Y`,r`S`),row(r`f`,r`[z\mapsto1/z]`,r`For this lemma use inversion; it exchanges zero and infinity and is its own inverse.`),row(r`f^\sharp`,r`[h\mapsto h(1/z)]`)
+    row(r`X`,r`S`),row(r`Y`,r`S`),row(r`f`,r`[z\mapsto1/z]`,r`Inversion exchanges \(0\) and \(\infty\).`),row(r`f^\sharp`,r`[h\mapsto h(1/z)]`)
   ],r`\[
 \begin{gathered}
 f\circ f=\operatorname{id}_S,\\
@@ -46,7 +46,7 @@ f^\sharp(h)(z)=h(1/z)
   ],r`\[
 (\exp s)|_V=\exp(s|_V)
 \]`,r``,{
-    note:r`Exponentiating a holomorphic function gives a nowhere vanishing one. The operation commutes with both restriction and change of coordinates.`,
+    note:r`Exponentiation produces a nowhere vanishing holomorphic function.`,
     proofBindings:[row(r`U`,r`V\subset S`),row(r`s`,r`h\in\mathcal O_S(V)`),row(r`\varphi_U(s)`,r`e^h`)],
     proof:r`\[(e^h)|_T=e^{h|_T}.\]`
   }),
@@ -59,7 +59,7 @@ f^\sharp(h)(z)=h(1/z)
     sphere,...localSheaves,...pair,row(r`\mathcal F`,r`\mathcal O_S`),row(r`\varphi_i`,r`[(s_0,s_\infty)\mapsto s_i]`)
   ],r`\[
 \frac1{1/w-1}=\frac w{1-w}
-\]`,r`The expressions agree on the overlap and glue on \(W\).`,{
+\]`,r`The fractions glue on \(W\).`,{
     proofBindings:pair,proof:r`\[(s_0,s_\infty)|_V=(s_0|_{V\cap U_0},s_\infty|_{V\cap U_\infty}).\]`
   }),
   'operations':entry(r`rings and modules`,[
@@ -69,12 +69,12 @@ f^\sharp(h)(z)=h(1/z)
 \varphi_{ij}(s+t)=\varphi_{ij}(s)+\varphi_{ij}(t),\\
 \varphi_{ij}(st)=\varphi_{ij}(s)\varphi_{ij}(t)
 \end{gathered}
-\]`,r``,{proof:r`The equalizer is closed under addition and multiplication because both restriction maps preserve them.`}),
+\]`,r``,{proof:r`Both restriction maps preserve addition and multiplication.`}),
   'uniqueness':entry(r`a sheaf from its charts`,[
     sphere,row(r`\operatorname{Sh}(X)`,r`\operatorname{Sh}(S)`),row(r`\mathcal F`,r`\mathcal O_S`),row(r`\mathcal F|_{U_i}`,r`\mathcal O_{U_i}`),row(r`\varphi_{ij}`,r`\text{canonical overlap identification}`)
   ],r`\[
 \mathcal O_S\longmapsto(\mathcal O_{U_i},\varphi_{ij})\longmapsto\mathcal O_S
-\]`,r``,{proof:r`The compatible pairs recover the original sheaf. Any chartwise maps respecting the transitions give a unique map on these pairs.`}),
+\]`,r``,{proof:r`Chartwise maps respecting the transitions act on compatible pairs.`}),
   'maps':entry(r`exponential and units`,[
     sphere,row(r`\mathcal F_i`,r`\mathcal O_{U_i}`),row(r`\mathcal G`,r`\mathcal O_S^\times`),row(r`f_i`,r`[s_i\mapsto e^{s_i}]`),row(r`f`,r`\exp`),row(r`g_i`,r`\mathcal O_{U_i}^\times\hookrightarrow\mathcal O_{U_i}`),row(r`g`,r`\mathcal O_S^\times\hookrightarrow\mathcal O_S`)
   ],r`\[
@@ -102,17 +102,17 @@ U_{ii}=X_i,\\
     row(r`X_i`,r`\begin{cases}\mathbb C_z&i=1\\\mathbb C_w&i=2\end{cases}`),
     row(r`U_i`,r`\begin{cases}S\setminus\{\infty\}&i=1\\S\setminus\{0\}&i=2\end{cases}`),
     row(r`\varphi_i`,r`\begin{cases}z\mapsto[z:1]&i=1\\w\mapsto[1:w]&i=2\end{cases}`),
-    row(r`\varphi_{ij}`,r`\text{the overlap identification}`,r`inversion for distinct charts; identity otherwise`),
+    row(r`\varphi_{ij}`,r`\text{the overlap identification}`,r`Inversion between charts.`),
     row(r`\mathcal O_X`,r`\mathcal O_S`),
     row(r`Y`,r`S`),
     row(r`f_i`,r`\begin{cases}z\mapsto[z^2:1]&i=1\\w\mapsto[1:w^2]&i=2\end{cases}`),
     row(r`f`,r`[[u:v]\mapsto[u^2:v^2]]`),
     row(r`g`,r`\mathrm{id}_S`),
-    row(r`V_i`,r`U_i`,r`the inverse-image cover for this choice of \(g\)`),
+    row(r`V_i`,r`U_i`,r``),
     row(r`g_i`,r`\varphi_i^{-1}`)
   ],r`\[
 [z^2:1]=[1:w^2]\quad(w=1/z)
-\]`,r`The maps glue to \([u:v]\mapsto[u^2:v^2]\).`,{
+\]`,r``,{
     proofBindings:[row(r`x`,r`2\in X_1`),row(r`x'`,r`1/2\in X_2`),row(r`\varphi_{i,*}\mathcal O_i`,r`\mathcal O_{U_i}`)],
     proof:r`\[2\in\mathbb C_z\ \sim\ 1/2\in\mathbb C_w.\] The two chart origins remain distinct.`
   }),
@@ -125,7 +125,7 @@ U_{ii}=X_i,\\
     row(r`\varphi_{12}^\sharp`,r`[w\mapsto z^{-1}]`),
     row(r`X`,r`\mathbb P^1_{\mathbb C}`),
     row(r`\mathcal O_X`,r`\mathcal O_{\mathbb P^1_{\mathbb C}}`)
-  ],r`The chart images are affine opens and cover \(X\).`,r``,{note:r`Use the algebraic projective line with regular functions.`,proof:r`\[
+  ],r`\(X=U_1\cup U_2\), with each \(U_i\) affine.`,r``,{note:r`Use regular functions on the algebraic projective line.`,proof:r`\[
 \begin{gathered}
 X=U_1\cup U_2,\\
 U_i\cong X_i\ \text{affine}.
@@ -138,7 +138,7 @@ U_i\cong X_i\ \text{affine}.
 z=w\quad(z,w\ne0),\\
 0_{X_1}\ne0_{X_2}\text{ in }X
 \end{gathered}
-\]`,r``,{note:r`On complex points, every neighbourhood of either origin meets the same punctured line near zero. The two origins cannot be separated by disjoint neighbourhoods.`}),
+\]`,r``,{note:r`Both origins share the same punctured neighbourhood.`}),
   'global-functions':entry(r`projective line`,[
     row(r`k`,r`\mathbb C`),row(r`x`,r`z`),row(r`y`,r`w`),row(r`\mathbf P^1_k`,r`\mathbb P^1_{\mathbb C}`),row(r`g(x)`,r`g(z)`),row(r`g(1/y)`,r`g(1/w)`),row(r`U`,r`\mathbb P^1_{\mathbb C}\setminus\{1\}`),row(r`s`,r`\frac1{z-1}=\frac w{1-w}`)
   ],r`\[
