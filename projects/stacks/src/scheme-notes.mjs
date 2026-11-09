@@ -1027,13 +1027,17 @@ h_X:\pi_n(X,x_0)\longrightarrow H_n(X;\mathbb Z),\\
  url:'https://people.math.rochester.edu/faculty/doug/otherpapers/MayConcise.pdf',
  label:'May, A Concise Course in Algebraic Topology, §15.1'
 }};
-const coordinateSpaces={...model('coordinate vector spaces',[],'',''),points:[{
- text:r`\(\mathcal A=\mathbf{Mat}_k\subset\mathbf{Vect}_k=\mathcal B\) via standard coordinates.`,
- children:[
-  r`\(\operatorname{Ob}(\mathcal A)=\{k^n:n\geq 0\}\)`,
-  r`\(\operatorname{Mor}(k^n,k^m)\cong\) \(\{m\times n\text{ matrices over }k\}\)`
- ]
-}]};
+const coordinateSpaces={...model('coordinate vector spaces',[],'',''),points:[
+ r`\(\mathcal B=\mathbf{Vect}_{\mathbb R}\)`,
+ {
+  text:r`\(\mathcal A\) is the subcategory of \(\mathcal B\) with`,
+  children:[
+   r`\(\operatorname{Ob}(\mathcal A)=\{\mathbb R^n:n\geq 0\}\)`,
+   r`\(\operatorname{Mor}(\mathbb R^n,\mathbb R^m)\cong\) \(\operatorname{Mat}_{m\times n}(\mathbb R)\), the set of \(m\times n\) matrices over \(\mathbb R\)`
+  ]
+ },
+ 'It is a full subcategory.'
+]};
 const matrixEquivalence=model('matrices',[
  b(r`\mathcal A`,r`\mathbf{Mat}_k`),
  b(r`\operatorname{Ob}(\mathcal A)`,r`\mathbb Z_{\ge0}`),
