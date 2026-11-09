@@ -106,12 +106,19 @@ for(const reading of selectedReadings){
  assert.deepEqual(nodes.map(match=>match[1]).sort(),[...report.required_tags].sort(),'The shared inset includes every audited passage');
  assert.deepEqual(nodes.filter(match=>match[2].includes('dependency-target')).map(match=>match[1]),[reading.target]);
  const links=new Map(nodes.map(([,tag,,href])=>[tag,href]));
- const edges=new Set([...inset.matchAll(/<line data-from="([^"]+)" data-to="([^"]+)"/g)].map(([,from,to])=>`${from}:${to}`));
+ const arrows=[...inset.matchAll(/<line data-from="([^"]+)" data-to="([^"]+)"/g)];
+ const edges=new Set(arrows.map(([,from,to])=>`${from}:${to}`));
+ const frames=new Set([...inset.matchAll(/data-graph-cluster="([^"]+)" transform=/g)].map(match=>match[1]));
+ assert(arrows.every(([,from,to])=>!frames.has(from)&&!frames.has(to)),'Section frames used only for grouping have no arrows');
  for(const tag of report.required_tags){
-  const parent=report.paths[tag].at(-1);
-  if(parent)assert(edges.has(`${tag}:${parent}`),'The shared inset retains the audited route for '+tag);
+  const parent=report.paths[tag].findLast(step=>!frames.has(step));
+  if(parent&&!frames.has(tag))assert(edges.has(`${tag}:${parent}`),'The shared inset retains the audited route for '+tag);
   const owner=selectedReadings.find(unit=>unit.sections.some(section=>section.tag===report.passages[tag].section));
   assert.equal(links.get(tag),`../${owner.slug}/#${tag}`,'Audited node links to its owning reading');
+ }
+ if(reading.slug==='grr'){
+  assert(frames.has('02I8'),'Section 5.20 is only an enclosure');
+  assert(edges.has('02I9:02QL'),'Dimension functions link directly to the passage that needs them');
  }
  console.log(`${reading.slug}: ${marks.length} audited highlights across all ${local.size} sections`);
 }

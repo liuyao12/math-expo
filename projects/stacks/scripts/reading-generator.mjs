@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import {createHash} from 'node:crypto';
 import {createRenderer,escapeHTML as esc} from '../src/latex.mjs';
 import {printedSource,renderProofs,sourceHeading} from '../src/source-column.mjs';
 import {notesFor} from '../src/scheme-notes.mjs';
@@ -164,6 +165,17 @@ export function buildReadings({root,dist,head,header,footer,renderExampleCard,as
    for(const {tag:used} of entry.dependencies){
     if(!nodes[tag].uses.includes(used)&&!reaches(used,tag))nodes[tag].uses.push(used);
    }
+  }
+  // An empty audited section passage can stand in for statements inside it.
+  // Draw that section as a frame and link directly to what the audit selected.
+  const emptyTextHash=createHash('sha256').digest('hex');
+  const relays=new Map(entries.filter(([tag,entry])=>tag!==tree.rootTag&&tag===entry.section&&
+   entry.text_sha256===emptyTextHash&&nodes[tag].uses.some(used=>tree.audit.passages[used].section===tag))
+   .map(([tag])=>[tag,nodes[tag].uses]));
+  const expand=tag=>relays.has(tag)?relays.get(tag).flatMap(expand):[tag];
+  for(const [tag,node] of Object.entries(nodes)){
+   node.frameOnly=relays.has(tag);
+   node.uses=node.frameOnly?[]:[...new Set(node.uses.flatMap(expand))];
   }
   return {...tree,nodes,locations};
  };
