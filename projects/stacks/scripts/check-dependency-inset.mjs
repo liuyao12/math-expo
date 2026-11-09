@@ -12,6 +12,10 @@ const visibleCount=graph=>graph.evaluate(g=>{
  const box=g.querySelector('.graph-viewport').getBoundingClientRect();
  return [...g.querySelectorAll('.dependency-node')].filter(n=>{const r=n.querySelector('.graph-node-body').getBoundingClientRect();return r.x+r.width/2>box.left&&r.x+r.width/2<box.right&&r.y+r.height/2>box.top&&r.y+r.height/2<box.bottom;}).length;
 });
+const topology=graph=>graph.evaluate(g=>({
+ nodes:[...g.querySelectorAll('.dependency-node')].map(n=>n.dataset.tag),
+ edges:[...g.querySelectorAll('.graph-edges line')].map(n=>[n.dataset.from,n.dataset.to])
+}));
 const checkLabels=async graph=>{
  const labels=await graph.locator('.dependency-node').evaluateAll(ns=>ns.map(n=>({
   tag:n.dataset.tag,text:n.querySelector('.graph-node-number').textContent,
@@ -64,7 +68,8 @@ try{
    const scale=await svg.evaluate(n=>n.getBoundingClientRect().width/n.viewBox.baseVal.width);
    assert(scale>=.85&&scale<=1.4,'Readable local scale, independent of graph size');
    const count=await visibleCount(graph),total=await graph.locator('.dependency-node').count();
-   assert(count>1&&count<total,'Initial view shows a neighborhood rather than the entire graph');
+   assert(count>=1&&count<total,'Initial view is zoomed to the selected passage');
+   const shared=await topology(graph);
    const attached=graph.locator('.graph-edges line[data-from="'+tag+'"],.graph-edges line[data-to="'+tag+'"]');
    const beforeDrag=await attached.evaluateAll(lines=>lines.map(n=>n.outerHTML));
    await page.mouse.move(node.x+node.width/2,node.y+node.height/2);
@@ -103,16 +108,15 @@ try{
    const readingUrl=page.url();
    await extra.click();await popup.waitFor();
    assert.equal(page.url(),readingUrl,'A highlighted label opens its inset without navigating');
-   assert(await popup.locator('[data-graph-overview]').isVisible(),'Audit inset links to the reading overview');
+   assert.deepEqual(await topology(graph),shared,'Both highlights open the same full graph');
    assert.equal(await popup.locator('.is-current').getAttribute('data-tag'),additionalTag);
    assert.equal(await popup.locator('.dependency-target').getAttribute('data-tag'),audits[slug].target);
    for(const ancestor of audits[slug].paths[additionalTag]){
-    assert.equal(await popup.locator('.dependency-node[data-tag="'+ancestor+'"]').count(),1,'Audit inset shows the route to the target');
+    assert.equal(await popup.locator('.dependency-node[data-tag="'+ancestor+'"]').count(),1,'The shared graph contains the route to the target');
    }
    await page.keyboard.press('Escape');await popup.waitFor({state:'hidden'});
    await trigger.click();await popup.waitFor();
-   assert.equal(await popup.locator('.dependency-node').count(),total,'An overview label restores the overview');
-   assert(!(await popup.locator('[data-graph-overview]').isVisible()));
+   assert.deepEqual(await topology(graph),shared,'Switching highlights leaves the graph intact');
    await page.keyboard.press('Escape');await popup.waitFor({state:'hidden'});
    if(prerequisite){
     await extra.click();await popup.waitFor();

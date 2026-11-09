@@ -1,5 +1,4 @@
 import {edgeEndpoints} from './graph-geometry.js';
-import {renderPassageGraph} from './graph-render.js';
 
 (() => {
  'use strict';
@@ -10,43 +9,10 @@ import {renderPassageGraph} from './graph-render.js';
  const controls=graph.querySelector('.graph-controls');
  const passage=graph.querySelector('[data-graph-passage]'),section=graph.querySelector('[data-graph-section]');
  const root=svg.querySelector('.dependency-target');
- let nodes,edges,bounds,byTag;
- const indexGraph=()=>{
-  nodes=[...svg.querySelectorAll('.dependency-node')];
-  edges=[...svg.querySelectorAll('.graph-edges line')];
-  bounds=svg.viewBox.baseVal;
-  byTag=new Map(nodes.map(node=>[node.dataset.tag,node]));
- };
- indexGraph();
- const overviewTags=new Set(byTag.keys()),auditScript=document.getElementById('dependency-audit-data');
- const legend=graph.querySelector('.graph-legend');
- let audit,overview,localTag=null;
- const snapshot=(shape,key)=>({markup:shape.innerHTML,legend:key.innerHTML,
-  attributes:['viewBox','width','height'].map(name=>[name,shape.getAttribute(name)])});
- const switchGraph=tag=>{
-  const inOverview=overviewTags.has(tag);
-  if((inOverview&&!localTag)||localTag===tag)return byTag.get(tag);
-  if(!inOverview){
-   if(!auditScript)return;
-   audit??=JSON.parse(auditScript.textContent);
-   if(!audit.passages[tag])return;
-  }
-  overview??=snapshot(svg,legend);
-  let view=overview;
-  if(!inOverview){
-   const template=document.createElement('template');
-   template.innerHTML=renderPassageGraph(audit,tag,'../');
-   view=snapshot(template.content.querySelector('svg'),template.content.querySelector('.graph-legend'));
-  }
-  svg.innerHTML=view.markup;
-  for(const [name,value] of view.attributes)svg.setAttribute(name,value);
-  legend.innerHTML=view.legend;
-  localTag=inOverview?null:tag;
-  dialog.querySelector('[data-graph-hint]').textContent=localTag?'Audited prerequisites and route to the target.':'Drag to explore; zoom out for the full graph.';
-  dialog.querySelector('[data-graph-overview]').hidden=!localTag;
-  indexGraph();
-  return byTag.get(tag);
- };
+ const nodes=[...svg.querySelectorAll('.dependency-node')];
+ const edges=[...svg.querySelectorAll('.graph-edges line')];
+ const bounds=svg.viewBox.baseVal;
+ const byTag=new Map(nodes.map(node=>[node.dataset.tag,node]));
  const geometry=node=>{
   const position=node.transform.baseVal.getItem(0).matrix;
   return {x:position.e,y:position.f,width:Number(node.dataset.width),height:Number(node.dataset.height)};
@@ -119,7 +85,7 @@ import {renderPassageGraph} from './graph-render.js';
   document.addEventListener('click',event=>{
    const trigger=event.target.closest('[data-dependency-tag]');
    if(!trigger||trigger.disabled||event.defaultPrevented)return;
-   const node=switchGraph(trigger.dataset.dependencyTag);
+   const node=byTag.get(trigger.dataset.dependencyTag);
    if(!node)return;
    event.preventDefault();
    graph.querySelector('.is-current')?.classList.remove('is-current');

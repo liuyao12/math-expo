@@ -131,26 +131,48 @@ export function buildReadings({root,dist,head,header,footer,renderExampleCard,as
  const graphScript=(base='../../')=>`<script type="module" src="${base}dependency-graph.js?v=${assetVersion}"></script>`;
  const graphHTML=(tree,prefix='',base='../../')=>renderDependencyGraph(tree,referencesByTag,base,prefix);
  const owners=new Map(readings.flatMap(reading=>reading.sections.map(section=>[section.tag,{reading,section}])));
- const auditData=tree=>{
-  const passages=Object.fromEntries(Object.entries(tree.audit.passages).map(([tag,entry])=>{
+ const auditedGraph=tree=>{
+  const nodes={},locations=new Map();
+  const entries=Object.entries(tree.audit.passages);
+  for(const [tag,entry] of entries){
    const owner=owners.get(entry.section),ref=referencesByTag.get(tag);
    if(!owner||!ref)throw Error('Missing audited passage metadata: '+tag);
-   const sourceTitle=ref.sourceTitle||graphLabels.namedResults[tag];
    const title=ref.kind==='definition'
     ?graphLabels.definitions[tag]||ref.term||tree.nodes[tag]?.title||owner.section.title
-    :tree.nodes[tag]?.title||sourceTitle||(ref.kind==='section'?owner.section.title:'');
-   return [tag,{kind:ref.kind,number:ref.number,title,sourceTitle,section:entry.section,
-    slug:owner.reading.slug,readingTitle:owner.reading.readingTitle,parent:tree.audit.paths[tag].at(-1),
-    uses:entry.dependencies.map(dep=>dep.tag)}];
-  }));
-  return JSON.stringify({target:tree.rootTag,passages}).replaceAll('<','\\u003c');
+    :tree.nodes[tag]?.title||ref.sourceTitle||graphLabels.namedResults[tag]||(ref.kind==='section'?owner.section.title:'');
+   nodes[tag]={title,uses:[]};
+   locations.set(tag,{slug:owner.reading.slug,readingTitle:owner.reading.readingTitle,section:owner.section});
+  }
+  // Keep every audited path to the target. Add other direct dependencies
+  // wherever they preserve the top-down order of the diagram.
+  for(const [tag] of entries){
+   const parent=tree.audit.paths[tag].at(-1);
+   if(parent)nodes[parent].uses.push(tag);
+  }
+  const reaches=(from,to)=>{
+   const pending=[from],visited=new Set();
+   while(pending.length){
+    const tag=pending.pop();
+    if(tag===to)return true;
+    if(visited.has(tag))continue;
+    visited.add(tag);
+    pending.push(...nodes[tag].uses);
+   }
+   return false;
+  };
+  for(const [tag,entry] of entries){
+   for(const {tag:used} of entry.dependencies){
+    if(!nodes[tag].uses.includes(used)&&!reaches(used,tag))nodes[tag].uses.push(used);
+   }
+  }
+  return {...tree,nodes,locations};
  };
  for(const {slug,html,tree} of readerPages){
   const inset=tree?`<dialog id="dependency-dialog" class="dependency-dialog" aria-labelledby="dependency-dialog-title">
    <header><h2 id="dependency-dialog-title">Dependency graph</h2><form method="dialog"><button type="submit" autofocus>Close</button></form></header>
-   <p class="graph-hint"><span data-graph-hint>Drag to explore; zoom out for the full graph.</span> <a data-graph-overview href="../${tree.url}#dependency-tree" hidden>Reading overview ↗</a></p>
-   ${graphHTML(tree,'inset-','../')}
-  </dialog>${readingSlugs.has(slug)?`<script type="application/json" id="dependency-audit-data">${auditData(tree)}</script>`:''}${graphScript('../')}`:'';
+   <p class="graph-hint">Drag to explore, or select Fit graph to see the whole diagram.</p>
+   ${graphHTML(readingSlugs.has(slug)?auditedGraph(tree):tree,'inset-','../')}
+  </dialog>${graphScript('../')}`:'';
   const dir=path.join(dist,slug);
   fs.mkdirSync(dir,{recursive:true});
   fs.writeFileSync(path.join(dir,'index.html'),html+inset+(readingSlugs.has(slug)?`<script type="module" src="../math-lazy.js?v=${assetVersion}"></script>`:'')+'</body></html>');

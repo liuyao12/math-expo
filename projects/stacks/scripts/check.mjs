@@ -101,13 +101,17 @@ for(const reading of selectedReadings){
   const {kind,number}=referencesByTag.get(tag);
   assert.equal(label,kind==='section'?number:kind[0].toUpperCase()+kind.slice(1)+' '+number);
  }
- const graphData=JSON.parse(page.match(/<script type="application\/json" id="dependency-audit-data">([\s\S]*?)<\/script>/)[1]);
- assert.equal(graphData.target,reading.target);
+ const inset=page.match(/<dialog id="dependency-dialog"[\s\S]*?<\/dialog>/)[0];
+ const nodes=[...inset.matchAll(/<a id="inset-([^"]+)"[^>]*class="dependency-node([^"]*)" href="([^"]+)"/g)];
+ assert.deepEqual(nodes.map(match=>match[1]).sort(),[...report.required_tags].sort(),'The shared inset includes every audited passage');
+ assert.deepEqual(nodes.filter(match=>match[2].includes('dependency-target')).map(match=>match[1]),[reading.target]);
+ const links=new Map(nodes.map(([,tag,,href])=>[tag,href]));
+ const edges=new Set([...inset.matchAll(/<line data-from="([^"]+)" data-to="([^"]+)"/g)].map(([,from,to])=>`${from}:${to}`));
  for(const tag of report.required_tags){
-  const entry=graphData.passages[tag];
-  assert.equal(entry.parent,report.paths[tag].at(-1));
-  assert.deepEqual(entry.uses,report.passages[tag].dependencies.map(dep=>dep.tag));
-  assert(anchorsFor(path.join(dist,entry.slug,'index.html')).has(tag),'Audited node links to its source anchor: '+tag);
+  const parent=report.paths[tag].at(-1);
+  if(parent)assert(edges.has(`${tag}:${parent}`),'The shared inset retains the audited route for '+tag);
+  const owner=selectedReadings.find(unit=>unit.sections.some(section=>section.tag===report.passages[tag].section));
+  assert.equal(links.get(tag),`../${owner.slug}/#${tag}`,'Audited node links to its owning reading');
  }
  console.log(`${reading.slug}: ${marks.length} audited highlights across all ${local.size} sections`);
 }

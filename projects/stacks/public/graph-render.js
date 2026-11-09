@@ -12,7 +12,7 @@ function wrapLabel(label){
  return lines;
 }
 
-// Lay out a small, directed graph using springs and repulsion. A pull toward
+// Lay out a directed graph using springs and repulsion. A pull toward
 // depth bands makes arrow direction readable, and the initial layout is stable.
 function layout(nodes,edges){
  const layerGap=Math.max(...nodes.map(node=>node.height))+32;
@@ -27,7 +27,9 @@ function layout(nodes,edges){
    y:depth*layerGap+5*Math.cos(i*3),vx:0,vy:0
   }));
  }
- for(let tick=0;tick<260;tick++){
+ // Limit the pairwise work for full reading graphs.
+ const ticks=Math.min(260,Math.max(16,Math.floor(20_000_000/nodes.length**2)));
+ for(let tick=0;tick<ticks;tick++){
   for(const node of nodes){
    node.vx-=node.x*.002;
    node.vy+=(node.depth*layerGap-node.y)*.055;
@@ -95,7 +97,7 @@ export function renderDependencyGraph(tree,references,base,idPrefix=''){
   const origin=outsideReading?` · ${location?.readingTitle||"The Stacks Project"}`:"";
   const route=location?`${base}${location.slug}/`:null;
   const caption=ref.kind==='definition'?(tree.labels.definitions[tag]||node.title)
-   :ref.sourceTitle||tree.labels.namedResults[tag]||(tag===tree.rootTag||tree.focusTag===tag?node.title:'');
+   :ref.sourceTitle||tree.labels.namedResults[tag]||(tag===tree.rootTag?node.title:'');
   const lines=wrapLabel(caption);
   return [tag,{tag,depth,number:String(ref.number),shortLabel:`${ref.kind[0].toUpperCase()} ${ref.number}`,kind:ref.kind,root:tag===tree.rootTag,outsideReading,
    caption,lines,width:nodeWidth,height:lines.length?32+lines.length*16:36,
@@ -130,28 +132,4 @@ export function renderDependencyGraph(tree,references,base,idPrefix=''){
   </div>
   <p class="graph-detail"><a data-graph-passage href="${esc(root.href)}">${esc(root.label)}</a> <a data-graph-section${root.section?` href="${esc(root.section)}"`:' hidden'}>Read section ↗</a></p>
  </div>`;
-}
-
-// Show the audited route to the target and the selected passage's direct
-// prerequisites. The audit may contain cycles; ancestor edges stay on the
-// route already shown rather than creating a loop in the diagram.
-export function renderPassageGraph(data,tag,base){
- const nodes={},references=new Map(),locations=new Map();
- const add=t=>{
-  if(nodes[t])return;
-  const {title,slug,readingTitle,section,kind,number,sourceTitle}=data.passages[t];
-  nodes[t]={title,uses:[]};
-  references.set(t,{kind,number,sourceTitle});
-  locations.set(t,{slug,readingTitle,section:{tag:section}});
- };
- add(tag);
- for(let child=tag,parent; (parent=data.passages[child].parent); child=parent){
-  add(parent);nodes[parent].uses.push(child);
- }
- const ancestors=new Set(Object.keys(nodes));
- for(const used of data.passages[tag].uses){
-  if(ancestors.has(used))continue;
-  add(used);nodes[tag].uses.push(used);
- }
- return renderDependencyGraph({nodes,locations,rootTag:data.target,focusTag:tag,labels:{definitions:{},namedResults:{}}},references,base,'inset-');
 }
