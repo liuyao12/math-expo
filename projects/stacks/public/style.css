@@ -178,6 +178,8 @@ details[open] > summary .disclosure-chevron {
 .graph-viewport svg { display: block; width: 100%; height: auto; margin-inline: auto; }
 .graph-viewport { cursor: grab; }
 .graph-viewport.is-panning { cursor: grabbing; }
+.graph-section-frame { fill: #f0eee7; stroke: #bbb4a5; stroke-width: 1.2; pointer-events: none; }
+.graph-section-frame.outside-reading { fill: #f6f5ef; stroke-dasharray: 4 3; }
 .graph-edges { stroke: #869284; stroke-width: 1.35; pointer-events: none; }
 .graph-arrow path { fill: #869284; }
 

@@ -13,10 +13,13 @@ import {edgeEndpoints} from './graph-geometry.js';
  const edges=[...svg.querySelectorAll('.graph-edges line')];
  const bounds=svg.viewBox.baseVal;
  const byTag=new Map(nodes.map(node=>[node.dataset.tag,node]));
+ const groups=new Map([...svg.querySelectorAll('[data-graph-cluster]')].map(frame=>[frame.dataset.graphCluster,{frame,members:[]}]));
+ for(const node of nodes)groups.get(node.dataset.graphGroup)?.members.push(node);
  const geometry=node=>{
   const position=node.transform.baseVal.getItem(0).matrix;
   return {x:position.e,y:position.f,width:Number(node.dataset.width),height:Number(node.dataset.height)};
  };
+ const translate=(node,x,y)=>node.setAttribute('transform',`translate(${x} ${y})`);
  let activeTrigger=null;
 
  const describe=node=>{
@@ -157,12 +160,33 @@ import {edgeEndpoints} from './graph-geometry.js';
    suppressClick=true;
   }
   const p=point(event);
-  const {width,height}=geometry(node);
-  const nx=Math.max(width/2+10,Math.min(bounds.width-width/2-10,p.x+dx));
-  const ny=Math.max(height/2+10,Math.min(bounds.height-height/2-10,p.y+dy));
-  node.setAttribute('transform',`translate(${nx} ${ny})`);
+  const current=geometry(node),group=groups.get(node.dataset.graphGroup);
+  const moved=new Set([node.dataset.tag]);
+  const clamp=(value,min,max)=>Math.max(min,Math.min(max,value));
+  if(group&&node.dataset.tag===node.dataset.graphGroup){
+   const {frame,members}=group,center=frame.transform.baseVal.getItem(0).matrix;
+   const halfWidth=frame.width.baseVal.value/2,halfHeight=frame.height.baseVal.value/2;
+   const moveX=clamp(p.x+dx-current.x,halfWidth+10-center.e,bounds.width-halfWidth-10-center.e);
+   const moveY=clamp(p.y+dy-current.y,halfHeight+10-center.f,bounds.height-halfHeight-10-center.f);
+   translate(frame,center.e+moveX,center.f+moveY);
+   for(const member of members){
+    const {x,y}=geometry(member);
+    translate(member,x+moveX,y+moveY);
+    moved.add(member.dataset.tag);
+   }
+  }else{
+   let left=10,top=10,right=bounds.width-10,bottom=bounds.height-10;
+   if(group){
+    const {frame}=group,center=frame.transform.baseVal.getItem(0).matrix;
+    const header=geometry(byTag.get(node.dataset.graphGroup));
+    const halfWidth=frame.width.baseVal.value/2,halfHeight=frame.height.baseVal.value/2;
+    left=center.e-halfWidth+14;right=center.e+halfWidth-14;
+    top=header.y+header.height/2+14;bottom=center.f+halfHeight-14;
+   }
+   translate(node,clamp(p.x+dx,left+current.width/2,right-current.width/2),clamp(p.y+dy,top+current.height/2,bottom-current.height/2));
+  }
   for(const line of edges){
-   if(line.dataset.from===node.dataset.tag||line.dataset.to===node.dataset.tag){
+   if(moved.has(line.dataset.from)||moved.has(line.dataset.to)){
     const coordinates=edgeEndpoints(geometry(byTag.get(line.dataset.from)),geometry(byTag.get(line.dataset.to)));
     for(const [key,value] of Object.entries(coordinates))line.setAttribute(key,value);
    }

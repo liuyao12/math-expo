@@ -26,17 +26,22 @@ function wrapLabel(label){
 
 // Lay out a directed graph using springs and repulsion. A pull toward
 // depth bands makes arrow direction readable, and the initial layout is stable.
-function layout(nodes,edges){
- const layerGap=Math.max(...nodes.map(node=>node.height))+32;
+function layout(nodes,edges,padding=18){
  const rows=new Map();
  for(const node of nodes){
   if(!rows.has(node.depth))rows.set(node.depth,[]);
   rows.get(node.depth).push(node);
  }
- for(const [depth,row] of rows){
+ const bands=new Map();
+ let bandTop=0;
+ for(const depth of [...rows.keys()].sort((a,b)=>a-b)){
+  const row=rows.get(depth),height=Math.max(...row.map(node=>node.height));
+  const center=bandTop+height/2;
+  bands.set(depth,center);
+  bandTop+=height+32;
   row.forEach((node,i)=>Object.assign(node,{
    x:(i-(row.length-1)/2)*200+8*Math.sin(depth*7+i*3),
-   y:depth*layerGap+5*Math.cos(i*3),vx:0,vy:0
+   y:center+5*Math.cos(i*3),vx:0,vy:0
   }));
  }
  // Limit the pairwise work for full reading graphs.
@@ -44,7 +49,7 @@ function layout(nodes,edges){
  for(let tick=0;tick<ticks;tick++){
   for(const node of nodes){
    node.vx-=node.x*.002;
-   node.vy+=(node.depth*layerGap-node.y)*.055;
+   node.vy+=(bands.get(node.depth)-node.y)*.055;
   }
   for(let i=0;i<nodes.length;i++){
    const a=nodes[i];
@@ -65,7 +70,7 @@ function layout(nodes,edges){
   for(const node of nodes){
    node.vx*=.61;node.vy*=.61;
    node.x+=node.vx;
-   const band=node.depth*layerGap;
+   const band=bands.get(node.depth);
    node.y=Math.max(band-6,Math.min(band+6,node.y+node.vy));
   }
  }
@@ -77,13 +82,65 @@ function layout(nodes,edges){
   const center=(cursor-26)/2;
   for(const node of row)node.x-=center;
  }
- const padding=18;
  const left=Math.min(...nodes.map(node=>node.x-node.width/2))-padding;
  const bottom=Math.max(...nodes.map(node=>node.y+node.height/2))+padding;
  for(const node of nodes){
   node.x=Math.round(node.x-left);node.y=Math.round(bottom-node.y);
  }
  return [Math.max(...nodes.map(node=>node.x+node.width/2))+padding,Math.max(...nodes.map(node=>node.y+node.height/2))+padding];
+}
+
+function layoutSections(entries,edges){
+ const groups=new Map(entries.filter(node=>node.kind==='section').map(header=>[header.tag,{header,members:[],edges:[]}]));
+ const groupFor=new Map();
+ for(const node of entries){
+  const group=groups.get(node.sectionTag);
+  if(group&&group.header!==node)group.members.push(node);
+ }
+ for(const [tag,group] of groups){
+  if(!group.members.length){groups.delete(tag);continue;}
+  for(const node of [group.header,...group.members])groupFor.set(node,group);
+ }
+ const outerEdges=[];
+ for(const [from,to] of edges){
+  const start=groupFor.get(from),end=groupFor.get(to);
+  if(start&&start===end){
+   if(from!==start.header&&to!==start.header)start.edges.push([from,to]);
+  }else outerEdges.push([start??from,end??to]);
+ }
+ for(const group of groups.values()){
+  const {header,members}=group;
+  const depths=[header,...members].map(node=>node.depth).sort((a,b)=>a-b);
+  // Pack unrelated passages on the same row. Only links within this section
+  // determine how far apart its passages must be vertically.
+  const prerequisites=new Map(members.map(node=>[node,[]]));
+  for(const [from,to] of group.edges)prerequisites.get(to).push(from);
+  const rowWidths=[],rowByNode=new Map();
+  const localNodes=[...members].sort((a,b)=>b.depth-a.depth).map(node=>{
+   let row=Math.max(0,...prerequisites.get(node).map(from=>rowByNode.get(from)+1));
+   const width=node.width+26;
+   while(rowWidths[row]&&rowWidths[row]+width>400)row++;
+   rowWidths[row]=(rowWidths[row]??0)+width;
+   rowByNode.set(node,row);
+   return {...node,depth:-row};
+  });
+  const localByTag=new Map(localNodes.map(node=>[node.tag,node]));
+  const [width,height]=layout(localNodes,group.edges.map(([from,to])=>[localByTag.get(from.tag),localByTag.get(to.tag)]),14);
+  Object.assign(group,{depth:depths[Math.floor(depths.length/2)],width:Math.max(width,header.width+28),height:height+header.height+14});
+  for(const node of members){
+   const local=localByTag.get(node.tag);
+   node.x=local.x-width/2;node.y=local.y+header.height+14;
+  }
+  header.x=0;header.y=14+header.height/2;
+ }
+ const outerNodes=[...entries.filter(node=>!groupFor.has(node)),...groups.values()];
+ const [width,height]=layout(outerNodes,outerEdges);
+ for(const group of groups.values()){
+  for(const node of [group.header,...group.members]){
+   node.x+=group.x;node.y+=group.y-group.height/2;
+  }
+ }
+ return {width,height,groups,groupFor};
 }
 
 export function renderDependencyGraph(tree,references,base,idPrefix=''){
@@ -109,12 +166,12 @@ export function renderDependencyGraph(tree,references,base,idPrefix=''){
   const origin=outsideReading?` · ${location?.readingTitle||"The Stacks Project"}`:"";
   const route=location?`${base}${location.slug}/`:null;
   const caption=ref.kind==='definition'?(tree.labels.definitions[tag]||node.title)
-   :ref.sourceTitle||tree.labels.namedResults[tag]||(tag===tree.rootTag?node.title:'');
+   :ref.sourceTitle||tree.labels.namedResults[tag]||(ref.kind==='section'?location?.section.title||node.title:tag===tree.rootTag?node.title:'');
   const lines=wrapLabel(caption);
   const shortLabel=`${ref.kind[0].toUpperCase()} ${ref.number}`;
   const width=Math.ceil(Math.max(labelWidth(shortLabel,13),...lines.map(line=>labelWidth(line,12))))+2*labelPadding;
   return [tag,{tag,depth,shortLabel,kind:ref.kind,root:tag===tree.rootTag,outsideReading,
-   lines,width,height:28+lines.length*14,
+   lines,width,height:28+lines.length*14,sectionTag:location?.section.tag,
    label:`${ref.kind[0].toUpperCase()+ref.kind.slice(1)} ${ref.number}${node.title?' · '+node.title:''}${origin}`,
    href:route?`${route}#${tag}`:`https://stacks.math.columbia.edu/tag/${tag}`,
    section:route&&location.section.tag!==tag?`${route}#${location.section.tag}`:null
@@ -122,7 +179,8 @@ export function renderDependencyGraph(tree,references,base,idPrefix=''){
  }));
  const entries=[...nodes.values()];
  const edges=entries.flatMap(node=>(tree.nodes[node.tag].uses||[]).map(used=>[nodes.get(used),node]));
- const [width,height]=layout(entries,edges);
+ const {width,height,groups,groupFor}=layoutSections(entries,edges);
+ const frames=[...groups].map(([tag,group])=>`<rect class="graph-section-frame${group.header.outsideReading?' outside-reading':''}" data-graph-cluster="${esc(tag)}" x="${-group.width/2}" y="${-group.height/2}" width="${group.width}" height="${group.height}" rx="8" transform="translate(${group.x} ${group.y})"/>`).join('');
  const lines=edges.map(([from,to])=>{
   const coordinates=edgeEndpoints(from,to);
   return `<line data-from="${esc(from.tag)}" data-to="${esc(to.tag)}" ${Object.entries(coordinates).map(([key,value])=>`${key}="${value.toFixed(2)}"`).join(' ')} marker-end="url(#${idPrefix}dependency-arrow)"/>`;
@@ -130,7 +188,7 @@ export function renderDependencyGraph(tree,references,base,idPrefix=''){
  const links=entries.map(node=>{
   const baseline=-node.height/2+18;
   const caption=node.lines.map((line,i)=>`<tspan x="0" y="${baseline+(i+1)*14}">${esc(line+(i<node.lines.length-1&&!/[-–]$/.test(line)?' ':''))}</tspan>`).join('');
-  return `<a id="${idPrefix}${esc(node.tag)}" data-tag="${esc(node.tag)}" data-kind="${esc(node.kind)}" data-width="${node.width}" data-height="${node.height}" class="dependency-node${node.root?' dependency-target':''}${node.outsideReading?' outside-reading':''}" href="${esc(node.href)}" aria-label="${esc(node.label)}"${node.section?` data-section="${esc(node.section)}"`:''} transform="translate(${node.x} ${node.y})"><title>${esc(node.label)}</title><rect class="graph-node-ring" x="${-node.width/2-ringPadding}" y="${-node.height/2-ringPadding}" width="${node.width+ringPadding*2}" height="${node.height+ringPadding*2}" rx="8"/><rect class="graph-node-body" x="${-node.width/2}" y="${-node.height/2}" width="${node.width}" height="${node.height}" rx="${nodeCornerRadius}"/><text class="graph-node-number" text-anchor="middle" y="${baseline}">${esc(node.shortLabel)}</text>${caption?`<text class="graph-node-caption" text-anchor="middle">${caption}</text>`:''}</a>`;
+  return `<a id="${idPrefix}${esc(node.tag)}" data-tag="${esc(node.tag)}" data-kind="${esc(node.kind)}" data-width="${node.width}" data-height="${node.height}" class="dependency-node${node.root?' dependency-target':''}${node.outsideReading?' outside-reading':''}" href="${esc(node.href)}" aria-label="${esc(node.label)}"${node.section?` data-section="${esc(node.section)}"`:''}${groupFor.has(node)?` data-graph-group="${esc(node.sectionTag)}"`:''} transform="translate(${node.x} ${node.y})"><title>${esc(node.label)}</title><rect class="graph-node-ring" x="${-node.width/2-ringPadding}" y="${-node.height/2-ringPadding}" width="${node.width+ringPadding*2}" height="${node.height+ringPadding*2}" rx="8"/><rect class="graph-node-body" x="${-node.width/2}" y="${-node.height/2}" width="${node.width}" height="${node.height}" rx="${nodeCornerRadius}"/><text class="graph-node-number" text-anchor="middle" y="${baseline}">${esc(node.shortLabel)}</text>${caption?`<text class="graph-node-caption" text-anchor="middle">${caption}</text>`:''}</a>`;
  }).join('');
  const root=nodes.get(tree.rootTag);
  const legend=[['definition','Definition'],['proposition','Proposition'],['lemma','Lemma'],['section','Section'],['example','Example'],['situation','Situation'],['theorem','Theorem'],['corollary','Corollary'],['remark','Remark'],['item','Item'],['equation','Equation']]
@@ -142,7 +200,7 @@ export function renderDependencyGraph(tree,references,base,idPrefix=''){
   <div class="graph-viewport">
    <svg viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" aria-label="Dependency graph">
     <defs><marker class="graph-arrow" id="${idPrefix}dependency-arrow" markerUnits="userSpaceOnUse" refX="8" refY="4" markerWidth="8" markerHeight="8" viewBox="0 0 8 8" orient="auto" overflow="visible"><path d="M0 0L8 4L0 8Z"/></marker></defs>
-    <g class="graph-edges" aria-hidden="true">${lines}</g><g>${links}</g>
+    <g class="graph-sections" aria-hidden="true">${frames}</g><g class="graph-edges" aria-hidden="true">${lines}</g><g>${links}</g>
    </svg>
   </div>
   <p class="graph-detail"><a data-graph-passage href="${esc(root.href)}">${esc(root.label)}</a> <a data-graph-section${root.section?` href="${esc(root.section)}"`:' hidden'}>Read section ↗</a></p>

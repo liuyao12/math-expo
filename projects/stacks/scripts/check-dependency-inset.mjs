@@ -61,6 +61,21 @@ try{
    const popup=page.getByRole('dialog',{name:'Dependency graph'});await popup.waitFor();
    const graph=popup.locator('.dependency-graph'),board=graph.locator('.graph-viewport'),svg=graph.locator('svg');
    await checkLabels(graph);
+   const groups=await graph.evaluate(g=>[...g.querySelectorAll('[data-graph-cluster]')].map(frame=>{
+    const tag=frame.dataset.graphCluster,bounds=frame.getBoundingClientRect();
+    const members=[...g.querySelectorAll(`[data-graph-group="${tag}"]`)];
+    const contains=members.every(n=>{
+     const box=n.querySelector('.graph-node-body').getBoundingClientRect();
+     return box.left>=bounds.left&&box.right<=bounds.right&&box.top>=bounds.top&&box.bottom<=bounds.bottom;
+    });
+    return {tag,contains,members:members.map(n=>n.dataset.tag)};
+   }));
+   assert(groups.length>0,'Sections with multiple passages have frames');
+   for(const {tag,contains,members} of groups){
+    assert(contains,'The frame encloses every member of '+tag);
+    const expected=Object.entries(audits[slug].passages).filter(([,p])=>p.section===tag).map(([t])=>t);
+    assert.deepEqual(members.sort(),expected.sort(),'A frame groups only its own audited passages');
+   }
    assert.equal(await popup.evaluate(n=>n.matches(':modal')),false,'Inset leaves the reading usable');
    assert.equal(await trigger.getAttribute('aria-expanded'),'true');
    const box=await popup.boundingBox();
@@ -130,6 +145,20 @@ try{
    }
    console.log(`${viewport.width} ${slug}: compact neighborhood, typed numbers, whole-graph zoom, dismissal, navigation`);
   }
+  await page.goto(base+'scheme/#009H',{waitUntil:'networkidle'});
+  await page.locator('main [data-dependency-tag="009H"]').click();
+  const sectionPopup=page.getByRole('dialog',{name:'Dependency graph'});
+  const header=await sectionPopup.locator('[data-tag="009H"] .graph-node-body').boundingBox();
+  const groupPositions=()=>sectionPopup.locator('[data-graph-cluster="009H"],[data-graph-group="009H"]').evaluateAll(nodes=>nodes.map(n=>{
+   const m=n.transform.baseVal.getItem(0).matrix;
+   return [m.e,m.f];
+  }));
+  const before=await groupPositions();
+  await page.mouse.move(header.x+header.width/2,header.y+header.height/2);
+  await page.mouse.down();await page.mouse.move(header.x+header.width/2+24,header.y+header.height/2+15,{steps:5});await page.mouse.up();
+  const deltas=(await groupPositions()).map(([x,y],i)=>[x-before[i][0],y-before[i][1]]);
+  assert(deltas.length>2&&Math.hypot(...deltas[0])>5,'The section header drags the frame');
+  assert(deltas.every(([x,y])=>Math.hypot(x-deltas[0][0],y-deltas[0][1])<.01),'The frame and all its passages move together');
   assert.deepEqual(errors,[]);await page.close();
  }
 }finally{await browser.close();}
