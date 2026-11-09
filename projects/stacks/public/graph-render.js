@@ -1,12 +1,24 @@
-import {edgeEndpoints} from './graph-geometry.js';
+import {edgeEndpoints,nodeCornerRadius} from './graph-geometry.js';
 const esc=s=>String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
-const nodeWidth=168,nodePadding=6;
+const ringPadding=6,labelPadding=9,captionLimit=144;
+
+// Arial/Helvetica advance widths in thousandths of an em. The padding
+// allows for small differences in weight and fallback fonts.
+const glyphWidths=new Map([
+ [222,"ijl’'"],[278,' !,./:;I[]ft'],[333,'()-r'],[355,'"'],[389,'*'],
+ [500,'Jcksvxyz'],[556,'#$0123456789?Labdeghnopqu–'],[584,'+=<>'],
+ [611,'FTZ'],[667,'&ABEKPSVXY'],[722,'CDHNRUw'],[778,'GOQ'],
+ [833,'Mm'],[889,'%'],[944,'W'],[1000,'—']
+].flatMap(([width,glyphs])=>[...glyphs].map(glyph=>[glyph,width])));
+const labelWidth=(text,size)=>[...text.normalize('NFD').replace(/\p{Mark}/gu,'')]
+ .reduce((width,glyph)=>width+(glyphWidths.get(glyph)??900),0)*size/1000;
 
 function wrapLabel(label){
  const lines=[];let line='';
- for(const word of label.split(/\s+/).flatMap(word=>word.length>23?word.split(/(?<=[–-])/):[word])){
-  if(line&&(line+(/[-–]$/.test(line)?'':' ')+word).length>23){lines.push(line);line=word;}
-  else line+=(line&&!/[-–]$/.test(line)?' ':'')+word;
+ for(const word of label.split(/\s+/).flatMap(word=>labelWidth(word,12)>captionLimit?word.split(/(?<=[–-])/):[word])){
+  const next=line+(line&&!/[-–]$/.test(line)?' ':'')+word;
+  if(line&&labelWidth(next,12)>captionLimit){lines.push(line);line=word;}
+  else line=next;
  }
  if(line)lines.push(line);
  return lines;
@@ -99,8 +111,10 @@ export function renderDependencyGraph(tree,references,base,idPrefix=''){
   const caption=ref.kind==='definition'?(tree.labels.definitions[tag]||node.title)
    :ref.sourceTitle||tree.labels.namedResults[tag]||(tag===tree.rootTag?node.title:'');
   const lines=wrapLabel(caption);
-  return [tag,{tag,depth,number:String(ref.number),shortLabel:`${ref.kind[0].toUpperCase()} ${ref.number}`,kind:ref.kind,root:tag===tree.rootTag,outsideReading,
-   caption,lines,width:nodeWidth,height:lines.length?32+lines.length*16:36,
+  const shortLabel=`${ref.kind[0].toUpperCase()} ${ref.number}`;
+  const width=Math.ceil(Math.max(labelWidth(shortLabel,13),...lines.map(line=>labelWidth(line,12))))+2*labelPadding;
+  return [tag,{tag,depth,shortLabel,kind:ref.kind,root:tag===tree.rootTag,outsideReading,
+   lines,width,height:28+lines.length*14,
    label:`${ref.kind[0].toUpperCase()+ref.kind.slice(1)} ${ref.number}${node.title?' · '+node.title:''}${origin}`,
    href:route?`${route}#${tag}`:`https://stacks.math.columbia.edu/tag/${tag}`,
    section:route&&location.section.tag!==tag?`${route}#${location.section.tag}`:null
@@ -114,8 +128,9 @@ export function renderDependencyGraph(tree,references,base,idPrefix=''){
   return `<line data-from="${esc(from.tag)}" data-to="${esc(to.tag)}" ${Object.entries(coordinates).map(([key,value])=>`${key}="${value.toFixed(2)}"`).join(' ')} marker-end="url(#${idPrefix}dependency-arrow)"/>`;
  }).join('');
  const links=entries.map(node=>{
-  const caption=node.lines.map((line,i)=>`<tspan x="0" y="${-node.height/2+38+i*16}">${esc(line+(i<node.lines.length-1&&!/[-–]$/.test(line)?' ':''))}</tspan>`).join('');
-  return `<a id="${idPrefix}${esc(node.tag)}" data-tag="${esc(node.tag)}" data-kind="${esc(node.kind)}" data-width="${node.width}" data-height="${node.height}" class="dependency-node${node.root?' dependency-target':''}${node.outsideReading?' outside-reading':''}" href="${esc(node.href)}" aria-label="${esc(node.label)}"${node.section?` data-section="${esc(node.section)}"`:''} transform="translate(${node.x} ${node.y})"><title>${esc(node.label)}</title><rect class="graph-node-ring" x="${-node.width/2-nodePadding}" y="${-node.height/2-nodePadding}" width="${node.width+nodePadding*2}" height="${node.height+nodePadding*2}" rx="8"/><rect class="graph-node-body" x="${-node.width/2}" y="${-node.height/2}" width="${node.width}" height="${node.height}" rx="4"/><text class="graph-node-number" text-anchor="middle" y="${node.lines.length?-node.height/2+18:4}">${esc(node.shortLabel)}</text>${caption?`<text class="graph-node-caption" text-anchor="middle">${caption}</text>`:''}</a>`;
+  const baseline=-node.height/2+18;
+  const caption=node.lines.map((line,i)=>`<tspan x="0" y="${baseline+(i+1)*14}">${esc(line+(i<node.lines.length-1&&!/[-–]$/.test(line)?' ':''))}</tspan>`).join('');
+  return `<a id="${idPrefix}${esc(node.tag)}" data-tag="${esc(node.tag)}" data-kind="${esc(node.kind)}" data-width="${node.width}" data-height="${node.height}" class="dependency-node${node.root?' dependency-target':''}${node.outsideReading?' outside-reading':''}" href="${esc(node.href)}" aria-label="${esc(node.label)}"${node.section?` data-section="${esc(node.section)}"`:''} transform="translate(${node.x} ${node.y})"><title>${esc(node.label)}</title><rect class="graph-node-ring" x="${-node.width/2-ringPadding}" y="${-node.height/2-ringPadding}" width="${node.width+ringPadding*2}" height="${node.height+ringPadding*2}" rx="8"/><rect class="graph-node-body" x="${-node.width/2}" y="${-node.height/2}" width="${node.width}" height="${node.height}" rx="${nodeCornerRadius}"/><text class="graph-node-number" text-anchor="middle" y="${baseline}">${esc(node.shortLabel)}</text>${caption?`<text class="graph-node-caption" text-anchor="middle">${caption}</text>`:''}</a>`;
  }).join('');
  const root=nodes.get(tree.rootTag);
  const legend=[['definition','Definition'],['proposition','Proposition'],['lemma','Lemma'],['section','Section'],['example','Example'],['situation','Situation'],['theorem','Theorem'],['corollary','Corollary'],['remark','Remark'],['item','Item'],['equation','Equation']]

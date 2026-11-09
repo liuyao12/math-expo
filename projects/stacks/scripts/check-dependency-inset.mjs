@@ -24,10 +24,12 @@ const checkLabels=async graph=>{
   width:Number(n.dataset.width),height:Number(n.dataset.height),
   lines:[...n.querySelectorAll('text')].map(t=>{const b=t.getBBox();return {x:b.x,y:b.y,width:b.width,height:b.height};})
  })));
+ assert(new Set(labels.map(label=>label.width)).size>1,'Boxes vary in width with their labels');
  for(const label of labels){
   const ref=refs[label.tag];assert.equal(label.text,ref.kind[0].toUpperCase()+' '+ref.number);
   assert.equal(label.box,'rect','Nodes are boxes');
   if(ref.kind==='definition')assert(label.caption,'Definitions show the defined term: '+label.tag);
+  if(!label.caption)assert(label.width-label.lines[0].width<26,'Number-only boxes hug their labels');
   for(const line of label.lines){
    assert(line.x>=-label.width/2+5&&line.x+line.width<=label.width/2-5,'Text fits the box width: '+label.tag);
    assert(line.y>=-label.height/2+3&&line.y+line.height<=label.height/2-3,'Text fits the box height: '+label.tag);
@@ -80,11 +82,11 @@ try{
     const nodes=new Map([...g.querySelectorAll('.dependency-node')].map(n=>[n.dataset.tag,n]));
     return [...g.querySelectorAll('.graph-edges line')].every(line=>['from','to'].every((end,i)=>{
      const n=nodes.get(line.dataset[end]),p=n.transform.baseVal.getItem(0).matrix;
-     const dx=Math.abs(Number(line.getAttribute('x'+(i+1)))-p.e),dy=Math.abs(Number(line.getAttribute('y'+(i+1)))-p.f);
-     const ratio=Math.max(dx/(Number(n.dataset.width)/2),dy/(Number(n.dataset.height)/2));
-     return ratio>=.999&&ratio<1.5;
+     const x=Number(line.getAttribute('x'+(i+1)))-p.e,y=Number(line.getAttribute('y'+(i+1)))-p.f;
+     const rect=n.querySelector('.graph-node-body');
+     return rect.isPointInFill(new DOMPoint(x*.995,y*.995))&&!rect.isPointInFill(new DOMPoint(x*1.005,y*1.005));
     }));
-   }),'Edges terminate outside the rectangular bodies');
+   }),'Edges meet the box borders, including rounded corners');
    const oldWidth=await svg.evaluate(n=>n.getBoundingClientRect().width);
    await graph.getByRole('button',{name:'Zoom out',exact:true}).click();
    assert(await svg.evaluate(n=>n.getBoundingClientRect().width)<oldWidth);
