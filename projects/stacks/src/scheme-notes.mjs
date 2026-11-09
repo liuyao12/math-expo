@@ -985,13 +985,10 @@ const tangentSpace=model('tangent space',[
 ],r`\[
 d(g\circ f)_p=dg_{f(p)}\circ df_p
 \]`,'',r`The differential replaces a smooth map by its linear approximation at a point. The chain rule says that these approximations still compose.`);
-const labeledSets={...model('labeled sets',[],'','',r`Think of \(X\) as a set of labels.`),points:[
- r`\(\mathcal C=\mathbf{Set}\)`,
- r`An object \(p:Y\to X\) assigns a label \(p(y)\) to each \(y\in Y\).`,
- r`A morphism from \(p:Y\to X\) to \(q:Y'\to X\) is a map \(u:Y\to Y'\) that preserves labels.
-\[
-q(u(y))=p(y)\qquad(y\in Y).
-\]`
+const coveringsOver={...model('covering maps',[],'','',r`Fix a topological manifold \(X\).`),points:[
+ r`\(\mathcal C\) is the category of topological manifolds and local homeomorphisms.`,
+ r`A covering map \(p:Y\to X\) between manifolds is a local homeomorphism, hence an object of \(\mathcal C/X\).`,
+ r`For covering maps \(p:Y\to X\) and \(q:Y'\to X\), a morphism over \(X\) is a local homeomorphism \(u:Y\to Y'\) with \(q\circ u=p\).`
 ]};
 const pointedSpacesUnder=model('pointed spaces',[
  b(r`\mathcal C`,r`\mathbf{Top}`),
@@ -1092,7 +1089,7 @@ const passageNotes={
  '0B05':conicIntersection,
  '001B':{...singularHomology,examples:[fundamentalGroup,tangentSpace].map(example=>({...example,scope:"statement"}))},
  '001D':coordinateSpaces,
- '001G':labeledSets,
+ '001G':coveringsOver,
  '001H':pointedSpacesUnder,
  '001I':hurewicz,
  '001J':matrixEquivalence,
