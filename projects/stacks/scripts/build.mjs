@@ -36,8 +36,8 @@ function matchingHTML(item,proof=false,renderer=r){
   const conclusion=paragraphs(item.result);
   const correction=item.correction?paragraphs('Correction: '+item.correction):'';
   const introduction=paragraphs(item.note||'');
-  const items=(introduction?`<li>${introduction}</li>`:'')+rows+points+(calculation?`<li class="case-check">${calculation}</li>`:'')+(conclusion?`<li class="case-result">${conclusion}</li>`:'')+(correction?`<li class="example-correction">${correction}</li>`:'');
-  return `${items?`<ul class="example-points object-matches">${items}</ul>`:''}${item.source?`<p class="case-note"><a href="${esc(item.source.url)}">${esc(item.source.label)}</a></p>`:''}`;
+  const items=rows+points+(calculation?`<li class="case-check">${calculation}</li>`:'')+(conclusion?`<li class="case-result">${conclusion}</li>`:'')+(correction?`<li class="example-correction">${correction}</li>`:'');
+  return `${introduction}${items?`<ul class="example-points object-matches">${items}</ul>`:''}${item.source?`<p class="case-note"><a href="${esc(item.source.url)}">${esc(item.source.label)}</a></p>`:''}`;
 }
 function renderExampleCard(item,key,open,proof=false,renderer=r,group=key){
   const label=item.kind==='analogy'?'Analogy':item.kind==='non-example'?'Non-example':'Example';
