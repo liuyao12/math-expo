@@ -27,7 +27,8 @@ const checkLabels=async graph=>{
  assert(new Set(labels.map(label=>label.width)).size>1,'Boxes vary in width with their labels');
  for(const label of labels){
   const ref=refs[label.tag];
-  assert.equal(label.text,label.enclosure?undefined:ref.kind[0].toUpperCase()+' '+ref.number);
+  const number=ref.kind==='section'?`§${ref.number}`:ref.kind[0].toUpperCase()+' '+ref.number;
+  assert.equal(label.text,label.enclosure?undefined:number);
   assert.equal(label.box,'rect','Nodes are boxes');
   if(ref.kind==='section')assert.equal(label.caption,undefined,'Section boxes omit titles');
   if(label.enclosure)continue;
@@ -53,11 +54,25 @@ try{
  assert.equal(noScript.url(),initial,'An uninitialized highlight cannot open the source site');
  assert.equal(await noScript.locator('main [id="001L"] > header .section-source-links > .source-link').first().getAttribute('href'),'https://stacks.math.columbia.edu/tag/001L');
  await noScript.close();
+ const early=await browser.newPage();
+ let releaseReader;
+ const readerGate=new Promise(resolve=>{releaseReader=resolve;});
+ await early.route('**/reader.js?*',async route=>{await readerGate;await route.continue();});
+ try{
+  await early.goto(base+'curves/#0BYD',{waitUntil:'commit'});
+  await early.waitForFunction(()=>document.getElementById('dependency-dialog'));
+  const top=await early.locator('main [id="0BYD"]').evaluate(node=>node.getBoundingClientRect().top);
+  assert(top>=0&&top<early.viewportSize().height/2,'A deep link lands while the reader script is still held back');
+  assert.equal(await early.locator('.example-flow').count(),0);
+ }finally{
+  releaseReader();
+ }
+ await early.close();
  for(const viewport of [{width:1440,height:900},{width:390,height:844}]){
   const page=await browser.newPage({viewport,isMobile:viewport.width<=760,hasTouch:viewport.width<=760,reducedMotion:'reduce'}),errors=[];
   page.on('pageerror',e=>errors.push(e.message));
   for(const [slug,tag] of [['scheme','004P'],['curves','0BYD'],['grr','02UO']]){
-   await page.goto(base+slug+'/#'+tag,{waitUntil:'networkidle'});
+   await page.goto(base+slug+'/?jump=1#'+tag,{waitUntil:'networkidle'});
    const trigger=page.locator('main [id="'+tag+'"] [data-dependency-tag="'+tag+'"]');
    assert(await trigger.isEnabled(),'Dependency control is ready');
    await trigger.focus();await page.keyboard.press('Enter');
@@ -118,8 +133,13 @@ try{
    await graph.getByRole('button',{name:'Fit graph',exact:true}).click();
    const destinationTag=slug==='scheme'?'0014':'01IJ';
    const destination=graph.locator('.dependency-node[data-tag="'+destinationTag+'"]');
-   const href=await destination.getAttribute('href');await destination.click();
-   await page.waitForURL(new URL(href,base+slug+'/').href);
+   const href=await destination.getAttribute('href'),origin=await page.evaluate(()=>performance.timeOrigin);
+   const destinationURL=new URL(href,page.url()).href;
+   await destination.click();await page.waitForURL(destinationURL);
+   if(slug==='scheme'){
+    assert.equal(href,'#0014');
+    assert.equal(await page.evaluate(()=>performance.timeOrigin),origin,'A same-reading jump stays on the current document');
+   }
    assert.equal(await page.locator('main [id="'+destinationTag+'"]').count(),1,'Node links retain cross-reading navigation');
    const [additionalTag,prerequisite]=additional[slug];
    await page.goto(base+slug+'/#'+additionalTag,{waitUntil:'networkidle'});

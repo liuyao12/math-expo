@@ -159,7 +159,7 @@ function layoutSections(entries,edges){
  return [Math.max(...placed.map(box=>box.right))-left+18,Math.max(...placed.map(box=>box.bottom))-top+18];
 }
 
-export function renderDependencyGraph(tree,references,base,idPrefix=''){
+export function renderDependencyGraph(tree,references,base,idPrefix='',currentSlug){
  const depths=new Map(),ancestors=new Set();
  const visit=(tag,depth)=>{
   if(!tree.nodes[tag])throw Error('Unknown dependency '+tag);
@@ -181,17 +181,22 @@ export function renderDependencyGraph(tree,references,base,idPrefix=''){
   const location=tree.locations.get(tag);
   const outsideReading=!location||location.slug!==readingSlug;
   const origin=outsideReading?` · ${location?.readingTitle||"The Stacks Project"}`:"";
-  const route=location?`${base}${location.slug}/`:null;
-  const caption=ref.kind==='section'?'':ref.kind==='definition'?(tree.labels.definitions[tag]||node.title)
+  const route=location?(location.slug===currentSlug?'':`${base}${location.slug}/`):null;
+  const terms=ref.terms?.join('; ');
+  const caption=ref.kind==='section'?'':ref.kind==='definition'
+   ?tree.labels.definitionTerms?.[tag]||(ref.terms?.length>1?terms:tree.labels.definitions[tag]||terms||node.title)
+   :ref.kind==='item'?tree.labels.itemTerms?.[tag]||terms||''
    :ref.sourceTitle||tree.labels.namedResults[tag]||(tag===tree.rootTag?node.title:'');
+  const description=caption||node.title;
   const lines=wrapLabel(caption);
-  const shortLabel=`${ref.kind[0].toUpperCase()} ${ref.number}`;
+  const shortLabel=ref.kind==='section'?`§${ref.number}`:`${ref.kind[0].toUpperCase()} ${ref.number}`;
+  const referenceLabel=ref.kind==='section'?shortLabel:`${ref.kind[0].toUpperCase()+ref.kind.slice(1)} ${ref.number}`;
   const width=Math.ceil(Math.max(labelWidth(shortLabel,13),...lines.map(line=>labelWidth(line,12))))+2*labelPadding;
   return [tag,{tag,depth,shortLabel,kind:ref.kind,root:tag===tree.rootTag,outsideReading,
    lines,width,height:28+lines.length*14,sectionTag:location?.section.tag,frameOnly:node.frameOnly,
-   label:`${ref.kind[0].toUpperCase()+ref.kind.slice(1)} ${ref.number}${node.title?' · '+node.title:''}${origin}`,
-   href:route?`${route}#${tag}`:`https://stacks.math.columbia.edu/tag/${tag}`,
-   section:route&&location.section.tag!==tag?`${route}#${location.section.tag}`:null
+   label:`${referenceLabel}${description?' · '+description:''}${origin}`,
+   href:location?`${route}#${tag}`:`https://stacks.math.columbia.edu/tag/${tag}`,
+   section:location&&location.section.tag!==tag?`${route}#${location.section.tag}`:null
   }];
  }));
  const entries=[...nodes.values()];
@@ -213,7 +218,7 @@ export function renderDependencyGraph(tree,references,base,idPrefix=''){
  const root=nodes.get(tree.rootTag);
  const legend=[['definition','Definition'],['proposition','Proposition'],['lemma','Lemma'],['section','Section'],['example','Example'],['situation','Situation'],['theorem','Theorem'],['corollary','Corollary'],['remark','Remark'],['item','Item'],['equation','Equation']]
   .filter(([kind])=>entries.some(node=>node.kind===kind))
-  .map(([kind,label])=>`<li data-kind="${kind}">${kind[0].toUpperCase()} · ${label}</li>`).join('');
+  .map(([kind,label])=>`<li data-kind="${kind}">${kind==='section'?'§':kind[0].toUpperCase()} · ${label}</li>`).join('');
  return `<div class="dependency-graph">
   <div class="graph-controls" aria-label="Graph zoom" hidden><button type="button" data-zoom="out" aria-label="Zoom out">−</button><button type="button" data-zoom="fit">Fit graph</button><button type="button" data-zoom="in" aria-label="Zoom in">+</button></div>
   ${idPrefix?'<details class="graph-key"><summary>Node types</summary>':''}<ul class="graph-legend" aria-label="Node colors">${legend}${entries.some(node=>node.outsideReading)?'<li class="graph-legend-outside">Outside this reading</li>':''}</ul>${idPrefix?'</details>':''}

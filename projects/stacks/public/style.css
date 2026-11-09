@@ -20,6 +20,7 @@ body:has(.reader-layout) .site-header{position:sticky;top:0}.reading-progress{he
 .diagram-label{font-size:.83em;padding:0 3px}
 .diagram-group{display:flex;flex-wrap:wrap;gap:12px;max-width:100%;overflow-x:auto;align-items:center}
 .diagram-group>.math-display{max-width:100%;margin:.5rem 0}
+html:has(.reader-layout){scroll-behavior:auto}
 .source-anchor{scroll-margin-top:100px}
 .source-footnote{font-size:.86em;color:var(--muted)}
 .reader-main ol ol{list-style-type:lower-alpha}.reader-main ol ol ol{list-style-type:lower-roman}

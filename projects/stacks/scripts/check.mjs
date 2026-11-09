@@ -99,9 +99,11 @@ for(const reading of selectedReadings){
  assert.deepEqual(new Set(expected.map(tag=>report.passages[tag].section)),local,'Every selected section has an audited highlight');
  for(const [,tag,label] of marks){
   const {kind,number}=referencesByTag.get(tag);
-  assert.equal(label,kind==='section'?number:kind[0].toUpperCase()+kind.slice(1)+' '+number);
+  assert.equal(label,kind==='section'?`§${number}`:kind[0].toUpperCase()+kind.slice(1)+' '+number);
  }
  const inset=page.match(/<dialog id="dependency-dialog"[\s\S]*?<\/dialog>/)[0];
+ const graphLabel=tag=>inset.match(new RegExp(`data-tag="${tag}"[^>]*aria-label="([^"]+)"`))?.[1];
+ assert.match(graphLabel('004K'),/^Item 13 · Open covering(?: · |$)/,'A tagged item names its own term');
  const nodes=[...inset.matchAll(/<a id="inset-([^"]+)"[^>]*class="dependency-node([^"]*)" href="([^"]+)"/g)];
  assert.deepEqual(nodes.map(match=>match[1]).sort(),[...report.required_tags].sort(),'The shared inset includes every audited passage');
  assert.deepEqual(nodes.filter(match=>match[2].includes('dependency-target')).map(match=>match[1]),[reading.target]);
@@ -114,11 +116,13 @@ for(const reading of selectedReadings){
   const parent=report.paths[tag].findLast(step=>!frames.has(step));
   if(parent&&!frames.has(tag))assert(edges.has(`${tag}:${parent}`),'The shared inset retains the audited route for '+tag);
   const owner=selectedReadings.find(unit=>unit.sections.some(section=>section.tag===report.passages[tag].section));
-  assert.equal(links.get(tag),`../${owner.slug}/#${tag}`,'Audited node links to its owning reading');
+  const route=owner.slug===reading.slug?'':`../${owner.slug}/`;
+  assert.equal(links.get(tag),`${route}#${tag}`,'Audited node links to its owning reading');
  }
  if(reading.slug==='grr'){
   assert(frames.has('02I8'),'Section 5.20 is only an enclosure');
   assert(edges.has('02I9:02QL'),'Dimension functions link directly to the passage that needs them');
+  assert.match(graphLabel('02I9'),/Immediate specialization; dimension function/,'A definition tag names both terms in its block');
  }
  console.log(`${reading.slug}: ${marks.length} audited highlights across all ${local.size} sections`);
 }
@@ -180,11 +184,11 @@ for(const unit of originalUnits){
   const title=unit.chapterHeadings?unit.readingTitle:chapter.title;
   if(!html.includes('<h1>'+escapeHTML(title)+'</h1>'))throw Error('Missing reading heading '+unit.slug);
   const sectionHeading=unit.chapterHeadings?'h3':'h2';
-  const headings=html.replace(/<button type="button" class="dependency-number"[^>]*>([\d.]+)<\/button>/g,'$1');
+  const headings=html.replace(/<button type="button" class="dependency-number"[^>]*>(§[\d.]+)<\/button>/g,'$1');
   for(const section of unit.sections){
     const source=fs.readFileSync(path.join(root,'upstream/sections',section.slug+'.tex'),'utf8');
     if(createHash('sha256').update(source).digest('hex')!==section.sha256)throw Error('Altered section source '+section.slug);
-    if(!headings.includes(`<${sectionHeading}>${section.number}. ${escapeHTML(section.title)}</${sectionHeading}><div class="section-source-links"><a class="source-link" href="https://stacks.math.columbia.edu/tag/${section.tag}"`))throw Error('Missing original title or adjacent source link '+section.slug);
+    if(!headings.includes(`<${sectionHeading}>§${section.number} ${escapeHTML(section.title)}</${sectionHeading}><div class="section-source-links"><a class="source-link" href="https://stacks.math.columbia.edu/tag/${section.tag}"`))throw Error('Missing original title or adjacent source link '+section.slug);
     if(!headings.includes(`href="../source/sections/${section.slug}.tex" download`))throw Error('Missing LaTeX download link '+section.slug);
   }
   if(unit.chapterHeadings){

@@ -53,7 +53,7 @@
   });
   const dataNode=$('#example-data');
   let current='local-functions',follow=true,selectionPinned=false,data={},passages=[],keys=[],lastReading=current,lastReadingContext=null,activeContext=null;
-  if(dataNode){
+  function initExamples(){
     data=JSON.parse(dataNode.textContent);
     keys=Object.keys(data).filter(key=>data[key].html||data[key].proofHtml);
     current=Object.keys(data)[0];lastReading=current;passages=$$('.passage[data-example]');
@@ -223,7 +223,8 @@
       fitVisibleExamples();
     };
     addEventListener('scroll',()=>{if(!scheduled){scheduled=true;requestAnimationFrame(update);}},{passive:true});
-    addEventListener('resize',update);setExample(current);update();
+    addEventListener('resize',update);update();
+    if(!activeContext)setExample(current);
     proofs.forEach(p=>p.addEventListener('toggle',update));
     const resumeSelection=e=>{if(selectionPinned&&!e.defaultPrevented&&!e.target.closest?.('#example-dock')){selectionPinned=false;follow=true;update();}};
     addEventListener('wheel',resumeSelection,{passive:true});addEventListener('touchmove',resumeSelection,{passive:true});
@@ -231,6 +232,11 @@
     outlineLinks.forEach(a=>a.addEventListener('click',resumeSelection));
     window.addEventListener('beforeprint',()=>{proofs.forEach(p=>{p.dataset.printOpen=String(p.open);p.open=true;});});
     window.addEventListener('afterprint',()=>proofs.forEach(p=>p.open=p.dataset.printOpen==='true'));
+  }
+  if(dataNode){
+    // Let the linked passage paint before constructing the example rail.
+    if(dock.dataset.exampleLayout==='anchored')requestAnimationFrame(()=>requestAnimationFrame(initExamples));
+    else initExamples();
   }
   function drawSphere(canvas,radius=1,angle=0){
     if(!canvas)return;const box=canvas.getBoundingClientRect();if(!box.width)return;

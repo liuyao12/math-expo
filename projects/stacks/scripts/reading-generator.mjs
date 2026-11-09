@@ -7,6 +7,41 @@ import {notesFor} from '../src/scheme-notes.mjs';
 import {loadReadingCatalog,loadReadings,loadReferenceReadings,selectedOverview} from '../src/readings.mjs';
 import {renderDependencyGraph} from '../public/graph-render.js';
 import {renderOutline} from '../src/reading-outline.mjs';
+// Land on deep links once the reading is parsed, before the examples and graph.
+const jumpToPassage=`<script>
+ (() => {
+  if(!location.hash)return;
+  let target;
+  try{target=document.getElementById(decodeURIComponent(location.hash.slice(1)));}catch{return;}
+  if(!target?.closest('main'))return;
+  const proof=target.closest('details.proof');
+  if(proof)proof.open=true;
+  target.scrollIntoView({block:'start',behavior:'instant'});
+ })();
+</script>`;
+
+// Stacks usually marks newly defined terms in italics. Keep terms under a
+// labelled list item separate from the terms in its surrounding definition.
+function indexDefinedTerms(html,references){
+ const terms=new Set(),items=[],taggedItems=new Map();
+ const tokens=/<li\b[^>]*>|<\/li>|<span class="source-anchor" id="([^"]+)"><\/span>|<em>([\s\S]*?)<\/em>/g;
+ for(const [token,tag,emphasis] of html.matchAll(tokens)){
+  if(token.startsWith('<li'))items.push(new Set());
+  else if(token==='</li>')items.pop();
+  else if(tag&&items.length&&references.get(tag)?.kind==='item')taggedItems.set(tag,items.at(-1));
+  else if(emphasis){
+   const term=emphasis.replace(/<math\b[\s\S]*?<\/math>/g,'').replace(/<[^>]*>/g,'')
+    .replace(/&(?:amp|lt|gt|quot);/g,entity=>({'&amp;':'&','&lt;':'<','&gt;':'>','&quot;':'"'})[entity])
+    .replace(/\s+/g,' ').trim().replace(/^(?:of |[-–]\s*)/,'').replace(/(?:\s+(?:of|on|in|at|over|by|with|along|associated to))+$/,'');
+   if(!term)continue;
+   terms.add(term);
+   for(const item of items)item.add(term);
+  }
+ }
+ for(const [tag,item] of taggedItems)if(item.size)references.get(tag).terms=[...item];
+ return [...terms];
+}
+
 export function buildReadings({root,dist,head,header,footer,renderExampleCard,assetVersion}){
  const manifest=JSON.parse(fs.readFileSync(path.join(root,'upstream/scheme-path.json'),'utf8'));
  const catalog=loadReadingCatalog(root);
@@ -70,6 +105,10 @@ export function buildReadings({root,dist,head,header,footer,renderExampleCard,as
    const blocks=r.section(s);
    locate(s.tag,s);
    const content=blocks.map((b,bi)=>{
+    if(unit.readingTitle&&(b.kind==='prose'||b.kind==='definition')){
+     const terms=indexDefinedTerms(b.html,referencesByTag);
+     if(b.kind==='definition'&&terms.length)referencesByTag.get(b.tag).terms=terms;
+    }
     const notes=notesFor(s.tag,b.tag),key=notes.tag;
     if(!data[key]){
      const html=notes.examples.map((item,index)=>
@@ -100,9 +139,9 @@ export function buildReadings({root,dist,head,header,footer,renderExampleCard,as
     ?s.stage?`<h2 class="source-chapter-title">${esc(s.stage)}</h2>`
      :`<p class="source-chapter-reminder">${esc(chapter.number+'. '+chapter.title)}</p>`
     :s.chapterTitle&&index>0&&s.chapter!==unit.sections[index-1].chapter?`<p class="eyebrow">${esc(s.chapterTitle)}</p>`:'';
-   const number=unit.highlightSections&&marked(s.tag)
-    ?dependencyLabel(s.tag,s.number,`Section ${s.number}`):s.number;
-   return `<section class="source-section" id="${s.tag}" data-source-sha256="${s.sha256}"><header class="source-section-header">${chapterHeading}${sourceHeading(sectionHeading,`${number}. ${esc(s.title)}`,s)}</header>${content}</section>`;
+   const sectionNumber=`§${s.number}`;
+   const number=unit.highlightSections&&marked(s.tag)?dependencyLabel(s.tag,sectionNumber):sectionNumber;
+   return `<section class="source-section" id="${s.tag}" data-source-sha256="${s.sha256}"><header class="source-section-header">${chapterHeading}${sourceHeading(sectionHeading,`${number} ${esc(s.title)}`,s)}</header>${content}</section>`;
   }).join('');
   if(!unit.readingTitle)stats.push({slug:unit.slug,sections:unit.sections.length,proofs,statements,formulas:r.mathCount});
   const first=Object.keys(data)[0],firstSource=unit.sections[0];
@@ -117,7 +156,7 @@ export function buildReadings({root,dist,head,header,footer,renderExampleCard,as
     return `<br><a href="../${prerequisite.slug}/">Prerequisite · ${esc(prerequisite.readingTitle)}</a>`;
    }).join('')}</p>`:'';
   const dependencyLink=tree?`<p class="dependency-guide"><a href="../${tree.url}#dependency-tree">Dependency graph</a><br>Select a yellow label to open its graph here.</p>`:'';
-  const html=head(unit.readingTitle||unit.title,'../',unit.chapterHeadings?description:`The Stacks Project, Chapter ${unit.number}: ${unit.title}. ${description}`)+header('../',true)+`<div class="reading-progress" aria-hidden="true"><span></span></div><div class="reader-layout"><nav class="reading-outline" id="reading-outline" aria-label="Reading contents">${outlineLink}<p class="eyebrow">${outlineType}</p><div class="margin-reading-controls"><button id="toggle-proofs" type="button" aria-pressed="false">Show all proofs</button><button class="mobile-example" type="button" data-show-example>Example ↗</button></div>${targetLinks}${dependencyLink}${toc}${unit.readingTitle?'':`<details class="chapter-navigation"><summary>Other chapters</summary>${chapterNav}</details>`}${unit.core&&!unit.readingTitle?`<a href="../${unit.sections[0].chapter}/">Full chapter selection ↗</a>`: ''}<div class="outline-note"><span class="eyebrow">Separate commentary</span><p>Concrete examples</p><button type="button" class="mobile-example" data-show-example>Open example</button></div></nav><main id="main" class="reader-main verbatim-main"><header class="reading-title"><h1>${esc(unit.chapterHeadings?unit.readingTitle:unit.title)}</h1></header>${sections}</main><aside id="example-dock" class="example-dock" data-example-layout="anchored" aria-label="Examples and analogies" tabindex="-1"><div class="example-sticky"><div class="example-header"><button id="close-example" type="button" aria-label="Close example">×</button></div><div class="example-current"><div class="example-step"><a id="example-stage-label" href="#${firstSource.tag}">§${firstSource.number} · ${esc(firstSource.title)}</a><span id="example-index"${data[first].html?'':' hidden'}>01</span></div><div id="example-content">${data[first].html}</div><div class="example-paging"${data[first].html?'':' hidden'}><button id="previous-example" type="button" aria-label="Previous example explanation">← Previous</button><button id="follow-reading" type="button" aria-pressed="true">Follow reading</button><button id="next-example" type="button" aria-label="Next example explanation">Next →</button></div></div></div></aside></div><script type="application/json" id="example-data">${JSON.stringify(data).replaceAll('<','\\u003c')}</script>`+footer('../');
+  const html=head(unit.readingTitle||unit.title,'../',unit.chapterHeadings?description:`The Stacks Project, Chapter ${unit.number}: ${unit.title}. ${description}`)+header('../',true)+`<div class="reading-progress" aria-hidden="true"><span></span></div><div class="reader-layout"><nav class="reading-outline" id="reading-outline" aria-label="Reading contents">${outlineLink}<p class="eyebrow">${outlineType}</p><div class="margin-reading-controls"><button id="toggle-proofs" type="button" aria-pressed="false">Show all proofs</button><button class="mobile-example" type="button" data-show-example>Example ↗</button></div>${targetLinks}${dependencyLink}${toc}${unit.readingTitle?'':`<details class="chapter-navigation"><summary>Other chapters</summary>${chapterNav}</details>`}${unit.core&&!unit.readingTitle?`<a href="../${unit.sections[0].chapter}/">Full chapter selection ↗</a>`: ''}<div class="outline-note"><span class="eyebrow">Separate commentary</span><p>Concrete examples</p><button type="button" class="mobile-example" data-show-example>Open example</button></div></nav><main id="main" class="reader-main verbatim-main"><header class="reading-title"><h1>${esc(unit.chapterHeadings?unit.readingTitle:unit.title)}</h1></header>${sections}</main><aside id="example-dock" class="example-dock" data-example-layout="anchored" aria-label="Examples and analogies" tabindex="-1"><div class="example-sticky"><div class="example-header"><button id="close-example" type="button" aria-label="Close example">×</button></div><div class="example-current"><div class="example-step"><a id="example-stage-label" href="#${firstSource.tag}">§${firstSource.number} · ${esc(firstSource.title)}</a><span id="example-index"${data[first].html?'':' hidden'}>01</span></div><div id="example-content">${data[first].html}</div><div class="example-paging"${data[first].html?'':' hidden'}><button id="previous-example" type="button" aria-label="Previous example explanation">← Previous</button><button id="follow-reading" type="button" aria-pressed="true">Follow reading</button><button id="next-example" type="button" aria-label="Next example explanation">Next →</button></div></div></div></aside></div>${footer('../')}${jumpToPassage}<script type="application/json" id="example-data">${JSON.stringify(data).replaceAll('<','\\u003c')}</script>`;
   readerPages.push({slug:unit.slug,html,tree});
 
  }
@@ -130,7 +169,7 @@ export function buildReadings({root,dist,head,header,footer,renderExampleCard,as
   }
  }
  const graphScript=(base='../../')=>`<script type="module" src="${base}dependency-graph.js?v=${assetVersion}"></script>`;
- const graphHTML=(tree,prefix='',base='../../')=>renderDependencyGraph(tree,referencesByTag,base,prefix);
+ const graphHTML=(tree,prefix='',base='../../',currentSlug)=>renderDependencyGraph(tree,referencesByTag,base,prefix,currentSlug);
  const owners=new Map(readings.flatMap(reading=>reading.sections.map(section=>[section.tag,{reading,section}])));
  const auditedGraph=tree=>{
   const nodes={},locations=new Map();
@@ -183,7 +222,7 @@ export function buildReadings({root,dist,head,header,footer,renderExampleCard,as
   const inset=tree?`<dialog id="dependency-dialog" class="dependency-dialog" aria-labelledby="dependency-dialog-title">
    <header><h2 id="dependency-dialog-title">Dependency graph</h2><form method="dialog"><button type="submit" autofocus>Close</button></form></header>
    <p class="graph-hint">Drag to explore, or select Fit graph to see the whole diagram.</p>
-   ${graphHTML(readingSlugs.has(slug)?auditedGraph(tree):tree,'inset-','../')}
+   ${graphHTML(readingSlugs.has(slug)?auditedGraph(tree):tree,'inset-','../',slug)}
   </dialog>${graphScript('../')}`:'';
   const dir=path.join(dist,slug);
   fs.mkdirSync(dir,{recursive:true});
