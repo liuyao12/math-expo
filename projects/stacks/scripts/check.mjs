@@ -168,15 +168,13 @@ for(const unit of originalUnits){
   const html=fs.readFileSync(path.join(dist,unit.slug,'index.html'),'utf8');
   const title=unit.chapterHeadings?unit.readingTitle:chapter.title;
   if(!html.includes('<h1>'+escapeHTML(title)+'</h1>'))throw Error('Missing reading heading '+unit.slug);
-  const records=JSON.parse(html.match(/<script type="application\/json" id="source-data">([\s\S]*?)<\/script>/)[1]);
   const sectionHeading=unit.chapterHeadings?'h3':'h2';
   const headings=html.replace(/<button type="button" class="dependency-number"[^>]*>([\d.]+)<\/button>/g,'$1');
   for(const section of unit.sections){
     const source=fs.readFileSync(path.join(root,'upstream/sections',section.slug+'.tex'),'utf8');
     if(createHash('sha256').update(source).digest('hex')!==section.sha256)throw Error('Altered section source '+section.slug);
-    if(!headings.includes(`<${sectionHeading}>${section.number}. ${escapeHTML(section.title)}</${sectionHeading}><a class="source-link" href="https://stacks.math.columbia.edu/tag/${section.tag}"`))throw Error('Missing original title or adjacent source link '+section.slug);
-    if(!records[section.tag].html.includes('<pre><code>'+escapeHTML(source)+'</code></pre>'))throw Error('Missing margin source '+section.slug);
-    if(!fs.existsSync(path.resolve(path.dirname(path.join(dist,unit.slug,'index.html')),records[section.tag].download)))throw Error('Broken margin source download '+section.slug);
+    if(!headings.includes(`<${sectionHeading}>${section.number}. ${escapeHTML(section.title)}</${sectionHeading}><div class="section-source-links"><a class="source-link" href="https://stacks.math.columbia.edu/tag/${section.tag}"`))throw Error('Missing original title or adjacent source link '+section.slug);
+    if(!headings.includes(`href="../source/sections/${section.slug}.tex" download`))throw Error('Missing LaTeX download link '+section.slug);
   }
   if(unit.chapterHeadings){
     const numbers=unit.sections.map(s=>s.number);
@@ -210,8 +208,9 @@ for(const route of [...originalUnits.map(u=>u.slug),'gluing']){
   const html=fs.readFileSync(path.join(dist,route,'index.html'),'utf8');
   const main=html.match(/<main id="main" class="reader-main verbatim-main">([\s\S]*?)<\/main>/)?.[1];
   if(!main)throw Error('Missing verbatim text column '+route);
+  const classes=new Set([...main.matchAll(/\bclass="([^"]*)"/g)].flatMap(match=>match[1].split(/\s+/)));
   for(const cls of ['example-jump','object-ref','source-tex','source-note','source-links','edition-note','reading-deck','reading-controls','reading-contents','path-navigation','tag']){
-    if(new RegExp('class="[^"\n]*\\b'+cls+'\\b').test(main))throw Error('Non-source interface in main column: '+route+' '+cls);
+    if(classes.has(cls))throw Error('Non-source interface in main column: '+route+' '+cls);
   }
   const text=main.replace(/<button type="button" class="dependency-number" data-dependency-tag="[^"]+"[^>]*>/g,'');
   if(/<button|role="button"|<details(?! class="proof")/.test(text))throw Error('Unexpected control in original text: '+route);

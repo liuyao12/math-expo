@@ -42,7 +42,7 @@ try{
  assert(await unloaded.isDisabled(),'The highlight is inert before the inset script runs');
  await unloaded.evaluate(node=>node.click());
  assert.equal(noScript.url(),initial,'An uninitialized highlight cannot open the source site');
- assert.equal(await noScript.locator('main [id="001L"] > header .source-heading-row > .source-link').getAttribute('href'),'https://stacks.math.columbia.edu/tag/001L');
+ assert.equal(await noScript.locator('main [id="001L"] > header .section-source-links > .source-link').first().getAttribute('href'),'https://stacks.math.columbia.edu/tag/001L');
  await noScript.close();
  for(const viewport of [{width:1440,height:900},{width:390,height:844}]){
   const page=await browser.newPage({viewport,isMobile:viewport.width<=760,hasTouch:viewport.width<=760,reducedMotion:'reduce'}),errors=[];

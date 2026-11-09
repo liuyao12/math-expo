@@ -53,13 +53,6 @@
     if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}
     if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}
   });
-  const sourceNode=$('#source-data'),sourceData=sourceNode?JSON.parse(sourceNode.textContent):{};
-  let sourceTag='';
-  const setSource=context=>{
-    const section=context?.closest('.source-section'),tag=section?.id;
-    if(!tag||!sourceData[tag])return;
-    if(sourceTag!==tag){$('#source-content').innerHTML=sourceData[tag].html;sourceTag=tag;}
-  };
   const dataNode=$('#example-data');
   let current='local-functions',follow=true,selectionPinned=false,data={},passages=[],keys=[],lastReading=current,lastReadingContext=null,activeContext=null;
   if(dataNode){
@@ -184,7 +177,7 @@
       context=context||passages.find(p=>p.dataset.example===key);
       const proof=context?.dataset.proof==='true';
       const changed=activeContext!==context;
-      activeContext=context;setSource(context);
+      activeContext=context;
       const html=proof&&data[key].proofHtml?data[key].proofHtml:data[key].html;
       const contentChanged=renderedExampleHTML!==html;
       $('.example-paging').hidden=!html;

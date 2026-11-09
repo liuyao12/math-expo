@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {createRenderer,escapeHTML as esc} from '../src/latex.mjs';
-import {separateSourceNotes,renderProofs,sourceRecord,sourceHeading,sourcePanel,sourceDataScript} from '../src/source-column.mjs';
+import {printedSource,renderProofs,sourceHeading} from '../src/source-column.mjs';
 import {notesFor} from '../src/scheme-notes.mjs';
 import {loadReadingCatalog,loadReadings,loadReferenceReadings,selectedOverview} from '../src/readings.mjs';
 import {renderDependencyGraph} from '../public/graph-render.js';
@@ -63,10 +63,10 @@ export function buildReadings({root,dist,head,header,footer,renderExampleCard,as
   };
   const sectionHeading=unit.chapterHeadings?'h3':'h2';
   const statementHeading=unit.chapterHeadings?'h4':'h3';
-  const r=createRenderer(root,{sections:unit.sections,routes:prerequisiteRoutes,lazyMath:!!unit.readingTitle}),data={},sources={};let proofs=0,statements=0;
+  const r=createRenderer(root,{sections:unit.sections,routes:prerequisiteRoutes,lazyMath:!!unit.readingTitle}),data={};let proofs=0,statements=0;
   const rich=s=>s.replace(/\\\[([\s\S]*?)\\\]/g,(_,t)=>r.math(t,true)).replace(/\\\(([\s\S]*?)\\\)/g,(_,t)=>r.math(t));
   const sections=unit.sections.map((s,index)=>{
-   const blocks=r.section(s),sourceNotes=[];
+   const blocks=r.section(s);
    locate(s.tag,s);
    const content=blocks.map((b,bi)=>{
     const notes=notesFor(s.tag,b.tag),key=notes.tag;
@@ -78,7 +78,7 @@ export function buildReadings({root,dist,head,header,footer,renderExampleCard,as
     }
     const label=b.kind==='prose'?`§${s.number} · ${s.title}`:`${b.kind[0].toUpperCase()+b.kind.slice(1)} ${b.number}`;
     const id=b.tag||s.slug+'-'+bi;
-    let html=`<div class="source-body">${separateSourceNotes(b.html,sourceNotes)}</div>`;
+    let html=`<div class="source-body">${printedSource(b.html)}</div>`;
     if(b.kind!=='prose'){
      const ref=referencesByTag.get(b.tag);
      if(b.title&&!/[\\$]/.test(b.title))ref.sourceTitle=b.title;
@@ -91,10 +91,9 @@ export function buildReadings({root,dist,head,header,footer,renderExampleCard,as
      statements++;html=`<div class="statement-heading"><${statementHeading}>${heading}${b.title?' · '+rich(b.title):''}</${statementHeading}></div>`+html;
     }
     proofs+=b.proofs?.length||0;
-    html+=renderProofs(b.proofs,{id,key,tag:b.tag||s.tag,label:label,notes:sourceNotes,renderer:r});
+    html+=renderProofs(b.proofs,{id,key,tag:b.tag||s.tag,label:label,renderer:r});
     return `<section id="${id}" class="passage ${b.kind}" data-example="${key}" data-source-label="${esc(label)}" data-source-tag="${b.tag||s.tag}" aria-label="${esc(label)}">${html}</section>`;
    }).join('');
-   sources[s.tag]=sourceRecord(root,s,manifest,sourceNotes);
    const chapter=catalog.chaptersBySlug.get(s.chapter);
    const chapterHeading=unit.chapterHeadings
     ?s.stage?`<h2 class="source-chapter-title">${esc(s.stage)}</h2>`
@@ -102,7 +101,7 @@ export function buildReadings({root,dist,head,header,footer,renderExampleCard,as
     :s.chapterTitle&&index>0&&s.chapter!==unit.sections[index-1].chapter?`<p class="eyebrow">${esc(s.chapterTitle)}</p>`:'';
    const number=unit.highlightSections&&marked(s.tag)
     ?dependencyLabel(s.tag,s.number,`Section ${s.number}`):s.number;
-   return `<section class="source-section" id="${s.tag}" data-source-sha256="${s.sha256}"><header class="source-section-header">${chapterHeading}${sourceHeading(sectionHeading,`${number}. ${esc(s.title)}`,sources[s.tag])}</header>${content}</section>`;
+   return `<section class="source-section" id="${s.tag}" data-source-sha256="${s.sha256}"><header class="source-section-header">${chapterHeading}${sourceHeading(sectionHeading,`${number}. ${esc(s.title)}`,s)}</header>${content}</section>`;
   }).join('');
   if(!unit.readingTitle)stats.push({slug:unit.slug,sections:unit.sections.length,proofs,statements,formulas:r.mathCount});
   const first=Object.keys(data)[0],firstSource=unit.sections[0];
@@ -117,7 +116,7 @@ export function buildReadings({root,dist,head,header,footer,renderExampleCard,as
     return `<br><a href="../${prerequisite.slug}/">Prerequisite · ${esc(prerequisite.readingTitle)}</a>`;
    }).join('')}</p>`:'';
   const dependencyLink=tree?`<p class="dependency-guide"><a href="../${tree.url}#dependency-tree">Dependency graph</a><br>Select a yellow label to open its graph here.</p>`:'';
-  const html=head(unit.readingTitle||unit.title,'../',unit.chapterHeadings?description:`The Stacks Project, Chapter ${unit.number}: ${unit.title}. ${description}`)+header('../',true)+`<div class="reading-progress" aria-hidden="true"><span></span></div><div class="reader-layout"><nav class="reading-outline" id="reading-outline" aria-label="Reading contents">${outlineLink}<p class="eyebrow">${outlineType}</p><div class="margin-reading-controls"><button id="toggle-proofs" type="button" aria-pressed="false">Show all proofs</button><button class="mobile-example" type="button" data-show-example>Example ↗</button></div>${targetLinks}${dependencyLink}${toc}${unit.readingTitle?'':`<details class="chapter-navigation"><summary>Other chapters</summary>${chapterNav}</details>`}${unit.core&&!unit.readingTitle?`<a href="../${unit.sections[0].chapter}/">Full chapter selection ↗</a>`: ''}<div class="outline-note"><span class="eyebrow">Separate commentary</span><p>Concrete examples</p><button type="button" class="mobile-example" data-show-example>Open example</button></div></nav><main id="main" class="reader-main verbatim-main"><header class="reading-title"><h1>${esc(unit.chapterHeadings?unit.readingTitle:unit.title)}</h1></header>${sections}</main><aside id="example-dock" class="example-dock" data-example-layout="anchored" aria-label="Examples and analogies" tabindex="-1"><div class="example-sticky"><div class="example-header"><button id="close-example" type="button" aria-label="Close example">×</button></div>${sourcePanel(sources[firstSource.tag])}<div class="example-current"><div class="example-step"><a id="example-stage-label" href="#${firstSource.tag}">§${firstSource.number} · ${esc(firstSource.title)}</a><span id="example-index"${data[first].html?'':' hidden'}>01</span></div><div id="example-content">${data[first].html}</div><div class="example-paging"${data[first].html?'':' hidden'}><button id="previous-example" type="button" aria-label="Previous example explanation">← Previous</button><button id="follow-reading" type="button" aria-pressed="true">Follow reading</button><button id="next-example" type="button" aria-label="Next example explanation">Next →</button></div></div></div></aside></div><script type="application/json" id="example-data">${JSON.stringify(data).replaceAll('<','\\u003c')}</script>`+sourceDataScript(sources)+footer('../');
+  const html=head(unit.readingTitle||unit.title,'../',unit.chapterHeadings?description:`The Stacks Project, Chapter ${unit.number}: ${unit.title}. ${description}`)+header('../',true)+`<div class="reading-progress" aria-hidden="true"><span></span></div><div class="reader-layout"><nav class="reading-outline" id="reading-outline" aria-label="Reading contents">${outlineLink}<p class="eyebrow">${outlineType}</p><div class="margin-reading-controls"><button id="toggle-proofs" type="button" aria-pressed="false">Show all proofs</button><button class="mobile-example" type="button" data-show-example>Example ↗</button></div>${targetLinks}${dependencyLink}${toc}${unit.readingTitle?'':`<details class="chapter-navigation"><summary>Other chapters</summary>${chapterNav}</details>`}${unit.core&&!unit.readingTitle?`<a href="../${unit.sections[0].chapter}/">Full chapter selection ↗</a>`: ''}<div class="outline-note"><span class="eyebrow">Separate commentary</span><p>Concrete examples</p><button type="button" class="mobile-example" data-show-example>Open example</button></div></nav><main id="main" class="reader-main verbatim-main"><header class="reading-title"><h1>${esc(unit.chapterHeadings?unit.readingTitle:unit.title)}</h1></header>${sections}</main><aside id="example-dock" class="example-dock" data-example-layout="anchored" aria-label="Examples and analogies" tabindex="-1"><div class="example-sticky"><div class="example-header"><button id="close-example" type="button" aria-label="Close example">×</button></div><div class="example-current"><div class="example-step"><a id="example-stage-label" href="#${firstSource.tag}">§${firstSource.number} · ${esc(firstSource.title)}</a><span id="example-index"${data[first].html?'':' hidden'}>01</span></div><div id="example-content">${data[first].html}</div><div class="example-paging"${data[first].html?'':' hidden'}><button id="previous-example" type="button" aria-label="Previous example explanation">← Previous</button><button id="follow-reading" type="button" aria-pressed="true">Follow reading</button><button id="next-example" type="button" aria-label="Next example explanation">Next →</button></div></div></div></aside></div><script type="application/json" id="example-data">${JSON.stringify(data).replaceAll('<','\\u003c')}</script>`+footer('../');
   readerPages.push({slug:unit.slug,html,tree});
 
  }
