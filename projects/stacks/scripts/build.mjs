@@ -37,7 +37,7 @@ function matchingHTML(item,proof=false,renderer=r){
 }
 function renderExampleCard(item,key,open,proof=false,renderer=r,group=key){
   const label=item.kind==='analogy'?'Analogy':item.kind==='non-example'?'Non-example':'Example';
-  return `<details class="example-disclosure" data-example-card="${esc(key)}" data-example-group="${esc(group)}"${open?' open':''}><summary><span class="example-chevron" aria-hidden="true"></span><span>${label}: ${esc(item.title)}</span></summary><div class="example-body" tabindex="0" role="region" aria-label="${label}: ${esc(item.title)}">${matchingHTML(item,proof,renderer)}</div></details>`;
+  return `<details class="example-disclosure" data-example-card="${esc(key)}" data-example-group="${esc(group)}"${open?' open':''}><summary><span class="disclosure-chevron" aria-hidden="true"></span><span>${label}: ${esc(item.title)}</span></summary><div class="example-body" tabindex="0" role="region" aria-label="${label}: ${esc(item.title)}">${matchingHTML(item,proof,renderer)}</div></details>`;
 }
 const exampleData=Object.fromEntries(Object.entries(examples).map(([key,item])=>[key,{
   html:renderExampleCard(item,key,true),

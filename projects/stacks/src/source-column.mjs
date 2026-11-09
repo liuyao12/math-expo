@@ -9,7 +9,7 @@ export function renderProofs(proofs,{id,key,tag,label,renderer}){
  return (proofs||[]).map((proof,index)=>{
   const proofId=index?`proof-${id}-${index+1}`:`proof-${id}`;
   const title=proof.title||'Proof.';
-  return `<details class="proof"><summary><span class="proof-label-closed">${esc(title)}</span><span class="proof-label-open">${esc(title)}</span><span class="proof-chevron" aria-hidden="true">+</span></summary><div class="proof-body" id="${proofId}" data-example="${key}" data-proof="true" data-source-label="Proof of ${esc(label)}" data-source-tag="${tag}"><div class="source-body">${printedSource(proof.html)}</div><span class="proof-end" aria-label="End of proof">${renderer.math('\\square')}</span></div></details>`;
+  return `<details class="proof"><summary><span class="disclosure-chevron" aria-hidden="true"></span><span>${esc(title)}</span></summary><div class="proof-body" tabindex="0" role="region" aria-label="Proof of ${esc(label)}" id="${proofId}" data-example="${key}" data-proof="true" data-source-label="Proof of ${esc(label)}" data-source-tag="${tag}"><div class="source-body">${printedSource(proof.html)}</div><span class="proof-end" aria-label="End of proof">${renderer.math('\\square')}</span></div></details>`;
  }).join('');
 }
 export function sourceHeading(level,title,section){
