@@ -1036,7 +1036,7 @@ const coordinateSpaces={...model('coordinate vector spaces',[],'',''),points:[
    r`\(\operatorname{Mor}(\mathbb R^n,\mathbb R^m)\cong\) \(\operatorname{Mat}_{m\times n}(\mathbb R)\), the set of \(m\times n\) matrices over \(\mathbb R\)`
   ]
  },
- 'It is a full subcategory.'
+ 'It is a full subcategory. Including all finite-dimensional real vector spaces makes it strictly full.'
 ]};
 const matrixEquivalence=model('matrices',[
  b(r`\mathcal A`,r`\mathbf{Mat}_k`),
