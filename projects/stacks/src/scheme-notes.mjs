@@ -985,18 +985,14 @@ const tangentSpace=model('tangent space',[
 ],r`\[
 d(g\circ f)_p=dg_{f(p)}\circ df_p
 \]`,'',r`The differential replaces a smooth map by its linear approximation at a point. The chain rule says that these approximations still compose.`);
-const bundlesOver=model('vector bundles',[
- b(r`\mathcal C`,r`\mathbf{Man}`)
-],r`\[
-\begin{CD}
-E @>{u}>> F \\
-@V{p}VV @VV{q}V \\
-X @= X
-\end{CD}
-\]
+const labeledSets={...model('labeled sets',[],'','',r`Think of \(X\) as a set of labels.`),points:[
+ r`\(\mathcal C=\mathbf{Set}\)`,
+ r`An object \(p:Y\to X\) assigns a label \(p(y)\) to each \(y\in Y\).`,
+ r`A morphism from \(p:Y\to X\) to \(q:Y'\to X\) is a map \(u:Y\to Y'\) that preserves labels.
 \[
-u_x:E_x\longrightarrow F_x\quad\text{linear}.
-\]`,r`The bundle projections are objects of \(\mathbf{Man}/X\), and bundle maps give morphisms there.`,r`Vector bundles \(p:E\to X\) and \(q:F\to X\) over a fixed smooth manifold \(X\).`);
+q(u(y))=p(y)\qquad(y\in Y).
+\]`
+]};
 const pointedSpacesUnder=model('pointed spaces',[
  b(r`\mathcal C`,r`\mathbf{Top}`),
  b('X',r`\{*\}`)
@@ -1096,7 +1092,7 @@ const passageNotes={
  '0B05':conicIntersection,
  '001B':{...singularHomology,examples:[fundamentalGroup,tangentSpace].map(example=>({...example,scope:"statement"}))},
  '001D':coordinateSpaces,
- '001G':bundlesOver,
+ '001G':labeledSets,
  '001H':pointedSpacesUnder,
  '001I':hurewicz,
  '001J':matrixEquivalence,
