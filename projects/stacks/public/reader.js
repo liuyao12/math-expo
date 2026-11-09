@@ -7,8 +7,6 @@
   proofs.forEach(p=>p.addEventListener('toggle',updateProofControl));
   const revealTarget=()=>{let target;try{target=document.getElementById(decodeURIComponent(location.hash.slice(1)));}catch{return;}if(!target)return;const p=target.closest('details.proof');if(p)p.open=true;};
   window.addEventListener('hashchange',revealTarget);revealTarget();
-  const search=$('#chapter-search');
-  search?.addEventListener('input',()=>{const words=search.value.toLowerCase().trim().split(/\s+/).filter(Boolean);let count=0;$$('.chapter-link').forEach(a=>{const show=words.every(w=>a.dataset.search.includes(w));a.hidden=!show;if(show)count++;});$('#chapter-count').textContent=count+' chapter'+(count===1?'':'s');$('#empty-search').hidden=count!==0;});
   const outline=$('#reading-outline'),outlineButton=$('.mobile-outline');
   const outlineLinks=new Map($$('.outline-tree a').map(link=>[link.hash.slice(1),link]));
   const outlineBranches=$$('.outline-toggle').map(button=>[button,document.getElementById(button.getAttribute('aria-controls'))]);
