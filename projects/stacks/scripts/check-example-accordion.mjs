@@ -23,7 +23,7 @@ try{
   const mobile=viewport.width<=760;
   const page=await browser.newPage({viewport,isMobile:mobile,hasTouch:mobile,reducedMotion:'reduce'});
   page.on('pageerror',error=>errors.push(error.message));
-  for(const [slug,anchor,tag=anchor] of [['scheme','001B'],['scheme','005A'],['curves','01MN'],['curves','01XD'],['grr','02UO'],['gluing','local-functions-0','local-functions']]){
+  for(const [slug,anchor,tag=anchor] of [['scheme','001B'],['scheme','005A'],['scheme','01MN'],['curves','01XD'],['grr','02UO'],['gluing','local-functions-0','local-functions']]){
    await page.goto(url(slug,anchor),{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);
    const source=page.locator('main [id="'+anchor+'"]');
    await source.evaluate(n=>scrollBy({top:n.getBoundingClientRect().top-innerHeight*.3+25,behavior:'instant'}));
@@ -80,7 +80,7 @@ try{
  await page.locator('#close-example').click();await page.setViewportSize({width:1440,height:900});
  await page.locator('main details.proof').first().evaluate(n=>n.open=true);await settle(page);
  const drift=await page.locator('.example-band:not([hidden])').evaluateAll(bands=>bands.map(b=>{
-  const a=document.getElementById(b.dataset.exampleAnchor),p=a.classList.contains('source-section')?a.querySelector('.source-section-header > :is(h2,h3):not(.source-chapter-title)')||a:a.querySelector('.statement-heading')||a;
+  const a=document.getElementById(b.dataset.exampleAnchor),p=a.classList.contains('source-section')?a.querySelector('.source-heading-row > :is(h2,h3)')||a:a.querySelector('.statement-heading')||a;
   return Math.abs(b.getBoundingClientRect().top-p.getBoundingClientRect().top);
  }));
  assert(drift.every(delta=>delta<2),'Example anchors follow proof reflow and resizing');

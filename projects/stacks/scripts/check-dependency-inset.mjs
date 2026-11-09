@@ -35,12 +35,22 @@ const checkLabels=async graph=>{
  }
 };
 try{
+ const noScript=await browser.newPage({javaScriptEnabled:false});
+ const initial=base+'scheme/#001M';
+ await noScript.goto(initial,{waitUntil:'domcontentloaded'});
+ const unloaded=noScript.locator('main [data-dependency-tag="001M"]');
+ assert(await unloaded.isDisabled(),'The highlight is inert before the inset script runs');
+ await unloaded.evaluate(node=>node.click());
+ assert.equal(noScript.url(),initial,'An uninitialized highlight cannot open the source site');
+ assert.equal(await noScript.locator('main [id="001L"] > header .source-heading-row > .source-link').getAttribute('href'),'https://stacks.math.columbia.edu/tag/001L');
+ await noScript.close();
  for(const viewport of [{width:1440,height:900},{width:390,height:844}]){
   const page=await browser.newPage({viewport,isMobile:viewport.width<=760,hasTouch:viewport.width<=760,reducedMotion:'reduce'}),errors=[];
   page.on('pageerror',e=>errors.push(e.message));
   for(const [slug,tag] of [['scheme','004P'],['curves','0BYD'],['grr','02UO']]){
    await page.goto(base+slug+'/#'+tag,{waitUntil:'networkidle'});
    const trigger=page.locator('main [id="'+tag+'"] [data-dependency-tag="'+tag+'"]');
+   assert(await trigger.isEnabled(),'Dependency control is ready');
    await trigger.focus();await page.keyboard.press('Enter');
    const popup=page.getByRole('dialog',{name:'Dependency graph'});await popup.waitFor();
    const graph=popup.locator('.dependency-graph'),board=graph.locator('.graph-viewport'),svg=graph.locator('svg');
@@ -90,7 +100,9 @@ try{
    await page.goto(base+slug+'/#'+additionalTag,{waitUntil:'networkidle'});
    const extra=page.locator('main [data-dependency-tag="'+additionalTag+'"]');
    assert.equal(await extra.innerText(),'Definition '+refs[additionalTag].number);
+   const readingUrl=page.url();
    await extra.click();await popup.waitFor();
+   assert.equal(page.url(),readingUrl,'A highlighted label opens its inset without navigating');
    assert(await popup.locator('[data-graph-overview]').isVisible(),'Audit inset links to the reading overview');
    assert.equal(await popup.locator('.is-current').getAttribute('data-tag'),additionalTag);
    assert.equal(await popup.locator('.dependency-target').getAttribute('data-tag'),audits[slug].target);

@@ -93,7 +93,8 @@ for(const reading of selectedReadings){
  if(reading!==coreReading)assert(page.includes('href="../scheme/#01MB"'),'Later dependency graphs link to the relocated Proj proof');
  const report=reports[reading.slug],local=new Set(reading.sections.map(s=>s.tag));
  const expected=report.required_tags.filter(tag=>local.has(report.passages[tag].section)&&!['item','equation'].includes(referencesByTag.get(tag).kind));
- const marks=[...page.matchAll(/<a class="dependency-number" data-dependency-tag="([^"]+)"[^>]*>([^<]+)<\/a>/g)];
+ const marks=[...page.matchAll(/<button type="button" class="dependency-number" data-dependency-tag="([^"]+)"[^>]*>([^<]+)<\/button>/g)];
+ assert(!/<a\b[^>]*data-dependency-tag=/.test(page),'Dependency controls cannot navigate away');
  assert.deepEqual(marks.map(m=>m[1]).sort(),expected.sort(),'Highlight exactly the audited headings in '+reading.slug);
  assert.deepEqual(new Set(expected.map(tag=>report.passages[tag].section)),local,'Every selected section has an audited highlight');
  for(const [,tag,label] of marks){
@@ -169,11 +170,11 @@ for(const unit of originalUnits){
   if(!html.includes('<h1>'+escapeHTML(title)+'</h1>'))throw Error('Missing reading heading '+unit.slug);
   const records=JSON.parse(html.match(/<script type="application\/json" id="source-data">([\s\S]*?)<\/script>/)[1]);
   const sectionHeading=unit.chapterHeadings?'h3':'h2';
-  const headings=html.replace(/<a class="dependency-number"[^>]*>([\d.]+)<\/a>/g,'$1');
+  const headings=html.replace(/<button type="button" class="dependency-number"[^>]*>([\d.]+)<\/button>/g,'$1');
   for(const section of unit.sections){
     const source=fs.readFileSync(path.join(root,'upstream/sections',section.slug+'.tex'),'utf8');
     if(createHash('sha256').update(source).digest('hex')!==section.sha256)throw Error('Altered section source '+section.slug);
-    if(!headings.includes('<'+sectionHeading+'>'+section.number+'. '+escapeHTML(section.title)+'</'+sectionHeading+'>'))throw Error('Changed original section title '+section.slug);
+    if(!headings.includes(`<${sectionHeading}>${section.number}. ${escapeHTML(section.title)}</${sectionHeading}><a class="source-link" href="https://stacks.math.columbia.edu/tag/${section.tag}"`))throw Error('Missing original title or adjacent source link '+section.slug);
     if(!records[section.tag].html.includes('<pre><code>'+escapeHTML(source)+'</code></pre>'))throw Error('Missing margin source '+section.slug);
     if(!fs.existsSync(path.resolve(path.dirname(path.join(dist,unit.slug,'index.html')),records[section.tag].download)))throw Error('Broken margin source download '+section.slug);
   }
@@ -212,6 +213,7 @@ for(const route of [...originalUnits.map(u=>u.slug),'gluing']){
   for(const cls of ['example-jump','object-ref','source-tex','source-note','source-links','edition-note','reading-deck','reading-controls','reading-contents','path-navigation','tag']){
     if(new RegExp('class="[^"\n]*\\b'+cls+'\\b').test(main))throw Error('Non-source interface in main column: '+route+' '+cls);
   }
-  if(/<button|role="button"|<details(?! class="proof")/.test(main))throw Error('Only proof-collapse controls may be added to original text: '+route);
+  const text=main.replace(/<button type="button" class="dependency-number" data-dependency-tag="[^"]+"[^>]*>/g,'');
+  if(/<button|role="button"|<details(?! class="proof")/.test(text))throw Error('Unexpected control in original text: '+route);
 }
-console.log('Validated verbatim source columns: proof-collapse controls only; commentary, source tools, and editorial material remain in margins.');
+console.log('Validated verbatim source columns, proof controls, dependency buttons, and section source links.');

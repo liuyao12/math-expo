@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {createRenderer,escapeHTML as esc} from '../src/latex.mjs';
-import {separateSourceNotes,renderProofs,sourceRecord,sourcePanel,sourceDataScript} from '../src/source-column.mjs';
+import {separateSourceNotes,renderProofs,sourceRecord,sourceHeading,sourcePanel,sourceDataScript} from '../src/source-column.mjs';
 import {notesFor} from '../src/scheme-notes.mjs';
 import {loadReadingCatalog,loadReadings,loadReferenceReadings,selectedOverview} from '../src/readings.mjs';
 import {renderDependencyGraph} from '../public/graph-render.js';
@@ -24,10 +24,8 @@ export function buildReadings({root,dist,head,header,footer,renderExampleCard,as
  const schemeTree=graphsBySlug.get(coreReading.slug);
  const readingSlugs=new Set(readings.map(reading=>reading.slug));
  const locations=new Map(readings.map(reading=>[reading.slug,new Map()]));
- const dependencyLabel=(graph,tag,text,label=text)=>{
-  const href=graph.nodes[tag]?`../${graph.url}#${tag}`:`https://stacks.math.columbia.edu/tag/${tag}`;
-  return `<a class="dependency-number" data-dependency-tag="${esc(tag)}" aria-haspopup="dialog" href="${esc(href)}" aria-label="${esc(label)} dependencies">${esc(text)}</a>`;
- };
+ const dependencyLabel=(tag,text,label=text)=>
+  `<button type="button" class="dependency-number" data-dependency-tag="${esc(tag)}" aria-haspopup="dialog" aria-controls="dependency-dialog" aria-expanded="false" aria-label="${esc(label)} dependencies" disabled>${esc(text)}</button>`;
  const references=catalog.references;
  const referencesByTag=new Map(Object.values(references).map(ref=>[ref.tag,ref]));
  const allSections=manifest.units.flatMap(u=>u.sections),stats=[],readerPages=[];
@@ -89,7 +87,7 @@ export function buildReadings({root,dist,head,header,footer,renderExampleCard,as
       if(term)ref.term=term.replaceAll('&amp;','&').replaceAll('&quot;','"');
      }
      locate(b.tag,s);
-     const heading=marked(b.tag)?dependencyLabel(tree,b.tag,label):esc(label);
+     const heading=marked(b.tag)?dependencyLabel(b.tag,label):esc(label);
      statements++;html=`<div class="statement-heading"><${statementHeading}>${heading}${b.title?' · '+rich(b.title):''}</${statementHeading}></div>`+html;
     }
     proofs+=b.proofs?.length||0;
@@ -103,8 +101,8 @@ export function buildReadings({root,dist,head,header,footer,renderExampleCard,as
      :`<p class="source-chapter-reminder">${esc(chapter.number+'. '+chapter.title)}</p>`
     :s.chapterTitle&&index>0&&s.chapter!==unit.sections[index-1].chapter?`<p class="eyebrow">${esc(s.chapterTitle)}</p>`:'';
    const number=unit.highlightSections&&marked(s.tag)
-    ?dependencyLabel(tree,s.tag,s.number,`Section ${s.number}`):s.number;
-   return `<section class="source-section" id="${s.tag}" data-source-sha256="${s.sha256}"><header class="source-section-header">${chapterHeading}<${sectionHeading}>${number}. ${esc(s.title)}</${sectionHeading}></header>${content}</section>`;
+    ?dependencyLabel(s.tag,s.number,`Section ${s.number}`):s.number;
+   return `<section class="source-section" id="${s.tag}" data-source-sha256="${s.sha256}"><header class="source-section-header">${chapterHeading}${sourceHeading(sectionHeading,`${number}. ${esc(s.title)}`,sources[s.tag])}</header>${content}</section>`;
   }).join('');
   if(!unit.readingTitle)stats.push({slug:unit.slug,sections:unit.sections.length,proofs,statements,formulas:r.mathCount});
   const first=Object.keys(data)[0],firstSource=unit.sections[0];
@@ -149,7 +147,7 @@ export function buildReadings({root,dist,head,header,footer,renderExampleCard,as
   return JSON.stringify({target:tree.rootTag,passages}).replaceAll('<','\\u003c');
  };
  for(const {slug,html,tree} of readerPages){
-  const inset=tree?`<dialog class="dependency-dialog" aria-labelledby="dependency-dialog-title">
+  const inset=tree?`<dialog id="dependency-dialog" class="dependency-dialog" aria-labelledby="dependency-dialog-title">
    <header><h2 id="dependency-dialog-title">Dependency graph</h2><form method="dialog"><button type="submit" autofocus>Close</button></form></header>
    <p class="graph-hint"><span data-graph-hint>Drag to explore; zoom out for the full graph.</span> <a data-graph-overview href="../${tree.url}#dependency-tree" hidden>Reading overview ↗</a></p>
    ${graphHTML(tree,'inset-','../')}

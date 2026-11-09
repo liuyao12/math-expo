@@ -59,8 +59,6 @@
     const section=context?.closest('.source-section'),tag=section?.id;
     if(!tag||!sourceData[tag])return;
     if(sourceTag!==tag){$('#source-content').innerHTML=sourceData[tag].html;sourceTag=tag;}
-    const passageTag=context.dataset.sourceTag||tag;
-    $('#original-passage-link').href='https://stacks.math.columbia.edu/tag/'+passageTag;
   };
   const dataNode=$('#example-data');
   let current='local-functions',follow=true,selectionPinned=false,data={},passages=[],keys=[],lastReading=current,lastReadingContext=null,activeContext=null;
@@ -100,7 +98,7 @@
         const anchor=document.getElementById(key);
         if(!anchor||!main.contains(anchor)||!data[key].html)return null;
         const peg=anchor.classList.contains('source-section')
-          ?anchor.querySelector('.source-section-header > :is(h2,h3):not(.source-chapter-title)')||anchor
+          ?anchor.querySelector('.source-heading-row > :is(h2,h3)')||anchor
           :anchor.querySelector('.statement-heading')||anchor;
         const band=document.createElement('div');
         band.className='example-band';band.dataset.exampleAnchor=key;

@@ -108,6 +108,9 @@ body:has(.reader-layout) .site-header{position:sticky;top:0}.reading-progress{he
 }
 
 .dependency-number {
+  appearance: none;
+  border: 0;
+  font: inherit;
   background: #ffeda0;
   color: #292412;
   border-radius: .2em;
@@ -115,6 +118,10 @@ body:has(.reader-layout) .site-header{position:sticky;top:0}.reading-progress{he
   text-decoration: underline;
   text-underline-offset: .15em;
 }
+.dependency-number:disabled { opacity: 1; }
+.source-heading-row { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .45rem 1rem; }
+.source-heading-row > :is(h2,h3) { min-width: 0; }
+.source-heading-row > .source-link { flex: none; white-space: nowrap; font-size: 11px; }
 
 .dependency-guide {
   font: 12px/1.5 var(--sans);

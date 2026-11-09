@@ -118,7 +118,7 @@ import {renderPassageGraph} from './graph-render.js';
  if(dialog&&typeof dialog.show==='function'){
   document.addEventListener('click',event=>{
    const trigger=event.target.closest('[data-dependency-tag]');
-   if(!trigger||event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+   if(!trigger||trigger.disabled||event.defaultPrevented)return;
    const node=switchGraph(trigger.dataset.dependencyTag);
    if(!node)return;
    event.preventDefault();
@@ -153,6 +153,7 @@ import {renderPassageGraph} from './graph-render.js';
   graph.addEventListener('click',event=>{
    if(!event.defaultPrevented&&event.target.closest('a[href]'))dialog.close();
   });
+  for(const trigger of document.querySelectorAll('button[data-dependency-tag]'))trigger.disabled=false;
  }
 
  let pan=null;
