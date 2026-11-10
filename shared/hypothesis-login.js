@@ -68,18 +68,18 @@
     });
   }
 
-  function annotateParagraph(paragraph, key) {
-    selectedParagraph = { paragraph, key };
+  function annotateParagraph(paragraph, start, end, key, previousKeys) {
+    selectedParagraph = { paragraph, key, previousKeys };
     const selection = document.getSelection();
     if (!selection) return;
     // Focus the selection on the first line so the Annotate menu opens there.
-    selection.setBaseAndExtent(paragraph, paragraph.childNodes.length, paragraph, 1);
+    selection.setBaseAndExtent(end, end.childNodes.length, start, start === paragraph ? 1 : 0);
     openHypothesis();
 
     clearTimeout(pendingAnnotation);
     const deadline = performance.now() + 8000;
     function startAnnotation() {
-      if (!paragraph.isConnected || selection.isCollapsed || selection.focusNode !== paragraph) return;
+      if (!paragraph.isConnected || selection.isCollapsed || selection.focusNode !== start) return;
       const adder = document.querySelector('hypothesis-adder')?.shadowRoot;
       const annotate = adder?.querySelector('button[aria-label^="Annotate"]');
       if (annotate?.getClientRects().length) {
@@ -92,10 +92,18 @@
   }
 
   formatButton.addEventListener('click', () => {
-    if (selectedParagraph?.paragraph.isConnected) openDraft(selectedParagraph.key);
+    if (selectedParagraph?.paragraph.isConnected) openDraft(selectedParagraph);
   });
 
-  function openDraft(key) {
+  function readDraft(key) {
+    try {
+      return drafts.get(key) ?? localStorage.getItem(key);
+    } catch {
+      return drafts.get(key);
+    }
+  }
+
+  function openDraft(draft) {
     if (!draftDialog) {
       draftDialog = document.createElement('dialog');
       draftDialog.className = 'paragraph-draft';
@@ -121,7 +129,7 @@
       text.addEventListener('input', () => {
         drafts.set(activeDraft.key, text.value);
         try {
-          if (text.value) localStorage.setItem(activeDraft.key, text.value);
+          if (text.value || activeDraft.previousKeys.length) localStorage.setItem(activeDraft.key, text.value);
           else localStorage.removeItem(activeDraft.key);
         } catch {
           // Keep the draft in this tab when storage is unavailable.
@@ -153,39 +161,72 @@
       });
     }
 
-    activeDraft = { key };
-    let text = drafts.get(key);
-    if (text === undefined) {
-      try {
-        text = localStorage.getItem(key);
-      } catch {
-        // A fresh draft can still be written when storage is unavailable.
-      }
-    }
-    draftDialog.querySelector('textarea').value = text ?? '';
+    activeDraft = draft;
+    const text = readDraft(draft.key) ?? draft.previousKeys.map(readDraft).filter(Boolean).join('\n\n');
+    draftDialog.querySelector('textarea').value = text;
     draftDialog.querySelector('.paragraph-draft-hint').textContent =
       'Use * or - for bullets and $…$ for math. Shortcuts include \\a, \\b, \\g, \\NN, and \\RR. Copy the formatted text to paste into Hypothesis.';
     draftDialog.showModal();
   }
 
-  const readingParagraphs = '.source-body p, .proof-body p, .passage > .original p, .authored-text p, #chapter .prose p, #chapter .chapter-intro';
+  const readingText = ':is(.source-body, .proof-body, .passage > .original, .authored-text, #chapter .prose)';
+  const readingParagraphs = readingText + ' p, #chapter .chapter-intro';
+  const statementBodies = '.passage:not(.prose) > .source-body, #chapter .prose .definition';
+  const lists = 'ol, ul';
   function addCommentButtons(root) {
     const paragraphNumbers = new Map();
+    const draftKeys = new Map();
+    const page = location.pathname.replace(/index\.html$/, '');
+    const chapterHash = chapter ? (location.hash || '#geometry') : '';
     for (const paragraph of root.querySelectorAll(readingParagraphs)) {
       const anchor = paragraph.closest('[id]');
       const number = (paragraphNumbers.get(anchor) ?? 0) + 1;
       paragraphNumbers.set(anchor, number);
-      if (!paragraph.textContent.trim() || paragraph.firstElementChild?.matches('.paragraph-comment')) continue;
-      const chapterHash = chapter?.contains(paragraph) ? (location.hash || '#geometry') : '';
-      const page = location.pathname.replace(/index\.html$/, '');
-      const key = 'math-expo:draft:' + JSON.stringify([page, chapterHash, anchor?.id, number]);
+      draftKeys.set(paragraph, 'math-expo:draft:' + JSON.stringify([page, chapterHash, anchor?.id, number]));
+    }
+
+    const continuations = new Set();
+    const blocks = root.querySelectorAll(readingParagraphs + ', ' + statementBodies + ', ' + readingText + ' :is(ol, ul)');
+    for (const [index, block] of blocks.entries()) {
+      const enclosingStatement = block.closest(statementBodies);
+      if ((enclosingStatement && enclosingStatement !== block) ||
+          block.parentElement.closest(lists) || continuations.has(block) || !block.textContent.trim()) continue;
+
+      let end = block;
+      const following = [];
+      if (block.matches('p, ol, ul')) {
+        const introducesItems = /[.:;!?]\s*$/.test(block.textContent);
+        let next = end.nextElementSibling;
+        while (next && (next.matches(lists) || (introducesItems && next.matches('p') && /^\s*(?:\d+[.)]|\(\d+\))\s/.test(next.textContent)))) {
+          end = next;
+          continuations.add(end);
+          following.push(end);
+          next = end.nextElementSibling;
+        }
+      }
+
+      // Put the control on the first line, including lists whose first item has no p.
+      let lead = block.matches('p') ? block : block.querySelector('p, li') || block;
+      if (lead.matches('li') && lead.firstElementChild?.matches('p')) lead = lead.firstElementChild;
+      if (lead.firstElementChild?.matches('.paragraph-comment')) continue;
+      const paragraphs = [block, ...following].flatMap(part => part.matches('p') ? [part] : [...part.querySelectorAll('p')]);
+      const oldKeys = paragraphs.map(paragraph => draftKeys.get(paragraph)).filter(Boolean);
+      const previousKeys = oldKeys.length > 1 ? oldKeys : [];
+      const key = previousKeys.length ? previousKeys[0] + ':group' :
+        oldKeys[0] ?? 'math-expo:draft:' + JSON.stringify([page, chapterHash, 'block', index]);
       const addComment = document.createElement('button');
       addComment.type = 'button';
       addComment.className = 'paragraph-comment';
-      addComment.setAttribute('aria-label', 'Annotate this paragraph');
-      addComment.title = 'Annotate this paragraph';
-      addComment.addEventListener('click', () => annotateParagraph(paragraph, key));
-      paragraph.prepend(addComment);
+      const label = block.matches(statementBodies) ? 'Annotate this block' : block.matches(lists) ? 'Annotate this list' : 'Annotate this paragraph';
+      addComment.setAttribute('aria-label', label);
+      addComment.title = label;
+      addComment.addEventListener('click', () => annotateParagraph(lead, block, end, key, previousKeys));
+      lead.prepend(addComment);
+      if (block !== lead) block.classList.add('comment-block');
+      for (const continuation of following) {
+        continuation.addEventListener('pointerenter', () => addComment.classList.add('is-hovered'));
+        continuation.addEventListener('pointerleave', () => addComment.classList.remove('is-hovered'));
+      }
     }
   }
   addCommentButtons(document);

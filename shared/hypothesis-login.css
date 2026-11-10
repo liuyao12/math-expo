@@ -47,6 +47,12 @@
 .paragraph-comment::before { content: "+"; }
 .paragraph-comment:hover { text-decoration: underline; }
 .paragraph-comment:focus-visible { outline: 1px solid currentColor; }
+@media (hover: hover) {
+  .paragraph-comment { opacity: 0; }
+  :is(p, li):hover > .paragraph-comment,
+  .comment-block:hover .paragraph-comment,
+  .paragraph-comment:is(:hover, :focus-visible, .is-hovered) { opacity: 1; }
+}
 .paragraph-draft {
   box-sizing: border-box;
   width: min(30rem, calc(100% - 2rem));
