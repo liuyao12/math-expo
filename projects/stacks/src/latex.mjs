@@ -142,7 +142,17 @@ export function createRenderer(root, options={}) {
     let tex=fs.readFileSync(path.join(root,'upstream/sections',section.slug+'.tex'),'utf8').replace(/(?<!\\)%[^\n]*/g,'');
     tex=tex.replace(/^\\section\{[^\n]+\}\s*\\label\{[^}]+\}/,'').trim();
     const blocks=[];let cursor=0;const pattern=/\\begin\{(definition|lemma|example|exercise|theorem|proposition|corollary|remarks?|situation|discussion|notation|proof)\}(?:\[([^\]]+)\])?/g;let match;
-    const pushProse=s=>{if(s.trim())blocks.push({kind:'prose',html:body(s,section.chapter)});};
+    const range=options.proseNotes?.[section.tag];
+    const addProse=(s,metadata={})=>{if(s.trim())blocks.push({kind:'prose',html:body(s,section.chapter),...metadata});};
+    const pushProse=s=>{
+      const start=range?s.indexOf(range.start):-1;
+      if(start<0){addProse(s);return;}
+      const end=s.indexOf(range.end,start+range.start.length);
+      if(end<0)throw Error('Missing end of prose note '+range.id);
+      addProse(s.slice(0,start),{continues:true});
+      addProse(s.slice(start,end),{proseId:range.id,continues:true});
+      addProse(s.slice(end));
+    };
     while((match=pattern.exec(tex))){
       pushProse(tex.slice(cursor,match.index));
       const [content,end]=environmentEnd(tex,pattern.lastIndex,match[1]);
@@ -158,7 +168,9 @@ export function createRenderer(root, options={}) {
       }
       cursor=end;pattern.lastIndex=end;
     }
-    pushProse(tex.slice(cursor));return blocks;
+    pushProse(tex.slice(cursor));
+    if(range&&!blocks.some(block=>block.proseId===range.id))throw Error('Missing prose note '+range.id);
+    return blocks;
   }
   return {math,body,inline,section,manifest,get mathCount(){return mathCount;}};
 }

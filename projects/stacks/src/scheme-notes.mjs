@@ -90,8 +90,7 @@ A^{-1}=\frac{\operatorname{adj}(A)}{\det A}
 \[
 \sum_{n=0}^{\infty}c_n(z-a)^n
 \]
-on a neighbourhood of \(a\). The ring is denoted \(\mathbb C\{z-a\}\).`,
-  r`Replacing holomorphic functions by rational functions defined at \(a\) gives \(\mathbb C[z]_{(z-a)}\), the fractions \(p(z)/q(z)\) with \(q(a)\ne0\).`
+on a neighbourhood of \(a\). The ring is denoted \(\mathbb C\{z-a\}\).`
  ]},
  spectrum:model('crossing lines',[
   b('R',r`\mathbb C[x,y]/(xy)`),b('X',r`\operatorname{Spec}R`),
@@ -1147,10 +1146,28 @@ const passageNotes={
 const sectionNotes=Object.fromEntries(Object.entries(sectionGroups)
  .flatMap(([name,tags])=>tags.map(tag=>[tag,models[name]])));
 
+export const proseNotes={
+ '07BH':{
+  id:'localization-at-a-prime',
+  start:r`\medskip\noindent
+The localization $R_\mathfrak p$`,
+  end:r`\medskip\noindent
+Let $\varphi : R \to S$ be a ring map.`,
+  example:{...model('rational functions regular at a point',[],'',''),points:[
+   r`\(R=\mathbb C[z],\quad \mathfrak p=(z-a),\quad a\in\mathbb C\).`,
+   r`\[
+R_{\mathfrak p}=\left\{\frac{p(z)}{q(z)}:p,q\in\mathbb C[z],\ q(a)\ne0\right\}.
+\]`,
+   r`\(\mathfrak pR_{\mathfrak p}=(z-a)R_{\mathfrak p}\) and \(\kappa(\mathfrak p)\cong\mathbb C\).`
+  ]}
+ }
+};
+
 export const noteTags=[...Object.keys(sectionNotes),...Object.keys(passageNotes)];
 
 export function notesFor(sectionTag,passageTag){
- const passage=passageNotes[passageTag];
+ const prose=proseNotes[sectionTag];
+ const passage=passageNotes[passageTag]||(prose?.id===passageTag?prose?.example:null);
  const primary=passage?{...passage,scope:'statement'}:sectionNotes[sectionTag];
  if(!primary)return {tag:sectionTag,examples:[]};
  return {

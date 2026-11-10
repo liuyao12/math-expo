@@ -3,7 +3,7 @@ import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {createRenderer,escapeHTML as esc} from '../src/latex.mjs';
 import {printedSource,renderProofs,sourceHeading} from '../src/source-column.mjs';
-import {notesFor} from '../src/scheme-notes.mjs';
+import {notesFor,proseNotes} from '../src/scheme-notes.mjs';
 import {loadReadingCatalog,loadReadings,loadReferenceReadings,selectedOverview} from '../src/readings.mjs';
 import {renderDependencyGraph} from '../public/graph-render.js';
 import {renderOutline} from '../src/reading-outline.mjs';
@@ -103,7 +103,7 @@ export function buildReadings({root,dist,head,header,footer,renderExampleCard,as
   };
   const sectionHeading=unit.chapterHeadings?'h3':'h2';
   const statementHeading=unit.chapterHeadings?'h4':'h3';
-  const r=createRenderer(root,{sections:unit.sections,routes:prerequisiteRoutes,lazyMath:!!unit.readingTitle}),data={};let proofs=0,statements=0;
+  const r=createRenderer(root,{sections:unit.sections,routes:prerequisiteRoutes,proseNotes,lazyMath:!!unit.readingTitle}),data={};let proofs=0,statements=0;
   const rich=s=>s.replace(/\\\[([\s\S]*?)\\\]/g,(_,t)=>r.math(t,true)).replace(/\\\(([\s\S]*?)\\\)/g,(_,t)=>r.math(t));
   const sections=unit.sections.map((s,index)=>{
    const blocks=r.section(s);
@@ -113,7 +113,7 @@ export function buildReadings({root,dist,head,header,footer,renderExampleCard,as
      const terms=indexDefinedTerms(b.html,referencesByTag);
      if(b.kind==='definition'&&terms.length)referencesByTag.get(b.tag).terms=terms;
     }
-    const notes=notesFor(s.tag,b.tag),key=notes.tag;
+    const notes=notesFor(s.tag,b.tag||b.proseId),key=notes.tag;
     if(!data[key]){
      const html=notes.examples.map((item,index)=>
       renderExampleCard(item,index?key+'-extra-'+index:key,notes.examples.length===1,false,r,key)
@@ -121,7 +121,7 @@ export function buildReadings({root,dist,head,header,footer,renderExampleCard,as
      data[key]={html};
     }
     const label=b.kind==='prose'?`§${s.number} · ${s.title}`:`${b.kind[0].toUpperCase()+b.kind.slice(1)} ${b.number}`;
-    const id=b.tag||s.slug+'-'+bi;
+    const id=b.tag||b.proseId||s.slug+'-'+bi;
     let html=`<div class="source-body">${printedSource(b.html)}</div>`;
     if(b.kind!=='prose'){
      const ref=referencesByTag.get(b.tag);
@@ -136,7 +136,7 @@ export function buildReadings({root,dist,head,header,footer,renderExampleCard,as
     }
     proofs+=b.proofs?.length||0;
     html+=renderProofs(b.proofs,{id,key,tag:b.tag||s.tag,label:label,renderer:r});
-    return `<section id="${id}" class="passage ${b.kind}" data-example="${key}" data-source-label="${esc(label)}" data-source-tag="${b.tag||s.tag}" aria-label="${esc(label)}">${html}</section>`;
+    return `<section id="${id}" class="passage ${b.kind}${b.continues?' prose-continues':''}" data-example="${key}" data-source-label="${esc(label)}" data-source-tag="${b.tag||s.tag}" aria-label="${esc(label)}">${html}</section>`;
    }).join('');
    const chapter=catalog.chaptersBySlug.get(s.chapter);
    const chapterHeading=unit.chapterHeadings
