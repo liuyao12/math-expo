@@ -58,12 +58,14 @@ import {statementsResidues} from '../src/statements-euler-1761.mjs';
 import {figuresResidues} from '../src/figures-euler-1761.mjs';
 import {figuresEuler} from '../src/figures-euler-1740.mjs';
 import {buildAnchoredMargins} from '../../../scripts/build-anchored-margins.mjs';
+import {buildHypothesisLogin,hypothesisLogin} from '../../../scripts/build-hypothesis-login.mjs';
 import passageNotes from '../../../shared/passage-notes.json' with {type:'json'};
 
 const root=fileURLToPath(new URL('../',import.meta.url)),dist=path.join(root,'dist');
 rmSync(dist,{recursive:true,force:true});mkdirSync(dist,{recursive:true});
 cpSync(path.join(root,'public'),dist,{recursive:true});
 const marginAssets=buildAnchoredMargins(dist);
+const hypothesisAssets=buildHypothesisLogin(dist);
 const styleVersion=createHash('sha256').update(readFileSync(path.join(root,'public/style.css'))).digest('hex').slice(0,12);
 writeFileSync(path.join(dist,'discovery.js'),`window.paperDiscovery={normalizeSearch:${normalizeSearch.toString()},matchesWork:${matchesWork.toString().replaceAll('normalizeSearch(', 'window.paperDiscovery.normalizeSearch(')},compareWorks:${compareWorks.toString()},facetCounts:${facetCounts.toString().replaceAll('matchesWork(', 'window.paperDiscovery.matchesWork(')}};`);
 const zetaVersion=createHash('sha256').update(['zeta-math.mjs','zeta-reader.mjs','zeta-worker.mjs','zeta-reader.css','explicit-math.mjs','explicit-reader.mjs','explicit-strip.mjs','explicit-experiment.mjs','explicit-worker.mjs','zeta-zeros-200.json'].map(f=>readFileSync(path.join(root,'public',f),'utf8')).join('\n')).digest('hex').slice(0,12);
@@ -129,6 +131,9 @@ function save(route,html){
   html=html.replace(/<script[^>]+src="[^"]*(?:parallel-reader|companion-reader)\.mjs[^"]*"[^>]*><\/script>/g,'');
   html=html.replace('</head>',`<link rel="stylesheet" href="${base}${marginAssets.css}"><link rel="stylesheet" href="${base}reader-layout.css?v=${layoutVersion}"><script id="reader-layout-data" type="application/json">${JSON.stringify(layoutData).replaceAll('<','\\u003c')}</script><script defer src="${base}${marginAssets.js}"></script><script type="module" src="${base}reader-layout.mjs?v=${layoutVersion}"></script></head>`);
  }
+ const base='../'.repeat(route.split('/').filter(Boolean).length);
+ html=html.replace('</head>',hypothesisAssets(base)+'</head>');
+ html=html.replace(/(<header class="(?:masthead|parallel-header)">[\s\S]*?)(<\/header>)/,(_,header,close)=>header+hypothesisLogin+close);
  const dir=path.join(dist,route);mkdirSync(dir,{recursive:true});writeFileSync(path.join(dir,'index.html'),italicizeTitles(html));
 }
 const authors=(w,base,specific=false)=>w.authors.map(id=>personalReference(personMap.get(id),esc(personMap.get(id).name),base,specific?w:undefined)).join(' · ');
@@ -391,7 +396,7 @@ for(const w of works.filter(w=>commentariesFor(w.id).length||furtherReadingFor(w
 mkdirSync(path.join(dist,'commentaries'),{recursive:true});
 cpSync(path.join(root,'src/sources/tao-2013-provenance.json'),path.join(dist,'commentaries/tao-2013-provenance.json'));
 const commentaryEntries=authoredCommentaries.map(c=>`<article class="commentary-entry"><span class="parallel-kicker">${esc(c.kind)} · ${c.year} · ${esc(c.access)}</span><h2><i>${esc(c.title)}</i></h2><p>${commentatorCredit(c.author)} · ${esc(c.publication)}</p><p>${esc(c.scope)}</p><ul>${c.works.map(id=>`<li><a href="../${id}/compare/?commentary=${c.id}">${c.html?'Read full text alongside':'Companion record for'} <i>${esc(workMap.get(id).title)}</i> →</a></li>`).join('')}</ul><p>${external(c.url,'Source & full text')}</p></article>`).join('');
-save('commentaries',`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Authored commentaries — Papers</title><link rel="stylesheet" href="../parallel-reader.css?v=${parallelVersion}"></head><body class="commentary-directory-body"><main class="commentary-directory"><a href="../">← The collection</a><h1>Authored <i>commentaries.</i></h1><p class="intro">Essays and extended commentaries to read beside the original works. Each voice remains attributed; the two columns scroll independently. Background and future directions in our own passage notes remain separate.</p><p>These authored discussions engage with particular historical works. Their full texts are not yet transcribed here; the source records distinguish availability from reuse permission. Broader modern exposition belongs under further reading.</p>${commentaryEntries}<section id="further-reading" class="further-reading-heading"><h2>Further reading</h2><p>Broader exposition, kept separate from authored commentaries on individual papers.</p>${furtherReading.map(c=>`<article class="commentary-entry"><h3><a href="../further-reading/${c.id}/"><i>${esc(c.title)}</i></a></h3><p>${commentatorCredit(c.author)} · ${c.year} · Complete HTML text</p><p>${esc(c.scope)}</p></article>`).join('')}</section></main></body></html>`);
+save('commentaries',`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Authored commentaries — Papers</title><link rel="stylesheet" href="../style.css?v=${styleVersion}"><link rel="stylesheet" href="../parallel-reader.css?v=${parallelVersion}"></head><body class="commentary-directory-body">${mast('../')}<main class="commentary-directory"><a href="../">← The collection</a><h1>Authored <i>commentaries.</i></h1><p class="intro">Essays and extended commentaries to read beside the original works. Each voice remains attributed; the two columns scroll independently. Background and future directions in our own passage notes remain separate.</p><p>These authored discussions engage with particular historical works. Their full texts are not yet transcribed here; the source records distinguish availability from reuse permission. Broader modern exposition belongs under further reading.</p>${commentaryEntries}<section id="further-reading" class="further-reading-heading"><h2>Further reading</h2><p>Broader exposition, kept separate from authored commentaries on individual papers.</p>${furtherReading.map(c=>`<article class="commentary-entry"><h3><a href="../further-reading/${c.id}/"><i>${esc(c.title)}</i></a></h3><p>${commentatorCredit(c.author)} · ${c.year} · Complete HTML text</p><p>${esc(c.scope)}</p></article>`).join('')}</section></main></body></html>`);
 
 for(const c of furtherReading){
  const text=readFileSync(path.join(root,'src/sources',c.html),'utf8');

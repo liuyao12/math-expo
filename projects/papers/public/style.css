@@ -163,3 +163,8 @@ cite.work-title{font-style:italic}.entity-link.work-link,.work-record h3,.paper-
 .record-commentaries a{color:#59446e;text-decoration:none}.record-commentaries a:hover i{text-decoration:underline;text-underline-offset:3px}
 .record-commentator{display:block;font:11px/1.7 var(--sans);margin-bottom:3px}.record-commentator .parallel-surname{font-variant-caps:small-caps}
 .record-commentary-availability{display:block;font:9px/1.6 var(--sans);color:var(--muted);margin-top:3px}
+
+@media (max-width:700px) {
+  .masthead .reader-login { margin-inline-start:auto; }
+  .masthead .library-nav { order:1; flex-basis:100%; margin-inline-start:0; }
+}

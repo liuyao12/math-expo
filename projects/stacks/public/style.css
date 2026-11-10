@@ -37,25 +37,6 @@ html:has(.reader-layout){scroll-behavior:auto}
 
 @media print{.margin-reading-controls,.header-companion-toggle{display:none!important}}
 
-.reader-login { flex: none; white-space: nowrap; }
-.reader-login-status {
-  position: absolute;
-  clip-path: inset(50%);
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
-.reader-login-status.is-error {
-  inset: 100% 12px auto auto;
-  clip-path: none;
-  width: auto;
-  height: auto;
-  padding: .5rem;
-  background: var(--paper);
-  border: 1px solid var(--line);
-  font: 12px/1.4 var(--sans);
-}
-.reader-login,
 .editorial-example-hide { font: 12px/1.4 var(--sans); color: var(--green); background: transparent; border: 1px solid var(--line); padding: .35rem .6rem; }
 .hidden-editorial-examples { margin-top: .65rem; }
 .hidden-editorial-examples summary { cursor: pointer; }
@@ -65,11 +46,11 @@ html:has(.reader-layout){scroll-behavior:auto}
 .editorial-example-hide { display: block; margin: 0 0 .65rem auto; }
 .example-disclosure[hidden] { display: none; }
 @media(max-width:760px) {
-  .reader-header:has(.reader-login) { gap: 8px; }
+  .site-header { gap: 8px; }
 }
 @media(max-width:360px) {
-  .reader-header:has(.reader-login) { padding-inline: 12px; gap: 5px; }
-  .reader-header:has(.reader-login) .brand { font-size: 18px; gap: 5px; }
+  .site-header { padding-inline: 12px; gap: 5px; }
+  .site-header .brand { font-size: 18px; gap: 5px; }
 }
 .collection-scope>summary{cursor:pointer;font:18px/1.7 var(--serif);color:var(--green);padding:12px 0;border-block:1px solid var(--line)}
 

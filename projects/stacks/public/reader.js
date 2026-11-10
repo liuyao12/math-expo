@@ -40,36 +40,10 @@
   const openExample=trigger=>{if(matchMedia('(max-width:760px)').matches){previousFocus=trigger;dock.classList.add('is-open');dock.setAttribute('role','dialog');dock.setAttribute('aria-modal','true');document.body.style.overflow='hidden';$('#close-example').focus({preventScroll:true});dock.dispatchEvent(new Event('examplepanelchange'));drawAll();}else dock.focus({preventScroll:true});};
   $$('[data-show-example]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();openExample(a);}));
   $('#close-example')?.addEventListener('click',closeExample);
-  const hypothesis=$('#open-hypothesis');
-  if(hypothesis){
-    const status=$('#hypothesis-status');
-    hypothesis.addEventListener('click',()=>{
-      if(dock.classList.contains('is-open'))closeExample();
-      closeOutline();
-      const ready=()=>{
-        hypothesis.hidden=true;
-        status.textContent='Use Log in in the Hypothesis sidebar to sign in.';
-      };
-      if(document.querySelector('hypothesis-sidebar')){ready();return;}
-      hypothesis.disabled=true;
-      status.classList.remove('is-error');
-      status.textContent='Loading Hypothesis…';
-      const config=document.createElement('script');
-      config.type='application/json';
-      config.className='js-hypothesis-config';
-      config.textContent=JSON.stringify({openSidebar:true});
-      const script=document.createElement('script');
-      script.src='https://hypothes.is/embed.js';
-      script.addEventListener('load',ready,{once:true});
-      script.addEventListener('error',()=>{
-        script.remove();config.remove();
-        hypothesis.disabled=false;
-        status.classList.add('is-error');
-        status.textContent='Hypothesis could not load. Try again.';
-      },{once:true});
-      document.head.append(config,script);
-    });
-  }
+  $('#open-hypothesis')?.addEventListener('click',()=>{
+    if(dock?.classList.contains('is-open'))closeExample();
+    closeOutline();
+  });
   document.addEventListener('keydown',event=>{
     if(event.key==='Escape'){
       if(dock?.classList.contains('is-open'))closeExample();

@@ -31,7 +31,8 @@
 .section-grid,.chapter-heading{scroll-margin-top:calc(var(--reader-top-height,91px) + 20px)}
 @media(max-width:1000px){.reader-chapter-line{display:block}#breadcrumb{margin-right:8px}#reader-chapter-title{font-size:11px}.reader-top{gap:12px}.reader-top .convention-options button{padding:7px 10px}}
 @media(max-width:680px){
-  .reader-top{display:grid;grid-template-columns:44px minmax(0,1fr);min-height:0;margin:0 -23px;padding:13px 23px 10px;gap:10px 12px}
+  .reader-top{display:grid;grid-template-columns:44px minmax(0,1fr) auto;min-height:0;margin:0 -23px;padding:13px 23px 10px;gap:10px 12px}
+  .reader-top .reader-login{grid-column:3;grid-row:1}
   .reader-book-title{font-size:20px;margin-bottom:4px}
   .reader-chapter-line{display:flex;gap:7px}
   #breadcrumb{font-size:7px;margin:0}
