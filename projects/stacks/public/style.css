@@ -37,32 +37,39 @@ html:has(.reader-layout){scroll-behavior:auto}
 
 @media print{.margin-reading-controls,.header-companion-toggle{display:none!important}}
 
-.reader-annotations { position: relative; font: 12px/1.5 var(--sans); color: var(--green); }
-.reader-annotations > summary { cursor: pointer; padding: .35rem .5rem; white-space: nowrap; }
-.reader-annotation-options {
+.reader-login { flex: none; white-space: nowrap; }
+.reader-login-status {
   position: absolute;
-  inset: calc(100% + .4rem) auto auto 0;
-  width: 240px;
-  max-width: calc(100vw - 42px);
-  max-height: calc(100dvh - 100px);
-  overflow-y: auto;
-  padding: .85rem;
-  border: 1px solid var(--line);
-  background: var(--paper);
-  box-shadow: 0 8px 24px #263d3020;
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
-.reader-annotation-options button,
+.reader-login-status.is-error {
+  inset: 100% 12px auto auto;
+  clip-path: none;
+  width: auto;
+  height: auto;
+  padding: .5rem;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  font: 12px/1.4 var(--sans);
+}
+.reader-login,
 .editorial-example-hide { font: 12px/1.4 var(--sans); color: var(--green); background: transparent; border: 1px solid var(--line); padding: .35rem .6rem; }
-.reader-annotation-options p { color: var(--muted); margin: .55rem 0 0; }
-.reader-annotation-options ul { margin: .45rem 0 0; padding: 0; list-style: none; }
-.reader-annotation-options li + li { margin-top: .35rem; }
-.reader-annotation-options li button { width: 100%; text-align: left; }
+.hidden-editorial-examples { margin-top: .65rem; }
+.hidden-editorial-examples summary { cursor: pointer; }
+.hidden-editorial-examples ul { margin: .45rem 0 0; padding: 0; list-style: none; }
+.hidden-editorial-examples li + li { margin-top: .35rem; }
+.hidden-editorial-examples li button { width: 100%; text-align: left; }
 .editorial-example-hide { display: block; margin: 0 0 .65rem auto; }
 .example-disclosure[hidden] { display: none; }
 @media(max-width:760px) {
-  .reader-annotations { position: static; }
-  .reader-annotation-options { inset: calc(100% + .25rem) auto auto 21px; }
-  .reader-header:has(.reader-annotations) { gap: 8px; }
+  .reader-header:has(.reader-login) { gap: 8px; }
+}
+@media(max-width:360px) {
+  .reader-header:has(.reader-login) { padding-inline: 12px; gap: 5px; }
+  .reader-header:has(.reader-login) .brand { font-size: 18px; gap: 5px; }
 }
 .collection-scope>summary{cursor:pointer;font:18px/1.7 var(--serif);color:var(--green);padding:12px 0;border-block:1px solid var(--line)}
 

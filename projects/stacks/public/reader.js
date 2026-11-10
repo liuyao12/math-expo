@@ -40,25 +40,19 @@
   const openExample=trigger=>{if(matchMedia('(max-width:760px)').matches){previousFocus=trigger;dock.classList.add('is-open');dock.setAttribute('role','dialog');dock.setAttribute('aria-modal','true');document.body.style.overflow='hidden';$('#close-example').focus({preventScroll:true});dock.dispatchEvent(new Event('examplepanelchange'));drawAll();}else dock.focus({preventScroll:true});};
   $$('[data-show-example]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();openExample(a);}));
   $('#close-example')?.addEventListener('click',closeExample);
-  const annotationMenu=$('.reader-annotations');
-  if(annotationMenu){
-    const hypothesis=$('#open-hypothesis'),status=$('#hypothesis-status');
-    annotationMenu.addEventListener('toggle',()=>{
-      if(!annotationMenu.open)return;
-      closeOutline();
-      if(dock.classList.contains('is-open')){closeExample();annotationMenu.querySelector('summary').focus();}
-    });
-    document.addEventListener('click',event=>{if(!event.composedPath().includes(annotationMenu))annotationMenu.open=false;});
+  const hypothesis=$('#open-hypothesis');
+  if(hypothesis){
+    const status=$('#hypothesis-status');
     hypothesis.addEventListener('click',()=>{
+      if(dock.classList.contains('is-open'))closeExample();
+      closeOutline();
       const ready=()=>{
         hypothesis.hidden=true;
-        status.hidden=false;
-        status.textContent='Use the Hypothesis sidebar tab to open or close it.';
-        if(annotationMenu.open){annotationMenu.open=false;annotationMenu.querySelector('summary').focus();}
+        status.textContent='Use Log in in the Hypothesis sidebar to sign in.';
       };
       if(document.querySelector('hypothesis-sidebar')){ready();return;}
       hypothesis.disabled=true;
-      status.hidden=false;
+      status.classList.remove('is-error');
       status.textContent='Loading Hypothesis…';
       const config=document.createElement('script');
       config.type='application/json';
@@ -70,6 +64,7 @@
       script.addEventListener('error',()=>{
         script.remove();config.remove();
         hypothesis.disabled=false;
+        status.classList.add('is-error');
         status.textContent='Hypothesis could not load. Try again.';
       },{once:true});
       document.head.append(config,script);
@@ -79,7 +74,6 @@
     if(event.key==='Escape'){
       if(dock?.classList.contains('is-open'))closeExample();
       closeOutline();
-      if(annotationMenu?.open){annotationMenu.open=false;annotationMenu.querySelector('summary').focus();}
     }
     if(event.key!=='Tab'||!dock?.classList.contains('is-open'))return;
     const controls=[...dock.querySelectorAll('button,input,a[href],summary,[tabindex="0"]')].filter(control=>{
@@ -112,7 +106,7 @@
         }
       }catch{}
       emptyExample=document.createElement('p');
-      emptyExample.textContent='The examples for this passage are hidden. Restore them from the Notes menu.';
+      emptyExample.textContent='The examples for this passage are hidden. Open Contents and choose Restore examples.';
       emptyExample.hidden=true;
       exampleContent.after(emptyExample);
     }
@@ -182,14 +176,15 @@
         const target=card.parentElement.querySelector('details:not([hidden]) > summary');
         if(target)target.focus({preventScroll:true});
         else if(dock.classList.contains('is-open'))$('#close-example').focus();
-        else annotationMenu.querySelector('summary').focus({preventScroll:true});
+        else (outlineButton.getClientRects().length?outlineButton:hiddenEditorial.querySelector('summary')).focus({preventScroll:true});
       });
       list.addEventListener('click',event=>{
         const restore=event.target.closest('[data-restore-editorial]');
         if(!restore)return;
         hiddenCards.delete(restore.dataset.restoreEditorial);
         updateHiddenCards();
-        (list.querySelector('button')||annotationMenu.querySelector('summary')).focus({preventScroll:true});
+        if(hiddenEditorial.hidden)hiddenEditorial.open=false;
+        (list.querySelector('button')||all).focus({preventScroll:true});
       });
       refreshHiddenList();
     }
