@@ -21338,5 +21338,15 @@
     "tag": "020G",
     "number": "33.3.2",
     "kind": "example"
+  },
+  "schemes-remark-fibre-product-schemes-locally-ringed": {
+    "tag": "01JN",
+    "number": "26.16.2",
+    "kind": "remark"
+  },
+  "schemes-section-existence-fibre-products": {
+    "tag": "01JL",
+    "number": "26.16",
+    "kind": "section"
   }
 }

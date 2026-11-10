@@ -25,7 +25,7 @@ MATCHES = {
     '00JM': ('Projective spectrum', 'ProjectiveSpectrum'),
     '00JL': ('Graded rings', 'GradedRing'),
     '01IJ': ('Scheme', G + 'Scheme'),
-    '01HB': ('Locally ringed space', G + 'LocallyRingedSpace'),
+    '01HB': ('Locally ringed space', G + 'LocallyRingedSpace', G + 'LocallyRingedSpace.Hom'),
     '01HV': ('The locally ringed spectrum', G + 'Spec.locallyRingedSpaceObj'),
     '01HU': ('Structure sheaf of the spectrum', G + 'Spec.structureSheaf'),
     '0091': ('Ringed space', G + 'SheafedSpace'),
@@ -37,12 +37,59 @@ MATCHES = {
     '006T': ('Sheaf', 'TopCat.Presheaf.IsSheaf'),
     '006E': ('Presheaf', 'TopCat.Presheaf'),
     '004O': ('Bases', 'TopologicalSpace.IsTopologicalBasis'),
-    '004J': ('Neighbourhood', 'TopologicalSpace.OpenNhds'),
+    '004J': ('Open neighbourhood', 'TopologicalSpace.OpenNhds'),
+    '004K': ('Open covering', 'TopologicalSpace.IsOpenCover'),
     '002F': ('Colimit', 'CategoryTheory.Limits.colimit'),
     '002E': ('Limit', 'CategoryTheory.Limits.limit'),
     '0017': ('Isomorphism', 'CategoryTheory.Iso'),
     '001B': ('Functor', 'CategoryTheory.Functor'),
     '0014': ('Category', 'CategoryTheory.Category'),
+    '001M': ('Opposite category', 'CategoryTheory.Category.opposite'),
+    '001V': ('Fibre products', 'CategoryTheory.Limits.pullback'),
+    '01JM': ('Existence of fibre products of schemes', G + 'Scheme.Pullback.instHasPullbacks'),
+    '01NF': ('Projective space', G + 'projectiveSpaceOver'),
+    '01OE': ('Projective bundle of a free module',
+             'Stacks.SymGraded.projectiveBundleIsoProjectiveSpace'),
+    '01OK': ('Integral schemes', G + 'IsIntegral'),
+    '01KK': ('Separated morphisms', G + 'IsSeparated'),
+    '01T1': ('Morphisms of finite type', G + 'LocallyOfFiniteType'),
+    '01K3': ('Quasi-compact morphisms', G + 'QuasiCompact'),
+    '01IO': ('Open and closed immersions', G + 'IsOpenImmersion', G + 'IsClosedImmersion'),
+    '01IK': ('Open subschemes', G + 'Scheme.Opens.toScheme'),
+    '01HW': ('Affine scheme', G + 'IsAffine'),
+    '01I7': ('Sheaf associated to a module', G + 'tilde',
+             G + 'instIsQuasicoherentOpensCarrierCarrierCommRingCatSpecTilde'),
+    '01BE': ('Quasi-coherent modules', 'SheafOfModules.IsQuasicoherent'),
+    '01B5': ('Modules of finite type', 'SheafOfModules.IsFiniteType'),
+    '01AM': ('Generating sections', 'SheafOfModules.GeneratingSections'),
+    '01B2': ('Locally generated modules', 'SheafOfModules.LocalGeneratorsData'),
+    '0077': ('Sheaves of modules', 'SheafOfModules'),
+    '006Q': ('Presheaves of modules', 'PresheafOfModules'),
+    '01LH': ('Relative gluing', G + 'Scheme.Cover.RelativeGluingData.glued'),
+    '01NN': ('Graded algebra for relative Proj',
+             'Stacks.AlgebraicGeometry.RelativeProjBridge.SheafGradedAlgebra'),
+    '01NQ': ('Relative Proj', 'Stacks.AlgebraicGeometry.RelativeProj.relativeProj'),
+    '01NO': ('The affine charts of relative Proj',
+             'Stacks.AlgebraicGeometry.RelativeProj.projInclusionDomain_eq_top'),
+    '01MY': ('Functoriality of Proj', 'Stacks.AlgebraicGeometry.ProjShared.mapDomain'),
+    '01CK': ('Symmetric powers and quasi-coherence',
+             'Stacks.SymGraded.isQuasicoherentPieces_of_isQuasicoherent'),
+    '01W9': ('H-projective implies projective', G + 'IsProjectiveMorphism.isProjective'),
+    '005A': ('Quasi-compact spaces', 'IsCompact'),
+    '002U': ('Colimits of sets', 'CategoryTheory.Limits.Types.colimitCocone'),
+    '04AX': ('Filtered colimits', 'CategoryTheory.IsFiltered'),
+    '006M': ('Presheaves of algebraic structures', G + 'PresheafedSpace'),
+    '0071': ('Sheaves of algebraic structures', 'TopCat.Sheaf'),
+    '007X': ('Sheafification', 'CategoryTheory.GrothendieckTopology.sheafify'),
+    '008C': ('Pushforward of presheaves', 'TopCat.Presheaf.pushforward'),
+    '00E0': ('Standard opens form a basis', 'PrimeSpectrum.isBasis_basic_opens'),
+    '02C5': ('Localization at a prime', 'Localization.AtPrime'),
+    '00F3': ('Ring maps of finite type', 'RingHom.FiniteType'),
+    '00HB': ('Flat modules', 'Module.Flat'),
+    '00CV': ('Tensor products', 'TensorProduct'),
+    '0517': ('Finite modules', 'Module.Finite'),
+    '01IR': ('Affine opens and open covers of schemes', G + 'IsAffineOpen'),
+    '01JY': ('Base change of open immersions', G + 'isOpenImmersion_stableUnderBaseChange'),
 }
 
 
@@ -117,8 +164,16 @@ def main():
     if not all(name in uses for name in roots):
         raise ValueError('Missing Axiom declaration roots')
     mathlib_uses = dict(map(json.loads, trace.read_text().splitlines()))
-    if not {G + 'Scheme', G + 'Proj'}.issubset(mathlib_uses):
-        raise ValueError('Mathlib trace must reach the scheme and Proj declarations')
+    axiom_reached = reachable(uses, roots)
+    library = read(data / 'library.json')['entities']
+    mathlib_modules = {
+        decl['name']: decl['module']
+        for entity in library.values() for decl in entity.get('declarations', [])
+        if decl['name'] in axiom_reached and decl['module'].startswith('Mathlib.')
+    }
+    missing = set(mathlib_modules) - set(mathlib_uses)
+    if missing:
+        raise ValueError('Mathlib trace misses declarations from the Axiom export: ' + ', '.join(sorted(missing)))
     if any(name not in mathlib_uses for deps in mathlib_uses.values() for name in deps):
         raise ValueError('Mathlib trace is incomplete')
     uses.update(mathlib_uses)
@@ -129,6 +184,7 @@ def main():
         'mathlib_commit': mathlib_commit,
         'mathlib_trace_sha256': hashlib.sha256(trace.read_bytes()).hexdigest(),
         'mathlib_declarations': len(reached & mathlib_uses.keys()),
+        'mathlib_roots': dict(sorted(mathlib_modules.items())),
         'nodes': nodes,
     }
     print(json.dumps(result, indent=2, ensure_ascii=False))

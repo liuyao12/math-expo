@@ -5745,5 +5745,16 @@
     "width": 49.077615,
     "height": 46.093628,
     "svg_sha256": "653f62af23ce0aaf5b6ca5fd288a6d3d2986ee912c748a5be71bac425cdfb82c"
+  },
+  "c92b79d980d265af25edd676": {
+    "key": "c92b79d980d265af25edd676",
+    "tex": "\\xymatrix{\n    & W_k \\ar[d] \\ar[rd] &   \\\\\nV_j \\ar[rd] \\ar[r] & U_i \\ar[rd] & Y \\ar[d] \\\\\n    & X \\ar[r]  & S\n}",
+    "sections": [
+      "schemes-existence-fibre-products"
+    ],
+    "file": "c92b79d980d265af25edd676.svg",
+    "width": 91.129732,
+    "height": 84.012647,
+    "svg_sha256": "519dabfc47cd081f17035092c07df50ca4532e4fb02e10f4cb8bc348ac91b78d"
   }
 }

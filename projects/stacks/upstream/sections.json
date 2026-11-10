@@ -5674,5 +5674,17 @@
     "slug": "varieties-varieties",
     "kind": "section",
     "sha256": "30148f7ec20eb0de59544c92b1bee722b7aa76415a8bfcb5aae6494daeb81be7"
+  },
+  "01JL": {
+    "tag": "01JL",
+    "label": "section-existence-fibre-products",
+    "chapter": "schemes",
+    "number": "26.16",
+    "title": "Existence of fibre products of schemes",
+    "source_start_line": 2999,
+    "source_end_line": 3130,
+    "slug": "schemes-existence-fibre-products",
+    "kind": "section",
+    "sha256": "7f6c42e08979fea8d4a6a85370e8b73a2b9cd5c7e8261da2fc05f27bb1b34aac"
   }
 }

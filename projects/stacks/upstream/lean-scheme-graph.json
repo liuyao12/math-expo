@@ -2,8 +2,72 @@
   "target": "04L1",
   "axiom_commit": "f8e70c5dd04bfabcb423d5e325461f527c85a5d6",
   "mathlib_commit": "16edf57de7933555826307a3d81b4391a3657a09",
-  "mathlib_trace_sha256": "28f01476c789b241d3d105cdd074009463a20dcecca43fd7cd102db00807815c",
-  "mathlib_declarations": 18908,
+  "mathlib_trace_sha256": "d3f4299163a9a60325dfd3419ca4805922fde48d8797d6aeb8beb49c8ba76cf8",
+  "mathlib_declarations": 29868,
+  "mathlib_roots": {
+    "AddCommGrpCat": "Mathlib.Algebra.Category.Grp.Basic",
+    "AddCommGrpCat.hasLimits": "Mathlib.Algebra.Category.Grp.Limits",
+    "AlgebraicGeometry.IsAffine": "Mathlib.AlgebraicGeometry.AffineScheme",
+    "AlgebraicGeometry.IsClosedImmersion": "Mathlib.AlgebraicGeometry.Morphisms.ClosedImmersion",
+    "AlgebraicGeometry.IsClosedImmersion.comp": "Mathlib.AlgebraicGeometry.Morphisms.ClosedImmersion",
+    "AlgebraicGeometry.IsIntegral": "Mathlib.AlgebraicGeometry.Properties",
+    "AlgebraicGeometry.IsOpenImmersion": "Mathlib.AlgebraicGeometry.OpenImmersion",
+    "AlgebraicGeometry.IsOpenImmersion.comp": "Mathlib.AlgebraicGeometry.OpenImmersion",
+    "AlgebraicGeometry.IsSeparated": "Mathlib.AlgebraicGeometry.Morphisms.Separated",
+    "AlgebraicGeometry.LocallyOfFiniteType": "Mathlib.AlgebraicGeometry.Morphisms.FiniteType",
+    "AlgebraicGeometry.Proj": "Mathlib.AlgebraicGeometry.ProjectiveSpectrum.Scheme",
+    "AlgebraicGeometry.QuasiCompact": "Mathlib.AlgebraicGeometry.Morphisms.QuasiCompact",
+    "AlgebraicGeometry.Scheme": "Mathlib.AlgebraicGeometry.Scheme",
+    "AlgebraicGeometry.Scheme.Cover.RelativeGluingData": "Mathlib.AlgebraicGeometry.RelativeGluing",
+    "AlgebraicGeometry.Scheme.Cover.RelativeGluingData.glued": "Mathlib.AlgebraicGeometry.RelativeGluing",
+    "AlgebraicGeometry.Scheme.Opens": "Mathlib.AlgebraicGeometry.Scheme",
+    "AlgebraicGeometry.Scheme.Opens.toScheme": "Mathlib.AlgebraicGeometry.Restrict",
+    "AlgebraicGeometry.Scheme.Opens.ι": "Mathlib.AlgebraicGeometry.Restrict",
+    "AlgebraicGeometry.Scheme.Pullback.instHasPullbacks": "Mathlib.AlgebraicGeometry.Pullbacks",
+    "AlgebraicGeometry.Scheme.instCategory": "Mathlib.AlgebraicGeometry.Scheme",
+    "AlgebraicGeometry.Scheme.precoverage": "Mathlib.AlgebraicGeometry.Sites.MorphismProperty",
+    "AlgebraicGeometry.instIsQuasicoherentOpensCarrierCarrierCommRingCatSpecTilde": "Mathlib.AlgebraicGeometry.Modules.Tilde",
+    "AlgebraicGeometry.isOpenImmersion_stableUnderBaseChange": "Mathlib.AlgebraicGeometry.OpenImmersion",
+    "AlgebraicGeometry.tilde": "Mathlib.AlgebraicGeometry.Modules.Tilde",
+    "CategoryTheory.Category": "Mathlib.CategoryTheory.Category.Basic",
+    "CategoryTheory.Category.opposite": "Mathlib.CategoryTheory.Opposites",
+    "CategoryTheory.CategoryStruct.id": "Mathlib.CategoryTheory.Category.Basic",
+    "CategoryTheory.Discrete.functor": "Mathlib.CategoryTheory.Discrete.Basic",
+    "CategoryTheory.Functor": "Mathlib.CategoryTheory.Functor.Basic",
+    "CategoryTheory.Functor.category": "Mathlib.CategoryTheory.Functor.Category",
+    "CategoryTheory.Functor.sheafPushforwardContinuous": "Mathlib.CategoryTheory.Sites.Continuous",
+    "CategoryTheory.GrothendieckTopology": "Mathlib.CategoryTheory.Sites.Grothendieck",
+    "CategoryTheory.IsIso": "Mathlib.CategoryTheory.Iso",
+    "CategoryTheory.IsPullback": "Mathlib.CategoryTheory.Limits.Shapes.Pullback.IsPullback.Defs",
+    "CategoryTheory.Iso": "Mathlib.CategoryTheory.Iso",
+    "CategoryTheory.Limits.HasBinaryProducts": "Mathlib.CategoryTheory.Limits.Shapes.BinaryProducts.BinaryProducts",
+    "CategoryTheory.Limits.IsZero": "Mathlib.CategoryTheory.Limits.Shapes.ZeroObjects",
+    "CategoryTheory.Limits.pullback": "Mathlib.CategoryTheory.Limits.Shapes.Pullback.HasPullback",
+    "CategoryTheory.Limits.pullback.fst": "Mathlib.CategoryTheory.Limits.Shapes.Pullback.HasPullback",
+    "CategoryTheory.Limits.pullback.snd": "Mathlib.CategoryTheory.Limits.Shapes.Pullback.HasPullback",
+    "CategoryTheory.ObjectProperty.FullSubcategory": "Mathlib.CategoryTheory.ObjectProperty.FullSubcategory",
+    "CategoryTheory.Over": "Mathlib.CategoryTheory.Comma.Over.Basic",
+    "CategoryTheory.Presheaf.IsLocallyInjective": "Mathlib.CategoryTheory.Sites.LocallyInjective",
+    "CategoryTheory.Presheaf.IsLocallySurjective": "Mathlib.CategoryTheory.Sites.LocallySurjective",
+    "CategoryTheory.Presheaf.IsSheaf": "Mathlib.CategoryTheory.Sites.Sheaf",
+    "CategoryTheory.Sheaf": "Mathlib.CategoryTheory.Sites.Sheaf",
+    "CategoryTheory.discreteCategory": "Mathlib.CategoryTheory.Discrete.Basic",
+    "Field": "Mathlib.Algebra.Field.Defs",
+    "Opens.grothendieckTopology": "Mathlib.CategoryTheory.Sites.Spaces",
+    "Preorder.smallCategory": "Mathlib.CategoryTheory.Category.Preorder",
+    "PresheafOfModules": "Mathlib.Algebra.Category.ModuleCat.Presheaf",
+    "PresheafOfModules.instCategory": "Mathlib.Algebra.Category.ModuleCat.Presheaf",
+    "SheafOfModules": "Mathlib.Algebra.Category.ModuleCat.Sheaf",
+    "SheafOfModules.GeneratingSections": "Mathlib.Algebra.Category.ModuleCat.Sheaf.Generators",
+    "SheafOfModules.IsFiniteType": "Mathlib.Algebra.Category.ModuleCat.Sheaf.Generators",
+    "SheafOfModules.IsQuasicoherent": "Mathlib.Algebra.Category.ModuleCat.Sheaf.Quasicoherent",
+    "SheafOfModules.LocalGeneratorsData": "Mathlib.Algebra.Category.ModuleCat.Sheaf.Generators",
+    "SheafOfModules.free": "Mathlib.Algebra.Category.ModuleCat.Sheaf.Free",
+    "SheafOfModules.freeHomEquiv": "Mathlib.Algebra.Category.ModuleCat.Sheaf.Free",
+    "SheafOfModules.instCategory": "Mathlib.Algebra.Category.ModuleCat.Sheaf",
+    "SheafOfModules.isQuasicoherent": "Mathlib.Algebra.Category.ModuleCat.Sheaf.Quasicoherent",
+    "SheafOfModules.over": "Mathlib.Algebra.Category.ModuleCat.Sheaf.PushforwardContinuous"
+  },
   "nodes": {
     "04L1": {
       "title": "Projective variety",
@@ -13,13 +77,13 @@
         "AlgebraicGeometry.isProjectiveVariety_iff_isProjectiveMorphism"
       ],
       "uses": {
-        "01W8": [
-          "AlgebraicGeometry.IsProjectiveVariety",
-          "AlgebraicGeometry.IsProjectiveMorphism"
-        ],
         "020D": [
           "AlgebraicGeometry.IsProjectiveVariety",
           "AlgebraicGeometry.IsVariety"
+        ],
+        "01W9": [
+          "AlgebraicGeometry.isProjectiveVariety_iff_isProjective'",
+          "AlgebraicGeometry.IsProjectiveMorphism.isProjective"
         ]
       }
     },
@@ -29,9 +93,21 @@
         "AlgebraicGeometry.IsVariety"
       ],
       "uses": {
-        "01IJ": [
+        "01OK": [
           "AlgebraicGeometry.IsVariety",
-          "AlgebraicGeometry.Scheme"
+          "AlgebraicGeometry.IsIntegral"
+        ],
+        "01KK": [
+          "AlgebraicGeometry.IsVariety",
+          "AlgebraicGeometry.IsSeparated"
+        ],
+        "01T1": [
+          "AlgebraicGeometry.IsVariety",
+          "AlgebraicGeometry.LocallyOfFiniteType"
+        ],
+        "01K3": [
+          "AlgebraicGeometry.IsVariety",
+          "AlgebraicGeometry.QuasiCompact"
         ]
       }
     },
@@ -42,9 +118,17 @@
         "AlgebraicGeometry.IsProjectiveMorphism"
       ],
       "uses": {
-        "01MB": [
+        "01B5": [
+          "AlgebraicGeometry.IsProjective",
+          "SheafOfModules.IsFiniteType"
+        ],
+        "01NQ": [
+          "AlgebraicGeometry.IsProjective",
+          "Stacks.AlgebraicGeometry.RelativeProj.relativeProj"
+        ],
+        "01NF": [
           "AlgebraicGeometry.IsProjectiveMorphism",
-          "AlgebraicGeometry.Proj"
+          "AlgebraicGeometry.projectiveSpaceOver"
         ]
       }
     },
@@ -78,6 +162,19 @@
           "AlgebraicGeometry.ProjectiveSpectrum.Proj.stalkMap_toSpec",
           "AlgebraicGeometry.Spec",
           "AlgebraicGeometry.Scheme"
+        ],
+        "005A": [
+          "AlgebraicGeometry.projIsoSpec",
+          "AlgebraicGeometry.ProjectiveSpectrum.Proj.toSpec",
+          "AlgebraicGeometry.ΓSpec.locallyRingedSpaceAdjunction",
+          "AlgebraicGeometry.LocallyRingedSpace.SpecΓIdentity",
+          "AlgebraicGeometry.isIso_toSpecΓ",
+          "AlgebraicGeometry.StructureSheaf.algebraMap_obj_top_bijective",
+          "AlgebraicGeometry.StructureSheaf.toOpenₗ_top_bijective",
+          "AlgebraicGeometry.StructureSheaf.instAwayObjOppositeOpensCarrierTopObjFunctorTypeIsSheafGrothendieckTopologyStructureSheafInTypeOpBasicOpenToOpenₗ",
+          "_private.Mathlib.AlgebraicGeometry.StructureSheaf.0.AlgebraicGeometry.StructureSheaf.toBasicOpenₗ_surjective",
+          "_private.Mathlib.AlgebraicGeometry.StructureSheaf.0.AlgebraicGeometry.StructureSheaf.exists_le_iSup_basicOpen_and_smul_eq_smul_and_eq_const",
+          "IsCompact"
         ]
       }
     },
@@ -87,6 +184,10 @@
         "AlgebraicGeometry.ProjectiveSpectrum.Proj.structureSheaf"
       ],
       "uses": {
+        "0071": [
+          "AlgebraicGeometry.ProjectiveSpectrum.Proj.structureSheaf",
+          "TopCat.Sheaf"
+        ],
         "006T": [
           "AlgebraicGeometry.ProjectiveSpectrum.Proj.structureSheaf",
           "AlgebraicGeometry.ProjectiveSpectrum.Proj.structureSheaf._proof_1",
@@ -136,7 +237,21 @@
           "AlgebraicGeometry.Spec.toLocallyRingedSpace",
           "AlgebraicGeometry.Spec.locallyRingedSpaceObj"
         ],
-        "002E": [
+        "002U": [
+          "AlgebraicGeometry.Scheme",
+          "AlgebraicGeometry.Scheme.mk",
+          "AlgebraicGeometry.LocallyRingedSpace.restrict",
+          "AlgebraicGeometry.SheafedSpace.restrict",
+          "AlgebraicGeometry.SheafedSpace.restrict._proof_1",
+          "TopCat.Presheaf.isSheaf_of_isOpenEmbedding",
+          "CategoryTheory.Functor.op_comp_isSheaf",
+          "CategoryTheory.Functor.op_comp_isSheaf_of_types",
+          "_private.Mathlib.CategoryTheory.Sites.Continuous.0.CategoryTheory.Functor.isSheaf_of_isContinuous_aux",
+          "CategoryTheory.Limits.Types.hasColimit",
+          "CategoryTheory.Limits.Types.hasColimit_iff_small_colimitType",
+          "CategoryTheory.Limits.Types.colimitCocone"
+        ],
+        "007X": [
           "AlgebraicGeometry.Scheme",
           "AlgebraicGeometry.Scheme.mk",
           "AlgebraicGeometry.LocallyRingedSpace.restrict",
@@ -148,17 +263,15 @@
           "_private.Mathlib.CategoryTheory.Sites.Continuous.0.CategoryTheory.Functor.isSheaf_of_isContinuous_aux",
           "CategoryTheory.GrothendieckTopology.instPreservesSheafification",
           "CategoryTheory.plusPlusSheaf",
-          "CategoryTheory.GrothendieckTopology.sheafify_isSheaf",
-          "CategoryTheory.GrothendieckTopology.Plus.isSheaf_plus_plus",
-          "CategoryTheory.GrothendieckTopology.Plus.isSheaf_of_sep",
-          "CategoryTheory.Limits.limit"
+          "CategoryTheory.GrothendieckTopology.sheafify"
         ]
       }
     },
     "01HB": {
       "title": "Locally ringed space",
       "declarations": [
-        "AlgebraicGeometry.LocallyRingedSpace"
+        "AlgebraicGeometry.LocallyRingedSpace",
+        "AlgebraicGeometry.LocallyRingedSpace.Hom"
       ],
       "uses": {
         "0091": [
@@ -175,6 +288,20 @@
           "AlgebraicGeometry.LocallyRingedSpace",
           "AlgebraicGeometry.LocallyRingedSpace.mk",
           "TopCat.Presheaf.stalk"
+        ],
+        "008C": [
+          "AlgebraicGeometry.LocallyRingedSpace.Hom",
+          "AlgebraicGeometry.LocallyRingedSpace.Hom.mk",
+          "AlgebraicGeometry.PresheafedSpace.Hom.stalkMap",
+          "TopCat.Presheaf.pushforward"
+        ],
+        "0017": [
+          "AlgebraicGeometry.LocallyRingedSpace.Hom",
+          "AlgebraicGeometry.LocallyRingedSpace.Hom.mk",
+          "AlgebraicGeometry.PresheafedSpace.Hom.stalkMap",
+          "TopCat.Presheaf.stalkPushforward",
+          "TopologicalSpace.OpenNhds.inclusionMapIso",
+          "CategoryTheory.Iso"
         ]
       }
     },
@@ -188,6 +315,11 @@
           "AlgebraicGeometry.Spec.locallyRingedSpaceObj",
           "AlgebraicGeometry.LocallyRingedSpace"
         ],
+        "02C5": [
+          "AlgebraicGeometry.Spec.locallyRingedSpaceObj",
+          "AlgebraicGeometry.Spec.locallyRingedSpaceObj._proof_1",
+          "Localization.AtPrime"
+        ],
         "01HU": [
           "AlgebraicGeometry.Spec.locallyRingedSpaceObj",
           "AlgebraicGeometry.Spec.sheafedSpaceObj",
@@ -200,7 +332,23 @@
           "Localization.isLocalization",
           "IsLocalization"
         ],
-        "004O": [
+        "04AX": [
+          "AlgebraicGeometry.Spec.locallyRingedSpaceObj",
+          "AlgebraicGeometry.Spec.locallyRingedSpaceObj._proof_1",
+          "AlgebraicGeometry.StructureSheaf.stalkIso",
+          "AlgebraicGeometry.StructureSheaf.instAtPrimeCarrierStalkCommRingCatStructurePresheafInCommRingCatAsIdeal",
+          "RingCat.FilteredColimits.instPreservesFilteredColimitsAddCommGrpCatForget₂RingHomCarrierAddMonoidHomCarrier",
+          "CategoryTheory.IsFiltered"
+        ],
+        "006Q": [
+          "AlgebraicGeometry.Spec.locallyRingedSpaceObj",
+          "AlgebraicGeometry.Spec.locallyRingedSpaceObj._proof_1",
+          "AlgebraicGeometry.StructureSheaf.stalkIso",
+          "AlgebraicGeometry.StructureSheaf.instAtPrimeCarrierStalkCommRingCatStructurePresheafInCommRingCatAsIdeal",
+          "PresheafOfModules.obj",
+          "PresheafOfModules"
+        ],
+        "00E0": [
           "AlgebraicGeometry.Spec.locallyRingedSpaceObj",
           "AlgebraicGeometry.Spec.locallyRingedSpaceObj._proof_1",
           "AlgebraicGeometry.StructureSheaf.stalkIso",
@@ -210,8 +358,7 @@
           "_private.Mathlib.AlgebraicGeometry.StructureSheaf.0.AlgebraicGeometry.StructureSheaf.stalkIsoₗ",
           "_private.Mathlib.AlgebraicGeometry.StructureSheaf.0.AlgebraicGeometry.StructureSheaf.stalkIsoₗ._proof_1",
           "AlgebraicGeometry.StructureSheaf.exists_const",
-          "PrimeSpectrum.isBasis_basic_opens",
-          "TopologicalSpace.IsTopologicalBasis"
+          "PrimeSpectrum.isBasis_basic_opens"
         ]
       }
     },
@@ -221,6 +368,10 @@
         "AlgebraicGeometry.Spec.structureSheaf"
       ],
       "uses": {
+        "0071": [
+          "AlgebraicGeometry.Spec.structureSheaf",
+          "TopCat.Sheaf"
+        ],
         "00E1": [
           "AlgebraicGeometry.Spec.structureSheaf",
           "AlgebraicGeometry.PrimeSpectrum.Top",
@@ -249,6 +400,11 @@
           "AlgebraicGeometry.SheafedSpace",
           "AlgebraicGeometry.SheafedSpace.mk",
           "TopCat.Presheaf.IsSheaf"
+        ],
+        "006M": [
+          "AlgebraicGeometry.SheafedSpace",
+          "AlgebraicGeometry.SheafedSpace.mk",
+          "AlgebraicGeometry.PresheafedSpace"
         ]
       }
     },
@@ -329,6 +485,10 @@
         "001B": [
           "TopCat.Presheaf",
           "CategoryTheory.Functor"
+        ],
+        "001M": [
+          "TopCat.Presheaf",
+          "CategoryTheory.Category.opposite"
         ]
       }
     },
@@ -340,9 +500,16 @@
       "uses": {}
     },
     "004J": {
-      "title": "Neighbourhood",
+      "title": "Open neighbourhood",
       "declarations": [
         "TopologicalSpace.OpenNhds"
+      ],
+      "uses": {}
+    },
+    "004K": {
+      "title": "Open covering",
+      "declarations": [
+        "TopologicalSpace.IsOpenCover"
       ],
       "uses": {}
     },
@@ -400,6 +567,840 @@
         "CategoryTheory.Category"
       ],
       "uses": {}
+    },
+    "001M": {
+      "title": "Opposite category",
+      "declarations": [
+        "CategoryTheory.Category.opposite"
+      ],
+      "uses": {
+        "0014": [
+          "CategoryTheory.Category.opposite",
+          "CategoryTheory.Category"
+        ]
+      }
+    },
+    "001V": {
+      "title": "Fibre products",
+      "declarations": [
+        "CategoryTheory.Limits.pullback"
+      ],
+      "uses": {
+        "002E": [
+          "CategoryTheory.Limits.pullback",
+          "CategoryTheory.Limits.limit"
+        ]
+      }
+    },
+    "01JM": {
+      "title": "Existence of fibre products of schemes",
+      "declarations": [
+        "AlgebraicGeometry.Scheme.Pullback.instHasPullbacks"
+      ],
+      "uses": {
+        "01JY": [
+          "AlgebraicGeometry.Scheme.Pullback.instHasPullbacks",
+          "AlgebraicGeometry.Scheme.Pullback.instHasPullback",
+          "AlgebraicGeometry.isOpenImmersion_stableUnderBaseChange"
+        ],
+        "005A": [
+          "AlgebraicGeometry.Scheme.Pullback.instHasPullbacks",
+          "AlgebraicGeometry.Scheme.Pullback.instHasPullback",
+          "AlgebraicGeometry.Scheme.Pullback.left_affine_comp_pullback_hasPullback",
+          "AlgebraicGeometry.Scheme.Pullback.base_affine_hasPullback",
+          "AlgebraicGeometry.Scheme.Pullback.affine_affine_hasPullback",
+          "AlgebraicGeometry.Scheme.Pullback.affine_hasPullback",
+          "AlgebraicGeometry.Spec.reflective",
+          "AlgebraicGeometry.ΓSpec.adjunction",
+          "AlgebraicGeometry.ΓSpec.locallyRingedSpaceAdjunction",
+          "AlgebraicGeometry.LocallyRingedSpace.SpecΓIdentity",
+          "AlgebraicGeometry.isIso_toSpecΓ",
+          "AlgebraicGeometry.StructureSheaf.algebraMap_obj_top_bijective",
+          "AlgebraicGeometry.StructureSheaf.toOpenₗ_top_bijective",
+          "AlgebraicGeometry.StructureSheaf.instAwayObjOppositeOpensCarrierTopObjFunctorTypeIsSheafGrothendieckTopologyStructureSheafInTypeOpBasicOpenToOpenₗ",
+          "_private.Mathlib.AlgebraicGeometry.StructureSheaf.0.AlgebraicGeometry.StructureSheaf.toBasicOpenₗ_surjective",
+          "_private.Mathlib.AlgebraicGeometry.StructureSheaf.0.AlgebraicGeometry.StructureSheaf.exists_le_iSup_basicOpen_and_smul_eq_smul_and_eq_const",
+          "IsCompact"
+        ]
+      }
+    },
+    "01NF": {
+      "title": "Projective space",
+      "declarations": [
+        "AlgebraicGeometry.projectiveSpaceOver"
+      ],
+      "uses": {
+        "01MB": [
+          "AlgebraicGeometry.projectiveSpaceOver",
+          "AlgebraicGeometry.Proj"
+        ],
+        "001V": [
+          "AlgebraicGeometry.projectiveSpaceOver",
+          "CategoryTheory.Limits.pullback"
+        ]
+      }
+    },
+    "01OE": {
+      "title": "Projective bundle of a free module",
+      "declarations": [
+        "Stacks.SymGraded.projectiveBundleIsoProjectiveSpace"
+      ],
+      "uses": {
+        "01NF": [
+          "Stacks.SymGraded.projectiveBundleIsoProjectiveSpace",
+          "AlgebraicGeometry.projectiveSpaceOver"
+        ],
+        "01NQ": [
+          "Stacks.SymGraded.projectiveBundleIsoProjectiveSpace",
+          "Stacks.AlgebraicGeometry.RelativeProj.relativeProj"
+        ],
+        "01CK": [
+          "Stacks.SymGraded.projectiveBundleIsoProjectiveSpace",
+          "Stacks.SymGraded.isQuasicoherentPieces_of_isQuasicoherent"
+        ]
+      }
+    },
+    "01OK": {
+      "title": "Integral schemes",
+      "declarations": [
+        "AlgebraicGeometry.IsIntegral"
+      ],
+      "uses": {
+        "01IK": [
+          "AlgebraicGeometry.IsIntegral",
+          "AlgebraicGeometry.IsIntegral.mk",
+          "AlgebraicGeometry.Scheme.Opens.toScheme"
+        ]
+      }
+    },
+    "01KK": {
+      "title": "Separated morphisms",
+      "declarations": [
+        "AlgebraicGeometry.IsSeparated"
+      ],
+      "uses": {
+        "01JY": [
+          "AlgebraicGeometry.IsSeparated",
+          "AlgebraicGeometry.IsSeparated.mk",
+          "AlgebraicGeometry.Scheme.Pullback.instHasPullback",
+          "AlgebraicGeometry.isOpenImmersion_stableUnderBaseChange"
+        ],
+        "005A": [
+          "AlgebraicGeometry.IsSeparated",
+          "AlgebraicGeometry.IsSeparated.mk",
+          "AlgebraicGeometry.Scheme.Pullback.instHasPullback",
+          "AlgebraicGeometry.Scheme.Pullback.left_affine_comp_pullback_hasPullback",
+          "AlgebraicGeometry.Scheme.Pullback.base_affine_hasPullback",
+          "AlgebraicGeometry.Scheme.Pullback.affine_affine_hasPullback",
+          "AlgebraicGeometry.Scheme.Pullback.affine_hasPullback",
+          "AlgebraicGeometry.Spec.reflective",
+          "AlgebraicGeometry.ΓSpec.adjunction",
+          "AlgebraicGeometry.ΓSpec.locallyRingedSpaceAdjunction",
+          "AlgebraicGeometry.LocallyRingedSpace.SpecΓIdentity",
+          "AlgebraicGeometry.isIso_toSpecΓ",
+          "AlgebraicGeometry.StructureSheaf.algebraMap_obj_top_bijective",
+          "AlgebraicGeometry.StructureSheaf.toOpenₗ_top_bijective",
+          "AlgebraicGeometry.StructureSheaf.instAwayObjOppositeOpensCarrierTopObjFunctorTypeIsSheafGrothendieckTopologyStructureSheafInTypeOpBasicOpenToOpenₗ",
+          "_private.Mathlib.AlgebraicGeometry.StructureSheaf.0.AlgebraicGeometry.StructureSheaf.toBasicOpenₗ_surjective",
+          "_private.Mathlib.AlgebraicGeometry.StructureSheaf.0.AlgebraicGeometry.StructureSheaf.exists_le_iSup_basicOpen_and_smul_eq_smul_and_eq_const",
+          "IsCompact"
+        ]
+      }
+    },
+    "01T1": {
+      "title": "Morphisms of finite type",
+      "declarations": [
+        "AlgebraicGeometry.LocallyOfFiniteType"
+      ],
+      "uses": {
+        "00F3": [
+          "AlgebraicGeometry.LocallyOfFiniteType",
+          "AlgebraicGeometry.LocallyOfFiniteType.mk",
+          "RingHom.FiniteType"
+        ],
+        "01IR": [
+          "AlgebraicGeometry.LocallyOfFiniteType",
+          "AlgebraicGeometry.LocallyOfFiniteType.mk",
+          "AlgebraicGeometry.IsAffineOpen"
+        ]
+      }
+    },
+    "01K3": {
+      "title": "Quasi-compact morphisms",
+      "declarations": [
+        "AlgebraicGeometry.QuasiCompact"
+      ],
+      "uses": {
+        "01IJ": [
+          "AlgebraicGeometry.QuasiCompact",
+          "AlgebraicGeometry.Scheme"
+        ],
+        "005A": [
+          "AlgebraicGeometry.QuasiCompact",
+          "AlgebraicGeometry.QuasiCompact.mk",
+          "IsCompact"
+        ]
+      }
+    },
+    "01IO": {
+      "title": "Open and closed immersions",
+      "declarations": [
+        "AlgebraicGeometry.IsOpenImmersion",
+        "AlgebraicGeometry.IsClosedImmersion"
+      ],
+      "uses": {
+        "01IJ": [
+          "AlgebraicGeometry.IsOpenImmersion",
+          "AlgebraicGeometry.Scheme"
+        ]
+      }
+    },
+    "01IK": {
+      "title": "Open subschemes",
+      "declarations": [
+        "AlgebraicGeometry.Scheme.Opens.toScheme"
+      ],
+      "uses": {
+        "001V": [
+          "AlgebraicGeometry.Scheme.Opens.toScheme",
+          "AlgebraicGeometry.Scheme.restrict",
+          "AlgebraicGeometry.PresheafedSpace.IsOpenImmersion.toScheme",
+          "AlgebraicGeometry.PresheafedSpace.IsOpenImmersion.toScheme._proof_1",
+          "CategoryTheory.Limits.pullback"
+        ],
+        "01IO": [
+          "AlgebraicGeometry.Scheme.Opens.toScheme",
+          "AlgebraicGeometry.Scheme.restrict",
+          "AlgebraicGeometry.PresheafedSpace.IsOpenImmersion.toScheme",
+          "AlgebraicGeometry.PresheafedSpace.IsOpenImmersion.toScheme._proof_1",
+          "AlgebraicGeometry.IsOpenImmersion"
+        ]
+      }
+    },
+    "01HW": {
+      "title": "Affine scheme",
+      "declarations": [
+        "AlgebraicGeometry.IsAffine"
+      ],
+      "uses": {
+        "01IJ": [
+          "AlgebraicGeometry.IsAffine",
+          "AlgebraicGeometry.Scheme"
+        ],
+        "005A": [
+          "AlgebraicGeometry.IsAffine",
+          "AlgebraicGeometry.IsAffine.mk",
+          "AlgebraicGeometry.Scheme.toSpecΓ",
+          "AlgebraicGeometry.ΓSpec.adjunction",
+          "AlgebraicGeometry.ΓSpec.locallyRingedSpaceAdjunction",
+          "AlgebraicGeometry.LocallyRingedSpace.SpecΓIdentity",
+          "AlgebraicGeometry.isIso_toSpecΓ",
+          "AlgebraicGeometry.StructureSheaf.algebraMap_obj_top_bijective",
+          "AlgebraicGeometry.StructureSheaf.toOpenₗ_top_bijective",
+          "AlgebraicGeometry.StructureSheaf.instAwayObjOppositeOpensCarrierTopObjFunctorTypeIsSheafGrothendieckTopologyStructureSheafInTypeOpBasicOpenToOpenₗ",
+          "_private.Mathlib.AlgebraicGeometry.StructureSheaf.0.AlgebraicGeometry.StructureSheaf.toBasicOpenₗ_surjective",
+          "_private.Mathlib.AlgebraicGeometry.StructureSheaf.0.AlgebraicGeometry.StructureSheaf.exists_le_iSup_basicOpen_and_smul_eq_smul_and_eq_const",
+          "IsCompact"
+        ]
+      }
+    },
+    "01I7": {
+      "title": "Sheaf associated to a module",
+      "declarations": [
+        "AlgebraicGeometry.tilde",
+        "AlgebraicGeometry.instIsQuasicoherentOpensCarrierCarrierCommRingCatSpecTilde"
+      ],
+      "uses": {
+        "01BE": [
+          "AlgebraicGeometry.instIsQuasicoherentOpensCarrierCarrierCommRingCatSpecTilde",
+          "SheafOfModules.IsQuasicoherent"
+        ],
+        "01IJ": [
+          "AlgebraicGeometry.tilde",
+          "AlgebraicGeometry.Spec",
+          "AlgebraicGeometry.Scheme"
+        ],
+        "005A": [
+          "AlgebraicGeometry.instIsQuasicoherentOpensCarrierCarrierCommRingCatSpecTilde",
+          "AlgebraicGeometry.presentationTilde",
+          "AlgebraicGeometry.presentationTilde._proof_13",
+          "AlgebraicGeometry.instIsLeftAdjointModuleCatCarrierModulesSpecFunctor",
+          "AlgebraicGeometry.tilde.adjunction",
+          "AlgebraicGeometry.tilde.adjunction._proof_1",
+          "AlgebraicGeometry.tilde.instAwayCarrierCarrierObjOppositeOpensCarrierCarrierCommRingCatSpecModuleCatPresheafModulesSheafModulesSpecToSheafOpBasicOpenHomToOpen",
+          "AlgebraicGeometry.StructureSheaf.instAwayObjOppositeOpensCarrierTopObjFunctorTypeIsSheafGrothendieckTopologyStructureSheafInTypeOpBasicOpenToOpenₗ",
+          "_private.Mathlib.AlgebraicGeometry.StructureSheaf.0.AlgebraicGeometry.StructureSheaf.toBasicOpenₗ_surjective",
+          "_private.Mathlib.AlgebraicGeometry.StructureSheaf.0.AlgebraicGeometry.StructureSheaf.exists_le_iSup_basicOpen_and_smul_eq_smul_and_eq_const",
+          "IsCompact"
+        ]
+      }
+    },
+    "01BE": {
+      "title": "Quasi-coherent modules",
+      "declarations": [
+        "SheafOfModules.IsQuasicoherent"
+      ],
+      "uses": {
+        "01AM": [
+          "SheafOfModules.IsQuasicoherent",
+          "SheafOfModules.IsQuasicoherent.mk",
+          "SheafOfModules.QuasicoherentData",
+          "SheafOfModules.QuasicoherentData.mk",
+          "SheafOfModules.Presentation",
+          "SheafOfModules.Presentation.mk",
+          "SheafOfModules.GeneratingSections"
+        ],
+        "002U": [
+          "SheafOfModules.IsQuasicoherent",
+          "SheafOfModules.IsQuasicoherent.mk",
+          "SheafOfModules.QuasicoherentData",
+          "SheafOfModules.QuasicoherentData.mk",
+          "CategoryTheory.Sheaf.over",
+          "CategoryTheory.GrothendieckTopology.overPullback",
+          "CategoryTheory.Functor.sheafPushforwardContinuous",
+          "CategoryTheory.Functor.op_comp_isSheaf",
+          "CategoryTheory.Functor.op_comp_isSheaf_of_types",
+          "_private.Mathlib.CategoryTheory.Sites.Continuous.0.CategoryTheory.Functor.isSheaf_of_isContinuous_aux",
+          "CategoryTheory.Limits.Types.hasColimit",
+          "CategoryTheory.Limits.Types.hasColimit_iff_small_colimitType",
+          "CategoryTheory.Limits.Types.colimitCocone"
+        ],
+        "007X": [
+          "SheafOfModules.IsQuasicoherent",
+          "SheafOfModules.IsQuasicoherent.mk",
+          "SheafOfModules.QuasicoherentData",
+          "SheafOfModules.QuasicoherentData.mk",
+          "CategoryTheory.Sheaf.over",
+          "CategoryTheory.GrothendieckTopology.overPullback",
+          "CategoryTheory.Functor.sheafPushforwardContinuous",
+          "CategoryTheory.Functor.op_comp_isSheaf",
+          "CategoryTheory.Functor.op_comp_isSheaf_of_types",
+          "_private.Mathlib.CategoryTheory.Sites.Continuous.0.CategoryTheory.Functor.isSheaf_of_isContinuous_aux",
+          "CategoryTheory.GrothendieckTopology.instPreservesSheafification",
+          "CategoryTheory.plusPlusSheaf",
+          "CategoryTheory.GrothendieckTopology.sheafify"
+        ],
+        "04AX": [
+          "SheafOfModules.IsQuasicoherent",
+          "SheafOfModules.IsQuasicoherent.mk",
+          "SheafOfModules.QuasicoherentData",
+          "SheafOfModules.QuasicoherentData.mk",
+          "CategoryTheory.Sheaf.over",
+          "CategoryTheory.GrothendieckTopology.overPullback",
+          "CategoryTheory.Functor.sheafPushforwardContinuous",
+          "CategoryTheory.Functor.op_comp_isSheaf",
+          "CategoryTheory.Functor.op_comp_isSheaf_of_types",
+          "_private.Mathlib.CategoryTheory.Sites.Continuous.0.CategoryTheory.Functor.isSheaf_of_isContinuous_aux",
+          "CategoryTheory.GrothendieckTopology.instPreservesSheafification",
+          "CategoryTheory.plusPlusSheaf",
+          "CategoryTheory.GrothendieckTopology.sheafify_isSheaf",
+          "CategoryTheory.GrothendieckTopology.Plus.isSheaf_plus_plus",
+          "CategoryTheory.GrothendieckTopology.Plus.sep",
+          "CategoryTheory.GrothendieckTopology.Plus.eq_mk_iff_exists",
+          "CategoryTheory.isFiltered_op_of_isCofiltered",
+          "CategoryTheory.IsFiltered"
+        ]
+      }
+    },
+    "01B5": {
+      "title": "Modules of finite type",
+      "declarations": [
+        "SheafOfModules.IsFiniteType"
+      ],
+      "uses": {
+        "01B2": [
+          "SheafOfModules.IsFiniteType",
+          "SheafOfModules.IsFiniteType.mk",
+          "SheafOfModules.LocalGeneratorsData"
+        ]
+      }
+    },
+    "01AM": {
+      "title": "Generating sections",
+      "declarations": [
+        "SheafOfModules.GeneratingSections"
+      ],
+      "uses": {
+        "0077": [
+          "SheafOfModules.GeneratingSections",
+          "SheafOfModules"
+        ],
+        "002F": [
+          "SheafOfModules.GeneratingSections",
+          "SheafOfModules.GeneratingSections.mk",
+          "SheafOfModules.free",
+          "CategoryTheory.Limits.sigmaObj",
+          "CategoryTheory.Limits.colimit"
+        ],
+        "001V": [
+          "SheafOfModules.GeneratingSections",
+          "SheafOfModules.GeneratingSections.mk",
+          "SheafOfModules.free",
+          "SheafOfModules.free._proof_1",
+          "SheafOfModules.instHasColimitsOfShapeOfPresheafOfModulesObjFunctorOppositeRingCatIsSheaf",
+          "PresheafOfModules.instIsIsoFunctorSheafOfModulesCounitSheafificationAdjunction",
+          "PresheafOfModules.instReflectsIsomorphismsSheafOfModulesSheafAddCommGrpCatToSheaf",
+          "_private.Mathlib.Algebra.Category.ModuleCat.Presheaf.Sheafification.0.PresheafOfModules.instReflectsIsomorphismsSheafOfModulesSheafAddCommGrpCatToSheaf._proof_1",
+          "PresheafOfModules.instIsNormalMonoCategory",
+          "CategoryTheory.Abelian.isLimitMapConeOfKernelForkOfι",
+          "CategoryTheory.Abelian.monoIsKernelOfCokernel",
+          "CategoryTheory.NonPreadditiveAbelian.monoIsKernelOfCokernel",
+          "CategoryTheory.NonPreadditiveAbelian.isIso_factorThruImage",
+          "CategoryTheory.NonPreadditiveAbelian.instEpiFactorThruImage",
+          "CategoryTheory.NormalMonoCategory.epi_of_zero_cancel",
+          "CategoryTheory.NormalMonoCategory.epi_of_zero_cokernel",
+          "CategoryTheory.NormalMonoCategory.hasEqualizers",
+          "CategoryTheory.NormalMonoCategory.hasLimit_parallelPair",
+          "CategoryTheory.Limits.pullback"
+        ]
+      }
+    },
+    "01B2": {
+      "title": "Locally generated modules",
+      "declarations": [
+        "SheafOfModules.LocalGeneratorsData"
+      ],
+      "uses": {
+        "01AM": [
+          "SheafOfModules.LocalGeneratorsData",
+          "SheafOfModules.LocalGeneratorsData.mk",
+          "SheafOfModules.GeneratingSections"
+        ],
+        "002U": [
+          "SheafOfModules.LocalGeneratorsData",
+          "SheafOfModules.LocalGeneratorsData.mk",
+          "CategoryTheory.Sheaf.over",
+          "CategoryTheory.GrothendieckTopology.overPullback",
+          "CategoryTheory.Functor.sheafPushforwardContinuous",
+          "CategoryTheory.Functor.op_comp_isSheaf",
+          "CategoryTheory.Functor.op_comp_isSheaf_of_types",
+          "_private.Mathlib.CategoryTheory.Sites.Continuous.0.CategoryTheory.Functor.isSheaf_of_isContinuous_aux",
+          "CategoryTheory.Limits.Types.hasColimit",
+          "CategoryTheory.Limits.Types.hasColimit_iff_small_colimitType",
+          "CategoryTheory.Limits.Types.colimitCocone"
+        ],
+        "007X": [
+          "SheafOfModules.LocalGeneratorsData",
+          "SheafOfModules.LocalGeneratorsData.mk",
+          "CategoryTheory.Sheaf.over",
+          "CategoryTheory.GrothendieckTopology.overPullback",
+          "CategoryTheory.Functor.sheafPushforwardContinuous",
+          "CategoryTheory.Functor.op_comp_isSheaf",
+          "CategoryTheory.Functor.op_comp_isSheaf_of_types",
+          "_private.Mathlib.CategoryTheory.Sites.Continuous.0.CategoryTheory.Functor.isSheaf_of_isContinuous_aux",
+          "CategoryTheory.GrothendieckTopology.instPreservesSheafification",
+          "CategoryTheory.plusPlusSheaf",
+          "CategoryTheory.GrothendieckTopology.sheafify"
+        ],
+        "04AX": [
+          "SheafOfModules.LocalGeneratorsData",
+          "SheafOfModules.LocalGeneratorsData.mk",
+          "CategoryTheory.Sheaf.over",
+          "CategoryTheory.GrothendieckTopology.overPullback",
+          "CategoryTheory.Functor.sheafPushforwardContinuous",
+          "CategoryTheory.Functor.op_comp_isSheaf",
+          "CategoryTheory.Functor.op_comp_isSheaf_of_types",
+          "_private.Mathlib.CategoryTheory.Sites.Continuous.0.CategoryTheory.Functor.isSheaf_of_isContinuous_aux",
+          "CategoryTheory.GrothendieckTopology.instPreservesSheafification",
+          "CategoryTheory.plusPlusSheaf",
+          "CategoryTheory.GrothendieckTopology.sheafify_isSheaf",
+          "CategoryTheory.GrothendieckTopology.Plus.isSheaf_plus_plus",
+          "CategoryTheory.GrothendieckTopology.Plus.sep",
+          "CategoryTheory.GrothendieckTopology.Plus.eq_mk_iff_exists",
+          "CategoryTheory.isFiltered_op_of_isCofiltered",
+          "CategoryTheory.IsFiltered"
+        ]
+      }
+    },
+    "0077": {
+      "title": "Sheaves of modules",
+      "declarations": [
+        "SheafOfModules"
+      ],
+      "uses": {
+        "006Q": [
+          "SheafOfModules",
+          "SheafOfModules.mk",
+          "PresheafOfModules"
+        ]
+      }
+    },
+    "006Q": {
+      "title": "Presheaves of modules",
+      "declarations": [
+        "PresheafOfModules"
+      ],
+      "uses": {
+        "001B": [
+          "PresheafOfModules",
+          "CategoryTheory.Functor"
+        ],
+        "001M": [
+          "PresheafOfModules",
+          "CategoryTheory.Category.opposite"
+        ],
+        "0017": [
+          "PresheafOfModules",
+          "PresheafOfModules.mk",
+          "ModuleCat.restrictScalarsComp'",
+          "CategoryTheory.Iso"
+        ]
+      }
+    },
+    "01LH": {
+      "title": "Relative gluing",
+      "declarations": [
+        "AlgebraicGeometry.Scheme.Cover.RelativeGluingData.glued"
+      ],
+      "uses": {
+        "01JM": [
+          "AlgebraicGeometry.Scheme.Cover.RelativeGluingData.glued",
+          "AlgebraicGeometry.Scheme.Cover.RelativeGluingData.glued._proof_1",
+          "AlgebraicGeometry.Scheme.Cover.RelativeGluingData.instIsLocallyDirectedI₀CompFunctorForgetOfIsThin",
+          "AlgebraicGeometry.instUniversallyInjectiveOfMonoScheme",
+          "AlgebraicGeometry.UniversallyInjective.iff_diagonal",
+          "AlgebraicGeometry.Scheme.Pullback.instHasPullbacks"
+        ],
+        "00HB": [
+          "AlgebraicGeometry.Scheme.Cover.RelativeGluingData.glued",
+          "AlgebraicGeometry.Scheme.Cover.RelativeGluingData.glued._proof_1",
+          "AlgebraicGeometry.Scheme.Cover.RelativeGluingData.instIsLocallyDirectedI₀CompFunctorForgetOfIsThin",
+          "AlgebraicGeometry.Scheme.Cover.instIsLocallyDirectedI₀CompFunctorOfLocallyDirectedForget",
+          "AlgebraicGeometry.Scheme.Pullback.exists_preimage_pullback",
+          "AlgebraicGeometry.Scheme.Pullback.Triplet.exists_preimage",
+          "AlgebraicGeometry.Scheme.Pullback.Triplet.instNontrivialCarrierTensor",
+          "CommRingCat.nontrivial_of_isPushout_of_isField",
+          "Module.FaithfullyFlat.instOfNontrivialOfFree",
+          "Module.FaithfullyFlat.of_linearEquiv",
+          "Module.Flat"
+        ],
+        "01IR": [
+          "AlgebraicGeometry.Scheme.Cover.RelativeGluingData.glued",
+          "AlgebraicGeometry.Scheme.Cover.RelativeGluingData.glued._proof_1",
+          "AlgebraicGeometry.Scheme.Cover.RelativeGluingData.instIsLocallyDirectedI₀CompFunctorForgetOfIsThin",
+          "AlgebraicGeometry.Scheme.Cover.instIsLocallyDirectedI₀CompFunctorOfLocallyDirectedForget",
+          "AlgebraicGeometry.Scheme.Pullback.exists_preimage_pullback",
+          "AlgebraicGeometry.Scheme.Pullback.Triplet.exists_preimage",
+          "AlgebraicGeometry.Scheme.Pullback.carrierEquiv_symm_fst",
+          "AlgebraicGeometry.Scheme.Pullback.Triplet.fst_SpecTensorTo_apply",
+          "AlgebraicGeometry.Scheme.fromSpecResidueField",
+          "AlgebraicGeometry.Scheme.fromSpecStalk",
+          "AlgebraicGeometry.IsAffineOpen.fromSpecStalk",
+          "AlgebraicGeometry.IsAffineOpen"
+        ],
+        "004K": [
+          "AlgebraicGeometry.Scheme.Cover.RelativeGluingData.glued",
+          "AlgebraicGeometry.Scheme.Cover.RelativeGluingData.glued._proof_1",
+          "AlgebraicGeometry.Scheme.Cover.RelativeGluingData.instIsLocallyDirectedI₀CompFunctorForgetOfIsThin",
+          "AlgebraicGeometry.Scheme.Cover.instIsLocallyDirectedI₀CompFunctorOfLocallyDirectedForget",
+          "AlgebraicGeometry.Scheme.Pullback.exists_preimage_pullback",
+          "AlgebraicGeometry.Scheme.Pullback.Triplet.exists_preimage",
+          "AlgebraicGeometry.Scheme.Pullback.carrierEquiv",
+          "AlgebraicGeometry.Scheme.Pullback.carrierEquiv._proof_5",
+          "AlgebraicGeometry.Scheme.Pullback.Triplet.Spec_ofPointTensor_SpecTensorTo",
+          "AlgebraicGeometry.Scheme.instIsPreimmersionFromSpecResidueField",
+          "AlgebraicGeometry.Scheme.instIsPreimmersionMapResidue",
+          "AlgebraicGeometry.IsPreimmersion.mk_SpecMap",
+          "AlgebraicGeometry.IsPreimmersion.SpecMap_iff",
+          "AlgebraicGeometry.SurjectiveOnStalks.instHasRingHomPropertySurjectiveOnStalks",
+          "AlgebraicGeometry.HasRingHomProperty.stalkwise",
+          "AlgebraicGeometry.HasRingHomProperty.of_isZariskiLocalAtSource_of_isZariskiLocalAtTarget",
+          "AlgebraicGeometry.HasRingHomProperty.instIsZariskiLocalAtTarget",
+          "AlgebraicGeometry.HasAffineProperty.instIsZariskiLocalAtTarget",
+          "AlgebraicGeometry.Scheme.openCoverOfIsOpenCover",
+          "TopologicalSpace.IsOpenCover"
+        ]
+      }
+    },
+    "01NN": {
+      "title": "Graded algebra for relative Proj",
+      "declarations": [
+        "Stacks.AlgebraicGeometry.RelativeProjBridge.SheafGradedAlgebra"
+      ],
+      "uses": {
+        "01IJ": [
+          "Stacks.AlgebraicGeometry.RelativeProjBridge.SheafGradedAlgebra",
+          "AlgebraicGeometry.Scheme"
+        ],
+        "01BE": [
+          "Stacks.AlgebraicGeometry.RelativeProjBridge.SheafGradedAlgebra",
+          "SheafOfModules.IsQuasicoherent"
+        ]
+      }
+    },
+    "01NQ": {
+      "title": "Relative Proj",
+      "declarations": [
+        "Stacks.AlgebraicGeometry.RelativeProj.relativeProj"
+      ],
+      "uses": {
+        "01LH": [
+          "Stacks.AlgebraicGeometry.RelativeProj.relativeProj",
+          "AlgebraicGeometry.Scheme.Cover.RelativeGluingData.glued"
+        ],
+        "01NO": [
+          "Stacks.AlgebraicGeometry.RelativeProj.relativeProj",
+          "Stacks.AlgebraicGeometry.RelativeProj.projInclusionDomain_eq_top"
+        ]
+      }
+    },
+    "01NO": {
+      "title": "The affine charts of relative Proj",
+      "declarations": [
+        "Stacks.AlgebraicGeometry.RelativeProj.projInclusionDomain_eq_top"
+      ],
+      "uses": {
+        "01MY": [
+          "Stacks.AlgebraicGeometry.RelativeProj.projInclusionDomain_eq_top",
+          "Stacks.AlgebraicGeometry.ProjShared.mapDomain"
+        ],
+        "01NN": [
+          "Stacks.AlgebraicGeometry.RelativeProj.projInclusionDomain_eq_top",
+          "Stacks.AlgebraicGeometry.RelativeProjBridge.SheafGradedAlgebra"
+        ]
+      }
+    },
+    "01MY": {
+      "title": "Functoriality of Proj",
+      "declarations": [
+        "Stacks.AlgebraicGeometry.ProjShared.mapDomain"
+      ],
+      "uses": {
+        "01MB": [
+          "Stacks.AlgebraicGeometry.ProjShared.mapDomain",
+          "AlgebraicGeometry.Proj"
+        ]
+      }
+    },
+    "01CK": {
+      "title": "Symmetric powers and quasi-coherence",
+      "declarations": [
+        "Stacks.SymGraded.isQuasicoherentPieces_of_isQuasicoherent"
+      ],
+      "uses": {
+        "01IK": [
+          "Stacks.SymGraded.isQuasicoherentPieces_of_isQuasicoherent",
+          "AlgebraicGeometry.Scheme.Opens.toScheme"
+        ],
+        "01I7": [
+          "Stacks.SymGraded.isQuasicoherentPieces_of_isQuasicoherent",
+          "AlgebraicGeometry.instIsQuasicoherentOpensCarrierCarrierCommRingCatSpecTilde"
+        ]
+      }
+    },
+    "01W9": {
+      "title": "H-projective implies projective",
+      "declarations": [
+        "AlgebraicGeometry.IsProjectiveMorphism.isProjective"
+      ],
+      "uses": {
+        "01W8": [
+          "AlgebraicGeometry.IsProjectiveMorphism.isProjective",
+          "AlgebraicGeometry.IsProjective"
+        ],
+        "01OE": [
+          "AlgebraicGeometry.IsProjectiveMorphism.isProjective",
+          "Stacks.SymGraded.projectiveBundleIsoProjectiveSpace"
+        ]
+      }
+    },
+    "005A": {
+      "title": "Quasi-compact spaces",
+      "declarations": [
+        "IsCompact"
+      ],
+      "uses": {}
+    },
+    "002U": {
+      "title": "Colimits of sets",
+      "declarations": [
+        "CategoryTheory.Limits.Types.colimitCocone"
+      ],
+      "uses": {
+        "001B": [
+          "CategoryTheory.Limits.Types.colimitCocone",
+          "CategoryTheory.Functor"
+        ]
+      }
+    },
+    "04AX": {
+      "title": "Filtered colimits",
+      "declarations": [
+        "CategoryTheory.IsFiltered"
+      ],
+      "uses": {
+        "0014": [
+          "CategoryTheory.IsFiltered",
+          "CategoryTheory.Category"
+        ]
+      }
+    },
+    "006M": {
+      "title": "Presheaves of algebraic structures",
+      "declarations": [
+        "AlgebraicGeometry.PresheafedSpace"
+      ],
+      "uses": {
+        "006E": [
+          "AlgebraicGeometry.PresheafedSpace",
+          "AlgebraicGeometry.PresheafedSpace.mk",
+          "TopCat.Presheaf"
+        ]
+      }
+    },
+    "0071": {
+      "title": "Sheaves of algebraic structures",
+      "declarations": [
+        "TopCat.Sheaf"
+      ],
+      "uses": {
+        "001B": [
+          "TopCat.Sheaf",
+          "CategoryTheory.Sheaf",
+          "CategoryTheory.Functor"
+        ],
+        "001M": [
+          "TopCat.Sheaf",
+          "CategoryTheory.Sheaf",
+          "CategoryTheory.Category.opposite"
+        ]
+      }
+    },
+    "007X": {
+      "title": "Sheafification",
+      "declarations": [
+        "CategoryTheory.GrothendieckTopology.sheafify"
+      ],
+      "uses": {
+        "001M": [
+          "CategoryTheory.GrothendieckTopology.sheafify",
+          "CategoryTheory.Category.opposite"
+        ],
+        "002F": [
+          "CategoryTheory.GrothendieckTopology.sheafify",
+          "CategoryTheory.GrothendieckTopology.plusObj",
+          "CategoryTheory.Limits.colimit"
+        ],
+        "0017": [
+          "CategoryTheory.GrothendieckTopology.sheafify",
+          "CategoryTheory.GrothendieckTopology.plusObj",
+          "CategoryTheory.GrothendieckTopology.plusObj._proof_2",
+          "CategoryTheory.Iso"
+        ],
+        "002E": [
+          "CategoryTheory.GrothendieckTopology.sheafify",
+          "CategoryTheory.GrothendieckTopology.plusObj",
+          "CategoryTheory.GrothendieckTopology.plusObj._proof_2",
+          "CategoryTheory.Limits.multiequalizer",
+          "CategoryTheory.Limits.limit"
+        ]
+      }
+    },
+    "008C": {
+      "title": "Pushforward of presheaves",
+      "declarations": [
+        "TopCat.Presheaf.pushforward"
+      ],
+      "uses": {
+        "006E": [
+          "TopCat.Presheaf.pushforward",
+          "TopCat.Presheaf"
+        ]
+      }
+    },
+    "00E0": {
+      "title": "Standard opens form a basis",
+      "declarations": [
+        "PrimeSpectrum.isBasis_basic_opens"
+      ],
+      "uses": {
+        "004O": [
+          "PrimeSpectrum.isBasis_basic_opens",
+          "TopologicalSpace.IsTopologicalBasis"
+        ],
+        "00E1": [
+          "PrimeSpectrum.isBasis_basic_opens",
+          "PrimeSpectrum.zariskiTopology"
+        ]
+      }
+    },
+    "02C5": {
+      "title": "Localization at a prime",
+      "declarations": [
+        "Localization.AtPrime"
+      ],
+      "uses": {}
+    },
+    "00F3": {
+      "title": "Ring maps of finite type",
+      "declarations": [
+        "RingHom.FiniteType"
+      ],
+      "uses": {}
+    },
+    "00HB": {
+      "title": "Flat modules",
+      "declarations": [
+        "Module.Flat"
+      ],
+      "uses": {
+        "0517": [
+          "Module.Flat",
+          "Module.Flat.mk",
+          "Module.Finite"
+        ],
+        "00CV": [
+          "Module.Flat",
+          "Module.Flat.mk",
+          "TensorProduct"
+        ]
+      }
+    },
+    "00CV": {
+      "title": "Tensor products",
+      "declarations": [
+        "TensorProduct"
+      ],
+      "uses": {}
+    },
+    "0517": {
+      "title": "Finite modules",
+      "declarations": [
+        "Module.Finite"
+      ],
+      "uses": {}
+    },
+    "01IR": {
+      "title": "Affine opens and open covers of schemes",
+      "declarations": [
+        "AlgebraicGeometry.IsAffineOpen"
+      ],
+      "uses": {
+        "01HW": [
+          "AlgebraicGeometry.IsAffineOpen",
+          "AlgebraicGeometry.IsAffine"
+        ],
+        "01IK": [
+          "AlgebraicGeometry.IsAffineOpen",
+          "AlgebraicGeometry.Scheme.Opens.toScheme"
+        ]
+      }
+    },
+    "01JY": {
+      "title": "Base change of open immersions",
+      "declarations": [
+        "AlgebraicGeometry.isOpenImmersion_stableUnderBaseChange"
+      ],
+      "uses": {
+        "001V": [
+          "AlgebraicGeometry.isOpenImmersion_stableUnderBaseChange",
+          "CategoryTheory.Limits.pullback"
+        ],
+        "01IO": [
+          "AlgebraicGeometry.isOpenImmersion_stableUnderBaseChange",
+          "AlgebraicGeometry.IsOpenImmersion"
+        ]
+      }
     }
   }
 }

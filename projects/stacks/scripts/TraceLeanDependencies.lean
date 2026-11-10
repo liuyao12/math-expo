@@ -5,12 +5,13 @@ open Lean
 /-- Export the closure of an elaborated declaration, including generated constructors
 and constants in types, bodies, and proofs. One JSON record per declaration. -/
 def main (args : List String) : IO Unit := do
-  let moduleName :: roots := args
-    | throw (IO.userError "Usage: lean --run TraceLeanDependencies.lean MODULE DECLARATION ...")
+  let modules :: roots := args
+    | throw (IO.userError "Usage: lean --run TraceLeanDependencies.lean MODULE[,MODULE...] DECLARATION ...")
   if roots.isEmpty then
     throw (IO.userError "Specify at least one root declaration")
   initSearchPath (← findSysroot)
-  let env ← importModules #[{ module := moduleName.toName }] {} (level := .private)
+  let imports : Array Import := (modules.splitOn ",").toArray.map fun name => { module := name.toName }
+  let env ← importModules imports {} (level := .private)
   let output ← IO.getStdout
   let mut queue := roots.map String.toName |>.toArray
   let mut seen : NameSet := .ofList queue.toList

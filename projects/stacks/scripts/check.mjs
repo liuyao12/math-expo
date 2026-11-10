@@ -5,6 +5,7 @@ import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import {escapeHTML,createRenderer} from '../src/latex.mjs';
 import {notesFor,noteTags} from '../src/scheme-notes.mjs';
+import {createLeanSchemeGraph} from '../src/lean-scheme-graph.mjs';
 import {loadReadingCatalog,loadReadings,loadReferenceReadings,assembleReading} from '../src/readings.mjs';
 import assert from 'node:assert/strict';
 import {examples} from '../src/matches.mjs';
@@ -84,6 +85,7 @@ for(const tag of ['01II','00JL','00JM','01BD','01M3','01ND','020C','04L0']){
 const selectedTags=new Set();
 const reports=JSON.parse(fs.readFileSync(path.join(root,'upstream/dependency-audit.json'),'utf8')).readings;
 const referencesByTag=new Map(Object.values(catalog.references).map(ref=>[ref.tag,ref]));
+const leanTrace=JSON.parse(fs.readFileSync(path.join(root,'upstream/lean-scheme-graph.json'),'utf8'));
 for(const reading of selectedReadings){
  for(const section of reading.sections){
   assert(!selectedTags.has(section.tag),'Selected readings must link back rather than repeat a section: '+section.tag);
@@ -92,11 +94,14 @@ for(const reading of selectedReadings){
  const page=fs.readFileSync(path.join(dist,reading.slug,'index.html'),'utf8');
  if(reading!==coreReading)assert(page.includes('href="../scheme/#01MB"'),'Later dependency graphs link to the relocated Proj proof');
  const report=reports[reading.slug],local=new Set(reading.sections.map(s=>s.tag));
+ const lean=report.method==='lean'?createLeanSchemeGraph(catalog,reading,leanTrace):null;
  const expected=report.required_tags.filter(tag=>local.has(report.passages[tag].section)&&!['item','equation'].includes(referencesByTag.get(tag).kind));
+ const sectionTriggers=[...(lean?.sectionTriggers||[])];
+ expected.push(...sectionTriggers);
  const marks=[...page.matchAll(/<button type="button" class="dependency-number" data-dependency-tag="([^"]+)"[^>]*>([^<]+)<\/button>/g)];
  assert(!/<a\b[^>]*data-dependency-tag=/.test(page),'Dependency controls cannot navigate away');
  assert.deepEqual(marks.map(m=>m[1]).sort(),expected.sort(),'Highlight exactly the audited headings in '+reading.slug);
- assert.deepEqual(new Set(expected.map(tag=>report.passages[tag].section)),local,'Every selected section has an audited highlight');
+ assert.deepEqual(new Set(expected.map(tag=>report.passages[tag]?.section||tag)),local,'Every selected section has an audited highlight');
  for(const [,tag,label] of marks){
   const {kind,number}=referencesByTag.get(tag);
   assert.equal(label,kind==='section'?`§${number}`:kind[0].toUpperCase()+kind.slice(1)+' '+number);
@@ -105,13 +110,18 @@ for(const reading of selectedReadings){
  const graphLabel=tag=>inset.match(new RegExp(`data-tag="${tag}"[^>]*aria-label="([^"]+)"`))?.[1];
  assert.match(graphLabel('004K'),/^Item 13 · Open covering(?: · |$)/,'A tagged item names its own term');
  const nodes=[...inset.matchAll(/<a id="inset-([^"]+)"[^>]*class="dependency-node([^"]*)" href="([^"]+)"/g)];
- assert.deepEqual(nodes.map(match=>match[1]).sort(),[...report.required_tags].sort(),'The shared inset includes every audited passage');
+ assert.deepEqual(nodes.map(match=>match[1]).sort(),(lean?Object.keys(lean.nodes):[...report.required_tags]).sort(),'The shared inset includes every audited passage');
  assert.deepEqual(nodes.filter(match=>match[2].includes('dependency-target')).map(match=>match[1]),[reading.target]);
  const links=new Map(nodes.map(([,tag,,href])=>[tag,href]));
  const arrows=[...inset.matchAll(/<line data-from="([^"]+)" data-to="([^"]+)"/g)];
  const edges=new Set(arrows.map(([,from,to])=>`${from}:${to}`));
  const frames=new Set([...inset.matchAll(/data-graph-cluster="([^"]+)" transform=/g)].map(match=>match[1]));
  assert(arrows.every(([,from,to])=>!frames.has(from)&&!frames.has(to)),'Section frames used only for grouping have no arrows');
+ if(lean){
+  const expectedEdges=Object.entries(leanTrace.nodes).flatMap(([tag,node])=>Object.keys(node.uses).map(used=>`${used}:${tag}`));
+  assert.deepEqual(edges,new Set(expectedEdges),'The inset shows exactly the Lean dependencies');
+  for(const tag of Object.keys(lean.nodes))assert.equal(links.get(tag),'#'+tag);
+ }
  for(const tag of report.required_tags){
   const parent=report.paths[tag].findLast(step=>!frames.has(step));
   if(parent&&!frames.has(tag))assert(edges.has(`${tag}:${parent}`),'The shared inset retains the audited route for '+tag);
