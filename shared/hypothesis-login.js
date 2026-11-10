@@ -110,7 +110,10 @@
       draftDialog.setAttribute('aria-labelledby', 'paragraph-draft-title');
       draftDialog.innerHTML = `
         <form>
-          <h2 id="paragraph-draft-title">Format a comment</h2>
+          <header class="paragraph-draft-header">
+            <h2 id="paragraph-draft-title">Format a comment</h2>
+            <span class="note-author">You</span>
+          </header>
           <label for="paragraph-draft-text">Your comment</label>
           <textarea id="paragraph-draft-text" rows="6" required></textarea>
           <p class="paragraph-draft-hint" aria-live="polite"></p>

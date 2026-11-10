@@ -67,6 +67,16 @@
   .comment-block:hover .paragraph-comment,
   .paragraph-comment:is(:hover, :focus-visible, .is-hovered) { opacity: 1; }
 }
+.note-author {
+  flex: none;
+  margin-inline-start: auto;
+  padding: .15em .45em;
+  border: 1px solid var(--line, #dcded2);
+  border-radius: .25em;
+  color: var(--green, #346352);
+  font: 11px/1.35 var(--sans, system-ui, sans-serif);
+  white-space: nowrap;
+}
 .paragraph-draft {
   box-sizing: border-box;
   width: min(30rem, calc(100% - 2rem));
@@ -77,6 +87,7 @@
   color: var(--ink, #2c302b);
 }
 .paragraph-draft::backdrop { background: #0005; }
+.paragraph-draft-header { display: flex; align-items: baseline; gap: .65rem; }
 .paragraph-draft h2 { margin: 0 0 1rem; font-size: 1.25rem; }
 .paragraph-draft label { display: block; margin-bottom: .35rem; }
 .paragraph-draft textarea {

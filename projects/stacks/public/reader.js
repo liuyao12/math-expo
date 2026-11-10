@@ -68,39 +68,6 @@
     const openCards=new Map();
     const tools=dock.querySelector('.example-sticky');
     const mobile=()=>matchMedia('(max-width:760px)').matches;
-    const editorialCards='[data-example-card]';
-    const hiddenEditorial=$('#hidden-editorial-examples');
-    const preference='math-expo:scheme:hidden-editorial-examples';
-    const hiddenCards=new Map();
-    let emptyExample;
-    if(hiddenEditorial){
-      try{
-        for(const [key,label] of JSON.parse(localStorage.getItem(preference)||'[]')){
-          if(typeof key==='string'&&typeof label==='string')hiddenCards.set(key,label);
-        }
-      }catch{}
-      emptyExample=document.createElement('p');
-      emptyExample.textContent='The examples for this passage are hidden. Open Contents and choose Restore examples.';
-      emptyExample.hidden=true;
-      exampleContent.after(emptyExample);
-    }
-    const decorateEditorial=(container,passageLabel)=>{
-      if(!hiddenEditorial)return;
-      for(const card of container.querySelectorAll(editorialCards)){
-        card.hidden=hiddenCards.has(card.dataset.exampleCard);
-        card.dataset.editorialLabel=card.querySelector('summary').textContent.trim()+' · '+passageLabel;
-        const hide=document.createElement('button');
-        hide.type='button';
-        hide.className='editorial-example-hide';
-        hide.textContent='Hide this example';
-        card.querySelector('.example-body').prepend(hide);
-      }
-    };
-    const updateEmptyExample=()=>{
-      if(!emptyExample)return;
-      const cards=[...exampleContent.querySelectorAll(editorialCards)];
-      emptyExample.hidden=!cards.length||cards.some(card=>!card.hidden);
-    };
     // Reserve room for every heading before sizing the scrollable body.
     const groupChrome=group=>[...group.children].reduce((height,child)=>{
         if(child.hidden)return height;
@@ -122,46 +89,6 @@
     const fitVisibleExamples=()=>{if(mobile()||dock.dataset.exampleLayout!=='anchored')fitPanel();else fitFloating();};
     const layoutExamples=()=>{layoutPending=false;layoutAnchors();fitVisibleExamples();};
     const scheduleExampleLayout=()=>{if(!layoutPending){layoutPending=true;requestAnimationFrame(layoutExamples);}};
-    if(hiddenEditorial){
-      const list=hiddenEditorial.querySelector('ul');
-      const refreshHiddenList=()=>{
-        hiddenEditorial.hidden=!hiddenCards.size;
-        list.replaceChildren(...[...hiddenCards].map(([key,label])=>{
-          const item=document.createElement('li'),restore=document.createElement('button');
-          restore.type='button';
-          restore.dataset.restoreEditorial=key;
-          restore.textContent='Restore '+label;
-          item.append(restore);
-          return item;
-        }));
-      };
-      const updateHiddenCards=()=>{
-        for(const card of dock.querySelectorAll(editorialCards))card.hidden=hiddenCards.has(card.dataset.exampleCard);
-        try{localStorage.setItem(preference,JSON.stringify([...hiddenCards]));}catch{}
-        refreshHiddenList();
-        updateEmptyExample();
-        scheduleExampleLayout();
-      };
-      dock.addEventListener('click',event=>{
-        const card=event.target.closest('.editorial-example-hide')?.closest(editorialCards);
-        if(!card)return;
-        hiddenCards.set(card.dataset.exampleCard,card.dataset.editorialLabel);
-        updateHiddenCards();
-        const target=card.parentElement.querySelector('details:not([hidden]) > summary');
-        if(target)target.focus({preventScroll:true});
-        else if(dock.classList.contains('is-open'))$('#close-example').focus();
-        else (outlineButton.getClientRects().length?outlineButton:hiddenEditorial.querySelector('summary')).focus({preventScroll:true});
-      });
-      list.addEventListener('click',event=>{
-        const restore=event.target.closest('[data-restore-editorial]');
-        if(!restore)return;
-        hiddenCards.delete(restore.dataset.restoreEditorial);
-        updateHiddenCards();
-        if(hiddenEditorial.hidden)hiddenEditorial.open=false;
-        (list.querySelector('button')||all).focus({preventScroll:true});
-      });
-      refreshHiddenList();
-    }
     if(dock.dataset.exampleLayout==='anchored'){
       const main=$('#main');
       const flow=document.createElement('div');
@@ -183,7 +110,6 @@
         link.textContent=anchor.dataset.sourceLabel||peg.textContent.trim();
         label.append(link);note.append(label);
         note.insertAdjacentHTML('beforeend',data[key].html);
-        decorateEditorial(note,link.textContent);
         band.append(note);
         return {anchor,peg,section:owner,band,note};
       }).filter(Boolean).sort((a,b)=>a.anchor.compareDocumentPosition(b.anchor)&Node.DOCUMENT_POSITION_FOLLOWING?-1:1);
@@ -204,12 +130,12 @@
           top:entry.peg.getBoundingClientRect().top,
           chrome:groupChrome(entry.note),
         }));
-        const titles=entry=>[...entry.note.querySelectorAll('.example-disclosure > summary')].map(summary=>summary.textContent.trim()).join('\n');
+        const titles=entry=>[...entry.note.querySelectorAll('.example-disclosure .example-title')].map(title=>title.textContent.trim()).join('\n');
         const visible=measured.filter((entry,index)=>{
           const next=measured[index+1];
           // Prefer the definition's group to an adjacent duplicate at its section introduction.
           const repeated=next&&entry.anchor===entry.section&&next.section===entry.section&&next.top-entry.top<entry.chrome+12&&titles(entry)===titles(next);
-          return !repeated&&(!hiddenEditorial||entry.note.querySelector('details.example-disclosure:not([hidden])'));
+          return !repeated;
         });
         const visibleBands=new Set(visible.map(({band})=>band));
         for(const {band} of notes)band.hidden=!visibleBands.has(band);
@@ -276,8 +202,6 @@
         for(const card of exampleContent.querySelectorAll('[data-example-card]'))openCards.set(card.dataset.exampleCard,card.open);
         exampleContent.innerHTML=html;
         renderedExampleHTML=html;
-        decorateEditorial(exampleContent,context?.dataset.sourceLabel||'');
-        updateEmptyExample();
         for(const card of exampleContent.querySelectorAll('[data-example-card]')){
           const open=openCards.get(card.dataset.exampleCard);
           if(open!==undefined)card.open=open;

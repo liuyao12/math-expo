@@ -37,14 +37,6 @@ html:has(.reader-layout){scroll-behavior:auto}
 
 @media print{.margin-reading-controls,.header-companion-toggle{display:none!important}}
 
-.editorial-example-hide { font: 12px/1.4 var(--sans); color: var(--green); background: transparent; border: 1px solid var(--line); padding: .35rem .6rem; }
-.hidden-editorial-examples { margin-top: .65rem; }
-.hidden-editorial-examples summary { cursor: pointer; }
-.hidden-editorial-examples ul { margin: .45rem 0 0; padding: 0; list-style: none; }
-.hidden-editorial-examples li + li { margin-top: .35rem; }
-.hidden-editorial-examples li button { width: 100%; text-align: left; }
-.editorial-example-hide { display: block; margin: 0 0 .65rem auto; }
-.example-disclosure[hidden] { display: none; }
 @media(max-width:760px) {
   .site-header { gap: 8px; }
 }

@@ -49,12 +49,13 @@ try{
    }
    const cards=group.locator(':scope > .example-disclosure'),count=await cards.count();assert(count>=1);
    if(tag==='005A'){
-    assert.equal(await cards.first().locator('summary').innerText(),'Non-example: usual topology');
-    assert.equal(await cards.last().locator('summary').innerText(),'Example: Zariski topology');
+    assert.equal(await cards.first().locator('.example-title').innerText(),'Non-example: usual topology');
+    assert.equal(await cards.last().locator('.example-title').innerText(),'Example: Zariski topology');
     assert((await cards.first().locator('.example-correction').textContent()).includes('Correction: Use the Zariski topology'));
    }
    for(let index=0;index<count;index++){
     const card=cards.nth(index),key=await card.getAttribute('data-example-card');
+    assert.equal(await card.locator('.note-author').innerText(),'Math Expo');
     if(!await card.evaluate(n=>n.open))await card.locator('summary').click();
     await settle(page);await assertExclusive(group,key);
     if(!compactGroup)await headingsVisible(group,page);
