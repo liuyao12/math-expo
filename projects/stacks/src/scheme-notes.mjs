@@ -85,7 +85,12 @@ A^{-1}=\frac{\operatorname{adj}(A)}{\det A}
   r`\(R=\{\text{holomorphic germs at }a\in\mathbb C\}\). A germ is a holomorphic function near \(a\), up to agreement on a smaller neighbourhood.`,
   r`Add and multiply after restricting to a common neighbourhood of \(a\).`,
   r`\(\mathfrak m=\{f\in R:f(a)=0\}\).`,
-  r`\(\kappa=R/\mathfrak m\cong\mathbb C\) by evaluation at \(a\).`
+  r`\(\kappa=R/\mathfrak m\cong\mathbb C\) by evaluation at \(a\).`,
+  r`Taylor expansion identifies the ring of holomorphic germs at \(a\) with the power series
+\[
+\sum_{n=0}^{\infty}c_n(z-a)^n
+\]
+that converge on some neighbourhood of \(a\).`
  ]},
  spectrum:model('crossing lines',[
   b('R',r`\mathbb C[x,y]/(xy)`),b('X',r`\operatorname{Spec}R`),
