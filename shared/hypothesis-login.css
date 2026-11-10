@@ -47,6 +47,36 @@
 .paragraph-comment::before { content: "+"; }
 .paragraph-comment:hover { text-decoration: underline; }
 .paragraph-comment:focus-visible { outline: 1px solid currentColor; }
+.paragraph-draft {
+  box-sizing: border-box;
+  width: min(30rem, calc(100% - 2rem));
+  max-height: calc(100% - 2rem);
+  padding: 1.25rem;
+  border: 1px solid var(--line, #dcded2);
+  background: var(--paper, #f8f6f0);
+  color: var(--ink, #2c302b);
+}
+.paragraph-draft::backdrop { background: #0005; }
+.paragraph-draft h2 { margin: 0 0 1rem; font-size: 1.25rem; }
+.paragraph-draft label { display: block; margin-bottom: .35rem; }
+.paragraph-draft textarea {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  padding: .5rem;
+  font: inherit;
+  resize: vertical;
+}
+.paragraph-draft-hint { font-size: .875rem; line-height: 1.5; margin: .75rem 0; }
+.paragraph-draft-actions { display: flex; flex-wrap: wrap; justify-content: end; gap: .5rem; }
+.paragraph-draft-actions button {
+  font: inherit;
+  color: var(--green, #346352);
+  background: transparent;
+  border: 1px solid var(--line, #dcded2);
+  padding: .4rem .65rem;
+  cursor: pointer;
+}
 @media print {
-  .reader-login, .reader-login-status, .paragraph-comment { display: none; }
+  .reader-login, .reader-login-status, .paragraph-comment, .paragraph-draft { display: none; }
 }
