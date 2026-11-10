@@ -81,13 +81,12 @@ M=\varinjlim_{U\ni a}\operatorname{Hol}(U),\\
  ],r`\[
 A^{-1}=\frac{\operatorname{adj}(A)}{\det A}
 \]`,'',r`Invert the determinant to make the universal matrix invertible.`),
- local:model('holomorphic local ring',[
-  b('R',r`\mathcal O^{\mathrm{an}}_{\mathbb C,a}\cong\mathbb C\{z-a\}`),
-  b(r`\mathfrak m`,r`(z-a)`),
-  b(r`\kappa`,r`\mathbb C`)
- ],r`\[
-h\in R^\times\iff h(a)\ne0
-\]`,'',r`The reciprocal exists on a smaller neighbourhood.`),
+ local:{...model('holomorphic germs',[],'',''),points:[
+  r`\(R=\{\text{holomorphic germs at }a\in\mathbb C\}\). A germ is a holomorphic function near \(a\), up to agreement on a smaller neighbourhood.`,
+  r`Add and multiply after restricting to a common neighbourhood of \(a\).`,
+  r`\(\mathfrak m=\{f\in R:f(a)=0\}\).`,
+  r`\(\kappa=R/\mathfrak m\cong\mathbb C\) by evaluation at \(a\).`
+ ]},
  spectrum:model('crossing lines',[
   b('R',r`\mathbb C[x,y]/(xy)`),b('X',r`\operatorname{Spec}R`),
   b(r`\mathfrak p`,r`(x-a,y-b),\quad ab=0`),
