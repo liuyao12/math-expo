@@ -39,11 +39,13 @@ try{
    if(!mobile){
     const overflowing=await page.locator('.example-band:not([hidden])').evaluateAll(bands=>bands.filter((band,index)=>{
      const anchor=document.getElementById(band.dataset.exampleAnchor);
-     const limit=anchor.querySelector(':scope > .source-body')||anchor;
-     const end=Math.min(limit.getBoundingClientRect().bottom,bands[index+1]?.getBoundingClientRect().top??Infinity);
+     const section=anchor.closest('.source-section');
+     const next=bands[index+1];
+     const nextAnchor=document.getElementById(next?.dataset.exampleAnchor);
+     const end=nextAnchor?.closest('.source-section')===section?next.getBoundingClientRect().top:section.getBoundingClientRect().bottom;
      return Math.abs(band.getBoundingClientRect().bottom-end)>1||band.firstElementChild.getBoundingClientRect().bottom>end+1;
     }).map(band=>band.dataset.exampleAnchor));
-    assert.deepEqual(overflowing,[],'Each example ends at its passage or the next example, whichever comes first');
+    assert.deepEqual(overflowing,[],'Each example ends at the next example in its section or the end of the section');
    }
    const cards=group.locator(':scope > .example-disclosure'),count=await cards.count();assert(count>=1);
    if(tag==='005A'){
@@ -114,17 +116,27 @@ try{
  assert(await motion.evaluate(band=>Math.abs(band.getBoundingClientRect().bottom-band.firstElementChild.getBoundingClientRect().bottom)<2),'A floating example moves off with the end of its band');
  const localization=page.locator('.example-band[data-example-anchor="localization-at-a-prime"]');
  await page.locator('#localization-at-a-prime').scrollIntoViewIfNeeded();await settle(page);
- const span=await localization.evaluate(band=>{
-  const {top,bottom}=band.getBoundingClientRect();
-  const body=document.querySelector('#localization-at-a-prime .source-body').getBoundingClientRect();
-  const following=document.getElementById('localization-at-a-prime').nextElementSibling.getBoundingClientRect();
-  return {start:top-body.top,end:bottom-body.bottom,following:following.bottom-bottom};
+ assert(await localization.evaluate(band=>Math.abs(band.getBoundingClientRect().top-document.getElementById('localization-at-a-prime').getBoundingClientRect().top)<2),'The localization card starts at its paragraph');
+ const overlap=page.locator('.example-band[data-example-anchor="01M4"]');
+ await overlap.evaluate(band=>{
+  const statement=document.getElementById('01M4').querySelector('.source-body');
+  const stickyTop=parseFloat(getComputedStyle(band.firstElementChild).top);
+  scrollBy(0,statement.getBoundingClientRect().bottom-stickyTop+80);
  });
- assert(Math.abs(span.start)<2&&Math.abs(span.end)<2&&span.following>10,'The localization card stops at its paragraph even with more text below');
- const compact=page.locator('.example-band[data-example-anchor="001N"] .is-compact');
+ await settle(page);
+ assert(await overlap.evaluate(band=>{
+  const statement=document.getElementById('01M4');
+  const card=band.firstElementChild;
+  const top=card.getBoundingClientRect().top;
+  return statement.querySelector('.source-body').getBoundingClientRect().bottom<top
+   &&Math.abs(top-parseFloat(getComputedStyle(card).top))<2
+   &&Math.abs(band.getBoundingClientRect().bottom-statement.closest('.source-section').getBoundingClientRect().bottom)<2;
+ }),'The projective chart example stays pinned after its lemma and can reach the end of the section');
+ await page.setViewportSize({width:1440,height:220});
+ const compact=overlap.locator('.is-compact');
  await compact.scrollIntoViewIfNeeded();await settle(page);
  await compact.evaluate(note=>note.scrollTop=note.scrollHeight);
- assert(await compact.evaluate(note=>note.scrollTop>0),'A short passage scrolls the card as a whole');
+ assert(await compact.evaluate(note=>note.scrollTop>0),'A short viewport scrolls the card as a whole');
  await page.close();assert.deepEqual(errors,[]);
  console.log('Shared accordion choices, source anchors, and absence of browser errors verified.');
 }finally{await browser.close();}

@@ -92,7 +92,7 @@
         const peg=section
           ?anchor.querySelector('.source-heading-row > :is(h2,h3)')||anchor
           :anchor.querySelector('.statement-heading')||anchor;
-        const limit=section?anchor:anchor.querySelector('.source-body')||anchor;
+        const limit=anchor.closest('.source-section')||anchor;
         const band=document.createElement('div');
         band.className='example-band';band.dataset.exampleAnchor=key;
         const note=document.createElement('div');
@@ -134,10 +134,11 @@
         for(const {band} of notes)band.hidden=!visibleBands.has(band);
         bands=visible.map((entry,index)=>{
           const {band,note,chrome}=entry;
-          const nextStart=visible[index+1]?.start??Infinity;
-          const height=Math.max(0,Math.min(entry.end,nextStart)-entry.start);
+          const next=visible[index+1];
+          const end=next?.limit===entry.limit?Math.min(entry.end,next.start):entry.end;
+          const height=Math.max(0,end-entry.start);
           const room=Math.min(height,available);
-          // Short passages scroll the whole card so headings cannot consume all its space.
+          // A short band or viewport scrolls the whole card.
           const compact=room-chrome<32;
           note.classList.toggle('is-compact',compact);
           if(compact)note.tabIndex=0;
@@ -154,7 +155,7 @@
           if(compact)continue;
           const {top,bottom}=band.getBoundingClientRect();
           if(bottom<0||top>=viewportEnd)continue;
-          // Size to the viewport on entry. Sticky positioning handles departure at the passage end.
+          // Size to the viewport on entry. Sticky positioning handles departure at the band end.
           fitGroup(note,Math.min(height,viewportEnd-Math.max(stickyTop,top)),chrome);
         }
       };
