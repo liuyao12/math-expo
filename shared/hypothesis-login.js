@@ -6,6 +6,7 @@
   function openHypothesis() {
     const ready = () => {
       button.hidden = true;
+      formatButton.hidden = !selectedParagraph;
       status.textContent = 'Use Log in in the Hypothesis sidebar to sign in.';
     };
     if (document.querySelector('hypothesis-sidebar')) {
@@ -37,23 +38,77 @@
 
   const chapter = document.getElementById('chapter');
   const drafts = new Map();
+  const formatButton = document.createElement('button');
+  formatButton.id = 'format-hypothesis-comment';
+  formatButton.type = 'button';
+  formatButton.className = 'reader-login';
+  formatButton.textContent = 'LaTeX';
+  formatButton.title = 'Format a comment with LaTeX shortcuts';
+  formatButton.hidden = true;
+  button.after(formatButton);
+  let selectedParagraph;
+  let pendingAnnotation;
   let draftDialog;
   let activeDraft;
 
-  function openDraft(paragraph, key) {
+  const mathShortcuts = new Map(Object.entries({
+    a: '\\alpha', b: '\\beta', g: '\\gamma', d: '\\delta', e: '\\epsilon',
+    th: '\\theta', l: '\\lambda', s: '\\sigma', f: '\\phi', w: '\\omega',
+    NN: '\\mathbb{N}', ZZ: '\\mathbb{Z}', QQ: '\\mathbb{Q}',
+    RR: '\\mathbb{R}', CC: '\\mathbb{C}',
+  }));
+
+  function formatComment(text) {
+    const markup = /(`+)[\s\S]*?\1|\$\$([\s\S]*?)\$\$|\$([^$\r\n]+)\$|\\\(([\s\S]*?)\\\)|\\\[([\s\S]*?)\\\]|\\./g;
+    return text.replace(markup, (match, code, doubleDollar, singleDollar, inline, display) => {
+      const math = doubleDollar ?? singleDollar ?? inline ?? display;
+      if (code || math === undefined) return match;
+      const expanded = math.replace(/\\([a-zA-Z]+|[^a-zA-Z])/g, (command, name) => mathShortcuts.get(name) ?? command);
+      return '$$' + expanded + '$$';
+    });
+  }
+
+  function annotateParagraph(paragraph, key) {
+    selectedParagraph = { paragraph, key };
+    const selection = document.getSelection();
+    if (!selection) return;
+    // Focus the selection on the first line so the Annotate menu opens there.
+    selection.setBaseAndExtent(paragraph, paragraph.childNodes.length, paragraph, 1);
+    openHypothesis();
+
+    clearTimeout(pendingAnnotation);
+    const deadline = performance.now() + 8000;
+    function startAnnotation() {
+      if (!paragraph.isConnected || selection.isCollapsed || selection.focusNode !== paragraph) return;
+      const adder = document.querySelector('hypothesis-adder')?.shadowRoot;
+      const annotate = adder?.querySelector('button[aria-label^="Annotate"]');
+      if (annotate?.getClientRects().length) {
+        annotate.click();
+      } else if (performance.now() < deadline) {
+        pendingAnnotation = setTimeout(startAnnotation, 100);
+      }
+    }
+    pendingAnnotation = setTimeout(startAnnotation, 180);
+  }
+
+  formatButton.addEventListener('click', () => {
+    if (selectedParagraph?.paragraph.isConnected) openDraft(selectedParagraph.key);
+  });
+
+  function openDraft(key) {
     if (!draftDialog) {
       draftDialog = document.createElement('dialog');
       draftDialog.className = 'paragraph-draft';
       draftDialog.setAttribute('aria-labelledby', 'paragraph-draft-title');
       draftDialog.innerHTML = `
         <form>
-          <h2 id="paragraph-draft-title">Comment on this paragraph</h2>
+          <h2 id="paragraph-draft-title">Format a comment</h2>
           <label for="paragraph-draft-text">Your comment</label>
           <textarea id="paragraph-draft-text" rows="6" required></textarea>
           <p class="paragraph-draft-hint" aria-live="polite"></p>
           <div class="paragraph-draft-actions">
             <button type="button">Close</button>
-            <button type="submit">Save to Hypothesis</button>
+            <button type="submit">Copy formatted comment</button>
           </div>
         </form>`;
       document.body.append(draftDialog);
@@ -71,43 +126,34 @@
         } catch {
           // Keep the draft in this tab when storage is unavailable.
         }
-        activeDraft.needsManualCopy = false;
-        save.textContent = 'Save to Hypothesis';
       });
       form.addEventListener('submit', async event => {
         event.preventDefault();
         if (!text.value.trim()) return;
-        const draft = activeDraft;
+        const key = activeDraft.key;
         const value = text.value;
-        if (!draft.needsManualCopy) {
-          save.disabled = true;
-          try {
-            await navigator.clipboard.writeText(value);
-          } catch {
-            if (draftDialog.open && draft === activeDraft) {
-              draft.needsManualCopy = true;
-              text.focus();
-              text.select();
-              hint.textContent = 'Copy your selected draft, then continue to Hypothesis.';
-              save.textContent = 'Continue to Hypothesis';
-            }
-            return;
-          } finally {
-            save.disabled = false;
+        const formatted = formatComment(value);
+        save.disabled = true;
+        try {
+          await navigator.clipboard.writeText(formatted);
+        } catch {
+          if (draftDialog.open && key === activeDraft.key && text.value === value) {
+            text.value = formatted;
+            text.focus();
+            text.select();
+            hint.textContent = 'Copy the selected text and paste it into Hypothesis.';
           }
+          return;
+        } finally {
+          save.disabled = false;
         }
-        if (!draftDialog.open || draft !== activeDraft || text.value !== value) return;
-        draftDialog.close();
-        const target = draft.paragraph;
-        if (!target.isConnected) return;
-        const selection = document.getSelection();
-        // Focus the selection on the first line so the Annotate menu opens there.
-        selection?.setBaseAndExtent(target, target.childNodes.length, target, 1);
-        openHypothesis();
+        if (draftDialog.open && key === activeDraft.key && text.value === value) {
+          hint.textContent = 'Copied. Paste the formatted comment into Hypothesis.';
+        }
       });
     }
 
-    activeDraft = { paragraph, key };
+    activeDraft = { key };
     let text = drafts.get(key);
     if (text === undefined) {
       try {
@@ -117,9 +163,8 @@
       }
     }
     draftDialog.querySelector('textarea').value = text ?? '';
-    draftDialog.querySelector('[type="submit"]').textContent = 'Save to Hypothesis';
     draftDialog.querySelector('.paragraph-draft-hint').textContent =
-      'Your draft stays in this browser. Save copies it and opens Hypothesis. Choose Annotate, sign in if prompted, then paste and post your comment.';
+      'Use * or - for bullets and $…$ for math. Shortcuts include \\a, \\b, \\g, \\NN, and \\RR. Copy the formatted text to paste into Hypothesis.';
     draftDialog.showModal();
   }
 
@@ -139,7 +184,7 @@
       addComment.className = 'paragraph-comment';
       addComment.setAttribute('aria-label', 'Annotate this paragraph');
       addComment.title = 'Annotate this paragraph';
-      addComment.addEventListener('click', () => openDraft(paragraph, key));
+      addComment.addEventListener('click', () => annotateParagraph(paragraph, key));
       paragraph.prepend(addComment);
     }
   }

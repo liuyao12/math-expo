@@ -25,7 +25,7 @@ if(primary){
  const essayToggle=button('Authored commentary',{'aria-expanded':'false','aria-controls':'work-commentary-panel',class:'work-commentary-launcher'});
  const essayClose=button('Collapse',{'aria-label':'Collapse authored commentary'});
  toolbar.append(el('a',{href:config.base+'commentaries/',class:'work-browse'},'Browse commentaries'));
- if(oldHeader)toolbar.append(...oldHeader.querySelectorAll('#hypothesis-status,#open-hypothesis'));
+ if(oldHeader)toolbar.append(...oldHeader.querySelectorAll('#hypothesis-status,#open-hypothesis,#format-hypothesis-comment'));
  marginHeader.append(marginTitle,essayClose);
  const authored=el('div',{id:'work-authored',class:'work-authored',tabindex:'0',role:'region','aria-label':'Authored commentary — scroll independently'});
  const linkControls=el('div',{class:'work-link-controls',hidden:''});
