@@ -1141,7 +1141,12 @@ const passageNotes={
 \[
 e(f,g)=(f,zf),\qquad e^2=e,\qquad P=\operatorname{im}e.
 \]`,
-  r`\(F=P\oplus R(0,1)\). The section \((1,z)\) is a basis of \(P\).`
+  r`\(F=P\oplus R(0,1)\). The section \((1,z)\) is a basis of \(P\).`,
+  r`Evaluation at the basis section gives
+\[
+\operatorname{Hom}_R(P,N)\xrightarrow{\sim}N,\qquad h\mapsto h(1,z).
+\]
+Thus \(\operatorname{Hom}_R(P,-)\) is exact and \(\operatorname{Ext}^1_R(P,N)=0\) for every \(R\)-module \(N\).`
  ]},
  '01IJ':{...models.scheme,bindings:[...models.scheme.bindings,b(r`\Sch`,r`\text{the category of schemes}`)]},
  '01IL':model('punctured affine plane',[
