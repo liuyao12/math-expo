@@ -20,6 +20,17 @@ The offline audit in `upstream/dependency-audit.json` records the precise target
 
 Dependency graph nodes are rectangular boxes displaying a type initial and the original number, such as `D 5.5.1` or `L 10.17.2`. Definition boxes also show the defined term, using source emphasis and the shared tag-based labels in `src/dependency-labels.json`. Named results use their original source title when available; the shared labels also name the genus formula and Čech-to-cohomology spectral sequence. Numbers and captions wrap within their boxes. Initial and dragged edge endpoints use the same rectangle geometry, with spacing that prevents overlapping boxes. Their stable Stacks tags continue to identify links and source passages. A yellow button includes the statement kind and its original number and opens the dependency inset without navigation. All audited statement and section headings in a selected reading are marked; contextual headings stay plain. The reading overview remains a small graph. A marked passage outside it opens an inset with its direct audited prerequisites and the route to the reading target. Pan or zoom to explore, and select a node to read its passage, including in an earlier reading. Escape, Close, or a click outside dismisses the inset.
 
+The Lean dependency pilot opens the Mathlib declarations for schemes and Proj at the revision in Axiom’s Lake manifest. The comparison page links the reviewed Stacks matches to the verbatim scheme reading. Each visible arrow has a declaration path in `upstream/lean-scheme-graph.json`. Unmatched declarations can connect visible nodes.
+
+To regenerate this graph, run the following command from the pinned Mathlib checkout with its Lake environment and build cache:
+
+```sh
+lake env lean --run /path/to/TraceLeanDependencies.lean \
+  Mathlib.AlgebraicGeometry.ProjectiveSpectrum.Scheme AlgebraicGeometry.Proj > trace.jsonl
+```
+
+From `projects/stacks`, pass the Axiom export directory, that trace and the pinned Mathlib revision to `python3 scripts/project-lean-graph.py`. The export directory needs `graph.json`, `graph-edges.json` and `summary.json` from Axiom’s public browser.
+
 `src/scheme-notes.mjs` contains the separate authored commentary. Its `sectionGroups` and `passageNotes` attach examples to stable Stacks section or statement tags. `notesFor(sectionTag, passageTag)` returns those cards in any reading containing the passage. Notes are optional. An unannotated tag produces no card, and multiple examples can share a tag. The optional complex-analysis examples assume familiarity with holomorphic functions.
 
 On desktop, each tagged group starts beside its source heading and floats down the margin until the next annotated tag pushes it away. Opening proofs and resizing repositions the anchors. Every example heading stays outside the scrolling body. Opening an example closes the others attached to that tag; clicking it again closes it. Long bodies scroll within the space left after reserving all the headings. The mobile panel shares the same accordion choices.

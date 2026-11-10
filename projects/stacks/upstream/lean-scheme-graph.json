@@ -1,0 +1,405 @@
+{
+  "target": "04L1",
+  "axiom_commit": "f8e70c5dd04bfabcb423d5e325461f527c85a5d6",
+  "mathlib_commit": "16edf57de7933555826307a3d81b4391a3657a09",
+  "mathlib_trace_sha256": "28f01476c789b241d3d105cdd074009463a20dcecca43fd7cd102db00807815c",
+  "mathlib_declarations": 18908,
+  "nodes": {
+    "04L1": {
+      "title": "Projective variety",
+      "declarations": [
+        "AlgebraicGeometry.IsProjectiveVariety",
+        "AlgebraicGeometry.isProjectiveVariety_iff_isProjective'",
+        "AlgebraicGeometry.isProjectiveVariety_iff_isProjectiveMorphism"
+      ],
+      "uses": {
+        "01W8": [
+          "AlgebraicGeometry.IsProjectiveVariety",
+          "AlgebraicGeometry.IsProjectiveMorphism"
+        ],
+        "020D": [
+          "AlgebraicGeometry.IsProjectiveVariety",
+          "AlgebraicGeometry.IsVariety"
+        ]
+      }
+    },
+    "020D": {
+      "title": "Variety",
+      "declarations": [
+        "AlgebraicGeometry.IsVariety"
+      ],
+      "uses": {
+        "01IJ": [
+          "AlgebraicGeometry.IsVariety",
+          "AlgebraicGeometry.Scheme"
+        ]
+      }
+    },
+    "01W8": {
+      "title": "Projective morphisms",
+      "declarations": [
+        "AlgebraicGeometry.IsProjective",
+        "AlgebraicGeometry.IsProjectiveMorphism"
+      ],
+      "uses": {
+        "01MB": [
+          "AlgebraicGeometry.IsProjectiveMorphism",
+          "AlgebraicGeometry.Proj"
+        ]
+      }
+    },
+    "01MB": {
+      "title": "Proj is a scheme",
+      "declarations": [
+        "AlgebraicGeometry.Proj"
+      ],
+      "uses": {
+        "01MA": [
+          "AlgebraicGeometry.Proj",
+          "AlgebraicGeometry.Proj._proof_2",
+          "AlgebraicGeometry.projIsoSpec"
+        ]
+      }
+    },
+    "01MA": {
+      "title": "Standard opens of Proj are spectra",
+      "declarations": [
+        "AlgebraicGeometry.projIsoSpec"
+      ],
+      "uses": {
+        "01M6": [
+          "AlgebraicGeometry.projIsoSpec",
+          "AlgebraicGeometry.ProjectiveSpectrum.Proj.isIso_toSpec",
+          "AlgebraicGeometry.ProjectiveSpectrum.Proj.structureSheaf"
+        ],
+        "01IJ": [
+          "AlgebraicGeometry.projIsoSpec",
+          "AlgebraicGeometry.ProjectiveSpectrum.Proj.isIso_toSpec",
+          "AlgebraicGeometry.ProjectiveSpectrum.Proj.stalkMap_toSpec",
+          "AlgebraicGeometry.Spec",
+          "AlgebraicGeometry.Scheme"
+        ]
+      }
+    },
+    "01M6": {
+      "title": "Structure sheaf of Proj",
+      "declarations": [
+        "AlgebraicGeometry.ProjectiveSpectrum.Proj.structureSheaf"
+      ],
+      "uses": {
+        "006T": [
+          "AlgebraicGeometry.ProjectiveSpectrum.Proj.structureSheaf",
+          "AlgebraicGeometry.ProjectiveSpectrum.Proj.structureSheaf._proof_1",
+          "TopCat.Presheaf.IsSheaf"
+        ],
+        "00JM": [
+          "AlgebraicGeometry.ProjectiveSpectrum.Proj.structureSheaf",
+          "ProjectiveSpectrum.top",
+          "ProjectiveSpectrum"
+        ],
+        "0017": [
+          "AlgebraicGeometry.ProjectiveSpectrum.Proj.structureSheaf",
+          "AlgebraicGeometry.ProjectiveSpectrum.Proj.structureSheaf._proof_1",
+          "CommRingCat.forgetReflectIsos",
+          "CategoryTheory.Iso"
+        ]
+      }
+    },
+    "00JM": {
+      "title": "Projective spectrum",
+      "declarations": [
+        "ProjectiveSpectrum"
+      ],
+      "uses": {
+        "00JL": [
+          "ProjectiveSpectrum",
+          "GradedRing"
+        ]
+      }
+    },
+    "00JL": {
+      "title": "Graded rings",
+      "declarations": [
+        "GradedRing"
+      ],
+      "uses": {}
+    },
+    "01IJ": {
+      "title": "Scheme",
+      "declarations": [
+        "AlgebraicGeometry.Scheme"
+      ],
+      "uses": {
+        "01HV": [
+          "AlgebraicGeometry.Scheme",
+          "AlgebraicGeometry.Scheme.mk",
+          "AlgebraicGeometry.Spec.toLocallyRingedSpace",
+          "AlgebraicGeometry.Spec.locallyRingedSpaceObj"
+        ],
+        "002E": [
+          "AlgebraicGeometry.Scheme",
+          "AlgebraicGeometry.Scheme.mk",
+          "AlgebraicGeometry.LocallyRingedSpace.restrict",
+          "AlgebraicGeometry.SheafedSpace.restrict",
+          "AlgebraicGeometry.SheafedSpace.restrict._proof_1",
+          "TopCat.Presheaf.isSheaf_of_isOpenEmbedding",
+          "CategoryTheory.Functor.op_comp_isSheaf",
+          "CategoryTheory.Functor.op_comp_isSheaf_of_types",
+          "_private.Mathlib.CategoryTheory.Sites.Continuous.0.CategoryTheory.Functor.isSheaf_of_isContinuous_aux",
+          "CategoryTheory.GrothendieckTopology.instPreservesSheafification",
+          "CategoryTheory.plusPlusSheaf",
+          "CategoryTheory.GrothendieckTopology.sheafify_isSheaf",
+          "CategoryTheory.GrothendieckTopology.Plus.isSheaf_plus_plus",
+          "CategoryTheory.GrothendieckTopology.Plus.isSheaf_of_sep",
+          "CategoryTheory.Limits.limit"
+        ]
+      }
+    },
+    "01HB": {
+      "title": "Locally ringed space",
+      "declarations": [
+        "AlgebraicGeometry.LocallyRingedSpace"
+      ],
+      "uses": {
+        "0091": [
+          "AlgebraicGeometry.LocallyRingedSpace",
+          "AlgebraicGeometry.LocallyRingedSpace.mk",
+          "AlgebraicGeometry.SheafedSpace"
+        ],
+        "07BI": [
+          "AlgebraicGeometry.LocallyRingedSpace",
+          "AlgebraicGeometry.LocallyRingedSpace.mk",
+          "IsLocalRing"
+        ],
+        "0078": [
+          "AlgebraicGeometry.LocallyRingedSpace",
+          "AlgebraicGeometry.LocallyRingedSpace.mk",
+          "TopCat.Presheaf.stalk"
+        ]
+      }
+    },
+    "01HV": {
+      "title": "The locally ringed spectrum",
+      "declarations": [
+        "AlgebraicGeometry.Spec.locallyRingedSpaceObj"
+      ],
+      "uses": {
+        "01HB": [
+          "AlgebraicGeometry.Spec.locallyRingedSpaceObj",
+          "AlgebraicGeometry.LocallyRingedSpace"
+        ],
+        "01HU": [
+          "AlgebraicGeometry.Spec.locallyRingedSpaceObj",
+          "AlgebraicGeometry.Spec.sheafedSpaceObj",
+          "AlgebraicGeometry.Spec.structureSheaf"
+        ],
+        "00CO": [
+          "AlgebraicGeometry.Spec.locallyRingedSpaceObj",
+          "AlgebraicGeometry.Spec.locallyRingedSpaceObj._proof_1",
+          "Localization.AtPrime.isLocalRing",
+          "Localization.isLocalization",
+          "IsLocalization"
+        ],
+        "004O": [
+          "AlgebraicGeometry.Spec.locallyRingedSpaceObj",
+          "AlgebraicGeometry.Spec.locallyRingedSpaceObj._proof_1",
+          "AlgebraicGeometry.StructureSheaf.stalkIso",
+          "AlgebraicGeometry.StructureSheaf.instAtPrimeCarrierStalkCommRingCatStructurePresheafInCommRingCatAsIdeal",
+          "AlgebraicGeometry.StructureSheaf.instIsLocalizedModuleCarrierStalkAbPresheafOpensCarrierTopModuleStructurePresheafPrimeComplAsIdealToStalkₗ",
+          "_private.Mathlib.AlgebraicGeometry.StructureSheaf.0.AlgebraicGeometry.StructureSheaf.instIsLocalizedModuleCarrierOfStalkModuleCatStructurePresheafInModuleCatPrimeComplAsIdealHomToStalkₗ'",
+          "_private.Mathlib.AlgebraicGeometry.StructureSheaf.0.AlgebraicGeometry.StructureSheaf.stalkIsoₗ",
+          "_private.Mathlib.AlgebraicGeometry.StructureSheaf.0.AlgebraicGeometry.StructureSheaf.stalkIsoₗ._proof_1",
+          "AlgebraicGeometry.StructureSheaf.exists_const",
+          "PrimeSpectrum.isBasis_basic_opens",
+          "TopologicalSpace.IsTopologicalBasis"
+        ]
+      }
+    },
+    "01HU": {
+      "title": "Structure sheaf of the spectrum",
+      "declarations": [
+        "AlgebraicGeometry.Spec.structureSheaf"
+      ],
+      "uses": {
+        "00E1": [
+          "AlgebraicGeometry.Spec.structureSheaf",
+          "AlgebraicGeometry.PrimeSpectrum.Top",
+          "PrimeSpectrum.zariskiTopology"
+        ],
+        "006T": [
+          "AlgebraicGeometry.Spec.structureSheaf",
+          "AlgebraicGeometry.Spec.structureSheaf._proof_1",
+          "TopCat.Presheaf.IsSheaf"
+        ],
+        "0017": [
+          "AlgebraicGeometry.Spec.structureSheaf",
+          "AlgebraicGeometry.Spec.structureSheaf._proof_1",
+          "CommRingCat.forgetReflectIsos",
+          "CategoryTheory.Iso"
+        ]
+      }
+    },
+    "0091": {
+      "title": "Ringed space",
+      "declarations": [
+        "AlgebraicGeometry.SheafedSpace"
+      ],
+      "uses": {
+        "006T": [
+          "AlgebraicGeometry.SheafedSpace",
+          "AlgebraicGeometry.SheafedSpace.mk",
+          "TopCat.Presheaf.IsSheaf"
+        ]
+      }
+    },
+    "07BI": {
+      "title": "Local ring",
+      "declarations": [
+        "IsLocalRing"
+      ],
+      "uses": {}
+    },
+    "00E1": {
+      "title": "Zariski topology",
+      "declarations": [
+        "PrimeSpectrum.zariskiTopology"
+      ],
+      "uses": {
+        "00DZ": [
+          "PrimeSpectrum.zariskiTopology",
+          "PrimeSpectrum"
+        ]
+      }
+    },
+    "00DZ": {
+      "title": "Prime spectrum",
+      "declarations": [
+        "PrimeSpectrum"
+      ],
+      "uses": {}
+    },
+    "00CO": {
+      "title": "Localization",
+      "declarations": [
+        "IsLocalization"
+      ],
+      "uses": {}
+    },
+    "0078": {
+      "title": "Stalks",
+      "declarations": [
+        "TopCat.Presheaf.stalk"
+      ],
+      "uses": {
+        "006E": [
+          "TopCat.Presheaf.stalk",
+          "TopCat.Presheaf"
+        ],
+        "004J": [
+          "TopCat.Presheaf.stalk",
+          "TopCat.Presheaf.stalkFunctor",
+          "TopologicalSpace.OpenNhds"
+        ],
+        "002F": [
+          "TopCat.Presheaf.stalk",
+          "TopCat.Presheaf.stalkFunctor",
+          "CategoryTheory.Limits.colim",
+          "CategoryTheory.Limits.colimit"
+        ]
+      }
+    },
+    "006T": {
+      "title": "Sheaf",
+      "declarations": [
+        "TopCat.Presheaf.IsSheaf"
+      ],
+      "uses": {
+        "006E": [
+          "TopCat.Presheaf.IsSheaf",
+          "TopCat.Presheaf"
+        ]
+      }
+    },
+    "006E": {
+      "title": "Presheaf",
+      "declarations": [
+        "TopCat.Presheaf"
+      ],
+      "uses": {
+        "001B": [
+          "TopCat.Presheaf",
+          "CategoryTheory.Functor"
+        ]
+      }
+    },
+    "004O": {
+      "title": "Bases",
+      "declarations": [
+        "TopologicalSpace.IsTopologicalBasis"
+      ],
+      "uses": {}
+    },
+    "004J": {
+      "title": "Neighbourhood",
+      "declarations": [
+        "TopologicalSpace.OpenNhds"
+      ],
+      "uses": {}
+    },
+    "002F": {
+      "title": "Colimit",
+      "declarations": [
+        "CategoryTheory.Limits.colimit"
+      ],
+      "uses": {
+        "001B": [
+          "CategoryTheory.Limits.colimit",
+          "CategoryTheory.Functor"
+        ]
+      }
+    },
+    "002E": {
+      "title": "Limit",
+      "declarations": [
+        "CategoryTheory.Limits.limit"
+      ],
+      "uses": {
+        "001B": [
+          "CategoryTheory.Limits.limit",
+          "CategoryTheory.Functor"
+        ]
+      }
+    },
+    "0017": {
+      "title": "Isomorphism",
+      "declarations": [
+        "CategoryTheory.Iso"
+      ],
+      "uses": {
+        "0014": [
+          "CategoryTheory.Iso",
+          "CategoryTheory.Category"
+        ]
+      }
+    },
+    "001B": {
+      "title": "Functor",
+      "declarations": [
+        "CategoryTheory.Functor"
+      ],
+      "uses": {
+        "0014": [
+          "CategoryTheory.Functor",
+          "CategoryTheory.Category"
+        ]
+      }
+    },
+    "0014": {
+      "title": "Category",
+      "declarations": [
+        "CategoryTheory.Category"
+      ],
+      "uses": {}
+    }
+  }
+}
