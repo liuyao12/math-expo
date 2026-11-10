@@ -29,6 +29,24 @@
   border: 1px solid var(--line, #dcded2);
   font: 12px/1.4 var(--sans, system-ui, sans-serif);
 }
+.paragraph-comment {
+  float: inline-end;
+  display: grid;
+  place-items: center;
+  block-size: 1lh;
+  inline-size: 1.2em;
+  margin-inline-start: .35em;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--green, #346352);
+  font: inherit;
+  cursor: pointer;
+  user-select: none;
+}
+.paragraph-comment::before { content: "+"; }
+.paragraph-comment:hover { text-decoration: underline; }
+.paragraph-comment:focus-visible { outline: 1px solid currentColor; }
 @media print {
-  .reader-login, .reader-login-status { display: none; }
+  .reader-login, .reader-login-status, .paragraph-comment { display: none; }
 }
