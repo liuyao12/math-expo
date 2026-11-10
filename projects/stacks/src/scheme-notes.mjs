@@ -90,7 +90,8 @@ A^{-1}=\frac{\operatorname{adj}(A)}{\det A}
 \[
 \sum_{n=0}^{\infty}c_n(z-a)^n
 \]
-on a neighbourhood of \(a\). The ring is denoted \(\mathbb C\{z-a\}\).`
+on a neighbourhood of \(a\). The ring is denoted \(\mathbb C\{z-a\}\).`,
+  r`Replacing holomorphic functions by rational functions defined at \(a\) gives \(\mathbb C[z]_{(z-a)}\), the fractions \(p(z)/q(z)\) with \(q(a)\ne0\).`
  ]},
  spectrum:model('crossing lines',[
   b('R',r`\mathbb C[x,y]/(xy)`),b('X',r`\operatorname{Spec}R`),
