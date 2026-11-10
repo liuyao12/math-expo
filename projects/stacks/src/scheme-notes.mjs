@@ -562,11 +562,16 @@ U=\operatorname{Spec}A,\quad E|_U\cong\mathcal O_U^r,\\
 f^{-1}(U)\cong\operatorname{Spec}A[t_1,\ldots,t_r].
 \end{gathered}
 \]`,'','');
-const gradedPolynomial=model('homogeneous polynomials',[
- b('S',r`k[t_0,\ldots,t_n]`),
- b('S_d',r`\left\{\begin{gathered}\text{homogeneous polynomials}\\\text{of degree }d\end{gathered}\right\}`),
- b(r`\operatorname{Proj}(S)`,r`\mathbb P^n_k`)
-],'','');
+const gradedPolynomial={...model('homogeneous polynomials',[],'',''),points:[
+ {text:r`\(S=\mathbb C[t_0,\ldots,t_n]\) \(\displaystyle=\bigoplus_{d\geq 0}S_d\)`,children:[
+  r`\(S_d=\{f\in S:f\text{ is homogeneous of degree }d\}\)`
+ ]},
+ {text:r`\(M=S/(t_0)\cong\mathbb C[t_1,\ldots,t_n]\)`,children:[
+  r`\(M_e=\{g\in M:g\text{ is homogeneous of degree }e\}\)`,
+  r`\(f\cdot g=f(0,t_1,\ldots,t_n)g\), so \(S_dM_e\subseteq M_{d+e}\).`,
+  r`\(M\) is the ring of polynomial functions on the affine hyperplane \(t_0=0\) and the homogeneous coordinate ring of the projective hyperplane \(t_0=0\) in \(\mathbb P^n_{\mathbb C}\).`
+ ]}
+]};
 const projCharts=model('homogeneous coordinate charts',[
  b('S',r`k[T_0,\ldots,T_n]`),
  b('X',r`\operatorname{Proj}S=\mathbb P^n_k`),
