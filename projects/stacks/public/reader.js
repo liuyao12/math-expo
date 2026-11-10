@@ -88,9 +88,11 @@
       const notes=keys.map(key=>{
         const anchor=document.getElementById(key);
         if(!anchor||!main.contains(anchor)||!data[key].html)return null;
-        const peg=anchor.classList.contains('source-section')
+        const section=anchor.classList.contains('source-section');
+        const peg=section
           ?anchor.querySelector('.source-heading-row > :is(h2,h3)')||anchor
           :anchor.querySelector('.statement-heading')||anchor;
+        const limit=section?anchor:anchor.querySelector('.source-body')||anchor;
         const band=document.createElement('div');
         band.className='example-band';band.dataset.exampleAnchor=key;
         const note=document.createElement('div');
@@ -101,11 +103,11 @@
         label.append(link);note.append(label);
         note.insertAdjacentHTML('beforeend',data[key].html);
         band.append(note);
-        return {anchor,peg,band,note,span:0};
+        return {anchor,peg,limit,band,note};
       }).filter(Boolean).sort((a,b)=>a.anchor.compareDocumentPosition(b.anchor)&Node.DOCUMENT_POSITION_FOLLOWING?-1:1);
       flow.append(...notes.map(note=>note.band));dock.append(flow);
       dock.classList.add('has-floating-examples');
-      let stickyTop=99;
+      let stickyTop=99,bands=[];
       layoutAnchors=()=>{
         if(mobile())return;
         for(const {band} of notes)band.hidden=false;
@@ -115,37 +117,45 @@
         const available=Math.max(0,innerHeight-stickyTop-16);
         flow.style.setProperty('--example-top',stickyTop+'px');
         flow.style.setProperty('--example-viewport',available+'px');
-        const positions=notes.map(note=>note.peg.getBoundingClientRect().top-origin);
+        const measured=notes.map(entry=>({
+          ...entry,
+          start:entry.peg.getBoundingClientRect().top-origin,
+          end:entry.limit.getBoundingClientRect().bottom-origin,
+          chrome:groupChrome(entry.note),
+        }));
         const titles=entry=>[...entry.note.querySelectorAll('.example-disclosure > summary')].map(summary=>summary.textContent.trim()).join('\n');
-        const visible=notes.filter((entry,index)=>{
-          const next=notes[index+1];
-          const headings=[...entry.note.querySelectorAll('.example-step,.example-disclosure > summary')].reduce((height,node)=>height+node.getBoundingClientRect().height,0);
+        const visible=measured.filter((entry,index)=>{
+          const next=measured[index+1];
           // Prefer the definition's group to an adjacent duplicate at its section introduction.
-          const repeated=next&&entry.anchor.classList.contains('source-section')&&next.anchor.closest('.source-section')===entry.anchor&&positions[index+1]-positions[index]<headings+12&&titles(entry)===titles(next);
-          entry.start=positions[index];
+          const repeated=next&&entry.anchor.classList.contains('source-section')&&next.anchor.closest('.source-section')===entry.anchor&&next.start-entry.start<entry.chrome+12&&titles(entry)===titles(next);
           return !repeated;
         });
-        const end=main.getBoundingClientRect().bottom-origin;
-        // Read heights together before changing any band positions.
-        const reserved=visible.map(({note})=>groupChrome(note));
         const visibleBands=new Set(visible.map(({band})=>band));
         for(const {band} of notes)band.hidden=!visibleBands.has(band);
-        visible.forEach((entry,index)=>{
-          const {band,note}=entry;
-          const height=Math.max(1,(visible[index+1]?.start??end)-entry.start-12);
-          entry.span=height;
+        bands=visible.map((entry,index)=>{
+          const {band,note,chrome}=entry;
+          const nextStart=visible[index+1]?.start??Infinity;
+          const height=Math.max(0,Math.min(entry.end,nextStart)-entry.start);
+          const room=Math.min(height,available);
+          // Short passages scroll the whole card so headings cannot consume all its space.
+          const compact=room-chrome<32;
+          note.classList.toggle('is-compact',compact);
+          if(compact)note.tabIndex=0;
+          else note.removeAttribute('tabindex');
           band.style.top=entry.start+'px';band.style.height=height+'px';
           band.style.setProperty('--example-span',height+'px');
-          fitGroup(note,Math.min(height,available),reserved[index]);
+          fitGroup(note,room,chrome);
+          return {band,note,chrome,compact,height};
         });
       };
       fitFloating=()=>{
-        for(const {band,note} of notes){
-          if(band.hidden)continue;
-          const box=band.getBoundingClientRect();
-          if(box.bottom<0||box.top>innerHeight)continue;
-          const top=Math.max(stickyTop,box.top);
-          fitGroup(note,Math.max(0,Math.min(innerHeight-16,box.bottom)-top));
+        const viewportEnd=innerHeight-16;
+        for(const {band,note,chrome,compact,height} of bands){
+          if(compact)continue;
+          const {top,bottom}=band.getBoundingClientRect();
+          if(bottom<0||top>=viewportEnd)continue;
+          // Size to the viewport on entry. Sticky positioning handles departure at the passage end.
+          fitGroup(note,Math.min(height,viewportEnd-Math.max(stickyTop,top)),chrome);
         }
       };
       new ResizeObserver(scheduleExampleLayout).observe(main);

@@ -23,7 +23,7 @@ try{
   const mobile=viewport.width<=760;
   const page=await browser.newPage({viewport,isMobile:mobile,hasTouch:mobile,reducedMotion:'reduce'});
   page.on('pageerror',error=>errors.push(error.message));
-  for(const [slug,anchor,tag=anchor] of [['scheme','001B'],['scheme','005A'],['scheme','01MN'],['curves','01XD'],['grr','02UO'],['gluing','local-functions-0','local-functions']]){
+  for(const [slug,anchor,tag=anchor] of [['scheme','001B'],['scheme','005A'],['curves','01MN'],['curves','01XD'],['grr','02UO'],['gluing','local-functions-0','local-functions']]){
    await page.goto(url(slug,anchor),{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);
    const source=page.locator('main [id="'+anchor+'"]');
    await source.evaluate(n=>scrollBy({top:n.getBoundingClientRect().top-innerHeight*.3+25,behavior:'instant'}));
@@ -33,10 +33,17 @@ try{
     await page.touchscreen.tap(button.x+button.width/2,button.y+button.height/2);
    }
    const group=mobile||slug==='gluing'?page.locator('#example-content'):page.locator('.example-band[data-example-anchor="'+tag+'"] .floating-example');
-   await settle(page);await headingsVisible(group,page);
+   await settle(page);
+   const compactGroup=await group.evaluate(n=>n.classList.contains('is-compact'));
+   if(!compactGroup)await headingsVisible(group,page);
    if(!mobile){
-    const crowded=await page.locator('.example-band:not([hidden])').evaluateAll(bands=>bands.map(b=>({tag:b.dataset.exampleAnchor,space:b.clientHeight,headings:[...b.querySelectorAll('.example-step,.example-disclosure > summary')].reduce((height,n)=>height+n.getBoundingClientRect().height,0)})).filter(b=>b.headings>b.space));
-    assert.deepEqual(crowded,[],'All tagged heading groups fit without colliding');
+    const overflowing=await page.locator('.example-band:not([hidden])').evaluateAll(bands=>bands.filter((band,index)=>{
+     const anchor=document.getElementById(band.dataset.exampleAnchor);
+     const limit=anchor.querySelector(':scope > .source-body')||anchor;
+     const end=Math.min(limit.getBoundingClientRect().bottom,bands[index+1]?.getBoundingClientRect().top??Infinity);
+     return Math.abs(band.getBoundingClientRect().bottom-end)>1||band.firstElementChild.getBoundingClientRect().bottom>end+1;
+    }).map(band=>band.dataset.exampleAnchor));
+    assert.deepEqual(overflowing,[],'Each example ends at its passage or the next example, whichever comes first');
    }
    const cards=group.locator(':scope > .example-disclosure'),count=await cards.count();assert(count>=1);
    if(tag==='005A'){
@@ -47,11 +54,12 @@ try{
    for(let index=0;index<count;index++){
     const card=cards.nth(index),key=await card.getAttribute('data-example-card');
     if(!await card.evaluate(n=>n.open))await card.locator('summary').click();
-    await settle(page);await assertExclusive(group,key);await headingsVisible(group,page);
+    await settle(page);await assertExclusive(group,key);
+    if(!compactGroup)await headingsVisible(group,page);
     const body=card.locator('.example-body');
     const size=await body.evaluate(n=>({height:n.clientHeight,content:n.scrollHeight}));
     assert(size.height>30,'The open example has usable space');
-    if(size.content>size.height+10){
+    if(!compactGroup&&size.content>size.height+10){
      const before=await page.evaluate(()=>scrollY),headings=await cards.locator('summary').evaluateAll(ns=>ns.map(n=>n.getBoundingClientRect().top));
      await body.focus();await page.keyboard.press('PageDown');await settle(page);
      assert(await body.evaluate(n=>n.scrollTop>0),'Long example scrolls independently');
@@ -84,6 +92,39 @@ try{
   return Math.abs(b.getBoundingClientRect().top-p.getBoundingClientRect().top);
  }));
  assert(drift.every(delta=>delta<2),'Example anchors follow proof reflow and resizing');
+ const floating=await page.locator('.example-band:not([hidden])').evaluateAll(bands=>bands.find(band=>band.clientHeight-band.firstElementChild.clientHeight>180)?.dataset.exampleAnchor);
+ assert(floating,'A longer passage leaves room for its example to float');
+ const motion=page.locator('.example-band[data-example-anchor="'+floating+'"]');
+ for(const offset of [30,80]){
+  await motion.evaluate((band,offset)=>{
+   const stickyTop=parseFloat(getComputedStyle(band.firstElementChild).top);
+   scrollBy(0,band.getBoundingClientRect().top-stickyTop+offset);
+  },offset);
+  await settle(page);
+  assert(await motion.evaluate(band=>{
+   const card=band.firstElementChild;
+   return Math.abs(card.getBoundingClientRect().top-parseFloat(getComputedStyle(card).top))<2;
+  }),'An example floats while its passage is in view');
+ }
+ await motion.evaluate(band=>{
+  const card=band.firstElementChild;
+  scrollBy(0,band.getBoundingClientRect().bottom-card.clientHeight-parseFloat(getComputedStyle(card).top)+20);
+ });
+ await settle(page);
+ assert(await motion.evaluate(band=>Math.abs(band.getBoundingClientRect().bottom-band.firstElementChild.getBoundingClientRect().bottom)<2),'A floating example moves off with the end of its band');
+ const localization=page.locator('.example-band[data-example-anchor="localization-at-a-prime"]');
+ await page.locator('#localization-at-a-prime').scrollIntoViewIfNeeded();await settle(page);
+ const span=await localization.evaluate(band=>{
+  const {top,bottom}=band.getBoundingClientRect();
+  const body=document.querySelector('#localization-at-a-prime .source-body').getBoundingClientRect();
+  const following=document.getElementById('localization-at-a-prime').nextElementSibling.getBoundingClientRect();
+  return {start:top-body.top,end:bottom-body.bottom,following:following.bottom-bottom};
+ });
+ assert(Math.abs(span.start)<2&&Math.abs(span.end)<2&&span.following>10,'The localization card stops at its paragraph even with more text below');
+ const compact=page.locator('.example-band[data-example-anchor="001N"] .is-compact');
+ await compact.scrollIntoViewIfNeeded();await settle(page);
+ await compact.evaluate(note=>note.scrollTop=note.scrollHeight);
+ assert(await compact.evaluate(note=>note.scrollTop>0),'A short passage scrolls the card as a whole');
  await page.close();assert.deepEqual(errors,[]);
  console.log('Shared accordion choices, source anchors, and absence of browser errors verified.');
 }finally{await browser.close();}

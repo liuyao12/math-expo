@@ -126,6 +126,11 @@ details[open] > summary .disclosure-chevron {
     background: var(--paper);
     padding-bottom: 0;
   }
+  .floating-example.is-compact {
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  .floating-example.is-compact .example-body { max-height: none; }
 }
 
 .dependency-number {
