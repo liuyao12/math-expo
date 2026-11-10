@@ -21,6 +21,12 @@ const jumpToPassage=`<script>
  })();
 </script>`;
 
+const unescapeLabel=s=>s.replace(/&(?:amp|lt|gt|quot);/g,entity=>({'&amp;':'&','&lt;':'<','&gt;':'>','&quot;':'"'})[entity]);
+function graphLabelSource(html){
+ return unescapeLabel(html.replace(/<span class="math-inline math-lazy" data-tex="([^"]*)"><math\b[\s\S]*?<\/math><\/span>/g,
+  (_,tex)=>'\\('+tex+'\\)').replace(/<[^>]*>/g,'')).replace(/\s+/g,' ').trim();
+}
+
 // Stacks usually marks newly defined terms in italics. Keep terms under a
 // labelled list item separate from the terms in its surrounding definition.
 function indexDefinedTerms(html,references){
@@ -31,9 +37,8 @@ function indexDefinedTerms(html,references){
   else if(token==='</li>')items.pop();
   else if(tag&&items.length&&references.get(tag)?.kind==='item')taggedItems.set(tag,items.at(-1));
   else if(emphasis){
-   const term=emphasis.replace(/<math\b[\s\S]*?<\/math>/g,'').replace(/<[^>]*>/g,'')
-    .replace(/&(?:amp|lt|gt|quot);/g,entity=>({'&amp;':'&','&lt;':'<','&gt;':'>','&quot;':'"'})[entity])
-    .replace(/\s+/g,' ').trim().replace(/^(?:of |[-–]\s*)/,'').replace(/(?:\s+(?:of|on|in|at|over|by|with|along|associated to))+$/,'');
+   const term=graphLabelSource(emphasis).replace(/^(?:of |[-–]\s*)/,'')
+    .replace(/(?:\s+(?:of|on|in|at|over|by|with|along|associated to))+$/,'');
    if(!term)continue;
    terms.add(term);
    for(const item of items)item.add(term);
@@ -125,7 +130,7 @@ export function buildReadings({root,dist,head,header,footer,renderExampleCard,as
     let html=`<div class="source-body">${printedSource(b.html)}</div>`;
     if(b.kind!=='prose'){
      const ref=referencesByTag.get(b.tag);
-     if(b.title&&!/[\\$]/.test(b.title))ref.sourceTitle=b.title;
+     if(b.title)ref.sourceTitle=graphLabelSource(r.inline(b.title,s.chapter));
      if(b.kind==='definition'&&!ref.term){
       const term=b.html.match(/<em>([^<>]+)<\/em>/)?.[1];
       if(term)ref.term=term.replaceAll('&amp;','&').replaceAll('&quot;','"');
@@ -176,7 +181,8 @@ export function buildReadings({root,dist,head,header,footer,renderExampleCard,as
   }
  }
  const graphScript=(base='../../')=>`<script type="module" src="${base}dependency-graph.js?v=${assetVersion}"></script>`;
- const graphHTML=(tree,prefix='',base='../../',currentSlug)=>renderDependencyGraph(tree,referencesByTag,base,prefix,currentSlug);
+ const graphMath=createRenderer(root).math;
+ const graphHTML=(tree,prefix='',base='../../',currentSlug)=>renderDependencyGraph(tree,referencesByTag,base,prefix,currentSlug,graphMath);
  const owners=new Map(readings.flatMap(reading=>reading.sections.map(section=>[section.tag,{reading,section}])));
  const auditedGraph=tree=>{
   const nodes={},locations=new Map();

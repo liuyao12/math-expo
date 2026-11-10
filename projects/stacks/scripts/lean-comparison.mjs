@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import {escapeHTML as esc} from '../src/latex.mjs';
+import {createRenderer,escapeHTML as esc} from '../src/latex.mjs';
 import {renderDependencyGraph} from '../public/graph-render.js';
 import {createLeanSchemeGraph} from '../src/lean-scheme-graph.mjs';
 
@@ -49,7 +49,7 @@ export function buildLeanComparison({root, dist, head, header, footer, readings,
       <section aria-labelledby="lean-graph">
         <h3 id="lean-graph">Navigate the Lean dependency graph</h3>
         <p>Each numbered node opens its Stacks passage. Arrows point down from prerequisites to the passages that use them. The graph maps ${graph.passages} passages in ${graph.sections} sections from a trace that reaches ${mathlib.mathlib_declarations.toLocaleString('en-US')} Mathlib declarations.</p>
-        ${renderDependencyGraph(graph, byTag, '../', 'lean-')}
+        ${renderDependencyGraph(graph, byTag, '../', 'lean-', undefined, createRenderer(root).math)}
       </section>
       <div class="path-scope">
         <p>The trace follows Axiom’s projective-variety declarations and expands the Mathlib declarations reached by that export. For example, Mathlib’s locally ringed spaces use stalks, which are colimits of sections over open neighbourhoods. The graph shows reviewed matches to Stacks prose, with unshown Lean declarations folded into the arrows. <a href="../source/lean-scheme-graph.json">Declaration paths behind the arrows</a> · <a href="https://github.com/leanprover-community/mathlib4/tree/${esc(mathlib.mathlib_commit)}">Pinned Mathlib source</a></p>

@@ -13,11 +13,20 @@ const glyphWidths=new Map([
 const labelWidth=(text,size)=>[...text.normalize('NFD').replace(/\p{Mark}/gu,'')]
  .reduce((width,glyph)=>width+(glyphWidths.get(glyph)??900),0)*size/1000;
 
+const inlineMath=/\\\(([\s\S]*?)\\\)/g;
+const hasMath=label=>label.includes('\\(');
+const plainLabel=label=>label.replace(inlineMath,(_,tex)=>tex
+ .replace(/\\(?:mathbb|mathbf|mathrm|mathit|mathcal|mathfrak|mathscr|text|operatorname|left|right)\b/g,'')
+ .replace(/\\([a-zA-Z]+)/g,'$1').replace(/[{}]/g,''));
+const captionWidth=label=>labelWidth(plainLabel(label),12);
+const typesetLabel=(label,math)=>label.split(inlineMath).map((part,index)=>index%2?math(part):esc(part)).join('');
+
 function wrapLabel(label){
  const lines=[];let line='';
- for(const word of label.split(/\s+/).flatMap(word=>labelWidth(word,12)>captionLimit?word.split(/(?<=[–-])/):[word])){
+ const words=label.match(/(?:\\\([\s\S]*?\\\)|[^\s\\]|\\(?!\())+/g)||[];
+ for(const word of words.flatMap(word=>!hasMath(word)&&captionWidth(word)>captionLimit?word.split(/(?<=[–-])/):[word])){
   const next=line+(line&&!/[-–]$/.test(line)?' ':'')+word;
-  if(line&&labelWidth(next,12)>captionLimit){lines.push(line);line=word;}
+  if(line&&captionWidth(next)>captionLimit){lines.push(line);line=word;}
   else line=next;
  }
  if(line)lines.push(line);
@@ -159,7 +168,7 @@ function layoutSections(entries,edges){
  return [Math.max(...placed.map(box=>box.right))-left+18,Math.max(...placed.map(box=>box.bottom))-top+18];
 }
 
-export function renderDependencyGraph(tree,references,base,idPrefix='',currentSlug){
+export function renderDependencyGraph(tree,references,base,idPrefix='',currentSlug,math){
  const depths=new Map(),ancestors=new Set();
  const visit=(tag,depth)=>{
   if(!tree.nodes[tag])throw Error('Unknown dependency '+tag);
@@ -184,17 +193,20 @@ export function renderDependencyGraph(tree,references,base,idPrefix='',currentSl
   const route=location?(location.slug===currentSlug?'':`${base}${location.slug}/`):null;
   const terms=ref.terms?.join('; ');
   const caption=ref.kind==='section'?'':ref.kind==='definition'
-   ?tree.labels.definitionTerms?.[tag]||(ref.terms?.length>1?terms:tree.labels.definitions[tag]||terms||node.title)
+   ?tree.labels.definitionTerms?.[tag]||((ref.terms?.length>1||hasMath(terms||''))?terms:tree.labels.definitions[tag]||terms||node.title)
    :ref.kind==='item'?tree.labels.itemTerms?.[tag]||terms||''
    :ref.sourceTitle||tree.labels.namedResults[tag]||(tag===tree.rootTag?node.title:'');
   const description=caption||node.title;
+  const mathCaption=hasMath(caption);
+  const lineHeight=mathCaption?19:14;
   const lines=wrapLabel(caption);
   const shortLabel=ref.kind==='section'?`§${ref.number}`:`${ref.kind[0].toUpperCase()} ${ref.number}`;
   const referenceLabel=ref.kind==='section'?shortLabel:`${ref.kind[0].toUpperCase()+ref.kind.slice(1)} ${ref.number}`;
-  const width=Math.ceil(Math.max(labelWidth(shortLabel,13),...lines.map(line=>labelWidth(line,12))))+2*labelPadding;
+  const width=Math.ceil(Math.max(labelWidth(shortLabel,13),...lines.map(captionWidth)))+2*labelPadding;
+  const label=`${referenceLabel}${description?' · '+description:''}${origin}`;
   return [tag,{tag,depth,shortLabel,kind:ref.kind,root:tag===tree.rootTag,outsideReading,
-   lines,width,height:28+lines.length*14,sectionTag:location?.section.tag,frameOnly:node.frameOnly,
-   label:`${referenceLabel}${description?' · '+description:''}${origin}`,
+   lines,width,mathCaption,lineHeight,height:28+lines.length*lineHeight,sectionTag:location?.section.tag,frameOnly:node.frameOnly,
+   label:plainLabel(label),labelHTML:hasMath(label)?typesetLabel(label,math):'',
    href:location?`${route}#${tag}`:`https://stacks.math.columbia.edu/tag/${tag}`,
    section:location&&location.section.tag!==tag?`${route}#${location.section.tag}`:null
   }];
@@ -208,10 +220,13 @@ export function renderDependencyGraph(tree,references,base,idPrefix='',currentSl
  }).join('');
  const link=node=>{
   const baseline=-node.height/2+18;
-  const caption=node.lines.map((line,i)=>`<tspan x="0" y="${baseline+(i+1)*14}">${esc(line+(i<node.lines.length-1&&!/[-–]$/.test(line)?' ':''))}</tspan>`).join('');
+  const textCaption=node.lines.map((line,i)=>`<tspan x="0" y="${baseline+(i+1)*14}">${esc(line+(i<node.lines.length-1&&!/[-–]$/.test(line)?' ':''))}</tspan>`).join('');
+  const caption=node.mathCaption
+   ?`<foreignObject aria-hidden="true" x="${-node.width/2}" y="${baseline+2}" width="${node.width}" height="${node.lines.length*node.lineHeight+2}"><div xmlns="http://www.w3.org/1999/xhtml" class="graph-math-caption">${node.lines.map(line=>`<div>${typesetLabel(line,math)}</div>`).join('')}</div></foreignObject>`
+   :textCaption?`<text class="graph-node-caption" text-anchor="middle">${textCaption}</text>`:'';
   const number=node.enclosure?'':`<text class="graph-node-number" text-anchor="middle" y="${baseline}">${esc(node.shortLabel)}</text>`;
   const ring=node.enclosure?'':`<rect class="graph-node-ring" x="${-node.width/2-ringPadding}" y="${-node.height/2-ringPadding}" width="${node.width+ringPadding*2}" height="${node.height+ringPadding*2}" rx="8"/>`;
-  return `<a id="${idPrefix}${esc(node.tag)}" data-tag="${esc(node.tag)}" data-kind="${esc(node.kind)}" data-width="${node.width}" data-height="${node.height}" class="dependency-node${node.root?' dependency-target':''}${node.outsideReading?' outside-reading':''}" href="${esc(node.href)}" aria-label="${esc(node.label)}"${node.section?` data-section="${esc(node.section)}"`:''}${node.groupTag?` data-graph-group="${esc(node.groupTag)}"`:''}${node.enclosure?` data-graph-cluster="${esc(node.tag)}"`:''}${node.portY!==undefined?` data-port-y="${node.portY}"`:''} transform="translate(${node.x} ${node.y})"><title>${esc(node.label)}</title>${ring}<rect class="graph-node-body" x="${-node.width/2}" y="${-node.height/2}" width="${node.width}" height="${node.height}" rx="${nodeCornerRadius}"/>${number}${caption?`<text class="graph-node-caption" text-anchor="middle">${caption}</text>`:''}</a>`;
+  return `<a id="${idPrefix}${esc(node.tag)}" data-tag="${esc(node.tag)}" data-kind="${esc(node.kind)}" data-width="${node.width}" data-height="${node.height}" class="dependency-node${node.root?' dependency-target':''}${node.outsideReading?' outside-reading':''}" href="${esc(node.href)}" aria-label="${esc(node.label)}"${node.labelHTML?` data-label-html="${esc(node.labelHTML)}"`:''}${node.section?` data-section="${esc(node.section)}"`:''}${node.groupTag?` data-graph-group="${esc(node.groupTag)}"`:''}${node.enclosure?` data-graph-cluster="${esc(node.tag)}"`:''}${node.portY!==undefined?` data-port-y="${node.portY}"`:''} transform="translate(${node.x} ${node.y})"><title>${esc(node.label)}</title>${ring}<rect class="graph-node-body" x="${-node.width/2}" y="${-node.height/2}" width="${node.width}" height="${node.height}" rx="${nodeCornerRadius}"/>${number}${caption}</a>`;
  };
  const sectionBoxes=entries.filter(node=>node.enclosure).map(link).join('');
  const links=entries.filter(node=>!node.enclosure).map(link).join('');
@@ -228,6 +243,6 @@ export function renderDependencyGraph(tree,references,base,idPrefix='',currentSl
     <g class="graph-sections">${sectionBoxes}</g><g class="graph-edges" aria-hidden="true">${lines}</g><g>${links}</g>
    </svg>
   </div>
-  <p class="graph-detail"><a data-graph-passage href="${esc(root.href)}">${esc(root.label)}</a> <a data-graph-section${root.section?` href="${esc(root.section)}"`:' hidden'}>Read section ↗</a></p>
+  <p class="graph-detail"><a data-graph-passage href="${esc(root.href)}">${root.labelHTML||esc(root.label)}</a> <a data-graph-section${root.section?` href="${esc(root.section)}"`:' hidden'}>Read section ↗</a></p>
  </div>`;
 }

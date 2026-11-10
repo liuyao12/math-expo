@@ -32,7 +32,8 @@ import {edgeEndpoints,sectionBoxPadding} from './graph-geometry.js?section-level
  let activeTrigger=null;
 
  const describe=node=>{
-  passage.textContent=node.getAttribute('aria-label');
+  if(node.dataset.labelHtml)passage.innerHTML=node.dataset.labelHtml;
+  else passage.textContent=node.getAttribute('aria-label');
   passage.href=node.getAttribute('href');
   section.hidden=!node.dataset.section;
   if(node.dataset.section)section.href=node.dataset.section;

@@ -112,6 +112,14 @@ for(const reading of selectedReadings){
  const nodes=[...inset.matchAll(/<a id="inset-([^"]+)"[^>]*class="dependency-node([^"]*)" href="([^"]+)"/g)];
  assert.deepEqual(nodes.map(match=>match[1]).sort(),(lean?Object.keys(lean.nodes):[...report.required_tags]).sort(),'The shared inset includes every audited passage');
  assert.deepEqual(nodes.filter(match=>match[2].includes('dependency-target')).map(match=>match[1]),[reading.target]);
+ const mathNode=tag=>inset.match(new RegExp(`<a id="inset-${tag}"[\\s\\S]*?</a>`))?.[0];
+ const coherent=mathNode('01BE');
+ assert.match(coherent,/<foreignObject\b[\s\S]*?data-tex="\\mathcal\{O\}_X"/,'Keep source LaTeX in the graph caption');
+ assert.match(coherent,/<foreignObject\b[\s\S]*?<annotation encoding="application\/x-tex">\\mathcal\{O\}_X<\/annotation>/,'Typeset the original expression');
+ if(reading.slug==='curves'){
+  assert.match(graphLabel('00NW'),/Locally free R-module/,'Retain the ring in the accessible label');
+  assert.match(mathNode('00NW'),/<foreignObject\b[\s\S]*?data-tex="R"/,'Typeset the ring in the module label');
+ }
  const links=new Map(nodes.map(([,tag,,href])=>[tag,href]));
  const arrows=[...inset.matchAll(/<line data-from="([^"]+)" data-to="([^"]+)"/g)];
  const edges=new Set(arrows.map(([,from,to])=>`${from}:${to}`));
