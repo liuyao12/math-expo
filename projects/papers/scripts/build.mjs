@@ -57,10 +57,13 @@ import {passagesResidues,sectionsResidues,editionResidues} from '../src/euler-17
 import {statementsResidues} from '../src/statements-euler-1761.mjs';
 import {figuresResidues} from '../src/figures-euler-1761.mjs';
 import {figuresEuler} from '../src/figures-euler-1740.mjs';
+import {buildAnchoredMargins} from '../../../scripts/build-anchored-margins.mjs';
+import passageNotes from '../../../shared/passage-notes.json' with {type:'json'};
 
 const root=fileURLToPath(new URL('../',import.meta.url)),dist=path.join(root,'dist');
 rmSync(dist,{recursive:true,force:true});mkdirSync(dist,{recursive:true});
 cpSync(path.join(root,'public'),dist,{recursive:true});
+const marginAssets=buildAnchoredMargins(dist);
 const styleVersion=createHash('sha256').update(readFileSync(path.join(root,'public/style.css'))).digest('hex').slice(0,12);
 writeFileSync(path.join(dist,'discovery.js'),`window.paperDiscovery={normalizeSearch:${normalizeSearch.toString()},matchesWork:${matchesWork.toString().replaceAll('normalizeSearch(', 'window.paperDiscovery.normalizeSearch(')},compareWorks:${compareWorks.toString()},facetCounts:${facetCounts.toString().replaceAll('matchesWork(', 'window.paperDiscovery.matchesWork(')}};`);
 const zetaVersion=createHash('sha256').update(['zeta-math.mjs','zeta-reader.mjs','zeta-worker.mjs','zeta-reader.css','explicit-math.mjs','explicit-reader.mjs','explicit-strip.mjs','explicit-experiment.mjs','explicit-worker.mjs','zeta-zeros-200.json'].map(f=>readFileSync(path.join(root,'public',f),'utf8')).join('\n')).digest('hex').slice(0,12);
@@ -97,7 +100,10 @@ function linked(text,base){
 }
 const allPassages=[...weilGuide.map(r=>({...r,label:r.title,work:'weil-1949'})),...passagesCartanWeights.map(r=>({...r,work:'cartan-1913'})),...passagesCartan1913.map(r=>({...r,work:'cartan-1913'})),...passagesLie1874.map(r=>({...r,work:'lie-1874'})),...passages1902.map(r=>({...r,work:'poincare-1902-surfaces'})),...passages1900.map(r=>({...r,work:'poincare-1900'})),...passages1899.map(r=>({...r,work:'poincare-1899'})),...passages1895.map(r=>({...r,work:'poincare-1895'})),...passages1857.map(r=>({...r,work:'riemann-1857'})),...passages1851.map(r=>({...r,work:'riemann-1851'})),...passagesPoincare.map(r=>({...r,work:'poincare-1892'})),...passagesGauss.map(r=>({...r,work:'gauss-1828'})),...passages1854.map(r=>({...r,work:'riemann-1854'})),...passages1859.map(r=>({...r,work:'riemann-1859'})),...passagesEuler.map(r=>({...r,work:'euler-1740'})),...passagesDedekind,...passagesProduct.map(r=>({...r,work:'euler-1744'})),...passagesCircle.map(r=>({...r,work:'euler-1748-circle'})),...passagesLogarithms.map(r=>({...r,work:'euler-1751'})),...passagesBridges.map(r=>({...r,work:'euler-1741'})),...passagesResidues.map(r=>({...r,work:'euler-1761'}))];
 function mentions(kind,id,base){
-  const hits=allPassages.filter(r=>[r.text,r.note,r.detail??''].some(t=>t&&(t.includes(`[[${kind}:${id}|`)||(kind==='person'&&t.includes(`[[person:${id}@`)))));
+  const hits=allPassages.filter(r=>{
+    const note=passageNotes.papers[r.id];
+    return [r.text,note?.body??r.note,...(note?.points??[]),r.detail].some(t=>t&&(t.includes(`[[${kind}:${id}|`)||(kind==='person'&&t.includes(`[[person:${id}@`))));
+  });
   return hits.length?`<ul class="backlinks">${hits.map(r=>`<li><a href="${base}${r.work}/#${r.id}">${r.label}</a><span>${esc(personMap.get(workMap.get(r.work).authors[0]).name)} · ${workMap.get(r.work).year}</span></li>`).join('')}</ul>`:'<p class="empty-state">No marked passages yet.</p>';
 }
 const mark=`<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 25Q15 29 27 23L24 6Q15 11 8 7ZM6 18Q16 23 26 16M7 12Q16 17 25 11M13 27 15 9M21 25 20 8"/></svg>`;
@@ -121,7 +127,7 @@ function save(route,html){
   const nav=ordinary.match(/<nav class="reading-nav"[\s\S]*?<\/nav>/)?.[0]??'';
   const layoutData={title:layoutWork.title,year:layoutWork.year,base,nav,essays:commentariesFor(layoutWork.id),furtherReading:furtherReadingFor(layoutWork.id)};
   html=html.replace(/<script[^>]+src="[^"]*(?:parallel-reader|companion-reader)\.mjs[^"]*"[^>]*><\/script>/g,'');
-  html=html.replace('</head>',`<link rel="stylesheet" href="${base}reader-layout.css?v=${layoutVersion}"><script id="reader-layout-data" type="application/json">${JSON.stringify(layoutData).replaceAll('<','\\u003c')}</script><script type="module" src="${base}reader-layout.mjs?v=${layoutVersion}"></script></head>`);
+  html=html.replace('</head>',`<link rel="stylesheet" href="${base}${marginAssets.css}"><link rel="stylesheet" href="${base}reader-layout.css?v=${layoutVersion}"><script id="reader-layout-data" type="application/json">${JSON.stringify(layoutData).replaceAll('<','\\u003c')}</script><script defer src="${base}${marginAssets.js}"></script><script type="module" src="${base}reader-layout.mjs?v=${layoutVersion}"></script></head>`);
  }
  const dir=path.join(dist,route);mkdirSync(dir,{recursive:true});writeFileSync(path.join(dir,'index.html'),italicizeTitles(html));
 }
@@ -191,10 +197,13 @@ function citeBox(w){
 }
 function passage(r){
   const text=r.text;
+  const note=passageNotes.papers[r.id]??{title:r.title,body:r.note};
+  const noteBody=(note.body?`<p>${linked(note.body,'../')}</p>`:'')
+    +(note.points?.length?`<ul>${note.points.map(point=>`<li>${linked(point,'../')}</li>`).join('')}</ul>`:'');
   const precise=r.proof?statementMap.get(r.proof):r.statement?statementMap.get(r.statement):!r.historicalText&&statements1859.find(s=>s.anchor===r.id);
   const proofLink=precise?`<a class="proof-link" href="#${precise.id}">${precise.id==='statement-conjecture'?'Precise statement & status':'Precise statement & proof'} →</a>`:'';
   const source=r.sourceUrl?`<a class="source-page" href="${esc(r.sourceUrl)}" target="_blank" rel="noopener">${esc(r.sourceLabel)} · ${r.label} ↗</a>`:r.page?`<a class="source-page" href="${sources.german1859}#page=${r.page+1}" target="_blank" rel="noopener">German p. ${r.page} ↗</a>`:'';
-  return `<section id="${r.id}" class="passage${r.type==='Editorial bridge'?' editorial-passage':''}" aria-label="${esc(r.label)}"><div class="original"><div class="passage-meta"><a class="passage-ref" href="#${r.id}">${r.label} <span aria-hidden="true">¶</span></a>${source}</div>${text.startsWith('<')||text.startsWith('\\[')?linked(text,'../'):`<p>${linked(text,'../')}</p>`}${r.historicalText?`<details class="historical-wording"><summary>${esc(r.historicalLabel??'Clifford’s 1873 wording')}</summary>${r.historicalText.startsWith('<')?r.historicalText:`<p>${r.historicalText}</p>`}</details>`:''}</div>${r.note?`<aside class="commentary" aria-label="Commentary on this passage"><span class="note-type">${esc(r.type)}</span><h3>${r.title}</h3><div class="note-prose"><p>${linked(r.note,'../')}</p></div>${proofLink}${r.figureHtml??''}${r.figure?(figures[r.figure]??figuresGauss[r.figure]??figures1854[r.figure]??figures1859[r.figure]??figuresEuler[r.figure]??figuresEulerMore[r.figure]??figuresLogarithms[r.figure]??figuresBridges[r.figure]??figuresResidues[r.figure]):''}${r.detail?`<details class="derivation"><summary>Work through the details</summary><div>${linked(r.detail,'../')}</div></details>`:''}</aside>`:''}</section>`;
+  return `<section id="${r.id}" class="passage${r.type==='Editorial bridge'?' editorial-passage':''}" aria-label="${esc(r.label)}"><div class="original"><div class="passage-meta"><a class="passage-ref" href="#${r.id}">${r.label} <span aria-hidden="true">¶</span></a>${source}</div>${text.startsWith('<')||text.startsWith('\\[')?linked(text,'../'):`<p>${linked(text,'../')}</p>`}${r.historicalText?`<details class="historical-wording"><summary>${esc(r.historicalLabel??'Clifford’s 1873 wording')}</summary>${r.historicalText.startsWith('<')?r.historicalText:`<p>${r.historicalText}</p>`}</details>`:''}</div>${noteBody?`<aside class="commentary" aria-label="Commentary on this passage"><span class="note-type">${esc(r.type??'Commentary')}</span>${note.title?`<h3>${note.title}</h3>`:''}<div class="note-prose">${noteBody}</div>${proofLink}${r.figureHtml??''}${r.figure?(figures[r.figure]??figuresGauss[r.figure]??figures1854[r.figure]??figures1859[r.figure]??figuresEuler[r.figure]??figuresEulerMore[r.figure]??figuresLogarithms[r.figure]??figuresBridges[r.figure]??figuresResidues[r.figure]):''}${r.detail?`<details class="derivation"><summary>Work through the details</summary><div>${linked(r.detail,'../')}</div></details>`:''}</aside>`:''}</section>`;
 }
 function reader(w,toc,content,editionNote,options={}){
   const geometry=w.id==='riemann-1854';

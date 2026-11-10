@@ -1,4 +1,5 @@
 // Authored commentary. The main column is rendered separately from upstream LaTeX.
+import sharedPassageNotes from '../../../shared/passage-notes.json' with {type:'json'};
 const r=String.raw;
 const b=(symbol,value,note='')=>({symbol,value,note});
 const model=(title,bindings,check,result,note='')=>({title,bindings,check,result,note,scope:'section'});
@@ -582,14 +583,6 @@ S_{(T_i)}=k[T_j/T_i:j\ne i],\\
 U_i=\operatorname{Spec}S_{(T_i)}\cong\mathbb A_k^n.
 \end{gathered}
 \]`,'',r`Normalize the nonzero coordinate \(T_i\) to one.`);
-const projOverlap={...model('overlapping projective charts',[],'',''),points:[
- r`\(S=\mathbb C[t_0,\ldots,t_n]\), \(f=t_0\), \(g=t_1\)`,
- r`\(D_+(f)\cong\operatorname{Spec}\mathbb C[x_1,\ldots,x_n]\), \(\displaystyle x_j=\frac{t_j}{t_0}\quad(j\ne 0)\)`,
- r`\(D_+(g)\cong\operatorname{Spec}\mathbb C[y_0,y_2,\ldots,y_n]\), \(\displaystyle y_j=\frac{t_j}{t_1}\quad(j\ne 1)\)`,
- r`\(D_+(f)\cap D_+(g)=D_+(fg)\)`,
- r`\(S_{(fg)}=(S_{(f)})_{x_1}\) \(=(S_{(g)})_{y_0}\)`,
- r`\(\displaystyle y_0=\frac{1}{x_1}\), \(\displaystyle y_j=\frac{x_j}{x_1}\quad(j\ge 2)\)`
-]};
 const properLine=model('limits at infinity',[
  b('S',r`\operatorname{Spec}\mathbb C`),
  b('X',r`\mathbb P^1_{\mathbb C}`),
@@ -1129,7 +1122,6 @@ const passageNotes={
  '005A':models.compact,
  '002E':padicLimit,
  '002F':sphereColimit,
- '01M4':projOverlap,
  '01ET':{...cechSpectral,examples:[cechSphere]},
  '01MN':{...twistCharts,examples:[{...twistSections,scope:"statement"},{...twistTensor,scope:"statement"}]},
  '01MS':twistCharts,
@@ -1204,11 +1196,14 @@ Let $\varphi : R \to S$ be a ring map.`,
  }
 };
 
-export const noteTags=[...Object.keys(sectionNotes),...Object.keys(passageNotes)];
+const sharedNotes=Object.fromEntries(Object.entries(sharedPassageNotes.stacks).map(([tag,{title,body,points}])=>[
+ tag,{...model(title||'example',[],'','',body),points}
+]));
+export const noteTags=[...Object.keys(sectionNotes),...Object.keys(passageNotes),...Object.keys(sharedNotes)];
 
 export function notesFor(sectionTag,passageTag){
  const prose=proseNotes[sectionTag];
- const passage=passageNotes[passageTag]||(prose?.id===passageTag?prose?.example:null);
+ const passage=sharedNotes[passageTag]||passageNotes[passageTag]||(prose?.id===passageTag?prose?.example:null);
  const primary=passage?{...passage,scope:'statement'}:sectionNotes[sectionTag];
  if(!primary)return {tag:sectionTag,examples:[]};
  return {

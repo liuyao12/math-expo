@@ -92,7 +92,7 @@
         const peg=section
           ?anchor.querySelector('.source-heading-row > :is(h2,h3)')||anchor
           :anchor.querySelector('.statement-heading')||anchor;
-        const limit=anchor.closest('.source-section')||anchor;
+        const owner=anchor.closest('.source-section')||anchor;
         const band=document.createElement('div');
         band.className='example-band';band.dataset.exampleAnchor=key;
         const note=document.createElement('div');
@@ -103,7 +103,7 @@
         label.append(link);note.append(label);
         note.insertAdjacentHTML('beforeend',data[key].html);
         band.append(note);
-        return {anchor,peg,limit,band,note};
+        return {anchor,peg,section:owner,band,note};
       }).filter(Boolean).sort((a,b)=>a.anchor.compareDocumentPosition(b.anchor)&Node.DOCUMENT_POSITION_FOLLOWING?-1:1);
       flow.append(...notes.map(note=>note.band));dock.append(flow);
       dock.classList.add('has-floating-examples');
@@ -119,31 +119,26 @@
         flow.style.setProperty('--example-viewport',available+'px');
         const measured=notes.map(entry=>({
           ...entry,
-          start:entry.peg.getBoundingClientRect().top-origin,
-          end:entry.limit.getBoundingClientRect().bottom-origin,
+          top:entry.peg.getBoundingClientRect().top,
           chrome:groupChrome(entry.note),
         }));
         const titles=entry=>[...entry.note.querySelectorAll('.example-disclosure > summary')].map(summary=>summary.textContent.trim()).join('\n');
         const visible=measured.filter((entry,index)=>{
           const next=measured[index+1];
           // Prefer the definition's group to an adjacent duplicate at its section introduction.
-          const repeated=next&&entry.anchor.classList.contains('source-section')&&next.anchor.closest('.source-section')===entry.anchor&&next.start-entry.start<entry.chrome+12&&titles(entry)===titles(next);
+          const repeated=next&&entry.anchor===entry.section&&next.section===entry.section&&next.top-entry.top<entry.chrome+12&&titles(entry)===titles(next);
           return !repeated;
         });
         const visibleBands=new Set(visible.map(({band})=>band));
         for(const {band} of notes)band.hidden=!visibleBands.has(band);
-        bands=visible.map((entry,index)=>{
-          const {band,note,chrome}=entry;
-          const next=visible[index+1];
-          const end=next?.limit===entry.limit?Math.min(entry.end,next.start):entry.end;
-          const height=Math.max(0,end-entry.start);
+        bands=window.MathExpoMargins.sectionSpans(visible).map(({band,note,chrome,top,height})=>{
           const room=Math.min(height,available);
           // A short band or viewport scrolls the whole card.
           const compact=room-chrome<32;
           note.classList.toggle('is-compact',compact);
           if(compact)note.tabIndex=0;
           else note.removeAttribute('tabindex');
-          band.style.top=entry.start+'px';band.style.height=height+'px';
+          band.style.top=top-origin+'px';band.style.height=height+'px';
           band.style.setProperty('--example-span',height+'px');
           fitGroup(note,room,chrome);
           return {band,note,chrome,compact,height};

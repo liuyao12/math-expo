@@ -78,6 +78,12 @@ if(primary){
  oldMain?.replaceWith(columns);if(!columns.isConnected)document.body.append(columns);
  document.documentElement.classList.add('work-reader-root');
  document.body.classList.remove('parallel-reader','commentary-collapsed','notes-hidden');document.body.classList.add('work-reader');
+ // The zeta reading uses its margin for a single exhibit that follows several sections.
+ const marginItems=passageNotes.filter(note=>!note.closest('.zeta-illustrated-reading')).map(content=>{
+  const anchor=content.closest('.passage');
+  return {content,anchor,section:anchor.closest('.paper-part,#weil-guide')||anchor};
+ });
+ window.MathExpoMargins.mount({root:primary,items:marginItems,media:'(min-width: 701px)',scroller:textScroll});
  let essayOpen=false,essayPosition=0;
  const readingLinks=createReadingLinks({paper:textScroll,commentary:authored,controls:linkControls,isOpen:()=>essayOpen,getArticle:()=>[...authored.querySelectorAll('[data-authored-id]')].find(article=>!article.hidden)});
  const essayPositions=new Map();let selectedEssay='';
@@ -92,7 +98,7 @@ if(primary){
   if(changed){if(!open)essayPosition=authored.scrollTop;window.dispatchEvent(new CustomEvent('paper:commentary-mode',{detail:{open}}));}
   essayOpen=open;margin.hidden=!open;essayToggle.hidden=open;document.body.classList.toggle('work-essay-open',open);
   if(changed&&open)authored.scrollTop=essayPosition;
-  for(const note of passageNotes)note.inert=open;
+  for(const note of passageNotes)(note.closest('.anchored-margin-slot')||note).inert=open;
   for(const rail of primary.querySelectorAll('.zeta-rail,.surfaces-rail'))rail.inert=open;
   essayToggle.textContent=open?'Collapse authored commentary':'Authored commentary';essayToggle.setAttribute('aria-expanded',String(open));
   if(sync){const url=new URL(location.href);url.searchParams.set('view',open?'commentary':'notes');history.replaceState(null,'',url);}
@@ -109,7 +115,7 @@ if(primary){
  function navigate(hash){
   let id;try{id=decodeURIComponent(hash.slice(1));}catch{return;}
   const target=document.getElementById(id);if(!target)return;
-  if(primary.contains(target)){if(target.closest('.commentary,.zeta-rail,.surfaces-rail'))setAuthored(false,true);scrollWithin(textScroll,target);}
+  if(primary.contains(target)){if(target.closest('.commentary,.zeta-rail,.surfaces-rail'))setAuthored(false,true);scrollWithin(textScroll,target.closest('.anchored-margins .anchored-margin-slot')?.parentElement??target);}
   else return;
   document.body.classList.remove('contents-open');contentsButton.setAttribute('aria-expanded','false');
  }

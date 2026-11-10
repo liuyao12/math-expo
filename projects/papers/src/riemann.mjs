@@ -16,8 +16,7 @@ export const introduction = [
   {
     id: 'plan-3', label: 'Plan · paragraph 3',
     text: `It will follow from this that a multiply extended magnitude is capable of different measure-relations, and consequently that space is only a particular case of a triply extended magnitude. But hence flows as a necessary consequence that the propositions of geometry cannot be derived from general notions of magnitude, but that the properties which distinguish space from other conceivable triply extended magnitudes are only to be deduced from experience.`,
-    type: 'Modern viewpoint', title: 'A space, then a way to measure',
-    note: m`We distinguish a smooth manifold \(M\) from a metric \(g\) placed on it. The same manifold can carry many metrics. Riemann’s “space” here is physical space: experience must inform which mathematical model describes it. This is not a claim that mathematical theorems themselves need experimental proof.`
+    type: 'Modern viewpoint'
   },
   {
     id: 'plan-4', label: 'Plan · paragraph 4',

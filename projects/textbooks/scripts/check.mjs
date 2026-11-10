@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import passageNotes from '../../../shared/passage-notes.json' with { type: 'json' };
 const root = fileURLToPath(new URL('../', import.meta.url));
 const context = { window:{} };
 for (const file of ['hat-turtle.js','chapters.js','app.js','conventions.js','matrix-demo.js','higher-geometry.js','tile-lattice-demo.js','sphere-tangent-demo.js','tangent-area-demo.js']) new vm.Script(fs.readFileSync(path.join(root,'course-site',file),'utf8'), { filename:file });
@@ -315,12 +316,17 @@ vm.runInNewContext(fs.readFileSync(path.join(root,'course-site/chapters.js'),'ut
 const katexContext = {};
 vm.runInNewContext(fs.readFileSync(path.join(root,'course-site/vendor/katex/katex.min.js'),'utf8'),katexContext);
 const chapters=context.window.COURSE.chapters;
-const ids=new Set();let formulas=0;
+const ids=new Set(),noteAnchors=new Set();let formulas=0;
 for(const chapter of chapters){
   if(ids.has(chapter.id))throw Error(`Duplicate chapter: ${chapter.id}`);ids.add(chapter.id);
   if(chapter.sections.length<2)throw Error(`Missing section in ${chapter.id}`);
   for(const section of chapter.sections){
-    for(const text of [section.body,section.note||'',section.example?.body||'',...(section.examples||[]).map(example=>example.body||'')]){
+    if(section.anchor){
+      if(noteAnchors.has(section.anchor))throw Error(`Duplicate passage anchor: ${section.anchor}`);
+      noteAnchors.add(section.anchor);
+    }
+    const note=passageNotes.textbooks[section.anchor];
+    for(const text of [section.body,note?.body??section.note??'',...(note?.points??[]),section.example?.body||'',...(section.examples||[]).map(example=>example.body||'')]){
       if(/[\x00-\x08\x0b\x0c\x0e-\x1f]/.test(text))throw Error(`Control character in ${chapter.id}`);
       for(const match of text.matchAll(/\\\(([\s\S]*?)\\\)|\\\[([\s\S]*?)\\\]/g)){
         const formula=match[1]??match[2];
@@ -338,6 +344,7 @@ for(const chapter of chapters){
     }
   }
 }
+for(const anchor of Object.keys(passageNotes.textbooks))if(!noteAnchors.has(anchor))throw Error(`Unresolved passage note: ${anchor}`);
 for(const entry of notation.entries){
   for(const mode of ['row','column']){
     for(const decorate of [false,true]){

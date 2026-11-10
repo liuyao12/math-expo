@@ -1,0 +1,22 @@
+@media screen {
+  .anchored-margins .anchored-margin-slot {
+    position: relative;
+    align-self: start;
+    min-width: 0;
+    height: 0;
+    overflow-anchor: none;
+  }
+  .anchored-margins .anchored-margin-band {
+    position: absolute;
+    inset-inline: 0;
+    top: var(--anchored-margin-offset);
+    height: var(--anchored-margin-span);
+  }
+  .anchored-margins .anchored-margin-card {
+    position: sticky;
+    top: var(--anchored-margin-inset);
+    max-height: min(var(--anchored-margin-span), var(--anchored-margin-viewport));
+    overflow: auto;
+    scrollbar-width: thin;
+  }
+}

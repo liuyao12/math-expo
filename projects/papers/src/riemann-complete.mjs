@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import {introduction,lineElement} from './riemann.mjs';
 import {modern1854} from './modern-1854.mjs';
+import passageNotes from '../../../shared/passage-notes.json' with {type:'json'};
 export const source1854=JSON.parse(fs.readFileSync(new URL('./riemann-1854-source.json',import.meta.url),'utf8'));
 const m=String.raw;
 const additions=[
@@ -39,7 +40,8 @@ const additions=[
 ];
 const old=[...introduction,...lineElement].map(r=>({...r,label:r.label.replace('paragraph','passage'),text:modern1854[r.id]}));
 old.find(r=>r.id==='line-6').text=old.find(r=>r.id==='line-6').text.replace('homogeneous quadratic polynomial','[[concept:line-element-1854|homogeneous quadratic polynomial]]');
-old.find(r=>r.id==='plan-3').note=`The same coordinate description can admit different length rules. Riemann will examine a particular quadratic class, rather than assuming the full modern definition of a smooth manifold and metric at the outset. His “space” here is physical space: experience informs which measurement assumptions apply to it.`;
+const planNote=passageNotes.papers['plan-3'];
+Object.assign(old.find(r=>r.id==='plan-3'),{title:planNote.title,note:planNote.body??planNote.points?.join('\n')});
 old.find(r=>r.id==='line-4').note=m`At a fixed point, the proposed rule satisfies \(F(x,\lambda v)=|\lambda|F(x,v)\): it scales with a step and is unchanged by reversal. This does not force a quadratic square. Positivity and a triangle inequality are additional issues for a norm-like rule. Riemann himself considers a quartic alternative below.`;
 const byId=new Map([...old,...additions].map(r=>[r.id,r]));
 export const passages1854=source1854.passages.map(s=>{const r=byId.get(s.id);if(!r)throw Error('Missing Riemann rendering '+s.id);return {...r,historicalText:s.historical,sourceStart:s.start,sourceEnd:s.end};});

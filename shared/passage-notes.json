@@ -1,0 +1,26 @@
+{
+  "papers": {
+    "plan-3": {
+      "title": "A space, then a way to measure",
+      "body": "The same coordinate description can admit different length rules. Riemann will examine a particular quadratic class, rather than assuming the full modern definition of a smooth manifold and metric at the outset. His “space” here is physical space: experience informs which measurement assumptions apply to it."
+    }
+  },
+  "textbooks": {
+    "projection-residual": {
+      "body": "For the coordinate plane \\(z=0\\), projection and reflection have particularly simple matrices:\\[P=\\begin{pmatrix}1&0&0\\\\0&1&0\\\\0&0&0\\end{pmatrix},\\]\\[R=\\begin{pmatrix}1&0&0\\\\0&1&0\\\\0&0&-1\\end{pmatrix}.\\]"
+    }
+  },
+  "stacks": {
+    "01M4": {
+      "title": "overlapping projective charts",
+      "points": [
+        "\\(S=\\mathbb C[t_0,\\ldots,t_n]\\), \\(f=t_0\\), \\(g=t_1\\)",
+        "\\(D_+(f)\\cong\\operatorname{Spec}\\mathbb C[x_1,\\ldots,x_n]\\), \\(\\displaystyle x_j=\\frac{t_j}{t_0}\\quad(j\\ne 0)\\)",
+        "\\(D_+(g)\\cong\\operatorname{Spec}\\mathbb C[y_0,y_2,\\ldots,y_n]\\), \\(\\displaystyle y_j=\\frac{t_j}{t_1}\\quad(j\\ne 1)\\)",
+        "\\(D_+(f)\\cap D_+(g)=D_+(fg)\\)",
+        "\\(S_{(fg)}=(S_{(f)})_{x_1}\\) \\(=(S_{(g)})_{y_0}\\)",
+        "\\(\\displaystyle y_0=\\frac{1}{x_1}\\), \\(\\displaystyle y_j=\\frac{x_j}{x_1}\\quad(j\\ge 2)\\)"
+      ]
+    }
+  }
+}

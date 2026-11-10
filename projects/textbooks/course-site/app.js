@@ -179,6 +179,11 @@
     const prose=(section,i)=>'<div class="prose"><h2><span class="section-number">'+Number(chapter.number)+'.'+(i+1)+'</span>'+section.title+'</h2>'+section.body+'</div>';
     const exampleBody=example=>(example.demo?'<div data-demo="'+example.demo+'"></div>':'')+(example.body?'<div class="figure side-example'+(example.demo?' example-followup':'')+'">'+example.body+'</div>':'');
     const margin=(section,i)=>{
+      const note=window.COURSE.passageNotes?.[section.anchor];
+      if(note)return '<span class="margin-label">IN THE MARGIN</span>'
+        +(note.title?'<h3>'+note.title+'</h3>':'')
+        +(note.body?'<p class="margin-note">'+note.body+'</p>':'')
+        +(note.points?.length?'<ul class="margin-note">'+note.points.map(point=>'<li>'+point+'</li>').join('')+'</ul>':'');
       if(section.examples)return '<span class="margin-label">RUNNING EXAMPLES</span><div class="example-accordion">'+section.examples.map((example,j)=>'<details class="example-choice" name="examples-'+chapter.id+'-'+i+'"'+((section.openExample||0)===j?' open':'')+'><summary>'+example.title+'</summary>'+exampleBody(example)+'</details>').join('')+'</div>';
       if(section.example)return '<span class="margin-label">'+(section.example.label||'RUNNING EXAMPLE')+'</span><div class="figure side-example"><h3>'+section.example.title+'</h3>'+section.example.body+'</div>';
       return section.demo?'<div data-demo="'+section.demo+'"></div>':'<span class="margin-label">IN THE MARGIN</span><p class="margin-note">'+(section.note||'')+'</p>';
@@ -196,6 +201,10 @@
       if(choice.open)choice.parentElement.querySelectorAll('.example-choice').forEach(other=>{if(other!==choice)other.open=false;});
     }));
     chapterElement.querySelectorAll('[data-demo]').forEach(holder=>mountDemo(holder,holder.dataset.demo));
+    const items=[...chapterElement.querySelectorAll('.section-grid')].map(section=>({
+      section,anchor:section,content:section.querySelector('.margin')
+    }));
+    cleanups.push(window.MathExpoMargins.mount({root:chapterElement,items,media:'(min-width: 941px)',header:readerTop}));
     renderMath(chapterElement);window.MATRIX_NOTATION.remember(chapterElement);window.MATRIX_NOTATION.applyCopy(chapterElement);document.title=`${chapter.short} — Linear Algebra`;
   }
   function navigate(){
