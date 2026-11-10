@@ -29,13 +29,17 @@
   border: 1px solid var(--line, #dcded2);
   font: 12px/1.4 var(--sans, system-ui, sans-serif);
 }
+@media screen {
+  .comment-span { padding-inline-end: 1.65rem; }
+}
 .paragraph-comment {
+  position: relative;
   float: inline-end;
   display: grid;
   place-items: center;
   block-size: 1lh;
-  inline-size: 1.2em;
-  margin-inline-start: .35em;
+  inline-size: 1.35rem;
+  margin-inline: .3rem -1.65rem;
   padding: 0;
   border: 0;
   background: transparent;
@@ -45,6 +49,16 @@
   user-select: none;
 }
 .paragraph-comment::before { content: "+"; }
+.paragraph-comment::after {
+  content: "";
+  position: absolute;
+  inset-block-start: var(--comment-line-start, 0px);
+  inset-inline-start: 0;
+  block-size: var(--comment-line-height, 0px);
+  border-inline-start: 1px solid currentColor;
+  opacity: .5;
+  pointer-events: none;
+}
 .paragraph-comment:hover { text-decoration: underline; }
 .paragraph-comment:focus-visible { outline: 1px solid currentColor; }
 @media (hover: hover) {

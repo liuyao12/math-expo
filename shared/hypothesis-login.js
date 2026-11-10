@@ -173,6 +173,38 @@
   const readingParagraphs = readingText + ' p, #chapter .chapter-intro';
   const statementBodies = '.passage:not(.prose) > .source-body, #chapter .prose .definition';
   const lists = 'ol, ul';
+  const commentSpans = new WeakMap();
+  const commentSizes = new ResizeObserver(entries => {
+    const groups = new Set(entries.map(({ target }) => commentSpans.get(target)));
+    const sizes = [...groups].map(({ start, end, button }) => {
+      const { top } = start.getBoundingClientRect();
+      return {
+        button,
+        offset: top - button.getBoundingClientRect().top,
+        height: end.getBoundingClientRect().bottom - top,
+      };
+    });
+    for (const { button, offset, height } of sizes) {
+      button.style.setProperty('--comment-line-start', offset + 'px');
+      button.style.setProperty('--comment-line-height', Math.max(0, height) + 'px');
+    }
+  });
+  // Watch nearby text, including long lists whose button has scrolled away.
+  const nearbyComments = new IntersectionObserver(entries => {
+    const groups = new Set();
+    for (const { target, isIntersecting } of entries) {
+      const group = commentSpans.get(target);
+      if (isIntersecting) group.visible.add(target);
+      else group.visible.delete(target);
+      groups.add(group);
+    }
+    for (const { parts, visible } of groups) {
+      for (const part of parts) {
+        if (visible.size && part.isConnected) commentSizes.observe(part, { box: 'border-box' });
+        else commentSizes.unobserve(part);
+      }
+    }
+  }, { rootMargin: '160px 0px' });
   function addCommentButtons(root) {
     const paragraphNumbers = new Map();
     const draftKeys = new Map();
@@ -223,6 +255,13 @@
       addComment.addEventListener('click', () => annotateParagraph(lead, block, end, key, previousKeys));
       lead.prepend(addComment);
       if (block !== lead) block.classList.add('comment-block');
+      const parts = [block, ...following];
+      const group = { start: block, end, button: addComment, parts, visible: new Set() };
+      for (const part of parts) {
+        part.classList.add('comment-span');
+        commentSpans.set(part, group);
+        nearbyComments.observe(part);
+      }
       for (const continuation of following) {
         continuation.addEventListener('pointerenter', () => addComment.classList.add('is-hovered'));
         continuation.addEventListener('pointerleave', () => addComment.classList.remove('is-hovered'));
@@ -232,6 +271,17 @@
   addCommentButtons(document);
 
   if (chapter) {
-    new MutationObserver(() => addCommentButtons(chapter)).observe(chapter, { childList: true });
+    new MutationObserver(records => {
+      for (const { removedNodes } of records) {
+        for (const node of removedNodes) {
+          if (!(node instanceof Element) || node.isConnected) continue;
+          for (const part of [node, ...node.querySelectorAll('.comment-span')]) {
+            nearbyComments.unobserve(part);
+            commentSizes.unobserve(part);
+          }
+        }
+      }
+      addCommentButtons(chapter);
+    }).observe(chapter, { childList: true });
   }
 })();
