@@ -81,16 +81,12 @@ M=\varinjlim_{U\ni a}\operatorname{Hol}(U),\\
  ],r`\[
 A^{-1}=\frac{\operatorname{adj}(A)}{\det A}
 \]`,'',r`Invert the determinant to make the universal matrix invertible.`),
- local:{...model('holomorphic functions near a point',[],'',''),points:[
-  r`\(R=\{\text{holomorphic functions }f\text{ defined at }a\in\mathbb C\}\), i.e. defined on some neighbourhood of \(a\). Identify functions that agree on a smaller neighbourhood of \(a\).`,
-  r`Addition and multiplication are defined by restricting to a common neighbourhood of \(a\).`,
-  r`\(\mathfrak m=\{f\in R:f(a)=0\}\).`,
-  r`\(\kappa=R/\mathfrak m\cong\mathbb C\).`,
-  r`These are called the germs of holomorphic functions at \(a\) and may be identified with convergent power series
-\[
-\sum_{n=0}^{\infty}c_n(z-a)^n
-\]
-on a neighbourhood of \(a\). The ring is denoted \(\mathbb C\{z-a\}\).`
+ local:{...model('germs of holomorphic functions',[],'',''),points:[
+  r`\(R=\{\text{holomorphic functions }f\text{ defined at }a\in\mathbb C\}\), i.e., defined on some neighborhood of \(a\)`,
+  r`addition and multiplication are defined by restricting to a smaller domain, if necessary`,
+  r`\(\mathfrak m=\{f\in R:f(a)=0\}\)`,
+  r`\(\kappa=R/\mathfrak m\cong\mathbb C\)`,
+  r`Such an \(f\) may be better identified with the convergent power series \(\sum c_n(z-a)^n\), and referred to as the germ of holomorphic functions. The ring \(R\) is sometimes denoted \(\mathbb C\{z-a\}\) as a subset of \(\mathbb C[[z-a]]\) of formal power series.`
  ]},
  spectrum:model('crossing lines',[
   b('R',r`\mathbb C[x,y]/(xy)`),b('X',r`\operatorname{Spec}R`),
