@@ -13,7 +13,7 @@ import {exampleFor} from '../src/examples.mjs';
 import {renderOutline} from '../src/reading-outline.mjs';
 
 const root=fileURLToPath(new URL('../',import.meta.url));
-const assetVersion=createHash('sha256').update(fs.readFileSync(path.join(root,'public/reader.js'))).update(fs.readFileSync(path.join(root,'public/style.css'))).update(fs.readFileSync(path.join(root,'public/dependency-graph.js'))).update(fs.readFileSync(path.join(root,'public/graph-geometry.js'))).update(fs.readFileSync(path.join(root,'public/graph-render.js'))).update(fs.readFileSync(path.join(root,'public/math-lazy.js'))).update(fs.readFileSync(path.join(root,'public/math-config.js'))).digest('hex').slice(0,12);
+const assetVersion=createHash('sha256').update(fs.readFileSync(path.join(root,'public/reader.js'))).update(fs.readFileSync(path.join(root,'public/hypothesis-notes.js'))).update(fs.readFileSync(path.join(root,'public/style.css'))).update(fs.readFileSync(path.join(root,'public/dependency-graph.js'))).update(fs.readFileSync(path.join(root,'public/graph-geometry.js'))).update(fs.readFileSync(path.join(root,'public/graph-render.js'))).update(fs.readFileSync(path.join(root,'public/math-lazy.js'))).update(fs.readFileSync(path.join(root,'public/math-config.js'))).digest('hex').slice(0,12);
 const dist=path.join(root,'dist');
 fs.rmSync(dist,{recursive:true,force:true});fs.mkdirSync(dist,{recursive:true});
 fs.cpSync(path.join(root,'public'),dist,{recursive:true});

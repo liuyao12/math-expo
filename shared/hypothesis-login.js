@@ -258,6 +258,7 @@
       addComment.addEventListener('click', () => annotateParagraph(lead, block, end, key, previousKeys));
       lead.prepend(addComment);
       if (block !== lead) block.classList.add('comment-block');
+      block.classList.add('comment-anchor');
       const parts = [block, ...following];
       const group = { start: block, end, button: addComment, parts, visible: new Set() };
       for (const part of parts) {

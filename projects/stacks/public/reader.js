@@ -59,12 +59,16 @@
     if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}
   });
   const dataNode=$('#example-data');
+  const annotationModule=new URL('hypothesis-notes.js',document.currentScript.src);
+  annotationModule.search=new URL(document.currentScript.src).search;
   let current='local-functions',follow=true,selectionPinned=false,data={},passages=[],keys=[],lastReading=current,lastReadingContext=null,activeContext=null;
   function initExamples(){
     data=JSON.parse(dataNode.textContent);
     keys=Object.keys(data).filter(key=>data[key].html||data[key].proofHtml);
     current=Object.keys(data)[0];lastReading=current;passages=$$('.passage[data-example]');
     const exampleContent=$('#example-content');
+    const annotationKeys=new Map(),annotationHTML=new Map();
+    let mountAnnotations;
     const openCards=new Map();
     const tools=dock.querySelector('.example-sticky');
     const mobile=()=>matchMedia('(max-width:760px)').matches;
@@ -93,27 +97,63 @@
       const main=$('#main');
       const flow=document.createElement('div');
       flow.className='example-flow';
-      const notes=keys.map(key=>{
-        const anchor=document.getElementById(key);
-        if(!anchor||!main.contains(anchor)||!data[key].html)return null;
-        const section=anchor.classList.contains('source-section');
-        const peg=section
-          ?anchor.querySelector('.source-heading-row > :is(h2,h3)')||anchor
-          :anchor.querySelector('.statement-heading')||anchor;
-        const owner=anchor.closest('.source-section')||anchor;
+      const makeNote=(key,anchor,peg,html)=>{
+        const section=anchor.closest('.source-section')||anchor;
         const band=document.createElement('div');
         band.className='example-band';band.dataset.exampleAnchor=key;
         const note=document.createElement('div');
         note.className='floating-example example-current';
         const label=document.createElement('div');label.className='example-step';
-        const link=document.createElement('a');link.href='#'+key;
-        link.textContent=anchor.dataset.sourceLabel||peg.textContent.trim();
+        const link=document.createElement('a');link.href='#'+anchor.id;
+        link.textContent=anchor.closest('.passage')?.dataset.sourceLabel||anchor.dataset.sourceLabel||peg.textContent.trim();
         label.append(link);note.append(label);
-        note.insertAdjacentHTML('beforeend',data[key].html);
+        note.insertAdjacentHTML('beforeend',html);
         band.append(note);
-        return {anchor,peg,section:owner,band,note};
-      }).filter(Boolean).sort((a,b)=>a.anchor.compareDocumentPosition(b.anchor)&Node.DOCUMENT_POSITION_FOLLOWING?-1:1);
+        return {key,anchor,peg,section,band,note};
+      };
+      const notes=keys.flatMap(key=>{
+        const anchor=document.getElementById(key);
+        if(!anchor||!main.contains(anchor)||!data[key].html)return [];
+        const peg=anchor.classList.contains('source-section')
+          ?anchor.querySelector('.source-heading-row > :is(h2,h3)')||anchor
+          :anchor.querySelector('.statement-heading')||anchor;
+        return [makeNote(key,anchor,peg,data[key].html)];
+      });
+      const textOrder=(a,b)=>a===b?0:a.compareDocumentPosition(b)&Node.DOCUMENT_POSITION_FOLLOWING?-1:1;
+      notes.sort((a,b)=>textOrder(a.anchor,b.anchor));
       flow.append(...notes.map(note=>note.band));dock.append(flow);
+      mountAnnotations=rows=>{
+        const byAnchor=new Map(notes.map(note=>[note.anchor,note]));
+        const grouped=new Map();
+        for(const {id,block,card} of rows){
+          const passage=block.closest('.passage');
+          const sourceAnchor=block.matches('.passage:not(.prose) > .source-body')?passage:block;
+          let entry=byAnchor.get(sourceAnchor);
+          if(!entry){
+            if(!sourceAnchor.id)sourceAnchor.id='hypothesis-paragraph-'+id;
+            const key=sourceAnchor.id;
+            entry=makeNote(key,sourceAnchor,block,'');
+            byAnchor.set(sourceAnchor,entry);
+            notes.push(entry);
+            data[key]??={html:''};
+            annotationKeys.set(sourceAnchor,key);
+            const candidates=contexts.get(entry.section);
+            if(candidates)candidates.push(sourceAnchor);
+          }
+          const noteCard=card(entry.key);
+          entry.note.append(noteCard);
+          if(!grouped.has(entry.key))grouped.set(entry.key,[]);
+          grouped.get(entry.key).push(noteCard.outerHTML);
+        }
+        for(const [key,cards] of grouped)annotationHTML.set(key,cards.join(''));
+        for(const candidates of contexts.values())candidates.sort(textOrder);
+        notes.sort((a,b)=>textOrder(a.anchor,b.anchor));
+        flow.append(...notes.map(note=>note.band));
+        update();
+        setExample(current,false,activeContext);
+        scheduleExampleLayout();
+      };
+      main.addEventListener('scroll',scheduleExampleLayout,{capture:true,passive:true});
       dock.classList.add('has-floating-examples');
       let stickyTop=99,bands=[];
       layoutAnchors=()=>{
@@ -125,7 +165,13 @@
         const available=Math.max(0,innerHeight-stickyTop-16);
         flow.style.setProperty('--example-top',stickyTop+'px');
         flow.style.setProperty('--example-viewport',available+'px');
-        const measured=notes.map(entry=>({
+        const measured=notes.filter(({peg})=>{
+          if(peg.closest('details:not([open])')||!peg.getClientRects().length)return false;
+          const proof=peg.closest('.proof-body');
+          if(!proof)return true;
+          const bounds=proof.getBoundingClientRect(),position=peg.getBoundingClientRect();
+          return position.top<bounds.bottom&&position.bottom>bounds.top;
+        }).map(entry=>({
           ...entry,
           top:entry.peg.getBoundingClientRect().top,
           chrome:groupChrome(entry.note),
@@ -194,10 +240,12 @@
       const proof=context?.dataset.proof==='true';
       const changed=activeContext!==context;
       activeContext=context;
-      const html=proof&&data[key].proofHtml?data[key].proofHtml:data[key].html;
+      const authored=proof&&data[key].proofHtml?data[key].proofHtml:data[key].html;
+      const html=authored+(annotationHTML.get(key)||'');
       const contentChanged=renderedExampleHTML!==html;
-      $('.example-paging').hidden=!html;
-      $('#example-index').hidden=!html;
+      const index=keys.indexOf(key);
+      $('.example-paging').hidden=!html||index<0;
+      $('#example-index').hidden=!html||index<0;
       if(contentChanged){
         for(const card of exampleContent.querySelectorAll('[data-example-card]'))openCards.set(card.dataset.exampleCard,card.open);
         exampleContent.innerHTML=html;
@@ -207,8 +255,8 @@
           if(open!==undefined)card.open=open;
         }
       }
-      $('#example-index').textContent=String(keys.indexOf(key)+1).padStart(2,'0');
-      $('#example-stage-label').textContent=context?.dataset.sourceLabel||'§26.2 · Locally ringed spaces';
+      $('#example-index').textContent=String(index+1).padStart(2,'0');
+      $('#example-stage-label').textContent=context?.dataset.sourceLabel||context?.closest('.passage')?.dataset.sourceLabel||'§26.2 · Locally ringed spaces';
       $('#example-stage-label').href='#'+(context?.id||'local-functions-0');
       $('#follow-reading').setAttribute('aria-pressed',String(follow));$('#follow-reading').textContent=follow?'Following reading':'Follow reading';
       $('#previous-example').disabled=keys.indexOf(key)===0;$('#next-example').disabled=keys.indexOf(key)===keys.length-1;
@@ -227,11 +275,11 @@
       const candidates=contexts.get(section)||[];
       let active=candidates[0];
       for(const passage of candidates){
-        if(!passage.getClientRects().length)continue;
+        if(passage.closest('details:not([open])')||!passage.getClientRects().length)continue;
         if(passage.getBoundingClientRect().top>readingLine)break;
         active=passage;
       }
-      if(active&&!dock.classList.contains('is-open')){lastReading=active.dataset.example;lastReadingContext=active;if(follow&&(lastReading!==current||activeContext!==active))setExample(lastReading,false,active);}
+      if(active&&!dock.classList.contains('is-open')){lastReading=annotationKeys.get(active)||active.dataset.example;lastReadingContext=active;if(follow&&(lastReading!==current||activeContext!==active))setExample(lastReading,false,active);}
       followOutline(section);
       const percent=denominator?Math.max(0,Math.min(1,scrollY/denominator)):0;$('.reading-progress span').style.width=percent*100+'%';
       fitVisibleExamples();
@@ -243,6 +291,10 @@
       update();
     });
     if(!activeContext)setExample(current);
+    if(mountAnnotations)import(annotationModule.href)
+      .then(({loadHypothesisNotes})=>loadHypothesisNotes($('#main')))
+      .then(rows=>{if(rows.length)mountAnnotations(rows);})
+      .catch(()=>{ /* Keep the editorial margin usable when Hypothesis is unavailable. */ });
     proofs.forEach(p=>p.addEventListener('toggle',update));
     const resumeSelection=e=>{if(selectionPinned&&!e.defaultPrevented&&!e.target.closest?.('#example-dock')){selectionPinned=false;follow=true;update();}};
     addEventListener('wheel',resumeSelection,{passive:true});addEventListener('touchmove',resumeSelection,{passive:true});

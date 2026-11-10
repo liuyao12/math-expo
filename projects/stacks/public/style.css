@@ -383,3 +383,17 @@ details[open] > summary .disclosure-chevron {
 .reading-title-row{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 20px;margin-bottom:12px}.reading-entry .reading-title-row h3{margin:0}.reading-section-count{font:13px/1.6 var(--sans);color:var(--green);white-space:nowrap}
 
 .formalization-links { padding-inline-start: 1.25rem; line-height: 1.8; }
+
+.hypothesis-comment .note-author {
+  min-inline-size: 0;
+  max-inline-size: 65%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.hypothesis-comment .example-body { overflow-wrap: anywhere; }
+.hypothesis-comment-link {
+  display: inline-block;
+  margin-block: .35rem .7rem;
+  color: var(--green);
+  font: 11px/1.5 var(--sans);
+}
