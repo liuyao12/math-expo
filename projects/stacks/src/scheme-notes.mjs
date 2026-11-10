@@ -106,14 +106,15 @@ h_i|_{U_i\cap U_j}=h_j|_{U_i\cap U_j}\\
 \]`,'',r`Local holomorphic formulas glue when they agree on overlaps.`),
  moduleSheaf:model('differential forms',[
   b('X',r`M\text{ a smooth manifold}`),
+  b('U',r`\text{a coordinate chart in }M`),
   b(r`\mathcal O(U)`,r`C^\infty(U)`),
-  b(r`\mathcal F(U)`,r`\Gamma(U,T^*M)`)
+  b(r`\mathcal F(U)`,r`\Omega^1(U)=\Gamma(U,T^*M)`)
  ],r`\[
 \begin{gathered}
-\omega=\sum_j a_j\,dx^j,\\
+\omega=\sum_j a_j\,dx^j\in\mathcal F(U),\qquad h\in\mathcal O(U),\\
 h\omega=\sum_j(ha_j)\,dx^j.
 \end{gathered}
-\]`,'',r`Multiplication by a function commutes with changes of coordinates.`),
+\]`,''),
  stalk:model('holomorphic germs',[
  X,b('x',r`a\in\mathbb C`),
  b('t',r`z-a`),F,
@@ -174,7 +175,7 @@ f^\sharp(h)=h\circ f
 t\longmapsto z^2,\\
 (f_x^\sharp)^{-1}((z))=(t)
 \end{gathered}
-\]`,'',r`Pullback preserves vanishing at the marked points.`),
+\]`,''),
  open:model('restriction to a chart',[
   sphereX,b('U',r`X\setminus\{\infty\}\cong\mathbb C_z`),
   b('j',r`(U\hookrightarrow X)`),
@@ -182,41 +183,40 @@ t\longmapsto z^2,\\
  ],r`\[
 \begin{gathered}
 \mathcal O_U(V)=\operatorname{Hol}(V)\quad(V\subseteq U),\\
-\mathcal O_{U,a}=\mathcal O_{X,a}
+\mathcal O_{U,a}=\mathcal O_{X,a}\qquad(a\in U).
 \end{gathered}
-\]`,'',r`The chart has the same germs as the sphere at its points.`),
+\]`,''),
  algebraGlue:model('zero loci',[
   R,b('M',r`R/(z(z-1))`),
   b(r`\mathfrak m_0,\mathfrak m_1`,r`(z),(z-1)`)
  ],r`\[
 \begin{gathered}
-M\longrightarrow M_{\mathfrak m_0}\times M_{\mathfrak m_1},\\
-[h]\longmapsto(h(0),h(1))
+M\xrightarrow{\sim}M_{\mathfrak m_0}\times M_{\mathfrak m_1}
+\cong\mathbb C\times\mathbb C,\\
+[h]\longmapsto(h(0),h(1)).
 \end{gathered}
-\]`,'',r`Evaluation on two points is the local vanishing test here.`),
+\]`,''),
  regularGlue:model('rational functions',[
   R,b('f_1,f_2',r`z,1-z`),
   b('R_{f_1}',r`\mathbb C[z,1/z]`),
   b('R_{f_2}',r`\mathbb C[z,1/(1-z)]`)
  ],r`\[
 \begin{gathered}
-R_{f_1}\cap R_{f_2}=R\\
-\text{inside }\mathbb C(z)
+f_1+f_2=1,\\
+R_{f_1}\cap R_{f_2}=R\qquad\text{inside }\mathbb C(z).
 \end{gathered}
-\]`,'',r`A common rational function has no poles when either formula is regular at each point.`),
+\]`,''),
  affine:model('polynomial functions',[
   R,A,b(r`\mathcal O_X`,r`\widetilde R`),
   b(r`\mathcal O_X(D(z))`,r`\mathbb C[z,z^{-1}]`),
-  b(r`\mathcal O_{X,(z-a)}`,r`\mathbb C[z]_{(z-a)}`)
- ],r`\[
-\mathcal O_{X,(z-a)}=\{p/q:q(a)\ne0\}
-\]`,r`They give holomorphic germs at \(a\).`,r`Regular functions are rational formulas with no poles on the open set.`),
+  b(r`\mathcal O_{X,(z-a)}`,r`\mathbb C[z]_{(z-a)}=\{p/q:q(a)\ne0\}`)
+ ],'',''),
  affineMaps:model('affine-line maps',[b('R',r`\mathbb C[t]`),b('S',r`\mathbb C[z]`),b(r`\varphi`,r`(p(t)\mapsto p(z^2))`),b('f',r`\operatorname{Spec}(S)\longrightarrow\operatorname{Spec}(R)`)],r`\[
 \begin{gathered}
-(z-a)\longmapsto(t-a^2),\\
-(0)\longmapsto(0)
+f((z-a))=\varphi^{-1}((z-a))=(t-a^2),\\
+f((0))=(0).
 \end{gathered}
-\]`,r`Take inverse images under \(\varphi\).`),
+\]`,''),
  scheme:model('Riemann sphere',[
   b('X',r`\mathbb P^1_{\mathbb C}`),
   b('U',r`\operatorname{Spec}(\mathbb C[z])`),
@@ -274,8 +274,9 @@ h\longmapsto (u\mapsto(v\mapsto h(u\otimes v))).
 \begin{gathered}
 e^2=e,\\
 R\cong eR\times(1-e)R
+\cong C(U,\mathbb R)\times C(X\setminus U,\mathbb R).
 \end{gathered}
-\]`,'',r`Continuous idempotents are indicator functions of clopen sets.`),
+\]`,''),
  finite:model('finite presentations',[R,b('M',r`R/(z)`),b('S',r`R[w]/(w^2-z)`)],r`\[
 \begin{gathered}
 R\xrightarrow{\cdot z}R\to M\to0,\\
@@ -298,8 +299,8 @@ models.noetherian=model('polynomial ideals',[
  b('R',r`k[x_1,\ldots,x_n]`),b('X',r`\operatorname{Spec}(R)`),
  b('I',r`(f_1,f_2,\ldots)`)
 ],r`\[
-V(I)=V(f_1,\ldots,f_N)\quad\text{for some }N
-\]`,'',r`Hilbert’s basis theorem lets finitely many equations cut out the same locus.`);
+I=(f_1,\ldots,f_N),\qquad V(I)=V(f_1,\ldots,f_N).
+\]`,'',r`Hilbert’s basis theorem gives a finite \(N\).`);
 models.constructible=model('matrix rank strata',[
  b('X',r`\mathbb A_k^{mn}`),b('A',r`(a_{ij})_{m\times n}`),
  b('I_s',r`\text{the ideal of the }s\times s\text{ minors}`)
@@ -307,11 +308,15 @@ models.constructible=model('matrix rank strata',[
 \{\operatorname{rank}A=r\}
 =V(I_{r+1})\setminus V(I_r)
 \]`,'','');
-models.nakayama=model('fibres of finite modules',[b('R',r`\mathbb C\{t\}`),b(r`\mathfrak m`,r`(t)`),b('M',r`R^{\oplus n}`)],r`\[
-\begin{aligned}
- \det A(0)\ne0 &\Longrightarrow \det A\in R^\times\\
-               &\Longrightarrow A\in\operatorname{GL}_n(R).
-\end{aligned}
+models.nakayama=model('lifting a basis from the fibre',[
+ b('R',r`\mathbb C\{t\}`),b(r`\mathfrak m`,r`(t)`),
+ b('M',r`R^n`),b(r`M/\mathfrak mM`,r`\mathbb C^n`),
+ b('A',r`(m_1\ \cdots\ m_n)\quad(m_i\in M)`)
+],r`\[
+\begin{gathered}
+\det A(0)\ne0\ \Longrightarrow\ \det A\in R^\times,\\
+M=Rm_1+\cdots+Rm_n.
+\end{gathered}
 \]`,'');
 models.connected=model('manifold components',[
  b('X',r`M\text{ a manifold}`),b('x',r`x\in M`),
@@ -579,8 +584,14 @@ const properLine=model('limits at infinity',[
  b('R',r`\mathbb C[[t]]`),
  b('K',r`\mathbb C((t))`)
 ],r`\[
-[1:t^{-1}]=[t:1]\longrightarrow [0:1]\quad(t=0)
-\]`,'',r`A point escaping the affine chart has a limit at infinity.`);
+\begin{aligned}
+\operatorname{Spec}K\to X&\quad\text{given by }[1:t^{-1}],\\
+\operatorname{Spec}R\to X&\quad\text{given by }[t:1].
+\end{aligned}
+\]
+\[
+t=0\longmapsto[0:1].
+\]`,'');
 const padicLimit={...model('p-adic integers',[
  b(r`\mathcal C`,r`\mathbf{CRing}`),
  b(r`\mathcal I`,r`(\mathbb Z_{\ge1},\ge)`,
@@ -643,13 +654,13 @@ H^{n+1}(X,Y)\to H^{n+1}(X)\to H^{n+1}(Y),\\[4pt]
 \end{gathered}
 \]`,r`Extend \(\alpha\) to a cochain \(\widetilde\alpha\) on \(M\).`,r`The connecting map detects whether a boundary class extends across \(M\).`),
  source:{url:'https://pi.math.cornell.edu/~hatcher/AT/ATch3.pdf#page=15',label:'Hatcher, Algebraic Topology, §3.1'}};
-const injectiveExample=model('divisible groups',[
- b('A',r`\mathbb Z`),
- b('I',r`\mathbb Q`),
- b('B',r`n\mathbb Z\subset A`)
+const injectiveExample=model('extending into the rationals',[
+ b(r`\mathcal A`,r`\mathbf{Ab}`),b('J',r`\mathbb Q`),
+ b('A,B',r`n\mathbb Z,\mathbb Z\quad(n\ge1)`)
 ],r`\[
-\varphi:B\to I,\qquad \widetilde\varphi(1)=\varphi(n)/n
-\]`,'',r`Extending from \(n\mathbb Z\) requires division by \(n\).`);
+\varphi:A\to J,\qquad \widetilde\varphi:B\to J,
+\qquad \widetilde\varphi(1)=\frac{\varphi(n)}n.
+\]`,'',r`Baer’s criterion reduces injectivity here to extensions from ideals of \(\mathbb Z\).`);
 const injectivePoint=model('products of stalks',[
  X,b(r`\mathcal F`,r`\mathcal O_X^{\mathrm{an}}`),
  b('I_a',r`\mathcal F_a=\mathbb C\{z-a\}`,r`Its additive group is divisible, hence injective.`),
@@ -703,14 +714,13 @@ H^q(M,\underline{\mathbb R}_M)\cong H^q_{\mathrm{dR}}(M).
 const cechDifferential=model('Čech differential',[
  b('X',r`\mathbb P^2_k`),
  b('U_i',r`D_+(T_i)`),
- b(r`\mathcal F`,r`\mathcal O_X(-3)`),
- b('s_{ij}',r`\text{a section on }U_i\cap U_j`)
+ b(r`\mathcal F`,r`\mathcal O_X(-3)`)
 ],r`\[
 \begin{gathered}
-V=U_0\cap U_1\cap U_2,\\
+s_{ij}\in\mathcal F(U_i\cap U_j),\quad V=U_0\cap U_1\cap U_2,\\
 (\delta s)_{012}=s_{12}|_V-s_{02}|_V+s_{01}|_V.
 \end{gathered}
-\]`,'',r`Pairwise differences must add consistently on triple overlaps.`);
+\]`,'');
 const lineBundleCocycle=model('transition functions',[
  b('X',r`M\text{ a smooth manifold}`),
  b(r`\mathcal F`,r`(\mathcal C_M^\infty)^\times`),
@@ -837,30 +847,36 @@ const curveRationalEquivalence=model('zeros and poles',[
 \operatorname{CH}_0(C)=\operatorname{Div}(C)/\operatorname{Prin}(C).
 \end{gathered}
 \]`,'');
-const curveNorm=model('norm of a function',[
- curve,b('f',r`(C\to C')\text{ finite}`),b('h',r`\text{a nonzero rational function on }C`)
+const curveNorm=model('norm under the squaring map',[
+ b('X,Y',r`\mathbb P^1_z,\mathbb P^1_t\quad\text{over }\mathbb C`),
+ b('f',r`(t=z^2)`),b('h',r`z-a`)
 ],r`\[
 \begin{gathered}
-N(h)(y)=\prod_{x\in f^{-1}(y)}h(x)
-\quad\text{off the branch locus},\\
- f_*\operatorname{div}(h)
- =\operatorname{div}\bigl(N(h)\bigr).
+N(h)=(z-a)(-z-a)=a^2-t,\\
+f_*\operatorname{div}(h)=[a^2]-[\infty]
+=\operatorname{div}(N(h)).
 \end{gathered}
 \]`,'');
 const curveFirstChern=model('divisor of a section',[
- curve,curveLine,b('s',r`\text{a nonzero meromorphic section of }\mathcal L`)
+ curve,curveLine,b('s',r`\text{a nonzero meromorphic section of }\mathcal L`),
+ b('D',r`\operatorname{div}(s)`)
 ],r`\[
-c_1(\mathcal L)\cap[C]=[\operatorname{div}(s)]=[D]
-\quad\text{in }\operatorname{CH}_0(C).
-\]`,r`Changing \(s\) multiplies it by a meromorphic function, adding a principal divisor.`);
+\begin{gathered}
+c_1(\mathcal L)\cap[C]=[D]\quad\text{in }\operatorname{CH}_0(C),\\
+\operatorname{div}(hs)=D+\operatorname{div}(h)
+\qquad(h\in\mathbb C(C)^\times).
+\end{gathered}
+\]`,'');
 const curveBivariant=model('first Chern class',[
- curve,curveLine,b('f',r`(C'\to C)`)
+ curve,curveLine,b('f',r`(C'\to C)\text{ finite between smooth curves}`),
+ b('t_p',r`\text{a local parameter at }p`)
 ],r`\[
 \begin{gathered}
 c_1(\mathcal L)_f:[C']\longmapsto[f^*D],\\
-f^*[p]=\sum_{q\in f^{-1}(p)}e_q[q].
+f^*[p]=\sum_{q\in f^{-1}(p)}e_q[q],
+\qquad e_q=\operatorname{ord}_q(f^*t_p).
 \end{gathered}
-\]`,r`For finite \(f\), \(e_q\) is the ramification index at \(q\).`);
+\]`,'');
 const curveProjectiveBundle=model('trivial projective bundle',[
  curve,b(r`\mathcal E`,r`\mathcal O_C^{\oplus r}`),b(r`P`,r`C\times\mathbb P^{r-1}`),
  b(r`\xi`,r`c_1(\mathcal O_P(1))`)
@@ -1164,11 +1180,12 @@ The localization $R_\mathfrak p$`,
   end:r`\medskip\noindent
 Let $\varphi : R \to S$ be a ring map.`,
   example:{...model('rational functions regular at a point',[],'',''),points:[
-   r`\(R=\mathbb C[z],\quad \mathfrak p=(z-a),\quad a\in\mathbb C\).`,
-   r`\[
-R_{\mathfrak p}=\left\{\frac{p(z)}{q(z)}:p,q\in\mathbb C[z],\ q(a)\ne0\right\}.
-\]`,
-   r`\(\mathfrak pR_{\mathfrak p}=(z-a)R_{\mathfrak p}\) and \(\kappa(\mathfrak p)\cong\mathbb C\).`
+   r`\(R=\mathbb C[z]\)`,
+   r`\(\mathfrak p=(z-a),\quad a\in\mathbb C\)`,
+   r`\(\displaystyle R_{\mathfrak p}=R(R\setminus\mathfrak p)^{-1}\)
+\(\displaystyle =\{f=p/q:q\notin\mathfrak p\}\)
+\(\displaystyle =\left\{\frac{p(z)}{q(z)}\in\mathbb C(z):q(a)\ne0\right\}\)`,
+   r`\(\kappa_{\mathfrak p}\cong\mathbb C\)`
   ]}
  }
 };
