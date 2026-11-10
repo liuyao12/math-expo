@@ -81,16 +81,16 @@ M=\varinjlim_{U\ni a}\operatorname{Hol}(U),\\
  ],r`\[
 A^{-1}=\frac{\operatorname{adj}(A)}{\det A}
 \]`,'',r`Invert the determinant to make the universal matrix invertible.`),
- local:{...model('holomorphic germs',[],'',''),points:[
-  r`\(R=\{\text{holomorphic germs at }a\in\mathbb C\}\). A germ is a holomorphic function near \(a\), up to agreement on a smaller neighbourhood.`,
-  r`Add and multiply after restricting to a common neighbourhood of \(a\).`,
+ local:{...model('holomorphic functions near a point',[],'',''),points:[
+  r`\(R=\{\text{holomorphic functions }f\text{ defined at }a\in\mathbb C\}\), i.e. defined on some neighbourhood of \(a\). Identify functions that agree on a smaller neighbourhood of \(a\).`,
+  r`Addition and multiplication are defined by restricting to a common neighbourhood of \(a\).`,
   r`\(\mathfrak m=\{f\in R:f(a)=0\}\).`,
-  r`\(\kappa=R/\mathfrak m\cong\mathbb C\) by evaluation at \(a\).`,
-  r`Taylor expansion identifies the ring of holomorphic germs at \(a\) with the power series
+  r`\(\kappa=R/\mathfrak m\cong\mathbb C\).`,
+  r`These are called the germs of holomorphic functions at \(a\) and may be identified with convergent power series
 \[
 \sum_{n=0}^{\infty}c_n(z-a)^n
 \]
-that converge on some neighbourhood of \(a\).`
+on a neighbourhood of \(a\). The ring is denoted \(\mathbb C\{z-a\}\).`
  ]},
  spectrum:model('crossing lines',[
   b('R',r`\mathbb C[x,y]/(xy)`),b('X',r`\operatorname{Spec}R`),
