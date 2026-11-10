@@ -583,20 +583,12 @@ U_i=\operatorname{Spec}S_{(T_i)}\cong\mathbb A_k^n.
 \end{gathered}
 \]`,'',r`Normalize the nonzero coordinate \(T_i\) to one.`);
 const projOverlap={...model('overlapping projective charts',[],'',''),points:[
- r`\(S=\mathbb C[t_0,\ldots,t_n]\), \(f=t_0\), \(g=t_1\).`,
- {text:r`\(D_+(t_0)\cong\operatorname{Spec}S_{(t_0)}\)`,children:[
-  r`\(S_{(t_0)}=\mathbb C[x_1,\ldots,x_n]\)`,
-  r`\(\displaystyle x_j=\frac{t_j}{t_0}\quad(j\ne 0)\)`
- ]},
- {text:r`\(D_+(t_1)\cong\operatorname{Spec}S_{(t_1)}\)`,children:[
-  r`\(S_{(t_1)}=\mathbb C[y_0,y_2,\ldots,y_n]\)`,
-  r`\(\displaystyle y_j=\frac{t_j}{t_1}\quad(j\ne 1)\)`
- ]},
- {text:r`\(D_+(t_0)\cap D_+(t_1)=D_+(t_0t_1)\)`,children:[
-  r`Apply the lemma to \(D_+(t_0t_1)\) inside each chart.`,
-  r`\(S_{(t_0t_1)}=(S_{(t_0)})_{x_1}\) \(=(S_{(t_1)})_{y_0}\)`,
-  r`\(\displaystyle y_0=\frac{1}{x_1}\), \(\displaystyle y_j=\frac{x_j}{x_1}\) for \(j\ge 2\).`
- ]}
+ r`\(S=\mathbb C[t_0,\ldots,t_n]\), \(f=t_0\), \(g=t_1\)`,
+ r`\(D_+(f)\cong\operatorname{Spec}\mathbb C[x_1,\ldots,x_n]\), \(\displaystyle x_j=\frac{t_j}{t_0}\quad(j\ne 0)\)`,
+ r`\(D_+(g)\cong\operatorname{Spec}\mathbb C[y_0,y_2,\ldots,y_n]\), \(\displaystyle y_j=\frac{t_j}{t_1}\quad(j\ne 1)\)`,
+ r`\(D_+(f)\cap D_+(g)=D_+(fg)\)`,
+ r`\(S_{(fg)}=(S_{(f)})_{x_1}\) \(=(S_{(g)})_{y_0}\)`,
+ r`\(\displaystyle y_0=\frac{1}{x_1}\), \(\displaystyle y_j=\frac{x_j}{x_1}\quad(j\ge 2)\)`
 ]};
 const properLine=model('limits at infinity',[
  b('S',r`\operatorname{Spec}\mathbb C`),
