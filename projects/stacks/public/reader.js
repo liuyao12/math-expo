@@ -36,12 +36,51 @@
   outlineButton?.addEventListener('click',()=>{const open=outline.classList.toggle('is-open');outlineButton.setAttribute('aria-expanded',String(open));if(open)revealOutline();});
   outline?.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeOutline));
   const dock=$('#example-dock');let previousFocus;
-  const closeExample=()=>{dock?.classList.remove('is-open');dock?.removeAttribute('aria-modal');dock?.removeAttribute('role');document.body.style.overflow='';previousFocus?.focus();};
-  const openExample=trigger=>{if(matchMedia('(max-width:760px)').matches){previousFocus=trigger;dock.classList.add('is-open');dock.setAttribute('role','dialog');dock.setAttribute('aria-modal','true');document.body.style.overflow='hidden';$('#close-example').focus();dock.dispatchEvent(new Event('examplepanelchange'));drawAll();}else dock.focus({preventScroll:true});};
+  const closeExample=()=>{dock?.classList.remove('is-open');dock?.removeAttribute('aria-modal');dock?.removeAttribute('role');document.body.style.overflow='';previousFocus?.focus({preventScroll:true});};
+  const openExample=trigger=>{if(matchMedia('(max-width:760px)').matches){previousFocus=trigger;dock.classList.add('is-open');dock.setAttribute('role','dialog');dock.setAttribute('aria-modal','true');document.body.style.overflow='hidden';$('#close-example').focus({preventScroll:true});dock.dispatchEvent(new Event('examplepanelchange'));drawAll();}else dock.focus({preventScroll:true});};
   $$('[data-show-example]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();openExample(a);}));
   $('#close-example')?.addEventListener('click',closeExample);
+  const annotationMenu=$('.reader-annotations');
+  if(annotationMenu){
+    const hypothesis=$('#open-hypothesis'),status=$('#hypothesis-status');
+    annotationMenu.addEventListener('toggle',()=>{
+      if(!annotationMenu.open)return;
+      closeOutline();
+      if(dock.classList.contains('is-open')){closeExample();annotationMenu.querySelector('summary').focus();}
+    });
+    document.addEventListener('click',event=>{if(!event.composedPath().includes(annotationMenu))annotationMenu.open=false;});
+    hypothesis.addEventListener('click',()=>{
+      const ready=()=>{
+        hypothesis.hidden=true;
+        status.hidden=false;
+        status.textContent='Use the Hypothesis sidebar tab to open or close it.';
+        if(annotationMenu.open){annotationMenu.open=false;annotationMenu.querySelector('summary').focus();}
+      };
+      if(document.querySelector('hypothesis-sidebar')){ready();return;}
+      hypothesis.disabled=true;
+      status.hidden=false;
+      status.textContent='Loading Hypothesis…';
+      const config=document.createElement('script');
+      config.type='application/json';
+      config.className='js-hypothesis-config';
+      config.textContent=JSON.stringify({openSidebar:true});
+      const script=document.createElement('script');
+      script.src='https://hypothes.is/embed.js';
+      script.addEventListener('load',ready,{once:true});
+      script.addEventListener('error',()=>{
+        script.remove();config.remove();
+        hypothesis.disabled=false;
+        status.textContent='Hypothesis could not load. Try again.';
+      },{once:true});
+      document.head.append(config,script);
+    });
+  }
   document.addEventListener('keydown',event=>{
-    if(event.key==='Escape'){closeExample();closeOutline();}
+    if(event.key==='Escape'){
+      if(dock?.classList.contains('is-open'))closeExample();
+      closeOutline();
+      if(annotationMenu?.open){annotationMenu.open=false;annotationMenu.querySelector('summary').focus();}
+    }
     if(event.key!=='Tab'||!dock?.classList.contains('is-open'))return;
     const controls=[...dock.querySelectorAll('button,input,a[href],summary,[tabindex="0"]')].filter(control=>{
       const closed=control.closest('details:not([open])');
@@ -61,8 +100,42 @@
     const openCards=new Map();
     const tools=dock.querySelector('.example-sticky');
     const mobile=()=>matchMedia('(max-width:760px)').matches;
+    const editorialCards='[data-example-card]';
+    const hiddenEditorial=$('#hidden-editorial-examples');
+    const preference='math-expo:scheme:hidden-editorial-examples';
+    const hiddenCards=new Map();
+    let emptyExample;
+    if(hiddenEditorial){
+      try{
+        for(const [key,label] of JSON.parse(localStorage.getItem(preference)||'[]')){
+          if(typeof key==='string'&&typeof label==='string')hiddenCards.set(key,label);
+        }
+      }catch{}
+      emptyExample=document.createElement('p');
+      emptyExample.textContent='The examples for this passage are hidden. Restore them from the Notes menu.';
+      emptyExample.hidden=true;
+      exampleContent.after(emptyExample);
+    }
+    const decorateEditorial=(container,passageLabel)=>{
+      if(!hiddenEditorial)return;
+      for(const card of container.querySelectorAll(editorialCards)){
+        card.hidden=hiddenCards.has(card.dataset.exampleCard);
+        card.dataset.editorialLabel=card.querySelector('summary').textContent.trim()+' · '+passageLabel;
+        const hide=document.createElement('button');
+        hide.type='button';
+        hide.className='editorial-example-hide';
+        hide.textContent='Hide this example';
+        card.querySelector('.example-body').prepend(hide);
+      }
+    };
+    const updateEmptyExample=()=>{
+      if(!emptyExample)return;
+      const cards=[...exampleContent.querySelectorAll(editorialCards)];
+      emptyExample.hidden=!cards.length||cards.some(card=>!card.hidden);
+    };
     // Reserve room for every heading before sizing the scrollable body.
     const groupChrome=group=>[...group.children].reduce((height,child)=>{
+        if(child.hidden)return height;
         if(!child.matches('.example-disclosure'))return height+child.getBoundingClientRect().height;
         const style=getComputedStyle(child);
         return height+child.querySelector('summary').getBoundingClientRect().height+parseFloat(style.borderTopWidth)+parseFloat(style.borderBottomWidth);
@@ -81,6 +154,45 @@
     const fitVisibleExamples=()=>{if(mobile()||dock.dataset.exampleLayout!=='anchored')fitPanel();else fitFloating();};
     const layoutExamples=()=>{layoutPending=false;layoutAnchors();fitVisibleExamples();};
     const scheduleExampleLayout=()=>{if(!layoutPending){layoutPending=true;requestAnimationFrame(layoutExamples);}};
+    if(hiddenEditorial){
+      const list=hiddenEditorial.querySelector('ul');
+      const refreshHiddenList=()=>{
+        hiddenEditorial.hidden=!hiddenCards.size;
+        list.replaceChildren(...[...hiddenCards].map(([key,label])=>{
+          const item=document.createElement('li'),restore=document.createElement('button');
+          restore.type='button';
+          restore.dataset.restoreEditorial=key;
+          restore.textContent='Restore '+label;
+          item.append(restore);
+          return item;
+        }));
+      };
+      const updateHiddenCards=()=>{
+        for(const card of dock.querySelectorAll(editorialCards))card.hidden=hiddenCards.has(card.dataset.exampleCard);
+        try{localStorage.setItem(preference,JSON.stringify([...hiddenCards]));}catch{}
+        refreshHiddenList();
+        updateEmptyExample();
+        scheduleExampleLayout();
+      };
+      dock.addEventListener('click',event=>{
+        const card=event.target.closest('.editorial-example-hide')?.closest(editorialCards);
+        if(!card)return;
+        hiddenCards.set(card.dataset.exampleCard,card.dataset.editorialLabel);
+        updateHiddenCards();
+        const target=card.parentElement.querySelector('details:not([hidden]) > summary');
+        if(target)target.focus({preventScroll:true});
+        else if(dock.classList.contains('is-open'))$('#close-example').focus();
+        else annotationMenu.querySelector('summary').focus({preventScroll:true});
+      });
+      list.addEventListener('click',event=>{
+        const restore=event.target.closest('[data-restore-editorial]');
+        if(!restore)return;
+        hiddenCards.delete(restore.dataset.restoreEditorial);
+        updateHiddenCards();
+        (list.querySelector('button')||annotationMenu.querySelector('summary')).focus({preventScroll:true});
+      });
+      refreshHiddenList();
+    }
     if(dock.dataset.exampleLayout==='anchored'){
       const main=$('#main');
       const flow=document.createElement('div');
@@ -102,6 +214,7 @@
         link.textContent=anchor.dataset.sourceLabel||peg.textContent.trim();
         label.append(link);note.append(label);
         note.insertAdjacentHTML('beforeend',data[key].html);
+        decorateEditorial(note,link.textContent);
         band.append(note);
         return {anchor,peg,section:owner,band,note};
       }).filter(Boolean).sort((a,b)=>a.anchor.compareDocumentPosition(b.anchor)&Node.DOCUMENT_POSITION_FOLLOWING?-1:1);
@@ -127,7 +240,7 @@
           const next=measured[index+1];
           // Prefer the definition's group to an adjacent duplicate at its section introduction.
           const repeated=next&&entry.anchor===entry.section&&next.section===entry.section&&next.top-entry.top<entry.chrome+12&&titles(entry)===titles(next);
-          return !repeated;
+          return !repeated&&(!hiddenEditorial||entry.note.querySelector('details.example-disclosure:not([hidden])'));
         });
         const visibleBands=new Set(visible.map(({band})=>band));
         for(const {band} of notes)band.hidden=!visibleBands.has(band);
@@ -194,6 +307,8 @@
         for(const card of exampleContent.querySelectorAll('[data-example-card]'))openCards.set(card.dataset.exampleCard,card.open);
         exampleContent.innerHTML=html;
         renderedExampleHTML=html;
+        decorateEditorial(exampleContent,context?.dataset.sourceLabel||'');
+        updateEmptyExample();
         for(const card of exampleContent.querySelectorAll('[data-example-card]')){
           const open=openCards.get(card.dataset.exampleCard);
           if(open!==undefined)card.open=open;
@@ -223,7 +338,7 @@
         if(passage.getBoundingClientRect().top>readingLine)break;
         active=passage;
       }
-      if(active){lastReading=active.dataset.example;lastReadingContext=active;if(follow&&(lastReading!==current||activeContext!==active))setExample(lastReading,false,active);}
+      if(active&&!dock.classList.contains('is-open')){lastReading=active.dataset.example;lastReadingContext=active;if(follow&&(lastReading!==current||activeContext!==active))setExample(lastReading,false,active);}
       followOutline(section);
       const percent=denominator?Math.max(0,Math.min(1,scrollY/denominator)):0;$('.reading-progress span').style.width=percent*100+'%';
       fitVisibleExamples();
