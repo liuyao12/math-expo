@@ -345,6 +345,10 @@
     };
     addEventListener('scroll',()=>{if(!scheduled){scheduled=true;requestAnimationFrame(update);}},{passive:true});
     addEventListener('resize',update);update();
+    addEventListener('hashchange',()=>{
+      if(dock.classList.contains('is-open'))closeExample();
+      update();
+    });
     if(!activeContext)setExample(current);
     proofs.forEach(p=>p.addEventListener('toggle',update));
     const resumeSelection=e=>{if(selectionPinned&&!e.defaultPrevented&&!e.target.closest?.('#example-dock')){selectionPinned=false;follow=true;update();}};
