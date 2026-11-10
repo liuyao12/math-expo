@@ -1,0 +1,1820 @@
+{
+  "stacks_commit": "a04446e57ec1fbc252a871afcec7752fb2807b14",
+  "axiom_commit": "f8e70c5dd04bfabcb423d5e325461f527c85a5d6",
+  "axiom_reference_commit": "7b3c157e3dc657e9d3ec03f433824ea1fc92129e",
+  "export_date": "2026-11-04T10:03:43+00:00",
+  "boundary": "Mathlib declarations are leaves; untagged helper paths are contracted",
+  "input_hashes": {
+    "graph.json": "20b65b250c296e14e7ad37134a3de145418c4cb6e9f1af7dff815fca1a9b853a",
+    "graph-edges.json": "3029dd11dbb50e2809dbdd1d2d7ec67f987325ed9b49fee8149f2b9bbde40eba",
+    "summary.json": "8393b3416dbb43f654f3d4dfef1631af09550d163a34e5f3c321f3b05a53680a",
+    "PlaneCurveGenusExplicit.lean": "a81a955633548ca1b62a72d1df6100489b91b5a4d9dcfe2d829ff68e5ab51850"
+  },
+  "wrapper_url": "https://github.com/AxiomMath/Stacks/blob/f8e70c5dd04bfabcb423d5e325461f527c85a5d6/StacksFrontier/AlgebraicGeometry/Curves/PlaneCurveGenusExplicit.lean",
+  "wrapper_roots": {
+    "structureSheafCohomologyEquiv_of_explicit": "AlgebraicGeometry.ProjectiveSpectrum.Proj.planeCurveGlobalSectionsEquiv",
+    "genus_eq_of_explicit": "AlgebraicGeometry.ProjectiveSpectrum.Proj.genus_planeCurve"
+  },
+  "bridge_references": [
+    "irreducibleComponents",
+    "topologicalKrullDim",
+    "topologicalKrullDim_eq_bot_iff_isEmpty",
+    "AlgebraicGeometry.ProjectiveSpectrum.Proj.idealOfClosedSubscheme_isHomogeneous"
+  ],
+  "schemes": {
+    "declarations": 86,
+    "baseline": 109,
+    "candidate": 65,
+    "retained": 31,
+    "reused": 0,
+    "baseline_total": 109,
+    "candidate_total": 65,
+    "added": [
+      {
+        "tag": "001R",
+        "number": "4.4",
+        "title": "Products of pairs",
+        "witness": {
+          "tag": "001T",
+          "chain": [
+            "AlgebraicGeometry.isProjectiveVariety_iff_isProjective'",
+            "AlgebraicGeometry.IsProjectiveMorphism.isProjective",
+            "CategoryTheory.Limits.HasBinaryProducts"
+          ]
+        }
+      },
+      {
+        "tag": "006G",
+        "number": "6.4",
+        "title": "Abelian presheaves",
+        "witness": {
+          "tag": "006K",
+          "chain": [
+            "AlgebraicGeometry.isProjectiveVariety_iff_isProjective'",
+            "AlgebraicGeometry.IsProjective",
+            "AddCommGrpCat"
+          ]
+        }
+      },
+      {
+        "tag": "00V1",
+        "number": "7.2",
+        "title": "Presheaves",
+        "witness": {
+          "tag": "00V2",
+          "chain": [
+            "AlgebraicGeometry.isProjectiveVariety_iff_isProjective'",
+            "AlgebraicGeometry.IsProjective",
+            "CategoryTheory.Functor"
+          ]
+        }
+      },
+      {
+        "tag": "00V5",
+        "number": "7.3",
+        "title": "Injective and surjective maps of presheaves",
+        "witness": {
+          "tag": "00V6",
+          "chain": [
+            "AlgebraicGeometry.isProjectiveVariety_iff_isProjective'",
+            "AlgebraicGeometry.IsProjectiveMorphism.isProjective",
+            "Stacks.SymGraded.isQuasicoherentPieces_of_isQuasicoherent",
+            "CategoryTheory.Presheaf.IsLocallyInjective"
+          ]
+        }
+      },
+      {
+        "tag": "00VG",
+        "number": "7.6",
+        "title": "Sites",
+        "witness": {
+          "tag": "00VJ",
+          "chain": [
+            "AlgebraicGeometry.isProjectiveVariety_iff_isProjective'",
+            "AlgebraicGeometry.IsProjective",
+            "Opens.grothendieckTopology"
+          ]
+        }
+      },
+      {
+        "tag": "00VL",
+        "number": "7.7",
+        "title": "Sheaves",
+        "witness": {
+          "tag": "00VR",
+          "chain": [
+            "AlgebraicGeometry.isProjectiveVariety_iff_isProjective'",
+            "AlgebraicGeometry.IsProjective",
+            "CategoryTheory.Presheaf.IsSheaf"
+          ]
+        }
+      },
+      {
+        "tag": "00WU",
+        "number": "7.13",
+        "title": "Continuous functors",
+        "witness": {
+          "tag": "00WX",
+          "chain": [
+            "AlgebraicGeometry.isProjectiveVariety_iff_isProjective'",
+            "AlgebraicGeometry.IsProjectiveMorphism.isProjective",
+            "Stacks.SymGraded.isQuasicoherentPieces_of_isQuasicoherent",
+            "CategoryTheory.Functor.sheafPushforwardContinuous"
+          ]
+        }
+      },
+      {
+        "tag": "00YR",
+        "number": "7.44",
+        "title": "Sheaves of algebraic structures",
+        "witness": {
+          "tag": "00YS",
+          "chain": [
+            "AlgebraicGeometry.isProjectiveVariety_iff_isProjective'",
+            "AlgebraicGeometry.IsProjectiveMorphism.isProjective",
+            "Stacks.SymGraded.isQuasicoherentPieces_of_isQuasicoherent",
+            "CategoryTheory.Functor.sheafPushforwardContinuous"
+          ]
+        }
+      },
+      {
+        "tag": "00YW",
+        "number": "7.47",
+        "title": "Topologies",
+        "witness": {
+          "tag": "00Z4",
+          "chain": [
+            "AlgebraicGeometry.isProjectiveVariety_iff_isProjective'",
+            "AlgebraicGeometry.IsProjective",
+            "CategoryTheory.GrothendieckTopology"
+          ]
+        }
+      },
+      {
+        "tag": "09FC",
+        "number": "9.2",
+        "title": "Basic definitions",
+        "witness": {
+          "tag": "09FD",
+          "chain": [
+            "AlgebraicGeometry.IsProjectiveVariety",
+            "Field"
+          ]
+        }
+      },
+      {
+        "tag": "01B1",
+        "number": "17.8",
+        "title": "Modules locally generated by sections",
+        "witness": {
+          "tag": "01B2",
+          "chain": [
+            "AlgebraicGeometry.isProjectiveVariety_iff_isProjective'",
+            "AlgebraicGeometry.IsProjectiveMorphism.isProjective",
+            "SheafOfModules.LocalGeneratorsData"
+          ]
+        }
+      },
+      {
+        "tag": "03A6",
+        "number": "18.2",
+        "title": "Abelian presheaves",
+        "witness": {
+          "tag": "03CL",
+          "chain": [
+            "AlgebraicGeometry.isProjectiveVariety_iff_isProjective'",
+            "AlgebraicGeometry.IsProjective",
+            "AddCommGrpCat.hasLimits"
+          ]
+        }
+      },
+      {
+        "tag": "03CS",
+        "number": "18.9",
+        "title": "Presheaves of modules",
+        "witness": {
+          "tag": "03CT",
+          "chain": [
+            "AlgebraicGeometry.isProjectiveVariety_iff_isProjective'",
+            "AlgebraicGeometry.IsProjective",
+            "PresheafOfModules"
+          ]
+        }
+      },
+      {
+        "tag": "03CV",
+        "number": "18.10",
+        "title": "Sheaves of modules",
+        "witness": {
+          "tag": "03CW",
+          "chain": [
+            "AlgebraicGeometry.isProjectiveVariety_iff_isProjective'",
+            "AlgebraicGeometry.IsProjective",
+            "SheafOfModules"
+          ]
+        }
+      },
+      {
+        "tag": "03DH",
+        "number": "18.19",
+        "title": "Localization of ringed sites",
+        "witness": {
+          "tag": "04IX",
+          "chain": [
+            "AlgebraicGeometry.isProjectiveVariety_iff_isProjective'",
+            "AlgebraicGeometry.IsProjectiveMorphism.isProjective",
+            "SheafOfModules.over"
+          ]
+        }
+      },
+      {
+        "tag": "03DK",
+        "number": "18.23",
+        "title": "Local types of modules",
+        "witness": {
+          "tag": "03DL",
+          "chain": [
+            "AlgebraicGeometry.isProjectiveVariety_iff_isProjective'",
+            "AlgebraicGeometry.IsProjective",
+            "SheafOfModules.IsFiniteType"
+          ]
+        }
+      },
+      {
+        "tag": "0FQV",
+        "number": "24.3",
+        "title": "Sheaves of graded algebras",
+        "witness": {
+          "tag": "0FQW",
+          "chain": [
+            "AlgebraicGeometry.isProjectiveVariety_iff_isProjective'",
+            "AlgebraicGeometry.IsProjective",
+            "SheafOfModules.GradedAlgebra"
+          ]
+        }
+      },
+      {
+        "tag": "01JL",
+        "number": "26.16",
+        "title": "Existence of fibre products of schemes",
+        "witness": {
+          "tag": "01JM",
+          "chain": [
+            "AlgebraicGeometry.isProjectiveVariety_iff_isProjective'",
+            "AlgebraicGeometry.IsProjectiveMorphism.isProjective",
+            "Stacks.SymGraded.projectiveBundleIsoProjectiveSpace",
+            "AlgebraicGeometry.Scheme.Pullback.instHasPullbacks"
+          ]
+        }
+      },
+      {
+        "tag": "01K2",
+        "number": "26.19",
+        "title": "Quasi-compact morphisms",
+        "witness": {
+          "tag": "01K3",
+          "chain": [
+            "AlgebraicGeometry.IsProjectiveVariety",
+            "AlgebraicGeometry.IsVariety",
+            "AlgebraicGeometry.QuasiCompact"
+          ]
+        }
+      },
+      {
+        "tag": "01LA",
+        "number": "26.24",
+        "title": "Functoriality for quasi-coherent modules",
+        "witness": {
+          "tag": "02V0",
+          "chain": [
+            "AlgebraicGeometry.isProjectiveVariety_iff_isProjective'",
+            "AlgebraicGeometry.IsProjectiveMorphism.isProjective",
+            "AlgebraicGeometry.IsClosedImmersion.comp"
+          ]
+        }
+      },
+      {
+        "tag": "01LG",
+        "number": "27.2",
+        "title": "Relative glueing",
+        "witness": {
+          "tag": "01LH",
+          "chain": [
+            "AlgebraicGeometry.isProjectiveVariety_iff_isProjective'",
+            "AlgebraicGeometry.IsProjective",
+            "Stacks.AlgebraicGeometry.RelativeProj.relativeProj",
+            "AlgebraicGeometry.Scheme.Cover.RelativeGluingData"
+          ]
+        }
+      },
+      {
+        "tag": "01QN",
+        "number": "29.2",
+        "title": "Closed immersions",
+        "witness": {
+          "tag": "01QS",
+          "chain": [
+            "AlgebraicGeometry.isProjectiveVariety_iff_isProjective'",
+            "AlgebraicGeometry.IsProjectiveMorphism.isProjective",
+            "AlgebraicGeometry.IsClosedImmersion.comp"
+          ]
+        }
+      },
+      {
+        "tag": "01TC",
+        "number": "29.21",
+        "title": "Quasi-finite morphisms",
+        "witness": {
+          "tag": "01TD",
+          "chain": [
+            "AlgebraicGeometry.IsProjectiveVariety",
+            "AlgebraicGeometry.IsVariety",
+            "AlgebraicGeometry.LocallyOfFiniteType"
+          ]
+        }
+      },
+      {
+        "tag": "06LF",
+        "number": "33.20",
+        "title": "Algebraic schemes",
+        "witness": {
+          "tag": "06LG",
+          "chain": [
+            "AlgebraicGeometry.IsProjectiveVariety",
+            "AlgebraicGeometry.IsVariety",
+            "AlgebraicGeometry.LocallyOfFiniteType"
+          ]
+        }
+      },
+      {
+        "tag": "022R",
+        "number": "39.4",
+        "title": "Group schemes",
+        "witness": {
+          "tag": "047E",
+          "chain": [
+            "AlgebraicGeometry.IsProjectiveVariety",
+            "AlgebraicGeometry.IsVariety",
+            "AlgebraicGeometry.IsSeparated"
+          ]
+        }
+      },
+      {
+        "tag": "0E4G",
+        "number": "48.4",
+        "title": "Right adjoint of pushforward and restriction to opens",
+        "witness": {
+          "tag": "0A9J",
+          "chain": [
+            "AlgebraicGeometry.isProjectiveVariety_iff_isProjective'",
+            "AlgebraicGeometry.IsProjective",
+            "Stacks.AlgebraicGeometry.RelativeProj.relativeProj",
+            "CategoryTheory.IsPullback"
+          ]
+        }
+      },
+      {
+        "tag": "03NB",
+        "number": "59.9",
+        "title": "Presheaves",
+        "witness": {
+          "tag": "03NC",
+          "chain": [
+            "AlgebraicGeometry.isProjectiveVariety_iff_isProjective'",
+            "AlgebraicGeometry.IsProjective",
+            "CategoryTheory.Functor"
+          ]
+        }
+      },
+      {
+        "tag": "03NJ",
+        "number": "59.11",
+        "title": "Sheaves",
+        "witness": {
+          "tag": "03NK",
+          "chain": [
+            "AlgebraicGeometry.isProjectiveVariety_iff_isProjective'",
+            "AlgebraicGeometry.IsProjective",
+            "CategoryTheory.Presheaf.IsSheaf"
+          ]
+        }
+      },
+      {
+        "tag": "03X7",
+        "number": "59.20",
+        "title": "Big and small sites of schemes",
+        "witness": {
+          "tag": "03X8",
+          "chain": [
+            "AlgebraicGeometry.isProjectiveVariety_iff_isProjective'",
+            "AlgebraicGeometry.IsProjective",
+            "Stacks.AlgebraicGeometry.RelativeProj.relativeProj",
+            "AlgebraicGeometry.Scheme.precoverage"
+          ]
+        }
+      },
+      {
+        "tag": "0A2M",
+        "number": "59.67",
+        "title": "Galois cohomology",
+        "witness": {
+          "tag": "03RE",
+          "chain": [
+            "AlgebraicGeometry.IsProjectiveVariety",
+            "AlgebraicGeometry.IsVariety"
+          ]
+        }
+      },
+      {
+        "tag": "02WE",
+        "number": "65.4",
+        "title": "Lists of useful properties of morphisms of schemes",
+        "witness": {
+          "tag": "02WG",
+          "chain": [
+            "AlgebraicGeometry.isProjectiveVariety_iff_isProjective'",
+            "AlgebraicGeometry.IsProjectiveMorphism.isProjective",
+            "AlgebraicGeometry.IsClosedImmersion.comp"
+          ]
+        }
+      },
+      {
+        "tag": "025X",
+        "number": "65.6",
+        "title": "Algebraic spaces",
+        "witness": {
+          "tag": "0260",
+          "chain": [
+            "AlgebraicGeometry.isProjectiveVariety_iff_isProjective'",
+            "AlgebraicGeometry.IsProjective",
+            "CategoryTheory.Functor.category"
+          ]
+        }
+      },
+      {
+        "tag": "06GI",
+        "number": "90.6",
+        "title": "Prorepresentable functors and predeformation categories",
+        "witness": {
+          "tag": "06GU",
+          "chain": [
+            "AlgebraicGeometry.isProjectiveVariety_iff_isProjective'",
+            "AlgebraicGeometry.IsProjective",
+            "CategoryTheory.Over"
+          ]
+        }
+      },
+      {
+        "tag": "06TI",
+        "number": "96.3",
+        "title": "Presheaves",
+        "witness": {
+          "tag": "06TJ",
+          "chain": [
+            "AlgebraicGeometry.isProjectiveVariety_iff_isProjective'",
+            "AlgebraicGeometry.IsProjective",
+            "CategoryTheory.Functor.category"
+          ]
+        }
+      }
+    ],
+    "dropped": [
+      {
+        "tag": "002U",
+        "number": "4.15",
+        "title": "Limits and colimits in the category of sets"
+      },
+      {
+        "tag": "04AS",
+        "number": "4.18",
+        "title": "Finite limits and colimits"
+      },
+      {
+        "tag": "04AX",
+        "number": "4.19",
+        "title": "Filtered colimits"
+      },
+      {
+        "tag": "0036",
+        "number": "4.24",
+        "title": "Adjoint functors"
+      },
+      {
+        "tag": "004E",
+        "number": "5.2",
+        "title": "Basic notions"
+      },
+      {
+        "tag": "004O",
+        "number": "5.5",
+        "title": "Bases"
+      },
+      {
+        "tag": "004U",
+        "number": "5.8",
+        "title": "Irreducible components"
+      },
+      {
+        "tag": "0059",
+        "number": "5.12",
+        "title": "Quasi-compact spaces and maps"
+      },
+      {
+        "tag": "08ZQ",
+        "number": "5.13",
+        "title": "Locally quasi-compact spaces"
+      },
+      {
+        "tag": "006C",
+        "number": "6.2",
+        "title": "Basic notions"
+      },
+      {
+        "tag": "006D",
+        "number": "6.3",
+        "title": "Presheaves"
+      },
+      {
+        "tag": "006M",
+        "number": "6.5",
+        "title": "Presheaves of algebraic structures"
+      },
+      {
+        "tag": "006S",
+        "number": "6.7",
+        "title": "Sheaves"
+      },
+      {
+        "tag": "0071",
+        "number": "6.9",
+        "title": "Sheaves of algebraic structures"
+      },
+      {
+        "tag": "0078",
+        "number": "6.11",
+        "title": "Stalks"
+      },
+      {
+        "tag": "007G",
+        "number": "6.13",
+        "title": "Stalks of presheaves of algebraic structures"
+      },
+      {
+        "tag": "007I",
+        "number": "6.14",
+        "title": "Stalks of presheaves of modules"
+      },
+      {
+        "tag": "007L",
+        "number": "6.15",
+        "title": "Algebraic structures"
+      },
+      {
+        "tag": "007S",
+        "number": "6.16",
+        "title": "Exactness and points"
+      },
+      {
+        "tag": "007X",
+        "number": "6.17",
+        "title": "Sheafification"
+      },
+      {
+        "tag": "0083",
+        "number": "6.18",
+        "title": "Sheafification of abelian presheaves"
+      },
+      {
+        "tag": "0088",
+        "number": "6.20",
+        "title": "Sheafification of presheaves of modules"
+      },
+      {
+        "tag": "008C",
+        "number": "6.21",
+        "title": "Continuous maps and sheaves"
+      },
+      {
+        "tag": "008N",
+        "number": "6.22",
+        "title": "Continuous maps and abelian sheaves"
+      },
+      {
+        "tag": "008P",
+        "number": "6.23",
+        "title": "Continuous maps and sheaves of algebraic structures"
+      },
+      {
+        "tag": "0090",
+        "number": "6.25",
+        "title": "Ringed spaces"
+      },
+      {
+        "tag": "0094",
+        "number": "6.26",
+        "title": "Morphisms of ringed spaces and modules"
+      },
+      {
+        "tag": "009E",
+        "number": "6.29",
+        "title": "Limits and colimits of sheaves"
+      },
+      {
+        "tag": "009H",
+        "number": "6.30",
+        "title": "Bases and sheaves"
+      },
+      {
+        "tag": "009Z",
+        "number": "6.31",
+        "title": "Open immersions and (pre)sheaves"
+      },
+      {
+        "tag": "00AD",
+        "number": "6.32",
+        "title": "Closed immersions and (pre)sheaves"
+      },
+      {
+        "tag": "00AK",
+        "number": "6.33",
+        "title": "Glueing sheaves"
+      },
+      {
+        "tag": "00AQ",
+        "number": "10.2",
+        "title": "Conventions"
+      },
+      {
+        "tag": "00AR",
+        "number": "10.3",
+        "title": "Basic notions"
+      },
+      {
+        "tag": "07JV",
+        "number": "10.4",
+        "title": "Snake lemma"
+      },
+      {
+        "tag": "0517",
+        "number": "10.5",
+        "title": "Finite modules and finitely presented modules"
+      },
+      {
+        "tag": "00F2",
+        "number": "10.6",
+        "title": "Ring maps of finite type and of finite presentation"
+      },
+      {
+        "tag": "07N7",
+        "number": "10.8",
+        "title": "Colimits"
+      },
+      {
+        "tag": "00CM",
+        "number": "10.9",
+        "title": "Localization"
+      },
+      {
+        "tag": "0581",
+        "number": "10.10",
+        "title": "Internal Hom"
+      },
+      {
+        "tag": "00CV",
+        "number": "10.12",
+        "title": "Tensor products"
+      },
+      {
+        "tag": "00DM",
+        "number": "10.13",
+        "title": "Tensor algebra"
+      },
+      {
+        "tag": "00DR",
+        "number": "10.15",
+        "title": "Miscellany"
+      },
+      {
+        "tag": "05G6",
+        "number": "10.16",
+        "title": "Cayley-Hamilton"
+      },
+      {
+        "tag": "00DY",
+        "number": "10.17",
+        "title": "The spectrum of a ring"
+      },
+      {
+        "tag": "07BH",
+        "number": "10.18",
+        "title": "Local rings"
+      },
+      {
+        "tag": "0AMD",
+        "number": "10.19",
+        "title": "The Jacobson radical of a ring"
+      },
+      {
+        "tag": "07RC",
+        "number": "10.20",
+        "title": "Nakayama's lemma"
+      },
+      {
+        "tag": "00EN",
+        "number": "10.23",
+        "title": "Glueing properties"
+      },
+      {
+        "tag": "00EI",
+        "number": "10.24",
+        "title": "Glueing functions"
+      },
+      {
+        "tag": "00F5",
+        "number": "10.29",
+        "title": "Images of ring maps of finite presentation"
+      },
+      {
+        "tag": "00H9",
+        "number": "10.39",
+        "title": "Flat modules and flat ring maps"
+      },
+      {
+        "tag": "00JL",
+        "number": "10.56",
+        "title": "Graded rings"
+      },
+      {
+        "tag": "00JM",
+        "number": "10.57",
+        "title": "Proj of a graded ring"
+      },
+      {
+        "tag": "05CD",
+        "number": "10.77",
+        "title": "Projective modules"
+      },
+      {
+        "tag": "00NV",
+        "number": "10.78",
+        "title": "Finite projective modules"
+      },
+      {
+        "tag": "00ZX",
+        "number": "12.5",
+        "title": "Abelian categories"
+      },
+      {
+        "tag": "02MN",
+        "number": "12.10",
+        "title": "Serre subcategories"
+      },
+      {
+        "tag": "0AFW",
+        "number": "15.119",
+        "title": "Picard groups of rings"
+      },
+      {
+        "tag": "01AF",
+        "number": "17.3",
+        "title": "The abelian category of sheaves of modules"
+      },
+      {
+        "tag": "01AS",
+        "number": "17.5",
+        "title": "Supports of modules and sections"
+      },
+      {
+        "tag": "01AW",
+        "number": "17.6",
+        "title": "Closed immersions and abelian sheaves"
+      },
+      {
+        "tag": "01BU",
+        "number": "17.12",
+        "title": "Coherent modules"
+      },
+      {
+        "tag": "0GIG",
+        "number": "17.15",
+        "title": "Bilinear maps"
+      },
+      {
+        "tag": "01CA",
+        "number": "17.16",
+        "title": "Tensor product"
+      },
+      {
+        "tag": "01CM",
+        "number": "17.22",
+        "title": "Internal Hom"
+      },
+      {
+        "tag": "01CR",
+        "number": "17.25",
+        "title": "Invertible modules"
+      },
+      {
+        "tag": "01HA",
+        "number": "26.2",
+        "title": "Locally ringed spaces"
+      },
+      {
+        "tag": "01HD",
+        "number": "26.3",
+        "title": "Open immersions of locally ringed spaces"
+      },
+      {
+        "tag": "01HJ",
+        "number": "26.4",
+        "title": "Closed immersions of locally ringed spaces"
+      },
+      {
+        "tag": "01HX",
+        "number": "26.6",
+        "title": "The category of affine schemes"
+      },
+      {
+        "tag": "01IF",
+        "number": "26.8",
+        "title": "Closed subspaces of affine schemes"
+      },
+      {
+        "tag": "01IR",
+        "number": "26.11",
+        "title": "Zariski topology of schemes"
+      },
+      {
+        "tag": "01MJ",
+        "number": "27.9",
+        "title": "Quasi-coherent sheaves on Proj"
+      },
+      {
+        "tag": "01MM",
+        "number": "27.10",
+        "title": "Invertible sheaves on Proj"
+      },
+      {
+        "tag": "01N4",
+        "number": "27.12",
+        "title": "Morphisms into Proj"
+      },
+      {
+        "tag": "01NS",
+        "number": "27.16",
+        "title": "Relative Proj as a functor"
+      },
+      {
+        "tag": "01PA",
+        "number": "28.17",
+        "title": "Characterizing modules of finite type and finite presentation"
+      }
+    ],
+    "roots": [
+      "AlgebraicGeometry.IsProjectiveVariety",
+      "AlgebraicGeometry.isProjectiveVariety_iff_isProjective'",
+      "AlgebraicGeometry.isProjectiveVariety_iff_isProjectiveMorphism"
+    ]
+  },
+  "curves": {
+    "declarations": 67,
+    "baseline": 140,
+    "candidate": 37,
+    "retained": 14,
+    "reused": 18,
+    "baseline_total": 246,
+    "candidate_total": 55,
+    "added": [
+      {
+        "tag": "00V1",
+        "number": "7.2",
+        "title": "Presheaves",
+        "witness": {
+          "tag": "00V2",
+          "chain": [
+            "AlgebraicGeometry.ProjectiveSpectrum.Proj.planeCurveGlobalSectionsEquiv",
+            "CategoryTheory.Functor"
+          ]
+        }
+      },
+      {
+        "tag": "00VG",
+        "number": "7.6",
+        "title": "Sites",
+        "witness": {
+          "tag": "00VJ",
+          "chain": [
+            "AlgebraicGeometry.ProjectiveSpectrum.Proj.planeCurveGlobalSectionsEquiv",
+            "Opens.grothendieckTopology"
+          ]
+        }
+      },
+      {
+        "tag": "00VL",
+        "number": "7.7",
+        "title": "Sheaves",
+        "witness": {
+          "tag": "00VR",
+          "chain": [
+            "AlgebraicGeometry.ProjectiveSpectrum.Proj.planeCurveGlobalSectionsEquiv",
+            "CategoryTheory.Presheaf.IsSheaf"
+          ]
+        }
+      },
+      {
+        "tag": "00YW",
+        "number": "7.47",
+        "title": "Topologies",
+        "witness": {
+          "tag": "00Z8",
+          "chain": [
+            "AlgebraicGeometry.ProjectiveSpectrum.Proj.planeCurveGlobalSectionsEquiv",
+            "CategoryTheory.Presheaf.IsSheaf"
+          ]
+        }
+      },
+      {
+        "tag": "09FC",
+        "number": "9.2",
+        "title": "Basic definitions",
+        "witness": {
+          "tag": "09FD",
+          "chain": [
+            "AlgebraicGeometry.ProjectiveSpectrum.Proj.planeCurveGlobalSectionsEquiv",
+            "Field"
+          ]
+        }
+      },
+      {
+        "tag": "09G2",
+        "number": "9.7",
+        "title": "Finite extensions",
+        "witness": {
+          "tag": "09G3",
+          "chain": [
+            "AlgebraicGeometry.ProjectiveSpectrum.Proj.genus_planeCurve",
+            "Module.finrank"
+          ]
+        }
+      },
+      {
+        "tag": "09IC",
+        "number": "9.27",
+        "title": "Linearly disjoint extensions",
+        "witness": {
+          "tag": "09ID",
+          "chain": [
+            "AlgebraicGeometry.ProjectiveSpectrum.Proj.planeCurveGlobalSectionsEquiv",
+            "AlgebraicGeometry.ProjectiveSpectrum.Proj.twistingSheaf",
+            "Max.max"
+          ]
+        }
+      },
+      {
+        "tag": "073Y",
+        "number": "11.2",
+        "title": "Noncommutative algebras",
+        "witness": {
+          "tag": "073Z",
+          "chain": [
+            "AlgebraicGeometry.ProjectiveSpectrum.Proj.genus_planeCurve",
+            "Module.finrank"
+          ]
+        }
+      },
+      {
+        "tag": "03CV",
+        "number": "18.10",
+        "title": "Sheaves of modules",
+        "witness": {
+          "tag": "03CW",
+          "chain": [
+            "AlgebraicGeometry.ProjectiveSpectrum.Proj.planeCurveGlobalSectionsEquiv",
+            "SheafOfModules"
+          ]
+        }
+      },
+      {
+        "tag": "0408",
+        "number": "18.32",
+        "title": "Invertible modules",
+        "witness": {
+          "tag": "0409",
+          "chain": [
+            "AlgebraicGeometry.ProjectiveSpectrum.Proj.genus_planeCurve",
+            "AlgebraicGeometry.SheafOfModules.IsInvertible",
+            "Stacks.SheafOfModules.IsInvertible"
+          ]
+        }
+      },
+      {
+        "tag": "05AB",
+        "number": "19.11",
+        "title": "Injectives in Grothendieck categories",
+        "witness": {
+          "tag": "079H",
+          "chain": [
+            "AlgebraicGeometry.ProjectiveSpectrum.Proj.planeCurveGlobalSectionsEquiv",
+            "CategoryTheory.IsGrothendieckAbelian.enoughInjectives"
+          ]
+        }
+      },
+      {
+        "tag": "01FT",
+        "number": "21.2",
+        "title": "Cohomology of sheaves",
+        "witness": {
+          "tag": "071I",
+          "chain": [
+            "AlgebraicGeometry.ProjectiveSpectrum.Proj.planeCurveGlobalSectionsEquiv",
+            "CategoryTheory.Functor.rightDerived"
+          ]
+        }
+      },
+      {
+        "tag": "09MI",
+        "number": "22.24",
+        "title": "Linear categories",
+        "witness": {
+          "tag": "09MK",
+          "chain": [
+            "AlgebraicGeometry.ProjectiveSpectrum.Proj.planeCurveGlobalSectionsEquiv",
+            "CategoryTheory.Functor.Additive"
+          ]
+        }
+      },
+      {
+        "tag": "01WG",
+        "number": "29.45",
+        "title": "Integral and finite morphisms",
+        "witness": {
+          "tag": "035C",
+          "chain": [
+            "AlgebraicGeometry.ProjectiveSpectrum.Proj.genus_planeCurve",
+            "AlgebraicGeometry.IsFinite.instOfIsClosedImmersion"
+          ]
+        }
+      },
+      {
+        "tag": "02PF",
+        "number": "42.2",
+        "title": "Periodic complexes and Herbrand quotients",
+        "witness": {
+          "tag": "02PG",
+          "chain": [
+            "AlgebraicGeometry.ProjectiveSpectrum.Proj.planeCurveGlobalSectionsEquiv",
+            "Stacks.ProjectiveSpace.Cohomology.isZero_twistCohomology",
+            "CochainComplex"
+          ]
+        }
+      },
+      {
+        "tag": "0B9R",
+        "number": "44.6",
+        "title": "The Picard scheme of a curve",
+        "witness": {
+          "tag": "0B9W",
+          "chain": [
+            "AlgebraicGeometry.ProjectiveSpectrum.Proj.genus_planeCurve",
+            "AlgebraicGeometry.genus"
+          ]
+        }
+      },
+      {
+        "tag": "03NB",
+        "number": "59.9",
+        "title": "Presheaves",
+        "witness": {
+          "tag": "03NC",
+          "chain": [
+            "AlgebraicGeometry.ProjectiveSpectrum.Proj.planeCurveGlobalSectionsEquiv",
+            "CategoryTheory.Functor"
+          ]
+        }
+      },
+      {
+        "tag": "03NJ",
+        "number": "59.11",
+        "title": "Sheaves",
+        "witness": {
+          "tag": "03NK",
+          "chain": [
+            "AlgebraicGeometry.ProjectiveSpectrum.Proj.planeCurveGlobalSectionsEquiv",
+            "CategoryTheory.Presheaf.IsSheaf"
+          ]
+        }
+      },
+      {
+        "tag": "03NT",
+        "number": "59.14",
+        "title": "Cohomology",
+        "witness": {
+          "tag": "03NU",
+          "chain": [
+            "AlgebraicGeometry.ProjectiveSpectrum.Proj.planeCurveGlobalSectionsEquiv",
+            "CategoryTheory.IsGrothendieckAbelian.enoughInjectives"
+          ]
+        }
+      },
+      {
+        "tag": "03T9",
+        "number": "64.7",
+        "title": "Filtered derived category",
+        "witness": {
+          "tag": "03TA",
+          "chain": [
+            "AlgebraicGeometry.ProjectiveSpectrum.Proj.planeCurveGlobalSectionsEquiv",
+            "Stacks.ProjectiveSpace.Cohomology.isZero_twistCohomology",
+            "CochainComplex"
+          ]
+        }
+      },
+      {
+        "tag": "025X",
+        "number": "65.6",
+        "title": "Algebraic spaces",
+        "witness": {
+          "tag": "0260",
+          "chain": [
+            "AlgebraicGeometry.ProjectiveSpectrum.Proj.planeCurveGlobalSectionsEquiv",
+            "CategoryTheory.Functor.category"
+          ]
+        }
+      },
+      {
+        "tag": "06I2",
+        "number": "90.11",
+        "title": "Tangent spaces of functors",
+        "witness": {
+          "tag": "06I3",
+          "chain": [
+            "AlgebraicGeometry.ProjectiveSpectrum.Proj.planeCurveGlobalSectionsEquiv",
+            "CategoryTheory.Functor.Additive"
+          ]
+        }
+      },
+      {
+        "tag": "06TI",
+        "number": "96.3",
+        "title": "Presheaves",
+        "witness": {
+          "tag": "06TJ",
+          "chain": [
+            "AlgebraicGeometry.ProjectiveSpectrum.Proj.planeCurveGlobalSectionsEquiv",
+            "CategoryTheory.Functor.category"
+          ]
+        }
+      }
+    ],
+    "dropped": [
+      {
+        "tag": "09WN",
+        "number": "4.17",
+        "title": "Cofinal and initial categories"
+      },
+      {
+        "tag": "05PT",
+        "number": "4.22",
+        "title": "Essentially constant systems"
+      },
+      {
+        "tag": "04VB",
+        "number": "4.27",
+        "title": "Localization in categories"
+      },
+      {
+        "tag": "0050",
+        "number": "5.9",
+        "title": "Noetherian topological spaces"
+      },
+      {
+        "tag": "02I0",
+        "number": "5.11",
+        "title": "Codimension and catenary spaces"
+      },
+      {
+        "tag": "0060",
+        "number": "5.19",
+        "title": "Specialization"
+      },
+      {
+        "tag": "0099",
+        "number": "6.27",
+        "title": "Skyscraper sheaves and stalks"
+      },
+      {
+        "tag": "0G8M",
+        "number": "10.11",
+        "title": "Characterizing finite and finitely presented modules"
+      },
+      {
+        "tag": "05G3",
+        "number": "10.14",
+        "title": "Base change"
+      },
+      {
+        "tag": "04PN",
+        "number": "10.21",
+        "title": "Open and closed subsets of spectra"
+      },
+      {
+        "tag": "00ER",
+        "number": "10.26",
+        "title": "Irreducible components of spectra"
+      },
+      {
+        "tag": "05K7",
+        "number": "10.28",
+        "title": "A meta-observation about prime ideals"
+      },
+      {
+        "tag": "00FF",
+        "number": "10.30",
+        "title": "More on images"
+      },
+      {
+        "tag": "00FM",
+        "number": "10.31",
+        "title": "Noetherian rings"
+      },
+      {
+        "tag": "0AMF",
+        "number": "10.32",
+        "title": "Locally nilpotent ideals"
+      },
+      {
+        "tag": "00GH",
+        "number": "10.36",
+        "title": "Finite and integral ring extensions"
+      },
+      {
+        "tag": "080S",
+        "number": "10.40",
+        "title": "Supports and annihilators"
+      },
+      {
+        "tag": "00HU",
+        "number": "10.41",
+        "title": "Going up and going down"
+      },
+      {
+        "tag": "00I8",
+        "number": "10.50",
+        "title": "Valuation rings"
+      },
+      {
+        "tag": "00IJ",
+        "number": "10.51",
+        "title": "More Noetherian rings"
+      },
+      {
+        "tag": "00IU",
+        "number": "10.52",
+        "title": "Length"
+      },
+      {
+        "tag": "00J4",
+        "number": "10.53",
+        "title": "Artinian rings"
+      },
+      {
+        "tag": "00JC",
+        "number": "10.55",
+        "title": "K-groups"
+      },
+      {
+        "tag": "00JV",
+        "number": "10.58",
+        "title": "Noetherian graded rings"
+      },
+      {
+        "tag": "00K4",
+        "number": "10.59",
+        "title": "Noetherian local rings"
+      },
+      {
+        "tag": "00KD",
+        "number": "10.60",
+        "title": "Dimension"
+      },
+      {
+        "tag": "00KY",
+        "number": "10.62",
+        "title": "Support and dimension of modules"
+      },
+      {
+        "tag": "00L9",
+        "number": "10.63",
+        "title": "Associated primes"
+      },
+      {
+        "tag": "0AUH",
+        "number": "10.68",
+        "title": "Regular sequences"
+      },
+      {
+        "tag": "00LO",
+        "number": "10.71",
+        "title": "Ext groups"
+      },
+      {
+        "tag": "00LE",
+        "number": "10.72",
+        "title": "Depth"
+      },
+      {
+        "tag": "058H",
+        "number": "10.82",
+        "title": "Universally injective module maps"
+      },
+      {
+        "tag": "058T",
+        "number": "10.84",
+        "title": "Transfinite d\\'evissage of modules"
+      },
+      {
+        "tag": "058Z",
+        "number": "10.85",
+        "title": "Projective modules over a local ring"
+      },
+      {
+        "tag": "0599",
+        "number": "10.88",
+        "title": "Mittag-Leffler modules"
+      },
+      {
+        "tag": "05A2",
+        "number": "10.94",
+        "title": "Ascending properties of modules"
+      },
+      {
+        "tag": "00MR",
+        "number": "10.102",
+        "title": "What makes a complex exact?"
+      },
+      {
+        "tag": "00N2",
+        "number": "10.103",
+        "title": "Cohen-Macaulay modules"
+      },
+      {
+        "tag": "00N7",
+        "number": "10.104",
+        "title": "Cohen-Macaulay rings"
+      },
+      {
+        "tag": "00NN",
+        "number": "10.106",
+        "title": "Regular local rings"
+      },
+      {
+        "tag": "00O2",
+        "number": "10.109",
+        "title": "Rings of finite global dimension"
+      },
+      {
+        "tag": "065U",
+        "number": "10.110",
+        "title": "Regular rings and global dimension"
+      },
+      {
+        "tag": "00P7",
+        "number": "10.119",
+        "title": "Around Krull-Akizuki"
+      },
+      {
+        "tag": "05N4",
+        "number": "10.126",
+        "title": "Algebras and modules of finite presentation"
+      },
+      {
+        "tag": "031O",
+        "number": "10.157",
+        "title": "Serre's criterion for normality"
+      },
+      {
+        "tag": "09SF",
+        "number": "12.4",
+        "title": "Karoubian categories"
+      },
+      {
+        "tag": "010M",
+        "number": "12.7",
+        "title": "Additive functors"
+      },
+      {
+        "tag": "05QC",
+        "number": "12.8",
+        "title": "Localization"
+      },
+      {
+        "tag": "010P",
+        "number": "12.12",
+        "title": "Cohomological delta-functors"
+      },
+      {
+        "tag": "010V",
+        "number": "12.13",
+        "title": "Complexes"
+      },
+      {
+        "tag": "0119",
+        "number": "12.14",
+        "title": "Homotopy and the shift functor"
+      },
+      {
+        "tag": "0118",
+        "number": "12.15",
+        "title": "Truncation of complexes"
+      },
+      {
+        "tag": "0FNB",
+        "number": "12.18",
+        "title": "Double complexes and associated total complexes"
+      },
+      {
+        "tag": "0120",
+        "number": "12.19",
+        "title": "Filtrations"
+      },
+      {
+        "tag": "011M",
+        "number": "12.20",
+        "title": "Spectral sequences"
+      },
+      {
+        "tag": "011P",
+        "number": "12.21",
+        "title": "Spectral sequences: exact couples"
+      },
+      {
+        "tag": "011U",
+        "number": "12.22",
+        "title": "Spectral sequences: differential objects"
+      },
+      {
+        "tag": "012K",
+        "number": "12.24",
+        "title": "Spectral sequences: filtered complexes"
+      },
+      {
+        "tag": "012X",
+        "number": "12.25",
+        "title": "Spectral sequences: double complexes"
+      },
+      {
+        "tag": "0134",
+        "number": "12.27",
+        "title": "Injectives"
+      },
+      {
+        "tag": "015Y",
+        "number": "12.29",
+        "title": "Injectives and adjoint functors"
+      },
+      {
+        "tag": "0A2D",
+        "number": "12.30",
+        "title": "Essentially constant systems"
+      },
+      {
+        "tag": "05QK",
+        "number": "13.3",
+        "title": "The definition of a triangulated category"
+      },
+      {
+        "tag": "05QN",
+        "number": "13.4",
+        "title": "Elementary results on triangulated categories"
+      },
+      {
+        "tag": "05R1",
+        "number": "13.5",
+        "title": "Localization of triangulated categories"
+      },
+      {
+        "tag": "05RA",
+        "number": "13.6",
+        "title": "Quotients of triangulated categories"
+      },
+      {
+        "tag": "05RN",
+        "number": "13.8",
+        "title": "The homotopy category"
+      },
+      {
+        "tag": "014D",
+        "number": "13.9",
+        "title": "Cones and termwise split sequences"
+      },
+      {
+        "tag": "014P",
+        "number": "13.10",
+        "title": "Distinguished triangles in the homotopy category"
+      },
+      {
+        "tag": "05RR",
+        "number": "13.11",
+        "title": "Derived categories"
+      },
+      {
+        "tag": "014Z",
+        "number": "13.12",
+        "title": "The canonical delta-functor"
+      },
+      {
+        "tag": "05S7",
+        "number": "13.14",
+        "title": "Derived functors in general"
+      },
+      {
+        "tag": "05T3",
+        "number": "13.15",
+        "title": "Derived functors on derived categories"
+      },
+      {
+        "tag": "05TB",
+        "number": "13.16",
+        "title": "Higher derived functors"
+      },
+      {
+        "tag": "013G",
+        "number": "13.18",
+        "title": "Injective resolutions"
+      },
+      {
+        "tag": "0643",
+        "number": "13.19",
+        "title": "Projective resolutions"
+      },
+      {
+        "tag": "0156",
+        "number": "13.20",
+        "title": "Right derived functors and injective resolutions"
+      },
+      {
+        "tag": "015G",
+        "number": "13.21",
+        "title": "Cartan-Eilenberg resolutions"
+      },
+      {
+        "tag": "015L",
+        "number": "13.22",
+        "title": "Composition of right derived functors"
+      },
+      {
+        "tag": "01D8",
+        "number": "15.56",
+        "title": "Injective modules"
+      },
+      {
+        "tag": "0FJ9",
+        "number": "15.120",
+        "title": "Determinants"
+      },
+      {
+        "tag": "0FJG",
+        "number": "15.121",
+        "title": "Perfect complexes and K-groups"
+      },
+      {
+        "tag": "0FJH",
+        "number": "15.123",
+        "title": "A regular local ring is a UFD"
+      },
+      {
+        "tag": "01B1",
+        "number": "17.8",
+        "title": "Modules locally generated by sections"
+      },
+      {
+        "tag": "01BM",
+        "number": "17.11",
+        "title": "Modules of finite presentation"
+      },
+      {
+        "tag": "01C5",
+        "number": "17.14",
+        "title": "Locally free sheaves"
+      },
+      {
+        "tag": "01DH",
+        "number": "19.5",
+        "title": "Sheaves of modules on a ringed space"
+      },
+      {
+        "tag": "01DJ",
+        "number": "19.6",
+        "title": "Abelian presheaves on a category"
+      },
+      {
+        "tag": "01E0",
+        "number": "20.7",
+        "title": "Locality of cohomology"
+      },
+      {
+        "tag": "01EH",
+        "number": "20.10",
+        "title": "Čech cohomology as a functor on presheaves"
+      },
+      {
+        "tag": "01EO",
+        "number": "20.11",
+        "title": "Čech cohomology and cohomology"
+      },
+      {
+        "tag": "01EY",
+        "number": "20.13",
+        "title": "The Leray spectral sequence"
+      },
+      {
+        "tag": "01FG",
+        "number": "20.23",
+        "title": "The alternating Čech complex"
+      },
+      {
+        "tag": "01IZ",
+        "number": "26.12",
+        "title": "Reduced schemes"
+      },
+      {
+        "tag": "01J5",
+        "number": "26.13",
+        "title": "Points of schemes"
+      },
+      {
+        "tag": "01JA",
+        "number": "26.14",
+        "title": "Glueing schemes"
+      },
+      {
+        "tag": "01KA",
+        "number": "26.20",
+        "title": "Valuative criterion for universal closedness"
+      },
+      {
+        "tag": "01KY",
+        "number": "26.22",
+        "title": "Valuative criterion of separatedness"
+      },
+      {
+        "tag": "01L1",
+        "number": "26.23",
+        "title": "Monomorphisms"
+      },
+      {
+        "tag": "01LA",
+        "number": "26.24",
+        "title": "Functoriality for quasi-coherent modules"
+      },
+      {
+        "tag": "01LG",
+        "number": "27.2",
+        "title": "Relative glueing"
+      },
+      {
+        "tag": "01NJ",
+        "number": "27.14",
+        "title": "Invertible sheaves and morphisms into Proj"
+      },
+      {
+        "tag": "07ZF",
+        "number": "27.18",
+        "title": "Functoriality of relative Proj"
+      },
+      {
+        "tag": "01OO",
+        "number": "28.4",
+        "title": "Types of schemes defined by properties of rings"
+      },
+      {
+        "tag": "01OU",
+        "number": "28.5",
+        "title": "Noetherian schemes"
+      },
+      {
+        "tag": "0B5K",
+        "number": "28.18",
+        "title": "Sections over principal opens"
+      },
+      {
+        "tag": "01P5",
+        "number": "28.19",
+        "title": "Quasi-affine schemes"
+      },
+      {
+        "tag": "05P1",
+        "number": "28.21",
+        "title": "Locally free modules"
+      },
+      {
+        "tag": "01PD",
+        "number": "28.23",
+        "title": "Extending quasi-coherent sheaves"
+      },
+      {
+        "tag": "01PR",
+        "number": "28.27",
+        "title": "Ample invertible sheaves"
+      },
+      {
+        "tag": "01QD",
+        "number": "28.28",
+        "title": "Affine and quasi-affine schemes"
+      },
+      {
+        "tag": "01ZU",
+        "number": "28.30",
+        "title": "Finding suitable affine opens"
+      },
+      {
+        "tag": "01QN",
+        "number": "29.2",
+        "title": "Closed immersions"
+      },
+      {
+        "tag": "01QX",
+        "number": "29.4",
+        "title": "Closed immersions and quasi-coherent sheaves"
+      },
+      {
+        "tag": "01RI",
+        "number": "29.8",
+        "title": "Dominant morphisms"
+      },
+      {
+        "tag": "01S5",
+        "number": "29.11",
+        "title": "Affine morphisms"
+      },
+      {
+        "tag": "01SQ",
+        "number": "29.14",
+        "title": "Types of morphisms defined by properties of ring maps"
+      },
+      {
+        "tag": "01U2",
+        "number": "29.26",
+        "title": "Flat morphisms"
+      },
+      {
+        "tag": "01W0",
+        "number": "29.42",
+        "title": "Proper morphisms"
+      },
+      {
+        "tag": "01X8",
+        "number": "30.2",
+        "title": "Čech cohomology of quasi-coherent sheaves"
+      },
+      {
+        "tag": "01XY",
+        "number": "30.9",
+        "title": "Coherent sheaves on locally Noetherian schemes"
+      },
+      {
+        "tag": "02OI",
+        "number": "31.2",
+        "title": "Associated points"
+      },
+      {
+        "tag": "05AJ",
+        "number": "31.4",
+        "title": "Embedded points"
+      },
+      {
+        "tag": "01WQ",
+        "number": "31.14",
+        "title": "Effective Cartier divisors"
+      },
+      {
+        "tag": "0B3Q",
+        "number": "31.16",
+        "title": "Effective Cartier divisors on Noetherian schemes"
+      },
+      {
+        "tag": "0BD6",
+        "number": "31.29",
+        "title": "More on invertible modules"
+      }
+    ],
+    "roots": [
+      "AlgebraicGeometry.ProjectiveSpectrum.Proj.planeCurveGlobalSectionsEquiv",
+      "AlgebraicGeometry.ProjectiveSpectrum.Proj.genus_planeCurve",
+      "irreducibleComponents",
+      "topologicalKrullDim",
+      "topologicalKrullDim_eq_bot_iff_isEmpty",
+      "AlgebraicGeometry.ProjectiveSpectrum.Proj.idealOfClosedSubscheme_isHomogeneous"
+    ],
+    "conclusions": {
+      "structureSheafCohomologyEquiv_of_explicit": {
+        "declarations": 57,
+        "sections": 48
+      },
+      "genus_eq_of_explicit": {
+        "declarations": 65,
+        "sections": 55
+      }
+    }
+  }
+}
