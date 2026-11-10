@@ -1134,6 +1134,15 @@ const passageNotes={
  '006K':models.abelianMorphism,
  '0106':models.kernel,
  '07BI':models.local,
+ '05CF':{...model('a line bundle over the affine line',[],'',''),points:[
+  r`\(R=\mathbb C[z]\), \(X=\operatorname{Spec}R\), and \(F=R^2\) is the module of sections of the trivial plane bundle.`,
+  r`The line \(v=zu\) in each fibre gives the module of sections \(P=\{(f,zf):f\in R\}\).`,
+  r`Project onto that line by
+\[
+e(f,g)=(f,zf),\qquad e^2=e,\qquad P=\operatorname{im}e.
+\]`,
+  r`\(F=P\oplus R(0,1)\). The section \((1,z)\) is a basis of \(P\).`
+ ]},
  '01IJ':{...models.scheme,bindings:[...models.scheme.bindings,b(r`\Sch`,r`\text{the category of schemes}`)]},
  '01IL':model('punctured affine plane',[
   b('k',r`\mathbb F_2`),
