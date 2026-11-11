@@ -1076,19 +1076,17 @@ const coordinateSpaces={...model('coordinate vector spaces',[],'',''),points:[
  },
  'It is a full subcategory.'
 ]};
-const matrixEquivalence=model('matrices',[
- b(r`\mathcal A`,r`\mathbf{Mat}_k`),
- b(r`\operatorname{Ob}(\mathcal A)`,r`\mathbb Z_{\ge0}`),
- b(r`\operatorname{Hom}_{\mathcal A}(n,m)`,r`\operatorname{Mat}_{m\times n}(k)`),
- b(r`\mathcal B`,r`\mathbf{Vect}^{\mathrm{fd}}_k`),
- b('F',r`(n\mapsto k^n,\ A\mapsto(v\mapsto Av))`),
- b('G',r`(V\mapsto \dim_k V,\ f\mapsto [f])`)
-],r`\[
-\begin{gathered}
-G\circ F=\mathrm{id}_{\mathcal A},\\
-\mathrm{id}_{\mathcal B}\xrightarrow{\sim}F\circ G.
-\end{gathered}
-\]`,r`Choose a basis of each \(V\), standard on \(k^n\). The coordinate maps give the natural isomorphism.`,r`Compose by matrix multiplication.`);
+const matrixEquivalence={...model('matrices',[],'',''),points:[
+ {
+  text:r`\(\mathcal A=\mathbf{Mat}_k\)`,
+  children:[
+   r`\(\operatorname{Ob}(\mathcal A)=\{n:n\geq 0\}\)`,
+   r`\(\operatorname{Mor}_{\mathcal A}(n,m)=\operatorname{Mat}_{n\times m}(k)\)`
+  ]
+ },
+ r`\(\mathcal B=\mathbf{Vect}^{\mathrm{fd}}_k\), the category of finite-dimensional \(k\)-vector spaces`,
+ r`An equivalence \(F:\mathcal A\to\mathcal B\) sends \(n\mapsto k^n\) and \(M\mapsto (v\mapsto vM)\) for row vectors \(v\).`
+]};
 const dual=model('dual vector spaces',[
  finiteVect,b(r`\mathcal S`,r`\mathbf{Vect}^{\mathrm{fd}}_{\mathbb R}`),
  b('F',r`(V\mapsto V^*)`),
@@ -1143,8 +1141,6 @@ const passageNotes={
  '001H':pointedSpacesUnder,
  '001I':hurewicz,
  '001J':matrixEquivalence,
- '05SG':matrixEquivalence,
- '02C3':matrixEquivalence,
  '001N':dual,
  '006E':models.presheaf,
  '006K':models.abelianMorphism,
