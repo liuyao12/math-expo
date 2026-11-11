@@ -1091,7 +1091,7 @@ const singularCohomology={...model('singular cohomology',[],'',''),points:[
  r`\(F=H^n(-,\mathbb Z):\mathbf{Top}\to\mathbf{Ab}\), the singular cohomology.`,
  r`For a morphism \(\psi:X\to Y\) in \(\mathcal C\), \(F(\psi)=\psi^*:H^n(Y,\mathbb Z)\to H^n(X,\mathbb Z)\) is the pullback map.`,
  r`It satisfies \((\phi\circ\psi)^*=\psi^*\circ\phi^*\) (reversing order).`,
- r`Thus, we may form the opposite category of \(\mathbf{Top}\), so the continuous map \(\psi:X\to Y\) becomes \(\psi:Y\to X\) in \(\mathbf{Top}^{\mathrm{opp}}\), and \(H^n(-,\mathbb Z)\) becomes a (covariant) functor.`
+ r`Thus, we may form the opposite category of \(\mathbf{Top}\), so the continuous map \(\psi:X\to Y\) becomes \(\psi:Y\to X\) in \(\mathbf{Top}^{\mathrm{opp}}\), and \(H^n(-,\mathbb Z)\) becomes a (covariant) functor from \(\mathbf{Top}^{\mathrm{opp}}\) to \(\mathbf{Ab}\).`
 ]};
 const additionalExamples={
  '01II':[model('first-order neighbourhood',[
