@@ -1093,6 +1093,20 @@ const singularCohomology={...model('singular cohomology',[],'',''),points:[
  r`It satisfies \((\phi\circ\psi)^*=\psi^*\circ\phi^*\) (reversing order).`,
  r`Thus, we may form the opposite category of \(\mathbf{Top}\), so the continuous map \(\psi:X\to Y\) becomes \(\psi:Y\to X\) in \(\mathbf{Top}^{\mathrm{opp}}\), and \(H^n(-,\mathbb Z)\) becomes a (covariant) functor from \(\mathbf{Top}^{\mathrm{opp}}\) to \(\mathbf{Ab}\).`
 ]};
+const vectorFunctorSetup=[
+ r`\(\mathcal C=\mathbf{Vect}_k^{\mathrm{opp}}\), \(U=k\).`,
+ r`\(h_U(V)=\operatorname{Hom}_k(k,V)\), \(F(V)=V\) as a set.`
+];
+const vectorYoneda={...model('scalar multiplication',[],'',''),points:[
+ ...vectorFunctorSetup,
+ r`For a natural transformation \(s:h_U\to F\), let \(\lambda=s_k(\mathrm{id}_k)\in k\).`,
+ r`For \(f:k\to V\) with \(f(1)=v\), naturality gives \(s_V(f)=f(\lambda)=\lambda v\).`
+]};
+const vectorRepresentability={...model('the underlying set of a vector space',[],'',''),points:[
+ ...vectorFunctorSetup,
+ r`The bijection \(h_U(V)\to F(V)\), \(f\mapsto f(1)\), is natural in \(V\).`,
+ r`The universal vector is \(1\in F(k)\).`
+]};
 const topologicalPresheaf={...model('presheaves on a topological space',[],'',''),points:[
  {
   text:r`\(\mathcal C=\operatorname{Open}(X)\)`,
@@ -1157,6 +1171,8 @@ const passageNotes={
  '001I':hurewicz,
  '001J':matrixEquivalence,
  '001N':singularCohomology,
+ '001P':vectorYoneda,
+ '001Q':vectorRepresentability,
  '02X6':topologicalPresheaf,
  '006E':models.presheaf,
  '006K':models.abelianMorphism,
