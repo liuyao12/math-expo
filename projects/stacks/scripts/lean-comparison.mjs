@@ -27,7 +27,7 @@ export function buildLeanComparison({root, dist, head, header, footer, readings,
   const projective = `https://github.com/AxiomMath/Stacks/blob/${data.axiom_commit}/StacksFrontier/AlgebraicGeometry/Variety/Defs/Projective.lean#L80-L115`;
   const compare = (trace, slug) => {
     const reused = trace.reused ? ` The earlier schemes reading supplied another ${trace.reused} sections.` : '';
-    return `<p><a href="../${slug}/">Reading</a> before the switch · ${trace.baseline} sections. The projected Lean selection has ${trace.candidate} sections, with ${trace.retained} in both selections.${reused}</p>
+    return `<p><a href="../${slug}/">Reading</a> · ${trace.baseline} sections. The projected Lean selection has ${trace.candidate} sections, with ${trace.retained} in both selections.${reused}</p>
       ${sectionList(trace.added, 'Sections added by the Lean trace')}
       ${sectionList(trace.dropped, 'Sections dropped by the Lean trace')}`;
   };
@@ -41,7 +41,7 @@ export function buildLeanComparison({root, dist, head, header, footer, readings,
         <p class="lead">The Lean trace for schemes and projective varieties.</p>
       </section>
       <div class="path-scope">
-        <p>The comparison starts with particular Lean declarations, follows AxiomMath’s proof edges, and looks up the Stacks section for each reached tag. It counts a section once even when several declarations point to it. The schemes reading follows the Stacks definitions and proofs. The comparison below helps identify prerequisites those passages leave implicit. The older comparisons are retained for reference.</p>
+        <p>The comparison starts with particular Lean declarations, follows AxiomMath’s proof edges, and looks up the Stacks section for each reached tag. It counts a section once even when several declarations point to it. The schemes reading follows the Stacks definitions and proofs. The comparison below helps identify prerequisites those passages leave implicit. The projected Lean selections are shown here for comparison.</p>
 
         <h2 id="schemes">Schemes and projective varieties</h2>
         <p>The roots cover the projective-variety clause of <a href="${stacksTag('04L1')}">Definition 33.26.1</a>, including the characterization by a closed embedding in projective space. <a href="${projective}">Lean declarations</a></p>
@@ -53,7 +53,7 @@ export function buildLeanComparison({root, dist, head, header, footer, readings,
       </section>
       <div class="path-scope">
         <p>The trace follows Axiom’s projective-variety declarations and expands the Mathlib declarations reached by that export. For example, Mathlib’s locally ringed spaces use stalks, which are colimits of sections over open neighbourhoods. The graph shows reviewed matches to Stacks prose, with unshown Lean declarations folded into the arrows. <a href="../source/lean-scheme-graph.json">Declaration paths behind the arrows</a> · <a href="https://github.com/leanprover-community/mathlib4/tree/${esc(mathlib.mathlib_commit)}">Pinned Mathlib source</a></p>
-        <h3>Original Axiom-only comparison</h3>
+        <h3>Axiom-only projection</h3>
         ${compare(schemes, 'scheme')}
         <p>For example, the trace drops <a href="${stacksTag('0078')}">§6.11 Stalks</a>. Mathlib supplies schemes as a library object. It adds <a href="${stacksTag('03NB')}">§59.9 Presheaves</a> because the general Lean functor declaration also carries a tag from that section.</p>
 
@@ -65,6 +65,7 @@ export function buildLeanComparison({root, dist, head, header, footer, readings,
         </ul>
         <p>The combined trace reaches ${curves.candidate_total} sections before subtracting material available in the earlier schemes reading. The prose audit reaches ${curves.baseline_total} before that subtraction.</p>
         ${compare(curves, 'curves')}
+        <p>The Stacks proof uses exact sheafification on Proj, the cohomology of twists, the affine pushforward comparison, and the long exact sequence. The Lean proof helped check the implicit identification of the quotient with the closed subscheme cut out by its equation. The reading keeps the Stacks route through the Leray and Čech results.</p>
         <p>The projection drops <a href="${stacksTag('01X8')}">§30.2 Čech cohomology of quasi-coherent sheaves</a>. This section is still useful for reading the Stacks proof, which cites it to compare cohomology on a closed subscheme with cohomology of its pushforward.</p>
 
         <h2>How to read the differences</h2>

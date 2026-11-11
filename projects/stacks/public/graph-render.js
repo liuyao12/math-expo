@@ -216,7 +216,8 @@ export function renderDependencyGraph(tree,references,base,idPrefix='',currentSl
  const [width,height]=layoutSections(entries,edges);
  const lines=edges.map(([from,to])=>{
   const coordinates=edgeEndpoints(from,to);
-  return `<line data-from="${esc(from.tag)}" data-to="${esc(to.tag)}" ${Object.entries(coordinates).map(([key,value])=>`${key}="${value.toFixed(2)}"`).join(' ')} marker-end="url(#${idPrefix}dependency-arrow)"/>`;
+  const context=tree.contextEdges?.has(from.tag+':'+to.tag);
+  return `<line data-from="${esc(from.tag)}" data-to="${esc(to.tag)}"${context?' stroke-dasharray="5 4"':''} ${Object.entries(coordinates).map(([key,value])=>`${key}="${value.toFixed(2)}"`).join(' ')} marker-end="url(#${idPrefix}dependency-arrow)"/>`;
  }).join('');
  const link=node=>{
   const baseline=-node.height/2+18;
@@ -237,6 +238,7 @@ export function renderDependencyGraph(tree,references,base,idPrefix='',currentSl
  return `<div class="dependency-graph">
   <div class="graph-controls" aria-label="Graph zoom" hidden><button type="button" data-zoom="out" aria-label="Zoom out">−</button><button type="button" data-zoom="fit">Fit graph</button><button type="button" data-zoom="in" aria-label="Zoom in">+</button></div>
   ${idPrefix?'<details class="graph-key"><summary>Node types</summary>':''}<ul class="graph-legend" aria-label="Node colors">${legend}${entries.some(node=>node.outsideReading)?'<li class="graph-legend-outside">Outside this reading</li>':''}</ul>${idPrefix?'</details>':''}
+  ${tree.contextEdges?.size?'<p class="graph-hint">Dashed arrows connect prerequisites of the final example.</p>':''}
   <div class="graph-viewport">
    <svg viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" aria-label="Dependency graph">
     <defs><marker class="graph-arrow" id="${idPrefix}dependency-arrow" markerUnits="userSpaceOnUse" refX="8" refY="4" markerWidth="8" markerHeight="8" viewBox="0 0 8 8" orient="auto" overflow="visible"><path d="M0 0L8 4L0 8Z"/></marker></defs>

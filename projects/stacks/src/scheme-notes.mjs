@@ -1141,6 +1141,11 @@ const passageNotes={
  '0B05':conicIntersection,
  '001B':{...singularHomology,examples:[fundamentalGroup,tangentSpace].map(example=>({...example,scope:"statement"}))},
  '001D':coordinateSpaces,
+ '0A23':{...model('a plane conic',[],'',''),points:[
+  r`\(S=k[T_0,T_1,T_2]\), \(F=T_0T_2-T_1^2\).`,
+  r`\(C=V_+(F)=\operatorname{Proj}(S/(F))\subset\mathbb P_k^2\).`,
+  r`\([s:t]\mapsto[s^2:st:t^2]\) identifies \(\mathbb P_k^1\) with \(C\). Thus \(C\) is a projective variety of dimension \(1\).`
+ ]},
  '001G':bundlesOver,
  '001H':pointedSpacesUnder,
  '001I':hurewicz,

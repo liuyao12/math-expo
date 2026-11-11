@@ -373,6 +373,10 @@
       "009Q"
     ]
   },
+  "0A23": {
+    "title": "Curves and the plane conic example",
+    "uses": ["04L1", "020D", "04MS", "0BXK"]
+  },
   "04L1": {
     "title": "Projective varieties (Definition 33.26.1, item 2)",
     "uses": [

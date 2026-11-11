@@ -77,7 +77,8 @@ assert.deepEqual(notesFor('ZZZZ','ZZZY').examples,[],'Commentary must be optiona
 assert.throws(()=>assembleReading({...coreReading,sections:['ZZZZ']},catalog),/Unknown section tag/);
 assert.throws(()=>assembleReading({...coreReading,target:'ZZZZ',sections:coreReading.sections.map(s=>s.tag)},catalog),/outside/);
 const coreTags=coreReading.sections.map(section=>section.tag);
-assert.equal(coreReading.target,'04L1','The first reading reaches the definition of projective varieties');
+assert.equal(coreReading.target,'0A23','The first reading ends with the definition of a curve');
+assert.equal(coreReading.sections.at(-1).tag,catalog.sectionForTag.get('0A23').tag);
 for(const tag of ['01II','00JL','00JM','01BD','01M3','01ND','020C','04L0']){
  assert(coreTags.includes(tag),'First reading includes schemes, Proj, projective space, and varieties: '+tag);
 }
@@ -112,6 +113,13 @@ for(const reading of selectedReadings){
  assert.match(coherent,/<foreignObject\b[\s\S]*?data-tex="\\mathcal\{O\}_X"/,'Keep source LaTeX in the graph caption');
  assert.match(coherent,/<foreignObject\b[\s\S]*?<annotation encoding="application\/x-tex">\\mathcal\{O\}_X<\/annotation>/,'Typeset the original expression');
  if(reading.slug==='curves'){
+  for(const tag of ['01M7','01N0','0BXK']){
+   assert(report.passages['0BYD'].dependencies.some(edge=>edge.tag===tag));
+   assert.equal(inset.match(new RegExp('id="inset-'+tag+'"[^>]+href="([^"]+)"'))?.[1],'../scheme/#'+tag);
+  }
+  for(const tag of ['01XT','089W','010Q']){
+   assert(report.passages['0BYD'].dependencies.some(edge=>edge.tag===tag));
+  }
   assert.match(graphLabel('00NW'),/Locally free R-module/,'Retain the ring in the accessible label');
   assert.match(mathNode('00NW'),/<foreignObject\b[\s\S]*?data-tex="R"/,'Typeset the ring in the module label');
  }
@@ -121,7 +129,11 @@ for(const reading of selectedReadings){
  const frames=new Set([...inset.matchAll(/data-graph-cluster="([^"]+)" transform=/g)].map(match=>match[1]));
  assert(arrows.every(([,from,to])=>!frames.has(from)&&!frames.has(to)),'Section frames used only for grouping have no arrows');
  if(reading===coreReading){
-  assert(!report.passages['01B2'],'A Lean-only route to finite type does not enlarge the Stacks proof');
+  assert(!report.passages['01DZ'],'Sheaf cohomology belongs to the genus reading');
+  assert(report.passages['0A23'].dependencies.some(edge=>edge.tag==='04L1'&&edge.context),
+   'Projective varieties support the conic example');
+  assert(!report.passages['01B2']||report.paths['01B2'].includes('0BXK'),
+   'The locally generated modules section needs a Stacks route through the conic construction');
   for(const [tag,used] of [['04L1','01WB'],['01MB','01M4'],['01M3','009H'],['01T1','01K3'],['01JP','01JM'],['01OB','01O0'],['01O0','01NQ']]){
    assert(report.passages[tag].dependencies.some(edge=>edge.tag===used),'Retain the Stacks prerequisite '+used+' for '+tag);
   }

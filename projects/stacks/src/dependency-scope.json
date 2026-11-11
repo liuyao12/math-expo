@@ -21,7 +21,7 @@
     },
     "0A23": {
       "04MS": "Dimension in the definition of a curve.",
-      "01OJ": "Integral schemes in the definition of a variety."
+      "020D": "The definition of curve assumes a variety over a field."
     },
     "0BY7": {
       "01OU": "Noetherian schemes in the genus definition.",
@@ -198,8 +198,13 @@
       "004E": "The section topology basic construction or definition used by this passage."
     },
     "0BYD": {
+      "010Q": "The boundary map and its exactness come from the cohomological delta-functor, used implicitly in the Stacks proof and through the short exact sequence in Lean.",
+      "01N0": "The quotient by the equation gives the closed immersion on Proj. Its affine charts identify the quotient sheaf with the pushforward of the structure sheaf.",
+      "01SE": "The closed immersion is affine, as required for the cohomology comparison in Lemma 30.2.4.",
+      "0BXK": "The homogeneous ideal recovers the closed subscheme by the Proj of its graded quotient. The Lean proof also identifies the closed immersion with the zero scheme of its equation.",
       "01DZ": "The section cohomology sheaves construction or definition used by this passage.",
       "0BY7": "The genus construction or definition used by this passage.",
+      "0B2P": "The ambient plane has dimension two, so the dimension-one closed subscheme has a nonzero equation. Since it is nonempty, its homogeneous equation has positive degree. The formal proof tracks both conditions explicitly.",
       "01MN": "The twisting sheaves in the short exact sequence.",
       "01WC": "The closed subscheme of projective space in the genus formula is proper over the field, as required by the definition of genus.",
       "01W8": "The given closed embedding makes this an H-projective morphism."
@@ -1186,7 +1191,18 @@
       ]
     }
   },
+  "target_context": {
+    "0A23": {
+      "04L1": "The endpoint pairs the definition of a curve with the projective-variety clause for the plane conic example.",
+      "0BXK": "The plane conic example uses the closed subscheme of Proj cut out by a homogeneous ideal.",
+      "0B2P": "The conic is isomorphic to the projective line, which has dimension one."
+    }
+  },
   "excluded_branches": {
+    "scheme": {
+      "01DZ": "Sheaf cohomology belongs to the genus reading.",
+      "0BYD": "The genus formula belongs to the genus reading."
+    },
     "curves": {
       "00TE": "Smoothness of the Fermat examples is context, not a prerequisite of the genus formula.",
       "0BXD": "The later saturation discussion in Example 0BXK is context.",
@@ -1199,7 +1215,7 @@
       "01HV:01AG": "For defining a scheme, only the ring sections, restrictions, and stalk identifications in Lemma 01HV are used. Its final assertion about exactness of the associated module sheaf is contextual; the later curves reading follows that module assertion and its proof.",
       "00A1:008X": "The scheme definition uses restriction of sheaves of rings and the open ringed subspace (items 1–3). Item 4 concerns module restrictions and is contextual for this target."
     },
-    "04L1": {
+    "0A23": {
       "04L1:01VZ": "The target is item (2), projective varieties; the quasi-projective characterization belongs to contextual item (3)."
     }
   }

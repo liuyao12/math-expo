@@ -60,6 +60,7 @@ def plan(target, nodes, sections, tags, scope):
     keys = {tag: key for key, tag in tags.items()}
     excluded_edges = {**scope.get('excluded_edges', {}),
                       **scope.get('target_excluded_edges', {}).get(target, {})}
+    context = scope.get('target_context', {}).get(target, {})
     queue, seen = collections.deque([target]), set()
     paths, excluded, passages = {target: []}, [], {}
     while queue:
@@ -70,6 +71,8 @@ def plan(target, nodes, sections, tags, scope):
             raise ValueError('Missing source for required tag ' + tag)
         seen.add(tag)
         uses, digest = direct_dependencies(tag, nodes, sections, tags, scope)
+        if tag == target:
+            uses.update(context)
         passages[tag] = dict(section=nodes[tag]['section'], text_sha256=digest, dependencies=[])
         for used, reason in sorted(uses.items()):
             key = keys[used]
@@ -79,7 +82,10 @@ def plan(target, nodes, sections, tags, scope):
             if omission:
                 excluded.append(dict(from_tag=tag, to_tag=used, reason=omission))
                 continue
-            passages[tag]['dependencies'].append(dict(tag=used, reason=reason))
+            dependency = dict(tag=used, reason=reason)
+            if tag == target and used in context:
+                dependency['context'] = True
+            passages[tag]['dependencies'].append(dependency)
             if used not in paths:
                 paths[used] = paths[tag] + [tag]
                 queue.append(used)
