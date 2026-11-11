@@ -176,6 +176,9 @@
   const readingParagraphs = readingText + ' p, #chapter .chapter-intro';
   const statementBodies = '.passage:not(.prose) > .source-body, #chapter .prose .definition';
   const lists = 'ol, ul';
+  const displays = '.math-display, .katex-display';
+  const continuesAfterDisplay = paragraph => paragraph?.matches('p') &&
+    paragraph.textContent.trim() && !/^[\s\p{Ps}\p{Pi}"']*[\p{Lu}\p{Lt}]/u.test(paragraph.textContent);
   const commentSpans = new WeakMap();
   const commentSizes = new ResizeObserver(entries => {
     const groups = new Set(entries.map(({ target }) => commentSpans.get(target)));
@@ -227,13 +230,24 @@
       if ((enclosingStatement && enclosingStatement !== block) ||
           block.parentElement.closest(lists) || continuations.has(block) || !block.textContent.trim()) continue;
 
+      const preceding = block.previousElementSibling;
+      const startsWithMath = preceding?.matches(displays) && !continuations.has(preceding) && continuesAfterDisplay(block);
+      const start = startsWithMath ? preceding : block;
       let end = block;
       const following = [];
       if (block.matches('p, ol, ul')) {
         const introducesItems = /[.:;!?]\s*$/.test(block.textContent);
         let next = end.nextElementSibling;
-        while (next && (next.matches(lists) || (introducesItems && next.matches('p') && /^\s*(?:\d+[.)]|\(\d+\))\s/.test(next.textContent)))) {
-          end = next;
+        while (next) {
+          let display = next;
+          // Stacks may put the equation's tag immediately before the display.
+          while (display?.matches('.source-anchor:empty')) display = display.nextElementSibling;
+          const continuesWithMath = display?.matches(displays) && end.matches('p, ' + displays) &&
+            !/[.!?][”’"')\]]*\s*$/.test(end.textContent);
+          const continuesWithProse = end.matches(displays) && continuesAfterDisplay(next);
+          const numberedItem = introducesItems && next.matches('p') && /^\s*(?:\d+[.)]|\(\d+\))\s/.test(next.textContent);
+          if (!continuesWithMath && !continuesWithProse && !next.matches(lists) && !numberedItem) break;
+          end = continuesWithMath ? display : next;
           continuations.add(end);
           following.push(end);
           next = end.nextElementSibling;
@@ -255,18 +269,20 @@
       const label = block.matches(statementBodies) ? 'Annotate this block' : block.matches(lists) ? 'Annotate this list' : 'Annotate this paragraph';
       addComment.setAttribute('aria-label', label);
       addComment.title = label;
-      addComment.addEventListener('click', () => annotateParagraph(lead, block, end, key, previousKeys));
+      addComment.addEventListener('click', () => annotateParagraph(lead, start, end, key, previousKeys));
       lead.prepend(addComment);
       if (block !== lead) block.classList.add('comment-block');
-      block.classList.add('comment-anchor');
       const parts = [block, ...following];
-      const group = { start: block, end, button: addComment, parts, visible: new Set() };
+      if (start !== block) parts.unshift(start);
+      start.classList.add('comment-anchor');
+      const group = { start, end, button: addComment, parts, visible: new Set() };
       for (const part of parts) {
         part.classList.add('comment-span');
         commentSpans.set(part, group);
         nearbyComments.observe(part);
       }
-      for (const continuation of following) {
+      for (const continuation of parts) {
+        if (continuation === block) continue;
         continuation.addEventListener('pointerenter', () => addComment.classList.add('is-hovered'));
         continuation.addEventListener('pointerleave', () => addComment.classList.remove('is-hovered'));
       }

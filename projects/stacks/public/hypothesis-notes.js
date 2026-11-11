@@ -51,6 +51,7 @@ function commentBlock(element) {
   let block = element?.closest('.comment-span');
   while (block && !block.classList.contains('comment-anchor')) {
     block = block.previousElementSibling;
+    while (block?.matches('.source-anchor:empty')) block = block.previousElementSibling;
     if (!block?.classList.contains('comment-span')) return null;
   }
   return block;
