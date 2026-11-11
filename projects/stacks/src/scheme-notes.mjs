@@ -1052,22 +1052,19 @@ Y & \xrightarrow{\ u\ } & Y'
 \end{array}\)`,
  r`\(*/\mathbf{Top}=\mathbf{Top}_*\), the category of pointed spaces`
 ]};
-const hurewicz={...model('Hurewicz map',[],r`\[
-\begin{gathered}
-h_X:\pi_n(X,x_0)\longrightarrow H_n(X;\mathbb Z),\\
+const hurewicz={...model('Hurewicz map',[],'',''),points:[
+ r`\(\mathcal A=\mathbf{Top}_*,\quad \mathcal B=\mathbf{Groups}\)`,
+ r`\(F=\pi_n(-),\quad G=H_n(-,\mathbb Z)\), for \(n\geq 1\)`,
+ r`\(\begin{gathered}
+h_X:\pi_n(X,x_0)\longrightarrow H_n(X,\mathbb Z),\\
 [\alpha:S^n\to X]\longmapsto\alpha_*[S^n].
-\end{gathered}
-\]
-\[
-\begin{array}{ccc}
-\pi_n(X,x_0) & \xrightarrow{h_X} & H_n(X;\mathbb Z) \\
-\big\downarrow\mathrlap{\scriptstyle \pi_n(f)} && \big\downarrow\mathrlap{\scriptstyle H_n(f;\mathbb Z)} \\
-\pi_n(Y,y_0) & \xrightarrow{h_Y} & H_n(Y;\mathbb Z)
-\end{array}
-\]`,'',r`A based sphere gives a homology class by pushing forward its fundamental class.`),source:{
- url:'https://people.math.rochester.edu/faculty/doug/otherpapers/MayConcise.pdf',
- label:'May, A Concise Course in Algebraic Topology, §15.1'
-}};
+\end{gathered}\)`,
+ r`\(\begin{array}{ccc}
+\pi_n(X,x_0) & \xrightarrow{h_X} & H_n(X,\mathbb Z) \\
+\big\downarrow\mathrlap{\scriptstyle \pi_n(f)} && \big\downarrow\mathrlap{\scriptstyle H_n(f,\mathbb Z)} \\
+\pi_n(Y,y_0) & \xrightarrow{h_Y} & H_n(Y,\mathbb Z)
+\end{array}\)`
+]};
 const coordinateSpaces={...model('coordinate vector spaces',[],'',''),points:[
  r`\(\mathcal B=\mathbf{Vect}_{\mathbb R}\)`,
  {
