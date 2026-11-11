@@ -141,6 +141,7 @@
             if(candidates)candidates.push(sourceAnchor);
           }
           const noteCard=card(entry.key);
+          noteCard.open=!entry.note.querySelector('.example-disclosure');
           entry.note.append(noteCard);
           if(!grouped.has(entry.key))grouped.set(entry.key,[]);
           grouped.get(entry.key).push(noteCard.outerHTML);

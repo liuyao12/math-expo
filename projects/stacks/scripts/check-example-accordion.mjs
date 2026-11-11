@@ -48,6 +48,7 @@ try{
     assert.deepEqual(overflowing,[],'Each example ends at the next example in its section or the end of the section');
    }
    const cards=group.locator(':scope > .example-disclosure'),count=await cards.count();assert(count>=1);
+   await assertExclusive(group,await cards.first().getAttribute('data-example-card'));
    if(tag==='005A'){
     assert.equal(await cards.first().locator('.example-title').innerText(),'Non-example: usual topology');
     assert.equal(await cards.last().locator('.example-title').innerText(),'Example: Zariski topology');
@@ -81,13 +82,15 @@ try{
  const page=await browser.newPage({viewport:{width:1440,height:900},reducedMotion:'reduce'});
  page.on('pageerror',error=>errors.push(error.message));
  await page.goto(url('scheme','001B'),{waitUntil:'networkidle'});
- const rail=page.locator('.example-band[data-example-anchor="001B"]'),first=rail.locator('[data-example-card="001B"]');
- await first.locator('summary').click();await settle(page);
+ const rail=page.locator('.example-band[data-example-anchor="001B"]');
+ const second=rail.locator('.example-disclosure').nth(1);
+ const selectedKey=await second.getAttribute('data-example-card');
+ await second.locator('summary').click();await settle(page);
  await page.setViewportSize({width:390,height:844});
  await page.locator('main [id="001B"]').evaluate(n=>scrollBy({top:n.getBoundingClientRect().top-innerHeight*.3+25,behavior:'instant'}));
  await page.waitForFunction(()=>document.querySelector('#example-stage-label').hash==='#001B');
  const button=await page.locator('.header-companion-toggle').boundingBox();await page.mouse.click(button.x+button.width/2,button.y+button.height/2);await settle(page);
- await assertExclusive(page.locator('#example-content'),'001B');
+ await assertExclusive(page.locator('#example-content'),selectedKey);
  await page.locator('#close-example').click();await page.setViewportSize({width:1440,height:900});
  await page.locator('main details.proof').first().evaluate(n=>n.open=true);await settle(page);
  const drift=await page.locator('.example-band:not([hidden])').evaluateAll(bands=>bands.map(b=>{
