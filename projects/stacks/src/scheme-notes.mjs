@@ -980,7 +980,7 @@ const sectionGroups={
  invertibleLine:['01CR'],
  twistCharts:['01MM','0BD6'],
  solutionSheaf:['01AF'],connected:['004R'],natural:['001L','003D'],twoFibre:['003O'],over:['02XG'],topology:['004E'],basis:['004O'],irreducible:['004U'],noetherian:['0050'],compact:['0059'],specialization:['0060'],
- snake:['07JV'],colimits:['09WN','07N7','002Z'],localization:['00CM'],local:['0AMD'],spectrum:['00DY'],constructible:['04ZC','053X'],
+ snake:['07JV'],colimits:['09WN','07N7','002Z'],localization:['00CM'],spectrum:['00DY'],constructible:['04ZC','053X'],
  presheaf:['006D'],
  sheaf:['006G','006S','006Z','006M','0071','007L'],
  moduleSheaf:['006P','0076','0088'],
