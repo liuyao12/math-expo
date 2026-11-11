@@ -1093,6 +1093,23 @@ const singularCohomology={...model('singular cohomology',[],'',''),points:[
  r`It satisfies \((\phi\circ\psi)^*=\psi^*\circ\phi^*\) (reversing order).`,
  r`Thus, we may form the opposite category of \(\mathbf{Top}\), so the continuous map \(\psi:X\to Y\) becomes \(\psi:Y\to X\) in \(\mathbf{Top}^{\mathrm{opp}}\), and \(H^n(-,\mathbb Z)\) becomes a (covariant) functor from \(\mathbf{Top}^{\mathrm{opp}}\) to \(\mathbf{Ab}\).`
 ]};
+const topologicalPresheaf={...model('presheaves on a topological space',[],'',''),points:[
+ {
+  text:r`\(\mathcal C=\operatorname{Open}(X)\)`,
+  children:[
+   r`\(\operatorname{Ob}(\mathcal C)=\{U\subseteq X: U\text{ open}\}\) for a topological space \(X\).`,
+   r`\(\operatorname{Mor}_{\mathcal C}(U,V)=\{\text{inclusion } U\to V\}\) if \(U\subseteq V\), and \(\emptyset\) otherwise.`
+  ]
+ },
+ {
+  text:r`A contravariant functor \(F:\operatorname{Open}(X)\to\mathbf{Sets}\) assigns`,
+  children:[
+   r`a set \(F(U)\) to each open set \(U\)`,
+   r`a restriction map \(F(V)\to F(U)\) to each inclusion \(U\to V\)`
+  ]
+ },
+ r`The restriction maps are compatible with chains of inclusions.`
+]};
 const additionalExamples={
  '01II':[model('first-order neighbourhood',[
   b('R',r`\mathbb C[\epsilon]/(\epsilon^2)`),
@@ -1140,6 +1157,7 @@ const passageNotes={
  '001I':hurewicz,
  '001J':matrixEquivalence,
  '001N':singularCohomology,
+ '02X6':topologicalPresheaf,
  '006E':models.presheaf,
  '006K':models.abelianMorphism,
  '0106':models.kernel,
