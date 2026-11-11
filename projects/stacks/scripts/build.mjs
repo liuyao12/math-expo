@@ -22,14 +22,16 @@ const hypothesisAssets=buildHypothesisLogin(dist);
 fs.cpSync(path.join(root,'upstream'),path.join(dist,'source'),{recursive:true});
 fs.copyFileSync(path.join(root,'src/readings.json'),path.join(dist,'source/readings.json'));
 const r=createRenderer(root);
-const rich=s=>s.replace(/\\\[([\s\S]*?)\\\]/g,(_,t)=>r.math(t,true)).replace(/\\\(([\s\S]*?)\\\)/g,(_,t)=>r.math(t));
 const normalize=s=>s.replace(/[\s{}]/g,'');
 function matchingHTML(item,proof=false,renderer=r){
   const r=renderer;
-  const rich=s=>s.replace(/\\\[([\s\S]*?)\\\]/g,(_,t)=>r.math(t,true)).replace(/\\\(([\s\S]*?)\\\)/g,(_,t)=>r.math(t));
-  const paragraphs=(value,cls='')=>value.split(/(\\\[[\s\S]*?\\\])/).filter(part=>part.trim()).map(part=>
-    part.startsWith('\\[')?rich(part):`<p${cls?' class="'+cls+'"':''}>${rich(part.trim())}</p>`
-  ).join('');
+  const rich=value=>value.replace(/\\\[([\s\S]*?)\\\]|\\\(([\s\S]*?)\\\)/g,(_,display,inline)=>{
+    const tex=(display??inline).trim();
+    const needsDisplayStyle=display!==undefined&&/\\(?:[dt]?frac|sum|prod|coprod|[io]*int|[a-z]*lim|big(?:cup|cap|oplus|otimes|vee|wedge))\b/.test(tex);
+    return r.math(needsDisplayStyle?'\\displaystyle '+tex:tex);
+  });
+  const paragraphs=value=>value.split(/(\\\[[\s\S]*?\\\])/).filter(part=>part.trim())
+    .map(part=>`<p>${rich(part.trim())}</p>`).join('');
   const bindings=proof&&item.proofBindings?[...new Map([...item.proofBindings,...item.bindings].map(b=>[normalize(b.symbol),b])).values()]:item.bindings;
   const rows=bindings.map(binding=>`<li class="object-row" data-symbol="${esc(normalize(binding.symbol))}" tabindex="-1"><div class="object-formula">${r.math(binding.symbol+'{=}'+binding.value)}</div>${paragraphs(binding.note)}</li>`).join('');
   const renderPoint=point=>{

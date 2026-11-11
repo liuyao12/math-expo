@@ -61,6 +61,7 @@ try{
     await settle(page);await assertExclusive(group,key);
     if(!compactGroup)await headingsVisible(group,page);
     const body=card.locator('.example-body');
+    assert.equal(await body.locator('.math-display').count(),0,'Example math is inline');
     const size=await body.evaluate(n=>({height:n.clientHeight,content:n.scrollHeight}));
     assert(size.height>30,'The open example has usable space');
     if(!compactGroup&&size.content>size.height+10){

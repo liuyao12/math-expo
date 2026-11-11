@@ -1046,11 +1046,11 @@ const pointedSpacesUnder=model('pointed spaces',[
  b(r`\mathcal C`,r`\mathbf{Top}`),
  b('X',r`\{*\}`)
 ],r`\[
-\begin{CD}
-\{*\} @= \{*\} \\
-@V{y_0}VV @VV{y'_0}V \\
-Y @>>{u}> Y'
-\end{CD}
+\begin{array}{ccc}
+\{*\} & \mathrel{=} & \{*\} \\
+\big\downarrow\mathrlap{\scriptstyle y_0} && \big\downarrow\mathrlap{\scriptstyle y'_0} \\
+Y & \xrightarrow{u} & Y'
+\end{array}
 \]
 \[
 \{*\}/\mathbf{Top}\cong\mathbf{Top}_*,
@@ -1063,11 +1063,11 @@ h_X:\pi_n(X,x_0)\longrightarrow H_n(X;\mathbb Z),\\
 \end{gathered}
 \]
 \[
-\begin{CD}
-\pi_n(X,x_0) @>{h_X}>> H_n(X;\mathbb Z) \\
-@V{\pi_n(f)}VV @VV{H_n(f;\mathbb Z)}V \\
-\pi_n(Y,y_0) @>>{h_Y}> H_n(Y;\mathbb Z)
-\end{CD}
+\begin{array}{ccc}
+\pi_n(X,x_0) & \xrightarrow{h_X} & H_n(X;\mathbb Z) \\
+\big\downarrow\mathrlap{\scriptstyle \pi_n(f)} && \big\downarrow\mathrlap{\scriptstyle H_n(f;\mathbb Z)} \\
+\pi_n(Y,y_0) & \xrightarrow{h_Y} & H_n(Y;\mathbb Z)
+\end{array}
 \]`,'',r`A based sphere gives a homology class by pushing forward its fundamental class.`),source:{
  url:'https://people.math.rochester.edu/faculty/doug/otherpapers/MayConcise.pdf',
  label:'May, A Concise Course in Algebraic Topology, §15.1'
