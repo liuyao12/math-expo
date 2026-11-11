@@ -1042,20 +1042,16 @@ E & \xrightarrow{\text{bundle map }u} & E' \\
 {\scriptstyle p}\,\searrow && \swarrow\,{\scriptstyle p'} \\
 & X &
 \end{array}\)`,'',''),kind:'analogy'};
-const pointedSpacesUnder=model('pointed spaces',[
- b(r`\mathcal C`,r`\mathbf{Top}`),
- b('X',r`\{*\}`)
-],r`\[
-\begin{array}{ccc}
-\{*\} & \mathrel{=} & \{*\} \\
-\big\downarrow\mathrlap{\scriptstyle y_0} && \big\downarrow\mathrlap{\scriptstyle y'_0} \\
-Y & \xrightarrow{u} & Y'
-\end{array}
-\]
-\[
-\{*\}/\mathbf{Top}\cong\mathbf{Top}_*,
-\qquad u(y_0)=y'_0.
-\]`,'',r`A map \(\{*\}\to Y\) chooses a basepoint \(y_0\in Y\).`);
+const pointedSpacesUnder={...model('pointed spaces',[],'',''),points:[
+ r`\(\mathcal C=\mathbf{Top}\)`,
+ r`\(X=*\), a point`,
+ r`\(\begin{array}{ccc}
+& * & \\
+{\scriptstyle y_0}\,\swarrow && \searrow\,{\scriptstyle y'_0} \\
+Y & \xrightarrow{\ u\ } & Y'
+\end{array}\)`,
+ r`\(*/\mathbf{Top}=\mathbf{Top}_*\), the category of pointed spaces`
+]};
 const hurewicz={...model('Hurewicz map',[],r`\[
 \begin{gathered}
 h_X:\pi_n(X,x_0)\longrightarrow H_n(X;\mathbb Z),\\
