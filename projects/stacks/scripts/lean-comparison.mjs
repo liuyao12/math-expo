@@ -19,7 +19,7 @@ function sectionList(rows, label) {
 
 export function buildLeanComparison({root, dist, head, header, footer, readings, catalog}) {
   const data = JSON.parse(fs.readFileSync(path.join(root, 'upstream/lean-dependency-comparison.json'), 'utf8'));
-  const {schemes, curves} = data;
+  const {schemes, curves, grr} = data;
   const mathlib = JSON.parse(fs.readFileSync(path.join(root, 'upstream/lean-scheme-graph.json'), 'utf8'));
   if (mathlib.axiom_commit !== data.axiom_commit) throw Error('Axiom releases differ across the Lean pilot');
   const graph = createLeanSchemeGraph(catalog, readings.find(reading => reading.slug === 'scheme'), mathlib);
@@ -67,6 +67,12 @@ export function buildLeanComparison({root, dist, head, header, footer, readings,
         ${compare(curves, 'curves')}
         <p>The Stacks proof uses exact sheafification on Proj, the cohomology of twists, the affine pushforward comparison, and the long exact sequence. The Lean proof helped check the implicit identification of the quotient with the closed subscheme cut out by its equation. The reading keeps the Stacks route through the Leray and Čech results.</p>
         <p>The projection drops <a href="${stacksTag('01X8')}">§30.2 Čech cohomology of quasi-coherent sheaves</a>. This section is still useful for reading the Stacks proof, which cites it to compare cohomology on a closed subscheme with cohomology of its pushforward.</p>
+
+        <h2 id="grr">Grothendieck–Riemann–Roch</h2>
+        <p>The Stacks reading ends with the formula in <a href="${stacksTag('02UO')}">§42.66</a>. The pinned Lean export has no matched declarations for ${grr.unmatched_sections.map(tag=>`<a href="${stacksTag(tag)}">${tag}</a>`).join(', ')}. We audited those sections directly in Stacks.</p>
+        <p>The matched Lean prerequisites include the splitting principle, the projective bundle formula, proper pushforward, relative differentials, and higher direct images. The links below helped identify prerequisites left implicit in the Stacks text.</p>
+        <ul>${grr.links.map(({from_tag,to_tag})=>`<li><a href="${stacksTag(from_tag)}">${from_tag}</a> uses <a href="${stacksTag(to_tag)}">${to_tag}</a> in the <a href="https://stacks.axiommath.ai/library?tag=${from_tag}">Lean trace</a>.</li>`).join('')}</ul>
+        <p><a href="../grr/#02UO">Read the formula</a> · <a href="../source/lean-dependency-comparison.json">Lean declaration paths</a></p>
 
         <h2>How to read the differences</h2>
         <p>Axiom’s graph treats Mathlib declarations as leaves and contracts paths through untagged project helpers. The explicit curve wrappers themselves sit outside that export. This pilot follows their source calls into the two tagged conclusions and also seeds the tagged references visible in the hypothesis bridge. The wrapper portion is a source audit and may miss elaborated references that the public graph does not expose.</p>

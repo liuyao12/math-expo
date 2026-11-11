@@ -5686,5 +5686,17 @@
     "slug": "schemes-existence-fibre-products",
     "kind": "section",
     "sha256": "7f6c42e08979fea8d4a6a85370e8b73a2b9cd5c7e8261da2fc05f27bb1b34aac"
+  },
+  "0BEI": {
+    "tag": "0BEI",
+    "label": "section-euler",
+    "chapter": "varieties",
+    "number": "33.33",
+    "title": "Euler characteristics",
+    "source_start_line": 6153,
+    "source_end_line": 6318,
+    "slug": "varieties-euler",
+    "kind": "section",
+    "sha256": "19ae593f9362d5eea8d1223b9ab144571a67f6901e86b133897c17b456d323de"
   }
 }

@@ -21348,5 +21348,20 @@
     "tag": "01JL",
     "number": "26.16",
     "kind": "section"
+  },
+  "varieties-lemma-euler-characteristic-morphism": {
+    "tag": "0BEK",
+    "number": "33.33.5",
+    "kind": "lemma"
+  },
+  "varieties-lemma-euler-characteristic-extend-base-field": {
+    "tag": "08AB",
+    "number": "33.33.4",
+    "kind": "lemma"
+  },
+  "varieties-definition-euler-characteristic": {
+    "tag": "0BEJ",
+    "number": "33.33.1",
+    "kind": "definition"
   }
 }

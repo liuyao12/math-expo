@@ -146,6 +146,11 @@ for(const reading of selectedReadings){
   assert.equal(links.get(tag),`${route}#${tag}`,'Audited node links to its owning reading');
  }
  if(reading.slug==='grr'){
+  for(const [tag,used] of [['02UO','01DZ'],['02UO','0BEJ'],['02R4','02QP'],['02UL','01U3'],['02UL','02NJ'],['02S1','02RB'],['08RT','08RP']]){
+   assert(report.passages[tag].dependencies.some(edge=>edge.tag===used),'Retain GRR prerequisite '+used+' for '+tag);
+  }
+  assert.equal(links.get('01OB'),'../scheme/#01OB');
+  assert.equal(links.get('01DZ'),'../curves/#01DZ');
   assert(frames.has('02I8'),'Section 5.20 is only an enclosure');
   assert(edges.has('02I9:02QL'),'Dimension functions link directly to the passage that needs them');
   assert.match(graphLabel('02I9'),/Immediate specialization; dimension function/,'A definition tag names both terms in its block');

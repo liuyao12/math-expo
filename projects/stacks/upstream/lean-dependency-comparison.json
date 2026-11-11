@@ -1764,5 +1764,73 @@
         "sections": 55
       }
     }
+  },
+  "grr": {
+    "roots": {
+      "02UL": "Stacks.Chow.exists_splittingMorphism_isProjective",
+      "02TX": "Stacks.Chow.bijective_projectiveBundleFormulaMap",
+      "02S1": "Stacks.Chow.flatPullbackFactorsThroughRationalEquivalence_general",
+      "02R4": "Stacks.Chow.properPushforward",
+      "02S2": "Stacks.Chow.properPushforward_rationallyEquivalent_of_isProper",
+      "02G1": "AlgebraicGeometry.Scheme.Hom.isFiniteLocallyFree_relativeDifferentials",
+      "01E4": "Stacks.Cohomology.HigherDirectImagePresheaf.higherDirectImage_iso_sheafify_preimageCohomology",
+      "0FE1": "Stacks.Chow.canonicalChernClass"
+    },
+    "unmatched_sections": [
+      "02UM",
+      "02UN",
+      "02UO"
+    ],
+    "links": [
+      {
+        "from_tag": "02R4",
+        "to_tag": "02QP",
+        "chain": [
+          "Stacks.Chow.properPushforward",
+          "Stacks.Chow.deltaDimension"
+        ]
+      },
+      {
+        "from_tag": "02UL",
+        "to_tag": "01U3",
+        "chain": [
+          "Stacks.Chow.exists_splittingMorphism_isProjective",
+          "AlgebraicGeometry.Flat"
+        ]
+      },
+      {
+        "from_tag": "02UL",
+        "to_tag": "02NJ",
+        "chain": [
+          "Stacks.Chow.exists_splittingMorphism_isProjective",
+          "AlgebraicGeometry.RelativeDimension"
+        ]
+      },
+      {
+        "from_tag": "02TX",
+        "to_tag": "01OB",
+        "chain": [
+          "Stacks.Chow.bijective_projectiveBundleFormulaMap",
+          "Stacks.Chow.projectiveBundle_formula",
+          "Stacks.RelativeProj.projectiveBundle"
+        ]
+      },
+      {
+        "from_tag": "02S1",
+        "to_tag": "02RB",
+        "chain": [
+          "Stacks.Chow.flatPullbackFactorsThroughRationalEquivalence_general",
+          "Stacks.Chow.flatPullback"
+        ]
+      },
+      {
+        "from_tag": "02G1",
+        "to_tag": "08RP",
+        "chain": [
+          "AlgebraicGeometry.Scheme.Hom.isFiniteLocallyFree_relativeDifferentials",
+          "AlgebraicGeometry.SheafOfModules.moduleOfDifferentials"
+        ]
+      }
+    ]
   }
 }

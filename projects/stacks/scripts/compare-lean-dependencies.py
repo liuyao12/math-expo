@@ -24,6 +24,28 @@ AUXILIARY = (
 )
 
 
+GRR_ROOTS = {
+    '02UL': 'Stacks.Chow.exists_splittingMorphism_isProjective',
+    '02TX': 'Stacks.Chow.bijective_projectiveBundleFormulaMap',
+    '02S1': 'Stacks.Chow.flatPullbackFactorsThroughRationalEquivalence_general',
+    '02R4': 'Stacks.Chow.properPushforward',
+    '02S2': 'Stacks.Chow.properPushforward_rationallyEquivalent_of_isProper',
+    '02G1': GEOMETRY + 'Scheme.Hom.isFiniteLocallyFree_relativeDifferentials',
+    '01E4': 'Stacks.Cohomology.HigherDirectImagePresheaf.higherDirectImage_iso_sheafify_preimageCohomology',
+    '0FE1': 'Stacks.Chow.canonicalChernClass',
+}
+# Check the declaration path for each mathematical correspondence reviewed in
+# the Stacks audit. Other tags on the same Lean constants do not seed selection.
+GRR_MATCHES = {
+    ('02R4', '02QP'): 'Stacks.Chow.deltaDimension',
+    ('02UL', '01U3'): GEOMETRY + 'Flat',
+    ('02UL', '02NJ'): GEOMETRY + 'RelativeDimension',
+    ('02TX', '01OB'): 'Stacks.RelativeProj.projectiveBundle',
+    ('02S1', '02RB'): 'Stacks.Chow.flatPullback',
+    ('02G1', '08RP'): GEOMETRY + 'SheafOfModules.moduleOfDifferentials',
+}
+GRR_PROSE = ('02UM', '02UN', '02UO')
+
 def read(path):
     return json.loads(path.read_text())
 
@@ -121,6 +143,18 @@ def main():
         if name.rsplit('.', 1)[-1] not in wrapper.split('theorem nonempty_of_topologicalKrullDim_eq_one', 1)[1]:
             raise ValueError(f'Missing explicit bridge reference {name}')
     curve_roots = [global_functions, genus, *AUXILIARY]
+    grr_traces = {tag: trace([name]) for tag, name in GRR_ROOTS.items()}
+    grr_links = []
+    for (start, end), name in GRR_MATCHES.items():
+        index = declarations[name]
+        parents = grr_traces[start]
+        if start not in nodes[declarations[GRR_ROOTS[start]]]['tags'] or end not in nodes[index]['tags']:
+            raise ValueError(f'GRR correspondence has changed: {start} to {end}')
+        chain = []
+        while index is not None:
+            chain.append(nodes[index]['name'])
+            index = parents[index]
+        grr_links.append({'from_tag': start, 'to_tag': end, 'chain': chain[::-1]})
     result = {
         'stacks_commit': read(ROOT / 'upstream/manifest.json')['commit'],
         'axiom_commit': summary['repo_commit'],
@@ -134,6 +168,11 @@ def main():
         'bridge_references': list(AUXILIARY),
         'schemes': compare('scheme', scheme_roots, set()),
         'curves': compare('curves', curve_roots, specs['scheme']),
+        'grr': {
+            'roots': GRR_ROOTS,
+            'unmatched_sections': [tag for tag in GRR_PROSE if not any(tag in node['tags'] for node in nodes)],
+            'links': grr_links,
+        },
     }
     for name, root in wrappers.items():
         parents = trace([root, *AUXILIARY])

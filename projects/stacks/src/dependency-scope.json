@@ -38,15 +38,21 @@
       "01IJ": "The scheme construction or definition used by this passage."
     },
     "02UM": {
+      "0B7E": "The Chern character takes values in rational Chow cohomology.",
       "01C5": "Finite locally free sheaves and rank are introduced in prose.",
       "02UK": "Chern roots are introduced in prose after the splitting principle.",
       "02UL": "The lemma splitting principle construction or definition used by this passage."
     },
     "02UN": {
+      "0B7E": "The Todd class is a power series in Chern classes in rational Chow cohomology.",
       "02UK": "The Todd class is defined in prose using Chern roots.",
       "02UL": "The lemma splitting principle construction or definition used by this passage."
     },
     "02UO": {
+      "01DZ": "The module-valued higher direct images on the right are defined here.",
+      "01UQ": "The formula for the relative tangent bundle uses the relative sheaf of differentials.",
+      "01XJ": "Properness gives quasi-compactness and quasi-separatedness. Higher direct images vanish in sufficiently high degrees over each affine open of the base.",
+      "0BEJ": "The field case uses the Euler characteristic of a coherent sheaf on a proper scheme.",
       "01CM": "The internal Hom used to define the relative tangent sheaf.",
       "01C5": "Finite locally free sheaves in the hypotheses.",
       "01T0": "Locally finite type morphisms in the hypotheses.",
@@ -57,6 +63,27 @@
       "02UM": "The section chern classes tensor construction or definition used by this passage.",
       "02UN": "The section todd classes construction or definition used by this passage.",
       "0AZ1": "The degree zero cycle construction or definition used by this passage."
+    },
+    "02TX": {
+      "01OB": "The projective bundle and its tautological twist in the formula, also used in the Lean proof.",
+      "02S1": "The pullback on Chow groups in the projective bundle formula descends through rational equivalence."
+    },
+    "02S1": {
+      "02RB": "The operation that descends through rational equivalence is flat pullback of cycles. The Lean proof also uses this definition."
+    },
+    "02RB": {
+      "02QP": "Flat pullback changes the delta-dimension by the relative dimension.",
+      "02QR": "Flat pullback is first defined on cycles.",
+      "01U3": "Flatness is a hypothesis of the cycle pullback.",
+      "02NJ": "Relative dimension determines the grading of the pullback cycle."
+    },
+    "08RT": {
+      "08RP": "The relative sheaf of differentials is the module representing derivations for the map of sheaves of rings. Lean also uses this representing module."
+    },
+    "0BEJ": {
+      "01DZ": "The Euler characteristic is the alternating sum of dimensions of sheaf cohomology.",
+      "01XJ": "The following prose uses eventual vanishing to justify the finite sum.",
+      "02O6": "The following prose uses finite-dimensional cohomology for proper schemes over the field."
     },
     "01IJ": {
       "01HW": "The affine scheme construction or definition used by this passage.",
@@ -330,6 +357,7 @@
       "02RW": "The rational equivalence construction or definition used by this passage."
     },
     "02R4": {
+      "02QP": "The definition compares the delta-dimensions of an integral cycle and its image. This dependency is also explicit in Lean.",
       "01W1": "The proper construction or definition used by this passage.",
       "02QR": "The cycles construction or definition used by this passage."
     },
@@ -371,6 +399,10 @@
       "0B7E": "The chow cohomology construction or definition used by this passage."
     },
     "02UL": {
+      "01U3": "The splitting map is flat, a condition also explicit in the Lean statement.",
+      "02NJ": "The relative dimension of the splitting map specifies the shift in Chow homology. The Lean statement also specifies relative dimension.",
+      "01OB": "The induction uses the projective bundle of a locally free module and its tautological quotient.",
+      "02S1": "The flat pullback in the injectivity statement descends to Chow groups.",
       "0FE1": "The chern classes final construction or definition used by this passage."
     },
     "0084": {
