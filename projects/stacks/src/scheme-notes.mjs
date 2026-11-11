@@ -10,7 +10,6 @@ const O=b(r`\mathcal O`,r`\mathcal O^{\mathrm{an}}_{\mathbb C}`);
 const F=b(r`\mathcal F`,r`\mathcal O^{\mathrm{an}}_{\mathbb C}`);
 const R=b('R',r`\mathbb C[z]`);
 const A=b('X',r`\operatorname{Spec}(\mathbb C[z])`);
-const finiteVect=b(r`\mathcal C`,r`\mathbf{Vect}^{\mathrm{fd}}_{\mathbb R}`);
 const models={
  topology:model('manifolds',[
   b('X',r`M`),b('U',r`\text{an open chart domain in }M`),
@@ -1087,14 +1086,13 @@ const matrixEquivalence={...model('matrices',[],'',''),points:[
  r`\(\mathcal B=\mathbf{Vect}^{\mathrm{fd}}_k\), the category of finite-dimensional \(k\)-vector spaces`,
  r`An equivalence \(F:\mathcal A\to\mathcal B\) sends \(n\mapsto k^n\) and \(M\mapsto (v\mapsto vM)\) for row vectors \(v\).`
 ]};
-const dual=model('dual vector spaces',[
- finiteVect,b(r`\mathcal S`,r`\mathbf{Vect}^{\mathrm{fd}}_{\mathbb R}`),
- b('F',r`(V\mapsto V^*)`),
- b(r`\psi`,r`(V\to W)`),
- b(r`F(\psi)`,r`(\lambda\mapsto\lambda\circ\psi):W^*\to V^*`)
-],r`\[
-F(\phi\circ\psi)=F(\psi)\circ F(\phi)
-\]`,'');
+const singularCohomology={...model('singular cohomology',[],'',''),points:[
+ r`\(\mathcal C=\mathbf{Top}\), \(\mathcal S=\mathbf{Ab}\).`,
+ r`\(F=H^n(-,\mathbb Z):\mathbf{Top}\to\mathbf{Ab}\), the singular cohomology.`,
+ r`For a morphism \(\psi:X\to Y\) in \(\mathcal C\), \(F(\psi)=\psi^*:H^n(Y,\mathbb Z)\to H^n(X,\mathbb Z)\) is the pullback map.`,
+ r`It satisfies \((\phi\circ\psi)^*=\psi^*\circ\phi^*\) (reversing order).`,
+ r`Thus, we may form the opposite category of \(\mathbf{Top}\), so the continuous map \(\psi:X\to Y\) becomes \(\psi:Y\to X\) in \(\mathbf{Top}^{\mathrm{opp}}\), and \(H^n(-,\mathbb Z)\) becomes a (covariant) functor.`
+]};
 const additionalExamples={
  '01II':[model('first-order neighbourhood',[
   b('R',r`\mathbb C[\epsilon]/(\epsilon^2)`),
@@ -1141,7 +1139,7 @@ const passageNotes={
  '001H':pointedSpacesUnder,
  '001I':hurewicz,
  '001J':matrixEquivalence,
- '001N':dual,
+ '001N':singularCohomology,
  '006E':models.presheaf,
  '006K':models.abelianMorphism,
  '0106':models.kernel,
