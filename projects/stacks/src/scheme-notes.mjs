@@ -1037,11 +1037,11 @@ const tangentSpace=model('tangent space',[
 ],r`\[
 d(g\circ f)_p=dg_{f(p)}\circ df_p
 \]`,'',r`Functoriality is the chain rule.`);
-const coveringsOver={...model('covering maps',[],'','',r`Fix a topological manifold \(X\).`),points:[
- r`\(\mathcal C\) is the category of topological manifolds and local homeomorphisms.`,
- r`A covering map \(p:Y\to X\) between manifolds is a local homeomorphism, hence an object of \(\mathcal C/X\).`,
- r`For covering maps \(p:Y\to X\) and \(q:Y'\to X\), a morphism over \(X\) is a local homeomorphism \(u:Y\to Y'\) with \(q\circ u=p\).`
-]};
+const bundlesOver={...model('vector bundles',[],r`\(\begin{array}{ccc}
+E & \xrightarrow{\text{bundle map }u} & E' \\
+{\scriptstyle p}\,\searrow && \swarrow\,{\scriptstyle p'} \\
+& X &
+\end{array}\)`,'',''),kind:'analogy'};
 const pointedSpacesUnder=model('pointed spaces',[
  b(r`\mathcal C`,r`\mathbf{Top}`),
  b('X',r`\{*\}`)
@@ -1141,7 +1141,7 @@ const passageNotes={
  '0B05':conicIntersection,
  '001B':{...singularHomology,examples:[fundamentalGroup,tangentSpace].map(example=>({...example,scope:"statement"}))},
  '001D':coordinateSpaces,
- '001G':coveringsOver,
+ '001G':bundlesOver,
  '001H':pointedSpacesUnder,
  '001I':hurewicz,
  '001J':matrixEquivalence,
