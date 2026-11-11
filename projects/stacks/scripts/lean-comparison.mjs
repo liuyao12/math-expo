@@ -38,10 +38,10 @@ export function buildLeanComparison({root, dist, head, header, footer, readings,
       <section class="path-intro">
         <p class="eyebrow">Selected readings</p>
         <h1>${title}</h1>
-        <p class="lead">How the schemes reading follows Lean dependencies.</p>
+        <p class="lead">The Lean trace for schemes and projective varieties.</p>
       </section>
       <div class="path-scope">
-        <p>The comparison starts with particular Lean declarations, follows AxiomMath’s proof edges, and looks up the Stacks section for each reached tag. It counts a section once even when several declarations point to it. The schemes reading uses the mapped Axiom and Mathlib dependencies below. The older comparisons are retained for reference.</p>
+        <p>The comparison starts with particular Lean declarations, follows AxiomMath’s proof edges, and looks up the Stacks section for each reached tag. It counts a section once even when several declarations point to it. The schemes reading follows the Stacks definitions and proofs. The comparison below helps identify prerequisites those passages leave implicit. The older comparisons are retained for reference.</p>
 
         <h2 id="schemes">Schemes and projective varieties</h2>
         <p>The roots cover the projective-variety clause of <a href="${stacksTag('04L1')}">Definition 33.26.1</a>, including the characterization by a closed embedding in projective space. <a href="${projective}">Lean declarations</a></p>

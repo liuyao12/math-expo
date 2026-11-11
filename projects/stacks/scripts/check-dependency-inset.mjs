@@ -20,7 +20,7 @@ const checkLabels=async graph=>{
  const labels=await graph.locator('.dependency-node').evaluateAll(ns=>ns.map(n=>({
   tag:n.dataset.tag,text:n.querySelector('.graph-node-number')?.textContent,enclosure:!!n.dataset.graphCluster,
   box:n.querySelector('.graph-node-body').tagName,
-  caption:n.querySelector('.graph-node-caption')?.textContent,
+  caption:n.querySelector('.graph-node-caption, .graph-math-caption')?.textContent,
   width:Number(n.dataset.width),height:Number(n.dataset.height),
   lines:[...n.querySelectorAll('text')].map(t=>{const b=t.getBBox();return {x:b.x,y:b.y,width:b.width,height:b.height};})
  })));

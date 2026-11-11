@@ -3,8 +3,8 @@
 Check offline: python3 scripts/audit-dependencies.py
 Refresh from the pinned source: python3 scripts/audit-dependencies.py --refresh SOURCE
 
-Schemes uses the mapped Lean declaration graph. Later readings follow
-explicit references at statement/proof level. Definitions in prose
+All readings follow explicit references at statement and proof level,
+along with reviewed conceptual prerequisites. Definitions in prose
 have explicit passage boundaries in dependency-scope.json. Only the final target
 seeds traversal. Complete owner sections and overview graphs never schedule
 additional prerequisites. This is not an automatic proof checker.
@@ -34,38 +34,12 @@ tags = {label: tag for tag, label in (line.split(',', 1) for line in tagfile.rea
 sections, nodes, refs = index_source(source, chapters, tags)
 base_refs = read('upstream/references.json')
 
-def lean_plan(target, trace):
-    if trace['target'] != target:
-        raise ValueError('Lean graph target differs from the reading target')
-    graph = trace['nodes']
-    paths, passages = {target: []}, {}
-    pending = [target]
-    for tag in pending:
-        dependencies = []
-        for used, chain in graph[tag]['uses'].items():
-            if len(chain) < 2 or chain[0] not in graph[tag]['declarations'] or chain[-1] not in graph[used]['declarations']:
-                raise ValueError(f'Invalid Lean witness for {used} → {tag}')
-            dependencies.append(dict(tag=used, reason='Lean declaration dependency.', lean_path=chain))
-            if used not in paths:
-                paths[used] = paths[tag] + [tag]
-                pending.append(used)
-        node = nodes[tag]
-        passages[tag] = dict(section=node['section'], text_sha256=hashlib.sha256(node['text'].encode()).hexdigest(),
-                             dependencies=dependencies)
-    if set(pending) != set(graph):
-        raise ValueError('Unreachable node in the Lean graph')
-    return dict(required_tags=sorted(graph), required_sections=sorted({p['section'] for p in passages.values()}),
-                passages=passages, paths=paths, excluded_references=[], method='lean')
-
 reports, prior = {}, set()
 resolved = {}
 for spec in specs:
     prior = set().union(*(resolved[slug] for slug in spec.get('prerequisites', [])))
     try:
-        if spec.get('dependencySource') == 'lean':
-            result = lean_plan(spec['target'], read('upstream/lean-scheme-graph.json'))
-        else:
-            result = plan(spec['target'], nodes, sections, tags, scope)
+        result = plan(spec['target'], nodes, sections, tags, scope)
     except (ValueError, KeyError) as error:
         raise SystemExit(str(error))
     required = set(result['required_sections'])
@@ -90,7 +64,7 @@ for spec in specs:
     reports[spec['slug']] = dict(target=spec['target'], target_label=spec.get('targetLabel'), **result,
                                 reused_sections=sorted(required & prior),
                                 implicit_dependencies={t: scope['implicit_dependencies'][t] for t in result['required_tags']
-                                                       if result.get('method') != 'lean' and t in scope['implicit_dependencies']})
+                                                       if t in scope['implicit_dependencies']})
     resolved[spec['slug']] = prior | selected
     print(f"{spec['slug']}: {len(result['required_tags'])} required source passages; {len(required)} owner sections; {len(required & (prior-selected))} reused sections; target dependency coverage verified" + (f" ({len(missing)} sections added)" if args.refresh else ''))
 

@@ -64,6 +64,7 @@
       "01HG": "The open subspace construction or definition used by this passage."
     },
     "01HW": {
+      "0017": "The affine scheme definition uses isomorphism of locally ringed spaces. The Lean trace also uses category isomorphisms.",
       "01HU": "The structure sheaf construction or definition used by this passage.",
       "01HV": "The lemma spec sheaves construction or definition used by this passage.",
       "01HB": "The locally ringed space construction or definition used by this passage."
@@ -147,6 +148,7 @@
       "006C": "Open coverings and their conventions, used in presheaves and the sheaf axiom."
     },
     "01HV": {
+      "02C5": "The stalk formula uses localization at a prime, also present in the Lean trace.",
       "01HU": "The structure sheaf construction or definition used by this passage.",
       "00CR": "The lemma localization colimit construction or definition used by this passage.",
       "07BI": "The local ring construction or definition used by this passage."
@@ -169,6 +171,8 @@
       "008J": "The f map construction or definition used by this passage."
     },
     "0072": {
+      "0028": "The category-valued sheaf condition is an equalizer diagram.",
+      "002I": "The diagram takes products over the cover and its pairwise intersections.",
       "006N": "The presheaf values in category construction or definition used by this passage.",
       "006T": "The sheaf construction or definition used by this passage."
     },
@@ -180,6 +184,7 @@
       "006N": "The presheaf values in category construction or definition used by this passage."
     },
     "0078": {
+      "004J": "Open neighbourhoods index the colimit defining the stalk, as in Mathlib.",
       "0031": "The directed system construction or definition used by this passage.",
       "002F": "The colimit construction or definition used by this passage.",
       "006E": "The presheaf construction or definition used by this passage."
@@ -395,6 +400,7 @@
       "01IO": "Closed immersions in the definition of a projective morphism."
     },
     "01OB": {
+      "01O0": "The bundle is defined using the relative homogeneous spectrum. The Lean projective-bundle construction also uses relative Proj.",
       "01OA": "The symmetric-algebra and relative-Proj construction immediately preceding the projective-bundle definition.",
       "01BE": "The bundle is constructed from a quasi-coherent module."
     },
@@ -404,7 +410,16 @@
     },
     "01T1": {
       "00F3": "Finite type ring maps in the local definition.",
-      "005A": "Quasi-compactness in the global finite type condition."
+      "01K3": "The global finite type condition requires a quasi-compact morphism, also used in the formal variety definition."
+    },
+    "01B5": {
+      "01AM": "Finite type is local finite generation by sections. Follow the Stacks definition of generation by global sections here."
+    },
+    "01JP": {
+      "01JM": "Existence of the fibre product used for base change is proved in the preceding section. Mathlib also supplies this existence theorem."
+    },
+    "01NQ": {
+      "01IT": "Applying the relative glueing lemma to the affine opens uses the fact that they form a basis."
     },
     "01JX": {
       "01JP": "Base change uses fibre products of schemes."
