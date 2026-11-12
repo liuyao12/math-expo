@@ -200,11 +200,14 @@ export function renderDependencyGraph(tree,references,base,idPrefix='',currentSl
   const mathCaption=hasMath(caption);
   const lineHeight=mathCaption?19:14;
   const lines=wrapLabel(caption);
-  const shortLabel=ref.kind==='section'?`§${ref.number}`:`${ref.kind[0].toUpperCase()} ${ref.number}`;
-  const referenceLabel=ref.kind==='section'?shortLabel:`${ref.kind[0].toUpperCase()+ref.kind.slice(1)} ${ref.number}`;
+  const parent=ref.kind==='item'?references.get(ref.parentTag):null;
+  const kind=parent?.kind||ref.kind;
+  const number=parent?`${parent.number}(${ref.number})`:ref.number;
+  const shortLabel=kind==='section'?`§${number}`:`${kind[0].toUpperCase()} ${number}`;
+  const referenceLabel=kind==='section'?shortLabel:`${kind[0].toUpperCase()+kind.slice(1)} ${number}`;
   const width=Math.ceil(Math.max(labelWidth(shortLabel,13),...lines.map(captionWidth)))+2*labelPadding;
   const label=`${referenceLabel}${description?' · '+description:''}${origin}`;
-  return [tag,{tag,depth,shortLabel,kind:ref.kind,root:tag===tree.rootTag,outsideReading,
+  return [tag,{tag,depth,shortLabel,kind,root:tag===tree.rootTag,outsideReading,
    lines,width,mathCaption,lineHeight,height:28+lines.length*lineHeight,sectionTag:location?.section.tag,frameOnly:node.frameOnly,
    label:plainLabel(label),labelHTML:hasMath(label)?typesetLabel(label,math):'',
    href:location?`${route}#${tag}`:`https://stacks.math.columbia.edu/tag/${tag}`,

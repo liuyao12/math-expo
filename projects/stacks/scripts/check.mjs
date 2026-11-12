@@ -109,6 +109,15 @@ for(const reading of selectedReadings){
  assert.deepEqual(nodes.map(match=>match[1]).sort(),[...report.required_tags].sort(),'The shared inset includes every audited passage');
  assert.deepEqual(nodes.filter(match=>match[2].includes('dependency-target')).map(match=>match[1]),[reading.target]);
  const mathNode=tag=>inset.match(new RegExp(`<a id="inset-${tag}"[\\s\\S]*?</a>`))?.[0];
+ assert.match(graphLabel('00DW'),/^Lemma 10\.20\.1\(1\)(?: · |$)/,'A lemma item identifies its parent and part');
+ if(['curves','grr'].includes(reading.slug)){
+  for(const [index,tag] of ['00KM','00KN','00KO','00KP'].entries()){
+   const href=(reading.slug==='grr'?'../curves/':'')+'#'+tag;
+   const node=mathNode(tag);
+   assert(node?.includes(`>L 10.60.8(${index+2})</text>`),'Use the parent lemma number and part');
+   assert(node.includes(`href="${href}"`),'Link to the individual tagged item');
+  }
+ }
  const coherent=mathNode('01BE');
  assert.match(coherent,/<foreignObject\b[\s\S]*?data-tex="\\mathcal\{O\}_X"/,'Keep source LaTeX in the graph caption');
  assert.match(coherent,/<foreignObject\b[\s\S]*?<annotation encoding="application\/x-tex">\\mathcal\{O\}_X<\/annotation>/,'Typeset the original expression');

@@ -162,9 +162,10 @@ export function createRenderer(root, options={}) {
         if(!target)throw Error('Unattached proof');
         (target.proofs??=[]).push({title:match[2],html:body(content,section.chapter)});
       }else{
-        const label=content.match(/\\label\{([^}]+)\}/)?.[1];
+        const [label,...subLabels]=[...content.matchAll(/\\label\{([^}]+)\}/g)].map(match=>match[1]);
         const ref=references[section.chapter+'-'+label];if(!ref)throw Error('Missing tag for '+label);
-        blocks.push({kind:match[1],label,title:match[2]||'',...ref,html:body(content.replace('\\label{'+label+'}',''),section.chapter)});
+        const itemTags=subLabels.map(label=>references[section.chapter+'-'+label]).filter(ref=>ref?.kind==='item').map(ref=>ref.tag);
+        blocks.push({kind:match[1],label,title:match[2]||'',...ref,itemTags,html:body(content.replace('\\label{'+label+'}',''),section.chapter)});
       }
       cursor=end;pattern.lastIndex=end;
     }

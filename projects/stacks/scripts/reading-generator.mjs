@@ -128,6 +128,7 @@ export function buildReadings({root,dist,head,header,footer,renderExampleCard,as
     let html=`<div class="source-body">${printedSource(b.html)}</div>`;
     if(b.kind!=='prose'){
      const ref=referencesByTag.get(b.tag);
+     for(const tag of b.itemTags)referencesByTag.get(tag).parentTag=b.tag;
      if(b.title)ref.sourceTitle=graphLabelSource(r.inline(b.title,s.chapter));
      if(b.kind==='definition'&&!ref.term){
       const term=b.html.match(/<em>([^<>]+)<\/em>/)?.[1];
