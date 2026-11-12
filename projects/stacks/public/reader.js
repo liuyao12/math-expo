@@ -7,7 +7,9 @@
   proofs.forEach(p=>p.addEventListener('toggle',updateProofControl));
   const revealTarget=()=>{let target;try{target=document.getElementById(decodeURIComponent(location.hash.slice(1)));}catch{return;}if(!target)return;const p=target.closest('details.proof');if(p)p.open=true;};
   window.addEventListener('hashchange',revealTarget);revealTarget();
-  const outline=$('#reading-outline'),outlineButton=$('.mobile-outline');
+  const outline=$('#reading-outline'),outlineButton=$('.contents-toggle');
+  const outlineOverlay=matchMedia('(max-width:1000px)');
+  const readingTools=$('.reading-tools');
   const outlineLinks=new Map($$('.outline-tree a').map(link=>[link.hash.slice(1),link]));
   const outlineBranches=$$('.outline-toggle').map(button=>[button,document.getElementById(button.getAttribute('aria-controls'))]);
   let outlineSection;
@@ -32,9 +34,42 @@
     for(const [button,list] of outlineBranches)setBranch(button,list,list.contains(sectionLink));
     revealOutline();
   };
-  const closeOutline=()=>{outline?.classList.remove('is-open');outlineButton?.setAttribute('aria-expanded','false');};
-  outlineButton?.addEventListener('click',()=>{const open=outline.classList.toggle('is-open');outlineButton.setAttribute('aria-expanded',String(open));if(open)revealOutline();});
+  const syncOutline=()=>{
+    if(!outline)return;
+    const open=outlineOverlay.matches?outline.classList.contains('is-open'):!outline.classList.contains('is-collapsed');
+    outlineButton.setAttribute('aria-expanded',String(open));
+    if(open)revealOutline();
+    else if(outline.contains(document.activeElement))outlineButton.focus({preventScroll:true});
+  };
+  const closeOutline=()=>{
+    if(!outlineOverlay.matches||!outline?.classList.contains('is-open'))return;
+    outline.classList.remove('is-open');
+    syncOutline();
+  };
+  const toggleDesktopOutline=()=>{
+    const main=$('#main');
+    const {left,width}=main.getBoundingClientRect();
+    const headerBottom=outlineButton.closest('.reader-header').getBoundingClientRect().bottom;
+    // Keep a visible block in place as the wider or narrower column reflows.
+    let anchor;
+    for(let y=headerBottom+12;y<Math.min(headerBottom+200,innerHeight);y+=16){
+      const hit=document.elementFromPoint(left+width*.35,y)?.closest('p,li,.math-display,summary,.statement-heading,.source-section-header');
+      if(hit&&main.contains(hit)){anchor=hit;break;}
+    }
+    const top=anchor?.getBoundingClientRect().top;
+    outline.classList.toggle('is-collapsed');
+    if(anchor)scrollBy({top:anchor.getBoundingClientRect().top-top,behavior:'instant'});
+  };
+  outlineButton?.addEventListener('click',()=>{
+    if(outlineOverlay.matches)outline.classList.toggle('is-open');
+    else toggleDesktopOutline();
+    syncOutline();
+  });
+  outlineOverlay.addEventListener('change',syncOutline);
+  syncOutline();
   outline?.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeOutline));
+  readingTools?.addEventListener('click',event=>{if(event.target.closest('a'))readingTools.open=false;});
+  document.addEventListener('pointerdown',event=>{if(readingTools?.open&&!readingTools.contains(event.target))readingTools.open=false;});
   const dock=$('#example-dock');let previousFocus;
   const closeExample=()=>{dock?.classList.remove('is-open');dock?.removeAttribute('aria-modal');dock?.removeAttribute('role');document.body.style.overflow='';previousFocus?.focus({preventScroll:true});};
   const openExample=trigger=>{if(matchMedia('(max-width:760px)').matches){previousFocus=trigger;dock.classList.add('is-open');dock.setAttribute('role','dialog');dock.setAttribute('aria-modal','true');document.body.style.overflow='hidden';$('#close-example').focus({preventScroll:true});dock.dispatchEvent(new Event('examplepanelchange'));drawAll();}else dock.focus({preventScroll:true});};
@@ -46,6 +81,10 @@
   });
   document.addEventListener('keydown',event=>{
     if(event.key==='Escape'){
+      if(readingTools?.open){
+        readingTools.open=false;
+        readingTools.querySelector('summary').focus({preventScroll:true});
+      }
       if(dock?.classList.contains('is-open'))closeExample();
       closeOutline();
     }
