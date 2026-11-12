@@ -969,7 +969,7 @@ const sectionGroups={
  solutionSheaf:['01AF'],connected:['004R'],natural:['003D'],twoFibre:['003O'],over:['02XG'],topology:['004E'],basis:['004O'],irreducible:['004U'],noetherian:['0050'],compact:['0059'],specialization:['0060'],
  snake:['07JV'],colimits:['09WN','07N7','002Z'],localization:['00CM'],spectrum:['00DY'],constructible:['04ZC','053X'],
  sheaf:['006G','006S','006Z','006M','0071','007L'],
- moduleSheaf:['006P','0076','0088'],
+ moduleSheaf:['0076','0088'],
  stalk:['0078','007E','007G'],moduleStalk:['007I'],exactSheaf:['007S'],
  sheafify:['007X','0083','0086'],
  functorial:['008C','008N','008P','008R','0094'],
@@ -1173,6 +1173,13 @@ const passageNotes={
   ]}
  ]},
  '006K':models.abelianMorphism,
+ '006Q':{...model('sheaf of differential forms',[],'',''),points:[
+  r`\(X\) a smooth manifold`,
+  r`\(\mathcal O(U)=C^\infty(U)=\{f:U\to\mathbb R\mid f\text{ smooth}\}\)`,
+  r`\(\mathcal F(U)=\Omega^p(U)\) \(=\{\text{differential }p\text{-forms }\omega\text{ on }U\}\)`,
+  r`\(\mathcal O\times\mathcal F\to\mathcal F\), \((f,\omega)\mapsto f\omega\)`,
+  r`\(d:\Omega^p\to\Omega^{p+1}\) is a morphism of presheaves of \(\mathbb R\)-vector spaces. The term \(df\wedge\omega\) in \(d(f\omega)=df\wedge\omega+f\,d\omega\) obstructs \(\mathcal O\)-linearity.`
+ ]},
  '0106':models.kernel,
  '07BI':models.local,
  '05CF':{...model('a line bundle over the affine line',[],'',''),points:[
