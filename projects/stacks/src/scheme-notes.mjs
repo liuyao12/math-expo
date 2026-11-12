@@ -141,12 +141,6 @@ h\omega=\sum_j(ha_j)\,dx^j.
 \operatorname{coker}\Gamma(M,\varphi)=H^1_{\mathrm{dR}}(M).
 \end{gathered}
 \]`,'',r`The Poincaré lemma gives local primitives. Periods can obstruct a global one.`),
- chartCover:model('sphere charts',[
-  sphereX,b('U',r`X`),
-  b('U_0',r`X\setminus\{\infty\}`),b('U_\infty',r`X\setminus\{0\}`)
- ],r`\[
-X=U_0\cup U_\infty,\qquad U_0\cap U_\infty=\mathbb C^\times
-\]`,'',r`Use coordinates \(z\) and \(w=1/z\).`),
  basisSheaf:model('local holomorphic functions',[
   X,b(r`\mathcal B`,r`\{D(a,r):r>0\}`),
   b(r`\mathcal F(B)`,r`\operatorname{Hol}(B),\quad B\in\mathcal B`)
@@ -347,13 +341,6 @@ models.over=model('covering spaces',[
 ],r`\[
 u:(E,p)\to(F,q)\quad\Longleftrightarrow\quad q\circ u=p
 \]`,'',r`Deck transformations are automorphisms over \(X\).`);
-models.presheaf=model('restriction of holomorphic functions',[
- X,U,F,
- b(r`\mathcal F(U)`,r`\{h:U\to\mathbb C\mid h\text{ holomorphic}\}`),
- b(r`\rho^U_V`,r`(h\mapsto h|_V)\quad(V\subseteq U\text{ open})`)
-],r`\[
-\rho^V_W\circ\rho^U_V=\rho^U_W\qquad(W\subseteq V\subseteq U)
-\]`,'',r`A nonempty connected open \(U\) is a domain.`);
 models.abelianMorphism=model('differential operators',[
  X,F,b(r`\mathcal G`,r`\Omega_X^1`),b(r`\varphi_U`,r`(h\mapsto dh):\mathcal F(U)\to\mathcal G(U)`)
 ],r`\[
@@ -979,9 +966,8 @@ const sectionGroups={
  conicIntersection:['0B01'],
  invertibleLine:['01CR'],
  twistCharts:['01MM','0BD6'],
- solutionSheaf:['01AF'],connected:['004R'],natural:['001L','003D'],twoFibre:['003O'],over:['02XG'],topology:['004E'],basis:['004O'],irreducible:['004U'],noetherian:['0050'],compact:['0059'],specialization:['0060'],
+ solutionSheaf:['01AF'],connected:['004R'],natural:['003D'],twoFibre:['003O'],over:['02XG'],topology:['004E'],basis:['004O'],irreducible:['004U'],noetherian:['0050'],compact:['0059'],specialization:['0060'],
  snake:['07JV'],colimits:['09WN','07N7','002Z'],localization:['00CM'],spectrum:['00DY'],constructible:['04ZC','053X'],
- presheaf:['006D'],
  sheaf:['006G','006S','006Z','006M','0071','007L'],
  moduleSheaf:['006P','0076','0088'],
  stalk:['0078','007E','007G'],moduleStalk:['007I'],exactSheaf:['007S'],
@@ -991,7 +977,7 @@ const sectionGroups={
  algebraGlue:['00EN'],affine:['01HR'],affineMaps:['01HX'],scheme:['01II'],
  category:['0013'],limits:['04AQ','04AS','0027'],adjoint:['0036'],
  nakayama:['07RC'],modules:['0581'],finite:['0517','00F2','00F5'],idempotent:['04PN'],rings:['00AQ','00AR','00DR'],
- chartCover:['006C'],basisSheaf:['009H'],
+ basisSheaf:['009H'],
  regularGlue:['00EI'],bundlePullback:['001U'],setLimits:['002U'],
  abelian:['09SE','00ZX','010M','0033']
 };
@@ -1174,7 +1160,18 @@ const passageNotes={
  '001P':vectorYoneda,
  '001Q':vectorRepresentability,
  '02X6':topologicalPresheaf,
- '006E':models.presheaf,
+ '006E':{...model('sheaf of holomorphic functions',[],'',''),points:[
+  r`\(X=\mathbb C\) or a Riemann surface`,
+  r`\(\mathcal F(U)=\{h:U\to\mathbb C\mid h\text{ holomorphic}\}\)`,
+  r`\(\rho^U_V\) is literally restriction to \(V\), \(h\mapsto h|_V\)`
+ ],examples:[
+  {...model('sheaf of sections of a vector bundle',[],'',''),points:[
+   r`\(X\) a smooth manifold`,
+   r`\(p:E\to X\) a smooth vector bundle`,
+   r`\(\mathcal F(U)=\{\text{smooth sections }s:U\to E\}\), with \(p(s(x))=x\) for \(x\in U\)`,
+   r`\(\rho^U_V\) is literally restriction of sections, \(s\mapsto s|_V\)`
+  ]}
+ ]},
  '006K':models.abelianMorphism,
  '0106':models.kernel,
  '07BI':models.local,
