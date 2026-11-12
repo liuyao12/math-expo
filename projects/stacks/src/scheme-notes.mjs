@@ -1178,7 +1178,7 @@ const passageNotes={
   r`\(\mathcal O(U)=C^\infty(U)=\{f:U\to\mathbb R\mid f\text{ smooth}\}\)`,
   r`\(\mathcal F(U)=\Omega^p(U)\) \(=\{\text{differential }p\text{-forms }\omega\text{ on }U\}\)`,
   r`\(\mathcal O\times\mathcal F\to\mathcal F\), \((f,\omega)\mapsto f\omega\)`,
-  r`\(d:\Omega^p\to\Omega^{p+1}\) is a morphism of presheaves of \(\mathbb R\)-vector spaces. The term \(df\wedge\omega\) in \(d(f\omega)=df\wedge\omega+f\,d\omega\) obstructs \(\mathcal O\)-linearity.`
+  r`For a fixed smooth \(1\)-form \(\eta\) on \(X\), \(\omega\mapsto\eta|_U\wedge\omega\) defines a morphism \(\Omega^p\to\Omega^{p+1}\) of presheaves of \(\mathcal O\)-modules.`
  ]},
  '0106':models.kernel,
  '07BI':models.local,
