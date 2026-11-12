@@ -123,9 +123,10 @@ try{
  await settle(page);
  assert(await motion.evaluate(band=>Math.abs(band.getBoundingClientRect().bottom-band.firstElementChild.getBoundingClientRect().bottom)<2),'A floating example moves off with the end of its band');
  const localization=page.locator('.example-band[data-example-anchor="localization-at-a-prime"]');
- await page.locator('#localization-at-a-prime').scrollIntoViewIfNeeded();await settle(page);
+ await page.evaluate(()=>location.hash='#localization-at-a-prime');
+ await page.locator('.example-band[data-example-anchor="localization-at-a-prime"]:not([hidden])').waitFor();
  assert(await localization.evaluate(band=>Math.abs(band.getBoundingClientRect().top-document.getElementById('localization-at-a-prime').getBoundingClientRect().top)<2),'The localization card starts at its paragraph');
- await page.locator('[id="01M4"]').evaluate(anchor=>anchor.scrollIntoView({block:'start',behavior:'instant'}));
+ await page.evaluate(()=>location.hash='#01M4');
  const overlap=page.locator('.example-band[data-example-anchor="01M4"]:not([hidden])');
  await overlap.waitFor();
  await overlap.evaluate(band=>{
