@@ -134,21 +134,22 @@
     const scheduleExampleLayout=()=>{if(!layoutPending){layoutPending=true;requestAnimationFrame(layoutExamples);}};
     if(dock.dataset.exampleLayout==='anchored'){
       const main=$('#main');
+      const viewportReading=main.classList.contains('viewport-reading');
       const flow=document.createElement('div');
       flow.className='example-flow';
       const makeNote=(key,anchor,peg,html)=>{
         const section=anchor.closest('.source-section')||anchor;
         const band=document.createElement('div');
         band.className='example-band';band.dataset.exampleAnchor=key;
+        band.hidden=true;
         const note=document.createElement('div');
         note.className='floating-example example-current';
         const label=document.createElement('div');label.className='example-step';
         const link=document.createElement('a');link.href='#'+anchor.id;
         link.textContent=anchor.closest('.passage')?.dataset.sourceLabel||anchor.dataset.sourceLabel||peg.textContent.trim();
         label.append(link);note.append(label);
-        note.insertAdjacentHTML('beforeend',html);
         band.append(note);
-        return {key,anchor,peg,section,band,note};
+        return {key,anchor,peg,section,band,note,html,mounted:false};
       };
       const notes=keys.flatMap(key=>{
         const anchor=document.getElementById(key);
@@ -180,10 +181,12 @@
             if(candidates)candidates.push(sourceAnchor);
           }
           const noteCard=card(entry.key);
-          noteCard.open=!entry.note.querySelector('.example-disclosure');
-          entry.note.append(noteCard);
+          noteCard.open=!entry.html&&!entry.note.querySelector('.example-disclosure');
+          const html=noteCard.outerHTML;
+          if(entry.mounted)entry.note.append(noteCard);
+          else entry.html+=html;
           if(!grouped.has(entry.key))grouped.set(entry.key,[]);
-          grouped.get(entry.key).push(noteCard.outerHTML);
+          grouped.get(entry.key).push(html);
         }
         for(const [key,cards] of grouped)annotationHTML.set(key,cards.join(''));
         for(const candidates of contexts.values())candidates.sort(textOrder);
@@ -198,14 +201,35 @@
       let stickyTop=99,bands=[];
       layoutAnchors=()=>{
         if(mobile())return;
-        for(const {band} of notes)band.hidden=false;
+        const previousBands=bands;
+        const nearbySections=new Map();
+        const nearby=notes.filter(({section})=>{
+          if(!viewportReading)return true;
+          if(!nearbySections.has(section)){
+            const {top,bottom}=section.getBoundingClientRect();
+            nearbySections.set(section,bottom>=-innerHeight&&top<=2*innerHeight&&
+              (section.firstElementChild.checkVisibility?.({contentVisibilityAuto:true})??true));
+          }
+          return nearbySections.get(section);
+        });
+        for(const entry of nearby){
+          if(!entry.mounted){
+            entry.note.insertAdjacentHTML('beforeend',entry.html);
+            for(const card of entry.note.querySelectorAll('[data-example-card]')){
+              const open=openCards.get(card.dataset.exampleCard);
+              if(open!==undefined)card.open=open;
+            }
+            entry.mounted=true;
+          }
+          entry.band.hidden=false;
+        }
         const origin=flow.getBoundingClientRect().top;
         flow.style.left=getComputedStyle(dock).paddingLeft;
         stickyTop=99+tools.getBoundingClientRect().height+12;
         const available=Math.max(0,innerHeight-stickyTop-16);
         flow.style.setProperty('--example-top',stickyTop+'px');
         flow.style.setProperty('--example-viewport',available+'px');
-        const measured=notes.filter(({peg})=>{
+        const measured=nearby.filter(({peg})=>{
           if(peg.closest('details:not([open])')||!peg.getClientRects().length)return false;
           const proof=peg.closest('.proof-body');
           if(!proof)return true;
@@ -224,7 +248,7 @@
           return !repeated;
         });
         const visibleBands=new Set(visible.map(({band})=>band));
-        for(const {band} of notes)band.hidden=!visibleBands.has(band);
+        for(const {band} of [...previousBands,...nearby])band.hidden=!visibleBands.has(band);
         bands=window.MathExpoMargins.sectionSpans(visible).map(({band,note,chrome,top,height})=>{
           const room=Math.min(height,available);
           // A short band or viewport scrolls the whole card.
@@ -248,6 +272,10 @@
           fitGroup(note,Math.min(height,viewportEnd-Math.max(stickyTop,top)),chrome);
         }
       };
+      if(viewportReading){
+        addEventListener('scroll',scheduleExampleLayout,{passive:true});
+        main.addEventListener('contentvisibilityautostatechange',scheduleExampleLayout,true);
+      }
       new ResizeObserver(scheduleExampleLayout).observe(main);
     }
     new ResizeObserver(scheduleExampleLayout).observe(tools);
@@ -311,7 +339,13 @@
     const update=()=>{scheduled=false;
       const denominator=document.documentElement.scrollHeight-innerHeight;
       const readingLine=innerHeight*(denominator-scrollY<=1?.55:.3);
-      let section=sections[0];for(const s of sections)if(s.getBoundingClientRect().top<innerHeight*.38)section=s;
+      let low=0,high=sections.length-1;
+      while(low<high){
+        const middle=Math.ceil((low+high)/2);
+        if(sections[middle].getBoundingClientRect().top<innerHeight*.38)low=middle;
+        else high=middle-1;
+      }
+      const section=sections[low];
       const candidates=contexts.get(section)||[];
       let active=candidates[0];
       for(const passage of candidates){
@@ -331,6 +365,7 @@
       update();
     });
     if(!activeContext)setExample(current);
+    layoutExamples();
     if(mountAnnotations)import(annotationModule.href)
       .then(({loadHypothesisNotes})=>loadHypothesisNotes($('#main')))
       .then(rows=>{if(rows.length)mountAnnotations(rows);})

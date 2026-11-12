@@ -252,7 +252,7 @@ console.log(`Validated original titles, prerequisite audit, verbatim source view
 
 for(const route of [...originalUnits.map(u=>u.slug),'gluing']){
   const html=fs.readFileSync(path.join(dist,route,'index.html'),'utf8');
-  const main=html.match(/<main id="main" class="reader-main verbatim-main">([\s\S]*?)<\/main>/)?.[1];
+  const main=html.match(/<main id="main" class="reader-main verbatim-main(?: viewport-reading)?">([\s\S]*?)<\/main>/)?.[1];
   if(!main)throw Error('Missing verbatim text column '+route);
   const classes=new Set([...main.matchAll(/\bclass="([^"]*)"/g)].flatMap(match=>match[1].split(/\s+/)));
   for(const cls of ['example-jump','object-ref','source-tex','source-note','source-links','edition-note','reading-deck','reading-controls','reading-contents','path-navigation','tag']){

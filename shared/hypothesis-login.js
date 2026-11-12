@@ -176,6 +176,8 @@
   const readingParagraphs = readingText + ' p, #chapter .chapter-intro';
   const statementBodies = '.passage:not(.prose) > .source-body, #chapter .prose .definition';
   const lists = 'ol, ul';
+  const commentBlocks = readingParagraphs + ', ' + statementBodies + ', ' + readingText + ' :is(ol, ul)';
+  let documentBlockIndexes;
   const displays = '.math-display, .katex-display';
   const continuesAfterDisplay = paragraph => paragraph?.matches('p') &&
     paragraph.textContent.trim() && !/^[\s\p{Ps}\p{Pi}"']*[\p{Lu}\p{Lt}]/u.test(paragraph.textContent);
@@ -224,7 +226,7 @@
     }
 
     const continuations = new Set();
-    const blocks = root.querySelectorAll(readingParagraphs + ', ' + statementBodies + ', ' + readingText + ' :is(ol, ul)');
+    const blocks = root.querySelectorAll(commentBlocks);
     for (const [index, block] of blocks.entries()) {
       const enclosingStatement = block.closest(statementBodies);
       if ((enclosingStatement && enclosingStatement !== block) ||
@@ -261,8 +263,16 @@
       const paragraphs = [block, ...following].flatMap(part => part.matches('p') ? [part] : [...part.querySelectorAll('p')]);
       const oldKeys = paragraphs.map(paragraph => draftKeys.get(paragraph)).filter(Boolean);
       const previousKeys = oldKeys.length > 1 ? oldKeys : [];
-      const key = previousKeys.length ? previousKeys[0] + ':group' :
-        oldKeys[0] ?? 'math-expo:draft:' + JSON.stringify([page, chapterHash, 'block', index]);
+      let key = previousKeys.length ? previousKeys[0] + ':group' : oldKeys[0];
+      if (!key) {
+        let blockIndex = index;
+        if (root.matches?.('.source-section')) {
+          // Keep the original draft key when a block has no paragraph of its own.
+          documentBlockIndexes ??= new Map([...document.querySelectorAll(commentBlocks)].map((node, index) => [node, index]));
+          blockIndex = documentBlockIndexes.get(block);
+        }
+        key = 'math-expo:draft:' + JSON.stringify([page, chapterHash, 'block', blockIndex]);
+      }
       const addComment = document.createElement('button');
       addComment.type = 'button';
       addComment.className = 'paragraph-comment';
@@ -288,7 +298,26 @@
       }
     }
   }
-  addCommentButtons(document);
+  const viewportReading = document.querySelector('.viewport-reading');
+  if (viewportReading) {
+    const prepared = new WeakSet();
+    const prepare = section => {
+      if (prepared.has(section)) return;
+      prepared.add(section);
+      sections.unobserve(section);
+      addCommentButtons(section);
+    };
+    const sections = new IntersectionObserver(entries => {
+      for (const { target, isIntersecting } of entries) {
+        if (isIntersecting) prepare(target);
+      }
+    }, { rootMargin: '160px 0px' });
+    for (const section of viewportReading.querySelectorAll(':scope > .source-section')) sections.observe(section);
+    // A published quote can resolve to a section before the reader scrolls to it.
+    viewportReading.addEventListener('prepare-comment-blocks', event => prepare(event.target));
+  } else {
+    addCommentButtons(document);
+  }
 
   if (chapter) {
     new MutationObserver(records => {

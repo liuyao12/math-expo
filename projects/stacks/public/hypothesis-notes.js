@@ -49,6 +49,10 @@ function indexReading(main) {
 
 function commentBlock(element) {
   let block = element?.closest('.comment-span');
+  if (!block) {
+    element?.closest('.viewport-reading > .source-section')?.dispatchEvent(new Event('prepare-comment-blocks', {bubbles: true}));
+    block = element?.closest('.comment-span');
+  }
   while (block && !block.classList.contains('comment-anchor')) {
     block = block.previousElementSibling;
     while (block?.matches('.source-anchor:empty')) block = block.previousElementSibling;

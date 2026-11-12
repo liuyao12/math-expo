@@ -506,3 +506,10 @@ details[open] > summary .disclosure-chevron {
   .reader-header :is(.brand, nav, .reader-actions) { display: none; }
   .reader-heading { padding: 0; border: 0; }
 }
+
+@media screen {
+  .viewport-reading > .source-section {
+    content-visibility: auto;
+    contain-intrinsic-block-size: auto 1000px;
+  }
+}

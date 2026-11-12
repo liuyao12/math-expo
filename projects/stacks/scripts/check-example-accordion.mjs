@@ -23,7 +23,7 @@ try{
   const mobile=viewport.width<=760;
   const page=await browser.newPage({viewport,isMobile:mobile,hasTouch:mobile,reducedMotion:'reduce'});
   page.on('pageerror',error=>errors.push(error.message));
-  for(const [slug,anchor,tag=anchor] of [['scheme','001B'],['scheme','005A'],['curves','01MN'],['curves','01XD'],['grr','02UO'],['gluing','local-functions-0','local-functions']]){
+  for(const [slug,anchor,tag=anchor] of [['scheme','001B'],['scheme','005A'],['scheme','01MN'],['curves','01XD'],['grr','02UO'],['gluing','local-functions-0','local-functions']]){
    await page.goto(url(slug,anchor),{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);
    const source=page.locator('main [id="'+anchor+'"]');
    await source.evaluate(n=>scrollBy({top:n.getBoundingClientRect().top-innerHeight*.3+25,behavior:'instant'}));
@@ -83,6 +83,9 @@ try{
  const page=await browser.newPage({viewport:{width:1440,height:900},reducedMotion:'reduce'});
  page.on('pageerror',error=>errors.push(error.message));
  await page.goto(url('scheme','001B'),{waitUntil:'networkidle'});
+ const lastSection=page.locator('.viewport-reading > .source-section').last();
+ assert(await lastSection.evaluate(section=>!section.firstElementChild.checkVisibility({contentVisibilityAuto:true})&&!section.querySelector('.paragraph-comment')),
+  'A distant section defers layout and annotation controls');
  const rail=page.locator('.example-band[data-example-anchor="001B"]');
  const second=rail.locator('.example-disclosure').nth(1);
  const selectedKey=await second.getAttribute('data-example-card');
@@ -122,7 +125,9 @@ try{
  const localization=page.locator('.example-band[data-example-anchor="localization-at-a-prime"]');
  await page.locator('#localization-at-a-prime').scrollIntoViewIfNeeded();await settle(page);
  assert(await localization.evaluate(band=>Math.abs(band.getBoundingClientRect().top-document.getElementById('localization-at-a-prime').getBoundingClientRect().top)<2),'The localization card starts at its paragraph');
- const overlap=page.locator('.example-band[data-example-anchor="01M4"]');
+ await page.locator('[id="01M4"]').evaluate(anchor=>anchor.scrollIntoView({block:'start',behavior:'instant'}));
+ const overlap=page.locator('.example-band[data-example-anchor="01M4"]:not([hidden])');
+ await overlap.waitFor();
  await overlap.evaluate(band=>{
   const statement=document.getElementById('01M4').querySelector('.source-body');
   const stickyTop=parseFloat(getComputedStyle(band.firstElementChild).top);
