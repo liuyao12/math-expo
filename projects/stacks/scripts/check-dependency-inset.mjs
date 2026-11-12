@@ -18,7 +18,7 @@ const topology=graph=>graph.evaluate(g=>({
 }));
 const checkLabels=async graph=>{
  const labels=await graph.locator('.dependency-node').evaluateAll(ns=>ns.map(n=>({
-  tag:n.dataset.tag,text:n.querySelector('.graph-node-number')?.textContent,enclosure:!!n.dataset.graphCluster,
+  tag:n.dataset.tag,kind:n.dataset.kind,text:n.querySelector('.graph-node-number')?.textContent,enclosure:!!n.dataset.graphCluster,
   box:n.querySelector('.graph-node-body').tagName,
   caption:n.querySelector('.graph-node-caption, .graph-math-caption')?.textContent,
   width:Number(n.dataset.width),height:Number(n.dataset.height),
@@ -27,7 +27,11 @@ const checkLabels=async graph=>{
  assert(new Set(labels.map(label=>label.width)).size>1,'Boxes vary in width with their labels');
  for(const label of labels){
   const ref=refs[label.tag];
-  const number=ref.kind==='section'?`§${ref.number}`:ref.kind[0].toUpperCase()+' '+ref.number;
+  const qualified=ref.kind==='item'&&label.kind!=='item';
+  const parentNumber=qualified&&label.text?.match(/^[A-Z] ([\d.]+)\(/)?.[1];
+  if(qualified)assert(Object.values(refs).some(parent=>parent.kind===label.kind&&parent.number===parentNumber),'A qualified item has a source statement');
+  const number=qualified?`${label.kind[0].toUpperCase()} ${parentNumber}(${ref.number})`
+   :ref.kind==='section'?`§${ref.number}`:ref.kind[0].toUpperCase()+' '+ref.number;
   assert.equal(label.text,label.enclosure?undefined:number);
   assert.equal(label.box,'rect','Nodes are boxes');
   if(ref.kind==='section')assert.equal(label.caption,undefined,'Section boxes omit titles');
@@ -60,9 +64,11 @@ try{
  await early.route('**/reader.js?*',async route=>{await readerGate;await route.continue();});
  try{
   await early.goto(base+'curves/#0BYD',{waitUntil:'commit'});
-  await early.waitForFunction(()=>document.getElementById('dependency-dialog'));
-  const top=await early.locator('main [id="0BYD"]').evaluate(node=>node.getBoundingClientRect().top);
-  assert(top>=0&&top<early.viewportSize().height/2,'A deep link lands while the reader script is still held back');
+  await early.waitForFunction(()=>{
+   if(!document.getElementById('dependency-dialog'))return false;
+   const top=document.getElementById('0BYD').getBoundingClientRect().top;
+   return top>=0&&top<innerHeight/2;
+  },null,{timeout:5000});
   assert.equal(await early.locator('.example-flow').count(),0);
  }finally{
   releaseReader();
@@ -71,6 +77,10 @@ try{
  for(const viewport of [{width:1440,height:900},{width:390,height:844}]){
   const page=await browser.newPage({viewport,isMobile:viewport.width<=760,hasTouch:viewport.width<=760,reducedMotion:'reduce'}),errors=[];
   page.on('pageerror',e=>errors.push(e.message));
+  const activateNode=async node=>{
+   if(viewport.width>760)await node.click();
+   else{await node.focus();await page.keyboard.press('Enter');}
+  };
   for(const [slug,tag] of [['scheme','004P'],['curves','0BYD'],['grr','02UO']]){
    await page.goto(base+slug+'/?jump=1#'+tag,{waitUntil:'networkidle'});
    const trigger=page.locator('main [id="'+tag+'"] [data-dependency-tag="'+tag+'"]');
@@ -98,6 +108,12 @@ try{
    assert.equal(await trigger.getAttribute('aria-expanded'),'true');
    const box=await popup.boundingBox();
    assert(box.width<=501&&box.x>=11&&box.y>=11&&box.x+box.width<=viewport.width-10&&box.y+box.height<=viewport.height-10,'Compact inset fits the screen');
+   if(viewport.width>760){
+    const text=await page.locator('#main').boundingBox(),dock=await page.locator('#example-dock').boundingBox();
+    assert(box.x>=text.x+text.width&&Math.abs(box.x+box.width-(dock.x+dock.width))<2,'The inset fits over the right column');
+   }else{
+    assert(Math.abs(box.y+box.height-(viewport.height-12))<2,'The phone inset leaves the upper reading area visible');
+   }
    const current=graph.locator('.is-current .graph-node-body'),node=await current.boundingBox(),pane=await board.boundingBox();
    assert(Math.hypot(node.x+node.width/2-pane.x-pane.width/2,node.y+node.height/2-pane.y-pane.height/2)<7,'Clicked node is centered');
    const scale=await svg.evaluate(n=>n.getBoundingClientRect().width/n.viewBox.baseVal.width);
@@ -128,17 +144,24 @@ try{
    await page.keyboard.press('Escape');await popup.waitFor({state:'hidden'});
    assert.equal(await trigger.getAttribute('aria-expanded'),'false');assert(await trigger.evaluate(n=>document.activeElement===n));
    await trigger.click();await popup.waitFor();
-   await page.mouse.click(viewport.width-3,viewport.height-3);await popup.waitFor({state:'hidden'});
-   await trigger.click();await popup.waitFor();
+   await page.mouse.click(viewport.width-3,viewport.height-3);
+   assert(await popup.isVisible(),'Interacting outside the inset keeps it open');
    await graph.getByRole('button',{name:'Fit graph',exact:true}).click();
    const destinationTag=slug==='scheme'?'0014':'01IJ';
    const destination=graph.locator('.dependency-node[data-tag="'+destinationTag+'"]');
    const href=await destination.getAttribute('href'),origin=await page.evaluate(()=>performance.timeOrigin);
    const destinationURL=new URL(href,page.url()).href;
-   await destination.click();await page.waitForURL(destinationURL);
+   await activateNode(destination);await page.waitForURL(destinationURL);
    if(slug==='scheme'){
     assert.equal(href,'#0014');
     assert.equal(await page.evaluate(()=>performance.timeOrigin),origin,'A same-reading jump stays on the current document');
+    assert(await popup.isVisible(),'A same-reading jump keeps the graph open');
+    assert.equal(await popup.locator('.is-current').getAttribute('data-tag'),destinationTag);
+    const pinned=await popup.boundingBox();
+    const verticalShift=viewport.width>760?pinned.y-box.y:pinned.y+pinned.height-box.y-box.height;
+    assert(Math.abs(pinned.x-box.x)<2&&Math.abs(verticalShift)<2,'The graph stays fixed while the reading scrolls');
+    const passage=await page.locator('main [id="'+destinationTag+'"]').boundingBox();
+    assert(passage.y>=0&&passage.y<viewport.height*.55,'The linked passage scrolls into the visible reading area');
    }
    assert.equal(await page.locator('main [id="'+destinationTag+'"]').count(),1,'Node links retain cross-reading navigation');
    const [additionalTag,prerequisite]=additional[slug];
@@ -163,7 +186,7 @@ try{
     await popup.getByRole('button',{name:'Fit graph',exact:true}).click();
     const reused=popup.locator('.outside-reading[data-tag="'+prerequisite+'"]');
     assert.equal(await reused.getAttribute('href'),'../scheme/#'+prerequisite);
-    await reused.click();await page.waitForURL(base+'scheme/#'+prerequisite);
+    await activateNode(reused);await page.waitForURL(base+'scheme/#'+prerequisite);
     assert.equal(await page.locator('main [id="'+prerequisite+'"]').count(),1);
    }
    console.log(`${viewport.width} ${slug}: compact neighborhood, typed numbers, whole-graph zoom, dismissal, navigation`);

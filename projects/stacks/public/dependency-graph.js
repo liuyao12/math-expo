@@ -38,6 +38,11 @@ import {edgeEndpoints,sectionBoxPadding} from './graph-geometry.js?section-level
   section.hidden=!node.dataset.section;
   if(node.dataset.section)section.href=node.dataset.section;
  };
+ const selectNode=node=>{
+  graph.querySelector('.is-current')?.classList.remove('is-current');
+  node.classList.add('is-current');
+  describe(node);
+ };
  const readHash=()=>{
   const node=document.getElementById(location.hash.slice(1));
   describe(nodes.includes(node)?node:root);
@@ -81,17 +86,30 @@ import {edgeEndpoints,sectionBoxPadding} from './graph-geometry.js?section-level
   fit();
   centerAt(center);
  });
+ const dock=dialog&&document.getElementById('example-dock');
  const placeDialog=()=>{
-  if(!dialog?.open||!activeTrigger)return;
-  const anchor=activeTrigger.getBoundingClientRect(),box=dialog.getBoundingClientRect();
-  const left=Math.max(12,Math.min(innerWidth-box.width-12,anchor.left));
-  const below=anchor.bottom+10,above=anchor.top-box.height-10;
-  const top=below+box.height<=innerHeight-12?below:above>=12?above:Math.max(12,Math.min(innerHeight-box.height-12,below));
-  dialog.style.left=left+'px';dialog.style.top=top+'px';
+  if(!dock||!dialog.open||!dock.getClientRects().length)return;
+  const {right,width}=dock.getBoundingClientRect();
+  dialog.style.setProperty('--dependency-inset-right',Math.max(12,innerWidth-right)+'px');
+  dialog.style.setProperty('--dependency-inset-width',Math.min(500,width)+'px');
  };
- window.addEventListener('resize',()=>{
-  if(dialog?.open){const center=viewportCenter();placeDialog();fit();centerAt(center);}else fit();
- });
+ const resizeGraph=()=>{
+  if(!dialog?.open){fit();return;}
+  const center=viewportCenter();
+  placeDialog();
+  fit();
+  centerAt(center);
+ };
+ window.addEventListener('resize',resizeGraph);
+ if(dock){
+  let dockWidth;
+  new ResizeObserver(([entry])=>{
+   const width=entry.contentRect.width;
+   if(width===dockWidth)return;
+   dockWidth=width;
+   resizeGraph();
+  }).observe(dock);
+ }
  fit();
 
  if(dialog&&typeof dialog.show==='function'){
@@ -101,9 +119,7 @@ import {edgeEndpoints,sectionBoxPadding} from './graph-geometry.js?section-level
    const node=byTag.get(trigger.dataset.dependencyTag);
    if(!node)return;
    event.preventDefault();
-   graph.querySelector('.is-current')?.classList.remove('is-current');
-   node.classList.add('is-current');
-   describe(node);
+   selectNode(node);
    activeTrigger?.setAttribute('aria-expanded','false');activeTrigger=trigger;
    activeTrigger.setAttribute('aria-expanded','true');
    if(!dialog.open)dialog.show();
@@ -116,21 +132,30 @@ import {edgeEndpoints,sectionBoxPadding} from './graph-geometry.js?section-level
    centerAt({x:position.e/bounds.width,y:position.f/bounds.height});
    dialog.querySelector('header button').focus({preventScroll:true});
   });
-  document.addEventListener('pointerdown',event=>{
-   if(dialog.open&&!dialog.contains(event.target)&&!event.target.closest('[data-dependency-tag]'))dialog.close();
-  });
   document.addEventListener('keydown',event=>{if(event.key==='Escape'&&dialog.open){event.preventDefault();dialog.close();}});
   dialog.addEventListener('close',()=>{
-   const trigger=activeTrigger;activeTrigger=null;trigger?.setAttribute('aria-expanded','false');trigger?.focus({preventScroll:true});
+   const trigger=activeTrigger;activeTrigger=null;
+   trigger?.setAttribute('aria-expanded','false');
+   const box=trigger?.getBoundingClientRect();
+   if(box&&box.top>=(document.querySelector('.reader-header')?.offsetHeight||0)&&box.bottom<=innerHeight){
+    trigger.focus({preventScroll:true});
+   }else{
+    const main=document.getElementById('main');
+    main.tabIndex=-1;
+    main.focus({preventScroll:true});
+   }
   });
-  dialog.addEventListener('toggle',event=>{if(event.target.matches('details.graph-key'))placeDialog();},true);
-  window.addEventListener('scroll',()=>{
-   if(!dialog.open||!activeTrigger)return;
-   const anchor=activeTrigger.getBoundingClientRect();
-   if(anchor.bottom<0||anchor.top>innerHeight)dialog.close();else placeDialog();
-  },{passive:true});
   graph.addEventListener('click',event=>{
-   if(!event.defaultPrevented&&event.target.closest('a[href]'))dialog.close();
+   const link=event.target.closest('a[href]');
+   const href=link?.getAttribute('href');
+   if(event.defaultPrevented||!href?.startsWith('#')||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+   const tag=href.slice(1);
+   const target=document.getElementById(tag);
+   if(!target)return;
+   const proof=target.closest('details.proof');
+   if(proof)proof.open=true;
+   const node=byTag.get(tag);
+   if(node)selectNode(node);
   });
   for(const trigger of document.querySelectorAll('button[data-dependency-tag]'))trigger.disabled=false;
  }

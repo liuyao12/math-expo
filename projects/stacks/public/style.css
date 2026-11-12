@@ -253,18 +253,25 @@ details[open] > summary .disclosure-chevron {
 .dependency-dialog {
   box-sizing: border-box;
   position: fixed;
-  inset: 12px auto auto 12px;
+  inset: 90px var(--dependency-inset-right, 12px) auto auto;
   z-index: 50;
   margin: 0;
-  width: min(500px, calc(100% - 24px));
+  width: min(var(--dependency-inset-width, 360px), calc(100% - 24px));
   max-width: none;
-  max-height: calc(100dvh - 24px);
+  max-height: calc(100dvh - 102px);
   padding: .75rem;
   border: 1px solid var(--line);
   border-radius: .55rem;
   background: var(--paper);
   color: var(--ink);
   box-shadow: 0 10px 36px #202b2730;
+}
+@media (max-width: 760px) {
+  .dependency-dialog {
+    inset: auto 12px 12px auto;
+    width: min(500px, calc(100% - 24px));
+    max-height: calc(100dvh - 85px);
+  }
 }
 .dependency-dialog > header { display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
 .dependency-dialog h2 { margin: 0; font-size: 19px; }

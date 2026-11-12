@@ -16,7 +16,13 @@ const jumpToPassage=`<script>
   if(!target?.closest('main'))return;
   const proof=target.closest('details.proof');
   if(proof)proof.open=true;
-  target.scrollIntoView({block:'start',behavior:'instant'});
+  const jump=()=>target.scrollIntoView({block:'start',behavior:'instant'});
+  jump();
+  requestAnimationFrame(()=>{
+   // A skipped section can grow when the first jump brings it into view.
+   const top=target.getBoundingClientRect().top;
+   if(top<0||top>innerHeight/2)jump();
+  });
  })();
 </script>`;
 
