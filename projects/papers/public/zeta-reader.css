@@ -20,8 +20,39 @@
 @media print{.zeta-rail{position:static!important;max-height:none!important}.zeta-panel{max-height:none;overflow:visible;box-shadow:none}.zeta-illustrated-reading{display:block}.zeta-passage-column{width:100%}.zeta-scene-controls,.zeta-view-controls,.zeta-panel details,.zeta-render-status,#zeta-fold{display:none}.zeta-plot-frame{max-width:350px}.zeta-illustrated-reading .passage{display:grid}}
 .zeta-panel .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
+/* A separate passage-linked module: finite data beside the later RH estimate. */
+#prime-digits-panel{font:16px/1.65 var(--serif);color:#43563d}
+#prime-digits-panel[hidden]{display:none!important}
+#prime-digits-panel>p{margin:12px 0}
+#prime-digits-panel .prime-digits-credit{font:14px/1.5 var(--sans);color:#76603f;margin:4px 0 14px}
+.prime-digits-bound{padding:10px 6px;background:#e8eddf;border:1px solid #c9d4bf;text-align:center;overflow-x:auto;overflow-y:hidden}
+.prime-digits-bound .katex-display{margin:4px 0;font-size:.9em}
+#prime-digits-panel .prime-digits-bound-source{font-size:14px}
+.prime-digits-table{width:100%;border-collapse:collapse;font-size:15px;margin:18px 0}
+.prime-digits-table caption{font:14px/1.5 var(--sans);text-align:left;color:#64735a;margin-bottom:10px}
+.prime-digits-table th{font:14px/1.5 var(--sans);text-align:left;color:#53674b}
+.prime-digits-table thead th{padding:0 6px 9px;border-bottom:1px solid #b9c8ac}
+.prime-digits-table tbody th{padding:15px 8px 15px 0;vertical-align:top;white-space:nowrap}
+.prime-digits-table td{padding:12px 0 14px 8px;border-bottom:1px solid #d4dccb;min-width:0}
+.prime-digits-values{margin:0}
+.prime-digits-values>div+div{margin-top:8px}
+.prime-digits-values dt{font:14px/1.5 var(--sans);color:#65745b;margin:0 0 3px}
+.prime-digits-values dd{margin:0;padding:0 0 3px;max-width:100%;overflow-x:auto;overflow-y:hidden;white-space:nowrap}
+.prime-digits-values .katex{font-size:1em}
+.prime-digits-agreement{display:block;font:14px/1.5 var(--sans);color:#53674b;margin-top:7px}
+.prime-digits-record{font-size:14px}
+.prime-digits-infinity{padding:14px 16px;border-left:3px solid #8a7545;background:#ece9db;margin:18px 0}
+.prime-digits-infinity strong{font-weight:600;color:#4e512e}
+.prime-digits-infinity p{margin:8px 0 0}
+#prime-digits-panel details{font-size:15px;line-height:1.65}
+#prime-digits-panel summary{font-size:14px;line-height:1.5;padding-block:4px}
+#prime-digits-panel a{color:var(--green);text-underline-offset:3px}
+#zeta-visual[data-exhibit=digits] .zeta-scene-controls select{display:none}
+@media(max-width:900px){.prime-digits-table{font-size:14px}.prime-digits-table td{padding-left:4px}.prime-digits-table tbody th{padding-right:4px}}
+@media print{#prime-digits-panel[hidden]{display:block!important}}
+
 /* The same margin follows the formula from zeta values to prime counts. */
-.zeta-exhibit-tabs{display:flex;gap:6px;margin:0 0 10px}.zeta-exhibit-tabs button{flex:1;font-size:10px}.zeta-exhibit-tabs [aria-pressed=true]{background:#dfe7d5;border-color:#9cab8d}
+.zeta-exhibit-tabs{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}.zeta-exhibit-tabs button{flex:1;min-width:0;font-size:14px;line-height:1.3}.work-reader .zeta-exhibit-tabs button{font-size:14px;line-height:1.3}.zeta-exhibit-tabs [aria-pressed=true]{background:#dfe7d5;border-color:#9cab8d}
 #zeta-plane-panel[hidden],#explicit-panel[hidden]{display:none!important}
 .explicit-options{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:12px}.explicit-options label{font:9px/1.5 var(--sans);color:var(--green)}.explicit-options select{display:block;width:100%;min-width:0;margin-top:3px;background:#faf9f3;border:1px solid #c5cfbb;min-height:33px;padding:5px 3px}
 .explicit-zero-control{padding:9px 0 10px;border-top:1px solid #d4d8cb}.explicit-zero-control>div:first-child{display:flex;flex-direction:column;gap:4px}.explicit-zero-control label{font:10px/1.5 var(--sans);color:var(--green)}.explicit-zero-control output{font:13px/1.5 var(--serif);color:var(--green)}#explicit-pairs{width:100%;accent-color:#ac532f;margin:8px 0;cursor:pointer;min-height:26px}.explicit-pair-actions{display:flex;gap:6px;flex-wrap:wrap;align-items:center}.explicit-pair-actions button{padding:5px 8px;font-size:10px;min-height:31px}#explicit-height{width:100%;min-height:17px;margin:4px 0 0;color:#6f7e65;font:9px/1.5 var(--sans)}

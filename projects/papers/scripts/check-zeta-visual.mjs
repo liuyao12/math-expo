@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import {spawnSync} from 'node:child_process';
 import {zeta,domainColor,scenes,sceneAt,squareView,firstZerosView,clampView,zoomView,pointAt,allowedByStage,firstZeros} from '../public/zeta-math.mjs';
 import {passages1859} from '../src/riemann-1859.mjs';
+import {primeDigitComparisons,primeDigitsContribution} from '../src/prime-digits-commentary.mjs';
 const root=new URL('../',import.meta.url),read=p=>fs.readFileSync(new URL(p,root),'utf8');
 const samples=JSON.parse(read('src/sources/zeta-reference-values.json'));assert.equal(samples.values.length,418);let worst=0;
 for(const p of samples.values){const actual=zeta(p.re,p.im),re=Number(p.valueRe),im=Number(p.valueIm);assert.equal(actual.kind,'value');const error=Math.hypot(actual.re-re,actual.im-im)/Math.max(1,Math.hypot(re,im));worst=Math.max(worst,error);assert(error<2e-11,JSON.stringify({point:[p.re,p.im],error}));}
@@ -17,7 +18,21 @@ for(const v of [squareView,firstZerosView,{xmin:-20,xmax:20,ymin:-80,ymax:90}]){
 for(let i=0;i<scenes.length;i++)assert.equal(sceneAt(scenes.map((_,j)=>j*100-i*100),1).id,scenes[i].id);
 const html=read('dist/riemann-1859/index.html'),data=JSON.parse(read('dist/catalog.json'));assert(html.includes('class="zeta-illustrated-reading"'));assert.equal((html.match(/id="zeta-visual"/g)||[]).length,1);assert(html.includes('zeta-reader.mjs?v='));assert(html.includes('zeta-reader.css?v='));assert(html.includes('Follow the paper'));assert(html.includes('class="paper-part zeta-reading-opening"'));assert(html.indexOf('id="opening"')<html.indexOf('id="zeta-visual"'));assert(html.indexOf('id="zeta-visual"')<html.indexOf('id="euler-product"'));assert(html.includes('>Music of the primes</button>'));assert.equal(data.visualContributions[1].title,'Music of the primes');assert(html.includes('no blur or uncertainty effect'));assert(html.includes('not certified intervals'));assert(html.includes(String.raw`\(\operatorname{Re}s\)`));assert(html.includes(String.raw`\(\zeta(s)\)`));assert(html.includes(String.raw`cutoff \(N=32\)`));
 for(const s of scenes)assert(passages1859.some(p=>p.id===s.anchor));for(const p of passages1859)assert(html.includes(`id="${p.id}"`));
-assert.equal(data.visualContributions.length,2);assert.equal(data.visualContributions[0].work,'riemann-1859');assert.equal(data.works.find(w=>w.id==='riemann-1859').textCoverage.percent,100);
+assert.equal(data.visualContributions.length,3);assert.equal(data.visualContributions[0].work,'riemann-1859');assert.equal(data.works.find(w=>w.id==='riemann-1859').textCoverage.percent,100);
+assert.deepEqual(data.visualContributions[2],primeDigitsContribution);
+assert.deepEqual(primeDigitComparisons.map(row=>row.exponent),[3,6,9,29]);
+for(const row of primeDigitComparisons){
+ const liWhole=row.li.split('.')[0];let prefix=0;
+ while(prefix<row.count.length&&row.count[prefix]===liWhole[prefix])prefix++;
+ assert.equal(prefix,row.prefix);assert(BigInt(liWhole)>BigInt(row.count));
+ assert(html.includes(row.count.slice(row.prefix))); // Exact strings survive HTML generation.
+}
+assert.equal(primeDigitComparisons.at(-1).count,'1520698109714272166094258063');
+assert.equal(primeDigitComparisons.at(-1).prefix,15);
+for(const marker of ['id="prime-digits-tab"','id="prime-digits-panel"','data-prime-digits','A theorem must keep control without an endpoint.','28 February 2022','https://github.com/kimwalisch/primecount/blob/master/doc/Records.md',String.raw`\frac{\sqrt{x}\log x}{8\pi}`])assert(html.includes(marker),marker);
+assert.equal(scenes.find(s=>s.exhibit==='digits').anchor,'smooth-part');
+assert.deepEqual(JSON.parse(read('dist/riemann-1859/visual-commentary.json'))[2],primeDigitsContribution);
+assert(read('dist/riemann-1859/compare/index.html').includes('id="prime-digits-panel"'));
 assert.equal(read('dist/riemann-1859/zeta-reference-values.json'),read('src/sources/zeta-reference-values.json'));
 for(const file of ['zeta-math.mjs','zeta-reader.mjs','zeta-worker.mjs']){const result=spawnSync(process.execPath,['--check',new URL('public/'+file,root).pathname],{encoding:'utf8'});assert.equal(result.status,0,result.stderr);}
 for(const id of ['riemann-1854','cartan-1913'])assert(!read('dist/'+id+'/index.html').includes('zeta-reader.mjs'));

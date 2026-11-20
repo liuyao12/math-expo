@@ -7,10 +7,12 @@ if(root){
  const {initExplicitPlot}=await import('./explicit-reader.mjs?v='+encodeURIComponent(version));
  let explicitPlot=null,readingActive=true,experimentRequested=false;
  function showExhibit(kind){
-  const isExplicit=kind==='explicit';$('zeta-plane-panel').hidden=isExplicit;$('explicit-panel').hidden=!isExplicit;
-  $('zeta-exhibit-title').textContent=isExplicit?'Music of the primes':'Zeta, in color';
-  $('zeta-plane-tab').setAttribute('aria-pressed',String(!isExplicit));$('explicit-tab').setAttribute('aria-pressed',String(isExplicit));root.dataset.exhibit=kind;
+  const changed=root.dataset.exhibit!==kind;
+  const isExplicit=kind==='explicit',isDigits=kind==='digits';$('zeta-plane-panel').hidden=kind!=='plane';$('explicit-panel').hidden=!isExplicit;$('prime-digits-panel').hidden=!isDigits;
+  $('zeta-exhibit-title').textContent=isExplicit?'Music of the primes':isDigits?'How many digits agree?':'Zeta, in color';
+  $('zeta-plane-tab').setAttribute('aria-pressed',String(kind==='plane'));$('explicit-tab').setAttribute('aria-pressed',String(isExplicit));$('prime-digits-tab').setAttribute('aria-pressed',String(isDigits));root.dataset.exhibit=kind;
   explicitPlot?.setActive(isExplicit&&readingActive);if(isExplicit)explicitPlot?.resize();
+  if(changed)root.scrollTop=0;
  }
  initExplicitPlot(root,{version}).then(plot=>{explicitPlot=plot;if(experimentRequested)plot.openExperiment();if(scene.exhibit==='explicit'){explicitPlot.setMode(scene.mode);explicitPlot.setActive(readingActive);}});
  document.addEventListener('click',event=>{
@@ -22,6 +24,8 @@ if(root){
  });
  $('zeta-plane-tab').addEventListener('click',()=>{follow.checked=false;updateScene(scene.exhibit?scenes[3]:scene,true);requestPixels();});
  $('explicit-tab').addEventListener('click',()=>{follow.checked=false;updateScene(scenes.find(s=>s.id==='prime-inversion'),true);});
+ $('prime-digits-tab').addEventListener('click',()=>{follow.checked=false;updateScene(scenes.find(s=>s.id==='prime-digits'),true);});
+ document.addEventListener('click',event=>{if(!event.target.closest('[data-prime-digits]'))return;follow.checked=true;updateScene(scenes.find(s=>s.id==='prime-digits'),true);});
 
  let scene=scenes[0],view={...squareView},selection=[2,0],cache=null,job=0,timer=0,worker=null,drag=null,scrollFrame=0,labelKey='',frameWidth=0,frameHeight=0;
  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
