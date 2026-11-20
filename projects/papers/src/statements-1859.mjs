@@ -1,3 +1,4 @@
+import {rhStatusNote} from './riemann-hypothesis-status.mjs';
 const m=String.raw;
 // These are written mathematical reconstructions, with their proof dependencies
 // stated. No proof-assistant verification is claimed.
@@ -31,5 +32,5 @@ export const statements1859=[
     statement:m`For Riemann’s even entire function \(\xi(t)\), the claim is
     \[\xi(\alpha)=0\quad\Longrightarrow\quad\alpha\in\mathbb R.\]
     The corresponding statement is that each nontrivial zero \(\rho\) of \(\zeta\) has \(\operatorname{Re}\rho=\tfrac12\).`,
-    proof:m`<p>Riemann leaves this unproved. It is not an assumption in the five reconstructions above. Clay Mathematics Institute continues to list the <a href="https://www.claymath.org/millennium/riemann-hypothesis/">Riemann hypothesis as unsolved</a> (checked 21 October 2026).</p>`},
+    proof:m`<p>Riemann leaves this unproved. It is not an assumption in the five reconstructions above.</p><p>${rhStatusNote}</p>`},
 ];

@@ -1,4 +1,5 @@
 import {weilWorks,weilPeople,weilConcepts,weilBibliography,weilCitations,weilExternalReferences} from './weil-catalog.mjs';
+import {rhStatusNote} from './riemann-hypothesis-status.mjs';
 import {conceptsCartan1913,externalReferencesCartan1913} from './cartan-1913-catalog.mjs';
 import {attachTextCoverage} from './text-coverage.mjs';
 import {representationWorks,representationPeople,representationBibliography,representationEnglish,representationCitations,conceptsLie1874} from './representation-catalog.mjs';
@@ -212,7 +213,7 @@ export const concepts = [
     comparison:m`If a modern source writes \(\xi_{\mathrm{std}}(s)=\tfrac12s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s)\), the correspondence is \(\xi(t)=\xi_{\mathrm{std}}(\tfrac12+it)\). The arguments of the two functions differ.`},
   {id:'hypothesis-1859',title:'The hypothesis about the zeros',kind:'Author’s conjecture',anchor:'hypothesis',
     body:m`<p>Riemann conjectures that all zeros of his \(\xi(t)\) are real. If \(\alpha\) is such a zero, the corresponding zeta zero is \(\rho=\tfrac12+i\alpha\). Thus his conjecture concerns the nontrivial zeros of this particular zeta function.</p><p>He explicitly says that he has not supplied a rigorous proof. Neither a zero-count asymptotic nor a finite numerical computation proves the conjecture.</p>`,
-    comparison:'This is the Riemann hypothesis in its original variable. Clay Mathematics Institute lists it as unsolved (status checked 21 October 2026).',
+    comparison:`This is the Riemann hypothesis in its original variable. ${rhStatusNote}`,
     source:'https://www.claymath.org/millennium/riemann-hypothesis/'},
   {id:'prime-count-1859',title:'The prime count with half-values at jumps',kind:'Author-defined object',anchor:'prime-count',
     body:m`<p>For a positive real \(x\) that is not prime, \(F(x)\) counts primes strictly below \(x\). At a prime, add one half to that strict count. Equivalently,</p>\[F(x)=\sum_{p\lt x}1+\frac12\mathbf{1}_{\{x\text{ is prime}\}}.\]<p>For example, \(F(5)=\tfrac52\), and \(F(6)=3\). The midpoint convention is chosen for the later inversion integral.</p>`,

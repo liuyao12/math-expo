@@ -33,6 +33,13 @@ for(const marker of ['id="prime-digits-tab"','id="prime-digits-panel"','data-pri
 assert.equal(scenes.find(s=>s.exhibit==='digits').anchor,'smooth-part');
 assert.deepEqual(JSON.parse(read('dist/riemann-1859/visual-commentary.json'))[2],primeDigitsContribution);
 assert(read('dist/riemann-1859/compare/index.html').includes('id="prime-digits-panel"'));
+for(const route of ['riemann-1859','riemann-1859/compare','concepts/hypothesis-1859']){
+ const page=read('dist/'+route+'/index.html');
+ assert(page.includes('https://alpo.ge/remark.pdf'));
+ assert(page.includes('Status · 20 November 2026.'));
+ assert(page.includes('has not independently verified the claim'));
+ assert(!/quasi.?riemann|quansi.?riemann|one eighth|7\/8/i.test(page));
+}
 assert.equal(read('dist/riemann-1859/zeta-reference-values.json'),read('src/sources/zeta-reference-values.json'));
 for(const file of ['zeta-math.mjs','zeta-reader.mjs','zeta-worker.mjs']){const result=spawnSync(process.execPath,['--check',new URL('public/'+file,root).pathname],{encoding:'utf8'});assert.equal(result.status,0,result.stderr);}
 for(const id of ['riemann-1854','cartan-1913'])assert(!read('dist/'+id+'/index.html').includes('zeta-reader.mjs'));

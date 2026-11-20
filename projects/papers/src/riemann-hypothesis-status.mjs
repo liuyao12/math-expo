@@ -1,0 +1,2 @@
+// A dated announcement record, not an assessment of the proposed proof.
+export const rhStatusNote='<strong>Status · 20 November 2026.</strong> Levent <a href="https://alpo.ge/remark.pdf" target="_blank" rel="noopener"><span class="person-surname">Alpöge</span>’s <i>Remark</i></a> announces a Claude-assisted proof of RH and a Lean formalization. This edition has not independently verified the claim; the error estimate remains conditional on RH.';

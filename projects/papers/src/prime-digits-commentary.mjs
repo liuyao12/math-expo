@@ -1,3 +1,4 @@
+import {rhStatusNote} from './riemann-hypothesis-status.mjs';
 const m=String.raw;
 
 // Counts are exact decimal strings. Never pass the large endpoint through Number.
@@ -17,6 +18,7 @@ export const primeDigitsContribution={
  sources:[
   {title:'Walisch and Baugh · exact prime-count records and double checks',url:'https://github.com/kimwalisch/primecount/blob/master/doc/Records.md'},
   {title:'Büthe · Schoenfeld’s RH error bound, introduction',url:'https://arxiv.org/html/1410.7015v4#S1'},
+  {title:'Alpöge · Remark, claimed proof announced 20 November 2026',url:'https://alpo.ge/remark.pdf'},
   {title:'mpmath · logarithmic integral conventions',url:'https://mpmath.org/doc/current/functions/expintegrals.html#li'}
  ]
 };
@@ -43,20 +45,21 @@ export function primeDigitsHTML(){return m`
  <p>The zero terms control the discrepancy from the smooth approximation. If RH holds, a later estimate gives</p>
  <div class="prime-digits-bound">\[\left|\pi(x)-\operatorname{Li}(x)\right|\le\frac{\sqrt{x}\log x}{8\pi}\]</div>
  <p class="prime-digits-bound-source">for \(x>2657\). This is <a href="https://arxiv.org/html/1410.7015v4#S1" target="_blank" rel="noopener"><span class="person-surname">Schoenfeld</span>’s bound, quoted by <span class="person-surname">Büthe</span></a>; it is not a bound proved in Riemann’s paper.</p>
+ <p class="prime-digits-record">${rhStatusNote}</p>
  <p>Green bold digits mark the common leading string. Approximations below are rounded to three decimal places.</p>
  <table class="prime-digits-table"><caption>Finite comparisons, from a thousand to \(10^{29}\)</caption><thead><tr><th scope="col">\(N\)</th><th scope="col">Count and approximation</th></tr></thead><tbody>${primeDigitComparisons.map(comparisonRow).join('')}</tbody></table>
  <p class="prime-digits-record">The \(10^{29}\) count was computed by Kim <a href="https://github.com/kimwalisch/primecount/blob/master/doc/Records.md" target="_blank" rel="noopener"><span class="person-surname">Walisch</span></a> and David <a href="https://github.com/kimwalisch/primecount/blob/master/doc/Records.md" target="_blank" rel="noopener"><span class="person-surname">Baugh</span></a> on 28 February 2022. They report checking it with a second computation using different tuning parameters. It is an exact count, independent of RH, at a selected endpoint; it is not a stored list of every prime.</p>
  <p>At this endpoint, \(\operatorname{Li}(N)-\pi(N)\approx4.55\times10^{12}\), yet the relative error is only about \(3.0\times10^{-15}\): \(15\) leading digits agree in a \(28\)-digit count.</p>
  <div class="prime-digits-infinity"><strong>A theorem must keep control without an endpoint.</strong><p>The RH estimate would hold for every real \(x>2657\), however far out we go. No finite table establishes that claim. The global bound concerns the size of the error; it does not promise that literal digit prefixes improve monotonically.</p></div>
- <details><summary>Why “half the digits”? And one eighth?</summary>
+ <details><summary>Why “half the digits”?</summary>
   <p>The count has size \(\pi(x)\sim x/\log x\). An error of size \(x^\theta\), apart from logarithmic factors, therefore corresponds to roughly \((1-\theta)\log_{10}x\) significant decimal digits of accuracy.</p>
-  <p>RH gives \(\theta=\tfrac12\): roughly half the digits on this scale. The recent <a href="https://github.com/openai/math/blob/main/lean/docs/003.md" target="_blank" rel="noopener">quasi-Riemann result’s zero-free half-plane</a> \(\operatorname{Re}s>\tfrac78\) instead yields \(\pi(x)-\operatorname{Li}(x)=O_\varepsilon(x^{7/8+\varepsilon})\) for every fixed \(\varepsilon>0\): roughly one eighth, with arbitrarily small exponent losses. This implication uses the later explicit-formula theory, not a claim made by Riemann.</p>
+  <p>RH gives \(\theta=\tfrac12\): roughly half the digits on this scale. This implication uses the later explicit-formula theory, not a claim made by Riemann.</p>
   <p>These are error scales, not a fixed fraction of identical decimal characters at every input. Logarithmic factors and carries can affect a common prefix. For example, two integers can be very close while lying on opposite sides of a decimal boundary.</p>
  </details>
  <details><summary>Definitions, calculation and sources</summary>
   <p>Here \(\pi(N)\) counts primes at most \(N\), and \(\operatorname{Li}(x)=\operatorname{PV}\int_0^x dt/\log t=\operatorname{Ei}(\log x)\). The three small endpoints are composite, so Riemann’s midpoint count equals the usual count there; the same holds at \(10^{29}\).</p>
   <p>Some authors instead integrate from \(2\), subtracting \(\operatorname{Li}(2)\approx1.04516\). We consistently use the real principal-value convention, as in the corrected explicit formula above.</p>
   <p>The logarithmic integrals were evaluated with <a href="https://mpmath.org/doc/current/functions/expintegrals.html#li" target="_blank" rel="noopener">mpmath</a> at \(80\) decimal places and checked via \(\operatorname{Ei}(\log x)\) at \(100\) places. The displayed digits and prefixes are stored as decimal strings, preserving the large count exactly. The small exact counts were also checked with SymPy’s prime-counting function.</p>
-  <p><a href="https://github.com/kimwalisch/primecount/blob/master/doc/Records.md" target="_blank" rel="noopener">Prime-count record and verification</a> · <a href="https://arxiv.org/html/1410.7015v4#S1" target="_blank" rel="noopener">RH error estimate</a>. Sources checked 19 November 2026. These are modern comparisons, separate from the historical counts reported in the paper.</p>
+  <p><a href="https://github.com/kimwalisch/primecount/blob/master/doc/Records.md" target="_blank" rel="noopener">Prime-count record and verification</a> · <a href="https://arxiv.org/html/1410.7015v4#S1" target="_blank" rel="noopener">RH error estimate</a>. Sources checked 20 November 2026. These are modern comparisons, separate from the historical counts reported in the paper.</p>
  </details>
 </section>`;}
