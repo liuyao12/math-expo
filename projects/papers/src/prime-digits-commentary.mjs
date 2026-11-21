@@ -33,17 +33,9 @@ export const primeDigitsContribution={
 function matched(value,prefix){
  return m`\(\textcolor{#246642}{\mathbf{${value.slice(0,prefix)}}}${value.slice(prefix)}\)`;
 }
-function thousandths(value){
- const [whole,fraction]=value.split('.');
- return BigInt(whole+fraction.slice(0,3))+(Number(fraction[3])>=5?1n:0n);
-}
-function decimal(value){
- const digits=value.toString().padStart(4,'0');
- return digits.slice(0,-3)+'.'+digits.slice(-3);
-}
 function comparisonRow(row){
- const li=thousandths(row.li),error=li-BigInt(row.count)*1000n;
- return m`<tr><th scope="row">\(10^{${row.exponent}}\)</th><td>${matched(row.count,row.prefix)}</td><td>${matched(decimal(li),row.prefix)}</td><td>\(${decimal(error)}\)</td><td>\(${row.prefix}/${row.count.length}\)</td></tr>`;
+ const [whole,fraction]=row.li.split('.'),li=m`${whole}.${fraction[0]}\ldots`;
+ return m`<tr><th scope="row">\(10^{${row.exponent}}\)</th><td>${matched(row.count,row.prefix)}</td><td>${matched(li,row.prefix)}</td></tr>`;
 }
 
 export function primeDigitsHTML(){return m`
@@ -51,9 +43,9 @@ export function primeDigitsHTML(){return m`
  <p class="prime-digits-credit">Modern consequence · conditional on RH</p>
  <div class="prime-digits-bound">\[\left|\pi(x)-\operatorname{Li}(x)\right|\le\frac{\sqrt{x}\log x}{8\pi}\]</div>
  <p class="prime-digits-bound-source">For \(x>2657\), assuming RH: Lowell <a href="https://doi.org/10.1090/S0025-5718-1976-0457374-X" target="_blank" rel="noopener"><span class="person-surname">Schoenfeld</span></a>, <a href="https://doi.org/10.1090/S0025-5718-1976-0457374-X" target="_blank" rel="noopener"><i>Sharper Bounds</i></a> (1976). This later estimate is not proved in Riemann’s paper.</p>
- <p class="prime-digits-table-key" id="prime-digits-table-help">Green bold digits mark the common leading string; values are rounded to three decimal places. Scroll sideways to compare all columns.</p>
+ <p class="prime-digits-table-key" id="prime-digits-table-help">Green bold digits mark the common leading string. The logarithmic integral shows one decimal place followed by an ellipsis. Scroll sideways to compare the columns.</p>
  <div class="prime-digits-table-scroll" tabindex="0" role="region" aria-label="Prime-count comparison table — scroll horizontally" aria-describedby="prime-digits-table-help">
- <table class="prime-digits-table"><caption>Exact counts and the logarithmic integral</caption><thead><tr><th scope="col">\(N\)</th><th scope="col">Exact \(\pi(N)\)</th><th scope="col">\(\operatorname{Li}(N)\)</th><th scope="col">\(\operatorname{Li}(N)-\pi(N)\)</th><th scope="col">Leading digits<br>that agree</th></tr></thead><tbody>${primeDigitComparisons.map(comparisonRow).join('')}</tbody></table>
+ <table class="prime-digits-table"><caption>Exact counts and the logarithmic integral</caption><thead><tr><th scope="col">\(N\)</th><th scope="col">Exact \(\pi(N)\)</th><th scope="col">\(\operatorname{Li}(N)\)</th></tr></thead><tbody>${primeDigitComparisons.map(comparisonRow).join('')}</tbody></table>
  </div>
  <div class="prime-digits-infinity"><strong>A theorem must keep control without an endpoint.</strong><p>The RH estimate would hold for every real \(x>2657\), however far out we go. The table is finite evidence; literal digit prefixes need not improve monotonically.</p></div>
  <p class="prime-digits-record">Counts: <a href="https://oeis.org/A006880/b006880.txt" target="_blank" rel="noopener">OEIS A006880</a>. The \(10^{27}\) and \(10^{29}\) records are documented by Kim <a href="https://github.com/kimwalisch/primecount/blob/master/doc/Records.md" target="_blank" rel="noopener"><span class="person-surname">Walisch</span></a> and David <a href="https://github.com/kimwalisch/primecount/blob/master/doc/Records.md" target="_blank" rel="noopener"><span class="person-surname">Baugh</span></a>; the latter was computed on 28 February 2022 and double-checked. These counts are independent of RH.</p>
@@ -61,6 +53,6 @@ export function primeDigitsHTML(){return m`
  ${schoenfeldPrecisionHTML()}
  <details><summary>Conventions and precision</summary>
   <p>We use \(\operatorname{Li}(x)=\operatorname{PV}\int_0^x dt/\log t=\operatorname{Ei}(\log x)\), and \(\pi(N)\) counts primes at most \(N\). All tabulated endpoints are composite, so the midpoint convention gives the same count.</p>
-  <p>The logarithmic integrals were evaluated with <a href="https://mpmath.org/doc/current/functions/expintegrals.html#li" target="_blank" rel="noopener">mpmath</a> at \(80\) decimal places and checked using a convergent series for \(\operatorname{Ei}(\log x)\) at \(100\) places. Exact counts and decimal values are stored as strings; rounding and subtraction use exact integer arithmetic. Sources checked 20 November 2026.</p>
+  <p>The logarithmic integrals were evaluated with <a href="https://mpmath.org/doc/current/functions/expintegrals.html#li" target="_blank" rel="noopener">mpmath</a> at \(80\) decimal places and checked using a convergent series for \(\operatorname{Ei}(\log x)\) at \(100\) places. Exact counts and decimal values are stored as strings. The displayed integral is truncated after its first fractional digit; the ellipsis represents the remaining digits, without rounding. Sources checked 20 November 2026.</p>
  </details>
 </section>`;}
