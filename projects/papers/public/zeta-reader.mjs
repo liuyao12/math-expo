@@ -11,7 +11,7 @@ if(root){
  function showExhibit(kind){
   const changed=root.dataset.exhibit!==kind;
   const isExplicit=kind==='explicit',isDigits=kind==='digits';$('zeta-plane-panel').hidden=kind!=='plane';$('explicit-panel').hidden=!isExplicit;$('prime-digits-panel').hidden=!isDigits;
-  $('zeta-exhibit-title').textContent=isExplicit?'Music of the primes':isDigits?'Prime-count accuracy':'Zeta, in color';
+  $('zeta-exhibit-title').textContent=isExplicit?'Music of the primes':isDigits?'Error term':'Zeta, in color';
   $('zeta-plane-tab').setAttribute('aria-pressed',String(kind==='plane'));$('explicit-tab').setAttribute('aria-pressed',String(isExplicit));$('prime-digits-tab').setAttribute('aria-pressed',String(isDigits));root.dataset.exhibit=kind;
   explicitPlot?.setActive(isExplicit&&readingActive&&exhibitVisible());if(isExplicit)explicitPlot?.resize();
   if(changed)root.scrollTop=0;

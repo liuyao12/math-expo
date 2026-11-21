@@ -19,7 +19,7 @@ export const primeDigitComparisons=[
 
 export const primeDigitsContribution={
  id:'prime-count-digits-1859',kind:'comparison',work:'riemann-1859',
- title:'Prime-count accuracy',anchors:['smooth-part','numerical-evidence'],
+ title:'Error term',anchors:['smooth-part','numerical-evidence'],
  scope:'Exact prime counts and the real principal-value logarithmic integral at powers 10^(3n) from 10^3 to 10^27, ending at 10^29, beside a later error estimate conditional on RH. Common leading digits are observations, not a literal prefix guarantee.',
  sources:[
   schoenfeldSource,
@@ -39,18 +39,19 @@ function comparisonRow(row){
 }
 
 export function primeDigitsHTML(){return m`
-<section id="prime-digits-panel" hidden data-contribution="prime-count-digits-1859" aria-label="Prime-count accuracy">
+<section id="prime-digits-panel" hidden data-contribution="prime-count-digits-1859" aria-label="Error term">
  <p class="prime-digits-credit">Modern consequence · conditional on RH</p>
- <div class="prime-digits-bound">\[\left|\pi(x)-\operatorname{Li}(x)\right|\le\frac{\sqrt{x}\log x}{8\pi}\]</div>
- <p class="prime-digits-bound-source">For \(x>2657\), assuming RH: Lowell <a href="https://doi.org/10.1090/S0025-5718-1976-0457374-X" target="_blank" rel="noopener"><span class="person-surname">Schoenfeld</span></a>, <a href="https://doi.org/10.1090/S0025-5718-1976-0457374-X" target="_blank" rel="noopener"><i>Sharper Bounds</i></a> (1976). This later estimate is not proved in Riemann’s paper.</p>
+ <div class="prime-digits-bound">\[\text{Assuming RH:}\qquad\underbrace{\left|\pi(x)-\operatorname{Li}(x)\right|}_{\text{error}}\lt c\sqrt{x}\log x.\]</div>
+ <p class="prime-digits-bound-source">The constant can be taken to be \(c=1/(8\pi)\) for every real \(x\ge2657\), by Lowell <a href="https://doi.org/10.1090/S0025-5718-1976-0457374-X" target="_blank" rel="noopener"><span class="person-surname">Schoenfeld</span></a>, <a href="https://doi.org/10.1090/S0025-5718-1976-0457374-X" target="_blank" rel="noopener"><i>Sharper Bounds</i></a> (1976), Corollary 1. Here \(\log\) is the natural logarithm. This later estimate is not proved in Riemann’s paper.</p>
+ <p>Why “half the digits”? Since \(\pi(x)\sim x/\log x\), the count has about \(\log_{10}x\) digits, while an error of size \(\sqrt{x}\log x\) has about half as many, with logarithmic corrections. Thus \(\operatorname{Li}(x)\) estimates the count to roughly half its significant digits. The green prefixes below agree <strong>digit for digit</strong>. The bound alone does not guarantee a literal matching prefix of that length at every input: a carry across a decimal boundary can change an earlier digit.</p>
+ ${schoenfeldPrecisionHTML()}
  <p class="prime-digits-table-key" id="prime-digits-table-help">Green bold digits mark the common leading string. The logarithmic integral shows one decimal place followed by an ellipsis. Scroll sideways to compare the columns.</p>
  <div class="prime-digits-table-scroll" tabindex="0" role="region" aria-label="Prime-count comparison table — scroll horizontally" aria-describedby="prime-digits-table-help">
  <table class="prime-digits-table"><caption>Exact counts and the logarithmic integral</caption><thead><tr><th scope="col">\(N\)</th><th scope="col">Exact \(\pi(N)\)</th><th scope="col">\(\operatorname{Li}(N)\)</th></tr></thead><tbody>${primeDigitComparisons.map(comparisonRow).join('')}</tbody></table>
  </div>
- <div class="prime-digits-infinity"><strong>A theorem must keep control without an endpoint.</strong><p>The RH estimate would hold for every real \(x>2657\), however far out we go. The table is finite evidence; literal digit prefixes need not improve monotonically.</p></div>
+ <div class="prime-digits-infinity"><strong>A theorem must keep control without an endpoint.</strong><p>Assuming RH, the estimate holds for every real \(x\ge2657\), however far out we go. The table gives finite comparisons; it cannot establish an error bound all the way to infinity. Its first row, \(10^3\), is below Schoenfeld’s threshold. Literal digit prefixes need not improve monotonically.</p></div>
  <p class="prime-digits-record">Counts: <a href="https://oeis.org/A006880/b006880.txt" target="_blank" rel="noopener">OEIS A006880</a>. The \(10^{27}\) and \(10^{29}\) records are documented by Kim <a href="https://github.com/kimwalisch/primecount/blob/master/doc/Records.md" target="_blank" rel="noopener"><span class="person-surname">Walisch</span></a> and David <a href="https://github.com/kimwalisch/primecount/blob/master/doc/Records.md" target="_blank" rel="noopener"><span class="person-surname">Baugh</span></a>; the latter was computed on 28 February 2022 and double-checked. These counts are independent of RH.</p>
  <p>Every error in this finite table has the same sign. <a href="../littlewood-1914/#lw14-theorem"><span class="person-surname">Littlewood</span>’s 1914 theorem</a> proves unconditionally that \(\pi(x)-\operatorname{Li}(x)\) takes both signs arbitrarily far out. An RH bound on the error’s size is compatible with infinitely many reversals of its sign.</p>
- ${schoenfeldPrecisionHTML()}
  <details><summary>Conventions and precision</summary>
   <p>We use \(\operatorname{Li}(x)=\operatorname{PV}\int_0^x dt/\log t=\operatorname{Ei}(\log x)\), and \(\pi(N)\) counts primes at most \(N\). All tabulated endpoints are composite, so the midpoint convention gives the same count.</p>
   <p>The logarithmic integrals were evaluated with <a href="https://mpmath.org/doc/current/functions/expintegrals.html#li" target="_blank" rel="noopener">mpmath</a> at \(80\) decimal places and checked using a convergent series for \(\operatorname{Ei}(\log x)\) at \(100\) places. Exact counts and decimal values are stored as strings. The displayed integral is truncated after its first fractional digit; the ellipsis represents the remaining digits, without rounding. Sources checked 20 November 2026.</p>

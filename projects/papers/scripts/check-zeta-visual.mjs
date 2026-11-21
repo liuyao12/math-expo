@@ -29,7 +29,7 @@ for(const row of primeDigitComparisons){
 }
 assert.equal(primeDigitComparisons.at(-1).count,'1520698109714272166094258063');
 assert.equal(primeDigitComparisons.at(-1).prefix,15);
-assert.equal(primeDigitsContribution.title,'Prime-count accuracy');
+assert.equal(primeDigitsContribution.title,'Error term');
 assert(primeDigitsContribution.sources.some(source=>source.url==='https://doi.org/10.1090/S0025-5718-1976-0457374-X'));
 assert(passages1859.find(p=>p.id==='smooth-part').figureHtml.includes('schoenfeld-precision-note'));
 assert(html.includes('Sharper Bounds</i>'));
@@ -46,7 +46,7 @@ assert(!html.includes('prime-digits-values'));
 assert(html.includes('id="rh-proof-claim" class="rh-proof-claim"'));
 assert(html.includes('id="rh-proof-claim-visual" class="rh-proof-claim"'));
 assert(passages1859.find(p=>p.id==='hypothesis').figureHtml.includes('id="rh-proof-claim"'));
-for(const marker of ['id="prime-digits-tab"','id="prime-digits-panel"','data-prime-digits','A theorem must keep control without an endpoint.','28 February 2022','https://github.com/kimwalisch/primecount/blob/master/doc/Records.md',String.raw`\frac{\sqrt{x}\log x}{8\pi}`])assert(html.includes(marker),marker);
+for(const marker of ['id="prime-digits-tab"','id="prime-digits-panel"','data-prime-digits','A theorem must keep control without an endpoint.','28 February 2022','https://github.com/kimwalisch/primecount/blob/master/doc/Records.md',String.raw`\lt c\sqrt{x}\log x`])assert(html.includes(marker),marker);
 assert.equal(scenes.find(s=>s.exhibit==='digits').anchor,'smooth-part');
 assert.deepEqual(JSON.parse(read('dist/riemann-1859/visual-commentary.json'))[2],primeDigitsContribution);
 assert(read('dist/riemann-1859/compare/index.html').includes('id="prime-digits-panel"'));
