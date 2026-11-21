@@ -3,6 +3,7 @@
 // Explicit scope entries prevent a chapter from being mistaken for a whole book.
 import cartanSource from './cartan-1913-source.json' with {type:'json'};
 const completeScopes = {
+  "littlewood-1914": "The complete 1914 note: §§1–3, all displays, and the author’s footnote, printed pp. 1869–1872.",
   "lie-1874": "The complete 1874 note: introduction, §§1–5, and author footnotes.",
   "riemann-1857": "The complete memoir: introduction, three preliminaries, and §§1–27.",
   "poincare-1892": "The complete preliminary note.",

@@ -1,5 +1,6 @@
 import {weilWorks,weilPeople,weilConcepts,weilBibliography,weilCitations,weilExternalReferences} from './weil-catalog.mjs';
 import {rhStatusNote} from './riemann-hypothesis-status.mjs';
+import {littlewoodWork,littlewoodPeople,conceptsLittlewood} from './littlewood-1914.mjs';
 import {conceptsCartan1913,externalReferencesCartan1913} from './cartan-1913-catalog.mjs';
 import {attachTextCoverage} from './text-coverage.mjs';
 import {representationWorks,representationPeople,representationBibliography,representationEnglish,representationCitations,conceptsLie1874} from './representation-catalog.mjs';
@@ -48,6 +49,7 @@ worksPoincare.find(w=>w.id==='poincare-1902-surfaces').citationChecked='26 Octob
 // A work record exists independently of whether we have edited its text.
 // Titles are our English renderings; original titles identify the source edition.
 export const works = [
+  littlewoodWork,
   ...weilWorks,
   ...representationWorks,
   work1857,
@@ -128,6 +130,7 @@ works.find(w=>w.id==='weil-1949').externalReferences=weilExternalReferences;
 attachTextCoverage(works);
 
 export const people = [
+  ...littlewoodPeople,
   ...weilPeople,
   ...representationPeople,
   ...people1899,
@@ -178,6 +181,7 @@ export const citations = [
 ];
 
 export const concepts = [
+  ...conceptsLittlewood,
   ...weilConcepts,
   ...conceptsCartan1913,
   ...conceptsLie1874,
@@ -233,6 +237,7 @@ export const concepts = [
 ];
 
 export const bibliographicFields = {
+  'littlewood-1914':{type:'article',journal:'Comptes rendus hebdomadaires des séances de l’Académie des sciences',volume:'158',pages:'1869--1872',month:'June',note:'Session of 22 June 1914'},
   ...weilBibliography,
   ...representationBibliography,
   'riemann-1857':bibliography1857,

@@ -4,6 +4,7 @@ import {discoveryPoincare} from './poincare-catalog.mjs';
 // Editorial discovery terms. These identify the subject for modern readers;
 // they are not substituted into the author's text or definitions.
 export const discoveryTerms={
+ 'littlewood-1914':['prime counting','logarithmic integral','sign changes','oscillation','Littlewood theorem','Skewes number','Chebyshev function','explicit formula','zero ordinates','simultaneous approximation','Kronecker','error term'],
  ...weilTerms,
  ...representationTerms,
  ...discoveryPoincare,

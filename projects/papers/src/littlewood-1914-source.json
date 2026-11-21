@@ -1,0 +1,64 @@
+{
+  "work": "littlewood-1914",
+  "checked": "2026-11-20",
+  "title": "Sur la distribution des nombres premiers",
+  "author": "J. E. Littlewood",
+  "publication": "Comptes rendus 158, session of 22 June 1914, pp. 1869–1872",
+  "source": "https://archive.org/details/comptesrendusheb158acad",
+  "method": "Fresh English translation of the full note, visually checked against all four page images; OCR used for discovery only. Reader leaf positions were checked against the printed page headers, rather than inferred from the scan metadata.",
+  "coverage": {
+    "percent": 100,
+    "scope": "All three source sections, formulas (1)–(12), the comparison internally cited as (13), intervening unnumbered displays, and the author footnote."
+  },
+  "pages": [
+    {
+      "printedPage": 1869,
+      "readerLeaf": 1878,
+      "url": "https://archive.org/download/comptesrendusheb158acad/page/n1878.jpg",
+      "sha256": "f9e61ec0c65c3f06fcf472296c84ddd1a6edab042556b00cb5b215cd9cbb09c7"
+    },
+    {
+      "printedPage": 1870,
+      "readerLeaf": 1879,
+      "url": "https://archive.org/download/comptesrendusheb158acad/page/n1879.jpg",
+      "sha256": "c2ec808ea61aac5cff83b8c1a8654973cc91cb69414eace97458a6d417b1e0fe"
+    },
+    {
+      "printedPage": 1871,
+      "readerLeaf": 1880,
+      "url": "https://archive.org/download/comptesrendusheb158acad/page/n1880.jpg",
+      "sha256": "e1d4cff4f5041f15fbc578c3abc986984fa807d1118eb7a16df7e1bf2a1666dd"
+    },
+    {
+      "printedPage": 1872,
+      "readerLeaf": 1881,
+      "url": "https://archive.org/download/comptesrendusheb158acad/page/n1881.jpg",
+      "sha256": "53087a61dde2d9a82cb0ac496e261caf0c34a177d83facbebfa8ecd402b8d988"
+    }
+  ],
+  "interventions": [
+    {
+      "page": 1871,
+      "locator": "(12)",
+      "printed": "psi(x) - 1",
+      "rendered": "psi(x) - x",
+      "reason": "Required by (4)–(6); the independent inequality-direction mismatch is explained, not silently corrected."
+    },
+    {
+      "page": 1871,
+      "locator": "Tail comparison in §3",
+      "action": "Numbered (13) in the rendering because the source refers to it by this number but prints no adjacent number."
+    },
+    {
+      "page": 1871,
+      "locator": "§2 choice N = a/xi",
+      "action": "Printed choice preserved. Margin explains why index and height cutoffs differ and supplies a corrected finite recurrence step."
+    },
+    {
+      "page": 1872,
+      "locator": "Last sentence",
+      "action": "Printed reference to the lemma in paragraph 3 preserved; margin identifies the lemma as §2."
+    }
+  ],
+  "proofStatus": "The source is a proof outline. All text is rendered; boundary estimates, transfer between counting functions, the non-RH branch, and the strip boundedness theorem are stated dependencies, not claims of completed formal verification."
+}

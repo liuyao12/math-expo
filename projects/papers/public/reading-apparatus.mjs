@@ -1,7 +1,7 @@
 // The Riemann reading's English paper stays in the middle. Editorial headings,
 // paragraph metadata, proofs and edition apparatus belong to its passage notes.
 export function separateRiemannApparatus(primary){
- const reading=primary.querySelector('.zeta-illustrated-reading');if(!reading)return;
+ const reading=primary.querySelector('.zeta-illustrated-reading,.primary-text-reading');if(!reading)return;
  const notes=[...reading.querySelectorAll('.passage > .commentary')];if(!notes.length)return;
  const makeDetails=(label,content)=>{const details=document.createElement('details'),summary=document.createElement('summary');details.className='work-reading-apparatus';summary.textContent=label;details.append(summary,content);return details;};
  for(const part of reading.querySelectorAll('.paper-part')){

@@ -21,7 +21,7 @@ body.work-reader{position:fixed;inset:0;height:100dvh;min-height:0;overflow:clip
 .work-reader .zeta-rail:not(.work-exhibit-drawer){visibility:hidden}
 /* The paper has no inline commentary. Its notes occupy the right-hand track;
    exhibits slide over that track without reflowing the original text. */
-.work-reader .original-only-reading .zeta-illustrated-reading{display:block;margin-top:26px}
+.work-reader .original-only-reading :is(.zeta-illustrated-reading,.primary-text-reading){display:block;margin-top:26px}
 .work-reader .original-only-reading{padding-bottom:max(0px,calc(100dvh - var(--work-bar-height,66px) - 180px))}
 .work-reader .original-only-reading .zeta-passage-column{display:block}
 .work-reader .original-only-reading .passage{display:grid;grid-template-columns:minmax(0,1fr) var(--work-note-width,350px);gap:clamp(24px,3vw,48px);margin-bottom:38px;max-width:none}
