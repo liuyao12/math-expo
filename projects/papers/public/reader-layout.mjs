@@ -44,8 +44,14 @@ if(primary){
   for(const essay of config.essays){
    essayChoice.append(el('option',{value:essay.id},essay.author+' · '+essay.year));
    const article=el('article',{'data-authored-id':essay.id,class:'work-essay'});
-   article.append(el('p',{class:'note-type'},essay.kind+' · Source record'),el('h2',{},essay.author));
-   const heading=el('h3');heading.append(el('i',{},essay.title));article.append(heading,el('p',{class:'work-publication'},essay.publication),el('p',{},essay.scope),el('a',{href:essay.url,target:'_blank',rel:'noopener'},'Original source ↗'),el('p',{class:'work-availability'},'The full text has not yet been added here. This source is linked; permission to republish its text has not been established.'));
+   article.append(el('p',{class:'note-type'},essay.kind+(essay.textHTML?' · Complete text':' · Source record')),el('h2',{},essay.author));
+   const heading=el('h3');heading.append(el('i',{},essay.title));article.append(heading,el('p',{class:'work-publication'},essay.publication),el('p',{},essay.scope),el('a',{href:essay.url,target:'_blank',rel:'noopener'},'Original source ↗'));
+   if(essay.textHTML){
+    article.append(el('p',{class:'work-availability'},essay.reuse));
+    // Only trusted, locally edited source text is embedded by the build.
+    const body=el('div',{class:'authored-text'}),template=document.createElement('template');
+    template.innerHTML=essay.textHTML;body.append(template.content);article.append(body);
+   }else article.append(el('p',{class:'work-availability'},'The full text has not yet been added here. This source is linked; permission to republish its text has not been established.'));
    if(essay.readingLinks){
     const guide=el('section',{class:'work-section-guide','aria-label':'Editorial section guide'});
     guide.append(el('h3',{},'Section guide'),el('p',{class:'work-guide-notice'},essay.readingLinks.notice));

@@ -4,12 +4,12 @@ import {createHash} from 'node:crypto';
 import {authoredCommentaries,commentariesFor,furtherReading,furtherReadingFor} from '../src/authored-commentaries.mjs';
 import {works,citations} from '../src/catalog.mjs';
 const root=new URL('../',import.meta.url),read=p=>fs.readFileSync(new URL(p,root),'utf8');
-assert.equal(authoredCommentaries.length,12);
-assert.equal(new Set(authoredCommentaries.map(c=>c.id)).size,12);
+assert.equal(authoredCommentaries.length,13);
+assert.equal(new Set(authoredCommentaries.map(c=>c.id)).size,13);
 for(const c of authoredCommentaries){
  assert(c.author&&c.title&&c.publication&&c.scope&&c.verification&&c.checked);
  assert(c.url.startsWith('https://')&&c.evidence.startsWith('https://'));
- if(c.html)assert(c.permission&&c.reuse.includes('express reuse permission'));
+ if(c.html)assert(c.permission&&(c.rights==='public-domain'||c.reuse.includes('express reuse permission')));
  else assert(c.reuse.includes('no full-text republication license'));
  for(const id of c.works)assert(works.some(w=>w.id===id));
 }
@@ -17,7 +17,7 @@ assert.equal(authoredCommentaries.find(c=>c.id==='stillwell-2010').works.length,
 assert.equal(citations.length,29);
 assert(!authoredCommentaries.some(c=>c.id==='tao-2013'));
 assert(furtherReading.some(c=>c.id==='tao-2013'));
-assert.deepEqual(commentariesFor('riemann-1859').map(c=>c.id),['dittrich-2016']);
+assert.deepEqual(commentariesFor('riemann-1859').map(c=>c.id),['scheibner-1860','dittrich-2016']);
 assert(commentariesFor('euler-1740').some(c=>c.id==='monks-2019'));
 assert(commentariesFor('dedekind-1872').some(c=>c.id==='crosby-2016'));
 assert(commentariesFor('dedekind-1888').some(c=>c.id==='sieg-schlimm-2005'));
@@ -48,4 +48,4 @@ const directory=read('dist/commentaries/index.html');
 for(const c of authoredCommentaries)for(const id of c.works)assert(directory.includes(`../${id}/compare/?commentary=${c.id}`));
 assert(read('dist/further-reading/tao-2013/index.html').includes(article.trim()));
 const controller=read('public/parallel-reader.mjs');assert(controller.includes('pane.hidden=collapsed'));assert(controller.includes("new Event('resize')"));assert(!controller.includes('primary.innerHTML'));
-console.log('Validated twelve sourced commentaries, seventeen HTML readers, retained zeta and explicit-formula exhibits, and Tao’s separate further-reading classification.');
+console.log('Validated thirteen sourced commentaries, seventeen HTML readers, retained zeta and explicit-formula exhibits, and Tao’s separate further-reading classification.');

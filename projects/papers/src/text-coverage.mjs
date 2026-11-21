@@ -3,6 +3,7 @@
 // Explicit scope entries prevent a chapter from being mistaken for a whole book.
 import cartanSource from './cartan-1913-source.json' with {type:'json'};
 const completeScopes = {
+  "mangoldt-1895": "The complete German memoir, printed pp. 255–305: introduction, Parts I–II, all numbered formulas (1)–(67), and author footnotes.",
   "littlewood-1914": "The complete 1914 note: §§1–3, all displays, and the author’s footnote, printed pp. 1869–1872.",
   "lie-1874": "The complete 1874 note: introduction, §§1–5, and author footnotes.",
   "riemann-1857": "The complete memoir: introduction, three preliminaries, and §§1–27.",
@@ -24,7 +25,7 @@ const completeScopes = {
   "euler-1744": "The complete paper, Theorems 1–19 and their accompanying text.",
   "gauss-1828": "The complete memoir, Articles 1–29."
 };
-const queued = ["weil-1949", "goresky-2018", "lie-1880", "cartan-1894", "weyl-1925", "weyl-1926-representations-2", "weyl-1926-representations-3", "weyl-1926-addendum", "peter-weyl-1927", "poincare-1902-cycles", "poincare-1904", "monks-2019", "hilbert-1900", "noether-1918", "leibniz-bernoulli-1745", "jacobi-1829", "fourier-1822", "dirichlet-1837", "hadamard-1893", "mangoldt-1895", "habermann-2026"];
+const queued = ["weil-1949", "goresky-2018", "lie-1880", "cartan-1894", "weyl-1925", "weyl-1926-representations-2", "weyl-1926-representations-3", "weyl-1926-addendum", "peter-weyl-1927", "poincare-1902-cycles", "poincare-1904", "monks-2019", "hilbert-1900", "noether-1918", "leibniz-bernoulli-1745", "jacobi-1829", "fourier-1822", "dirichlet-1837", "hadamard-1893", "habermann-2026"];
 export const textCoveragePolicy = {
   label:'On-site text',
   definition:'Percentage of the source work represented in our on-site modern-English reading. External PDFs and commentary do not contribute. Complete means all author text within the stated scope is rendered; it does not mean every proof or editorial issue has been resolved.',
@@ -37,6 +38,7 @@ export const textCoverage = Object.fromEntries([
 ]);
 for(const id of ['weil-1949','goresky-2018'])Object.assign(textCoverage[id],{available:id==='weil-1949'?'Complete external English original linked; on-site editorial guide and examples. The primary text has not been transcribed here.':'Publisher’s complete English essay linked; no on-site transcription.',basis:'External document viewers, source links, editorial guides, and commentary are excluded from primary-text coverage. A full HTML reuse license was not established.',checked:'2026-10-30'});
 textCoverage['littlewood-1914'].checked='2026-11-20';
+Object.assign(textCoverage['mangoldt-1895'],{checked:'2026-11-20',evidence:'mangoldt-1895/source-evidence.json'});
 export function attachTextCoverage(works){
   const ids=new Set(works.map(w=>w.id));
   for(const id of Object.keys(textCoverage))if(!ids.has(id))throw Error('Coverage has no work: '+id);

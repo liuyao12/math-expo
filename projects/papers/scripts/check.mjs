@@ -1,4 +1,5 @@
 import './check-parallel-reader.mjs';
+import './check-mangoldt-1895.mjs';
 import './check-reading-links.mjs';
 import './check-weil-1949.mjs';
 import './check-explicit.mjs';
@@ -48,7 +49,7 @@ for(const [file,html] of pages){
   if(new Set(ids).size!==ids.length)throw Error(`Duplicate HTML IDs in ${file}`);
   idsByPage.set(file,new Set(ids));
   if(/\[\[(person|concept|work):/.test(html))throw Error(`Unresolved reference in ${file}`);
-  for(const match of html.matchAll(/\\\(([\s\S]*?)\\\)|\\\[([\s\S]*?)\\\]/g)){
+  for(const match of html.replace(/<script\b[\s\S]*?<\/script>/g,'').matchAll(/\\\(([\s\S]*?)\\\)|\\\[([\s\S]*?)\\\]/g)){
     try{const latex=match[1]??match[2];if(/<[A-Za-z]/.test(latex))throw Error('Raw less-than sign can become an HTML tag; use \\lt');katexContext.katex.renderToString(latex,{throwOnError:true,displayMode:match[2]!==undefined});formulas++;}
     catch(error){throw Error(`Bad LaTeX in ${file}: ${error.message}`);}
   }

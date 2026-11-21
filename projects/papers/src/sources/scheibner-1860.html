@@ -1,0 +1,202 @@
+<section class="commentary-edition-notice" aria-label="Editorial notice"><h3>About this historical commentary</h3><p>Independent modern-English translation by Math Expo, prepared with AI assistance, of W. Scheibner’s <i>On the number of primes below an arbitrary bound</i>, <i>Zeitschrift für Mathematik und Physik</i> 5 (1860), pp. 233–252. The German original is public domain. The numbered sections and equation labels belong to Scheibner. His historical assessments, numerical tables, and proof claims are retained; they are not endorsements by this edition.</p><p>Scheibner calls Riemann’s argument rigorous, but the zero product and the limiting zero sums were not fully justified in 1860. His table contains inaccurate counts, including 169 instead of 168 below one thousand. His completed-function notation differs from Riemann’s and from current notation. Read the claims about zeros and error terms with these qualifications; von Mangoldt’s 1895 memoir supplies later convergence arguments. The essay scrolls independently and is not pegged to the paragraphs of the main paper.</p></section>
+<section id="sch60-1"><h3>1. Primes in arithmetic progressions</h3><p class="commentary-source-page"><a href="https://gdz.sub.uni-goettingen.de/id/PPN599415665_0005?tify=%7B%22pages%22%3A%5B237%5D%7D" target="_blank" rel="noopener">German original · pp. 233–234 ↗</a></p><p>The question of how many primes occur in an arithmetic progression</p>\[a,a+b,a+2b,a+3b,\ldots,a+nb,\]
+<p>where of course \(a,b\) have no common divisor, has always been regarded as one of the most difficult problems of higher arithmetic. Even the simplifying assumptions \(n=\infty\) or \(b=1\) leave great difficulties, only recently overcome. Only when both assumptions are imposed together is the relevant theorem ancient: Euclid’s <i>Elements</i> proves that “there are more primes than any proposed collection of primes.” Thus there are infinitely many primes among the successive integers.</p><p>In 1837, by a “brilliant analysis,” Dirichlet rigorously proved the corresponding theorem for the unlimited progression \(a,a+b,a+2b,\ldots\), after Legendre’s earlier attempts had failed. The core of his famous proof is an ingenious transformation of the infinite series</p>
+\[\varphi(s)=\sum\frac1{p_1^s}+\frac12\sum\frac1{p_2^{2s}}+\frac13\sum\frac1{p_3^{3s}}+\cdots,\]
+<p>where each sum runs over those primes whose respective first, second, third, and later powers occur in the progression; in the usual notation, \(p_n^n\equiv a\pmod b\). This is a finite continuous function for real \(s\gt1\), since it is bounded by</p>
+\[\frac1{a^s}+\frac1{(a+b)^s}+\frac1{(a+2b)^s}+\cdots.\]
+<p>As \(s\) approaches one, the terms after the first prime sum remain bounded. Hence \(\varphi(s)\) grows without bound exactly when \(\sum1/p_1\) does. Dirichlet’s transformation proves that it does grow without bound, establishing infinitely many primes congruent to \(a\).</p><p class="author-footnote">Author’s references: Euclid, <i>Elements</i>, Book IX, Proposition 20; Legendre, <i>Théorie des Nombres</i>, volume II, p. 77; <i>Abhandlungen der Berliner Akademie</i>, 1837.</p></section>
+<section id="sch60-2"><h3>2. Earlier approximations</h3><p class="commentary-source-page"><a href="https://gdz.sub.uni-goettingen.de/id/PPN599415665_0005?tify=%7B%22pages%22%3A%5B238%5D%7D" target="_blank" rel="noopener">German original · pp. 234–235 ↗</a></p><p>The second assumption, \(b=1\), asks for the number of primes below an arbitrary bound. Gauss noticed early that the logarithmic integral \(\operatorname{Li}(x)=\int^xdt/\log t\) seemed related to the number of primes less than \(x\). This prompted Bessel, in 1810, to calculate the following table and send it to Gauss:</p>
+<div class="table-scroll"><table><caption>Scheibner’s historical table, including its historical counts</caption><thead><tr><th>Argument</th><th>Integral</th><th>Primes</th><th>Difference</th></tr></thead><tbody>
+<tr><td>\(1000\)</td><td>\(177.609655\)</td><td>\(169\)</td><td>\(+8.61\)</td></tr><tr><td>\(10000\)</td><td>\(1246.137247\)</td><td>\(1230\)</td><td>\(+16.14\)</td></tr><tr><td>\(100000\)</td><td>\(9629.809041\)</td><td>\(9593\)</td><td>\(+36.81\)</td></tr><tr><td>\(200000\)</td><td>\(18036.052159\)</td><td>\(17983\)</td><td>\(+53.05\)</td></tr><tr><td>\(300000\)</td><td>\(26080.215589\)</td><td>\(25997\)</td><td>\(+83.21\)</td></tr><tr><td>\(400000\)</td><td>\(33922.621995\)</td><td>\(33859\)</td><td>\(+63.62\)</td></tr><tr><td>\(1000000\)</td><td>\(78627.549277\)</td><td>\(78493\)</td><td>Legendre</td></tr></tbody></table></div>
+<p>For smaller arguments, Bessel adds, the differences are</p>\[\begin{array}{c|rrrrr}x&100&200&300&400&500\\\text{difference}&+4.13&+3.19&+5.33&+6.42&+5.78\end{array}.\]
+<p>By induction Legendre found the approximate expression \(x/(\log x-1.08366)\). In a communication about what he called asymptotic functions, Dirichlet says that he had derived Legendre’s formula rigorously, but neither Crelle’s journal nor the Berlin Academy’s 1849 papers gives a more detailed account. Chebyshev’s investigations of the accuracy of \(x/(\log x-1)\) and \(\int_2^xdt/\log t\) were communicated to the Petersburg Academy in 1848 and 1850 and printed in volume 17 of Liouville’s journal. More recently Polignac proposed that \(\int^x f(t)\,dt/\log t\) asymptotically represents \(f(1)+f(2)+f(3)+f(5)+\cdots+f(p)\), where the successive primes are the arguments. Chebyshev also discussed convergence conditions for such series continued indefinitely.</p><p>Professor Riemann of Göttingen first gave a rigorous analytic expression for the frequency of primes in the November 1859 <i>Monatsberichte</i> of the Berlin Academy. Allow me to present to this journal’s readers the main features of this new investigation, as important as it is original, by this penetrating mathematician.</p><p class="author-footnote">Author’s references: <i>Olbers und Bessel, Briefwechsel</i>, volume I, pp. 235, 238, letter of 1 September 1810; Legendre, volume II, p. 65; Berlin <i>Monatsberichte</i>, February 1838; Crelle’s journal 18, p. 272; <i>Über die Bestimmung der mittleren Werthe in der Zahlentheorie</i>, p. 69; Paris <i>Comptes rendus</i>, 1859, second half; Liouville’s journal 17, p. 384. The source prints Riemann’s page range as 171–180.</p></section>
+<section id="sch60-3"><h3>3. Inverting the prime-power sum</h3><p class="commentary-source-page"><a href="https://gdz.sub.uni-goettingen.de/id/PPN599415665_0005?tify=%7B%22pages%22%3A%5B240%5D%7D" target="_blank" rel="noopener">German original · pp. 236–237 ↗</a></p><p>The starting point is</p>
+\[\varphi(s)=\sum_p p^{-s}+\frac12\sum_p p^{-2s}+\frac13\sum_p p^{-3s}+\cdots.\tag{1}\]
+<p>All sums now run over all primes. The function is finite and continuous when \(\operatorname{Re}s\gt1\): adding a purely imaginary increment multiplies the summands by \(e^{-it\log p}=\cos(t\log p)-i\sin(t\log p)\), and these periodic exponential factors do not alter convergence.</p><p>First invert this series to express \(\chi(s)=\sum_p p^{-s}\) in terms of \(\varphi\). Möbius gave rules for such an inversion, proving the paired relations</p>
+\[f(x)=F(x)+2^nF(x^2)+3^nF(x^3)+4^nF(x^4)+\cdots,\tag{2}\]
+\[F(x)=f(x)-2^nf(x^2)-3^nf(x^3)-5^nf(x^5)+6^nf(x^6)-\cdots.\tag{3}\]
+<p>Put \(s=\log x,n=-1,f(x)=\varphi(s),F(x)=\chi(s)\). Then (2) becomes (1), while (3) gives</p>
+\[\chi(s)=\varphi(s)-\tfrac12\varphi(2s)-\tfrac13\varphi(3s)-\tfrac15\varphi(5s)+\tfrac16\varphi(6s)-\cdots.\tag{4}\]
+<p>Only squarefree multipliers occur. The sign is positive for an even number of distinct prime factors and negative for an odd number.</p><p>We next express \(\chi\) by an integral. Since \(\int_x^\infty e^{-su}\,du=e^{-sx}/s\),</p>
+\[\chi(s)=\sum_p\frac1{p^s}=s\sum_p\int_{\log p}^{\infty}e^{-sx}\,dx.\]
+<p>If (F(x)) counts the primes less than \(x\), these integrals combine to</p>
+\[\frac{\chi(s)}s=\int_0^\infty F(e^x)e^{-sx}\,dx.\tag{5}\]
+<p>For (F(e^x)) successively takes the values zero, one, two, three, and so on on intervals separated by \(\log2,\log3,\log5,\ldots\). The integral is therefore the sum of the integrals over these intervals with these coefficients, equivalently \(\sum_p\int_{\log p}^{\infty}e^{-sx}\,dx\).</p><p class="author-footnote">Author’s reference: Möbius, Crelle’s journal, volume 9, p. 119.</p></section>
+<section id="sch60-4"><h3>4. Fourier inversion</h3><p class="commentary-source-page"><a href="https://gdz.sub.uni-goettingen.de/id/PPN599415665_0005?tify=%7B%22pages%22%3A%5B241%5D%7D" target="_blank" rel="noopener">German original · pp. 237–238 ↗</a></p><p>Now invert (5) to express (F(e^x)) by an integral depending on \(\chi\). Fourier’s theorem gives</p>
+\[f(x)=\frac1{2\pi}\int_{-\infty}^{\infty}e^{ixt}\,dt\int_a^b f(u)e^{-iut}\,du,\tag{6}\]
+<p>or the reciprocal pair</p>
+\[f(x)=\frac1{\sqrt{2\pi}}\int_{-\infty}^{\infty}\varphi(t)e^{itx}\,dt,\tag{7a}\]
+\[\varphi(t)=\frac1{\sqrt{2\pi}}\int_a^b f(x)e^{-itx}\,dx.\tag{7b}\]
+<p>Cauchy and Poisson noted this reciprocity in their work on waves and drew interesting consequences from it. Extending the bounds in (7b) to both infinities changes nothing if the otherwise arbitrary function is defined to vanish outside the interval. In (7a), the double integral gives zero outside the interval, and the function’s value inside. Functions whose integrated values become discontinuous must be excluded. At a jump of \(f\), formulas (6), (7a) give the arithmetic mean of the two values; at an endpoint they give half the interior value.</p><p>To apply this to (5), replace \(s\) by (s+it), and put</p>
+\[\varphi(t)=\frac1{\sqrt{2\pi}}\frac{\chi(s+it)}{s+it},\qquad f(x)=e^{-sx}F(e^x).\]
+<p>Then</p>
+\[e^{-sx}F(e^x)=\frac1{2\pi}\int_{-\infty}^{\infty}\frac{\chi(s+it)}{s+it}e^{itx}\,dt.\]
+<p>This holds for positive \(x\), with jumps when \(x\) is the logarithm of a prime, and requires real \(s\gt1\). For brevity, write \(s\) again for the variable (s+it), whose real part stays fixed above one. Thus</p>
+\[F(e^x)=\frac1{2\pi}\int_{-\infty}^{\infty}\frac{\chi(s)}s e^{sx}\,dt.\tag{8}\]
+<p>This expression is to be investigated further.</p><p class="author-footnote">Author’s references: Cauchy, <i>Sur une loi de réciprocité qui existe entre certaines fonctions</i>, <i>Bulletin de la société philomatique</i>, 1817, p. 121, and 1818, p. 178; Dirichlet, Crelle’s journal 17, p. 55.</p></section>
+<section id="sch60-5"><h3>5. From the Euler product to the pole</h3><p class="commentary-source-page"><a href="https://gdz.sub.uni-goettingen.de/id/PPN599415665_0005?tify=%7B%22pages%22%3A%5B242%5D%7D" target="_blank" rel="noopener">German original · pp. 238–239 ↗</a></p><p>Equation (4) expresses \(\chi\) linearly in terms of \(\varphi\), so it suffices to study</p>
+\[f(x)=\frac1{2\pi}\int_{-\infty}^{\infty}\frac{\varphi(s)}s e^{sx}\,dt.\tag{9}\]
+<p>The familiar Euler identity is</p>
+\[\zeta(s)=\sum_{n=1}^{\infty}\frac1{n^s}=\prod_p\frac1{1-p^{-s}},\qquad\operatorname{Re}s\gt1.\tag{10}\]
+<p>Taking logarithms gives</p>
+\[\log\zeta(s)=\sum_p\log\frac1{1-p^{-s}}=\varphi(s).\tag{11}\]
+<p>We seek to factor this function and will use definite integrals. With the usual notation for Euler’s integral of the second kind,</p>
+\[\frac{\Gamma(s)}{n^s}=\int_0^\infty e^{-nx}x^{s-1}\,dx,\tag{12}\]
+<p>so that</p>
+\[\zeta(s)=\frac1{\Gamma(s)}\int_0^\infty\frac{x^{s-1}}{e^x-1}\,dx,\qquad\operatorname{Re}s\gt1.\tag{13}\]
+<p>As \(s\) approaches one, \(\zeta(s)\) grows without bound while \(\eta(s)=(s-1)\zeta(s)\) tends to one. To see this, write</p>
+\[\Gamma(s)\zeta(s)=\Gamma(s-1)+\int_0^\infty\left(\frac{x^{s-1}}{e^x-1}-e^{-x}x^{s-2}\right)\,dx,\]
+<p>or</p>
+\[(s-1)\zeta(s)=1+\frac1{\Gamma(s-1)}\int_0^\infty\left(\frac1{1-e^{-x}}-\frac1x\right)e^{-x}x^{s-1}\,dx=\eta(s).\tag{14}\]
+<p>Consequently \(\varphi(s)=\log(1/(s-1))+\log\eta(s)\), and</p>
+\[f(x)=\frac1{2\pi}\int_{-\infty}^{\infty}\log\frac1{s-1}\frac{e^{sx}}s\,dt+\frac1{2\pi}\int_{-\infty}^{\infty}\log\eta(s)\frac{e^{sx}}s\,dt.\tag{15}\]
+<p class="author-footnote">Author’s references: Euler, <i>Introductio in analysin infinitorum</i>, volume I, chapter XV, §274; Lejeune-Dirichlet, Berlin Academy mathematical papers for 1837, p. 50.</p></section>
+<section id="sch60-6"><h3>6. The logarithmic integral</h3><p class="commentary-source-page"><a href="https://gdz.sub.uni-goettingen.de/id/PPN599415665_0005?tify=%7B%22pages%22%3A%5B243%5D%7D" target="_blank" rel="noopener">German original · pp. 239–241 ↗</a></p><p>The first integral in (15) presents no special difficulty. Expand</p>
+\[\log\frac1{s-1}=\log\frac1s-\log(1-s^{-1})=\sum_{n=1}^{\infty}\frac1{ns^n}-\log s.\]
+<p>The series converges because the modulus of the complex variable exceeds one. Thus</p>
+\[\frac1{2\pi}\int_{-\infty}^{\infty}\log\frac1{s-1}\frac{e^{sx}}s\,dt=\sum_{n=1}^{\infty}\frac1{2\pi n}\int_{-\infty}^{\infty}\frac{e^{sx}}{s^{n+1}}\,dt-\frac1{2\pi}\int_{-\infty}^{\infty}\log s\frac{e^{sx}}s\,dt.\tag{16}\]
+<p>For the integrations, apply (6) to \(e^{-sx}x^{\lambda-1}\), with \(s,\lambda\) positive or having positive real parts. The inner integral is \(\Gamma(\lambda)/(s+it)^\lambda\). Abbreviating \(s+it\) by \(s\) again gives, for positive \(x\),</p>
+\[\frac1{2\pi}\int_{-\infty}^{\infty}\frac{e^{sx}}{s^\lambda}\,dt=\frac{x^{\lambda-1}}{\Gamma(\lambda)}.\tag{17}\]
+<p>For negative \(x\) the left side vanishes. Differentiating with respect to \(\lambda\),</p>
+\[\frac1{2\pi}\int_{-\infty}^{\infty}\log s\frac{e^{sx}}{s^\lambda}\,dt=\frac{x^{\lambda-1}}{\Gamma(\lambda)}\left(\frac{\Gamma'(\lambda)}{\Gamma(\lambda)}-\log x\right).\tag{18}\]
+<p>These expressions give</p>
+\[\frac1{2\pi}\int_{-\infty}^{\infty}\log(1-s^{-1})\frac{e^{sx}}{s^\lambda}\,dt=-\sum_{n=1}^{\infty}\frac{x^{n+\lambda-1}}{n\Gamma(n+\lambda)}.\]
+<p>At \(\lambda=1\), therefore,</p>
+\[\frac1{2\pi}\int_{-\infty}^{\infty}\log\frac1{s-1}\frac{e^{sx}}s\,dt=\log x-\Gamma'(1)+\sum_{n=1}^{\infty}\frac{x^n}{n\,n!}.\tag{19}\]
+<p>Define the logarithmic integral for positive \(x\) by the everywhere convergent expression</p>
+\[\operatorname{Li}(e^x)=\log x-\Gamma'(1)+\sum_{n=1}^{\infty}\frac{x^n}{n\,n!}.\tag{20}\]
+<p>The first part of \(f\) is now evaluated:</p>
+\[f(x)=\operatorname{Li}(e^x)+\frac1{2\pi}\int_{-\infty}^{\infty}\log\eta(s)\frac{e^{sx}}s\,dt.\tag{21}\]
+<p class="author-footnote">Author’s references: Laplace, <i>Théorie des Probabilités</i>, p. 134; Poisson, <i>Journal de l’École polytechnique</i>, cahier XIX, p. 481; Cauchy, same volume, p. 569, and <i>Mémoire sur les intégrales définies, prises entre des limites imaginaires</i>, pp. 34, 36.</p></section>
+<section id="sch60-7"><h3>7. The remaining logarithmic derivative</h3><p class="commentary-source-page"><a href="https://gdz.sub.uni-goettingen.de/id/PPN599415665_0005?tify=%7B%22pages%22%3A%5B245%5D%7D" target="_blank" rel="noopener">German original · pp. 241–242 ↗</a></p><p>The integral depending on \(\log\eta(s)\) is much harder. Its investigation essentially amounts to expanding the logarithmic derivative in descending powers,</p>
+\[\frac d{ds}\log\eta(s)=c+\frac{c_1}s+\frac{c_2}{s^2}+\frac{c_3}{s^3}+\cdots.\]
+<p>Integration gives</p>
+\[\log\eta(s)=c_0+cs+c_1\log s-\frac{c_2}s-\frac{c_3}{2s^2}-\cdots.\]
+<p>Because the logarithm is multivalued, the imaginary part of \(c_0\) must make the series real at \(t=0\). The linear term seems to leave an indeterminacy: it leads to \(\lim_{T\to\infty}(c/(2\pi))\int_{-T}^T e^{sx}\,dt\), which has no limit. Integration by parts avoids this difficulty. For</p>
+\[u=\frac1{2\pi}\int_{-\infty}^{\infty}\frac{e^{sx}}s\log\eta(s)\,dt=-\frac1{2\pi x}\int_{-\infty}^{\infty}e^{sx}\frac d{ds}\left(\frac{\log\eta(s)}s\right)\,dt,\]
+<p>the boundary term \(e^{sx}\log\eta(s)/(2\pi xi s)\) vanishes. The expansion gives</p>
+\[\frac d{ds}\left(\frac{\log\eta(s)}s\right)=-\frac{c_0}{s^2}+c_1\frac d{ds}\left(\frac{\log s}s\right)+\frac{2c_2}{s^3}+\frac{3c_3}{2s^4}+\cdots.\]
+<p>Use (17), together with</p>
+\[\frac1{2\pi}\int_{-\infty}^{\infty}e^{sx}\frac{\log s}s\,dt=-\frac1{2\pi x}\int_{-\infty}^{\infty}e^{sx}\frac d{ds}\left(\frac{\log s}s\right)\,dt=\Gamma'(1)-\log x.\]
+<p>Then</p>
+\[u=c_0+c_1(\Gamma'(1)-\log x)-c_2x-\frac{c_3x^2}{2\cdot2!}-\frac{c_4x^3}{3\cdot3!}-\cdots.\]
+<p>The suitable imaginary part of \(c_0\) makes this result real, as its nature requires.</p></section>
+<section id="sch60-8"><h3>8. The theta transformation</h3><p class="commentary-source-page"><a href="https://gdz.sub.uni-goettingen.de/id/PPN599415665_0005?tify=%7B%22pages%22%3A%5B246%5D%7D" target="_blank" rel="noopener">German original · pp. 242–243 ↗</a></p><p>To perform the indicated expansion, Riemann constructs another expression for \(\zeta\). Change the variable in (12) to obtain</p>
+\[\frac{\Gamma(s/2)}{2\pi^{s/2}n^s}=\int_0^\infty e^{-n^2\pi x^2}x^{s-1}\,dx,\]
+<p>and hence</p>
+\[\zeta(s)=\frac{2\pi^{s/2}}{\Gamma(s/2)}\int_0^\infty x^{s-1}\sum_{n=1}^{\infty}e^{-n^2\pi x^2}\,dx.\tag{22}\]
+<p>Call the inner sum \(\psi(x)\), and replace \(x\) by its reciprocal in the portion from zero to one. Then</p>
+\[\zeta(s)=\frac{2\pi^{s/2}}{\Gamma(s/2)}\int_1^\infty\{x^s\psi(x)+x^{-s}\psi(1/x)\}\frac{dx}x.\tag{23}\]
+<p>A remarkable relation discovered by Cauchy and incorporated by Jacobi and Abel into elliptic-function theory removes \(\psi(1/x)\). Cauchy’s derivation, more indicated than carried out in the cited place, rests on the following reasoning.</p><p>In (7a), replace the argument by \(kx\), and sum for integers \(k=-N,\ldots,N\). Summing the exponentials and changing the integration variable gives</p>
+\[x\sum_{k=-N}^{N}f(kx)=\sqrt{\frac2\pi}\int_{-\infty}^{\infty}\varphi(2t/x)\frac{\sin((2N+1)t)}{\sin t}\,dt.\]
+<p>As \(N\) increases without bound, Dirichlet’s well-known analysis gives for the integral the limit \(\pi\sum_{k\in\mathbb Z}\varphi(2k\pi/x)\). On the left, include arguments \(kx\) within the integration interval in (7b), counting an endpoint by halves. Setting \(xy=2\pi\) yields the symmetric relation</p>
+\[\sqrt x\sum_k f(kx)=\sqrt y\sum_k\varphi(ky).\tag{24}\]
+<p>To reach \(\psi\), take the slightly more general Gaussian \(f(x)=e^{-\pi(x+h)^2}\) and the whole real line. Its transform is</p>
+\[\varphi(t)=\frac1{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^{-\pi(x+h)^2-itx}\,dx=\frac1{\sqrt{2\pi}}e^{iht-t^2/(4\pi)}.\]
+<p>Substituting in (24),</p>
+\[x\sum_{n\in\mathbb Z}e^{-\pi(nx+h)^2}=\sum_{n\in\mathbb Z}e^{2n h\pi i/x-n^2\pi/x^2}.\tag{25}\]
+<p>This formula is due to Jacobi and is important for reducing imaginary amplitudes to real ones in elliptic functions. It can also be derived directly: the left side is periodic in \(h\) with period \(x\), since shifting \(h\) by \(x\) shifts the index by one. Its Fourier coefficients, computed by definite integrals, give exactly the formula above.</p><p class="author-footnote">Author’s references: Cauchy, <i>Bulletin de la société philomatique</i>, August 1817, p. 124; Jacobi, <i>Fundamenta nova theoriae functionum ellipticarum</i>, p. 165, No. 9.</p></section>
+<section id="sch60-9"><h3>9. Continuation and symmetry</h3><p class="commentary-source-page"><a href="https://gdz.sub.uni-goettingen.de/id/PPN599415665_0005?tify=%7B%22pages%22%3A%5B248%5D%7D" target="_blank" rel="noopener">German original · pp. 244–245 ↗</a></p><p>Cauchy considers the special case \(h=0\), giving the relation needed here:</p>
+\[x(1+2\psi(x))=1+2\psi(1/x).\tag{26}\]
+<p>It also shows that \(2x\psi(x)\) tends to one as \(x\) decreases to zero. Differentiation yields \(1+2\psi(x)+2x\psi'(x)=-2\psi'(1/x)/x^2\), which at one becomes</p>
+\[1+2\psi(1)+4\psi'(1)=0.\tag{27}\]
+<p>Eliminate \(\psi(1/x)\) in (23):</p>
+\[\zeta(s)=\frac{2\pi^{s/2}}{\Gamma(s/2)}\int_1^\infty\left\{(x^s+x^{1-s})\psi(x)-\tfrac12x^{-s}+\tfrac12x^{1-s}\right\}\frac{dx}x.\]
+<p>Evaluating part of the integral gives</p>
+\[\zeta(s)=\frac{\pi^{s/2}}{s(s-1)\Gamma(s/2)}\left\{1+2s(s-1)\int_1^\infty(x^{s-1}+x^{-s})\psi(x)\,dx\right\}.\tag{28}\]
+<p>This is important because the right side retains a meaning when the real part of \(s\) is below one, defining the function at arbitrary complex arguments. The earlier integrals (13), (22) required real part greater than one to avoid divergence at the lower limit. The new equation also shows that</p>
+\[s(s-1)\Gamma(s/2)\pi^{-s/2}\zeta(s)=\xi(s-\tfrac12)\tag{29}\]
+<p>is unchanged by replacing \(s\) with \(1-s\), or reversing the sign of \(s-1/2\). Thus</p>
+\[\xi(s)=1+(2s^2-\tfrac12)\int_1^\infty(x^s+x^{-s})\psi(x)\frac{dx}{\sqrt x}\tag{30}\]
+<p>is even and expandable in ascending powers of \(s^2\). When this substitution makes a gamma argument’s real part negative, the gamma function must be understood more generally than Euler’s integral, using the Gauss–Bessel product limit</p>
+\[\Gamma(s/2)=\lim_{n\to\infty}\frac{1\cdot2\cdots n}{(s/2)(s/2+1)\cdots(s/2+n-1)}\,n^{s/2-1}.\tag{31}\]
+<p class="author-footnote">Author’s references: Poisson, <i>Journal de l’École polytechnique</i>, cahier XIX, p. 420; Cauchy, <i>Exercices de mathématiques</i> II, pp. 141–156; Jacobi, Crelle III, p. 307; Abel, Crelle IV, p. 93. Schlömilch gave a related example in this journal III, p. 130:</p>
+\[\sum_{n=0}^{\infty}\frac{(-1)^n}{(2n+1)^{1-s}}=\left(\frac2\pi\right)^s\Gamma(s)\sin\frac{\pi s}2\sum_{n=0}^{\infty}\frac{(-1)^n}{(2n+1)^s}.\]
+<p class="author-footnote">One may add the analogous equation</p>
+\[1-\frac1{5^{1-s}}-\frac1{7^{1-s}}+\frac1{11^{1-s}}+\frac1{13^{1-s}}-\cdots=\frac1{\sqrt3}\left(\frac6\pi\right)^s\Gamma(s)\cos\frac{\pi s}2\left(1-\frac1{5^s}-\frac1{7^s}+\frac1{11^s}+\frac1{13^s}-\cdots\right).\]
+<p class="author-footnote">For the gamma extension: Gauss’s memoir on the hypergeometric series, January 1812; Bessel’s letters to Olbers, March 1811 and January 1812. Bessel uses \(\Omega(x)=\log(\Gamma(x)/\sqrt{2\pi})\), and, following Kramp, the notation \(\Gamma(1/x)\) for \(\Omega(x)+x-(x-1/2)\log x\).</p></section>
+<section id="sch60-10"><h3>10. An integral with a positive kernel</h3><p class="commentary-source-page"><a href="https://gdz.sub.uni-goettingen.de/id/PPN599415665_0005?tify=%7B%22pages%22%3A%5B249%5D%7D" target="_blank" rel="noopener">German original · pp. 245–246 ↗</a></p><p>The equations for \(\zeta\) and \(\xi\) show that they are single-valued and finite at finite complex arguments, apart from the pole at \(s=1\), where \((s-1)\zeta(s)\to1\); also \(\zeta(0)=-1\). At negative even integers \(\zeta\) vanishes: the gamma factor becomes infinite, while the completed function remains nonzero and finite. Apart from these, zeros lie with real part between zero and one, since otherwise the convergent series (1) for \(\log\zeta(s)\) would have to become unbounded. The opposite roots of \(\xi(s)=0\) therefore have real parts between minus and plus one half, and none can be real.</p><p>This follows, for example, from Riemann’s transformed integral, obtained by two integrations by parts. First, integrating the elementary factor in (30),</p>
+\[\xi(s)=1+2\psi(1)-(2s^2-\tfrac12)\int_1^\infty\psi'(x)\left(\frac{x^{s+1/2}}{s+1/2}-\frac{x^{1/2-s}}{s-1/2}\right)\,dx.\]
+<p>Split the integrand into \(x^2\psi'(x)\) and the remaining powers, and integrate by parts again. This yields</p>
+\[\xi(s)=1+2\psi(1)+4\psi'(1)+2\int_1^\infty\frac d{dx}(x^2\psi'(x))(x^s+x^{-s})\frac{dx}{\sqrt x}.\]
+<p>The boundary terms vanish by (27). Define the function, positive throughout the range from one to infinity,</p>
+\[\Xi(x)=4\frac d{dx}(x^2\psi'(x))=8\pi x^2\sum_{n=1}^{\infty}(2n^2\pi x^2-3)n^2e^{-n^2\pi x^2}.\tag{32}\]
+<p>Then</p>
+\[\xi(s)=\int_1^\infty\Xi(x)\frac{x^s+x^{-s}}2\frac{dx}{\sqrt x}.\tag{33}\]
+<p>Expand in ascending powers of \(s^2\):</p>
+\[\xi(s)=\sum_{n=0}^{\infty}\frac{s^{2n}}{\Gamma(2n+1)}\int_1^\infty\Xi(x)\log^{2n}x\frac{dx}{\sqrt x}.\tag{34}\]
+<p>Calling the integrals \(l_n\),</p>
+\[\xi(s)=l_0+\frac{l_1s^2}{2!}+\frac{l_2s^4}{4!}+\cdots+\frac{l_ns^{2n}}{(2n)!}+\cdots.\tag{35}\]
+<p>This is rapidly convergent, because, in addition to the factorial divisors, the \(l_n\) decrease with increasing index. The negative exponential factors make the integral’s values near its lower bound most influential, while \(\log^{2n}x\) decreases for \(1\lt x\lt e\).</p></section>
+<section id="sch60-11"><h3>11. Factoring the approximating polynomials</h3><p class="commentary-source-page"><a href="https://gdz.sub.uni-goettingen.de/id/PPN599415665_0005?tify=%7B%22pages%22%3A%5B250%5D%7D" target="_blank" rel="noopener">German original · pp. 246–248 ↗</a></p><p>As shown in §7, we need descending powers for the derivative of \(\log\eta(s)/s\). The preceding results give</p>
+\[\eta(s)=(s-1)\zeta(s)=\frac{\pi^{s/2}}{s\Gamma(s/2)}\xi(s-\tfrac12).\tag{36}\]
+<p>Thus \(\log\eta(s)=(s/2)\log\pi-\log s-\log\Gamma(s/2)+\log\xi(s-1/2)\). From (31), (35), we may write</p>
+\[\log\Gamma(s/2)=\lim_{n\to\infty}\left\{\frac s2\log n-\log\frac s2-\sum_{m=1}^{n}\log\left(1+\frac{s}{2m}\right)\right\},\]
+\[\log\xi(s-\tfrac12)=\lim_{n\to\infty}\log\left\{l_0+\frac{l_1(s-1/2)^2}{2!}+\cdots+\frac{l_n(s-1/2)^{2n}}{(2n)!}\right\}.\]
+<p>Factor the degree-\(2n\) polynomial into linear factors, with opposite roots denoted by \(\pm\sigma_{n,j}\). Then</p>
+\[\log\xi(s-\tfrac12)=\lim_{n\to\infty}\left\{\log\frac{l_n}{(2n)!}+\sum_{j=1}^{n}\log[(s-\tfrac12)^2-\sigma_{n,j}^2]\right\}.\tag{37}\]
+<p>These polynomial roots depend on \(n\) and only approach roots of the full equation as \(n\) increases. Substitution gives</p>
+\[\log\eta(s)=\lim_{n\to\infty}\left\{\frac s2\log\frac\pi n-\log2+\log\frac{l_n}{(2n)!}+\sum_{j=1}^{n}\log[(s-\tfrac12)^2-\sigma_{n,j}^2]+\sum_{m=1}^{n}\log\left(1+\frac{s}{2m}\right)\right\}.\tag{38}\]
+<p>Use this in the integral</p>
+\[u=\frac1{2\pi}\int_{-\infty}^{\infty}\frac{e^{sx}}s\log\eta(s)\,dt=-\frac1{2\pi x}\int_{-\infty}^{\infty}e^{sx}\frac d{ds}\left(\frac{\log\eta(s)}s\right)\,dt.\tag{39}\]
+<p>Start with a term belonging to a root \(\sigma\). Expand</p>
+\[\begin{aligned}\log[(s-\tfrac12)^2-\sigma^2]&=2\log s+\log\left(1-\frac{1/2+\sigma}s\right)+\log\left(1-\frac{1/2-\sigma}s\right)\\&=2\log s-\sum_{m=1}^{\infty}\frac{(1/2+\sigma)^m+(1/2-\sigma)^m}{m s^m}.\end{aligned}\]
+<p>Choose the real part of \(s\) greater than the moduli of the relevant \(1/2\pm\sigma\); only the requirement that it exceed one needs to be maintained. The resulting contribution to \(u\) is</p>
+\[2(\Gamma'(1)-\log x)-\sum_{m=1}^{\infty}\frac{x^m}{m\,m!}\{(1/2+\sigma)^m+(1/2-\sigma)^m\}.\]
+<p>By the logarithmic-integral definition,</p>
+\[\begin{aligned}\operatorname{Li}(e^{x(1/2+\sigma)})+\operatorname{Li}(e^{x(1/2-\sigma)})={}&-2\Gamma'(1)+\log[x^2(1/4-\sigma^2)]\\&+\sum_{m=1}^{\infty}\frac{x^m}{m\,m!}\{(1/2+\sigma)^m+(1/2-\sigma)^m\}.\end{aligned}\]
+<p>The full root contribution is therefore</p>
+\[\log\frac{l_n}{(2n)!}+\sum_{j=1}^{n}\log(1/4-\sigma_{n,j}^2)-\sum_{j=1}^{n}\{\operatorname{Li}(e^{x(1/2+\sigma_{n,j})})+\operatorname{Li}(e^{x(1/2-\sigma_{n,j})})\}.\]
+<p>The first two terms may be dropped in the limit, since evaluating (37) at \(s=1\) gives their limiting sum \(\log\xi(1/2)=0\), by (30).</p></section>
+<section id="sch60-11-end"><p>By §10 the roots \(\sigma\) cannot be real, so the logarithmic-integral sum produces oscillating terms of alternating sign whose values must nevertheless be real. This is immediate for \(\sigma=i\alpha\). If \(\sigma=\alpha_0+i\alpha\), the imaginary parts still cancel because \(\alpha_0-i\alpha\) is another root. Riemann considers it very probable that \(\alpha_0\) always vanishes.</p></section>
+<section id="sch60-12"><h3>12. The gamma contribution and the constant</h3><p class="commentary-source-page"><a href="https://gdz.sub.uni-goettingen.de/id/PPN599415665_0005?tify=%7B%22pages%22%3A%5B252%5D%7D" target="_blank" rel="noopener">German original · pp. 248–249 ↗</a></p><p>The sum from the gamma function is handled similarly. Expand</p>
+\[\log\left(1+\frac{s}{2m}\right)=\log\frac{s}{2m}+\sum_{n=1}^{\infty}\frac{(-1)^{n+1}}n\left(\frac{2m}s\right)^n,\]
+<p>again taking the real part of \(s\) greater than \(2m\). Integration gives</p>
+\[v_m=\Gamma'(1)-\log(2mx)-\sum_{n=1}^{\infty}(-1)^n\frac{(2mx)^n}{n\,n!}.\tag{40}\]
+<p>This is the negative of the logarithmic integral at \(e^{-2mx}\), and can be expressed as</p>
+\[v_m=\int_x^\infty e^{-2my}\frac{dy}y.\tag{41}\]
+<p>To verify it directly, introduce positive \(\omega\) and let it decrease to zero in</p>
+\[\begin{aligned}\int_x^\infty e^{-2my}y^{\omega-1}\,dy={}&\int_0^\infty e^{-2my}y^{\omega-1}\,dy-\int_0^x y^{\omega-1}\,dy+\int_0^x(1-e^{-2my})y^{\omega-1}\,dy\\={}&\frac{\Gamma(\omega)}{(2m)^\omega}-\frac{x^\omega}{\omega}+\frac{2m x^{\omega+1}}{\omega+1}-\frac{(2m)^2x^{\omega+2}}{2!(\omega+2)}+\cdots.\end{aligned}\]
+<p>Its limit is (40). Summing over \(m\),</p>
+\[\sum_{m=1}^{n}\int_x^\infty e^{-2my}\frac{dy}y=\int_x^\infty\frac{1-e^{-2ny}}{e^{2y}-1}\frac{dy}y,\]
+<p>whose limit is immediate. Of the remaining terms \((s/2)\log(\pi/n)-\log2\) in (38), the first has no effect on \(u\), by §7, while the second passes through unchanged. Combining the expressions gives</p>
+\[\begin{aligned}u=\frac1{2\pi}\int_{-\infty}^{\infty}\frac{e^{sx}}s\log\eta(s)\,dt={}&-\log2+\int_x^\infty\frac{dy}{y(e^{2y}-1)}\\&-\lim_{n\to\infty}\sum_{j=1}^{n}\{\operatorname{Li}(e^{x(1/2+\sigma_{n,j})})+\operatorname{Li}(e^{x(1/2-\sigma_{n,j})})\}.\tag{42}\end{aligned}\]
+<p>Together with §6 this yields</p>
+\[\begin{aligned}f(x)={}&\operatorname{Li}(e^x)-\lim_{n\to\infty}\sum_{j=1}^{n}\{\operatorname{Li}(e^{x(1/2+\sigma_{n,j})})+\operatorname{Li}(e^{x(1/2-\sigma_{n,j})})\}\\&+\int_x^\infty\frac{dy}{y(e^{2y}-1)}-0.69314718.\tag{43}\end{aligned}\]
+<p>This agrees with Riemann’s expression after replacing \(\sigma\) by \(i\alpha\) as above and writing \(x\) for \(e^x\). The occurrence here of \(\log(1/2)\) instead of Riemann’s \(\log\xi(0)=-0.69892\) may be due to different meanings of the root sums. As Dirichlet showed, sums of some infinite series depend on term order. Here our root sum is the limit of sums over the degree-\(2n\) polynomial roots, whereas Riemann orders the roots of the full equation by size.</p><p class="author-footnote">Author’s references: to prevent confusion, Riemann’s function \(\xi(t)\) equals \(\tfrac12\xi(it)\) in our notation; Dirichlet, Berlin Academy papers for 1837, p. 48.</p></section>
+<section id="sch60-13"><h3>13. Returning to the count of primes</h3><p class="commentary-source-page"><a href="https://gdz.sub.uni-goettingen.de/id/PPN599415665_0005?tify=%7B%22pages%22%3A%5B253%5D%7D" target="_blank" rel="noopener">German original · pp. 249–251 ↗</a></p><p>After evaluating (9), the value of (8) remains. Insert the relation (4):</p>
+\[F(e^x)=\frac1{2\pi}\int_{-\infty}^{\infty}\left\{\varphi(s)-\tfrac12\varphi(2s)-\tfrac13\varphi(3s)-\tfrac15\varphi(5s)+\cdots\right\}\frac{e^{sx}}s\,dt.\]
+<p>The change of variable giving</p>
+\[f(x/n)=\frac1{2\pi}\int_{-\infty}^{\infty}\frac{\varphi(s)}s e^{sx/n}\,dt=\frac1{2\pi}\int_{-\infty}^{\infty}\frac{\varphi(ns)}s e^{sx}\,dt\]
+<p>therefore gives, taking the real part of \(s\) greater than \(n\),</p>
+\[F(e^x)=f(x)-\tfrac12f(x/2)-\tfrac13f(x/3)-\tfrac15f(x/5)+\tfrac16f(x/6)-\cdots.\tag{44}\]
+<p>Denote this operation on a function by \(S\). Then</p>
+\[\begin{aligned}F(e^x)={}&S\operatorname{Li}(e^x)-\lim S\sum_\sigma\{\operatorname{Li}(e^{x(1/2+\sigma)})+\operatorname{Li}(e^{x(1/2-\sigma)})\}\\&+\int_x^\infty S\!\left(\frac1{e^{2y}-1}\right)\frac{dy}y.\tag{45}\end{aligned}\]
+<p>The constant vanishes by Euler’s well-known identity</p>
+\[0=1-\tfrac12-\tfrac13-\tfrac15+\tfrac16-\tfrac17+\tfrac1{10}-\cdots.\tag{46}\]
+<p>Consider the two sums</p>
+\[S\log x=\log x-\tfrac12\log(x/2)-\tfrac13\log(x/3)-\tfrac15\log(x/5)+\cdots,\]
+\[Sx^m=x^m-\tfrac12(x/2)^m-\tfrac13(x/3)^m-\tfrac15(x/5)^m+\cdots.\]
+<p>The first vanishes. Indeed, as positive \(\omega\) decreases to zero, write it as the limit of</p>
+\[\left(1-\tfrac12-\tfrac13-\cdots\right)\log x+\log\frac1{1-\omega}-\tfrac12\log\frac1{1-\omega^2}-\tfrac13\log\frac1{1-\omega^3}-\cdots.\]
+<p>By (46) and Möbius inversion,</p>
+\[S\log x=\lim_{\omega\downarrow0}\{-\log(1-\omega)+\tfrac12\log(1-\omega^2)+\tfrac13\log(1-\omega^3)+\cdots\}=\lim_{\omega\downarrow0}\omega=0.\tag{47}\]
+<p>For the second sum, Euler’s reciprocal-product identity gives</p>
+\[Sx^m=x^m\left(1-\frac1{2^{m+1}}-\frac1{3^{m+1}}-\frac1{5^{m+1}}+\frac1{6^{m+1}}-\cdots\right)=\frac{x^m}{\zeta(m+1)}.\tag{48}\]
+<p>Since \(\operatorname{Li}(e^x)=\log x-\Gamma'(1)+\sum_{n\ge1}x^n/(n\,n!)\), it follows that</p>
+\[S\operatorname{Li}(e^x)=\sum_{n=1}^{\infty}\frac{x^n}{n\,n!\,\zeta(n+1)}=\Lambda(x).\tag{49}\]
+<p>To reduce the remaining integral to this same function, apply \(S\) to (40), (41). It gives</p>
+\[Sv_m=S\int_x^\infty e^{-2my}\frac{dy}y=-\Lambda(-2mx).\tag{50}\]
+<p>Like \(v_m\) and \(e^{-2mx}\), this must tend to zero as the argument increases. Consequently,</p>
+\[F(e^x)=\Lambda(x)-\lim\sum_\sigma\{\Lambda((1/2+\sigma)x)+\Lambda((1/2-\sigma)x)\}-\sum_{m=1}^{\infty}\Lambda(-2mx).\tag{51}\]
+<p class="author-footnote">Author’s references: Euler, <i>Introductio in analysin infinitorum</i>, volume I, §§277, 275; Möbius, Crelle IX, p. 119, No. 10; Thoman, Paris <i>Comptes rendus</i>, with Cauchy’s report, volume 30, p. 162.</p></section>
+<section id="sch60-14"><h3>14. Density and numerical calculation</h3><p class="commentary-source-page"><a href="https://gdz.sub.uni-goettingen.de/id/PPN599415665_0005?tify=%7B%22pages%22%3A%5B255%5D%7D" target="_blank" rel="noopener">German original · pp. 251–252 ↗</a></p><p>Series representing discontinuous functions generally cannot be differentiated term by term. Fourier series for discontinuous functions are a simple example: differentiation destroys their convergence. The prime count is constant between consecutive prime thresholds; its derivative vanishes there and is infinite or undefined at a jump. Differentiating the complete zero-sum expression would therefore no longer give a convergent sum. If, however, we restrict to finitely many zero terms, differentiation is possible and yields a definite meaning: an approximate expression for the density of primes of size \(e^x\).</p><p>Use the notation</p>
+\[E(x)=x\Lambda'(x)=\sum_{n=1}^{\infty}\frac{x^n}{n!\,\zeta(n+1)}.\tag{52}\]
+<p>Then</p>
+\[F'(e^x)=\frac{e^{-x}}x\left\{E(x)-\sum_\sigma[E((1/2+\sigma)x)+E((1/2-\sigma)x)]-\sum_m E(-2mx)\right\}.\tag{53}\]
+<p>Returning to \(f\), \(E(x)\) becomes \(e^x\), and we obtain</p>
+\[e^{-x}f'(x)=\frac1x\left\{1-e^{-x/2}\sum_\sigma(e^{\sigma x}+e^{-\sigma x})-\frac{e^{-2x}}{e^x-e^{-x}}\right\}.\tag{54}\]
+<p>This approximates the density of primes plus half the density of prime squares, a third of the density of prime cubes, and so on, of size \(e^x\), corresponding to Riemann’s result on p. 679.</p><p>Although \(\Lambda\) and \(E\) were defined by everywhere-convergent series, direct numerical calculation at moderately large arguments seems as impractical as directly summing the exponential series for large exponents. Still less can the root sums and the negative-argument sums be computed directly this way. For such a purpose the expressions would first need suitable analytic transformations. In general, a series representing a discontinuous function such as \(F\) or \(f\) must have arbitrarily slow convergence near its jumps.</p></section>
+<section class="commentary-edition-notice" id="sch60-editorial-notes"><h3>Editorial notes on the argument</h3><p><strong>Notation.</strong> Scheibner’s \(\psi(x)=\sum_{n\ge1}e^{-\pi n^2x^2}\). His \(\xi(z)\) is twice Riemann’s completed function evaluated at \(-iz\), and his conjecture that its roots are purely imaginary is RH. His \(\Lambda(x)\) in §13 is a different function from the modern von Mangoldt arithmetic function. Do not carry these meanings between editions.</p><p><strong>Zeros and continuation (§§9–10).</strong> The pole at one is genuine; the value printed as \(\zeta(0)=-1\) in the source is incorrect: it is \(-1/2\). The Euler product only excludes zeros in the open half-plane \(\operatorname{Re}s\gt1\). It does not by itself exclude boundary zeros on \(\operatorname{Re}s=1\). The positive kernel does exclude real roots of Scheibner’s centered function. The reciprocal gamma factor, with cancellations and limiting values, gives meromorphic continuation.</p><p><strong>Moments (§10).</strong> The stated decrease of all the \(l_n\) is not proved by the behavior on \(1\lt x\lt e\); higher moments also sample the tail. Entire convergence follows instead from the Gaussian decay: on every bounded set of parameters, the integral of the absolute exponential series has an integrable majorant. This proves the expansion without that monotonicity claim.</p><p><strong>Polynomial roots (§11).</strong> Local convergence of Taylor polynomials controls zeros in a fixed bounded region. It does not justify replacing all polynomial roots by the zeros of the entire function in an unbounded contour integral. The real part chosen for a finite polynomial can grow with its degree, so the proposed expansion is not uniform on one fixed contour. The limiting zero-sum interchange remains a gap in this historical exposition. Von Mangoldt’s <a href="../mangoldt-1895/"><i>1895 memoir</i></a> addresses the needed convergence by a different proof.</p><p><strong>The constant (§12).</strong> The correct constant is \(-\log2\). Scheibner notices the discrepancy but only suggests that the ordering may explain it. This is a historical suggestion, not a proof that arbitrary reorderings preserve the formula.</p><p><strong>The second inversion (§13).</strong> The manipulations of \(S\) require additional convergence arguments. In particular (47) is not valid for the ordinary infinite sum written there. With the convergent regularization \(S_\varepsilon g(x)=\sum_{n\ge1}\mu(n)n^{-1-\varepsilon}g(x/n)\), \(\varepsilon\gt0\), one gets</p>
+\[S_\varepsilon\log x=\frac{\log x}{\zeta(1+\varepsilon)}-\frac{\zeta'(1+\varepsilon)}{\zeta(1+\varepsilon)^2}\longrightarrow1,\]
+<p>using the simple pole of \(\zeta\) at one. Thus the corresponding modern Gram series has the constant term \(1+\sum_{n\ge1}x^n/(n\,n!\,\zeta(n+1))\), whereas (49) omits the one. Consequently (49)–(51), as printed, should not be used as rigorously established formulas for exact prime counts. Finite Möbius inversion of the original prime-power counting function avoids those unproved infinite rearrangements. The symbols for \(\mu\) and \(S_\varepsilon\) in this paragraph are editorial only.</p><p><strong>The differentiated displays (§14).</strong> A finite zero truncation is a smooth approximation, not the derivative of the discontinuous exact count. In (54), direct differentiation of the integral in (43) gives the last term \(-e^{-x}/(e^{2x}-1)\) inside the braces; the printed expression is \(-e^{-2x}/(e^x-e^{-x})\), which happens to be the same quantity. Neither that identity nor finite differentiation supplies convergence of the full differentiated zero series.</p></section>

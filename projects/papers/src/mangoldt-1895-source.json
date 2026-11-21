@@ -1,0 +1,915 @@
+{
+  "work": "mangoldt-1895",
+  "checked": "2026-11-20",
+  "source": {
+    "author": "Hans von Mangoldt",
+    "title": "Zu Riemanns Abhandlung „Ueber die Anzahl der Primzahlen unter einer gegebenen Grösse“",
+    "journal": "Journal für die reine und angewandte Mathematik",
+    "volume": "114",
+    "year": 1895,
+    "pages": "255–305",
+    "doi": "10.1515/crll.1895.114.255",
+    "url": "https://gdz.sub.uni-goettingen.de/id/PPN243919689_0114",
+    "articleLogicalId": "LOG_0020"
+  },
+  "translation": {
+    "credit": "Math Expo, prepared with AI assistance",
+    "language": "English",
+    "basis": "Independent modern-English translation of the German original, checked against every page image. No modern English translation reproduced.",
+    "scope": "Complete introduction, Parts I and II, formulas (1)–(67), unnumbered derivations, author footnotes, and closing date.",
+    "notation": "Natural-logarithm l becomes log; decimal commas become decimal points; bracketed integer parts become floor notation. The original t-variable, Pi notation, multiplicity, order, and branch conventions are retained. Repeated algebraic displays may be combined without omitting their steps.",
+    "limitations": "Editorial reconstruction is not proof-assistant verification or independent specialist review. Gaps and local-uniformity qualifications are explained in margin notes."
+  },
+  "rights": {
+    "original": "Public domain: published in 1895; author died in 1925.",
+    "authorAuthority": "https://www.deutsche-biographie.de/sfz57713.html",
+    "translation": "New translation and editorial illustrations by Math Expo.",
+    "archive": "GDZ page images are linked for verification, not republished; no express archive license is claimed."
+  },
+  "pages": [
+    {
+      "page": 255,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000261.xml",
+          "file": "255.xml",
+          "sha256": "7d06cc411740767076e6102a27514860c12965a1ae3ba5e144ec750208b323f5"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000261.jpg",
+          "file": "255.jpg",
+          "sha256": "1859d848c3962d23699ac2ae0f1664dc19b58c60994a505895fd5534f8936ece"
+        }
+      ]
+    },
+    {
+      "page": 256,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000262.xml",
+          "file": "256.xml",
+          "sha256": "c9d7664e4a0ae8c6a83c39af33ffbde507b9faa42ff8faefa242bce6f28dd9a2"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000262.jpg",
+          "file": "256.jpg",
+          "sha256": "7ec17bf7dc653f3f5d697fa4269711f75271baf3687be7041a5511995ee82c80"
+        }
+      ]
+    },
+    {
+      "page": 257,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000263.xml",
+          "file": "257.xml",
+          "sha256": "479ad7f1b4fa2b37378b2cf8ad084d593b929ecd9ad603393028961b3a2db9db"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000263.jpg",
+          "file": "257.jpg",
+          "sha256": "cc46b58bbf3a24497b0caa17c4dbd6f7abb690b71a273edb3b3b75160ed67daf"
+        }
+      ]
+    },
+    {
+      "page": 258,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000264.xml",
+          "file": "258.xml",
+          "sha256": "247e9456aefbe73107d2602c6195492e00ec609a47c3f7faec30e385dfac3544"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000264.jpg",
+          "file": "258.jpg",
+          "sha256": "cbe692be0f465739f5205e6029541e764e1962bcfcf7028455d18ef0b8970037"
+        }
+      ]
+    },
+    {
+      "page": 259,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000265.xml",
+          "file": "259.xml",
+          "sha256": "5397a6dc17873b56a062ec4723badd338ff8c54e5c37320d9e6f2ed02007fc23"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000265.jpg",
+          "file": "259.jpg",
+          "sha256": "eaf3d21e59237833ae5a71a8bab29339a8bc44509c1ba4ed4048a18a4f9a6565"
+        }
+      ]
+    },
+    {
+      "page": 260,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000266.xml",
+          "file": "260.xml",
+          "sha256": "35d9e698e7797964cd3458b84504069c7eee77c3239bd16336e464a2af851c01"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000266.jpg",
+          "file": "260.jpg",
+          "sha256": "99d17822a91a15d06d2be376cb1afc166803d526034cd7b3900d51bf8a120cf9"
+        }
+      ]
+    },
+    {
+      "page": 261,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000267.xml",
+          "file": "261.xml",
+          "sha256": "12412871904b7bcfe147fe74636dabde701cb0eaa6b32d2ca006aa764d3a3759"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000267.jpg",
+          "file": "261.jpg",
+          "sha256": "ac622c85869bb63ffba68965b1f8281f6083fd2bd5b75f994f7361830042f009"
+        }
+      ]
+    },
+    {
+      "page": 262,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000268.xml",
+          "file": "262.xml",
+          "sha256": "9ea4f20a25a6c9a652ce37c08825d62829b6c903a5d7b37b7f80c301223e7dc1"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000268.jpg",
+          "file": "262.jpg",
+          "sha256": "170042df35562546c8cd8afef2a50df745dda164355b019ab887b02c91329e59"
+        }
+      ]
+    },
+    {
+      "page": 263,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000269.xml",
+          "file": "263.xml",
+          "sha256": "f06b9e70325613e45967aae92178ee19676aab1caa17ca1a50289d0a53040ba1"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000269.jpg",
+          "file": "263.jpg",
+          "sha256": "62d01d6fe95f82521a097683a2bda1f085bb6fdaf20dede20c0397e6db0e7110"
+        }
+      ]
+    },
+    {
+      "page": 264,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000270.xml",
+          "file": "264.xml",
+          "sha256": "180c6112849cac63d4e888929415a5413d5be6929531021a45fd52db6768c194"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000270.jpg",
+          "file": "264.jpg",
+          "sha256": "9f0cf47c45e2e8f437de1c2d84c6bb637e9c4990bf5e1e731781382b3bb07208"
+        }
+      ]
+    },
+    {
+      "page": 265,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000271.xml",
+          "file": "265.xml",
+          "sha256": "7cd360365d861a25fa03bbea2c9144a58e936ef13de7c448223a6407300d354a"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000271.jpg",
+          "file": "265.jpg",
+          "sha256": "4bb672f1fe20478194c09580a2ebc3f6918babcdced262b22584846657645a80"
+        }
+      ]
+    },
+    {
+      "page": 266,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000272.xml",
+          "file": "266.xml",
+          "sha256": "d0ff7fbf00b77e88159c9e0fb5742829d9a8d858ffdfcecc6d3876db7b7d0209"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000272.jpg",
+          "file": "266.jpg",
+          "sha256": "d8aaa80ca179329cdb10a1c1c72d43c09df42603562342faaef365d49f1449f0"
+        }
+      ]
+    },
+    {
+      "page": 267,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000273.xml",
+          "file": "267.xml",
+          "sha256": "811bda2b3882c36ec055596275425f2546852b58a4c57806cff67c1730980e06"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000273.jpg",
+          "file": "267.jpg",
+          "sha256": "a37a9eaed4b522b97be5261033006a42306ab24f9140e9e9dad387231581ee5b"
+        }
+      ]
+    },
+    {
+      "page": 268,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000274.xml",
+          "file": "268.xml",
+          "sha256": "667dee0ed510aa88cd26d7b606fb6ba0a366096412b98d8c37542d724ddd30a2"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000274.jpg",
+          "file": "268.jpg",
+          "sha256": "eaf0d8c0408d57f432d8598b6cfccb67395311e99702f29f25c91f5e0a128960"
+        }
+      ]
+    },
+    {
+      "page": 269,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000275.xml",
+          "file": "269.xml",
+          "sha256": "805fd0ff819b3f27abfb2dbd4e85475de4ced4722a9dc476815b75937af9c83b"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000275.jpg",
+          "file": "269.jpg",
+          "sha256": "180191141e2ce2476f1dbb75474be8668cddd90ef4d7630fb16c3d40010b699d"
+        }
+      ]
+    },
+    {
+      "page": 270,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000276.xml",
+          "file": "270.xml",
+          "sha256": "ea1734ce9200321fb972d78adc8d46069c02560282bacfcd91320af9e3e4d5bd"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000276.jpg",
+          "file": "270.jpg",
+          "sha256": "92da5c4b79882b8bb137d7a3a74d74f6cc7d754f5f5b48da0832e116fdc730f0"
+        }
+      ]
+    },
+    {
+      "page": 271,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000277.xml",
+          "file": "271.xml",
+          "sha256": "e6fb80bcec0505076a55fce1b71810bdc924c113c3665a9a7cc41fae432042fd"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000277.jpg",
+          "file": "271.jpg",
+          "sha256": "1fe812a810b583d8a0b9c38587009ab65b0553fc3159536ada44a2b13e50657f"
+        }
+      ]
+    },
+    {
+      "page": 272,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000278.xml",
+          "file": "272.xml",
+          "sha256": "e01c926fb6b72a7c5ea2769fb0d50923e29919894e8c2ae22557e1e5da741959"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000278.jpg",
+          "file": "272.jpg",
+          "sha256": "bd35d9ff6b25e7767504e8b133d2eb9536e01a9b9d87f8c2d81e8cfe809e3109"
+        }
+      ]
+    },
+    {
+      "page": 273,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000279.xml",
+          "file": "273.xml",
+          "sha256": "46fd869af9803f07ede9f695de800df52f822778d8e016e3b2a55fe06347d4b8"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000279.jpg",
+          "file": "273.jpg",
+          "sha256": "c221ca22ca0dd436fb155ebf0c2eb30188b41f301e0b5b4cf113100246ab6451"
+        }
+      ]
+    },
+    {
+      "page": 274,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000280.xml",
+          "file": "274.xml",
+          "sha256": "1c8b9c2a86fb188c0110049e1ad2ff537a50a9fb13a5e0430ec5b7e841775e6a"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000280.jpg",
+          "file": "274.jpg",
+          "sha256": "a5f38993d11bb985e89dbfd8cddb3e95da2a2c2d8b88bfe8702b38569bd0fd26"
+        }
+      ]
+    },
+    {
+      "page": 275,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000281.xml",
+          "file": "275.xml",
+          "sha256": "4ec8a3570790d29e49bab24f5507e0aaca39a94e86f740b0beb3faa360c50e2d"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000281.jpg",
+          "file": "275.jpg",
+          "sha256": "1abb83fd8d44783ee7074e844da1a6310e380d08351209363d1392178c498e3c"
+        }
+      ]
+    },
+    {
+      "page": 276,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000282.xml",
+          "file": "276.xml",
+          "sha256": "4dfd34c95a41d7e4a1d16086bd33f3944f296405d122483194ec4d24a463ca9c"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000282.jpg",
+          "file": "276.jpg",
+          "sha256": "8dbdf0da02529a8e4bec4b8b97d41d61db0816f76f77e35973e5d12c5e31b497"
+        }
+      ]
+    },
+    {
+      "page": 277,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000283.xml",
+          "file": "277.xml",
+          "sha256": "9f1862b2a800edb7b8ee4fe2c56ff30f0d6678d8c25d97201210397b62c15689"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000283.jpg",
+          "file": "277.jpg",
+          "sha256": "5fa61a5fa42730bab4d7b90b4f38a930078bff52347b3ce84190d1ea19d6dc33"
+        }
+      ]
+    },
+    {
+      "page": 278,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000284.xml",
+          "file": "278.xml",
+          "sha256": "885df683c8d0e8576f8046cb0a20ac7792f537a60e0d80d4c914e2c6dacf8198"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000284.jpg",
+          "file": "278.jpg",
+          "sha256": "2b77fd4f4a5ce4279927b42220734afd49897f625385c9b1518387beb421868d"
+        }
+      ]
+    },
+    {
+      "page": 279,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000285.xml",
+          "file": "279.xml",
+          "sha256": "c2d57065b0e22d740e96cd5b9b0612748cdb4c4a31e60c39e27156b223133097"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000285.jpg",
+          "file": "279.jpg",
+          "sha256": "bc8793c7478dab19b8a7eaac2bfa4b8dc78149eb9558b1624695c4ee66c28c5b"
+        }
+      ]
+    },
+    {
+      "page": 280,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000286.xml",
+          "file": "280.xml",
+          "sha256": "e18827991b9d9cb9d7a4dd259593addd741674d171ebe6f1dcad27eb7700c91d"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000286.jpg",
+          "file": "280.jpg",
+          "sha256": "d67045cf281ba4b37170eb0ef821d475549b6ace609c21eb8bf18c90fe288d8a"
+        }
+      ]
+    },
+    {
+      "page": 281,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000287.xml",
+          "file": "281.xml",
+          "sha256": "5e35186dcd83aa3703c7430725975aa76f253e911d400c13b400203f3635c032"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000287.jpg",
+          "file": "281.jpg",
+          "sha256": "901779a1019a7f176abe45f670aa268a7c2c7338709ddaa360b77ceefa79717b"
+        }
+      ]
+    },
+    {
+      "page": 282,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000288.xml",
+          "file": "282.xml",
+          "sha256": "ba6937ef15ace23fd845cd8657c89758d51a8795590d2bad15c2aa9d13b8a281"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000288.jpg",
+          "file": "282.jpg",
+          "sha256": "1c36633a9e2b02904c614cf17eed12424a6b3860568a4d62a049017a6b6c15c0"
+        }
+      ]
+    },
+    {
+      "page": 283,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000289.xml",
+          "file": "283.xml",
+          "sha256": "54d7be37d4e0e4c54d98509528932b1da75a1aee9f0441678e4ac8d7d69f5159"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000289.jpg",
+          "file": "283.jpg",
+          "sha256": "6a402bf3b37c4f2e841ebc39d33a769b6fc9556911242f407d8fb459ea785182"
+        }
+      ]
+    },
+    {
+      "page": 284,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000290.xml",
+          "file": "284.xml",
+          "sha256": "42f987297de9f4da324b24cf33149e10d3e8e0d701a4b4bf0eb3b493a8588add"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000290.jpg",
+          "file": "284.jpg",
+          "sha256": "bb0739ad85bceb216913121665e90a3c864397c66f4e15d25055e07976a1c7d6"
+        }
+      ]
+    },
+    {
+      "page": 285,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000291.xml",
+          "file": "285.xml",
+          "sha256": "09dbf55065538aa3d7cb5178bf6be49020b7072464be2e7c36740cf7031b9661"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000291.jpg",
+          "file": "285.jpg",
+          "sha256": "0360d9286d5ce98a5bfc11c12d86fdf8d6c5f003ea3bedb0a5c48787508686b3"
+        }
+      ]
+    },
+    {
+      "page": 286,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000292.xml",
+          "file": "286.xml",
+          "sha256": "f840c834d837f289615968b0b9ba586166d4ef6e993a926f52041fcd56a48b4c"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000292.jpg",
+          "file": "286.jpg",
+          "sha256": "e10e0091fb1b0320500e3d220a4a99abc3695035a2b73887933b1d4a1819ac05"
+        }
+      ]
+    },
+    {
+      "page": 287,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000293.xml",
+          "file": "287.xml",
+          "sha256": "325dd55b608b1d6ad2ac830a30417b1033c1b63c418dfe8615e67ed54c15300b"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000293.jpg",
+          "file": "287.jpg",
+          "sha256": "66b84e6f8eeaa319404ee526a468d8fabd53bad9bd873ef38f7b42e229956049"
+        }
+      ]
+    },
+    {
+      "page": 288,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000294.xml",
+          "file": "288.xml",
+          "sha256": "bbadf3c921bb1c46ba8d30204518000b6fc5c1f6b401f83317c8493acc1af02a"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000294.jpg",
+          "file": "288.jpg",
+          "sha256": "8e118a00351f6dfc29d6202b0735c754a831303fb44bdd00d4a1334a3f011d06"
+        }
+      ]
+    },
+    {
+      "page": 289,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000295.xml",
+          "file": "289.xml",
+          "sha256": "d4430b5bab74d2b1013aa6ff16e2958e67ae8fe33ab5e3cc48389f7931709370"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000295.jpg",
+          "file": "289.jpg",
+          "sha256": "3d74f45edd8eabbe3506b1de4a241d7c8c3c2a206e183f68fe2ab9f224086e1d"
+        }
+      ]
+    },
+    {
+      "page": 290,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000296.xml",
+          "file": "290.xml",
+          "sha256": "81c8a186a1e866de873366da479dc84e61d8693ad83f0a884f5c26ccb05611d5"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000296.jpg",
+          "file": "290.jpg",
+          "sha256": "438121b775338b1bdb42bdf12a1b544d30540c9146e10cca63f83fbdd3fe4bbc"
+        }
+      ]
+    },
+    {
+      "page": 291,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000297.xml",
+          "file": "291.xml",
+          "sha256": "884ce70a1242d90dd4ec541fbeb16fbeefeef2cc956d3bd3ecb529a23f838b9f"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000297.jpg",
+          "file": "291.jpg",
+          "sha256": "08cd54999d92bc4e646162a7e1efc5adddd0576a15e7af7241e23f43466d948f"
+        }
+      ]
+    },
+    {
+      "page": 292,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000298.xml",
+          "file": "292.xml",
+          "sha256": "1d9640bd548089e57401dac4745048edebb2e46e85a03a713c744fa618f31aba"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000298.jpg",
+          "file": "292.jpg",
+          "sha256": "f568b7f910929223513de53c2ff4df601eda0dbc77d67a65e39c572862143954"
+        }
+      ]
+    },
+    {
+      "page": 293,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000299.xml",
+          "file": "293.xml",
+          "sha256": "7368ed738f012e0fb095082ea3a4d1eb926a3ef04197f9b7a028ad4edf7f325d"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000299.jpg",
+          "file": "293.jpg",
+          "sha256": "5d9d8ee9fa0d2cdabb4b10c925b02b447b823515c1059cc2c570506c93f89fce"
+        }
+      ]
+    },
+    {
+      "page": 294,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000300.xml",
+          "file": "294.xml",
+          "sha256": "8d27b7cc0ef8a01125133bc2c039d90f1fdffc882f57fddef15654886f49c2e3"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000300.jpg",
+          "file": "294.jpg",
+          "sha256": "adf658308f1c44cc7ba3d2b7719354b082d2e2ce064c8125456a7b33835a2535"
+        }
+      ]
+    },
+    {
+      "page": 295,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000301.xml",
+          "file": "295.xml",
+          "sha256": "6e38c0158d9aa3a3abc1f24a31a3abda08c74f8d666bc2200a410331ca4ef387"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000301.jpg",
+          "file": "295.jpg",
+          "sha256": "a0af6287d0a417a7dc851af9eafbc4e242edb7dc3d9d106c63806bbf829925b4"
+        }
+      ]
+    },
+    {
+      "page": 296,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000302.xml",
+          "file": "296.xml",
+          "sha256": "e70a76032b99f37bf7a951300a7c71da1c789a30f12a97a199f5465e81e69fb6"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000302.jpg",
+          "file": "296.jpg",
+          "sha256": "5e3b505f330a431f5028846368659ffd981d7ca69bf5b82033444ac7117212b5"
+        }
+      ]
+    },
+    {
+      "page": 297,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000303.xml",
+          "file": "297.xml",
+          "sha256": "1498f50421a1ac661597c419c2534a26630b91034a8b1420097f777377bc89d9"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000303.jpg",
+          "file": "297.jpg",
+          "sha256": "8a15af49d57ef2ca428e85249331cdfde6442c559070b70374bead91e6b3b2c1"
+        }
+      ]
+    },
+    {
+      "page": 298,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000304.xml",
+          "file": "298.xml",
+          "sha256": "a46aa4589ad47333a84c588ee1668f0db2889aaa34c5a25c4381d12b6f74de90"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000304.jpg",
+          "file": "298.jpg",
+          "sha256": "a78fade1663d9d2a25c252ef732e3a482581d073ffeb840e38ed7318cce2653e"
+        }
+      ]
+    },
+    {
+      "page": 299,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000305.xml",
+          "file": "299.xml",
+          "sha256": "4792d3f2eee17fd79e3e00e8302686f5a5c1ffdef5e0cad8a6e66ce978cb716a"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000305.jpg",
+          "file": "299.jpg",
+          "sha256": "6fcf560d166f65ba4af1da5f57589301bd32be6a6631ddecdeb3003f8b63e1d2"
+        }
+      ]
+    },
+    {
+      "page": 300,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000306.xml",
+          "file": "300.xml",
+          "sha256": "81485c2b8210e86efac1f5e8157fae9e979d0d2b0efe925842cc5ea4dbfb8cf2"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000306.jpg",
+          "file": "300.jpg",
+          "sha256": "b6a7c69cb66fc4b5758592591744240befb9c64fa8da561d966182dc050ad118"
+        }
+      ]
+    },
+    {
+      "page": 301,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000307.xml",
+          "file": "301.xml",
+          "sha256": "c2b138e99819bb70cfb690e407529d21d85a5b84b9b613c7456fa2801bfbb49d"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000307.jpg",
+          "file": "301.jpg",
+          "sha256": "0e4c99841de8cc80284efff8dcfb954c9520551fef1bb163dc79ee5df37f3b2b"
+        }
+      ]
+    },
+    {
+      "page": 302,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000308.xml",
+          "file": "302.xml",
+          "sha256": "5a9ea1c2f57fd05a87959c4e7d3fd514db990ec002551a726f969bb216ef7ca3"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000308.jpg",
+          "file": "302.jpg",
+          "sha256": "be8a583948f58301d4485fc74bfa21e606a8ba94eaf818c13f283d81fdfc85c0"
+        }
+      ]
+    },
+    {
+      "page": 303,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000309.xml",
+          "file": "303.xml",
+          "sha256": "ca177d8cac9c8570975e8a57162a96ada3340e950c425a970c80b2c8a8479268"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000309.jpg",
+          "file": "303.jpg",
+          "sha256": "db69d2af77fdfe26ccdf8dabd985700df99d943d47948a85e504ade2bbcde426"
+        }
+      ]
+    },
+    {
+      "page": 304,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000310.xml",
+          "file": "304.xml",
+          "sha256": "dcb43c0a392d158e2c143cf756a78840fc1203447ef822a58f8d774e5e6ba034"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000310.jpg",
+          "file": "304.jpg",
+          "sha256": "f4e01b0e21d029cefeeaf9241e6ba9650feb8b4f48c491d7db7ca4fe8cd226c1"
+        }
+      ]
+    },
+    {
+      "page": 305,
+      "sources": [
+        {
+          "kind": "ocr",
+          "url": "https://gdz.sub.uni-goettingen.de/gdzocr/PPN243919689_0114/00000311.xml",
+          "file": "305.xml",
+          "sha256": "4dd0750719d7da91490afaa358dbf429d9265f2aadac621801e98580a7d0d673"
+        },
+        {
+          "kind": "image",
+          "url": "https://gdz.sub.uni-goettingen.de/content/PPN243919689_0114/1600/0/00000311.jpg",
+          "file": "305.jpg",
+          "sha256": "a8734ea179e6b81d2993778b64dd7d8fb93234ffdd100a5718970e0e2da88ed2"
+        }
+      ]
+    }
+  ],
+  "corrections": [
+    {
+      "page": 290,
+      "issue": "An unnumbered tail prints r+1/2 where the preceding identity and equation (52) require r-1/2.",
+      "treatment": "Use the consistent expression and disclose in the margin."
+    },
+    {
+      "page": 293,
+      "issue": "Unqualified uniform convergence for all positive x.",
+      "treatment": "Preserve the historical assertion; state the proved compact-interval form in the margin."
+    },
+    {
+      "page": 295,
+      "issue": "The displayed sum starts at n=1 although L(1)/log(1) is undefined.",
+      "treatment": "Start at n=2 and explain the zero-term convention in the margin."
+    }
+  ]
+}

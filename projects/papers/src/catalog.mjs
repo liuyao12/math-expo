@@ -1,6 +1,7 @@
 import {weilWorks,weilPeople,weilConcepts,weilBibliography,weilCitations,weilExternalReferences} from './weil-catalog.mjs';
 import {rhStatusNote} from './riemann-hypothesis-status.mjs';
 import {littlewoodWork,littlewoodPeople,conceptsLittlewood} from './littlewood-1914.mjs';
+import {mangoldtConcepts,mangoldtReferences,mangoldtCitingWorks} from './mangoldt-1895-metadata.mjs';
 import {conceptsCartan1913,externalReferencesCartan1913} from './cartan-1913-catalog.mjs';
 import {attachTextCoverage} from './text-coverage.mjs';
 import {representationWorks,representationPeople,representationBibliography,representationEnglish,representationCitations,conceptsLie1874} from './representation-catalog.mjs';
@@ -115,7 +116,8 @@ export const works = [
     title: 'On Riemann’s paper “On the number of primes below a given quantity”',
     originalTitle: 'Zu Riemanns Abhandlung „Ueber die Anzahl der Primzahlen unter einer gegebenen Grösse“',
     publication: 'Journal für die reine und angewandte Mathematik 114 (1895), pp. 255–305.', language: 'German', doi: '10.1515/crll.1895.114.255',
-    summary: 'A later treatment of Riemann’s zero count and prime-counting argument.',
+    edition:'Complete modern-English reading · pp. 255–305',externalReferences:mangoldtReferences,externalCitingWorks:mangoldtCitingWorks,citationChecked:'20 November 2026',
+    summary:'An unconditional zero-count estimate and a convergence proof for the ordered zero series in the explicit formula. The complete memoir, with integral estimates, examples, branch conventions, and scoped proof commentary.',
     links: [{label: 'Digitized journal volume · Göttingen · pp. 255–305', url: sources.mangoldt1895}, {label: 'Publisher DOI', url: 'https://doi.org/10.1515/crll.1895.114.255'}] },
   { id: 'habermann-2026', authors: ['habermann'], year: 2026,
     title: 'Bernhard Riemann’s original manuscript on the hypotheses underlying geometry',
@@ -130,6 +132,12 @@ works.find(w=>w.id==='weil-1949').externalReferences=weilExternalReferences;
 attachTextCoverage(works);
 
 export const people = [
+  {id:'scheibner',name:'Wilhelm Scheibner',note:'Author of the 1860 continuous exposition of Riemann’s prime-counting paper. The historical commentary is translated beside the 1859 reading, with its proof limitations disclosed.',source:'https://gdz.sub.uni-goettingen.de/id/PPN599415665_0005',bibliography:[{title:'On the number of primes below an arbitrary bound · commentary in modern English',url:'https://liuyao12.github.io/math-expo/papers/riemann-1859/?commentary=scheibner-1860&view=commentary'}]},
+  {id:'piltz',name:'Adolf Piltz',note:'Von Mangoldt acknowledges overlapping ideas in Piltz’s 1884 Jena habilitation thesis.',source:sources.mangoldt1895},
+  {id:'stieltjes',name:'Thomas Jan Stieltjes',note:'The explicit Stirling remainder in von Mangoldt’s 1895 memoir is taken from Stieltjes’s 1889 paper.',source:sources.mangoldt1895},
+  {id:'jensen',name:'Johan Ludwig William Valdemar Jensen',note:'Von Mangoldt discusses Jensen’s 1887 exclusion bound for low zeros.',source:sources.mangoldt1895},
+  {id:'cahen',name:'Eugène Cahen',note:'Von Mangoldt’s memoir identifies gaps in Cahen’s convergence and prime-counting arguments.',source:sources.mangoldt1895},
+
   ...littlewoodPeople,
   ...weilPeople,
   ...representationPeople,
@@ -181,6 +189,7 @@ export const citations = [
 ];
 
 export const concepts = [
+  ...mangoldtConcepts,
   ...conceptsLittlewood,
   ...weilConcepts,
   ...conceptsCartan1913,

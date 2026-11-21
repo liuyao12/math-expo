@@ -44,6 +44,18 @@ export const authoredCommentaries=[
   url:'https://old.maa.org/node/1880109',document:'https://old.maa.org/sites/default/files/images/upload_library/46/Barnett_TRIUMPHS_MiniPSPs/MiniPSP_EulerCalculuation_SumReciprocalPowers_2019_07_28.pdf',
   scope:'A calculus-level guided reading of Euler’s reciprocal-square calculation in De summis serierum reciprocarum (E41). Selected historical passages, explanations, and student tasks develop the sine-product argument; it is not a commentary on every section of the paper.',
   evidence:'https://old.maa.org/node/1880109',verification:'Author, August 2019 publication, DOI, and explicit identification of E41 verified against the MAA article. The linked project is dated 5 August 2019. This is the same Monks work already listed in the catalogue and citation index.'},
+ {id:'scheibner-1860',works:['riemann-1859'],author:'Wilhelm Scheibner',year:1860,checked:'2026-11-20',
+  title:'On the number of primes below an arbitrary bound',
+  publication:'Zeitschrift für Mathematik und Physik 5 (1860), pp. 233–252',
+  kind:'Historical mathematical commentary',access:'Complete modern-English HTML text',html:'scheibner-1860.html',
+  url:'https://gdz.sub.uni-goettingen.de/id/PPN599415665_0005?tify=%7B%22pages%22%3A%5B237%5D%7D',
+  evidence:'https://gdz.sub.uni-goettingen.de/mets/PPN599415665_0005.xml',
+  scope:'A continuous contemporary exposition of Riemann’s 1859 paper, with introductory history, Fourier inversion, theta transformation, continuation, zeros, and the explicit formula. Read independently of the passage notes. Historical errors and incomplete proofs are identified in a separate editorial notice and endnotes.',
+  verification:'All twenty German page images inspected. Independent English translation of §§1–14, equations (1)–(54), tables, and author footnotes. In §2 Scheibner explicitly says that he will present the main features of Riemann’s investigation. This is a historical commentary, not a modern proof certification.',
+  rights:'public-domain',permission:'https://gdz.sub.uni-goettingen.de/id/PPN599415665_0005',
+  rightsLabel:'Public-domain German original',provenance:'scheibner-1860-provenance.json',
+  reuse:'Public-domain 1860 original; independent English translation by Math Expo, prepared with AI assistance. No modern translation is reproduced.',
+  editionNote:'Complete modern-English translation of the public-domain German essay, with historical notation explained and mathematical limitations disclosed in editorial notices. This text is by Scheibner; the notices are by Math Expo.'},
  {id:'dittrich-2016',works:['riemann-1859'],author:'Walter Dittrich',year:2016,checked:'2026-11-03',
   title:'On Riemann’s Paper, “On the Number of Primes Less Than a Given Magnitude”',
   publication:'arXiv:1609.02301 (2016); version 3, 2 August 2017, 50 pages',kind:'Mathematical commentary',access:'Free author preprint',
@@ -66,7 +78,7 @@ export const authoredCommentaries=[
   url:'https://www.cmu.edu/dietrich/philosophy/docs/tech-reports/153_Sieg.pdf',document:'https://www.cmu.edu/dietrich/philosophy/docs/tech-reports/153_Sieg.pdf',
   scope:'A historical and philosophical analysis of Dedekind’s treatment of number, systems, and axioms, drawing on the 1872 and 1888 essays and their drafts. Its interpretation of Dedekind’s methods is attributed to the commentators; it is not a line-by-line edition.',
   evidence:'https://link.springer.com/article/10.1007/s11229-004-6300-9',verification:'Authors, publication year, volume, and pagination verified against the publisher and Sieg’s Carnegie Mellon publication list. The university hosts an author manuscript headed “to appear in Synthese”; it is distinguished here from the final typeset article.'}
-].map(c=>({...c,checked:c.checked??'2026-10-30',reuse:c.html?'Complete single article reproduced under the author’s express reuse permission; source URL credited.':'Linked external source; no full-text republication license established.'}));
+].map(c=>({...c,checked:c.checked??'2026-10-30',reuse:c.reuse??(c.html?'Complete single article reproduced under the author’s express reuse permission; source URL credited.':'Linked external source; no full-text republication license established.')}));
 
 export const commentariesFor=id=>authoredCommentaries.filter(c=>c.works.includes(id));
 

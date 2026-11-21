@@ -26,7 +26,7 @@ export const discoveryTerms={
  'dedekind-1872':['Dedekind cuts','real numbers','continuity','foundations of analysis'],
  'dedekind-1888':['natural numbers','Dedekind infinity','induction','chains','foundations of arithmetic'],
  'hadamard-1893':['entire functions','Hadamard factorization','zeta function','zeros'],
- 'mangoldt-1895':['explicit formula','Riemann von Mangoldt formula','zero counting','prime counting'],
+ 'mangoldt-1895':['ordered zero series','conditional convergence','prime powers','von Mangoldt function','logarithmic integral','Stirling remainder','explicit formula','Riemann von Mangoldt formula','zero counting','prime counting'],
  'hilbert-1900':['Hilbert problems','foundations','mathematical problems'],
  'noether-1918':['Noether theorem','symmetry','conservation laws','calculus of variations'],
  'monks-2019':['Basel problem','history of mathematics','calculus','reciprocal series'],
