@@ -95,12 +95,11 @@ if(primary){
  const readingLinks=createReadingLinks({paper:textScroll,commentary:authored,controls:linkControls,isOpen:()=>essayOpen,getArticle:()=>[...authored.querySelectorAll('[data-authored-id]')].find(article=>!article.hidden)});
  const essayPositions=new Map();let selectedEssay='';
  function updateCommentaryCredit(essay){
-  const label=`Commentary by ${essay.author} (${essay.year})`,credit=el('span',{class:'work-commentary-credit'});
+  const surnames=essay.author.split(' and ').map(name=>name.trim().split(/\s+/).pop());
+  const label=`Commentary by ${surnames.join(' and ')} (${essay.year})`,credit=el('span',{class:'work-commentary-credit'});
   credit.append(document.createTextNode('Commentary by '));
-  essay.author.split(' and ').forEach((name,index)=>{
+  surnames.forEach((surname,index)=>{
    if(index)credit.append(document.createTextNode(' and '));
-   const words=name.split(' '),surname=words.pop();
-   if(words.length)credit.append(document.createTextNode(words.join(' ')+' '));
    credit.append(el('span',{class:'person-surname'},surname));
   });
   credit.append(document.createTextNode(` (${essay.year})`));
