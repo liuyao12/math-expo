@@ -28,18 +28,17 @@
 .prime-digits-bound{padding:10px 6px;background:#e8eddf;border:1px solid #c9d4bf;text-align:center;overflow-x:auto;overflow-y:hidden}
 .prime-digits-bound .katex-display{margin:4px 0;font-size:.9em}
 #prime-digits-panel .prime-digits-bound-source{font-size:14px}
-.prime-digits-table{width:100%;border-collapse:collapse;font-size:15px;margin:18px 0}
-.prime-digits-table caption{font:14px/1.5 var(--sans);text-align:left;color:#64735a;margin-bottom:10px}
-.prime-digits-table th{font:14px/1.5 var(--sans);text-align:left;color:#53674b}
-.prime-digits-table thead th{padding:0 6px 9px;border-bottom:1px solid #b9c8ac}
-.prime-digits-table tbody th{padding:15px 8px 15px 0;vertical-align:top;white-space:nowrap}
-.prime-digits-table td{padding:12px 0 14px 8px;border-bottom:1px solid #d4dccb;min-width:0}
-.prime-digits-values{margin:0}
-.prime-digits-values>div+div{margin-top:8px}
-.prime-digits-values dt{font:14px/1.5 var(--sans);color:#65745b;margin:0 0 3px}
-.prime-digits-values dd{margin:0;padding:0 0 3px;max-width:100%;overflow-x:auto;overflow-y:hidden;white-space:nowrap}
-.prime-digits-values .katex{font-size:1em}
-.prime-digits-agreement{display:block;font:14px/1.5 var(--sans);color:#53674b;margin-top:7px}
+#prime-digits-panel .prime-digits-table-key{font:14px/1.6 var(--sans);color:#65745b}
+.prime-digits-table-scroll{width:100%;max-width:100%;min-width:0;overflow-x:auto;overscroll-behavior-x:contain;margin:18px 0;border:1px solid #c9d4bf;scrollbar-width:thin;scrollbar-color:#819274 #e8eddf}
+.prime-digits-table-scroll:focus-visible{outline:2px solid #315c49;outline-offset:3px}
+.prime-digits-table{width:max-content;min-width:100%;border-collapse:separate;border-spacing:0;font-size:15px;font-variant-numeric:tabular-nums}
+.prime-digits-table caption{font:14px/1.5 var(--sans);text-align:left;color:#64735a;padding:10px 12px}
+.prime-digits-table th,.prime-digits-table td{padding:11px 14px;text-align:right;white-space:nowrap;border-bottom:1px solid #d4dccb}
+.prime-digits-table thead th{font:14px/1.5 var(--sans);color:#53674b;background:#e8eddf;border-bottom-color:#b9c8ac}
+.prime-digits-table th:first-child{position:sticky;left:0;z-index:1;background:#f3f2e9;border-right:1px solid #d4dccb;text-align:left}
+.prime-digits-table thead th:first-child{background:#e8eddf;z-index:2}
+.prime-digits-table tbody tr:last-child>*{border-bottom:0}
+.prime-digits-table .katex{font-size:1em}
 .prime-digits-record{font-size:14px}
 .prime-digits-infinity{padding:14px 16px;border-left:3px solid #8a7545;background:#ece9db;margin:18px 0}
 .prime-digits-infinity strong{font-weight:600;color:#4e512e}
@@ -48,7 +47,7 @@
 #prime-digits-panel summary{font-size:14px;line-height:1.5;padding-block:4px}
 #prime-digits-panel a{color:var(--green);text-underline-offset:3px}
 #zeta-visual[data-exhibit=digits] .zeta-scene-controls select{display:none}
-@media(max-width:900px){.prime-digits-table{font-size:14px}.prime-digits-table td{padding-left:4px}.prime-digits-table tbody th{padding-right:4px}}
+@media(max-width:900px){.prime-digits-table{font-size:14px}.prime-digits-table th,.prime-digits-table td{padding:10px 12px}}
 @media print{#prime-digits-panel[hidden]{display:block!important}}
 
 /* The same margin follows the formula from zeta values to prime counts. */
@@ -107,6 +106,12 @@
 /* Name the author's conjecture where he makes it, keeping editorial claims distinct. */
 #hypothesis .commentary{background:#eeeede;border-left:3px solid #8e7843;padding:18px 20px;margin-left:0;max-width:none}
 #hypothesis .commentary h3{font-size:22px}#hypothesis .note-type{color:#8a7040}#hypothesis .note-prose strong{color:#394c31;font-weight:500}
+.rh-proof-claim{display:block;margin:18px 0;padding:16px 18px;border:1px solid #c0b3d3;border-left:4px solid #806096;background:#eee7f4;color:#493b58;font:15px/1.65 var(--serif)}
+.rh-proof-claim h4{font:600 18px/1.35 var(--serif);color:#593e70;margin:0 0 10px}
+.rh-proof-claim p{margin:0}
+.rh-proof-claim strong{display:block;color:#63477c;font:600 14px/1.5 var(--sans);margin-bottom:7px}
+.rh-proof-claim a{color:#593e70;text-underline-offset:3px}
+.rh-proof-claim[hidden]{display:none!important}
 .zeta-panel details.zero-experiment{border-top:2px solid #a997b7}
 .zero-experiment>summary{color:#684886;font-weight:500}.zero-experiment .experiment-credit{color:#77549b;font:9px/1.7 var(--sans)}
 .experiment-controls{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px;margin:12px 0}

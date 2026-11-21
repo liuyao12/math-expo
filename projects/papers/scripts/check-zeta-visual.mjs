@@ -20,7 +20,7 @@ const html=read('dist/riemann-1859/index.html'),data=JSON.parse(read('dist/catal
 for(const s of scenes)assert(passages1859.some(p=>p.id===s.anchor));for(const p of passages1859)assert(html.includes(`id="${p.id}"`));
 assert.equal(data.visualContributions.length,3);assert.equal(data.visualContributions[0].work,'riemann-1859');assert.equal(data.works.find(w=>w.id==='riemann-1859').textCoverage.percent,100);
 assert.deepEqual(data.visualContributions[2],primeDigitsContribution);
-assert.deepEqual(primeDigitComparisons.map(row=>row.exponent),[3,6,9,29]);
+assert.deepEqual(primeDigitComparisons.map(row=>row.exponent),[3,6,9,12,15,18,21,24,27,29]);
 for(const row of primeDigitComparisons){
  const liWhole=row.li.split('.')[0];let prefix=0;
  while(prefix<row.count.length&&row.count[prefix]===liWhole[prefix])prefix++;
@@ -29,6 +29,16 @@ for(const row of primeDigitComparisons){
 }
 assert.equal(primeDigitComparisons.at(-1).count,'1520698109714272166094258063');
 assert.equal(primeDigitComparisons.at(-1).prefix,15);
+assert.equal(primeDigitsContribution.title,'Prime-count accuracy');
+const comparisonTable=html.match(/<table class="prime-digits-table">[\s\S]*?<\/table>/)[0];
+assert.equal((comparisonTable.match(/<tr>/g)||[]).length,11);
+assert.equal((comparisonTable.match(/<td>/g)||[]).length,40);
+assert(comparisonTable.includes(String.raw`\(4551193622464.343\)`));
+assert(html.includes('class="prime-digits-table-scroll" tabindex="0" role="region"'));
+assert(!html.includes('prime-digits-values'));
+assert(html.includes('id="rh-proof-claim" class="rh-proof-claim"'));
+assert(html.includes('id="rh-proof-claim-visual" class="rh-proof-claim"'));
+assert(passages1859.find(p=>p.id==='hypothesis').figureHtml.includes('id="rh-proof-claim"'));
 for(const marker of ['id="prime-digits-tab"','id="prime-digits-panel"','data-prime-digits','A theorem must keep control without an endpoint.','28 February 2022','https://github.com/kimwalisch/primecount/blob/master/doc/Records.md',String.raw`\frac{\sqrt{x}\log x}{8\pi}`])assert(html.includes(marker),marker);
 assert.equal(scenes.find(s=>s.exhibit==='digits').anchor,'smooth-part');
 assert.deepEqual(JSON.parse(read('dist/riemann-1859/visual-commentary.json'))[2],primeDigitsContribution);

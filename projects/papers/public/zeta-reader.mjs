@@ -9,7 +9,7 @@ if(root){
  function showExhibit(kind){
   const changed=root.dataset.exhibit!==kind;
   const isExplicit=kind==='explicit',isDigits=kind==='digits';$('zeta-plane-panel').hidden=kind!=='plane';$('explicit-panel').hidden=!isExplicit;$('prime-digits-panel').hidden=!isDigits;
-  $('zeta-exhibit-title').textContent=isExplicit?'Music of the primes':isDigits?'How many digits agree?':'Zeta, in color';
+  $('zeta-exhibit-title').textContent=isExplicit?'Music of the primes':isDigits?'Prime-count accuracy':'Zeta, in color';
   $('zeta-plane-tab').setAttribute('aria-pressed',String(kind==='plane'));$('explicit-tab').setAttribute('aria-pressed',String(isExplicit));$('prime-digits-tab').setAttribute('aria-pressed',String(isDigits));root.dataset.exhibit=kind;
   explicitPlot?.setActive(isExplicit&&readingActive);if(isExplicit)explicitPlot?.resize();
   if(changed)root.scrollTop=0;
@@ -90,8 +90,9 @@ if(root){
  }
  try{worker=new Worker(new URL('./zeta-worker.mjs?v='+encodeURIComponent(version),import.meta.url),{type:'module'});worker.addEventListener('message',({data})=>acceptPixels(data));worker.addEventListener('error',()=>{worker.terminate();worker=null;requestPixels();},{once:true});}catch{worker=null;}
  function updateScene(next,explicit=false){
-  const changed=scene.id!==next.id;if(changed&&next.exhibit==='explicit')explicitPlot?.setActive(false);scene=next;root.dataset.scene=scene.id;selector.value=scene.id;showExhibit(scene.exhibit??'plane');if(changed&&scene.exhibit==='explicit')explicitPlot?.setMode(scene.mode);$('zeta-stage-name').textContent=scene.name;window.paperNames?.enhance?.($('zeta-stage-name'));
+  const changed=scene.id!==next.id;if(changed&&next.exhibit==='explicit')explicitPlot?.setActive(false);scene=next;root.dataset.scene=scene.id;selector.value=scene.id;showExhibit(scene.exhibit??'plane');$('rh-proof-claim-visual').hidden=scene.id!=='conjecture';if(changed&&scene.exhibit==='explicit')explicitPlot?.setMode(scene.mode);$('zeta-stage-name').textContent=scene.name;window.paperNames?.enhance?.($('zeta-stage-name'));
   $('zeta-stage-formula').textContent=scene.formula;window.renderMathInElement?.($('zeta-stage-formula'),{delimiters:[{left:'\\(',right:'\\)',display:false}],throwOnError:false});
+  if(changed&&scene.id==='conjecture')root.scrollTop=0;
   $('zeta-caption').textContent=scene.id==='zeros'&&view.ymax>=firstZeros[0]?'This higher window reaches the first nontrivial zeros. The markers give their approximate locations; the color field is evaluated independently.':scene.caption;
   draw();pointReadout();if(explicit||changed)announce(scene.name+'. '+$('zeta-caption').textContent);
  }
