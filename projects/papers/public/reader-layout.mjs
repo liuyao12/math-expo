@@ -23,9 +23,9 @@ if(primary){
  const textScroll=el('div',{class:'work-text-scroll',id:'work-text-scroll',tabindex:'0',role:'region','aria-label':'Paper, sidenotes and visuals — scroll together'});
  textColumn.append(textHeader,textScroll);textScroll.append(primary);primary.classList.remove('parallel-primary-scroll');primary.classList.add('reading-body');
  const margin=el('aside',{class:'work-margin',id:'work-commentary-panel','aria-label':'Whole-work authored commentary',hidden:''});
- const marginHeader=el('div',{class:'work-margin-heading'}),marginTitle=el('span',{},'Authored commentary');
- const essayToggle=button('Authored commentary',{'aria-expanded':'false','aria-controls':'work-commentary-panel',class:'work-commentary-launcher'});
- const essayClose=button('Collapse',{'aria-label':'Collapse authored commentary'});
+ const marginHeader=el('div',{class:'work-margin-heading'}),marginTitle=el('span',{},'Commentary');
+ const essayToggle=button('Commentary',{'aria-expanded':'false','aria-controls':'work-commentary-panel',class:'work-commentary-launcher'});
+ const essayClose=button('Collapse',{'aria-label':'Collapse commentary'});
  toolbar.append(el('a',{href:config.base+'commentaries/',class:'work-browse'},'Browse commentaries'));
  if(oldHeader)toolbar.append(...oldHeader.querySelectorAll('#hypothesis-status,#open-hypothesis,#format-hypothesis-comment'));
  marginHeader.append(marginTitle,essayClose);
@@ -39,7 +39,7 @@ if(primary){
  // An authored essay belongs to the whole work; it never follows passage scroll.
  const essayChoice=el('select',{'aria-label':'Choose authored commentary',id:'work-essay-choice'});
  if(config.essays.length){
-  const choiceLabel=el('label',{for:'work-essay-choice',class:'work-choice-label'},'Authored commentary');
+  const choiceLabel=el('label',{for:'work-essay-choice',class:'work-choice-label'},'Commentator');
   authored.append(choiceLabel,essayChoice);
   for(const essay of config.essays){
    essayChoice.append(el('option',{value:essay.id},essay.author+' · '+essay.year));
@@ -94,11 +94,26 @@ if(primary){
  let essayOpen=false,essayPosition=0;
  const readingLinks=createReadingLinks({paper:textScroll,commentary:authored,controls:linkControls,isOpen:()=>essayOpen,getArticle:()=>[...authored.querySelectorAll('[data-authored-id]')].find(article=>!article.hidden)});
  const essayPositions=new Map();let selectedEssay='';
+ function updateCommentaryCredit(essay){
+  const label=`Commentary by ${essay.author} (${essay.year})`,credit=el('span',{class:'work-commentary-credit'});
+  credit.append(document.createTextNode('Commentary by '));
+  essay.author.split(' and ').forEach((name,index)=>{
+   if(index)credit.append(document.createTextNode(' and '));
+   const words=name.split(' '),surname=words.pop();
+   if(words.length)credit.append(document.createTextNode(words.join(' ')+' '));
+   credit.append(el('span',{class:'person-surname'},surname));
+  });
+  credit.append(document.createTextNode(` (${essay.year})`));
+  essayToggle.replaceChildren(credit);essayToggle.title=label;
+  marginTitle.replaceChildren(credit.cloneNode(true));marginTitle.title=label;
+  margin.setAttribute('aria-label',label);authored.setAttribute('aria-label',label+' — scroll independently');
+  essayClose.setAttribute('aria-label','Collapse '+label.replace(/^Commentary/,'commentary'));
+ }
  function chooseEssay(id){
-  if(!config.essays.some(essay=>essay.id===id))return;
+  const essay=config.essays.find(essay=>essay.id===id)??config.essays[0];if(!essay)return;id=essay.id;
   essayPositions.set(selectedEssay,authored.scrollTop);selectedEssay=id;essayChoice.value=id;
   authored.querySelectorAll('[data-authored-id]').forEach(node=>{node.hidden=node.dataset.authoredId!==id;});
-  authored.scrollTop=essayPositions.get(id)??0;readingLinks.refresh({align:essayOpen});
+  authored.scrollTop=essayPositions.get(id)??0;updateCommentaryCredit(essay);readingLinks.refresh({align:essayOpen});
  }
  function setAuthored(open,sync=false){
   const changed=essayOpen!==open;
@@ -107,7 +122,7 @@ if(primary){
   if(changed&&open)authored.scrollTop=essayPosition;
   for(const note of passageNotes)(note.closest('.anchored-margin-slot')||note).inert=open;
   for(const rail of primary.querySelectorAll('.zeta-rail,.surfaces-rail'))rail.inert=open;
-  essayToggle.textContent=open?'Collapse authored commentary':'Authored commentary';essayToggle.setAttribute('aria-expanded',String(open));
+  essayToggle.setAttribute('aria-expanded',String(open));
   if(sync){const url=new URL(location.href);url.searchParams.set('view',open?'commentary':'notes');history.replaceState(null,'',url);}
   requestAnimationFrame(()=>{window.dispatchEvent(new Event('resize'));if(changed&&open)readingLinks.followPaper();});
  }
