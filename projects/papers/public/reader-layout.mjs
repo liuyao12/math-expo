@@ -2,6 +2,8 @@
 // exhibits share one reading surface; whole-work essays overlay that surface.
 const linkVersion=new URL(import.meta.url).searchParams.get('v')??'1';
 const {createReadingLinks}=await import('./reading-links.mjs?v='+encodeURIComponent(linkVersion));
+const {mountExhibitDrawer}=await import('./exhibit-drawer.mjs?v='+encodeURIComponent(linkVersion));
+const {separateRiemannApparatus}=await import('./reading-apparatus.mjs?v='+encodeURIComponent(linkVersion));
 const config=JSON.parse(document.getElementById('reader-layout-data').textContent);
 const primary=document.querySelector('.reading-body')??document.getElementById('primary-scroll');
 const el=(tag,attrs={},text)=>{const node=document.createElement(tag);for(const [key,value] of Object.entries(attrs))node.setAttribute(key,value);if(text!==undefined)node.textContent=text;return node;};
@@ -32,7 +34,7 @@ if(primary){
  margin.append(marginHeader,linkControls,authored);
  // Keep every note beside its original passage, including its drawings and
  // controls. Stable note anchors also support links from the previous layout.
- const passageNotes=[...primary.querySelectorAll('.passage > .commentary')];
+ let passageNotes=[...primary.querySelectorAll('.passage > .commentary')];
  for(const note of passageNotes)if(!note.id)note.id='note-'+note.closest('.passage').id;
  // An authored essay belongs to the whole work; it never follows passage scroll.
  const essayChoice=el('select',{'aria-label':'Choose authored commentary',id:'work-essay-choice'});
@@ -66,6 +68,8 @@ if(primary){
  // The old companion layout is superseded by this shared reader shell.
  primary.querySelectorAll('.parallel-entry,.reading-key,.companion-toolbar,#authored-commentary').forEach(node=>node.remove());
  primary.querySelectorAll('.companion-main,.original-source-section').forEach(node=>{node.hidden=false;});
+ separateRiemannApparatus(primary);
+ passageNotes=[...primary.querySelectorAll('.passage > .commentary')];
  const paperTop=el('span',{id:'top'});primary.prepend(paperTop);
  if(oldMain?.id==='top')oldMain.removeAttribute('id');
  if(!tocLinks.length){
@@ -79,12 +83,14 @@ if(primary){
  oldMain?.replaceWith(columns);if(!columns.isConnected)document.body.append(columns);
  document.documentElement.classList.add('work-reader-root');
  document.body.classList.remove('parallel-reader','commentary-collapsed','notes-hidden');document.body.classList.add('work-reader');
- // The zeta reading uses its margin for a single exhibit that follows several sections.
- const marginItems=passageNotes.filter(note=>!note.closest('.zeta-illustrated-reading')).map(content=>{
+ // Every passage note occupies the right margin; the exhibit is a separate overlay.
+ const marginItems=passageNotes.map(content=>{
   const anchor=content.closest('.passage');
   return {content,anchor,section:anchor.closest('.paper-part,#weil-guide')||anchor};
  });
  window.MathExpoMargins.mount({root:primary,items:marginItems,media:'(min-width: 701px)',scroller:textScroll});
+ const exhibitRail=primary.querySelector('.zeta-rail');
+ if(exhibitRail){textHeader.textContent='Original text · Notes in the right margin';textScroll.setAttribute('aria-label','Original paper and paragraph-aligned notes');mountExhibitDrawer({rail:exhibitRail,stage:readingStage,note:passageNotes[0]});}
  let essayOpen=false,essayPosition=0;
  const readingLinks=createReadingLinks({paper:textScroll,commentary:authored,controls:linkControls,isOpen:()=>essayOpen,getArticle:()=>[...authored.querySelectorAll('[data-authored-id]')].find(article=>!article.hidden)});
  const essayPositions=new Map();let selectedEssay='';
@@ -116,7 +122,14 @@ if(primary){
  function navigate(hash){
   let id;try{id=decodeURIComponent(hash.slice(1));}catch{return;}
   const target=document.getElementById(id);if(!target)return;
-  if(primary.contains(target)){if(target.closest('.commentary,.zeta-rail,.surfaces-rail'))setAuthored(false,true);scrollWithin(textScroll,target.closest('.anchored-margins .anchored-margin-slot')?.parentElement??target);}
+  if(primary.contains(target)){
+   if(target.closest('.commentary,.surfaces-rail'))setAuthored(false,true);
+   for(let parent=target.parentElement;parent&&parent!==primary;parent=parent.parentElement)if(parent.tagName==='DETAILS')parent.open=true;
+   const card=target.closest('.anchored-margin-card');
+   scrollWithin(textScroll,card?.closest('.passage')??target);
+   if(card)requestAnimationFrame(()=>scrollWithin(card,target));
+  }
+  else if(exhibitRail?.contains(target)){setAuthored(false,true);exhibitRail.exhibitDrawer.reveal();}
   else return;
   document.body.classList.remove('contents-open');contentsButton.setAttribute('aria-expanded','false');
  }

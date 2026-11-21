@@ -1,23 +1,25 @@
 const root=document.querySelector('#zeta-visual');
 if(root){
  const version=new URL(import.meta.url).searchParams.get('v')??'1';
- const {zeta,domainColor,squareView,firstZerosView,clampView,zoomView,pointAt,allowedByStage,scenes,sceneAt,firstZeros}=await import('./zeta-math.mjs?v='+encodeURIComponent(version));
+ const {zeta,domainColor,squareView,firstZerosView,clampView,zoomView,pointAt,allowedByStage,scenes,sceneAt,firstZeros,exhibitSceneForPassage}=await import('./zeta-math.mjs?v='+encodeURIComponent(version));
  const $=id=>document.getElementById(id),canvas=$('zeta-plot'),ctx=canvas.getContext('2d'),frame=canvas.parentElement,labels=$('zeta-axis-labels');
  const follow=$('zeta-follow'),selector=$('zeta-scene'),status=$('zeta-render-state');
  const {initExplicitPlot}=await import('./explicit-reader.mjs?v='+encodeURIComponent(version));
  let explicitPlot=null,readingActive=true,experimentRequested=false;
+ const drawer=()=>root.closest('.zeta-rail')?.exhibitDrawer;
+ const exhibitVisible=()=>drawer()?.isOpen??false;
  function showExhibit(kind){
   const changed=root.dataset.exhibit!==kind;
   const isExplicit=kind==='explicit',isDigits=kind==='digits';$('zeta-plane-panel').hidden=kind!=='plane';$('explicit-panel').hidden=!isExplicit;$('prime-digits-panel').hidden=!isDigits;
   $('zeta-exhibit-title').textContent=isExplicit?'Music of the primes':isDigits?'Prime-count accuracy':'Zeta, in color';
   $('zeta-plane-tab').setAttribute('aria-pressed',String(kind==='plane'));$('explicit-tab').setAttribute('aria-pressed',String(isExplicit));$('prime-digits-tab').setAttribute('aria-pressed',String(isDigits));root.dataset.exhibit=kind;
-  explicitPlot?.setActive(isExplicit&&readingActive);if(isExplicit)explicitPlot?.resize();
+  explicitPlot?.setActive(isExplicit&&readingActive&&exhibitVisible());if(isExplicit)explicitPlot?.resize();
   if(changed)root.scrollTop=0;
  }
- initExplicitPlot(root,{version}).then(plot=>{explicitPlot=plot;if(experimentRequested)plot.openExperiment();if(scene.exhibit==='explicit'){explicitPlot.setMode(scene.mode);explicitPlot.setActive(readingActive);}});
+ initExplicitPlot(root,{version}).then(plot=>{explicitPlot=plot;if(experimentRequested)plot.openExperiment();if(scene.exhibit==='explicit'){explicitPlot.setMode(scene.mode);explicitPlot.setActive(readingActive&&exhibitVisible());}});
  document.addEventListener('click',event=>{
   if(!event.target.closest('[data-zero-experiment]'))return;
-  event.preventDefault();experimentRequested=true;follow.checked=true;
+  event.preventDefault();experimentRequested=true;follow.checked=true;drawer()?.reveal();
   updateScene(scenes.find(s=>s.id==='prime-inversion'));explicitPlot?.openExperiment();
   if(location.hash!=='#density')history.pushState(null,'','#density');
   $('density').scrollIntoView({block:'start',behavior:'instant'});syncScroll();
@@ -25,7 +27,7 @@ if(root){
  $('zeta-plane-tab').addEventListener('click',()=>{follow.checked=false;updateScene(scene.exhibit?scenes[3]:scene,true);requestPixels();});
  $('explicit-tab').addEventListener('click',()=>{follow.checked=false;updateScene(scenes.find(s=>s.id==='prime-inversion'),true);});
  $('prime-digits-tab').addEventListener('click',()=>{follow.checked=false;updateScene(scenes.find(s=>s.id==='prime-digits'),true);});
- document.addEventListener('click',event=>{if(!event.target.closest('[data-prime-digits]'))return;follow.checked=true;updateScene(scenes.find(s=>s.id==='prime-digits'),true);});
+ document.addEventListener('click',event=>{if(!event.target.closest('[data-prime-digits]'))return;follow.checked=true;drawer()?.reveal();updateScene(scenes.find(s=>s.id==='prime-digits'),true);});
 
  let scene=scenes[0],view={...squareView},selection=[2,0],cache=null,job=0,timer=0,worker=null,drag=null,scrollFrame=0,labelKey='',frameWidth=0,frameHeight=0;
  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -96,7 +98,17 @@ if(root){
   $('zeta-caption').textContent=scene.id==='zeros'&&view.ymax>=firstZeros[0]?'This higher window reaches the first nontrivial zeros. The markers give their approximate locations; the color field is evaluated independently.':scene.caption;
   draw();pointReadout();if(explicit||changed)announce(scene.name+'. '+$('zeta-caption').textContent);
  }
- function syncScroll(){const paper=document.querySelector('.work-text-scroll'),box=paper?.getBoundingClientRect();const trigger=box?box.top+box.height*.33:innerWidth<=900?Math.min(innerHeight*.8,root.getBoundingClientRect().bottom+35):innerHeight*.33;readingActive=($('euler-product')?.getBoundingClientRect().top??Infinity)<=trigger&&($('numerical-evidence')?.getBoundingClientRect().bottom??-Infinity)>trigger;explicitPlot?.setActive(scene.exhibit==='explicit'&&readingActive);if(!follow.checked)return;const next=sceneAt(scenes.map(s=>document.getElementById(s.anchor)?.getBoundingClientRect().top??Infinity),trigger);if(next.id!==scene.id)updateScene(next);}
+ function syncScroll(){
+  const paper=document.querySelector('.work-text-scroll'),box=paper?.getBoundingClientRect(),trigger=box?box.top+Math.min(140,box.height*.22):innerHeight*.22;
+  readingActive=($('euler-product')?.getBoundingClientRect().top??Infinity)<=trigger&&($('numerical-evidence')?.getBoundingClientRect().bottom??-Infinity)>trigger;
+  const passages=[...document.querySelectorAll('.zeta-illustrated-reading .passage')];
+  const active=passages.filter(passage=>passage.getBoundingClientRect().top<=trigger).at(-1);
+  drawer()?.setContext(readingActive&&exhibitSceneForPassage(active?.id)?active.id:null);
+  if(follow.checked){const next=sceneAt(scenes.map(s=>document.getElementById(s.anchor)?.getBoundingClientRect().top??Infinity),trigger);if(next.id!==scene.id)updateScene(next);}
+  explicitPlot?.setActive(scene.exhibit==='explicit'&&readingActive&&exhibitVisible());
+ }
+ addEventListener('paper:exhibit-ready',syncScroll);
+ addEventListener('paper:exhibit-visibility',event=>{if(!event.detail.suspended)explicitPlot?.setActive(scene.exhibit==='explicit'&&readingActive&&exhibitVisible());if(exhibitVisible()){requestPixels();explicitPlot?.resize();}});
  addEventListener('scroll',()=>{if(!scrollFrame)scrollFrame=requestAnimationFrame(()=>{scrollFrame=0;syncScroll();});},{passive:true});
  selector.addEventListener('change',()=>{follow.checked=false;updateScene(scenes.find(s=>s.id===selector.value),true);});follow.addEventListener('change',()=>{if(follow.checked){syncScroll();announce('Following the paper.');}else announce('Manual exploration.');});
  function setView(next){view=clampView(next);labelKey='';requestPixels();updateScene(scene);}

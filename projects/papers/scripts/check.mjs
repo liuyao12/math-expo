@@ -3,6 +3,7 @@ import './check-reading-links.mjs';
 import './check-weil-1949.mjs';
 import './check-explicit.mjs';
 import './check-zeta-visual.mjs';
+import './check-exhibit-drawer.mjs';
 import './check-cartan-1913.mjs';
 import './check-text-coverage.mjs';
 import './check-representation.mjs';

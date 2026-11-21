@@ -77,4 +77,8 @@ export const scenes=[
  {id:'prime-digits',anchor:'smooth-part',name:'Prime-count accuracy',exhibit:'digits',caption:'Finite counts through 10^29, compared with a conditional bound valid without an endpoint.',formula:'',strip:false}
 ];
 export function sceneAt(positions,trigger){let index=0;for(let i=0;i<positions.length;i++)if(positions[i]<=trigger)index=i;return scenes[index];}
+export function exhibitSceneForPassage(id){
+ const anchor=({density:'mobius','numerical-evidence':'smooth-part'})[id]??id;
+ return scenes.find(scene=>scene.anchor===anchor)??null;
+}
 export const firstZeros=[14.134725141734693,21.022039638771555,25.01085758014569];
