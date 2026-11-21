@@ -38,7 +38,7 @@ export function mountExhibitDrawer({rail,stage,note}){
  close.addEventListener('click',()=>{send({type:'close'});tab.focus();});
  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&state.open){send({type:'close'});tab.focus();}});
  window.addEventListener('paper:commentary-mode',event=>send({type:'suspend',value:event.detail.open}));
- rail.exhibitDrawer={setContext:id=>send({type:'context',id}),reveal:()=>send({type:'reveal'}),get isOpen(){return state.open;}};
+ rail.exhibitDrawer={setContext:id=>send({type:'context',id}),reveal:()=>send({type:'reveal'}),dismiss:()=>send({type:'close'}),get isOpen(){return state.open;}};
  send({type:'context',id:null});window.dispatchEvent(new Event('paper:exhibit-ready'));
  return rail.exhibitDrawer;
 }

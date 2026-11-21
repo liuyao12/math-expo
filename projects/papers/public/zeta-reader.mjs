@@ -108,6 +108,7 @@ if(root){
   explicitPlot?.setActive(scene.exhibit==='explicit'&&readingActive&&exhibitVisible());
  }
  addEventListener('paper:exhibit-ready',syncScroll);
+ addEventListener('paper:note-navigation',()=>{syncScroll();drawer()?.dismiss();});
  addEventListener('paper:exhibit-visibility',event=>{if(!event.detail.suspended)explicitPlot?.setActive(scene.exhibit==='explicit'&&readingActive&&exhibitVisible());if(exhibitVisible()){requestPixels();explicitPlot?.resize();}});
  addEventListener('scroll',()=>{if(!scrollFrame)scrollFrame=requestAnimationFrame(()=>{scrollFrame=0;syncScroll();});},{passive:true});
  selector.addEventListener('change',()=>{follow.checked=false;updateScene(scenes.find(s=>s.id===selector.value),true);});follow.addEventListener('change',()=>{if(follow.checked){syncScroll();announce('Following the paper.');}else announce('Manual exploration.');});

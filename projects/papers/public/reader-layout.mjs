@@ -128,6 +128,7 @@ if(primary){
    const card=target.closest('.anchored-margin-card');
    scrollWithin(textScroll,card?.closest('.passage')??target);
    if(card)requestAnimationFrame(()=>scrollWithin(card,target));
+   if(target.closest('.commentary'))window.dispatchEvent(new Event('paper:note-navigation'));
   }
   else if(exhibitRail?.contains(target)){setAuthored(false,true);exhibitRail.exhibitDrawer.reveal();}
   else return;
