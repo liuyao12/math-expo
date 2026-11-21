@@ -40,6 +40,9 @@
 .prime-digits-table tbody tr:last-child>*{border-bottom:0}
 .prime-digits-table .katex{font-size:1em}
 .prime-digits-record{font-size:14px}
+.schoenfeld-precision-note{font:15px/1.7 var(--serif)}
+.work-reader .schoenfeld-precision-note>summary{font:14px/1.6 var(--sans);padding-block:4px}
+.schoenfeld-precision-note .katex-display{font-size:.85em;overflow-x:auto;overflow-y:hidden}
 .prime-digits-infinity{padding:14px 16px;border-left:3px solid #8a7545;background:#ece9db;margin:18px 0}
 .prime-digits-infinity strong{font-weight:600;color:#4e512e}
 .prime-digits-infinity p{margin:8px 0 0}

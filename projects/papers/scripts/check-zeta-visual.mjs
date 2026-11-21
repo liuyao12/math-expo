@@ -30,6 +30,11 @@ for(const row of primeDigitComparisons){
 assert.equal(primeDigitComparisons.at(-1).count,'1520698109714272166094258063');
 assert.equal(primeDigitComparisons.at(-1).prefix,15);
 assert.equal(primeDigitsContribution.title,'Prime-count accuracy');
+assert(primeDigitsContribution.sources.some(source=>source.url==='https://doi.org/10.1090/S0025-5718-1976-0457374-X'));
+assert(passages1859.find(p=>p.id==='smooth-part').figureHtml.includes('schoenfeld-precision-note'));
+assert(html.includes('Sharper Bounds</i>'));
+assert(html.includes(String.raw`\frac{E(x)}{\pi(x)}\sim\frac{(\log x)^2}{8\pi\sqrt{x}}`));
+assert(html.includes('literal prefix of half the decimal characters'));
 const comparisonTable=html.match(/<table class="prime-digits-table">[\s\S]*?<\/table>/)[0];
 assert.equal((comparisonTable.match(/<tr>/g)||[]).length,11);
 assert.equal((comparisonTable.match(/<td>/g)||[]).length,40);

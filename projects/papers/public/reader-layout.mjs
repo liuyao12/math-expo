@@ -119,6 +119,14 @@ if(primary){
  contentsButton.addEventListener('click',()=>{const open=document.body.classList.toggle('contents-open');contentsButton.setAttribute('aria-expanded',String(open));});
  document.addEventListener('keydown',event=>{if(event.key==='Escape'){if(essayOpen){setAuthored(false,true);essayToggle.focus();}document.body.classList.remove('contents-open');contentsButton.setAttribute('aria-expanded','false');}});
  function scrollWithin(container,target){container.scrollTop+=target.getBoundingClientRect().top-container.getBoundingClientRect().top-18;}
+ document.addEventListener('toggle',event=>{
+  const details=event.target;if(!details.matches?.('.schoenfeld-precision-note')||!details.open)return;
+  requestAnimationFrame(()=>{
+   const container=details.closest('.anchored-margin-card,#zeta-visual');if(!container)return;
+   const inset=container.id==='zeta-visual'?(container.querySelector('.zeta-panel-heading')?.getBoundingClientRect().height??0)+12:12;
+   container.scrollTop+=details.getBoundingClientRect().top-container.getBoundingClientRect().top-inset;
+  });
+ },true);
  function navigate(hash){
   let id;try{id=decodeURIComponent(hash.slice(1));}catch{return;}
   const target=document.getElementById(id);if(!target)return;
