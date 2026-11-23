@@ -37,8 +37,9 @@ assert(html.includes(String.raw`\frac{E(x)}{\pi(x)}\sim\frac{(\log x)^2}{8\pi\sq
 assert(html.includes('literal prefix of half the decimal characters'));
 const comparisonTable=html.match(/<table class="prime-digits-table">[\s\S]*?<\/table>/)[0];
 assert.equal((comparisonTable.match(/<tr>/g)||[]).length,11);
-assert.equal((comparisonTable.match(/<td>/g)||[]).length,20);
-assert.equal((comparisonTable.match(/scope="col"/g)||[]).length,3);
+assert.equal((comparisonTable.match(/class="prime-digits-pair"/g)||[]).length,10);
+assert.equal((comparisonTable.match(/scope="col"/g)||[]).length,2);
+assert.equal((comparisonTable.match(/\\begin\{aligned\}\\pi\(N\)&=/g)||[]).length,10);
 assert.equal((comparisonTable.match(/\.\d\\ldots/g)||[]).length,10);
 assert(!comparisonTable.includes('Leading digits'));
 assert(html.includes('class="prime-digits-table-scroll" tabindex="0" role="region"'));

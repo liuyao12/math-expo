@@ -31,11 +31,11 @@ export const primeDigitsContribution={
 };
 
 function matched(value,prefix){
- return m`\(\textcolor{#246642}{\mathbf{${value.slice(0,prefix)}}}${value.slice(prefix)}\)`;
+ return m`\textcolor{#246642}{\mathbf{${value.slice(0,prefix)}}}${value.slice(prefix)}`;
 }
 function comparisonRow(row){
  const [whole,fraction]=row.li.split('.'),li=m`${whole}.${fraction[0]}\ldots`;
- return m`<tr><th scope="row">\(10^{${row.exponent}}\)</th><td>${matched(row.count,row.prefix)}</td><td>${matched(li,row.prefix)}</td></tr>`;
+ return m`<tr><th scope="row">\(10^{${row.exponent}}\)</th><td class="prime-digits-pair">\(\begin{aligned}\pi(N)&=${matched(row.count,row.prefix)}\\\operatorname{Li}(N)&=${matched(li,row.prefix)}\end{aligned}\)</td></tr>`;
 }
 
 export function primeDigitsHTML(){return m`
@@ -45,9 +45,9 @@ export function primeDigitsHTML(){return m`
  <p class="prime-digits-bound-source">The constant can be taken to be \(c=1/(8\pi)\) for every real \(x\ge2657\), by Lowell <a href="https://doi.org/10.1090/S0025-5718-1976-0457374-X" target="_blank" rel="noopener"><span class="person-surname">Schoenfeld</span></a>, <a href="https://doi.org/10.1090/S0025-5718-1976-0457374-X" target="_blank" rel="noopener"><i>Sharper Bounds</i></a> (1976), Corollary 1. Here \(\log\) is the natural logarithm. This later estimate is not proved in Riemann’s paper.</p>
  <p>Why “half the digits”? Since \(\pi(x)\sim x/\log x\), the count has about \(\log_{10}x\) digits, while an error of size \(\sqrt{x}\log x\) has about half as many, with logarithmic corrections. Thus \(\operatorname{Li}(x)\) estimates the count to roughly half its significant digits. The green prefixes below agree <strong>digit for digit</strong>. The bound alone does not guarantee a literal matching prefix of that length at every input: a carry across a decimal boundary can change an earlier digit.</p>
  ${schoenfeldPrecisionHTML()}
- <p class="prime-digits-table-key" id="prime-digits-table-help">Green bold digits mark the common leading string. The logarithmic integral shows one decimal place followed by an ellipsis. Scroll sideways to compare the columns.</p>
+ <p class="prime-digits-table-key" id="prime-digits-table-help">Each exact count sits above its logarithmic integral, with corresponding digits aligned. Green bold digits mark the common leading string. The logarithmic integral shows one decimal place followed by an ellipsis. Scroll sideways for the larger values.</p>
  <div class="prime-digits-table-scroll" tabindex="0" role="region" aria-label="Prime-count comparison table — scroll horizontally" aria-describedby="prime-digits-table-help">
- <table class="prime-digits-table"><caption>Exact counts and the logarithmic integral</caption><thead><tr><th scope="col">\(N\)</th><th scope="col">Exact \(\pi(N)\)</th><th scope="col">\(\operatorname{Li}(N)\)</th></tr></thead><tbody>${primeDigitComparisons.map(comparisonRow).join('')}</tbody></table>
+ <table class="prime-digits-table"><caption>Exact counts and the logarithmic integral</caption><thead><tr><th scope="col">\(N\)</th><th scope="col">Exact count / logarithmic integral</th></tr></thead><tbody>${primeDigitComparisons.map(comparisonRow).join('')}</tbody></table>
  </div>
  <div class="prime-digits-infinity"><strong>A theorem must keep control without an endpoint.</strong><p>Assuming RH, the estimate holds for every real \(x\ge2657\), however far out we go. The table gives finite comparisons; it cannot establish an error bound all the way to infinity. Its first row, \(10^3\), is below Schoenfeld’s threshold. Literal digit prefixes need not improve monotonically.</p></div>
  <p class="prime-digits-record">Counts: <a href="https://oeis.org/A006880/b006880.txt" target="_blank" rel="noopener">OEIS A006880</a>. The \(10^{27}\) and \(10^{29}\) records are documented by Kim <a href="https://github.com/kimwalisch/primecount/blob/master/doc/Records.md" target="_blank" rel="noopener"><span class="person-surname">Walisch</span></a> and David <a href="https://github.com/kimwalisch/primecount/blob/master/doc/Records.md" target="_blank" rel="noopener"><span class="person-surname">Baugh</span></a>; the latter was computed on 28 February 2022 and double-checked. These counts are independent of RH.</p>
