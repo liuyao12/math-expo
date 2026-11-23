@@ -39,7 +39,7 @@
 .prime-digits-table thead th:first-child{background:#e8eddf;z-index:2}
 .prime-digits-table tbody tr:last-child>*{border-bottom:0}
 .prime-digits-table .katex{font-size:1em}
-.prime-digits-table .prime-digits-pair{text-align:left}
+.prime-digits-table .prime-digits-pair{text-align:right}
 .prime-digits-table .prime-digits-pair .katex{line-height:1.5}
 .prime-digits-record{font-size:14px}
 .schoenfeld-precision-note{font:15px/1.7 var(--serif)}
