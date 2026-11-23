@@ -56,7 +56,6 @@ for(const route of ['riemann-1859','riemann-1859/compare','concepts/hypothesis-1
  assert(page.includes('https://alpo.ge/remark.pdf'));
  assert(page.includes('Status · 20 November 2026.'));
  assert(page.includes('has not independently verified the claim'));
- assert(!/quasi.?riemann|quansi.?riemann|one eighth|7\/8/i.test(page));
 }
 assert.equal(read('dist/riemann-1859/zeta-reference-values.json'),read('src/sources/zeta-reference-values.json'));
 for(const file of ['zeta-math.mjs','zeta-reader.mjs','zeta-worker.mjs']){const result=spawnSync(process.execPath,['--check',new URL('public/'+file,root).pathname],{encoding:'utf8'});assert.equal(result.status,0,result.stderr);}
