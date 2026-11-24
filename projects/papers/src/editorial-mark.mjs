@@ -1,9 +1,10 @@
 import {readFileSync} from 'node:fs';
 
 // One drawing supplies the favicon, collection mark, and editorial signature.
+// Its italic x is the outline of U+0078 in the bundled KaTeX_Math-Italic font.
 export const meMonogram=readFileSync(new URL('../public/mark.svg',import.meta.url),'utf8').trim()
  .replace('<svg ','<svg aria-hidden="true" focusable="false" ');
-const signature=`<span class="me-signature" role="img" aria-label="ME · Math Expo" title="Commentary by Math Expo">${meMonogram}</span>`;
+const signature=`<span class="me-signature" role="img" aria-label="MEx · Math Expo" title="Commentary by Math Expo">${meMonogram}</span>`;
 
 export function signEditorialNotes(html){
  // Only our passage notes receive this credit. Whole-work authored essays
