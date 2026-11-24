@@ -1,3 +1,5 @@
+import '../public/name-context.js';
+export const {isPersonalUse}=globalThis.MathExpoNameContext;
 export function surname(person){return person.surname??person.name.split(' ').at(-1);}
 const escapePattern=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
 

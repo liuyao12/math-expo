@@ -6,19 +6,27 @@
  const escape=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
  const aliases=[...byAlias.keys()].sort((a,b)=>b.length-a.length);
  const pattern=new RegExp(`(?<![\\p{L}\\p{N}_])(${aliases.map(escape).join('|')})(?![\\p{L}\\p{N}_])`,'gu');
+ const {isPersonalUse}=window.MathExpoNameContext;
+ const titleSelector='i,em,cite,.work-title,.work-bar-title,.paper-heading h1,.work-record h3,.work-heading,.bibliography h3,.profile-bibliography,.authored-essay-title,.guide-passage-title,.parallel-essay h3,.work-essay h3,a[data-work]';
+ function localContext(node){
+  const block=node.parentElement.closest('p,h1,h2,h3,h4,h5,h6,li,figcaption,summary,button,label,option,dt,dd,td,th')??node.parentElement;
+  const range=document.createRange();range.selectNodeContents(block);range.setEnd(node,0);
+  return {text:block.textContent,offset:range.toString().length};
+ }
  function enhance(root){
   const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT),nodes=[];
   while(walker.nextNode()){
    const node=walker.currentNode,parent=node.parentElement;
-   if(!parent||parent.closest('script,style,textarea,pre,code,svg,math,.katex,.person-surname,[data-no-person-names]'))continue;
+   if(!parent||parent.closest('script,style,textarea,pre,code,svg,math,.katex,.person-surname,.parallel-surname,[data-no-person-names]')||parent.closest(titleSelector))continue;
    pattern.lastIndex=0;
    if(pattern.test(node.data))nodes.push(node);
   }
   for(const node of nodes){
-   const text=node.data,fragment=document.createDocumentFragment();let last=0;
+   const text=node.data,fragment=document.createDocumentFragment(),context=localContext(node);let last=0;
    pattern.lastIndex=0;
    for(const match of text.matchAll(pattern)){
     const person=byAlias.get(match[0]);
+    if(!isPersonalUse(person,context.text,context.offset+match.index,context.offset+match.index+match[0].length))continue;
     fragment.append(document.createTextNode(text.slice(last,match.index)));
     const surname=document.createElement('span');surname.className='person-surname';surname.textContent=match[0];
     // Existing citations keep their precise destinations; avoid nested anchors
@@ -39,5 +47,5 @@
    fragment.append(document.createTextNode(text.slice(last)));node.replaceWith(fragment);
   }
  }
- window.paperNames={enhance};
+ window.paperNames={enhance,isPersonalUse};
 })();

@@ -5,11 +5,20 @@ import {groups1895} from './poincare-1895-groups.mjs';
 import {symmetric1895} from './poincare-1895-symmetric.mjs';
 import {euler1895} from './poincare-1895-euler.mjs';
 import {figures1895} from './figures-poincare-1895.mjs';
+import {isPersonalUse} from './personal-names.mjs';
 const m=String.raw;
 const names=['Introduction','p-1-Premiere-definition-des-varietes','p-2-Homeomorphisme','p-3-Deuxieme-definition-des-varietes','p-4-Varietes-opposees','p-5-Homologies','p-6-Nombres-de-Betti','p-7-Emploi-des-integrales','p-8-Varietes-unilateres-et-bilateres','p-9-Intersection-de-deux-varietes','p-10-Representation-geometrique','p-11-Representation-par-un-groupe-discontinu','p-12-Groupe-fondamental','p-13-Equivalences-fondamentales','p-14-Conditions-de-l-homeomorphisme','p-15-Autres-modes-de-generation','p-16-Theoreme-d-Euler','p-17-Cas-ou-p-est-impair','p-18-Deuxieme-demonstration'];
 const named={Liouville:'liouville',Poincaré:'poincare',Riemann:'riemann',Betti:'betti',Picard:'picard',Jordan:'jordan',Klein:'klein',Dyck:'dyck',Euler:'euler','de Jonquières':'jonquieres',Stokes:'stokes','de Rham':'de-rham','van Kampen':'van-kampen'};
 const namePattern=new RegExp('(?<![\\p{L}\\p{N}_])(?:'+Object.keys(named).sort((a,b)=>b.length-a.length).join('|')+')(?![\\p{L}\\p{N}_])','gu');
-const markNames=text=>text.split(/(<[^>]*>|\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\]|\[\[[\s\S]*?\]\])/g).map((part,i)=>i%2?part:part.replace(namePattern,name=>'[[person:'+named[name]+'|'+name+']]')).join('');
+const markNames=text=>{
+ let offset=0,titleDepth=0;
+ return text.split(/(<[^>]*>|\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\]|\[\[[\s\S]*?\]\])/g).map((part,i)=>{
+  const start=offset;offset+=part.length;
+  if(/^<(?:i|em|cite)\b/.test(part))titleDepth++;
+  if(/^<\/(?:i|em|cite)>/.test(part))titleDepth--;
+  return i%2||titleDepth?part:part.replace(namePattern,(name,index)=>isPersonalUse({id:named[name]},text,start+index,start+index+name.length)?'[[person:'+named[name]+'|'+name+']]':name);
+ }).join('');
+};
 export const passages1895=[...early1895,...intersections1895,...quotients1895,...groups1895,...symmetric1895,...euler1895].map(r=>({...r,text:markNames(r.text),note:markNames(r.note),id:`p95-${r.section}${r.key}`,sourceUrl:'https://analysis-situs.math.cnrs.fr/'+names[r.section]+'.html',sourceLabel:'French text · '+(r.section?'§'+r.section:'Introduction'),figureHtml:r.figure?figures1895[r.figure]:undefined,figure:undefined}));
 const titles=['Why analysis situs?','First definition of manifolds','Homeomorphism','Second definition of manifolds','Opposite orientations','Homologies','Betti numbers','Using multiple integrals','One-sided and two-sided manifolds','Intersection and duality','Geometric representation','Representation by a discontinuous group','The fundamental group','Fundamental equivalences','Conditions for homeomorphism','Other ways of constructing manifolds','Euler’s theorem','The odd-dimensional case','A second proof'];
 export const sections1895=titles.map((title,section)=>({id:section?'p95-section-'+section:'p95-introduction',title,range:section?'§'+section:'Introduction',rows:passages1895.filter(r=>r.section===section)}));

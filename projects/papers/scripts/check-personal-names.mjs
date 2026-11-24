@@ -19,6 +19,38 @@ assert.throws(()=>personalReference(person('riemann'),'Riemann','../',work('gaus
 const ambiguous=nameRegistry([{id:'j',name:'Johann Bernoulli'},{id:'b',name:'Jacob Bernoulli'}],'../');
 assert(ambiguous.every(p=>!p.aliases.includes('Bernoulli')),'A shared surname must not silently identify one person');
 new vm.Script(fs.readFileSync(new URL('../public/name-links.js',import.meta.url),'utf8'));
+const runtime={window:{},document:{getElementById:()=>({textContent:JSON.stringify(nameRegistry(people,'../'))})}};
+vm.runInNewContext(fs.readFileSync(new URL('../public/name-context.js',import.meta.url),'utf8'),runtime);
+runtime.window.MathExpoNameContext=runtime.MathExpoNameContext;
+vm.runInNewContext(fs.readFileSync(new URL('../public/name-links.js',import.meta.url),'utf8'),runtime);
+for(const [id,text,expected] of [
+ ['lie','On the Hypotheses Which Lie at the Bases of Geometry',false],
+ ['lie','Lie in the interior of the surface',false],
+ ['lie','Lie groups and Lie algebras',false],
+ ['lie','Sophus Lie introduced these transformations',true],
+ ['lie','Lie in 1874 examined this case',true],
+ ['riemann','The Riemann hypothesis',false],
+ ['riemann','Riemann’s mapping theorem',false],
+ ['riemann','Cauchy–Riemann equations',false],
+ ['riemann','Riemann proposed this hypothesis',true],
+ ['euler','Euler–Maclaurin summation formula',false],
+ ['euler','Euler product',false],
+ ['euler','Euler evaluated the series',true],
+ ['betti','Betti numbers',false],
+ ['laplace','Laplace’s equation',false],
+ ['stieltjes','Stieltjes integral',false],
+ ['riemann','Riemann’s classification of algebraic curves',true],
+ ['cauchy','Cauchy’s methods or Fourier series',true],
+ ['kronecker','a known theorem of Kronecker',true],
+ ['newton','by Newton’s method',false],
+ ['newton','Newton’s identities',false],
+ ['abel','Abel’s addition theorem',false],
+ ['cauchy','Cauchy’s coefficient formula',false],
+ ['euler','Euler’s prime-modulus power-residue criterion',false]
+]){
+ const alias=person(id).name.split(' ').at(-1),start=text.indexOf(alias);
+ assert.equal(runtime.window.paperNames.isPersonalUse(person(id),text,start,start+alias.length),expected,text);
+}
 const html=id=>fs.readFileSync(new URL('../dist/'+id+'/index.html',import.meta.url),'utf8');
 assert(html('riemann-1859').includes('data-person="jacobi" data-reference-work="jacobi-1829"'));
 assert(html('riemann-1854').includes('data-person="gauss" data-reference-work="gauss-1828"'));

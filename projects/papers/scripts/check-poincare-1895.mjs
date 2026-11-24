@@ -47,7 +47,7 @@ for(const marker of ['not been collated line by line','without proof-assistant v
 assert(works.find(w=>w.id==='poincare-1895').edition);assert.equal(englishSources['poincare-1895'].checked,'2026-10-24');
 assert.equal(externalReferences1895.length,5);assert(html.includes('4 recorded'));
 assert(fs.readFileSync(new URL('dist/people/poincare/index.html',root),'utf8').includes('../../poincare-1895/'));
-assert(fs.readFileSync(new URL('dist/people/betti/index.html',root),'utf8').includes('../../poincare-1895/#p95-6a'));
+assert(!passages1895.find(p=>p.id==='p95-6a').text.includes('[[person:betti|Betti]] numbers'),'Betti numbers name an invariant, not a person reference');
 // Reconstruct each vertex link and its local fans from the original face maps.
 const results=faceCases.map(inspectPairing);
 assert.deepEqual(results.map(r=>[r.vertices,r.edges,r.faces]),[[1,3,3],[2,2,3],[2,4,3],[1,3,3],[3,6,4]]);
