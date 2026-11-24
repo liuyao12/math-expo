@@ -4,6 +4,7 @@ import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import {buildAnchoredMargins} from '../../../scripts/build-anchored-margins.mjs';
 import {buildHypothesisLogin,hypothesisLogin} from '../../../scripts/build-hypothesis-login.mjs';
+import {buildEditorialMark,mathExpoSignature} from '../../../scripts/build-editorial-mark.mjs';
 import {createRenderer,escapeHTML as esc} from '../src/latex.mjs';
 import {printedSource,renderProofs,sourceHeading} from '../src/source-column.mjs';
 import {buildReadings} from './reading-generator.mjs';
@@ -17,6 +18,7 @@ const assetVersion=createHash('sha256').update(fs.readFileSync(path.join(root,'p
 const dist=path.join(root,'dist');
 fs.rmSync(dist,{recursive:true,force:true});fs.mkdirSync(dist,{recursive:true});
 fs.cpSync(path.join(root,'public'),dist,{recursive:true});
+const editorialAssets=buildEditorialMark(dist);
 const marginAssets=buildAnchoredMargins(dist,{stylesheet:false});
 const hypothesisAssets=buildHypothesisLogin(dist);
 fs.cpSync(path.join(root,'upstream'),path.join(dist,'source'),{recursive:true});
@@ -48,7 +50,7 @@ function matchingHTML(item,proof=false,renderer=r){
 }
 function renderExampleCard(item,key,open,proof=false,renderer=r,group=key){
   const label=item.kind==='analogy'?'Analogy':item.kind==='non-example'?'Non-example':'Example';
-  return `<details class="example-disclosure" data-example-card="${esc(key)}" data-example-group="${esc(group)}"${open?' open':''}><summary><span class="disclosure-chevron" aria-hidden="true"></span><span class="example-title">${label}: ${esc(item.title)}</span><span class="note-author">Math Expo</span></summary><div class="example-body" tabindex="0" role="region" aria-label="${label}: ${esc(item.title)}">${matchingHTML(item,proof,renderer)}</div></details>`;
+  return `<details class="example-disclosure" data-editorial-author="math-expo" data-example-card="${esc(key)}" data-example-group="${esc(group)}"${open?' open':''}><summary><span class="disclosure-chevron" aria-hidden="true"></span><span class="example-title">${label}: ${esc(item.title)}</span><span class="note-author">${mathExpoSignature}</span></summary><div class="example-body" tabindex="0" role="region" aria-label="${label}: ${esc(item.title)}">${matchingHTML(item,proof,renderer)}</div></details>`;
 }
 const exampleData=Object.fromEntries(Object.entries(examples).map(([key,item])=>[key,{
   html:renderExampleCard(item,key,true),
@@ -61,7 +63,7 @@ function header(base,{title,tools}={}){
  if(!title)return `<header class="site-header">${brand}${nav}${hypothesisLogin}</header>`;
  return `<header class="site-header reader-header"><div class="reader-identity">${brand}<div class="reader-heading"><h1>${esc(title)}</h1></div></div>${nav}<div class="reader-actions"><button class="contents-toggle" type="button" aria-expanded="false" aria-controls="reading-outline">Contents</button><details class="reading-tools"><summary>Tools</summary><div class="reading-tools-panel"><button id="toggle-proofs" type="button" aria-pressed="false">Show all proofs</button>${tools}<div class="compact-reader-links">${nav}</div></div></details><button class="header-companion-toggle" type="button" data-show-example>Example</button>${hypothesisLogin}</div></header>`;
 }
-const head=(title,base,description,{interactiveMath=false}={})=>`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f6f1"><meta name="description" content="${esc(description)}"><title>${esc(title)} — Stacks Reader</title><link rel="icon" href="${base}mark.svg"><link rel="stylesheet" href="${base}vendor/katex/katex.min.css"><link rel="stylesheet" href="${base}style.css?v=${assetVersion}">${interactiveMath?`<script defer src="${base}vendor/katex/katex.min.js"></script>`:''}<script defer src="${base}${marginAssets.js}"></script><script defer src="${base}reader.js?v=${assetVersion}"></script>${hypothesisAssets(base)}</head><body><a class="skip-link" href="#main">Skip to reading</a>`;
+const head=(title,base,description,{interactiveMath=false}={})=>`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f6f1"><meta name="description" content="${esc(description)}"><title>${esc(title)} — Stacks Reader</title><link rel="icon" href="${base}mark.svg"><link rel="stylesheet" href="${base}vendor/katex/katex.min.css"><link rel="stylesheet" href="${base}style.css?v=${assetVersion}"><link rel="stylesheet" href="${base}${editorialAssets.css}">${interactiveMath?`<script defer src="${base}vendor/katex/katex.min.js"></script>`:''}<script defer src="${base}${marginAssets.js}"></script><script defer src="${base}reader.js?v=${assetVersion}"></script>${hypothesisAssets(base)}</head><body><a class="skip-link" href="#main">Skip to reading</a>`;
 const footer=base=>`<footer class="site-footer"><span>Math Expo <span aria-hidden="true">/</span> Stacks Reader</span><p>Mathematical text by <a href="https://stacks.math.columbia.edu/">The Stacks Project Authors</a>. Reader and examples by Math Expo.<br><a href="${base}about/">Attribution, modification history &amp; source</a> · <a href="${base}license/">GNU Free Documentation License</a></p></footer>`;
 function sphere(id='sphere-canvas',interactive=true){return `<div class="sphere-model"><canvas id="${id}" class="sphere-canvas" width="600" height="450" aria-label="Riemann sphere with a marked point and two coordinate charts"></canvas><span class="sphere-north">${r.math('\\infty')}</span><span class="sphere-south">${r.math('0')}</span><div class="chart-labels"><span>${r.math('z')}</span><span>${r.math('w=1/z')}</span></div>${interactive?`<div class="coordinate-readout" id="coordinate-readout" aria-live="off">${r.math('z=1,\\quad w=1')}</div><div class="model-controls"><label for="point-radius">Size <input id="point-radius" type="range" min="-1" max="1" step="0.02" value="0" aria-label="Logarithmic size of the coordinate"></label><label for="point-angle">Angle <input id="point-angle" type="range" min="0" max="360" step="1" value="0" aria-label="Angle of the coordinate in degrees"></label><button id="reset-point" type="button">Reset point</button></div><p class="figure-caption">Move one point. Watch its two coordinates change.</p>`:''}</div>`;}
 const schemePath=buildReadings({root,dist,head,header,footer,renderExampleCard,assetVersion});

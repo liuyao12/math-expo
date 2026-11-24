@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { buildAnchoredMargins } from '../../../scripts/build-anchored-margins.mjs';
 import { buildHypothesisLogin, hypothesisLogin } from '../../../scripts/build-hypothesis-login.mjs';
+import { buildEditorialMark, mathExpoSignature } from '../../../scripts/build-editorial-mark.mjs';
 import passageNotes from '../../../shared/passage-notes.json' with { type: 'json' };
 const root = fileURLToPath(new URL('../', import.meta.url));
 const destination = path.join(root, 'dist');
@@ -14,14 +15,16 @@ for (const file of readdirSync(path.join(root, 'course-site'))) {
 }
 const marginAssets = buildAnchoredMargins(destination);
 const hypothesisAssets = buildHypothesisLogin(destination);
+const editorialAssets = buildEditorialMark(destination);
 const chaptersPath = path.join(destination, 'chapters.js');
 writeFileSync(chaptersPath, readFileSync(chaptersPath, 'utf8')
-  + '\nwindow.COURSE.passageNotes = ' + JSON.stringify(passageNotes.textbooks) + ';\n');
+  + '\nwindow.COURSE.passageNotes = ' + JSON.stringify(passageNotes.textbooks) + ';\n'
+  + 'window.COURSE.editorialSignature = ' + JSON.stringify(mathExpoSignature).replaceAll('<','\\u003c') + ';\n');
 const indexPath = path.join(destination, 'index.html');
 let index = readFileSync(indexPath, 'utf8')
   .replace('anchored-margins.js', marginAssets.js)
   .replace('anchored-margins.css', marginAssets.css)
-  .replace('</head>', hypothesisAssets() + '</head>')
+  .replace('</head>', `<link rel="stylesheet" href="${editorialAssets.css}">` + hypothesisAssets() + '</head>')
   .replace('</header>', hypothesisLogin + '</header>');
 for (const asset of ['app.js', 'chapters.js']) {
   const version = createHash('sha256').update(readFileSync(path.join(destination, asset))).digest('hex').slice(0, 12);

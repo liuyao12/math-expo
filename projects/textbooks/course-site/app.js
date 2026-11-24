@@ -201,6 +201,13 @@
       if(choice.open)choice.parentElement.querySelectorAll('.example-choice').forEach(other=>{if(other!==choice)other.open=false;});
     }));
     chapterElement.querySelectorAll('[data-demo]').forEach(holder=>mountDemo(holder,holder.dataset.demo));
+    chapterElement.querySelectorAll('.section-grid > .margin').forEach(margin=>{
+      const byline=document.createElement('div'),label=margin.querySelector('.margin-label');
+      byline.className='editorial-byline';
+      if(label){label.replaceWith(byline);byline.append(label);}else margin.prepend(byline);
+      byline.insertAdjacentHTML('beforeend',window.COURSE.editorialSignature);
+      margin.dataset.editorialAuthor='math-expo';
+    });
     const items=[...chapterElement.querySelectorAll('.section-grid')].map(section=>({
       section,anchor:section,content:section.querySelector('.margin')
     }));

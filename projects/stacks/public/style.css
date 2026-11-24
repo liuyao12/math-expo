@@ -46,6 +46,9 @@ html:has(.reader-layout){scroll-behavior:auto}
 }
 .collection-scope>summary{cursor:pointer;font:18px/1.7 var(--serif);color:var(--green);padding:12px 0;border-block:1px solid var(--line)}
 
+.example-disclosure[data-editorial-author="math-expo"]>summary{align-items:center}
+.example-disclosure[data-editorial-author="math-expo"]>summary>.example-title{flex:1;min-inline-size:0}
+.example-disclosure[data-editorial-author="math-expo"]>summary>.note-author{display:inline-flex;align-self:center;margin-inline-start:auto;padding:0;border:0;line-height:1}
 .example-disclosure {
   border-bottom: 1px solid var(--line);
 }

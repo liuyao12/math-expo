@@ -1,4 +1,6 @@
 import {mangoldtPassages,mangoldtSections,mangoldtEdition} from '../src/mangoldt-1895.mjs';
+import {meMonogram,signEditorialNotes} from '../src/editorial-mark.mjs';
+import {buildEditorialMark,mathExpoSVG} from '../../../scripts/build-editorial-mark.mjs';
 import {authoredCommentaries,commentariesFor,furtherReading,furtherReadingFor} from '../src/authored-commentaries.mjs';
 import {parallelReaderHTML,primaryReadingHTML,commentatorCredit} from '../src/parallel-reader.mjs';
 import {weilReadingHTML,weilEdition,weilGuide,weilCompanions} from '../src/weil-1949.mjs';
@@ -67,6 +69,8 @@ import passageNotes from '../../../shared/passage-notes.json' with {type:'json'}
 const root=fileURLToPath(new URL('../',import.meta.url)),dist=path.join(root,'dist');
 rmSync(dist,{recursive:true,force:true});mkdirSync(dist,{recursive:true});
 cpSync(path.join(root,'public'),dist,{recursive:true});
+const editorialAssets=buildEditorialMark(dist);
+writeFileSync(path.join(dist,'mark.svg'),mathExpoSVG);
 const marginAssets=buildAnchoredMargins(dist);
 const hypothesisAssets=buildHypothesisLogin(dist);
 const styleVersion=createHash('sha256').update(readFileSync(path.join(root,'public/style.css'))).digest('hex').slice(0,12);
@@ -75,7 +79,7 @@ const zetaVersion=createHash('sha256').update(['zeta-math.mjs','zeta-reader.mjs'
 const surfaceVersion=createHash('sha256').update(['surfaces-reader.mjs','surfaces-math.mjs','surfaces-reader.css'].map(f=>readFileSync(path.join(root,'public',f),'utf8')).join('\n')).digest('hex').slice(0,12);
 const companionVersion=createHash('sha256').update(['companion-reader.mjs','companion-reader.css'].map(f=>readFileSync(path.join(root,'public',f),'utf8')).join('\n')).digest('hex').slice(0,12);
 const layoutVersion=createHash('sha256').update(['reader-layout.mjs','reader-layout.css','reading-links.mjs','exhibit-drawer.mjs','reading-apparatus.mjs'].map(f=>readFileSync(path.join(root,'public',f),'utf8')).join('\n')).digest('hex').slice(0,12);
-const parallelVersion=createHash('sha256').update(['parallel-reader.mjs','parallel-reader.css','name-links.js','name-context.js','style.css','mark.svg'].map(f=>readFileSync(path.join(root,'public',f),'utf8')).join('\n')).digest('hex').slice(0,12);
+const parallelVersion=createHash('sha256').update(['parallel-reader.mjs','parallel-reader.css','name-links.js','name-context.js','style.css'].map(f=>readFileSync(path.join(root,'public',f),'utf8')).join('\n')).update(meMonogram).digest('hex').slice(0,12);
 const nameVersion=createHash('sha256').update(readFileSync(path.join(root,'public/name-context.js'))).update(readFileSync(path.join(root,'public/name-links.js'))).digest('hex').slice(0,12);
 const readerVersion=createHash('sha256').update(readFileSync(path.join(root,'public/reader.js'))).update(readFileSync(path.join(root,'src/discovery.mjs'))).update(readFileSync(path.join(root,'public/name-links.js'))).digest('hex').slice(0,12);
 const allEulerProofs=[...statementsEulerMore,...statementsLogarithms,...statementsBridges,...statementsResidues];
@@ -136,7 +140,7 @@ function save(route,html){
   html=html.replace('</head>',`<link rel="stylesheet" href="${base}${marginAssets.css}"><link rel="stylesheet" href="${base}reader-layout.css?v=${layoutVersion}"><script id="reader-layout-data" type="application/json">${JSON.stringify(layoutData).replaceAll('<','\\u003c')}</script><script defer src="${base}${marginAssets.js}"></script><script type="module" src="${base}reader-layout.mjs?v=${layoutVersion}"></script></head>`);
  }
  const base='../'.repeat(route.split('/').filter(Boolean).length);
- html=html.replace('</head>',hypothesisAssets(base)+'</head>');
+ html=html.replace('</head>',`<link rel="stylesheet" href="${base}${editorialAssets.css}">`+hypothesisAssets(base)+'</head>');
  html=html.replace(/(<header class="(?:masthead|parallel-header)">[\s\S]*?)(<\/header>)/,(_,header,close)=>header+hypothesisLogin+close);
  const dir=path.join(dist,route);mkdirSync(dir,{recursive:true});writeFileSync(path.join(dir,'index.html'),italicizeTitles(signEditorialNotes(html)));
 }
@@ -416,4 +420,3 @@ for(const c of furtherReading){
  const htmlHead=head(c.title,'../../').replace('</head>',`<link rel="stylesheet" href="../../parallel-reader.css?v=${parallelVersion}"></head>`);
  save(`further-reading/${c.id}`,`${htmlHead}${mast('../../')}<main id="top" class="further-reading-text"><a href="../../commentaries/#further-reading">← Further reading</a><header><p class="eyebrow">Further reading · Modern exposition</p><h1><i>${esc(c.title)}</i></h1><p class="author">${commentatorCredit(c.author)}</p><p>${esc(c.publication)}</p><p>${esc(c.scope)}</p><p>${external(c.url,'Original article')} · ${external(c.permission,'Author’s reuse permission')} · <a href="../../commentaries/tao-2013-provenance.json">Extraction record</a></p><p>This is a broader exposition, not a commentary on a particular historical paper. Source wording and equation labels are retained; the 866 formula images are typeset from their original LaTeX. Reader comments and site widgets are excluded.</p></header><div class="authored-text">${text}</div>${footer}</main></body></html>`);
 }
-import {meMonogram,signEditorialNotes} from '../src/editorial-mark.mjs';

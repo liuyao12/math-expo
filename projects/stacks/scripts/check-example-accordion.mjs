@@ -56,7 +56,7 @@ try{
    }
    for(let index=0;index<count;index++){
     const card=cards.nth(index),key=await card.getAttribute('data-example-card');
-    assert.equal(await card.locator('.note-author').innerText(),'Math Expo');
+    assert.equal(await card.locator('.note-author .me-signature').getAttribute('aria-label'),'MEx · Math Expo');
     if(!await card.evaluate(n=>n.open))await card.locator('summary').click();
     await settle(page);await assertExclusive(group,key);
     if(!compactGroup)await headingsVisible(group,page);

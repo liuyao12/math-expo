@@ -116,8 +116,6 @@
 .brand>svg{width:40px;height:32px}
 .commentary-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:9px}
 .commentary-meta>.note-type{margin:0;min-width:0;line-height:1.5}
-.me-signature{display:inline-flex;align-items:center;justify-content:center;flex:none;width:36px;height:28px;border:1px solid #c6d0bf;border-radius:4px;vertical-align:middle;line-height:1;cursor:help}
-.me-signature>svg{display:block;width:34px;height:26px}
 .zeta-panel-credit{display:flex;align-items:center;gap:10px;min-width:0}
 .zeta-panel-credit>div{min-width:0}
 /* Real text stays searchable and copyable; small caps affect surnames only. */
